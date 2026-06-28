@@ -1,0 +1,221 @@
+---
+import Symbol from './Symbol.astro';
+const { country: c } = Astro.props;
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": (c.faqs || []).map(f => ({
+    "@type": "Question", "name": f.q,
+    "acceptedAnswer": { "@type": "Answer", "text": f.a }
+  }))
+};
+const artLd = {
+  "@context": "https://schema.org", "@type": "Article",
+  "headline": c.title, "description": c.description,
+  "dateModified": c.checkedISO, "datePublished": c.checkedISO,
+  "author": { "@type": "Organization", "name": "True Trip Costs" }
+};
+---
+{c.blocked && (
+  <section class="blocked">
+    <div class="ctx">
+      <span>Money briefing</span><span>&middot;</span><span><b style="color:var(--ink)">{c.from} &#8594; {c.name}</b></span>
+    </div>
+    <h2>We do not cover {c.name} right now.</h2>
+    <p set:html={c.blockedNote || "We do not currently publish a money guide for this destination. When a place is under sanctions, off-limits, or the money facts cannot be verified to the standard we hold ourselves to, we would rather show nothing than guess."}></p>
+    <p class="bback"><a href="/">Back to all money guides &#8594;</a></p>
+  </section>
+)}
+
+{!c.blocked && (<Fragment>
+<div class={"hero" + (c.hero && c.hero.img ? "" : " solo")}>
+  <div class="hcopy">
+    <div class="ctx">
+      <span>Money briefing</span><span>&middot;</span><span><b style="color:var(--ink)">{c.from} &#8594; {c.name}</b></span><span>&middot;</span>
+      <span class="stamp"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#10502C" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>checked {c.checked}</span>
+    </div>
+    <h1>{c.h1}</h1>
+    <p class="hlede">{c.lede}</p>
+  </div>
+  {c.hero && c.hero.img && (
+    <div class="hart"><img src={c.hero.img} alt={c.hero.alt} width="1100" height={c.hero.h} /></div>
+  )}
+</div>
+
+<div class="notice" id="notice" set:html={c.notice}></div>
+
+<div class="verdict">
+  <span class="vlead">The short version</span>
+  <Fragment set:html={c.verdict} />
+  <div class="vcta"><a class="btn light" href="#calc">Check your exact card and its fee
+    <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+</div>
+
+{c.recentChange && (
+  <div class="recentchange">
+    <span class="rcpill">Money update &middot; {c.recentChange.date}</span>
+    <p set:html={c.recentChange.text}></p>
+  </div>
+)}
+
+<section>
+  <p class="lab">The three things people ask</p>
+  <h2>Will my card work? Do I need cash? Are ATMs easy?</h2>
+  <p class="sub">The quick read for a first trip.</p>
+  <div class="trio">
+    {c.trio.map(t => (
+      <div class={"vc " + t.kind}>
+        <Symbol name={t.sym} cls="sym" />
+        <div class="bd">
+          <h3>{t.h}</h3>
+          <p class="verd">{t.verd}</p>
+          <p>{t.p}</p>
+          <a class="cta" href={t.cta.href}>{t.cta.label} <span class="arw">&#8594;</span></a>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section>
+  <p class="lab">Cash or card</p>
+  <h2>{c.meter.heading}</h2>
+  <div class="meter">
+    <div class="meterbar">
+      <div class="cash" style={"width:" + c.meter.cashPct + "%"}>about {c.meter.cashPct}% cash</div>
+      <div class="cardp" style={"width:" + (100 - c.meter.cashPct) + "%"}>{100 - c.meter.cashPct}% card</div>
+    </div>
+    <p class="meternote">{c.meter.note}</p>
+    <a class="cta" href="#cash">See how much cash to plan for <span class="arw">&#8594;</span></a>
+  </div>
+</section>
+
+<section>
+  <p class="lab">Your money plan</p>
+  <h2>Four steps and you're set.</h2>
+  <div class="plan">
+    {c.plan.map(p => (
+      <div class="pstep">
+        <Symbol name={p.sym} cls="psym" />
+        <div class="pbody">
+          <h3 class="pwhen">{p.when}</h3>
+          <ul>{p.bullets.map(b => (<li set:html={b}></li>))}</ul>
+          {p.cta && (
+            <a class="cta" href={p.cta.href}>{p.cta.label}
+              <span class={"tg " + p.cta.tag}>{p.cta.tag === "earn" ? "earns commission" : "no commission"}</span>
+              <span class="arw">&#8594;</span></a>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<section id="cash">
+  <p class="lab">How much cash</p>
+  <h2>A sensible amount to plan for.</h2>
+  <p class="sub">On-the-ground spending for your whole group across the trip: food, local transport, activities and tips. Lodging is left out on purpose, since it is usually prepaid or paid by card and does not change how much cash you carry.</p>
+  <div class="estimator" data-rate={c.cash.rate} data-cur={c.cash.cur} data-round={c.cash.round || 100000}>
+    <div class="erow">
+      <div class="ef"><label for="trav">Travelers</label><input id="trav" type="number" min="1" max="12" value="2"></div>
+      <div class="ef"><label for="days">Days</label><input id="days" type="number" min="1" max="60" value="7"></div>
+      <div class="ef"><label>Style</label>
+        <div class="seg" role="group" aria-label="Travel style">
+          {c.cash.styles.map((s, i) => (
+            <button id={"s" + i} class={i === c.cash.defaultIndex ? "on" : ""} type="button" data-per={s.per} data-cash={s.cash}>{s.n}</button>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class="ebig">Plan about <span class="amt num" id="total">$700</span> across the trip.</div>
+    <p class="escope">About <b id="perday" class="num">$50</b> per person a day, for <b id="ntrav" class="num">2</b> travelers over <b id="ndays" class="num">7</b> days.</p>
+    <div class="esplit"><div class="c1" id="cashBar" style="width:70%">cash <span id="cashUsd">$490</span></div><div class="c2" id="cardBar" style="width:30%">card <span id="cardUsd">$210</span></div></div>
+    <p class="ehint">That means pulling roughly <b id="vnd">12,000,000</b> in cash, in about <b id="pulls">2</b> ATM <span id="visitword">visits</span>. {c.cash.rateNote}</p>
+    <a class="cta" href="#">See no-fee cards that skip ATM fees <span class="tg earn">earns commission</span> <span class="arw">&#8594;</span></a>
+  </div>
+</section>
+
+<section>
+  <p class="lab">Currency basics</p>
+  <h2>{c.currencyHeading}</h2>
+  <div class="facts">
+    {c.facts.map(f => (
+      <div class="fact">
+        <Symbol name={f.sym} cls="fsym" />
+        <div><p class="k">{f.k}</p><p class="v">{f.v}</p></div>
+      </div>
+    ))}
+  </div>
+</section>
+
+{c.taxfree && (
+  <section>
+    <p class="lab">{c.taxfree.label || "Tax-free shopping"}</p>
+    <h2>{c.taxfree.heading}</h2>
+    <p class="sub" set:html={c.taxfree.text}></p>
+  </section>
+)}
+
+<section>
+  <p class="lab">Watch out for</p>
+  <h2>The small traps that catch first-timers.</h2>
+  <div class="traps">
+    {c.traps.map(t => (<div class="trap"><span class="dot">!</span><span set:html={t}></span></div>))}
+  </div>
+</section>
+
+<section>
+  <p class="lab">Tipping</p>
+  <h2>{c.tippingHeading}</h2>
+  <p class="sub">{c.tipping}</p>
+</section>
+
+<section>
+  <p class="lab">Common questions</p>
+  <h2>Quick answers.</h2>
+  <div class="faq">
+    {c.faqs.map(f => (<div class="faqitem"><h3>{f.q}</h3><p>{f.a}</p></div>))}
+  </div>
+</section>
+
+<section id="calc">
+  <div class="reveal">
+    <div class="t"><b>Got a specific hotel price?</b> See the real all-in total, with {c.name}'s tax and your card's foreign fee included.</div>
+    <a class="btn" href="#" onclick="return false">Open the cost calculator
+      <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqLd)}></script>
+<script type="application/ld+json" set:html={JSON.stringify(artLd)}></script>
+</Fragment>)}
+
+<script>
+  function n(id){return document.getElementById(id);}
+  const est = document.querySelector('.estimator');
+  if (est) {
+    const rate = +est.dataset.rate, cur = est.dataset.cur, round = +est.dataset.round || 100000;
+    const btns = Array.from(est.querySelectorAll('.seg button'));
+    let si = btns.findIndex(b => b.classList.contains('on')); if (si < 0) si = 0;
+    const usd = x => '$' + Math.round(x).toLocaleString('en-US');
+    const loc = x => (Math.round(x / round) * round).toLocaleString('en-US') + ' ' + cur;
+    function calc() {
+      const trav = Math.max(1, +n('trav').value || 1), days = Math.max(1, +n('days').value || 1);
+      const b = btns[si], per = +b.dataset.per, cashShare = +b.dataset.cash;
+      const total = per * trav * days, cash = total * cashShare, card = total - cash;
+      n('total').textContent = usd(total);
+      n('perday').textContent = usd(per); n('ntrav').textContent = trav; n('ndays').textContent = days;
+      const cp = Math.round(cashShare * 100);
+      n('cashBar').style.width = cp + '%'; n('cardBar').style.width = (100 - cp) + '%';
+      n('cashUsd').textContent = usd(cash); n('cardUsd').textContent = usd(card);
+      const pulls = Math.max(1, Math.ceil(cash / 300));
+      n('vnd').textContent = loc(cash * rate); n('pulls').textContent = pulls;
+      const vw = n('visitword'); if (vw) vw.textContent = pulls === 1 ? 'visit' : 'visits';
+    }
+    btns.forEach((b, i) => b.addEventListener('click', () => { si = i; btns.forEach((x, j) => x.classList.toggle('on', j === i)); calc(); }));
+    ['trav', 'days'].forEach(id => n(id).addEventListener('input', calc));
+    calc();
+  }
+  const from = n('from');
+  if (from) from.addEventListener('change', function () { n('notice').classList.toggle('show', this.value === 'OTHER'); });
+</script>
