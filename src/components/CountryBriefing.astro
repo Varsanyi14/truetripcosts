@@ -114,7 +114,7 @@ const artLd = {
 <section id="cash">
   <p class="lab">How much cash</p>
   <h2>A sensible amount to plan for.</h2>
-  <p class="sub">Day-to-day spending on the ground, not counting your hotel or pre-booked tours. Adjust to your trip.</p>
+  <p class="sub">On-the-ground spending for your whole group across the trip: food, local transport, activities and tips. Lodging is left out on purpose, since it is usually prepaid or paid by card and does not change how much cash you carry.</p>
   <div class="estimator" data-rate={c.cash.rate} data-cur={c.cash.cur} data-round={c.cash.round || 100000}>
     <div class="erow">
       <div class="ef"><label for="trav">Travelers</label><input id="trav" type="number" min="1" max="12" value="2"></div>
@@ -127,9 +127,10 @@ const artLd = {
         </div>
       </div>
     </div>
-    <div class="ebig">Plan about <span class="amt num" id="total">$700</span> in day-to-day spending.</div>
+    <div class="ebig">Plan about <span class="amt num" id="total">$700</span> across the trip.</div>
+    <p class="escope">About <b id="perday" class="num">$50</b> per person a day, for <b id="ntrav" class="num">2</b> travelers over <b id="ndays" class="num">7</b> days.</p>
     <div class="esplit"><div class="c1" id="cashBar" style="width:70%">cash <span id="cashUsd">$490</span></div><div class="c2" id="cardBar" style="width:30%">card <span id="cardUsd">$210</span></div></div>
-    <p class="ehint">Pull roughly <b id="vnd">12,000,000</b> in cash, in about <b id="pulls">2</b> ATM visits. {c.cash.rateNote}</p>
+    <p class="ehint">That means pulling roughly <b id="vnd">12,000,000</b> in cash, in about <b id="pulls">2</b> ATM <span id="visitword">visits</span>. {c.cash.rateNote}</p>
     <a class="cta" href="#">See no-fee cards that skip ATM fees <span class="tg earn">earns commission</span> <span class="arw">&#8594;</span></a>
   </div>
 </section>
@@ -203,10 +204,13 @@ const artLd = {
       const b = btns[si], per = +b.dataset.per, cashShare = +b.dataset.cash;
       const total = per * trav * days, cash = total * cashShare, card = total - cash;
       n('total').textContent = usd(total);
+      n('perday').textContent = usd(per); n('ntrav').textContent = trav; n('ndays').textContent = days;
       const cp = Math.round(cashShare * 100);
       n('cashBar').style.width = cp + '%'; n('cardBar').style.width = (100 - cp) + '%';
       n('cashUsd').textContent = usd(cash); n('cardUsd').textContent = usd(card);
-      n('vnd').textContent = loc(cash * rate); n('pulls').textContent = Math.max(1, Math.ceil(cash / 300));
+      const pulls = Math.max(1, Math.ceil(cash / 300));
+      n('vnd').textContent = loc(cash * rate); n('pulls').textContent = pulls;
+      const vw = n('visitword'); if (vw) vw.textContent = pulls === 1 ? 'visit' : 'visits';
     }
     btns.forEach((b, i) => b.addEventListener('click', () => { si = i; btns.forEach((x, j) => x.classList.toggle('on', j === i)); calc(); }));
     ['trav', 'days'].forEach(id => n(id).addEventListener('input', calc));

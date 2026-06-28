@@ -105,6 +105,8 @@
   .esplit .c1{background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center}
   .esplit .c2{background:var(--green-bg);color:#10502C;display:flex;align-items:center;justify-content:center}
   .ehint{font-size:13px;color:var(--muted);margin:0}
+  .escope{font-size:13.5px;color:var(--muted);margin:3px 0 10px}
+  .escope b{color:var(--ink)}
 
   .facts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .fact{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;gap:13px;align-items:flex-start}
