@@ -1,0 +1,13 @@
+# Cloudflare Pages configuration for True Trip Costs.
+# Committing this file binds the KV store to the site on every deploy,
+# so the signup capture works without setting the binding in the dashboard.
+
+name = "truetripcosts"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-06-28"
+
+# Binds the ttc-signups KV namespace as SIGNUPS, which the
+# functions/api/notify.js Function reads as env.SIGNUPS.
+[[kv_namespaces]]
+binding = "SIGNUPS"
+id = "a96f7a8ad61446258eb2ef9f73c88b55"

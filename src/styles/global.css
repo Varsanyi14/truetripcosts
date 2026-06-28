@@ -128,7 +128,10 @@
   .fnote{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-bottom:10px}
   .fnote b{color:var(--ink);font-weight:500}
   :focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:6px}
-  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{transition-duration:.001ms !important;animation-duration:.001ms !important;animation-iteration-count:1 !important}
+  }
 
   /* hero with illustration */
   .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:34px;align-items:center;margin:26px 0 4px}
@@ -157,3 +160,41 @@
   .ccard.soon .cgo{color:var(--muted);font-weight:500}
   a.ccard:hover{border-color:var(--teal)}
   @media(max-width:620px){.country-grid{grid-template-columns:1fr 1fr}}
+
+  /* soft transitions (added) */
+  .esplit .c1,.esplit .c2{transition:width .5s cubic-bezier(.4,0,.2,1)}
+  .meterbar .cash,.meterbar .cardp{transition:width .5s cubic-bezier(.4,0,.2,1)}
+  .seg button{transition:background .25s ease,color .25s ease,box-shadow .25s ease}
+  .btn{transition:background .2s ease,border-color .2s ease,transform .08s ease}
+  .btn:active{transform:translateY(1px)}
+  .vc,.pstep,.fact,.faqitem,.ccard,.trap,.recentchange{transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+  a.ccard:hover{transform:translateY(-2px)}
+  .ef input,.fromsel select{transition:border-color .18s ease,box-shadow .18s ease}
+  .ef input:focus,.fromsel select:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(14,122,95,.12);outline:none}
+
+  /* signup modal */
+  .modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(22,48,44,.42);opacity:0;transition:opacity .26s ease}
+  .modal.open{display:flex}
+  .modal.in{opacity:1}
+  .modal .box{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 70px rgba(22,48,44,.28);width:100%;max-width:430px;padding:28px 26px 24px;transform:translateY(10px) scale(.985);transition:transform .26s cubic-bezier(.2,.7,.3,1)}
+  .modal.in .box{transform:none}
+  .modal .x{position:absolute;top:11px;right:12px;width:32px;height:32px;border:0;background:none;color:var(--muted);font-size:23px;line-height:1;border-radius:8px;cursor:pointer;transition:background .18s ease,color .18s ease}
+  .modal .x:hover{background:#ECEAE3;color:var(--ink)}
+  .sg-lab{font-size:12.5px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.1em;margin:0 0 8px}
+  .sg-title{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.15;letter-spacing:-.01em;margin:0 0 8px}
+  .sg-sub{font-size:14.5px;color:#3B4A46;margin:0 0 16px}
+  .sg-field{display:block;margin:0 0 12px}
+  .sg-field span{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margin:0 0 5px}
+  .sg-field input,.sg-field select,.sg-other{font-family:inherit;font-size:15px;color:var(--ink);width:100%;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 12px;transition:border-color .18s ease,box-shadow .18s ease}
+  .sg-field input:focus,.sg-field select:focus,.sg-other:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(14,122,95,.12);outline:none}
+  .sg-other{margin:-2px 0 12px}
+  .sg-err{font-size:13px;color:#9B2C22;background:#FBE9E7;border:1px solid #F3CFC9;border-radius:9px;padding:8px 11px;margin:0 0 12px}
+  .sg-submit{width:100%;justify-content:center;margin-top:2px}
+  .sg-fine{font-size:12px;color:var(--muted);margin:12px 0 0;text-align:center}
+  .sg-done{text-align:center;padding:6px 2px 2px}
+  .sg-check{width:54px;height:54px;margin:2px auto 14px;border-radius:50%;background:var(--green-bg);display:grid;place-items:center}
+  .sg-done .sg-title{margin:0 0 8px}
+  .sg-done .sg-sub{margin:0 0 18px}
+  .sg-close2{font-family:inherit;font-size:14px;font-weight:500;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 22px;cursor:pointer;transition:background .18s ease}
+  .sg-close2:hover{background:#ECEAE3}
+  @media(max-width:480px){.modal{align-items:flex-end;padding:0}.modal .box{max-width:none;border-radius:18px 18px 0 0;transform:translateY(100%)}.modal.in .box{transform:none}}

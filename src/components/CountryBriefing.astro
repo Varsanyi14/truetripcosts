@@ -197,25 +197,38 @@ const artLd = {
     const rate = +est.dataset.rate, cur = est.dataset.cur, round = +est.dataset.round || 100000;
     const btns = Array.from(est.querySelectorAll('.seg button'));
     let si = btns.findIndex(b => b.classList.contains('on')); if (si < 0) si = 0;
+    const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
     const usd = x => '$' + Math.round(x).toLocaleString('en-US');
     const loc = x => (Math.round(x / round) * round).toLocaleString('en-US') + ' ' + cur;
-    function calc() {
+    // Smoothly roll a number from its previous value to the new one.
+    function roll(el, to, fmt, animate) {
+      if (!el) return;
+      const from = (el._v == null) ? to : el._v; el._v = to;
+      if (!animate || reduce || from === to) { el.textContent = fmt(to); return; }
+      const t0 = performance.now(), dur = 420;
+      (function step(now) {
+        const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(from + (to - from) * e);
+        if (p < 1) requestAnimationFrame(step);
+      })(t0);
+    }
+    function calc(animate) {
       const trav = Math.max(1, +n('trav').value || 1), days = Math.max(1, +n('days').value || 1);
       const b = btns[si], per = +b.dataset.per, cashShare = +b.dataset.cash;
       const total = per * trav * days, cash = total * cashShare, card = total - cash;
-      n('total').textContent = usd(total);
-      n('perday').textContent = usd(per); n('ntrav').textContent = trav; n('ndays').textContent = days;
+      roll(n('total'), total, usd, animate);
+      roll(n('perday'), per, usd, animate);
+      n('ntrav').textContent = trav; n('ndays').textContent = days;
       const cp = Math.round(cashShare * 100);
       n('cashBar').style.width = cp + '%'; n('cardBar').style.width = (100 - cp) + '%';
-      n('cashUsd').textContent = usd(cash); n('cardUsd').textContent = usd(card);
+      roll(n('cashUsd'), cash, usd, animate);
+      roll(n('cardUsd'), card, usd, animate);
       const pulls = Math.max(1, Math.ceil(cash / 300));
-      n('vnd').textContent = loc(cash * rate); n('pulls').textContent = pulls;
+      roll(n('vnd'), cash * rate, loc, animate); n('pulls').textContent = pulls;
       const vw = n('visitword'); if (vw) vw.textContent = pulls === 1 ? 'visit' : 'visits';
     }
-    btns.forEach((b, i) => b.addEventListener('click', () => { si = i; btns.forEach((x, j) => x.classList.toggle('on', j === i)); calc(); }));
-    ['trav', 'days'].forEach(id => n(id).addEventListener('input', calc));
-    calc();
+    btns.forEach((b, i) => b.addEventListener('click', () => { si = i; btns.forEach((x, j) => x.classList.toggle('on', j === i)); calc(true); }));
+    ['trav', 'days'].forEach(id => n(id).addEventListener('input', () => calc(true)));
+    calc(false);
   }
-  const from = n('from');
-  if (from) from.addEventListener('change', function () { n('notice').classList.toggle('show', this.value === 'OTHER'); });
 </script>
