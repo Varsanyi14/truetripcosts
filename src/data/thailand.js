@@ -52,7 +52,7 @@ export default {
   cash: {
     rate: 33, cur: "THB", round: 500, defaultIndex: 1,
     rateNote: "Rough guide at about 33 baht to the dollar. Thailand stays inexpensive day to day, especially for street food, markets and local transport.",
-    styles: [ { n: "Budget", per: 30, cash: 0.7 }, { n: "Mid-range", per: 55, cash: 0.55 }, { n: "Comfort", per: 110, cash: 0.4 } ]
+    styles: [ { n: "Budget", per: 20, cash: 0.7 }, { n: "Mid-range", per: 40, cash: 0.55 }, { n: "Comfort", per: 85, cash: 0.4 } ]
   },
   currencyHeading: "The baht, in plain terms.",
   facts: [
@@ -81,6 +81,6 @@ export default {
     { q: "Should I pay in baht or dollars in Thailand?", a: "Always baht. If a card machine or ATM offers to charge you in dollars, decline. That dynamic currency conversion adds roughly 5 to 8%, and your own bank's rate is better." },
     { q: "Do you tip in Thailand?", a: "It is not expected, but a little cash is appreciated. Round up taxis, leave 20 to 100 baht at a sit-down meal when there is no service charge, and tip a masseuse directly. Check the bill first, since mid and upscale places add a 10% service charge." },
     { q: "Is there a tourist tax or entry fee for Thailand?", a: "A 300 baht entry fee for air arrivals has been proposed and delayed for years, and as of mid-2026 it is still not being collected, so there is nothing to pay yet. The free Thailand Digital Arrival Card (TDAC), filed online within 72 hours of your flight, is separate and already required." },
-    { q: "How much cash should I bring for a week in Thailand?", a: "For two mid-range travelers, very roughly 12,000 to 18,000 baht (about $360 to $550) in day-to-day cash across a week, beyond your hotel, pulled in two or three ATM visits. Adjust for your style and how much you put on a card." }
+    { q: "How much cash should I bring for a week in Thailand?", a: "For two mid-range travelers, very roughly 9,000 to 14,000 baht (about $275 to $425) in day-to-day cash across a week, beyond your hotel, pulled in two or three ATM visits. Adjust for your style and how much you put on a card." }
   ]
 };
