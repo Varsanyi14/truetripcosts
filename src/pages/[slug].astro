@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import CountryBriefing from '../components/CountryBriefing.astro';
+import { countries } from '../data/index.js';
+
+export function getStaticPaths() {
+  return countries.filter(c => c.live).map(c => ({ params: { slug: c.slug }, props: { country: c } }));
+}
+const { country } = Astro.props;
+---
+<Base title={country.title} description={country.description}>
+  <Nav />
+  <main class="wrap"><CountryBriefing country={country} /></main>
+  <Footer />
+</Base>

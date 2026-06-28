@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { countries } from '../data/index.js';
+const live = countries.filter(c => c.live);
+const soon = countries.filter(c => !c.live);
+---
+<Base title="True Trip Costs: the real cost of your trip, sorted" description="Independent, current money guides for travelers from the US: cash vs card, ATMs and fees, and the real all-in cost of your stay. No nasty surprises.">
+  <Nav />
+  <main class="wrap">
+    <section class="home-hero">
+      <p class="lab">For travelers from the USA</p>
+      <h1>The money side of your trip, sorted.</h1>
+      <p class="lede">Independent, plain-language money guides: what to pay with, how much cash to carry, the fees to dodge, and the real all-in cost of your stay. Checked and dated, never guessed.</p>
+    </section>
+    <section class="csec">
+      <p class="lab">Money guides</p>
+      <div class="country-grid">
+        {live.map(c => (<a class="ccard" href={'/' + c.slug}><span class="cname">{c.name}</span><span class="cgo">Open guide &#8594;</span></a>))}
+        {soon.map(c => (<span class="ccard soon"><span class="cname">{c.name}</span><span class="cgo">Coming soon</span></span>))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Base>
