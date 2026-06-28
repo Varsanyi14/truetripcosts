@@ -149,7 +149,7 @@ const artLd = {
 
 {c.taxfree && (
   <section>
-    <p class="lab">Tax-free shopping</p>
+    <p class="lab">{c.taxfree.label || "Tax-free shopping"}</p>
     <h2>{c.taxfree.heading}</h2>
     <p class="sub" set:html={c.taxfree.text}></p>
   </section>
