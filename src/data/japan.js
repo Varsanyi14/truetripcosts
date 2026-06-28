@@ -1,0 +1,87 @@
+export default {
+  slug: "japan",
+  live: true,
+  name: "Japan",
+  from: "United States",
+  checked: "Jun 2026",
+  checkedISO: "2026-06-28",
+  title: "Money in Japan (2026): Cash, Cards, IC Cards, ATMs and Fees | True Trip Costs",
+  description: "How to handle money in Japan as a US traveler in 2026: cash vs card, the best ATMs (7-Eleven), IC cards like Suica, tax-free shopping, tipping, and the traps to avoid. Checked June 2026.",
+  h1: "Money in Japan, sorted.",
+  lede: "A calm, current plan for the money side of your trip: what to tap, where you still need cash, and the small rules that trip up first-timers.",
+  hero: {
+    img: "/japan-hero.jpg",
+    h: 1375,
+    alt: "A quiet Japan street at dusk with paper lanterns, a small noodle shop, and a steaming bowl of ramen on a wooden table in the foreground"
+  },
+  notice: 'We only cover trips departing from the United States right now. Want an email the moment we add your home country? <a href="#" onclick="return false"><b>Sign up for an alert</b></a>.',
+  verdict: "Japan is friendlier to cards than its reputation, but <b>cash</b> still rules temples, small restaurants and vending machines. Put a <b>Suica or ICOCA IC card on your phone</b> for trains and convenience stores, bring a <b>no-fee Visa or Mastercard</b> for hotels and shops, and pull yen from a <b>7-Eleven ATM</b>. Carry 10,000 to 20,000 yen, and one golden rule: <b>never tip</b>.",
+  recentChange: {
+    date: "March 2026",
+    text: "Kyoto raised its lodging tax, with top-tier rooms now taxed up to 10,000 yen per night. Most travelers pay far less, but factor it in for a high-end stay."
+  },
+  meter: {
+    heading: "Japan is more card-friendly than its reputation, but cash still rules the small stuff.",
+    cashPct: 45,
+    note: "A rough feel for everyday spending. Tokyo, Osaka and other cities lean increasingly cashless, and an IC card on your phone covers most small taps. But temples, shrines, small restaurants, vending machines and rural areas are still cash-only, so always keep some yen on you."
+  },
+  trio: [
+    { sym: "card", kind: "warn", h: "Your card", verd: "Works widely in cities", p: "Visa and Mastercard are accepted at hotels, department stores, chain restaurants, convenience stores and JR or Shinkansen counters. Amex is less widely taken, JCB is local. Small izakaya, temples and vending machines are often cash-only.", cta: { label: "Check yours", href: "#calc" } },
+    { sym: "cash", kind: "warn", h: "Cash", verd: "Still needed daily", p: "Temples, shrines, small restaurants, vending machines, markets and rural spots want yen. Carry 10,000 to 20,000 yen and top up as you go.", cta: { label: "How much to bring", href: "#cash" } },
+    { sym: "atm", kind: "ok", h: "ATMs", verd: "Easy, if you pick the right one", p: "7-Eleven (Seven Bank) ATMs are the most reliable: 24/7, English, low fee (around 110 to 220 yen). Japan Post Bank, AEON, FamilyMart and Lawson also work. Avoid bank ATMs like Mizuho, MUFG and SMBC, which often reject foreign cards.", cta: { label: "See the ATM map", href: "#" } }
+  ],
+  plan: [
+    { sym: "tag", when: "Before you go", bullets: [
+      "Get a <b>no-foreign-fee debit card</b> for cash. Charles Schwab refunds ATM fees worldwide; Wise and Revolut are low-fee.",
+      "Bring a <b>no-fee Visa or Mastercard</b> for hotels and shops.",
+      "<b>Add a Suica or ICOCA IC card to your phone's Apple or Google Wallet before you land</b>, it is the smoothest way to pay for trains and convenience stores.",
+      "<b>Tell your bank</b> you are traveling so it doesn't block the card."
+    ], cta: { label: "See no-fee card options", tag: "earn", href: "#" } },
+    { sym: "plane", when: "At the airport", bullets: [
+      "Skip the exchange counters, or grab just 10,000 to 20,000 yen for day one.",
+      "Pull yen from a <b>7-Eleven (Seven Bank) ATM</b> and <b>decline \"convert to USD,\"</b> always choose yen."
+    ], cta: { label: "Find 7-Eleven ATMs", tag: "free", href: "#" } },
+    { sym: "bowl", when: "Day to day", bullets: [
+      "<b>Tap your phone's IC card</b> for trains, buses and convenience stores.",
+      "<b>Card</b> for hotels, department stores and chains.",
+      "<b>Cash</b> for temples, small restaurants, vending machines and rural spots.",
+      "If you are staying more than a few days, <b>PayPay</b> (a QR app) opens up small shops that take no cards."
+    ], cta: { label: "Set up PayPay", tag: "free", href: "#" } },
+    { sym: "usd", when: "A golden rule", bullets: [
+      "<b>Never tip.</b> It is not customary and can cause confusion or mild offense.",
+      "A warm thank-you is all that is expected."
+    ], cta: null }
+  ],
+  cash: {
+    rate: 160, cur: "JPY", round: 10000, defaultIndex: 1,
+    rateNote: "Rough guide at 160 yen to the dollar. The yen is historically weak right now, which stretches your money further.",
+    styles: [ { n: "Budget", per: 45, cash: 0.6 }, { n: "Mid-range", per: 80, cash: 0.45 }, { n: "Comfort", per: 150, cash: 0.3 } ]
+  },
+  currencyHeading: "The yen, in plain terms.",
+  facts: [
+    { sym: "yen", k: "Quick conversion", v: "About 160 yen to $1 right now. A rough gut check: 1,000 yen is about $6, and 10,000 yen about $62. The weak yen is good news for your budget." },
+    { sym: "coins", k: "Notes and coins", v: "Notes come in 1,000, 5,000 and 10,000 yen. Coins go down to 1 yen and pile up fast, so spend them at convenience-store kiosks and vending machines." },
+    { sym: "notip", k: "No tipping", v: "Japan has no tipping culture. Leaving extra can confuse staff or be politely refused. A thank-you is enough." },
+    { sym: "ic", k: "IC cards", v: "Suica, ICOCA and Pasmo are tap-to-pay cards for transit and convenience stores. The easiest route is adding one to your phone's Apple or Google Wallet before arrival." }
+  ],
+  taxfree: {
+    heading: "Shop tax-free as a tourist.",
+    text: "Tourists can buy consumption-tax-free (10%) at shops marked \"Tax Free,\" including department stores, electronics chains like Bic Camera and Yodobashi, and many drugstores. Show your passport at the register. Consumables are sealed and must leave Japan unopened. Confirm the details at the till, as the tax-free system is being reformed."
+  },
+  traps: [
+    "<b>\"Pay in USD?\" Always say no.</b> At a card machine or ATM, choosing your home currency (dynamic currency conversion) quietly adds 3 to 7%. Pick yen every time.",
+    "<b>Most bank ATMs reject foreign cards.</b> Mizuho, MUFG and SMBC machines will refuse you. Head to a 7-Eleven (Seven Bank) or Japan Post ATM instead.",
+    "<b>Never tip.</b> It is genuinely not done here, and a tip can cause awkwardness rather than gratitude.",
+    "<b>Cash-only surprises.</b> Temples, small ramen shops, vending machines and rural spots take only yen, so keep at least 10,000 yen on you even in big cities."
+  ],
+  tippingHeading: "Don't tip, really.",
+  tipping: "Japan has no tipping culture, and there is no awkwardness in not tipping, it is simply the norm. Leaving extra money can confuse or even mildly offend, and staff may chase you to return it. Exceptional service is met with a polite thank-you, not a gratuity. The rare exception is handing a small thank-you in an envelope to a private guide or a ryokan host, in person.",
+  faqs: [
+    { q: "Do I need cash in Japan?", a: "Yes, though less than before. Temples, small restaurants, vending machines and rural areas are still cash-only. Carry 10,000 to 20,000 yen and top up at 7-Eleven ATMs." },
+    { q: "Which ATM works with my foreign card in Japan?", a: "7-Eleven (Seven Bank) ATMs are the most reliable, open 24/7 with English and a low fee. Japan Post Bank, AEON, FamilyMart and Lawson also work. Avoid Mizuho, MUFG and SMBC, which often reject foreign cards." },
+    { q: "Should I tip in Japan?", a: "No. Tipping is not customary and can cause confusion or offense. A polite thank-you is enough." },
+    { q: "Do I need a Suica or IC card in Japan?", a: "It is the smoothest way to pay for trains, buses and convenience stores. The easiest route is adding a Suica or ICOCA to your phone's Apple or Google Wallet before you arrive." },
+    { q: "How much cash should I bring for a week in Japan?", a: "For two mid-range travelers, plan very roughly 80,000 to 100,000 yen in day-to-day cash across a week, beyond hotels, withdrawn in a couple of ATM visits. Adjust for your style." },
+    { q: "Can I shop tax-free as a tourist in Japan?", a: "Yes. At \"Tax Free\" shops, show your passport to buy consumption-tax-free. Consumables are sealed and must leave Japan unopened. Confirm at the register, as the system is being reformed." }
+  ]
+};

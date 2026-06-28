@@ -4,7 +4,7 @@ const { country: c } = Astro.props;
 const faqLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": c.faqs.map(f => ({
+  "mainEntity": (c.faqs || []).map(f => ({
     "@type": "Question", "name": f.q,
     "acceptedAnswer": { "@type": "Answer", "text": f.a }
   }))
@@ -16,7 +16,19 @@ const artLd = {
   "author": { "@type": "Organization", "name": "True Trip Costs" }
 };
 ---
-<div class="hero">
+{c.blocked && (
+  <section class="blocked">
+    <div class="ctx">
+      <span>Money briefing</span><span>&middot;</span><span><b style="color:var(--ink)">{c.from} &#8594; {c.name}</b></span>
+    </div>
+    <h2>We do not cover {c.name} right now.</h2>
+    <p set:html={c.blockedNote || "We do not currently publish a money guide for this destination. When a place is under sanctions, off-limits, or the money facts cannot be verified to the standard we hold ourselves to, we would rather show nothing than guess."}></p>
+    <p class="bback"><a href="/">Back to all money guides &#8594;</a></p>
+  </section>
+)}
+
+{!c.blocked && (<Fragment>
+<div class={"hero" + (c.hero && c.hero.img ? "" : " solo")}>
   <div class="hcopy">
     <div class="ctx">
       <span>Money briefing</span><span>&middot;</span><span><b style="color:var(--ink)">{c.from} &#8594; {c.name}</b></span><span>&middot;</span>
@@ -25,7 +37,9 @@ const artLd = {
     <h1>{c.h1}</h1>
     <p class="hlede">{c.lede}</p>
   </div>
-  <div class="hart"><img src={c.hero.img} alt={c.hero.alt} width="1100" height={c.hero.h} /></div>
+  {c.hero && c.hero.img && (
+    <div class="hart"><img src={c.hero.img} alt={c.hero.alt} width="1100" height={c.hero.h} /></div>
+  )}
 </div>
 
 <div class="notice" id="notice" set:html={c.notice}></div>
@@ -36,6 +50,13 @@ const artLd = {
   <div class="vcta"><a class="btn light" href="#calc">Check your exact card and its fee
     <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
 </div>
+
+{c.recentChange && (
+  <div class="recentchange">
+    <span class="rcpill">Money update &middot; {c.recentChange.date}</span>
+    <p set:html={c.recentChange.text}></p>
+  </div>
+)}
 
 <section>
   <p class="lab">The three things people ask</p>
@@ -94,7 +115,7 @@ const artLd = {
   <p class="lab">How much cash</p>
   <h2>A sensible amount to plan for.</h2>
   <p class="sub">Day-to-day spending on the ground, not counting your hotel or pre-booked tours. Adjust to your trip.</p>
-  <div class="estimator" data-rate={c.cash.rate} data-cur={c.cash.cur}>
+  <div class="estimator" data-rate={c.cash.rate} data-cur={c.cash.cur} data-round={c.cash.round || 100000}>
     <div class="erow">
       <div class="ef"><label for="trav">Travelers</label><input id="trav" type="number" min="1" max="12" value="2"></div>
       <div class="ef"><label for="days">Days</label><input id="days" type="number" min="1" max="60" value="7"></div>
@@ -125,6 +146,14 @@ const artLd = {
     ))}
   </div>
 </section>
+
+{c.taxfree && (
+  <section>
+    <p class="lab">Tax-free shopping</p>
+    <h2>{c.taxfree.heading}</h2>
+    <p class="sub" set:html={c.taxfree.text}></p>
+  </section>
+)}
 
 <section>
   <p class="lab">Watch out for</p>
@@ -158,16 +187,17 @@ const artLd = {
 
 <script type="application/ld+json" set:html={JSON.stringify(faqLd)}></script>
 <script type="application/ld+json" set:html={JSON.stringify(artLd)}></script>
+</Fragment>)}
 
 <script>
   function n(id){return document.getElementById(id);}
   const est = document.querySelector('.estimator');
   if (est) {
-    const rate = +est.dataset.rate, cur = est.dataset.cur;
+    const rate = +est.dataset.rate, cur = est.dataset.cur, round = +est.dataset.round || 100000;
     const btns = Array.from(est.querySelectorAll('.seg button'));
     let si = btns.findIndex(b => b.classList.contains('on')); if (si < 0) si = 0;
     const usd = x => '$' + Math.round(x).toLocaleString('en-US');
-    const loc = x => (Math.round(x / 100000) * 100000).toLocaleString('en-US') + ' ' + cur;
+    const loc = x => (Math.round(x / round) * round).toLocaleString('en-US') + ' ' + cur;
     function calc() {
       const trav = Math.max(1, +n('trav').value || 1), days = Math.max(1, +n('days').value || 1);
       const b = btns[si], per = +b.dataset.per, cashShare = +b.dataset.cash;
