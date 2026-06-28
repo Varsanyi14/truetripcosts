@@ -117,8 +117,20 @@ const artLd = {
   <p class="sub">On-the-ground spending for your whole group across the trip: food, local transport, activities and tips. Lodging is left out on purpose, since it is usually prepaid or paid by card and does not change how much cash you carry.</p>
   <div class="estimator" data-rate={c.cash.rate} data-cur={c.cash.cur} data-round={c.cash.round || 100000}>
     <div class="erow">
-      <div class="ef"><label for="trav">Travelers</label><input id="trav" type="number" min="1" max="12" value="2"></div>
-      <div class="ef"><label for="days">Days</label><input id="days" type="number" min="1" max="60" value="7"></div>
+      <div class="ef"><label for="trav">Travelers</label>
+        <div class="step">
+          <button type="button" class="stepdn" aria-label="Fewer travelers">&#8722;</button>
+          <input id="trav" type="number" inputmode="numeric" min="1" max="12" value="2" aria-label="Number of travelers">
+          <button type="button" class="stepup" aria-label="More travelers">+</button>
+        </div>
+      </div>
+      <div class="ef"><label for="days">Days</label>
+        <div class="step">
+          <button type="button" class="stepdn" aria-label="Fewer days">&#8722;</button>
+          <input id="days" type="number" inputmode="numeric" min="1" max="60" value="7" aria-label="Number of days">
+          <button type="button" class="stepup" aria-label="More days">+</button>
+        </div>
+      </div>
       <div class="ef"><label>Style</label>
         <div class="seg" role="group" aria-label="Travel style">
           {c.cash.styles.map((s, i) => (
@@ -228,7 +240,21 @@ const artLd = {
       const vw = n('visitword'); if (vw) vw.textContent = pulls === 1 ? 'visit' : 'visits';
     }
     btns.forEach((b, i) => b.addEventListener('click', () => { si = i; btns.forEach((x, j) => x.classList.toggle('on', j === i)); calc(true); }));
-    ['trav', 'days'].forEach(id => n(id).addEventListener('input', () => calc(true)));
+    function clamp(v, lo, hi){ return Math.max(lo, Math.min(hi, v)); }
+    function wireStep(id) {
+      const input = n(id), wrap = input.closest('.step');
+      if (!wrap) return;
+      const lo = +input.min || 1, hi = +input.max || 999;
+      const dn = wrap.querySelector('.stepdn'), up = wrap.querySelector('.stepup');
+      function limits(v) { if (dn) dn.disabled = v <= lo; if (up) up.disabled = v >= hi; }
+      function set(v) { v = clamp(Math.round(v), lo, hi); input.value = v; limits(v); calc(true); }
+      if (dn) dn.addEventListener('click', () => set((+input.value || lo) - 1));
+      if (up) up.addEventListener('click', () => set((+input.value || lo) + 1));
+      input.addEventListener('input', () => { limits(+input.value); calc(true); });
+      input.addEventListener('blur', () => { if (input.value !== '') set(+input.value || lo); });
+      limits(+input.value || lo);
+    }
+    wireStep('trav'); wireStep('days');
     calc(false);
   }
 </script>
