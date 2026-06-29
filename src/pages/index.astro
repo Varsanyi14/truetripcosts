@@ -5,21 +5,73 @@ import Footer from '../components/Footer.astro';
 import { countries } from '../data/index.js';
 const live = countries.filter(c => c.live);
 const soon = countries.filter(c => !c.live);
+const flags = {
+  vietnam: '🇻🇳', japan: '🇯🇵', mexico: '🇲🇽', thailand: '🇹🇭',
+  italy: '🇮🇹', france: '🇫🇷', spain: '🇪🇸', portugal: '🇵🇹', 'united-kingdom': '🇬🇧'
+};
+const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
 ---
-<Base title="True Trip Costs: the real cost of your trip, sorted" description="Independent, current money guides for travelers from the US: cash vs card, ATMs and fees, and the real all-in cost of your stay. No nasty surprises.">
+<Base title="True Trip Costs: the money side of your trip, sorted" description="Independent, current money guides for travelers leaving the US: will your card work, how much cash to carry, the fees to dodge, tipping, tourist taxes, and the real all-in cost of your stay. Checked and dated. No nasty surprises.">
   <Nav />
   <main class="wrap">
     <section class="home-hero">
-      <p class="lab">For travelers from the USA</p>
+      <span class="tagpill">No nasty surprises</span>
       <h1>The money side of your trip, sorted.</h1>
-      <p class="lede">Independent, plain-language money guides: what to pay with, how much cash to carry, the fees to dodge, and the real all-in cost of your stay. Checked and dated, never guessed.</p>
-    </section>
-    <section class="csec">
-      <p class="lab">Money guides</p>
-      <div class="country-grid">
-        {live.map(c => (<a class="ccard" href={'/' + c.slug}><span class="cname">{c.name}</span><span class="cgo">Open guide &#8594;</span></a>))}
-        {soon.map(c => (<span class="ccard soon"><span class="cname">{c.name}</span><span class="cgo">Coming soon</span></span>))}
+      <p class="lede">Independent, plain-language money guides for travelers leaving the US: what to pay with, how much cash to carry, the fees to dodge, and the real all-in cost of your stay. Checked and dated, never guessed.</p>
+      <div class="hpcta">
+        <a class="btn" href="#guides">Find your destination
+          <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="ghost" href="#why">Why this exists &#8594;</a>
       </div>
+    </section>
+
+    <section class="why" id="why">
+      <p class="lab">The money question</p>
+      <h2>Booking the trip is the easy part. The money side is a mess.</h2>
+      <p class="lead">You search how much cash to bring and get ten-year-old blog posts, contradictory forum threads, and pages quietly written to sell you one credit card. So you guess. Then comes the surprise card surcharge, the bad airport exchange counter, or a tourist tax nobody mentioned. We turn that into one calm, current answer for each country, in about five minutes.</p>
+      <div class="qrow">
+        <div class="qcard"><h3>Will my card work?</h3><p>We look at the cards you already carry, not a generic one, against how each country actually takes payment day to day.</p></div>
+        <div class="qcard"><h3>Do I need cash?</h3><p>A straight read on how much to carry, and the places where the honest answer is almost none.</p></div>
+        <div class="qcard"><h3>What will it really cost?</h3><p>The conversion tricks, ATM fees and tourist taxes that creep in, named up front so nothing ambushes you later.</p></div>
+      </div>
+    </section>
+
+    <section class="honest">
+      <p class="lab">How we are different</p>
+      <h2>We would rather tell you to do nothing.</h2>
+      <div class="hrow">
+        <div class="hitem"><p class="hk"><Fragment set:html={tick} />Sometimes the answer is, you are fine</p><p>If the card already in your pocket works with no fee, we say so plainly, and there is nothing for you to buy.</p></div>
+        <div class="hitem"><p class="hk"><Fragment set:html={tick} />Labeled, every single time</p><p>Links that earn us a commission are marked as such, and the ones that do not are marked too, so you always know which is which.</p></div>
+        <div class="hitem"><p class="hk"><Fragment set:html={tick} />Checked, dated, never guessed</p><p>We do not sell hotel rooms, and every guide shows the date we last checked it. Money rules shift, so staying current is the whole point.</p></div>
+      </div>
+    </section>
+
+    <section class="csec" id="guides">
+      <p class="lab">Money guides</p>
+      <h2>Pick where you are going.</h2>
+      <p class="sub">Each guide is a five-minute money briefing for that country, written for travelers leaving the US.</p>
+      <div class="country-grid">
+        {live.map(c => (
+          <a class="ccard" href={'/' + c.slug}>
+            <span class="cthumb">
+              <img src={(c.hero && c.hero.img) || ('/' + c.slug + '-hero.jpg')} alt={'Money guide for ' + c.name} loading="lazy" decoding="async" width="400" height="300" />
+              <span class="cflag" aria-hidden="true">{flags[c.slug] || '🗺'}</span>
+            </span>
+            <span class="cbody">
+              <span class="cname">{c.name}</span>
+              <span class="chook">{c.meter ? c.meter.heading : ''}</span>
+              <span class="cgo">Open guide &#8594;</span>
+            </span>
+          </a>
+        ))}
+        {soon.map(c => (
+          <span class="ccard soon">
+            <span class="cthumb"><span class="cflag" aria-hidden="true">{flags[c.slug] || '🗺'}</span></span>
+            <span class="cbody"><span class="cname">{c.name}</span><span class="cgo">Coming soon</span></span>
+          </span>
+        ))}
+      </div>
+      <p class="sub" style="margin-top:22px">Leaving from somewhere other than the US? <a href="#" data-open-signup><b>Get an email when we add your country</b></a>.</p>
     </section>
   </main>
   <Footer />

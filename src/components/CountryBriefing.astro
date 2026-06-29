@@ -81,9 +81,13 @@ const artLd = {
   <p class="lab">Cash or card</p>
   <h2>{c.meter.heading}</h2>
   <div class="meter">
-    <div class="meterbar">
-      <div class="cash" style={"width:" + c.meter.cashPct + "%"}>about {c.meter.cashPct}% cash</div>
-      <div class="cardp" style={"width:" + (100 - c.meter.cashPct) + "%"}>{100 - c.meter.cashPct}% card</div>
+    <div class="meterhead">
+      <span class="ml cash"><span class="mdot"></span>about {c.meter.cashPct}% cash</span>
+      <span class="ml card"><span class="mdot"></span>{100 - c.meter.cashPct}% card</span>
+    </div>
+    <div class="meterbar" aria-hidden="true">
+      <div class="cash" style={"width:" + c.meter.cashPct + "%"}></div>
+      <div class="cardp" style={"width:" + (100 - c.meter.cashPct) + "%"}></div>
     </div>
     <p class="meternote">{c.meter.note}</p>
     <a class="cta" href="#cash">See how much cash to plan for <span class="arw">&#8594;</span></a>
@@ -141,7 +145,10 @@ const artLd = {
     </div>
     <div class="ebig">Plan about <span class="amt num" id="total">$700</span> across the trip.</div>
     <p class="escope">About <b id="perday" class="num">$50</b> per person a day, for <b id="ntrav" class="num">2</b> travelers over <b id="ndays" class="num">7</b> days.</p>
-    <div class="esplit"><div class="c1" id="cashBar" style="width:70%">cash <span id="cashUsd">$490</span></div><div class="c2" id="cardBar" style="width:30%">card <span id="cardUsd">$210</span></div></div>
+    <div class="esplit">
+      <div class="ebar" aria-hidden="true"><div class="c1" id="cashBar" style="width:70%"></div><div class="c2" id="cardBar" style="width:30%"></div></div>
+      <div class="elegend"><span class="el cash"><span class="mdot"></span>cash <b id="cashUsd">$490</b></span><span class="el card"><span class="mdot"></span>card <b id="cardUsd">$210</b></span></div>
+    </div>
     <p class="ehint">That means pulling roughly <b id="vnd">12,000,000</b> in cash, in about <b id="pulls">2</b> ATM <span id="visitword">visits</span>. {c.cash.rateNote}</p>
     <a class="cta" href="#">See no-fee cards that skip ATM fees <span class="tg earn">earns commission</span> <span class="arw">&#8594;</span></a>
   </div>
