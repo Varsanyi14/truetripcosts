@@ -12,15 +12,18 @@ export const affiliate = {
   // Paste your approved Impact tracking link here once Faye approves you.
   insurance: null,
 
-  // Airalo eSIM, via Impact.
-  //   esimBase      your general Airalo tracking link, used as the fallback for any country.
-  //   esimByCountry optional deep links straight to a country's Airalo page, keyed by slug.
+  // Travel eSIM, via Impact (Nomad, Ubigi, Airalo, or whichever you are approved for).
+  //   esimBrand     the provider's name, shown on the button (e.g. "Nomad"). Set it with esimBase.
+  //   esimBase      your general eSIM tracking link, used as the fallback for any country.
+  //   esimByCountry optional deep links straight to a country's page, keyed by slug.
   //                 Falls back to esimBase when a slug is missing.
-  // Paste your approved Airalo link into esimBase first. Add per-country deep links later.
+  // To go live: set esimBrand to the provider name and paste your approved link into esimBase.
+  // Switching providers later (or back to Airalo) is just these two lines. Nothing else to touch.
+  esimBrand: "",
   esimBase: null,
   esimByCountry: {
-    // vietnam: "https://your-airalo-deep-link",
-    // japan: "https://your-airalo-deep-link",
+    // vietnam: "https://your-esim-deep-link",
+    // japan: "https://your-esim-deep-link",
   },
 
   // No-fee travel cards. Deferred until there is traffic, via a card network.
@@ -29,7 +32,7 @@ export const affiliate = {
   cardAtm: null,
 };
 
-// Returns the right Airalo link for a country: its deep link if we have one,
+// Returns the right eSIM link for a country: its deep link if we have one,
 // otherwise the base link, otherwise null (the button stays hidden).
 export function esimLink(slug) {
   if (affiliate.esimByCountry && affiliate.esimByCountry[slug]) return affiliate.esimByCountry[slug];

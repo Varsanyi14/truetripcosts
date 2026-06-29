@@ -3,6 +3,7 @@ import Symbol from './Symbol.astro';
 import { affiliate, esimLink } from '../data/links.js';
 const { country: c } = Astro.props;
 const esim = esimLink(c.slug);
+const esimBrand = (affiliate.esimBrand && affiliate.esimBrand.trim()) || "";
 const ins = affiliate.insurance;
 const faqLd = {
   "@context": "https://schema.org",
@@ -192,8 +193,8 @@ const artLd = {
   <p style="font-size:14.5px;margin:16px 0 0">Check what your own carrier charges before the trip, not after.</p>
   {esim && (
     <Fragment>
-      <p style="font-size:14.5px;margin:6px 0 0">If an eSIM is the cheaper call, Airalo covers {c.name}.</p>
-      <a class="cta" href={esim}>Get an Airalo eSIM for {c.name}
+      <p style="font-size:14.5px;margin:6px 0 0">If an eSIM is the cheaper call, {esimBrand ? `${esimBrand} covers ${c.name}.` : `there is a tracked eSIM option for ${c.name}.`}</p>
+      <a class="cta" href={esim}>{esimBrand ? `Get your ${esimBrand} eSIM for ${c.name}` : `Get an eSIM for ${c.name}`}
         <span class="tg earn">earns commission</span>
         <span class="arw">&#8594;</span></a>
     </Fragment>
