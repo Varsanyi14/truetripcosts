@@ -4,10 +4,10 @@ import mexico from './mexico.js';
 import thailand from './thailand.js';
 import italy from './italy.js';
 import france from './france.js';
+import spain from './spain.js';
 
 const soon = [
-  { slug: 'spain', name: 'Spain', live: false },
   { slug: 'united-kingdom', name: 'United Kingdom', live: false },
 ];
 
-export const countries = [vietnam, japan, mexico, thailand, italy, france, ...soon];
+export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, ...soon];
