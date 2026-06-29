@@ -1,6 +1,9 @@
 ---
 import Symbol from './Symbol.astro';
+import { affiliate, esimLink } from '../data/links.js';
 const { country: c } = Astro.props;
+const esim = esimLink(c.slug);
+const ins = affiliate.insurance;
 const faqLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -109,6 +112,14 @@ const artLd = {
               <span class={"tg " + p.cta.tag}>{p.cta.tag === "earn" ? "earns commission" : "no commission"}</span>
               <span class="arw">&#8594;</span></a>
           )}
+          {ins && p.when === "Before you go" && (
+            <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:12px">
+              <p style="font-size:14px;color:#3B4A46;margin:0"><b>Travel insurance, if it fits the trip.</b> Worth it when you have prepaid a lot or are somewhere with steep medical costs. If your trip is cheap and refundable, you can skip it.</p>
+              <a class="cta" href={ins}>Compare Faye's whole-trip cover
+                <span class="tg earn">earns commission</span>
+                <span class="arw">&#8594;</span></a>
+            </div>
+          )}
         </div>
       </div>
     ))}
@@ -153,6 +164,42 @@ const artLd = {
     <a class="cta" href="#">See no-fee cards that skip ATM fees <span class="tg earn">earns commission</span> <span class="arw">&#8594;</span></a>
   </div>
 </section>
+
+{c.connectivity && (
+<section>
+  <p class="lab">Staying connected</p>
+  <h2>Will my phone work here? And what will it cost?</h2>
+  <p class="sub">{c.connectivity.works} The cost is where people get caught out, and on most US plans it lands in one of two buckets.</p>
+  <div class="trio">
+    <div class="vc ok">
+      <Symbol name="phoneok" cls="sym" />
+      <div class="bd">
+        <h3>{(c.connectivity.covered && c.connectivity.covered.h) || "Your plan may already include it"}</h3>
+        <p class="verd">{(c.connectivity.covered && c.connectivity.covered.verd) || "Often, do nothing"}</p>
+        <p>{(c.connectivity.covered && c.connectivity.covered.p) || "Some US plans include slow data abroad at no extra cost. If that is you, the honest move is to leave it alone."}</p>
+        <p style="margin-top:8px"><span class="tg free">no commission</span></p>
+      </div>
+    </div>
+    <div class="vc warn">
+      <Symbol name="roamfee" cls="sym" />
+      <div class="bd">
+        <h3>{(c.connectivity.charged && c.connectivity.charged.h) || "Or it charges quietly, after the fact"}</h3>
+        <p class="verd">{(c.connectivity.charged && c.connectivity.charged.verd) || "The bill lands later"}</p>
+        <p>{(c.connectivity.charged && c.connectivity.charged.p) || "On pay-per-use plans the cost runs in the background while you travel, and the charge can show up weeks after you are home. Forgetting to switch off data roaming is the classic one. For a week or more, an eSIM is usually cheaper and keeps you in control."}</p>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:14.5px;margin:16px 0 0">Check what your own carrier charges before the trip, not after.</p>
+  {esim && (
+    <Fragment>
+      <p style="font-size:14.5px;margin:6px 0 0">If an eSIM is the cheaper call, Airalo covers {c.name}.</p>
+      <a class="cta" href={esim}>Get an Airalo eSIM for {c.name}
+        <span class="tg earn">earns commission</span>
+        <span class="arw">&#8594;</span></a>
+    </Fragment>
+  )}
+</section>
+)}
 
 <section>
   <p class="lab">Currency basics</p>

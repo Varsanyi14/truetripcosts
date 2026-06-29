@@ -52,6 +52,9 @@ export default {
     rateNote: "Rough guide at 25,000 VND to the dollar.",
     styles: [ { n: "Budget", per: 25, cash: 0.8 }, { n: "Mid-range", per: 50, cash: 0.7 }, { n: "Comfort", per: 90, cash: 0.55 } ]
   },
+  connectivity: {
+    works: "Yes. Vietnam has near-universal 4G and growing 5G across the cities and main travel routes, with signal thinning in remote mountain areas like Sapa and Ha Giang."
+  },
   currencyHeading: "The dong, in plain terms.",
   facts: [
     { sym: "dong", k: "Quick conversion", v: "About 25,000 VND to $1. Drop three zeros, divide by 25: 100,000 VND is roughly $4." },
