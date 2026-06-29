@@ -61,6 +61,23 @@ export default {
   connectivity: {
     works: "Yes, and it is strong in the cities and most towns, where 4G is near-universal and 5G is widespread. Signal turns patchy in the Scottish Highlands, the Welsh mountains and the Lake District, and on remote roads and trails, where the odd dead zone is normal."
   },
+  // TOURIST TAX (high-churn, verified Jun 2026). The UK has no national tourist tax, but a
+  // few cities now add a small nightly charge, and the units differ by city, so each region
+  // can override the unit. Edinburgh's is a percentage of the room (the whole room, not per
+  // person), capped at 5 nights. Manchester and Liverpool charge a flat amount per room each
+  // night through a business-district levy. Most of the UK, including London, charges nothing.
+  tax: {
+    unit: "flatPerNight",
+    currency: "GBP",
+    capNights: null,
+    note: "Most of the UK, including London, has no hotel or tourist tax today, though more cities are looking at one.",
+    regions: [
+      { key: "edinburgh", label: "Edinburgh", unit: "percentOfRoom", pct: 5, capNights: 5, taxLabel: "Edinburgh visitor levy", note: "Edinburgh's visitor levy starts on 24 July 2026: 5% of the room rate each night, charged on the whole room (not per person) and capped at the first 5 nights." },
+      { key: "manchester", label: "Manchester", rate: 1, note: "Manchester adds a City Visitor Charge of about 1 pound per room, per night, at participating city-centre hotels." },
+      { key: "liverpool", label: "Liverpool", rate: 2, note: "Liverpool adds a City Visitor Charge of about 2 pounds per room, per night, at participating city-centre hotels." },
+      { key: "other", label: "Elsewhere in the UK (including London)", rate: 0, note: "Most of the UK, including London, has no hotel or tourist tax today." }
+    ]
+  },
   currencyHeading: "The pound, in plain terms.",
   facts: [
     { sym: "gbp", k: "Quick conversion", v: "About 1.32 dollars to 1 pound in mid-2026, so pound prices run a bit higher than the same number of dollars: a 12 pound lunch is about 16 dollars, and 100 pounds is about 132. The symbol goes before the number, as in \"\u00A312\", and prices already include 20% VAT." },

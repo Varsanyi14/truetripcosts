@@ -57,6 +57,13 @@ export default {
   connectivity: {
     works: "Yes across the cities, main routes and the popular islands, with strong 4G and growing 5G in Bangkok, Phuket and Chiang Mai. Signal drops in the northern mountains, jungle parks and the interiors of smaller islands."
   },
+  // TOURIST TAX (high-churn, verified Jun 2026). Thailand has no hotel or tourist tax
+  // today. A 300-baht arrival fee has been discussed for years but is still not being
+  // collected, with no start date, and if it ever begins it would be bundled into airfare.
+  tax: {
+    none: true,
+    note: "Thailand has no hotel or tourist tax today. A 300-baht arrival fee (about 9 dollars) has been talked about for years but is still not being collected. If it ever starts, it would be added to your airfare, not your hotel bill."
+  },
   currencyHeading: "The baht, in plain terms.",
   facts: [
     { sym: "baht", k: "Quick conversion", v: "About 33 baht to $1 in mid-2026. A quick gut check: 100 baht is roughly $3, and 1,000 baht about $30. Prices show the baht symbol, the curly mark before or after the number." },

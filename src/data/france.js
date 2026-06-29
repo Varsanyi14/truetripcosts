@@ -55,6 +55,22 @@ export default {
   connectivity: {
     works: "Yes across the cities, tourist regions and main routes, with excellent 4G and 5G growing in the bigger cities and along the TGV lines. Signal thins in the Alps and Pyrenees valleys and remote rural areas like inland Brittany and the Dordogne."
   },
+  // TOURIST TAX (high-churn, verified Jun 2026). A nightly tourist tax (taxe de sejour)
+  // charged per person and collected by your accommodation. The amount rises with the
+  // hotel's rating, so the calculator uses a mid-range figure per city. Children under
+  // 18 are exempt.
+  tax: {
+    unit: "perPersonPerNight",
+    currency: "EUR",
+    capNights: null,
+    note: "A nightly tourist tax (taxe de sejour) charged per person and collected by your accommodation. The amount depends on the hotel rating, so this is a mid-range estimate. Children under 18 are exempt.",
+    regions: [
+      { key: "paris", label: "Paris", rate: 6, note: "Paris raised its tourist tax for 2026. Grand and palace hotels pay well above this mid-range figure, while simple hotels pay less." },
+      { key: "nice", label: "Nice and the Riviera", rate: 3 },
+      { key: "lyon", label: "Lyon", rate: 3 },
+      { key: "other", label: "Elsewhere in France", rate: 1.5, note: "Most French towns charge a small per-person tax, commonly 1 to 3 euros a night by hotel rating. Some rural spots charge very little." }
+    ]
+  },
   currencyHeading: "The euro, in plain terms.",
   facts: [
     { sym: "euro", k: "Quick conversion", v: "About 1.14 dollars to 1 euro in mid-2026, so a 10 euro lunch is roughly $11 and 50 euros is about $57. Prices show the euro sign, often after the number, as in \"12 \u20AC\"." },

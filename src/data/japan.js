@@ -60,6 +60,23 @@ export default {
   connectivity: {
     works: "Yes, and it is among the best anywhere. Japan has 4G almost everywhere, including the bullet trains and most rural and mountain areas, with 5G growing in the cities. You will rarely think about your signal."
   },
+  // TOURIST TAX (high-churn, verified Jun 2026). A per-person, per-night lodging tax
+  // (shukuhakuzei) that only some cities charge, billed in bands by the nightly room
+  // price and paid at the hotel. No cap on nights. Most of Japan charges nothing.
+  // Bands read in order: the first band whose upTo the per-person nightly rate falls
+  // under wins; upTo null is the top band.
+  tax: {
+    unit: "tieredPerPersonPerNight",
+    currency: "JPY",
+    capNights: null,
+    note: "A per-person, per-night lodging tax that only some cities charge, set in bands by the nightly room price and paid at the hotel. There is no cap on the number of nights. Most of Japan, including rural areas, charges nothing.",
+    regions: [
+      { key: "tokyo", label: "Tokyo", bands: [ { upTo: 10000, rate: 0 }, { upTo: 15000, rate: 100 }, { upTo: null, rate: 200 } ] },
+      { key: "osaka", label: "Osaka", bands: [ { upTo: 5000, rate: 0 }, { upTo: 15000, rate: 200 }, { upTo: 20000, rate: 400 }, { upTo: null, rate: 500 } ] },
+      { key: "kyoto", label: "Kyoto", bands: [ { upTo: 6000, rate: 200 }, { upTo: 20000, rate: 400 }, { upTo: 50000, rate: 1000 }, { upTo: 100000, rate: 4000 }, { upTo: null, rate: 10000 } ], note: "Kyoto raised its lodging tax from March 2026, with the highest bands aimed at luxury stays. It is charged per person, per night, by room price." },
+      { key: "other", label: "Elsewhere in Japan", bands: [ { upTo: null, rate: 0 } ], note: "Most of Japan charges no lodging tax, though a few other cities (such as Kanazawa or Fukuoka) add a small one. Check your hotel confirmation." }
+    ]
+  },
   currencyHeading: "The yen, in plain terms.",
   facts: [
     { sym: "yen", k: "Quick conversion", v: "About 160 yen to $1 right now. A rough gut check: 1,000 yen is about $6, and 10,000 yen about $62. The weak yen is good news for your budget." },

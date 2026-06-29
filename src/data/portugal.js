@@ -57,6 +57,21 @@ export default {
   connectivity: {
     works: "Yes, and coverage is very good. Portugal has near-universal 4G and growing 5G across the cities, the Algarve coast and the main routes. Signal thins in the interior, like the Alentejo and the remote north, and in the national parks."
   },
+  // TOURIST TAX (high-churn, verified Jun 2026). A per-person, per-night municipal
+  // tax (taxa turistica) collected by your accommodation, usually not in the room rate.
+  // Most of Portugal charges nothing. Capped at 7 nights, under-13s exempt.
+  tax: {
+    unit: "perPersonPerNight",
+    currency: "EUR",
+    capNights: 7,
+    note: "A per-person, per-night town tax, collected by your hotel (often in cash) and usually not in the room rate. Capped at 7 nights, children under 13 exempt. Most of Portugal charges nothing.",
+    regions: [
+      { key: "lisbon", label: "Lisbon", rate: 4 },
+      { key: "porto", label: "Porto", rate: 3 },
+      { key: "algarve", label: "Algarve (Faro, Albufeira, Lagos)", rate: 2 },
+      { key: "other", label: "Elsewhere in Portugal", rate: 0 }
+    ]
+  },
   currencyHeading: "The euro, in plain terms.",
   facts: [
     { sym: "euro", k: "Quick conversion", v: "About 1.14 dollars to 1 euro in mid-2026, so euro prices are roughly the same as dollars, just a touch more: a 10 euro lunch is about 11 and a half dollars, and 100 euros is about 114. Prices show the euro sign, usually after the number, as in \"12 \u20AC\"." },

@@ -61,6 +61,20 @@ export default {
   connectivity: {
     works: "Yes in the cities and tourist areas, where 4G is near-universal and 5G is live in places like Mexico City, Guadalajara and Cancun. Signal thins in remote mountains, jungle and small towns off the main routes."
   },
+  // TOURIST TAX (high-churn, verified Jun 2026). Only the Cancun and Riviera Maya area
+  // (Quintana Roo state) adds clear tourist taxes: a hotel eco tax per room each night,
+  // plus a one-time state tourist tax (VISITAX) per person. Most of Mexico has nothing
+  // separate beyond the tax already in the room rate.
+  tax: {
+    unit: "flatPerNight",
+    currency: "MXN",
+    capNights: null,
+    note: "Most of Mexico has no separate tourist tax beyond what is already in your room rate.",
+    regions: [
+      { key: "qroo", label: "Cancun, Riviera Maya, Tulum, Cozumel (Quintana Roo)", rate: 76, oneTimePerPerson: 283, taxLabel: "Quintana Roo taxes", note: "Quintana Roo adds a hotel eco tax of about 4 dollars a room each night, plus a one-time state tourist tax (VISITAX) of about 16 dollars per person. VISITAX is paid once for the whole trip, easiest online before you travel." },
+      { key: "other", label: "Elsewhere in Mexico", rate: 0, note: "Most of Mexico has no separate tourist tax. A few hotels add a small local lodging tax, which shows up on your bill." }
+    ]
+  },
   currencyHeading: "The peso, in plain terms.",
   facts: [
     { sym: "peso", k: "Quick conversion", v: "About 17.5 pesos to $1 in mid-2026. A quick gut check: 100 pesos is roughly $6, and 500 pesos about $29. One trap to remember: in Mexico, the \"$\" sign means pesos, not dollars." },

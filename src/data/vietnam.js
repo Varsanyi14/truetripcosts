@@ -55,6 +55,12 @@ export default {
   connectivity: {
     works: "Yes. Vietnam has near-universal 4G and growing 5G across the cities and main travel routes, with signal thinning in remote mountain areas like Sapa and Ha Giang."
   },
+  // TOURIST TAX (high-churn, verified Jun 2026). Vietnam has no separate tourist or hotel
+  // tax. Room rates already include VAT, so the quoted price is the price you pay.
+  tax: {
+    none: true,
+    note: "Vietnam has no separate tourist or hotel tax. Your room rate already includes VAT, so the price you are quoted is the price you pay."
+  },
   currencyHeading: "The dong, in plain terms.",
   facts: [
     { sym: "dong", k: "Quick conversion", v: "About 25,000 VND to $1. Drop three zeros, divide by 25: 100,000 VND is roughly $4." },

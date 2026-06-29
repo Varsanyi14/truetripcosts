@@ -61,6 +61,29 @@ export default {
   connectivity: {
     works: "Yes, and coverage is excellent. Italy has near-universal 4G and widespread 5G across the cities, tourist regions and main rail and road routes. Signal can dip in remote mountain valleys and parts of the far south and islands."
   },
+  // TOURIST TAX (high-churn, verified Jun 2026). An accommodation tax (tassa di soggiorno)
+  // charged per person, per night, and collected at checkout, often in cash. The real
+  // amount depends on the hotel's official star rating, so the calculator uses a sensible
+  // mid-range figure per city and says so. Children under a set age are usually exempt.
+  //
+  // FUTURE SHAPE (not yet read by the calculator): when we add a star-rating input, each
+  // region can carry a byClass map instead of a single rate, e.g.
+  //   { key: "rome", label: "Rome", byClass: { "3": 6, "4": 7.5, "5": 10 } }
+  // and the engine would pick the rate by the chosen star rating. For now we ship one
+  // representative rate per city to keep the interface simple for a first-time traveler.
+  tax: {
+    unit: "perPersonPerNight",
+    currency: "EUR",
+    capNights: null,
+    note: "An accommodation tax (tassa di soggiorno) charged per person, per night, and usually collected at checkout, often in cash. The exact amount depends on the hotel's official star rating, so treat this as a mid-range estimate. Young children are usually exempt, and some cities stop charging after about a week.",
+    regions: [
+      { key: "rome", label: "Rome", rate: 6 },
+      { key: "florence", label: "Florence", rate: 5 },
+      { key: "venice", label: "Venice", rate: 3, note: "This is Venice's overnight accommodation tax, paid at your hotel. The separate day-tripper access fee you may have read about does not apply when you are staying the night." },
+      { key: "milan", label: "Milan", rate: 5 },
+      { key: "other", label: "Elsewhere in Italy", rate: 2, note: "Most Italian towns charge a small per-person tax, commonly 1 to 5 euros a night by hotel rating. A few small places charge nothing." }
+    ]
+  },
   currencyHeading: "The euro, in plain terms.",
   facts: [
     { sym: "euro", k: "Quick conversion", v: "About 1 euro to 1.14 dollars in mid-2026, so euro prices are roughly the same as dollars, just a touch more. A quick gut check: a 10 euro lunch is about 11 and a half dollars, and 100 euros is about 114. The rate has been fairly steady, softening slightly over the year." },

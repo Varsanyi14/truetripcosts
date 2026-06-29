@@ -1,8 +1,20 @@
 ---
 import Symbol from './Symbol.astro';
 import { affiliate, esimLink } from '../data/links.js';
+import { cardsByIssuer, noFeePicks, fallbackFxPct } from '../data/cards.js';
 const { country: c } = Astro.props;
 const esim = esimLink(c.slug);
+// Everything the all-in calculator needs, handed to the client as inert JSON.
+// Cards stay defined once in cards.js; the page just imports and serialises them.
+const calcData = {
+  name: c.name,
+  rate: (c.cash && c.cash.rate) || 1, // local currency units per 1 USD
+  tax: c.tax || null,
+  groups: cardsByIssuer(),
+  noFee: noFeePicks,
+  fallbackFxPct
+};
+const calcJson = JSON.stringify(calcData).replace(/</g, "\\u003c");
 const esimBrand = (affiliate.esimBrand && affiliate.esimBrand.trim()) || "";
 const ins = affiliate.insurance;
 const faqLd = {
@@ -74,7 +86,7 @@ const artLd = {
           <h3>{t.h}</h3>
           <p class="verd">{t.verd}</p>
           <p>{t.p}</p>
-          <a class="cta" href={t.cta.href}>{t.cta.label} <span class="arw">&#8594;</span></a>
+          <a class="cta" href={t.cta.href === "#" ? "#calcNoFee" : t.cta.href}>{t.cta.label} <span class="arw">&#8594;</span></a>
         </div>
       </div>
     ))}
@@ -109,7 +121,7 @@ const artLd = {
           <h3 class="pwhen">{p.when}</h3>
           <ul>{p.bullets.map(b => (<li set:html={b}></li>))}</ul>
           {p.cta && (
-            <a class="cta" href={p.cta.href}>{p.cta.label}
+            <a class="cta" href={p.cta.href === "#" ? "#calcNoFee" : p.cta.href}>{p.cta.label}
               <span class={"tg " + p.cta.tag}>{p.cta.tag === "earn" ? "earns commission" : "no commission"}</span>
               <span class="arw">&#8594;</span></a>
           )}
@@ -162,7 +174,7 @@ const artLd = {
       <div class="elegend"><span class="el cash"><span class="mdot"></span>cash <b id="cashUsd">$490</b></span><span class="el card"><span class="mdot"></span>card <b id="cardUsd">$210</b></span></div>
     </div>
     <p class="ehint">That means pulling roughly <b id="vnd">12,000,000</b> in cash, in about <b id="pulls">2</b> ATM <span id="visitword">visits</span>. {c.cash.rateNote}</p>
-    <a class="cta" href="#">See no-fee cards that skip ATM fees <span class="tg earn">earns commission</span> <span class="arw">&#8594;</span></a>
+    <a class="cta" href="#calcNoFee">See no-fee cards that skip ATM fees <span class="tg free">no commission</span> <span class="arw">&#8594;</span></a>
   </div>
 </section>
 
@@ -246,10 +258,86 @@ const artLd = {
 </section>
 
 <section id="calc">
-  <div class="reveal">
-    <div class="t"><b>Got a specific hotel price?</b> See the real all-in total, with {c.name}'s tax and your card's foreign fee included.</div>
-    <a class="btn" href="#" onclick="return false">Open the cost calculator
-      <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <p class="lab">The honest number</p>
+  <h2>Your real all-in total for {c.name}.</h2>
+  <p class="sub">Put in a hotel price and we add {c.name}'s tourist tax and your card's foreign fee, so the number you see is the number you pay. No sign-up, nothing saved.</p>
+
+  <!-- Everything the calculator needs, handed over as inert JSON (Astro leaves application/json untouched). -->
+  <script type="application/json" id="calc-data" set:html={calcJson}></script>
+
+  <div class="calc" id="calc-app" hidden>
+    <div class="calc-grid">
+      <div class="calc-inputs">
+        <div class="calc-trip">
+          <label class="cf" id="calcRegionWrap" hidden>
+            <span class="cf-l">Where are you staying?</span>
+            <span class="selwrap"><select id="calcRegion"></select></span>
+          </label>
+          <label class="cf">
+            <span class="cf-l">Hotel price a night</span>
+            <span class="moneyin"><span class="mny">$</span><input id="calcRoom" type="text" inputmode="numeric" value="150" aria-label="Hotel price per night in US dollars" /></span>
+          </label>
+          <div class="calc-pair">
+            <div class="cf">
+              <span class="cf-l">Nights</span>
+              <span class="stepper">
+                <button type="button" class="stp" data-step="calcNights" data-dir="-1" aria-label="One fewer night">&#8722;</button>
+                <span class="stp-v" id="calcNights" data-v="5">5</span>
+                <button type="button" class="stp" data-step="calcNights" data-dir="1" aria-label="One more night">+</button>
+              </span>
+            </div>
+            <div class="cf">
+              <span class="cf-l">Travelers</span>
+              <span class="stepper">
+                <button type="button" class="stp" data-step="calcTrav" data-dir="-1" aria-label="One fewer traveler">&#8722;</button>
+                <span class="stp-v" id="calcTrav" data-v="2">2</span>
+                <button type="button" class="stp" data-step="calcTrav" data-dir="1" aria-label="One more traveler">+</button>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-card">
+          <p class="calc-cardlab">Find your card</p>
+          <p class="calc-recog">Not sure what you have? Look at the bottom-right corner of your card for the word Visa or Mastercard, and the bank name on the front.</p>
+          <label class="cf">
+            <span class="cf-l">Who is your card from?</span>
+            <span class="selwrap"><select id="calcBank"><option value="">Pick your bank</option></select></span>
+          </label>
+          <div class="calc-tiles" id="calcTiles" role="list"></div>
+          <div class="calc-manual" id="calcManual" hidden>
+            <label class="cf">
+              <span class="cf-l">Your card's foreign transaction fee</span>
+              <span class="pctin"><input id="calcFee" type="text" inputmode="decimal" value="3" aria-label="Foreign transaction fee percent" /><span class="pct">%</span></span>
+            </label>
+            <p class="calc-help">It is usually printed in your card's terms as the "foreign transaction fee." If you cannot find it, 3% is a safe guess for a basic bank card.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="calc-result" id="calcResult" aria-live="polite">
+        <div class="cr-rows">
+          <div class="cr-line"><span class="cr-k">Room (<span id="crNights">5</span> nights)</span><span class="cr-v" id="crRoom">$750</span></div>
+          <div class="cr-line"><span class="cr-k" id="crTaxLabel">Tourist tax</span><span class="cr-v" id="crTax">$0</span></div>
+          <div class="cr-line cr-fee"><span class="cr-k">Your card's foreign fee (<span id="crPct">3%</span>)</span><span class="cr-v" id="crFee">$22</span></div>
+          <div class="cr-line cr-total"><span class="cr-k">All-in total</span><span class="cr-v" id="crTotal">$772</span></div>
+        </div>
+        <p class="cr-save" id="crSave"></p>
+        <p class="cr-note" id="crTaxNote" hidden></p>
+        <p class="cr-note cr-cardnote" id="crCardNote" hidden></p>
+        <p class="cr-fine">Rough guide, not a quote. We assume the room goes on the card and the tourist tax is paid at the hotel, often in cash, so the card fee is figured on the room. Rates checked mid-2026 and rounded.</p>
+      </div>
+    </div>
+  </div>
+
+  <noscript>
+    <div class="reveal"><div class="t">The all-in calculator needs JavaScript switched on. With it off, use the cash and card guidance above, and assume a 3% foreign fee on the room unless your card says otherwise.</div></div>
+  </noscript>
+
+  <div class="calc-nofee" id="calcNoFee">
+    <p class="nf-lab">Cards with no foreign fee</p>
+    <p class="nf-sub">A short list of cards that skip the foreign transaction fee, so the room costs what it costs. We earn no commission on any of these. Always confirm the current fee with the issuer before you apply.</p>
+    <div class="nf-grid" id="nfGrid"></div>
   </div>
 </section>
 
@@ -312,4 +400,259 @@ const artLd = {
     wireStep('trav'); wireStep('days');
     calc(false);
   }
+</script>
+
+<script>
+  // All-in calculator. Reads the inert JSON handed over in #calc-data, builds the
+  // bank and card picker, runs the tourist-tax engine, and renders one honest total.
+  // Vanilla DOM, same approach as the cash estimator above. No data leaves the page.
+  (function () {
+    const app = document.getElementById('calc-app');
+    const dataEl = document.getElementById('calc-data');
+    if (!app || !dataEl) return;
+
+    let DATA;
+    try { DATA = JSON.parse(dataEl.textContent); } catch (e) { return; }
+
+    const rate = DATA.rate || 1;                 // local currency units per 1 USD
+    const tax = DATA.tax || null;
+    const groups = DATA.groups || [];
+    const noFee = DATA.noFee || [];
+    const fallbackFxPct = (DATA.fallbackFxPct != null) ? DATA.fallbackFxPct : 3;
+
+    const id = x => document.getElementById(x);
+    const usd = x => '$' + Math.round(x).toLocaleString('en-US');
+    const fmtPct = p => (Number.isInteger(p) ? p : Math.round(p * 10) / 10) + '%';
+    const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+    const state = {
+      regionIndex: 0,
+      room: 150,
+      nights: 5,
+      trav: 2,
+      pick: { type: 'worst', card: null }        // worst | manual | card
+    };
+
+    // ----- region selector (only when the tax varies by place) -----
+    const regionWrap = id('calcRegionWrap');
+    const regionSel = id('calcRegion');
+    const regions = (tax && Array.isArray(tax.regions)) ? tax.regions : [];
+    if (regions.length > 1) {
+      regionSel.innerHTML = regions.map((r, i) => '<option value="' + i + '">' + esc(r.label) + '</option>').join('');
+      regionWrap.hidden = false;
+      regionSel.addEventListener('change', () => { state.regionIndex = +regionSel.value || 0; render(); });
+    } else {
+      regionWrap.hidden = true;
+    }
+
+    // ----- bank dropdown -----
+    const bankSel = id('calcBank');
+    groups.forEach((g, i) => {
+      const o = document.createElement('option');
+      o.value = String(i); o.textContent = g.issuer;
+      bankSel.appendChild(o);
+    });
+
+    const tilesWrap = id('calcTiles');
+    const manualWrap = id('calcManual');
+    const feeInput = id('calcFee');
+
+    function cardFace(c) {
+      const badge = c.fxPct === 0
+        ? '<span class="fxb free">No foreign fee</span>'
+        : '<span class="fxb fee">About ' + fmtPct(c.fxPct) + ' foreign fee</span>';
+      return '<span class="ct-face" style="--cc:' + esc(c.color || '#0E7A5F') + '">'
+        + '<span class="ct-top"><span class="ct-bank">' + esc(c.issuer) + '</span><span class="ct-chip" aria-hidden="true"></span></span>'
+        + '<span class="ct-prod">' + esc(c.product) + '</span>'
+        + '<span class="ct-net">' + esc((c.network || '').toUpperCase()) + '</span>'
+        + '</span>' + badge;
+    }
+
+    function renderTiles() {
+      const bi = bankSel.value === '' ? -1 : +bankSel.value;
+      let html = '';
+      if (bi >= 0 && groups[bi]) {
+        groups[bi].cards.forEach((c, ci) => {
+          const on = (state.pick.type === 'card' && state.pick.card &&
+                      state.pick.card.issuer === c.issuer && state.pick.card.product === c.product) ? ' on' : '';
+          html += '<button type="button" class="ctile' + on + '" role="listitem" data-kind="card" data-bi="' + bi + '" data-ci="' + ci + '">' + cardFace(c) + '</button>';
+        });
+      }
+      const worstOn = state.pick.type === 'worst' ? ' on' : '';
+      const manOn = state.pick.type === 'manual' ? ' on' : '';
+      html += '<button type="button" class="ctile act' + worstOn + '" role="listitem" data-kind="worst">'
+        + '<span class="ct-act"><span class="ct-actt">Not sure about your card?</span>'
+        + '<span class="ct-acth">Assume the worst, about ' + fmtPct(fallbackFxPct) + '</span></span></button>';
+      html += '<button type="button" class="ctile act' + manOn + '" role="listitem" data-kind="manual">'
+        + '<span class="ct-act"><span class="ct-actt">My card is not listed</span>'
+        + '<span class="ct-acth">Enter the fee myself</span></span></button>';
+      tilesWrap.innerHTML = html;
+    }
+
+    tilesWrap.addEventListener('click', e => {
+      const t = e.target.closest('.ctile');
+      if (!t) return;
+      const kind = t.dataset.kind;
+      if (kind === 'card') {
+        state.pick = { type: 'card', card: groups[+t.dataset.bi].cards[+t.dataset.ci] };
+        manualWrap.hidden = true;
+      } else if (kind === 'worst') {
+        state.pick = { type: 'worst', card: null };
+        manualWrap.hidden = true;
+      } else if (kind === 'manual') {
+        state.pick = { type: 'manual', card: null };
+        manualWrap.hidden = false;
+        feeInput.focus();
+      }
+      renderTiles();
+      render();
+    });
+
+    bankSel.addEventListener('change', renderTiles);
+
+    feeInput.addEventListener('input', () => { if (state.pick.type === 'manual') render(); });
+    feeInput.addEventListener('blur', () => {
+      let v = parseFloat(feeInput.value);
+      if (isNaN(v) || v < 0) v = fallbackFxPct;
+      if (v > 100) v = 100;
+      feeInput.value = (Math.round(v * 100) / 100);
+      render();
+    });
+
+    // ----- room money input -----
+    const roomInput = id('calcRoom');
+    function roomVal() {
+      let v = parseInt(String(roomInput.value).replace(/[^0-9]/g, ''), 10);
+      if (isNaN(v) || v < 0) v = 0;
+      return v;
+    }
+    roomInput.addEventListener('input', () => { state.room = roomVal(); render(); });
+    roomInput.addEventListener('blur', () => { roomInput.value = state.room ? state.room.toLocaleString('en-US') : ''; });
+
+    // ----- steppers -----
+    const limits = { calcNights: [1, 60], calcTrav: [1, 12] };
+    function bindStepper(key) {
+      const el = id(key);
+      const lo = limits[key][0], hi = limits[key][1];
+      const btns = Array.from(app.querySelectorAll('.stp[data-step="' + key + '"]'));
+      function setDisabled(v) {
+        btns.forEach(b => { b.disabled = (b.dataset.dir === '-1' && v <= lo) || (b.dataset.dir === '1' && v >= hi); });
+      }
+      btns.forEach(btn => btn.addEventListener('click', () => {
+        let v = +el.dataset.v + (+btn.dataset.dir);
+        v = Math.max(lo, Math.min(hi, v));
+        el.dataset.v = v; el.textContent = v;
+        if (key === 'calcNights') state.nights = v; else state.trav = v;
+        setDisabled(v);
+        render();
+      }));
+      setDisabled(+el.dataset.v);
+    }
+    bindStepper('calcNights');
+    bindStepper('calcTrav');
+
+    // ----- tourist-tax engine. rate = local currency units per 1 USD. -----
+    function computeTax(roomUSD, nights, trav) {
+      if (!tax || tax.none || regions.length === 0) {
+        return { usd: 0, label: 'Tourist tax', note: (tax && tax.note) || '' };
+      }
+      const r = regions[Math.min(state.regionIndex, regions.length - 1)] || regions[0];
+      const unit = r.unit || tax.unit;
+      const capRaw = (r.capNights !== undefined) ? r.capNights : tax.capNights;
+      const cap = (capRaw == null) ? null : capRaw;
+      const nCap = cap ? Math.min(nights, cap) : nights;
+
+      let amount = 0;
+      if (unit === 'perPersonPerNight') {
+        amount = ((r.rate || 0) * trav * nCap) / rate;
+      } else if (unit === 'flatPerNight') {
+        amount = ((r.rate || 0) * nCap) / rate;               // per booking, not per person
+      } else if (unit === 'percentOfRoom') {
+        amount = ((r.pct || 0) / 100) * roomUSD * nCap;        // already USD, per booking
+      } else if (unit === 'tieredPerPersonPerNight') {
+        const bands = r.bands || [];
+        const ppLocalNight = (roomUSD / Math.max(1, trav)) * rate;
+        let band = 0;
+        for (const b of bands) { if (b.upTo == null || ppLocalNight < b.upTo) { band = b.rate; break; } }
+        amount = (band * trav * nCap) / rate;
+      }
+      if (r.oneTimePerPerson) amount += (r.oneTimePerPerson * trav) / rate;   // e.g. Mexico VISITAX
+
+      const short = String(r.label).split(' (')[0];
+      let label;
+      if (amount <= 0) label = 'Tourist tax';
+      else if (r.taxLabel) label = r.taxLabel;
+      else if (tax.taxLabel) label = tax.taxLabel;
+      else label = short + ' tourist tax';
+
+      return { usd: amount, label: label, note: r.note || tax.note || '' };
+    }
+
+    function feePct() {
+      if (state.pick.type === 'card' && state.pick.card) return state.pick.card.fxPct;
+      if (state.pick.type === 'manual') {
+        let v = parseFloat(feeInput.value);
+        if (isNaN(v) || v < 0) v = fallbackFxPct;
+        if (v > 100) v = 100;
+        return v;
+      }
+      return fallbackFxPct;                                    // assume the worst
+    }
+
+    function render() {
+      const roomUSD = state.room, nights = state.nights, trav = state.trav;
+      const roomSub = roomUSD * nights;
+      const t = computeTax(roomUSD, nights, trav);
+      const pct = feePct();
+      const fee = roomSub * (pct / 100);
+      const total = roomSub + t.usd + fee;
+
+      id('crNights').textContent = nights;
+      id('crRoom').textContent = usd(roomSub);
+      id('crTaxLabel').textContent = t.label;
+      id('crTax').textContent = usd(t.usd);
+      id('crPct').textContent = fmtPct(pct);
+      id('crFee').textContent = usd(fee);
+      id('crTotal').textContent = usd(total);
+
+      const tn = id('crTaxNote');
+      if (t.note) { tn.textContent = t.note; tn.hidden = false; } else { tn.hidden = true; }
+
+      const save = id('crSave');
+      if (pct <= 0) {
+        save.className = 'cr-save good';
+        save.textContent = 'Nice. This card has no foreign fee, so you keep that money instead of losing it on the exchange.';
+      } else {
+        save.className = 'cr-save';
+        save.innerHTML = 'A card with no foreign fee would save you <b>' + usd(fee) + '</b> on this stay.';
+      }
+
+      const cn = id('crCardNote');
+      if (state.pick.type === 'card' && state.pick.card && state.pick.card.note) {
+        cn.textContent = state.pick.card.note; cn.hidden = false;
+      } else { cn.hidden = true; }
+    }
+
+    // ----- no-foreign-fee shortlist (where the "see no-fee cards" links land) -----
+    (function renderNoFee() {
+      const grid = id('nfGrid');
+      if (!grid) return;
+      grid.innerHTML = noFee.map(c => {
+        const atm = c.atm ? '<span class="nf-atm">' + esc(c.atm) + '</span>' : '';
+        return '<div class="nf">'
+          + '<span class="nf-net">' + esc((c.network || '').toUpperCase()) + '</span>'
+          + '<span class="nf-name"><b>' + esc(c.issuer) + '</b> ' + esc(c.product) + '</span>'
+          + '<span class="fxb free">No foreign fee</span>'
+          + atm
+          + '<span class="tg free">no commission</span>'
+          + '</div>';
+      }).join('');
+    })();
+
+    // ----- init -----
+    app.hidden = false;
+    state.room = roomVal();
+    renderTiles();
+    render();
+  })();
 </script>

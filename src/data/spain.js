@@ -61,6 +61,22 @@ export default {
   connectivity: {
     works: "Yes, and coverage is among the best in Europe. Spain has near-universal 4G and widespread 5G across the cities, the coast and the main tourist routes, including the islands. Signal can dip in remote mountains and sparsely populated inland areas."
   },
+  // TOURIST TAX (high-churn, verified Jun 2026). Only some Spanish regions charge a
+  // per-person, per-night tax, collected by your accommodation. Catalonia (Barcelona)
+  // and the Balearic Islands are the main ones. Madrid, Andalusia and the Canary Islands
+  // charge nothing today. Children under 16 are usually exempt.
+  tax: {
+    unit: "perPersonPerNight",
+    currency: "EUR",
+    capNights: null,
+    note: "A per-person, per-night tax that only some regions charge, collected by your accommodation. Children under 16 are usually exempt, and the amount can rise with hotel category.",
+    regions: [
+      { key: "barcelona", label: "Barcelona", rate: 7, capNights: 7, note: "Barcelona's tax is a Catalan regional charge plus a city surcharge that rose in 2026. It is capped at 7 nights, and the exact amount rises with hotel category." },
+      { key: "catalonia", label: "Rest of Catalonia", rate: 1, capNights: 7 },
+      { key: "balearics", label: "Balearic Islands (Mallorca, Ibiza, Menorca)", rate: 3, note: "The Balearic sustainable-tourism tax is higher in summer and lower in winter, and drops by half after the eighth night. This is a typical high-season figure." },
+      { key: "other", label: "Elsewhere in Spain", rate: 0, note: "Most of Spain, including Madrid, Andalusia and the Canary Islands, has no tourist tax today." }
+    ]
+  },
   currencyHeading: "The euro, in plain terms.",
   facts: [
     { sym: "euro", k: "Quick conversion", v: "About 1.14 dollars to 1 euro in mid-2026, so euro prices are roughly the same as dollars, just a touch more: a 10 euro lunch is about 11 and a half dollars, and 100 euros is about 114. Prices show the euro sign, usually after the number, as in \"12 \u20AC\"." },
