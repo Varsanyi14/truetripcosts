@@ -58,6 +58,9 @@ export default {
     rateNote: "Rough guide at about 1.14 dollars to the euro in mid-2026, so roughly 0.88 euros per dollar. Spain is card-first, so this is the smaller, cash-in-hand slice of your spending.",
     styles: [ { n: "Budget", per: 45, cash: 0.40 }, { n: "Mid-range", per: 95, cash: 0.28 }, { n: "Comfort", per: 175, cash: 0.18 } ]
   },
+  connectivity: {
+    works: "Yes, and coverage is among the best in Europe. Spain has near-universal 4G and widespread 5G across the cities, the coast and the main tourist routes, including the islands. Signal can dip in remote mountains and sparsely populated inland areas."
+  },
   currencyHeading: "The euro, in plain terms.",
   facts: [
     { sym: "euro", k: "Quick conversion", v: "About 1.14 dollars to 1 euro in mid-2026, so euro prices are roughly the same as dollars, just a touch more: a 10 euro lunch is about 11 and a half dollars, and 100 euros is about 114. Prices show the euro sign, usually after the number, as in \"12 \u20AC\"." },

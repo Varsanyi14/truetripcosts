@@ -52,6 +52,9 @@ export default {
     rateNote: "Rough guide at about 1.14 dollars to the euro in mid-2026, so roughly 0.88 euros per dollar. France is card-first, so this is the smaller, cash-in-hand slice of your spending.",
     styles: [ { n: "Budget", per: 50, cash: 0.35 }, { n: "Mid-range", per: 105, cash: 0.25 }, { n: "Comfort", per: 190, cash: 0.15 } ]
   },
+  connectivity: {
+    works: "Yes across the cities, tourist regions and main routes, with excellent 4G and 5G growing in the bigger cities and along the TGV lines. Signal thins in the Alps and Pyrenees valleys and remote rural areas like inland Brittany and the Dordogne."
+  },
   currencyHeading: "The euro, in plain terms.",
   facts: [
     { sym: "euro", k: "Quick conversion", v: "About 1.14 dollars to 1 euro in mid-2026, so a 10 euro lunch is roughly $11 and 50 euros is about $57. Prices show the euro sign, often after the number, as in \"12 \u20AC\"." },

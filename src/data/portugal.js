@@ -54,6 +54,9 @@ export default {
     rateNote: "Rough guide at about 1.14 dollars to the euro in mid-2026, so roughly 0.88 euros per dollar. Portugal is card-first, so this is the smaller, cash-in-hand slice of your spending.",
     styles: [ { n: "Budget", per: 40, cash: 0.38 }, { n: "Mid-range", per: 85, cash: 0.26 }, { n: "Comfort", per: 160, cash: 0.15 } ]
   },
+  connectivity: {
+    works: "Yes, and coverage is very good. Portugal has near-universal 4G and growing 5G across the cities, the Algarve coast and the main routes. Signal thins in the interior, like the Alentejo and the remote north, and in the national parks."
+  },
   currencyHeading: "The euro, in plain terms.",
   facts: [
     { sym: "euro", k: "Quick conversion", v: "About 1.14 dollars to 1 euro in mid-2026, so euro prices are roughly the same as dollars, just a touch more: a 10 euro lunch is about 11 and a half dollars, and 100 euros is about 114. Prices show the euro sign, usually after the number, as in \"12 \u20AC\"." },

@@ -58,6 +58,9 @@ export default {
     rateNote: "Rough guide at about 0.88 euros to the dollar, so a euro costs you a little over a dollar. The rate has softened a touch through 2026, trading near 1.14 dollars per euro in mid-year.",
     styles: [ { n: "Budget", per: 45, cash: 0.45 }, { n: "Mid-range", per: 95, cash: 0.3 }, { n: "Comfort", per: 175, cash: 0.2 } ]
   },
+  connectivity: {
+    works: "Yes, and coverage is excellent. Italy has near-universal 4G and widespread 5G across the cities, tourist regions and main rail and road routes. Signal can dip in remote mountain valleys and parts of the far south and islands."
+  },
   currencyHeading: "The euro, in plain terms.",
   facts: [
     { sym: "euro", k: "Quick conversion", v: "About 1 euro to 1.14 dollars in mid-2026, so euro prices are roughly the same as dollars, just a touch more. A quick gut check: a 10 euro lunch is about 11 and a half dollars, and 100 euros is about 114. The rate has been fairly steady, softening slightly over the year." },

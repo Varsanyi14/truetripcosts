@@ -58,6 +58,9 @@ export default {
     rateNote: "Rough guide at about 1.32 dollars to the pound in mid-2026, so roughly 0.76 pounds per dollar. The UK is the most card-first country here, so this is only the small, cash-in-hand slice of your spending.",
     styles: [ { n: "Budget", per: 65, cash: 0.20 }, { n: "Mid-range", per: 145, cash: 0.14 }, { n: "Comfort", per: 270, cash: 0.10 } ]
   },
+  connectivity: {
+    works: "Yes, and it is strong in the cities and most towns, where 4G is near-universal and 5G is widespread. Signal turns patchy in the Scottish Highlands, the Welsh mountains and the Lake District, and on remote roads and trails, where the odd dead zone is normal."
+  },
   currencyHeading: "The pound, in plain terms.",
   facts: [
     { sym: "gbp", k: "Quick conversion", v: "About 1.32 dollars to 1 pound in mid-2026, so pound prices run a bit higher than the same number of dollars: a 12 pound lunch is about 16 dollars, and 100 pounds is about 132. The symbol goes before the number, as in \"\u00A312\", and prices already include 20% VAT." },
