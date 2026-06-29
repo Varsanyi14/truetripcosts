@@ -58,6 +58,9 @@ export default {
     rateNote: "Rough guide at about 17.5 pesos to the dollar. The peso has been fairly steady, trading near 17 to 18 through 2026, so your dollar goes a long way day to day.",
     styles: [ { n: "Budget", per: 28, cash: 0.55 }, { n: "Mid-range", per: 65, cash: 0.4 }, { n: "Comfort", per: 120, cash: 0.3 } ]
   },
+  connectivity: {
+    works: "Yes in the cities and tourist areas, where 4G is near-universal and 5G is live in places like Mexico City, Guadalajara and Cancun. Signal thins in remote mountains, jungle and small towns off the main routes."
+  },
   currencyHeading: "The peso, in plain terms.",
   facts: [
     { sym: "peso", k: "Quick conversion", v: "About 17.5 pesos to $1 in mid-2026. A quick gut check: 100 pesos is roughly $6, and 500 pesos about $29. One trap to remember: in Mexico, the \"$\" sign means pesos, not dollars." },

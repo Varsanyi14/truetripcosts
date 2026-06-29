@@ -57,6 +57,9 @@ export default {
     rateNote: "Rough guide at 160 yen to the dollar. The yen is historically weak right now, which stretches your money further.",
     styles: [ { n: "Budget", per: 45, cash: 0.6 }, { n: "Mid-range", per: 80, cash: 0.45 }, { n: "Comfort", per: 150, cash: 0.3 } ]
   },
+  connectivity: {
+    works: "Yes, and it is among the best anywhere. Japan has 4G almost everywhere, including the bullet trains and most rural and mountain areas, with 5G growing in the cities. You will rarely think about your signal."
+  },
   currencyHeading: "The yen, in plain terms.",
   facts: [
     { sym: "yen", k: "Quick conversion", v: "About 160 yen to $1 right now. A rough gut check: 1,000 yen is about $6, and 10,000 yen about $62. The weak yen is good news for your budget." },

@@ -54,6 +54,9 @@ export default {
     rateNote: "Rough guide at about 33 baht to the dollar. Thailand stays inexpensive day to day, especially for street food, markets and local transport.",
     styles: [ { n: "Budget", per: 20, cash: 0.7 }, { n: "Mid-range", per: 40, cash: 0.55 }, { n: "Comfort", per: 85, cash: 0.4 } ]
   },
+  connectivity: {
+    works: "Yes across the cities, main routes and the popular islands, with strong 4G and growing 5G in Bangkok, Phuket and Chiang Mai. Signal drops in the northern mountains, jungle parks and the interiors of smaller islands."
+  },
   currencyHeading: "The baht, in plain terms.",
   facts: [
     { sym: "baht", k: "Quick conversion", v: "About 33 baht to $1 in mid-2026. A quick gut check: 100 baht is roughly $3, and 1,000 baht about $30. Prices show the baht symbol, the curly mark before or after the number." },
