@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-gr" viewBox="0 0 640 480">
+  <path fill="#fff" d="M0 0h640v480H0z"/>
+  <g fill="#0d5eaf">
+    <rect x="0" y="0" width="640" height="53.33"/>
+    <rect x="0" y="106.67" width="640" height="53.33"/>
+    <rect x="0" y="213.33" width="640" height="53.33"/>
+    <rect x="0" y="320" width="640" height="53.33"/>
+    <rect x="0" y="426.67" width="640" height="53.33"/>
+  </g>
+  <rect x="0" y="0" width="266.67" height="266.67" fill="#0d5eaf"/>
+  <rect x="106.67" y="0" width="53.33" height="266.67" fill="#fff"/>
+  <rect x="0" y="106.67" width="266.67" height="53.33" fill="#fff"/>
+</svg>

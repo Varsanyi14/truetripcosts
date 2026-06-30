@@ -6,11 +6,16 @@ import { countries } from '../data/index.js';
 import fs from 'node:fs';
 const live = countries.filter(c => c.live);
 const soon = countries.filter(c => !c.live);
-const knownFlags = ['vietnam','japan','mexico','thailand','italy','france','spain','portugal','united-kingdom'];
-const flagSrc = (slug) => `/flags/${knownFlags.includes(slug) ? slug : 'world'}.svg`;
+// Flags auto-detect: drop public/flags/<slug>.svg and it shows on the next build.
+// A missing flag falls back to the globe, so nothing ever renders broken.
+const flagDir = process.cwd() + '/public/flags/';
+const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? `/flags/${slug}.svg` : '/flags/world.svg';
 // Hero illustration: save your image at public/hero/landing.png and it turns on automatically
 // on the next build. No image there means the text-only hero stays. Nothing to toggle by hand.
 const heroImage = fs.existsSync(process.cwd() + '/public/hero/landing.png') ? '/hero/landing.png' : null;
+// Region label and one-line rail blurb. NEW countries set `region` and `hook`
+// in their own data file (src/data/<slug>.js); these maps are only a fallback for
+// the original nine, so you never edit this file when adding a country.
 const regionTag = {
   vietnam: 'Asia', japan: 'Asia', thailand: 'Asia',
   mexico: 'Americas',
@@ -53,10 +58,10 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
           <a class="rcard" href={'/' + c.slug}>
             <span class="rtop">
               <span class="rflag" aria-hidden="true"><img src={flagSrc(c.slug)} alt="" width="26" height="20" loading="lazy" /></span>
-              <span class="rtag">{regionTag[c.slug] || ''}</span>
+              <span class="rtag">{c.region || regionTag[c.slug] || ''}</span>
             </span>
             <span class="rname">{c.name}</span>
-            <span class="rhook">{hooks[c.slug] || ''}</span>
+            <span class="rhook">{c.hook || hooks[c.slug] || ''}</span>
             <span class="rgo">Guide <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </a>
         ))}
