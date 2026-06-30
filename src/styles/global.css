@@ -181,6 +181,19 @@
   .hpcta .ghost{font-size:14.5px;font-weight:600;color:var(--teal-deep);text-decoration:none}
   .hpcta .ghost:hover{text-decoration:underline}
 
+  .home-hero.has-hero-img{max-width:none;padding:0;margin:22px 0 10px}
+  @media(min-width:721px){
+    .home-hero.has-hero-img{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;min-height:420px;display:flex;align-items:center;background:var(--paper)}
+    .home-hero.has-hero-img .hh-media{position:absolute;inset:0;background-position:left center;background-size:cover;background-repeat:no-repeat}
+    .home-hero.has-hero-img .hh-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(245,244,239,0) 30%,rgba(245,244,239,.6) 47%,var(--paper) 64%)}
+    .home-hero.has-hero-img .hh-body{position:relative;width:47%;margin-left:auto;padding:40px 44px 40px 22px}
+    .home-hero.has-hero-img .lede{max-width:none}
+  }
+  @media(max-width:720px){
+    .home-hero.has-hero-img .hh-media{display:block;width:100%;aspect-ratio:16/9;background-position:left center;background-size:cover;background-repeat:no-repeat;border-radius:16px}
+    .home-hero.has-hero-img .hh-body{padding:20px 2px 4px}
+  }
+
   .why{background:var(--ink);color:#EAF0ED;border-radius:20px;padding:30px 30px 4px;margin:34px 0 0}
   .why .lab{color:#7FBBA6}
   .why h2{font-family:var(--serif);font-weight:500;font-size:clamp(22px,3.6vw,28px);color:#fff;line-height:1.14;margin:0 0 10px}

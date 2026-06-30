@@ -3,10 +3,14 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { countries } from '../data/index.js';
+import fs from 'node:fs';
 const live = countries.filter(c => c.live);
 const soon = countries.filter(c => !c.live);
 const knownFlags = ['vietnam','japan','mexico','thailand','italy','france','spain','portugal','united-kingdom'];
 const flagSrc = (slug) => `/flags/${knownFlags.includes(slug) ? slug : 'world'}.svg`;
+// Hero illustration: save your image at public/hero/landing.png and it turns on automatically
+// on the next build. No image there means the text-only hero stays. Nothing to toggle by hand.
+const heroImage = fs.existsSync(process.cwd() + '/public/hero/landing.png') ? '/hero/landing.png' : null;
 const regionTag = {
   vietnam: 'Asia', japan: 'Asia', thailand: 'Asia',
   mexico: 'Americas',
@@ -28,14 +32,17 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
 <Base title="True Trip Costs: the money side of your trip, sorted" description="Independent, current money guides for travelers leaving the US: will your card work, how much cash to carry, the fees to dodge, tipping, tourist taxes, and the real all-in cost of your stay. Checked and dated. No nasty surprises.">
   <Nav />
   <main class="wrap">
-    <section class="home-hero">
-      <span class="tagpill">No nasty surprises</span>
-      <h1>The money side of your trip, sorted.</h1>
-      <p class="lede">Independent, plain-language money guides for travelers leaving the US: what to pay with, how much cash to carry, the fees to dodge, and the real all-in cost of your stay. Checked and dated, never guessed.</p>
-      <div class="hpcta">
-        <a class="btn" href="#guides">Find your destination
-          <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="ghost" href="#why">Why this exists &#8594;</a>
+    <section class={"home-hero" + (heroImage ? " has-hero-img" : "")}>
+      {heroImage && <div class="hh-media" style={`background-image:url('${heroImage}')`} aria-hidden="true"></div>}
+      <div class="hh-body">
+        <span class="tagpill">No nasty surprises</span>
+        <h1>The money side of your trip, sorted.</h1>
+        <p class="lede">Independent, plain-language money guides for travelers leaving the US: what to pay with, how much cash to carry, the fees to dodge, and the real all-in cost of your stay. Checked and dated, never guessed.</p>
+        <div class="hpcta">
+          <a class="btn" href="#guides">Find your destination
+            <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="ghost" href="#why">Why this exists &#8594;</a>
+        </div>
       </div>
     </section>
 
