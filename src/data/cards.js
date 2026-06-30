@@ -109,7 +109,7 @@ export const noFeePicks = cards.filter(c => c.fxPct === 0 && (c.kind === "credit
 // This stays generic (a set of slugs), so adding the fiftieth country still adds
 // no per-card work. Each card's affiliate label is data-driven from the entry above,
 // so the day a program lands, that one card flips to "earns commission" on its own.
-const cashHeavySlugs = new Set(["japan", "vietnam", "thailand", "mexico"]);
+const cashHeavySlugs = new Set(["japan", "vietnam", "thailand", "mexico", "indonesia"]);
 
 export function shortlistFor(slug) {
   const pick = (issuer, product) =>
