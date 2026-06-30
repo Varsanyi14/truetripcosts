@@ -9,6 +9,22 @@ const flags = {
   vietnam: '🇻🇳', japan: '🇯🇵', mexico: '🇲🇽', thailand: '🇹🇭',
   italy: '🇮🇹', france: '🇫🇷', spain: '🇪🇸', portugal: '🇵🇹', 'united-kingdom': '🇬🇧'
 };
+const regionTag = {
+  vietnam: 'Asia', japan: 'Asia', thailand: 'Asia',
+  mexico: 'Americas',
+  italy: 'Europe', france: 'Europe', spain: 'Europe', portugal: 'Europe', 'united-kingdom': 'Europe'
+};
+const hooks = {
+  vietnam: 'A cash country at heart. Cards work in cities, far less beyond them.',
+  japan: 'More card-friendly than its reputation, but keep cash for small spots.',
+  mexico: 'Cards taken widely at resorts. Watch the peso conversion trick at the till.',
+  thailand: 'Cards in malls and hotels, cash for street food and markets.',
+  italy: 'Cards almost everywhere, plus a nightly tourist tax to plan for.',
+  france: 'Tap and pay is the norm, with a small nightly city tax on top.',
+  spain: 'Cards taken widely, with a per-night tourist tax in many regions.',
+  portugal: 'Easy on cards, with a small municipal tax in the bigger cities.',
+  'united-kingdom': 'A tap-to-pay country. No card-fee worries, just the exchange rate.'
+};
 const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
 ---
 <Base title="True Trip Costs: the money side of your trip, sorted" description="Independent, current money guides for travelers leaving the US: will your card work, how much cash to carry, the fees to dodge, tipping, tourist taxes, and the real all-in cost of your stay. Checked and dated. No nasty surprises.">
@@ -22,6 +38,23 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
         <a class="btn" href="#guides">Find your destination
           <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="ghost" href="#why">Why this exists &#8594;</a>
+      </div>
+    </section>
+
+    <section class="rail-wrap" aria-label="Browse country guides">
+      <p class="rail-lab">Browse the guides</p>
+      <div class="rail">
+        {live.map(c => (
+          <a class="rcard" href={'/' + c.slug}>
+            <span class="rtop">
+              <span class="rflag" aria-hidden="true">{flags[c.slug] || '🗺'}</span>
+              <span class="rtag">{regionTag[c.slug] || ''}</span>
+            </span>
+            <span class="rname">{c.name}</span>
+            <span class="rhook">{hooks[c.slug] || ''}</span>
+            <span class="rgo">Guide <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        ))}
       </div>
     </section>
 

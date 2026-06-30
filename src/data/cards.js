@@ -97,3 +97,29 @@ export function cardsByIssuer() {
 // cards" links land here). A few standout 0% credit cards plus the debit tools
 // that refund ATM fees on the cash side.
 export const noFeePicks = cards.filter(c => c.fxPct === 0 && (c.kind === "credit" || c.atm));
+
+// The opt-in shortlist shown when a traveler taps "see cards that work well in X".
+// Deliberately short (three cards, never the full roster) and tasteful: two
+// no-foreign-fee credit cards for spending and one fee-free-ATM debit card for cash.
+// Amex and Discover are left out on purpose, because their acceptance abroad is
+// patchy and that matters most for a first trip.
+//
+// Order is the only thing that changes by country: cash-heavy destinations lead
+// with the debit card for ATM cash, card-friendly ones lead with the credit cards.
+// This stays generic (a set of slugs), so adding the fiftieth country still adds
+// no per-card work. Each card's affiliate label is data-driven from the entry above,
+// so the day a program lands, that one card flips to "earns commission" on its own.
+const cashHeavySlugs = new Set(["japan", "vietnam", "thailand", "mexico"]);
+
+export function shortlistFor(slug) {
+  const pick = (issuer, product) =>
+    cards.find(c => c.issuer === issuer && c.product === product);
+  const venture = pick("Capital One", "Venture");                         // spending, 0% FX
+  const sapphire = pick("Chase", "Sapphire Preferred");                   // spending, wide acceptance
+  const schwab = pick("Charles Schwab", "Investor Checking debit");       // fee-free ATM cash
+
+  const list = cashHeavySlugs.has(slug)
+    ? [schwab, venture, sapphire]
+    : [venture, sapphire, schwab];
+  return list.filter(Boolean);
+}

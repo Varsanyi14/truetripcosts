@@ -1,20 +1,27 @@
 ---
 import Symbol from './Symbol.astro';
 import { affiliate, esimLink } from '../data/links.js';
-import { cardsByIssuer, noFeePicks, fallbackFxPct } from '../data/cards.js';
+import { fallbackFxPct, shortlistFor, cardsChecked } from '../data/cards.js';
 const { country: c } = Astro.props;
 const esim = esimLink(c.slug);
-// Everything the all-in calculator needs, handed to the client as inert JSON.
-// Cards stay defined once in cards.js; the page just imports and serialises them.
+// Everything the honest-number module needs, handed to the client as inert JSON.
+// It asks the traveler nothing about their card, so no card data ships here: just
+// the exchange rate, the tourist-tax block, and the default foreign-fee assumption.
 const calcData = {
   name: c.name,
   rate: (c.cash && c.cash.rate) || 1, // local currency units per 1 USD
   tax: c.tax || null,
-  groups: cardsByIssuer(),
-  noFee: noFeePicks,
   fallbackFxPct
 };
 const calcJson = JSON.stringify(calcData).replace(/</g, "\\u003c");
+
+// The opt-in card shortlist, rendered server-side (no JS needed to show it). Three
+// cards, ordered for this country. Faces use the TTC palette below, not card-network
+// colours or art, so we vary the face colour across the cards rather than mimic a brand.
+const shortlist = shortlistFor(c.slug);
+const faceColors = ["#0A5644", "#16302C", "#7A3B12", "#4E2436", "#1E3A5F"];
+const whyLine = (card) =>
+  card.kind === "debit" ? "Fee-free ATM cash worldwide" : "No foreign transaction fee";
 const esimBrand = (affiliate.esimBrand && affiliate.esimBrand.trim()) || "";
 const ins = affiliate.insurance;
 const faqLd = {
@@ -63,7 +70,7 @@ const artLd = {
 <div class="verdict">
   <span class="vlead">The short version</span>
   <Fragment set:html={c.verdict} />
-  <div class="vcta"><a class="btn light" href="#calc">Check your exact card and its fee
+  <div class="vcta"><a class="btn light" href="#calc">See your honest all-in total
     <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
 </div>
 
@@ -139,44 +146,7 @@ const artLd = {
   </div>
 </section>
 
-<section id="cash">
-  <p class="lab">How much cash</p>
-  <h2>A sensible amount to plan for.</h2>
-  <p class="sub">On-the-ground spending for your whole group across the trip: food, local transport, activities and tips. Lodging is left out on purpose, since it is usually prepaid or paid by card and does not change how much cash you carry.</p>
-  <div class="estimator" data-rate={c.cash.rate} data-cur={c.cash.cur} data-round={c.cash.round || 100000}>
-    <div class="erow">
-      <div class="ef"><label for="trav">Travelers</label>
-        <div class="step">
-          <button type="button" class="stepdn" aria-label="Fewer travelers">&#8722;</button>
-          <input id="trav" type="number" inputmode="numeric" min="1" max="12" value="2" aria-label="Number of travelers">
-          <button type="button" class="stepup" aria-label="More travelers">+</button>
-        </div>
-      </div>
-      <div class="ef"><label for="days">Days</label>
-        <div class="step">
-          <button type="button" class="stepdn" aria-label="Fewer days">&#8722;</button>
-          <input id="days" type="number" inputmode="numeric" min="1" max="60" value="7" aria-label="Number of days">
-          <button type="button" class="stepup" aria-label="More days">+</button>
-        </div>
-      </div>
-      <div class="ef"><label>Style</label>
-        <div class="seg" role="group" aria-label="Travel style">
-          {c.cash.styles.map((s, i) => (
-            <button id={"s" + i} class={i === c.cash.defaultIndex ? "on" : ""} type="button" data-per={s.per} data-cash={s.cash}>{s.n}</button>
-          ))}
-        </div>
-      </div>
-    </div>
-    <div class="ebig">Plan about <span class="amt num" id="total">$700</span> across the trip.</div>
-    <p class="escope">About <b id="perday" class="num">$50</b> per person a day, for <b id="ntrav" class="num">2</b> travelers over <b id="ndays" class="num">7</b> days.</p>
-    <div class="esplit">
-      <div class="ebar" aria-hidden="true"><div class="c1" id="cashBar" style="width:70%"></div><div class="c2" id="cardBar" style="width:30%"></div></div>
-      <div class="elegend"><span class="el cash"><span class="mdot"></span>cash <b id="cashUsd">$490</b></span><span class="el card"><span class="mdot"></span>card <b id="cardUsd">$210</b></span></div>
-    </div>
-    <p class="ehint">That means pulling roughly <b id="vnd">12,000,000</b> in cash, in about <b id="pulls">2</b> ATM <span id="visitword">visits</span>. {c.cash.rateNote}</p>
-    <a class="cta" href="#calcNoFee">See no-fee cards that skip ATM fees <span class="tg free">no commission</span> <span class="arw">&#8594;</span></a>
-  </div>
-</section>
+{/* The cash estimator now sits beneath the honest number, as a secondary helper. See the #cash section after #calc. */}
 
 {c.connectivity && (
 <section>
@@ -260,84 +230,129 @@ const artLd = {
 <section id="calc">
   <p class="lab">The honest number</p>
   <h2>Your real all-in total for {c.name}.</h2>
-  <p class="sub">Put in a hotel price and we add {c.name}'s tourist tax and your card's foreign fee, so the number you see is the number you pay. No sign-up, nothing saved.</p>
+  <p class="sub">Put in a hotel price and we add {c.name}'s tourist tax and the foreign card fee most US cards charge, so the number you see is the number you pay. No bank to pick, no sign-up, nothing saved.</p>
 
-  <!-- Everything the calculator needs, handed over as inert JSON (Astro leaves application/json untouched). -->
-  <script type="application/json" id="calc-data" set:html={calcJson}></script>
+  <!-- Everything the module needs, handed over as inert JSON (Astro leaves application/json untouched). No card data ships: it asks the traveler nothing about their card. -->
+  <script type="application/json" id="hn-data" set:html={calcJson}></script>
 
-  <div class="calc" id="calc-app" hidden>
-    <div class="calc-grid">
-      <div class="calc-inputs">
-        <div class="calc-trip">
-          <label class="cf" id="calcRegionWrap" hidden>
-            <span class="cf-l">Where are you staying?</span>
-            <span class="selwrap"><select id="calcRegion"></select></span>
-          </label>
-          <label class="cf">
-            <span class="cf-l">Hotel price a night</span>
-            <span class="moneyin"><span class="mny">$</span><input id="calcRoom" type="text" inputmode="numeric" value="150" aria-label="Hotel price per night in US dollars" /></span>
-          </label>
-          <div class="calc-pair">
-            <div class="cf">
-              <span class="cf-l">Nights</span>
-              <span class="stepper">
-                <button type="button" class="stp" data-step="calcNights" data-dir="-1" aria-label="One fewer night">&#8722;</button>
-                <span class="stp-v" id="calcNights" data-v="5">5</span>
-                <button type="button" class="stp" data-step="calcNights" data-dir="1" aria-label="One more night">+</button>
-              </span>
-            </div>
-            <div class="cf">
-              <span class="cf-l">Travelers</span>
-              <span class="stepper">
-                <button type="button" class="stp" data-step="calcTrav" data-dir="-1" aria-label="One fewer traveler">&#8722;</button>
-                <span class="stp-v" id="calcTrav" data-v="2">2</span>
-                <button type="button" class="stp" data-step="calcTrav" data-dir="1" aria-label="One more traveler">+</button>
-              </span>
-            </div>
-          </div>
+  <div class="hn" id="hn-app" hidden>
+    <div class="hn-inputs">
+      <label class="cf" id="hnRegionWrap" hidden>
+        <span class="cf-l">Where are you staying?</span>
+        <span class="selwrap"><select id="hnRegion"></select></span>
+      </label>
+      <label class="cf">
+        <span class="cf-l">Hotel price a night</span>
+        <span class="moneyin"><span class="mny">$</span><input id="hnRoom" type="text" inputmode="numeric" value="150" aria-label="Hotel price per night in US dollars" /></span>
+      </label>
+      <div class="calc-pair">
+        <div class="cf">
+          <span class="cf-l">Nights</span>
+          <span class="stepper">
+            <button type="button" class="stp" data-step="hnNights" data-dir="-1" aria-label="One fewer night">&#8722;</button>
+            <span class="stp-v" id="hnNights" data-v="5">5</span>
+            <button type="button" class="stp" data-step="hnNights" data-dir="1" aria-label="One more night">+</button>
+          </span>
         </div>
-
-        <div class="calc-card">
-          <p class="calc-cardlab">Find your card</p>
-          <p class="calc-recog">Not sure what you have? Look at the bottom-right corner of your card for the word Visa or Mastercard, and the bank name on the front.</p>
-          <label class="cf">
-            <span class="cf-l">Who is your card from?</span>
-            <span class="selwrap"><select id="calcBank"><option value="">Pick your bank</option></select></span>
-          </label>
-          <div class="calc-tiles" id="calcTiles" role="list"></div>
-          <div class="calc-manual" id="calcManual" hidden>
-            <label class="cf">
-              <span class="cf-l">Your card's foreign transaction fee</span>
-              <span class="pctin"><input id="calcFee" type="text" inputmode="decimal" value="3" aria-label="Foreign transaction fee percent" /><span class="pct">%</span></span>
-            </label>
-            <p class="calc-help">It is usually printed in your card's terms as the "foreign transaction fee." If you cannot find it, 3% is a safe guess for a basic bank card.</p>
-          </div>
+        <div class="cf">
+          <span class="cf-l">Travelers</span>
+          <span class="stepper">
+            <button type="button" class="stp" data-step="hnTrav" data-dir="-1" aria-label="One fewer traveler">&#8722;</button>
+            <span class="stp-v" id="hnTrav" data-v="2">2</span>
+            <button type="button" class="stp" data-step="hnTrav" data-dir="1" aria-label="One more traveler">+</button>
+          </span>
         </div>
       </div>
+      <label class="hn-toggle">
+        <input type="checkbox" id="hnNoFee" />
+        <span class="hn-switch" aria-hidden="true"></span>
+        <span class="hn-toggle-l">I have a no-foreign-fee card</span>
+      </label>
+    </div>
 
-      <div class="calc-result" id="calcResult" aria-live="polite">
-        <div class="cr-rows">
-          <div class="cr-line"><span class="cr-k">Room (<span id="crNights">5</span> nights)</span><span class="cr-v" id="crRoom">$750</span></div>
-          <div class="cr-line"><span class="cr-k" id="crTaxLabel">Tourist tax</span><span class="cr-v" id="crTax">$0</span></div>
-          <div class="cr-line cr-fee"><span class="cr-k">Your card's foreign fee (<span id="crPct">3%</span>)</span><span class="cr-v" id="crFee">$22</span></div>
-          <div class="cr-line cr-total"><span class="cr-k">All-in total</span><span class="cr-v" id="crTotal">$772</span></div>
-        </div>
-        <p class="cr-save" id="crSave"></p>
-        <p class="cr-note" id="crTaxNote" hidden></p>
-        <p class="cr-note cr-cardnote" id="crCardNote" hidden></p>
-        <p class="cr-fine">Rough guide, not a quote. We assume the room goes on the card and the tourist tax is paid at the hotel, often in cash, so the card fee is figured on the room. Rates checked mid-2026 and rounded.</p>
+    <div class="hn-result" aria-live="polite">
+      <div class="hn-rows">
+        <div class="hn-line"><span class="hn-k">Room (<span id="hnNightsLabel">5</span> nights)</span><span class="hn-v num" id="hnRoomV">$750</span></div>
+        <div class="hn-line"><span class="hn-k" id="hnTaxLabel">Tourist tax</span><span class="hn-v num" id="hnTax">$0</span></div>
+        <div class="hn-line hn-fee" id="hnFeeLine"><span class="hn-k">Foreign card fee <span class="hn-feeq" id="hnFeeQ">(about 3%)</span></span><span class="hn-v num" id="hnFee">$22</span></div>
       </div>
+      <div class="hn-total">
+        <span class="hn-total-k">Honest total</span>
+        <span class="hn-total-v num" id="hnTotal">$772</span>
+      </div>
+      <p class="hn-over" id="hnOver" hidden></p>
+      <p class="hn-feenote" id="hnFeeNote">Most US cards add about 3% on foreign purchases, so that is included here.</p>
+      <p class="hn-note" id="hnTaxNote" hidden></p>
+      <p class="hn-fine">Rough guide, not a quote. We assume the room goes on the card and the tourist tax is paid at the hotel, often in cash, so the card fee is figured on the room. Rates checked Jun 2026 and rounded.</p>
     </div>
   </div>
 
   <noscript>
-    <div class="reveal"><div class="t">The all-in calculator needs JavaScript switched on. With it off, use the cash and card guidance above, and assume a 3% foreign fee on the room unless your card says otherwise.</div></div>
+    <div class="reveal"><div class="t">The all-in total needs JavaScript switched on. With it off: take the room price, add {c.name}'s tourist tax, and add about 3% for a typical US card's foreign fee.</div></div>
   </noscript>
 
-  <div class="calc-nofee" id="calcNoFee">
-    <p class="nf-lab">Cards with no foreign fee</p>
-    <p class="nf-sub">A short list of cards that skip the foreign transaction fee, so the room costs what it costs. We earn no commission on any of these. Always confirm the current fee with the issuer before you apply.</p>
-    <div class="nf-grid" id="nfGrid"></div>
+  <details class="cardlist" id="calcNoFee">
+    <summary class="cardlist-sum">
+      <span class="cardlist-txt"><b>Not sure about your card?</b> Check with your bank before you go, or <span class="cardlist-link">see cards that work well in {c.name}</span>.</span>
+      <svg class="cardlist-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <div class="cardlist-body">
+      <p class="sl-intro">A short, hand-picked list, not a full roster. We earn no commission on any of these today. Always confirm the current fee with the issuer before you apply. Checked {cardsChecked}.</p>
+      <div class="sl-row" role="list">
+        {shortlist.map((card, i) => (
+          <div class="sl" role="listitem">
+            <div class="sl-face" style={`--f:${faceColors[i % faceColors.length]}`}>
+              <div class="sl-top"><span class="sl-bank">{card.issuer}</span><span class="sl-chip" aria-hidden="true"></span></div>
+              <div class="sl-stripe" aria-hidden="true"></div>
+              <span class="sl-prod">{card.product}</span>
+              <div class="sl-foot"><span class="sl-net">{(card.network || '').toUpperCase()}</span><span class="sl-mark" aria-hidden="true">TTC</span></div>
+            </div>
+            <p class="sl-why">{whyLine(card)}</p>
+            <span class={"tg " + (card.affiliate && card.affiliate.link ? "earn" : "free")}>{(card.affiliate && card.affiliate.label) || "no commission"}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </details>
+</section>
+
+<section id="cash">
+  <p class="lab">How much cash</p>
+  <h2>A sensible amount to plan for.</h2>
+  <p class="sub">A helper on top of the total above: on-the-ground spending for your whole group across the trip, food, local transport, activities and tips. Lodging is left out on purpose, since it is usually prepaid or paid by card.</p>
+  <div class="estimator secondary" data-rate={c.cash.rate} data-cur={c.cash.cur} data-round={c.cash.round || 100000}>
+    <div class="erow">
+      <div class="ef"><label for="trav">Travelers</label>
+        <div class="step">
+          <button type="button" class="stepdn" aria-label="Fewer travelers">&#8722;</button>
+          <input id="trav" type="number" inputmode="numeric" min="1" max="12" value="2" aria-label="Number of travelers">
+          <button type="button" class="stepup" aria-label="More travelers">+</button>
+        </div>
+      </div>
+      <div class="ef"><label for="days">Days</label>
+        <div class="step">
+          <button type="button" class="stepdn" aria-label="Fewer days">&#8722;</button>
+          <input id="days" type="number" inputmode="numeric" min="1" max="60" value="7" aria-label="Number of days">
+          <button type="button" class="stepup" aria-label="More days">+</button>
+        </div>
+      </div>
+      <div class="ef"><label>Style</label>
+        <div class="seg" role="group" aria-label="Travel style">
+          {c.cash.styles.map((s, i) => (
+            <button id={"s" + i} class={i === c.cash.defaultIndex ? "on" : ""} type="button" data-per={s.per} data-cash={s.cash}>{s.n}</button>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class="ebig">Plan about <span class="amt num" id="total">$700</span> across the trip.</div>
+    <p class="escope">About <b id="perday" class="num">$50</b> per person a day, for <b id="ntrav" class="num">2</b> travelers over <b id="ndays" class="num">7</b> days.</p>
+    <div class="esplit">
+      <div class="ebar" aria-hidden="true"><div class="c1" id="cashBar" style="width:70%"></div><div class="c2" id="cardBar" style="width:30%"></div></div>
+      <div class="elegend"><span class="el cash"><span class="mdot"></span>cash <b id="cashUsd">$490</b></span><span class="el card"><span class="mdot"></span>card <b id="cardUsd">$210</b></span></div>
+    </div>
+    <p class="ehint">That means pulling roughly <b id="vnd">12,000,000</b> in cash, in about <b id="pulls">2</b> ATM <span id="visitword">visits</span>. {c.cash.rateNote}</p>
+    <p class="enote">Pulling cash from a foreign ATM also costs a few dollars unless you use a no-fee debit card.</p>
+    <a class="cta" href="#calcNoFee">See no-fee cards that skip ATM fees <span class="tg free">no commission</span> <span class="arw">&#8594;</span></a>
   </div>
 </section>
 
@@ -403,12 +418,14 @@ const artLd = {
 </script>
 
 <script>
-  // All-in calculator. Reads the inert JSON handed over in #calc-data, builds the
-  // bank and card picker, runs the tourist-tax engine, and renders one honest total.
-  // Vanilla DOM, same approach as the cash estimator above. No data leaves the page.
+  // The honest number. Reads the inert JSON in #hn-data (exchange rate, the country's
+  // tourist-tax block, the default foreign-fee assumption), runs the tax engine, and
+  // renders one all-in total. It asks the traveler nothing about their card: a single
+  // toggle decides whether the typical foreign fee is included. No data leaves the page.
+  // Same vanilla DOM approach as the cash estimator above.
   (function () {
-    const app = document.getElementById('calc-app');
-    const dataEl = document.getElementById('calc-data');
+    const app = document.getElementById('hn-app');
+    const dataEl = document.getElementById('hn-data');
     if (!app || !dataEl) return;
 
     let DATA;
@@ -416,8 +433,6 @@ const artLd = {
 
     const rate = DATA.rate || 1;                 // local currency units per 1 USD
     const tax = DATA.tax || null;
-    const groups = DATA.groups || [];
-    const noFee = DATA.noFee || [];
     const fallbackFxPct = (DATA.fallbackFxPct != null) ? DATA.fallbackFxPct : 3;
 
     const id = x => document.getElementById(x);
@@ -430,12 +445,12 @@ const artLd = {
       room: 150,
       nights: 5,
       trav: 2,
-      pick: { type: 'worst', card: null }        // worst | manual | card
+      noFee: false
     };
 
     // ----- region selector (only when the tax varies by place) -----
-    const regionWrap = id('calcRegionWrap');
-    const regionSel = id('calcRegion');
+    const regionWrap = id('hnRegionWrap');
+    const regionSel = id('hnRegion');
     const regions = (tax && Array.isArray(tax.regions)) ? tax.regions : [];
     if (regions.length > 1) {
       regionSel.innerHTML = regions.map((r, i) => '<option value="' + i + '">' + esc(r.label) + '</option>').join('');
@@ -445,82 +460,8 @@ const artLd = {
       regionWrap.hidden = true;
     }
 
-    // ----- bank dropdown -----
-    const bankSel = id('calcBank');
-    groups.forEach((g, i) => {
-      const o = document.createElement('option');
-      o.value = String(i); o.textContent = g.issuer;
-      bankSel.appendChild(o);
-    });
-
-    const tilesWrap = id('calcTiles');
-    const manualWrap = id('calcManual');
-    const feeInput = id('calcFee');
-
-    function cardFace(c) {
-      const badge = c.fxPct === 0
-        ? '<span class="fxb free">No foreign fee</span>'
-        : '<span class="fxb fee">About ' + fmtPct(c.fxPct) + ' foreign fee</span>';
-      return '<span class="ct-face" style="--cc:' + esc(c.color || '#0E7A5F') + '">'
-        + '<span class="ct-top"><span class="ct-bank">' + esc(c.issuer) + '</span><span class="ct-chip" aria-hidden="true"></span></span>'
-        + '<span class="ct-prod">' + esc(c.product) + '</span>'
-        + '<span class="ct-net">' + esc((c.network || '').toUpperCase()) + '</span>'
-        + '</span>' + badge;
-    }
-
-    function renderTiles() {
-      const bi = bankSel.value === '' ? -1 : +bankSel.value;
-      let html = '';
-      if (bi >= 0 && groups[bi]) {
-        groups[bi].cards.forEach((c, ci) => {
-          const on = (state.pick.type === 'card' && state.pick.card &&
-                      state.pick.card.issuer === c.issuer && state.pick.card.product === c.product) ? ' on' : '';
-          html += '<button type="button" class="ctile' + on + '" role="listitem" data-kind="card" data-bi="' + bi + '" data-ci="' + ci + '">' + cardFace(c) + '</button>';
-        });
-      }
-      const worstOn = state.pick.type === 'worst' ? ' on' : '';
-      const manOn = state.pick.type === 'manual' ? ' on' : '';
-      html += '<button type="button" class="ctile act' + worstOn + '" role="listitem" data-kind="worst">'
-        + '<span class="ct-act"><span class="ct-actt">Not sure about your card?</span>'
-        + '<span class="ct-acth">Assume the worst, about ' + fmtPct(fallbackFxPct) + '</span></span></button>';
-      html += '<button type="button" class="ctile act' + manOn + '" role="listitem" data-kind="manual">'
-        + '<span class="ct-act"><span class="ct-actt">My card is not listed</span>'
-        + '<span class="ct-acth">Enter the fee myself</span></span></button>';
-      tilesWrap.innerHTML = html;
-    }
-
-    tilesWrap.addEventListener('click', e => {
-      const t = e.target.closest('.ctile');
-      if (!t) return;
-      const kind = t.dataset.kind;
-      if (kind === 'card') {
-        state.pick = { type: 'card', card: groups[+t.dataset.bi].cards[+t.dataset.ci] };
-        manualWrap.hidden = true;
-      } else if (kind === 'worst') {
-        state.pick = { type: 'worst', card: null };
-        manualWrap.hidden = true;
-      } else if (kind === 'manual') {
-        state.pick = { type: 'manual', card: null };
-        manualWrap.hidden = false;
-        feeInput.focus();
-      }
-      renderTiles();
-      render();
-    });
-
-    bankSel.addEventListener('change', renderTiles);
-
-    feeInput.addEventListener('input', () => { if (state.pick.type === 'manual') render(); });
-    feeInput.addEventListener('blur', () => {
-      let v = parseFloat(feeInput.value);
-      if (isNaN(v) || v < 0) v = fallbackFxPct;
-      if (v > 100) v = 100;
-      feeInput.value = (Math.round(v * 100) / 100);
-      render();
-    });
-
     // ----- room money input -----
-    const roomInput = id('calcRoom');
+    const roomInput = id('hnRoom');
     function roomVal() {
       let v = parseInt(String(roomInput.value).replace(/[^0-9]/g, ''), 10);
       if (isNaN(v) || v < 0) v = 0;
@@ -529,8 +470,8 @@ const artLd = {
     roomInput.addEventListener('input', () => { state.room = roomVal(); render(); });
     roomInput.addEventListener('blur', () => { roomInput.value = state.room ? state.room.toLocaleString('en-US') : ''; });
 
-    // ----- steppers -----
-    const limits = { calcNights: [1, 60], calcTrav: [1, 12] };
+    // ----- steppers (nights, travelers) -----
+    const limits = { hnNights: [1, 60], hnTrav: [1, 12] };
     function bindStepper(key) {
       const el = id(key);
       const lo = limits[key][0], hi = limits[key][1];
@@ -542,14 +483,20 @@ const artLd = {
         let v = +el.dataset.v + (+btn.dataset.dir);
         v = Math.max(lo, Math.min(hi, v));
         el.dataset.v = v; el.textContent = v;
-        if (key === 'calcNights') state.nights = v; else state.trav = v;
+        if (key === 'hnNights') state.nights = v; else state.trav = v;
         setDisabled(v);
         render();
       }));
       setDisabled(+el.dataset.v);
     }
-    bindStepper('calcNights');
-    bindStepper('calcTrav');
+    bindStepper('hnNights');
+    bindStepper('hnTrav');
+
+    // ----- the one optional control: a no-foreign-fee card toggle -----
+    const noFeeToggle = id('hnNoFee');
+    if (noFeeToggle) {
+      noFeeToggle.addEventListener('change', () => { state.noFee = noFeeToggle.checked; render(); });
+    }
 
     // ----- tourist-tax engine. rate = local currency units per 1 USD. -----
     function computeTax(roomUSD, nights, trav) {
@@ -588,71 +535,70 @@ const artLd = {
       return { usd: amount, label: label, note: r.note || tax.note || '' };
     }
 
-    function feePct() {
-      if (state.pick.type === 'card' && state.pick.card) return state.pick.card.fxPct;
-      if (state.pick.type === 'manual') {
-        let v = parseFloat(feeInput.value);
-        if (isNaN(v) || v < 0) v = fallbackFxPct;
-        if (v > 100) v = 100;
-        return v;
-      }
-      return fallbackFxPct;                                    // assume the worst
-    }
-
     function render() {
       const roomUSD = state.room, nights = state.nights, trav = state.trav;
       const roomSub = roomUSD * nights;
       const t = computeTax(roomUSD, nights, trav);
-      const pct = feePct();
+      const pct = state.noFee ? 0 : fallbackFxPct;
       const fee = roomSub * (pct / 100);
       const total = roomSub + t.usd + fee;
 
-      id('crNights').textContent = nights;
-      id('crRoom').textContent = usd(roomSub);
-      id('crTaxLabel').textContent = t.label;
-      id('crTax').textContent = usd(t.usd);
-      id('crPct').textContent = fmtPct(pct);
-      id('crFee').textContent = usd(fee);
-      id('crTotal').textContent = usd(total);
+      id('hnNightsLabel').textContent = nights;
+      id('hnRoomV').textContent = usd(roomSub);
+      id('hnTaxLabel').textContent = t.label;
+      id('hnTax').textContent = usd(t.usd);
+      id('hnFeeQ').textContent = '(about ' + fmtPct(fallbackFxPct) + ')';
+      id('hnFee').textContent = usd(fee);
+      id('hnTotal').textContent = usd(total);
 
-      const tn = id('crTaxNote');
+      // Fee line greys out and reads $0 when the no-fee card toggle is on.
+      const feeLine = id('hnFeeLine');
+      if (state.noFee) feeLine.classList.add('off'); else feeLine.classList.remove('off');
+
+      // The note under the total swaps with the toggle.
+      const fn = id('hnFeeNote');
+      fn.textContent = state.noFee
+        ? 'No card fees included.'
+        : 'Most US cards add about ' + fmtPct(fallbackFxPct) + ' on foreign purchases, so that is included here.';
+
+      // Per-region tourist-tax note, if any.
+      const tn = id('hnTaxNote');
       if (t.note) { tn.textContent = t.note; tn.hidden = false; } else { tn.hidden = true; }
 
-      const save = id('crSave');
-      if (pct <= 0) {
-        save.className = 'cr-save good';
-        save.textContent = 'Nice. This card has no foreign fee, so you keep that money instead of losing it on the exchange.';
+      // How much the honest total runs over the bare room price.
+      const over = id('hnOver');
+      const extra = total - roomSub;
+      if (roomSub <= 0) {
+        over.hidden = true;
+      } else if (extra > 0) {
+        over.hidden = false;
+        over.textContent = 'About ' + usd(extra) + ' over the room price.';
       } else {
-        save.className = 'cr-save';
-        save.innerHTML = 'A card with no foreign fee would save you <b>' + usd(fee) + '</b> on this stay.';
+        over.hidden = false;
+        over.textContent = 'That is the room price, nothing hidden.';
       }
-
-      const cn = id('crCardNote');
-      if (state.pick.type === 'card' && state.pick.card && state.pick.card.note) {
-        cn.textContent = state.pick.card.note; cn.hidden = false;
-      } else { cn.hidden = true; }
     }
-
-    // ----- no-foreign-fee shortlist (where the "see no-fee cards" links land) -----
-    (function renderNoFee() {
-      const grid = id('nfGrid');
-      if (!grid) return;
-      grid.innerHTML = noFee.map(c => {
-        const atm = c.atm ? '<span class="nf-atm">' + esc(c.atm) + '</span>' : '';
-        return '<div class="nf">'
-          + '<span class="nf-net">' + esc((c.network || '').toUpperCase()) + '</span>'
-          + '<span class="nf-name"><b>' + esc(c.issuer) + '</b> ' + esc(c.product) + '</span>'
-          + '<span class="fxb free">No foreign fee</span>'
-          + atm
-          + '<span class="tg free">no commission</span>'
-          + '</div>';
-      }).join('');
-    })();
 
     // ----- init -----
     app.hidden = false;
     state.room = roomVal();
-    renderTiles();
     render();
+  })();
+
+  // Open the curated card shortlist when an in-page link points at it, and honour a
+  // #calcNoFee deep link on load or hash change. It is a native <details>, so it still
+  // opens without this; this just wires the "see cards" links and the cash-helper link.
+  (function () {
+    const box = document.getElementById('calcNoFee');
+    if (!box) return;
+    function open() {
+      box.open = true;
+      try { box.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) { box.scrollIntoView(); }
+    }
+    document.querySelectorAll('a[href="#calcNoFee"]').forEach(a => {
+      a.addEventListener('click', () => { box.open = true; });
+    });
+    if (location.hash === '#calcNoFee') open();
+    window.addEventListener('hashchange', () => { if (location.hash === '#calcNoFee') open(); });
   })();
 </script>

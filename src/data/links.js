@@ -19,8 +19,8 @@ export const affiliate = {
   //                 Falls back to esimBase when a slug is missing.
   // To go live: set esimBrand to the provider name and paste your approved link into esimBase.
   // Switching providers later (or back to Airalo) is just these two lines. Nothing else to touch.
-  esimBrand: "Nomad",
-  esimBase: "https://lotusflareinc.pxf.io/m4NkDa",
+  esimBrand: "",
+  esimBase: null,
   esimByCountry: {
     // vietnam: "https://your-esim-deep-link",
     // japan: "https://your-esim-deep-link",
