@@ -5,10 +5,8 @@ import Footer from '../components/Footer.astro';
 import { countries } from '../data/index.js';
 const live = countries.filter(c => c.live);
 const soon = countries.filter(c => !c.live);
-const flags = {
-  vietnam: '🇻🇳', japan: '🇯🇵', mexico: '🇲🇽', thailand: '🇹🇭',
-  italy: '🇮🇹', france: '🇫🇷', spain: '🇪🇸', portugal: '🇵🇹', 'united-kingdom': '🇬🇧'
-};
+const knownFlags = ['vietnam','japan','mexico','thailand','italy','france','spain','portugal','united-kingdom'];
+const flagSrc = (slug) => `/flags/${knownFlags.includes(slug) ? slug : 'world'}.svg`;
 const regionTag = {
   vietnam: 'Asia', japan: 'Asia', thailand: 'Asia',
   mexico: 'Americas',
@@ -47,7 +45,7 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
         {live.map(c => (
           <a class="rcard" href={'/' + c.slug}>
             <span class="rtop">
-              <span class="rflag" aria-hidden="true">{flags[c.slug] || '🗺'}</span>
+              <span class="rflag" aria-hidden="true"><img src={flagSrc(c.slug)} alt="" width="26" height="20" loading="lazy" /></span>
               <span class="rtag">{regionTag[c.slug] || ''}</span>
             </span>
             <span class="rname">{c.name}</span>
@@ -88,7 +86,7 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
           <a class="ccard" href={'/' + c.slug}>
             <span class="cthumb">
               <img src={(c.hero && c.hero.img) || ('/' + c.slug + '-hero.jpg')} alt={'Money guide for ' + c.name} loading="lazy" decoding="async" width="400" height="300" />
-              <span class="cflag" aria-hidden="true">{flags[c.slug] || '🗺'}</span>
+              <span class="cflag" aria-hidden="true"><img src={flagSrc(c.slug)} alt="" width="24" height="18" loading="lazy" /></span>
             </span>
             <span class="cbody">
               <span class="cname">{c.name}</span>
@@ -99,7 +97,7 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
         ))}
         {soon.map(c => (
           <span class="ccard soon">
-            <span class="cthumb"><span class="cflag" aria-hidden="true">{flags[c.slug] || '🗺'}</span></span>
+            <span class="cthumb"><span class="cflag" aria-hidden="true"><img src={flagSrc(c.slug)} alt="" width="24" height="18" loading="lazy" /></span></span>
             <span class="cbody"><span class="cname">{c.name}</span><span class="cgo">Coming soon</span></span>
           </span>
         ))}
