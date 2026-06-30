@@ -190,7 +190,7 @@
     .home-hero.has-hero-img .lede{max-width:none}
   }
   @media(max-width:720px){
-    .home-hero.has-hero-img .hh-media{display:block;width:100%;aspect-ratio:16/9;background-position:left center;background-size:cover;background-repeat:no-repeat;border-radius:16px}
+    .home-hero.has-hero-img .hh-media{display:block;width:100%;aspect-ratio:4/5;max-height:420px;background-position:left center;background-size:cover;background-repeat:no-repeat;border-radius:16px}
     .home-hero.has-hero-img .hh-body{padding:20px 2px 4px}
   }
 
