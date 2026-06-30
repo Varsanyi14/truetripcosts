@@ -10,5 +10,6 @@ import uk from './united-kingdom.js';
 import greece from './greece.js';
 import indonesia from './indonesia.js';
 import germany from './germany.js';
+import netherlands from './netherlands.js';
 
-export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany];
+export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands];
