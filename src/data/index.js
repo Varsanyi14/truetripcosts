@@ -17,5 +17,6 @@ import uae from './uae.js';
 import india from './india.js';
 import czechia from './czechia.js';
 import canada from './canada.js';
+import switzerland from './switzerland.js';
 
-export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, india, czechia, canada];
+export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, india, czechia, canada, switzerland];
