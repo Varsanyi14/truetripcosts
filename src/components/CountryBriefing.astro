@@ -13,7 +13,12 @@ const esim = esimLink(c.slug);
 // asks for on paid links, and internal anchors like #calc or /japan are left alone.
 // The test is the URL itself, so a link that is not live yet stays in the same tab.
 const dest = (cta) => (cta && cta.href && cta.href !== "#") ? cta.href : "#calcNoFee";
-const ext = (h) => (typeof h === "string" && /^https?:\/\//i.test(h)) ? { target: "_blank", rel: "noopener sponsored" } : {};
+const ext = (h, paid = true) => (typeof h === "string" && /^https?:\/\//i.test(h)) ? { target: "_blank", rel: paid ? "noopener sponsored" : "noopener" } : {};
+// The ATM card's button opens a Google Maps search for cash machines in this
+// country, built from the name we already store, so it is one default for every
+// country and needs nothing set per country. It is a reference link, not a paid
+// one, so it opens in a new tab with noopener only, no sponsored.
+const atmMap = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("ATM in " + c.name);
 // Everything the honest-number module needs, handed to the client as inert JSON.
 // It asks the traveler nothing about their card, so no card data ships here: just
 // the exchange rate, the tourist-tax block, and the default foreign-fee assumption.
@@ -106,17 +111,23 @@ const artLd = {
   <h2>Will my card work? Do I need cash? Are ATMs easy?</h2>
   <p class="sub">The quick read for a first trip.</p>
   <div class="trio">
-    {c.trio.map(t => (
+    {c.trio.map(t => {
+      const isAtm = t.sym === "atm";
+      const href = isAtm ? atmMap : dest(t.cta);
+      const attrs = isAtm ? ext(atmMap, false) : ext(dest(t.cta));
+      const label = isAtm ? `See ATMs in ${c.name}` : t.cta.label;
+      return (
       <div class={"vc " + t.kind}>
         <Symbol name={t.sym} cls="sym" />
         <div class="bd">
           <h3>{t.h}</h3>
           <p class="verd">{t.verd}</p>
           <p>{t.p}</p>
-          <a class="cta" href={dest(t.cta)} {...ext(dest(t.cta))}>{t.cta.label} <span class="arw">&#8594;</span>{ext(dest(t.cta)).target && <NewTab />}</a>
+          <a class="cta" href={href} {...attrs}>{label} <span class="arw">&#8594;</span>{attrs.target && <NewTab />}</a>
         </div>
       </div>
-    ))}
+      );
+    })}
   </div>
 </section>
 
