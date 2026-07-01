@@ -321,8 +321,6 @@ const artLd = {
     const ds = document.querySelector(".ins-ds");
     const order = ["low", "medium", "high"];
     const track = g.querySelector(".ins-track");
-    const mark = g.querySelector(".ins-mark");
-    const ticks = g.querySelectorAll(".ins-ticks span");
     const set = (lvl) => {
       if (!order.includes(lvl)) return;
       g.dataset.level = lvl;
@@ -336,14 +334,12 @@ const artLd = {
       const p = (clientX - r.left) / r.width;
       set(p < 1 / 3 ? "low" : p < 2 / 3 ? "medium" : "high");
     };
-    track.addEventListener("click", (e) => fromX(e.clientX));
-    ticks.forEach((s, i) => s.addEventListener("click", (e) => { e.stopPropagation(); set(order[i]); }));
     let dragging = false;
-    mark.addEventListener("pointerdown", (e) => { dragging = true; try { mark.setPointerCapture(e.pointerId); } catch (_) {} });
-    mark.addEventListener("pointermove", (e) => { if (dragging) fromX(e.clientX); });
+    g.addEventListener("pointerdown", (e) => { dragging = true; try { g.setPointerCapture(e.pointerId); } catch (_) {} fromX(e.clientX); });
+    g.addEventListener("pointermove", (e) => { if (dragging) fromX(e.clientX); });
     const stop = () => { dragging = false; };
-    mark.addEventListener("pointerup", stop);
-    mark.addEventListener("pointercancel", stop);
+    g.addEventListener("pointerup", stop);
+    g.addEventListener("pointercancel", stop);
     g.addEventListener("keydown", (e) => {
       const i = order.indexOf(g.dataset.level);
       if ((e.key === "ArrowRight" || e.key === "ArrowUp") && i < 2) { set(order[i + 1]); e.preventDefault(); }
