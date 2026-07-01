@@ -638,6 +638,24 @@ const artLd = {
     const fmtPct = p => (Number.isInteger(p) ? p : Math.round(p * 10) / 10) + '%';
     const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
+    // Smoothly roll a number from its previous value to the new one.
+    function roll(el, to, fmt, animate) {
+      if (!el) return;
+      const from = (typeof el._v === 'number') ? el._v : to;
+      el._v = to;
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (el._raf) { cancelAnimationFrame(el._raf); el._raf = 0; }
+      if (!animate || reduce || from === to) { el.textContent = fmt(to); return; }
+      const dur = 420, t0 = performance.now();
+      function step(now) {
+        const p = Math.min(1, (now - t0) / dur);
+        const e = 1 - Math.pow(1 - p, 3);
+        el.textContent = fmt(from + (to - from) * e);
+        el._raf = (p < 1) ? requestAnimationFrame(step) : 0;
+      }
+      el._raf = requestAnimationFrame(step);
+    }
+
     const state = {
       regionIndex: 0,
       room: 150,
@@ -654,7 +672,7 @@ const artLd = {
       regionSel.innerHTML = regions.map((r, i) => '<option value="' + i + '">' + esc(r.label) + '</option>').join('');
       regionWrap.hidden = false;
       regionWrap.style.display = '';
-      regionSel.addEventListener('change', () => { state.regionIndex = +regionSel.value || 0; render(); });
+      regionSel.addEventListener('change', () => { state.regionIndex = +regionSel.value || 0; render(true); });
     } else {
       regionWrap.hidden = true;
       regionWrap.style.display = 'none';
@@ -667,7 +685,7 @@ const artLd = {
       if (isNaN(v) || v < 0) v = 0;
       return v;
     }
-    roomInput.addEventListener('input', () => { state.room = roomVal(); render(); });
+    roomInput.addEventListener('input', () => { state.room = roomVal(); render(false); });
     roomInput.addEventListener('blur', () => { roomInput.value = state.room ? state.room.toLocaleString('en-US') : ''; });
 
     // ----- steppers (nights, travelers) -----
@@ -685,7 +703,7 @@ const artLd = {
         el.dataset.v = v; el.textContent = v;
         if (key === 'hnNights') state.nights = v; else state.trav = v;
         setDisabled(v);
-        render();
+        render(true);
       }));
       setDisabled(+el.dataset.v);
     }
@@ -695,7 +713,7 @@ const artLd = {
     // ----- the one optional control: a no-foreign-fee card toggle -----
     const noFeeToggle = id('hnNoFee');
     if (noFeeToggle) {
-      noFeeToggle.addEventListener('change', () => { state.noFee = noFeeToggle.checked; render(); });
+      noFeeToggle.addEventListener('change', () => { state.noFee = noFeeToggle.checked; render(true); });
     }
 
     // ----- tourist-tax engine. rate = local currency units per 1 USD. -----
@@ -735,7 +753,7 @@ const artLd = {
       return { usd: amount, label: label, note: r.note || tax.note || '' };
     }
 
-    function render() {
+    function render(animate) {
       const roomUSD = state.room, nights = state.nights, trav = state.trav;
       const roomSub = roomUSD * nights;
       const t = computeTax(roomUSD, nights, trav);
@@ -744,12 +762,12 @@ const artLd = {
       const total = roomSub + t.usd + fee;
 
       id('hnNightsLabel').textContent = nights;
-      id('hnRoomV').textContent = usd(roomSub);
       id('hnTaxLabel').textContent = t.label;
-      id('hnTax').textContent = usd(t.usd);
       id('hnFeeQ').textContent = '(about ' + fmtPct(fallbackFxPct) + ')';
-      id('hnFee').textContent = usd(fee);
-      id('hnTotal').textContent = usd(total);
+      roll(id('hnRoomV'), roomSub, usd, animate);
+      roll(id('hnTax'), t.usd, usd, animate);
+      roll(id('hnFee'), fee, usd, animate);
+      roll(id('hnTotal'), total, usd, animate);
 
       // Fee line greys out and reads $0 when the no-fee card toggle is on.
       const feeLine = id('hnFeeLine');
