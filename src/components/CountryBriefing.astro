@@ -344,7 +344,7 @@ const artLd = {
   <p class="lab">How much cash</p>
   <h2>A sensible amount to plan for.</h2>
   <p class="sub">A helper on top of the total above: on-the-ground spending for your whole group across the trip, food, local transport, activities and tips. Lodging is left out on purpose, since it is usually prepaid or paid by card.</p>
-  <div class="estimator secondary" data-rate={c.cash.rate} data-cur={c.cash.cur} data-round={c.cash.round || 100000}>
+  <div class="estimator secondary" data-rate={c.cash.rate} data-cur={c.cash.cur} data-round={c.cash.round || 100000} data-fx={fallbackFxPct}>
     <div class="erow">
       <div class="ef"><label for="trav">Travelers</label>
         <div class="step">
@@ -375,8 +375,8 @@ const artLd = {
       <div class="elegend"><span class="el cash"><span class="mdot"></span>cash <b id="cashUsd">$490</b></span><span class="el card"><span class="mdot"></span>card <b id="cardUsd">$210</b></span></div>
     </div>
     <p class="ehint">That means pulling roughly <b id="vnd">12,000,000</b> in cash, in about <b id="pulls">2</b> ATM <span id="visitword">visits</span>. {c.cash.rateNote}</p>
-    <p class="enote">Pulling cash from a foreign ATM also costs a few dollars unless you use a no-fee debit card.</p>
-    <a class="cta" href="#calcNoFee">See no-fee cards that skip ATM fees <span class="tg free">we earn nothing</span> <span class="arw">&#8594;</span></a>
+    <p class="enote">Both sides carry a quiet cost. Pulling cash from a foreign ATM costs a few dollars unless you use a no-fee debit card, and a typical US card adds about <b id="cardFee" class="num">$6</b> on that card spending. A no-fee card pairing makes both $0.</p>
+    <a class="cta" href="#calcNoFee">See the cards that skip both fees <span class="tg free">we earn nothing</span> <span class="arw">&#8594;</span></a>
   </div>
 </section>
 
@@ -409,6 +409,7 @@ const artLd = {
   const est = document.querySelector('.estimator');
   if (est) {
     const rate = +est.dataset.rate, cur = est.dataset.cur, round = +est.dataset.round || 100000;
+    const fx = +est.dataset.fx || 3;
     const btns = Array.from(est.querySelectorAll('.seg button'));
     let si = btns.findIndex(b => b.classList.contains('on')); if (si < 0) si = 0;
     const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -437,6 +438,7 @@ const artLd = {
       n('cashBar').style.width = cp + '%'; n('cardBar').style.width = (100 - cp) + '%';
       roll(n('cashUsd'), cash, usd, animate);
       roll(n('cardUsd'), card, usd, animate);
+      roll(n('cardFee'), card * fx / 100, usd, animate);
       const pulls = Math.max(1, Math.ceil(cash / 300));
       roll(n('vnd'), cash * rate, loc, animate); n('pulls').textContent = pulls;
       const vw = n('visitword'); if (vw) vw.textContent = pulls === 1 ? 'visit' : 'visits';
