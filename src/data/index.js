@@ -15,5 +15,6 @@ import costaRica from './costa-rica.js';
 import dominicanRepublic from './dominican-republic.js';
 import uae from './uae.js';
 import india from './india.js';
+import czechia from './czechia.js';
 
-export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, india];
+export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, india, czechia];
