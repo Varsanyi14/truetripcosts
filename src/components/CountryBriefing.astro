@@ -58,7 +58,10 @@ const insLevels = {
   medium: "Care in the main cities is good, but costs add up and reaching top care from a remote spot takes time, so it is worth a real look for a trip here.",
   high: "Strong care can sit a long way from where you are traveling and an evacuation is a genuine possibility, so this is one to weigh seriously for a trip here."
 };
-const insDial = insLevels[c.insuranceLevel] || insLevels.medium;
+const insLevel = insLevels[c.insuranceLevel] ? c.insuranceLevel : "medium";
+const insDial = insLevels[insLevel];
+// The three dial stops, in order, for the little "how much it matters" scale.
+const insScale = [["low", "Low"], ["medium", "Medium"], ["high", "High"]];
 // The one genuinely per-country fact on an otherwise global card: the local
 // ambulance number, web-verified with its own checked date. May be null.
 const emg = c.emergency || null;
@@ -235,7 +238,10 @@ const artLd = {
 
 <section id="insurance">
   <p class="lab">Medical cover</p>
-  <h2>The one cost with no price tag.</h2>
+  <div class="ins-head">
+    <svg class="ins-motif" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#0E7A5F" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 12 7 12s7-7 7-12a7 7 0 0 0-7-7z"/><path d="M12 6v6M9 9h6"/></svg>
+    <h2>The one cost with no price tag.</h2>
+  </div>
   <p class="sub">Every other number on this page has a price you can look up. This one does not, and it can be the largest of them all. Most US health plans cover little or nothing once you leave the country, and Medicare covers essentially none of it abroad. A serious illness or injury is paid up front, and a medical evacuation runs from tens of thousands of dollars to past $100,000 if you are remote or an ocean from home.</p>
 
   <div class="ins">
@@ -247,42 +253,61 @@ const artLd = {
       </div>
     </div>
 
-    <p class="ins-gap">If you do want cover, this is what it is for: the evacuation and the up-front hospital bill, the part no card limit is meant to absorb. {insDial}</p>
+    <div class="ins-dial">
+      <p class="ins-dlab">How much cover matters here</p>
+      <div class="ins-segs">
+        {insScale.map(([k, label]) => (
+          <div class={"ins-seg" + (k === insLevel ? " on" : "")} data-l={k}>{label}</div>
+        ))}
+      </div>
+      <p class="ins-ds">{insDial}</p>
+    </div>
+
+    <p class="ins-gap">If you do want cover, this is what it is for: the evacuation and the up-front hospital bill, the part no card limit is meant to absorb.</p>
 
     <div class="ins-picks">
-      <div class="ins-pick">
+      <div class="ins-pick p1">
+        <div class="ins-ptop">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0E7A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span class="ins-dots"><span class="ins-dot f"></span><span class="ins-dot"></span></span>
+        </div>
         <p class="ins-tier">Enough for most trips</p>
         <p class="ins-name">Faye, or a comparable whole-trip policy</p>
         <p class="ins-why">Bundles trip protection with emergency medical, which is enough cover for most travelers on a typical trip.</p>
-        {ext(insFaye).target ? (
-          <a class="cta" href={insFaye} {...ext(insFaye)}>See Faye's cover
+        <div class="ins-foot">
+          {ext(insFaye).target ? (
+            <a class="cta" href={insFaye} {...ext(insFaye)}>See Faye's cover
+              <span class={commLabel(insFaye).cls}>{commLabel(insFaye).text}</span>
+              <span class="arw">&#8594;</span><NewTab /></a>
+          ) : (
             <span class={commLabel(insFaye).cls}>{commLabel(insFaye).text}</span>
-            <span class="arw">&#8594;</span><NewTab /></a>
-        ) : (
-          <p class="ins-nolink"><span class={commLabel(insFaye).cls}>{commLabel(insFaye).text}</span></p>
-        )}
+          )}
+        </div>
       </div>
-      <div class="ins-pick">
+      <div class="ins-pick p2">
+        <div class="ins-ptop">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M12 9v5M9.5 11.5h5"/></svg>
+          <span class="ins-dots"><span class="ins-dot f"></span><span class="ins-dot f"></span></span>
+        </div>
         <p class="ins-tier">The deeper end</p>
-        <p class="ins-name">A dedicated travel-medical plan, of the GeoBlue or IMG type</p>
+        <p class="ins-name">A dedicated travel-medical plan built for serious care and evacuation abroad</p>
         <p class="ins-why">Stronger on medical care and evacuation, for a remote or higher-risk trip where that is the real exposure.</p>
-        {ext(insMedical).target ? (
-          <a class="cta" href={insMedical} {...ext(insMedical)}>See a travel-medical plan
+        <div class="ins-foot">
+          {ext(insMedical).target ? (
+            <a class="cta" href={insMedical} {...ext(insMedical)}>See a travel-medical plan
+              <span class={commLabel(insMedical).cls}>{commLabel(insMedical).text}</span>
+              <span class="arw">&#8594;</span><NewTab /></a>
+          ) : (
             <span class={commLabel(insMedical).cls}>{commLabel(insMedical).text}</span>
-            <span class="arw">&#8594;</span><NewTab /></a>
-        ) : (
-          <p class="ins-nolink"><span class={commLabel(insMedical).cls}>{commLabel(insMedical).text}</span></p>
-        )}
+          )}
+        </div>
       </div>
     </div>
 
     {emg && (
       <div class="ins-call">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        <div>
-          <p class="ins-call-h">If it happens</p>
-          <p class="ins-call-b">In {c.name}, the number for an ambulance is <b>{emg.medical}</b>. Call it first, then call your insurer's 24/7 assistance line, which is what confirms payment and arranges an evacuation.{emg.note ? ` ${emg.note}` : ""}</p>
-        </div>
+        <p class="ins-call-h"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>If it happens</p>
+        <p class="ins-call-b">In {c.name}, the number for an ambulance is <span class="ins-num">{emg.medical}</span>. Call it first, then call your insurer's 24/7 assistance line, which is what confirms payment and arranges an evacuation.{emg.note ? ` ${emg.note}` : ""}</p>
       </div>
     )}
 
