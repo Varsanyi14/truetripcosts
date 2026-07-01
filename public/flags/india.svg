@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-in" viewBox="0 0 640 480">
+  <path fill="#f93" d="M0 0h640v160H0z"/>
+  <path fill="#fff" d="M0 160h640v160H0z"/>
+  <path fill="#128807" d="M0 320h640v160H0z"/>
+  <g transform="translate(320 240)">
+    <circle r="45" fill="#008"/>
+    <circle r="39" fill="#fff"/>
+    <circle r="8" fill="#008"/>
+    <g id="in-spokes" fill="#008">
+      <g id="in-s6">
+        <g id="in-s">
+          <circle r="1.75" transform="rotate(7.5) translate(35.6)"/>
+          <path d="M0 0 3.2 35.6 -3.2 35.6z" transform="rotate(3.75)"/>
+        </g>
+        <use href="#in-s" transform="rotate(15)"/>
+      </g>
+      <use href="#in-s6" transform="rotate(30)"/>
+      <use href="#in-s6" transform="rotate(60)"/>
+      <use href="#in-s6" transform="rotate(90)"/>
+      <use href="#in-s6" transform="rotate(120)"/>
+      <use href="#in-s6" transform="rotate(150)"/>
+      <use href="#in-s6" transform="rotate(180)"/>
+      <use href="#in-s6" transform="rotate(210)"/>
+      <use href="#in-s6" transform="rotate(240)"/>
+      <use href="#in-s6" transform="rotate(270)"/>
+      <use href="#in-s6" transform="rotate(300)"/>
+      <use href="#in-s6" transform="rotate(330)"/>
+    </g>
+  </g>
+</svg>
