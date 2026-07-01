@@ -60,8 +60,6 @@ const insLevels = {
 };
 const insLevel = insLevels[c.insuranceLevel] ? c.insuranceLevel : "medium";
 const insDial = insLevels[insLevel];
-// The three dial stops, in order, for the little "how much it matters" scale.
-const insScale = [["low", "Low"], ["medium", "Medium"], ["high", "High"]];
 // The one genuinely per-country fact on an otherwise global card: the local
 // ambulance number, web-verified with its own checked date. May be null.
 const emg = c.emergency || null;
@@ -255,10 +253,13 @@ const artLd = {
 
     <div class="ins-dial">
       <p class="ins-dlab">How much cover matters here</p>
-      <div class="ins-segs">
-        {insScale.map(([k, label]) => (
-          <div class={"ins-seg" + (k === insLevel ? " on" : "")} data-l={k}>{label}</div>
-        ))}
+      <div class="ins-gauge" data-level={insLevel} role="img" aria-label={`How much cover matters here: ${insLevel}`}>
+        <div class="ins-track"><span class="ins-fill"></span><span class="ins-mark"></span></div>
+        <div class="ins-ticks">
+          <span class={insLevel === "low" ? "on" : ""}>Low</span>
+          <span class={insLevel === "medium" ? "on" : ""}>Medium</span>
+          <span class={insLevel === "high" ? "on" : ""}>High</span>
+        </div>
       </div>
       <p class="ins-ds">{insDial}</p>
     </div>
