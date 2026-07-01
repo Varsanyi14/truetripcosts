@@ -5,6 +5,8 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-30",
+  emergency: { medical: "911", note: "911 has English-speaking operators. In rural areas and along the coast, an ambulance can take longer to reach you.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  insuranceLevel: "medium",
   region: "Americas",
   hook: "Dollars work almost everywhere, but paying in colones quietly saves you money.",
 

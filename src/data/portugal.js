@@ -5,6 +5,8 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-28",
+  emergency: { medical: "112", note: "112 reaches every emergency service across the country.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  insuranceLevel: "low",
   title: "Money in Portugal (2026): Cards, Cash, Multibanco ATMs, Tipping and the Tourist Tax | True Trip Costs",
   description: "How to handle money in Portugal as a US traveler in 2026: cards work almost everywhere, the dollar conversion trap, Multibanco ATMs vs the yellow Euronet ones, light tipping, the Lisbon and Porto tourist taxes, and the 23% IVA refund. Checked June 2026.",
   h1: "Money in Portugal, sorted.",

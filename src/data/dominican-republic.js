@@ -5,6 +5,8 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-30",
+  emergency: { medical: "911", note: "911 covers the country, though ambulance response is quickest in the cities and resort areas.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  insuranceLevel: "high",
   region: "Americas",
   hook: "Dollars work in the resort zones, but pesos and a watch for the 28% checkout jump save you money.",
 

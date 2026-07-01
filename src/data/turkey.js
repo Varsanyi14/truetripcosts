@@ -5,6 +5,8 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-30",
+  emergency: { medical: "112", note: "112 now covers every emergency service, and calls to 911 are redirected to it.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  insuranceLevel: "medium",
   region: "Middle East",
   hook: "Cards work in the cities, but bazaars, taxis and street food still want lira, and the lira moves fast.",
   aliases: ["turkey", "turkiye", "istanbul", "cappadocia", "antalya", "izmir", "ankara", "bodrum", "fethiye", "turkish lira", "try", "lira", "turkish"],

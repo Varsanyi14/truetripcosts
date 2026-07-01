@@ -5,6 +5,8 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-30",
+  emergency: { medical: "911", note: "911 works everywhere, the same as it does at home.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  insuranceLevel: "low",
   region: "Americas",
   hook: "As card-friendly as the US, but the sticker price hides sales tax and a US-style tip.",
   aliases: ["toronto", "vancouver", "montreal", "quebec", "quebec city", "ottawa", "calgary", "banff", "niagara", "canadian dollar", "cad", "loonie", "toonie", "ontario", "british columbia", "alberta"],

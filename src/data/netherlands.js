@@ -5,6 +5,8 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-30",
+  emergency: { medical: "112", note: "112 reaches every emergency service, free from any phone.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  insuranceLevel: "low",
   region: "Europe",
   hook: "One of Europe's most cashless countries, with a catch: not every card type works everywhere.",
 

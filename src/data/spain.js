@@ -5,6 +5,8 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-28",
+  emergency: { medical: "112", note: "112 reaches every emergency service, with English-speaking operators available.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  insuranceLevel: "low",
   title: "Money in Spain (2026): Cards, Cash, ATMs, Tipping and the Tourist Tax | True Trip Costs",
   description: "How to handle money in Spain as a US traveler in 2026: cards work almost everywhere, the dollar conversion trap, bank ATMs vs Euronet, light tipping, the Catalonia and Balearic tourist taxes including Barcelona's 2026 rise, and the IVA refund with no minimum spend. Checked June 2026.",
   h1: "Money in Spain, sorted.",

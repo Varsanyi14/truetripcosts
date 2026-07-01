@@ -5,6 +5,8 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-30",
+  emergency: { medical: "112", note: "112 reaches every emergency service, and 144 goes straight to an ambulance.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  insuranceLevel: "low",
   region: "Europe",
   hook: "Cards work fine, but Austria still runs on more cash than most of Western Europe.",
   aliases: ["vienna", "wien", "salzburg", "innsbruck", "hallstatt", "graz", "linz", "tyrol", "tirol", "austrian", "euro", "eur", "alps", "alpine"],

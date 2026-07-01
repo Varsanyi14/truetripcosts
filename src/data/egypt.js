@@ -5,6 +5,8 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-30",
+  emergency: { medical: "123", note: "123 is the ambulance line. 126 reaches the tourist police, who are more likely to speak English.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  insuranceLevel: "high",
   region: "Middle East",
   hook: "A cash country: cards work at hotels and malls, but markets, taxis, tips and street food all want pounds.",
   aliases: ["cairo", "giza", "luxor", "aswan", "alexandria", "sharm el sheikh", "hurghada", "egyptian pound", "egp", "pound", "nile", "pyramids", "egyptian"],

@@ -5,6 +5,8 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-30",
+  emergency: { medical: "119", note: "119 is the medical line, and 112 works as a general emergency number in the cities. Outside them, ambulance cover is thin and a taxi is often faster.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  insuranceLevel: "high",
   region: "Asia",
   hook: "Bali runs more on cash and QR codes than tourists expect, plus a one-time entry levy on top.",
 

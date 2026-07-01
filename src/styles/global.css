@@ -387,3 +387,24 @@
 .ds-none{margin:6px 4px 2px;color:var(--muted,#6F6E66);font-size:13px}
 .ds-none a{color:var(--teal-deep,#0A5644)}
 @media(max-width:720px){.ds-panel{width:220px}}
+
+/* Medical-cover card. One card, two picks, calm, colours from the tokens above. */
+.ins{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);margin-top:2px}
+.ins-skip{display:flex;gap:11px;align-items:flex-start;background:var(--green-bg);border:1px solid #C2E0C8;border-radius:12px;padding:14px 16px}
+.ins-skip svg{flex:none;margin-top:2px}
+.ins-skip-h{font-weight:600;color:var(--ink);margin:0 0 5px;font-size:15px}
+.ins-skip p{margin:0;font-size:14px;line-height:1.6;color:#3B4A46}
+.ins-gap{font-size:15px;line-height:1.65;color:var(--ink);margin:18px 0 0}
+.ins-picks{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 0}
+.ins-pick{border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;background:#FCFCFA}
+.ins-tier{font-size:11.5px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.09em;margin:0 0 6px}
+.ins-name{font-family:var(--serif);font-weight:500;font-size:18px;line-height:1.2;color:var(--ink);margin:0 0 6px}
+.ins-why{font-size:13.5px;line-height:1.55;color:var(--muted);margin:0;flex:1}
+.ins-pick .cta{margin-top:12px}
+.ins-nolink{margin:12px 0 0}
+.ins-call{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:14px 16px;margin:18px 0 0;background:var(--card)}
+.ins-call svg{flex:none;margin-top:2px}
+.ins-call-h{font-size:11.5px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.09em;margin:0 0 4px}
+.ins-call-b{margin:0;font-size:14.5px;line-height:1.6;color:var(--ink)}
+.ins-fine{font-size:12.5px;line-height:1.55;color:#5C6661;margin:16px 0 0}
+@media(max-width:620px){.ins-picks{grid-template-columns:1fr}.ins{padding:18px}}

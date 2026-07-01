@@ -5,6 +5,8 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-30",
+  emergency: { medical: "112", note: "112 reaches every service, and 155 goes straight to an ambulance.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  insuranceLevel: "low",
   region: "Europe",
   hook: "One of Europe's most card-friendly countries, with a small Prague city fee and a couple of tourist-money traps to dodge.",
   aliases: ["czech republic", "czech", "prague", "praha", "brno", "cesky krumlov", "karlovy vary", "plzen", "pilsen", "koruna", "czk", "bohemia", "moravia"],

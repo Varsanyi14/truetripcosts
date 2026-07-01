@@ -5,6 +5,8 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-30",
+  emergency: { medical: "112", note: "112 works across the mainland and the islands. Reaching a major hospital from a smaller island can take time.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  insuranceLevel: "medium",
   region: "Europe",
   hook: "Cards work in the cities, but the islands still run on cash and a nightly climate fee.",
 

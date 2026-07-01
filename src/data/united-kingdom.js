@@ -5,6 +5,8 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-28",
+  emergency: { medical: "999", note: "999 is the main emergency number, and 112 works as well.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  insuranceLevel: "low",
   title: "Money in the United Kingdom (2026): Cards, Contactless, Cash, ATMs, Tipping and the Edinburgh Visitor Levy | True Trip Costs",
   description: "How to handle money in the UK as a US traveler in 2026: tap-to-pay beats cash almost everywhere, the dollar conversion trap, free LINK cashpoints vs fee machines, light tipping and the 12.5% service charge, why there is no VAT refund in Great Britain, the new Edinburgh visitor levy, and the UK ETA you now need before you fly. Checked June 2026.",
   h1: "Money in the UK, sorted.",

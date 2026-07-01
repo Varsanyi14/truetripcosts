@@ -5,6 +5,8 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-30",
+  emergency: { medical: "112", note: "112 covers ambulance and fire, and it is free from any phone.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  insuranceLevel: "low",
   region: "Europe",
   hook: "More cash-loving than its reputation suggests, with a patchwork of city bed taxes to plan for.",
 

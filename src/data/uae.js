@@ -5,6 +5,8 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-30",
+  emergency: { medical: "998", note: "998 is the ambulance line and 999 is the police. The 112 and 911 numbers are not used here.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  insuranceLevel: "low",
   region: "Middle East",
   hook: "One of the most cashless places on earth, and the dirham is pinned to the dollar, so prices never move.",
   aliases: ["uae", "u.a.e.", "dubai", "abu dhabi", "emirates", "emirati"],
