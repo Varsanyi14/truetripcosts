@@ -237,7 +237,7 @@ const artLd = {
 
   <div class="hn" id="hn-app" hidden>
     <div class="hn-inputs">
-      <label class="cf" id="hnRegionWrap" hidden>
+      <label class="cf" id="hnRegionWrap" hidden style="display:none">
         <span class="cf-l">Where are you staying?</span>
         <span class="selwrap"><select id="hnRegion"></select></span>
       </label>
@@ -467,9 +467,11 @@ const artLd = {
     if (regions.length > 1) {
       regionSel.innerHTML = regions.map((r, i) => '<option value="' + i + '">' + esc(r.label) + '</option>').join('');
       regionWrap.hidden = false;
+      regionWrap.style.display = '';
       regionSel.addEventListener('change', () => { state.regionIndex = +regionSel.value || 0; render(); });
     } else {
       regionWrap.hidden = true;
+      regionWrap.style.display = 'none';
     }
 
     // ----- room money input -----
