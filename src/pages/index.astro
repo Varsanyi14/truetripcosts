@@ -100,7 +100,7 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
       <p class="cfilter-none" id="country-filter-none" hidden>No match yet. Try another spelling, or <a href="#" data-open-signup><b>ask us to add it</b></a>.</p>
       <div class="country-grid" id="country-grid">
         {live.map(c => (
-          <a class="ccard" href={'/' + c.slug} data-name={c.name.toLowerCase()}>
+          <a class="ccard" href={'/' + c.slug} data-name={[c.name, ...(c.aliases || [])].join(' ').toLowerCase()}>
             <span class="cthumb">
               <img src={(c.hero && c.hero.img) || ('/' + c.slug + '-hero.jpg')} alt={'Money guide for ' + c.name} loading="lazy" decoding="async" width="400" height="300" />
               <span class="cflag" aria-hidden="true"><img src={flagSrc(c.slug)} alt="" width="24" height="18" loading="lazy" /></span>
@@ -113,7 +113,7 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
           </a>
         ))}
         {soon.map(c => (
-          <span class="ccard soon" data-name={c.name.toLowerCase()}>
+          <span class="ccard soon" data-name={[c.name, ...(c.aliases || [])].join(' ').toLowerCase()}>
             <span class="cthumb"><span class="cflag" aria-hidden="true"><img src={flagSrc(c.slug)} alt="" width="24" height="18" loading="lazy" /></span></span>
             <span class="cbody"><span class="cname">{c.name}</span><span class="cgo">Coming soon</span></span>
           </span>
