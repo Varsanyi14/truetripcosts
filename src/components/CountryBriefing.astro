@@ -129,14 +129,14 @@ const artLd = {
           <ul>{p.bullets.map(b => (<li set:html={b}></li>))}</ul>
           {p.cta && (
             <a class="cta" href={p.cta.href === "#" ? "#calcNoFee" : p.cta.href}>{p.cta.label}
-              <span class={"tg " + p.cta.tag}>{p.cta.tag === "earn" ? "earns commission" : "no commission"}</span>
+              <span class={"tg " + p.cta.tag}>{p.cta.tag === "earn" ? "we may earn a commission" : "we earn nothing"}</span>
               <span class="arw">&#8594;</span></a>
           )}
           {ins && p.when === "Before you go" && (
             <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:12px">
               <p style="font-size:14px;color:#3B4A46;margin:0"><b>Travel insurance, if it fits the trip.</b> Worth it when you have prepaid a lot or are somewhere with steep medical costs. If your trip is cheap and refundable, you can skip it.</p>
               <a class="cta" href={ins}>Compare Faye's whole-trip cover
-                <span class="tg earn">earns commission</span>
+                <span class="tg earn">we may earn a commission</span>
                 <span class="arw">&#8594;</span></a>
             </div>
           )}
@@ -160,7 +160,7 @@ const artLd = {
         <h3>{(c.connectivity.covered && c.connectivity.covered.h) || "Your plan may already include it"}</h3>
         <p class="verd">{(c.connectivity.covered && c.connectivity.covered.verd) || "Often, do nothing"}</p>
         <p>{(c.connectivity.covered && c.connectivity.covered.p) || "Some US plans include slow data abroad at no extra cost. If that is you, the honest move is to leave it alone."}</p>
-        <p style="margin-top:8px"><span class="tg free">no commission</span></p>
+        <p style="margin-top:8px"><span class="tg free">we earn nothing</span></p>
       </div>
     </div>
     <div class="vc warn">
@@ -177,7 +177,7 @@ const artLd = {
     <Fragment>
       <p style="font-size:14.5px;margin:6px 0 0">If an eSIM is the cheaper call, {esimBrand ? `${esimBrand} covers ${c.name}.` : `there is a tracked eSIM option for ${c.name}.`}</p>
       <a class="cta" href={esim}>{esimBrand ? `Get your ${esimBrand} eSIM for ${c.name}` : `Get an eSIM for ${c.name}`}
-        <span class="tg earn">earns commission</span>
+        <span class="tg earn">we may earn a commission</span>
         <span class="arw">&#8594;</span></a>
     </Fragment>
   )}
@@ -293,24 +293,36 @@ const artLd = {
 
   <details class="cardlist" id="calcNoFee">
     <summary class="cardlist-sum">
-      <span class="cardlist-txt"><b>Not sure about your card?</b> Check with your bank before you go, or <span class="cardlist-link">see cards that work well in {c.name}</span>.</span>
+      <span class="cardlist-txt"><b>Not sure which card to bring?</b> See <span class="cardlist-link">my pick for {c.name}</span>.</span>
       <svg class="cardlist-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
     </summary>
     <div class="cardlist-body">
-      <p class="sl-intro">A short, hand-picked list, not a full roster. We earn no commission on any of these today. Always confirm the current fee with the issuer before you apply. Checked {cardsChecked}.</p>
+      <div style="display:flex;gap:9px;align-items:flex-start;background:#E1F1EB;border-radius:12px;padding:11px 13px;margin:0 0 14px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        <p style="margin:0;font-size:14px;line-height:1.5;color:#0A5644"><b>Already carry a card with no foreign transaction fee?</b> Then you are set for {c.name}, and can skip this. There is nothing to buy.</p>
+      </div>
+      <p class="sl-intro">{shortlist[0] && shortlist[0].kind === "debit"
+        ? `${c.name} leans on cash more than its reputation suggests, so the card that earns its place is a fee-free ATM debit card, with a no-foreign-fee credit card for hotels and bigger spots. If you are getting one, this is the pairing I would pick.`
+        : `If you are getting a card for ${c.name}, this is the pairing I would pick: a no-foreign-fee credit card for spending, and a fee-free ATM debit card for cash.`} We earn nothing on these today. Always confirm the current fee with the issuer before you apply. Checked {cardsChecked}.</p>
       <div class="sl-row" role="list">
         {shortlist.map((card, i) => (
           <div class="sl" role="listitem">
+            {i === 0 && <div style="margin:0 0 8px"><span style="display:inline-block;background:#0A5644;color:#fff;font-size:11px;font-weight:500;padding:2px 10px;border-radius:999px">My pick for {c.name}</span></div>}
             <div class="sl-face" style={`--f:${faceColors[i % faceColors.length]}`}>
               <div class="sl-top"><span class="sl-bank">{card.issuer}</span><span class="sl-chip" aria-hidden="true"></span></div>
               <div class="sl-stripe" aria-hidden="true"></div>
               <span class="sl-prod">{card.product}</span>
               <div class="sl-foot"><span class="sl-net">{(card.network || '').toUpperCase()}</span><span class="sl-mark" aria-hidden="true">TTC</span></div>
             </div>
-            <p class="sl-why">{whyLine(card)}</p>
-            <span class={"tg " + (card.affiliate && card.affiliate.link ? "earn" : "free")}>{(card.affiliate && card.affiliate.label) || "no commission"}</span>
+            <p class="sl-why">{(i === 0 && card.note) ? card.note : whyLine(card)}</p>
+            <div style="margin:0 0 6px"><span style="display:inline-block;background:#E1F1EB;color:#0A5644;font-size:11.5px;font-weight:500;padding:3px 9px;border-radius:999px">{card.kind === "debit" ? "Best for ATM cash" : "Best for hotels, shops, dining"}</span></div>
+            <span class={"tg " + (card.affiliate && card.affiliate.link ? "earn" : "free")}>{(card.affiliate && card.affiliate.label) || "we earn nothing"}</span>
           </div>
         ))}
+      </div>
+      <div style="display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin:14px 0 0">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Recommended with no kickback from any of these. If that ever changes, this label will read <i>we may earn a commission</i>, and the pick will still be the pick.</p>
       </div>
     </div>
   </details>
@@ -352,7 +364,7 @@ const artLd = {
     </div>
     <p class="ehint">That means pulling roughly <b id="vnd">12,000,000</b> in cash, in about <b id="pulls">2</b> ATM <span id="visitword">visits</span>. {c.cash.rateNote}</p>
     <p class="enote">Pulling cash from a foreign ATM also costs a few dollars unless you use a no-fee debit card.</p>
-    <a class="cta" href="#calcNoFee">See no-fee cards that skip ATM fees <span class="tg free">no commission</span> <span class="arw">&#8594;</span></a>
+    <a class="cta" href="#calcNoFee">See no-fee cards that skip ATM fees <span class="tg free">we earn nothing</span> <span class="arw">&#8594;</span></a>
   </div>
 </section>
 

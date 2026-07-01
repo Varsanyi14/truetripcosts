@@ -13,10 +13,10 @@
 //   atm        a short note for the cash side, or null
 //   note       an acceptance or fine-print caveat shown when the card is picked, or null
 //   color      a representative hex for the tile (a colour, never the real card art)
-//   affiliate  { link, label }. Every link is null and every label is "no commission"
+//   affiliate  { link, label }. Every link is null and every label is "we earn nothing"
 //              for now, because there is no card affiliate program yet. When a program
-//              lands, set that card's link and flip its label to "earns commission".
-//              The rest stay "no commission".
+//              lands, set that card's link and flip its label to "we may earn a commission".
+//              The rest stay "we earn nothing".
 //
 // HARD RULE on the tiles: no real Visa, Mastercard or Amex logos and no proprietary
 // card artwork. Brand and product names as plain text are fine. A representative
@@ -32,7 +32,7 @@ export const cardsCheckedISO = "2026-06-29";
 // The safe default for "assume the worst": a typical basic-bank-card fee.
 export const fallbackFxPct = 3;
 
-const free = { link: null, label: "no commission" };
+const free = { link: null, label: "we earn nothing" };
 
 export const cards = [
   // Chase. Sapphire and Ink Preferred have no foreign fee; the Freedom pair charges 3%.
@@ -108,7 +108,7 @@ export const noFeePicks = cards.filter(c => c.fxPct === 0 && (c.kind === "credit
 // with the debit card for ATM cash, card-friendly ones lead with the credit cards.
 // This stays generic (a set of slugs), so adding the fiftieth country still adds
 // no per-card work. Each card's affiliate label is data-driven from the entry above,
-// so the day a program lands, that one card flips to "earns commission" on its own.
+// so the day a program lands, that one card flips to "we may earn a commission" on its own.
 const cashHeavySlugs = new Set(["japan", "vietnam", "thailand", "mexico", "indonesia"]);
 
 export function shortlistFor(slug) {
