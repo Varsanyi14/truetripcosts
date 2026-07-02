@@ -69,11 +69,11 @@ const emg = c.emergency || null;
 // Section illustrations. One shared, generic set covers every country: an ATM for
 // currency basics, a hotel bill for the real-cost calculator, a card terminal for
 // the traps. No per-country image work is needed. A country may override any slot
-// by setting c.art = { currency, cost, traps } with its own image path. Gated on an
-// explicit opt-in (showArt) for now, so we can preview on one country before it
-// rolls out; to turn it on everywhere, change the gate below to default on.
+// by setting c.art = { currency, cost, traps } with its own image path. On by default
+// for every country; a country can opt out entirely with art:false, or override a
+// single slot by passing an object.
 const ART_DEFAULTS = { currency: "/art/atm-currency.jpg", cost: "/art/hotel-bill.jpg", traps: "/art/card-terminal.jpg" };
-const art = (c.showArt || c.art) ? { ...ART_DEFAULTS, ...(c.art || {}) } : null;
+const art = (c.art === false) ? null : { ...ART_DEFAULTS, ...((c.art && typeof c.art === "object") ? c.art : {}) };
 const faqLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
