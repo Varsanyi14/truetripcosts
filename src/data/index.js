@@ -21,5 +21,6 @@ import switzerland from './switzerland.js';
 import austria from './austria.js';
 import turkey from './turkey.js';
 import egypt from './egypt.js';
+import colombia from './colombia.js';
 
-export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, india, czechia, canada, switzerland, austria, turkey, egypt];
+export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, india, czechia, canada, switzerland, austria, turkey, egypt, colombia];
