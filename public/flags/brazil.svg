@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-br" viewBox="0 0 640 480">
+  <path fill="#009c3b" d="M0 0h640v480H0z"/>
+  <path fill="#ffdf00" d="M320 58 585 240 320 422 55 240z"/>
+  <circle cx="320" cy="240" r="104" fill="#002776"/>
+  <path d="M232 250q88 46 176 0" fill="none" stroke="#fff" stroke-width="13"/>
+  <g fill="#fff">
+    <circle cx="298" cy="205" r="4"/>
+    <circle cx="342" cy="200" r="3"/>
+    <circle cx="366" cy="224" r="4"/>
+    <circle cx="312" cy="230" r="3"/>
+    <circle cx="286" cy="248" r="2.5"/>
+    <circle cx="352" cy="252" r="3"/>
+    <circle cx="326" cy="214" r="2.5"/>
+    <circle cx="380" cy="246" r="2.5"/>
+    <circle cx="300" cy="292" r="3"/>
+    <circle cx="340" cy="298" r="2.5"/>
+  </g>
+</svg>
