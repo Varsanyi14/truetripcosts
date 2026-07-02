@@ -1,5 +1,6 @@
 export default {
   slug: "italy",
+  showArt: true,
   live: true,
   name: "Italy",
   from: "United States",

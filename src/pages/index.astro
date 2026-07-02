@@ -12,7 +12,7 @@ const flagDir = process.cwd() + '/public/flags/';
 const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? `/flags/${slug}.svg` : '/flags/world.svg';
 // Hero illustration: save your image at public/hero/landing.png and it turns on automatically
 // on the next build. No image there means the text-only hero stays. Nothing to toggle by hand.
-const heroImage = fs.existsSync(process.cwd() + '/public/hero/landing.png') ? '/hero/landing.png' : null;
+const heroImage = fs.existsSync(process.cwd() + '/public/hero/landing.jpg') ? '/hero/landing.jpg' : (fs.existsSync(process.cwd() + '/public/hero/landing.png') ? '/hero/landing.png' : null);
 // Region label and one-line rail blurb. NEW countries set `region` and `hook`
 // in their own data file (src/data/<slug>.js); these maps are only a fallback for
 // the original nine, so you never edit this file when adding a country.

@@ -66,6 +66,14 @@ const insDial = insLevels[insLevel];
 // The one genuinely per-country fact on an otherwise global card: the local
 // ambulance number, web-verified with its own checked date. May be null.
 const emg = c.emergency || null;
+// Section illustrations. One shared, generic set covers every country: an ATM for
+// currency basics, a hotel bill for the real-cost calculator, a card terminal for
+// the traps. No per-country image work is needed. A country may override any slot
+// by setting c.art = { currency, cost, traps } with its own image path. Gated on an
+// explicit opt-in (showArt) for now, so we can preview on one country before it
+// rolls out; to turn it on everywhere, change the gate below to default on.
+const ART_DEFAULTS = { currency: "/art/atm-currency.jpg", cost: "/art/hotel-bill.jpg", traps: "/art/card-terminal.jpg" };
+const art = (c.showArt || c.art) ? { ...ART_DEFAULTS, ...(c.art || {}) } : null;
 const faqLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -352,6 +360,7 @@ const artLd = {
 <section>
   <p class="lab">Currency basics</p>
   <h2>{c.currencyHeading}</h2>
+  {art && <figure class="secart"><img src={art.currency} alt="" loading="lazy" decoding="async" width="1400" height="788" /></figure>}
   <div class="facts">
     {c.facts.map(f => (
       <div class="fact">
@@ -373,6 +382,7 @@ const artLd = {
 <section>
   <p class="lab">Watch out for</p>
   <h2>The small traps that catch first-timers.</h2>
+  {art && <figure class="secart"><img src={art.traps} alt="" loading="lazy" decoding="async" width="1400" height="788" /></figure>}
   <div class="traps">
     {c.traps.map(t => (<div class="trap"><span class="dot">!</span><span set:html={t}></span></div>))}
   </div>
@@ -396,6 +406,7 @@ const artLd = {
   <p class="lab">What it really costs</p>
   <h2>What you'll really spend in {c.name}.</h2>
   <p class="sub">Your room, your on-the-ground spending, the two fees most US cards add without telling you, and {c.name}'s tourist tax. One number, nothing waiting on the statement. No bank to pick, no sign-up, nothing saved.</p>
+  {art && <figure class="secart"><img src={art.cost} alt="" loading="lazy" decoding="async" width="1400" height="788" /></figure>}
 
   <!-- Everything the module needs, handed over as inert JSON (Astro leaves application/json untouched). No card data ships: it asks the traveler nothing about their own card. -->
   <script type="application/json" id="hn-data" set:html={calcJson}></script>
