@@ -453,9 +453,10 @@ const artLd = {
         <div class="esplit">
           <div class="ebar" aria-hidden="true"><div class="c1" id="cashBar" style="width:40%"></div><div class="c2" id="cardBar" style="width:60%"></div></div>
           <div class="elegend"><span class="el cash"><span class="mdot"></span>cash <b id="cashUsd">$0</b></span><span class="el card"><span class="mdot"></span>card <b id="cardUsd">$0</b></span></div>
+          <p class="ehint" style="margin-top:8px">At the ATM, always choose to be charged in the local currency, not dollars. The dollar option lets the machine set its own, worse, exchange rate.</p>
         </div>
         <div class="hn-line hn-fee" id="hnCardFeeLine"><span class="hn-k">Card fee, about <span id="hnFeeQ">3%</span> on the <b id="hnCardBase">$0</b> you put on the card<em id="hnCardFeeNote">your room and the card half of your spend, both on the statement weeks later</em></span><span class="hn-v num" id="hnCardFee">$0</span></div>
-        <div class="hn-line hn-fee" id="hnAtmFeeLine"><span class="hn-k">ATM fee on the <b id="hnCashAmt">$0</b> cash you pull<em>charged at the machine, in-country</em></span><span class="hn-v num" id="hnAtmFee">$0</span></div>
+        <div class="hn-line hn-fee" id="hnAtmFeeLine"><span class="hn-k">ATM and bank fees on the <b id="hnCashAmt">$0</b> cash you pull<em id="hnAtmNote">a few dollars per withdrawal, plus the roughly 3% most US banks add on foreign cash</em></span><span class="hn-v num" id="hnAtmFee">$0</span></div>
         <label class="hn-toggle hn-lever" id="hnNoFeeWrap">
           <input type="checkbox" id="hnNoFee" />
           <span class="hn-switch" aria-hidden="true"></span>
@@ -468,12 +469,12 @@ const artLd = {
       <p class="hn-note" id="hnTaxNote" hidden></p>
       <p class="ehint" id="hnHint">&nbsp;</p>
       <a class="cta" href="#calcNoFee">See the card I'd bring <span class="arw">&#8594;</span></a>
-      <p class="hn-fine">Rough guide, not a quote. The real number moves with the card you carry. One no-foreign-fee card can cover both sides; a plain rewards credit card only removes the fee on what you buy, and cash still costs a little unless that card also waives ATM charges. Rates checked Jun 2026 and rounded.</p>
+      <p class="hn-fine">Rough guide, not a quote. The real number moves with the card you carry. One no-foreign-fee card can cover both sides; a plain rewards credit card only removes the fee on what you buy, and cash still costs a little unless that card also waives ATM and foreign-cash fees. Rates checked Jun 2026 and rounded.</p>
     </div>
   </div>
 
   <noscript>
-    <div class="reveal"><div class="t">The full total needs JavaScript switched on. With it off: take the room price, add your on-the-ground spending, add about 3% for a typical US card's foreign fee on what you put on the card, a few dollars for each ATM cash withdrawal, and {c.name}'s tourist tax.</div></div>
+    <div class="reveal"><div class="t">The full total needs JavaScript switched on. With it off: take the room price, add your on-the-ground spending, add about 3% for a typical US card's foreign fee on what you put on the card, a few dollars plus about 3% for each ATM cash withdrawal, and {c.name}'s tourist tax.</div></div>
   </noscript>
 
   <details class="cardlist" id="calcNoFee">
@@ -705,7 +706,9 @@ const artLd = {
       const pct = state.noFee ? 0 : fallbackFxPct;
       const cardFee = cardBase * (pct / 100);
       const pulls = Math.max(1, Math.ceil(cash / 300));
-      const atmFee = state.noFee ? 0 : pulls * 5;
+      const atmFlat = pulls * 5;                       // operator/bank per-withdrawal fee
+      const atmFx = cash * (pct / 100);                // most US bank debit cards also add a foreign % on the cash pulled
+      const atmFee = state.noFee ? 0 : (atmFlat + atmFx);
       const t = computeTax(roomUSD, nights, trav);
       const total = roomOnCard + spend + cardFee + atmFee + t.usd;
 
@@ -717,6 +720,7 @@ const artLd = {
         ? 'the ' + usd(card) + ' card half of your spend, on the statement weeks later'
         : 'your ' + usd(room) + ' room and the ' + usd(card) + ' card half of your spend, both on the statement weeks later';
       id('hnCashAmt').textContent = usd(cash);
+      id('hnAtmNote').textContent = 'a few dollars per withdrawal, plus the roughly ' + fmtPct(fallbackFxPct) + ' most US banks add on foreign cash';
 
       roll(id('hnTotal'), total, usd, animate);
       roll(id('hnRoomV'), room, usd, animate);
@@ -751,7 +755,7 @@ const artLd = {
       // The note under the breakdown swaps with the card toggle.
       id('hnFeeNote').textContent = state.noFee
         ? 'Both fees just dropped to $0. That is what a no-foreign-fee card does here.'
-        : 'Most US cards add the ' + fmtPct(fallbackFxPct) + ' on what you buy and a few dollars for each ATM pull. A no-foreign-fee card takes both to $0.';
+        : 'Most US cards add about ' + fmtPct(fallbackFxPct) + ' on what you buy and on the cash you pull, plus a few dollars per ATM withdrawal. A no-foreign-fee card takes it all to $0.';
 
       // How much local cash, in how many ATM visits, plus the exchange-rate line.
       const vw = (pulls === 1) ? 'visit' : 'visits';
