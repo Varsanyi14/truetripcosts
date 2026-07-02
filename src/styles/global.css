@@ -310,6 +310,16 @@
   .hn-fee .hn-k,.hn-fee .hn-v{color:var(--amber)}
   .hn-fee.off .hn-k,.hn-fee.off .hn-v{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
   .hn-fee.off .hn-feeq{text-decoration:none}
+  /* merged all-in planner additions */
+  .hn-toggle-inline{align-self:flex-end;margin-top:0;padding-bottom:9px}
+  .hn-region{margin:0 0 16px}
+  .hn-lever{margin:12px 0 2px}
+  .hn-inside{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:16px 0 2px}
+  .hn-k em{display:block;font-style:normal;font-weight:400;font-size:12px;color:#9A998F;margin-top:2px;line-height:1.45}
+  .hn-fee .hn-k em{color:#B07A3C}
+  .hn-fee.off .hn-k em{color:var(--muted)}
+  .hn-line.paid .hn-k,.hn-line.paid .hn-v{color:var(--muted)}
+  .hn-line.paid .hn-v{text-decoration:line-through;text-decoration-thickness:1px}
   .hn-total{display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1.5px solid var(--ink);margin-top:4px;padding-top:13px}
   .hn-total-k{font-size:15px;font-weight:600;color:var(--ink)}
   .hn-total-v{font-family:var(--serif);font-weight:500;font-size:clamp(34px,7vw,42px);letter-spacing:-.01em;color:var(--ink);line-height:1}
