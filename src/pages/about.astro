@@ -1,0 +1,116 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { countries } from '../data/index.js';
+import fs from 'node:fs';
+
+// How many guides are live, read straight from the data so this stays true
+// on its own as countries are added. No number to hand-edit here.
+const liveCount = countries.filter(c => c.live).length;
+
+// Portrait auto-detect: drop public/about-portrait.jpg (or .png) and it shows.
+// A missing file simply leaves the text-only intro, never a broken image.
+const portrait = fs.existsSync(process.cwd() + '/public/about-portrait.jpg')
+  ? '/about-portrait.jpg'
+  : (fs.existsSync(process.cwd() + '/public/about-portrait.png') ? '/about-portrait.png' : null);
+
+const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+---
+<Base
+  title="About: who writes True Trip Costs and how it stays current"
+  description="The money guides on True Trip Costs are written and kept current by one traveler with close to three decades in travel and payments, and 81 countries and counting. Who is behind the site, why it exists, and how each guide is checked, dated and kept accurate."
+>
+  <Nav />
+  <main class="wrap">
+
+    <section class="abt-hero">
+      <div class="abt-copy">
+        <p class="lab">About</p>
+        <h1>Every fee in these guides, I have paid myself.</h1>
+        <p class="abt-lede">I have spent close to three decades in and around travel and payments, I have visited 81 countries and counting, and I did not grow up in the United States. True Trip Costs is where I write down the money lessons I picked up the expensive way, one country at a time.</p>
+      </div>
+      {portrait && (
+        <figure class="abt-portrait">
+          <img src={portrait} alt="The person who writes and checks the True Trip Costs money guides, at home with a glass of wine and his dog" width="1000" height="1241" loading="eager" decoding="async" />
+          <figcaption>That is me, with my usual travel companion. He has cleared US customs more than once, so the lessons here really are first hand.</figcaption>
+        </figure>
+      )}
+    </section>
+
+    <section class="abt-prose">
+      <p class="lab">Why this exists</p>
+      <h2>The blind spot I kept seeing.</h2>
+      <p>When I moved to the US, I noticed the same thing again and again. Smart, well-traveled friends and colleagues would land somewhere new and quietly assume money worked the way it does at home: that their card would just work, that the ATM was handing them a fair rate, that the price on the menu was the price they would pay. None of that is obvious from home, so it is nobody's fault. But it means people guess, and come back from a wonderful trip having quietly overspent, stung by a conversion trick, a surprise surcharge, or a tax nobody mentioned. I had learned those lessons the slow, expensive way across dozens of countries. This site is me writing them down so your trip does not have to teach you the same ones.</p>
+    </section>
+
+    <section class="why">
+      <p class="lab">How a guide gets built</p>
+      <h2>A person writes it, a person checks it, and software watches it.</h2>
+      <p class="lead">There is no bulk content here and no guessing. Each guide is made the slow way and then kept honest, with the date it was last checked shown right on the page.</p>
+      <div class="qrow">
+        <div class="qcard">
+          <h3>By hand, country by country</h3>
+          <p>Every guide is written and reviewed by a person, not spun up in bulk. That is {liveCount} countries so far, each one done properly before I add the next.</p>
+        </div>
+        <div class="qcard">
+          <h3>Checked, then dated</h3>
+          <p>Every figure, from entry rules and taxes to ATM and card fees and tipping, is verified against an official source before it goes up. Each guide then shows the date it was last checked.</p>
+        </div>
+        <div class="qcard">
+          <h3>Watched for changes</h3>
+          <p>Software flags when something a guide relies on may have moved, so I go back, check it against the source again, and update the date. That is how a small site stays current.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="honest">
+      <p class="lab">How I keep it honest</p>
+      <h2>The rules I hold myself to.</h2>
+      <div class="hrow">
+        <div class="hitem">
+          <p class="hk"><Fragment set:html={tick} />I never sell hotel rooms</p>
+          <p>This is not a booking site and it never will be. Hotel booking is permanently off the table, so nothing here is quietly steering you into a room.</p>
+        </div>
+        <div class="hitem">
+          <p class="hk"><Fragment set:html={tick} />Every link is labeled</p>
+          <p>When a link can earn me a commission, it says so. When it earns me nothing, it says that too, so you always know which is which.</p>
+        </div>
+        <div class="hitem">
+          <p class="hk"><Fragment set:html={tick} />Sometimes the answer is nothing</p>
+          <p>If the card already in your pocket works with no fee, I will tell you plainly, and there is nothing to buy. I would rather be useful than paid.</p>
+        </div>
+      </div>
+    </section>
+
+    <p class="abt-desk">One bit of honesty about the name: you will see guides signed off by the True Trip Costs desk. For now, the desk is one person, me. If the site grows and other travelers join to help keep it current, you will meet them here, by name.</p>
+
+    <section class="abt-close">
+      <h2>Pick a country.</h2>
+      <p>That is the whole idea: take what I learned the expensive way, check it against the source, date it, and hand it over. Have a look at wherever you are headed next.</p>
+      <a class="btn" href="/#guides">Browse the money guides
+        <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </section>
+
+  </main>
+  <Footer />
+
+  <style>
+    .abt-hero{display:grid;grid-template-columns:1.08fr .92fr;gap:36px;align-items:center;padding:48px 0 6px}
+    .abt-copy h1{margin:6px 0 14px}
+    .abt-copy .abt-lede{font-size:17px;line-height:1.55;color:var(--ink);margin:0}
+    .abt-portrait{margin:0}
+    .abt-portrait img{width:100%;height:auto;display:block;border-radius:18px;box-shadow:var(--shadow)}
+    .abt-portrait figcaption{margin:10px 2px 0;font-size:12.5px;line-height:1.45;color:var(--muted)}
+    .abt-prose{padding:36px 0 0;max-width:660px}
+    .abt-prose h2{margin:0 0 8px}
+    .abt-prose p:not(.lab){font-size:16px;line-height:1.65;color:var(--ink);margin:0}
+    .abt-desk{max-width:660px;margin:30px 0 0;padding:15px 18px;background:var(--green-bg);border:1px solid #CDE7D8;border-radius:12px;font-size:14.5px;line-height:1.55;color:var(--ink)}
+    .abt-close{padding:38px 0 64px}
+    .abt-close h2{margin:0 0 8px}
+    .abt-close p{font-size:16px;line-height:1.6;color:var(--muted);margin:0 0 18px;max-width:600px}
+    @media(max-width:720px){
+      .abt-hero{grid-template-columns:1fr;gap:22px;padding:32px 0 2px}
+    }
+  </style>
+</Base>
