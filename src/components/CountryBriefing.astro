@@ -316,7 +316,11 @@ const artLd = {
     {emg && (
       <div class="ins-call">
         <p class="ins-call-h"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>If it happens</p>
-        <p class="ins-call-b">In {c.name}, the number for an ambulance is <span class="ins-num">{emg.medical}</span>. Call it first, then call your insurer's 24/7 assistance line, which is what confirms payment and arranges an evacuation.{emg.note ? ` ${emg.note}` : ""}</p>
+        <div class="ins-emg">
+          <span class="ins-emg-l">Ambulance in {c.name}</span>
+          <span class="ins-emg-n">{emg.medical}</span>
+        </div>
+        <p class="ins-call-b">Call it first, then call your insurer's 24/7 assistance line, which is what confirms payment and arranges an evacuation.{emg.note ? ` ${emg.note}` : ""}</p>
       </div>
     )}
 
@@ -457,28 +461,42 @@ const artLd = {
       <p class="ebig">In {c.name}, plan for about <span class="amt num" id="hnTotal">$0</span>.</p>
       <p class="escope" id="hnSub">&nbsp;</p>
 
-      <p class="hn-inside">What's inside that number</p>
-      <div class="hn-rows">
-        <div class="hn-line" id="hnHotelLine"><span class="hn-k">Hotel (<span id="hnNightsLabel">7</span> nights)<em id="hnHotelNote">on the card, prepaid or paid at the desk</em></span><span class="hn-v num" id="hnRoomV">$0</span></div>
-        <div class="hn-line"><span class="hn-k">On-the-ground spend<em>food, local transport, activities, tips</em></span><span class="hn-v num" id="hnSpend">$0</span></div>
+      <div class="hn-group">
+        <div class="hn-ghead"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h13a1 1 0 0 1 1 1v3"/><path d="M3 7v10a2 2 0 0 0 2 2h14a1 1 0 0 0 1-1v-3"/><path d="M21 12h-4a2 2 0 0 0 0 4h4z"/></svg><span>What you'll spend</span></div>
+        <div class="hn-rows">
+          <div class="hn-line" id="hnHotelLine"><span class="hn-k">Hotel (<span id="hnNightsLabel">7</span> nights)<em id="hnHotelNote">on the card, prepaid or paid at the desk</em></span><span class="hn-v num" id="hnRoomV">$0</span></div>
+          <div class="hn-line"><span class="hn-k">On-the-ground spend<em>food, local transport, activities, tips</em></span><span class="hn-v num" id="hnSpend">$0</span></div>
+        </div>
         <div class="esplit">
           <div class="ebar" aria-hidden="true"><div class="c1" id="cashBar" style="width:40%"></div><div class="c2" id="cardBar" style="width:60%"></div></div>
           <div class="elegend"><span class="el cash"><span class="mdot"></span>cash <b id="cashUsd">$0</b></span><span class="el card"><span class="mdot"></span>card <b id="cardUsd">$0</b></span></div>
           <p class="ehint" style="margin-top:8px">At the ATM, always choose to be charged in the local currency, not dollars. The dollar option lets the machine set its own, worse, exchange rate.</p>
         </div>
-        <div class="hn-line hn-fee" id="hnCardFeeLine"><span class="hn-k">Card fee, about <span id="hnFeeQ">3%</span> on the <b id="hnCardBase">$0</b> you put on the card<em id="hnCardFeeNote">your room and the card half of your spend, both on the statement weeks later</em></span><span class="hn-v num" id="hnCardFee">$0</span></div>
-        <div class="hn-line hn-fee" id="hnAtmFeeLine"><span class="hn-k">ATM and bank fees on the <b id="hnCashAmt">$0</b> cash you pull<em id="hnAtmNote">a few dollars per withdrawal, plus the roughly 3% most US banks add on foreign cash</em></span><span class="hn-v num" id="hnAtmFee">$0</span></div>
+      </div>
+
+      <div class="hn-group hn-fees">
+        <div class="hn-ghead"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg><span>Fees most cards add</span></div>
+        <div class="hn-rows">
+          <div class="hn-line hn-fee" id="hnCardFeeLine"><span class="hn-k">Card fee, about <span id="hnFeeQ">3%</span> on the <b id="hnCardBase">$0</b> you put on the card<em id="hnCardFeeNote">your room and the card half of your spend, both on the statement weeks later</em></span><span class="hn-v num" id="hnCardFee">$0</span></div>
+          <div class="hn-line hn-fee" id="hnAtmFeeLine"><span class="hn-k">ATM and bank fees on the <b id="hnCashAmt">$0</b> cash you pull<em id="hnAtmNote">a few dollars per withdrawal, plus the roughly 3% most US banks add on foreign cash</em></span><span class="hn-v num" id="hnAtmFee">$0</span></div>
+        </div>
         <label class="hn-toggle hn-lever" id="hnNoFeeWrap">
           <input type="checkbox" id="hnNoFee" />
           <span class="hn-switch" aria-hidden="true"></span>
           <span class="hn-toggle-l">See it with a no-foreign-fee card</span>
         </label>
-        <div class="hn-line" id="hnTaxLine"><span class="hn-k"><span id="hnTaxLabel">Tourist tax</span><em>collected at the desk even on a prepaid room</em></span><span class="hn-v num" id="hnTax">$0</span></div>
+        <p class="hn-feenote" id="hnFeeNote">&nbsp;</p>
       </div>
 
-      <p class="hn-feenote" id="hnFeeNote">&nbsp;</p>
-      <p class="hn-note" id="hnTaxNote" hidden></p>
-      <p class="ehint" id="hnHint">&nbsp;</p>
+      <div class="hn-group">
+        <div class="hn-ghead"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg><span>Local taxes</span></div>
+        <div class="hn-rows">
+          <div class="hn-line" id="hnTaxLine"><span class="hn-k"><span id="hnTaxLabel">Tourist tax</span><em>collected at the desk even on a prepaid room</em></span><span class="hn-v num" id="hnTax">$0</span></div>
+        </div>
+        <p class="hn-note" id="hnTaxNote" hidden></p>
+      </div>
+
+      <div class="hn-cashnote"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg><p id="hnHint">&nbsp;</p></div>
       <a class="cta" href="#calcNoFee">See the card I'd bring <span class="arw">&#8594;</span></a>
       <p class="hn-fine">Rough guide, not a quote. The real number moves with the card you carry. One no-foreign-fee card can cover both sides; a plain rewards credit card only removes the fee on what you buy, and cash still costs a little unless that card also waives ATM and foreign-cash fees. Rates checked Jun 2026 and rounded.</p>
     </div>
@@ -504,7 +522,7 @@ const artLd = {
       <div class="sl-row" role="list">
         {shortlist.map((card, i) => (
           <div class="sl" role="listitem">
-            {i === 0 && <div style="margin:0 0 8px"><span style="display:inline-block;background:#0A5644;color:#fff;font-size:11px;font-weight:500;padding:2px 10px;border-radius:999px">My pick for {c.name}</span></div>}
+            {i === 0 && <div style="margin:0"><span style="display:inline-block;background:#0A5644;color:#fff;font-size:11px;font-weight:500;padding:2px 10px;border-radius:999px">My pick for {c.name}</span></div>}
             <div class="sl-face" style={`--f:${faceColors[i % faceColors.length]}`}>
               <div class="sl-top"><span class="sl-bank">{card.issuer}</span><span class="sl-chip" aria-hidden="true"></span></div>
               <div class="sl-stripe" aria-hidden="true"></div>
@@ -512,7 +530,7 @@ const artLd = {
               <div class="sl-foot"><span class="sl-net">{(card.network || '').toUpperCase()}</span><span class="sl-mark" aria-hidden="true">TTC</span></div>
             </div>
             <p class="sl-why">{(i === 0 && card.note) ? card.note : whyLine(card)}</p>
-            <div style="margin:0 0 6px"><span style="display:inline-block;background:#E1F1EB;color:#0A5644;font-size:11.5px;font-weight:500;padding:3px 9px;border-radius:999px">{card.kind === "debit" ? "Best for ATM cash" : "Best for hotels, shops, dining"}</span></div>
+            <div style="margin:0"><span style="display:inline-block;background:#E1F1EB;color:#0A5644;font-size:11.5px;font-weight:500;padding:3px 9px;border-radius:999px">{card.kind === "debit" ? "Best for ATM cash" : "Best for hotels, shops, dining"}</span></div>
             <span class={"tg " + (card.affiliate && card.affiliate.link ? "earn" : "free")}>{(card.affiliate && card.affiliate.label) || "we earn nothing"}</span>
           </div>
         ))}
@@ -527,7 +545,7 @@ const artLd = {
 
 
 
-<div class="gbyline" style="display:flex;align-items:flex-start;gap:9px;margin:30px 0 4px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card)">
+<div class="gbyline" style="display:flex;align-items:flex-start;gap:9px;margin:0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card)">
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
   <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. Last checked {c.checked}. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
 </div>
