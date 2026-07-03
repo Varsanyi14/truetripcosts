@@ -550,6 +550,27 @@ const artLd = {
   <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. Last checked {c.checked}. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
 </div>
 
+{c.sources && (
+  <details class="gsources">
+    <summary class="gsources-sum">
+      <span class="gsources-txt">Sources, and how this guide was checked</span>
+      <svg class="gsources-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <div class="gsources-body">
+      <p class="gs-row"><span class="gs-k">Last checked</span><span>{c.checked}</span></p>
+      {c.sources.changed && <p class="gs-row"><span class="gs-k">Changed since last check</span><span>{c.sources.changed}</span></p>}
+      {c.sources.links && c.sources.links.length > 0 && (
+        <div class="gs-row"><span class="gs-k">Primary sources</span>
+          <ul class="gs-links">
+            {c.sources.links.map(s => <li><a href={s.url} target="_blank" rel="noopener">{s.label}</a></li>)}
+          </ul>
+        </div>
+      )}
+      {c.sources.judgment && <p class="gs-row"><span class="gs-k">Our own judgment</span><span>{c.sources.judgment}</span></p>}
+    </div>
+  </details>
+)}
+
 <script type="application/ld+json" set:html={JSON.stringify(faqLd)}></script>
 <script type="application/ld+json" set:html={JSON.stringify(artLd)}></script>
 

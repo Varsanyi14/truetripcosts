@@ -260,6 +260,7 @@
   .sg-err{font-size:13px;color:#9B2C22;background:#FBE9E7;border:1px solid #F3CFC9;border-radius:9px;padding:8px 11px;margin:0 0 12px}
   .sg-submit{width:100%;justify-content:center;margin-top:2px}
   .sg-fine{font-size:12px;color:var(--muted);margin:12px 0 0;text-align:center}
+  .sg-fine a{color:var(--teal-deep);text-decoration:underline;text-underline-offset:2px}
   .sg-done{text-align:center;padding:6px 2px 2px}
   .sg-check{width:54px;height:54px;margin:2px auto 14px;border-radius:50%;background:var(--green-bg);display:grid;place-items:center}
   .sg-done .sg-title{margin:0 0 8px}
@@ -353,6 +354,21 @@
   .cardlist-chev{flex:none;color:var(--muted);margin-top:2px;transition:transform .2s ease}
   .cardlist[open] .cardlist-chev{transform:rotate(180deg)}
   .cardlist-body{margin-top:16px}
+  /* per-guide sources expander */
+  .gsources{margin:14px 0 0;border:1px solid var(--line);border-radius:12px;background:var(--card);padding:14px 16px}
+  .gsources-sum{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;list-style:none}
+  .gsources-sum::-webkit-details-marker{display:none}
+  .gsources-txt{font-size:13px;font-weight:600;color:var(--ink)}
+  .gsources-chev{flex:none;color:var(--muted);transition:transform .2s ease}
+  .gsources[open] .gsources-chev{transform:rotate(180deg)}
+  .gsources-body{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+  .gs-row{margin:0 0 13px;font-size:13.5px;line-height:1.55;color:#5C6661}
+  .gs-row:last-child{margin-bottom:0}
+  .gs-k{display:block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 3px}
+  .gs-links{margin:2px 0 0;padding-left:18px}
+  .gs-links li{margin:0 0 5px}
+  .gs-links li:last-child{margin-bottom:0}
+  .gs-links a{color:var(--teal-deep);text-decoration:underline;text-underline-offset:2px}
   .sl-intro{font-size:13px;color:var(--muted);margin:0 0 14px;line-height:1.55}
 
   /* three uniform-shape cards, varied face colour via --f */
