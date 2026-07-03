@@ -577,7 +577,7 @@ const artLd = {
 
     const id = x => document.getElementById(x);
     const usd = x => '$' + Math.round(x).toLocaleString('en-US');
-    const loc = x => (Math.round(x / round) * round).toLocaleString('en-US') + ' ' + cur;
+    const loc = x => (Math.round(x * rate / round) * round).toLocaleString('en-US') + ' ' + cur;
     const fmtPct = p => (Number.isInteger(p) ? p : Math.round(p * 10) / 10) + '%';
     const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
