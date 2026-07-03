@@ -7,7 +7,7 @@ export default {
   checkedISO: "2026-06-28",
   emergency: { medical: "115", note: "115 reaches an ambulance. There is no single all-services number, so 113 is the police and 114 is fire.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "high",
-  title: "Money in Vietnam (2026): Cash, Cards, ATMs and Fees | True Trip Costs",
+  title: "Money in Vietnam (2026): Cash, Cards, ATM Fees and the Dong Conversion Trap | True Trip Costs",
   description: "How to handle money in Vietnam as a US traveler in 2026: cash vs card, the best ATMs and their fees, how much cash to bring, tipping, and the traps to avoid. Checked June 2026.",
   h1: "Money in Vietnam, sorted.",
   lede: "A calm, current plan for the money side of your trip: what to pay with, how much cash to carry, and the local traps to dodge.",
