@@ -8,6 +8,16 @@ export default {
   emergency: { medical: "911", note: "911 works like it does in the US for police, fire and ambulance, free from any phone. 919 is an alternate that also reaches police and fire. Save your hotel address to read out, and remember that on the Out Islands help can be further away.", checked: "Jul 2026", checkedISO: "2026-07-04" },
   insuranceLevel: "medium",
   region: "Americas",
+  sources: {
+    changed: "Sources added on first publish. Verified with the Bahamas Department of Inland Revenue that the standard VAT rate is 10%, and with the official tourism board that non-resident visitors can reclaim it on shopping through Global Blue, often refunded at the till. Confirmed with the Government of The Bahamas that the air departure tax is BS$15 and normally built into airfare, and with the Royal Bahamas Police Force that 911 and 919 are the emergency numbers. The Bahamian dollar's 1 to 1 peg with the US dollar, and the interchangeable use of both currencies, is long standing.",
+    links: [
+      { label: "Bahamas Department of Inland Revenue: the standard VAT rate is 10%", url: "https://inlandrevenue.finance.gov.bs/value-added-tax/about-vat/" },
+      { label: "The Bahamas (official tourism board): the US dollar peg, tipping, and the Global Blue VAT refund for visitors", url: "https://www.bahamas.com/plan-your-trip/island-faq" },
+      { label: "Government of The Bahamas: the BS$15 air departure (passenger) tax", url: "https://www.bahamas.gov.bs/departure-tax" },
+      { label: "Royal Bahamas Police Force: emergency numbers (911 and 919)", url: "https://www.royalbahamaspolice.org/crimeprevention/emergencynumbers.html" }
+    ],
+    judgment: "The split between card-friendly Nassau, Paradise Island and Freeport and the cash-first Out Islands, straw markets and Fish Fry, the rough ATM fee and withdrawal-limit ranges, and the daily spending figures in the calculator are our own read from recent traveler and bank reports, not a single official table. Treat them as a planning guide and confirm anything critical before you travel."
+  },
   hook: "The Bahamian dollar is pegged 1 to 1 with the US dollar, so USD and local notes are used interchangeably at par, no exchange needed. Tap your card in Nassau and the resorts, and carry small bills for taxis, the straw market, the Out Islands and tips.",
   aliases: ["bahamas", "the bahamas", "nassau", "paradise island", "freeport", "grand bahama", "exuma", "exumas", "eleuthera", "harbour island", "abaco", "bimini", "atlantis", "baha mar", "bsd", "bahamian dollar", "junkanoo"],
 
