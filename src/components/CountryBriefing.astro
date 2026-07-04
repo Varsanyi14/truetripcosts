@@ -157,7 +157,7 @@ const artLd = {
         <div class="bd">
           <h3>{t.h}</h3>
           <p class="verd">{t.verd}</p>
-          <p>{t.p}</p>
+          <p set:html={t.p}></p>
           <a class="cta" href={href} {...attrs}>{label} <span class="arw">&#8594;</span>{attrs.target && <NewTab />}</a>
         </div>
       </div>
@@ -166,7 +166,7 @@ const artLd = {
   </div>
 </section>
 
-<section>
+<section id="cash">
   <p class="lab">Cash or card</p>
   <h2>{c.meter.heading}</h2>
   <div class="meter">
@@ -395,7 +395,7 @@ const artLd = {
 <section>
   <p class="lab">Tipping</p>
   <h2>{c.tippingHeading}</h2>
-  <p class="sub">{c.tipping}</p>
+  <p class="sub" set:html={c.tipping}></p>
 </section>
 
 <section>
