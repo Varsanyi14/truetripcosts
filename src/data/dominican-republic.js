@@ -3,15 +3,23 @@ export default {
   live: true,
   name: "Dominican Republic",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-30",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-04",
+  sources: {
+    changed: "Sources added. Confirmed with the Dominican Republic's official tourism board that ITBIS (the value-added tax) is 18% and that restaurants, bars and hotels add a further 10% service charge by law, so a restaurant bill runs about 28% over the menu price. Verified there is no separate nightly tourist tax and that the old tourist card, about 10 dollars, is now bundled into the airfare. The US dollar is accepted in resort areas at poor rates, so pesos are better; the peso figure, about 60 to the dollar, is current.",
+    links: [
+      { label: "Dominican Republic Tourism (official): taxes and service charge FAQ", url: "https://www.godominicanrepublic.com/travel/faqs" },
+      { label: "E-Ticket: official migration entry portal", url: "https://eticket.migracion.gob.do" }
+    ],
+    judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
   emergency: { medical: "911", note: "911 covers the country, though ambulance response is quickest in the cities and resort areas.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "high",
   region: "Americas",
   hook: "Dollars work in the resort zones, but pesos and a watch for the 28% checkout jump save you money.",
 
   title: "Money in the Dominican Republic (2026): Dollars vs Pesos, Cards, ATMs and the 28% Bill | True Trip Costs",
-  description: "How to handle money in the Dominican Republic as a US traveler in 2026: when to pay in US dollars versus pesos, the 18% ITBIS tax and 10% service charge that inflate restaurant bills, fee-aware bank ATMs, tipping, and why you need pesos off the resort. Checked June 2026.",
+  description: "How to handle money in the Dominican Republic as a US traveler in 2026: when to pay in US dollars versus pesos, the 18% ITBIS tax and 10% service charge that inflate restaurant bills, fee-aware bank ATMs, tipping, and why you need pesos off the resort. Checked July 2026.",
 
   h1: "Money in the Dominican Republic, sorted.",
   lede: "A calm, current plan for the money side of your trip: dollars go a long way in the resort zones, but knowing when to reach for pesos, and why your restaurant bill jumps about 28% at checkout, is what keeps your budget honest.",
@@ -74,7 +82,7 @@ export default {
     works: "Yes in the places most travelers go, with gaps in the mountains and remote stretches. The two main carriers are Claro and Altice, and a local SIM costs under 5 dollars with your passport, or you can use an eSIM. 4G is the everyday standard across cities, resort areas and main roads, with 5G in larger urban centers. Expect weaker or patchy signal in the interior, parts of the Cordillera Central, and some rural coastal pockets, so download offline maps before heading out. WhatsApp is the default way many local tour operators and drivers communicate, so set it up before you go."
   },
 
-  // TOURIST TAX (verified Jun 2026). The Dominican Republic has NO per-night city/bed tourist
+  // TOURIST TAX (verified Jul 2026). The Dominican Republic has NO per-night city/bed tourist
   // tax of the kind charged across much of Europe. The relevant charges are: (1) 18% ITBIS, the
   // DR's VAT/sales tax, which is SOMETIMES already in the displayed price and sometimes added at
   // checkout (tourist restaurants frequently show it added); and (2) a 10% "propina legal"

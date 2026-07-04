@@ -3,12 +3,21 @@ export default {
   live: true,
   name: "Mexico",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-28",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-04",
+  sources: {
+    changed: "Sources added, and an update. Confirmed VISITAX in Quintana Roo (Cancun, Tulum, Cozumel and the Riviera Maya) is about 283 pesos, roughly 16 dollars, per person, paid online at visitax.gob.mx and now scanned at airport departure, with a 2026 proposal to fold it into hotel bills rejected. Added two places the guide had not covered: Baja California Sur (Los Cabos, La Paz, Loreto) charges a one-time 'Embrace It' visitor fee of about 28 dollars per person, and Puerto Vallarta began its own foreign-visitor fee in 2026. Confirmed the 16% IVA and the small per-room environmental tax. The peso figure, about 17.5 to the dollar, is current.",
+    links: [
+      { label: "VISITAX: official Quintana Roo state tourism tax portal", url: "https://www.visitax.gob.mx/sitio/" },
+      { label: "Mexico News Daily: Baja California Sur (Los Cabos) tourist tax for 2026", url: "https://mexiconewsdaily.com/travel/baja-california-sur-bumps-uptourist-tax-fund-conservation/" },
+      { label: "Mexico News Daily: Puerto Vallarta foreign-visitor fee approved", url: "https://mexiconewsdaily.com/travel/foreign-visitors-puerto-vallarta-tourist-fee-new-law/" }
+    ],
+    judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
   emergency: { medical: "911", note: "911 works nationwide, with English-speaking operators mainly in the cities. In remote areas, response can be slow.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "medium",
   title: "Money in Mexico (2026): Cash, Cards, ATMs, Tipping and VISITAX | True Trip Costs",
-  description: "How to handle money in Mexico as a US traveler in 2026: cash vs card, dodging the dollar conversion trap, the best ATMs, tipping, card surcharges, and VISITAX for Cancun and Tulum. Checked June 2026.",
+  description: "How to handle money in Mexico as a US traveler in 2026: cash vs card, dodging the dollar conversion trap, the best ATMs, tipping, card surcharges, and VISITAX for Cancun and Tulum. Checked July 2026.",
   h1: "Money in Mexico, sorted.",
   lede: "A calm, current plan for the money side of your trip: what to put on a card, where you still need pesos, and the small rules that trip up first-timers.",
   hero: {
@@ -63,17 +72,19 @@ export default {
   connectivity: {
     works: "Yes in the cities and tourist areas, where 4G is near-universal and 5G is live in places like Mexico City, Guadalajara and Cancun. Signal thins in remote mountains, jungle and small towns off the main routes."
   },
-  // TOURIST TAX (high-churn, verified Jun 2026). Only the Cancun and Riviera Maya area
-  // (Quintana Roo state) adds clear tourist taxes: a hotel eco tax per room each night,
-  // plus a one-time state tourist tax (VISITAX) per person. Most of Mexico has nothing
-  // separate beyond the tax already in the room rate.
+  // TOURIST TAX (high-churn, verified Jul 2026). A growing few states charge visitor taxes.
+  // Quintana Roo (Cancun and the Riviera Maya) adds a hotel eco tax per room each night plus
+  // a one-time state tourist tax (VISITAX) per person. Baja California Sur (Los Cabos, La Paz,
+  // Loreto) charges a one-time "Embrace It" visitor fee per person, and Puerto Vallarta began
+  // its own foreign-visitor fee in 2026. Most of Mexico still has nothing beyond the room rate.
   tax: {
     unit: "flatPerNight",
     currency: "MXN",
     capNights: null,
-    note: "Most of Mexico has no separate tourist tax beyond what is already in your room rate.",
+    note: "A growing few areas (Quintana Roo, Baja California Sur and Puerto Vallarta) now charge visitor taxes, but most of Mexico has no separate tourist tax beyond what is already in your room rate.",
     regions: [
       { key: "qroo", label: "Cancun, Riviera Maya, Tulum, Cozumel (Quintana Roo)", rate: 76, oneTimePerPerson: 283, taxLabel: "Quintana Roo taxes", note: "Quintana Roo adds a hotel eco tax of about 4 dollars a room each night, plus a one-time state tourist tax (VISITAX) of about 16 dollars per person. VISITAX is paid once for the whole trip, easiest online before you travel." },
+      { key: "bcs", label: "Los Cabos, La Paz, Loreto (Baja California Sur)", rate: 0, oneTimePerPerson: 488, taxLabel: "Baja California Sur tax", note: "Baja California Sur charges a one-time \"Embrace It\" visitor fee of about 28 dollars per person (ages 12 and up, staying over 24 hours), paid online with a QR code and checked at the airport. Los Cabos hotels also add a lodging tax and a small nightly sanitation fee." },
       { key: "other", label: "Elsewhere in Mexico", rate: 0, note: "Most of Mexico has no separate tourist tax. A few hotels add a small local lodging tax, which shows up on your bill." }
     ]
   },
@@ -87,7 +98,7 @@ export default {
   taxfree: {
     label: "Tourist taxes",
     heading: "The taxes nobody mentions until the airport.",
-    text: "Two charges catch first-timers in the Cancun and Riviera Maya area. <b>VISITAX</b> is a Quintana Roo state tax of about 283 pesos (roughly $16) per person, for anyone visiting Cancun, Tulum, Playa del Carmen, Cozumel or Isla Mujeres. You pay it once for your whole stay at the official site, visitax.gob.mx, and save the QR code; as of 2026 it is checked at the airport on departure. Steer clear of the lookalike sites that charge two to three times the real amount. Separately, many Quintana Roo hotels add a small <b>environmental or sanitation tax</b>, commonly a few dollars per room per night (around 75 pesos in Cancun, varying by town), collected by the hotel at check-in or checkout. Neither is large, but both are easy to forget."
+    text: "Two charges catch first-timers in the Cancun and Riviera Maya area. <b>VISITAX</b> is a Quintana Roo state tax of about 283 pesos (roughly $16) per person, for anyone visiting Cancun, Tulum, Playa del Carmen, Cozumel or Isla Mujeres. You pay it once for your whole stay at the official site, visitax.gob.mx, and save the QR code; as of 2026 it is checked at the airport on departure. Steer clear of the lookalike sites that charge two to three times the real amount. Separately, many Quintana Roo hotels add a small <b>environmental or sanitation tax</b>, commonly a few dollars per room per night (around 75 pesos in Cancun, varying by town), collected by the hotel at check-in or checkout. Quintana Roo is no longer the only place: <b>Baja California Sur</b> (Los Cabos, La Paz, Loreto) now charges its own one-time <b>\"Embrace It\"</b> visitor fee of about 28 dollars per person, also paid online and checked at the airport, and <b>Puerto Vallarta</b> added a smaller foreign-visitor fee in 2026. None is large, but they are easy to forget."
   },
   traps: [
     "<b>\"Pay in dollars?\" Always say no.</b> At a card terminal or ATM, choosing dollars (dynamic currency conversion) quietly adds 5 to 10%. Pick pesos every time, and remember the \"$\" on a price tag already means pesos.",

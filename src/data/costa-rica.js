@@ -3,15 +3,23 @@ export default {
   live: true,
   name: "Costa Rica",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-30",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-04",
+  sources: {
+    changed: "Sources added. Confirmed that VAT (IVA) is 13% and built into displayed prices, that sit-down restaurants add a 10% service charge on top so a bill can run about 23% over the menu price, and that there is no per-night tourist or city tax. The US dollar is widely accepted, though paying in colones gives better value. The colon figure, about 455 to the dollar, is current.",
+    links: [
+      { label: "Costa Rica Travel Blog: the 13% VAT (IVA) explained", url: "https://costaricatravelblog.com/vat-tax-in-costa-rica/" },
+      { label: "Costa Rica Guide: the 10% restaurant service charge and tipping", url: "https://costa-rica-guide.com/practical/budget/how-much-to-tip/" }
+    ],
+    judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
   emergency: { medical: "911", note: "911 has English-speaking operators. In rural areas and along the coast, an ambulance can take longer to reach you.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "medium",
   region: "Americas",
   hook: "Dollars work almost everywhere, but paying in colones quietly saves you money.",
 
   title: "Money in Costa Rica (2026): Dollars vs Colones, Cards, ATMs and Tipping | True Trip Costs",
-  description: "How to handle money in Costa Rica as a US traveler in 2026: when to pay in US dollars versus colones, fee-free bank ATMs, the 13% VAT and 10% service charge already on your bill, light tipping, and why you barely need to exchange currency. Checked June 2026.",
+  description: "How to handle money in Costa Rica as a US traveler in 2026: when to pay in US dollars versus colones, fee-free bank ATMs, the 13% VAT and 10% service charge already on your bill, light tipping, and why you barely need to exchange currency. Checked July 2026.",
 
   h1: "Money in Costa Rica, sorted.",
   lede: "A calm, current plan for the money side of your trip: the dollar works almost everywhere here, but knowing when to reach for colones instead is what keeps a little extra in your pocket.",
@@ -74,7 +82,7 @@ export default {
     works: "Mostly, with real gaps in the wild places you came to see. The state carrier Kolbi (ICE) has by far the widest reach, including national parks, cloud forests and remote coasts where Liberty and Claro lose signal, so a Kolbi-backed eSIM is the safest bet. 4G is the everyday standard; 5G is only in the larger towns. Expect dead zones in places like Corcovado, deep Monteverde, the Osa Peninsula and stretches of the Caribbean coast, and download offline maps before heading off the main routes. WhatsApp is the default way local tour operators and lodges communicate, so set it up before you go."
   },
 
-  // TOURIST TAX (verified Jun 2026). Costa Rica has NO city/bed tourist tax of the kind charged
+  // TOURIST TAX (verified Jul 2026). Costa Rica has NO city/bed tourist tax of the kind charged
   // in much of Europe. The relevant charges are: (1) 13% VAT (IVA), included in displayed prices
   // by law; and (2) a 10% service charge ("servicio") added by law to most restaurant bills, on
   // top of which the 13% sits. Neither is a per-night occupancy tax, so the calculator adds

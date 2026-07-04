@@ -3,8 +3,15 @@ export default {
   live: true,
   name: "Canada",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-30",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-04",
+  sources: {
+    changed: "Sources added. Confirmed with the Canada Revenue Agency that sales tax is added at the register: 5% GST alone in Alberta and the territories, a combined 13% to 15% HST in Ontario and Atlantic Canada, with Nova Scotia down to 14% since April 2025, and GST plus a provincial tax in British Columbia, Manitoba, Saskatchewan and Quebec. Verified that Canada has no general sales-tax refund for visitors, since the GST visitor rebate ended in 2007, and that a narrow rebate survives only for some tour packages and conventions. The guide's figures are current.",
+    links: [
+      { label: "Canada Revenue Agency: charge and collect the GST/HST, rates by province", url: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate.html" }
+    ],
+    judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
   emergency: { medical: "911", note: "911 works everywhere, the same as it does at home.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
   region: "Americas",
@@ -12,7 +19,7 @@ export default {
   aliases: ["toronto", "vancouver", "montreal", "quebec", "quebec city", "ottawa", "calgary", "banff", "niagara", "canadian dollar", "cad", "loonie", "toonie", "ontario", "british columbia", "alberta"],
 
   title: "Money in Canada (2026): Cards, Cash, Sales Tax and Tipping | True Trip Costs",
-  description: "How to handle money in Canada as a US traveler in 2026: cards and tap work almost everywhere, why sales tax is added at the register (not on the tag), US-style tipping, which ATMs to use, paying in Canadian dollars not US, and the hotel taxes that vary by province. Checked June 2026.",
+  description: "How to handle money in Canada as a US traveler in 2026: cards and tap work almost everywhere, why sales tax is added at the register (not on the tag), US-style tipping, which ATMs to use, paying in Canadian dollars not US, and the hotel taxes that vary by province. Checked July 2026.",
 
   h1: "Money in Canada, sorted.",
   lede: "A calm, current plan for the money side of your trip: why you barely need cash, the two costs that never show up on the price tag, and the hotel taxes that vary by province.",
@@ -75,7 +82,7 @@ export default {
     works: "Very good in the populated south, patchy in the vast north. The three national carriers, Rogers, Bell and Telus, cover cities, towns and the main highways well with 4G and growing 5G, but coverage thins out fast in the mountains, the far north and deep in the national parks. Canadian mobile plans are among the most expensive in the world, so for a short visit an eSIM (Airalo, Nomad, Ubigi) usually beats a local SIM, and many US carriers already include Canada in their plans, so check yours first. You do not need mobile data to pay for anything; cards and contactless stand on their own."
   },
 
-  // TOURIST/HOTEL TAX (high-churn, verified to Jun 2026 knowledge; confirm municipal rates).
+  // TOURIST/HOTEL TAX (high-churn, verified to Jul 2026 knowledge; confirm municipal rates).
   // Canada has no national tourist tax. A hotel room instead carries the province's sales tax
   // (GST 5% alone in Alberta and the territories; HST 13 to 15% in Ontario and Atlantic Canada;
   // GST plus a provincial sales tax in BC, Manitoba, Saskatchewan and Quebec) PLUS, in many

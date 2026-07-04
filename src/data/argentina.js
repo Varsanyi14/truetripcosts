@@ -5,6 +5,15 @@ export default {
   from: "United States",
   checked: "Jul 2026",
   checkedISO: "2026-07-03",
+  sources: {
+    changed: "Sources added. Verified with Argentina's national and Buenos Aires tourism boards that non-resident foreign tourists get an automatic 21% VAT discount on accommodation, and on breakfast if it is included, when paying with a foreign-issued card or an international transfer, shown at billing with a passport and entry record. Confirmed the 2025 migration reform (Decree 366/2025) that expects foreign visitors to carry valid travel medical insurance and lets public hospitals bill non-residents for non-emergency care, with border checks on tourists inconsistent so far. The exchange picture is current: after the April 2025 lifting of currency controls the official, blue and MEP rates converged, so a foreign card gets the MEP rate. Peso figures are a fast-moving snapshot.",
+    links: [
+      { label: "Visit Argentina: 21% VAT refund on accommodation for foreign tourists", url: "https://www.argentina.travel/en/news/21-vat-refund-on-accommodation-for-foreign-tourists-in-argentina" },
+      { label: "City of Buenos Aires: VAT-free accommodation for visitors", url: "https://turismo.buenosaires.gob.ar/en/article/vat-free-accommodation" },
+      { label: "Buenos Aires Herald: health insurance now required to enter Argentina", url: "https://buenosairesherald.com/world/travelers-will-now-need-to-show-proof-of-health-insurance-to-enter-argentina" }
+    ],
+    judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
   emergency: { medical: "911", note: "911 is the nationwide line for police, fire and ambulance and works from any phone, even with no SIM or credit. In Buenos Aires and some provinces 107 reaches the SAME ambulance service directly, with 101 for police and 100 for fire. There is also a tourist line, 0800 999 5000, with some help in languages other than Spanish. Save your address in Spanish to read out.", checked: "Jul 2026", checkedISO: "2026-07-03" },
   insuranceLevel: "high",
   region: "Americas",
