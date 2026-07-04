@@ -8,9 +8,9 @@ export default {
   sources: {
     changed: "Sources added. Verified with Argentina's national and Buenos Aires tourism boards that non-resident foreign tourists get an automatic 21% VAT discount on accommodation, and on breakfast if it is included, when paying with a foreign-issued card or an international transfer, shown at billing with a passport and entry record. Confirmed the 2025 migration reform (Decree 366/2025) that expects foreign visitors to carry valid travel medical insurance and lets public hospitals bill non-residents for non-emergency care, with border checks on tourists inconsistent so far. The exchange picture is current: after the April 2025 lifting of currency controls the official, blue and MEP rates converged, so a foreign card gets the MEP rate. Peso figures are a fast-moving snapshot.",
     links: [
-      { label: "Visit Argentina: 21% VAT refund on accommodation for foreign tourists", url: "https://www.argentina.travel/en/news/21-vat-refund-on-accommodation-for-foreign-tourists-in-argentina" },
-      { label: "City of Buenos Aires: VAT-free accommodation for visitors", url: "https://turismo.buenosaires.gob.ar/en/article/vat-free-accommodation" },
-      { label: "Buenos Aires Herald: health insurance now required to enter Argentina", url: "https://buenosairesherald.com/world/travelers-will-now-need-to-show-proof-of-health-insurance-to-enter-argentina" }
+      { label: "Visit Argentina: 21% VAT refund on accommodation for foreign tourists", url: "https://www.argentina.travel/en/news/21-vat-refund-on-accommodation-for-foreign-tourists-in-argentina", type: "tourism" },
+      { label: "City of Buenos Aires: VAT-free accommodation for visitors", url: "https://turismo.buenosaires.gob.ar/en/article/vat-free-accommodation", type: "gov" },
+      { label: "Buenos Aires Herald: health insurance now required to enter Argentina", url: "https://buenosairesherald.com/world/travelers-will-now-need-to-show-proof-of-health-insurance-to-enter-argentina", type: "media" }
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },

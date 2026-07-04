@@ -8,7 +8,7 @@ export default {
   sources: {
     changed: "Sources added. Verified the Venice day-tripper access fee for 2026 (5 euros if booked at least four days ahead, 10 euros last-minute, on about 60 peak dates from April to July, historic center only, with overnight guests exempt but still required to register), along with the per-night overnight taxes in Rome, Florence and Venice. The guide's figures are current.",
     links: [
-      { label: "City of Venice official access-fee portal: the day-tripper contributo di accesso, its 2026 dates, price and exemptions", url: "https://cda.ve.it/en/" },
+      { label: "City of Venice official access-fee portal: the day-tripper contributo di accesso, its 2026 dates, price and exemptions", url: "https://cda.ve.it/en/", type: "gov" },
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },

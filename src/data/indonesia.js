@@ -117,6 +117,14 @@ export default {
 
   tippingHeading: "Not traditional, but increasingly expected in tourist Bali.",
   tipping: "Indonesia does not have a deep-rooted tipping culture, but tourism has shifted norms in Bali's resort areas. Check your bill first: many hotels, restaurants and spas in tourist zones already add a 5 to 10% service charge, and if so, an extra tip is a kind gesture rather than an expectation. Where no service charge is added, 10% at a sit-down restaurant is generous. Local warungs and small family eateries do not expect tips, though rounding up is appreciated. For a private driver or guide, IDR 50,000 to 150,000 for a full day is a strong tip; for Grab or Gojek rides, IDR 5,000 to 10,000 in the app is a nice bonus. Spa and massage staff typically see IDR 20,000 to 50,000. Tip in rupiah and in cash where you can, since card tips often get pooled, and hand it over with your right hand, which is the polite custom.",
+  sources: {
+    changed: "Sources added on first publish, checked June 2026. Indonesia's VAT is an effective 11% on most goods and services. Bali charges a separate 150,000 rupiah foreign-tourist levy, paid once per entry, and as of mid-2026 there is no fine or entry refusal for not paying it.",
+    links: [
+      { label: "Bali Provincial Government (Love Bali): the 150,000 rupiah foreign-tourist levy, paid once per entry to Bali", url: "https://lovebali.baliprov.go.id/", type: "gov" },
+      { label: "PwC Worldwide Tax Summaries: Indonesia's effective 11% VAT on most goods and services", url: "https://taxsummaries.pwc.com/indonesia/corporate/other-taxes", type: "revenue" },
+    ],
+    judgment: "Most hotels quote rates nett (tax and service included) or ++ (added at checkout), so the estimate here assumes a ++ rate. The daily cash share, tipping norms and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
 
   faqs: [
     { q: "Do I need cash in Indonesia?", a: "Yes, more than in most card-friendly destinations. Cash covers around 80% of everyday spending in Bali, and even more outside the main tourist areas. Cards work at hotels and bigger restaurants in South Bali and Jakarta, often with a 3% surcharge, but warungs, markets, parking and boats are usually cash only." },

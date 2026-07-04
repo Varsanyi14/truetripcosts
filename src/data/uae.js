@@ -126,6 +126,14 @@ export default {
 
   tippingHeading: "Appreciated, modest, and cash is best.",
   tipping: "Tipping in the UAE is customary but not heavy, and staff often rely on it since base wages can be low. Restaurants frequently add a 10% service charge, but it doesn't always reach your server, so rounding up or leaving an extra 10 to 15% in cash for good service is normal. For everyday help, a few dirhams goes a long way: 5 to 10 dirhams for a valet, 10 to 15 dirhams a day for hotel housekeeping, a few dirhams per bag for a porter, and rounding up the fare for taxis. Cash tips (in dirhams) are preferred over adding to a card, since they go straight to the person. Nobody will chase you for a tip, and a small one is always well received.",
+  sources: {
+    changed: "Sources added on first publish, checked June 2026. VAT is 5%, and visitors can reclaim it on shopping through the Planet scheme, about 85% of the VAT back on a minimum spend of 250 dirhams. Dubai adds a Tourism Dirham per room per night by hotel star rating, and Abu Dhabi adds a 4% accommodation fee instead.",
+    links: [
+      { label: "Federal Tax Authority: the 5% VAT and the tourist refund scheme operated with Planet", url: "https://tax.gov.ae/en/services/tourist.vat.refunds.aspx", type: "revenue" },
+      { label: "UAE tourist-tax guide: Dubai's Tourism Dirham per room per night by star rating, and Abu Dhabi's 4% accommodation fee", url: "https://www.aaconsultancy.ae/international-tourist-taxes-and-restrictions/", type: "gov" },
+    ],
+    judgment: "The Tourism Dirham is set per room per night by star rating and capped at 30 nights, so the figure here is a typical nightly amount rather than one fixed rate. The dirham's peg to the US dollar is long standing. The daily cash share, tipping norms and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
 
   faqs: [
     { q: "Do I need cash in the UAE?", a: "Not much. Dubai and Abu Dhabi are close to fully cashless, so cards and Apple Pay or Google Pay cover taxis, the metro, malls and restaurants. Keep around 200 to 500 dirhams for the souks (where cash helps you bargain), small local eateries and tips." },

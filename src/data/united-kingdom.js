@@ -8,9 +8,9 @@ export default {
   sources: {
     changed: "Sources added. Confirmed the UK ETA is 20 pounds and required before boarding, the Edinburgh 5% visitor levy starts 24 July 2026, and there is still no VAT refund for tourists in Great Britain.",
     links: [
-      { label: "GOV.UK: the UK Electronic Travel Authorisation (ETA), who needs one, and the 20 pound fee", url: "https://www.gov.uk/eta" },
-      { label: "City of Edinburgh Council: the visitor levy, 5% of the room from 24 July 2026, capped at five nights", url: "https://www.edinburgh.gov.uk/visitorlevy" },
-      { label: "GOV.UK: tax-free shopping, why there is no VAT refund in Great Britain and the limited Northern Ireland scheme", url: "https://www.gov.uk/tax-on-shopping/taxfree-shopping" },
+      { label: "GOV.UK: the UK Electronic Travel Authorisation (ETA), who needs one, and the 20 pound fee", url: "https://www.gov.uk/eta", type: "gov" },
+      { label: "City of Edinburgh Council: the visitor levy, 5% of the room from 24 July 2026, capped at five nights", url: "https://www.edinburgh.gov.uk/visitorlevy", type: "gov" },
+      { label: "GOV.UK: tax-free shopping, why there is no VAT refund in Great Britain and the limited Northern Ireland scheme", url: "https://www.gov.uk/tax-on-shopping/taxfree-shopping", type: "gov" },
     ],
     judgment: "The daily cash share, tipping habits, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },

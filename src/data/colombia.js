@@ -8,8 +8,8 @@ export default {
   sources: {
     changed: "Sources added. Confirmed with DIAN, Colombia's tax authority, that non-resident foreign tourists are exempt from the 19% IVA on hotel and tourism services (shown with the entry tourist stamp, and not applied automatically) and can reclaim IVA on goods bought in stores. Updated the goods-refund minimum to the current 3 UVT, about 150,000 pesos, since the old figure reflected a much earlier tax-unit value.",
     links: [
-      { label: "DIAN (Colombia's tax authority): its ruling that hotel and tourism services for non-resident foreigners are IVA-exempt under article 481 of the tax code", url: "https://normograma.dian.gov.co/dian/compilacion/docs/oficio_dian_3522_2025.htm" },
-      { label: "DIAN: the IVA refund for foreign tourists on goods, what qualifies and how to claim it at the airport", url: "https://www.dian.gov.co/Viajeros-y-Servicios-aduaneros/Paginas/Devolucion-IVA-a-Turistas-Extranjeros-Esp.aspx" },
+      { label: "DIAN (Colombia's tax authority): its ruling that hotel and tourism services for non-resident foreigners are IVA-exempt under article 481 of the tax code", url: "https://normograma.dian.gov.co/dian/compilacion/docs/oficio_dian_3522_2025.htm", type: "revenue" },
+      { label: "DIAN: the IVA refund for foreign tourists on goods, what qualifies and how to claim it at the airport", url: "https://www.dian.gov.co/Viajeros-y-Servicios-aduaneros/Paginas/Devolucion-IVA-a-Turistas-Extranjeros-Esp.aspx", type: "revenue" },
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },

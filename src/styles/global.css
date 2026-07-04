@@ -377,10 +377,15 @@
   .gs-row{margin:0 0 13px;font-size:13.5px;line-height:1.55;color:#5C6661}
   .gs-row:last-child{margin-bottom:0}
   .gs-k{display:block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 3px}
-  .gs-links{margin:2px 0 0;padding-left:18px}
-  .gs-links li{margin:0 0 5px}
-  .gs-links li:last-child{margin-bottom:0}
-  .gs-links a{color:var(--teal-deep);text-decoration:underline;text-underline-offset:2px}
+  .gs-links{list-style:none;margin:6px 0 0;padding:0}
+  .gs-src{display:flex;align-items:flex-start;gap:11px;padding:9px 0;border-top:1px solid var(--line)}
+  .gs-src:first-child{border-top:none;padding-top:2px}
+  .gs-ic{flex:none;width:31px;height:31px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--paper);border:1px solid var(--line);color:var(--teal-deep)}
+  .gs-ic svg{width:16px;height:16px}
+  .gs-src-tx{min-width:0}
+  .gs-src-name{color:var(--teal-deep);font-weight:600;text-decoration:none;font-size:13.5px;line-height:1.35}
+  .gs-src-name:hover{text-decoration:underline}
+  .gs-src-note{display:block;color:var(--muted);font-size:12.5px;line-height:1.5;margin-top:2px}
   .sl-intro{font-size:13px;color:var(--muted);margin:0 0 14px;line-height:1.55}
 
   /* three uniform-shape cards, varied face colour via --f */

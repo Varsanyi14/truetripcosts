@@ -8,9 +8,9 @@ export default {
   sources: {
     changed: "Sources added, and an update. Confirmed VISITAX in Quintana Roo (Cancun, Tulum, Cozumel and the Riviera Maya) is about 283 pesos, roughly 16 dollars, per person, paid online at visitax.gob.mx and now scanned at airport departure, with a 2026 proposal to fold it into hotel bills rejected. Added two places the guide had not covered: Baja California Sur (Los Cabos, La Paz, Loreto) charges a one-time 'Embrace It' visitor fee of about 28 dollars per person, and Puerto Vallarta began its own foreign-visitor fee in 2026. Confirmed the 16% IVA and the small per-room environmental tax. The peso figure, about 17.5 to the dollar, is current.",
     links: [
-      { label: "VISITAX: official Quintana Roo state tourism tax portal", url: "https://www.visitax.gob.mx/sitio/" },
-      { label: "Mexico News Daily: Baja California Sur (Los Cabos) tourist tax for 2026", url: "https://mexiconewsdaily.com/travel/baja-california-sur-bumps-uptourist-tax-fund-conservation/" },
-      { label: "Mexico News Daily: Puerto Vallarta foreign-visitor fee approved", url: "https://mexiconewsdaily.com/travel/foreign-visitors-puerto-vallarta-tourist-fee-new-law/" }
+      { label: "VISITAX: official Quintana Roo state tourism tax portal", url: "https://www.visitax.gob.mx/sitio/", type: "gov" },
+      { label: "Mexico News Daily: Baja California Sur (Los Cabos) tourist tax for 2026", url: "https://mexiconewsdaily.com/travel/baja-california-sur-bumps-uptourist-tax-fund-conservation/", type: "media" },
+      { label: "Mexico News Daily: Puerto Vallarta foreign-visitor fee approved", url: "https://mexiconewsdaily.com/travel/foreign-visitors-puerto-vallarta-tourist-fee-new-law/", type: "media" }
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },

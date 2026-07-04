@@ -8,8 +8,8 @@ export default {
   sources: {
     changed: "Sources added, and a rate update. The City of Vienna raised its Ortstaxe from about 3.2% to 5% of the net room price on 1 July 2026 (a further rise to 8% is set for July 2027), so we updated the Vienna figure. The 20% VAT refund for non-EU visitors, which starts at 75.01 euros, is confirmed. Alpine and regional towns still charge a small flat fee per night.",
     links: [
-      { label: "City of Vienna: the Ortstaxe (local accommodation tax) and its rise to 5% from 1 July 2026", url: "https://www.wien.gv.at/english/e-government/financial/tax/local-tax.html" },
-      { label: "Austrian Federal Ministry of Finance: the VAT refund for non-EU visitors, from 75.01 euros", url: "https://www.bmf.gv.at/en/topics/customs/travellers/vat-refund.html" },
+      { label: "City of Vienna: the Ortstaxe (local accommodation tax) and its rise to 5% from 1 July 2026", url: "https://www.wien.gv.at/english/e-government/financial/tax/local-tax.html", type: "gov" },
+      { label: "Austrian Federal Ministry of Finance: the VAT refund for non-EU visitors, from 75.01 euros", url: "https://www.bmf.gv.at/en/topics/customs/travellers/vat-refund.html", type: "revenue" },
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },

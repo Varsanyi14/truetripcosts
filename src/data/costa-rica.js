@@ -8,8 +8,8 @@ export default {
   sources: {
     changed: "Sources added. Confirmed that VAT (IVA) is 13% and built into displayed prices, that sit-down restaurants add a 10% service charge on top so a bill can run about 23% over the menu price, and that there is no per-night tourist or city tax. The US dollar is widely accepted, though paying in colones gives better value. The colon figure, about 455 to the dollar, is current.",
     links: [
-      { label: "Costa Rica Travel Blog: the 13% VAT (IVA) explained", url: "https://costaricatravelblog.com/vat-tax-in-costa-rica/" },
-      { label: "Costa Rica Guide: the 10% restaurant service charge and tipping", url: "https://costa-rica-guide.com/practical/budget/how-much-to-tip/" }
+      { label: "Costa Rica Travel Blog: the 13% VAT (IVA) explained", url: "https://costaricatravelblog.com/vat-tax-in-costa-rica/", type: "guide" },
+      { label: "Costa Rica Guide: the 10% restaurant service charge and tipping", url: "https://costa-rica-guide.com/practical/budget/how-much-to-tip/", type: "guide" }
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },

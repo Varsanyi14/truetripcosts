@@ -8,7 +8,7 @@ export default {
   sources: {
     changed: "Sources added. Confirmed with the Canada Revenue Agency that sales tax is added at the register: 5% GST alone in Alberta and the territories, a combined 13% to 15% HST in Ontario and Atlantic Canada, with Nova Scotia down to 14% since April 2025, and GST plus a provincial tax in British Columbia, Manitoba, Saskatchewan and Quebec. Verified that Canada has no general sales-tax refund for visitors, since the GST visitor rebate ended in 2007, and that a narrow rebate survives only for some tour packages and conventions. The guide's figures are current.",
     links: [
-      { label: "Canada Revenue Agency: charge and collect the GST/HST, rates by province", url: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate.html" }
+      { label: "Canada Revenue Agency: charge and collect the GST/HST, rates by province", url: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/charge-collect-which-rate.html", type: "revenue" }
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },

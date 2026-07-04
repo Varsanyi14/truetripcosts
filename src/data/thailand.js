@@ -8,8 +8,8 @@ export default {
   sources: {
     changed: "Sources added. Confirmed the TDAC is mandatory and free, and that the long-discussed 300-baht arrival fee for air travelers is still not in effect as of mid-2026, awaiting Cabinet approval with no start date set.",
     links: [
-      { label: "Thai Immigration Bureau: the Thailand Digital Arrival Card (TDAC), mandatory and free, submitted within 72 hours of arrival", url: "https://tdac.immigration.go.th/" },
-      { label: "Tourism Authority of Thailand: the 7% VAT refund for tourists and how to claim it at the airport", url: "https://www.tourismthailand.org/Articles/plan-your-trip-vat-tax-refund" },
+      { label: "Thai Immigration Bureau: the Thailand Digital Arrival Card (TDAC), mandatory and free, submitted within 72 hours of arrival", url: "https://tdac.immigration.go.th/", type: "gov" },
+      { label: "Tourism Authority of Thailand: the 7% VAT refund for tourists and how to claim it at the airport", url: "https://www.tourismthailand.org/Articles/plan-your-trip-vat-tax-refund", type: "tourism" },
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },

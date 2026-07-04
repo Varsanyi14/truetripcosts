@@ -78,6 +78,14 @@ export default {
   ],
   tippingHeading: "Not expected, always appreciated.",
   tipping: "Vietnam isn't a tipping culture, so there's no set percentage. Rounding up a taxi or leaving small notes for great service is a kind gesture, not an obligation. Upscale restaurants and hotels sometimes add a service charge already, so check the bill before you add more.",
+  sources: {
+    changed: "Sources added on first publish, checked June 2026. Vietnam's standard VAT is 10% but sits at a temporary 8% through 31 December 2026 under a National Assembly resolution, so most prices you pay include the lower rate for now. There is still no separate tourist or hotel tax.",
+    links: [
+      { label: "PwC Worldwide Tax Summaries: Vietnam's standard 10% VAT and the temporary 8% rate that runs through the end of 2026", url: "https://taxsummaries.pwc.com/vietnam/corporate/other-taxes", type: "revenue" },
+      { label: "Trip.com: the tourist VAT refund and the fact that room rates already include VAT", url: "https://www.trip.com/guide/info/vietnam-tax-refund.html", type: "guide" },
+    ],
+    judgment: "The daily cash share, tipping norms and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
   faqs: [
     { q: "Do I need cash in Vietnam?", a: "Yes. Cash is essential for everyday spending: street food, markets, taxis, small cafes and rural areas are largely cash only. Cards work at hotels, malls and nicer restaurants in the cities." },
     { q: "What is the best ATM to use in Vietnam?", a: "Use a bank-branch ATM. VPBank has been fee-free for foreign cards with a high withdrawal limit. Many other ATMs charge about 22,000 to 55,000 VND per withdrawal, and TPBank added a fee in 2025. Always choose to be charged in dong, never your home currency." },

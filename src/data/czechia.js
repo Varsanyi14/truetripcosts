@@ -8,7 +8,7 @@ export default {
   sources: {
     changed: "Sources added. Verified with the City of Prague that the local accommodation fee is 50 koruna per person per night (doubled from 21 in 2022), capped by national law, applying to the first 60 nights, with under-18s exempt. Standard Czech VAT is 21%, and non-EU visitors can reclaim it on shopping. The guide's figures are current.",
     links: [
-      { label: "City of Prague: the local tourist fee, 50 koruna per person per night since 2022, under Act 565/1990", url: "https://sdileneubytovani.praha.eu/jnp/en/for_accommodation_providers/local_tourist_fee.html" },
+      { label: "City of Prague: the local tourist fee, 50 koruna per person per night since 2022, under Act 565/1990", url: "https://sdileneubytovani.praha.eu/jnp/en/for_accommodation_providers/local_tourist_fee.html", type: "gov" },
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },

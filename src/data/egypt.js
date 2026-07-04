@@ -113,6 +113,14 @@ export default {
 
   tippingHeading: "Baksheesh: small amounts, and often.",
   tipping: "Tipping in Egypt, called baksheesh, is a genuine part of daily life, so the trick is to carry lots of small notes and give little and often. At restaurants, a service charge of around 12% is frequently already on the bill; if it is, a little extra for good service is enough, and if it is not, around 10% is normal. Beyond meals, small tips smooth almost everything: a few pounds for a porter, a helpful doorman, someone who gives directions or watches your shoes, a driver, or a guide (guides and Nile cruise crews are tipped more generously, often at the end). Have 5, 10 and 20 pound notes ready, since you will reach for them many times a day, and a card is no substitute.",
+  sources: {
+    changed: "Sources added on first publish, checked June 2026. Egypt's standard VAT is 14%, and tourist hotels and restaurants usually add a service charge of about 12% on top. There is no European-style per-night tourist tax.",
+    links: [
+      { label: "PwC Worldwide Tax Summaries: Egypt's standard VAT rate of 14%", url: "https://taxsummaries.pwc.com/egypt/individual/other-taxes", type: "revenue" },
+      { label: "My Egypt Travel: the tourist police number (126), who are more likely to speak English", url: "https://www.myegypttravel.com/faqs/how-do-i-contact-tourist-police/", type: "police" },
+    ],
+    judgment: "The 12% service charge and the mix of VAT and small local levies vary by establishment, so the figure here is a typical add-on rather than a fixed rate. The daily cash share, tipping norms and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
 
   faqs: [
     { q: "Do I need cash in Egypt?", a: "Yes, cash is essential. Cards work at hotels, malls and upscale restaurants, but markets, taxis, street food, small shops and the constant tips all run on Egyptian pounds. Bring a no-foreign-fee debit card as your main tool, pull pounds from bank ATMs, and always keep small notes for baksheesh." },

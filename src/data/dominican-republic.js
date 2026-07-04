@@ -8,8 +8,8 @@ export default {
   sources: {
     changed: "Sources added. Confirmed with the Dominican Republic's official tourism board that ITBIS (the value-added tax) is 18% and that restaurants, bars and hotels add a further 10% service charge by law, so a restaurant bill runs about 28% over the menu price. Verified there is no separate nightly tourist tax and that the old tourist card, about 10 dollars, is now bundled into the airfare. The US dollar is accepted in resort areas at poor rates, so pesos are better; the peso figure, about 60 to the dollar, is current.",
     links: [
-      { label: "Dominican Republic Tourism (official): taxes and service charge FAQ", url: "https://www.godominicanrepublic.com/travel/faqs" },
-      { label: "E-Ticket: official migration entry portal", url: "https://eticket.migracion.gob.do" }
+      { label: "Dominican Republic Tourism (official): taxes and service charge FAQ", url: "https://www.godominicanrepublic.com/travel/faqs", type: "tourism" },
+      { label: "E-Ticket: official migration entry portal", url: "https://eticket.migracion.gob.do", type: "gov" }
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },

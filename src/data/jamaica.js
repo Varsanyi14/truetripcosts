@@ -113,6 +113,14 @@ export default {
 
   tippingHeading: "Customary off-resort, often included at all-inclusives.",
   tipping: "Tipping in Jamaica is customary in most places, with one big exception. At sit-down restaurants a tip of around <b>10 to 15%</b> is normal for good service, though many bills already include a <b>service charge</b> (often 10%), which is shared among staff, so check before adding more. For tour guides and private drivers, <b>10 to 20%</b> of the cost is standard, and a little cash for a bellhop (a few hundred Jamaican dollars a bag) or housekeeping (a few hundred a day) is appreciated. The exception is <b>all-inclusive resorts</b>, many of which fold gratuities into the price and formally ask guests not to tip, so check your resort's policy before handing out cash. Tips are welcome in <b>Jamaican dollars or US dollars</b>, and small US bills are easy to give, but note that a <b>15% GCT</b> on a bill is a government tax, not a tip. Cash, handed to the person, is the surest way to reach them.",
+  sources: {
+    changed: "Sources added on first publish, checked July 2026. Jamaica's General Consumption Tax is 15%, with a lower tourism rate on hotels of about 10%. Following Hurricane Melissa in late 2025, the 2026 to 2027 budget raises that tourism rate from 10% toward the standard 15%, phased in by April 2027, so hotel and tour costs are set to rise.",
+    links: [
+      { label: "Tax Administration Jamaica: the 15% General Consumption Tax (GCT)", url: "https://www.jamaicatax.gov.jm/", type: "revenue" },
+      { label: "Jamaica Information Service: the 2026 to 2027 budget raising the tourism GCT rate from 10% toward 15%", url: "https://jis.gov.jm/govt-projects-29-4b-from-new-revenue-measures-in-fiscal-year-2026-27/", type: "gov" },
+    ],
+    judgment: "The small flat room tax of roughly 1 to 4 US dollars per room per night, the resort-fee habit, and the daily cash share, tipping norms and likely ATM behavior are our own read from recent traveler and bank reports, not a single official table.",
+  },
 
   faqs: [
     { q: "Should I use US dollars or Jamaican dollars in Jamaica?", a: "Both work in the tourist areas, but paying in Jamaican dollars (or by card) is usually cheaper. When you pay in US dollars, the vendor sets the exchange rate, and it is almost never in your favor, so you lose about 5 to 10%, and you will often get change in JMD anyway. Carry a mix: US dollars as a backup and for tips, Jamaican dollars for taxis, jerk stands, markets and small shops." },

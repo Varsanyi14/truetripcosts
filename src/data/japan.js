@@ -98,6 +98,15 @@ export default {
   ],
   tippingHeading: "Don't tip, really.",
   tipping: "Japan has no tipping culture, and there is no awkwardness in not tipping, it is simply the norm. Leaving extra money can confuse or even mildly offend, and staff may chase you to return it. Exceptional service is met with a polite thank-you, not a gratuity. The rare exception is handing a small thank-you in an envelope to a private guide or a ryokan host, in person.",
+  sources: {
+    changed: "Sources added on first publish, checked June 2026. Kyoto raised its lodging tax in March 2026, with top-tier rooms now taxed up to 10,000 yen per night, and from 1 November 2026 Japan switches tax-free shopping from an instant discount at the till to a refund claimed at the airport.",
+    links: [
+      { label: "Ministry of Finance, Japan: the 10% consumption tax that applies to most goods and services", url: "https://www.mof.go.jp/english/policy/tax_policy/tax_system/consumption/index.html", type: "revenue" },
+      { label: "Japan National Tourism Organization: tax-free shopping for visitors and the move to airport refunds from November 2026", url: "https://www.japan.travel/en/plan/japans-tax-exemption/", type: "tourism" },
+      { label: "National Tax Agency: the notice to foreign travelers on tax-free purchases and how the refund works", url: "https://www.nta.go.jp/publication/pamph/shohi/menzei/201805/pdf/explanation_eng.pdf", type: "revenue" },
+    ],
+    judgment: "Japan's lodging tax is set city by city rather than as one national rate, so the figure here is a typical band, not an official single rate. The daily cash share, tipping norms and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
   faqs: [
     { q: "Do I need cash in Japan?", a: "Yes, though less than before. Temples, small restaurants, vending machines and rural areas are still cash-only. Carry 10,000 to 20,000 yen and top up at 7-Eleven ATMs." },
     { q: "Which ATM works with my foreign card in Japan?", a: "7-Eleven (Seven Bank) ATMs are the most reliable, open 24/7 with English and a low fee. Japan Post Bank, AEON, FamilyMart and Lawson also work. Avoid Mizuho, MUFG and SMBC, which often reject foreign cards." },

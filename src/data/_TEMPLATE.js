@@ -58,9 +58,14 @@ export default {
     // corrected something, say what it was, in plain language.
     changed: "Sources added. Confirmed [the highest-stakes claims] against the official pages below.",
     // Two to four official links. Label each so a reader knows what it backs.
+    // Each link needs a "type", which picks its icon. Use one of:
+    //   revenue (tax/VAT authority), gov (government, city, customs, immigration),
+    //   tourism (official tourism board), police (police or emergency service),
+    //   currency (central bank), card (card issuer or ATM), media (news outlet),
+    //   guide (third-party travel guide or explainer).
     links: [
-      { label: "Official source: what this link confirms", url: "https://example.gov/page" },
-      { label: "City or tax authority: the charge it confirms", url: "https://example.gov/tax" },
+      { label: "Official source: what this link confirms", url: "https://example.gov/page", type: "gov" },
+      { label: "City or tax authority: the charge it confirms", url: "https://example.gov/tax", type: "revenue" },
     ],
     // Name what is our estimate rather than an official figure. Keep it honest.
     judgment: "The daily cash share, tipping habits, and likely ATM behavior are our own estimate from experience, not an official figure.",

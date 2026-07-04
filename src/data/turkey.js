@@ -112,6 +112,14 @@ export default {
 
   tippingHeading: "Modest but expected: about 5 to 10%.",
   tipping: "Tipping in Türkiye, called bahsis, is modest but part of the culture, so keep small notes handy. At a sit-down restaurant, around 5 to 10% for good service is normal, but first check the bill for a servis (service) charge, which some places add; if it is there, a little extra is enough. For a quick cafe or street food, rounding up is fine. Taxis get rounded up to a convenient figure. Leave a little for hotel housekeeping and porters, tip a helpful guide or driver, and small change is customary for a hamam attendant or a mosque-shoe minder. Cash tips are preferred, since a card tip rarely reaches the staff.",
+  sources: {
+    changed: "Sources added on first publish, checked June 2026. Turkiye's accommodation tax is 2% of the room price under the Expense Taxes Law, but the Revenue Administration confirmed in June 2026 that it is temporarily reduced to 1% through 31 December 2026. Standard VAT (KDV) is 20%, with a reduced 10% on accommodation.",
+    links: [
+      { label: "Turkiye accommodation tax guidance: the 2% rate (Konaklama Vergisi), temporarily reduced to 1% through 31 December 2026", url: "https://regfollower.com/turkey-revenue-administration-updates-guidance-on-accommodation-tax-rules/", type: "revenue" },
+      { label: "VAT in Turkiye tax guide: the 20% standard KDV and the tourist VAT refund from 2,000 lira in a single store", url: "https://sadarethukuk.com/en/vat-turkey-foreigner/", type: "guide" },
+    ],
+    judgment: "This guide estimates the standard 2% accommodation add-on, which is the rate that returns after 2026, so during the temporary 1% period your bill may be a little lower. The daily cash share, tipping norms and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
 
   faqs: [
     { q: "Do I need cash in Türkiye?", a: "Yes, a fair amount. Cards work well in cities for hotels, restaurants, malls and supermarkets, but the Grand Bazaar, street food, small cafes, many taxis and tips all run on lira, and cash helps you bargain. Keep a healthy stack and top up at a bank ATM, expecting a modest per-withdrawal cap." },

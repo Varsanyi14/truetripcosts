@@ -8,9 +8,9 @@ export default {
   sources: {
     changed: "Corrected the M50 toll wording: missing the 8pm next-day deadline first triggers a small per-journey late fee that then escalates, not a flat 30 to 60 euro fine. That figure is a separate rental-company admin fee.",
     links: [
-      { label: "Irish Revenue: VAT, and the Retail Export (Tax-Free) scheme for non-EU visitors", url: "https://www.revenue.ie/en/vat/retail-export-scheme/index.aspx" },
-      { label: "Irish Revenue: current VAT rates, including the 9% rate on restaurant and catering food from 1 July 2026", url: "https://www.revenue.ie/en/vat/index.aspx" },
-      { label: "eFlow and Transport Infrastructure Ireland: the M50 barrier-free toll and its late-payment penalties", url: "https://www.eflow.ie/how-it-works" },
+      { label: "Irish Revenue: VAT, and the Retail Export (Tax-Free) scheme for non-EU visitors", url: "https://www.revenue.ie/en/vat/retail-export-scheme/index.aspx", type: "revenue" },
+      { label: "Irish Revenue: current VAT rates, including the 9% rate on restaurant and catering food from 1 July 2026", url: "https://www.revenue.ie/en/vat/index.aspx", type: "revenue" },
+      { label: "eFlow and Transport Infrastructure Ireland: the M50 barrier-free toll and its late-payment penalties", url: "https://www.eflow.ie/how-it-works", type: "gov" },
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },

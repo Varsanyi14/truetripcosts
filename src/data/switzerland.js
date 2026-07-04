@@ -8,8 +8,8 @@ export default {
   sources: {
     changed: "Sources added. Verified that Switzerland (outside the EU, its own franc) charges VAT of 8.1% on most things, 3.8% on hotel stays and 2.6% on food, all already in the price, and that non-residents can reclaim VAT on purchases over 300 francs in one shop. The per-night visitor's tax (Kurtaxe) is set locally, roughly 2 to 7 francs. The guide's figures are current.",
     links: [
-      { label: "Switzerland Tourism: tax-free shopping, the 300 franc minimum and the 8.1% VAT", url: "https://www.myswitzerland.com/en-us/planning/about-switzerland/general-facts/money-and-shopping/tax-free-shopping/" },
-      { label: "Swiss Federal Tax Administration: VAT rates and the tax-free rules for visitors", url: "https://www.estv.admin.ch/estv/en/home/value-added-tax/vat-specialist-information/vat-vatefund-taxfree/vat-tax-free.html" },
+      { label: "Switzerland Tourism: tax-free shopping, the 300 franc minimum and the 8.1% VAT", url: "https://www.myswitzerland.com/en-us/planning/about-switzerland/general-facts/money-and-shopping/tax-free-shopping/", type: "tourism" },
+      { label: "Swiss Federal Tax Administration: VAT rates and the tax-free rules for visitors", url: "https://www.estv.admin.ch/estv/en/home/value-added-tax/vat-specialist-information/vat-vatefund-taxfree/vat-tax-free.html", type: "revenue" },
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },

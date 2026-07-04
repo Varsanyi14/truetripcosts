@@ -8,7 +8,7 @@ export default {
   sources: {
     changed: "Sources added. Verified with AADE, the Greek tax authority, that the climate crisis resilience fee is charged per room per night (not per person), by the accommodation's star rating and season (higher from April to October), with standard VAT at 24%. The guide's figures are current.",
     links: [
-      { label: "AADE (Greek tax authority): the climate crisis resilience fee charged per room per night by category and season", url: "https://www.aade.gr/en/climate-crisis-resilience-fee-issuance-statement" },
+      { label: "AADE (Greek tax authority): the climate crisis resilience fee charged per room per night by category and season", url: "https://www.aade.gr/en/climate-crisis-resilience-fee-issuance-statement", type: "revenue" },
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },

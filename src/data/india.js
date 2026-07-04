@@ -120,6 +120,14 @@ export default {
 
   tippingHeading: "Modest, in cash, and always in rupees.",
   tipping: "Tipping in India, sometimes called baksheesh, is common but rarely large, and it's genuinely appreciated since many service workers earn modest wages. At sit-down restaurants, around 10% is generous if no service charge has been added; if one has, an extra tip is optional. For everyday help, small amounts go a long way: 50 to 100 rupees per bag for a hotel porter, 50 to 100 rupees a day for housekeeping, 100 to 300 rupees for a full day with a driver, and 200 to 500 rupees for a good tour guide. Round up autorickshaw and taxi fares rather than adding a formal tip. Keep small notes on hand for this, and tip in rupees, not dollars, so no one loses out on an exchange.",
+  sources: {
+    changed: "Sources added on first publish, checked June 2026. From 22 September 2025 India cut GST on hotel rooms: nothing below 1,000 rupees a night, 5% up to 7,500, and 18% above that. Restaurant food is generally 5%. There is still no separate per-night tourist or city tax.",
+    links: [
+      { label: "Press Information Bureau, Government of India: the September 2025 GST changes for hotels and the hospitality sector", url: "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2169427", type: "gov" },
+      { label: "ClearTax: how GST applies to hotel rooms and restaurants, with the current rate bands", url: "https://cleartax.in/s/impact-of-gst-hospitality-industry", type: "revenue" },
+    ],
+    judgment: "The daily cash share, tipping norms and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
 
   faqs: [
     { q: "Can tourists use UPI in India?", a: "Increasingly, yes. UPI is how India pays, by scanning QR codes, and while foreign visitors once couldn't use it, prepaid \"tourist UPI\" wallets like UPI One World now let you load rupees with an international card and pay at QR-code merchants. It's still expanding, so set one up before you fly but keep a card and some cash as backup." },

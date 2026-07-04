@@ -8,8 +8,8 @@ export default {
   sources: {
     changed: "Sources added. Verified that Paris raised its taxe de sejour on 1 January 2026, so a mid-range hotel now runs about 6 euros a person per night and the top categories more, while most towns outside Paris stay at a euro or two. The detaxe VAT refund still starts at 100 euros spent in one store. The guide's figures are current.",
     links: [
-      { label: "French government (service-public.fr): the Paris taxe de sejour rates that took effect 1 January 2026", url: "https://www.service-public.gouv.fr/particuliers/actualites/A17929?lang=en" },
-      { label: "Paris Convention and Visitors Bureau: the tourist tax by accommodation category, per person per night", url: "https://parisjetaime.com/eng/article/tourist-tax-a616" },
+      { label: "French government (service-public.fr): the Paris taxe de sejour rates that took effect 1 January 2026", url: "https://www.service-public.gouv.fr/particuliers/actualites/A17929?lang=en", type: "gov" },
+      { label: "Paris Convention and Visitors Bureau: the tourist tax by accommodation category, per person per night", url: "https://parisjetaime.com/eng/article/tourist-tax-a616", type: "tourism" },
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },
