@@ -3,8 +3,8 @@ export default {
   live: true,
   name: "Netherlands",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-30",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-04",
   sources: {
     changed: "Sources added. Verified with the Dutch government that VAT on hotel rooms rose from 9% to 21% on 1 January 2026 (camping stays stay at 9%), and with the City of Amsterdam that its tourist tax is 12.5% of the net room rate, the highest in Europe. Combined, that is roughly 33.5% on an Amsterdam hotel stay. The guide's figures are current.",
     links: [
@@ -19,7 +19,7 @@ export default {
   hook: "One of Europe's most cashless countries, with a catch: not every card type works everywhere.",
 
   title: "Money in the Netherlands (2026): Cards, Cash, ATMs and Amsterdam's Tourist Tax | True Trip Costs",
-  description: "How to handle money in the Netherlands as a US traveler in 2026: why a debit card works better than a credit card, fee-free Geldmaat ATMs, light round-up tipping, and Amsterdam's percentage-based tourist tax on top of a new 21% VAT on hotel rooms. Checked June 2026.",
+  description: "How to handle money in the Netherlands as a US traveler in 2026: why a debit card works better than a credit card, fee-free Geldmaat ATMs, light round-up tipping, and Amsterdam's percentage-based tourist tax on top of a new 21% VAT on hotel rooms. Checked July 2026.",
 
   h1: "Money in the Netherlands, sorted.",
   lede: "A calm, current plan for the money side of your trip: why this is one of the most cashless countries in Europe, the one card quirk that catches US travelers out, and the tax change that just made Amsterdam hotel rooms noticeably pricier.",
@@ -82,7 +82,7 @@ export default {
     works: "Yes, reliably almost everywhere. The Netherlands is small, flat and densely built, which makes for some of the most consistent mobile coverage in Europe. KPN, Vodafone and T-Mobile NL all run strong 4G and growing 5G across cities, towns, the countryside and the rail network. You would have to go looking for a dead zone here, a rare situation by European standards."
   },
 
-  // TOURIST TAX (high-churn, verified Jun 2026). Amsterdam is the outlier: a steep 12.5% of
+  // TOURIST TAX (high-churn, verified Jul 2026). Amsterdam is the outlier: a steep 12.5% of
   // the room rate (excluding VAT), the highest percentage-based tourist tax in Europe, on top
   // of a separate national VAT hike on hotel rooms from 9% to 21% that took effect 1 Jan 2026
   // (covered in recentChange and taxfree below, not part of this calculator line, since VAT

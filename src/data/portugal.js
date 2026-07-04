@@ -3,8 +3,8 @@ export default {
   live: true,
   name: "Portugal",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-28",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-04",
   sources: {
     changed: "Sources added. Verified with Lisbon City Council that the taxa turistica is 4 euros a person per night (it doubled from 2 euros on 1 September 2024), from age 13 and capped at 7 nights, with Porto at 3 euros. Portugal's standard VAT is 23% and non-EU visitors can reclaim it on shopping. The guide's figures are current.",
     links: [
@@ -16,7 +16,7 @@ export default {
   emergency: { medical: "112", note: "112 reaches every emergency service across the country.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
   title: "Money in Portugal (2026): Cards, Cash, Multibanco ATMs, Tipping and the Tourist Tax | True Trip Costs",
-  description: "How to handle money in Portugal as a US traveler in 2026: cards work almost everywhere, the dollar conversion trap, Multibanco ATMs vs the yellow Euronet ones, light tipping, the Lisbon and Porto tourist taxes, and the 23% IVA refund. Checked June 2026.",
+  description: "How to handle money in Portugal as a US traveler in 2026: cards work almost everywhere, the dollar conversion trap, Multibanco ATMs vs the yellow Euronet ones, light tipping, the Lisbon and Porto tourist taxes, and the 23% IVA refund. Checked July 2026.",
   h1: "Money in Portugal, sorted.",
   lede: "A calm, current plan for the money side of your trip: what you can tap, the little things you still want euros for, and the small rules that trip up first-timers.",
   hero: {
@@ -67,7 +67,7 @@ export default {
   connectivity: {
     works: "Yes, and coverage is very good. Portugal has near-universal 4G and growing 5G across the cities, the Algarve coast and the main routes. Signal thins in the interior, like the Alentejo and the remote north, and in the national parks."
   },
-  // TOURIST TAX (high-churn, verified Jun 2026). A per-person, per-night municipal
+  // TOURIST TAX (high-churn, verified Jul 2026). A per-person, per-night municipal
   // tax (taxa turistica) collected by your accommodation, usually not in the room rate.
   // Most of Portugal charges nothing. Capped at 7 nights, under-13s exempt.
   tax: {

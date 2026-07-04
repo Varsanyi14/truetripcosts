@@ -3,8 +3,8 @@ export default {
   live: true,
   name: "Switzerland",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-30",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-04",
   sources: {
     changed: "Sources added. Verified that Switzerland (outside the EU, its own franc) charges VAT of 8.1% on most things, 3.8% on hotel stays and 2.6% on food, all already in the price, and that non-residents can reclaim VAT on purchases over 300 francs in one shop. The per-night visitor's tax (Kurtaxe) is set locally, roughly 2 to 7 francs. The guide's figures are current.",
     links: [
@@ -20,7 +20,7 @@ export default {
   aliases: ["zurich", "geneva", "bern", "basel", "lucerne", "lausanne", "zermatt", "interlaken", "st moritz", "st. moritz", "grindelwald", "swiss franc", "chf", "franc", "matterhorn", "jungfrau", "swiss", "helvetia"],
 
   title: "Money in Switzerland (2026): Cards, Cash, Francs and Tipping | True Trip Costs",
-  description: "How to handle money in Switzerland as a US traveler in 2026: cards and tap work almost everywhere, why it's francs and not euros, how little you tip, paying in francs not dollars, the per-night visitor's tax and Guest Card, VAT that's already in the price, and which ATMs to use. Checked June 2026.",
+  description: "How to handle money in Switzerland as a US traveler in 2026: cards and tap work almost everywhere, why it's francs and not euros, how little you tip, paying in francs not dollars, the per-night visitor's tax and Guest Card, VAT that's already in the price, and which ATMs to use. Checked July 2026.",
 
   h1: "Money in Switzerland, sorted.",
   lede: "A calm, current plan for the money side of your trip: why you barely need cash, why it's francs and not euros, how modest the tipping is, and the small per-night tax that often pays for your train rides.",
@@ -83,7 +83,7 @@ export default {
     works: "Excellent almost everywhere, including high in the Alps and on trains through the mountains. The three networks, Swisscom, Sunrise and Salt, give strong 4G and wide 5G, and even remote valleys and high passes are usually covered. Local plans are expensive, and because Switzerland is not in the EU, roaming that is free elsewhere in Europe often is not free here, so check your US plan carefully; an eSIM (Airalo, Nomad, Ubigi) is frequently the cheaper option. You do not need mobile data to pay for anything; cards and contactless stand on their own."
   },
 
-  // VISITOR'S TAX (high-churn, verified to Jun 2026 knowledge; confirm municipal rates).
+  // VISITOR'S TAX (high-churn, verified to Jul 2026 knowledge; confirm municipal rates).
   // Switzerland has no national tourist tax. Instead most towns charge a per-person, per-night
   // visitor's tax (Kurtaxe / taxe de sejour), roughly CHF 2 to 7, set by the municipality or resort,
   // and it very often includes a Guest Card giving free or discounted local transport and attractions.

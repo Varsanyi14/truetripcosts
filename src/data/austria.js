@@ -3,8 +3,8 @@ export default {
   live: true,
   name: "Austria",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-30",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-04",
   sources: {
     changed: "Sources added, and a rate update. The City of Vienna raised its Ortstaxe from about 3.2% to 5% of the net room price on 1 July 2026 (a further rise to 8% is set for July 2027), so we updated the Vienna figure. The 20% VAT refund for non-EU visitors, which starts at 75.01 euros, is confirmed. Alpine and regional towns still charge a small flat fee per night.",
     links: [
@@ -20,7 +20,7 @@ export default {
   aliases: ["vienna", "wien", "salzburg", "innsbruck", "hallstatt", "graz", "linz", "tyrol", "tirol", "austrian", "euro", "eur", "alps", "alpine"],
 
   title: "Money in Austria (2026): Cards, Cash, Euros and Tipping | True Trip Costs",
-  description: "How to handle money in Austria as a US traveler in 2026: cards and tap work in most places but cash is still common, why to pay in euros not dollars, how little you tip, which ATMs to use, the per-night tourist tax, VAT that's already in the price, and how to claim it back. Checked June 2026.",
+  description: "How to handle money in Austria as a US traveler in 2026: cards and tap work in most places but cash is still common, why to pay in euros not dollars, how little you tip, which ATMs to use, the per-night tourist tax, VAT that's already in the price, and how to claim it back. Checked July 2026.",
 
   h1: "Money in Austria, sorted.",
   lede: "A calm, current plan for the money side of your trip: why you should carry a bit more cash than elsewhere in Europe, how modest the tipping is, and the small nightly tourist tax added at your hotel.",
@@ -83,7 +83,7 @@ export default {
     works: "Very good across the country and strong in the cities and along the valleys, with only the highest and most remote alpine areas thinning out. The main networks are A1, Magenta and Drei, all with wide 4G and growing 5G. Because Austria is in the EU, an EU eSIM or an EU SIM with \"roam like at home\" works normally here, and many US plans include European roaming, so check yours first; an eSIM (Airalo, Nomad, Ubigi) is a cheap backup. You do not need mobile data to pay for anything; cards and contactless stand on their own."
   },
 
-  // TOURIST TAX (high-churn, verified to Jun 2026 knowledge; confirm local rates).
+  // TOURIST TAX (high-churn, verified to Jul 2026 knowledge; confirm local rates).
   // Austria has no national tourist tax. Most towns charge a local overnight tax (Ortstaxe /
   // Tourismusabgabe) added to your hotel bill. Vienna charges 5% of the net room price (raised from 3.2% on 1 July 2026);
   // most alpine and regional towns charge a flat per-person, per-night fee, commonly EUR 1 to 3.50.

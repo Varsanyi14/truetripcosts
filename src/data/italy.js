@@ -3,8 +3,8 @@ export default {
   live: true,
   name: "Italy",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-28",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-04",
   sources: {
     changed: "Sources added. Verified the Venice day-tripper access fee for 2026 (5 euros if booked at least four days ahead, 10 euros last-minute, on about 60 peak dates from April to July, historic center only, with overnight guests exempt but still required to register), along with the per-night overnight taxes in Rome, Florence and Venice. The guide's figures are current.",
     links: [
@@ -15,7 +15,7 @@ export default {
   emergency: { medical: "112", note: "112 reaches every service, and 118 goes straight to an ambulance.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
   title: "Money in Italy (2026): Cards, Cash, ATMs, the Coperto, Tipping and Tourist Taxes | True Trip Costs",
-  description: "How to handle money in Italy as a US traveler in 2026: cards work almost everywhere, the dollar conversion trap, bank Bancomats vs Euronet ATMs, the coperto cover charge, light tipping, and the tourist taxes in Rome, Florence and Venice plus the Venice access fee. Checked June 2026.",
+  description: "How to handle money in Italy as a US traveler in 2026: cards work almost everywhere, the dollar conversion trap, bank Bancomats vs Euronet ATMs, the coperto cover charge, light tipping, and the tourist taxes in Rome, Florence and Venice plus the Venice access fee. Checked July 2026.",
   h1: "Money in Italy, sorted.",
   lede: "A calm, current plan for the money side of your trip: what you can tap, the little things you still want euros for, and the small rules that trip up first-timers.",
   hero: {
@@ -70,7 +70,7 @@ export default {
   connectivity: {
     works: "Yes, and coverage is excellent. Italy has near-universal 4G and widespread 5G across the cities, tourist regions and main rail and road routes. Signal can dip in remote mountain valleys and parts of the far south and islands."
   },
-  // TOURIST TAX (high-churn, verified Jun 2026). An accommodation tax (tassa di soggiorno)
+  // TOURIST TAX (high-churn, verified Jul 2026). An accommodation tax (tassa di soggiorno)
   // charged per person, per night, and collected at checkout, often in cash. The real
   // amount depends on the hotel's official star rating, so the calculator uses a sensible
   // mid-range figure per city and says so. Children under a set age are usually exempt.

@@ -3,8 +3,8 @@ export default {
   live: true,
   name: "Czechia",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-30",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-04",
   sources: {
     changed: "Sources added. Verified with the City of Prague that the local accommodation fee is 50 koruna per person per night (doubled from 21 in 2022), capped by national law, applying to the first 60 nights, with under-18s exempt. Standard Czech VAT is 21%, and non-EU visitors can reclaim it on shopping. The guide's figures are current.",
     links: [
@@ -19,7 +19,7 @@ export default {
   aliases: ["czech republic", "czech", "prague", "praha", "brno", "cesky krumlov", "karlovy vary", "plzen", "pilsen", "koruna", "czk", "bohemia", "moravia"],
 
   title: "Money in Czechia (2026): Cards, Cash, ATMs and the Prague City Fee | True Trip Costs",
-  description: "How to handle money in Czechia as a US traveler in 2026: why cards and contactless work almost everywhere, which ATMs to use and which yellow ones to avoid, the dollar-conversion trap, the koruna versus the euro, Prague's per-night city fee, and light round-up tipping. Checked June 2026.",
+  description: "How to handle money in Czechia as a US traveler in 2026: why cards and contactless work almost everywhere, which ATMs to use and which yellow ones to avoid, the dollar-conversion trap, the koruna versus the euro, Prague's per-night city fee, and light round-up tipping. Checked July 2026.",
 
   h1: "Money in Czechia, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your tap-to-pay card covers almost everything, the two tourist traps that quietly cost the most, and the small nightly city fee in Prague.",
@@ -82,7 +82,7 @@ export default {
     works: "Very good, and cheap. The three networks, O2, T-Mobile and Vodafone, all give strong 4G and growing 5G across Prague, the other cities and most of the countryside, with only the odd dead spot in deep forest or on rural train lines. A local prepaid SIM is easy to buy, and eSIMs from Airalo, Nomad, Ubigi or Holafly work well if your phone supports them. You do not need mobile data to pay for anything, cards and contactless stand on their own, so data is really just for maps, transit apps and calling a taxi."
   },
 
-  // TOURIST TAX / FEES (high-churn, verified to Jun 2026 knowledge; confirm the Prague figure).
+  // TOURIST TAX / FEES (high-churn, verified to Jul 2026 knowledge; confirm the Prague figure).
   // Czechia levies a local accommodation fee ("poplatek z pobytu"), capped by national law at
   // 50 Kč per person per night. Municipalities set their own rate up to that cap: Prague charges
   // the full 50 Kč, many tourist towns charge up to it, and lots of small places charge nothing.

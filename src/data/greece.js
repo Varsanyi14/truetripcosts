@@ -3,8 +3,8 @@ export default {
   live: true,
   name: "Greece",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-30",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-04",
   sources: {
     changed: "Sources added. Verified with AADE, the Greek tax authority, that the climate crisis resilience fee is charged per room per night (not per person), by the accommodation's star rating and season (higher from April to October), with standard VAT at 24%. The guide's figures are current.",
     links: [
@@ -18,7 +18,7 @@ export default {
   hook: "Cards work in the cities, but the islands still run on cash and a nightly climate fee.",
 
   title: "Money in Greece (2026): Cash, Cards, ATMs and the Climate Resilience Fee | True Trip Costs",
-  description: "How to handle money in Greece as a US traveler in 2026: cards in Athens and Thessaloniki, why the islands still want cash, fee-free Greek bank ATMs, the per-night Climate Resilience Fee by hotel rating, tipping, and the VAT refund. Checked June 2026.",
+  description: "How to handle money in Greece as a US traveler in 2026: cards in Athens and Thessaloniki, why the islands still want cash, fee-free Greek bank ATMs, the per-night Climate Resilience Fee by hotel rating, tipping, and the VAT refund. Checked July 2026.",
 
   h1: "Money in Greece, sorted.",
   lede: "A calm, current plan for the money side of your trip: what to tap in the cities, how much cash to carry for the islands, and the per-night fee that surprises first-timers at checkout.",
@@ -82,7 +82,7 @@ export default {
     works: "Yes, and coverage is strong on the mainland and the main islands. Greece's three networks, Cosmote, Vodafone Greece and Wind Hellas (now branded Nova), give near-universal 4G and growing 5G across Athens, Thessaloniki and tourist islands like Santorini, Mykonos, Crete and Rhodes. Cosmote has the widest reach on smaller islands and rural mountain areas. Signal can thin out on tiny islands, remote beaches and in the mountainous interior, so download offline maps before heading somewhere isolated, and bring an eSIM rather than relying on hotel wifi alone."
   },
 
-  // TOURIST TAX (high-churn, verified Jun 2026). Greece's Climate Crisis Resilience Fee
+  // TOURIST TAX (high-churn, verified Jul 2026). Greece's Climate Crisis Resilience Fee
   // is charged per room or rental unit per night, not per person, and varies by the
   // accommodation's official star rating and the season. These are the April-to-October
   // peak-season rates, which is when most US travelers visit; November-to-March rates

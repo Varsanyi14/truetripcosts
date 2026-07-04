@@ -3,8 +3,8 @@ export default {
   live: true,
   name: "Thailand",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-28",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-04",
   sources: {
     changed: "Sources added. Confirmed the TDAC is mandatory and free, and that the long-discussed 300-baht arrival fee for air travelers is still not in effect as of mid-2026, awaiting Cabinet approval with no start date set.",
     links: [
@@ -16,7 +16,7 @@ export default {
   emergency: { medical: "1669", note: "1669 is the medical and ambulance line. 1155 reaches the tourist police, who speak English.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "medium",
   title: "Money in Thailand (2026): Cash, Cards, ATMs, the 220 Baht Fee and Tipping | True Trip Costs",
-  description: "How to handle money in Thailand as a US traveler in 2026: cash vs card, the steep ATM fee and how to beat it, the dollar conversion trap, tipping and the ++ service charge, and the tourist VAT refund. Checked June 2026.",
+  description: "How to handle money in Thailand as a US traveler in 2026: cash vs card, the steep ATM fee and how to beat it, the dollar conversion trap, tipping and the ++ service charge, and the tourist VAT refund. Checked July 2026.",
   h1: "Money in Thailand, sorted.",
   lede: "A calm, current plan for the money side of your trip: what you can tap, where you still need baht, and the small rules that trip up first-timers.",
   hero: {
@@ -67,7 +67,7 @@ export default {
   connectivity: {
     works: "Yes across the cities, main routes and the popular islands, with strong 4G and growing 5G in Bangkok, Phuket and Chiang Mai. Signal drops in the northern mountains, jungle parks and the interiors of smaller islands."
   },
-  // TOURIST TAX (high-churn, verified Jun 2026). Thailand has no hotel or tourist tax
+  // TOURIST TAX (high-churn, verified Jul 2026). Thailand has no hotel or tourist tax
   // today. A 300-baht arrival fee has been discussed for years but is still not being
   // collected, with no start date, and if it ever begins it would be bundled into airfare.
   tax: {

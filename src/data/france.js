@@ -3,8 +3,8 @@ export default {
   live: true,
   name: "France",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-28",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-04",
   sources: {
     changed: "Sources added. Verified that Paris raised its taxe de sejour on 1 January 2026, so a mid-range hotel now runs about 6 euros a person per night and the top categories more, while most towns outside Paris stay at a euro or two. The detaxe VAT refund still starts at 100 euros spent in one store. The guide's figures are current.",
     links: [
@@ -16,7 +16,7 @@ export default {
   emergency: { medical: "112", note: "112 reaches every service, and 15 connects you straight to the medical service, the SAMU.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
   title: "Money in France (2026): Cash, Cards, ATMs, Tipping and the VAT Refund | True Trip Costs",
-  description: "How to handle money in France as a US traveler in 2026: cash vs card, which ATMs to use and which to avoid, the dollar conversion trap, tipping with service compris, the tourist tax, and the VAT refund. Checked June 2026.",
+  description: "How to handle money in France as a US traveler in 2026: cash vs card, which ATMs to use and which to avoid, the dollar conversion trap, tipping with service compris, the tourist tax, and the VAT refund. Checked July 2026.",
   h1: "Money in France, sorted.",
   lede: "A calm, current plan for the money side of your trip: what to tap, the little cash you still want, and the small rules that trip up first-timers.",
   hero: {
@@ -65,7 +65,7 @@ export default {
   connectivity: {
     works: "Yes across the cities, tourist regions and main routes, with excellent 4G and 5G growing in the bigger cities and along the TGV lines. Signal thins in the Alps and Pyrenees valleys and remote rural areas like inland Brittany and the Dordogne."
   },
-  // TOURIST TAX (high-churn, verified Jun 2026). A nightly tourist tax (taxe de sejour)
+  // TOURIST TAX (high-churn, verified Jul 2026). A nightly tourist tax (taxe de sejour)
   // charged per person and collected by your accommodation. The amount rises with the
   // hotel's rating, so the calculator uses a mid-range figure per city. Children under
   // 18 are exempt.

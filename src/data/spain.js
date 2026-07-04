@@ -3,8 +3,8 @@ export default {
   live: true,
   name: "Spain",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-28",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-04",
   sources: {
     changed: "Sources added. Verified that Barcelona's tourist tax roughly doubled on 1 April 2026 (the regional Catalan rate plus the city surcharge now runs about 6 to 12 euros a person per night by category, capped at 7 nights, under-16s exempt, and the surcharge is set to keep rising to 2029), and that Spain's IVA refund for non-EU visitors has no minimum spend. The guide's figures are current.",
     links: [
@@ -15,7 +15,7 @@ export default {
   emergency: { medical: "112", note: "112 reaches every emergency service, with English-speaking operators available.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
   title: "Money in Spain (2026): Cards, Cash, ATMs, Tipping and the Tourist Tax | True Trip Costs",
-  description: "How to handle money in Spain as a US traveler in 2026: cards work almost everywhere, the dollar conversion trap, bank ATMs vs Euronet, light tipping, the Catalonia and Balearic tourist taxes including Barcelona's 2026 rise, and the IVA refund with no minimum spend. Checked June 2026.",
+  description: "How to handle money in Spain as a US traveler in 2026: cards work almost everywhere, the dollar conversion trap, bank ATMs vs Euronet, light tipping, the Catalonia and Balearic tourist taxes including Barcelona's 2026 rise, and the IVA refund with no minimum spend. Checked July 2026.",
   h1: "Money in Spain, sorted.",
   lede: "A calm, current plan for the money side of your trip: what you can tap, the little things you still want euros for, and the small rules that trip up first-timers.",
   hero: {
@@ -70,7 +70,7 @@ export default {
   connectivity: {
     works: "Yes, and coverage is among the best in Europe. Spain has near-universal 4G and widespread 5G across the cities, the coast and the main tourist routes, including the islands. Signal can dip in remote mountains and sparsely populated inland areas."
   },
-  // TOURIST TAX (high-churn, verified Jun 2026). Only some Spanish regions charge a
+  // TOURIST TAX (high-churn, verified Jul 2026). Only some Spanish regions charge a
   // per-person, per-night tax, collected by your accommodation. Catalonia (Barcelona)
   // and the Balearic Islands are the main ones. Madrid, Andalusia and the Canary Islands
   // charge nothing today. Children under 16 are usually exempt.

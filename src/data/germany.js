@@ -3,8 +3,8 @@ export default {
   live: true,
   name: "Germany",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-30",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-04",
   sources: {
     changed: "Sources added, and a correction. We removed Munich from the list of cities charging a bed tax: Bavaria banned local hotel taxes and its Constitutional Court upheld that ban in 2025, so Munich does not levy one. The other city rates are confirmed (Berlin 7.5%, Cologne 5%, Hamburg on a sliding scale, Frankfurt 2 euros a night), as is the 19% VAT refund for non-EU visitors, which starts at 50.01 euros spent in one store.",
     links: [
@@ -18,7 +18,7 @@ export default {
   hook: "More cash-loving than its reputation suggests, with a patchwork of city bed taxes to plan for.",
 
   title: "Money in Germany (2026): Cash, Cards, ATMs and City Taxes | True Trip Costs",
-  description: "How to handle money in Germany as a US traveler in 2026: why cash still rules more than you'd expect, fee-free Cash Group and Sparkasse ATMs, the dollar conversion trap, light round-up tipping, and the city-by-city bed tax (Bettensteuer) in Berlin, Hamburg, Cologne and Frankfurt (but not Munich, where Bavaria bans it). Checked June 2026.",
+  description: "How to handle money in Germany as a US traveler in 2026: why cash still rules more than you'd expect, fee-free Cash Group and Sparkasse ATMs, the dollar conversion trap, light round-up tipping, and the city-by-city bed tax (Bettensteuer) in Berlin, Hamburg, Cologne and Frankfurt (but not Munich, where Bavaria bans it). Checked July 2026.",
 
   h1: "Money in Germany, sorted.",
   lede: "A calm, current plan for the money side of your trip: why a famously efficient country still runs more on cash than you'd guess, and the small per-city tax that varies more than anywhere else in Europe.",
@@ -81,7 +81,7 @@ export default {
     works: "Yes, with one well-known catch. Deutsche Telekom has the strongest and most consistent nationwide coverage, including small towns, the Alps and the Black Forest, with Vodafone a close second, especially in the western half of the country. O2 has closed much of its old rural gap but still trails the other two outside cities. The famous weak point is German long-distance trains: ICE lines run through long tunnels and rural stretches with patchy signal, even though free onboard wifi (WIFIonICE) helps fill the gaps. Pick a Telekom-backed eSIM if your trip includes rural regions or a lot of train travel."
   },
 
-  // TOURIST TAX / FEES (high-churn, verified Jun 2026). Germany has no national tourist tax.
+  // TOURIST TAX / FEES (high-churn, verified Jul 2026). Germany has no national tourist tax.
   // Instead, individual cities levy their own "Bettensteuer" (bed tax) or "Kulturförderabgabe"
   // (culture tax), charged on leisure stays only (business travelers are generally exempt with
   // proof). Rates and structure vary city by city: some charge a percentage of the net room
