@@ -1,8 +1,20 @@
 ---
 import '../styles/global.css';
+import { countries } from '../data/index.js';
 const { title, description } = Astro.props;
 const site = 'https://truetripcosts.com';
 const canonical = site + Astro.url.pathname;
+
+// Destination options are generated from the live guides, so the signup never
+// drifts and a new country appears on its own. The guide you are on is
+// pre-checked and pinned to the top.
+const currentSlug = Astro.url.pathname.replace(/^\/+|\/+$/g, '').split('/')[0];
+const liveCountries = countries.filter(c => c.live);
+const current = liveCountries.find(c => c.slug === currentSlug) || null;
+const rest = liveCountries
+  .filter(c => !current || c.slug !== current.slug)
+  .sort((a, b) => a.name.localeCompare(b.name));
+const destOptions = current ? [current, ...rest] : rest;
 ---
 <!doctype html>
 <html lang="en">
@@ -38,34 +50,41 @@ const canonical = site + Astro.url.pathname;
     <div class="box" role="dialog" aria-modal="true" aria-labelledby="sgTitle">
       <button class="x" type="button" aria-label="Close" data-close>&times;</button>
       <div class="sg-form" id="sgForm">
-        <p class="sg-lab">Not departing from the US?</p>
-        <h3 class="sg-title" id="sgTitle">We will email you when we add your country.</h3>
-        <p class="sg-sub">We only cover trips leaving the United States right now. Leave your email and where you travel from, and we will send you one note the moment we add it.</p>
-        <label class="sg-field"><span>Email</span>
+        <p class="sg-lab">A free heads-up</p>
+        <h3 class="sg-title" id="sgTitle">No surprises on the money side.</h3>
+        <p class="sg-sub">We travel a lot and keep an eye on the money side of every country, so you do not have to. Tell us what you are into, and we will send a free heads-up the moment something changes.</p>
+
+        <label class="sg-opt">
+          <input type="checkbox" id="sgGeneral">
+          <span class="sg-opt-txt"><b>You travel a lot</b>Stay in the know. An occasional note when something worth knowing shifts, wherever you are headed, plus new guides. No spam, ever.</span>
+        </label>
+
+        <div class="sg-sec">
+          <p class="sg-seclab">Planning a trip?</p>
+          <p class="sg-secsub">Pick the places you are weighing up, even if you have not decided yet. If the costs change for any of them before you go, we will email you.</p>
+          <input type="text" id="sgFilter" class="sg-search" placeholder="Find a country" autocomplete="off" aria-label="Filter countries">
+          <div class="sg-countries" id="sgCountries" role="group" aria-label="Destinations">
+            {destOptions.map(c => (
+              <label class="sg-cty" data-name={c.name.toLowerCase()}>
+                <input type="checkbox" value={c.slug} checked={!!(current && c.slug === current.slug)} />
+                <span>{c.name}</span>
+              </label>
+            ))}
+          </div>
+          <p class="sg-count" id="sgCount" hidden></p>
+        </div>
+
+        <label class="sg-field" style="margin-top:16px"><span>Your email</span>
           <input type="email" id="sgEmail" autocomplete="email" inputmode="email" placeholder="you@example.com" required>
         </label>
-        <label class="sg-field"><span>Traveling from</span>
-          <select id="sgCountry">
-            <option value="" disabled selected>Choose your country</option>
-            <option>Canada</option>
-            <option>United Kingdom</option>
-            <option>Australia</option>
-            <option>Ireland</option>
-            <option>Germany</option>
-            <option>France</option>
-            <option>Netherlands</option>
-            <option value="Other">Somewhere else</option>
-          </select>
-        </label>
-        <input type="text" id="sgOther" class="sg-other" placeholder="Which country?" autocomplete="country-name" hidden>
         <p class="sg-err" id="sgErr" role="alert" hidden></p>
-        <button class="btn sg-submit" type="button" id="sgSubmit">Notify me</button>
-        <p class="sg-fine">We will only use this to email you when we add your country. See our <a href="/privacy">privacy note</a>.</p>
+        <button class="btn sg-submit" type="button" id="sgSubmit">Keep me posted</button>
+        <p class="sg-fine">We only keep your email and your picks, and only to send what you asked for. Leave in one click, anytime. See our <a href="/privacy">privacy note</a>.</p>
       </div>
       <div class="sg-done" id="sgDone" hidden>
         <div class="sg-check" aria-hidden="true"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
-        <h3 class="sg-title">You are on the list.</h3>
-        <p class="sg-sub" id="sgDoneMsg">We will send one friendly note the moment we add your country. Safe travels until then.</p>
+        <h3 class="sg-title">Almost there, check your inbox.</h3>
+        <p class="sg-sub" id="sgDoneMsg">We just sent a quick confirmation link. Click it and you are on the list. If it is not there in a minute, take a peek in spam.</p>
         <button class="sg-close2" type="button" data-close>Close</button>
       </div>
     </div>
@@ -78,20 +97,34 @@ const canonical = site + Astro.url.pathname;
       var form = document.getElementById('sgForm');
       var done = document.getElementById('sgDone');
       var emailEl = document.getElementById('sgEmail');
-      var cEl = document.getElementById('sgCountry');
-      var otherEl = document.getElementById('sgOther');
+      var generalEl = document.getElementById('sgGeneral');
+      var filterEl = document.getElementById('sgFilter');
+      var listEl = document.getElementById('sgCountries');
+      var countEl = document.getElementById('sgCount');
       var errEl = document.getElementById('sgErr');
       var submitEl = document.getElementById('sgSubmit');
-      var doneMsg = document.getElementById('sgDoneMsg');
-      var fromSel = document.getElementById('from');
+      var rows = Array.prototype.slice.call(listEl.querySelectorAll('.sg-cty'));
+      var boxes = Array.prototype.slice.call(listEl.querySelectorAll('input[type=checkbox]'));
       var lastFocus = null;
       var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      function dest() {
-        var p = (location.pathname || '').replace(/^\/+|\/+$/g, '');
-        return p ? p.split('/')[0] : 'home';
-      }
       function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+      function norm(s) { return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+      function chosen() { return boxes.filter(function (b) { return b.checked; }).map(function (b) { return b.value; }); }
+
+      function updateCount() {
+        var n = chosen().length;
+        if (n === 0) { countEl.hidden = true; return; }
+        countEl.hidden = false;
+        countEl.textContent = n === 1 ? '1 country selected' : n + ' countries selected';
+      }
+      function applyFilter() {
+        var q = norm(filterEl.value.trim());
+        rows.forEach(function (r) {
+          var hit = q === '' || norm(r.getAttribute('data-name')).indexOf(q) !== -1;
+          r.classList.toggle('is-hidden', !hit);
+        });
+      }
 
       function open() {
         lastFocus = document.activeElement;
@@ -99,6 +132,7 @@ const canonical = site + Astro.url.pathname;
         modal.classList.add('open'); modal.setAttribute('aria-hidden', 'false');
         requestAnimationFrame(function () { modal.classList.add('in'); });
         document.body.style.overflow = 'hidden';
+        updateCount();
         setTimeout(function () { emailEl.focus(); }, 60);
       }
       function close() {
@@ -106,46 +140,43 @@ const canonical = site + Astro.url.pathname;
         setTimeout(function () {
           modal.classList.remove('open'); modal.setAttribute('aria-hidden', 'true');
           document.body.style.overflow = '';
-          emailEl.value = ''; cEl.selectedIndex = 0; otherEl.value = ''; otherEl.hidden = true;
           errEl.hidden = true; form.hidden = false; done.hidden = true;
-          if (fromSel) fromSel.value = 'US';
           if (lastFocus && lastFocus.focus) lastFocus.focus();
         }, reduce ? 0 : 260);
       }
       function submit() {
         var email = emailEl.value.trim();
-        var country = cEl.value === 'Other' ? (otherEl.value.trim() || 'Somewhere else') : cEl.value;
+        var destinations = chosen();
+        var general = !!generalEl.checked;
         if (!validEmail(email)) { errEl.textContent = 'Please enter a valid email address.'; errEl.hidden = false; emailEl.focus(); return; }
-        if (!cEl.value) { errEl.textContent = 'Please choose where you are traveling from.'; errEl.hidden = false; cEl.focus(); return; }
+        if (!general && destinations.length === 0) { errEl.textContent = 'Pick "you travel a lot", or at least one country, so we know what to send.'; errEl.hidden = false; return; }
         errEl.hidden = true; submitEl.disabled = true; submitEl.textContent = 'Sending...';
         fetch('/api/notify', {
           method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email, fromCountry: country, destination: dest(), path: location.pathname })
+          body: JSON.stringify({ email: email, general: general, destinations: destinations, path: location.pathname })
         }).then(function (r) {
           if (!r.ok) throw new Error('http'); return r.json().catch(function () { return {}; });
         }).then(function (j) {
           if (j && j.ok === false) throw new Error('app');
-          doneMsg.textContent = 'We will send one friendly note the moment we cover ' + country + '. Safe travels until then.';
           form.hidden = true; done.hidden = false;
           var c2 = done.querySelector('[data-close]'); if (c2) c2.focus();
         }).catch(function () {
           errEl.textContent = 'Something went wrong on our side. Please try again in a moment.'; errEl.hidden = false;
         }).then(function () {
-          submitEl.disabled = false; submitEl.textContent = 'Notify me';
+          submitEl.disabled = false; submitEl.textContent = 'Keep me posted';
         });
       }
 
-      if (fromSel) fromSel.addEventListener('change', function () { if (this.value === 'OTHER') open(); });
       var openers = document.querySelectorAll('[data-open-signup]');
       for (var i = 0; i < openers.length; i++) openers[i].addEventListener('click', function (e) { e.preventDefault(); open(); });
       modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
       var closers = modal.querySelectorAll('[data-close]');
       for (var k = 0; k < closers.length; k++) closers[k].addEventListener('click', close);
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
-      cEl.addEventListener('change', function () { otherEl.hidden = cEl.value !== 'Other'; if (!otherEl.hidden) otherEl.focus(); });
+      filterEl.addEventListener('input', applyFilter);
+      boxes.forEach(function (b) { b.addEventListener('change', updateCount); });
       submitEl.addEventListener('click', submit);
       emailEl.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); submit(); } });
-      otherEl.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); submit(); } });
     })();
   </script>
 </body>
