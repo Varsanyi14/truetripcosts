@@ -5,6 +5,14 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-28",
+  sources: {
+    changed: "Sources added. Verified with Lisbon City Council that the taxa turistica is 4 euros a person per night (it doubled from 2 euros on 1 September 2024), from age 13 and capped at 7 nights, with Porto at 3 euros. Portugal's standard VAT is 23% and non-EU visitors can reclaim it on shopping. The guide's figures are current.",
+    links: [
+      { label: "Lisbon City Council: the notice that the overnight tourist tax rose to 4 euros a person per night", url: "https://informacao.lisboa.pt/en/news/detail/tourist-tax-on-overnight-stays-rises-to-4-euros" },
+      { label: "Lisbon City Council services: the taxa municipal turistica rules, amount, minimum age and 7-night cap", url: "https://informacoeseservicos.lisboa.pt/servicos/detalhe/taxa-municipal-turistica" },
+    ],
+    judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
   emergency: { medical: "112", note: "112 reaches every emergency service across the country.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
   title: "Money in Portugal (2026): Cards, Cash, Multibanco ATMs, Tipping and the Tourist Tax | True Trip Costs",

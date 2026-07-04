@@ -5,6 +5,13 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-28",
+  sources: {
+    changed: "Sources added. Verified that Barcelona's tourist tax roughly doubled on 1 April 2026 (the regional Catalan rate plus the city surcharge now runs about 6 to 12 euros a person per night by category, capped at 7 nights, under-16s exempt, and the surcharge is set to keep rising to 2029), and that Spain's IVA refund for non-EU visitors has no minimum spend. The guide's figures are current.",
+    links: [
+      { label: "Barcelona City Council: the Catalan parliament's 2026 increase to the tourist tax and the city surcharge", url: "https://ajuntament.barcelona.cat/turisme/en/latest-news/news/the-parliament-of-catalonia-passes-an-increase-of-the-tourist-tax-1607097" },
+    ],
+    judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
   emergency: { medical: "112", note: "112 reaches every emergency service, with English-speaking operators available.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
   title: "Money in Spain (2026): Cards, Cash, ATMs, Tipping and the Tourist Tax | True Trip Costs",
