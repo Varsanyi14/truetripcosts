@@ -5,6 +5,14 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-30",
+  sources: {
+    changed: "Sources added, and a rate update. The City of Vienna raised its Ortstaxe from about 3.2% to 5% of the net room price on 1 July 2026 (a further rise to 8% is set for July 2027), so we updated the Vienna figure. The 20% VAT refund for non-EU visitors, which starts at 75.01 euros, is confirmed. Alpine and regional towns still charge a small flat fee per night.",
+    links: [
+      { label: "City of Vienna: the Ortstaxe (local accommodation tax) and its rise to 5% from 1 July 2026", url: "https://www.wien.gv.at/english/e-government/financial/tax/local-tax.html" },
+      { label: "Austrian Federal Ministry of Finance: the VAT refund for non-EU visitors, from 75.01 euros", url: "https://www.bmf.gv.at/en/topics/customs/travellers/vat-refund.html" },
+    ],
+    judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
   emergency: { medical: "112", note: "112 reaches every emergency service, and 144 goes straight to an ambulance.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
   region: "Europe",
@@ -77,7 +85,7 @@ export default {
 
   // TOURIST TAX (high-churn, verified to Jun 2026 knowledge; confirm local rates).
   // Austria has no national tourist tax. Most towns charge a local overnight tax (Ortstaxe /
-  // Tourismusabgabe) added to your hotel bill. Vienna charges about 3.2% of the net room price;
+  // Tourismusabgabe) added to your hotel bill. Vienna charges 5% of the net room price (raised from 3.2% on 1 July 2026);
   // most alpine and regional towns charge a flat per-person, per-night fee, commonly EUR 1 to 3.50.
   // These are rough figures; the exact amount varies by state, town and season. VAT is separate
   // and already included in displayed prices.
@@ -87,7 +95,7 @@ export default {
     capNights: null,
     note: "Austria has no single national tourist tax. Most towns add a small local overnight tax to your hotel bill. Vienna charges a percentage of the room rather than a flat fee; most alpine and regional towns charge a flat per-person, per-night amount. These are rough figures; the exact amount varies by state, town and season. VAT is separate and already included in prices.",
     regions: [
-      { key: "vienna", label: "Vienna", rate: 3.0, note: "Vienna's tax is technically about 3.2% of the net room price rather than a flat nightly fee, so on a typical hotel it works out to a few euros per person per night. This uses a representative figure." },
+      { key: "vienna", label: "Vienna", rate: 5.5, note: "Vienna's tax is technically 5% of the net room price (raised from 3.2% on 1 July 2026, with a further rise to 8% due in July 2027) rather than a flat nightly fee, so on a typical hotel it works out to about 5 to 7 euros per person per night. This uses a representative figure." },
       { key: "alpine", label: "Salzburg, Tyrol and the alpine resorts", rate: 2.5, note: "Alpine towns charge a flat local tax per person per night, commonly 1.50 to 3.50 euros depending on the resort and season." },
       { key: "other", label: "Elsewhere in Austria", rate: 2.0, note: "Most Austrian towns charge a small flat per-person, per-night tax, commonly 1 to 3 euros." }
     ]

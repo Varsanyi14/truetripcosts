@@ -5,6 +5,14 @@ export default {
   from: "United States",
   checked: "Jun 2026",
   checkedISO: "2026-06-30",
+  sources: {
+    changed: "Sources added. Verified with the Dutch government that VAT on hotel rooms rose from 9% to 21% on 1 January 2026 (camping stays stay at 9%), and with the City of Amsterdam that its tourist tax is 12.5% of the net room rate, the highest in Europe. Combined, that is roughly 33.5% on an Amsterdam hotel stay. The guide's figures are current.",
+    links: [
+      { label: "Dutch government (business.gov.nl): VAT on overnight accommodation rose to 21% on 1 January 2026", url: "https://business.gov.nl/amendments/vat-overnight-accommodation-goes-up/" },
+      { label: "City of Amsterdam: the tourist tax is 12.5% of the overnight price, excluding VAT", url: "https://www.amsterdam.nl/en/municipal-taxes/tourist-tax/" },
+    ],
+    judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
   emergency: { medical: "112", note: "112 reaches every emergency service, free from any phone.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
   region: "Europe",
