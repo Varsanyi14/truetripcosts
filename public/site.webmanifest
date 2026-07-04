@@ -1,0 +1,13 @@
+{
+  "name": "True Trip Costs",
+  "short_name": "True Trip Costs",
+  "description": "Plain-language travel-money guides for US travelers.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F4EF",
+  "theme_color": "#0E7A5F",
+  "icons": [
+    { "src": "/icon-192.png", "type": "image/png", "sizes": "192x192" },
+    { "src": "/icon-512.png", "type": "image/png", "sizes": "512x512" }
+  ]
+}
