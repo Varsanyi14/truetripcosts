@@ -5,6 +5,14 @@ export default {
   from: "United States",
   checked: "Jul 2026",
   checkedISO: "2026-07-02",
+  sources: {
+    changed: "Sources added. Confirmed with DIAN, Colombia's tax authority, that non-resident foreign tourists are exempt from the 19% IVA on hotel and tourism services (shown with the entry tourist stamp, and not applied automatically) and can reclaim IVA on goods bought in stores. Updated the goods-refund minimum to the current 3 UVT, about 150,000 pesos, since the old figure reflected a much earlier tax-unit value.",
+    links: [
+      { label: "DIAN (Colombia's tax authority): its ruling that hotel and tourism services for non-resident foreigners are IVA-exempt under article 481 of the tax code", url: "https://normograma.dian.gov.co/dian/compilacion/docs/oficio_dian_3522_2025.htm" },
+      { label: "DIAN: the IVA refund for foreign tourists on goods, what qualifies and how to claim it at the airport", url: "https://www.dian.gov.co/Viajeros-y-Servicios-aduaneros/Paginas/Devolucion-IVA-a-Turistas-Extranjeros-Esp.aspx" },
+    ],
+    judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
   emergency: { medical: "123", note: "123 is the nationwide line for police, fire and ambulance, and the operator can route you to medical help. Save your hotel address in Spanish to read out.", checked: "Jul 2026", checkedISO: "2026-07-02" },
   insuranceLevel: "medium",
   region: "Americas",
@@ -93,7 +101,7 @@ export default {
   taxfree: {
     label: "Taxes and refunds",
     heading: "The hotel tax you should not pay, and money back on shopping.",
-    text: "Colombia has <b>no nightly tourist tax</b>, and there is a bigger win hiding in the fine print: as a <b>foreign tourist you are exempt from the 19% IVA (VAT) on hotel rooms</b>. The catch is that the exemption is not automatic and many hotels charge it anyway, sometimes with creative excuses, so present your <b>passport and entry stamp at check-in</b>, ask them to remove the IVA, and check the final bill and the electronic invoice (factura electronica). Separately, if you shop, non-resident visitors can reclaim the <b>19% IVA on goods</b> over roughly 109,000 pesos (about 32 dollars) in a store: keep the electronic invoice with your name and passport on it, and claim at the <b>DIAN desk at the airport</b> before you check your bags when you leave. After the operator's fee you get back a bit less than the full 19%. There is no separate departure tax to pay at the airport; it is built into your ticket."
+    text: "Colombia has <b>no nightly tourist tax</b>, and there is a bigger win hiding in the fine print: as a <b>foreign tourist you are exempt from the 19% IVA (VAT) on hotel rooms</b>. The catch is that the exemption is not automatic and many hotels charge it anyway, sometimes with creative excuses, so present your <b>passport and entry stamp at check-in</b>, ask them to remove the IVA, and check the final bill and the electronic invoice (factura electronica). Separately, if you shop, non-resident visitors can reclaim the <b>19% IVA on goods</b> over about 150,000 pesos, roughly 43 dollars, in a store (a 3 UVT minimum, so it edges up a little each year): keep the electronic invoice with your name and passport on it, and claim at the <b>DIAN desk at the airport</b> before you check your bags when you leave. After the operator's fee you get back a bit less than the full 19%. There is no separate departure tax to pay at the airport; it is built into your ticket."
   },
 
   traps: [
@@ -112,7 +120,7 @@ export default {
     { q: "Should I pay in pesos or dollars in Colombia?", a: "Always pesos. If a card terminal or ATM offers to charge you in dollars, decline; that dynamic currency conversion adds about 5 to 10%. Some machines convert automatically without asking, so if you are never given the choice, try a different ATM." },
     { q: "What is the best ATM to use in Colombia?", a: "Use Servibanca or Davivienda, which allow larger withdrawals of around 2,000,000 pesos; Bancolombia caps foreign cards near 800,000. There are no fee-free ATMs, so expect a flat 12,000 to 30,000 peso fee and pull a big amount at once to spread it. Withdraw at machines inside banks, malls or supermarkets in daylight, and always choose pesos, not dollars." },
     { q: "Do I have to pay the hotel tax in Colombia?", a: "As a foreign tourist, no. Non-resident visitors are exempt from the 19% IVA on hotel rooms, but the exemption is not automatic and many hotels charge it anyway. Show your passport and entry stamp at check-in, ask for the IVA to be removed, and check the final bill and the electronic invoice." },
-    { q: "Can I get an IVA (VAT) refund on shopping in Colombia?", a: "Yes. Non-resident tourists can reclaim the 19% IVA on goods bought in stores over roughly 109,000 pesos (about 32 dollars). Keep the electronic invoice showing your name and passport, and claim at the DIAN desk at the airport before checking your bags when you leave. After fees you get back a little under the full 19%." },
+    { q: "Can I get an IVA (VAT) refund on shopping in Colombia?", a: "Yes. Non-resident tourists can reclaim the 19% IVA on goods bought in stores over about 150,000 pesos (roughly 43 dollars, a 3 UVT minimum that rises a little each year). Keep the electronic invoice showing your name and passport, and claim at the DIAN desk at the airport before checking your bags when you leave. After fees you get back a little under the full 19%." },
     { q: "How much cash should I bring for a week in Colombia?", a: "For two mid-range travelers, very roughly 1,000,000 to 1,500,000 pesos (about 300 to 440 dollars) in day-to-day cash across a week beyond your hotel, pulled from a couple of Servibanca or Davivienda withdrawals. Cards cover city malls, supermarkets and hotels; the cash is for taxis, food, tips, small towns and the coast." }
   ]
 };

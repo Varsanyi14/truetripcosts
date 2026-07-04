@@ -5,6 +5,14 @@ export default {
   from: "United States",
   checked: "Jul 2026",
   checkedISO: "2026-07-02",
+  sources: {
+    changed: "Sources added. Confirmed US citizens have needed a visitor e-visa to enter Brazil since April 2025, applied for on the official VFS portal, and that Brazil has no general tourist tax or tourist VAT refund, though some destinations such as Fernando de Noronha charge their own daily fee.",
+    links: [
+      { label: "Brazil eVisa official portal (VFS Global): the visitor e-visa US, Canadian and Australian citizens need before boarding, about 81 dollars", url: "https://brazil.vfsevisa.com/" },
+      { label: "District of Fernando de Noronha: the daily environmental preservation fee (TPA) charged to visitors, an example of the local fees a few beach destinations now add", url: "https://www.noronha.pe.gov.br/" },
+    ],
+    judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
+  },
   emergency: { medical: "192", note: "192 is the SAMU ambulance line, 190 reaches the police and 193 the fire brigade. Operators may not speak English, so have your address written in Portuguese to read out.", checked: "Jul 2026", checkedISO: "2026-07-02" },
   insuranceLevel: "medium",
   region: "Americas",
