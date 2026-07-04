@@ -12,6 +12,15 @@ const { country } = Astro.props;
 ---
 <Base title={country.title} description={country.description}>
   <Nav />
-  <main class="wrap"><CountryBriefing country={country} /></main>
+  <main class="wrap">
+    <CountryBriefing country={country} />
+    <section class="guide-cta">
+      <div class="gc-txt">
+        <p class="gc-h">This is how {country.name} stands today.</p>
+        <p class="gc-p">Money rules move. We can let you know for free if that changes.</p>
+      </div>
+      <a class="btn" href="#" data-open-signup>Keep me posted</a>
+    </section>
+  </main>
   <Footer />
 </Base>
