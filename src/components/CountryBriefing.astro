@@ -499,6 +499,20 @@ const artLd = {
       <div class="hn-cashnote"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg><p id="hnHint">&nbsp;</p></div>
       <a class="cta" href="#calcNoFee">See the card I'd bring <span class="arw">&#8594;</span></a>
       <p class="hn-fine">Rough guide, not a quote. The real number moves with the card you carry. One no-foreign-fee card can cover both sides; a plain rewards credit card only removes the fee on what you buy, and cash still costs a little unless that card also waives ATM and foreign-cash fees. Rates checked Jun 2026 and rounded.</p>
+
+      <details class="hna">
+        <summary class="hna-sum"><span>How this estimate is built</span><svg class="hna-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="hna-body">
+          <p class="hna-intro">These are the assumptions behind the number. Change the room price, nights, travelers, or travel style above, and every line here moves with them.</p>
+          <dl class="hna-list">
+            <div class="hna-item"><dt>Daily spending</dt><dd id="hnaSpend">&nbsp;</dd></div>
+            <div class="hna-item"><dt>Cash vs card</dt><dd id="hnaSplit">&nbsp;</dd></div>
+            <div class="hna-item"><dt>ATM withdrawals</dt><dd id="hnaAtm">&nbsp;</dd></div>
+            <div class="hna-item"><dt>Foreign fee</dt><dd id="hnaFee">&nbsp;</dd></div>
+            <div class="hna-item"><dt>Tourist tax</dt><dd id="hnaTax">&nbsp;</dd></div>
+          </dl>
+        </div>
+      </details>
     </div>
   </div>
 
@@ -817,6 +831,15 @@ const artLd = {
       id('hnHint').textContent = (cash > 0)
         ? ('That is about ' + pulls + ' ATM ' + vw + ' to pull roughly ' + loc(cash) + ' in cash. ' + rateNote)
         : rateNote;
+
+      // How this estimate is built (assumptions panel), echoing the live figures.
+      const setA = (elId, txt) => { const e = id(elId); if (e) e.textContent = txt; };
+      const styleWord = styleName ? styleName.toLowerCase() : 'mid-range';
+      setA('hnaSpend', 'About ' + usd(per) + ' per traveler each day for ' + styleWord + ' travel, across ' + trav + ' ' + (trav === 1 ? 'traveler' : 'travelers') + ' and ' + nights + ' ' + (nights === 1 ? 'night' : 'nights') + '.');
+      setA('hnaSplit', 'About ' + cp + '% of that spend goes in cash and ' + (100 - cp) + '% on the card, the mix we assume for ' + styleWord + ' travel in ' + DATA.name + '.');
+      setA('hnaAtm', pulls + (pulls === 1 ? ' ATM withdrawal' : ' ATM withdrawals') + ' of about $300, at roughly $5 each in operator and bank charges.');
+      setA('hnaFee', 'A typical US card adds about ' + fmtPct(fallbackFxPct) + ' on card spend and on the cash you pull. A no-foreign-fee card removes it, which is what the toggle above shows.');
+      setA('hnaTax', (t.usd > 0) ? ('Calculated from ' + DATA.name + "'s tourist-tax rule, per night and per person where that applies, and capped where the local rule caps it. The tax line above shows the specifics.") : (DATA.name + ' charges no nightly tourist tax, so this line stays at $0.'));
 
       // Per-region tourist-tax note, if any.
       const tn = id('hnTaxNote');

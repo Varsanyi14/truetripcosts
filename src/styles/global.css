@@ -342,6 +342,18 @@
   .hn-cashnote{display:flex;align-items:flex-start;gap:9px;margin:16px 0 0;font-size:13px;color:var(--muted);line-height:1.55}
   .hn-cashnote svg{flex:none;margin-top:2px;color:var(--teal-deep)}
   .hn-cashnote p{margin:0}
+  /* calculator assumptions panel */
+  .hna{margin:14px 0 0;border-top:1px solid var(--line);padding-top:13px}
+  .hna-sum{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;list-style:none;font-size:12.5px;font-weight:600;color:var(--muted)}
+  .hna-sum::-webkit-details-marker{display:none}
+  .hna-chev{flex:none;color:var(--muted);transition:transform .2s ease}
+  .hna[open] .hna-chev{transform:rotate(180deg)}
+  .hna-body{margin-top:12px}
+  .hna-intro{font-size:12.5px;line-height:1.55;color:var(--muted);margin:0 0 13px}
+  .hna-list{margin:0;display:flex;flex-direction:column;gap:11px}
+  .hna-item{margin:0}
+  .hna-item dt{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 2px}
+  .hna-item dd{margin:0;font-size:13px;line-height:1.5;color:#5C6661}
   #hn-app[hidden]{display:none}
 
   /* opt-in card shortlist: a quiet native <details> */
