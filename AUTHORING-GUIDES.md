@@ -71,6 +71,28 @@ For each guide, in order:
 4. Pull any fact that is repeated or correction-prone into a `const F` object and interpolate it into the prose. Fix any copies that disagree while you are there.
 5. Build and check (below), then commit.
 
+## Country cost alerts (the costUpdate field)
+
+When a country's money actually changes, and only then, add or update a `costUpdate` block at the top of that country's data file, next to `checkedISO`:
+
+```js
+costUpdate: {
+  on: "2026-07-15",
+  note: "Vienna raised its nightly tourist tax, and the airport train went up to 12 euros.",
+},
+```
+
+On your next push, a GitHub Action (`.github/workflows/country-alerts.yml`) notices which countries' `costUpdate.on` changed in that push and emails only that country's subscribers, the people who picked it at signup. The `note` becomes the body of that email, so write it for the reader: what changed, in a sentence or two, plainly.
+
+Rules, because this sends real email:
+
+- **Set it only for a real money change.** `checkedISO` bumps every time you re-check a guide, even when nothing changed. `costUpdate.on` is a separate, deliberate signal that means the money moved. If you only re-confirmed, leave `costUpdate` untouched, or people get a "costs changed" email when nothing did.
+- **`on` is the trigger.** The alert fires when `on` differs from the previous commit. To announce a fresh change, set `on` to the date of that change, and do not reuse an old date.
+- **`note` is reader-facing copy, not a log.** It is the email itself. The internal change log still goes in `sources.changed`.
+- **New guides do not spam.** Publishing a brand-new country with a `costUpdate` present only reaches people already tagged for it, which for a new country is nobody.
+
+Testing safely: set the GitHub repo variable `ALERTS_DRY_RUN` to `true` and the Action creates a draft in Buttondown instead of sending, so you can review it. Set it back to `false`, or delete it, to go live.
+
 ## House rules
 
 - No em dashes and no en dashes anywhere, in copy or in code. Hyphens, commas and colons only.
