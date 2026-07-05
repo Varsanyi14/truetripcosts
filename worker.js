@@ -8,12 +8,12 @@
 //
 // A best-effort copy is also written to KV (binding: SIGNUPS) as a backup log
 // only. We never read it operationally, and a KV failure never blocks a signup.
-// Logged there: email, general, destinations, path, createdAt. No name/phone/IP.
+// Logged there: email, general, destinations, path, createdAt. No name/phone.
 //
 // Double opt-in stays ON: new subscribers are created "unactivated" and
 // Buttondown emails them a confirmation link before they count as subscribed.
 //
-// Secret required (set with: wrangler secret put BUTTONDOWN_API_KEY):
+// Secret required (set as a runtime Secret on the Worker, not a build var):
 //   BUTTONDOWN_API_KEY
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -54,6 +54,15 @@ async function handleNotify(request, env) {
   destinations = Array.from(new Set(destinations.map(cleanSlug).filter(Boolean))).slice(0, MAX_DESTINATIONS);
   const path = String((data && data.path) || "").trim().slice(0, 120);
 
+  // Buttondown's anti-abuse firewall uses the subscriber's IP address to tell a
+  // real person from bulk or bot signups. Because this runs on the Worker (one
+  // origin for every visitor), we must pass the visitor's own IP, which
+  // Cloudflare attaches to each incoming request as CF-Connecting-IP. Without
+  // it, Buttondown flags the signups as suspicious and rejects them with a 400
+  // once more than one arrives. With it, each signup looks like a person
+  // subscribing from their own device.
+  const clientIp = request.headers.get("CF-Connecting-IP") || "";
+
   if (!EMAIL_RE.test(email) || email.length > 200) {
     return json({ ok: false, error: "invalid_email" }, 400);
   }
@@ -83,10 +92,14 @@ async function handleNotify(request, env) {
 
   // Create the subscriber. Double opt-in left on (no "type" field), so
   // Buttondown sends the confirmation email itself. Tags attach at creation.
+  // We include the visitor's IP so Buttondown's firewall sees a real signup.
+  const createBody = { email_address: email, tags };
+  if (clientIp) createBody.ip_address = clientIp;
+
   const create = await fetch(BD_SUBSCRIBERS, {
     method: "POST",
     headers,
-    body: JSON.stringify({ email_address: email, tags })
+    body: JSON.stringify(createBody)
   });
   if (create.ok) {
     return json({ ok: true, status: "created" });
