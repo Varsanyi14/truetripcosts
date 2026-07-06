@@ -10,7 +10,7 @@
 export const affiliate = {
   // Faye travel insurance, via Impact. One link covers every country.
   // Paste your approved Impact tracking link here once Faye approves you.
-  insurance: null,
+  insurance: "https://withfaye.pxf.io/NGeQxb",
 
   // Travel eSIM, via Impact (Nomad, Ubigi, Airalo, or whichever you are approved for).
   //   esimBrand     the provider's name, shown on the button (e.g. "Nomad"). Set it with esimBase.
