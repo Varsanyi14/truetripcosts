@@ -27,5 +27,9 @@ import argentina from './argentina.js';
 import jamaica from './jamaica.js';
 import ireland from './ireland.js';
 import bahamas from './bahamas.js';
+import iceland from './iceland.js';
+import norway from './norway.js';
+import sweden from './sweden.js';
+import denmark from './denmark.js';
 
-export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, india, czechia, canada, switzerland, austria, turkey, egypt, colombia, brazil, argentina, jamaica, ireland, bahamas];
+export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, india, czechia, canada, switzerland, austria, turkey, egypt, colombia, brazil, argentina, jamaica, ireland, bahamas, iceland, norway, sweden, denmark];
