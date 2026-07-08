@@ -538,3 +538,41 @@
   .guide-cta .gc-h{font-family:var(--serif);font-weight:500;font-size:19px;line-height:1.2;color:var(--ink);margin:0 0 3px}
   .guide-cta .gc-p{font-size:14px;line-height:1.5;color:#3B4A46;margin:0}
   .guide-cta .btn{flex:none}
+
+/* Culture section: "Travelers, not tourists". Collapsed by default; images lazy-load. */
+.culture{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;margin:26px 0 0;padding:0}
+.culture summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px}
+.culture summary::-webkit-details-marker{display:none}
+.culture .ctag{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--teal-deep);background:var(--green-bg);border-radius:999px;padding:4px 12px;letter-spacing:.04em;margin:0 0 10px}
+.culture .chead{font-family:var(--serif);font-weight:500;font-size:25px;line-height:1.12;letter-spacing:-.01em;margin:0}
+.culture .cchev{flex:0 0 auto;color:var(--teal-deep);transition:transform .2s ease}
+.culture[open] .cchev{transform:rotate(180deg)}
+.culture .cbody{padding:2px 24px 26px}
+.culture .cintro{font-size:16px;color:#3B4A46;margin:0 0 22px;max-width:62ch}
+.culture .csub{font-family:var(--serif);font-weight:500;font-size:19px;letter-spacing:-.01em;margin:26px 0 12px}
+.culture .cphrases{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.culture .cphrase{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.culture .cph-mean{font-size:12px;color:var(--muted);font-weight:500}
+.culture .cph-say{font-family:var(--serif);font-size:20px;font-weight:500;color:var(--ink);line-height:1.15}
+.culture .cph-nat{font-size:13px;color:var(--muted)}
+.culture .cptip{font-size:13.5px;color:var(--muted);margin:12px 0 0}
+.culture .cptip b{color:var(--ink);font-weight:600}
+.culture .cbeats{display:flex;flex-direction:column;margin-top:6px}
+.culture .cbeat{display:flex;gap:18px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--line)}
+.culture .cbeat:first-child{border-top:0}
+.culture .cbeat-img{flex:0 0 140px;width:140px}
+.culture .cbeat-img img{width:140px;max-width:100%;height:auto;display:block;border-radius:12px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.culture .cbeat-txt h4{font-family:var(--serif);font-weight:500;font-size:18.5px;letter-spacing:-.01em;margin:0 0 7px}
+.culture .cbeat-txt p{font-size:15px;color:#3B4A46;margin:0 0 12px}
+.culture .csay{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--teal-deep);background:var(--green-bg);border-radius:999px;padding:5px 12px}
+.culture .cpride{margin:24px 0 0;background:var(--green-bg);border-radius:14px;padding:16px 18px}
+.culture .cpride-k{display:block;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 4px}
+.culture .cpride p{font-size:15px;color:#2C4A40;margin:0}
+.culture .cnote{display:flex;align-items:center;gap:8px;justify-content:center;font-size:13px;color:var(--muted);margin:22px 0 0;text-align:center}
+@media(max-width:600px){
+  .culture .cbeat{gap:13px}
+  .culture .cbeat-img{flex:0 0 100px;width:100px}
+  .culture .cbeat-img img{width:100px}
+  .culture .chead{font-size:22px}
+  .culture summary,.culture .cbody{padding-left:18px;padding-right:18px}
+}
