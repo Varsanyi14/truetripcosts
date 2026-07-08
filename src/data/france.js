@@ -113,5 +113,37 @@ export default {
     { q: "Do you tip in France?", a: "Only lightly. Service is included by law (\"service compris\") and staff are paid a full wage, so tipping is optional. Round up or leave a euro or two for good service, or about 5% in a nicer restaurant. Cash is better than the card-terminal prompt." },
     { q: "What is the tourist tax and VAT refund in France?", a: "Most towns add a small taxe de sejour to your lodging, per person per night, usually a euro or two and higher in Paris, with under-18s exempt. Separately, non-EU visitors can reclaim VAT (detaxe) on shopping over 100 euros in one store on the same day: ask for the tax-free form, keep the goods unused, and validate at a PABLO kiosk when you leave. After fees you get roughly 10 to 15% back." },
     { q: "How much cash should I bring for a week in France?", a: "For two mid-range travelers, very roughly 200 to 300 euros in day-to-day cash across a week, beyond your hotel, pulled in one or two ATM visits. France is card-first, so most spending goes on a card and the cash is for small extras." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little French goes a long way",
+    intro: "A little French, starting with Bonjour, changes everything here. Say it as you walk into any shop, cafe or lift, add a story or two, and you become a guest rather than a tourist.",
+    phrases: [
+      { mean: "Hello, good day", say: "bawn-ZHOOR", word: "Bonjour" },
+      { mean: "Please", say: "seel voo PLEH", word: "S'il vous plaît" },
+      { mean: "Thank you", say: "mair-SEE", word: "Merci" },
+      { mean: "Excuse me, sorry", say: "pahr-DOHN", word: "Pardon" },
+      { mean: "Cheers", say: "sahn-TAY", word: "Santé" },
+      { mean: "Delicious", say: "deh-lee-SYUH", word: "Délicieux" },
+    ],
+    tip: "The single most important word in France is <b>Bonjour</b>. Say it before anything else when you enter a shop or approach someone, because skipping straight to your question can read as rude. Add <b>Madame</b> or <b>Monsieur</b> and you will be met warmly.",
+    stories: [
+      { img: "/france-culture-1.jpg",
+        alt: "WPA-style illustration of a painter seen from behind at an easel beside a still water-lily pond, a green Japanese footbridge and weeping willows in soft light",
+        h: "Painting the light itself",
+        p: "In gardens like these, French painters broke the old rules and chased the light itself, dabbing colour straight onto the canvas to catch a passing moment. Claude Monet painted his own water-lily pond at Giverny again and again across the seasons. The movement they began, Impressionism, changed art forever.",
+        note: "Good to know: Monet's garden at Giverny still blooms" },
+      { img: "/france-culture-2.jpg",
+        alt: "WPA-style illustration of prehistoric artists by torchlight painting a great ochre horse and a red bull on a curving cave wall deep underground",
+        h: "Art from the dawn of time",
+        p: "Deep in a cave in the Dordogne, early hunters painted horses, bulls and deer on the walls around 17,000 years ago, by the light of flickering lamps. The Lascaux paintings are so alive they are called the Sistine Chapel of prehistory. The real cave is closed now to protect it, but a faithful replica nearby lets you see them.",
+        note: "Good to know: see the replica, Lascaux IV" },
+      { img: "/france-culture-3.jpg",
+        alt: "WPA-style illustration of a grand Belle Epoque Paris cafe at dusk, patrons at little marble tables under a striped awning and a waiter carrying a tray",
+        h: "Life at the cafe",
+        p: "The Paris cafe is not fast food, it is a place to sit, watch the street and let time pass, and a single coffee buys you the table for as long as you like. In the Belle Epoque, the golden years around 1900, cafes were where artists, writers and everyone else met. Order un café, take a little table on the pavement, and you are part of it.",
+        note: "Say it: un café (uhn kah-FAY)" },
+    ],
+    pride: "The French are proud of their art of living, the food, the wine, the language and the long lunch, and they love to share it with anyone who makes a little effort. Lead with Bonjour and a smile, and any coolness melts fast."
+  }
 };

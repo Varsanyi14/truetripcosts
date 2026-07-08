@@ -132,5 +132,37 @@ export default {
     { q: "How much should I tip in Switzerland?", a: "Very little. Service is included by law, so locals just round up or leave about 5 to 10% for good service at a nice restaurant, which is generous, not expected. Round up for taxis and casual meals, and there is no terminal tip-prompt culture as in the US." },
     { q: "Why is Switzerland so expensive?", a: "High wages, a strong franc and a high cost of living all feed into prices, from coffee and lunch to train tickets and hotels. It is not a rip-off aimed at tourists, it is simply an expensive country, so the fix is to budget a higher daily number than you would elsewhere in Europe." },
     { q: "Can I get a VAT refund on shopping in Switzerland?", a: "Yes, if you are a non-resident and spend at least CHF 300 in one store on the same day. Ask for a tax-free refund form, keep the goods unused, and claim the VAT back when you export them within 30 days, usually at an airport or border refund desk." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little of the local language goes a long way",
+    intro: "Switzerland speaks four languages, so your hello changes with the valley you are in, but a smile travels everywhere. A word in the local tongue and a story or two mark you as a guest rather than a tourist.",
+    phrases: [
+      { mean: "Hello, German-speaking Switzerland", say: "GROO-tsee", word: "Grüezi" },
+      { mean: "Hello, French-speaking west", say: "bawn-ZHOOR", word: "Bonjour" },
+      { mean: "Hello, Italian-speaking south", say: "bwohn-JOR-noh", word: "Buongiorno" },
+      { mean: "Hello, in Romansh", say: "ah-LAY-grah", word: "Allegra" },
+      { mean: "Thank you, German and French", say: "DAHN-kuh / mair-SEE", word: "Danke / Merci" },
+      { mean: "Cheers", say: "prohsht", word: "Proscht" },
+    ],
+    tip: "Match your greeting to the region: <b>Grüezi</b> in the German-speaking north and east, <b>Bonjour</b> in the French-speaking west, <b>Buongiorno</b> in the Italian-speaking south. And be on time: in Switzerland punctuality is a form of respect, and the trains really do leave to the minute.",
+    stories: [
+      { img: "/switzerland-culture-1.jpg",
+        alt: "WPA-style illustration of a crossbowman in medieval Alpine dress taking aim in a village square while villagers watch, wooden chalets and green mountains behind",
+        h: "One apple, one legend",
+        p: "Legend tells of William Tell, a mountain marksman forced by a cruel overlord to shoot an apple from his own son's head with a crossbow. He split the apple clean, then helped spark the rebellion that founded Switzerland. Whether he truly lived or not, he is the spirit of Swiss independence.",
+        note: "Good to know: Tell is the symbol of Swiss freedom" },
+      { img: "/switzerland-culture-2.jpg",
+        alt: "WPA-style illustration of a large St Bernard rescue dog with a small wooden cask at its collar standing alert in deep snow on a high Alpine pass, snow-capped peaks behind",
+        h: "The dogs that saved lives in the snow",
+        p: "High on the Great St Bernard Pass, monks bred big, gentle dogs to find travellers lost in the snow, and over the centuries the St Bernard breed is said to have saved around 2,000 lives. The most famous, a dog named Barry, rescued dozens on his own. The little brandy cask on the collar, though, is a charming myth.",
+        note: "Good to know: the most famous dog was named Barry" },
+      { img: "/switzerland-culture-3.jpg",
+        alt: "WPA-style illustration of a watchmaker leaning over a wooden bench under a green lamp, a loupe to his eye and tweezers setting a tiny part into an open watch movement",
+        h: "A nation built on precision",
+        p: "Swiss watchmaking is a craft centuries old, and a fine mechanical watch can hold hundreds of tiny parts, each set by hand under a loupe. The tradition took root in Geneva and the Jura mountains and became a byword for precision the world over. That same love of exactness runs right through Swiss life.",
+        note: "Say it: made in Switzerland means precision" },
+    ],
+    pride: "The Swiss are private, precise and quietly proud: of four languages living side by side, of mountains and trains that run to the minute, and of a humanitarian spirit that gave the world the Red Cross, founded in Geneva in 1863."
+  }
 };

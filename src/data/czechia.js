@@ -130,5 +130,37 @@ export default {
     { q: "Do you tip in Czechia?", a: "Lightly. Around 10% for good restaurant service, or just round up at casual spots and for taxis, and 20 to 50 Kč for hotel porters or housekeeping. Tell the server the total you want to pay, tip included, when they take your card or cash; a cash tip is easiest since terminals often have no tip line. Check for a service charge before adding more." },
     { q: "What is Czechia's tourist tax?", a: "A local accommodation fee, capped nationally at 50 Kč per person, per night, and added to your hotel bill. Prague charges the full 50 Kč; other towns set their own up to that cap, and many small places charge nothing. Children under 18 are exempt, and it applies only to the first 60 consecutive nights." },
     { q: "How much cash should I bring for a week in Czechia?", a: "For two mid-range travelers, very roughly 3,000 to 5,000 Kč (about $140 to $230) in day-to-day cash across a week beyond your hotel, pulled from a bank ATM once or twice. Cards and your phone cover the great majority of spending; the cash is for pubs, markets, tips and the odd cash-only spot." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Czech goes a long way",
+    intro: "Czech is a Slavic language and no one expects you to master it, but a Dobrý den on the way in and an Ahoj among friends, plus a story or two, mark you as a guest rather than a tourist.",
+    phrases: [
+      { mean: "Good day, a formal hello", say: "DOH-bree den", word: "Dobrý den" },
+      { mean: "Hi and bye, informal", say: "AH-hoy", word: "Ahoj" },
+      { mean: "Please, and you are welcome", say: "PROH-seem", word: "Prosím" },
+      { mean: "Thank you", say: "DYE-koo-yih", word: "Děkuji" },
+      { mean: "Cheers", say: "nah ZDRAH-vee", word: "Na zdraví" },
+      { mean: "Delicious, excellent", say: "VEE-bor-neh", word: "Výborné" },
+    ],
+    tip: "Use <b>Dobrý den</b> (good day) when you walk into a shop or restaurant, and save the cheerful <b>Ahoj</b> for friends. Then raise a glass of the local beer: the Czechs invented <b>pilsner</b> and drink more beer per person than anyone else on Earth.",
+    stories: [
+      { img: "/czechia-culture-1.jpg",
+        alt: "WPA-style illustration of the medieval astronomical clock on Prague's Old Town Hall tower, its blue and gold dials glowing and a small crowd gathered below in the square",
+        h: "The oldest clock still ticking",
+        p: "Prague's astronomical clock, the Orloj, has kept time on the Old Town Hall since 1410, making it the oldest working clock of its kind anywhere in the world. On the hour a little parade of the twelve apostles appears in the windows above the dial. Crowds still gather in the square to watch it strike.",
+        note: "Good to know: the Orloj dates from 1410" },
+      { img: "/czechia-culture-2.jpg",
+        alt: "WPA-style illustration of a towering clay figure standing in a moonlit cobbled lane of old Prague as a bearded scholar in a long robe reaches up with a slip of parchment",
+        h: "The clay giant of Prague",
+        p: "Legend says that centuries ago a learned rabbi in Prague's old Jewish quarter shaped a giant from the clay of the riverbank and brought it to life with a sacred word, to guard his people. The creature was called the Golem. It is one of Europe's most famous folk tales, and Prague still tells it with pride.",
+        note: "Say it: the Golem of Prague" },
+      { img: "/czechia-culture-3.jpg",
+        alt: "WPA-style illustration of the stone Charles Bridge at dawn lined with weathered statues, Prague Castle and its cathedral rising through morning mist beyond the river",
+        h: "A bridge fit for an emperor",
+        p: "The great stone Charles Bridge was begun in 1357 under Emperor Charles IV, who built much of golden Prague, including the oldest university in central Europe. Legend says egg yolks were mixed into the mortar to make it strong, and it has stood for more than 650 years. Cross it at dawn, before the crowds, and it is pure magic.",
+        note: "Good to know: begun in 1357 under Charles IV" },
+    ],
+    pride: "Czechs can seem reserved at first but warm quickly, and they are quietly proud of a country that gave the world pilsner beer and Art Nouveau, and a capital of a hundred spires that came through the centuries almost untouched."
+  }
 };

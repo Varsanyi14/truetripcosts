@@ -132,5 +132,37 @@ export default {
     { q: "How much should I tip in Austria?", a: "Not much. Service is included, so locals round up or add about 5 to 10% for good service. The custom is to state the total you want to pay as you hand over cash or card, rather than leaving coins behind. Round up for taxis and casual meals." },
     { q: "Is tax included in prices in Austria?", a: "Yes. Austrian VAT is built into the displayed price, 20% on most things and a reduced 10% on food, books and hotels, so the tag or menu price is what you pay. Non-EU visitors can reclaim VAT on purchases over about 75 euros in one store when leaving the EU." },
     { q: "Does Austria charge a tourist tax?", a: "Most towns do, added to your hotel bill. Vienna charges about 3.2% of the net room price, while alpine and regional towns usually charge a flat per-person nightly fee of roughly 1 to 3.50 euros. It is separate from the room rate you book online." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little German goes a long way",
+    intro: "Austrians speak German, and a warm Grüß Gott as you enter a shop, plus a story or two, marks you as a guest rather than a tourist. A little effort is always met with warmth.",
+    phrases: [
+      { mean: "Hello, a warm regional greeting", say: "grooss GOT", word: "Grüß Gott" },
+      { mean: "Please, and you are welcome", say: "BIT-uh", word: "Bitte" },
+      { mean: "Thank you", say: "DAHN-kuh", word: "Danke" },
+      { mean: "Cheers", say: "prohst", word: "Prost" },
+      { mean: "Delicious, tasty", say: "LECK-uh", word: "Lecker" },
+      { mean: "Hi and bye, among friends", say: "SER-vus", word: "Servus" },
+    ],
+    tip: "In Austria the everyday greeting is <b>Grüß Gott</b> (literally, may God greet you), not the German Guten Tag, and locals use it walking into shops and cafes. Among friends you will hear <b>Servus</b> for both hello and goodbye.",
+    stories: [
+      { img: "/austria-culture-1.jpg",
+        alt: "WPA-style illustration of a small boy in a powdered wig and court coat playing a gilded harpsichord in a candlelit palace salon while elegantly dressed nobles listen",
+        h: "The boy who astonished Europe",
+        p: "Wolfgang Amadeus Mozart was born in Salzburg in 1756 and was performing for royal courts across Europe by the age of six. He wrote more than 600 works before he died at just 35. Austria has been a land of music ever since, with Vienna as its beating heart.",
+        note: "Good to know: Mozart was born in Salzburg in 1756" },
+      { img: "/austria-culture-2.jpg",
+        alt: "WPA-style illustration of couples in ball gowns and tailcoats waltzing across a mirrored ballroom floor beneath grand chandeliers and red-curtained windows",
+        h: "The city that waltzes",
+        p: "Vienna gave the world the waltz, at first thought scandalous for how closely the dancers held each other, then adored everywhere. Each winter the city holds hundreds of grand balls, and the most famous open with couples sweeping across the floor. The Strauss family turned the waltz into Vienna's heartbeat.",
+        note: "Good to know: the ball season runs each winter" },
+      { img: "/austria-culture-3.jpg",
+        alt: "WPA-style illustration of a man reading a newspaper at a small marble table in a classic Vienna coffeehouse, a green pendant lamp above and a slice of torte with a small coffee",
+        h: "The living room of the city",
+        p: "The Viennese coffeehouse is a second living room: order one coffee and you may sit for hours, reading the papers, meeting friends or simply thinking. The tradition is so treasured it sits on the UNESCO list of intangible cultural heritage. Ask for a Melange, the Viennese cousin of a cappuccino.",
+        note: "Say it: a Melange (meh-LAHNZH)" },
+    ],
+    pride: "For a country its size, Austria has an outsized soul: Mozart and the waltz, the Alps and the coffeehouse, and a gentle pride in Gemütlichkeit, a cosy, unhurried warmth that has no exact word in English."
+  }
 };

@@ -135,5 +135,37 @@ export default {
     { q: "Can I get a tax refund on shopping in Canada?", a: "Generally no. Canada ended its GST visitor rebate program in 2007, so there is no EU-style tourist refund on ordinary purchases. A narrow rebate still exists for some tour packages and foreign conventions, but not for everyday shopping." },
     { q: "How much should I tip in Canada?", a: "Like the US: 15 to 20% at restaurants and bars, 10 to 15% for taxis and rideshare, and a couple of dollars per bag or per night for hotel staff. The card terminal will prompt you, so check whether the suggested percentage is on the pre-tax or post-tax total before you choose." },
     { q: "What is the best ATM to use in Canada?", a: "A major bank's machine: RBC, TD, Scotiabank, BMO or CIBC. Avoid the private white-label ATMs in bars, hotels and convenience stores, which charge high fees, and always decline the US-dollar conversion. Most machines dispense C$20 notes." }
-  ]
+  ],
+
+  culture: {
+    heading: "A few local words go a long way",
+    intro: "Canada runs on English and French, and on an easy, apologetic friendliness all its own. You will not need a phrasebook, but a few local words and a story or two mark you as a guest rather than a tourist.",
+    phrases: [
+      { mean: "Sorry, said often, and rarely an apology", say: "SOR-ee", word: "Sorry" },
+      { mean: "A friendly tag on a sentence, right?", say: "ay", word: "Eh" },
+      { mean: "Hello, in French Canada", say: "bawn-ZHOOR", word: "Bonjour" },
+      { mean: "Thank you, in French Canada", say: "mair-SEE", word: "Merci" },
+      { mean: "The one-dollar coin, with a loon on it", say: "LOO-nee", word: "Loonie" },
+      { mean: "The two-dollar coin", say: "TOO-nee", word: "Toonie" },
+    ],
+    tip: "Two things are gloriously Canadian: <b>sorry</b>, said so often it is more reflex than apology, and <b>eh</b>, a warm little tag that turns a statement into a shared moment. In Québec, lead with <b>Bonjour</b>, and a cheerful Bonjour-Hi is common in Montréal shops.",
+    stories: [
+      { img: "/canada-culture-1.jpg",
+        alt: "WPA-style illustration of French-Canadian voyageurs in sashes and caps paddling a long birchbark canoe laden with fur bundles across a still lake at dawn, pine shores behind",
+        h: "The paddlers who opened a continent",
+        p: "Long before roads or rails, French-Canadian voyageurs paddled birchbark canoes, a craft learned from the First Nations, thousands of miles along the rivers and lakes to trade furs. Singing to keep the rhythm, they could paddle for sixteen hours a day. Their routes traced the shape of the country to come.",
+        note: "Good to know: the canoe routes became Canada's map" },
+      { img: "/canada-culture-2.jpg",
+        alt: "WPA-style illustration of a lone Mounted Police rider in a red serge tunic on horseback crossing a vast golden prairie under an enormous open sky",
+        h: "Red coats on the plains",
+        p: "The Mounties, Canada's famous police in scarlet coats, began in 1873 to bring order to the vast western plains. The old boast that they always get their man became legend, and the red serge is now a proud national symbol. You will still see it at ceremonies and on the celebrated Musical Ride.",
+        note: "Good to know: the red serge dates from 1873" },
+      { img: "/canada-culture-3.jpg",
+        alt: "WPA-style illustration of children playing pond hockey on a frozen lake at dusk, wooden sticks and woolen hats, snow-laden pines and a lit cabin window beyond",
+        h: "The game on the frozen pond",
+        p: "When the ponds freeze, Canadians of every age lace up for hockey, the game closest to the national heart. Many a star first learned to skate on a backyard rink or a frozen pond, stick in hand, long before any arena. Ask a Canadian about their team and you may have a friend for life.",
+        note: "Say it: a game of shinny on the pond" },
+    ],
+    pride: "Canadians are warm, understated and quick to make room for a newcomer. They are proud of the sheer scale of the place, the second largest country on Earth, of two founding languages, and of a national habit of kindness that the sorry and the eh only hint at."
+  }
 };

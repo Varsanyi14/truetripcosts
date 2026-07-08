@@ -118,5 +118,37 @@ export default {
     { q: "Can tourists get a VAT refund in the UK, and is there a tourist tax?", a: "No VAT refund in Great Britain. The tourist VAT refund scheme was abolished in 2021, so you cannot reclaim the 20% VAT on shopping carried home from England, Scotland or Wales (Northern Ireland keeps a separate, limited scheme). On tourist tax, there is no nationwide one, but Edinburgh starts a 5% visitor levy on overnight stays from 24 July 2026, capped at the first five nights and collected by your hotel, with Glasgow following in 2027 and a few English cities adding a small flat per-night charge." },
     { q: "Do US citizens need a visa or ETA for the UK?", a: "Not a visa for short visits, but yes an ETA. Since 25 February 2026, US visitors must have an approved UK Electronic Travel Authorisation before they board, and airlines check it. It costs 20 pounds through the official UK ETA app or GOV.UK, covers stays of up to six months, lasts two years, and is usually approved within minutes. Apply directly to avoid lookalike sites that charge more, and note the ETA does not cover the Republic of Ireland." },
     { q: "How much cash should I bring for a week in the UK?", a: "For two mid-range travelers, very roughly 100 to 200 pounds in day-to-day cash across a week, beyond your hotel, pulled in a cashpoint visit or two. Cards and contactless cover the rest, including transport. Adjust for how often you tap versus pay in cash, and remember London is the priciest part of the country." }
-  ]
+  ],
+
+  culture: {
+    heading: "A few very British words go a long way",
+    intro: "You will not need a phrasebook here, but a handful of very British words and a story or two mark you as a guest rather than a tourist. Remember too that the UK is four nations, England, Scotland, Wales and Northern Ireland, each proud of its own.",
+    phrases: [
+      { mean: "Thanks, and also bye, and a toast", say: "cheers", word: "Cheers" },
+      { mean: "A line, and the art of waiting your turn", say: "kyoo", word: "Queue" },
+      { mean: "A cup of tea", say: "KUP-uh", word: "Cuppa" },
+      { mean: "The toilet", say: "loo", word: "Loo" },
+      { mean: "A pound, in money", say: "kwid", word: "Quid" },
+      { mean: "Thanks, very informal", say: "tah", word: "Ta" },
+    ],
+    tip: "The British queue for everything, and pushing in is a genuine faux pas, so find the back and wait your turn. <b>Cheers</b> does triple duty as thanks, goodbye and a toast, and a strong <b>cuppa</b> (a cup of tea) is offered in every situation, good or bad.",
+    stories: [
+      { img: "/united-kingdom-culture-1.jpg",
+        alt: "WPA-style illustration of two actors performing on the wooden stage of a round open-air Elizabethan playhouse, timber galleries packed with onlookers and a standing crowd around the stage",
+        h: "The wooden O",
+        p: "Four hundred years on, the plays William Shakespeare wrote for this round wooden playhouse on the Thames are still performed the world over. In his day the cheapest ticket, a single penny, bought you a standing spot in the yard as a groundling, right at the actors' feet. Today's Globe is a faithful open-air rebuild, and you can still stand in the yard.",
+        note: "Good to know: the rebuilt Globe opened in 1997" },
+      { img: "/united-kingdom-culture-2.jpg",
+        alt: "WPA-style illustration of a young man in a plain tunic drawing a glowing sword from an anvil set in a great grey stone in a misty forest clearing, a distant castle on a hill",
+        h: "The once and future king",
+        p: "Long before England was England, the legends tell of King Arthur, who drew a sword from a stone to prove he was the rightful king, gathered his knights at a round table so none sat above another, and was carried off to the isle of Avalon. Whether he ever lived is a puzzle historians still enjoy. The tales are woven right across Britain, from Tintagel in Cornwall to the great round table in Winchester.",
+        note: "Good to know: the legend spans England, Wales and Cornwall" },
+      { img: "/united-kingdom-culture-3.jpg",
+        alt: "WPA-style illustration of the great standing stones of Stonehenge at dawn, robed figures gathered at the centre as the rising sun aligns through the arches over a heather meadow",
+        h: "A calendar made of stone",
+        p: "No one knows exactly why Stonehenge was raised on Salisbury Plain around 5,000 years ago, but its builders lined it up with the sun: at the summer solstice the sunrise appears through the great stones, and at midwinter the sunset. Some of the huge bluestones were hauled roughly 150 miles from Wales. It remains one of Europe's great mysteries.",
+        note: "Good to know: it aligns with the summer and winter sun" },
+    ],
+    pride: "For a small set of islands, Britain has an outsized story: Shakespeare's plays, tea and the pub, football and the Proms, and four proud nations, England, Scotland, Wales and Northern Ireland, each with its own flag, food and turn of phrase. Call the whole country British, not English, and you will win a quiet nod."
+  }
 };
