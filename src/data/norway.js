@@ -81,9 +81,9 @@ export default {
     rate: 9.8, cur: "NOK", round: 100, defaultIndex: 1,
     rateNote: "Rough guide at about 9.8 kroner to the dollar in mid-2026, so 100 NOK is roughly 10 dollars and 500 NOK about 51. Norway is card-first, so this is the small cash-in-hand slice of your spending, not your whole budget.",
     styles: [
-      { n: "Budget",    per: 700,  cash: 0.12 },
-      { n: "Mid-range", per: 1400, cash: 0.08 },
-      { n: "Comfort",   per: 2600, cash: 0.05 }
+      { n: "Budget",    per: 70,  cash: 0.12 },
+      { n: "Mid-range", per: 145, cash: 0.08 },
+      { n: "Comfort",   per: 265, cash: 0.05 }
     ]
   },
 

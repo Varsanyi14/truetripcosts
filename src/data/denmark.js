@@ -76,9 +76,9 @@ export default {
     rate: 6.5, cur: "DKK", round: 50, defaultIndex: 1,
     rateNote: "Rough guide at about 6.5 kroner to the dollar in mid-2026, so 100 DKK is roughly 15 dollars and 300 DKK about 46. Because the krone is pegged to the euro, this rate barely moves against the euro, but it still drifts against the dollar. Denmark is card-first, so this is the small cash-in-hand slice of your spending, not your whole budget.",
     styles: [
-      { n: "Budget",    per: 450,  cash: 0.12 },
-      { n: "Mid-range", per: 900,  cash: 0.08 },
-      { n: "Comfort",   per: 1700, cash: 0.05 }
+      { n: "Budget",    per: 70,  cash: 0.12 },
+      { n: "Mid-range", per: 140,  cash: 0.08 },
+      { n: "Comfort",   per: 260, cash: 0.05 }
     ]
   },
 

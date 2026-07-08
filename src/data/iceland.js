@@ -82,9 +82,9 @@ export default {
     rate: 126, cur: "ISK", round: 1000, defaultIndex: 1,
     rateNote: "Rough guide at about 126 krona to the dollar in mid-2026, so 1,000 ISK is roughly 8 dollars and 10,000 ISK about 79. Iceland is card-first, so this is the tiny cash-in-hand slice of your spending, not your whole budget.",
     styles: [
-      { n: "Budget",    per: 9000,  cash: 0.08 },
-      { n: "Mid-range", per: 20000, cash: 0.05 },
-      { n: "Comfort",   per: 35000, cash: 0.03 }
+      { n: "Budget",    per: 70,  cash: 0.08 },
+      { n: "Mid-range", per: 160, cash: 0.05 },
+      { n: "Comfort",   per: 280, cash: 0.03 }
     ]
   },
 
