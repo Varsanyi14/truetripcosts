@@ -137,5 +137,37 @@ export default {
     { q: "Should I bring US dollars to Greece?", a: "No. Greece runs on euros, and dollars are not accepted for everyday spending. Pull euros from a Greek bank ATM after you land rather than exchanging cash at home or at an airport counter." },
     { q: "Do you tip in Greece?", a: "Lightly, and it is appreciated rather than required. Round up the bill or leave 5 to 10% at a taverna, round up a taxi fare, and a euro or two for porters or housekeeping is a kind gesture. Cash tips are better than a card-terminal prompt." },
     { q: "How much cash should I bring for a week in Greece?", a: "For two mid-range travelers island-hopping, very roughly 350 to 500 euros (about $400 to $570) in day-to-day cash across a week, on top of cards for hotels and bigger restaurants. Carry more if you are visiting smaller islands with limited ATMs, less if you are staying mostly in Athens." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Greek goes a long way",
+    intro: "A few words and a couple of stories that turn you from a tourist into a guest. Locals notice, and it opens doors, in a taverna, a taxi, anywhere.",
+    phrases: [
+      { mean: "Hello", say: "YAH-soo", word: "Yia sou", native: "Γειά σου" },
+      { mean: "Please", say: "pah-rah-kah-LOH", word: "Parakalo", native: "Παρακαλώ" },
+      { mean: "Thank you", say: "ef-hah-ree-STOH", word: "Efharisto", native: "Ευχαριστώ" },
+      { mean: "Cheers", say: "YAH-mas", word: "Yamas", native: "Γειά μας" },
+      { mean: "Delicious", say: "NOH-stee-moh", word: "Nostimo", native: "Νόστιμο" },
+      { mean: "Beautiful!", say: "oh-RAY-ah", word: "Oraia", native: "Ωραία" },
+    ],
+    tip: "with elders or people you have just met, use the polite form <b>Yia sas</b> (YAH-sas).",
+    stories: [
+      { img: "/greece-culture-1.jpg",
+        alt: "WPA-style illustration of King Leonidas and the Spartan phalanx braced behind bronze shields at the narrow pass of Thermopylae, sea on one side and cliffs on the other",
+        h: "Molon labe: come and take them",
+        p: "In 480 BC, King Leonidas and 300 Spartans held the narrow pass at Thermopylae against a vast Persian army. Ordered to hand over their weapons, Leonidas answered with two words: molon labe, come and take them. Drop it into conversation and you will get a knowing grin.",
+        note: "Say it: mo-LOHN lah-VEH" },
+      { img: "/greece-culture-2.jpg",
+        alt: "WPA-style illustration of a Spartan elder in a crimson cloak calmly handing back a scroll to a Macedonian envoy inside a stark colonnaded hall, helmeted warriors behind",
+        h: "The one word reply",
+        p: "Philip II of Macedon, father of Alexander, warned Sparta: if I invade, I will raze your city to the ground. The Spartans answered with a single word: if. Their homeland was Laconia, which is exactly where we get laconic, few words and dry wit. Greeks are quietly proud of it.",
+        note: "Good to know: the root of the word laconic" },
+      { img: "/greece-culture-3.jpg",
+        alt: "WPA-style illustration of the ancient messenger Pheidippides running across sunlit Attic hills toward Athens, one arm raised in triumph",
+        h: "The first marathon",
+        p: "By legend, the runner Pheidippides carried news of the victory at Marathon all the way to Athens, gasped nenikekamen, we have won, and collapsed. That run, about 40 km, is why the race is called the marathon. A perfect thing to mention if you have ever run one.",
+        note: "Say it: neh-nee-KAH-men" },
+    ],
+    pride: "Greece gave the world democracy, philosophy, theatre and the Olympic Games. A little sincere awe for that, mentioned in passing, goes a long way."
+  }
 };

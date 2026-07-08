@@ -136,5 +136,37 @@ export default {
     { q: "What is the best way to get rupees in India?", a: "A bank ATM, choosing rupees and declining the \"convert to USD\" option. Indian ATMs charge a flat fee (often 150 to 300 rupees) per foreign withdrawal with per-transaction limits around 10,000 rupees, so withdraw a sensible amount at once. Avoid airport and hotel exchange counters, which have the worst rates." },
     { q: "Is there a tourist tax in India?", a: "No per-night tourist or city tax like Dubai or much of Europe charges. Instead there's GST (India's value-added tax): usually 5% on restaurant bills, and on hotels 5% for rooms up to about 7,500 rupees a night or 18% above that. A restaurant \"service charge\" is not a tax and is optional." },
     { q: "How much cash should I bring for a week in India?", a: "Rather than carrying a week's worth, withdraw as you go: roughly 3,000 to 8,000 rupees at a time covers autos, street food and small purchases, topped up from ATMs. Pair that with a tourist UPI wallet and a no-fee card for hotels and city restaurants. Budgets vary widely, from very cheap street eats to pricier metro dining." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Hindi goes a long way",
+    intro: "A few words and a couple of stories that turn you from a tourist into a guest. Curiosity and warmth are met in kind across India, on a train, in a market, over a cup of chai.",
+    phrases: [
+      { mean: "Hello", say: "nuh-muh-STAY", word: "Namaste", native: "नमस्ते" },
+      { mean: "Please", say: "KRIP-yaa", word: "Kripya", native: "कृपया" },
+      { mean: "Thank you", say: "dhun-yuh-VAAD", word: "Dhanyavaad", native: "धन्यवाद" },
+      { mean: "Delicious", say: "swaa-DISHT", word: "Swaadisht", native: "स्वादिष्ट" },
+      { mean: "Beautiful!", say: "SOON-dur", word: "Sundar", native: "सुंदर" },
+      { mean: "You're welcome", say: "koh-ee baat nuh-HEEN", word: "Koi baat nahin", native: "कोई बात नहीं" },
+    ],
+    tip: "India has many languages and English is widely spoken, but <b>Namaste</b> (palms together) is understood almost everywhere. Shukriya (shoo-kree-YAA) is a common everyday thank you.",
+    stories: [
+      { img: "/india-culture-1.jpg",
+        alt: "WPA-style illustration of the Taj Mahal in soft pink dawn light reflected in its long water channel",
+        h: "A monument to love",
+        p: "The Mughal emperor Shah Jahan built the Taj Mahal as a tomb for his beloved wife Mumtaz Mahal, who died in childbirth. It took some twenty years and twenty thousand workers. Speak of it as a love story, not just a building, and it lands.",
+        note: "Good to know: built by Shah Jahan for his wife Mumtaz" },
+      { img: "/india-culture-2.jpg",
+        alt: "WPA-style illustration of the four-lion stone capital of Emperor Ashoka atop a pillar at dawn",
+        h: "The lions on the flag",
+        p: "The four-lion capital of the ancient emperor Ashoka is India's national emblem, and the wheel beneath it, the Ashoka Chakra, sits at the center of the flag. Recognizing it shows you see India, not just a postcard.",
+        note: "Good to know: the wheel on the flag is the Ashoka Chakra" },
+      { img: "/india-culture-3.jpg",
+        alt: "WPA-style illustration of a Diwali evening scene, rooftops and steps glowing with small oil lamps and marigold garlands",
+        h: "The festival of lights",
+        p: "Diwali is India's most beloved festival, when homes glow with rows of little oil lamps, diyas, marigolds, and sweets, celebrating light over darkness. Wishing someone a happy Diwali, or admiring the diyas, is always welcome.",
+        note: "Say it: Diwali (dee-VAH-lee), the festival of lights" },
+    ],
+    pride: "India is astonishingly old and varied, thousands of years, many languages, countless traditions. Curiosity and respect for that richness, rather than treating it as one thing, open every door."
+  }
 };

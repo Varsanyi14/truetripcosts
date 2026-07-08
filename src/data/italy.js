@@ -121,5 +121,37 @@ export default {
     { q: "How much is the tourist tax in Italy?", a: "It is a per-person, per-night city tax (tassa di soggiorno) set by each city and paid at your accommodation, not included in the room rate. It is roughly 4 to 10 euros a night in Rome (up to 10 nights, under-10s exempt), about 3.50 to 8 euros in Florence (up to 7 nights), and around 1 to 5 euros in Venice. Venice also has a separate day-tripper access fee." },
     { q: "Do I have to pay the Venice access fee?", a: "Only if you visit the historic center as a day-tripper on one of the 60 set 2026 dates, from 3 April to 26 July, between 08:30 and 16:00. It is 5 euros per person booked at least four days ahead at cda.ve.it, or 10 euros last-minute, and under-14s are exempt. Overnight guests do not pay it but must still register for a free exemption QR code. The islands, like Murano, Burano and the Lido, are excluded for 2026." },
     { q: "How much cash should I bring for a week in Italy?", a: "For two mid-range travelers, very roughly 300 to 400 euros (about 350 to 450 dollars) in day-to-day cash across a week, beyond your hotel, pulled in a couple of bank-ATM visits. Cards and contactless cover most of the rest. Adjust for your style and how much you tap versus pay in cash." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Italian goes a long way",
+    intro: "A few words and a couple of stories that turn you from a tourist into a guest. Italians open up fast when you meet them halfway, over a coffee, in a piazza, at the table.",
+    phrases: [
+      { mean: "Hello", say: "CHOW", word: "Ciao" },
+      { mean: "Please", say: "pehr fah-VOH-reh", word: "Per favore" },
+      { mean: "Thank you", say: "GRAH-tsee-eh", word: "Grazie" },
+      { mean: "Cheers", say: "chin CHIN", word: "Cin cin" },
+      { mean: "Delicious", say: "bwoh-NEES-see-moh", word: "Buonissimo" },
+      { mean: "Beautiful!", say: "behl-LEES-see-moh", word: "Bellissimo" },
+    ],
+    tip: "greet with <b>Buongiorno</b> (bwon-JOR-noh) when you walk into a shop or bar. It is expected, and warmly received.",
+    stories: [
+      { img: "/italy-culture-1.jpg",
+        alt: "WPA-style illustration of Julius Caesar on horseback at the edge of the Rubicon river at dawn, a Roman legion with standards massed behind him",
+        h: "Alea iacta est: the die is cast",
+        p: "In 49 BC, Julius Caesar marched his army across the Rubicon, the river he was forbidden to cross, and began a civil war. As he crossed, he is said to have declared alea iacta est, the die is cast: no turning back. Italians know the line and the moment.",
+        note: "Say it: AH-leh-ah YAHK-tah est" },
+      { img: "/italy-culture-2.jpg",
+        alt: "WPA-style illustration of the she-wolf of Rome standing over the infant twins Romulus and Remus on the bank of the Tiber",
+        h: "Raised by a wolf",
+        p: "Legend says the twins Romulus and Remus, abandoned as infants, were suckled by a she-wolf on the banks of the Tiber. Romulus grew up to found Rome. The she-wolf and the twins are a symbol you will see everywhere, and every Italian knows her.",
+        note: "Good to know: this is the founding legend of Rome" },
+      { img: "/italy-culture-3.jpg",
+        alt: "WPA-style illustration of a Renaissance sculptor carving a marble figure in a sunlit Florentine workshop, the dome of the Duomo beyond",
+        h: "The Renaissance was born here",
+        p: "Florence gave the world the Rinascimento, the rebirth of art and ideas, with Michelangelo, Leonardo, and Brunelleschi's great dome. Mentioning your love of Italian art, and the word Rinascimento, signals real appreciation.",
+        note: "Say it: ree-nah-shee-MEN-toh" },
+    ],
+    pride: "Italy holds more UNESCO World Heritage sites than any country on earth, and gave the world opera, the Renaissance, and, of course, the food. A little genuine enthusiasm is always returned."
+  }
 };

@@ -114,5 +114,37 @@ export default {
     { q: "Do I need a Suica or IC card in Japan?", a: "It is the smoothest way to pay for trains, buses and convenience stores. The easiest route is adding a Suica or ICOCA to your phone's Apple or Google Wallet before you arrive." },
     { q: "How much cash should I bring for a week in Japan?", a: "For two mid-range travelers, plan very roughly 80,000 to 100,000 yen in day-to-day cash across a week, beyond hotels, withdrawn in a couple of ATM visits. Adjust for your style." },
     { q: "Can I shop tax-free as a tourist in Japan?", a: "Yes. At \"Tax Free\" shops, show your passport to buy consumption-tax-free. Consumables are sealed and must leave Japan unopened. Confirm at the register, as the system is being reformed." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Japanese goes a long way",
+    intro: "A few words and a couple of stories that turn you from a tourist into a guest. In Japan, small signs of respect and understanding are noticed, and quietly returned.",
+    phrases: [
+      { mean: "Hello", say: "kohn-nee-chee-WAH", word: "Konnichiwa", native: "こんにちは" },
+      { mean: "Please", say: "oh-neh-gah-ee-shee-mahss", word: "Onegai shimasu", native: "お願いします" },
+      { mean: "Thank you", say: "ah-ree-GAH-toh goh-zah-ee-mahss", word: "Arigatou gozaimasu", native: "ありがとうございます" },
+      { mean: "Cheers", say: "kahn-PIE", word: "Kanpai", native: "乾杯" },
+      { mean: "Delicious", say: "oy-SHEE", word: "Oishii", native: "おいしい" },
+      { mean: "Beautiful!", say: "kee-RAY", word: "Kirei", native: "きれい" },
+    ],
+    tip: "a small bow with your thanks goes far, and <b>Sumimasen</b> (soo-mee-mah-sen) covers both excuse me and sorry, the word you will reach for most.",
+    stories: [
+      { img: "/japan-culture-1.jpg",
+        alt: "WPA-style illustration of the forty-seven ronin marching in single file through falling snow at night with paper lanterns",
+        h: "The forty-seven who kept faith",
+        p: "When their lord was forced to take his own life, forty-seven samurai became masterless ronin, waited patiently, then avenged him, knowing it would cost their own lives. The tale of the forty-seven ronin is Japan's cherished story of loyalty and duty, giri.",
+        note: "Good to know: giri means duty and loyalty, deeply valued here" },
+      { img: "/japan-culture-2.jpg",
+        alt: "WPA-style illustration of Mount Fuji beyond a calm lake with a red torii gate and cherry blossoms in bloom",
+        h: "The beauty of things passing",
+        p: "Cherry blossoms bloom gloriously and fall within days, and the Japanese have a phrase for the tender feeling it stirs: mono no aware, an awareness of how fleeting things are. Admire it aloud in spring and you are speaking their language.",
+        note: "Say it: mono no aware (moh-noh noh ah-wah-reh)" },
+      { img: "/japan-culture-3.jpg",
+        alt: "WPA-style illustration of a lone samurai standing in calm readiness at dawn beside a blossoming plum tree",
+        h: "The way of the warrior",
+        p: "The samurai lived by bushido, a code of honor, discipline, and self-control that still shapes how respect works in Japan today. It is why the small bow, the quiet politeness, and the care taken over everything matter so much.",
+        note: "Good to know: bushido, the samurai code of honor" },
+    ],
+    pride: "Japan blends deep tradition with the cutting edge like nowhere else. Respect shown through small gestures, a bow, patience, care, is noticed and quietly appreciated."
+  }
 };

@@ -116,5 +116,37 @@ export default {
     { q: "How much should I tip in Mexico?", a: "At sit-down restaurants, 10 to 15% is standard and 15 to 20% for excellent or upscale service. Cash in pesos handed to your server is best. Check first for \"propina\" or \"servicio\" already on the bill so you do not tip twice." },
     { q: "Which ATM is best in Mexico for a foreign card?", a: "Use an ATM inside a bank branch or a supermarket rather than the airport or a standalone street machine, which charge more and see more skimming. BBVA, Santander, Banorte and HSBC are reliable; Inbursa often has the lowest fee. Always decline the \"convert to dollars\" offer." },
     { q: "How much cash should I bring for a week in Mexico?", a: "For two mid-range travelers, very roughly 6,000 to 9,000 pesos (about $350 to $510) in day-to-day cash across a week, beyond your hotel, pulled in a couple of ATM visits. Adjust for your style and how much you put on a card." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Spanish goes a long way",
+    intro: "A few words and a couple of stories that turn you from a tourist into a guest. Mexicans return warmth generously, over a meal, in a plaza, wherever the day takes you.",
+    phrases: [
+      { mean: "Hello", say: "OH-lah", word: "Hola" },
+      { mean: "Please", say: "por fah-VOR", word: "Por favor" },
+      { mean: "Thank you", say: "GRAH-see-ahs", word: "Gracias" },
+      { mean: "Cheers", say: "sah-LOOD", word: "Salud" },
+      { mean: "Delicious", say: "keh REE-koh", word: "Qué rico" },
+      { mean: "Beautiful!", say: "keh boh-NEE-toh", word: "Qué bonito" },
+    ],
+    tip: "greet with <b>Buenos días</b> (BWEH-nohs DEE-ahs) in the morning, Buenas tardes in the afternoon. De nada means you are welcome.",
+    stories: [
+      { img: "/mexico-culture-1.jpg",
+        alt: "WPA-style illustration of a golden eagle perched on a nopal cactus with a serpent, on a rock in a lake ringed by volcanoes",
+        h: "The eagle on the flag",
+        p: "The Mexica, the Aztecs, were told to build their city where they saw an eagle perched on a cactus, devouring a serpent. They found the sign on a lake and founded Tenochtitlan, today's Mexico City. That very scene sits at the heart of the Mexican flag.",
+        note: "Good to know: that is the scene at the center of the flag" },
+      { img: "/mexico-culture-2.jpg",
+        alt: "WPA-style illustration of a warm Day of the Dead altar at dusk with marigolds, candles, painted calavera faces and papel picado",
+        h: "A joyful Day of the Dead",
+        p: "Dia de los Muertos is not morbid. It is a warm, colorful celebration when families welcome back the souls of loved ones with marigolds, candles, favorite foods, and laughter. Understanding it as joyful, not spooky, means a great deal.",
+        note: "Good to know: it is a celebration, not a mourning" },
+      { img: "/mexico-culture-3.jpg",
+        alt: "WPA-style illustration of a great stepped Maya pyramid rising from jungle mist at dawn under a violet sky",
+        h: "Master astronomers",
+        p: "Long before the Aztecs, the Maya built vast pyramid cities and tracked the stars so precisely their calendar rivaled any in the world. Their ruins still stand across the south. A nod to that genius is always appreciated.",
+        note: "Good to know: the Maya were extraordinary astronomers" },
+    ],
+    pride: "Mexico layers ancient civilizations, Spanish heritage, and a fierce modern creativity in food, art, and music. Warmth, and a little Spanish, are always returned in kind."
+  }
 };

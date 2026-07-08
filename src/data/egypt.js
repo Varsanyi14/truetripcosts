@@ -129,5 +129,37 @@ export default {
     { q: "Why is my hotel or restaurant bill higher than the listed price?", a: "The plus plus. Hotels and tourist restaurants often add a service charge of about 12% plus tax of around 14% to the price shown, so the total lands higher. Street food and local spots usually just charge the marked price, and some booking-site room rates already include the extras." },
     { q: "What is the best ATM to use in Egypt?", a: "A bank ATM, such as National Bank of Egypt, Banque Misr, CIB or QNB. Read the fee, take a good amount while a machine is working since some run out of cash, and always decline the US-dollar conversion. Avoid street money changers entirely." },
     { q: "Is Egypt cheap for US travelers right now?", a: "Yes, relatively. The pound lost a lot of value after Egypt floated it in 2024, so for visitors changing dollars, meals, taxis and many services are inexpensive. Prices in pounds can still climb with inflation, so check a live converter, but your dollar generally stretches a long way." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Arabic goes a long way",
+    intro: "A few words and a couple of stories that turn you from a tourist into a guest. A little warmth and curiosity carry a long way in Egypt, in a shop, a cafe, wherever you land.",
+    phrases: [
+      { mean: "Hello", say: "AH-lan", word: "Ahlan", native: "أهلاً" },
+      { mean: "Please", say: "min FAD-lak", word: "Min fadlak", native: "من فضلك" },
+      { mean: "Thank you", say: "SHOK-ran", word: "Shukran", native: "شكراً" },
+      { mean: "Cheers", say: "fee SAH-heh-tak", word: "Fi sahetak", native: "في صحتك" },
+      { mean: "Delicious", say: "la-ZEEZ", word: "Lazeez", native: "لذيذ" },
+      { mean: "Beautiful!", say: "ga-MEEL", word: "Gameel", native: "جميل" },
+    ],
+    tip: "the warm greeting is <b>As-salamu alaykum</b> (as-sah-LAM-u ah-LAY-kum), peace be upon you. The reply is wa alaykum as-salam, and Egyptians love hearing a visitor try it.",
+    stories: [
+      { img: "/egypt-culture-1.jpg",
+        alt: "WPA-style illustration of the Great Sphinx and the pyramids of Giza at golden hour with a small camel caravan crossing the sand",
+        h: "Older than you can imagine",
+        p: "The pyramids and the Sphinx at Giza are around 4,500 years old, so ancient that Cleopatra lived closer in time to us than to their building. Show awe for that depth of history and Egyptians warm to you at once.",
+        note: "Good to know: the pyramids long predate Cleopatra" },
+      { img: "/egypt-culture-2.jpg",
+        alt: "WPA-style illustration of the golden funerary mask of the boy pharaoh Tutankhamun glowing in warm torchlight",
+        h: "The boy king",
+        p: "Tutankhamun became pharaoh as a child and died young, all but forgotten, until Howard Carter opened his tomb in 1922 and found its treasures intact. His golden mask is Egypt's most beloved icon.",
+        note: "Good to know: his tomb was found nearly intact in 1922" },
+      { img: "/egypt-culture-3.jpg",
+        alt: "WPA-style illustration of an ancient Egyptian scribe writing hieroglyphs on papyrus before a carved and painted wall",
+        h: "Where writing began",
+        p: "Egypt is one of the birthplaces of writing, its walls covered in hieroglyphs that stayed a mystery until the Rosetta Stone unlocked them. A little curiosity about the script goes a long way.",
+        note: "Good to know: the Rosetta Stone was the key to hieroglyphs" },
+    ],
+    pride: "Egypt carries one of the longest continuous civilizations on earth, thousands of years of it. Treating that history with wonder, not just a quick photo, earns real warmth."
+  }
 };
