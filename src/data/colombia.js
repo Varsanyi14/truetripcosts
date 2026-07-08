@@ -122,5 +122,37 @@ export default {
     { q: "Do I have to pay the hotel tax in Colombia?", a: "As a foreign tourist, no. Non-resident visitors are exempt from the 19% IVA on hotel rooms, but the exemption is not automatic and many hotels charge it anyway. Show your passport and entry stamp at check-in, ask for the IVA to be removed, and check the final bill and the electronic invoice." },
     { q: "Can I get an IVA (VAT) refund on shopping in Colombia?", a: "Yes. Non-resident tourists can reclaim the 19% IVA on goods bought in stores over about 150,000 pesos (roughly 43 dollars, a 3 UVT minimum that rises a little each year). Keep the electronic invoice showing your name and passport, and claim at the DIAN desk at the airport before checking your bags when you leave. After fees you get back a little under the full 19%." },
     { q: "How much cash should I bring for a week in Colombia?", a: "For two mid-range travelers, very roughly 1,000,000 to 1,500,000 pesos (about 300 to 440 dollars) in day-to-day cash across a week beyond your hotel, pulled from a couple of Servibanca or Davivienda withdrawals. Cards cover city malls, supermarkets and hotels; the cash is for taxis, food, tips, small towns and the coast." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Spanish goes a long way",
+    intro: "A few words and a couple of stories that turn you from a tourist into a guest. Colombians are famously warm and quick to laugh, and a little Spanish, and a little curiosity, are always returned.",
+    phrases: [
+      { mean: "Hello", say: "OH-lah", word: "Hola" },
+      { mean: "Please", say: "por fah-VOR", word: "Por favor" },
+      { mean: "Thank you", say: "GRAH-syahs", word: "Gracias" },
+      { mean: "Cheers", say: "sah-LOOD", word: "Salud" },
+      { mean: "Delicious", say: "keh REE-koh", word: "Qué rico" },
+      { mean: "How cool, how great", say: "keh CHEH-veh-reh", word: "Qué chévere" },
+    ],
+    tip: "Colombians pepper their speech with <b>chévere</b> (cool, great) and call a friend parcero, or just parce (buddy). A warm ¿Qué más? (kay MAHS), meaning what's up, is how friends say hello.",
+    stories: [
+      { img: "/colombia-culture-1.jpg",
+        alt: "WPA-style illustration of the gilded Muisca chief on a reed raft on a still mountain lake at dawn, attendants lowering gold offerings into the water, emerald hills",
+        h: "The real El Dorado",
+        p: "The legend of El Dorado, the city of gold, began here with something real: the Muisca people would cover a new chief in gold dust and send him out on a raft on Lake Guatavita to offer gold and emeralds to the water. You can see the little golden raft in Bogota's Gold Museum.",
+        note: "Good to know: see the gold raft at the Museo del Oro" },
+      { img: "/colombia-culture-2.jpg",
+        alt: "WPA-style illustration of a Colombian coffee farmer with a basket picking ripe red cherries on a steep misty green Andean slope, rows of coffee bushes",
+        h: "Cafe de Colombia",
+        p: "Colombia's mountains grow some of the finest coffee on Earth, picked by hand on impossibly steep green slopes. A tinto, a small black coffee, is offered everywhere as a gesture of welcome. It is a serious point of national pride.",
+        note: "Say it: tinto (TEEN-toh), a small black coffee" },
+      { img: "/colombia-culture-3.jpg",
+        alt: "WPA-style illustration of a cloud of golden-yellow butterflies drifting over a whitewashed town with terracotta roofs at dusk, a lone figure watching from a doorway",
+        h: "The land of magical realism",
+        p: "Colombia gave the world Gabriel Garcia Marquez and his novel One Hundred Years of Solitude, where yellow butterflies follow a young lover and the ordinary and the magical live side by side. That blend, magical realism, feels true to the country itself.",
+        note: "Good to know: Garcia Marquez won the Nobel Prize in 1982" },
+    ],
+    pride: "Colombians are proud, warm people who know the old headlines and would rather show you the real place: the coffee, the music, the second most biodiverse country on Earth, and a welcome you will not forget."
+  }
 };

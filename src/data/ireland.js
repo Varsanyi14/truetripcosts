@@ -131,5 +131,37 @@ export default {
     { q: "Should I rent a car in Ireland, and what about the insurance?", a: "Renting is the best way to see the country beyond Dublin, but the insurance is the catch. The base rate includes basic collision cover but leaves a high excess (about 1,500 to 3,500 euros) frozen on your credit card, so most people add Super CDW or a cheaper standalone excess policy bought online in advance. Do not assume your US credit card covers Ireland, since most Visa and Amex cards do not. Most cars are manual, so book an automatic well ahead if you need one, and pay Dublin's barrier-free M50 toll online by the next day." },
     { q: "Do I have to pay a tourist tax in Ireland?", a: "No. Unusually for Europe, Ireland has no nightly tourist or bed tax, though Dublin and Galway are pushing for the power to introduce a small one, so check again nearer your trip. Prices already include VAT, and from July 2026 the VAT on restaurant meals dropped from 13.5% to 9%." },
     { q: "How much cash should I bring for a week in Ireland?", a: "Very little. For most visitors, 100 to 150 euros in cash across a week is plenty on top of card spending, for rural pubs, small markets, the odd taxi and card-machine outages. Pull it from bank ATMs as needed rather than exchanging dollars, and keep it in small notes." }
-  ]
+  ],
+
+  culture: {
+    heading: "A few words of Irish go a long way",
+    intro: "Everyone in Ireland speaks English, so nothing here is essential, but a few words of Irish (Gaeilge) and a story or two mark you as a guest rather than a tourist, and they open doors in a pub or a shop.",
+    phrases: [
+      { mean: "Hello", say: "DEE-ah gwit", word: "Dia duit" },
+      { mean: "Please", say: "leh duh HULL", word: "Le do thoil" },
+      { mean: "Thank you", say: "guh rev MAH AH-gut", word: "Go raibh maith agat" },
+      { mean: "Cheers", say: "SLAWN-cheh", word: "Sláinte" },
+      { mean: "Delicious", say: "BLAHS-tah", word: "Blasta" },
+      { mean: "Beautiful", say: "guh HAW-lin", word: "Go hálainn" },
+    ],
+    tip: "Irish is the first official language and you will see it on every road sign, but English is spoken everywhere, so no pressure. <b>Sláinte</b> (to your health) is the one word every visitor should have ready for a toast.",
+    stories: [
+      { img: "/ireland-culture-1.jpg",
+        alt: "WPA-style illustration of the Neolithic passage mound of Newgrange at dawn, a spiral-carved stone in front and a shaft of golden light at the entrance, green Boyne valley beyond",
+        h: "Older than the pyramids",
+        p: "Newgrange, the great mound in the Boyne valley, was built around 3,200 BC, older than Stonehenge and the pyramids of Giza. Once a year, at the winter solstice, the rising sun slips through a stone roof-box and lights the inner chamber. Mention that and you will impress a local.",
+        note: "Good to know: it predates the pyramids by centuries" },
+      { img: "/ireland-culture-2.jpg",
+        alt: "WPA-style illustration of a tonsured Irish monk in a green robe illuminating a Gospel page with Celtic knotwork by candlelight, a round tower through the window",
+        h: "The monks who kept the light on",
+        p: "While much of Europe lost its books, Irish monks copied and illuminated them by hand, page after page, including the dazzling Book of Kells you can still see in Dublin. It is why Ireland is sometimes said to have kept learning alive. A point of quiet pride.",
+        note: "Good to know: see the Book of Kells at Trinity College" },
+      { img: "/ireland-culture-3.jpg",
+        alt: "WPA-style illustration of a robed monk in a small leather boat under a single sail on a wild grey-green Atlantic at dawn, gazing west",
+        h: "The saint who sailed west",
+        p: "Legend says Saint Brendan the Navigator set out in a small leather boat and sailed far into the Atlantic, some say all the way to America, centuries before the Vikings. True or not, the Irish have always been a seafaring, wandering people, and they love the tale.",
+        note: "Say it: Brendan the Navigator" },
+    ],
+    pride: "Ireland is a land of storytellers, from the old myths to Yeats, Joyce and Heaney, and the welcome is real: céad míle fáilte means a hundred thousand welcomes, and they mean it."
+  }
 };

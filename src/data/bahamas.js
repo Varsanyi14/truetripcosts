@@ -126,5 +126,37 @@ export default {
     { q: "Can I get a VAT refund on shopping in the Bahamas?", a: "Yes, if you are a visitor leaving within 45 days. Through the Global Blue Tax Free scheme you can reclaim the 10% VAT on goods you buy to take home, and at affiliated stores you get the refund immediately at the till. Look for Global Blue signage on Bay Street and at the airport in Nassau, at Cable Beach and Baha Mar, on Paradise Island and in Freeport. The minimum purchase is about 25 dollars for non-consumables." },
     { q: "Do I have to pay a tourist tax or departure tax in the Bahamas?", a: "There is no per-person nightly tourist tax to hand over. Prices carry a 10% VAT, and hotels often add a service charge or gratuity (around 15%) and sometimes a resort levy, so read the final bill. Your air departure tax of about 15 dollars is almost always built into your airfare, so you should not owe it separately at the airport, though cruise passengers pay separate taxes and tourism levies by sea." },
     { q: "How much cash should I bring for a week in the Bahamas?", a: "It depends on your trip. At a Nassau or Paradise Island resort you may need little beyond tips, taxis and a few excursions, so roughly 150 to 300 US dollars in cash across a week beyond your card spending is a fair guide. On the Out Islands, plan for more, since cards and ATMs are scarce. US or Bahamian dollars both work; keep small bills for tips, taxis and the straw market." }
-  ]
+  ],
+
+  culture: {
+    heading: "A few island words go a long way",
+    intro: "English is the language of the Bahamas, spoken fast and musical, so you will understand and be understood. But a handful of local words, and a little island history, turn you from a tourist into a guest.",
+    phrases: [
+      { mean: "Friend, buddy (and just 'hey')", say: "like 'buoy' said fast", word: "Bey" },
+      { mean: "Conch, the island's signature shellfish", say: "say it KONK", word: "Conch" },
+      { mean: "Fresh limeade, the island cooler", say: "SWITCH-ah", word: "Switcha" },
+      { mean: "Gossip, best over a cold drink", say: "sip sip", word: "Sip sip" },
+      { mean: "The local bus", say: "JIT-nee", word: "Jitney" },
+      { mean: "The beloved island street dog", say: "POT-cake", word: "Potcake" },
+    ],
+    tip: "The word you will hear most is <b>bey</b>, a friendly all-purpose man, woman or buddy, as in Hey, bey. And <b>dem</b> tacked onto a name means and company, so Johnny dem is Johnny and his crew.",
+    stories: [
+      { img: "/bahamas-culture-1.jpg",
+        alt: "WPA-style illustration of a jubilant Junkanoo street parade at dawn, dancers in towering bright crepe-paper costumes, goombay drummers and cowbells, energy and color",
+        h: "Junkanoo",
+        p: "Junkanoo is the heartbeat of the Bahamas: a dazzling street parade of towering costumes, goombay drums, cowbells and brass that fills the streets on Boxing Day and New Year's morning. It began in the days of slavery, when it was the one holiday of the year, and it is fiercely loved.",
+        note: "Good to know: the big parades are December 26 and January 1" },
+      { img: "/bahamas-culture-2.jpg",
+        alt: "WPA-style illustration of a weathered pirate sloop at anchor in old Nassau harbor at sunset, a black flag, palm-fringed shore and a low fort",
+        h: "The Republic of Pirates",
+        p: "In the early 1700s Nassau was a pirates' den, a self-declared Republic of Pirates where the likes of Blackbeard came and went. It did not last, and the islands wear the history with a wink. You will find it in the old forts and the tales.",
+        note: "Good to know: the pirates were finally driven out in 1718" },
+      { img: "/bahamas-culture-3.jpg",
+        alt: "WPA-style illustration of a free-diver rising through clear turquoise shallows holding up a large pink queen-conch shell, a wooden sloop on the surface above",
+        h: "Conch, say konk",
+        p: "The pink queen conch is the taste and emblem of the Bahamas, in fritters, in salad, cracked fresh by the water, and the shell itself is an island icon. Just remember it is pronounced konk, never conch. Order the conch salad; it is the national dish.",
+        note: "Say it: KONK, never 'conch'" },
+    ],
+    pride: "The Bahamas is 700 islands and cays all its own, not a stop on someone else's map. Junkanoo, the goombay rhythm, the warmth and the impossibly clear water are all theirs, and they love to share them."
+  }
 };

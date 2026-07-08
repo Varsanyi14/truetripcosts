@@ -134,5 +134,37 @@ export default {
     { q: "What is the best ATM to use in the Netherlands?", a: "Look for Geldmaat, the shared yellow ATM network used by Dutch banks, which charges standard rates. Avoid unbranded standalone machines in tourist shops, which cost more and push the \"convert to USD\" option you should always decline." },
     { q: "How much is Amsterdam's tourist tax?", a: "12.5% of your room rate excluding VAT, the highest percentage-based tourist tax in Europe, with no nightly cap. As of January 2026, this sits on top of a separate VAT hike on hotel rooms nationwide, from 9% to 21%, so the combined tax load in Amsterdam can reach roughly 33.5%." },
     { q: "How much cash should I bring for a week in the Netherlands?", a: "For two travelers, very roughly 50 to 100 euros (about $55 to $115) in pocket cash for the rare cash-only moment across a whole week. Nearly everything else, hotels, restaurants, transit and shops, runs through a card or phone wallet." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Dutch goes a long way",
+    intro: "A few words and a couple of stories that turn you from a tourist into a guest. Almost everyone speaks excellent English, so nothing here is essential, but a friendly Dutch word and a bit of local knowledge are always welcome.",
+    phrases: [
+      { mean: "Hello", say: "HAH-loh", word: "Hallo" },
+      { mean: "Please", say: "AHL-stoo-BLEEFT", word: "Alstublieft" },
+      { mean: "Thank you", say: "DAHNK yuh vel", word: "Dank je wel" },
+      { mean: "Cheers", say: "prohst", word: "Proost" },
+      { mean: "Delicious", say: "LEK-ker", word: "Lekker" },
+      { mean: "Beautiful", say: "moy", word: "Mooi" },
+    ],
+    tip: "Here is the one visitors always ask about: the country is <b>the Netherlands</b>. Holland is just two of its twelve provinces, North and South Holland (home to Amsterdam and Rotterdam), so people from the other ten quietly notice when Holland stands in for the whole country. The Netherlands is the safe word, and the language and the people are Dutch. The country even switched its official branding from Holland to the Netherlands a few years ago for this very reason.",
+    stories: [
+      { img: "/netherlands-culture-1.jpg",
+        alt: "WPA-style illustration of a row of classic Dutch windmills across a flat green polder under an enormous cloudy sky, canals and dikes, cattle in the distance",
+        h: "They made the land themselves",
+        p: "Much of the Netherlands sits below sea level, so for centuries the Dutch pumped the water out with windmills and held it back with dikes, turning sea into farmland. There is an old saying: God made the world, but the Dutch made the Netherlands. They are rightly proud of it.",
+        note: "Good to know: much of the country is reclaimed from the sea" },
+      { img: "/netherlands-culture-2.jpg",
+        alt: "WPA-style illustration of a seventeenth-century Dutch master painting at an easel in a north-lit studio, a globe and a map nearby, a figure by a leaded window",
+        h: "The Golden Age of light",
+        p: "In the 1600s this small trading republic produced an explosion of art, Rembrandt, Vermeer and a whole world of everyday scenes caught in extraordinary light. It is called the Dutch Golden Age, and its paintings still fill the Rijksmuseum. A little enthusiasm for it goes far.",
+        note: "Good to know: the age of Rembrandt and Vermeer" },
+      { img: "/netherlands-culture-3.jpg",
+        alt: "WPA-style illustration of long rows of red, yellow and violet tulips in bloom before a windmill, a merchant crouched admiring one rare bloom, cool spring light",
+        h: "When a bulb cost a house",
+        p: "Tulips are not even native to the Netherlands, but in the 1630s the Dutch fell so hard for them that single rare bulbs sold for the price of a canal house, before the market crashed. Tulip mania is often called the first speculative bubble. The flowers, at least, stayed beautiful.",
+        note: "Good to know: tulip mania, the first speculative bubble" },
+    ],
+    pride: "The Dutch are famously direct, and it is meant kindly: they will tell you what they think, honestly and without fuss, and you will always know where you stand. That plainness, along with the bikes and the openness, is the culture in a nutshell."
+  }
 };

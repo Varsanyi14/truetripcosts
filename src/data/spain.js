@@ -114,5 +114,37 @@ export default {
     { q: "Do you tip in Spain?", a: "Only lightly. The price includes IVA and staff earn a real wage, so tipping is optional. Locals round up or leave small change, and a euro or two, or about 5 to 10% at a nicer restaurant, is generous. Leave it in cash, since card tips often do not reach the staff, and do not feel you need to tip US-style." },
     { q: "Is there a tourist tax in Spain, and can I get an IVA refund?", a: "There is no national tourist tax. Only Catalonia (including Barcelona, where it rose in April 2026) and the Balearic Islands charge a per-person, per-night tax, collected at your accommodation, capped and with children exempt; most of Spain charges nothing. Separately, non-EU visitors can reclaim the 21% IVA on shopping, and Spain has no minimum spend, so any purchase can qualify: ask for the tax-free form, keep the goods unused, and validate at a DIVA kiosk when you leave. After fees you get roughly 12 to 17% back." },
     { q: "How much cash should I bring for a week in Spain?", a: "For two mid-range travelers, very roughly 250 to 350 euros in day-to-day cash across a week, beyond your hotel, pulled in a couple of bank-ATM visits. Cards and contactless cover most of the rest. Adjust for your style and how much you tap versus pay in cash." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Spanish goes a long way",
+    intro: "A few words and a couple of stories that turn you from a tourist into a guest. Spaniards warm up fast when you meet them halfway, over tapas, in a plaza, at a long lunch.",
+    phrases: [
+      { mean: "Hello", say: "OH-lah", word: "Hola" },
+      { mean: "Please", say: "por fah-VOR", word: "Por favor" },
+      { mean: "Thank you", say: "GRAH-thyahs", word: "Gracias" },
+      { mean: "Cheers", say: "sah-LOOD", word: "Salud" },
+      { mean: "Delicious", say: "keh REE-koh", word: "Qué rico" },
+      { mean: "Beautiful", say: "keh boh-NEE-toh", word: "Qué bonito" },
+    ],
+    tip: "In Spain, <b>c</b> before e or i and the letter <b>z</b> are pronounced like the th in think, so gracias sounds like GRAH-thyahs and Barcelona like Bar-the-LOH-na. It is the quickest way to sound less like a visitor from the Americas.",
+    stories: [
+      { img: "/spain-culture-1.jpg",
+        alt: "WPA-style illustration of Don Quixote in armor on a bony horse charging a row of windmills, his squire Sancho Panza on a donkey behind, dry gold plain of La Mancha",
+        h: "Tilting at windmills",
+        p: "In Cervantes' Don Quixote, published in 1605 and often called the first modern novel, the old knight charges a row of windmills he is sure are giants. The phrase tilting at windmills, for fighting imaginary enemies, comes straight from it. Every Spaniard knows the scene.",
+        note: "Say it: Don Quijote (don kee-HOH-teh)" },
+      { img: "/spain-culture-2.jpg",
+        alt: "WPA-style illustration of a flamenco dancer in a red ruffled dress mid-stamp, arms raised, a guitarist in shadow in a warm Andalusian courtyard at night",
+        h: "The soul called duende",
+        p: "Flamenco, the song, guitar and dance of Andalusia, is not choreography so much as raw feeling. Spaniards call the goosebump moment, when a performer truly catches fire, duende, a kind of soul that cannot be faked. Admire it aloud and you speak their language.",
+        note: "Say it: duende (DWEN-deh)" },
+      { img: "/spain-culture-3.jpg",
+        alt: "WPA-style illustration of the Court of the Lions in the Alhambra of Granada at golden hour, slender marble arches and the lion fountain, still reflecting pools",
+        h: "When Granada was Moorish",
+        p: "For nearly 800 years much of Spain was al-Andalus, under Muslim rule, and the Alhambra in Granada is its masterpiece, all fountains, arches and carved light. Understanding Spain as a meeting place of cultures, not just one, shows you see it clearly.",
+        note: "Good to know: al-Andalus lasted nearly 800 years" },
+    ],
+    pride: "Spaniards live out loud and late: long lunches, the sobremesa lingering at the table, dinner near midnight, the streets full of people. Join in rather than rush, and you will be treated like one of the family."
+  }
 };

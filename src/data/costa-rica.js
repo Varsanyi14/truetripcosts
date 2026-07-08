@@ -129,5 +129,37 @@ export default {
     { q: "Do you tip in Costa Rica?", a: "Lightly, because most restaurants already add a 10% service charge by law, which covers the baseline tip. Add a little more only for exceptional service. Tour guides and private drivers are the real exception: around 10%, or roughly $5 to $15 per person per day, is appreciated and forms part of their income." },
     { q: "Is there a tourist tax in Costa Rica?", a: "No per-night tourist or city tax like much of Europe charges. Prices already include 13% VAT, and restaurant bills add a 10% service charge on top of the food total. There is no VAT refund for visitors, so the 13% is simply part of what you pay." },
     { q: "How much cash should I bring for a week in Costa Rica?", a: "For two travelers, very roughly $300 to $500 across a week in small US bills, topped up with colones from an ATM as you go, alongside a no-fee card for most spending. Carry more cash if you're heading to remote, card-light areas like the Osa Peninsula or Tortuguero." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Spanish goes a long way",
+    intro: "A few words and a couple of stories that turn you from a tourist into a guest. Costa Ricans, Ticos, are warm and easygoing, and they light up when a visitor tries a little Spanish.",
+    phrases: [
+      { mean: "Hello", say: "OH-lah", word: "Hola" },
+      { mean: "Please", say: "por fah-VOR", word: "Por favor" },
+      { mean: "Thank you", say: "GRAH-syahs", word: "Gracias" },
+      { mean: "Cheers", say: "sah-LOOD", word: "Salud" },
+      { mean: "Delicious", say: "keh REE-koh", word: "Qué rico" },
+      { mean: "All good, hello and thanks", say: "POO-rah VEE-dah", word: "Pura vida" },
+    ],
+    tip: "<b>Pura vida</b> (pure life) is the phrase that runs the country: it means hello, goodbye, thank you, no worries and all good, all at once. Use it and you are instantly on the same wavelength. Locals also call each other mae (dude) and say tuanis for cool.",
+    stories: [
+      { img: "/costa-rica-culture-1.jpg",
+        alt: "WPA-style illustration of white oxen pulling a brightly hand-painted Costa Rican oxcart along a green mountain lane, coffee hills and a volcano behind",
+        h: "The painted oxcart",
+        p: "The carreta, a wooden oxcart hand-painted in bright swirling patterns, once hauled coffee down to the coast and is now a national symbol, protected by UNESCO. Traditionally each region had its own colors and design. You will see them everywhere, proud and gleaming.",
+        note: "Say it: carreta (kah-RREH-tah)" },
+      { img: "/costa-rica-culture-2.jpg",
+        alt: "WPA-style illustration of a misty cloud forest with a resplendent quetzal on a mossy branch, a red-eyed tree frog, orchids and shafts of green light",
+        h: "More life than almost anywhere",
+        p: "Costa Rica is a sliver of a country, yet it holds around five percent of all the species on Earth, and it protects roughly a quarter of its land in parks and reserves. Show that you came for the quetzals and cloud forests, not just the beach, and Ticos warm to you.",
+        note: "Good to know: about 5% of the world's species live here" },
+      { img: "/costa-rica-culture-3.jpg",
+        alt: "WPA-style illustration of pickers with baskets gathering red coffee cherries on a terraced hillside beneath a green volcano at golden hour",
+        h: "The golden bean",
+        p: "Coffee built modern Costa Rica, and the highland beans are still called grano de oro, the golden bean. A cafecito is a daily ritual and a reason to pause and chat. Accept one when it is offered; it is how friendships start.",
+        note: "Say it: grano de oro (GRAH-noh deh OH-roh)" },
+    ],
+    pride: "Here is the one that stuns visitors: Costa Rica abolished its army in 1948 and has spent the savings on schools, health and nature ever since. No military, more teachers than soldiers, and a lot of pura vida."
+  }
 };

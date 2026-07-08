@@ -131,5 +131,37 @@ export default {
     { q: "Do I need travel insurance to enter Argentina?", a: "You should carry it. A 2025 migration reform introduced a requirement for foreign visitors to hold valid travel medical insurance, and public hospitals now bill non-residents for non-emergency care, though emergencies are still stabilized. Border checks on tourists have been inconsistent, but the rule is official, so travel with a policy and proof and confirm the current entry requirement before you fly." },
     { q: "Do I have to pay the hotel VAT in Argentina?", a: "As a foreign tourist, no. You are refunded the 21% VAT (IVA) on accommodation when you pay with a foreign-issued card or international transfer and show your passport and entry record, and breakfast counts if it is included. The refund should be automatic, but some hotels or booking sites add the VAT anyway, so pay direct with a foreign card where you can and check the final bill." },
     { q: "How much cash should I bring for a week in Argentina?", a: "Less than you would expect, since cards now cover most of a city trip. For two mid-range travelers, roughly 200 to 350 dollars' worth of pesos across a week beyond your card spending is plenty, for ordinary taxis, small shops, markets, cafes and tips. Get it by exchanging US dollars or from Western Union rather than leaning on ATMs, and keep small notes for tips." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Spanish goes a long way",
+    intro: "A few words and a couple of stories that turn you from a tourist into a guest. Argentines are expressive and welcoming, with an Italian warmth to them, and they love when a visitor makes the effort.",
+    phrases: [
+      { mean: "Hello", say: "OH-lah", word: "Hola" },
+      { mean: "Please", say: "por fah-VOR", word: "Por favor" },
+      { mean: "Thank you", say: "GRAH-syahs", word: "Gracias" },
+      { mean: "Cheers", say: "sah-LOOD", word: "Salud" },
+      { mean: "Delicious", say: "keh REE-koh", word: "Qué rico" },
+      { mean: "Great, fantastic", say: "BAR-bah-roh", word: "Bárbaro" },
+    ],
+    tip: "Two very Argentine things: they say <b>che</b> for hey or buddy (yes, that is how Che Guevara got his nickname), and they pronounce ll and y like sh, so calle (street) sounds like CAH-sheh and yo like sho. Dale (DAH-leh) means okay, go for it.",
+    stories: [
+      { img: "/argentina-culture-1.jpg",
+        alt: "WPA-style illustration of a couple in a dramatic tango embrace on a cobbled Buenos Aires street at dusk, a bandoneon player nearby, warm lamplight and old balconies",
+        h: "Born in Buenos Aires",
+        p: "Tango was born in the port neighborhoods of Buenos Aires, danced to the sighing squeeze of the bandoneon. It can be fiercely passionate or quietly melancholy, and Argentines take it seriously. Watching it danced well, close and intense, is unforgettable.",
+        note: "Say it: bandoneón (ban-doh-neh-OHN)" },
+      { img: "/argentina-culture-2.jpg",
+        alt: "WPA-style illustration of a lone gaucho on horseback crossing the vast golden pampas at dawn, poncho and wide-brimmed hat, cattle in the distance, huge sky",
+        h: "The gaucho and the pampas",
+        p: "The gaucho, the free-roaming horseman of the endless pampas, is to Argentina what the cowboy is to the American West: a symbol of independence and skill. His world gave the country two of its loves, the asado (barbecue) and mate. Ask about either and you will make a friend.",
+        note: "Say it: gaucho (GOW-choh)" },
+      { img: "/argentina-culture-3.jpg",
+        alt: "WPA-style illustration of a column of soldiers with flags and pack mules crossing a high snowy Andes pass at dawn, blue peaks",
+        h: "The crossing of the Andes",
+        p: "In 1817, General Jose de San Martin led an army across the towering, freezing Andes to help free Chile and then Peru from colonial rule. It was a feat to rank with Hannibal's crossing of the Alps, and San Martin is revered across the continent as El Libertador, the liberator.",
+        note: "Good to know: San Martin is honored as El Libertador" },
+    ],
+    pride: "The heart of Argentine friendship is mate, a bitter green tea shared from one gourd and a metal straw, passed around the circle. Being offered the gourd is a small act of belonging. That, and a Sunday asado, is the country at its warmest."
+  }
 };

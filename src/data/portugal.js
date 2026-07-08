@@ -110,5 +110,37 @@ export default {
     { q: "Do you tip in Portugal?", a: "Only lightly. The price includes IVA and staff earn a real wage, so tipping is optional. Round up or leave 5 to 10% at a sit-down restaurant for good service, a few coins at a cafe, and tip a free-tour guide 5 to 10 euros. Leave it in cash, since card tips often do not reach the staff, and do not feel you need to tip US-style." },
     { q: "Is there a tourist tax in Portugal, and can I get an IVA refund?", a: "About 40 towns charge a small municipal tourist tax, per person per night, collected at your accommodation: Lisbon is 4 euros, Porto 3 euros, Algarve towns 1 to 2 euros, capped at 7 nights with under-13s exempt. Most of the country charges nothing. Separately, non-EU visitors can reclaim the 23% IVA on shopping over about 50 euros before tax in one store: ask for the tax-free form, keep the goods unused, and validate at an e-Taxfree kiosk when you leave. After fees you get roughly 12 to 17% back." },
     { q: "How much cash should I bring for a week in Portugal?", a: "For two mid-range travelers, very roughly 200 to 300 euros in day-to-day cash across a week, beyond your hotel, pulled in a couple of Multibanco visits. Cards and contactless cover most of the rest. Adjust for your style and how much you tap versus pay in cash." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Portuguese goes a long way",
+    intro: "A few words and a couple of stories that turn you from a tourist into a guest. The Portuguese are gentle and welcoming, and a little effort with the language is always met warmly.",
+    phrases: [
+      { mean: "Hello", say: "oh-LAH", word: "Olá" },
+      { mean: "Please", say: "poor fah-VOR", word: "Por favor" },
+      { mean: "Thank you", say: "oh-bree-GAH-doo / oh-bree-GAH-dah", word: "Obrigado / Obrigada" },
+      { mean: "Cheers", say: "sah-OO-djeh", word: "Saúde" },
+      { mean: "Delicious", say: "deh-lee-see-OH-zoo", word: "Delicioso" },
+      { mean: "Beautiful", say: "LEEN-doo", word: "Lindo" },
+    ],
+    tip: "Thank you changes with who is speaking, not who you thank: a man says <b>obrigado</b>, a woman says <b>obrigada</b>. Get that right and you will earn an instant smile.",
+    stories: [
+      { img: "/portugal-culture-1.jpg",
+        alt: "WPA-style illustration of a Portuguese Age of Discovery sailing ship with cross-marked sails leaving the Tagus at dawn, an astrolabe and charts on deck, the Belem tower in the distance",
+        h: "The small country that mapped the world",
+        p: "From this coast, tiny Portugal launched the Age of Discovery. Vasco da Gama opened the sea route to India in 1498, and Portuguese ships charted oceans no one had mapped. For a nation its size, it is an astonishing story, and a deep source of pride.",
+        note: "Good to know: da Gama reached India by sea in 1498" },
+      { img: "/portugal-culture-2.jpg",
+        alt: "WPA-style illustration of a fado singer in a black shawl singing with eyes closed in a candlelit Lisbon tavern, a musician beside her playing a round twelve-string Portuguese guitar",
+        h: "The music of saudade",
+        p: "Fado is Lisbon's soul in song: a voice, a twelve-string guitarra, and a feeling the Portuguese call saudade, a bittersweet longing for something loved and lost. You do not need the words to feel it. Hearing live fado is the real thing.",
+        note: "Say it: saudade (sow-DAH-deh)" },
+      { img: "/portugal-culture-3.jpg",
+        alt: "WPA-style illustration of a craftsman's hands painting cobalt-blue patterns onto white ceramic tiles, a wall of blue-and-white azulejos behind, sunlit workshop",
+        h: "Walls that tell stories",
+        p: "Those blue-and-white tiles you see everywhere, on churches, palaces and train stations, are azulejos, and many are not just decoration: whole walls tell stories of history and legend. Once you notice them, you see Portugal differently.",
+        note: "Say it: azulejos (ah-zoo-LEH-zhoosh)" },
+    ],
+    pride: "For a small country, Portugal has an enormous heart: centuries of seafaring, the world's fish cooked a hundred ways, and the word saudade, which they gave to a feeling no other language quite names."
+  }
 };
