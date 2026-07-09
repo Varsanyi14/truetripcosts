@@ -92,5 +92,37 @@ export default {
     { q: "Should I bring US dollars to Vietnam?", a: "Bring a little clean, newer-than-2009 USD for emergencies, but pay in Vietnamese dong day to day. If you exchange cash, use a bank or a reputable gold shop rather than the airport." },
     { q: "Do you tip in Vietnam?", a: "Tipping is not expected and there is no set percentage. Rounding up or leaving small notes for good service is appreciated. Some upscale places add a service charge already." },
     { q: "How much cash should I bring for a week in Vietnam?", a: "For two mid-range travelers over a week, plan roughly 400 to 500 US dollars in day-to-day cash spending beyond your hotel, withdrawn in a couple of ATM visits. Adjust for your style and group size." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Vietnamese goes a long way",
+    intro: "Vietnamese is written in the Latin alphabet, though its tones take practice, and a warm Xin chào and a story or two mark you as a guest rather than a tourist. A little effort is met with real warmth.",
+    phrases: [
+      { mean: "Hello", say: "sin chow", word: "Xin chào" },
+      { mean: "Thank you", say: "kahm uhn", word: "Cảm ơn" },
+      { mean: "Please", say: "lam uhn", word: "Làm ơn" },
+      { mean: "Yes, politely", say: "vuhng", word: "Vâng" },
+      { mean: "Delicious, tasty", say: "ngon", word: "Ngon" },
+      { mean: "Cheers", say: "zoh", word: "Dzô" },
+    ],
+    tip: "Two daily joys are worth seeking out: <b>phở</b>, the fragrant noodle soup Vietnamese eat for breakfast, and <b>cà phê sữa đá</b>, strong coffee dripped over sweet condensed milk and poured over ice. Pull up a low plastic stool at a street stall and you are doing it exactly right.",
+    stories: [
+      { img: "/vietnam-culture-1.jpg",
+        alt: "WPA-style illustration of a traditional wooden junk with tall red sails gliding among towering limestone karst islands in a calm emerald bay, morning mist wreathing the peaks",
+        h: "Where the dragon met the sea",
+        p: "Ha Long Bay is a maze of nearly two thousand limestone islands rising sheer from emerald water, often wreathed in mist. Its name means descending dragon, and legend says the peaks are jewels a great dragon spat into the sea to shield the land from invaders. Gliding among them by boat feels like sailing through a myth.",
+        note: "Good to know: Ha Long means descending dragon" },
+      { img: "/vietnam-culture-2.jpg",
+        alt: "WPA-style illustration of farmers in conical hats tending flooded green rice terraces curving down a misty hillside, a stilt house and mountains beyond in soft morning light",
+        h: "Staircases of rice up the mountains",
+        p: "In the misty northern highlands around Sapa, farmers have carved the steep hillsides into shining green staircases of rice, worked by hand and by water buffalo much as they have been for generations. Fed by mountain streams, the flooded terraces mirror the sky. It is farming turned into landscape art.",
+        note: "Good to know: the terraces around Sapa are centuries old" },
+      { img: "/vietnam-culture-3.jpg",
+        alt: "WPA-style illustration of the two Trung Sisters in ancient robes riding war elephants with spears raised, red banners flying and an army following across a misty green plain",
+        h: "The sisters who led a nation",
+        p: "Almost two thousand years ago, two sisters, the Trung Sisters, raised an army and rode elephants into battle to drive out a foreign occupier, becoming the first great heroines of Vietnamese history. Their revolt is remembered as the nation's first fight for independence. Streets and temples across Vietnam still carry their name.",
+        note: "Good to know: the Trung Sisters are honored across Vietnam" },
+    ],
+    pride: "Vietnamese are resilient, quick-witted and endlessly hospitable, proud of a long history of heroines and heroes and of a culture that has always endured. Pull up a stool, share a bowl of phở, and you will be treated like an old friend."
+  }
 };

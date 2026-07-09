@@ -127,5 +127,37 @@ export default {
     { q: "Should I pay in reais or dollars in Brazil?", a: "Always reais. If a card terminal or ATM offers to charge you in dollars, decline; that dynamic currency conversion adds a few percent. US dollars are not spent directly in shops; exchange any you bring at a casa de cambio." },
     { q: "What is the best ATM to use in Brazil?", a: "Use Banco do Brasil, Santander or a Banco24Horas machine inside a bank branch or mall. Withdrawal limits for foreign cards are low, often 800 to 1,000 reais and lower at night, so you may need more than one withdrawal. Avoid Bradesco's steep conversion markup, always choose reais, and cover the keypad, since card cloning is common." },
     { q: "How much cash should I bring for a week in Brazil?", a: "Very little. For two mid-range travelers, roughly 500 to 800 reais (about 100 to 155 dollars) of cash across a week is plenty beyond your card spending, since cards and contactless cover almost everything. The cash is for beach vendors, tips, small towns and any Pix-only stalls." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Portuguese goes a long way",
+    intro: "Brazil speaks Portuguese, not Spanish, and a warm Oi and a story or two mark you as a guest rather than a tourist. Brazilians are famously friendly, and a little effort goes a long way.",
+    phrases: [
+      { mean: "Hi, hello, informal", say: "oy", word: "Oi" },
+      { mean: "How are you, and all good", say: "TOO-doo beng", word: "Tudo bem" },
+      { mean: "Please", say: "por fah-VOR", word: "Por favor" },
+      { mean: "Thank you, said by a man or a woman", say: "oh-bree-GAH-doo / dah", word: "Obrigado / Obrigada" },
+      { mean: "Cheers", say: "sah-OO-jee", word: "Saúde" },
+      { mean: "Cool, great, nice", say: "leh-GOW", word: "Legal" },
+    ],
+    tip: "First, it is <b>Portuguese</b>, not Spanish, so Obrigado, not Gracias. And Brazilians love the <b>jeitinho</b>, the knack of finding a warm, creative way around a problem. A smile, a little patience and some friendly chat open almost any door.",
+    stories: [
+      { img: "/brazil-culture-1.jpg",
+        alt: "WPA-style illustration of samba dancers in towering feathered headdresses and sequined costumes dancing before a great ornate carnival float on a floodlit night avenue, drummers to one side",
+        h: "The greatest party on Earth",
+        p: "Every year before Lent, Brazil throws Carnival, and Rio's is the most famous of all: samba schools in dazzling costumes parade through a purpose-built stadium, the Sambadrome, while the whole country dances for days on end. Millions pour into the streets. It is joy turned into a national art form.",
+        note: "Good to know: Rio parades in the Sambadrome" },
+      { img: "/brazil-culture-2.jpg",
+        alt: "WPA-style illustration of two capoeira players mid-movement in a circle on a golden beach at sunset, one arcing into a kick, others clapping and playing a berimbau, palms and surf behind",
+        h: "The fight hidden in a dance",
+        p: "Capoeira is a martial art that looks like a dance, all sweeping kicks and cartwheels done to the twang of a bow-shaped instrument called the berimbau. Enslaved Africans created it in Brazil centuries ago, and it is said they disguised their training as dancing so it would be allowed. Today it is played in a roda, a circle, the world over.",
+        note: "Say it: capoeira (kah-poo-AY-rah)" },
+      { img: "/brazil-culture-3.jpg",
+        alt: "WPA-style illustration of a steep cobbled street of pastel baroque townhouses in old Salvador, women in white lace dress walking toward a pink colonial church with gilded towers, green hills beyond",
+        h: "The first capital, and Brazil's soul",
+        p: "Salvador, up on the northeast coast, was Brazil's first capital, and its old heart, the Pelourinho, is a hillside of pastel baroque houses and gilded churches. It is the center of Afro-Brazilian culture, of the music, food and faith carried across the Atlantic. Much of what the world loves about Brazil was born here.",
+        note: "Good to know: Salvador was the first capital" },
+    ],
+    pride: "Brazilians are warm, expressive and quick to fold a stranger into the fun, whether over football, music or a long shared meal. They are proud of a vast, mixed country that speaks Portuguese and moves to its own beat, and they love it when a visitor joins in."
+  }
 };

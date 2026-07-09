@@ -130,5 +130,37 @@ export default {
     { q: "Can I tip at an all-inclusive resort in Jamaica?", a: "Often not. Many all-inclusive resorts include gratuities in the price and ask guests not to tip, while others welcome a little cash for great service, so check your resort's specific policy. Off-resort, tipping is customary: around 10 to 15% at restaurants (minus any service charge already on the bill) and 10 to 20% for guides and drivers, in Jamaican or US dollars." },
     { q: "Do I have to pay a tourist tax or departure tax in Jamaica?", a: "There is no simple per-person nightly tourist tax to hand over, but hotel bills carry GCT (a tourism rate rising toward 15% in the 2026 to 2027 budget) plus a small flat room tax of about 1 to 4 US dollars per room per night, and some resorts add a resort fee. Jamaica's arrival and departure taxes are almost always built into your airfare, so you should not owe them separately at the airport, but confirm with your airline." },
     { q: "How much cash should I bring for a week in Jamaica?", a: "It depends on your trip. At an all-inclusive you may need very little beyond tips (where allowed) and a few excursions. Traveling independently, roughly 200 to 400 US dollars' worth of Jamaican dollars across a week beyond your card spending covers taxis, local food, markets and tips. Get it from bank ATMs rather than the airport, and keep small JMD notes for taxis and jerk stands." }
-  ]
+  ],
+
+  culture: {
+    heading: "A few words of Patois go a long way",
+    intro: "Everyone in Jamaica speaks English, but the island's own Patois is everywhere, warm and musical. A Wah gwaan on the way in and a story or two mark you as a guest rather than a tourist.",
+    phrases: [
+      { mean: "Hello, what is going on", say: "wah GWAAN", word: "Wah gwaan" },
+      { mean: "All good, fine, positive", say: "EYE-ree", word: "Irie" },
+      { mean: "Yes, for sure, okay", say: "yah mon", word: "Ya mon" },
+      { mean: "Respect, and thanks", say: "reh-SPEKT", word: "Respect" },
+      { mean: "Coming soon, in good time", say: "soon come", word: "Soon come" },
+      { mean: "To eat", say: "nyam", word: "Nyam" },
+    ],
+    tip: "Jamaica runs on an easy, sunny spirit the locals call <b>irie</b>, everything good, and on the idea of <b>one love</b>. You can answer Wah gwaan with everyting irie. And do not leave without trying <b>ackee and saltfish</b>, the national dish, and fiery <b>jerk</b>.",
+    stories: [
+      { img: "/jamaica-culture-1.jpg",
+        alt: "WPA-style illustration of a nighttime street dance around a towering stack of reggae sound-system speakers, a selector at the turntables, people dancing under warm string lights, a tropical town behind",
+        h: "The island that gave the world reggae",
+        p: "Music pours out of Jamaica. On this small island, mobile sound systems, towering stacks of speakers wheeled into the street, gave rise to ska, then rocksteady, then reggae, which carried Jamaican rhythm and its message of unity around the globe. Few places so small have shaped world music so much.",
+        note: "Good to know: reggae is UNESCO listed" },
+      { img: "/jamaica-culture-2.jpg",
+        alt: "WPA-style illustration of two coffee pickers in straw hats with woven baskets among rows of red-cherry coffee bushes on the misty slopes of the Blue Mountains at morning",
+        h: "Coffee from the misty peaks",
+        p: "High in the cool, cloud-wrapped Blue Mountains grows some of the most prized coffee in the world, picked by hand on steep green slopes. The mist and the altitude give the beans their smooth, gentle flavor, and true Blue Mountain coffee is protected by name. A cup here tastes of the mountains themselves.",
+        note: "Good to know: Blue Mountain coffee is protected by name" },
+      { img: "/jamaica-culture-3.jpg",
+        alt: "WPA-style illustration of triumphant Maroon fighters standing on a misty ridge in rugged green hills, one raising a cow-horn to sound the call, dawn breaking behind them",
+        h: "The people who won their freedom",
+        p: "When Jamaica was a slave colony, groups of Africans escaped into the rugged interior, the Cockpit Country, and fought so fiercely for their freedom that they won it: in 1739 the British signed a treaty granting the Maroons their own free communities. Their descendants keep the culture alive today, sounding the abeng horn as they always have.",
+        note: "Good to know: the Maroons won their freedom in 1739" },
+    ],
+    pride: "Jamaicans are proud, warm and full of style, and their small island punches far above its weight in music, in sport and in spirit. They are proud of a people who won their freedom, of a sound the whole world dances to, and of living by one love."
+  }
 };

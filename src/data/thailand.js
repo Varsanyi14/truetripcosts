@@ -102,5 +102,37 @@ export default {
     { q: "Do you tip in Thailand?", a: "It is not expected, but a little cash is appreciated. Round up taxis, leave 20 to 100 baht at a sit-down meal when there is no service charge, and tip a masseuse directly. Check the bill first, since mid and upscale places add a 10% service charge." },
     { q: "Is there a tourist tax or entry fee for Thailand?", a: "A 300 baht entry fee for air arrivals has been proposed and delayed for years, and as of mid-2026 it is still not being collected, so there is nothing to pay yet. The free Thailand Digital Arrival Card (TDAC), filed online within 72 hours of your flight, is separate and already required." },
     { q: "How much cash should I bring for a week in Thailand?", a: "For two mid-range travelers, very roughly 9,000 to 14,000 baht (about $275 to $425) in day-to-day cash across a week, beyond your hotel, pulled in two or three ATM visits. Adjust for your style and how much you put on a card." }
-  ]
+  ],
+
+  culture: {
+    heading: "A few words of Thai go a long way",
+    intro: "Thai is written in its own graceful script and no one expects you to read it, but a Sawatdee with a little bow and a story or two mark you as a guest rather than a tourist. Thailand is called the Land of Smiles for good reason.",
+    phrases: [
+      { mean: "Hello", say: "sah-wah-DEE", word: "Sawatdee", native: "สวัสดี" },
+      { mean: "Thank you", say: "kop-KOON", word: "Khop khun", native: "ขอบคุณ" },
+      { mean: "Please, kindly", say: "gah-roo-NAH", word: "Karuna", native: "กรุณา" },
+      { mean: "Delicious", say: "ah-ROY", word: "Aroy", native: "อร่อย" },
+      { mean: "No worries, it is fine", say: "my pen rai", word: "Mai pen rai", native: "ไม่เป็นไร" },
+      { mean: "Beautiful", say: "sooay", word: "Suay", native: "สวย" },
+    ],
+    tip: "Greet people with a <b>wai</b>, palms pressed together with a small bow, and say <b>sawatdee khrap</b> if you are a man, <b>sawatdee kha</b> if you are a woman. Two customs matter: the head is the most sacred part of the body, so do not touch it, and the feet are the lowest, so never point them at a person or a Buddha image. Always speak of the royal family and the Buddha with respect.",
+    stories: [
+      { img: "/thailand-culture-1.jpg",
+        alt: "WPA-style illustration of a layperson kneeling with palms pressed together to offer rice to a line of saffron-robed monks with golden alms bowls at dawn, a golden temple spire behind, soft mist",
+        h: "The quiet ritual of dawn",
+        p: "Each morning before the heat, saffron-robed monks walk barefoot through towns and villages with their alms bowls, and people kneel to offer rice and food, earning merit as they have for centuries. It is calm, wordless and deeply respectful. Watch quietly from a little distance and you glimpse the soul of Thai life.",
+        note: "Good to know: the dawn alms round is called tak bat" },
+      { img: "/thailand-culture-2.jpg",
+        alt: "WPA-style illustration of a joyful Songkran water festival, a laughing woman splashing water from a bowl and a man pouring a bucket, water arcing in the air, a decorated temple and frangipani behind",
+        h: "The world's biggest water fight",
+        p: "Songkran, the Thai new year in April, began as a gentle rite of pouring water to wash away the old year and bless one's elders. It has grown into a joyous nationwide water fight, streets full of people of all ages soaking each other with buckets and hoses in the tropical heat. It is pure, drenching fun.",
+        note: "Good to know: Songkran is the Thai new year in April" },
+      { img: "/thailand-culture-3.jpg",
+        alt: "WPA-style illustration of a wooden boat piled with tropical fruit paddled by a vendor in a conical hat at a floating market on a canal, stilt houses along the water in warm light",
+        h: "A market that floats",
+        p: "Long before roads, Thai life flowed along the canals, and vendors still paddle wooden boats piled with mangoes, coconuts and steaming noodles, selling straight from the water at the old floating markets. Wooden houses stand on stilts along the banks. It is a glimpse of a Thailand shaped by its rivers.",
+        note: "Say it: a floating market, talat nam" },
+    ],
+    pride: "Thais are gentle, gracious and quick to smile, and they take real pride in a kingdom that was never colonized and in a culture of deep courtesy. Show respect for their faith and their king, greet people with a wai, and the Land of Smiles opens right up."
+  }
 };

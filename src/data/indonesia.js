@@ -132,5 +132,37 @@ export default {
     { q: "What is the Bali entry levy, and is it different from the hotel tax?", a: "Yes, they are two unrelated charges. The Bali entry levy is a one-time IDR 150,000 (about $10) fee per visitor, paid once per trip via the official Love Bali portal or at the airport. It is separate from the roughly 21% hotel tax and service charge added to most room rates, and paying one does not cover the other." },
     { q: "Do you tip in Bali or Indonesia?", a: "It is not traditional, but it is appreciated and increasingly common in Bali's tourist areas. Check your bill for a service charge first; if there isn't one, 10% at a restaurant is generous, and IDR 50,000 to 150,000 for a full-day driver or guide is a strong tip. Local warungs do not expect tips." },
     { q: "How much cash should I bring for a week in Bali?", a: "For two travelers on a mid-range trip, very roughly 2 to 3 million IDR (about $110 to $170) in day-to-day cash across a week, on top of cards for hotels and bigger restaurants. Carry more if you are island-hopping to Nusa Penida or the Gilis, where ATMs are limited." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Indonesian goes a long way",
+    intro: "Indonesia is the world's largest archipelago, thousands of islands and hundreds of languages, with Bahasa Indonesia the shared tongue. A Terima kasih for thank you and a story or two mark you as a guest rather than a tourist.",
+    phrases: [
+      { mean: "Hello", say: "HAH-loh", word: "Halo" },
+      { mean: "Good morning", say: "seh-LAH-mat PAH-gee", word: "Selamat pagi" },
+      { mean: "Please", say: "TOH-long", word: "Tolong" },
+      { mean: "Thank you", say: "teh-REE-mah KAH-see", word: "Terima kasih" },
+      { mean: "You are welcome", say: "SAH-mah SAH-mah", word: "Sama sama" },
+      { mean: "Delicious, tasty", say: "EH-nak", word: "Enak" },
+    ],
+    tip: "Indonesia spans more than 17,000 islands, and its motto, <b>Bhinneka Tunggal Ika</b>, means Unity in Diversity, one nation drawn from many peoples and faiths. Dress modestly at temples and mosques, and use your right hand to give and receive. A little courtesy is warmly returned.",
+    stories: [
+      { img: "/indonesia-culture-1.jpg",
+        alt: "WPA-style illustration of the vast terraced Buddhist temple of Borobudur emerging from morning mist at dawn, rows of bell-shaped stone stupas in silhouette, distant volcanoes and palms",
+        h: "The greatest Buddhist temple on Earth",
+        p: "On the island of Java stands Borobudur, the largest Buddhist temple in the world, raised more than 1,200 years ago and later left to slumber under volcanic ash and jungle for centuries before it was uncovered. Its nine stacked terraces are lined with hundreds of stone Buddhas. At dawn, wreathed in mist, it is unforgettable.",
+        note: "Good to know: the world's largest Buddhist temple" },
+      { img: "/indonesia-culture-2.jpg",
+        alt: "WPA-style illustration of a shadow-puppet master seated behind a glowing screen working intricate leather puppets by lamplight, ornate silhouettes cast on the screen, gamelan instruments beside him",
+        h: "Shadows that tell the old stories",
+        p: "Wayang kulit is Indonesia's shadow-puppet theatre, among the oldest storytelling on Earth. A single master, the dalang, works dozens of intricate leather puppets behind a lamplit screen, voicing every character through the night to the shimmer of a gamelan orchestra. The tales are ancient epics of gods and heroes.",
+        note: "Say it: wayang kulit (WAH-yang KOO-lit)" },
+      { img: "/indonesia-culture-3.jpg",
+        alt: "WPA-style illustration of a Balinese dancer in a gilded headdress and crimson brocade sarong poised mid-gesture with expressive hands, a carved temple gate and green rice terraces behind",
+        h: "Where the island dances for the gods",
+        p: "On Bali, dance is a living art and an act of devotion, performed at temples among the emerald rice terraces. In the Legong, dancers in gilded headdresses move with darting eyes and flickering fingers to tell stories older than memory. Every gesture carries meaning.",
+        note: "Good to know: Balinese dance is UNESCO listed" },
+    ],
+    pride: "Indonesians are gentle, gracious and quick to smile, and they hold together an astonishing variety of islands, languages and faiths under one flag. They are proud of that unity in diversity, of ancient temples and living arts, and of a warmth that greets every guest."
+  }
 };

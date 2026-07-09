@@ -131,5 +131,37 @@ export default {
     { q: "What is the best way to get pesos in the Dominican Republic?", a: "Bank ATMs (BanReservas, Banco Popular, BHD Le\u00f3n) give close to the official rate, with a 1 to 3% foreign fee plus the bank's charge. Licensed casas de cambio like Gambi or Caribe Express are fine too. Avoid airport and hotel counters and never change money on the street. Choose pesos, not dollars, at the machine." },
     { q: "Do you tip in the Dominican Republic if the 10% service charge is already added?", a: "Lightly. The 10% propina legal is added by law but is split among staff and may not reach your server, so an extra 5 to 10% in cash for good service is customary. At resorts, tips for bartenders, housekeeping and bellhops are still expected despite the all-inclusive label." },
     { q: "How much cash should I bring for a week in the Dominican Republic?", a: "For a resort week, bring roughly 150 to 250 dollars in small bills mainly for tips. If you plan to explore off the resort, add pesos pulled from an ATM for taxis, colmados and local meals. A no-fee card covers hotels and bigger spending." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little Spanish goes a long way",
+    intro: "The Dominican Republic speaks Spanish, and it moves to merengue. A little Spanish, a Qué lo que to say hello, and a story or two mark you as a guest rather than a tourist.",
+    phrases: [
+      { mean: "Hello", say: "OH-lah", word: "Hola" },
+      { mean: "What is up, a very Dominican greeting", say: "keh loh KEH", word: "Qué lo que" },
+      { mean: "Please", say: "por fah-VOR", word: "Por favor" },
+      { mean: "Thank you", say: "GRAH-see-ahs", word: "Gracias" },
+      { mean: "Cheers", say: "sah-LOOD", word: "Salud" },
+      { mean: "Delicious", say: "deh-lee-see-OH-so", word: "Delicioso" },
+    ],
+    tip: "Two things are close to the national heart: <b>baseball</b>, which is practically a religion here and has sent more players to the US major leagues than any country but the States, and <b>merengue</b>, the fast, joyful music that is the island's heartbeat. Ask about either and you will make a friend.",
+    stories: [
+      { img: "/dominican-republic-culture-1.jpg",
+        alt: "WPA-style illustration of couples dancing merengue in a colorful colonial street at dusk, one woman in a swirling red skirt, a small band with accordion and drum, string lights overhead",
+        h: "The heartbeat is merengue",
+        p: "Merengue is the Dominican Republic's own music and dance, fast and irresistible, played on the accordion, the two-headed tambora drum and the scraping güira. Its slower, romantic cousin, bachata, was born here too and has since swept the world. When the music starts, everyone dances.",
+        note: "Good to know: merengue and bachata were both born here" },
+      { img: "/dominican-republic-culture-2.jpg",
+        alt: "WPA-style illustration of a boy mid-swing at home plate in a dusty sandlot baseball game at golden hour, a catcher crouched behind, pastel wooden houses and palms beyond a picket fence",
+        h: "Baseball is close to a religion",
+        p: "Baseball is the Dominican passion, played on every sandlot and beach, and the island has sent hundreds of players to the US major leagues, more than any country but the United States. Boys dream of the big leagues from the moment they can swing a bat. A winter league game here is electric.",
+        note: "Good to know: a true baseball powerhouse" },
+      { img: "/dominican-republic-culture-3.jpg",
+        alt: "WPA-style illustration of the coral-stone twin-towered colonial cathedral of old Santo Domingo rising over a cobbled plaza, colonial houses and tropical trees around, big cloudy sky",
+        h: "The first city of the Americas",
+        p: "The old Zona Colonial of Santo Domingo is the oldest European city in the Americas, and it holds the first cathedral and the first university built in the New World, both from the 1500s. You can still walk its stone streets and the fort above the river. History on this side of the ocean began right here.",
+        note: "Good to know: the first cathedral and university in the Americas" },
+    ],
+    pride: "Dominicans are warm, funny and full of life, and they carry their island's rhythm everywhere they go. They are proud that history in the Americas began on their shores, and prouder still of merengue, baseball and a welcome that pulls you straight onto the dance floor."
+  }
 };
