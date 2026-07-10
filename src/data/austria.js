@@ -112,8 +112,17 @@ export default {
   taxfree: {
     label: "Taxes, tips and refunds",
     heading: "Tax in the price, a refund if you shop big, and a light tip.",
-    text: "In Austria, <b>VAT is already included</b> in the price you see: 20% on most goods and services, and a reduced 10% on food, books and hotel accommodation. As a US visitor you can claim <b>tax-free shopping</b>: on purchases over about <b>75 euros</b> in one store, ask for a refund form and reclaim the VAT when you leave the EU, usually at the airport. Separately, most towns add a small <b>overnight tourist tax</b> to your hotel bill: Vienna charges about 3.2% of the room price, while alpine and regional towns usually charge a flat per-person nightly fee of roughly 1 to 3.50 euros. <b>Tipping is light</b>: service is included, and rounding up or adding about 5 to 10% for good service is normal. Tell the server the total you want to pay as you hand over cash or card, rather than leaving coins on the table. There is no separate departure tax; airport charges are built into your ticket."
+    text: "In Austria, <b>VAT is already included</b> in the price you see: 20% on most goods and services, and a reduced 10% on food, books and hotel accommodation. As a US visitor you can claim <b>tax-free shopping</b>: on purchases over about <b>75 euros</b> in one store, ask for a refund form and reclaim the VAT when you leave the EU, usually at the airport. Separately, most towns add a small <b>overnight tourist tax</b> to your hotel bill: Vienna charges 5% of the net room price, while alpine and regional towns usually charge a flat per-person nightly fee of roughly 1 to 3.50 euros. <b>Tipping is light</b>: service is included, and rounding up or adding about 5 to 10% for good service is normal. Tell the server the total you want to pay as you hand over cash or card, rather than leaving coins on the table. There is no separate departure tax; airport charges are built into your ticket."
   },
+
+  // High-churn fees and taxes, each tracked on its own with a status, an effective
+  // date, a primary source and the date we last checked it. Rendered as a small,
+  // always-open card after the tax-free section. Vienna's Ortstaxe is on a stepped
+  // rise: 5% from 1 July 2026, then 8% from 1 July 2027.
+  keyFacts: [
+    { label: "Vienna accommodation tax (Ortstaxe)", value: "5% of the net room price", status: "enacted", effective: "2026-07-01", source: "https://www.wien.gv.at/english/e-government/financial/tax/local-tax.html", checked: "2026-07-10" },
+    { label: "Vienna accommodation tax, next step", value: "8% of the net room price", status: "enacted", effective: "2027-07-01", source: "https://www.wien.gv.at/english/e-government/financial/tax/local-tax.html", checked: "2026-07-10" }
+  ],
 
   traps: [
     "<b>Do not rely on cards alone.</b> Austria uses more cash than its neighbors, and cafes, bakeries, markets, huts and wine taverns may be cash-only or set a card minimum. Carry 60 to 100 euros so you are never caught out.",
@@ -131,7 +140,7 @@ export default {
     { q: "What is the best ATM to use in Austria?", a: "A bank Bankomat, such as Erste and Sparkasse, Bank Austria or Raiffeisen. Avoid the blue Euronet machines common in tourist areas, which offer poor rates and push fees, and always decline the offer to convert to US dollars." },
     { q: "How much should I tip in Austria?", a: "Not much. Service is included, so locals round up or add about 5 to 10% for good service. The custom is to state the total you want to pay as you hand over cash or card, rather than leaving coins behind. Round up for taxis and casual meals." },
     { q: "Is tax included in prices in Austria?", a: "Yes. Austrian VAT is built into the displayed price, 20% on most things and a reduced 10% on food, books and hotels, so the tag or menu price is what you pay. Non-EU visitors can reclaim VAT on purchases over about 75 euros in one store when leaving the EU." },
-    { q: "Does Austria charge a tourist tax?", a: "Most towns do, added to your hotel bill. Vienna charges about 3.2% of the net room price, while alpine and regional towns usually charge a flat per-person nightly fee of roughly 1 to 3.50 euros. It is separate from the room rate you book online." }
+    { q: "Does Austria charge a tourist tax?", a: "Most towns do, added to your hotel bill. Vienna charges 5% of the net room price, while alpine and regional towns usually charge a flat per-person nightly fee of roughly 1 to 3.50 euros. It is separate from the room rate you book online." }
   ],
 
   culture: {

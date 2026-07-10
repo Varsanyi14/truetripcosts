@@ -77,6 +77,23 @@ export default {
   // ---- expose the facts object so the shape stays consistent across guides ----
   facts: F,
 
+  // ---- keyFacts: OPTIONAL. Only for the high-churn fees and taxes that move on
+  //      political timelines (arrival fees, city accommodation levies, ETA-style
+  //      entry fees). Everyday, stable facts belong in `facts`/`F` above, not here.
+  //      Each item tracks its own status so the honest stamp lives with the fact:
+  //        label     short name of the fee or tax
+  //        value     the amount, in plain words ("5% of the net room price")
+  //        status    "enacted" once passed or in force, "proposed" while still a plan
+  //        effective ISO date it takes (or took) effect, or null. A future date
+  //                  renders as "upcoming"; a past date renders as "in effect".
+  //        source    primary-source URL, or null when there is no clean official page
+  //        checked   ISO date you last verified this specific line
+  //      Rendered as a small always-open card after the tax-free section. Omit the
+  //      key entirely when a country has nothing volatile to track. Example:
+  // keyFacts: [
+  //   { label: "City accommodation tax", value: "5% of the net room price", status: "enacted", effective: "2026-07-01", source: "https://example.gov/tax", checked: "2026-07-10" },
+  // ],
+
   // ---- The rest of the shape (verdict, cards and meter, connectivity,
   //      insurance, tax, currency block, tipping, faq, notes, hero, art) follows
   //      the existing guides. Copy src/data/ireland.js as the fullest example and

@@ -122,6 +122,25 @@ const artLd = {
   "dateModified": c.checkedISO, "datePublished": c.checkedISO,
   "author": { "@type": "Organization", "name": "True Trip Costs" }
 };
+// keyFacts: the high-churn fees and taxes (the numbers that move on political
+// timelines). Each item carries its own status, effective date, source and the
+// date it was last checked, so the honest status lives with the fact itself
+// rather than in one page-level stamp. A proposed item reads as not yet in effect;
+// an item whose effective date is still in the future reads as upcoming; anything
+// else reads as in effect. A missing source simply renders without a link.
+const KF_MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+const kfDate = (iso) => {
+  if (!iso) return "";
+  const d = new Date(iso + "T00:00:00Z");
+  if (isNaN(d.getTime())) return "";
+  return d.getUTCDate() + " " + KF_MONTHS[d.getUTCMonth()] + " " + d.getUTCFullYear();
+};
+const kfNow = new Date();
+const kfState = (f) => {
+  if (f.status === "proposed") return "proposed";
+  if (f.effective) { const e = new Date(f.effective + "T00:00:00Z"); if (!isNaN(e.getTime()) && e > kfNow) return "upcoming"; }
+  return "inEffect";
+};
 ---
 {c.blocked && (
   <section class="blocked">
@@ -164,7 +183,7 @@ const artLd = {
 <div class="verdict">
   <span class="vlead">The short version</span>
   <Fragment set:html={c.verdict} />
-  <div class="vcta"><a class="btn light" href="#calc">See your honest all-in total
+  <div class="vcta"><a class="btn light" href="#calc">Estimate your on-the-ground money costs
     <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
 </div>
 
@@ -417,6 +436,33 @@ const artLd = {
   </section>
 )}
 
+{c.keyFacts && c.keyFacts.length > 0 && (
+  <section>
+    <p class="lab">Fees and taxes to double-check</p>
+    <h2>The numbers most likely to change.</h2>
+    <p class="kf-intro">These are the fees and taxes that move on political timelines, so we track each one on its own. Every line shows the amount, whether it is in effect yet, the date we last checked it, and a primary source where a clean one exists.</p>
+    <div class="keyfacts">
+      {c.keyFacts.map(f => { const st = kfState(f); return (
+        <div class={"kf-item" + (st === "proposed" ? " kf-proposed" : "")}>
+          <div class="kf-main">
+            <p class="kf-label">{f.label}</p>
+            <p class="kf-value">{f.value}</p>
+          </div>
+          <div class="kf-meta">
+            {st === "proposed" && <span class="kf-tag kf-tag-amber">Proposed, not yet in effect</span>}
+            {st === "upcoming" && <span class="kf-tag kf-tag-upcoming">Upcoming{f.effective ? ", from " + kfDate(f.effective) : ""}</span>}
+            {st === "inEffect" && <span class="kf-tag kf-tag-green">In effect{f.effective ? " since " + kfDate(f.effective) : ""}</span>}
+            {f.checked && <span class="kf-checked">Checked {kfDate(f.checked)}</span>}
+            {f.source
+              ? <a class="kf-src" href={f.source} target="_blank" rel="noopener">Primary source</a>
+              : <span class="kf-nosrc">No official page yet</span>}
+          </div>
+        </div>
+      ); })}
+    </div>
+  </section>
+)}
+
 <section>
   <p class="lab">Watch out for</p>
   <h2>The small traps that catch first-timers.</h2>
@@ -504,7 +550,7 @@ const artLd = {
         <div class="esplit">
           <div class="ebar" aria-hidden="true"><div class="c1" id="cashBar" style="width:40%"></div><div class="c2" id="cardBar" style="width:60%"></div></div>
           <div class="elegend"><span class="el cash"><span class="mdot"></span>cash <b id="cashUsd">$0</b></span><span class="el card"><span class="mdot"></span>card <b id="cardUsd">$0</b></span></div>
-          <p class="ehint" style="margin-top:8px">At the ATM, always choose to be charged in the local currency, not dollars. The dollar option lets the machine set its own, worse, exchange rate.</p>
+          <p class="ehint" style="margin-top:8px">Whether at an ATM or a card terminal in a shop or restaurant, always choose to be charged in the local currency, not dollars. Paying in dollars (called dynamic currency conversion) lets the machine set its own, worse, exchange rate on top of any fee.</p>
         </div>
       </div>
 
@@ -532,7 +578,7 @@ const artLd = {
 
       <div class="hn-cashnote"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg><p id="hnHint">&nbsp;</p></div>
       <a class="cta" href="#calcNoFee">See the card I'd bring <span class="arw">&#8594;</span></a>
-      <p class="hn-fine">Rough guide, not a quote. The real number moves with the card you carry. One no-foreign-fee card can cover both sides; a plain rewards credit card only removes the fee on what you buy, and cash still costs a little unless that card also waives ATM and foreign-cash fees. Rates checked Jun 2026 and rounded.</p>
+      <p class="hn-fine">Rough guide, not a quote. The percentage here is a blended stand-in for a typical US card's foreign fee, not your exact rate. The real number moves with the card you carry: one no-foreign-fee card can cover both sides, while a plain rewards credit card only removes the fee on what you buy, and cash still costs a little unless that card also waives ATM and foreign-cash fees. A debit card, or accepting the "pay in dollars" (dynamic currency conversion) offer at a till or ATM, can push it higher. Rates checked Jun 2026 and rounded.</p>
 
       <details class="hna">
         <summary class="hna-sum"><span>How this estimate is built</span><svg class="hna-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
@@ -866,11 +912,17 @@ const artLd = {
       const cash = spend * cashShare, card = spend - cash;
       const roomOnCard = state.paid ? 0 : room;
       const cardBase = roomOnCard + card;
-      const pct = state.noFee ? 0 : fallbackFxPct;
-      const cardFee = cardBase * (pct / 100);
+      // Two separate rate levers, not one shared number. The card foreign-transaction
+      // fee applies to what goes on the card; the ATM cash markup applies to the cash
+      // you pull. They default to the same fallback today, but they are genuinely
+      // different charges (a debit card can waive one and keep the other), so the
+      // calculator keeps them apart rather than reusing a single percentage.
+      const cardFxPct = state.noFee ? 0 : fallbackFxPct;    // % a typical card adds to foreign spend
+      const atmCashPct = state.noFee ? 0 : fallbackFxPct;   // % most US banks add to foreign cash
+      const cardFee = cardBase * (cardFxPct / 100);
       const pulls = Math.max(1, Math.ceil(cash / 300));
-      const atmFlat = pulls * 5;                       // operator/bank per-withdrawal fee
-      const atmFx = cash * (pct / 100);                // most US bank debit cards also add a foreign % on the cash pulled
+      const atmFlat = pulls * 5;                       // fixed operator/bank charge per withdrawal
+      const atmFx = cash * (atmCashPct / 100);         // percentage markup on the cash itself
       const atmFee = state.noFee ? 0 : (atmFlat + atmFx);
       const t = computeTax(roomUSD, nights, trav);
       const total = roomOnCard + spend + cardFee + atmFee + t.usd;
@@ -918,7 +970,7 @@ const artLd = {
       // The note under the breakdown swaps with the card toggle.
       id('hnFeeNote').textContent = state.noFee
         ? 'Both fees just dropped to $0. That is what a no-foreign-fee card does here.'
-        : 'Most US cards add about ' + fmtPct(fallbackFxPct) + ' on what you buy and on the cash you pull, plus a few dollars per ATM withdrawal. A no-foreign-fee card takes it all to $0.';
+        : 'Most US cards add about ' + fmtPct(fallbackFxPct) + ' on what you buy and on the cash you pull, plus a few dollars per ATM withdrawal, and choosing "pay in dollars" adds more on top. A no-foreign-fee card takes it all to $0.';
 
       // How much local cash, in how many ATM visits, plus the exchange-rate line.
       const vw = (pulls === 1) ? 'visit' : 'visits';
@@ -932,7 +984,7 @@ const artLd = {
       setA('hnaSpend', 'About ' + usd(per) + ' per traveler each day for ' + styleWord + ' travel, across ' + trav + ' ' + (trav === 1 ? 'traveler' : 'travelers') + ' and ' + nights + ' ' + (nights === 1 ? 'night' : 'nights') + '.');
       setA('hnaSplit', 'About ' + cp + '% of that spend goes in cash and ' + (100 - cp) + '% on the card, the mix we assume for ' + styleWord + ' travel in ' + DATA.name + '.');
       setA('hnaAtm', pulls + (pulls === 1 ? ' ATM withdrawal' : ' ATM withdrawals') + ' of about $300, at roughly $5 each in operator and bank charges.');
-      setA('hnaFee', 'A typical US card adds about ' + fmtPct(fallbackFxPct) + ' on card spend and on the cash you pull. A no-foreign-fee card removes it, which is what the toggle above shows.');
+      setA('hnaFee', 'We assume a blended ' + fmtPct(fallbackFxPct) + ' foreign fee, a typical figure for a US card, on both card spend and the cash you pull. Your own card may differ: a no-foreign-fee card removes it, which is what the toggle above shows, while a debit card or accepting a "pay in dollars" prompt can push it higher.');
       setA('hnaTax', (t.usd > 0) ? ('Calculated from ' + DATA.name + "'s tourist-tax rule, per night and per person where that applies, and capped where the local rule caps it. The tax line above shows the specifics.") : (DATA.name + ' charges no nightly tourist tax, so this line stays at $0.'));
 
       // Per-region tourist-tax note, if any.

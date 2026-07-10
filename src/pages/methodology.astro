@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { countries } from '../data/index.js';
+
+// Live count read straight from the data so this stays true as countries are
+// added. No number to hand-edit here.
+const liveCount = countries.filter(c => c.live).length;
+
+const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+---
+<Base
+  title="Methodology: how True Trip Costs is researched, checked and kept current"
+  description="How the money guides on True Trip Costs are researched and kept accurate: what counts as a primary source, how often each figure is re-checked, how the exchange rates and the cost calculator are built, how affiliate products are judged, and how corrections are handled. One person writes each guide, checks it against the source, and dates it."
+>
+  <Nav />
+  <main class="wrap">
+
+    <section class="mth-prose">
+      <p class="lab">Methodology</p>
+      <h1>How these guides are researched and kept honest.</h1>
+      <p class="mth-lede">Every guide here is written by a person, checked against an official source, dated, and then watched for changes. This page explains how that works in practice: where the numbers come from, how often they are re-checked, how the calculator and the exchange rates are built, how we judge the products we point to, and what happens when something is wrong.</p>
+    </section>
+
+    <section class="why">
+      <p class="lab">What counts as a source</p>
+      <h2>Primary sources first, and we say when a number is our own judgment.</h2>
+      <p class="lead">A primary source is the body that actually sets or collects the figure: a government department, a national tax or revenue authority, a central bank, or the official operator of a fee. That is what we check against, rather than another travel article repeating it secondhand.</p>
+      <div class="qrow">
+        <div class="qcard">
+          <h3>Hard figures, from the source</h3>
+          <p>Entry rules, visas and entry fees, tourist and accommodation taxes, VAT and refund rules, and published card or ATM charges are checked against an official page before they go up. Each guide lists the primary sources it used.</p>
+        </div>
+        <div class="qcard">
+          <h3>Softer calls, marked as ours</h3>
+          <p>Some things have no official figure: how much of daily spending tends to go in cash, what tipping feels normal, how ATMs usually behave. Those are our own estimate from experience, and each guide says so plainly rather than dressing them up as official.</p>
+        </div>
+        <div class="qcard">
+          <h3>Dated on the page</h3>
+          <p>Every guide shows the month it was last checked, in the hero, beside the byline, and in the sources panel. The fees most likely to move also carry their own checked date, right next to the number.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="why">
+      <p class="lab">How often we re-check</p>
+      <h2>The faster a number moves, the sooner we look again.</h2>
+      <p class="lead">Different figures go stale at different speeds, so they are not all treated the same. The site's own tooling flags a guide for another look once a figure passes the age we are comfortable with, and these are the targets it watches for.</p>
+      <div class="qrow">
+        <div class="qcard">
+          <h3>Exchange rates, about monthly</h3>
+          <p>Rates drift constantly, so the conversion figures are meant as a rough guide, not a live quote, and we aim to refresh them roughly every 30 days. Always check a live converter close to your trip.</p>
+        </div>
+        <div class="qcard">
+          <h3>Fees and entry rules, about quarterly</h3>
+          <p>Entry fees, visa and ETA-style rules, and published card or ATM charges are re-checked on roughly a 90-day cycle, and sooner when there is news that one has changed.</p>
+        </div>
+        <div class="qcard">
+          <h3>Taxes and levies, a few times a year</h3>
+          <p>Tourist and accommodation taxes tend to change on set dates, so they are reviewed on roughly a 120-day cycle, with a note when a rise is already scheduled. Everything else is looked at least a couple of times a year.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mth-prose">
+      <p class="lab">The exchange rates</p>
+      <h2>A recent mid-market rate, rounded, and clearly a guide.</h2>
+      <p>The conversion figures in each guide are based on the mid-market rate, the midpoint that banks and card networks quote each other, taken from a widely published source and rounded to keep the sums easy to follow. They are there so you can picture what a price means in dollars, not to quote what your bank will give you on the day. Your own rate will differ a little, and the rate moves, so we say in every guide to check a live converter before you go. What we never do is present the airport-counter or "pay in dollars" rate as normal, because those are the ones to avoid.</p>
+    </section>
+
+    <section class="mth-prose">
+      <p class="lab">The cost calculator</p>
+      <h2>An honest estimate, built from stated assumptions.</h2>
+      <p>The calculator on each guide is a rough guide, not a quote, and it shows its working. It starts from the room price and daily spending you set, splits that spending between cash and card using a mix we assume for each travel style, and adds two kinds of foreign charge: a blended percentage a typical US card adds to what you put on the card, and, for cash, a few dollars per ATM withdrawal plus a percentage most US banks add to the cash itself. It then folds in the country's tourist tax using that country's own rule. The percentage is a stand-in for a typical card, not your exact rate: a no-foreign-fee card takes it to zero, while a debit card or accepting a "pay in dollars" prompt can push it higher. Every assumption is spelled out under the total, and you can switch on a no-fee card to see the difference.</p>
+    </section>
+
+    <section class="honest">
+      <p class="lab">How we judge affiliate products</p>
+      <h2>We only point to what we would use, and we always say when we earn.</h2>
+      <div class="hrow">
+        <div class="hitem">
+          <p class="hk"><Fragment set:html={tick} />Useful first, paid second</p>
+          <p>A product is only suggested if it genuinely saves money or trouble on the trip in question, like a no-foreign-fee card or a travel eSIM. If nothing is needed, we say so.</p>
+        </div>
+        <div class="hitem">
+          <p class="hk"><Fragment set:html={tick} />Every paid link is labeled</p>
+          <p>When a link can earn us a commission it is marked "we may earn a commission", and when it earns us nothing it says "we earn nothing". You always know which is which, and the price is the same to you either way.</p>
+        </div>
+        <div class="hitem">
+          <p class="hk"><Fragment set:html={tick} />Never hotel rooms</p>
+          <p>This is not a booking site. We do not sell or steer hotel rooms, so no recommendation here is quietly about filling one.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mth-prose">
+      <p class="lab">Corrections</p>
+      <h2>When something is wrong, we fix it against the source and re-date it.</h2>
+      <p>Guides change, and sometimes we get a detail wrong. When that happens we correct it against the primary source, note what changed in that guide's sources panel, and update the checked date. A recent example: the Ireland guide first described missing the M50 toll deadline as a flat 30 to 60 euro fine, when in fact the deadline triggers a small per-journey late fee that then escalates, and the larger figure is a separate rental-company admin charge. That wording was corrected and the change recorded on the page. If you spot something out of date or wrong, email <a href="mailto:privacy@truetripcosts.com">privacy@truetripcosts.com</a>. We would rather hear about a mistake and fix it against the source than leave it standing.</p>
+    </section>
+
+    <section class="mth-close">
+      <h2>See it on a guide.</h2>
+      <p>The clearest way to see all of this is on a country page: the checked dates, the sources panel, the fees we are watching, and the calculator with its assumptions shown. That is {liveCount} countries so far.</p>
+      <a class="btn" href="/#guides">Browse the money guides
+        <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </section>
+
+  </main>
+  <Footer />
+
+  <style>
+    .mth-prose{padding:34px 0 0;max-width:680px}
+    .mth-prose h1{margin:6px 0 14px}
+    .mth-prose h2{margin:0 0 8px}
+    .mth-prose .mth-lede{font-size:17px;line-height:1.55;color:var(--ink);margin:0}
+    .mth-prose p:not(.lab):not(.mth-lede){font-size:16px;line-height:1.65;color:var(--ink);margin:0}
+    .mth-prose p a{color:var(--teal-deep);font-weight:500;text-decoration:underline;text-underline-offset:2px}
+    .mth-close{padding:38px 0 64px}
+    .mth-close h2{margin:0 0 8px}
+    .mth-close p{font-size:16px;line-height:1.6;color:var(--muted);margin:0 0 18px;max-width:600px}
+  </style>
+</Base>

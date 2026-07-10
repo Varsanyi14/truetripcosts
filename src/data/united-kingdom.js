@@ -101,6 +101,16 @@ export default {
     heading: "No VAT refund in Britain, and a new Edinburgh charge.",
     text: "Two things to know, and both are the opposite of what many European trips teach you. First, <b>there is no tourist VAT refund in Great Britain</b> (England, Scotland and Wales). The VAT Retail Export Scheme was scrapped on 1 January 2021 and has not returned, so you cannot reclaim the 20% VAT on shopping you carry home, and there is no airport refund desk for tourists. The price you see already includes VAT. The only workaround is having a store <b>ship your purchase</b> directly abroad, which removes the VAT but adds shipping. <b>Northern Ireland</b> keeps a separate, limited refund scheme (a minimum of about 30 pounds per store, validated when you leave the UK or EU). Second, the UK has long had <b>no nationwide tourist tax</b>, but that is starting to change. <b>Edinburgh</b> launches a <b>5% visitor levy</b> on overnight stays from <b>24 July 2026</b> (on the room rate before VAT, capped at the first five nights), collected by your accommodation. <b>Glasgow</b> follows with 5% from January 2027, and <b>Wales</b> has approved a small per-night levy for later. A few English cities such as Manchester and Liverpool already add a flat charge of about 1 to 2 pounds per room per night. Everywhere else, nothing."
   },
+
+  // High-churn fees and taxes, each tracked on its own with a status, an effective
+  // date, a primary source and the date we last checked it. Rendered as a small,
+  // always-open card after the tax-free section. The ETA fee reached 20 pounds on
+  // 8 April 2026; the Edinburgh levy starts 24 July 2026.
+  keyFacts: [
+    { label: "UK ETA fee", value: "20 pounds per person", status: "enacted", effective: "2026-04-08", source: "https://www.gov.uk/eta", checked: "2026-07-10" },
+    { label: "Edinburgh visitor levy", value: "5% of the room price, capped at the first five nights", status: "enacted", effective: "2026-07-24", source: "https://www.edinburgh.gov.uk/visitorlevy", checked: "2026-07-10" }
+  ],
+
   traps: [
     "<b>\"Pay in dollars?\" Always say no.</b> At a shop terminal or a cashpoint, choosing dollars (dynamic currency conversion) quietly adds about 3 to 8%, and a Euronet machine can mark it up much more. Pick pounds every time and let your own bank handle the exchange.",
     "<b>Skip Euronet and fee-charging cashpoints.</b> Euronet machines cluster at airports, big stations and tourist spots and charge around 1.75 to 1.99 pounds plus a pushy dollar prompt. Some convenience-store and nightlife machines charge up to about 3.95 pounds. Use a <b>free LINK</b> bank machine and read the on-screen fee before you confirm.",

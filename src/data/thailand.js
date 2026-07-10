@@ -6,7 +6,7 @@ export default {
   checked: "Jul 2026",
   checkedISO: "2026-07-04",
   sources: {
-    changed: "Sources added. Confirmed the TDAC is mandatory and free, and that the long-discussed 300-baht arrival fee for air travelers is still not in effect as of mid-2026, awaiting Cabinet approval with no start date set.",
+    changed: "Sources added. Confirmed the TDAC is mandatory and free. The long-discussed 300-baht arrival fee for air travelers was not being collected when this guide was checked, and because the proposal has changed repeatedly, confirm before departure.",
     links: [
       { label: "Thai Immigration Bureau: the Thailand Digital Arrival Card (TDAC), mandatory and free, submitted within 72 hours of arrival", url: "https://tdac.immigration.go.th/", type: "gov" },
       { label: "Tourism Authority of Thailand: the 7% VAT refund for tourists and how to claim it at the airport", url: "https://www.tourismthailand.org/Articles/plan-your-trip-vat-tax-refund", type: "tourism" },
@@ -86,6 +86,16 @@ export default {
     heading: "The \"plus plus\" on your bill, and money back on shopping.",
     text: "Two things worth knowing. At mid to upscale restaurants and hotels you may see a price written as \"500++\", which means a <b>10% service charge plus 7% VAT</b> get added on top, roughly 17% more than the listed number. That service charge stands in for a tip at those places. Separately, Thailand runs a <b>VAT refund for tourists</b>: at shops showing the \"VAT Refund for Tourists\" sign, spend at least 2,000 baht in one store on the same day and 5,000 baht in total, show your passport and ask for the P.P.10 form, keep the goods unused, and claim at the airport when you leave. After fees you get a bit under the full 7% back. One more to watch: a proposed <b>300 baht entry fee</b> for air arrivals has been debated for years and delayed again, and as of mid-2026 it is not yet collected, so there is nothing to pay yet."
   },
+
+  // High-churn fees and taxes, each tracked on its own with a status, an effective
+  // date, a primary source and the date we last checked it. Rendered as a small,
+  // always-open card after the tax-free section. The 300-baht arrival fee is still
+  // only a proposal, with no confirmed start date and no clean government page, so
+  // it carries no source link and an unmistakable "proposed" marker.
+  keyFacts: [
+    { label: "300-baht air arrival fee", value: "300 baht (about $9), if it ever starts", status: "proposed", effective: null, source: null, checked: "2026-07-10" }
+  ],
+
   traps: [
     "<b>\"Pay in dollars?\" Always say no.</b> At a card terminal or ATM, choosing dollars (dynamic currency conversion) quietly adds 5 to 8%. Pick baht every time.",
     "<b>The ATM fee is flat, so withdraw big.</b> Most Thai ATMs charge about 220 baht per foreign-card withdrawal no matter the amount, with AEON cheapest at 150. Take out a large sum at once rather than many small pulls, and use a bank ATM, not a mini-mart machine.",

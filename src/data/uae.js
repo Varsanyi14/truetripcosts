@@ -8,14 +8,14 @@ export default {
   emergency: { medical: "998", note: "998 is the ambulance line and 999 is the police. The 112 and 911 numbers are not used here.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
   region: "Middle East",
-  hook: "One of the most cashless places on earth, and the dirham is pinned to the dollar, so prices never move.",
+  hook: "One of the most cashless places on earth, and the dirham is pinned to the dollar, so the exchange rate barely moves.",
   aliases: ["uae", "u.a.e.", "dubai", "abu dhabi", "emirates", "emirati"],
 
   title: "Money in the UAE (2026): Cards, Cash, the Dollar-Pegged Dirham and Dubai's Tourist Tax | True Trip Costs",
   description: "How to handle money in the United Arab Emirates as a US traveler in 2026: why the dirham is fixed to the dollar, how little cash you need in Dubai and Abu Dhabi, the DCC trap to refuse, tipping, the 5% VAT you can reclaim, and Dubai's per-night Tourism Dirham. Checked June 2026.",
 
   h1: "Money in the UAE, sorted.",
-  lede: "A calm, current plan for the money side of your trip: the dirham is locked to the US dollar so prices never surprise you, cards run almost everything, and the only real traps are the exchange counter and one sneaky terminal prompt.",
+  lede: "A calm, current plan for the money side of your trip: the dirham is locked to the US dollar so the exchange rate stays steady, cards run almost everything, and the only real traps are the exchange counter and one sneaky terminal prompt.",
   hero: {
     img: "/uae-hero.jpg",
     h: 1375,
@@ -24,7 +24,7 @@ export default {
 
   notice: 'We only cover trips departing from the United States right now. Want an email the moment we add your home country? <a href="#" onclick="return false"><b>Sign up for an alert</b></a>.',
 
-  verdict: "The UAE is one of the easiest places in the world to handle money as an American. The dirham (AED) is <b>fixed to the US dollar</b> at about 3.67 to 1 and has been since 1997, so a price never moves against you mid-trip. Dubai and Abu Dhabi are close to fully cashless: bring a <b>no-fee card</b> plus Apple Pay or Google Pay and you can tap for almost everything, cabs, malls, the metro, dinner. Keep a little cash, roughly 200 to 500 dirhams, for souks, small eateries and tips. Skip the airport and hotel exchange desks, refuse the \"pay in dollars\" prompt on any terminal, and remember that hotel bills carry a <b>5% VAT</b> (reclaimable on shopping, not hotels) plus a small per-night tourism fee that varies by emirate.",
+  verdict: "The UAE is one of the easiest places in the world to handle money as an American. The dirham (AED) is <b>fixed to the US dollar</b> at about 3.67 to 1 and has been since 1997, so the exchange rate holds steady through your trip. Dubai and Abu Dhabi are close to fully cashless: bring a <b>no-fee card</b> plus Apple Pay or Google Pay and you can tap for almost everything, cabs, malls, the metro, dinner. Keep a little cash, roughly 200 to 500 dirhams, for souks, small eateries and tips. Skip the airport and hotel exchange desks, refuse the \"pay in dollars\" prompt on any terminal, and remember that hotel bills carry a <b>5% VAT</b> (reclaimable on shopping, not hotels) plus a small per-night tourism fee that varies by emirate.",
 
   meter: {
     heading: "Barely any cash changes hands here, cards and phones do almost everything.",
@@ -56,7 +56,7 @@ export default {
       "<b>Always choose dirhams</b>, never dollars, on any card terminal or ATM that asks."
     ], cta: { label: "How tipping works here", tag: "free", href: "#tipping" } },
     { sym: "usd", when: "The easy part", bullets: [
-      "<b>The dirham is pinned to the dollar</b> at about 3.67 to 1, so $100 is almost exactly 367 dirhams, and prices never shift against you during your stay.",
+      "<b>The dirham is pinned to the dollar</b> at about 3.67 to 1, so $100 is almost exactly 367 dirhams, and the conversion holds steady through your stay.",
       "The only markup risk is self-inflicted: choosing dollars at a terminal (dynamic currency conversion), which quietly adds 3 to 8%. Pick dirhams every time."
     ], cta: null }
   ],
@@ -105,7 +105,7 @@ export default {
 
   currencyHeading: "The dirham, in plain terms.",
   facts: [
-    { sym: "usd", k: "Quick conversion", v: "The dirham is fixed to the US dollar at about 3.67 to 1, so it never moves against you. Divide dirhams by roughly 3.7 for dollars: 100 dirhams is about 27 dollars, 500 dirhams about 136. $100 is almost exactly 367 dirhams." },
+    { sym: "usd", k: "Quick conversion", v: "The dirham is fixed to the US dollar at about 3.67 to 1, so it barely moves against you. Divide dirhams by roughly 3.7 for dollars: 100 dirhams is about 27 dollars, 500 dirhams about 136. $100 is almost exactly 367 dirhams." },
     { sym: "coins", k: "Notes and coins", v: "Notes run 5, 10, 20, 50, 100, 200, 500 and 1,000 dirhams, each a different color. Coins are 1 dirham, 50 fils and 25 fils, and in practice cash totals round to the nearest 25 fils, so you rarely handle small change." },
     { sym: "card", k: "One of the most cashless places on earth", v: "Dubai is aiming for 90% cashless, and cards and phone wallets work in taxis, the metro, malls and restaurants alike. The souks and some small local spots are the main places you'll still reach for cash." },
     { sym: "usd", k: "Only dirhams, really", v: "A few hotels quote or accept US dollars, but at a poor rate. Everywhere else it's dirhams only, and neighboring Gulf currencies (Saudi riyal, Omani rial, and so on) are not accepted, so change them or use a card." }
