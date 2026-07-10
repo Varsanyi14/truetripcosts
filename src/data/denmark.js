@@ -130,5 +130,37 @@ export default {
     { q: "Is there a tourist tax in Denmark?", a: "There is no national tourist tax or nightly accommodation tax. Copenhagen has been weighing a city overnight levy (not yet in force at last check), and a few Copenhagen hotels add a small voluntary sustainability surcharge of a couple of euros a night, so check your booking. Elsewhere there is normally nothing extra." },
     { q: "Can I get a VAT refund on shopping in Denmark?", a: "Yes, if you live outside the EU and spend at least 300 DKK on a receipt. Ask for a tax-free refund form, keep the goods unused, and get it validated by customs when you leave the EU, then claim through the refund operator. After fees you get back a useful part of the flat 25% VAT, though not the full amount." },
     { q: "Why is Denmark so expensive, and how much should I budget?", a: "High wages, a high cost of living and a flat 25% VAT on nearly everything all feed into prices, from coffee to museum tickets. For everyday spending beyond your hotel, very roughly 700 to 1,300 DKK a day per person (about 108 to 200 dollars) is a realistic mid-range figure, mostly on card. The fix is to budget a higher daily number than for much of Europe." }
-  ]
+  ],
+
+  culture: {
+    heading: "A few words of Danish go a long way",
+    intro: "Danes speak Danish, and they are experts at coziness. A friendly Tak and a story or two mark you as a guest rather than a tourist.",
+    phrases: [
+      { mean: "Hello", say: "hi", word: "Hej" },
+      { mean: "Thank you", say: "tahk", word: "Tak" },
+      { mean: "Yes", say: "ya", word: "Ja" },
+      { mean: "Cheers", say: "skoal", word: "Skål" },
+      { mean: "Delicious, yummy", say: "LECK-ert", word: "Lækkert" },
+      { mean: "Goodbye", say: "fah-VEL", word: "Farvel" },
+    ],
+    tip: "The word to know is <b>hygge</b>, the Danish art of cozy contentment: candles, good company and warmth against the dark. Danes are also mad for cycling and famous for clean, simple design. Learn <b>Tak</b> for thank you and settle in by candlelight.",
+    stories: [
+      { img: "/denmark-culture-1.jpg",
+        alt: "WPA-style illustration of a wistful little mermaid seated on a rock at the edge of a calm northern harbor at dusk, gazing across the water toward the town's spires and lamplight",
+        h: "The father of the fairy tale",
+        p: "Denmark gave the world Hans Christian Andersen, whose fairy tales, The Little Mermaid, The Ugly Duckling and The Emperor's New Clothes, are loved in every language. Born poor, he became the most famous storyteller of his age. A little bronze mermaid sits by Copenhagen's harbor in his honor.",
+        note: "Good to know: the Little Mermaid sits in Copenhagen harbor" },
+      { img: "/denmark-culture-2.jpg",
+        alt: "WPA-style illustration of two ancient carved rune stones standing before a small white church and two great grassy burial mounds under a pale clear sky",
+        h: "Denmark's birth certificate",
+        p: "In a quiet churchyard at Jelling stand two carved stones raised by Viking kings over a thousand years ago. The larger one, set up by King Harald Bluetooth, boasts that he won all of Denmark and Norway and made the Danes Christian, and it is the first place the name Denmark was ever written. It is, in effect, the nation's birth certificate.",
+        note: "Good to know: the Jelling stones name Denmark for the first time" },
+      { img: "/denmark-culture-3.jpg",
+        alt: "WPA-style illustration of a Renaissance astronomer in a ruffed collar sighting the heavens with a great brass quadrant on the terrace of a domed observatory beneath a sky brilliant with stars",
+        h: "The astronomer who mapped the sky",
+        p: "Four hundred years ago, the Danish astronomer Tycho Brahe built the finest observatory of his day and, night after night, measured the stars and planets more precisely than anyone before him, all with the naked eye, since the telescope had not yet been invented. His careful records later helped unlock the laws of planetary motion.",
+        note: "Good to know: he charted the heavens before the telescope" },
+    ],
+    pride: "Danes are relaxed, egalitarian and reliably cheerful, regularly ranked among the happiest people on Earth. They are proud of their fairy tales, their design, their bikes and their hygge. Meet their easy warmth halfway and you will feel right at home."
+  }
 };

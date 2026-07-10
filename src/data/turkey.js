@@ -128,5 +128,37 @@ export default {
     { q: "What is the best ATM to use in Türkiye?", a: "A major bank's machine, such as Ziraat, Isbank, Garanti, Akbank or Yapi Kredi. Read the fee, expect a modest per-withdrawal limit, and always decline the offer to convert to US dollars. Avoid the standalone machines clustered in tourist areas, which push poor conversions." },
     { q: "How much should I tip in Türkiye?", a: "Around 5 to 10% at restaurants for good service, but check first for a servis (service) charge on the bill. Round up for taxis, leave a little for hotel staff and guides, and keep small change for a hamam attendant. Cash tips are preferred, as card tips rarely reach the staff." },
     { q: "Does Türkiye charge a tourist tax?", a: "There is a national accommodation tax of 2% added to hotel bills, the same across the country rather than varying by city. There is no separate per-night city tourist tax, and some room rates you book online already include the 2%." }
-  ]
+  ],
+
+  culture: {
+    heading: "A few words of Turkish go a long way",
+    intro: "Turkish is written in the Latin alphabet, and a warm Merhaba and a story or two mark you as a guest rather than a tourist. Turks are famously hospitable to visitors.",
+    phrases: [
+      { mean: "Hello", say: "MER-ha-ba", word: "Merhaba" },
+      { mean: "Please", say: "LOOT-fen", word: "Lütfen" },
+      { mean: "Thank you", say: "teh-shek-kur-LEHR", word: "Teşekkürler" },
+      { mean: "Cheers", say: "SHEH-reh-feh", word: "Şerefe" },
+      { mean: "Yes", say: "eh-VET", word: "Evet" },
+      { mean: "Delicious", say: "neh-FEES", word: "Nefis" },
+    ],
+    tip: "Hospitality is sacred in Turkey, and you will constantly be offered small tulip-shaped glasses of <b>çay</b>, black tea, as a gesture of welcome, so accept with a smile. In the <b>bazaar</b>, gentle haggling is part of the fun, often over yet another glass of tea. <b>Teşekkürler</b> means thank you.",
+    stories: [
+      { img: "/turkey-culture-1.jpg",
+        alt: "WPA-style illustration of an enormous wooden horse on great wheels standing before the massive stone gates and walls of an ancient city at dawn, small robed figures gazing up at it",
+        h: "The most famous trick in history",
+        p: "On Turkey's western coast lie the ruins of Troy, the ancient city of Homer's tales. Legend says a long war ended when the attackers left a giant wooden horse at the gates as a false gift, hid soldiers inside, and slipped out once it was wheeled within the walls. A trojan horse has meant a hidden trap ever since.",
+        note: "Good to know: ancient Troy stood on Turkey's Aegean coast" },
+      { img: "/turkey-culture-2.jpg",
+        alt: "WPA-style illustration of robed dervishes in tall camel-hair hats and wide white flaring skirts spinning slowly in a warm candlelit domed hall, one hand raised and one lowered",
+        h: "A dance that becomes a prayer",
+        p: "In central Turkey, the followers of the beloved medieval poet Rumi developed the sema, a meditative ceremony in which robed dervishes spin slowly for a very long time, one hand turned up to the heavens and one down to the earth. The turning is a form of devotion and of love. It is mesmerizing to watch.",
+        note: "Say it: the whirling dervishes of Konya" },
+      { img: "/turkey-culture-3.jpg",
+        alt: "WPA-style illustration of colorful hot-air balloons drifting at dawn over the surreal fairy-chimney rock spires and cave dwellings of Cappadocia in soft golden light",
+        h: "A landscape from a dream",
+        p: "In the region of Cappadocia, wind and water have carved soft volcanic rock into a fairyland of cones, spires and hollows. For thousands of years people carved homes, churches and even whole underground cities right into the stone. Today hundreds of colorful balloons drift over it at sunrise.",
+        note: "Good to know: people have lived in Cappadocia's caves for millennia" },
+    ],
+    pride: "Turks are warm, proud and endlessly hospitable, living at a crossroads of Europe and Asia layered with ancient cities, empires and faiths. They are proud of that history, of their food and their tea, and of a welcome that treats a guest almost as a gift. A little Turkish delights them."
+  }
 };

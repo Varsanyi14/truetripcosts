@@ -142,5 +142,37 @@ export default {
     { q: "How much does the lodging tax cost in Iceland?", a: "About 800 ISK per hotel room, per night (roughly 6 dollars), added on top of the room price; campsites are 400 ISK a night. It is charged per room, not per person, so it does not double for two people sharing. It rose from 600 ISK at the start of 2025 and is often left out of the online booking price, so it can appear at check-in or checkout." },
     { q: "Can I get a VAT refund on shopping in Iceland?", a: "Yes, if you live outside Iceland. You can reclaim the VAT on goods you take home, on receipts of at least 12,000 ISK in a single store. Ask for a tax-free form at the till, then validate and collect at the refund desk in the arrivals hall at Keflavik before you check your bags. After fees you get back roughly up to 14%. It covers goods only, not hotels, tours, meals, fuel or groceries." },
     { q: "Why is Iceland so expensive, and how much should I budget?", a: "High wages, remoteness and heavy import costs make almost everything pricey, from coffee to car hire. For everyday spending beyond your hotel, very roughly 15,000 to 25,000 ISK a day per person (about 120 to 200 dollars) is a realistic mid-range figure, mostly on card. The fix is to budget a higher daily number than elsewhere, and if you drive, add the new per-kilometre road tax and parking fees." }
-  ]
+  ],
+
+  culture: {
+    heading: "A few words of Icelandic go a long way",
+    intro: "Icelandic has barely changed in a thousand years, so Icelanders can still read the old sagas, and a friendly Takk and a story or two mark you as a guest rather than a tourist.",
+    phrases: [
+      { mean: "Hello", say: "HAL-loh", word: "Halló" },
+      { mean: "Thank you", say: "tahk", word: "Takk" },
+      { mean: "Yes", say: "yow", word: "Já" },
+      { mean: "Cheers", say: "skowl", word: "Skál" },
+      { mean: "Good, tasty", say: "goht", word: "Gott" },
+      { mean: "Bye, informal", say: "bless", word: "Bless" },
+    ],
+    tip: "Iceland was settled by Norse and Celtic voyagers over a thousand years ago, and the medieval <b>sagas</b> that tell their story are still read today. The language has changed so little that many Icelanders can trace their family right back to the settlers. A warm <b>Takk</b> for thank you goes a long way.",
+    stories: [
+      { img: "/iceland-culture-1.jpg",
+        alt: "WPA-style illustration of a crowd of Norse chieftains and free folk with shields, spears and banners assembled among dramatic basalt cliffs on an open plain for the Althing",
+        h: "The world's oldest parliament",
+        p: "In the year 930, the chieftains of Iceland gathered on the plain at Thingvellir to make laws and settle disputes together, founding the Althing, the oldest parliament in the world still going. For two weeks each summer the whole island came to camp, trade and hear the law read aloud. It meets to this day in Reykjavik.",
+        note: "Good to know: the Althing dates from the year 930" },
+      { img: "/iceland-culture-2.jpg",
+        alt: "WPA-style illustration of a Viking longship with a striped sail and a carved prow sliding onto a black volcanic sand beach as settlers wade ashore with chests and livestock, green cliffs behind",
+        h: "A land settled by sea",
+        p: "The first settlers came to this remote island in open Viking ships, carrying their families, livestock and everything they owned across the cold North Atlantic. They landed on black volcanic sands beneath green cliffs and built a new nation from scratch. Their voyages and feuds became the sagas.",
+        note: "Good to know: the settlement began around the year 870" },
+      { img: "/iceland-culture-3.jpg",
+        alt: "WPA-style illustration of an elder telling a story by a hearth fire inside a turf longhouse at night, listeners of all ages gathered close on benches in the warm firelight",
+        h: "Stories that kept a nation warm",
+        p: "Through the long, dark winters, Icelanders gathered by the fire to tell the sagas, sweeping tales of settlers, feuds, love and adventure passed down for generations before they were ever written on calfskin. These medieval stories are Iceland's great gift to world literature. Many are still household names here.",
+        note: "Say it: the Icelandic sagas" },
+    ],
+    pride: "Icelanders are independent, literary and quietly proud of a tiny nation that has kept its language, its sagas and the world's oldest parliament alive on a wild volcanic island. They say more books are written and read here, per person, than almost anywhere. Show real interest in the sagas and you win a friend."
+  }
 };

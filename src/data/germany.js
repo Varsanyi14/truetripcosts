@@ -134,5 +134,37 @@ export default {
     { q: "Do you tip in Germany?", a: "Lightly, and by rounding up rather than calculating a percentage. Round a restaurant bill up to the next few euros, round up a taxi fare, and leave 1 to 2 euros for hotel porters or housekeeping. State your total, tip included, before the card is run, since leaving cash behind after paying is not how it is done here." },
     { q: "What is Germany's tourist tax?", a: "There is no single national tax. Individual cities charge their own bed tax on leisure stays: Berlin is 7.5% of the room rate, Munich and Cologne are 5%, Hamburg works out to roughly 2%, and Frankfurt charges a flat 2 euros a night. Most smaller towns charge nothing." },
     { q: "How much cash should I bring for a week in Germany?", a: "For two mid-range travelers, very roughly 300 to 400 euros (about $340 to $450) in day-to-day cash across a week, beyond your hotel, pulled in a couple of ATM visits. Cards cover supermarkets, chains and hotels; the cash covers bakeries, markets, beer gardens and the odd cash-only restaurant." }
-  ]
+  ],
+
+  culture: {
+    heading: "A little German goes a long way",
+    intro: "Germans speak German, and they value courtesy and directness in equal measure. A clear Guten Tag and a story or two mark you as a guest rather than a tourist.",
+    phrases: [
+      { mean: "Hello, good day", say: "GOO-ten tahk", word: "Guten Tag" },
+      { mean: "Please, and you are welcome", say: "BIT-uh", word: "Bitte" },
+      { mean: "Thank you", say: "DAHN-kuh", word: "Danke" },
+      { mean: "Cheers", say: "prohst", word: "Prost" },
+      { mean: "Yes", say: "yah", word: "Ja" },
+      { mean: "Delicious, tasty", say: "LECK-er", word: "Lecker" },
+    ],
+    tip: "Greet people with a clear <b>Guten Tag</b> and expect friendly directness in return. A lovely afternoon custom is <b>Kaffee und Kuchen</b>, coffee and cake, a proper pause to sit down together with something sweet. Germans also treasure their forests and long country walks.",
+    stories: [
+      { img: "/germany-culture-1.jpg",
+        alt: "WPA-style illustration of a printer in a 15th-century workshop pulling a freshly printed sheet from a heavy wooden screw press, racks of metal type and drying pages around him by candlelight",
+        h: "The invention that changed everything",
+        p: "Around 1450 in the city of Mainz, Johannes Gutenberg built Europe's first printing press with movable metal type, and suddenly books could be made quickly and cheaply for the first time. Knowledge spread as never before. Few inventions have done more to shape the modern world.",
+        note: "Good to know: the printing press dates from around 1450" },
+      { img: "/germany-culture-2.jpg",
+        alt: "WPA-style illustration of a composer with wild dark hair seated at a grand piano deep in thought, scattered manuscript pages and a candle on the lid, a tall arched starry window behind",
+        h: "Music for all humanity",
+        p: "Germany has given the world some of its greatest composers, and none is more beloved than Ludwig van Beethoven. He wrote symphonies of thunder and tenderness, and composed some of his greatest music, including the famous Ode to Joy, after he had gone almost completely deaf. His work still moves audiences everywhere.",
+        note: "Good to know: he composed while going deaf" },
+      { img: "/germany-culture-3.jpg",
+        alt: "WPA-style illustration of four fairy-tale animals, a donkey, a dog, a cat and a rooster, comically stacked one atop another to peer through the lit window of a cottage in a moonlit forest",
+        h: "A tale of four friends",
+        p: "The Brothers Grimm gathered Germany's old folk tales, Cinderella, Hansel and Gretel, Rapunzel, and preserved them for the world. In one favorite, the Bremen Town Musicians, four aging animals set off together for a better life and cleverly scare off a band of robbers by standing on one another's backs. It is a story about finding your place and your friends.",
+        note: "Say it: the Bremen Town Musicians" },
+    ],
+    pride: "Germans are proud of a deep heritage of thinkers, poets and composers, of Kaffee und Kuchen and Christmas markets, and of a countryside of dark forests and fairy-tale castles. Show genuine interest and a little enthusiasm, and their warmth and dry humor come right out."
+  }
 };

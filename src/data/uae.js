@@ -142,5 +142,37 @@ export default {
     { q: "Where should I exchange money in the UAE?", a: "Use the in-mall or in-metro exchange houses like Al Ansari, LuLu Exchange or UAE Exchange, which have tight rates. Avoid airport counters and hotel desks, which can be 4 to 6% worse. Don't buy dirhams before your trip either, as rates abroad are poor. If you're mostly on cards, you may not need to exchange at all." },
     { q: "Can tourists get the VAT back in the UAE?", a: "Yes, on shopping. Non-residents can reclaim the 5% VAT on eligible goods bought from participating stores: spend at least 250 dirhams, ask for a tax-free tag, and validate at a Planet kiosk when you leave, getting back roughly 85 to 87% after a small fee. VAT on hotels, restaurants and anything you use in the country isn't refundable." },
     { q: "How much is Dubai's tourist tax?", a: "Dubai charges a flat \"Tourism Dirham\" per room per night by hotel star rating: about 20 dirhams for 5-star, 15 for 4-star, 10 for 3-star and 7 for budget hotels or hotel apartments, capped at 30 nights. Abu Dhabi instead adds a 4% tourism fee on the room bill. These sit on top of the 5% VAT, service charge and municipality fee hotels include in the rate." }
-  ]
+  ],
+
+  culture: {
+    heading: "A few words of Arabic go a long way",
+    intro: "Arabic is the language, written in a flowing script, and a warm Marhaba and a story or two mark you as a guest rather than a tourist. Hospitality runs deep in the Emirates.",
+    phrases: [
+      { mean: "Hello, peace be upon you", say: "as-sa-LAAM-u a-LAY-kum", word: "As-salamu alaykum", native: "السلام عليكم" },
+      { mean: "Hello, welcome", say: "MAR-ha-ba", word: "Marhaba", native: "مرحبا" },
+      { mean: "Please", say: "min FAD-lak", word: "Min fadlak", native: "من فضلك" },
+      { mean: "Thank you", say: "SHOOK-ran", word: "Shukran", native: "شكراً" },
+      { mean: "Let's go, come on", say: "YAL-la", word: "Yalla", native: "يلا" },
+      { mean: "Delicious", say: "la-ZEEZ", word: "Lazeez", native: "لذيذ" },
+    ],
+    tip: "A guest here is always welcomed with <b>gahwa</b>, lightly spiced Arabic coffee, and fresh <b>dates</b>, and it is polite to accept. Behind the modern towers lies a proud Bedouin heritage of the desert and the sea. A little Arabic, starting with <b>Shukran</b> for thank you, is always appreciated.",
+    stories: [
+      { img: "/uae-culture-1.jpg",
+        alt: "WPA-style illustration of pearl divers at work from a traditional wooden dhow on the calm Gulf at dawn, one poised to dive with a rope and basket and another opening oysters on the deck",
+        h: "Riches from the sea",
+        p: "Long before oil, the Gulf lived by the pearl. Every summer, divers sailed out on wooden dhows and plunged again and again to the seabed, holding their breath with a nose clip and a basket, to gather oysters by hand. It was hard and dangerous work, and for centuries pearls were the region's great treasure.",
+        note: "Good to know: pearling was the economy before oil" },
+      { img: "/uae-culture-2.jpg",
+        alt: "WPA-style illustration of a falconer in a flowing robe and headdress standing among golden dunes at sunset with a falcon perched on his gloved arm, long shadows across the sand",
+        h: "The sport of the desert",
+        p: "For thousands of years, the Bedouin of Arabia trained falcons to hunt across the desert, a partnership of great skill and trust between bird and handler. Once it helped put food on the table, and today it is a treasured national sport and a symbol of the country. A prized falcon is cherished like family.",
+        note: "Good to know: falconry is a national symbol of the Emirates" },
+      { img: "/uae-culture-3.jpg",
+        alt: "WPA-style illustration of a caravan of camels and robed Bedouin travelers crossing rolling desert dunes at dusk, a black goat-hair tent and a small fire in the distance under a crescent moon",
+        h: "Life among the dunes",
+        p: "The Bedouin crossed the vast deserts of Arabia with their camels, the ships of the desert, moving between wells and grazing and gathering at night around the fire outside black goat-hair tents. Their code of courage, poetry and above all hospitality to any traveler still shapes the country today.",
+        note: "Say it: the ship of the desert is the camel" },
+    ],
+    pride: "Emiratis are proud of a nation that rose from the desert and the pearl beds to a global crossroads in a single lifetime, without ever letting go of its roots. They honor the camel, the falcon and the poem, and above all the age-old duty to welcome a guest. Accept the coffee and the dates, and you honor them back."
+  }
 };

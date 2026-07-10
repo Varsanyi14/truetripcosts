@@ -143,5 +143,37 @@ export default {
     { q: "What is Norway's new tourist tax, and will I pay it?", a: "Norway's visitor's contribution started in summer 2026. It lets a town add up to 3% to overnight stays (and cruise calls), but it is opt-in, so it applies in some places and not others. The Lofoten islands are charging it, and Bergen, Tromso and other busy spots are expected to follow. On a 2,500 NOK hotel night, 3% is about 75 NOK (roughly 7 dollars). Campsites, tents and personal campervans are exempt, so check your specific booking." },
     { q: "Can I get a VAT refund on shopping in Norway?", a: "Yes, if you are a non-resident and spend at least 315 NOK in one store. Ask for a tax-free refund form, keep the goods unused, and get it stamped by customs when you leave Norway, then claim through the refund operator. After fees you get back a useful part of the 25% VAT, though not the full amount." },
     { q: "Why is Norway so expensive, and how much should I budget?", a: "High wages, a high cost of living and heavy taxes on things like alcohol all feed into prices, from coffee to fjord ferries. For everyday spending beyond your hotel, very roughly 1,000 to 1,800 NOK a day per person (about 100 to 185 dollars) is a realistic mid-range figure, mostly on card. The fix is to budget a higher daily number than elsewhere in Europe." }
-  ]
+  ],
+
+  culture: {
+    heading: "A few words of Norwegian go a long way",
+    intro: "Norwegians speak Norwegian, and they live for the outdoors. A friendly Takk and a story or two mark you as a guest rather than a tourist, and any effort is met with warmth.",
+    phrases: [
+      { mean: "Hello", say: "hey", word: "Hei" },
+      { mean: "Thank you", say: "tahk", word: "Takk" },
+      { mean: "Please", say: "vair soh SNILL", word: "Vær så snill" },
+      { mean: "Cheers", say: "skowl", word: "Skål" },
+      { mean: "Yes", say: "yah", word: "Ja" },
+      { mean: "Good, tasty", say: "got", word: "Godt" },
+    ],
+    tip: "Norwegians live by <b>friluftsliv</b>, the open-air life, a deep love of being outdoors in every season, rain or snow. There is a saying that there is no such thing as bad weather, only bad clothing. Learn <b>Takk</b> for thank you, lace up your boots, and you will fit right in.",
+    stories: [
+      { img: "/norway-culture-1.jpg",
+        alt: "WPA-style illustration of a dragon-prowed Viking longship with a red-and-white striped sail and a row of round shields gliding down a deep, still fjord between sheer green mountains",
+        h: "The age of the Vikings",
+        p: "A thousand years ago, Norse seafarers, the Vikings, sailed out from these fjords in sleek dragon-prowed longships to trade, explore and raid across Europe and beyond. Light and fast, their ships could cross open ocean or slip far up a shallow river. They reached North America five hundred years before Columbus.",
+        note: "Good to know: Norse sailors reached America around the year 1000" },
+      { img: "/norway-culture-2.jpg",
+        alt: "WPA-style illustration of a tall, many-tiered wooden stave church with dragon-head gables silhouetted against a night sky rippling with green northern lights, snow on the timber and pines",
+        h: "Churches built like ships",
+        p: "When Norway turned to Christianity, its people built soaring wooden stave churches, their frames raised like upturned ships and their gables carved with dragons from the old beliefs. Once there were more than a thousand. The few that survive, dark and steep against the northern sky, are nearly a thousand years old.",
+        note: "Good to know: the oldest stave churches are around 900 years old" },
+      { img: "/norway-culture-3.jpg",
+        alt: "WPA-style illustration of a team of fur-clad polar explorers planting a red flag on a vast plain of ice and snow, sled dogs and a laden sledge beside them, long blue shadows",
+        h: "First to the South Pole",
+        p: "Norway bred great polar explorers, and in 1911 Roald Amundsen and his team became the first people ever to reach the South Pole, hauling sledges behind teams of hardy dogs across the ice. Careful planning and real skill on skis carried them there and safely home again. It was one of the great feats of the age of exploration.",
+        note: "Good to know: the South Pole was first reached in 1911" },
+    ],
+    pride: "Norwegians are hardy, understated and deeply attached to nature, proud of the fjords, of a Viking and seafaring past, and of a modern country that tops the world's happiness and quality-of-life lists. Ask about their favorite cabin or ski trail and the reserve melts away."
+  }
 };

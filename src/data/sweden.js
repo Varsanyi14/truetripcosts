@@ -134,5 +134,37 @@ export default {
     { q: "Is there a tourist tax in Sweden?", a: "No. Sweden has no general tourist tax or nightly accommodation tax, so nothing extra is added to your hotel bill. VAT is already baked into prices, and from April 2026 the VAT on most groceries dropped to 6% on a temporary basis." },
     { q: "Can I get a VAT refund on shopping in Sweden?", a: "Yes, if you live outside the EU and spend at least 200 SEK in one store. Ask for a tax-free refund form, keep the goods unused, and get it validated by customs when you leave the EU, then claim through the refund operator. After fees you get back a useful part of the 25% VAT, though not the full amount." },
     { q: "Why is Sweden so expensive, and how much should I budget?", a: "High wages, a high cost of living and VAT all feed into prices, from coffee to museum tickets. For everyday spending beyond your hotel, very roughly 900 to 1,600 SEK a day per person (about 93 to 165 dollars) is a realistic mid-range figure, essentially all on card. The fix is to budget a higher daily number than for much of Europe." }
-  ]
+  ],
+
+  culture: {
+    heading: "A few words of Swedish go a long way",
+    intro: "Swedes speak Swedish and value balance in all things. A friendly Tack and a story or two mark you as a guest rather than a tourist.",
+    phrases: [
+      { mean: "Hello", say: "hey", word: "Hej" },
+      { mean: "Thank you", say: "tahk", word: "Tack" },
+      { mean: "Yes", say: "yah", word: "Ja" },
+      { mean: "Cheers", say: "skowl", word: "Skål" },
+      { mean: "Good, tasty", say: "got", word: "Gott" },
+      { mean: "Bye", say: "hey doh", word: "Hej då" },
+    ],
+    tip: "Two words unlock Sweden. <b>Fika</b> is the daily ritual of pausing for coffee and something sweet with friends or colleagues, and it is never to be skipped. And <b>lagom</b>, meaning just the right amount, not too much and not too little, is the very heart of how Swedes like life to be.",
+    stories: [
+      { img: "/sweden-culture-1.jpg",
+        alt: "WPA-style illustration of a Viking-age carver kneeling to chisel runes and a coiling serpent into a tall standing stone with the grooves painted red, a raven on top and a wooden hall behind",
+        h: "Messages carved in stone",
+        p: "More than a thousand years ago, Vikings raised tall rune stones across Sweden, carving them with angular runes and coiling serpents to honor the dead or mark a journey. Sweden has thousands of them, more than anywhere else on Earth, still standing in fields and churchyards. They are letters from the Viking age, written in stone.",
+        note: "Say it: rune stones, raised over a thousand years ago" },
+      { img: "/sweden-culture-2.jpg",
+        alt: "WPA-style illustration of people in white folk dress and crowns of wildflowers dancing hand in hand in a ring around a flower-decked maypole in a bright green summer meadow",
+        h: "The longest, brightest day",
+        p: "At Midsummer, when the northern sun barely sets, Swedes head to the countryside to raise a flower-decked maypole and dance around it in rings, wearing crowns of wildflowers. There is pickled herring, singing and endless daylight. After the long dark winter, it is the most beloved day of the year.",
+        note: "Good to know: Midsummer is the high point of the Swedish year" },
+      { img: "/sweden-culture-3.jpg",
+        alt: "WPA-style illustration of a great ornately carved 17th-century wooden warship with towering masts, a gilded stern and rows of cannon ports setting out across a calm harbor with sails filling",
+        h: "The warship that sank in minutes",
+        p: "In 1628 the mighty warship Vasa, the pride of the Swedish navy, set sail from Stockholm before a cheering crowd, then caught a gust of wind, tipped over and sank in the harbor after barely a kilometer. Built top-heavy and over-armed, she went down on her maiden voyage. Raised almost whole in 1961, she is now Sweden's most visited museum.",
+        note: "Good to know: raised in 1961, now a museum ship" },
+    ],
+    pride: "Swedes are calm, egalitarian and proud of a country that pairs a Viking past with sleek modern design, music and a strong social spirit. They cherish nature, fairness and their fika. Match their easy, unshowy warmth and you will get along famously."
+  }
 };
