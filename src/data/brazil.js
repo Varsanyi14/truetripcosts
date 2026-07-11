@@ -109,6 +109,13 @@ export default {
     text: "The big one is entry: <b>US travelers now need an e-visa for Brazil</b>, applied for on the official VFS portal (brazil.vfsevisa.com). It costs roughly <b>80 to 100 dollars</b>, is valid for years with multiple entries, and <b>airlines will not board you without it</b>, so apply a month or two before you fly and confirm the current fee on the official site. On taxes, Brazil has <b>no tourist VAT-refund scheme</b>, so there is nothing to reclaim on shopping. A <b>2026 tax reform</b> has nudged the price of hotels, car hire and tours up by a few points, and some coastal spots such as <b>Angra dos Reis and Ilha Grande</b> have introduced visitor fees of up to 95 reais, with a handful of cities weighing hotel bed taxes. There is no separate departure tax to pay at the airport; it is built into your ticket."
   },
 
+  // High-churn entry and tax facts, each tracked on its own with a status, an
+  // effective date, a primary source and the date we last checked it. Rendered as
+  // a small always-open card after the tax-free section.
+  keyFacts: [
+    { label: "Brazil visitor e-visa (US citizens)", value: "about 81 dollars, on the official VFS portal before boarding", status: "enacted", effective: "2025-04-10", source: "https://brazil.vfsevisa.com/", checked: "2026-07-11" }
+  ],
+
   traps: [
     "<b>No e-visa, no boarding.</b> US travelers need a Brazil e-visa arranged in advance on the official VFS portal. Airlines are fined for boarding passengers without it, so this is the one thing to sort weeks ahead, not at the gate.",
     "<b>\"Pay in dollars?\" Always say no.</b> Card terminals and ATMs may offer to charge you in dollars (dynamic currency conversion), which quietly adds a few percent. Choose reais every time.",

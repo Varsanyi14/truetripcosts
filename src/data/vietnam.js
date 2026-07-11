@@ -70,6 +70,11 @@ export default {
     { sym: "smallnotes", k: "Carry small notes", v: "10,000 to 50,000 VND for taxis, street food and tips. Vendors often can't change a 500,000." },
     { sym: "qr", k: "Local QR wallets", v: "MoMo and ZaloPay are everywhere for locals but usually need a Vietnamese bank account, so they're not your tool." }
   ],
+  // ENTRY (high-churn, verified Jul 2026). US citizens are not on Vietnam's visa
+  // exemption list and need an e-visa arranged before boarding.
+  keyFacts: [
+    { label: "Vietnam e-visa (up to 90 days, US citizens)", value: "$25 single entry or $50 multiple entry, on the official e-visa portal before you fly", status: "enacted", effective: null, source: "https://evisa.gov.vn/", checked: "2026-07-11" }
+  ],
   traps: [
     "<b>\"Pay in USD?\" Always say no.</b> At a card machine or ATM, choosing your home currency (dynamic currency conversion) quietly adds 3 to 7%. Pick dong every time.",
     "<b>Taxi meter games.</b> Use Grab so the price is fixed in the app, or stick to Mai Linh and Vinasun, the reputable metered taxis.",

@@ -108,6 +108,14 @@ export default {
     text: "Two separate charges trip up first-time visitors to Bali. The <b>Foreign Tourist Levy</b> is IDR 150,000 per person, paid once per trip (not per night) through the official Love Bali portal, lovebali.baliprov.go.id, or at a counter on arrival. It funds cultural and environmental programs and applies to every foreign visitor, including children, with limited exemptions for long-stay visa holders. Separately, most hotels add a <b>21% tax and service charge</b> to the nightly room rate if it was quoted \"++\" rather than \"nett.\" Paying one does not cover the other, and neither shows up reliably in a Booking.com or Airbnb total, so budget for both."
   },
 
+  // High-churn entry and tax facts, each tracked on its own with a status, an
+  // effective date, a primary source and the date we last checked it. Rendered as
+  // a small always-open card after the tax-free section. This is the entry visa,
+  // separate from the Bali tourist levy covered above.
+  keyFacts: [
+    { label: "Indonesia visa on arrival (30-day, US citizens)", value: "IDR 500,000 (about 35 dollars), as an e-VOA on the official portal or on arrival, extendable once", status: "enacted", effective: null, source: "https://evisa.imigrasi.go.id/", checked: "2026-07-11" }
+  ],
+
   traps: [
     "<b>\"Pay in dollars?\" Always say no.</b> Choosing your home currency at a card terminal or ATM (dynamic currency conversion) quietly adds 3 to 8%. Pick rupiah every time.",
     "<b>Only pay the Bali levy at the official site.</b> Lookalike websites charge two to three times the real IDR 150,000 fee and exist mainly to steal card details. The only official domain ends in .go.id; if in doubt, pay at the counter on arrival instead.",

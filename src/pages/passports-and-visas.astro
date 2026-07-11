@@ -1,0 +1,230 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { countries } from '../data/index.js';
+
+// Live count read straight from the data so this stays true as countries are
+// added. No number to hand-edit here.
+const liveCount = countries.filter(c => c.live).length;
+
+const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+
+// Official government sources, all opened in a new tab with noopener only. These
+// are reference links, not paid ones, so they never carry a sponsored marker.
+const gov = { target: "_blank", rel: "noopener" };
+
+// The government building icon used in the sources panel, matching the one the
+// country guides use for official sources.
+const govIcon = '<path d="M6 3v18"></path><path d="M6 4h12l-2 3.5L18 11H6"></path>';
+
+// Primary sources for this page, each an official government page we checked
+// against. Rendered in the sources panel the same way a country guide renders its
+// own. Split into a name and a short note on a colon, matching the guide format.
+const sources = [
+  { name: "US Department of State, passport fees", note: "the current book, card, execution, expedite and delivery fees", url: "https://travel.state.gov/en/passports/apply/help/fees.html" },
+  { name: "US Department of State, passport processing times", note: "the current routine and expedited windows, and how mailing adds to them", url: "https://travel.state.gov/content/travel/en/passports/how-apply/processing-times.html" },
+  { name: "US Department of State, international travel checklist", note: "the six-month validity point and how to check each destination's entry rules", url: "https://travel.state.gov/en/international-travel/planning/checklist.html" },
+  { name: "US Department of State, country information pages", note: "the official entry, exit and visa requirements for every destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html" },
+  { name: "European Union, Entry Exit System (EES)", note: "the biometric border system, live across the Schengen area since April 2026", url: "https://travel-europe.europa.eu/en/ees" },
+  { name: "European Union, ETIAS", note: "the travel authorization expected to start in late 2026, with its fee and rules", url: "https://travel-europe.europa.eu/en/etias" },
+  { name: "European Commission, EES and ETIAS explained", note: "the official summary of how the two differ for travelers", url: "https://home-affairs.ec.europa.eu/news/main-differences-between-ees-and-etias-what-travellers-need-know-2026-04-28_en" }
+];
+---
+<Base
+  title="Passports and visas for US travelers: fees, timing, ETIAS and EES, and the official sites"
+  description="What US travelers actually need before a trip: the six-month passport rule, real State Department passport fees and current processing times, Europe's new EES and the ETIAS authorization coming in late 2026, and which destinations need a visa. Every figure is dated and linked to the official government site, and we earn nothing pointing you there."
+>
+  <Nav />
+  <main class="wrap">
+
+    <section class="pv-prose">
+      <p class="lab">Passports and visas</p>
+      <h1>What you actually need to get in, and the official site for each.</h1>
+      <p class="pv-lede">A passport that will not expire too soon, and, for some countries, a visa or an online authorization booked before you fly. This page lays out the real government fees, the current wait times, and Europe's new entry rules for 2026. For every step we send you straight to the official government site, because that is almost always the cheapest and safest route, and we earn nothing sending you there.</p>
+    </section>
+
+    <section class="pv-prose">
+      <p class="lab">The six-month rule</p>
+      <h2>Your passport can be valid and still get you turned away.</h2>
+      <p>Many countries, and the airlines that carry you to them, will not let you in if your passport expires within six months of your travel dates. The rule is set and enforced by the destination and the airline, not by the United States, so a passport that is technically still valid can be refused at check-in. Europe's Schengen area is a common exception in the other direction: it asks for at least three months of validity beyond your planned departure, and that the passport was issued within the last ten years.</p>
+      <p>The honest move is simple: check your expiry date the moment you start planning, and renew early if it is anywhere close. Each destination's exact requirement is on its official page, and the State Department's travel checklist is the clean starting point.</p>
+      <p class="pv-links"><a href="https://travel.state.gov/en/international-travel/planning/checklist.html" {...gov}>State Department travel checklist</a> <span class="tg free">we earn nothing</span></p>
+    </section>
+
+    <section class="pv-prose">
+      <p class="lab">Renewing a US passport</p>
+      <h2>The real fees, the real wait, and the only site you need.</h2>
+      <p>For a routine US passport there is one official place to go: travel.state.gov. Eligible adults can renew online, and everyone else applies by mail or in person. The fees and the current wait times are below. Private couriers and "renewal" sites cannot make the government faster, and the State Department says so plainly, so the official route is what we point you to.</p>
+
+      <div class="pv-panel">
+        <div class="pv-grp">
+          <h3>Government fees</h3>
+          <ul class="pv-fees">
+            <li class="pv-fee"><span class="pv-fee-k">Adult passport book (renew or new)</span><span class="pv-fee-v">$130</span></li>
+            <li class="pv-fee"><span class="pv-fee-k">Passport card</span><span class="pv-fee-v">$30</span></li>
+            <li class="pv-fee"><span class="pv-fee-k">Book and card together</span><span class="pv-fee-v">$160</span></li>
+            <li class="pv-fee"><span class="pv-fee-k">In-person execution fee</span><span class="pv-fee-v">$35</span></li>
+            <li class="pv-fee"><span class="pv-fee-k">Expedited service (optional)</span><span class="pv-fee-v">plus $60</span></li>
+            <li class="pv-fee"><span class="pv-fee-k">1 to 3 day return delivery of the book (optional)</span><span class="pv-fee-v">plus $22.05</span></li>
+          </ul>
+          <p class="pv-note">The $35 execution fee is charged when you apply in person, not on an eligible renewal by mail or online. Children's passports follow a different process and cost less. These are the government's own fees; confirm the current figures on the State Department fee page before you pay.</p>
+        </div>
+
+        <div class="pv-grp">
+          <h3>How long it takes</h3>
+          <ul class="pv-fees">
+            <li class="pv-fee"><span class="pv-fee-k">Routine service</span><span class="pv-fee-v">4 to 6 weeks</span></li>
+            <li class="pv-fee"><span class="pv-fee-k">Expedited service</span><span class="pv-fee-v">2 to 3 weeks</span></li>
+            <li class="pv-fee"><span class="pv-fee-k">Mailing time, each way</span><span class="pv-fee-v">up to about 2 weeks</span></li>
+            <li class="pv-fee"><span class="pv-fee-k">Traveling within 14 days</span><span class="pv-fee-v">agency appointment</span></li>
+          </ul>
+          <p class="pv-note">Those windows count only the time your application sits at a passport agency, so add the mailing time at each end when you plan. If you are traveling within 14 days you can book an appointment at a passport agency and bring proof of travel, and a death or life-threatening emergency in your immediate family has its own same-appointment track. Online renewals cannot be expedited, so they are for routine timing, not an imminent trip.</p>
+        </div>
+
+        <p class="pv-cta">
+          <a class="btn" href="https://travel.state.gov/en/passports.html" {...gov}>Apply or renew at travel.state.gov
+            <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <span class="tg free">we earn nothing</span>
+        </p>
+      </div>
+
+      <p class="pv-note pv-standalone">One warning worth repeating: the only official site for online renewal is opr.travel.state.gov. Other sites that promise to "renew your passport online" charge extra on top of the government fee, and some are outright scams. You never need them to use the official route.</p>
+    </section>
+
+    <section class="why">
+      <p class="lab">Europe in 2026</p>
+      <h2>Two new systems, and only one of them costs you anything.</h2>
+      <p class="lead">If you are headed to Europe's Schengen area, two changes are worth understanding before you go. They are easy to mix up, so here is what each one actually is, and what it means for a US traveler on a short trip.</p>
+      <div class="qrow">
+        <div class="qcard">
+          <h3>EES is already live</h3>
+          <p>The Entry Exit System started across the Schengen area in April 2026. It records a fingerprint and a photo at the border and replaces the passport stamp. You do not apply for it and you pay nothing: it happens when you arrive. Ireland and Cyprus still stamp passports by hand.</p>
+        </div>
+        <div class="qcard">
+          <h3>ETIAS is coming later</h3>
+          <p>ETIAS is a travel authorization, not a visa, expected to start in the last quarter of 2026. The fee is 20 euros, with travelers under 18 and over 70 exempt from the fee but still needing the authorization. It is valid for three years or until your passport expires, for stays up to 90 days in any 180.</p>
+        </div>
+        <div class="qcard">
+          <h3>What to do about it</h3>
+          <p>Nothing yet. ETIAS is not open, the EU will announce the exact start date months ahead, and there is a grace period once it begins. When it does open, the only official site is on europa.eu. Frontex has flagged more than a hundred fake ETIAS sites, so never pay more than the official fee.</p>
+        </div>
+      </div>
+      <p class="pv-lead-note">Among the countries we cover, the Schengen area includes Austria, Czechia, Denmark, France, Germany, Greece, Iceland, Italy, the Netherlands, Norway, Portugal, Spain, Sweden and Switzerland. Ireland is in the EU but not in Schengen, so ETIAS will not apply there. The United Kingdom is separate again and already runs its own ETA, which the UK guide covers. Confirm the current list and rules on the official pages before you travel.</p>
+      <p class="pv-lead-links"><a href="https://travel-europe.europa.eu/en/ees" {...gov}>Official EES page</a> <span class="pv-dot" aria-hidden="true">&middot;</span> <a href="https://travel-europe.europa.eu/en/etias" {...gov}>Official ETIAS page</a> <span class="tg free">we earn nothing</span></p>
+    </section>
+
+    <section class="pv-prose">
+      <p class="lab">Do you need a visa?</p>
+      <h2>The only reliable answer is the official one.</h2>
+      <p>Whether you need a visa depends on your destination, your nationality, and how long you are staying, and the rules change often enough that even professionals misread them. So we do not decide your case here. What we do is point you to the authority: for US citizens, the State Department's country information pages are the router, and each of our country guides carries the current entry requirement, dated, with a link to that country's official portal.</p>
+      <p>As a rough snapshot for US citizens on a tourist trip, checked in July 2026 and always worth confirming on the official page before you fly:</p>
+      <ul class="pv-snap">
+        <li><b>Apply for an e-visa before you board:</b> Brazil, India and Vietnam each need an online visa arranged in advance, on that country's official portal.</li>
+        <li><b>Visa or visa on arrival:</b> Egypt and Indonesia require a visa, available online or on arrival depending on the country.</li>
+        <li><b>Europe's Schengen area:</b> no visa for a short stay today, with the ETIAS authorization coming later in 2026 (see above).</li>
+        <li><b>United Kingdom:</b> an ETA, covered in the UK guide.</li>
+        <li><b>No visa for a short visit:</b> much of Europe, and, as of 2026, Turkey and Thailand for US citizens, though a free arrival form may still apply.</li>
+      </ul>
+      <p class="pv-note pv-standalone">This is a starting point, not a ruling, and it is written for US citizens. Green card holders and other nationalities can face different rules. Always confirm on the official government page for your destination and your passport.</p>
+      <p class="pv-links"><a href="https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html" {...gov}>State Department country information pages</a> <span class="tg free">we earn nothing</span></p>
+      <p class="pv-links pv-guidelink"><a href="/#guides">See the entry note in each country guide</a></p>
+    </section>
+
+    <section class="honest">
+      <p class="lab">Lookalike sites, and how we handle them</p>
+      <h2>Start at the official site, and never overpay.</h2>
+      <div class="hrow">
+        <div class="hitem">
+          <p class="hk"><Fragment set:html={tick} />Start at the government site</p>
+          <p>For US passports, ETIAS, and most e-visas, unofficial "helper" sites buy their way to the top of search results. The official site is the one that ends in a government domain: travel.state.gov for passports, europa.eu for ETIAS, and each country's own portal for its visa, linked in that country's guide.</p>
+        </div>
+        <div class="hitem">
+          <p class="hk"><Fragment set:html={tick} />Never pay more than the official fee</p>
+          <p>The government fee is the government fee. A site charging noticeably more is adding its own markup, and a few are built only to take your card details. If a price looks higher than the official one, stop and go back to the source.</p>
+        </div>
+        <div class="hitem">
+          <p class="hk"><Fragment set:html={tick} />We tell you when we earn</p>
+          <p>Some travelers with complicated cases choose a paid service, and that can be a fair choice. If we ever point to one, we will label it clearly and show the official route first, which is usually cheaper. Everything on this page today earns us nothing.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="gbyline" style="display:flex;align-items:flex-start;gap:9px;margin:34px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card)">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. Last checked Jul 2026. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
+    </div>
+
+    <details class="gsources">
+      <summary class="gsources-sum">
+        <span class="gsources-txt">Sources, and how this page was checked</span>
+        <svg class="gsources-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="gsources-body">
+        <p class="gs-row"><span class="gs-k">Last checked</span><span>Jul 2026</span></p>
+        <p class="gs-row"><span class="gs-k">Changed since last check</span><span>New page. First published and checked in July 2026, covering US passport fees and current processing times, the six-month passport rule, Europe's EES and the ETIAS authorization coming in late 2026, and which destinations need a visa, each linked to its official government source.</span></p>
+        <div class="gs-row"><span class="gs-k">Primary sources</span>
+          <ul class="gs-links">
+            {sources.map(s => (
+              <li class="gs-src">
+                <span class="gs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={govIcon}></svg></span>
+                <span class="gs-src-tx">
+                  <a href={s.url} target="_blank" rel="noopener" class="gs-src-name">{s.name}</a>
+                  <span class="gs-src-note">{s.note}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p class="gs-row"><span class="gs-k">Our own judgment</span><span>Where a rule is set by a foreign government or is still being rolled out, we point you to the official page rather than deciding your case for you. Requirements change and depend on your nationality and your exact trip, so the official source is the one to trust on the day.</span></p>
+      </div>
+    </details>
+
+    <section class="pv-close">
+      <h2>Now the money side.</h2>
+      <p>Documents sorted, the next question is cost: cards, cash, ATM fees and tourist taxes, country by country. That is {liveCount} guides so far.</p>
+      <a class="btn" href="/#guides">Browse the money guides
+        <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </section>
+
+  </main>
+  <Footer />
+
+  <style>
+    .pv-prose{padding:34px 0 0;max-width:680px}
+    .pv-prose h1{margin:6px 0 14px}
+    .pv-prose h2{margin:0 0 8px}
+    .pv-lede{font-size:17px;line-height:1.55;color:var(--ink);margin:0}
+    .pv-prose p:not(.lab):not(.pv-lede):not(.pv-note):not(.pv-links){font-size:16px;line-height:1.65;color:var(--ink);margin:14px 0 0}
+    .pv-prose a{color:var(--teal-deep);font-weight:500;text-decoration:underline;text-underline-offset:2px}
+    .pv-links{margin:16px 0 0;display:flex;align-items:center;flex-wrap:wrap;gap:10px 12px}
+    .pv-guidelink{margin-top:10px}
+    .pv-note{font-size:13.5px;line-height:1.55;color:var(--muted);margin:12px 0 0}
+    .pv-standalone{max-width:680px}
+
+    .pv-panel{margin:20px 0 0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .pv-grp + .pv-grp{margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
+    .pv-grp h3{font-family:var(--serif);font-weight:500;font-size:16px;color:var(--ink);margin:0 0 8px}
+    .pv-fees{list-style:none;margin:0;padding:0}
+    .pv-fee{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:9px 0;border-bottom:1px solid var(--line)}
+    .pv-fee:last-child{border-bottom:0}
+    .pv-fee-k{font-size:14.5px;color:var(--ink);line-height:1.4}
+    .pv-fee-v{font-size:14.5px;font-weight:600;color:var(--ink);white-space:nowrap}
+    .pv-cta{display:flex;align-items:center;flex-wrap:wrap;gap:12px 14px;margin:20px 0 0}
+
+    .pv-lead-note{font-size:14px;line-height:1.6;color:#C9D6D1;margin:22px 0 0;max-width:640px}
+    .pv-lead-links{display:flex;align-items:center;flex-wrap:wrap;gap:10px 12px;margin:14px 0 30px}
+    .pv-lead-links a{color:#EAF0ED;font-weight:500;text-decoration:underline;text-underline-offset:2px}
+    .pv-dot{color:#6E827B}
+
+    .pv-snap{list-style:none;margin:16px 0 0;padding:0;max-width:680px}
+    .pv-snap li{position:relative;font-size:15.5px;line-height:1.6;color:var(--ink);padding:0 0 0 18px;margin:0 0 10px}
+    .pv-snap li:last-child{margin-bottom:0}
+    .pv-snap li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+    .pv-snap b{font-weight:600}
+
+    .pv-close{padding:38px 0 64px}
+    .pv-close h2{margin:0 0 8px}
+    .pv-close p{font-size:16px;line-height:1.6;color:var(--muted);margin:0 0 18px;max-width:600px}
+  </style>
+</Base>

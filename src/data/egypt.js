@@ -104,6 +104,13 @@ export default {
     text: "Egypt has no European-style per-night tourist tax, but two money habits shape your trip. First, at <b>hotels and tourist restaurants</b> the listed price is often not the final one: many add a <b>service charge of about 12% plus tax of around 14%</b> (VAT, sometimes with a small local levy), the so-called plus plus, at the bottom of the bill, so budget above the sticker at mid and upscale places. Street food and local spots usually just charge the marked price. Second, <b>tipping (baksheesh) is everywhere</b>: small amounts for almost any help, so carry a stack of small notes. There is <b>no easy tourist refund</b> on everyday spending, so do not count on claiming tax back. And always <b>pay in pounds</b>, changing money only at banks, ATMs or your hotel, never with a street changer."
   },
 
+  // High-churn entry and tax facts, each tracked on its own with a status, an
+  // effective date, a primary source and the date we last checked it. Rendered as
+  // a small always-open card after the tax-free section.
+  keyFacts: [
+    { label: "Egypt tourist visa (30-day, US citizens)", value: "about 25 to 30 dollars single entry, as an e-visa on the official portal or on arrival", status: "enacted", effective: null, source: "https://visa2egypt.gov.eg/", checked: "2026-07-11" }
+  ],
+
   traps: [
     "<b>Do not expect cards to work outside hotels and malls.</b> Markets, taxis, street food, small shops and tips are all cash. Carry plenty of pounds and treat your card as a backup for the biggest bills only.",
     "<b>Watch the plus plus.</b> Hotels and tourist restaurants often add about 12% service plus around 14% tax to the listed price, so a meal or room can land noticeably higher than the number you first saw. Budget and local places usually do not.",

@@ -111,6 +111,13 @@ export default {
     text: "India does not levy a per-night tourist or city tax. What you'll see instead is <b>GST</b>, India's value-added tax. On <b>restaurant</b> bills it's usually <b>5%</b>. On <b>hotel</b> rooms it depends on the nightly rate: rooms up to about 1,000 rupees are exempt, rooms from roughly 1,001 to 7,500 rupees are taxed at <b>5%</b>, and rooms above 7,500 rupees at <b>18%</b>. GST is generally shown on the bill and, for hotels, tied to your room rate, so the higher rate mainly affects luxury stays. Separately, some restaurants add a <b>\"service charge\"</b> of around 5 to 10%. This is <b>not a government tax</b>: India's consumer authority has ruled it cannot be made mandatory, so you're within your rights to ask for it to be removed, and any tip is genuinely up to you. There is no VAT-refund scheme for tourists on general shopping."
   },
 
+  // High-churn entry and tax facts, each tracked on its own with a status, an
+  // effective date, a primary source and the date we last checked it. Rendered as
+  // a small always-open card after the tax-free section.
+  keyFacts: [
+    { label: "India e-Tourist Visa (30-day, US citizens)", value: "about 25 dollars April to June, about 40 dollars July to March, on the official portal before you fly", status: "enacted", effective: null, source: "https://indianvisaonline.gov.in/evisa/", checked: "2026-07-11" }
+  ],
+
   traps: [
     "<b>Pay in rupees, never dollars.</b> On card terminals and ATMs, choosing your home currency (dynamic currency conversion) quietly adds 3 to 8%. Dollars aren't useful for everyday spending here anyway.",
     "<b>Refuse a 2,000 rupee note.</b> It was withdrawn from circulation in 2023, so if someone tries to pass you one as change, you may struggle to spend it. Also decline torn or heavily worn notes.",
