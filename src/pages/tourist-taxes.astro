@@ -48,25 +48,23 @@ function whenText(k) {
     {tracked.length > 0 && (
       <section class="fx-sec">
         <h2>Tracked entry fees and city levies</h2>
-        <p class="fx-note">The high-churn charges we check against their official source and date. Each row links to that source and to the full country guide.</p>
-        <div class="fx-tablewrap">
-          <table class="fx-table">
-            <thead>
-              <tr><th>Country</th><th>Fee or tax</th><th>Amount</th><th>When</th><th>Source</th><th>Checked</th></tr>
-            </thead>
-            <tbody>
-              {tracked.map(k => (
-                <tr>
-                  <td><a href={'/' + k.slug}>{k.country}</a></td>
-                  <td>{k.label}</td>
-                  <td>{k.value}</td>
-                  <td><span class={'fx-pill ' + (k.status === 'proposed' ? 'is-proposed' : 'is-live')}>{whenText(k)}</span></td>
-                  <td>{k.source ? (<a href={k.source} target="_blank" rel="noopener">Official page</a>) : (<span class="fx-muted">No official page yet</span>)}</td>
-                  <td class="fx-muted num">{niceDate(k.checked)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <p class="fx-note">The high-churn charges we check against their official source and date. Each entry links to that source and to the full country guide.</p>
+        <div class="fx-panel">
+          {tracked.map(k => (
+            <div class="fx-item">
+              <div class="fx-item-head">
+                <a class="fx-country" href={'/' + k.slug}>{k.country}</a>
+                <span class={'fx-pill ' + (k.status === 'proposed' ? 'is-proposed' : 'is-live')}>{whenText(k)}</span>
+              </div>
+              <p class="fx-feename">{k.label}</p>
+              <p class="fx-amount">{k.value}</p>
+              <div class="fx-meta">
+                {k.source ? (<a href={k.source} target="_blank" rel="noopener">Official page</a>) : (<span>No official page yet</span>)}
+                <span class="fx-dot" aria-hidden="true">&middot;</span>
+                <span>Checked {niceDate(k.checked)}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     )}
@@ -78,27 +76,32 @@ function whenText(k) {
 
   <style>
     .fx-lab{font-size:12px;font-weight:600;color:var(--teal-deep);letter-spacing:.08em;text-transform:uppercase;margin:26px 0 10px}
+    .fx-intro{max-width:680px}
     .fx-intro h1{margin:0 0 14px}
     .fx-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
     .fx-sec{margin:36px 0}
     .fx-sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 6px}
-    .fx-note{font-size:14.5px;color:var(--muted);margin:0 0 16px;line-height:1.5}
-    .fx-tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
-    .fx-table{width:100%;border-collapse:collapse;font-size:14.5px}
-    .fx-table th{text-align:left;font-weight:600;color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
-    .fx-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
-    .fx-table tbody tr:last-child td{border-bottom:0}
-    .fx-table a{color:var(--teal-deep);font-weight:500;text-decoration:none}
-    .fx-table a:hover{text-decoration:underline}
-    .fx-muted{color:var(--muted)}
-    .fx-pill{display:inline-block;font-size:11.5px;font-weight:600;border-radius:999px;padding:3px 9px;white-space:nowrap}
+    .fx-note{font-size:14.5px;color:var(--muted);margin:0 0 16px;line-height:1.5;max-width:680px}
+    .fx-panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+    .fx-item{padding:16px 18px;border-bottom:1px solid var(--line)}
+    .fx-item:last-child{border-bottom:0}
+    .fx-item-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
+    .fx-country{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);text-decoration:none}
+    .fx-country:hover{text-decoration:underline}
+    .fx-feename{font-weight:600;font-size:15.5px;color:var(--ink);line-height:1.35;margin:0 0 4px}
+    .fx-amount{font-size:15px;color:var(--ink);line-height:1.5;margin:0 0 9px}
+    .fx-meta{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+    .fx-meta a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .fx-meta a:hover{text-decoration:underline}
+    .fx-dot{color:var(--line)}
+    .fx-pill{display:inline-block;font-size:11.5px;font-weight:600;border-radius:999px;padding:3px 9px;white-space:nowrap;margin-left:auto}
     .fx-pill.is-live{color:#10502C;background:var(--green-bg)}
     .fx-pill.is-proposed{color:#7A3D08;background:var(--amber-bg)}
-    .fx-keep{font-size:14px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line);padding-top:18px;margin:30px 0 40px}
+    .fx-keep{font-size:14px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line);padding-top:18px;margin:30px 0 40px;max-width:680px}
     @media (max-width:560px){
-      .fx-table{font-size:13.5px}
-      .fx-table th,.fx-table td{padding:10px 11px}
+      .fx-item{padding:14px 15px}
       .fx-lede{font-size:16.5px}
+      .fx-pill{margin-left:0}
     }
   </style>
 </Base>
