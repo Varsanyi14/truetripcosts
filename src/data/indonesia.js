@@ -3,15 +3,15 @@ export default {
   live: true,
   name: "Indonesia",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-30",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-10",
   emergency: { medical: "119", note: "119 is the medical line, and 112 works as a general emergency number in the cities. Outside them, ambulance cover is thin and a taxi is often faster.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "high",
   region: "Asia",
   hook: "Bali runs more on cash and QR codes than tourists expect, plus a one-time entry levy on top.",
 
   title: "Money in Indonesia (2026): Cash, Cards, QRIS and the Bali Entry Levy | True Trip Costs",
-  description: "How to handle money in Indonesia as a US traveler in 2026: cash vs card in Bali and beyond, why QRIS mostly is not a tool for tourists, fee-free bank ATMs, the one-time Bali entry levy, the 21% hotel tax and service charge, and tipping. Checked June 2026.",
+  description: "How to handle money in Indonesia as a US traveler in 2026: cash vs card in Bali and beyond, why QRIS mostly is not a tool for tourists, fee-free bank ATMs, the one-time Bali entry levy, the 21% hotel tax and service charge, and tipping. Checked July 2026.",
 
   h1: "Money in Indonesia, sorted.",
   lede: "Most US trips to Indonesia mean Bali, so this guide leads there, with notes for Jakarta and beyond. A calm, current plan for what to pay with, how much cash to carry, and the one-time fee that catches first-timers at the airport.",
@@ -75,7 +75,7 @@ export default {
     works: "Mostly, with real gaps once you leave the tourist strip. Telkomsel has by far the widest reach, including smaller islands, rural Bali and remote dive areas, while XL Axiata and Indosat cover South Bali's resort belt and Jakarta well but thin out fast beyond it. 4G is the everyday standard; 5G is limited to parts of Jakarta and Denpasar. Coverage drops hard on Nusa Penida's clifftop viewpoints, in the Gili Islands away from the main villages, and on boats and remote trekking routes, so download offline maps and pick a Telkomsel-backed eSIM if your trip goes beyond South Bali."
   },
 
-  // TOURIST TAX / FEES (high-churn, verified Jun 2026). Two separate charges, often confused:
+  // TOURIST TAX / FEES (high-churn, verified Jul 2026). Two separate charges, often confused:
   // (1) a national hotel tax-and-service add-on, commonly quoted as "21%++" (10% service
   // charge, then a 10% regional hospitality tax, PB1, calculated on top of that, working out
   // to about 21% combined), charged nightly and added to the room rate if quoted "++" rather
@@ -118,7 +118,7 @@ export default {
   tippingHeading: "Not traditional, but increasingly expected in tourist Bali.",
   tipping: "Indonesia does not have a deep-rooted tipping culture, but tourism has shifted norms in Bali's resort areas. Check your bill first: many hotels, restaurants and spas in tourist zones already add a 5 to 10% service charge, and if so, an extra tip is a kind gesture rather than an expectation. Where no service charge is added, 10% at a sit-down restaurant is generous. Local warungs and small family eateries do not expect tips, though rounding up is appreciated. For a private driver or guide, IDR 50,000 to 150,000 for a full day is a strong tip; for Grab or Gojek rides, IDR 5,000 to 10,000 in the app is a nice bonus. Spa and massage staff typically see IDR 20,000 to 50,000. Tip in rupiah and in cash where you can, since card tips often get pooled, and hand it over with your right hand, which is the polite custom.",
   sources: {
-    changed: "Sources added on first publish, checked June 2026. Indonesia's VAT is an effective 11% on most goods and services. Bali charges a separate 150,000 rupiah foreign-tourist levy, paid once per entry, and as of mid-2026 there is no fine or entry refusal for not paying it.",
+    changed: "Re-checked July 2026. Indonesia's VAT is an effective 11% on most goods and services, confirmed unchanged. Bali still charges a separate 150,000 rupiah foreign-tourist levy, paid once per entry, and the rate has not moved. Enforcement tightened through 2026, with spot checks of the payment QR code at some tourist sites and airports, so pay it at the official Love Bali site before you fly.",
     links: [
       { label: "Bali Provincial Government (Love Bali): the 150,000 rupiah foreign-tourist levy, paid once per entry to Bali", url: "https://lovebali.baliprov.go.id/", type: "gov" },
       { label: "PwC Worldwide Tax Summaries: Indonesia's effective 11% VAT on most goods and services", url: "https://taxsummaries.pwc.com/indonesia/corporate/other-taxes", type: "revenue" },

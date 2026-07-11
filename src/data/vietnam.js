@@ -3,12 +3,12 @@ export default {
   live: true,
   name: "Vietnam",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-28",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-10",
   emergency: { medical: "115", note: "115 reaches an ambulance. There is no single all-services number, so 113 is the police and 114 is fire.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "high",
   title: "Money in Vietnam (2026): Cash, Cards, ATM Fees and the Dong Conversion Trap | True Trip Costs",
-  description: "How to handle money in Vietnam as a US traveler in 2026: cash vs card, the best ATMs and their fees, how much cash to bring, tipping, and the traps to avoid. Checked June 2026.",
+  description: "How to handle money in Vietnam as a US traveler in 2026: cash vs card, the best ATMs and their fees, how much cash to bring, tipping, and the traps to avoid. Checked July 2026.",
   h1: "Money in Vietnam, sorted.",
   lede: "A calm, current plan for the money side of your trip: what to pay with, how much cash to carry, and the local traps to dodge.",
   hero: {
@@ -57,7 +57,7 @@ export default {
   connectivity: {
     works: "Yes. Vietnam has near-universal 4G and growing 5G across the cities and main travel routes, with signal thinning in remote mountain areas like Sapa and Ha Giang."
   },
-  // TOURIST TAX (high-churn, verified Jun 2026). Vietnam has no separate tourist or hotel
+  // TOURIST TAX (high-churn, verified Jul 2026). Vietnam has no separate tourist or hotel
   // tax. Room rates already include VAT, so the quoted price is the price you pay.
   tax: {
     none: true,
@@ -79,7 +79,7 @@ export default {
   tippingHeading: "Not expected, always appreciated.",
   tipping: "Vietnam isn't a tipping culture, so there's no set percentage. Rounding up a taxi or leaving small notes for great service is a kind gesture, not an obligation. Upscale restaurants and hotels sometimes add a service charge already, so check the bill before you add more.",
   sources: {
-    changed: "Sources added on first publish, checked June 2026. Vietnam's standard VAT is 10% but sits at a temporary 8% through 31 December 2026 under a National Assembly resolution, so most prices you pay include the lower rate for now. There is still no separate tourist or hotel tax.",
+    changed: "Re-checked July 2026, confirmed current. Vietnam's standard VAT is 10% but sits at a temporary 8% through 31 December 2026 under a National Assembly resolution, so most prices you pay include the lower rate for now. There is still no separate tourist or hotel tax.",
     links: [
       { label: "PwC Worldwide Tax Summaries: Vietnam's standard 10% VAT and the temporary 8% rate that runs through the end of 2026", url: "https://taxsummaries.pwc.com/vietnam/corporate/other-taxes", type: "revenue" },
       { label: "Trip.com: the tourist VAT refund and the fact that room rates already include VAT", url: "https://www.trip.com/guide/info/vietnam-tax-refund.html", type: "guide" },

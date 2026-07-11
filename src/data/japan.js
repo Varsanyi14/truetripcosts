@@ -3,12 +3,12 @@ export default {
   live: true,
   name: "Japan",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-28",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-10",
   emergency: { medical: "119", note: "119 is for an ambulance or fire, and 110 is the police. The 112 and 911 numbers do not work here.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
   title: "Money in Japan (2026): Cash, Cards, IC Cards, ATMs and Tax-Free Shopping | True Trip Costs",
-  description: "How to handle money in Japan as a US traveler in 2026: cash vs card, the best ATMs (7-Eleven), IC cards like Suica, tax-free shopping, tipping, and the traps to avoid. Checked June 2026.",
+  description: "How to handle money in Japan as a US traveler in 2026: cash vs card, the best ATMs (7-Eleven), IC cards like Suica, tax-free shopping, tipping, and the traps to avoid. Checked July 2026.",
   h1: "Money in Japan, sorted.",
   lede: "A calm, current plan for the money side of your trip: what to tap, where you still need cash, and the small rules that trip up first-timers.",
   hero: {
@@ -62,7 +62,7 @@ export default {
   connectivity: {
     works: "Yes, and it is among the best anywhere. Japan has 4G almost everywhere, including the bullet trains and most rural and mountain areas, with 5G growing in the cities. You will rarely think about your signal."
   },
-  // TOURIST TAX (high-churn, verified Jun 2026). A per-person, per-night lodging tax
+  // TOURIST TAX (high-churn, verified Jul 2026). A per-person, per-night lodging tax
   // (shukuhakuzei) that only some cities charge, billed in bands by the nightly room
   // price and paid at the hotel. No cap on nights. Most of Japan charges nothing.
   // Bands read in order: the first band whose upTo the per-person nightly rate falls
@@ -99,7 +99,7 @@ export default {
   tippingHeading: "Don't tip, really.",
   tipping: "Japan has no tipping culture, and there is no awkwardness in not tipping, it is simply the norm. Leaving extra money can confuse or even mildly offend, and staff may chase you to return it. Exceptional service is met with a polite thank-you, not a gratuity. The rare exception is handing a small thank-you in an envelope to a private guide or a ryokan host, in person.",
   sources: {
-    changed: "Sources added on first publish, checked June 2026. Kyoto raised its lodging tax in March 2026, with top-tier rooms now taxed up to 10,000 yen per night, and from 1 November 2026 Japan switches tax-free shopping from an instant discount at the till to a refund claimed at the airport.",
+    changed: "Re-checked July 2026, both confirmed on track. Kyoto raised its lodging tax from 1 March 2026, with top-tier rooms now taxed up to 10,000 yen per person per night, and from 1 November 2026 Japan switches tax-free shopping from an instant discount at the till to a refund claimed at the airport.",
     links: [
       { label: "Ministry of Finance, Japan: the 10% consumption tax that applies to most goods and services", url: "https://www.mof.go.jp/english/policy/tax_policy/tax_system/consumption/index.html", type: "revenue" },
       { label: "Japan National Tourism Organization: tax-free shopping for visitors and the move to airport refunds from November 2026", url: "https://www.japan.travel/en/plan/japans-tax-exemption/", type: "tourism" },

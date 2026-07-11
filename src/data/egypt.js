@@ -3,8 +3,8 @@ export default {
   live: true,
   name: "Egypt",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-30",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-10",
   emergency: { medical: "123", note: "123 is the ambulance line. 126 reaches the tourist police, who are more likely to speak English.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "high",
   region: "Middle East",
@@ -12,7 +12,7 @@ export default {
   aliases: ["cairo", "giza", "luxor", "aswan", "alexandria", "sharm el sheikh", "hurghada", "egyptian pound", "egp", "pound", "nile", "pyramids", "egyptian"],
 
   title: "Money in Egypt (2026): Cash, Cards, Pounds and Tipping | True Trip Costs",
-  description: "How to handle money in Egypt as a US traveler in 2026: why it's a cash country, how much to tip (baksheesh), paying in Egyptian pounds not dollars, the service and tax that hotels and restaurants add, which ATMs to use, and why prices move with the pound. Checked June 2026.",
+  description: "How to handle money in Egypt as a US traveler in 2026: why it's a cash country, how much to tip (baksheesh), paying in Egyptian pounds not dollars, the service and tax that hotels and restaurants add, which ATMs to use, and why prices move with the pound. Checked July 2026.",
 
   h1: "Money in Egypt, sorted.",
   lede: "A calm, current plan for the money side of your trip: why you should carry cash and small notes, how tipping (baksheesh) really works, and the service and tax that gets added at hotels and tourist restaurants.",
@@ -75,7 +75,7 @@ export default {
     works: "Good in Cairo, the Nile cities and the Red Sea resorts, and along the main tourist routes, thinning out in the deep desert. The networks are Orange, Vodafone, Etisalat and WE, with wide 4G and some 5G. You can buy a tourist SIM at the airport or in town with your passport, or use an eSIM (Airalo, Nomad, Ubigi), which is simplest for a short trip. Egypt is not in the EU, so European roaming does not apply. You do not need mobile data to pay for anything; cash covers you either way."
   },
 
-  // HOTEL / RESTAURANT SERVICE + TAX (verified to Jun 2026 knowledge; confirm rates).
+  // HOTEL / RESTAURANT SERVICE + TAX (verified to Jul 2026 knowledge; confirm rates).
   // Egypt has no European-style per-night tourist tax. Instead, hotels and tourist restaurants
   // commonly add a service charge (about 12%) plus taxes (VAT around 14%, sometimes a small
   // municipal levy on top), the "plus plus," to the listed price. This models roughly a 26% add-on
@@ -114,7 +114,7 @@ export default {
   tippingHeading: "Baksheesh: small amounts, and often.",
   tipping: "Tipping in Egypt, called baksheesh, is a genuine part of daily life, so the trick is to carry lots of small notes and give little and often. At restaurants, a service charge of around 12% is frequently already on the bill; if it is, a little extra for good service is enough, and if it is not, around 10% is normal. Beyond meals, small tips smooth almost everything: a few pounds for a porter, a helpful doorman, someone who gives directions or watches your shoes, a driver, or a guide (guides and Nile cruise crews are tipped more generously, often at the end). Have 5, 10 and 20 pound notes ready, since you will reach for them many times a day, and a card is no substitute.",
   sources: {
-    changed: "Sources added on first publish, checked June 2026. Egypt's standard VAT is 14%, and tourist hotels and restaurants usually add a service charge of about 12% on top. There is no European-style per-night tourist tax.",
+    changed: "Re-checked July 2026. Egypt's standard VAT is 14%, and tourist hotels and restaurants usually add a service charge of about 12% on top, both confirmed still current. There is no European-style per-night tourist tax.",
     links: [
       { label: "PwC Worldwide Tax Summaries: Egypt's standard VAT rate of 14%", url: "https://taxsummaries.pwc.com/egypt/individual/other-taxes", type: "revenue" },
       { label: "My Egypt Travel: the tourist police number (126), who are more likely to speak English", url: "https://www.myegypttravel.com/faqs/how-do-i-contact-tourist-police/", type: "police" },

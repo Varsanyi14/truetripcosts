@@ -3,10 +3,10 @@ export default {
   live: true,
   name: "United Kingdom",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-28",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-10",
   sources: {
-    changed: "Sources added. Confirmed the UK ETA is 20 pounds and required before boarding, the Edinburgh 5% visitor levy starts 24 July 2026, and there is still no VAT refund for tourists in Great Britain.",
+    changed: "Re-checked July 2026. The UK ETA is confirmed at 20 pounds and required before boarding, the Edinburgh 5% visitor levy starts 24 July 2026, and there is still no VAT refund for tourists in Great Britain.",
     links: [
       { label: "GOV.UK: the UK Electronic Travel Authorisation (ETA), who needs one, and the 20 pound fee", url: "https://www.gov.uk/eta", type: "gov" },
       { label: "City of Edinburgh Council: the visitor levy, 5% of the room from 24 July 2026, capped at five nights", url: "https://www.edinburgh.gov.uk/visitorlevy", type: "gov" },
@@ -17,7 +17,7 @@ export default {
   emergency: { medical: "999", note: "999 is the main emergency number, and 112 works as well.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
   title: "Money in the United Kingdom (2026): Cards, Contactless, Cash, ATMs, Tipping and the Edinburgh Visitor Levy | True Trip Costs",
-  description: "How to handle money in the UK as a US traveler in 2026: tap-to-pay beats cash almost everywhere, the dollar conversion trap, free LINK cashpoints vs fee machines, light tipping and the 12.5% service charge, why there is no VAT refund in Great Britain, the new Edinburgh visitor levy, and the UK ETA you now need before you fly. Checked June 2026.",
+  description: "How to handle money in the UK as a US traveler in 2026: tap-to-pay beats cash almost everywhere, the dollar conversion trap, free LINK cashpoints vs fee machines, light tipping and the 12.5% service charge, why there is no VAT refund in Great Britain, the new Edinburgh visitor levy, and the UK ETA you now need before you fly. Checked July 2026.",
   h1: "Money in the UK, sorted.",
   lede: "A calm, current plan for the money side of your trip: what you can tap (almost everything), the few times you still want pound coins and notes, and the small rules and new charges that catch first-timers.",
   hero: {
@@ -72,7 +72,7 @@ export default {
   connectivity: {
     works: "Yes, and it is strong in the cities and most towns, where 4G is near-universal and 5G is widespread. Signal turns patchy in the Scottish Highlands, the Welsh mountains and the Lake District, and on remote roads and trails, where the odd dead zone is normal."
   },
-  // TOURIST TAX (high-churn, verified Jun 2026). The UK has no national tourist tax, but a
+  // TOURIST TAX (high-churn, verified Jul 2026). The UK has no national tourist tax, but a
   // few cities now add a small nightly charge, and the units differ by city, so each region
   // can override the unit. Edinburgh's is a percentage of the room (the whole room, not per
   // person), capped at 5 nights. Manchester and Liverpool charge a flat amount per room each

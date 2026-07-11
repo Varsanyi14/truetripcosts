@@ -3,8 +3,8 @@ export default {
   live: true,
   name: "United Arab Emirates",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-30",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-10",
   emergency: { medical: "998", note: "998 is the ambulance line and 999 is the police. The 112 and 911 numbers are not used here.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
   region: "Middle East",
@@ -12,7 +12,7 @@ export default {
   aliases: ["uae", "u.a.e.", "dubai", "abu dhabi", "emirates", "emirati"],
 
   title: "Money in the UAE (2026): Cards, Cash, the Dollar-Pegged Dirham and Dubai's Tourist Tax | True Trip Costs",
-  description: "How to handle money in the United Arab Emirates as a US traveler in 2026: why the dirham is fixed to the dollar, how little cash you need in Dubai and Abu Dhabi, the DCC trap to refuse, tipping, the 5% VAT you can reclaim, and Dubai's per-night Tourism Dirham. Checked June 2026.",
+  description: "How to handle money in the United Arab Emirates as a US traveler in 2026: why the dirham is fixed to the dollar, how little cash you need in Dubai and Abu Dhabi, the DCC trap to refuse, tipping, the 5% VAT you can reclaim, and Dubai's per-night Tourism Dirham. Checked July 2026.",
 
   h1: "Money in the UAE, sorted.",
   lede: "A calm, current plan for the money side of your trip: the dirham is locked to the US dollar so the exchange rate stays steady, cards run almost everything, and the only real traps are the exchange counter and one sneaky terminal prompt.",
@@ -75,7 +75,7 @@ export default {
     works: "Yes, essentially everywhere you'll go, and it's excellent. The UAE has some of the fastest, most widespread mobile coverage in the world, with strong 5G blanketing Dubai, Abu Dhabi, the highways between them and out to the other emirates. The two carriers are Etisalat (e&) and du; a tourist SIM or an eSIM is easy to arrange with your passport, and many travelers just use an eSIM bought before arrival. Only remote desert stretches see weaker signal. One note: some calling apps like WhatsApp voice and video calling can be restricted on local networks, though this eases over time and hotel or paid VPN-friendly plans are common workarounds."
   },
 
-  // TOURIST TAX (high-churn, verified Jun 2026). Unlike Costa Rica or the Dominican Republic, the
+  // TOURIST TAX (high-churn, verified Jul 2026). Unlike Costa Rica or the Dominican Republic, the
   // UAE DOES levy a per-night accommodation tax, and it varies by emirate:
   //  - Dubai: flat "Tourism Dirham" per room per night by hotel star rating (5-star AED 20,
   //    4-star AED 15, 3-star AED 10, budget/1-2-star/hotel-apartment AED 7). Capped at 30
@@ -127,7 +127,7 @@ export default {
   tippingHeading: "Appreciated, modest, and cash is best.",
   tipping: "Tipping in the UAE is customary but not heavy, and staff often rely on it since base wages can be low. Restaurants frequently add a 10% service charge, but it doesn't always reach your server, so rounding up or leaving an extra 10 to 15% in cash for good service is normal. For everyday help, a few dirhams goes a long way: 5 to 10 dirhams for a valet, 10 to 15 dirhams a day for hotel housekeeping, a few dirhams per bag for a porter, and rounding up the fare for taxis. Cash tips (in dirhams) are preferred over adding to a card, since they go straight to the person. Nobody will chase you for a tip, and a small one is always well received.",
   sources: {
-    changed: "Sources added on first publish, checked June 2026. VAT is 5%, and visitors can reclaim it on shopping through the Planet scheme, about 85% of the VAT back on a minimum spend of 250 dirhams. Dubai adds a Tourism Dirham per room per night by hotel star rating, and Abu Dhabi adds a 4% accommodation fee instead.",
+    changed: "Re-checked July 2026, all confirmed current. VAT is 5%, and visitors can reclaim it on shopping through the Planet scheme, about 85% of the VAT back on a minimum spend of 250 dirhams. Dubai adds a Tourism Dirham per room per night by hotel star rating, and Abu Dhabi adds a 4% accommodation fee instead.",
     links: [
       { label: "Federal Tax Authority: the 5% VAT and the tourist refund scheme operated with Planet", url: "https://tax.gov.ae/en/services/tourist.vat.refunds.aspx", type: "revenue" },
       { label: "UAE tourist-tax guide: Dubai's Tourism Dirham per room per night by star rating, and Abu Dhabi's 4% accommodation fee", url: "https://www.aaconsultancy.ae/international-tourist-taxes-and-restrictions/", type: "gov" },

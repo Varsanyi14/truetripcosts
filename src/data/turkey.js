@@ -3,8 +3,8 @@ export default {
   live: true,
   name: "Türkiye",
   from: "United States",
-  checked: "Jun 2026",
-  checkedISO: "2026-06-30",
+  checked: "Jul 2026",
+  checkedISO: "2026-07-10",
   emergency: { medical: "112", note: "112 now covers every emergency service, and calls to 911 are redirected to it.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "medium",
   region: "Middle East",
@@ -12,7 +12,7 @@ export default {
   aliases: ["turkey", "turkiye", "istanbul", "cappadocia", "antalya", "izmir", "ankara", "bodrum", "fethiye", "turkish lira", "try", "lira", "turkish"],
 
   title: "Money in Türkiye (2026): Cards, Cash, Lira and Tipping | True Trip Costs",
-  description: "How to handle money in Türkiye (Turkey) as a US traveler in 2026: cards and tap work in cities but cash still rules the bazaars, why the lira moves fast with inflation, paying in lira not dollars, which ATMs to use, the accommodation tax, VAT that's already in the price, and how much to tip. Checked June 2026.",
+  description: "How to handle money in Türkiye (Turkey) as a US traveler in 2026: cards and tap work in cities but cash still rules the bazaars, why the lira moves fast with inflation, paying in lira not dollars, which ATMs to use, the accommodation tax, VAT that's already in the price, and how much to tip. Checked July 2026.",
 
   h1: "Money in Türkiye, sorted.",
   lede: "A calm, current plan for the money side of your trip: where cards work and where you still need cash, why the lira moves so fast, and the small tips (bahsis) that smooth the way.",
@@ -75,17 +75,19 @@ export default {
     works: "Good across the cities and tourist regions and along the coasts, with the usual thinning in remote mountains and the far east. The networks are Turkcell, Vodafone and Turk Telekom, all with wide 4G and growing 5G. Türkiye is not in the EU, so European roaming does not apply here. An eSIM (Airalo, Nomad, Ubigi) is the easy choice for a visit, and it also avoids the phone-registration rule that can block a foreign handset used with a local SIM beyond a few months. You do not need mobile data to pay for anything; cards and cash stand on their own."
   },
 
-  // ACCOMMODATION TAX (verified to Jun 2026 knowledge; confirm rate).
-  // Türkiye applies a national accommodation tax (konaklama vergisi) of 2% on the accommodation
-  // service, added to hotel bills nationwide. There is no separate per-city tourist tax. VAT (KDV)
-  // on hotels is separate and generally shown within the rate. This models the 2% add-on.
+  // ACCOMMODATION TAX (verified to Jul 2026 knowledge; confirm rate).
+  // Türkiye applies a national accommodation tax (konaklama vergisi) on the accommodation service,
+  // added to hotel bills nationwide. The standard rate is 2%, but a Presidential Decision temporarily
+  // cut it to 1% from 1 May through 31 December 2026, after which it returns to 2%. There is no
+  // separate per-city tourist tax. VAT (KDV) on hotels is separate and generally shown within the
+  // rate. This models the current 1% add-on.
   tax: {
     unit: "percentOfRoom",
     currency: "TRY",
     capNights: null,
-    note: "Türkiye charges a national accommodation tax of 2% on hotel stays, added to your bill, the same everywhere rather than varying by city. This estimates that 2% add-on. VAT (KDV) on accommodation is separate and usually shown within the room rate.",
+    note: "Türkiye's national accommodation tax is temporarily reduced to 1% of the room price through 31 December 2026 (down from the standard 2%, which returns in 2027), added to your bill and the same everywhere rather than varying by city. This estimates the current 1% add-on. VAT (KDV) on accommodation is separate and usually shown within the room rate.",
     regions: [
-      { key: "all", label: "All of Türkiye", pct: 2, note: "A flat 2% national accommodation tax is added to hotel bills across the country. Some room rates you book online already fold it in." }
+      { key: "all", label: "All of Türkiye", pct: 1, note: "The national accommodation tax is temporarily 1% through 31 December 2026 (down from 2%), added to hotel bills across the country. Some room rates you book online already fold it in." }
     ]
   },
 
@@ -100,7 +102,7 @@ export default {
   taxfree: {
     label: "Taxes, tips and refunds",
     heading: "Tax in the price, a small hotel tax, and modest tips.",
-    text: "In Türkiye, <b>VAT (KDV) is already included</b> in the marked price: 20% on most goods and services, and a reduced 10% on food and hotel accommodation. Shops that display a <b>Tax Free</b> sign can issue a refund form so non-residents can reclaim the VAT on larger purchases when leaving the country, usually at the airport. Hotels add a small <b>national accommodation tax of 2%</b> to your bill, the same across the country. <b>Tipping (bahsis) is modest but expected</b>: at restaurants, around 5 to 10% for good service, though check first whether a <b>servis</b> (service) charge has already been added. Round up for taxis, leave a little for hotel staff and helpful guides, and small change is welcome at a hamam. Cash tips are preferred. There is no separate departure tax; airport charges are built into your ticket."
+    text: "In Türkiye, <b>VAT (KDV) is already included</b> in the marked price: 20% on most goods and services, and a reduced 10% on food and hotel accommodation. Shops that display a <b>Tax Free</b> sign can issue a refund form so non-residents can reclaim the VAT on larger purchases when leaving the country, usually at the airport. Hotels add a small <b>national accommodation tax</b> to your bill, currently <b>1%</b> (temporarily reduced from 2% through the end of 2026), the same across the country. <b>Tipping (bahsis) is modest but expected</b>: at restaurants, around 5 to 10% for good service, though check first whether a <b>servis</b> (service) charge has already been added. Round up for taxis, leave a little for hotel staff and helpful guides, and small change is welcome at a hamam. Cash tips are preferred. There is no separate departure tax; airport charges are built into your ticket."
   },
 
   traps: [
@@ -113,12 +115,12 @@ export default {
   tippingHeading: "Modest but expected: about 5 to 10%.",
   tipping: "Tipping in Türkiye, called bahsis, is modest but part of the culture, so keep small notes handy. At a sit-down restaurant, around 5 to 10% for good service is normal, but first check the bill for a servis (service) charge, which some places add; if it is there, a little extra is enough. For a quick cafe or street food, rounding up is fine. Taxis get rounded up to a convenient figure. Leave a little for hotel housekeeping and porters, tip a helpful guide or driver, and small change is customary for a hamam attendant or a mosque-shoe minder. Cash tips are preferred, since a card tip rarely reaches the staff.",
   sources: {
-    changed: "Sources added on first publish, checked June 2026. Turkiye's accommodation tax is 2% of the room price under the Expense Taxes Law, but the Revenue Administration confirmed in June 2026 that it is temporarily reduced to 1% through 31 December 2026. Standard VAT (KDV) is 20%, with a reduced 10% on accommodation.",
+    changed: "Re-checked July 2026. Turkiye's accommodation tax is set at 2% of the room price under the Expense Taxes Law, but a Presidential Decision temporarily reduced it to 1% from 1 May through 31 December 2026, after which it returns to 2%. We updated the guide to the current 1%. Standard VAT (KDV) is 20%, with a reduced 10% on accommodation.",
     links: [
       { label: "Turkiye accommodation tax guidance: the 2% rate (Konaklama Vergisi), temporarily reduced to 1% through 31 December 2026", url: "https://regfollower.com/turkey-revenue-administration-updates-guidance-on-accommodation-tax-rules/", type: "revenue" },
       { label: "VAT in Turkiye tax guide: the 20% standard KDV and the tourist VAT refund from 2,000 lira in a single store", url: "https://sadarethukuk.com/en/vat-turkey-foreigner/", type: "guide" },
     ],
-    judgment: "This guide estimates the standard 2% accommodation add-on, which is the rate that returns after 2026, so during the temporary 1% period your bill may be a little lower. The daily cash share, tipping norms and likely ATM behavior are our own estimate from experience, not an official figure.",
+    judgment: "This guide estimates the accommodation tax at the current temporary 1%, which applies through 31 December 2026; it returns to the standard 2% in 2027, so a stay from then on would carry a little more. The daily cash share, tipping norms and likely ATM behavior are our own estimate from experience, not an official figure.",
   },
 
   faqs: [
@@ -127,7 +129,7 @@ export default {
     { q: "Why does everything cost a different amount than my guidebook says?", a: "Inflation. The lira has been sliding quickly, so prices and the exchange rate can shift a lot within a year, and older guidebooks, blogs and forum posts are often well out of date. Check a live converter and current menus rather than trusting dated figures." },
     { q: "What is the best ATM to use in Türkiye?", a: "A major bank's machine, such as Ziraat, Isbank, Garanti, Akbank or Yapi Kredi. Read the fee, expect a modest per-withdrawal limit, and always decline the offer to convert to US dollars. Avoid the standalone machines clustered in tourist areas, which push poor conversions." },
     { q: "How much should I tip in Türkiye?", a: "Around 5 to 10% at restaurants for good service, but check first for a servis (service) charge on the bill. Round up for taxis, leave a little for hotel staff and guides, and keep small change for a hamam attendant. Cash tips are preferred, as card tips rarely reach the staff." },
-    { q: "Does Türkiye charge a tourist tax?", a: "There is a national accommodation tax of 2% added to hotel bills, the same across the country rather than varying by city. There is no separate per-night city tourist tax, and some room rates you book online already include the 2%." }
+    { q: "Does Türkiye charge a tourist tax?", a: "There is a national accommodation tax added to hotel bills, the same across the country rather than varying by city. It is temporarily 1% through 31 December 2026 (down from the standard 2%, which returns in 2027), and some room rates you book online already include it. There is no separate per-night city tourist tax." }
   ],
 
   culture: {
