@@ -127,7 +127,8 @@ const sources = [
         <li><b>No visa for a short visit:</b> much of Europe, and, as of 2026, Turkey and Thailand for US citizens, though a free arrival form may still apply.</li>
       </ul>
       <p class="pv-note pv-standalone">This is a starting point, not a ruling, and it is written for US citizens. Green card holders and other nationalities can face different rules. Always confirm on the official government page for your destination and your passport.</p>
-      <p class="pv-links"><a href="https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html" {...gov}>State Department country information pages</a> <span class="tg free">we earn nothing</span></p>
+      <p class="pv-cta"><a class="btn" href="https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html" {...gov}>Check entry rules at travel.state.gov
+        <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a> <span class="tg free">we earn nothing</span></p>
       <p class="pv-links pv-guidelink"><a href="/#guides">See the entry note in each country guide</a></p>
     </section>
 
@@ -197,6 +198,7 @@ const sources = [
     .pv-lede{font-size:17px;line-height:1.55;color:var(--ink);margin:0}
     .pv-prose p:not(.lab):not(.pv-lede):not(.pv-note):not(.pv-links){font-size:16px;line-height:1.65;color:var(--ink);margin:14px 0 0}
     .pv-prose a{color:var(--teal-deep);font-weight:500;text-decoration:underline;text-underline-offset:2px}
+    .pv-prose a.btn{color:#fff;text-decoration:none}
     .pv-links{margin:16px 0 0;display:flex;align-items:center;flex-wrap:wrap;gap:10px 12px}
     .pv-guidelink{margin-top:10px}
     .pv-note{font-size:13.5px;line-height:1.55;color:var(--muted);margin:12px 0 0}
