@@ -1,0 +1,104 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { countries } from '../data/index.js';
+
+// Everything on this page is read from the country guides. A fact fixed in one
+// guide updates here on the next build, and adding a keyFacts entry to a guide
+// makes it appear on this page automatically. Nothing is re-typed here, so the
+// staleness scanner and each guide's checked date still govern.
+const live = countries.filter(c => c.live && !c.blocked);
+
+// An ISO date (YYYY-MM-DD) rendered as a short, readable date.
+function niceDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso + 'T00:00:00');
+  if (isNaN(d.getTime())) return iso;
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+// Flatten every guide's high-churn keyFacts into one tracked list.
+const tracked = live
+  .filter(c => Array.isArray(c.keyFacts) && c.keyFacts.length)
+  .flatMap(c => c.keyFacts.map(k => ({ ...k, country: c.name, slug: c.slug })))
+  .sort((a, b) => a.country.localeCompare(b.country) || a.label.localeCompare(b.label));
+
+// A plain-language "when" from the status and the effective date.
+function whenText(k) {
+  if (k.status === 'proposed') return 'Proposed';
+  if (!k.effective) return 'In effect';
+  const nice = niceDate(k.effective);
+  const future = new Date(k.effective + 'T00:00:00') > new Date();
+  return future ? ('Takes effect ' + nice) : ('In effect since ' + nice);
+}
+---
+<Base
+  title="Tourist taxes and entry fees by country, checked and dated"
+  description="A current, sourced list of tourist taxes and entry fees for US travelers: what is charged, how much, when it changed, and the official source.">
+  <Nav />
+  <main class="wrap">
+
+    <section class="fx-intro">
+      <p class="fx-lab">Fees and taxes</p>
+      <h1>Tourist taxes and entry fees, country by country.</h1>
+      <p class="fx-lede">The charges that catch US travelers out are the ones that move on political timelines: city accommodation levies, and entry fees like the UK ETA. This page keeps the ones we watch most closely in one place, with the amount, when it took effect, and a link to the official source. Every figure is pulled from a country guide and carries the same checked date. For the everyday taxes and tipping in a country, the full guide has the detail.</p>
+    </section>
+
+    {tracked.length > 0 && (
+      <section class="fx-sec">
+        <h2>Tracked entry fees and city levies</h2>
+        <p class="fx-note">The high-churn charges we check against their official source and date. Each row links to that source and to the full country guide.</p>
+        <div class="fx-tablewrap">
+          <table class="fx-table">
+            <thead>
+              <tr><th>Country</th><th>Fee or tax</th><th>Amount</th><th>When</th><th>Source</th><th>Checked</th></tr>
+            </thead>
+            <tbody>
+              {tracked.map(k => (
+                <tr>
+                  <td><a href={'/' + k.slug}>{k.country}</a></td>
+                  <td>{k.label}</td>
+                  <td>{k.value}</td>
+                  <td><span class={'fx-pill ' + (k.status === 'proposed' ? 'is-proposed' : 'is-live')}>{whenText(k)}</span></td>
+                  <td>{k.source ? (<a href={k.source} target="_blank" rel="noopener">Official page</a>) : (<span class="fx-muted">No official page yet</span>)}</td>
+                  <td class="fx-muted num">{niceDate(k.checked)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    )}
+
+    <p class="fx-keep">We check these against official pages and date each guide. How that works, and how we handle corrections, is on our <a href="/methodology">methodology page</a>. Rules and fees change, so confirm anything critical on the official source before you rely on it.</p>
+
+  </main>
+  <Footer />
+
+  <style>
+    .fx-lab{font-size:12px;font-weight:600;color:var(--teal-deep);letter-spacing:.08em;text-transform:uppercase;margin:26px 0 10px}
+    .fx-intro h1{margin:0 0 14px}
+    .fx-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
+    .fx-sec{margin:36px 0}
+    .fx-sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 6px}
+    .fx-note{font-size:14.5px;color:var(--muted);margin:0 0 16px;line-height:1.5}
+    .fx-tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+    .fx-table{width:100%;border-collapse:collapse;font-size:14.5px}
+    .fx-table th{text-align:left;font-weight:600;color:var(--muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
+    .fx-table td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+    .fx-table tbody tr:last-child td{border-bottom:0}
+    .fx-table a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .fx-table a:hover{text-decoration:underline}
+    .fx-muted{color:var(--muted)}
+    .fx-pill{display:inline-block;font-size:11.5px;font-weight:600;border-radius:999px;padding:3px 9px;white-space:nowrap}
+    .fx-pill.is-live{color:#10502C;background:var(--green-bg)}
+    .fx-pill.is-proposed{color:#7A3D08;background:var(--amber-bg)}
+    .fx-keep{font-size:14px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line);padding-top:18px;margin:30px 0 40px}
+    @media (max-width:560px){
+      .fx-table{font-size:13.5px}
+      .fx-table th,.fx-table td{padding:10px 11px}
+      .fx-lede{font-size:16.5px}
+    }
+  </style>
+</Base>
