@@ -1,0 +1,9 @@
+---
+import Hub from '../components/Hub.astro';
+import { REGIONS, countriesInRegion } from '../data/hubs.js';
+import { countries } from '../data/index.js';
+
+const hub = REGIONS['Oceania'];
+const items = countriesInRegion('Oceania', countries);
+---
+<Hub hub={hub} items={items} />

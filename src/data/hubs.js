@@ -85,6 +85,22 @@ export const REGIONS = {
       'Watch two more things, on the bill and before you fly: Caribbean and Mexican resort stays often add service charges, sales tax and local lodging or eco fees at checkout rather than in the quoted rate, and a couple of countries now want an entry authorization or e-visa paid ahead, Brazil and Canada among them. Below is every country we cover in the Americas, with a quick read on how card friendly it is and what to watch, then a full money guide for each. Start with where you are headed.',
     ],
   },
+  'Oceania': {
+    kind: 'region',
+    cardType: 'country',
+    key: 'oceania',
+    label: 'Oceania',
+    slug: 'oceania',
+    live: true,
+    lab: 'Regional guide',
+    title: 'Money in Oceania (2026): cards, cash and fees by country | True Trip Costs',
+    description: 'How money works across Australia and New Zealand for US travelers: where you can tap for almost everything, the card surcharges to watch, the visitor levies and travel authorizations to pay before you fly, and the little cash to carry, country by country.',
+    h1: 'Money in Oceania, country by country.',
+    intro: [
+      'Oceania is one of the easiest regions we cover for cards. Across Australia and New Zealand you can tap a card or phone for almost everything, from city cafes to country towns, and you can go days without touching cash. The money quirks here are about fees and entry costs rather than cash: card surcharges are the thing to watch, Australia is switching them off from 1 October 2026 while New Zealand still allows them, and both countries want a cheap travel authorization arranged and paid before you fly.',
+      'One rule holds in both places: always pay in the local currency, never US dollars, on any card terminal or ATM, and let your own bank do the conversion. Below is every country we cover in Oceania, with a quick read on how card friendly it is and what to watch, then a full money guide for each. Start with where you are headed.',
+    ],
+  },
   // Thematic collections and the current-fees hub go here later, each as a Hub config plus a thin page.
 };
 
