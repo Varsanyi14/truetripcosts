@@ -8,6 +8,7 @@ export default {
   emergency: { medical: "112", note: "112 is the single national emergency number, and 108 reaches an ambulance directly in most states.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "high",
   region: "Asia",
+  signals: { cardFriendliness: 2, cashNeed: 4, taxRisk: 3, atmRisk: 4 },
   hook: "The country runs on QR-code payments, but cash still rules the street and cards fill the gap.",
   aliases: ["bharat", "delhi", "mumbai", "jaipur", "goa", "kerala", "rupee", "upi"],
 

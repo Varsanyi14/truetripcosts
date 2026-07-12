@@ -7,6 +7,8 @@ export default {
   checkedISO: "2026-07-10",
   emergency: { medical: "119", note: "119 is for an ambulance or fire, and 110 is the police. The 112 and 911 numbers do not work here.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
+  region: "Asia",
+  signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 3 },
   title: "Money in Japan (2026): Cash, Cards, IC Cards, ATMs and Tax-Free Shopping | True Trip Costs",
   description: "How to handle money in Japan as a US traveler in 2026: cash vs card, the best ATMs (7-Eleven), IC cards like Suica, tax-free shopping, tipping, and the traps to avoid. Checked July 2026.",
   h1: "Money in Japan, sorted.",

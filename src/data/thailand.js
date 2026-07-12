@@ -15,6 +15,8 @@ export default {
   },
   emergency: { medical: "1669", note: "1669 is the medical and ambulance line. 1155 reaches the tourist police, who speak English.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "medium",
+  region: "Asia",
+  signals: { cardFriendliness: 2, cashNeed: 4, taxRisk: 2, atmRisk: 5 },
   title: "Money in Thailand (2026): Cash, Cards, ATMs, the 220 Baht Fee and Tipping | True Trip Costs",
   description: "How to handle money in Thailand as a US traveler in 2026: cash vs card, the steep ATM fee and how to beat it, the dollar conversion trap, tipping and the ++ service charge, and the tourist VAT refund. Checked July 2026.",
   h1: "Money in Thailand, sorted.",

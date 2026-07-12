@@ -9,7 +9,7 @@
 // Most country files carry a `region`. These originals leave it to this fallback for
 // now; backfilling `region` into their data files removes the need for it.
 export const REGION_FALLBACK = {
-  japan: 'Asia', mexico: 'Americas', thailand: 'Asia', vietnam: 'Asia',
+  mexico: 'Americas',
 };
 export const regionOf = (c) => (c && (c.region || REGION_FALLBACK[c.slug])) || null;
 
@@ -54,7 +54,23 @@ export const REGIONS = {
       'One rule holds everywhere here: always pay in the local currency, never dollars, on any card terminal or ATM, and let your own bank do the conversion. Below is every country we cover in Europe, with a quick read on how card friendly it is and what to watch, then a full money guide for each. Start with where you are headed.',
     ],
   },
-  // Asia and Americas: add a config here and a thin page, then set live true.
+  'Asia': {
+    kind: 'region',
+    cardType: 'country',
+    key: 'asia',
+    label: 'Asia',
+    slug: 'asia',
+    live: true,
+    lab: 'Regional guide',
+    title: 'Money in Asia (2026): cash, cards and fees by country | True Trip Costs',
+    description: 'How money works across Asia for US travelers: where cards are fine and where cash still rules, the ATM fees and visa fees to plan for, and the local cash to carry, country by country.',
+    h1: 'Money in Asia, country by country.',
+    intro: [
+      'Asia is the most cash first region we cover. Cards work at hotels, malls and mid range restaurants in the cities, and locals lean on QR payment apps, but street food, markets, tuk tuks and autorickshaws, temples and small shops still want local notes, so a stack of cash is your main tool almost everywhere. Two costs catch first timers here: several countries charge a flat fee on every foreign card withdrawal, steepest in Thailand, and a few want a visa or e-visa arranged and paid before you fly.',
+      'One rule holds everywhere here: always pay in the local currency, never dollars, on any card terminal or ATM, and pull cash from a bank ATM rather than an airport counter. Below is every country we cover in Asia, with a quick read on how card friendly it is and what to watch, then a full money guide for each. Start with where you are headed.',
+    ],
+  },
+  // Americas: add a config here and a thin page, then set live true.
 };
 
 export const regionsList = () => Object.values(REGIONS);

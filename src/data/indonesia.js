@@ -8,6 +8,7 @@ export default {
   emergency: { medical: "119", note: "119 is the medical line, and 112 works as a general emergency number in the cities. Outside them, ambulance cover is thin and a taxi is often faster.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "high",
   region: "Asia",
+  signals: { cardFriendliness: 2, cashNeed: 4, taxRisk: 4 },
   hook: "Bali runs more on cash and QR codes than tourists expect, plus a one-time entry levy on top.",
 
   title: "Money in Indonesia (2026): Cash, Cards, QRIS and the Bali Entry Levy | True Trip Costs",
