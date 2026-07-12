@@ -33,5 +33,7 @@ import sweden from './sweden.js';
 import denmark from './denmark.js';
 import southKorea from './south-korea.js';
 import singapore from './singapore.js';
+import australia from './australia.js';
+import newZealand from './new-zealand.js';
 
-export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, india, czechia, canada, switzerland, austria, turkey, egypt, colombia, brazil, argentina, jamaica, ireland, bahamas, iceland, norway, sweden, denmark, southKorea, singapore];
+export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, india, czechia, canada, switzerland, austria, turkey, egypt, colombia, brazil, argentina, jamaica, ireland, bahamas, iceland, norway, sweden, denmark, southKorea, singapore, australia, newZealand];
