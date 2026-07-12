@@ -3,10 +3,14 @@ import Base from '../layouts/Base.astro';
 import Nav from './Nav.astro';
 import Footer from './Footer.astro';
 import { signalChips } from '../data/hubs.js';
+import fs from 'node:fs';
 
 // One template for every hub. `hub` is the config from hubs.js (region today, thematic
 // collection or current-fees later), `items` is the list to show. Card rendering keys
 // off hub.cardType, so a new hub kind is a new branch here plus a config, not a rewrite.
+// Flag per country mirrors the homepage: /flags/<slug>.svg, falling back to the globe.
+const flagDir = process.cwd() + '/public/flags/';
+const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? '/flags/' + slug + '.svg' : '/flags/world.svg';
 const { hub, items = [] } = Astro.props;
 
 const crumbBase = 'https://truetripcosts.com';
@@ -43,13 +47,19 @@ const crumbLd = {
             const teaser = c.hook || (c.meter && c.meter.heading) || '';
             return (
               <a class="hub-card" href={'/' + c.slug}>
-                <span class="hub-cname">{c.name}</span>
-                {teaser && <span class="hub-cteaser">{teaser}</span>}
-                {chips.length > 0 && (
-                  <span class="hub-chips">
-                    {chips.map(ch => (<span class={'hub-chip is-' + ch.tone}>{ch.label}</span>))}
-                  </span>
-                )}
+                <span class="hub-thumb">
+                  <img src={(c.hero && c.hero.img) || ('/' + c.slug + '-hero.jpg')} alt="" loading="lazy" decoding="async" width="400" height="300" />
+                  <span class="hub-flag"><img src={flagSrc(c.slug)} alt="" width="24" height="18" loading="lazy" /></span>
+                </span>
+                <span class="hub-cbody">
+                  <span class="hub-cname">{c.name}</span>
+                  {teaser && <span class="hub-cteaser">{teaser}</span>}
+                  {chips.length > 0 && (
+                    <span class="hub-chips">
+                      {chips.map(ch => (<span class={'hub-chip is-' + ch.tone}>{ch.label}</span>))}
+                    </span>
+                  )}
+                </span>
               </a>
             );
           })}
@@ -73,12 +83,18 @@ const crumbLd = {
     .hub-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0 0 14px}
     .hub-lede:last-child{margin-bottom:0}
     .hub-sec{margin:32px 0 44px}
-    .hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
-    .hub-card{display:flex;flex-direction:column;gap:7px;padding:16px 18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);text-decoration:none}
+    .hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+    .hub-card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);text-decoration:none;overflow:hidden}
     .hub-card:hover{border-color:var(--teal)}
+    .hub-thumb{position:relative;aspect-ratio:4/3;background:var(--green-bg);overflow:hidden}
+    .hub-thumb img{width:100%;height:100%;object-fit:cover;object-position:center 32%;display:block;transition:transform .4s ease}
+    .hub-card:hover .hub-thumb img{transform:scale(1.04)}
+    .hub-flag{position:absolute;top:10px;left:10px;display:inline-flex;align-items:center;justify-content:center;line-height:0;background:rgba(245,244,239,.94);border-radius:7px;padding:4px;box-shadow:0 1px 3px rgba(22,48,44,.2)}
+    .hub-flag img{width:24px;height:18px;border-radius:3px;display:block}
+    .hub-cbody{display:flex;flex-direction:column;gap:7px;padding:15px 18px 17px}
     .hub-cname{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--ink);line-height:1.2}
     .hub-card:hover .hub-cname{color:var(--teal-deep)}
-    .hub-cteaser{font-size:14px;color:var(--muted);line-height:1.45}
+    .hub-cteaser{font-size:14px;color:var(--muted);line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     .hub-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
     .hub-chip{font-size:11.5px;font-weight:600;border-radius:999px;padding:3px 9px;white-space:nowrap}
     .hub-chip.is-good{color:#10502C;background:var(--green-bg)}
