@@ -1,0 +1,89 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from './Nav.astro';
+import Footer from './Footer.astro';
+import { signalChips } from '../data/hubs.js';
+
+// One template for every hub. `hub` is the config from hubs.js (region today, thematic
+// collection or current-fees later), `items` is the list to show. Card rendering keys
+// off hub.cardType, so a new hub kind is a new branch here plus a config, not a rewrite.
+const { hub, items = [] } = Astro.props;
+
+const crumbBase = 'https://truetripcosts.com';
+const crumbLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: crumbBase + '/' },
+    { '@type': 'ListItem', position: 2, name: hub.label, item: crumbBase + '/' + hub.slug },
+  ],
+};
+---
+<Base title={hub.title} description={hub.description}>
+  <Nav />
+  <main class="wrap">
+
+    <nav class="crumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="crumb-sep" aria-hidden="true">&#8250;</span>
+      <span aria-current="page">{hub.label}</span>
+    </nav>
+
+    <section class="hub-intro">
+      <p class="hub-lab">{hub.lab}</p>
+      <h1>{hub.h1}</h1>
+      {hub.intro.map(p => (<p class="hub-lede">{p}</p>))}
+    </section>
+
+    {hub.cardType === 'country' && items.length > 0 && (
+      <section class="hub-sec">
+        <div class="hub-grid">
+          {items.map(c => {
+            const chips = signalChips(c.signals);
+            const teaser = c.hook || (c.meter && c.meter.heading) || '';
+            return (
+              <a class="hub-card" href={'/' + c.slug}>
+                <span class="hub-cname">{c.name}</span>
+                {teaser && <span class="hub-cteaser">{teaser}</span>}
+                {chips.length > 0 && (
+                  <span class="hub-chips">
+                    {chips.map(ch => (<span class={'hub-chip is-' + ch.tone}>{ch.label}</span>))}
+                  </span>
+                )}
+              </a>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+  </main>
+  <Footer />
+
+  <script type="application/ld+json" set:html={JSON.stringify(crumbLd)}></script>
+
+  <style>
+    .crumb{font-size:13px;color:var(--muted);margin:22px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+    .crumb a{color:var(--teal-deep);text-decoration:none;font-weight:500}
+    .crumb a:hover{text-decoration:underline}
+    .crumb-sep{color:var(--line)}
+    .hub-lab{font-size:12px;font-weight:600;color:var(--teal-deep);letter-spacing:.08em;text-transform:uppercase;margin:20px 0 10px}
+    .hub-intro{max-width:680px}
+    .hub-intro h1{margin:0 0 14px}
+    .hub-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0 0 14px}
+    .hub-lede:last-child{margin-bottom:0}
+    .hub-sec{margin:32px 0 44px}
+    .hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+    .hub-card{display:flex;flex-direction:column;gap:7px;padding:16px 18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);text-decoration:none}
+    .hub-card:hover{border-color:var(--teal)}
+    .hub-cname{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--ink);line-height:1.2}
+    .hub-card:hover .hub-cname{color:var(--teal-deep)}
+    .hub-cteaser{font-size:14px;color:var(--muted);line-height:1.45}
+    .hub-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+    .hub-chip{font-size:11.5px;font-weight:600;border-radius:999px;padding:3px 9px;white-space:nowrap}
+    .hub-chip.is-good{color:#10502C;background:var(--green-bg)}
+    .hub-chip.is-warn{color:#7A3D08;background:var(--amber-bg)}
+    .hub-chip.is-neutral{color:var(--muted);background:#EDEBE4}
+    @media (max-width:560px){ .hub-lede{font-size:16.5px} }
+  </style>
+</Base>
