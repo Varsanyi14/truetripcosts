@@ -10,7 +10,7 @@
       <details class="gmenu">
         <summary class="gmenu-sum">Guides<svg class="gmenu-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
         <div class="gmenu-panel">
-          <a href="/">All country guides</a>
+          <a href="/#guides">All country guides</a>
           <a href="/tourist-taxes">Tourist taxes and fees</a>
           <a href="/cash-or-card">Cash or card</a>
         </div>
@@ -27,8 +27,29 @@
     .gmenu-sum:hover{color:var(--teal-deep)}
     .gmenu-chev{transition:transform .15s ease}
     .gmenu[open] .gmenu-chev{transform:rotate(180deg)}
-    .gmenu-panel{position:absolute;top:calc(100% + 8px);right:0;min-width:210px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:6px;z-index:50}
+    .gmenu-panel{position:absolute;top:calc(100% + 8px);right:0;min-width:210px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:6px;z-index:60;will-change:transform}
     .gmenu-panel a{display:block;padding:9px 11px;border-radius:8px;font-size:14px;color:var(--ink);text-decoration:none;white-space:nowrap}
     .gmenu-panel a:hover{background:var(--paper);color:var(--teal-deep)}
   </style>
 </nav>
+
+<script>
+  (function () {
+    var menus = document.querySelectorAll('details.gmenu');
+    if (!menus.length) return;
+    // Close an open menu when clicking anywhere outside it.
+    document.addEventListener('click', function (e) {
+      menus.forEach(function (m) { if (m.open && !m.contains(e.target)) m.open = false; });
+    });
+    // Close on Escape.
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') menus.forEach(function (m) { m.open = false; });
+    });
+    // Close after choosing an item, which matters for same-page anchors like /#guides.
+    menus.forEach(function (m) {
+      m.querySelectorAll('.gmenu-panel a').forEach(function (a) {
+        a.addEventListener('click', function () { m.open = false; });
+      });
+    });
+  })();
+</script>
