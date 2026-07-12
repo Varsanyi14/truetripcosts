@@ -51,6 +51,22 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
       </div>
     </section>
 
+    <section class="qa" aria-label="Quick answers">
+      <p class="qa-lab">Quick answers</p>
+      <div class="qa-grid">
+        <a class="qa-card" href="/tourist-taxes">
+          <span class="qa-t">Tourist taxes and entry fees</span>
+          <span class="qa-d">What each country charges to visit or stay, dated and linked to the official source.</span>
+          <span class="qa-go" aria-hidden="true">&#8594;</span>
+        </a>
+        <a class="qa-card" href="/cash-or-card">
+          <span class="qa-t">Cash or card by country</span>
+          <span class="qa-d">How card-friendly each place is, and how much cash to carry.</span>
+          <span class="qa-go" aria-hidden="true">&#8594;</span>
+        </a>
+      </div>
+    </section>
+
     <section class="rail-wrap" aria-label="Browse country guides">
       <p class="rail-lab">Browse the guides</p>
       <div class="rail">
@@ -132,6 +148,16 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
     .cfilter-in::placeholder{color:var(--muted,#6F6E66);opacity:.8}
     .cfilter-none{margin:0 0 22px;color:var(--muted,#6F6E66)}
     .ccard.is-hidden{display:none}
+    .qa{margin:6px 0 4px}
+    .qa-lab{font-size:12px;font-weight:600;color:var(--teal-deep,#0A5644);letter-spacing:.08em;text-transform:uppercase;margin:0 0 12px}
+    .qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .qa-card{position:relative;display:block;padding:16px 18px;border:1px solid var(--line,#E5E3DB);border-radius:var(--radius,14px);background:var(--card,#FFFFFF);box-shadow:var(--shadow);text-decoration:none}
+    .qa-card:hover{border-color:var(--teal,#0E7A5F)}
+    .qa-t{display:block;font-weight:600;font-size:15.5px;color:var(--ink,#16302C);margin:0 0 4px}
+    .qa-d{display:block;font-size:14px;color:var(--muted,#6F6E66);line-height:1.45;max-width:36ch}
+    .qa-go{position:absolute;top:16px;right:16px;color:var(--teal-deep,#0A5644);font-weight:700}
+    .qa-card:hover .qa-t{color:var(--teal-deep,#0A5644)}
+    @media (max-width:560px){ .qa-grid{grid-template-columns:1fr} }
   </style>
 
   <script>

@@ -7,16 +7,28 @@
       <span>True Trip Costs<small>The money side of travel</small></span>
     </a>
     <div class="navlinks">
-      <a class="navlink" href="/tourist-taxes">Tourist taxes</a>
-      <a class="navlink navlink-tuck" href="/methodology">Methodology</a>
+      <details class="gmenu">
+        <summary class="gmenu-sum">Guides<svg class="gmenu-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="gmenu-panel">
+          <a href="/">All country guides</a>
+          <a href="/tourist-taxes">Tourist taxes and fees</a>
+          <a href="/cash-or-card">Cash or card</a>
+        </div>
+      </details>
       <a class="navcta" href="#" data-open-signup>Get updates</a>
     </div>
   </div>
 
   <style>
-    .navlinks{display:flex;align-items:center;gap:15px}
-    .navlink{font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;white-space:nowrap}
-    .navlink:hover{color:var(--teal-deep)}
-    @media (max-width:560px){ .navlink-tuck{display:none} }
+    .navlinks{display:flex;align-items:center;gap:16px}
+    .gmenu{position:relative}
+    .gmenu-sum{display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink);cursor:pointer;list-style:none;white-space:nowrap}
+    .gmenu-sum::-webkit-details-marker{display:none}
+    .gmenu-sum:hover{color:var(--teal-deep)}
+    .gmenu-chev{transition:transform .15s ease}
+    .gmenu[open] .gmenu-chev{transform:rotate(180deg)}
+    .gmenu-panel{position:absolute;top:calc(100% + 8px);right:0;min-width:210px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:6px;z-index:50}
+    .gmenu-panel a{display:block;padding:9px 11px;border-radius:8px;font-size:14px;color:var(--ink);text-decoration:none;white-space:nowrap}
+    .gmenu-panel a:hover{background:var(--paper);color:var(--teal-deep)}
   </style>
 </nav>
