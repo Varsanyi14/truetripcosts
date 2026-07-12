@@ -16,6 +16,7 @@ export default {
   emergency: { medical: "112", note: "112 reaches every service, 144 goes straight to an ambulance, and 1414 is Rega, the air-rescue service.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
   region: "Europe",
+  signals: { cardFriendliness: 4, cashNeed: 2, taxRisk: 3 },
   hook: "Card-friendly and tidy, but it's francs, not euros, and everything costs more than you expect.",
   aliases: ["zurich", "geneva", "bern", "basel", "lucerne", "lausanne", "zermatt", "interlaken", "st moritz", "st. moritz", "grindelwald", "swiss franc", "chf", "franc", "matterhorn", "jungfrau", "swiss", "helvetia"],
 

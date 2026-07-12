@@ -15,6 +15,8 @@ export default {
   },
   emergency: { medical: "112", note: "112 reaches every service, and 15 connects you straight to the medical service, the SAMU.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
+  region: "Europe",
+  signals: { cardFriendliness: 4, cashNeed: 2, taxRisk: 3, atmRisk: 4 },
   title: "Money in France (2026): Cash, Cards, ATMs, Tipping and the VAT Refund | True Trip Costs",
   description: "How to handle money in France as a US traveler in 2026: cash vs card, which ATMs to use and which to avoid, the dollar conversion trap, tipping with service compris, the tourist tax, and the VAT refund. Checked July 2026.",
   h1: "Money in France, sorted.",

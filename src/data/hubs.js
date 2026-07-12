@@ -9,9 +9,7 @@
 // Most country files carry a `region`. These originals leave it to this fallback for
 // now; backfilling `region` into their data files removes the need for it.
 export const REGION_FALLBACK = {
-  france: 'Europe', italy: 'Europe', japan: 'Asia', mexico: 'Americas',
-  portugal: 'Europe', spain: 'Europe', thailand: 'Asia',
-  'united-kingdom': 'Europe', vietnam: 'Asia',
+  japan: 'Asia', mexico: 'Americas', thailand: 'Asia', vietnam: 'Asia',
 };
 export const regionOf = (c) => (c && (c.region || REGION_FALLBACK[c.slug])) || null;
 
@@ -40,7 +38,23 @@ export const REGIONS = {
       'Below is every country we cover in the region, with a quick read on how card friendly it is and what to watch, then a full money guide for each. Start with where you are headed.',
     ],
   },
-  // Europe, Asia and Americas: add a config here and a thin page, then set live true.
+  'Europe': {
+    kind: 'region',
+    cardType: 'country',
+    key: 'europe',
+    label: 'Europe',
+    slug: 'europe',
+    live: true,
+    lab: 'Regional guide',
+    title: 'Money in Europe (2026): cards, cash and fees by country | True Trip Costs',
+    description: 'How money works across Europe for US travelers: where you can tap for almost everything, the tourist taxes cities add at checkout, the Euronet ATMs to skip, and the cash and cards to bring, country by country.',
+    h1: 'Money in Europe, country by country.',
+    intro: [
+      'Europe is the most card friendly region we cover. Across the west and north you can tap for almost everything, and in the Nordics you can go days without touching cash, though prices there run high once you convert. The money quirks are consistent: many cities add a small nightly tourist tax that lands at checkout rather than in the rate you booked, and the bright standalone ATMs in tourist squares, Euronet above all, charge steep fees and push a poor exchange rate.',
+      'One rule holds everywhere here: always pay in the local currency, never dollars, on any card terminal or ATM, and let your own bank do the conversion. Below is every country we cover in Europe, with a quick read on how card friendly it is and what to watch, then a full money guide for each. Start with where you are headed.',
+    ],
+  },
+  // Asia and Americas: add a config here and a thin page, then set live true.
 };
 
 export const regionsList = () => Object.values(REGIONS);

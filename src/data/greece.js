@@ -15,6 +15,7 @@ export default {
   emergency: { medical: "112", note: "112 works across the mainland and the islands. Reaching a major hospital from a smaller island can take time.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "medium",
   region: "Europe",
+  signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 3 },
   hook: "Cards work in the cities, but the islands still run on cash and a nightly climate fee.",
 
   title: "Money in Greece (2026): Cash, Cards, ATMs and the Climate Resilience Fee | True Trip Costs",

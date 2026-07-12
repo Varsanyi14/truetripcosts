@@ -17,6 +17,7 @@ export default {
   emergency: { medical: "112", note: "112 reaches every emergency service, ambulance, police and fire, from any phone, even with no SIM. Operators speak English. For non-urgent medical help in the Copenhagen (Capital) region, call the medical helpline on 1813; elsewhere your accommodation can point you to the local out-of-hours doctor. Keep 112 for a genuine emergency.", checked: "Jul 2026", checkedISO: "2026-07-07" },
   insuranceLevel: "low",
   region: "Europe",
+  signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 2 },
   hook: "Card-first and nearly cashless, with a flat 25% tax already in every price; the krone is tied to the euro but you still pay in kroner, not euros.",
   aliases: ["denmark", "copenhagen", "kobenhavn", "aarhus", "odense", "aalborg", "nyhavn", "billund", "danish krone", "dkk", "krone", "kroner"],
 

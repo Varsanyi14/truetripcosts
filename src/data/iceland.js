@@ -18,6 +18,7 @@ export default {
   emergency: { medical: "112", note: "112 is Iceland's single emergency number, reaching police, ambulance, fire and search-and-rescue from any phone, even with no SIM or credit. Operators speak English. There is also a free 112 Iceland app that can send your GPS location to responders, worth having if you head into the backcountry.", checked: "Jul 2026", checkedISO: "2026-07-07" },
   insuranceLevel: "low",
   region: "Europe",
+  signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 3 },
   hook: "Maybe the most cashless country on earth: tap for everything, carry almost no cash, decline dollar conversion, and budget for very high prices plus a small nightly lodging tax.",
   aliases: ["iceland", "reykjavik", "keflavik", "kef", "golden circle", "ring road", "blue lagoon", "akureyri", "vik", "icelandic krona", "isk", "krona", "kronur", "lopapeysa"],
 

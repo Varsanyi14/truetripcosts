@@ -17,6 +17,7 @@ export default {
   emergency: { medical: "112", note: "112 reaches the police and works from any phone, even with no SIM. For a medical emergency dial 113 for an ambulance, and 110 for the fire service. 116 117 is the out-of-hours medical line for less urgent care. Operators speak English.", checked: "Jul 2026", checkedISO: "2026-07-07" },
   insuranceLevel: "low",
   region: "Europe",
+  signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 3 },
   hook: "Card-friendly and nearly cashless, but it is kroner not euros, everything is expensive, and a new opt-in visitor's tax started in summer 2026 in places like Lofoten and Bergen.",
   aliases: ["norway", "oslo", "bergen", "tromso", "lofoten", "stavanger", "alesund", "geiranger", "fjords", "trondheim", "norwegian krone", "nok", "krone", "kroner"],
 

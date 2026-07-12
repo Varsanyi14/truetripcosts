@@ -17,6 +17,7 @@ export default {
   emergency: { medical: "112", note: "112 reaches every emergency service, ambulance, police and fire, from any phone, even with no SIM. Operators speak English. For non-urgent medical advice, call 1177 (staffed by nurses); for non-urgent police matters, call 114 14. Keep 112 for a genuine emergency.", checked: "Jul 2026", checkedISO: "2026-07-07" },
   insuranceLevel: "low",
   region: "Europe",
+  signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 2 },
   hook: "One of the most cashless places on earth, so your card is king, but it is kronor not euros, plenty of spots take no cash at all, and prices run high.",
   aliases: ["sweden", "stockholm", "gothenburg", "goteborg", "malmo", "uppsala", "gamla stan", "lapland", "kiruna", "swedish krona", "sek", "krona", "kronor"],
 
