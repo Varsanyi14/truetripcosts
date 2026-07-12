@@ -101,6 +101,22 @@ export const REGIONS = {
       'One rule holds in both places: always pay in the local currency, never US dollars, on any card terminal or ATM, and let your own bank do the conversion. Below is every country we cover in Oceania, with a quick read on how card friendly it is and what to watch, then a full money guide for each. Start with where you are headed.',
     ],
   },
+  'Africa': {
+    kind: 'region',
+    cardType: 'country',
+    key: 'africa',
+    label: 'Africa',
+    slug: 'africa',
+    live: true,
+    lab: 'Regional guide',
+    title: 'Money in Africa (2026): cards, cash and fees by country | True Trip Costs',
+    description: 'How money works across Morocco and South Africa for US travelers: where cards work and where cash still rules, the closed currency to get on arrival, the tourist taxes and VAT refunds, tipping, and the little cash to carry, country by country.',
+    h1: 'Money in Africa, country by country.',
+    intro: [
+      'Africa is a study in contrasts for the money side of a trip. In Morocco you will use cash for most things and get the dirham, a closed currency, from a bank ATM on arrival, while in South Africa you can tap a card or phone for almost everything and keep only a little cash for tips. The quirks worth knowing ahead are the closed dirham and the nightly tourist tax in Morocco, the 15% VAT you can claim back on goods in South Africa, and the fact that tipping is customary in both places.',
+      'One rule holds across the region: always pay in the local currency, never US dollars, on any card terminal or ATM, and let your own bank do the conversion. Below is every country we cover in Africa, with a quick read on how card friendly it is and what to watch, then a full money guide for each. Start with where you are headed.',
+    ],
+  },
   // Thematic collections and the current-fees hub go here later, each as a Hub config plus a thin page.
 };
 
