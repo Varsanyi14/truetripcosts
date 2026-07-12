@@ -16,6 +16,7 @@ export default {
   emergency: { medical: "123", note: "123 is the nationwide line for police, fire and ambulance, and the operator can route you to medical help. Save your hotel address in Spanish to read out.", checked: "Jul 2026", checkedISO: "2026-07-02" },
   insuranceLevel: "medium",
   region: "Americas",
+  signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 2, atmRisk: 4 },
   hook: "Card-friendly in the cities, but carry cash for the coast and small towns, dodge the steep ATM fees, and skip the hotel tax you should not be paying.",
   aliases: ["colombia", "bogota", "medellin", "cartagena", "cali", "santa marta", "barranquilla", "coffee region", "eje cafetero", "peso", "cop", "colombian peso", "caribbean coast"],
 

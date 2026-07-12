@@ -16,6 +16,7 @@ export default {
   emergency: { medical: "192", note: "192 is the SAMU ambulance line, 190 reaches the police and 193 the fire brigade. Operators may not speak English, so have your address written in Portuguese to read out.", checked: "Jul 2026", checkedISO: "2026-07-02" },
   insuranceLevel: "medium",
   region: "Americas",
+  signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 3 },
   hook: "One of the most cashless places anywhere: tap your card almost everywhere, keep a little cash for the beach, always pay in reais, and sort your e-visa before you fly.",
   aliases: ["brazil", "brasil", "rio", "rio de janeiro", "sao paulo", "salvador", "iguazu", "iguacu", "amazon", "real", "reais", "brl", "pix", "carnival", "carnaval", "copacabana", "evisa", "e-visa"],
 

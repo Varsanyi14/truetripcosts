@@ -6,11 +6,10 @@
 // a new config here plus a thin page, not a rewrite.
 
 // --- Region, the single canonical source ---
-// Most country files carry a `region`. These originals leave it to this fallback for
-// now; backfilling `region` into their data files removes the need for it.
-export const REGION_FALLBACK = {
-  mexico: 'Americas',
-};
+// Every country file now carries a canonical `region`, so this fallback is empty. It is
+// kept, with regionOf still reading it, purely as a safety net: a new guide added without
+// a `region` would resolve to null and simply not appear on a hub until the field is set.
+export const REGION_FALLBACK = {};
 export const regionOf = (c) => (c && (c.region || REGION_FALLBACK[c.slug])) || null;
 
 // Reading grammar for region names that take "the".
@@ -70,7 +69,23 @@ export const REGIONS = {
       'One rule holds everywhere here: always pay in the local currency, never dollars, on any card terminal or ATM, and pull cash from a bank ATM rather than an airport counter. Below is every country we cover in Asia, with a quick read on how card friendly it is and what to watch, then a full money guide for each. Start with where you are headed.',
     ],
   },
-  // Americas: add a config here and a thin page, then set live true.
+  'Americas': {
+    kind: 'region',
+    cardType: 'country',
+    key: 'americas',
+    label: 'Americas',
+    slug: 'americas',
+    live: true,
+    lab: 'Regional guide',
+    title: 'Money in the Americas (2026): cash, cards and fees by country | True Trip Costs',
+    description: 'How money works across the Americas for US travelers: where cards and US dollars work, where you still need local cash, and the tourist taxes, resort fees and ATM fees to expect, country by country.',
+    h1: 'Money in the Americas, country by country.',
+    intro: [
+      'The Americas run the whole range. Canada and Brazil are close to cashless and card friendly almost everywhere, while much of Latin America and the Caribbean is card in the cities and cash for the rest, so how much local cash you carry depends heavily on where you land. Two habits pay off everywhere here: the US dollar is welcome at many Caribbean and Latin resorts, but you almost always lose a few percent when the merchant sets the rate, so pay in the local currency instead, and the ATMs can bite, with low withdrawal limits and steep flat fees in places like Argentina, Colombia and Mexico.',
+      'Watch two more things, on the bill and before you fly: Caribbean and Mexican resort stays often add service charges, sales tax and local lodging or eco fees at checkout rather than in the quoted rate, and a couple of countries now want an entry authorization or e-visa paid ahead, Brazil and Canada among them. Below is every country we cover in the Americas, with a quick read on how card friendly it is and what to watch, then a full money guide for each. Start with where you are headed.',
+    ],
+  },
+  // Thematic collections and the current-fees hub go here later, each as a Hub config plus a thin page.
 };
 
 export const regionsList = () => Object.values(REGIONS);

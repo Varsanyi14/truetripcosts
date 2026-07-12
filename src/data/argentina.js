@@ -17,6 +17,7 @@ export default {
   emergency: { medical: "911", note: "911 is the nationwide line for police, fire and ambulance and works from any phone, even with no SIM or credit. In Buenos Aires and some provinces 107 reaches the SAME ambulance service directly, with 101 for police and 100 for fire. There is also a tourist line, 0800 999 5000, with some help in languages other than Spanish. Save your address in Spanish to read out.", checked: "Jul 2026", checkedISO: "2026-07-03" },
   insuranceLevel: "high",
   region: "Americas",
+  signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 2, atmRisk: 5 },
   hook: "The blue-dollar bargain is over: your card now gets a fair rate, so tap for most things, keep some cash for taxis and small spots, skip the pricey ATMs, and carry travel insurance.",
   aliases: ["argentina", "buenos aires", "patagonia", "mendoza", "bariloche", "iguazu", "iguazu falls", "el calafate", "ushuaia", "salta", "cordoba", "peso", "ars", "argentine peso", "blue dollar", "dolar blue", "mep", "malbec", "tango", "obelisco"],
 

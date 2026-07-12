@@ -16,6 +16,7 @@ export default {
   emergency: { medical: "911", note: "911 has English-speaking operators. In rural areas and along the coast, an ambulance can take longer to reach you.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "medium",
   region: "Americas",
+  signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 2 },
   hook: "Dollars work almost everywhere, but paying in colones quietly saves you money.",
 
   title: "Money in Costa Rica (2026): Dollars vs Colones, Cards, ATMs and Tipping | True Trip Costs",

@@ -8,6 +8,7 @@ export default {
   emergency: { medical: "110", note: "110 reaches fire and ambulance and 119 the police, both free from any phone even with no SIM or credit. (911 connects in some areas, but 119 and 110 are the numbers to rely on.) Save your hotel address to read out.", checked: "Jul 2026", checkedISO: "2026-07-03" },
   insuranceLevel: "medium",
   region: "Americas",
+  signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 3, atmRisk: 4 },
   hook: "Two currencies, one simple rule: pay in Jamaican dollars or by card, not US dollars, since paying in USD quietly costs you 5 to 10% on the vendor's rate. Keep JMD cash for taxis, jerk stands and tips.",
   aliases: ["jamaica", "montego bay", "mobay", "negril", "ocho rios", "kingston", "port antonio", "jmd", "jamaican dollar", "reggae", "jerk", "blue mountains"],
 

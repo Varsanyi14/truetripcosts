@@ -8,6 +8,7 @@ export default {
   emergency: { medical: "911", note: "911 works like it does in the US for police, fire and ambulance, free from any phone. 919 is an alternate that also reaches police and fire. Save your hotel address to read out, and remember that on the Out Islands help can be further away.", checked: "Jul 2026", checkedISO: "2026-07-04" },
   insuranceLevel: "medium",
   region: "Americas",
+  signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 3, atmRisk: 4 },
   sources: {
     changed: "Sources added on first publish. Verified with the Bahamas Department of Inland Revenue that the standard VAT rate is 10%, and with the official tourism board that non-resident visitors can reclaim it on shopping through Global Blue, often refunded at the till. Confirmed with the Government of The Bahamas that the air departure tax is BS$15 and normally built into airfare, and with the Royal Bahamas Police Force that 911 and 919 are the emergency numbers. The Bahamian dollar's 1 to 1 peg with the US dollar, and the interchangeable use of both currencies, is long standing.",
     links: [

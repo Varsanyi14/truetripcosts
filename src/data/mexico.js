@@ -16,6 +16,8 @@ export default {
   },
   emergency: { medical: "911", note: "911 works nationwide, with English-speaking operators mainly in the cities. In remote areas, response can be slow.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "medium",
+  region: "Americas",
+  signals: { cardFriendliness: 2, cashNeed: 4, taxRisk: 3, atmRisk: 4 },
   title: "Money in Mexico (2026): Cash, Cards, ATMs, Tipping and VISITAX | True Trip Costs",
   description: "How to handle money in Mexico as a US traveler in 2026: cash vs card, dodging the dollar conversion trap, the best ATMs, tipping, card surcharges, and VISITAX for Cancun and Tulum. Checked July 2026.",
   h1: "Money in Mexico, sorted.",
