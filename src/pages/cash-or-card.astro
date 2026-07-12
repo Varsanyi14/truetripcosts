@@ -3,6 +3,11 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { countries } from '../data/index.js';
+import fs from 'node:fs';
+
+// Flag per country, matching the homepage: /flags/<slug>.svg, falling back to the globe.
+const flagDir = process.cwd() + '/public/flags/';
+const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? '/flags/' + slug + '.svg' : '/flags/world.svg';
 
 // Read from each guide's calculator meter (cashPct), the same figure the on-guide
 // bar uses, so this stays a single source and covers every guide. Nothing is
@@ -35,16 +40,16 @@ const ranked = live
         <p class="fx-note">Ordered by how much of everyday spending tends to be cash, lightest first. Each entry links to the full country guide.</p>
         <div class="fx-panel">
           {ranked.map(r => (
-            <div class="fx-item">
+            <a class="fx-item" href={'/' + r.slug + '#cards'}>
               <div class="co-top">
-                <a class="fx-country" href={'/' + r.slug}>{r.name}</a>
+                <span class="fx-country"><span class="co-flag"><img src={flagSrc(r.slug)} alt="" width="22" height="16" loading="lazy" /></span>{r.name}</span>
                 <span class="co-pct">{r.cashPct}% cash</span>
               </div>
               <div class="co-bar" role="img" aria-label={r.cashPct + ' percent cash, ' + (100 - r.cashPct) + ' percent card'}>
                 <div class="co-fill" style={'width:' + r.cashPct + '%'}></div>
               </div>
               <p class="co-note">{r.heading}</p>
-            </div>
+            </a>
           ))}
         </div>
       </section>
@@ -64,10 +69,13 @@ const ranked = live
     .fx-sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 6px}
     .fx-note{font-size:14.5px;color:var(--muted);margin:0 0 16px;line-height:1.5;max-width:680px}
     .fx-panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow:hidden}
-    .fx-item{padding:15px 18px;border-bottom:1px solid var(--line)}
+    .fx-item{display:block;padding:15px 18px;border-bottom:1px solid var(--line);text-decoration:none;transition:background-color .15s ease}
     .fx-item:last-child{border-bottom:0}
-    .fx-country{font-weight:600;font-size:15.5px;color:var(--teal-deep);text-decoration:none}
-    .fx-country:hover{text-decoration:underline}
+    .fx-item:hover{background:var(--paper)}
+    .fx-country{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15.5px;color:var(--teal-deep)}
+    .fx-item:hover .fx-country{text-decoration:underline}
+    .co-flag{display:inline-flex;line-height:0;flex:none}
+    .co-flag img{width:22px;height:16px;border-radius:3px;border:1px solid var(--line);object-fit:cover;display:block}
     .fx-keep{font-size:14px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line);padding-top:18px;margin:30px 0 40px;max-width:680px}
     .fx-keep a{color:var(--teal-deep);font-weight:500;text-decoration:none}
     .fx-keep a:hover{text-decoration:underline}
