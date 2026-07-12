@@ -28,7 +28,9 @@ const sources = [
   { name: "US Department of State, country information pages", note: "the official entry, exit and visa requirements for every destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html" },
   { name: "European Union, Entry Exit System (EES)", note: "the biometric border system, live across the Schengen area since April 2026", url: "https://travel-europe.europa.eu/en/ees" },
   { name: "European Union, ETIAS", note: "the travel authorization expected to start in late 2026, with its fee and rules", url: "https://travel-europe.europa.eu/en/etias" },
-  { name: "European Commission, EES and ETIAS explained", note: "the official summary of how the two differ for travelers", url: "https://home-affairs.ec.europa.eu/news/main-differences-between-ees-and-etias-what-travellers-need-know-2026-04-28_en" }
+  { name: "European Commission, EES and ETIAS explained", note: "the official summary of how the two differ for travelers", url: "https://home-affairs.ec.europa.eu/news/main-differences-between-ees-and-etias-what-travellers-need-know-2026-04-28_en" },
+  { name: "European Commission, applying for a Schengen visa", note: "what an airport transit visa is, who is exempt, and which consulate handles it", url: "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en" },
+  { name: "European Commission, visa policy", note: "the nationalities that need a visa just to transit through a Schengen airport, and that countries can add their own", url: "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en" }
 ];
 ---
 <Base
@@ -43,6 +45,14 @@ const sources = [
       <h1>What you actually need to get in, and the official site for each.</h1>
       <p class="pv-lede">A passport that will not expire too soon, and, for some countries, a visa or an online authorization booked before you fly. This page lays out the real government fees, the current wait times, and Europe's new entry rules for 2026. For every step we send you straight to the official government site, because that is almost always the cheapest and safest route, and we earn nothing sending you there.</p>
     </section>
+
+    <div class="pv-flag" style="display:flex;align-items:flex-start;gap:11px;margin:22px 0 0;padding:16px 18px;border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;background:var(--card)">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0E7A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"/></svg>
+      <div>
+        <p style="margin:0 0 4px;font-weight:600;font-size:15px;color:var(--ink)">Not traveling on a US passport?</p>
+        <p style="margin:0;font-size:14.5px;line-height:1.6;color:var(--ink)">This page is written for US citizens. If you hold any other passport, including as a US green card or visa holder, your entry and transit requirements follow your nationality, not the fact that you live in the US, and they can be very different. Check the official page for your destination and your nationality, and see the transit note below if your trip connects through Europe.</p>
+      </div>
+    </div>
 
     <section class="pv-prose">
       <p class="lab">The six-month rule</p>
@@ -132,6 +142,21 @@ const sources = [
       <p class="pv-links pv-guidelink"><a href="/#guides">See the entry note in each country guide</a></p>
     </section>
 
+    <section class="pv-prose">
+      <p class="lab">Connecting through Europe</p>
+      <h2>A layover can need its own visa, even if you never leave the airport.</h2>
+      <p>The cheapest ticket to Asia or Africa often routes through a European hub like Frankfurt, Paris or Amsterdam. For most travelers that is nothing to plan around, and US citizens do not need anything for it. But for some nationalities, passing through the international transit area of a Schengen airport, without ever clearing immigration or entering the country, still needs an airport transit visa, the Schengen "Type A". Whether you need one depends on your nationality and on the specific country your layover is in, and countries change their lists quietly, so this is not a thing to answer from memory, ours or anyone's.</p>
+      <p>Two points are worth knowing before you book a connecting itinerary:</p>
+      <ul class="pv-snap">
+        <li><b>A US visa or US residence permit often lifts the requirement.</b> If your nationality would otherwise need a transit visa, holding a valid US visa or US green card frequently exempts you, but that exemption varies by the transit country, so confirm it rather than assume it.</li>
+        <li><b>Staying airside is the whole point.</b> A transit visa only lets you wait in the international zone for your next flight. If your connection makes you change airports, collect and re-check a bag, or leave the transit area, you are entering the country and need a regular short-stay Schengen visa instead.</li>
+      </ul>
+      <p>The way to check is simple: look at the official page for the specific Schengen country your layover is in, since that country is the authority for its own airports. The European Commission's visa pages explain the transit visa and link through to each country's process.</p>
+      <p class="pv-cta"><a class="btn" href="https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en" {...gov}>Check transit rules at the European Commission
+        <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a> <span class="tg free">we earn nothing</span></p>
+      <p class="pv-links"><a href="https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en" {...gov}>Which nationalities need an airport transit visa</a></p>
+    </section>
+
     <section class="honest">
       <p class="lab">Lookalike sites, and how we handle them</p>
       <h2>Start at the official site, and never overpay.</h2>
@@ -163,7 +188,7 @@ const sources = [
       </summary>
       <div class="gsources-body">
         <p class="gs-row"><span class="gs-k">Last checked</span><span>Jul 2026</span></p>
-        <p class="gs-row"><span class="gs-k">Changed since last check</span><span>New page. First published and checked in July 2026, covering US passport fees and current processing times, the six-month passport rule, Europe's EES and the ETIAS authorization coming in late 2026, and which destinations need a visa, each linked to its official government source.</span></p>
+        <p class="gs-row"><span class="gs-k">Changed since last check</span><span>First published in July 2026, covering US passport fees and current processing times, the six-month passport rule, Europe's EES and the ETIAS authorization coming in late 2026, and which destinations need a visa, each linked to its official government source. Updated in July 2026 to add a note for travelers who do not hold a US passport, and a section on airport transit visas for connections through Europe, checked against the European Commission's visa pages.</span></p>
         <div class="gs-row"><span class="gs-k">Primary sources</span>
           <ul class="gs-links">
             {sources.map(s => (
