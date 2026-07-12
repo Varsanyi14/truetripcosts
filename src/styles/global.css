@@ -600,3 +600,11 @@
   .culture .chead{font-size:22px}
   .culture summary,.culture .cbody{padding-left:18px;padding-right:18px}
 }
+
+  /* Back to top button (site-wide, rendered in Base.astro) */
+  .to-top{position:fixed;right:20px;bottom:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:60;width:46px;height:46px;border-radius:999px;border:1px solid var(--teal);background:var(--teal);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .2s ease,transform .2s ease,background .15s ease;-webkit-tap-highlight-color:transparent}
+  .to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+  .to-top:hover{background:var(--teal-deep);border-color:var(--teal-deep)}
+  .to-top:focus-visible{outline:2px solid var(--teal-deep);outline-offset:2px}
+  .to-top svg{width:20px;height:20px;display:block}
+  @media (prefers-reduced-motion:reduce){.to-top{transition:opacity .001s}}
