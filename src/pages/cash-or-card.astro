@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import USBadge from '../components/USBadge.astro';
 import { countries } from '../data/index.js';
 import fs from 'node:fs';
 
@@ -30,8 +31,9 @@ const ranked = live
 
     <section class="fx-intro">
       <p class="fx-lab">Paying abroad</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
       <h1>Cash or card, country by country.</h1>
-      <p class="fx-lede">A quick read on how each country actually pays, from the near-cashless places where you barely touch a note to the ones that still run on cash. The bar shows the rough share of everyday spending that tends to be cash, so more teal means more cash. Cards usually climb higher in big cities, so treat this as a feel rather than a rule, and open the guide for the detail.</p>
+      <p class="fx-lede">Written for travelers leaving the US, this is a quick read on how each country actually pays, from the near-cashless places where you barely touch a note to the ones that still run on cash. The bar shows the rough share of everyday spending that tends to be cash, so more teal means more cash. Cards usually climb higher in big cities, so treat this as a feel rather than a rule, and open the guide for the detail.</p>
     </section>
 
     {ranked.length > 0 && (

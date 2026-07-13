@@ -1,0 +1,16 @@
+---
+// A small audience pill that makes the US-departure framing glanceable on the
+// homepage and the hub pages, where a cold visitor from search would otherwise
+// have no immediate signal. The country guides carry the "United States -> Country"
+// route in their hero eyebrow instead, so this pill is for the non-guide pages.
+const { label = 'For US travelers' } = Astro.props;
+---
+<span class="us-badge">
+  <svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" fill="currentColor"><path d="M12 3a1.6 1.6 0 0 1 1.6 1.6V10l7.4 4.2v1.9L13.6 13v4.5l2.3 1.8v1.5L12 19.6 8.1 20.8v-1.5l2.3-1.8V13L3 16.1v-1.9L10.4 10V4.6A1.6 1.6 0 0 1 12 3z"/></svg>
+  <span>{label}</span>
+</span>
+
+<style>
+  .us-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--teal-deep);background:var(--green-bg);border-radius:999px;padding:4px 12px;letter-spacing:.03em;line-height:1;white-space:nowrap}
+  .us-badge svg{flex:0 0 auto}
+</style>

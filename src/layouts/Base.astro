@@ -15,6 +15,18 @@ const rest = liveCountries
   .filter(c => !current || c.slug !== current.slug)
   .sort((a, b) => a.name.localeCompare(b.name));
 const destOptions = current ? [current, ...rest] : rest;
+
+// US-departure framing for search snippets. The guides are written for a trip
+// leaving the US, so a country guide's title and description should say so, without
+// hand-editing every data file. This only touches country-guide pages, and only
+// when the phrase is not already present, so nothing ever double-frames. Hub and
+// homepage titles are authored with the framing already, so they pass through.
+const framedTitle = (current && !/US travel/i.test(title))
+  ? (title.includes('| True Trip Costs') ? title.replace('| True Trip Costs', 'for US Travelers | True Trip Costs') : title + ' for US Travelers')
+  : title;
+const framedDesc = (current && !/US travel|leaving the US/i.test(description))
+  ? ('For travelers leaving the US. ' + description)
+  : description;
 ---
 <!doctype html>
 <html lang="en">
@@ -23,15 +35,15 @@ const destOptions = current ? [current, ...rest] : rest;
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Impact.com media property verification. Verifies truetripcosts.com in the Impact partner dashboard, do not remove. -->
   <meta name='impact-site-verification' content='0bfc70de-72c2-4c02-b65f-54f326b8ade3' value='0bfc70de-72c2-4c02-b65f-54f326b8ade3'>
-  <title>{title}</title>
-  <meta name="description" content={description} />
+  <title>{framedTitle}</title>
+  <meta name="description" content={framedDesc} />
   <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <meta name="theme-color" content="#0E7A5F" />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
+  <meta property="og:title" content={framedTitle} />
+  <meta property="og:description" content={framedDesc} />
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonical} />
   <meta property="og:site_name" content="True Trip Costs" />

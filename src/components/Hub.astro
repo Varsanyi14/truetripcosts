@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Nav from './Nav.astro';
 import Footer from './Footer.astro';
+import USBadge from './USBadge.astro';
 import { signalChips } from '../data/hubs.js';
 import fs from 'node:fs';
 
@@ -35,6 +36,7 @@ const crumbLd = {
 
     <section class="hub-intro">
       <p class="hub-lab">{hub.lab}</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
       <h1>{hub.h1}</h1>
       {hub.intro.map(p => (<p class="hub-lede">{p}</p>))}
     </section>

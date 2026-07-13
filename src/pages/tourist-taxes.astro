@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import USBadge from '../components/USBadge.astro';
 import { countries } from '../data/index.js';
 
 // Everything on this page is read from the country guides. A fact fixed in one
@@ -41,6 +42,7 @@ function whenText(k) {
 
     <section class="fx-intro">
       <p class="fx-lab">Fees and taxes</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
       <h1>Tourist taxes and entry fees, country by country.</h1>
       <p class="fx-lede">The charges that catch US travelers out are the ones that move on political timelines: city accommodation levies, and entry fees like the UK ETA. This page keeps the ones we watch most closely in one place, with the amount, when it took effect, and a link to the official source. Every figure is pulled from a country guide and carries the same checked date. For the everyday taxes and tipping in a country, the full guide has the detail.</p>
     </section>
