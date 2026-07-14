@@ -5,7 +5,12 @@ import { affiliate, esimLink, visaLink } from '../data/links.js';
 import { fallbackFxPct, shortlistFor, cardsChecked } from '../data/cards.js';
 import { countries } from '../data/index.js';
 import { regionOf, REGIONS, REGION_PHRASE } from '../data/hubs.js';
+import fs from 'node:fs';
 const { country: c } = Astro.props;
+// Flag per related country, matching the homepage and hubs: /flags/<slug>.svg,
+// falling back to the globe so nothing ever renders broken.
+const flagDir = process.cwd() + '/public/flags/';
+const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? '/flags/' + slug + '.svg' : '/flags/world.svg';
 const jumpTargets = countries.filter(x => x.live && !x.blocked && x.slug !== c.slug).sort((a, b) => a.name.localeCompare(b.name));
 // Region, region hub and the same-region cluster, all from the shared hub source so
 // they stay consistent with the hubs and breadcrumbs.
@@ -731,7 +736,10 @@ const kfState = (f) => {
 {c.sources && (
   <details class="gsources">
     <summary class="gsources-sum">
-      <span class="gsources-txt">Sources, and how this guide was checked</span>
+      <span class="gsources-head">
+        <svg class="gsources-ico" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+        <span class="gsources-txt">Sources, and how this guide was checked</span>
+      </span>
       <svg class="gsources-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
     </summary>
     <div class="gsources-body">
@@ -764,7 +772,10 @@ const kfState = (f) => {
     <div class="rel-grid">
       {related.map(r => (
         <a class="rel-card" href={'/' + r.slug}>
-          <span class="rel-name">{r.name}</span>
+          <span class="rel-left">
+            <span class="rel-flag"><img src={flagSrc(r.slug)} alt="" width="22" height="16" loading="lazy" decoding="async" /></span>
+            <span class="rel-name">{r.name}</span>
+          </span>
           <span class="rel-go" aria-hidden="true">&#8594;</span>
         </a>
       ))}
@@ -1078,7 +1089,12 @@ const kfState = (f) => {
   .rel-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
   .rel-card{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 15px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);text-decoration:none}
   .rel-card:hover{border-color:var(--teal)}
-  .rel-name{font-weight:600;font-size:15px;color:var(--ink)}
+  .rel-name{font-weight:600;font-size:15px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rel-left{display:inline-flex;align-items:center;gap:10px;min-width:0}
+  .rel-flag{flex:none;line-height:0}
+  .rel-flag img{width:22px;height:16px;border-radius:3px;display:block;box-shadow:0 0 0 1px rgba(22,48,44,.10)}
+  .gsources-head{display:inline-flex;align-items:center;gap:9px;min-width:0}
+  .gsources-ico{flex:none}
   .rel-go{color:var(--teal-deep);font-weight:700}
   .rel-card:hover .rel-name{color:var(--teal-deep)}
 </style>
