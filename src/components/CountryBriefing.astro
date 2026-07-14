@@ -639,6 +639,7 @@ const kfState = (f) => {
 
   <details class="cardlist" id="calcNoFee">
     <summary class="cardlist-sum">
+      <svg class="acc-ico" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
       <span class="cardlist-txt"><b>Not sure which card to bring?</b> See <span class="cardlist-link">my pick for {c.name}</span>.</span>
       <svg class="cardlist-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
     </summary>
@@ -680,10 +681,13 @@ const kfState = (f) => {
 <section class="culture" id="culture">
   <details>
     <summary>
-      <div>
-        <span class="ctag">Travelers, not tourists</span>
-        <h2 class="chead">{c.culture.heading}</h2>
-      </div>
+      <span class="chead-lead">
+        <svg class="acc-ico" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+        <div>
+          <span class="ctag">Travelers, not tourists</span>
+          <h2 class="chead">{c.culture.heading}</h2>
+        </div>
+      </span>
       <span class="cchev" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span>
     </summary>
     <div class="cbody">
@@ -1095,6 +1099,8 @@ const kfState = (f) => {
   .rel-flag img{width:22px;height:16px;border-radius:3px;display:block;box-shadow:0 0 0 1px rgba(22,48,44,.10)}
   .gsources-head{display:inline-flex;align-items:center;gap:9px;min-width:0}
   .gsources-ico{flex:none}
+  .chead-lead{display:flex;align-items:center;gap:14px;min-width:0}
+  .acc-ico{flex:none}
   .rel-go{color:var(--teal-deep);font-weight:700}
   .rel-card:hover .rel-name{color:var(--teal-deep)}
 </style>
