@@ -3,10 +3,19 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { countries } from '../data/index.js';
+import { affiliate } from '../data/links.js';
 
 // Live count read straight from the data so this stays true as countries are
 // added. No number to hand-edit here.
 const liveCount = countries.filter(c => c.live).length;
+
+// Paid expediter links (RushMyPassport / RushMyTravelVisa). Null until a tracking
+// URL is set in links.js, so each block below simply stays hidden until then. These
+// are the only paid links on this page, so they carry the sponsored marker; the
+// official links above keep noopener only.
+const passportExpediter = affiliate.passportExpediter || null;
+const transitVisa = affiliate.transitVisa || null;
+const paid = { target: "_blank", rel: "noopener sponsored" };
 
 const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
 
@@ -97,6 +106,13 @@ const sources = [
             <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           <span class="tg free">we earn nothing</span>
         </p>
+        {passportExpediter && (
+          <p class="pv-alt">
+            <span class="pv-alt-tx">Racing a deadline? RushMyPassport is a private courier service that can expedite a passport for a fee on top of the government cost. You never need it, and the official route above is cheaper, but if your travel is only days away, some people use one.</span>
+            <span class="pv-alt-cta"><a class="btn-alt" href={passportExpediter} {...paid}>Expedite with RushMyPassport
+              <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a> <span class="tg earn">we may earn a commission</span></span>
+          </p>
+        )}
       </div>
 
       <p class="pv-note pv-standalone">One warning worth repeating: the only official site for online renewal is opr.travel.state.gov. Other sites that promise to "renew your passport online" charge extra on top of the government fee, and some are outright scams. You never need them to use the official route.</p>
@@ -155,6 +171,13 @@ const sources = [
       <p class="pv-cta"><a class="btn" href="https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en" {...gov}>Check transit rules at the European Commission
         <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a> <span class="tg free">we earn nothing</span></p>
       <p class="pv-links"><a href="https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en" {...gov}>Which nationalities need an airport transit visa</a></p>
+      {transitVisa && (
+        <p class="pv-alt">
+          <span class="pv-alt-tx">Need help with the paperwork? RushMyTravelVisa is a private service that prepares airport transit visa packets for a fee. It is optional, the official route above is free to check and cheaper to file yourself, and most travelers do not need a transit visa at all.</span>
+          <span class="pv-alt-cta"><a class="btn-alt" href={transitVisa} {...paid}>Get transit visa help from RushMyTravelVisa
+            <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a> <span class="tg earn">we may earn a commission</span></span>
+        </p>
+      )}
     </section>
 
     <section class="honest">
@@ -224,6 +247,12 @@ const sources = [
     .pv-prose p:not(.lab):not(.pv-lede):not(.pv-note):not(.pv-links){font-size:16px;line-height:1.65;color:var(--ink);margin:14px 0 0}
     .pv-prose a{color:var(--teal-deep);font-weight:500;text-decoration:underline;text-underline-offset:2px}
     .pv-prose a.btn{color:#fff;text-decoration:none}
+    .pv-prose a.btn-alt{text-decoration:none}
+    .pv-alt{margin:16px 0 0;padding:14px 0 0;border-top:1px dashed var(--line)}
+    .pv-alt-tx{display:block;font-size:13.5px;line-height:1.55;color:var(--muted)}
+    .pv-alt-cta{display:flex;align-items:center;flex-wrap:wrap;gap:10px 12px;margin:11px 0 0}
+    .btn-alt{display:inline-flex;align-items:center;gap:7px;padding:8px 15px;border:1px solid var(--teal);border-radius:999px;background:transparent;color:var(--teal-deep);font-weight:600;font-size:13.5px;line-height:1}
+    .btn-alt:hover{background:var(--green-bg)}
     .pv-links{margin:16px 0 0;display:flex;align-items:center;flex-wrap:wrap;gap:10px 12px}
     .pv-guidelink{margin-top:10px}
     .pv-note{font-size:13.5px;line-height:1.55;color:var(--muted);margin:12px 0 0}

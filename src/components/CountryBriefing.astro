@@ -1,7 +1,7 @@
 ---
 import Symbol from './Symbol.astro';
 import NewTab from './NewTab.astro';
-import { affiliate, esimLink } from '../data/links.js';
+import { affiliate, esimLink, visaLink } from '../data/links.js';
 import { fallbackFxPct, shortlistFor, cardsChecked } from '../data/cards.js';
 import { countries } from '../data/index.js';
 import { regionOf, REGIONS, REGION_PHRASE } from '../data/hubs.js';
@@ -22,6 +22,7 @@ if (regionHubLive) crumbItems.push({ name: regionHub.label, url: crumbBase + '/'
 crumbItems.push({ name: c.name, url: crumbBase + '/' + c.slug });
 const crumbLd = { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: crumbItems.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: it.url })) };
 const esim = esimLink(c.slug);
+const visaExp = visaLink(c.slug);
 
 // Sources display: split each source label into a name (before the colon) and a
 // short note (what it verifies), then pick an icon from its type. Type is read
@@ -481,6 +482,9 @@ const kfState = (f) => {
         </div>
       ); })}
     </div>
+    {visaExp && (
+      <p style="font-size:13.5px;margin:14px 0 0;color:var(--muted);line-height:1.55">In a hurry? A private service can prepare and file this visa for a fee on top of the official cost above, which stays the cheaper route. <a href={visaExp} {...ext(visaExp)} style="color:var(--teal-deep);font-weight:600;text-decoration:none">File it faster with RushMyTravelVisa</a> <span class="tg earn">we may earn a commission</span>{ext(visaExp).target && <NewTab />}</p>
+    )}
   </section>
 )}
 
