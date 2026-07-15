@@ -297,7 +297,7 @@ const kfState = (f) => {
 
 {c.connectivity && (
 <section>
-  <p class="lab">Staying connected</p>
+  <p class="lab lab-ico-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5a10.5 10.5 0 0 1 15 0"/><path d="M7.2 13.4a6.5 6.5 0 0 1 9.6 0"/><path d="M9.8 16.2a2.8 2.8 0 0 1 4.4 0"/><circle cx="12" cy="18.7" r="0.7" fill="currentColor" stroke="none"/></svg>Staying connected</p>
   <h2>Will my phone work here? And what will it cost?</h2>
   <p class="sub">{c.connectivity.works} The cost is where people get caught out, and on most US plans it lands in one of two buckets.</p>
   <div class="trio">
@@ -323,9 +323,10 @@ const kfState = (f) => {
   {esim && (
     <Fragment>
       <p style="font-size:14.5px;margin:6px 0 0">If an eSIM is the cheaper call, {esimBrand ? `${esimBrand} covers ${c.name}.` : `there is a tracked eSIM option for ${c.name}.`}</p>
-      <a class="cta" href={esim} {...ext(esim)}>{esimBrand ? `Get your ${esimBrand} eSIM for ${c.name}` : `Get an eSIM for ${c.name}`}
+      <span class="pickcta">
+        <a class="pickbtn" href={esim} {...ext(esim)}>{esimBrand ? `Get your ${esimBrand} eSIM for ${c.name}` : `Get an eSIM for ${c.name}`}<span class="arw">&#8594;</span>{ext(esim).target && <NewTab />}</a>
         <span class="tg earn">we may earn a commission</span>
-        <span class="arw">&#8594;</span>{ext(esim).target && <NewTab />}</a>
+      </span>
     </Fragment>
   )}
 </section>
@@ -372,13 +373,12 @@ const kfState = (f) => {
         <p class="ins-name">Faye, or a comparable whole-trip policy</p>
         <p class="ins-why">Bundles trip protection with emergency medical, which is enough cover for most travelers on a typical trip.</p>
         <div class="ins-foot">
-          {ext(insFaye).target ? (
-            <a class="cta" href={insFaye} {...ext(insFaye)}>See Faye's cover
-              <span class={commLabel(insFaye).cls}>{commLabel(insFaye).text}</span>
-              <span class="arw">&#8594;</span><NewTab /></a>
-          ) : (
+          <span class="pickcta">
+            {ext(insFaye).target && (
+              <a class="pickbtn" href={insFaye} {...ext(insFaye)}>See Faye's cover<span class="arw">&#8594;</span><NewTab /></a>
+            )}
             <span class={commLabel(insFaye).cls}>{commLabel(insFaye).text}</span>
-          )}
+          </span>
         </div>
       </div>
       <div class="ins-pick p2">
@@ -390,13 +390,12 @@ const kfState = (f) => {
         <p class="ins-name">A dedicated travel-medical plan built for serious care and evacuation abroad</p>
         <p class="ins-why">Stronger on medical care and evacuation, for a remote or higher-risk trip where that is the real exposure.</p>
         <div class="ins-foot">
-          {ext(insMedical).target ? (
-            <a class="cta" href={insMedical} {...ext(insMedical)}>See a travel-medical plan
-              <span class={commLabel(insMedical).cls}>{commLabel(insMedical).text}</span>
-              <span class="arw">&#8594;</span><NewTab /></a>
-          ) : (
+          <span class="pickcta">
+            {ext(insMedical).target && (
+              <a class="pickbtn" href={insMedical} {...ext(insMedical)}>See a travel-medical plan<span class="arw">&#8594;</span><NewTab /></a>
+            )}
             <span class={commLabel(insMedical).cls}>{commLabel(insMedical).text}</span>
-          )}
+          </span>
         </div>
       </div>
     </div>
@@ -451,18 +450,17 @@ const kfState = (f) => {
 
 {c.rentalCommon && (
 <section id="car-rental">
-  <p class="lab">Renting a car</p>
+  <p class="lab lab-ico-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2"/><path d="M12 10V3.5"/><path d="M10.27 13 4.64 16.25"/><path d="M13.73 13 19.36 16.25"/></svg>Renting a car</p>
   <h2>Where the rental desk makes its money.</h2>
   <p class="sub">Renting is often the best way to see {c.name}, and the cover is where the counter earns its margin. The rental comes with basic collision cover, but it leaves you owing the excess, the first slice of any damage or theft bill, often several hundred to a couple of thousand dollars, held on your card until the car is back. The desk will offer to erase that excess. It is a real product, just priced at the counter for far more than the same cover costs if you arrange it before you go.</p>
   <p>You may not need to buy anything at all. Some US credit cards include rental collision cover when you pay with the card and decline the counter's version, so check what your own card covers on rentals before you add anything extra. We cannot read your policy for you, and flagging this can cost us the sale below, but it is the honest first step.</p>
   <p>If your card does not cover it, or you would rather have cover built for this, a standalone policy bought ahead is the cheaper way to handle it. It covers the damage and theft the rental leaves you liable for, often including parts the counter cover leaves out like tires, glass and the underbody, and mechanical faults stay the rental company's problem.{carExcess ? ` ${carBrand} covers rentals in ${c.name}. Read what the policy includes before you buy.` : ""}</p>
-  {ext(carExcess).target ? (
-    <a class="cta" href={carExcess} {...ext(carExcess)}>Cover a rental in {c.name} with {carBrand}
-      <span class={commLabel(carExcess).cls}>{commLabel(carExcess).text}</span>
-      <span class="arw">&#8594;</span>{ext(carExcess).target && <NewTab />}</a>
-  ) : (
-    <p style="margin-top:8px"><span class={commLabel(carExcess).cls}>{commLabel(carExcess).text}</span></p>
-  )}
+  <span class="pickcta">
+    {ext(carExcess).target && (
+      <a class="pickbtn" href={carExcess} {...ext(carExcess)}>Cover a rental in {c.name} with {carBrand}<span class="arw">&#8594;</span><NewTab /></a>
+    )}
+    <span class={commLabel(carExcess).cls}>{commLabel(carExcess).text}</span>
+  </span>
 </section>
 )}
 
@@ -513,7 +511,13 @@ const kfState = (f) => {
       ); })}
     </div>
     {visaExp && (
-      <p style="font-size:13.5px;margin:14px 0 0;color:var(--muted);line-height:1.55">In a hurry? A private service can prepare and file this visa for a fee on top of the official cost above, which stays the cheaper route. <a href={visaExp} {...ext(visaExp)} style="color:var(--teal-deep);font-weight:600;text-decoration:none">File it faster with RushMyTravelVisa</a> <span class="tg earn">we may earn a commission</span>{ext(visaExp).target && <NewTab />}</p>
+      <Fragment>
+        <p style="font-size:13.5px;margin:14px 0 0;color:var(--muted);line-height:1.55">In a hurry? A private service can prepare and file this visa for a fee on top of the official cost above, which stays the cheaper route.</p>
+        <span class="pickcta">
+          <a class="pickbtn" href={visaExp} {...ext(visaExp)}>File it faster with RushMyTravelVisa<span class="arw">&#8594;</span>{ext(visaExp).target && <NewTab />}</a>
+          <span class="tg earn">we may earn a commission</span>
+        </span>
+      </Fragment>
     )}
   </section>
 )}
