@@ -54,6 +54,14 @@ export const affiliate = {
   // Parked here so the future home is ready. Not wired into the pages yet.
   cardNoFee: null,
   cardAtm: null,
+
+  // Standalone rental-car excess cover (RentalCover, via Rakuten, MID 44017). One link
+  // covers every country. It surfaces only on guides flagged rentalCommon in their data
+  // file, so it never appears on a city or transit trip where nobody rents.
+  //   carExcessBrand  the provider name shown on the button.
+  //   carExcess       the tracking link. Switching providers later is just these two lines.
+  carExcessBrand: "RentalCover",
+  carExcess: "https://click.linksynergy.com/fs-bin/click?id=CEp78hNtoag&offerid=762181.14&type=3&subid=0",
 };
 
 // Returns the right eSIM link for a country: its deep link if we have one,

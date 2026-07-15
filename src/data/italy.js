@@ -14,6 +14,7 @@ export default {
   },
   emergency: { medical: "112", note: "112 reaches every service, and 118 goes straight to an ambulance.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
+  rentalCommon: true,
   region: "Europe",
   signals: { cardFriendliness: 4, cashNeed: 2, taxRisk: 3, atmRisk: 4 },
   title: "Money in Italy (2026): Cards, Cash, ATMs, the Coperto, Tipping and Tourist Taxes | True Trip Costs",

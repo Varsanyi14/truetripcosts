@@ -104,6 +104,14 @@ const esimBrand = (affiliate.esimBrand && affiliate.esimBrand.trim()) || "";
 // handles gracefully: the pick shows, carries no link, and reads "we earn nothing".
 const insFaye = affiliate.insurance;
 const insMedical = affiliate.medical;
+// Standalone rental-car excess cover (RentalCover, via Rakuten). One link covers
+// every country; the section renders only on guides flagged rentalCommon in their
+// data file. carExcessBrand is the name shown on the button, so switching providers
+// later is a one-line change. Until affiliate.carExcess holds a URL, the block still
+// shows its guidance and reads "we earn nothing" with no button, the same graceful
+// null the eSIM and medical slots use.
+const carExcess = affiliate.carExcess;
+const carBrand = (affiliate.carExcessBrand && affiliate.carExcessBrand.trim()) || "RentalCover";
 // One canonical commission label per pick, chosen only by whether its link is a
 // real external URL. Never hand-typed into content, the same rule cards.js uses.
 const commLabel = (url) => ext(url).target
@@ -440,6 +448,23 @@ const kfState = (f) => {
     });
   }
 </script>
+
+{c.rentalCommon && (
+<section id="car-rental">
+  <p class="lab">Renting a car</p>
+  <h2>Where the rental desk makes its money.</h2>
+  <p class="sub">Renting is often the best way to see {c.name}, and the cover is where the counter earns its margin. The rental comes with basic collision cover, but it leaves you owing the excess, the first slice of any damage or theft bill, often several hundred to a couple of thousand dollars, held on your card until the car is back. The desk will offer to erase that excess. It is a real product, just priced at the counter for far more than the same cover costs if you arrange it before you go.</p>
+  <p>You may not need to buy anything at all. Some US credit cards include rental collision cover when you pay with the card and decline the counter's version, so check what your own card covers on rentals before you add anything extra. We cannot read your policy for you, and flagging this can cost us the sale below, but it is the honest first step.</p>
+  <p>If your card does not cover it, or you would rather have cover built for this, a standalone policy bought ahead is the cheaper way to handle it. It covers the damage and theft the rental leaves you liable for, often including parts the counter cover leaves out like tires, glass and the underbody, and mechanical faults stay the rental company's problem.{carExcess ? ` ${carBrand} covers rentals in ${c.name}. Read what the policy includes before you buy.` : ""}</p>
+  {ext(carExcess).target ? (
+    <a class="cta" href={carExcess} {...ext(carExcess)}>Cover a rental in {c.name} with {carBrand}
+      <span class={commLabel(carExcess).cls}>{commLabel(carExcess).text}</span>
+      <span class="arw">&#8594;</span>{ext(carExcess).target && <NewTab />}</a>
+  ) : (
+    <p style="margin-top:8px"><span class={commLabel(carExcess).cls}>{commLabel(carExcess).text}</span></p>
+  )}
+</section>
+)}
 
 <section>
   <p class="lab">Currency basics</p>

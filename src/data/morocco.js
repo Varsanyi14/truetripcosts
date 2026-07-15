@@ -16,6 +16,7 @@ export default {
   },
   emergency: { medical: "15", note: "15 (SAMU) is the ambulance and medical emergency line, 19 is the police in cities, and 177 is the Royal Gendarmerie for rural areas and highways. 112 works from any mobile, even without a local SIM. The US number 911 does not work here.", checked: "Jul 2026", checkedISO: "2026-07-12" },
   insuranceLevel: "high",
+  rentalCommon: true,
   region: "Africa",
   signals: { cardFriendliness: 2, cashNeed: 4, taxRisk: 3, atmRisk: 4 },
   hook: "Morocco runs on cash. The dirham is a closed currency you can only get once you arrive, so plan to withdraw it from a bank ATM on landing, keep small notes for souks, taxis and tips, and use cards mainly for city hotels and bigger restaurants.",

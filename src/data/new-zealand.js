@@ -16,6 +16,7 @@ export default {
   },
   emergency: { medical: "111", note: "111 reaches police, fire and ambulance, and calls are free, even on a mobile with no credit. The US number 911 is not used here, so dial 111. For non-urgent police, call 105, and for free health advice, Healthline is 0800 611 116.", checked: "Jul 2026", checkedISO: "2026-07-12" },
   insuranceLevel: "medium",
+  rentalCommon: true,
   region: "Oceania",
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 3 },
   hook: "Very card-friendly, tap for almost everything. Two things to know: unlike Australia, New Zealand has not banned card surcharges, so you still meet about 2 to 3% at some places, and before you fly you pay an NZeTA plus a NZD 100 visitor levy. Choose New Zealand dollars over US dollars, and carry a little cash.",

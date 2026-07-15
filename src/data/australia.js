@@ -16,6 +16,7 @@ export default {
   },
   emergency: { medical: "000", note: "000 (Triple Zero) reaches police, fire and ambulance, and calls are free from any phone. From a mobile, 112 also connects to the same service. The US number 911 is not reliable here, so use 000, or 112 from a mobile. For non-urgent police, call 131 444.", checked: "Jul 2026", checkedISO: "2026-07-12" },
   insuranceLevel: "medium",
+  rentalCommon: true,
   region: "Oceania",
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 2 },
   hook: "About as card-friendly as travel gets: tap your card or phone almost everywhere. The one habit worth knowing is that until 1 October 2026 many places still add a card surcharge, so check the bill, choose Australian dollars over US dollars, and carry only a little cash.",

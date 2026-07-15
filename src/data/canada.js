@@ -14,6 +14,7 @@ export default {
   },
   emergency: { medical: "911", note: "911 works everywhere, the same as it does at home.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
+  rentalCommon: true,
   region: "Americas",
   signals: { cardFriendliness: 4, cashNeed: 2, taxRisk: 3, atmRisk: 4 },
   hook: "As card-friendly as the US, but the sticker price hides sales tax and a US-style tip.",

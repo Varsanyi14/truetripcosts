@@ -16,6 +16,7 @@ export default {
   },
   emergency: { medical: "112", note: "112 from any mobile phone is free (even with no SIM or airtime) and routes you to police, ambulance and fire. 10111 is the police line and 10177 is the ambulance and fire line from a landline. The US number 911 does not work here. Private ambulance services such as ER24 (084 124) and Netcare 911 (082 911) can be faster in the cities.", checked: "Jul 2026", checkedISO: "2026-07-12" },
   insuranceLevel: "high",
+  rentalCommon: true,
   region: "Africa",
   signals: { cardFriendliness: 4, cashNeed: 2, taxRisk: 2 },
   hook: "South Africa is very card-friendly, so you can tap almost everywhere. Keep some cash for tips, petrol attendants and car guards, use bank ATMs carefully, and remember the 15% VAT is refundable on things you take home.",

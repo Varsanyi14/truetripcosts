@@ -16,6 +16,7 @@ export default {
   },
   emergency: { medical: "112", note: "112 is the free emergency number (999 also works, exactly like 911), reaching the Gardai (police), ambulance and fire from any phone, even with no SIM or credit. Operators speak English. Save your accommodation address to read out.", checked: "Jul 2026", checkedISO: "2026-07-03" },
   insuranceLevel: "low",
+  rentalCommon: true,
   region: "Europe",
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 2 },
   hook: "About as cashless as travel gets: tap your card almost everywhere, carry a little euro cash as backup, decline dollar conversion, and mind two things: the VAT you can claim back on shopping and the car-rental insurance excess.",

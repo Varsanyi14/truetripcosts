@@ -15,6 +15,7 @@ export default {
   },
   emergency: { medical: "911", note: "911 has English-speaking operators. In rural areas and along the coast, an ambulance can take longer to reach you.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "medium",
+  rentalCommon: true,
   region: "Americas",
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 2 },
   hook: "Dollars work almost everywhere, but paying in colones quietly saves you money.",
@@ -117,7 +118,8 @@ export default {
     "<b>Pay in the currency on the price tag.</b> If something is priced in colones, pay colones; if priced in dollars, pay dollars. Mixing them lets the merchant set an exchange rate that favors them, quietly costing you 5 to 10%.",
     "<b>Bring small, flawless US bills.</b> Fifties and hundreds are hard to break outside banks, and any bill that is torn, stained or heavily worn is routinely refused, even ones that came from a local ATM.",
     "<b>Watch for a second \"tip\" line.</b> Your bill already includes a 10% service charge. Some spots in tourist areas then hand over a US-style receipt with a blank tip line, hoping you'll add another 18 to 20% on top. You've already tipped.",
-    "<b>\"Convert to USD?\" Always decline.</b> On card terminals and ATMs, choosing your home currency (dynamic currency conversion) adds 3 to 8%. Pick colones and let your own bank handle the rate."
+    "<b>\"Convert to USD?\" Always decline.</b> On card terminals and ATMs, choosing your home currency (dynamic currency conversion) adds 3 to 8%. Pick colones and let your own bank handle the rate.",
+    "<b>The advertised rental price is rarely the real one.</b> Rental companies in Costa Rica require a third-party liability insurance that most quotes leave out and that you generally cannot waive, so the true daily cost runs well above the headline rate. The basic rate also still leaves you owing the collision excess, which the desk sells cover to erase at a steep markup, and that excess cover is far cheaper arranged before you go than bought at the counter (see below)."
   ],
 
   tippingHeading: "Light, since 10% is usually already on the bill.",

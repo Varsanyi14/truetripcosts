@@ -14,6 +14,7 @@ export default {
   },
   emergency: { medical: "112", note: "112 covers ambulance and fire, and it is free from any phone.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
+  rentalCommon: true,
   region: "Europe",
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 3, atmRisk: 4 },
   hook: "More cash-loving than its reputation suggests, with a patchwork of city bed taxes to plan for.",

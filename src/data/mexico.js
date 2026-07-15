@@ -16,6 +16,7 @@ export default {
   },
   emergency: { medical: "911", note: "911 works nationwide, with English-speaking operators mainly in the cities. In remote areas, response can be slow.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "medium",
+  rentalCommon: true,
   region: "Americas",
   signals: { cardFriendliness: 2, cashNeed: 4, taxRisk: 3, atmRisk: 4 },
   title: "Money in Mexico (2026): Cash, Cards, ATMs, Tipping and VISITAX | True Trip Costs",
