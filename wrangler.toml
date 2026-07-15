@@ -11,3 +11,9 @@ run_worker_first = ["/api/*"]
 [[kv_namespaces]]
 binding = "SIGNUPS"
 id = "a96f7a8ad61446258eb2ef9f73c88b55"
+
+# Daily currency-rate refresh. Runs the Worker's scheduled() handler once a day
+# (05:00 UTC), which fetches mid-market rates and stores a snapshot in the KV
+# above. Applied on deploy, no dashboard step needed.
+[triggers]
+crons = ["0 5 * * *"]

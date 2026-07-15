@@ -134,13 +134,82 @@ async function handleNotify(request, env) {
   return json({ ok: false, error: "signup_failed" }, 502);
 }
 
+// ---- Daily FX snapshot (currency anchor panels) --------------------------
+// A Cron Trigger (see wrangler.toml) runs refreshFx once a day. It fetches the
+// mid-market rates from ExchangeRate-API's free open endpoint (no key, base
+// USD) and stores the snapshot in KV under FX_KEY, reusing the SIGNUPS
+// namespace. The pages read it through the same-origin GET /api/rates below,
+// so the reader's browser never calls the third party. If a fetch ever fails,
+// the last good snapshot stays in KV, and the pages fall back to a baked
+// snapshot shipped in the site. Attribution ("Rates by ExchangeRate-API")
+// shows in the panel, per the source's open-endpoint terms.
+const FX_URL = "https://open.er-api.com/v6/latest/USD";
+const FX_KEY = "fx:latest";
+const FX_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+function fxShortDate(dt) {
+  return dt.getUTCDate() + " " + FX_MONTHS[dt.getUTCMonth()] + " " + dt.getUTCFullYear();
+}
+
+async function refreshFx(env) {
+  if (!env.SIGNUPS) return false;
+  try {
+    const r = await fetch(FX_URL, { headers: { "Accept": "application/json" } });
+    if (!r.ok) return false;
+    const d = await r.json();
+    if (!d || d.result !== "success" || !d.rates) return false;
+    let date = "";
+    try {
+      const dt = d.time_last_update_utc ? new Date(d.time_last_update_utc) : new Date();
+      date = fxShortDate(dt);
+    } catch (e) { date = ""; }
+    const snapshot = {
+      base: d.base_code || "USD",
+      date,
+      rates: d.rates,
+      updated: new Date().toISOString()
+    };
+    await env.SIGNUPS.put(FX_KEY, JSON.stringify(snapshot));
+    return true;
+  } catch (e) {
+    return false; // keep the last good snapshot
+  }
+}
+
+function fxHeaders() {
+  return { "Content-Type": "application/json", "Cache-Control": "public, max-age=3600" };
+}
+
+async function handleRates(request, env) {
+  if (request.method !== "GET") {
+    return new Response(JSON.stringify({ ok: false }), { status: 405, headers: fxHeaders() });
+  }
+  if (!env.SIGNUPS) {
+    return new Response("null", { status: 200, headers: fxHeaders() });
+  }
+  let v = null;
+  try { v = await env.SIGNUPS.get(FX_KEY); } catch (e) { v = null; }
+  // Self-seed on the first request if the daily cron has not run yet.
+  if (!v) {
+    try { await refreshFx(env); v = await env.SIGNUPS.get(FX_KEY); } catch (e) { v = null; }
+  }
+  return new Response(v || "null", { status: 200, headers: fxHeaders() });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     if (url.pathname === "/api/notify") {
       return handleNotify(request, env);
     }
+    if (url.pathname === "/api/rates") {
+      return handleRates(request, env);
+    }
     // Everything else: serve the static site.
     return env.ASSETS.fetch(request);
+  },
+
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(refreshFx(env));
   }
 };
