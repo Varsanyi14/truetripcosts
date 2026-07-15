@@ -5,6 +5,7 @@ import { affiliate, esimLink, visaLink } from '../data/links.js';
 import { fallbackFxPct, shortlistFor, cardsChecked } from '../data/cards.js';
 import { countries } from '../data/index.js';
 import { regionOf, REGIONS, REGION_PHRASE } from '../data/hubs.js';
+import fxFallback from '../data/fxFallback.js';
 import fs from 'node:fs';
 const { country: c } = Astro.props;
 // Flag per related country, matching the homepage and hubs: /flags/<slug>.svg,
@@ -112,6 +113,33 @@ const insMedical = affiliate.medical;
 // null the eSIM and medical slots use.
 const carExcess = affiliate.carExcess;
 const carBrand = (affiliate.carExcessBrand && affiliate.carExcessBrand.trim()) || "RentalCover";
+
+// Currency anchor panel. Reads each guide's existing `currency` ISO code, so a
+// new country needs no rate setup at all. Currencies at par with the US dollar
+// (the dollar itself, and those pegged one to one) show a short "no need to
+// convert" note instead. Everything else shows the dated mid-market rate,
+// refreshed daily from /api/rates with the baked snapshot as the fallback. A
+// code with no rate anywhere hides itself cleanly.
+const FX_PAR = ["USD", "BSD", "PAB"];
+const FX_PAR_NOTE = {
+  USD: "This country uses the US dollar, so prices are already in the currency you think in, and on a card terminal or ATM there is nothing to convert.",
+  BSD: "The Bahamian dollar is pegged one to one with the US dollar and the two are used interchangeably, so prices are effectively in dollars. On a card terminal, still choose the local currency to dodge the poor conversion.",
+  PAB: "Panama uses the US dollar as everyday cash alongside the balboa, which is fixed one to one, so prices are effectively in dollars and there is nothing to convert."
+};
+const fxCur = (c.cash && c.cash.cur) || "";
+const fxFb = fxFallback.rates[fxCur];
+const fxShowPanel = fxCur && !FX_PAR.includes(fxCur);
+const fxShowPar = FX_PAR.includes(fxCur);
+const fxRateForDefault = fxFb || 1;
+const fxDefaultNum = fxRateForDefault >= 1000 ? 100000 : fxRateForDefault >= 100 ? 10000 : fxRateForDefault >= 10 ? 1000 : 100;
+function fxFmtLocal(n) {
+  if (!isFinite(n)) return "";
+  return n >= 100 ? Math.round(n).toLocaleString("en-US") : (Math.round(n * 100) / 100).toString();
+}
+function fxFmtUsd(n) {
+  if (!isFinite(n)) return "";
+  return "$" + (n >= 1000 ? Math.round(n).toLocaleString("en-US") : (Math.round(n * 100) / 100).toFixed(2));
+}
 // One canonical commission label per pick, chosen only by whether its link is a
 // real external URL. Never hand-typed into content, the same rule cards.js uses.
 const commLabel = (url) => ext(url).target
@@ -477,6 +505,65 @@ const kfState = (f) => {
     ))}
   </div>
 </section>
+
+{fxShowPanel && (
+<section id="fx" class="fx" hidden={!fxFb} data-fx-cur={fxCur} data-fx-fb={fxFb ? String(fxFb) : ""} data-fx-fbdate={fxFallback.date}>
+  <p class="lab lab-ico-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M14.5 5.2a6 6 0 1 1-5.3 9.6"/></svg>Real exchange rate</p>
+  <h2>What your money is really worth here.</h2>
+  <p class="sub">This is the mid-market rate, the one the banks trade at and the yardstick every other rate is measured against. Your card lands a little below it, and if a screen ever offers to bill you in dollars, that is worse again. So this is the number to expect, and how you spot a bad one.</p>
+  <div class="fx-box">
+    <p class="fx-rate"><span class="fx-big">1 US dollar</span> is about <span class="fx-big" data-fx-rate>{fxFb ? fxFmtLocal(fxFb) + " " + fxCur : ""}</span></p>
+    <div class="fx-conv">
+      <span class="fx-conv-l">Try an amount:</span>
+      <input class="fx-in" type="text" inputmode="decimal" value={String(fxDefaultNum)} data-fx-input aria-label={"Amount in " + fxCur} />
+      <span class="fx-cur">{fxCur}</span>
+      <span>is about</span>
+      <span class="fx-out" data-fx-out>{fxFb ? fxFmtUsd(fxDefaultNum / fxFb) : ""}</span>
+    </div>
+  </div>
+  <p class="fx-meta">Mid-market rate, checked <span data-fx-datelabel>{fxFallback.date}</span>. Your bank's rate will run a little lower. Rates by ExchangeRate-API.</p>
+  <script is:inline>
+    (function () {
+      var el = document.getElementById("fx");
+      if (!el) return;
+      var cur = el.getAttribute("data-fx-cur");
+      function fmtLocal(n) { return n >= 100 ? Math.round(n).toLocaleString("en-US") : (Math.round(n * 100) / 100).toString(); }
+      function fmtUsd(n) { return "$" + (n >= 1000 ? Math.round(n).toLocaleString("en-US") : (Math.round(n * 100) / 100).toFixed(2)); }
+      var input = el.querySelector("[data-fx-input]");
+      var out = el.querySelector("[data-fx-out]");
+      var rateEl = el.querySelector("[data-fx-rate]");
+      var dateEl = el.querySelector("[data-fx-datelabel]");
+      var current = 0;
+      function recalc() {
+        if (!current) { out.textContent = ""; return; }
+        var v = parseFloat((input.value || "").replace(/[^0-9.]/g, ""));
+        out.textContent = isFinite(v) ? fmtUsd(v / current) : "";
+      }
+      function apply(rate, dateLabel) {
+        if (!rate || !isFinite(rate)) { el.hidden = true; return; }
+        el.hidden = false;
+        current = rate;
+        rateEl.textContent = fmtLocal(rate) + " " + cur;
+        if (dateLabel && dateEl) dateEl.textContent = dateLabel;
+        recalc();
+      }
+      if (input) input.addEventListener("input", recalc);
+      var fb = parseFloat(el.getAttribute("data-fx-fb") || "");
+      if (isFinite(fb) && fb > 0) apply(fb, el.getAttribute("data-fx-fbdate") || "");
+      else el.hidden = true;
+      fetch("/api/rates").then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+        if (d && d.rates && d.rates[cur]) apply(d.rates[cur], d.date || "");
+      }).catch(function () {});
+    })();
+  </script>
+</section>
+)}
+{fxShowPar && (
+<section class="fx">
+  <p class="lab lab-ico-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M14.5 5.2a6 6 0 1 1-5.3 9.6"/></svg>Real exchange rate</p>
+  <p class="fx-par-note">No need to convert here. {FX_PAR_NOTE[fxCur]}</p>
+</section>
+)}
 
 {c.taxfree && (
   <section>
