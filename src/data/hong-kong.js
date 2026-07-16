@@ -101,10 +101,10 @@ export default {
 
   currencyHeading: "The Hong Kong dollar, in plain terms.",
   facts: [
-    { sym: "hkd", k: "Quick conversion", v: "Hong Kong uses the Hong Kong dollar, written HK$, <b>pegged near 7.8 to the US dollar</b>, so HK$100 is roughly 12.80. Notes run 10, 20, 50, 100, 500 and 1,000 from three different banks, so designs vary, and coins go up to 10 dollars. There is no sales tax on the price you see." },
+    { sym: "hkd", k: "Quick conversion", v: "Hong Kong uses the Hong Kong dollar, written HK$, pegged near 7.8 to the US dollar, so HK$100 is roughly 12.80. Notes run 10, 20, 50, 100, 500 and 1,000 from three different banks, so designs vary, and coins go up to 10 dollars. There is no sales tax on the price you see." },
     { sym: "card", k: "Very card-friendly", v: "Visa, Mastercard and Amex work almost everywhere, alongside Octopus, Apple Pay, Google Pay, Alipay and WeChat Pay. Cash is a smaller backup, mainly for taxis, red minibuses, market stalls and small eateries, so you rarely need much of it." },
-    { sym: "ic", k: "Octopus runs transit", v: "An <b>Octopus card</b> is the stored-value key to the MTR, buses, trams, the Star Ferry and minibuses, and it pays at 7-Eleven and supermarkets too. The deposit is HK$50 and refundable, you top up by cash or app, and <b>Apple Wallet supports Octopus</b> in Hong Kong." },
-    { sym: "tip", k: "Service charge, light tipping", v: "Tipping is modest here. Restaurants usually add a <b>10% service charge</b> already, so beyond that just round up a taxi or leave small change, HK$10 to 20. Nothing more is expected." }
+    { sym: "ic", k: "Octopus runs transit", v: "An Octopus card is the stored-value key to the MTR, buses, trams, the Star Ferry and minibuses, and it pays at 7-Eleven and supermarkets too. The deposit is HK$50 and refundable, you top up by cash or app, and Apple Wallet supports Octopus in Hong Kong." },
+    { sym: "tip", k: "Service charge, light tipping", v: "Tipping is modest here. Restaurants usually add a 10% service charge already, so beyond that just round up a taxi or leave small change, HK$10 to 20. Nothing more is expected." }
   ],
 
   taxfree: {

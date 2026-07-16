@@ -101,9 +101,9 @@ export default {
 
   currencyHeading: "The New Taiwan dollar, in plain terms.",
   facts: [
-    { sym: "twd", k: "Quick conversion", v: "Taiwan uses the New Taiwan dollar, written NT$. At about <b>32 to the US dollar</b> in 2026, NT$100 is roughly 3 dollars and NT$500 about 15.50. Notes run 100, 200, 500, 1,000 and 2,000. Prices already include the 5% VAT, so the figure on the tag is what you pay." },
+    { sym: "twd", k: "Quick conversion", v: "Taiwan uses the New Taiwan dollar, written NT$. At about 32 to the US dollar in 2026, NT$100 is roughly 3 dollars and NT$500 about 15.50. Notes run 100, 200, 500, 1,000 and 2,000. Prices already include the 5% VAT, so the figure on the tag is what you pay." },
     { sym: "card", k: "Cities card, markets cash", v: "Visa and Mastercard work at hotels, department stores, chains and convenience stores, and mobile pay is everywhere, with Amex patchy. But the night markets, small eateries and old-street shops are largely cash, so carry a stack of New Taiwan dollars and do not plan to go cashless." },
-    { sym: "ic", k: "EasyCard runs transit", v: "An <b>EasyCard</b> is the stored-value card for the MRT, buses and local trains, at about a 20% discount, and it also pays at convenience stores. Buy it for NT$100 plus load, and top up with cash. It does <b>not</b> work on the High Speed Rail or long-distance buses, and Apple Pay does not support it." },
+    { sym: "ic", k: "EasyCard runs transit", v: "An EasyCard is the stored-value card for the MRT, buses and local trains, at about a 20% discount, and it also pays at convenience stores. Buy it for NT$100 plus load, and top up with cash. It does not work on the High Speed Rail or long-distance buses, and Apple Pay does not support it." },
     { sym: "notip", k: "No tipping", v: "Taiwan has no tipping culture. Staff are paid a proper wage, and leaving cash can confuse people. Some restaurants add a 10% service charge, which is already on the bill. A warm thank-you is all that is expected." }
   ],
 
