@@ -34,6 +34,7 @@ export default {
     JMD: 158.8814,
     JPY: 162.1718,
     KRW: 1490.4845,
+    LAK: 21900,
     MAD: 9.3302,
     MXN: 17.439,
     NOK: 9.6907,
