@@ -39,5 +39,8 @@ import morocco from './morocco.js';
 import southAfrica from './south-africa.js';
 import taiwan from './taiwan.js';
 import hongKong from './hong-kong.js';
+import poland from './poland.js';
+import hungary from './hungary.js';
+import croatia from './croatia.js';
 
-export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, india, czechia, canada, switzerland, austria, turkey, egypt, colombia, brazil, argentina, jamaica, ireland, bahamas, iceland, norway, sweden, denmark, southKorea, singapore, australia, newZealand, morocco, southAfrica, taiwan, hongKong];
+export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, india, czechia, canada, switzerland, austria, turkey, egypt, colombia, brazil, argentina, jamaica, ireland, bahamas, iceland, norway, sweden, denmark, southKorea, singapore, australia, newZealand, morocco, southAfrica, taiwan, hongKong, poland, hungary, croatia];
