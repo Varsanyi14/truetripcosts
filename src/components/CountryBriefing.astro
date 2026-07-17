@@ -759,7 +759,7 @@ const kfState = (f) => {
     <div class="reveal"><div class="t">The full total needs JavaScript switched on. With it off: take the room price, add your on-the-ground spending, add about 3% for a typical US card's foreign fee on what you put on the card, a few dollars plus about 3% for each ATM cash withdrawal, and {c.name}'s tourist tax.</div></div>
   </noscript>
 
-  <details class="cardlist" id="calcNoFee">
+  <details class="cardlist" id="calcNoFee" open>
     <summary class="cardlist-sum">
       <svg class="acc-ico" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
       <span class="cardlist-txt"><b>Not sure which card to bring?</b> See <span class="cardlist-link">my pick for {c.name}</span>.</span>
@@ -799,7 +799,7 @@ const kfState = (f) => {
       <div class="sl-wise">
         <img class="sl-wise-logo" src="/wise-logo.png" alt="Wise" width="262" height="69" loading="lazy" decoding="async" />
         <div class="sl-wise-body">
-          <p class="sl-wise-lead"><b>Want one account for spending in the local currency?</b> A different job from the three above, and the one I reach for abroad: a multi-currency account and card you load and spend from, rather than ATM cash or a credit card. {wiseNote}</p>
+          <p class="sl-wise-lead"><b>Want one account that holds and spends in the local currency?</b> A different job from the three above, and the one I reach for abroad. It is free to open; you can create a virtual card in the app and add it to your phone wallet in minutes, without waiting for the physical card; and you can convert US dollars into the local currency inside the account before you travel, then spend from that balance. {wiseNote}</p>
           <div class="sl-wise-foot">
             {ext(wiseLink).target && (
               <a class="pickbtn" href={wiseLink} {...ext(wiseLink)}>See the Wise card<span class="arw">&#8594;</span><NewTab /></a>
