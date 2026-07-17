@@ -456,6 +456,16 @@
   .sl-mark{font-family:var(--serif);font-size:13px;font-weight:600;opacity:.2;letter-spacing:.02em;text-shadow:none}
   .sl-why{font-size:13px;color:var(--ink);margin:0;line-height:1.45;font-weight:500}
 
+  /* Wise quick-card: a standalone module below the three merit tiles, not a card
+     face. Quiet and integrated (white field, hairline border, a thin Wise-green
+     left accent), so it reads as part of the page rather than a pasted ad. */
+  .sl-wise{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-left:3px solid #163300;border-radius:12px;padding:14px 16px;margin:16px 0 0}
+  .sl-wise-logo{flex:none;width:72px;height:auto;margin-top:3px}
+  .sl-wise-body{display:flex;flex-direction:column;gap:11px;min-width:0}
+  .sl-wise-lead{margin:0;font-size:13.5px;line-height:1.5;color:var(--ink)}
+  .sl-wise-lead b{color:#0A5644;font-weight:600}
+  .sl-wise-foot{display:flex;align-items:center;gap:13px;flex-wrap:wrap}
+
   /* cash estimator demoted to a secondary helper */
   .estimator.secondary .ebig{font-size:25px}
   .enote{font-size:12.5px;color:var(--muted);margin:8px 0 0;line-height:1.5}
@@ -464,6 +474,8 @@
   @media(max-width:560px){
     .sl-row{display:grid;grid-template-columns:1fr;gap:14px}
     .sl{flex:none}
+    .sl-wise{flex-direction:column;gap:11px}
+    .sl-wise-logo{width:64px}
   }
 
   /* ----- country rail on the landing page ----- */

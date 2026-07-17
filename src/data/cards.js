@@ -34,6 +34,15 @@ export const fallbackFxPct = 3;
 
 const free = { link: null, label: "we earn nothing" };
 
+// Wise is the first card with a live affiliate program (Partnerize, USD payout
+// campaign). Per the rule above, its link is set and its label flips to
+// "we may earn a commission"; every other card stays `free`. The tracking link is
+// the deep-linked Partnerize URL, kept exactly as issued so the camref is intact.
+const wiseAffiliate = {
+  link: "https://wise.prf.hn/click/camref:1100l5Po5X/destination:https%3A%2F%2Fwise.com%2Fus%2Fcard%2F",
+  label: "we may earn a commission"
+};
+
 export const cards = [
   // Chase. Sapphire and Ink Preferred have no foreign fee; the Freedom pair charges 3%.
   { issuer: "Chase", product: "Sapphire Preferred", network: "Visa", fxPct: 0, kind: "credit", atm: null, note: null, color: "#126BC5", affiliate: free },
@@ -75,9 +84,15 @@ export const cards = [
   { issuer: "Charles Schwab", product: "Investor Checking debit", network: "Visa", fxPct: 0, kind: "debit", atm: "Refunds ATM fees worldwide, with no limit", note: "Schwab refunds worldwide ATM fees, so it is the standout card for pulling cash abroad.", color: "#00A3E0", affiliate: free },
   { issuer: "Fidelity", product: "Cash Management debit", network: "Visa", fxPct: 1, kind: "debit", atm: "Refunds ATM fees, often same day", note: "Fidelity refunds ATM fees but adds about a 1% fee on foreign purchases, so it is best for ATM cash, not card spending.", color: "#4D8400", affiliate: free },
   { issuer: "Capital One", product: "360 Checking debit", network: "Mastercard", fxPct: 0, kind: "debit", atm: "No Capital One foreign fee, ATM operator fees may still apply", note: null, color: "#015C8E", affiliate: free },
-  { issuer: "Wise", product: "Wise card", network: "Visa", fxPct: 0, kind: "debit", atm: "Free ATM withdrawals up to about $100 a month, then a small fee", note: "Wise uses the mid-market rate plus a small conversion fee (around 0.4% and up), with no flat foreign fee.", color: "#163300", affiliate: free },
+  { issuer: "Wise", product: "Wise card", network: "Visa", fxPct: 0, kind: "debit", atm: "Free ATM withdrawals up to about $100 a month, then a small fee", note: "Wise uses the mid-market rate plus a small conversion fee (around 0.4% and up), with no flat foreign fee.", color: "#163300", affiliate: wiseAffiliate },
   { issuer: "Revolut", product: "Revolut card", network: "Visa", fxPct: 0, kind: "debit", atm: "Some fee-free ATM use, then a small fee", note: "Revolut is fee-free up to your plan's monthly limit, then about 0.5%, with a small extra markup on weekends.", color: "#191C1F", affiliate: free }
 ];
+
+// The Wise multi-currency card is surfaced on the country pages as its own
+// quick-card, a distinct module below the three merit picks and never one of the
+// three tiles. Exported so the page can render it directly; its "we may earn a
+// commission" label is driven by the affiliate entry above.
+export const wiseCard = cards.find(c => c.issuer === "Wise" && c.product === "Wise card") || null;
 
 // Group cards by issuer for the picker, preserving the order above.
 export function cardsByIssuer() {

@@ -2,7 +2,7 @@
 import Symbol from './Symbol.astro';
 import NewTab from './NewTab.astro';
 import { affiliate, esimLink, visaLink } from '../data/links.js';
-import { fallbackFxPct, shortlistFor, cardsChecked } from '../data/cards.js';
+import { fallbackFxPct, shortlistFor, cardsChecked, wiseCard } from '../data/cards.js';
 import { countries } from '../data/index.js';
 import { regionOf, REGIONS, REGION_PHRASE } from '../data/hubs.js';
 import fxFallback from '../data/fxFallback.js';
@@ -93,6 +93,12 @@ const calcJson = JSON.stringify(calcData).replace(/</g, "\\u003c");
 // cards, ordered for this country. Faces use the TTC palette below, not card-network
 // colours or art, so we vary the face colour across the cards rather than mimic a brand.
 const shortlist = shortlistFor(c.slug);
+// Wise gets its own quick-card below the three merit picks (a distinct module, not
+// a fourth tile). Its link and "we may earn a commission" label are data-driven
+// from cards.js, so it lights up site-wide the moment the URL is set there, exactly
+// like the other paid picks. The three merit tiles above stay untouched and unpaid.
+const wiseLink = (wiseCard && wiseCard.affiliate && wiseCard.affiliate.link) || null;
+const wiseNote = (wiseCard && wiseCard.note) || "";
 const faceColors = ["#0A5644", "#16302C", "#7A3B12", "#4E2436", "#1E3A5F"];
 const whyLine = (card) =>
   card.kind === "debit" ? "Fee-free ATM cash worldwide" : "No foreign transaction fee";
@@ -783,9 +789,29 @@ const kfState = (f) => {
           </div>
         ))}
       </div>
+
+      {/* Wise multi-currency card: its own quick-card, distinct from the three merit
+          picks above. A different job (holding and spending in the local currency, not
+          the ATM-cash or credit-card slots) and the one option here with a live program,
+          so it carries its own honest label and the only click-through in the panel. The
+          button and label are data-driven from cards.js exactly like every other paid
+          pick: the button appears only once the tracking link is set, and never before. */}
+      <div class="sl-wise">
+        <img class="sl-wise-logo" src="/wise-logo.png" alt="Wise" width="262" height="69" loading="lazy" decoding="async" />
+        <div class="sl-wise-body">
+          <p class="sl-wise-lead"><b>Want one account for spending in the local currency?</b> A different job from the three above, and the one I reach for abroad: a multi-currency account and card you load and spend from, rather than ATM cash or a credit card. {wiseNote}</p>
+          <div class="sl-wise-foot">
+            {ext(wiseLink).target && (
+              <a class="pickbtn" href={wiseLink} {...ext(wiseLink)}>See the Wise card<span class="arw">&#8594;</span><NewTab /></a>
+            )}
+            <span class={commLabel(wiseLink).cls}>{commLabel(wiseLink).text}</span>
+          </div>
+        </div>
+      </div>
+
       <div style="display:flex;gap:9px;align-items:flex-start;border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin:14px 0 0">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
-        <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Recommended with no kickback from any of these. If that ever changes, this label will read <i>we may earn a commission</i>, and the pick will still be the pick.</p>
+        <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">The three picks above pay us nothing, and their tags say so. Wise is the only option here that can earn us a commission, and its tag says that too. Paid or not, the pick is still the pick.</p>
       </div>
     </div>
   </details>
