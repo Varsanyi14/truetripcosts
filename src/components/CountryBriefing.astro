@@ -17,7 +17,7 @@ const jumpTargets = countries.filter(x => x.live && !x.blocked && x.slug !== c.s
 // they stay consistent with the hubs and breadcrumbs.
 const myRegion = regionOf(c);
 const regionPhrase = (REGION_PHRASE && REGION_PHRASE[myRegion]) || myRegion;
-const related = jumpTargets.filter(x => regionOf(x) === myRegion).slice(0, 6);
+const related = jumpTargets.filter(x => regionOf(x) === myRegion);
 const regionHub = myRegion ? REGIONS[myRegion] : null;
 const regionHubLive = !!(regionHub && regionHub.live);
 // Home > Region > Country breadcrumb, mirrored as BreadcrumbList JSON-LD. The region
