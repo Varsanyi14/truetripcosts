@@ -241,6 +241,61 @@ export default {
         ],
         judgment: "Entry rules and the fee change (the ETA rose from 16 to 20 pounds in April 2026), and transit exemptions carry fine print, so confirm on gov.uk before you travel. Checked July 2026."
       }
+    },
+    {
+      slug: "cash-or-card",
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in the UK, or can I use cards? (2026) | True Trip Costs",
+      description: "Barely any cash. The UK is nearly cashless: tap a card or phone almost everywhere, and all London transport runs on contactless (buses take no cash at all). Skip the Oyster, choose pounds not dollars. Checked July 2026.",
+      h1: "Do I need cash in the UK, or can I use cards?",
+      lede: "Short answer: you can do the whole trip without cash. Contactless runs everything, including all of London's transport, and many places no longer take notes at all. Here is how to pay, and the couple of things to get right.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "Cards, almost entirely. The UK is one of the most cashless places on earth, so you can <b>tap a card or phone nearly everywhere</b>, and some shops no longer take cash at all. All of <b>London's transport runs on contactless</b>, and buses across the UK <b>take no cash whatsoever</b>. You do <b>not need an Oyster card</b>: tapping your own contactless card or phone charges the same fares and caps. Keep maybe <b>20 to 40 pounds</b> for the rare cash-only spot, and choose <b>pounds, not dollars</b>, at the terminal.",
+      sections: [
+        {
+          h: "You barely need cash",
+          p: [
+            "In 2026 the UK is <b>nearly cashless</b>. Contactless is accepted almost everywhere, by card or phone, and plenty of cafes and shops are <b>card-only</b>, some genuinely cannot make change. You can comfortably leave home with no pounds at all and get them from a cash machine if you want a little.",
+            "The main quirk is the <b>100 pound contactless limit</b> most UK banks still apply: above that a card asks for chip and PIN, though paying with your <b>phone</b> (Apple Pay or Google Pay) has no such cap. Keep a small amount of cash, <b>20 to 40 pounds</b>, only for the occasional rural pub, market stall or tip."
+          ]
+        },
+        {
+          h: "London transport: just tap",
+          p: [
+            "This is the big one for visitors. <b>All London buses stopped taking cash years ago</b>, and the Tube, Overground and Elizabeth line all work by tapping a <b>contactless card or phone</b> at the gate. The system automatically applies the same daily and weekly <b>fare caps as an Oyster card</b>, so you always pay the cheapest fare, which means <b>you do not need to buy an Oyster</b> at all.",
+            "Two small habits: <b>tap in and tap out</b> on the Tube and trains (buses are tap-in only), and do not tap a whole wallet against the reader, hold out the single card or phone you mean to use, or it may charge the wrong one."
+          ]
+        },
+        {
+          h: "Getting cash, and the dollar rule",
+          p: [
+            "If you want cash, use a <b>free-to-use cash machine</b> (most bank ATMs and the wider LINK network are free), and avoid the fee-charging machines tucked in some convenience stores. Apple Pay and Google Pay are accepted essentially everywhere cards are.",
+            "When a UK card machine or ATM asks whether to charge in <b>US dollars or pounds, always choose pounds</b>. Picking dollars triggers dynamic currency conversion at a poor rate. Pounds lets your own bank do the conversion, which is cheaper."
+          ]
+        },
+        {
+          h: "Tipping, and one note",
+          p: [
+            "In restaurants a <b>service charge of around 12.5%</b> is often added to the bill; it is discretionary, so you can ask for it to be removed if service was poor, and you need not tip on top. In pubs where you order at the bar, <b>tipping is not expected</b>.",
+            "For the fuller money picture and how it varies around the UK, see the <a href=\"/united-kingdom\">UK money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in the UK?", a: "Barely. The UK is nearly cashless: you can tap a card or phone almost everywhere, and many places are card-only. A whole trip with no cash is realistic. Keep maybe 20 to 40 pounds for the occasional rural pub, market stall or tip, and get it from a free cash machine if needed." },
+        { q: "Do I need an Oyster card, or can I use contactless?", a: "You can use contactless and skip the Oyster. Tapping your own contactless card or phone on London's Tube, buses and trains charges the same fares and applies the same daily and weekly caps as an Oyster, so there is no saving from buying one. Just tap in, and tap out on rail." },
+        { q: "Can I use cash on London buses?", a: "No. London buses have not accepted cash since 2014, and in 2026 no bus anywhere in the UK takes cash. You pay by tapping a contactless card or phone, or an Oyster or travelcard. On buses you tap in only, there is no need to tap out." },
+        { q: "Should I choose pounds or dollars at the card machine in the UK?", a: "Always choose pounds. Selecting US dollars triggers dynamic currency conversion, a marked-up rate, so you pay more. Choosing pounds lets your own bank handle the conversion at a better rate. The same applies at cash machines: decline any offer to charge in dollars." }
+      ],
+      sources: {
+        links: [
+          { label: "Transport for London: contactless and mobile pay as you go, fares and the daily and weekly caps (London buses are cash-free)", url: "https://tfl.gov.uk", type: "gov" },
+          { label: "UK Finance: payment-market data showing cash down to around a tenth of UK payments", url: "https://www.ukfinance.org.uk", type: "data" }
+        ],
+        judgment: "London fares and caps and the contactless limit can change (the caps held for 2026, and 100 pounds is the usual contactless ceiling), and the rest is our practical read, so confirm current fares with Transport for London before you travel. Checked July 2026."
+      }
     }
   ]
 };

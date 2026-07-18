@@ -242,6 +242,61 @@ export default {
         ],
         judgment: "Fees, processing times and document lists can change, so confirm the current details on the official portal before you pay. Checked July 2026."
       }
+    },
+    {
+      slug: "cash-or-card",
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Brazil, or can I use cards? (2026) | True Trip Costs",
+      description: "Cards work almost everywhere in Brazilian cities, and you need surprisingly little cash. But two local catches matter: Pix runs the country yet is mostly closed to tourists, and foreign cards get hit with the IOF tax. Checked July 2026.",
+      h1: "Do I need cash in Brazil, or can I use cards?",
+      lede: "Short answer: cards cover most of a city trip, and you need less cash than you would think. The wrinkles are Brazilian: Pix has taken over informal payments but tourists mostly cannot use it, and foreign cards carry a local tax. Here is how to pay well.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "Mostly cards, with a little cash. In Brazilian cities <b>Visa and Mastercard are accepted almost everywhere</b> (Amex less so), so you need <b>little cash</b>, though markets, beach vendors and small towns still want it. Two Brazil-specific catches: <b>Pix</b>, the instant-payment app everyone uses, is <b>mostly closed to tourists</b> (it needs a local tax ID), and foreign cards are hit with Brazil's <b>IOF tax</b> (around 4.38%). Carry a little cash in <b>reais, not dollars</b>, and always pay in reais at the terminal.",
+      sections: [
+        {
+          h: "Cards work, but mind the IOF and the conversion trap",
+          p: [
+            "In cities, <b>cards are near-universal</b>, Visa and Mastercard lead, contactless is common, and Amex is accepted less often. The Brazil-specific cost to know about is the <b>IOF</b>, a federal tax of roughly <b>4.38%</b> on foreign-card transactions and withdrawals, so even a no-foreign-fee card still meets this local charge. Pick a card with low fees and treat it as your main way to pay.",
+            "As everywhere, if a terminal or ATM offers to charge you in <b>US dollars instead of reais, always choose reais</b>. Picking dollars triggers dynamic currency conversion, a marked-up rate, and Brazilian machines do offer it. Reais lets your own bank convert, which is cheaper."
+          ]
+        },
+        {
+          h: "Pix runs Brazil, but mostly not for tourists",
+          p: [
+            "You will hear about <b>Pix</b>, Brazil's instant bank-transfer system, and it is genuinely everywhere: people pay by scanning a QR code for almost anything. The catch for visitors is that a native Pix account needs a <b>CPF</b> (a Brazilian tax ID) and a local bank account, so <b>most tourists cannot use it directly</b>. A few apps let foreigners pay via Pix by acting as a middleman, but you do not need one, card acceptance in cities is broad enough to skip Pix entirely.",
+            "Where Pix does bite is the informal economy: <b>beach kiosks, small pousadas in remote spots, street stalls and freelance drivers</b> increasingly take Pix or cash only, not cards. That is exactly where your small cash reserve earns its keep."
+          ]
+        },
+        {
+          h: "Cash: bring reais, and dollars will not help",
+          p: [
+            "Carry a <b>small amount of reais</b> for taxis, snacks, tips, markets and anywhere off the tourist track. <b>US dollars are not widely accepted</b> in Brazil, only a handful of upscale hotels and exchange houses take them, usually at poor rates, so do not plan to spend dollars.",
+            "For reais, the reliable ATMs are the big banks, <b>Banco do Brasil, Bradesco, Santander, Itau</b> and the shared <b>Banco24Horas</b> network, which take foreign Visa and Mastercard. Withdrawals carry the IOF plus your bank's fees, so pull larger amounts less often, use machines inside banks or malls by day, and keep cash out of sight."
+          ]
+        },
+        {
+          h: "Tipping, and one last habit",
+          p: [
+            "In restaurants a <b>10% service charge</b> (the servico) is usually already on the bill, so you do not need to add more unless service was special. Tipping taxi and ride-app drivers is not expected.",
+            "Spend your leftover reais before you fly home, the exchange back to dollars is poor. For the fuller money picture, cards, safety and how much to carry, see the <a href=\"/brazil\">Brazil money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Can I use cards everywhere in Brazil?", a: "In cities, mostly yes: Visa and Mastercard are accepted almost everywhere, contactless is common, and Amex works less often. You need little cash for day-to-day city spending. The exceptions are markets, beach vendors, street stalls and small towns, which often take only cash or Pix. Note that foreign cards are subject to Brazil's IOF tax, around 4.38%." },
+        { q: "Can tourists use Pix in Brazil?", a: "Mostly no. Pix is Brazil's instant-payment system and locals use it constantly, but a native Pix account requires a CPF (Brazilian tax ID) and a local bank account, which tourists usually do not have. Some apps let foreigners pay via Pix as an intermediary, but you do not need one, card acceptance in cities is broad enough to complete a trip without Pix." },
+        { q: "Are US dollars accepted in Brazil?", a: "Not widely. Only a few upscale hotels and currency-exchange houses take US dollars, generally at poor rates. Everywhere else wants Brazilian reais. Bring a small amount of dollars for emergencies at most, and pay in reais or by card for everything." },
+        { q: "Which ATMs take foreign cards in Brazil, and what is the IOF?", a: "Banco do Brasil, Bradesco, Santander, Itau and the shared Banco24Horas network accept foreign Visa and Mastercard. Withdrawals are subject to the IOF, a Brazilian federal tax of around 4.38% on foreign-card transactions, plus your own bank's fees, so withdraw larger amounts less often and always choose reais, not dollars, at the machine." }
+      ],
+      sources: {
+        links: [
+          { label: "Banco Central do Brasil: Pix, the official instant-payment system, and its CPF and local-account requirements", url: "https://www.bcb.gov.br/en", type: "gov" },
+          { label: "US Department of State: Brazil country information, general money, entry and safety context for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "Card acceptance, the IOF tax on foreign cards (around 4.38%) and Pix access for visitors are all shifting in Brazil, and much of the rest is our practical read, so treat amounts as a guide and confirm with your own bank. Checked July 2026."
+      }
     }
   ]
 };

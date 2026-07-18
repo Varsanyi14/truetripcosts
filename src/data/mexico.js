@@ -224,6 +224,61 @@ export default {
         ],
         judgment: "The FMM fee is set annually by INM and Visitax is fixed in pesos (so the US-dollar amount shifts with the exchange rate); rules and enforcement change, so confirm the current amounts on the official sites before you travel. Checked July 2026."
       }
+    },
+    {
+      slug: "cash-or-card",
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Mexico, or can I use cards? (2026) | True Trip Costs",
+      description: "Both. Cards work at hotels, resorts and city restaurants, but you need pesos for taxis, street food and tips. Mexico's big trap: always pay in pesos, never dollars, and decline the ATM's dollar conversion. Checked July 2026.",
+      h1: "Do I need cash in Mexico, or can I use cards?",
+      lede: "Short answer: cards for the big things, pesos for the small ones. The mistake that costs tourists most is paying in dollars instead of pesos. Here is how to pay well and get cash safely.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "Both. <b>Cards work</b> at hotels, resorts, chains and city restaurants (Visa and Mastercard best, Amex patchy), but you need <b>pesos in cash</b> for taxis, street food, markets, small shops and tips. Mexico's single biggest money trap: <b>always pay in pesos, never US dollars</b>, and <b>decline the dollar conversion</b> that ATMs and card terminals push, its rate is 5 to 8% worse. Pull pesos from a bank ATM and carry small notes.",
+      sections: [
+        {
+          h: "Cards where they work, pesos where they do not",
+          p: [
+            "In cities and resort areas, <b>cards are routine</b> at hotels, established restaurants, chains and shops, with Visa and Mastercard the most accepted and Amex hit or miss. Apple Pay and Google Pay work at many tourist-area terminals.",
+            "But <b>cash still rules</b> for street food, taxis, markets, small family shops, local buses and tips, much of everyday spending outside the resort bubble runs on cash. Carry <b>small peso notes</b> (20, 50 and 100), since vendors often cannot break a 500."
+          ]
+        },
+        {
+          h: "The peso-versus-dollar trap",
+          p: [
+            "This is the one that quietly costs tourists the most. When an ATM or a card terminal asks whether to charge you in <b>US dollars or pesos, always choose pesos</b>. Choosing dollars triggers dynamic currency conversion, where the machine sets a rate that is typically <b>5 to 8% worse</b> than your own bank's. If a waiter returns a terminal already showing dollars, ask them to <b>redo it in pesos</b>.",
+            "And although resorts and border towns often <b>accept US dollars</b>, they give a mediocre rate and hand back change in pesos, so you lose either way. Pay in pesos, and <b>tip in pesos</b> too, it is far easier for staff to use than dollars."
+          ]
+        },
+        {
+          h: "Getting pesos safely",
+          p: [
+            "Use <b>bank ATMs</b>, BBVA, Banorte, Santander or HSBC, ideally the machines <b>inside a branch, mall or supermarket</b> and during the day, which are better lit and less prone to card skimming. Avoid airport and hotel exchange kiosks (markups of 5 to 15%) and standalone or damaged-looking machines.",
+            "Use a <b>debit card</b> at the ATM, not a credit card (a credit-card withdrawal is a cash advance, with a fee and interest from day one), and bring a card with no foreign-transaction fee plus a <b>backup card</b> on a different network. Withdraw a few days' worth at a time, shield your PIN, and keep cash out of sight."
+          ]
+        },
+        {
+          h: "Tipping, and the fees you already paid",
+          p: [
+            "In restaurants, <b>10 to 15%</b> is standard for good service if a service charge is not already added, and small tips for hotel staff, guides and drivers are appreciated, all in pesos.",
+            "This covers day-to-day money. For the entry side, the tourist card and the Visitax fee for Cancun and the Riviera Maya, see <a href=\"/mexico/fmm-and-visitax\">the FMM and Visitax walkthrough</a>, and for the fuller picture, the <a href=\"/mexico\">Mexico money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Should I use cash or card in Mexico?", a: "Both. Cards work at hotels, resorts, chains and city restaurants (Visa and Mastercard best, Amex patchy), but you need pesos in cash for taxis, street food, markets, small shops and tips. Carry small peso notes for the everyday things and use a card for larger purchases at established businesses." },
+        { q: "Can I use US dollars in Mexico?", a: "In resort areas and border towns, often yes, but at a poor rate and with change given in pesos, so you lose value. Outside tourist zones, pesos are necessary. It is better to pay in pesos everywhere, and to tip in pesos, which is far easier for staff to use." },
+        { q: "Pesos or dollars when the ATM or terminal asks in Mexico?", a: "Always choose pesos. Selecting US dollars triggers dynamic currency conversion, and the rate offered is typically 5 to 8% worse than your own bank's. Decline it at ATMs and card terminals, and if a terminal already shows dollars, ask for it to be redone in pesos." },
+        { q: "Which ATMs are safe to use in Mexico, and what about fees?", a: "Use bank ATMs (BBVA, Banorte, Santander, HSBC) inside a branch, mall or supermarket and during the day, which are safer from skimming. Avoid airport and hotel exchange kiosks and standalone machines. Use a debit card rather than a credit card, bring a no-foreign-fee card plus a backup, and always choose pesos over dollars." }
+      ],
+      sources: {
+        links: [
+          { label: "Banco de Mexico: the official peso exchange-rate reference", url: "https://www.banxico.org.mx/", type: "gov" },
+          { label: "US Department of State: Mexico country information, including safety context relevant to ATM use", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "The peso-dollar rate moves and card and ATM fees vary by your own bank, and much of this is our practical read, so treat amounts as a guide and always decline dollar conversion. Checked July 2026."
+      }
     }
   ]
 };
