@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Spoke from '../../components/Spoke.astro';
+import { countries } from '../../data/index.js';
+
+// One page per spoke, at /{countrySlug}/{spokeSlug}, generated from the spokes array on
+// each live country. Mirrors [slug].astro, one level deeper, so there is no collision:
+// [slug].astro owns /{slug}, this owns /{slug}/{spoke}. A spoke can be hidden with
+// live:false the same way a country is gated by .live.
+export function getStaticPaths() {
+  return countries
+    .filter(c => c.live)
+    .flatMap(c => (c.spokes || [])
+      .filter(s => s.live !== false)
+      .map(s => ({ params: { slug: c.slug, spoke: s.slug }, props: { country: c, spoke: s } })));
+}
+const { country, spoke } = Astro.props;
+---
+<Base title={spoke.title} description={spoke.description}>
+  <Nav />
+  <main class="wrap">
+    <Spoke country={country} spoke={spoke} />
+  </main>
+  <Footer />
+</Base>

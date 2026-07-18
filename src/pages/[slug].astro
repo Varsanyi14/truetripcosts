@@ -14,6 +14,23 @@ const { country } = Astro.props;
   <Nav />
   <main class="wrap">
     <CountryBriefing country={country} />
+    {country.spokes && country.spokes.filter(s => s.live !== false).length > 0 && (
+      <section class="deeper">
+        <p class="lab">Going deeper on {country.name}</p>
+        <h2>The money questions people ask on the ground.</h2>
+        <p class="sub">Short, focused answers to the specific things that catch first-timers out in {country.name}.</p>
+        <ul class="deeper-list">
+          {country.spokes.filter(s => s.live !== false).map(s => (
+            <li>
+              <a href={'/' + country.slug + '/' + s.slug}>
+                <span class="deeper-h">{s.h1}</span>
+                <span class="deeper-d">{s.lede}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
     <section class="guide-cta">
       <div class="gc-txt">
         <p class="gc-h">This is how {country.name} stands today.</p>
@@ -24,3 +41,17 @@ const { country } = Astro.props;
   </main>
   <Footer />
 </Base>
+
+<style>
+  /* "Going deeper" hub list: the country page's links to its spokes. Data-driven from
+     the country's spokes array, so a new spoke appears here on its own. Reuses the
+     shared tokens; only the list itself is styled here. */
+  .deeper-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
+  .deeper-list a{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;text-decoration:none;box-shadow:var(--shadow);transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+  .deeper-list a:hover{border-color:#C2E0C8;transform:translateY(-1px)}
+  .deeper-h{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink);line-height:1.25;margin:0 0 4px}
+  .deeper-d{display:block;font-size:14px;color:var(--muted);line-height:1.5}
+  @media (max-width:560px){
+    .deeper-h{font-size:16px}
+  }
+</style>

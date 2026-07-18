@@ -145,5 +145,82 @@ export default {
         note: "Say it: azulejos (ah-zoo-LEH-zhoosh)" },
     ],
     pride: "For a small country, Portugal has an enormous heart: centuries of seafaring, the world's fish cooked a hundred ways, and the word saudade, which they gave to a feeling no other language quite names."
-  }
+  },
+
+  // HUB-AND-SPOKE SPOKES. Each spoke is a short, focused page answering ONE on-the-ground
+  // money question for Portugal. Data-driven and single-source: the spoke lives here, so
+  // its checked date, facts and sources are governed the same way the guide is, and it is
+  // rendered by components/Spoke.astro through src/pages/[slug]/[spoke].astro at
+  // /portugal/<spoke slug>. The country page lists these automatically under "Going
+  // deeper on Portugal", and each spoke links back here, top and bottom.
+  spokes: [
+    {
+      slug: "euronet-atm-fees",
+      live: true,
+      title: "How to avoid the yellow Euronet ATMs in Lisbon (2026) | True Trip Costs",
+      description: "Skip the bright yellow Euronet machines in Lisbon and use a Multibanco (MB) bank ATM instead. How to tell them apart, why the yellow ones cost so much, and the one screen tap that saves you the most. Checked July 2026.",
+      h1: "How to avoid the yellow Euronet ATMs in Lisbon",
+      lede: "The bright yellow machines by the airport exits and in the tourist squares are the most expensive way to get euros. Here is how to spot them, what to use instead, and the one habit that matters more than the machine.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-05",
+      answer: "Walk past the bright yellow <b>Euronet</b> machines and use a <b>Multibanco (MB)</b> bank ATM instead. Multibanco is Portugal's shared bank network, and its machines charge little or nothing of their own for the withdrawal. Whichever machine you end up at, <b>always choose euros, never dollars</b>, and decline the offer to convert. That single tap saves you more than the machine choice does.",
+      sections: [
+        {
+          h: "The short version: use a Multibanco machine, not a Euronet one",
+          p: [
+            "Portugal runs one national bank ATM network called <b>Multibanco</b>, or <b>MB</b>, operated by SIBS and shared by nearly every Portuguese bank. Its machines charge little or nothing for the withdrawal itself. The bright yellow standalone machines you meet in airport arrivals and tourist squares are <b>Euronet</b>, a private operator that sits outside that network and sets its own, much higher, pricing.",
+            "So the rule is simple. Find a Multibanco machine, or an ATM built into a real bank branch such as CGD, Millennium, Novo Banco or Santander, and skip the freestanding yellow boxes. Then, on any machine, pick euros and turn down the conversion offer, because that offer is where most of the money quietly disappears."
+          ]
+        },
+        {
+          h: "How to tell a Euronet ATM from a Multibanco one",
+          p: [
+            "Euronet machines are freestanding and wrapped in bright yellow, they carry no bank name, and the screen skips the normal Multibanco welcome. You will find them clustered at Lisbon airport arrivals, around Rossio and Praca do Comercio, along the Baixa and Alfama tourist streets, and all down the Algarve strip.",
+            "A Multibanco machine shows the orange MB logo, opens with a language menu (Portugues, English, Espanol, Francais), and offers preset euro amounts like 20, 40, 60, 100 and 200. It also shows a short fee-disclosure screen before you confirm, so you always see the charge in advance rather than after."
+          ]
+        },
+        {
+          h: "Why the yellow machines cost so much",
+          p: [
+            "Two charges stack on a Euronet withdrawal. First, a per-withdrawal fee, usually a few euros and steepest at the airport. Second, and far worse, <b>dynamic currency conversion</b>: the machine offers to bill you in US dollars and quietly sets its own exchange rate, which can add roughly 10% or more on top. That is how withdrawing 100 euros can end up costing well over the odds.",
+            "You always have the right to decline dollars and be charged in euros, at which point your own bank does the conversion at a normal rate. Euronet's screens make the dollar option look like the helpful default. It is not, so say no."
+          ]
+        },
+        {
+          h: "Getting euros the cheap way, step by step",
+          p: [
+            "It takes about a minute and no special app."
+          ],
+          steps: [
+            "Leaving the airport, skip the exchange counters and the freestanding yellow machines.",
+            "Find a Multibanco machine or a bank-branch ATM. At Lisbon airport there are bank machines just past customs.",
+            "Insert your card, choose English, and pick a sensible amount. Multibanco often caps each withdrawal around 200 euros, so take enough in one go to avoid repeat fees.",
+            "When it offers to charge you in dollars, say no and choose euros. At a Multibanco machine that question can appear <b>twice</b>, so decline both times.",
+            "Read the on-screen fee before you confirm, then take your cash and keep the receipt."
+          ]
+        },
+        {
+          h: "The bigger lever: the card you withdraw with",
+          p: [
+            "Which machine you use matters, but the card in your hand matters more. Your US bank's own foreign and ATM fees stack on top of anything the machine charges, so a <b>no-foreign-fee debit card</b> is the real saving. Charles Schwab refunds ATM fees worldwide, and Wise and Revolut keep them low.",
+            "Because Portugal is so card-friendly, you can tap a card or phone for almost everything, including the Lisbon metro and trams, and only need an ATM once or twice a trip. Get that right and a few euros of machine fee stops mattering. The <a href=\"/portugal#calcNoFee\">Portugal money guide</a> has the exact card pairing we would pick and how much cash to actually carry."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Are the yellow Euronet ATMs in Lisbon a scam?", a: "No, they are legal and they work, but they are an expensive way to get cash. A Euronet machine adds a per-withdrawal fee and pushes dynamic currency conversion, where it bills you in dollars at a poor rate. Decline the dollars, or better, use a Multibanco bank machine instead." },
+        { q: "How do I spot a Multibanco ATM?", a: "Look for the orange MB logo and a machine built into or beside a bank such as CGD, Millennium, Novo Banco or Santander. It opens with a language menu and shows preset euro amounts and a fee screen before you confirm. The freestanding bright yellow machines with no bank name are Euronet, so walk past those." },
+        { q: "Should I choose euros or dollars at a Lisbon ATM?", a: "Always euros. Choosing dollars lets the machine set the exchange rate, which can add roughly 10% or more. Pick euros and let your own bank convert at a normal rate. At a Multibanco machine the conversion question can appear twice, so say no both times." },
+        { q: "How much can I take out at a Multibanco machine?", a: "Multibanco machines often cap each withdrawal around 200 euros, and a daily limit of 400 euros is common for local cards, though a foreign card may allow more depending on your own bank. Take enough in one visit so you are not paying a fee on repeat trips." }
+      ],
+      sources: {
+        links: [
+          { label: "SIBS: operator of the Multibanco national bank ATM network that nearly every Portuguese bank shares, including machines at airports", url: "https://www.sibs.com/independent-atm-deployer/", type: "currency" },
+          { label: "Euronet: the operator's own page confirming its ATMs charge a withdrawal fee and offer currency conversion", url: "https://www.euronetatms.com/euronet-atm-fees-explained/", type: "card" },
+          { label: "Monito: a fee breakdown putting Euronet's per-withdrawal charge at roughly 2 to 5 euros and its conversion markup around 10 to 13%", url: "https://www.monito.com/en/wiki/euronet-atm-charges-and-fees", type: "media" }
+        ],
+        judgment: "Fees and withdrawal limits move and vary from machine to machine, so treat the euro figures as a recent read rather than a fixed price, and always check the fee shown on screen before you confirm. Checked July 2026."
+      }
+    }
+  ]
 };
