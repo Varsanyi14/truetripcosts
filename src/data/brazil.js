@@ -168,5 +168,80 @@ export default {
         note: "Good to know: Salvador was the first capital" },
     ],
     pride: "Brazilians are warm, expressive and quick to fold a stranger into the fun, whether over football, music or a long shared meal. They are proud of a vast, mixed country that speaks Portuguese and moves to its own beat, and they love it when a visitor joins in."
-  }
+  },
+
+  // HUB-AND-SPOKE SPOKES. Data-driven, single-source, each independently dated,
+  // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
+  spokes: [
+    {
+      slug: "entry-visa",
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need a visa for Brazil? (2026) | True Trip Costs",
+      description: "Yes: since April 10, 2025, US citizens need a Brazil e-visa, applied for online before you fly. The official portal, the US$80.90 fee, how long it is valid, and how to avoid the overpriced lookalike sites. Checked July 2026.",
+      h1: "Do US citizens need a visa for Brazil?",
+      lede: "Short answer: yes, and it caught a lot of people out. Brazil brought back a visa for Americans in 2025, it is online only, and there is one official site. Here is the cost, the timing, and how not to overpay.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "Yes. Since <b>April 10, 2025</b>, US citizens need a <b>Brazil e-visa</b>, and you apply for it <b>online before you fly</b>, there is no visa on arrival. It costs <b>US$80.90</b>, is valid <b>10 years</b> with multiple entries, and comes only from the official government portal, <b>brazil.vfsevisa.com</b>. Apply a couple of weeks ahead, because airlines will not board you without it.",
+      official: {
+        label: "Official Brazil e-visa portal (VFS Global)",
+        url: "https://brazil.vfsevisa.com",
+        note: "This is the one government-authorized site, run by VFS Global for Brazil. The whole application happens here: create an account, fill the form, upload your passport page and a photo, and pay the fee by card."
+      },
+      expediter: true,
+      expediterNote: "Short on time, or want someone to check the form? A private visa service can file it for you for a fee on top of the US$80.90. You never need one, the official portal above is cheaper and not hard, but some travelers on a tight deadline use one.",
+      expediterLabel: "File with a visa service",
+      sections: [
+        {
+          h: "What it costs, and what you get",
+          p: [
+            "The fee is <b>US$80.90</b> (an 80-dollar consular fee plus a 90-cent processing charge), paid by card during the application, and it is <b>non-refundable</b> whether or not you are approved. The price is the same for a single trip or many.",
+            "In return you get an e-visa that is <b>valid for 10 years</b> for US citizens, with multiple entries. Each visit can be up to <b>90 days</b>, and you can stay a maximum of 180 days in any 12-month period. It covers tourism, business and even transit through Brazil."
+          ]
+        },
+        {
+          h: "How to apply, step by step",
+          p: [
+            "It is a straightforward online form, no consulate visit."
+          ],
+          steps: [
+            "Go to the official portal, brazil.vfsevisa.com, and create an account. Go there directly, not through a search ad.",
+            "Fill in the online form with your passport and travel details. It takes most people 15 to 20 minutes.",
+            "Upload the documents: a color scan of your passport photo page and a passport-style photo. Some applicants are asked for proof of accommodation or funds.",
+            "Pay the US$80.90 by credit or debit card.",
+            "Wait for the approval email with your e-visa PDF, then save it to your phone and print a copy for check-in and immigration."
+          ]
+        },
+        {
+          h: "Give it time, and mind the lookalike sites",
+          p: [
+            "Processing can take up to about <b>10 working days</b>, and the portal may come back asking for another document, so <b>apply two to three weeks before you fly</b> rather than the night before. The e-visa is tied into airline systems now, so no valid visa means no boarding pass.",
+            "This is a genuinely paid, required visa, which is exactly the kind of thing the internet fills with <b>overpriced middlemen</b>. Plenty of sites will take your money to file the same government form at a hefty markup, and a few are outright scams. The honest route is the official portal above. If you do pick a paid service for the hand-holding, know you are paying extra for convenience, not for anything the government requires."
+          ]
+        },
+        {
+          h: "A couple of things that trip people up",
+          p: [
+            "If you already hold a <b>valid physical Brazil visa</b> issued before April 10, 2025, it still works until it expires, so you do not need the e-visa on top. And the e-visa does not guarantee entry: as anywhere, the border officer makes the final call, so carry your printed visa and be ready to show your onward plans.",
+            "Brazil is otherwise a warm, card-friendly place once you are in. For how money actually works there, cards, cash, ATMs and the rest, the <a href=\"/brazil\">Brazil money guide</a> has you covered."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa to visit Brazil in 2026?", a: "Yes. Since April 10, 2025, US citizens need a Brazil e-visa, applied for online before travel. There is no visa on arrival. It costs US$80.90, is valid 10 years with multiple entries, and allows stays of up to 90 days at a time. Apply on the official portal, brazil.vfsevisa.com, a couple of weeks before you fly." },
+        { q: "How much is the Brazil e-visa and how long is it valid?", a: "The fee is US$80.90 (an 80-dollar consular fee plus 90 cents processing), non-refundable, the same for single or multiple entries. For US citizens the e-visa is valid for 10 years with multiple entries, each stay up to 90 days, and a maximum of 180 days in any 12-month period." },
+        { q: "What is the official website for the Brazil e-visa?", a: "brazil.vfsevisa.com, run by VFS Global for the Brazilian government. It is the only authorized portal, and the entire application, form, document upload and payment, happens there. Other sites that offer to file it charge a markup on top of the US$80.90 government fee, and some are scams." },
+        { q: "How long does the Brazil e-visa take to process?", a: "Usually up to about 10 working days, though it can be quicker, and the portal may ask for an extra document. Apply two to three weeks before you travel to be safe. The e-visa is linked to airline check-in systems, so you will not be allowed to board without an approved one." }
+      ],
+      sources: {
+        links: [
+          { label: "US Mission Brazil: the official US Embassy notice that Brazil reinstated a visa requirement for all US nationals on April 10, 2025, pointing to the authorized e-visa site", url: "https://br.usembassy.gov/message-to-u-s-citizens-new-visitor-visa-requirements-for-u-s-citizens-traveling-to-brazil/", type: "gov" },
+          { label: "Brazil e-visa portal (VFS Global): the official government-authorized application site, fee and process", url: "https://brazil.vfsevisa.com", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry and visa requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "Fees, processing times and document lists can change, so confirm the current details on the official portal before you pay. Checked July 2026."
+      }
+    }
+  ]
 };

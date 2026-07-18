@@ -6,6 +6,8 @@
 // site chrome by src/pages/[slug]/[spoke].astro, exactly the way [slug].astro wraps
 // CountryBriefing. Reuses the shared tokens and callout classes from global.css.
 import { regionOf, REGIONS } from '../data/hubs.js';
+import NewTab from './NewTab.astro';
+import { visaLink } from '../data/links.js';
 const { country, spoke } = Astro.props;
 
 const site = 'https://truetripcosts.com';
@@ -46,6 +48,10 @@ function srcParts(s) {
   const i = s.label.indexOf(': ');
   return { name: i === -1 ? s.label : s.label.slice(0, i), note: i === -1 ? '' : s.label.slice(i + 2) };
 }
+// The paid expediter is opt-in per spoke AND only appears where links.js actually has
+// a visa link for this country. So a visa spoke with expediter:true shows it for Brazil
+// (a link exists) but nothing for the UK (no link, and the ETA is cheap and official-only).
+const expediterUrl = (spoke.expediter && spoke.official) ? visaLink(country.slug) : null;
 const sections = Array.isArray(spoke.sections) ? spoke.sections : [];
 const faqs = Array.isArray(spoke.faqs) ? spoke.faqs : [];
 // Sibling spokes: the other live spokes on this same country. Data-driven, so each
@@ -66,6 +72,23 @@ const siblings = (country.spokes || []).filter(s => s.live !== false && s.slug !
     <div class="recentchange" style="margin-top:22px">
       <span class="rcpill">The short answer</span>
       <p set:html={spoke.answer}></p>
+    </div>
+  )}
+
+  {spoke.official && (
+    <div class="sp-route">
+      <p class="lab">The official route</p>
+      {spoke.official.note && <p class="sp-route-note" set:html={spoke.official.note}></p>}
+      <p class="sp-links"><a href={spoke.official.url} target="_blank" rel="noopener" class="sp-route-link">{spoke.official.label}<NewTab /></a> <span class="tg free">we earn nothing</span></p>
+      {expediterUrl && (
+        <div class="sp-alt">
+          {spoke.expediterNote && <span class="sp-alt-tx" set:html={spoke.expediterNote}></span>}
+          <div class="sp-alt-cta">
+            <a href={expediterUrl} target="_blank" rel="noopener sponsored" class="pickbtn">{spoke.expediterLabel || 'Use a private service'}<NewTab /></a>
+            <span class="tg earn">we may earn a commission</span>
+          </div>
+        </div>
+      )}
     </div>
   )}
 
@@ -168,6 +191,14 @@ const siblings = (country.spokes || []).filter(s => s.live !== false && s.slug !
   .sp-steps li:last-child{padding-bottom:0}
   .sp-steps li::before{content:counter(step);position:absolute;left:0;top:1px;width:26px;height:26px;border-radius:999px;background:var(--green-bg);color:var(--teal-deep);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
   .sp-back{margin-top:26px}
+  .sp-route{margin:22px 0 0;padding:18px 20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+  .sp-route .lab{margin:0 0 8px}
+  .sp-route-note{font-size:15px;color:#3B4A46;line-height:1.6;margin:0 0 12px}
+  .sp-links{margin:0;display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px}
+  .sp-route-link{display:inline-flex;align-items:center;gap:6px;color:var(--teal-deep);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+  .sp-alt{margin:16px 0 0;padding:14px 0 0;border-top:1px dashed var(--line)}
+  .sp-alt-tx{display:block;font-size:13.5px;line-height:1.55;color:var(--muted)}
+  .sp-alt-cta{display:flex;align-items:center;flex-wrap:wrap;gap:10px 12px;margin:11px 0 0}
   .sib-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
   .sib-list a{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;text-decoration:none;box-shadow:var(--shadow);transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease}
   .sib-list a:hover{border-color:#C2E0C8;transform:translateY(-1px)}

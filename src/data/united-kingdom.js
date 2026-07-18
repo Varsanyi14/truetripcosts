@@ -162,5 +162,78 @@ export default {
         note: "Good to know: it aligns with the summer and winter sun" },
     ],
     pride: "For a small set of islands, Britain has an outsized story: Shakespeare's plays, tea and the pub, football and the Proms, and four proud nations, England, Scotland, Wales and Northern Ireland, each with its own flag, food and turn of phrase. Call the whole country British, not English, and you will win a quiet nod."
-  }
+  },
+
+  // HUB-AND-SPOKE SPOKES. Data-driven, single-source, each independently dated,
+  // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
+  spokes: [
+    {
+      slug: "eta",
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need an ETA for the UK? (2026) | True Trip Costs",
+      description: "Yes: US citizens now need a UK ETA before they fly, even for a layover. What it is (not a visa), the £20 fee, the two-year validity, the only official ways to apply, and why to ignore the pricey lookalike sites. Checked July 2026.",
+      h1: "Do US citizens need an ETA for the UK?",
+      lede: "Short answer: yes, now you do, and it even applies to a layover. The UK ETA is not a visa, and it is quick and cheap, but only from the official source. Here is what it costs and how to get it right.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "Yes. US citizens now need a <b>UK ETA</b> (Electronic Travel Authorisation) approved <b>before they board</b>, including for a layover through a UK airport. It is <b>not a visa</b>, it is a quick online check like the US ESTA. It costs <b>£20</b>, lasts <b>2 years</b>, and comes only from the <b>official UK ETA app or gov.uk</b>. Most approvals land within minutes, but apply a few days ahead to be safe.",
+      official: {
+        label: "Official UK ETA, on gov.uk",
+        url: "https://www.gov.uk/eta",
+        note: "There are only two official ways to apply: the UK ETA app (it can scan your passport chip, which is easiest) or gov.uk. Both charge the same £20. Anything more than that is a third party adding a fee."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "What it is, and what it is not",
+          p: [
+            "The ETA is a <b>digital travel authorization</b>, the UK's version of the US ESTA or Canada's eTA. It is <b>not a visa</b>: it does not let you work, study long-term, or stay beyond the visitor rules. It is linked electronically to the passport you apply with, so there is nothing to print, and you must travel on that same passport.",
+            "It covers short visits, tourism, seeing family, business meetings and short study, and it lasts <b>2 years</b> (or until your passport expires), with multiple entries of up to <b>6 months</b> each. Every traveler needs their own, including children and infants."
+          ]
+        },
+        {
+          h: "What it costs, and the one place to get it",
+          p: [
+            "The fee is <b>£20</b> per person, roughly 25 US dollars, paid by card, and it is non-refundable. It went up from £16 in April 2026, so older guides may quote less.",
+            "There are exactly two official routes: the <b>UK ETA app</b> or <b>gov.uk</b>. The app is easiest because it scans your passport chip and takes the photo for you. Both charge the same £20. A wall of other sites advertise ETA assistance and charge more to file the very same form, so go straight to the official app or site."
+          ]
+        },
+        {
+          h: "Yes, you need it even for a layover",
+          p: [
+            "This is the part that surprises people. If your cheap flight to Asia or Africa connects through <b>London or another UK airport</b>, you generally still need an ETA, even for a short transit, and often even if you never plan to leave the airport. The safe assumption for any UK connection is that you need one.",
+            "British and Irish citizens, including dual citizens, <b>cannot</b> get an ETA and must travel on a UK or Irish passport instead. If you hold another passport alongside your US one, check which document you should travel on before you book."
+          ]
+        },
+        {
+          h: "How to apply, and when",
+          p: [
+            "It takes most people under ten minutes."
+          ],
+          steps: [
+            "Download the UK ETA app, or open gov.uk and search for ETA. Use only the official app or gov.uk.",
+            "Scan or enter your US passport details. The app can read the chip, which is quickest.",
+            "Take the passport-style photo the app prompts for, and answer the short security questions honestly.",
+            "Pay the £20 by card. You will get a confirmation with a reference number by email.",
+            "Wait for the decision. Most Americans are approved within minutes, but allow up to 3 working days, so do not leave it to the airport."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a UK ETA in 2026?", a: "Yes. US citizens now need an approved UK ETA before boarding a flight to the UK, and it applies to short visits and to transit through UK airports. It is not a visa, it is a quick online authorization like the US ESTA. Apply on the official UK ETA app or gov.uk for £20, ideally a few days before you fly." },
+        { q: "How much does the UK ETA cost, and how long does it last?", a: "It costs £20 per person, about 25 US dollars, and it went up from £16 in April 2026. It is valid for 2 years, or until your passport expires, and allows multiple visits of up to 6 months each. Every traveler needs their own, including children." },
+        { q: "Do I need a UK ETA just for a layover?", a: "Usually yes. US citizens connecting through a UK airport generally need an ETA even for a short transit, and often even without leaving the airport. Treat any UK layover as needing one, and apply before you fly. Border and airline rules are strict, so do not risk boarding without it." },
+        { q: "What is the official website for the UK ETA?", a: "The only official routes are the UK ETA app and gov.uk. Both charge the same £20 government fee. The app is easiest because it scans your passport chip. Many third-party sites charge more to file the identical form, so go straight to the official app or gov.uk and do not overpay." }
+      ],
+      sources: {
+        links: [
+          { label: "US Embassy in the UK: the official notice that from February 25, 2026, US citizens need an ETA to travel to or transit the UK", url: "https://uk.usembassy.gov/routine-message-important-changes-to-uk-entry-requirements-as-of-february-25-2026/", type: "gov" },
+          { label: "UK Home Office: the official ETA factsheet with the current fee, two-year validity and how to apply", url: "https://homeofficemedia.blog.gov.uk/electronic-travel-authorisation-eta-factsheet-april-2026/", type: "gov" },
+          { label: "GOV.UK: the official ETA application and guidance", url: "https://www.gov.uk/eta", type: "gov" }
+        ],
+        judgment: "Entry rules and the fee change (the ETA rose from 16 to 20 pounds in April 2026), and transit exemptions carry fine print, so confirm on gov.uk before you travel. Checked July 2026."
+      }
+    }
+  ]
 };

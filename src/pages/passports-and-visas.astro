@@ -41,6 +41,16 @@ const sources = [
   { name: "European Commission, applying for a Schengen visa", note: "what an airport transit visa is, who is exempt, and which consulate handles it", url: "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy/applying-schengen-visa_en" },
   { name: "European Commission, visa policy", note: "the nationalities that need a visa just to transit through a Schengen airport, and that countries can add their own", url: "https://home-affairs.ec.europa.eu/policies/schengen/visa-policy_en" }
 ];
+
+// Entry-authorization spokes across every live country, gathered for the cluster below.
+// Data-driven: any spoke tagged topic:"visas" on any country guide appears here on its
+// own, so the visa cluster and the country guides stay in sync from one source.
+const visaSpokes = countries
+  .filter(c => c.live)
+  .flatMap(c => (c.spokes || [])
+    .filter(s => s.topic === 'visas' && s.live !== false)
+    .map(s => ({ h1: s.h1, lede: s.lede, spokeSlug: s.slug, country: c.name, countrySlug: c.slug })))
+  .sort((a, b) => a.country.localeCompare(b.country));
 ---
 <Base
   title="Passports and visas for US travelers: fees, timing, ETIAS and EES, and the official sites"
@@ -158,6 +168,24 @@ const sources = [
       <p class="pv-links pv-guidelink"><a href="/#guides">See the entry note in each country guide</a></p>
     </section>
 
+    {visaSpokes.length > 0 && (
+      <section class="pv-prose">
+        <p class="lab">Entry rules, walked through</p>
+        <h2>The country entry authorizations we have stepped through.</h2>
+        <p>For the destinations where the rule recently changed or the official process trips people up, we have written a plain-English walkthrough that points only to the official government route, and shows any paid helper beneath it. Each one lives in that country's guide.</p>
+        <ul class="pv-spokes">
+          {visaSpokes.map(s => (
+            <li>
+              <a href={'/' + s.countrySlug + '/' + s.spokeSlug}>
+                <span class="pv-spoke-h">{s.h1}</span>
+                <span class="pv-spoke-d">{s.lede}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
     <section class="pv-prose">
       <p class="lab">Connecting through Europe</p>
       <h2>A layover can need its own visa, even if you never leave the airport.</h2>
@@ -257,6 +285,12 @@ const sources = [
     .pv-guidelink{margin-top:10px}
     .pv-note{font-size:13.5px;line-height:1.55;color:var(--muted);margin:12px 0 0}
     .pv-standalone{max-width:680px}
+
+    .pv-spokes{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px;max-width:680px}
+    .pv-spokes a{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;text-decoration:none;box-shadow:var(--shadow);transition:border-color .2s ease,transform .2s ease}
+    .pv-spokes a:hover{border-color:#C2E0C8;transform:translateY(-1px)}
+    .pv-spoke-h{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink);line-height:1.25;margin:0 0 4px;text-decoration:none}
+    .pv-spoke-d{display:block;font-size:14px;color:var(--muted);line-height:1.5;text-decoration:none}
 
     .pv-panel{margin:20px 0 0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
     .pv-grp + .pv-grp{margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
