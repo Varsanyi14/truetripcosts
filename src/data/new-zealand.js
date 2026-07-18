@@ -172,5 +172,77 @@ export default {
         note: "Good to know: 'Kiwi' means a New Zealander, the bird, not the fruit" },
     ],
     pride: "New Zealand is proud of its landscapes and its care for them, of Maori language and heritage woven through everyday life, and of a warm, low-key welcome. Meet it with humility and respect for the land, and you will feel it returned."
-  }
+  },
+
+  // HUB-AND-SPOKE SPOKES. Data-driven, single-source, each independently dated,
+  // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
+  spokes: [
+    {
+      slug: "nzeta-and-ivl",
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need an NZeTA for New Zealand, and what is the IVL? (2026) | True Trip Costs",
+      description: "Yes, and it is two charges, not one. US citizens need an NZeTA (NZ$17 by app) plus the NZ$100 tourism levy (IVL), paid together before you fly. The official app, the real total, and how to skip the overpriced sites. Checked July 2026.",
+      h1: "Do US citizens need an NZeTA for New Zealand, and what is the IVL?",
+      lede: "Short answer: yes, and it is two charges bundled into one. The NZeTA is cheap, but the NZ$100 tourism levy on top is the part that surprises people. Here is the real total, the official app, and how not to overpay.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "Yes. US citizens need an <b>NZeTA</b> (New Zealand Electronic Travel Authority) before they fly, and it comes with a second charge, the <b>IVL</b> tourism levy, paid in the same transaction. The NZeTA is <b>NZ$17 in the official app</b> (NZ$23 on the website), and the <b>IVL is NZ$100</b>, so you are really paying about <b>NZ$117</b> total. Both come only from the official app or immigration.govt.nz, and the NZeTA is valid <b>2 years</b>.",
+      official: {
+        label: "Official NZeTA, on immigration.govt.nz",
+        url: "https://nzeta.immigration.govt.nz",
+        note: "Two official ways to apply: the free NZeTA app (cheapest at NZ$17, and it scans your passport) or the website at NZ$23. The system adds the NZ$100 IVL automatically and you pay both together. Allow up to 72 hours for approval."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "The two charges, and the real total",
+          p: [
+            "This is the bit that catches people. New Zealand entry is <b>two things bundled together</b>: the NZeTA (the travel authority itself) and the IVL (a conservation and tourism levy). You pay them in a single transaction, so it feels like one fee, but it is two.",
+            "The NZeTA costs <b>NZ$17 through the official app</b> or <b>NZ$23 on the website</b>. The <b>IVL is NZ$100</b> per person, and it went up from NZ$35 on <b>1 October 2024</b>, so older guides quote far less. All in, a US traveler pays about <b>NZ$117 by app</b> (roughly 70 US dollars), covering entries for two years on the NZeTA side."
+          ]
+        },
+        {
+          h: "How to apply, and the cheaper way",
+          p: [
+            "The app is both the cheapest and the fastest route."
+          ],
+          steps: [
+            "Download the official NZeTA app (iOS or Android), or go to nzeta.immigration.govt.nz. Use only the official app or site.",
+            "Scan your passport and take the photo the app prompts for. The app route is NZ$17; the website is NZ$23.",
+            "The system adds the NZ$100 IVL automatically. Pay both together by card. A family or group can do up to 10 in one transaction.",
+            "Wait for approval, allow up to 72 hours, though it is often quick. The NZeTA links to your passport, so there is nothing to print."
+          ]
+        },
+        {
+          h: "Do not pay a markup for it",
+          p: [
+            "New Zealand Immigration warns about this directly: a number of <b>third-party sites</b> sell the NZeTA and charge more than the official price, sometimes promising faster processing they cannot deliver. The official app and immigration.govt.nz are the only real routes, and the app is the cheapest. If a site quotes more than NZ$17 to NZ$23 plus the NZ$100 levy, it is adding its own fee.",
+            "The NZeTA is valid for <b>2 years</b> or until your passport expires, and lets you visit for up to <b>90 days</b> at a time. The IVL, though, is charged <b>each time you request a new NZeTA</b>, so it is not strictly once every two years if you renew early."
+          ]
+        },
+        {
+          h: "A couple of things to know",
+          p: [
+            "The NZeTA is <b>non-refundable</b>, the IVL included, even if your request is declined, so apply once and answer the questions carefully. It is valid <b>2 years</b> or until your passport expires, for stays up to <b>90 days</b>.",
+            "If your trip <b>connects through Auckland</b> on the way elsewhere, check whether you need an NZeTA for transit before you book, the official site above covers it. For how money works once you land, cards, cash, ATMs and the rest, see the <a href=\"/new-zealand\">New Zealand money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need an NZeTA to visit New Zealand?", a: "Yes. US citizens must have an NZeTA (New Zealand Electronic Travel Authority) before boarding a flight or cruise to New Zealand. It is valid for 2 years, allows stays of up to 90 days, and comes with the separate NZ$100 IVL tourism levy paid in the same transaction. Apply on the official NZeTA app or immigration.govt.nz." },
+        { q: "How much does the NZeTA cost, including the IVL?", a: "The NZeTA is NZ$17 through the official app or NZ$23 on the website. On top of that, the IVL (International Visitor Conservation and Tourism Levy) is NZ$100 per person, paid together with the NZeTA. So the real total is about NZ$117 by app, roughly 70 US dollars. The IVL rose from NZ$35 on 1 October 2024, so older guides quote less." },
+        { q: "What is the IVL and do I have to pay it?", a: "The IVL is New Zealand's International Visitor Conservation and Tourism Levy, NZ$100 per person, charged to most short-stay visitors when they request an NZeTA. For US tourists it is not optional, it is added automatically and paid alongside the NZeTA. It is non-refundable even if your application is declined." },
+        { q: "What is the official site for the NZeTA?", a: "The official routes are the free NZeTA app (cheapest at NZ$17) and immigration.govt.nz (nzeta.immigration.govt.nz, NZ$23). New Zealand Immigration warns that third-party sites overcharge for the same authority, so use the official app or site and do not pay a markup." }
+      ],
+      sources: {
+        links: [
+          { label: "Immigration New Zealand: the official NZeTA request page and the warning to avoid overcharging third-party sites", url: "https://nzeta.immigration.govt.nz", type: "gov" },
+          { label: "Immigration New Zealand: paying the NZ$100 International Visitor Conservation and Tourism Levy (IVL)", url: "https://www.immigration.govt.nz/process-to-apply/applying-for-a-visa/fees-processing-times-and-refunds/paying-the-international-visitor-levy/", type: "gov" },
+          { label: "New Zealand Government (govt.nz): visitor visas and the NZeTA, with the IVL and 72-hour processing", url: "https://www.govt.nz/browse/immigration-and-visas/visitor-visas-and-the-nzeta/", type: "gov" }
+        ],
+        judgment: "Fees and the levy change (the IVL rose from NZ$35 to NZ$100 on 1 October 2024), so confirm the current amounts on the official site before you pay. Checked July 2026."
+      }
+    }
+  ]
 };

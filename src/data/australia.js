@@ -172,5 +172,77 @@ export default {
         note: "Good to know: dawn and dusk are the best times to spot wildlife" },
     ],
     pride: "Australia is proud of its wide-open landscapes, its extraordinary wildlife, and a laid-back, fair-go spirit. Meet it with warmth and a bit of humor, and you will feel at home fast."
-  }
+  },
+
+  // HUB-AND-SPOKE SPOKES. Data-driven, single-source, each independently dated,
+  // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
+  spokes: [
+    {
+      slug: "eta",
+      live: true,
+      topic: "visas",
+      title: "How do US citizens get an Australia ETA? (2026) | True Trip Costs",
+      description: "US citizens need an Australian ETA, and there is one catch: you can only apply through the official app. What it costs (AUD $20), how long it lasts, the passport-chip requirement, and how to avoid the markup sites. Checked July 2026.",
+      h1: "How do US citizens get an Australia ETA?",
+      lede: "Short answer: through the official app, and only the app. US citizens need an Australian ETA, it is cheap and usually instant, but the app-only process trips people up. Here is how it works and what it costs.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "US citizens need an <b>Australian ETA</b> (Electronic Travel Authority, subclass 601) before they fly, and here is the catch: you can <b>only apply through the official Australian ETA app</b>, there is no website version. It costs a flat <b>AUD $20</b> service fee (about 13 US dollars), is valid <b>12 months</b> with multiple entries of up to 3 months each, and is usually approved within minutes.",
+      official: {
+        label: "Official Australian ETA (Department of Home Affairs)",
+        url: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601",
+        note: "The only way to apply is the free AustralianETA app (from the Apple App Store or Google Play, published by the Department of Home Affairs). This government page explains eligibility; the application itself happens in the app, where the AUD $20 fee is paid."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "The catch: it is app-only",
+          p: [
+            "Since 2022, the <b>only</b> way to apply for an Australian ETA is the official <b>AustralianETA app</b>, made by the Department of Home Affairs. The old website application was retired, so if a site offers to process your ETA online, it is a third party, not the government. Download the app from the Apple App Store or Google Play.",
+            "The app works by <b>scanning your passport chip</b> (your passport must be the chipped, electronic kind) and taking a <b>live selfie</b>. If your passport cannot be scanned, or you have a complication like a past visa refusal, you apply for a different visa (Subclass 600) instead."
+          ]
+        },
+        {
+          h: "What it costs, and what you get",
+          p: [
+            "There is <b>no visa application charge</b>, but the app charges a flat <b>AUD $20 service fee</b> (roughly 13 US dollars), and that is the only legitimate cost. It is non-refundable.",
+            "The ETA is <b>valid for 12 months</b> (or until your passport expires), with <b>multiple entries</b> of up to <b>3 months</b> each. It covers tourism, visiting family, and business visitor activities like meetings and conferences, but <b>not paid work</b>. It is linked to your passport, so there is nothing to print."
+          ]
+        },
+        {
+          h: "How to apply, step by step",
+          p: [
+            "Most people finish in under ten minutes."
+          ],
+          steps: [
+            "Download the free AustralianETA app from the Apple App Store or Google Play. Check it is the one by the Department of Home Affairs.",
+            "Scan your passport chip with your phone, then take the live selfie the app prompts for.",
+            "Fill in your details and answer the questions honestly. Traveling as a family? Use the Group ID function.",
+            "Pay the AUD $20 by card. Most applications are approved within minutes, though some take up to 72 hours.",
+            "Check the result in the app. Once granted, the ETA is tied to your passport automatically."
+          ]
+        },
+        {
+          h: "Watch for the markup sites, and one gotcha",
+          p: [
+            "Because the ETA is a paid, required document, plenty of <b>lookalike sites</b> rank in search and charge well above the AUD $20 to file it for you. The app is the only official channel and the fee is always just AUD $20, so anything higher is a markup.",
+            "The gotcha: if you <b>renew your passport</b>, your ETA becomes invalid and you need a new one, because it is linked to the specific passport. And the ETA <b>cannot be extended</b>, for a longer stay you would need a Subclass 600 visitor visa. For how money works once you land, see the <a href=\"/australia\">Australia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Australia?", a: "US citizens need an Australian ETA (Electronic Travel Authority, subclass 601), which is an electronic authority equivalent to a visa. You apply only through the official AustralianETA app for a flat AUD $20 service fee. It is valid 12 months, allows multiple entries of up to 3 months each, and is usually approved within minutes." },
+        { q: "How do I apply for the Australia ETA, and is there a website?", a: "There is no website. Since 2022 the only official channel is the AustralianETA app from the Department of Home Affairs, on the Apple App Store or Google Play. You scan your passport chip, take a selfie, answer the questions, and pay AUD $20 in the app. If your passport has no chip, you apply for a Subclass 600 visitor visa instead." },
+        { q: "How much does the Australia ETA cost?", a: "A flat AUD $20 service fee (about 13 US dollars), paid in the app. There is no separate visa application charge, so AUD $20 is the only legitimate cost. Third-party sites that charge more are adding their own markup for filing the same application." },
+        { q: "How long is the Australia ETA valid?", a: "The ETA is valid for 12 months from grant, or until your passport expires, whichever comes first. It allows multiple entries, each stay up to 3 months. It cannot be extended, and if you renew your passport you must apply for a new ETA, since it is linked to the specific passport." }
+      ],
+      sources: {
+        links: [
+          { label: "Australian Department of Home Affairs: the official Electronic Travel Authority (subclass 601) page, cost, validity and conditions", url: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601", type: "gov" },
+          { label: "AustralianETA app on Google Play (published by the Department of Home Affairs): the only official channel to apply, noting the AUD $20 service fee", url: "https://play.google.com/store/apps/details?id=au.gov.homeaffairs.eta", type: "gov" }
+        ],
+        judgment: "The ETA is app-only and the AUD $20 service fee is the only legitimate charge, but fees and conditions can change, so confirm on the official Home Affairs page before you apply. Checked July 2026."
+      }
+    }
+  ]
 };
