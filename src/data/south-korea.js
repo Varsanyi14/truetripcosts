@@ -238,6 +238,61 @@ export default {
         ],
         judgment: "The K-ETA waiver runs to December 31, 2026 and has been extended before, and the arrival-card rules are new, so confirm the current status on the official .go.kr sites before you travel. Checked July 2026."
       }
+    },
+    {
+      slug: "cash-or-card",
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in South Korea, or can I use cards? (2026) | True Trip Costs",
+      description: "Korea is one of the most card-friendly countries: tap a Visa or Mastercard almost everywhere (not Amex). Keep some won for traditional markets and street food, get a T-money card for transit, and use a Global ATM. Checked July 2026.",
+      h1: "Do I need cash in South Korea, or can I use cards?",
+      lede: "Short answer: mostly cards, a little cash. Korea runs on plastic, so a Visa or Mastercard covers almost everything, but markets and street food still want won. Here is how to pay, get around, and which apps to skip.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "Mostly cards. South Korea is <b>one of the most card-friendly countries on earth</b> (cash is only about 16% of spending), so a <b>Visa or Mastercard</b> covers almost everything, though <b>Amex is patchy</b>, so bring a Visa or Mastercard and a backup. Keep some <b>won</b> for traditional markets, street food and small eateries, get a <b>T-money card</b> for transit, pull cash from a <b>Global ATM</b> at a convenience store, and choose <b>won not dollars</b>.",
+      sections: [
+        {
+          h: "Cards almost everywhere, with two catches",
+          p: [
+            "Korea is <b>overwhelmingly cashless</b>: cards are accepted for even small amounts at shops, cafes, restaurants and convenience stores. Two catches for visitors: <b>Amex acceptance is limited</b> (mostly big hotels and department stores), so carry a <b>Visa or Mastercard</b>, and Korean banks sometimes <b>flag a foreign card as suspicious</b>, so set a travel notice before you fly and <b>bring a second card</b>. If a terminal declines, try the other card or ask for a different terminal.",
+            "Skip the Korean wallet apps. <b>Kakao Pay, Naver Pay, Toss and Samsung Pay</b> all need a Korean bank account, phone number and ID, so <b>tourists cannot use them</b>. Apple Pay now works at some chains (convenience stores, Starbucks, department stores) with a foreign Visa or Mastercard, but acceptance is still patchy, so do not rely on it."
+          ]
+        },
+        {
+          h: "Cash: less than you think, but keep some",
+          p: [
+            "You need far less cash than in most countries, but not zero. The cash-heavy places are exactly the ones travelers seek out: <b>traditional markets (like Gwangjang), street-food stalls and small local restaurants</b>. Carrying <b>50,000 to 100,000 won</b> as backup is plenty for a normal trip, more if you plan to graze the markets.",
+            "For won, use a <b>Global ATM</b>, the ones marked as such at <b>convenience stores (CU, GS25, 7-Eleven)</b> and major banks, which take foreign cards and run in English around the clock. Not every Korean ATM accepts foreign cards, so look for the Global label, and <b>choose won, not dollars</b>, on the screen."
+          ]
+        },
+        {
+          h: "Getting around: the T-money card",
+          p: [
+            "Transit runs on a rechargeable <b>T-money card</b>, tapped on the subway, buses, taxis and even in convenience stores. You buy it at any convenience store or station. The old headache was that you could <b>only top it up with won cash</b>, but that changed: <b>since March 2026, Seoul subway kiosks accept foreign cards</b> for top-ups (some add a small service fee), and there are mobile options too.",
+            "If you would rather carry one card for everything, a tourist prepaid card like <b>WOWPASS</b> combines currency exchange, card payments and T-money, and you load it with foreign cash at airport and subway kiosks. It is optional, a plain contactless Visa or Mastercard plus a cash-loaded T-money works fine."
+          ]
+        },
+        {
+          h: "Tax refunds, tipping, and the wrap",
+          p: [
+            "Two quick notes. <b>Tipping is not customary</b> in Korea, so there is no need to add anything. And as a visitor you can <b>reclaim most of Korea's 10% VAT</b> on shopping at Tax Free stores (a net refund of roughly 5 to 8%), on purchases from 15,000 won per store, claimed at the airport, so bring your passport when you shop.",
+            "For the fuller money picture, see the <a href=\"/south-korea\">South Korea money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in South Korea, or can I use cards?", a: "Mostly cards. Korea is one of the most card-friendly countries, and cash is only about 16% of spending, so a Visa or Mastercard covers almost everything (Amex is patchy, so bring a backup). Keep 50,000 to 100,000 won for traditional markets, street food and small restaurants, and top up from a Global ATM as needed." },
+        { q: "Can I use Apple Pay or Korean payment apps as a tourist in Korea?", a: "Korean apps like Kakao Pay, Naver Pay, Toss and Samsung Pay require a Korean bank account, phone number and ID, so tourists cannot use them. Apple Pay works at some chains (convenience stores, Starbucks, department stores) with a foreign Visa or Mastercard, but acceptance is patchy, so carry a physical card and some cash." },
+        { q: "Which ATMs take foreign cards in South Korea?", a: "Look for a Global ATM, found at convenience stores (CU, GS25, 7-Eleven) and major banks like Hana and Shinhan. These take foreign cards, have English menus and run 24/7 at convenience stores. Not all Korean ATMs accept foreign cards, so look for the Global label, and always choose won rather than dollars." },
+        { q: "Do I need a T-money card, and can I top it up with a foreign card?", a: "A T-money card is the easy way to ride the subway, buses and taxis, and you buy it at any convenience store. It used to require won cash to top up, but since March 2026 Seoul subway kiosks accept foreign cards for top-ups (sometimes with a small service fee), and mobile top-up options exist too. A tourist prepaid card like WOWPASS is an optional all-in-one alternative." }
+      ],
+      sources: {
+        links: [
+          { label: "Bank of Korea: the central bank and official won reference, and its data showing cash at about a sixth of payments", url: "https://www.bok.or.kr/eng", type: "gov" },
+          { label: "US Department of State: South Korea country information, general money and travel context", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "Korea's foreign-card acceptance and transit top-up rules are changing fast (Seoul kiosks began taking foreign cards for T-money in March 2026), and much of this is our practical read, so treat amounts as a guide and confirm current transit options. Checked July 2026."
+      }
     }
   ]
 };

@@ -224,6 +224,61 @@ export default {
         ],
         judgment: "Thailand's visa-exemption length is under active change (a cut from 60 to 30 days was approved in May 2026 but not yet in force by mid-2026), and its arrival-card system is being updated, so confirm the current rule and the official site before you travel. Checked July 2026."
       }
+    },
+    {
+      slug: "cash-or-card",
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Thailand, or can I use cards? (2026) | True Trip Costs",
+      description: "Thailand still runs on cash for street food, markets and taxis, though cards work in hotels and malls. The catch is the flat ATM fee (now often 250 to 350 baht), so withdraw big and rarely, or bring dollars to exchange. Checked July 2026.",
+      h1: "Do I need cash in Thailand, or can I use cards?",
+      lede: "Short answer: yes, carry baht, Thailand is still a cash country for the best bits, even though cards work in cities. The thing to plan around is the flat fee Thai ATMs charge foreign cards. Here is how to keep it cheap.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "Cash for the good stuff, cards in the city. <b>Street food, markets, taxis and temple entry are cash-only</b>, while Visa and Mastercard work at hotels, malls, chains and supermarkets (Amex less so). The catch is the <b>flat ATM fee</b>: Thai banks charge a fixed amount per foreign-card withdrawal, <b>once 220 baht, now often 250 (Visa) to 350 (Mastercard)</b>, on top of your own bank. So <b>withdraw large amounts rarely</b>, always choose <b>baht not dollars</b>, and keep small notes for the street.",
+      sections: [
+        {
+          h: "Cash still rules the best parts of Thailand",
+          p: [
+            "Thailand is modernising fast, but it is <b>still a cash-first country</b> where it matters most to travelers: <b>street food, night markets, taxis and tuk-tuks, temple entry and small shops are cash-only</b> or strongly prefer it. Cards, Visa and Mastercard, are reliable at <b>hotels, shopping malls, chain restaurants, supermarkets and tour operators</b>, with Amex accepted less often. Contactless is spreading in Bangkok but assume nothing outside the cities.",
+            "Thailand's own QR system, <b>PromptPay</b>, is what locals scan for everything, but it needs a Thai bank account, so <b>tourists cannot use it</b>. You will pay cash or card while everyone around you taps a phone."
+          ]
+        },
+        {
+          h: "The flat ATM fee, and how to beat it",
+          p: [
+            "This is the Thailand money quirk to plan around. Every Thai bank ATM charges a <b>flat fee per foreign-card withdrawal</b>, regardless of how much you take out. For years it was <b>220 baht</b>; in 2026 many machines now show <b>250 baht for Visa and up to 350 for Mastercard</b>, and that is <b>on top of</b> your home bank's fees. Because it is flat, the fix is simple: <b>withdraw the maximum (around 20,000 to 30,000 baht) as rarely as you can</b>, not small amounts often.",
+            "Two more habits: always <b>decline the ATM's offer to charge you in dollars</b> and choose baht (the machine's conversion is far worse), and use <b>ATMs attached to a bank branch</b> during the day rather than standalone machines, so if one swallows your card you can walk in and retrieve it."
+          ]
+        },
+        {
+          h: "The cheaper route: exchange cash at a city booth",
+          p: [
+            "Here is the trick experienced visitors use. Because of that flat ATM fee, <b>bringing clean US dollar notes and exchanging them at a city exchange booth</b> often beats the ATM, and it beats airport and hotel rates by a wide margin. The well-known chains are <b>SuperRich, Vasu and K79</b>, with rates you can check online before you go. Change only a little at the airport for your taxi and SIM, then the bulk in the city.",
+            "One practical note on notes: ATMs tend to spit out <b>1,000 baht bills</b>, which street vendors and taxis struggle to break. Withdraw an odd amount (say 19,900 rather than 20,000) to force out smaller notes, and keep a stack of 20s, 50s and 100s for daily spending."
+          ]
+        },
+        {
+          h: "Tipping, and the wrap",
+          p: [
+            "Tipping is <b>not traditionally expected</b> in Thailand, though rounding up a taxi fare or leaving small change is appreciated, and smarter restaurants may add a <b>10% service charge</b> to the bill. Do not feel obliged beyond that.",
+            "For the fuller money picture, what things cost and how to carry it, see the <a href=\"/thailand\">Thailand money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Thailand, or can I use cards?", a: "You need cash. Street food, markets, taxis and temple entry are cash-only, while Visa and Mastercard work at hotels, malls, chains and supermarkets (Amex less so). Carry small baht notes for daily spending and use a card for larger purchases at established places. Thailand's PromptPay QR system needs a Thai bank account, so tourists cannot use it." },
+        { q: "How much do Thai ATMs charge foreign cards?", a: "Thai banks charge a flat fee per foreign-card withdrawal, on top of your own bank's fees. It was long 220 baht, but in 2026 many ATMs show 250 baht for Visa and up to 350 for Mastercard. Because it is a flat fee, withdraw the maximum (around 20,000 to 30,000 baht) as rarely as possible, and always choose baht rather than dollars at the machine." },
+        { q: "Is it cheaper to use an ATM or exchange cash in Thailand?", a: "Because of the flat ATM fee, bringing clean US dollar bills and exchanging them at a city exchange booth (SuperRich, Vasu or K79) often works out cheaper, and beats airport and hotel rates. A good approach: exchange a small amount at the airport for your taxi, then change the bulk at a city booth, and use ATMs for top-ups by withdrawing large amounts." },
+        { q: "Should I choose baht or dollars at a Thai ATM?", a: "Always choose baht. If the ATM offers to charge you in your home currency (dynamic currency conversion), decline it, the rate is markedly worse. Choosing baht lets your own card network do the conversion at a much better rate. The same applies to card terminals in shops and restaurants." }
+      ],
+      sources: {
+        links: [
+          { label: "Bank of Thailand: the central bank and official Thai baht reference", url: "https://www.bot.or.th", type: "gov" },
+          { label: "US Department of State: Thailand country information, general money and safety context for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "Thai ATM fees rose recently (from 220 baht toward 250 to 350 depending on the card network) and exchange rates move, and much of this is our practical read, so check the fee on the ATM screen and treat amounts as a guide. Checked July 2026."
+      }
     }
   ]
 };

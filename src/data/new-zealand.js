@@ -243,6 +243,61 @@ export default {
         ],
         judgment: "Fees and the levy change (the IVL rose from NZ$35 to NZ$100 on 1 October 2024), so confirm the current amounts on the official site before you pay. Checked July 2026."
       }
+    },
+    {
+      slug: "cash-or-card",
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in New Zealand, or can I use cards? (2026) | True Trip Costs",
+      description: "New Zealand is nearly cashless: tap a card or phone almost everywhere. The local quirk is card surcharges (often 1.5 to 2%), and a promised ban stalled, so they are still legal. Keep a little cash for rural spots. Checked July 2026.",
+      h1: "Do I need cash in New Zealand, or can I use cards?",
+      lede: "Short answer: barely any cash, New Zealand runs on tap-and-go. The one local wrinkle is the surcharge some places add when you pay by card. Here is what to expect and how to pay well.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "Cards, almost entirely. New Zealand is <b>among the most cashless countries anywhere</b>, so you can <b>tap a card or phone nearly everywhere</b>, from supermarkets to market stalls, and in the main cities you barely need cash. The local quirk is <b>card surcharges</b>: shops can legally add around <b>1.5 to 2%</b> when you tap or use credit. Keep a little cash (<b>NZ$100 to NZ$200</b>) for rural spots, and choose <b>NZ dollars, not US dollars</b>, at the terminal.",
+      sections: [
+        {
+          h: "Nearly cashless, everywhere",
+          p: [
+            "New Zealand is a <b>tap-and-go country</b>. Contactless is near-universal across supermarkets, restaurants, petrol stations, attractions and even many market stalls, and the local <b>EFTPOS</b> debit network sits alongside Visa and Mastercard everywhere. In <b>Auckland, Wellington, Christchurch and Queenstown</b> you can get by almost entirely on card.",
+            "Even transit has gone contactless: <b>Auckland now lets you tap a contactless card or phone</b> on buses, trains and ferries for the same fare locals pay, so there is no need to buy a separate transit card there."
+          ]
+        },
+        {
+          h: "The surcharge quirk, and the ban that stalled",
+          p: [
+            "Here is the New Zealand catch. Merchants can <b>legally add a surcharge</b> when you pay by card, typically <b>1.5 to 2%</b> on contactless (PayWave) and credit, and it is meant to be clearly signposted at the counter. A government <b>ban on these surcharges was promised for May 2026</b>, but the bill <b>stalled in Parliament and has not taken effect</b> as of mid-2026, so <b>surcharges are still legal</b>. Check the terminal or the sign before you tap.",
+            "One caveat you may read elsewhere: New Zealanders can sometimes dodge the fee by <b>inserting</b> a local debit card (which routes through the free domestic EFTPOS network) rather than tapping. That trick does <b>not reliably help a foreign card</b>, which runs through Visa or Mastercard either way, so as a visitor, just expect the odd surcharge and treat it as a small cost."
+          ]
+        },
+        {
+          h: "Cash, and the dollar rule",
+          p: [
+            "You need <b>little cash</b>, but not none. Budget around <b>NZ$100 to NZ$200</b> for a typical trip, and more if you are heading well off the beaten track, to rural areas, small farm stays or the occasional market. ATMs from the main banks (<b>ANZ, ASB, BNZ, Westpac, Kiwibank</b>) are widely available and take foreign cards.",
+            "As always, when an ATM or terminal asks whether to charge in <b>US dollars or NZ dollars, choose NZ dollars</b>. The dollar option triggers dynamic currency conversion at a poor rate; NZ dollars lets your own bank convert more cheaply."
+          ]
+        },
+        {
+          h: "Tipping, and the wrap",
+          p: [
+            "<b>Tipping is not expected</b> in New Zealand, service is not built around it, so there is no need to add a tip, though it is welcome for something exceptional.",
+            "For the fuller money picture, see the <a href=\"/new-zealand\">New Zealand money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in New Zealand, or can I use cards?", a: "Barely any cash. New Zealand is among the most cashless countries, and you can tap a card or phone almost everywhere, including many market stalls and Auckland public transport. Keep about NZ$100 to NZ$200 for rural areas, small farm stays and the occasional market, and use a card for everything else." },
+        { q: "Do New Zealand shops charge a surcharge for card payments?", a: "Often yes. Merchants can legally add a surcharge, typically 1.5 to 2%, when you pay by contactless or credit, and it should be signposted. A ban was promised for May 2026 but stalled in Parliament and has not taken effect as of mid-2026, so surcharges are still legal. Expect the occasional one and treat it as a small cost." },
+        { q: "Should I choose NZ dollars or US dollars at the terminal in New Zealand?", a: "Always choose NZ dollars. Selecting US dollars triggers dynamic currency conversion at a marked-up rate, so you pay more. Choosing NZ dollars lets your own bank handle the conversion at a better rate. The same applies at ATMs." },
+        { q: "Can I use contactless on public transport in New Zealand?", a: "In Auckland, yes: you can now tap a contactless card or phone on buses, trains and ferries and pay the same fare as locals, so no separate transit card is needed there. Contactless is near-universal for everyday spending across the country too." }
+      ],
+      sources: {
+        links: [
+          { label: "Reserve Bank of New Zealand: the central bank and official NZ dollar reference", url: "https://www.rbnz.govt.nz", type: "gov" },
+          { label: "New Zealand Commerce Commission: the retail payment system and the status of card-surcharge rules", url: "https://comcom.govt.nz", type: "gov" }
+        ],
+        judgment: "The card-surcharge ban was promised for May 2026 but had not taken effect by mid-2026, and surcharge levels and the rest are our practical read, so confirm the current rule and treat amounts as a guide. Checked July 2026."
+      }
     }
   ]
 };
