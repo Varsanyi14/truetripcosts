@@ -151,5 +151,72 @@ export default {
         note: "Good to know: the Maya were extraordinary astronomers" },
     ],
     pride: "Mexico layers ancient civilizations, Spanish heritage, and a fierce modern creativity in food, art, and music. Warmth, and a little Spanish, are always returned in kind."
-  }
+  },
+
+  // HUB-AND-SPOKE SPOKES. Data-driven, single-source, each independently dated,
+  // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
+  spokes: [
+    {
+      slug: "fmm-and-visitax",
+      live: true,
+      topic: "visas",
+      title: "Do I need the FMM tourist card for Mexico, and what is Visitax? (2026) | True Trip Costs",
+      description: "If you fly to Mexico, the tourist card (FMM) is already paid inside your airfare. The one fee actually on you is Visitax, and only in Quintana Roo (Cancun, Tulum): about $15 to $17, paid online at the official site. Checked July 2026.",
+      h1: "Do I need the FMM tourist card for Mexico, and what is Visitax?",
+      lede: "Short answer: if you fly in, the tourist card is already in your ticket, so you do nothing separate. The one fee that is genuinely on you is Visitax, but only if you are headed to Cancun or the Riviera Maya. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "If you <b>fly</b> to Mexico, the tourist card (the <b>FMM</b>) is <b>already paid inside your airfare</b>, so you do nothing separate, the officer just stamps you in (check the days, up to 180). The one fee genuinely <b>on you is Visitax</b>, and only if you visit <b>Quintana Roo</b> (Cancun, Tulum, Playa del Carmen, Cozumel): about <b>$15 to $17 per person</b>, paid online at the official <b>visitax.gob.mx</b>. US citizens need <b>no visa</b> for tourism.",
+      official: {
+        label: "Official Quintana Roo Visitax portal",
+        url: "https://www.visitax.gob.mx",
+        note: "If your trip touches Quintana Roo (Cancun, the Riviera Maya, Cozumel, Tulum), this is the official state site to pay Visitax, about $15 to $17 per person, once for the whole stay. Pay before you fly out to skip the airport kiosk queue. Ignore sites that charge more."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "The tourist card (FMM): usually already handled",
+          p: [
+            "The <b>FMM</b> (Forma Migratoria Multiple) is Mexico's entry permit, often called the tourist card. It is <b>not a visa</b>, and for US citizens on a tourist trip it works differently depending on how you arrive. If you <b>fly in</b>, its fee is <b>bundled into your airline ticket</b> (you may spot it as a \"tourism tax\" on the receipt), and the major airports have gone digital, so there is usually <b>no paper form</b>, the officer scans your passport and stamps you in.",
+            "The one thing to check: the FMM allows a maximum of <b>180 days</b>, but the <b>officer decides how many days to grant</b>, and lately it is often less than the full 180. <b>Look at the number stamped in your passport</b> so you know your real departure deadline. The permit is single-entry, so a hop out of the country means a new one on return. If you <b>drive across by land</b>, you handle the FMM yourself at the immigration (INM) office: free for stays of seven days or less, otherwise about 983 pesos."
+          ]
+        },
+        {
+          h: "Visitax: the one fee that is actually on you (Quintana Roo)",
+          p: [
+            "If your trip touches <b>Quintana Roo</b>, the state that holds <b>Cancun, Playa del Carmen, Tulum, Cozumel and the Riviera Maya</b>, there is a separate state tourist tax called <b>Visitax</b>. It is about <b>283 pesos, roughly $15 to $17 per person</b>, charged once and covering your whole stay in the state, and it is <b>legally required</b> for foreign visitors.",
+            "Pay it online at the official state site, <b>visitax.gob.mx</b>, which gives you a QR code. You can pay before, during or at the end of your trip, but doing it <b>before you fly home</b> avoids the kiosk queue at Cancun airport, where it is enforced on departure. Enforcement has tightened, so do not skip it."
+          ]
+        },
+        {
+          h: "Why it feels confusing: most fees are already paid",
+          p: [
+            "Here is what clears it up. A trip to Cancun can involve several Mexican fees, but <b>most are tucked inside your airfare</b> already: the airport use fee, the federal tourism fees and the FMM tourist card all ride along invisibly in your ticket. <b>Visitax is the only one you pay yourself</b>, which is exactly why it feels like a surprise, it is really just the one that is visible.",
+            "So for a typical US traveler flying to the Riviera Maya, the honest checklist is short: your passport, the entry stamp the officer gives you (already paid), and Visitax paid online. Everything else is handled."
+          ]
+        },
+        {
+          h: "A couple of things to know",
+          p: [
+            "Your passport should have <b>six months</b> of validity to be safe, and US citizens can stay visa-free for up to <b>180 days</b> for tourism (subject to the days the officer grants). Cruise passengers to Quintana Roo do not pay Visitax; a separate cruise charge is collected through the cruise line instead.",
+            "Hotels also add their own nightly lodging tax at checkout, which is separate from all of the above. For those city and lodging taxes across destinations, see <a href=\"/tourist-taxes\">tourist taxes and entry fees</a>, and for cards, cash and ATMs, the <a href=\"/mexico\">Mexico money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need the FMM tourist card to fly to Mexico?", a: "You need the entry permit, but if you fly in you do nothing separate for it: the FMM fee is bundled into your airfare and the major airports are digital, so the officer just scans your passport and stamps you in. It is not a visa. Check the number of days stamped, up to 180, since the officer decides how many to grant. Driving in by land, you handle the FMM at the border." },
+        { q: "What is Visitax and do I have to pay it?", a: "Visitax is a Quintana Roo state tourist tax for foreign visitors to Cancun, Playa del Carmen, Tulum, Cozumel and the rest of the state. It is legally required, about $15 to $17 per person, paid once for the whole stay. It is separate from the FMM and is the one Mexican fee a flying tourist actually settles themselves. Cruise passengers pay a separate cruise charge instead." },
+        { q: "How much is Visitax and where do I pay it?", a: "About 283 pesos, roughly $15 to $17 per person, and the peso amount is fixed for 2026. Pay it online at the official state portal, visitax.gob.mx, which issues a QR code. Third-party sites charge more for the same thing. Pay before you fly home to avoid the enforcement kiosk queue at Cancun airport." },
+        { q: "How long can US citizens stay in Mexico?", a: "Up to 180 days visa-free for tourism, but the immigration officer decides how many days to actually grant, and it is often less than 180 now, so check the stamp in your passport. Staying longer, or working or studying, requires a visa. Transit is allowed visa-free for up to 30 days." }
+      ],
+      sources: {
+        links: [
+          { label: "Quintana Roo Government: the official Visitax portal to pay the state tourist tax", url: "https://www.visitax.gob.mx", type: "gov" },
+          { label: "Instituto Nacional de Migracion (INM): Mexico's immigration authority and the FMM entry permit", url: "https://www.gob.mx/inm", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry and exit requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "The FMM fee is set annually by INM and Visitax is fixed in pesos (so the US-dollar amount shifts with the exchange rate); rules and enforcement change, so confirm the current amounts on the official sites before you travel. Checked July 2026."
+      }
+    }
+  ]
 };

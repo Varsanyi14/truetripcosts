@@ -22,6 +22,17 @@ const ranked = live
     heading: (c.meter && c.meter.heading) ? c.meter.heading : ('Day to day, ' + c.name + ' runs about ' + c.meter.cashPct + '% on cash.'),
   }))
   .sort((a, b) => a.cashPct - b.cashPct || a.name.localeCompare(b.name));
+
+// Cash-or-card spokes, gathered from every guide by topic. A country appears here
+// only when it has a written-up cash wrinkle worth walking through. Same single
+// source as everything else; adding a topic:"cash" spoke to any guide surfaces it
+// here automatically, mirroring how passports-and-visas gathers the visa spokes.
+const cashSpokes = countries
+  .filter(c => c.live)
+  .flatMap(c => (c.spokes || [])
+    .filter(s => s.topic === 'cash' && s.live !== false)
+    .map(s => ({ h1: s.h1, lede: s.lede, spokeSlug: s.slug, country: c.name, countrySlug: c.slug })))
+  .sort((a, b) => a.country.localeCompare(b.country));
 ---
 <Base
   title="Cash or card by country, for US travelers"
@@ -57,6 +68,21 @@ const ranked = live
       </section>
     )}
 
+    {cashSpokes.length > 0 && (
+      <section class="fx-sec">
+        <h2>Cash questions, country by country</h2>
+        <p class="fx-note">Where a place has a specific cash-or-card wrinkle worth walking through, we have written it up. Each one lives in that country's guide.</p>
+        <div class="fx-panel">
+          {cashSpokes.map(s => (
+            <a class="co-spoke" href={'/' + s.countrySlug + '/' + s.spokeSlug}>
+              <span class="co-spoke-h">{s.h1}</span>
+              <span class="co-spoke-d">{s.lede}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
     <p class="fx-keep">This is our own read from experience and each country's guide, not an official figure, and it is checked when we check the guide. For the fees behind a trip, see <a href="/tourist-taxes">tourist taxes and entry fees</a>, and every guide has the full money picture. More on how we work is on our <a href="/methodology">methodology page</a>.</p>
 
   </main>
@@ -86,6 +112,12 @@ const ranked = live
     .co-bar{height:8px;border-radius:999px;background:#EDEBE4;overflow:hidden;margin-top:9px}
     .co-fill{height:100%;background:var(--teal);border-radius:999px}
     .co-note{font-size:14px;color:var(--muted);line-height:1.5;margin:9px 0 0}
+    .co-spoke{display:block;padding:15px 18px;border-bottom:1px solid var(--line);text-decoration:none;transition:background-color .15s ease}
+    .co-spoke:last-child{border-bottom:0}
+    .co-spoke:hover{background:var(--paper)}
+    .co-spoke-h{display:block;font-family:var(--serif);font-weight:500;font-size:16.5px;color:var(--teal-deep);line-height:1.3;margin:0 0 3px}
+    .co-spoke:hover .co-spoke-h{text-decoration:underline}
+    .co-spoke-d{display:block;font-size:14px;color:var(--muted);line-height:1.5}
     @media (max-width:560px){
       .fx-item{padding:14px 15px}
       .fx-lede{font-size:16.5px}

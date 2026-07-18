@@ -148,5 +148,70 @@ export default {
         note: "Good to know: bushido, the samurai code of honor" },
     ],
     pride: "Japan blends deep tradition with the cutting edge like nowhere else. Respect shown through small gestures, a bow, patience, care, is noticed and quietly appreciated."
-  }
+  },
+
+  // HUB-AND-SPOKE SPOKES. Data-driven, single-source, each independently dated,
+  // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
+  spokes: [
+    {
+      slug: "cash-or-card",
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Japan, or can I use cards? (2026) | True Trip Costs",
+      description: "Japan is going cashless fast, but you still need some yen. Which ATMs actually take foreign cards (7-Eleven and Japan Post), when cash is unavoidable, IC cards for transit, and the one setting to get right. Checked July 2026.",
+      h1: "Do I need cash in Japan, or can I use cards?",
+      lede: "Short answer: bring some cash, but you will tap and swipe for most of a city trip. The catch is that most Japanese bank ATMs reject foreign cards. Here is where to get yen, when you truly need it, and how to pay for the rest.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "Both, and the mix matters. Japan went <b>58% cashless in 2025</b>, so in cities you can tap a card or phone almost everywhere, but <b>cash is still essential</b> for shrines, small restaurants, market stalls and vending machines. The trap: <b>most Japanese bank ATMs reject foreign cards</b>, so pull yen from a <b>7-Eleven (Seven Bank) or Japan Post</b> ATM, get an <b>IC card</b> (Suica) for transit, and always choose <b>yen, not dollars</b>, at the terminal.",
+      sections: [
+        {
+          h: "The real picture: cashless, but not cash-free",
+          p: [
+            "Japan's reputation as a cash country is fading fast. Cashless payments hit <b>58% of spending in 2025</b> (Japan's METI), and across Tokyo, Osaka and the other big cities you can tap a contactless card or phone at convenience stores, chains, hotels and department stores without thinking about it.",
+            "But <b>cash is still essential</b> in the places travelers love most: temples and shrines (entry fees and goshuin stamps), small family restaurants and coffee shops, market and festival stalls, older ryokan inns, coin lockers, and most vending machines (card acceptance there is under 10%). A useful rule: <b>big things on a card, small and old-fashioned things in cash</b>."
+          ]
+        },
+        {
+          h: "Getting yen: only some ATMs take foreign cards",
+          p: [
+            "Here is the part that catches first-timers. <b>Most ordinary Japanese bank ATMs</b> (Mizuho, MUFG, SMBC and the like) simply <b>will not accept a card issued outside Japan</b>, they reject it and hand it back. Use these instead:"
+          ],
+          steps: [
+            "7-Eleven (Seven Bank) ATMs: inside every 7-Eleven, open 24/7, English menu, take Visa, Mastercard, Amex, JCB and UnionPay, with a roughly 100,000 yen per-withdrawal cap. These are the go-to.",
+            "Japan Post Bank (Yucho) ATMs: at post offices and many stations, similar acceptance, but not 24/7, so do not count on one late at night.",
+            "Lawson and Family Mart konbini ATMs: a fine backup where there is no 7-Eleven, so look for the card-network logos on the machine."
+          ]
+        },
+        {
+          h: "Cards and taps, and an IC card for the rest",
+          p: [
+            "For cards, <b>Visa and Mastercard</b> are the most widely accepted, JCB is good, and <b>Amex is patchy</b>, so carry a Visa or Mastercard as your main. The single most useful thing to set up is an <b>IC card</b>, Suica, Pasmo or ICOCA, which you tap for trains, most convenience stores and many vending machines.",
+            "The slickest route is a <b>digital Suica in your phone's wallet</b>: iPhone users can add Suica in Apple Wallet and top it up (some foreign cards are declined for the top-up, in which case load cash onto a physical card at any station machine). Set it up before you fly and you skip the airport ticket lines entirely."
+          ]
+        },
+        {
+          h: "The one setting to get right, and no tipping",
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>US dollars or Japanese yen, always choose yen</b>. Choosing dollars triggers dynamic currency conversion, a poor exchange rate dressed up as a convenience, and you pay more. Picking yen lets your own bank do the conversion, which is almost always cheaper.",
+            "Two smaller notes: <b>tipping is not expected</b> in Japan and can feel awkward, and travelers checks are effectively dead there. For how much to carry and the rest of the money picture, see the <a href=\"/japan\">Japan money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Can I get by in Japan with just a card, or do I need cash?", a: "You need some cash. Japan hit 58% cashless in 2025 and cards or phone taps cover most city spending, but cash is still essential for shrines, small restaurants, market stalls, coin lockers and vending machines. A good approach: carry 15,000 to 30,000 yen, use a card for bigger things, and tap an IC card for transit and convenience stores." },
+        { q: "Which ATMs in Japan accept foreign cards?", a: "7-Eleven (Seven Bank) ATMs are the most reliable, open 24/7 with an English menu and accepting Visa, Mastercard, Amex, JCB and UnionPay. Japan Post Bank ATMs also work but are not 24/7, and Lawson and Family Mart konbini ATMs are a backup. Most regular bank-branch ATMs (Mizuho, MUFG, SMBC) reject foreign cards." },
+        { q: "Do I need a Suica or IC card in Japan?", a: "It is not required, but it is the most convenient thing you can set up. An IC card (Suica, Pasmo or ICOCA) taps you through train gates and pays at most convenience stores and many vending machines. iPhone users can add a digital Suica in Apple Wallet before the trip and skip the ticket machines." },
+        { q: "Should I choose yen or dollars when a card machine asks in Japan?", a: "Always choose yen. Choosing US dollars triggers dynamic currency conversion, a marked-up exchange rate, so you pay more. Selecting yen lets your own bank handle the conversion at a better rate. The same applies at ATMs: decline any offer to convert to dollars." }
+      ],
+      sources: {
+        links: [
+          { label: "Japan METI (Ministry of Economy, Trade and Industry): the cashless payment ratio reaching 58.0% in 2025, from its March 2026 data", url: "https://www.meti.go.jp/english/", type: "gov" },
+          { label: "Seven Bank: the official page on using overseas-issued cards to withdraw yen at 7-Eleven ATMs", url: "https://www.sevenbank.co.jp/intlcard/index2.html", type: "card" },
+          { label: "Japan Post Bank: using cards issued overseas at Japan Post (Yucho) ATMs", url: "https://www.jp-bank.japanpost.jp/en/", type: "card" }
+        ],
+        judgment: "The cashless figure is Japan's official METI data; the ATM, card and IC-card details are our practical read from recent trips and the operators' own pages, and acceptance can vary by machine and card, so carry a backup. Checked July 2026."
+      }
+    }
+  ]
 };
