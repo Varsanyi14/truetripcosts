@@ -359,6 +359,30 @@
   .hn-feenote{font-size:13px;color:var(--muted);margin:10px 0 0;line-height:1.55}
   .hn-note{background:var(--amber-bg);border:1px solid #F0D6AE;color:#7A3D08;border-radius:10px;padding:10px 12px;margin:12px 0 0;font-size:13px;line-height:1.5}
   .hn-fine{font-size:11.5px;color:var(--muted);margin:14px 0 0;line-height:1.5}
+  /* the shape of the trip: five-segment stacked bar + legend. Same visual language
+     as the cash/card split bar (.ebar), extended to the whole total. Colors stay in
+     the token family: teal pair for the money that buys the trip, amber pair for the
+     fees, grey for the tax. Segment widths are set by the calculator script. */
+  .hn-shape{margin:14px 0 2px}
+  .hs-bar{display:flex;height:14px;border-radius:999px;overflow:hidden;background:var(--green-bg)}
+  .hs-seg{width:0;transition:width .35s ease}
+  .hs-seg.room{background:var(--teal-deep)}
+  .hs-seg.spend{background:var(--teal)}
+  .hs-seg.cfee{background:var(--amber)}
+  .hs-seg.afee{background:#D19A55}
+  .hs-seg.tax{background:#8D8C82}
+  @media (prefers-reduced-motion:reduce){.hs-seg{transition:none}}
+  .hs-legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px;font-size:12.5px;font-weight:600;color:var(--muted)}
+  .hs-l{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+  .hs-l .mdot{width:9px;height:9px}
+  .hs-l b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .hs-l.room .mdot{background:var(--teal-deep)}
+  .hs-l.spend .mdot{background:var(--teal)}
+  .hs-l.cfee .mdot{background:var(--amber)}
+  .hs-l.afee .mdot{background:#D19A55}
+  .hs-l.tax .mdot{background:#8D8C82}
+  .hs-l.nil{opacity:.45}
+  .hs-l.nil b{color:var(--muted)}
   /* grouped, scannable breakdown */
   .hn-group{margin-top:16px}
   .hn-group:first-of-type{margin-top:12px}
@@ -473,6 +497,28 @@
   .enote{font-size:12.5px;color:var(--muted);margin:8px 0 0;line-height:1.5}
 
   @media(max-width:720px){.hn{grid-template-columns:1fr}}
+  /* mobile pass for the all-in calculator. Goals: the room field and its toggle
+     each get a clean full row, the two steppers share a row, the style control
+     stretches edge to edge with even buttons, and the result panel loses a little
+     chrome so the numbers keep the room. Tap targets stay at 44px or better. */
+  @media(max-width:560px){
+    .estimator{padding:16px 14px}
+    .erow{gap:12px 14px;margin-bottom:14px}
+    .ef-room{flex:1 1 100%}
+    .ef-room .moneyin{width:100%}
+    .hn-toggle-inline{flex:1 1 100%;align-self:auto;padding:2px 0 4px}
+    .ef-num{flex:1 1 0;min-width:0}
+    .ef-num .stepper{width:100%;justify-content:space-between}
+    .ef-num .stp-v{flex:1}
+    .ef-style{flex:1 1 100%}
+    .ef-style .seg{display:flex;width:100%;box-sizing:border-box}
+    .ef-style .seg button{flex:1;padding:9px 4px;text-align:center}
+    .hn-result{padding:14px 12px 13px}
+    .hn-line{gap:10px}
+    .hn-fees{padding:9px 11px 11px}
+    .hn-shape .hs-legend{gap:5px 13px;font-size:12px}
+    #hn-app .ebig{font-size:26px}
+  }
   @media(max-width:560px){
     .sl-row{display:grid;grid-template-columns:1fr;gap:14px}
     .sl{flex:none}

@@ -656,7 +656,7 @@ const kfState = (f) => {
 
   <div class="estimator" id="hn-app" hidden>
     <div class="erow">
-      <div class="ef">
+      <div class="ef ef-room">
         <label for="hnRoom">Hotel price a night</label>
         <span class="moneyin"><span class="mny">$</span><input id="hnRoom" type="text" inputmode="numeric" value="150" aria-label="Hotel price per night in US dollars" /></span>
       </div>
@@ -673,21 +673,21 @@ const kfState = (f) => {
     </label>
 
     <div class="erow">
-      <div class="ef"><label>Travelers</label>
+      <div class="ef ef-num"><label>Travelers</label>
         <span class="stepper">
           <button type="button" class="stp" data-step="hnTrav" data-dir="-1" aria-label="One fewer traveler">&#8722;</button>
           <span class="stp-v" id="hnTrav" data-v="2">2</span>
           <button type="button" class="stp" data-step="hnTrav" data-dir="1" aria-label="One more traveler">+</button>
         </span>
       </div>
-      <div class="ef"><label>Nights</label>
+      <div class="ef ef-num"><label>Nights</label>
         <span class="stepper">
           <button type="button" class="stp" data-step="hnNights" data-dir="-1" aria-label="One fewer night">&#8722;</button>
           <span class="stp-v" id="hnNights" data-v="7">7</span>
           <button type="button" class="stp" data-step="hnNights" data-dir="1" aria-label="One more night">+</button>
         </span>
       </div>
-      <div class="ef"><label>Style</label>
+      <div class="ef ef-style"><label>Style</label>
         <div class="seg" role="group" aria-label="Travel style">
           {c.cash.styles.map((s, i) => (
             <button id={"hnStyle" + i} class={i === c.cash.defaultIndex ? "on" : ""} type="button" data-per={s.per} data-cash={s.cash}>{s.n}</button>
@@ -700,6 +700,27 @@ const kfState = (f) => {
       <p class="ebig">In {c.name}, plan for about <span class="amt num" id="hnTotal">$0</span>.</p>
       <p class="erange">Realistically somewhere between <span class="num" id="hnLo">$0</span> and <span class="num" id="hnHi">$0</span>.</p>
       <p class="escope" id="hnSub">&nbsp;</p>
+
+      <!-- The shape of the trip: one stacked bar showing how the total splits across
+           the five components. Pure CSS widths driven by render(), no chart library.
+           The bar is decorative (the itemized groups below carry the real figures),
+           so it is aria-hidden; the legend carries each component's share. -->
+      <div class="hn-shape">
+        <div class="hs-bar" aria-hidden="true">
+          <div class="hs-seg room" id="hsRoom"></div>
+          <div class="hs-seg spend" id="hsSpend"></div>
+          <div class="hs-seg cfee" id="hsCfee"></div>
+          <div class="hs-seg afee" id="hsAfee"></div>
+          <div class="hs-seg tax" id="hsTax"></div>
+        </div>
+        <div class="hs-legend">
+          <span class="hs-l room" id="hlRoom"><span class="mdot"></span>hotel <b>0%</b></span>
+          <span class="hs-l spend" id="hlSpend"><span class="mdot"></span>on the ground <b>0%</b></span>
+          <span class="hs-l cfee" id="hlCfee"><span class="mdot"></span>card fee <b>0%</b></span>
+          <span class="hs-l afee" id="hlAfee"><span class="mdot"></span>cash fees <b>0%</b></span>
+          <span class="hs-l tax" id="hlTax"><span class="mdot"></span>tourist tax <b>0%</b></span>
+        </div>
+      </div>
 
       <div class="hn-group">
         <div class="hn-ghead"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h13a1 1 0 0 1 1 1v3"/><path d="M3 7v10a2 2 0 0 0 2 2h14a1 1 0 0 0 1-1v-3"/><path d="M21 12h-4a2 2 0 0 0 0 4h4z"/></svg><span>What you'll spend</span></div>
@@ -1169,6 +1190,28 @@ const kfState = (f) => {
       }
       const bandLo = bandTotal(1 - SPEND_BAND, 0);
       const bandHi = bandTotal(1 + SPEND_BAND, DCC_EXTRA_PP);
+
+      // ----- the shape of the trip -----
+      // One pass sets each segment's width and its legend share from the same five
+      // numbers the itemized groups show, so the bar can never tell a different
+      // story. Zero components collapse to nothing and their legend entry greys
+      // out, which makes the two toggles visible at a glance: flip "already paid"
+      // and the hotel block vanishes; flip the no-fee card and both fee slivers go.
+      const segTotal = total > 0 ? total : 1;
+      function shape(segId, legId, val) {
+        const pct = (val / segTotal) * 100;
+        const seg = id(segId), leg = id(legId);
+        if (seg) seg.style.width = pct + '%';
+        if (leg) {
+          leg.querySelector('b').textContent = (pct > 0 && pct < 1 ? '<1' : Math.round(pct)) + '%';
+          leg.classList.toggle('nil', val <= 0);
+        }
+      }
+      shape('hsRoom', 'hlRoom', roomOnCard);
+      shape('hsSpend', 'hlSpend', spend);
+      shape('hsCfee', 'hlCfee', cardFee);
+      shape('hsAfee', 'hlAfee', atmFee);
+      shape('hsTax', 'hlTax', t.usd);
 
       id('hnNightsLabel').textContent = nights;
       id('hnFeeQ').textContent = fmtPct(fallbackFxPct);
