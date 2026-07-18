@@ -103,6 +103,11 @@ export default {
   // The tourist-tax block the calculator reads. Its rate, cap and unit drive the
   // calculator AND should drive whatever you write in prose about the tax, so the
   // two never disagree. Use null when there is no nightly tax. See ireland.js.
+  // OPTIONAL flight estimate. A verified typical economy round-trip RANGE per
+  // person from major US gateways, from fare-tracker averages, date-stamped.
+  // Omit the whole line until verified: the calculator then shows an empty
+  // flight field and only counts flights the traveler enters themselves.
+  // flight: { low: 550, high: 1200, checked: "Jul 2026", checkedISO: "2026-07-18" },
   tax: null,
 
   // Example prose that REFERENCES the facts above instead of re-typing them, so a

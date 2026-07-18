@@ -83,6 +83,13 @@ export default {
   //   { key: "rome", label: "Rome", byClass: { "3": 6, "4": 7.5, "5": 10 } }
   // and the engine would pick the rate by the chosen star rating. For now we ship one
   // representative rate per city to keep the interface simple for a first-time traveler.
+  // Typical economy round trip per person from major US gateways, as a verified
+  // RANGE, never a point. Sourced from fare-tracker averages (Kayak, momondo,
+  // Skyscanner published route data), deliberately wide to cover season and
+  // gateway. HIGH-CHURN: re-verify on the tourist-tax cadence. The calculator
+  // prefills the midpoint, feeds low/high into the confidence range until the
+  // traveler enters their own fare, and hides the estimate if this block is absent.
+  flight: { low: 550, high: 1200, checked: "Jul 2026", checkedISO: "2026-07-18" },
   tax: {
     unit: "perPersonPerNight",
     currency: "EUR",

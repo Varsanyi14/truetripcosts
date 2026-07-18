@@ -69,6 +69,13 @@ export default {
   // price and paid at the hotel. No cap on nights. Most of Japan charges nothing.
   // Bands read in order: the first band whose upTo the per-person nightly rate falls
   // under wins; upTo null is the top band.
+  // Typical economy round trip per person from major US gateways, as a verified
+  // RANGE, never a point. Sourced from fare-tracker averages (Kayak, momondo,
+  // Skyscanner published route data), deliberately wide to cover season and
+  // gateway. HIGH-CHURN: re-verify on the tourist-tax cadence. The calculator
+  // prefills the midpoint, feeds low/high into the confidence range until the
+  // traveler enters their own fare, and hides the estimate if this block is absent.
+  flight: { low: 700, high: 1300, checked: "Jul 2026", checkedISO: "2026-07-18" },
   tax: {
     unit: "tieredPerPersonPerNight",
     currency: "JPY",

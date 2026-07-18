@@ -85,6 +85,7 @@ const calcData = {
   round: (c.cash && c.cash.round) || 100000,
   rateNote: (c.cash && c.cash.rateNote) || "",
   tax: c.tax || null,
+  flight: c.flight || null, // verified typical round-trip range, or null when unverified
   fallbackFxPct
 };
 const calcJson = JSON.stringify(calcData).replace(/</g, "\\u003c");
@@ -648,7 +649,7 @@ const kfState = (f) => {
 <section id="calc">
   <p class="lab">What it really costs</p>
   <h2>What you'll really spend in {c.name}.</h2>
-  <p class="sub">Your room, your on-the-ground spending, the two fees most US cards add without telling you, and {c.name}'s tourist tax. One number, nothing waiting on the statement. No bank to pick, no sign-up, nothing saved.</p>
+  <p class="sub">Your flights if you want them counted, your room, your on-the-ground spending, the two fees most US cards add without telling you, and {c.name}'s tourist tax. One number, nothing waiting on the statement. No bank to pick, no sign-up, nothing saved.</p>
   {art && <figure class="secart"><img src={art.cost} alt="" loading="lazy" decoding="async" width="1400" height="788" /></figure>}
 
   <!-- Everything the module needs, handed over as inert JSON (Astro leaves application/json untouched). No card data ships: it asks the traveler nothing about their own card. -->
@@ -671,6 +672,14 @@ const kfState = (f) => {
       <span class="cf-l">Where are you staying?</span>
       <span class="selwrap"><select id="hnRegion"></select></span>
     </label>
+
+    <div class="erow erow-flight">
+      <div class="ef ef-flight">
+        <label for="hnFlight">Flights, round trip a person</label>
+        <span class="moneyin"><span class="mny">$</span><input id="hnFlight" type="text" inputmode="numeric" value="" aria-label="Round trip flight price per traveler in US dollars" /></span>
+      </div>
+      <p class="ef-hint" id="hnFlightHint">Optional. Enter your round trip fare per traveler to fold flights into the total.</p>
+    </div>
 
     <div class="erow">
       <div class="ef ef-num"><label>Travelers</label>
@@ -707,6 +716,7 @@ const kfState = (f) => {
            so it is aria-hidden; the legend carries each component's share. -->
       <div class="hn-shape">
         <div class="hs-bar" aria-hidden="true">
+          <div class="hs-seg flt" id="hsFlt"></div>
           <div class="hs-seg room" id="hsRoom"></div>
           <div class="hs-seg spend" id="hsSpend"></div>
           <div class="hs-seg cfee" id="hsCfee"></div>
@@ -714,6 +724,7 @@ const kfState = (f) => {
           <div class="hs-seg tax" id="hsTax"></div>
         </div>
         <div class="hs-legend">
+          <span class="hs-l flt" id="hlFlt" hidden><span class="mdot"></span>flights <b>0%</b></span>
           <span class="hs-l room" id="hlRoom"><span class="mdot"></span>hotel <b>0%</b></span>
           <span class="hs-l spend" id="hlSpend"><span class="mdot"></span>on the ground <b>0%</b></span>
           <span class="hs-l cfee" id="hlCfee"><span class="mdot"></span>card fee <b>0%</b></span>
@@ -725,6 +736,7 @@ const kfState = (f) => {
       <div class="hn-group">
         <div class="hn-ghead"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h13a1 1 0 0 1 1 1v3"/><path d="M3 7v10a2 2 0 0 0 2 2h14a1 1 0 0 0 1-1v-3"/><path d="M21 12h-4a2 2 0 0 0 0 4h4z"/></svg><span>What you'll spend</span></div>
         <div class="hn-rows">
+          <div class="hn-line" id="hnFlightLine" hidden><span class="hn-k">Flights (<span id="hnFlightTravLabel">2</span> travelers, round trip)<em id="hnFlightNote">paid in dollars at booking, so no foreign fee on this line</em></span><span class="hn-v num" id="hnFlightV">$0</span></div>
           <div class="hn-line" id="hnHotelLine"><span class="hn-k">Hotel (<span id="hnNightsLabel">7</span> nights)<em id="hnHotelNote">on the card, prepaid or paid at the desk</em></span><span class="hn-v num" id="hnRoomV">$0</span></div>
           <div class="hn-line"><span class="hn-k">On-the-ground spend<em>food, local transport, activities, tips</em></span><span class="hn-v num" id="hnSpend">$0</span></div>
         </div>
@@ -767,6 +779,7 @@ const kfState = (f) => {
           <p class="hna-intro">These are the assumptions behind the number. Change the room price, nights, travelers, or travel style above, and every line here moves with them.</p>
           <dl class="hna-list">
             <div class="hna-item"><dt>Daily spending</dt><dd id="hnaSpend">&nbsp;</dd></div>
+            <div class="hna-item"><dt>Flights</dt><dd id="hnaFlight">&nbsp;</dd></div>
             <div class="hna-item"><dt>Cash vs card</dt><dd id="hnaSplit">&nbsp;</dd></div>
             <div class="hna-item"><dt>ATM withdrawals</dt><dd id="hnaAtm">&nbsp;</dd></div>
             <div class="hna-item"><dt>Foreign fee</dt><dd id="hnaFee">&nbsp;</dd></div>
@@ -779,7 +792,7 @@ const kfState = (f) => {
   </div>
 
   <noscript>
-    <div class="reveal"><div class="t">The full total needs JavaScript switched on. With it off: take the room price, add your on-the-ground spending, add about 3% for a typical US card's foreign fee on what you put on the card, a few dollars plus about 3% for each ATM cash withdrawal, and {c.name}'s tourist tax.</div></div>
+    <div class="reveal"><div class="t">The full total needs JavaScript switched on. With it off: take your round trip flights and the room price, add your on-the-ground spending, add about 3% for a typical US card's foreign fee on what you put on the card, a few dollars plus about 3% for each ATM cash withdrawal, and {c.name}'s tourist tax.</div></div>
   </noscript>
 
   <details class="cardlist" id="calcNoFee" open>
@@ -1047,7 +1060,33 @@ const kfState = (f) => {
     let styleIndex = styleBtns.findIndex(b => b.classList.contains('on'));
     if (styleIndex < 0) styleIndex = 0;
 
-    const state = { regionIndex: 0, room: 150, nights: 7, trav: 2, paid: false, noFee: false };
+    const state = { regionIndex: 0, room: 150, nights: 7, trav: 2, paid: false, noFee: false, flight: 0, flightEdited: false };
+
+    // ----- flights: a verified typical fare prefilled, the traveler's own once edited -----
+    // When the country carries a verified flight range, the input prefills with the
+    // midpoint (rounded to $10) and the confidence range uses the verified low/high.
+    // The moment the traveler types, the fare becomes a stated fact: it is used as
+    // entered and frozen at both ends of the range, exactly like the room price.
+    // Countries without verified data show an empty optional field, so nothing
+    // unverified is ever shown.
+    const flightData = DATA.flight || null;
+    const flightInput = id('hnFlight');
+    const flightHint = id('hnFlightHint');
+    if (flightData) {
+      state.flight = Math.round((flightData.low + flightData.high) / 2 / 10) * 10;
+      if (flightInput) flightInput.value = state.flight.toLocaleString('en-US');
+      if (flightHint) flightHint.textContent = 'Prefilled with a typical economy fare from major US gateways, checked ' + (flightData.checked || '') + '. Edit it to what you actually paid.';
+    }
+    if (flightInput) {
+      flightInput.addEventListener('input', () => {
+        let v = parseInt(String(flightInput.value).replace(/[^0-9]/g, ''), 10);
+        if (isNaN(v) || v < 0) v = 0;
+        state.flight = v;
+        state.flightEdited = true;
+        render(true);
+      });
+      flightInput.addEventListener('blur', () => { flightInput.value = state.flight ? state.flight.toLocaleString('en-US') : ''; });
+    }
 
     // ----- region selector (only when the tax varies by place) -----
     const regionWrap = id('hnRegionWrap');
@@ -1170,7 +1209,10 @@ const kfState = (f) => {
       const atmFx = cash * (atmCashPct / 100);         // percentage markup on the cash itself
       const atmFee = state.noFee ? 0 : (atmFlat + atmFx);
       const t = computeTax(roomUSD, nights, trav);
-      const total = roomOnCard + spend + cardFee + atmFee + t.usd;
+      // Flights ride the total but never the fee math: a US-booked fare is a dollar
+      // purchase, so it takes no foreign fee and no share of the cash split.
+      const flightTotal = state.flight * trav;
+      const total = roomOnCard + spend + cardFee + atmFee + t.usd + flightTotal;
 
       // ----- the confidence range -----
       // Rebuilds the same five-part total with only the assumed inputs moved.
@@ -1179,17 +1221,23 @@ const kfState = (f) => {
       // fee run DCC_EXTRA_PP points hotter. ATM pulls recompute per bound since
       // they follow the cash volume. With the no-fee toggle on, both fees stay
       // at $0 on both bounds and the range narrows to spend variability alone.
-      function bandTotal(spendMult, extraPP) {
+      function bandTotal(spendMult, extraPP, flightUSD) {
         const s = spend * spendMult;
         const cashB = s * cashShare, cardB = s - cashB;
         const pct = state.noFee ? 0 : (fallbackFxPct + extraPP);
         const cFee = (roomOnCard + cardB) * (pct / 100);
         const p = (cashB > 0) ? Math.max(1, Math.ceil(cashB / 300)) : 0;
         const aFee = state.noFee ? 0 : (p * 5 + cashB * (pct / 100));
-        return roomOnCard + s + cFee + aFee + t.usd;
+        return roomOnCard + s + cFee + aFee + t.usd + flightUSD;
       }
-      const bandLo = bandTotal(1 - SPEND_BAND, 0);
-      const bandHi = bandTotal(1 + SPEND_BAND, DCC_EXTRA_PP);
+      // While the fare is our estimate, the band uses the verified low and high of
+      // the range it came from. Once the traveler enters their own fare it is a
+      // stated fact and holds still at both ends, like the room price.
+      const estFlight = flightData && !state.flightEdited;
+      const fltLo = estFlight ? flightData.low * trav : flightTotal;
+      const fltHi = estFlight ? flightData.high * trav : flightTotal;
+      const bandLo = bandTotal(1 - SPEND_BAND, 0, fltLo);
+      const bandHi = bandTotal(1 + SPEND_BAND, DCC_EXTRA_PP, fltHi);
 
       // ----- the shape of the trip -----
       // One pass sets each segment's width and its legend share from the same five
@@ -1198,15 +1246,19 @@ const kfState = (f) => {
       // out, which makes the two toggles visible at a glance: flip "already paid"
       // and the hotel block vanishes; flip the no-fee card and both fee slivers go.
       const segTotal = total > 0 ? total : 1;
-      function shape(segId, legId, val) {
+      function shape(segId, legId, val, hideZero) {
         const pct = (val / segTotal) * 100;
         const seg = id(segId), leg = id(legId);
         if (seg) seg.style.width = pct + '%';
         if (leg) {
           leg.querySelector('b').textContent = (pct > 0 && pct < 1 ? '<1' : Math.round(pct)) + '%';
           leg.classList.toggle('nil', val <= 0);
+          if (hideZero) leg.hidden = (val <= 0);
         }
       }
+      // Flights hide entirely at zero (not participating), while the other five grey
+      // out (a meaningful zero, e.g. the paid room or the no-fee card).
+      shape('hsFlt', 'hlFlt', flightTotal, true);
       shape('hsRoom', 'hlRoom', roomOnCard);
       shape('hsSpend', 'hlSpend', spend);
       shape('hsCfee', 'hlCfee', cardFee);
@@ -1214,6 +1266,13 @@ const kfState = (f) => {
       shape('hsTax', 'hlTax', t.usd);
 
       id('hnNightsLabel').textContent = nights;
+      const fltLine = id('hnFlightLine');
+      if (fltLine) {
+        fltLine.hidden = (flightTotal <= 0);
+        id('hnFlightTravLabel').textContent = trav;
+        id('hnFlightNote').textContent = (estFlight ? 'a typical fare, edit it above to yours; ' : 'your fare, as entered; ') + 'paid in dollars at booking, so no foreign fee on this line';
+        roll(id('hnFlightV'), flightTotal, usd, animate);
+      }
       id('hnFeeQ').textContent = fmtPct(fallbackFxPct);
       id('hnTaxLabel').textContent = t.label;
       id('hnCardBase').textContent = usd(cardBase);
@@ -1270,13 +1329,18 @@ const kfState = (f) => {
       const setA = (elId, txt) => { const e = id(elId); if (e) e.textContent = txt; };
       const styleWord = styleName ? styleName.toLowerCase() : 'mid-range';
       setA('hnaSpend', 'About ' + usd(per) + ' per traveler each day for ' + styleWord + ' travel, across ' + trav + ' ' + (trav === 1 ? 'traveler' : 'travelers') + ' and ' + nights + ' ' + (nights === 1 ? 'night' : 'nights') + '.');
+      setA('hnaFlight', !flightData && flightTotal <= 0
+        ? 'Not counted. We have not yet verified a typical fare for ' + DATA.name + ', so flights join the total only if you enter your own round trip fare above.'
+        : (estFlight
+          ? 'A typical economy round trip from major US gateways runs about ' + usd(flightData.low) + ' to ' + usd(flightData.high) + ' a person, checked ' + (flightData.checked || '') + '. The total uses the midpoint and the range above uses the full spread; enter what you actually paid and both switch to your number.'
+          : 'Your own fare, ' + usd(state.flight) + ' a person as entered, taken as a fact at both ends of the range.'));
       setA('hnaSplit', 'About ' + cp + '% of that spend goes in cash and ' + (100 - cp) + '% on the card, the mix we assume for ' + styleWord + ' travel in ' + DATA.name + '.');
       setA('hnaAtm', pulls + (pulls === 1 ? ' ATM withdrawal' : ' ATM withdrawals') + ' of about $300, at roughly $5 each in operator and bank charges.');
       setA('hnaFee', 'We assume a blended ' + fmtPct(fallbackFxPct) + ' foreign fee, a typical figure for a US card, on both card spend and the cash you pull. Your own card may differ: a no-foreign-fee card removes it, which is what the toggle above shows, while a debit card or accepting a "pay in dollars" prompt can push it higher.');
       const bandPct = Math.round(SPEND_BAND * 100) + '%';
       setA('hnaRange', state.noFee
         ? ('With the no-foreign-fee card switched on, the fees stop moving, so the range under the big number only reflects your daily spending running about ' + bandPct + ' under or over the ' + styleWord + ' figure. Your room, nights, travelers and the tourist tax are taken as given at both ends.')
-        : ('The big number is the middle of the road. The low end assumes your daily spending runs about ' + bandPct + ' under the ' + styleWord + ' figure. The high end runs it ' + bandPct + ' over and lets the foreign fee climb ' + DCC_EXTRA_PP + ' points higher, the kind of jump a debit card or a "pay in dollars" prompt causes. Your room, nights, travelers and the tourist tax are taken as given at both ends.'));
+        : ('The big number is the middle of the road. The low end assumes your daily spending runs about ' + bandPct + ' under the ' + styleWord + ' figure. The high end runs it ' + bandPct + ' over and lets the foreign fee climb ' + DCC_EXTRA_PP + ' points higher, the kind of jump a debit card or a "pay in dollars" prompt causes. Your room, nights, travelers and the tourist tax are taken as given at both ends.' + (estFlight ? ' The flight leg swings across its verified ' + usd(flightData.low) + ' to ' + usd(flightData.high) + ' range until you enter your own fare.' : '')));
       setA('hnaTax', (t.usd > 0) ? ('Calculated from ' + DATA.name + "'s tourist-tax rule, per night and per person where that applies, and capped where the local rule caps it. The tax line above shows the specifics.") : (DATA.name + ' charges no nightly tourist tax, so this line stays at $0.'));
 
       // Per-region tourist-tax note, if any.

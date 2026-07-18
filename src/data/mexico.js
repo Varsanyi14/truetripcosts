@@ -80,6 +80,13 @@ export default {
   // a one-time state tourist tax (VISITAX) per person. Baja California Sur (Los Cabos, La Paz,
   // Loreto) charges a one-time "Embrace It" visitor fee per person, and Puerto Vallarta began
   // its own foreign-visitor fee in 2026. Most of Mexico still has nothing beyond the room rate.
+  // Typical economy round trip per person from major US gateways, as a verified
+  // RANGE, never a point. Sourced from fare-tracker averages (Kayak, momondo,
+  // Skyscanner published route data), deliberately wide to cover season and
+  // gateway. HIGH-CHURN: re-verify on the tourist-tax cadence. The calculator
+  // prefills the midpoint, feeds low/high into the confidence range until the
+  // traveler enters their own fare, and hides the estimate if this block is absent.
+  flight: { low: 300, high: 700, checked: "Jul 2026", checkedISO: "2026-07-18" },
   tax: {
     unit: "flatPerNight",
     currency: "MXN",

@@ -72,6 +72,13 @@ export default {
   // charged per person and collected by your accommodation. The amount rises with the
   // hotel's rating, so the calculator uses a mid-range figure per city. Children under
   // 18 are exempt.
+  // Typical economy round trip per person from major US gateways, as a verified
+  // RANGE, never a point. Sourced from fare-tracker averages (Kayak, momondo,
+  // Skyscanner published route data), deliberately wide to cover season and
+  // gateway. HIGH-CHURN: re-verify on the tourist-tax cadence. The calculator
+  // prefills the midpoint, feeds low/high into the confidence range until the
+  // traveler enters their own fare, and hides the estimate if this block is absent.
+  flight: { low: 550, high: 1150, checked: "Jul 2026", checkedISO: "2026-07-18" },
   tax: {
     unit: "perPersonPerNight",
     currency: "EUR",

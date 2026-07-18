@@ -366,6 +366,7 @@
   .hn-shape{margin:14px 0 2px}
   .hs-bar{display:flex;height:14px;border-radius:999px;overflow:hidden;background:var(--green-bg)}
   .hs-seg{width:0;transition:width .35s ease}
+  .hs-seg.flt{background:#5B7A99}
   .hs-seg.room{background:var(--teal-deep)}
   .hs-seg.spend{background:var(--teal)}
   .hs-seg.cfee{background:var(--amber)}
@@ -376,6 +377,7 @@
   .hs-l{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
   .hs-l .mdot{width:9px;height:9px}
   .hs-l b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .hs-l.flt .mdot{background:#5B7A99}
   .hs-l.room .mdot{background:var(--teal-deep)}
   .hs-l.spend .mdot{background:var(--teal)}
   .hs-l.cfee .mdot{background:var(--amber)}
@@ -496,6 +498,10 @@
   .estimator.secondary .ebig{font-size:25px}
   .enote{font-size:12.5px;color:var(--muted);margin:8px 0 0;line-height:1.5}
 
+  .erow-flight{align-items:flex-end}
+  .ef-flight{min-width:150px}
+  .ef-hint{flex:1;min-width:180px;font-size:12px;color:var(--muted);line-height:1.5;margin:0;padding-bottom:6px}
+
   @media(max-width:720px){.hn{grid-template-columns:1fr}}
   /* mobile pass for the all-in calculator. Goals: the room field and its toggle
      each get a clean full row, the two steppers share a row, the style control
@@ -506,6 +512,9 @@
     .erow{gap:12px 14px;margin-bottom:14px}
     .ef-room{flex:1 1 100%}
     .ef-room .moneyin{width:100%}
+    .ef-flight{flex:1 1 100%}
+    .ef-flight .moneyin{width:100%}
+    .ef-hint{padding-bottom:0}
     .hn-toggle-inline{flex:1 1 100%;align-self:auto;padding:2px 0 4px}
     .ef-num{flex:1 1 0;min-width:0}
     .ef-num .stepper{width:100%;justify-content:space-between}

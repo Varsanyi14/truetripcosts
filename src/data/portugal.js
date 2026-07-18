@@ -73,6 +73,13 @@ export default {
   // TOURIST TAX (high-churn, verified Jul 2026). A per-person, per-night municipal
   // tax (taxa turistica) collected by your accommodation, usually not in the room rate.
   // Most of Portugal charges nothing. Capped at 7 nights, under-13s exempt.
+  // Typical economy round trip per person from major US gateways, as a verified
+  // RANGE, never a point. Sourced from fare-tracker averages (Kayak, momondo,
+  // Skyscanner published route data), deliberately wide to cover season and
+  // gateway. HIGH-CHURN: re-verify on the tourist-tax cadence. The calculator
+  // prefills the midpoint, feeds low/high into the confidence range until the
+  // traveler enters their own fare, and hides the estimate if this block is absent.
+  flight: { low: 450, high: 1000, checked: "Jul 2026", checkedISO: "2026-07-18" },
   tax: {
     unit: "perPersonPerNight",
     currency: "EUR",
