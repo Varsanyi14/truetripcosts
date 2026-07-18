@@ -48,6 +48,10 @@ function srcParts(s) {
 }
 const sections = Array.isArray(spoke.sections) ? spoke.sections : [];
 const faqs = Array.isArray(spoke.faqs) ? spoke.faqs : [];
+// Sibling spokes: the other live spokes on this same country. Data-driven, so each
+// new spoke cross-links to the rest automatically. Empty (block hidden) until a
+// country has more than one spoke.
+const siblings = (country.spokes || []).filter(s => s.live !== false && s.slug !== spoke.slug);
 ---
 
 <article class="spoke">
@@ -84,6 +88,23 @@ const faqs = Array.isArray(spoke.faqs) ? spoke.faqs : [];
       <div class="faq">
         {faqs.map(f => (<div class="faqitem"><h3>{f.q}</h3><p>{f.a}</p></div>))}
       </div>
+    </section>
+  )}
+
+  {siblings.length > 0 && (
+    <section class="sp-sec">
+      <p class="lab">More on {country.name}</p>
+      <h2>The little money things nobody warns you about.</h2>
+      <ul class="sib-list">
+        {siblings.map(s => (
+          <li>
+            <a href={'/' + country.slug + '/' + s.slug}>
+              <span class="sib-h">{s.h1}</span>
+              <span class="sib-d">{s.lede}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
     </section>
   )}
 
@@ -147,9 +168,15 @@ const faqs = Array.isArray(spoke.faqs) ? spoke.faqs : [];
   .sp-steps li:last-child{padding-bottom:0}
   .sp-steps li::before{content:counter(step);position:absolute;left:0;top:1px;width:26px;height:26px;border-radius:999px;background:var(--green-bg);color:var(--teal-deep);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
   .sp-back{margin-top:26px}
+  .sib-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
+  .sib-list a{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;text-decoration:none;box-shadow:var(--shadow);transition:border-color .2s ease,box-shadow .2s ease,transform .2s ease}
+  .sib-list a:hover{border-color:#C2E0C8;transform:translateY(-1px)}
+  .sib-h{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink);line-height:1.25;margin:0 0 4px}
+  .sib-d{display:block;font-size:14px;color:var(--muted);line-height:1.5}
   .gs-ic{flex:none;color:var(--muted);display:inline-flex;margin-top:1px}
   @media (max-width:560px){
     .sp-lede{font-size:16.5px}
     .sp-sec p,.sp-steps li{font-size:15.5px}
+    .sib-h{font-size:16px}
   }
 </style>

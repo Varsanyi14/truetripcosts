@@ -28,14 +28,14 @@ export default {
     alt: "A quiet Lisbon old-town street at dusk with string lights overhead, pastel houses with azulejo tiles and wrought-iron balconies, laundry lines, a yellow tram climbing the hill toward a domed church, a lone figure walking away up the cobbles, and a pastel de nata with a glass of white wine, olives and bread on a wooden table in the foreground"
   },
   notice: 'We only cover trips departing from the United States right now. Want an email the moment we add your home country? <a href="#" onclick="return false"><b>Sign up for an alert</b></a>.',
-  verdict: "Portugal is very <b>card-friendly</b>, arguably more so than its neighbors. Visa and Mastercard work almost everywhere, contactless is the norm, Apple Pay and Google Pay are widely accepted, and you can tap on the Lisbon and Porto metro and trams. Bring a <b>no-fee Visa or Mastercard</b> for nearly everything, keep <b>a little cash</b> for small tascas, markets, fado-bar tips and rural spots, and pull euros from a <b>Multibanco (MB) machine</b>, not the bright yellow Euronet ones. One rule above all: <b>always choose euros, never dollars</b>. Tipping is light. In Lisbon, Porto and a growing list of towns, budget the small per-night tourist tax.",
+  verdict: "Portugal is very <b>card-friendly</b>, arguably more so than its neighbors. Visa and Mastercard work almost everywhere, contactless is the norm, Apple Pay and Google Pay are widely accepted, and you can tap on the Lisbon and Porto metro. Bring a <b>no-fee Visa or Mastercard</b> for nearly everything, keep <b>a little cash</b> for small tascas, markets, fado-bar tips and rural spots, and pull euros from a <b>Multibanco (MB) machine</b>, not the bright yellow Euronet ones. One rule above all: <b>always choose euros, never dollars</b>. Tipping is light. In Lisbon, Porto and a growing list of towns, budget the small per-night tourist tax.",
   meter: {
     heading: "Portugal is very card-friendly, but keep a little cash for the small stuff.",
     cashPct: 26,
     note: "A rough feel for everyday spending. Cards and contactless work almost everywhere, in shops, restaurants, museums and on the metro and trams, helped by Portugal's near-universal tap culture. The cash you do want is for small family-run tascas, markets, fado-bar and cafe tips, coins for public toilets, and rural areas, where a card minimum or a cash-only sign still turns up."
   },
   trio: [
-    { sym: "card", kind: "ok", h: "Your card", verd: "Works almost everywhere", p: "Visa and Mastercard are taken nearly everywhere, contactless is standard, and tap needs no PIN under about 50 euros. Apple Pay and Google Pay are widely accepted, including on Lisbon and Porto transit. Amex is patchier. Some small spots set a card minimum, often 5 to 15 euros.", cta: { label: "Check yours", href: "#calc" } },
+    { sym: "card", kind: "ok", h: "Your card", verd: "Works almost everywhere", p: "Visa and Mastercard are taken nearly everywhere, contactless is standard, and tap needs no PIN under about 50 euros. Apple Pay and Google Pay are widely accepted, including on the Lisbon and Porto metro. Amex is patchier. Some small spots set a card minimum, often 5 to 15 euros.", cta: { label: "Check yours", href: "#calc" } },
     { sym: "cash", kind: "warn", h: "Cash", verd: "A little, for the small stuff", p: "You do not need much, but keep some euros in small notes and coins. Small tascas, neighborhood markets, fado-bar tips, the odd cash-only spot and coins for public toilets still run on cash, and a 20 is easier to spend than a 50.", cta: { label: "How much to bring", href: "#cash" } },
     { sym: "atm", kind: "ok", h: "ATMs", verd: "Use a Multibanco, not Euronet", p: "Look for the Multibanco (MB) network, the national bank machines, which charge little or nothing for the withdrawal itself (CGD, Millennium, Novo Banco, Caixa Geral). Avoid the bright yellow standalone Euronet machines at airports and tourist squares, which charge 5 to 7 euros and push the dollar conversion. It may ask about conversion twice, so decline both times.", cta: { label: "See low-fee cards", href: "#" } }
   ],
@@ -89,7 +89,7 @@ export default {
   facts: [
     { sym: "euro", k: "Quick conversion", v: "About 1.14 dollars to 1 euro in mid-2026, so euro prices are roughly the same as dollars, just a touch more: a 10 euro lunch is about 11 and a half dollars, and 100 euros is about 114. Prices show the euro sign, usually after the number, as in \"12 \u20AC\"." },
     { sym: "coins", k: "Notes and coins", v: "Notes run 5, 10, 20, 50, 100, 200 and 500 euros, though anything above 50 is awkward to spend and many small places will not take it. The 1 and 2 euro pieces are coins, not notes, so keep a small stash of coins and small notes for cafes, tascas, tips and toilets." },
-    { sym: "card", k: "Contactless is king", v: "Tap to pay is everywhere, with no PIN under about 50 euros, and Apple Pay and Google Pay work even on Lisbon and Porto transit. Locals use MB WAY, an instant phone app, but it needs a Portuguese bank account, so it is not your tool. Any place that takes MB WAY also takes a card." },
+    { sym: "card", k: "Contactless is king", v: "Tap to pay is everywhere, with no PIN under about 50 euros, and Apple Pay and Google Pay work even on the Lisbon and Porto metro. Locals use MB WAY, an instant phone app, but it needs a Portuguese bank account, so it is not your tool. Any place that takes MB WAY also takes a card." },
     { sym: "tip", k: "Tipping is light", v: "Portugal is not a US-style tipping culture. The price you see includes IVA (VAT) and staff earn a real wage, so there is no expected percentage. Rounding up, or 5 to 10% for good service at a sit-down meal, is plenty, and best left in cash." }
   ],
   taxfree: {
@@ -107,7 +107,7 @@ export default {
   tippingHeading: "Tip lightly, in cash.",
   tipping: "Portugal is not a US-style tipping culture, and this surprises many first-timers. The menu price already includes IVA, and staff are paid a real wage, so there is no expected percentage and nobody will chase you for one. For good table service you can round up or leave 5 to 10%, but it is a kind gesture rather than an obligation. At a cafe or pastelaria, rounding up or leaving the coins is plenty, and at a counter, nothing is fine. Leave any tip in cash, since card terminals rarely pass it to the staff. A euro or two for a porter or for housekeeping is appreciated, rounding up a taxi fare is normal, and a free walking-tour guide lives on tips, so 5 to 10 euros per person is fair. Do not feel pressured to tip 15 to 20% the way you would at home.",
   faqs: [
-    { q: "Do I need cash in Portugal?", a: "Not much. Portugal is very card-friendly, contactless works almost everywhere, including on Lisbon and Porto transit, and Apple Pay and Google Pay are widely accepted. But carry some euros for small tascas, markets, fado-bar tips, coins for public toilets, rural areas and the occasional card-minimum spot, and top up at a Multibanco ATM as needed." },
+    { q: "Do I need cash in Portugal?", a: "Not much. Portugal is very card-friendly, contactless works almost everywhere, including on the Lisbon and Porto metro, and Apple Pay and Google Pay are widely accepted. But carry some euros for small tascas, markets, fado-bar tips, coins for public toilets, rural areas and the occasional card-minimum spot, and top up at a Multibanco ATM as needed." },
     { q: "Should I pay in euros or dollars in Portugal?", a: "Always euros. If a card terminal or ATM offers to charge you in dollars, decline. That dynamic currency conversion adds roughly 3 to 8%, and a Euronet machine can be far worse. At a Multibanco ATM the conversion question can appear twice, so say no both times to get euros at the real rate." },
     { q: "What ATM should I use in Portugal?", a: "Use a Multibanco (MB) machine, the national bank network, which charges little or nothing for the withdrawal itself. Avoid the bright yellow standalone Euronet machines at airports and tourist squares; they charge 5 to 7 euros and push the dollar conversion. Always choose to be charged in euros, and decline conversion both times it asks." },
     { q: "Do you tip in Portugal?", a: "Only lightly. The price includes IVA and staff earn a real wage, so tipping is optional. Round up or leave 5 to 10% at a sit-down restaurant for good service, a few coins at a cafe, and tip a free-tour guide 5 to 10 euros. Leave it in cash, since card tips often do not reach the staff, and do not feel you need to tip US-style." },
@@ -203,7 +203,7 @@ export default {
           h: "The bigger lever: the card you withdraw with",
           p: [
             "Which machine you use matters, but the card in your hand matters more. Your US bank's own foreign and ATM fees stack on top of anything the machine charges, so a <b>no-foreign-fee debit card</b> is the real saving. Charles Schwab refunds ATM fees worldwide, and Wise and Revolut keep them low.",
-            "Because Portugal is so card-friendly, you can tap a card or phone for almost everything, including the Lisbon metro and trams, and only need an ATM once or twice a trip. Get that right and a few euros of machine fee stops mattering. The <a href=\"/portugal#calcNoFee\">Portugal money guide</a> has the exact card pairing we would pick and how much cash to actually carry."
+            "Because Portugal is so card-friendly, you can tap a card or phone for almost everything and only need an ATM once or twice a trip. Get that right and a few euros of machine fee stops mattering. The <a href=\"/portugal#calcNoFee\">Portugal money guide</a> has the exact card pairing we would pick and how much cash to actually carry, and <a href=\"/cash-or-card\">cash or card by country</a> covers the broader question of how much to tap versus carry."
           ]
         }
       ],
@@ -220,6 +220,127 @@ export default {
           { label: "Monito: a fee breakdown putting Euronet's per-withdrawal charge at roughly 2 to 5 euros and its conversion markup around 10 to 13%", url: "https://www.monito.com/en/wiki/euronet-atm-charges-and-fees", type: "media" }
         ],
         judgment: "Fees and withdrawal limits move and vary from machine to machine, so treat the euro figures as a recent read rather than a fixed price, and always check the fee shown on screen before you confirm. Checked July 2026."
+      }
+    },
+    {
+      slug: "iva-tax-refund-kiosk",
+      live: true,
+      title: "The IVA tax-refund kiosk at Lisbon airport, step by step (2026) | True Trip Costs",
+      description: "How the e-Taxfree kiosks at Lisbon airport work for US visitors: the green code, where the machines are, why you validate before checking bags, and what you actually get back after fees. Checked July 2026.",
+      h1: "The IVA tax-refund kiosk at Lisbon airport, step by step",
+      lede: "If you shopped in Portugal and want the IVA (VAT) back, it comes down to a self-service kiosk at the airport and one green screen. Here is the exact sequence, and the one timing mistake that costs people the refund.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-06",
+      answer: "Validate your tax-free forms at an <b>e-Taxfree kiosk</b> at Lisbon airport before you fly. Scan the form and your passport, and a <b>green screen (Code Green)</b> means you are approved, so you can collect from the refund operator's desk or drop the form in their box. The rule that trips people up: if your purchases are in your <b>checked luggage</b>, validate <b>before</b> you drop the bag, not after.",
+      sections: [
+        {
+          h: "First, do you actually qualify",
+          p: [
+            "The refund is Portugal's <b>IVA</b> (VAT). The standard rate is 23%, and non-EU visitors, which includes US travelers, can claim it back on goods taken home unused. You need to have asked the shop for a <b>tax-free form</b> at the till, with your passport, and to have spent at least about <b>50 euros before tax in a single store</b> (roughly 61 to 62 euros on the receipt), one of the lower thresholds in Europe.",
+            "Two things kill a refund fast: using or wearing the goods before you leave, and missing the window. You have to export the items within three months and validate before you leave the EU. A tax-free form is not the same as your receipt, so make sure the shop actually issues one."
+          ]
+        },
+        {
+          h: "Where the e-Taxfree kiosks are at Lisbon airport",
+          p: [
+            "Lisbon's airport (LIS) runs two terminals that work almost separately, so the kiosk you use depends on where your goods are. If your purchases are in your <b>carry-on</b>, the e-Taxfree kiosks and Customs desks are <b>airside, after security</b>, in both Terminal 1 and Terminal 2. Validate there, then collect from the operator's desk.",
+            "If any item is in your <b>checked luggage</b>, you use the <b>landside</b> kiosks near the oversized-baggage area <b>before</b> you drop the bag. One trap worth naming: the operator kiosk out on the arrivals level is not a Customs validation point, so do not queue there thinking it counts."
+          ]
+        },
+        {
+          h: "The kiosk, step by step",
+          p: [
+            "It is quick once you are in front of the machine, but give yourself room."
+          ],
+          steps: [
+            "Budget 30 to 45 minutes on top of your normal airport routine, and more at busy morning departures.",
+            "If any goods are checked, go to the landside kiosk first and tell check-in staff you need to validate. They can tag the bag and hand it back for inspection.",
+            "At the e-Taxfree kiosk, scan the barcode on your tax-free form and scan your passport. Have your boarding pass ready.",
+            "Watch for the light. <b>Code Green</b> means you are validated and can move on. <b>Code Red</b> means take the form to the Customs (Alfandega) desk for a manual check.",
+            "Collect your money: go to your operator's desk (Global Blue, Planet and others) for an immediate refund, or drop the validated form in their box for a later card refund or cheque."
+          ]
+        },
+        {
+          h: "What you actually get back",
+          p: [
+            "Do not expect the full 23%. The tax-free operators take a cut, so after their fees you typically net around <b>12 to 16%</b> of the price. An immediate cash refund at the desk is fastest but usually carries the biggest fee, while a refund to your card is cleaner but can take weeks.",
+            "So the honest math: on a few hundred euros of shopping the refund is real and worth the half hour, but on a small purchase the fees and the queue may not be. If you only bought a little, it is fine to skip it."
+          ]
+        },
+        {
+          h: "A note on what this is not",
+          p: [
+            "This is the visitor VAT refund, handled through the <b>e-Taxfree</b> system and the private operators. It is separate from IVAucher, a domestic scheme for Portuguese residents that you will see mentioned but cannot use as a tourist. And it only covers <b>goods you take home</b>, not hotels, meals or services, which are not refundable. For how Portugal charges its town tourist taxes and everyday IVA, the <a href=\"/portugal\">Portugal money guide</a> has the rest."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US visitors get the VAT back when shopping in Portugal?", a: "Yes. Portugal's IVA (VAT) is 23%, and non-EU visitors, including US travelers, can reclaim it on goods taken home unused. You need a tax-free form from the shop, a minimum spend of about 50 euros before tax in one store, and to validate at an e-Taxfree kiosk when you leave the EU. After operator fees you net roughly 12 to 16%." },
+        { q: "What is Code Green at the airport kiosk?", a: "It is the e-Taxfree kiosk telling you your tax-free form is validated. You scan the form and your passport, and a green screen means you are approved and can collect your refund from the operator. A red screen means you take the form to the Customs desk for a manual check." },
+        { q: "Do I validate before or after checking my bags?", a: "Before, if the goods are in your checked luggage. Use the landside kiosks near oversized baggage and tell check-in staff, so Customs can inspect the items before the bag is loaded. If your purchases are in your carry-on, validate airside after security instead." },
+        { q: "How much time should I leave at Lisbon airport for the refund?", a: "Budget an extra 30 to 45 minutes beyond your normal check-in and security time, and more at busy morning departures. The process involves a kiosk, a possible Customs inspection and collecting the refund, all before you fly, so arrive early on a shopping-heavy trip." }
+      ],
+      sources: {
+        links: [
+          { label: "Lisbon Airport (ANA): the official VAT refund page explaining the e-Taxfree kiosk, Code Green and Code Red, and how to collect", url: "https://www.lisbonairport.pt/en/lis/services-shopping/essential-services/vat-refund", type: "gov" },
+          { label: "Planet: a tax-free operator's own page confirming the kiosks sit near Customs and that checked-luggage goods must be validated before bag drop at Lisbon", url: "https://taxfree.weareplanet.com/countries/portugal", type: "revenue" },
+          { label: "e-Taxfree conditions: the minimum spend of 50 euros before tax in one store and the three-month export window", url: "https://epaytaxfree.com/tax-free-conditions-portugal/", type: "doc" }
+        ],
+        judgment: "Refund percentages depend on the operator and how you collect, and airport layouts and desks change, so confirm your operator and the current kiosk locations on the day. Checked July 2026."
+      }
+    },
+    {
+      slug: "tram-28-contactless",
+      live: true,
+      title: "Does tram 28 in Lisbon take contactless? (2026) | True Trip Costs",
+      description: "Whether you can tap a bank card or phone on Lisbon's famous 28 tram, why the metro is different, and the cheap, reliable way to pay, the Navegante card and zapping. Checked July 2026.",
+      h1: "Does tram 28 in Lisbon take contactless?",
+      lede: "The short, honest answer is: not reliably. Tapping your own card is solid on the metro, but on the historic 28 tram it is hit or miss, so here is the cheap way that always works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-06",
+      answer: "On the Lisbon <b>metro</b>, you can tap a contactless bank card or phone at the gates and it works reliably (1.92 euros a ride). On the historic <b>28 tram</b>, open-loop contactless is being rolled out but reports are mixed, so <b>do not count on it</b>. The reliable, cheap route is a <b>navegante card</b> (0.50 euros) loaded with <b>zapping</b> (1.72 euros a ride), or a 24-hour pass. Paying the driver onboard works but costs about 3.30 euros, the most expensive option.",
+      sections: [
+        {
+          h: "Contactless on the metro, yes; on the 28 tram, not reliably",
+          p: [
+            "Lisbon's metro now takes open-loop contactless: tap your own Visa or Mastercard, or a phone or watch, at the fare gates, and you are charged <b>1.92 euros</b> per journey, one person per card. That part is official and dependable.",
+            "The historic trams are run by a different operator, Carris, and here it gets murky. Some onboard validators accept a contactless tap and some do not, and recent local guides openly disagree about whether it works on the 28. The city is rolling it out, but as of 2026 you should not board the packed 28 assuming your card will tap. Bring a fallback."
+          ]
+        },
+        {
+          h: "The cheap, reliable way to pay: navegante and zapping",
+          p: [
+            "Get a <b>navegante occasional card</b> for <b>0.50 euros</b> from any metro ticket machine or ticket office. It is reusable for a year, and each traveler needs their own. Then load <b>zapping</b>, pay-as-you-go credit, and each Carris ride (tram, bus or funicular) costs <b>1.72 euros</b>, the cheapest single fare there is, with free transfers inside 60 minutes.",
+            "If you are doing the classic tram-and-funicular sightseeing day, the <b>24-hour Carris and Metro pass at 7.25 euros</b> is better value, and it covers the trams, buses, metro, the funiculars and the Santa Justa lift. One quirk: a navegante card holds only one fare type at a time, so you cannot mix zapping and a day pass on the same card. Locals just buy two 0.50-euro cards."
+          ]
+        },
+        {
+          h: "What paying the driver actually costs",
+          p: [
+            "You can buy a single ticket from the tram driver, but it is the tourist-premium option at about <b>3.30 euros</b> a ride, nearly double the zapping fare, and drivers often want coins or small notes. On a route as busy as the 28, fumbling for change while boarding is also how you hold up the queue and flag yourself to pickpockets.",
+            "So the order of preference is simple: zapping or a day pass on a navegante card first, the metro's contactless gates while you are on the metro, and paying the driver only as a last resort."
+          ]
+        },
+        {
+          h: "One more thing contactless does not do here",
+          p: [
+            "Even where a tap works, Lisbon does not give you London-style fare capping across the whole network. The metro caps your own contactless spending at about <b>6.50 euros</b> a day, but that cap does not stretch across the trams and buses, and it is per card, not per group. For a few days of mixed sightseeing, a navegante card with zapping is still the simplest thing to hand a travel companion. The full <a href=\"/portugal\">Portugal money guide</a> covers cards, cash and the rest."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Can I tap my credit card on Lisbon's 28 tram?", a: "Not reliably. Open-loop contactless works dependably at the Lisbon metro gates (1.92 euros a ride), but on the historic 28 tram the onboard readers are inconsistent and local guides disagree about whether a tap works. Do not rely on it. Use a navegante card with zapping, or a 24-hour pass, and keep some cash as a backup." },
+        { q: "What is the cheapest way to ride tram 28?", a: "A navegante occasional card (0.50 euros) loaded with zapping credit, which makes each Carris ride 1.72 euros. If you are riding trams and funiculars all day, the 24-hour Carris and Metro pass at 7.25 euros is better value. Both beat the roughly 3.30-euro fare you pay buying a single ticket from the driver." },
+        { q: "Where do I buy a navegante card?", a: "At any metro station, from the ticket machines or the ticket office, and at many kiosks and Carris points of sale. The card is 0.50 euros, reusable for a year, and each person needs their own. Load it with zapping credit or a 24-hour pass, then tap it on the validator when you board." },
+        { q: "Does Apple Pay or Google Pay work on Lisbon transit?", a: "On the metro, yes, you can tap a phone or watch at the gates just like a contactless card. On the historic trams it is the same mixed picture as a physical card, so treat it as unreliable there. For trams and buses, a navegante card with zapping is the dependable choice." }
+      ],
+      sources: {
+        links: [
+          { label: "Metropolitano de Lisboa: the official fares page confirming the metro contactless bank-card fare, zapping, the single ticket and the 24-hour pass", url: "https://www.metrolisboa.pt/en/buy/", type: "gov" },
+          { label: "Next Stop Lisbon: a local guide noting contactless is clear at the metro gates but that trams and buses need a navegante card", url: "https://www.nextstoplisbon.com/can-you-pay-contactless-on-lisbon-metro", type: "guide" },
+          { label: "Visit City: the 2026 onboard tram single fare and the metro daily contactless cap", url: "https://visitcity.travel/en/lisbon/guides/tickets-passes", type: "media" }
+        ],
+        judgment: "The contactless rollout on Lisbon's surface trams is moving and reports conflict, so the honest read is not to depend on it on the 28. Fares can change too, so confirm on the Carris and Metro sites. Checked July 2026."
       }
     }
   ]
