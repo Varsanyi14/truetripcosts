@@ -172,5 +172,72 @@ export default {
         note: "Good to know: watch for the changing of the guard at Gyeongbokgung" },
     ],
     pride: "South Korea moves fast and looks to the future, from its cities to its music and film, yet holds its traditions close. Respect shown through small gestures, a bow, both hands, a few careful words, is noticed and quietly returned."
-  }
+  },
+
+  // HUB-AND-SPOKE SPOKES. Data-driven, single-source, each independently dated,
+  // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
+  spokes: [
+    {
+      slug: "k-eta",
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need a K-ETA for South Korea? (2026) | True Trip Costs",
+      description: "Not right now: the K-ETA is waived for US citizens through December 31, 2026. But you do need the free e-Arrival Card before you fly, and the K-ETA returns on January 1, 2027. The official sites, the fees, and how to skip the confusion. Checked July 2026.",
+      h1: "Do US citizens need a K-ETA for South Korea?",
+      lede: "Short answer: not right now. For US travelers the K-ETA is waived through the end of 2026, but there is a free arrival card you still must file, and the K-ETA comes back in 2027. Here is what you actually need, and when.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "Right now, <b>no</b>. The <b>K-ETA</b> is <b>waived for US citizens through December 31, 2026</b>, so for a short trip this year you enter visa-free with no K-ETA. But you <b>do</b> need the free <b>e-Arrival Card</b> before you fly, filed at <b>e-arrivalcard.go.kr</b>. From <b>January 1, 2027</b>, the K-ETA is required again. Whatever you use, stick to the official <b>.go.kr</b> sites.",
+      official: {
+        label: "Official Korea e-Arrival Card portal",
+        url: "https://www.e-arrivalcard.go.kr",
+        note: "This is the government's own e-Arrival Card site (note the .go.kr domain). It is free, takes about five minutes, and you file it within 72 hours before you arrive. Each traveler files their own, and you can switch the page to English."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "The K-ETA, and why you can skip it for now",
+          p: [
+            "The <b>K-ETA</b> (Korea Electronic Travel Authorization) is Korea's pre-travel screening for visa-free visitors, like the US ESTA. To boost tourism, Korea has <b>waived it for 22 countries, including the US, through December 31, 2026</b>. So for a short tourist or business trip in 2026, you do not apply for a K-ETA at all, and US citizens can stay visa-free for up to <b>90 days</b>.",
+            "This is where people get confused, because the K-ETA is normally required and plenty of older pages still say so. For now, as a US traveler, you can leave it alone."
+          ]
+        },
+        {
+          h: "What you do need: the free e-Arrival Card",
+          p: [
+            "Korea replaced its paper arrival card with a mandatory digital <b>e-Arrival Card</b> at the start of 2026. Nearly all short-term visitors must file it, and it is <b>free</b>. You submit it online at the official site, <b>e-arrivalcard.go.kr</b>, within <b>72 hours</b> before you arrive, and it takes about five minutes.",
+            "One neat detail: <b>K-ETA holders are exempt from the e-Arrival Card</b>. So the two systems dovetail, you file one or the other, not both."
+          ]
+        },
+        {
+          h: "2027 changes things, and a trick that covers you",
+          p: [
+            "The waiver has an end date. From <b>January 1, 2027</b>, the K-ETA becomes a hard requirement again for US citizens, and airlines will enforce it at check-in. Korea has extended this waiver before, so it could move again, but there is no promise of that, so treat January 1, 2027 as the date it returns.",
+            "Here is the useful part if you travel to Korea often: a <b>K-ETA is valid for three years</b> from approval and costs about <b>₩10,000 (roughly $7.70)</b>. If you apply for one now, even though you are exempt, it <b>lets you skip the e-Arrival Card on each trip</b> and <b>keeps you covered into 2027</b> without a last-minute scramble. It is optional, but for frequent visitors it can be worth the small fee."
+          ]
+        },
+        {
+          h: "Use only the .go.kr sites",
+          p: [
+            "Both of these are government services on the <b>.go.kr</b> domain: the e-Arrival Card at e-arrivalcard.go.kr (free) and, when you need it, the K-ETA at <b>k-eta.go.kr</b> (about ₩10,000). A wave of copycat sites charge <b>$50 to $100</b> to file a form that is free or costs roughly seven dollars. If a site asks for anything close to that, it is not official.",
+            "For how money works once you land, cards, cash, ATMs and the rest, see the <a href=\"/south-korea\">South Korea money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a K-ETA for South Korea in 2026?", a: "No. The K-ETA is waived for US citizens through December 31, 2026, so for a short trip this year you enter visa-free without one. You do, however, need to file the free e-Arrival Card before you fly. From January 1, 2027, the K-ETA is required again." },
+        { q: "What is the difference between the K-ETA and the e-Arrival Card?", a: "They are separate. The K-ETA is an advance travel authorization (like the US ESTA), currently waived for US citizens. The e-Arrival Card is a free arrival declaration that replaced the paper form and is mandatory for most arrivals in 2026, filed at e-arrivalcard.go.kr within 72 hours of arrival. K-ETA holders are exempt from the e-Arrival Card." },
+        { q: "Is the e-Arrival Card free, and what is the official site?", a: "It is free. The official site is e-arrivalcard.go.kr, a government service on the .go.kr domain. Each traveler files their own within 72 hours before arrival, and it takes about five minutes. Be wary of third-party sites that charge $50 to $100 for what the government provides free." },
+        { q: "Should I apply for a K-ETA now even though it is waived?", a: "You do not have to, but it can be worth it if you visit Korea often. A K-ETA is valid for three years and costs about ₩10,000 (roughly $7.70). Applying now lets you skip the e-Arrival Card on each trip and keeps you covered after the waiver ends on January 1, 2027. Apply only at the official k-eta.go.kr." }
+      ],
+      sources: {
+        links: [
+          { label: "Korea.net (Republic of Korea official site): the Ministry of Justice launch of the e-Arrival Card, who must declare, and that K-ETA holders are exempt", url: "https://www.korea.net/NewsFocus/FoodTravel/view?articleId=267089", type: "gov" },
+          { label: "Korea e-Arrival Card portal: the official government site to file the free arrival declaration", url: "https://www.e-arrivalcard.go.kr", type: "gov" },
+          { label: "K-ETA portal: the official Korea Electronic Travel Authorization site, with its fee and validity, required again from January 1, 2027", url: "https://www.k-eta.go.kr", type: "gov" }
+        ],
+        judgment: "The K-ETA waiver runs to December 31, 2026 and has been extended before, and the arrival-card rules are new, so confirm the current status on the official .go.kr sites before you travel. Checked July 2026."
+      }
+    }
+  ]
 };

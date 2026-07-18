@@ -146,5 +146,77 @@ export default {
         note: "Say it: a floating market, talat nam" },
     ],
     pride: "Thais are gentle, gracious and quick to smile, and they take real pride in a kingdom that was never colonized and in a culture of deep courtesy. Show respect for their faith and their king, greet people with a wai, and the Land of Smiles opens right up."
-  }
+  },
+
+  // HUB-AND-SPOKE SPOKES. Data-driven, single-source, each independently dated,
+  // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
+  spokes: [
+    {
+      slug: "tdac",
+      live: true,
+      topic: "visas",
+      title: "Do I need the Thailand Digital Arrival Card (TDAC)? (2026) | True Trip Costs",
+      description: "Yes: everyone entering Thailand needs the free TDAC, filed online within 72 hours before arrival. It is not a visa (US citizens get 60 days visa-free), it is free, and the sites charging for it are not official. Checked July 2026.",
+      h1: "Do I need the Thailand Digital Arrival Card (TDAC)?",
+      lede: "Short answer: yes, everyone does, and it is free. The TDAC is not a visa, US citizens still get 60 days visa-free, but you must file it online before you fly. Here is how, and how not to pay for something free.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "Yes. Since <b>May 1, 2025</b>, everyone flying, driving or sailing into Thailand must file the free <b>Thailand Digital Arrival Card (TDAC)</b> online, within <b>72 hours before arrival</b>, at the official site <b>tdac.immigration.go.th</b>. It is <b>not a visa</b>: US citizens still enter visa-free for <b>60 days</b> as tourists. The card is <b>free</b>, so any site charging you for it is not the real one.",
+      official: {
+        label: "Official Thailand TDAC portal",
+        url: "https://tdac.immigration.go.th",
+        note: "This is the Thai Immigration Bureau's own site, and the card is free here. Fill it in within 72 hours before you arrive, one per traveler (the portal lets a family file up to 10 at once), and save the QR confirmation to your phone."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "What it is, and what it is not",
+          p: [
+            "The TDAC replaced the <b>paper TM6</b> arrival card Thailand used for years. It is a short online declaration of who you are and where you are staying, and <b>almost every foreign traveler needs one for every entry</b>, tourists and long-stay visa holders alike. The only people who skip it are those staying entirely in an airport's international transit area without clearing immigration.",
+            "It is <b>not a visa and not an entry permit</b>. For US citizens, Thailand grants a <b>60-day visa exemption</b> on arrival for tourism, free, with no advance visa. The TDAC is simply the arrival form you file before you land, and airlines check for it at boarding."
+          ]
+        },
+        {
+          h: "How to file it, step by step",
+          p: [
+            "It is free and takes about ten minutes."
+          ],
+          steps: [
+            "Within 72 hours (3 days) of your arrival, go to the official site, tdac.immigration.go.th. Go there directly, not through a search ad.",
+            "Enter your passport and trip details: arrival date, flight, and where you are staying.",
+            "Submit. Traveling as a family or group? The portal lets you file up to 10 cards in one go.",
+            "Save the confirmation, a QR code, to your phone, and a screenshot as backup. Show it if asked at boarding or on arrival."
+          ]
+        },
+        {
+          h: "It is free, so do not pay for it",
+          p: [
+            "This is the trap. Because the TDAC is <b>mandatory and free</b>, a crowd of lookalike sites rank in search and charge a service fee to file the same government form for you. <b>The Thai Immigration Bureau does not charge for the TDAC.</b> If a site asks for a payment, it is not the official one. Use only tdac.immigration.go.th.",
+            "One heads-up for later: Thailand has been testing a new arrival app (THIM), expected around late 2026. Until it officially replaces the website, the official website above is the way to file."
+          ]
+        },
+        {
+          h: "How long you can stay, and one change to watch",
+          p: [
+            "US citizens get <b>60 days</b> visa-free for tourism, and you can extend once by <b>30 days</b> at a Thai immigration office for <b>฿1,900</b>, for up to 90 days total. You will need a passport valid at least <b>6 months</b> beyond entry, and immigration may ask to see an onward ticket.",
+            "Worth knowing before you count on the full 60: in <b>May 2026 the Thai cabinet approved cutting the visa exemption back to 30 days</b>, but as of mid-2026 that had <b>not yet been published in the Royal Gazette</b>, so the 60-day rule was still in force. Because this is exactly the kind of thing that changes quietly, confirm the current limit on the official page before you book a long trip.",
+            "For how money works on the ground, cards, cash, ATMs and the rest, see the <a href=\"/thailand\">Thailand money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need the Thailand Digital Arrival Card, and is it a visa?", a: "You need the TDAC (it has been mandatory for almost all foreign arrivals since May 1, 2025), but it is not a visa. It is a free online arrival form filed within 72 hours before you arrive, at tdac.immigration.go.th. US citizens separately get a 60-day visa exemption for tourism, so most Americans need the TDAC but no visa." },
+        { q: "Is the TDAC free, and where is the official site?", a: "It is completely free. The official site is tdac.immigration.go.th, run by the Thai Immigration Bureau. Any site charging a fee to file the TDAC is a third party, not the government. File it directly on the official site within 72 hours of arrival, one per traveler." },
+        { q: "How long can US citizens stay in Thailand without a visa?", a: "US citizens get a 60-day visa exemption on arrival for tourism, extendable once by 30 days (฿1,900) at a Thai immigration office, for up to 90 days total. Note that in May 2026 Thailand approved reducing the exemption to 30 days, though it had not yet taken effect by mid-2026, so confirm the current limit before you travel." },
+        { q: "When do I file the TDAC, and what if I have a layover?", a: "File it online within 72 hours (3 days) before you arrive, and save the QR confirmation. If you are purely transiting and stay inside the international transit area without clearing immigration, you do not need one. Once you pass through immigration, even with an onward flight, you do." }
+      ],
+      sources: {
+        links: [
+          { label: "Thai Immigration Bureau: the official TDAC portal, free to file, required within 72 hours before arrival", url: "https://tdac.immigration.go.th", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry and exit requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "Thailand's visa-exemption length is under active change (a cut from 60 to 30 days was approved in May 2026 but not yet in force by mid-2026), and its arrival-card system is being updated, so confirm the current rule and the official site before you travel. Checked July 2026."
+      }
+    }
+  ]
 };
