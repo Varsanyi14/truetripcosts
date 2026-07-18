@@ -164,5 +164,77 @@ export default {
         note: "Good to know: the first cathedral and university in the Americas" },
     ],
     pride: "Dominicans are warm, funny and full of life, and they carry their island's rhythm everywhere they go. They are proud that history in the Americas began on their shores, and prouder still of merengue, baseball and a welcome that pulls you straight onto the dance floor."
-  }
+  },
+
+  // HUB-AND-SPOKE SPOKES. Data-driven, single-source, each independently dated,
+  // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
+  spokes: [
+    {
+      slug: "e-ticket",
+      live: true,
+      topic: "visas",
+      title: "Do I need the E-Ticket for the Dominican Republic? (2026) | True Trip Costs",
+      description: "Yes, and twice: the free E-Ticket is required to both enter and leave the Dominican Republic, filed online before each flight. The official portal, why it is free, and how to dodge the sites that charge for it. Checked July 2026.",
+      h1: "Do I need the E-Ticket for the Dominican Republic?",
+      lede: "Short answer: yes, and most people miss that you need it twice, once to arrive and once to leave. It is free and takes about ten minutes. Here is the official site and how not to pay for it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "Yes. The <b>E-Ticket</b> is a free digital form <b>required to both enter and leave</b> the Dominican Republic, and you file it online before you fly, at the official site <b>eticket.migracion.gob.do</b>. It is <b>free</b>, so any site charging you for it is not the real one. US citizens need <b>no visa</b> for a tourist stay of up to 30 days; the E-Ticket is a separate arrival and departure form.",
+      official: {
+        label: "Official Dominican Republic E-Ticket portal",
+        url: "https://eticket.migracion.gob.do",
+        note: "This is the government's own site (note the .gob.do domain), run by the Directorate of Migration, and it is free. Fill it in before your flight, save the QR code it gives you, and do a second one for your departure. One person can file for up to seven family members."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "Yes, you need it both ways",
+          p: [
+            "The part that trips people up: the E-Ticket is required for <b>both your arrival and your departure</b>. A round trip means filling it out <b>twice</b>, once for entry and once for exit, each generating its own QR code (some travelers do a combined entry-and-exit form in one sitting to get it over with). Airlines check the QR code before they will issue a boarding pass, and immigration will not stamp you in without it.",
+            "It is <b>not a visa</b>. US citizens get a tourist entry of up to <b>30 days</b> with no visa. The E-Ticket is purely the arrival and departure declaration, bundling immigration and customs into one form."
+          ]
+        },
+        {
+          h: "How to file it, step by step",
+          p: [
+            "It is free and takes about ten minutes."
+          ],
+          steps: [
+            "Go to the official site, eticket.migracion.gob.do, and choose English in the language menu. Go there directly, not through a search ad.",
+            "Fill in your passport details, flight information, and where you are staying. You can do it once you have confirmed flight details.",
+            "Submit and save the QR code it generates, screenshot it and print a backup. You show it at check-in and at immigration.",
+            "Do a second E-Ticket for your departure before you leave, unless you completed the combined entry-and-exit form up front."
+          ]
+        },
+        {
+          h: "It is free, so do not pay for it",
+          p: [
+            "This is the trap the Dominican search results are full of. Because the E-Ticket is <b>mandatory and free</b>, lookalike sites charge <b>$20 to $50</b> to fill in the same free government form for you. The Directorate of Migration <b>does not charge</b> for it. Only the .gob.do site is real, so if a page asks for payment, it is not official.",
+            "One practical tip: the site can be glitchy on phones and behaves better on a desktop, so fill it out at home rather than scrambling at the airport."
+          ]
+        },
+        {
+          h: "A couple of things to know",
+          p: [
+            "Bring your <b>passport book</b> (a passport card is not accepted for international flights). Through <b>31 December 2026</b> a temporary measure lets US and several other travelers enter on a passport valid for the length of the stay, but six months of validity is the safe standard, so confirm yours before you go.",
+            "For how money actually works there, cards, cash, ATMs and the US-dollar question, see the <a href=\"/dominican-republic\">Dominican Republic money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need the E-Ticket for the Dominican Republic?", a: "Yes. The E-Ticket is mandatory for everyone entering or leaving the Dominican Republic, regardless of nationality. It is a free online form, not a visa, filed before each flight at eticket.migracion.gob.do. US citizens separately need no visa for a tourist stay of up to 30 days." },
+        { q: "Is the Dominican Republic E-Ticket free?", a: "Yes, completely free through the official government portal, eticket.migracion.gob.do. The Directorate of Migration does not charge for it. Scam and lookalike sites charge $20 to $50 to fill in the same free form, so only use the official .gob.do site and never pay for the E-Ticket." },
+        { q: "Do I need the E-Ticket to leave the Dominican Republic too?", a: "Yes. The E-Ticket is required for both entry and exit. On a round trip you complete it twice, once for arrival and once for departure, each producing its own QR code, or you can fill in a combined entry-and-exit form at the start of your trip. Airlines check it before boarding in both directions." },
+        { q: "When should I fill out the E-Ticket?", a: "Once you have confirmed flight details. Many travelers do it a day or two before flying, and save the QR code to their phone. The site can be glitchy on mobile, so a desktop is easier, and doing it at home avoids stress at the airport." }
+      ],
+      sources: {
+        links: [
+          { label: "Dominican Republic Directorate of Migration: the official E-Ticket service, required for both entry and exit", url: "https://migracion.gob.do/en/servicio/e-ticket-application-passenger-arrival-and-departure/", type: "gov" },
+          { label: "Dominican Republic E-Ticket portal: the official free government form (eticket.migracion.gob.do)", url: "https://eticket.migracion.gob.do", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry and exit requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "Entry rules and passport-validity measures change (a temporary passport-validity allowance runs through 31 December 2026), so confirm the current requirement on the official site before you travel. Checked July 2026."
+      }
+    }
+  ]
 };

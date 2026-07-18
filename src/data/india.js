@@ -176,5 +176,78 @@ export default {
         note: "Say it: Diwali (dee-VAH-lee), the festival of lights" },
     ],
     pride: "India is astonishingly old and varied, thousands of years, many languages, countless traditions. Curiosity and respect for that richness, rather than treating it as one thing, open every door."
-  }
+  },
+
+  // HUB-AND-SPOKE SPOKES. Data-driven, single-source, each independently dated,
+  // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
+  spokes: [
+    {
+      slug: "e-visa",
+      live: true,
+      topic: "visas",
+      title: "How do US citizens get an India e-visa? (2026) | True Trip Costs",
+      description: "US citizens need an India e-Tourist Visa, applied for online before you fly. The one official portal, the fees (from about $25), the 30-day, 1-year and 5-year options, and how to avoid the many sites that overcharge. Checked July 2026.",
+      h1: "How do US citizens get an India e-visa?",
+      lede: "Short answer: online, on one official government site, before you travel. US citizens need an India e-Tourist Visa, the process is straightforward, but the search results are full of overpriced middlemen. Here is the real fee and the real site.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-08",
+      answer: "US citizens need an <b>India e-Tourist Visa</b>, applied for <b>online before you fly</b>, on the one official portal, <b>indianvisaonline.gov.in</b>. It comes in <b>30-day, 1-year and 5-year</b> versions, with fees <b>from about $25</b> (around $40 for the popular one-year multiple-entry), and approval usually takes a few days. There is no visa on arrival for tourists, and no land-border entry, you must fly in.",
+      official: {
+        label: "Official India e-Visa portal",
+        url: "https://indianvisaonline.gov.in",
+        note: "This is the only official Government of India e-Visa site. The whole application is here: fill the form, upload your passport page and a photo, and pay by card. Fees are seasonal and change, so confirm the current amount on the portal before you pay."
+      },
+      expediter: true,
+      expediterNote: "India's form is fiddlier than most, and if you would rather have someone check it, or you are short on time, a private visa service can file it for a fee on top of the government charge. You never need one, the official portal above is cheaper, but for a complex trip some travelers use one.",
+      expediterLabel: "File with a visa service",
+      sections: [
+        {
+          h: "Which visa, and what it costs",
+          p: [
+            "There are three tourist e-Visa options: a <b>30-day</b>, a <b>1-year</b>, and a <b>5-year</b>, the longer two allowing multiple entries. Fees are set per country and shift seasonally, but for US citizens they run roughly: <b>about $25 for the 30-day</b> (cheaper, near $10, in the April to June low season), <b>about $40 for the 1-year</b>, and <b>about $80 for the 5-year</b>, plus a small card-processing charge. They are <b>non-refundable</b>, even if refused.",
+            "On the 1-year and 5-year visas, US citizens can stay <b>up to 90 days at a time</b>, with a maximum of <b>180 days in a calendar year</b>. The visa runs from the <b>date it is issued</b>, not the date you arrive, so do not apply too early."
+          ]
+        },
+        {
+          h: "How to apply, step by step",
+          p: [
+            "Allow a few days, and apply a week or two ahead to be safe."
+          ],
+          steps: [
+            "Go to the official portal, indianvisaonline.gov.in, and choose e-Tourist Visa. Go there directly, not through a search ad.",
+            "Fill in your details and upload a passport-style photo and a scan of your passport page.",
+            "Pay the fee by card. It is non-refundable, so check every field before you submit, no changes are allowed afterward.",
+            "Wait for the approval (the ETA) by email, usually 2 to 5 business days. Print it and carry it, airlines check it at boarding and immigration checks it on arrival."
+          ]
+        },
+        {
+          h: "The official site, and the many that are not",
+          p: [
+            "India is one of the worst destinations for <b>visa middlemen</b>: search results overflow with sites that charge well above the government fee to file the same application, and some are outright scams. The only official portal is <b>indianvisaonline.gov.in</b>, so if a site charges noticeably more, it is adding a markup.",
+            "India has also rolled out a separate <b>free online arrival form</b> for air travelers, filed before you land, which is distinct from the paid e-Visa. Complete that one on the official government portal too, and never pay for it."
+          ]
+        },
+        {
+          h: "A couple of gotchas",
+          p: [
+            "The e-Visa only works if you <b>fly in</b> through one of the designated airports or seaports, it is <b>not valid at land borders</b>, and it <b>cannot be extended</b>, so for longer you leave and reapply or get a regular visa. Your passport needs <b>6 months</b> of validity and a couple of blank pages.",
+            "For how money works once you are there, cards, cash, ATMs and the rest, see the <a href=\"/india\">India money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for India?", a: "Yes. US citizens need a visa, and the easiest route is the India e-Tourist Visa, applied for online at indianvisaonline.gov.in before you travel. There is no visa on arrival for tourists. It comes in 30-day, 1-year and 5-year versions, and you must fly in through a designated airport, the e-Visa is not valid at land borders." },
+        { q: "How much is the India e-visa for US citizens?", a: "Fees are seasonal and set per country, but for US citizens they run roughly $25 for the 30-day (as low as about $10 from April to June), about $40 for the 1-year multiple-entry, and about $80 for the 5-year, plus a small card charge. They are non-refundable. Confirm the current fee on the official portal before you pay." },
+        { q: "What is the official India e-visa website?", a: "indianvisaonline.gov.in, the only official Government of India e-Visa portal. India's search results are full of third-party sites that charge inflated fees for the same visa, and some are scams. Apply directly on the official site, and confirm the current fee there." },
+        { q: "How long can US citizens stay in India on an e-visa?", a: "The 30-day visa allows 30 days. On the 1-year and 5-year multiple-entry visas, US citizens can stay up to 90 days per visit, with a maximum of 180 days in a calendar year. The e-Tourist Visa cannot be extended, so for a longer stay you must leave and reapply or get a regular visa through the embassy." }
+      ],
+      sources: {
+        links: [
+          { label: "Government of India: the official India e-Visa portal, application, fees and conditions", url: "https://indianvisaonline.gov.in", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry and visa requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "India's e-Visa fees are seasonal and set per country, and its arrival requirements have been changing, so confirm the current fee and rules on the official portal before you pay. Checked July 2026."
+      }
+    }
+  ]
 };
