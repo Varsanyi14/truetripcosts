@@ -698,6 +698,7 @@ const kfState = (f) => {
 
     <div class="hn-result">
       <p class="ebig">In {c.name}, plan for about <span class="amt num" id="hnTotal">$0</span>.</p>
+      <p class="erange">Realistically somewhere between <span class="num" id="hnLo">$0</span> and <span class="num" id="hnHi">$0</span>.</p>
       <p class="escope" id="hnSub">&nbsp;</p>
 
       <div class="hn-group">
@@ -748,6 +749,7 @@ const kfState = (f) => {
             <div class="hna-item"><dt>Cash vs card</dt><dd id="hnaSplit">&nbsp;</dd></div>
             <div class="hna-item"><dt>ATM withdrawals</dt><dd id="hnaAtm">&nbsp;</dd></div>
             <div class="hna-item"><dt>Foreign fee</dt><dd id="hnaFee">&nbsp;</dd></div>
+            <div class="hna-item"><dt>The range</dt><dd id="hnaRange">&nbsp;</dd></div>
             <div class="hna-item"><dt>Tourist tax</dt><dd id="hnaTax">&nbsp;</dd></div>
           </dl>
         </div>
@@ -978,6 +980,23 @@ const kfState = (f) => {
     const tax = DATA.tax || null;
     const fallbackFxPct = (DATA.fallbackFxPct != null) ? DATA.fallbackFxPct : 3;
 
+    // ----- confidence-range parameters -----
+    // The range only moves the inputs we assume FOR the traveler, never the ones
+    // they typed. Two knobs, both already acknowledged in the copy on this page:
+    //   SPEND_BAND    daily spending could plausibly run this far under or over
+    //                 the chosen style's per-day figure (0.15 = 15% either way).
+    //   DCC_EXTRA_PP  how many percentage points hotter the foreign fee can run
+    //                 on the high end, the documented "pay in dollars" (dynamic
+    //                 currency conversion) or debit-card jump. The low end keeps
+    //                 the blended fallback: a typical card does not charge less,
+    //                 and the below-typical case is what the no-fee toggle is for,
+    //                 so the band never double-counts it.
+    // Site-wide modeling policy, not per-country facts, which is why they live
+    // here as named constants. When the compare feature lifts this math into a
+    // shared module, these move with it.
+    const SPEND_BAND = 0.15;
+    const DCC_EXTRA_PP = 2;
+
     const id = x => document.getElementById(x);
     const usd = x => '$' + Math.round(x).toLocaleString('en-US');
     const loc = x => (Math.round(x * rate / round) * round).toLocaleString('en-US') + ' ' + cur;
@@ -1132,6 +1151,25 @@ const kfState = (f) => {
       const t = computeTax(roomUSD, nights, trav);
       const total = roomOnCard + spend + cardFee + atmFee + t.usd;
 
+      // ----- the confidence range -----
+      // Rebuilds the same five-part total with only the assumed inputs moved.
+      // Room, nights, travelers and the rule-based tourist tax stay exactly as
+      // given; daily spend swings SPEND_BAND either way; the high end lets the
+      // fee run DCC_EXTRA_PP points hotter. ATM pulls recompute per bound since
+      // they follow the cash volume. With the no-fee toggle on, both fees stay
+      // at $0 on both bounds and the range narrows to spend variability alone.
+      function bandTotal(spendMult, extraPP) {
+        const s = spend * spendMult;
+        const cashB = s * cashShare, cardB = s - cashB;
+        const pct = state.noFee ? 0 : (fallbackFxPct + extraPP);
+        const cFee = (roomOnCard + cardB) * (pct / 100);
+        const p = (cashB > 0) ? Math.max(1, Math.ceil(cashB / 300)) : 0;
+        const aFee = state.noFee ? 0 : (p * 5 + cashB * (pct / 100));
+        return roomOnCard + s + cFee + aFee + t.usd;
+      }
+      const bandLo = bandTotal(1 - SPEND_BAND, 0);
+      const bandHi = bandTotal(1 + SPEND_BAND, DCC_EXTRA_PP);
+
       id('hnNightsLabel').textContent = nights;
       id('hnFeeQ').textContent = fmtPct(fallbackFxPct);
       id('hnTaxLabel').textContent = t.label;
@@ -1143,6 +1181,8 @@ const kfState = (f) => {
       id('hnAtmNote').textContent = 'a few dollars per withdrawal, plus the roughly ' + fmtPct(fallbackFxPct) + ' most US banks add on foreign cash';
 
       roll(id('hnTotal'), total, usd, animate);
+      roll(id('hnLo'), bandLo, usd, animate);
+      roll(id('hnHi'), bandHi, usd, animate);
       roll(id('hnRoomV'), room, usd, animate);
       roll(id('hnSpend'), spend, usd, animate);
       roll(id('hnCardFee'), cardFee, usd, animate);
@@ -1190,6 +1230,10 @@ const kfState = (f) => {
       setA('hnaSplit', 'About ' + cp + '% of that spend goes in cash and ' + (100 - cp) + '% on the card, the mix we assume for ' + styleWord + ' travel in ' + DATA.name + '.');
       setA('hnaAtm', pulls + (pulls === 1 ? ' ATM withdrawal' : ' ATM withdrawals') + ' of about $300, at roughly $5 each in operator and bank charges.');
       setA('hnaFee', 'We assume a blended ' + fmtPct(fallbackFxPct) + ' foreign fee, a typical figure for a US card, on both card spend and the cash you pull. Your own card may differ: a no-foreign-fee card removes it, which is what the toggle above shows, while a debit card or accepting a "pay in dollars" prompt can push it higher.');
+      const bandPct = Math.round(SPEND_BAND * 100) + '%';
+      setA('hnaRange', state.noFee
+        ? ('With the no-foreign-fee card switched on, the fees stop moving, so the range under the big number only reflects your daily spending running about ' + bandPct + ' under or over the ' + styleWord + ' figure. Your room, nights, travelers and the tourist tax are taken as given at both ends.')
+        : ('The big number is the middle of the road. The low end assumes your daily spending runs about ' + bandPct + ' under the ' + styleWord + ' figure. The high end runs it ' + bandPct + ' over and lets the foreign fee climb ' + DCC_EXTRA_PP + ' points higher, the kind of jump a debit card or a "pay in dollars" prompt causes. Your room, nights, travelers and the tourist tax are taken as given at both ends.'));
       setA('hnaTax', (t.usd > 0) ? ('Calculated from ' + DATA.name + "'s tourist-tax rule, per night and per person where that applies, and capped where the local rule caps it. The tax line above shows the specifics.") : (DATA.name + ' charges no nightly tourist tax, so this line stays at $0.'));
 
       // Per-region tourist-tax note, if any.

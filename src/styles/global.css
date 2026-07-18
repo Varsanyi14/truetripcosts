@@ -147,6 +147,8 @@
   .seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
   .ebig{font-family:var(--serif);font-weight:500;font-size:30px;line-height:1.1;margin:4px 0}
   .ebig .amt{color:var(--teal-deep)}
+  .erange{font-size:14px;color:var(--muted);margin:2px 0 0;line-height:1.45}
+  .erange .num{color:var(--ink);font-weight:600}
   .esplit{margin:12px 0 8px}
   .ebar{display:flex;height:16px;border-radius:999px;overflow:hidden;background:var(--green-bg)}
   .ebar .c1{background:var(--teal)}
