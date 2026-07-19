@@ -171,5 +171,64 @@ export default {
         note: "Say it: neh-nee-KAH-men" },
     ],
     pride: "Greece gave the world democracy, philosophy, theatre and the Olympic Games. A little sincere awe for that, mentioned in passing, goes a long way."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      title: "Which taxi app to use in Greece, and the Athens airport flat fare (2026) | True Trip Costs",
+      description: "Which ride app to install for Greece (FreeNow leads, with Uber Taxi and Bolt), why they all call licensed yellow taxis, the fixed Athens airport fare, and the meter tricks to watch at the port and on the islands. Checked July 2026.",
+      h1: "Taxis in Greece, and the Athens airport flat fare",
+      lede: "Greek taxis are cheap and useful, but a few meter games target visitors, especially at the port and on the islands. Here is which app to install, the airport fare fixed by law, and how to keep the meter honest.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Install <b>FreeNow</b>, the local favorite, and <b>Uber</b> or <b>Bolt</b> work too. In Greece these apps all call licensed <b>yellow taxis</b> at the regulated meter price, because the cheap UberX private-car model is not legal here. The big protection is the <b>Athens Airport flat fare</b>: a fixed <b>40 euros</b> by day and <b>55 euros</b> at night to the city center, tolls and luggage included, from the official rank at <b>Exit 3</b>. The scam to know is meter refusal, a towel over the meter, or an <b>announced fare</b>, especially at the port and on the islands, so insist the meter is running.",
+      sections: [
+        {
+          h: "Which app to install",
+          p: [
+            "<b>FreeNow</b>, formerly Beat, is the app most used by Greeks themselves and has the largest fleet, so it is the one to install first. <b>Uber</b> works too, as <b>Uber Taxi</b>, which dispatches the same licensed yellow taxis rather than private cars, and <b>Bolt</b> arrived in 2025 and uses the same fleet with frequent promo codes. The catch to understand is that <b>UberX</b>, the private-car model, is <b>not legal in Greece</b>, so every app here simply calls a regular licensed yellow taxi.",
+            "The real advantage of the apps is not a different car but a better ride: you see the fare estimate, the plate and the driver in advance, and you can pay by <b>card</b>, which solves the age-old problem of an older taxi with no working card machine. Coverage is strong in <b>Athens</b> and <b>Thessaloniki</b> and on the bigger islands like <b>Santorini</b>, <b>Mykonos</b>, <b>Corfu</b>, <b>Paros</b> and <b>Crete</b>."
+          ]
+        },
+        {
+          h: "The Athens Airport flat fare",
+          p: [
+            "The key protection for arriving visitors is a <b>flat fare fixed by law</b> from <b>Athens Airport</b> (ATH) into the city center: <b>40 euros</b> in the daytime, from 05:00 to midnight, and <b>55 euros</b> at night, from midnight to 05:00, with <b>tolls and luggage included</b> and no surge. Yellow taxis wait 24 hours a day at <b>Exit 3</b> on the arrivals level, with no booking needed, and a dispatcher assigns you a cab.",
+            "The apps charge the <b>same flat fare</b> plus a small booking fee, so ordering an Uber Taxi, Bolt or FreeNow costs about the same as the rank and can be quicker. Note the flat fare is for the city center specifically, while other destinations from the airport run on the meter. If you are traveling light, the <b>metro</b> into the city is only about 9 euros."
+          ]
+        },
+        {
+          h: "The meter tricks, at the port and on the islands",
+          p: [
+            "The classic Greek taxi problem is meter games. A driver refuses to switch on the meter, drapes a <b>hand towel</b> over it, or simply <b>announces</b> a flat price, and this happens most at the <b>port</b>, like Piraeus, and on the <b>islands</b>, where oversight is looser and tourist demand is high. The fix is to insist the meter is on from the start and to refuse any announced fare, and to watch for an invented <b>service fee</b> tacked on at the end.",
+            "Booking through <b>FreeNow</b>, <b>Uber</b> or <b>Bolt</b> avoids the whole thing, because the fare is the regulated meter price shown before you ride and paid by card. If you do take a street taxi, check the meter is running and visible before you set off, and keep an eye on it during the trip."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          p: [
+            "The Athens day meter is roughly a <b>1.80 euro</b> base plus about <b>0.90 euro per kilometer</b>, with legitimate higher rates at night and on holidays and a small charge for luggage. Those surcharges are set by the state, not invented by the driver. In the apps you pay by card, and tipping is not expected, so rounding up to a convenient figure is plenty.",
+            "In central Athens you often do not need a taxi at all, since the <b>metro</b> and walking cover the sights well, from Syntagma to the Acropolis and Plaka. For the wider money picture, including how much cash to carry, see the <a href=\"/greece\">Greece money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does Uber work in Greece?", a: "Yes, but as Uber Taxi, which dispatches licensed yellow taxis at the regulated meter price, not private cars; the cheap UberX model is not legal in Greece. FreeNow, formerly Beat, is the most popular local app, and Bolt also operates. All three call regular yellow taxis, with card payment as the main advantage." },
+        { q: "What is the taxi fare from Athens airport?", a: "A flat fare fixed by law to the city center: 40 euros in the daytime, from 05:00 to midnight, and 55 euros at night, with tolls and luggage included and no surge. Yellow taxis wait 24 hours a day at Exit 3 on the arrivals level, and the apps charge the same flat fare plus a small fee. Other destinations from the airport run on the meter." },
+        { q: "Are Greek taxis a scam?", a: "Most are fine, but the common trick is meter games: refusing the meter, covering it with a towel, or announcing a flat fare, especially at the port and on the islands. Insist the meter runs from the start, refuse an announced fare, and watch for an invented service fee. Booking through FreeNow, Uber or Bolt avoids it, since the fare is the regulated meter price." },
+        { q: "Which taxi app is best in Greece?", a: "FreeNow, formerly Beat, is the local favorite with the largest fleet, especially in Athens, Thessaloniki and Crete. Uber Taxi is handy if you already use Uber, and Bolt often runs promotions. All call the same licensed yellow taxis at the regulated meter price, so choose on availability and price." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: Greece country information, general safety and local-travel context for US visitors", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Greece.html", type: "gov" },
+          { label: "Athens Tourism: a 2026 guide to Athens taxi prices and the ride apps", url: "https://www.athenstourism.org/getting-around-athens/athens-taxi-prices-uber-ride-sharing/", type: "guide" },
+          { label: "Taxi to Athens: a 2026 guide to the Athens Airport flat fare, the rank and the apps", url: "https://taxitoathens.com/athens-airport-taxi-guide-2026/", type: "guide" }
+        ],
+        judgment: "The Athens Airport flat fare and the city meter tariff are set by the government and can change, and app coverage on the islands varies, so confirm the meter is on and treat euro figures as a recent read. Checked July 2026."
+      }
+    }
+  ]
 };

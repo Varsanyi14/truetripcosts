@@ -163,5 +163,64 @@ export default {
         note: "Good to know: begun in 1357 under Charles IV" },
     ],
     pride: "Czechs can seem reserved at first but warm quickly, and they are quietly proud of a country that gave the world pilsner beer and Art Nouveau, and a capital of a hundred spires that came through the centuries almost untouched."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      title: "Which taxi app to use in Prague, and the airport scam to skip (2026) | True Trip Costs",
+      description: "Which ride app to install for Prague (Bolt is cheapest, with Uber and the local Liftago), why the city's old taxi-overcharging reputation is mostly outdated, and how to leave the airport without the flat-fare trick. Checked July 2026.",
+      h1: "Prague taxis, the apps, and the airport scam to skip",
+      lede: "Prague's taxis had a bad name for years, but apps have quietly fixed most of it. Here is which one to install, the airport trick that still catches people, and how to get into the city cheaply.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Install <b>Bolt</b>, and <b>Uber</b> too. Both lock the price before you ride, and Bolt is usually the cheapest. Prague's old taxi-overcharging reputation is mostly <b>outdated</b> now that apps dominate, but unlicensed drivers and touts at tourist spots and the airport still quote inflated flat fares in unmarked cars, so <b>never take a taxi that approaches you</b>. If you need a traditional cab, use <b>AAA Radiotaxi</b> or <b>Liftago</b> with the meter running. From <b>Vaclav Havel airport</b>, use Bolt or Uber (the airport Wi-Fi is free, so you can book without a SIM) or the Airport Express bus.",
+      sections: [
+        {
+          h: "Which app to install",
+          p: [
+            "<b>Bolt</b> is the cheapest and most-used ride app in Prague, and the one to have. <b>Uber</b> works well too and is usually only a little pricier, so many travelers keep both and compare. <b>Liftago</b> is a Czech app that dispatches licensed taxis and uses a bidding model, which makes it a useful backup when Bolt and Uber are both surging on a busy night. All three lock the fare before the car arrives, so there is nothing to argue about.",
+            "The reassuring part is that Prague's fearsome taxi reputation was earned back in the 1990s and 2000s, when unregulated cabs ran the tourist areas and honest meters were rare. Apps changed that. For almost every ride now, opening Bolt or Uber is cheaper, transparent and paid in advance, and it sidesteps the whole problem below."
+          ]
+        },
+        {
+          h: "The scam, and the licensed-taxi rules",
+          p: [
+            "The trouble that remains comes from <b>unlicensed drivers and touts</b> at the big tourist spots, Wenceslas Square, Old Town Square, the main train station and the airport, who quote a flat price instead of running the meter and overcharge many times the real fare. The airport version is a friendly man, often with an <b>official-looking vest</b>, who offers a taxi at a fixed price like 800 koruna, walks you to an unmarked car, and lands a final bill two to four times higher with invented luggage, night or toll fees. The single rule that defeats all of it: <b>never get into a taxi that approaches you</b>, and always book the ride yourself.",
+            "If you do want a traditional cab, licensed Prague taxis must display a rate card on the doors, run the meter from the moment you get in, and give a printed receipt, with the regulated rate around 36 koruna per kilometer. The two names to trust for a street or phone-booked cab are <b>AAA Radiotaxi</b> (call 14014) and <b>Liftago</b>. Confirm the meter is on before you move, and keep a map open to watch the route."
+          ]
+        },
+        {
+          h: "Getting in from the airport",
+          p: [
+            "At <b>Vaclav Havel airport</b> (PRG), Bolt and Uber are the cheapest and clearest options, and because the airport has free Wi-Fi you can order one without a local SIM. Uber is the official airport partner allowed to wait at the terminal curb, while for Bolt or Liftago you walk to the marked ride-hailing pickup zone. Reckon on roughly <b>550 to 700 koruna</b> to the centre by Bolt. Ignore anyone soliciting a ride inside or just outside arrivals.",
+            "If you would rather take public transport, the <b>Airport Express</b> bus runs straight to the main train station for about 100 koruna, or the number <b>119</b> bus connects to metro line A for about 40 koruna and takes you into the centre. Both are cheap, quick and completely scam-proof."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          p: [
+            "Pay in <b>Czech koruna</b>, not euros. The koruna is the currency, and euros are poorly accepted and get a bad rate where they are taken at all. In the apps you pay by card in koruna, and for a traditional taxi carry small koruna notes. On an app ride, tipping is not expected, though rounding up to the nearest 10 or 20 koruna is a normal gesture, and the same modest rounding is standard in a metered street taxi.",
+            "For the wider money picture, including how much cash to carry and why to always pay in koruna rather than euros, see the <a href=\"/czechia\">Czechia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber or Bolt better in Prague?", a: "Both work well and lock the price before you ride. Bolt is usually 15 to 25 percent cheaper and is the local default, while Uber is a little pricier but familiar and is the app allowed to wait at the airport curb. Liftago, a Czech app that dispatches licensed taxis, is a handy backup when both are surging on a busy night." },
+        { q: "Are Prague taxis a scam?", a: "The apps are safe and transparent. The risk is unlicensed drivers and touts at tourist spots and the airport who quote inflated flat fares in unmarked cars, a reputation earned back in the 1990s and 2000s. Use Bolt or Uber, and never get into a taxi that approaches you. If you need a street cab, use only AAA Radiotaxi or Liftago with the meter running." },
+        { q: "How do I get from Prague airport to the city?", a: "Bolt or Uber are cheapest and clearest, and the airport's free Wi-Fi lets you book without a SIM; expect roughly 550 to 700 koruna to the centre by Bolt. The Airport Express bus runs to the main train station for about 100 koruna, or the number 119 bus connects to metro line A for about 40 koruna. Ignore drivers soliciting outside arrivals." },
+        { q: "Do I pay in euros or koruna in Prague?", a: "Koruna. Czechia uses the koruna (CZK), and paying in euros, where it is accepted at all, gets a poor rate. The apps charge your card in koruna, and for a traditional taxi carry small koruna notes." }
+      ],
+      sources: {
+        links: [
+          { label: "Prague Trip: a 2026 guide to Prague taxis, Uber and Bolt, prices and the airport scams", url: "https://www.prague-trip.com/practical/taxis-uber-bolt/", type: "guide" },
+          { label: "Best Prague Guide: a 2026 breakdown of Bolt, Uber, the licensed-taxi rules and the regulated meter rate", url: "https://bestpragueguide.com/en/blog/prague-taxi-uber-bolt", type: "guide" },
+          { label: "How in Czech: a 2026 Prague airport taxi guide covering Uber, Bolt and the pickup zones", url: "https://howinczech.com/prague-airport-taxi-guide", type: "guide" }
+        ],
+        judgment: "App availability and the regulated meter rate can change, and airport pickup arrangements shift, so treat any koruna figures as a recent read and check the price in your app. The advice to never take a taxi that approaches you is the constant. Checked July 2026."
+      }
+    }
+  ]
 };

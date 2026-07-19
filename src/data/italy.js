@@ -163,5 +163,64 @@ export default {
         note: "Say it: ree-nah-shee-MEN-toh" },
     ],
     pride: "Italy holds more UNESCO World Heritage sites than any country on earth, and gave the world opera, the Renaissance, and, of course, the food. A little genuine enthusiasm is always returned."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      title: "How taxis work in Italy, and the airport fixed fare that protects you (2026) | True Trip Costs",
+      description: "Why you cannot hail a taxi on the street in Italy, which apps to use (itTaxi and FreeNow), why there is no cheap Uber, and the fixed airport fare from Rome Fiumicino that stops you overpaying. Checked July 2026.",
+      h1: "Taxis in Italy, and the airport fixed fare",
+      lede: "Taxis in Italy do not work the way most visitors expect: you cannot really flag one down, and Uber is not the cheap option it is at home. Here is how to get a cab, and the airport rule that saves you money.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "In Italy you cannot really hail a taxi on the street. You use a <b>taxi rank</b> or an <b>app</b>, either <b>itTaxi</b> or <b>FreeNow</b>, which send the licensed white metered taxis. There is <b>no cheap UberX</b> here, since Italian courts banned it in 2017, only the pricier <b>Uber Black</b>. The big protection is the <b>fixed airport fare</b>: from <b>Rome Fiumicino</b>, a licensed white taxi to anywhere in the historic centre is a flat <b>50 euros</b>, with no supplements. Watch for the <b>abusivi</b>, unlicensed drivers who approach you inside the terminal in unmarked cars at two to four times the fare, and only take a taxi from the official rank.",
+      sections: [
+        {
+          h: "How Italian taxis work: rank or app, not street",
+          p: [
+            "Italian taxis are <b>white</b>, metered, and licensed to a specific city, and in practice you cannot flag one down on the street. Drivers are almost always already booked or heading to a rank, and near a taxi stand they are not even allowed to pick you up off the street. So the two ways to get a cab are to walk to a <b>taxi rank</b>, which you will find at stations, main squares and airports, or to use an <b>app</b>.",
+            "The apps to use are <b>itTaxi</b> and <b>FreeNow</b> (FreeNow is now part of Lyft), both of which dispatch the same licensed white metered taxis and let you pay by card. One payment note: if you did not book through an app, expect to pay <b>cash</b>. Drivers are technically required to accept cards, but in practice many do not, and you do not want to be arguing about it at the end of a ride."
+          ]
+        },
+        {
+          h: "Uber in Italy: only the pricey Black",
+          p: [
+            "If you are used to opening Uber and getting a cheap ride, Italy will surprise you. The <b>UberX</b> model, ordinary people driving their own cars, was <b>banned by Italian courts in 2017</b> as unfair competition to licensed taxis. What remains is <b>Uber Black</b>, a premium pre-booked service using licensed private-hire (NCC) drivers in dark cars, which is comfortable but noticeably more expensive.",
+            "So treat Uber here as a chauffeur service, not a budget option. For a normal metered taxi at the regular fare, use <b>itTaxi</b> or <b>FreeNow</b>, or a taxi rank. The same caution applies to any <b>NCC</b> (noleggio con conducente) driver offered to you at an airport: they are legal but un-metered and pricier than a taxi, so know that is what you are choosing."
+          ]
+        },
+        {
+          h: "The airport fixed fare, and the abusivi",
+          p: [
+            "The single best protection for a visitor is the <b>fixed airport fare</b>. From <b>Rome Fiumicino</b> (FCO), a licensed white taxi to anywhere within the <b>Aurelian Walls</b>, the historic centre, is a flat <b>50 euros</b>, charged per car for up to four passengers, with no extra for luggage, night driving or holidays. <b>Ciampino</b> and <b>Milan Malpensa</b> have their own fixed fares. Confirm you are getting the fixed fare before the meter starts, and note it applies only to Rome-licensed white taxis taken from the rank.",
+            "The scam to know is the <b>abusivi</b>, unlicensed drivers most common at Fiumicino and busy tourist sites. They approach you <b>inside the terminal</b>, often in plain clothes with a car that is not white, and offer a fixed price that turns out to be two to four times the real fare. Official drivers wait at the rank and never approach you, so the rule is simple: <b>only take a taxi from the official rank</b>, and refuse anyone who comes up to you. Into Rome, the <b>Leonardo Express</b> train is a cheap and reliable alternative."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          p: [
+            "In the city, the meter's starting amount and per-kilometer rate vary by city, time of day and day of the week, and there are legitimate <b>municipal surcharges</b> for nights, weekends, holidays and luggage. Those are set by the city, not invented by the driver, so they are not the scam. On the <b>fixed airport fare</b>, by contrast, no supplements are allowed at all.",
+            "Tipping is not expected in Italy, and rounding up to a convenient figure is more than enough. For the wider money picture, including how much cash to carry and where cards work, see the <a href=\"/italy\">Italy money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is there Uber in Italy?", a: "Only Uber Black, the premium pre-booked chauffeur service using licensed private-hire (NCC) cars. The cheap UberX private-car model was banned by Italian courts in 2017. For a normal metered taxi at the regular fare, use the itTaxi or FreeNow app, or go to a taxi rank." },
+        { q: "How do I get a taxi in Italy?", a: "You cannot reliably hail one on the street; drivers will not stop, and near a rank it is illegal for them to pick you up. Go to a taxi rank, found at stations, main squares and airports, or book through itTaxi or FreeNow, which send a licensed white metered taxi. If you did not book by app, expect to pay cash." },
+        { q: "What is the taxi fare from Rome airport?", a: "From Fiumicino, a licensed white taxi to anywhere within the Aurelian Walls, the historic centre, is a fixed 50 euros, charged per car for up to four passengers, with no extra for luggage, night or holidays. Ciampino and Milan Malpensa have their own fixed fares. Confirm the fixed fare before the meter starts, and only use a taxi from the official rank." },
+        { q: "What are taxi abusivi in Italy?", a: "Unlicensed drivers, most common at Fiumicino and tourist sites, who approach arriving passengers, often in plain clothes with a car that is not white, and offer a fixed price two to four times the official fare. Official drivers wait at the rank and do not approach you, so only take a taxi from the official rank and refuse anyone who comes up to you." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: Italy country information, general safety and local-travel context for US visitors", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Italy.html", type: "gov" },
+          { label: "Magic Towns: a 2026 guide on how taxis work in Italy and why Uber barely exists", url: "https://magictowns.it/how-to-get-a-taxi-in-italy/", type: "guide" },
+          { label: "Following the Riviera: a 2026 local guide to Italian taxis, the airport fixed fares and NCC drivers", url: "https://www.followingtherivera.com/guide-to-taking-taxis-in-italy/", type: "guide" }
+        ],
+        judgment: "Fixed airport fares and city meter tariffs are set by each municipality and can change, and app coverage varies by city, so confirm the fixed fare before you ride and treat euro figures as a recent read. Checked July 2026."
+      }
+    }
+  ]
 };
