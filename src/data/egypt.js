@@ -169,5 +169,64 @@ export default {
         note: "Good to know: the Rosetta Stone was the key to hieroglyphs" },
     ],
     pride: "Egypt carries one of the longest continuous civilizations on earth, thousands of years of it. Treating that history with wonder, not just a quick photo, earns real warmth."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      title: "Uber or Careem in Egypt? The Cairo airport taxi trap, explained (2026) | True Trip Costs",
+      description: "Which ride app to install for Egypt (Uber and Careem both work, with inDrive as a budget backup), why the old street cabs say the meter is broken, and how to leave Cairo airport without the flat-rate rip. Checked July 2026.",
+      h1: "Uber or Careem in Egypt, and the Cairo airport taxi trap",
+      lede: "Egypt is one of the places where an app quietly solves the problem. Here is which one to install, why the old street cabs are best skipped, and how to get out of Cairo airport without the invented fees.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Install <b>Uber</b> or <b>Careem</b> before you travel. Both are fully active in Egypt, Uber actually owns Careem, and either one shows a fixed price up front so there is no meter and no haggling. They work well in <b>Cairo</b>, <b>Giza</b>, <b>Alexandria</b> and the Red Sea resorts. <b>inDrive</b>, where you name your own price, is a common budget backup. The old black-and-white street taxis have no working meter and are the source of most fare arguments, so an app is the calm choice. At <b>Cairo airport</b>, ignore the drivers who approach you in the hall and book your own ride to the pickup point.",
+      sections: [
+        {
+          h: "Which app to install, and where it works",
+          p: [
+            "Egypt is genuinely an app country. <b>Uber</b> and <b>Careem</b> both operate here, and although Uber owns Careem they run as two separate apps, so having both gives you a fallback when one is short on cars. Each shows the fare before you accept, which removes the entire meter argument that dogs the street cabs. Careem also lets you order a licensed metered cab through its <b>White Taxi</b> option inside the app if you would rather ride in a traditional taxi with the price still tracked.",
+            "Coverage is strong in <b>Cairo</b>, <b>Giza</b>, <b>Alexandria</b> and the Red Sea resort areas like Hurghada and Sharm el-Sheikh. It is thinner in <b>Luxor</b> and <b>Aswan</b>, where you may find few or no app cars, so there you either agree a fixed fare with a driver before setting off or hire a car and driver for the day through your hotel. <b>inDrive</b>, where you propose a price and drivers accept or counter, is popular as a cheaper option and works in the bigger cities too."
+          ]
+        },
+        {
+          h: "The old street cabs and the broken-meter line",
+          p: [
+            "You will still see the old <b>black-and-white</b> taxis, especially in Cairo. Most have no working meter, and the fare is whatever you can negotiate, which for a visitor usually means paying well over the going rate. The newer <b>white</b> Cairo taxis do have meters, but a common move is to claim the meter is broken and name a flat price instead. Neither is a disaster if you agree the fare clearly before you get in, but the simpler path is to open an app and skip the negotiation.",
+            "A few small tricks show up around tourists: a helper who grabs your bag and then expects a tip, a driver who is suddenly short of change, or a claim that your destination is closed and he knows somewhere better. None of these are dangerous, but they are easier to avoid than to argue about. Booking on an app, paying the fare shown, and keeping your bag with you removes most of them at once."
+          ]
+        },
+        {
+          h: "Getting out of Cairo airport",
+          p: [
+            "Cairo International is the sharpest moment. Inside and just outside arrivals, drivers and fixers will approach you offering a taxi, quoting a high flat rate, and sometimes inventing an <b>airport entrance fee</b> or a luggage charge. Politely decline and keep walking. The clean option is to open <b>Uber</b> or <b>Careem</b>, request a car, and follow the app to the marked ride-hailing pickup area rather than taking the first car pressed on you at the door.",
+            "If you would rather use a traditional cab, use Careem's <b>White Taxi</b> option or agree a firm total with the driver before you load your bags, and do not pay any extra fee that appears only after you are moving. For getting around the city once you are settled, the <b>Cairo Metro</b> is very cheap and has women-only cars near the middle of each train, which many solo female travelers prefer at busy times."
+          ]
+        },
+        {
+          h: "Fares, paying and baksheesh",
+          p: [
+            "In Uber and Careem you can pay in cash or, in many cases, by card, and cash is still widely used, so carry small Egyptian pound notes. If you take a street taxi, settle the number before the trip and have close to the right change ready, because rounding disputes are common. Fares are low by US standards for short city hops, which is part of why the invented extras stand out.",
+            "Tipping, or <b>baksheesh</b>, is woven into daily life in Egypt, and rounding a taxi fare up is normal and appreciated, though not required on an app ride where the price is set. For the wider money picture, including how much cash to carry and where cards are accepted, see the <a href=\"/egypt\">Egypt money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does Uber work in Egypt?", a: "Yes. Uber operates across Egypt and also owns Careem, which runs as a separate app. A 2018 court order that briefly threatened to suspend them was overturned, and both are fully active today in Cairo, Giza, Alexandria and the Red Sea resorts. Either shows a fixed price before you ride, which is why an app beats hailing an old street cab." },
+        { q: "Uber or Careem in Egypt, which should I use?", a: "Both are fine and cover the same major cities, so many travelers install both and use whichever has a car nearby. Careem has a useful White Taxi option that books a licensed metered cab through the app. inDrive, where you name your own fare, is a common cheaper alternative. In Luxor and Aswan app coverage is thin, so agree a fare first or hire a driver for the day." },
+        { q: "Is the taxi from Cairo airport a rip-off?", a: "The touts in the arrivals hall usually are. They quote a high flat rate and sometimes invent an airport entrance fee or a luggage charge. Ignore anyone who approaches you, and instead book Uber or Careem and walk to the marked ride-hailing pickup point. If you want a traditional cab, use Careem's White Taxi or agree a firm total before you load your bags." },
+        { q: "Do taxis use the meter in Egypt?", a: "The old black-and-white taxis generally have no working meter, so the fare is negotiated, which tends to favor the driver. Newer white Cairo taxis have meters, but drivers often claim they are broken and quote a flat price. To avoid the whole issue, use Uber or Careem, where the fare is fixed in the app before you get in." }
+      ],
+      sources: {
+        links: [
+          { label: "Uber: confirming Uber operates in Egypt, with cities served and how fares are shown before the ride", url: "https://www.uber.com/eg/en/", type: "app" },
+          { label: "Careem: the Uber-owned ride app widely used in Egypt, including its in-app White Taxi option", url: "https://www.careem.com", type: "app" },
+          { label: "US Department of State: Egypt country information, general safety and local-travel context for US visitors", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Egypt.html", type: "gov" }
+        ],
+        judgment: "App coverage is strong in the big cities and Red Sea resorts but thin in Luxor and Aswan, and fares move with fuel prices, so treat this as a recent read and check the price in your own app. Ride-hailing rules have changed before in Egypt, so confirm both apps are active when you travel. Checked July 2026."
+      }
+    }
+  ]
 };

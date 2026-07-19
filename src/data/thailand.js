@@ -279,6 +279,73 @@ export default {
         ],
         judgment: "Thai ATM fees rose recently (from 220 baht toward 250 to 350 depending on the card network) and exchange rates move, and much of this is our practical read, so check the fee on the ATM screen and treat amounts as a guide. Checked July 2026."
       }
+    },
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      title: "Bangkok taxi meter tricks and the airport rank, sorted (2026) | True Trip Costs",
+      description: "How Bangkok taxi drivers dodge the meter, which app to install (Grab and Bolt), and the step-by-step way to take the official metered taxi from Suvarnabhumi airport instead of the fake flat-rate touts. Checked July 2026.",
+      h1: "Bangkok taxi meters, and the airport rank done right",
+      lede: "Thai taxis are cheap and mostly honest, but a few habits around tourists cost money, and the airport has a specific trap. Here is how the meter works, which app to keep as a backup, and the exact way to use the official taxi rank.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Bangkok taxis are metered and inexpensive, and most drivers are fine, but some refuse the meter and quote a flat price two to four times higher, especially to and from tourist spots. The fix is simple: get in, say <b>meter please</b>, and if the driver will not use it, get out and take the next one. Keep <b>Grab</b> (and <b>Bolt</b> as a cheaper backup) on your phone for a fixed price with no argument. At <b>Suvarnabhumi</b> airport, use the official public-taxi counter on <b>Level 1</b>, not the drivers who approach you upstairs with a printed price list.",
+      official: {
+        label: "Suvarnabhumi Airport, official public-taxi page",
+        url: "https://suvarnabhumi.airportthai.co.th/service/transportation/detail/304",
+        note: "At <b>Suvarnabhumi</b>, the public-taxi machines and counter are on <b>Level 1</b>, between <b>Gate 4 and Gate 7</b>. Take a ticket, go to the numbered bay, and the fare is the <b>meter</b> plus a <b>50 baht</b> airport surcharge plus any expressway tolls you agree to. The <b>Airport Rail Link</b> train into the city is cheaper still."
+      },
+      sections: [
+        {
+          h: "The meter, and the broken-meter flat rate",
+          p: [
+            "By law, Bangkok taxis must run the meter, and a metered ride across the city is genuinely cheap. The common problem is a driver, often parked outside a mall, market or tourist sight, who refuses to switch it on and instead quotes a flat fare that runs <b>two to four times</b> the metered price. This is not dangerous, it is just overpaying. The clean response is to open the door, say <b>meter</b>, and if he declines, close it and wave down the next cab, of which there are always many.",
+            "The other well-worn trick is the <b>tuk-tuk</b> that offers a suspiciously cheap tour, then steers you to a gem shop or tailor where the driver earns a commission and you lose an afternoon. Enjoy a tuk-tuk for a short, fun hop with the price agreed first, but treat any unusually cheap all-day offer as the setup it usually is. For getting somewhere specific, a metered taxi or an app is both cheaper and simpler."
+          ]
+        },
+        {
+          h: "Which app to install: Grab and Bolt",
+          p: [
+            "<b>Grab</b> is the dominant ride app in Thailand and the one to have. It shows a fixed price up front, so the meter question never comes up, and it can book both cars and licensed taxis. <b>Bolt</b> also operates in Bangkok and is often a little cheaper, so many travelers keep both and compare. If you have used Grab elsewhere in Southeast Asia, it is the same app and login.",
+            "Using an app is the single easiest way to avoid every meter argument, because the fare is agreed before the driver arrives and the route is tracked on your phone. It is especially worth it late at night, from nightlife areas, or any time your Thai is not up to negotiating. Cash is still widely accepted in the apps, and you can also link a card."
+          ]
+        },
+        {
+          h: "The airport rank, done right",
+          p: [
+            "Suvarnabhumi is where the sharpest trick lives. As you come through, people will approach you offering a <b>taxi</b> or <b>limousine</b>, sometimes waving a <b>printed sheet of flat fares</b>. Those drivers are not the official rank, and the printed price lists are exactly what the airport warns against, so walk past them and go down to <b>Level 1</b>."
+          ],
+          steps: [
+            "Go down to <b>Level 1</b> and find the public-taxi machines and counter, between <b>Gate 4 and Gate 7</b>.",
+            "Take a ticket from the machine, which gives you a bay number and the driver's details.",
+            "Go to the numbered bay and take that car. Insist the <b>meter</b> is running from the start.",
+            "Expect to pay the <b>metered fare</b> plus a <b>50 baht</b> airport surcharge plus any <b>expressway tolls</b>, which you pay as you go.",
+            "Cheaper still, take the <b>Airport Rail Link</b> train into the city, then a short taxi or app ride to your hotel."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          p: [
+            "Metered city fares are low, and the fixed prices in Grab or Bolt are usually only a little higher for the convenience. In a street taxi, carry small baht notes, because drivers often cannot break a large bill, and watch that the meter is on from the start. The 50 baht airport surcharge and any expressway tolls are legitimate additions on an airport run, so those are not the scam; a refusal to use the meter at all is.",
+            "Tipping is not expected, though rounding the fare up to the nearest 10 or 20 baht is common and appreciated. Don Mueang, the budget-airline airport, works the same way, with its own public-taxi counter, so apply the same rule there. For the wider money picture, including cash versus card, see the <a href=\"/thailand\">Thailand money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do Bangkok taxis use the meter?", a: "They are legally required to, and a metered ride is cheap. In practice some drivers, especially near tourist spots, refuse the meter and quote a flat fare two to four times higher. Get in, say meter please, and if the driver will not use it, get out and take the next cab. Using Grab or Bolt avoids the issue entirely, since the price is fixed in the app." },
+        { q: "Which taxi app is best in Bangkok?", a: "Grab is the dominant ride app in Thailand and the one to install first, showing a fixed price before you ride and able to book cars or licensed taxis. Bolt also operates in Bangkok and is often slightly cheaper, so many travelers keep both and compare. Either removes the meter argument and tracks your route." },
+        { q: "What is the official taxi from Suvarnabhumi airport?", a: "The official public taxi is on Level 1, between Gate 4 and Gate 7, where machines and a counter assign you a metered cab and bay number. The fare is the meter plus a 50 baht airport surcharge plus any expressway tolls. Ignore the drivers upstairs offering a taxi with a printed flat-rate list, and consider the cheaper Airport Rail Link train." },
+        { q: "Are the printed taxi fare lists at the airport real?", a: "No. The official airport taxi is metered, so a driver waving a printed sheet of flat fares in the arrivals area is one of the touts the airport warns about, not the official rank. Go down to the Level 1 public-taxi counter, take a ticket, and insist the meter runs. A flat quote there is a sign to walk away." }
+      ],
+      sources: {
+        links: [
+          { label: "Suvarnabhumi Airport: the official public-taxi page, confirming the Level 1 location, the metered fare, and the 50 baht surcharge", url: "https://suvarnabhumi.airportthai.co.th/service/transportation/detail/304", type: "airport" },
+          { label: "Suvarnabhumi Airport: the official ground-transport guide covering the taxi rank, rail link and other options", url: "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK", type: "airport" },
+          { label: "US Department of State: Thailand country information, general safety and local-travel context for US visitors", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Thailand.html", type: "gov" }
+        ],
+        judgment: "Airport fees, the surcharge and toll amounts, and app availability can change, so treat the figures as a recent read and check the airport's official page and your app before you ride. The meter-refusal habit varies by driver and location. Checked July 2026."
+      }
     }
   ]
 };
