@@ -219,6 +219,75 @@ export default {
         ],
         judgment: "The cashless figure is Japan's official METI data; the ATM, card and IC-card details are our practical read from recent trips and the operators' own pages, and acceptance can vary by machine and card, so carry a backup. Checked July 2026."
       }
+    },
+    {
+      slug: "bringing-your-pet",
+      live: true,
+      topic: "pets",
+      title: "Bringing a dog or cat to Japan from the US (2026): the 180-day clock and what it costs | True Trip Costs",
+      description: "Moving to Japan with a pet from the US: why the rabies antibody test and its fixed 180-day waiting period make this a 7 to 8 month process, the full step order, and a realistic all-in cost. Checked July 2026.",
+      h1: "Bringing your dog or cat to Japan.",
+      lede: "Japan is one of the long-lead destinations. Two numbers decide everything: the lead time, which is 7 to 8 months because of a fixed 180-day wait you cannot shorten, and the all-in cost, which runs into the thousands. Miss the sequence and the clock resets. Here is the order, the official route, and what to budget.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Start early: this is a <b>7 to 8 month</b> process, not a few weeks. Japan protects its rabies-free status with a <b>rabies antibody test followed by a fixed 180-day wait</b> that cannot be shortened, so the timeline is set by biology, not paperwork. Do the steps <b>in order</b>: microchip, two rabies shots, the antibody test, the 180-day wait, then advance notice to the port at least 40 days out. All in, budget <b>roughly $3,000 to $8,000 or more</b>, driven mostly by flying your pet as cargo. A dog coming the other way, home to the US from Japan, has an easy time.",
+      sections: [
+        {
+          h: "The two numbers: lead time and cost",
+          p: [
+            "Before the detail, the two things that decide a move to Japan with a pet. <b>Lead time is 7 to 8 months</b>, and most of that is a single fixed waiting period you cannot buy your way out of. <b>All-in cost is roughly $3,000 to $8,000 or more</b>, with the biggest line being air transport, since pets on this route usually fly as cargo rather than in the cabin. Vet visits, the rabies antibody test, and the health paperwork make up most of the rest.",
+            "The reason Japan takes so long is that it is rabies-free and works hard to stay that way. Every step below exists to prove your pet is not carrying rabies, and the order is strict. One misstep, such as a rabies shot given before the microchip, can invalidate the work and restart the clock."
+          ]
+        },
+        {
+          h: "The steps, in the order that matters",
+          p: [
+            "Follow these in sequence. Skipping ahead or doing them out of order is the most common and most expensive mistake."
+          ],
+          steps: [
+            "Microchip first. Your pet needs an ISO 11784 or 11785 microchip, implanted before any rabies vaccination that counts for this process.",
+            "Two rabies vaccinations, after the chip. The first can be given once your pet is at least 91 days old, and the second at least 30 days after the first. Both must come after the microchip.",
+            "Rabies antibody test (FAVN or RNATT). A blood sample goes to a Japan-designated laboratory, and the result must be at least 0.5 IU per ml. The draw can be the same day as the second shot, and the result stays valid for 2 years from the blood-draw date.",
+            "The 180-day wait. This is the big one. A 180-day clock starts on the day the blood is drawn, which counts as day zero, and your pet cannot enter Japan until it is complete. Arrive early and your pet is held in quarantine at the port for the remainder, up to 180 days. There is no way to shorten it.",
+            "Advance notice to the Animal Quarantine Service (AQS). Tell the arrival port at least 40 days before you land. You can file this during the 180-day wait, and AQS issues an Approval of Import Inspection.",
+            "Pre-export exam and endorsed certificate. Within 10 days of travel, a USDA-accredited vet examines your pet and completes the health certificate, which USDA APHIS then endorses.",
+            "Import inspection on arrival. If every document lines up and the 180 days are complete, inspection at the airport is usually quick."
+          ]
+        },
+        {
+          h: "Which lab, and what to do after you land",
+          p: [
+            "For the rabies antibody test, the two Japan-designated laboratories in the US are the <b>Kansas State University Rabies Laboratory</b> in Manhattan, Kansas, which is open to any US exporter, and the Department of Defense laboratory at Fort Sam Houston in Texas, used mainly by military families. Your USDA-accredited vet sends the sample; you do not ship blood yourself.",
+            "After arrival, Japan asks you to register a dog at the local municipal office within 30 days, keep up an annual rabies vaccination, and hold onto the Import Quarantine Certificate you are given, so keep it somewhere safe."
+          ]
+        },
+        {
+          h: "Coming back to the US is the easy part",
+          p: [
+            "Good news for the return trip: because Japan is rabies-free, a dog flying home to the US from Japan is on the simplest path. In most cases the only document you need is a free CDC form receipt, with no titer and no quarantine. We cover exactly what that involves in our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a>.",
+            "For the wider picture, including how Japan compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."
+          ]
+        }
+      ],
+      official: {
+        label: "USDA APHIS: pet travel from the US to Japan",
+        url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-japan",
+        note: "The US-side steps, the health certificate, and the link to Japan's own rules. Japan's Animal Quarantine Service is the final word on the day."
+      },
+      faqs: [
+        { q: "How long does it take to bring a pet to Japan from the US?", a: "Plan for 7 to 8 months. The timeline is driven by a fixed 180-day waiting period that begins on the day blood is drawn for the rabies antibody test, and it cannot be shortened. Add the microchip, two rabies shots spaced at least 30 days apart, the antibody test, and advance notice to the port at least 40 days before arrival, and the front end adds up quickly too. Start early." },
+        { q: "How much does it cost to bring a dog or cat to Japan?", a: "Realistically about $3,000 to $8,000 or more, all in. The largest cost is air transport, since pets on this route usually fly as cargo, not in the cabin. Vet visits, the rabies antibody test at a designated lab, and the endorsed health certificate make up most of the rest. A large dog costs more than a small cat, mostly because of crate size and cargo pricing." },
+        { q: "What happens if I arrive in Japan before the 180 days are up?", a: "Your pet is held in quarantine at the port for the remaining days, up to a maximum of 180. The waiting period cannot be shortened for any reason, so the safe approach is to count 180 days from the blood-draw date and only book travel after that." },
+        { q: "Do I need to quarantine my pet coming back to the US from Japan?", a: "No. Japan is rabies-free, so a dog returning to the US from Japan is on the CDC easy path: in most cases a free CDC Dog Import Form receipt is the only document required, with no titer and no quarantine. See our guide to bringing a dog into the US for the details." }
+      ],
+      sources: {
+        links: [
+          { label: "USDA APHIS: pet travel from the United States to Japan, the US-side requirements and health certificate", url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-japan", type: "gov" },
+          { label: "Japan Animal Quarantine Service (AQS): Japan's own import rules for dogs and cats, including the 180-day rule and advance notification", url: "https://www.maff.go.jp/aqs/english/index.html", type: "gov" },
+          { label: "USDA APHIS: the US to Japan step-by-step flowchart for the full sequence and timing", url: "https://www.aphis.usda.gov/sites/default/files/japan-flowchart.pdf", type: "gov" }
+        ],
+        judgment: "The steps and the 180-day rule are set by Japan's Animal Quarantine Service and administered on the US side by APHIS, not by us. Timing is unusually unforgiving here, so we point you to the official pages and dated this in July 2026. Costs vary with your pet's size and your route, so treat the range as a starting point and confirm current requirements before you begin."
+      }
     }
   ]
 };

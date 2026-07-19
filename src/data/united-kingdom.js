@@ -296,6 +296,73 @@ export default {
         ],
         judgment: "London fares and caps and the contactless limit can change (the caps held for 2026, and 100 pounds is the usual contactless ceiling), and the rest is our practical read, so confirm current fares with Transport for London before you travel. Checked July 2026."
       }
+    },
+    {
+      slug: "bringing-your-pet",
+      live: true,
+      topic: "pets",
+      title: "Bringing a dog or cat to Great Britain from the US (2026): the steps and the cargo catch | True Trip Costs",
+      description: "Moving to the UK with a pet from the US: microchip, rabies and the 21-day wait, the dog tapeworm rule, the GB pet health certificate, and why your pet flies as cargo, not in the cabin. Checked July 2026.",
+      h1: "Bringing your dog or cat to Great Britain.",
+      lede: "Compared with Japan or Australia, the UK is quick: the lead time is weeks, not months, because there is no rabies blood test for pets coming from the US. The cost surprise is the flight, since pets almost always travel as cargo into Britain, not in the cabin. Here is the order, the official route, and what to budget.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "This is one of the faster moves. Because the US is a <b>listed country</b>, there is <b>no rabies blood test</b> and <b>no quarantine</b> if you follow the steps: microchip, rabies vaccination, then a <b>21-day wait</b> before travel. Dogs also need a <b>vet tapeworm treatment 24 to 120 hours before arrival</b>. A vet completes a <b>GB pet health certificate</b> that USDA APHIS endorses, and your pet must land <b>within 10 days</b>. The lead time is measured in <b>weeks</b>, but budget for your pet to fly as <b>cargo</b>, not in the cabin, which is the biggest cost.",
+      sections: [
+        {
+          h: "The two numbers: lead time and cost",
+          p: [
+            "The two things that decide a UK move with a pet. <b>Lead time is short</b>, often just a few weeks, and it is set almost entirely by the 21-day wait after the rabies shot. If your pet is already microchipped and current on rabies, the paperwork and endorsement can be done in around a month. <b>Cost is moderate but front-loaded by the flight</b>: pets travelling from the US to Britain almost always fly as manifest cargo rather than in the cabin, and that air transport, plus the vet work and the APHIS endorsement, is where the money goes.",
+            "There is no rabies blood test on this route, which is exactly why it is so much faster than Japan or Australia. The US is on Britain's list of countries whose pets can enter without a titer or quarantine, provided the steps are done correctly and in order."
+          ]
+        },
+        {
+          h: "The steps, in order",
+          p: [
+            "Great Britain means England, Scotland and Wales. Do these in sequence; the order is what keeps your pet out of quarantine."
+          ],
+          steps: [
+            "Microchip first. Your pet needs an ISO microchip, implanted before, or at the same visit as, the rabies vaccination. A rabies shot given before the chip does not count and has to be redone.",
+            "Rabies vaccination, then wait 21 full days. After the microchip, your pet gets a rabies shot, and you must wait at least 21 full days after the first vaccination before travelling. This sets the minimum entry age for a puppy at 15 weeks.",
+            "Tapeworm treatment, dogs only. A vet must treat your dog for tapeworm with a product effective against Echinococcus multilocularis, no less than 24 hours and no more than 120 hours, that is 1 to 5 days, before you arrive in Britain, and record the date and time. Cats do not need this.",
+            "GB pet health certificate, endorsed by APHIS. A USDA-accredited vet completes the Great Britain pet health certificate close to travel, and USDA APHIS endorses it. Your pet must arrive within 10 days of that endorsement.",
+            "Travel by an approved route and carrier. Book an approved route into an approved UK airport, where the pet is received; Heathrow has an Animal Reception Centre. On most flights the pet travels as manifest cargo, not in the cabin."
+          ]
+        },
+        {
+          h: "Why your pet flies as cargo",
+          p: [
+            "This catches people who expect to fly with a small dog or cat under the seat. Britain does not allow pets to arrive in the aircraft cabin on ordinary commercial flights; they must come in as registered manifest cargo through an approved route, with assistance dogs the main exception. That means an airline-approved crate, a cargo booking, and a handling fee at the animal reception centre, which together are the largest part of the bill.",
+            "The upside is that there is no rabies titer, no waiting for lab results, and no quarantine when the paperwork is right. The APHIS endorsement fee itself is modest, since no laboratory test is involved on this route."
+          ]
+        },
+        {
+          h: "Coming back to the US",
+          p: [
+            "The return trip is straightforward. Britain is rabies-free, so a dog flying home from the UK is on the CDC easy path, usually just a free CDC form receipt with no titer and no quarantine. The details are in our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a>.",
+            "To see how the UK compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."
+          ]
+        }
+      ],
+      official: {
+        label: "GOV.UK: bringing your pet dog, cat or ferret to Great Britain",
+        url: "https://www.gov.uk/bring-pet-to-great-britain",
+        note: "Britain's own step-by-step rules, including the microchip and rabies order, the tapeworm treatment for dogs, and approved routes."
+      },
+      faqs: [
+        { q: "Do I need a rabies blood test to bring my pet to the UK from the US?", a: "No. The US is a listed country under Britain's pet travel rules, so there is no rabies antibody (titer) test and no quarantine for pets coming directly from the US, as long as the microchip, rabies vaccination and 21-day wait are done in the correct order. This is why the UK route is much faster than Japan or Australia." },
+        { q: "Can my dog or cat fly in the cabin to the UK?", a: "Generally no. Britain requires pets to arrive as manifest cargo through an approved route into an approved airport, not in the aircraft cabin, with assistance dogs the main exception. This is usually the biggest single cost of the move, because it means an approved crate, a cargo booking, and an animal reception centre handling fee." },
+        { q: "How long does it take to bring a pet to Great Britain?", a: "Often just a few weeks. The lead time is set mainly by the 21-day wait after the first rabies vaccination. If your pet is already microchipped and current on rabies, the health certificate and APHIS endorsement can typically be completed in around a month. The pet must then arrive within 10 days of the endorsement." },
+        { q: "Does my dog need a tapeworm treatment for the UK?", a: "Yes, dogs do, though cats do not. A vet must give a tapeworm treatment effective against Echinococcus multilocularis no less than 24 hours and no more than 120 hours, that is 1 to 5 days, before your dog arrives in Great Britain, and record the exact date and time. Miss the window and your dog may need re-treating or face refusal." }
+      ],
+      sources: {
+        links: [
+          { label: "GOV.UK: bringing your pet dog, cat or ferret to Great Britain, the official step-by-step rules", url: "https://www.gov.uk/bring-pet-to-great-britain", type: "gov" },
+          { label: "GOV.UK: tapeworm treatment for dogs, the approved treatment and the 24 to 120 hour window", url: "https://www.gov.uk/bring-pet-to-great-britain/tapeworm-treatment-dogs", type: "gov" },
+          { label: "USDA APHIS: pet travel from the United States to the United Kingdom and Great Britain, the US-side requirements and health certificate", url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-united-kingdom-great-britain-england-scotland", type: "gov" }
+        ],
+        judgment: "The rules are set by the UK government and administered on the US side by APHIS, not by us. This route is stable and well established, but routes, carriers and the exact paperwork can change, so confirm on the official GOV.UK and APHIS pages before you travel. Flight and vet costs vary, so treat any figure here as a starting point. Checked July 2026."
+      }
     }
   ]
 };

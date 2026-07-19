@@ -121,6 +121,9 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
             <span class="cthumb">
               <img src={(c.hero && c.hero.img) || ('/' + c.slug + '-hero.jpg')} alt={'Money guide for ' + c.name} loading="lazy" decoding="async" width="400" height="300" />
               <span class="cflag" aria-hidden="true"><img src={flagSrc(c.slug)} alt="" width="24" height="18" loading="lazy" /></span>
+              {(c.spokes || []).some(s => s.topic === 'pets' && s.live !== false) && (
+                <span class="cpet"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><ellipse cx="6.4" cy="10.2" rx="1.9" ry="2.5"/><ellipse cx="10.1" cy="7.5" rx="1.9" ry="2.6"/><ellipse cx="13.9" cy="7.5" rx="1.9" ry="2.6"/><ellipse cx="17.6" cy="10.2" rx="1.9" ry="2.5"/><path d="M12 11.3c-2.8 0-5.1 2-5.1 4.4 0 1.9 1.7 3 3.5 2.6.6-.13 1.1-.19 1.6-.19s1 .06 1.6.19c1.8.4 3.5-.7 3.5-2.6 0-2.4-2.3-4.4-5.1-4.4z"/></svg>Pets</span>
+              )}
             </span>
             <span class="cbody">
               <span class="cname">{c.name}</span>
@@ -149,6 +152,8 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
     .cfilter-in::placeholder{color:var(--muted,#6F6E66);opacity:.8}
     .cfilter-none{margin:0 0 22px;color:var(--muted,#6F6E66)}
     .ccard.is-hidden{display:none}
+    .cpet{position:absolute;top:10px;right:10px;display:inline-flex;align-items:center;gap:4px;background:rgba(245,244,239,.94);color:var(--teal-deep,#0A5644);border-radius:999px;padding:4px 9px 4px 7px;font-size:11px;font-weight:700;letter-spacing:.02em;line-height:1;box-shadow:0 1px 3px rgba(22,48,44,.2)}
+    .cpet svg{flex:none}
     .qa{margin:6px 0 4px}
     .qa-lab{font-size:12px;font-weight:600;color:var(--teal-deep,#0A5644);letter-spacing:.08em;text-transform:uppercase;margin:0 0 12px}
     .qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}

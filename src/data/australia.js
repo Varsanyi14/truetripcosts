@@ -243,6 +243,85 @@ export default {
         ],
         judgment: "The ETA is app-only and the AUD $20 service fee is the only legitimate charge, but fees and conditions can change, so confirm on the official Home Affairs page before you apply. Checked July 2026."
       }
+    },
+    {
+      slug: "bringing-your-pet",
+      live: true,
+      topic: "pets",
+      title: "Bringing a dog or cat to Australia from the US (2026): the 180-day wait, quarantine and cost | True Trip Costs",
+      description: "Moving to Australia with a pet from the US: the rabies titer and mandatory 180-day residency, the BICON import permit, the identity check that cuts Mickleham quarantine from 30 to 10 days, and a realistic all-in cost. Checked July 2026.",
+      h1: "Bringing your dog or cat to Australia.",
+      lede: "Australia has the strictest pet import process of any English-speaking country, and it is the most expensive move we cover. Two numbers frame it: a lead time of at least 6 to 7 months, set by a rabies test and a fixed 180-day wait, and an all-in cost that often reaches five figures. Here is the order, the official route, and where the money goes.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Give yourself <b>at least 6 to 7 months</b>. The mainland US is a <b>Group 3 country</b>, so your pet needs a <b>rabies antibody test (RNATT)</b> and then a <b>fixed 180-day residency period</b> that starts when the lab receives the blood sample and cannot be shortened. You also need a <b>BICON import permit</b> and mandatory <b>quarantine at the Mickleham facility near Melbourne</b>. One optional step, an <b>identity check done before the blood draw</b>, cuts that quarantine from 30 days to 10. Budget <b>several thousand dollars, often well into five figures</b> for a large dog using a shipper, with air cargo and quarantine the biggest costs.",
+      sections: [
+        {
+          h: "The two numbers: lead time and cost",
+          p: [
+            "The two things that decide an Australia move with a pet, and both are large. <b>Lead time is at least 6 to 7 months</b>, dominated by a fixed 180-day waiting period tied to the rabies antibody test, plus permit processing and quarantine booking. <b>Cost is the highest of any destination we cover</b>, commonly several thousand dollars and often well into five figures for a large dog handled by a relocation company. The biggest lines are air transport as cargo to Melbourne and the mandatory government quarantine.",
+            "Australia only accepts pets from approved countries and classes the mainland US as Group 3, meaning rabies is present but controlled, so a testing and waiting sequence applies. Guam and Hawaii are treated differently, so contact Australia's Department of Agriculture, Fisheries and Forestry first if your pet is coming from either."
+          ]
+        },
+        {
+          h: "The steps, in order",
+          p: [
+            "The sequence matters more here than almost anywhere, and one step, the identity check, has to happen before another, the blood draw, or you lose the option to shorten quarantine."
+          ],
+          steps: [
+            "Microchip first, before any rabies vaccination.",
+            "Rabies vaccination with an approved vaccine, given when your pet is at least 84 days old. The vaccination must stay valid all the way through to export, or you risk starting over.",
+            "Identity check, optional but worth it. Have an official vet verify your pet's identity before the rabies blood draw and at least 180 days before export. This single step cuts mandatory quarantine from 30 days to 10, which usually saves more than it costs. It cannot be done at the same visit as the blood draw.",
+            "Rabies antibody test (RNATT). After a wait of about 3 to 4 weeks from the rabies shot, a vet draws blood for a titer test (FAVN or RFFIT) sent to an approved laboratory; the result must be at least 0.5 IU per ml.",
+            "The 180-day residency. A 180-day clock starts on the day the laboratory receives the blood sample, and your pet cannot be exported until it is complete. This is a residency period, not quarantine, so your pet stays home with you, but there are no exceptions to the 180 days.",
+            "Import permit through BICON. Once the rabies documents are ready, apply for a biosecurity import permit in Australia's BICON system. Processing commonly takes a few weeks.",
+            "Book Mickleham quarantine. As soon as the permit is issued, book your pet's post-entry quarantine, since space is limited.",
+            "Final window. Close to travel, your pet gets parasite treatments, a final exam and an export health certificate from a USDA-accredited vet, endorsed by USDA APHIS.",
+            "Fly as cargo to Melbourne, then quarantine. Pets enter only as manifest cargo at Melbourne, and government staff transfer them to the Mickleham facility for their 10 or 30 day stay. Owners cannot collect a pet at the airport."
+          ]
+        },
+        {
+          h: "Dogs face extra tests, and cats are not exempt from the titer",
+          p: [
+            "Dogs from the US carry a heavier load than cats. On top of the rabies sequence, dogs need a <b>canine influenza vaccination</b>, and depending on your permit they may need testing or treatment for diseases such as <b>Brucella canis</b> and <b>Ehrlichia canis</b>, with conditions that have changed in recent years. Because these dog rules move, read your import permit and Australia's step-by-step guide carefully rather than relying on an old checklist.",
+            "Cats are simpler but still need the rabies antibody test, even an indoor-only cat that has never been outside. A handful of dog breeds are banned from entry entirely, so check the list if you have a restricted breed."
+          ]
+        },
+        {
+          h: "Where the money goes",
+          p: [
+            "The two government charges you can pin down are the <b>BICON import permit</b>, roughly AUD 600 and non-refundable, and the <b>Mickleham quarantine</b>, with a minimum 10-day stay around AUD 1,900 and a 30-day stay considerably more. On top of those sit the rabies antibody test and other lab work, the canine influenza vaccine for dogs, an airline-approved crate, and the single largest cost, air cargo to Melbourne. There is also a smaller airline handling charge collected before your pet is released.",
+            "Government fees are reviewed regularly and airfreight pricing swings a lot, so treat these as a budgeting frame and confirm the current figures with the Department of Agriculture and your airline before you commit."
+          ]
+        },
+        {
+          h: "Coming back to the US",
+          p: [
+            "The return is far simpler than the outbound trip. Australia is rabies-free, so a dog flying home to the US is on the CDC easy path, usually just a free CDC form receipt with no titer and no quarantine, which we cover in <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a>.",
+            "For how Australia compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."
+          ]
+        }
+      ],
+      official: {
+        label: "USDA APHIS: pet travel from the US to Australia",
+        url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-australia",
+        note: "The US-side steps, plus links to Australia's Group 3 step-by-step guides and the BICON permit system, which are the final word on the day."
+      },
+      faqs: [
+        { q: "How long does it take to bring a pet to Australia from the US?", a: "Plan for at least 6 to 7 months. The timeline is dominated by a fixed 180-day residency period that starts when the lab receives the blood sample for the rabies antibody test, and it has no exceptions. Add the rabies vaccination and 3 to 4 week wait before the test, the import permit processing, and booking quarantine, and starting early is essential. Australia itself advises allowing at least 6 months." },
+        { q: "How much does it cost to bring a dog to Australia?", a: "It is the most expensive move we cover, commonly several thousand dollars and often well into five figures for a large dog using a relocation company. The government charges alone include a BICON import permit of roughly AUD 600 and a Mickleham quarantine stay starting around AUD 1,900 for the 10-day minimum. The biggest cost is air cargo to Melbourne, followed by quarantine and the rabies and disease testing." },
+        { q: "Can I avoid the 30-day quarantine at Mickleham?", a: "You can reduce it to a 10-day minimum, but only by completing an identity check with an official vet before the rabies blood draw and at least 180 days before export. If the identity check is skipped, done incorrectly, or done after the blood draw, your pet serves the 30-day minimum instead. The saving in quarantine fees usually more than covers the extra step, so most families do it." },
+        { q: "Does my pet have to quarantine in Australia, and can it stay with me?", a: "Not at home. Every dog and cat from the US completes mandatory post-entry quarantine at the government's Mickleham facility near Melbourne, for a minimum of 10 or 30 days depending on the identity check. Pets fly in as cargo to Melbourne only, and government staff move them to Mickleham; owners cannot collect them at the airport or visit during the stay." }
+      ],
+      sources: {
+        links: [
+          { label: "Australian Department of Agriculture, Fisheries and Forestry: step-by-step guide to bring a dog to Australia from a Group 3 country", url: "https://www.agriculture.gov.au/biosecurity-trade/cats-dogs/how-to-import/step-by-step-guides/category-3-step-by-step-guide-for-dogs", type: "gov" },
+          { label: "Australian Department of Agriculture: step-by-step guide to bring a cat to Australia from a Group 3 country", url: "https://www.agriculture.gov.au/biosecurity-trade/cats-dogs/how-to-import/step-by-step-guides/category-3-step-by-step-guide-for-cats", type: "gov" },
+          { label: "Australian Department of Agriculture: post-entry quarantine fees and charges at the Mickleham facility", url: "https://www.agriculture.gov.au/biosecurity-trade/cats-dogs/quarantine-facilities-and-fees/fees", type: "gov" },
+          { label: "USDA APHIS: pet travel from the United States to Australia, the US-side requirements and identity check", url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-australia", type: "gov" }
+        ],
+        judgment: "The rules and fees are set by Australia's Department of Agriculture, Fisheries and Forestry and administered on the US side by APHIS, not by us. This route is both the strictest and one of the more actively changing, especially the dog disease-testing conditions and the identity-check process, so we point you to the official pages and dated this in July 2026. Costs vary widely with your pet's size and your route, so confirm current permit and quarantine fees with the Department before you commit."
+      }
     }
   ]
 };
