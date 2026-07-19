@@ -178,5 +178,64 @@ export default {
         note: "Good to know: carry cash before heading into the desert, there are no ATMs" },
     ],
     pride: "Morocco is proud of its hospitality, its craftsmanship, and the blend of Amazigh, Arab, Andalusian and Saharan cultures that shapes its cities, food and music. Meet it with warmth and patience, and it opens up quickly."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      title: "Which taxi app to use in Morocco: petit taxi, grand taxi and inDrive (2026) | True Trip Costs",
+      description: "How Morocco's two-tier taxi system works, why petit-taxi drivers dodge the meter, which app to install (inDrive leads, with Careem and a limited Uber), and the right price from Marrakech airport into the medina. Checked July 2026.",
+      h1: "Taxis in Morocco, and the app that actually works",
+      lede: "Morocco runs on two kinds of taxi and a set of ride apps that sit in a legal gray area, which is not what most visitors expect. Here is how the petit and grand taxis work, how to handle the meter, and which app to actually install.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Morocco has two taxi types. A <b>petit taxi</b> handles rides inside a city, is color-coded by town, and by law runs a meter (the <b>compteur</b>), though drivers often refuse it. A <b>grand taxi</b> is a shared car for trips between towns. For apps, <b>inDrive</b> is the one to install, since it works in the most cities and lets you name your own price. <b>Careem</b> covers a few big cities, and <b>Uber</b> returned in late 2025 but only in Casablanca and Marrakech. The simple rule in a petit taxi is to say <b>the meter, please</b>, and if the driver will not use it, agree the price before you move or wave the next one over.",
+      sections: [
+        {
+          h: "Petit taxi and grand taxi: the two-tier system",
+          p: [
+            "A <b>petit taxi</b> is a small car that works only within a single city, takes up to three passengers, and is painted a city color: ochre in <b>Marrakech</b>, red in <b>Casablanca</b>, blue in <b>Rabat</b>. By law it runs a meter, which usually starts around 2 to 3 dirham with a similar rate per kilometer, so most city hops land in the <b>10 to 30 dirham</b> range, a bit more out to the edges, and roughly 50 percent higher at night after about 8 or 9pm. Sharing is normal, so a driver may pick up someone else going your way, and each passenger pays their own metered fare.",
+            "A <b>grand taxi</b> is the shared workhorse between cities, towns and villages, these days often a modern minivan rather than the old Mercedes. You go to the grand-taxi rank for your destination, pay per seat, and the car leaves once it is full, or you can buy the empty seats to leave straight away. For longer routes, buses like CTM and Supratours, or the train, are usually the more comfortable choice."
+          ]
+        },
+        {
+          h: "The meter, and 'the meter is broken'",
+          p: [
+            "The one money issue you will meet again and again in a petit taxi is a driver who will not switch on the meter and instead names a flat, higher price, especially with an obvious visitor. This is overpaying rather than anything dangerous. The phrase that solves most of it is simple: <b>the meter, please</b>, or in the local phrasing, <b>le compteur, afak</b>. If the driver still refuses, agree a clear price before the car moves, and if the number is silly, just step out and take the next taxi.",
+            "As a sense of the right figure, a short ride across a city center is a handful of dirham to the low tens, not a flat 100. Because sharing is normal, do not be surprised if the driver stops for another passenger, and that does not change your own fare. Rounding up a dirham or two at the end is a normal, friendly tip."
+          ]
+        },
+        {
+          h: "Which app to install",
+          p: [
+            "The most useful app to have is <b>inDrive</b>, which operates in Marrakech, Casablanca, Rabat, Fes, Tangier and Agadir and works on a bidding model: you propose a fare, the driver accepts or counters, and you pay in cash. <b>Careem</b>, owned by Uber, works well in Casablanca and Rabat and also in Marrakech and Tangier, and feels familiar if you have used Uber. <b>Uber</b> itself left Morocco in 2018 and came back in a limited way in late 2025, so far only in Casablanca and Marrakech, so do not count on it elsewhere.",
+            "One honest caveat: these ride apps sit in a <b>legal gray area</b> in Morocco, and many drivers are unlicensed private individuals. To avoid friction with licensed taxis, app drivers often ask you to walk a short distance from a taxi rank or an airport terminal for the pickup. The trade-off is that the price is fixed and the ride is tracked, and it is usually cheaper than a tourist-priced street taxi. Keep inDrive as your main app and Careem or Uber as backups."
+          ]
+        },
+        {
+          h: "Airports, getting into town and paying",
+          p: [
+            "At <b>Marrakech Menara</b>, the correct metered or fixed price for a petit taxi into the medina or Gueliz is about <b>70 to 100 dirham</b> (roughly 7 to 10 US dollars). Anything well above that is an overcharge, so ignore the men who approach you inside the terminal and walk to the clearly marked taxi rank, or use a pre-booked transfer. Official airport taxis post their own, higher, fixed tariffs, so check the posted rate or agree the price first. <b>Casablanca</b>'s airport has a train into the city, which is an easy and cheap way in.",
+            "Carry <b>dirham</b> in cash, since street taxis and app drivers expect it, and watch for a currency-switch line where a quoted number quietly turns from dirham into the same figure in euros. Agree everything in dirham. For the wider money picture, including how much cash to carry and where cards work, see the <a href=\"/morocco\">Morocco money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber available in Morocco?", a: "Only partly. Uber left Morocco in 2018 and returned in a limited way in late 2025, so far only in Casablanca and Marrakech. The most widely used app across Moroccan cities is inDrive, with Careem strong in Casablanca and Rabat. Do not plan to rely on Uber alone; install inDrive as your main option." },
+        { q: "Which taxi app is best in Morocco?", a: "inDrive is the most consistent, working in Marrakech, Casablanca, Rabat, Fes, Tangier and Agadir on a name-your-price model paid in cash. Careem is a good choice in Casablanca and Rabat. These apps are a legal gray area in Morocco, so drivers may pick you up a short walk from taxi ranks, but the fare is fixed and cheaper than a tourist-priced street taxi. For short city hops, a petit taxi on the meter is also fine." },
+        { q: "How much is a taxi from Marrakech airport to the medina?", a: "The correct metered or fixed petit-taxi price from Marrakech Menara airport into the medina or Gueliz is roughly 70 to 100 dirham, about 7 to 10 US dollars. Any quote well above that is an overcharge. Ignore the men approaching you inside the terminal and walk to the marked taxi rank, or use a pre-booked transfer. Official airport taxis charge more on a posted tariff." },
+        { q: "Do Moroccan taxis use the meter?", a: "Petit taxis are legally required to run the meter, but drivers often refuse and quote a flat, higher price to visitors. Say 'the meter, please' (le compteur, afak), and if the driver still refuses, agree a price before you move or take the next taxi. A ride-hailing app like inDrive avoids the whole issue by fixing the fare in advance." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: Morocco country information, general safety and local-travel context for US visitors", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Morocco.html", type: "gov" },
+          { label: "Morocco Guide: a recent overview of petit and grand taxis, the meter and the ride-hailing apps", url: "https://www.morocco-guide.com/transport/taxis-in-morocco/", type: "guide" },
+          { label: "Days Morocco Tours: a 2026 taxi guide confirming inDrive and Careem coverage and the Marrakech airport fare", url: "https://daysmoroccotours.com/taking-taxis-in-morocco/", type: "guide" }
+        ],
+        judgment: "Ride-hailing in Morocco is a legal gray area and app coverage varies by city, with Uber only recently back in Casablanca and Marrakech, so keep inDrive as your main app and confirm the price before you ride. Fares move, so treat the dirham figures as a recent read. Checked July 2026."
+      }
+    }
+  ]
 };

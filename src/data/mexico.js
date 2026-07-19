@@ -279,6 +279,62 @@ export default {
         ],
         judgment: "The peso-dollar rate moves and card and ATM fees vary by your own bank, and much of this is our practical read, so treat amounts as a guide and always decline dollar conversion. Checked July 2026."
       }
+    },
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      title: "Uber or DiDi in Mexico, and the Cancun airport taxi problem (2026) | True Trip Costs",
+      description: "Which ride app to use in Mexico (Uber, DiDi and inDrive all work), why the Mexico City airport rules keep changing, and why you cannot count on an app from Cancun airport thanks to the taxi union. Checked July 2026.",
+      h1: "Uber and DiDi in Mexico, and the Cancun airport catch",
+      lede: "In most of Mexico an app makes the whole thing easy, but the airports are where it gets complicated, and Cancun is its own world. Here is which app to install, what the Mexico City airport rules actually are, and how to leave Cancun airport without getting stung.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Install <b>Uber</b> and <b>DiDi</b> before you travel, and lean on <b>DiDi</b> in most cities, since it is often cheaper and local drivers use it too. Both show a fixed price up front, so there is no meter to argue about. <b>inDrive</b>, where you name your own fare, is a common backup. The catch is the airports. At <b>Mexico City</b> the rules keep shifting, and the reliable fallback is the official prepaid taxi kiosk inside the terminal. At <b>Cancun</b> and across the Riviera Maya, the taxi union blocks the apps, so you cannot count on an Uber or DiDi from the airport, and the calm answer is the <b>ADO bus</b> or a pre-booked shuttle.",
+      sections: [
+        {
+          h: "Which app, and where it just works",
+          p: [
+            "For everyday travel in Mexico City, Guadalajara, Monterrey and most of the country, <b>Uber</b> and <b>DiDi</b> both work well and show the fare before you accept. <b>DiDi</b> is the one many locals reach for first, often a little cheaper, and in some tourist areas it draws less friction from taxi drivers than Uber does. <b>inDrive</b>, where you propose a price and drivers accept or counter, is a common third option. <b>Lyft</b> does not operate in Mexico at all, so ignore it here.",
+            "Two small habits save trouble. First, some travelers hit card-billing glitches with Uber in Mexico, so switching the app to <b>cash</b> and paying at the end is a simple workaround. Second, fake drivers hang around tourist spots, so always check the <b>plate, car and driver photo</b> in the app before getting in, and never accept a ride from someone who simply walks up and says they are your driver."
+          ]
+        },
+        {
+          h: "Mexico City airport: the rules keep changing",
+          p: [
+            "Mexico City's airport (AICM) has been a running battle between the licensed airport taxis and the apps. Officially, ride-hailing is not allowed to pick up inside the federal airport zone, and enforcement has come and gone. Ahead of the 2026 World Cup, though, the airport set up a <b>designated pickup zone</b> for Uber and DiDi, roughly an eight-minute walk between Terminals 1 and 2, so app pickups are increasingly workable if you follow the in-app instructions to that spot.",
+            "Because that situation still shifts, the dependable fallback is the <b>official prepaid taxi</b>. Pay at one of the authorized kiosks inside the terminal, where the price is set by zone and you hand a receipt to the driver waiting outside. One wrinkle worth knowing: quotes can vary between kiosks, and travelers have found one kiosk quoting several times more than another for the same trip, so check <b>two or three kiosks</b> before you pay. Federal airport taxis carry a green license plate."
+          ]
+        },
+        {
+          h: "Cancun and the Riviera Maya: a different world",
+          p: [
+            "This is the part that catches people out. Across <b>Cancun</b>, <b>Playa del Carmen</b> and the wider Riviera Maya, a powerful taxi union has fought the apps hard, and in practice you <b>cannot rely on an Uber or DiDi from Cancun airport</b>. The app may let you book, then send you to wait outside the airport, and drivers often will not accept the ride at all. Some union members have even posed as officials to stop app cars. The clean options from the airport are the <b>ADO bus</b>, which is cheap and reliable into Cancun and Playa del Carmen, or a <b>pre-booked private shuttle</b>.",
+            "Once you are at your hotel, <b>DiDi</b> is the better app for getting around the Hotel Zone and town, since local drivers use it too and there is less conflict than with Uber. Keep a low profile when you get picked up, and if a driver is nervous, a quiet side street away from the taxi rank helps. Good news for the way out: dropping off at the airport is not restricted the way pickups are, so an app ride from your hotel to the airport is usually fine."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          p: [
+            "In Uber and DiDi the price is fixed before you ride, and an app trip is usually well below what a street or airport taxi quotes for the same route. Regular Cancun street taxis are often cash-only and priced by zone rather than a meter, so agree the number before you get in and carry small peso notes. In downtown Mexico City, if a libre taxi does use a meter, watch that it starts fresh, but an app is simpler and safer.",
+            "Tipping is not expected for a taxi or app ride in Mexico, though rounding up is a kind gesture. For the wider money picture, including how much cash to carry and where cards work, see the <a href=\"/mexico\">Mexico money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does Uber work in Mexico?", a: "Yes. Uber operates in Mexico City and most of the country, alongside DiDi, which is often cheaper and more widely used by locals, and inDrive, where you name your fare. Lyft does not operate in Mexico. All show a fixed price before you ride, which is why an app beats a street taxi in most places." },
+        { q: "Can I take an Uber from Cancun airport?", a: "Not reliably. A powerful taxi union across Cancun and the Riviera Maya fights the apps, so even when the app lets you book, few drivers will accept a pickup at the airport. Take the ADO bus or a pre-booked private shuttle from the airport instead. Once at your hotel, DiDi is the best app for getting around, and an app ride back to the airport is usually fine." },
+        { q: "Is Uber allowed at Mexico City airport?", a: "It is contested. Officially, ride-hailing is not authorized to pick up inside the federal airport zone, but ahead of the 2026 World Cup the airport set up a designated Uber and DiDi pickup zone about an eight-minute walk between Terminals 1 and 2. Because the rules still shift, the reliable fallback is the official prepaid taxi kiosk inside the terminal. Check two or three kiosks, since quotes can vary." },
+        { q: "Are Mexico City street taxis safe?", a: "Most travelers use an app rather than hailing a libre taxi on the street. If you do take a taxi, use a registered sitio or radio taxi rather than one flagged down at random, and confirm the fare first. With Uber or DiDi, verify the plate, car and driver photo in the app before getting in, and be wary of anyone who approaches claiming to be your driver." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: Mexico country information, including safety context for Mexico City and Quintana Roo", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Mexico.html", type: "gov" },
+          { label: "Mexico Business News: reporting on the Mexico City airport's Uber and DiDi pickup zones and authorized-taxi fares", url: "https://mexicobusiness.news/aerospace/news/aicm-cuts-taxi-fares-adds-uber-and-didi-pickup-zones", type: "news" },
+          { label: "Let's Travel to Cancun: a 2026 guide on why app pickups at Cancun airport are unreliable and what to use instead", url: "https://www.letstraveltocancun.com/can-you-take-an-uber-from-cancun-airport/", type: "guide" }
+        ],
+        judgment: "The airport app rules are moving fast, especially around the 2026 World Cup, and the Cancun taxi-union situation shifts, so check your app and keep a backup like the ADO bus or a pre-booked transfer. Fares move with the peso, so treat any amounts as a recent read. Checked July 2026."
+      }
     }
   ]
 };

@@ -248,6 +248,62 @@ export default {
         ],
         judgment: "India's e-Visa fees are seasonal and set per country, and its arrival requirements have been changing, so confirm the current fee and rules on the official portal before you pay. Checked July 2026."
       }
+    },
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      title: "Which taxi app to use in India, and the airport tout trap (2026) | True Trip Costs",
+      description: "Which ride app to install for India (Uber, Ola and the bike-taxi Rapido), how the airport touts and 'prepaid' scams work, why the Delhi Airport Express metro is the calm way in, and the note-switch trick to watch. Checked July 2026.",
+      h1: "Taxi apps in India, and the airport touts to skip",
+      lede: "India's taxis are cheap, but the first hour at the airport is where the tricks cluster. Here is the app to install, how to tell the real prepaid taxi from the touts, and the small scams to know once you are moving.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Install <b>Uber</b> or <b>Ola</b> before you land, and add <b>Rapido</b> for cheap motorbike and auto rides. All of them show a fixed price up front, so there is no meter argument. At the airport, ignore anyone who walks up offering a <b>taxi</b> or a <b>prepaid</b> ride, and use either your app's marked pickup zone or the official <b>prepaid taxi booth</b> run by the traffic police, which gives you a printed slip with a set fare. In <b>Delhi</b>, the <b>Airport Express metro</b> is fast, cheap and skips the traffic.",
+      sections: [
+        {
+          h: "Which app to install",
+          p: [
+            "<b>Uber</b> and <b>Ola</b> are the two big ride apps in India, both showing a fixed price before you go and both covering the cities and airports a visitor is likely to use. <b>Rapido</b> is worth adding for the cheapest short hops, since it does motorbike rides and auto-rickshaws as well as cars. <b>inDrive</b>, where you propose a fare and the driver accepts or counters, is a common option too. Because the fare is agreed in the app, the meter never comes into it.",
+            "One name to skip: <b>BluSmart</b>, the all-electric app, suspended its rides in 2025, so ignore it if you see it mentioned in older guides. Keep two apps installed, since drivers do cancel, and occasional driver strikes can thin availability for a day. On a normal day, though, opening Uber or Ola is by far the easiest way to get a fair price."
+          ]
+        },
+        {
+          h: "The airport touts, and the real prepaid counter",
+          p: [
+            "The classic Indian airport scene is a cluster of men approaching you as you exit, offering a <b>taxi</b> or a <b>prepaid</b> ride and quoting a fixed rate that turns out to be well over the odds, sometimes with a grab for your luggage to hurry you along. A sharper version has a driver insisting your hotel is <b>closed, full or unsafe</b>, then steering you to another one where he earns a commission. None of this is the official service.",
+            "There are two safe answers. Book in your <b>app</b> and walk to its marked pickup zone, or use the <b>official prepaid taxi booth</b>, which is run by the traffic police and gives you a printed slip with a set fare that you hand to the assigned driver. In <b>Delhi</b>, those prepaid booths are now run with a cooperative called Bharat Taxi under the Delhi Traffic Police, and the fare is fixed and printed, so there is nothing to negotiate at the car."
+          ]
+        },
+        {
+          h: "Delhi: take the Airport Express metro",
+          p: [
+            "If you land in <b>Delhi</b>, the calmest way into the city is often the <b>Airport Express</b> metro line, which runs from Terminal 3 to New Delhi railway station in around twenty minutes for a few rupees, sidestepping the road traffic entirely. From the metro you can take a short app ride or auto to your hotel.",
+            "It is a clean way to avoid the whole arrivals-hall scrum on your first day, when you are tired and least in the mood to argue over a fare. Other big cities have their own airport metro or rail links worth checking, but Delhi's is the one most visitors will use."
+          ]
+        },
+        {
+          h: "Autos, meters, the note-switch and paying",
+          p: [
+            "Away from the apps, <b>auto-rickshaw</b> drivers are legally meant to run the meter but often refuse and name a flat price, so either agree the number before you set off or just book the auto through Uber, Ola or Rapido for a fixed fare. Watch for the <b>note-switch</b> trick, where a driver takes your 500 rupee note, palms it, and shows you a 100, claiming you underpaid. Count your notes out loud, keep small change handy, or pay by card or UPI in the app to avoid cash disputes entirely.",
+            "Tipping is not expected for a taxi, auto or app ride, though rounding up is a friendly gesture. For the wider money picture, including how much cash to carry and how card and UPI payments work, see the <a href=\"/india\">India money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does Uber work in India?", a: "Yes. Uber operates across more than a hundred Indian cities, alongside Ola, the big local rival, and Rapido for cheap motorbike and auto rides. inDrive lets you negotiate the fare. BluSmart, the all-electric app, suspended its rides in 2025, so do not rely on it. All the main apps show a fixed price before you ride." },
+        { q: "Which taxi app is best in India?", a: "Uber and Ola are both strong and widely covered, and either is a safe default. Rapido is the cheapest for short bike or auto hops where it operates. All show a fixed fare up front. Keep two installed, since drivers cancel and the occasional strike can thin availability, but on a normal day any of them beats haggling on the street." },
+        { q: "Are the taxi touts at Indian airports a scam?", a: "The ones who approach you usually are. They quote a fixed rate that runs well over the real fare, or claim your hotel is closed to divert you to one that pays them a commission. Use your app's marked pickup zone, or the official prepaid taxi booth run by the traffic police, which issues a printed slip with a set fare. In Delhi, the Airport Express metro is faster and cheaper still." },
+        { q: "Do auto-rickshaws use the meter in India?", a: "Legally they should, but many drivers refuse and quote a flat price, especially to visitors. Agree the fare before you set off, or book the auto through Uber, Ola or Rapido for a fixed price. Watch the note-switch trick, count your change, and paying by card or UPI in the app avoids cash disputes." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: India country information, general safety and local-travel context for US visitors", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/India.html", type: "gov" },
+          { label: "Business Standard: coverage of Uber India's city reach and the suspension of the electric app BluSmart", url: "https://www.business-standard.com/topic/uber-india", type: "news" },
+          { label: "Deccan Herald: reporting on BluSmart's suspension and its effect on airport rides", url: "https://www.deccanherald.com/india/karnataka/bengaluru/blusmart-crisis-affects-airport-commutes-the-most-3499219", type: "news" }
+        ],
+        judgment: "App coverage, fares and airport arrangements change, BluSmart's rides ended in 2025 and driver strikes flare up now and then, so check your app and the official prepaid counter, and treat rupee figures as a recent read. Checked July 2026."
+      }
     }
   ]
 };
