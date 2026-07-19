@@ -179,6 +179,7 @@ export default {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",
+      caution: "medium",
       title: "Which taxi app to use in South Africa, and the airport e-hailing bays (2026) | True Trip Costs",
       description: "Which ride app to install for South Africa (Uber and Bolt), why airport pickups happen at designated e-hailing bays not the curb, the taxi turf tension to know, and the Gautrain from Johannesburg airport. Checked July 2026.",
       h1: "Taxis in South Africa, and the airport e-hailing bays",

@@ -284,6 +284,7 @@ export default {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",
+      caution: "medium",
       title: "Uber or DiDi in Mexico, and the Cancun airport taxi problem (2026) | True Trip Costs",
       description: "Which ride app to use in Mexico (Uber, DiDi and inDrive all work), why the Mexico City airport rules keep changing, and why you cannot count on an app from Cancun airport thanks to the taxi union. Checked July 2026.",
       h1: "Uber and DiDi in Mexico, and the Cancun airport catch",

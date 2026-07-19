@@ -170,6 +170,7 @@ export default {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",
+      caution: "high",
       title: "Getting a taxi in Jamaica, and the red-plate rule (2026) | True Trip Costs",
       description: "Why there is no real Uber in Jamaica, how to tell a licensed red-plate taxi from an illegal white-plate 'robot', why you must agree the fare first, and the official airport taxi desk at Montego Bay. Checked July 2026.",
       h1: "Taxis in Jamaica, and the red-plate rule",

@@ -145,6 +145,7 @@ export default {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",
+      caution: "low",
       title: "Which taxi app to use in Vietnam, and the airport scam to skip (2026) | True Trip Costs",
       description: "Which ride app to install for Vietnam (Grab, plus the electric Xanh SM and Be), how the fake-taxi and rigged-meter tricks work at the Hanoi and Ho Chi Minh City airports, and the calm way to get from the airport into town. Checked July 2026.",
       h1: "Which taxi app to use in Vietnam, and the airport scam to skip",

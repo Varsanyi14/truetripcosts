@@ -253,6 +253,7 @@ export default {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",
+      caution: "medium",
       title: "Which taxi app to use in India, and the airport tout trap (2026) | True Trip Costs",
       description: "Which ride app to install for India (Uber, Ola and the bike-taxi Rapido), how the airport touts and 'prepaid' scams work, why the Delhi Airport Express metro is the calm way in, and the note-switch trick to watch. Checked July 2026.",
       h1: "Taxi apps in India, and the airport touts to skip",

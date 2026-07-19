@@ -180,6 +180,7 @@ export default {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",
+      caution: "medium",
       title: "Which taxi app to use in Bali and Indonesia, and the no-app zones (2026) | True Trip Costs",
       description: "Which ride app to install for Bali and Indonesia (Grab and Gojek, plus trusted Bluebird), why a local taxi mafia blocks app pickups in parts of Ubud and Canggu, and how to leave Denpasar airport without overpaying. Checked July 2026.",
       h1: "Taxi apps in Bali, and the pickup zones to know",

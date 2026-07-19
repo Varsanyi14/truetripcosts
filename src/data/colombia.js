@@ -162,6 +162,7 @@ export default {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",
+      caution: "medium",
       title: "Which taxi app to use in Colombia, and why never to hail one (2026) | True Trip Costs",
       description: "The one taxi rule that matters in Colombia, which ride app to install (DiDi and inDrive lead, with Uber and Cabify), how the point-to-peso meter works, and the safe way out of Bogota's El Dorado airport. Checked July 2026.",
       h1: "Taxi apps in Colombia, and the one rule that matters",

@@ -178,6 +178,7 @@ export default {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",
+      caution: "medium",
       title: "Which taxi app to use in Greece, and the Athens airport flat fare (2026) | True Trip Costs",
       description: "Which ride app to install for Greece (FreeNow leads, with Uber Taxi and Bolt), why they all call licensed yellow taxis, the fixed Athens airport fare, and the meter tricks to watch at the port and on the islands. Checked July 2026.",
       h1: "Taxis in Greece, and the Athens airport flat fare",

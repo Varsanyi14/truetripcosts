@@ -185,6 +185,7 @@ export default {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",
+      caution: "medium",
       title: "Which taxi app to use in Morocco: petit taxi, grand taxi and inDrive (2026) | True Trip Costs",
       description: "How Morocco's two-tier taxi system works, why petit-taxi drivers dodge the meter, which app to install (inDrive leads, with Careem and a limited Uber), and the right price from Marrakech airport into the medina. Checked July 2026.",
       h1: "Taxis in Morocco, and the app that actually works",

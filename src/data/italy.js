@@ -170,6 +170,7 @@ export default {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",
+      caution: "medium",
       title: "How taxis work in Italy, and the airport fixed fare that protects you (2026) | True Trip Costs",
       description: "Why you cannot hail a taxi on the street in Italy, which apps to use (itTaxi and FreeNow), why there is no cheap Uber, and the fixed airport fare from Rome Fiumicino that stops you overpaying. Checked July 2026.",
       h1: "Taxis in Italy, and the airport fixed fare",

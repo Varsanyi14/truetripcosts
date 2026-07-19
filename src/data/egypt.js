@@ -176,6 +176,7 @@ export default {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",
+      caution: "medium",
       title: "Uber or Careem in Egypt? The Cairo airport taxi trap, explained (2026) | True Trip Costs",
       description: "Which ride app to install for Egypt (Uber and Careem both work, with inDrive as a budget backup), why the old street cabs say the meter is broken, and how to leave Cairo airport without the flat-rate rip. Checked July 2026.",
       h1: "Uber or Careem in Egypt, and the Cairo airport taxi trap",

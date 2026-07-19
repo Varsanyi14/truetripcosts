@@ -162,6 +162,7 @@ export default {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",
+      caution: "low",
       title: "How taxis and Uber work in Paris, and the CDG airport fixed fare (2026) | True Trip Costs",
       description: "How Paris taxis and ride apps work (real Uber and Bolt here, plus G7 and FreeNow), the government-fixed CDG and Orly airport fares, the unlicensed touts to skip, and when the RER B train wins. Checked July 2026.",
       h1: "Paris taxis and Uber, and the CDG fixed fare",

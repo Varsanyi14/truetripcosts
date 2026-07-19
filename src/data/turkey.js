@@ -170,6 +170,7 @@ export default {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",
+      caution: "medium",
       title: "Which taxi app to use in Istanbul, and the airport done right (2026) | True Trip Costs",
       description: "How the Istanbul taxi meter works, why Uber here just calls a licensed yellow taxi, the flat-rate and fake-night-surcharge tricks to know, and the cheap way in from Istanbul Airport. Checked July 2026.",
       h1: "Istanbul taxis, the meter, and the airport done right",

@@ -284,6 +284,7 @@ export default {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",
+      caution: "medium",
       title: "Bangkok taxi meter tricks and the airport rank, sorted (2026) | True Trip Costs",
       description: "How Bangkok taxi drivers dodge the meter, which app to install (Grab and Bolt), and the step-by-step way to take the official metered taxi from Suvarnabhumi airport instead of the fake flat-rate touts. Checked July 2026.",
       h1: "Bangkok taxi meters, and the airport rank done right",

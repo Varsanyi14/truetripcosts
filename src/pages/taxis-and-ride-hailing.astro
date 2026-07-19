@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import USBadge from '../components/USBadge.astro';
+import { caution } from '../data/topics.js';
 import { countries } from '../data/index.js';
 
 // Taxi and ride-hailing spokes, gathered from every guide by topic. A country
@@ -14,7 +15,7 @@ const taxiSpokes = countries
   .filter(c => c.live)
   .flatMap(c => (c.spokes || [])
     .filter(s => s.topic === 'taxis' && s.live !== false)
-    .map(s => ({ h1: s.h1, lede: s.lede, spokeSlug: s.slug, country: c.name, countrySlug: c.slug })))
+    .map(s => ({ h1: s.h1, lede: s.lede, spokeSlug: s.slug, country: c.name, countrySlug: c.slug, caution: s.caution })))
   .sort((a, b) => a.country.localeCompare(b.country));
 ---
 <Base
@@ -37,8 +38,11 @@ const taxiSpokes = countries
         <div class="fx-panel">
           {taxiSpokes.map(s => (
             <a class="co-spoke" href={'/' + s.countrySlug + '/' + s.spokeSlug}>
-              <span class="co-spoke-h">{s.h1}</span>
-              <span class="co-spoke-d">{s.lede}</span>
+              <span class="co-spoke-tx">
+                <span class="co-spoke-h">{s.h1}</span>
+                <span class="co-spoke-d">{s.lede}</span>
+              </span>
+              {s.caution && caution[s.caution] && <span class={'cx-chip cx-' + s.caution}>{caution[s.caution].label}</span>}
             </a>
           ))}
         </div>
@@ -62,7 +66,9 @@ const taxiSpokes = countries
     .fx-keep{font-size:14px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line);padding-top:18px;margin:30px 0 40px;max-width:680px}
     .fx-keep a{color:var(--teal-deep);font-weight:500;text-decoration:none}
     .fx-keep a:hover{text-decoration:underline}
-    .co-spoke{display:block;padding:15px 18px;border-bottom:1px solid var(--line);text-decoration:none;transition:background-color .15s ease}
+    .co-spoke{display:flex;gap:14px;align-items:flex-start;padding:15px 18px;border-bottom:1px solid var(--line);text-decoration:none;transition:background-color .15s ease}
+    .co-spoke-tx{flex:1;min-width:0}
+    .co-spoke .cx-chip{flex:none;margin-top:2px}
     .co-spoke:last-child{border-bottom:0}
     .co-spoke:hover{background:var(--paper)}
     .co-spoke-h{display:block;font-family:var(--serif);font-weight:500;font-size:16.5px;color:var(--teal-deep);line-height:1.3;margin:0 0 3px}

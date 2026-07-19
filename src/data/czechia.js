@@ -170,6 +170,7 @@ export default {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",
+      caution: "medium",
       title: "Which taxi app to use in Prague, and the airport scam to skip (2026) | True Trip Costs",
       description: "Which ride app to install for Prague (Bolt is cheapest, with Uber and the local Liftago), why the city's old taxi-overcharging reputation is mostly outdated, and how to leave the airport without the flat-fare trick. Checked July 2026.",
       h1: "Prague taxis, the apps, and the airport scam to skip",
