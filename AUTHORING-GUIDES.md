@@ -106,9 +106,11 @@ Testing safely: set the GitHub repo variable `ALERTS_DRY_RUN` to `true` and the 
 
 ```sh
 npm run build
-# zero em dashes and zero en dashes across the built site:
-grep -rl $'\u2014' dist | wc -l    # must be 0
-grep -rl $'\u2013' dist | wc -l    # must be 0
+# Content gate: zero em dashes, zero en dashes, and zero periods-form "U.S.",
+# across source and the built site. Runs in Python so it is shell-independent.
+# (The earlier grep-based dash check was removed: it silently passed under the
+# sandbox shell, so a green result did not actually mean the site was clean.)
+python3 scripts/check-content.py    # must print: RESULT: PASS
 ```
 
 Then load the guide and expand "Sources, and how this guide was checked" to confirm the panel renders and the links are correct.
