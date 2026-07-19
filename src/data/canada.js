@@ -169,5 +169,74 @@ export default {
         note: "Say it: a game of shinny on the pond" },
     ],
     pride: "Canadians are warm, understated and quick to make room for a newcomer. They are proud of the sheer scale of the place, the second largest country on Earth, of two founding languages, and of a national habit of kindness that the sorry and the eh only hint at."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "bringing-your-pet",
+      live: true,
+      topic: "pets",
+      title: "Bringing a dog or cat to Canada from the US (2026): rabies certificate, the border, and the trip home | True Trip Costs",
+      description: "Moving to Canada with a pet from the US: why a current rabies vaccination certificate is essentially the whole requirement, no quarantine, no health certificate for adult pets, and what you need for the drive back. Checked July 2026.",
+      h1: "Bringing your dog or cat to Canada.",
+      lede: "Canada is one of the lightest-lift destinations for a US pet owner. For an adult dog or cat there is no health certificate, no quarantine, and no waiting period. One document does almost all the work: a valid rabies vaccination certificate. Here is exactly what the border wants, and the one thing to remember for the trip home.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "This is an easy one. For an adult dog or cat from the US, Canada asks for essentially <b>one document: a valid rabies vaccination certificate</b> from a licensed vet, in English or French, identifying your pet. There is <b>no health certificate for pets over the relevant age, no quarantine, and no waiting period</b>. You declare your pet to a border officer, who checks the rabies certificate and that the animal looks healthy, and you are through. Puppies and kittens under 3 months are exempt from the rabies requirement, and dogs under 8 months can need extra steps. Coming home, a dog needs the <b>CDC Dog Import Form and a microchip</b>, but no titer, because Canada is rabies-free. Cost and lead time are low: a vet visit and a few days of prep.",
+      sections: [
+        {
+          h: "The one document that matters",
+          p: [
+            "For an adult pet, Canada's requirement comes down to a single piece of paper: a <b>valid rabies vaccination certificate</b>, issued by a licensed veterinarian, proving vaccination within the last 3 years. It must identify your pet and, to avoid trouble at the border, be written in English or French. The certificate should show the vaccination date, the expiry or validity period, and the vaccine product used.",
+            "That is essentially the whole entry requirement for a dog over 3 months or a cat over 3 months. There is <b>no health certificate</b> for adult dogs and cats, no quarantine, no blood test, and no waiting period. The authority is the Canadian Food Inspection Agency (CFIA), and the check itself is done by a Canada Border Services Agency (CBSA) officer at the crossing."
+          ]
+        },
+        {
+          h: "The age rules that catch people out",
+          p: [
+            "Age is where Canada adds a little complexity, mostly for dogs. The clean, simple path applies to dogs over 8 months and to any dog or cat over 3 months carrying a rabies certificate. Below those thresholds, the rules branch."
+          ],
+          steps: [
+            "Puppies and kittens under 3 months are exempt from the rabies vaccination requirement, but you must be able to prove the animal's age to border officials.",
+            "Dogs under 8 months traveling with their owner need proof of current rabies vaccination if they are over 3 months, but no health certificate.",
+            "Dogs under 8 months traveling unaccompanied (shipped without you) must be examined and have a health certificate issued by a licensed vet within 72 hours of arrival in Canada.",
+            "Cats of any age over 3 months need only the rabies certificate; kittens under 3 months are exempt. Cats never need a health certificate for Canada."
+          ]
+        },
+        {
+          h: "Driving versus flying",
+          p: [
+            "Most US pet owners drive into Canada, and the land crossing is the simplest option: your pet stays in the vehicle, no airline policy applies, and there is no crate-size limit. Keep the rabies certificate with your own travel documents, declare the pet when the CBSA officer asks, and keep the animal calm and restrained. A visibly sick animal can be referred for inspection or refused, so travel with a pet that is in good shape.",
+            "Flying is straightforward too, but it hands you the airline's rulebook on top of Canada's. Cabin size limits, cargo booking, and carrier requirements vary by airline, and a pet too large for the cabin travels as cargo at meaningfully higher cost. If you fly, confirm your carrier's pet policy well before you book."
+          ]
+        },
+        {
+          h: "The trip home",
+          p: [
+            "Canada is recognized as rabies-free, which makes the return leg to the US one of the easiest. A dog coming home needs a <b>CDC Dog Import Form</b> (you complete it online and carry the receipt), a microchip readable by a universal scanner, a minimum age of 6 months, and a healthy appearance on arrival. Because Canada is not high-risk for dog rabies, there is <b>no titer test and no quarantine</b>, and the form receipt can cover multiple entries for up to 6 months as long as your pet stays within the US, Canada, and Mexico.",
+            "Cats returning to the US have essentially no federal requirement. For the full detail on the return, see our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a>, and for how Canada stacks up against other destinations on effort and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."
+          ]
+        }
+      ],
+      official: {
+        label: "USDA APHIS: pet travel from the US to Canada",
+        url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-canada",
+        note: "The US-side summary of Canada's rules, including the rabies-certificate requirement and the age branches for dogs. The CFIA is the Canadian authority, and a CBSA officer runs the check at the border."
+      },
+      faqs: [
+        { q: "What do I need to bring my dog or cat to Canada from the US?", a: "For an adult pet, essentially one thing: a valid rabies vaccination certificate from a licensed vet, within the last 3 years, in English or French, identifying your animal. There is no health certificate for adult dogs and cats, no quarantine, and no waiting period. You declare the pet at the border and an officer checks the certificate and that the animal looks healthy." },
+        { q: "Does my pet have to quarantine in Canada?", a: "No. Canada has no quarantine for personal dogs and cats arriving from the US, and no blood test or waiting period. A healthy adult pet with a valid rabies certificate is cleared at the border." },
+        { q: "What are the rules for puppies going to Canada?", a: "It depends on age and whether the puppy travels with you. Puppies under 3 months are exempt from rabies vaccination but you must prove their age. Puppies over 3 months traveling with their owner need proof of rabies vaccination. A puppy under 8 months shipped unaccompanied must be examined and have a health certificate issued within 72 hours of arrival." },
+        { q: "What do I need to bring my dog back to the US from Canada?", a: "Because Canada is rabies-free, the return is easy: a CDC Dog Import Form (completed online, carry the receipt), a microchip, a minimum age of 6 months, and a healthy appearance. There is no titer test and no quarantine. Cats have no federal requirement returning to the US." }
+      ],
+      sources: {
+        links: [
+          { label: "USDA APHIS: pet travel from the United States to Canada, the rabies-certificate requirement and the dog age branches", url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-canada", type: "gov" },
+          { label: "Canadian Food Inspection Agency (CFIA): bringing pets to Canada, the authority on the day of entry", url: "https://inspection.canada.ca/importing-food-plants-or-animals/pets/eng/1326600389775/1326600500578", type: "gov" },
+          { label: "CDC: entry requirements for dogs from dog rabies-free or low-risk countries, the CDC Dog Import Form and microchip rules for the return", url: "https://www.cdc.gov/importation/dogs/rabies-free-low-risk-countries.html", type: "gov" }
+        ],
+        judgment: "Canada's entry rules are set by the CFIA and administered on the US side by APHIS, with the dog-return rules set by the CDC. The requirements are light and stable, but the dog age branches and the CDC return rules are the parts worth checking, so we point you to the official pages and dated this July 2026. Airline policies for flying add their own layer, so confirm your carrier's pet rules before booking."
+      }
+    }
+  ]
 };

@@ -336,6 +336,67 @@ export default {
         ],
         judgment: "The airport app rules are moving fast, especially around the 2026 World Cup, and the Cancun taxi-union situation shifts, so check your app and keep a backup like the ADO bus or a pre-booked transfer. Fares move with the peso, so treat any amounts as a recent read. Checked July 2026."
       }
+    },
+    {
+      slug: "bringing-your-pet",
+      live: true,
+      topic: "pets",
+      title: "Bringing a dog or cat to Mexico from the US (2026): the easy entry and the screwworm catch on the way home | True Trip Costs",
+      description: "Moving to Mexico with a pet from the US: why entry is one of the simplest anywhere, no health certificate and a quick SENASICA inspection, and why the real paperwork is on the return leg for dogs. Checked July 2026.",
+      h1: "Bringing your dog or cat to Mexico.",
+      lede: "Mexico is one of the easiest destinations for a US pet owner. There is no health certificate to file, no quarantine, and no waiting period. The catch is not getting your pet in, it is bringing a dog back: since late 2024 Mexico is treated as screwworm-affected, so US dogs returning home need an extra certification. Here is the whole picture, both directions.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Good news: this is one of the simplest moves there is. Mexico dropped its pet health-certificate requirement for dogs and cats from the US back in 2019, so there is <b>no certificate to file, no quarantine, and no waiting period</b>. Your pet is inspected by <b>SENASICA</b> at the port of entry to confirm it looks healthy and parasite-free, and you are through. Bring a <b>current rabies vaccination record and parasite-treatment history</b> anyway, since airlines usually require them and it speeds the inspection. The real paperwork is on the way home: because Mexico is treated as <b>screwworm-affected</b>, a dog returning to the US needs a screwworm-freedom certification, plus the CDC Dog Import Form and a microchip. Budget <b>roughly $200 to $500</b> if you drive, more if your pet flies as cargo.",
+      sections: [
+        {
+          h: "Getting in is the easy part",
+          p: [
+            "Mexico is refreshingly light on entry rules. Since 16 December 2019, a health certificate is <b>no longer required</b> for dogs and cats traveling from the US. You take your pet to the border or airport, and officials from SENASICA, Mexico's agricultural health authority, carry out a physical inspection at the Animal and Plant Health Inspection Office (known by its Spanish initials, OISA).",
+            "At that inspection they confirm three things: your pet shows no signs of infectious or contagious disease, it is free of external parasites such as fleas and ticks, and it has no fresh or healing wounds. If parasites are found, you will need to have them treated at your own cost before the pet is released. There is no quarantine and no waiting period for a healthy animal that passes inspection."
+          ]
+        },
+        {
+          h: "What to bring, even though it is not officially required",
+          p: [
+            "Mexico does not require you to present a rabies certificate or vaccination record to SENASICA for a US-origin pet. In practice, though, you should travel with a <b>current rabies vaccination certificate and a record of recent internal and external parasite treatment</b>. Airlines almost always ask for proof of rabies vaccination before they will board your pet, and having clean records on hand makes the SENASICA inspection faster. Treat these as things you will want in your folder, not optional extras.",
+            "A few practical limits: the simple personal-pet process covers up to three animals per person. Bring more and Mexican customs may treat it as a commercial shipment with extra rules. Your pet's carrier must arrive clean, with no bedding, toys, or edible products inside, as officials may require these be removed and destroyed. Only the food needed for the day of arrival is allowed."
+          ]
+        },
+        {
+          h: "Driving versus flying",
+          p: [
+            "Land crossings are common and simple, especially for people driving into Baja California, Sonora, or other northern states. The SENASICA inspection is the same at a land border as at an airport, and driving avoids airline cargo fees and crate rules entirely, which is why the all-in cost can be as low as a couple hundred dollars.",
+            "Flying adds cost and logistics. Pets too large for the cabin fly as cargo, which is the single biggest expense on this route and pushes a fly-in move well above the drive-in figure. Check your airline's specific pet policy early, since cabin size limits, cargo booking windows, and seasonal embargoes vary by carrier."
+          ]
+        },
+        {
+          h: "Coming home is where the paperwork lives",
+          p: [
+            "This is the part that surprises people. Entering Mexico is easy, but bringing a dog back to the US has become the harder leg. As of 22 November 2024, Mexico is considered affected by New World screwworm, so <b>every dog entering or re-entering the US after time in Mexico must meet APHIS screwworm-freedom certification requirements</b>. That is on top of the standard CDC rules for dogs: a completed <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a>, a microchip readable by a universal scanner, a minimum age of 6 months, and a healthy appearance on arrival.",
+            "Because Mexico is not high-risk for dog rabies, US-vaccinated dogs returning from Mexico avoid the strictest CDC titer-and-quarantine path, and the CDC form receipt can cover multiple entries for up to 6 months as long as the pet stays within the US, Mexico, and Canada. Cats have it far easier in both directions: no CDC import form, no microchip mandate, and no screwworm certificate. If you are moving a dog, plan the screwworm certification before you travel home, not at the border. Our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a> covers the return in detail, and for how Mexico compares with other destinations on effort and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."
+          ]
+        }
+      ],
+      official: {
+        label: "USDA APHIS: pet travel from the US to Mexico",
+        url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-mexico",
+        note: "The US-side view of Mexico's rules, including the no-health-certificate policy and the screwworm notice for dogs returning to the US. SENASICA is the authority on the day of entry."
+      },
+      faqs: [
+        { q: "Do I need a health certificate to bring my dog or cat to Mexico?", a: "No. Since December 2019, Mexico no longer requires a health certificate for dogs and cats traveling from the US. Your pet is inspected physically by SENASICA at the port of entry instead. It is still smart to travel with a current rabies vaccination certificate and parasite-treatment records, because airlines usually require them and they speed up the inspection." },
+        { q: "Is there a quarantine or waiting period for pets entering Mexico?", a: "No. There is no quarantine and no waiting period for a healthy pet. SENASICA inspects your dog or cat on arrival to confirm it shows no sign of disease, is free of external parasites, and has no fresh wounds. If it passes, you are through the same day." },
+        { q: "How much does it cost to bring a pet to Mexico?", a: "If you drive across the border, it can be as little as $200 to $500, since there are no Mexican government fees and the main costs are your vet visit and travel. Flying costs more, sometimes much more, because a pet too big for the cabin travels as cargo, which is the largest single expense on this route." },
+        { q: "What do I need to bring my dog back to the US from Mexico?", a: "More than you needed to get in. Since November 2024 Mexico is treated as screwworm-affected, so a dog returning to the US must meet APHIS screwworm-freedom certification requirements, in addition to the standard CDC rules: a CDC Dog Import Form, a microchip, a minimum age of 6 months, and a healthy appearance. Cats do not need any of this. Sort the dog paperwork before you travel home." }
+      ],
+      sources: {
+        links: [
+          { label: "USDA APHIS: pet travel from the United States to Mexico, the no-health-certificate policy, SENASICA inspection, and the screwworm notice for returning dogs", url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-mexico", type: "gov" },
+          { label: "SENASICA (gob.mx): Mexico's national agricultural health authority and pet-import requirements", url: "https://www.gob.mx/senasica", type: "gov" },
+          { label: "CDC: entry requirements for dogs from dog rabies-free or low-risk countries, the CDC Dog Import Form and microchip rules for the return leg", url: "https://www.cdc.gov/importation/dogs/rabies-free-low-risk-countries.html", type: "gov" }
+        ],
+        judgment: "Mexico's entry rules are set by SENASICA and, on the US side, administered by APHIS, with the dog-return rules set by the CDC. The no-certificate entry policy is unusually simple, but the screwworm situation on the return leg is recent and has shifted more than once, so we point you to the official pages and dated this July 2026. Costs vary with your route and your pet's size, so treat the range as a starting point and confirm the current screwworm and CDC requirements before you travel home."
+      }
     }
   ]
 };
