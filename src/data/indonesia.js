@@ -173,5 +173,64 @@ export default {
         note: "Good to know: Balinese dance is UNESCO listed" },
     ],
     pride: "Indonesians are gentle, gracious and quick to smile, and they hold together an astonishing variety of islands, languages and faiths under one flag. They are proud of that unity in diversity, of ancient temples and living arts, and of a warmth that greets every guest."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      title: "Which taxi app to use in Bali and Indonesia, and the no-app zones (2026) | True Trip Costs",
+      description: "Which ride app to install for Bali and Indonesia (Grab and Gojek, plus trusted Bluebird), why a local taxi mafia blocks app pickups in parts of Ubud and Canggu, and how to leave Denpasar airport without overpaying. Checked July 2026.",
+      h1: "Taxi apps in Bali, and the pickup zones to know",
+      lede: "Bali has no trains and barely any public transport, so the apps matter, but a local taxi mafia complicates them in a few tourist spots. Here is which app to install, how to spot a fake Bluebird, and where the apps quietly stop working.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Install <b>Grab</b> and <b>Gojek</b> before you land. Both show a fixed price up front for cars and for motorbike (<b>ojek</b>) rides, and they are almost always cheaper than a street taxi. For a trusted metered cab, use <b>Bluebird</b>, either its own app or the <b>GoBlueBird</b> option inside Gojek, and beware copycat blue cars. <b>Uber</b> does not operate in Indonesia. The catch in Bali is a local taxi <b>mafia</b> that blocks app pickups in certain zones, like central Ubud, parts of Canggu and Uluwatu, where a driver may ask you to walk to a nearby buffer spot. At <b>Denpasar airport</b>, use the official prepaid counter or a pre-booked transfer.",
+      sections: [
+        {
+          h: "Which app to install",
+          p: [
+            "<b>Grab</b> and <b>Gojek</b> are the two big apps across Indonesia, both showing a fixed fare before you ride and both doing cars and motorbike rides. Keep both, since prices differ by route and time, and Grab tends to have better availability for longer runs while Gojek often wins on short hops. <b>Maxim</b> and <b>inDrive</b> are cheaper backups. <b>Uber</b> left Southeast Asia in 2018, so it does not work here, and any old guide telling you to use it is out of date.",
+            "For a traditional metered taxi, <b>Bluebird</b> is the one to trust, and the cleanest way to get a real one is through the Bluebird app or the <b>GoBlueBird</b> option inside Gojek. One practical catch: Grab and Gojek need a <b>local phone number</b> to register, so pick up a SIM as soon as you land, or ask the airport lounge staff to help, otherwise you may be stuck before you start."
+          ]
+        },
+        {
+          h: "Bluebird, and the fake-Bluebird trick",
+          p: [
+            "<b>Bluebird</b> is a blue car with a white bird logo, uniformed drivers, and a meter that is always on, and it is the metered taxi that locals and expats actually trust. The trick to know is the imitation: some drivers give a car a blue paint job and a similar-looking logo, and a name like <b>Bali Taxi</b> that is close but not the real thing. If a blue taxi looks not quite right, walk on and book a genuine Bluebird in the app.",
+            "Even in a real Bluebird, make sure the meter is running from the start. The advantage of booking through the app rather than flagging one down is that you get the driver and plate on record and the fare tracked, which removes the two most common street problems in one go, the fake cab and the meter that mysteriously will not work."
+          ]
+        },
+        {
+          h: "The no-app zones (the taxi mafia)",
+          p: [
+            "This is the part that surprises visitors. Bali runs partly on <b>banjar</b>, or village, rules, and in some areas a local taxi union bans Grab and Gojek pickups outright. The usual spots are <b>central Ubud</b> (around Monkey Forest Road, the palace and the market), parts of <b>Canggu</b>, the <b>Uluwatu</b> temple area, and some beaches and temple or ferry points. The apps still work, but a driver may ask you to walk <b>300 to 500 meters</b> to a buffer spot to be picked up, or to be dropped a short walk before your destination.",
+            "The good news is that dropping off in these zones is usually fine, it is the pickup that is controlled, so getting out is rarely a problem. In the strictest spots, a motorbike <b>ojek</b> or a local fixed-rate car may be the only way, in which case agree the price first. None of this is dangerous, it is a turf arrangement, and a short walk to where the app driver can legally collect you is the normal workaround."
+          ]
+        },
+        {
+          h: "Denpasar airport and paying",
+          p: [
+            "At <b>Denpasar</b> (Ngurah Rai, DPS), the official <b>prepaid taxi counter</b> sits on your left before you exit arrivals, selling zone-based fixed fares, roughly <b>150,000 to 450,000 rupiah</b> depending on how far you are going. <b>Grab</b> and <b>Gojek</b> also work from the airport, with a small airport exit fee added, and are usually comparable. A <b>pre-booked private transfer</b>, around 10 to 25 US dollars, gives you a fixed price and a driver waiting with your name.",
+            "One honest point: in Bali's heavy traffic, a meter is not always the cheapest option, since it keeps ticking in a jam, so a fixed airport fare or a booked transfer can protect your wallet on the long run up to Ubud. Carry <b>rupiah</b> in cash for street rides and small extras. For the wider money picture, see the <a href=\"/indonesia\">Indonesia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does Uber work in Bali or Indonesia?", a: "No. Uber left Southeast Asia in 2018. Install Grab and Gojek instead, both fixed-price for cars and motorbike rides, with Maxim and inDrive as cheaper backups. For a trusted metered taxi, use Bluebird through its own app or the GoBlueBird option inside Gojek." },
+        { q: "Why can't I get a Grab in Ubud or Canggu?", a: "Because of Bali's local taxi mafia. Under village (banjar) rules, some areas ban app pickups, including central Ubud, parts of Canggu, Uluwatu and some beaches. The app still works, but a driver may ask you to walk 300 to 500 meters to a buffer spot, or you can take an ojek. Drop-offs in these zones are usually fine; it is the pickup that is blocked." },
+        { q: "What is the taxi from Bali airport?", a: "At Denpasar, the official prepaid taxi counter inside arrivals sells zone-based fixed fares, roughly 150,000 to 450,000 rupiah by destination. Grab and Gojek also work with a small exit fee added, and a pre-booked private transfer runs about 10 to 25 US dollars and waits with your name. All beat haggling with a street taxi." },
+        { q: "Are Bali taxis a scam?", a: "Most are fine, but watch for fake Bluebirds, drivers who say the meter is broken and quote a flat price, and a phantom toll fee on routes with no toll. Stick to Grab, Gojek or a genuine Bluebird booked in the app, and confirm the plate and driver name before you get in. In heavy traffic, a fixed fare often beats the meter." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: Indonesia country information, general safety and local-travel context for US visitors", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Indonesia.html", type: "gov" },
+          { label: "A Walk in the World: a 2026 Bali airport taxi guide covering Bluebird, Grab, Gojek and prepaid fares", url: "https://awalkintheworld.com/how-to-avail-a-bluebird-taxi-in-bali-airport/", type: "guide" },
+          { label: "TRAppe Travel: a 2026 Bali taxi guide on Bluebird, the app-restricted zones and avoiding fakes", url: "https://www.trappetravel.com/blogs/news/local-taxi-in-bali", type: "guide" }
+        ],
+        judgment: "The no-app zones and airport rules shift, and fares move, so treat rupiah figures as a recent read and check the price in your app. Grab and Gojek need a local SIM to register. Checked July 2026."
+      }
+    }
+  ]
 };

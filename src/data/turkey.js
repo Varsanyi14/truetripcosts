@@ -1,7 +1,7 @@
 export default {
   slug: "turkey",
   live: true,
-  name: "Türkiye",
+  name: "Turkey",
   from: "United States",
   checked: "Jul 2026",
   checkedISO: "2026-07-10",
@@ -12,10 +12,10 @@ export default {
   hook: "Cards work in the cities, but bazaars, taxis and street food still want lira, and the lira moves fast.",
   aliases: ["turkey", "turkiye", "istanbul", "cappadocia", "antalya", "izmir", "ankara", "bodrum", "fethiye", "turkish lira", "try", "lira", "turkish"],
 
-  title: "Money in Türkiye (2026): Cards, Cash, Lira and Tipping | True Trip Costs",
-  description: "How to handle money in Türkiye (Turkey) as a US traveler in 2026: cards and tap work in cities but cash still rules the bazaars, why the lira moves fast with inflation, paying in lira not dollars, which ATMs to use, the accommodation tax, VAT that's already in the price, and how much to tip. Checked July 2026.",
+  title: "Money in Turkey (2026): Cards, Cash, Lira and Tipping | True Trip Costs",
+  description: "How to handle money in Turkey as a US traveler in 2026: cards and tap work in cities but cash still rules the bazaars, why the lira moves fast with inflation, paying in lira not dollars, which ATMs to use, the accommodation tax, VAT that's already in the price, and how much to tip. Checked July 2026.",
 
-  h1: "Money in Türkiye, sorted.",
+  h1: "Money in Turkey, sorted.",
   lede: "A calm, current plan for the money side of your trip: where cards work and where you still need cash, why the lira moves so fast, and the small tips (bahsis) that smooth the way.",
   hero: {
     img: "/turkey-hero.jpg",
@@ -25,7 +25,7 @@ export default {
 
   notice: 'We only cover trips departing from the United States right now. Want an email the moment we add your home country? <a href="#" onclick="return false"><b>Sign up for an alert</b></a>.',
 
-  verdict: "Türkiye is easy for cards in the cities: hotels, restaurants, malls and supermarkets take Visa and Mastercard, and contactless, Apple Pay and Google Pay are common. The cash side is the <b>bazaars, street food, taxis, small cafes and tips</b>, where lira is king and cash often gets you a better price when you bargain. Bring a <b>no-foreign-fee Visa or Mastercard</b>, keep a stack of <b>lira</b> for markets and small vendors, and pull more from a <b>bank ATM</b> (Ziraat, Isbank, Garanti, Akbank, Yapi Kredi). The big thing to know is the <b>lira moves fast</b>: inflation has been high, so prices from an old blog or guidebook can be badly out of date, and the one rule that always saves money is to pay in <b>lira, not dollars</b>, on every card screen.",
+  verdict: "Turkey is easy for cards in the cities: hotels, restaurants, malls and supermarkets take Visa and Mastercard, and contactless, Apple Pay and Google Pay are common. The cash side is the <b>bazaars, street food, taxis, small cafes and tips</b>, where lira is king and cash often gets you a better price when you bargain. Bring a <b>no-foreign-fee Visa or Mastercard</b>, keep a stack of <b>lira</b> for markets and small vendors, and pull more from a <b>bank ATM</b> (Ziraat, Isbank, Garanti, Akbank, Yapi Kredi). The big thing to know is the <b>lira moves fast</b>: inflation has been high, so prices from an old blog or guidebook can be badly out of date, and the one rule that always saves money is to pay in <b>lira, not dollars</b>, on every card screen.",
 
   meter: {
     heading: "Cards in the cities, cash for the bazaar.",
@@ -43,7 +43,7 @@ export default {
     { sym: "tag", when: "Before you go", bullets: [
       "Bring a <b>no-foreign-fee Visa or Mastercard</b> with contactless, plus a backup card from a different bank.",
       "Get a <b>no-foreign-fee debit card</b> for cash. Charles Schwab refunds ATM fees worldwide; Wise and Revolut are low-fee.",
-      "Türkiye is not in the EU, so EU roaming does not apply. An eSIM (Airalo, Nomad, Ubigi) is usually simplest, and it sidesteps the phone-registration rules that apply to longer stays."
+      "Turkey is not in the EU, so EU roaming does not apply. An eSIM (Airalo, Nomad, Ubigi) is usually simplest, and it sidesteps the phone-registration rules that apply to longer stays."
     ], cta: { label: "See no-fee card options", tag: "earn", href: "#" } },
     { sym: "plane", when: "At the airport", bullets: [
       "Skip the airport exchange counters, the rates are poor.",
@@ -73,11 +73,11 @@ export default {
   },
 
   connectivity: {
-    works: "Good across the cities and tourist regions and along the coasts, with the usual thinning in remote mountains and the far east. The networks are Turkcell, Vodafone and Turk Telekom, all with wide 4G and growing 5G. Türkiye is not in the EU, so European roaming does not apply here. An eSIM (Airalo, Nomad, Ubigi) is the easy choice for a visit, and it also avoids the phone-registration rule that can block a foreign handset used with a local SIM beyond a few months. You do not need mobile data to pay for anything; cards and cash stand on their own."
+    works: "Good across the cities and tourist regions and along the coasts, with the usual thinning in remote mountains and the far east. The networks are Turkcell, Vodafone and Turk Telekom, all with wide 4G and growing 5G. Turkey is not in the EU, so European roaming does not apply here. An eSIM (Airalo, Nomad, Ubigi) is the easy choice for a visit, and it also avoids the phone-registration rule that can block a foreign handset used with a local SIM beyond a few months. You do not need mobile data to pay for anything; cards and cash stand on their own."
   },
 
   // ACCOMMODATION TAX (verified to Jul 2026 knowledge; confirm rate).
-  // Türkiye applies a national accommodation tax (konaklama vergisi) on the accommodation service,
+  // Turkey applies a national accommodation tax (konaklama vergisi) on the accommodation service,
   // added to hotel bills nationwide. The standard rate is 2%, but a Presidential Decision temporarily
   // cut it to 1% from 1 May through 31 December 2026, after which it returns to 2%. There is no
   // separate per-city tourist tax. VAT (KDV) on hotels is separate and generally shown within the
@@ -86,15 +86,15 @@ export default {
     unit: "percentOfRoom",
     currency: "TRY",
     capNights: null,
-    note: "Türkiye's national accommodation tax is temporarily reduced to 1% of the room price through 31 December 2026 (down from the standard 2%, which returns in 2027), added to your bill and the same everywhere rather than varying by city. This estimates the current 1% add-on. VAT (KDV) on accommodation is separate and usually shown within the room rate.",
+    note: "Turkey's national accommodation tax is temporarily reduced to 1% of the room price through 31 December 2026 (down from the standard 2%, which returns in 2027), added to your bill and the same everywhere rather than varying by city. This estimates the current 1% add-on. VAT (KDV) on accommodation is separate and usually shown within the room rate.",
     regions: [
-      { key: "all", label: "All of Türkiye", pct: 1, note: "The national accommodation tax is temporarily 1% through 31 December 2026 (down from 2%), added to hotel bills across the country. Some room rates you book online already fold it in." }
+      { key: "all", label: "All of Turkey", pct: 1, note: "The national accommodation tax is temporarily 1% through 31 December 2026 (down from 2%), added to hotel bills across the country. Some room rates you book online already fold it in." }
     ]
   },
 
   currencyHeading: "The Turkish lira, in plain terms.",
   facts: [
-    { sym: "coins", k: "Quick conversion", v: "Türkiye uses the lira (TRY). As a rough mid-2026 guide at about 48 lira to 1 US dollar, 100 lira is roughly $2, 500 lira about $10.50, and 1000 lira about $21. Because the rate moves quickly, treat these as a snapshot and check a live converter." },
+    { sym: "coins", k: "Quick conversion", v: "Turkey uses the lira (TRY). As a rough mid-2026 guide at about 48 lira to 1 US dollar, 100 lira is roughly $2, 500 lira about $10.50, and 1000 lira about $21. Because the rate moves quickly, treat these as a snapshot and check a live converter." },
     { sym: "smallnotes", k: "Notes and coins", v: "Lira notes run 5, 10, 20, 50, 100 and 200, and the 200 is the largest, so day to day you will carry a thick stack. There are 1 lira and small kurus coins, but years of inflation have left the coins nearly worthless, so you will rarely bother with them." },
     { sym: "usd", k: "The lira moves fast", v: "This is the one to watch. High inflation means prices and the exchange rate can change noticeably within a year, so a cost quoted in an old blog, guidebook or forum post may be well off. Trust a current converter and current menus rather than anything dated." },
     { sym: "tag", k: "Tax is already in the price", v: "Turkish VAT (KDV) is included in the marked price: 20% on most things, and a reduced 10% on food and hotel stays. The shop or menu price is what you pay, and at affiliated Tax Free shops non-residents can reclaim the VAT on larger purchases at the airport." }
@@ -103,7 +103,7 @@ export default {
   taxfree: {
     label: "Taxes, tips and refunds",
     heading: "Tax in the price, a small hotel tax, and modest tips.",
-    text: "In Türkiye, <b>VAT (KDV) is already included</b> in the marked price: 20% on most goods and services, and a reduced 10% on food and hotel accommodation. Shops that display a <b>Tax Free</b> sign can issue a refund form so non-residents can reclaim the VAT on larger purchases when leaving the country, usually at the airport. Hotels add a small <b>national accommodation tax</b> to your bill, currently <b>1%</b> (temporarily reduced from 2% through the end of 2026), the same across the country. <b>Tipping (bahsis) is modest but expected</b>: at restaurants, around 5 to 10% for good service, though check first whether a <b>servis</b> (service) charge has already been added. Round up for taxis, leave a little for hotel staff and helpful guides, and small change is welcome at a hamam. Cash tips are preferred. There is no separate departure tax; airport charges are built into your ticket."
+    text: "In Turkey, <b>VAT (KDV) is already included</b> in the marked price: 20% on most goods and services, and a reduced 10% on food and hotel accommodation. Shops that display a <b>Tax Free</b> sign can issue a refund form so non-residents can reclaim the VAT on larger purchases when leaving the country, usually at the airport. Hotels add a small <b>national accommodation tax</b> to your bill, currently <b>1%</b> (temporarily reduced from 2% through the end of 2026), the same across the country. <b>Tipping (bahsis) is modest but expected</b>: at restaurants, around 5 to 10% for good service, though check first whether a <b>servis</b> (service) charge has already been added. Round up for taxis, leave a little for hotel staff and helpful guides, and small change is welcome at a hamam. Cash tips are preferred. There is no separate departure tax; airport charges are built into your ticket."
   },
 
   traps: [
@@ -114,23 +114,23 @@ export default {
   ],
 
   tippingHeading: "Modest but expected: about 5 to 10%.",
-  tipping: "Tipping in Türkiye, called bahsis, is modest but part of the culture, so keep small notes handy. At a sit-down restaurant, around 5 to 10% for good service is normal, but first check the bill for a servis (service) charge, which some places add; if it is there, a little extra is enough. For a quick cafe or street food, rounding up is fine. Taxis get rounded up to a convenient figure. Leave a little for hotel housekeeping and porters, tip a helpful guide or driver, and small change is customary for a hamam attendant or a mosque-shoe minder. Cash tips are preferred, since a card tip rarely reaches the staff.",
+  tipping: "Tipping in Turkey, called bahsis, is modest but part of the culture, so keep small notes handy. At a sit-down restaurant, around 5 to 10% for good service is normal, but first check the bill for a servis (service) charge, which some places add; if it is there, a little extra is enough. For a quick cafe or street food, rounding up is fine. Taxis get rounded up to a convenient figure. Leave a little for hotel housekeeping and porters, tip a helpful guide or driver, and small change is customary for a hamam attendant or a mosque-shoe minder. Cash tips are preferred, since a card tip rarely reaches the staff.",
   sources: {
-    changed: "Re-checked July 2026. Turkiye's accommodation tax is set at 2% of the room price under the Expense Taxes Law, but a Presidential Decision temporarily reduced it to 1% from 1 May through 31 December 2026, after which it returns to 2%. We updated the guide to the current 1%. Standard VAT (KDV) is 20%, with a reduced 10% on accommodation.",
+    changed: "Re-checked July 2026. Turkey's accommodation tax is set at 2% of the room price under the Expense Taxes Law, but a Presidential Decision temporarily reduced it to 1% from 1 May through 31 December 2026, after which it returns to 2%. We updated the guide to the current 1%. Standard VAT (KDV) is 20%, with a reduced 10% on accommodation.",
     links: [
-      { label: "Turkiye accommodation tax guidance: the 2% rate (Konaklama Vergisi), temporarily reduced to 1% through 31 December 2026", url: "https://regfollower.com/turkey-revenue-administration-updates-guidance-on-accommodation-tax-rules/", type: "revenue" },
-      { label: "VAT in Turkiye tax guide: the 20% standard KDV and the tourist VAT refund from 2,000 lira in a single store", url: "https://sadarethukuk.com/en/vat-turkey-foreigner/", type: "guide" },
+      { label: "Turkey accommodation tax guidance: the 2% rate (Konaklama Vergisi), temporarily reduced to 1% through 31 December 2026", url: "https://regfollower.com/turkey-revenue-administration-updates-guidance-on-accommodation-tax-rules/", type: "revenue" },
+      { label: "VAT in Turkey tax guide: the 20% standard KDV and the tourist VAT refund from 2,000 lira in a single store", url: "https://sadarethukuk.com/en/vat-turkey-foreigner/", type: "guide" },
     ],
     judgment: "This guide estimates the accommodation tax at the current temporary 1%, which applies through 31 December 2026; it returns to the standard 2% in 2027, so a stay from then on would carry a little more. The daily cash share, tipping norms and likely ATM behavior are our own estimate from experience, not an official figure.",
   },
 
   faqs: [
-    { q: "Do I need cash in Türkiye?", a: "Yes, a fair amount. Cards work well in cities for hotels, restaurants, malls and supermarkets, but the Grand Bazaar, street food, small cafes, many taxis and tips all run on lira, and cash helps you bargain. Keep a healthy stack and top up at a bank ATM, expecting a modest per-withdrawal cap." },
+    { q: "Do I need cash in Turkey?", a: "Yes, a fair amount. Cards work well in cities for hotels, restaurants, malls and supermarkets, but the Grand Bazaar, street food, small cafes, many taxis and tips all run on lira, and cash helps you bargain. Keep a healthy stack and top up at a bank ATM, expecting a modest per-withdrawal cap." },
     { q: "Should I pay in Turkish lira or US dollars?", a: "Lira. If a card terminal or ATM offers to charge you in US dollars, decline; that dynamic currency conversion typically adds 3 to 8%. Some tourist shops quote in dollars or euros too, so ask for the lira price and compare before you pay." },
     { q: "Why does everything cost a different amount than my guidebook says?", a: "Inflation. The lira has been sliding quickly, so prices and the exchange rate can shift a lot within a year, and older guidebooks, blogs and forum posts are often well out of date. Check a live converter and current menus rather than trusting dated figures." },
-    { q: "What is the best ATM to use in Türkiye?", a: "A major bank's machine, such as Ziraat, Isbank, Garanti, Akbank or Yapi Kredi. Read the fee, expect a modest per-withdrawal limit, and always decline the offer to convert to US dollars. Avoid the standalone machines clustered in tourist areas, which push poor conversions." },
-    { q: "How much should I tip in Türkiye?", a: "Around 5 to 10% at restaurants for good service, but check first for a servis (service) charge on the bill. Round up for taxis, leave a little for hotel staff and guides, and keep small change for a hamam attendant. Cash tips are preferred, as card tips rarely reach the staff." },
-    { q: "Does Türkiye charge a tourist tax?", a: "There is a national accommodation tax added to hotel bills, the same across the country rather than varying by city. It is temporarily 1% through 31 December 2026 (down from the standard 2%, which returns in 2027), and some room rates you book online already include it. There is no separate per-night city tourist tax." }
+    { q: "What is the best ATM to use in Turkey?", a: "A major bank's machine, such as Ziraat, Isbank, Garanti, Akbank or Yapi Kredi. Read the fee, expect a modest per-withdrawal limit, and always decline the offer to convert to US dollars. Avoid the standalone machines clustered in tourist areas, which push poor conversions." },
+    { q: "How much should I tip in Turkey?", a: "Around 5 to 10% at restaurants for good service, but check first for a servis (service) charge on the bill. Round up for taxis, leave a little for hotel staff and guides, and keep small change for a hamam attendant. Cash tips are preferred, as card tips rarely reach the staff." },
+    { q: "Does Turkey charge a tourist tax?", a: "There is a national accommodation tax added to hotel bills, the same across the country rather than varying by city. It is temporarily 1% through 31 December 2026 (down from the standard 2%, which returns in 2027), and some room rates you book online already include it. There is no separate per-night city tourist tax." }
   ],
 
   culture: {
@@ -163,5 +163,64 @@ export default {
         note: "Good to know: people have lived in Cappadocia's caves for millennia" },
     ],
     pride: "Turks are warm, proud and endlessly hospitable, living at a crossroads of Europe and Asia layered with ancient cities, empires and faiths. They are proud of that history, of their food and their tea, and of a welcome that treats a guest almost as a gift. A little Turkish delights them."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      title: "Which taxi app to use in Istanbul, and the airport done right (2026) | True Trip Costs",
+      description: "How the Istanbul taxi meter works, why Uber here just calls a licensed yellow taxi, the flat-rate and fake-night-surcharge tricks to know, and the cheap way in from Istanbul Airport. Checked July 2026.",
+      h1: "Istanbul taxis, the meter, and the airport done right",
+      lede: "Istanbul taxis are metered and mostly fine, but a handful of tricks target visitors, and the airport is a long way out. Here is which app to install, how the meter really works, and the calm way to get into town.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Install <b>BiTaksi</b>, and <b>Uber</b> too. In Istanbul, Uber does not run its own cars, it simply calls a licensed <b>yellow taxi</b>, so the meter still runs, but you get a fare estimate, a tracked route and a receipt. The meter (<b>taksimetre</b>) must be on from the start, and if a driver refuses it or says it is broken and quotes a flat price, get out and wave the next one over. There is a single 24-hour rate, so any <b>night surcharge</b> is a con. Bosphorus tolls are real and added to the meter, but watch for padding. From <b>Istanbul Airport</b>, the M11 metro or the HAVAIST shuttle beats a taxi.",
+      sections: [
+        {
+          h: "Which app to install",
+          p: [
+            "<b>BiTaksi</b> is the most popular ride app in Istanbul, Turkish-made, fully in English, and it takes card as well as cash. <b>Uber</b> works too, but understand what it is here: it does not have its own private cars, it dispatches the same licensed <b>yellow or turquoise taxis</b>, and the meter still runs, so the price is not locked the way it is in most countries. Think of the apps as a way to get a fare estimate, track the route and keep a receipt, not as a fixed-price hack. The city's own <b>iTaksi</b> app does the same with a strict metered rate and no surge.",
+            "All three call the same licensed taxis, so the real benefit is accountability: no language barrier when you type the destination, a driver and plate on record, and a log if anything goes wrong. Install <b>BiTaksi</b> and <b>Uber</b> before you arrive and you will use them often. Bolt exists but has thin driver coverage in Istanbul, so it is not the one to rely on."
+          ]
+        },
+        {
+          h: "The meter, the flat-rate trick, and the fake night surcharge",
+          p: [
+            "The meter must be running before the car moves. The classic trick is a driver who refuses it, or claims it is broken, and names a flat price that runs well over the metered fare, especially from tourist spots like Sultanahmet. The answer is simple and needs no argument: get out and take the next taxi, because there is always another one. Keep <b>Google Maps</b> open and watch the route, since the long way round is the most common way a fare gets padded.",
+            "One thing worth knowing saves money at night: Turkey uses a <b>single 24-hour rate</b>, so the meter reads the same at 3am as at midday. A driver who claims a night surcharge, a <b>gece tarifesi</b>, is overcharging you. The rate and the minimum fare are set by the city, and they have been rising with inflation, so treat any figure you read online as a rough, recent guide rather than a fixed number."
+          ]
+        },
+        {
+          h: "Tolls, the note-swap, and paying",
+          p: [
+            "If your trip crosses between the European and Asian sides over a <b>Bosphorus bridge</b> or through the <b>Eurasia Tunnel</b>, the passenger pays the toll and the driver adds it to the meter fare. That is legitimate and correct. What is not is an inflated toll, or a surprise <b>credit card charge</b>, tacked on so the total suddenly jumps, so if the final number is far above the meter plus a normal toll, question it.",
+            "The other move to watch is the <b>note-swap</b>, where a driver takes your larger note, palms it, shows you a smaller one and asks for more. Paying by app or card avoids it entirely, and if you do pay cash, say the amount out loud as you hand it over. For the wider money picture, including how much cash to carry and where cards work, see the <a href=\"/turkey\">Turkey money guide</a>."
+          ]
+        },
+        {
+          h: "Getting in from Istanbul Airport",
+          p: [
+            "Istanbul Airport (IST) is a long way from the center, and there is no fixed taxi price, so the meter decides and traffic is the wildcard. The cheapest, most reliable way in is the <b>M11 metro</b> to Gayrettepe, where you transfer to the M2 metro or the tram, sidestepping the traffic entirely. The <b>HAVAIST</b> shuttle bus is the comfortable option, running to major hubs with room for luggage.",
+            "If you do take a taxi, use the <b>official rank</b> and, ideally, order through BiTaksi or Uber so the driver comes to the marked spot and the ride is logged. Ignore anyone who approaches you inside arrivals offering a ride. On the Asian side, from Sabiha Gokcen airport (SAW), the M4 metro to Kadikoy is the easy equivalent."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does Uber work in Istanbul?", a: "Yes, but not the way it does elsewhere. In Istanbul, Uber does not run its own cars; it dispatches licensed yellow or turquoise taxis, and the meter still runs, so the fare is not locked. It is still worth having for the route tracking, the receipt and no language barrier. BiTaksi is the main local app and iTaksi is the city's own; all three call the same licensed taxis." },
+        { q: "Do Istanbul taxis have a night rate?", a: "No. Turkey uses a single 24-hour meter rate, so it reads the same at 3am as at noon. A driver claiming a night surcharge, a gece tarifesi, is overcharging you. The one legitimate extra is a Bosphorus bridge or Eurasia Tunnel toll, which the passenger pays and the driver adds to the meter." },
+        { q: "What is the best way from Istanbul Airport to the city?", a: "There is no fixed taxi price, and the meter plus traffic can balloon the cost. The M11 metro to Gayrettepe, then the M2 metro or tram, is cheapest and dodges the traffic, while the HAVAIST shuttle is comfortable with luggage space. For a taxi, use the official rank and an app like BiTaksi or Uber, and ignore anyone offering a ride inside arrivals." },
+        { q: "Are Istanbul taxis a scam?", a: "Most are fine, but the well-worn tricks are meter refusal or a 'broken' meter with a flat price, the long way round, a fake night surcharge and the note-swap. Using BiTaksi, Uber or iTaksi makes most of them impossible, since you get a fare estimate, a tracked route and a logged payment. If a street driver will not run the meter, take the next taxi." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: Turkey country information, general safety and local-travel context for US visitors", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Turkey.html", type: "gov" },
+          { label: "Istanbul Tourist Information: a 2026 guide to the taxi apps, the metered fare and common scams", url: "https://istanbul-tourist-information.com/taxis-in-istanbul/", type: "guide" },
+          { label: "Hemen Hesap: a 2026 breakdown of Istanbul taxi fares, the city meter tariff and airport pricing", url: "https://www.hemenhesap.com/en/istanbul-taxi-fare", type: "guide" }
+        ],
+        judgment: "Istanbul fares move fast with inflation, so treat any lira figures as a recent read and check the estimate in your app. The metered rate is set by the city, and app coverage and airport transport can change. Checked July 2026."
+      }
+    }
+  ]
 };

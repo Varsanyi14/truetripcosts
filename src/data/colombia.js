@@ -155,5 +155,64 @@ export default {
         note: "Good to know: Garcia Marquez won the Nobel Prize in 1982" },
     ],
     pride: "Colombians are proud, warm people who know the old headlines and would rather show you the real place: the coffee, the music, the second most biodiverse country on Earth, and a welcome you will not forget."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      title: "Which taxi app to use in Colombia, and why never to hail one (2026) | True Trip Costs",
+      description: "The one taxi rule that matters in Colombia, which ride app to install (DiDi and inDrive lead, with Uber and Cabify), how the point-to-peso meter works, and the safe way out of Bogota's El Dorado airport. Checked July 2026.",
+      h1: "Taxi apps in Colombia, and the one rule that matters",
+      lede: "In Colombia the how-you-get-a-taxi matters more than which app. Here is the single rule to follow, the apps locals actually use, and how to leave Bogota's airport without the roadside gamble.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "The one rule in Colombia is simple: <b>never hail a taxi off the street</b>, anywhere, and least of all at night. Use an app instead. <b>DiDi</b> and <b>inDrive</b> are the everyday choices, and <b>Uber</b> and <b>Cabify</b> also work, all giving you a tracked route, a driver on record, and card or cash payment. If you want a licensed <b>yellow taxi</b>, summon it through an app rather than flagging it down. From Bogota's <b>El Dorado airport</b>, use the authorized taxi desk inside the terminal or a pre-booked transfer, not the line outside.",
+      sections: [
+        {
+          h: "The one rule: do not hail on the street",
+          p: [
+            "This is the whole game in Colombia. A taxi flagged down on the street carries a real, documented risk, from a rigged meter and tourist overcharging to worse after dark, which is exactly why locals and expats book through an app or ask a hotel or restaurant to call the cab. It is not that every taxi is dangerous, it is that an app gives you a <b>driver on record</b>, a <b>tracked route</b> and a paper trail that a random street cab simply does not.",
+            "So the habit to build is: order a ride in an app, or have someone call a known company, and skip the raised hand at the curb. This one change removes the large majority of taxi trouble in Bogota, Medellin, Cartagena and Cali in a single step."
+          ]
+        },
+        {
+          h: "Which app to install",
+          p: [
+            "<b>DiDi</b> is strong across Bogota and Cali, competitively priced, and often running promotions. <b>inDrive</b> is the local favorite and works on a bid model, where you propose a fare and drivers accept or counter, usually paid in cash. <b>Uber</b> is widely available and a little pricier, and <b>Cabify</b> is the premium choice, with vetted drivers and fixed fares. Beat, once common, has faded, so skip it. Install <b>DiDi</b> and <b>inDrive</b>, and keep Uber as a backup.",
+            "One local quirk is worth expecting: a driver may ask you to <b>sit in the front seat</b> so the ride looks like a casual carpool rather than a regulated ride-share. This is normal here, because ride-hailing sits in a <b>legal gray zone</b> in Colombia, and riding up front is simply how drivers keep a low profile. It is not a red flag."
+          ]
+        },
+        {
+          h: "Yellow taxis and the point-to-peso meter",
+          p: [
+            "A legitimate Colombian taxi is <b>yellow</b> with a white license plate, the plate number shown on the doors and roof, and the driver's details visible inside. The meter shows a <b>point number</b>, not pesos directly, and that number converts to the fare through a <b>printed table</b> kept in the car, so at the end you check the meter's number against the table rather than reading pesos off the display.",
+            "Even with a proper yellow taxi, the safe way to get one is to summon it through an app's taxi mode rather than hailing it, because you still get the plate and a ride record. If you ever do end up in a street taxi, confirm the meter is running from the start and check the final number against that conversion table before paying."
+          ]
+        },
+        {
+          h: "El Dorado airport and paying",
+          p: [
+            "At Bogota's <b>El Dorado</b> (BOG), skip the long, chaotic taxi line outside arrivals and use the <b>authorized taxi desks inside the terminal</b>, which is markedly safer. Expect roughly <b>35,000 to 65,000 pesos</b> (about 9 to 13 US dollars) into central districts like La Candelaria, Zona Rosa or Usaquen. The ride apps work from the airport too, though pickups there can involve a little gray-zone friction, so allow for a short wait.",
+            "A <b>pre-booked private transfer</b>, around 70,000 to 120,000 pesos, is the smoothest option late at night or with luggage, waiting for you with your name. Ignore anyone who approaches you inside offering a ride, and carry small peso notes for cash rides. For the wider money picture, including how much cash to carry, see the <a href=\"/colombia\">Colombia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber legal in Colombia?", a: "Ride-hailing operates in a contested legal gray zone, and Uber even had its license briefly suspended in 2020 before it was reinstated. In practice, Uber, DiDi, inDrive and Cabify all operate and are used daily by locals. A common quirk is being asked to sit in the front seat so the ride looks like a carpool, which is normal here." },
+        { q: "Which taxi app is best in Colombia?", a: "DiDi and inDrive are the everyday favorites, with DiDi strong in Bogota and Cali and inDrive using a name-your-price model. Uber is widely available but a little pricier, and Cabify is the premium option with vetted drivers and fixed fares. Install DiDi and inDrive, and keep Uber as a backup." },
+        { q: "Can I hail a taxi on the street in Colombia?", a: "Better not to, anywhere, and especially not at night. Street-hailed taxis have a documented crime and overcharging pattern, so use an app, or have your hotel or restaurant call a licensed cab. If you want a yellow taxi, summon it through an app's taxi mode so you still get the plate and a ride record." },
+        { q: "What is the taxi from Bogota airport?", a: "At El Dorado, use the authorized taxi desks inside the terminal rather than the line outside, roughly 35,000 to 65,000 pesos into central Bogota. The apps work too, and a pre-booked private transfer runs about 70,000 to 120,000 pesos and waits with your name. Ignore anyone soliciting a ride inside arrivals." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: Colombia country information, safety and local-travel context for US visitors", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Colombia.html", type: "gov" },
+          { label: "Colombia Uncharted: a 2026 Bogota transport guide covering the ride apps and El Dorado airport options", url: "https://www.colombiauncharted.com/bogota/complete-bogota-transport-guide/", type: "guide" },
+          { label: "LorenziGo: a 2026 Bogota guide on the apps, the airport taxi desks and the point-to-peso meter", url: "https://lorenzigo.com/how-to-get-around-bogota/", type: "guide" }
+        ],
+        judgment: "Ride-hailing in Colombia sits in a legal gray zone and can involve friction at airports, and fares move with the peso, so treat figures as a recent read and check the price in your app. The advice to never street-hail is the constant. Checked July 2026."
+      }
+    }
+  ]
 };
