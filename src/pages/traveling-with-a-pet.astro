@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import USBadge from '../components/USBadge.astro';
+import { countries } from '../data/index.js';
+
+// Pet theme, umbrella hub. A topic-hub page that gathers every topic:"pets" country spoke
+// (the same aggregation cash-or-card and passports-and-visas use) and points prominently
+// to the standalone explainer hubs. Modeled on cash-or-card.astro. The country-spoke
+// section is hidden until at least one pet spoke is live; the country spokes arrive in the
+// next batch (Japan, UK, Australia), and the airline-policy hub is a later stage, so it is
+// intentionally not linked yet to avoid a dead link. Checked July 2026.
+
+// Pet spokes, gathered from every guide by topic, exactly as the handoff specifies and as
+// cash-or-card gathers cash spokes. A country appears here only once it has a live
+// topic:"pets" spoke. Same single source as everything else; adding one to any guide
+// surfaces it here automatically.
+const petSpokes = countries
+  .filter(c => c.live)
+  .flatMap(c => (c.spokes || [])
+    .filter(s => s.topic === 'pets' && s.live !== false)
+    .map(s => ({ h1: s.h1, lede: s.lede, spokeSlug: s.slug, country: c.name, countrySlug: c.slug })))
+  .sort((a, b) => a.country.localeCompare(b.country));
+---
+<Base
+  title="Traveling with a pet, for US travelers: what it costs and how long it takes"
+  description="Bringing a dog or cat abroad and back, for US travelers. The two things that decide every pet trip, the lead time and the all-in cost, plus the CDC rules for coming home, the EU health certificate, and country guides for the hard destinations. Official-first and checked against government sources.">
+  <Nav />
+  <main class="wrap">
+
+    <section class="tp-intro">
+      <p class="lab"><span class="tp-paw" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><ellipse cx="6.4" cy="10.2" rx="1.9" ry="2.5"/><ellipse cx="10.1" cy="7.5" rx="1.9" ry="2.6"/><ellipse cx="13.9" cy="7.5" rx="1.9" ry="2.6"/><ellipse cx="17.6" cy="10.2" rx="1.9" ry="2.5"/><path d="M12 11.3c-2.8 0-5.1 2-5.1 4.4 0 1.9 1.7 3 3.5 2.6.6-.13 1.1-.19 1.6-.19s1 .06 1.6.19c1.8.4 3.5-.7 3.5-2.6 0-2.4-2.3-4.4-5.1-4.4z"/></svg></span>Traveling with a pet</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
+      <h1>Taking a pet abroad, and bringing it home.</h1>
+      <p class="tp-lede">Most people who research this are not on vacation. They are moving, on military orders, or settling somewhere for a long stay, and they want two honest numbers: how long it takes and what it costs. That is what we lead with here. The rules are official, they change, and the part that catches people is almost never the part they worry about. Start with the two hubs below, then open the guide for your destination.</p>
+    </section>
+
+    <section class="tp-two">
+      <div class="tp-two-card">
+        <span class="tp-two-k">The first number: lead time</span>
+        <p>Some destinations run on a fixed clock you cannot shorten. Japan and Australia require a rabies antibody titer followed by a 180-day wait, which is why those moves take the better part of a year. Most other places, the EU, the UK, Canada, are weeks to about two months. Knowing which world you are in is the whole game.</p>
+      </div>
+      <div class="tp-two-card">
+        <span class="tp-two-k">The second number: all-in cost</span>
+        <p>A small pet flying in the cabin to Europe is a few hundred to about a thousand dollars in vet work and endorsement. A large dog that must fly as cargo to the UK or Australia can run several thousand and up. Cabin versus cargo, pet size, and breed are what move the figure, so we give ranges with the drivers named, never a single quote.</p>
+      </div>
+    </section>
+
+    <section class="tp-sec">
+      <h2>Start here</h2>
+      <p class="tp-note">Two things are true for almost everyone: you have to get your pet into the destination, and you have to bring it back into the US. Those are two separate systems, and airline approval is a third. These hubs cover the shared parts.</p>
+      <div class="tp-hub-row">
+        <a class="tp-hub" href="/bringing-a-dog-into-the-us">
+          <span class="tp-hub-top"><span class="tp-paw tp-paw-teal" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><ellipse cx="6.4" cy="10.2" rx="1.9" ry="2.5"/><ellipse cx="10.1" cy="7.5" rx="1.9" ry="2.6"/><ellipse cx="13.9" cy="7.5" rx="1.9" ry="2.6"/><ellipse cx="17.6" cy="10.2" rx="1.9" ry="2.5"/><path d="M12 11.3c-2.8 0-5.1 2-5.1 4.4 0 1.9 1.7 3 3.5 2.6.6-.13 1.1-.19 1.6-.19s1 .06 1.6.19c1.8.4 3.5-.7 3.5-2.6 0-2.4-2.3-4.4-5.1-4.4z"/></svg></span>Coming home</span>
+          <span class="tp-hub-h">Bringing your dog back into the US</span>
+          <span class="tp-hub-d">Every dog flying home needs this, including your own, under the CDC rules from 2024. The free form, the microchip rule, and the returning-pet trap.</span>
+        </a>
+        <a class="tp-hub" href="/eu-pet-health-certificate">
+          <span class="tp-hub-top"><span class="tp-paw tp-paw-teal" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><ellipse cx="6.4" cy="10.2" rx="1.9" ry="2.5"/><ellipse cx="10.1" cy="7.5" rx="1.9" ry="2.6"/><ellipse cx="13.9" cy="7.5" rx="1.9" ry="2.6"/><ellipse cx="17.6" cy="10.2" rx="1.9" ry="2.5"/><path d="M12 11.3c-2.8 0-5.1 2-5.1 4.4 0 1.9 1.7 3 3.5 2.6.6-.13 1.1-.19 1.6-.19s1 .06 1.6.19c1.8.4 3.5-.7 3.5-2.6 0-2.4-2.3-4.4-5.1-4.4z"/></svg></span>Heading to Europe</span>
+          <span class="tp-hub-h">The EU pet health certificate</span>
+          <span class="tp-hub-d">One process covers all twenty-seven EU countries. The microchip-then-rabies order, the 10-day clock, and why the EU Pet Passport is not for you.</span>
+        </a>
+      </div>
+    </section>
+
+    {petSpokes.length > 0 && (
+      <section class="tp-sec">
+        <h2>Country by country</h2>
+        <p class="tp-note">Where a destination has a timeline or cost worth walking through, we have written it up. Each one lives in that country's guide.</p>
+        <div class="tp-panel">
+          {petSpokes.map(s => (
+            <a class="tp-spoke" href={'/' + s.countrySlug + '/' + s.spokeSlug}>
+              <span class="tp-spoke-h">{s.h1}</span>
+              <span class="tp-spoke-d">{s.lede}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <p class="tp-keep">These pages name the official route first and are checked against government sources, the CDC, USDA APHIS, and each destination's own authority. The lessons here are partly first hand: more about who writes these and how they are checked is on our <a href="/about">about page</a>. For the wider money picture of a trip, see <a href="/tourist-taxes">tourist taxes and entry fees</a> and each country's guide.</p>
+
+    <div class="gbyline" style="display:flex;align-items:flex-start;gap:9px;margin:6px 0 40px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card)">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. Last checked Jul 2026. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
+    </div>
+
+  </main>
+  <Footer />
+
+  <style>
+    .tp-intro{max-width:680px}
+    .tp-intro h1{margin:0 0 14px}
+    .tp-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
+
+    .tp-paw{display:inline-flex;vertical-align:-3px;margin-right:7px;color:var(--teal)}
+    .tp-paw svg{display:block}
+    .tp-paw-teal{color:var(--teal);margin-right:6px}
+
+    .tp-two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:30px 0 0}
+    .tp-two-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px}
+    .tp-two-k{display:block;font-size:12px;font-weight:600;color:var(--teal-deep);letter-spacing:.06em;text-transform:uppercase;margin:0 0 8px}
+    .tp-two-card p{margin:0;font-size:15px;line-height:1.6;color:var(--ink)}
+
+    .tp-sec{margin:38px 0 0}
+    .tp-sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 6px}
+    .tp-note{font-size:14.5px;color:var(--muted);margin:0 0 16px;line-height:1.55;max-width:680px}
+
+    .tp-hub-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .tp-hub{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px;text-decoration:none;transition:border-color .2s ease,transform .2s ease}
+    .tp-hub:hover{border-color:#C2E0C8;transform:translateY(-1px)}
+    .tp-hub-top{display:inline-flex;align-items:center;font-size:12px;font-weight:600;color:var(--teal-deep);letter-spacing:.05em;text-transform:uppercase;margin:0 0 9px}
+    .tp-hub-h{display:block;font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);line-height:1.25;margin:0 0 6px}
+    .tp-hub:hover .tp-hub-h{color:var(--teal-deep)}
+    .tp-hub-d{display:block;font-size:14px;color:var(--muted);line-height:1.55}
+
+    .tp-panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+    .tp-spoke{display:block;padding:15px 18px;border-bottom:1px solid var(--line);text-decoration:none;transition:background-color .15s ease}
+    .tp-spoke:last-child{border-bottom:0}
+    .tp-spoke:hover{background:var(--paper)}
+    .tp-spoke-h{display:block;font-family:var(--serif);font-weight:500;font-size:16.5px;color:var(--teal-deep);line-height:1.3;margin:0 0 3px}
+    .tp-spoke:hover .tp-spoke-h{text-decoration:underline}
+    .tp-spoke-d{display:block;font-size:14px;color:var(--muted);line-height:1.5}
+
+    .tp-keep{font-size:14px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line);padding-top:18px;margin:34px 0 22px;max-width:680px}
+    .tp-keep a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .tp-keep a:hover{text-decoration:underline}
+
+    @media (max-width:620px){
+      .tp-two{grid-template-columns:1fr}
+      .tp-hub-row{grid-template-columns:1fr}
+      .tp-lede{font-size:16.5px}
+    }
+  </style>
+</Base>

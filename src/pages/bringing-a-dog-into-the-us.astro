@@ -1,0 +1,214 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import USBadge from '../components/USBadge.astro';
+
+// Pet theme, explainer hub 1 of 3: bringing a dog into (or back into) the US under the
+// CDC rules in force since 1 August 2024. Authored standalone page, modeled on
+// passports-and-visas.astro, not a country spoke. Official-first: every step points to
+// the CDC or USDA page and earns nothing. Highest-volatility page in the theme, so it
+// carries a hard "verify with the authority" flag and a visible review date.
+// Checked July 2026. Re-verify the CDC rules and the Mexico screwworm status before
+// relying on this, both are moving.
+
+// The government building icon used in the sources panel, matching the guides.
+const govIcon = '<path d="M6 3v18"></path><path d="M6 4h12l-2 3.5L18 11H6"></path>';
+
+// Official pages this hub is checked against. All open in a new tab with noopener only,
+// never a sponsored marker, because nothing here is a paid link.
+const sources = [
+  { name: "CDC, bringing a dog into the United States", note: "the rules in force since 1 August 2024, the risk levels by country, and the Dog Import Form", url: "https://www.cdc.gov/importation/dogs/index.html" },
+  { name: "CDC, Dog Import Form and instructions", note: "the free online form, and exactly what a dog from a low-risk or high-risk country needs", url: "https://www.cdc.gov/importation/dogs/dog-import-form-instructions.html" },
+  { name: "CDC, approved rabies serology laboratories", note: "the labs whose titer results the CDC accepts, and the January 2026 change to that list", url: "https://www.cdc.gov/importation/dogs/approved-labs.html" },
+  { name: "USDA APHIS, bringing a pet dog into the US", note: "the USDA side, including dogs vaccinated in the US returning from a high-risk country", url: "https://www.aphis.usda.gov/pet-travel/another-country-to-us-import/dogs" },
+  { name: "USDA APHIS, pet travel to and from Mexico", note: "the screwworm freedom certification a dog needs to return from Mexico since 22 November 2024", url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-mexico" }
+];
+---
+<Base
+  title="Bringing a dog into the US (2024 CDC rules): the free form, the microchip, and the returning-pet trap | True Trip Costs"
+  description="What US travelers need to bring a dog into, or back into, the United States under the CDC rules in force since 1 August 2024: the free CDC Dog Import Form, the microchip and six-month age rule, the easy path for dogs coming from rabies-free or low-risk countries, and the Mexico screwworm twist. Every step linked to the official CDC and USDA page, and we earn nothing sending you there. Checked July 2026."
+>
+  <Nav />
+  <main class="wrap">
+
+    <section class="pt-prose">
+      <p class="lab"><span class="paw-lab" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><ellipse cx="6.4" cy="10.2" rx="1.9" ry="2.5"/><ellipse cx="10.1" cy="7.5" rx="1.9" ry="2.6"/><ellipse cx="13.9" cy="7.5" rx="1.9" ry="2.6"/><ellipse cx="17.6" cy="10.2" rx="1.9" ry="2.5"/><path d="M12 11.3c-2.8 0-5.1 2-5.1 4.4 0 1.9 1.7 3 3.5 2.6.6-.13 1.1-.19 1.6-.19s1 .06 1.6.19c1.8.4 3.5-.7 3.5-2.6 0-2.4-2.3-4.4-5.1-4.4z"/></svg></span>Coming home with a dog</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
+      <h1>Bringing your dog into the US, and the rule that catches returning owners.</h1>
+      <p class="pt-lede">Since 1 August 2024 the CDC rules apply to every dog arriving in the United States, and that includes your own dog flying home from a trip, no matter how short and no matter that you are a citizen. The good news: if your dog has spent the last six months only in rabies-free or low-risk countries, which covers most places we cover, the whole thing is one free form. Here is what you actually need, the official site for it, and the traps that trip people up.</p>
+    </section>
+
+    <div class="recentchange" style="margin-top:22px">
+      <span class="rcpill">The short answer</span>
+      <p>For a dog that spent the last six months only in <b>rabies-free or low-risk countries</b>, the only document you need to enter the US is a <b>free CDC Dog Import Form receipt</b>. On top of that the dog must be at least <b>six months old</b>, have an <b>ISO microchip</b>, and look healthy on arrival. No fee, no rabies titer, no quarantine. Dogs coming from a <b>high-risk rabies country</b> face a great deal more, and dogs returning from <b>Mexico</b> now need a screwworm certificate too.</p>
+    </div>
+
+    <section class="why">
+      <p class="lab">Three things that surprise people</p>
+      <h2>Read these before you book the flight home.</h2>
+      <p class="lead">The rules are new, they changed again in 2024, and the parts that catch people out are rarely the parts they worry about.</p>
+      <div class="qrow">
+        <div class="qcard">
+          <h3>It applies to your own dog</h3>
+          <p>This is not just for imported or rescued dogs. A dog that leaves the US and comes back has to meet the same rules, whatever your citizenship and however brief the trip. Plan for it before you fly out.</p>
+        </div>
+        <div class="qcard">
+          <h3>Microchip before rabies</h3>
+          <p>The ISO microchip has to be implanted before any rabies vaccination the trip requires. A rabies shot given before the chip does not count, which can quietly reset your timeline by weeks.</p>
+        </div>
+        <div class="qcard">
+          <h3>The form is free</h3>
+          <p>The CDC Dog Import Form costs nothing, and you fill it out yourself, not your vet. Sites that offer to file it for a fee are selling you something the government hands out for free.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-prose">
+      <p class="lab">What every dog needs</p>
+      <h2>Four things, for any dog, from anywhere.</h2>
+      <p>Whatever country your dog is arriving from, the CDC asks for the same four things. This is the floor, and for most travelers it is also the ceiling.</p>
+      <ul class="pt-snap">
+        <li><b>Appear healthy on arrival.</b> A dog that looks ill can be held for examination at the importer's expense, so a sick dog is a real problem at the border.</li>
+        <li><b>Be at least six months old.</b> There is no way around this one, and it is the requirement that catches people bringing home a puppy.</li>
+        <li><b>Have an ISO microchip.</b> It must be readable by a universal scanner, and it must have been implanted before any required rabies vaccination.</li>
+        <li><b>Carry a CDC Dog Import Form receipt.</b> You submit the form online, it is free, and a receipt lands in your inbox within minutes. Fill it out ideally two to ten days before you travel, though you can do it right up to the border if you have internet. The receipt is good for six months and covers multiple entries.</li>
+      </ul>
+      <p class="pt-note">The form is completed by the owner or the person bringing the dog in, not by the veterinarian. Travel with a copy on your phone and a printout, and arrive at the port of entry you named on the form.</p>
+    </section>
+
+    <section class="pt-prose">
+      <p class="lab">The easy path</p>
+      <h2>Dogs from rabies-free or low-risk countries.</h2>
+      <p>This is the path that covers most of the trips we write about. If your dog has been only in dog-rabies-free or low-risk countries in the six months before entry, the CDC Dog Import Form receipt is the only documentation you need. That set includes the places Americans most often travel and move with a pet: the whole of the European Union, the United Kingdom, Japan, Canada and many more.</p>
+      <p>You still need the microchip, the six-month age, and a healthy dog. But there is no rabies titer, no CDC-registered facility, and no quarantine on this path. The CDC keeps the current country risk list on its site, so check where your dog has been rather than where you are flying from.</p>
+      <p class="pt-links"><a href="https://www.cdc.gov/importation/dogs/index.html" target="_blank" rel="noopener">Check your dog's path and start the form at CDC</a> <span class="tg free">we earn nothing</span></p>
+    </section>
+
+    <section class="pt-prose">
+      <p class="lab">The harder path</p>
+      <h2>Dogs coming from a high-risk rabies country.</h2>
+      <p>If your dog spent any of the last six months in a country the CDC classes as high-risk for dog rabies, the bar rises sharply, and the exact route depends on where the dog was vaccinated.</p>
+      <p>A dog <b>vaccinated in the US</b> that is returning from a high-risk country needs a Certification of US-Issued Rabies Vaccination, completed by a USDA-accredited veterinarian and endorsed by USDA APHIS before you leave. A dog <b>vaccinated abroad</b> faces the most: a valid rabies vaccination, a rabies antibody titer from a CDC-approved laboratory, and either a reservation at a CDC-registered animal care facility at one of a small number of US airports, or a longer quarantine route. The CDC also revised its list of approved titer laboratories in January 2026, with a transition window, so the lab that was fine last year may not be now.</p>
+      <p>Because this path is both the strictest and the most likely to change, do not plan it from memory, ours or anyone's. Start on the CDC and USDA pages and confirm every step for your dog's specific history.</p>
+      <p class="pt-links"><a href="https://www.aphis.usda.gov/pet-travel/another-country-to-us-import/dogs" target="_blank" rel="noopener">USDA APHIS on bringing a dog into the US</a> <span class="tg free">we earn nothing</span></p>
+    </section>
+
+    <section class="pt-prose">
+      <p class="lab">The Mexico twist</p>
+      <h2>Coming back from Mexico? There is a screwworm step.</h2>
+      <p>This one is easy to miss because it sits on the USDA side, not the CDC side. Since 22 November 2024, Mexico is treated as affected by New World screwworm, and any dog returning to the US from Mexico must carry a screwworm freedom certification, on top of the CDC Dog Import Form. The certificate is issued by a veterinarian in Mexico authorized by the Mexican authority, and states the dog was inspected and found free of screwworm within five days before it crosses.</p>
+      <p>This is a live situation: screwworm has been moving north, the rules around it have shifted more than once in 2026, and there was even a brief spell when pet dogs were caught up in a wider export freeze before that was reversed. For a driving trip to Mexico, which is otherwise one of the cheapest pet trips there is, treat the return as the part to double-check.</p>
+      <p class="pt-links"><a href="https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-mexico" target="_blank" rel="noopener">USDA APHIS on pet travel and Mexico</a> <span class="tg free">we earn nothing</span></p>
+    </section>
+
+    <section class="pt-prose">
+      <p class="lab">Cats, briefly</p>
+      <h2>The CDC dog rules do not cover cats.</h2>
+      <p>The CDC does not require a general import document for cats arriving in the US, and there is no CDC rabies rule for them at the federal level. That does not mean nothing applies: your airline will have its own rules, some states ask for a rabies vaccination or a health certificate, and a rabies shot is simply good sense. If you are moving a cat, the outbound country's rules are usually the harder part, and those live on the destination's page and, for the EU, on our EU certificate guide.</p>
+    </section>
+
+    <div class="pt-flag">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div>
+        <p class="pt-flag-h">Check this against the CDC before you travel.</p>
+        <p class="pt-flag-p">These rules arrived in August 2024, were softened for low-risk countries later that year, and are being actively debated, with proposals in Congress to change the age and microchip requirements. The Mexico screwworm situation is moving too. We keep this page current and date it, but a rule can change between our checks and your trip, so confirm on the official CDC and USDA pages before you rely on it. Checked July 2026.</p>
+      </div>
+    </div>
+
+    <section class="pt-cross">
+      <p class="lab">More on traveling with a pet</p>
+      <div class="pt-cross-row">
+        <a class="pt-cross-card" href="/traveling-with-a-pet">
+          <span class="pt-cross-h">Traveling with a pet</span>
+          <span class="pt-cross-d">The overview: what a pet trip costs, how long it takes, and every country guide we have written.</span>
+        </a>
+        <a class="pt-cross-card" href="/eu-pet-health-certificate">
+          <span class="pt-cross-h">The EU pet health certificate</span>
+          <span class="pt-cross-d">Heading to Europe first? One process covers all twenty-seven EU countries, and you will still need this page to come home.</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="gbyline" style="display:flex;align-items:flex-start;gap:9px;margin:34px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card)">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. Last checked Jul 2026. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
+    </div>
+
+    <details class="gsources">
+      <summary class="gsources-sum">
+        <span class="gsources-txt">Sources, and how this page was checked</span>
+        <svg class="gsources-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="gsources-body">
+        <p class="gs-row"><span class="gs-k">Last checked</span><span>Jul 2026</span></p>
+        <p class="gs-row"><span class="gs-k">Changed since last check</span><span>First published in July 2026, covering the CDC dog import rules in force since 1 August 2024, the free CDC Dog Import Form, the easy path for dogs from rabies-free or low-risk countries, the harder path from high-risk countries, and the screwworm certification required to bring a dog back from Mexico since 22 November 2024. Checked against the CDC and USDA APHIS pages, which note the January 2026 change to the CDC approved-laboratory list.</span></p>
+        <div class="gs-row"><span class="gs-k">Primary sources</span>
+          <ul class="gs-links">
+            {sources.map(s => (
+              <li class="gs-src">
+                <span class="gs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={govIcon}></svg></span>
+                <span class="gs-src-tx">
+                  <a href={s.url} target="_blank" rel="noopener" class="gs-src-name">{s.name}</a>
+                  <span class="gs-src-note">{s.note}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p class="gs-row"><span class="gs-k">Our own read</span><span>The rules are set by the CDC and USDA, not by us, and they are unusually volatile right now, so we point you to the official page rather than deciding your dog's case. Costs and quarantine outcomes depend on your dog's history and route, so confirm on the source on the day.</span></p>
+      </div>
+    </details>
+
+    <section class="pt-close">
+      <h2>Now the money side.</h2>
+      <p>Once the paperwork is clear, the two things that decide a pet trip are the lead time and the all-in cost, and both vary enormously by destination. That is what the country guides are for.</p>
+      <a class="btn" href="/traveling-with-a-pet">See traveling with a pet
+        <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </section>
+
+  </main>
+  <Footer />
+
+  <style>
+    .pt-prose{padding:34px 0 0;max-width:680px}
+    .pt-prose h1{margin:6px 0 14px}
+    .pt-prose h2{margin:0 0 8px}
+    .pt-lede{font-size:17px;line-height:1.55;color:var(--ink);margin:0}
+    .pt-prose p:not(.lab):not(.pt-lede):not(.pt-note):not(.pt-links){font-size:16px;line-height:1.65;color:var(--ink);margin:14px 0 0}
+    .pt-prose a{color:var(--teal-deep);font-weight:500;text-decoration:underline;text-underline-offset:2px}
+    .pt-prose a.btn{color:#fff;text-decoration:none}
+    .pt-note{font-size:13.5px;line-height:1.55;color:var(--muted);margin:12px 0 0;max-width:660px}
+    .pt-links{margin:16px 0 0;display:flex;align-items:center;flex-wrap:wrap;gap:10px 12px}
+
+    .paw-lab{display:inline-flex;vertical-align:-3px;margin-right:7px;color:var(--teal)}
+    .paw-lab svg{display:block}
+
+    .pt-snap{list-style:none;margin:16px 0 0;padding:0;max-width:680px}
+    .pt-snap li{position:relative;font-size:15.5px;line-height:1.6;color:var(--ink);padding:0 0 0 18px;margin:0 0 10px}
+    .pt-snap li:last-child{margin-bottom:0}
+    .pt-snap li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+    .pt-snap b{font-weight:600}
+
+    .pt-flag{display:flex;align-items:flex-start;gap:11px;margin:30px 0 0;padding:16px 18px;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:12px;background:var(--amber-bg)}
+    .pt-flag svg{flex:none;margin-top:2px}
+    .pt-flag-h{margin:0 0 4px;font-weight:600;font-size:15px;color:var(--ink)}
+    .pt-flag-p{margin:0;font-size:14px;line-height:1.6;color:var(--ink)}
+
+    .pt-cross{padding:34px 0 0;max-width:680px}
+    .pt-cross-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+    .pt-cross-card{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;text-decoration:none;box-shadow:var(--shadow);transition:border-color .2s ease,transform .2s ease}
+    .pt-cross-card:hover{border-color:#C2E0C8;transform:translateY(-1px)}
+    .pt-cross-h{display:block;font-family:var(--serif);font-weight:500;font-size:16.5px;color:var(--ink);line-height:1.25;margin:0 0 4px}
+    .pt-cross-card:hover .pt-cross-h{color:var(--teal-deep)}
+    .pt-cross-d{display:block;font-size:14px;color:var(--muted);line-height:1.5}
+
+    .pt-close{padding:38px 0 64px}
+    .pt-close h2{margin:0 0 8px}
+    .pt-close p{font-size:16px;line-height:1.6;color:var(--muted);margin:0 0 18px;max-width:600px}
+
+    @media(max-width:620px){
+      .pt-cross-row{grid-template-columns:1fr}
+    }
+  </style>
+</Base>

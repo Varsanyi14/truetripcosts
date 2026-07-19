@@ -1,0 +1,229 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import USBadge from '../components/USBadge.astro';
+
+// Pet theme, explainer hub 2 of 3: the EU Animal Health Certificate, the one document a
+// US-origin pet uses to enter any of the twenty-seven EU countries. Authored standalone
+// page, modeled on passports-and-visas.astro and on the US re-entry hub, not a country
+// spoke. Official-first: the real steps point to USDA APHIS and the European Commission,
+// and we earn nothing. Checked July 2026. Re-verify the certificate format change and the
+// APHIS endorsement fees before relying on this, both are dated and the format changes on
+// 1 October 2026.
+
+// The government building icon used in the sources panel, matching the guides.
+const govIcon = '<path d="M6 3v18"></path><path d="M6 4h12l-2 3.5L18 11H6"></path>';
+
+// Official pages this hub is checked against. All open in a new tab with noopener only,
+// never a sponsored marker, because nothing here is a paid link.
+const sources = [
+  { name: "USDA APHIS, pet travel from the US to the European Union", note: "the steps a US-origin pet takes to enter any EU country, the microchip and rabies sequence, and the health certificate", url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-germany" },
+  { name: "USDA APHIS, cost to endorse your pet's health certificate", note: "the current endorsement fees by number of lab tests, and who is exempt", url: "https://www.aphis.usda.gov/pet-travel/us-to-foreign-country/cost-to-endorse" },
+  { name: "USDA APHIS, Finland, Malta and Ireland, including Northern Ireland", note: "the dog tapeworm treatment those countries require, and the timing window for it", url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-finland-malta-ireland-including-northern" },
+  { name: "European Commission, movement of pets into the EU", note: "the EU side of the rules, the harmonized framework, and why the EU Pet Passport is for EU residents", url: "https://food.ec.europa.eu/animals/movement-pets_en" }
+];
+---
+<Base
+  title="The EU pet health certificate for US travelers: microchip, rabies, and the 10-day clock | True Trip Costs"
+  description="What US travelers need to bring a dog or cat into the European Union: the ISO microchip first, then the rabies shot in the right order, then the EU Animal Health Certificate endorsed by USDA APHIS and valid for 10 days to entry. The order that trips people up, the current APHIS endorsement fees, why the EU Pet Passport is not for you, and the tapeworm rule for Ireland, Finland and Malta. Every step linked to the official USDA and European Commission page, and we earn nothing sending you there. Checked July 2026."
+>
+  <Nav />
+  <main class="wrap">
+
+    <section class="pt-prose">
+      <p class="lab"><span class="paw-lab" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><ellipse cx="6.4" cy="10.2" rx="1.9" ry="2.5"/><ellipse cx="10.1" cy="7.5" rx="1.9" ry="2.6"/><ellipse cx="13.9" cy="7.5" rx="1.9" ry="2.6"/><ellipse cx="17.6" cy="10.2" rx="1.9" ry="2.5"/><path d="M12 11.3c-2.8 0-5.1 2-5.1 4.4 0 1.9 1.7 3 3.5 2.6.6-.13 1.1-.19 1.6-.19s1 .06 1.6.19c1.8.4 3.5-.7 3.5-2.6 0-2.4-2.3-4.4-5.1-4.4z"/></svg></span>Taking a pet to Europe</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
+      <h1>The EU pet health certificate, and the order you have to do things in.</h1>
+      <p class="pt-lede">The European Union is a single bloc for pets. One process gets a US dog or cat into any of the twenty-seven member countries, from Germany to Portugal, and it is not hard once you see it. The catch is sequence: the microchip has to come before the rabies shot, and the certificate runs on a tight 10-day clock. Get the order wrong and you can lose weeks. Here is the process, the official pages for it, and the mistakes that cost people the most time.</p>
+    </section>
+
+    <div class="recentchange" style="margin-top:22px">
+      <span class="rcpill">The short answer</span>
+      <p>For a US-origin pet, the EU asks for an <b>ISO microchip</b>, then a <b>rabies vaccination given after the chip</b>, then an <b>EU Animal Health Certificate</b> filled in by a USDA-accredited vet and endorsed by <b>USDA APHIS</b>. The pet must reach the EU within <b>10 days</b> of that endorsement. There is <b>no rabies titer and no quarantine</b> for a pet coming straight from the US. The single most expensive mistake is vaccinating before microchipping, which makes the shot invalid.</p>
+    </div>
+
+    <section class="why">
+      <p class="lab">Three things that surprise people</p>
+      <h2>Read these before you book the vet.</h2>
+      <p class="lead">The steps are simple, but three of them are counterintuitive, and those are the ones that reset timelines and budgets.</p>
+      <div class="qrow">
+        <div class="qcard">
+          <h3>Microchip, then rabies</h3>
+          <p>The chip must go in before the rabies shot, and the vet should scan it first and record the number on the vaccination record. A rabies shot given before the chip does not count for the EU, so you redo it and wait again.</p>
+        </div>
+        <div class="qcard">
+          <h3>The Pet Passport is not yours</h3>
+          <p>The blue EU Pet Passport is for pets that already live in the EU. A pet arriving from the US travels on the EU Animal Health Certificate instead. This is the single biggest point of confusion for Americans.</p>
+        </div>
+        <div class="qcard">
+          <h3>A 10-day window</h3>
+          <p>Once APHIS endorses the certificate, the pet has to enter the EU within 10 days. That means the endorsement is one of the last things you do, not one of the first, and it has to line up with your flight.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-prose">
+      <p class="lab">The sequence</p>
+      <h2>The order, step by step.</h2>
+      <p>Every US-origin pet follows the same path into the EU. The steps are not complicated on their own; the value is in doing them in the right order and leaving room for the waiting period.</p>
+      <ul class="pt-snap">
+        <li><b>Microchip first.</b> The pet needs an ISO 11784 or 11785 compliant microchip. If a chip was implanted earlier but is not ISO compliant, you can bring your own scanner or have a compliant chip added.</li>
+        <li><b>Rabies vaccination after the chip.</b> The vet scans the chip, then gives the rabies shot. A first-ever rabies shot means a 21-day wait before the pet may travel. A booster given while a previous shot is still valid has no wait, as long as the record is unbroken.</li>
+        <li><b>The EU Animal Health Certificate.</b> A USDA-accredited veterinarian completes it, close to travel, and it must then be endorsed by USDA APHIS.</li>
+        <li><b>APHIS endorsement, then fly within 10 days.</b> Once endorsed, the certificate is valid for entry into the EU for 10 days, then for onward travel inside the EU for four months, or until the rabies vaccination lapses, whichever comes first.</li>
+      </ul>
+      <p class="pt-note">There is no rabies antibody titer and no quarantine for a pet coming directly from the US. A titer is only needed if the pet has been in certain other countries first. The owner also signs a declaration on the last page of the certificate that the move is not a commercial sale.</p>
+    </section>
+
+    <section class="pt-prose">
+      <p class="lab">What it costs to endorse</p>
+      <h2>The APHIS endorsement fee, by number of tests.</h2>
+      <p>The vet visit and vaccines are billed by your veterinarian and vary widely. The one fee we can pin down is what USDA APHIS charges to endorse the certificate. It is set by how many laboratory tests the certificate requires, and for a straight US-to-EU trip that is usually none.</p>
+      <div class="pt-panel">
+        <div class="pt-fee">
+          <span class="pt-fee-k">No lab tests</span>
+          <span class="pt-fee-v">$101</span>
+          <span class="pt-fee-n">the usual EU case, since the EU needs no titer for a US-origin pet</span>
+        </div>
+        <div class="pt-fee">
+          <span class="pt-fee-k">1 to 2 lab tests</span>
+          <span class="pt-fee-v">$160</span>
+          <span class="pt-fee-n">a rabies titer counts as a test; the rabies vaccination itself does not</span>
+        </div>
+        <div class="pt-fee">
+          <span class="pt-fee-k">3 to 6 lab tests</span>
+          <span class="pt-fee-v">$206</span>
+          <span class="pt-fee-n">uncommon for the EU, more typical of stricter destinations</span>
+        </div>
+      </div>
+      <p class="pt-note">Service dogs covered by the ADA and active-duty military working dogs are exempt from the endorsement fee. Emotional support animals are not exempt. There is an added charge for each additional pet on the same trip, and the fee is not refundable. APHIS strongly prefers the electronic route through its VEHCS system. Fees confirmed against the APHIS page in July 2026.</p>
+      <p class="pt-links"><a href="https://www.aphis.usda.gov/pet-travel/us-to-foreign-country/cost-to-endorse" target="_blank" rel="noopener">See the current fees at USDA APHIS</a> <span class="tg free">we earn nothing</span></p>
+    </section>
+
+    <section class="pt-prose">
+      <p class="lab">The tapeworm exception</p>
+      <h2>Four places add a dog tapeworm treatment.</h2>
+      <p>Most of the EU is one identical process, but a short list of rabies-free destinations adds one step for dogs, not cats. If your dog is entering <b>Ireland, Finland or Malta</b>, or <b>Norway</b>, which sits outside the EU but follows the same rule, a vet must give an approved tapeworm treatment for echinococcus and record it 24 to 120 hours before the dog arrives, that is between one and five days out. The same applies to Northern Ireland.</p>
+      <p>This is a timing rule as much as a medical one. The treatment has to fall inside that window, so it usually happens at a final vet visit right before travel, and the times go on the certificate. Cats are not covered by it.</p>
+      <p class="pt-links"><a href="https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-finland-malta-ireland-including-northern" target="_blank" rel="noopener">USDA APHIS on the tapeworm countries</a> <span class="tg free">we earn nothing</span></p>
+    </section>
+
+    <section class="pt-prose">
+      <p class="lab">Country by country</p>
+      <h2>Which EU country you are moving to barely matters.</h2>
+      <p>Germany, France, Italy, Spain and the Netherlands are the places Americans move to most often with a pet, and for a US-origin pet the process is the same for all of them: chip, rabies in the right order, the EU Animal Health Certificate, APHIS endorsement, and the 10-day window. There is no separate national permit to chase.</p>
+      <p>That is why we do not keep a page per EU country for pets. The differences that exist are small and sit inside the framework above. If you are heading to Portugal, our <a href="/portugal">Portugal guide</a> already covers the money side of a longer stay. For any EU country, the certificate is the document, and the destination's own agriculture ministry is the final word on the day.</p>
+    </section>
+
+    <div class="pt-flag">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div>
+        <p class="pt-flag-h">The certificate format changes on 1 October 2026.</p>
+        <p class="pt-flag-p">The EU updated its pet movement framework in April 2026. The health steps above, chip then rabies then certificate, are unchanged, but the certificate form itself is being replaced: the current non-commercial format can be endorsed only through 30 September 2026, and the new format is required from 1 October 2026. Your USDA-accredited vet will use the correct form for your travel date, but if you are reading old guidance elsewhere, this is the part that has moved. Confirm on the USDA APHIS and European Commission pages before you travel. Checked July 2026.</p>
+      </div>
+    </div>
+
+    <section class="pt-cross">
+      <p class="lab">More on traveling with a pet</p>
+      <div class="pt-cross-row">
+        <a class="pt-cross-card" href="/bringing-a-dog-into-the-us">
+          <span class="pt-cross-h">Bringing your dog back into the US</span>
+          <span class="pt-cross-d">Every dog flying home needs this, including your own. The free CDC form, the microchip rule, and the returning-pet trap.</span>
+        </a>
+        <a class="pt-cross-card" href="/traveling-with-a-pet">
+          <span class="pt-cross-h">Traveling with a pet</span>
+          <span class="pt-cross-d">The overview: what a pet trip costs, how long it takes, and every country guide we have written.</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="gbyline" style="display:flex;align-items:flex-start;gap:9px;margin:34px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card)">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. Last checked Jul 2026. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
+    </div>
+
+    <details class="gsources">
+      <summary class="gsources-sum">
+        <span class="gsources-txt">Sources, and how this page was checked</span>
+        <svg class="gsources-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="gsources-body">
+        <p class="gs-row"><span class="gs-k">Last checked</span><span>Jul 2026</span></p>
+        <p class="gs-row"><span class="gs-k">Changed since last check</span><span>First published in July 2026, covering the EU Animal Health Certificate for a US-origin pet: the microchip-then-rabies sequence, the 21-day wait after a first rabies shot, the certificate and its 10-day entry window, the current APHIS endorsement fees of $101, $160 and $206 by number of tests, the point that the EU Pet Passport is for EU residents, and the dog tapeworm rule for Ireland, Finland, Malta and Norway. Notes the EU framework update of April 2026 and the certificate format change taking effect 1 October 2026.</span></p>
+        <div class="gs-row"><span class="gs-k">Primary sources</span>
+          <ul class="gs-links">
+            {sources.map(s => (
+              <li class="gs-src">
+                <span class="gs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={govIcon}></svg></span>
+                <span class="gs-src-tx">
+                  <a href={s.url} target="_blank" rel="noopener" class="gs-src-name">{s.name}</a>
+                  <span class="gs-src-note">{s.note}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p class="gs-row"><span class="gs-k">Our own read</span><span>The framework is set by the EU and administered on the US side by APHIS, not by us. It is stable in substance but the paperwork is changing format in late 2026, so we point you to the official pages and date this page clearly. Vet and vaccine costs vary, so treat any figure here as a starting point and confirm on the source.</span></p>
+      </div>
+    </details>
+
+    <section class="pt-close">
+      <h2>Now the money and the timeline.</h2>
+      <p>The certificate is the paperwork. What decides a pet trip in practice is the lead time and the all-in cost, and those depend on your pet, your route, and whether it flies in the cabin or as cargo. That is what the overview and the country guides are for.</p>
+      <a class="btn" href="/traveling-with-a-pet">See traveling with a pet
+        <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </section>
+
+  </main>
+  <Footer />
+
+  <style>
+    .pt-prose{padding:34px 0 0;max-width:680px}
+    .pt-prose h1{margin:6px 0 14px}
+    .pt-prose h2{margin:0 0 8px}
+    .pt-lede{font-size:17px;line-height:1.55;color:var(--ink);margin:0}
+    .pt-prose p:not(.lab):not(.pt-lede):not(.pt-note):not(.pt-links){font-size:16px;line-height:1.65;color:var(--ink);margin:14px 0 0}
+    .pt-prose a{color:var(--teal-deep);font-weight:500;text-decoration:underline;text-underline-offset:2px}
+    .pt-prose a.btn{color:#fff;text-decoration:none}
+    .pt-note{font-size:13.5px;line-height:1.55;color:var(--muted);margin:12px 0 0;max-width:660px}
+    .pt-links{margin:16px 0 0;display:flex;align-items:center;flex-wrap:wrap;gap:10px 12px}
+
+    .paw-lab{display:inline-flex;vertical-align:-3px;margin-right:7px;color:var(--teal)}
+    .paw-lab svg{display:block}
+
+    .pt-snap{list-style:none;margin:16px 0 0;padding:0;max-width:680px}
+    .pt-snap li{position:relative;font-size:15.5px;line-height:1.6;color:var(--ink);padding:0 0 0 18px;margin:0 0 10px}
+    .pt-snap li:last-child{margin-bottom:0}
+    .pt-snap li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+    .pt-snap b{font-weight:600}
+
+    .pt-panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow:hidden;margin:16px 0 0;max-width:680px}
+    .pt-fee{display:grid;grid-template-columns:auto auto 1fr;align-items:baseline;gap:6px 14px;padding:14px 18px;border-bottom:1px solid var(--line)}
+    .pt-fee:last-child{border-bottom:0}
+    .pt-fee-k{font-weight:600;font-size:15px;color:var(--ink)}
+    .pt-fee-v{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--teal-deep);white-space:nowrap}
+    .pt-fee-n{grid-column:1 / -1;font-size:13.5px;color:var(--muted);line-height:1.5}
+
+    .pt-flag{display:flex;align-items:flex-start;gap:11px;margin:30px 0 0;padding:16px 18px;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:12px;background:var(--amber-bg)}
+    .pt-flag svg{flex:none;margin-top:2px}
+    .pt-flag-h{margin:0 0 4px;font-weight:600;font-size:15px;color:var(--ink)}
+    .pt-flag-p{margin:0;font-size:14px;line-height:1.6;color:var(--ink)}
+
+    .pt-cross{padding:34px 0 0;max-width:680px}
+    .pt-cross-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+    .pt-cross-card{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 17px;text-decoration:none;box-shadow:var(--shadow);transition:border-color .2s ease,transform .2s ease}
+    .pt-cross-card:hover{border-color:#C2E0C8;transform:translateY(-1px)}
+    .pt-cross-h{display:block;font-family:var(--serif);font-weight:500;font-size:16.5px;color:var(--ink);line-height:1.25;margin:0 0 4px}
+    .pt-cross-card:hover .pt-cross-h{color:var(--teal-deep)}
+    .pt-cross-d{display:block;font-size:14px;color:var(--muted);line-height:1.5}
+
+    .pt-close{padding:38px 0 64px}
+    .pt-close h2{margin:0 0 8px}
+    .pt-close p{font-size:16px;line-height:1.6;color:var(--muted);margin:0 0 18px;max-width:600px}
+
+    @media(max-width:620px){
+      .pt-cross-row{grid-template-columns:1fr}
+    }
+  </style>
+</Base>
