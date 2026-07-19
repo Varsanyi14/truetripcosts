@@ -163,5 +163,69 @@ export default {
         note: "Good to know: the Maroons won their freedom in 1739" },
     ],
     pride: "Jamaicans are proud, warm and full of style, and their small island punches far above its weight in music, in sport and in spirit. They are proud of a people who won their freedom, of a sound the whole world dances to, and of living by one love."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      title: "Getting a taxi in Jamaica, and the red-plate rule (2026) | True Trip Costs",
+      description: "Why there is no real Uber in Jamaica, how to tell a licensed red-plate taxi from an illegal white-plate 'robot', why you must agree the fare first, and the official airport taxi desk at Montego Bay. Checked July 2026.",
+      h1: "Taxis in Jamaica, and the red-plate rule",
+      lede: "Jamaica has no Uber, and the taxis are not reliably metered, so a couple of simple habits keep you safe and fairly priced. Here is the plate to look for, how to handle the fare, and the airport desk to use.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "There is <b>no Uber</b> in Jamaica, so the safe choice is a <b>licensed red-plate taxi</b>, never an unlicensed white-plate <b>robot</b>. Taxis are not reliably metered, so <b>agree the fare before you set off</b>, or better, pre-book an airport transfer for a fixed price. At Montego Bay's <b>Sangster</b> airport, use the official <b>Authorised Airport Taxi desk</b> (JUTA or JCAL) just outside customs, or a pre-booked transfer. Your hotel's own tourist-board-approved taxi is another safe bet.",
+      official: {
+        label: "Montego Bay Airport, official airport taxi information",
+        url: "https://www.mbjairport.com/taxi-cabs",
+        note: "At <b>Sangster International</b> (Montego Bay), the <b>Authorised Airport Taxi desk</b> is just outside the customs exit, shared by the two licensed operators, <b>JUTA</b> and <b>JCAL</b>. There are no meters, so agree the fare at the desk, or pre-book a transfer for a fixed price."
+      },
+      sections: [
+        {
+          h: "Red plate good, white-plate robot bad",
+          p: [
+            "The one thing to know in Jamaica is the license plate. A legitimate taxi is a licensed <b>public passenger vehicle</b>, and it carries a <b>red plate</b>, along with a Transport Authority sticker on the windscreen, a <b>Taxi</b> globe on the roof, and often the words <b>Route Taxi</b> on the doors. An unlicensed car working as a taxi is known locally as a <b>robot</b>, and it carries an ordinary <b>white plate</b>.",
+            "Robots are everywhere and cheap, and locals use them, but they are operating illegally, they are often overloaded, and the point that matters for you: if there is an accident, the passengers are <b>not insured</b>. As a visitor, keep it simple and use only <b>red-plate</b> taxis, tourist-board-approved taxis such as <b>JUTA</b>, or your hotel's own drivers."
+          ]
+        },
+        {
+          h: "No Uber, so agree the fare first",
+          p: [
+            "<b>Uber</b> and the big ride apps do not really operate in Jamaica. The listings you will find online for <b>Uber Montego Bay</b> are private-transfer companies borrowing the name, not the app itself, so do not plan around it. What you use instead is a licensed taxi or a booked transfer.",
+            "Taxis outside Kingston are technically metered, but drivers often will not use the meter, so <b>always agree the price before you set off</b>, and expect roughly <b>25 percent more after midnight</b>. Shared <b>route taxis</b>, the red-plate kind, run fixed point-to-point routes cheaply, while a <b>charter</b> taxi is private and costs more. For anything longer, know the going rate first or book a fixed-price transfer."
+          ]
+        },
+        {
+          h: "At the airport",
+          p: [
+            "At Montego Bay's <b>Sangster International</b> (MBJ), the official <b>Authorised Airport Taxi desk</b> sits just outside the customs exit and is shared by the two licensed operators, <b>JUTA</b> and <b>JCAL</b>. You can take a cab from the rank in front of arrivals or pre-book a transfer. Because there are no meters, you agree or prepay the fare, and a <b>pre-booked private transfer</b> gives you a fixed price and a driver waiting with your name, which is the least stressful option after a long flight.",
+            "Kingston's airport is <b>Norman Manley</b> (NMIA), and the same rules apply there. Wherever you land, <b>ignore anyone who approaches you</b> inside the terminal offering a ride, and head for the official desk or your booked driver."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          p: [
+            "Agree the number before you get in. Both <b>US dollars</b> and <b>Jamaican dollars</b> are widely accepted for taxis, so carry small notes, and a licensed taxi should be able to show you its fares. Confirm whether the quote is in US or Jamaican dollars, since the difference is large and a vague quote is where misunderstandings happen.",
+            "Tipping is a kind gesture rather than an obligation, and around 10 to 15 percent for a helpful driver or a tour is appreciated, though it is not expected on a fixed-price transfer. For the wider money picture, including how much cash to carry and which currency to use, see the <a href=\"/jamaica\">Jamaica money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is there Uber in Jamaica?", a: "No, not really. Uber and the big ride apps do not operate in Jamaica, and the 'Uber Montego Bay' listings online are private-transfer companies using the name. The safe options are a licensed red-plate taxi, a tourist-board-approved taxi such as JUTA, your hotel's own driver, or a pre-booked private transfer." },
+        { q: "What is a robot taxi in Jamaica?", a: "An unlicensed car operating as a taxi, carrying an ordinary white plate instead of the legal red public-passenger-vehicle plate. Robots are common and cheap but illegal, often overloaded, and passengers are not insured if there is an accident. As a visitor, use only red-plate taxis or a tourist-board-approved or hotel taxi." },
+        { q: "Do Jamaican taxis have meters?", a: "Outside Kingston some are metered, but drivers frequently do not use the meter, so always agree the fare before you set off, and expect about 25 percent more after midnight. For the airport, a pre-booked transfer with a fixed price avoids the negotiation entirely." },
+        { q: "What is the best taxi from Montego Bay airport?", a: "Use the official Authorised Airport Taxi desk just outside customs, shared by JUTA and JCAL, or pre-book a private transfer for a fixed fare and a driver waiting with your name. There are no meters, so agree or prepay the price, and ignore anyone who approaches you offering a ride inside the terminal." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: Jamaica country information, general safety and local-travel context for US visitors", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Jamaica.html", type: "gov" },
+          { label: "Jamaica Observer: reporting on licensed red-plate public-passenger-vehicle taxis versus illegal white-plate robot cabs", url: "https://www.jamaicaobserver.com/2021/08/23/hunt-for-illegal-cabbies/", type: "news" },
+          { label: "iExplore: a Jamaica transport overview on metered fares, route taxis and tourist-board-approved taxis", url: "https://www.iexplore.com/articles/travel-guides/caribbean/jamaica/transportation", type: "guide" }
+        ],
+        judgment: "Fares are negotiated rather than metered and move with fuel and season, so agree the price first and treat any figures as a recent read. Ride-hailing apps were not operating in Jamaica as of this check, so confirm current options before you travel. Checked July 2026."
+      }
+    }
+  ]
 };

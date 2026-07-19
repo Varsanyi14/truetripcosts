@@ -155,5 +155,64 @@ export default {
         note: "Say it: un café (uhn kah-FAY)" },
     ],
     pride: "The French are proud of their art of living, the food, the wine, the language and the long lunch, and they love to share it with anyone who makes a little effort. Lead with Bonjour and a smile, and any coolness melts fast."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      title: "How taxis and Uber work in Paris, and the CDG airport fixed fare (2026) | True Trip Costs",
+      description: "How Paris taxis and ride apps work (real Uber and Bolt here, plus G7 and FreeNow), the government-fixed CDG and Orly airport fares, the unlicensed touts to skip, and when the RER B train wins. Checked July 2026.",
+      h1: "Paris taxis and Uber, and the CDG fixed fare",
+      lede: "Paris gives you real choice, a hailable licensed taxi or a proper Uber, but the airport is where money is won or lost. Here is how the two compare, the fixed fare that protects you, and the tout trick to skip.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Paris has real choice: hail a licensed <b>taxi</b> on a regulated meter, or use <b>Uber</b> and <b>Bolt</b>, which run proper ride-hailing cars here, plus <b>G7</b> or <b>FreeNow</b> to book a licensed cab. The big protection is the airport <b>fixed fare</b>: from <b>Charles de Gaulle</b>, a licensed taxi to the <b>Right Bank</b> is a flat <b>56 euros</b> and to the <b>Left Bank</b> <b>65 euros</b>, luggage and tolls included, 24/7, for up to 4 people. Uber has <b>no fixed airport rate</b>, so it surges. The scam to skip is the unlicensed <b>touts</b> at CDG who quote 120 to 200 euros for that ride, so ignore anyone who approaches you and follow the signs to the official rank.",
+      sections: [
+        {
+          h: "Taxi or app: you have real choice here",
+          p: [
+            "Unlike Italy or Greece, France has proper ride-hailing. <b>Uber</b> and <b>Bolt</b> run real private-hire cars (called <b>VTC</b>), so opening Uber works the way it does at home, with an upfront price and, yes, surge pricing at busy times. You can <b>also</b> hail a licensed <b>taxi</b> on the street or at a rank, running a regulated meter with three tariffs that change by time of day and zone and a starting charge of about 4 euros. To book a licensed taxi through an app, use <b>G7</b>, Paris's biggest taxi network, or <b>FreeNow</b>.",
+            "One rule for the apps: you cannot just grab an Uber or Bolt <b>spontaneously at the airport</b>. You book in the app and walk to the designated pickup point, which the app shows by door and level. For a short city trip, an Uber is often a few euros cheaper than a metered taxi, and licensed taxis must accept a card."
+          ]
+        },
+        {
+          h: "The CDG and Orly fixed fare",
+          p: [
+            "The key protection is the airport <b>fixed fare</b>, set by government decree, identical day and night, with luggage and tolls included, for up to 4 passengers, on <b>licensed taxis from the official rank</b>. From <b>Charles de Gaulle</b> (CDG): the <b>Right Bank</b> is <b>56 euros</b> and the <b>Left Bank</b> is <b>65 euros</b>. From <b>Orly</b> it is roughly <b>37 to 44 euros</b>. It is worth knowing which bank your hotel is on, since the fixed fare depends on it.",
+            "The catch that costs people money: <b>Uber and Bolt have no fixed airport rate</b>, so their price rises with demand and can reach 80 to 120 euros from CDG at peak times or in bad weather. For the airport specifically, the <b>fixed-fare licensed taxi is often the cheaper and more predictable</b> choice, which is the opposite of the usual city advice."
+          ]
+        },
+        {
+          h: "The CDG touts, and the cheap train",
+          p: [
+            "The notorious scam at Charles de Gaulle is the <b>unlicensed tout</b>. Someone approaches you inside or just outside the terminal, asks if you are <b>going to Paris</b> or need a taxi, and then charges <b>120 to 200 euros</b> for the same ride the official fixed fare covers for 56, in an unmarked car. The Paris airports openly warn about these <b>false taxis</b>. The rule is simple: <b>ignore anyone who approaches you</b>, follow the signs, the blue circles on the floor and the overhead <b>Taxi</b> signs, to the official taxi rank, where a marshal points you to a licensed cab and the fixed fare applies.",
+            "The cheap alternative into central Paris is the <b>RER B</b> train, about <b>12 euros</b> to <b>Chatelet-Les Halles</b> and <b>Saint-Michel</b> in 30 to 35 minutes, which is the best value for a solo traveler. For a family or a group of up to four with luggage, the fixed-fare taxi works out competitive per person and drops you at the door."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          p: [
+            "In the city, the meter runs one of <b>three tariffs</b>, daytime, evening and Sunday, and night and suburbs, shown by a light on the roof, and there is no flat-rate haggling for a city trip. Licensed taxis must <b>accept a card</b> and give a receipt for any fare of 25 euros or more, so ask for one if you need proof. On the airport <b>fixed fare</b>, no extra supplements apply.",
+            "Tipping is not expected in France, and rounding up to the nearest euro, or 5 to 10 percent for good service, is plenty. For the wider money picture, including how much cash to carry and where cards work, see the <a href=\"/france\">France money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does Uber work in Paris?", a: "Yes, properly. France has real ride-hailing, so Uber and Bolt run private-hire (VTC) cars with upfront pricing, unlike Italy or Greece where the apps only dispatch licensed taxis. You can also hail a licensed metered taxi or book one through G7 or FreeNow. Note that Uber and Bolt surge and have no fixed airport rate, so compare them against the fixed taxi fare for airport runs." },
+        { q: "What is the taxi fare from CDG to Paris?", a: "A government-set flat fare on licensed taxis from the official rank: 56 euros to the Right Bank and 65 euros to the Left Bank, luggage and tolls included, identical day and night, for up to 4 passengers. Orly is roughly 37 to 44 euros. Know which bank your hotel is on. Uber and Bolt have no fixed airport rate and surge, so the fixed-fare taxi is often cheaper and more predictable." },
+        { q: "How do I avoid the taxi scam at Charles de Gaulle?", a: "Ignore anyone who approaches you inside or near the terminal asking if you need a taxi or are going to Paris; they are unlicensed touts who charge 120 to 200 euros for the ride the fixed fare covers for 56. Follow the signs, the blue circles on the floor and overhead Taxi signs, to the official rank, where a marshal assigns you a licensed cab at the fixed fare. For an Uber or Bolt, book in the app and go to the designated pickup point." },
+        { q: "Should I take a taxi or the train from CDG?", a: "For value, the RER B train is about 12 euros to central Paris (Chatelet-Les Halles, Saint-Michel) in 30 to 35 minutes, best for a solo traveler. For door-to-door with luggage or a group of up to four, the fixed-fare taxi (56 euros to the Right Bank, 65 to the Left Bank) is competitive per person and hassle-free. Uber works but surges at the airport." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: France country information, general safety and local-travel context for US visitors", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/France.html", type: "gov" },
+          { label: "Hootling: a 2026 guide to the CDG to Paris fixed taxi fare, the unlicensed touts and the RER B train", url: "https://www.hootling.com/blog/taxi-cdg-to-paris", type: "guide" },
+          { label: "AlloTaxi: Paris taxi rates for 2026, the decree-set airport flat fares and the three meter tariffs", url: "https://www.allotaxi.net/service-taxi/en/paris-taxi-rates.html", type: "guide" }
+        ],
+        judgment: "The fixed airport fares are set by decree but can be revised, and city meter tariffs and app surge pricing move, so confirm the fixed fare before you ride and treat euro figures as a recent read. Checked July 2026."
+      }
+    }
+  ]
 };

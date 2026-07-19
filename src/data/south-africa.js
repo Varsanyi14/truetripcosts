@@ -172,5 +172,64 @@ export default {
         note: "Good to know: a braai invitation is a genuine welcome" },
     ],
     pride: "South Africa is proud of its diversity and its languages, its extraordinary landscapes and wildlife, and a warm, sociable spirit. Meet it with openness and a bit of curiosity, and it gives a lot back."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      title: "Which taxi app to use in South Africa, and the airport e-hailing bays (2026) | True Trip Costs",
+      description: "Which ride app to install for South Africa (Uber and Bolt), why airport pickups happen at designated e-hailing bays not the curb, the taxi turf tension to know, and the Gautrain from Johannesburg airport. Checked July 2026.",
+      h1: "Taxis in South Africa, and the airport e-hailing bays",
+      lede: "Uber and Bolt make getting around South Africa's cities easy, but the airports have a pickup quirk and there is some turf tension worth understanding. Here is the app to use, where it collects you, and what to avoid.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Install <b>Uber</b> and <b>Bolt</b>; both work well in the big cities and Bolt is usually a little cheaper. Two things to know. At the airports, app pickup is at a <b>designated e-hailing bay</b>, not the arrivals curb, and at <b>Cape Town</b> that bay is up at <b>Parkade 1</b> via the skybridge. And never take an <b>unsolicited</b> ride from someone inside the terminal. There is also real, sometimes tense competition between the apps and the traditional taxi operators at certain spots, so some pickups get moved a short distance. Avoid the <b>minibus taxis</b> as a visitor, and in Johannesburg the <b>Gautrain</b> is the easy airport link.",
+      sections: [
+        {
+          h: "Which app to install",
+          p: [
+            "<b>Uber</b> and <b>Bolt</b> are both widely available in <b>Johannesburg</b>, <b>Cape Town</b>, <b>Durban</b> and <b>Pretoria</b>, and they are the way most visitors get around. <b>Bolt</b> is usually 10 to 20 percent cheaper on the same route, so many travelers keep both and compare, especially when one is surging. <b>inDriver</b>, where you propose a fare, is another option.",
+            "Two safety habits are worth building. Verify the <b>driver and plate</b> in the app before you get in, and where you can, request pickups from <b>inside a mall or hotel</b> rather than standing on the street. Since 2025, e-hailing drivers must hold a licence and are limited to set areas, which is mostly invisible to you but can occasionally affect how quickly a car turns up."
+          ]
+        },
+        {
+          h: "The airport e-hailing bays",
+          p: [
+            "The operational catch is that at the airports, Uber and Bolt do <b>not</b> pick up at the arrivals door. You walk to a <b>designated e-hailing bay</b>. At <b>Cape Town</b> (CPT), the bays are at <b>Parkade 1, Ground Floor</b>, reached via the departures-level skybridge, so you pass the metered-taxi rank outside arrivals and follow the <b>e-hailing</b> signs. The airport Wi-Fi is free, so you can book on arrival, and it is roughly <b>150 to 250 rand</b> into the city bowl. At Johannesburg's <b>OR Tambo</b>, there are designated pickup areas outside the terminals.",
+            "The single most important rule for an arriving passenger: <b>never accept an unsolicited ride</b> from anyone who approaches you inside the terminal. Use the official metered-taxi rank outside arrivals, or the app's e-hailing bay, and nothing offered to you in the hall."
+          ]
+        },
+        {
+          h: "The taxi turf tension, and minibus taxis",
+          p: [
+            "There is a long-running, sometimes violent conflict between <b>e-hailing drivers</b> and the traditional <b>metered-taxi</b> and <b>minibus-taxi</b> operators, and it flares at certain transport hubs. Notably, some <b>Gautrain stations</b> are effectively no-go zones for app pickups: at <b>Sandton</b>, for example, drop-off at the station is fine, but pickup is moved about a kilometre away and the app will direct you there. It rarely touches a normal hotel-to-restaurant ride, so if the app ever sends you to an odd pickup point near a station, that is the reason.",
+            "Separately, the <b>minibus taxis</b>, the packed shared vans that most South Africans rely on, are best <b>avoided by visitors</b>. They are cheap and everywhere, but the safety standards, route confusion and periodic disputes between operators make them a poor fit for a traveler who does not know the system."
+          ]
+        },
+        {
+          h: "Johannesburg: the Gautrain, and paying",
+          p: [
+            "In Johannesburg, the <b>Gautrain</b> is the safe, fast rail link from <b>OR Tambo</b> airport to <b>Sandton</b>, <b>Rosebank</b> and <b>Pretoria</b>, running frequently until the evening and beating the highway traffic. Pick up a <b>Gautrain Gold Card</b> at the airport station, which also works on the buses that fan out from the stations.",
+            "In the apps you pay by card, which is one less thing to manage. Metered taxis prefer cash and remain handy for Cape Town airport runs, where the regulated rate can beat app surge pricing. Tipping around 10 percent is normal for a good ride. For the wider money picture, including how much cash to carry, see the <a href=\"/south-africa\">South Africa money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does Uber work in South Africa?", a: "Yes. Uber and Bolt are widely available in Johannesburg, Cape Town, Durban and Pretoria, with Bolt usually a little cheaper. Verify the driver and plate in the app, and for safety request pickups from inside a mall or hotel where you can. Avoid the minibus taxis, which locals use but are not recommended for visitors." },
+        { q: "Where do I get an Uber at Cape Town airport?", a: "Not at the arrivals door. The e-hailing bays are at Parkade 1, Ground Floor, reached via the departures-level skybridge, so walk past the metered-taxi rank and follow the e-hailing signs. Free airport Wi-Fi lets you book on arrival, and it is roughly 150 to 250 rand into the city. Never take an unsolicited ride from anyone inside the terminal." },
+        { q: "Why did my Uber pickup move near a Gautrain station?", a: "Because of turf tension between e-hailing and the traditional taxi operators. Some Gautrain stations are effectively no-go zones for app pickups; at Sandton, drop-off at the station is fine, but pickup is about a kilometre away and the app will direct you. It is a known arrangement, not an error." },
+        { q: "What is the best way from OR Tambo airport to the city?", a: "The Gautrain is the safe, fast rail link to Sandton, Rosebank and Pretoria, running frequently until the evening and skipping the traffic; buy a Gautrain Gold Card at the airport station. Otherwise, Uber or Bolt from the designated pickup bays outside the terminals, or a metered taxi from the official rank. Ignore anyone offering a ride inside arrivals." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: South Africa country information, general safety and local-travel context for US visitors", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/SouthAfrica.html", type: "gov" },
+          { label: "Wikipedia: Transport in South Africa, on e-hailing licensing since 2025 and the Uber and Bolt operators", url: "https://en.wikipedia.org/wiki/Transportation_in_South_Africa", type: "reference" },
+          { label: "Cape Town Airport guide: the e-hailing bays at Parkade 1 and the rule against unsolicited rides", url: "https://capetown-airport.co.za/uber-taxi", type: "guide" }
+        ],
+        judgment: "The airport e-hailing bays and the no-go zones can shift, and fares move with the rand and surge pricing, so treat rand figures as a recent read and check your app. The advice to avoid minibus taxis and unsolicited rides is the constant. Checked July 2026."
+      }
+    }
+  ]
 };
