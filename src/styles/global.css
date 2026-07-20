@@ -448,6 +448,14 @@
   .gs-src:first-child{border-top:none;padding-top:2px}
   .gs-ic{flex:none;width:31px;height:31px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--paper);border:1px solid var(--line);color:var(--teal-deep)}
   .gs-ic svg{width:16px;height:16px}
+  /* Spoke topic icons (Symbol via set:html) carry no scope attribute, so their size
+     must be set globally, not in the component-scoped styles. Without this the
+     injected svg renders unsized and the icon appears blank on the country page's
+     "going deeper" list (.deeper-ic), the spoke header (.sp-ic) and the sibling
+     list (.sib-ic). Sizes mirror the scoped rules. */
+  .deeper-ic svg{width:38px;height:38px;display:block}
+  .sp-ic svg{width:44px;height:44px;display:block}
+  .sib-ic svg{width:38px;height:38px;display:block}
   .gs-src-tx{min-width:0}
   .gs-src-name{color:var(--teal-deep);font-weight:600;text-decoration:none;font-size:13.5px;line-height:1.35}
   .gs-src-name:hover{text-decoration:underline}
