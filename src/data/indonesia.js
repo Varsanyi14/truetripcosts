@@ -177,6 +177,71 @@ export default {
 
   spokes: [
     {
+      slug: "staying-connected",
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "Staying connected in Bali and Indonesia: which eSIM carrier actually reaches where you are going (2026) | True Trip Costs",
+      description: "Indonesia has real coverage gaps once you leave South Bali, and it comes down to carrier. Telkomsel reaches the smaller islands, dive areas and remote treks where the others thin out, so the eSIM you pick matters. Checked July 2026.",
+      h1: "Staying connected in Indonesia",
+      lede: "Coverage in Indonesia is not one thing, it is a carrier question. If your trip stays in South Bali almost any plan is fine, but the moment you head to Nusa Penida, the Gili Islands or a remote dive site, the network behind your eSIM decides whether you have signal.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-20",
+      answer: "Pick a <b>Telkomsel-backed eSIM</b> if your trip goes beyond South Bali. Telkomsel has by far the widest reach in Indonesia, including smaller islands, rural Bali and remote dive areas, while XL Axiata and Indosat cover the South Bali resort belt and Jakarta well but thin out fast beyond it. 4G is the everyday standard, with 5G only in parts of Jakarta and Denpasar. Set the eSIM up before you fly, and download offline maps for the places where signal drops, like Nusa Penida's clifftop viewpoints, the Gili Islands away from the main villages, and boat and trekking routes.",
+      sections: [
+        {
+          h: "Why the carrier matters more than the plan",
+          p: [
+            "In a lot of countries any travel eSIM is fine because the networks all cover the tourist areas. Indonesia is not like that. The country is thousands of islands, and coverage falls off sharply once you leave the main resort belt, so the network your eSIM rides on is the thing that decides whether you are connected.",
+            "<b>Telkomsel</b> has the widest reach by a clear margin, including the smaller islands, rural Bali and the remote dive and trek spots. XL Axiata and Indosat are strong in South Bali and Jakarta but thin out beyond them. So the honest rule is simple: if you are staying in Seminyak, Canggu or Ubud the whole time, almost anything works, but if your trip goes further, choose a plan backed by Telkomsel."
+          ]
+        },
+        {
+          h: "Where signal actually drops",
+          p: [
+            "Expect dead zones on <b>Nusa Penida's clifftop viewpoints</b>, in the <b>Gili Islands</b> away from the main villages, on boats between islands, and on remote trekking routes. These are exactly the places people go for the day, so it catches travelers out.",
+            "Download <b>offline maps</b> before you set off, so a lost signal does not leave you stranded on a scooter with no directions. This is cheap insurance and takes two minutes at your hotel Wi-Fi."
+          ]
+        },
+        {
+          h: "The simplest setup that works",
+          p: [
+            "A travel eSIM avoids the airport SIM counter queue at Denpasar and the ID paperwork a local SIM needs, and it is ready the moment you land. <b>Nomad</b> runs its Indonesia eSIM on the <b>Telkomsel</b> network, which is the wide-reach carrier you want for a trip that goes past South Bali, so it lines up with the advice above rather than against it.",
+            "Set it up before you fly, since you need a connection to install it, and keep an eye on your data if you are streaming or using maps heavily on longer days."
+          ]
+        }
+      ],
+      faqs: [
+        {
+          q: "Which eSIM carrier is best for Bali and Indonesia?",
+          a: "Telkomsel, if your trip goes beyond the South Bali resort belt. It has the widest coverage in Indonesia, including the smaller islands, rural areas and remote dive and trek spots where XL Axiata and Indosat thin out. If you are staying in Seminyak, Canggu or Ubud the whole time, most plans are fine, but for anything further, pick a Telkomsel-backed eSIM."
+        },
+        {
+          q: "Will my phone work on Nusa Penida and the Gili Islands?",
+          a: "Patchily. Signal drops on Nusa Penida's clifftop viewpoints and in the Gili Islands away from the main villages, even on the widest network. A Telkomsel-backed eSIM gives you the best odds, but download offline maps before you go, since you can lose signal on the boat over and at the viewpoints themselves."
+        },
+        {
+          q: "Do I need a local SIM, or is an eSIM enough?",
+          a: "An eSIM is enough for most travelers and is simpler. It skips the airport SIM counter and the ID paperwork a local SIM requires, and it works from the moment you land if you set it up before you fly. A local Telkomsel SIM can be cheaper for very long or very heavy-data stays, but for a normal trip the convenience of an eSIM usually wins."
+        },
+        {
+          q: "How much data do I need for a Bali trip?",
+          a: "It depends on your habits, but maps, messaging and the odd ride app are light, while streaming and video calls are heavy. For a week of normal use, a mid-size plan is plenty, and most eSIM providers let you top up in-app if you run low, so you do not need to overbuy up front."
+        }
+      ],
+      sources: {
+        links: [
+          {
+            label: "US State Department: Indonesia country information and local conditions",
+            url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Indonesia.html",
+            type: "gov"
+          }
+        ],
+        judgment: "Coverage and carrier reach can shift as networks expand, so treat this as a July 2026 snapshot. The core point, that Telkomsel has the widest reach and the carrier behind your eSIM matters once you leave South Bali, has held steady, but check current coverage for the specific islands on your route."
+      }
+    },
+    {
       slug: "taxis-and-apps",
       live: true,
       topic: "taxis",

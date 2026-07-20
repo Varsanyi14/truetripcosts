@@ -17,6 +17,73 @@ export default {
   insuranceLevel: "medium",
   rentalCommon: true,
   region: "Americas",
+  spokes: [
+    {
+      slug: "staying-connected",
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "Staying connected in Costa Rica: why the Kolbi network reaches the parks others miss (2026) | True Trip Costs",
+      description: "Costa Rica's coverage gaps are right where you are going: the national parks, cloud forests and remote coasts. Kolbi (ICE) reaches them where Liberty and Claro lose signal, so a Kolbi-backed eSIM is the safest bet. Checked July 2026.",
+      h1: "Staying connected in Costa Rica",
+      lede: "The catch in Costa Rica is that the coverage gaps sit exactly where you came to go: the parks, the cloud forests and the wild coasts. Which network your eSIM uses is what decides whether you have signal in Corcovado or Monteverde, so it is worth getting right before you fly.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-20",
+      answer: "Pick a <b>Kolbi-backed eSIM</b>. The state carrier <b>Kolbi (ICE)</b> has by far the widest reach in Costa Rica, including national parks, cloud forests and remote coasts where Liberty and Claro lose signal. 4G is the everyday standard, with 5G only in the larger towns. Expect dead zones in places like <b>Corcovado, deep Monteverde, the Osa Peninsula</b> and stretches of the Caribbean coast, so download offline maps before you head off the main routes. Set up <b>WhatsApp</b> before you go too, since it is how local tour operators and lodges communicate.",
+      sections: [
+        {
+          h: "Why the network decides your coverage",
+          p: [
+            "Costa Rica's draw is its wild places, and those are precisely where mobile coverage thins out. That makes the carrier behind your eSIM the thing that matters, not the plan size or the brand on the app.",
+            "<b>Kolbi (ICE)</b>, the state carrier, reaches into the national parks, cloud forests and remote coasts where <b>Liberty</b> and <b>Claro</b> drop out. So a Kolbi-backed eSIM is the safest bet for a trip built around Corcovado, Monteverde or the Osa Peninsula. If you are only in San Jose and the main towns, the difference matters less, but few people come to Costa Rica to stay in the city."
+          ]
+        },
+        {
+          h: "Where to expect dead zones",
+          p: [
+            "Plan for no signal in <b>Corcovado</b>, deep in <b>Monteverde</b>, on the <b>Osa Peninsula</b> and along stretches of the <b>Caribbean coast</b>. These are day-trip and lodge destinations, so it is easy to assume you will be connected and then find you are not.",
+            "Download <b>offline maps</b> before you leave the main routes, and let your lodge know your rough plan if you are heading somewhere truly remote, since you may be out of contact for hours."
+          ]
+        },
+        {
+          h: "Set up WhatsApp, and the simplest eSIM",
+          p: [
+            "In Costa Rica, <b>WhatsApp is the default way tour operators and lodges communicate</b>, from confirming a shuttle to rearranging a tour around the weather. Install it and confirm your bookings on it before you fly, so you are reachable the way locals expect.",
+            "For the connection itself, a travel eSIM skips the SIM counter and works from landing. <b>Nomad</b> partners with <b>Kolbi (ICE)</b> and Liberty in Costa Rica, so a Nomad eSIM can ride the wide-reach Kolbi network that this whole page points you toward. Set it up before you travel, since you need a connection to install it."
+          ]
+        }
+      ],
+      faqs: [
+        {
+          q: "Which eSIM network is best for Costa Rica?",
+          a: "Kolbi (ICE), the state carrier. It has the widest reach in the country, including national parks, cloud forests and remote coasts where Liberty and Claro lose signal. If your trip is built around wild places like Corcovado or Monteverde, a Kolbi-backed eSIM is the safest bet."
+        },
+        {
+          q: "Will I have signal in the national parks?",
+          a: "Often not, even on the widest network. Expect dead zones in Corcovado, deep Monteverde, the Osa Peninsula and along parts of the Caribbean coast. A Kolbi-backed eSIM gives you the best coverage of any option, but download offline maps and plan for stretches with no signal."
+        },
+        {
+          q: "Do I really need WhatsApp in Costa Rica?",
+          a: "Effectively yes. It is how local tour operators, shuttle drivers and lodges communicate, including last-minute changes for weather. Install it and confirm your bookings on it before you fly, so you can be reached the way the local operators expect."
+        },
+        {
+          q: "Is an eSIM or a local SIM better for Costa Rica?",
+          a: "An eSIM is simpler for most travelers: it skips the SIM counter and works from the moment you land if you set it up beforehand. What matters more than the format is the network, so whichever you choose, aim for one backed by Kolbi if your trip goes into the parks and remote coasts."
+        }
+      ],
+      sources: {
+        links: [
+          {
+            label: "US State Department: Costa Rica country information and local conditions",
+            url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/CostaRica.html",
+            type: "gov"
+          }
+        ],
+        judgment: "Network reach and coverage can change as carriers invest, so treat this as a July 2026 snapshot. The steady point is that Kolbi (ICE) has the widest reach into the parks and remote coasts, so the carrier behind your eSIM is what to check, not the brand on the app."
+      }
+    },
+  ],
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 2 },
   hook: "Dollars work almost everywhere, but paying in colones quietly saves you money.",
 
