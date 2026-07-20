@@ -73,9 +73,9 @@ export default {
     rate: 22, cur: "CZK", round: 100, defaultIndex: 1,
     rateNote: "Rough guide at about 22 koruna to the dollar in mid-2026, so 100 Kč is roughly $4.50 and 1,000 Kč about $45. The koruna moves against the dollar, so check a current converter before you travel.",
     styles: [
-      { n: "Budget",    per: 45,  cash: 0.3 },
-      { n: "Mid-range", per: 100, cash: 0.25 },
-      { n: "Comfort",   per: 240, cash: 0.2 }
+      { n: "Budget", per: 45, cash: 0.3, room: 60 },
+      { n: "Mid-range", per: 100, cash: 0.25, room: 120 },
+      { n: "Comfort", per: 240, cash: 0.2, room: 240 }
     ]
   },
 

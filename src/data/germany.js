@@ -73,9 +73,9 @@ export default {
     rate: 0.88, cur: "EUR", round: 50, defaultIndex: 1,
     rateNote: "Rough guide at about 0.88 euros to the dollar in mid-2026, so a euro costs a little over a dollar.",
     styles: [
-      { n: "Budget",    per: 50,  cash: 0.45 },
-      { n: "Mid-range", per: 100, cash: 0.35 },
-      { n: "Comfort",   per: 180, cash: 0.2 }
+      { n: "Budget", per: 50, cash: 0.45, room: 80 },
+      { n: "Mid-range", per: 100, cash: 0.35, room: 150 },
+      { n: "Comfort", per: 180, cash: 0.2, room: 290 }
     ]
   },
 

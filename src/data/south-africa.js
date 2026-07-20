@@ -83,9 +83,9 @@ export default {
     rate: 16.4, cur: "ZAR", round: 50, defaultIndex: 1,
     rateNote: "Rough guide at about 16.4 rand to the US dollar in mid-2026, so ZAR 100 is roughly US$6 and ZAR 20 about US$1.20. South Africa is card-first, so this cash-in-hand slice is mostly tips and small extras.",
     styles: [
-      { n: "Budget",    per: 45,  cash: 0.25 },
-      { n: "Mid-range", per: 90,  cash: 0.2 },
-      { n: "Comfort",   per: 180, cash: 0.12 }
+      { n: "Budget", per: 45, cash: 0.25, room: 55 },
+      { n: "Mid-range", per: 90, cash: 0.2, room: 120 },
+      { n: "Comfort", per: 180, cash: 0.12, room: 250 }
     ]
   },
 

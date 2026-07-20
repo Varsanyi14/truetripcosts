@@ -75,9 +75,9 @@ export default {
     rate: 3400, cur: "COP", round: 50000, defaultIndex: 1,
     rateNote: "Rough guide at about 3,400 pesos to the dollar in mid-2026, so 100,000 pesos is roughly 29 dollars and 10,000 pesos about 3 dollars. The peso strengthened through 2026 and moves against the dollar, so check a current converter before you travel.",
     styles: [
-      { n: "Budget",    per: 30,  cash: 0.5 },
-      { n: "Mid-range", per: 55,  cash: 0.4 },
-      { n: "Comfort",   per: 120, cash: 0.28 }
+      { n: "Budget", per: 30, cash: 0.5, room: 40 },
+      { n: "Mid-range", per: 55, cash: 0.4, room: 85 },
+      { n: "Comfort", per: 120, cash: 0.28, room: 180 }
     ]
   },
 

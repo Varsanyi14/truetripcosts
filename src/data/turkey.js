@@ -66,9 +66,9 @@ export default {
     rate: 48, cur: "TRY", round: 100, defaultIndex: 1,
     rateNote: "This is the fast-moving one. Turkish inflation has been high, so the lira keeps sliding: as a rough mid-2026 guide, about 48 lira to 1 US dollar, meaning 1000 lira is roughly $21. Treat any lira figure as a snapshot, and check a live converter right before and during your trip, because it can shift noticeably even over a few months.",
     styles: [
-      { n: "Budget",    per: 35,  cash: 0.4 },
-      { n: "Mid-range", per: 90,  cash: 0.3 },
-      { n: "Comfort",   per: 200, cash: 0.25 }
+      { n: "Budget", per: 35, cash: 0.4, room: 45 },
+      { n: "Mid-range", per: 90, cash: 0.3, room: 100 },
+      { n: "Comfort", per: 200, cash: 0.25, room: 220 }
     ]
   },
 

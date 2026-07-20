@@ -63,7 +63,7 @@ export default {
   cash: {
     rate: 0.88, cur: "EUR", round: 50, defaultIndex: 1,
     rateNote: "Rough guide at about 1.14 dollars to the euro in mid-2026, so roughly 0.88 euros per dollar. France is card-first, so this is the smaller, cash-in-hand slice of your spending.",
-    styles: [ { n: "Budget", per: 50, cash: 0.35 }, { n: "Mid-range", per: 105, cash: 0.25 }, { n: "Comfort", per: 190, cash: 0.15 } ]
+    styles: [ { n: "Budget", per: 50, cash: 0.35, room: 90 }, { n: "Mid-range", per: 105, cash: 0.25, room: 170 }, { n: "Comfort", per: 190, cash: 0.15, room: 330 } ]
   },
   connectivity: {
     works: "Yes across the cities, tourist regions and main routes, with excellent 4G and 5G growing in the bigger cities and along the TGV lines. Signal thins in the Alps and Pyrenees valleys and remote rural areas like inland Brittany and the Dordogne."

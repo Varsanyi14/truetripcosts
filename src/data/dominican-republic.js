@@ -73,9 +73,9 @@ export default {
     rate: 59.6, cur: "DOP", round: 100, defaultIndex: 1,
     rateNote: "Rough guide at about 59.6 pesos to the dollar in mid-2026, though it moves daily. A quick trick: divide a peso price by 60 (or by 6, then drop a zero) for a rough dollar figure, so RD$1,000 is roughly 17 dollars.",
     styles: [
-      { n: "Budget",    per: 45,  cash: 0.5 },
-      { n: "Mid-range", per: 110, cash: 0.35 },
-      { n: "Comfort",   per: 220, cash: 0.2 }
+      { n: "Budget", per: 45, cash: 0.5, room: 70 },
+      { n: "Mid-range", per: 110, cash: 0.35, room: 150 },
+      { n: "Comfort", per: 220, cash: 0.2, room: 300 }
     ]
   },
 

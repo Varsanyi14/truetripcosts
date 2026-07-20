@@ -78,9 +78,9 @@ export default {
     rate: 1, cur: "BSD", round: 50, defaultIndex: 1,
     rateNote: "The Bahamian dollar is pegged 1 to 1 with the US dollar, so a Bahamian dollar and a US dollar are worth exactly the same and are used interchangeably. This is the small, cash-in-hand slice of your spending, and you can pay it in US dollars if you prefer.",
     styles: [
-      { n: "Budget",    per: 60,  cash: 0.45 },
-      { n: "Mid-range", per: 120, cash: 0.35 },
-      { n: "Comfort",   per: 230, cash: 0.25 }
+      { n: "Budget", per: 60, cash: 0.45, room: 120 },
+      { n: "Mid-range", per: 120, cash: 0.35, room: 220 },
+      { n: "Comfort", per: 230, cash: 0.25, room: 400 }
     ]
   },
 

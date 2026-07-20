@@ -73,9 +73,9 @@ export default {
     rate: 158, cur: "JMD", round: 1000, defaultIndex: 1,
     rateNote: "Rough guide at about 158 Jamaican dollars to the US dollar in mid-2026, so 1,000 JMD is roughly 6 dollars and 5,000 JMD about 32. The rate moves gently against the dollar, so check a current converter before you travel.",
     styles: [
-      { n: "Budget",    per: 50,  cash: 0.5 },
-      { n: "Mid-range", per: 90,  cash: 0.4 },
-      { n: "Comfort",   per: 170, cash: 0.3 }
+      { n: "Budget", per: 50, cash: 0.5, room: 90 },
+      { n: "Mid-range", per: 90, cash: 0.4, room: 170 },
+      { n: "Comfort", per: 170, cash: 0.3, room: 330 }
     ]
   },
 

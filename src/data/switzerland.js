@@ -74,9 +74,9 @@ export default {
     rate: 0.82, cur: "CHF", round: 10, defaultIndex: 1,
     rateNote: "The franc is strong: roughly 0.82 francs to 1 US dollar in mid-2026, so 1 franc is worth about $1.22. That means CHF 100 is about $122 and CHF 20 about $24. Switzerland is expensive, and the rate moves, so check a current converter before you go.",
     styles: [
-      { n: "Budget",    per: 90,  cash: 0.25 },
-      { n: "Mid-range", per: 200, cash: 0.2 },
-      { n: "Comfort",   per: 420, cash: 0.15 }
+      { n: "Budget", per: 90, cash: 0.25, room: 130 },
+      { n: "Mid-range", per: 200, cash: 0.2, room: 260 },
+      { n: "Comfort", per: 420, cash: 0.15, room: 450 }
     ]
   },
 

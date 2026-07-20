@@ -83,9 +83,9 @@ export default {
     rate: 32, cur: "TWD", round: 100, defaultIndex: 1,
     rateNote: "Rough guide at about 32 New Taiwan dollars to the US dollar in 2026. Taiwan is inexpensive day to day, especially for night-market food, and this is the cash-in-hand slice of your spending, which is larger here than in most of card-first Asia.",
     styles: [
-      { n: "Budget",    per: 40,  cash: 0.5 },
-      { n: "Mid-range", per: 75,  cash: 0.4 },
-      { n: "Comfort",   per: 140, cash: 0.3 }
+      { n: "Budget", per: 40, cash: 0.5, room: 55 },
+      { n: "Mid-range", per: 75, cash: 0.4, room: 110 },
+      { n: "Comfort", per: 140, cash: 0.3, room: 220 }
     ]
   },
 

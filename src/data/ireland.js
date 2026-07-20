@@ -83,9 +83,9 @@ export default {
     rate: 0.88, cur: "EUR", round: 50, defaultIndex: 1,
     rateNote: "Rough guide at about 0.88 euros to the dollar in mid-2026, so a euro costs a little over a dollar. Ireland is card-first, so this is the small, cash-in-hand slice of your spending.",
     styles: [
-      { n: "Budget",    per: 55,  cash: 0.2 },
-      { n: "Mid-range", per: 115, cash: 0.12 },
-      { n: "Comfort",   per: 205, cash: 0.08 }
+      { n: "Budget", per: 55, cash: 0.2, room: 90 },
+      { n: "Mid-range", per: 115, cash: 0.12, room: 170 },
+      { n: "Comfort", per: 205, cash: 0.08, room: 320 }
     ]
   },
 

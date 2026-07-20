@@ -82,9 +82,9 @@ export default {
     rate: 1500, cur: "KRW", round: 10000, defaultIndex: 1,
     rateNote: "Rough guide at about 1,500 won to the dollar in mid-2026, a historically weak won that stretches your money a little further. Korea is card-first, so this is the small, cash-in-hand slice of your spending.",
     styles: [
-      { n: "Budget",    per: 50,  cash: 0.2 },
-      { n: "Mid-range", per: 95,  cash: 0.12 },
-      { n: "Comfort",   per: 180, cash: 0.08 }
+      { n: "Budget", per: 50, cash: 0.2, room: 65 },
+      { n: "Mid-range", per: 95, cash: 0.12, room: 130 },
+      { n: "Comfort", per: 180, cash: 0.08, room: 260 }
     ]
   },
 

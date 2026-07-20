@@ -83,9 +83,9 @@ export default {
     rate: 10, cur: "MAD", round: 50, defaultIndex: 1,
     rateNote: "Rough guide at about 10 dirham to the US dollar, so MAD 100 is roughly US$10. Morocco is cash-first and inexpensive, so this cash-in-hand slice is a big share of everyday spending.",
     styles: [
-      { n: "Budget",    per: 40,  cash: 0.85 },
-      { n: "Mid-range", per: 80,  cash: 0.75 },
-      { n: "Comfort",   per: 150, cash: 0.6 }
+      { n: "Budget", per: 40, cash: 0.85, room: 45 },
+      { n: "Mid-range", per: 80, cash: 0.75, room: 95 },
+      { n: "Comfort", per: 150, cash: 0.6, room: 200 }
     ]
   },
 

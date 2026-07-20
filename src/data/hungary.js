@@ -82,9 +82,9 @@ export default {
     rate: 315, cur: "HUF", round: 5000, defaultIndex: 1,
     rateNote: "Rough guide at about 315 forint to the US dollar in 2026. Hungary is cheaper than Western Europe, and while cards cover most spending, markets, baths and taxis keep cash useful, so this cash slice is a bit larger than in the most cashless countries.",
     styles: [
-      { n: "Budget",    per: 45,  cash: 0.35 },
-      { n: "Mid-range", per: 95,  cash: 0.28 },
-      { n: "Comfort",   per: 200, cash: 0.2 }
+      { n: "Budget", per: 45, cash: 0.35, room: 55 },
+      { n: "Mid-range", per: 95, cash: 0.28, room: 110 },
+      { n: "Comfort", per: 200, cash: 0.2, room: 210 }
     ]
   },
 

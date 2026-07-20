@@ -68,7 +68,7 @@ export default {
   cash: {
     rate: 0.88, cur: "EUR", round: 50, defaultIndex: 1,
     rateNote: "Rough guide at about 1.14 dollars to the euro in mid-2026, so roughly 0.88 euros per dollar. Spain is card-first, so this is the smaller, cash-in-hand slice of your spending.",
-    styles: [ { n: "Budget", per: 45, cash: 0.40 }, { n: "Mid-range", per: 95, cash: 0.28 }, { n: "Comfort", per: 175, cash: 0.18 } ]
+    styles: [ { n: "Budget", per: 45, cash: 0.40, room: 75 }, { n: "Mid-range", per: 95, cash: 0.28, room: 140 }, { n: "Comfort", per: 175, cash: 0.18, room: 280 } ]
   },
   connectivity: {
     works: "Yes, and coverage is among the best in Europe. Spain has near-universal 4G and widespread 5G across the cities, the coast and the main tourist routes, including the islands. Signal can dip in remote mountains and sparsely populated inland areas."

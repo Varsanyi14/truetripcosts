@@ -74,9 +74,9 @@ export default {
     rate: 0.88, cur: "EUR", round: 50, defaultIndex: 1,
     rateNote: "Rough guide at about 0.88 euros to 1 US dollar in mid-2026, so 1 euro is worth about $1.14. That means 100 euros is roughly $114 and 20 euros about $23. The rate moves, so check a current converter before you go.",
     styles: [
-      { n: "Budget",    per: 70,  cash: 0.4 },
-      { n: "Mid-range", per: 150, cash: 0.3 },
-      { n: "Comfort",   per: 300, cash: 0.2 }
+      { n: "Budget", per: 70, cash: 0.4, room: 90 },
+      { n: "Mid-range", per: 150, cash: 0.3, room: 160 },
+      { n: "Comfort", per: 300, cash: 0.2, room: 300 }
     ]
   },
 

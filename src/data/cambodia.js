@@ -72,7 +72,7 @@ export default {
   cash: {
     rate: 1, cur: "USD", round: 5, defaultIndex: 1,
     rateNote: "No conversion to do here: you spend US dollars, and ATMs dispense them. Cambodia stays inexpensive day to day, especially for street food, markets and local transport.",
-    styles: [ { n: "Budget", per: 25, cash: 0.75 }, { n: "Mid-range", per: 50, cash: 0.6 }, { n: "Comfort", per: 95, cash: 0.45 } ]
+    styles: [ { n: "Budget", per: 25, cash: 0.75, room: 30 }, { n: "Mid-range", per: 50, cash: 0.6, room: 70 }, { n: "Comfort", per: 95, cash: 0.45, room: 160 } ]
   },
   connectivity: {
     works: "Yes across Phnom Penh, Siem Reap, Sihanoukville and the main towns and roads, with solid 4G and growing 5G. Signal thins on the islands, in the northeast and in remote countryside."

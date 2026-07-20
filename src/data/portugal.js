@@ -65,7 +65,7 @@ export default {
   cash: {
     rate: 0.88, cur: "EUR", round: 50, defaultIndex: 1,
     rateNote: "Rough guide at about 1.14 dollars to the euro in mid-2026, so roughly 0.88 euros per dollar. Portugal is card-first, so this is the smaller, cash-in-hand slice of your spending.",
-    styles: [ { n: "Budget", per: 40, cash: 0.38 }, { n: "Mid-range", per: 85, cash: 0.26 }, { n: "Comfort", per: 160, cash: 0.15 } ]
+    styles: [ { n: "Budget", per: 40, cash: 0.38, room: 65 }, { n: "Mid-range", per: 85, cash: 0.26, room: 130 }, { n: "Comfort", per: 160, cash: 0.15, room: 260 } ]
   },
   connectivity: {
     works: "Yes, and coverage is very good. Portugal has near-universal 4G and growing 5G across the cities, the Algarve coast and the main routes. Signal thins in the interior, like the Alentejo and the remote north, and in the national parks."

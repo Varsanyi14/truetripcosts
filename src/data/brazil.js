@@ -81,9 +81,9 @@ export default {
     rate: 5.2, cur: "BRL", round: 50, defaultIndex: 1,
     rateNote: "Rough guide at about 5.2 reais to the dollar in mid-2026, so 50 reais is roughly 10 dollars and 100 reais about 19. The real moves against the dollar, so check a current converter before you travel.",
     styles: [
-      { n: "Budget",    per: 35,  cash: 0.2 },
-      { n: "Mid-range", per: 65,  cash: 0.15 },
-      { n: "Comfort",   per: 140, cash: 0.1 }
+      { n: "Budget", per: 35, cash: 0.2, room: 50 },
+      { n: "Mid-range", per: 65, cash: 0.15, room: 100 },
+      { n: "Comfort", per: 140, cash: 0.1, room: 210 }
     ]
   },
 

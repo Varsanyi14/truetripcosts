@@ -68,9 +68,9 @@ export default {
     rate: 94.5, cur: "INR", round: 100, defaultIndex: 1,
     rateNote: "Rough guide at about 94.5 rupees to the dollar in mid-2026, though it moves daily and the rupee has been weakening. A quick trick: divide rupees by roughly 95 (or by 100 for a slightly conservative figure), so 1,000 rupees is a bit over 10 dollars.",
     styles: [
-      { n: "Budget",    per: 30,  cash: 0.7 },
-      { n: "Mid-range", per: 80,  cash: 0.5 },
-      { n: "Comfort",   per: 200, cash: 0.35 }
+      { n: "Budget", per: 30, cash: 0.7, room: 40 },
+      { n: "Mid-range", per: 80, cash: 0.5, room: 100 },
+      { n: "Comfort", per: 200, cash: 0.35, room: 250 }
     ]
   },
 

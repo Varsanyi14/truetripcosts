@@ -82,9 +82,9 @@ export default {
     rate: 1, cur: "USD", round: 20, defaultIndex: 1,
     rateNote: "Ecuador uses the US dollar, so there is nothing to convert; this is just the cash-in-hand slice of your spending. Ecuador also mints its own centavo coins, worth exactly the same as US cents and used alongside them.",
     styles: [
-      { n: "Budget",    per: 45,  cash: 0.50 },
-      { n: "Mid-range", per: 95,  cash: 0.35 },
-      { n: "Comfort",   per: 190, cash: 0.25 }
+      { n: "Budget", per: 45, cash: 0.50, room: 45 },
+      { n: "Mid-range", per: 95, cash: 0.35, room: 90 },
+      { n: "Comfort", per: 190, cash: 0.25, room: 180 }
     ]
   },
 

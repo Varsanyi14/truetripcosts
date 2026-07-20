@@ -82,9 +82,9 @@ export default {
     rate: 1.29, cur: "SGD", round: 5, defaultIndex: 1,
     rateNote: "Rough guide at about 1.29 Singapore dollars to the US dollar in mid-2026, a strong and stable currency. Singapore is deeply card-first, so this is the small, cash-in-hand slice of your spending.",
     styles: [
-      { n: "Budget",    per: 60,  cash: 0.15 },
-      { n: "Mid-range", per: 120, cash: 0.10 },
-      { n: "Comfort",   per: 240, cash: 0.06 }
+      { n: "Budget", per: 60, cash: 0.15, room: 100 },
+      { n: "Mid-range", per: 120, cash: 0.10, room: 190 },
+      { n: "Comfort", per: 240, cash: 0.06, room: 360 }
     ]
   },
 

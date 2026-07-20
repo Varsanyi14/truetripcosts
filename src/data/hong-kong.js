@@ -83,9 +83,9 @@ export default {
     rate: 7.8, cur: "HKD", round: 50, defaultIndex: 1,
     rateNote: "Rough guide at about 7.8 Hong Kong dollars to the US dollar, a currency pegged in a narrow 7.75 to 7.85 band, so the rate barely moves. Hong Kong is deeply card-first, so this is the small, cash-in-hand slice of your spending.",
     styles: [
-      { n: "Budget",    per: 70,  cash: 0.25 },
-      { n: "Mid-range", per: 130, cash: 0.18 },
-      { n: "Comfort",   per: 240, cash: 0.12 }
+      { n: "Budget", per: 70, cash: 0.25, room: 90 },
+      { n: "Mid-range", per: 130, cash: 0.18, room: 170 },
+      { n: "Comfort", per: 240, cash: 0.12, room: 330 }
     ]
   },
 

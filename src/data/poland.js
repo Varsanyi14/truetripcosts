@@ -82,9 +82,9 @@ export default {
     rate: 3.8, cur: "PLN", round: 50, defaultIndex: 1,
     rateNote: "Rough guide at about 3.8 zloty to the US dollar in 2026. Poland is noticeably cheaper than Western Europe, and because nearly everything takes a card, this is only the small cash-in-hand slice of your spending.",
     styles: [
-      { n: "Budget",    per: 45,  cash: 0.3 },
-      { n: "Mid-range", per: 100, cash: 0.25 },
-      { n: "Comfort",   per: 220, cash: 0.2 }
+      { n: "Budget", per: 45, cash: 0.3, room: 55 },
+      { n: "Mid-range", per: 100, cash: 0.25, room: 110 },
+      { n: "Comfort", per: 220, cash: 0.2, room: 220 }
     ]
   },
 

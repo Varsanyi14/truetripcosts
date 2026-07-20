@@ -54,7 +54,7 @@ export default {
   cash: {
     rate: 25000, cur: "VND", defaultIndex: 1,
     rateNote: "Rough guide at 25,000 VND to the dollar.",
-    styles: [ { n: "Budget", per: 25, cash: 0.8 }, { n: "Mid-range", per: 50, cash: 0.7 }, { n: "Comfort", per: 90, cash: 0.55 } ]
+    styles: [ { n: "Budget", per: 25, cash: 0.8, room: 30 }, { n: "Mid-range", per: 50, cash: 0.7, room: 70 }, { n: "Comfort", per: 90, cash: 0.55, room: 160 } ]
   },
   connectivity: {
     works: "Yes. Vietnam has near-universal 4G and growing 5G across the cities and main travel routes, with signal thinning in remote mountain areas like Sapa and Ha Giang."

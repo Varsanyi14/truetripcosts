@@ -82,9 +82,9 @@ export default {
     rate: 1500, cur: "ARS", round: 10000, defaultIndex: 1,
     rateNote: "Rough guide at about 1,500 pesos to the dollar in mid-2026, so 10,000 pesos is roughly 7 dollars and 100,000 pesos about 67. The peso moves fast, with inflation still around 33 percent a year, so treat any figure as a snapshot and check a live converter right before you travel.",
     styles: [
-      { n: "Budget",    per: 40,  cash: 0.45 },
-      { n: "Mid-range", per: 75,  cash: 0.35 },
-      { n: "Comfort",   per: 150, cash: 0.25 }
+      { n: "Budget", per: 40, cash: 0.45, room: 50 },
+      { n: "Mid-range", per: 75, cash: 0.35, room: 100 },
+      { n: "Comfort", per: 150, cash: 0.25, room: 200 }
     ]
   },
 

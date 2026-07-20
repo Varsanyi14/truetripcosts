@@ -83,9 +83,9 @@ export default {
     rate: 1.75, cur: "NZD", round: 20, defaultIndex: 1,
     rateNote: "Rough guide at about 1.75 New Zealand dollars to the US dollar in mid-2026, so NZD 100 is roughly US$57. New Zealand is card-first, so this is the small, cash-in-hand slice of your spending.",
     styles: [
-      { n: "Budget",    per: 65,  cash: 0.15 },
-      { n: "Mid-range", per: 120, cash: 0.1 },
-      { n: "Comfort",   per: 220, cash: 0.06 }
+      { n: "Budget", per: 65, cash: 0.15, room: 90 },
+      { n: "Mid-range", per: 120, cash: 0.1, room: 160 },
+      { n: "Comfort", per: 220, cash: 0.06, room: 300 }
     ]
   },
 

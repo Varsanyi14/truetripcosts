@@ -68,7 +68,7 @@ export default {
   cash: {
     rate: 0.88, cur: "EUR", round: 50, defaultIndex: 1,
     rateNote: "Rough guide at about 0.88 euros to the dollar, so a euro costs you a little over a dollar. The rate has softened a touch through 2026, trading near 1.14 dollars per euro in mid-year.",
-    styles: [ { n: "Budget", per: 45, cash: 0.45 }, { n: "Mid-range", per: 95, cash: 0.3 }, { n: "Comfort", per: 175, cash: 0.2 } ]
+    styles: [ { n: "Budget", per: 45, cash: 0.45, room: 85 }, { n: "Mid-range", per: 95, cash: 0.3, room: 160 }, { n: "Comfort", per: 175, cash: 0.2, room: 320 } ]
   },
   connectivity: {
     works: "Yes, and coverage is excellent. Italy has near-universal 4G and widespread 5G across the cities, tourist regions and main rail and road routes. Signal can dip in remote mountain valleys and parts of the far south and islands."

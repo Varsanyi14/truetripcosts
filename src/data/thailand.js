@@ -64,7 +64,7 @@ export default {
   cash: {
     rate: 33, cur: "THB", round: 500, defaultIndex: 1,
     rateNote: "Rough guide at about 33 baht to the dollar. Thailand stays inexpensive day to day, especially for street food, markets and local transport.",
-    styles: [ { n: "Budget", per: 20, cash: 0.7 }, { n: "Mid-range", per: 40, cash: 0.55 }, { n: "Comfort", per: 85, cash: 0.4 } ]
+    styles: [ { n: "Budget", per: 20, cash: 0.7, room: 30 }, { n: "Mid-range", per: 40, cash: 0.55, room: 80 }, { n: "Comfort", per: 85, cash: 0.4, room: 190 } ]
   },
   connectivity: {
     works: "Yes across the cities, main routes and the popular islands, with strong 4G and growing 5G in Bangkok, Phuket and Chiang Mai. Signal drops in the northern mountains, jungle parks and the interiors of smaller islands."

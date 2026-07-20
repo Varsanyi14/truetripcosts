@@ -141,9 +141,9 @@ export default {
     rate: 453, cur: "CRC", round: 1000, defaultIndex: 1,
     rateNote: "Rough guide at about 453 colones to the dollar in mid-2026, though it moves daily. A quick trick: 1,000 colones is a bit over 2 dollars, so halve the colón figure and drop the zeros for a rough dollar amount.",
     styles: [
-      { n: "Budget",    per: 50,  cash: 0.5 },
-      { n: "Mid-range", per: 110, cash: 0.4 },
-      { n: "Comfort",   per: 200, cash: 0.25 }
+      { n: "Budget", per: 50, cash: 0.5, room: 70 },
+      { n: "Mid-range", per: 110, cash: 0.4, room: 140 },
+      { n: "Comfort", per: 200, cash: 0.25, room: 280 }
     ]
   },
 

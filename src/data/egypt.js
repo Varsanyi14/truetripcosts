@@ -66,9 +66,9 @@ export default {
     rate: 50, cur: "EGP", round: 50, defaultIndex: 1,
     rateNote: "Egypt floated the pound in 2024 and it lost a lot of value, so it now sits far weaker than it once did: as a rough mid-2026 guide, about 50 pounds to 1 US dollar, meaning 100 pounds is roughly $2. Inflation is high and the rate can drift, so check a live converter before and during your trip.",
     styles: [
-      { n: "Budget",    per: 30,  cash: 0.7 },
-      { n: "Mid-range", per: 75,  cash: 0.6 },
-      { n: "Comfort",   per: 180, cash: 0.5 }
+      { n: "Budget", per: 30, cash: 0.7, room: 40 },
+      { n: "Mid-range", per: 75, cash: 0.6, room: 90 },
+      { n: "Comfort", per: 180, cash: 0.5, room: 200 }
     ]
   },
 

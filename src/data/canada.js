@@ -74,9 +74,9 @@ export default {
     rate: 1.38, cur: "CAD", round: 20, defaultIndex: 1,
     rateNote: "Rough guide at about 1.38 Canadian dollars to 1 US dollar in mid-2026, so a Canadian dollar is worth about 72 US cents: C$100 is roughly $72 and C$20 about $14.50. The rate moves, so check a current converter before you go.",
     styles: [
-      { n: "Budget",    per: 70,  cash: 0.2 },
-      { n: "Mid-range", per: 160, cash: 0.15 },
-      { n: "Comfort",   per: 350, cash: 0.1 }
+      { n: "Budget", per: 70, cash: 0.2, room: 90 },
+      { n: "Mid-range", per: 160, cash: 0.15, room: 170 },
+      { n: "Comfort", per: 350, cash: 0.1, room: 330 }
     ]
   },
 

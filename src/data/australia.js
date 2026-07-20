@@ -83,9 +83,9 @@ export default {
     rate: 1.44, cur: "AUD", round: 20, defaultIndex: 1,
     rateNote: "Rough guide at about 1.44 Australian dollars to the US dollar in mid-2026, so AUD 100 is roughly US$70. Australia is card-first, so this is the small, cash-in-hand slice of your spending.",
     styles: [
-      { n: "Budget",    per: 70,  cash: 0.15 },
-      { n: "Mid-range", per: 130, cash: 0.1 },
-      { n: "Comfort",   per: 240, cash: 0.06 }
+      { n: "Budget", per: 70, cash: 0.15, room: 100 },
+      { n: "Mid-range", per: 130, cash: 0.1, room: 180 },
+      { n: "Comfort", per: 240, cash: 0.06, room: 330 }
     ]
   },
 

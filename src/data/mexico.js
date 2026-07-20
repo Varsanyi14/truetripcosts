@@ -70,7 +70,7 @@ export default {
   cash: {
     rate: 17.5, cur: "MXN", round: 500, defaultIndex: 1,
     rateNote: "Rough guide at about 17.5 pesos to the dollar. The peso has been fairly steady, trading near 17 to 18 through 2026, so your dollar goes a long way day to day.",
-    styles: [ { n: "Budget", per: 28, cash: 0.55 }, { n: "Mid-range", per: 65, cash: 0.4 }, { n: "Comfort", per: 120, cash: 0.3 } ]
+    styles: [ { n: "Budget", per: 28, cash: 0.55, room: 45 }, { n: "Mid-range", per: 65, cash: 0.4, room: 95 }, { n: "Comfort", per: 120, cash: 0.3, room: 200 } ]
   },
   connectivity: {
     works: "Yes in the cities and tourist areas, where 4G is near-universal and 5G is live in places like Mexico City, Guadalajara and Cancun. Signal thins in remote mountains, jungle and small towns off the main routes."

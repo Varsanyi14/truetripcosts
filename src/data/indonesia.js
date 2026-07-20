@@ -66,9 +66,9 @@ export default {
     rate: 17900, cur: "IDR", round: 50000, defaultIndex: 1,
     rateNote: "Rough guide at about 17,900 rupiah to the dollar in mid-2026. Amounts in rupiah carry a lot of zeros, so double-check before handing over cash.",
     styles: [
-      { n: "Budget",    per: 35,  cash: 0.75 },
-      { n: "Mid-range", per: 70,  cash: 0.6 },
-      { n: "Comfort",   per: 140, cash: 0.4 }
+      { n: "Budget", per: 35, cash: 0.75, room: 35 },
+      { n: "Mid-range", per: 70, cash: 0.6, room: 85 },
+      { n: "Comfort", per: 140, cash: 0.4, room: 200 }
     ]
   },
 

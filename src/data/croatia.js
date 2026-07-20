@@ -82,9 +82,9 @@ export default {
     rate: 0.87, cur: "EUR", round: 50, defaultIndex: 1,
     rateNote: "Rough guide with the euro worth about 1.15 US dollars in 2026, so figure roughly 0.87 euros to the dollar. Croatia is a little cheaper than Western Europe, pricier on the coast in high summer, and cards cover most town spending, so this is the cash slice for islands, konobas and ferries.",
     styles: [
-      { n: "Budget",    per: 45,  cash: 0.35 },
-      { n: "Mid-range", per: 95,  cash: 0.28 },
-      { n: "Comfort",   per: 185, cash: 0.2 }
+      { n: "Budget", per: 45, cash: 0.35, room: 65 },
+      { n: "Mid-range", per: 95, cash: 0.28, room: 130 },
+      { n: "Comfort", per: 185, cash: 0.2, room: 260 }
     ]
   },
 

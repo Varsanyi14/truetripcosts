@@ -82,9 +82,9 @@ export default {
     rate: 9.7, cur: "SEK", round: 100, defaultIndex: 1,
     rateNote: "Rough guide at about 9.7 kronor to the dollar in mid-2026, so 100 SEK is roughly 10 dollars and 500 SEK about 52. Sweden is about as cashless as anywhere, so this is a tiny cash-in-hand slice of your spending, not your whole budget; most people use no cash at all.",
     styles: [
-      { n: "Budget",    per: 60,  cash: 0.08 },
-      { n: "Mid-range", per: 125, cash: 0.05 },
-      { n: "Comfort",   per: 225, cash: 0.03 }
+      { n: "Budget", per: 60, cash: 0.08, room: 100 },
+      { n: "Mid-range", per: 125, cash: 0.05, room: 180 },
+      { n: "Comfort", per: 225, cash: 0.03, room: 330 }
     ]
   },
 

@@ -66,9 +66,9 @@ export default {
     rate: 3.67, cur: "AED", round: 25, defaultIndex: 1,
     rateNote: "Effectively fixed at about 3.67 dirhams to the dollar (the peg is 3.6725 and has held since 1997). An easy mental math: divide dirhams by 3.67, or roughly by 3.7, so 100 dirhams is about 27 dollars.",
     styles: [
-      { n: "Budget",    per: 40,  cash: 0.2 },
-      { n: "Mid-range", per: 110, cash: 0.15 },
-      { n: "Comfort",   per: 260, cash: 0.1 }
+      { n: "Budget", per: 40, cash: 0.2, room: 70 },
+      { n: "Mid-range", per: 110, cash: 0.15, room: 150 },
+      { n: "Comfort", per: 260, cash: 0.1, room: 330 }
     ]
   },
 

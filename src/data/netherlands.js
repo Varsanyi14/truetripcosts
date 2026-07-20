@@ -73,9 +73,9 @@ export default {
     rate: 0.88, cur: "EUR", round: 50, defaultIndex: 1,
     rateNote: "Rough guide at about 0.88 euros to the dollar in mid-2026.",
     styles: [
-      { n: "Budget",    per: 55,  cash: 0.15 },
-      { n: "Mid-range", per: 110, cash: 0.1 },
-      { n: "Comfort",   per: 200, cash: 0.05 }
+      { n: "Budget", per: 55, cash: 0.15, room: 100 },
+      { n: "Mid-range", per: 110, cash: 0.1, room: 180 },
+      { n: "Comfort", per: 200, cash: 0.05, room: 340 }
     ]
   },
 

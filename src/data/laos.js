@@ -68,7 +68,7 @@ export default {
   cash: {
     rate: 22000, cur: "LAK", round: 100000, defaultIndex: 1,
     rateNote: "Rough guide at about 22,000 kip to the dollar in mid-2026; it is a high-inflation currency, so check the live rate. Because ATM limits are low, plan on several withdrawals during your trip.",
-    styles: [ { n: "Budget", per: 25, cash: 0.85 }, { n: "Mid-range", per: 45, cash: 0.75 }, { n: "Comfort", per: 85, cash: 0.6 } ]
+    styles: [ { n: "Budget", per: 25, cash: 0.85, room: 30 }, { n: "Mid-range", per: 45, cash: 0.75, room: 65 }, { n: "Comfort", per: 85, cash: 0.6, room: 150 } ]
   },
   connectivity: {
     works: "Yes in Vientiane, Luang Prabang, Vang Vieng and the main towns and roads, with 4G and some 5G. Coverage thins quickly in the mountains and remote valleys, so download maps before you head off the main routes."
