@@ -28,6 +28,7 @@ export default {
     EGP: 50.7236,
     EUR: 0.8758,
     GBP: 0.747,
+    GEL: 2.63,
     IDR: 18080.3,
     INR: 96.2416,
     ISK: 125.5528,
