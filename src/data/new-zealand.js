@@ -298,6 +298,77 @@ export default {
         ],
         judgment: "The card-surcharge ban was promised for May 2026 but had not taken effect by mid-2026, and surcharge levels and the rest are our practical read, so confirm the current rule and treat amounts as a guide. Checked July 2026."
       }
+    },
+    {
+      slug: "bringing-your-pet",
+      live: true,
+      topic: "pets",
+      title: "Bringing a dog or cat to New Zealand from the US (2026): the 6 to 7 month process and the rules change mid-transition | True Trip Costs",
+      description: "Moving to New Zealand with a pet from the US: why it is a strict 6 to 7 month process with a blood titer, Brucella testing for dogs, and a minimum 10-day quarantine, plus the 2026 import-standard change every mover needs to check. Checked July 2026.",
+      h1: "Bringing your dog or cat to New Zealand.",
+      lede: "New Zealand is a long-lead destination on the level of Australia and Japan. It is rabies-free and guards that status with a strict, months-long process: an import permit, a rabies blood test, Brucella testing for dogs, specific parasite treatments, and a mandatory quarantine stay on arrival. On top of that, the rules are mid-change in 2026, so the first thing to nail down is which standard applies to you. Here is the whole route.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Start early: this is a <b>6 to 7 month</b> process run by New Zealand's Ministry for Primary Industries (MPI), not a quick one. The mainland US is a <b>Category 3</b> country (rabies well-controlled), so your pet needs an <b>MPI import permit, an ISO microchip, a current rabies vaccination and a rabies blood titer test, Brucella testing for dogs, set parasite treatments, two vet certificates endorsed by USDA APHIS, and a minimum 10-day stay in an MPI-approved quarantine facility</b> on arrival. Budget several thousand dollars, driven mostly by flying your pet as cargo and the quarantine fees. One critical catch: <b>MPI's import rules are in a transition period in 2026</b>, so confirm whether you fall under the old or new standard before you start. Coming home to the US is the easy part.",
+      sections: [
+        {
+          h: "The two numbers, and the catch",
+          p: [
+            "Two things decide a move to New Zealand with a pet. <b>Lead time is roughly 6 to 7 months</b>, set by the sequence of vaccination, blood testing, and permit processing that all has to happen in order. <b>Cost runs to several thousand dollars</b>, with the biggest lines being air transport as cargo and the mandatory quarantine stay. Vet visits, the rabies titer, and Brucella testing for dogs make up much of the rest.",
+            "The catch that is specific to 2026: MPI issued a new Import Health Standard for cats and dogs that came into force on 1 July 2026, with a transition period during which both the old and the new requirements are accepted. So before anything else, confirm which standard applies to your move. The safest step is to ask MPI directly or check the current MPI guidance, because the pre-export identification checks and some tests and treatments differ between the two. Do not build your whole timeline on an out-of-date checklist."
+          ]
+        },
+        {
+          h: "The steps, in the order that matters",
+          p: [
+            "Follow these in sequence and start well ahead. The permit alone takes MPI a month of working days to process once your paperwork is correct, and quarantine space has to be booked, so the front end fills up fast."
+          ],
+          steps: [
+            "Microchip first. Your pet needs an ISO-standard microchip, and it must be in place before the vaccinations and tests that count, so that every record ties to the same chip number.",
+            "Rabies vaccination. A current rabies vaccination is required, recorded against the microchip.",
+            "Rabies blood titer test. A blood sample is tested to confirm the vaccination worked, with the lab report endorsed by APHIS. This is a gating step, so it has to be done in the right window relative to the vaccination and to travel.",
+            "Brucella canis testing for dogs. New Zealand no longer accepts the 2ME-RSAT test on its own. The approved tests are RSAT (not the 2ME-RSAT), TAT, CPAg-AGID, and IFAT, and the lab reports must tie to the microchip.",
+            "Parasite treatments. Specific external and internal parasite treatments are required, from MPI's current approved list, done in the required window before travel.",
+            "Book quarantine and apply for the import permit. Book a place at an MPI-approved quarantine facility, then apply to MPI for the import permit. MPI needs about 30 working days to process the permit once documentation is correct, and recommends applying roughly six weeks before travel.",
+            "Two vet certificates, endorsed. A USDA-accredited vet completes Health Certificate A, and APHIS issues and endorses Health Certificate B, with the endorsed lab reports.",
+            "Advance notice and arrival. Contact MPI at least 72 hours before travel for the arrival inspection. Cats and dogs needing quarantine can only arrive at Auckland or Christchurch."
+          ]
+        },
+        {
+          h: "Quarantine, ports, and prohibited breeds",
+          p: [
+            "Quarantine is mandatory and is a defining feature of this route. Your pet must stay a <b>minimum of 10 days</b> at an MPI-approved facility, and pets requiring quarantine can only enter through Auckland or Christchurch. The facility handles the MPI arrival notification for you. Because the final release inspection happens during normal business hours, pickup may not land exactly when the 10 days end, so plan a little slack. Quarantine space is limited and can be the bottleneck that dictates your whole timeline, which is another reason to book early.",
+            "Note also that some breeds are barred entirely. Prohibited dog breeds include the Brazilian Fila, Dogo Argentino, Japanese Tosa, Perro de Presa Canario, and American Pit Bull Terrier, along with hybrids. For cats, hybrids are prohibited except Bengal cats with documentation showing five generations of domestic ancestry. If your pet is a listed breed, it cannot be imported, so check this before you spend on anything else.",
+            "One recent easing worth knowing: for pets from the mainland US arriving from 1 March 2026, crate seals are no longer required. It is a small simplification in an otherwise strict process."
+          ]
+        },
+        {
+          h: "Coming back to the US is the easy part",
+          p: [
+            "Good news for the return trip: because New Zealand is rabies-free, a dog flying home to the US is on the simplest path. The CDC is the primary authority for dogs entering the US, and from a rabies-free country the usual requirements are a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer test and no quarantine. Cats have no federal requirement returning to the US.",
+            "For the full detail on the return, see our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a>, and for how New Zealand compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."
+          ]
+        }
+      ],
+      official: {
+        label: "USDA APHIS: pet travel from the US to New Zealand",
+        url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-new-zealand",
+        note: "The US-side steps, the two health certificates, and the link to MPI's own rules. New Zealand's Ministry for Primary Industries is the final word, and its import standard is mid-transition in 2026, so confirm the current version."
+      },
+      faqs: [
+        { q: "How long does it take to bring a pet to New Zealand from the US?", a: "Plan for about 6 to 7 months. The timeline is set by the order of steps: microchip, rabies vaccination, the rabies blood titer test, Brucella testing for dogs, parasite treatments, the import permit (which MPI needs around 30 working days to process), and a quarantine booking. Quarantine space and permit processing are common bottlenecks, so start early." },
+        { q: "Does my pet have to go into quarantine in New Zealand?", a: "Yes. A minimum 10-day stay at an MPI-approved quarantine facility is mandatory, and pets needing quarantine can only arrive at Auckland or Christchurch. The facility handles MPI arrival notification for you. Because the release inspection is during business hours, pickup may not fall exactly when the 10 days end, so build in a little slack." },
+        { q: "What is the 2026 rules change I keep seeing?", a: "MPI brought in a new Import Health Standard for cats and dogs on 1 July 2026, with a transition period during which both the old and the new requirements are accepted. The two differ on pre-export identification checks and some tests and treatments, so before you start, confirm with MPI which standard applies to your move. Building a timeline on the wrong checklist is the costly mistake to avoid." },
+        { q: "Do I need to quarantine my pet coming back to the US from New Zealand?", a: "No. New Zealand is rabies-free, so a dog returning to the US is on the CDC easy path: typically a CDC Dog Import Form receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement. See our guide to bringing a dog into the US for the details." }
+      ],
+      sources: {
+        links: [
+          { label: "USDA APHIS: pet travel from the United States to New Zealand, the Category 3 requirements, two health certificates, Brucella testing, and the crate-seal change", url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-new-zealand", type: "gov" },
+          { label: "MPI (New Zealand Ministry for Primary Industries): the step-by-step guide to bringing cats and dogs to New Zealand and the current import health standard", url: "https://www.mpi.govt.nz/bring-send-to-nz/pets-travelling-to-nz/bringing-cats-and-dogs-to-nz", type: "gov" },
+          { label: "CDC: entry requirements for dogs from dog rabies-free or low-risk countries, the CDC Dog Import Form and microchip rules for the return leg", url: "https://www.cdc.gov/importation/dogs/rabies-free-low-risk-countries.html", type: "gov" }
+        ],
+        judgment: "The steps, the quarantine, and the import standard are set by New Zealand's MPI and administered on the US side by APHIS, not by us. The rules are strict and, in 2026, mid-transition between an old and a new standard, so we point you to the official pages and dated this July 2026. Costs vary with your pet's size, your route, and quarantine fees, so treat the figures as a starting point and confirm the current MPI requirements, including which standard applies to you, before you begin."
+      }
     }
   ]
 };
