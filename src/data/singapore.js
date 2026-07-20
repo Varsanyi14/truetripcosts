@@ -170,5 +170,80 @@ export default {
         note: "Good to know: the Supertrees put on a free light show most evenings" },
     ],
     pride: "Singapore packs many cultures and faiths onto one small island and keeps it clean, green and orderly, something residents take real pride in. A little courtesy goes far: keep to the left on an escalator, no eating or drinking on the trains, and a friendly word in any of its languages is always welcome."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "bringing-your-pet",
+      live: true,
+      topic: "pets",
+      title: "Bringing a dog or cat to Singapore from the US (2026): the rabies-free country with no default quarantine, if you avoid two traps | True Trip Costs",
+      description: "Moving to Singapore with a pet from the US: why the 2026 reclassification means no quarantine by default, the two situations that trigger a 10-day home quarantine, the licence and pet-agent choreography, and the rabies titer timing. Checked July 2026.",
+      h1: "Bringing your dog or cat to Singapore.",
+      lede: "Singapore is unusual among rabies-free destinations. Unlike Australia, New Zealand, or Japan, the US now sits in Singapore's middle tier, which means no quarantine by default. The process is more about paperwork choreography than a long wait: licences filed on time, a rabies titer with strict timing, and, since April 2026, an approved pet agent to clear your pet on arrival. Two specific situations still trigger a 10-day home quarantine, so the whole game is avoiding those. Here is the route.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Here is the surprise: Singapore is rabies-free, but as of 2026 the US is classed as <b>Schedule II</b> (the middle tier), which means <b>no quarantine by default</b>, unlike Australia or New Zealand. The work is in the sequence and the paperwork: an <b>ISO microchip, rabies vaccination, a rabies titer (RNATT) with strict timing, an AVS import licence plus a dog licence for dogs (both filed 30 days before arrival), and an arrival inspection booked at least 5 working days ahead</b>. Since <b>1 April 2026 you must also appoint an AVS-recognized pet agent</b> to handle clearance. Two things trigger a mandatory <b>10-day home quarantine</b>: arriving more than 5 days after you do, or having owned the pet for under 6 months. Avoid those and there is no quarantine. Coming home to the US is easy.",
+      sections: [
+        {
+          h: "Why Singapore is different from the other rabies-free destinations",
+          p: [
+            "Australia, New Zealand, and Japan are all rabies-free and all make you wait: long lead times, blood-test clocks, mandatory facility quarantine. Singapore is rabies-free too (since 1953), but it sorts countries into three rabies-risk schedules, and as of 2026 the <b>US sits in Schedule II</b>, the middle tier. Schedule I is a short rabies-free list (Australia, New Zealand, Ireland, the UK); Schedule III is everywhere else, and it carries a 30-day facility quarantine. Landing in Schedule II is the good outcome for a US owner.",
+            "What Schedule II buys you is the headline: <b>no post-arrival quarantine by default</b>. Your pet clears inspection and goes home with you the same day, provided the paperwork is in order and you have not tripped one of the two quarantine triggers below. That makes Singapore one of the more manageable rabies-free moves, but only if you run the sequence precisely, because the strictness has moved from waiting to documentation."
+          ]
+        },
+        {
+          h: "The two traps that trigger a 10-day home quarantine",
+          p: [
+            "This is the part to plan your whole move around. Schedule II normally means no quarantine, but a <b>minimum 10-day home quarantine</b> becomes mandatory in two situations, so avoiding both is the goal:"
+          ],
+          steps: [
+            "Your pet arrives more than 5 days after you enter Singapore. The fix is simple: line up the travel so your pet arrives within 5 days of your own arrival, ideally alongside you or just after.",
+            "Your pet has been under your or your immediate family's direct care for less than 6 months at the time of import. This catches recently adopted, rescued, or purchased animals. If your pet is newly yours, plan around the 6-month mark or expect the home quarantine."
+          ]
+        },
+        {
+          h: "The steps, in the order that matters",
+          p: [
+            "Follow these in sequence. The licences and the titer both have timing rules, so starting late is the classic way to force a delay or a quarantine you did not want."
+          ],
+          steps: [
+            "Microchip first. Your pet needs an ISO-compliant microchip (11784 or 11785). If it is not ISO compliant, you must supply a reader at the point of entry. Do this before the rabies vaccination that counts, so records tie to the chip.",
+            "Rabies vaccination, by a licensed vet, recorded against the microchip number.",
+            "Rabies titer test (RNATT). For Schedule II, the blood sample must be taken at least 28 days after the rabies vaccination, and at least 90 days and within 12 months before export. This is the timing that most often sets the earliest possible travel date, so work backward from it.",
+            "Licences, filed 30 days ahead. For dogs, apply for the dog licence first, then the AVS import licence; both must be submitted at least 30 days before arrival. For cats, submit the import licence at least 30 days before arrival.",
+            "Appoint an AVS-recognized pet agent. Since 1 April 2026, an approved pet agent must handle your pet's import clearance at the Changi Animal and Plant Quarantine Station (CAPQ). Line this up early.",
+            "Export health certificate. A USDA-accredited vet completes the Singapore health certificate, endorsed by APHIS, plus the parasite treatments and any airline captain's declaration required.",
+            "Book the arrival inspection. Make the CAPQ inspection appointment at least 5 working days before arrival via AVS's online system. Arriving without an appointment brings an hourly inspection fee."
+          ]
+        },
+        {
+          h: "Cost, and coming back to the US",
+          p: [
+            "Budget several thousand dollars all in. As with every long-haul pet move, the largest line is air transport, since most pets fly as cargo rather than in the cabin, followed by the pet-agent and clearance fees, the vet work, and the rabies titer. There is no facility-quarantine bill in the default Schedule II case, which keeps Singapore cheaper than the Schedule III or facility-quarantine destinations, another reason the middle-tier status matters.",
+            "The return leg is easy. Because Singapore is rabies-free, a dog flying home to the US is on the simplest CDC path: typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement. See our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a> for the details, and <a href=\"/traveling-with-a-pet\">traveling with a pet</a> for how Singapore compares with other destinations on lead time and cost."
+          ]
+        }
+      ],
+      official: {
+        label: "USDA APHIS: pet travel from the US to Singapore",
+        url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-singapore",
+        note: "The US-side steps, the microchip and licence sequence, and the link to AVS's own rules. Singapore's Animal & Veterinary Service is the final word, including the rabies schedule the US falls under and the 2026 pet-agent requirement, so confirm the current version."
+      },
+      faqs: [
+        { q: "Does my pet have to go into quarantine in Singapore?", a: "Usually no. As of 2026 the US is a Schedule II country, which means no post-arrival quarantine by default. But a minimum 10-day home quarantine is triggered in two situations: if your pet arrives more than 5 days after you enter Singapore, or if you have owned the pet for less than 6 months at the time of import. Plan around both and there is no quarantine." },
+        { q: "How long does it take to bring a pet to Singapore from the US?", a: "Plan for several months. The step that usually sets the earliest travel date is the rabies titer test, whose blood sample must be at least 28 days after the rabies vaccination and at least 90 days before export. Add the licence filings (30 days before arrival), appointing a pet agent, and booking the arrival inspection, and the front end fills up. Start early." },
+        { q: "Do I really need a pet agent to bring my dog or cat to Singapore?", a: "As of 1 April 2026, yes. AVS requires you to appoint an AVS-recognized pet agent to handle your pet's import clearance at the Changi quarantine station. This is a recent change, so confirm the current agent requirement and quarantine-station hours directly with AVS as you plan." },
+        { q: "Do I need to quarantine my pet coming back to the US from Singapore?", a: "No. Singapore is rabies-free, so a dog returning to the US is on the CDC easy path: typically a CDC Dog Import Form receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement. See our guide to bringing a dog into the US for the details." }
+      ],
+      sources: {
+        links: [
+          { label: "USDA APHIS: pet travel from the United States to Singapore, the microchip, vaccination, licence, and arrival-inspection steps", url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-singapore", type: "gov" },
+          { label: "Animal & Veterinary Service (AVS), Singapore: the rabies schedules, import licence and dog licence, rabies titer timing, quarantine triggers, and the 2026 pet-agent requirement", url: "https://www.nparks.gov.sg/avs", type: "gov" },
+          { label: "CDC: entry requirements for dogs from dog rabies-free or low-risk countries, the CDC Dog Import Form and microchip rules for the return leg", url: "https://www.cdc.gov/importation/dogs/rabies-free-low-risk-countries.html", type: "gov" }
+        ],
+        judgment: "The rabies schedules, the quarantine triggers, and the licence and pet-agent rules are set by Singapore's AVS and administered on the US side by APHIS, not by us. The US schedule and the pet-agent requirement both changed in 2026, so we point you to the official pages and dated this July 2026. Costs vary with your pet's size, your route, and agent fees, so treat the figures as a starting point and confirm the current AVS requirements, including your schedule and whether either quarantine trigger applies to you, before you begin."
+      }
+    }
+  ]
 };
