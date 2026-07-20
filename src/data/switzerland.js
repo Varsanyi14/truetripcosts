@@ -165,5 +165,73 @@ export default {
         note: "Say it: made in Switzerland means precision" },
     ],
     pride: "The Swiss are private, precise and quietly proud: of four languages living side by side, of mountains and trains that run to the minute, and of a humanitarian spirit that gave the world the Red Cross, founded in Geneva in 1863."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "bringing-your-pet",
+      live: true,
+      topic: "pets",
+      title: "Bringing a dog or cat to Switzerland from the US (2026): the EU process, and the Switzerland-specific parts | True Trip Costs",
+      description: "Moving to Switzerland with a pet from the US: why it runs on the shared EU health-certificate process, no quarantine and no titer, plus what is specific to Switzerland on arrival and after you settle in. Checked July 2026.",
+      h1: "Bringing your dog or cat to Switzerland.",
+      lede: "Switzerland runs on the single EU pet-entry process for a US-origin dog or cat: microchip, rabies in the right order, and an EU health certificate on a 10-day clock. No quarantine, no rabies titer. Here is what that means for Switzerland, and the local parts worth knowing.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Switzerland uses the <b>shared EU pet-entry process</b> (it has adopted the EU rules), so there is no separate national permit and nothing unusual at the border. Your pet needs an <b>ISO microchip, a rabies vaccination given after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS</b>, then must enter within <b>10 days</b> of that endorsement. There is <b>no quarantine and no rabies titer</b> for a pet coming straight from the US. The full step-by-step, the ordering trap, and the current fees are on one page: see <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a>. Below are the Switzerland-specific notes. Coming home to the US is the easy part.",
+      sections: [
+        {
+          h: "Switzerland runs on the EU process",
+          p: ["Switzerland is not an EU member but has adopted the EU import rules, so bringing a dog or cat into Switzerland from the US is the standard EU move: an ISO microchip first, a rabies vaccination after the chip, then an EU Animal Health Certificate completed by a USDA-accredited vet and endorsed by APHIS, with the pet arriving within 10 days of endorsement. A first rabies shot adds a 21-day wait before travel.", "Because the core process is identical across the EU (and the countries that follow its rules), we do not repeat it per country. The full sequence, the microchip-before-rabies trap that costs people the most time, the 10-day clock, and the current APHIS endorsement fees all live on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Read that first, then come back for the Switzerland notes."]
+        },
+        {
+          h: "The Switzerland-specific parts",
+          p: ["Switzerland sits outside the EU but has adopted the EU import rules, so the core process is the same shared one: an ISO microchip, rabies after the chip, and an EU Animal Health Certificate endorsed by APHIS, with the pet arriving within 10 days of endorsement. There is no dog or cat tapeworm rule for Switzerland, unlike Ireland, Finland or Malta, and no quarantine or titer for a pet coming straight from the US.", "After you arrive, Switzerland requires dogs to be microchipped and registered in the national database (AMICUS) through the local commune once you have an address, and dog owners pay an annual dog tax set by the commune or canton. Some cantons keep their own restricted-breed lists and permit rules, so if your dog is a bull-type or mastiff-type breed, check the rules for the canton where you plan to live."]
+        },
+        {
+          h: "Coming back to the US is the easy part",
+          p: ["Good news for the return trip: a dog flying home to the US from Switzerland is on the simplest CDC path, typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement.", "For the wider picture, including how Switzerland compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."]
+        }
+      ],
+      official: {
+        label: "USDA APHIS: pet travel from the US to Switzerland",
+        url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-switzerland",
+        note: "The US-side steps and the EU health certificate for Switzerland. Switzerland applies the shared EU process, and the destination's own authorities are the final word on the day."
+      },
+      faqs: [
+        {
+          q: "Is Switzerland part of the EU pet process?",
+          a: "In effect, yes. Switzerland is not an EU member but has adopted the EU import rules, so a US-origin pet uses the same EU Animal Health Certificate process: microchip, rabies in order, APHIS endorsement, and the 10-day window, with no quarantine or titer. After you arrive, dogs are registered in the national AMICUS database through the local commune and a communal dog tax applies."
+        },
+        {
+          q: "Does my pet have to go into quarantine in Switzerland?",
+          a: "No. Switzerland applies the shared EU pet-entry process, which has no quarantine and no rabies titer for a pet coming straight from the US. Your pet needs a microchip, a rabies vaccination in the right order, and an EU Animal Health Certificate endorsed by APHIS, then must arrive within 10 days of endorsement. See our EU pet health certificate page for the full process."
+        },
+        {
+          q: "Do I need to quarantine my pet coming back to the US from Switzerland?",
+          a: "No. A dog returning to the US from Switzerland is on the CDC easy path: typically a CDC Dog Import Form receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement. See our guide to bringing a dog into the US for the details."
+        }
+      ],
+      sources: {
+        links: [
+          {
+            label: "True Trip Costs: the EU pet health certificate, the shared microchip, rabies and certificate process for all EU countries including Switzerland",
+            url: "/eu-pet-health-certificate",
+            type: "internal"
+          },
+          {
+            label: "USDA APHIS: pet travel from the United States to Switzerland, the US-side steps and EU health certificate",
+            url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-switzerland",
+            type: "gov"
+          },
+          {
+            label: "CDC: entry requirements for dogs from dog rabies-free or low-risk countries, for the return leg",
+            url: "https://www.cdc.gov/importation/dogs/rabies-free-low-risk-countries.html",
+            type: "gov"
+          }
+        ],
+        judgment: "Switzerland applies the shared EU pet-entry framework, which it has adopted despite sitting outside the EU, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The local registration and any breed rules vary, so we point you to the official pages and dated this July 2026."
+      }
+    }
+  ]
 };

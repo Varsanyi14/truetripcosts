@@ -177,5 +177,73 @@ export default {
         note: "Good to know: the South Pole was first reached in 1911" },
     ],
     pride: "Norwegians are hardy, understated and deeply attached to nature, proud of the fjords, of a Viking and seafaring past, and of a modern country that tops the world's happiness and quality-of-life lists. Ask about their favorite cabin or ski trail and the reserve melts away."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "bringing-your-pet",
+      live: true,
+      topic: "pets",
+      title: "Bringing a dog or cat to Norway from the US (2026): the EU process, plus the dog tapeworm rule | True Trip Costs",
+      description: "Moving to Norway with a pet from the US: why it runs on the shared EU health-certificate process, no quarantine and no titer, plus the one Norway-specific step, a timed dog tapeworm treatment. Checked July 2026.",
+      h1: "Bringing your dog or cat to Norway.",
+      lede: "Norway is a destination some US pet owners choose, and it follows the EU pet-entry rules: microchip, rabies in the right order, and an EU health certificate on a 10-day clock. No quarantine, no rabies titer. Norway adds one thing the big EU countries do not: a timed tapeworm treatment for dogs. Here is what that means, and the local parts worth knowing.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Norway follows the <b>shared EU pet-entry process</b> (it has adopted the EU rules), so there is no quarantine and no rabies titer for a pet coming straight from the US. Your pet needs an <b>ISO microchip, a rabies vaccination given after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS</b>, with entry within <b>10 days</b> of endorsement. Norway's one addition: <b>dogs need an approved tapeworm treatment given by a vet 24 to 120 hours before arrival</b>, recorded on the certificate. Cats do not. The full shared process is on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Coming home to the US is the easy part.",
+      sections: [
+        {
+          h: "Norway runs on the EU process",
+          p: ["Norway is not an EU member but has adopted the EU import rules, so bringing a dog or cat into Norway from the US is the standard EU move: an ISO microchip first, a rabies vaccination after the chip, then an EU Animal Health Certificate completed by a USDA-accredited vet and endorsed by APHIS, with the pet arriving within 10 days of endorsement. A first rabies shot adds a 21-day wait before travel.", "Because the core process is identical across the EU (and the countries that follow its rules), we do not repeat it per country. The full sequence, the microchip-before-rabies trap that costs people the most time, the 10-day clock, and the current APHIS endorsement fees all live on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Read that first, then come back for the Norway notes."]
+        },
+        {
+          h: "The Norway-specific part: the dog tapeworm rule",
+          p: ["Norway sits outside the EU but has adopted the EU import rules, so the core process is the same shared one: microchip, rabies after the chip, and an EU Animal Health Certificate endorsed by APHIS, with entry within 10 days. Norway is one of the short list of rabies-free destinations (with Ireland, Finland and Malta) that add a dog tapeworm treatment. A vet must give your <b>dog</b> an approved treatment against echinococcus tapeworm and record it on the certificate <b>24 to 120 hours before the dog arrives in Norway</b>, that is between one and five days out. It is a timing rule as much as a medical one, so it usually happens at a final vet visit right before travel.", "Two things to stress. This applies to <b>dogs only</b>: cats coming to Norway do not need it. And Norway requires arriving pet owners to report to customs (the red channel) on entry to present the pet and its papers. Get the tapeworm timing wrong and the certificate is not valid for Norway, so build the final vet visit into your travel plan deliberately."]
+        },
+        {
+          h: "Coming back to the US is the easy part",
+          p: ["Good news for the return trip: a dog flying home to the US from Norway is on the simplest CDC path, typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement.", "For the wider picture, including how Norway compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."]
+        }
+      ],
+      official: {
+        label: "USDA APHIS: pet travel from the US to Norway",
+        url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-finland-malta-ireland-including-northern",
+        note: "The US-side steps and the EU health certificate for Norway. Norway applies the shared EU process plus the dog tapeworm treatment, and the destination's own authorities are the final word on the day."
+      },
+      faqs: [
+        {
+          q: "What is the extra step for bringing a dog to Norway?",
+          a: "A tapeworm treatment. Norway follows the EU process but, like Ireland, Finland and Malta, adds a vet-given echinococcus tapeworm treatment for dogs, recorded on the certificate 24 to 120 hours (one to five days) before arrival. It applies to dogs only, not cats, and the timing must fall inside that window. Norway also asks arriving owners to report to customs on entry."
+        },
+        {
+          q: "Does my pet have to go into quarantine in Norway?",
+          a: "No. Norway applies the shared EU pet-entry process, which has no quarantine and no rabies titer for a pet coming straight from the US. Your pet needs a microchip, a rabies vaccination in the right order, and an EU Animal Health Certificate endorsed by APHIS, then must arrive within 10 days of endorsement. The one addition is the dog tapeworm treatment in the 24-to-120-hour window before arrival. See our EU pet health certificate page for the full process."
+        },
+        {
+          q: "Do I need to quarantine my pet coming back to the US from Norway?",
+          a: "No. A dog returning to the US from Norway is on the CDC easy path: typically a CDC Dog Import Form receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement. See our guide to bringing a dog into the US for the details."
+        }
+      ],
+      sources: {
+        links: [
+          {
+            label: "True Trip Costs: the EU pet health certificate, the shared microchip, rabies and certificate process for all EU countries including Norway",
+            url: "/eu-pet-health-certificate",
+            type: "internal"
+          },
+          {
+            label: "USDA APHIS: pet travel from the United States to Norway, the US-side steps and EU health certificate",
+            url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-finland-malta-ireland-including-northern",
+            type: "gov"
+          },
+          {
+            label: "CDC: entry requirements for dogs from dog rabies-free or low-risk countries, for the return leg",
+            url: "https://www.cdc.gov/importation/dogs/rabies-free-low-risk-countries.html",
+            type: "gov"
+          }
+        ],
+        judgment: "Norway applies the shared EU pet-entry framework plus a dog tapeworm treatment, which it has adopted despite sitting outside the EU, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The tapeworm timing is the part to get right, so we point you to the official pages and dated this July 2026."
+      }
+    }
+  ]
 };
