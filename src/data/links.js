@@ -22,6 +22,7 @@ export const affiliate = {
   esimBrand: "Nomad",
   esimBase: "https://lotusflareinc.pxf.io/m4NkDa",
   esimByCountry: {
+    china: "https://lotusflareinc.pxf.io/c/7445152/3248343/34279?u=https%3A%2F%2Fwww.nomadesim.com%2Fchina-eSIM",
     // vietnam: "https://your-esim-deep-link",
     // japan: "https://your-esim-deep-link",
   },
