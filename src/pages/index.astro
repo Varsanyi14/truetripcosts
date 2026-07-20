@@ -68,6 +68,33 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
       </div>
     </section>
 
+    <section class="dsc" aria-label="Start from your question">
+      <p class="dsc-lab">Arriving with a worry, not a country?</p>
+      <p class="dsc-intro">Start from the question on your mind.</p>
+      <div class="dsc-grid">
+        <a class="dsc-chip" href="/cash-or-card">
+          <span class="dsc-q">Will my card work abroad?</span>
+          <span class="dsc-go" aria-hidden="true">&#8594;</span>
+        </a>
+        <a class="dsc-chip" href="/cash-or-card">
+          <span class="dsc-q">How much cash should I carry?</span>
+          <span class="dsc-go" aria-hidden="true">&#8594;</span>
+        </a>
+        <a class="dsc-chip" href="/passports-and-visas">
+          <span class="dsc-q">Do I need a visa?</span>
+          <span class="dsc-go" aria-hidden="true">&#8594;</span>
+        </a>
+        <a class="dsc-chip" href="/tourist-taxes">
+          <span class="dsc-q">What will tourist taxes cost me?</span>
+          <span class="dsc-go" aria-hidden="true">&#8594;</span>
+        </a>
+        <a class="dsc-chip" href="/taxis-and-ride-hailing">
+          <span class="dsc-q">Will the taxi overcharge me?</span>
+          <span class="dsc-go" aria-hidden="true">&#8594;</span>
+        </a>
+      </div>
+    </section>
+
     <section class="rail-wrap" aria-label="Browse country guides">
       <p class="rail-lab">Browse the guides</p>
       <div class="rail">
@@ -167,6 +194,16 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
     .qa-go{position:absolute;top:16px;right:16px;color:var(--teal-deep,#0A5644);font-weight:700}
     .qa-card:hover .qa-t{color:var(--teal-deep,#0A5644)}
     @media (max-width:560px){ .qa-grid{grid-template-columns:1fr} }
+    .dsc{margin:18px 0 4px}
+    .dsc-lab{font-size:12px;font-weight:600;color:var(--teal-deep,#0A5644);letter-spacing:.08em;text-transform:uppercase;margin:0 0 4px}
+    .dsc-intro{font-size:14px;color:var(--muted,#6F6E66);margin:0 0 12px}
+    .dsc-grid{display:flex;flex-wrap:wrap;gap:10px}
+    .dsc-chip{display:inline-flex;align-items:center;gap:10px;padding:10px 15px;border:1px solid var(--line,#E5E3DB);border-radius:999px;background:var(--card,#FFFFFF);box-shadow:var(--shadow);text-decoration:none}
+    .dsc-chip:hover{border-color:var(--teal,#0E7A5F)}
+    .dsc-q{font-weight:600;font-size:14.5px;color:var(--ink,#16302C)}
+    .dsc-go{color:var(--teal-deep,#0A5644);font-weight:700}
+    .dsc-chip:hover .dsc-q{color:var(--teal-deep,#0A5644)}
+    @media (max-width:560px){ .dsc-grid{flex-direction:column} .dsc-chip{justify-content:space-between} }
   </style>
 
   <script>
