@@ -20,6 +20,7 @@ export default {
     BSD: 1,
     CAD: 1.4066,
     CHF: 0.8102,
+    CNY: 6.78,
     COP: 3240.62,
     CRC: 455.9955,
     CZK: 21.2513,
