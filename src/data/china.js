@@ -283,6 +283,7 @@ export default {
     {
       slug: "staying-connected",
       live: true,
+      esim: true,
       topic: "connectivity",
       title: "Staying connected in China: the Great Firewall, VPNs and eSIMs (2026) | True Trip Costs",
       description: "China's Great Firewall blocks Google, Maps and WhatsApp, and VPNs became unreliable in 2026. The reliable fix is a roaming eSIM set up before you land, which keeps your usual apps and the Chinese ones working. Checked July 2026.",
