@@ -293,6 +293,60 @@ export default {
         ],
         judgment: "Korea's foreign-card acceptance and transit top-up rules are changing fast (Seoul kiosks began taking foreign cards for T-money in March 2026), and much of this is our practical read, so treat amounts as a guide and confirm current transit options. Checked July 2026."
       }
+    },
+    {
+      slug: "bringing-your-pet",
+      live: true,
+      topic: "pets",
+      title: "Bringing a dog or cat to South Korea from the US (2026): the titer, and same-day release | True Trip Costs",
+      description: "Moving to South Korea with a pet from the US: why there is no import permit to chase, how a rabies antibody titer done right gets your pet released the same day, and what triggers quarantine at Incheon. Checked July 2026.",
+      h1: "Bringing your dog or cat to South Korea.",
+      lede: "South Korea is the most straightforward of the strict-looking Asian destinations. There is no import permit to chase for a personal pet, and a dog or cat that meets the microchip and rabies-titer rules is typically released the same day it lands. The one thing that sets your timeline, and that you must not skip, is the rabies antibody titer. Here is the route.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "South Korea is refreshingly clean on process: <b>no import permit</b> is needed for a personal dog or cat, and a compliant pet is usually <b>released the same day</b> at the airport rather than quarantined. Your pet needs an <b>ISO microchip, a current rabies vaccination, a rabies antibody titer (RNATT) of at least 0.5 IU/ml, and a health certificate endorsed by USDA APHIS within 30 days of export</b>. Korea is not on the rabies-free list, so the titer is required for pets 90 days and older, and it is the step that sets your timeline. Skip or botch the titer and your pet is held in quarantine at your expense until it is sorted. Coming home to the US is the easy part.",
+      sections: [
+        {
+          h: "No permit, but the titer is non-negotiable",
+          p: [
+            "Unlike Hong Kong or Taiwan, South Korea does not make you obtain an import permit before you travel with a personal pet. Advance notification to the Animal and Plant Quarantine Agency (APQA) applies only if you are bringing a large number of animals, not a single dog or cat. That removes the biggest piece of paperwork that other Asian destinations impose.",
+            "What Korea does require, because it is not on its own rabies-free list, is a <b>rabies-neutralization antibody titer of at least 0.5 IU/ml</b> for pets 90 days and older, done at an approved laboratory. This is the step that sets your lead time, so plan backward from it. The rest is an ISO-compliant microchip, a current rabies vaccination given before travel, and a health certificate completed by a USDA-accredited vet and endorsed by APHIS within 30 days of export."
+          ]
+        },
+        {
+          h: "Same-day release, or quarantine, depends on you",
+          p: [
+            "Here is the payoff for getting it right. When your pet lands, APQA officers at the quarantine station check four things: the ISO microchip, the rabies vaccination, the titer result, and that every document matches (age, microchip number, and dates consistent across all papers). If everything lines up, pets are typically <b>released the same day</b>. Pets enter through Incheon International Airport, where the APQA stations are.",
+            "The flip side is that quarantine in Korea is a consequence of non-compliance, not a default. An undetectable microchip, a titer below the threshold or not done, or inconsistent paperwork can mean your pet is detained at the owner's expense until the requirement is met. There is a provision to complete the microchip or titer after arrival if it could not be done beforehand, but that path means quarantine while it is sorted, so the smart move is to finish the titer well before you fly and make sure every document agrees."
+          ]
+        },
+        {
+          h: "Cost, and coming home",
+          p: [
+            "Budget several thousand dollars all in, with air transport the largest line, plus the titer test and the vet work. Because there is no permit fee and, for a compliant pet, no facility quarantine bill, Korea can come in cheaper than the permit-and-quarantine destinations, provided you avoid the non-compliance trap.",
+            "The return leg is easy. A dog flying home to the US from South Korea is on the simplest CDC path: typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement. See our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a>, and <a href=\"/traveling-with-a-pet\">traveling with a pet</a> for how South Korea compares with other destinations."
+          ]
+        }
+      ],
+      official: {
+        label: "USDA APHIS: pet travel from the US to Korea",
+        url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-korea",
+        note: "The US-side steps, the microchip, rabies and titer requirements, and the health certificate endorsed within 30 days of export. Korea's APQA is the final word on the arrival inspection, so confirm the current version."
+      },
+      faqs: [
+        { q: "Do I need an import permit to bring my pet to South Korea?", a: "No. For a personal dog or cat there is no import permit to obtain before you travel. Advance notification to APQA only applies if you are bringing a large number of animals. This makes Korea simpler on paperwork than Hong Kong or Taiwan, where a permit must be in hand before you fly." },
+        { q: "Will my pet be quarantined in South Korea?", a: "Usually not, if you comply. A dog or cat that has an ISO microchip, a current rabies vaccination, a valid rabies titer of at least 0.5 IU/ml, and consistent documents is typically released the same day at Incheon. Quarantine happens only when something is missing or inconsistent, an undetectable chip, a titer not done or below threshold, or mismatched paperwork, and it is at the owner's expense until fixed." },
+        { q: "How long does it take to bring a pet to South Korea from the US?", a: "Plan for several months, set mainly by the rabies antibody titer, which is required for pets 90 days and older because Korea is not on its own rabies-free list. Get the titer done well before you fly, since doing it late (or after arrival) is what leads to quarantine. The health certificate must be endorsed by APHIS within 30 days of export." },
+        { q: "Do I need to quarantine my pet coming back to the US from South Korea?", a: "No. A dog returning to the US from South Korea is on the CDC easy path: typically a CDC Dog Import Form receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement. See our guide to bringing a dog into the US for the details." }
+      ],
+      sources: {
+        links: [
+          { label: "USDA APHIS: pet travel from the United States to Korea, the microchip, rabies, titer and health-certificate steps", url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-korea", type: "gov" },
+          { label: "Korea APQA: bringing dogs and cats to Korea, the arrival inspection and titer requirement", url: "http://www.qia.go.kr/english/html/Animal_livestock/02AnimalLivestock_007-8.jsp", type: "gov" },
+          { label: "CDC: entry requirements for dogs from dog rabies-free or low-risk countries, for the return leg", url: "https://www.cdc.gov/importation/dogs/rabies-free-low-risk-countries.html", type: "gov" }
+        ],
+        judgment: "Korea's titer requirement and arrival inspection are set by APQA and administered on the US side by APHIS, not by us. The no-permit, same-day-release path is real but conditional on full compliance, especially the titer, so we point you to the official pages and dated this July 2026. Costs vary with your pet's size and route, so treat the figures as a starting point and confirm the current APQA requirements and titer timing before you begin."
+      }
     }
   ]
 };
