@@ -660,7 +660,6 @@ const kfState = (f) => {
       <div class="ef ef-room">
         <label for="hnRoom">Hotel price a night</label>
         <span class="moneyin"><span class="mny">$</span><input id="hnRoom" type="text" inputmode="numeric" value="150" aria-label="Hotel price per night in US dollars" /></span>
-        <p class="ef-hint ef-hint-room" id="hnRoomHint" hidden></p>
       </div>
       <label class="hn-toggle hn-toggle-inline" id="hnPaidWrap">
         <input type="checkbox" id="hnPaid" />
@@ -668,6 +667,7 @@ const kfState = (f) => {
         <span class="hn-toggle-l">Already paid for the room</span>
       </label>
     </div>
+    <p class="ef-hint-room" id="hnRoomHint" hidden></p>
 
     <label class="cf hn-region" id="hnRegionWrap" hidden style="display:none">
       <span class="cf-l">Where are you staying?</span>
@@ -1121,6 +1121,7 @@ const kfState = (f) => {
     // field. Countries with no per-style room data keep the manual default and
     // switching style leaves the room alone.
     const styleRoomOf = i => { const b = styleBtns[i]; const r = b && b.dataset.room; return (r != null && r !== '') ? +r : null; };
+    const hasStyleRooms = styleBtns.some((_, i) => styleRoomOf(i) != null);
     function applyStyleRoom() {
       if (state.roomEdited) return;
       const r = styleRoomOf(styleIndex);
@@ -1130,10 +1131,12 @@ const kfState = (f) => {
     }
     function updateRoomHint() {
       if (!roomHint) return;
+      if (!hasStyleRooms) { roomHint.hidden = true; return; }   // no footprint where the feature is inactive
+      roomHint.hidden = false;                                  // reserve the line so showing or hiding it never shifts the layout
       const r = styleRoomOf(styleIndex);
-      if (r == null || state.roomEdited) { roomHint.hidden = true; roomHint.textContent = ''; return; }
+      if (r == null || state.roomEdited) { roomHint.style.visibility = 'hidden'; return; }
       const w = ((styleBtns[styleIndex] && styleBtns[styleIndex].textContent) || '').trim().toLowerCase();
-      roomHint.hidden = false;
+      roomHint.style.visibility = 'visible';
       roomHint.textContent = 'Typical ' + w + ' room in ' + (DATA.name || 'this country') + ', edit if yours differs.';
     }
 
