@@ -59,7 +59,7 @@ export default {
   cash: {
     rate: 160, cur: "JPY", round: 10000, defaultIndex: 1,
     rateNote: "Rough guide at 160 yen to the dollar. The yen is historically weak right now, which stretches your money further.",
-    styles: [ { n: "Budget", per: 45, cash: 0.6 }, { n: "Mid-range", per: 80, cash: 0.45 }, { n: "Comfort", per: 150, cash: 0.3 } ]
+    styles: [ { n: "Budget", per: 45, cash: 0.6, room: 65 }, { n: "Mid-range", per: 80, cash: 0.45, room: 140 }, { n: "Comfort", per: 150, cash: 0.3, room: 300 } ]
   },
   connectivity: {
     works: "Yes, and it is among the best anywhere. Japan has 4G almost everywhere, including the bullet trains and most rural and mountain areas, with 5G growing in the cities. You will rarely think about your signal."

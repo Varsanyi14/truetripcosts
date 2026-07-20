@@ -82,9 +82,9 @@ export default {
     rate: 6.78, cur: "CNY", round: 20, defaultIndex: 1,
     rateNote: "About 6.8 yuan (CNY, also called renminbi or RMB) to the US dollar in 2026, so 100 yuan is roughly 15 dollars. This is only the cash-in-hand slice; most of your spending goes through Alipay or WeChat Pay on your phone.",
     styles: [
-      { n: "Budget",    per: 40,  cash: 0.25 },
-      { n: "Mid-range", per: 85,  cash: 0.15 },
-      { n: "Comfort",   per: 165, cash: 0.10 }
+      { n: "Budget",    per: 40,  cash: 0.25, room: 45 },
+      { n: "Mid-range", per: 85,  cash: 0.15, room: 95 },
+      { n: "Comfort",   per: 165, cash: 0.10, room: 190 }
     ]
   },
 

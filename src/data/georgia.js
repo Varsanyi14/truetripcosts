@@ -83,9 +83,9 @@ export default {
     rate: 2.63, cur: "GEL", round: 20, defaultIndex: 1,
     rateNote: "Roughly 2.6 to 2.7 lari to the US dollar in 2026 (about 0.38 dollars per lari), so a 30 lari lunch is about 11 dollars and 100 lari is about 38. This is only the small, cash-in-hand slice of your spending, since the cities are strongly card-first.",
     styles: [
-      { n: "Budget",    per: 30,  cash: 0.40 },
-      { n: "Mid-range", per: 65,  cash: 0.25 },
-      { n: "Comfort",   per: 130, cash: 0.20 }
+      { n: "Budget",    per: 30,  cash: 0.40, room: 35 },
+      { n: "Mid-range", per: 65,  cash: 0.25, room: 70 },
+      { n: "Comfort",   per: 130, cash: 0.20, room: 140 }
     ]
   },
 

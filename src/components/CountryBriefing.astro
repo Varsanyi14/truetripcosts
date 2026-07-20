@@ -660,6 +660,7 @@ const kfState = (f) => {
       <div class="ef ef-room">
         <label for="hnRoom">Hotel price a night</label>
         <span class="moneyin"><span class="mny">$</span><input id="hnRoom" type="text" inputmode="numeric" value="150" aria-label="Hotel price per night in US dollars" /></span>
+        <p class="ef-hint ef-hint-room" id="hnRoomHint" hidden></p>
       </div>
       <label class="hn-toggle hn-toggle-inline" id="hnPaidWrap">
         <input type="checkbox" id="hnPaid" />
@@ -699,7 +700,7 @@ const kfState = (f) => {
       <div class="ef ef-style"><label>Style</label>
         <div class="seg" role="group" aria-label="Travel style">
           {c.cash.styles.map((s, i) => (
-            <button id={"hnStyle" + i} class={i === c.cash.defaultIndex ? "on" : ""} type="button" data-per={s.per} data-cash={s.cash}>{s.n}</button>
+            <button id={"hnStyle" + i} class={i === c.cash.defaultIndex ? "on" : ""} type="button" data-per={s.per} data-cash={s.cash} data-room={s.room}>{s.n}</button>
           ))}
         </div>
       </div>
@@ -778,6 +779,7 @@ const kfState = (f) => {
         <div class="hna-body">
           <p class="hna-intro">These are the assumptions behind the number. Change the room price, nights, travelers, or travel style above, and every line here moves with them.</p>
           <dl class="hna-list">
+            <div class="hna-item"><dt>Hotel</dt><dd id="hnaRoom">&nbsp;</dd></div>
             <div class="hna-item"><dt>Daily spending</dt><dd id="hnaSpend">&nbsp;</dd></div>
             <div class="hna-item"><dt>Flights</dt><dd id="hnaFlight">&nbsp;</dd></div>
             <div class="hna-item"><dt>Cash vs card</dt><dd id="hnaSplit">&nbsp;</dd></div>
@@ -1060,7 +1062,7 @@ const kfState = (f) => {
     let styleIndex = styleBtns.findIndex(b => b.classList.contains('on'));
     if (styleIndex < 0) styleIndex = 0;
 
-    const state = { regionIndex: 0, room: 150, nights: 7, trav: 2, paid: false, noFee: false, flight: 0, flightEdited: false };
+    const state = { regionIndex: 0, room: 150, nights: 7, trav: 2, paid: false, noFee: false, flight: 0, flightEdited: false, roomEdited: false };
 
     // ----- flights: a verified typical fare prefilled, the traveler's own once edited -----
     // When the country carries a verified flight range, the input prefills with the
@@ -1104,13 +1106,43 @@ const kfState = (f) => {
 
     // ----- room money input -----
     const roomInput = id('hnRoom');
+    const roomHint = id('hnRoomHint');
     function roomVal() {
       let v = parseInt(String(roomInput.value).replace(/[^0-9]/g, ''), 10);
       if (isNaN(v) || v < 0) v = 0;
       return v;
     }
-    roomInput.addEventListener('input', () => { state.room = roomVal(); render(true); });
+
+    // ----- per-style hotel suggestion (option A) -----
+    // Each travel style can carry a typical nightly room price. Switching style
+    // prefills the room field with it, so Budget, Mid-range and Comfort visibly
+    // move the hotel line. The moment the traveler types their own room price,
+    // their number wins and style stops overwriting it, exactly like the flight
+    // field. Countries with no per-style room data keep the manual default and
+    // switching style leaves the room alone.
+    const styleRoomOf = i => { const b = styleBtns[i]; const r = b && b.dataset.room; return (r != null && r !== '') ? +r : null; };
+    function applyStyleRoom() {
+      if (state.roomEdited) return;
+      const r = styleRoomOf(styleIndex);
+      if (r == null) return;
+      state.room = r;
+      if (document.activeElement !== roomInput) roomInput.value = r.toLocaleString('en-US');
+    }
+    function updateRoomHint() {
+      if (!roomHint) return;
+      const r = styleRoomOf(styleIndex);
+      if (r == null || state.roomEdited) { roomHint.hidden = true; roomHint.textContent = ''; return; }
+      const w = ((styleBtns[styleIndex] && styleBtns[styleIndex].textContent) || '').trim().toLowerCase();
+      roomHint.hidden = false;
+      roomHint.textContent = 'Typical ' + w + ' room in ' + (DATA.name || 'this country') + ', edit if yours differs.';
+    }
+
+    roomInput.addEventListener('input', () => { state.room = roomVal(); state.roomEdited = true; updateRoomHint(); render(true); });
     roomInput.addEventListener('blur', () => { roomInput.value = state.room ? state.room.toLocaleString('en-US') : ''; });
+
+    // seed the room and hint from the default style on load
+    applyStyleRoom();
+    updateRoomHint();
 
     // ----- the two toggles: already-paid room, and the no-foreign-fee card lever -----
     const paidToggle = id('hnPaid');
@@ -1122,6 +1154,8 @@ const kfState = (f) => {
     styleBtns.forEach((b, i) => b.addEventListener('click', () => {
       styleIndex = i;
       styleBtns.forEach((x, j) => x.classList.toggle('on', j === i));
+      applyStyleRoom();
+      updateRoomHint();
       render(true);
     }));
 
@@ -1329,6 +1363,9 @@ const kfState = (f) => {
       const setA = (elId, txt) => { const e = id(elId); if (e) e.textContent = txt; };
       const styleWord = styleName ? styleName.toLowerCase() : 'mid-range';
       setA('hnaSpend', 'About ' + usd(per) + ' per traveler each day for ' + styleWord + ' travel, across ' + trav + ' ' + (trav === 1 ? 'traveler' : 'travelers') + ' and ' + nights + ' ' + (nights === 1 ? 'night' : 'nights') + '.');
+      setA('hnaRoom', (styleRoomOf(styleIndex) != null && !state.roomEdited)
+        ? ('A typical ' + styleWord + ' room in ' + DATA.name + ' runs about ' + usd(state.room) + ' a night, a starting point for the style you picked. Type your own and it takes over.' + (state.paid ? ' Marked already paid, so it is out of the total, though the tourist tax still applies.' : ''))
+        : ('Your room at ' + usd(state.room) + ' a night' + (state.paid ? ', marked already paid, so it is out of the total, though the tourist tax still applies.' : ', across ' + nights + ' ' + (nights === 1 ? 'night' : 'nights') + '.')));
       setA('hnaFlight', !flightData && flightTotal <= 0
         ? 'Not counted. We have not yet verified a typical fare for ' + DATA.name + ', so flights join the total only if you enter your own round trip fare above.'
         : (estFlight
