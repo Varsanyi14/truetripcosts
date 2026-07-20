@@ -165,5 +165,61 @@ export default {
         note: "Say it: Brendan the Navigator" },
     ],
     pride: "Ireland is a land of storytellers, from the old myths to Yeats, Joyce and Heaney, and the welcome is real: céad míle fáilte means a hundred thousand welcomes, and they mean it."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "bringing-your-pet",
+      live: true,
+      topic: "pets",
+      title: "Bringing a dog or cat to Ireland from the US (2026): the EU process, plus the dog tapeworm rule | True Trip Costs",
+      description: "Moving to Ireland with a pet from the US: why it runs on the shared EU health-certificate process, no quarantine and no titer, plus the one Ireland-specific step, a timed dog tapeworm treatment. Checked July 2026.",
+      h1: "Bringing your dog or cat to Ireland.",
+      lede: "Ireland is a common EU destination for US pet owners, and it runs on the single EU pet-entry process: microchip, rabies in the right order, and an EU health certificate on a 10-day clock. No quarantine, no rabies titer. Ireland adds exactly one thing the big EU countries do not: a timed tapeworm treatment for dogs. Here is what that means, and the local parts worth knowing.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Ireland uses the <b>shared EU pet-entry process</b>, so there is no separate Irish permit, no quarantine, and no rabies titer for a pet coming straight from the US. Your pet needs an <b>ISO microchip, a rabies vaccination given after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS</b>, with entry within <b>10 days</b> of endorsement. Ireland's one addition: <b>dogs need an approved tapeworm treatment given by a vet 24 to 120 hours before arrival</b>, recorded on the certificate. Cats do not. The full shared process is on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Coming home to the US is the easy part.",
+      sections: [
+        {
+          h: "Ireland runs on the EU process",
+          p: [
+            "There is no Ireland-only pet permit and no national quarantine. Bringing a dog or cat into Ireland from the US is the standard EU move: an ISO microchip first, a rabies vaccination after the chip, then an EU Animal Health Certificate completed by a USDA-accredited vet and endorsed by APHIS, with the pet arriving within 10 days of endorsement. A first rabies shot adds a 21-day wait before travel.",
+            "Because the core process is identical across all 27 member countries, we do not repeat it per country. The full sequence, the microchip-before-rabies trap, the 10-day clock, and the current APHIS endorsement fees all live on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Read that first, then come back for the Ireland-specific step below."
+          ]
+        },
+        {
+          h: "The Ireland-specific part: the dog tapeworm rule",
+          p: [
+            "Ireland is one of a short list of rabies-free EU destinations (with Finland, Malta, and non-EU Norway) that add a dog tapeworm treatment. A vet must give your <b>dog</b> an approved treatment against echinococcus tapeworm and record it on the certificate <b>24 to 120 hours before the dog arrives in Ireland</b>, that is between one and five days out. This is a timing rule as much as a medical one: the treatment has to fall inside that window, so it usually happens at a final vet visit right before travel, and the exact time and date go on the certificate.",
+            "Two things worth stressing. First, this applies to <b>dogs only</b>: cats coming to Ireland do not need it. Second, get the timing wrong and the certificate is not valid for Ireland, which can mean turning around at the border, so build the final vet visit into your travel plan deliberately. After you settle in, Ireland also requires dogs to be licensed, which is a simple local step handled once you have an address."
+          ]
+        },
+        {
+          h: "Coming back to the US is the easy part",
+          p: [
+            "Good news for the return trip: a dog flying home to the US from Ireland is on the simplest CDC path, typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement.",
+            "For the wider picture, including how Ireland compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."
+          ]
+        }
+      ],
+      official: {
+        label: "USDA APHIS: pet travel from the US to Finland, Malta and Ireland",
+        url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-finland-malta-ireland-including-northern",
+        note: "The US-side steps for Ireland, including the dog tapeworm treatment and its timing window. Ireland applies the shared EU process plus this one addition, and the destination's own authorities are the final word on the day."
+      },
+      faqs: [
+        { q: "What is the extra step for bringing a dog to Ireland?", a: "A tapeworm treatment. On top of the standard EU process (microchip, rabies in order, EU health certificate, 10-day window), Ireland requires a vet to give your dog an approved echinococcus tapeworm treatment and record it on the certificate 24 to 120 hours (one to five days) before the dog arrives. It applies to dogs only, not cats, and the timing must fall inside that window or the certificate is not valid for Ireland." },
+        { q: "Does my pet have to go into quarantine in Ireland?", a: "No. Ireland applies the shared EU pet-entry process, which has no quarantine and no rabies titer for a pet coming straight from the US. The only Ireland-specific addition is the dog tapeworm treatment in the 24-to-120-hour window before arrival. See our EU pet health certificate page for the full shared process." },
+        { q: "Do I need to quarantine my pet coming back to the US from Ireland?", a: "No. A dog returning to the US from Ireland is on the CDC easy path: typically a CDC Dog Import Form receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement. See our guide to bringing a dog into the US for the details." }
+      ],
+      sources: {
+        links: [
+          { label: "True Trip Costs: the EU pet health certificate, the shared microchip, rabies and certificate process for all EU countries including Ireland", url: "/eu-pet-health-certificate", type: "internal" },
+          { label: "USDA APHIS: pet travel from the United States to Finland, Malta and Ireland, including the dog tapeworm treatment and its timing", url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-finland-malta-ireland-including-northern", type: "gov" },
+          { label: "CDC: entry requirements for dogs from dog rabies-free or low-risk countries, for the return leg", url: "https://www.cdc.gov/importation/dogs/rabies-free-low-risk-countries.html", type: "gov" }
+        ],
+        judgment: "Ireland applies the shared EU pet-entry framework plus a dog tapeworm treatment, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The tapeworm timing is the part to get right, so we point you to the official pages and dated this July 2026."
+      }
+    }
+  ]
 };

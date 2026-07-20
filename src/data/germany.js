@@ -168,5 +168,61 @@ export default {
         note: "Say it: the Bremen Town Musicians" },
     ],
     pride: "Germans are proud of a deep heritage of thinkers, poets and composers, of Kaffee und Kuchen and Christmas markets, and of a countryside of dark forests and fairy-tale castles. Show genuine interest and a little enthusiasm, and their warmth and dry humor come right out."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "bringing-your-pet",
+      live: true,
+      topic: "pets",
+      title: "Bringing a dog or cat to Germany from the US (2026): the EU process, and the Germany-specific parts | True Trip Costs",
+      description: "Moving to Germany with a pet from the US: why it runs on the shared EU health-certificate process, no quarantine and no titer, plus what is specific to Germany on arrival and after you register. Checked July 2026.",
+      h1: "Bringing your dog or cat to Germany.",
+      lede: "Germany is one of the most common EU destinations for US pet owners, and there is nothing Germany-specific to fear at the border. It runs on the single EU pet-entry process: microchip, rabies in the right order, and an EU health certificate on a 10-day clock. No quarantine, no rabies titer. Here is what that means for Germany, and the local parts worth knowing.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-19",
+      answer: "Germany uses the <b>shared EU pet-entry process</b>, so there is no separate German permit and nothing unusual at the border. Your pet needs an <b>ISO microchip, a rabies vaccination given after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS</b>, then must enter Germany within <b>10 days</b> of that endorsement. There is <b>no quarantine and no rabies titer</b> for a pet coming straight from the US. The full step-by-step, the ordering trap, and the current fees are on one page: see <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a>. Below are the Germany-specific notes. Coming home to the US is the easy part.",
+      sections: [
+        {
+          h: "Germany runs on the EU process",
+          p: [
+            "There is no Germany-only pet permit and no national quarantine. Bringing a dog or cat into Germany from the US is the standard EU move: an ISO microchip first, a rabies vaccination after the chip, then an EU Animal Health Certificate completed by a USDA-accredited vet and endorsed by APHIS, with the pet arriving within 10 days of endorsement. A first rabies shot adds a 21-day wait before travel.",
+            "Because the process is identical across all 27 member countries, we do not repeat it per country. The full sequence, the microchip-before-rabies trap that costs people the most time, the 10-day clock, and the current APHIS endorsement fees all live on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Read that first, then come back for the Germany notes."
+          ]
+        },
+        {
+          h: "The Germany-specific parts",
+          p: [
+            "At the border, German customs may ask to see the endorsed certificate and confirm the microchip, and pets should enter through a designated traveller point of entry, which the major airports are. There is no dog or cat tapeworm rule for Germany, unlike Ireland, Finland or Malta.",
+            "The real German-specific issues are local rather than at the border. Dog owners in Germany pay an annual dog tax (Hundesteuer) to their city or municipality and must register the dog locally, and several German states (Bundesländer) maintain their own lists of restricted or dangerous breeds with extra rules, so the treatment of a given breed can vary by where you settle. If your dog is a bull-type or mastiff-type breed, check the rules for your specific state before you commit to an address, and expect to register and insure the dog once you arrive."
+          ]
+        },
+        {
+          h: "Coming back to the US is the easy part",
+          p: [
+            "Good news for the return trip: a dog flying home to the US from Germany is on the simplest CDC path, typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement.",
+            "For the wider picture, including how Germany compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."
+          ]
+        }
+      ],
+      official: {
+        label: "USDA APHIS: pet travel from the US to Germany",
+        url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-germany",
+        note: "The US-side steps and the EU health certificate for Germany. Germany applies the shared EU process, and the destination's own authorities are the final word on the day."
+      },
+      faqs: [
+        { q: "Does my pet have to go into quarantine in Germany?", a: "No. Germany applies the shared EU pet-entry process, which has no quarantine and no rabies titer for a pet coming straight from the US. Your pet needs a microchip, a rabies vaccination in the right order, and an EU Animal Health Certificate endorsed by APHIS, then must arrive within 10 days of endorsement. See our EU pet health certificate page for the full process." },
+        { q: "Is there anything Germany-specific beyond the EU rules?", a: "Yes, mostly local. Germany has no tapeworm rule (that applies to Ireland, Finland and Malta). But dog owners pay an annual dog tax (Hundesteuer) and must register the dog with their municipality, and individual German states keep their own restricted-breed lists, so a breed's treatment can vary by where you live. Check your state's rules if you own a bull-type or mastiff-type dog." },
+        { q: "Do I need to quarantine my pet coming back to the US from Germany?", a: "No. A dog returning to the US from Germany is on the CDC easy path: typically a CDC Dog Import Form receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement. See our guide to bringing a dog into the US for the details." }
+      ],
+      sources: {
+        links: [
+          { label: "True Trip Costs: the EU pet health certificate, the shared microchip, rabies and certificate process for all EU countries including Germany", url: "/eu-pet-health-certificate", type: "internal" },
+          { label: "USDA APHIS: pet travel from the United States to Germany, the US-side steps and EU health certificate", url: "https://www.aphis.usda.gov/pet-travel/us-to-another-country-export/pet-travel-us-germany", type: "gov" },
+          { label: "CDC: entry requirements for dogs from dog rabies-free or low-risk countries, for the return leg", url: "https://www.cdc.gov/importation/dogs/rabies-free-low-risk-countries.html", type: "gov" }
+        ],
+        judgment: "Germany applies the shared EU pet-entry framework, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The German-specific dog tax and state breed rules are local matters that vary, so confirm them for your city. We point you to the official pages and dated this July 2026."
+      }
+    }
+  ]
 };
