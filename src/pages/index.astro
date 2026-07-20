@@ -76,6 +76,9 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
             <span class="rtop">
               <span class="rflag" aria-hidden="true"><img src={flagSrc(c.slug)} alt="" width="26" height="20" loading="lazy" /></span>
               <span class="rtag">{c.region || regionTag[c.slug] || ''}</span>
+              {(c.spokes || []).some(s => s.topic === 'pets' && s.live !== false) && (
+                <span class="rpet"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><ellipse cx="6.4" cy="10.2" rx="1.9" ry="2.5"/><ellipse cx="10.1" cy="7.5" rx="1.9" ry="2.6"/><ellipse cx="13.9" cy="7.5" rx="1.9" ry="2.6"/><ellipse cx="17.6" cy="10.2" rx="1.9" ry="2.5"/><path d="M12 11.3c-2.8 0-5.1 2-5.1 4.4 0 1.9 1.7 3 3.5 2.6.6-.13 1.1-.19 1.6-.19s1 .06 1.6.19c1.8.4 3.5-.7 3.5-2.6 0-2.4-2.3-4.4-5.1-4.4z"/></svg>Pets</span>
+              )}
             </span>
             <span class="rname">{c.name}</span>
             <span class="rhook">{c.hook || hooks[c.slug] || ''}</span>

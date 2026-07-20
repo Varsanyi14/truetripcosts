@@ -554,6 +554,8 @@
   .rflag{display:inline-flex;line-height:0}
   .rflag img{width:26px;height:20px;border-radius:3px;border:1px solid var(--line);object-fit:cover;display:block}
   .rtag{font-size:10.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:2px 8px}
+  .rpet{margin-left:auto;display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--teal-deep,#0A5644);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:2px 8px 2px 6px;line-height:1}
+  .rpet svg{flex:none}
   .rname{font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.15;color:var(--ink);margin:2px 0 0}
   .rhook{font-size:13px;color:var(--muted);line-height:1.45;margin:0;flex:1}
   .rgo{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--teal-deep);margin-top:2px}
