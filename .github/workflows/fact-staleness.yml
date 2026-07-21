@@ -1,9 +1,15 @@
 name: Fact staleness check
 
-# Advisory only. Runs the fact staleness scanner on a schedule and prints which
-# high-churn facts may be due for another look. It has no side effects: it sends
-# no email and, unless the FACT_STALENESS_STRICT repo variable is set to true, it
-# always exits 0, so it never blocks anything. Read the run log for findings.
+# Advisory scan, now with a delivery bridge. Runs the fact staleness scanner on
+# a schedule. The scanner itself has no side effects: it prints findings and
+# exits 0 (unless FACT_STALENESS_STRICT is true). This workflow adds a delivery
+# step that opens or updates a single GitHub Issue labeled staleness-report when,
+# and only when, the run found something. GitHub's own notification then emails
+# the findings out. A clean run does nothing: no issue, no email.
+#
+# Delivery only. No triage, ranking, routing, or costUpdate behavior. It just
+# carries what the scanner found to a place that emails. Human triage stays
+# manual. The GITHUB_TOKEN is the built-in one; no new secret is needed.
 on:
   schedule:
     - cron: '0 7 * * 1'      # every Monday at 07:00 UTC
@@ -11,6 +17,7 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 concurrency:
   group: fact-staleness
@@ -24,7 +31,64 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+
       - name: Check fact staleness
+        id: scan
         env:
           FACT_STALENESS_STRICT: ${{ vars.FACT_STALENESS_STRICT }}
-        run: node scripts/check-fact-staleness.mjs
+        run: |
+          # Capture the scanner's output to a file and echo it to the log too.
+          # The scanner exits 0 on findings (default), so the run stays green.
+          set -o pipefail
+          node scripts/check-fact-staleness.mjs 2>&1 | tee staleness-report.txt
+
+          # The scanner prints a machine-readable tail: "Done. N item(s) worth a look."
+          # Read N from it. If we cannot parse it, treat as 0 (deliver nothing).
+          count="$(grep -oE 'Done\. [0-9]+ item' staleness-report.txt | grep -oE '[0-9]+' | head -n1)"
+          if [ -z "$count" ]; then count=0; fi
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+          echo "Parsed finding count: $count"
+
+      - name: Deliver findings to a tracking issue
+        # Only when the scan found something. A clean run skips this entirely.
+        if: steps.scan.outputs.count != '0'
+        continue-on-error: true   # a delivery hiccup must never turn a green run red
+        env:
+          GH_TOKEN: ${{ github.token }}
+          COUNT: ${{ steps.scan.outputs.count }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+          LABEL="staleness-report"
+          STAMP="$(date -u '+%Y-%m-%d %H:%M UTC')"
+
+          # Make sure the label exists (ignore error if it already does).
+          gh label create "$LABEL" --color BFD4F2 --description "Automated fact staleness findings" 2>/dev/null || true
+
+          # Build the issue body from the captured report.
+          {
+            echo "The weekly fact staleness scan found ${COUNT} item(s) worth a look."
+            echo ""
+            echo "Last run: ${STAMP}"
+            echo "Run log: ${RUN_URL}"
+            echo ""
+            echo "This issue is updated in place each week while findings remain. It is advisory: nothing here sends subscriber mail. Bring anything real to MAIN for triage. Close the issue once handled; a later run reopens or recreates it if findings return."
+            echo ""
+            echo '```'
+            cat staleness-report.txt
+            echo '```'
+          } > issue-body.txt
+
+          TITLE="Fact staleness findings"
+
+          # Find an already-open staleness-report issue, if any.
+          NUM="$(gh issue list --state open --label "$LABEL" --limit 1 --json number --jq '.[0].number // empty')"
+
+          if [ -n "$NUM" ]; then
+            gh issue edit "$NUM" --body-file issue-body.txt
+            gh issue comment "$NUM" --body "Updated ${STAMP}: ${COUNT} item(s) currently flagged. See the issue body for the full report."
+            echo "Updated existing issue #${NUM}."
+          else
+            gh issue create --title "$TITLE" --label "$LABEL" --body-file issue-body.txt
+            echo "Opened a new staleness-report issue."
+          fi
