@@ -6,7 +6,7 @@ export default {
   checked: "Jul 2026",
   checkedISO: "2026-07-04",
   sources: {
-    changed: "Sources added, and a rate update. The City of Vienna raised its Ortstaxe from about 3.2% to 5% of the net room price on 1 July 2026 (a further rise to 8% is set for July 2027), so we updated the Vienna figure. The 20% VAT refund for non-EU visitors, which starts at 75.01 euros, is confirmed. Alpine and regional towns still charge a small flat fee per night.",
+    changed: "Re-checked July 2026. Confirmed the Vienna Ortstaxe rose to 5% of the net room price on 1 July 2026 as enacted (a further rise to 8% is set for 1 July 2027). The file already read correctly; re-stamped checked dates. VAT refund and alpine flat fees unchanged.",
     links: [
       { label: "City of Vienna: the Ortstaxe (local accommodation tax) and its rise to 5% from 1 July 2026", url: "https://www.wien.gv.at/english/e-government/financial/tax/local-tax.html", type: "gov" },
       { label: "Austrian Federal Ministry of Finance: the VAT refund for non-EU visitors, from 75.01 euros", url: "https://www.bmf.gv.at/en/topics/customs/travellers/vat-refund.html", type: "revenue" },
@@ -121,8 +121,8 @@ export default {
   // always-open card after the tax-free section. Vienna's Ortstaxe is on a stepped
   // rise: 5% from 1 July 2026, then 8% from 1 July 2027.
   keyFacts: [
-    { label: "Vienna accommodation tax (Ortstaxe)", value: "5% of the net room price", status: "enacted", effective: "2026-07-01", source: "https://www.wien.gv.at/english/e-government/financial/tax/local-tax.html", checked: "2026-07-10" },
-    { label: "Vienna accommodation tax, next step", value: "8% of the net room price", status: "enacted", effective: "2027-07-01", source: "https://www.wien.gv.at/english/e-government/financial/tax/local-tax.html", checked: "2026-07-10" }
+    { label: "Vienna accommodation tax (Ortstaxe)", value: "5% of the net room price", status: "enacted", effective: "2026-07-01", source: "https://www.wien.gv.at/english/e-government/financial/tax/local-tax.html", checked: "2026-07-21" },
+    { label: "Vienna accommodation tax, next step", value: "8% of the net room price", status: "enacted", effective: "2027-07-01", source: "https://www.wien.gv.at/english/e-government/financial/tax/local-tax.html", checked: "2026-07-21" }
   ],
 
   traps: [

@@ -6,7 +6,7 @@ export default {
   checked: "Jul 2026",
   checkedISO: "2026-07-12",
   sources: {
-    changed: "First publication. Confirmed the money points that matter for US visitors: South Africa is very card-friendly (tap almost everywhere), the 15% VAT is refundable to visitors on goods over R250 taken out of the country, tipping is customary (including petrol attendants and car guards), and US citizens still get a free 90-day stamp on arrival while a new Electronic Travel Authorisation rolls out. Also confirmed that load-shedding has been suspended for over a year, so it is now a minor backup consideration rather than a daily one.",
+    changed: "Re-checked July 2026. The Electronic Travel Authorisation is now live for nationals of China, India, Indonesia and Mexico but is still not required for US citizens, who continue to get a free 90-day stamp on arrival. Load-shedding, VAT refund and tipping unchanged.",
     links: [
       { label: "South African Revenue Service (SARS): the tourist VAT refund, the 15% rate, the R250 minimum, the 90-day export window and the refund offices at the main airports", url: "https://www.sars.gov.za/types-of-tax/value-added-tax/vat-refunds-for-tourists-and-foreign-enterprises/", type: "gov" },
       { label: "US Embassy South Africa: emergency numbers, 10111 for police and 112 from a cell phone, 10177 for an ambulance", url: "https://za.usembassy.gov/emergency-assistance/", type: "gov" },
@@ -35,7 +35,7 @@ export default {
 
   recentChange: {
     date: "Jul 2026",
-    text: "Two things are worth a fresh check this year. South Africa is rolling out an Electronic Travel Authorisation (ETA) in phases; it is not yet required for US visitors, who still get a free 90-day stamp on arrival, but it is worth confirming on the official Home Affairs site before you fly. And after years of rolling blackouts, load-shedding has now been suspended for over a year, so card machines and ATMs are far more reliable, though a little backup cash is still smart."
+    text: "Two things are worth a fresh check this year. South Africa's Electronic Travel Authorisation (ETA) is now live for nationals of China, India, Indonesia and Mexico, but it is <b>not required for US visitors</b>, who still get a free 90-day stamp on arrival. The system may eventually expand, so confirm on the official Home Affairs site before you fly. And after years of rolling blackouts, load-shedding has now been suspended for over a year, so card machines and ATMs are far more reliable, though a little backup cash is still smart."
   },
 
   notice: 'We only cover trips departing from the United States right now. Want an email the moment we add your home country? <a href="#" onclick="return false"><b>Sign up for an alert</b></a>.',
@@ -115,7 +115,7 @@ export default {
 
   keyFacts: [
     { label: "Tourist VAT refund", value: "The 15% VAT is refundable to foreign visitors on goods over R250 taken out of the country; ask for a tax invoice and claim at the airport with your passport and the goods", status: "enacted", effective: null, source: "https://www.sars.gov.za/types-of-tax/value-added-tax/vat-refunds-for-tourists-and-foreign-enterprises/", checked: "2026-07-12" },
-    { label: "Electronic Travel Authorisation (ETA)", value: "Rolling out in phases in 2026 and not yet required for US visitors, who still get a free 90-day stamp on arrival; confirm on the official Home Affairs site before you fly", status: "proposed", effective: null, source: "https://www.saembassy.org/visas/civic_immigration/visitor_visa/", checked: "2026-07-12" }
+    { label: "Electronic Travel Authorisation (ETA)", value: "Now live for nationals of China, India, Indonesia and Mexico but not required for US visitors, who still get a free 90-day stamp on arrival; confirm on the official Home Affairs site before you fly", status: "proposed", effective: null, source: "https://www.saembassy.org/visas/civic_immigration/visitor_visa/", checked: "2026-07-21" }
   ],
 
   traps: [
@@ -136,7 +136,7 @@ export default {
     { q: "Should I pay in rand or US dollars?", a: "Always rand. If a card terminal or ATM offers to charge you in US dollars, decline; that dynamic currency conversion adds a few percent. Choosing rand lets your card's network handle the exchange at a fair rate." },
     { q: "Do I tip in South Africa, and how much?", a: "Yes, tipping is expected. Around 10 to 15% at restaurants (check whether a service charge was added for a large group), R5 to R10 for the petrol attendant, about R5 for a car guard, R10 to R20 a bag for a porter, and a per-day tip for a safari guide and tracker. Keep small notes for these." },
     { q: "Is it safe to use ATMs in South Africa?", a: "Yes, with common sense. Use ATMs inside shopping malls or banks rather than isolated street machines, cover the keypad, and be discreet. Card skimming and distraction scams do happen, so never accept a stranger's offer of help at the machine, and do not count cash in the open." },
-    { q: "Do I need a visa or an ETA for South Africa?", a: "As a US visitor you do not need a visa for stays up to 90 days; you get a free stamp on arrival. South Africa is rolling out an Electronic Travel Authorisation (ETA) in phases, and it is not yet required for Americans, but because the rollout is changing, check the official Department of Home Affairs site a week or so before you fly." },
+    { q: "Do I need a visa or an ETA for South Africa?", a: "As a US visitor you do not need a visa or an ETA for stays up to 90 days; you get a free stamp on arrival. South Africa's ETA is now live for nationals of China, India, Indonesia and Mexico, but it is not required for Americans. Because the rollout may expand, check the official Department of Home Affairs site a week or so before you fly." },
     { q: "Can I claim the VAT back on shopping in South Africa?", a: "Yes, on goods you take home. The 15% VAT is refundable to foreign visitors when your invoices total more than R250. Ask each shop for a tax invoice, then claim at the VAT Refund desks at the main airports (Johannesburg, Cape Town, Durban) or major land and sea borders, showing your passport and the goods, within 90 days. Services like hotels and tours do not qualify." },
     { q: "Is load-shedding still a problem for travelers?", a: "Much less than it was. After years of rolling blackouts, load-shedding has been suspended for over a year, so card machines, ATMs and Wi-Fi are far more reliable. Localized outages still happen in some areas, so keeping a little backup cash and choosing accommodation with a generator or inverter is still sensible, but you are unlikely to hit scheduled cuts." },
     { q: "How much cash should I bring for a week in South Africa?", a: "Not much, since cards work almost everywhere. Enough small notes for a week of tips, markets and the odd cash-only stop is plenty, refreshed from a mall ATM as needed. Everything else can go on a tapped card." }
