@@ -83,6 +83,52 @@ export default {
         judgment: "Network reach and coverage can change as carriers invest, so treat this as a July 2026 snapshot. The steady point is that Kolbi (ICE) has the widest reach into the parks and remote coasts, so the carrier behind your eSIM is what to check, not the brand on the app."
       }
     },
+    {
+      slug: "tipping",
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Costa Rica: what the 10% service charge covers and where to tip more (2026) | True Trip Costs",
+      description: "How tipping works in Costa Rica for US travelers in 2026: the 10% service charge already on your restaurant bill, where to tip extra, how much for tour guides and drivers, and the double-tip trap to avoid. Checked July 2026.",
+      h1: "Tipping in Costa Rica",
+      lede: "The short version: most restaurant bills already include a 10% service charge, so the tipping is largely done for you. The people worth tipping extra are your guides and drivers, and the one trap to watch for is a blank tip line on a bill that has already charged you.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-20",
+      answer: "Most sit-down restaurants in Costa Rica add a <b>10% service charge (servicio)</b> by law, so you are <b>not expected to tip on top</b> unless the service was genuinely exceptional, in which case an extra <b>5 to 10%</b> is a kind gesture. <b>Sodas</b> (local diners) and street stands do not expect tips at all. The people who do depend on tips are <b>tour guides and private drivers</b>: roughly <b>10%, or about 5 to 15 dollars per person per day</b>, is appreciated and forms a real part of their income. <b>Tip in colones</b> where you can, since it spares staff an exchange, and always <b>tip in cash</b>.",
+      sections: [
+        {
+          h: "The 10% service charge, and the double-tip trap",
+          p: [
+            "The single most important thing to know is that most sit-down restaurants already add a <b>10% service charge</b> to your bill. It is printed on the receipt, and it is the tip. You do not owe anything beyond it for a normal meal.",
+            "The trap: some tourist-area restaurants hand over a <b>US-style receipt with a blank tip line</b> after the bill has already included the 10%. If you add 18 to 20% on top without reading the bill, you have tipped twice. <b>Read the bill before you sign.</b>"
+          ]
+        },
+        {
+          h: "Where to tip more: guides, drivers and hotels",
+          p: [
+            "<b>Tour guides</b> are the real exception. Gratuities are genuinely appreciated and form a real part of a guide's income: roughly <b>10%, or about 5 to 15 dollars per person per day</b> for a naturalist or adventure guide, more for something outstanding. <b>Private drivers</b> often see <b>5 to 15 dollars a day</b>.",
+            "At hotels, <b>1 to 2 dollars a day</b> for housekeeping and <b>1 to 2 dollars per bag</b> for porters is appreciated. For taxis, <b>rounding up the fare</b> is plenty. And it is customary to hand a <b>guachiman</b>, the vested person watching your parked car, a few hundred colones."
+          ]
+        },
+        {
+          h: "Cash and currency for tips",
+          p: [
+            "Always tip in <b>cash</b>, since card tips do not always reach staff directly. <b>Colones are better than dollars</b> for tips, because they spare your server or guide an exchange. Keep a small stack of colones in small notes for the day, and save your dollars for hotels and tours that quote in dollars."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Costa Rica?", a: "Lightly, because most restaurants already add a 10% service charge by law, which covers the baseline tip. Add a little more only for exceptional service. Tour guides and private drivers are the real exception: around 10%, or roughly 5 to 15 dollars per person per day, is appreciated and forms part of their income." },
+        { q: "Is there a service charge on restaurant bills in Costa Rica?", a: "Yes. Most sit-down restaurants add a 10% service charge (servicio) to the bill, plus 13% tax. That service charge is your tip. Watch for a blank tip line on the receipt in tourist spots, because it is easy to tip twice without realizing it." },
+        { q: "How much should I tip a tour guide in Costa Rica?", a: "Roughly 10%, or about 5 to 15 dollars per person per day for a naturalist or adventure guide, more for something outstanding. Tips are a genuine part of guides' income in Costa Rica, so this is the one place where tipping matters most." },
+        { q: "Should I tip in dollars or colones in Costa Rica?", a: "Colones are better for tips, since they spare staff an exchange. Keep a small stack of colones in small notes. Dollars are fine for tours and hotels that quote in dollars, but for a restaurant or a taxi, colones are more useful to the person receiving them." }
+      ],
+      sources: {
+        links: [
+          { label: "Costa Rica Guide: the 10% restaurant service charge and tipping norms", url: "https://costa-rica-guide.com/practical/budget/how-much-to-tip/", type: "guide" }
+        ],
+        judgment: "Tipping norms are cultural, not legislated rates, so the figures here are our own read from recent traveler reports and local guidance, not a single official table. The 10% restaurant service charge is a real, consistent practice, but whether an extra tip is expected is a judgment call that varies by place. Checked July 2026."
+      }
+    },
   ],
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 2 },
   hook: "Dollars work almost everywhere, but paying in colones quietly saves you money.",

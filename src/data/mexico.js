@@ -397,6 +397,53 @@ export default {
         ],
         judgment: "Mexico's entry rules are set by SENASICA and, on the US side, administered by APHIS, with the dog-return rules set by the CDC. The no-certificate entry policy is unusually simple, but the screwworm situation on the return leg is recent and has shifted more than once, so we point you to the official pages and dated this July 2026. Costs vary with your route and your pet's size, so treat the range as a starting point and confirm the current screwworm and CDC requirements before you travel home."
       }
+    },
+    {
+      slug: "tipping",
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Mexico: how much, where, and the propina trap at resorts (2026) | True Trip Costs",
+      description: "How tipping works in Mexico for US travelers in 2026: the 10 to 15% restaurant standard, why cash in pesos is best, how much for hotel staff and drivers, and the resort double-tip trap to watch for. Checked July 2026.",
+      h1: "Tipping in Mexico",
+      lede: "Mexico has a genuine tipping culture, la propina, and it works a lot like home but with a few important differences: the amounts are a little lower, cash in pesos is strongly preferred, and tourist resorts sometimes slip a service charge onto the bill before you add one yourself.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-20",
+      answer: "Mexico has a real <b>tipping culture</b>. At sit-down restaurants, <b>10 to 15%</b> is standard, and <b>15 to 20%</b> for excellent service or at upscale and resort spots. <b>Cash in pesos</b>, handed to your server, is the surest way for it to reach them, since card tips are sometimes pooled or shaved by fees. Before adding a tip, <b>check the bill</b> for <b>propina</b> or <b>servicio</b> already added, common at tourist resorts, so you do not pay twice. Round up for <b>taxis</b>, leave <b>20 to 50 pesos a bag</b> for porters and <b>20 to 50 pesos a night</b> for housekeeping, and drop small change in the jar at a taco stand.",
+      sections: [
+        {
+          h: "How much to tip, by situation",
+          p: [
+            "At <b>sit-down restaurants</b>, <b>10 to 15%</b> is standard for good service, and <b>15 to 20%</b> at upscale or resort restaurants. <b>Cash in pesos</b> handed directly to your server is best, since card tips are sometimes pooled or reduced by processing fees.",
+            "At <b>hotels</b>, leave <b>20 to 50 pesos a night</b> for housekeeping (on the pillow or bedside table each morning, so it reaches the person who cleaned your room that day) and <b>20 to 50 pesos per bag</b> for porters. For <b>taxis</b>, <b>rounding up</b> the fare is a kind gesture but not expected. At a <b>taco stand or street stall</b>, a few coins in the tip jar is appreciated."
+          ]
+        },
+        {
+          h: "The resort double-tip trap",
+          p: [
+            "Tourist restaurants and all-inclusive resorts sometimes print <b>propina</b> or <b>servicio</b> on the bill, meaning a service charge is <b>already included</b>. If you add 15 to 20% on top without checking, you have paid the tip twice.",
+            "<b>Read the bill before you sign.</b> If a service charge is already there, a small extra in cash for outstanding service is generous but not expected. If nothing is added, tip the standard 10 to 15%."
+          ]
+        },
+        {
+          h: "Cash, pesos, and why not dollars",
+          p: [
+            "Always tip in <b>cash</b>. Card tips do not always reach the person who served you, and at smaller spots they cannot process a card tip at all.",
+            "Tip in <b>pesos, not dollars</b>. Dollars are harder for staff to use, since they need to exchange them and often get a poor rate. Pesos in small notes (20s, 50s, 100s) are the most useful thing you can hand over. Keep a small stack separate from your main wallet so you are not fumbling at the table."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much should I tip in Mexico?", a: "At sit-down restaurants, 10 to 15% is standard and 15 to 20% for excellent or upscale service. Cash in pesos handed to your server is best. Check first for propina or servicio already on the bill so you do not tip twice." },
+        { q: "Should I tip in dollars or pesos in Mexico?", a: "Pesos. Dollars are harder for staff to use, since they need to exchange them at a poor rate. Tip in cash, in pesos, in small notes. It is far easier for the person receiving it." },
+        { q: "Do resorts in Mexico include a tip on the bill?", a: "Some do. Look for propina or servicio on the bill before adding your own tip. If it is already there, you do not need to add the full amount again, though a small extra in cash for outstanding service is a kind gesture." },
+        { q: "Do you tip taxi drivers in Mexico?", a: "Rounding up the fare is a kind gesture but not expected. For a ride-hail app like Uber or DiDi, tipping through the app is fine but also not required." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Mexico country information and local customs", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Mexico.html", type: "gov" }
+        ],
+        judgment: "Tipping norms are cultural, not legislated rates, so the figures here are our own read from recent traveler reports and local guidance, not a single official table. The resort service-charge practice varies by establishment. Checked July 2026."
+      }
     }
   ]
 };

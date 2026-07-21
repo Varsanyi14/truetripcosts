@@ -288,6 +288,52 @@ export default {
         ],
         judgment: "The steps and the 180-day rule are set by Japan's Animal Quarantine Service and administered on the US side by APHIS, not by us. Timing is unusually unforgiving here, so we point you to the official pages and dated this in July 2026. Costs vary with your pet's size and your route, so treat the range as a starting point and confirm current requirements before you begin."
       }
+    },
+    {
+      slug: "tipping",
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Japan: why you should not tip, and the rare exceptions (2026) | True Trip Costs",
+      description: "Japan has no tipping culture and leaving extra money can cause confusion or offense. Here is why you do not tip, what to do instead, and the rare situations where a small thank-you is appropriate. Checked July 2026.",
+      h1: "Tipping in Japan",
+      lede: "The answer here is simple and genuinely freeing: do not tip. Japan has no tipping culture, nobody expects one, and leaving extra money can cause confusion rather than gratitude. A polite thank-you is all that is needed.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-20",
+      answer: "Japan has <b>no tipping culture</b>, and there is no awkwardness in not tipping: it is simply the norm. Leaving extra money can <b>confuse or even mildly offend</b>, and staff may chase you down to return it. Exceptional service is met with a <b>polite thank-you</b>, not a gratuity. This applies everywhere: restaurants, taxis, hotels, bars and hair salons. The rare exception is handing a small <b>thank-you in an envelope</b> to a private guide or a ryokan (traditional inn) host, in person.",
+      sections: [
+        {
+          h: "Why tipping does not work here",
+          p: [
+            "In Japan, good service is the professional standard, not something extra that earns a reward. Staff are paid a proper salary and take pride in the quality of their work. Offering money on top can feel <b>transactional</b> in a way that clashes with that ethos.",
+            "If you leave cash on a restaurant table, do not be surprised if a server <b>chases you to return it</b>, thinking you forgot it. This is not rudeness, it is the opposite: they are looking after you."
+          ]
+        },
+        {
+          h: "The rare exceptions",
+          p: [
+            "There are a few quiet exceptions where a small thank-you gift is appropriate, but even these are not cash-on-the-table situations. For a <b>private guide</b> who has gone well beyond the brief, or a <b>ryokan host</b> who has looked after you personally, you can offer a small amount of cash <b>in an envelope</b>, handed directly and discreetly. The envelope matters: handing over bare cash feels abrupt.",
+            "At a <b>high-end ryokan</b>, some guests leave a <b>kokorozuke</b> (a gesture of gratitude, typically 1,000 to 3,000 yen in an envelope) for the nakai-san who attends your room. It is not expected, but it is understood. Beyond these, the answer is simply: do not tip."
+          ]
+        },
+        {
+          h: "What to do instead",
+          p: [
+            "A sincere <b>thank-you</b> goes a long way. In Japanese, a warm <b>arigatou gozaimasu</b> is the standard. At a restaurant, a simple <b>gochisousama deshita</b> (thank you for the meal) as you leave is the polite equivalent of what a tip is meant to convey at home."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Should I tip in Japan?", a: "No. Tipping is not customary in Japan and can cause confusion or mild offense. A polite thank-you is enough. Staff are paid a proper salary and do not expect or depend on tips." },
+        { q: "Is it rude to tip in Japan?", a: "It can feel that way. Leaving cash on a table may confuse a server, who could chase you to return it. It is not considered rude so much as puzzling, and it is best avoided." },
+        { q: "Do you tip at a ryokan in Japan?", a: "It is not expected, but at a high-end ryokan some guests leave a small kokorozuke (typically 1,000 to 3,000 yen in an envelope) for the nakai-san who attends the room. Hand it over discreetly and in person. At a standard ryokan or hotel, no tip is needed." },
+        { q: "Do you tip taxi drivers in Japan?", a: "No. Taxi drivers do not expect tips. The fare on the meter is the fare, and rounding up or leaving change is not customary." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Japan country information and local customs", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Japan.html", type: "gov" }
+        ],
+        judgment: "Tipping norms in Japan are cultural and longstanding, not a recent policy. The no-tipping standard is consistent across the country and is not a judgment call. The ryokan kokorozuke exception is a soft custom, not a rule. Checked July 2026."
+      }
     }
   ]
 };

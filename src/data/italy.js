@@ -275,6 +275,53 @@ export default {
         ],
         judgment: "Italy applies the shared EU pet-entry framework, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The Italian registry step is local, so handle it once you have an address. We point you to the official pages and dated this July 2026."
       }
+    },
+    {
+      slug: "tipping",
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Italy: the coperto, the servizio, and what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Italy for US travelers in 2026: why it is not like home, what the coperto cover charge is, when a servizio is already on the bill, and how much to leave when you do tip. Checked July 2026.",
+      h1: "Tipping in Italy",
+      lede: "Italy is not a US-style tipping country, and that surprises many first-timers. Servers earn a real salary, nobody expects 20%, and the charges on your bill that look like tips often are not. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-20",
+      answer: "Italy has a <b>light tipping culture</b>. Servers are paid a real salary and do <b>not depend on tips</b>, so there is no expected percentage and nobody will chase you for one. The <b>coperto</b> on your bill is a <b>per-person cover charge</b> (commonly 2 to 3 euros), not a tip. A few tourist spots add a separate <b>servizio</b> (service charge); check for it before adding more. For genuinely great service, <b>rounding up or leaving a few euros</b> is a kind gesture, or up to roughly <b>5 to 10%</b> at a nicer meal, but it is a courtesy, not an obligation. Leave any tip in <b>cash</b>. Do not feel pressured to tip 15 to 20% the way you would at home.",
+      sections: [
+        {
+          h: "The coperto and the servizio: what they are and are not",
+          p: [
+            "The <b>coperto</b> is a per-person cover charge that most sit-down restaurants add to the bill, commonly <b>2 to 3 euros</b> and sometimes more in tourist spots. It covers the table, bread and service setup. It is <b>not a tip</b> and not a scam, it is a normal Italian practice.",
+            "Note that in <b>Rome's Lazio region</b>, the coperto is actually <b>banned</b>. Some restaurants there offer a <b>bread charge (pane e coperto)</b> instead, which you can decline if you do not want bread.",
+            "A few tourist-heavy restaurants also add a <b>servizio</b> (service charge), typically around <b>10 to 15%</b>. If you see it on the bill, <b>you do not need to tip on top</b>. If neither coperto nor servizio appears, the listed price is the price, and a small tip is a kind gesture."
+          ]
+        },
+        {
+          h: "When and how much to tip",
+          p: [
+            "For a normal meal, <b>nothing beyond the coperto is expected</b>. For genuinely great service, <b>rounding up the bill or leaving a few euros on the table</b> is appreciated. At a nicer restaurant, up to roughly <b>5 to 10%</b> is generous.",
+            "For <b>taxis</b>, <b>round up the fare</b> to a convenient figure. For <b>hotel porters</b>, <b>1 to 2 euros per bag</b> is appreciated. For <b>housekeeping</b>, <b>1 to 2 euros a day</b> left on the pillow is a kind gesture. At a <b>bar or cafe</b>, Italians sometimes leave the small change from an espresso, but nothing more is expected."
+          ]
+        },
+        {
+          h: "Cash for tips",
+          p: [
+            "Leave any tip in <b>cash, in euros</b>. Card tips are unusual in Italy, and small establishments may not be able to process them separately. Keep a few euro coins and small notes handy for tips, the coperto, and espresso bars."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Italy?", a: "Lightly, if at all. Servers earn a real salary and do not depend on tips. For good service, rounding up or leaving a few euros is a kind gesture, but there is no expected percentage. Check the bill first for a servizio (service charge) so you do not pay twice." },
+        { q: "What is the coperto in Italy?", a: "A small per-person cover charge most sit-down restaurants add, commonly 2 to 3 euros and more in tourist spots. It covers the table and bread, and it is separate from any tip. It is normal and not a scam. It is banned in Rome's Lazio region, where some places offer a bread charge instead." },
+        { q: "Is there a service charge on restaurant bills in Italy?", a: "Sometimes, especially in tourist areas. Look for servizio on the bill. If it is there, you do not need to tip on top. The coperto is a separate cover charge, not a service charge. If neither appears, the listed price is the price." },
+        { q: "How much should I tip in Italy?", a: "Nothing is expected for a normal meal. For great service, a few euros or up to roughly 5 to 10% at a nicer restaurant is generous. Round up a taxi fare, and leave 1 to 2 euros per bag for porters or per day for housekeeping. Do not feel pressured to tip 15 to 20% the way you would at home." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Italy country information and local customs", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Italy.html", type: "gov" }
+        ],
+        judgment: "Tipping norms in Italy are cultural, and the coperto is a longstanding restaurant practice, not a recent policy. The Lazio coperto ban is real and region-specific. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
     }
   ]
 };

@@ -228,6 +228,54 @@ export default {
         ],
         judgment: "App coverage is strong in the big cities and Red Sea resorts but thin in Luxor and Aswan, and fares move with fuel prices, so treat this as a recent read and check the price in your own app. Ride-hailing rules have changed before in Egypt, so confirm both apps are active when you travel. Checked July 2026."
       }
+    },
+    {
+      slug: "tipping",
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Egypt: how baksheesh works and how much to give (2026) | True Trip Costs",
+      description: "How tipping (baksheesh) works in Egypt for US travelers in 2026: why you tip often and in small amounts, what to give at restaurants, to guides, on a Nile cruise and for everyday help, and why small pound notes are essential. Checked July 2026.",
+      h1: "Tipping in Egypt",
+      lede: "Tipping in Egypt, called baksheesh, is not an extra: it is woven into daily life. The trick is to carry lots of small notes and give little and often. Here is how much, when, and in what currency.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-20",
+      answer: "Tipping in Egypt is <b>constant and expected</b>, in small amounts, for almost any help. At restaurants, a <b>service charge of around 12%</b> is frequently already on the bill; if it is, a <b>little extra for good service</b> is enough, and if it is not, around <b>10%</b> is normal. Beyond meals, small tips smooth almost everything: a few pounds for a <b>porter, a doorman, someone who gives directions or watches your shoes</b>. <b>Guides and Nile cruise crews</b> are tipped more generously, often at the end. Always tip in <b>cash, in Egyptian pounds</b>, and have <b>5, 10 and 20 pound notes</b> ready, since you will reach for them many times a day.",
+      sections: [
+        {
+          h: "How much to tip, by situation",
+          p: [
+            "At <b>restaurants</b>, check the bill first. Many add a <b>service charge of about 12%</b>; if it is there, a small extra for good service is enough. If it is not, <b>around 10%</b> is normal. Street food and takeaway do not expect tips.",
+            "<b>Guides</b> are tipped more generously. For a day tour, roughly <b>100 to 200 EGP per person</b> for the guide and <b>50 to 100 EGP</b> for the driver is a common range. <b>Nile cruise crews</b> receive a pooled tip at the end, often <b>200 to 400 EGP per person</b> for a multi-day cruise, handed to the purser or placed in a communal envelope.",
+            "For everyday help, a <b>porter, a doorman, a bathroom attendant, someone who gives directions</b>, or anyone who opens a tomb or unlocks a viewing platform, a few <b>5 to 20 pound notes</b> is the norm. Hotel housekeeping appreciates <b>20 to 50 EGP per day</b>. For taxis, <b>rounding up</b> is fine."
+          ]
+        },
+        {
+          h: "Why small notes matter so much",
+          p: [
+            "Baksheesh runs on <b>small denominations</b>. You will tip many times a day, and nobody can break a 200 pound note at a tomb entrance. Keep a <b>thick pocket of 5, 10 and 20 pound notes</b> separate from your main cash, so you can reach for one without pulling out a large wad.",
+            "ATMs often dispense 100 and 200 pound notes, so <b>break bills early</b>: buy a water or a snack at a shop and ask for small change, or request smaller notes at your hotel front desk."
+          ]
+        },
+        {
+          h: "Cash and currency for tips",
+          p: [
+            "Always tip in <b>cash</b>. A card is no substitute for baksheesh, and many of the people you tip do not have a way to process one. Tip in <b>Egyptian pounds</b> for everyday situations.",
+            "A few small, clean <b>US dollar or euro notes</b> can be handy for tipping guides or on a Nile cruise, where staff sometimes prefer hard currency, but pounds are the default and work everywhere."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much should I tip in Egypt?", a: "Often and in small amounts. At restaurants, check for a service charge (about 12%) already on the bill; if it is there, a little extra is enough, and if not, around 10% is normal. Beyond meals, a few pounds smooths almost any help, and guides and cruise crews are tipped more generously. Carry lots of 5, 10 and 20 pound notes." },
+        { q: "What is baksheesh in Egypt?", a: "Baksheesh is the local word for a small tip or gratuity, and it is woven into daily life. You give a few pounds for almost any small service: a porter carrying bags, a guard unlocking a viewing platform, someone giving directions, or a bathroom attendant. It is expected and normal, not a scam." },
+        { q: "Do I tip in dollars or Egyptian pounds in Egypt?", a: "Pounds for everyday tipping. Keep a stack of 5, 10 and 20 pound notes for daily use. A few small, clean US dollar or euro notes can be handy for guides or on a Nile cruise, but pounds work everywhere and are easier for most people to use." },
+        { q: "How much do you tip a guide in Egypt?", a: "For a day tour, roughly 100 to 200 Egyptian pounds per person for the guide and 50 to 100 for the driver is a common range. For a multi-day Nile cruise, a pooled tip of 200 to 400 pounds per person for the crew, handed to the purser at the end, is typical." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Egypt country information and local customs", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Egypt.html", type: "gov" }
+        ],
+        judgment: "Tipping norms in Egypt are cultural, not legislated rates, so the amounts here are our own read from recent traveler reports and local guidance, not a single official table. The 12% restaurant service charge is a common practice but not universal, and how much extra to leave is a judgment call. Checked July 2026."
+      }
     }
   ]
 };
