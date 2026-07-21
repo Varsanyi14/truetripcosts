@@ -220,6 +220,13 @@
   .home-hero .hpcta{margin-top:24px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
   .hpcta .ghost{font-size:14.5px;font-weight:600;color:var(--teal-deep);text-decoration:none}
   .hpcta .ghost:hover{text-decoration:underline}
+  /* Homepage primary action: give the single filled CTA a soft teal lift so it
+     reads as the clear next step, without changing its color, size or shape. */
+  .home-hero .hpcta .btn{box-shadow:0 1px 2px rgba(10,86,68,.12),0 8px 20px rgba(10,86,68,.16)}
+  .home-hero .hpcta .btn:hover{box-shadow:0 1px 2px rgba(10,86,68,.16),0 10px 24px rgba(10,86,68,.22)}
+  /* Hero-mounted country filter: same component as the one lower on the page,
+     surfaced high so a destination-minded visitor can act immediately. */
+  .cfilter-hero{margin-top:20px;max-width:420px}
 
   .home-hero.has-hero-img{max-width:none;padding:0;margin:22px 0 10px}
   @media(min-width:721px){
