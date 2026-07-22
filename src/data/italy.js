@@ -487,6 +487,56 @@ export default {
         ],
         judgment: "The 22% rate, the 70.01 euro minimum and the OTELLO validation are current, and the July 2026 changes are drawn from tax-industry reporting on the Italian Customs (Agenzia delle Dogane) reform. The net-refund figure is a market estimate after operator fees and varies by operator and payout method, so treat 11 to 15% as a guide. Checked July 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Staying connected in Italy (2026): the eSIM math, and where the mountains lose signal | True Trip Costs",
+      description: "Italy's coverage is excellent in the cities and along the coast, so it is a cost question. Your US carrier charges about 12 dollars a day to roam; a Nomad eSIM is a few dollars per gigabyte. Expect gaps in the mountains. Checked Jul 2026.",
+      h1: "Staying connected in Italy.",
+      lede: "In Italy the coverage is strong where the visitors are, the cities, the coast, the hill towns, so the real decision is how you pay for data. For most US travelers an eSIM is far cheaper than the carrier day pass. Here is the math, and the few places signal drops.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Coverage is <b>strong</b> in cities, along the coast and in the hill towns, so this is mostly a cost question. Your US carrier charges about <b>12 dollars a day</b> to roam in Italy (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b>'s included roaming is often <b>slow 2G</b>, fine for messages but not maps. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly and works from landing, so for a data-first trip it is the cheapest option. Expect <b>weaker signal in the mountains</b> (the Dolomites, remote Sardinia and Sicily). Never roam <b>pay-per-use</b>, which runs about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "A cost question first",
+          p: [
+            "Italy's mobile coverage is good across the places most people go, so the main decision is how you pay. The expensive default is roaming on your US plan: <b>AT&amp;T and Verizon</b> charge about <b>12 dollars a day</b>, so a week runs around <b>84 dollars</b>. <b>T-Mobile</b> and some Google Fi and Visible plans include roaming, but frequently at <b>slow 2G-style speeds</b> that handle messaging but struggle with maps and rideshare, so read your plan's fine print.",
+            "Whatever you choose, do not roam with <b>no plan</b>. Pay-per-use data is around <b>2 dollars a megabyte</b>, thousands per gigabyte, and phones use data in the background, so <b>turn off data roaming</b> until an eSIM or pass is active."
+          ]
+        },
+        {
+          h: "Why an eSIM is usually cheapest",
+          p: [
+            "A <b>travel eSIM</b> is the cheapest way for most visitors to get real data in Italy. A <b>Nomad eSIM</b> is a few dollars per gigabyte, well under day-pass fees, and it <b>activates before you fly</b> and works from landing, with no SIM counter and no Italian paperwork. Your US number stays reachable on your normal plan while the eSIM carries the data.",
+            "The network barely matters in the places you will be: a Nomad eSIM rides a <b>major Italian network</b>, and coverage in the cities and along the coast is strong on all of them. Set it up before departure, since installing it needs a connection."
+          ]
+        },
+        {
+          h: "Where signal drops, and the practical bits",
+          p: [
+            "The gaps are in the <b>high country and the remote south</b>: parts of the <b>Dolomites</b> and the Alps, the interiors of <b>Sardinia and Sicily</b>, and some rural hill and coastal roads. In a city or a well-visited town you will have fast 4G, with 5G in the bigger centers, but a mountain hike or a back-road drive can lose signal.",
+            "So <b>download offline maps</b> before a mountain day or a rural drive. <b>WhatsApp</b> is widely used in Italy for things like confirming a tour or a table, so it is worth having. For paying as you go, see <a href=\"/italy/cash-or-card\">cash or card in Italy</a>, and the <a href=\"/italy\">Italy money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need an eSIM for Italy?", a: "For most US travelers it is the cheapest way to get real data. Italy's coverage is strong in cities and along the coast, so it is a cost question: a Nomad eSIM is a few dollars per gigabyte, versus about 12 dollars a day for an AT&T or Verizon roaming pass. Set it up before you fly and it works from landing." },
+        { q: "How much does it cost to use my US phone in Italy?", a: "About 12 dollars a day on an AT&T or Verizon day pass, so roughly 84 dollars a week. T-Mobile and some other plans include roaming but often at slow 2G speeds. Never roam with no plan, since pay-per-use runs about 2 dollars a megabyte." },
+        { q: "Will I have signal in the Italian mountains?", a: "Not always. Coverage is strong in cities and along the coast, but parts of the Dolomites and the Alps, and the interiors of Sardinia and Sicily, have gaps. Download offline maps before a mountain hike or a back-road drive, whatever network or eSIM you use." },
+        { q: "Is an eSIM or a local SIM better for Italy?", a: "An eSIM is simpler for most visitors: no SIM counter and it works from landing if you set it up beforehand. A physical Italian SIM can suit very heavy, long-stay use, but for a normal trip a Nomad eSIM is more convenient, and coverage is strong either way." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: Italy country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Italy.html", type: "gov" },
+          { label: "Tom's Guide: a 2026 comparison of US carrier international roaming plans and day-pass prices", url: "https://www.tomsguide.com/us/wireless-carriers-international-travel-plans,review-4327.html", type: "guide" }
+        ],
+        judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own plan. The steady points are that Italian coverage is strong where visitors go, that a day pass is the pricey default, and that signal thins in the mountains and the remote south."
+      }
     }
   ]
 };

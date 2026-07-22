@@ -418,6 +418,56 @@ export default {
         ],
         judgment: "The abolition of the VAT Retail Export Scheme in Great Britain is a settled, government-confirmed fact, re-checked for 2026: there is still no carry-home tourist refund, only the ship-abroad route and the separate Northern Ireland scheme. Retailers continue to lobby for reinstatement, so this is worth re-checking over time. Checked July 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Staying connected in the UK (2026): why an eSIM beats your carrier's day pass | True Trip Costs",
+      description: "UK coverage is excellent, but your US carrier charges about 12 dollars a day to roam in Europe. A Nomad eSIM is a few dollars per gigabyte and works from landing. The Tube now has signal on most lines. Checked Jul 2026.",
+      h1: "Staying connected in the UK.",
+      lede: "The UK is easy: coverage is excellent almost everywhere, including on the Underground now. The only real decision is how you pay for data, and for most US travelers an eSIM is far cheaper than the carrier day pass. Here is the math.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Coverage is <b>excellent</b>, so this is really a cost question. Your US carrier will charge about <b>12 dollars a day</b> to roam in the UK (<b>AT&amp;T and Verizon</b> day passes), which adds up fast, and <b>T-Mobile</b>'s included roaming is often <b>slow 2G</b>, fine for messages but not maps. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly and works from landing, so for a data-first trip it is the cheapest option. The <b>London Underground</b> now has mobile signal on most lines. Never roam <b>pay-per-use</b>, which runs about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "It is a cost question, not a coverage one",
+          p: [
+            "The UK has some of the best mobile coverage anywhere, so you will have fast service in cities, towns and most of the countryside whatever you use. That makes this a <b>money decision</b>. The default, roaming on your US plan, is the expensive way: <b>AT&amp;T and Verizon</b> charge about <b>12 dollars a day</b> to use your plan in the UK, so a week is around <b>84 dollars</b> before you have done anything special.",
+            "<b>T-Mobile</b> and some Google Fi and Visible plans include roaming, but often at <b>slow 2G-style speeds</b> (around 256 Kbps) that are usable for WhatsApp and email but frustrating for maps, rideshare or anything with video. Check your plan's fine print: included does not always mean fast."
+          ]
+        },
+        {
+          h: "Why an eSIM is usually cheapest",
+          p: [
+            "For most US visitors, a <b>travel eSIM</b> is the cheapest way to get real data in the UK. A <b>Nomad eSIM</b> is a few dollars per gigabyte, far below stacking up day-pass fees, and it <b>activates before you fly</b> and works the moment you land, with no SIM counter. You keep your US number reachable for calls and texts on your normal plan while the eSIM carries the data.",
+            "Coverage is not the deciding factor: a Nomad eSIM rides a <b>major UK network</b>, and since the big networks blanket the country, the brand barely matters here. Set it up before departure, since installing it needs a connection."
+          ]
+        },
+        {
+          h: "The Tube, and one Brexit footnote",
+          p: [
+            "Good news underground: the <b>London Underground now has mobile coverage on most lines</b>, rolled out across recent years, so you are no longer offline between stations on the major routes. Aboveground, buses, trains and stations are all well covered, and free Wi-Fi is common in cafes and on much of the transport network.",
+            "One footnote that does <b>not</b> affect you: since Brexit, some UK networks charge their own customers to roam in the EU, but that is a <b>UK resident</b> issue, not a US visitor one, so ignore it. For paying as you go, see <a href=\"/united-kingdom/cash-or-card\">cash or card in the UK</a>, and the <a href=\"/united-kingdom\">UK money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need an eSIM for the UK?", a: "For most US travelers it is the cheapest way to get real data. UK coverage is excellent everywhere, so it is a cost question: a Nomad eSIM is a few dollars per gigabyte, versus about 12 dollars a day for an AT&T or Verizon roaming pass. Set it up before you fly and it works from landing." },
+        { q: "How much does it cost to use my US phone in the UK?", a: "About 12 dollars a day on an AT&T or Verizon day pass, so roughly 84 dollars for a week. T-Mobile and some other plans include roaming but often at slow 2G speeds. Never roam with no plan, since pay-per-use runs about 2 dollars a megabyte, which is bill-shock territory." },
+        { q: "Does my phone work on the London Underground?", a: "Yes, on most lines now. The Underground has rolled out mobile coverage across recent years, so you are no longer offline between stations on the major routes. Aboveground coverage is excellent, and free Wi-Fi is widely available on transport and in cafes." },
+        { q: "Is an eSIM or a local SIM better for the UK?", a: "An eSIM is simpler for most visitors: no SIM counter, and it works from the moment you land if you set it up beforehand. A physical UK SIM can be marginally cheaper for very heavy, long-stay data use, but for a normal trip the convenience of a Nomad eSIM wins, and coverage is excellent either way." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: United Kingdom country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/UnitedKingdom.html", type: "gov" },
+          { label: "Tom's Guide: a 2026 comparison of US carrier international roaming plans and day-pass prices", url: "https://www.tomsguide.com/us/wireless-carriers-international-travel-plans,review-4327.html", type: "guide" }
+        ],
+        judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own plan. The steady points are that UK coverage is excellent (including on most of the Underground), that a day pass is the pricey default, and that pay-per-use roaming is punishing."
+      }
     }
   ]
 };

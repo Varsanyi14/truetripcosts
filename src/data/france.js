@@ -431,6 +431,56 @@ export default {
         ],
         judgment: "The 20% rate, the over-100-euro threshold, the non-EU-resident-16-plus rule and the PABLO validation are from the French Customs guidance. The net-refund figure is a market estimate after operator fees and varies by operator and payout method, so treat 10 to 15% as a guide. Checked July 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Staying connected in France (2026): the eSIM math, and where the Alps lose signal | True Trip Costs",
+      description: "France's coverage is excellent in cities and towns, so it is a cost question. Your US carrier charges about 12 dollars a day to roam; a Nomad eSIM is a few dollars per gigabyte. Expect gaps in the mountains. Checked Jul 2026.",
+      h1: "Staying connected in France.",
+      lede: "France is well covered where you will be, from Paris to the villages, so the real decision is how you pay for data. For most US travelers an eSIM is far cheaper than the carrier day pass. Here is the math, and the few places signal drops.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Coverage is <b>strong</b> across cities and towns, so this is mostly a cost question. Your US carrier charges about <b>12 dollars a day</b> to roam in France (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b>'s included roaming is often <b>slow 2G</b>, fine for messages but not maps. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly and works from landing, so for a data-first trip it is the cheapest option. Expect <b>weaker signal in the mountains</b> (the Alps and Pyrenees) and deep rural areas. Never roam <b>pay-per-use</b>, which runs about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "A cost question first",
+          p: [
+            "France has good mobile coverage across the places visitors go, so the main decision is how you pay. The expensive default is roaming on your US plan: <b>AT&amp;T and Verizon</b> charge about <b>12 dollars a day</b>, roughly <b>84 dollars</b> for a week. <b>T-Mobile</b> and some Google Fi and Visible plans include roaming, but often at <b>slow 2G-style speeds</b> that handle messaging but struggle with maps and rideshare, so check your plan's fine print.",
+            "Whatever you pick, do not roam with <b>no plan</b>. Pay-per-use data is around <b>2 dollars a megabyte</b>, thousands per gigabyte, and phones use data in the background, so <b>turn off data roaming</b> until an eSIM or pass is active."
+          ]
+        },
+        {
+          h: "Why an eSIM is usually cheapest",
+          p: [
+            "A <b>travel eSIM</b> is the cheapest way for most visitors to get real data in France. A <b>Nomad eSIM</b> is a few dollars per gigabyte, well under day-pass fees, <b>activates before you fly</b> and works from landing, with no SIM counter. Your US number stays reachable on your normal plan while the eSIM carries the data.",
+            "The network barely matters where you will be: a Nomad eSIM rides a <b>major French network</b>, and coverage in the cities and towns is strong on all of them. Set it up before departure, since installing it needs a connection."
+          ]
+        },
+        {
+          h: "Where signal drops, and the practical bits",
+          p: [
+            "The gaps are in the <b>mountains and deep countryside</b>: parts of the <b>Alps and Pyrenees</b>, the remote Massif Central, and some rural roads and small villages. In Paris and the towns you will have fast 4G and 5G, but an alpine hike or a back-road drive can lose signal, and the Paris Metro has coverage on most, not all, lines.",
+            "So <b>download offline maps</b> before a mountain day or a rural drive. For paying as you go, see <a href=\"/france/cash-or-card\">cash or card in France</a>, and the <a href=\"/france\">France money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need an eSIM for France?", a: "For most US travelers it is the cheapest way to get real data. France's coverage is strong in cities and towns, so it is a cost question: a Nomad eSIM is a few dollars per gigabyte, versus about 12 dollars a day for an AT&T or Verizon roaming pass. Set it up before you fly and it works from landing." },
+        { q: "How much does it cost to use my US phone in France?", a: "About 12 dollars a day on an AT&T or Verizon day pass, so roughly 84 dollars a week. T-Mobile and some other plans include roaming but often at slow 2G speeds. Never roam with no plan, since pay-per-use runs about 2 dollars a megabyte." },
+        { q: "Will I have signal in the French Alps?", a: "Not always. Coverage is strong in cities and towns, but parts of the Alps and Pyrenees and the remote Massif Central have gaps. Download offline maps before a mountain hike or a back-road drive, whatever network or eSIM you use." },
+        { q: "Is an eSIM or a local SIM better for France?", a: "An eSIM is simpler for most visitors: no SIM counter and it works from landing if you set it up beforehand. A physical French SIM can suit very heavy, long-stay use, but for a normal trip a Nomad eSIM is more convenient, and coverage is strong either way." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: France country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/France.html", type: "gov" },
+          { label: "Tom's Guide: a 2026 comparison of US carrier international roaming plans and day-pass prices", url: "https://www.tomsguide.com/us/wireless-carriers-international-travel-plans,review-4327.html", type: "guide" }
+        ],
+        judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own plan. The steady points are that French coverage is strong where visitors go, that a day pass is the pricey default, and that signal thins in the mountains and deep countryside."
+      }
     }
   ]
 };
