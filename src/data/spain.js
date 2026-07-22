@@ -481,6 +481,62 @@ export default {
         ],
         judgment: "The IDP requirement and the full-to-full fuel advice are firm; exact fuel-fee losses, toll amounts and young-driver surcharges vary by company and route, so treat the euro figures as typical 2026 ranges. The steady advice is to choose full-to-full, carry an IDP, and cover the insurance excess before the counter. Checked July 2026."
       }
+    },
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis and apps in Spain (2026): the Barcelona catch, and Madrid's fixed airport fare | True Trip Costs",
+      description: "Uber, Cabify and Bolt work in Madrid, but Barcelona's VTC law means you must pre-book hours ahead, so a street taxi is the real option there. Madrid's airport is a fixed 33 euros; Barcelona is metered. Checked Jul 2026.",
+      h1: "Taxis and apps in Spain.",
+      lede: "How you get a ride in Spain depends on the city. In Madrid the apps work like home; in Barcelona a new law has effectively pushed visitors back to the black-and-yellow taxi. Here is what works where, and the two airport fares to know.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "It varies by city. The apps are <b>Uber, Cabify</b> (a Spanish firm, often the cheapest and best-stocked), <b>Bolt</b> and <b>Free Now</b>; compare a couple, since prices differ a lot. In <b>Madrid</b> they work normally, and the airport has a <b>fixed 33 euro taxi fare</b> to anywhere inside the M-30 ring, any time. <b>Barcelona is the catch</b>: a strict Catalan <b>VTC law</b> means app cars must be <b>booked well in advance</b> rather than summoned on demand, so for a spontaneous trip the <b>black-and-yellow street taxi</b> is the practical choice, hailed or via the Free Now app. Barcelona's airport has <b>no fixed fare</b>: it is metered, about <b>30 to 40 euros</b> plus a roughly <b>4.50 euro airport supplement</b>.",
+      sections: [
+        {
+          h: "Which apps, and where they work",
+          p: [
+            "Spain has four main ride apps: <b>Uber, Cabify, Bolt and Free Now</b>. <b>Cabify</b> is Spanish and usually has the biggest fleet and keenest prices in the major cities; <b>Uber</b> is strongest in <b>Madrid</b> and also runs in Valencia, Malaga, Seville, Bilbao and others, but is <b>limited in Barcelona</b>. Prices vary sharply between apps for the same trip, so it is worth having two or three installed and <b>comparing before you book</b>. All accept international Visa and Mastercard and are cashless.",
+            "In smaller towns and rural areas the apps thin out, and the <b>local taxi</b>, hailed, at a rank, or by phone, is the reliable option. Official taxis are clearly marked (in Madrid, white with a red diagonal stripe; in Barcelona, black and yellow) and run regulated meters, so they are safe and predictable even where an app is scarce."
+          ]
+        },
+        {
+          h: "The Barcelona catch",
+          p: [
+            "Barcelona is genuinely different in 2026. Catalan rules have <b>phased out most on-demand private-hire (VTC) rides</b>: any remaining app ride must be <b>booked well ahead</b> rather than summoned on the spot, which ends the quick-car-across-town convenience you might expect. In practice, <b>Uber and Bolt are not useful for a spontaneous trip</b> in Barcelona, and where they operate they often just <b>dispatch a licensed taxi</b> anyway.",
+            "So in Barcelona, lean on the <b>black-and-yellow taxis</b>: hail one on the street, pick one up at a rank outside stations and hotels, or summon a licensed cab through the <b>Free Now</b> app. They are plentiful, metered at regulated rates, and free of surge pricing, which during rush hour or a festival is an advantage. The city's <b>Metro</b> is also excellent for getting around cheaply."
+          ]
+        },
+        {
+          h: "The two airport fares to know",
+          p: [
+            "The airports work differently. <b>Madrid Barajas</b> has a <b>fixed 33 euro taxi fare</b> to any destination inside the <b>M-30 ring road</b>, regardless of time or traffic and with no luggage fee; take an official white taxi from the rank. If you use an app, Uber, Cabify and Bolt pick up from designated <b>VTC zones</b> at the airport, and their price varies with demand, so compare against the fixed 33 euros.",
+            "<b>Barcelona El Prat</b> has <b>no fixed fare</b>: the black-and-yellow taxi runs a meter, roughly <b>30 to 40 euros</b> to the center for the 20 to 25 minute ride, plus an <b>airport supplement of about 4.50 euros</b> and a minimum airport fare around <b>20 euros</b>. The <b>Aerobus</b> and the metro are cheaper if you are travelling light. For how cards and cash work, see <a href=\"/spain/cash-or-card\">cash or card in Spain</a>."
+          ]
+        },
+        {
+          h: "Paying and tipping",
+          p: [
+            "Apps are <b>cashless</b> and bill the card on file. Street taxis take <b>cash and usually card</b>, though the card machine is not always as smooth as an app, so keep some euros handy for a taxi just in case. Official taxis must run the <b>meter</b> and give a receipt on request, so there is no need to agree a price in advance except where a fixed fare officially applies, as in Madrid from the airport.",
+            "Tipping is <b>light</b>: rounding up to the nearest euro, or leaving small change, is normal and plenty, with no expected percentage. For the wider money picture, see the <a href=\"/spain\">Spain money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does Uber work in Spain?", a: "In much of it, yes, but not everywhere the same. Uber works normally in Madrid and runs in Valencia, Malaga, Seville, Bilbao and others, but it is limited in Barcelona, where a strict VTC law means app cars must be pre-booked well ahead rather than summoned on demand. Cabify, a Spanish app, often has better availability and lower prices, so compare a few apps." },
+        { q: "How do I get a taxi in Barcelona in 2026?", a: "Use the black-and-yellow street taxis: hail one, take one from a rank at stations and hotels, or summon a licensed cab through the Free Now app. Because of Catalonia's VTC rules, Uber and Bolt are not practical for spontaneous trips in Barcelona, so the metered taxi (or the Metro) is the reliable choice." },
+        { q: "How much is a taxi from Madrid airport to the city?", a: "A fixed 33 euros to any destination inside the M-30 ring road, any time of day and regardless of traffic, with no luggage fee. Take an official white taxi (red diagonal stripe) from the rank. Apps like Uber and Cabify pick up from VTC zones and their price varies, so compare against the 33 euro fixed fare." },
+        { q: "How much is a taxi from Barcelona airport to the city?", a: "There is no fixed fare. The black-and-yellow taxi is metered, roughly 30 to 40 euros to the center for a 20 to 25 minute ride, plus an airport supplement of about 4.50 euros and a minimum airport fare around 20 euros. The Aerobus and the metro are cheaper if you are travelling light." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: Spain country information and local-travel context", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Spain.html", type: "gov" },
+          { label: "Expat Focus: a guide to taxis and ride-hailing in Spain, including the Madrid fixed airport fare and city coverage", url: "https://www.expatfocus.com/spain/guide/spain-taxis-and-ride-hailing-services", type: "guide" }
+        ],
+        judgment: "The Madrid fixed fare and the Barcelona VTC restrictions are current for 2026, but app availability, city rules and meter rates change, and Barcelona's private-hire rules in particular have shifted repeatedly, so treat the euro figures as a recent read and check the app for your city on arrival. Checked July 2026."
+      }
     }
   ]
 };

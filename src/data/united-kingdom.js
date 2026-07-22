@@ -468,6 +468,62 @@ export default {
         ],
         judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own plan. The steady points are that UK coverage is excellent (including on most of the Underground), that a day pass is the pricey default, and that pay-per-use roaming is punishing."
       }
+    },
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "London taxis, Uber and the Heathrow transfer: what actually costs less (2026) | True Trip Costs",
+      description: "Black cabs you hail, Uber and Bolt you pre-book, and from Heathrow the Elizabeth line at about 12 pounds beats a 75 to 110 pound cab. How London taxis and apps compare, and the cheapest way in from the airport. Checked Jul 2026.",
+      h1: "London taxis, Uber, and the Heathrow transfer.",
+      lede: "London gives you real choice: a hailable black cab or a pre-booked Uber. But the money is made or lost on the airport run, where the train quietly beats a cab by fifty pounds or more. Here is how it all compares.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Two ways to ride. A licensed <b>black cab</b> you can <b>hail on the street</b> or take from a rank, on a regulated meter (minimum fare <b>4.40 pounds</b>); <b>Uber and Bolt</b> (and minicab firms like Addison Lee) must be <b>pre-booked in the app</b> and cannot be flagged down. For a short central trip, an app car is usually cheaper (about <b>9 to 14 pounds</b> off-peak) than a metered cab (about <b>12 to 18 pounds</b>). But the real decision is <b>Heathrow</b>: the <b>Elizabeth line</b> is a flat <b>12 pounds or so</b> to central London, versus <b>75 to 110 pounds</b> in a black cab or <b>45 to 95 pounds</b> on Uber with surge. For most arrivals, the <b>train wins by a wide margin</b>.",
+      sections: [
+        {
+          h: "Black cab or app: how they differ",
+          p: [
+            "The one rule to know: <b>only black cabs (hackney carriages) can be hailed</b> on the street or picked up from a rank. <b>Uber, Bolt and minicabs</b> (private hire, including Addison Lee) are <b>booking-only by law</b> and cannot legally take a street fare, so at the airport or a station you open the app and walk to the designated pickup point. Black cab drivers pass a famously tough test (the Knowledge) and run a regulated meter, with no haggling.",
+            "On price, for a typical <b>3-mile central journey</b> a black cab runs about <b>12 to 18 pounds</b>, while <b>Uber or Bolt</b> are about <b>9 to 14 pounds</b> off-peak, though they <b>surge</b> at busy times and now add <b>20% VAT</b> on every London fare. Black cabs take <b>card</b> and can be hailed instantly, which is worth something when you do not want to wait for a booking. For a quick hop you cannot lose much either way, so compare the app quote against the convenience of just flagging a cab."
+          ]
+        },
+        {
+          h: "Heathrow: the train beats the cab",
+          p: [
+            "This is where the wrong choice costs the most. From <b>Heathrow</b>, a black cab to central London is roughly <b>75 to 110 pounds</b> (more evenings and weekends), and <b>Uber or Bolt</b> run about <b>45 to 95 pounds</b> depending on surge. The <b>trains</b> undercut both by a lot: the <b>Elizabeth line</b> is a flat fare of about <b>12 pounds</b> (contactless or Oyster) into central London in 30 to 45 minutes, and the <b>Piccadilly line</b> Tube is the cheapest at about <b>5.90 pounds</b>, if slower.",
+            "The <b>Heathrow Express</b> is the fastest, 15 minutes to Paddington, but pricier at about <b>25 pounds</b> walk-up (from around <b>10 pounds</b> booked ahead). So the honest ranking for a solo traveler or couple with normal luggage: the <b>Elizabeth line for value, the Heathrow Express for speed to Paddington</b>, and a car only if you are a group with heavy bags going door to door, in which case a <b>pre-booked fixed-price minicab</b> (around <b>55 pounds</b>) beats a metered black cab."
+          ]
+        },
+        {
+          h: "The other airports, and tap-to-ride",
+          p: [
+            "From <b>Gatwick</b>, the <b>Gatwick Express</b> is about <b>21.50 pounds</b> to Victoria in 30 minutes, far cheaper than a <b>90 to 130 pound</b> cab. <b>Stansted</b> and <b>Luton</b> also have express trains or coaches that beat a taxi on price. As a rule across the London airports, the <b>train or coach is the value option</b>, and a car makes sense mainly for groups or late arrivals.",
+            "Around town, you rarely need cash or a paper ticket: just <b>tap a contactless card or phone</b> on the Tube, buses, trams and most trains, with an automatic <b>daily fare cap</b>, so no Oyster card is needed. For how cards and cash work more broadly, see <a href=\"/united-kingdom/cash-or-card\">cash or card in the UK</a>, and the <a href=\"/united-kingdom\">UK money guide</a>."
+          ]
+        },
+        {
+          h: "Tipping and avoiding the touts",
+          p: [
+            "Tipping a cab is light in the UK: <b>rounding up to the nearest pound</b>, or adding roughly <b>10%</b> for a good black-cab driver, is plenty, and app fares are settled in the app where a tip is optional. There is no expectation to tip on public transport.",
+            "At the airport, <b>ignore anyone who approaches you</b> inside the terminal offering a taxi or a lift; licensed black cabs wait at the marked rank and Uber or Bolt are booked in the app. An unbooked stranger with a car is not a deal, so follow the signs to the official rank or the rail station."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Can you hail an Uber in London?", a: "No. Uber, Bolt and minicabs are private hire and must be booked in the app; only licensed black cabs can be hailed on the street or taken from a rank. At the airport or a station you book the app car and walk to the designated pickup point, while a black cab you can simply flag down or join the rank for." },
+        { q: "What is the cheapest way from Heathrow to central London?", a: "The train. The Elizabeth line is a flat fare of about 12 pounds into central London, and the Piccadilly line Tube is about 5.90 pounds. Both massively undercut a black cab (75 to 110 pounds) or Uber (45 to 95 pounds with surge). The Heathrow Express is fastest at 15 minutes to Paddington but costs about 25 pounds walk-up." },
+        { q: "Is Uber cheaper than a black cab in London?", a: "For a short central trip, usually a little: about 9 to 14 pounds off-peak on Uber or Bolt versus 12 to 18 pounds in a metered black cab. But apps surge at busy times and add 20% VAT, and only black cabs can be hailed instantly. For airport runs the train beats both, and a pre-booked minicab beats a metered cab." },
+        { q: "Do I need an Oyster card for London transport?", a: "No. You can tap a contactless card or phone directly on the Tube, buses, trams and most trains, with an automatic daily fare cap, so a separate Oyster card is not needed. The same tap works from Heathrow on the Elizabeth line and the Piccadilly line." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: United Kingdom country information and local-travel context", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/UnitedKingdom.html", type: "gov" },
+          { label: "London Airport Taxi: 2026 London black-cab and minicab fares, including Heathrow transfer costs", url: "https://londonairport-taxi.com/london-taxi-fares", type: "guide" }
+        ],
+        judgment: "Black-cab tariffs are regulated (the minimum rose to 4.40 pounds in April 2026) but the metered total varies with traffic, and app surge and train fares move, so treat the pound figures as a recent 2026 read. The steady point is that from Heathrow the train beats a car for most travelers. Checked July 2026."
+      }
     }
   ]
 };

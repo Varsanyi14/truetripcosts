@@ -399,6 +399,62 @@ export default {
         ],
         judgment: "Quebec's winter-tire law (1 December to 15 March, enforced by the SAAQ) is firm; the daily tire fee, the Highway 407 admin fee and the deposit holds vary by company and car, so treat them as typical 2026 ranges and confirm the all-in price before booking. The steady point is to sort insurance before the counter, since your US cover usually works in Canada but not in Europe. Checked July 2026."
       }
+    },
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis, Uber and Lyft in Canada (2026): the airport fares and trains that beat a cab | True Trip Costs",
+      description: "Uber and Lyft cover Canada's big cities, but from the airport the smart money is often the train or a fixed taxi fare: Toronto's UP Express is about C$12.25, Montreal's airport taxi is a fixed C$42 to C$48. Checked Jul 2026.",
+      h1: "Taxis, Uber and Lyft in Canada.",
+      lede: "Rideshare works in Canada's major cities much as it does at home, so getting around town is easy. The money question is the airport run, where a train or a fixed taxi fare often beats a surging Uber. Here is what to use where.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "In the big cities, <b>Uber and Lyft work normally</b>: Toronto, Vancouver, Montreal, Calgary, Ottawa and more, with app booking and cashless pay (a short downtown ride is about <b>C$15 to C$22</b>). Traditional <b>taxis</b> are everywhere too and can be hailed or ranked. The smart money is at the <b>airport</b>: from <b>Toronto Pearson</b>, the <b>UP Express train</b> to downtown is about <b>C$12.25</b> and beats a C$60-plus car; from <b>Montreal Trudeau</b>, taxis charge a <b>fixed C$42 to C$48</b> to downtown that often beats a surging Uber; at <b>Vancouver YVR</b>, compare the airport <b>flat rate against Uber and Lyft surge</b>. Rideshare thins out in the suburbs late at night, so keep a taxi number handy.",
+      sections: [
+        {
+          h: "Uber and Lyft in the cities",
+          p: [
+            "Ride-hailing is well established in Canada's major cities. <b>Uber</b> is the leader (in Toronto since 2014, Vancouver since 2020, plus Montreal, Calgary, Ottawa, Edmonton and others), and <b>Lyft</b> is the main alternative in the bigger markets. For a US visitor it is seamless: your <b>existing Uber or Lyft account works</b> with no new sign-up, and everything is <b>cashless</b> in the app. A typical <b>5-km downtown ride</b> runs about <b>C$15 to C$22</b>, with UberX and Lyft minimum fares around <b>C$5 to C$6</b>.",
+            "The catch is coverage at the edges: downtown and around the airports is well served, but in the <b>suburbs and late at night</b> wait times stretch, and in smaller towns rideshare can be thin or absent. A traditional <b>taxi</b>, hailed, at a rank, or by phone, is the reliable fallback, so it is worth saving a local cab company's number for an early-morning airport run."
+          ]
+        },
+        {
+          h: "Airports: the train or the fixed fare often wins",
+          p: [
+            "This is where a little planning saves real money. At <b>Toronto Pearson (YYZ)</b>, the <b>UP Express</b> train runs to <b>Union Station downtown in about 25 minutes for C$12.25</b> one-way, every 15 minutes, which comfortably beats a taxi or Uber (often <b>C$60 to C$80</b> with traffic or surge). Uber and Lyft do serve Pearson, but the train is the value pick for downtown.",
+            "At <b>Montreal Trudeau (YUL)</b>, official taxis charge a <b>fixed fare of about C$42 to C$48</b> to downtown, posted and set, so there is no surprise, and travelers often find it <b>beats Uber from the airport</b>, partly because taxis can use the bus lane and fewer Ubers now serve YUL. At <b>Vancouver (YVR)</b>, rideshare and taxis both operate; compare the <b>airport flat rate</b> against <b>Uber or Lyft surge</b>, which spikes on rainy Fridays and cruise mornings."
+          ]
+        },
+        {
+          h: "The fare is pre-tax, and tipping is expected",
+          p: [
+            "Two North American habits carry over. First, a metered <b>taxi</b> fare has <b>sales tax added</b>, and rideshare shows the tax in the app total. Second, <b>tipping is expected</b>, US-style: around <b>10 to 15%</b> for a taxi or rideshare, prompted in the app or added to a card payment. Budget for both so the final cost is no surprise.",
+            "For getting cash and paying by card in Canada, including the pre-tax pricing that catches visitors out, see <a href=\"/canada/cash-or-card\">cash or card in Canada</a>. If you are also weighing a rental, the trade-offs are in <a href=\"/canada/renting-a-car\">renting a car in Canada</a>."
+          ]
+        },
+        {
+          h: "Quick rules of thumb",
+          p: [
+            "For getting <b>around a city</b>, open <b>Uber or Lyft</b> and compare, or hail a taxi; both are fine, and the app just removes the fare guesswork. For the <b>airport</b>, check the <b>train or fixed taxi fare first</b>: it is often cheaper and always more predictable than a surging app car, especially into downtown Toronto (the UP Express) and Montreal (the fixed taxi).",
+            "Keep a <b>taxi company number</b> saved for early departures and suburban late nights when rideshare is slow, and remember to <b>budget tax and a tip</b> on top of the fare. For the wider picture, see the <a href=\"/canada\">Canada money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does Uber work in Canada?", a: "Yes, in the major cities. Uber operates in Toronto, Vancouver, Montreal, Calgary, Ottawa, Edmonton and others, and Lyft runs in the bigger markets too. Your existing US Uber or Lyft account works with no new sign-up, and rides are cashless. Coverage thins in the suburbs late at night and in smaller towns, where a traditional taxi is the fallback." },
+        { q: "What is the cheapest way from Toronto Pearson to downtown?", a: "The UP Express train: about C$12.25 one-way to Union Station in roughly 25 minutes, every 15 minutes. It comfortably beats a taxi or Uber, which often run C$60 to C$80 with traffic or surge. Uber and Lyft do serve Pearson, but the train is the value option for downtown." },
+        { q: "How much is a taxi from Montreal airport to downtown?", a: "A fixed fare of about C$42 to C$48, posted and set regardless of traffic, so there is no surprise. Travelers often find it beats Uber from the airport, partly because taxis can use the bus lane and fewer Ubers now serve Trudeau. No reservation is needed; join the taxi rank at arrivals." },
+        { q: "Do you tip taxi and Uber drivers in Canada?", a: "Yes, US-style. Around 10 to 15% is normal for a taxi or rideshare, prompted in the app or added to a card payment. Note too that a metered taxi fare has sales tax added on top, so budget for both the tax and the tip beyond the base fare." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: Canada country information and local-travel context", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Canada.html", type: "gov" },
+          { label: "Vancouver Tourism: a 2026 guide to Uber, Lyft and taxis in Vancouver, including YVR pickup and pricing", url: "https://www.vancouvertourism.org/uber-lyft-vancouver/", type: "guide" }
+        ],
+        judgment: "Rideshare coverage, airport fixed fares and train prices are current for 2026 but vary by city and change over time (Montreal's airport taxi fare is posted in the low-to-mid C$40s, and sources cite figures from C$42 to C$48), so treat the numbers as a recent read and confirm the posted airport fare on arrival. Checked July 2026."
+      }
     }
   ]
 };
