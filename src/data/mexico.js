@@ -724,6 +724,69 @@ export default {
       sources: {
         judgment: "The prices here are typical 2026 ranges for on-property extras (specialty dining, spa, motorized water sports, premium drinks) and off-resort excursions, drawn from recent travel-cost reporting, not a fixed price list, and every resort sets its own. The one government charge, the Quintana Roo environmental tax of about 76 pesos per room per night, is a state and municipal levy usually collected at the desk; the separate Visitax and federal DNR fee are covered in the Mexico entry fees guide. Confirm the specifics with your resort before booking. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Mexico, and what they cost you (2026) | True Trip Costs",
+      description: "Most trips to Mexico are trouble-free. The money traps that do exist are avoidable: taxi overcharges, the 'pay in dollars' card trick, ATM skimming, padded bar bills, roadside police 'fines', and timeshare pressure. Here is each one and how to sidestep it. Checked July 2026.",
+      h1: "Common money scams in Mexico, and what they cost you",
+      lede: "Mexico is safe for the great majority of visitors, and almost none of this is dramatic. These are ordinary money traps, overcharges and pressure tactics aimed at tourists, and a few simple habits defuse nearly all of them. Here is each one, what it costs, and how to sidestep it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "A handful of money traps come up again and again: <b>taxi overcharges</b> and the <b>no change for a big note</b> trick, the <b>pay in dollars</b> prompt on card machines and ATMs (a poor built-in rate), <b>ATM skimming</b>, <b>padded restaurant or bar bills</b>, roadside <b>police fines</b> demanded in cash, and high-pressure <b>timeshare</b> pitches sold as a free breakfast or tour. The golden rules that beat most of them: <b>always pay in pesos</b>, <b>carry small notes</b>, <b>use official taxis or apps</b>, <b>withdraw from bank-lobby ATMs</b>, and <b>check every bill</b>. None of it should ruin a trip.",
+      sections: [
+        {
+          h: "At the ATM and the card machine",
+          p: [
+            "The most common everyday trap is not a con at all, it is a legitimate-looking prompt. When a card machine or ATM asks whether to charge <b>in US dollars or pesos</b>, always choose <b>pesos</b>: the dollar option uses a poor built-in rate that quietly costs you <b>3 to 12 percent</b>. The same goes for shops and resorts that say dollars are welcome, the rate is usually bad. The full mechanics are in the <a href=\"/mexico/cash-or-card\">Mexico cash and cards guide</a>.",
+            "The one worth real care is <b>ATM skimming</b> and card cloning. Use ATMs <b>inside a bank</b> rather than free-standing street machines, cover the keypad, and glance at the card slot for anything loose. If a machine <b>keeps your card</b>, do not walk away: that can be a trap to lift it once you leave, so call your bank or 911 from the spot. Watch cards at bars too, where a card can be taken away to swipe and double-charged or swapped."
+          ]
+        },
+        {
+          h: "Taxis: overcharges and the no-change trick",
+          p: [
+            "At airports and on the street, the classic is a <b>flat overcharge</b> or an unofficial driver, which is how a short ride becomes <b>$40 to $60</b>. Use the <b>official taxi desk, a pre-booked transfer, or an app</b>, and track the route on your phone. The related move is the <b>closed hotel</b> line, where a driver insists your destination is shut and offers to take you somewhere better, which racks up the meter or steers you to a shop for commission. A polite no keeps you on track. The full breakdown is in the <a href=\"/mexico/taxis-and-apps\">Mexico taxis and apps guide</a>.",
+            "The <b>no change</b> trick is simple: you hand over a 500 peso note for a 120 peso ride, the driver claims to have no change and keeps the difference. Carry <b>small notes</b> (20, 50, 100) and settle close to the exact fare. On a similar note, you can spend slightly <b>torn notes</b> in Mexico or swap them free at a bank, so a refusal to accept one is not your problem to solve. Using official transport and bank ATMs also quietly avoids the rare but real risk that comes with unmarked street taxis late at night."
+          ]
+        },
+        {
+          h: "Bars, restaurants, and free tastings",
+          p: [
+            "Check the <b>itemized bill</b> before you pay. The usual issues are a <b>double charge</b>, items you did not order, or a service charge added twice. In bars, drinks are sometimes <b>watered down</b>, so if it matters, ask which brands they pour and order one by name.",
+            "Be wary of <b>free tastings</b>, especially artisanal mezcal or tequila near markets, that quietly <b>obligate a purchase</b>: a tasting that looked complimentary can land as a <b>400 to 800 peso</b> bill. Confirm whether there is a charge before you accept, and you avoid the awkward surprise."
+          ]
+        },
+        {
+          h: "Roadside police fines and timeshare pitches",
+          p: [
+            "If someone in a uniform stops you and demands an <b>on-the-spot cash fine</b> for a minor infraction, stay calm and polite. Real fines are <b>paid at a station, not by the roadside</b>. You can ask for the written ticket (the <b>infraccion</b>) and to settle it at the station, and note the officer's name and patrol number. You are not obliged to hand over your wallet or cash on the spot.",
+            "The <b>free breakfast or free tour</b> offer is a <b>timeshare</b> sales pitch: a long, high-pressure presentation in exchange for the perk, sometimes with a deposit to guarantee you attend. It is not always a scam, but do not sign anything on the day. Separately, never pay <b>upfront fees</b> to a company offering to resell a timeshare you own, that is a well-documented fraud. You can check any company through Mexico's consumer agency, <b>PROFECO</b>."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          p: [
+            "Almost everything here costs you tens of dollars at most and is avoided by the same few habits: <b>pay in pesos</b>, <b>carry small notes</b>, <b>use official taxis or apps</b>, <b>use bank-lobby ATMs</b>, and <b>read the bill</b>. The ones worth active care, because they can cost real money, are <b>ATM skimming</b> and <b>timeshare resale fraud</b>, so guard your card details and never pay an upfront resale fee.",
+            "Handled calmly, none of this should shape your trip. For getting and spending money well while you are there, see the <a href=\"/mexico/cash-or-card\">Mexico cash and cards guide</a> and the <a href=\"/mexico\">Mexico cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Mexico safe for tourists?", a: "For the great majority of visitors, yes, and most trips are trouble-free. The issues tourists actually meet are usually money ones, overcharges and pressure tactics, rather than anything dramatic, and a few habits (pay in pesos, carry small notes, use official taxis and bank ATMs, check bills) avoid nearly all of them." },
+        { q: "What is the most common money scam in Mexico?", a: "Taxi overcharging and the no change for a big note trick, along with the pay in dollars prompt on card machines and ATMs, which uses a poor built-in rate. Agree the fare first, carry small notes, and always choose to be charged in pesos." },
+        { q: "Should I pay in pesos or dollars in Mexico?", a: "Pesos, always. Paying in dollars, or accepting a card machine's offer to charge in dollars, uses a poor built-in rate that costs you roughly 3 to 12 percent. Shops and resorts that welcome dollars usually give a bad rate too. See the Mexico cash and cards guide." },
+        { q: "A police officer is asking me to pay a fine in cash, what should I do?", a: "Stay calm and polite. Real fines in Mexico are paid at a station, not by the roadside, so you can ask for the written ticket (infraccion) and to pay at the station, and note the officer's name and patrol number. You are not obliged to hand over cash or your wallet on the spot." },
+        { q: "Are the free breakfast or free tour offers a scam?", a: "They are timeshare sales pitches: a long, high-pressure presentation in exchange for the perk, sometimes with a deposit to attend. Not always fraud, but do not sign anything on the day, and never pay upfront fees to resell a timeshare you own, which is a known fraud. Check companies through Mexico's consumer agency, PROFECO." },
+        { q: "How do I avoid ATM card skimming in Mexico?", a: "Use ATMs inside banks rather than free-standing street machines, cover the keypad, check the card slot for anything loose, and decline any convert to dollars prompt. If the machine keeps your card, do not leave; call your bank or 911 from the spot, since a retained card can be a trap." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Mexico country information and safety guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Mexico.html", type: "gov" }
+        ],
+        judgment: "These are the money traps most consistently reported by travelers in 2025 and 2026, not a ranked risk list, and amounts vary by place and situation. The vast majority of visits see none of this, and the habits above avoid nearly all of it. For timeshare or consumer disputes, Mexico's PROFECO is the official consumer agency. Checked July 2026."
+      }
     }
   ]
 };
