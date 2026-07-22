@@ -237,6 +237,70 @@ export default {
         ],
         judgment: "Ride-hailing in Morocco is a legal gray area and app coverage varies by city, with Uber only recently back in Casablanca and Marrakech, so keep inDrive as your main app and confirm the price before you ride. Fares move, so treat the dirham figures as a recent read. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Morocco, and what they cost you (2026) | True Trip Costs",
+      description: "Morocco's medina traps are financial, not dangerous: taxi meter refusal, fake guides who steer you to shops, the closed-today redirect, tannery pressure, henna ambushes, and photo fees. Here is each one and how to sidestep it. Checked Jul 2026.",
+      h1: "Common money scams in Morocco, and what they cost you",
+      lede: "Morocco is a spectacular trip, and the medina hustle you have heard about is almost entirely about money, not danger: pressure, misdirection and manufactured goodwill aimed at your wallet. Once you know the pattern you see it coming, and a calm, firm no defuses nearly all of it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "The traps cluster in the <b>medinas</b> of Marrakech and Fes: <b>petit taxi</b> drivers who refuse the meter, <b>fake guides</b> who offer directions then demand payment or steer you to a commission shop, the <b>it is closed today</b> redirect to a carpet shop, <b>tannery</b> viewpoints with high-pressure selling, <b>henna</b> applied to your hand uninvited then charged at <b>200 dirhams or more</b>, and <b>snake or monkey photo</b> fees. None of it is violent; it is financial pressure. The habits that beat it: <b>insist on the taxi meter (compteur)</b> or use an app, <b>decline all unsolicited help</b>, and <b>agree a price before anything touches your hand or your camera</b>.",
+      sections: [
+        {
+          h: "Petit taxis: insist on the meter",
+          p: [
+            "Marrakech taxi drivers are notorious, even locally, for <b>refusing the meter</b> with tourists and quoting a flat rate many times the real fare, worst at night: a ride that is <b>15 to 20 dirhams</b> on the meter gets quoted at <b>100 to 200</b>. Petit taxis are <b>legally required to run the meter</b>, so as you get in, ask for it: <b>compteur, afak</b> (meter, please). If the driver refuses or says it is broken, <b>close the door and flag another</b>.",
+            "At the airport, use the <b>official taxi desk with posted prices</b> rather than a driver who approaches you, and for city rides the apps <b>inDrive and Careem</b> remove the guesswork where they operate. Djemaa el-Fna to the Marrakech airport should be roughly <b>70 to 80 dirhams</b> by meter in the daytime, for reference."
+          ]
+        },
+        {
+          h: "Fake guides and the closed-today redirect",
+          p: [
+            "The defining medina scam is the <b>friendly guide</b>: someone falls into step with you, says they are <b>going the same way</b> or that you look lost, leads you on a short walk, and then <b>demands payment</b>, often after steering you into a <b>carpet or craft shop</b> where they earn a commission. The counter is simple: <b>decline all unsolicited guidance from the first moment</b>, politely and firmly, and navigate with an offline map.",
+            "A cousin of this is the <b>it is closed today</b> line: a stranger tells you the square, tannery or sight you are heading for is shut, closed for a festival, or open only later, and helpfully offers an alternative, which turns out to be a shop. Assume it is not true, <b>check for yourself</b>, and remember there is <b>no entrance fee for public medina streets</b>, so anyone collecting one is not legitimate."
+          ]
+        },
+        {
+          h: "Tanneries, henna and photos",
+          p: [
+            "The <b>tannery</b> trap starts as a <b>free viewpoint</b> or a helpful escort to see the dye pits, then becomes <b>high-pressure selling</b> of leather goods, or a demand for money to leave. You <b>cannot be lawfully prevented from leaving</b> any shop, so decline firmly and go. If you want to see a tannery, arrange it through your <b>riad or a licensed guide</b>.",
+            "In Djemaa el-Fna and the busy lanes, a <b>henna</b> artist may <b>grab your hand and start applying a design uninvited</b>, then demand <b>200 dirhams or more</b>; some use <b>black henna</b> that can irritate skin. Similarly, a <b>snake charmer or monkey handler</b> will drape an animal on you or gesture for a photo, then charge. The rule for both: <b>agree a price, or decline, before anything touches your hand or your camera</b>, and do not accept an unsolicited demonstration."
+          ]
+        },
+        {
+          h: "Money, markets and the pay-in-dirhams trap",
+          p: [
+            "Haggling is normal in the souks, so <b>ask your riad what things should cost</b>, open well below the first price, and walk away freely; note too that <b>accepting mint tea in a shop obliges you to nothing</b>, it is a sales courtesy, not a contract. Watch for <b>argan oil</b> sold as pure that is diluted, and buy from a reputable cooperative if it matters.",
+            "The <b>dirham is a closed currency</b>, so you will change money on arrival: use <b>banks, official bureaux de change or ATMs</b>, never a street changer offering a better rate, who deals in <b>counterfeit notes</b>. At the ATM or card machine, choose <b>dirhams, not your home currency</b>, since the convert-for-you option carries a poor built-in rate."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          p: [
+            "The whole medina repertoire is <b>financial, not physical</b>, and it runs on <b>social pressure and confusion</b>, so understanding the pattern removes most of the risk. The short list: <b>insist on the taxi meter or use an app</b>, <b>decline unsolicited help from the outset</b>, <b>agree a price before any henna, photo or tannery visit</b>, and <b>change money only through official channels</b>. Most of it costs tens of dirhams to a few euros.",
+            "Handled with a calm, friendly firmness, Morocco is a wonderful and welcoming trip. For getting around, see the <a href=\"/morocco/taxis-and-apps\">Morocco taxis and apps guide</a>, and for the wider picture the <a href=\"/morocco\">Morocco cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Morocco safe for tourists?", a: "For most visitors, yes. Violent crime against tourists is rare, and the main issues are petty scams and pickpocketing in the busy Marrakech and Fes medinas, all of them financial rather than dangerous. Insisting on the taxi meter, declining unsolicited help, and agreeing prices in advance avoids nearly all of it." },
+        { q: "How do I avoid taxi scams in Marrakech?", a: "Insist on the meter (compteur) as you get in; petit taxis are legally required to use it. If the driver refuses or claims it is broken, close the door and take another. At the airport use the official taxi desk with posted prices, and for city rides the inDrive and Careem apps remove the guesswork. A daytime metered ride is far cheaper than the flat rate drivers quote tourists." },
+        { q: "What is the fake guide scam in Morocco?", a: "Someone falls into step with you in the medina, says they are going the same way or that you look lost, leads you a short distance, then demands payment, often after steering you to a shop where they take a commission. Decline all unsolicited guidance politely and firmly from the first moment, and navigate with an offline map." },
+        { q: "Someone applied henna to my hand and is demanding money, what should I do?", a: "This is a common Djemaa el-Fna trap: a design is applied uninvited, then a large sum, often 200 dirhams or more, is demanded. You are not obliged to pay for a service you did not agree to; hand over a small amount if pressed and walk away calmly. Better, never let anyone start, decline before anything touches your hand, and avoid black henna, which can irritate skin." },
+        { q: "How should I change money in Morocco?", a: "Through banks, official bureaux de change, or ATMs. The dirham is a closed currency, so you exchange on arrival, and street changers offering a better rate deal in counterfeit notes. At an ATM or card machine, choose to be charged in dirhams rather than your home currency, since the convert-for-you option uses a poor rate." },
+        { q: "Do I have to buy something if I accept mint tea in a shop?", a: "No. Accepting mint tea is a normal Moroccan courtesy and creates no obligation to buy. It is often used as a softening step before a hard sell, so enjoy the tea, browse if you like, and leave freely if nothing suits. The same goes for being shown many items; you never have to buy because a shopkeeper made an effort." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Morocco country information and safety guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Morocco.html", type: "gov" },
+          { label: "World Nomads: a guide to common tourist scams and rip-offs in Morocco, including taxis and the medina", url: "https://www.worldnomads.com/travel-safety/north-africa/morocco/moroccan-scams-and-rip-offs", type: "guide" }
+        ],
+        judgment: "These are the money traps most consistently reported in Morocco's tourist medinas in 2025 and 2026, concentrated in Marrakech and Fes, not a ranked risk list, and dirham amounts move, so treat figures as a recent read. The pattern is financial pressure rather than danger, and understanding it defuses most of the risk. Checked July 2026."
+      }
     }
   ]
 };

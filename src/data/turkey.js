@@ -222,6 +222,70 @@ export default {
         ],
         judgment: "Istanbul fares move fast with inflation, so treat any lira figures as a recent read and check the estimate in your app. The metered rate is set by the city, and app coverage and airport transport can change. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Turkey, and what they cost you (2026) | True Trip Costs",
+      description: "Istanbul's tourist money traps are avoidable: taxi meter tricks and note-swapping, the dropped-shoeshine-brush setup, the invitation-to-a-bar bill shock, unordered restaurant extras, and Grand Bazaar overcharging. Here is each one and how to sidestep it. Checked Jul 2026.",
+      h1: "Common money scams in Turkey, and what they cost you",
+      lede: "Turkey is safe and welcoming for the great majority of visitors, and the tricks that target tourists, mostly in Istanbul's busy quarters, are about money rather than danger. Each one relies on your politeness or confusion, and each is easy to sidestep once you know it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "The recurring money traps, mostly around <b>Sultanahmet, Taksim and the Grand Bazaar</b>: <b>taxi tricks</b> (meter off, long routes, no change, and the <b>note swap</b> where a driver claims your 200 lira was a 20), the <b>dropped shoeshine brush</b> you helpfully return and are then charged to have your shoes shined, the <b>invitation to a bar</b> that ends in a <b>huge bill</b>, <b>unordered extras</b> that appear on a restaurant bill, and <b>Grand Bazaar overcharging</b>. The habits that beat them: use <b>BiTaksi or Uber</b> or insist on the meter, <b>pay by card or state the note out loud</b>, <b>decline unsolicited approaches</b>, and <b>check every menu and bill</b>.",
+      sections: [
+        {
+          h: "Taxis: the meter, the long route, the note swap",
+          p: [
+            "Taxis are the most common way tourists lose money in Turkey. Drivers may <b>turn the meter off</b> or claim it is broken, take a <b>long route</b>, have <b>no change</b>, or run the <b>note swap</b>: you pay with a <b>200 lira</b> note, the driver quickly swaps it for a similar-looking <b>20</b> and says you underpaid. The clean fixes: use <b>BiTaksi or Uber</b> (which dispatch licensed taxis in Istanbul at the metered rate), and where you pay a street cab in cash, <b>state the note out loud</b>, here is <b>200 lira</b>, and <b>pay by card</b> when you can, which removes change and swap tricks entirely.",
+            "At <b>Istanbul airport (IST) and Sabiha Gokcen (SAW)</b>, some drivers set the meter to the higher <b>night rate</b> in daytime or take the long coastal road instead of the highway, turning a legitimate <b>250 to 350 lira</b> fare into <b>450 to 600</b>. Avoid drivers who approach you before the <b>official rank</b>, and consider the <b>metro or an airport shuttle</b>, which are far cheaper into the city."
+          ]
+        },
+        {
+          h: "The shoeshine brush and the drink invitation",
+          p: [
+            "The classic Istanbul street setup is the <b>dropped shoeshine brush</b>: a shoeshiner walking ahead of you drops a brush, you kindly pick it up and hand it back, and he insists on shining your shoes as a <b>thank you</b>, then presents a <b>hefty bill</b>. If someone drops something and then offers you a free service, <b>decline and keep walking</b>.",
+            "The costlier one, which tends to target <b>solo male travelers</b> around Taksim, is the <b>friendly invitation</b>: a personable stranger strikes up a conversation and suggests a drink at a bar he knows, where the <b>menu prices are astronomical</b> and staff make sure you pay a bill that can run into the <b>hundreds</b>. Be politely wary of an over-eager new acquaintance leading you to a specific venue; <b>choose your own bar</b>, and if a bill is wildly wrong, you can call the police on <b>155</b> rather than pay quietly."
+          ]
+        },
+        {
+          h: "Restaurants and the Grand Bazaar",
+          p: [
+            "In tourist-area restaurants, watch for <b>unordered extras</b>, bread, water, meze or a salad that arrive unasked and look complimentary, then appear on the <b>bill</b>, and for <b>menus with no prices</b> or inflated tourist pricing (the fish-by-weight bill is a common one). <b>Check the menu and prices before ordering</b>, wave away anything you did not ask for, and <b>read the itemized bill</b>.",
+            "The <b>Grand Bazaar</b> is a genuine and safe experience, but the risk is financial: <b>opening prices are hugely inflated</b> for tourists, the sales pressure is persistent, and short-changing is occasionally reported. Treat it as browsing, <b>start at roughly a quarter to a third</b> of the first price, <b>compare a few shops</b>, and remember that <b>accepting tea is a sales tactic, not an obligation</b> to buy."
+          ]
+        },
+        {
+          h: "Fake officers, and the pay-in-lira trap",
+          p: [
+            "Rarely, someone may pose as a <b>plainclothes police officer</b> and ask to <b>inspect your passport and wallet</b>, aiming to lift cash or card details. Real officers <b>do not need to inspect your money</b>: keep your wallet, decline to hand it over, and ask to verify identity or walk to a tourist-police point.",
+            "At the <b>ATM and card machine</b>, choose to be charged in <b>lira, not dollars or euros</b>: the convert-for-you option uses a poor built-in rate that costs several percent. Use <b>bank ATMs</b>, and be aware that with <b>high inflation</b> the lira figures here move quickly, so check your app's estimate for a current sense of a fare or price."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          p: [
+            "Almost all of it relies on <b>politeness or confusion</b> and costs from a few lira to, at worst, a nasty bar bill, and the same habits defuse nearly everything: <b>BiTaksi or Uber or the meter</b>, <b>pay by card or state the note out loud</b>, <b>decline unsolicited approaches</b>, <b>check menus and bills</b>, and <b>choose your own bar</b>. The two worth active care are the <b>bar-bill invitation</b> and any <b>fake officer</b>, both of which you avoid by not following a stranger and not handing over your wallet.",
+            "Known in advance, none of this should shape a trip to one of the world's great cities. For getting around, see the <a href=\"/turkey/taxis-and-apps\">Turkey taxis and apps guide</a>, and for the wider picture the <a href=\"/turkey\">Turkey cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Istanbul safe for tourists?", a: "For the great majority of visitors, yes. Violent crime against tourists is rare, and the main risks are petty: pickpocketing and the money scams in this guide, concentrated in busy areas like Sultanahmet, Taksim and the Grand Bazaar. Using BiTaksi or Uber, checking bills, and declining unsolicited approaches avoids nearly all of them." },
+        { q: "What is the most common scam in Istanbul?", a: "Taxi tricks and the dropped shoeshine brush. Taxi drivers may turn off the meter, take a long route, claim no change, or swap your large note for a smaller one; the shoeshiner drops a brush, you return it, and he charges you for a shine. Use BiTaksi or Uber, pay by card or state your note out loud, and decline the shoeshine and keep walking." },
+        { q: "How does the taxi note-swap scam work in Turkey?", a: "You pay a cash fare with a 200 lira note, the driver quickly swaps it for a similar-looking 20 and insists you only gave 20, then demands the rest. Beat it by stating the denomination out loud as you hand it over, here is 200 lira, paying with exact change, or simply paying by card, which most Istanbul taxis now accept and which removes the trick entirely." },
+        { q: "Someone invited me for a drink and the bill was huge, is that a scam?", a: "Yes, it is a well-known Istanbul trap that targets solo male travelers especially: a friendly stranger leads you to a specific bar with astronomical prices and staff who ensure you pay, sometimes hundreds of dollars. Be wary of an over-eager new acquaintance steering you to a particular venue, choose your own bar, and if a bill is wildly wrong you can call the police on 155 rather than pay quietly." },
+        { q: "How much should I haggle in the Grand Bazaar?", a: "A lot. Opening prices are hugely inflated for tourists, so start at roughly a quarter to a third of the first number, compare several shops, and be ready to walk away. Accepting tea is a sales tactic and creates no obligation to buy, and you never have to buy because a seller has shown you many items." },
+        { q: "Should I pay in Turkish lira or dollars in Turkey?", a: "Turkish lira. Accepting a card machine's or ATM's offer to charge in dollars or euros uses a poor built-in rate that costs several percent. Use bank ATMs, and note that with high inflation lira prices move quickly, so check a current estimate in your taxi or maps app rather than relying on a figure from an old guide." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Turkey (Turkiye) country information and safety guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Turkey.html", type: "gov" },
+          { label: "Istanbul Tourist Information: a 2026 rundown of common Istanbul scams and how to avoid them", url: "https://istanbul-tourist-information.com/common-scams-in-istanbul/", type: "guide" }
+        ],
+        judgment: "These are the money traps most consistently reported in Istanbul in 2025 and 2026, not a ranked risk list, and with high inflation the lira figures move quickly, so treat them as a recent read and check your app. The city is safe for the vast majority of visitors; these tricks rely on politeness and confusion and are easy to sidestep. Checked July 2026."
+      }
     }
   ]
 };

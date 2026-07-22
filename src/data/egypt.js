@@ -276,6 +276,70 @@ export default {
         ],
         judgment: "Tipping norms in Egypt are cultural, not legislated rates, so the amounts here are our own read from recent traveler reports and local guidance, not a single official table. The 12% restaurant service charge is a common practice but not universal, and how much extra to leave is a judgment call. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Egypt, and what they cost you (2026) | True Trip Costs",
+      description: "Egypt rewards visitors who know the money traps: taxi overcharging, the camel-ride and photo-tip pressure at the pyramids, fake guides and ticket touts, pushy baksheesh, and the pay-in-dollars ATM trick. Here is each one and how to sidestep it. Checked Jul 2026.",
+      h1: "Common money scams in Egypt, and what they cost you",
+      lede: "Egypt is one of the world's great trips, and the hassles that do come up are almost all about money, not danger: overcharging, pressure, and a tip expected for everything. A few calm habits defuse nearly all of it. Here is each trap, what it costs, and how to sidestep it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "The money traps that recur are: <b>taxi overcharging</b> (meter refused, foreign-currency quotes, no change), the <b>camel or horse ride</b> at the pyramids that costs more to get off than to get on, <b>photo helpers</b> who grab your phone then demand a tip, <b>fake guides</b> and <b>ticket touts</b> outside sites, constant <b>baksheesh</b> (tipping) pressure, market <b>overcharging</b>, and the <b>pay in dollars</b> prompt on card machines and ATMs. The habits that beat almost all of it: use <b>Uber or Careem</b>, <b>agree every price first</b>, <b>carry small notes</b>, <b>buy tickets only at official counters</b>, and <b>pay in Egyptian pounds</b>. Handled calmly, none of it should shape your trip.",
+      sections: [
+        {
+          h: "Taxis and the airport",
+          p: [
+            "Street taxis are where most tourists lose a little money: the driver <b>refuses the meter</b> or claims it is broken, quotes in <b>dollars or euros</b>, takes a long route, or has <b>no change</b> for a big note. The clean fix in Cairo and other big cities is a <b>ride-hailing app, Uber or Careem</b>, which shows the price up front and removes the haggling. If you do take a street cab, <b>agree the fare before you get in</b> and carry <b>small notes</b> so no change is needed.",
+            "At <b>Cairo airport</b>, ignore the drivers who approach you inside the hall quoting flat fares several times the real price, and use the <b>official taxi desk, a pre-booked transfer, or Uber and Careem</b>. Be wary too of <b>helpers</b> who grab your bags or offer to walk you through customs, then demand a large payment; accept help only from <b>uniformed official staff</b>. Do not change money with anyone outside the airport, since unofficial exchange is illegal and a route to <b>counterfeit notes</b>."
+          ]
+        },
+        {
+          h: "At the pyramids and the big sites",
+          p: [
+            "The classic Giza trap is the <b>camel or horse ride</b>: a handler offers a cheap-looking price, then once you are up, <b>demands much more to let you down</b> or to bring you back, or adds a fee for <b>photos</b>. Agree the <b>full price, including the return, clearly out loud before you get on</b>, or book a ride through your hotel or a reputable operator. The related move is a <b>photo helper</b> who takes your phone to snap a picture, then wants a tip to hand it back.",
+            "Around every major site you will meet <b>fake guides</b> offering tours at inflated prices with little real information, and <b>touts</b> selling tickets or claiming to skip a line. <b>Buy tickets only at the official counter</b>, and if you want a guide, arrange a licensed one through your hotel or a known operator in advance. Anyone offering <b>exclusive access</b> to a closed area is inventing it."
+          ]
+        },
+        {
+          h: "Baksheesh: tipping, and tipping pressure",
+          p: [
+            "<b>Baksheesh</b> (tipping) is woven through Egyptian life, and small tips for genuine service are normal and expected: a few <b>Egyptian pounds</b> for a helpful porter, washroom attendant or driver. The trap is the <b>manufactured favor</b>: someone points you toward something you did not ask about, opens a door, or insists on showing you a view, then presses for a tip.",
+            "The habit that keeps this in proportion: carry a <b>pocket of small notes</b> for tips you actually want to give, tip <b>modestly and only for real service</b>, and feel free to decline unrequested help with a friendly but firm no. You are not obliged to pay for a favor you did not ask for."
+          ]
+        },
+        {
+          h: "Markets, and the pay-in-dollars trap",
+          p: [
+            "In the <b>souks and around the sites</b>, prices are rarely fixed and the first number is aimed at tourists, so <b>haggling is expected</b>: ask your hotel what a scarf, spice or papyrus should roughly cost, start well below the opening price, and be ready to walk away. Watch for items quietly <b>added to your total</b>, or a <b>free tea or gift</b> framed as hospitality that then obligates a purchase; accepting tea does not oblige you to buy.",
+            "At the <b>ATM and card machine</b>, when asked whether to charge <b>in dollars or Egyptian pounds, always choose pounds</b>: the dollar option uses a poor built-in rate that quietly costs you several percent. Use <b>bank ATMs</b> over free-standing machines, and keep an eye on your card. Dollars are sometimes welcomed in shops and by drivers, but at a bad rate, so pay in <b>pounds</b>."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          p: [
+            "Nearly everything here costs <b>a few dollars to a few tens of dollars</b> and is avoided by the same short list: <b>Uber or Careem</b> instead of street taxis, <b>agree prices first</b>, <b>carry small notes</b>, <b>buy tickets at official counters</b>, and <b>pay in Egyptian pounds</b>. The one worth active care is <b>unofficial currency exchange</b>, which risks counterfeit notes, so change money only at banks, official bureaux or ATMs.",
+            "Held calmly, none of this should shape a trip that is otherwise extraordinary. For getting around, see the <a href=\"/egypt/taxis-and-apps\">Egypt taxis and apps guide</a>, for the tipping detail see <a href=\"/egypt/tipping\">tipping in Egypt</a>, and for the wider picture the <a href=\"/egypt\">Egypt cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Egypt safe for tourists?", a: "For the great majority of visitors, yes, and most trips are trouble-free. The issues tourists actually meet are money ones, overcharging, pressure and constant tipping, rather than anything dramatic. Using Uber or Careem, agreeing prices first, carrying small notes, buying tickets at official counters, and paying in Egyptian pounds avoids nearly all of them." },
+        { q: "What is the most common scam in Egypt?", a: "Taxi overcharging, where the driver refuses the meter, quotes in dollars, takes a long route, or has no change for a big note. Use Uber or Careem for upfront pricing, or agree the fare before getting into a street cab and carry small notes so no change is needed." },
+        { q: "How do the camel ride scams at the pyramids work?", a: "A handler offers a cheap-looking price, then once you are on the camel demands much more to let you down or to return, or charges extra for photos. Agree the full price including the return clearly before you get on, or book a ride through your hotel or a reputable operator. A photo helper who grabs your phone will similarly want a tip to return it." },
+        { q: "How much should I tip (baksheesh) in Egypt?", a: "Modestly, and only for genuine service: a few Egyptian pounds for a helpful porter, attendant or driver. Baksheesh is normal, but the trap is a manufactured favor you did not ask for followed by pressure for a tip. Carry small notes for tips you actually want to give, and decline unrequested help with a friendly, firm no." },
+        { q: "Should I pay in Egyptian pounds or US dollars in Egypt?", a: "Egyptian pounds. Accepting a card machine's or ATM's offer to charge in dollars uses a poor built-in rate that costs you several percent, and shops or drivers who welcome dollars usually give a bad rate too. Use bank ATMs, and never change money with unofficial street changers, who pass counterfeit notes." },
+        { q: "Where should I buy tickets for Egyptian sites?", a: "Only at the official counter at the entrance. Touts outside sell tickets at a markup, cover only part of a fee, or claim to skip a line, and fake guides offer overpriced tours with little real information. If you want a guide, arrange a licensed one through your hotel or a reputable operator in advance." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Egypt country information and safety guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Egypt.html", type: "gov" },
+          { label: "Bellies En-Route: a Cairo-based guide to the money scams tourists meet and how to avoid them", url: "https://belliesenroute.com/scams-guide", type: "guide" }
+        ],
+        judgment: "These are the money traps most consistently reported by travelers in 2025 and 2026, not a ranked risk list, and amounts vary by place and situation. The great majority of visits see none of the worst of it, and the habits above avoid nearly all of it. Baksheesh norms are cultural rather than fixed, so treat any figure as a guide. Checked July 2026."
+      }
     }
   ]
 };
