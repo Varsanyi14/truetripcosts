@@ -210,12 +210,11 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
 
   <script>
     (function () {
-      var input = document.getElementById('country-filter');
-      var heroInput = document.getElementById('country-filter-hero');
-      var grid = document.getElementById('country-grid');
-      if (!grid || (!input && !heroInput)) return;
-      var none = document.getElementById('country-filter-none');
-      var cards = Array.prototype.slice.call(grid.querySelectorAll('.ccard'));
+      // Filter logic is delegated on the document so it binds regardless of when
+      // either input mounts or in what order the page scripts run. Both the hero
+      // input (#country-filter-hero) and the lower input (#country-filter) drive
+      // the same grid and no-match funnel; typing in one mirrors the other.
+      var FILTER_IDS = ['country-filter', 'country-filter-hero'];
       var scrolled = false;
 
       function norm(s) {
@@ -226,34 +225,41 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
       }
 
       function apply(q) {
+        var grid = document.getElementById('country-grid');
+        if (!grid) return;
+        var none = document.getElementById('country-filter-none');
+        var cards = grid.querySelectorAll('.ccard');
         var shown = 0;
-        cards.forEach(function (card) {
-          var name = norm(card.getAttribute('data-name'));
+        for (var i = 0; i < cards.length; i++) {
+          var name = norm(cards[i].getAttribute('data-name'));
           var hit = q === '' || name.indexOf(q) !== -1;
-          card.classList.toggle('is-hidden', !hit);
+          cards[i].classList.toggle('is-hidden', !hit);
           if (hit) shown++;
-        });
+        }
         if (none) none.hidden = shown !== 0;
       }
 
-      // Both inputs drive the same grid and no-match funnel. Typing in one mirrors
-      // the other so the filter state is single and consistent wherever you look.
-      function bind(src, other, scrollOnType) {
-        if (!src) return;
-        src.addEventListener('input', function () {
-          var raw = src.value;
-          if (other) other.value = raw;
-          apply(norm(raw.trim()));
-          if (scrollOnType && !scrolled && raw.trim() !== '') {
-            scrolled = true;
+      document.addEventListener('input', function (e) {
+        var t = e.target;
+        if (!t || !t.id || FILTER_IDS.indexOf(t.id) === -1) return;
+        var raw = t.value;
+        // Mirror to the other input so the filter state is single and consistent.
+        for (var i = 0; i < FILTER_IDS.length; i++) {
+          if (FILTER_IDS[i] === t.id) continue;
+          var other = document.getElementById(FILTER_IDS[i]);
+          if (other && other.value !== raw) other.value = raw;
+        }
+        apply(norm(raw.trim()));
+        // Typing in the hero input scrolls the grid into view once so results show.
+        if (t.id === 'country-filter-hero' && !scrolled && raw.trim() !== '') {
+          scrolled = true;
+          var grid = document.getElementById('country-grid');
+          if (grid) {
             try { grid.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-            catch (e) { grid.scrollIntoView(); }
+            catch (err) { grid.scrollIntoView(); }
           }
-        });
-      }
-
-      bind(input, heroInput, false);
-      bind(heroInput, input, true);
+        }
+      });
     })();
   </script>
 </Base>
