@@ -267,6 +267,60 @@ export default {
         ],
         judgment: "France applies the shared EU pet-entry framework, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. We point you to the official pages and dated this July 2026. Costs vary with your pet and route, so treat any figure as a starting point and confirm on the source."
       }
+    },
+    {
+      slug: "tourist-tax",
+      live: true,
+      topic: "tourist-tax",
+      title: "France's tourist tax (taxe de sejour) in 2026, and why Paris is now so much higher | True Trip Costs",
+      description: "The per-adult, per-night tax France adds at your accommodation, not in the online price: how it works, why Paris and the Ile-de-France region stack surcharges that push it into the mid-teens in euros in 2026, and who is exempt. Checked Jul 2026.",
+      h1: "France's tourist tax, and the Paris surcharges.",
+      lede: "France adds a small per-adult, per-night tax to your stay, set by each town. In most places it is a euro or two. In Paris it is now much more, because the region stacks extra charges on top. Here is what to expect in 2026.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "France charges a <b>taxe de sejour</b>, a <b>per-adult, per-night</b> tax collected by your accommodation and set by each <b>commune</b>. <b>Children under 18 are exempt</b>. In most of France it is modest, roughly <b>1 to 6 euros</b> a night by accommodation category, and on the Riviera (Nice, Cannes) about <b>1.50 to 6 euros</b>. <b>Paris is the outlier</b>: since <b>1 January 2026</b> the base rate rose, and the Paris region adds a <b>200% surcharge for Ile-de-France transport</b> plus other add-ons, pushing the all-in figure into the <b>mid-teens in euros per adult, per night</b> at the top hotel categories, and up to about <b>15.93 euros</b> for an unclassified place. It is usually <b>not</b> in the price you booked, and is paid at the accommodation.",
+      sections: [
+        {
+          h: "How it works, and who pays",
+          p: [
+            "The taxe de sejour is a <b>local</b> tax, voted by each town or inter-communal body, so whether it applies and how much depends on where you stay. It is charged <b>per adult, per night</b>. <b>Under-18s do not pay</b>, which is the big difference from Italy and Spain, where the exemption is usually only for young children. Your accommodation collects it and passes it to the local authority; on Airbnb and Booking, the platform usually collects it for you.",
+            "For a <b>classified</b> hotel the rate is a set amount per night by star level. For an <b>unclassified</b> or not-yet-rated place, it is instead <b>a percentage of the room price</b> (5% in Paris) per person, capped at the top rate. As with Italy, the charge is <b>rarely in the online total</b>, so expect it at check-in or checkout. For the broader money picture see the <a href=\"/france\">France money guide</a>."
+          ]
+        },
+        {
+          h: "Why Paris is now so much higher",
+          p: [
+            "Paris used to cost a few euros a night. That changed. On top of the base city rate, the <b>Ile-de-France region</b> now adds a <b>200% surcharge</b> to fund regional transport, and there are further add-ons: a Grand Paris projects surcharge and a departmental surcharge. Stacked together, these can <b>more than triple</b> the base figure.",
+            "The practical result for 2026 is that a night in a classified Paris hotel runs from roughly <b>6 euros at the mid-range</b> up toward the <b>mid-teens in euros</b> at 5-star and palace properties, <b>per adult, per night</b>. An <b>unclassified</b> Paris rental is charged at <b>5% of the nightly price</b>, capped at about <b>15.93 euros</b> per adult per night. Sources differ on the exact per-star numbers because of how the surcharges are applied, so treat these as a <b>2026 range</b> and confirm the figure with your hotel."
+          ]
+        },
+        {
+          h: "Elsewhere in France, and the coast",
+          p: [
+            "Away from Paris the tax is much gentler. Most towns charge somewhere in the <b>1 to 6 euro</b> range per adult per night depending on the accommodation category, and campsites and hostels sit at the bottom, often about <b>1 euro</b>. On the <b>Riviera</b>, Nice and Cannes are around <b>1.50 to 6 euros</b>.",
+            "A few departments beyond Paris (in the Alpes-Maritimes, Bouches-du-Rhone and Var, and some south-western departments) also add a regional surcharge, but nothing like the scale of the Paris region. Wherever you are, the <b>per-adult, per-night</b> shape is the same, and the amount is set locally."
+          ]
+        },
+        {
+          h: "Exemptions and keeping it small",
+          p: [
+            "The clearest saving is built in: <b>children under 18 pay nothing</b>, so a family pays only for the adults. People staying for <b>seasonal work</b> or in certain <b>emergency or social housing</b> are also exempt in most communes, and some places cap the charge, with Paris limiting it to a set amount per person per month for very long stays.",
+            "There is no legitimate way to avoid the tax at a real property, and you should not try. As with Italy, the honest levers are a <b>lower accommodation category</b> and, in Paris specifically, understanding that the headline surcharge goes to the region's transport system, not to the hotel."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is the Paris tourist tax in 2026?", a: "Roughly 6 euros per adult per night at a mid-range classified hotel, rising into the mid-teens in euros at 5-star and palace properties, after the 1 January 2026 increase and the Ile-de-France surcharges. An unclassified rental is charged at 5% of the nightly price, capped near 15.93 euros per adult per night. Children under 18 are exempt." },
+        { q: "Do children pay the tourist tax in France?", a: "No. France exempts everyone under 18 from the taxe de sejour, so a family pays only for the adults. This is more generous than Italy or Spain, where the exemption is usually only for young children." },
+        { q: "Why is the tourist tax in Paris so high now?", a: "On top of the base city rate, the Ile-de-France region adds a 200% surcharge to fund regional transport, plus a Grand Paris projects surcharge and a departmental surcharge. Stacked together they can more than triple the base amount, which is why Paris is far above the rest of France." },
+        { q: "Is the taxe de sejour included in my hotel price?", a: "Usually not. It is generally collected at the accommodation at check-in or checkout, though on Airbnb and Booking the platform often collects it with your payment. Ask your hotel for the per-night amount so the final bill is no surprise." }
+      ],
+      sources: {
+        links: [
+          { label: "Service-Public.fr: the French government's 2026 taxe de sejour rates for Paris, including the Ile-de-France surcharge and the 15.93 euro cap", url: "https://entreprendre.service-public.gouv.fr/actualites/A17929?lang=en", type: "gov" }
+        ],
+        judgment: "France's tax is set by each commune, and Paris raised its rates on 1 January 2026 while stacking regional surcharges, so published per-star figures for Paris vary by source depending on how the surcharges are applied. The mechanics (per adult, under-18 exempt, 5% for unclassified, the 15.93 euro Paris cap) are from the French government page, and the euro ranges are a recent 2026 read. Confirm the exact amount with your accommodation. Checked July 2026."
+      }
     }
   ]
 };

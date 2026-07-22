@@ -211,6 +211,60 @@ export default {
         ],
         judgment: "Spain applies the shared EU pet-entry framework, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The Spanish potentially-dangerous-dog licence and regional registration vary locally, so confirm them for your region. We point you to the official pages and dated this July 2026."
       }
+    },
+    {
+      slug: "tourist-tax",
+      live: true,
+      topic: "tourist-tax",
+      title: "Spain's tourist tax in 2026: only some regions charge it, and where you pay nothing | True Trip Costs",
+      description: "Spain has no national tourist tax. Only Catalonia (including a Barcelona surcharge) and the Balearic Islands charge one in 2026, while Madrid, Andalucia and Valencia charge nothing. What it costs, and why Barcelona keeps rising. Checked Jul 2026.",
+      h1: "Spain's tourist tax, region by region.",
+      lede: "Unlike Italy or France, Spain has no national tourist tax. Whether you pay one depends entirely on the region: Barcelona and the Balearic Islands charge a real fee, while Madrid, Seville and the Costa del Sol charge nothing at all. Here is the 2026 map.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Spain has <b>no national tourist tax</b>. In 2026 only <b>two regions charge a general one</b>: <b>Catalonia</b> (which includes an extra <b>Barcelona city surcharge</b>) and the <b>Balearic Islands</b> (Mallorca, Menorca, Ibiza, Formentera). Most of the country, including <b>Madrid, Andalucia</b> (Seville, Malaga, the Costa del Sol) <b>and Valencia</b>, charges <b>nothing</b>. Where it applies it is <b>per person, per night</b>, collected at your accommodation. <b>Barcelona</b> is the priciest, roughly <b>7 to 15 euros a night</b> by hotel category in 2026 after an <b>increase on 1 April 2026</b>, capped at <b>7 nights</b>. The Balearic <b>ecotasa</b> runs about <b>1 to 4.50 euros</b> per adult per night, higher in summer.",
+      sections: [
+        {
+          h: "Where you pay, and where you do not",
+          p: [
+            "This is the useful part to know before you book. As of 2026, a general tourist tax applies only in <b>Catalonia</b> and the <b>Balearic Islands</b>. Everywhere else the answer is mostly no: <b>Madrid</b> has none, and <b>Andalucia</b>, which covers <b>Seville, Malaga and the whole Costa del Sol</b>, has none. <b>Valencia</b> and the <b>Basque Country</b> have none. A handful of individual towns have added small local charges (<b>Santiago de Compostela</b> is the notable one), but they are the exception.",
+            "So if you are choosing between, say, a few nights in Barcelona and the same in Madrid or Seville, the tourist tax is a real, if small, point in the mainland cities' favour. Where it does apply, it is <b>per person, per night</b> and collected at your accommodation, not baked into the price you paid online. For the wider money picture see the <a href=\"/spain\">Spain money guide</a>."
+          ]
+        },
+        {
+          h: "Catalonia and Barcelona",
+          p: [
+            "In Catalonia the tax has <b>two parts</b>: a <b>regional rate</b> set by the Catalan government that applies across the region, and, in Barcelona only, an <b>extra city surcharge</b> on top. Both are <b>per person, per night</b>, and the total is <b>capped at 7 nights</b>. Guests <b>under 16 are exempt</b>. Catalonia <b>raised its rates on 1 April 2026</b>, with further increases planned into 2027.",
+            "The combined effect in <b>Barcelona</b> in 2026 is roughly <b>7 to 15 euros per person, per night</b> depending on the hotel category, which puts it among the higher city taxes in Europe. Outside Barcelona, only the regional part applies, so the rest of Catalonia is cheaper, though the 2026 law now lets other Catalan towns add a surcharge of up to 4 euros too."
+          ]
+        },
+        {
+          h: "The Balearic Islands ecotasa",
+          p: [
+            "The Balearic Islands (<b>Mallorca, Menorca, Ibiza and Formentera</b>) have charged a <b>Sustainable Tourism Tax</b>, widely called the <b>ecotasa</b>, since 2016. It is <b>per person, per night</b> and <b>seasonal</b>: higher in the summer peak, roughly <b>1 to 4.50 euros</b> a night by accommodation category, and much less in the low season. <b>Under-16s are exempt.</b>",
+            "There is a built-in break for longer stays: from around the <b>ninth night</b>, the ecotasa is <b>halved</b>. As elsewhere, it is collected at your accommodation, so keep a little cash or expect it on the final bill."
+          ]
+        },
+        {
+          h: "What to expect at checkout",
+          p: [
+            "Where the tax applies, it is almost never in the online total. Expect it <b>at check-in or checkout</b>, sometimes in cash. The figures here are a <b>2026 read</b>, and both Catalonia and Barcelona are on a rising schedule, so confirm the per-night amount with your accommodation when you book.",
+            "There is no legitimate way to avoid the tax where it is charged, and you should not try. The honest levers are the built-in ones: the <b>7-night cap</b> in Catalonia, the <b>halving from the ninth night</b> in the Balearics, a <b>lower accommodation category</b>, and simply knowing that much of mainland Spain does not charge it at all."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does Spain have a tourist tax?", a: "Not nationally. In 2026 only Catalonia (including a Barcelona city surcharge) and the Balearic Islands charge a general tourist tax. Madrid, Andalucia (Seville, Malaga, the Costa del Sol) and Valencia charge nothing. A few individual towns such as Santiago de Compostela have small local charges." },
+        { q: "How much is the tourist tax in Barcelona in 2026?", a: "Roughly 7 to 15 euros per person per night depending on the hotel category, combining the Catalan regional rate and the Barcelona city surcharge. It rose on 1 April 2026 and is capped at 7 nights per stay. Guests under 16 are exempt. Confirm the exact amount with your hotel, as the rate is on a rising schedule." },
+        { q: "Is there a tourist tax in Madrid, Seville or the Costa del Sol?", a: "No. Madrid and all of Andalucia, which includes Seville, Malaga and the Costa del Sol, have no general tourist tax in 2026. If you see an older article suggesting otherwise, check its date: proposals surface periodically but none is in force there." },
+        { q: "How much is the Balearic ecotasa?", a: "Roughly 1 to 4.50 euros per adult per night in the summer peak, by accommodation category, and less in the low season. Children under 16 are exempt, and from about the ninth night the charge is halved. It is collected at your accommodation on Mallorca, Menorca, Ibiza and Formentera." }
+      ],
+      sources: {
+        links: [
+          { label: "Idealista: a July 2026 guide to Spain's tourist taxes, the Barcelona increase and which regions charge one", url: "https://www.idealista.com/en/news/legal-advice-in-spain/2026/07/07/856013-spain-s-tourist-tax-barcelona-hike-new-city-levies-for-2026", type: "guide" }
+        ],
+        judgment: "Spain's tax is regional, so this is a map of where it applies in 2026 rather than a single national rate. Catalonia and Barcelona raised rates on 1 April 2026 and are on a rising schedule into 2027, and the Balearic ecotasa is seasonal, so the euro figures are a recent read by accommodation category. Confirm the per-night amount with your accommodation. Checked July 2026."
+      }
     }
   ]
 };

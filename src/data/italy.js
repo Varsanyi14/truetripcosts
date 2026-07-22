@@ -322,6 +322,61 @@ export default {
         ],
         judgment: "Tipping norms in Italy are cultural, and the coperto is a longstanding restaurant practice, not a recent policy. The Lazio coperto ban is real and region-specific. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
       }
+    },
+    {
+      slug: "tourist-tax",
+      live: true,
+      topic: "tourist-tax",
+      title: "Italy's tourist tax (tassa di soggiorno) in 2026, and the Venice access fee that is separate | True Trip Costs",
+      description: "The per-person, per-night city tax Italy adds at your hotel, not in the online price: what Rome, Florence, Venice and Milan charge in 2026, the night caps and child exemptions, and why Venice's day-tripper access fee is a different thing. Checked Jul 2026.",
+      h1: "Italy's tourist tax, and the Venice access fee.",
+      lede: "Almost every Italian city adds a small per-person, per-night tax to your stay, and it is rarely in the price you paid online. Here is what it costs in 2026, who is exempt, and why Venice has a second, separate fee that confuses everyone.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Most Italian cities charge a <b>tassa di soggiorno</b>, a <b>per-person, per-night</b> tourist tax collected by your hotel or host, usually <b>at check-in or checkout</b> and often in <b>cash</b>. It is <b>not</b> in the room price you saw on Booking or Airbnb. The amount is set by each city and rises with the accommodation's <b>star rating</b>: in 2026, <b>Rome</b> runs about <b>4 to 10 euros</b> a night, <b>Florence</b> about <b>3.50 to 8 euros</b>, <b>Venice</b> about <b>1 to 5 euros</b>, and <b>Milan</b> raised its rate for the Winter Olympics. Most cities <b>cap</b> the nights charged (Rome at 10, Florence at 7) and <b>exempt young children</b>. Separately, <b>Venice</b> charges day visitors a <b>5 euro access fee</b> on 60 peak days in 2026, which is a different thing, explained below.",
+      sections: [
+        {
+          h: "How the overnight tax works",
+          p: [
+            "The tax is set by the <b>comune</b>, the city or town, not by the national government, so roughly 1,200 of Italy's towns charge it and each picks its own rate. It is charged <b>per person, per night</b>, and it scales with the accommodation category: a 5-star hotel costs more per night than a 1-star or a campsite. It applies to <b>everyone regardless of nationality</b>, including on short-term rentals like Airbnb.",
+            "The part that catches people out is <b>when and how you pay</b>. The tax is almost never in the total you paid online. Your host collects it <b>on arrival or at checkout</b>, and many smaller places want it in <b>cash, in euros</b>. Set aside a little cash so you are not caught short. For the wider cash-and-card picture, see the <a href=\"/italy\">Italy money guide</a>."
+          ]
+        },
+        {
+          h: "What the main cities charge in 2026",
+          p: [
+            "Rates moved up across 2024 and 2025 and are still climbing. In <b>Rome</b>, the 2026 tax runs roughly <b>4 euros a night at a 1-star up to 10 euros at a 5-star</b>, with short-term rentals around <b>6 euros</b>, capped at <b>10 nights</b>, and under-10s exempt. <b>Florence</b> runs about <b>3.50 to 8 euros</b> by category, capped at <b>7 nights</b>. <b>Venice</b>'s overnight tax is lower, roughly <b>1 to 5 euros</b>. <b>Milan</b> raised its rate for the <b>2026 Winter Olympics</b>.",
+            "Treat these as <b>2026 figures that each city can change</b>, and note that the night caps and the child-exemption ages vary from place to place. The reliable move is to <b>ask your accommodation for the exact per-night amount</b> when you book, so the checkout figure is no surprise."
+          ]
+        },
+        {
+          h: "The Venice access fee is a separate charge",
+          p: [
+            "This is the one people mix up. Venice runs <b>two different charges</b>. If you <b>stay overnight</b> in Venice, you pay the <b>overnight tourist tax</b> through your hotel and you are <b>exempt from the access fee</b>. If you visit for the <b>day</b> without staying, on certain peak days you owe the <b>Contributo di Accesso</b>, a fee to enter the historic centre.",
+            "For 2026 the access fee is <b>5 euros per person</b> if you book by the fourth-last day before your visit, or <b>10 euros</b> if you pay later, and it applies on <b>60 designated days from 3 April to 26 July 2026, between 8:30 and 16:00</b>. <b>Children under 14 are exempt</b>, and the smaller lagoon islands (Lido, Murano, Burano, Torcello) are not covered in 2026. You register and pay on the official city portal and carry the QR code. Note that restaurant bill extras like the coperto and any servizio are different again, and covered in <a href=\"/italy/tipping\">tipping in Italy</a>."
+          ]
+        },
+        {
+          h: "Who is exempt, and how to keep it down",
+          p: [
+            "Common exemptions across Italian cities include <b>young children</b>, though the cutoff varies, often under 10 to under 14, and any nights beyond the <b>capped number</b> are not charged. Some cities also exempt people with disabilities and a companion, and patients or a carer staying near a hospital, but the rules are local, so do not assume.",
+            "There is no way to avoid the overnight tax at a legitimate property, and you should not try: it is a real, lawful charge. The only genuine savings are structural. The <b>per-night cap</b> means a longer stay in one city dilutes the cost, a <b>lower accommodation category</b> carries a lower rate, and in Venice, <b>staying overnight</b> removes the day-tripper access fee entirely."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is the tourist tax included in my hotel price in Italy?", a: "Almost never. The room rate you pay online rarely includes the tassa di soggiorno. Your hotel or host collects it separately, usually at check-in or checkout, and often wants it in cash. Ask for the per-night amount when you book so the final figure is no surprise." },
+        { q: "How much is the tourist tax in Rome in 2026?", a: "Roughly 4 euros per person per night at a 1-star up to about 10 euros at a 5-star, with short-term rentals around 6 euros. It is capped at 10 nights per stay, and children under 10 are exempt. Rates are set by the city and can change, so confirm with your accommodation." },
+        { q: "What is the difference between Venice's tourist tax and the access fee?", a: "They are two separate charges. Overnight guests pay the per-night tourist tax through their hotel and are exempt from the access fee. Day visitors who do not stay overnight pay the Contributo di Accesso, 5 euros or 10 euros last-minute, on 60 peak days between 3 April and 26 July 2026. You cannot be charged both." },
+        { q: "Do children pay the tourist tax in Italy?", a: "Usually not, but the age cutoff varies by city, commonly under 10 in Rome, under 11 or 12 in Florence, and under 14 for the Venice access fee. Check the specific city's rule rather than assuming, since there is no single national age." }
+      ],
+      sources: {
+        links: [
+          { label: "Comune di Venezia: the official Venice access fee portal, with the 2026 rates, dates and exemptions", url: "https://cda.ve.it/en/", type: "gov" },
+          { label: "Idealista: a 2026 rundown of Italy's city tourist-tax rules and rates", url: "https://www.idealista.it/en/news/legal-advice-in-italy/2026/02/03/260733-tourist-tax-in-italy-2025-city-rules-and-rates", type: "guide" }
+        ],
+        judgment: "Italy's overnight tax is set separately by each comune and rose in 2024 and 2025, so the euro figures here are a recent 2026 read by accommodation category, not a fixed national table. The Venice access fee dates and prices are from the official city portal. Confirm the exact per-night amount with your accommodation, since caps and child-exemption ages vary by city. Checked July 2026."
+      }
     }
   ]
 };
