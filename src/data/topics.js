@@ -12,6 +12,7 @@ export const topicIcon = {
   tipping: 'tip',
   connectivity: 'phoneok',
   health: 'health',
+  driving: 'wheel',
 };
 
 // Caution tier -> chip label. The three-step "how careful to be" signal shown on the

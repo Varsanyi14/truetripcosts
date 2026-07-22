@@ -65,6 +65,11 @@ const esimBrand = (affiliate.esimBrand && affiliate.esimBrand.trim()) || "";
 // links.js, one link for every country, exactly how the eSIM and expediter links are wired.
 const insuranceUrl = (spoke.insurance === true && affiliate.insurance && affiliate.insurance.trim()) ? affiliate.insurance : null;
 const insuranceBrand = "Faye";
+// Rental excess cover (RentalCover) callout, opt-in per spoke (spoke.carExcess === true)
+// and only where the registry has the link. Uses the existing affiliate.carExcess link,
+// one link for every country, the same source the country guide's rental section uses.
+const carExcessUrl = (spoke.carExcess === true && affiliate.carExcess && affiliate.carExcess.trim()) ? affiliate.carExcess : null;
+const carExcessBrand = (affiliate.carExcessBrand && affiliate.carExcessBrand.trim()) || "RentalCover";
 const sections = Array.isArray(spoke.sections) ? spoke.sections : [];
 const faqs = Array.isArray(spoke.faqs) ? spoke.faqs : [];
 // Sibling spokes: the other live spokes on this same country. Data-driven, so each
@@ -135,6 +140,16 @@ const siblings = (country.spokes || []).filter(s => s.live !== false && s.slug !
       <p style="font-size:14.5px;margin:0 0 6px">Routine care in {country.name} is cheap enough to pay for out of pocket. The reason to carry travel insurance is the rare, expensive emergency, a hospital deposit, surgery, or a flight home, where the bill is the part that hurts. {insuranceBrand} covers trip medical and evacuation.</p>
       <span class="sp-alt-cta">
         <a class="pickbtn" href={insuranceUrl} target="_blank" rel="noopener sponsored">See {insuranceBrand} cover for {country.name}<NewTab /></a>
+        <span class="tg earn">we may earn a commission</span>
+      </span>
+    </section>
+  )}
+
+  {carExcessUrl && (
+    <section class="sp-sec">
+      <p style="font-size:14.5px;margin:0 0 6px">The mandatory liability cover is non-negotiable, but the counter's collision and theft upsell is where you can save. If your card does not cover the car in {country.name}, a standalone excess policy bought ahead is usually cheaper, and often covers parts the counter waiver leaves out, like tires, glass and the underbody. {carExcessBrand} covers rentals in {country.name}.</p>
+      <span class="sp-alt-cta">
+        <a class="pickbtn" href={carExcessUrl} target="_blank" rel="noopener sponsored">Cover a rental in {country.name} with {carExcessBrand}<NewTab /></a>
         <span class="tg earn">we may earn a commission</span>
       </span>
     </section>

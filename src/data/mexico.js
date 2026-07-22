@@ -500,6 +500,62 @@ export default {
         ],
         judgment: "Medical prices in Mexico vary widely by city, clinic, and the seriousness of the problem, so the figures here are typical ranges from recent 2025 and 2026 reporting, not a fixed price list, and hospital deposits in particular depend on the case. Confirm costs at the point of care. Checked July 2026."
       }
+    },
+    {
+      slug: "renting-a-car",
+      live: true,
+      topic: "driving",
+      title: "What does renting a car in Mexico really cost? The insurance trap (2026) | True Trip Costs",
+      description: "The cheap rate you booked is not the real price. Mexican law requires local liability insurance your US card and policy do not cover, and agencies leave it out of the online quote, so the counter price jumps. Plus cash-only tolls and gas near US prices. Checked July 2026.",
+      h1: "What does renting a car in Mexico really cost?",
+      lede: "Booking a car in Mexico is where a great-looking rate turns into a surprise at the counter. The reason is one mandatory insurance that almost never shows up in the online price, and that your US coverage does not satisfy.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "The rock-bottom rate you booked online is <b>not the real price</b>. Mexican law requires <b>local third-party liability insurance</b> (often shown as <b>TPL</b>, or in Spanish <b>seguro de responsabilidad civil</b>), and your <b>US car insurance and credit-card coverage do not satisfy it</b>. Agencies routinely <b>leave it out of the online quote</b>, so a $12 a day booking can become <b>$40 to $60 a day</b> at the counter. That mandatory liability is <b>not optional</b>; the extra collision and theft waivers (<b>CDW, LDW, PAI</b>) are. Also budget <b>cash for tolls</b> and gas at <b>roughly US prices</b>.",
+      carExcess: true,
+      sections: [
+        {
+          h: "The insurance that is not in your quote",
+          p: [
+            "Mexican federal law requires every vehicle on the road to carry <b>third-party liability insurance</b> from a <b>Mexican insurer</b>. Driving without it is treated as a serious matter, not a minor ticket. The catch for visitors: your <b>US auto policy and the coverage on your credit card do not count</b> for this, so you have to buy the local liability cover from the rental company, or prove you already hold a valid Mexican policy.",
+            "The problem is that many agencies <b>do not include this mandatory cover in the online rate</b>. You book what looks like a bargain, then at the counter you are told, correctly, that liability insurance is required by law, and it is added on the spot. That is how a headline rate of a few dollars a day becomes <b>$40 to $60 a day</b> once the required insurance is in."
+          ]
+        },
+        {
+          h: "What is mandatory versus what is an upsell",
+          p: [
+            "Only the <b>third-party liability</b> cover is legally required. Everything else the counter offers is <b>optional</b>: the <b>collision damage waiver</b> (CDW or LDW) that caps what you owe if the car is damaged or stolen, and <b>personal accident</b> cover (PAI). An agent cannot force these on you, and you can decline them.",
+            "Your US <b>credit card</b> may already cover the car's own damage if you decline the counter's collision waiver and pay with that card, but check two things: that your card's cover <b>applies in Mexico</b> (some exclude it), and remember it <b>never covers the mandatory liability</b>. So the honest sequence is: accept the required liability, then decide on the collision waiver based on what your card actually does."
+          ]
+        },
+        {
+          h: "Tolls and gas: the other real costs",
+          p: [
+            "Mexico's fast <b>cuota</b> (toll) highways are excellent, but the <b>casetas</b> (toll booths) are largely <b>cash only</b> and add up over a long drive, so keep pesos in the car. The slower <b>libre</b> roads are free but much slower, and sometimes rougher.",
+            "Gas is not the bargain people expect. Regular (<b>Magna</b>) runs about <b>22 to 24 pesos a liter</b> in 2026, since the government caps it near 24, roughly <b>$1.25 a liter</b>, which works out to about <b>$4.50 to $5 a gallon</b>. Budget for fuel at <b>roughly US prices</b>, not below. It is also common to hand the attendant cash and tip a few pesos, since stations are full service."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          p: [
+            "Do not trust the online rate on its own. Either get a quote that <b>explicitly includes the mandatory liability insurance</b>, or assume the real price is <b>$40 to $60 a day</b> once it is added, and compare cars on that basis. Decide on the optional collision waiver by <b>what your card actually provides in Mexico</b>, not by the counter's pitch.",
+            "Carry <b>pesos for tolls</b>, expect gas at US-level prices, and for the cheapest way to pay for fuel and tolls on a card where they take one, see the <a href=\"/mexico/cash-or-card\">Mexico cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is car rental insurance required in Mexico?", a: "Yes. Mexican law requires third-party liability insurance from a Mexican insurer on every vehicle. It is mandatory, not an upsell, and you must either buy it from the rental company or prove you hold a valid Mexican policy. The optional extras, collision and personal accident cover, are separate." },
+        { q: "Does my US insurance or credit card cover it?", a: "Not the mandatory part. US auto policies and credit-card rental coverage are not accepted for Mexico's required liability insurance. Your card may cover the car's own collision damage if it applies in Mexico, but never the liability, which you still have to buy locally." },
+        { q: "Why is the rental so much more expensive at the counter?", a: "Because many agencies leave the mandatory liability insurance out of the online quote. The law requires it, so it is added when you pick up the car, turning a cheap-looking rate into roughly $40 to $60 a day. The insurance itself is legitimate; the lack of upfront disclosure is what catches people." },
+        { q: "Can I decline the extra insurance in Mexico?", a: "You can decline the optional collision (CDW or LDW) and personal accident (PAI) cover; an agent cannot force those on you. You cannot decline the mandatory third-party liability, which is required by law. If you have credit-card collision cover valid in Mexico, you may be able to skip the counter's collision upsell." },
+        { q: "Do I need cash for toll roads in Mexico?", a: "Mostly yes. The cuota toll highways are largely cash only at the casetas, so keep pesos in the car. The free libre roads avoid tolls but are much slower." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Mexico country information, including road safety and driving guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Mexico.html", type: "gov" }
+        ],
+        judgment: "The liability-insurance requirement is federal Mexican law, but the daily cost of the required cover varies by agency, car, and state, and toll and fuel prices shift, so treat the daily figures as typical ranges and confirm the all-in price, with the mandatory insurance included, before you book. Checked July 2026."
+      }
     }
   ]
 };
