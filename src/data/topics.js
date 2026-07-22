@@ -15,6 +15,7 @@ export const topicIcon = {
   driving: 'wheel',
   "entry-fees": 'ticket',
   seasons: 'calendar',
+  "all-inclusive": 'cocktail',
 };
 
 // Caution tier -> chip label. The three-step "how careful to be" signal shown on the

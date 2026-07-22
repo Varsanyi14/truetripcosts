@@ -666,6 +666,64 @@ export default {
         ],
         judgment: "Hurricane-season dates are from NOAA. The pricing patterns and percentage swings are seasonal market behavior drawn from recent 2025 and 2026 travel reporting, not fixed figures, and actual prices depend on destination, property, and how far ahead you book. Semana Santa and Easter dates move each year, so confirm them for your travel year. Checked July 2026."
       }
+    },
+    {
+      slug: "all-inclusive-costs",
+      live: true,
+      topic: "all-inclusive",
+      title: "What does an all-inclusive really cost in Mexico? The extras that are not included (2026) | True Trip Costs",
+      description: "All-inclusive does not mean everything. Specialty restaurants ($25 to $80), premium drinks, spa, motorized water sports, excursions, airport transfers, and a per-night environmental tax at the desk all cost extra. Here is what to budget on top. Checked July 2026.",
+      h1: "What does an all-inclusive really cost in Mexico?",
+      lede: "All-inclusive covers the basics well, but it is not everything, and a few costs are added at the front desk rather than shown when you book. Here is what the package leaves out, so the final bill does not surprise you.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "The package reliably covers your <b>room, meals, house-brand drinks, non-motorized water sports, and entertainment</b>. What it usually does not cover, and where the extra money goes: <b>specialty restaurant surcharges</b> (about <b>$25 to $80 per person</b>), <b>premium and top-shelf drinks</b>, the <b>spa</b> ($100 to $300), <b>motorized water sports</b> ($75 to $150), and <b>off-resort excursions</b> ($35 to $80). Add a <b>per-night environmental tax</b> collected at the desk (about <b>$4 a night in Cancun</b>), <b>tips</b> (still expected), and often the <b>airport transfer</b>. Budget these on top of the headline price.",
+      sections: [
+        {
+          h: "What the package actually covers",
+          p: [
+            "The standard inclusions are consistent across Mexican resorts: your <b>room</b>, <b>all meals</b> at the buffet and most sit-down restaurants, <b>unlimited house-brand</b> drinks alcoholic and soft, <b>non-motorized water sports</b> like kayaks and snorkeling, <b>kids' clubs</b>, <b>nightly entertainment</b>, and pool and beach access with chairs and towels. For a lot of trips that genuinely is most of the cost, which is the appeal.",
+            "The gap is everything framed as premium or optional, and it adds up faster than people expect. A mid-range week can start at the base rate and end <b>25 to 40 percent higher</b> once the extras and fees are in."
+          ]
+        },
+        {
+          h: "What is not included, and what it costs",
+          p: [
+            "The common extras, with typical 2026 prices: <b>specialty or a la carte restaurants</b> often carry a <b>$25 to $80 per person</b> surcharge and may need a reservation; <b>premium or top-shelf alcohol and champagne</b> are excluded or served only at upcharge bars ($8 to $15 a drink); <b>spa treatments</b> run <b>$100 to $300</b>; <b>motorized water sports</b> like jet ski or parasail are <b>$75 to $150</b>; and <b>room service</b> sometimes carries a delivery fee even when the food is free.",
+            "Two big ones travelers assume are included but often are not: <b>off-resort excursions</b> (a cenote, Chichen Itza, Isla Mujeres) at <b>$35 to $80 per person</b>, which are extra even on an all-inclusive, and the <b>airport transfer</b>, which is only covered at certain room categories or booking tiers. Booking excursions independently rather than at the resort desk is usually cheaper."
+          ]
+        },
+        {
+          h: "The fees added at the desk",
+          p: [
+            "Some charges are not in the online price and appear at check-in or checkout. The main one is the <b>Quintana Roo environmental tax</b>, about <b>76 pesos (roughly $4) per room per night</b> in Cancun and similar in Playa del Carmen and Tulum, often <b>collected in cash</b> at the front desk. Expect a <b>refundable deposit hold</b> on your card at check-in too.",
+            "Two other charges are separate from the resort and covered in their own guide: the <b>Visitax</b> (about $15 per person, paid online) and the federal <b>DNR</b> fee (usually inside your airfare). See the <a href=\"/mexico/fmm-and-visitax\">Mexico entry fees and Visitax guide</a> for those."
+          ]
+        },
+        {
+          h: "Tips are still expected",
+          p: [
+            "All-inclusive does not mean no tipping. Bartenders, servers, housekeeping, a butler if you have one, and excursion guides are all customarily tipped, and it adds up: many families spend <b>$100 to $200 a week</b> on tips alone. Some resorts fold a service charge into the rate, but individual tipping is still expected on top. See the <a href=\"/mexico/tipping\">Mexico tipping guide</a> for who and how much."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          p: [
+            "Treat the headline package as the <b>floor, not the total</b>. On top of it, plan for the <b>per-night environmental tax</b>, <b>tips</b>, at least one or two <b>specialty dinners or excursions</b>, and the <b>airport transfer</b> if your tier does not include it. For a week, that realistically adds <b>several hundred dollars</b> beyond the advertised price.",
+            "The single best money move is to read the resort's own what-is-included page, not the marketing homepage, and ask directly <b>which restaurants, drink brands, and activities carry a surcharge</b> before you book. For what you will spend once you step off the resort, see the <a href=\"/mexico\">Mexico cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is an all-inclusive resort in Mexico really all-inclusive?", a: "It covers the basics reliably: room, meals, house-brand drinks, non-motorized water sports, and entertainment. It usually does not cover specialty-restaurant surcharges, premium alcohol, spa, motorized water sports, off-resort excursions, or, at many tiers, the airport transfer. A per-night environmental tax is also added at the desk." },
+        { q: "What extra costs should I expect at a Mexican all-inclusive?", a: "Specialty restaurants about $25 to $80 per person, spa $100 to $300, motorized water sports $75 to $150, off-resort excursions $35 to $80 per person, premium drinks $8 to $15, plus the Quintana Roo environmental tax (about $4 per room per night, often cash at the desk) and tips. Budget several hundred dollars on top of a week's package." },
+        { q: "Do I have to tip at an all-inclusive in Mexico?", a: "It is not required, but it is expected and customary. Bartenders, servers, housekeeping, and guides are tipped, and many families spend $100 to $200 a week. Some resorts include a service charge, but individual tips are still normal on top. See the Mexico tipping guide for amounts." },
+        { q: "What is the resort environmental fee charged at check-in?", a: "A Quintana Roo environmental tax of about 76 pesos, roughly $4, per room per night in Cancun, and similar in Playa del Carmen and Tulum. It is usually not in the online price and is often collected in cash at the front desk. It is separate from the Visitax you pay online." },
+        { q: "Are airport transfers included in all-inclusive packages?", a: "Not always. Transfers are often only included at certain room categories or booking tiers, so many guests pay separately. Check before you travel, and compare a pre-booked shuttle against the resort's price, since the official airport taxi can run $40 to $60. See the Mexico taxis and apps guide." }
+      ],
+      sources: {
+        judgment: "The prices here are typical 2026 ranges for on-property extras (specialty dining, spa, motorized water sports, premium drinks) and off-resort excursions, drawn from recent travel-cost reporting, not a fixed price list, and every resort sets its own. The one government charge, the Quintana Roo environmental tax of about 76 pesos per room per night, is a state and municipal levy usually collected at the desk; the separate Visitax and federal DNR fee are covered in the Mexico entry fees guide. Confirm the specifics with your resort before booking. Checked July 2026."
+      }
     }
   ]
 };
