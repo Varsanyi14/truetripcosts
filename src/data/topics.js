@@ -18,6 +18,7 @@ export const topicIcon = {
   "all-inclusive": 'cocktail',
   scams: 'alert',
   "tourist-tax": 'receipt',
+  "vat-refund": 'refund',
 };
 
 // Caution tier -> chip label. The three-step "how careful to be" signal shown on the

@@ -376,6 +376,61 @@ export default {
         ],
         judgment: "France is strongly card-first, but ATM and card fees vary by your own bank and the chip-and-PIN quirk at unmanned machines is fading rather than gone, so much of this is our practical read. The euro rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
       }
+    },
+    {
+      slug: "vat-refund",
+      live: true,
+      topic: "vat-refund",
+      title: "France VAT refund (detaxe) for tourists (2026): the 100 euro minimum, PABLO, and what you get back | True Trip Costs",
+      description: "Non-EU visitors can reclaim France's 20% VAT (detaxe) on goods over 100 euros in one store. How the PABLO kiosk validation works, who qualifies, and why operator fees leave you closer to 10 to 15%. Checked Jul 2026.",
+      h1: "France's VAT refund (detaxe), and what you get back.",
+      lede: "France charges 20% VAT, and non-EU visitors can claim some of it back on shopping through the detaxe scheme. It is fully digital via the PABLO kiosks, but operator fees mean the real refund is well under the headline. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Yes, over a threshold. Non-EU visitors can reclaim France's <b>20% VAT</b> (the <b>detaxe</b>) on goods over <b>100 euros</b> bought in <b>one store on the same day</b>. Ask for a <b>tax-free form</b> with your passport at checkout, keep the goods <b>unused</b>, and scan the form's barcode at a <b>PABLO</b> kiosk when you leave the EU: a green screen means done, a red one sends you to a customs desk. After <b>operator fees</b> you net closer to <b>10 to 15%</b>, not the full 20%. You must be a <b>non-EU resident aged 16 or over</b>, and validate at your <b>final EU exit</b>.",
+      sections: [
+        {
+          h: "Who qualifies, and the 100 euro minimum",
+          p: [
+            "The detaxe is for <b>non-EU residents aged 16 or over</b> taking goods home unused. Since 2021 the minimum has been <b>over 100 euros</b> spent in the <b>same store on the same day</b>. Only <b>goods</b> qualify, for personal use and carried out of the EU; <b>services</b> you use in France, hotels, restaurants, transport, do not, and the goods must be <b>new and unused</b> when you leave.",
+            "Ask for the <b>tax-free form</b> (bordereau de detaxe) at the register, with your <b>passport</b>. If your individual receipts fall under 100 euros, apps like <b>ZappTax or Wevat</b> can combine purchases across shops onto one invoice to clear the threshold, which is the one legitimate way around the single-store rule."
+          ]
+        },
+        {
+          h: "PABLO: scan and go",
+          p: [
+            "France validates through <b>PABLO</b>, its self-service customs kiosks at the airports and other exit points, including <b>Paris Charles de Gaulle and Orly</b>. You <b>scan the barcode</b> on your form: a <b>green</b> checkmark means it is validated and you head to your gate, while a <b>red</b> cross sends you to the customs desk (Bureau de douane) for a manual check, which is routine, not a problem.",
+            "Do this <b>before you check bags</b>, since customs may want to see the goods, and <b>before security</b>. Look for the blue Detaxe or Tax Refund signs. Give yourself time at busy Paris airports, and note the goods must leave the EU by the <b>end of the third month</b> after purchase."
+          ]
+        },
+        {
+          h: "What you actually get back",
+          p: [
+            "The <b>20% VAT</b> is the headline, but the <b>refund operators</b> (Global Blue, Planet and others) take a cut, so you typically net closer to <b>10 to 15%</b> of the price. A <b>cash refund</b> at the airport is the quickest and pays the least; a refund <b>to your card</b> nets more but can take a few weeks.",
+            "So the detaxe is worth the effort on a <b>real purchase</b>, but marginal on a small one once you weigh the queue and fees. If PABLO or customs is closed or out of order when you leave, France has a limited <b>after-the-fact process</b> you must follow within six months, but do not rely on it."
+          ]
+        },
+        {
+          h: "Validate at your final EU exit, and the rest of the picture",
+          p: [
+            "As across the EU, you <b>validate at your last EU departure point</b>, not necessarily in France. If you connect through another EU country on the way home, you scan PABLO or get the stamp <b>there</b>, then send the form back if needed.",
+            "The detaxe is the shopping side of money in France. For the tax on your hotel bill, see <a href=\"/france/tourist-tax\">France's tourist tax</a>, and for paying day to day, <a href=\"/france/cash-or-card\">cash or card in France</a>. The wider picture is in the <a href=\"/france\">France money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What is the minimum spend for a VAT refund in France?", a: "Over 100 euros in one store on the same day, in place since 2021. Only goods for personal use qualify, taken out of the EU unused. If your receipts are individually under 100 euros, apps like ZappTax or Wevat can combine purchases across shops onto one invoice to reach the threshold." },
+        { q: "How much VAT do I actually get back in France?", a: "Less than the 20% headline. After the refund operators take their cut, you typically net closer to 10 to 15% of the price. A cash refund at the airport is quickest and pays the least; a refund to your card nets more but can take a few weeks." },
+        { q: "What is PABLO in France?", a: "PABLO is France's self-service customs kiosk system for validating a tax-free form. You scan the form's barcode at the airport: a green checkmark means it is validated, a red cross sends you to the customs desk for a manual check. Do it before checking bags and before security, with the goods accessible." },
+        { q: "Who can claim the detaxe in France?", a: "Non-EU residents aged 16 or over, visiting for less than six months, taking new and unused goods home. What matters is your country of residence, not the passport you hold, so you may need to show proof of non-EU residence at the till. Services like hotels and meals do not qualify." }
+      ],
+      sources: {
+        links: [
+          { label: "French Customs (Douane): the official detaxe and PABLO rules, including the over-100-euro threshold and eligibility", url: "https://www.douane.gouv.fr/en/fiche/tax-exemption-france-tourists-pablo", type: "gov" },
+          { label: "Expatica: a 2026 explainer on claiming the French detaxe and what to do if PABLO fails", url: "https://www.expatica.com/fr/finance/taxes/vat-refund-france-2173730/", type: "guide" }
+        ],
+        judgment: "The 20% rate, the over-100-euro threshold, the non-EU-resident-16-plus rule and the PABLO validation are from the French Customs guidance. The net-refund figure is a market estimate after operator fees and varies by operator and payout method, so treat 10 to 15% as a guide. Checked July 2026."
+      }
     }
   ]
 };

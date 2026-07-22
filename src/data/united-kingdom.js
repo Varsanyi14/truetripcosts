@@ -363,6 +363,61 @@ export default {
         ],
         judgment: "The rules are set by the UK government and administered on the US side by APHIS, not by us. This route is stable and well established, but routes, carriers and the exact paperwork can change, so confirm on the official GOV.UK and APHIS pages before you travel. Flight and vet costs vary, so treat any figure here as a starting point. Checked July 2026."
       }
+    },
+    {
+      slug: "vat-refund",
+      live: true,
+      topic: "vat-refund",
+      title: "Can tourists get a VAT refund in the UK? (2026) | True Trip Costs",
+      description: "No, not in Great Britain. The UK scrapped tourist VAT refunds in 2021, so you cannot reclaim the 20% VAT on shopping you carry home. The only routes: ship abroad, or shop in Northern Ireland. Checked Jul 2026.",
+      h1: "Can tourists get a VAT refund in the UK?",
+      lede: "Short answer: no, not in England, Scotland or Wales. This is the opposite of what most European trips teach you, and it catches shoppers out at Heathrow. Here is what changed, and the only two ways left to shop tax-free.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "No, not in Great Britain. The UK <b>abolished its tourist VAT refund</b> (the VAT Retail Export Scheme) on <b>1 January 2021</b>, and it has <b>not returned</b>. So you <b>cannot reclaim the 20% VAT</b> on shopping you carry home from <b>England, Scotland or Wales</b>, and there is <b>no airport refund desk</b> for tourists. The price you see already includes the VAT. Two exceptions: a store can <b>ship your purchase</b> directly abroad, which removes the VAT but adds shipping, and <b>Northern Ireland</b> keeps a separate, limited refund scheme. Do not budget for a refund on a Great Britain shopping trip.",
+      sections: [
+        {
+          h: "What changed, and why the desk is gone",
+          p: [
+            "Until the end of 2020, non-EU visitors could reclaim the <b>20% VAT</b> on goods bought in Britain and carried home, stamped at an airport refund desk. That scheme, the <b>VAT Retail Export Scheme</b>, was <b>scrapped on 1 January 2021</b> after Brexit, and despite steady lobbying from retailers it has <b>not come back</b> as of 2026. The refund desks that used to sit near departures are gone.",
+            "So in <b>Great Britain</b>, which is England, Scotland and Wales, the <b>price on the tag already includes VAT</b> and that is what you pay, full stop. There is nothing to claim and nothing to stamp. This surprises visitors used to the refund process across the EU, so the useful move is simply to <b>not plan around a refund</b> here."
+          ]
+        },
+        {
+          h: "The one workaround: ship it abroad",
+          p: [
+            "There is a legitimate way to buy without the VAT, but it is not a refund. If a retailer offers <b>direct export</b>, sometimes called Shop and Ship, they <b>ship your purchase to your home address</b> outside the UK and remove the 20% VAT at the till, because the goods are exported rather than carried out in your luggage.",
+            "The catch is that you <b>pay international shipping and handling</b> instead, and you do not walk out with the item. It only makes sense on <b>higher-value goods</b>, where the 20% saved clearly beats the shipping, and only at the mostly luxury retailers set up to do it. For an everyday souvenir, it is not worth it."
+          ]
+        },
+        {
+          h: "Northern Ireland is different",
+          p: [
+            "Northern Ireland kept a <b>separate, limited refund scheme</b> after 2021. If you shop there and are a non-EU or non-UK resident, you can still reclaim VAT on eligible goods, typically with a <b>minimum of about 30 pounds per store</b>, and you validate when you leave the UK or the EU. It runs through the usual tax-free operators and shops that display the signs.",
+            "For a visitor whose trip is to London, Edinburgh or Cardiff, this does not help, since Great Britain has no scheme. It applies only to purchases actually made in <b>Northern Ireland</b>."
+          ]
+        },
+        {
+          h: "What you do pay: VAT, and a new lodging levy",
+          p: [
+            "The <b>20% VAT is baked into prices</b>, so there is no separate tax line to watch on shopping, and nothing to reclaim. Airport duty-free is a different thing from a high-street VAT refund, and applies to the usual categories like alcohol and tobacco.",
+            "On lodging, Britain long had no tourist tax, but that is changing: <b>Edinburgh</b> now adds a <b>5% visitor levy</b> on overnight stays from <b>24 July 2026</b>, and a few English cities add a small flat per-night charge. The detail is in the <a href=\"/united-kingdom\">UK money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Can tourists claim a VAT refund in the UK?", a: "Not in Great Britain. The tourist VAT refund scheme (the VAT Retail Export Scheme) was abolished on 1 January 2021 and has not returned, so you cannot reclaim the 20% VAT on shopping carried home from England, Scotland or Wales, and there is no airport refund desk. Northern Ireland keeps a separate, limited scheme." },
+        { q: "Is there any way to shop tax-free in the UK?", a: "Only two. A retailer can ship your purchase directly to your home address abroad and remove the 20% VAT (you pay shipping instead), which suits high-value goods at luxury stores. Or you can shop in Northern Ireland, which kept a limited refund scheme. In Great Britain there is no carry-home refund." },
+        { q: "Why did the UK stop VAT refunds for tourists?", a: "The government ended the VAT Retail Export Scheme on 1 January 2021 as part of post-Brexit tax changes, citing simplification and cost. Retailers and tourism groups have lobbied to bring it back, but as of 2026 it has not returned, so no carry-home tourist refund exists in Great Britain." },
+        { q: "Is VAT included in UK prices?", a: "Yes. The 20% VAT is already included in the price shown on the tag or menu in the UK, so the marked price is what you pay. Since there is no tourist refund in Great Britain, there is nothing to reclaim on ordinary shopping." }
+      ],
+      sources: {
+        links: [
+          { label: "GOV.UK: tax-free shopping, why there is no VAT refund in Great Britain and the limited Northern Ireland scheme", url: "https://www.gov.uk/tax-on-shopping/taxfree-shopping", type: "gov" },
+          { label: "Expatica: a 2026 explainer on the UK VAT-refund rules and the Northern Ireland exception", url: "https://www.expatica.com/uk/finance/taxes/vat-refund-uk-2173739/", type: "guide" }
+        ],
+        judgment: "The abolition of the VAT Retail Export Scheme in Great Britain is a settled, government-confirmed fact, re-checked for 2026: there is still no carry-home tourist refund, only the ship-abroad route and the separate Northern Ireland scheme. Retailers continue to lobby for reinstatement, so this is worth re-checking over time. Checked July 2026."
+      }
     }
   ]
 };

@@ -432,6 +432,61 @@ export default {
         ],
         judgment: "Card acceptance is now near-universal in Italy and the legal obligation to accept cards is real, but ATM and card fees vary by your own bank, so much of this is our practical read. The euro rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
       }
+    },
+    {
+      slug: "vat-refund",
+      live: true,
+      topic: "vat-refund",
+      title: "Italy VAT refund for tourists (2026): the 70 euro minimum, OTELLO, and what you actually get back | True Trip Costs",
+      description: "Non-EU visitors can reclaim part of Italy's 22% VAT on goods over 70.01 euros in one store. How the OTELLO digital validation works, the 2026 changes, and why operator fees leave you closer to 11 to 15%. Checked Jul 2026.",
+      h1: "Italy's VAT refund, and what you actually get back.",
+      lede: "Italy has the EU's highest VAT at 22%, and non-EU visitors can claim some of it back on shopping. The process is now digital and the threshold is low, but operator fees mean the real refund is well under the headline. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Yes, if you shop enough in one place. Non-EU visitors can reclaim part of Italy's <b>22% VAT</b> on goods over <b>70.01 euros</b> bought in <b>one store on one day</b> (a single receipt, you cannot combine shops). Ask for a <b>tax-free form</b> with your passport at checkout, keep the goods <b>unused</b>, validate at an <b>OTELLO</b> digital kiosk at the airport before you check bags, then collect from the operator. The catch is the math: after <b>operator fees</b> you net closer to <b>11 to 15%</b>, not the full 22%, and a cash refund at the airport pays less than one to your card. Validate at your <b>final EU exit</b>.",
+      sections: [
+        {
+          h: "Who qualifies, and the 70 euro minimum",
+          p: [
+            "The refund is for <b>non-EU residents</b> taking goods home unused. Italy <b>lowered its minimum</b> from 154.95 euros to <b>70.01 euros</b> in 2024, and that lower threshold still applies in 2026, which brings mid-priced clothing, leather and cosmetics into range, not just luxury. The 70.01 euros must be spent in the <b>same store on the same day</b>, on a single receipt; you <b>cannot combine</b> a receipt from one shop with another. Department stores and outlets can sometimes combine boutique receipts under one roof.",
+            "Only <b>goods</b> qualify, and they must leave the EU <b>unused</b>. Services you consume in Italy, like hotels, restaurants and transport, do not qualify, and neither do food or drink consumed there. Ask for the <b>tax-free form</b> at the moment of purchase, since a shop generally will not issue one later, and have your <b>passport</b> ready to link the sale."
+          ]
+        },
+        {
+          h: "OTELLO: the digital validation",
+          p: [
+            "Italy validates through <b>OTELLO</b>, the customs system that has replaced the old paper stamp. At the airport you <b>scan the barcode</b> on each tax-free form at an <b>OTELLO kiosk</b> before checking any luggage that holds the goods; a green screen confirms it, and only then can the refund operator pay you. Kiosks are at the main airports including <b>Rome Fiumicino, Milan Malpensa, Venice, Florence, Naples and Bologna</b>.",
+            "From <b>1 July 2026</b>, Italy simplified this further with a <b>single passport-based validation</b> for multiple forms at once, more cooperation between operators, and the export-proof deadline extended from four to <b>six months</b>. The through-line is the same: <b>validate before you check bags</b>, and keep the goods reachable in case customs wants to see them."
+          ]
+        },
+        {
+          h: "What you actually get back",
+          p: [
+            "This is where expectations meet reality. The <b>22% VAT</b> is the headline, but the <b>refund operators</b> (Global Blue, Planet and others) take a cut, so you typically net closer to <b>11 to 15%</b> of the price on ordinary purchases, a little more on large ones. A <b>cash refund</b> at the airport is convenient but pays the least; choosing a <b>refund to your card or bank</b> nets more but can take a few weeks.",
+            "So the refund is real and worth it on a <b>meaningful purchase</b>, a designer bag or a good coat, but for a small buy the queue and the fees can outweigh it. Factor in that you will spend time at the kiosk and the operator desk, so arrive at the airport with margin."
+          ]
+        },
+        {
+          h: "The two-country trap, and the rest of the money picture",
+          p: [
+            "A common mistake: if you are flying onward through another EU country, you <b>validate at your final EU exit</b>, not in Italy. Fly Rome to Frankfurt to New York, and you process the forms at <b>Frankfurt</b>, not Rome. Leaving overland to Switzerland, you validate at the border.",
+            "The VAT refund is the shopping side of money in Italy. For the tax that lands on your hotel bill instead, see <a href=\"/italy/tourist-tax\">Italy's tourist tax</a>, and for paying day to day, <a href=\"/italy/cash-or-card\">cash or card in Italy</a>. The wider picture is in the <a href=\"/italy\">Italy money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What is the minimum spend for a VAT refund in Italy?", a: "70.01 euros in one store on one day, on a single receipt. Italy lowered the threshold from 154.95 euros in 2024 and it still applies in 2026. You cannot combine receipts from different shops, though some department stores and outlets can combine boutique receipts under one roof." },
+        { q: "How much VAT do I actually get back in Italy?", a: "Less than the 22% headline. After the refund operators take their cut, you typically net closer to 11 to 15% of the price, a little more on large purchases. A cash refund at the airport pays the least; a refund to your card nets more but can take a few weeks." },
+        { q: "What is OTELLO in Italy?", a: "OTELLO is Italy's digital customs validation system, which replaced the paper stamp. You scan the barcode on your tax-free form at an OTELLO kiosk at the airport before checking bags; a green screen confirms it, and only then can the operator pay your refund. Kiosks are at Rome Fiumicino, Milan Malpensa, Venice, Florence, Naples and Bologna, among others." },
+        { q: "Where do I validate my Italian tax-free form if I connect through another EU country?", a: "At your final point of departure from the EU, not in Italy. If you fly Rome to Frankfurt and then home, you validate at Frankfurt. If you leave overland to a non-EU country like Switzerland, you validate at the border crossing. Do this before checking any luggage with the goods." }
+      ],
+      sources: {
+        links: [
+          { label: "VATupdate: Italy's 2026 digital VAT-refund changes through OTELLO 2.0, including the single-validation reform and the 70.01 euro minimum", url: "https://www.vatupdate.com/2026/05/29/italy-streamlines-vat-refunds-for-non-eu-tourists-with-new-digital-rules/", type: "guide" },
+          { label: "Fiscal-requirements: Italy's simplified tax-free validation from 1 July 2026 and the six-month export deadline", url: "https://www.fiscal-requirements.com/news/5526", type: "guide" }
+        ],
+        judgment: "The 22% rate, the 70.01 euro minimum and the OTELLO validation are current, and the July 2026 changes are drawn from tax-industry reporting on the Italian Customs (Agenzia delle Dogane) reform. The net-refund figure is a market estimate after operator fees and varies by operator and payout method, so treat 11 to 15% as a guide. Checked July 2026."
+      }
     }
   ]
 };

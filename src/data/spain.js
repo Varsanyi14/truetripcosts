@@ -320,6 +320,61 @@ export default {
         ],
         judgment: "Spain is strongly card-first, but ATM and card fees vary by your own bank, so much of this is our practical read. The euro rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
       }
+    },
+    {
+      slug: "vat-refund",
+      live: true,
+      topic: "vat-refund",
+      title: "Spain VAT refund (IVA) for tourists (2026): no minimum spend, DIVA, and what you get back | True Trip Costs",
+      description: "Non-EU visitors can reclaim Spain's 21% IVA on shopping with no minimum spend, one of Europe's most generous. How the DIVA digital validation works, who qualifies, and why operator fees leave you closer to 12 to 17%. Checked Jul 2026.",
+      h1: "Spain's VAT refund (IVA), and what you get back.",
+      lede: "Spain charges 21% IVA, and it is unusually generous on refunds: there is no minimum spend, so even a small purchase qualifies. It runs digitally through DIVA, but operator fees mean the real refund is under the headline. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Yes, and with <b>no minimum spend</b>. Spain scrapped its minimum-purchase rule in 2019, so non-EU visitors can reclaim the <b>21% IVA</b> on almost any purchase, from a small souvenir to a designer bag. Ask for a <b>tax-free form</b> with your passport at checkout, keep the goods <b>unused</b>, and validate at a <b>DIVA</b> kiosk when you leave the EU, then collect from the operator. After <b>operator fees</b> you net closer to <b>12 to 17%</b>, not the full 21%, so on a very small buy the queue may not be worth it. Validate at your <b>final EU exit</b>.",
+      sections: [
+        {
+          h: "Who qualifies, and the no-minimum rule",
+          p: [
+            "The refund is for <b>non-EU residents</b> (what counts is your <b>home address</b>, not your passport) taking goods home unused. Spain is unusually generous: it <b>abolished the minimum purchase</b> in 2019, so unlike Italy or France there is <b>no threshold</b>, and even a small buy technically qualifies. Around <b>90% of stores</b> in tourist areas of Madrid and Barcelona take part, from El Corte Ingles to luxury boutiques; look for the tax-free signs.",
+            "Only <b>goods</b> for personal use qualify, carried out of the EU unused. <b>Services</b> like hotels and restaurants do not, and neither do consumables used in Spain. Ask for the <b>tax-free form</b> at the moment of purchase, with your <b>passport</b>: a shop generally will not issue it after you have paid and left."
+          ]
+        },
+        {
+          h: "DIVA: the digital stamp",
+          p: [
+            "Spain validates through <b>DIVA</b>, its mandatory digital stamping system, which has replaced the manual customs stamp used in much of the EU. At the airport you scan your form at a <b>DIVA kiosk</b> (or, if it flags, see a customs officer) before checking any bags with the goods. Kiosks are at the main airports including <b>Madrid Barajas and Barcelona El Prat</b>.",
+            "Once validated, you collect from a <b>refund operator</b> (Global Blue, Planet and others) at the airport, choosing <b>cash</b> (with a commission) or a <b>refund to your card</b> (more, but it takes a few weeks). Keep the goods reachable in case customs wants to see them, and validate <b>before</b> you check in."
+          ]
+        },
+        {
+          h: "What you actually get back",
+          p: [
+            "The <b>21% IVA</b> is the headline, but the <b>operators</b> take a cut, so you typically net closer to <b>12 to 17%</b> of the price. Because there is <b>no minimum</b>, it is tempting to claim on small buys, but the <b>fees and the queue</b> can outweigh a tiny refund, so it is really worth it on a <b>meaningful purchase</b>. A cash refund pays less than one to your card.",
+            "One <b>carve-out</b> worth knowing: the Canary Islands, Ceuta and Melilla sit outside the EU VAT area, so their residents can claim on mainland purchases, and if you are traveling on through the Canaries the process differs. For a standard mainland trip home, the steps above are what apply."
+          ]
+        },
+        {
+          h: "Validate at your final EU exit, and the rest of the picture",
+          p: [
+            "As across the EU, <b>validate at your last EU departure point</b>. If you connect through another EU country on the way home, you validate <b>there</b>, not in Spain.",
+            "The IVA refund is the shopping side of money in Spain. For the tax that only some regions add to your hotel bill, see <a href=\"/spain/tourist-tax\">Spain's tourist tax</a>, and for paying day to day, <a href=\"/spain/cash-or-card\">cash or card in Spain</a>. The wider picture is in the <a href=\"/spain\">Spain money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is there a minimum spend for a VAT refund in Spain?", a: "No. Spain abolished its minimum purchase in 2019, so there is no threshold and even a small purchase qualifies for an IVA refund. That said, after operator fees a very small refund may not be worth the airport queue, so it pays off most on a meaningful purchase." },
+        { q: "How much IVA do I actually get back in Spain?", a: "Less than the 21% headline. After the refund operators take their cut, you typically net closer to 12 to 17% of the price. A cash refund at the airport pays the least; a refund to your card nets more but can take a few weeks." },
+        { q: "What is DIVA in Spain?", a: "DIVA is Spain's mandatory digital customs stamping system, which replaced the manual stamp. You scan your tax-free form at a DIVA kiosk at the airport (or see a customs officer if it flags) before checking bags, then collect your refund from an operator like Global Blue or Planet. Kiosks are at Madrid Barajas, Barcelona El Prat and other airports." },
+        { q: "Who can claim a VAT refund in Spain?", a: "Non-EU residents taking new, unused goods home. What matters is your country of residence, not the passport you carry. Only goods for personal use qualify, not services like hotels or meals. Residents of the Canary Islands, Ceuta and Melilla can also claim on mainland Spanish purchases." }
+      ],
+      sources: {
+        links: [
+          { label: "GoodVat: a 2026 guide to Spain's IVA refund, the no-minimum rule and the DIVA digital export system", url: "https://goodvat.com/guides/eu-vat/vat-refund-spain/", type: "guide" },
+          { label: "International Tax Legal Spain: how non-residents reclaim IVA through the DIVA form and airport validation", url: "https://www.internationaltaxlegalspain.com/the-non-residents-guide-to-vat-in-spain-when-to-pay-it-and-how-to-get-it-back", type: "guide" }
+        ],
+        judgment: "The 21% rate, the no-minimum rule (since 2019) and the DIVA validation are current, with DIVA being the Spanish Tax Agency (Agencia Tributaria) system. The net-refund figure is a market estimate after operator fees and varies by operator and payout method, so treat 12 to 17% as a guide. Checked July 2026."
+      }
     }
   ]
 };
