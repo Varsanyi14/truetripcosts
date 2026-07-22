@@ -1,0 +1,280 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import USBadge from '../components/USBadge.astro';
+import CostChart from '../components/CostChart.astro';
+import { countries } from '../data/index.js';
+
+// Everything on this page reads from the live country data. Adding a country or
+// changing a cost figure in a guide updates this page on the next build. Nothing
+// is re-typed here.
+const live = countries.filter(c => c.live && !c.blocked);
+
+// Honest checked date, derived from the data rather than hardcoded. If the guides
+// were all checked in one month we say that month; otherwise we show a range.
+const isoDates = live.map(c => c.checkedISO).filter(Boolean).sort();
+function niceMonth(iso) {
+  if (!iso) return '';
+  const d = new Date(iso + 'T00:00:00');
+  if (isNaN(d.getTime())) return '';
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+}
+const firstMonth = niceMonth(isoDates[0]);
+const lastMonth = niceMonth(isoDates[isoDates.length - 1]);
+const checkedLabel = firstMonth === lastMonth ? firstMonth : `${firstMonth} to ${lastMonth}`;
+
+const REGION_ORDER = ['Europe', 'Asia', 'Americas', 'Middle East', 'Africa', 'Oceania'];
+const midOf = c => {
+  const t = (c.cash && c.cash.styles || []).find(s => s.n === 'Mid-range');
+  return t ? t.per + t.room : null;
+};
+const regions = REGION_ORDER
+  .map(name => {
+    const rows = live
+      .filter(c => c.region === name)
+      .map(c => ({ slug: c.slug, name: c.name, total: midOf(c) }))
+      .filter(r => r.total != null)
+      .sort((a, b) => a.total - b.total);
+    return { name, rows };
+  })
+  .filter(r => r.rows.length);
+
+// A shared min/max for the region color scale, so shading is comparable across
+// regions rather than each region rescaling to itself.
+const allTotals = live.map(midOf).filter(v => v != null);
+const gMin = Math.min(...allTotals);
+const gMax = Math.max(...allTotals);
+
+const title = 'How much a day costs by country, compared, for US travelers | True Trip Costs';
+const description = 'A ranked comparison of the typical daily cost for a US traveler in ' + live.length + ' countries: room plus on-the-ground spending, cheapest to priciest. Our own estimates for planning, not an official index. Checked ' + checkedLabel + '.';
+---
+
+<Base title={title} description={description}>
+  <Nav />
+  <main class="wrap ccpage">
+    <p class="ctx"><USBadge /> <span class="stamp">Checked {checkedLabel}</span></p>
+    <h1>How much does a day cost, country by country?</h1>
+    <p class="ccpage-lede">
+      A typical day's cost for a US traveler, {live.length} countries ranked cheapest to priciest.
+      Each bar is a room plus the on-the-ground spending (food, local transport, activities) for one day.
+    </p>
+
+    <p class="ccpage-honest">
+      These are the True Trip Costs desk's own estimates of a typical day for a US traveler, room plus
+      on-the-ground spending. They are meant for comparison and planning, not an official cost-of-living
+      index and not a precise quote. Checked {checkedLabel}. Switch the travel style to see how the
+      ranking shifts.
+    </p>
+
+    <section class="ccpage-chart" aria-label="Daily cost ranking">
+      <CostChart countries={live} defaultTier="Mid-range" id="daily-cost" />
+    </section>
+
+    <section class="ccpage-map" aria-labelledby="byregion">
+      <h2 id="byregion">The same costs, by region</h2>
+      <p class="ccpage-sub">
+        Pick a region to see its covered countries shaded by typical daily cost: lighter is cheaper,
+        darker is pricier. Mid-range travel style.
+      </p>
+
+      <div class="rg-toolbar" role="group" aria-label="Choose a region" id="rg-toolbar">
+        {regions.map((r, i) => (
+          <button type="button" class:list={["rg-tab", { 'is-active': i === 0 }]}
+            data-region-btn={r.name} aria-pressed={i === 0 ? 'true' : 'false'}>{r.name}</button>
+        ))}
+      </div>
+
+      {regions.map((r, i) => (
+        <div class:list={["rg-panel", { 'is-active': i === 0 }]} data-region-panel={r.name} hidden={i !== 0}>
+          <div class="rg-grid">
+            {r.rows.map(row => {
+              const t = gMax > gMin ? (row.total - gMin) / (gMax - gMin) : 0;
+              return (
+                <a class="rg-tile" href={`/${row.slug}`} style={`--t:${t.toFixed(3)}`}>
+                  <span class="rg-name">{row.name}</span>
+                  <span class="rg-cost num">${row.total}</span>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      ))}
+      <p class="rg-scalenote" aria-hidden="true">
+        <span class="rg-swatch rg-lo"></span> ${gMin}
+        <span class="rg-scalebar"></span>
+        ${gMax} <span class="rg-swatch rg-hi"></span>
+      </p>
+    </section>
+
+    <p class="ccpage-foot">
+      Want the detail behind a number? Open any country's guide for how we get to cash, cards and daily
+      spend. Figures are the desk's own, checked {checkedLabel}, and refreshed as we re-check each country.
+    </p>
+  </main>
+  <Footer />
+
+  <style>
+    .ccpage{max-width:860px}
+    .ccpage h1{margin-bottom:10px}
+    .ccpage-lede{font-size:18px;color:#3B4A46;max-width:640px;margin:0 0 18px}
+    .ccpage-honest{font-size:14px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:13px 16px;margin:0 0 30px;max-width:680px;box-shadow:var(--shadow)}
+    .ccpage-chart{margin:0 0 46px}
+    .ccpage-map h2{font-family:var(--serif);font-weight:500;font-size:clamp(22px,3.4vw,30px);letter-spacing:-.01em;margin:0 0 8px}
+    .ccpage-sub{font-size:14.5px;color:var(--muted);margin:0 0 18px;max-width:620px}
+    .ccpage-foot{font-size:14px;color:var(--muted);margin:40px 0 8px;max-width:660px}
+
+    /* Region tiles */
+    .rg-toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+    .rg-tab{font:inherit;font-size:13.5px;font-weight:600;color:var(--teal-deep);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;transition:background .18s ease,border-color .18s ease,color .18s ease}
+    .rg-tab:hover{border-color:var(--teal)}
+    .rg-tab.is-active{background:var(--teal-deep);border-color:var(--teal-deep);color:#fff}
+    .rg-panel{animation:rg-fade .32s ease}
+    .rg-panel[hidden]{display:none}
+    @keyframes rg-fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+    .rg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+    /* Color grade from a light sand-teal (cheap) to deep teal (pricey), driven by --t (0..1). */
+    .rg-tile{--c2:10,86,68;display:flex;flex-direction:column;gap:4px;justify-content:space-between;min-height:78px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);text-decoration:none;background:rgba(var(--c2),calc(.08 + var(--t) * .82));transition:transform .16s ease,box-shadow .16s ease}
+    .rg-tile:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .rg-name{font-weight:600;font-size:14.5px;line-height:1.25}
+    .rg-cost{font-family:var(--serif);font-size:18px}
+    /* Legibility: tiles past the midpoint get light text via a threshold class added in JS-free way. */
+    .rg-tile{color:var(--ink)}
+    .rg-tile[style*="--t:0.6"],.rg-tile[style*="--t:0.7"],.rg-tile[style*="--t:0.8"],.rg-tile[style*="--t:0.9"],.rg-tile[style*="--t:1"]{color:#EAF0ED}
+    .rg-scalenote{display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);margin:16px 0 0}
+    .rg-swatch{width:14px;height:14px;border-radius:4px;display:inline-block}
+    .rg-swatch.rg-lo{background:rgba(10,86,68,.10)}
+    .rg-swatch.rg-hi{background:rgba(10,86,68,.90)}
+    .rg-scalebar{flex:0 0 90px;height:8px;border-radius:999px;background:linear-gradient(90deg,rgba(10,86,68,.10),rgba(10,86,68,.90))}
+
+    @media (prefers-reduced-motion: reduce){
+      .rg-panel{animation:none}
+      .rg-tile{transition:none}
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* ---- Ranked bar chart: tier toggle with FLIP reorder + tween ---- */
+      var cc = document.getElementById('daily-cost');
+      if (cc) {
+        var listEl = document.getElementById('daily-cost-list');
+        var payloadEl = document.querySelector('script[data-cc-payload="daily-cost"]');
+        var axisMax = parseFloat(cc.getAttribute('data-scalemax')) || 0;
+        var payload = {};
+        try { payload = JSON.parse(payloadEl.textContent); } catch (e) { payload = {}; }
+        var btns = cc.querySelectorAll('[data-tier-btn]');
+        var current = cc.getAttribute('data-tier') || 'Mid-range';
+        var pct = function (v) { return axisMax ? (v / axisMax) * 100 : 0; };
+
+        function rowsFor(tier) { return payload[tier] || []; }
+
+        function render(tier) {
+          var rows = rowsFor(tier);
+          if (!rows.length) return;
+
+          // FLIP step 1: record current positions of existing rows by slug.
+          var first = {};
+          var existing = listEl.querySelectorAll('.cc-row');
+          for (var i = 0; i < existing.length; i++) {
+            first[existing[i].getAttribute('data-slug')] = existing[i].getBoundingClientRect().top;
+          }
+
+          // Map existing row nodes by slug so we can reorder them, not rebuild.
+          var bySlug = {};
+          for (var j = 0; j < existing.length; j++) bySlug[existing[j].getAttribute('data-slug')] = existing[j];
+
+          // Reorder + update numbers/segment widths to the new tier.
+          rows.forEach(function (r, idx) {
+            var node = bySlug[r.slug];
+            if (!node) return;
+            node.style.setProperty('--rank', idx);
+            listEl.appendChild(node); // append in new sorted order
+            var room = node.querySelector('.cc-room');
+            var per = node.querySelector('.cc-per');
+            var total = node.querySelector('.cc-total');
+            if (room) room.style.width = pct(r.room) + '%';
+            if (per) per.style.width = pct(r.per) + '%';
+            if (total) animateNumber(total, r.total);
+          });
+
+          if (reduce) return; // no movement animation for reduced-motion users
+
+          // FLIP step 2+3: measure new positions, invert, then play.
+          var last = {};
+          var now = listEl.querySelectorAll('.cc-row');
+          for (var k = 0; k < now.length; k++) {
+            var slug = now[k].getAttribute('data-slug');
+            last[slug] = now[k].getBoundingClientRect().top;
+          }
+          for (var m = 0; m < now.length; m++) {
+            var s = now[m].getAttribute('data-slug');
+            var dy = (first[s] || last[s]) - last[s];
+            if (!dy) continue;
+            now[m].style.transition = 'none';
+            now[m].style.transform = 'translateY(' + dy + 'px)';
+          }
+          // Force reflow, then transition all to their natural spot.
+          void listEl.offsetHeight;
+          for (var n = 0; n < now.length; n++) {
+            now[n].style.transition = 'transform .5s cubic-bezier(.22,.61,.36,1)';
+            now[n].style.transform = '';
+          }
+        }
+
+        function animateNumber(el, to) {
+          var from = parseFloat((el.textContent || '').replace(/[^0-9.]/g, '')) || 0;
+          if (reduce || from === to) { el.textContent = '$' + to; return; }
+          var start = null, dur = 420;
+          function tick(ts) {
+            if (start === null) start = ts;
+            var p = Math.min(1, (ts - start) / dur);
+            var val = Math.round(from + (to - from) * (0.5 - Math.cos(p * Math.PI) / 2));
+            el.textContent = '$' + val;
+            if (p < 1) requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+        }
+
+        btns.forEach(function (b) {
+          b.addEventListener('click', function () {
+            var tier = b.getAttribute('data-tier-btn');
+            if (tier === current) return;
+            current = tier;
+            cc.setAttribute('data-tier', tier);
+            btns.forEach(function (x) {
+              var on = x === b;
+              x.classList.toggle('is-active', on);
+              x.setAttribute('aria-pressed', on ? 'true' : 'false');
+            });
+            render(tier);
+          });
+        });
+      }
+
+      /* ---- Region switch: cross-fade panels ---- */
+      var rgToolbar = document.getElementById('rg-toolbar');
+      if (rgToolbar) {
+        var tabs = rgToolbar.querySelectorAll('[data-region-btn]');
+        var panels = document.querySelectorAll('[data-region-panel]');
+        tabs.forEach(function (t) {
+          t.addEventListener('click', function () {
+            var name = t.getAttribute('data-region-btn');
+            tabs.forEach(function (x) {
+              var on = x === t;
+              x.classList.toggle('is-active', on);
+              x.setAttribute('aria-pressed', on ? 'true' : 'false');
+            });
+            panels.forEach(function (p) {
+              var on = p.getAttribute('data-region-panel') === name;
+              p.hidden = !on;
+              p.classList.toggle('is-active', on);
+            });
+          });
+        });
+      }
+    })();
+  </script>
+</Base>

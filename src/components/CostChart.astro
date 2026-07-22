@@ -1,0 +1,138 @@
+---
+// Reusable ranked, stacked cost-comparison bar chart.
+//
+// Reads live country data passed in by the caller. Nothing here is hardcoded:
+// the bars, order, totals and the client-side tier payload are all derived from
+// the `countries` prop at build time, so adding a country or changing a figure
+// in the data updates this chart on the next build.
+//
+// Each country contributes cash.styles: an array of three tiers
+//   { n: 'Budget'|'Mid-range'|'Comfort', per: <number>, room: <number> }
+// TOTAL for a tier = per + room (a typical day including a room).
+//
+// The component server-renders the default tier (so the page is correct and
+// readable with no JS), and embeds a compact per-tier payload that the page's
+// script uses to recompute, re-sort and animate when the tier changes.
+
+const {
+  countries = [],
+  defaultTier = 'Mid-range',
+  tiers = ['Budget', 'Mid-range', 'Comfort'],
+  id = 'costchart',
+} = Astro.props;
+
+const tierOf = (c, name) => (c.cash && c.cash.styles || []).find(s => s.n === name);
+
+// Build a clean, self-contained model for every tier: for each country, its
+// per/room/total under that tier. This is the single source the client reuses.
+function modelForTier(name) {
+  return countries
+    .map(c => {
+      const t = tierOf(c, name);
+      if (!t || typeof t.per !== 'number' || typeof t.room !== 'number') return null;
+      return { slug: c.slug, name: c.name, region: c.region, per: t.per, room: t.room, total: t.per + t.room };
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.total - b.total);
+}
+
+const payload = {};
+for (const name of tiers) payload[name] = modelForTier(name);
+
+const initial = payload[defaultTier] || [];
+// A shared scale max across ALL tiers so bar lengths stay comparable when the
+// tier changes (Comfort would otherwise silently rescale the whole axis).
+let scaleMax = 0;
+for (const name of tiers) for (const row of payload[name]) if (row.total > scaleMax) scaleMax = row.total;
+// Round the axis max up to a tidy step for a calm, readable axis.
+const step = 100;
+const axisMax = Math.ceil(scaleMax / step) * step;
+const ticks = [];
+for (let v = 0; v <= axisMax; v += step) ticks.push(v);
+
+const pct = v => (axisMax ? (v / axisMax) * 100 : 0);
+---
+
+<div class="cc" id={id} data-scalemax={axisMax} data-tier={defaultTier}>
+  <div class="cc-toolbar" role="group" aria-label="Choose a travel style">
+    {tiers.map(name => (
+      <button
+        type="button"
+        class:list={["cc-tier", { 'is-active': name === defaultTier }]}
+        data-tier-btn={name}
+        aria-pressed={name === defaultTier ? 'true' : 'false'}
+      >{name}</button>
+    ))}
+  </div>
+
+  <div class="cc-axis" aria-hidden="true">
+    {ticks.map(v => (
+      <span class="cc-tick" style={`left:${pct(v)}%`}><i></i><em>${v}</em></span>
+    ))}
+  </div>
+
+  <ol class="cc-list" id={`${id}-list`}>
+    {initial.map((row, i) => (
+      <li class="cc-row" data-slug={row.slug} style={`--rank:${i}`}>
+        <a class="cc-name" href={`/${row.slug}`}>{row.name}</a>
+        <span class="cc-track">
+          <span class="cc-bar">
+            <span class="cc-seg cc-room" style={`width:${pct(row.room)}%`}
+              title={`Room: $${row.room}`}></span>
+            <span class="cc-seg cc-per" style={`width:${pct(row.per)}%`}
+              title={`On the ground: $${row.per}`}></span>
+          </span>
+          <span class="cc-total num">${row.total}</span>
+        </span>
+      </li>
+    ))}
+  </ol>
+
+  <p class="cc-legend" aria-hidden="true">
+    <span class="cc-key cc-room"></span> Room
+    <span class="cc-key cc-per"></span> On the ground (food, local transport, activities)
+    <span class="cc-hint">Full bar length is the typical daily total.</span>
+  </p>
+
+  <script type="application/json" data-cc-payload={id} set:html={JSON.stringify(payload)} />
+</div>
+
+<style>
+  .cc{--room:#0A5644;--per:#9CC7B6;margin:0}
+  .cc-toolbar{display:inline-flex;gap:4px;padding:4px;background:var(--card);border:1px solid var(--line);border-radius:999px;margin:0 0 22px;box-shadow:var(--shadow)}
+  .cc-tier{font:inherit;font-size:13.5px;font-weight:600;color:var(--muted);background:transparent;border:0;border-radius:999px;padding:7px 16px;cursor:pointer;transition:color .18s ease,background .18s ease}
+  .cc-tier:hover{color:var(--teal-deep)}
+  .cc-tier.is-active{color:#fff;background:var(--teal-deep)}
+
+  /* Quiet axis: thin ticks, no heavy gridlines. */
+  .cc-axis{position:relative;height:18px;margin-left:clamp(88px,22%,150px)}
+  .cc-tick{position:absolute;top:0;transform:translateX(-50%);font-size:11px;color:var(--muted)}
+  .cc-tick i{display:block;position:absolute;top:16px;left:50%;width:1px;height:9999px;background:var(--line);opacity:.5}
+  .cc-tick em{font-style:normal;font-variant-numeric:tabular-nums}
+
+  .cc-list{list-style:none;margin:6px 0 0;padding:0;position:relative}
+  .cc-row{display:grid;grid-template-columns:clamp(88px,22%,150px) 1fr;align-items:center;gap:0;padding:5px 0;will-change:transform}
+  .cc-name{font-size:13.5px;font-weight:600;color:var(--ink);text-decoration:none;padding-right:12px;text-align:right;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cc-name:hover{color:var(--teal-deep);text-decoration:underline}
+  .cc-track{display:flex;align-items:center;gap:10px;min-width:0}
+  .cc-bar{position:relative;display:flex;height:15px;border-radius:5px;overflow:hidden;flex:1;min-width:0;background:transparent}
+  .cc-seg{height:100%;transition:width .5s cubic-bezier(.22,.61,.36,1)}
+  .cc-seg.cc-room{background:var(--room)}
+  .cc-seg.cc-per{background:var(--per)}
+  .cc-total{flex:0 0 auto;font-family:var(--serif);font-size:15px;color:var(--ink);min-width:52px;font-variant-numeric:tabular-nums}
+
+  .cc-legend{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:12.5px;color:var(--muted);margin:20px 0 0}
+  .cc-key{width:12px;height:12px;border-radius:3px;display:inline-block}
+  .cc-key.cc-room{background:var(--room)}
+  .cc-key.cc-per{background:var(--per);margin-left:8px}
+  .cc-hint{flex-basis:100%;color:var(--muted)}
+
+  @media (max-width:560px){
+    .cc-axis{margin-left:84px}
+    .cc-row{grid-template-columns:84px 1fr}
+    .cc-total{min-width:46px;font-size:14px}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .cc-seg{transition:none}
+  }
+</style>
