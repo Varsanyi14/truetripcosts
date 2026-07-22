@@ -144,5 +144,233 @@ export default {
         note: "Good to know: Namibia has some of the darkest night skies in the world for stargazing" }
     ],
     pride: "Namibians carry a quiet pride in their vast, dramatic land and in a young nation that has become one of Africa's conservation leaders, with wildlife protected across community conservancies. Greet people warmly, take your time, ask before you photograph, and the welcome you get in return is genuine and generous."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "visa",
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need a visa for Namibia? Yes, since April 2025 (2026) | True Trip Costs",
+      description: "Namibia is no longer visa-free for US citizens: since 1 April 2025 you need a visa, N$1,600 (about US$88), by e-Visa or on arrival. Older guides still say visa-free, which is now wrong. Here is the official portal and what you need. Checked July 2026.",
+      h1: "Do US citizens need a visa for Namibia?",
+      lede: "This one has changed, and a lot of the internet has not caught up. Namibia used to be visa-free for Americans; since April 2025 it is not. Here is what you actually need, and the official place to get it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Yes. Since <b>1 April 2025</b>, US citizens need a <b>visa</b> to enter Namibia, and it costs <b>N$1,600</b> (about <b>US$88</b>). You can get it two ways: apply online in advance for an <b>e-Visa</b> at the official portal, or buy a <b>visa on arrival</b> at the main airports and larger border posts. It is normally valid for <b>30 days</b> with multiple entry. A lot of older travel content still says Namibia is visa-free for Americans, which is <b>out of date</b>.",
+      official: {
+        label: "Republic of Namibia, Ministry of Home Affairs, Immigration, Safety and Security: the official e-Visa portal",
+        url: "https://eservices.mhaiss.gov.na",
+        note: "The official government portal for the e-Visa. The visa on arrival is also available at Hosea Kutako (Windhoek) and Walvis Bay airports and at high-volume border posts. The system is fairly new, so fees and details can change, confirm on the portal before you travel."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "What changed, and why the confusion",
+          p: [
+            "For years, US citizens could enter Namibia visa-free. That ended on <b>1 April 2025</b>, when Namibia introduced a visa requirement for citizens of more than 30 countries, including the US, Canada, the UK and Australia, as a reciprocal measure. The fee is <b>N$1,600</b> for non-African-Union nationals, roughly <b>US$88</b> (the figure moves a little with the exchange rate, since it is set in Namibian dollars).",
+            "Because the change is recent, <b>much of the search results still says Namibia is visa-free</b> for Americans. It is not. Do not rely on an old blog post, check the official portal."
+          ]
+        },
+        {
+          h: "Two ways to get it: e-Visa or on arrival",
+          p: [
+            "<b>e-Visa (recommended):</b> apply online in advance at the official portal, upload a passport photo and your passport page, pay the fee, and carry a <b>printed copy</b> of your approval to show on arrival. Processing is usually quick, but give it a week to be safe.",
+            "<b>Visa on arrival:</b> available at <b>Hosea Kutako International Airport</b> (Windhoek) and <b>Walvis Bay</b> airport, and at high-volume land borders such as Katima Mulilo and Ngoma. It works, but applying online first avoids any queue or uncertainty at the border."
+          ]
+        },
+        {
+          h: "What you need to bring",
+          p: [
+            "Have these ready whichever route you choose:"
+          ],
+          steps: [
+            "A passport valid for at least six months with at least three blank pages.",
+            "Proof of accommodation and a travel itinerary.",
+            "Travel or medical insurance for your trip.",
+            "Proof of sufficient funds for your stay.",
+            "If traveling with children, unabridged birth certificates, plus a notarized consent letter if one parent is traveling alone with a child."
+          ]
+        },
+        {
+          h: "How long you can stay, and before you land",
+          p: [
+            "The visa is normally issued for <b>30 days</b>, though an immigration officer may grant up to <b>90 days</b> on arrival, with multiple entry within the period, and you can apply to <b>extend</b> at the Ministry of Home Affairs in Windhoek. One extra fee to know: cruise passengers coming ashore at <b>Walvis Bay and Luderitz</b> pay a separate <b>N$300 day-visit fee</b>.",
+            "The visa system is <b>new and still settling</b>, so treat any fee or rule as subject to change and confirm it on the official portal close to your trip. Work, study and volunteer visas must be arranged through a Namibian embassy in advance, this route covers tourism and short visits only. For how money works once you are in, see the <a href=\"/namibia\">Namibia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Namibia in 2026?", a: "Yes, since 1 April 2025. It costs N$1,600 (about US$88). Apply for the e-Visa in advance at eservices.mhaiss.gov.na, or get a visa on arrival at the main airports and larger borders. It is normally 30 days with multiple entry. Older 'visa-free' content is out of date." },
+        { q: "How much is a Namibia visa for Americans?", a: "N$1,600 for non-African-Union nationals, roughly US$88, since it is set in Namibian dollars and moves with the exchange rate. Children under 6 are exempt. Cruise passengers coming ashore at Walvis Bay or Luderitz pay a separate N$300 day-visit fee." },
+        { q: "Can I get a Namibia visa on arrival?", a: "Yes, at Hosea Kutako (Windhoek) and Walvis Bay airports and at high-volume borders like Katima Mulilo and Ngoma. But applying online for the e-Visa first, and carrying a printed approval, avoids queues and uncertainty at the border." },
+        { q: "What is the official Namibia visa website?", a: "eservices.mhaiss.gov.na, the Ministry of Home Affairs, Immigration, Safety and Security portal. The system is new, so confirm the current fee and requirements there before you travel." }
+      ],
+      sources: {
+        links: [
+          { label: "US Embassy in Namibia: new entry requirements for US citizen tourists, effective 1 April 2025", url: "https://na.usembassy.gov/new-entry-requirements-for-u-s-citizen-tourists-entering-namibia-effective-april-1-2025/", type: "gov" },
+          { label: "Republic of Namibia, Ministry of Home Affairs: the official e-Services e-Visa portal", url: "https://eservices.mhaiss.gov.na", type: "gov" }
+        ],
+        judgment: "The visa requirement from 1 April 2025 and the N$1,600 fee are confirmed by the US Embassy in Namibia and the Namibian government; the US dollar figure is approximate since the fee is set in Namibian dollars, and the system is new, so confirm current details on the official portal. Checked July 2026."
+      }
+    },
+    {
+      slug: "cash-or-card",
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Namibia, or can I use cards? Fuel, the rand and long roads (2026) | True Trip Costs",
+      description: "Namibia is card-friendly in towns but cash-first on the road: fuel stations often want cash and small towns run on it. Plus the Namibian dollar is pegged to the rand, which you can spend. How to get cash and how much to carry. Checked July 2026.",
+      h1: "Do I need cash in Namibia, or can I use cards?",
+      lede: "In Windhoek and the tourist towns, cards are fine. The catch is the driving: Namibia is a road-trip country, and fuel and remote stops often mean cash. Here is how to plan for both.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Cards work well in <b>towns</b>, cash matters <b>on the road</b>. In Windhoek, Swakopmund and at lodges you can mostly tap or swipe, but <b>fuel stations frequently want cash</b>, and small towns and remote areas run on it. The currency is the <b>Namibian dollar (NAD)</b>, pegged one-to-one to the <b>South African rand</b>, and <b>rand is accepted everywhere</b> in Namibia, so you can spend either. Carry enough cash for fuel and a day of small spending, especially when driving.",
+      sections: [
+        {
+          h: "The rand and the Namibian dollar",
+          p: [
+            "Namibia uses the <b>Namibian dollar (NAD, or N$)</b>, which is <b>pegged one-to-one to the South African rand (ZAR)</b>. The rand is legal tender in Namibia and circulates freely, so <b>you can pay in either</b>, and you will often get change in a mix of both. One thing to know for the way out: <b>Namibian dollars are generally not accepted in South Africa</b>, so if you are heading there next, spend or change your NAD first (rand travels fine in both directions).",
+            "For the official peg and currency, the reference is the Bank of Namibia."
+          ]
+        },
+        {
+          h: "Where cards work, and where cash rules",
+          p: [
+            "<b>Cards (Visa and Mastercard)</b> are widely accepted in Windhoek, Swakopmund, supermarkets, restaurants and safari lodges. Where cash matters is the part that defines a Namibia trip: <b>the driving</b>. Many <b>fuel stations, especially outside the main towns, take cash only</b> or cannot be relied on for cards, and Namibia's distances are long, so running low on both fuel and cash far from anywhere is a real risk.",
+            "<b>Small towns, markets, craft stalls, some park fees and tips</b> are also cash. So the rule of thumb: card for the towns, but never set off on a long drive without enough cash for fuel and the day."
+          ]
+        },
+        {
+          h: "Getting cash, and the dollar trap",
+          p: [
+            "Draw cash from a <b>bank ATM</b> in town, Bank Windhoek, First National Bank (FNB), Standard Bank and Nedbank all take foreign Visa and Mastercard. Withdraw a useful amount before a long drive, since ATMs thin out fast once you leave the main centers.",
+            "When an ATM or card machine offers to charge you in <b>US dollars instead of Namibian dollars, always choose Namibian dollars</b> (or rand). The home-currency option is dynamic currency conversion, a poor rate. Keep your cash in a mix of usable notes for fuel, tips and small stops."
+          ]
+        },
+        {
+          h: "How much to carry",
+          p: [
+            "Enough for at least a couple of fuel fill-ups plus a day of food, tips and incidentals, topped up whenever you pass through a town with an ATM. On a self-drive safari, plan your cash by the leg, not the day.",
+            "For the fuller money picture, and the visa you now need, see the <a href=\"/namibia\">Namibia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Namibia, or can I use cards?", a: "Cards work in Windhoek, Swakopmund and at lodges, but fuel stations often want cash and small towns and remote areas run on it. Namibia is a driving country, so always carry enough cash for fuel and daily spending when you are on the road." },
+        { q: "Can I use South African rand in Namibia?", a: "Yes. The Namibian dollar is pegged one-to-one to the rand, and rand is accepted everywhere in Namibia, so you can spend either. Note that Namibian dollars are generally not accepted in South Africa, so spend them before you cross." },
+        { q: "Do fuel stations in Namibia take cards?", a: "Some do, especially in the main towns, but many outside the cities are cash-only or unreliable for cards. Given the long distances between stations, never start a long drive without enough cash for fuel." },
+        { q: "Which ATMs work with foreign cards in Namibia?", a: "Bank Windhoek, FNB, Standard Bank and Nedbank ATMs in towns take foreign Visa and Mastercard. Withdraw a useful amount before heading into remote areas, and choose Namibian dollars (or rand) rather than your home currency at the machine." }
+      ],
+      sources: {
+        links: [
+          { label: "Bank of Namibia: the official Namibian dollar and its one-to-one peg to the South African rand", url: "https://www.bon.com.na", type: "bank" },
+          { label: "US Embassy in Namibia: information for US travelers", url: "https://na.usembassy.gov", type: "gov" }
+        ],
+        judgment: "The rand peg is set by the Bank of Namibia; card acceptance, ATM availability and the cash-heavy fuel situation are our practical read from recent traveler guidance and vary by station and town, so treat them as planning guidance. Checked July 2026."
+      }
+    },
+    {
+      slug: "tipping",
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Namibia: restaurants, fuel attendants, car guards and safari guides (2026) | True Trip Costs",
+      description: "Tipping in Namibia for US travelers: around 10% at restaurants, small tips for the fuel attendant and car guards (a local thing worth knowing), and the customary daily tip for safari guides and lodge staff. Cash in Namibian dollars or rand. Checked July 2026.",
+      h1: "Tipping in Namibia",
+      lede: "Namibia has a modest, friendly tipping culture with a couple of local twists: you tip the person who pumps your fuel, and safari guides and lodge staff are where tipping really counts.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Tipping in Namibia is <b>modest and appreciated</b>. At restaurants, <b>around 10%</b> is standard (check first for a service charge, sometimes added for groups). Two local ones to know: give the <b>fuel attendant</b> a small tip (they pump and clean your windscreen), and tip <b>car guards</b> who watch your parked car a few dollars. On <b>safari</b>, tipping guides and lodge staff is customary and genuinely valued. Tip in <b>cash</b>, in Namibian dollars or rand.",
+      sections: [
+        {
+          h: "Restaurants and everyday tipping",
+          p: [
+            "At sit-down <b>restaurants</b>, <b>around 10%</b> for good service is the norm. Check the bill first: some places add a <b>service charge</b> automatically, often for larger groups, in which case you need not add more. In cafes and bars, rounding up or leaving small change is fine.",
+            "This is a cash-friendly habit: tips reach staff most reliably as <b>cash</b>, in Namibian dollars or rand, rather than added to a card."
+          ]
+        },
+        {
+          h: "The two Namibian ones: fuel attendants and car guards",
+          p: [
+            "Namibia has <b>no self-service fuel</b>: an attendant pumps your fuel, and usually offers to check your oil and tyres and clean the windscreen. A small tip of around <b>N$5 to N$10</b> for this is customary and always appreciated, more on a long road trip where they have really helped.",
+            "In town car parks and on the street, <b>car guards</b> (often in a numbered vest) keep an eye on parked cars. Handing them a few Namibian dollars when you leave, say <b>N$5 to N$10</b>, is the normal, expected courtesy."
+          ]
+        },
+        {
+          h: "Safari guides and lodge staff: where it counts",
+          p: [
+            "On a <b>safari or at a lodge</b>, tipping is a real and expected part of the experience. A <b>guide</b> who drives and leads your game viewing is customarily tipped <b>per guest per day</b>, and most lodges also have a <b>general staff tip box</b> shared among the people you do not see: kitchen, housekeeping and grounds. As a benchmark, something in the range of <b>N$50 to N$150 per guest per day</b> for a good guide is common, with the lodge box separate, but follow your lodge's own guidance, which they are happy to give.",
+            "Hand a guide's tip over directly at the end of your stay, and put the general tip in the box rather than to one person."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much should I tip in Namibia?", a: "Modest. Around 10% at restaurants (check for a service charge first), small tips for fuel attendants and car guards, and a customary daily tip for safari guides and lodge staff. Tip in cash, in Namibian dollars or rand." },
+        { q: "Do you tip fuel attendants in Namibia?", a: "Yes. There is no self-service fuel; an attendant pumps your fuel and often checks your oil and cleans the windscreen. A tip of around N$5 to N$10 is customary, a little more if they have gone out of their way on a long drive." },
+        { q: "How much do you tip a safari guide in Namibia?", a: "Tipping guides is customary. A common benchmark is roughly N$50 to N$150 per guest per day for a good guide, handed over at the end, with a separate contribution to the lodge's general staff tip box. Your lodge will happily advise its own norm." },
+        { q: "Should I tip in Namibian dollars or rand?", a: "Either works: both circulate freely and are pegged one-to-one. Tip in cash rather than on a card, so it reaches staff directly, and keep small notes handy for attendants, car guards and porters." }
+      ],
+      sources: {
+        links: [
+          { label: "US Embassy in Namibia: information and local guidance for US travelers", url: "https://na.usembassy.gov", type: "gov" }
+        ],
+        judgment: "Tipping is cultural, not legislated, so these figures, including the safari guide range, are our read from recent traveler and lodge guidance rather than an official table, and lodges vary in what they suggest. Checked July 2026."
+      }
+    },
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      caution: "medium",
+      title: "Taxis and getting around Namibia: self-drive, and the local apps (2026) | True Trip Costs",
+      description: "How to get around Namibia: most visitors self-drive, and there is no Uber or Bolt. The two local ride-hailing apps (LEFA and Yango), airport transfers from Hosea Kutako, and why shared taxis need caution. Checked July 2026.",
+      h1: "Taxis and getting around Namibia",
+      lede: "Namibia is a self-drive country first and foremost. If you are not renting a car, ride-hailing exists only in the main towns, and it is not the apps you know from home. Here is how it really works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Most visitors <b>self-drive</b>, it is how Namibia is built to be seen, and there is <b>no Uber or Bolt here</b>. In the main towns you can use two <b>local ride-hailing apps</b>, <b>LEFA</b> (Windhoek) and <b>Yango</b> (Windhoek plus Swakopmund, Walvis Bay and a few other towns), which need mobile data to book. From the <b>airport</b>, use LEFA or a pre-arranged transfer. Be cautious with <b>informal shared taxis</b>, and note that outside the towns, ride apps stop working, so plan around driving.",
+      sections: [
+        {
+          h: "Self-drive is the default",
+          p: [
+            "Namibia is a <b>road-trip country</b>: vast distances, gravel roads, and the best sights spread far apart. For most visitors, renting a car (often a 4x4 for the gravel and the parks) is the standard and honestly the best way to get around, or joining an organized tour. There are <b>no ride-hailing apps once you leave the main towns</b>, and in smaller places you may not see a taxi at all, so your transport plan is really your driving plan.",
+            "If you are driving, cash for fuel matters, see the <a href=\"/namibia\">Namibia money guide</a> for that."
+          ]
+        },
+        {
+          h: "In the towns: LEFA and Yango, not Uber",
+          p: [
+            "There is <b>no Uber, Bolt or Lyft in Namibia</b>, and there never has been. What you have instead are two <b>local ride-hailing apps</b> that work much like Uber: <b>LEFA</b>, the Windhoek pioneer, covering the city and the airport and nearby lodges; and <b>Yango</b>, which has slightly wider reach, Windhoek plus Swakopmund, Walvis Bay and a handful of other towns.",
+            "Both let you book and track a ride from your phone and pay by app or cash, but they <b>need an internet connection</b>, so get a local SIM or eSIM on arrival. In town, they are the safe, fair-priced way to get around."
+          ]
+        },
+        {
+          h: "From the airport",
+          p: [
+            "Namibia's main gateway, <b>Hosea Kutako International Airport</b>, is about <b>45 km east of Windhoek</b>, so the transfer into the city is a proper drive, not a short hop. The easy options are a <b>LEFA</b> booking or a <b>pre-arranged shuttle or lodge transfer</b>, agree the price in advance.",
+            "If you are picking up a <b>rental car</b>, you can collect it at the airport and drive in yourself. Either way, sort your plan before you land rather than looking for a taxi rank on arrival."
+          ]
+        },
+        {
+          h: "Shared taxis, and a note of caution",
+          p: [
+            "In Windhoek you will see <b>shared taxis</b> (sedans running fixed routes and picking up several passengers) which are very cheap and used by locals. For visitors they carry more <b>caution</b>: routes are informal, cars can be crowded, and there are the usual petty-theft and safety concerns, so they are not the first choice for a tourist finding their feet.",
+            "If you are not driving, the local apps are the safer bet in town. For anything beyond the towns, plan to drive or travel with a tour."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is there Uber in Namibia?", a: "No. Namibia has never had Uber, Bolt or Lyft. Instead there are two local ride-hailing apps: LEFA (Windhoek) and Yango (Windhoek plus Swakopmund, Walvis Bay and some other towns). Both need mobile data to book, so get a local SIM or eSIM." },
+        { q: "What is the best way to get around Namibia?", a: "Self-drive. Namibia's distances are long and the sights are spread out, so most visitors rent a car (often a 4x4) or join a tour. Ride-hailing apps only work in the main towns, and taxis can be absent in smaller places." },
+        { q: "How do I get from Hosea Kutako airport to Windhoek?", a: "The airport is about 45 km from the city, so it is a real drive. Book a LEFA ride or a pre-arranged shuttle or lodge transfer (confirm the price in advance), or collect a rental car at the airport and drive in." },
+        { q: "Are shared taxis in Namibia safe for tourists?", a: "Shared taxis in Windhoek are cheap and used by locals, but for visitors they carry more caution: informal routes, crowded cars, and petty-theft risk. The local ride-hailing apps or a pre-arranged transfer are safer choices in town." }
+      ],
+      sources: {
+        links: [
+          { label: "LEFA: Namibia's first ride-hailing app, for Windhoek rides and airport transfers", url: "https://lefa.com.na", type: "guide" },
+          { label: "US Embassy in Namibia: information and safety guidance for US travelers", url: "https://na.usembassy.gov", type: "gov" }
+        ],
+        judgment: "The two local apps (LEFA and Yango) and the absence of Uber and Bolt are confirmed against the apps' own sites and recent traveler reports, though coverage and the towns served change over time, so confirm before you rely on an app. The self-drive emphasis and the shared-taxi caution are our practical read. Checked July 2026."
+      }
+    }
+  ]
 };
