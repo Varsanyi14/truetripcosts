@@ -67,11 +67,16 @@ const pct = v => (axisMax ? (v / axisMax) * 100 : 0);
 
   <div class="cc-axis" aria-hidden="true">
     {ticks.map(v => (
-      <span class="cc-tick" style={`left:${pct(v)}%`}><i></i><em>${v}</em></span>
+      <span class="cc-tick" style={`left:${pct(v)}%`}><em>${v}</em></span>
     ))}
   </div>
 
   <ol class="cc-list" id={`${id}-list`}>
+    <span class="cc-gridlayer" aria-hidden="true">
+      {ticks.map(v => (
+        <span class="cc-grid" style={`left:${pct(v)}%`}></span>
+      ))}
+    </span>
     {initial.map((row, i) => (
       <li class="cc-row" data-slug={row.slug} style={`--rank:${i}`}>
         <a class="cc-name" href={`/${row.slug}`}>{row.name}</a>
@@ -100,17 +105,22 @@ const pct = v => (axisMax ? (v / axisMax) * 100 : 0);
 <style>
   .cc{--room:#0A5644;--per:#9CC7B6;margin:0}
   .cc-toolbar{display:inline-flex;gap:4px;padding:4px;background:var(--card);border:1px solid var(--line);border-radius:999px;margin:0 0 22px;box-shadow:var(--shadow)}
-  .cc-tier{font:inherit;font-size:13.5px;font-weight:600;color:var(--muted);background:transparent;border:0;border-radius:999px;padding:7px 16px;cursor:pointer;transition:color .18s ease,background .18s ease}
-  .cc-tier:hover{color:var(--teal-deep)}
-  .cc-tier.is-active{color:#fff;background:var(--teal-deep)}
+  .cc-tier{font:inherit;font-size:13.5px;font-weight:600;color:var(--muted);background:transparent;border:0;border-radius:999px;padding:7px 16px;cursor:pointer;transition:color .18s ease,background .18s ease,box-shadow .18s ease}
+  .cc-tier:hover{color:var(--amber)}
+  .cc-tier.is-active{color:#fff;background:var(--amber);box-shadow:0 1px 2px rgba(180,83,9,.25)}
 
   /* Quiet axis: thin ticks, no heavy gridlines. */
   .cc-axis{position:relative;height:18px;margin-left:clamp(88px,22%,150px)}
   .cc-tick{position:absolute;top:0;transform:translateX(-50%);font-size:11px;color:var(--muted)}
-  .cc-tick i{display:block;position:absolute;top:16px;left:50%;width:1px;height:9999px;background:var(--line);opacity:.5}
   .cc-tick em{font-style:normal;font-variant-numeric:tabular-nums}
 
-  .cc-list{list-style:none;margin:6px 0 0;padding:0;position:relative}
+  /* Gridlines are drawn inside the bar list and clipped to it, so they stop at
+     the bottom of the last bar instead of running down the whole page. The layer
+     overlays exactly the bar column (left edge at the name column), and each line
+     is positioned by the same left:% the axis ticks use. */
+  .cc-list{list-style:none;margin:6px 0 0;padding:0;position:relative;overflow:hidden}
+  .cc-gridlayer{position:absolute;top:0;bottom:0;left:clamp(88px,22%,150px);right:calc(52px + 10px);pointer-events:none}
+  .cc-grid{position:absolute;top:0;bottom:0;width:1px;background:var(--line);opacity:.5;transform:translateX(-50%)}
   .cc-row{display:grid;grid-template-columns:clamp(88px,22%,150px) 1fr;align-items:center;gap:0;padding:5px 0;will-change:transform}
   .cc-name{font-size:13.5px;font-weight:600;color:var(--ink);text-decoration:none;padding-right:12px;text-align:right;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .cc-name:hover{color:var(--teal-deep);text-decoration:underline}
@@ -129,6 +139,7 @@ const pct = v => (axisMax ? (v / axisMax) * 100 : 0);
 
   @media (max-width:560px){
     .cc-axis{margin-left:84px}
+    .cc-gridlayer{left:84px;right:calc(46px + 10px)}
     .cc-row{grid-template-columns:84px 1fr}
     .cc-total{min-width:46px;font-size:14px}
   }

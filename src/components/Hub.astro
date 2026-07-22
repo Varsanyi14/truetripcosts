@@ -69,6 +69,13 @@ const crumbLd = {
       </section>
     )}
 
+    {hub.cardType === 'country' && items.length > 0 && (
+      <p class="hub-compare">
+        See how these countries compare on daily cost:
+        <a href="/cost-comparison">the cost of a day, ranked</a>.
+      </p>
+    )}
+
   </main>
   <Footer />
 
@@ -103,5 +110,8 @@ const crumbLd = {
     .hub-chip.is-warn{color:#7A3D08;background:var(--amber-bg)}
     .hub-chip.is-neutral{color:var(--muted);background:#EDEBE4}
     @media (max-width:560px){ .hub-lede{font-size:16.5px} }
+    .hub-compare{font-size:15px;color:var(--muted);margin:0 0 40px}
+    .hub-compare a{color:var(--teal-deep);font-weight:600;text-decoration:none}
+    .hub-compare a:hover{text-decoration:underline}
   </style>
 </Base>
