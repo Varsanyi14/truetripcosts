@@ -143,5 +143,233 @@ export default {
         note: "Good to know: Galle Fort is a UNESCO World Heritage site built by the Dutch" }
     ],
     pride: "Sri Lankans carry themselves with warmth and quiet resilience, proud of an island that survived a long civil conflict and a hard economic crisis and keeps welcoming the world with a smile. Greet people with Ayubowan, show respect at the temples, and the kindness you get in return is genuine and generous."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "eta",
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need a visa for Sri Lanka? The free ETA, explained (2026) | True Trip Costs",
+      description: "Since 25 May 2026, Sri Lanka's tourist ETA is free for US citizens, but it is still mandatory: you must get it online before you fly. Older guides still say it costs about $50. Here is the official portal and how to confirm your fee shows zero. Checked July 2026.",
+      h1: "The free Sri Lanka ETA for US citizens",
+      lede: "Sri Lanka made its tourist ETA free for Americans in May 2026, but free does not mean skip it: you still have to get one before you board. Here is how, and how to make sure you are not overcharged by a lookalike site.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Yes, you need an <b>ETA</b> (Electronic Travel Authorization), and since <b>25 May 2026 it is free</b> for US citizens, but it is <b>still mandatory</b>. You must apply online <b>before you fly</b> at the official portal, and you get a <b>30-day stay with double entry</b>. Most older guides still say it costs about $50, which is now out of date for Americans. Apply only on a <b>.gov.lk</b> site so you are not charged a bogus fee.",
+      official: {
+        label: "Sri Lanka Department of Immigration and Emigration: the official ETA portal",
+        url: "https://eta.gov.lk",
+        note: "The official government ETA site (the department also links it from immigration.gov.lk). The fee for eligible nationals, including US citizens, now shows zero. Confirm the web address ends in .gov.lk before entering any details, and apply at least a week before you fly."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "Free now, but still required",
+          p: [
+            "This is the part travelers get wrong. As of <b>25 May 2026</b>, Sri Lanka waived the tourist ETA fee for citizens of 40 countries, <b>including the US</b>. But the ETA itself is <b>still compulsory</b>: no one, whatever their nationality, may enter Sri Lanka without an approved ETA obtained <b>before arrival</b>. Free changed the price, not the requirement.",
+            "It grants a <b>30-day stay</b> with <b>double entry</b> (you can leave and come back once within the 30 days). Your passport needs <b>six months</b> of validity, and you should have proof of onward travel and enough funds for your stay. It does not permit any work, paid or unpaid."
+          ]
+        },
+        {
+          h: "How to get it, and how to confirm it is free",
+          p: [
+            "The whole thing is online and takes about ten to fifteen minutes."
+          ],
+          steps: [
+            "Go to the official portal at eta.gov.lk. Check the address ends in .gov.lk before you type anything.",
+            "Complete the tourist ETA form with your passport and travel details.",
+            "At the payment step, confirm the fee shows zero for your nationality. If a site tries to charge you around $50, you are not on the official one, so close it.",
+            "Submit and wait for the approval email, usually within 24 to 72 hours. Apply at least a week ahead, since the system has had occasional outages, and save the approval to show on arrival."
+          ]
+        },
+        {
+          h: "Why the overpaying happens",
+          p: [
+            "The fee change is recent, so <b>search results are full of stale guides</b> quoting the old $50 charge, and plenty of <b>third-party sites</b> will happily still charge you that (their markup) to file a form that is now free. The Department of Immigration warns travelers directly to verify they are on a <b>.gov.lk</b> domain before paying.",
+            "A visa on arrival is also technically available at Colombo and Mattala airports, but the department strongly advises getting your ETA online first, since it is smoother and avoids any airport queue or confusion."
+          ]
+        },
+        {
+          h: "If you want to stay longer",
+          p: [
+            "The free ETA covers <b>30 days</b>. If you want more time, you can <b>extend</b> at the Department of Immigration and Emigration in Colombo, and the extension itself does carry a fee, so budget for it if you are planning a long stay.",
+            "For how money works once you land, cards, cash, ATMs and the rest, see the <a href=\"/sri-lanka\">Sri Lanka money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Sri Lanka in 2026?", a: "You need an ETA (Electronic Travel Authorization), which since 25 May 2026 is free for US citizens but still mandatory. Apply online before you fly at the official portal eta.gov.lk. It gives a 30-day stay with double entry. A visa on arrival exists at Colombo and Mattala airports, but applying online first is strongly advised." },
+        { q: "Is the Sri Lanka ETA really free now?", a: "Yes, for citizens of 40 countries including the US, effective 25 May 2026. The fee was waived, but the ETA is still required before arrival. Many older guides still quote about $50, which is out of date, and third-party sites may still charge that as a markup. On the official .gov.lk portal, the fee shows zero." },
+        { q: "What is the official Sri Lanka ETA website?", a: "eta.gov.lk, run by the Department of Immigration and Emigration (also linked from immigration.gov.lk). The department warns travelers to confirm the address ends in .gov.lk before entering details or paying, since lookalike sites charge inflated fees for the free authorization." },
+        { q: "How long can US citizens stay in Sri Lanka on the ETA?", a: "30 days, with double entry, from your first arrival. You can extend your stay at the Department of Immigration and Emigration in Colombo for a fee. The tourist ETA does not permit any work, paid or unpaid." }
+      ],
+      sources: {
+        links: [
+          { label: "Sri Lanka Department of Immigration and Emigration: the free tourist ETA scheme for 40 countries from 25 May 2026", url: "https://www.immigration.gov.lk/pages_e.php?id=60", type: "gov" },
+          { label: "Sri Lanka Department of Immigration and Emigration: the official ETA application portal", url: "https://eta.gov.lk", type: "gov" },
+          { label: "US State Department: Sri Lanka country information, confirming the no-cost 30-day ETA for US citizens", url: "https://travel.state.gov/en/international-travel/travel-advisories/sri-lanka.html", type: "gov" }
+        ],
+        judgment: "The free ETA scheme is recent (effective 25 May 2026) and fees and rules can change, so confirm the current fee shows zero on the official .gov.lk portal before you travel. Checked July 2026."
+      }
+    },
+    {
+      slug: "cash-or-card",
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Sri Lanka, or can I use cards? (2026) | True Trip Costs",
+      description: "Sri Lanka is a cash-first country: cards work in Colombo and hotels, but tuk-tuks, street food, markets and small towns want rupees. How to get LKR from a bank ATM, decline the dollar conversion, and how much cash to carry. Checked July 2026.",
+      h1: "Do I need cash in Sri Lanka, or can I use cards?",
+      lede: "Short answer: carry rupees. Cards work fine in Colombo and at hotels, but most of the everyday, and most of the fun, runs on cash. Here is how to get it well and what to keep on hand.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Cash for most things, cards in the cities. The <b>Sri Lankan rupee (LKR)</b> is what you need day to day: <b>tuk-tuks, street food, markets, temple donations and small towns are cash</b>, while <b>Visa and Mastercard</b> work at hotels, nicer restaurants and shops in Colombo and the tourist south (Amex less so). Pull rupees from a <b>bank ATM</b>, always choose <b>rupees, not dollars</b>, at the machine, and keep small notes handy.",
+      sections: [
+        {
+          h: "A cash-first country, with card islands",
+          p: [
+            "Sri Lanka runs largely on <b>cash</b>. Tuk-tuks, street food, market stalls, bus fares, temple donations and small guesthouses expect <b>rupees</b>, and outside Colombo and the main tourist towns, cards are often not an option at all. <b>Visa and Mastercard</b> are accepted at hotels, established restaurants, supermarkets and shops in Colombo and along the southern coast, with Amex much patchier.",
+            "So the working approach is simple: <b>card for the bigger, formal things, cash for everything else</b>, and always carry enough rupees for a day of small spending."
+          ]
+        },
+        {
+          h: "Getting rupees, and the dollar trap",
+          p: [
+            "Use a <b>bank ATM</b>, the major ones being Commercial Bank, Sampath, Hatton National Bank, Bank of Ceylon and People's Bank, which take foreign Visa and Mastercard. Many charge a <b>local withdrawal fee</b> per transaction on top of your own bank's, so take out a useful amount at once rather than lots of small withdrawals.",
+            "When the ATM or a card terminal asks whether to charge you in <b>US dollars or rupees, always choose rupees</b>. The dollar option is dynamic currency conversion, a poor rate. Use ATMs attached to a bank branch during the day, and decline any offer of help from a stranger at the machine."
+          ]
+        },
+        {
+          h: "Dollars, and leftover rupees",
+          p: [
+            "Do not plan to <b>spend US dollars</b> locally, you will need rupees, and paying in dollars where accepted gets a poor rate. If you bring some dollars to exchange, use a bank or an authorized money changer rather than the airport or your hotel for a better rate.",
+            "One local rule to know: the rupee is a <b>restricted currency</b>, so change any leftover rupees back before you fly home (keep your exchange receipts), since taking large amounts of LKR out of the country is not allowed and you will struggle to exchange them elsewhere."
+          ]
+        },
+        {
+          h: "How much to carry",
+          p: [
+            "Carry enough rupees for the day, tuk-tuks, meals, entry fees and tips, and top up every couple of days rather than holding a large wad. A little cash also smooths the moments cards fail, which do happen outside the cities.",
+            "For the fuller money picture and the rest, see the <a href=\"/sri-lanka\">Sri Lanka money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Sri Lanka, or can I use cards?", a: "Sri Lanka is cash-first. Cards (Visa and Mastercard) work at hotels and in Colombo and the tourist south, but tuk-tuks, street food, markets, bus fares and small towns want rupees. Carry small notes for daily spending and use a card for larger, formal purchases." },
+        { q: "Which ATMs work with foreign cards in Sri Lanka?", a: "Bank ATMs from Commercial Bank, Sampath, Hatton National Bank, Bank of Ceylon and People's Bank take foreign Visa and Mastercard. Many add a local per-withdrawal fee on top of your own bank's, so withdraw a useful amount at once, and always choose rupees rather than dollars." },
+        { q: "Can I use US dollars in Sri Lanka?", a: "Not for everyday spending, you need rupees, and paying in dollars where accepted gets a poor rate. If you bring dollars to change, use a bank or an authorized money changer rather than the airport or a hotel, which give weaker rates." },
+        { q: "Can I take Sri Lankan rupees out of the country?", a: "The rupee is a restricted currency, so change any leftover rupees back before you leave and keep your exchange receipts. Taking large amounts of LKR out is not allowed, and you will struggle to exchange rupees once home." }
+      ],
+      sources: {
+        links: [
+          { label: "Central Bank of Sri Lanka: the official rupee (LKR) reference and currency rules", url: "https://www.cbsl.gov.lk/en", type: "bank" },
+          { label: "US State Department: Sri Lanka country information and money guidance for travelers", url: "https://travel.state.gov/en/international-travel/travel-advisories/sri-lanka.html", type: "gov" }
+        ],
+        judgment: "Card acceptance and ATM fees vary by your own bank, and the currency-export rule is set by the Central Bank of Sri Lanka; much of the rest is our practical read, so treat amounts as a guide. Checked July 2026."
+      }
+    },
+    {
+      slug: "tipping",
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Sri Lanka: how much, and when it is already on the bill (2026) | True Trip Costs",
+      description: "Tipping in Sri Lanka for US travelers: the 10% service charge often already on restaurant bills, what to give drivers and guides (a bigger deal here), and the small notes for hotel staff and tuk-tuks. Cash in rupees. Checked July 2026.",
+      h1: "Tipping in Sri Lanka",
+      lede: "Sri Lanka has a modest, warm tipping culture. The main things to know: restaurants often add a service charge already, and the person you will most want to tip well is your driver or guide.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Tipping in Sri Lanka is <b>modest and appreciated, not obligatory</b>. Restaurants frequently add a <b>10% service charge</b> to the bill, so <b>check first</b>: if it is there, you need not add more; if not, around <b>10%</b> is generous. <b>Round up</b> tuk-tuk fares, leave <b>small rupee notes</b> for hotel staff, and, if you have a <b>driver or guide</b> for a tour, a daily tip is genuinely valued. Always tip in <b>cash, in rupees</b>.",
+      sections: [
+        {
+          h: "Restaurants: check for the service charge",
+          p: [
+            "Many Sri Lankan restaurants, especially hotels and tourist spots, add a <b>10% service charge</b> to the bill by default. If it is already there, you have effectively tipped, and anything extra is optional for standout service. If there is <b>no</b> service charge, leaving around <b>10%</b> is a generous, welcome gesture.",
+            "As always, <b>read the bill before you add anything</b>, so you are not paying a tip twice."
+          ]
+        },
+        {
+          h: "Drivers and guides: the one that matters most",
+          p: [
+            "This is the Sri Lanka specific point. Many visitors hire a <b>car and driver, or a driver-guide</b>, for part of their trip, and a good one makes the whole experience. Here a tip is <b>customary and meaningful</b>: something like <b>LKR 1,000 to 2,000 a day</b> for a driver-guide who has looked after you well is a fair benchmark, more for exceptional service, handed over at the end.",
+            "For a one-off guide at a site or temple, a smaller tip of a few hundred rupees is fine."
+          ]
+        },
+        {
+          h: "Everyone else, and how to tip",
+          p: [
+            "<b>Tuk-tuks:</b> rounding up the fare is a kind touch, not expected. <b>Hotel staff:</b> a small note (say LKR 100 to 500) for porters and housekeeping is appreciated. At <b>temples</b>, a modest donation in the box is customary rather than a tip.",
+            "Tip in <b>cash and in rupees</b>. It is the easiest thing for staff to use, and it reaches them directly, unlike a card tip. Keep a stash of small notes separate from your main wallet."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much should I tip in Sri Lanka?", a: "Tipping is modest. Check restaurant bills for a 10% service charge already added; if it is there, you need not add more, and if not, around 10% is generous. Round up tuk-tuk fares, give hotel staff small rupee notes, and tip a driver or guide a daily amount. Always in cash, in rupees." },
+        { q: "Do Sri Lankan restaurants add a service charge?", a: "Often yes, around 10%, especially at hotels and tourist restaurants. Read the bill before adding your own tip. If a service charge is already included, anything extra is optional for excellent service." },
+        { q: "How much do you tip a driver or guide in Sri Lanka?", a: "A daily tip is customary and appreciated. Roughly LKR 1,000 to 2,000 a day for a good driver-guide is a fair benchmark, more for exceptional service, handed over at the end of your time together. A one-off site guide can get a few hundred rupees." },
+        { q: "Should I tip in rupees or dollars in Sri Lanka?", a: "Rupees, in cash. It is the easiest thing for staff to use and it reaches them directly, unlike a card tip. Keep a stash of small notes separate from your main wallet for tips and tuk-tuks." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Sri Lanka country information and local customs", url: "https://travel.state.gov/en/international-travel/travel-advisories/sri-lanka.html", type: "gov" }
+        ],
+        judgment: "Tipping norms are cultural, not legislated rates, so the figures here are our own read from recent traveler reports and local guidance, not a single official table. The service-charge practice varies by establishment. Checked July 2026."
+      }
+    },
+    {
+      slug: "taxis-and-apps",
+      live: true,
+      topic: "taxis",
+      caution: "medium",
+      title: "Taxis and tuk-tuks in Sri Lanka: use the app, skip the haggle (2026) | True Trip Costs",
+      description: "Getting around Sri Lanka without overpaying: PickMe and Uber book metered tuk-tuks and cars so you skip the negotiation, how to handle street tuk-tuks and the airport, and the tourist-price traps to avoid. Checked July 2026.",
+      h1: "Taxis and tuk-tuks in Sri Lanka",
+      lede: "The tuk-tuk is how you will get around Sri Lankan towns, and the easy way to avoid overpaying is to let an app set the fare. Here is how, plus the airport and the traps.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Use an <b>app</b> and you skip the haggling. <b>PickMe</b> (the main local app) and <b>Uber</b> (in Colombo and larger cities) both book <b>metered tuk-tuks and cars</b>, so you pay a fair, set fare instead of negotiating. For a <b>street tuk-tuk</b>, agree the price before you get in or insist on the meter. At the <b>airport</b>, use the official taxi counter or an app pickup, and ignore the touts. Fares are low, so overpaying is more about principle than big money.",
+      sections: [
+        {
+          h: "The app is your friend: PickMe and Uber",
+          p: [
+            "The simplest way to get around Sri Lankan towns fairly is a ride app. <b>PickMe</b> is the homegrown leader and covers the most ground, including <b>metered tuk-tuks</b> as well as cars; <b>Uber</b> operates in <b>Colombo and some larger cities</b>. Both show the fare up front and let you pay by app or cash, which <b>takes the negotiation out of it entirely</b>, the single best thing you can do to avoid tourist pricing.",
+            "Download PickMe before you arrive and add a payment method, and you will rarely need to argue about a fare."
+          ]
+        },
+        {
+          h: "Street tuk-tuks: agree first or use the meter",
+          p: [
+            "Flagging a <b>tuk-tuk</b> on the street is part of the fun, but it is where overcharging happens. Many Colombo tuk-tuks have <b>meters</b>, so look for one and ask the driver to use it. If there is no meter, <b>agree the fare before you climb in</b>, and have a rough idea of the going rate from a quick app quote first.",
+            "The common lines are that the <b>meter is broken</b>, or a flat tourist price several times the real fare. It is rarely a lot of money, but a quick PickMe check keeps you honest and unbothered."
+          ]
+        },
+        {
+          h: "From the airport",
+          p: [
+            "At <b>Bandaranaike International Airport (CMB)</b> near Colombo, use the <b>official airport taxi counter</b> for a set fare, or book a <b>PickMe or Uber</b> from the app at the designated pickup area. Both are fine, and the counter is simplest late at night.",
+            "Do not agree a ride with a <b>tout</b> who approaches you inside the terminal. If your hotel offers a fixed-price airport transfer, that is also a safe, easy option, just confirm the price in advance."
+          ]
+        },
+        {
+          h: "Longer trips and drivers",
+          p: [
+            "For getting between towns, many visitors hire a <b>car and driver</b> for a day or several, which is affordable and common in Sri Lanka; agree the daily rate, and whether fuel and the driver's meals are included, up front. Trains and buses are cheap and scenic but cash-only and often crowded.",
+            "For how money works more broadly, and what to tip a driver, see the <a href=\"/sri-lanka\">Sri Lanka money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What is the best taxi app in Sri Lanka?", a: "PickMe is the local leader and covers the most of the country, booking metered tuk-tuks and cars. Uber operates in Colombo and some larger cities. Both set a fair, metered fare and remove the haggling, so download PickMe before you arrive." },
+        { q: "How do I avoid being overcharged by tuk-tuks in Sri Lanka?", a: "Book through PickMe or Uber for a set fare. For a street tuk-tuk, use the meter or agree the price before you get in, checking a quick app quote for the going rate first. The common overcharges are a 'broken' meter and a flat tourist price several times the real fare." },
+        { q: "How do I get from Colombo airport to the city?", a: "Use the official airport taxi counter at Bandaranaike International Airport (CMB) for a set fare, or book a PickMe or Uber from the app at the designated pickup area, or arrange a fixed-price hotel transfer in advance. Ignore touts who approach you in the terminal." },
+        { q: "Is Uber available in Sri Lanka?", a: "Yes, in Colombo and some larger cities. PickMe has wider coverage across the country and also books metered tuk-tuks. Either app avoids fare negotiation by setting the price up front." }
+      ],
+      sources: {
+        links: [
+          { label: "PickMe: Sri Lanka's main ride-hailing app, for metered tuk-tuks and cars", url: "https://pickme.lk", type: "guide" },
+          { label: "US State Department: Sri Lanka country information and local transport safety", url: "https://travel.state.gov/en/international-travel/travel-advisories/sri-lanka.html", type: "gov" }
+        ],
+        judgment: "Ride-app coverage and fares change, and this is partly our practical read, so confirm the apps operate where you are going and treat fares as a guide. Checked July 2026."
+      }
+    }
+  ]
 };
