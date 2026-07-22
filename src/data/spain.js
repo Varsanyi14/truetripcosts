@@ -425,6 +425,62 @@ export default {
         ],
         judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own plan. The steady points are that Spanish coverage is strong where visitors go, that a day pass is the pricey default, and that signal thins in the rural interior and the mountains."
       }
+    },
+    {
+      slug: "renting-a-car",
+      live: true,
+      topic: "driving",
+      carExcess: true,
+      title: "Renting a car in Spain (2026): the fuel-policy trick, the permit you need, and the insurance excess | True Trip Costs",
+      description: "Spain's budget rentals push a full-to-empty fuel trick that overcharges you, you legally need an International Driving Permit, and the counter's excess cover is pricey. Fewer tolls than France now. Checked Jul 2026.",
+      h1: "What does renting a car in Spain really cost?",
+      lede: "Spain is superb for a road trip, from Andalusian white towns to the northern coast, and renting is easy once you dodge two traps: a fuel policy designed to overcharge you, and a permit you must carry by law.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Two things to get right. First, choose the <b>full-to-full fuel policy</b> (pick up full, return full) and avoid the <b>full-to-empty</b> option some budget brands push, where you <b>prepay a whole tank</b>, return it empty and lose the unused fuel plus a service fee. Second, you <b>legally need an International Driving Permit</b> (IDP) with your US license; the big chains <b>refuse the car without it</b>, and a police check can fine you up to <b>150 euros</b>. On insurance, your <b>US card and policy generally do not cover you in Europe</b>, so decline the counter's pricey excess reduction and buy a <b>cheaper standalone excess policy</b>. Good news: Spain now has <b>far fewer tolls</b> than France or Italy.",
+      sections: [
+        {
+          h: "The fuel-policy trick",
+          p: [
+            "This is where Spain's cheap headline rates make their money back. The fair option is <b>full-to-full</b>: you collect the car with a full tank and return it full, paying only for what you use, so stop at a station near the airport before dropping off. Some <b>budget brands</b> instead steer you to <b>full-to-empty</b> (sometimes called prepaid fuel): you <b>pay for a whole tank up front</b>, return the car empty, and any fuel you did not use is <b>gone</b>, often with a <b>refuelling service fee</b> on top.",
+            "On a short rental you can easily lose <b>30 to 60 euros</b> this way. When you book and at the counter, pick <b>full-to-full</b>, and <b>photograph the fuel gauge and the odometer</b> at pickup and return so there is no dispute."
+          ]
+        },
+        {
+          h: "The permit you must carry",
+          p: [
+            "Spain requires non-EU drivers to hold an <b>International Driving Permit</b> alongside their home license. This one is enforced at the counter: the major chains (<b>Sixt, Hertz, Europcar, Goldcar</b>) will <b>refuse to release the car without it</b> in most cases, citing their own rules, and a police check can bring a fine of up to <b>150 euros</b> and may invalidate your insurance.",
+            "You <b>cannot get an IDP in Spain</b>. Arrange it in the US before you travel, from <b>AAA</b> (about <b>20 dollars</b>), and carry it with your physical license and passport. As elsewhere, ignore instant online IDP sellers."
+          ]
+        },
+        {
+          h: "Insurance: decline the counter, cover the excess",
+          p: [
+            "As across Europe, your <b>US auto policy and credit-card collision cover generally do not apply in Spain</b>, so you need collision protection. The confusion at the desk is deliberate: the agent bundles the <b>legally required cover</b>, optional <b>excess-reduction</b> waivers and deposit rules into one fast pitch, and tired travelers assume it is all mandatory. It is not.",
+            "The rental includes basic collision and theft cover with a <b>high excess</b>; rather than pay the counter's steep fee to reduce it, <b>decline the excess reduction</b> and hold a <b>standalone excess policy</b> bought in advance, which covers the same gap for less. That is what the option on this page covers. Decide your plan <b>before</b> you land so the counter pitch cannot rush you."
+          ]
+        },
+        {
+          h: "Tolls, age and the extras",
+          p: [
+            "Here Spain is kinder than its neighbors: <b>only about a fifth of motorways are tolled</b>, since many former toll roads (the AP autopistas) were <b>made free</b> in recent years, and free A-road alternatives are common. Where tolls remain, pay by <b>card</b> or use a <b>Via-T</b> tag; a route like <b>Barcelona to the French border</b> is around <b>15 euros</b>.",
+            "Drivers must be <b>21 or older</b> (23 to 25 for larger cars), with a <b>young-driver surcharge</b> of about <b>10 to 25 euros a day</b> under 25. One-way drops cost extra, and a <b>deposit hold</b> goes on your card. For paying day to day, see <a href=\"/spain/cash-or-card\">cash or card in Spain</a>, and the <a href=\"/spain\">Spain money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What fuel policy should I choose renting a car in Spain?", a: "Full-to-full: you pick up with a full tank and return it full, paying only for what you use. Avoid the full-to-empty (prepaid) option some budget brands push, where you pay for a whole tank up front and lose any fuel you do not use, often plus a service fee. Photograph the gauge at pickup and return." },
+        { q: "Do I need an International Driving Permit for Spain?", a: "Yes. Spain legally requires non-EU drivers, including US license holders, to carry an International Driving Permit with their license. The major chains will refuse the car without one, and a police check can fine you up to 150 euros. Get an IDP from AAA in the US before you travel; you cannot buy one in Spain." },
+        { q: "Does my US insurance cover a rental car in Spain?", a: "Generally no. Unlike in Canada, US auto policies and credit-card collision cover usually do not apply in Europe, so you need collision protection in Spain. Rather than pay the counter's steep excess-reduction fee, a standalone excess policy bought in advance covers the rental's high excess for less." },
+        { q: "Are there many toll roads in Spain?", a: "Fewer than in France or Italy. Only about a fifth of Spanish motorways are tolled, since many former toll autopistas were made free in recent years, and free A-road alternatives are common. Where tolls remain, pay by card or a Via-T tag; Barcelona to the French border is around 15 euros." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: Spain country information and road travel guidance", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Spain.html", type: "gov" },
+          { label: "Salt in our Hair: a 2026 guide to renting a car in Spain, including the IDP requirement and fuel policies", url: "https://www.saltinourhair.com/spain/rent-car-spain/", type: "guide" }
+        ],
+        judgment: "The IDP requirement and the full-to-full fuel advice are firm; exact fuel-fee losses, toll amounts and young-driver surcharges vary by company and route, so treat the euro figures as typical 2026 ranges. The steady advice is to choose full-to-full, carry an IDP, and cover the insurance excess before the counter. Checked July 2026."
+      }
     }
   ]
 };

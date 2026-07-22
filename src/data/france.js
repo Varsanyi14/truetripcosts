@@ -481,6 +481,62 @@ export default {
         ],
         judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own plan. The steady points are that French coverage is strong where visitors go, that a day pass is the pricey default, and that signal thins in the mountains and deep countryside."
       }
+    },
+    {
+      slug: "renting-a-car",
+      live: true,
+      topic: "driving",
+      carExcess: true,
+      title: "Renting a car in France (2026): autoroute tolls, the Crit'Air sticker, and the insurance excess | True Trip Costs",
+      description: "France's autoroute tolls add up (a long drive can top 50 to 90 euros), city low-emission zones need a Crit'Air sticker, and your US card usually will not cover you. Skip the counter's excess cover for a cheaper standalone policy. Checked Jul 2026.",
+      h1: "What does renting a car in France really cost?",
+      lede: "France is a joy to drive, with quiet back roads and superb motorways, and the motorways are where the meter runs. The costs to plan for are per-kilometer tolls, the low-emission sticker some cities require, and getting the insurance right before the counter.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "France is straightforward to rent in, with a few real costs. The <b>autoroute</b> motorways are tolled <b>by the kilometer</b> (about <b>0.10 to 0.13 euros per km</b>), so a long north-south drive can run <b>50 to 90 euros or more</b> in tolls; pay by <b>card or cash</b> at the booth. Many city centers are <b>low-emission zones (ZFE)</b> that require a <b>Crit'Air sticker</b>; most rentals already have one, but <b>confirm at pickup</b>, since driving in a ZFE without it risks a <b>68 euro fine</b>. Your <b>US card and policy generally do not cover you in Europe</b>, so decline the counter's pricey excess reduction and buy a <b>cheaper standalone excess policy</b>. A US license is accepted for short visits, though an <b>IDP is recommended</b>.",
+      sections: [
+        {
+          h: "Tolls: paid by the kilometer",
+          p: [
+            "France has the largest toll-motorway network in Western Europe, and unlike Switzerland or Austria it uses <b>per-kilometer tolls (peage)</b> at barriers, not a windshield vignette. Reckon on about <b>0.10 to 0.13 euros per kilometer</b> for a car, highest on the southern routes, so a long drive adds up fast: <b>Paris to Lyon</b> is around <b>40 euros</b> in tolls alone, and Paris toward the Riviera can be <b>double that</b>.",
+            "You pay at the booth by <b>card</b> (Visa and Mastercard work almost everywhere, Amex less so) or <b>cash</b> at manned lanes, or with a <b>Liber-t or Ulys tag</b> for the fast telepeage lanes. Free non-motorway routes exist and are prettier but much slower. Note that on a few peak summer weekends, tolls on the busiest southern corridors can be <b>30 to 50 percent higher</b> in the middle of the day."
+          ]
+        },
+        {
+          h: "Crit'Air and the low-emission zones",
+          p: [
+            "Many French cities now run a <b>low-emission zone (ZFE)</b>, where vehicles must show a <b>Crit'Air sticker</b> classifying their emissions. The zones in force in 2026 include <b>Paris, Lyon, Grenoble, Strasbourg, Marseille, Montpellier, Rouen, Nice and others</b>. Driving in a ZFE without a valid sticker risks a fine of about <b>68 euros</b>.",
+            "The good news for renters: agencies have mostly <b>modern, low-emission fleets that already carry the correct sticker</b>, so this is rarely a problem in practice. Still, <b>ask at pickup</b> whether your car has the right Crit'Air sticker for the cities on your route, and do not assume an older car is fine everywhere."
+          ]
+        },
+        {
+          h: "Insurance: decline the counter, cover the excess",
+          p: [
+            "As across Europe, your <b>US auto policy and credit-card collision cover generally do not apply in France</b>, so you need some collision protection. The rental comes with a <b>high excess</b> (what you owe for damage), often <b>800 to 1,500 euros</b>, and the counter will push a costly daily fee to reduce it.",
+            "The cheaper path is to <b>decline the counter's excess reduction</b> and hold a <b>standalone excess policy</b> bought ahead, which reimburses the excess for far less. That is what the option on this page covers. A credit card in the main driver's name is needed for the <b>deposit hold</b>."
+          ]
+        },
+        {
+          h: "Paperwork, parking and the extras",
+          p: [
+            "France recognizes a <b>US license for short tourist visits</b>, so a permit is not strictly required, but an <b>International Driving Permit is recommended</b> as an official translation and some agencies prefer to see one, so it is cheap insurance against a hassle. Rental cars must carry a <b>reflective vest and warning triangle</b> (they usually do; check).",
+            "In town, <b>blue-zone</b> parking needs a cardboard time disc, and <b>metered</b> street parking left unpaid triggers a fixed penalty (commonly <b>17 to 75 euros</b>). One-way drops and under-25 drivers cost extra, and supermarket rental desks (Leclerc, U Location) can undercut the big brands. For paying day to day, see <a href=\"/france/cash-or-card\">cash or card in France</a>, and the <a href=\"/france\">France money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much are the tolls to drive in France?", a: "Autoroutes are tolled by the kilometer, about 0.10 to 0.13 euros per km for a car, so a long drive adds up: Paris to Lyon is around 40 euros in tolls, and Paris toward the Riviera can be double that. Pay by card or cash at the booth, or use a Liber-t tag for the fast lanes. Slower free routes exist." },
+        { q: "Do I need a Crit'Air sticker for a rental car in France?", a: "If you drive into a city low-emission zone (ZFE) such as Paris, Lyon or others, the car needs a Crit'Air sticker, or you risk about a 68 euro fine. Most rental cars are newer and already carry the correct sticker, but confirm at pickup that yours is right for the cities on your route." },
+        { q: "Do I need an International Driving Permit for France?", a: "Not strictly for a short tourist visit, since France recognizes a valid US license, but an IDP is recommended as an official translation and some rental agencies prefer to see one. It is cheap and quick to get from AAA in the US, so it is worth carrying to avoid any hassle at the counter." },
+        { q: "Does my US insurance cover a rental car in France?", a: "Generally no. Unlike in Canada, US auto policies and credit-card collision cover usually do not apply in Europe, so you need collision protection in France. Rather than pay the counter's steep excess-reduction fee, a standalone excess policy bought in advance covers the rental's high excess for less." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: France country information and road travel guidance", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/France.html", type: "gov" },
+          { label: "Selectra: a 2026 guide to renting a car in France, including tolls and the ZFE Crit'Air rules", url: "https://en.selectra.info/moving-to-france/driving/car-rental", type: "guide" }
+        ],
+        judgment: "Toll rates, the Crit'Air fine and parking penalties are current for 2026 but vary by route, city and company, and ZFE rules can change, so treat the figures as typical ranges and confirm your car's Crit'Air sticker and the all-in price at pickup. The steady advice is to budget tolls, confirm the sticker, and cover the insurance excess before the counter. Checked July 2026."
+      }
     }
   ]
 };

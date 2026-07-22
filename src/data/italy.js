@@ -537,6 +537,62 @@ export default {
         ],
         judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own plan. The steady points are that Italian coverage is strong where visitors go, that a day pass is the pricey default, and that signal thins in the mountains and the remote south."
       }
+    },
+    {
+      slug: "renting-a-car",
+      live: true,
+      topic: "driving",
+      carExcess: true,
+      title: "Renting a car in Italy (2026): the ZTL fine trap, the permit you must carry, and the insurance excess | True Trip Costs",
+      description: "Italy's historic-center ZTL cameras fine tourists months later through the rental company, plus you legally need an International Driving Permit. Skip the counter's pricey excess cover for a cheaper standalone policy. Checked Jul 2026.",
+      h1: "What does renting a car in Italy really cost?",
+      lede: "A car is wonderful for Tuscany, Puglia and the islands, and a liability in the big cities. Two things catch US drivers out before they even hit the road: a permit you must carry by law, and the camera zones that quietly fine you long after you fly home.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Two traps to get ahead of. First, you <b>legally need an International Driving Permit</b> (IDP) alongside your US license; without it agencies can refuse the car and police can fine you <b>400 euros or more</b>. Get it from <b>AAA</b> before you fly (about 20 dollars). Second, the <b>ZTL</b> camera zones in historic centers (Rome, Florence, Pisa, Milan, Naples and more) fine you about <b>80 to 130 euros per entry</b>, arriving <b>months later</b> via the rental company plus a <b>25 to 60 euro admin fee</b> each. On insurance, your <b>US card and policy generally do not cover you in Europe</b>, so decline the counter's pricey excess reduction and buy a <b>cheaper standalone excess policy</b> instead.",
+      sections: [
+        {
+          h: "The permit you must carry",
+          p: [
+            "Italy requires non-EU drivers to hold an <b>International Driving Permit</b> together with their home license. It is essentially an official translation of your US license, and it is <b>not optional</b>: rental desks can <b>refuse to hand over the car</b> without one, and if the <b>Polizia Stradale</b> stop you, the fine for driving without a valid permit starts around <b>400 euros</b> and can climb much higher, with the car impounded until a licensed driver collects it.",
+            "You <b>cannot buy an IDP in Italy</b>. Get it in the US before you travel, from <b>AAA</b> (about <b>20 dollars</b>, a week or two by mail), and carry it with your physical license and passport. Ignore any website selling instant online IDPs, they are not valid."
+          ]
+        },
+        {
+          h: "ZTL: the fine that finds you months later",
+          p: [
+            "This is the classic Italy money trap. Almost every historic center, <b>Rome, Florence, Pisa, Milan, Siena, Bologna, Naples</b> and many more, has a <b>ZTL</b> (Zona a Traffico Limitato), a camera-enforced zone that only residents and permit holders may enter during posted hours. Drive in by mistake and a camera reads your plate. Each <b>entry is a separate fine</b>, roughly <b>80 to 130 euros</b>, so one confused loop can trigger several.",
+            "You will not know at the time. The fine goes to the car's registered keeper, the <b>rental company</b>, which bills it to your card <b>weeks or months later</b> (sometimes up to a year or two), adding an <b>admin fee of about 25 to 60 euros per ticket</b>. Your sat-nav may route you straight through a ZTL, so watch for the <b>round ZTL sign</b> and camera gates, park outside the center and walk, and if your hotel is inside a ZTL, send it your plate <b>in advance</b> so it can register you for temporary access."
+          ]
+        },
+        {
+          h: "Insurance: decline the counter, cover the excess",
+          p: [
+            "Unlike in Canada, your <b>US auto policy and credit-card collision cover generally do not apply in Italy</b>, so you do need some form of collision protection. The rental includes basic collision and theft cover with a <b>high excess</b> (the amount you owe if the car is damaged), often <b>1,000 to 1,500 euros or more</b>, and the counter will offer to <b>reduce that excess</b> for a steep daily fee.",
+            "The cheaper route is to <b>decline the counter's excess reduction</b> and hold a <b>standalone excess policy</b> bought in advance, which reimburses the excess for a fraction of the counter price. That is what the option on this page covers. Keep a credit card in the main driver's name for the <b>deposit hold</b>."
+          ]
+        },
+        {
+          h: "Tolls, fuel and where not to drive",
+          p: [
+            "On the road, the <b>autostrada</b> motorways are tolled: take a ticket on entry and pay on exit by <b>card or cash</b>, or use a Telepass lane. Fuel is <b>among the most expensive in Europe</b>. Drivers under 25 pay a <b>young-driver surcharge</b>, and one-way drops cost extra.",
+            "The best money move is often <b>where you drive</b>. For <b>Rome, Florence, Venice, Milan and Naples</b>, skip the car: parking is dear and scarce, the ZTL risk is real, and fast trains link the cities. Rent for the places a car actually helps, <b>Tuscany, Umbria, Puglia, Sicily and Sardinia</b>. For paying day to day, see <a href=\"/italy/cash-or-card\">cash or card in Italy</a>, and the <a href=\"/italy\">Italy money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need an International Driving Permit to rent a car in Italy?", a: "Yes. Italy legally requires non-EU drivers, including US license holders, to carry an International Driving Permit alongside their license. Rental agencies can refuse the car without one, and police fines for driving without a valid permit start around 400 euros. Get an IDP from AAA in the US before you travel; you cannot buy one in Italy." },
+        { q: "What is a ZTL, and how do the fines work in Italy?", a: "A ZTL (Zona a Traffico Limitato) is a camera-enforced limited-traffic zone in Italian historic centers that only permit holders may enter. Drive in by accident and each entry is a separate fine of about 80 to 130 euros, billed to your card months later by the rental company plus a 25 to 60 euro admin fee. Watch for the round ZTL sign and do not trust your sat-nav to avoid it." },
+        { q: "Does my US insurance cover a rental car in Italy?", a: "Generally no. Unlike in Canada, US auto policies and credit-card collision cover usually do not apply in Europe, so you need collision protection in Italy. The rental has a high excess; rather than pay the counter's steep excess-reduction fee, a standalone excess policy bought in advance covers the same gap for less." },
+        { q: "Should I rent a car for Rome or Florence?", a: "Usually no. Rome, Florence, Venice, Milan and Naples have scarce, expensive parking and ZTL zones that fine drivers, and fast trains link them. Rent a car for the countryside and islands instead, such as Tuscany, Umbria, Puglia, Sicily or Sardinia, and use trains and transit for the big cities." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: Italy country information, including road travel and the International Driving Permit requirement", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Italy.html", type: "gov" },
+          { label: "Untold Italy: a 2026 guide to renting a car in Italy, ZTL fines and the IDP", url: "https://untolditaly.com/renting-a-car-in-italy/", type: "guide" }
+        ],
+        judgment: "The IDP requirement and the ZTL camera system are well established; the exact fine and admin-fee amounts vary by city and rental company, and can arrive up to a year or more later, so treat the euro figures as typical 2026 ranges. The steady advice is to carry an IDP, avoid the historic-center ZTLs, and cover the insurance excess before the counter. Checked July 2026."
+      }
     }
   ]
 };

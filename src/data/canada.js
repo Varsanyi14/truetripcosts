@@ -342,6 +342,63 @@ export default {
         ],
         judgment: "Carrier prices and inclusions change and depend on your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own plan. The steady points are that Canada is usually cheap to add to a US plan, that pay-per-use roaming is punishing, and that coverage is excellent in towns but patchy on rural highways and in the parks."
       }
+    },
+    {
+      slug: "renting-a-car",
+      live: true,
+      topic: "driving",
+      carExcess: true,
+      title: "Renting a car in Canada (2026): the insurance you may already have, and the winter-tire and toll fees | True Trip Costs",
+      description: "Unlike Mexico, your US card and policy usually cover a Canadian rental, so you can often skip the counter's CDW. Watch Quebec's winter-tire fee, the Highway 407 toll trap, and one-way drop fees. Checked Jul 2026.",
+      h1: "What does renting a car in Canada really cost?",
+      lede: "Canada is the easy one for US drivers: your license works, and your usual card and insurance most likely cover the car, so the counter's pricey add-ons are often skippable. The costs to watch are the winter-tire rule, a sneaky Ontario toll, and the usual drop and driver fees.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Good news first: unlike Mexico, your <b>US auto policy and credit-card collision cover usually work in Canada</b>, so you can often <b>decline the counter's collision waiver</b> (about <b>C$25 to C$35 a day</b>), but confirm with your card issuer first. Third-party liability is <b>included by law</b> in every rental. Your <b>US license is fine</b>, no permit needed. The real add-ons: in <b>Quebec</b>, winter tires are <b>mandatory 1 December to 15 March</b> and add about <b>C$3 to C$4 a day</b>; Ontario's <b>Highway 407</b> is a camera toll billed back with a <b>C$15 to C$25 admin fee</b>; and <b>one-way drop fees</b>, mileage caps and extra-driver charges add up.",
+      sections: [
+        {
+          h: "The insurance is the opposite of Mexico",
+          p: [
+            "This is the pleasant surprise. Because Canada is treated much like home by US insurers, your <b>own US auto policy and the collision cover on your credit card usually apply to a Canadian rental</b>, which they often do not in Mexico or Europe. So you can frequently <b>decline the counter's collision damage waiver</b>, roughly <b>C$25 to C$35 a day</b>, and rely on what you already have. Every rental also includes <b>third-party liability by law</b> (a minimum around C$200,000, less in Quebec), so that part is covered too.",
+            "The honest step is a two-minute phone call: before you travel, ask your <b>card issuer and your auto insurer</b> whether their rental collision cover applies in Canada, for your car class and trip length, and what the excess is. If it does, skip the upsell. If it does not, a <b>standalone excess policy</b> bought in advance is cheaper than the counter's, which is what the option on this page covers."
+          ]
+        },
+        {
+          h: "Winter tires: a real rule, and a small fee",
+          p: [
+            "If you are driving in the colder months, tires are <b>law, not a suggestion</b>. In <b>Quebec</b>, every vehicle, rentals included, must have <b>winter tires from 1 December to 15 March</b>, and companies pass on a <b>tire fee of about C$3 to C$4 a day</b> in that window. In <b>British Columbia</b>, winter tires are required on <b>designated mountain highways</b> (such as the Sea-to-Sky and the Coquihalla) from <b>1 October to 31 March</b>.",
+            "Elsewhere they are not mandated but are strongly advised for mountain or northern driving, and you usually have to <b>request them and pay extra</b> (often C$10 to C$20 a day). Driving without required tires can mean a <b>fine and voided insurance</b> if you crash, so confirm in writing that your car is properly equipped for the season and route."
+          ]
+        },
+        {
+          h: "Tolls, drop fees and the other extras",
+          p: [
+            "Canada has <b>very few toll roads</b>, but one catches people: Ontario's <b>Highway 407 ETR</b> north of Toronto is an <b>all-electronic camera toll</b> with no booths, so a rental picks up the charge and the company bills it back to you later with a <b>C$15 to C$25 admin fee</b> on top of the toll. If you do not need it, the free Highway 401 runs parallel.",
+            "The usual bill-builders apply too: <b>one-way drop fees</b> if you return to a different city, <b>mileage caps</b> on some rates, <b>additional-driver</b> charges, and airport <b>concession fees</b> that make a downtown pickup C$10 to C$20 a day cheaper. Expect a <b>deposit hold</b> of around C$1,000 to C$1,500 on your card. For paying day to day, see <a href=\"/canada/cash-or-card\">cash or card in Canada</a>."
+          ]
+        },
+        {
+          h: "One more: crossing into the US",
+          p: [
+            "If you plan to drive a Canadian rental <b>across the border into the US</b>, get <b>written permission on the rental contract</b> first. Most standard contracts <b>prohibit cross-border driving</b>, and your insurance is <b>void in the US</b> without that clause, so ask for USA-travel permission when you book, not at the border.",
+            "Put together, Canada is a low-drama rental once the insurance question is settled: confirm your existing cover, budget the <b>winter-tire fee</b> in season, avoid the <b>407</b> unless you need it, and read the drop and mileage terms. For the wider picture, see the <a href=\"/canada\">Canada money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does my US insurance or credit card cover a rental car in Canada?", a: "Usually yes, unlike Mexico or Europe. US insurers and cards generally treat Canada like home, so your own auto policy and card collision cover often apply, letting you decline the counter's CDW (about C$25 to C$35 a day). Confirm with your issuer and insurer first, for your car class and trip length, and check the excess." },
+        { q: "Do I need an International Driving Permit for Canada?", a: "No. A valid US driver's license is accepted across Canada, so you do not need an International Driving Permit. Just bring your license, a credit card in the main driver's name for the deposit, and your booking confirmation." },
+        { q: "Are winter tires required for a rental in Canada?", a: "In Quebec, yes: every vehicle including rentals must have winter tires from 1 December to 15 March, with a fee of about C$3 to C$4 a day. British Columbia requires them on designated mountain highways from 1 October to 31 March. Elsewhere they are optional but advised for winter mountain driving, and cost extra to add." },
+        { q: "What is the Highway 407 toll in Ontario?", a: "The 407 ETR north of Toronto is an all-electronic camera toll with no booths. A rental car picks up the charge, and the company bills it back to you with a C$15 to C$25 admin fee on top of the toll. If you do not need it, the parallel Highway 401 is free." },
+        { q: "Can I drive a Canadian rental car into the United States?", a: "Only with written permission on the rental contract. Most standard contracts prohibit cross-border driving, and your insurance is void in the US without a USA-travel clause. Request it when you book if you plan to cross, for example to the US side of Niagara Falls or to Seattle." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: Canada country information and driving guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Canada.html", type: "gov" },
+          { label: "Itinerary Expert: a 2026 Canada car-rental guide covering the Highway 407 toll, winter-tire rules and insurance", url: "https://itinerary.expert/canada/car-rental-in-canada/", type: "guide" }
+        ],
+        judgment: "Quebec's winter-tire law (1 December to 15 March, enforced by the SAAQ) is firm; the daily tire fee, the Highway 407 admin fee and the deposit holds vary by company and car, so treat them as typical 2026 ranges and confirm the all-in price before booking. The steady point is to sort insurance before the counter, since your US cover usually works in Canada but not in Europe. Checked July 2026."
+      }
     }
   ]
 };
