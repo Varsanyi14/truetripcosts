@@ -347,6 +347,70 @@ export default {
         ],
         judgment: "Airport fees, the surcharge and toll amounts, and app availability can change, so treat the figures as a recent read and check the airport's official page and your app before you ride. The meter-refusal habit varies by driver and location. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Thailand, and what they cost you (2026) | True Trip Costs",
+      description: "Thailand is safe and easy, and the money traps are avoidable: the Grand Palace closed today tuk-tuk gem tour, the gem resale scam, taxi meter refusal, and the jet-ski and motorbike damage shakedown. Here is each one and how to sidestep it. Checked Jul 2026.",
+      h1: "Common money scams in Thailand, and what they cost you",
+      lede: "Thailand is one of the safest countries in Southeast Asia for visitors, and almost none of what follows is dangerous. It is ordinary money stuff, overcharging and a few well-rehearsed setups aimed at tourists, and recognizing the patterns sidesteps nearly all of it. Here is each trap, what it costs, and how to avoid it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "A handful of setups recur: the <b>Grand Palace is closed today</b> line that funnels you into a <b>tuk-tuk gem and tailor tour</b> for commission, the <b>gem resale</b> scam (worthless glass sold as an investment), <b>taxi meter refusal</b> and the odd note-swap, and the <b>jet-ski or motorbike damage</b> shakedown where you are charged for pre-existing scratches. The habits that beat almost all of it: <b>ignore strangers who approach you</b> at big sites, use <b>Grab or a metered taxi</b>, <b>video any rental</b> before you ride and never leave your passport as a deposit, and <b>pay in baht</b>. Violent crime against tourists is rare; this is about your wallet.",
+      sections: [
+        {
+          h: "The closed-temple tuk-tuk tour",
+          p: [
+            "This is the signature Bangkok scam. As you walk toward the <b>Grand Palace</b> or Wat Pho, a friendly local or a tuk-tuk driver tells you it is <b>closed today</b> for a ceremony, cleaning or holiday, and offers a cheap tuk-tuk (sometimes <b>20 baht</b>) to a lucky Buddha or a better temple instead. The ride routes you to <b>gem shops and tailors</b> that pay the driver a commission, where you are pressured to buy overpriced goods. The truth: the <b>Grand Palace is open every day, roughly 8:30 to 15:30</b>, and almost never closed.",
+            "The fix is simple: <b>ignore anyone who approaches you</b> outside the site, walk to the <b>official entrance</b>, and check hours on the palace's website or Google Maps; if it were truly closed, the guards at the gate would tell you. A cheap tuk-tuk tour offered by a stranger is a shopping trip, not a favor. Enjoy a tuk-tuk for a <b>short, price-agreed hop</b>, but for real journeys use <b>Grab or the BTS Skytrain</b>."
+          ]
+        },
+        {
+          h: "The gem scam",
+          p: [
+            "Often the destination of that tuk-tuk tour, the <b>gem scam</b> is Thailand's costliest tourist trap. You are told you can buy <b>wholesale gems and resell them at home for a big profit</b>, sometimes framed as a <b>one-day government sale</b>. The stones are <b>glass or synthetic and essentially worthless</b>, and there is no resale market. The <b>Thai government and royal family do not own or sponsor any gem or jewelry shop</b>, so any such claim is false.",
+            "The rule: <b>do not buy gems, jewelry or tailoring on a stranger's recommendation</b>, and never treat a holiday purchase as an investment. If you genuinely want to shop, compare prices across several established shops and ignore anyone offering insider access or a limited-time deal."
+          ]
+        },
+        {
+          h: "Taxis, and getting from the airport",
+          p: [
+            "The everyday one is a taxi driver who <b>refuses the meter</b> or claims it is broken and quotes an inflated flat fare, especially at the airport and tourist spots. <b>Insist on the meter</b> (meter, please), or simply get out and find another; better, use <b>Grab, Bolt or inDrive</b> for a price agreed up front. At the airport, join the <b>official metered taxi queue</b> and ignore anyone calling hello, taxi in the hall.",
+            "Carry <b>small notes</b> so a driver cannot claim to have no change, and be aware of the rare <b>note-swap</b>, where a driver takes your 1,000 baht note, hands it back saying it is fake, and has actually swapped it. At the <b>ATM and card machine</b>, choose <b>baht, not your home currency</b>, since the convert-for-you option carries a poor built-in rate, and use bank ATMs. The full transport picture is in the <a href=\"/thailand/taxis-and-apps\">Thailand taxis and apps guide</a>."
+          ]
+        },
+        {
+          h: "Jet skis, motorbikes and bar tabs",
+          p: [
+            "At the beaches (<b>Phuket, Pattaya, Koh Samui</b>), the <b>jet-ski damage scam</b> is well documented: you return the craft and the operator points to <b>pre-existing damage</b> and demands <b>10,000 to 30,000 baht</b>, sometimes holding your passport. The same happens with <b>motorbike rentals</b> on the islands and in Pai and Chiang Mai. The fix: take a <b>slow walk-around video</b> of the jet ski or bike before you ride, rent only through a <b>reputable operator or your hotel</b>, and <b>never leave your passport as a deposit</b>, only a copy.",
+            "In nightlife strips (Bangkok's Patpong, Pattaya's Walking Street), the <b>bar-tab scam</b> lures you in with cheap drinks and lands a <b>massively inflated bill</b>, with staff blocking the door until you pay. <b>Check drink prices before ordering</b>, avoid places with pushy touts outside, and if a bill is wildly wrong you can call the <b>Tourist Police on 1155</b> rather than pay under pressure."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          p: [
+            "Most of this costs <b>a little</b>, and the few that can cost real money, the <b>gem scam</b> and the <b>jet-ski or motorbike shakedown</b>, are avoided by two rules: <b>never buy an investment on a stranger's tip</b>, and <b>video any rental and keep your passport</b>. For daily life, <b>ignore unsolicited help</b> at big sites, use <b>Grab or the meter</b>, and <b>pay in baht</b>. The reassuring truth is that these are well-worn patterns, so once you know them you sidestep nearly all of it.",
+            "None of it should shape a trip to somewhere this rewarding. For getting around, see the <a href=\"/thailand/taxis-and-apps\">Thailand taxis and apps guide</a>, for paying day to day the <a href=\"/thailand/cash-or-card\">Thailand cash and cards guide</a>, and for the wider picture the <a href=\"/thailand\">Thailand cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Thailand safe for tourists?", a: "For the great majority of visitors, yes; it is one of the safest countries in Southeast Asia and violent crime against tourists is rare. The real risks are financial: the tuk-tuk gem tour, the gem resale scam, taxi overcharging, and the jet-ski or motorbike damage shakedown. Ignoring strangers at big sites, using Grab or the meter, and videoing any rental avoids nearly all of it." },
+        { q: "Is the Grand Palace really closed?", a: "Almost certainly not. The Grand Palace is open every day, roughly 8:30 to 15:30, and the closed today line is the setup for a tuk-tuk tour to commission gem and tailor shops. Ignore anyone outside who tells you it is shut, walk to the official entrance, and check the hours yourself; the gate guards will confirm if it is genuinely closed." },
+        { q: "How does the gem scam in Thailand work?", a: "You are told you can buy wholesale gems and resell them at home for a profit, sometimes as a one-day government sale. The stones are glass or synthetic and worthless, and there is no resale market. The Thai government and royal family do not own or sponsor any gem shop, so ignore the claim and never buy jewelry as an investment on a stranger's tip." },
+        { q: "How do I avoid the jet-ski damage scam?", a: "Take a slow walk-around video of the jet ski (or rented motorbike) from all angles before you ride, so pre-existing damage cannot be blamed on you. Rent only through a reputable operator or your hotel, and never leave your passport as a deposit, only a copy. If a dispute starts, stay calm and call the Tourist Police on 1155 rather than paying under pressure." },
+        { q: "Should I insist on the taxi meter in Bangkok?", a: "Yes, or use an app. Drivers at the airport and tourist areas often refuse the meter and quote an inflated flat fare; insist on the meter or get out and find another, and use Grab, Bolt or inDrive for upfront pricing. At the airport, use the official metered taxi queue and ignore anyone calling hello, taxi." },
+        { q: "Should I pay in Thai baht or my home currency?", a: "Thai baht. If a card machine or ATM offers to charge you in your home currency, decline: that dynamic currency conversion uses a poor built-in rate that costs several percent. Use bank ATMs over free-standing machines, and carry small notes so a taxi driver cannot claim to have no change." }
+      ],
+      sources: {
+        links: [
+          { label: "US Embassy in Thailand: official guidance on common scams to avoid, including the gem and tuk-tuk scams", url: "https://th.usembassy.gov/common-scams-to-avoid/", type: "gov" },
+          { label: "ExpatDen: a 2026 guide to Thailand's taxi, tuk-tuk and tout scams and how to avoid them", url: "https://www.expatden.com/thailand/thailand-scams-tuk-tuks-and-touts-and-taxis-oh-my/", type: "guide" }
+        ],
+        judgment: "These are the money traps most consistently reported by travelers and flagged by the US Embassy in 2025 and 2026, not a ranked risk list, and baht amounts vary by place, so treat figures as a recent read. Thailand is safe for the vast majority of visitors; these are well-rehearsed patterns that awareness defuses. Checked July 2026."
+      }
     }
   ]
 };

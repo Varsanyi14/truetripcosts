@@ -197,6 +197,69 @@ export default {
         ],
         judgment: "The dominant app can shift, since Xanh SM has grown fast since 2023, and fares move with fuel and traffic, so treat the dong figures as a recent read and check the price in your own app before you ride. Apps also come and go from smaller towns, so confirm coverage there. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Vietnam, and what they cost you (2026) | True Trip Costs",
+      description: "Vietnam's tourist money traps are mostly small and avoidable: fake-branded taxis and rigged meters, the fake-Grab-app airport trick, shortchanging on confusing dong notes, and the motorbike-rental damage scam. Here is each one and how to sidestep it. Checked Jul 2026.",
+      h1: "Common money scams in Vietnam, and what they cost you",
+      lede: "Vietnam is a wonderful and largely trouble-free trip, and the scams that target tourists are mostly small-value money hustles, not danger: overcharging, sleight of hand and a few transport tricks. They rely on confusion, and a few habits defuse nearly all of them. Here is each one and how to avoid it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "The recurring traps are money ones: <b>taxis</b> with <b>rigged meters</b> or <b>fake company branding</b> that copy the real firms, the <b>fake Grab app</b> trick at the airport, <b>shortchanging</b> and note-switching on Vietnam's <b>confusing dong notes</b>, <b>motorbike-rental damage</b> charged for pre-existing scratches, and overcharging by unofficial <b>xe om</b> (motorbike taxis) and cyclos. The habits that beat them: use the real <b>Grab, Be or Xanh SM</b> app booked on your own phone, or only <b>Vinasun (white) or Mai Linh (green)</b> taxis, <b>count your money and pay close to exact</b>, and <b>video any rental</b>. Most of it is low-value and easily avoided.",
+      sections: [
+        {
+          h: "Taxis: rigged meters and fake branding",
+          p: [
+            "Vietnam's classic is the taxi that <b>overcharges 3 to 10 times</b> the real fare: an unlicensed car, a <b>rigged meter</b> that runs fast, a long route, or <b>fake branding</b> that mimics the reputable firms' colors. The two firms to trust are <b>Vinasun (white)</b> and <b>Mai Linh (green)</b>, with the company name clearly on the car, but the cleaner defense is the <b>Grab app</b> (or <b>Be</b> or <b>Xanh SM</b>, the electric-car service), which shows the price, route and driver up front and needs no cash.",
+            "If you take a street taxi, <b>confirm the meter is running</b> before you move, and refuse any cab that <b>approaches you</b> at the airport or a tourist site. For <b>xe om</b> (motorbike taxis) and cyclos, unofficial drivers near stations quote high for short hops, so use Grab for a fixed price, and for a cyclo <b>agree the total before you get in</b> and hold firm at the end."
+          ]
+        },
+        {
+          h: "The fake Grab app at the airport",
+          p: [
+            "A newer arrival trap: a driver approaches you in the terminal, taps your destination into a phone, and <b>turns the screen around to show what looks like the Grab app</b> with a fixed price. It is a <b>fake app or a screenshot</b>. The defense is simple: <b>open the real Grab on your own phone</b>, book the ride yourself, and watch the <b>driver's name and license plate appear in the app</b> before you walk to the pickup point. <b>Only get into the car you called</b>, never one that approached you.",
+            "The airports at <b>Ho Chi Minh City, Hanoi and Da Nang</b> have <b>designated Grab pickup points</b> and <b>official taxi stands</b> with fixed-rate metered cabs; if you do not have a local SIM yet, staff at the airport Grab counter can book for you. That gets you into the city at a fair, known price."
+          ]
+        },
+        {
+          h: "Money: shortchanging and the confusing notes",
+          p: [
+            "Vietnam's <b>dong notes are easy to muddle</b>: several are similar colors, and the numbers are large, so a <b>500,000 dong note (about 20 dollars)</b> is easy to confuse with a <b>20,000</b>. Drivers and vendors sometimes exploit this with <b>sleight of hand</b>, swapping your note for a smaller one, or claiming they have <b>no change</b>. Before you travel, <b>learn the notes</b>, and when you pay cash, <b>count it out and say the amount</b>, keep denominations separate, and settle close to exact.",
+            "Change money only at <b>banks or official exchange counters</b>, checking the rate first, and use <b>bank ATMs</b>, which do charge a fee. At the card machine or ATM, choose <b>dong, not your home currency</b>. Paying by app or card wherever you can removes most change-related tricks entirely."
+          ]
+        },
+        {
+          h: "Motorbike rentals, and a few extras",
+          p: [
+            "The <b>motorbike-rental damage scam</b> is the one that can cost real money: on return, the shop points to <b>pre-existing scratches</b> and demands a fee, and some hold an <b>excessive deposit</b> or your passport. The fix: <b>photograph and video the bike from all angles</b> before you ride, rent from a <b>reputable shop or your hotel</b>, and <b>never leave your passport as the deposit</b>, only a copy.",
+            "Smaller ones round out the list: a <b>shoeshiner</b> who starts work unasked then demands <b>200,000 dong</b>, a coconut or fruit vendor who hands you their pole for a photo then charges, and <b>fake tour operators</b> selling <b>Ha Long Bay cruises</b> on boats that do not match the listing. Decline unsolicited services, agree prices first, and book cruises through a <b>reputable operator or your hotel</b>."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          p: [
+            "Nearly all of it is <b>low-value and frustrating rather than dangerous</b>, and the same short list defuses it: use the <b>real Grab, Be or Xanh SM app</b> (or only Vinasun and Mai Linh taxis), <b>count your money and pay close to exact</b>, <b>video any rental and keep your passport</b>, and <b>agree prices before cyclos, photos or tours</b>. The one worth active care is the <b>motorbike-rental damage</b> charge.",
+            "Handled calmly, Vietnam is a superb and welcoming trip. For getting around, see the <a href=\"/vietnam/taxis-and-apps\">Vietnam taxis and apps guide</a>, and for the wider picture the <a href=\"/vietnam\">Vietnam cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Vietnam safe for tourists?", a: "For most visitors, yes, and trips are largely trouble-free. The scams that target tourists are mostly small-value money hustles, taxi overcharging, shortchanging and rental disputes, rather than anything dangerous. Using the real Grab app, sticking to Vinasun or Mai Linh taxis, counting your money, and videoing any rental avoids nearly all of them." },
+        { q: "How do I avoid taxi scams in Vietnam?", a: "Use the Grab app (or Be or Xanh SM), which shows the price, route and driver upfront, or take only Vinasun (white) or Mai Linh (green) taxis with the company name clearly on the car, since other cabs copy their colors. Confirm the meter is running before you move, and refuse any taxi that approaches you at the airport or a tourist site." },
+        { q: "What is the fake Grab app scam at Vietnamese airports?", a: "A driver approaches you in the terminal and turns his phone around to show what looks like the Grab app with a fixed price, but it is a fake app or a screenshot. Open the real Grab on your own phone, book the ride yourself, confirm the driver's name and plate in the app, and only get into the car you called. The main airports also have official taxi stands and Grab counters." },
+        { q: "Why is Vietnamese money so easy to get wrong?", a: "The dong comes in large numbers and several notes are similar colors, so a 500,000 note (about 20 dollars) is easy to confuse with a 20,000. Some drivers and vendors exploit this by switching notes or claiming no change. Learn the notes before you travel, count cash out and say the amount as you pay, and use an app or card where you can." },
+        { q: "How do I avoid the motorbike rental damage scam?", a: "Photograph and video the bike from every angle before you ride, so pre-existing scratches cannot be blamed on you, and rent from a reputable shop or through your hotel. Never leave your passport as the deposit, only a copy, and be wary of shops asking for an unusually large cash deposit." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Vietnam country information and safety guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Vietnam.html", type: "gov" },
+          { label: "Vietnam Unlock: a 2026 guide to which scams actually target tourists and how to avoid them", url: "https://vietnamunlock.com/vietnam-scams/", type: "guide" }
+        ],
+        judgment: "These are the money traps most consistently reported by travelers in 2025 and 2026, concentrated in Ho Chi Minh City, Hanoi and the tourist hubs, not a ranked risk list, and dong amounts and the dominant app can shift, so treat figures as a recent read. Most of it is low-value and easily avoided. Checked July 2026."
+      }
     }
   ]
 };

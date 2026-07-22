@@ -305,6 +305,70 @@ export default {
         ],
         judgment: "App coverage, fares and airport arrangements change, BluSmart's rides ended in 2025 and driver strikes flare up now and then, so check your app and the official prepaid counter, and treat rupee figures as a recent read. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      live: true,
+      topic: "scams",
+      title: "Common money scams in India, and what they cost you (2026) | True Trip Costs",
+      description: "India's tourist money traps follow predictable patterns: auto-rickshaw and taxi overcharging, the your-hotel-is-closed commission scam, the gem and carpet export scam, and fake tourist offices. Here is each one and how to sidestep it. Checked Jul 2026.",
+      h1: "Common money scams in India, and what they cost you",
+      lede: "India is an extraordinary trip that rewards a little preparation, and the scams that target tourists are money ones, not danger: overcharging, commission steering and a few well-known setups. They follow the same patterns almost every time, so once you know them they are easy to sidestep. Here is each one and how.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "The recurring traps are: <b>auto-rickshaw and taxi overcharging</b> (meter refused, flat fare 3 to 5 times the real one, long routes), the <b>your hotel is closed</b> scam where a driver diverts you to a <b>commission hotel</b>, the <b>gem and carpet export</b> scam (worthless goods sold as a resale investment), and <b>fake tourist offices</b> and ticket sellers. The habits that beat almost all of it: use <b>Uber or Ola</b> or an <b>official prepaid taxi counter</b>, <b>call your hotel directly</b> if a driver says it is closed, <b>buy tickets only at official counters</b>, and <b>never treat a purchase as an investment</b>. Ride-hailing has made city transport dramatically fairer.",
+      sections: [
+        {
+          h: "Taxis and auto-rickshaws",
+          p: [
+            "The oldest and most universal one: a taxi or <b>auto-rickshaw</b> driver <b>refuses the meter</b> (it is broken), quotes a flat fare <b>3 to 5 times</b> the real price, takes a long route, or stops at <b>commission shops</b> on the way. It is worst at <b>airports, railway stations and tourist sites</b>. In Delhi, a metered ride from <b>T3 airport to Connaught Place</b> is roughly <b>350 to 500 rupees</b>, while a tout may quote <b>1,200 to 1,800</b>.",
+            "The clean fix is <b>Uber or Ola</b>, which show a fixed price up front, track the route and take digital payment, which has effectively ended the classic taxi scam. At airports use the <b>official prepaid taxi counter</b> (in Delhi, run by the Traffic Police, with fixed printed rates), and <b>never accept a Sir, taxi tout</b> inside the terminal. If you do take a metered auto, <b>confirm the meter is running</b>, keep small change, and research the rough fare first. The full picture is in the <a href=\"/india/taxis-and-apps\">India taxis and apps guide</a>."
+          ]
+        },
+        {
+          h: "The your hotel is closed scam",
+          p: [
+            "This is the one to know, and it operates mostly in <b>Delhi near the New Delhi Railway Station and Paharganj</b>. On the way to your booking, the driver tells you your hotel is <b>closed for renovation, full, flooded, or does not exist</b>, and helpfully knows a better place, which pays him a <b>commission</b>. It is almost never true.",
+            "The defense: <b>call your hotel directly</b> before or during the ride, <b>check its location on Google Maps</b>, and <b>insist on being taken to your booking</b>. A useful line is that you have <b>already paid in advance</b>, which removes the driver's incentive. The same trick appears with a <b>restaurant is closed</b> version that steers you to a place charging many times a fair price."
+          ]
+        },
+        {
+          h: "Gems, carpets and fake offices",
+          p: [
+            "The costliest trap is the <b>gem or carpet export scam</b>: a friendly local or shop steers you toward buying <b>export-quality gems or textiles to resell at home for a profit</b>. The goods are <b>overpriced or worthless</b> and the resale market does not exist. Treat any holiday purchase as a purchase, never an investment, and ignore anyone offering a scheme.",
+            "Watch too for <b>fake tourist offices</b>, private shops with signs like <b>Official Tourism Office</b> or <b>Government Approved</b> that sell overpriced tours and tickets, and for <b>fake guides and ticket sellers</b> outside monuments and fake ticket websites. <b>Buy monument tickets only at the official counter or a genuine site</b>, book tours through a <b>reputable operator</b>, and if you want a guide, arrange a licensed one in advance."
+          ]
+        },
+        {
+          h: "Temples, money and the pay-in-rupees trap",
+          p: [
+            "Around temples you may meet a <b>priest or guide</b> who offers a ritual, ties a <b>bracelet or thread</b> on your wrist, or applies a mark on your forehead as a blessing, then <b>demands a large donation</b>. Blessings are part of the experience, but you can <b>decline before anything is tied or applied</b>, and give only a small amount you are comfortable with. Aggressive donation demands at religious sites are common, and you are free to say no.",
+            "For money, change cash only at <b>banks or official counters</b>, and ignore anyone offering a <b>better rate or no commission</b>, a counterfeit risk. At the ATM or card machine, choose <b>rupees, not your home currency</b>. A note on paying: <b>UPI</b>, India's instant payment system, opened to visitors from many countries in 2026, but a <b>no-foreign-fee card and some cash</b> remain the simplest for most tourists."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          p: [
+            "The reassuring part is that these are <b>predictable patterns</b>, not random misfortune, so knowing them defuses most of the risk. The short list: <b>Uber or Ola or a prepaid counter</b>, <b>call your hotel</b> if a driver says it is closed, <b>buy tickets officially</b>, <b>never buy an investment on a tip</b>, and <b>pay in rupees</b>. Most of it costs a modest amount; the <b>gem or carpet scam</b> is the one that can cost a lot.",
+            "Prepared, India is one of the world's great journeys. For getting around, see the <a href=\"/india/taxis-and-apps\">India taxis and apps guide</a>, and for the wider picture the <a href=\"/india\">India cost guide</a>. India's National Tourist Helpline is <b>1363</b>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is India safe for tourists?", a: "For most visitors who arrive prepared, yes, and the main risks are financial rather than dangerous: taxi and auto-rickshaw overcharging, the hotel-is-closed commission scam, the gem and carpet export scam, and fake tourist offices. Using Uber or Ola, calling your hotel directly, buying tickets officially, and never treating a purchase as an investment avoids the majority of it." },
+        { q: "What is the hotel is closed scam in India?", a: "Mostly a Delhi scam near the New Delhi Railway Station and Paharganj: a driver tells you your booked hotel is closed, full or flooded and takes you to another that pays him a commission. It is almost never true. Call your hotel directly, check its location on Google Maps, insist on being taken to your booking, and say you have already paid in advance." },
+        { q: "How do I avoid taxi and auto-rickshaw overcharging in India?", a: "Use Uber or Ola, which show a fixed price upfront and track the route, or an official prepaid taxi counter at airports and stations (in Delhi, run by the Traffic Police with fixed printed rates). Never accept a Sir, taxi tout inside a terminal, and if you take a metered auto, confirm the meter is running and research the rough fare first." },
+        { q: "What is the gem or carpet scam in India?", a: "A friendly local or shop persuades you to buy export-quality gems or textiles to resell at home for a profit. The goods are overpriced or worthless and there is no resale market. Treat any purchase as a purchase, not an investment, ignore anyone offering a resale scheme, and buy only from established shops if you genuinely want something." },
+        { q: "Should I pay in rupees or my home currency in India?", a: "Rupees. If a card machine or ATM offers to charge you in your home currency, decline: that dynamic currency conversion uses a poor built-in rate. Change cash only at banks or official counters, not with a street changer offering a better rate. UPI opened to visitors from many countries in 2026, but a no-foreign-fee card and some cash are simplest for most tourists." },
+        { q: "Someone at a temple tied a bracelet on me and wants a donation, what should I do?", a: "This is a common setup: a ritual, thread or forehead mark is given as a blessing, then a large donation is demanded. You can decline before anything is tied or applied, and if you do accept, give only a small amount you are comfortable with. Aggressive donation demands at religious sites are common, and you are free to say no politely." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: India country information and safety guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/India.html", type: "gov" },
+          { label: "India Someday: a guide to the money scams tourists meet in India and how to avoid them", url: "https://indiasomeday.com/en/how-to-avoid-money-scams-in-india/", type: "guide" }
+        ],
+        judgment: "These are the money traps most consistently reported by travelers in 2025 and 2026, concentrated in Delhi and the northern tourist circuit, not a ranked risk list, and rupee amounts vary by city, so treat figures as a recent read. Ride-hailing has made transport markedly fairer, and these patterns are predictable and avoidable. Checked July 2026."
+      }
     }
   ]
 };
