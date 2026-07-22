@@ -556,6 +556,61 @@ export default {
         ],
         judgment: "The liability-insurance requirement is federal Mexican law, but the daily cost of the required cover varies by agency, car, and state, and toll and fuel prices shift, so treat the daily figures as typical ranges and confirm the all-in price, with the mandatory insurance included, before you book. Checked July 2026."
       }
+    },
+    {
+      slug: "entry-fees",
+      live: true,
+      topic: "entry-fees",
+      title: "Entry fees in Mexico: Chichen Itza's double fee, cenotes, and why to bring cash (2026) | True Trip Costs",
+      description: "Mexico's big sites surprise you: Chichen Itza charges two separate fees totaling about 690 to 700 pesos ($40) for foreigners, cenotes run about $9 to $38, and almost everything is cash only. Foreigners also pay more than locals. Checked July 2026.",
+      h1: "What do attractions really cost in Mexico?",
+      lede: "Two things catch visitors out at Mexico's big attractions: the headline sites often charge more than one fee at more than one window, and almost everything wants pesos in cash. Here is what the gate actually costs.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Two surprises. First, marquee sites charge <b>more than one fee</b>: <b>Chichen Itza</b> costs foreign adults about <b>690 to 700 pesos (roughly $40)</b> in 2026, split into a <b>federal (INAH)</b> ticket and a <b>Yucatan state (CULTUR)</b> ticket paid at <b>two separate windows</b>. Second, <b>foreigners pay more than locals</b>, and the <b>Sunday free entry</b> is for Mexican citizens and residents only. <b>Cenotes</b> run about <b>$9 to $38</b> each. And almost everything is <b>cash only</b> in practice, since card readers fail and on-site ATMs are unreliable, so <b>bring pesos</b>.",
+      sections: [
+        {
+          h: "Chichen Itza: one site, two fees",
+          p: [
+            "The price you see quoted online is often only half the story. Chichen Itza is run jointly by the <b>federal INAH</b> agency and the <b>Yucatan state</b> tourism body (CULTUR), so there are <b>two tickets</b>, sold at <b>two separate windows</b>: the INAH fee (about <b>100 to 105 pesos</b>) and the larger state CULTUR fee (about <b>592 pesos</b>). For a foreign adult in 2026 that totals about <b>690 to 700 pesos, roughly $40</b>. Parking is extra and cash only, about <b>80 to 150 pesos</b>.",
+            "Two things to watch. Touts near the parking sometimes sell <b>cheap tickets that cover only one of the two fees</b>, leaving you to pay the other at the gate anyway, so buy at the official windows or from a reseller that clearly states both INAH and CULTUR are included. And note Chichen Itza is in <b>Yucatan state, not Quintana Roo</b>, so this is completely separate from the Cancun-area Visitax."
+          ]
+        },
+        {
+          h: "Foreigners pay more, and Sunday is not free for you",
+          p: [
+            "Mexico's government sites use <b>dual pricing</b>. At Chichen Itza a foreign adult pays about <b>697 pesos</b>, a Mexican citizen about <b>300 pesos</b> with national ID, and a Yucatan resident about <b>105 pesos</b>. This is normal and legal across INAH sites, not a scam, just something to expect.",
+            "INAH sites are <b>free on Sundays, but only for Mexican citizens and residents</b> with ID. As a foreign visitor you pay the full foreign rate every day, Sundays included, so there is no saving in timing your visit for a Sunday, and the sites are far busier then anyway."
+          ]
+        },
+        {
+          h: "Cenotes: cheap to pricey, nearly always cash",
+          p: [
+            "Cenotes vary a lot. A simple one might be around <b>150 pesos</b>, popular spots like <b>Ik Kil</b> run about <b>180 to 250 pesos</b>, and a top-tier one like <b>Gran Cenote</b> near Tulum is about <b>500 pesos (roughly $30)</b>. Across the peninsula, expect roughly <b>$9 to $38</b> depending on how developed the site is, with a life jacket sometimes a little extra.",
+            "The constant is <b>cash</b>. Most cenotes are <b>cash only</b>, and the busy ones often have <b>no ATM on site</b>, so carry enough pesos for the whole day. Bring small notes, since change can be limited."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          p: [
+            "Plan the gate as a real line item, not an afterthought. A day trip to Chichen Itza plus a cenote is roughly <b>900 to 1,200 pesos ($50 to $70) per person</b> in entry fees alone, before transport, a guide, or lunch. Other ruins are cheaper: <b>Tulum</b> and <b>Coba</b> are around <b>200 to 250 pesos</b>.",
+            "Carry <b>pesos in cash</b> for all of it. Card machines at these sites are unreliable and dollars are not useful at the gate. For getting pesos well and avoiding the airport-ATM traps, see the <a href=\"/mexico/cash-or-card\">Mexico cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is Chichen Itza in 2026?", a: "About 690 to 700 pesos, roughly $40, for a foreign adult. It is two separate tickets: a federal INAH fee of about 100 to 105 pesos and a Yucatan state CULTUR fee of about 592 pesos, paid at two different windows. Parking is extra and cash only." },
+        { q: "Why are there two ticket windows at Chichen Itza?", a: "Because the site is run jointly by the federal INAH agency and the Yucatan state tourism body, and each collects its own fee, so you pay both. Watch for touts selling cheap tickets that only cover one of the two; buy at the official windows or from a reseller that states both are included." },
+        { q: "Do foreigners pay more than locals at Mexican sites?", a: "Yes, at government-run sites, and it is legal dual pricing. At Chichen Itza a foreign adult pays about 697 pesos, a Mexican citizen about 300 with ID, and a Yucatan resident about 105. Foreigners also do not get the Sunday free entry, which is for citizens and residents only." },
+        { q: "How much do cenotes cost?", a: "Roughly $9 to $38 (about 150 to 650 pesos) depending on the cenote. Simple ones are cheap; developed or famous ones like Gran Cenote near Tulum are about 500 pesos ($30). Most are cash only, and many have no ATM on site, so bring pesos." },
+        { q: "Can I pay by card at Mexican ruins and cenotes?", a: "Sometimes, but do not count on it. Card readers at the ruins go offline regularly, and many cenotes are cash only with no ATM nearby. Bring enough pesos in cash to cover entry, parking, and extras for the whole day." }
+      ],
+      sources: {
+        links: [
+          { label: "Instituto Nacional de Antropologia e Historia (INAH): Mexico's federal authority for archaeological sites and their admission fees", url: "https://www.inah.gob.mx", type: "gov" }
+        ],
+        judgment: "Site fees are set annually by INAH and the state agencies and typically rise each year, and cenote prices are set by their operators, so the figures here are the 2026 rates from recent on-site reporting and can change. Confirm at the gate, and always carry pesos. Checked July 2026."
+      }
     }
   ]
 };
