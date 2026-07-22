@@ -47,5 +47,7 @@ import laos from './laos.js';
 import ecuador from './ecuador.js';
 import georgia from './georgia.js';
 import china from './china.js';
+import sriLanka from './sri-lanka.js';
+import namibia from './namibia.js';
 
-export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, india, czechia, canada, switzerland, austria, turkey, egypt, colombia, brazil, argentina, jamaica, ireland, bahamas, iceland, norway, sweden, denmark, southKorea, singapore, australia, newZealand, morocco, southAfrica, taiwan, hongKong, poland, hungary, croatia, cambodia, laos, ecuador, georgia, china];
+export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, india, czechia, canada, switzerland, austria, turkey, egypt, colombia, brazil, argentina, jamaica, ireland, bahamas, iceland, norway, sweden, denmark, southKorea, singapore, australia, newZealand, morocco, southAfrica, taiwan, hongKong, poland, hungary, croatia, cambodia, laos, ecuador, georgia, china, sriLanka, namibia];
