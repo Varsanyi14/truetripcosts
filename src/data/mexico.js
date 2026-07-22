@@ -611,6 +611,61 @@ export default {
         ],
         judgment: "Site fees are set annually by INAH and the state agencies and typically rise each year, and cenote prices are set by their operators, so the figures here are the 2026 rates from recent on-site reporting and can change. Confirm at the gate, and always carry pesos. Checked July 2026."
       }
+    },
+    {
+      slug: "prices-by-season",
+      live: true,
+      topic: "seasons",
+      title: "When is Mexico cheapest, and when do prices spike? A cost calendar (2026) | True Trip Costs",
+      description: "Mexico's prices swing 30 to 50 percent by season. High season is mid-December to April, the real spikes are Christmas, spring break, and Semana Santa, and the cheapest window is September to October, which is also hurricane season. Here is the money calendar. Checked July 2026.",
+      h1: "When is Mexico cheapest, and when do prices spike?",
+      lede: "The same hotel in Cancun can cost twice as much in January as in June. When you go changes the price more than almost anything else, so here is the calendar in money terms, including one domestic surge most foreign visitors never see coming.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Prices swing hard by season, often <b>30 to 50 percent</b>. <b>High season</b> is <b>mid-December to April</b>, and the sharpest spikes are <b>Christmas and New Year</b>, <b>US spring break</b> (March), and <b>Semana Santa</b>, the week before Easter, which is a huge <b>domestic</b> surge that catches foreign visitors out. The <b>cheapest</b> window is <b>September and October</b> (roughly <b>30 to 50 percent below</b> peak), but that is also <b>hurricane season</b> on the coasts. The best value with low weather risk is the <b>May to June</b> and <b>November</b> shoulders.",
+      sections: [
+        {
+          h: "The expensive windows",
+          p: [
+            "High season runs <b>mid-December through April</b>, when North Americans and Europeans escape the winter. Within it, three spikes stand out. <b>Christmas and New Year</b> (roughly December 20 to January 3) is the single most expensive stretch, with beachfront resorts at premium rates and flights up sharply. <b>Spring break</b> (mid-February into March) fills Cancun, Playa del Carmen, Los Cabos and Puerto Vallarta with college crowds. For popular spots in this window, book <b>3 to 6 months ahead</b>.",
+            "The one most foreign visitors miss is <b>Semana Santa</b>, the week before Easter (it moves each year, usually late March or April). This is a <b>domestic</b> surge: Mexican families take their big holiday, the beaches and colonial towns fill, and prices climb even where foreign tourism is light. If your dates are flexible, avoiding Semana Santa week is one of the easiest ways to cut cost."
+          ]
+        },
+        {
+          h: "The cheapest window, and its catch",
+          p: [
+            "The lowest prices, roughly <b>30 to 50 percent below</b> high season, land in the <b>rainy and low season</b>, especially <b>September and October</b>. September is often the cheapest month of the year: a Cancun all-inclusive that runs around <b>$400 a night in January</b> can fall to the <b>$180 to $220</b> range at a comparable property outside peak, with September the steepest of all.",
+            "The catch is weather. <b>Hurricane season</b> runs <b>June 1 to November 30</b>, with the highest storm and heavy-rain risk in <b>August, September and October</b> on both coasts. A direct hit is uncommon, but the risk is real, which is exactly why prices drop. If you book this window, favor <b>refundable rates</b>, watch the forecast in the two weeks before you travel, and consider <b>travel insurance</b> that covers trip cancellation. Inland cities like <b>Mexico City and Oaxaca</b> see no hurricane impact at all, so they are a smart low-season choice."
+          ]
+        },
+        {
+          h: "Festivals worth the surge, in the right place",
+          p: [
+            "Some spikes are local and tied to an event. <b>Day of the Dead</b> (November 1 and 2, with build-up in late October) sends prices soaring specifically in <b>Oaxaca, Mexico City and Michoacan</b> (Patzcuaro), the best places to experience it. If that is your goal, book <b>well ahead</b> and expect a premium. If it is not, simply <b>avoid those cities</b> in that window and prices elsewhere are unaffected.",
+            "Summer (<b>July and August</b>) is a second, milder peak: Mexican school holidays plus international summer travel push coastal resorts back up, and Cancun in particular reverts toward high-season rates. On the Caribbean coast, <b>sargassum</b> (seaweed) can also be a factor in these months."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          p: [
+            "If you want the <b>best value with low weather risk</b>, aim for the <b>May to early June</b> or <b>November</b> shoulders: prices drop <b>20 to 40 percent</b> from peak, crowds thin, and the weather is still good. If you want the <b>rock-bottom price</b> and can accept storm risk, go in <b>September or October</b>, book refundable, and lean inland.",
+            "Whatever you pick, the single biggest lever is <b>shifting your dates a week or two</b> around Christmas, spring break, and Semana Santa. For what your day-to-day spending will actually look like once you are there, see the <a href=\"/mexico\">Mexico cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "When is the cheapest time to visit Mexico?", a: "September and October, roughly 30 to 50 percent below high season, because it is the rainy and hurricane season and demand is lowest. September is often the single cheapest month. For low prices with less weather risk, the May to June and November shoulders are the smarter value windows." },
+        { q: "When is Mexico most expensive?", a: "High season is mid-December to April. The sharpest spikes are Christmas and New Year, US spring break in March, and Semana Santa (the week before Easter). Summer, July and August, is a second, milder peak, and Cancun in particular reverts to high-season prices then." },
+        { q: "What is Semana Santa and why does it raise prices?", a: "Semana Santa is the week before Easter, Mexico's biggest domestic travel holiday. Mexican families travel en masse, so beaches and colonial towns fill and prices climb even where foreign tourism is light. Its dates move each year, usually late March or April. Avoiding that week is an easy way to save." },
+        { q: "Is it safe to visit Mexico during hurricane season?", a: "Usually yes. Hurricane season runs June 1 to November 30, with the highest risk in August to October on the coasts, but a direct hit is uncommon and most trips still get sunshine. Prices drop because of the risk, not guaranteed bad weather. Book refundable rates, watch the forecast, consider trip-cancellation insurance, or choose inland cities like Mexico City and Oaxaca, which see no hurricane impact." },
+        { q: "When is Day of the Dead and does it affect prices?", a: "November 1 and 2, with build-up in late October. It spikes prices specifically in Oaxaca, Mexico City, and Michoacan (Patzcuaro), the top places to experience it, so book well ahead if you are going. Elsewhere in the country it has little effect on prices." }
+      ],
+      sources: {
+        links: [
+          { label: "NOAA National Hurricane Center: official Atlantic hurricane season dates and forecasts", url: "https://www.nhc.noaa.gov", type: "gov" }
+        ],
+        judgment: "Hurricane-season dates are from NOAA. The pricing patterns and percentage swings are seasonal market behavior drawn from recent 2025 and 2026 travel reporting, not fixed figures, and actual prices depend on destination, property, and how far ahead you book. Semana Santa and Easter dates move each year, so confirm them for your travel year. Checked July 2026."
+      }
     }
   ]
 };
