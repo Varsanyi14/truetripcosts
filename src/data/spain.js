@@ -265,6 +265,61 @@ export default {
         ],
         judgment: "Spain's tax is regional, so this is a map of where it applies in 2026 rather than a single national rate. Catalonia and Barcelona raised rates on 1 April 2026 and are on a rising schedule into 2027, and the Balearic ecotasa is seasonal, so the euro figures are a recent read by accommodation category. Confirm the per-night amount with your accommodation. Checked July 2026."
       }
+    },
+    {
+      slug: "cash-or-card",
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Spain, or can I use cards? (2026) | True Trip Costs",
+      description: "Barely any. Spain is card-first: tap almost everywhere, with a chip-and-PIN backup. The catches: some tapas bars set a card minimum, skip the blue-and-yellow Euronet ATMs, and choose euros, not dollars. Checked Jul 2026.",
+      h1: "Do I need cash in Spain, or can I use cards?",
+      lede: "Short answer: card for almost everything, a little cash for tapas bars and markets. Spain is firmly card-first, and contactless runs the day. The things to get right are the fee-heavy kiosk ATMs, the odd card minimum, and the dollar prompt.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Cards, almost entirely. Spain is <b>card-first</b>: over <b>90% of city businesses</b> take a tap, <b>contactless</b> is standard with no PIN under about <b>50 euros</b>, and Apple Pay and Google Pay are widely accepted. Keep <b>40 to 50 euros</b> in small notes for tapas bars, neighborhood markets, small towns, tips and the occasional cash-only or <b>card-minimum</b> spot (often around 5 euros). Two traps: skip the <b>blue-and-yellow Euronet ATMs</b>, and always choose <b>euros, not dollars</b> (the Spanish prompt reads sin conversion).",
+      sections: [
+        {
+          h: "Card-first, with a little cash for the edges",
+          p: [
+            "Spain is comfortably <b>card-first</b>. <b>Visa and Mastercard</b> are taken almost everywhere, over <b>90% of city businesses</b> accept a tap, <b>contactless</b> is the default with <b>no PIN under about 50 euros</b>, and <b>Apple Pay and Google Pay</b> are widely accepted. You will hear about <b>Bizum</b>, an instant phone-to-phone payment locals love, but it needs a Spanish bank account, so it is not your tool. Carry a <b>chip-and-PIN card</b> as a backup.",
+            "Keep <b>40 to 50 euros</b> in small notes and coins for the cash-friendly corners: <b>tapas bars</b>, neighborhood <b>markets</b>, small towns, tips, and the occasional place with a <b>card minimum</b> of around 5 euros. Anything above a 50 euro note is awkward to spend, so break big notes at a supermarket."
+          ]
+        },
+        {
+          h: "The euro-versus-dollar trap, and the kiosk ATMs",
+          p: [
+            "When a card terminal or an ATM asks whether to charge in <b>dollars or euros, always choose euros</b>. Choosing dollars triggers dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's, and a Euronet machine can mark it up far more. At a Spanish ATM the prompt reads con conversion or sin conversion, so pick <b>sin conversion</b>, without conversion.",
+            "Avoid the <b>blue-and-yellow Euronet and Cashzone ATMs</b> at airports, stations and tourist sites. They charge flat fees around <b>4 to 7 euros</b> and push the dollar conversion hardest. Use a machine <b>attached to a real bank</b>, CaixaBank, BBVA, Santander or Sabadell, and read the on-screen fee before you confirm."
+          ]
+        },
+        {
+          h: "Getting cash safely",
+          p: [
+            "Use a <b>bank-branch ATM</b> in daylight, take out a few days' worth at once to limit per-visit fees, and use a <b>debit card</b> rather than a credit card, since a credit-card withdrawal is a cash advance with a fee and interest from day one. Carry a <b>no-foreign-fee card</b> plus a backup on a different network.",
+            "As a rough guide, two mid-range travelers might pull <b>250 to 350 euros</b> of day-to-day cash across a week beyond the hotel, with cards covering the rest. Watch your pockets in crowds: Barcelona and Madrid pickpockets work Las Ramblas, the metro and the crowds at big sights, so keep cards and phone in a front or zipped pocket."
+          ]
+        },
+        {
+          h: "Tipping, terraces and the city tax",
+          p: [
+            "Tipping is light in Spain: the price already includes <b>IVA</b> (VAT) and staff earn a real wage, so there is no US-style percentage. Locals just round up or leave the small change, the <b>propina</b>. Leave any tip in <b>cash</b>, since card terminals rarely pass it on. One bill quirk: some places add a small <b>terrace surcharge</b> (suplemento de terraza) to sit outside, which is not a tip, so read the bill first.",
+            "Spain's tourist tax is <b>regional</b>: only Catalonia (including Barcelona) and the Balearic Islands charge one, and most of the country does not. Where it applies and how much is in <a href=\"/spain/tourist-tax\">Spain's tourist tax</a>. For the wider picture, see the <a href=\"/spain\">Spain money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Spain?", a: "Not much. Spain is card-first, and over 90% of city businesses take a tap, including Apple Pay and Google Pay. Keep 40 to 50 euros in small notes for tapas bars, neighborhood markets, small towns, tips and the occasional cash-only or card-minimum spot, and top up at a bank ATM as needed." },
+        { q: "Should I pay in euros or dollars in Spain?", a: "Always euros. If a card terminal or ATM offers to charge you in dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and a Euronet machine can be far worse. At a Spanish ATM the charge-in-euros choice is worded sin conversion, without conversion." },
+        { q: "What ATM should I use in Spain?", a: "A machine attached to a real bank, such as CaixaBank, BBVA, Santander or Sabadell. Avoid the blue-and-yellow standalone Euronet and Cashzone machines at airports, stations and tourist sites, which charge flat fees around 4 to 7 euros and push the dollar conversion. Always choose to be charged in euros." },
+        { q: "How much cash should I bring for a week in Spain?", a: "For two mid-range travelers, very roughly 250 to 350 euros of day-to-day cash across a week beyond your hotel, pulled in a couple of bank-ATM visits, with cards and contactless covering the rest. Adjust for how much you tap versus pay in cash." }
+      ],
+      sources: {
+        links: [
+          { label: "European Central Bank: the official euro reference exchange rates", url: "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html", type: "gov" },
+          { label: "US Department of State: Spain country information, including safety context relevant to ATM use", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Spain.html", type: "gov" }
+        ],
+        judgment: "Spain is strongly card-first, but ATM and card fees vary by your own bank, so much of this is our practical read. The euro rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
     }
   ]
 };

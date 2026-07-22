@@ -377,6 +377,61 @@ export default {
         ],
         judgment: "Italy's overnight tax is set separately by each comune and rose in 2024 and 2025, so the euro figures here are a recent 2026 read by accommodation category, not a fixed national table. The Venice access fee dates and prices are from the official city portal. Confirm the exact per-night amount with your accommodation, since caps and child-exemption ages vary by city. Checked July 2026."
       }
+    },
+    {
+      slug: "cash-or-card",
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Italy, or can I use cards? (2026) | True Trip Costs",
+      description: "Both. Cards work almost everywhere and shops must legally accept them, but you want euros for the coperto, espresso bars and small trattorie. The traps: skip the blue Euronet ATMs and choose euros, not dollars. Checked Jul 2026.",
+      h1: "Do I need cash in Italy, or can I use cards?",
+      lede: "Short answer: cards for most things, a stash of euros for the small ones. Italy is more card-friendly than its reputation, and merchants must legally accept cards, but cash still oils the daily stuff. Here is how to pay well.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Both. <b>Cards work almost everywhere</b>, contactless included, and Italian merchants are <b>legally required to accept them</b>, so a refusal is on them, not the rules. But keep <b>50 to 100 euros</b> in small notes for the <b>coperto</b> cover charge, espresso bars, neighborhood markets, tips and the occasional cash-only trattoria. Two traps to sidestep: skip the <b>bright blue Euronet ATMs</b> at tourist sites, and always choose <b>euros, not dollars</b> (at an Italian machine, the without-conversion option is worded senza conversione). Your per-night city tax is settled at the hotel, and is covered separately.",
+      sections: [
+        {
+          h: "Cards work, and legally must, but keep some cash",
+          p: [
+            "Italy has caught up on cards. <b>Visa and Mastercard</b> are taken almost everywhere, <b>contactless</b> is normal, and <b>Apple Pay and Google Pay</b> work at most terminals; Amex is patchier, so keep it as a backup. Since 2022, Italian businesses are <b>legally required to accept card payments</b>, even for small amounts, so if a place claims its machine is broken, it is not your job to go find cash.",
+            "That said, <b>cash still smooths daily life</b>. Carry <b>50 to 100 euros</b> in small notes and coins for the <b>coperto</b> cover charge, an espresso at the bar, market stalls, small family trattorie, tips and a church donation box. Remember that <b>1 and 2 euros are coins</b>, not notes, and they add up, so a small coin stash is genuinely useful."
+          ]
+        },
+        {
+          h: "The euro-versus-dollar trap, and the blue ATMs",
+          p: [
+            "When a card terminal or a Bancomat asks whether to charge in <b>dollars or euros, always choose euros</b>. Choosing dollars triggers dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. At an Italian bank ATM the prompt is worded con conversione or senza conversione, so pick <b>senza conversione</b>, without conversion.",
+            "The machines to avoid are the <b>bright blue Euronet ATMs</b> clustered at tourist sites in Rome, Florence, Venice and Milan. They charge the most and push the dollar conversion hardest. Use a <b>Bancomat attached to a bank branch</b>, Intesa Sanpaolo, UniCredit, BNL or BancoPosta, and read the on-screen fee before you confirm."
+          ]
+        },
+        {
+          h: "Getting cash safely",
+          p: [
+            "Use <b>bank ATMs</b> during the day, ideally the machines inside or beside a branch, which are better lit and less prone to skimming. Use a <b>debit card</b> rather than a credit card, since a credit-card withdrawal is a cash advance with a fee and interest from day one, and bring a <b>no-foreign-fee card</b> plus a backup on a different network.",
+            "For a rough sense of scale, two mid-range travelers might pull <b>300 to 400 euros</b> of day-to-day cash across a week beyond the hotel, in a couple of ATM visits, with cards covering the rest. Withdraw a few days' worth at a time to limit per-visit fees, and keep cash out of sight in crowds."
+          ]
+        },
+        {
+          h: "The bill: coperto, service, and the city tax",
+          p: [
+            "Read the restaurant bill before you tip. Most sit-down places add a <b>coperto</b>, a per-person cover charge commonly <b>2 to 3 euros</b>, and a few tourist spots add a separate <b>servizio</b> service charge. Neither is a tip and neither is a scam. Tipping in Italy is light, with no US-style percentage to add; the detail is in <a href=\"/italy/tipping\">tipping in Italy</a>.",
+            "Separately, Italy's <b>per-night city tax</b> (the tassa di soggiorno) is almost never in your room rate and is usually collected at the hotel, often in cash. What each city charges, plus the separate Venice access fee, is in <a href=\"/italy/tourist-tax\">Italy's tourist tax</a>. For the wider picture, see the <a href=\"/italy\">Italy money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Should I use cash or card in Italy?", a: "Both. Cards and contactless work almost everywhere and merchants are legally required to accept them, but carry 50 to 100 euros in small notes for the coperto cover charge, espresso bars, neighborhood markets, tips and the occasional cash-only trattoria. Top up at a bank Bancomat as needed." },
+        { q: "Should I pay in euros or dollars in Italy?", a: "Always euros. If a card terminal or ATM offers to charge you in dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better. At an Italian bank ATM the charge-in-euros choice is worded senza conversione, without conversion." },
+        { q: "Are the blue Euronet ATMs in Italy a rip-off?", a: "They are the pricey option. The bright blue standalone Euronet machines at tourist sites in Rome, Florence, Venice and Milan charge the highest fees and push the dollar conversion hardest. Use a Bancomat attached to a bank branch, such as Intesa Sanpaolo, UniCredit, BNL or BancoPosta, and read the on-screen fee first." },
+        { q: "How much cash should I bring for a week in Italy?", a: "For two mid-range travelers, very roughly 300 to 400 euros of day-to-day cash across a week beyond your hotel, pulled in a couple of bank-ATM visits, with cards and contactless covering the rest. Adjust for how much you tap versus pay in cash." }
+      ],
+      sources: {
+        links: [
+          { label: "European Central Bank: the official euro reference exchange rates", url: "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html", type: "gov" },
+          { label: "US Department of State: Italy country information, including safety context relevant to ATM use", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Italy.html", type: "gov" }
+        ],
+        judgment: "Card acceptance is now near-universal in Italy and the legal obligation to accept cards is real, but ATM and card fees vary by your own bank, so much of this is our practical read. The euro rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
     }
   ]
 };

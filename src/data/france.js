@@ -321,6 +321,61 @@ export default {
         ],
         judgment: "France's tax is set by each commune, and Paris raised its rates on 1 January 2026 while stacking regional surcharges, so published per-star figures for Paris vary by source depending on how the surcharges are applied. The mechanics (per adult, under-18 exempt, 5% for unclassified, the 15.93 euro Paris cap) are from the French government page, and the euro ranges are a recent 2026 read. Confirm the exact amount with your accommodation. Checked July 2026."
       }
+    },
+    {
+      slug: "cash-or-card",
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in France, or can I use cards? (2026) | True Trip Costs",
+      description: "Barely any. France is card-first: tap almost everywhere, with a chip-and-PIN card as backup for unmanned machines. The catches: small spots set card minimums, skip the Euronet kiosks, and choose euros, not dollars. Checked Jul 2026.",
+      h1: "Do I need cash in France, or can I use cards?",
+      lede: "Short answer: card for almost everything, a little cash for bakeries and market stalls. France is firmly card-first, and contactless runs the day. The things to get right are a chip-and-PIN backup, the fee-heavy kiosk ATMs, and the dollar prompt.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Cards, almost entirely. France is <b>card-first</b>: <b>contactless</b> is everywhere, usually with no PIN under about <b>50 euros</b>, and Apple Pay and Google Pay are widely taken. Carry a <b>chip-and-PIN card</b> as backup for the odd unmanned machine (a toll, a station kiosk) that wants one. Keep <b>a little cash</b> for bakeries, open-air markets, village cafes and the occasional small shop with a <b>card minimum</b> around 5 to 10 euros. Two traps: avoid the standalone <b>Euronet and Travelex</b> ATMs, and always choose <b>euros, not dollars</b>.",
+      sections: [
+        {
+          h: "Card-first, with a chip-and-PIN backup",
+          p: [
+            "France runs on the <b>Carte Bancaire</b> network, and in practice <b>Visa and Mastercard</b> ride on it and are taken almost everywhere. <b>Contactless</b> is the default, usually with <b>no PIN under about 50 euros</b>, and <b>Apple Pay and Google Pay</b> are widely accepted. The one thing worth carrying is a <b>chip-and-PIN card</b>: a few <b>unmanned machines</b>, such as autoroute toll booths, some train and metro kiosks and parking machines, expect a chip and PIN and may reject a tap or a swipe.",
+            "Keep <b>a little cash and some coins</b> for the corners that stay cash-friendly: <b>bakeries</b>, open-air <b>markets</b>, small <b>village cafes</b>, public toilets, and the occasional small shop that sets a <b>card minimum</b> of around 5 to 10 euros. Shops also dislike notes above 50 euros, so break big notes at a supermarket."
+          ]
+        },
+        {
+          h: "The euro-versus-dollar trap, and the kiosk ATMs",
+          p: [
+            "When a card terminal or an ATM asks whether to charge in <b>dollars or euros, always choose euros</b>. Choosing dollars triggers dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time, at terminals and machines alike.",
+            "Avoid the <b>standalone Euronet and Travelex ATMs</b> at airports, stations and tourist squares. They charge high flat fees and push the dollar conversion hardest, and the fee can bite even after you decline the conversion. Use a machine <b>attached to a real bank</b>, BNP Paribas, Credit Agricole, Societe Generale or LCL, and read the fee on screen first."
+          ]
+        },
+        {
+          h: "Getting cash, and keeping the card route cheap",
+          p: [
+            "Use a <b>bank-branch ATM</b> in daylight, take out a few days' worth at once to limit per-visit fees, and use a <b>debit card</b> rather than a credit card, since a credit-card withdrawal is a cash advance with a fee and interest from day one. Carry a <b>no-foreign-fee card</b> plus a backup on a different network.",
+            "As a rough guide, two mid-range travelers might pull <b>200 to 300 euros</b> of day-to-day cash across a week beyond the hotel, with cards covering the rest. France is genuinely card-first, so the cash is for small extras rather than the bulk of your spending. Watch pockets in the Paris metro and at busy sights."
+          ]
+        },
+        {
+          h: "Tipping and the city tax",
+          p: [
+            "Tipping is light in France because <b>service is included by law</b> (service compris) and staff earn a full wage, so there is no US-style percentage to track. For good service you might round up or leave a euro or two, best left in <b>cash</b>, since the card-terminal tip prompt may be pooled or skipped. A small habit that saves money: ask for <b>une carafe d'eau</b>, free tap water, rather than paying for bottled.",
+            "Separately, most French towns add a small <b>per-night tourist tax</b> (the taxe de sejour), collected at your accommodation, modest in most places and much higher in Paris. What it costs and why Paris is now steep is in <a href=\"/france/tourist-tax\">France's tourist tax</a>. For the wider picture, see the <a href=\"/france\">France money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in France?", a: "Not much. France is card-first, and contactless works almost everywhere, including Apple Pay and Google Pay. Keep some euros for bakeries, open-air markets, village cafes, tips and the occasional shop with a card minimum, but most spending can go on a card. Carry a chip-and-PIN card as backup for unmanned machines." },
+        { q: "Will my US card work at French toll booths and station machines?", a: "Usually, if it has a chip and PIN. Contactless and chip-and-signature work at staffed terminals, but some unmanned machines, such as autoroute tolls, some train and metro kiosks and parking machines, expect a chip and PIN. So carry a card that has a PIN set as a backup, or use a staffed counter." },
+        { q: "Should I pay in euros or dollars in France?", a: "Always euros. If a card machine or ATM offers to charge you in dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "What ATM should I use in France?", a: "A machine attached to a real bank, such as BNP Paribas, Credit Agricole, Societe Generale or LCL. Avoid the standalone Euronet and Travelex kiosks at airports, stations and tourist squares, which charge high fees and push the dollar conversion. Always choose to be charged in euros." }
+      ],
+      sources: {
+        links: [
+          { label: "European Central Bank: the official euro reference exchange rates", url: "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html", type: "gov" },
+          { label: "US Department of State: France country information, including safety context relevant to ATM use", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/France.html", type: "gov" }
+        ],
+        judgment: "France is strongly card-first, but ATM and card fees vary by your own bank and the chip-and-PIN quirk at unmanned machines is fading rather than gone, so much of this is our practical read. The euro rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
     }
   ]
 };

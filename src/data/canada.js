@@ -237,6 +237,61 @@ export default {
         ],
         judgment: "Canada's entry rules are set by the CFIA and administered on the US side by APHIS, with the dog-return rules set by the CDC. The requirements are light and stable, but the dog age branches and the CDC return rules are the parts worth checking, so we point you to the official pages and dated this July 2026. Airline policies for flying add their own layer, so confirm your carrier's pet rules before booking."
       }
+    },
+    {
+      slug: "cash-or-card",
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Canada, or can I use cards? (2026) | True Trip Costs",
+      description: "Barely any cash. Canada is tap-to-pay almost everywhere and you tip on the terminal. The catches: prices are shown before tax, skip the white-label ATMs, and choose Canadian dollars, not US dollars. Checked Jul 2026.",
+      h1: "Do I need cash in Canada, or can I use cards?",
+      lede: "Short answer: cards for almost everything, a little cash for markets and parking meters. Canada is nearly as tap-happy as it gets. The things to get right are the pre-tax price tag, the fee-heavy private ATMs, and the dollar prompt.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "Cards, almost entirely. Canada is heavily <b>tap-to-pay</b>: Visa and Mastercard are accepted nearly everywhere, contactless and Apple Pay or Google Pay included, and the card terminal even handles the tip. Keep about <b>C$40 to C$60</b> in cash for farmers markets, food trucks, parking meters and small tips. Two things trip up first-timers: the <b>price on the tag is before tax</b> (5 to 15% is added at the register), and you should always choose <b>Canadian dollars, not US dollars</b>, at the terminal or ATM. For cash, use a <b>major bank ATM</b> and skip the private white-label machines.",
+      sections: [
+        {
+          h: "Cards almost everywhere, a little cash for the edges",
+          p: [
+            "Canada runs on plastic and phones. <b>Visa and Mastercard</b> are taken almost everywhere, <b>contactless</b> is standard, and <b>Apple Pay and Google Pay</b> work at most terminals. Amex is accepted more widely than in much of Europe but still less than Visa or Mastercard, so treat it as a backup rather than your only card. You will see locals tap a card called <b>Interac</b>, the domestic debit network, but it is a Canadian-bank product you will not use, and your own tap works fine alongside it.",
+            "Keep a little cash, roughly <b>C$40 to C$60</b>, for the genuinely cash-friendly corners: farmers markets, food trucks, some parking meters, tips for a bellhop or housekeeping, and the rare small shop that prefers it. Note there is <b>no penny</b> in Canada, so a cash total rounds to the nearest 5 cents, while a card charge is exact."
+          ]
+        },
+        {
+          h: "The price tag is pre-tax, and tips ride on top",
+          p: [
+            "This catches US visitors out even though it mirrors home. The <b>shelf or menu price does not include sales tax</b>: depending on the province, roughly <b>5% up to 15%</b> is added at the register, so you always pay a bit more than the number shown. Alberta and the territories are cheapest at 5%, while Ontario and Atlantic Canada run 13 to 15%.",
+            "On top of tax, <b>tipping is US-style</b>: around 15 to 20% at sit-down restaurants and bars, prompted right on the terminal, which can suggest figures based on the post-tax total. It is a real part of the cost, so a listed C$100 dinner can land near C$130. The fuller tax and tipping picture, including the fact that there is <b>no general sales-tax refund</b> for visitors, is in the <a href=\"/canada\">Canada money guide</a>."
+          ]
+        },
+        {
+          h: "Choose Canadian dollars, not US dollars",
+          p: [
+            "When a card terminal or an ATM offers to charge you in <b>US dollars or Canadian dollars, always choose Canadian dollars</b>. Picking US dollars triggers dynamic currency conversion, a marked-up rate that quietly adds <b>3 to 8%</b>. Let your own bank do the conversion instead.",
+            "A handful of border towns and tourist spots will <b>take US cash</b>, but at a poor rate, and your change comes back in Canadian dollars, so you lose either way. Pay and tip in <b>Canadian dollars</b>, and carry a card with <b>no foreign-transaction fee</b> so the card route stays cheap."
+          ]
+        },
+        {
+          h: "Getting cash: use a bank machine",
+          p: [
+            "For cash, use a <b>major bank ATM</b>: <b>RBC, TD, Scotiabank, BMO or CIBC</b>. Avoid the <b>private white-label machines</b> tucked into bars, hotels and convenience stores, which stack steep surcharges on top of your own bank's fee. Most machines dispense C$20 notes, so ask for an amount that is not all in fifties if you want small bills.",
+            "Use a <b>debit card</b> at the ATM rather than a credit card, since a credit-card withdrawal is a cash advance with a fee and interest from day one. Decline the machine's US-dollar conversion, take out a few days' worth at once to limit per-visit fees, and shield your PIN."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Canada?", a: "Very little. Cards and tap work almost everywhere, and you can tip on the terminal. Keep about C$40 to C$60 for farmers markets, food trucks, parking meters, small tips and the rare cash-only spot, and pull it from a major bank ATM if you run low." },
+        { q: "Should I pay in Canadian or US dollars in Canada?", a: "Canadian dollars. If a card terminal or ATM offers to charge you in US dollars, decline it: that dynamic currency conversion adds roughly 3 to 8%. Some border and tourist businesses take US cash, but at a poor rate, and your change comes back in Canadian dollars." },
+        { q: "Is sales tax included in prices in Canada?", a: "No, and it catches US visitors out even though it mirrors home. The shelf or menu price is before tax. Depending on the province, 5% (Alberta and the territories) up to 15% (Atlantic Canada) is added at checkout, and hotels usually add an accommodation levy on top." },
+        { q: "Which ATM should I use in Canada?", a: "A major bank's machine: RBC, TD, Scotiabank, BMO or CIBC. Avoid the private white-label ATMs in bars, hotels and convenience stores, which charge high fees. Use a debit card rather than a credit card, and always decline the US-dollar conversion. Most machines dispense C$20 notes." }
+      ],
+      sources: {
+        links: [
+          { label: "Bank of Canada: the official Canadian-dollar exchange-rate reference", url: "https://www.bankofcanada.ca/rates/exchange/", type: "gov" },
+          { label: "US Department of State: Canada country information, including safety context relevant to ATM use", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Canada.html", type: "gov" }
+        ],
+        judgment: "Canada is one of the more cashless countries, and card and ATM fees vary by your own bank, so much of this is our practical read. The exchange rate moves, sales-tax rates are set by each province, and the one firm rule is to decline US-dollar conversion. Checked July 2026."
+      }
     }
   ]
 };
