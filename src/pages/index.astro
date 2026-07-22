@@ -210,11 +210,14 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
 
   <script>
     (function () {
-      // Filter logic is delegated on the document so it binds regardless of when
-      // either input mounts or in what order the page scripts run. Both the hero
-      // input (#country-filter-hero) and the lower input (#country-filter) drive
-      // the same grid and no-match funnel; typing in one mirrors the other.
-      var FILTER_IDS = ['country-filter', 'country-filter-hero'];
+      // Two inputs filter one grid: a hero box up top and the lower box above the
+      // grid. A single delegated listener on document handles BOTH, so it does not
+      // matter which input mounts first, or whether one mounts late. Matching each
+      // input by its own id (not one shared selector) is what keeps the hero box
+      // working, not just the lower one. Typing in either mirrors the other, and
+      // the no-match newsletter funnel is preserved.
+      var HERO = 'country-filter-hero';
+      var LOWER = 'country-filter';
       var scrolled = false;
 
       function norm(s) {
@@ -241,22 +244,17 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
 
       document.addEventListener('input', function (e) {
         var t = e.target;
-        if (!t || !t.id || FILTER_IDS.indexOf(t.id) === -1) return;
+        if (!t || (t.id !== HERO && t.id !== LOWER)) return;
         var raw = t.value;
-        // Mirror to the other input so the filter state is single and consistent.
-        for (var i = 0; i < FILTER_IDS.length; i++) {
-          if (FILTER_IDS[i] === t.id) continue;
-          var other = document.getElementById(FILTER_IDS[i]);
-          if (other && other.value !== raw) other.value = raw;
-        }
+        var other = document.getElementById(t.id === HERO ? LOWER : HERO);
+        if (other && other.value !== raw) other.value = raw;
         apply(norm(raw.trim()));
-        // Typing in the hero input scrolls the grid into view once so results show.
-        if (t.id === 'country-filter-hero' && !scrolled && raw.trim() !== '') {
+        if (t.id === HERO && !scrolled && raw.trim() !== '') {
           scrolled = true;
           var grid = document.getElementById('country-grid');
-          if (grid) {
+          if (grid && typeof grid.scrollIntoView === 'function') {
             try { grid.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-            catch (err) { grid.scrollIntoView(); }
+            catch (err) { try { grid.scrollIntoView(); } catch (e2) {} }
           }
         }
       });
