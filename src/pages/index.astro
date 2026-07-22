@@ -44,9 +44,23 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
         <div style="display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:0 0 16px"><USBadge /><span class="tagpill" style="margin:0">The fees nobody quotes you</span></div>
         <h1>The money side of your trip, sorted.</h1>
         <p class="lede">Plain-language money guides for travelers leaving the US: what to pay with, how much cash to carry, and the fees to dodge. The money side of a trip, not a flights-and-hotels budget.</p>
-        <div class="cfilter cfilter-hero">
-          <svg class="cfilter-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-          <input type="text" id="country-filter-hero" class="cfilter-in" placeholder="Know where you are going? Type a country, like Japan" aria-label="Filter country guides by name" autocomplete="off" />
+        <div class="hero-search">
+          <div class="cfilter cfilter-hero">
+            <svg class="cfilter-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="country-filter-hero" class="cfilter-in" placeholder="Know where you are going? Type a country, like Japan" aria-label="Search country guides" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="hero-ta-list" aria-autocomplete="list" />
+          </div>
+          <div class="hero-ta" id="hero-ta" hidden>
+            <div class="hero-ta-list" id="hero-ta-list" role="listbox" aria-label="Matching country guides">
+              {live.map(c => (
+                <a class="hero-ta-item" href={'/' + c.slug} data-name={[c.name, ...(c.aliases || [])].join(' ').toLowerCase()}>
+                  <img class="hero-ta-flag" src={flagSrc(c.slug)} alt="" width="22" height="16" loading="lazy" />
+                  <span class="hero-ta-name">{c.name}</span>
+                  <span class="hero-ta-go" aria-hidden="true">&#8594;</span>
+                </a>
+              ))}
+            </div>
+            <p class="hero-ta-none" id="hero-ta-none" hidden>No guide for that one yet. <a href="#" data-open-signup>Get a heads-up as we add countries</a>.</p>
+          </div>
         </div>
         <div class="hpcta">
           <a class="ghost" href="#why">Why this exists &#8594;</a>
@@ -206,57 +220,131 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
     .dsc-go{color:var(--teal-deep,#0A5644);font-weight:700}
     .dsc-chip:hover .dsc-q{color:var(--teal-deep,#0A5644)}
     @media (max-width:560px){ .dsc-grid{flex-direction:column} .dsc-chip{justify-content:space-between} }
+    /* Hero typeahead: a small list of matching guides under the hero search box. */
+    .hero-search{position:relative;max-width:420px;margin:0 0 24px}
+    .hero-search .cfilter{margin-bottom:0}
+    .hero-ta{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:30;background:var(--card,#FFFFFF);border:1px solid var(--line,#E5E3DB);border-radius:12px;box-shadow:0 14px 34px rgba(16,48,44,.16);max-height:328px;overflow-y:auto;padding:6px}
+    .hero-ta-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;text-decoration:none;color:var(--ink,#16302C)}
+    .hero-ta-item:hover,.hero-ta-item.is-active{background:var(--green-bg,#E7F3E9)}
+    .hero-ta-item.is-hidden{display:none}
+    .hero-ta-flag{flex:none;border-radius:2px;box-shadow:0 0 0 1px rgba(22,48,44,.08)}
+    .hero-ta-name{flex:1;font-size:15px;font-weight:500}
+    .hero-ta-go{color:var(--teal-deep,#0A5644);font-weight:700}
+    .hero-ta-none{margin:0;padding:12px 14px;font-size:14px;color:var(--muted,#6F6E66)}
+    .hero-ta-none a{color:var(--teal-deep,#0A5644);font-weight:600}
+    @media (max-width:640px){ .hero-search{max-width:none} }
+    /* The desktop hero clips to rounded corners with overflow:hidden, which would
+       cut off the dropdown. Let the section overflow, and round the image itself
+       instead so it still sits neatly inside the corners. */
+    @media (min-width:721px){
+      .home-hero.has-hero-img{overflow:visible}
+      .home-hero.has-hero-img .hh-media{border-radius:18px;overflow:hidden}
+    }
   </style>
 
   <script>
+    // Two independent pieces, each in its own scope:
+    //   1) the lower search box filters the country grid in place (unchanged),
+    //   2) the hero search box is a typeahead that lists matches and opens a guide.
+    // Each has an early return and keeps its helpers at the top level, so a bundler
+    // can never let a renamed variable from one collide with the other.
+
     (function () {
-      // Two inputs filter one grid: a hero box up top and the lower box above the
-      // grid. A single delegated listener on document handles BOTH, so it does not
-      // matter which input mounts first, or whether one mounts late. Matching each
-      // input by its own id (not one shared selector) is what keeps the hero box
-      // working, not just the lower one. Typing in either mirrors the other, and
-      // the no-match newsletter funnel is preserved.
-      var HERO = 'country-filter-hero';
-      var LOWER = 'country-filter';
-      var scrolled = false;
-
       function norm(s) {
-        return (s || '')
-          .toLowerCase()
-          .normalize('NFD')
-          .replace(/[\u0300-\u036f]/g, '');
+        return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
       }
-
-      function apply(q) {
-        var grid = document.getElementById('country-grid');
-        if (!grid) return;
-        var none = document.getElementById('country-filter-none');
-        var cards = grid.querySelectorAll('.ccard');
+      var lower = document.getElementById('country-filter');
+      var grid = document.getElementById('country-grid');
+      if (!lower || !grid) return;
+      var none = document.getElementById('country-filter-none');
+      var cards = grid.querySelectorAll('.ccard');
+      lower.addEventListener('input', function () {
+        var q = norm(lower.value.trim());
         var shown = 0;
         for (var i = 0; i < cards.length; i++) {
-          var name = norm(cards[i].getAttribute('data-name'));
-          var hit = q === '' || name.indexOf(q) !== -1;
+          var hit = q === '' || norm(cards[i].getAttribute('data-name')).indexOf(q) !== -1;
           cards[i].classList.toggle('is-hidden', !hit);
           if (hit) shown++;
         }
         if (none) none.hidden = shown !== 0;
+      });
+    })();
+
+    (function () {
+      function norm(s) {
+        return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      }
+      var hero = document.getElementById('country-filter-hero');
+      var panel = document.getElementById('hero-ta');
+      var listEl = document.getElementById('hero-ta-list');
+      if (!hero || !panel || !listEl) return;
+      var noneEl = document.getElementById('hero-ta-none');
+      var items = Array.prototype.slice.call(listEl.querySelectorAll('.hero-ta-item'));
+      var active = -1;
+
+      function visible() {
+        return items.filter(function (it) { return !it.classList.contains('is-hidden'); });
+      }
+      function clearActive() {
+        for (var i = 0; i < items.length; i++) items[i].classList.remove('is-active');
+        active = -1;
+      }
+      function openPanel() { panel.hidden = false; hero.setAttribute('aria-expanded', 'true'); }
+      function closePanel() { panel.hidden = true; hero.setAttribute('aria-expanded', 'false'); clearActive(); }
+
+      function run() {
+        var q = norm(hero.value.trim());
+        if (q === '') { closePanel(); return; }
+        var shown = 0;
+        for (var i = 0; i < items.length; i++) {
+          var hit = norm(items[i].getAttribute('data-name')).indexOf(q) !== -1;
+          items[i].classList.toggle('is-hidden', !hit);
+          if (hit) shown++;
+        }
+        clearActive();
+        if (noneEl) noneEl.hidden = shown !== 0;
+        openPanel();
       }
 
-      document.addEventListener('input', function (e) {
-        var t = e.target;
-        if (!t || (t.id !== HERO && t.id !== LOWER)) return;
-        var raw = t.value;
-        var other = document.getElementById(t.id === HERO ? LOWER : HERO);
-        if (other && other.value !== raw) other.value = raw;
-        apply(norm(raw.trim()));
-        if (t.id === HERO && !scrolled && raw.trim() !== '') {
-          scrolled = true;
-          var grid = document.getElementById('country-grid');
-          if (grid && typeof grid.scrollIntoView === 'function') {
-            try { grid.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-            catch (err) { try { grid.scrollIntoView(); } catch (e2) {} }
-          }
+      function setActive(next) {
+        var vis = visible();
+        if (!vis.length) return;
+        clearActive();
+        if (next < 0) next = vis.length - 1;
+        if (next >= vis.length) next = 0;
+        vis[next].classList.add('is-active');
+        active = next;
+        if (typeof vis[next].scrollIntoView === 'function') {
+          try { vis[next].scrollIntoView({ block: 'nearest' }); } catch (e) {}
         }
+      }
+
+      hero.addEventListener('input', run);
+      hero.addEventListener('focus', function () { if (hero.value.trim() !== '') run(); });
+      hero.addEventListener('keydown', function (e) {
+        if (panel.hidden) return;
+        if (e.key === 'ArrowDown') { e.preventDefault(); setActive(active + 1); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(active - 1); }
+        else if (e.key === 'Enter') {
+          var vis = visible();
+          var target = (active >= 0 && vis[active]) ? vis[active] : vis[0];
+          if (target) { e.preventDefault(); window.location.href = target.getAttribute('href'); }
+        } else if (e.key === 'Escape') { closePanel(); }
+      });
+
+      for (var j = 0; j < items.length; j++) {
+        (function (it) {
+          it.addEventListener('mousemove', function () {
+            clearActive();
+            it.classList.add('is-active');
+            active = visible().indexOf(it);
+          });
+        })(items[j]);
+      }
+
+      document.addEventListener('click', function (e) {
+        var wrap = hero.closest ? hero.closest('.hero-search') : null;
+        if (wrap && !wrap.contains(e.target)) closePanel();
       });
     })();
   </script>
