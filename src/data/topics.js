@@ -9,6 +9,9 @@ export const topicIcon = {
   cash: 'card',
   visas: 'passport',
   pets: 'paw',
+  tipping: 'tip',
+  connectivity: 'phoneok',
+  health: 'health',
 };
 
 // Caution tier -> chip label. The three-step "how careful to be" signal shown on the

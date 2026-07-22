@@ -444,6 +444,62 @@ export default {
         ],
         judgment: "Tipping norms are cultural, not legislated rates, so the figures here are our own read from recent traveler reports and local guidance, not a single official table. The resort service-charge practice varies by establishment. Checked July 2026."
       }
+    },
+    {
+      slug: "medical-costs",
+      live: true,
+      topic: "health",
+      title: "What does seeing a doctor cost in Mexico as a tourist? (2026) | True Trip Costs",
+      description: "Routine care in Mexico is cheap: a pharmacy doctor is about $2 to $3 and a private GP visit about $18 to $25, paid out of pocket. The real money risk is a serious emergency, where hospitals want a deposit upfront. Checked July 2026.",
+      h1: "What does seeing a doctor cost in Mexico?",
+      lede: "Good news for the small stuff: routine care in Mexico is fast, walk-in, and inexpensive, often just a few dollars. The part worth planning for is the rare, expensive emergency, where a private hospital asks for a deposit before it will treat you.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-22",
+      answer: "As a tourist you <b>pay out of pocket</b> (free public healthcare is for residents), but routine private care is cheap. A doctor attached to a <b>pharmacy</b> (the consultorio) runs about <b>$2 to $3</b> for minor issues, a <b>private GP visit</b> about <b>$18 to $25</b>, and a <b>specialist</b> around <b>$45 to $55</b>. The real financial risk is a <b>serious emergency</b>: private hospitals ask for a <b>deposit upfront</b>, from a few hundred to several thousand dollars, and an ICU stay, surgery, or a flight home can run into the <b>tens of thousands</b>. That gap, not the doctor visit, is what <b>travel medical insurance</b> is for.",
+      insurance: true,
+      sections: [
+        {
+          h: "Routine care: cheap, fast, and walk-in",
+          p: [
+            "For everyday problems, Mexico is refreshingly easy. Most pharmacies have a <b>doctor attached</b> (the <b>consultorio</b>), where a consultation for something minor, a stomach bug, a cold, a small infection, costs about <b>45 to 60 pesos, roughly $2 to $3</b>, and sometimes nothing at all if you buy the medicine there. No appointment needed, and in tourist areas the doctor often speaks English.",
+            "For something more involved, a <b>private GP</b> visit runs about <b>350 to 500 pesos, roughly $18 to $25</b>, a <b>specialist</b> around <b>800 to 1,000 pesos, roughly $45 to $55</b>, and a full <b>lab panel</b> often under <b>$55</b>. In a big-city private hospital the fees sit at the higher end. You pay at the time of care unless your insurer has a direct-billing arrangement with the clinic."
+          ]
+        },
+        {
+          h: "The part that actually costs: a serious emergency",
+          p: [
+            "This is where the money is, and where tourists get caught. Private hospitals in Mexico typically ask for a <b>deposit before they treat you</b>, anywhere from about <b>5,000 pesos (around $300)</b> to <b>100,000 pesos or more (several thousand dollars)</b> depending on the situation. An <b>ICU stay, major surgery, or a medical flight home</b> can climb into the <b>tens of thousands of dollars</b>.",
+            "As a foreign visitor you are <b>not covered</b> by Mexico's public system, so without insurance that deposit and the bill come straight out of your own pocket. This single risk, not the price of a doctor visit, is the reason to carry cover."
+          ]
+        },
+        {
+          h: "Pharmacies and prescriptions",
+          p: [
+            "Mexican pharmacies are everywhere, and many medicines that need a prescription back home are sold <b>over the counter</b> here. For anything controlled, the consultorio doctor next door can write a prescription on the spot. Larger <b>primera clase</b> pharmacies stock the full range, including regulated drugs.",
+            "Keep every <b>receipt</b>, the doctor's note, the pharmacy slip, the hospital invoice. If you have travel insurance, those are what you submit to claim the cost back."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          p: [
+            "Budget a little cash for the small stuff and do not overthink it: a pharmacy doctor or a GP visit is a few dollars to a few tens of dollars, easily paid on the spot. The thing to plan for is the <b>big, unlikely emergency</b>, because that is the bill that can wreck a trip.",
+            "That is exactly the shape travel insurance fits: cheap routine care you pay yourself, and a <b>large emergency, hospital deposit, or evacuation</b> the policy absorbs. For getting cash for the small payments, see the <a href=\"/mexico/cash-or-card\">Mexico cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do tourists get free healthcare in Mexico?", a: "No. Free public care is for residents enrolled in the IMSS system. As a foreign visitor you pay out of pocket for treatment, or claim it back through travel insurance. Routine private care is inexpensive; a serious emergency is not." },
+        { q: "How much does a doctor visit cost in Mexico?", a: "A doctor attached to a pharmacy (consultorio) is about 45 to 60 pesos, roughly $2 to $3, for minor issues. A private GP visit is about 350 to 500 pesos, roughly $18 to $25, and a specialist around $45 to $55. Big-city private hospitals sit at the higher end." },
+        { q: "Can I buy medicine without a prescription in Mexico?", a: "Many medicines that need a prescription elsewhere are sold over the counter in Mexico. For controlled drugs you need a prescription, which the pharmacy consultorio doctor can write on the spot for a couple of dollars." },
+        { q: "Do I need travel insurance for Mexico?", a: "Routine care is cheap enough to pay for yourself, so the reason to carry travel insurance is the rare, expensive emergency: a private hospital deposit, surgery, or a medical flight home, which can run into the tens of thousands of dollars. That is the gap a travel medical policy covers." },
+        { q: "What happens if I need a hospital in Mexico without insurance?", a: "Private hospitals usually ask for a deposit before treating you, from a few hundred to several thousand dollars, and you pay the full bill out of pocket. Public hospitals will stabilize a true emergency but are not set up for foreign visitors, and you still pay. This is the scenario travel insurance is designed for." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Mexico country information, including medical care and insurance guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Mexico.html", type: "gov" }
+        ],
+        judgment: "Medical prices in Mexico vary widely by city, clinic, and the seriousness of the problem, so the figures here are typical ranges from recent 2025 and 2026 reporting, not a fixed price list, and hospital deposits in particular depend on the case. Confirm costs at the point of care. Checked July 2026."
+      }
     }
   ]
 };

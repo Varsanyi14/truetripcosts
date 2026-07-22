@@ -60,6 +60,11 @@ const expediterUrl = (spoke.expediter && spoke.official) ? visaLink(country.slug
 // it deliberately rather than it auto-triggering on a topic.
 const esimUrl = (spoke.esim === true) ? esimLink(country.slug) : null;
 const esimBrand = (affiliate.esimBrand && affiliate.esimBrand.trim()) || "";
+// Insurance (Faye) callout, opt-in per spoke (spoke.insurance === true) and only where
+// the registry actually has a Faye link. Uses the existing affiliate.insurance link from
+// links.js, one link for every country, exactly how the eSIM and expediter links are wired.
+const insuranceUrl = (spoke.insurance === true && affiliate.insurance && affiliate.insurance.trim()) ? affiliate.insurance : null;
+const insuranceBrand = "Faye";
 const sections = Array.isArray(spoke.sections) ? spoke.sections : [];
 const faqs = Array.isArray(spoke.faqs) ? spoke.faqs : [];
 // Sibling spokes: the other live spokes on this same country. Data-driven, so each
@@ -120,6 +125,16 @@ const siblings = (country.spokes || []).filter(s => s.live !== false && s.slug !
       <p style="font-size:14.5px;margin:0 0 6px">If an eSIM is the cheaper, simpler call for {country.name}, {esimBrand ? `${esimBrand} covers it.` : `there is a tracked eSIM option.`}</p>
       <span class="sp-alt-cta">
         <a class="pickbtn" href={esimUrl} target="_blank" rel="noopener sponsored">{esimBrand ? `Get your ${esimBrand} eSIM for ${country.name}` : `Get an eSIM for ${country.name}`}<NewTab /></a>
+        <span class="tg earn">we may earn a commission</span>
+      </span>
+    </section>
+  )}
+
+  {insuranceUrl && (
+    <section class="sp-sec">
+      <p style="font-size:14.5px;margin:0 0 6px">Routine care in {country.name} is cheap enough to pay for out of pocket. The reason to carry travel insurance is the rare, expensive emergency, a hospital deposit, surgery, or a flight home, where the bill is the part that hurts. {insuranceBrand} covers trip medical and evacuation.</p>
+      <span class="sp-alt-cta">
+        <a class="pickbtn" href={insuranceUrl} target="_blank" rel="noopener sponsored">See {insuranceBrand} cover for {country.name}<NewTab /></a>
         <span class="tg earn">we may earn a commission</span>
       </span>
     </section>
