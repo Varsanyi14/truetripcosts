@@ -76,6 +76,28 @@ const faqs = Array.isArray(spoke.faqs) ? spoke.faqs : [];
 // new spoke cross-links to the rest automatically. Empty (block hidden) until a
 // country has more than one spoke.
 const siblings = (country.spokes || []).filter(s => s.live !== false && s.slug !== spoke.slug);
+
+// --- Short-answer display mode ---------------------------------------------
+// 'A' = the answer as a single prose paragraph (safe default, cannot break).
+// 'B' = pull the answer's <b> facts up into a short scannable key-points list
+//       ABOVE the full prose (the prose always stays, so nothing is lost for
+//       screen readers or detail-seekers).
+// Switch by changing this one constant.
+const ANSWER_MODE = 'A';
+// Guard for mode B. The bolds were authored as inline emphasis, not list items,
+// so some are mid-sentence fragments ("identity check done before the blood
+// draw") that are nonsense as standalone bullets. A bold is treated as UNSAFE
+// if it is too long, starts with a stop-word (a fragment signal), or is a long
+// comma-clause. If ANY bold in the answer is unsafe, the whole answer falls
+// back to prose, so a nonsense bullet can never ship. Kept deliberately strict.
+const answerBolds = [...String(spoke.answer || '').matchAll(/<b>(.*?)<\/b>/gs)]
+  .map(m => m[1].replace(/<[^>]+>/g, '').trim())
+  .filter(Boolean);
+const answerStop = /^(and|or|but|so|often|well|before|after|with|for|of|in|on|at|by|as|into|from|to|a|an|the|is|are|was|were|which|that|those|these|about|up|out|over|under|per|plus|though|although|because|if|when|while|then|not|no)\b/i;
+const boldLooksUnsafe = (t) => t.length > 46 || answerStop.test(t) || (t.length > 25 && /,\s+[a-z]/.test(t));
+const answerKeyPoints = [...new Set(answerBolds)];
+const answerHasFragment = answerKeyPoints.some(boldLooksUnsafe);
+const showKeyPoints = ANSWER_MODE === 'B' && !answerHasFragment && answerKeyPoints.length >= 3;
 ---
 
 <article class="spoke">
@@ -90,9 +112,14 @@ const siblings = (country.spokes || []).filter(s => s.live !== false && s.slug !
   {spoke.lede && <p class="sp-lede">{spoke.lede}</p>}
 
   {spoke.answer && (
-    <div class="recentchange" style="margin-top:22px">
-      <span class="rcpill">The short answer</span>
-      <p set:html={spoke.answer}></p>
+    <div class="sp-answer">
+      <span class="sp-atag">The short answer</span>
+      {showKeyPoints && (
+        <ul class="sp-apoints">
+          {answerKeyPoints.map(pt => <li>{pt}</li>)}
+        </ul>
+      )}
+      <p class="sp-aprose" set:html={spoke.answer}></p>
     </div>
   )}
 
@@ -239,13 +266,23 @@ const siblings = (country.spokes || []).filter(s => s.live !== false && s.slug !
   .sp-ic{flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;margin-top:2px}
   .sp-ic svg{width:44px;height:44px;display:block}
   .sp-head h1{margin:0}
-  .sp-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
+  .sp-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0;max-width:64ch}
+  .sp-answer{margin:22px 0 0;background:var(--green-bg);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:var(--radius);padding:16px 20px}
+  .sp-atag{display:block;font-size:11.5px;font-weight:700;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.08em;margin:0 0 8px}
+  .sp-aprose{font-size:16.5px;color:var(--ink);line-height:1.6;margin:0}
+  .sp-aprose b{font-weight:600;color:var(--ink)}
+  .sp-apoints{list-style:none;margin:0 0 12px;padding:0}
+  .sp-apoints li{position:relative;padding-left:19px;margin:0 0 7px;font-size:15px;color:var(--ink);line-height:1.5;font-weight:500}
+  .sp-apoints li:last-child{margin-bottom:0}
+  .sp-apoints li::before{content:"";position:absolute;left:3px;top:.55em;width:5px;height:5px;border-radius:50%;background:var(--teal)}
   .sp-sec{padding:26px 0 0;border-top:1px solid var(--line);margin-top:26px}
   .sp-sec h2{margin:0 0 10px}
-  .sp-sec p{font-size:16px;color:#3B4A46;line-height:1.65;margin:0 0 14px}
+  .sp-sec p{font-size:16px;color:#3B4A46;line-height:1.7;margin:0 0 17px;max-width:66ch}
   .sp-sec p:last-child{margin-bottom:0}
+  .sp-sec h2 + p{color:var(--ink);font-size:16.5px}
+  .sp-sec p b,.sp-sec li b{font-weight:600;color:var(--ink)}
   .sp-steps{margin:6px 0 0;padding:0 0 0 2px;list-style:none;counter-reset:step}
-  .sp-steps li{position:relative;padding:0 0 14px 40px;counter-increment:step;font-size:16px;color:#3B4A46;line-height:1.6}
+  .sp-steps li{position:relative;padding:0 0 16px 40px;counter-increment:step;font-size:16px;color:#3B4A46;line-height:1.6;max-width:66ch}
   .sp-steps li:last-child{padding-bottom:0}
   .sp-steps li::before{content:counter(step);position:absolute;left:0;top:1px;width:26px;height:26px;border-radius:999px;background:var(--green-bg);color:var(--teal-deep);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
   .sp-back{margin-top:26px}
@@ -269,6 +306,9 @@ const siblings = (country.spokes || []).filter(s => s.live !== false && s.slug !
   @media (max-width:560px){
     .sp-lede{font-size:16.5px}
     .sp-sec p,.sp-steps li{font-size:15.5px}
+    .sp-sec h2 + p{font-size:15.5px}
+    .sp-answer{padding:14px 16px}
+    .sp-aprose{font-size:15.5px}
     .sib-h{font-size:16px}
   }
 </style>

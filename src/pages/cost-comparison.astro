@@ -202,7 +202,7 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
           var aHtml = '', gHtml = '';
           for (var i = 0; i < vals.length; i++) {
             var left = axisMax ? (vals[i] / axisMax) * 100 : 0;
-            aHtml += '<span class="cc-tick" style="left:' + left + '%"><em>$' + vals[i] + '</em></span>';
+            aHtml += '<span class="cc-tick" style="left:' + left + '%">$' + vals[i] + '</span>';
             gHtml += '<span class="cc-grid" style="left:' + left + '%"></span>';
           }
           axisEl.innerHTML = aHtml;

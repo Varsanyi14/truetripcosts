@@ -112,7 +112,7 @@ const pct = v => (axisMax ? (v / axisMax) * 100 : 0);
 
   <div class="cc-axis" aria-hidden="true">
     {ticks.map(v => (
-      <span class="cc-tick" style={`left:${pct(v)}%`}><em>${v}</em></span>
+      <span class="cc-tick" style={`left:${pct(v)}%`}>${v}</span>
     ))}
   </div>
 
@@ -156,8 +156,7 @@ const pct = v => (axisMax ? (v / axisMax) * 100 : 0);
 
   /* Quiet axis: thin ticks, no heavy gridlines. */
   .cc-axis{position:relative;height:18px;margin-left:clamp(88px,22%,150px)}
-  .cc-tick{position:absolute;top:0;transform:translateX(-50%);font-size:11px;color:var(--muted)}
-  .cc-tick em{font-style:normal;font-variant-numeric:tabular-nums}
+  .cc-tick{position:absolute;top:0;transform:translateX(-50%);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 
   /* Gridlines are drawn inside the bar list and clipped to it, so they stop at
      the bottom of the last bar instead of running down the whole page. The layer
@@ -190,6 +189,7 @@ const pct = v => (axisMax ? (v / axisMax) * 100 : 0);
      the truncation and hands the full width to the bar. */
   @media (max-width:560px){
     .cc-axis{margin-left:0}
+    .cc-tick{font-size:10px}
     .cc-gridlayer{left:0;right:calc(46px + 10px)}
     .cc-row{display:block;padding:8px 0}
     .cc-name{display:block;text-align:left;padding-right:0;white-space:normal;overflow:visible;text-overflow:clip;margin:0 0 4px;font-size:13px}
