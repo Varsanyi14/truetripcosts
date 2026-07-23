@@ -149,6 +149,12 @@ export default {
   spokes: [
     {
       slug: "eta",
+      glance: [
+        { k: "ETA", v: "Required, but free since May 2026" },
+        { k: "Cost", v: "Free for US citizens" },
+        { k: "Stay", v: "30 days, double entry" },
+        { k: "Where", v: "The official portal only" }
+      ],
       live: true,
       topic: "visas",
       title: "Do US citizens need a visa for Sri Lanka? The free ETA, explained (2026) | True Trip Costs",
@@ -167,6 +173,8 @@ export default {
       sections: [
         {
           h: "Free now, but still required",
+          icon: "receipt",
+          key: { fig: "Free", tag: "Still mandatory", text: "As of 25 May 2026, Sri Lanka waived the tourist ETA fee for citizens of 40 countries, including the US. The ETA itself is still required, so apply online before you fly. It gives 30 days, double entry.", tone: "teal" },
           p: [
             "This is the part travelers get wrong. As of <b>25 May 2026</b>, Sri Lanka waived the tourist ETA fee for citizens of 40 countries, <b>including the US</b>. But the ETA itself is <b>still compulsory</b>: no one, whatever their nationality, may enter Sri Lanka without an approved ETA obtained <b>before arrival</b>. Free changed the price, not the requirement.",
             "It grants a <b>30-day stay</b> with <b>double entry</b> (you can leave and come back once within the 30 days). Your passport needs <b>six months</b> of validity, and you should have proof of onward travel and enough funds for your stay. It does not permit any work, paid or unpaid."
@@ -174,6 +182,8 @@ export default {
         },
         {
           h: "How to get it, and how to confirm it is free",
+          icon: "qr",
+          key: { fig: "10-15 min", tag: "Online, official portal", text: "The whole thing is online and takes about ten to fifteen minutes. Use only the official government portal, where the fee for eligible nationalities now shows as zero.", tone: "teal" },
           p: [
             "The whole thing is online and takes about ten to fifteen minutes."
           ],
@@ -186,6 +196,8 @@ export default {
         },
         {
           h: "Why the overpaying happens",
+          icon: "alert",
+          key: { tag: "Ignore stale $50 quotes", text: "The fee change is recent, so search results are full of stale guides quoting the old $50 charge, and third-party sites will still charge it plus a markup. Apply direct on the official portal.", tone: "amber" },
           p: [
             "The fee change is recent, so <b>search results are full of stale guides</b> quoting the old $50 charge, and plenty of <b>third-party sites</b> will happily still charge you that (their markup) to file a form that is now free. The Department of Immigration warns travelers directly to verify they are on a <b>.gov.lk</b> domain before paying.",
             "A visa on arrival is also technically available at Colombo and Mattala airports, but the department strongly advises getting your ETA online first, since it is smoother and avoids any airport queue or confusion."
@@ -193,6 +205,8 @@ export default {
         },
         {
           h: "If you want to stay longer",
+          icon: "calendar",
+          key: { fig: "30 days", tag: "Extend in Colombo", text: "The free ETA covers 30 days. For more time, extend at the Department of Immigration and Emigration in Colombo, though the extension itself does carry a fee.", tone: "teal" },
           p: [
             "The free ETA covers <b>30 days</b>. If you want more time, you can <b>extend</b> at the Department of Immigration and Emigration in Colombo, and the extension itself does carry a fee, so budget for it if you are planning a long stay.",
             "For how money works once you land, cards, cash, ATMs and the rest, see the <a href=\"/sri-lanka\">Sri Lanka money guide</a>."
@@ -216,6 +230,12 @@ export default {
     },
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Sri Lankan rupee (LKR)" },
+        { k: "Cards", v: "Colombo, hotels, tourist south" },
+        { k: "Cash for", v: "Tuk-tuks, street food, temples" },
+        { k: "Get rupees", v: "Bank ATMs in town" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in Sri Lanka, or can I use cards? (2026) | True Trip Costs",
@@ -228,6 +248,8 @@ export default {
       sections: [
         {
           h: "A cash-first country, with card islands",
+          icon: "cash",
+          key: { fig: "Cash-first", tag: "Rupees day to day", text: "Sri Lanka runs largely on cash. Tuk-tuks, street food, markets, bus fares, temple donations and small guesthouses expect rupees. Cards work in Colombo, hotels and the tourist south.", tone: "teal" },
           p: [
             "Sri Lanka runs largely on <b>cash</b>. Tuk-tuks, street food, market stalls, bus fares, temple donations and small guesthouses expect <b>rupees</b>, and outside Colombo and the main tourist towns, cards are often not an option at all. <b>Visa and Mastercard</b> are accepted at hotels, established restaurants, supermarkets and shops in Colombo and along the southern coast, with Amex much patchier.",
             "So the working approach is simple: <b>card for the bigger, formal things, cash for everything else</b>, and always carry enough rupees for a day of small spending."
@@ -235,6 +257,8 @@ export default {
         },
         {
           h: "Getting rupees, and the dollar trap",
+          icon: "atm",
+          key: { tag: "Choose rupees at the ATM", text: "Use a bank ATM (Commercial Bank, Sampath, Hatton National, Bank of Ceylon, People's Bank), which take foreign cards. When asked, choose rupees, not dollars, to avoid a marked-up rate.", tone: "amber" },
           p: [
             "Use a <b>bank ATM</b>, the major ones being Commercial Bank, Sampath, Hatton National Bank, Bank of Ceylon and People's Bank, which take foreign Visa and Mastercard. Many charge a <b>local withdrawal fee</b> per transaction on top of your own bank's, so take out a useful amount at once rather than lots of small withdrawals.",
             "When the ATM or a card terminal asks whether to charge you in <b>US dollars or rupees, always choose rupees</b>. The dollar option is dynamic currency conversion, a poor rate. Use ATMs attached to a bank branch during the day, and decline any offer of help from a stranger at the machine."
@@ -242,6 +266,8 @@ export default {
         },
         {
           h: "Dollars, and leftover rupees",
+          icon: "usd",
+          key: { fig: "Use rupees", tag: "Not US dollars", text: "Do not plan to spend US dollars locally, you will need rupees, and paying in dollars where accepted gets a poor rate. Bring some dollars only to exchange at a bank if needed.", tone: "teal" },
           p: [
             "Do not plan to <b>spend US dollars</b> locally, you will need rupees, and paying in dollars where accepted gets a poor rate. If you bring some dollars to exchange, use a bank or an authorized money changer rather than the airport or your hotel for a better rate.",
             "One local rule to know: the rupee is a <b>restricted currency</b>, so change any leftover rupees back before you fly home (keep your exchange receipts), since taking large amounts of LKR out of the country is not allowed and you will struggle to exchange them elsewhere."
@@ -249,6 +275,8 @@ export default {
         },
         {
           h: "How much to carry",
+          icon: "coins",
+          key: { fig: "A day", tag: "Top up often", text: "Carry enough rupees for the day, tuk-tuks, meals, entry fees and tips, and top up every couple of days rather than holding a large wad.", tone: "teal" },
           p: [
             "Carry enough rupees for the day, tuk-tuks, meals, entry fees and tips, and top up every couple of days rather than holding a large wad. A little cash also smooths the moments cards fail, which do happen outside the cities.",
             "For the fuller money picture and the rest, see the <a href=\"/sri-lanka\">Sri Lanka money guide</a>."
@@ -271,6 +299,12 @@ export default {
     },
     {
       slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Modest, appreciated, not required" },
+        { k: "Restaurants", v: "10% often already added, check" },
+        { k: "Tip well", v: "Drivers and driver-guides" },
+        { k: "How", v: "Cash, in rupees" }
+      ],
       live: true,
       topic: "tipping",
       title: "Tipping in Sri Lanka: how much, and when it is already on the bill (2026) | True Trip Costs",
@@ -283,6 +317,8 @@ export default {
       sections: [
         {
           h: "Restaurants: check for the service charge",
+          icon: "receipt",
+          key: { fig: "10%", tag: "Often already added", text: "Many Sri Lankan restaurants, especially hotels and tourist spots, add a 10% service charge by default. If it is there, you have tipped, if not, around 10% is generous.", tone: "teal" },
           p: [
             "Many Sri Lankan restaurants, especially hotels and tourist spots, add a <b>10% service charge</b> to the bill by default. If it is already there, you have effectively tipped, and anything extra is optional for standout service. If there is <b>no</b> service charge, leaving around <b>10%</b> is a generous, welcome gesture.",
             "As always, <b>read the bill before you add anything</b>, so you are not paying a tip twice."
@@ -290,6 +326,8 @@ export default {
         },
         {
           h: "Drivers and guides: the one that matters most",
+          icon: "wheel",
+          key: { fig: "Tip well", tag: "The Sri Lanka point", text: "Many visitors hire a car and driver or a driver-guide, and a good one makes the trip. This is where tipping matters most: a fair daily gratuity on top of the agreed rate is genuinely valued.", tone: "teal" },
           p: [
             "This is the Sri Lanka specific point. Many visitors hire a <b>car and driver, or a driver-guide</b>, for part of their trip, and a good one makes the whole experience. Here a tip is <b>customary and meaningful</b>: something like <b>LKR 1,000 to 2,000 a day</b> for a driver-guide who has looked after you well is a fair benchmark, more for exceptional service, handed over at the end.",
             "For a one-off guide at a site or temple, a smaller tip of a few hundred rupees is fine."
@@ -297,6 +335,8 @@ export default {
         },
         {
           h: "Everyone else, and how to tip",
+          icon: "coins",
+          key: { fig: "In rupees", tag: "Cash, small notes", text: "Tuk-tuks: round up, not expected. Hotel staff: a small note, say LKR 100 to 500, for porters and housekeeping. At temples, a small donation. Always in cash, in rupees.", tone: "teal" },
           p: [
             "<b>Tuk-tuks:</b> rounding up the fare is a kind touch, not expected. <b>Hotel staff:</b> a small note (say LKR 100 to 500) for porters and housekeeping is appreciated. At <b>temples</b>, a modest donation in the box is customary rather than a tip.",
             "Tip in <b>cash and in rupees</b>. It is the easiest thing for staff to use, and it reaches them directly, unlike a card tip. Keep a stash of small notes separate from your main wallet."
@@ -318,6 +358,12 @@ export default {
     },
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Best apps", v: "PickMe (local) and Uber" },
+        { k: "What they book", v: "Metered tuk-tuks and cars" },
+        { k: "Street tuk-tuks", v: "Agree first or use the meter" },
+        { k: "Airport", v: "Official counter or the app" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -331,6 +377,8 @@ export default {
       sections: [
         {
           h: "The app is your friend: PickMe and Uber",
+          icon: "phoneok",
+          key: { fig: "PickMe", tag: "Skip the haggling", text: "The simplest way to get around fairly is a ride app. PickMe is the homegrown leader with the widest coverage, including metered tuk-tuks and cars, and Uber works in Colombo and larger cities.", tone: "teal" },
           p: [
             "The simplest way to get around Sri Lankan towns fairly is a ride app. <b>PickMe</b> is the homegrown leader and covers the most ground, including <b>metered tuk-tuks</b> as well as cars; <b>Uber</b> operates in <b>Colombo and some larger cities</b>. Both show the fare up front and let you pay by app or cash, which <b>takes the negotiation out of it entirely</b>, the single best thing you can do to avoid tourist pricing.",
             "Download PickMe before you arrive and add a payment method, and you will rarely need to argue about a fare."
@@ -338,6 +386,8 @@ export default {
         },
         {
           h: "Street tuk-tuks: agree first or use the meter",
+          icon: "alert",
+          key: { tag: "Agree the fare first", text: "Flagging a tuk-tuk is part of the fun, but it is where overcharging happens. Many Colombo tuk-tuks have meters, so ask the driver to use it, or agree the price before you get in.", tone: "amber" },
           p: [
             "Flagging a <b>tuk-tuk</b> on the street is part of the fun, but it is where overcharging happens. Many Colombo tuk-tuks have <b>meters</b>, so look for one and ask the driver to use it. If there is no meter, <b>agree the fare before you climb in</b>, and have a rough idea of the going rate from a quick app quote first.",
             "The common lines are that the <b>meter is broken</b>, or a flat tourist price several times the real fare. It is rarely a lot of money, but a quick PickMe check keeps you honest and unbothered."
@@ -345,6 +395,8 @@ export default {
         },
         {
           h: "From the airport",
+          icon: "plane",
+          key: { fig: "CMB", tag: "Counter or app", text: "At Bandaranaike International (CMB) near Colombo, use the official airport taxi counter for a set fare, or book a PickMe or Uber from the app at the designated pickup area.", tone: "teal" },
           p: [
             "At <b>Bandaranaike International Airport (CMB)</b> near Colombo, use the <b>official airport taxi counter</b> for a set fare, or book a <b>PickMe or Uber</b> from the app at the designated pickup area. Both are fine, and the counter is simplest late at night.",
             "Do not agree a ride with a <b>tout</b> who approaches you inside the terminal. If your hotel offers a fixed-price airport transfer, that is also a safe, easy option, just confirm the price in advance."
@@ -352,6 +404,8 @@ export default {
         },
         {
           h: "Longer trips and drivers",
+          icon: "wheel",
+          key: { fig: "Per day", tag: "Car and driver", text: "For getting between towns, many visitors hire a car and driver for a day or several, which is affordable and common. Agree the daily rate, and whether fuel and the driver's meals are included.", tone: "teal" },
           p: [
             "For getting between towns, many visitors hire a <b>car and driver</b> for a day or several, which is affordable and common in Sri Lanka; agree the daily rate, and whether fuel and the driver's meals are included, up front. Trains and buses are cheap and scenic but cash-only and often crowded.",
             "For how money works more broadly, and what to tip a driver, see the <a href=\"/sri-lanka\">Sri Lanka money guide</a>."

@@ -175,6 +175,12 @@ export default {
   spokes: [
     {
       slug: "how-to-pay-in-china",
+      glance: [
+        { k: "Pay with", v: "Alipay and WeChat Pay" },
+        { k: "Link", v: "Visa/Mastercard, passport + face scan" },
+        { k: "No need for", v: "A Chinese bank account" },
+        { k: "Backup", v: "Some cash and a physical card" }
+      ],
       live: true,
       topic: "cash",
       title: "How to pay in China: Alipay, WeChat Pay, cash and cards (2026) | True Trip Costs",
@@ -192,6 +198,8 @@ export default {
       sections: [
         {
           h: "Set up the apps at home",
+          icon: "phoneok",
+          key: { tag: "Set both up before you fly", text: "China runs on phone pay, so download Alipay and WeChat Pay and link your Visa or Mastercard with passport and face verification before you travel. Arriving without them ready can leave you stuck, and acceptance varies so have both.", tone: "amber" },
           p: [
             "Download <b>Alipay</b> and <b>WeChat Pay</b> before you travel, and in each one add your <b>Visa or Mastercard</b>, then complete <b>passport and face verification</b>. This can take time or hit a review, which is exactly why you do it at home rather than at a metro gate.",
             "Do <b>both</b>. Some merchants take one and not the other, so having both is the difference between paying and being stuck. In 2026 the spending limit for verified foreign users rose to about <b>35,000 CNY</b> (roughly 5,000 dollars) per transaction, enough for hotels and big purchases."
@@ -199,6 +207,8 @@ export default {
         },
         {
           h: "Cash as a backup",
+          icon: "cash",
+          key: { fig: "Cash OK", tag: "A backup", text: "Almost everything is paid by phone, but cash still works, and from February 2026 shops face penalties for refusing it. Pull yuan from a Bank of China or ICBC ATM.", tone: "teal" },
           p: [
             "Almost everything is paid by phone, but <b>cash still works</b>, and from <b>February 2026</b> shops face penalties for refusing it. Pull <b>yuan</b> from a <b>Bank of China or ICBC</b> ATM, and keep <b>small notes</b>, since vendors often cannot break a large bill.",
             "Cash is most useful for <b>tiny vendors, temples, markets and rural areas</b>, and as a fallback if an app has a bad moment."
@@ -206,6 +216,8 @@ export default {
         },
         {
           h: "Where a physical card helps",
+          icon: "atm",
+          key: { fig: "Hotels", tag: "Bring a card too", text: "Bring a foreign Visa or Mastercard for hotels, big retailers and major attractions, where it is generally accepted, and as your ATM card. At small local places, phone pay rules.", tone: "teal" },
           p: [
             "Bring a <b>foreign Visa or Mastercard</b> for <b>hotels, big retailers and major attractions</b>, where it is generally accepted, and as your ATM card. At small local places it is <b>hit or miss</b>, so do not rely on it there.",
             "One connection point to remember: you need <b>mobile data</b> to pay by QR code, so keep a <b>roaming eSIM</b> topped up. For the whole money picture, see the <a href=\"/china\">China money guide</a>."
@@ -227,6 +239,12 @@ export default {
     },
     {
       slug: "visa-and-transit",
+      glance: [
+        { k: "Visa", v: "Tourist (L) visa, in advance" },
+        { k: "Cost", v: "About $185 to $250 all in" },
+        { k: "No-visa option", v: "240-hour transit only" },
+        { k: "Where", v: "A Chinese Visa Application Center" }
+      ],
       live: true,
       topic: "visas",
       title: "Do US citizens need a visa for China, and the 240-hour transit (2026) | True Trip Costs",
@@ -247,6 +265,8 @@ export default {
       sections: [
         {
           h: "The tourist (L) visa",
+          icon: "receipt",
+          key: { fig: "$185-250", tag: "Apply in advance", text: "The US is not on China's visa-free list, so apply for a tourist L visa in advance at a Chinese Visa Application Service Center, roughly $185 to $250 all in, with flights, hotels and an application form.", tone: "teal" },
           p: [
             "For a standard visit, apply for an <b>L visa</b> in advance. You submit your passport, a photo to spec, an application form and supporting documents (flights, hotels, sometimes an itinerary) to a <b>Chinese Visa Application Service Center</b>, in person or by an agent.",
             "For US citizens the fee is a <b>reciprocity fee of about 140 dollars</b>, flat whether you want single, double or the <b>10-year multiple-entry</b> visa, plus a service charge, so budget roughly <b>185 to 250 dollars</b> all in. The reduced fee structure runs through the end of 2026. If you will return within ten years, ask for the 10-year visa."
@@ -254,6 +274,8 @@ export default {
         },
         {
           h: "The 240-hour visa-free transit",
+          icon: "plane",
+          key: { fig: "240 hours", tag: "Stopover only", text: "If China is a stopover on the way to a third country, you may enter visa-free for up to 240 hours, about 10 days. This replaced the 144-hour rule in December 2024, and covers many cities.", tone: "teal" },
           p: [
             "If China is a <b>stopover on the way to a third country</b>, you may enter visa-free for up to <b>240 hours</b>, about 10 days. This replaced the old 144-hour rule in December 2024 and now covers <b>65 ports across 24 regions</b>, and you can move between provinces within the window.",
             "The catch is the wording: you need an <b>onward ticket to a different country or region</b> (Hong Kong and Macau count), and it does <b>not</b> work for a round trip back to the US. So US to China to Japan qualifies; US to China to US does not."
@@ -261,6 +283,8 @@ export default {
         },
         {
           h: "A few special cases",
+          icon: "alert",
+          key: { tag: "Tibet and Hainan differ", text: "Tibet needs the L visa plus a Tibet Travel Permit arranged through a tour operator. Hainan has its own 30-day visa-free scheme via a registered tour, so check the rules for where you are going.", tone: "amber" },
           p: [
             "<b>Tibet</b> requires the L visa <b>plus a Tibet Travel Permit</b>, arranged through a tour operator. <b>Hainan</b> has its own 30-day visa-free scheme via a registered tour, and there is a 15-day cruise route.",
             "<b>Hong Kong</b> (90 days) and <b>Macau</b> (30 days) are visa-free for US citizens and are treated separately from mainland China. For the money side of a China trip, see the <a href=\"/china\">China money guide</a>."
@@ -283,6 +307,12 @@ export default {
     },
     {
       slug: "staying-connected",
+      glance: [
+        { k: "The key", v: "A roaming eSIM, set up before you fly" },
+        { k: "Firewall blocks", v: "Google, Maps, WhatsApp, Instagram" },
+        { k: "VPNs", v: "Unreliable since a 2026 crackdown" },
+        { k: "eSIM routes via", v: "Hong Kong or Singapore" }
+      ],
       live: true,
       esim: true,
       topic: "connectivity",
@@ -301,6 +331,8 @@ export default {
       sections: [
         {
           h: "Why not a VPN",
+          icon: "alert",
+          key: { tag: "VPNs now fail", text: "For years the advice was a VPN. A 2026 crackdown took most out, so they now often fail to connect rather than just run slow. Do not plan your trip around one.", tone: "amber" },
           p: [
             "For years the advice was to install a VPN. In <b>2026 that broke</b>: a crackdown took most VPNs out, so they now often fail to connect rather than merely running slow. A short trip has no slack for a method that mostly fails, and you <b>cannot download or fix a VPN</b> once you are behind the firewall.",
             "You also cannot rely on hotel Wi-Fi, since it sits behind the <b>same firewall</b> as any Chinese connection."
@@ -308,6 +340,8 @@ export default {
         },
         {
           h: "Why a roaming eSIM works",
+          icon: "qr",
+          key: { fig: "Via HK/SG", tag: "Bypasses the firewall", text: "A roaming travel eSIM (Airalo, Nomad or Holafly) connects to a Chinese tower but sends your data out through Hong Kong or Singapore, so it never passes through the Great Firewall filter.", tone: "teal" },
           p: [
             "A <b>roaming travel eSIM</b> connects to a Chinese tower for signal but sends your data out through a network in <b>Hong Kong or Singapore</b>, so it never passes through the filtered Chinese internet. Google, Maps and WhatsApp just work, with no VPN to install, and the Chinese apps you need work too.",
             "Set it up <b>before you land</b>, since you need a working connection to activate it, and keep it <b>topped up</b>, because you rely on data to pay by QR code. Providers like <b>Airalo, Nomad and Holafly</b> all sell China-capable roaming plans."
@@ -315,6 +349,8 @@ export default {
         },
         {
           h: "Maps and the apps that matter",
+          icon: "phoneok",
+          key: { fig: "Apple Maps", tag: "What works", text: "On an iPhone set to a non-China region, Apple Maps works with no VPN and is accurate in the cities. Didi is the ride app, and the metro pays by QR inside Alipay or WeChat.", tone: "teal" },
           p: [
             "On an <b>iPhone set to a non-China region</b>, Apple Maps works with no VPN at all and is accurate in the cities. For getting around, <b>Didi</b> is the ride app, and the metro runs off a QR pass inside Alipay or WeChat.",
             "For how all of this ties into paying, see the <a href=\"/china\">China money guide</a> and the <a href=\"/china/how-to-pay-in-china\">how to pay in China</a> guide."
@@ -336,6 +372,12 @@ export default {
     },
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Best app", v: "Didi (has English)" },
+        { k: "Pay", v: "Through Alipay or WeChat" },
+        { k: "Metro", v: "Cheap, QR pass in the app" },
+        { k: "Between cities", v: "High-speed rail" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -354,6 +396,8 @@ export default {
       sections: [
         {
           h: "Didi first",
+          icon: "phoneok",
+          key: { fig: "Didi", tag: "English, no haggling", text: "Didi is China's ride app and the easy choice: switch it to English and pay through your linked Alipay or WeChat, so there is no fare haggling and no language barrier.", tone: "teal" },
           p: [
             "<b>Didi</b> is how most people get around China's cities, and it is the easy choice for visitors: switch it to <b>English</b>, and pay through your linked <b>Alipay or WeChat</b>, so you see the route and price up front with no cash to fumble.",
             "It needs a data connection, so keep your <b>eSIM</b> topped up. Drivers may call to confirm pickup, which can be tricky across the language gap, so pin your location clearly in the app."
@@ -361,6 +405,8 @@ export default {
         },
         {
           h: "The metro and street taxis",
+          icon: "alert",
+          key: { tag: "Street taxis: use the meter", text: "The metro is cheap, clean and signposted in English, paid by QR pass in Alipay or WeChat. For street taxis, insist on the meter or agree the fare first, since visitors are sometimes overcharged.", tone: "amber" },
           p: [
             "The <b>metro</b> in Beijing, Shanghai and other cities is cheap, clean and signposted in English, and you pay with a <b>QR pass</b> in Alipay or WeChat, or buy a token with cash. It is often the fastest way across a big city.",
             "For <b>street taxis</b>, use the <b>meter</b> or agree the fare before you get in, keep small yuan notes in case the driver prefers cash, and have your destination written in <b>Chinese characters</b> to show, since many drivers do not read English."
@@ -368,6 +414,8 @@ export default {
         },
         {
           h: "Between cities: high-speed rail",
+          icon: "ticket",
+          key: { fig: "Fast rail", tag: "Often beats flying", text: "China's high-speed rail links cities at speed, often faster than flying once you count airports. Book with your passport through Alipay, WeChat or Trip.com.", tone: "teal" },
           p: [
             "China's <b>high-speed rail</b> is one of the best ways to travel, linking cities at speed and often faster than flying once you count airports. Book with your <b>passport</b>, through the official rail app or a booking site, and arrive early for the airport-style security.",
             "For the money side, tipping and setting up the pay apps, see the <a href=\"/china\">China money guide</a>."
