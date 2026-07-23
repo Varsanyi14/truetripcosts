@@ -1,5 +1,6 @@
 export default {
   slug: "japan",
+  iso2: "jp",
   live: true,
   name: "Japan",
   from: "United States",
@@ -162,6 +163,12 @@ export default {
   spokes: [
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Japanese yen (¥ JPY)" },
+        { k: "Cards", v: "Fine across cities" },
+        { k: "Still cash", v: "Shrines, small shops, vending" },
+        { k: "Get yen at", v: "7-Eleven, Japan Post" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in Japan, or can I use cards? (2026) | True Trip Costs",
@@ -174,6 +181,8 @@ export default {
       sections: [
         {
           h: "The real picture: cashless, but not cash-free",
+          icon: "qr",
+          key: { fig: "58%", tag: "Cashless in 2025", text: "But shrines, small shops and vending machines are still cash. Big things on a card, the small old-fashioned things in cash.", tone: "teal" },
           p: [
             "Japan's reputation as a cash country is fading fast. Cashless payments hit <b>58% of spending in 2025</b> (Japan's METI), and across Tokyo, Osaka and the other big cities you can tap a contactless card or phone at convenience stores, chains, hotels and department stores without thinking about it.",
             "But <b>cash is still essential</b> in the places travelers love most: temples and shrines (entry fees and goshuin stamps), small family restaurants and coffee shops, market and festival stalls, older ryokan inns, coin lockers, and most vending machines (card acceptance there is under 10%). A useful rule: <b>big things on a card, small and old-fashioned things in cash</b>."
@@ -181,6 +190,8 @@ export default {
         },
         {
           h: "Getting yen: only some ATMs take foreign cards",
+          icon: "atm",
+          key: { tag: "Watch out", text: "Most bank ATMs (Mizuho, MUFG, SMBC) reject foreign cards. Pull yen at a 7-Eleven or Japan Post ATM instead.", tone: "amber" },
           p: [
             "Here is the part that catches first-timers. <b>Most ordinary Japanese bank ATMs</b> (Mizuho, MUFG, SMBC and the like) simply <b>will not accept a card issued outside Japan</b>, they reject it and hand it back. Use these instead:"
           ],
@@ -192,6 +203,8 @@ export default {
         },
         {
           h: "Cards and taps, and an IC card for the rest",
+          icon: "ic",
+          key: { fig: "Suica", tag: "Set this up first", text: "A digital IC card in your phone taps you through transit and konbini. Carry a Visa or Mastercard as your main, Amex is patchy.", tone: "teal" },
           p: [
             "For cards, <b>Visa and Mastercard</b> are the most widely accepted, JCB is good, and <b>Amex is patchy</b>, so carry a Visa or Mastercard as your main. The single most useful thing to set up is an <b>IC card</b>, Suica, Pasmo or ICOCA, which you tap for trains, most convenience stores and many vending machines.",
             "The slickest route is a <b>digital Suica in your phone's wallet</b>: iPhone users can add Suica in Apple Wallet and top it up (some foreign cards are declined for the top-up, in which case load cash onto a physical card at any station machine). Set it up before you fly and you skip the airport ticket lines entirely."
@@ -199,6 +212,8 @@ export default {
         },
         {
           h: "The one setting to get right, and no tipping",
+          icon: "notip",
+          key: { fig: "Yen", tag: "At the terminal", text: "Always choose yen, never dollars, on both card machines and ATMs. Dollars triggers dynamic currency conversion, a marked-up rate.", tone: "teal" },
           p: [
             "When a card terminal or ATM asks whether to charge in <b>US dollars or Japanese yen, always choose yen</b>. Choosing dollars triggers dynamic currency conversion, a poor exchange rate dressed up as a convenience, and you pay more. Picking yen lets your own bank do the conversion, which is almost always cheaper.",
             "Two smaller notes: <b>tipping is not expected</b> in Japan and can feel awkward, and travelers checks are effectively dead there. For how much to carry and the rest of the money picture, see the <a href=\"/japan\">Japan money guide</a>."

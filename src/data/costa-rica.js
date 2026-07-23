@@ -1,5 +1,6 @@
 export default {
   slug: "costa-rica",
+  iso2: "cr",
   live: true,
   name: "Costa Rica",
   from: "United States",
@@ -85,6 +86,12 @@ export default {
     },
     {
       slug: "tipping",
+      glance: [
+        { k: "Currency", v: "Colón (₡ CRC)" },
+        { k: "Restaurants", v: "10% service charge included" },
+        { k: "Tip extra", v: "Guides and drivers" },
+        { k: "How", v: "Cash, in colones" }
+      ],
       live: true,
       topic: "tipping",
       title: "Tipping in Costa Rica: what the 10% service charge covers and where to tip more (2026) | True Trip Costs",
@@ -97,6 +104,8 @@ export default {
       sections: [
         {
           h: "The 10% service charge, and the double-tip trap",
+          icon: "receipt",
+          key: { tag: "Watch out", text: "Most bills already include a 10% service charge. Some tourist spots then leave a blank tip line, so read the bill before you sign or you tip twice.", tone: "amber" },
           p: [
             "The single most important thing to know is that most sit-down restaurants already add a <b>10% service charge</b> to your bill. It is printed on the receipt, and it is the tip. You do not owe anything beyond it for a normal meal.",
             "The trap: some tourist-area restaurants hand over a <b>US-style receipt with a blank tip line</b> after the bill has already included the 10%. If you add 18 to 20% on top without reading the bill, you have tipped twice. <b>Read the bill before you sign.</b>"
@@ -104,6 +113,8 @@ export default {
         },
         {
           h: "Where to tip more: guides, drivers and hotels",
+          icon: "tip",
+          key: { fig: "10%", tag: "Guides and drivers", text: "Tour guides and private drivers do rely on tips, roughly 10%, or about 5 to 15 dollars per person per day. This is where your tipping should go.", tone: "teal" },
           p: [
             "<b>Tour guides</b> are the real exception. Gratuities are genuinely appreciated and form a real part of a guide's income: roughly <b>10%, or about 5 to 15 dollars per person per day</b> for a naturalist or adventure guide, more for something outstanding. <b>Private drivers</b> often see <b>5 to 15 dollars a day</b>.",
             "At hotels, <b>1 to 2 dollars a day</b> for housekeeping and <b>1 to 2 dollars per bag</b> for porters is appreciated. For taxis, <b>rounding up the fare</b> is plenty. And it is customary to hand a <b>guachiman</b>, the vested person watching your parked car, a few hundred colones."
@@ -111,6 +122,8 @@ export default {
         },
         {
           h: "Cash and currency for tips",
+          icon: "crc",
+          key: { fig: "Colones", tag: "Tip in cash", text: "Always tip in cash, since card tips may not reach staff. Colones are better than dollars, they spare your server an exchange.", tone: "teal" },
           p: [
             "Always tip in <b>cash</b>, since card tips do not always reach staff directly. <b>Colones are better than dollars</b> for tips, because they spare your server or guide an exchange. Keep a small stack of colones in small notes for the day, and save your dollars for hotels and tours that quote in dollars."
           ]

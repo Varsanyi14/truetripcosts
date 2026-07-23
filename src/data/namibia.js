@@ -1,5 +1,6 @@
 export default {
   slug: "namibia",
+  iso2: "na",
   live: true,
   name: "Namibia",
   from: "United States",
@@ -149,6 +150,12 @@ export default {
   spokes: [
     {
       slug: "visa",
+      glance: [
+        { k: "Visa", v: "Required since Apr 2025" },
+        { k: "Cost", v: "N$1,600 (about US$88)" },
+        { k: "How", v: "e-Visa or on arrival" },
+        { k: "Stay", v: "30 days, multiple entry" }
+      ],
       live: true,
       topic: "visas",
       title: "Do US citizens need a visa for Namibia? Yes, since April 2025 (2026) | True Trip Costs",
@@ -167,6 +174,8 @@ export default {
       sections: [
         {
           h: "What changed, and why the confusion",
+          icon: "passport",
+          key: { tag: "Don't get caught out", text: "Namibia is no longer visa-free for US citizens. A lot of older travel content still says it is. It is not, since 1 April 2025.", tone: "amber" },
           p: [
             "For years, US citizens could enter Namibia visa-free. That ended on <b>1 April 2025</b>, when Namibia introduced a visa requirement for citizens of more than 30 countries, including the US, Canada, the UK and Australia, as a reciprocal measure. The fee is <b>N$1,600</b> for non-African-Union nationals, roughly <b>US$88</b> (the figure moves a little with the exchange rate, since it is set in Namibian dollars).",
             "Because the change is recent, <b>much of the search results still says Namibia is visa-free</b> for Americans. It is not. Do not rely on an old blog post, check the official portal."
@@ -174,6 +183,8 @@ export default {
         },
         {
           h: "Two ways to get it: e-Visa or on arrival",
+          icon: "plane",
+          key: { fig: "2 ways", tag: "e-Visa or on arrival", text: "Apply online in advance and carry a printed approval, or buy a visa on arrival at the main airports and larger borders.", tone: "teal" },
           p: [
             "<b>e-Visa (recommended):</b> apply online in advance at the official portal, upload a passport photo and your passport page, pay the fee, and carry a <b>printed copy</b> of your approval to show on arrival. Processing is usually quick, but give it a week to be safe.",
             "<b>Visa on arrival:</b> available at <b>Hosea Kutako International Airport</b> (Windhoek) and <b>Walvis Bay</b> airport, and at high-volume land borders such as Katima Mulilo and Ngoma. It works, but applying online first avoids any queue or uncertainty at the border."
@@ -181,6 +192,8 @@ export default {
         },
         {
           h: "What you need to bring",
+          icon: "receipt",
+          key: { fig: "6 mo", tag: "Passport validity", text: "A passport valid at least six months with three blank pages, plus proof of accommodation, insurance and funds.", tone: "teal" },
           p: [
             "Have these ready whichever route you choose:"
           ],
@@ -194,6 +207,8 @@ export default {
         },
         {
           h: "How long you can stay, and before you land",
+          icon: "calendar",
+          key: { fig: "30 days", tag: "On arrival", text: "Normally 30 days with multiple entry, up to 90 at an officer's discretion, and extendable in Windhoek.", tone: "teal" },
           p: [
             "The visa is normally issued for <b>30 days</b>, though an immigration officer may grant up to <b>90 days</b> on arrival, with multiple entry within the period, and you can apply to <b>extend</b> at the Ministry of Home Affairs in Windhoek. One extra fee to know: cruise passengers coming ashore at <b>Walvis Bay and Luderitz</b> pay a separate <b>N$300 day-visit fee</b>.",
             "The visa system is <b>new and still settling</b>, so treat any fee or rule as subject to change and confirm it on the official portal close to your trip. Work, study and volunteer visas must be arranged through a Namibian embassy in advance, this route covers tourism and short visits only. For how money works once you are in, see the <a href=\"/namibia\">Namibia money guide</a>."
