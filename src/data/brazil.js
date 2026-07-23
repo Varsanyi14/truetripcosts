@@ -176,6 +176,12 @@ export default {
   spokes: [
     {
       slug: "entry-visa",
+      glance: [
+        { k: "Visa", v: "e-visa, apply online before you fly" },
+        { k: "Cost", v: "US$80.90, valid 10 years" },
+        { k: "Where", v: "brazil.vfsevisa.com only" },
+        { k: "Timing", v: "Up to 10 working days" }
+      ],
       live: true,
       topic: "visas",
       title: "Do US citizens need a visa for Brazil? (2026) | True Trip Costs",
@@ -196,6 +202,8 @@ export default {
       sections: [
         {
           h: "What it costs, and what you get",
+          icon: "usd",
+          key: { fig: "$80.90", tag: "Valid 10 years", text: "The fee is US$80.90, an 80-dollar consular fee plus a 90-cent processing charge, paid by card and non-refundable. In return you get multiple entries for 10 years.", tone: "teal" },
           p: [
             "The fee is <b>US$80.90</b> (an 80-dollar consular fee plus a 90-cent processing charge), paid by card during the application, and it is <b>non-refundable</b> whether or not you are approved. The price is the same for a single trip or many.",
             "In return you get an e-visa that is <b>valid for 10 years</b> for US citizens, with multiple entries. Each visit can be up to <b>90 days</b>, and you can stay a maximum of 180 days in any 12-month period. It covers tourism, business and even transit through Brazil."
@@ -203,6 +211,8 @@ export default {
         },
         {
           h: "How to apply, step by step",
+          icon: "qr",
+          key: { fig: "Online", tag: "No consulate visit", text: "It is a straightforward online form on the official portal, brazil.vfsevisa.com, with no consulate visit: your passport, a photo, travel details and the card payment.", tone: "teal" },
           p: [
             "It is a straightforward online form, no consulate visit."
           ],
@@ -216,6 +226,8 @@ export default {
         },
         {
           h: "Give it time, and mind the lookalike sites",
+          icon: "alert",
+          key: { tag: "Apply weeks ahead", text: "Processing can take up to about 10 working days and the portal may ask for another document, so apply two to three weeks before you fly. Ignore lookalike sites that charge a markup.", tone: "amber" },
           p: [
             "Processing can take up to about <b>10 working days</b>, and the portal may come back asking for another document, so <b>apply two to three weeks before you fly</b> rather than the night before. The e-visa is tied into airline systems now, so no valid visa means no boarding pass.",
             "This is a genuinely paid, required visa, which is exactly the kind of thing the internet fills with <b>overpriced middlemen</b>. Plenty of sites will take your money to file the same government form at a hefty markup, and a few are outright scams. The honest route is the official portal above. If you do pick a paid service for the hand-holding, know you are paying extra for convenience, not for anything the government requires."
@@ -223,6 +235,8 @@ export default {
         },
         {
           h: "A couple of things that trip people up",
+          icon: "receipt",
+          key: { fig: "Old visa", tag: "If you already hold one", text: "If you hold a valid physical Brazil visa issued before April 10, 2025, it still works until it expires, so you do not need the e-visa on top. Otherwise, the e-visa is required for every trip.", tone: "teal" },
           p: [
             "If you already hold a <b>valid physical Brazil visa</b> issued before April 10, 2025, it still works until it expires, so you do not need the e-visa on top. And the e-visa does not guarantee entry: as anywhere, the border officer makes the final call, so carry your printed visa and be ready to show your onward plans.",
             "Brazil is otherwise a warm, card-friendly place once you are in. For how money actually works there, cards, cash, ATMs and the rest, the <a href=\"/brazil\">Brazil money guide</a> has you covered."
@@ -246,6 +260,12 @@ export default {
     },
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Brazilian real (BRL)" },
+        { k: "Cards", v: "Near-universal in cities (Amex less)" },
+        { k: "Cash for", v: "Markets, beach vendors, small towns" },
+        { k: "On a card", v: "Choose reais (mind the IOF)" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in Brazil, or can I use cards? (2026) | True Trip Costs",
@@ -258,6 +278,8 @@ export default {
       sections: [
         {
           h: "Cards work, but mind the IOF and the conversion trap",
+          icon: "atm",
+          key: { tag: "Choose reais on a card", text: "In cities cards are near-universal, Visa and Mastercard leading. Two card costs: a small IOF tax on foreign-card use, and the conversion trap, so if a terminal asks, choose reais, not dollars.", tone: "amber" },
           p: [
             "In cities, <b>cards are near-universal</b>, Visa and Mastercard lead, contactless is common, and Amex is accepted less often. The Brazil-specific cost to know about is the <b>IOF</b>, a federal tax of roughly <b>4.38%</b> on foreign-card transactions and withdrawals, so even a no-foreign-fee card still meets this local charge. Pick a card with low fees and treat it as your main way to pay.",
             "As everywhere, if a terminal or ATM offers to charge you in <b>US dollars instead of reais, always choose reais</b>. Picking dollars triggers dynamic currency conversion, a marked-up rate, and Brazilian machines do offer it. Reais lets your own bank convert, which is cheaper."
@@ -265,6 +287,8 @@ export default {
         },
         {
           h: "Pix runs Brazil, but mostly not for tourists",
+          icon: "qr",
+          key: { fig: "Local only", tag: "Needs a local account", text: "Pix, Brazil's instant bank-transfer system, is everywhere, with people paying by QR code for almost anything. But it generally needs a Brazilian bank account and CPF, so most tourists cannot use it.", tone: "teal" },
           p: [
             "You will hear about <b>Pix</b>, Brazil's instant bank-transfer system, and it is genuinely everywhere: people pay by scanning a QR code for almost anything. The catch for visitors is that a native Pix account needs a <b>CPF</b> (a Brazilian tax ID) and a local bank account, so <b>most tourists cannot use it directly</b>. A few apps let foreigners pay via Pix by acting as a middleman, but you do not need one, card acceptance in cities is broad enough to skip Pix entirely.",
             "Where Pix does bite is the informal economy: <b>beach kiosks, small pousadas in remote spots, street stalls and freelance drivers</b> increasingly take Pix or cash only, not cards. That is exactly where your small cash reserve earns its keep."
@@ -272,6 +296,8 @@ export default {
         },
         {
           h: "Cash: bring reais, and dollars will not help",
+          icon: "cash",
+          key: { fig: "Reais only", tag: "Dollars do not work", text: "Carry a small amount of reais for taxis, snacks, tips and markets, and anywhere off the tourist track. US dollars are not widely accepted in Brazil, so plan to use reais, not dollars.", tone: "teal" },
           p: [
             "Carry a <b>small amount of reais</b> for taxis, snacks, tips, markets and anywhere off the tourist track. <b>US dollars are not widely accepted</b> in Brazil, only a handful of upscale hotels and exchange houses take them, usually at poor rates, so do not plan to spend dollars.",
             "For reais, the reliable ATMs are the big banks, <b>Banco do Brasil, Bradesco, Santander, Itau</b> and the shared <b>Banco24Horas</b> network, which take foreign Visa and Mastercard. Withdrawals carry the IOF plus your bank's fees, so pull larger amounts less often, use machines inside banks or malls by day, and keep cash out of sight."
@@ -279,6 +305,8 @@ export default {
         },
         {
           h: "Tipping, and one last habit",
+          icon: "tip",
+          key: { fig: "10% added", tag: "The servico", text: "In restaurants a 10% service charge, the servico, is usually already on the bill, so you need not add more unless service was special. Round up a taxi fare, and keep small notes for tips.", tone: "teal" },
           p: [
             "In restaurants a <b>10% service charge</b> (the servico) is usually already on the bill, so you do not need to add more unless service was special. Tipping taxi and ride-app drivers is not expected.",
             "Spend your leftover reais before you fly home, the exchange back to dollars is poor. For the fuller money picture, cards, safety and how much to carry, see the <a href=\"/brazil\">Brazil money guide</a>."

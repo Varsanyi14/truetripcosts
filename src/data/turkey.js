@@ -169,6 +169,12 @@ export default {
   spokes: [
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "BiTaksi (also Uber)" },
+        { k: "Istanbul Uber", v: "Calls a licensed yellow taxi, metered" },
+        { k: "The meter (taksimetre)", v: "Must be on from the start" },
+        { k: "Airport", v: "No fixed price, the meter decides" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -182,6 +188,8 @@ export default {
       sections: [
         {
           h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "BiTaksi", tag: "In English, takes card", text: "BiTaksi is the most popular ride app in Istanbul, Turkish-made, fully in English and takes card. Uber works too, but in Istanbul it simply calls a licensed yellow taxi, so the meter still runs.", tone: "teal" },
           p: [
             "<b>BiTaksi</b> is the most popular ride app in Istanbul, Turkish-made, fully in English, and it takes card as well as cash. <b>Uber</b> works too, but understand what it is here: it does not have its own private cars, it dispatches the same licensed <b>yellow or turquoise taxis</b>, and the meter still runs, so the price is not locked the way it is in most countries. Think of the apps as a way to get a fare estimate, track the route and keep a receipt, not as a fixed-price hack. The city's own <b>iTaksi</b> app does the same with a strict metered rate and no surge.",
             "All three call the same licensed taxis, so the real benefit is accountability: no language barrier when you type the destination, a driver and plate on record, and a log if anything goes wrong. Install <b>BiTaksi</b> and <b>Uber</b> before you arrive and you will use them often. Bolt exists but has thin driver coverage in Istanbul, so it is not the one to rely on."
@@ -189,6 +197,8 @@ export default {
         },
         {
           h: "The meter, the flat-rate trick, and the fake night surcharge",
+          icon: "alert",
+          key: { tag: "Meter on before you move", text: "The meter (taksimetre) must be running before the car moves. The classic trick is a driver who refuses it or claims it is broken and names a flat price well above the meter. Insist on it or book BiTaksi.", tone: "amber" },
           p: [
             "The meter must be running before the car moves. The classic trick is a driver who refuses it, or claims it is broken, and names a flat price that runs well over the metered fare, especially from tourist spots like Sultanahmet. The answer is simple and needs no argument: get out and take the next taxi, because there is always another one. Keep <b>Google Maps</b> open and watch the route, since the long way round is the most common way a fare gets padded.",
             "One thing worth knowing saves money at night: Turkey uses a <b>single 24-hour rate</b>, so the meter reads the same at 3am as at midday. A driver who claims a night surcharge, a <b>gece tarifesi</b>, is overcharging you. The rate and the minimum fare are set by the city, and they have been rising with inflation, so treat any figure you read online as a rough, recent guide rather than a fixed number."
@@ -196,6 +206,8 @@ export default {
         },
         {
           h: "Tolls, the note-swap, and paying",
+          icon: "cash",
+          key: { fig: "Count it", tag: "The note-swap", text: "Crossing between the European and Asian sides, the passenger pays the bridge or tunnel toll. Watch the note-swap too, where a driver claims your 200 lira note was a 20, so count what you hand over.", tone: "teal" },
           p: [
             "If your trip crosses between the European and Asian sides over a <b>Bosphorus bridge</b> or through the <b>Eurasia Tunnel</b>, the passenger pays the toll and the driver adds it to the meter fare. That is legitimate and correct. What is not is an inflated toll, or a surprise <b>credit card charge</b>, tacked on so the total suddenly jumps, so if the final number is far above the meter plus a normal toll, question it.",
             "The other move to watch is the <b>note-swap</b>, where a driver takes your larger note, palms it, shows you a smaller one and asks for more. Paying by app or card avoids it entirely, and if you do pay cash, say the amount out loud as you hand it over. For the wider money picture, including how much cash to carry and where cards work, see the <a href=\"/turkey\">Turkey money guide</a>."
@@ -203,6 +215,8 @@ export default {
         },
         {
           h: "Getting in from Istanbul Airport",
+          icon: "plane",
+          key: { fig: "The bus", tag: "No fixed fare", text: "Istanbul Airport is a long way out with no fixed taxi price, so the meter decides and traffic is the wildcard. The cheapest reliable option is usually the HAVAIST airport bus into the center.", tone: "teal" },
           p: [
             "Istanbul Airport (IST) is a long way from the center, and there is no fixed taxi price, so the meter decides and traffic is the wildcard. The cheapest, most reliable way in is the <b>M11 metro</b> to Gayrettepe, where you transfer to the M2 metro or the tram, sidestepping the traffic entirely. The <b>HAVAIST</b> shuttle bus is the comfortable option, running to major hubs with room for luggage.",
             "If you do take a taxi, use the <b>official rank</b> and, ideally, order through BiTaksi or Uber so the driver comes to the marked spot and the ride is logged. Ignore anyone who approaches you inside arrivals offering a ride. On the Asian side, from Sabiha Gokcen airport (SAW), the M4 metro to Kadikoy is the easy equivalent."
@@ -226,6 +240,12 @@ export default {
     },
     {
       slug: "money-scams",
+      glance: [
+        { k: "Where", v: "Sultanahmet, Taksim, Grand Bazaar" },
+        { k: "Taxis", v: "Meter off, note swap" },
+        { k: "Restaurants", v: "Unordered extras on the bill" },
+        { k: "The setup", v: "A dropped shoeshine brush" }
+      ],
       live: true,
       topic: "scams",
       title: "Common money scams in Turkey, and what they cost you (2026) | True Trip Costs",
@@ -238,6 +258,8 @@ export default {
       sections: [
         {
           h: "Taxis: the meter, the long route, the note swap",
+          icon: "taxi",
+          key: { tag: "Meter off, note swap", text: "Taxis are the most common way tourists lose money here. Drivers may turn the meter off or claim it is broken, take a long route, have no change, or run the note swap. Use BiTaksi and count your change.", tone: "amber" },
           p: [
             "Taxis are the most common way tourists lose money in Turkey. Drivers may <b>turn the meter off</b> or claim it is broken, take a <b>long route</b>, have <b>no change</b>, or run the <b>note swap</b>: you pay with a <b>200 lira</b> note, the driver quickly swaps it for a similar-looking <b>20</b> and says you underpaid. The clean fixes: use <b>BiTaksi or Uber</b> (which dispatch licensed taxis in Istanbul at the metered rate), and where you pay a street cab in cash, <b>state the note out loud</b>, here is <b>200 lira</b>, and <b>pay by card</b> when you can, which removes change and swap tricks entirely.",
             "At <b>Istanbul airport (IST) and Sabiha Gokcen (SAW)</b>, some drivers set the meter to the higher <b>night rate</b> in daytime or take the long coastal road instead of the highway, turning a legitimate <b>250 to 350 lira</b> fare into <b>450 to 600</b>. Avoid drivers who approach you before the <b>official rank</b>, and consider the <b>metro or an airport shuttle</b>, which are far cheaper into the city."
@@ -245,6 +267,8 @@ export default {
         },
         {
           h: "The shoeshine brush and the drink invitation",
+          icon: "cocktail",
+          key: { tag: "The drink-invitation bill", text: "Two politeness traps: a shoeshiner drops a brush ahead of you then charges after you hand it back, and, costlier, a friendly man invites you for a drink that ends in a huge bar bill. Decline both politely.", tone: "amber" },
           p: [
             "The classic Istanbul street setup is the <b>dropped shoeshine brush</b>: a shoeshiner walking ahead of you drops a brush, you kindly pick it up and hand it back, and he insists on shining your shoes as a <b>thank you</b>, then presents a <b>hefty bill</b>. If someone drops something and then offers you a free service, <b>decline and keep walking</b>.",
             "The costlier one, which tends to target <b>solo male travelers</b> around Taksim, is the <b>friendly invitation</b>: a personable stranger strikes up a conversation and suggests a drink at a bar he knows, where the <b>menu prices are astronomical</b> and staff make sure you pay a bill that can run into the <b>hundreds</b>. Be politely wary of an over-eager new acquaintance leading you to a specific venue; <b>choose your own bar</b>, and if a bill is wildly wrong, you can call the police on <b>155</b> rather than pay quietly."
@@ -252,6 +276,8 @@ export default {
         },
         {
           h: "Restaurants and the Grand Bazaar",
+          icon: "receipt",
+          key: { fig: "Ask prices", tag: "Unordered extras", text: "In tourist-area restaurants, watch for unordered extras, bread, water or meze that arrive unasked and look free, then appear on the bill. Ask the price of anything you did not order.", tone: "teal" },
           p: [
             "In tourist-area restaurants, watch for <b>unordered extras</b>, bread, water, meze or a salad that arrive unasked and look complimentary, then appear on the <b>bill</b>, and for <b>menus with no prices</b> or inflated tourist pricing (the fish-by-weight bill is a common one). <b>Check the menu and prices before ordering</b>, wave away anything you did not ask for, and <b>read the itemized bill</b>.",
             "The <b>Grand Bazaar</b> is a genuine and safe experience, but the risk is financial: <b>opening prices are hugely inflated</b> for tourists, the sales pressure is persistent, and short-changing is occasionally reported. Treat it as browsing, <b>start at roughly a quarter to a third</b> of the first price, <b>compare a few shops</b>, and remember that <b>accepting tea is a sales tactic, not an obligation</b> to buy."
@@ -259,6 +285,8 @@ export default {
         },
         {
           h: "Fake officers, and the pay-in-lira trap",
+          icon: "passport",
+          key: { fig: "Real ID", tag: "Officers do not ask for cash", text: "Rarely, someone poses as a plainclothes officer and asks to inspect your passport and wallet to lift cash or card details. Real officers do not, so decline and step into a shop or crowd.", tone: "teal" },
           p: [
             "Rarely, someone may pose as a <b>plainclothes police officer</b> and ask to <b>inspect your passport and wallet</b>, aiming to lift cash or card details. Real officers <b>do not need to inspect your money</b>: keep your wallet, decline to hand it over, and ask to verify identity or walk to a tourist-police point.",
             "At the <b>ATM and card machine</b>, choose to be charged in <b>lira, not dollars or euros</b>: the convert-for-you option uses a poor built-in rate that costs several percent. Use <b>bank ATMs</b>, and be aware that with <b>high inflation</b> the lira figures here move quickly, so check your app's estimate for a current sense of a fare or price."
@@ -266,6 +294,8 @@ export default {
         },
         {
           h: "What this means for your money",
+          icon: "coins",
+          key: { fig: "Habits", tag: "How to avoid it", text: "Almost all of it relies on politeness or confusion and costs from a few lira to a nasty bar bill. The same habits defuse it: use BiTaksi, agree prices first, count change, and decline unasked extras and invitations.", tone: "teal" },
           p: [
             "Almost all of it relies on <b>politeness or confusion</b> and costs from a few lira to, at worst, a nasty bar bill, and the same habits defuse nearly everything: <b>BiTaksi or Uber or the meter</b>, <b>pay by card or state the note out loud</b>, <b>decline unsolicited approaches</b>, <b>check menus and bills</b>, and <b>choose your own bar</b>. The two worth active care are the <b>bar-bill invitation</b> and any <b>fake officer</b>, both of which you avoid by not following a stranger and not handing over your wallet.",
             "Known in advance, none of this should shape a trip to one of the world's great cities. For getting around, see the <a href=\"/turkey/taxis-and-apps\">Turkey taxis and apps guide</a>, and for the wider picture the <a href=\"/turkey\">Turkey cost guide</a>."

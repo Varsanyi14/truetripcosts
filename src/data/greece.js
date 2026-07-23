@@ -177,6 +177,12 @@ export default {
   spokes: [
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "FreeNow (also Uber, Bolt)" },
+        { k: "What they call", v: "Licensed yellow taxis, metered" },
+        { k: "Athens airport", v: "Flat 40 euros in the daytime" },
+        { k: "Watch for", v: "Meter tricks at ports and islands" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -190,6 +196,8 @@ export default {
       sections: [
         {
           h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "FreeNow", tag: "Licensed taxis only", text: "FreeNow, formerly Beat, is the app Greeks use most and has the largest fleet. Uber and Bolt work too, but all of them call a licensed yellow taxi at the regulated meter, since cheap UberX is not legal here.", tone: "teal" },
           p: [
             "<b>FreeNow</b>, formerly Beat, is the app most used by Greeks themselves and has the largest fleet, so it is the one to install first. <b>Uber</b> works too, as <b>Uber Taxi</b>, which dispatches the same licensed yellow taxis rather than private cars, and <b>Bolt</b> arrived in 2025 and uses the same fleet with frequent promo codes. The catch to understand is that <b>UberX</b>, the private-car model, is <b>not legal in Greece</b>, so every app here simply calls a regular licensed yellow taxi.",
             "The real advantage of the apps is not a different car but a better ride: you see the fare estimate, the plate and the driver in advance, and you can pay by <b>card</b>, which solves the age-old problem of an older taxi with no working card machine. Coverage is strong in <b>Athens</b> and <b>Thessaloniki</b> and on the bigger islands like <b>Santorini</b>, <b>Mykonos</b>, <b>Corfu</b>, <b>Paros</b> and <b>Crete</b>."
@@ -197,6 +205,8 @@ export default {
         },
         {
           h: "The Athens Airport flat fare",
+          icon: "plane",
+          key: { fig: "40 euros", tag: "Fixed by law", text: "The key protection arriving is a flat fare fixed by law from Athens Airport into the city center: 40 euros in the daytime, from 05:00 to midnight, and a higher fixed fare overnight.", tone: "teal" },
           p: [
             "The key protection for arriving visitors is a <b>flat fare fixed by law</b> from <b>Athens Airport</b> (ATH) into the city center: <b>40 euros</b> in the daytime, from 05:00 to midnight, and <b>55 euros</b> at night, from midnight to 05:00, with <b>tolls and luggage included</b> and no surge. Yellow taxis wait 24 hours a day at <b>Exit 3</b> on the arrivals level, with no booking needed, and a dispatcher assigns you a cab.",
             "The apps charge the <b>same flat fare</b> plus a small booking fee, so ordering an Uber Taxi, Bolt or FreeNow costs about the same as the rank and can be quicker. Note the flat fare is for the city center specifically, while other destinations from the airport run on the meter. If you are traveling light, the <b>metro</b> into the city is only about 9 euros."
@@ -204,6 +214,8 @@ export default {
         },
         {
           h: "The meter tricks, at the port and on the islands",
+          icon: "alert",
+          key: { tag: "Insist on the meter", text: "The classic Greek problem is meter games: a driver refuses to switch it on, drapes a towel over it, or just announces a flat price, worst at ports and on the islands. Insist on the meter or use an app.", tone: "amber" },
           p: [
             "The classic Greek taxi problem is meter games. A driver refuses to switch on the meter, drapes a <b>hand towel</b> over it, or simply <b>announces</b> a flat price, and this happens most at the <b>port</b>, like Piraeus, and on the <b>islands</b>, where oversight is looser and tourist demand is high. The fix is to insist the meter is on from the start and to refuse any announced fare, and to watch for an invented <b>service fee</b> tacked on at the end.",
             "Booking through <b>FreeNow</b>, <b>Uber</b> or <b>Bolt</b> avoids the whole thing, because the fare is the regulated meter price shown before you ride and paid by card. If you do take a street taxi, check the meter is running and visible before you set off, and keep an eye on it during the trip."
@@ -211,6 +223,8 @@ export default {
         },
         {
           h: "Fares, paying and tipping",
+          icon: "euro",
+          key: { fig: "Metered", tag: "In the city", text: "The Athens day meter is roughly a 1.80 euro base plus about 0.90 euro per kilometer, with legitimate higher rates at night and on holidays. Round up rather than tip a set percentage.", tone: "teal" },
           p: [
             "The Athens day meter is roughly a <b>1.80 euro</b> base plus about <b>0.90 euro per kilometer</b>, with legitimate higher rates at night and on holidays and a small charge for luggage. Those surcharges are set by the state, not invented by the driver. In the apps you pay by card, and tipping is not expected, so rounding up to a convenient figure is plenty.",
             "In central Athens you often do not need a taxi at all, since the <b>metro</b> and walking cover the sights well, from Syntagma to the Acropolis and Plaka. For the wider money picture, including how much cash to carry, see the <a href=\"/greece\">Greece money guide</a>."
@@ -234,6 +248,12 @@ export default {
     },
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Process", v: "Shared EU entry" },
+        { k: "Need", v: "ISO chip, rabies, EU health cert" },
+        { k: "Enter within", v: "10 days of endorsement" },
+        { k: "Coming home", v: "Simple CDC path" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Greece from the US (2026): the EU process, and the Greece-specific parts | True Trip Costs",
@@ -246,14 +266,20 @@ export default {
       sections: [
         {
           h: "Greece runs on the EU process",
+          icon: "health",
+          key: { fig: "10 days", tag: "No Greece-only permit", text: "The standard EU move: an ISO microchip first, a rabies shot after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS. Enter Greece within 10 days of that endorsement.", tone: "teal" },
           p: ["There is no Greece-only pet permit and no national quarantine. Bringing a dog or cat into Greece from the US is the standard EU move: an ISO microchip first, a rabies vaccination after the chip, then an EU Animal Health Certificate completed by a USDA-accredited vet and endorsed by APHIS, with the pet arriving within 10 days of endorsement. A first rabies shot adds a 21-day wait before travel.", "Because the core process is identical across the EU (and the countries that follow its rules), we do not repeat it per country. The full sequence, the microchip-before-rabies trap that costs people the most time, the 10-day clock, and the current APHIS endorsement fees all live on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Read that first, then come back for the Greece notes."]
         },
         {
           h: "The Greece-specific parts",
+          icon: "receipt",
+          key: { fig: "Check", tag: "At the border", text: "Greek customs may ask to see the endorsed certificate and confirm the chip, and pets should arrive through a designated traveller point of entry, which the major airports are.", tone: "teal" },
           p: ["At the border, Greek customs may ask to see the endorsed certificate and confirm the microchip, and pets should enter through a designated traveller point of entry, which Athens airport is. There is no dog or cat tapeworm rule for Greece, unlike Ireland, Finland or Malta.", "After you settle in, Greece requires dogs to be microchipped and registered in the national pet registry, which a local vet handles once you have an address, and rabies vaccination must be kept current. Standard leash and control rules apply in public spaces. Register the dog once you have an address and keep the EU certificate until you do."]
         },
         {
           h: "Coming back to the US is the easy part",
+          icon: "plane",
+          key: { fig: "Easy", tag: "The return trip", text: "A dog flying home from Greece is on the simplest CDC path: usually a CDC Dog Import Form receipt, a microchip, and a minimum age of 6 months.", tone: "teal" },
           p: ["Good news for the return trip: a dog flying home to the US from Greece is on the simplest CDC path, typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement.", "For the wider picture, including how Greece compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."]
         }
       ],
