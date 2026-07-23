@@ -161,6 +161,12 @@ export default {
   spokes: [
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Best options", v: "Uber, Bolt, or a licensed taxi" },
+        { k: "Book a cab", v: "G7 or FreeNow" },
+        { k: "CDG airport", v: "Flat 56 euros to the Right Bank" },
+        { k: "Watch for", v: "Unlicensed touts at CDG" }
+      ],
       live: true,
       topic: "taxis",
       caution: "low",
@@ -174,6 +180,8 @@ export default {
       sections: [
         {
           h: "Taxi or app: you have real choice here",
+          icon: "phoneok",
+          key: { fig: "Real Uber", tag: "Unlike Italy", text: "France has proper ride-hailing: Uber and Bolt run real private-hire cars (VTC), so the app works the way it does at home. G7 or FreeNow book a licensed metered taxi.", tone: "teal" },
           p: [
             "Unlike Italy or Greece, France has proper ride-hailing. <b>Uber</b> and <b>Bolt</b> run real private-hire cars (called <b>VTC</b>), so opening Uber works the way it does at home, with an upfront price and, yes, surge pricing at busy times. You can <b>also</b> hail a licensed <b>taxi</b> on the street or at a rank, running a regulated meter with three tariffs that change by time of day and zone and a starting charge of about 4 euros. To book a licensed taxi through an app, use <b>G7</b>, Paris's biggest taxi network, or <b>FreeNow</b>.",
             "One rule for the apps: you cannot just grab an Uber or Bolt <b>spontaneously at the airport</b>. You book in the app and walk to the designated pickup point, which the app shows by door and level. For a short city trip, an Uber is often a few euros cheaper than a metered taxi, and licensed taxis must accept a card."
@@ -181,6 +189,8 @@ export default {
         },
         {
           h: "The CDG and Orly fixed fare",
+          icon: "plane",
+          key: { fig: "56 euros", tag: "Set by decree", text: "From Charles de Gaulle, a licensed taxi to the Right Bank is a flat 56 euros, identical day and night, luggage and tolls included, for up to 4 passengers. Orly has set fares too.", tone: "teal" },
           p: [
             "The key protection is the airport <b>fixed fare</b>, set by government decree, identical day and night, with luggage and tolls included, for up to 4 passengers, on <b>licensed taxis from the official rank</b>. From <b>Charles de Gaulle</b> (CDG): the <b>Right Bank</b> is <b>56 euros</b> and the <b>Left Bank</b> is <b>65 euros</b>. From <b>Orly</b> it is roughly <b>37 to 44 euros</b>. It is worth knowing which bank your hotel is on, since the fixed fare depends on it.",
             "The catch that costs people money: <b>Uber and Bolt have no fixed airport rate</b>, so their price rises with demand and can reach 80 to 120 euros from CDG at peak times or in bad weather. For the airport specifically, the <b>fixed-fare licensed taxi is often the cheaper and more predictable</b> choice, which is the opposite of the usual city advice."
@@ -188,6 +198,8 @@ export default {
         },
         {
           h: "The CDG touts, and the cheap train",
+          icon: "alert",
+          key: { tag: "The airport tout", text: "The classic scam at Charles de Gaulle is the unlicensed tout who approaches you in the terminal and overcharges. Use only the official taxi rank, or take the RER B train.", tone: "amber" },
           p: [
             "The notorious scam at Charles de Gaulle is the <b>unlicensed tout</b>. Someone approaches you inside or just outside the terminal, asks if you are <b>going to Paris</b> or need a taxi, and then charges <b>120 to 200 euros</b> for the same ride the official fixed fare covers for 56, in an unmarked car. The Paris airports openly warn about these <b>false taxis</b>. The rule is simple: <b>ignore anyone who approaches you</b>, follow the signs, the blue circles on the floor and the overhead <b>Taxi</b> signs, to the official taxi rank, where a marshal points you to a licensed cab and the fixed fare applies.",
             "The cheap alternative into central Paris is the <b>RER B</b> train, about <b>12 euros</b> to <b>Chatelet-Les Halles</b> and <b>Saint-Michel</b> in 30 to 35 minutes, which is the best value for a solo traveler. For a family or a group of up to four with luggage, the fixed-fare taxi works out competitive per person and drops you at the door."
@@ -195,6 +207,8 @@ export default {
         },
         {
           h: "Fares, paying and tipping",
+          icon: "euro",
+          key: { fig: "Metered", tag: "In the city", text: "In town the meter runs one of three tariffs (day, evening, and night or suburbs), shown by a roof light, with no haggling for a city trip. Round up rather than tip a percentage.", tone: "teal" },
           p: [
             "In the city, the meter runs one of <b>three tariffs</b>, daytime, evening and Sunday, and night and suburbs, shown by a light on the roof, and there is no flat-rate haggling for a city trip. Licensed taxis must <b>accept a card</b> and give a receipt for any fare of 25 euros or more, so ask for one if you need proof. On the airport <b>fixed fare</b>, no extra supplements apply.",
             "Tipping is not expected in France, and rounding up to the nearest euro, or 5 to 10 percent for good service, is plenty. For the wider money picture, including how much cash to carry and where cards work, see the <a href=\"/france\">France money guide</a>."
@@ -218,6 +232,12 @@ export default {
     },
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Process", v: "Shared EU entry" },
+        { k: "Need", v: "ISO chip, rabies, EU health cert" },
+        { k: "Enter within", v: "10 days of endorsement" },
+        { k: "Coming home", v: "Simple CDC path" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to France from the US (2026): the EU process, and the France-specific parts | True Trip Costs",
@@ -230,6 +250,8 @@ export default {
       sections: [
         {
           h: "France runs on the EU process",
+          icon: "health",
+          key: { fig: "10 days", tag: "No France-only permit", text: "The standard EU move: an ISO microchip first, a rabies shot after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS. Enter France within 10 days of that endorsement.", tone: "teal" },
           p: [
             "There is no France-only pet permit and no national quarantine. Bringing a dog or cat into France from the US is the standard EU move: an ISO microchip first, a rabies vaccination after the chip, then an EU Animal Health Certificate completed by a USDA-accredited vet and endorsed by APHIS, with the pet arriving within 10 days of endorsement. A first rabies shot adds a 21-day wait before travel.",
             "Because the process is identical across all 27 member countries, we do not repeat it per country. The full sequence, the microchip-before-rabies trap that costs people the most time, the 10-day clock, and the current APHIS endorsement fees all live on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Read that first, then come back for the France notes."
@@ -237,6 +259,8 @@ export default {
         },
         {
           h: "The France-specific parts",
+          icon: "receipt",
+          key: { fig: "Check", tag: "At the border", text: "French customs may ask to see the endorsed certificate and confirm the chip, and pets should arrive through a designated traveller point of entry, which the major airports are.", tone: "teal" },
           p: [
             "At the border, French customs may ask to see the endorsed certificate and confirm the microchip, and pets should enter through a designated traveller point of entry, which the major airports are. There is no cat or dog tapeworm rule for France, unlike Ireland, Finland or Malta.",
             "After you settle in, the practical French thing to know is identification. France requires pets to be identified and registered in the national database (I-CAD), and a French vet can update your pet's ISO microchip details into that system once you have a local address. Certain dog types classed as category 1 and 2 (some guarding and attack breeds) face extra French rules on ownership, insurance and muzzling, so if your dog is a bull-type or mastiff-type breed, check the French classification before you travel."
@@ -244,6 +268,8 @@ export default {
         },
         {
           h: "Coming back to the US is the easy part",
+          icon: "plane",
+          key: { fig: "Easy", tag: "The return trip", text: "A dog flying home from France is on the simplest CDC path: usually a CDC Dog Import Form receipt, a microchip, and a minimum age of 6 months.", tone: "teal" },
           p: [
             "Good news for the return trip: a dog flying home to the US from France is on the simplest CDC path, typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement.",
             "For the wider picture, including how France compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."
@@ -271,6 +297,12 @@ export default {
     },
     {
       slug: "tourist-tax",
+      glance: [
+        { k: "What", v: "Per-adult, per-night tax" },
+        { k: "Collected", v: "By your accommodation" },
+        { k: "Most of France", v: "About 1 to 6 euros a night" },
+        { k: "Children under 18", v: "Exempt" }
+      ],
       live: true,
       topic: "tourist-tax",
       title: "France's tourist tax (taxe de sejour) in 2026, and why Paris is now so much higher | True Trip Costs",
@@ -283,6 +315,8 @@ export default {
       sections: [
         {
           h: "How it works, and who pays",
+          icon: "calendar",
+          key: { fig: "Per adult", tag: "Set by the town", text: "The taxe de sejour is a local tax voted by each commune, charged per adult per night and collected by your accommodation. Children under 18 pay nothing.", tone: "teal" },
           p: [
             "The taxe de sejour is a <b>local</b> tax, voted by each town or inter-communal body, so whether it applies and how much depends on where you stay. It is charged <b>per adult, per night</b>. <b>Under-18s do not pay</b>, which is the big difference from Italy and Spain, where the exemption is usually only for young children. Your accommodation collects it and passes it to the local authority; on Airbnb and Booking, the platform usually collects it for you.",
             "For a <b>classified</b> hotel the rate is a set amount per night by star level. For an <b>unclassified</b> or not-yet-rated place, it is instead <b>a percentage of the room price</b> (5% in Paris) per person, capped at the top rate. As with Italy, the charge is <b>rarely in the online total</b>, so expect it at check-in or checkout. For the broader money picture see the <a href=\"/france\">France money guide</a>."
@@ -290,6 +324,8 @@ export default {
         },
         {
           h: "Why Paris is now so much higher",
+          icon: "alert",
+          key: { fig: "+200%", tag: "The Paris surcharge", text: "Paris used to be a few euros a night. Now the Ile-de-France region adds a 200% surcharge on the base city rate to fund transport, so a Paris hotel tax runs well above the rest of France.", tone: "amber" },
           p: [
             "Paris used to cost a few euros a night. That changed. On top of the base city rate, the <b>Ile-de-France region</b> now adds a <b>200% surcharge</b> to fund regional transport, and there are further add-ons: a Grand Paris projects surcharge and a departmental surcharge. Stacked together, these can <b>more than triple</b> the base figure.",
             "The practical result for 2026 is that a night in a classified Paris hotel runs from roughly <b>6 euros at the mid-range</b> up toward the <b>mid-teens in euros</b> at 5-star and palace properties, <b>per adult, per night</b>. An <b>unclassified</b> Paris rental is charged at <b>5% of the nightly price</b>, capped at about <b>15.93 euros</b> per adult per night. Sources differ on the exact per-star numbers because of how the surcharges are applied, so treat these as a <b>2026 range</b> and confirm the figure with your hotel."
@@ -297,6 +333,8 @@ export default {
         },
         {
           h: "Elsewhere in France, and the coast",
+          icon: "tag",
+          key: { fig: "1-6 euros", tag: "Gentler outside Paris", text: "Away from Paris the tax is much gentler, roughly 1 to 6 euros per adult per night by accommodation category, with campsites and hostels at the low end.", tone: "teal" },
           p: [
             "Away from Paris the tax is much gentler. Most towns charge somewhere in the <b>1 to 6 euro</b> range per adult per night depending on the accommodation category, and campsites and hostels sit at the bottom, often about <b>1 euro</b>. On the <b>Riviera</b>, Nice and Cannes are around <b>1.50 to 6 euros</b>.",
             "A few departments beyond Paris (in the Alpes-Maritimes, Bouches-du-Rhone and Var, and some south-western departments) also add a regional surcharge, but nothing like the scale of the Paris region. Wherever you are, the <b>per-adult, per-night</b> shape is the same, and the amount is set locally."
@@ -304,6 +342,8 @@ export default {
         },
         {
           h: "Exemptions and keeping it small",
+          icon: "euro",
+          key: { fig: "Kids free", tag: "Built-in saving", text: "The clearest saving is built in: children under 18 pay nothing, so a family pays only for the adults. Seasonal workers and some social housing are also exempt.", tone: "teal" },
           p: [
             "The clearest saving is built in: <b>children under 18 pay nothing</b>, so a family pays only for the adults. People staying for <b>seasonal work</b> or in certain <b>emergency or social housing</b> are also exempt in most communes, and some places cap the charge, with Paris limiting it to a set amount per person per month for very long stays.",
             "There is no legitimate way to avoid the tax at a real property, and you should not try. As with Italy, the honest levers are a <b>lower accommodation category</b> and, in Paris specifically, understanding that the headline surcharge goes to the region's transport system, not to the hotel."
@@ -325,6 +365,12 @@ export default {
     },
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Euro (EUR)" },
+        { k: "Cards", v: "Card-first, contactless everywhere" },
+        { k: "Backup", v: "A chip-and-PIN card for kiosks" },
+        { k: "Cash for", v: "Bakeries and small stalls" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in France, or can I use cards? (2026) | True Trip Costs",
@@ -337,6 +383,8 @@ export default {
       sections: [
         {
           h: "Card-first, with a chip-and-PIN backup",
+          icon: "phoneok",
+          key: { fig: "Tap", tag: "Contactless default", text: "France runs on the Carte Bancaire network, and Visa and Mastercard ride on it almost everywhere. Contactless is the default, usually no PIN under about 50 euros. Carry a chip-and-PIN card for the odd unmanned kiosk.", tone: "teal" },
           p: [
             "France runs on the <b>Carte Bancaire</b> network, and in practice <b>Visa and Mastercard</b> ride on it and are taken almost everywhere. <b>Contactless</b> is the default, usually with <b>no PIN under about 50 euros</b>, and <b>Apple Pay and Google Pay</b> are widely accepted. The one thing worth carrying is a <b>chip-and-PIN card</b>: a few <b>unmanned machines</b>, such as autoroute toll booths, some train and metro kiosks and parking machines, expect a chip and PIN and may reject a tap or a swipe.",
             "Keep <b>a little cash and some coins</b> for the corners that stay cash-friendly: <b>bakeries</b>, open-air <b>markets</b>, small <b>village cafes</b>, public toilets, and the occasional small shop that sets a <b>card minimum</b> of around 5 to 10 euros. Shops also dislike notes above 50 euros, so break big notes at a supermarket."
@@ -344,6 +392,8 @@ export default {
         },
         {
           h: "The euro-versus-dollar trap, and the kiosk ATMs",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose euros", text: "When a terminal or ATM asks to charge in dollars or euros, pick euros. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse than your bank rate.", tone: "amber" },
           p: [
             "When a card terminal or an ATM asks whether to charge in <b>dollars or euros, always choose euros</b>. Choosing dollars triggers dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time, at terminals and machines alike.",
             "Avoid the <b>standalone Euronet and Travelex ATMs</b> at airports, stations and tourist squares. They charge high flat fees and push the dollar conversion hardest, and the fee can bite even after you decline the conversion. Use a machine <b>attached to a real bank</b>, BNP Paribas, Credit Agricole, Societe Generale or LCL, and read the fee on screen first."
@@ -351,6 +401,8 @@ export default {
         },
         {
           h: "Getting cash, and keeping the card route cheap",
+          icon: "cash",
+          key: { fig: "Bank ATM", tag: "By a branch, by day", text: "Use a bank-branch ATM in daylight, take a few days worth at once to limit per-visit fees, and use a debit card rather than credit to avoid cash-advance charges.", tone: "teal" },
           p: [
             "Use a <b>bank-branch ATM</b> in daylight, take out a few days' worth at once to limit per-visit fees, and use a <b>debit card</b> rather than a credit card, since a credit-card withdrawal is a cash advance with a fee and interest from day one. Carry a <b>no-foreign-fee card</b> plus a backup on a different network.",
             "As a rough guide, two mid-range travelers might pull <b>200 to 300 euros</b> of day-to-day cash across a week beyond the hotel, with cards covering the rest. France is genuinely card-first, so the cash is for small extras rather than the bulk of your spending. Watch pockets in the Paris metro and at busy sights."
@@ -358,6 +410,8 @@ export default {
         },
         {
           h: "Tipping and the city tax",
+          icon: "tip",
+          key: { fig: "Included", tag: "Service compris", text: "Tipping is light because service is included by law (service compris) and staff earn a full wage. For good service, round up. Your hotel collects the city tourist tax separately.", tone: "teal" },
           p: [
             "Tipping is light in France because <b>service is included by law</b> (service compris) and staff earn a full wage, so there is no US-style percentage to track. For good service you might round up or leave a euro or two, best left in <b>cash</b>, since the card-terminal tip prompt may be pooled or skipped. A small habit that saves money: ask for <b>une carafe d'eau</b>, free tap water, rather than paying for bottled.",
             "Separately, most French towns add a small <b>per-night tourist tax</b> (the taxe de sejour), collected at your accommodation, modest in most places and much higher in Paris. What it costs and why Paris is now steep is in <a href=\"/france/tourist-tax\">France's tourist tax</a>. For the wider picture, see the <a href=\"/france\">France money guide</a>."
@@ -380,6 +434,12 @@ export default {
     },
     {
       slug: "vat-refund",
+      glance: [
+        { k: "VAT rate", v: "20%" },
+        { k: "Minimum", v: "Over 100 euros, one store, one day" },
+        { k: "You net", v: "About 10 to 15%" },
+        { k: "Validate", v: "At a PABLO kiosk on EU exit" }
+      ],
       live: true,
       topic: "vat-refund",
       title: "France VAT refund (detaxe) for tourists (2026): the 100 euro minimum, PABLO, and what you get back | True Trip Costs",
@@ -392,6 +452,8 @@ export default {
       sections: [
         {
           h: "Who qualifies, and the 100 euro minimum",
+          icon: "receipt",
+          key: { fig: "100 euros", tag: "One store, one day", text: "The detaxe is for non-EU residents aged 16 or over taking goods home unused. Since 2021 the minimum is over 100 euros spent in the same store on the same day.", tone: "teal" },
           p: [
             "The detaxe is for <b>non-EU residents aged 16 or over</b> taking goods home unused. Since 2021 the minimum has been <b>over 100 euros</b> spent in the <b>same store on the same day</b>. Only <b>goods</b> qualify, for personal use and carried out of the EU; <b>services</b> you use in France, hotels, restaurants, transport, do not, and the goods must be <b>new and unused</b> when you leave.",
             "Ask for the <b>tax-free form</b> (bordereau de detaxe) at the register, with your <b>passport</b>. If your individual receipts fall under 100 euros, apps like <b>ZappTax or Wevat</b> can combine purchases across shops onto one invoice to clear the threshold, which is the one legitimate way around the single-store rule."
@@ -399,6 +461,8 @@ export default {
         },
         {
           h: "PABLO: scan and go",
+          icon: "qr",
+          key: { fig: "Scan", tag: "Self-service kiosks", text: "France validates through PABLO, its self-service customs kiosks at CDG, Orly and other exit points. Scan the barcode on your form and a green screen means you are validated.", tone: "teal" },
           p: [
             "France validates through <b>PABLO</b>, its self-service customs kiosks at the airports and other exit points, including <b>Paris Charles de Gaulle and Orly</b>. You <b>scan the barcode</b> on your form: a <b>green</b> checkmark means it is validated and you head to your gate, while a <b>red</b> cross sends you to the customs desk (Bureau de douane) for a manual check, which is routine, not a problem.",
             "Do this <b>before you check bags</b>, since customs may want to see the goods, and <b>before security</b>. Look for the blue Detaxe or Tax Refund signs. Give yourself time at busy Paris airports, and note the goods must leave the EU by the <b>end of the third month</b> after purchase."
@@ -406,6 +470,8 @@ export default {
         },
         {
           h: "What you actually get back",
+          icon: "coins",
+          key: { fig: "10-15%", tag: "Not the full 20%", text: "The 20% VAT is the headline, but the refund operators, Global Blue, Planet and others, take a cut, so you typically net closer to 10 to 15% of the price.", tone: "amber" },
           p: [
             "The <b>20% VAT</b> is the headline, but the <b>refund operators</b> (Global Blue, Planet and others) take a cut, so you typically net closer to <b>10 to 15%</b> of the price. A <b>cash refund</b> at the airport is the quickest and pays the least; a refund <b>to your card</b> nets more but can take a few weeks.",
             "So the detaxe is worth the effort on a <b>real purchase</b>, but marginal on a small one once you weigh the queue and fees. If PABLO or customs is closed or out of order when you leave, France has a limited <b>after-the-fact process</b> you must follow within six months, but do not rely on it."
@@ -413,6 +479,8 @@ export default {
         },
         {
           h: "Validate at your final EU exit, and the rest of the picture",
+          icon: "alert",
+          key: { tag: "Validate at your EU exit", text: "As across the EU, you validate at your last EU departure point, not necessarily in France. If you connect through another EU country, scan PABLO or get the stamp there, not in France.", tone: "amber" },
           p: [
             "As across the EU, you <b>validate at your last EU departure point</b>, not necessarily in France. If you connect through another EU country on the way home, you scan PABLO or get the stamp <b>there</b>, then send the form back if needed.",
             "The detaxe is the shopping side of money in France. For the tax on your hotel bill, see <a href=\"/france/tourist-tax\">France's tourist tax</a>, and for paying day to day, <a href=\"/france/cash-or-card\">cash or card in France</a>. The wider picture is in the <a href=\"/france\">France money guide</a>."
@@ -435,6 +503,12 @@ export default {
     },
     {
       slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Strong in cities and towns" },
+        { k: "Carrier roaming", v: "About $12 a day" },
+        { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
+        { k: "Signal gaps", v: "Mountains and deep countryside" }
+      ],
       live: true,
       esim: true,
       topic: "connectivity",
@@ -449,6 +523,8 @@ export default {
       sections: [
         {
           h: "A cost question first",
+          icon: "roamfee",
+          key: { fig: "$12/day", tag: "Roaming default", text: "Coverage is good where visitors go, so this is mainly about cost. A US carrier day pass runs about $12 a day, and T-Mobile included roaming is often slow 2G, fine for messages but not maps.", tone: "teal" },
           p: [
             "France has good mobile coverage across the places visitors go, so the main decision is how you pay. The expensive default is roaming on your US plan: <b>AT&amp;T and Verizon</b> charge about <b>12 dollars a day</b>, roughly <b>84 dollars</b> for a week. <b>T-Mobile</b> and some Google Fi and Visible plans include roaming, but often at <b>slow 2G-style speeds</b> that handle messaging but struggle with maps and rideshare, so check your plan's fine print.",
             "Whatever you pick, do not roam with <b>no plan</b>. Pay-per-use data is around <b>2 dollars a megabyte</b>, thousands per gigabyte, and phones use data in the background, so <b>turn off data roaming</b> until an eSIM or pass is active."
@@ -456,6 +532,8 @@ export default {
         },
         {
           h: "Why an eSIM is usually cheapest",
+          icon: "tag",
+          key: { fig: "Few $/GB", tag: "The cheap option", text: "A travel eSIM is the cheapest way to get real data in France, a few dollars per gigabyte, well under day-pass fees. A Nomad eSIM activates before you fly and works on arrival.", tone: "teal" },
           p: [
             "A <b>travel eSIM</b> is the cheapest way for most visitors to get real data in France. A <b>Nomad eSIM</b> is a few dollars per gigabyte, well under day-pass fees, <b>activates before you fly</b> and works from landing, with no SIM counter. Your US number stays reachable on your normal plan while the eSIM carries the data.",
             "The network barely matters where you will be: a Nomad eSIM rides a <b>major French network</b>, and coverage in the cities and towns is strong on all of them. Set it up before departure, since installing it needs a connection."
@@ -463,6 +541,8 @@ export default {
         },
         {
           h: "Where signal drops, and the practical bits",
+          icon: "alert",
+          key: { fig: "The Alps", tag: "Where signal thins", text: "Gaps are in the mountains and deep countryside: parts of the Alps and Pyrenees, the remote Massif Central, and some rural roads and small villages. In Paris and the towns you are fine.", tone: "teal" },
           p: [
             "The gaps are in the <b>mountains and deep countryside</b>: parts of the <b>Alps and Pyrenees</b>, the remote Massif Central, and some rural roads and small villages. In Paris and the towns you will have fast 4G and 5G, but an alpine hike or a back-road drive can lose signal, and the Paris Metro has coverage on most, not all, lines.",
             "So <b>download offline maps</b> before a mountain day or a rural drive. For paying as you go, see <a href=\"/france/cash-or-card\">cash or card in France</a>, and the <a href=\"/france\">France money guide</a>."
@@ -485,6 +565,12 @@ export default {
     },
     {
       slug: "renting-a-car",
+      glance: [
+        { k: "Tolls", v: "Autoroute, by the kilometer" },
+        { k: "Long drive", v: "50 to 90 euros in tolls" },
+        { k: "City centers", v: "Need a Crit'Air sticker" },
+        { k: "License", v: "US license OK, IDP recommended" }
+      ],
       live: true,
       topic: "driving",
       carExcess: true,
@@ -498,6 +584,8 @@ export default {
       sections: [
         {
           h: "Tolls: paid by the kilometer",
+          icon: "euro",
+          key: { fig: "50-90€", tag: "Autoroute peage", text: "France has the largest toll-motorway network in Western Europe, charged per kilometer at barriers, not by vignette. A long north-south drive can run 50 to 90 euros, paid by card or cash.", tone: "teal" },
           p: [
             "France has the largest toll-motorway network in Western Europe, and unlike Switzerland or Austria it uses <b>per-kilometer tolls (peage)</b> at barriers, not a windshield vignette. Reckon on about <b>0.10 to 0.13 euros per kilometer</b> for a car, highest on the southern routes, so a long drive adds up fast: <b>Paris to Lyon</b> is around <b>40 euros</b> in tolls alone, and Paris toward the Riviera can be <b>double that</b>.",
             "You pay at the booth by <b>card</b> (Visa and Mastercard work almost everywhere, Amex less so) or <b>cash</b> at manned lanes, or with a <b>Liber-t or Ulys tag</b> for the fast telepeage lanes. Free non-motorway routes exist and are prettier but much slower. Note that on a few peak summer weekends, tolls on the busiest southern corridors can be <b>30 to 50 percent higher</b> in the middle of the day."
@@ -505,6 +593,8 @@ export default {
         },
         {
           h: "Crit'Air and the low-emission zones",
+          icon: "alert",
+          key: { tag: "Crit'Air sticker", text: "Many French cities run a low-emission zone (ZFE) where vehicles must display a Crit'Air sticker classifying emissions. Paris, Lyon, Grenoble and others enforce it, so order the sticker before you drive in.", tone: "amber" },
           p: [
             "Many French cities now run a <b>low-emission zone (ZFE)</b>, where vehicles must show a <b>Crit'Air sticker</b> classifying their emissions. The zones in force in 2026 include <b>Paris, Lyon, Grenoble, Strasbourg, Marseille, Montpellier, Rouen, Nice and others</b>. Driving in a ZFE without a valid sticker risks a fine of about <b>68 euros</b>.",
             "The good news for renters: agencies have mostly <b>modern, low-emission fleets that already carry the correct sticker</b>, so this is rarely a problem in practice. Still, <b>ask at pickup</b> whether your car has the right Crit'Air sticker for the cities on your route, and do not assume an older car is fine everywhere."
@@ -512,6 +602,8 @@ export default {
         },
         {
           h: "Insurance: decline the counter, cover the excess",
+          icon: "receipt",
+          key: { fig: "Cover it", tag: "US cover does not apply", text: "As across Europe, your US auto policy and credit-card collision generally do not apply in France, so you need some collision protection. The rental comes with a high excess.", tone: "teal" },
           p: [
             "As across Europe, your <b>US auto policy and credit-card collision cover generally do not apply in France</b>, so you need some collision protection. The rental comes with a <b>high excess</b> (what you owe for damage), often <b>800 to 1,500 euros</b>, and the counter will push a costly daily fee to reduce it.",
             "The cheaper path is to <b>decline the counter's excess reduction</b> and hold a <b>standalone excess policy</b> bought ahead, which reimburses the excess for far less. That is what the option on this page covers. A credit card in the main driver's name is needed for the <b>deposit hold</b>."
@@ -519,6 +611,8 @@ export default {
         },
         {
           h: "Paperwork, parking and the extras",
+          icon: "passport",
+          key: { fig: "License OK", tag: "IDP recommended", text: "France recognizes a US license for short tourist visits, so a permit is not strictly required, though an International Driving Permit is recommended as an official translation.", tone: "teal" },
           p: [
             "France recognizes a <b>US license for short tourist visits</b>, so a permit is not strictly required, but an <b>International Driving Permit is recommended</b> as an official translation and some agencies prefer to see one, so it is cheap insurance against a hassle. Rental cars must carry a <b>reflective vest and warning triangle</b> (they usually do; check).",
             "In town, <b>blue-zone</b> parking needs a cardboard time disc, and <b>metered</b> street parking left unpaid triggers a fixed penalty (commonly <b>17 to 75 euros</b>). One-way drops and under-25 drivers cost extra, and supermarket rental desks (Leclerc, U Location) can undercut the big brands. For paying day to day, see <a href=\"/france/cash-or-card\">cash or card in France</a>, and the <a href=\"/france\">France money guide</a>."
