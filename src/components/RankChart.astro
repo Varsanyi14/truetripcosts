@@ -1,0 +1,130 @@
+---
+// Reusable ranked horizontal bar chart for a single quantity per country, with
+// two always-on honesty cues baked into every bar:
+//   1. confidence shading: high = solid fill, medium = softer fill,
+//      low = hatched/provisional fill (reads as "estimate").
+//   2. a range band (low..high) drawn behind the bar, so the uncertainty is
+//      visible, not hidden behind a single point.
+//
+// It reads the rows passed in (live data, nothing hardcoded here) and renders
+// them server-side so the default view is complete and honest with no JS. Each
+// row carries data-* attributes (bucket, region, confidence) that the page's
+// client script uses to filter, show/hide, and recount, the bars themselves are
+// already in the DOM.
+//
+// Scale note: the spread is enormous (tens of millions down to ~100k). We use a
+// LINEAR scale (a log scale would visually flatten real differences and mislead),
+// but give every bar a small minimum width and an always-present numeric label so
+// the smallest bars stay visible and readable. The range band uses the same
+// linear scale.
+
+const {
+  rows = [],
+  id = 'rankchart',
+  max = 0,           // scale max; if 0, derive from the rows' highs
+  unit = '',         // optional suffix shown after the formatted value
+} = Astro.props;
+
+const scaleMax = max || Math.max(0, ...rows.map(r => r.high || r.point || 0));
+const pct = v => (scaleMax ? Math.max(0, Math.min(100, (v / scaleMax) * 100)) : 0);
+// Minimum visible bar so the smallest values (Fiji ~140k vs Mexico ~40M) do not
+// vanish. This is a floor on the drawn width only; the label always shows the
+// true number, so the floor cannot misrepresent the value.
+const MIN_BAR = 0.6; // percent
+const barW = v => Math.max(MIN_BAR, pct(v));
+
+// Compact, honest number formatting: 39.9M, 1.59M, 306k. Full number on hover
+// via title on the value element.
+function fmt(n) {
+  if (n == null) return '';
+  if (n >= 1e6) {
+    const m = n / 1e6;
+    return (m >= 10 ? m.toFixed(1) : m.toFixed(2)).replace(/\.?0+$/, '') + 'M';
+  }
+  if (n >= 1e3) return Math.round(n / 1e3) + 'k';
+  return String(n);
+}
+const full = n => (n == null ? '' : n.toLocaleString('en-US'));
+
+const confClass = c => 'is-' + String(c || '').toLowerCase();
+---
+
+<ol class="rk-list" id={`${id}-list`}>
+  {rows.map(r => (
+    <li
+      class:list={["rk-row", confClass(r.confidence)]}
+      data-slug={r.slug}
+      data-bucket={r.basisBucket}
+      data-region={r.region}
+      data-confidence={r.confidence}
+    >
+      <span class="rk-name">
+        {r.hasGuide ? <a href={`/${r.slug}`}>{r.country}</a> : <span>{r.country}</span>}
+      </span>
+      <span class="rk-track">
+        <span class="rk-plot">
+          {/* Range band (low..high) sits behind the bar. */}
+          {(r.low != null && r.high != null && r.high > r.low) && (
+            <span
+              class="rk-range"
+              style={`left:${pct(r.low)}%;width:${Math.max(0.4, pct(r.high) - pct(r.low))}%`}
+              title={`Range: ${full(r.low)} to ${full(r.high)}`}
+            ></span>
+          )}
+          <span
+            class="rk-bar"
+            style={`width:${barW(r.point)}%`}
+            title={`${full(r.point)}${unit ? ' ' + unit : ''}`}
+          ></span>
+        </span>
+        <span class="rk-val num" title={`${full(r.point)}${unit ? ' ' + unit : ''}`}>{fmt(r.point)}</span>
+      </span>
+      <span class="rk-meta">
+        <span class={`rk-conf ${confClass(r.confidence)}`}>{r.confidence}</span>
+        <span class="rk-basis">{r.basisBucket}</span>
+        <span class="rk-src">{r.source}</span>
+      </span>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .rk-list{list-style:none;margin:0;padding:0}
+  .rk-row{padding:9px 0;border-bottom:1px solid var(--line)}
+  .rk-row:last-child{border-bottom:0}
+  .rk-row.is-hidden{display:none}
+
+  .rk-name{display:block;font-size:13.5px;font-weight:600;color:var(--ink);margin:0 0 5px}
+  .rk-name a{color:var(--ink);text-decoration:none}
+  .rk-name a:hover{color:var(--teal-deep);text-decoration:underline}
+
+  .rk-track{display:flex;align-items:center;gap:10px}
+  .rk-plot{position:relative;flex:1;min-width:0;height:16px;display:flex;align-items:center}
+  .rk-range{position:absolute;top:50%;transform:translateY(-50%);height:16px;background:var(--teal);opacity:.14;border-radius:4px;pointer-events:none}
+  .rk-bar{position:relative;height:16px;border-radius:4px;min-width:2px}
+  .rk-val{flex:0 0 auto;min-width:58px;font-family:var(--serif);font-size:14.5px;color:var(--ink);font-variant-numeric:tabular-nums}
+
+  /* Confidence shading, the always-on honesty cue. Single hue (teal); only the
+     fill treatment changes, so it never competes with a second color. */
+  .rk-row.is-high .rk-bar{background:var(--teal-deep)}
+  .rk-row.is-medium .rk-bar{background:var(--teal);opacity:.62}
+  .rk-row.is-low .rk-bar{
+    background:repeating-linear-gradient(135deg,
+      rgba(14,122,95,.55) 0, rgba(14,122,95,.55) 5px,
+      rgba(14,122,95,.12) 5px, rgba(14,122,95,.12) 10px);
+    border:1px dashed rgba(14,122,95,.55);
+  }
+
+  .rk-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:6px 0 0;font-size:11.5px;color:var(--muted)}
+  .rk-conf{font-weight:700;letter-spacing:.02em}
+  .rk-conf.is-high{color:#10502C}
+  .rk-conf.is-medium{color:#7A3D08}
+  .rk-conf.is-low{color:var(--muted)}
+  .rk-basis{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:2px 8px}
+  .rk-src{color:var(--muted)}
+  .rk-src::before{content:"";}
+
+  @media (max-width:560px){
+    .rk-val{min-width:50px;font-size:13.5px}
+  }
+</style>

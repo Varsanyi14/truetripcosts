@@ -1,0 +1,188 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import USBadge from '../components/USBadge.astro';
+import RankChart from '../components/RankChart.astro';
+import { outbound, basisBuckets, outboundTotal, outboundYear, outboundChecked } from '../data/outbound.js';
+
+// Everything here reads from outbound.js live. Nothing is re-typed. The rows are
+// already sorted by point descending in the data file; we keep that order.
+const rows = outbound;
+const shownCount = rows.length;
+
+// Scale max from the largest range-high so the range bands never clip.
+const scaleMax = Math.max(...rows.map(r => r.high || r.point));
+
+// Region list in the order we want the tabs, derived from the data so a new
+// region in outbound.js appears automatically.
+const REGION_ORDER = ['North America', 'Europe', 'Caribbean', 'Central America', 'South America', 'Asia', 'Middle East', 'Africa', 'Oceania'];
+const presentRegions = REGION_ORDER.filter(r => rows.some(x => x.region === r));
+
+// Per-bucket counts for the filter labels, so a reader sees how many rows each
+// methodology covers before clicking.
+const bucketCounts = {};
+for (const b of basisBuckets) bucketCounts[b] = rows.filter(r => r.basisBucket === b).length;
+
+const totalM = (outboundTotal / 1e6).toFixed(1);
+
+const title = 'How many US travelers visited each country in 2024, ranked | True Trip Costs';
+const description = 'The True Trip Costs desk compilation of US travelers by destination country, 2024. Each figure is sourced and rated for confidence. Methodologies differ, so the numbers do not sum and are not strictly rank-comparable. Checked ' + outboundChecked + '.';
+---
+
+<Base title={title} description={description}>
+  <Nav />
+  <main class="wrap obpage">
+    <p class="ctx"><USBadge /> <span class="stamp">Checked {outboundChecked}</span></p>
+    <h1>How many US travelers visited each country in {outboundYear}?</h1>
+
+    <p class="obpage-topline">
+      About <strong>{totalM} million</strong> US residents traveled abroad in {outboundYear}, a record
+      (NTTO, US Department of Commerce). The per-country figures below come from many different sources
+      and counting methods, so they <strong>do not sum to that total</strong> and are not strictly
+      rank-comparable. This is a compilation, not one official ranking.
+    </p>
+
+    <div class="obpage-read">
+      <p class="obpage-read-h">How to read this</p>
+      <p>
+        Each bar is one country's estimated US travelers in {outboundYear}, sorted highest to lowest.
+        The fill shows how firm the figure is: <span class="ob-inl ob-high">solid</span> is high
+        confidence, <span class="ob-inl ob-medium">softer</span> is medium, and
+        <span class="ob-inl ob-low">hatched</span> is a flagged estimate. The faint band behind a bar is
+        that figure's low-to-high range, widest where sources disagree most (Spain, Germany, China). Use
+        the methodology filter to keep only the counting methods you trust: for example, isolate the
+        NTTO outbound survey to see just the {bucketCounts['Outbound survey (NTTO)']} directly-comparable
+        countries, or hide the flagged estimates. Every bar lists its source, so any figure is traceable.
+      </p>
+    </div>
+
+    <section class="obpage-controls" aria-label="Filter the ranking">
+      <div class="ob-filter" id="ob-methodology">
+        <p class="ob-filter-lab">Counting method <span class="ob-count" id="ob-count">{shownCount} of {rows.length} shown</span></p>
+        <div class="ob-filter-btns" role="group" aria-label="Toggle methodology buckets">
+          {basisBuckets.map(b => (
+            <button type="button" class="ob-bucket is-on" data-bucket-btn={b} aria-pressed="true">
+              {b} <span class="ob-bnum">{bucketCounts[b]}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div class="ob-filter" id="ob-region">
+        <p class="ob-filter-lab">Region</p>
+        <div class="ob-filter-btns" role="group" aria-label="Filter by region">
+          <button type="button" class="rg-tab is-active" data-region-btn="__all" aria-pressed="true">All</button>
+          {presentRegions.map(r => (
+            <button type="button" class="rg-tab" data-region-btn={r} aria-pressed="false">{r}</button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="obpage-chart" aria-label={`US travelers by country, ${outboundYear}`}>
+      <RankChart rows={rows} id="ob" max={scaleMax} unit={`US travelers, ${outboundYear}`} />
+      <p class="ob-empty" id="ob-empty" hidden>No countries match the current filter. Turn a method back on to see rows.</p>
+    </section>
+
+    <p class="obpage-foot">
+      This is the True Trip Costs desk's own compilation for {outboundYear}, each figure sourced and rated
+      for confidence, checked {outboundChecked}. It is not an official single ranking, and the figures are
+      not strictly comparable across counting methods. We update it as agencies publish revised numbers.
+    </p>
+  </main>
+  <Footer />
+
+  <style>
+    .obpage{max-width:900px}
+    .obpage h1{margin-bottom:12px}
+    .obpage-topline{font-size:17.5px;color:#3B4A46;line-height:1.55;max-width:680px;margin:0 0 20px}
+    .obpage-topline strong{color:var(--ink)}
+
+    .obpage-read{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:14px 18px;margin:0 0 26px;max-width:720px;box-shadow:var(--shadow)}
+    .obpage-read-h{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 6px}
+    .obpage-read p{font-size:14px;color:var(--muted);line-height:1.55;margin:0}
+    .ob-inl{font-weight:700;padding:0 2px;border-radius:3px}
+    .ob-high{color:var(--teal-deep)}
+    .ob-medium{color:var(--teal);opacity:.85}
+    .ob-low{color:var(--muted);background:repeating-linear-gradient(135deg,rgba(14,122,95,.22) 0,rgba(14,122,95,.22) 3px,transparent 3px,transparent 6px)}
+
+    .obpage-controls{display:flex;flex-direction:column;gap:16px;margin:0 0 24px}
+    .ob-filter-lab{font-size:12.5px;font-weight:700;color:var(--ink);margin:0 0 8px;display:flex;align-items:center;gap:10px}
+    .ob-count{font-weight:600;color:var(--muted);font-size:12px}
+    .ob-filter-btns{display:flex;flex-wrap:wrap;gap:8px}
+
+    /* Methodology buckets: toggle-off chips. "On" = amber (active control chrome,
+       matching the cost page). Off = muted and struck, clearly excluded. */
+    .ob-bucket{font:inherit;font-size:13px;font-weight:600;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer;transition:background .16s ease,border-color .16s ease,color .16s ease,opacity .16s ease}
+    .ob-bucket .ob-bnum{opacity:.7;font-variant-numeric:tabular-nums}
+    .ob-bucket.is-on{background:var(--amber);border-color:var(--amber);color:#fff}
+    .ob-bucket.is-on .ob-bnum{opacity:.85}
+    .ob-bucket:not(.is-on){opacity:.55;text-decoration:line-through}
+    .ob-bucket:hover{border-color:var(--amber)}
+
+    .rg-tab{font:inherit;font-size:13px;font-weight:600;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer;transition:background .16s ease,border-color .16s ease,color .16s ease}
+    .rg-tab:hover{border-color:var(--amber);color:var(--amber)}
+    .rg-tab.is-active{background:var(--amber);border-color:var(--amber);color:#fff}
+
+    .ob-empty{font-size:14.5px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0 0}
+    .obpage-foot{font-size:14px;color:var(--muted);line-height:1.55;margin:34px 0 8px;max-width:700px}
+  </style>
+
+  <script is:inline>
+    (function () {
+      var list = document.getElementById('ob-list');
+      if (!list) return;
+      var rows = Array.prototype.slice.call(list.querySelectorAll('.rk-row'));
+      var countEl = document.getElementById('ob-count');
+      var emptyEl = document.getElementById('ob-empty');
+      var total = rows.length;
+
+      // Methodology buckets are independently toggle-off. A bucket in this set is
+      // hidden; empty set = all shown.
+      var offBuckets = {};
+      var region = '__all';
+
+      function apply() {
+        var shown = 0;
+        rows.forEach(function (row) {
+          var b = row.getAttribute('data-bucket');
+          var rg = row.getAttribute('data-region');
+          var hideByBucket = !!offBuckets[b];
+          var hideByRegion = region !== '__all' && rg !== region;
+          var hidden = hideByBucket || hideByRegion;
+          row.classList.toggle('is-hidden', hidden);
+          if (!hidden) shown++;
+        });
+        if (countEl) countEl.textContent = shown + ' of ' + total + ' shown';
+        if (emptyEl) emptyEl.hidden = shown !== 0;
+      }
+
+      // Methodology toggle-off
+      var bucketBtns = document.querySelectorAll('[data-bucket-btn]');
+      bucketBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var b = btn.getAttribute('data-bucket-btn');
+          var nowOn = btn.classList.toggle('is-on');
+          if (nowOn) { delete offBuckets[b]; } else { offBuckets[b] = true; }
+          btn.setAttribute('aria-pressed', nowOn ? 'true' : 'false');
+          apply();
+        });
+      });
+
+      // Region filter (single-select tabs, like the cost page)
+      var regionBtns = document.querySelectorAll('[data-region-btn]');
+      regionBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          region = btn.getAttribute('data-region-btn');
+          regionBtns.forEach(function (x) {
+            var on = x === btn;
+            x.classList.toggle('is-active', on);
+            x.setAttribute('aria-pressed', on ? 'true' : 'false');
+          });
+          apply();
+        });
+      });
+    })();
+  </script>
+</Base>
