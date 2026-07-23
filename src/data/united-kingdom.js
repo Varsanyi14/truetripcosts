@@ -177,6 +177,12 @@ export default {
   spokes: [
     {
       slug: "eta",
+      glance: [
+        { k: "Visa", v: "Not a visa, an ETA (like ESTA)" },
+        { k: "Cost", v: "£20, lasts 2 years" },
+        { k: "Layover", v: "Needed even for a connection" },
+        { k: "Where", v: "Official UK ETA app or gov.uk" }
+      ],
       live: true,
       topic: "visas",
       title: "Do US citizens need an ETA for the UK? (2026) | True Trip Costs",
@@ -195,6 +201,8 @@ export default {
       sections: [
         {
           h: "What it is, and what it is not",
+          icon: "phoneok",
+          key: { fig: "Like ESTA", tag: "Not a visa", text: "The ETA is a digital travel authorization, the UK version of the US ESTA. It does not let you work or study long-term, and it must be approved before you board.", tone: "teal" },
           p: [
             "The ETA is a <b>digital travel authorization</b>, the UK's version of the US ESTA or Canada's eTA. It is <b>not a visa</b>: it does not let you work, study long-term, or stay beyond the visitor rules. It is linked electronically to the passport you apply with, so there is nothing to print, and you must travel on that same passport.",
             "It covers short visits, tourism, seeing family, business meetings and short study, and it lasts <b>2 years</b> (or until your passport expires), with multiple entries of up to <b>6 months</b> each. Every traveler needs their own, including children and infants."
@@ -202,6 +210,8 @@ export default {
         },
         {
           h: "What it costs, and the one place to get it",
+          icon: "gbp",
+          key: { fig: "£20", tag: "App or gov.uk only", text: "The fee is £20 per person, roughly $25, paid by card and non-refundable. It went up from £16 in April 2026, so older guides quote less. Use only the official UK ETA app or gov.uk.", tone: "teal" },
           p: [
             "The fee is <b>£20</b> per person, roughly 25 US dollars, paid by card, and it is non-refundable. It went up from £16 in April 2026, so older guides may quote less.",
             "There are exactly two official routes: the <b>UK ETA app</b> or <b>gov.uk</b>. The app is easiest because it scans your passport chip and takes the photo for you. Both charge the same £20. A wall of other sites advertise ETA assistance and charge more to file the very same form, so go straight to the official app or site."
@@ -209,6 +219,8 @@ export default {
         },
         {
           h: "Yes, you need it even for a layover",
+          icon: "plane",
+          key: { tag: "Layovers count", text: "If your flight to Asia or Africa connects through London or another UK airport, you generally still need an ETA, even for a short layover without leaving the airport.", tone: "amber" },
           p: [
             "This is the part that surprises people. If your cheap flight to Asia or Africa connects through <b>London or another UK airport</b>, you generally still need an ETA, even for a short transit, and often even if you never plan to leave the airport. The safe assumption for any UK connection is that you need one.",
             "British and Irish citizens, including dual citizens, <b>cannot</b> get an ETA and must travel on a UK or Irish passport instead. If you hold another passport alongside your US one, check which document you should travel on before you book."
@@ -216,6 +228,8 @@ export default {
         },
         {
           h: "How to apply, and when",
+          icon: "qr",
+          key: { fig: "10 min", tag: "Do it in advance", text: "It takes most people under ten minutes in the app, but apply before you fly since approval is not always instant. Have your passport and a card ready.", tone: "teal" },
           p: [
             "It takes most people under ten minutes."
           ],
@@ -245,6 +259,12 @@ export default {
     },
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Pound sterling (GBP)" },
+        { k: "Cards", v: "Nearly everywhere, some card-only" },
+        { k: "London transport", v: "Just tap, no Oyster needed" },
+        { k: "Cash for", v: "Rarely, a few small places" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in the UK, or can I use cards? (2026) | True Trip Costs",
@@ -257,6 +277,8 @@ export default {
       sections: [
         {
           h: "You barely need cash",
+          icon: "phoneok",
+          key: { fig: "Cashless", tag: "Tap everywhere", text: "In 2026 the UK is nearly cashless. Contactless is accepted almost everywhere by card or phone, and plenty of cafes and shops are card-only and cannot make change.", tone: "teal" },
           p: [
             "In 2026 the UK is <b>nearly cashless</b>. Contactless is accepted almost everywhere, by card or phone, and plenty of cafes and shops are <b>card-only</b>, some genuinely cannot make change. You can comfortably leave home with no pounds at all and get them from a cash machine if you want a little.",
             "The main quirk is the <b>100 pound contactless limit</b> most UK banks still apply: above that a card asks for chip and PIN, though paying with your <b>phone</b> (Apple Pay or Google Pay) has no such cap. Keep a small amount of cash, <b>20 to 40 pounds</b>, only for the occasional rural pub, market stall or tip."
@@ -264,6 +286,8 @@ export default {
         },
         {
           h: "London transport: just tap",
+          icon: "card",
+          key: { fig: "Just tap", tag: "No Oyster needed", text: "All London buses stopped taking cash years ago, and the Tube, Overground and Elizabeth line all work by tapping a contactless card or phone. You do not need an Oyster card.", tone: "teal" },
           p: [
             "This is the big one for visitors. <b>All London buses stopped taking cash years ago</b>, and the Tube, Overground and Elizabeth line all work by tapping a <b>contactless card or phone</b> at the gate. The system automatically applies the same daily and weekly <b>fare caps as an Oyster card</b>, so you always pay the cheapest fare, which means <b>you do not need to buy an Oyster</b> at all.",
             "Two small habits: <b>tap in and tap out</b> on the Tube and trains (buses are tap-in only), and do not tap a whole wallet against the reader, hold out the single card or phone you mean to use, or it may charge the wrong one."
@@ -271,6 +295,8 @@ export default {
         },
         {
           h: "Getting cash, and the dollar rule",
+          icon: "atm",
+          key: { fig: "Free ATMs", tag: "Use LINK machines", text: "If you want cash, use a free-to-use machine (most bank ATMs and the LINK network are free) and avoid fee-charging ones in some shops. If asked, choose pounds, not dollars.", tone: "teal" },
           p: [
             "If you want cash, use a <b>free-to-use cash machine</b> (most bank ATMs and the wider LINK network are free), and avoid the fee-charging machines tucked in some convenience stores. Apple Pay and Google Pay are accepted essentially everywhere cards are.",
             "When a UK card machine or ATM asks whether to charge in <b>US dollars or pounds, always choose pounds</b>. Picking dollars triggers dynamic currency conversion at a poor rate. Pounds lets your own bank do the conversion, which is cheaper."
@@ -278,6 +304,8 @@ export default {
         },
         {
           h: "Tipping, and one note",
+          icon: "tip",
+          key: { tag: "Service charge is optional", text: "In restaurants a service charge of around 12.5% is often added to the bill. It is discretionary, so you can ask for it to be removed if service was poor, and you need not tip on top.", tone: "amber" },
           p: [
             "In restaurants a <b>service charge of around 12.5%</b> is often added to the bill; it is discretionary, so you can ask for it to be removed if service was poor, and you need not tip on top. In pubs where you order at the bar, <b>tipping is not expected</b>.",
             "For the fuller money picture and how it varies around the UK, see the <a href=\"/united-kingdom\">UK money guide</a>."
@@ -300,6 +328,12 @@ export default {
     },
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Lead time", v: "Often just a few weeks" },
+        { k: "Key wait", v: "21 days after the rabies shot" },
+        { k: "Dogs also need", v: "Tapeworm treatment before arrival" },
+        { k: "Getting there", v: "Pet flies as cargo" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Great Britain from the US (2026): the steps and the cargo catch | True Trip Costs",
@@ -312,6 +346,8 @@ export default {
       sections: [
         {
           h: "The two numbers: lead time and cost",
+          icon: "calendar",
+          key: { fig: "21 days", tag: "The one wait", text: "Lead time is short, often just a few weeks, set almost entirely by the 21-day wait after the rabies shot. Because the US is a listed country, there is no rabies blood test and no quarantine.", tone: "teal" },
           p: [
             "The two things that decide a UK move with a pet. <b>Lead time is short</b>, often just a few weeks, and it is set almost entirely by the 21-day wait after the rabies shot. If your pet is already microchipped and current on rabies, the paperwork and endorsement can be done in around a month. <b>Cost is moderate but front-loaded by the flight</b>: pets travelling from the US to Britain almost always fly as manifest cargo rather than in the cabin, and that air transport, plus the vet work and the APHIS endorsement, is where the money goes.",
             "There is no rabies blood test on this route, which is exactly why it is so much faster than Japan or Australia. The US is on Britain's list of countries whose pets can enter without a titer or quarantine, provided the steps are done correctly and in order."
@@ -319,6 +355,8 @@ export default {
         },
         {
           h: "The steps, in order",
+          icon: "health",
+          key: { tag: "Order keeps you out of quarantine", text: "Great Britain means England, Scotland and Wales. Microchip, then rabies vaccination, then the 21-day wait. Dogs also need a vet tapeworm treatment 24 to 120 hours before arrival. Do them in sequence.", tone: "amber" },
           p: [
             "Great Britain means England, Scotland and Wales. Do these in sequence; the order is what keeps your pet out of quarantine."
           ],
@@ -332,6 +370,8 @@ export default {
         },
         {
           h: "Why your pet flies as cargo",
+          icon: "plane",
+          key: { fig: "Cargo", tag: "Not in the cabin", text: "Britain does not allow pets in the aircraft cabin on ordinary commercial flights, so your dog or cat flies as manifest cargo. Budget and book that well ahead.", tone: "teal" },
           p: [
             "This catches people who expect to fly with a small dog or cat under the seat. Britain does not allow pets to arrive in the aircraft cabin on ordinary commercial flights; they must come in as registered manifest cargo through an approved route, with assistance dogs the main exception. That means an airline-approved crate, a cargo booking, and a handling fee at the animal reception centre, which together are the largest part of the bill.",
             "The upside is that there is no rabies titer, no waiting for lab results, and no quarantine when the paperwork is right. The APHIS endorsement fee itself is modest, since no laboratory test is involved on this route."
@@ -339,6 +379,8 @@ export default {
         },
         {
           h: "Coming back to the US",
+          icon: "receipt",
+          key: { fig: "Easy", tag: "The return trip", text: "Britain is rabies-free, so a dog flying home from the UK is on the CDC easy path, usually just a free CDC form receipt, with no titer and no quarantine.", tone: "teal" },
           p: [
             "The return trip is straightforward. Britain is rabies-free, so a dog flying home from the UK is on the CDC easy path, usually just a free CDC form receipt with no titer and no quarantine. The details are in our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a>.",
             "To see how the UK compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."
@@ -367,6 +409,12 @@ export default {
     },
     {
       slug: "vat-refund",
+      glance: [
+        { k: "VAT refund", v: "None in Great Britain" },
+        { k: "Since", v: "Abolished 1 January 2021" },
+        { k: "Workaround", v: "Ship it home direct, not a refund" },
+        { k: "Northern Ireland", v: "A separate limited scheme" }
+      ],
       live: true,
       topic: "vat-refund",
       title: "Can tourists get a VAT refund in the UK? (2026) | True Trip Costs",
@@ -379,6 +427,8 @@ export default {
       sections: [
         {
           h: "What changed, and why the desk is gone",
+          icon: "alert",
+          key: { tag: "No tourist refund", text: "The UK abolished its tourist VAT refund on 1 January 2021 and it has not returned. You cannot reclaim the 20% VAT on shopping carried home from England, Scotland or Wales, and there is no airport refund desk.", tone: "amber" },
           p: [
             "Until the end of 2020, non-EU visitors could reclaim the <b>20% VAT</b> on goods bought in Britain and carried home, stamped at an airport refund desk. That scheme, the <b>VAT Retail Export Scheme</b>, was <b>scrapped on 1 January 2021</b> after Brexit, and despite steady lobbying from retailers it has <b>not come back</b> as of 2026. The refund desks that used to sit near departures are gone.",
             "So in <b>Great Britain</b>, which is England, Scotland and Wales, the <b>price on the tag already includes VAT</b> and that is what you pay, full stop. There is nothing to claim and nothing to stamp. This surprises visitors used to the refund process across the EU, so the useful move is simply to <b>not plan around a refund</b> here."
@@ -386,6 +436,8 @@ export default {
         },
         {
           h: "The one workaround: ship it abroad",
+          icon: "plane",
+          key: { fig: "Ship it", tag: "Not a refund", text: "The one legitimate way to skip the VAT is direct export, sometimes called Shop and Ship: the retailer ships your purchase to your home address, so it is sold VAT-free. You pay shipping instead.", tone: "teal" },
           p: [
             "There is a legitimate way to buy without the VAT, but it is not a refund. If a retailer offers <b>direct export</b>, sometimes called Shop and Ship, they <b>ship your purchase to your home address</b> outside the UK and remove the 20% VAT at the till, because the goods are exported rather than carried out in your luggage.",
             "The catch is that you <b>pay international shipping and handling</b> instead, and you do not walk out with the item. It only makes sense on <b>higher-value goods</b>, where the 20% saved clearly beats the shipping, and only at the mostly luxury retailers set up to do it. For an everyday souvenir, it is not worth it."
@@ -393,6 +445,8 @@ export default {
         },
         {
           h: "Northern Ireland is different",
+          icon: "receipt",
+          key: { fig: "NI only", tag: "A separate scheme", text: "Northern Ireland kept a separate, limited refund scheme after 2021. Shop there as a non-EU or non-UK resident and you can still reclaim VAT on eligible goods.", tone: "teal" },
           p: [
             "Northern Ireland kept a <b>separate, limited refund scheme</b> after 2021. If you shop there and are a non-EU or non-UK resident, you can still reclaim VAT on eligible goods, typically with a <b>minimum of about 30 pounds per store</b>, and you validate when you leave the UK or the EU. It runs through the usual tax-free operators and shops that display the signs.",
             "For a visitor whose trip is to London, Edinburgh or Cardiff, this does not help, since Great Britain has no scheme. It applies only to purchases actually made in <b>Northern Ireland</b>."
@@ -400,6 +454,8 @@ export default {
         },
         {
           h: "What you do pay: VAT, and a new lodging levy",
+          icon: "gbp",
+          key: { fig: "Baked in", tag: "Nothing to reclaim", text: "The 20% VAT is baked into prices, so there is no separate tax line on shopping and nothing to reclaim. Some areas are adding a separate lodging levy on overnight stays.", tone: "teal" },
           p: [
             "The <b>20% VAT is baked into prices</b>, so there is no separate tax line to watch on shopping, and nothing to reclaim. Airport duty-free is a different thing from a high-street VAT refund, and applies to the usual categories like alcohol and tobacco.",
             "On lodging, Britain long had no tourist tax, but that is changing: <b>Edinburgh</b> now adds a <b>5% visitor levy</b> on overnight stays from <b>24 July 2026</b>, and a few English cities add a small flat per-night charge. The detail is in the <a href=\"/united-kingdom\">UK money guide</a>."
@@ -422,6 +478,12 @@ export default {
     },
     {
       slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Excellent, cities and countryside" },
+        { k: "Carrier roaming", v: "About $12 a day" },
+        { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
+        { k: "The Tube", v: "Now has coverage on most lines" }
+      ],
       live: true,
       esim: true,
       topic: "connectivity",
@@ -436,6 +498,8 @@ export default {
       sections: [
         {
           h: "It is a cost question, not a coverage one",
+          icon: "roamfee",
+          key: { fig: "$12/day", tag: "Roaming default", text: "The UK has some of the best mobile coverage anywhere, so this is a money decision. A US carrier day pass runs about $12 a day, and T-Mobile included roaming is often slow 2G.", tone: "teal" },
           p: [
             "The UK has some of the best mobile coverage anywhere, so you will have fast service in cities, towns and most of the countryside whatever you use. That makes this a <b>money decision</b>. The default, roaming on your US plan, is the expensive way: <b>AT&amp;T and Verizon</b> charge about <b>12 dollars a day</b> to use your plan in the UK, so a week is around <b>84 dollars</b> before you have done anything special.",
             "<b>T-Mobile</b> and some Google Fi and Visible plans include roaming, but often at <b>slow 2G-style speeds</b> (around 256 Kbps) that are usable for WhatsApp and email but frustrating for maps, rideshare or anything with video. Check your plan's fine print: included does not always mean fast."
@@ -443,6 +507,8 @@ export default {
         },
         {
           h: "Why an eSIM is usually cheapest",
+          icon: "tag",
+          key: { fig: "Few $/GB", tag: "The cheap option", text: "For most US visitors a travel eSIM is the cheapest way to get real data in the UK, a few dollars per gigabyte, far below stacking day-pass fees. A Nomad eSIM activates before you fly.", tone: "teal" },
           p: [
             "For most US visitors, a <b>travel eSIM</b> is the cheapest way to get real data in the UK. A <b>Nomad eSIM</b> is a few dollars per gigabyte, far below stacking up day-pass fees, and it <b>activates before you fly</b> and works the moment you land, with no SIM counter. You keep your US number reachable for calls and texts on your normal plan while the eSIM carries the data.",
             "Coverage is not the deciding factor: a Nomad eSIM rides a <b>major UK network</b>, and since the big networks blanket the country, the brand barely matters here. Set it up before departure, since installing it needs a connection."
@@ -450,6 +516,8 @@ export default {
         },
         {
           h: "The Tube, and one Brexit footnote",
+          icon: "phoneok",
+          key: { fig: "Covered", tag: "Signal underground", text: "The London Underground now has mobile coverage on most lines, so you are no longer offline between stations. The EU roam-like-home rule never applied to US visitors anyway.", tone: "teal" },
           p: [
             "Good news underground: the <b>London Underground now has mobile coverage on most lines</b>, rolled out across recent years, so you are no longer offline between stations on the major routes. Aboveground, buses, trains and stations are all well covered, and free Wi-Fi is common in cafes and on much of the transport network.",
             "One footnote that does <b>not</b> affect you: since Brexit, some UK networks charge their own customers to roam in the EU, but that is a <b>UK resident</b> issue, not a US visitor one, so ignore it. For paying as you go, see <a href=\"/united-kingdom/cash-or-card\">cash or card in the UK</a>, and the <a href=\"/united-kingdom\">UK money guide</a>."
@@ -472,6 +540,12 @@ export default {
     },
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Two options", v: "Black cab or an app" },
+        { k: "Black cabs", v: "Hail or rank, metered" },
+        { k: "Apps", v: "Uber, Bolt, pre-booked only" },
+        { k: "Heathrow", v: "The train beats the cab" }
+      ],
       live: true,
       topic: "taxis",
       caution: "low",
@@ -485,6 +559,8 @@ export default {
       sections: [
         {
           h: "Black cab or app: how they differ",
+          icon: "phoneok",
+          key: { fig: "£4.40 min", tag: "Hail vs pre-book", text: "Only black cabs (hackney carriages) can be hailed on the street or taken from a rank, on a meter starting at £4.40. Uber, Bolt and minicabs like Addison Lee must be pre-booked in the app.", tone: "teal" },
           p: [
             "The one rule to know: <b>only black cabs (hackney carriages) can be hailed</b> on the street or picked up from a rank. <b>Uber, Bolt and minicabs</b> (private hire, including Addison Lee) are <b>booking-only by law</b> and cannot legally take a street fare, so at the airport or a station you open the app and walk to the designated pickup point. Black cab drivers pass a famously tough test (the Knowledge) and run a regulated meter, with no haggling.",
             "On price, for a typical <b>3-mile central journey</b> a black cab runs about <b>12 to 18 pounds</b>, while <b>Uber or Bolt</b> are about <b>9 to 14 pounds</b> off-peak, though they <b>surge</b> at busy times and now add <b>20% VAT</b> on every London fare. Black cabs take <b>card</b> and can be hailed instantly, which is worth something when you do not want to wait for a booking. For a quick hop you cannot lose much either way, so compare the app quote against the convenience of just flagging a cab."
@@ -492,6 +568,8 @@ export default {
         },
         {
           h: "Heathrow: the train beats the cab",
+          icon: "plane",
+          key: { fig: "£75-110", tag: "Cab is the pricey way", text: "From Heathrow a black cab to central London is roughly £75 to £110, more evenings and weekends. The Heathrow Express or the Elizabeth line is far cheaper and often faster.", tone: "amber" },
           p: [
             "This is where the wrong choice costs the most. From <b>Heathrow</b>, a black cab to central London is roughly <b>75 to 110 pounds</b> (more evenings and weekends), and <b>Uber or Bolt</b> run about <b>45 to 95 pounds</b> depending on surge. The <b>trains</b> undercut both by a lot: the <b>Elizabeth line</b> is a flat fare of about <b>12 pounds</b> (contactless or Oyster) into central London in 30 to 45 minutes, and the <b>Piccadilly line</b> Tube is the cheapest at about <b>5.90 pounds</b>, if slower.",
             "The <b>Heathrow Express</b> is the fastest, 15 minutes to Paddington, but pricier at about <b>25 pounds</b> walk-up (from around <b>10 pounds</b> booked ahead). So the honest ranking for a solo traveler or couple with normal luggage: the <b>Elizabeth line for value, the Heathrow Express for speed to Paddington</b>, and a car only if you are a group with heavy bags going door to door, in which case a <b>pre-booked fixed-price minicab</b> (around <b>55 pounds</b>) beats a metered black cab."
@@ -499,6 +577,8 @@ export default {
         },
         {
           h: "The other airports, and tap-to-ride",
+          icon: "gbp",
+          key: { fig: "£21.50", tag: "Gatwick Express", text: "From Gatwick, the Gatwick Express is about £21.50 to Victoria in 30 minutes, far cheaper than a £90 to £130 cab. Stansted and Luton have express trains or coaches too.", tone: "teal" },
           p: [
             "From <b>Gatwick</b>, the <b>Gatwick Express</b> is about <b>21.50 pounds</b> to Victoria in 30 minutes, far cheaper than a <b>90 to 130 pound</b> cab. <b>Stansted</b> and <b>Luton</b> also have express trains or coaches that beat a taxi on price. As a rule across the London airports, the <b>train or coach is the value option</b>, and a car makes sense mainly for groups or late arrivals.",
             "Around town, you rarely need cash or a paper ticket: just <b>tap a contactless card or phone</b> on the Tube, buses, trams and most trains, with an automatic <b>daily fare cap</b>, so no Oyster card is needed. For how cards and cash work more broadly, see <a href=\"/united-kingdom/cash-or-card\">cash or card in the UK</a>, and the <a href=\"/united-kingdom\">UK money guide</a>."
@@ -506,6 +586,8 @@ export default {
         },
         {
           h: "Tipping and avoiding the touts",
+          icon: "tip",
+          key: { fig: "~10%", tag: "Round up", text: "Tipping a cab is light: round up to the nearest pound, or add roughly 10% for a good black-cab driver. Ignore anyone touting rides in the terminal and use the official rank or app.", tone: "teal" },
           p: [
             "Tipping a cab is light in the UK: <b>rounding up to the nearest pound</b>, or adding roughly <b>10%</b> for a good black-cab driver, is plenty, and app fares are settled in the app where a tip is optional. There is no expectation to tip on public transport.",
             "At the airport, <b>ignore anyone who approaches you</b> inside the terminal offering a taxi or a lift; licensed black cabs wait at the marked rank and Uber or Bolt are booked in the app. An unbooked stranger with a car is not a deal, so follow the signs to the official rank or the rail station."
