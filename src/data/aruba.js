@@ -67,7 +67,7 @@ export default {
   cash: {
     rate: 1.79, cur: "AWG", round: 20, defaultIndex: 1,
     rateNote: "The florin is fixed at about 1.79 to the US dollar and has been for decades, so it never really moves. In practice you may not use it much, since US dollars are accepted almost everywhere and prices are often shown in both. This is only the small, cash-in-hand slice of your spending.",
-    styles: [ { n: "Budget", per: 130, cash: 0.20, room: 250 }, { n: "Mid-range", per: 270, cash: 0.15, room: 540 }, { n: "Comfort", per: 500, cash: 0.12, room: 1075 } ]
+    styles: [ { n: "Budget", per: 70, cash: 0.30, room: 140 }, { n: "Mid-range", per: 150, cash: 0.20, room: 320 }, { n: "Comfort", per: 270, cash: 0.15, room: 600 } ]
   },
   connectivity: {
     works: "Yes, and it is reliable across this small, tourism-focused island. The carriers are SETAR and Digicel, 4G is widespread and 5G is growing, and coverage is good in Oranjestad, along Palm and Eagle Beach and across most of the island, thinning only in the wild Arikok interior. A travel eSIM from Airalo, Nomad or Holafly works well if your phone supports it, or you can buy a local SETAR SIM. Most hotels have Wi-Fi. Worth knowing: Aruba's tap water is desalinated and safe to drink, so you can skip buying bottled water."
