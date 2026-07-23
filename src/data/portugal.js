@@ -164,6 +164,12 @@ export default {
   spokes: [
     {
       slug: "euronet-atm-fees",
+      glance: [
+        { k: "The rule", v: "Use a Multibanco (MB) ATM" },
+        { k: "Avoid", v: "The bright yellow Euronet machines" },
+        { k: "Always", v: "Choose euros, decline conversion" },
+        { k: "Biggest lever", v: "A no-foreign-fee card" }
+      ],
       live: true,
       title: "How to avoid the yellow Euronet ATMs in Lisbon (2026) | True Trip Costs",
       description: "Skip the bright yellow Euronet machines in Lisbon and use a Multibanco (MB) bank ATM instead. How to tell them apart, why the yellow ones cost so much, and the one screen tap that saves you the most. Checked July 2026.",
@@ -175,6 +181,8 @@ export default {
       sections: [
         {
           h: "The short version: use a Multibanco machine, not a Euronet one",
+          icon: "atm",
+          key: { fig: "Multibanco", tag: "The one rule", text: "Portugal runs one national bank ATM network, Multibanco (MB), shared by nearly every Portuguese bank. Its machines charge little or nothing, so use MB, not the yellow Euronet ones.", tone: "teal" },
           p: [
             "Portugal runs one national bank ATM network called <b>Multibanco</b>, or <b>MB</b>, operated by SIBS and shared by nearly every Portuguese bank. Its machines charge little or nothing for the withdrawal itself. The bright yellow standalone machines you meet in airport arrivals and tourist squares are <b>Euronet</b>, a private operator that sits outside that network and sets its own, much higher, pricing.",
             "So the rule is simple. Find a Multibanco machine, or an ATM built into a real bank branch such as CGD, Millennium, Novo Banco or Santander, and skip the freestanding yellow boxes. Then, on any machine, pick euros and turn down the conversion offer, because that offer is where most of the money quietly disappears."
@@ -182,6 +190,8 @@ export default {
         },
         {
           h: "How to tell a Euronet ATM from a Multibanco one",
+          icon: "alert",
+          key: { fig: "Yellow", tag: "Spot the yellow box", text: "Euronet machines are freestanding, wrapped in bright yellow, carry no bank name, and skip the normal Multibanco welcome screen. They cluster at tourist spots and the airport.", tone: "teal" },
           p: [
             "Euronet machines are freestanding and wrapped in bright yellow, they carry no bank name, and the screen skips the normal Multibanco welcome. You will find them clustered at Lisbon airport arrivals, around Rossio and Praca do Comercio, along the Baixa and Alfama tourist streets, and all down the Algarve strip.",
             "A Multibanco machine shows the orange MB logo, opens with a language menu (Portugues, English, Espanol, Francais), and offers preset euro amounts like 20, 40, 60, 100 and 200. It also shows a short fee-disclosure screen before you confirm, so you always see the charge in advance rather than after."
@@ -189,6 +199,8 @@ export default {
         },
         {
           h: "Why the yellow machines cost so much",
+          icon: "coins",
+          key: { tag: "Two charges stack", text: "A Euronet withdrawal stacks two charges: a per-withdrawal fee, a few euros and steepest at the airport, and, far worse, dynamic currency conversion if you let it bill in dollars. Always choose euros.", tone: "amber" },
           p: [
             "Two charges stack on a Euronet withdrawal. First, a per-withdrawal fee, usually a few euros and steepest at the airport. Second, and far worse, <b>dynamic currency conversion</b>: the machine offers to bill you in US dollars and quietly sets its own exchange rate, which can add roughly 10% or more on top. That is how withdrawing 100 euros can end up costing well over the odds.",
             "You always have the right to decline dollars and be charged in euros, at which point your own bank does the conversion at a normal rate. Euronet's screens make the dollar option look like the helpful default. It is not, so say no."
@@ -196,6 +208,8 @@ export default {
         },
         {
           h: "Getting euros the cheap way, step by step",
+          icon: "euro",
+          key: { fig: "1 minute", tag: "At an MB machine", text: "At a Multibanco machine, insert your card, choose euros not dollars, decline any conversion offer, and take a few days worth at once to limit per-visit costs. About a minute.", tone: "teal" },
           p: [
             "It takes about a minute and no special app."
           ],
@@ -209,6 +223,8 @@ export default {
         },
         {
           h: "The bigger lever: the card you withdraw with",
+          icon: "card",
+          key: { fig: "Your card", tag: "Matters most", text: "Which machine you use matters, but the card matters more. Your US bank own foreign and ATM fees stack on top, so a no-foreign-fee debit card is the biggest saving.", tone: "teal" },
           p: [
             "Which machine you use matters, but the card in your hand matters more. Your US bank's own foreign and ATM fees stack on top of anything the machine charges, so a <b>no-foreign-fee debit card</b> is the real saving. Charles Schwab refunds ATM fees worldwide, and Wise and Revolut keep them low.",
             "Because Portugal is so card-friendly, you can tap a card or phone for almost everything and only need an ATM once or twice a trip. Get that right and a few euros of machine fee stops mattering. The <a href=\"/portugal#calcNoFee\">Portugal money guide</a> has the exact card pairing we would pick and how much cash to actually carry, and <a href=\"/cash-or-card\">cash or card by country</a> covers the broader question of how much to tap versus carry."
@@ -232,6 +248,12 @@ export default {
     },
     {
       slug: "iva-tax-refund-kiosk",
+      glance: [
+        { k: "VAT (IVA)", v: "23%" },
+        { k: "Who", v: "Non-EU visitors, goods unused" },
+        { k: "You net", v: "About 12 to 16%" },
+        { k: "Validate", v: "e-Taxfree kiosk before you fly" }
+      ],
       live: true,
       title: "The IVA tax-refund kiosk at Lisbon airport, step by step (2026) | True Trip Costs",
       description: "How the e-Taxfree kiosks at Lisbon airport work for US visitors: the green code, where the machines are, why you validate before checking bags, and what you actually get back after fees. Checked July 2026.",
@@ -243,6 +265,8 @@ export default {
       sections: [
         {
           h: "First, do you actually qualify",
+          icon: "receipt",
+          key: { fig: "23% IVA", tag: "Non-EU visitors", text: "The refund is Portugal IVA (VAT), standard rate 23%. Non-EU visitors, including US travelers, can claim it on goods taken home unused. Ask for a tax-free form with your passport at checkout.", tone: "teal" },
           p: [
             "The refund is Portugal's <b>IVA</b> (VAT). The standard rate is 23%, and non-EU visitors, which includes US travelers, can claim it back on goods taken home unused. You need to have asked the shop for a <b>tax-free form</b> at the till, with your passport, and to have spent at least about <b>50 euros before tax in a single store</b> (roughly 61 to 62 euros on the receipt), one of the lower thresholds in Europe.",
             "Two things kill a refund fast: using or wearing the goods before you leave, and missing the window. You have to export the items within three months and validate before you leave the EU. A tax-free form is not the same as your receipt, so make sure the shop actually issues one."
@@ -250,6 +274,8 @@ export default {
         },
         {
           h: "Where the e-Taxfree kiosks are at Lisbon airport",
+          icon: "plane",
+          key: { fig: "T1 or T2", tag: "Depends on your bag", text: "Lisbon airport runs two terminals almost separately, so the kiosk you use depends on where your goods are: carry-on goods after security, checked goods before you drop the bag.", tone: "teal" },
           p: [
             "Lisbon's airport (LIS) runs two terminals that work almost separately, so the kiosk you use depends on where your goods are. If your purchases are in your <b>carry-on</b>, the e-Taxfree kiosks and Customs desks are <b>airside, after security</b>, in both Terminal 1 and Terminal 2. Validate there, then collect from the operator's desk.",
             "If any item is in your <b>checked luggage</b>, you use the <b>landside</b> kiosks near the oversized-baggage area <b>before</b> you drop the bag. One trap worth naming: the operator kiosk out on the arrivals level is not a Customs validation point, so do not queue there thinking it counts."
@@ -257,6 +283,8 @@ export default {
         },
         {
           h: "The kiosk, step by step",
+          icon: "qr",
+          key: { fig: "Scan", tag: "Code Green", text: "Scan the tax-free form and your passport at the e-Taxfree kiosk. A green screen (Code Green) means approved, so you collect from the operator desk or drop the form in their box.", tone: "teal" },
           p: [
             "It is quick once you are in front of the machine, but give yourself room."
           ],
@@ -270,6 +298,8 @@ export default {
         },
         {
           h: "What you actually get back",
+          icon: "coins",
+          key: { fig: "12-16%", tag: "Not the full 23%", text: "Do not expect the full 23%. The tax-free operators take a cut, so after their fees you typically net around 12 to 16% of the price. A cash refund at the desk is quickest but pays least.", tone: "amber" },
           p: [
             "Do not expect the full 23%. The tax-free operators take a cut, so after their fees you typically net around <b>12 to 16%</b> of the price. An immediate cash refund at the desk is fastest but usually carries the biggest fee, while a refund to your card is cleaner but can take weeks.",
             "So the honest math: on a few hundred euros of shopping the refund is real and worth the half hour, but on a small purchase the fees and the queue may not be. If you only bought a little, it is fine to skip it."
@@ -277,6 +307,8 @@ export default {
         },
         {
           h: "A note on what this is not",
+          icon: "alert",
+          key: { fig: "e-Taxfree", tag: "Not IVAucher", text: "This is the visitor VAT refund through the e-Taxfree system and private operators. It is separate from IVAucher, a domestic scheme for Portuguese residents that does not apply to you.", tone: "teal" },
           p: [
             "This is the visitor VAT refund, handled through the <b>e-Taxfree</b> system and the private operators. It is separate from IVAucher, a domestic scheme for Portuguese residents that you will see mentioned but cannot use as a tourist. And it only covers <b>goods you take home</b>, not hotels, meals or services, which are not refundable. For how Portugal charges its town tourist taxes and everyday IVA, the <a href=\"/portugal\">Portugal money guide</a> has the rest."
           ]
@@ -299,6 +331,12 @@ export default {
     },
     {
       slug: "tram-28-contactless",
+      glance: [
+        { k: "Metro", v: "Contactless works, 1.92 euros a ride" },
+        { k: "Tram 28", v: "Contactless mixed, do not rely on it" },
+        { k: "Cheapest", v: "A navegante card, 0.50 euros" },
+        { k: "Driver ticket", v: "About 3.30 euros, tourist premium" }
+      ],
       live: true,
       title: "Does tram 28 in Lisbon take contactless? (2026) | True Trip Costs",
       description: "Whether you can tap a bank card or phone on Lisbon's famous 28 tram, why the metro is different, and the cheap, reliable way to pay, the Navegante card and zapping. Checked July 2026.",
@@ -310,6 +348,8 @@ export default {
       sections: [
         {
           h: "Contactless on the metro, yes; on the 28 tram, not reliably",
+          icon: "phoneok",
+          key: { fig: "1.92 euros", tag: "Metro taps reliably", text: "Lisbon metro takes open-loop contactless: tap a Visa or Mastercard, phone or watch at the gates, charged 1.92 euros a journey. On the historic 28 tram, contactless is patchy, so do not count on it.", tone: "teal" },
           p: [
             "Lisbon's metro now takes open-loop contactless: tap your own Visa or Mastercard, or a phone or watch, at the fare gates, and you are charged <b>1.92 euros</b> per journey, one person per card. That part is official and dependable.",
             "The historic trams are run by a different operator, Carris, and here it gets murky. Some onboard validators accept a contactless tap and some do not, and recent local guides openly disagree about whether it works on the 28. The city is rolling it out, but as of 2026 you should not board the packed 28 assuming your card will tap. Bring a fallback."
@@ -317,6 +357,8 @@ export default {
         },
         {
           h: "The cheap, reliable way to pay: navegante and zapping",
+          icon: "card",
+          key: { fig: "0.50 euros", tag: "The navegante card", text: "Get a navegante occasional card for 0.50 euros from any metro machine, reusable for a year, one per traveler, then load zapping credit. It is the cheap, works-everywhere option.", tone: "teal" },
           p: [
             "Get a <b>navegante occasional card</b> for <b>0.50 euros</b> from any metro ticket machine or ticket office. It is reusable for a year, and each traveler needs their own. Then load <b>zapping</b>, pay-as-you-go credit, and each Carris ride (tram, bus or funicular) costs <b>1.72 euros</b>, the cheapest single fare there is, with free transfers inside 60 minutes.",
             "If you are doing the classic tram-and-funicular sightseeing day, the <b>24-hour Carris and Metro pass at 7.25 euros</b> is better value, and it covers the trams, buses, metro, the funiculars and the Santa Justa lift. One quirk: a navegante card holds only one fare type at a time, so you cannot mix zapping and a day pass on the same card. Locals just buy two 0.50-euro cards."
@@ -324,6 +366,8 @@ export default {
         },
         {
           h: "What paying the driver actually costs",
+          icon: "euro",
+          key: { fig: "3.30 euros", tag: "The tourist premium", text: "A single ticket from the tram driver is about 3.30 euros, nearly double the zapping fare, and drivers often want exact change. Load a navegante instead.", tone: "amber" },
           p: [
             "You can buy a single ticket from the tram driver, but it is the tourist-premium option at about <b>3.30 euros</b> a ride, nearly double the zapping fare, and drivers often want coins or small notes. On a route as busy as the 28, fumbling for change while boarding is also how you hold up the queue and flag yourself to pickpockets.",
             "So the order of preference is simple: zapping or a day pass on a navegante card first, the metro's contactless gates while you are on the metro, and paying the driver only as a last resort."
@@ -331,6 +375,8 @@ export default {
         },
         {
           h: "One more thing contactless does not do here",
+          icon: "alert",
+          key: { fig: "6.50/day", tag: "Metro-only cap", text: "Even where a tap works, Lisbon has no London-style capping across the whole network. Contactless caps only your own metro spending at about 6.50 euros a day, not buses and trams together.", tone: "teal" },
           p: [
             "Even where a tap works, Lisbon does not give you London-style fare capping across the whole network. The metro caps your own contactless spending at about <b>6.50 euros</b> a day, but that cap does not stretch across the trams and buses, and it is per card, not per group. For a few days of mixed sightseeing, a navegante card with zapping is still the simplest thing to hand a travel companion. The full <a href=\"/portugal\">Portugal money guide</a> covers cards, cash and the rest."
           ]
@@ -353,6 +399,12 @@ export default {
     },
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Process", v: "Shared EU entry" },
+        { k: "Need", v: "ISO chip, rabies, EU health cert" },
+        { k: "Enter within", v: "10 days of endorsement" },
+        { k: "Coming home", v: "Simple CDC path" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Portugal from the US (2026): the EU process, and the Portugal-specific parts | True Trip Costs",
@@ -365,14 +417,20 @@ export default {
       sections: [
         {
           h: "Portugal runs on the EU process",
+          icon: "health",
+          key: { fig: "10 days", tag: "No Portugal-only permit", text: "The standard EU move: an ISO microchip first, a rabies shot after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS. Enter Portugal within 10 days of that endorsement.", tone: "teal" },
           p: ["There is no Portugal-only pet permit and no national quarantine. Bringing a dog or cat into Portugal from the US is the standard EU move: an ISO microchip first, a rabies vaccination after the chip, then an EU Animal Health Certificate completed by a USDA-accredited vet and endorsed by APHIS, with the pet arriving within 10 days of endorsement. A first rabies shot adds a 21-day wait before travel.", "Because the core process is identical across the EU (and the countries that follow its rules), we do not repeat it per country. The full sequence, the microchip-before-rabies trap that costs people the most time, the 10-day clock, and the current APHIS endorsement fees all live on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Read that first, then come back for the Portugal notes."]
         },
         {
           h: "The Portugal-specific parts",
+          icon: "receipt",
+          key: { fig: "Check", tag: "At the border", text: "Portuguese customs may ask to see the endorsed certificate and confirm the chip, and pets should arrive through a designated traveller point of entry, which the major airports are.", tone: "teal" },
           p: ["At the border, Portuguese customs may ask to see the endorsed certificate and confirm the microchip, and pets should enter through a designated traveller point of entry, which Lisbon airport is. There is no dog or cat tapeworm rule for Portugal, unlike Ireland, Finland or Malta.", "After you settle in, Portugal requires dogs to be microchipped and registered in the national SIAC database, handled by a local vet, and licensed at the local parish (junta de freguesia). Portugal also classes certain breeds as potentially dangerous, requiring the owner to hold a licence, take out liability insurance, and muzzle and leash the dog in public. If your dog may fall in that category, check the requirement before you travel."]
         },
         {
           h: "Coming back to the US is the easy part",
+          icon: "plane",
+          key: { fig: "Easy", tag: "The return trip", text: "A dog flying home from Portugal is on the simplest CDC path: usually a CDC Dog Import Form receipt, a microchip, and a minimum age of 6 months.", tone: "teal" },
           p: ["Good news for the return trip: a dog flying home to the US from Portugal is on the simplest CDC path, typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement.", "For the wider picture, including how Portugal compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."]
         }
       ],

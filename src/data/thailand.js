@@ -161,6 +161,12 @@ export default {
   spokes: [
     {
       slug: "tdac",
+      glance: [
+        { k: "Visa", v: "None, 60 days visa-free" },
+        { k: "TDAC", v: "Free, file online within 72 hours" },
+        { k: "Where", v: "Official tdac.immigration.go.th" },
+        { k: "Watch for", v: "Paid lookalike sites" }
+      ],
       live: true,
       topic: "visas",
       title: "Do I need the Thailand Digital Arrival Card (TDAC)? (2026) | True Trip Costs",
@@ -179,6 +185,8 @@ export default {
       sections: [
         {
           h: "What it is, and what it is not",
+          icon: "receipt",
+          key: { fig: "Not a visa", tag: "Replaced the TM6", text: "The TDAC replaced the paper TM6 arrival card. It is a short online declaration of who you are and where you are staying, required for almost every foreign arrival by air, land or sea.", tone: "teal" },
           p: [
             "The TDAC replaced the <b>paper TM6</b> arrival card Thailand used for years. It is a short online declaration of who you are and where you are staying, and <b>almost every foreign traveler needs one for every entry</b>, tourists and long-stay visa holders alike. The only people who skip it are those staying entirely in an airport's international transit area without clearing immigration.",
             "It is <b>not a visa and not an entry permit</b>. For US citizens, Thailand grants a <b>60-day visa exemption</b> on arrival for tourism, free, with no advance visa. The TDAC is simply the arrival form you file before you land, and airlines check for it at boarding."
@@ -186,6 +194,8 @@ export default {
         },
         {
           h: "How to file it, step by step",
+          icon: "qr",
+          key: { fig: "Free", tag: "About ten minutes", text: "File free at the official site within 72 hours before arrival: your details, passport, flight and first night address. Do it on your phone, no app needed.", tone: "teal" },
           p: [
             "It is free and takes about ten minutes."
           ],
@@ -198,6 +208,8 @@ export default {
         },
         {
           h: "It is free, so do not pay for it",
+          icon: "alert",
+          key: { tag: "Skip the lookalikes", text: "Because the TDAC is mandatory and free, lookalike sites rank in search and charge a fee to file the same government form. Use only tdac.immigration.go.th.", tone: "amber" },
           p: [
             "This is the trap. Because the TDAC is <b>mandatory and free</b>, a crowd of lookalike sites rank in search and charge a service fee to file the same government form for you. <b>The Thai Immigration Bureau does not charge for the TDAC.</b> If a site asks for a payment, it is not the official one. Use only tdac.immigration.go.th.",
             "One heads-up for later: Thailand has been testing a new arrival app (THIM), expected around late 2026. Until it officially replaces the website, the official website above is the way to file."
@@ -205,6 +217,8 @@ export default {
         },
         {
           h: "How long you can stay, and one change to watch",
+          icon: "calendar",
+          key: { fig: "60 days", tag: "Visa-free stay", text: "US citizens get 60 days visa-free for tourism, extendable once by 30 days at a Thai immigration office for 1,900 baht, up to 90 days total.", tone: "teal" },
           p: [
             "US citizens get <b>60 days</b> visa-free for tourism, and you can extend once by <b>30 days</b> at a Thai immigration office for <b>฿1,900</b>, for up to 90 days total. You will need a passport valid at least <b>6 months</b> beyond entry, and immigration may ask to see an onward ticket.",
             "Worth knowing before you count on the full 60: in <b>May 2026 the Thai cabinet approved cutting the visa exemption back to 30 days</b>, but as of mid-2026 that had <b>not yet been published in the Royal Gazette</b>, so the 60-day rule was still in force. Because this is exactly the kind of thing that changes quietly, confirm the current limit on the official page before you book a long trip.",
@@ -228,6 +242,12 @@ export default {
     },
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Thai baht (THB)" },
+        { k: "Cards", v: "Hotels, malls, supermarkets" },
+        { k: "Cash for", v: "Street food, markets, taxis, temples" },
+        { k: "ATM quirk", v: "A flat fee per withdrawal" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in Thailand, or can I use cards? (2026) | True Trip Costs",
@@ -240,6 +260,8 @@ export default {
       sections: [
         {
           h: "Cash still rules the best parts of Thailand",
+          icon: "baht",
+          key: { fig: "Cash", tag: "Where it counts", text: "Thailand is modernising, but street food, night markets, taxis, tuk-tuks and temple entry are still cash. Cards cover hotels, malls, chains and supermarkets.", tone: "teal" },
           p: [
             "Thailand is modernising fast, but it is <b>still a cash-first country</b> where it matters most to travelers: <b>street food, night markets, taxis and tuk-tuks, temple entry and small shops are cash-only</b> or strongly prefer it. Cards, Visa and Mastercard, are reliable at <b>hotels, shopping malls, chain restaurants, supermarkets and tour operators</b>, with Amex accepted less often. Contactless is spreading in Bangkok but assume nothing outside the cities.",
             "Thailand's own QR system, <b>PromptPay</b>, is what locals scan for everything, but it needs a Thai bank account, so <b>tourists cannot use it</b>. You will pay cash or card while everyone around you taps a phone."
@@ -247,6 +269,8 @@ export default {
         },
         {
           h: "The flat ATM fee, and how to beat it",
+          icon: "atm",
+          key: { tag: "One fee per withdrawal", text: "Every Thai bank ATM charges a flat fee per foreign-card withdrawal, no matter the amount. So take out a large sum at once rather than several small withdrawals.", tone: "amber" },
           p: [
             "This is the Thailand money quirk to plan around. Every Thai bank ATM charges a <b>flat fee per foreign-card withdrawal</b>, regardless of how much you take out. For years it was <b>220 baht</b>; in 2026 many machines now show <b>250 baht for Visa and up to 350 for Mastercard</b>, and that is <b>on top of</b> your home bank's fees. Because it is flat, the fix is simple: <b>withdraw the maximum (around 20,000 to 30,000 baht) as rarely as you can</b>, not small amounts often.",
             "Two more habits: always <b>decline the ATM's offer to charge you in dollars</b> and choose baht (the machine's conversion is far worse), and use <b>ATMs attached to a bank branch</b> during the day rather than standalone machines, so if one swallows your card you can walk in and retrieve it."
@@ -254,6 +278,8 @@ export default {
         },
         {
           h: "The cheaper route: exchange cash at a city booth",
+          icon: "usd",
+          key: { fig: "Cash booth", tag: "Often beats the ATM", text: "Because of that flat fee, bringing clean US dollar notes and exchanging them at a city exchange booth often beats the ATM. Booth rates in town are usually good.", tone: "teal" },
           p: [
             "Here is the trick experienced visitors use. Because of that flat ATM fee, <b>bringing clean US dollar notes and exchanging them at a city exchange booth</b> often beats the ATM, and it beats airport and hotel rates by a wide margin. The well-known chains are <b>SuperRich, Vasu and K79</b>, with rates you can check online before you go. Change only a little at the airport for your taxi and SIM, then the bulk in the city.",
             "One practical note on notes: ATMs tend to spit out <b>1,000 baht bills</b>, which street vendors and taxis struggle to break. Withdraw an odd amount (say 19,900 rather than 20,000) to force out smaller notes, and keep a stack of 20s, 50s and 100s for daily spending."
@@ -261,6 +287,8 @@ export default {
         },
         {
           h: "Tipping, and the wrap",
+          icon: "tip",
+          key: { fig: "Round up", tag: "Not expected", text: "Tipping is not traditionally expected. Round up a taxi fare or leave small change, and note some restaurants add a 10% service charge to the bill.", tone: "teal" },
           p: [
             "Tipping is <b>not traditionally expected</b> in Thailand, though rounding up a taxi fare or leaving small change is appreciated, and smarter restaurants may add a <b>10% service charge</b> to the bill. Do not feel obliged beyond that.",
             "For the fuller money picture, what things cost and how to carry it, see the <a href=\"/thailand\">Thailand money guide</a>."
@@ -283,6 +311,12 @@ export default {
     },
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Best app", v: "Grab (also Bolt)" },
+        { k: "Taxis", v: "Metered, insist on the meter" },
+        { k: "Meter refusal", v: "Quotes 2 to 4x, walk away" },
+        { k: "Airport", v: "Use the official taxi rank" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -301,6 +335,8 @@ export default {
       sections: [
         {
           h: "The meter, and the broken-meter flat rate",
+          icon: "baht",
+          key: { tag: "Insist on the meter", text: "By law Bangkok taxis must run the meter, and a metered ride is genuinely cheap. Some drivers refuse and quote a flat price two to four times higher. Say meter please, and if they will not, take the next cab.", tone: "amber" },
           p: [
             "By law, Bangkok taxis must run the meter, and a metered ride across the city is genuinely cheap. The common problem is a driver, often parked outside a mall, market or tourist sight, who refuses to switch it on and instead quotes a flat fare that runs <b>two to four times</b> the metered price. This is not dangerous, it is just overpaying. The clean response is to open the door, say <b>meter</b>, and if he declines, close it and wave down the next cab, of which there are always many.",
             "The other well-worn trick is the <b>tuk-tuk</b> that offers a suspiciously cheap tour, then steers you to a gem shop or tailor where the driver earns a commission and you lose an afternoon. Enjoy a tuk-tuk for a short, fun hop with the price agreed first, but treat any unusually cheap all-day offer as the setup it usually is. For getting somewhere specific, a metered taxi or an app is both cheaper and simpler."
@@ -308,6 +344,8 @@ export default {
         },
         {
           h: "Which app to install: Grab and Bolt",
+          icon: "phoneok",
+          key: { fig: "Grab", tag: "No meter debate", text: "Grab is the dominant ride app in Thailand. It shows a fixed price up front, so the meter question never comes up, and it books both cars and licensed taxis. Bolt also works.", tone: "teal" },
           p: [
             "<b>Grab</b> is the dominant ride app in Thailand and the one to have. It shows a fixed price up front, so the meter question never comes up, and it can book both cars and licensed taxis. <b>Bolt</b> also operates in Bangkok and is often a little cheaper, so many travelers keep both and compare. If you have used Grab elsewhere in Southeast Asia, it is the same app and login.",
             "Using an app is the single easiest way to avoid every meter argument, because the fare is agreed before the driver arrives and the route is tracked on your phone. It is especially worth it late at night, from nightlife areas, or any time your Thai is not up to negotiating. Cash is still widely accepted in the apps, and you can also link a card."
@@ -315,6 +353,8 @@ export default {
         },
         {
           h: "The airport rank, done right",
+          icon: "plane",
+          key: { tag: "Ignore the touts", text: "At Suvarnabhumi, people approach offering a taxi or limousine, sometimes waving a flat-fare sheet. Walk past them to the official public taxi rank downstairs and use the meter.", tone: "amber" },
           p: [
             "Suvarnabhumi is where the sharpest trick lives. As you come through, people will approach you offering a <b>taxi</b> or <b>limousine</b>, sometimes waving a <b>printed sheet of flat fares</b>. Those drivers are not the official rank, and the printed price lists are exactly what the airport warns against, so walk past them and go down to <b>Level 1</b>."
           ],
@@ -328,6 +368,8 @@ export default {
         },
         {
           h: "Fares, paying and tipping",
+          icon: "tip",
+          key: { fig: "Cheap", tag: "Carry small baht", text: "Metered city fares are low, and Grab or Bolt prices are only a little higher for the convenience. In a street taxi carry small baht notes, since drivers rarely have change.", tone: "teal" },
           p: [
             "Metered city fares are low, and the fixed prices in Grab or Bolt are usually only a little higher for the convenience. In a street taxi, carry small baht notes, because drivers often cannot break a large bill, and watch that the meter is on from the start. The 50 baht airport surcharge and any expressway tolls are legitimate additions on an airport run, so those are not the scam; a refusal to use the meter at all is.",
             "Tipping is not expected, though rounding the fare up to the nearest 10 or 20 baht is common and appreciated. Don Mueang, the budget-airline airport, works the same way, with its own public-taxi counter, so apply the same rule there. For the wider money picture, including cash versus card, see the <a href=\"/thailand\">Thailand money guide</a>."
@@ -351,6 +393,12 @@ export default {
     },
     {
       slug: "money-scams",
+      glance: [
+        { k: "Costliest", v: "The gem resale scam" },
+        { k: "Classic", v: "The closed-temple tuk-tuk tour" },
+        { k: "Taxis", v: "Meter refusal, insist on it" },
+        { k: "Beaches", v: "Jet-ski damage shakedown" }
+      ],
       live: true,
       topic: "scams",
       title: "Common money scams in Thailand, and what they cost you (2026) | True Trip Costs",
@@ -363,6 +411,8 @@ export default {
       sections: [
         {
           h: "The closed-temple tuk-tuk tour",
+          icon: "taxi",
+          key: { fig: "It is open", tag: "The gateway scam", text: "Near the Grand Palace or Wat Pho, someone says it is closed today and offers a cheap tuk-tuk tour, which funnels you to gem and tailor shops for commission. It is open, keep walking.", tone: "teal" },
           p: [
             "This is the signature Bangkok scam. As you walk toward the <b>Grand Palace</b> or Wat Pho, a friendly local or a tuk-tuk driver tells you it is <b>closed today</b> for a ceremony, cleaning or holiday, and offers a cheap tuk-tuk (sometimes <b>20 baht</b>) to a lucky Buddha or a better temple instead. The ride routes you to <b>gem shops and tailors</b> that pay the driver a commission, where you are pressured to buy overpriced goods. The truth: the <b>Grand Palace is open every day, roughly 8:30 to 15:30</b>, and almost never closed.",
             "The fix is simple: <b>ignore anyone who approaches you</b> outside the site, walk to the <b>official entrance</b>, and check hours on the palace's website or Google Maps; if it were truly closed, the guards at the gate would tell you. A cheap tuk-tuk tour offered by a stranger is a shopping trip, not a favor. Enjoy a tuk-tuk for a <b>short, price-agreed hop</b>, but for real journeys use <b>Grab or the BTS Skytrain</b>."
@@ -370,6 +420,8 @@ export default {
         },
         {
           h: "The gem scam",
+          icon: "tag",
+          key: { fig: "Costliest", tag: "Never an investment", text: "Often the end of that tuk-tuk tour, the gem scam is Thailand costliest trap: worthless glass sold as wholesale gems to resell at home for a profit that never exists. Never buy gems as an investment.", tone: "amber" },
           p: [
             "Often the destination of that tuk-tuk tour, the <b>gem scam</b> is Thailand's costliest tourist trap. You are told you can buy <b>wholesale gems and resell them at home for a big profit</b>, sometimes framed as a <b>one-day government sale</b>. The stones are <b>glass or synthetic and essentially worthless</b>, and there is no resale market. The <b>Thai government and royal family do not own or sponsor any gem or jewelry shop</b>, so any such claim is false.",
             "The rule: <b>do not buy gems, jewelry or tailoring on a stranger's recommendation</b>, and never treat a holiday purchase as an investment. If you genuinely want to shop, compare prices across several established shops and ignore anyone offering insider access or a limited-time deal."
@@ -377,6 +429,8 @@ export default {
         },
         {
           h: "Taxis, and getting from the airport",
+          icon: "baht",
+          key: { fig: "Meter", tag: "Insist on it", text: "The everyday one is a driver who refuses the meter or says it is broken and quotes an inflated flat fare, worst at the airport and tourist spots. Insist on the meter or use Grab.", tone: "teal" },
           p: [
             "The everyday one is a taxi driver who <b>refuses the meter</b> or claims it is broken and quotes an inflated flat fare, especially at the airport and tourist spots. <b>Insist on the meter</b> (meter, please), or simply get out and find another; better, use <b>Grab, Bolt or inDrive</b> for a price agreed up front. At the airport, join the <b>official metered taxi queue</b> and ignore anyone calling hello, taxi in the hall.",
             "Carry <b>small notes</b> so a driver cannot claim to have no change, and be aware of the rare <b>note-swap</b>, where a driver takes your 1,000 baht note, hands it back saying it is fake, and has actually swapped it. At the <b>ATM and card machine</b>, choose <b>baht, not your home currency</b>, since the convert-for-you option carries a poor built-in rate, and use bank ATMs. The full transport picture is in the <a href=\"/thailand/taxis-and-apps\">Thailand taxis and apps guide</a>."
@@ -384,6 +438,8 @@ export default {
         },
         {
           h: "Jet skis, motorbikes and bar tabs",
+          icon: "wheel",
+          key: { tag: "Photograph it first", text: "At Phuket, Pattaya and Koh Samui, the jet-ski or motorbike scam is well documented: on return the operator points to pre-existing damage and demands a large cash sum. Photograph and film the vehicle before you take it.", tone: "amber" },
           p: [
             "At the beaches (<b>Phuket, Pattaya, Koh Samui</b>), the <b>jet-ski damage scam</b> is well documented: you return the craft and the operator points to <b>pre-existing damage</b> and demands <b>10,000 to 30,000 baht</b>, sometimes holding your passport. The same happens with <b>motorbike rentals</b> on the islands and in Pai and Chiang Mai. The fix: take a <b>slow walk-around video</b> of the jet ski or bike before you ride, rent only through a <b>reputable operator or your hotel</b>, and <b>never leave your passport as a deposit</b>, only a copy.",
             "In nightlife strips (Bangkok's Patpong, Pattaya's Walking Street), the <b>bar-tab scam</b> lures you in with cheap drinks and lands a <b>massively inflated bill</b>, with staff blocking the door until you pay. <b>Check drink prices before ordering</b>, avoid places with pushy touts outside, and if a bill is wildly wrong you can call the <b>Tourist Police on 1155</b> rather than pay under pressure."
@@ -391,6 +447,8 @@ export default {
         },
         {
           h: "What this means for your money",
+          icon: "coins",
+          key: { fig: "Two rules", tag: "How to avoid it", text: "Most of this costs a little. The two that cost real money, the gem scam and the jet-ski or motorbike shakedown, are avoided by two rules: never buy an investment you cannot verify, and film any rental before you touch it.", tone: "teal" },
           p: [
             "Most of this costs <b>a little</b>, and the few that can cost real money, the <b>gem scam</b> and the <b>jet-ski or motorbike shakedown</b>, are avoided by two rules: <b>never buy an investment on a stranger's tip</b>, and <b>video any rental and keep your passport</b>. For daily life, <b>ignore unsolicited help</b> at big sites, use <b>Grab or the meter</b>, and <b>pay in baht</b>. The reassuring truth is that these are well-worn patterns, so once you know them you sidestep nearly all of it.",
             "None of it should shape a trip to somewhere this rewarding. For getting around, see the <a href=\"/thailand/taxis-and-apps\">Thailand taxis and apps guide</a>, for paying day to day the <a href=\"/thailand/cash-or-card\">Thailand cash and cards guide</a>, and for the wider picture the <a href=\"/thailand\">Thailand cost guide</a>."
