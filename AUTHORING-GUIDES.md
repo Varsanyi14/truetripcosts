@@ -93,6 +93,70 @@ Rules, because this sends real email:
 
 Testing safely: set the GitHub repo variable `ALERTS_DRY_RUN` to `true` and the Action creates a draft in Buttondown instead of sending, so you can review it. Set it back to `false`, or delete it, to go live.
 
+## Spoke scannability fields (glance, key, icon)
+
+Spokes are long: the median is about 6,800 characters across 3 to 5 sections. Three optional fields give the reader somewhere for the eye to land, and every new spoke should carry them. A spoke without them still renders correctly, it just reads as a wall of prose next to the ones that have them, so treat these as part of the standard spoke shape, not as an extra.
+
+All three are authored by hand. They are editorial judgment about which fact matters, which is exactly why they are worth writing: nothing derived automatically from the prose comes close.
+
+### `glance`: the at-a-glance grid
+
+A short array of key and value pairs, rendered as a small grid under the lede, before the short answer. Four cells is the sweet spot. Keep values terse, this is the five-second summary, not a sentence.
+
+```js
+glance: [
+  { k: "Currency", v: "Japanese yen (¥ JPY)" },
+  { k: "Cards", v: "Fine across cities" },
+  { k: "Still cash", v: "Shrines, small shops, vending" },
+  { k: "Get yen at", v: "7-Eleven, Japan Post" }
+],
+```
+
+Keep `glance` values as text. Never bake them into an image: they are indexable content and they need to stay that way.
+
+### `key`: the pull-out callout inside a section
+
+One per section, placed on the section object. It renders as a callout after that section's first paragraph, so the reader gets the section's single most important fact without reading the whole thing.
+
+```js
+{
+  h: "Getting yen: only some ATMs take foreign cards",
+  icon: "atm",
+  key: {
+    fig: "58%",                 // optional: a number, short word or amount. Omit for a warning icon.
+    tag: "Cashless in 2025",    // a short label above the text
+    text: "But shrines, small shops and vending machines are still cash. Big things on a card, the small old-fashioned things in cash.",
+    tone: "teal"                // "teal" for a key fact, "amber" for a watch-out
+  },
+  p: [ ... ]
+}
+```
+
+Rules for `key`:
+
+- **`text` is a real sentence or two, not a label.** It is indexable prose and it is what makes the callout useful. "Most bank ATMs reject foreign cards. Pull yen at a 7-Eleven or Japan Post ATM instead" earns its place; "ATM warning" does not.
+- **`tone` carries meaning, not decoration.** Use `teal` for the key fact of the section and `amber` for a genuine watch-out or trap. If everything is amber, nothing is.
+- **`fig` is optional.** Use it when there is a crisp number or word to anchor on (`"58%"`, `"180 days"`, `"Suica"`, `"Yen"`). Leave it out and the callout shows a warning symbol instead, which suits an amber caution.
+- **Do not repeat the paragraph.** The callout should pull the fact forward, not restate the sentence next to it.
+
+### `icon`: the section symbol
+
+An optional icon name on a section, rendered beside the heading. Use a name that already exists in `src/components/Symbol.astro`; an unknown name renders nothing. Check the component for what is available rather than inventing a name.
+
+```js
+{ h: "The real picture: cashless, but not cash-free", icon: "qr", ... }
+```
+
+### What not to do
+
+- Do not delete or shorten prose to make room for these. They are additive. The full `answer` and all section paragraphs stay exactly as they are, this is a scannability layer on top, not a replacement, and cutting body copy would cost search traffic for no reader benefit.
+- Do not add `glance` cells or `key` callouts that state something the reader already knows from the heading.
+- Do not use `key` more than once per section.
+
+### The short answer, and `ANSWER_MODE`
+
+`src/components/Spoke.astro` has a constant `ANSWER_MODE`, set to `'A'`. Mode A renders the `answer` field as a single prose paragraph, which is the safe default. Mode B additionally pulls the answer's `<b>` phrases into a bullet list above the prose, with a guard that falls back to prose whenever any bold looks like a mid-sentence fragment. Leave it on `'A'` unless you are deliberately testing B, and if you switch it, check a pets spoke and a scams spoke, not just a cash spoke, because their bolds are shaped differently.
+
 ## House rules
 
 - No em dashes and no en dashes anywhere, in copy or in code. Hyphens, commas and colons only.
