@@ -177,6 +177,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Euro (EUR), since 2023" },
+        { k: "Was", v: "The kuna, now retired" },
+        { k: "Cards", v: "Card-friendly, contactless common" },
+        { k: "On a card", v: "Choose euros, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Croatia, or can I use cards? (2026) | True Trip Costs",
+      description: "A little. Croatia switched to the euro in 2023, so ignore older kuna advice. It is card-friendly, but carry some euros for small spots and islands. Choose euros not dollars. Checked July 2026.",
+      h1: "Do I need cash in Croatia, or can I use cards?",
+      lede: "Short answer: a card for most things, a little euro cash for the rest. The big update: Croatia switched to the euro in 2023, so any older advice about the kuna is out of date. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cards, mostly, with a little cash. The big change: Croatia <b>adopted the euro on 1 January 2023</b>, retiring the <b>kuna</b>, so any older guidance quoting kuna prices is <b>out of date</b>, it is <b>euros now</b>. Croatia is <b>card-friendly</b>: <b>contactless</b> is common in cities and along the coast, and Apple Pay and Google Pay are widely taken. Keep <b>some euro cash</b> for small shops, markets, islands and rural spots. Choose <b>euros, not dollars</b> on any card or ATM.",
+      sections: [
+        {
+          h: "It is euros now, not kuna",
+          icon: "phoneok",
+          key: { fig: "Euro since 2023", tag: "The kuna is gone", text: "Croatia adopted the euro on 1 January 2023, so ignore older kuna advice. It is card-friendly, with contactless common in cities and along the coast.", tone: "teal" },
+          p: [
+            "The headline for returning visitors: Croatia <b>joined the euro on 1 January 2023</b> (and Schengen the same day), retiring the old <b>kuna</b>. Any guidebook or blog still quoting <b>kuna</b> prices is <b>out of date</b>; the currency is now the <b>euro</b>.",
+            "Croatia is <b>card-friendly</b>. <b>Contactless</b>, Apple Pay and Google Pay are widely accepted in cities and along the tourist coast, and <b>Visa and Mastercard</b> work in most places. Keep <b>some euro cash</b> for small shops, <b>markets, islands, ferries and rural spots</b>, which lean more on cash."
+          ]
+        },
+        {
+          h: "Choose euros, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose euros", text: "When a terminal or ATM offers dollars or euros, pick euros. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse than your bank's.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars or euros, always choose euros</b>. Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use an ATM (a <b>bankomat</b>) attached to a <b>real bank</b>, such as Zagrebacka banka or Privredna banka Zagreb, rather than a standalone <b>Euronet</b> kiosk, which charges high fees and pushes the dollar conversion."
+          ]
+        },
+        {
+          h: "How much cash, and paying",
+          icon: "euro",
+          key: { fig: "A little", tag: "For islands and markets", text: "A card covers most spending. Keep a little euro cash for markets, islands, ferries and rural spots, and use a debit card at the ATM.", tone: "teal" },
+          p: [
+            "A <b>card covers most spending</b>, especially in Dubrovnik, Split and Zagreb. Keep <b>a little euro cash</b> for <b>markets, islands, small ferries and rural areas</b>, where cards are less certain. Use a <b>debit card</b> at the ATM to avoid cash-advance fees.",
+            "For the wider picture, see the <a href='/croatia'>Croatia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Croatia?", a: "A little. Croatia is card-friendly, and contactless is common in cities and along the coast. Keep some euro cash for markets, islands, ferries and rural spots, but a card covers most spending." },
+        { q: "Does Croatia use the euro or the kuna?", a: "The euro. Croatia adopted the euro on 1 January 2023, retiring the kuna, so any older advice quoting kuna prices is out of date. The currency is now the euro." },
+        { q: "Should I pay in euros or dollars in Croatia?", a: "Always euros. If a card machine or ATM offers dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Is Croatia still on the kuna?", a: "No. Croatia switched from the kuna to the euro on 1 January 2023. Prices, cards and cash are all in euros now, so ignore older kuna figures." }
+      ],
+      sources: {
+        links: [
+          { label: "European Central Bank: the official euro reference exchange rates", url: "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html", type: "gov" },
+          { label: "US State Department: Croatia country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Croatia.html", type: "gov" }
+        ],
+        judgment: "Croatia's euro adoption on 1 January 2023 is a fixed fact, and much older travel advice still references the kuna, so this update matters. The euro rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "Process", v: "Shared EU entry" },

@@ -174,6 +174,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Hong Kong dollar (HKD)" },
+        { k: "The key", v: "Get an Octopus card" },
+        { k: "Cards", v: "Widely taken, some cash for markets" },
+        { k: "On a card", v: "Choose HKD, not US dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Hong Kong, or can I use cards? (2026) | True Trip Costs",
+      description: "A little, plus an Octopus card. Hong Kong is card-friendly, but the Octopus card runs transit and many shops. Keep some HK dollars for markets and street food. Choose HK dollars not US dollars. Checked July 2026.",
+      h1: "Do I need cash in Hong Kong, or can I use cards?",
+      lede: "Short answer: a card for most things, an Octopus card for the rest, and a little cash for markets. The Octopus card is the real key to Hong Kong. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cards, plus an Octopus card. Hong Kong is <b>card-friendly</b>, but the real key is the <b>Octopus card</b>, a tap card that runs the city: transit, convenience stores, many shops and small eateries. <b>Visa and Mastercard</b> work at most shops and restaurants, and contactless is common. Keep <b>some HK dollars</b> for <b>markets, street food (dai pai dong) and small vendors</b>. The currency is the <b>Hong Kong dollar (HKD)</b>. Choose <b>HK dollars, not US dollars</b> on any card or ATM.",
+      sections: [
+        {
+          h: "Get an Octopus card: it runs the city",
+          icon: "ic",
+          key: { fig: "Octopus", tag: "Taps for almost everything", text: "The Octopus card is the key to Hong Kong: transit, convenience stores, many shops and small eateries. Get one on arrival and top it up.", tone: "teal" },
+          p: [
+            "The single most useful thing in Hong Kong is an <b>Octopus card</b>, a rechargeable tap card that goes far beyond transit. It pays for the <b>MTR, buses and trams</b>, and also works at <b>convenience stores, many shops, fast food and small eateries</b>. Get one at the airport or any MTR station and top it up with cash or card.",
+            "You can also add Octopus to a <b>phone wallet</b>, and locals use <b>AlipayHK and WeChat Pay</b>, but the physical Octopus is the simplest for a visitor."
+          ]
+        },
+        {
+          h: "Cards, and choosing HK dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose HKD", text: "When a terminal or ATM offers US or HK dollars, pick HK dollars. US dollars trigger dynamic currency conversion at a rate about 3 to 8% worse than your bank's.", tone: "amber" },
+          p: [
+            "<b>Visa and Mastercard</b> are taken at most shops, malls and restaurants, and <b>contactless</b> is common. When a card terminal or ATM asks whether to charge in <b>US or HK dollars, always choose HK dollars</b>. US dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use an ATM attached to a <b>real bank</b>, such as HSBC, Hang Seng or Bank of China (Hong Kong), which are everywhere. Use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "Cash for markets and street food",
+          icon: "hkd",
+          key: { fig: "Some HK$", tag: "For markets and stalls", text: "Keep some HK dollars for street markets, dai pai dong street food and small vendors, which take cash or Octopus.", tone: "teal" },
+          p: [
+            "Keep <b>some HK dollars</b> for the cash corners: <b>street markets</b> (such as the ones in Mong Kok), <b>dai pai dong</b> open-air food stalls, and small vendors, many of which take <b>cash or Octopus</b> rather than cards.",
+            "For the wider picture, see the <a href='/hong-kong'>Hong Kong money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Hong Kong?", a: "Some. Hong Kong is card-friendly and an Octopus card covers transit and many shops and eateries, but keep some HK dollars for street markets, dai pai dong food stalls and small vendors." },
+        { q: "What is an Octopus card in Hong Kong?", a: "A rechargeable tap card that runs the city: the MTR, buses and trams, plus convenience stores, many shops, fast food and small eateries. Get one at the airport or any MTR station and top it up with cash or card." },
+        { q: "Should I pay in HK dollars or US dollars in Hong Kong?", a: "Always HK dollars. If a card machine or ATM offers US dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Are cards widely accepted in Hong Kong?", a: "Yes, Visa and Mastercard work at most shops, malls and restaurants, and contactless is common. Street markets and dai pai dong food stalls lean on cash or Octopus, so carry some HK dollars for those." }
+      ],
+      sources: {
+        links: [
+          { label: "Hong Kong Monetary Authority: official monetary and currency information", url: "https://www.hkma.gov.hk", type: "gov" },
+          { label: "US State Department: Hong Kong information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/HongKong.html", type: "gov" }
+        ],
+        judgment: "Hong Kong is card-friendly, and the Octopus card is genuinely central to daily spending, so this is our practical read. The HK dollar is closely managed against the US dollar, but the firm rule is still to decline US-dollar conversion on your card. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "Classed", v: "Group II (no titer, no quarantine)" },

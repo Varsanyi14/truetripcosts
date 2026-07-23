@@ -176,6 +176,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "New Taiwan dollar (TWD)" },
+        { k: "Cards", v: "Hotels and chains yes, night markets no" },
+        { k: "Carry", v: "NT dollars, it is cash-reliant" },
+        { k: "Transit", v: "Get an EasyCard" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Taiwan, or can I use cards? (2026) | True Trip Costs",
+      description: "Yes, more than you expect. Cards work at hotels, chains and convenience stores, but night markets and small eateries are cash. Carry NT dollars, get an EasyCard, and choose NT dollars not US dollars. Checked July 2026.",
+      h1: "Do I need cash in Taiwan, or can I use cards?",
+      lede: "Short answer: carry cash. Taiwan is more cash-reliant than most visitors expect for a high-tech place, so keep NT dollars and pick up an EasyCard for transit. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Carry cash. Taiwan is <b>more cash-reliant than you might expect</b>: <b>cards</b> work at hotels, department stores, chain restaurants and convenience stores, but <b>night markets, small eateries, local shops and temples are largely cash</b>. The currency is the <b>New Taiwan dollar (TWD or NT dollar)</b>. Get an <b>EasyCard</b> for transit and convenience stores. Keep <b>NT dollars</b> on you, and choose <b>NT dollars, not US dollars</b> on any card or ATM.",
+      sections: [
+        {
+          h: "Cash-reliant, so carry NT dollars",
+          icon: "cash",
+          key: { fig: "Carry NT$", tag: "Night markets are cash", text: "Cards work at hotels, chains and convenience stores, but night markets, small eateries and local shops are largely cash. Carry NT dollars, and get an EasyCard for transit.", tone: "amber" },
+          p: [
+            "Taiwan is <b>more cash-reliant than most visitors expect</b> for a high-tech economy. <b>Cards</b> (Visa and Mastercard) work at <b>hotels, department stores, chain restaurants and the ubiquitous convenience stores</b> (7-Eleven, FamilyMart), and contactless is growing. But <b>night markets, small local eateries, family shops and temples</b> are <b>largely cash</b>.",
+            "So <b>carry NT dollars</b>. For transit and small purchases, get an <b>EasyCard</b> (a tap card), which works on the metro, buses and in convenience stores, and saves fumbling for coins."
+          ]
+        },
+        {
+          h: "Choose NT dollars, not US dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose NT$", text: "When a terminal or ATM offers US or NT dollars, pick NT dollars. US dollars trigger dynamic currency conversion at a rate about 3 to 8% worse than your bank's.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>US or NT dollars, always choose NT dollars</b>. US dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, the most reliable ATMs for foreign cards are at <b>convenience stores</b> and post offices; some local bank ATMs reject foreign cards, so a <b>7-Eleven or post office ATM</b> is a safe bet. Use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "How much cash, and getting it",
+          icon: "twd",
+          key: { fig: "Enough for markets", tag: "Cards for big spends", text: "Use cards for hotels and larger purchases, and keep enough NT dollars for night markets, small eateries and temples.", tone: "teal" },
+          p: [
+            "Split it: use <b>cards for hotels and larger purchases</b>, and keep <b>enough NT dollars</b> for the day's night markets, small eateries and temples. An <b>EasyCard</b> covers transit and convenience-store snacks, so you rarely need coins.",
+            "For the wider picture, see the <a href='/taiwan'>Taiwan money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Taiwan?", a: "Yes, more than you might expect. Cards work at hotels, chains and convenience stores, but night markets, small eateries, local shops and temples are largely cash. Carry NT dollars, and get an EasyCard for transit." },
+        { q: "Should I pay in NT dollars or US dollars in Taiwan?", a: "Always NT dollars. If a card machine or ATM offers US dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "What is an EasyCard in Taiwan?", a: "A rechargeable tap card for transit and small purchases. It works on the metro and buses and in convenience stores, so it saves fumbling for coins. Top it up at stations or convenience stores." },
+        { q: "Which ATMs work with foreign cards in Taiwan?", a: "Convenience-store ATMs (such as at 7-Eleven) and post office ATMs are the most reliable for foreign cards. Some local bank ATMs reject them, so those are a safer bet. Always choose to be charged in NT dollars." }
+      ],
+      sources: {
+        links: [
+          { label: "Central Bank of the Republic of China (Taiwan): official exchange rate information", url: "https://www.cbc.gov.tw/en", type: "gov" },
+          { label: "US State Department: Taiwan country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Taiwan.html", type: "gov" }
+        ],
+        judgment: "Taiwan is genuinely more cash-reliant than its high-tech image suggests, especially at night markets and small eateries, so this is our practical read. The NT dollar rate moves, and the firm rule is to decline US-dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "Middle tier", v: "More than EU, less than Australia" },

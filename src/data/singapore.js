@@ -175,6 +175,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Singapore dollar (SGD)" },
+        { k: "Cards", v: "Very card-friendly, contactless everywhere" },
+        { k: "Cash for", v: "Hawker stalls and small vendors" },
+        { k: "On a card", v: "Choose SGD, not US dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Singapore, or can I use cards? (2026) | True Trip Costs",
+      description: "Barely. Singapore is very card-friendly and contactless is everywhere. Keep a little cash for hawker stalls, though many now take cashless too. Choose Singapore dollars, not US dollars. Checked July 2026.",
+      h1: "Do I need cash in Singapore, or can I use cards?",
+      lede: "Short answer: a card for almost everything, a little cash for hawker stalls. Singapore is very card-friendly, and even many hawker centres now take cashless. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cards, almost entirely. Singapore is <b>very card-friendly</b>: <b>contactless</b> is everywhere, and Apple Pay and Google Pay are widely taken. The currency is the <b>Singapore dollar (SGD)</b>. Keep <b>a little cash</b> for <b>hawker centres</b>, small stalls and the odd small vendor, though even many hawker stalls now take <b>cashless</b> payment. Choose <b>Singapore dollars, not US dollars</b> on any card or ATM.",
+      sections: [
+        {
+          h: "Very card-friendly, a little cash for hawkers",
+          icon: "phoneok",
+          key: { fig: "Tap", tag: "Contactless everywhere", text: "Contactless is everywhere and cards work almost universally. Keep a little cash for hawker stalls and small vendors, though many hawkers now take cashless too.", tone: "teal" },
+          p: [
+            "Singapore is <b>very card-friendly</b>. <b>Contactless</b> cards, Apple Pay and Google Pay are accepted almost everywhere, and <b>Visa and Mastercard</b> work across shops, malls and restaurants. Locals also use <b>PayNow and PayLah</b>, which you do not need as a visitor.",
+            "Keep <b>a little cash</b> in Singapore dollars for <b>hawker centres</b>, food courts, small stalls and the occasional small vendor. That said, even <b>many hawker stalls now take cashless</b> payment, so you need less cash than you might expect."
+          ]
+        },
+        {
+          h: "Choose Singapore dollars, not US dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose SGD", text: "When a terminal or ATM offers US or Singapore dollars, pick Singapore dollars. US dollars trigger dynamic currency conversion at a rate about 3 to 8% worse than your bank's.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>US or Singapore dollars, always choose Singapore dollars</b>. US dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use an ATM attached to a <b>real bank</b>, such as DBS, OCBC or UOB, which are widely available. Use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "How much cash, and paying",
+          icon: "sgd",
+          key: { fig: "A little", tag: "For food stalls", text: "A card covers almost everything. Keep a small amount of Singapore dollars for hawker centres and small vendors.", tone: "teal" },
+          p: [
+            "A <b>card covers almost everything</b> in Singapore, so carry only <b>a small amount of Singapore dollars</b> for hawker centres, food courts and small vendors. Tipping is not customary here, since a service charge is usually built in, so you do not need cash for that.",
+            "For the wider picture, see the <a href='/singapore'>Singapore money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Singapore?", a: "A little. Singapore is very card-friendly and contactless is everywhere, so a card covers almost everything. Keep a small amount of Singapore dollars for hawker centres and small stalls, though many hawkers now take cashless too." },
+        { q: "Should I pay in Singapore dollars or US dollars in Singapore?", a: "Always Singapore dollars. If a card machine or ATM offers US dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Do hawker centres in Singapore take cards?", a: "Increasingly, yes. Many hawker stalls now accept cashless payment, including contactless and local apps, but some are still cash-only, so carry a little cash in Singapore dollars just in case." },
+        { q: "Do you tip in Singapore?", a: "Not customarily. A service charge is usually built into restaurant bills, so tipping is not expected, and you do not need to set aside cash for it." }
+      ],
+      sources: {
+        links: [
+          { label: "Monetary Authority of Singapore: official exchange rate information", url: "https://www.mas.gov.sg", type: "gov" },
+          { label: "US State Department: Singapore country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Singapore.html", type: "gov" }
+        ],
+        judgment: "Singapore is strongly card-friendly, and the move of hawker stalls toward cashless is well under way, so this is our practical read. The Singapore dollar rate moves, and the firm rule is to decline US-dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "Classed", v: "Schedule II (US, from 2026)" },
