@@ -177,6 +177,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Polish zloty (PLN), not euro" },
+        { k: "Cards", v: "Card-friendly, contactless everywhere" },
+        { k: "Cheaper", v: "Than most of Western Europe" },
+        { k: "On a card", v: "Choose zloty, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Poland, or can I use cards? (2026) | True Trip Costs",
+      description: "A little. Poland is very card-friendly and contactless is everywhere, but the currency is the zloty, not the euro. It is cheaper than Western Europe. Pay in zloty and choose zloty not dollars. Checked July 2026.",
+      h1: "Do I need cash in Poland, or can I use cards?",
+      lede: "Short answer: a card for most things, a little zloty for the rest. Poland is very card-friendly, keeps the zloty rather than the euro, and is a pleasant bargain by Western European standards. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cards, almost entirely. Poland is <b>very card-friendly</b>: <b>contactless</b> is everywhere, and Apple Pay and Google Pay are widely taken. The currency is the <b>Polish zloty (PLN), not the euro</b>, even though Poland is in the EU. Keep <b>a little zloty cash</b> for small shops, markets and rural spots. Poland is also <b>cheaper than most of Western Europe</b>, which is a pleasant surprise. Some tourist spots quote or take <b>euros at a poor rate</b>, so pay in <b>zloty</b>, and choose <b>zloty, not dollars</b> on any card or ATM.",
+      sections: [
+        {
+          h: "Card-friendly, and it is zloty, not euros",
+          icon: "phoneok",
+          key: { fig: "Use zloty", tag: "Not the euro", text: "Poland is very card-friendly and contactless is everywhere, but the currency is the zloty, not the euro. Tourist spots may take euros at a poor rate, so pay in zloty.", tone: "teal" },
+          p: [
+            "Poland is <b>very card-friendly</b>. <b>Contactless</b> cards, Apple Pay and Google Pay are accepted almost everywhere, and <b>Visa and Mastercard</b> work widely. Locals also use the <b>BLIK</b> app, which you do not need as a visitor.",
+            "The currency is the <b>Polish zloty (PLN)</b>, not the euro, despite EU membership. Some <b>tourist spots</b> quote prices in or accept <b>euros</b>, but at a <b>poor rate</b>, so it is better to <b>pay in zloty</b>. Keep a little zloty cash for <b>small shops, markets and rural areas</b>."
+          ]
+        },
+        {
+          h: "Choose zloty, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose zloty", text: "When a terminal or ATM offers dollars or zloty, pick zloty. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse than your bank's.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars or zloty, always choose zloty</b>. Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time, and decline any euro option too.",
+            "For cash, use an ATM (a <b>bankomat</b>) attached to a <b>real bank</b>, such as PKO Bank Polski or mBank, rather than a standalone <b>Euronet</b> kiosk, which charges high fees and pushes the dollar conversion."
+          ]
+        },
+        {
+          h: "A cheaper country, and paying",
+          icon: "coins",
+          key: { fig: "Good value", tag: "Cheaper than the West", text: "Poland is noticeably cheaper than Western Europe. A card covers most spending; keep a little zloty for small and rural spots.", tone: "teal" },
+          p: [
+            "A nice surprise: Poland is <b>noticeably cheaper</b> than Western Europe, so meals, transport and everyday costs go further. A <b>card covers most spending</b>, and you only need a <b>little zloty</b> for small shops, markets and rural spots.",
+            "Use a <b>debit card</b> at the ATM to avoid cash-advance fees. For the wider picture, see the <a href='/poland'>Poland money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Poland?", a: "A little. Poland is very card-friendly and contactless is everywhere, so a card covers most spending. Keep some zloty for small shops, markets and rural areas." },
+        { q: "Does Poland use the euro?", a: "No. Poland uses the Polish zloty (PLN), not the euro, even though it is in the EU. Some tourist spots take euros at a poor rate, so it is better to pay in zloty." },
+        { q: "Should I pay in zloty or dollars in Poland?", a: "Always zloty. If a card machine or ATM offers dollars (or euros), decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Is Poland cheap to visit?", a: "It is noticeably cheaper than most of Western Europe, so meals, transport and everyday costs go further. A card covers most spending, with a little zloty for small and rural spots." }
+      ],
+      sources: {
+        links: [
+          { label: "Narodowy Bank Polski: official Polish zloty information", url: "https://www.nbp.pl", type: "gov" },
+          { label: "US State Department: Poland country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Poland.html", type: "gov" }
+        ],
+        judgment: "Poland is very card-friendly, and the zloty-not-euro point is fixed rather than a rate quirk. The zloty rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "Process", v: "Shared EU entry" },

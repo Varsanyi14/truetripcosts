@@ -182,6 +182,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Norwegian krone (NOK), not euro" },
+        { k: "Cards", v: "Near-total, contactless everywhere" },
+        { k: "Cash", v: "Rarely needed, often refused" },
+        { k: "On a card", v: "Choose krone, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Norway, or can I use cards? (2026) | True Trip Costs",
+      description: "Almost never. Norway is nearly cashless, contactless is everywhere, and many places take little or no cash. The currency is the krone, not the euro, and it is an expensive country. Choose krone not dollars. Checked July 2026.",
+      h1: "Do I need cash in Norway, or can I use cards?",
+      lede: "Short answer: a card for everything, and almost no cash. Norway is nearly cashless like its Nordic neighbors, uses the krone rather than the euro, and is one of Europe's most expensive countries. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cards, essentially entirely. Norway is <b>nearly cashless</b>, like Sweden and Denmark: <b>contactless</b> is everywhere, Apple Pay and Google Pay are standard, and many places take <b>little or no cash</b>. The currency is the <b>Norwegian krone (NOK), not the euro</b>. You need <b>very little cash</b>, so a working card is essential. It is also an <b>expensive</b> country, so budget higher than most of Europe. On any card or ATM, choose <b>krone, not dollars</b>.",
+      sections: [
+        {
+          h: "Nearly cashless, like its neighbors",
+          icon: "phoneok",
+          key: { fig: "Card first", tag: "Cash rarely needed", text: "Contactless is everywhere and many places take little or no cash. A working card is essential; locals use Vipps, which you do not need.", tone: "teal" },
+          p: [
+            "Norway is <b>nearly cashless</b>, much like Sweden and Denmark. <b>Contactless</b> cards, Apple Pay and Google Pay are accepted almost everywhere, and many shops, cafes and transport take <b>little or no cash</b>. Locals pay each other with the <b>Vipps</b> app, which you do not need as a visitor.",
+            "For you, a <b>working card is essential</b> and cash is close to optional. Carry a <b>contactless card</b> with a backup on a different network, and check it works on arrival, since being cash-only here is more of a problem than being card-only."
+          ]
+        },
+        {
+          h: "It is krone, not euros, so choose krone",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose krone", text: "The currency is the Norwegian krone, not the euro. When a terminal or ATM offers dollars or krone, pick krone; dollars add about 3 to 8% via dynamic conversion.", tone: "amber" },
+          p: [
+            "Norway uses the <b>Norwegian krone (NOK)</b>, not the euro, and it is not in the EU. When a card terminal or ATM asks whether to charge in <b>dollars or krone, always choose krone</b>. Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "You will rarely need cash, but if you do, use a <b>bank ATM</b> (a <b>Minibank</b>) rather than a standalone tourist kiosk, and use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "Little cash, and the cost of things",
+          icon: "coins",
+          key: { fig: "Near zero", tag: "Expensive country", text: "Most trips need almost no cash. Keep a small buffer of krone for a rare rural spot, and budget higher, since Norway is expensive.", tone: "teal" },
+          p: [
+            "Most visitors need <b>almost no cash</b> in Norway. Keep a <b>small buffer of krone</b> for a rare rural spot, but do not exchange much. Norway is also one of <b>Europe's most expensive</b> countries, so meals, transport and everyday costs run high; budget accordingly.",
+            "As in Sweden, the real risk is a <b>dead card with no backup</b>, so carry two cards on different networks. For the wider picture, see the <a href='/norway'>Norway money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Norway?", a: "Almost never. Norway is nearly cashless, and many places take little or no cash. A contactless card covers everything; keep only a small buffer of krone, if any, for rural spots." },
+        { q: "Does Norway use the euro?", a: "No. Norway uses the Norwegian krone (NOK), not the euro, and it is not in the EU. On a card or ATM, choose to be charged in krone, not dollars or euros." },
+        { q: "Should I pay in krone or dollars in Norway?", a: "Always krone. If a card machine or ATM offers dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Is Norway expensive?", a: "Yes, it is one of Europe's most expensive countries. Meals, transport and everyday costs run high, so budget accordingly. A contactless card covers almost everything, with little or no cash needed." }
+      ],
+      sources: {
+        links: [
+          { label: "Norges Bank: official Norwegian krone information", url: "https://www.norges-bank.no", type: "gov" },
+          { label: "US State Department: Norway country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Norway.html", type: "gov" }
+        ],
+        judgment: "Norway is genuinely among the most cashless countries, though a rare rural spot may still want cash, so this is our practical read. The krone rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "Process", v: "Shared EU entry (adopted)" },

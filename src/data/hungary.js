@@ -177,6 +177,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Hungarian forint (HUF), not euro" },
+        { k: "Cards", v: "Fine in Budapest, carry some forint" },
+        { k: "Big numbers", v: "Notes run into the thousands" },
+        { k: "On a card", v: "Choose forint, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Hungary, or can I use cards? (2026) | True Trip Costs",
+      description: "Some. Hungary is card-friendly in Budapest, but the currency is the forint, not the euro, with notes in the thousands. Carry some forint, pay in forint, and choose forint not dollars. Checked July 2026.",
+      h1: "Do I need cash in Hungary, or can I use cards?",
+      lede: "Short answer: cards in Budapest, some forint elsewhere. Hungary keeps the forint rather than the euro, its notes run into the thousands, and it is a bargain by Western European standards. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cards, mostly, with some cash. Hungary is <b>card-friendly in Budapest</b>: <b>contactless</b> is common, and Apple Pay and Google Pay are widely taken. The currency is the <b>Hungarian forint (HUF), not the euro</b>, and its <b>notes run into the thousands</b>, so the numbers look large. Keep <b>some forint</b> for markets, small shops and spots outside the capital. Some tourist places quote or take <b>euros at a poor rate</b>, so pay in <b>forint</b>, and choose <b>forint, not dollars</b> on any card or ATM.",
+      sections: [
+        {
+          h: "Card-friendly, and it is forint, not euros",
+          icon: "phoneok",
+          key: { fig: "Use forint", tag: "Not the euro", text: "Budapest is card-friendly and contactless is common, but the currency is the forint, not the euro. Tourist spots may take euros at a poor rate, so pay in forint.", tone: "teal" },
+          p: [
+            "Hungary is <b>card-friendly in Budapest</b>. <b>Contactless</b> cards, Apple Pay and Google Pay are widely accepted, and <b>Visa and Mastercard</b> work across the city. Outside the capital and at markets, <b>cash is more common</b>, so carry <b>some forint</b>.",
+            "The currency is the <b>Hungarian forint (HUF)</b>, not the euro. Some <b>tourist spots</b> quote or accept <b>euros</b>, but at a <b>poor rate</b>, so it is better to <b>pay in forint</b>. One quirk: forint <b>notes run into the thousands</b> (a coffee can be several hundred forint), so the numbers look large at first."
+          ]
+        },
+        {
+          h: "Choose forint, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose forint", text: "When a terminal or ATM offers dollars or forint, pick forint. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse than your bank's.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars or forint, always choose forint</b>. Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time, along with any euro option.",
+            "For cash, use an ATM attached to a <b>real bank</b>, such as OTP Bank, rather than a standalone <b>Euronet</b> kiosk, which charges high fees and pushes the dollar conversion."
+          ]
+        },
+        {
+          h: "Watch the big numbers, and value",
+          icon: "coins",
+          key: { fig: "Count zeros", tag: "Cheaper than the West", text: "Forint notes run into the thousands, so check the zeros when paying. Hungary is cheaper than Western Europe; a card covers most spending.", tone: "teal" },
+          p: [
+            "Because forint <b>notes run into the thousands</b>, <b>check the zeros</b> when handing over cash or reading a bill, and be a little careful with high-value notes. On the plus side, Hungary is <b>cheaper than most of Western Europe</b>, so your money goes further.",
+            "A <b>card covers most spending</b> in Budapest, with <b>some forint</b> for markets and smaller towns. For the wider picture, see the <a href='/hungary'>Hungary money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Hungary?", a: "Some. Budapest is card-friendly and contactless is common, but markets, small shops and places outside the capital lean on cash, so carry some forint." },
+        { q: "Does Hungary use the euro?", a: "No. Hungary uses the Hungarian forint (HUF), not the euro. Some tourist spots take euros at a poor rate, so it is better to pay in forint." },
+        { q: "Should I pay in forint or dollars in Hungary?", a: "Always forint. If a card machine or ATM offers dollars (or euros), decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Why are Hungarian prices such big numbers?", a: "The forint trades at many hundreds to the dollar, so notes run into the thousands and everyday prices look large. Check the zeros when paying, and note that Hungary is cheaper than most of Western Europe." }
+      ],
+      sources: {
+        links: [
+          { label: "Magyar Nemzeti Bank: official Hungarian forint information", url: "https://www.mnb.hu", type: "gov" },
+          { label: "US State Department: Hungary country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Hungary.html", type: "gov" }
+        ],
+        judgment: "Hungary is card-friendly in Budapest, and the forint-not-euro point is fixed rather than a rate quirk. The forint rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "Process", v: "Shared EU entry" },

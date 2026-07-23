@@ -179,6 +179,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Euro (EUR)" },
+        { k: "Cards", v: "Fine in cities, cash for small spots" },
+        { k: "Carry", v: "Some euros, like in Germany" },
+        { k: "On a card", v: "Choose euros, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Austria, or can I use cards? (2026) | True Trip Costs",
+      description: "Some. Austria takes cards in cities and hotels, but like neighboring Germany it still leans on cash in small cafes, bakeries and wine taverns, so carry euros. Choose euros not dollars, and use bank ATMs. Checked July 2026.",
+      h1: "Do I need cash in Austria, or can I use cards?",
+      lede: "Short answer: cards in the cities, a fair bit of cash for small places. Austria is a little more cash-minded than most of Western Europe, much like its neighbor Germany, so carry euros. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Some cash, more than you might expect. Austria takes <b>cards in cities, hotels and larger shops</b>, and <b>contactless</b> (with Apple Pay and Google Pay) is common, but like neighboring <b>Germany</b> it leans on <b>cash</b> in smaller spots: bakeries, cafes, <b>Heuriger</b> (wine taverns), markets and some restaurants. The domestic card is the <b>Bankomatkarte</b>, and <b>Visa and Mastercard</b> are widely but not universally taken, with Amex patchy. So <b>carry some euros</b>. Choose <b>euros, not dollars</b> on any card or ATM, and use bank <b>Bankomat</b> machines.",
+      sections: [
+        {
+          h: "Cards in the cities, cash for the small places",
+          icon: "cash",
+          key: { fig: "Carry euros", tag: "Cash-leaning, like Germany", text: "Cities, hotels and larger shops take cards, but bakeries, cafes, wine taverns and markets often prefer cash. Carry euros, as you would in Germany.", tone: "amber" },
+          p: [
+            "Austria is <b>a little more cash-minded than most of Western Europe</b>, much like Germany next door. <b>Vienna and the larger cities</b>, hotels, department stores and chain restaurants take <b>cards</b>, and <b>contactless</b> is common. But <b>bakeries, cafes, Heuriger wine taverns, market stalls and some smaller restaurants</b> often <b>prefer or require cash</b>.",
+            "The domestic debit card is the <b>Bankomatkarte</b>. <b>Visa and Mastercard</b> are widely accepted, though not everywhere, and <b>Amex</b> is the least reliable. Carry <b>some euros</b>, especially away from the big cities, and do not assume a small place takes cards."
+          ]
+        },
+        {
+          h: "Choose euros, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose euros", text: "When a terminal or ATM offers dollars or euros, pick euros. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse than your bank's.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars or euros, always choose euros</b>. Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use a <b>Bankomat</b> (ATM) attached to a <b>real bank</b>, such as Erste Bank, Bank Austria or Raiffeisen, rather than a standalone <b>Euronet</b> kiosk, which charges high fees and pushes the dollar conversion."
+          ]
+        },
+        {
+          h: "How much cash, and paying",
+          icon: "coins",
+          key: { fig: "Keep small notes", tag: "For daily spots", text: "Keep smaller euro notes and coins for cafes, bakeries and taverns. Use a debit card at the ATM and take a few days worth at once.", tone: "teal" },
+          p: [
+            "Keep <b>smaller euro notes and coins</b> for the cash-friendly spots, which dislike large notes. Use a <b>debit card</b> at the ATM rather than a credit card (a credit withdrawal is a cash advance with fees from day one), and take out a <b>few days' worth at once</b>.",
+            "Plan to use cash for a fair slice of daily spending, more than in France or the Netherlands but less than a village-only trip. For the wider picture, see the <a href='/austria'>Austria money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Austria?", a: "Yes, a fair amount. Cities, hotels and larger shops take cards, but bakeries, cafes, Heuriger wine taverns, markets and some smaller restaurants often prefer or require cash. Carry euros, especially away from the big cities." },
+        { q: "Are cards widely accepted in Austria?", a: "In Vienna and larger cities, hotels and chains, yes, and contactless is common. But acceptance is not universal, especially at small or rural spots, and Amex is patchy. Carry euros as backup." },
+        { q: "Should I pay in euros or dollars in Austria?", a: "Always euros. If a card machine or ATM offers dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Where should I get cash in Austria?", a: "A Bankomat (ATM) attached to a real bank, such as Erste Bank, Bank Austria or Raiffeisen. Avoid the standalone Euronet kiosks, which charge high fees and push the dollar conversion. Always choose euros." }
+      ],
+      sources: {
+        links: [
+          { label: "European Central Bank: the official euro reference exchange rates", url: "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html", type: "gov" },
+          { label: "US State Department: Austria country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Austria.html", type: "gov" }
+        ],
+        judgment: "Austria leans a little more on cash than most of Western Europe, much like Germany, though card acceptance keeps growing, so this is our practical read. The euro rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "Process", v: "Shared EU entry" },

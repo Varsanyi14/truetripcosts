@@ -170,6 +170,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Euro (EUR) in the Republic" },
+        { k: "Cards", v: "Card-first, contactless everywhere" },
+        { k: "The border", v: "Northern Ireland uses pounds" },
+        { k: "On a card", v: "Choose euros, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Ireland, or can I use cards? (2026) | True Trip Costs",
+      description: "Barely. The Republic of Ireland is card-first and contactless is everywhere. Carry a little euro cash for rural pubs. Mind the border: Northern Ireland uses pounds, not euros. Choose euros not dollars. Checked July 2026.",
+      h1: "Do I need cash in Ireland, or can I use cards?",
+      lede: "Short answer: a card for almost everything, a little cash for country pubs. The Republic of Ireland is firmly card-first. The one thing to watch is the border: cross into Northern Ireland and the currency changes to pounds.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cards, almost entirely. The <b>Republic of Ireland</b> is <b>card-first</b>: <b>contactless</b> is everywhere, and Apple Pay and Google Pay are widely taken, so you need <b>little cash</b>, mainly for <b>rural pubs</b>, small shops and the odd market. The currency is the <b>euro</b>. The one catch is the <b>border</b>: <b>Northern Ireland is part of the UK and uses pounds sterling</b>, not euros, so if you cross over you switch currency. On any card or ATM, choose <b>euros, not dollars</b>.",
+      sections: [
+        {
+          h: "Card-first across the Republic",
+          icon: "phoneok",
+          key: { fig: "Tap", tag: "Contactless everywhere", text: "The Republic is card-first, with contactless and Apple Pay and Google Pay taken almost everywhere. Carry a little euro cash for country pubs and small shops.", tone: "teal" },
+          p: [
+            "The <b>Republic of Ireland</b> is firmly <b>card-first</b>. <b>Contactless</b> is near-universal across shops, cafes and transport, and <b>Apple Pay and Google Pay</b> are widely accepted. <b>Visa and Mastercard</b> work almost everywhere; Amex is less consistent.",
+            "Keep <b>a little euro cash</b> for the corners that stay cash-friendly: <b>rural pubs</b>, small village shops, farmers markets and the occasional small vendor. In Dublin and the cities you will barely touch it."
+          ]
+        },
+        {
+          h: "Mind the border: euros versus pounds",
+          icon: "coins",
+          key: { fig: "NI uses pounds", tag: "Two currencies", text: "The Republic uses euros; Northern Ireland is part of the UK and uses pounds sterling. If you cross the border, your currency changes.", tone: "amber" },
+          p: [
+            "The one thing that catches visitors out on the island of Ireland is the <b>border</b>. The <b>Republic of Ireland uses the euro</b>, but <b>Northern Ireland is part of the United Kingdom and uses pounds sterling</b>. There is no hard border and you can cross without stopping, but your <b>currency changes</b>, so plan for both if your trip spans it.",
+            "Cards work on both sides regardless, which smooths things over, but any <b>cash</b> you carry needs to match the side you are on: euros in the Republic, pounds in the North."
+          ]
+        },
+        {
+          h: "Choose euros, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose euros", text: "When a terminal or ATM offers dollars or euros, pick euros. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse than your bank's.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars or euros, always choose euros</b> (or pounds in the North). Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For the little cash you need, use an ATM attached to a <b>real bank</b> (such as AIB or Bank of Ireland) rather than a standalone kiosk. For the wider picture, see the <a href='/ireland'>Ireland money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Ireland?", a: "Barely. The Republic of Ireland is card-first, and contactless works almost everywhere. Carry a little euro cash for rural pubs, small village shops and markets, but a card covers most spending." },
+        { q: "Does Ireland use the euro?", a: "The Republic of Ireland uses the euro. Northern Ireland, which is part of the United Kingdom, uses pounds sterling. If your trip crosses the border, you switch currency, though cards work on both sides." },
+        { q: "Should I pay in euros or dollars in Ireland?", a: "Always euros in the Republic (or pounds in Northern Ireland). If a card machine or ATM offers dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Do I need different money for Northern Ireland?", a: "Yes for cash. Northern Ireland is part of the UK and uses pounds sterling, while the Republic uses euros. Cards work on both sides, so the simplest approach is to rely on a card and carry a little of whichever currency matches where you are." }
+      ],
+      sources: {
+        links: [
+          { label: "European Central Bank: the official euro reference exchange rates", url: "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html", type: "gov" },
+          { label: "US State Department: Ireland country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Ireland.html", type: "gov" }
+        ],
+        judgment: "The Republic is strongly card-first, and the euro-versus-pound border point is a real, fixed distinction, not a rate quirk. The euro rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "Process", v: "Shared EU entry" },
