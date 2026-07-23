@@ -166,6 +166,12 @@ export default {
   spokes: [
     {
       slug: "fmm-and-visitax",
+      glance: [
+        { k: "Visa", v: "None, up to 180 days" },
+        { k: "Tourist card (FMM)", v: "Inside your airfare" },
+        { k: "Visitax", v: "Quintana Roo only, ~283 pesos" },
+        { k: "Passport", v: "6 months recommended" }
+      ],
       live: true,
       topic: "visas",
       title: "Do I need the FMM tourist card for Mexico, and what is Visitax? (2026) | True Trip Costs",
@@ -184,6 +190,8 @@ export default {
       sections: [
         {
           h: "The tourist card (FMM): usually already handled",
+          icon: "plane",
+          key: { fig: "Included", tag: "If you fly in", text: "The FMM tourist card is not a visa, and for air travelers it is already paid inside your airfare. The officer just stamps you in, up to 180 days.", tone: "teal" },
           p: [
             "The <b>FMM</b> (Forma Migratoria Multiple) is Mexico's entry permit, often called the tourist card. It is <b>not a visa</b>, and for US citizens on a tourist trip it works differently depending on how you arrive. If you <b>fly in</b>, its fee is <b>bundled into your airline ticket</b> (you may spot it as a \"tourism tax\" on the receipt), and the major airports have gone digital, so there is usually <b>no paper form</b>, the officer scans your passport and stamps you in.",
             "The one thing to check: the FMM allows a maximum of <b>180 days</b>, but the <b>officer decides how many days to grant</b>, and lately it is often less than the full 180. <b>Look at the number stamped in your passport</b> so you know your real departure deadline. The permit is single-entry, so a hop out of the country means a new one on return. If you <b>drive across by land</b>, you handle the FMM yourself at the immigration (INM) office: free for stays of seven days or less, otherwise about 983 pesos."
@@ -191,6 +199,8 @@ export default {
         },
         {
           h: "Visitax: the one fee that is actually on you (Quintana Roo)",
+          icon: "receipt",
+          key: { fig: "283 pesos", tag: "Quintana Roo only", text: "If your trip touches Cancun, Tulum, Playa del Carmen or Cozumel, the state charges Visitax, about 283 pesos, paid online.", tone: "amber" },
           p: [
             "If your trip touches <b>Quintana Roo</b>, the state that holds <b>Cancun, Playa del Carmen, Tulum, Cozumel and the Riviera Maya</b>, there is a separate state tourist tax called <b>Visitax</b>. It is about <b>283 pesos, roughly $15 to $17 per person</b>, charged once and covering your whole stay in the state, and it is <b>legally required</b> for foreign visitors.",
             "Pay it online at the official state site, <b>visitax.gob.mx</b>, which gives you a QR code. You can pay before, during or at the end of your trip, but doing it <b>before you fly home</b> avoids the kiosk queue at Cancun airport, where it is enforced on departure. Enforcement has tightened, so do not skip it."
@@ -198,6 +208,8 @@ export default {
         },
         {
           h: "Why it feels confusing: most fees are already paid",
+          icon: "coins",
+          key: { fig: "Prepaid", tag: "Already in your airfare", text: "The airport use fee, federal tourism fees and the FMM are tucked inside your ticket, which is why it feels like hidden charges when it is mostly already paid.", tone: "teal" },
           p: [
             "Here is what clears it up. A trip to Cancun can involve several Mexican fees, but <b>most are tucked inside your airfare</b> already: the airport use fee, the federal tourism fees and the FMM tourist card all ride along invisibly in your ticket. <b>Visitax is the only one you pay yourself</b>, which is exactly why it feels like a surprise, it is really just the one that is visible.",
             "So for a typical US traveler flying to the Riviera Maya, the honest checklist is short: your passport, the entry stamp the officer gives you (already paid), and Visitax paid online. Everything else is handled."
@@ -205,6 +217,8 @@ export default {
         },
         {
           h: "A couple of things to know",
+          icon: "calendar",
+          key: { fig: "6 months", tag: "Passport validity", text: "Carry a passport with six months of validity to be safe. US citizens can stay visa-free up to 180 days, subject to what the officer grants.", tone: "teal" },
           p: [
             "Your passport should have <b>six months</b> of validity to be safe, and US citizens can stay visa-free for up to <b>180 days</b> for tourism (subject to the days the officer grants). Cruise passengers to Quintana Roo do not pay Visitax; a separate cruise charge is collected through the cruise line instead.",
             "Hotels also add their own nightly lodging tax at checkout, which is separate from all of the above. For those city and lodging taxes across destinations, see <a href=\"/tourist-taxes\">tourist taxes and entry fees</a>, and for cards, cash and ATMs, the <a href=\"/mexico\">Mexico money guide</a>."
@@ -228,6 +242,12 @@ export default {
     },
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Mexican peso (MXN)" },
+        { k: "Cards", v: "Hotels, resorts, city restaurants" },
+        { k: "Cash for", v: "Taxis, street food, markets" },
+        { k: "Biggest trap", v: "Always pay in pesos" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in Mexico, or can I use cards? (2026) | True Trip Costs",
@@ -240,6 +260,8 @@ export default {
       sections: [
         {
           h: "Cards where they work, pesos where they do not",
+          icon: "peso",
+          key: { fig: "Visa/MC", tag: "What works where", text: "Cards are routine at hotels, resorts, chains and city restaurants, with Visa and Mastercard best and Amex patchy. Taxis, street food and markets want pesos.", tone: "teal" },
           p: [
             "In cities and resort areas, <b>cards are routine</b> at hotels, established restaurants, chains and shops, with Visa and Mastercard the most accepted and Amex hit or miss. Apple Pay and Google Pay work at many tourist-area terminals.",
             "But <b>cash still rules</b> for street food, taxis, markets, small family shops, local buses and tips, much of everyday spending outside the resort bubble runs on cash. Carry <b>small peso notes</b> (20, 50 and 100), since vendors often cannot break a 500."
@@ -247,6 +269,8 @@ export default {
         },
         {
           h: "The peso-versus-dollar trap",
+          icon: "alert",
+          key: { tag: "Always choose pesos", text: "When an ATM or terminal asks to charge in US dollars or pesos, always pick pesos. Dollars trigger dynamic currency conversion, a poor rate dressed up as convenience.", tone: "amber" },
           p: [
             "This is the one that quietly costs tourists the most. When an ATM or a card terminal asks whether to charge you in <b>US dollars or pesos, always choose pesos</b>. Choosing dollars triggers dynamic currency conversion, where the machine sets a rate that is typically <b>5 to 8% worse</b> than your own bank's. If a waiter returns a terminal already showing dollars, ask them to <b>redo it in pesos</b>.",
             "And although resorts and border towns often <b>accept US dollars</b>, they give a mediocre rate and hand back change in pesos, so you lose either way. Pay in pesos, and <b>tip in pesos</b> too, it is far easier for staff to use than dollars."
@@ -254,6 +278,8 @@ export default {
         },
         {
           h: "Getting pesos safely",
+          icon: "atm",
+          key: { fig: "In-branch", tag: "Use bank ATMs", text: "Draw from bank ATMs (BBVA, Banorte, Santander, HSBC), ideally inside a branch, mall or supermarket and during the day, to avoid skimming. Skip airport machines.", tone: "teal" },
           p: [
             "Use <b>bank ATMs</b>, BBVA, Banorte, Santander or HSBC, ideally the machines <b>inside a branch, mall or supermarket</b> and during the day, which are better lit and less prone to card skimming. Avoid airport and hotel exchange kiosks (markups of 5 to 15%) and standalone or damaged-looking machines.",
             "Use a <b>debit card</b> at the ATM, not a credit card (a credit-card withdrawal is a cash advance, with a fee and interest from day one), and bring a card with no foreign-transaction fee plus a <b>backup card</b> on a different network. Withdraw a few days' worth at a time, shield your PIN, and keep cash out of sight."
@@ -261,6 +287,8 @@ export default {
         },
         {
           h: "Tipping, and the fees you already paid",
+          icon: "tip",
+          key: { fig: "10-15%", tag: "At restaurants", text: "In restaurants, 10 to 15% for good service if no service charge is added, plus small tips for hotel staff, guides and drivers, all in pesos.", tone: "teal" },
           p: [
             "In restaurants, <b>10 to 15%</b> is standard for good service if a service charge is not already added, and small tips for hotel staff, guides and drivers are appreciated, all in pesos.",
             "This covers day-to-day money. For the entry side, the tourist card and the Visitax fee for Cancun and the Riviera Maya, see <a href=\"/mexico/fmm-and-visitax\">the FMM and Visitax walkthrough</a>, and for the fuller picture, the <a href=\"/mexico\">Mexico money guide</a>."
@@ -283,6 +311,12 @@ export default {
     },
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Best apps", v: "Uber and DiDi" },
+        { k: "Cheaper option", v: "DiDi, locals use it" },
+        { k: "The catch", v: "Airports (CDMX, Cancun)" },
+        { k: "Fares", v: "Fixed in-app, no meter" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -296,6 +330,8 @@ export default {
       sections: [
         {
           h: "Which app, and where it just works",
+          icon: "phoneok",
+          key: { fig: "DiDi", tag: "Cheaper, and local", text: "In Mexico City, Guadalajara, Monterrey and most of the country, Uber and DiDi both show the fare before you accept. DiDi is often cheaper and the one locals reach for.", tone: "teal" },
           p: [
             "For everyday travel in Mexico City, Guadalajara, Monterrey and most of the country, <b>Uber</b> and <b>DiDi</b> both work well and show the fare before you accept. <b>DiDi</b> is the one many locals reach for first, often a little cheaper, and in some tourist areas it draws less friction from taxi drivers than Uber does. <b>inDrive</b>, where you propose a price and drivers accept or counter, is a common third option. <b>Lyft</b> does not operate in Mexico at all, so ignore it here.",
             "Two small habits save trouble. First, some travelers hit card-billing glitches with Uber in Mexico, so switching the app to <b>cash</b> and paying at the end is a simple workaround. Second, fake drivers hang around tourist spots, so always check the <b>plate, car and driver photo</b> in the app before getting in, and never accept a ride from someone who simply walks up and says they are your driver."
@@ -303,6 +339,8 @@ export default {
         },
         {
           h: "Mexico City airport: the rules keep changing",
+          icon: "plane",
+          key: { tag: "AICM pickups", text: "Ride-hailing is officially not allowed to pick up inside the federal airport zone at Mexico City (AICM), and the rules keep shifting, so plan for an authorized airport taxi on arrival.", tone: "amber" },
           p: [
             "Mexico City's airport (AICM) has been a running battle between the licensed airport taxis and the apps. Officially, ride-hailing is not allowed to pick up inside the federal airport zone, and enforcement has come and gone. Ahead of the 2026 World Cup, though, the airport set up a <b>designated pickup zone</b> for Uber and DiDi, roughly an eight-minute walk between Terminals 1 and 2, so app pickups are increasingly workable if you follow the in-app instructions to that spot.",
             "Because that situation still shifts, the dependable fallback is the <b>official prepaid taxi</b>. Pay at one of the authorized kiosks inside the terminal, where the price is set by zone and you hand a receipt to the driver waiting outside. One wrinkle worth knowing: quotes can vary between kiosks, and travelers have found one kiosk quoting several times more than another for the same trip, so check <b>two or three kiosks</b> before you pay. Federal airport taxis carry a green license plate."
@@ -310,6 +348,8 @@ export default {
         },
         {
           h: "Cancun and the Riviera Maya: a different world",
+          icon: "alert",
+          key: { tag: "Taxi union country", text: "Across Cancun, Playa del Carmen and the Riviera Maya a powerful taxi union has fought the apps, so you cannot rely on an Uber or DiDi pickup. Pre-book transfers instead.", tone: "amber" },
           p: [
             "This is the part that catches people out. Across <b>Cancun</b>, <b>Playa del Carmen</b> and the wider Riviera Maya, a powerful taxi union has fought the apps hard, and in practice you <b>cannot rely on an Uber or DiDi from Cancun airport</b>. The app may let you book, then send you to wait outside the airport, and drivers often will not accept the ride at all. Some union members have even posed as officials to stop app cars. The clean options from the airport are the <b>ADO bus</b>, which is cheap and reliable into Cancun and Playa del Carmen, or a <b>pre-booked private shuttle</b>.",
             "Once you are at your hotel, <b>DiDi</b> is the better app for getting around the Hotel Zone and town, since local drivers use it too and there is less conflict than with Uber. Keep a low profile when you get picked up, and if a driver is nervous, a quiet side street away from the taxi rank helps. Good news for the way out: dropping off at the airport is not restricted the way pickups are, so an app ride from your hotel to the airport is usually fine."
@@ -317,6 +357,8 @@ export default {
         },
         {
           h: "Fares, paying and tipping",
+          icon: "peso",
+          key: { fig: "Fixed", tag: "App vs street", text: "In Uber and DiDi the fare is fixed before you ride, usually well below a street or airport taxi quote. Cancun street taxis are often cash and pricier.", tone: "teal" },
           p: [
             "In Uber and DiDi the price is fixed before you ride, and an app trip is usually well below what a street or airport taxi quotes for the same route. Regular Cancun street taxis are often cash-only and priced by zone rather than a meter, so agree the number before you get in and carry small peso notes. In downtown Mexico City, if a libre taxi does use a meter, watch that it starts fresh, but an app is simpler and safer.",
             "Tipping is not expected for a taxi or app ride in Mexico, though rounding up is a kind gesture. For the wider money picture, including how much cash to carry and where cards work, see the <a href=\"/mexico\">Mexico money guide</a>."
@@ -340,6 +382,12 @@ export default {
     },
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Getting in", v: "One of the simplest" },
+        { k: "Health certificate", v: "Not required since 2019" },
+        { k: "Quarantine", v: "None" },
+        { k: "Coming home", v: "The harder leg" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Mexico from the US (2026): the easy entry and the screwworm catch on the way home | True Trip Costs",
@@ -352,6 +400,8 @@ export default {
       sections: [
         {
           h: "Getting in is the easy part",
+          icon: "plane",
+          key: { fig: "No cert", tag: "Since 2019", text: "Since 16 December 2019, dogs and cats from the US need no health certificate for Mexico, with no quarantine and no waiting period. SENASICA just inspects at the port.", tone: "teal" },
           p: [
             "Mexico is refreshingly light on entry rules. Since 16 December 2019, a health certificate is <b>no longer required</b> for dogs and cats traveling from the US. You take your pet to the border or airport, and officials from SENASICA, Mexico's agricultural health authority, carry out a physical inspection at the Animal and Plant Health Inspection Office (known by its Spanish initials, OISA).",
             "At that inspection they confirm three things: your pet shows no signs of infectious or contagious disease, it is free of external parasites such as fleas and ticks, and it has no fresh or healing wounds. If parasites are found, you will need to have them treated at your own cost before the pet is released. There is no quarantine and no waiting period for a healthy animal that passes inspection."
@@ -359,6 +409,8 @@ export default {
         },
         {
           h: "What to bring, even though it is not officially required",
+          icon: "health",
+          key: { fig: "Rabies", tag: "Bring it anyway", text: "Mexico does not require a rabies certificate for a US-origin pet, but travel with a current rabies record anyway, since it smooths the inspection and helps on the way home.", tone: "teal" },
           p: [
             "Mexico does not require you to present a rabies certificate or vaccination record to SENASICA for a US-origin pet. In practice, though, you should travel with a <b>current rabies vaccination certificate and a record of recent internal and external parasite treatment</b>. Airlines almost always ask for proof of rabies vaccination before they will board your pet, and having clean records on hand makes the SENASICA inspection faster. Treat these as things you will want in your folder, not optional extras.",
             "A few practical limits: the simple personal-pet process covers up to three animals per person. Bring more and Mexican customs may treat it as a commercial shipment with extra rules. Your pet's carrier must arrive clean, with no bedding, toys, or edible products inside, as officials may require these be removed and destroyed. Only the food needed for the day of arrival is allowed."
@@ -366,6 +418,8 @@ export default {
         },
         {
           h: "Driving versus flying",
+          icon: "wheel",
+          key: { fig: "Same", tag: "Land or air", text: "The SENASICA inspection is the same at a land border as at an airport, so driving into Baja, Sonora or the northern states is just as simple as flying.", tone: "teal" },
           p: [
             "Land crossings are common and simple, especially for people driving into Baja California, Sonora, or other northern states. The SENASICA inspection is the same at a land border as at an airport, and driving avoids airline cargo fees and crate rules entirely, which is why the all-in cost can be as low as a couple hundred dollars.",
             "Flying adds cost and logistics. Pets too large for the cabin fly as cargo, which is the single biggest expense on this route and pushes a fly-in move well above the drive-in figure. Check your airline's specific pet policy early, since cabin size limits, cargo booking windows, and seasonal embargoes vary by carrier."
@@ -373,6 +427,8 @@ export default {
         },
         {
           h: "Coming home is where the paperwork lives",
+          icon: "alert",
+          key: { tag: "The harder leg", text: "Entering Mexico is easy, but bringing a dog back to the US is now the harder part. Since 22 November 2024 Mexico is treated as affected by New World screwworm, so check the current US rules before you return.", tone: "amber" },
           p: [
             "This is the part that surprises people. Entering Mexico is easy, but bringing a dog back to the US has become the harder leg. As of 22 November 2024, Mexico is considered affected by New World screwworm, so <b>every dog entering or re-entering the US after time in Mexico must meet APHIS screwworm-freedom certification requirements</b>. That is on top of the standard CDC rules for dogs: a completed <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a>, a microchip readable by a universal scanner, a minimum age of 6 months, and a healthy appearance on arrival.",
             "Because Mexico is not high-risk for dog rabies, US-vaccinated dogs returning from Mexico avoid the strictest CDC titer-and-quarantine path, and the CDC form receipt can cover multiple entries for up to 6 months as long as the pet stays within the US, Mexico, and Canada. Cats have it far easier in both directions: no CDC import form, no microchip mandate, and no screwworm certificate. If you are moving a dog, plan the screwworm certification before you travel home, not at the border. Our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a> covers the return in detail, and for how Mexico compares with other destinations on effort and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."
@@ -401,6 +457,12 @@ export default {
     },
     {
       slug: "tipping",
+      glance: [
+        { k: "Currency", v: "Mexican pesos, cash" },
+        { k: "Restaurants", v: "10 to 15%" },
+        { k: "Upscale or resort", v: "15 to 20%" },
+        { k: "Watch for", v: "A service charge already on the bill" }
+      ],
       live: true,
       topic: "tipping",
       title: "Tipping in Mexico: how much, where, and the propina trap at resorts (2026) | True Trip Costs",
@@ -413,6 +475,8 @@ export default {
       sections: [
         {
           h: "How much to tip, by situation",
+          icon: "peso",
+          key: { fig: "10-20%", tag: "By setting", text: "Sit-down restaurants are 10 to 15% for good service, and 15 to 20% at upscale or resort spots. Cash in pesos handed to your server is surest, since card tips get pooled or shaved.", tone: "teal" },
           p: [
             "At <b>sit-down restaurants</b>, <b>10 to 15%</b> is standard for good service, and <b>15 to 20%</b> at upscale or resort restaurants. <b>Cash in pesos</b> handed directly to your server is best, since card tips are sometimes pooled or reduced by processing fees.",
             "At <b>hotels</b>, leave <b>20 to 50 pesos a night</b> for housekeeping (on the pillow or bedside table each morning, so it reaches the person who cleaned your room that day) and <b>20 to 50 pesos per bag</b> for porters. For <b>taxis</b>, <b>rounding up</b> the fare is a kind gesture but not expected. At a <b>taco stand or street stall</b>, a few coins in the tip jar is appreciated."
@@ -420,6 +484,8 @@ export default {
         },
         {
           h: "The resort double-tip trap",
+          icon: "receipt",
+          key: { tag: "Check the bill", text: "Tourist restaurants and all-inclusives sometimes print propina or servicio, meaning a service charge is already added. Adding 15 to 20% on top means you tip twice.", tone: "amber" },
           p: [
             "Tourist restaurants and all-inclusive resorts sometimes print <b>propina</b> or <b>servicio</b> on the bill, meaning a service charge is <b>already included</b>. If you add 15 to 20% on top without checking, you have paid the tip twice.",
             "<b>Read the bill before you sign.</b> If a service charge is already there, a small extra in cash for outstanding service is generous but not expected. If nothing is added, tip the standard 10 to 15%."
@@ -427,6 +493,8 @@ export default {
         },
         {
           h: "Cash, pesos, and why not dollars",
+          icon: "cash",
+          key: { fig: "Cash", tag: "Always cash", text: "Tip in cash, in pesos. Card tips do not always reach the person who served you, and at smaller places they cannot process a card tip at all.", tone: "teal" },
           p: [
             "Always tip in <b>cash</b>. Card tips do not always reach the person who served you, and at smaller spots they cannot process a card tip at all.",
             "Tip in <b>pesos, not dollars</b>. Dollars are harder for staff to use, since they need to exchange them and often get a poor rate. Pesos in small notes (20s, 50s, 100s) are the most useful thing you can hand over. Keep a small stack separate from your main wallet so you are not fumbling at the table."
@@ -448,6 +516,12 @@ export default {
     },
     {
       slug: "medical-costs",
+      glance: [
+        { k: "You pay", v: "Out of pocket as a tourist" },
+        { k: "Pharmacy doctor", v: "About $2 to $3" },
+        { k: "Private GP", v: "About $18 to $25" },
+        { k: "Real risk", v: "Emergencies, hospital deposit" }
+      ],
       live: true,
       topic: "health",
       title: "What does seeing a doctor cost in Mexico as a tourist? (2026) | True Trip Costs",
@@ -461,6 +535,8 @@ export default {
       sections: [
         {
           h: "Routine care: cheap, fast, and walk-in",
+          icon: "tag",
+          key: { fig: "$2-3", tag: "Pharmacy doctor", text: "Most pharmacies have a doctor attached, the consultorio, where a consultation for something minor runs about $2 to $3. A private GP visit is about $18 to $25.", tone: "teal" },
           p: [
             "For everyday problems, Mexico is refreshingly easy. Most pharmacies have a <b>doctor attached</b> (the <b>consultorio</b>), where a consultation for something minor, a stomach bug, a cold, a small infection, costs about <b>45 to 60 pesos, roughly $2 to $3</b>, and sometimes nothing at all if you buy the medicine there. No appointment needed, and in tourist areas the doctor often speaks English.",
             "For something more involved, a <b>private GP</b> visit runs about <b>350 to 500 pesos, roughly $18 to $25</b>, a <b>specialist</b> around <b>800 to 1,000 pesos, roughly $45 to $55</b>, and a full <b>lab panel</b> often under <b>$55</b>. In a big-city private hospital the fees sit at the higher end. You pay at the time of care unless your insurer has a direct-billing arrangement with the clinic."
@@ -468,6 +544,8 @@ export default {
         },
         {
           h: "The part that actually costs: a serious emergency",
+          icon: "alert",
+          key: { fig: "$300+", tag: "Hospital deposit", text: "Private hospitals usually ask for a deposit before they treat you, from about 5,000 pesos (around $300) into the tens of thousands. This is what travel insurance is for.", tone: "amber" },
           p: [
             "This is where the money is, and where tourists get caught. Private hospitals in Mexico typically ask for a <b>deposit before they treat you</b>, anywhere from about <b>5,000 pesos (around $300)</b> to <b>100,000 pesos or more (several thousand dollars)</b> depending on the situation. An <b>ICU stay, major surgery, or a medical flight home</b> can climb into the <b>tens of thousands of dollars</b>.",
             "As a foreign visitor you are <b>not covered</b> by Mexico's public system, so without insurance that deposit and the bill come straight out of your own pocket. This single risk, not the price of a doctor visit, is the reason to carry cover."
@@ -475,6 +553,8 @@ export default {
         },
         {
           h: "Pharmacies and prescriptions",
+          icon: "receipt",
+          key: { fig: "OTC", tag: "Over the counter", text: "Many medicines that need a prescription back home are sold over the counter here. For anything controlled, the consultorio doctor next door can write a script.", tone: "teal" },
           p: [
             "Mexican pharmacies are everywhere, and many medicines that need a prescription back home are sold <b>over the counter</b> here. For anything controlled, the consultorio doctor next door can write a prescription on the spot. Larger <b>primera clase</b> pharmacies stock the full range, including regulated drugs.",
             "Keep every <b>receipt</b>, the doctor's note, the pharmacy slip, the hospital invoice. If you have travel insurance, those are what you submit to claim the cost back."
@@ -482,6 +562,8 @@ export default {
         },
         {
           h: "What this means for your money",
+          icon: "cash",
+          key: { fig: "Insurance", tag: "Plan for the big one", text: "Budget a little cash for the small stuff, a few dollars to a few tens, easily paid on the spot. The thing to plan for is a serious emergency, so carry travel insurance.", tone: "teal" },
           p: [
             "Budget a little cash for the small stuff and do not overthink it: a pharmacy doctor or a GP visit is a few dollars to a few tens of dollars, easily paid on the spot. The thing to plan for is the <b>big, unlikely emergency</b>, because that is the bill that can wreck a trip.",
             "That is exactly the shape travel insurance fits: cheap routine care you pay yourself, and a <b>large emergency, hospital deposit, or evacuation</b> the policy absorbs. For getting cash for the small payments, see the <a href=\"/mexico/cash-or-card\">Mexico cash and cards guide</a>."
@@ -504,6 +586,12 @@ export default {
     },
     {
       slug: "renting-a-car",
+      glance: [
+        { k: "Online rate", v: "Not the real price" },
+        { k: "Required by law", v: "Mexican liability insurance" },
+        { k: "Real cost", v: "About $40 to $60 a day" },
+        { k: "Tolls", v: "Cash only at booths" }
+      ],
       live: true,
       topic: "driving",
       title: "What does renting a car in Mexico really cost? The insurance trap (2026) | True Trip Costs",
@@ -517,6 +605,8 @@ export default {
       sections: [
         {
           h: "The insurance that is not in your quote",
+          icon: "alert",
+          key: { tag: "Not optional", text: "Mexican law requires third-party liability insurance from a Mexican insurer, and your US policy and credit-card cover do not satisfy it. Agencies often leave it out of the online quote.", tone: "amber" },
           p: [
             "Mexican federal law requires every vehicle on the road to carry <b>third-party liability insurance</b> from a <b>Mexican insurer</b>. Driving without it is treated as a serious matter, not a minor ticket. The catch for visitors: your <b>US auto policy and the coverage on your credit card do not count</b> for this, so you have to buy the local liability cover from the rental company, or prove you already hold a valid Mexican policy.",
             "The problem is that many agencies <b>do not include this mandatory cover in the online rate</b>. You book what looks like a bargain, then at the counter you are told, correctly, that liability insurance is required by law, and it is added on the spot. That is how a headline rate of a few dollars a day becomes <b>$40 to $60 a day</b> once the required insurance is in."
@@ -524,6 +614,8 @@ export default {
         },
         {
           h: "What is mandatory versus what is an upsell",
+          icon: "receipt",
+          key: { fig: "TPL only", tag: "The rest is optional", text: "Only third-party liability is legally required. The collision damage waiver and everything else the counter offers is optional, so decline what you do not want.", tone: "teal" },
           p: [
             "Only the <b>third-party liability</b> cover is legally required. Everything else the counter offers is <b>optional</b>: the <b>collision damage waiver</b> (CDW or LDW) that caps what you owe if the car is damaged or stolen, and <b>personal accident</b> cover (PAI). An agent cannot force these on you, and you can decline them.",
             "Your US <b>credit card</b> may already cover the car's own damage if you decline the counter's collision waiver and pay with that card, but check two things: that your card's cover <b>applies in Mexico</b> (some exclude it), and remember it <b>never covers the mandatory liability</b>. So the honest sequence is: accept the required liability, then decide on the collision waiver based on what your card actually does."
@@ -531,6 +623,8 @@ export default {
         },
         {
           h: "Tolls and gas: the other real costs",
+          icon: "peso",
+          key: { fig: "Cash", tag: "Toll booths", text: "The fast cuota highways are excellent, but the casetas are largely cash only and add up over a long drive, so keep pesos in the car.", tone: "teal" },
           p: [
             "Mexico's fast <b>cuota</b> (toll) highways are excellent, but the <b>casetas</b> (toll booths) are largely <b>cash only</b> and add up over a long drive, so keep pesos in the car. The slower <b>libre</b> roads are free but much slower, and sometimes rougher.",
             "Gas is not the bargain people expect. Regular (<b>Magna</b>) runs about <b>22 to 24 pesos a liter</b> in 2026, since the government caps it near 24, roughly <b>$1.25 a liter</b>, which works out to about <b>$4.50 to $5 a gallon</b>. Budget for fuel at <b>roughly US prices</b>, not below. It is also common to hand the attendant cash and tip a few pesos, since stations are full service."
@@ -538,6 +632,8 @@ export default {
         },
         {
           h: "What this means for your money",
+          icon: "tag",
+          key: { fig: "$40-60", tag: "The real day rate", text: "Do not trust the online rate alone. Get a quote that includes the mandatory liability insurance, or assume about $40 to $60 a day once it is added, and compare fairly.", tone: "teal" },
           p: [
             "Do not trust the online rate on its own. Either get a quote that <b>explicitly includes the mandatory liability insurance</b>, or assume the real price is <b>$40 to $60 a day</b> once it is added, and compare cars on that basis. Decide on the optional collision waiver by <b>what your card actually provides in Mexico</b>, not by the counter's pitch.",
             "Carry <b>pesos for tolls</b>, expect gas at US-level prices, and for the cheapest way to pay for fuel and tolls on a card where they take one, see the <a href=\"/mexico/cash-or-card\">Mexico cash and cards guide</a>."
@@ -560,6 +656,12 @@ export default {
     },
     {
       slug: "entry-fees",
+      glance: [
+        { k: "Chichen Itza", v: "About 697 pesos (~$40)" },
+        { k: "The catch", v: "Two tickets at two windows" },
+        { k: "Foreigners", v: "Pay more than locals" },
+        { k: "Cenotes", v: "150 to 500 pesos, cash" }
+      ],
       live: true,
       topic: "entry-fees",
       title: "Entry fees in Mexico: Chichen Itza's double fee, cenotes, and why to bring cash (2026) | True Trip Costs",
@@ -572,6 +674,8 @@ export default {
       sections: [
         {
           h: "Chichen Itza: one site, two fees",
+          icon: "receipt",
+          key: { fig: "$40", tag: "Two tickets", text: "Chichen Itza is run jointly by federal INAH and Yucatan state CULTUR, so you pay two tickets at two windows, about 697 pesos, roughly $40, for a foreign adult in 2026.", tone: "teal" },
           p: [
             "The price you see quoted online is often only half the story. Chichen Itza is run jointly by the <b>federal INAH</b> agency and the <b>Yucatan state</b> tourism body (CULTUR), so there are <b>two tickets</b>, sold at <b>two separate windows</b>: the INAH fee (about <b>100 to 105 pesos</b>) and the larger state CULTUR fee (about <b>592 pesos</b>). For a foreign adult in 2026 that totals about <b>690 to 700 pesos, roughly $40</b>. Parking is extra and cash only, about <b>80 to 150 pesos</b>.",
             "Two things to watch. Touts near the parking sometimes sell <b>cheap tickets that cover only one of the two fees</b>, leaving you to pay the other at the gate anyway, so buy at the official windows or from a reseller that clearly states both INAH and CULTUR are included. And note Chichen Itza is in <b>Yucatan state, not Quintana Roo</b>, so this is completely separate from the Cancun-area Visitax."
@@ -579,6 +683,8 @@ export default {
         },
         {
           h: "Foreigners pay more, and Sunday is not free for you",
+          icon: "alert",
+          key: { tag: "Dual pricing", text: "Government sites charge foreigners more: about 697 pesos at Chichen Itza versus 300 for a Mexican citizen. The free-Sunday rule is for nationals and residents, not visitors.", tone: "amber" },
           p: [
             "Mexico's government sites use <b>dual pricing</b>. At Chichen Itza a foreign adult pays about <b>697 pesos</b>, a Mexican citizen about <b>300 pesos</b> with national ID, and a Yucatan resident about <b>105 pesos</b>. This is normal and legal across INAH sites, not a scam, just something to expect.",
             "INAH sites are <b>free on Sundays, but only for Mexican citizens and residents</b> with ID. As a foreign visitor you pay the full foreign rate every day, Sundays included, so there is no saving in timing your visit for a Sunday, and the sites are far busier then anyway."
@@ -586,6 +692,8 @@ export default {
         },
         {
           h: "Cenotes: cheap to pricey, nearly always cash",
+          icon: "cash",
+          key: { fig: "150-500", tag: "Bring pesos", text: "A simple cenote runs about 150 pesos, popular Ik Kil about 180 to 250, and a top-tier one like Gran Cenote near Tulum about 500. Nearly always cash.", tone: "teal" },
           p: [
             "Cenotes vary a lot. A simple one might be around <b>150 pesos</b>, popular spots like <b>Ik Kil</b> run about <b>180 to 250 pesos</b>, and a top-tier one like <b>Gran Cenote</b> near Tulum is about <b>500 pesos (roughly $30)</b>. Across the peninsula, expect roughly <b>$9 to $38</b> depending on how developed the site is, with a life jacket sometimes a little extra.",
             "The constant is <b>cash</b>. Most cenotes are <b>cash only</b>, and the busy ones often have <b>no ATM on site</b>, so carry enough pesos for the whole day. Bring small notes, since change can be limited."
@@ -593,6 +701,8 @@ export default {
         },
         {
           h: "What this means for your money",
+          icon: "peso",
+          key: { fig: "$50-70", tag: "Plan the gate", text: "Treat entry as a real line item. Chichen Itza plus a cenote is roughly 900 to 1,200 pesos, $50 to $70 per person in fees alone, before transport.", tone: "teal" },
           p: [
             "Plan the gate as a real line item, not an afterthought. A day trip to Chichen Itza plus a cenote is roughly <b>900 to 1,200 pesos ($50 to $70) per person</b> in entry fees alone, before transport, a guide, or lunch. Other ruins are cheaper: <b>Tulum</b> and <b>Coba</b> are around <b>200 to 250 pesos</b>.",
             "Carry <b>pesos in cash</b> for all of it. Card machines at these sites are unreliable and dollars are not useful at the gate. For getting pesos well and avoiding the airport-ATM traps, see the <a href=\"/mexico/cash-or-card\">Mexico cash and cards guide</a>."
@@ -615,6 +725,12 @@ export default {
     },
     {
       slug: "prices-by-season",
+      glance: [
+        { k: "Price swing", v: "Often 30 to 50%" },
+        { k: "Most expensive", v: "Mid-December to April" },
+        { k: "Cheapest", v: "September and October" },
+        { k: "Best value", v: "May-June and November shoulders" }
+      ],
       live: true,
       topic: "seasons",
       title: "When is Mexico cheapest, and when do prices spike? A cost calendar (2026) | True Trip Costs",
@@ -627,6 +743,8 @@ export default {
       sections: [
         {
           h: "The expensive windows",
+          icon: "coins",
+          key: { tag: "Peak, and Semana Santa", text: "High season is mid-December through April, with spikes at Christmas, US spring break, and Semana Santa, the week before Easter, a domestic surge that catches foreign visitors out.", tone: "amber" },
           p: [
             "High season runs <b>mid-December through April</b>, when North Americans and Europeans escape the winter. Within it, three spikes stand out. <b>Christmas and New Year</b> (roughly December 20 to January 3) is the single most expensive stretch, with beachfront resorts at premium rates and flights up sharply. <b>Spring break</b> (mid-February into March) fills Cancun, Playa del Carmen, Los Cabos and Puerto Vallarta with college crowds. For popular spots in this window, book <b>3 to 6 months ahead</b>.",
             "The one most foreign visitors miss is <b>Semana Santa</b>, the week before Easter (it moves each year, usually late March or April). This is a <b>domestic</b> surge: Mexican families take their big holiday, the beaches and colonial towns fill, and prices climb even where foreign tourism is light. If your dates are flexible, avoiding Semana Santa week is one of the easiest ways to cut cost."
@@ -634,6 +752,8 @@ export default {
         },
         {
           h: "The cheapest window, and its catch",
+          icon: "tag",
+          key: { fig: "50% off", tag: "Sept and Oct", text: "The cheapest window is September and October, up to about 50% below high season, though these are the rainy months with some hurricane risk.", tone: "teal" },
           p: [
             "The lowest prices, roughly <b>30 to 50 percent below</b> high season, land in the <b>rainy and low season</b>, especially <b>September and October</b>. September is often the cheapest month of the year: a Cancun all-inclusive that runs around <b>$400 a night in January</b> can fall to the <b>$180 to $220</b> range at a comparable property outside peak, with September the steepest of all.",
             "The catch is weather. <b>Hurricane season</b> runs <b>June 1 to November 30</b>, with the highest storm and heavy-rain risk in <b>August, September and October</b> on both coasts. A direct hit is uncommon, but the risk is real, which is exactly why prices drop. If you book this window, favor <b>refundable rates</b>, watch the forecast in the two weeks before you travel, and consider <b>travel insurance</b> that covers trip cancellation. Inland cities like <b>Mexico City and Oaxaca</b> see no hurricane impact at all, so they are a smart low-season choice."
@@ -641,6 +761,8 @@ export default {
         },
         {
           h: "Festivals worth the surge, in the right place",
+          icon: "cocktail",
+          key: { fig: "Local", tag: "Day of the Dead", text: "Some spikes are local: Day of the Dead, November 1 and 2, sends prices up specifically in Oaxaca, Mexico City and Michoacan, worth it if that is your reason to go.", tone: "teal" },
           p: [
             "Some spikes are local and tied to an event. <b>Day of the Dead</b> (November 1 and 2, with build-up in late October) sends prices soaring specifically in <b>Oaxaca, Mexico City and Michoacan</b> (Patzcuaro), the best places to experience it. If that is your goal, book <b>well ahead</b> and expect a premium. If it is not, simply <b>avoid those cities</b> in that window and prices elsewhere are unaffected.",
             "Summer (<b>July and August</b>) is a second, milder peak: Mexican school holidays plus international summer travel push coastal resorts back up, and Cancun in particular reverts toward high-season rates. On the Caribbean coast, <b>sargassum</b> (seaweed) can also be a factor in these months."
@@ -648,6 +770,8 @@ export default {
         },
         {
           h: "What this means for your money",
+          icon: "cash",
+          key: { fig: "20-40%", tag: "Shoulder months", text: "For the best value with low weather risk, aim for the May to early June or November shoulders: prices drop 20 to 40% from peak, crowds thin, and the weather is still good.", tone: "teal" },
           p: [
             "If you want the <b>best value with low weather risk</b>, aim for the <b>May to early June</b> or <b>November</b> shoulders: prices drop <b>20 to 40 percent</b> from peak, crowds thin, and the weather is still good. If you want the <b>rock-bottom price</b> and can accept storm risk, go in <b>September or October</b>, book refundable, and lean inland.",
             "Whatever you pick, the single biggest lever is <b>shifting your dates a week or two</b> around Christmas, spring break, and Semana Santa. For what your day-to-day spending will actually look like once you are there, see the <a href=\"/mexico\">Mexico cost guide</a>."
@@ -670,6 +794,12 @@ export default {
     },
     {
       slug: "all-inclusive-costs",
+      glance: [
+        { k: "Covers", v: "Room, meals, house drinks" },
+        { k: "Extra", v: "Specialty dining $25 to $80" },
+        { k: "Desk fee", v: "QR eco tax ~$4 per room, per night" },
+        { k: "Also", v: "Tips are still expected" }
+      ],
       live: true,
       topic: "all-inclusive",
       title: "What does an all-inclusive really cost in Mexico? The extras that are not included (2026) | True Trip Costs",
@@ -682,6 +812,8 @@ export default {
       sections: [
         {
           h: "What the package actually covers",
+          icon: "bowl",
+          key: { fig: "Included", tag: "The floor", text: "The package reliably covers your room, all meals, unlimited house-brand drinks, non-motorized water sports and entertainment. Treat it as the floor, not the total.", tone: "teal" },
           p: [
             "The standard inclusions are consistent across Mexican resorts: your <b>room</b>, <b>all meals</b> at the buffet and most sit-down restaurants, <b>unlimited house-brand</b> drinks alcoholic and soft, <b>non-motorized water sports</b> like kayaks and snorkeling, <b>kids' clubs</b>, <b>nightly entertainment</b>, and pool and beach access with chairs and towels. For a lot of trips that genuinely is most of the cost, which is the appeal.",
             "The gap is everything framed as premium or optional, and it adds up faster than people expect. A mid-range week can start at the base rate and end <b>25 to 40 percent higher</b> once the extras and fees are in."
@@ -689,6 +821,8 @@ export default {
         },
         {
           h: "What is not included, and what it costs",
+          icon: "tag",
+          key: { fig: "$25-80", tag: "The extras", text: "Specialty restaurants often carry a $25 to $80 per person surcharge, and premium alcohol, the spa ($100 to $300) and motorized water sports are extra.", tone: "teal" },
           p: [
             "The common extras, with typical 2026 prices: <b>specialty or a la carte restaurants</b> often carry a <b>$25 to $80 per person</b> surcharge and may need a reservation; <b>premium or top-shelf alcohol and champagne</b> are excluded or served only at upcharge bars ($8 to $15 a drink); <b>spa treatments</b> run <b>$100 to $300</b>; <b>motorized water sports</b> like jet ski or parasail are <b>$75 to $150</b>; and <b>room service</b> sometimes carries a delivery fee even when the food is free.",
             "Two big ones travelers assume are included but often are not: <b>off-resort excursions</b> (a cenote, Chichen Itza, Isla Mujeres) at <b>$35 to $80 per person</b>, which are extra even on an all-inclusive, and the <b>airport transfer</b>, which is only covered at certain room categories or booking tiers. Booking excursions independently rather than at the resort desk is usually cheaper."
@@ -696,6 +830,8 @@ export default {
         },
         {
           h: "The fees added at the desk",
+          icon: "receipt",
+          key: { fig: "$4/night", tag: "Not in the online price", text: "The Quintana Roo environmental tax, about 76 pesos, roughly $4 per room per night, is charged at the desk and is not in the online package price.", tone: "amber" },
           p: [
             "Some charges are not in the online price and appear at check-in or checkout. The main one is the <b>Quintana Roo environmental tax</b>, about <b>76 pesos (roughly $4) per room per night</b> in Cancun and similar in Playa del Carmen and Tulum, often <b>collected in cash</b> at the front desk. Expect a <b>refundable deposit hold</b> on your card at check-in too.",
             "Two other charges are separate from the resort and covered in their own guide: the <b>Visitax</b> (about $15 per person, paid online) and the federal <b>DNR</b> fee (usually inside your airfare). See the <a href=\"/mexico/fmm-and-visitax\">Mexico entry fees and Visitax guide</a> for those."
@@ -703,12 +839,16 @@ export default {
         },
         {
           h: "Tips are still expected",
+          icon: "tip",
+          key: { fig: "$100+", tag: "Still customary", text: "All-inclusive does not mean no tipping. Bartenders, servers, housekeeping and guides are customarily tipped, and it adds up, often $100 or more over a family stay.", tone: "teal" },
           p: [
             "All-inclusive does not mean no tipping. Bartenders, servers, housekeeping, a butler if you have one, and excursion guides are all customarily tipped, and it adds up: many families spend <b>$100 to $200 a week</b> on tips alone. Some resorts fold a service charge into the rate, but individual tipping is still expected on top. See the <a href=\"/mexico/tipping\">Mexico tipping guide</a> for who and how much."
           ]
         },
         {
           h: "What this means for your money",
+          icon: "cash",
+          key: { fig: "On top", tag: "The real total", text: "Treat the headline package as the floor. On top, plan for the per-night eco tax, tips, a specialty dinner or two, an excursion, and the airport transfer.", tone: "teal" },
           p: [
             "Treat the headline package as the <b>floor, not the total</b>. On top of it, plan for the <b>per-night environmental tax</b>, <b>tips</b>, at least one or two <b>specialty dinners or excursions</b>, and the <b>airport transfer</b> if your tier does not include it. For a week, that realistically adds <b>several hundred dollars</b> beyond the advertised price.",
             "The single best money move is to read the resort's own what-is-included page, not the marketing homepage, and ask directly <b>which restaurants, drink brands, and activities carry a surcharge</b> before you book. For what you will spend once you step off the resort, see the <a href=\"/mexico\">Mexico cost guide</a>."
@@ -728,6 +868,12 @@ export default {
     },
     {
       slug: "money-scams",
+      glance: [
+        { k: "Most cost", v: "Tens of dollars, avoidable" },
+        { k: "At the ATM", v: "Choose pesos, not dollars" },
+        { k: "Taxis", v: "Use official or an app" },
+        { k: "Bills", v: "Check the itemized total" }
+      ],
       live: true,
       topic: "scams",
       title: "Common money scams in Mexico, and what they cost you (2026) | True Trip Costs",
@@ -740,6 +886,8 @@ export default {
       sections: [
         {
           h: "At the ATM and the card machine",
+          icon: "atm",
+          key: { tag: "Choose pesos", text: "The most common trap is a legitimate-looking prompt: when a machine asks to charge in US dollars or pesos, always pick pesos. Dollars use a poor built-in rate.", tone: "amber" },
           p: [
             "The most common everyday trap is not a con at all, it is a legitimate-looking prompt. When a card machine or ATM asks whether to charge <b>in US dollars or pesos</b>, always choose <b>pesos</b>: the dollar option uses a poor built-in rate that quietly costs you <b>3 to 12 percent</b>. The same goes for shops and resorts that say dollars are welcome, the rate is usually bad. The full mechanics are in the <a href=\"/mexico/cash-or-card\">Mexico cash and cards guide</a>.",
             "The one worth real care is <b>ATM skimming</b> and card cloning. Use ATMs <b>inside a bank</b> rather than free-standing street machines, cover the keypad, and glance at the card slot for anything loose. If a machine <b>keeps your card</b>, do not walk away: that can be a trap to lift it once you leave, so call your bank or 911 from the spot. Watch cards at bars too, where a card can be taken away to swipe and double-charged or swapped."
@@ -747,6 +895,8 @@ export default {
         },
         {
           h: "Taxis: overcharges and the no-change trick",
+          icon: "taxi",
+          key: { fig: "$40-60", tag: "Use official or app", text: "The classic is a flat overcharge or an unofficial driver, turning a short ride into $40 to $60. Use the official taxi desk, a pre-booked transfer, or an app with a fixed fare.", tone: "teal" },
           p: [
             "At airports and on the street, the classic is a <b>flat overcharge</b> or an unofficial driver, which is how a short ride becomes <b>$40 to $60</b>. Use the <b>official taxi desk, a pre-booked transfer, or an app</b>, and track the route on your phone. The related move is the <b>closed hotel</b> line, where a driver insists your destination is shut and offers to take you somewhere better, which racks up the meter or steers you to a shop for commission. A polite no keeps you on track. The full breakdown is in the <a href=\"/mexico/taxis-and-apps\">Mexico taxis and apps guide</a>.",
             "The <b>no change</b> trick is simple: you hand over a 500 peso note for a 120 peso ride, the driver claims to have no change and keeps the difference. Carry <b>small notes</b> (20, 50, 100) and settle close to the exact fare. On a similar note, you can spend slightly <b>torn notes</b> in Mexico or swap them free at a bank, so a refusal to accept one is not your problem to solve. Using official transport and bank ATMs also quietly avoids the rare but real risk that comes with unmarked street taxis late at night."
@@ -754,6 +904,8 @@ export default {
         },
         {
           h: "Bars, restaurants, and free tastings",
+          icon: "receipt",
+          key: { fig: "Check it", tag: "Read the bill", text: "Check the itemized bill before paying: the usual issues are a double charge, items you did not order, or a service charge added twice. Watered-down drinks happen too.", tone: "teal" },
           p: [
             "Check the <b>itemized bill</b> before you pay. The usual issues are a <b>double charge</b>, items you did not order, or a service charge added twice. In bars, drinks are sometimes <b>watered down</b>, so if it matters, ask which brands they pour and order one by name.",
             "Be wary of <b>free tastings</b>, especially artisanal mezcal or tequila near markets, that quietly <b>obligate a purchase</b>: a tasting that looked complimentary can land as a <b>400 to 800 peso</b> bill. Confirm whether there is a charge before you accept, and you avoid the awkward surprise."
@@ -761,6 +913,8 @@ export default {
         },
         {
           h: "Roadside police fines and timeshare pitches",
+          icon: "cash",
+          key: { fig: "Stay calm", tag: "Roadside fines", text: "If someone in uniform demands an on-the-spot cash fine, stay calm and polite. Real fines are paid at a station, not by the roadside. You can ask for the details in writing.", tone: "teal" },
           p: [
             "If someone in a uniform stops you and demands an <b>on-the-spot cash fine</b> for a minor infraction, stay calm and polite. Real fines are <b>paid at a station, not by the roadside</b>. You can ask for the written ticket (the <b>infraccion</b>) and to settle it at the station, and note the officer's name and patrol number. You are not obliged to hand over your wallet or cash on the spot.",
             "The <b>free breakfast or free tour</b> offer is a <b>timeshare</b> sales pitch: a long, high-pressure presentation in exchange for the perk, sometimes with a deposit to guarantee you attend. It is not always a scam, but do not sign anything on the day. Separately, never pay <b>upfront fees</b> to a company offering to resell a timeshare you own, that is a well-documented fraud. You can check any company through Mexico's consumer agency, <b>PROFECO</b>."
@@ -768,6 +922,8 @@ export default {
         },
         {
           h: "What this means for your money",
+          icon: "peso",
+          key: { fig: "Habits", tag: "How to avoid it", text: "Almost everything here costs tens of dollars at most and is avoided by a few habits: pay in pesos, carry small notes, use official taxis or apps, use bank-lobby ATMs, and read the bill.", tone: "teal" },
           p: [
             "Almost everything here costs you tens of dollars at most and is avoided by the same few habits: <b>pay in pesos</b>, <b>carry small notes</b>, <b>use official taxis or apps</b>, <b>use bank-lobby ATMs</b>, and <b>read the bill</b>. The ones worth active care, because they can cost real money, are <b>ATM skimming</b> and <b>timeshare resale fraud</b>, so guard your card details and never pay an upfront resale fee.",
             "Handled calmly, none of this should shape your trip. For getting and spending money well while you are there, see the <a href=\"/mexico/cash-or-card\">Mexico cash and cards guide</a> and the <a href=\"/mexico\">Mexico cost guide</a>."
