@@ -162,6 +162,12 @@ export default {
   spokes: [
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Process", v: "Shared EU entry" },
+        { k: "Need", v: "ISO chip, rabies, EU health cert" },
+        { k: "Enter within", v: "10 days of endorsement" },
+        { k: "Coming home", v: "Simple CDC path" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Spain from the US (2026): the EU process, and the Spain-specific parts | True Trip Costs",
@@ -174,6 +180,8 @@ export default {
       sections: [
         {
           h: "Spain runs on the EU process",
+          icon: "health",
+          key: { fig: "10 days", tag: "No Spain-only permit", text: "The standard EU move: an ISO microchip first, a rabies shot after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS. Enter Spain within 10 days of that endorsement.", tone: "teal" },
           p: [
             "There is no Spain-only pet permit and no national quarantine. Bringing a dog or cat into Spain from the US is the standard EU move: an ISO microchip first, a rabies vaccination after the chip, then an EU Animal Health Certificate completed by a USDA-accredited vet and endorsed by APHIS, with the pet arriving within 10 days of endorsement. A first rabies shot adds a 21-day wait before travel.",
             "Because the process is identical across all 27 member countries, we do not repeat it per country. The full sequence, the microchip-before-rabies trap that costs people the most time, the 10-day clock, and the current APHIS endorsement fees all live on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Read that first, then come back for the Spain notes."
@@ -181,6 +189,8 @@ export default {
         },
         {
           h: "The Spain-specific parts",
+          icon: "receipt",
+          key: { fig: "Check", tag: "At the border", text: "Spanish customs may ask to see the endorsed certificate and confirm the chip, and pets should arrive through a designated traveller point of entry, which the major airports are.", tone: "teal" },
           p: [
             "At the border, Spanish customs may ask to see the endorsed certificate and confirm the microchip, and pets should enter through a designated traveller point of entry, which the major airports are. There is no dog or cat tapeworm rule for Spain, unlike Ireland, Finland or Malta.",
             "After you arrive, the Spanish-specific part is registration and, if you have a dog considered potentially dangerous, a licence. Spain requires pets to be microchipped and registered in the regional animal database once you have a local address, handled by a local vet. Spain also maintains a category of potentially dangerous dogs (perros potencialmente peligrosos), covering certain breeds such as some bull and mastiff types, which requires the owner to hold a licence, take out liability insurance, and muzzle and leash the dog in public. If your dog may fall in that category, check the requirement before you travel, since the rules also vary a little by region."
@@ -188,6 +198,8 @@ export default {
         },
         {
           h: "Coming back to the US is the easy part",
+          icon: "plane",
+          key: { fig: "Easy", tag: "The return trip", text: "A dog flying home from Spain is on the simplest CDC path: usually a CDC Dog Import Form receipt, a microchip, and a minimum age of 6 months.", tone: "teal" },
           p: [
             "Good news for the return trip: a dog flying home to the US from Spain is on the simplest CDC path, typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement.",
             "For the wider picture, including how Spain compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."
@@ -215,6 +227,12 @@ export default {
     },
     {
       slug: "tourist-tax",
+      glance: [
+        { k: "National tax", v: "None" },
+        { k: "Only two regions", v: "Catalonia and the Balearics" },
+        { k: "Elsewhere", v: "Madrid, Andalucia, Valencia: none" },
+        { k: "Collected", v: "At checkout, sometimes cash" }
+      ],
       live: true,
       topic: "tourist-tax",
       title: "Spain's tourist tax in 2026: only some regions charge it, and where you pay nothing | True Trip Costs",
@@ -227,6 +245,8 @@ export default {
       sections: [
         {
           h: "Where you pay, and where you do not",
+          icon: "tag",
+          key: { fig: "2 regions", tag: "Mostly none", text: "As of 2026 a general tourist tax applies only in Catalonia and the Balearic Islands. Madrid, Andalucia (Seville, Malaga, the Costa del Sol) and Valencia have no general tax.", tone: "teal" },
           p: [
             "This is the useful part to know before you book. As of 2026, a general tourist tax applies only in <b>Catalonia</b> and the <b>Balearic Islands</b>. Everywhere else the answer is mostly no: <b>Madrid</b> has none, and <b>Andalucia</b>, which covers <b>Seville, Malaga and the whole Costa del Sol</b>, has none. <b>Valencia</b> and the <b>Basque Country</b> have none. A handful of individual towns have added small local charges (<b>Santiago de Compostela</b> is the notable one), but they are the exception.",
             "So if you are choosing between, say, a few nights in Barcelona and the same in Madrid or Seville, the tourist tax is a real, if small, point in the mainland cities' favour. Where it does apply, it is <b>per person, per night</b> and collected at your accommodation, not baked into the price you paid online. For the wider money picture see the <a href=\"/spain\">Spain money guide</a>."
@@ -234,6 +254,8 @@ export default {
         },
         {
           h: "Catalonia and Barcelona",
+          icon: "euro",
+          key: { fig: "2 parts", tag: "Region plus city", text: "In Catalonia the tax has two parts: a regional rate across the region, and in Barcelona only an extra city surcharge on top. Both are per person, per night.", tone: "teal" },
           p: [
             "In Catalonia the tax has <b>two parts</b>: a <b>regional rate</b> set by the Catalan government that applies across the region, and, in Barcelona only, an <b>extra city surcharge</b> on top. Both are <b>per person, per night</b>, and the total is <b>capped at 7 nights</b>. Guests <b>under 16 are exempt</b>. Catalonia <b>raised its rates on 1 April 2026</b>, with further increases planned into 2027.",
             "The combined effect in <b>Barcelona</b> in 2026 is roughly <b>7 to 15 euros per person, per night</b> depending on the hotel category, which puts it among the higher city taxes in Europe. Outside Barcelona, only the regional part applies, so the rest of Catalonia is cheaper, though the 2026 law now lets other Catalan towns add a surcharge of up to 4 euros too."
@@ -241,6 +263,8 @@ export default {
         },
         {
           h: "The Balearic Islands ecotasa",
+          icon: "calendar",
+          key: { fig: "Seasonal", tag: "Per person, per night", text: "The Balearic Islands (Mallorca, Menorca, Ibiza, Formentera) charge the ecotasa, a per-person, per-night sustainable tourism tax since 2016. It is higher in the peak summer season.", tone: "teal" },
           p: [
             "The Balearic Islands (<b>Mallorca, Menorca, Ibiza and Formentera</b>) have charged a <b>Sustainable Tourism Tax</b>, widely called the <b>ecotasa</b>, since 2016. It is <b>per person, per night</b> and <b>seasonal</b>: higher in the summer peak, roughly <b>1 to 4.50 euros</b> a night by accommodation category, and much less in the low season. <b>Under-16s are exempt.</b>",
             "There is a built-in break for longer stays: from around the <b>ninth night</b>, the ecotasa is <b>halved</b>. As elsewhere, it is collected at your accommodation, so keep a little cash or expect it on the final bill."
@@ -248,6 +272,8 @@ export default {
         },
         {
           h: "What to expect at checkout",
+          icon: "alert",
+          key: { tag: "Not in the online total", text: "Where the tax applies it is almost never in the online total, so expect it at check-in or checkout, sometimes in cash. The 2026 rates in Catalonia and Barcelona are set to keep rising.", tone: "amber" },
           p: [
             "Where the tax applies, it is almost never in the online total. Expect it <b>at check-in or checkout</b>, sometimes in cash. The figures here are a <b>2026 read</b>, and both Catalonia and Barcelona are on a rising schedule, so confirm the per-night amount with your accommodation when you book.",
             "There is no legitimate way to avoid the tax where it is charged, and you should not try. The honest levers are the built-in ones: the <b>7-night cap</b> in Catalonia, the <b>halving from the ninth night</b> in the Balearics, a <b>lower accommodation category</b>, and simply knowing that much of mainland Spain does not charge it at all."
@@ -269,6 +295,12 @@ export default {
     },
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Euro (EUR)" },
+        { k: "Cards", v: "Card-first, over 90% take a tap" },
+        { k: "Contactless", v: "No PIN under about 50 euros" },
+        { k: "Cash for", v: "Tapas bars, markets, tips" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in Spain, or can I use cards? (2026) | True Trip Costs",
@@ -281,6 +313,8 @@ export default {
       sections: [
         {
           h: "Card-first, with a little cash for the edges",
+          icon: "phoneok",
+          key: { fig: "90%+", tag: "Cards almost everywhere", text: "Spain is comfortably card-first: over 90% of city businesses take a tap, contactless is the default with no PIN under about 50 euros, and Apple Pay and Google Pay are widely accepted.", tone: "teal" },
           p: [
             "Spain is comfortably <b>card-first</b>. <b>Visa and Mastercard</b> are taken almost everywhere, over <b>90% of city businesses</b> accept a tap, <b>contactless</b> is the default with <b>no PIN under about 50 euros</b>, and <b>Apple Pay and Google Pay</b> are widely accepted. You will hear about <b>Bizum</b>, an instant phone-to-phone payment locals love, but it needs a Spanish bank account, so it is not your tool. Carry a <b>chip-and-PIN card</b> as a backup.",
             "Keep <b>40 to 50 euros</b> in small notes and coins for the cash-friendly corners: <b>tapas bars</b>, neighborhood <b>markets</b>, small towns, tips, and the occasional place with a <b>card minimum</b> of around 5 euros. Anything above a 50 euro note is awkward to spend, so break big notes at a supermarket."
@@ -288,6 +322,8 @@ export default {
         },
         {
           h: "The euro-versus-dollar trap, and the kiosk ATMs",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose euros", text: "When a terminal or ATM asks to charge in dollars or euros, pick euros. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse than your bank rate.", tone: "amber" },
           p: [
             "When a card terminal or an ATM asks whether to charge in <b>dollars or euros, always choose euros</b>. Choosing dollars triggers dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's, and a Euronet machine can mark it up far more. At a Spanish ATM the prompt reads con conversion or sin conversion, so pick <b>sin conversion</b>, without conversion.",
             "Avoid the <b>blue-and-yellow Euronet and Cashzone ATMs</b> at airports, stations and tourist sites. They charge flat fees around <b>4 to 7 euros</b> and push the dollar conversion hardest. Use a machine <b>attached to a real bank</b>, CaixaBank, BBVA, Santander or Sabadell, and read the on-screen fee before you confirm."
@@ -295,6 +331,8 @@ export default {
         },
         {
           h: "Getting cash safely",
+          icon: "cash",
+          key: { fig: "Bank ATM", tag: "By a branch, by day", text: "Use a bank-branch ATM in daylight, take a few days worth at once to limit per-visit fees, and use a debit card rather than credit to avoid cash-advance charges.", tone: "teal" },
           p: [
             "Use a <b>bank-branch ATM</b> in daylight, take out a few days' worth at once to limit per-visit fees, and use a <b>debit card</b> rather than a credit card, since a credit-card withdrawal is a cash advance with a fee and interest from day one. Carry a <b>no-foreign-fee card</b> plus a backup on a different network.",
             "As a rough guide, two mid-range travelers might pull <b>250 to 350 euros</b> of day-to-day cash across a week beyond the hotel, with cards covering the rest. Watch your pockets in crowds: Barcelona and Madrid pickpockets work Las Ramblas, the metro and the crowds at big sights, so keep cards and phone in a front or zipped pocket."
@@ -302,6 +340,8 @@ export default {
         },
         {
           h: "Tipping, terraces and the city tax",
+          icon: "tip",
+          key: { fig: "Round up", tag: "IVA is included", text: "Tipping is light: the price includes IVA (VAT) and staff earn a real wage, so there is no US-style percentage. Locals just round up or leave the small change.", tone: "teal" },
           p: [
             "Tipping is light in Spain: the price already includes <b>IVA</b> (VAT) and staff earn a real wage, so there is no US-style percentage. Locals just round up or leave the small change, the <b>propina</b>. Leave any tip in <b>cash</b>, since card terminals rarely pass it on. One bill quirk: some places add a small <b>terrace surcharge</b> (suplemento de terraza) to sit outside, which is not a tip, so read the bill first.",
             "Spain's tourist tax is <b>regional</b>: only Catalonia (including Barcelona) and the Balearic Islands charge one, and most of the country does not. Where it applies and how much is in <a href=\"/spain/tourist-tax\">Spain's tourist tax</a>. For the wider picture, see the <a href=\"/spain\">Spain money guide</a>."
@@ -324,6 +364,12 @@ export default {
     },
     {
       slug: "vat-refund",
+      glance: [
+        { k: "VAT rate", v: "21% (IVA)" },
+        { k: "Minimum", v: "None, scrapped in 2019" },
+        { k: "You net", v: "About 12 to 17%" },
+        { k: "Validate", v: "At a DIVA kiosk on EU exit" }
+      ],
       live: true,
       topic: "vat-refund",
       title: "Spain VAT refund (IVA) for tourists (2026): no minimum spend, DIVA, and what you get back | True Trip Costs",
@@ -336,6 +382,8 @@ export default {
       sections: [
         {
           h: "Who qualifies, and the no-minimum rule",
+          icon: "tag",
+          key: { fig: "No minimum", tag: "Unusually generous", text: "The refund is for non-EU residents, what counts is your home address not your passport. Spain abolished the minimum purchase in 2019, so almost any buy qualifies.", tone: "teal" },
           p: [
             "The refund is for <b>non-EU residents</b> (what counts is your <b>home address</b>, not your passport) taking goods home unused. Spain is unusually generous: it <b>abolished the minimum purchase</b> in 2019, so unlike Italy or France there is <b>no threshold</b>, and even a small buy technically qualifies. Around <b>90% of stores</b> in tourist areas of Madrid and Barcelona take part, from El Corte Ingles to luxury boutiques; look for the tax-free signs.",
             "Only <b>goods</b> for personal use qualify, carried out of the EU unused. <b>Services</b> like hotels and restaurants do not, and neither do consumables used in Spain. Ask for the <b>tax-free form</b> at the moment of purchase, with your <b>passport</b>: a shop generally will not issue it after you have paid and left."
@@ -343,6 +391,8 @@ export default {
         },
         {
           h: "DIVA: the digital stamp",
+          icon: "qr",
+          key: { fig: "Scan", tag: "Mandatory digital stamp", text: "Spain validates through DIVA, its mandatory digital stamping system that replaced the manual customs stamp. At the airport, scan your form at a DIVA kiosk before you check bags.", tone: "teal" },
           p: [
             "Spain validates through <b>DIVA</b>, its mandatory digital stamping system, which has replaced the manual customs stamp used in much of the EU. At the airport you scan your form at a <b>DIVA kiosk</b> (or, if it flags, see a customs officer) before checking any bags with the goods. Kiosks are at the main airports including <b>Madrid Barajas and Barcelona El Prat</b>.",
             "Once validated, you collect from a <b>refund operator</b> (Global Blue, Planet and others) at the airport, choosing <b>cash</b> (with a commission) or a <b>refund to your card</b> (more, but it takes a few weeks). Keep the goods reachable in case customs wants to see them, and validate <b>before</b> you check in."
@@ -350,6 +400,8 @@ export default {
         },
         {
           h: "What you actually get back",
+          icon: "coins",
+          key: { fig: "12-17%", tag: "Not the full 21%", text: "The 21% IVA is the headline, but the operators take a cut, so you typically net closer to 12 to 17% of the price. With no minimum it is tempting to claim on small buys.", tone: "amber" },
           p: [
             "The <b>21% IVA</b> is the headline, but the <b>operators</b> take a cut, so you typically net closer to <b>12 to 17%</b> of the price. Because there is <b>no minimum</b>, it is tempting to claim on small buys, but the <b>fees and the queue</b> can outweigh a tiny refund, so it is really worth it on a <b>meaningful purchase</b>. A cash refund pays less than one to your card.",
             "One <b>carve-out</b> worth knowing: the Canary Islands, Ceuta and Melilla sit outside the EU VAT area, so their residents can claim on mainland purchases, and if you are traveling on through the Canaries the process differs. For a standard mainland trip home, the steps above are what apply."
@@ -357,6 +409,8 @@ export default {
         },
         {
           h: "Validate at your final EU exit, and the rest of the picture",
+          icon: "alert",
+          key: { tag: "Validate at your EU exit", text: "As across the EU, validate at your last EU departure point. If you connect through another EU country on the way home, you validate there, not in Spain.", tone: "amber" },
           p: [
             "As across the EU, <b>validate at your last EU departure point</b>. If you connect through another EU country on the way home, you validate <b>there</b>, not in Spain.",
             "The IVA refund is the shopping side of money in Spain. For the tax that only some regions add to your hotel bill, see <a href=\"/spain/tourist-tax\">Spain's tourist tax</a>, and for paying day to day, <a href=\"/spain/cash-or-card\">cash or card in Spain</a>. The wider picture is in the <a href=\"/spain\">Spain money guide</a>."
@@ -379,6 +433,12 @@ export default {
     },
     {
       slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Strong in cities, coast, islands" },
+        { k: "Carrier roaming", v: "About $12 a day" },
+        { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
+        { k: "Signal gaps", v: "Rural interior and mountains" }
+      ],
       live: true,
       esim: true,
       topic: "connectivity",
@@ -393,6 +453,8 @@ export default {
       sections: [
         {
           h: "A cost question first",
+          icon: "roamfee",
+          key: { fig: "$12/day", tag: "Roaming default", text: "Coverage is good where visitors go, so this is mainly about cost. A US carrier day pass runs about $12 a day, and T-Mobile included roaming is often slow 2G, fine for messages but not maps.", tone: "teal" },
           p: [
             "Spain has strong mobile coverage across the places visitors go, so the main decision is how you pay. The expensive default is roaming on your US plan: <b>AT&amp;T and Verizon</b> charge about <b>12 dollars a day</b>, roughly <b>84 dollars</b> for a week. <b>T-Mobile</b> and some Google Fi and Visible plans include roaming, but often at <b>slow 2G-style speeds</b> that handle messaging but struggle with maps and rideshare, so check your plan's fine print.",
             "Whatever you pick, do not roam with <b>no plan</b>. Pay-per-use data is around <b>2 dollars a megabyte</b>, thousands per gigabyte, and phones use data in the background, so <b>turn off data roaming</b> until an eSIM or pass is active."
@@ -400,6 +462,8 @@ export default {
         },
         {
           h: "Why an eSIM is usually cheapest",
+          icon: "tag",
+          key: { fig: "Few $/GB", tag: "The cheap option", text: "A travel eSIM is the cheapest way to get real data in Spain, a few dollars per gigabyte, well under day-pass fees. A Nomad eSIM activates before you fly and works on arrival.", tone: "teal" },
           p: [
             "A <b>travel eSIM</b> is the cheapest way for most visitors to get real data in Spain. A <b>Nomad eSIM</b> is a few dollars per gigabyte, well under day-pass fees, <b>activates before you fly</b> and works from landing, with no SIM counter. Your US number stays reachable on your normal plan while the eSIM carries the data.",
             "The network barely matters where you will be: a Nomad eSIM rides a <b>major Spanish network</b>, and coverage in the cities, along the coast and on the islands is strong on all of them. Set it up before departure, since installing it needs a connection."
@@ -407,6 +471,8 @@ export default {
         },
         {
           h: "Where signal drops, and the practical bits",
+          icon: "alert",
+          key: { fig: "The meseta", tag: "Where signal thins", text: "Gaps are in the rural interior and mountains: parts of the Pyrenees and the Sierra Nevada, and stretches of the empty inland meseta and small villages. In cities and on the coast you are fine.", tone: "teal" },
           p: [
             "The gaps are in the <b>rural interior and the mountains</b>: parts of the <b>Pyrenees and the Sierra Nevada</b>, and stretches of the empty inland meseta and small villages. In cities, along the coast and on the main islands you will have fast 4G and 5G, but a mountain hike or a back-road drive can lose signal.",
             "So <b>download offline maps</b> before a mountain day or a rural drive. For paying as you go, see <a href=\"/spain/cash-or-card\">cash or card in Spain</a>, and the <a href=\"/spain\">Spain money guide</a>."
@@ -429,6 +495,12 @@ export default {
     },
     {
       slug: "renting-a-car",
+      glance: [
+        { k: "Fuel policy", v: "Choose full-to-full" },
+        { k: "Avoid", v: "Full-to-empty prepay trap" },
+        { k: "Must carry", v: "IDP with your US license" },
+        { k: "Tolls", v: "Only about a fifth of motorways" }
+      ],
       live: true,
       topic: "driving",
       carExcess: true,
@@ -442,6 +514,8 @@ export default {
       sections: [
         {
           h: "The fuel-policy trick",
+          icon: "alert",
+          key: { tag: "Pick full-to-full", text: "Choose full-to-full: collect the car full, return it full, pay only for what you use. Avoid the full-to-empty option some budget brands push, where you prepay a whole tank and lose the unused fuel plus a fee.", tone: "amber" },
           p: [
             "This is where Spain's cheap headline rates make their money back. The fair option is <b>full-to-full</b>: you collect the car with a full tank and return it full, paying only for what you use, so stop at a station near the airport before dropping off. Some <b>budget brands</b> instead steer you to <b>full-to-empty</b> (sometimes called prepaid fuel): you <b>pay for a whole tank up front</b>, return the car empty, and any fuel you did not use is <b>gone</b>, often with a <b>refuelling service fee</b> on top.",
             "On a short rental you can easily lose <b>30 to 60 euros</b> this way. When you book and at the counter, pick <b>full-to-full</b>, and <b>photograph the fuel gauge and the odometer</b> at pickup and return so there is no dispute."
@@ -449,6 +523,8 @@ export default {
         },
         {
           h: "The permit you must carry",
+          icon: "passport",
+          key: { fig: "IDP", tag: "Enforced at the counter", text: "Spain requires non-EU drivers to hold an International Driving Permit with their home license, and the major chains (Sixt, Hertz, Europcar, Goldcar) do check for it at pickup. Get one from AAA first.", tone: "teal" },
           p: [
             "Spain requires non-EU drivers to hold an <b>International Driving Permit</b> alongside their home license. This one is enforced at the counter: the major chains (<b>Sixt, Hertz, Europcar, Goldcar</b>) will <b>refuse to release the car without it</b> in most cases, citing their own rules, and a police check can bring a fine of up to <b>150 euros</b> and may invalidate your insurance.",
             "You <b>cannot get an IDP in Spain</b>. Arrange it in the US before you travel, from <b>AAA</b> (about <b>20 dollars</b>), and carry it with your physical license and passport. As elsewhere, ignore instant online IDP sellers."
@@ -456,6 +532,8 @@ export default {
         },
         {
           h: "Insurance: decline the counter, cover the excess",
+          icon: "receipt",
+          key: { fig: "Cover it", tag: "US cover does not apply", text: "As across Europe, your US auto policy and credit-card collision generally do not apply in Spain, so you need collision protection. The desk confusion over the excess is deliberate, so read before you sign.", tone: "teal" },
           p: [
             "As across Europe, your <b>US auto policy and credit-card collision cover generally do not apply in Spain</b>, so you need collision protection. The confusion at the desk is deliberate: the agent bundles the <b>legally required cover</b>, optional <b>excess-reduction</b> waivers and deposit rules into one fast pitch, and tired travelers assume it is all mandatory. It is not.",
             "The rental includes basic collision and theft cover with a <b>high excess</b>; rather than pay the counter's steep fee to reduce it, <b>decline the excess reduction</b> and hold a <b>standalone excess policy</b> bought in advance, which covers the same gap for less. That is what the option on this page covers. Decide your plan <b>before</b> you land so the counter pitch cannot rush you."
@@ -463,6 +541,8 @@ export default {
         },
         {
           h: "Tolls, age and the extras",
+          icon: "euro",
+          key: { fig: "1 in 5", tag: "Kinder than neighbors", text: "Spain is kinder on tolls: only about a fifth of motorways are tolled, since many former toll roads (the AP autopistas) were made free in recent years, with free A-road alternatives too.", tone: "teal" },
           p: [
             "Here Spain is kinder than its neighbors: <b>only about a fifth of motorways are tolled</b>, since many former toll roads (the AP autopistas) were <b>made free</b> in recent years, and free A-road alternatives are common. Where tolls remain, pay by <b>card</b> or use a <b>Via-T</b> tag; a route like <b>Barcelona to the French border</b> is around <b>15 euros</b>.",
             "Drivers must be <b>21 or older</b> (23 to 25 for larger cars), with a <b>young-driver surcharge</b> of about <b>10 to 25 euros a day</b> under 25. One-way drops cost extra, and a <b>deposit hold</b> goes on your card. For paying day to day, see <a href=\"/spain/cash-or-card\">cash or card in Spain</a>, and the <a href=\"/spain\">Spain money guide</a>."
@@ -485,6 +565,12 @@ export default {
     },
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Best apps", v: "Uber, Cabify, Bolt, Free Now" },
+        { k: "Cheapest", v: "Cabify, Spanish, biggest fleet" },
+        { k: "Madrid airport", v: "Fixed 33 euros inside the M-30" },
+        { k: "Barcelona", v: "Book app rides ahead" }
+      ],
       live: true,
       topic: "taxis",
       caution: "low",
@@ -498,6 +584,8 @@ export default {
       sections: [
         {
           h: "Which apps, and where they work",
+          icon: "phoneok",
+          key: { fig: "Cabify", tag: "Four ride apps", text: "Spain has four main apps: Uber, Cabify, Bolt and Free Now. Cabify is Spanish, usually with the biggest fleet and keenest prices in the big cities. Compare a couple, since prices differ.", tone: "teal" },
           p: [
             "Spain has four main ride apps: <b>Uber, Cabify, Bolt and Free Now</b>. <b>Cabify</b> is Spanish and usually has the biggest fleet and keenest prices in the major cities; <b>Uber</b> is strongest in <b>Madrid</b> and also runs in Valencia, Malaga, Seville, Bilbao and others, but is <b>limited in Barcelona</b>. Prices vary sharply between apps for the same trip, so it is worth having two or three installed and <b>comparing before you book</b>. All accept international Visa and Mastercard and are cashless.",
             "In smaller towns and rural areas the apps thin out, and the <b>local taxi</b>, hailed, at a rank, or by phone, is the reliable option. Official taxis are clearly marked (in Madrid, white with a red diagonal stripe; in Barcelona, black and yellow) and run regulated meters, so they are safe and predictable even where an app is scarce."
@@ -505,6 +593,8 @@ export default {
         },
         {
           h: "The Barcelona catch",
+          icon: "alert",
+          key: { tag: "Book ahead in Barcelona", text: "Barcelona is different in 2026: Catalan rules have phased out most on-demand private-hire (VTC) rides, so any remaining app ride must be booked well ahead, not summoned on the spot.", tone: "amber" },
           p: [
             "Barcelona is genuinely different in 2026. Catalan rules have <b>phased out most on-demand private-hire (VTC) rides</b>: any remaining app ride must be <b>booked well ahead</b> rather than summoned on the spot, which ends the quick-car-across-town convenience you might expect. In practice, <b>Uber and Bolt are not useful for a spontaneous trip</b> in Barcelona, and where they operate they often just <b>dispatch a licensed taxi</b> anyway.",
             "So in Barcelona, lean on the <b>black-and-yellow taxis</b>: hail one on the street, pick one up at a rank outside stations and hotels, or summon a licensed cab through the <b>Free Now</b> app. They are plentiful, metered at regulated rates, and free of surge pricing, which during rush hour or a festival is an advantage. The city's <b>Metro</b> is also excellent for getting around cheaply."
@@ -512,6 +602,8 @@ export default {
         },
         {
           h: "The two airport fares to know",
+          icon: "plane",
+          key: { fig: "33 euros", tag: "Madrid Barajas", text: "Madrid Barajas has a fixed 33 euro taxi fare to anywhere inside the M-30 ring road, any time and any traffic, with no luggage fee. Take an official taxi at the rank.", tone: "teal" },
           p: [
             "The airports work differently. <b>Madrid Barajas</b> has a <b>fixed 33 euro taxi fare</b> to any destination inside the <b>M-30 ring road</b>, regardless of time or traffic and with no luggage fee; take an official white taxi from the rank. If you use an app, Uber, Cabify and Bolt pick up from designated <b>VTC zones</b> at the airport, and their price varies with demand, so compare against the fixed 33 euros.",
             "<b>Barcelona El Prat</b> has <b>no fixed fare</b>: the black-and-yellow taxi runs a meter, roughly <b>30 to 40 euros</b> to the center for the 20 to 25 minute ride, plus an <b>airport supplement of about 4.50 euros</b> and a minimum airport fare around <b>20 euros</b>. The <b>Aerobus</b> and the metro are cheaper if you are travelling light. For how cards and cash work, see <a href=\"/spain/cash-or-card\">cash or card in Spain</a>."
@@ -519,6 +611,8 @@ export default {
         },
         {
           h: "Paying and tipping",
+          icon: "euro",
+          key: { fig: "Cashless", tag: "Apps bill the card", text: "Apps are cashless and bill the card on file. Street taxis take cash and usually card, though the machine is not always smooth, so keep some euros handy for a street taxi.", tone: "teal" },
           p: [
             "Apps are <b>cashless</b> and bill the card on file. Street taxis take <b>cash and usually card</b>, though the card machine is not always as smooth as an app, so keep some euros handy for a taxi just in case. Official taxis must run the <b>meter</b> and give a receipt on request, so there is no need to agree a price in advance except where a fixed fare officially applies, as in Madrid from the airport.",
             "Tipping is <b>light</b>: rounding up to the nearest euro, or leaving small change, is normal and plenty, with no expected percentage. For the wider money picture, see the <a href=\"/spain\">Spain money guide</a>."
