@@ -169,6 +169,12 @@ export default {
   spokes: [
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Bolt (cheapest), also Uber" },
+        { k: "Old reputation", v: "Mostly fixed by the apps" },
+        { k: "Watch for", v: "Unlicensed touts at tourist spots" },
+        { k: "Pay in", v: "Koruna, not euros" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -182,6 +188,8 @@ export default {
       sections: [
         {
           h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "Bolt", tag: "Cheapest in Prague", text: "Bolt is the cheapest and most-used ride app in Prague, and the one to have. Uber works well too and is usually only a little pricier, so many travelers keep both and compare.", tone: "teal" },
           p: [
             "<b>Bolt</b> is the cheapest and most-used ride app in Prague, and the one to have. <b>Uber</b> works well too and is usually only a little pricier, so many travelers keep both and compare. <b>Liftago</b> is a Czech app that dispatches licensed taxis and uses a bidding model, which makes it a useful backup when Bolt and Uber are both surging on a busy night. All three lock the fare before the car arrives, so there is nothing to argue about.",
             "The reassuring part is that Prague's fearsome taxi reputation was earned back in the 1990s and 2000s, when unregulated cabs ran the tourist areas and honest meters were rare. Apps changed that. For almost every ride now, opening Bolt or Uber is cheaper, transparent and paid in advance, and it sidesteps the whole problem below."
@@ -189,6 +197,8 @@ export default {
         },
         {
           h: "The scam, and the licensed-taxi rules",
+          icon: "alert",
+          key: { tag: "Unlicensed touts", text: "Prague's old overcharging reputation is mostly outdated now that apps dominate, but unlicensed drivers and touts at Wenceslas Square, Old Town Square, the main station and the airport still quote inflated flat fares. Book an app instead.", tone: "amber" },
           p: [
             "The trouble that remains comes from <b>unlicensed drivers and touts</b> at the big tourist spots, Wenceslas Square, Old Town Square, the main train station and the airport, who quote a flat price instead of running the meter and overcharge many times the real fare. The airport version is a friendly man, often with an <b>official-looking vest</b>, who offers a taxi at a fixed price like 800 koruna, walks you to an unmarked car, and lands a final bill two to four times higher with invented luggage, night or toll fees. The single rule that defeats all of it: <b>never get into a taxi that approaches you</b>, and always book the ride yourself.",
             "If you do want a traditional cab, licensed Prague taxis must display a rate card on the doors, run the meter from the moment you get in, and give a printed receipt, with the regulated rate around 36 koruna per kilometer. The two names to trust for a street or phone-booked cab are <b>AAA Radiotaxi</b> (call 14014) and <b>Liftago</b>. Confirm the meter is on before you move, and keep a map open to watch the route."
@@ -196,6 +206,8 @@ export default {
         },
         {
           h: "Getting in from the airport",
+          icon: "plane",
+          key: { fig: "App it", tag: "Free airport Wi-Fi", text: "At Vaclav Havel airport, Bolt and Uber are the cheapest and clearest options, and the free airport Wi-Fi lets you order one before you even leave arrivals.", tone: "teal" },
           p: [
             "At <b>Vaclav Havel airport</b> (PRG), Bolt and Uber are the cheapest and clearest options, and because the airport has free Wi-Fi you can order one without a local SIM. Uber is the official airport partner allowed to wait at the terminal curb, while for Bolt or Liftago you walk to the marked ride-hailing pickup zone. Reckon on roughly <b>550 to 700 koruna</b> to the centre by Bolt. Ignore anyone soliciting a ride inside or just outside arrivals.",
             "If you would rather take public transport, the <b>Airport Express</b> bus runs straight to the main train station for about 100 koruna, or the number <b>119</b> bus connects to metro line A for about 40 koruna and takes you into the centre. Both are cheap, quick and completely scam-proof."
@@ -203,6 +215,8 @@ export default {
         },
         {
           h: "Fares, paying and tipping",
+          icon: "coins",
+          key: { fig: "Koruna", tag: "Not euros", text: "Pay in Czech koruna, not euros, which are poorly accepted and get a bad rate. In the apps the fare is fixed; for a street taxi, round up a little for good service.", tone: "teal" },
           p: [
             "Pay in <b>Czech koruna</b>, not euros. The koruna is the currency, and euros are poorly accepted and get a bad rate where they are taken at all. In the apps you pay by card in koruna, and for a traditional taxi carry small koruna notes. On an app ride, tipping is not expected, though rounding up to the nearest 10 or 20 koruna is a normal gesture, and the same modest rounding is standard in a metered street taxi.",
             "For the wider money picture, including how much cash to carry and why to always pay in koruna rather than euros, see the <a href=\"/czechia\">Czechia money guide</a>."
@@ -226,6 +240,12 @@ export default {
     },
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Process", v: "Shared EU entry" },
+        { k: "Need", v: "ISO chip, rabies, EU health cert" },
+        { k: "Enter within", v: "10 days of endorsement" },
+        { k: "Coming home", v: "Simple CDC path" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Czechia from the US (2026): the EU process, and the Czechia-specific parts | True Trip Costs",
@@ -238,14 +258,20 @@ export default {
       sections: [
         {
           h: "Czechia runs on the EU process",
+          icon: "health",
+          key: { fig: "10 days", tag: "No Czechia-only permit", text: "The standard EU move: an ISO microchip first, a rabies shot after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS. Enter Czechia within 10 days of that endorsement.", tone: "teal" },
           p: ["There is no Czechia-only pet permit and no national quarantine. Bringing a dog or cat into Czechia from the US is the standard EU move: an ISO microchip first, a rabies vaccination after the chip, then an EU Animal Health Certificate completed by a USDA-accredited vet and endorsed by APHIS, with the pet arriving within 10 days of endorsement. A first rabies shot adds a 21-day wait before travel.", "Because the core process is identical across the EU (and the countries that follow its rules), we do not repeat it per country. The full sequence, the microchip-before-rabies trap that costs people the most time, the 10-day clock, and the current APHIS endorsement fees all live on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Read that first, then come back for the Czechia notes."]
         },
         {
           h: "The Czechia-specific parts",
+          icon: "receipt",
+          key: { fig: "Check", tag: "At the border", text: "Czech customs may ask to see the endorsed certificate and confirm the chip, and pets should arrive through a designated traveller point of entry, which the major airports are.", tone: "teal" },
           p: ["At the border, Czech customs may ask to see the endorsed certificate and confirm the microchip, and pets should enter through a designated traveller point of entry, which Prague airport is. There is no dog or cat tapeworm rule for Czechia, unlike Ireland, Finland or Malta.", "The Czech-specific parts are local. Czechia requires dogs to be microchipped, and cities and municipalities charge an annual dog fee and ask owners to register the dog locally, with the amount set by each municipality. There is no strict national banned-breed list. Register and pay the local dog fee once you have an address."]
         },
         {
           h: "Coming back to the US is the easy part",
+          icon: "plane",
+          key: { fig: "Easy", tag: "The return trip", text: "A dog flying home from Czechia is on the simplest CDC path: usually a CDC Dog Import Form receipt, a microchip, and a minimum age of 6 months.", tone: "teal" },
           p: ["Good news for the return trip: a dog flying home to the US from Czechia is on the simplest CDC path, typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement.", "For the wider picture, including how Czechia compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."]
         }
       ],

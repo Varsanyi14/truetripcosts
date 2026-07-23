@@ -184,6 +184,12 @@ export default {
   spokes: [
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Two types", v: "Petit (in-city), grand (between towns)" },
+        { k: "Petit taxi", v: "Has a meter, often refused" },
+        { k: "Best app", v: "inDrive (a bidding model)" },
+        { k: "Marrakech airport", v: "70 to 100 dirham to town" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -197,6 +203,8 @@ export default {
       sections: [
         {
           h: "Petit taxi and grand taxi: the two-tier system",
+          icon: "wheel",
+          key: { fig: "Two types", tag: "In-city vs between towns", text: "A petit taxi works only within a city, takes up to three passengers, and is painted a city color, ochre in Marrakech. A grand taxi is a shared car for trips between towns.", tone: "teal" },
           p: [
             "A <b>petit taxi</b> is a small car that works only within a single city, takes up to three passengers, and is painted a city color: ochre in <b>Marrakech</b>, red in <b>Casablanca</b>, blue in <b>Rabat</b>. By law it runs a meter, which usually starts around 2 to 3 dirham with a similar rate per kilometer, so most city hops land in the <b>10 to 30 dirham</b> range, a bit more out to the edges, and roughly 50 percent higher at night after about 8 or 9pm. Sharing is normal, so a driver may pick up someone else going your way, and each passenger pays their own metered fare.",
             "A <b>grand taxi</b> is the shared workhorse between cities, towns and villages, these days often a modern minivan rather than the old Mercedes. You go to the grand-taxi rank for your destination, pay per seat, and the car leaves once it is full, or you can buy the empty seats to leave straight away. For longer routes, buses like CTM and Supratours, or the train, are usually the more comfortable choice."
@@ -204,6 +212,8 @@ export default {
         },
         {
           h: "The meter, and 'the meter is broken'",
+          icon: "alert",
+          key: { tag: "Insist on the compteur", text: "The recurring petit taxi issue is a driver who will not switch on the meter (the compteur) and names a flat, higher price, worst at night and with tourists. Insist on the meter or agree the fare first.", tone: "amber" },
           p: [
             "The one money issue you will meet again and again in a petit taxi is a driver who will not switch on the meter and instead names a flat, higher price, especially with an obvious visitor. This is overpaying rather than anything dangerous. The phrase that solves most of it is simple: <b>the meter, please</b>, or in the local phrasing, <b>le compteur, afak</b>. If the driver still refuses, agree a clear price before the car moves, and if the number is silly, just step out and take the next taxi.",
             "As a sense of the right figure, a short ride across a city center is a handful of dirham to the low tens, not a flat 100. Because sharing is normal, do not be surprised if the driver stops for another passenger, and that does not change your own fare. Rounding up a dirham or two at the end is a normal, friendly tip."
@@ -211,6 +221,8 @@ export default {
         },
         {
           h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "inDrive", tag: "A bidding model", text: "The most useful app is inDrive, which works in Marrakech, Casablanca, Rabat, Fes, Tangier and Agadir on a bidding model: you propose a fare and a driver accepts, so there is no meter fight.", tone: "teal" },
           p: [
             "The most useful app to have is <b>inDrive</b>, which operates in Marrakech, Casablanca, Rabat, Fes, Tangier and Agadir and works on a bidding model: you propose a fare, the driver accepts or counters, and you pay in cash. <b>Careem</b>, owned by Uber, works well in Casablanca and Rabat and also in Marrakech and Tangier, and feels familiar if you have used Uber. <b>Uber</b> itself left Morocco in 2018 and came back in a limited way in late 2025, so far only in Casablanca and Marrakech, so do not count on it elsewhere.",
             "One honest caveat: these ride apps sit in a <b>legal gray area</b> in Morocco, and many drivers are unlicensed private individuals. To avoid friction with licensed taxis, app drivers often ask you to walk a short distance from a taxi rank or an airport terminal for the pickup. The trade-off is that the price is fixed and the ride is tracked, and it is usually cheaper than a tourist-priced street taxi. Keep inDrive as your main app and Careem or Uber as backups."
@@ -218,6 +230,8 @@ export default {
         },
         {
           h: "Airports, getting into town and paying",
+          icon: "plane",
+          key: { fig: "70-100 DH", tag: "Marrakech Menara", text: "At Marrakech Menara, the correct metered or fixed price for a petit taxi into the medina or Gueliz is about 70 to 100 dirham, roughly $7 to $10. Agree it before you get in.", tone: "teal" },
           p: [
             "At <b>Marrakech Menara</b>, the correct metered or fixed price for a petit taxi into the medina or Gueliz is about <b>70 to 100 dirham</b> (roughly 7 to 10 US dollars). Anything well above that is an overcharge, so ignore the men who approach you inside the terminal and walk to the clearly marked taxi rank, or use a pre-booked transfer. Official airport taxis post their own, higher, fixed tariffs, so check the posted rate or agree the price first. <b>Casablanca</b>'s airport has a train into the city, which is an easy and cheap way in.",
             "Carry <b>dirham</b> in cash, since street taxis and app drivers expect it, and watch for a currency-switch line where a quoted number quietly turns from dirham into the same figure in euros. Agree everything in dirham. For the wider money picture, including how much cash to carry and where cards work, see the <a href=\"/morocco\">Morocco money guide</a>."
@@ -241,6 +255,12 @@ export default {
     },
     {
       slug: "money-scams",
+      glance: [
+        { k: "Where", v: "The medinas of Marrakech and Fes" },
+        { k: "Petit taxis", v: "Meter refused, insist on it" },
+        { k: "Fake guides", v: "Directions, then a payment demand" },
+        { k: "Pay in", v: "Dirham, not euros or dollars" }
+      ],
       live: true,
       topic: "scams",
       title: "Common money scams in Morocco, and what they cost you (2026) | True Trip Costs",
@@ -253,6 +273,8 @@ export default {
       sections: [
         {
           h: "Petit taxis: insist on the meter",
+          icon: "taxi",
+          key: { tag: "Meter refused", text: "Marrakech drivers are notorious, even locally, for refusing the meter with tourists and quoting a flat rate many times the real fare, worst at night. Insist on the compteur, or use inDrive.", tone: "amber" },
           p: [
             "Marrakech taxi drivers are notorious, even locally, for <b>refusing the meter</b> with tourists and quoting a flat rate many times the real fare, worst at night: a ride that is <b>15 to 20 dirhams</b> on the meter gets quoted at <b>100 to 200</b>. Petit taxis are <b>legally required to run the meter</b>, so as you get in, ask for it: <b>compteur, afak</b> (meter, please). If the driver refuses or says it is broken, <b>close the door and flag another</b>.",
             "At the airport, use the <b>official taxi desk with posted prices</b> rather than a driver who approaches you, and for city rides the apps <b>inDrive and Careem</b> remove the guesswork where they operate. Djemaa el-Fna to the Marrakech airport should be roughly <b>70 to 80 dirhams</b> by meter in the daytime, for reference."
@@ -260,6 +282,8 @@ export default {
         },
         {
           h: "Fake guides and the closed-today redirect",
+          icon: "tag",
+          key: { tag: "The friendly guide", text: "The defining medina scam: someone falls into step, says they are going your way or that you look lost, then leads you to a commission shop or claims your route is closed today, steering you to a carpet seller. Decline politely.", tone: "amber" },
           p: [
             "The defining medina scam is the <b>friendly guide</b>: someone falls into step with you, says they are <b>going the same way</b> or that you look lost, leads you on a short walk, and then <b>demands payment</b>, often after steering you into a <b>carpet or craft shop</b> where they earn a commission. The counter is simple: <b>decline all unsolicited guidance from the first moment</b>, politely and firmly, and navigate with an offline map.",
             "A cousin of this is the <b>it is closed today</b> line: a stranger tells you the square, tannery or sight you are heading for is shut, closed for a festival, or open only later, and helpfully offers an alternative, which turns out to be a shop. Assume it is not true, <b>check for yourself</b>, and remember there is <b>no entrance fee for public medina streets</b>, so anyone collecting one is not legitimate."
@@ -267,6 +291,8 @@ export default {
         },
         {
           h: "Tanneries, henna and photos",
+          icon: "cash",
+          key: { fig: "Not free", tag: "Then a payment demand", text: "The tannery trap starts as a free viewpoint or a helpful escort to the dye pits, then turns into high-pressure leather selling. Henna women may grab your hand, and photo helpers demand a tip. A firm no thanks works.", tone: "teal" },
           p: [
             "The <b>tannery</b> trap starts as a <b>free viewpoint</b> or a helpful escort to see the dye pits, then becomes <b>high-pressure selling</b> of leather goods, or a demand for money to leave. You <b>cannot be lawfully prevented from leaving</b> any shop, so decline firmly and go. If you want to see a tannery, arrange it through your <b>riad or a licensed guide</b>.",
             "In Djemaa el-Fna and the busy lanes, a <b>henna</b> artist may <b>grab your hand and start applying a design uninvited</b>, then demand <b>200 dirhams or more</b>; some use <b>black henna</b> that can irritate skin. Similarly, a <b>snake charmer or monkey handler</b> will drape an animal on you or gesture for a photo, then charge. The rule for both: <b>agree a price, or decline, before anything touches your hand or your camera</b>, and do not accept an unsolicited demonstration."
@@ -274,6 +300,8 @@ export default {
         },
         {
           h: "Money, markets and the pay-in-dirhams trap",
+          icon: "coins",
+          key: { fig: "In dirham", tag: "Haggle, pay local", text: "Haggling is normal in the souks, so ask your riad what things should cost, open well below the first price, and walk away freely. Pay in dirham, not euros or dollars, which get a poor rate.", tone: "teal" },
           p: [
             "Haggling is normal in the souks, so <b>ask your riad what things should cost</b>, open well below the first price, and walk away freely; note too that <b>accepting mint tea in a shop obliges you to nothing</b>, it is a sales courtesy, not a contract. Watch for <b>argan oil</b> sold as pure that is diluted, and buy from a reputable cooperative if it matters.",
             "The <b>dirham is a closed currency</b>, so you will change money on arrival: use <b>banks, official bureaux de change or ATMs</b>, never a street changer offering a better rate, who deals in <b>counterfeit notes</b>. At the ATM or card machine, choose <b>dirhams, not your home currency</b>, since the convert-for-you option carries a poor built-in rate."
@@ -281,6 +309,8 @@ export default {
         },
         {
           h: "What this means for your money",
+          icon: "receipt",
+          key: { fig: "Patterns", tag: "How to avoid it", text: "The whole medina repertoire is financial, not physical, and runs on social pressure and confusion. Knowing the pattern removes most of the risk: insist on meters, decline unasked help, agree prices first, and pay in dirham.", tone: "teal" },
           p: [
             "The whole medina repertoire is <b>financial, not physical</b>, and it runs on <b>social pressure and confusion</b>, so understanding the pattern removes most of the risk. The short list: <b>insist on the taxi meter or use an app</b>, <b>decline unsolicited help from the outset</b>, <b>agree a price before any henna, photo or tannery visit</b>, and <b>change money only through official channels</b>. Most of it costs tens of dirhams to a few euros.",
             "Handled with a calm, friendly firmness, Morocco is a wonderful and welcoming trip. For getting around, see the <a href=\"/morocco/taxis-and-apps\">Morocco taxis and apps guide</a>, and for the wider picture the <a href=\"/morocco\">Morocco cost guide</a>."

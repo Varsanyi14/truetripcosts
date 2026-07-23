@@ -179,6 +179,12 @@ export default {
   spokes: [
     {
       slug: "staying-connected",
+      glance: [
+        { k: "Best network", v: "Telkomsel, widest reach" },
+        { k: "If beyond South Bali", v: "Telkomsel matters most" },
+        { k: "Dead zones", v: "Islands, boats, remote treks" },
+        { k: "Simplest", v: "A travel eSIM, ready on landing" }
+      ],
       live: true,
       esim: true,
       topic: "connectivity",
@@ -193,6 +199,8 @@ export default {
       sections: [
         {
           h: "Why the carrier matters more than the plan",
+          icon: "phoneok",
+          key: { fig: "Telkomsel", tag: "Coverage, not plan size", text: "Indonesia is thousands of islands, and unlike many countries the networks do not all cover the tourist areas. Telkomsel has by far the widest reach, so pick an eSIM that runs on it, not the biggest plan.", tone: "teal" },
           p: [
             "In a lot of countries any travel eSIM is fine because the networks all cover the tourist areas. Indonesia is not like that. The country is thousands of islands, and coverage falls off sharply once you leave the main resort belt, so the network your eSIM rides on is the thing that decides whether you are connected.",
             "<b>Telkomsel</b> has the widest reach by a clear margin, including the smaller islands, rural Bali and the remote dive and trek spots. XL Axiata and Indosat are strong in South Bali and Jakarta but thin out beyond them. So the honest rule is simple: if you are staying in Seminyak, Canggu or Ubud the whole time, almost anything works, but if your trip goes further, choose a plan backed by Telkomsel."
@@ -200,6 +208,8 @@ export default {
         },
         {
           h: "Where signal actually drops",
+          icon: "alert",
+          key: { tag: "Islands and boats", text: "Expect dead zones on Nusa Penida's clifftop viewpoints, in the Gili Islands away from the main villages, on boats between islands, and on remote treks. Download maps and details before you go.", tone: "amber" },
           p: [
             "Expect dead zones on <b>Nusa Penida's clifftop viewpoints</b>, in the <b>Gili Islands</b> away from the main villages, on boats between islands, and on remote trekking routes. These are exactly the places people go for the day, so it catches travelers out.",
             "Download <b>offline maps</b> before you set off, so a lost signal does not leave you stranded on a scooter with no directions. This is cheap insurance and takes two minutes at your hotel Wi-Fi."
@@ -207,6 +217,8 @@ export default {
         },
         {
           h: "The simplest setup that works",
+          icon: "qr",
+          key: { fig: "eSIM", tag: "Skip the SIM counter", text: "A travel eSIM skips the airport SIM counter queue at Denpasar and the ID paperwork a local SIM needs, and it is ready the moment you land. A Nomad eSIM on Telkomsel is the simplest.", tone: "teal" },
           p: [
             "A travel eSIM avoids the airport SIM counter queue at Denpasar and the ID paperwork a local SIM needs, and it is ready the moment you land. <b>Nomad</b> runs its Indonesia eSIM on the <b>Telkomsel</b> network, which is the wide-reach carrier you want for a trip that goes past South Bali, so it lines up with the advice above rather than against it.",
             "Set it up before you fly, since you need a connection to install it, and keep an eye on your data if you are streaming or using maps heavily on longer days."
@@ -244,6 +256,12 @@ export default {
     },
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Grab and Gojek (cars + ojek)" },
+        { k: "Trusted cab", v: "Bluebird, meter always on" },
+        { k: "No-app zones", v: "Some areas ban app pickups" },
+        { k: "Airport", v: "Official prepaid counter at Denpasar" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -257,6 +275,8 @@ export default {
       sections: [
         {
           h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "Grab/Gojek", tag: "Cars and motorbikes", text: "Grab and Gojek are the two big apps across Indonesia, both showing a fixed fare before you ride and both doing cars and motorbike (ojek) rides. Keep both, and they beat a street taxi.", tone: "teal" },
           p: [
             "<b>Grab</b> and <b>Gojek</b> are the two big apps across Indonesia, both showing a fixed fare before you ride and both doing cars and motorbike rides. Keep both, since prices differ by route and time, and Grab tends to have better availability for longer runs while Gojek often wins on short hops. <b>Maxim</b> and <b>inDrive</b> are cheaper backups. <b>Uber</b> left Southeast Asia in 2018, so it does not work here, and any old guide telling you to use it is out of date.",
             "For a traditional metered taxi, <b>Bluebird</b> is the one to trust, and the cleanest way to get a real one is through the Bluebird app or the <b>GoBlueBird</b> option inside Gojek. One practical catch: Grab and Gojek need a <b>local phone number</b> to register, so pick up a SIM as soon as you land, or ask the airport lounge staff to help, otherwise you may be stuck before you start."
@@ -264,6 +284,8 @@ export default {
         },
         {
           h: "Bluebird, and the fake-Bluebird trick",
+          icon: "taxi",
+          key: { fig: "Bluebird", tag: "Meter always on", text: "For a metered street cab, use Bluebird, a blue car with a white bird logo and the meter always on, via its own app or GoBlueBird inside Gojek. Watch for copycats using a similar name or color.", tone: "teal" },
           p: [
             "<b>Bluebird</b> is a blue car with a white bird logo, uniformed drivers, and a meter that is always on, and it is the metered taxi that locals and expats actually trust. The trick to know is the imitation: some drivers give a car a blue paint job and a similar-looking logo, and a name like <b>Bali Taxi</b> that is close but not the real thing. If a blue taxi looks not quite right, walk on and book a genuine Bluebird in the app.",
             "Even in a real Bluebird, make sure the meter is running from the start. The advantage of booking through the app rather than flagging one down is that you get the driver and plate on record and the fare tracked, which removes the two most common street problems in one go, the fake cab and the meter that mysteriously will not work."
@@ -271,6 +293,8 @@ export default {
         },
         {
           h: "The no-app zones (the taxi mafia)",
+          icon: "alert",
+          key: { tag: "Some areas ban app pickups", text: "Bali runs partly on banjar (village) rules, and in some areas a local taxi union bans Grab and Gojek pickups. Your driver may ask you to walk to a pickup point just outside the zone.", tone: "amber" },
           p: [
             "This is the part that surprises visitors. Bali runs partly on <b>banjar</b>, or village, rules, and in some areas a local taxi union bans Grab and Gojek pickups outright. The usual spots are <b>central Ubud</b> (around Monkey Forest Road, the palace and the market), parts of <b>Canggu</b>, the <b>Uluwatu</b> temple area, and some beaches and temple or ferry points. The apps still work, but a driver may ask you to walk <b>300 to 500 meters</b> to a buffer spot to be picked up, or to be dropped a short walk before your destination.",
             "The good news is that dropping off in these zones is usually fine, it is the pickup that is controlled, so getting out is rarely a problem. In the strictest spots, a motorbike <b>ojek</b> or a local fixed-rate car may be the only way, in which case agree the price first. None of this is dangerous, it is a turf arrangement, and a short walk to where the app driver can legally collect you is the normal workaround."
@@ -278,6 +302,8 @@ export default {
         },
         {
           h: "Denpasar airport and paying",
+          icon: "plane",
+          key: { fig: "Prepaid", tag: "On your left", text: "At Denpasar (Ngurah Rai, DPS), the official prepaid taxi counter is on your left before you exit arrivals, selling zone-based fixed fares. Or book a Grab to the app pickup point.", tone: "teal" },
           p: [
             "At <b>Denpasar</b> (Ngurah Rai, DPS), the official <b>prepaid taxi counter</b> sits on your left before you exit arrivals, selling zone-based fixed fares, roughly <b>150,000 to 450,000 rupiah</b> depending on how far you are going. <b>Grab</b> and <b>Gojek</b> also work from the airport, with a small airport exit fee added, and are usually comparable. A <b>pre-booked private transfer</b>, around 10 to 25 US dollars, gives you a fixed price and a driver waiting with your name.",
             "One honest point: in Bali's heavy traffic, a meter is not always the cheapest option, since it keeps ticking in a jam, so a fixed airport fare or a booked transfer can protect your wallet on the long run up to Ubud. Carry <b>rupiah</b> in cash for street rides and small extras. For the wider money picture, see the <a href=\"/indonesia\">Indonesia money guide</a>."

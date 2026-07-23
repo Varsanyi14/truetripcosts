@@ -180,6 +180,12 @@ export default {
   spokes: [
     {
       slug: "eta",
+      glance: [
+        { k: "Visa", v: "ETA (subclass 601), before you fly" },
+        { k: "The catch", v: "App-only, no website" },
+        { k: "Cost", v: "Flat AUD $20 (about $13 US)" },
+        { k: "Where", v: "The official AustralianETA app" }
+      ],
       live: true,
       topic: "visas",
       title: "How do US citizens get an Australia ETA? (2026) | True Trip Costs",
@@ -198,6 +204,8 @@ export default {
       sections: [
         {
           h: "The catch: it is app-only",
+          icon: "phoneok",
+          key: { fig: "App-only", tag: "No website", text: "Since 2022, the only way to apply for an Australian ETA is the official AustralianETA app from the Department of Home Affairs. There is no website version, so ignore any site claiming otherwise.", tone: "teal" },
           p: [
             "Since 2022, the <b>only</b> way to apply for an Australian ETA is the official <b>AustralianETA app</b>, made by the Department of Home Affairs. The old website application was retired, so if a site offers to process your ETA online, it is a third party, not the government. Download the app from the Apple App Store or Google Play.",
             "The app works by <b>scanning your passport chip</b> (your passport must be the chipped, electronic kind) and taking a <b>live selfie</b>. If your passport cannot be scanned, or you have a complication like a past visa refusal, you apply for a different visa (Subclass 600) instead."
@@ -205,6 +213,8 @@ export default {
         },
         {
           h: "What it costs, and what you get",
+          icon: "aud",
+          key: { fig: "AUD $20", tag: "The only real cost", text: "There is no visa application charge, but the app charges a flat AUD $20 service fee, roughly $13 US, and that is the only legitimate cost. The ETA is valid for a year of visits.", tone: "teal" },
           p: [
             "There is <b>no visa application charge</b>, but the app charges a flat <b>AUD $20 service fee</b> (roughly 13 US dollars), and that is the only legitimate cost. It is non-refundable.",
             "The ETA is <b>valid for 12 months</b> (or until your passport expires), with <b>multiple entries</b> of up to <b>3 months</b> each. It covers tourism, visiting family, and business visitor activities like meetings and conferences, but <b>not paid work</b>. It is linked to your passport, so there is nothing to print."
@@ -212,6 +222,8 @@ export default {
         },
         {
           h: "How to apply, step by step",
+          icon: "qr",
+          key: { fig: "10 min", tag: "In the app", text: "Most people finish in under ten minutes in the app: scan your passport, take a photo, answer a few questions and pay the AUD $20. Apply before you book flights to be safe.", tone: "teal" },
           p: [
             "Most people finish in under ten minutes."
           ],
@@ -225,6 +237,8 @@ export default {
         },
         {
           h: "Watch for the markup sites, and one gotcha",
+          icon: "alert",
+          key: { tag: "Skip the markup sites", text: "Because the ETA is a paid, required document, lookalike sites rank in search and charge well above the AUD $20 to file it. The app is the only official route, so use nothing else.", tone: "amber" },
           p: [
             "Because the ETA is a paid, required document, plenty of <b>lookalike sites</b> rank in search and charge well above the AUD $20 to file it for you. The app is the only official channel and the fee is always just AUD $20, so anything higher is a markup.",
             "The gotcha: if you <b>renew your passport</b>, your ETA becomes invalid and you need a new one, because it is linked to the specific passport. And the ETA <b>cannot be extended</b>, for a longer stay you would need a Subclass 600 visitor visa. For how money works once you land, see the <a href=\"/australia\">Australia money guide</a>."
@@ -247,6 +261,12 @@ export default {
     },
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Lead time", v: "At least 6 to 7 months" },
+        { k: "Fixed wait", v: "180 days, cannot shorten" },
+        { k: "Permit", v: "A BICON import permit (~AUD 600)" },
+        { k: "Quarantine", v: "Mandatory at Mickleham" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Australia from the US (2026): the 180-day wait, quarantine and cost | True Trip Costs",
@@ -259,6 +279,8 @@ export default {
       sections: [
         {
           h: "The two numbers: lead time and cost",
+          icon: "calendar",
+          key: { fig: "6-7 months", tag: "Start early", text: "Two large things decide an Australia move: lead time is at least 6 to 7 months, dominated by a fixed 180-day residency that starts when the lab receives the blood sample and cannot be shortened.", tone: "teal" },
           p: [
             "The two things that decide an Australia move with a pet, and both are large. <b>Lead time is at least 6 to 7 months</b>, dominated by a fixed 180-day waiting period tied to the rabies antibody test, plus permit processing and quarantine booking. <b>Cost is the highest of any destination we cover</b>, commonly several thousand dollars and often well into five figures for a large dog handled by a relocation company. The biggest lines are air transport as cargo to Melbourne and the mandatory government quarantine.",
             "Australia only accepts pets from approved countries and classes the mainland US as Group 3, meaning rabies is present but controlled, so a testing and waiting sequence applies. Guam and Hawaii are treated differently, so contact Australia's Department of Agriculture, Fisheries and Forestry first if your pet is coming from either."
@@ -266,6 +288,8 @@ export default {
         },
         {
           h: "The steps, in order",
+          icon: "health",
+          key: { tag: "Order is unforgiving", text: "The sequence matters more here than almost anywhere: one step, the identity check, has to happen before the blood draw, or you lose the result and restart. Follow the order exactly.", tone: "amber" },
           p: [
             "The sequence matters more here than almost anywhere, and one step, the identity check, has to happen before another, the blood draw, or you lose the option to shorten quarantine."
           ],
@@ -283,6 +307,8 @@ export default {
         },
         {
           h: "Dogs face extra tests, and cats are not exempt from the titer",
+          icon: "alert",
+          key: { fig: "Dogs: more", tag: "Species-specific", text: "Dogs carry a heavier load: on top of the rabies sequence they need a canine influenza vaccination and, depending on the permit, other tests. Cats still need the rabies titer too.", tone: "teal" },
           p: [
             "Dogs from the US carry a heavier load than cats. On top of the rabies sequence, dogs need a <b>canine influenza vaccination</b>, and depending on your permit they may need testing or treatment for diseases such as <b>Brucella canis</b> and <b>Ehrlichia canis</b>, with conditions that have changed in recent years. Because these dog rules move, read your import permit and Australia's step-by-step guide carefully rather than relying on an old checklist.",
             "Cats are simpler but still need the rabies antibody test, even an indoor-only cat that has never been outside. A handful of dog breeds are banned from entry entirely, so check the list if you have a restricted breed."
@@ -290,6 +316,8 @@ export default {
         },
         {
           h: "Where the money goes",
+          icon: "aud",
+          key: { fig: "AUD 600", tag: "Permit plus quarantine", text: "The two government charges you can pin down are the BICON import permit, roughly AUD 600 and non-refundable, and the mandatory Mickleham quarantine, a minimum 10-day stay you book and pay for.", tone: "amber" },
           p: [
             "The two government charges you can pin down are the <b>BICON import permit</b>, roughly AUD 600 and non-refundable, and the <b>Mickleham quarantine</b>, with a minimum 10-day stay around AUD 1,900 and a 30-day stay considerably more. On top of those sit the rabies antibody test and other lab work, the canine influenza vaccine for dogs, an airline-approved crate, and the single largest cost, air cargo to Melbourne. There is also a smaller airline handling charge collected before your pet is released.",
             "Government fees are reviewed regularly and airfreight pricing swings a lot, so treat these as a budgeting frame and confirm the current figures with the Department of Agriculture and your airline before you commit."
@@ -297,6 +325,8 @@ export default {
         },
         {
           h: "Coming back to the US",
+          icon: "plane",
+          key: { fig: "Easy", tag: "The return trip", text: "The return is far simpler than the outbound: Australia is rabies-free, so a dog flying home to the US is on the CDC easy path, usually just a free CDC form.", tone: "teal" },
           p: [
             "The return is far simpler than the outbound trip. Australia is rabies-free, so a dog flying home to the US is on the CDC easy path, usually just a free CDC form receipt with no titer and no quarantine, which we cover in <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a>.",
             "For how Australia compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."
