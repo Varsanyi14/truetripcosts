@@ -173,6 +173,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Euro (EUR)" },
+        { k: "Cards", v: "Common, but cash still rules many spots" },
+        { k: "Carry", v: "Some euros, always" },
+        { k: "On a card", v: "Choose euros, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Germany, or can I use cards? (2026) | True Trip Costs",
+      description: "More than you would expect. Germany is card-friendly in bigger shops but still runs on cash in bakeries, bars, kiosks and many restaurants, so always carry euros. Choose euros not dollars, and skip the Euronet ATMs. Checked July 2026.",
+      h1: "Do I need cash in Germany, or can I use cards?",
+      lede: "Short answer: more cash than the rest of Western Europe. Germany is card-friendly in larger shops and hotels, but a surprising number of everyday places take only cash, so carry euros. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "More cash than you would expect. Germany is <b>card-friendly in larger shops, hotels and chain restaurants</b>, and contactless is increasingly common, but a <b>surprising number of everyday places are cash-only or cash-preferred</b>: bakeries, bars, kiosks (Spatis), market stalls and plenty of smaller restaurants and cafes. The domestic card is the <b>Girocard</b>, and while <b>Visa and Mastercard</b> are widely taken, some places accept only Girocard or cash, and Amex is patchy. So <b>always carry some euros</b>. Choose <b>euros, not dollars</b> on any card or ATM, and use bank ATMs rather than the Euronet kiosks.",
+      sections: [
+        {
+          h: "Card-friendly, but cash still rules a lot",
+          icon: "cash",
+          key: { fig: "Carry euros", tag: "Cash-only is common", text: "Bigger shops, hotels and chains take cards, but bakeries, bars, kiosks, markets and many restaurants are cash-only or cash-preferred. Always keep euros on you.", tone: "amber" },
+          p: [
+            "Germany is <b>more cash-reliant than most of Western Europe</b>. Larger supermarkets, department stores, hotels and chain restaurants take <b>cards</b>, and <b>contactless</b> (including Apple Pay and Google Pay) is increasingly normal. But a lot of everyday places, <b>bakeries, bars, kiosks (Spatis), market stalls, and plenty of smaller restaurants and cafes</b>, are <b>cash-only or prefer cash</b>, and some will wave you off for a small card payment.",
+            "The domestic debit card is the <b>Girocard</b>. <b>Visa and Mastercard</b> are widely accepted, but not universally: some spots take only Girocard or cash, and <b>Amex</b> is the least reliable. The practical rule is simple: <b>always carry some euros</b>, and do not assume a card will work at a small place."
+          ]
+        },
+        {
+          h: "Choose euros, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose euros", text: "When a terminal or ATM offers dollars or euros, pick euros. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse than your bank's.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge you in <b>dollars or euros, always choose euros</b>. Choosing dollars triggers dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use an ATM (a <b>Geldautomat</b>) attached to a <b>real bank</b>, such as Sparkasse, Volksbank, Deutsche Bank or Commerzbank. Avoid the standalone <b>Euronet</b> machines at stations and tourist spots, which charge high fees and push the dollar conversion hardest."
+          ]
+        },
+        {
+          h: "How much cash, and paying",
+          icon: "coins",
+          key: { fig: "Keep small notes", tag: "For daily spots", text: "Keep smaller euro notes and coins for bakeries, bars and kiosks. A debit card gets the best ATM terms; take a few days worth at once.", tone: "teal" },
+          p: [
+            "Keep <b>smaller euro notes and coins</b> handy, since cash-friendly spots dislike large notes. Use a <b>debit card</b> at the ATM rather than a credit card (a credit-card withdrawal is a cash advance with a fee from day one), and take out a <b>few days' worth at once</b> to limit per-visit fees.",
+            "As a rough guide, plan to use cash for a meaningful slice of daily spending here, more than you would in France or the Netherlands. For the wider picture, see the <a href='/germany'>Germany money guide</a>, and for gratuities, <a href='/germany/tipping'>tipping in Germany</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Germany?", a: "Yes, more than in most of Western Europe. Larger shops, hotels and chains take cards, but bakeries, bars, kiosks, markets and many smaller restaurants are cash-only or prefer cash. Always carry some euros, and do not assume a card will work at a small place." },
+        { q: "Are cards widely accepted in Germany?", a: "In bigger shops, hotels and chain restaurants, yes, and contactless is increasingly common. But acceptance is not universal: some places take only the domestic Girocard or cash, and Amex is patchy. Carry euros as backup everywhere." },
+        { q: "Should I pay in euros or dollars in Germany?", a: "Always euros. If a card machine or ATM offers to charge in dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Where should I get cash in Germany?", a: "An ATM (Geldautomat) attached to a real bank, such as Sparkasse, Volksbank, Deutsche Bank or Commerzbank. Avoid the standalone Euronet machines at stations and tourist areas, which charge high fees and push the dollar conversion. Always choose euros." }
+      ],
+      sources: {
+        links: [
+          { label: "European Central Bank: the official euro reference exchange rates", url: "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html", type: "gov" },
+          { label: "US State Department: Germany country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Germany.html", type: "gov" }
+        ],
+        judgment: "Germany's cash habit is real and slower to fade than elsewhere in Europe, though card acceptance keeps growing, so much of this is our practical read. The euro rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping (Trinkgeld)", v: "Modest, about 5 to 10%" },

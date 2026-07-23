@@ -170,6 +170,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Swiss franc (CHF), not euro" },
+        { k: "Cards", v: "Card-friendly, contactless everywhere" },
+        { k: "Euros", v: "Sometimes taken, poor change" },
+        { k: "On a card", v: "Choose francs, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Switzerland, or can I use cards? (2026) | True Trip Costs",
+      description: "Barely. Switzerland is very card-friendly and contactless is everywhere. The catch is the currency: it is Swiss francs, not euros, and paying in euros gets a poor rate, so use francs and choose francs on a card. Checked July 2026.",
+      h1: "Do I need cash in Switzerland, or can I use cards?",
+      lede: "Short answer: a card for almost everything, a little cash in francs. Switzerland is very card-friendly, but the thing to get right is the currency: it uses Swiss francs, not euros, despite being surrounded by the eurozone.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cards, almost entirely. Switzerland is <b>very card-friendly</b>: <b>contactless</b> is everywhere, and Apple Pay and Google Pay are widely taken. The key thing to get right is the <b>currency</b>: Switzerland uses the <b>Swiss franc (CHF), not the euro</b>, even though it is surrounded by the eurozone. Some tourist spots and hotels <b>accept euros</b>, but they give <b>change in francs at a poor rate</b>, so pay in <b>francs</b>. On any card or ATM, choose <b>francs, not dollars</b>. Keep a little cash in francs for small things; it is an expensive country, so budget accordingly.",
+      sections: [
+        {
+          h: "Card-friendly, but it is francs, not euros",
+          icon: "phoneok",
+          key: { fig: "Use francs", tag: "Not the euro", text: "Switzerland is very card-friendly and contactless is everywhere, but the currency is the Swiss franc, not the euro. Euros are sometimes taken but change comes in francs at a poor rate.", tone: "amber" },
+          p: [
+            "Switzerland is <b>very card-friendly</b>. <b>Visa and Mastercard</b> are taken almost everywhere, <b>contactless</b> is the norm, and Apple Pay and Google Pay work widely; <b>Amex</b> is less consistent. Locals also use the <b>Twint</b> app, but you do not need it as a visitor.",
+            "The thing to get right is the <b>currency</b>. Switzerland uses the <b>Swiss franc (CHF)</b>, not the euro, despite the eurozone all around it. Some hotels, stations and tourist shops <b>accept euros</b>, but they hand back <b>change in francs at a poor rate</b>, so it is better to <b>pay in francs</b> and keep euros for elsewhere."
+          ]
+        },
+        {
+          h: "Choose francs, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose francs", text: "When a terminal or ATM offers dollars or francs, pick francs. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse than your bank's.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars or francs, always choose francs</b>. Choosing dollars triggers dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. The same goes for any offer to charge you in euros. Decline both every time.",
+            "For cash, use an ATM (a <b>Bancomat</b>) attached to a <b>Swiss bank</b>, such as UBS, PostFinance or a cantonal bank, rather than a standalone tourist kiosk. Use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "How much cash, and the cost of things",
+          icon: "coins",
+          key: { fig: "A little", tag: "Expensive country", text: "A card covers almost everything, so carry a little cash in francs. Switzerland is expensive, so budget higher than most of Europe.", tone: "teal" },
+          p: [
+            "A card covers almost everything, so carry only <b>a little cash in francs</b> for small purchases, mountain huts, or the odd machine. Switzerland is one of <b>Europe's most expensive</b> countries, so day-to-day costs, meals and transport run well above neighboring countries; budget accordingly rather than being caught out.",
+            "Tipping is light, since service is included and staff earn a strong wage; rounding up is plenty. For the wider picture, see the <a href='/switzerland'>Switzerland money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Switzerland?", a: "Not much. Switzerland is very card-friendly and contactless is everywhere. Carry a little cash in Swiss francs for small purchases and mountain huts, but a card covers most spending." },
+        { q: "Does Switzerland use the euro?", a: "No. Switzerland uses the Swiss franc (CHF), not the euro, even though it is surrounded by the eurozone. Some tourist spots accept euros but give change in francs at a poor rate, so it is better to pay in francs." },
+        { q: "Should I pay in francs or dollars in Switzerland?", a: "Always francs. If a card machine or ATM offers dollars (or euros), decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Is Switzerland expensive?", a: "Yes, it is one of Europe's most expensive countries. Meals, transport and everyday costs run well above neighboring countries, so budget higher. A card covers most spending, with a little cash in francs for small things." }
+      ],
+      sources: {
+        links: [
+          { label: "Swiss National Bank: official Swiss franc information", url: "https://www.snb.ch", type: "gov" },
+          { label: "US State Department: Switzerland country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Switzerland.html", type: "gov" }
+        ],
+        judgment: "Switzerland is strongly card-friendly, and the practical points here are our read, but the currency rule is firm: it is francs, not euros, and you should decline dollar or euro conversion on your card. The franc rate moves. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "Process", v: "Shared EU entry (adopted)" },

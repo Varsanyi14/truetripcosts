@@ -168,6 +168,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Danish krone (DKK), not euro" },
+        { k: "Cards", v: "Near-total, contactless everywhere" },
+        { k: "Cash", v: "Rarely needed, some places refuse it" },
+        { k: "On a card", v: "Choose krone, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Denmark, or can I use cards? (2026) | True Trip Costs",
+      description: "Almost never. Denmark is nearly cashless, contactless is everywhere, and many places take little or no cash. The currency is the krone, not the euro. Choose krone not dollars, and carry a backup card. Checked July 2026.",
+      h1: "Do I need cash in Denmark, or can I use cards?",
+      lede: "Short answer: a card for almost everything, very little cash. Denmark is nearly cashless like its Nordic neighbors, and it keeps the krone rather than the euro. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cards, essentially entirely. Denmark is <b>nearly cashless</b>: <b>contactless</b> is everywhere, Apple Pay and Google Pay are standard, and many places take <b>little or no cash</b>. The currency is the <b>Danish krone (DKK), not the euro</b>: Denmark kept the krone rather than joining the euro. You need <b>very little cash</b>, so a working card is essential. On any card or ATM, choose <b>krone, not dollars</b>.",
+      sections: [
+        {
+          h: "Nearly cashless, like its neighbors",
+          icon: "phoneok",
+          key: { fig: "Card first", tag: "Cash rarely needed", text: "Contactless is everywhere and many places take little or no cash. A working card is essential; locals use MobilePay, which you do not need.", tone: "teal" },
+          p: [
+            "Denmark is <b>nearly cashless</b>, much like Sweden and Norway. <b>Contactless</b> cards, Apple Pay and Google Pay are accepted almost everywhere, and many shops and cafes take <b>little or no cash</b>. The domestic card is the <b>Dankort</b>, and locals pay each other with <b>MobilePay</b>, which you do not need as a visitor.",
+            "For you, a <b>working card is essential</b> and cash is close to optional. Carry a <b>contactless card</b> with a backup on a different network, and check it works on arrival, since being cash-only here is more of a problem than being card-only."
+          ]
+        },
+        {
+          h: "It is krone, not euros, so choose krone",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose krone", text: "The currency is the Danish krone, not the euro. When a terminal or ATM offers dollars or krone, pick krone; dollars add about 3 to 8% via dynamic conversion.", tone: "amber" },
+          p: [
+            "Denmark uses the <b>Danish krone (DKK)</b>, not the euro: it is in the EU but kept its own currency. When a card terminal or ATM asks whether to charge in <b>dollars or krone, always choose krone</b>. Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "You will rarely need cash, but if you do, use a <b>bank ATM</b> rather than a standalone tourist kiosk, and use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "The little cash you might want",
+          icon: "coins",
+          key: { fig: "Near zero", tag: "A small buffer", text: "Most trips need almost no cash. Keep a small buffer of krone for a rare cash-only or rural spot, and rely on a contactless card otherwise.", tone: "teal" },
+          p: [
+            "Most visitors need <b>almost no cash</b> in Denmark. Keep a <b>small buffer of krone</b> for a rare rural or cash-only spot, but do not exchange much. As in Sweden, the real risk is a <b>dead card with no backup</b>, so carry two cards on different networks.",
+            "Tipping is modest and not expected, since service is included; rounding up is plenty. For the wider picture, see the <a href='/denmark'>Denmark money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Denmark?", a: "Almost never. Denmark is nearly cashless, and many places take little or no cash. A contactless card covers everything; keep only a small buffer of krone, if any, for rural or cash-only spots." },
+        { q: "Does Denmark use the euro?", a: "No. Denmark uses the Danish krone (DKK), not the euro: it is an EU member but kept its own currency. On a card or ATM, choose to be charged in krone, not dollars or euros." },
+        { q: "Should I pay in krone or dollars in Denmark?", a: "Always krone. If a card machine or ATM offers dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Can I travel Denmark without cash?", a: "Almost entirely. Contactless cards, Apple Pay and Google Pay work nearly everywhere, and many places take little or no cash. Carry two cards on different networks as backup, since a dead card is the real risk." }
+      ],
+      sources: {
+        links: [
+          { label: "Danmarks Nationalbank: official Danish krone information", url: "https://www.nationalbanken.dk", type: "gov" },
+          { label: "US State Department: Denmark country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Denmark.html", type: "gov" }
+        ],
+        judgment: "Denmark is nearly cashless in practice, though a rare spot may still want cash, so this is our practical read. The krone rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "Process", v: "Shared EU entry" },

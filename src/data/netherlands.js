@@ -172,6 +172,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Euro (EUR)" },
+        { k: "Cards", v: "Card-first, contactless everywhere" },
+        { k: "Sometimes", v: "Card-only, or Dutch PIN only" },
+        { k: "Cash for", v: "Very little" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in the Netherlands, or can I use cards? (2026) | True Trip Costs",
+      description: "Barely any. The Netherlands is strongly card-first, contactless is everywhere, and some places take cards only. A contactless debit is the safest card. Choose euros not dollars. Checked July 2026.",
+      h1: "Do I need cash in the Netherlands, or can I use cards?",
+      lede: "Short answer: a card for almost everything, very little cash. The Netherlands is strongly card-first, and if anything the risk runs the other way, with some places taking cards only. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cards, almost entirely, and sometimes cards only. The Netherlands is strongly <b>card-first</b>: <b>contactless</b> is everywhere, and Apple Pay and Google Pay are widely taken. A few places, some supermarkets and market stalls, historically took only <b>Dutch PIN (Maestro)</b> and not foreign <b>credit</b> cards, though most now accept international contactless, so a <b>contactless debit</b> is the safest card to carry. Some spots are <b>card-only and take no cash at all</b>. You need <b>very little cash</b>. Choose <b>euros, not dollars</b> on any card or ATM.",
+      sections: [
+        {
+          h: "Card-first, sometimes card-only",
+          icon: "phoneok",
+          key: { fig: "Tap", tag: "Contactless everywhere", text: "Contactless runs the day, and some places take cards only, no cash. A contactless debit is the safest card, since a few spots historically took Dutch PIN but not foreign credit.", tone: "teal" },
+          p: [
+            "The Netherlands is <b>strongly card-first</b>. <b>Contactless</b> is near-universal across shops, cafes, transport and even market stalls, and <b>Apple Pay and Google Pay</b> are widely accepted. Some places are now <b>card-only and take no cash</b>, so a card is essential, not optional.",
+            "One historical quirk: some <b>supermarkets</b> (such as Albert Heijn) and small vendors ran on <b>Dutch PIN (Maestro-style debit)</b> and did <b>not take foreign credit cards</b>. Most now accept <b>international contactless</b>, but the safest card to carry is a <b>contactless debit</b>, with a credit card as backup."
+          ]
+        },
+        {
+          h: "Choose euros, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose euros", text: "When a terminal or ATM offers dollars or euros, pick euros. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse than your bank's.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars or euros, always choose euros</b>. Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "You will rarely need an ATM here, but if you do, use one attached to a <b>real bank</b> (such as ABN AMRO, ING or Rabobank) rather than a standalone <b>Euronet</b> kiosk, which charges high fees and pushes the dollar conversion."
+          ]
+        },
+        {
+          h: "How little cash you need",
+          icon: "coins",
+          key: { fig: "Little", tag: "Card does the day", text: "A card covers almost everything, so carry only a small amount of euros for the rare cash-only spot. Bring a contactless debit as your main card.", tone: "teal" },
+          p: [
+            "Carry only <b>a small amount of euros</b> for the rare cash-only stall or tip, since a card covers almost everything. If anything, the risk runs the other way: a place that takes <b>only cards</b>, so make sure your <b>contactless debit</b> works before you rely on it.",
+            "For the wider picture, see the <a href='/netherlands'>Netherlands money guide</a>, and for gratuities, <a href='/netherlands/tipping'>tipping in the Netherlands</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in the Netherlands?", a: "Barely. The Netherlands is card-first, contactless is everywhere, and some places take cards only with no cash. Carry a small amount of euros for the rare cash-only stall, but a card covers almost everything." },
+        { q: "Will my US credit card work in the Netherlands?", a: "Usually, via contactless, which is near-universal now. A few supermarkets and small vendors historically took only Dutch PIN (Maestro) and not foreign credit cards, so the safest card to carry is a contactless debit, with a credit card as backup." },
+        { q: "Should I pay in euros or dollars in the Netherlands?", a: "Always euros. If a card machine or ATM offers dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Do places in the Netherlands take cash?", a: "Most do, but a growing number are card-only and take no cash at all, especially in cities. Do not rely on cash alone; a contactless card is essential here." }
+      ],
+      sources: {
+        links: [
+          { label: "European Central Bank: the official euro reference exchange rates", url: "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html", type: "gov" },
+          { label: "US State Department: Netherlands country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Netherlands.html", type: "gov" }
+        ],
+        judgment: "The Netherlands is strongly card-first, and the old Dutch-PIN-only quirk is fading as international contactless spreads, so this is our practical read. The euro rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping (fooi)", v: "Modest, not expected" },

@@ -172,6 +172,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Swedish krona (SEK), not euro" },
+        { k: "Cards", v: "Near-total, contactless everywhere" },
+        { k: "Cash", v: "Often refused, you may never need it" },
+        { k: "On a card", v: "Choose krona, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Sweden, or can I use cards? (2026) | True Trip Costs",
+      description: "Almost never. Sweden is one of the most cashless countries on earth, and many places refuse cash altogether. Carry a contactless card, choose krona not dollars, and keep two cards as backup. Checked July 2026.",
+      h1: "Do I need cash in Sweden, or can I use cards?",
+      lede: "Short answer: a card for everything, and you may never touch cash. Sweden is one of the most cashless countries anywhere, and many places refuse cash outright, so the real risk is a dead card, not a lack of notes.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cards, essentially entirely. Sweden is <b>one of the most cashless countries on earth</b>: <b>contactless</b> is everywhere, Apple Pay and Google Pay are standard, and many shops, cafes, museums and buses <b>refuse cash altogether</b> (you will see signs reading no cash). The currency is the <b>Swedish krona (SEK), not the euro</b>. You can travel Sweden <b>essentially without cash</b>, so a card is essential and cash is close to optional. On any card or ATM, choose <b>krona, not dollars</b>.",
+      sections: [
+        {
+          h: "One of the most cashless countries anywhere",
+          icon: "phoneok",
+          key: { fig: "Card only", tag: "Cash often refused", text: "Contactless is universal, and many shops, cafes, museums and buses take no cash at all. You can travel Sweden essentially cashless, so a working card is essential.", tone: "teal" },
+          p: [
+            "Sweden is <b>famously close to cashless</b>. <b>Contactless</b> cards, Apple Pay and Google Pay are accepted virtually everywhere, and a great many places, shops, cafes, museums, and public transport, <b>do not take cash at all</b>, often with a sign to that effect. Locals pay each other with the <b>Swish</b> app, which you do not need as a visitor.",
+            "The upshot for you: a <b>working card is essential</b>, and cash is close to optional. Carry a <b>contactless card</b> with a backup on a different network, and make sure it works on arrival, since being cash-only here is more of a problem than being card-only."
+          ]
+        },
+        {
+          h: "It is krona, not euros, so choose krona",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose krona", text: "The currency is the Swedish krona, not the euro. When a terminal or ATM offers dollars or krona, pick krona; dollars add about 3 to 8% via dynamic conversion.", tone: "amber" },
+          p: [
+            "Sweden uses the <b>Swedish krona (SEK)</b>, not the euro, despite being in the EU. When a card terminal or ATM asks whether to charge in <b>dollars or krona, always choose krona</b>. Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "You will rarely need cash, but if you do, use an ATM (a <b>Bankomat</b>) rather than a standalone tourist kiosk, and use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "The little cash you might want",
+          icon: "coins",
+          key: { fig: "Near zero", tag: "A small buffer", text: "Most trips need no cash at all. Keep a small buffer of krona only for a rare rural spot, and rely on a contactless card for everything else.", tone: "teal" },
+          p: [
+            "Most visitors get through Sweden with <b>no cash at all</b>. If you want a buffer for a <b>remote or rural</b> spot, a small amount of <b>krona</b> is plenty, but do not exchange much. The practical risk here is a <b>dead card and no backup</b>, so carry two cards on different networks.",
+            "Tipping is modest and not expected, since service is included; rounding up is plenty. For the wider picture, see the <a href='/sweden'>Sweden money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Sweden?", a: "Almost never. Sweden is one of the most cashless countries on earth, and many shops, cafes, museums and buses take no cash at all. A contactless card covers everything; keep only a tiny buffer of krona, if any, for rural spots." },
+        { q: "Does Sweden use the euro?", a: "No. Sweden uses the Swedish krona (SEK), not the euro, even though it is in the EU. On a card or ATM, choose to be charged in krona, not dollars or euros." },
+        { q: "Should I pay in krona or dollars in Sweden?", a: "Always krona. If a card machine or ATM offers dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Can I travel Sweden without cash?", a: "Yes, easily. A contactless card, or Apple Pay or Google Pay, works virtually everywhere, and many places refuse cash. Carry two cards on different networks as backup, since a dead card is the real risk, not a lack of cash." }
+      ],
+      sources: {
+        links: [
+          { label: "Sveriges Riksbank: official Swedish krona information", url: "https://www.riksbank.se", type: "gov" },
+          { label: "US State Department: Sweden country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Sweden.html", type: "gov" }
+        ],
+        judgment: "Sweden is genuinely among the most cashless countries, and the cash-refused pattern is widespread, though a rare rural spot may differ, so this is our practical read. The krona rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "Process", v: "Shared EU entry" },
