@@ -237,6 +237,12 @@ export default {
     },
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Lead time", v: "7 to 8 months" },
+        { k: "Cost", v: "About $3,000 to $8,000" },
+        { k: "Fixed wait", v: "180 days, cannot shorten" },
+        { k: "Advance notice", v: "40+ days to the port" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Japan from the US (2026): the 180-day clock and what it costs | True Trip Costs",
@@ -249,6 +255,8 @@ export default {
       sections: [
         {
           h: "The two numbers: lead time and cost",
+          icon: "calendar",
+          key: { fig: "180 days", tag: "The fixed wait", text: "A rabies antibody test, then a set 180-day wait you cannot shorten. That, not paperwork, is what makes it a 7 to 8 month process.", tone: "teal" },
           p: [
             "Before the detail, the two things that decide a move to Japan with a pet. <b>Lead time is 7 to 8 months</b>, and most of that is a single fixed waiting period you cannot buy your way out of. <b>All-in cost is roughly $3,000 to $8,000 or more</b>, with the biggest line being air transport, since pets on this route usually fly as cargo rather than in the cabin. Vet visits, the rabies antibody test, and the health paperwork make up most of the rest.",
             "The reason Japan takes so long is that it is rabies-free and works hard to stay that way. Every step below exists to prove your pet is not carrying rabies, and the order is strict. One misstep, such as a rabies shot given before the microchip, can invalidate the work and restart the clock."
@@ -256,6 +264,8 @@ export default {
         },
         {
           h: "The steps, in the order that matters",
+          icon: "health",
+          key: { tag: "Order matters", text: "Microchip, then two rabies shots, then the antibody test, then the wait. Doing these out of order is the most common and most expensive mistake.", tone: "amber" },
           p: [
             "Follow these in sequence. Skipping ahead or doing them out of order is the most common and most expensive mistake."
           ],
@@ -271,6 +281,8 @@ export default {
         },
         {
           h: "Which lab, and what to do after you land",
+          icon: "receipt",
+          key: { fig: "2 labs", tag: "Use a designated lab", text: "The antibody test must go to a Japan-approved lab. Kansas State University in Manhattan, Kansas is open to any US exporter.", tone: "teal" },
           p: [
             "For the rabies antibody test, the two Japan-designated laboratories in the US are the <b>Kansas State University Rabies Laboratory</b> in Manhattan, Kansas, which is open to any US exporter, and the Department of Defense laboratory at Fort Sam Houston in Texas, used mainly by military families. Your USDA-accredited vet sends the sample; you do not ship blood yourself.",
             "After arrival, Japan asks you to register a dog at the local municipal office within 30 days, keep up an annual rabies vaccination, and hold onto the Import Quarantine Certificate you are given, so keep it somewhere safe."
@@ -278,6 +290,8 @@ export default {
         },
         {
           h: "Coming back to the US is the easy part",
+          icon: "plane",
+          key: { fig: "Easy", tag: "The return trip", text: "Because Japan is rabies-free, a dog flying home usually needs only a free CDC form receipt, with no titer and no quarantine.", tone: "teal" },
           p: [
             "Good news for the return trip: because Japan is rabies-free, a dog flying home to the US from Japan is on the simplest path. In most cases the only document you need is a free CDC form receipt, with no titer and no quarantine. We cover exactly what that involves in our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a>.",
             "For the wider picture, including how Japan compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."
@@ -306,6 +320,12 @@ export default {
     },
     {
       slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not customary" },
+        { k: "Restaurants & taxis", v: "No tip expected" },
+        { k: "Leaving extra", v: "Can confuse or offend" },
+        { k: "Instead", v: "Say thank you" }
+      ],
       live: true,
       topic: "tipping",
       title: "Tipping in Japan: why you should not tip, and the rare exceptions (2026) | True Trip Costs",
@@ -318,6 +338,8 @@ export default {
       sections: [
         {
           h: "Why tipping does not work here",
+          icon: "notip",
+          key: { tag: "Do not tip", text: "Good service is the professional standard, and staff are paid a proper salary. Money on top can feel transactional, and staff may chase you to return it.", tone: "amber" },
           p: [
             "In Japan, good service is the professional standard, not something extra that earns a reward. Staff are paid a proper salary and take pride in the quality of their work. Offering money on top can feel <b>transactional</b> in a way that clashes with that ethos.",
             "If you leave cash on a restaurant table, do not be surprised if a server <b>chases you to return it</b>, thinking you forgot it. This is not rudeness, it is the opposite: they are looking after you."
@@ -325,6 +347,8 @@ export default {
         },
         {
           h: "The rare exceptions",
+          icon: "tip",
+          key: { fig: "Envelope", tag: "The one exception", text: "For a private guide or ryokan host who went well beyond, a small thank-you goes in an envelope, never cash left on the table.", tone: "teal" },
           p: [
             "There are a few quiet exceptions where a small thank-you gift is appropriate, but even these are not cash-on-the-table situations. For a <b>private guide</b> who has gone well beyond the brief, or a <b>ryokan host</b> who has looked after you personally, you can offer a small amount of cash <b>in an envelope</b>, handed directly and discreetly. The envelope matters: handing over bare cash feels abrupt.",
             "At a <b>high-end ryokan</b>, some guests leave a <b>kokorozuke</b> (a gesture of gratitude, typically 1,000 to 3,000 yen in an envelope) for the nakai-san who attends your room. It is not expected, but it is understood. Beyond these, the answer is simply: do not tip."
@@ -332,6 +356,8 @@ export default {
         },
         {
           h: "What to do instead",
+          icon: "bowl",
+          key: { fig: "Thanks", tag: "Instead of a tip", text: "A sincere arigatou gozaimasu, or gochisousama deshita as you leave a restaurant, is the real thank-you here.", tone: "teal" },
           p: [
             "A sincere <b>thank-you</b> goes a long way. In Japanese, a warm <b>arigatou gozaimasu</b> is the standard. At a restaurant, a simple <b>gochisousama deshita</b> (thank you for the meal) as you leave is the polite equivalent of what a tip is meant to convey at home."
           ]

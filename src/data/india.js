@@ -1,5 +1,6 @@
 export default {
   slug: "india",
+  iso2: "in",
   live: true,
   name: "India",
   from: "United States",

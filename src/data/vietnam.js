@@ -1,5 +1,6 @@
 export default {
   slug: "vietnam",
+  iso2: "vn",
   live: true,
   name: "Vietnam",
   from: "United States",

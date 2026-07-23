@@ -1,5 +1,6 @@
 export default {
   slug: "georgia",
+  iso2: "ge",
   live: true,
   name: "Georgia",
   from: "United States",
@@ -175,6 +176,12 @@ export default {
   spokes: [
     {
       slug: "visa-and-insurance",
+      glance: [
+        { k: "Visa", v: "None, up to 365 days" },
+        { k: "New for 2026", v: "Travel insurance required" },
+        { k: "Cover", v: "30,000 GEL (about $11,000)" },
+        { k: "Proof", v: "Carry the certificate" }
+      ],
       live: true,
       topic: "visas",
       title: "Do US citizens need a visa for Georgia, and the new insurance rule (2026) | True Trip Costs",
@@ -193,6 +200,8 @@ export default {
       sections: [
         {
           h: "The visa-free part is easy",
+          icon: "passport",
+          key: { fig: "365 days", tag: "Visa-free", text: "US citizens are admitted visa-free for up to 365 days per entry, one of the most generous policies anywhere, and it does not count toward the Schengen limit.", tone: "teal" },
           p: [
             "US citizens are admitted <b>visa-free for up to 365 days</b> per entry, granted at the border, so a normal trip needs no visa and no application. Time in Georgia does not count toward the Schengen 90-day limit, since Georgia is not in the Schengen area.",
             "Have your <b>passport</b> ready, and be prepared to answer basic questions about your trip. Overstaying the 365 days brings a fine, and if you plan to live or work there long-term you would arrange residency separately."
@@ -200,6 +209,8 @@ export default {
         },
         {
           h: "The insurance rule, new for 2026",
+          icon: "health",
+          key: { fig: "$11k", tag: "Insurance, new 2026", text: "Since 1 January 2026 every tourist must hold travel insurance for the whole stay, covering medical and accidents to at least 30,000 GEL, about 11,000 dollars.", tone: "amber" },
           p: [
             "This is the part that trips people. From <b>1 January 2026</b>, Georgia requires every foreign tourist to hold <b>travel insurance</b> valid for the entire stay, covering <b>medical treatment and accidents</b> up to at least <b>30,000 GEL</b>, roughly 11,000 dollars. It applies regardless of nationality or how long you stay.",
             "The good news: <b>most standard US or international travel insurance policies already meet this</b>. Your policy should name <b>Georgia</b> in the covered region, meet the <b>30,000 GEL</b> minimum for medical and accident cover, and show <b>dates that match your trip</b>. Residents and diplomats are exempt."
@@ -207,6 +218,8 @@ export default {
         },
         {
           h: "How to be ready at the border",
+          icon: "receipt",
+          key: { fig: "PDF", tag: "At the border", text: "Buy a policy before you fly and save the certificate as a PDF and a printout, in English. Border officers, and sometimes airlines, can ask to see it.", tone: "teal" },
           p: [
             "Buy a policy <b>before you fly</b> and save the certificate as a <b>PDF on your phone and a printout</b>, in <b>English</b> (Georgian is also accepted). Border officers, and sometimes airlines at check-in, can ask to see it.",
             "Going without risks a <b>fine of about 300 GEL</b> or, in principle, refused entry. Enforcement is <b>still settling in</b> and not every traveler is checked, but treat it as a firm requirement rather than a gamble."
@@ -229,6 +242,12 @@ export default {
     },
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Georgian lari (GEL)" },
+        { k: "Cards", v: "Fine in the cities" },
+        { k: "Cash for", v: "Marshrutkas, markets" },
+        { k: "Get lari at", v: "Bank of Georgia, TBC" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in Georgia, or can I use cards? (2026) | True Trip Costs",
@@ -241,6 +260,8 @@ export default {
       sections: [
         {
           h: "The cities are card-first",
+          icon: "card",
+          key: { fig: "Tap", tag: "Card-first cities", text: "In Tbilisi, Batumi and Kutaisi cards work almost everywhere, with contactless and Apple or Google Pay common. A no-foreign-fee card covers most of a trip.", tone: "teal" },
           p: [
             "In Georgia's cities, <b>cards work almost everywhere</b>, from restaurants and cafes to shops and taxis, and contactless is the norm. <b>Bank of Georgia</b> and <b>TBC</b> are the big banks. A no-foreign-fee Visa or Mastercard covers most of a trip, with an Amex as a backup at best.",
             "The main exceptions are the <b>local everyday</b>: market stalls, bakeries, small family places, tips, and rural guesthouses that prefer cash."
@@ -248,6 +269,8 @@ export default {
         },
         {
           h: "Where you need lari",
+          icon: "cash",
+          key: { fig: "Cash", tag: "The marshrutka", text: "The shared marshrutka minibuses are cash only, and markets and bakeries want lari too. Change for large notes can be scarce outside the cities.", tone: "teal" },
           p: [
             "Carry small lari notes for the <b>shared marshrutka minibuses</b> that link towns and regions, since they take cash only, and for <b>markets</b> and <b>bakeries</b>. Change for large notes can be scarce outside the cities.",
             "Pull cash from a <b>bank ATM</b> (Bank of Georgia or TBC). Many are low-fee; some standalone machines charge more and push a poor dollar rate, so use a bank machine and take out enough before heading into the mountains."
@@ -255,6 +278,8 @@ export default {
         },
         {
           h: "The one money habit: choose lari",
+          icon: "atm",
+          key: { tag: "Choose lari", text: "On any terminal or ATM that asks, pick lari, not dollars or euros. Choosing your home currency triggers dynamic currency conversion at a poor rate.", tone: "amber" },
           p: [
             "On any card terminal or ATM that asks whether to charge in <b>lari or your home currency, always choose lari</b>. Picking dollars or euros triggers dynamic currency conversion at a poor rate; lari lets your own bank convert, which is cheaper.",
             "For the fuller money picture, tipping and the new insurance rule, see the <a href=\"/georgia\">Georgia money guide</a>."
@@ -276,6 +301,12 @@ export default {
     },
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Best app", v: "Bolt" },
+        { k: "Also works", v: "Yandex Go" },
+        { k: "Street taxis", v: "Agree the fare first" },
+        { k: "Between towns", v: "Marshrutka, cash only" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -294,6 +325,8 @@ export default {
       sections: [
         {
           h: "Bolt first",
+          icon: "phoneok",
+          key: { fig: "Bolt", tag: "The easy way", text: "Bolt is how most visitors and locals get around Tbilisi and Batumi: you see the fare and driver before booking, it is cheap, and it works from the airport.", tone: "teal" },
           p: [
             "<b>Bolt</b> is how most visitors and locals get around Tbilisi and Batumi: you see the fare and the driver before you book, it is inexpensive, and it removes any haggling. It is the easy, fair-priced way in from Tbilisi airport too.",
             "You can usually pay <b>in the app or in cash</b>. If paying cash, carry small lari notes, since drivers may not have change for large ones."
@@ -301,6 +334,8 @@ export default {
         },
         {
           h: "Street taxis, agree the fare",
+          icon: "taxi",
+          key: { tag: "Agree first", text: "Many street taxis are older cars with no meter, so the driver names a price, and the opening quote to visitors runs high. Agree the fare, or book a Bolt instead.", tone: "amber" },
           p: [
             "Plenty of <b>street taxis</b> are older cars with <b>no meter</b>, so a driver names a price. <b>Agree the fare before you get in</b>, and expect an opening quote to visitors that is higher than the going rate. If it feels off, book a Bolt instead.",
             "Fares are low by US standards, so this is about avoiding a small overcharge rather than a big risk. Having the Bolt price in mind gives you a fair benchmark to negotiate against."
@@ -308,6 +343,8 @@ export default {
         },
         {
           h: "Between towns: the marshrutka",
+          icon: "wheel",
+          key: { fig: "Cash", tag: "Between towns", text: "The shared marshrutka minibus is how the country moves between towns: frequent, very cheap, and cash only, leaving stations when full.", tone: "teal" },
           p: [
             "For travel between towns and regions, the shared <b>marshrutka minibus</b> is how the country moves: frequent, very cheap, and <b>cash only</b>. They leave from set stations when full or on a rough schedule.",
             "For the money side, tipping and choosing lari over dollars, see the <a href=\"/georgia\">Georgia money guide</a>."

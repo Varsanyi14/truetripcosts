@@ -1,5 +1,6 @@
 export default {
   slug: "taiwan",
+  iso2: "tw",
   live: true,
   name: "Taiwan",
   from: "United States",

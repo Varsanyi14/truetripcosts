@@ -1,5 +1,6 @@
 export default {
   slug: "jamaica",
+  iso2: "jm",
   live: true,
   name: "Jamaica",
   from: "United States",

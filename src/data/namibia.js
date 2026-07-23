@@ -231,6 +231,12 @@ export default {
     },
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Namibian dollar (N$ NAD)" },
+        { k: "Also spend", v: "SA rand 1:1" },
+        { k: "Cards", v: "Fine in towns and lodges" },
+        { k: "Cash for", v: "Fuel and remote areas" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in Namibia, or can I use cards? Fuel, the rand and long roads (2026) | True Trip Costs",
@@ -243,6 +249,8 @@ export default {
       sections: [
         {
           h: "The rand and the Namibian dollar",
+          icon: "zar",
+          key: { fig: "1:1", tag: "Rand works too", text: "The Namibian dollar is pegged one to one to the South African rand, and rand is legal tender here, so you can pay in either.", tone: "teal" },
           p: [
             "Namibia uses the <b>Namibian dollar (NAD, or N$)</b>, which is <b>pegged one-to-one to the South African rand (ZAR)</b>. The rand is legal tender in Namibia and circulates freely, so <b>you can pay in either</b>, and you will often get change in a mix of both. One thing to know for the way out: <b>Namibian dollars are generally not accepted in South Africa</b>, so if you are heading there next, spend or change your NAD first (rand travels fine in both directions).",
             "For the official peg and currency, the reference is the Bank of Namibia."
@@ -250,6 +258,8 @@ export default {
         },
         {
           h: "Where cards work, and where cash rules",
+          icon: "card",
+          key: { fig: "Fuel", tag: "Cash on the road", text: "Cards are fine in Windhoek, Swakopmund and at lodges. Fuel stations and remote areas often want cash, the part that defines a Namibia trip.", tone: "teal" },
           p: [
             "<b>Cards (Visa and Mastercard)</b> are widely accepted in Windhoek, Swakopmund, supermarkets, restaurants and safari lodges. Where cash matters is the part that defines a Namibia trip: <b>the driving</b>. Many <b>fuel stations, especially outside the main towns, take cash only</b> or cannot be relied on for cards, and Namibia's distances are long, so running low on both fuel and cash far from anywhere is a real risk.",
             "<b>Small towns, markets, craft stalls, some park fees and tips</b> are also cash. So the rule of thumb: card for the towns, but never set off on a long drive without enough cash for fuel and the day."
@@ -257,6 +267,8 @@ export default {
         },
         {
           h: "Getting cash, and the dollar trap",
+          icon: "atm",
+          key: { tag: "Choose Namibian dollars", text: "Bank ATMs (Bank Windhoek, FNB, Standard, Nedbank) take foreign Visa and Mastercard. On the screen, pick Namibian dollars, not US dollars, to avoid a marked-up rate.", tone: "amber" },
           p: [
             "Draw cash from a <b>bank ATM</b> in town, Bank Windhoek, First National Bank (FNB), Standard Bank and Nedbank all take foreign Visa and Mastercard. Withdraw a useful amount before a long drive, since ATMs thin out fast once you leave the main centers.",
             "When an ATM or card machine offers to charge you in <b>US dollars instead of Namibian dollars, always choose Namibian dollars</b> (or rand). The home-currency option is dynamic currency conversion, a poor rate. Keep your cash in a mix of usable notes for fuel, tips and small stops."
@@ -264,6 +276,8 @@ export default {
         },
         {
           h: "How much to carry",
+          icon: "cash",
+          key: { fig: "1 day", tag: "Plan by the leg", text: "Enough for a couple of fuel fill-ups plus a day of food and tips, topped up whenever you pass a town with an ATM.", tone: "teal" },
           p: [
             "Enough for at least a couple of fuel fill-ups plus a day of food, tips and incidentals, topped up whenever you pass through a town with an ATM. On a self-drive safari, plan your cash by the leg, not the day.",
             "For the fuller money picture, and the visa you now need, see the <a href=\"/namibia\">Namibia money guide</a>."
@@ -286,6 +300,12 @@ export default {
     },
     {
       slug: "tipping",
+      glance: [
+        { k: "Currency", v: "Namibian dollar (N$)" },
+        { k: "Restaurants", v: "Around 10%" },
+        { k: "Also tip", v: "Fuel attendants, car guards" },
+        { k: "On safari", v: "Guides and lodge staff" }
+      ],
       live: true,
       topic: "tipping",
       title: "Tipping in Namibia: restaurants, fuel attendants, car guards and safari guides (2026) | True Trip Costs",
@@ -298,6 +318,8 @@ export default {
       sections: [
         {
           h: "Restaurants and everyday tipping",
+          icon: "tip",
+          key: { fig: "10%", tag: "At restaurants", text: "Around 10% for good service. Check the bill first, since some places add a service charge, often for larger groups.", tone: "teal" },
           p: [
             "At sit-down <b>restaurants</b>, <b>around 10%</b> for good service is the norm. Check the bill first: some places add a <b>service charge</b> automatically, often for larger groups, in which case you need not add more. In cafes and bars, rounding up or leaving small change is fine.",
             "This is a cash-friendly habit: tips reach staff most reliably as <b>cash</b>, in Namibian dollars or rand, rather than added to a card."
@@ -305,6 +327,8 @@ export default {
         },
         {
           h: "The two Namibian ones: fuel attendants and car guards",
+          icon: "wheel",
+          key: { fig: "N$10", tag: "Fuel attendants", text: "No self-service fuel here: an attendant pumps and cleans your windscreen, and N$5 to N$10 is customary. Car guards watching your car get a few dollars.", tone: "teal" },
           p: [
             "Namibia has <b>no self-service fuel</b>: an attendant pumps your fuel, and usually offers to check your oil and tyres and clean the windscreen. A small tip of around <b>N$5 to N$10</b> for this is customary and always appreciated, more on a long road trip where they have really helped.",
             "In town car parks and on the street, <b>car guards</b> (often in a numbered vest) keep an eye on parked cars. Handing them a few Namibian dollars when you leave, say <b>N$5 to N$10</b>, is the normal, expected courtesy."
@@ -312,6 +336,8 @@ export default {
         },
         {
           h: "Safari guides and lodge staff: where it counts",
+          icon: "paw",
+          key: { fig: "Per day", tag: "Where it counts", text: "On safari, tipping is a real part of the experience. A guide is tipped per guest per day, and lodges usually have a general staff tip box.", tone: "teal" },
           p: [
             "On a <b>safari or at a lodge</b>, tipping is a real and expected part of the experience. A <b>guide</b> who drives and leads your game viewing is customarily tipped <b>per guest per day</b>, and most lodges also have a <b>general staff tip box</b> shared among the people you do not see: kitchen, housekeeping and grounds. As a benchmark, something in the range of <b>N$50 to N$150 per guest per day</b> for a good guide is common, with the lodge box separate, but follow your lodge's own guidance, which they are happy to give.",
             "Hand a guide's tip over directly at the end of your stay, and put the general tip in the box rather than to one person."
@@ -333,6 +359,12 @@ export default {
     },
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Getting around", v: "Most visitors self-drive" },
+        { k: "Ride apps", v: "LEFA, Yango (no Uber)" },
+        { k: "From the airport", v: "LEFA or a transfer" },
+        { k: "Shared taxis", v: "Cheap, use with care" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -346,6 +378,8 @@ export default {
       sections: [
         {
           h: "Self-drive is the default",
+          icon: "wheel",
+          key: { fig: "4x4", tag: "The Namibia way", text: "Vast distances and gravel roads mean most visitors rent a car, often a 4x4, and it is honestly the best way to see the country.", tone: "teal" },
           p: [
             "Namibia is a <b>road-trip country</b>: vast distances, gravel roads, and the best sights spread far apart. For most visitors, renting a car (often a 4x4 for the gravel and the parks) is the standard and honestly the best way to get around, or joining an organized tour. There are <b>no ride-hailing apps once you leave the main towns</b>, and in smaller places you may not see a taxi at all, so your transport plan is really your driving plan.",
             "If you are driving, cash for fuel matters, see the <a href=\"/namibia\">Namibia money guide</a> for that."
@@ -353,6 +387,8 @@ export default {
         },
         {
           h: "In the towns: LEFA and Yango, not Uber",
+          icon: "phoneok",
+          key: { fig: "2 apps", tag: "No Uber here", text: "There is no Uber, Bolt or Lyft in Namibia. Use LEFA in Windhoek, or Yango in Windhoek, Swakopmund and Walvis Bay. Both need mobile data.", tone: "teal" },
           p: [
             "There is <b>no Uber, Bolt or Lyft in Namibia</b>, and there never has been. What you have instead are two <b>local ride-hailing apps</b> that work much like Uber: <b>LEFA</b>, the Windhoek pioneer, covering the city and the airport and nearby lodges; and <b>Yango</b>, which has slightly wider reach, Windhoek plus Swakopmund, Walvis Bay and a handful of other towns.",
             "Both let you book and track a ride from your phone and pay by app or cash, but they <b>need an internet connection</b>, so get a local SIM or eSIM on arrival. In town, they are the safe, fair-priced way to get around."
@@ -360,6 +396,8 @@ export default {
         },
         {
           h: "From the airport",
+          icon: "plane",
+          key: { fig: "45 km", tag: "Not a short hop", text: "Hosea Kutako International is about 45 km east of Windhoek, so plan a LEFA booking or a pre-arranged shuttle, not a quick taxi grab.", tone: "teal" },
           p: [
             "Namibia's main gateway, <b>Hosea Kutako International Airport</b>, is about <b>45 km east of Windhoek</b>, so the transfer into the city is a proper drive, not a short hop. The easy options are a <b>LEFA</b> booking or a <b>pre-arranged shuttle or lodge transfer</b>, agree the price in advance.",
             "If you are picking up a <b>rental car</b>, you can collect it at the airport and drive in yourself. Either way, sort your plan before you land rather than looking for a taxi rank on arrival."
@@ -367,6 +405,8 @@ export default {
         },
         {
           h: "Shared taxis, and a note of caution",
+          icon: "alert",
+          key: { tag: "Extra care", text: "Shared sedans on fixed routes are very cheap and used by locals, but routes are informal and cars can be crowded, so weigh them with more caution as a visitor.", tone: "amber" },
           p: [
             "In Windhoek you will see <b>shared taxis</b> (sedans running fixed routes and picking up several passengers) which are very cheap and used by locals. For visitors they carry more <b>caution</b>: routes are informal, cars can be crowded, and there are the usual petty-theft and safety concerns, so they are not the first choice for a tourist finding their feet.",
             "If you are not driving, the local apps are the safer bet in town. For anything beyond the towns, plan to drive or travel with a tour."

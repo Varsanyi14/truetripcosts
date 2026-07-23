@@ -1,5 +1,6 @@
 export default {
   slug: "sri-lanka",
+  iso2: "lk",
   live: true,
   name: "Sri Lanka",
   from: "United States",

@@ -1,5 +1,6 @@
 export default {
   slug: "denmark",
+  iso2: "dk",
   live: true,
   name: "Denmark",
   from: "United States",

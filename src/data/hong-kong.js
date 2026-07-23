@@ -1,5 +1,6 @@
 export default {
   slug: "hong-kong",
+  iso2: "hk",
   live: true,
   name: "Hong Kong",
   from: "United States",

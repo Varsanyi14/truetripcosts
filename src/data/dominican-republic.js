@@ -1,5 +1,6 @@
 export default {
   slug: "dominican-republic",
+  iso2: "do",
   live: true,
   name: "Dominican Republic",
   from: "United States",

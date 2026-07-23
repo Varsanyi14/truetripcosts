@@ -1,5 +1,6 @@
 export default {
   slug: "bahamas",
+  iso2: "bs",
   live: true,
   name: "The Bahamas",
   from: "United States",

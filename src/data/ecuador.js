@@ -1,5 +1,6 @@
 export default {
   slug: "ecuador",
+  iso2: "ec",
   live: true,
   name: "Ecuador",
   from: "United States",
@@ -175,6 +176,12 @@ export default {
   spokes: [
     {
       slug: "visa-and-galapagos-fees",
+      glance: [
+        { k: "Visa", v: "None, 90 days per year" },
+        { k: "Mainland entry fee", v: "None" },
+        { k: "Galapagos fees", v: "$220 total, cash only" },
+        { k: "Also asked", v: "Onward ticket, lodging" }
+      ],
       live: true,
       topic: "visas",
       title: "Do US citizens need a visa for Ecuador, and the Galapagos fees (2026) | True Trip Costs",
@@ -193,6 +200,8 @@ export default {
       sections: [
         {
           h: "Entry for a normal visit",
+          icon: "passport",
+          key: { fig: "90 days", tag: "Visa-free", text: "US tourists get up to 90 days visa-free in any 12-month period, granted on arrival. There is no entry fee for mainland Ecuador.", tone: "teal" },
           p: [
             "As a tourist you get <b>up to 90 days</b> visa-free in any 12-month period, granted on arrival. Stay longer in a year and you would need an extension or a different visa category, arranged with Ecuador's migration authority.",
             "Have your <b>passport</b> (valid for the length of your stay), and be ready to show an <b>onward ticket</b> and accommodation if asked. No visa fee applies to a standard tourist entry to the mainland."
@@ -200,6 +209,8 @@ export default {
         },
         {
           h: "The Galapagos fees, the part that surprises people",
+          icon: "ticket",
+          key: { fig: "$220", tag: "Galapagos, cash only", text: "A $20 INGALA transit card at the mainland airport and a $200 national park fee, both cash, and there are no ATMs at the island airports.", tone: "amber" },
           p: [
             "The Galapagos are the real cost gate, and both fees are <b>cash</b>. Before you fly from Quito or Guayaquil, you buy the <b>INGALA transit control card for 20 dollars</b> at a dedicated airport counter, and you keep the receipt.",
             "On arrival at Baltra or San Cristobal, a park officer collects the <b>national park entrance fee</b>: <b>200 dollars per foreign adult</b>, 100 dollars per child under 12. This <b>doubled from 100 dollars in August 2024</b>, so budget the new amount, and note there are <b>no ATMs at the island airports</b>, so bring clean dollars."
@@ -207,6 +218,8 @@ export default {
         },
         {
           h: "One more form before the islands",
+          icon: "receipt",
+          key: { fig: "Online", tag: "Before you fly", text: "Galapagos-bound travelers complete a short biosecurity declaration online, and all bags are inspected for plant and animal material at the mainland airport.", tone: "teal" },
           p: [
             "Galapagos-bound travelers also complete a short <b>biosecurity declaration</b> online before the flight, and all bags are inspected for prohibited plant and animal material at the mainland airport. It is quick, but arrive with extra time.",
             "None of this is a visa. For most travelers the paperwork is simply a passport, an onward ticket, and the Galapagos card and fee if you are going to the islands."
@@ -229,6 +242,12 @@ export default {
     },
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "US dollar" },
+        { k: "Cards", v: "Fine in the cities" },
+        { k: "Cash for", v: "Taxis, markets, small towns" },
+        { k: "Galapagos", v: "Cash only, no ATMs" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in Ecuador, or can I use cards? (2026) | True Trip Costs",
@@ -241,6 +260,8 @@ export default {
       sections: [
         {
           h: "Where cards work, and where they do not",
+          icon: "card",
+          key: { fig: "US$", tag: "No conversion", text: "Ecuador uses the US dollar, so nothing to convert. Cards work in Quito, Guayaquil and Cuenca, while taxis, markets, buses and small towns run on cash.", tone: "teal" },
           p: [
             "In the cities, <b>Visa and Mastercard</b> are fine at hotels, better restaurants, malls and tour operators, with Amex less consistent. A few places add a small surcharge for card use. Since prices are in US dollars, there is no currency conversion on your card.",
             "Beyond the cities, and for <b>taxis, markets, buses, street food and small shops</b>, it is cash. Assume cash the moment you leave the main tourist areas."
@@ -248,6 +269,8 @@ export default {
         },
         {
           h: "Getting cash, safely",
+          icon: "atm",
+          key: { fig: "$5", tag: "ATM fee", text: "Use bank ATMs (Banco Pichincha, Banco Guayaquil, Produbanco). Expect about $3 to $5 plus your own bank fee, with limits often $300 to $500 per withdrawal.", tone: "teal" },
           p: [
             "Use <b>bank ATMs</b> (Banco Pichincha, Banco Guayaquil, Produbanco, Banco del Pacifico). Expect a fee of about <b>3 to 5 dollars</b> plus your home bank's, with limits often around <b>300 to 500 dollars</b> per withdrawal.",
             "For safety, use machines <b>inside a bank branch or a shopping mall</b>, not street-facing ones, withdraw during the day, and carry only what you need. Bring <b>clean, smaller bills</b>, since worn notes can be refused and change for 50s and 100s is scarce."
@@ -255,6 +278,8 @@ export default {
         },
         {
           h: "The Galapagos is a cash island",
+          icon: "cash",
+          key: { fig: "$220", tag: "No ATMs", text: "The $200 park fee and $20 transit card are cash only, and there are no ATMs at the island airports, so bring dollars from the mainland.", tone: "amber" },
           p: [
             "Plan cash carefully for the Galapagos: the <b>200 dollar park fee</b> and <b>20 dollar transit card</b> are cash only, and there are <b>no ATMs at the island airports</b>, so bring dollars from the mainland.",
             "For the full money picture, tipping and the taxes to expect, see the <a href=\"/ecuador\">Ecuador money guide</a>."
@@ -276,6 +301,12 @@ export default {
     },
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Best option", v: "Uber, inDrive, Cabify" },
+        { k: "Street taxis", v: "Orange plates only" },
+        { k: "Airport", v: "Pre-arrange, esp. Guayaquil" },
+        { k: "Fare", v: "Metered or agreed first" }
+      ],
       live: true,
       topic: "taxis",
       caution: "high",
@@ -294,6 +325,8 @@ export default {
       sections: [
         {
           h: "Apps first",
+          icon: "phoneok",
+          key: { fig: "3 apps", tag: "Safest option", text: "Uber, inDrive and Cabify run in Quito and Guayaquil. You see the driver, car and plate, the price is set, and there is a record of the trip.", tone: "teal" },
           p: [
             "<b>Uber, inDrive and Cabify</b> operate in Quito and Guayaquil and are the safest everyday option: you see the driver, car and plate, the price is set or metered, and there is a record of the trip. inDrive lets you name a fare and drivers accept or counter.",
             "Pay in <b>cash or in-app</b> depending on the service. Keep small bills for cash trips, since drivers may not have change for large notes."
@@ -301,6 +334,8 @@ export default {
         },
         {
           h: "The airport, and Guayaquil especially",
+          icon: "plane",
+          key: { tag: "Guayaquil especially", text: "Book an airport transfer through your hotel or a reputable company before you land. This matters most in Guayaquil, where the advice is to pre-arrange transport.", tone: "amber" },
           p: [
             "The safest arrival is a <b>transfer booked through your hotel</b> or a reputable company, arranged before you land. This matters most in <b>Guayaquil</b>, where the US advice is to limit unnecessary movement and pre-arrange transport.",
             "If you do take an airport taxi, use the <b>official taxi counter or rank</b> inside the terminal, not a driver who approaches you."
@@ -308,6 +343,8 @@ export default {
         },
         {
           h: "Street taxis, if you must",
+          icon: "alert",
+          key: { fig: "Orange", tag: "Official cabs only", text: "Use only official taxis with orange plates and a working meter. Check the meter is on or agree the fare first, since some drivers overcharge visitors.", tone: "teal" },
           p: [
             "Use only <b>official taxis</b> (orange plates, a company name and a working meter). Check the <b>meter is on</b> or <b>agree the fare before you get in</b>, since some drivers overcharge visitors.",
             "Avoid hailing at night, do not share with strangers, and if something feels off, wait for an app car instead. For how to carry and pay cash safely, see the <a href=\"/ecuador\">Ecuador money guide</a>."

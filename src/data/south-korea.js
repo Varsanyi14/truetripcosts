@@ -1,5 +1,6 @@
 export default {
   slug: "south-korea",
+  iso2: "kr",
   live: true,
   name: "South Korea",
   from: "United States",

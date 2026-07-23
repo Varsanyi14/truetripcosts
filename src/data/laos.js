@@ -1,5 +1,6 @@
 export default {
   slug: "laos",
+  iso2: "la",
   live: true,
   name: "Laos",
   from: "United States",

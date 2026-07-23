@@ -1,5 +1,6 @@
 export default {
   slug: "cambodia",
+  iso2: "kh",
   live: true,
   name: "Cambodia",
   from: "United States",

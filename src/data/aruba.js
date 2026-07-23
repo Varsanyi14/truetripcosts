@@ -1,5 +1,6 @@
 export default {
   slug: "aruba",
+  iso2: "aw",
   live: true,
   name: "Aruba",
   from: "United States",

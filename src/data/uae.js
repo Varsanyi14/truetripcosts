@@ -1,5 +1,6 @@
 export default {
   slug: "uae",
+  iso2: "ae",
   live: true,
   name: "United Arab Emirates",
   from: "United States",

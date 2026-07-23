@@ -1,5 +1,6 @@
 export default {
   slug: "france",
+  iso2: "fr",
   live: true,
   name: "France",
   from: "United States",
