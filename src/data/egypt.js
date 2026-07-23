@@ -175,6 +175,12 @@ export default {
   spokes: [
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Uber and Careem" },
+        { k: "Fares", v: "Fixed in-app, no haggling" },
+        { k: "Street cabs", v: "No meter, you negotiate" },
+        { k: "Cairo airport", v: "Ignore the touts" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -188,6 +194,8 @@ export default {
       sections: [
         {
           h: "Which app to install, and where it works",
+          icon: "phoneok",
+          key: { fig: "Two apps", tag: "An app country", text: "Egypt is genuinely an app country. Uber and Careem both operate, and though Uber owns Careem they run as separate apps, so have both. They work in Cairo, Giza, Alexandria and the Red Sea resorts.", tone: "teal" },
           p: [
             "Egypt is genuinely an app country. <b>Uber</b> and <b>Careem</b> both operate here, and although Uber owns Careem they run as two separate apps, so having both gives you a fallback when one is short on cars. Each shows the fare before you accept, which removes the entire meter argument that dogs the street cabs. Careem also lets you order a licensed metered cab through its <b>White Taxi</b> option inside the app if you would rather ride in a traditional taxi with the price still tracked.",
             "Coverage is strong in <b>Cairo</b>, <b>Giza</b>, <b>Alexandria</b> and the Red Sea resort areas like Hurghada and Sharm el-Sheikh. It is thinner in <b>Luxor</b> and <b>Aswan</b>, where you may find few or no app cars, so there you either agree a fixed fare with a driver before setting off or hire a car and driver for the day through your hotel. <b>inDrive</b>, where you propose a price and drivers accept or counter, is popular as a cheaper option and works in the bigger cities too."
@@ -195,6 +203,8 @@ export default {
         },
         {
           h: "The old street cabs and the broken-meter line",
+          icon: "alert",
+          key: { tag: "No meter, so negotiate", text: "The old black-and-white Cairo taxis mostly have no working meter, so the fare is whatever you negotiate, which favors the driver with a tourist. An app removes the guesswork.", tone: "amber" },
           p: [
             "You will still see the old <b>black-and-white</b> taxis, especially in Cairo. Most have no working meter, and the fare is whatever you can negotiate, which for a visitor usually means paying well over the going rate. The newer <b>white</b> Cairo taxis do have meters, but a common move is to claim the meter is broken and name a flat price instead. Neither is a disaster if you agree the fare clearly before you get in, but the simpler path is to open an app and skip the negotiation.",
             "A few small tricks show up around tourists: a helper who grabs your bag and then expects a tip, a driver who is suddenly short of change, or a claim that your destination is closed and he knows somewhere better. None of these are dangerous, but they are easier to avoid than to argue about. Booking on an app, paying the fare shown, and keeping your bag with you removes most of them at once."
@@ -202,6 +212,8 @@ export default {
         },
         {
           h: "Getting out of Cairo airport",
+          icon: "plane",
+          key: { tag: "The sharpest moment", text: "Cairo International is where fixers and drivers approach offering a taxi at a high flat rate. Book an Uber or Careem to the official pickup point, or arrange a hotel transfer in advance.", tone: "amber" },
           p: [
             "Cairo International is the sharpest moment. Inside and just outside arrivals, drivers and fixers will approach you offering a taxi, quoting a high flat rate, and sometimes inventing an <b>airport entrance fee</b> or a luggage charge. Politely decline and keep walking. The clean option is to open <b>Uber</b> or <b>Careem</b>, request a car, and follow the app to the marked ride-hailing pickup area rather than taking the first car pressed on you at the door.",
             "If you would rather use a traditional cab, use Careem's <b>White Taxi</b> option or agree a firm total with the driver before you load your bags, and do not pay any extra fee that appears only after you are moving. For getting around the city once you are settled, the <b>Cairo Metro</b> is very cheap and has women-only cars near the middle of each train, which many solo female travelers prefer at busy times."
@@ -209,6 +221,8 @@ export default {
         },
         {
           h: "Fares, paying and baksheesh",
+          icon: "cash",
+          key: { fig: "Carry cash", tag: "Small notes for baksheesh", text: "In Uber and Careem you can pay cash or often by card, but cash is still widely used, so carry small Egyptian pound notes for a street cab and the small baksheesh that follows.", tone: "teal" },
           p: [
             "In Uber and Careem you can pay in cash or, in many cases, by card, and cash is still widely used, so carry small Egyptian pound notes. If you take a street taxi, settle the number before the trip and have close to the right change ready, because rounding disputes are common. Fares are low by US standards for short city hops, which is part of why the invented extras stand out.",
             "Tipping, or <b>baksheesh</b>, is woven into daily life in Egypt, and rounding a taxi fare up is normal and appreciated, though not required on an app ride where the price is set. For the wider money picture, including how much cash to carry and where cards are accepted, see the <a href=\"/egypt\">Egypt money guide</a>."
@@ -232,6 +246,12 @@ export default {
     },
     {
       slug: "tipping",
+      glance: [
+        { k: "Tipping (baksheesh)", v: "Constant and expected" },
+        { k: "Restaurants", v: "12% often added, else about 10%" },
+        { k: "Key habit", v: "Carry lots of small notes" },
+        { k: "How", v: "Always cash, in pounds" }
+      ],
       live: true,
       topic: "tipping",
       title: "Tipping in Egypt: how baksheesh works and how much to give (2026) | True Trip Costs",
@@ -244,6 +264,8 @@ export default {
       sections: [
         {
           h: "How much to tip, by situation",
+          icon: "receipt",
+          key: { fig: "10-12%", tag: "Check the bill", text: "At restaurants, check the bill first. Many add a service charge of about 12%, so a small extra is enough; if there is none, around 10% is normal. Small tips follow for almost any help.", tone: "teal" },
           p: [
             "At <b>restaurants</b>, check the bill first. Many add a <b>service charge of about 12%</b>; if it is there, a small extra for good service is enough. If it is not, <b>around 10%</b> is normal. Street food and takeaway do not expect tips.",
             "<b>Guides</b> are tipped more generously. For a day tour, roughly <b>100 to 200 EGP per person</b> for the guide and <b>50 to 100 EGP</b> for the driver is a common range. <b>Nile cruise crews</b> receive a pooled tip at the end, often <b>200 to 400 EGP per person</b> for a multi-day cruise, handed to the purser or placed in a communal envelope.",
@@ -252,6 +274,8 @@ export default {
         },
         {
           h: "Why small notes matter so much",
+          icon: "smallnotes",
+          key: { tag: "Keep small denominations", text: "Baksheesh runs on small notes. You will tip many times a day, and nobody can break a 200 pound note at a tomb entrance, so keep a thick stack of small denominations on you.", tone: "amber" },
           p: [
             "Baksheesh runs on <b>small denominations</b>. You will tip many times a day, and nobody can break a 200 pound note at a tomb entrance. Keep a <b>thick pocket of 5, 10 and 20 pound notes</b> separate from your main cash, so you can reach for one without pulling out a large wad.",
             "ATMs often dispense 100 and 200 pound notes, so <b>break bills early</b>: buy a water or a snack at a shop and ask for small change, or request smaller notes at your hotel front desk."
@@ -259,6 +283,8 @@ export default {
         },
         {
           h: "Cash and currency for tips",
+          icon: "cash",
+          key: { fig: "Cash", tag: "In pounds", text: "Always tip in cash. A card is no substitute for baksheesh, and many people you tip cannot process one. Tip in Egyptian pounds, not dollars, which are awkward for small amounts.", tone: "teal" },
           p: [
             "Always tip in <b>cash</b>. A card is no substitute for baksheesh, and many of the people you tip do not have a way to process one. Tip in <b>Egyptian pounds</b> for everyday situations.",
             "A few small, clean <b>US dollar or euro notes</b> can be handy for tipping guides or on a Nile cruise, where staff sometimes prefer hard currency, but pounds are the default and work everywhere."
@@ -280,6 +306,12 @@ export default {
     },
     {
       slug: "money-scams",
+      glance: [
+        { k: "Classic", v: "The camel ride at the pyramids" },
+        { k: "Taxis", v: "Meter refused, quotes in dollars" },
+        { k: "Markets", v: "Haggle, the first price is for tourists" },
+        { k: "Pay in", v: "Pounds, not dollars" }
+      ],
       live: true,
       topic: "scams",
       title: "Common money scams in Egypt, and what they cost you (2026) | True Trip Costs",
@@ -292,6 +324,8 @@ export default {
       sections: [
         {
           h: "Taxis and the airport",
+          icon: "taxi",
+          key: { tag: "Meter refused, dollar quotes", text: "Street taxis are where tourists lose a little: the driver refuses the meter or claims it is broken, quotes in dollars or euros, and takes a long route. Use Uber or Careem instead.", tone: "amber" },
           p: [
             "Street taxis are where most tourists lose a little money: the driver <b>refuses the meter</b> or claims it is broken, quotes in <b>dollars or euros</b>, takes a long route, or has <b>no change</b> for a big note. The clean fix in Cairo and other big cities is a <b>ride-hailing app, Uber or Careem</b>, which shows the price up front and removes the haggling. If you do take a street cab, <b>agree the fare before you get in</b> and carry <b>small notes</b> so no change is needed.",
             "At <b>Cairo airport</b>, ignore the drivers who approach you inside the hall quoting flat fares several times the real price, and use the <b>official taxi desk, a pre-booked transfer, or Uber and Careem</b>. Be wary too of <b>helpers</b> who grab your bags or offer to walk you through customs, then demand a large payment; accept help only from <b>uniformed official staff</b>. Do not change money with anyone outside the airport, since unofficial exchange is illegal and a route to <b>counterfeit notes</b>."
@@ -299,6 +333,8 @@ export default {
         },
         {
           h: "At the pyramids and the big sites",
+          icon: "paw",
+          key: { tag: "The camel ride trap", text: "The classic Giza trap: a handler offers a camel or horse ride at a cheap-looking price, then once you are up, demands much more to let you down. Agree the full price and the getting-off in advance, or skip it.", tone: "amber" },
           p: [
             "The classic Giza trap is the <b>camel or horse ride</b>: a handler offers a cheap-looking price, then once you are up, <b>demands much more to let you down</b> or to bring you back, or adds a fee for <b>photos</b>. Agree the <b>full price, including the return, clearly out loud before you get on</b>, or book a ride through your hotel or a reputable operator. The related move is a <b>photo helper</b> who takes your phone to snap a picture, then wants a tip to hand it back.",
             "Around every major site you will meet <b>fake guides</b> offering tours at inflated prices with little real information, and <b>touts</b> selling tickets or claiming to skip a line. <b>Buy tickets only at the official counter</b>, and if you want a guide, arrange a licensed one through your hotel or a known operator in advance. Anyone offering <b>exclusive access</b> to a closed area is inventing it."
@@ -306,6 +342,8 @@ export default {
         },
         {
           h: "Baksheesh: tipping, and tipping pressure",
+          icon: "tip",
+          key: { fig: "Small tips", tag: "Small is fine", text: "Baksheesh is woven through Egyptian life, and small tips for genuine service are normal: a few pounds for a helpful porter or guard. You can politely decline pushy demands for more.", tone: "teal" },
           p: [
             "<b>Baksheesh</b> (tipping) is woven through Egyptian life, and small tips for genuine service are normal and expected: a few <b>Egyptian pounds</b> for a helpful porter, washroom attendant or driver. The trap is the <b>manufactured favor</b>: someone points you toward something you did not ask about, opens a door, or insists on showing you a view, then presses for a tip.",
             "The habit that keeps this in proportion: carry a <b>pocket of small notes</b> for tips you actually want to give, tip <b>modestly and only for real service</b>, and feel free to decline unrequested help with a friendly but firm no. You are not obliged to pay for a favor you did not ask for."
@@ -313,6 +351,8 @@ export default {
         },
         {
           h: "Markets, and the pay-in-dollars trap",
+          icon: "tag",
+          key: { fig: "Haggle", tag: "First price is high", text: "In the souks prices are rarely fixed and the first number is aimed at tourists, so haggling is expected. Ask your hotel what a fair price is, and pay in pounds, not dollars, which get a poor rate.", tone: "teal" },
           p: [
             "In the <b>souks and around the sites</b>, prices are rarely fixed and the first number is aimed at tourists, so <b>haggling is expected</b>: ask your hotel what a scarf, spice or papyrus should roughly cost, start well below the opening price, and be ready to walk away. Watch for items quietly <b>added to your total</b>, or a <b>free tea or gift</b> framed as hospitality that then obligates a purchase; accepting tea does not oblige you to buy.",
             "At the <b>ATM and card machine</b>, when asked whether to charge <b>in dollars or Egyptian pounds, always choose pounds</b>: the dollar option uses a poor built-in rate that quietly costs you several percent. Use <b>bank ATMs</b> over free-standing machines, and keep an eye on your card. Dollars are sometimes welcomed in shops and by drivers, but at a bad rate, so pay in <b>pounds</b>."
@@ -320,6 +360,8 @@ export default {
         },
         {
           h: "What this means for your money",
+          icon: "cash",
+          key: { fig: "Short list", tag: "How to avoid it", text: "Nearly everything here costs a few dollars to a few tens, avoided by the same list: Uber or Careem over street cabs, agree prices up front, carry small notes, and pay in pounds.", tone: "teal" },
           p: [
             "Nearly everything here costs <b>a few dollars to a few tens of dollars</b> and is avoided by the same short list: <b>Uber or Careem</b> instead of street taxis, <b>agree prices first</b>, <b>carry small notes</b>, <b>buy tickets at official counters</b>, and <b>pay in Egyptian pounds</b>. The one worth active care is <b>unofficial currency exchange</b>, which risks counterfeit notes, so change money only at banks, official bureaux or ATMs.",
             "Held calmly, none of this should shape a trip that is otherwise extraordinary. For getting around, see the <a href=\"/egypt/taxis-and-apps\">Egypt taxis and apps guide</a>, for the tipping detail see <a href=\"/egypt/tipping\">tipping in Egypt</a>, and for the wider picture the <a href=\"/egypt\">Egypt cost guide</a>."

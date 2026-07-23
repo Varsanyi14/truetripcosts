@@ -180,6 +180,12 @@ export default {
   spokes: [
     {
       slug: "nzeta-and-ivl",
+      glance: [
+        { k: "Required", v: "NZeTA before you fly" },
+        { k: "Plus", v: "The IVL tourism levy" },
+        { k: "Real total", v: "About NZ$117 in the app" },
+        { k: "Cheapest", v: "The official app, not the website" }
+      ],
       live: true,
       topic: "visas",
       title: "Do US citizens need an NZeTA for New Zealand, and what is the IVL? (2026) | True Trip Costs",
@@ -198,6 +204,8 @@ export default {
       sections: [
         {
           h: "The two charges, and the real total",
+          icon: "receipt",
+          key: { fig: "~NZ$117", tag: "NZeTA plus IVL", text: "New Zealand entry bundles two charges: the NZeTA (the travel authority, NZ$17 in the app) and the IVL conservation levy (NZ$100), paid together. So the real total is about NZ$117 in the app.", tone: "teal" },
           p: [
             "This is the bit that catches people. New Zealand entry is <b>two things bundled together</b>: the NZeTA (the travel authority itself) and the IVL (a conservation and tourism levy). You pay them in a single transaction, so it feels like one fee, but it is two.",
             "The NZeTA costs <b>NZ$17 through the official app</b> or <b>NZ$23 on the website</b>. The <b>IVL is NZ$100</b> per person, and it went up from NZ$35 on <b>1 October 2024</b>, so older guides quote far less. All in, a US traveler pays about <b>NZ$117 by app</b> (roughly 70 US dollars), covering entries for two years on the NZeTA side."
@@ -205,6 +213,8 @@ export default {
         },
         {
           h: "How to apply, and the cheaper way",
+          icon: "phoneok",
+          key: { fig: "NZ$17 app", tag: "App beats website", text: "The app is both cheapest and fastest: the NZeTA is NZ$17 in the official app versus NZ$23 on the website. Apply a few days before you fly, since approval is not always instant.", tone: "teal" },
           p: [
             "The app is both the cheapest and the fastest route."
           ],
@@ -217,6 +227,8 @@ export default {
         },
         {
           h: "Do not pay a markup for it",
+          icon: "alert",
+          key: { tag: "Skip third-party sites", text: "New Zealand Immigration warns directly about this: third-party sites sell the NZeTA above the official price, sometimes promising nothing extra. Use only the official app or immigration website.", tone: "amber" },
           p: [
             "New Zealand Immigration warns about this directly: a number of <b>third-party sites</b> sell the NZeTA and charge more than the official price, sometimes promising faster processing they cannot deliver. The official app and immigration.govt.nz are the only real routes, and the app is the cheapest. If a site quotes more than NZ$17 to NZ$23 plus the NZ$100 levy, it is adding its own fee.",
             "The NZeTA is valid for <b>2 years</b> or until your passport expires, and lets you visit for up to <b>90 days</b> at a time. The IVL, though, is charged <b>each time you request a new NZeTA</b>, so it is not strictly once every two years if you renew early."
@@ -224,6 +236,8 @@ export default {
         },
         {
           h: "A couple of things to know",
+          icon: "calendar",
+          key: { fig: "2 years", tag: "Non-refundable", text: "The NZeTA, IVL included, is non-refundable even if your request is declined, so apply once and answer carefully. It is valid for 2 years of visits once approved.", tone: "teal" },
           p: [
             "The NZeTA is <b>non-refundable</b>, the IVL included, even if your request is declined, so apply once and answer the questions carefully. It is valid <b>2 years</b> or until your passport expires, for stays up to <b>90 days</b>.",
             "If your trip <b>connects through Auckland</b> on the way elsewhere, check whether you need an NZeTA for transit before you book, the official site above covers it. For how money works once you land, cards, cash, ATMs and the rest, see the <a href=\"/new-zealand\">New Zealand money guide</a>."
@@ -247,6 +261,12 @@ export default {
     },
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "New Zealand dollar (NZD)" },
+        { k: "Cards", v: "Nearly everywhere, tap-and-go" },
+        { k: "Local quirk", v: "Card surcharges, about 1.5 to 2%" },
+        { k: "Cash for", v: "A little, NZ$100 to NZ$200 a trip" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in New Zealand, or can I use cards? (2026) | True Trip Costs",
@@ -259,6 +279,8 @@ export default {
       sections: [
         {
           h: "Nearly cashless, everywhere",
+          icon: "phoneok",
+          key: { fig: "Tap-and-go", tag: "Cards accepted", text: "New Zealand is a tap-and-go country. Contactless is near-universal across supermarkets, restaurants, petrol stations, attractions and even many market stalls, by card or phone.", tone: "teal" },
           p: [
             "New Zealand is a <b>tap-and-go country</b>. Contactless is near-universal across supermarkets, restaurants, petrol stations, attractions and even many market stalls, and the local <b>EFTPOS</b> debit network sits alongside Visa and Mastercard everywhere. In <b>Auckland, Wellington, Christchurch and Queenstown</b> you can get by almost entirely on card.",
             "Even transit has gone contactless: <b>Auckland now lets you tap a contactless card or phone</b> on buses, trains and ferries for the same fare locals pay, so there is no need to buy a separate transit card there."
@@ -266,6 +288,8 @@ export default {
         },
         {
           h: "The surcharge quirk, and the ban that stalled",
+          icon: "receipt",
+          key: { fig: "1.5-2%", tag: "Card surcharges", text: "The local catch: merchants can legally add a surcharge when you pay by card, typically 1.5 to 2% on contactless (PayWave) and credit. A promised ban has stalled, so expect it on some bills.", tone: "amber" },
           p: [
             "Here is the New Zealand catch. Merchants can <b>legally add a surcharge</b> when you pay by card, typically <b>1.5 to 2%</b> on contactless (PayWave) and credit, and it is meant to be clearly signposted at the counter. A government <b>ban on these surcharges was promised for May 2026</b>, but the bill <b>stalled in Parliament and has not taken effect</b> as of mid-2026, so <b>surcharges are still legal</b>. Check the terminal or the sign before you tap.",
             "One caveat you may read elsewhere: New Zealanders can sometimes dodge the fee by <b>inserting</b> a local debit card (which routes through the free domestic EFTPOS network) rather than tapping. That trick does <b>not reliably help a foreign card</b>, which runs through Visa or Mastercard either way, so as a visitor, just expect the odd surcharge and treat it as a small cost."
@@ -273,6 +297,8 @@ export default {
         },
         {
           h: "Cash, and the dollar rule",
+          icon: "atm",
+          key: { fig: "NZ$100-200", tag: "A little cash", text: "You need little cash, but not none: budget around NZ$100 to NZ$200 for a trip, more off the beaten track. On a card or ATM, choose New Zealand dollars, not your home currency.", tone: "teal" },
           p: [
             "You need <b>little cash</b>, but not none. Budget around <b>NZ$100 to NZ$200</b> for a typical trip, and more if you are heading well off the beaten track, to rural areas, small farm stays or the occasional market. ATMs from the main banks (<b>ANZ, ASB, BNZ, Westpac, Kiwibank</b>) are widely available and take foreign cards.",
             "As always, when an ATM or terminal asks whether to charge in <b>US dollars or NZ dollars, choose NZ dollars</b>. The dollar option triggers dynamic currency conversion at a poor rate; NZ dollars lets your own bank convert more cheaply."
@@ -280,6 +306,8 @@ export default {
         },
         {
           h: "Tipping, and the wrap",
+          icon: "tip",
+          key: { fig: "No tipping", tag: "Not expected", text: "Tipping is not expected in New Zealand, service is not built around it, so there is no need to add a tip, though it is welcome for something exceptional.", tone: "teal" },
           p: [
             "<b>Tipping is not expected</b> in New Zealand, service is not built around it, so there is no need to add a tip, though it is welcome for something exceptional.",
             "For the fuller money picture, see the <a href=\"/new-zealand\">New Zealand money guide</a>."
@@ -302,6 +330,12 @@ export default {
     },
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Lead time", v: "About 6 to 7 months" },
+        { k: "Run by", v: "MPI, with an import permit" },
+        { k: "Quarantine", v: "Mandatory, at least 10 days" },
+        { k: "Coming home", v: "Simple, NZ is rabies-free" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to New Zealand from the US (2026): the 6 to 7 month process and the rules change mid-transition | True Trip Costs",
@@ -314,6 +348,8 @@ export default {
       sections: [
         {
           h: "The two numbers, and the catch",
+          icon: "calendar",
+          key: { fig: "6-7 months", tag: "Start early", text: "Two things decide a New Zealand move: lead time is roughly 6 to 7 months, set by the sequence of vaccination, blood testing and the MPI permit. This is not a quick one, so start early.", tone: "teal" },
           p: [
             "Two things decide a move to New Zealand with a pet. <b>Lead time is roughly 6 to 7 months</b>, set by the sequence of vaccination, blood testing, and permit processing that all has to happen in order. <b>Cost runs to several thousand dollars</b>, with the biggest lines being air transport as cargo and the mandatory quarantine stay. Vet visits, the rabies titer, and Brucella testing for dogs make up much of the rest.",
             "The catch that is specific to 2026: MPI issued a new Import Health Standard for cats and dogs that came into force on 1 July 2026, with a transition period during which both the old and the new requirements are accepted. So before anything else, confirm which standard applies to your move. The safest step is to ask MPI directly or check the current MPI guidance, because the pre-export identification checks and some tests and treatments differ between the two. Do not build your whole timeline on an out-of-date checklist."
@@ -321,6 +357,8 @@ export default {
         },
         {
           h: "The steps, in the order that matters",
+          icon: "health",
+          key: { tag: "Sequence, and MPI timing", text: "Follow the steps in sequence and start well ahead. The import permit alone takes MPI about a month of working days once your paperwork is correct, so a late or out-of-order application costs you weeks.", tone: "amber" },
           p: [
             "Follow these in sequence and start well ahead. The permit alone takes MPI a month of working days to process once your paperwork is correct, and quarantine space has to be booked, so the front end fills up fast."
           ],
@@ -337,6 +375,8 @@ export default {
         },
         {
           h: "Quarantine, ports, and prohibited breeds",
+          icon: "alert",
+          key: { fig: "10 days", tag: "Quarantine is required", text: "Quarantine is mandatory here: your pet stays a minimum of 10 days at an MPI-approved facility, which you book and pay for. Some breeds are prohibited, so confirm yours is allowed first.", tone: "amber" },
           p: [
             "Quarantine is mandatory and is a defining feature of this route. Your pet must stay a <b>minimum of 10 days</b> at an MPI-approved facility, and pets requiring quarantine can only enter through Auckland or Christchurch. The facility handles the MPI arrival notification for you. Because the final release inspection happens during normal business hours, pickup may not land exactly when the 10 days end, so plan a little slack. Quarantine space is limited and can be the bottleneck that dictates your whole timeline, which is another reason to book early.",
             "Note also that some breeds are barred entirely. Prohibited dog breeds include the Brazilian Fila, Dogo Argentino, Japanese Tosa, Perro de Presa Canario, and American Pit Bull Terrier, along with hybrids. For cats, hybrids are prohibited except Bengal cats with documentation showing five generations of domestic ancestry. If your pet is a listed breed, it cannot be imported, so check this before you spend on anything else.",
@@ -345,6 +385,8 @@ export default {
         },
         {
           h: "Coming back to the US is the easy part",
+          icon: "plane",
+          key: { fig: "Easy", tag: "The return trip", text: "Because New Zealand is rabies-free, a dog flying home to the US is on the simplest path, with the CDC as the primary authority and usually just a CDC form.", tone: "teal" },
           p: [
             "Good news for the return trip: because New Zealand is rabies-free, a dog flying home to the US is on the simplest path. The CDC is the primary authority for dogs entering the US, and from a rabies-free country the usual requirements are a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer test and no quarantine. Cats have no federal requirement returning to the US.",
             "For the full detail on the return, see our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a>, and for how New Zealand compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."

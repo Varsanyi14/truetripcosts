@@ -184,6 +184,12 @@ export default {
   spokes: [
     {
       slug: "e-visa",
+      glance: [
+        { k: "Visa", v: "e-Tourist Visa, apply online" },
+        { k: "Options", v: "30-day, 1-year, 5-year" },
+        { k: "Cost", v: "From about $25 ($40 for 1-year)" },
+        { k: "Where", v: "indianvisaonline.gov.in only" }
+      ],
       live: true,
       topic: "visas",
       title: "How do US citizens get an India e-visa? (2026) | True Trip Costs",
@@ -204,6 +210,8 @@ export default {
       sections: [
         {
           h: "Which visa, and what it costs",
+          icon: "receipt",
+          key: { fig: "From $25", tag: "Three options", text: "Three tourist e-Visas: a 30-day, a 1-year and a 5-year, the longer two multiple-entry. Fees are set per country and start around $25, with about $40 for the popular one-year.", tone: "teal" },
           p: [
             "There are three tourist e-Visa options: a <b>30-day</b>, a <b>1-year</b>, and a <b>5-year</b>, the longer two allowing multiple entries. Fees are set per country and shift seasonally, but for US citizens they run roughly: <b>about $25 for the 30-day</b> (cheaper, near $10, in the April to June low season), <b>about $40 for the 1-year</b>, and <b>about $80 for the 5-year</b>, plus a small card-processing charge. They are <b>non-refundable</b>, even if refused.",
             "On the 1-year and 5-year visas, US citizens can stay <b>up to 90 days at a time</b>, with a maximum of <b>180 days in a calendar year</b>. The visa runs from the <b>date it is issued</b>, not the date you arrive, so do not apply too early."
@@ -211,6 +219,8 @@ export default {
         },
         {
           h: "How to apply, step by step",
+          icon: "qr",
+          key: { fig: "1-2 weeks", tag: "Apply ahead", text: "Apply on the official portal a week or two before you fly, with your passport, a photo and travel details. Approval usually takes a few days, so do not leave it late.", tone: "teal" },
           p: [
             "Allow a few days, and apply a week or two ahead to be safe."
           ],
@@ -223,6 +233,8 @@ export default {
         },
         {
           h: "The official site, and the many that are not",
+          icon: "alert",
+          key: { tag: "Beware visa middlemen", text: "India is one of the worst destinations for visa middlemen: search results overflow with sites that charge well above the government fee to file the same form. Use only indianvisaonline.gov.in.", tone: "amber" },
           p: [
             "India is one of the worst destinations for <b>visa middlemen</b>: search results overflow with sites that charge well above the government fee to file the same application, and some are outright scams. The only official portal is <b>indianvisaonline.gov.in</b>, so if a site charges noticeably more, it is adding a markup.",
             "India has also rolled out a separate <b>free online arrival form</b> for air travelers, filed before you land, which is distinct from the paid e-Visa. Complete that one on the official government portal too, and never pay for it."
@@ -230,6 +242,8 @@ export default {
         },
         {
           h: "A couple of gotchas",
+          icon: "plane",
+          key: { tag: "Air entry, no extension", text: "The e-Visa only works if you fly in through a designated airport or seaport, not at a land border, and it cannot be extended. So match it to how and where you arrive.", tone: "amber" },
           p: [
             "The e-Visa only works if you <b>fly in</b> through one of the designated airports or seaports, it is <b>not valid at land borders</b>, and it <b>cannot be extended</b>, so for longer you leave and reapply or get a regular visa. Your passport needs <b>6 months</b> of validity and a couple of blank pages.",
             "For how money works once you are there, cards, cash, ATMs and the rest, see the <a href=\"/india\">India money guide</a>."
@@ -252,6 +266,12 @@ export default {
     },
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Uber, Ola (add Rapido)" },
+        { k: "Fares", v: "Fixed in-app, no meter" },
+        { k: "Airport", v: "Ignore touts, use the app" },
+        { k: "Autos", v: "Agree the fare or use the meter" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -265,6 +285,8 @@ export default {
       sections: [
         {
           h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "Uber/Ola", tag: "Fixed price", text: "Uber and Ola are the two big ride apps, both showing a fixed price before you go and covering the cities and airports. Add Rapido for cheap motorbike and auto rides.", tone: "teal" },
           p: [
             "<b>Uber</b> and <b>Ola</b> are the two big ride apps in India, both showing a fixed price before you go and both covering the cities and airports a visitor is likely to use. <b>Rapido</b> is worth adding for the cheapest short hops, since it does motorbike rides and auto-rickshaws as well as cars. <b>inDrive</b>, where you propose a fare and the driver accepts or counters, is a common option too. Because the fare is agreed in the app, the meter never comes into it.",
             "One name to skip: <b>BluSmart</b>, the all-electric app, suspended its rides in 2025, so ignore it if you see it mentioned in older guides. Keep two apps installed, since drivers do cancel, and occasional driver strikes can thin availability for a day. On a normal day, though, opening Uber or Ola is by far the easiest way to get a fair price."
@@ -272,6 +294,8 @@ export default {
         },
         {
           h: "The airport touts, and the real prepaid counter",
+          icon: "alert",
+          key: { tag: "Ignore the touts", text: "As you exit, men will approach offering a taxi or prepaid ride at a rate that turns out inflated. Ignore them, and use your app pickup point or the official prepaid taxi counter inside.", tone: "amber" },
           p: [
             "The classic Indian airport scene is a cluster of men approaching you as you exit, offering a <b>taxi</b> or a <b>prepaid</b> ride and quoting a fixed rate that turns out to be well over the odds, sometimes with a grab for your luggage to hurry you along. A sharper version has a driver insisting your hotel is <b>closed, full or unsafe</b>, then steering you to another one where he earns a commission. None of this is the official service.",
             "There are two safe answers. Book in your <b>app</b> and walk to its marked pickup zone, or use the <b>official prepaid taxi booth</b>, which is run by the traffic police and gives you a printed slip with a set fare that you hand to the assigned driver. In <b>Delhi</b>, those prepaid booths are now run with a cooperative called Bharat Taxi under the Delhi Traffic Police, and the fare is fixed and printed, so there is nothing to negotiate at the car."
@@ -279,6 +303,8 @@ export default {
         },
         {
           h: "Delhi: take the Airport Express metro",
+          icon: "ticket",
+          key: { fig: "Metro", tag: "The calm way in", text: "If you land in Delhi, the Airport Express metro from Terminal 3 to New Delhi station is often the calmest and cheapest way into the city, skipping traffic and touts entirely.", tone: "teal" },
           p: [
             "If you land in <b>Delhi</b>, the calmest way into the city is often the <b>Airport Express</b> metro line, which runs from Terminal 3 to New Delhi railway station in around twenty minutes for a few rupees, sidestepping the road traffic entirely. From the metro you can take a short app ride or auto to your hotel.",
             "It is a clean way to avoid the whole arrivals-hall scrum on your first day, when you are tired and least in the mood to argue over a fare. Other big cities have their own airport metro or rail links worth checking, but Delhi's is the one most visitors will use."
@@ -286,6 +312,8 @@ export default {
         },
         {
           h: "Autos, meters, the note-switch and paying",
+          icon: "cash",
+          key: { fig: "Agree fare", tag: "Auto-rickshaws", text: "Auto-rickshaw drivers are meant to run the meter but often refuse and name a flat price, so agree the number before you get in, or use an app. Carry small notes and count your change.", tone: "teal" },
           p: [
             "Away from the apps, <b>auto-rickshaw</b> drivers are legally meant to run the meter but often refuse and name a flat price, so either agree the number before you set off or just book the auto through Uber, Ola or Rapido for a fixed fare. Watch for the <b>note-switch</b> trick, where a driver takes your 500 rupee note, palms it, and shows you a 100, claiming you underpaid. Count your notes out loud, keep small change handy, or pay by card or UPI in the app to avoid cash disputes entirely.",
             "Tipping is not expected for a taxi, auto or app ride, though rounding up is a friendly gesture. For the wider money picture, including how much cash to carry and how card and UPI payments work, see the <a href=\"/india\">India money guide</a>."
@@ -309,6 +337,12 @@ export default {
     },
     {
       slug: "money-scams",
+      glance: [
+        { k: "Costliest", v: "The gem and carpet export scam" },
+        { k: "Everyday", v: "Taxi and auto meter refusal" },
+        { k: "The setup", v: "A driver says your hotel is closed" },
+        { k: "Temples", v: "Blessing, then a payment demand" }
+      ],
       live: true,
       topic: "scams",
       title: "Common money scams in India, and what they cost you (2026) | True Trip Costs",
@@ -321,6 +355,8 @@ export default {
       sections: [
         {
           h: "Taxis and auto-rickshaws",
+          icon: "taxi",
+          key: { fig: "3-5x", tag: "Meter refused", text: "The most universal one: a driver refuses the meter (it is broken), quotes a flat fare three to five times the real price, or takes a long route. Use Uber or Ola, or agree the fare first.", tone: "amber" },
           p: [
             "The oldest and most universal one: a taxi or <b>auto-rickshaw</b> driver <b>refuses the meter</b> (it is broken), quotes a flat fare <b>3 to 5 times</b> the real price, takes a long route, or stops at <b>commission shops</b> on the way. It is worst at <b>airports, railway stations and tourist sites</b>. In Delhi, a metered ride from <b>T3 airport to Connaught Place</b> is roughly <b>350 to 500 rupees</b>, while a tout may quote <b>1,200 to 1,800</b>.",
             "The clean fix is <b>Uber or Ola</b>, which show a fixed price up front, track the route and take digital payment, which has effectively ended the classic taxi scam. At airports use the <b>official prepaid taxi counter</b> (in Delhi, run by the Traffic Police, with fixed printed rates), and <b>never accept a Sir, taxi tout</b> inside the terminal. If you do take a metered auto, <b>confirm the meter is running</b>, keep small change, and research the rough fare first. The full picture is in the <a href=\"/india/taxis-and-apps\">India taxis and apps guide</a>."
@@ -328,6 +364,8 @@ export default {
         },
         {
           h: "The your hotel is closed scam",
+          icon: "wheel",
+          key: { fig: "Call ahead", tag: "It is not closed", text: "Mostly around New Delhi Railway Station and Paharganj, a driver claims your booked hotel is closed or full and takes you to one that pays commission. Call your hotel, it is open.", tone: "teal" },
           p: [
             "This is the one to know, and it operates mostly in <b>Delhi near the New Delhi Railway Station and Paharganj</b>. On the way to your booking, the driver tells you your hotel is <b>closed for renovation, full, flooded, or does not exist</b>, and helpfully knows a better place, which pays him a <b>commission</b>. It is almost never true.",
             "The defense: <b>call your hotel directly</b> before or during the ride, <b>check its location on Google Maps</b>, and <b>insist on being taken to your booking</b>. A useful line is that you have <b>already paid in advance</b>, which removes the driver's incentive. The same trick appears with a <b>restaurant is closed</b> version that steers you to a place charging many times a fair price."
@@ -335,6 +373,8 @@ export default {
         },
         {
           h: "Gems, carpets and fake offices",
+          icon: "tag",
+          key: { fig: "Costliest", tag: "Never an investment", text: "The costliest trap: a friendly local or shop steers you toward export-quality gems or carpets to resell at home for a profit that never exists. Never buy goods as an investment.", tone: "amber" },
           p: [
             "The costliest trap is the <b>gem or carpet export scam</b>: a friendly local or shop steers you toward buying <b>export-quality gems or textiles to resell at home for a profit</b>. The goods are <b>overpriced or worthless</b> and the resale market does not exist. Treat any holiday purchase as a purchase, never an investment, and ignore anyone offering a scheme.",
             "Watch too for <b>fake tourist offices</b>, private shops with signs like <b>Official Tourism Office</b> or <b>Government Approved</b> that sell overpriced tours and tickets, and for <b>fake guides and ticket sellers</b> outside monuments and fake ticket websites. <b>Buy monument tickets only at the official counter or a genuine site</b>, book tours through a <b>reputable operator</b>, and if you want a guide, arrange a licensed one in advance."
@@ -342,6 +382,8 @@ export default {
         },
         {
           h: "Temples, money and the pay-in-rupees trap",
+          icon: "coins",
+          key: { fig: "In rupees", tag: "Blessings cost", text: "Around temples, a priest or guide may tie a thread or mark your forehead as a blessing, then ask for a large donation. A small note in rupees is plenty, and agree nothing costly up front.", tone: "teal" },
           p: [
             "Around temples you may meet a <b>priest or guide</b> who offers a ritual, ties a <b>bracelet or thread</b> on your wrist, or applies a mark on your forehead as a blessing, then <b>demands a large donation</b>. Blessings are part of the experience, but you can <b>decline before anything is tied or applied</b>, and give only a small amount you are comfortable with. Aggressive donation demands at religious sites are common, and you are free to say no.",
             "For money, change cash only at <b>banks or official counters</b>, and ignore anyone offering a <b>better rate or no commission</b>, a counterfeit risk. At the ATM or card machine, choose <b>rupees, not your home currency</b>. A note on paying: <b>UPI</b>, India's instant payment system, opened to visitors from many countries in 2026, but a <b>no-foreign-fee card and some cash</b> remain the simplest for most tourists."
@@ -349,6 +391,8 @@ export default {
         },
         {
           h: "What this means for your money",
+          icon: "cash",
+          key: { fig: "Habits", tag: "How to avoid it", text: "These are predictable patterns, not random luck, so knowing them defuses most of the risk: use Uber or Ola, agree fares first, call your hotel to confirm, and never buy an investment you cannot verify.", tone: "teal" },
           p: [
             "The reassuring part is that these are <b>predictable patterns</b>, not random misfortune, so knowing them defuses most of the risk. The short list: <b>Uber or Ola or a prepaid counter</b>, <b>call your hotel</b> if a driver says it is closed, <b>buy tickets officially</b>, <b>never buy an investment on a tip</b>, and <b>pay in rupees</b>. Most of it costs a modest amount; the <b>gem or carpet scam</b> is the one that can cost a lot.",
             "Prepared, India is one of the world's great journeys. For getting around, see the <a href=\"/india/taxis-and-apps\">India taxis and apps guide</a>, and for the wider picture the <a href=\"/india\">India cost guide</a>. India's National Tourist Helpline is <b>1363</b>."

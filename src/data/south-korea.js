@@ -180,6 +180,12 @@ export default {
   spokes: [
     {
       slug: "k-eta",
+      glance: [
+        { k: "K-ETA", v: "Waived for US through 2026" },
+        { k: "You still need", v: "The free e-Arrival Card" },
+        { k: "Where", v: "e-arrivalcard.go.kr (free)" },
+        { k: "From 2027", v: "K-ETA required again" }
+      ],
       live: true,
       topic: "visas",
       title: "Do US citizens need a K-ETA for South Korea? (2026) | True Trip Costs",
@@ -198,6 +204,8 @@ export default {
       sections: [
         {
           h: "The K-ETA, and why you can skip it for now",
+          icon: "calendar",
+          key: { fig: "Waived", tag: "Through end of 2026", text: "The K-ETA is Korea's pre-travel screening for visa-free visitors, like the US ESTA. It is waived for US citizens through December 31, 2026, so a short trip this year needs no K-ETA.", tone: "teal" },
           p: [
             "The <b>K-ETA</b> (Korea Electronic Travel Authorization) is Korea's pre-travel screening for visa-free visitors, like the US ESTA. To boost tourism, Korea has <b>waived it for 22 countries, including the US, through December 31, 2026</b>. So for a short tourist or business trip in 2026, you do not apply for a K-ETA at all, and US citizens can stay visa-free for up to <b>90 days</b>.",
             "This is where people get confused, because the K-ETA is normally required and plenty of older pages still say so. For now, as a US traveler, you can leave it alone."
@@ -205,6 +213,8 @@ export default {
         },
         {
           h: "What you do need: the free e-Arrival Card",
+          icon: "qr",
+          key: { fig: "Free", tag: "File before you fly", text: "Korea replaced its paper arrival card with a mandatory digital e-Arrival Card in 2026. Nearly all short-term visitors must file it, free, at e-arrivalcard.go.kr before arrival.", tone: "teal" },
           p: [
             "Korea replaced its paper arrival card with a mandatory digital <b>e-Arrival Card</b> at the start of 2026. Nearly all short-term visitors must file it, and it is <b>free</b>. You submit it online at the official site, <b>e-arrivalcard.go.kr</b>, within <b>72 hours</b> before you arrive, and it takes about five minutes.",
             "One neat detail: <b>K-ETA holders are exempt from the e-Arrival Card</b>. So the two systems dovetail, you file one or the other, not both."
@@ -212,6 +222,8 @@ export default {
         },
         {
           h: "2027 changes things, and a trick that covers you",
+          icon: "alert",
+          key: { tag: "K-ETA returns in 2027", text: "From January 1, 2027, the K-ETA becomes a hard requirement again and airlines enforce it at check-in. A K-ETA is valid for a few years, so applying before then can cover a later trip.", tone: "amber" },
           p: [
             "The waiver has an end date. From <b>January 1, 2027</b>, the K-ETA becomes a hard requirement again for US citizens, and airlines will enforce it at check-in. Korea has extended this waiver before, so it could move again, but there is no promise of that, so treat January 1, 2027 as the date it returns.",
             "Here is the useful part if you travel to Korea often: a <b>K-ETA is valid for three years</b> from approval and costs about <b>₩10,000 (roughly $7.70)</b>. If you apply for one now, even though you are exempt, it <b>lets you skip the e-Arrival Card on each trip</b> and <b>keeps you covered into 2027</b> without a last-minute scramble. It is optional, but for frequent visitors it can be worth the small fee."
@@ -219,6 +231,8 @@ export default {
         },
         {
           h: "Use only the .go.kr sites",
+          icon: "phoneok",
+          key: { fig: ".go.kr", tag: "Official domain only", text: "Both are government services on the .go.kr domain: the e-Arrival Card at e-arrivalcard.go.kr, and the K-ETA when you need it. Skip any third-party site that adds a fee.", tone: "teal" },
           p: [
             "Both of these are government services on the <b>.go.kr</b> domain: the e-Arrival Card at e-arrivalcard.go.kr (free) and, when you need it, the K-ETA at <b>k-eta.go.kr</b> (about ₩10,000). A wave of copycat sites charge <b>$50 to $100</b> to file a form that is free or costs roughly seven dollars. If a site asks for anything close to that, it is not official.",
             "For how money works once you land, cards, cash, ATMs and the rest, see the <a href=\"/south-korea\">South Korea money guide</a>."
@@ -242,6 +256,12 @@ export default {
     },
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Korean won (KRW)" },
+        { k: "Cards", v: "Cover almost everything (Amex patchy)" },
+        { k: "Cash for", v: "Traditional markets, small vendors" },
+        { k: "Transit", v: "A T-money card" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in South Korea, or can I use cards? (2026) | True Trip Costs",
@@ -254,6 +274,8 @@ export default {
       sections: [
         {
           h: "Cards almost everywhere, with two catches",
+          icon: "phoneok",
+          key: { fig: "16% cash", tag: "Overwhelmingly cashless", text: "Korea is one of the most card-friendly places on earth, with cash only about 16% of spending. A Visa or Mastercard covers almost everything, though Amex is patchy, so bring a backup.", tone: "teal" },
           p: [
             "Korea is <b>overwhelmingly cashless</b>: cards are accepted for even small amounts at shops, cafes, restaurants and convenience stores. Two catches for visitors: <b>Amex acceptance is limited</b> (mostly big hotels and department stores), so carry a <b>Visa or Mastercard</b>, and Korean banks sometimes <b>flag a foreign card as suspicious</b>, so set a travel notice before you fly and <b>bring a second card</b>. If a terminal declines, try the other card or ask for a different terminal.",
             "Skip the Korean wallet apps. <b>Kakao Pay, Naver Pay, Toss and Samsung Pay</b> all need a Korean bank account, phone number and ID, so <b>tourists cannot use them</b>. Apple Pay now works at some chains (convenience stores, Starbucks, department stores) with a foreign Visa or Mastercard, but acceptance is still patchy, so do not rely on it."
@@ -261,6 +283,8 @@ export default {
         },
         {
           h: "Cash: less than you think, but keep some",
+          icon: "won",
+          key: { fig: "Some won", tag: "For markets", text: "You need far less cash than most countries, but not zero. Keep some won for traditional markets, street-food stalls and the occasional small vendor that is cash-only.", tone: "teal" },
           p: [
             "You need far less cash than in most countries, but not zero. The cash-heavy places are exactly the ones travelers seek out: <b>traditional markets (like Gwangjang), street-food stalls and small local restaurants</b>. Carrying <b>50,000 to 100,000 won</b> as backup is plenty for a normal trip, more if you plan to graze the markets.",
             "For won, use a <b>Global ATM</b>, the ones marked as such at <b>convenience stores (CU, GS25, 7-Eleven)</b> and major banks, which take foreign cards and run in English around the clock. Not every Korean ATM accepts foreign cards, so look for the Global label, and <b>choose won, not dollars</b>, on the screen."
@@ -268,6 +292,8 @@ export default {
         },
         {
           h: "Getting around: the T-money card",
+          icon: "ic",
+          key: { fig: "T-money", tag: "Tap for transit", text: "Transit runs on a rechargeable T-money card, tapped on the subway, buses and taxis, and usable in convenience stores. Buy and top it up at any convenience store or station machine.", tone: "teal" },
           p: [
             "Transit runs on a rechargeable <b>T-money card</b>, tapped on the subway, buses, taxis and even in convenience stores. You buy it at any convenience store or station. The old headache was that you could <b>only top it up with won cash</b>, but that changed: <b>since March 2026, Seoul subway kiosks accept foreign cards</b> for top-ups (some add a small service fee), and there are mobile options too.",
             "If you would rather carry one card for everything, a tourist prepaid card like <b>WOWPASS</b> combines currency exchange, card payments and T-money, and you load it with foreign cash at airport and subway kiosks. It is optional, a plain contactless Visa or Mastercard plus a cash-loaded T-money works fine."
@@ -275,6 +301,8 @@ export default {
         },
         {
           h: "Tax refunds, tipping, and the wrap",
+          icon: "refund",
+          key: { fig: "No tipping", tag: "And a 10% VAT refund", text: "Tipping is not customary in Korea, so there is no need to add anything. As a visitor you can reclaim most of Korea's 10% VAT on eligible purchases at refund kiosks.", tone: "teal" },
           p: [
             "Two quick notes. <b>Tipping is not customary</b> in Korea, so there is no need to add anything. And as a visitor you can <b>reclaim most of Korea's 10% VAT</b> on shopping at Tax Free stores (a net refund of roughly 5 to 8%), on purchases from 15,000 won per store, claimed at the airport, so bring your passport when you shop.",
             "For the fuller money picture, see the <a href=\"/south-korea\">South Korea money guide</a>."
@@ -297,6 +325,12 @@ export default {
     },
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Import permit", v: "None needed" },
+        { k: "Must have", v: "Microchip, rabies, and a titer test" },
+        { k: "On arrival", v: "Same-day release if compliant" },
+        { k: "Cost", v: "Several thousand dollars all in" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to South Korea from the US (2026): the titer, and same-day release | True Trip Costs",
@@ -309,6 +343,8 @@ export default {
       sections: [
         {
           h: "No permit, but the titer is non-negotiable",
+          icon: "health",
+          key: { fig: "No permit", tag: "But a titer is required", text: "Unlike Hong Kong or Taiwan, Korea needs no import permit for a personal pet. It does require an ISO microchip, a current rabies vaccination, and a rabies antibody titer test, which is non-negotiable.", tone: "teal" },
           p: [
             "Unlike Hong Kong or Taiwan, South Korea does not make you obtain an import permit before you travel with a personal pet. Advance notification to the Animal and Plant Quarantine Agency (APQA) applies only if you are bringing a large number of animals, not a single dog or cat. That removes the biggest piece of paperwork that other Asian destinations impose.",
             "What Korea does require, because it is not on its own rabies-free list, is a <b>rabies-neutralization antibody titer of at least 0.5 IU/ml</b> for pets 90 days and older, done at an approved laboratory. This is the step that sets your lead time, so plan backward from it. The rest is an ISO-compliant microchip, a current rabies vaccination given before travel, and a health certificate completed by a USDA-accredited vet and endorsed by APHIS within 30 days of export."
@@ -316,6 +352,8 @@ export default {
         },
         {
           h: "Same-day release, or quarantine, depends on you",
+          icon: "alert",
+          key: { tag: "Get all four right", text: "When your pet lands, APQA officers check the microchip, rabies vaccination, the titer result and your paperwork. Get all of it right and your pet is usually released the same day, not quarantined.", tone: "amber" },
           p: [
             "Here is the payoff for getting it right. When your pet lands, APQA officers at the quarantine station check four things: the ISO microchip, the rabies vaccination, the titer result, and that every document matches (age, microchip number, and dates consistent across all papers). If everything lines up, pets are typically <b>released the same day</b>. Pets enter through Incheon International Airport, where the APQA stations are.",
             "The flip side is that quarantine in Korea is a consequence of non-compliance, not a default. An undetectable microchip, a titer below the threshold or not done, or inconsistent paperwork can mean your pet is detained at the owner's expense until the requirement is met. There is a provision to complete the microchip or titer after arrival if it could not be done beforehand, but that path means quarantine while it is sorted, so the smart move is to finish the titer well before you fly and make sure every document agrees."
@@ -323,6 +361,8 @@ export default {
         },
         {
           h: "Cost, and coming home",
+          icon: "coins",
+          key: { fig: "$1000s", tag: "Air transport leads", text: "Budget several thousand dollars all in, with air transport the largest line, plus the titer and vet work. Coming home is easy: Korea is a low-risk country for the CDC, so the return is simple.", tone: "teal" },
           p: [
             "Budget several thousand dollars all in, with air transport the largest line, plus the titer test and the vet work. Because there is no permit fee and, for a compliant pet, no facility quarantine bill, Korea can come in cheaper than the permit-and-quarantine destinations, provided you avoid the non-compliance trap.",
             "The return leg is easy. A dog flying home to the US from South Korea is on the simplest CDC path: typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement. See our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a>, and <a href=\"/traveling-with-a-pet\">traveling with a pet</a> for how South Korea compares with other destinations."
