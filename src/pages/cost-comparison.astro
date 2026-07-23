@@ -162,7 +162,53 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
       if (cc) {
         var listEl = document.getElementById('daily-cost-list');
         var payloadEl = document.querySelector('script[data-cc-payload="daily-cost"]');
+        // Axis scale is per tier (see CostChart.astro): each travel style is
+        // scaled to its own highest total so bars fill the width instead of
+        // being squeezed by the priciest tier. The axis, gridlines and the
+        // labeled scale maximum are all redrawn whenever the tier changes.
+        var axisMaxByTier = {};
+        try { axisMaxByTier = JSON.parse(cc.getAttribute('data-axismax') || '{}'); } catch (e) { axisMaxByTier = {}; }
         var axisMax = parseFloat(cc.getAttribute('data-scalemax')) || 0;
+
+        var axisEl = cc.querySelector('.cc-axis');
+        var gridLayer = cc.querySelector('.cc-gridlayer');
+        var scaleMaxEl = cc.querySelector('.cc-scalemax');
+
+        function tickStep(max, want) {
+          var ladder = [25, 50, 100, 150, 200, 250, 500, 1000];
+          for (var i = 0; i < ladder.length; i++) if (max / ladder[i] <= want) return ladder[i];
+          return ladder[ladder.length - 1];
+        }
+        function ticksFor(max, want) {
+          var s = tickStep(max, want), out = [];
+          for (var v = 0; v <= max; v += s) out.push(v);
+          // Close the axis on its true maximum, but only if that label would not
+          // crowd the previous tick (at 320px a near-duplicate reads as a smudge).
+          var lastTick = out[out.length - 1];
+          if (lastTick !== max) {
+            if ((max - lastTick) / s < 0.45) out[out.length - 1] = max;
+            else out.push(max);
+          }
+          return out;
+        }
+        // Fewer ticks on a narrow screen so the labels cannot run together.
+        function wantTicks() {
+          return (window.innerWidth && window.innerWidth <= 560) ? 4 : 7;
+        }
+
+        function drawAxis() {
+          if (!axisEl) return;
+          var vals = ticksFor(axisMax, wantTicks());
+          var aHtml = '', gHtml = '';
+          for (var i = 0; i < vals.length; i++) {
+            var left = axisMax ? (vals[i] / axisMax) * 100 : 0;
+            aHtml += '<span class="cc-tick" style="left:' + left + '%"><em>$' + vals[i] + '</em></span>';
+            gHtml += '<span class="cc-grid" style="left:' + left + '%"></span>';
+          }
+          axisEl.innerHTML = aHtml;
+          if (gridLayer) gridLayer.innerHTML = gHtml;
+          if (scaleMaxEl) scaleMaxEl.textContent = '$' + axisMax;
+        }
         var payload = {};
         try { payload = JSON.parse(payloadEl.textContent); } catch (e) { payload = {}; }
         var btns = cc.querySelectorAll('[data-tier-btn]');
@@ -174,6 +220,12 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
         function render(tier) {
           var rows = rowsFor(tier);
           if (!rows.length) return;
+
+          // Rescale to this tier's own max, then redraw the axis, gridlines and
+          // the labeled scale maximum so the numbers on screen always describe
+          // the bars being shown.
+          if (axisMaxByTier[tier]) axisMax = axisMaxByTier[tier];
+          drawAxis();
 
           // FLIP step 1: record current positions of existing rows by slug.
           var first = {};
@@ -237,6 +289,15 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
           }
           requestAnimationFrame(tick);
         }
+
+        // Draw once on load so the tick count matches this viewport, and again on
+        // resize or rotation.
+        drawAxis();
+        var rzT = null;
+        window.addEventListener('resize', function () {
+          if (rzT) clearTimeout(rzT);
+          rzT = setTimeout(drawAxis, 150);
+        });
 
         btns.forEach(function (b) {
           b.addEventListener('click', function () {
