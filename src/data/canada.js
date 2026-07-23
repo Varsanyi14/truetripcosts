@@ -175,6 +175,12 @@ export default {
   spokes: [
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "The document", v: "A valid rabies certificate" },
+        { k: "Quarantine", v: "None" },
+        { k: "Age rules", v: "Simplest for dogs over 8 months" },
+        { k: "Coming home", v: "Easy CDC path" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Canada from the US (2026): rabies certificate, the border, and the trip home | True Trip Costs",
@@ -187,6 +193,8 @@ export default {
       sections: [
         {
           h: "The one document that matters",
+          icon: "health",
+          key: { fig: "1 document", tag: "A rabies certificate", text: "For an adult pet, Canada asks for essentially one thing: a valid rabies vaccination certificate from a licensed vet, in English or French, identifying your pet. No health certificate, no quarantine.", tone: "teal" },
           p: [
             "For an adult pet, Canada's requirement comes down to a single piece of paper: a <b>valid rabies vaccination certificate</b>, issued by a licensed veterinarian, proving vaccination within the last 3 years. It must identify your pet and, to avoid trouble at the border, be written in English or French. The certificate should show the vaccination date, the expiry or validity period, and the vaccine product used.",
             "That is essentially the whole entry requirement for a dog over 3 months or a cat over 3 months. There is <b>no health certificate</b> for adult dogs and cats, no quarantine, no blood test, and no waiting period. The authority is the Canadian Food Inspection Agency (CFIA), and the check itself is done by a Canada Border Services Agency (CBSA) officer at the crossing."
@@ -194,6 +202,8 @@ export default {
         },
         {
           h: "The age rules that catch people out",
+          icon: "calendar",
+          key: { tag: "Age adds rules for dogs", text: "The clean path applies to dogs over 8 months, and to any dog or cat over 3 months carrying a rabies certificate. Puppies and younger animals face extra rules, so check before you travel.", tone: "amber" },
           p: [
             "Age is where Canada adds a little complexity, mostly for dogs. The clean, simple path applies to dogs over 8 months and to any dog or cat over 3 months carrying a rabies certificate. Below those thresholds, the rules branch."
           ],
@@ -206,6 +216,8 @@ export default {
         },
         {
           h: "Driving versus flying",
+          icon: "wheel",
+          key: { fig: "Drive in", tag: "Land crossing is simplest", text: "Most US owners drive in, and the land crossing is simplest: your pet stays in the vehicle, no airline policy applies, and there is no crating requirement at the border.", tone: "teal" },
           p: [
             "Most US pet owners drive into Canada, and the land crossing is the simplest option: your pet stays in the vehicle, no airline policy applies, and there is no crate-size limit. Keep the rabies certificate with your own travel documents, declare the pet when the CBSA officer asks, and keep the animal calm and restrained. A visibly sick animal can be referred for inspection or refused, so travel with a pet that is in good shape.",
             "Flying is straightforward too, but it hands you the airline's rulebook on top of Canada's. Cabin size limits, cargo booking, and carrier requirements vary by airline, and a pet too large for the cabin travels as cargo at meaningfully higher cost. If you fly, confirm your carrier's pet policy well before you book."
@@ -213,6 +225,8 @@ export default {
         },
         {
           h: "The trip home",
+          icon: "receipt",
+          key: { fig: "Easy", tag: "The return trip", text: "Canada is recognized as rabies-free, so the return to the US is one of the easiest: a dog needs a CDC Dog Import Form, completed online before arrival.", tone: "teal" },
           p: [
             "Canada is recognized as rabies-free, which makes the return leg to the US one of the easiest. A dog coming home needs a <b>CDC Dog Import Form</b> (you complete it online and carry the receipt), a microchip readable by a universal scanner, a minimum age of 6 months, and a healthy appearance on arrival. Because Canada is not high-risk for dog rabies, there is <b>no titer test and no quarantine</b>, and the form receipt can cover multiple entries for up to 6 months as long as your pet stays within the US, Canada, and Mexico.",
             "Cats returning to the US have essentially no federal requirement. For the full detail on the return, see our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a>, and for how Canada stacks up against other destinations on effort and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."
@@ -241,6 +255,12 @@ export default {
     },
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Canadian dollar (CAD)" },
+        { k: "Cards", v: "Nearly everywhere, tap-to-pay" },
+        { k: "Cash for", v: "Farmers markets, food trucks, parking" },
+        { k: "Keep on hand", v: "About C$40 to C$60" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in Canada, or can I use cards? (2026) | True Trip Costs",
@@ -253,6 +273,8 @@ export default {
       sections: [
         {
           h: "Cards almost everywhere, a little cash for the edges",
+          icon: "phoneok",
+          key: { fig: "Tap", tag: "Cards accepted", text: "Canada runs on plastic and phones. Visa and Mastercard are taken almost everywhere, contactless is standard, and the terminal even handles the tip. Keep a little cash for markets and food trucks.", tone: "teal" },
           p: [
             "Canada runs on plastic and phones. <b>Visa and Mastercard</b> are taken almost everywhere, <b>contactless</b> is standard, and <b>Apple Pay and Google Pay</b> work at most terminals. Amex is accepted more widely than in much of Europe but still less than Visa or Mastercard, so treat it as a backup rather than your only card. You will see locals tap a card called <b>Interac</b>, the domestic debit network, but it is a Canadian-bank product you will not use, and your own tap works fine alongside it.",
             "Keep a little cash, roughly <b>C$40 to C$60</b>, for the genuinely cash-friendly corners: farmers markets, food trucks, some parking meters, tips for a bellhop or housekeeping, and the rare small shop that prefers it. Note there is <b>no penny</b> in Canada, so a cash total rounds to the nearest 5 cents, while a card charge is exact."
@@ -260,6 +282,8 @@ export default {
         },
         {
           h: "The price tag is pre-tax, and tips ride on top",
+          icon: "receipt",
+          key: { fig: "5-15% tax", tag: "Prices exclude tax", text: "The shelf or menu price does not include sales tax: depending on the province, roughly 5% up to 15% is added at the till. Tips ride on top of that, so the total runs above the sticker.", tone: "amber" },
           p: [
             "This catches US visitors out even though it mirrors home. The <b>shelf or menu price does not include sales tax</b>: depending on the province, roughly <b>5% up to 15%</b> is added at the register, so you always pay a bit more than the number shown. Alberta and the territories are cheapest at 5%, while Ontario and Atlantic Canada run 13 to 15%.",
             "On top of tax, <b>tipping is US-style</b>: around 15 to 20% at sit-down restaurants and bars, prompted right on the terminal, which can suggest figures based on the post-tax total. It is a real part of the cost, so a listed C$100 dinner can land near C$130. The fuller tax and tipping picture, including the fact that there is <b>no general sales-tax refund</b> for visitors, is in the <a href=\"/canada\">Canada money guide</a>."
@@ -267,6 +291,8 @@ export default {
         },
         {
           h: "Choose Canadian dollars, not US dollars",
+          icon: "atm",
+          key: { fig: "Choose CAD", tag: "Skip the DCC rate", text: "When a terminal or ATM offers to charge in US or Canadian dollars, always choose Canadian dollars. Picking US dollars triggers dynamic currency conversion at a poor rate.", tone: "teal" },
           p: [
             "When a card terminal or an ATM offers to charge you in <b>US dollars or Canadian dollars, always choose Canadian dollars</b>. Picking US dollars triggers dynamic currency conversion, a marked-up rate that quietly adds <b>3 to 8%</b>. Let your own bank do the conversion instead.",
             "A handful of border towns and tourist spots will <b>take US cash</b>, but at a poor rate, and your change comes back in Canadian dollars, so you lose either way. Pay and tip in <b>Canadian dollars</b>, and carry a card with <b>no foreign-transaction fee</b> so the card route stays cheap."
@@ -274,6 +300,8 @@ export default {
         },
         {
           h: "Getting cash: use a bank machine",
+          icon: "cash",
+          key: { fig: "Bank ATM", tag: "Skip white-label", text: "For cash, use a major bank ATM (RBC, TD, Scotiabank, BMO, CIBC). Avoid the private white-label machines in bars, hotels and convenience stores, which stack extra fees.", tone: "teal" },
           p: [
             "For cash, use a <b>major bank ATM</b>: <b>RBC, TD, Scotiabank, BMO or CIBC</b>. Avoid the <b>private white-label machines</b> tucked into bars, hotels and convenience stores, which stack steep surcharges on top of your own bank's fee. Most machines dispense C$20 notes, so ask for an amount that is not all in fifties if you want small bills.",
             "Use a <b>debit card</b> at the ATM rather than a credit card, since a credit-card withdrawal is a cash advance with a fee and interest from day one. Decline the machine's US-dollar conversion, take out a few days' worth at once to limit per-visit fees, and shield your PIN."
@@ -296,6 +324,12 @@ export default {
     },
     {
       slug: "staying-connected",
+      glance: [
+        { k: "Check first", v: "Your US plan, Canada is often bundled" },
+        { k: "Carrier pass", v: "About $5 to $6 a day (with Mexico)" },
+        { k: "If not included", v: "A travel eSIM, a few $ per GB" },
+        { k: "The catch", v: "Highway and park dead zones" }
+      ],
       live: true,
       esim: true,
       topic: "connectivity",
@@ -310,6 +344,8 @@ export default {
       sections: [
         {
           h: "Check your US plan first",
+          icon: "roamfee",
+          key: { fig: "$5-6/day", tag: "Cheaper than Europe", text: "Canada is the cheap exception, usually bundled with Mexico. T-Mobile includes it on most plans, and other US carriers sell a Canada-and-Mexico pass for about $5 to $6 a day, not the $12 they charge for Europe.", tone: "teal" },
           p: [
             "Canada is the cheap exception among overseas trips, because it is usually lumped in with Mexico on US carrier plans. <b>T-Mobile</b> includes Canada roaming on most of its plans at no extra charge (at your normal speeds on the better plans, slower on others), and <b>Verizon and AT&amp;T</b> offer a <b>Canada and Mexico day pass around 5 to 6 dollars</b>, well under the roughly <b>12 dollars a day</b> those two charge for Europe. So before buying anything, check what your plan already includes.",
             "The one thing to avoid is roaming with <b>no plan at all</b>. Pay-per-use data runs about <b>2 dollars a megabyte</b>, which is thousands of dollars a gigabyte, and a phone burns data in the background even with the screen off. If you are not sure your plan covers Canada, <b>turn off data roaming</b> until you have sorted an eSIM or a pass."
@@ -317,6 +353,8 @@ export default {
         },
         {
           h: "When an eSIM is the better call",
+          icon: "tag",
+          key: { fig: "Few $/GB", tag: "If not bundled", text: "If your US plan does not include Canada, or only at slow speeds, a travel eSIM is usually cheapest, a few dollars per gigabyte. A Nomad eSIM activates before you fly.", tone: "teal" },
           p: [
             "If your US plan does not include Canada, or includes it only at slow speeds, a <b>travel eSIM</b> is usually the cheapest way to get real data. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly, and works the moment you land, with no SIM counter and no hunting for a store. For a week or two of maps, rideshare and photos, it easily beats stacking up day-pass fees.",
             "Coverage is not the deciding factor here. Canada's three networks, <b>Rogers, Bell and Telus</b>, all offer strong service in the populated areas where you will spend most of your time, so the network behind your eSIM matters far less than it would somewhere remote. Set the eSIM up before departure, since you need a connection to install it."
@@ -324,6 +362,8 @@ export default {
         },
         {
           h: "The real catch: highway and park dead zones",
+          icon: "alert",
+          key: { tag: "Dead zones off the towns", text: "Canada is vast and coverage thins fast outside towns. Expect no signal on long rural highway stretches and in the backcountry of parks like Banff, so download maps and details first.", tone: "amber" },
           p: [
             "Canada is vast, and coverage thins out fast once you leave town. Expect <b>no signal on long stretches of rural highway</b>, in the backcountry of parks like <b>Banff and Jasper</b>, and across much of the north. This catches road-trippers out, because the drive between two well-covered cities can have long gaps in the middle.",
             "The fix is simple: <b>download offline maps</b> (and any trail or park info) before you set off, tell someone your route if you are heading somewhere remote, and do not rely on a live connection for navigation on a backcountry drive. In the cities, by contrast, you will have fast 4G and 5G almost everywhere. For paying as you go, see <a href=\"/canada/cash-or-card\">cash or card in Canada</a>, and the <a href=\"/canada\">Canada money guide</a>."
@@ -346,6 +386,12 @@ export default {
     },
     {
       slug: "renting-a-car",
+      glance: [
+        { k: "Insurance", v: "Your US policy usually works" },
+        { k: "Counter waiver", v: "About C$25 to C$35 a day, often skippable" },
+        { k: "Winter tires", v: "Required in Quebec, Dec to March" },
+        { k: "Watch for", v: "Highway 407 camera tolls near Toronto" }
+      ],
       live: true,
       topic: "driving",
       carExcess: true,
@@ -359,6 +405,8 @@ export default {
       sections: [
         {
           h: "The insurance is the opposite of Mexico",
+          icon: "card",
+          key: { fig: "Decline it", tag: "Your US cover usually works", text: "Unlike Mexico, your US auto policy and credit-card collision usually apply in Canada, so you can often decline the counter waiver, about C$25 to C$35 a day. Confirm with your card issuer first.", tone: "teal" },
           p: [
             "This is the pleasant surprise. Because Canada is treated much like home by US insurers, your <b>own US auto policy and the collision cover on your credit card usually apply to a Canadian rental</b>, which they often do not in Mexico or Europe. So you can frequently <b>decline the counter's collision damage waiver</b>, roughly <b>C$25 to C$35 a day</b>, and rely on what you already have. Every rental also includes <b>third-party liability by law</b> (a minimum around C$200,000, less in Quebec), so that part is covered too.",
             "The honest step is a two-minute phone call: before you travel, ask your <b>card issuer and your auto insurer</b> whether their rental collision cover applies in Canada, for your car class and trip length, and what the excess is. If it does, skip the upsell. If it does not, a <b>standalone excess policy</b> bought in advance is cheaper than the counter's, which is what the option on this page covers."
@@ -366,6 +414,8 @@ export default {
         },
         {
           h: "Winter tires: a real rule, and a small fee",
+          icon: "calendar",
+          key: { tag: "Law in Quebec", text: "In the colder months tires are law, not a suggestion. In Quebec every vehicle, rentals included, must have winter tires from 1 December to mid-March, usually for a small rental fee.", tone: "amber" },
           p: [
             "If you are driving in the colder months, tires are <b>law, not a suggestion</b>. In <b>Quebec</b>, every vehicle, rentals included, must have <b>winter tires from 1 December to 15 March</b>, and companies pass on a <b>tire fee of about C$3 to C$4 a day</b> in that window. In <b>British Columbia</b>, winter tires are required on <b>designated mountain highways</b> (such as the Sea-to-Sky and the Coquihalla) from <b>1 October to 31 March</b>.",
             "Elsewhere they are not mandated but are strongly advised for mountain or northern driving, and you usually have to <b>request them and pay extra</b> (often C$10 to C$20 a day). Driving without required tires can mean a <b>fine and voided insurance</b> if you crash, so confirm in writing that your car is properly equipped for the season and route."
@@ -373,6 +423,8 @@ export default {
         },
         {
           h: "Tolls, drop fees and the other extras",
+          icon: "alert",
+          key: { tag: "Highway 407 near Toronto", text: "Canada has few toll roads, but Ontario's Highway 407 ETR north of Toronto is an all-electronic camera toll with no booths, so a rental gets billed later with an admin fee. Avoid it unless you mean to use it.", tone: "amber" },
           p: [
             "Canada has <b>very few toll roads</b>, but one catches people: Ontario's <b>Highway 407 ETR</b> north of Toronto is an <b>all-electronic camera toll</b> with no booths, so a rental picks up the charge and the company bills it back to you later with a <b>C$15 to C$25 admin fee</b> on top of the toll. If you do not need it, the free Highway 401 runs parallel.",
             "The usual bill-builders apply too: <b>one-way drop fees</b> if you return to a different city, <b>mileage caps</b> on some rates, <b>additional-driver</b> charges, and airport <b>concession fees</b> that make a downtown pickup C$10 to C$20 a day cheaper. Expect a <b>deposit hold</b> of around C$1,000 to C$1,500 on your card. For paying day to day, see <a href=\"/canada/cash-or-card\">cash or card in Canada</a>."
@@ -380,6 +432,8 @@ export default {
         },
         {
           h: "One more: crossing into the US",
+          icon: "passport",
+          key: { fig: "In writing", tag: "Border permission", text: "To drive a Canadian rental across the border into the US, get written permission on the rental contract first, since most standard contracts prohibit crossing without it.", tone: "teal" },
           p: [
             "If you plan to drive a Canadian rental <b>across the border into the US</b>, get <b>written permission on the rental contract</b> first. Most standard contracts <b>prohibit cross-border driving</b>, and your insurance is <b>void in the US</b> without that clause, so ask for USA-travel permission when you book, not at the border.",
             "Put together, Canada is a low-drama rental once the insurance question is settled: confirm your existing cover, budget the <b>winter-tire fee</b> in season, avoid the <b>407</b> unless you need it, and read the drop and mileage terms. For the wider picture, see the <a href=\"/canada\">Canada money guide</a>."
@@ -403,6 +457,12 @@ export default {
     },
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Cities", v: "Uber and Lyft work normally" },
+        { k: "Short ride", v: "About C$15 to C$22" },
+        { k: "Airports", v: "A train or fixed fare often wins" },
+        { k: "Fares", v: "Pre-tax, tipping expected" }
+      ],
       live: true,
       topic: "taxis",
       caution: "low",
@@ -416,6 +476,8 @@ export default {
       sections: [
         {
           h: "Uber and Lyft in the cities",
+          icon: "phoneok",
+          key: { fig: "C$15-22", tag: "Ride-hailing works", text: "Uber and Lyft are well established in Toronto, Vancouver, Montreal, Calgary, Ottawa and more, with app booking and cashless pay. A short downtown ride is about C$15 to C$22.", tone: "teal" },
           p: [
             "Ride-hailing is well established in Canada's major cities. <b>Uber</b> is the leader (in Toronto since 2014, Vancouver since 2020, plus Montreal, Calgary, Ottawa, Edmonton and others), and <b>Lyft</b> is the main alternative in the bigger markets. For a US visitor it is seamless: your <b>existing Uber or Lyft account works</b> with no new sign-up, and everything is <b>cashless</b> in the app. A typical <b>5-km downtown ride</b> runs about <b>C$15 to C$22</b>, with UberX and Lyft minimum fares around <b>C$5 to C$6</b>.",
             "The catch is coverage at the edges: downtown and around the airports is well served, but in the <b>suburbs and late at night</b> wait times stretch, and in smaller towns rideshare can be thin or absent. A traditional <b>taxi</b>, hailed, at a rank, or by phone, is the reliable fallback, so it is worth saving a local cab company's number for an early-morning airport run."
@@ -423,6 +485,8 @@ export default {
         },
         {
           h: "Airports: the train or the fixed fare often wins",
+          icon: "plane",
+          key: { fig: "C$12.25", tag: "Toronto Pearson", text: "A little planning saves money at airports. At Toronto Pearson, the UP Express train reaches Union Station downtown in about 25 minutes for C$12.25, far less than a cab in traffic.", tone: "teal" },
           p: [
             "This is where a little planning saves real money. At <b>Toronto Pearson (YYZ)</b>, the <b>UP Express</b> train runs to <b>Union Station downtown in about 25 minutes for C$12.25</b> one-way, every 15 minutes, which comfortably beats a taxi or Uber (often <b>C$60 to C$80</b> with traffic or surge). Uber and Lyft do serve Pearson, but the train is the value pick for downtown.",
             "At <b>Montreal Trudeau (YUL)</b>, official taxis charge a <b>fixed fare of about C$42 to C$48</b> to downtown, posted and set, so there is no surprise, and travelers often find it <b>beats Uber from the airport</b>, partly because taxis can use the bus lane and fewer Ubers now serve YUL. At <b>Vancouver (YVR)</b>, rideshare and taxis both operate; compare the <b>airport flat rate</b> against <b>Uber or Lyft surge</b>, which spikes on rainy Fridays and cruise mornings."
@@ -430,6 +494,8 @@ export default {
         },
         {
           h: "The fare is pre-tax, and tipping is expected",
+          icon: "tip",
+          key: { fig: "Tax + tip", tag: "On top of the meter", text: "Two North American habits: a metered taxi has sales tax added, and rideshare shows it in the app total. Tipping is expected too, so plan for above the meter.", tone: "teal" },
           p: [
             "Two North American habits carry over. First, a metered <b>taxi</b> fare has <b>sales tax added</b>, and rideshare shows the tax in the app total. Second, <b>tipping is expected</b>, US-style: around <b>10 to 15%</b> for a taxi or rideshare, prompted in the app or added to a card payment. Budget for both so the final cost is no surprise.",
             "For getting cash and paying by card in Canada, including the pre-tax pricing that catches visitors out, see <a href=\"/canada/cash-or-card\">cash or card in Canada</a>. If you are also weighing a rental, the trade-offs are in <a href=\"/canada/renting-a-car\">renting a car in Canada</a>."
@@ -437,6 +503,8 @@ export default {
         },
         {
           h: "Quick rules of thumb",
+          icon: "card",
+          key: { fig: "Compare", tag: "In the city", text: "For a city, open Uber or Lyft and compare, or hail a taxi, both are fine and the app removes the fare guesswork. For the airport, check the train or a fixed fare first.", tone: "teal" },
           p: [
             "For getting <b>around a city</b>, open <b>Uber or Lyft</b> and compare, or hail a taxi; both are fine, and the app just removes the fare guesswork. For the <b>airport</b>, check the <b>train or fixed taxi fare first</b>: it is often cheaper and always more predictable than a surging app car, especially into downtown Toronto (the UP Express) and Montreal (the fixed taxi).",
             "Keep a <b>taxi company number</b> saved for early departures and suburban late nights when rideshare is slow, and remember to <b>budget tax and a tip</b> on top of the fare. For the wider picture, see the <a href=\"/canada\">Canada money guide</a>."

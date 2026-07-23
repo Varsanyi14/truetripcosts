@@ -153,6 +153,12 @@ export default {
   spokes: [
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Florin, but US dollars work everywhere" },
+        { k: "Cards", v: "Widely accepted, no need to exchange" },
+        { k: "Cash for", v: "Tips, taxis, beach vendors" },
+        { k: "On a card", v: "Choose florin, not dollars" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in Aruba, or can I use cards and dollars? (2026) | True Trip Costs",
@@ -165,6 +171,8 @@ export default {
       sections: [
         {
           h: "Dollars and cards do the work",
+          icon: "usd",
+          key: { fig: "US$ works", tag: "No need to exchange", text: "US dollars are a de facto second currency in Aruba, taken by hotels, restaurants, shops, taxis and tours, with prices often shown in dollars. Cards are widely accepted too, so there is no need to exchange.", tone: "teal" },
           p: [
             "US dollars are a <b>de facto second currency</b> in Aruba. Hotels, restaurants, shops, supermarkets, taxis and tour operators all take them, prices are frequently shown in both dollars and florin, and you can arrive with no florin at all. Pay in dollars and your change may come back as a mix of dollars and florin.",
             "<b>Visa and Mastercard</b> are accepted almost everywhere, with Amex less consistent. A no-foreign-fee card is the easy way to handle hotels, dining and shops, and keeps you from carrying much cash."
@@ -172,6 +180,8 @@ export default {
         },
         {
           h: "Where you still want cash",
+          icon: "cash",
+          key: { fig: "Small US$", tag: "Cash for the extras", text: "Carry small US bills for tips, taxi fares, beach chair rentals, food trucks and souvenir stalls. Change for large notes can be slow, so keep ones and fives.", tone: "teal" },
           p: [
             "Carry <b>small US bills</b> for the everyday extras: tips, taxi fares, beach chair and gear rentals, food trucks, souvenir stalls and the odd small shop. Change for large notes can be short, so fives, tens and twenties are easiest.",
             "If you want local cash, ATMs are plentiful in Oranjestad, along Palm Beach and at the airport, and many dispense <b>florins or US dollars</b>, so pick the one you want. Expect a withdrawal fee."
@@ -179,6 +189,8 @@ export default {
         },
         {
           h: "The one money habit: choose florin on a card",
+          icon: "atm",
+          key: { tag: "Choose florin", text: "Paying with US cash is fine and expected. The trap is on cards: if a terminal or ATM asks to charge in dollars or florin, choose florin. Dollars trigger a marked-up conversion rate.", tone: "amber" },
           p: [
             "Paying with US <b>cash</b> is fine and expected. The trap is on <b>cards</b>: if a terminal or ATM asks whether to charge you in <b>dollars or florin, choose florin</b>. Selecting dollars triggers dynamic currency conversion at a poor rate, while florin lets your own bank do the exchange more cheaply.",
             "For the fuller money picture, tipping and the hotel taxes to expect, see the <a href=\"/aruba\">Aruba money guide</a>."
@@ -201,6 +213,12 @@ export default {
     },
     {
       slug: "visa-and-ed-card",
+      glance: [
+        { k: "Visa", v: "None, up to 90 days" },
+        { k: "Required", v: "The ED Card, online before boarding" },
+        { k: "Fee", v: "$20 per person sustainability fee" },
+        { k: "Where", v: "edcardaruba.aw, the official site" }
+      ],
       live: true,
       topic: "visas",
       title: "Do US citizens need a visa for Aruba, and the ED Card fee? (2026) | True Trip Costs",
@@ -219,6 +237,8 @@ export default {
       sections: [
         {
           h: "No visa, but a required form",
+          icon: "receipt",
+          key: { fig: "90 days", tag: "ED Card required", text: "For tourism, US citizens need no visa and can stay up to 90 days, with a passport valid for the stay. The catch is the ED Card, a mandatory online form every air traveler completes before boarding.", tone: "teal" },
           p: [
             "For tourism, US citizens need <b>no visa</b> and can stay <b>up to 90 days</b>. You do need a <b>passport valid for the length of your stay</b>, and immigration may ask for a <b>return or onward ticket</b> and proof of where you are staying.",
             "The catch that surprises people is the <b>ED Card</b>. It replaced the old paper immigration card and is now a digital form that <b>every</b> air traveler must complete before departure, regardless of nationality or age. Airlines check it, and you cannot fill it in at the airport."
@@ -226,6 +246,8 @@ export default {
         },
         {
           h: "The 20 dollar sustainability fee",
+          icon: "usd",
+          key: { fig: "$20", tag: "Since July 2024", text: "Since July 2024 the ED Card also collects a $20 per-person sustainability fee for visitors arriving by air, paid by card as you complete the form. Children may be treated differently.", tone: "teal" },
           p: [
             "Since July 2024, the ED Card also collects a <b>20 dollar per-person sustainability fee</b> for visitors arriving by air, paid by card as you complete the form. <b>Children under 8 are exempt.</b> It funds island infrastructure and environmental programs.",
             "Complete the form in the window your instructions give (generally within a few days before arrival, and not at the airport), and save the <b>confirmation with its QR code</b> as a screenshot or printout to show at check-in and on arrival."
@@ -233,6 +255,8 @@ export default {
         },
         {
           h: "Use the official site, not a lookalike",
+          icon: "alert",
+          key: { tag: "One official site", text: "Fill the ED Card in at edcardaruba.aw, the government portal, where the only charge is the $20 fee. Third-party sites advertise Aruba entry help and add a markup for the same free form.", tone: "amber" },
           p: [
             "Fill the ED Card in at <b>edcardaruba.aw</b>, the government portal, where the only charge is the <b>20 dollar</b> fee. A number of third-party sites advertise Aruba entry help and charge an <b>extra service fee</b> to submit the identical form, so go directly to the official site.",
             "For the money side of your trip, including the hotel taxes and how tipping works, see the <a href=\"/aruba\">Aruba money guide</a>."
@@ -255,6 +279,12 @@ export default {
     },
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Getting around", v: "Fixed-rate taxis (no Uber)" },
+        { k: "Taxis", v: "Agree the posted fare first" },
+        { k: "Airport to Palm Beach", v: "About $28" },
+        { k: "Cheaper", v: "The Arubus along the coast" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -273,6 +303,8 @@ export default {
       sections: [
         {
           h: "Taxis: fixed rates, no meter",
+          icon: "usd",
+          key: { tag: "Agree the fare first", text: "Aruba taxis do not use meters. The government sets fixed fares by route and drivers carry the rate card, so agree the fare before you get in. There is no Uber or Lyft on the island.", tone: "amber" },
           p: [
             "Aruba's taxis do <b>not use meters</b>. Instead the government sets <b>fixed fares</b> by route, and drivers carry the rate card, so <b>agree the fare before you get in</b>. A late-evening surcharge can apply. There is <b>no ride-hailing app</b> (no Uber or Lyft), so you find taxis at stands, hotels or by phone.",
             "You can pay in <b>US dollars</b>, and small bills are easiest since drivers may not break a large note. A tip is not required, though rounding up is common."
@@ -280,6 +312,8 @@ export default {
         },
         {
           h: "The bus, and the tram",
+          icon: "ticket",
+          key: { fig: "Arubus", tag: "Cheap along the coast", text: "The Arubus runs a cheap, reliable service between Oranjestad, the Eagle and Palm Beach hotel strips and San Nicolas, with a low flat fare. A free tram loops downtown Oranjestad.", tone: "teal" },
           p: [
             "The <b>Arubus</b> runs a cheap, reliable service along the coast between Oranjestad, the Eagle and Palm Beach hotel strips and San Nicolas, with a low flat fare payable in cash. It is an easy, budget-friendly way to get between town and the beaches.",
             "In downtown Oranjestad, a <b>free streetcar (tram)</b> loops the main street, handy for the cruise port and shops."
@@ -287,6 +321,8 @@ export default {
         },
         {
           h: "Renting a car",
+          icon: "wheel",
+          key: { fig: "4x4 helps", tag: "For the interior", text: "To reach the north coast, the natural pool and Arikok National Park, many visitors rent a car, and a 4x4 helps for the rougher interior tracks. Paved roads are fine in any car.", tone: "teal" },
           p: [
             "For the freedom to reach the north coast, the natural pool and <b>Arikok National Park</b>, many visitors <b>rent a car</b> (a 4x4 helps for the rougher interior tracks). You drive on the right, a US license is fine, and fuel is sold in liters and priced in florin.",
             "For how to pay, tipping and the taxes on your hotel, see the <a href=\"/aruba\">Aruba money guide</a>."
@@ -309,6 +345,12 @@ export default {
     },
     {
       slug: "hotel-taxes-and-fees",
+      glance: [
+        { k: "On top of the room", v: "Several taxes and fees" },
+        { k: "Government", v: "12.5% tourist levy + a small eco levy" },
+        { k: "Hotel", v: "Service charge 10 to 15%, resort fee" },
+        { k: "Resort fee", v: "Commonly $30 to $90 a night" }
+      ],
       live: true,
       topic: "taxes",
       title: "Aruba hotel taxes and fees explained: the 12.5% levy, resort fees and more (2026) | True Trip Costs",
@@ -326,6 +368,8 @@ export default {
       sections: [
         {
           h: "The government charges",
+          icon: "receipt",
+          key: { fig: "12.5%", tag: "Tourist levy", text: "The main one is the tourist levy, 12.5% of the room rate since 2023, up from 9.5%, charged every night. On top is a small environmental levy of about $3 per room per night.", tone: "teal" },
           p: [
             "The main one is the <b>tourist levy</b>, set at <b>12.5% of the room rate</b> since 2023 (up from 9.5%), charged every night. On top of it is a small <b>environmental levy</b> of about <b>3 US dollars per occupied room per night</b>. Both are government charges collected by your accommodation.",
             "These apply to hotels, timeshares, guesthouses and vacation rentals alike. Residents are exempt, but as a visitor you will see the levy on essentially any paid stay."
@@ -333,6 +377,8 @@ export default {
         },
         {
           h: "The hotel's own charges",
+          icon: "usd",
+          key: { fig: "$30-90", tag: "Resort fee bites", text: "Most hotels add a service charge, often 10 to 15%, functioning as a built-in gratuity, and many resorts also add a resort fee, commonly $30 to $90 a night. Neither is in the headline room rate.", tone: "amber" },
           p: [
             "Most hotels add their own <b>service charge</b>, often around <b>10 to 15%</b>, which functions as a built-in gratuity for staff, and many resorts also add a <b>resort fee</b>, commonly <b>30 to 90 dollars a night</b>, covering things like Wi-Fi, loungers and activities. These are <b>not taxes</b>, but they are usually mandatory.",
             "Because the levy and these fees compound, a room advertised at one price can settle a <b>quarter to a third higher</b> once everything is added. Read the fine print at booking, and ask what the all-in nightly total is."
@@ -340,6 +386,8 @@ export default {
         },
         {
           h: "The rest of your money",
+          icon: "coins",
+          key: { fig: "No VAT", tag: "But a 7% BBO", text: "Aruba has no VAT, so there is no tourist VAT refund. It charges a turnover tax (BBO) of around 7% on goods and services, which is built into the prices you see.", tone: "teal" },
           p: [
             "Two more things worth knowing. Aruba has <b>no VAT</b>, so there is <b>no tourist VAT refund</b>: it charges a turnover tax (BBO) of around 7% on goods and services, built into prices. And every air visitor pays a <b>20 dollar sustainability fee</b> through the ED Card before arrival, while the old departure tax is now inside your airfare.",
             "For how to pay, tipping and using dollars versus florin, see the <a href=\"/aruba\">Aruba money guide</a>."
