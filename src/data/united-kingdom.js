@@ -176,6 +176,65 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Restaurants", v: "Often a 12.5% service charge" },
+        { k: "The charge", v: "Discretionary, can be removed" },
+        { k: "Pubs", v: "No tip at the bar" },
+        { k: "Since 2024", v: "All tips go to staff" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in the UK: the service charge, and what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in the UK for US travelers in 2026: the discretionary 12.5% restaurant service charge, when to tip at pubs and taxis, and the 2024 law that sends all tips to staff. Checked July 2026.",
+      h1: "Tipping in the UK",
+      lede: "The UK tips more than most of Europe but far less than the US. The main thing to watch is the discretionary service charge already on restaurant bills, which is optional. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "In the UK, sit-down restaurants often add a <b>discretionary service charge of about 12.5%</b> to the bill. It is <b>optional</b>: if service was poor you can ask for it to be <b>removed</b>, and if it is there you <b>need not tip on top</b>. If no service charge is added, <b>10 to 15%</b> is customary at table-service restaurants. At <b>pubs</b>, there is <b>no tipping</b> when you order at the bar. Round up for <b>taxis</b>. Since a <b>2024 law</b>, all tips must go to staff, so a card tip now reaches them, though <b>cash</b> is still simplest.",
+      sections: [
+        {
+          h: "The discretionary service charge",
+          icon: "receipt",
+          key: { fig: "12.5%", tag: "Optional, check the bill", text: "Sit-down restaurants often add about 12.5% as a discretionary service charge. If service was poor you can ask to remove it, and you need not tip on top.", tone: "amber" },
+          p: [
+            "Most <b>sit-down restaurants</b> add a <b>discretionary service charge</b>, typically <b>12.5%</b>, straight onto the bill. The word <b>discretionary</b> matters: it is <b>optional</b>. If service was poor, you can politely <b>ask for it to be removed</b>, and no one will object.",
+            "If the service charge is <b>already on the bill</b>, that is the tip, so you <b>do not need to add more</b>. If <b>no</b> service charge is shown, <b>10 to 15%</b> is the customary tip at a table-service restaurant."
+          ]
+        },
+        {
+          h: "Pubs, taxis and the rest",
+          icon: "gbp",
+          key: { fig: "No pub tip", tag: "Ordering at the bar", text: "There is no tipping at a pub when you order at the bar. Round up a taxi fare, or about 10% for a good black cab.", tone: "teal" },
+          p: [
+            "At a <b>pub</b>, when you <b>order and pay at the bar</b>, there is <b>no tipping</b>. For table service in a gastropub or restaurant, the restaurant rules above apply. You can offer to <b>buy the bartender a drink</b> in a traditional pub, but it is not expected.",
+            "For <b>taxis</b>, <b>round up</b> to the nearest pound, or about <b>10%</b> for a good black-cab driver. <b>Hotel porters</b>, <b>1 to 2 pounds a bag</b>; housekeeping, a pound or two a day if you like. Coffee-shop tip jars are entirely optional."
+          ]
+        },
+        {
+          h: "The 2024 tips law, and paying",
+          icon: "cash",
+          key: { fig: "All to staff", tag: "The 2024 law", text: "Since October 2024, employers must pass on 100% of tips to workers, so a card tip now reaches staff. Cash is still the simplest way.", tone: "teal" },
+          p: [
+            "A <b>2024 law</b> (the Employment (Allocation of Tips) Act, in force from <b>1 October 2024</b>) requires employers to pass on <b>100% of tips</b> to workers, with no deductions. So a <b>card tip now reaches the staff</b>, unlike in the past when some was skimmed.",
+            "Even so, <b>cash</b> is the simplest, and it goes directly to the person who served you. Keep a few <b>pound coins and small notes</b> for tips and taxis."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in the UK?", a: "Yes, but less than in the US. Sit-down restaurants often add a discretionary 12.5% service charge, which is optional and can be removed if service was poor. If none is added, 10 to 15% is customary. There is no tipping at a pub when you order at the bar." },
+        { q: "What is the service charge on UK restaurant bills?", a: "A discretionary charge, usually 12.5%, added to sit-down restaurant bills. Discretionary means optional: you can ask for it to be removed, and if it is there you need not tip on top. If it is not added, 10 to 15% is customary." },
+        { q: "Do you tip at pubs in the UK?", a: "Not when you order and pay at the bar. For table service in a gastropub or restaurant, normal restaurant tipping applies. In a traditional pub you can offer to buy the bartender a drink, but it is not expected." },
+        { q: "Do UK card tips reach the staff?", a: "Yes, since a 2024 law. The Employment (Allocation of Tips) Act, in force from 1 October 2024, requires employers to pass 100% of tips to workers with no deductions. Cash is still the simplest way, and goes directly to the person who served you." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: United Kingdom country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/UnitedKingdom.html", type: "gov" }
+        ],
+        judgment: "UK tipping norms are cultural, but the 2024 Employment (Allocation of Tips) Act is a real law requiring all tips to reach staff. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "eta",
       glance: [
         { k: "Visa", v: "Not a visa, an ETA (like ESTA)" },

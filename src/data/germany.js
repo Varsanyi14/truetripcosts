@@ -173,6 +173,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping (Trinkgeld)", v: "Modest, about 5 to 10%" },
+        { k: "How", v: "Round up to a tidy figure" },
+        { k: "The habit", v: "Say the total, do not leave it" },
+        { k: "Pay with", v: "Cash is simplest" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Germany: Trinkgeld, and how to leave it (2026) | True Trip Costs",
+      description: "How tipping works in Germany for US travelers in 2026: the modest Trinkgeld custom, why you tell the server the total rather than leaving it on the table, and how much to leave. Checked July 2026.",
+      h1: "Tipping in Germany",
+      lede: "Germany has a real but modest tipping custom called Trinkgeld, and one habit that surprises visitors: you tell the server the total you want to pay, rather than leaving coins on the table. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Germany has a modest tipping custom, <b>Trinkgeld</b>, of roughly <b>5 to 10%</b>, usually done by <b>rounding up</b> to a convenient figure. The key habit: when the server takes payment, you <b>state the total you want to pay</b>, including the tip, rather than leaving it on the table. For a 42 euro bill you might say <b>47</b>, or <b>stimmt so</b> (keep the change). Service is <b>not a separate line</b> but staff earn a wage, so this is a courtesy, not an obligation. <b>Cash</b> is simplest, and when paying by card you tell the server the total.",
+      sections: [
+        {
+          h: "Trinkgeld: how much, and the round-up habit",
+          icon: "euro",
+          key: { fig: "5-10%", tag: "Round up", text: "Trinkgeld is roughly 5 to 10%, done by rounding up to a convenient number. It is customary but modest, not a US-style 20%.", tone: "teal" },
+          p: [
+            "<b>Trinkgeld</b> (literally drink-money) is <b>customary but modest</b>: about <b>5 to 10%</b> at a restaurant, usually by <b>rounding up</b> to a tidy figure rather than calculating a percentage. For a <b>42 euro</b> bill, rounding to <b>45 or 47</b> is normal. At a <b>cafe or bar</b>, rounding up the coins is plenty.",
+            "Service is <b>not added as a separate line</b>, and staff earn a proper wage, so the tip is a <b>genuine courtesy</b>. Round up for <b>taxis</b>, leave <b>1 to 2 euros per bag</b> for a porter, and a euro or two a day for housekeeping if you like."
+          ]
+        },
+        {
+          h: "The habit that surprises visitors: say the total",
+          icon: "coins",
+          key: { fig: "Say the total", tag: "Not left on the table", text: "When the server takes payment, state the full amount you want to pay including the tip, or say stimmt so for keep the change. You do not leave it on the table.", tone: "teal" },
+          p: [
+            "Here is the part that catches US visitors out. In Germany you <b>do not usually leave the tip on the table</b>. Instead, when the server tells you the total and takes your money, you <b>state the amount you want to pay</b>. For a <b>42 euro</b> bill, hand over a note and say <b>47</b>, and you get change for the rest.",
+            "If you want to give exactly the change in hand, say <b>stimmt so</b> (that is right, keep the change). The server sorts the tip on the spot, so have a rough total in mind before they come over."
+          ]
+        },
+        {
+          h: "Cash, and paying by card",
+          icon: "cash",
+          key: { fig: "Cash is simplest", tag: "Tell the server", text: "Cash is the norm for tips. When paying by card, tell the server the total including the tip before they enter it, or add it on the machine.", tone: "teal" },
+          p: [
+            "<b>Cash</b> is still the simplest way to tip in Germany, and many smaller places are <b>cash-preferred</b> anyway. When you <b>pay by card</b>, tell the server the <b>total including the tip</b> before they enter the amount, or add it on the card machine if it prompts. Keep <b>euro coins and small notes</b> handy for rounding up."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Germany?", a: "Yes, modestly. Trinkgeld of roughly 5 to 10% is customary, usually by rounding up to a convenient figure. It is a courtesy, not an obligation, since staff earn a proper wage. It is well below the US 15 to 20%." },
+        { q: "How do you leave a tip in Germany?", a: "You tell the server the total you want to pay when they take payment, rather than leaving coins on the table. For a 42 euro bill you might say 47, or say stimmt so to mean keep the change. The server handles the tip on the spot." },
+        { q: "How much should I tip at a German restaurant?", a: "About 5 to 10%, usually by rounding up to a tidy number. For a 42 euro bill, rounding to 45 or 47 is normal. At a cafe or bar, rounding up the coins is plenty." },
+        { q: "Can you tip by card in Germany?", a: "Yes, increasingly. Tell the server the total including the tip before they enter the amount, or add it on the card machine if it prompts. Cash is still the simplest, and many smaller places prefer it." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Germany country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Germany.html", type: "gov" }
+        ],
+        judgment: "German tipping is cultural, and the say-the-total habit is a longstanding local practice, not a rule. The amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "Process", v: "Shared EU entry" },

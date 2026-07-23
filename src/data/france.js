@@ -160,6 +160,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Light, service included" },
+        { k: "Service compris", v: "Already in the price, by law" },
+        { k: "If you tip", v: "Round up, or up to 5%" },
+        { k: "How", v: "Cash, no card tip line" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in France: service compris, and what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in France for US travelers in 2026: why service is already included by law (service compris), whether to leave a pourboire, and how much when you do. Checked July 2026.",
+      h1: "Tipping in France",
+      lede: "France is not a US-style tipping country. Service is included in the price by law, staff earn a full wage, and no one expects 15 to 20%. A small pourboire for good service is a kindness, not an obligation. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "France has a <b>light tipping culture</b> because <b>service is included by law</b> (service compris): the listed price already covers service, and staff earn a <b>full minimum wage</b>. So there is <b>no expected percentage</b> and no line to add. For genuinely good service, a small <b>pourboire</b> is a kind gesture: <b>round up</b> or leave a <b>euro or two</b> at a cafe, and up to roughly <b>5%</b> at a nicer restaurant. Leave it in <b>cash</b>, since card terminals rarely have a tip line. Do not feel pressured to tip the way you would at home.",
+      sections: [
+        {
+          h: "Service compris: why the tip is already in the price",
+          icon: "euro",
+          key: { fig: "Included", tag: "Service compris", text: "By law the listed price includes service, and staff earn a full wage, so there is no service line to add and no expected percentage.", tone: "teal" },
+          p: [
+            "Since a <b>1987 law</b>, French menus and bills are <b>service compris</b>: the price you see already <b>includes service</b>, and you may see the words printed on the menu or receipt. Waiters earn a <b>full salary</b> (the French minimum wage, the SMIC), so they do <b>not depend on tips</b> the way US servers do.",
+            "That means there is <b>no service charge to add</b> and <b>no expected percentage</b>. A tip in France, the <b>pourboire</b>, is a genuine extra for service you liked, not part of the bill."
+          ]
+        },
+        {
+          h: "When and how much to leave",
+          icon: "coins",
+          key: { fig: "Round up", tag: "A courtesy", text: "For good service, round up or leave a euro or two at a cafe, and up to about 5% at a nicer restaurant. It is optional.", tone: "teal" },
+          p: [
+            "For everyday meals, <b>rounding up</b> or leaving the <b>small change</b> is plenty. At a <b>cafe or bar</b>, leaving a <b>euro or two</b>, or the coins from your change, is a normal kindness. At a <b>nicer restaurant</b> where service was excellent, up to roughly <b>5%</b> is generous, well below the US 15 to 20%.",
+            "Elsewhere: <b>round up</b> a taxi fare, leave <b>1 to 2 euros per bag</b> for a hotel porter, and <b>1 to 2 euros a day</b> for housekeeping if you like. For a private guide or a long tour, a larger tip reflects a real service."
+          ]
+        },
+        {
+          h: "Leave it in cash",
+          icon: "cash",
+          key: { fig: "Cash", tag: "No tip line on cards", text: "Card terminals in France rarely have a tip line, so leave a pourboire in coins or small notes on the table or in the dish.", tone: "teal" },
+          p: [
+            "Leave any <b>pourboire in cash</b>. French card machines usually have <b>no tip prompt</b>, so a card tip is awkward or impossible, and cash reaches the staff directly. Keep a few <b>euro coins and small notes</b> for this and for cafe change."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in France?", a: "Only lightly, and only if you want to. Service is included in the price by law (service compris) and staff earn a full wage, so there is no obligation and no expected percentage. For good service, round up or leave a euro or two, up to about 5% at a nicer restaurant." },
+        { q: "What does service compris mean?", a: "It means service is included in the listed price. Since a 1987 law, French menus and bills already cover service, and waiters earn a full salary. You do not add a service charge, and any tip is a genuine extra, not part of the bill." },
+        { q: "How much should I tip in a French restaurant?", a: "Nothing is required. For excellent service, up to roughly 5% at a nicer restaurant is generous, or simply round up. At a cafe, leaving a euro or two or the small change is normal. Do not feel pressured to tip 15 to 20% the way you would at home." },
+        { q: "Should I tip in cash or on the card in France?", a: "Cash. French card terminals rarely have a tip line, so a card tip is usually not possible, and cash goes straight to the staff. Keep a few euro coins and small notes handy." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: France country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/France.html", type: "gov" }
+        ],
+        judgment: "French tipping is cultural, and service compris is a longstanding legal rule, not a recent change. The amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "taxis-and-apps",
       glance: [
         { k: "Best options", v: "Uber, Bolt, or a licensed taxi" },

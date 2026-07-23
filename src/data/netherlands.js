@@ -172,6 +172,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping (fooi)", v: "Modest, not expected" },
+        { k: "Service", v: "Included, staff earn a wage" },
+        { k: "Restaurants", v: "Round up, or 5 to 10%" },
+        { k: "On a card", v: "The PIN often has a tip option" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in the Netherlands: the fooi, and what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in the Netherlands for US travelers in 2026: why it is modest, how much to leave at restaurants and cafes, and how to tip on the PIN machine. Checked July 2026.",
+      h1: "Tipping in the Netherlands",
+      lede: "The Netherlands is a light-tipping country. Service is included, staff earn a proper wage, and nobody expects a US-style percentage. A modest fooi for good service is welcome but never required. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "The Netherlands has a <b>light tipping culture</b>. Service is <b>included in the price</b> and staff earn a <b>proper wage</b>, so there is <b>no expected percentage</b>. A <b>fooi</b> for good service is a kind extra: at a <b>restaurant</b>, <b>rounding up</b> or leaving <b>5 to 10%</b> is generous, and at a <b>cafe or bar</b>, the <b>small change</b> is plenty. When you pay by card, the <b>PIN machine often lets you add a tip</b>, or you can tell the server. Do not feel pressured to tip the way you would at home.",
+      sections: [
+        {
+          h: "How much to leave, by situation",
+          icon: "euro",
+          key: { fig: "5-10%", tag: "Restaurants, if you like", text: "Service is included and staff earn a wage, so nothing is required. For good restaurant service, round up or leave 5 to 10%. At a cafe, the small change is plenty.", tone: "teal" },
+          p: [
+            "At a <b>sit-down restaurant</b>, tipping is <b>optional</b>: for good service, <b>rounding up</b> or leaving <b>5 to 10%</b> is generous, well below the US norm. At a <b>cafe, bar or for drinks</b>, the Dutch typically leave just the <b>small change</b> or a euro or two.",
+            "Elsewhere: <b>round up</b> a taxi fare, leave <b>1 to 2 euros per bag</b> for a hotel porter, and a euro or two a day for housekeeping if you like. For a private guide, a larger tip reflects a real service."
+          ]
+        },
+        {
+          h: "Tipping on the PIN machine",
+          icon: "card",
+          key: { fig: "On the PIN", tag: "Or tell the server", text: "The Netherlands is card-first, and the PIN machine often has a tip option. Add it there, or tell the server the total before they enter the amount.", tone: "teal" },
+          p: [
+            "The Netherlands is <b>strongly card-first</b>, and unlike some countries the <b>PIN card machine often has a tip option</b>: after the amount comes up, it may ask if you want to add a <b>fooi</b>. Enter the tip there, or <b>tell the server the total</b> you want to pay before they enter it.",
+            "If you prefer <b>cash</b>, leaving coins or a small note on the table works too, though card is the everyday norm here."
+          ]
+        },
+        {
+          h: "A few small notes",
+          icon: "coins",
+          key: { fig: "Modest", tag: "Never required", text: "Tipping is always modest and optional here. Round up for good service, and do not feel you owe a US-style percentage.", tone: "teal" },
+          p: [
+            "Dutch tipping is <b>consistently modest</b>. There is <b>no service charge</b> added to restaurant bills, and the listed price is what you pay. Keep a few <b>euro coins</b> for rounding up, and remember that a <b>fooi is a thank-you</b>, not an obligation."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in the Netherlands?", a: "Only modestly, and only if you want to. Service is included and staff earn a proper wage, so there is no obligation and no expected percentage. For good restaurant service, round up or leave 5 to 10%. At a cafe, the small change is plenty." },
+        { q: "How much should I tip at a Dutch restaurant?", a: "Nothing is required. For good service, rounding up or 5 to 10% is generous. At a cafe or bar, the small change or a euro or two is normal. Do not feel pressured to tip 15 to 20% the way you would at home." },
+        { q: "Can you tip by card in the Netherlands?", a: "Yes, easily. The Netherlands is card-first and the PIN machine often has a tip option after the amount appears. Add the fooi there, or tell the server the total you want to pay. Cash works too." },
+        { q: "Is a service charge added in the Netherlands?", a: "No. Dutch restaurants do not add a service charge, and the listed price is what you pay. Any tip is a modest, optional extra." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Netherlands country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Netherlands.html", type: "gov" }
+        ],
+        judgment: "Dutch tipping is cultural and modest, and the PIN-machine tip option is now common. The amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "Process", v: "Shared EU entry" },

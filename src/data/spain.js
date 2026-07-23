@@ -161,6 +161,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Light, not expected" },
+        { k: "Prices", v: "Include IVA (VAT)" },
+        { k: "Restaurants", v: "Round up, or 5 to 10%" },
+        { k: "Service charge", v: "Uncommon, check the bill" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Spain: la propina, and what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Spain for US travelers in 2026: why it is modest, whether a service charge appears, and how much to leave at restaurants, tapas bars and cafes. Checked July 2026.",
+      h1: "Tipping in Spain",
+      lede: "Spain is a light-tipping country. Prices include tax, staff earn a wage, and nobody expects a US-style 15 to 20%. A modest propina for good service is welcome but never required. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Spain has a <b>light tipping culture</b>. Menu prices <b>include IVA</b> (VAT), staff earn a <b>real wage</b>, and there is <b>no expected percentage</b>. A <b>propina</b> is a genuine extra for service you liked: at a <b>restaurant</b>, <b>rounding up</b> or leaving <b>5 to 10%</b> for good service is generous, and at a <b>tapas bar or cafe</b>, the <b>small change</b> is plenty. A separate <b>servicio</b> (service charge) is <b>uncommon</b> but check the bill in tourist spots. Leave tips in <b>cash</b>, and do not feel pressured to tip the way you would at home.",
+      sections: [
+        {
+          h: "How much to leave, by situation",
+          icon: "euro",
+          key: { fig: "5-10%", tag: "Restaurants, if you like", text: "Prices include tax and staff earn a wage, so nothing is required. For good restaurant service, round up or leave 5 to 10%. At a bar, the small change is plenty.", tone: "teal" },
+          p: [
+            "At a <b>sit-down restaurant</b>, tipping is <b>optional</b>: for good service, <b>rounding up</b> or leaving <b>5 to 10%</b> is generous, well below the US norm. At a <b>tapas bar, cafe or for drinks</b>, Spaniards typically leave just the <b>small change</b> or a coin or two, and often nothing at all.",
+            "Elsewhere: <b>round up</b> a taxi fare, leave <b>1 to 2 euros per bag</b> for a hotel porter, and a euro or two a day for housekeeping if you like. For a private guide, a larger tip reflects a real service."
+          ]
+        },
+        {
+          h: "Is there a service charge? Usually not",
+          icon: "receipt",
+          key: { fig: "Uncommon", tag: "Check the bill", text: "Unlike some countries, Spain rarely adds a service charge. In tourist spots you may occasionally see servicio on the bill, so check before adding more.", tone: "teal" },
+          p: [
+            "Spain does <b>not usually add a service charge</b>, and there is <b>no coperto</b> cover charge like Italy's. The listed price, IVA included, is generally what you pay.",
+            "In some <b>tourist-area restaurants</b> you may occasionally see a <b>servicio</b> (service charge) added, or a small charge for bread. If it appears on the bill, <b>you do not need to tip on top</b>, so read the bill before you add anything."
+          ]
+        },
+        {
+          h: "Leave it in cash",
+          icon: "cash",
+          key: { fig: "Cash", tag: "Reaches the staff", text: "Leave a propina in coins or small notes. Card terminals often have no tip line, and cash goes directly to the server.", tone: "teal" },
+          p: [
+            "Leave any <b>propina in cash</b>. Spanish card machines often have <b>no tip prompt</b>, and cash reaches the staff directly. Keep a few <b>euro coins and small notes</b> for tips and for bar change."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Spain?", a: "Only modestly, and only if you want to. Prices include IVA and staff earn a wage, so there is no obligation and no expected percentage. For good restaurant service, round up or leave 5 to 10%. At a bar, the small change is plenty." },
+        { q: "Is a service charge added in Spain?", a: "Usually not. Spain rarely adds a service charge and has no cover charge like Italy's coperto. In some tourist-area restaurants you may occasionally see servicio on the bill, in which case you need not tip on top. Read the bill first." },
+        { q: "How much should I tip at a Spanish restaurant?", a: "Nothing is required. For good service, rounding up or 5 to 10% is generous. At a tapas bar or cafe, the small change or a coin or two is normal, and often nothing at all. Do not feel pressured to tip 15 to 20% the way you would at home." },
+        { q: "Cash or card for tips in Spain?", a: "Cash. Card terminals often have no tip line, so leave coins or small notes on the table or in the dish, where they reach the staff directly." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Spain country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Spain.html", type: "gov" }
+        ],
+        judgment: "Spanish tipping is cultural and modest, with no cover charge like Italy's coperto. The amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "Process", v: "Shared EU entry" },
