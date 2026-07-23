@@ -21,6 +21,12 @@ export default {
   spokes: [
     {
       slug: "staying-connected",
+      glance: [
+        { k: "Best network", v: "Kolbi (ICE), widest reach" },
+        { k: "Everyday", v: "4G, 5G only in bigger towns" },
+        { k: "Dead zones", v: "Parks and remote coasts" },
+        { k: "Also set up", v: "WhatsApp for lodges" }
+      ],
       live: true,
       esim: true,
       topic: "connectivity",
@@ -35,6 +41,8 @@ export default {
       sections: [
         {
           h: "Why the network decides your coverage",
+          icon: "phoneok",
+          key: { fig: "Kolbi", tag: "The carrier matters", text: "Costa Rica's draw is its wild places, and that is where coverage thins. The state carrier Kolbi (ICE) has by far the widest reach, so pick an eSIM that runs on Kolbi, not the plan size.", tone: "teal" },
           p: [
             "Costa Rica's draw is its wild places, and those are precisely where mobile coverage thins out. That makes the carrier behind your eSIM the thing that matters, not the plan size or the brand on the app.",
             "<b>Kolbi (ICE)</b>, the state carrier, reaches into the national parks, cloud forests and remote coasts where <b>Liberty</b> and <b>Claro</b> drop out. So a Kolbi-backed eSIM is the safest bet for a trip built around Corcovado, Monteverde or the Osa Peninsula. If you are only in San Jose and the main towns, the difference matters less, but few people come to Costa Rica to stay in the city."
@@ -42,6 +50,8 @@ export default {
         },
         {
           h: "Where to expect dead zones",
+          icon: "alert",
+          key: { tag: "Plan for no signal", text: "Expect no signal in Corcovado, deep in Monteverde, on the Osa Peninsula and along stretches of the Caribbean coast. These are lodge and day-trip spots, so download maps and details first.", tone: "amber" },
           p: [
             "Plan for no signal in <b>Corcovado</b>, deep in <b>Monteverde</b>, on the <b>Osa Peninsula</b> and along stretches of the <b>Caribbean coast</b>. These are day-trip and lodge destinations, so it is easy to assume you will be connected and then find you are not.",
             "Download <b>offline maps</b> before you leave the main routes, and let your lodge know your rough plan if you are heading somewhere truly remote, since you may be out of contact for hours."
@@ -49,6 +59,8 @@ export default {
         },
         {
           h: "Set up WhatsApp, and the simplest eSIM",
+          icon: "qr",
+          key: { fig: "WhatsApp", tag: "How lodges talk", text: "WhatsApp is how tour operators and lodges communicate, from confirming a shuttle to shifting a tour around the weather. Install it, and a Kolbi-backed eSIM is the simplest data setup.", tone: "teal" },
           p: [
             "In Costa Rica, <b>WhatsApp is the default way tour operators and lodges communicate</b>, from confirming a shuttle to rearranging a tour around the weather. Install it and confirm your bookings on it before you fly, so you are reachable the way locals expect.",
             "For the connection itself, a travel eSIM skips the SIM counter and works from landing. <b>Nomad</b> partners with <b>Kolbi (ICE)</b> and Liberty in Costa Rica, so a Nomad eSIM can ride the wide-reach Kolbi network that this whole page points you toward. Set it up before you travel, since you need a connection to install it."
