@@ -174,6 +174,12 @@ export default {
   spokes: [
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Process", v: "Shared EU entry" },
+        { k: "Need", v: "ISO chip, rabies, EU health cert" },
+        { k: "Enter within", v: "10 days of endorsement" },
+        { k: "Coming home", v: "Simple CDC path" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Germany from the US (2026): the EU process, and the Germany-specific parts | True Trip Costs",
@@ -186,6 +192,8 @@ export default {
       sections: [
         {
           h: "Germany runs on the EU process",
+          icon: "health",
+          key: { fig: "10 days", tag: "No Germany-only permit", text: "The standard EU move: an ISO microchip first, a rabies shot after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS. Enter Germany within 10 days of that endorsement.", tone: "teal" },
           p: [
             "There is no Germany-only pet permit and no national quarantine. Bringing a dog or cat into Germany from the US is the standard EU move: an ISO microchip first, a rabies vaccination after the chip, then an EU Animal Health Certificate completed by a USDA-accredited vet and endorsed by APHIS, with the pet arriving within 10 days of endorsement. A first rabies shot adds a 21-day wait before travel.",
             "Because the process is identical across all 27 member countries, we do not repeat it per country. The full sequence, the microchip-before-rabies trap that costs people the most time, the 10-day clock, and the current APHIS endorsement fees all live on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Read that first, then come back for the Germany notes."
@@ -193,6 +201,8 @@ export default {
         },
         {
           h: "The Germany-specific parts",
+          icon: "receipt",
+          key: { fig: "Check", tag: "At the border", text: "German customs may ask to see the endorsed certificate and confirm the chip, and pets should arrive through a designated traveller point of entry, which the major airports are.", tone: "teal" },
           p: [
             "At the border, German customs may ask to see the endorsed certificate and confirm the microchip, and pets should enter through a designated traveller point of entry, which the major airports are. There is no dog or cat tapeworm rule for Germany, unlike Ireland, Finland or Malta.",
             "The real German-specific issues are local rather than at the border. Dog owners in Germany pay an annual dog tax (Hundesteuer) to their city or municipality and must register the dog locally, and several German states (Bundesländer) maintain their own lists of restricted or dangerous breeds with extra rules, so the treatment of a given breed can vary by where you settle. If your dog is a bull-type or mastiff-type breed, check the rules for your specific state before you commit to an address, and expect to register and insure the dog once you arrive."
@@ -200,6 +210,8 @@ export default {
         },
         {
           h: "Coming back to the US is the easy part",
+          icon: "plane",
+          key: { fig: "Easy", tag: "The return trip", text: "A dog flying home from Germany is on the simplest CDC path: usually a CDC Dog Import Form receipt, a microchip, and a minimum age of 6 months.", tone: "teal" },
           p: [
             "Good news for the return trip: a dog flying home to the US from Germany is on the simplest CDC path, typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement.",
             "For the wider picture, including how Germany compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."

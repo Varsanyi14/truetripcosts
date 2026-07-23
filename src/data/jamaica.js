@@ -169,6 +169,12 @@ export default {
   spokes: [
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "No Uber", v: "Use a licensed red-plate taxi" },
+        { k: "Never", v: "An unlicensed white-plate robot" },
+        { k: "Fares", v: "Not metered, agree before you go" },
+        { k: "Airport", v: "The Authorised desk at Sangster" }
+      ],
       live: true,
       topic: "taxis",
       caution: "high",
@@ -187,6 +193,8 @@ export default {
       sections: [
         {
           h: "Red plate good, white-plate robot bad",
+          icon: "alert",
+          key: { tag: "Red plate is licensed", text: "The one thing to know in Jamaica is the plate. A legitimate taxi is a licensed public passenger vehicle with a red plate and a Transport Authority sticker. Never take an unlicensed white-plate car, the robot.", tone: "amber" },
           p: [
             "The one thing to know in Jamaica is the license plate. A legitimate taxi is a licensed <b>public passenger vehicle</b>, and it carries a <b>red plate</b>, along with a Transport Authority sticker on the windscreen, a <b>Taxi</b> globe on the roof, and often the words <b>Route Taxi</b> on the doors. An unlicensed car working as a taxi is known locally as a <b>robot</b>, and it carries an ordinary <b>white plate</b>.",
             "Robots are everywhere and cheap, and locals use them, but they are operating illegally, they are often overloaded, and the point that matters for you: if there is an accident, the passengers are <b>not insured</b>. As a visitor, keep it simple and use only <b>red-plate</b> taxis, tourist-board-approved taxis such as <b>JUTA</b>, or your hotel's own drivers."
@@ -194,6 +202,8 @@ export default {
         },
         {
           h: "No Uber, so agree the fare first",
+          icon: "cash",
+          key: { tag: "No ride apps here", text: "Uber and the big apps do not really operate in Jamaica, and online Uber Montego Bay listings are private-transfer firms borrowing the name. Taxis are not reliably metered, so agree the fare before you set off, or pre-book a fixed-price transfer.", tone: "amber" },
           p: [
             "<b>Uber</b> and the big ride apps do not really operate in Jamaica. The listings you will find online for <b>Uber Montego Bay</b> are private-transfer companies borrowing the name, not the app itself, so do not plan around it. What you use instead is a licensed taxi or a booked transfer.",
             "Taxis outside Kingston are technically metered, but drivers often will not use the meter, so <b>always agree the price before you set off</b>, and expect roughly <b>25 percent more after midnight</b>. Shared <b>route taxis</b>, the red-plate kind, run fixed point-to-point routes cheaply, while a <b>charter</b> taxi is private and costs more. For anything longer, know the going rate first or book a fixed-price transfer."
@@ -201,6 +211,8 @@ export default {
         },
         {
           h: "At the airport",
+          icon: "plane",
+          key: { fig: "JUTA desk", tag: "The Authorised desk", text: "At Montego Bay's Sangster International, the official Authorised Airport Taxi desk sits just outside the customs exit, shared by the two licensed operators, JUTA among them. Use it for a set fare.", tone: "teal" },
           p: [
             "At Montego Bay's <b>Sangster International</b> (MBJ), the official <b>Authorised Airport Taxi desk</b> sits just outside the customs exit and is shared by the two licensed operators, <b>JUTA</b> and <b>JCAL</b>. You can take a cab from the rank in front of arrivals or pre-book a transfer. Because there are no meters, you agree or prepay the fare, and a <b>pre-booked private transfer</b> gives you a fixed price and a driver waiting with your name, which is the least stressful option after a long flight.",
             "Kingston's airport is <b>Norman Manley</b> (NMIA), and the same rules apply there. Wherever you land, <b>ignore anyone who approaches you</b> inside the terminal offering a ride, and head for the official desk or your booked driver."
@@ -208,6 +220,8 @@ export default {
         },
         {
           h: "Fares, paying and tipping",
+          icon: "usd",
+          key: { fig: "USD or JMD", tag: "Agree the number", text: "Agree the number before you get in. Both US dollars and Jamaican dollars are widely accepted for taxis, so carry small notes, and a licensed taxi should show you its rate sheet.", tone: "teal" },
           p: [
             "Agree the number before you get in. Both <b>US dollars</b> and <b>Jamaican dollars</b> are widely accepted for taxis, so carry small notes, and a licensed taxi should be able to show you its fares. Confirm whether the quote is in US or Jamaican dollars, since the difference is large and a vague quote is where misunderstandings happen.",
             "Tipping is a kind gesture rather than an obligation, and around 10 to 15 percent for a helpful driver or a tour is appreciated, though it is not expected on a fixed-price transfer. For the wider money picture, including how much cash to carry and which currency to use, see the <a href=\"/jamaica\">Jamaica money guide</a>."

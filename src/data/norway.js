@@ -183,6 +183,12 @@ export default {
   spokes: [
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Process", v: "Shared EU entry (adopted)" },
+        { k: "Need", v: "ISO chip, rabies, EU health cert" },
+        { k: "Dogs also need", v: "A tapeworm treatment before arrival" },
+        { k: "Coming home", v: "Simple CDC path" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Norway from the US (2026): the EU process, plus the dog tapeworm rule | True Trip Costs",
@@ -195,14 +201,20 @@ export default {
       sections: [
         {
           h: "Norway runs on the EU process",
+          icon: "health",
+          key: { fig: "10 days", tag: "EU rules, not an EU member", text: "Norway is not an EU member but has adopted the EU import rules, with no quarantine or rabies titer from the US: an ISO microchip first, a rabies shot after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS.", tone: "teal" },
           p: ["Norway is not an EU member but has adopted the EU import rules, so bringing a dog or cat into Norway from the US is the standard EU move: an ISO microchip first, a rabies vaccination after the chip, then an EU Animal Health Certificate completed by a USDA-accredited vet and endorsed by APHIS, with the pet arriving within 10 days of endorsement. A first rabies shot adds a 21-day wait before travel.", "Because the core process is identical across the EU (and the countries that follow its rules), we do not repeat it per country. The full sequence, the microchip-before-rabies trap that costs people the most time, the 10-day clock, and the current APHIS endorsement fees all live on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Read that first, then come back for the Norway notes."]
         },
         {
           h: "The Norway-specific part: the dog tapeworm rule",
+          icon: "paw",
+          key: { tag: "Dogs need a tapeworm dose", text: "Like Ireland, Finland and Malta, Norway adds a dog tapeworm rule: a vet must give your dog an approved tapeworm treatment 24 to 120 hours before you arrive, recorded on the certificate. Cats are exempt.", tone: "amber" },
           p: ["Norway sits outside the EU but has adopted the EU import rules, so the core process is the same shared one: microchip, rabies after the chip, and an EU Animal Health Certificate endorsed by APHIS, with entry within 10 days. Norway is one of the short list of rabies-free destinations (with Ireland, Finland and Malta) that add a dog tapeworm treatment. A vet must give your <b>dog</b> an approved treatment against echinococcus tapeworm and record it on the certificate <b>24 to 120 hours before the dog arrives in Norway</b>, that is between one and five days out. It is a timing rule as much as a medical one, so it usually happens at a final vet visit right before travel.", "Two things to stress. This applies to <b>dogs only</b>: cats coming to Norway do not need it. And Norway requires arriving pet owners to report to customs (the red channel) on entry to present the pet and its papers. Get the tapeworm timing wrong and the certificate is not valid for Norway, so build the final vet visit into your travel plan deliberately."]
         },
         {
           h: "Coming back to the US is the easy part",
+          icon: "plane",
+          key: { fig: "Easy", tag: "The return trip", text: "A dog flying home from Norway is on the simplest CDC path: usually a CDC Dog Import Form receipt, a microchip, and a minimum age of 6 months.", tone: "teal" },
           p: ["Good news for the return trip: a dog flying home to the US from Norway is on the simplest CDC path, typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement.", "For the wider picture, including how Norway compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."]
         }
       ],

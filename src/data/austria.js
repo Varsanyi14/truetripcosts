@@ -180,6 +180,12 @@ export default {
   spokes: [
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Process", v: "Shared EU entry" },
+        { k: "Need", v: "ISO chip, rabies, EU health cert" },
+        { k: "Enter within", v: "10 days of endorsement" },
+        { k: "Coming home", v: "Simple CDC path" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Austria from the US (2026): the EU process, and the Austria-specific parts | True Trip Costs",
@@ -192,14 +198,20 @@ export default {
       sections: [
         {
           h: "Austria runs on the EU process",
+          icon: "health",
+          key: { fig: "10 days", tag: "No Austria-only permit", text: "The standard EU move: an ISO microchip first, a rabies shot after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS. Enter Austria within 10 days of that endorsement.", tone: "teal" },
           p: ["There is no Austria-only pet permit and no national quarantine. Bringing a dog or cat into Austria from the US is the standard EU move: an ISO microchip first, a rabies vaccination after the chip, then an EU Animal Health Certificate completed by a USDA-accredited vet and endorsed by APHIS, with the pet arriving within 10 days of endorsement. A first rabies shot adds a 21-day wait before travel.", "Because the core process is identical across the EU (and the countries that follow its rules), we do not repeat it per country. The full sequence, the microchip-before-rabies trap that costs people the most time, the 10-day clock, and the current APHIS endorsement fees all live on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Read that first, then come back for the Austria notes."]
         },
         {
           h: "The Austria-specific parts",
+          icon: "receipt",
+          key: { fig: "Check", tag: "At the border", text: "Austrian customs may ask to see the endorsed certificate and confirm the chip, and pets should arrive through a designated traveller point of entry, which the major airports are.", tone: "teal" },
           p: ["At the border, Austrian customs may ask to see the endorsed certificate and confirm the microchip, and pets should enter through a designated traveller point of entry, which the major airports are. There is no dog or cat tapeworm rule for Austria, unlike Ireland, Finland or Malta.", "The Austria-specific matters are local. Austria requires dogs to be registered and, in most provinces, to carry a dog tax or licence paid to the municipality, and several provinces (Bundeslaender) set their own leash and muzzle rules and keep lists of breeds needing a permit or a keeping licence. Because these vary by province, check the rules where you plan to live, and register and insure the dog once you have an address."]
         },
         {
           h: "Coming back to the US is the easy part",
+          icon: "plane",
+          key: { fig: "Easy", tag: "The return trip", text: "A dog flying home from Austria is on the simplest CDC path: usually a CDC Dog Import Form receipt, a microchip, and a minimum age of 6 months.", tone: "teal" },
           p: ["Good news for the return trip: a dog flying home to the US from Austria is on the simplest CDC path, typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement.", "For the wider picture, including how Austria compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."]
         }
       ],

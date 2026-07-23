@@ -172,6 +172,12 @@ export default {
   spokes: [
     {
       slug: "e-ticket",
+      glance: [
+        { k: "Visa", v: "None for a tourist stay" },
+        { k: "E-Ticket", v: "Free, required both ways" },
+        { k: "Where", v: "eticket.migracion.gob.do (free)" },
+        { k: "Watch for", v: "Paid lookalike sites" }
+      ],
       live: true,
       topic: "visas",
       title: "Do I need the E-Ticket for the Dominican Republic? (2026) | True Trip Costs",
@@ -190,6 +196,8 @@ export default {
       sections: [
         {
           h: "Yes, you need it both ways",
+          icon: "plane",
+          key: { fig: "Both ways", tag: "Entry and exit", text: "The E-Ticket is required for both arrival and departure, so a round trip means filling it out twice, once for entry and once for exit. It is a quick digital form, not a visa.", tone: "teal" },
           p: [
             "The part that trips people up: the E-Ticket is required for <b>both your arrival and your departure</b>. A round trip means filling it out <b>twice</b>, once for entry and once for exit, each generating its own QR code (some travelers do a combined entry-and-exit form in one sitting to get it over with). Airlines check the QR code before they will issue a boarding pass, and immigration will not stamp you in without it.",
             "It is <b>not a visa</b>. US citizens get a tourist entry of up to <b>30 days</b> with no visa. The E-Ticket is purely the arrival and departure declaration, bundling immigration and customs into one form."
@@ -197,6 +205,8 @@ export default {
         },
         {
           h: "How to file it, step by step",
+          icon: "qr",
+          key: { fig: "Free", tag: "About ten minutes", text: "File free at the official site, eticket.migracion.gob.do, about ten minutes: your details, passport and flight, generating a QR code to show at the airport.", tone: "teal" },
           p: [
             "It is free and takes about ten minutes."
           ],
@@ -209,6 +219,8 @@ export default {
         },
         {
           h: "It is free, so do not pay for it",
+          icon: "alert",
+          key: { tag: "Skip the lookalikes", text: "Dominican search results are full of lookalike sites charging $20 to $50 to fill in the same free government form. Use only eticket.migracion.gob.do, where the charge is zero.", tone: "amber" },
           p: [
             "This is the trap the Dominican search results are full of. Because the E-Ticket is <b>mandatory and free</b>, lookalike sites charge <b>$20 to $50</b> to fill in the same free government form for you. The Directorate of Migration <b>does not charge</b> for it. Only the .gob.do site is real, so if a page asks for payment, it is not official.",
             "One practical tip: the site can be glitchy on phones and behaves better on a desktop, so fill it out at home rather than scrambling at the airport."
@@ -216,6 +228,8 @@ export default {
         },
         {
           h: "A couple of things to know",
+          icon: "receipt",
+          key: { fig: "The book", tag: "Not a passport card", text: "Bring your passport book, since a passport card is not accepted for international flights. Through 31 December 2026 a temporary measure lets US travelers enter without the old paper tourist card.", tone: "teal" },
           p: [
             "Bring your <b>passport book</b> (a passport card is not accepted for international flights). Through <b>31 December 2026</b> a temporary measure lets US and several other travelers enter on a passport valid for the length of the stay, but six months of validity is the safe standard, so confirm yours before you go.",
             "For how money actually works there, cards, cash, ATMs and the US-dollar question, see the <a href=\"/dominican-republic\">Dominican Republic money guide</a>."

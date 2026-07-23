@@ -171,6 +171,12 @@ export default {
   spokes: [
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Process", v: "Shared EU entry (adopted)" },
+        { k: "Need", v: "ISO chip, rabies, EU health cert" },
+        { k: "Enter within", v: "10 days of endorsement" },
+        { k: "Coming home", v: "Simple CDC path" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Switzerland from the US (2026): the EU process, and the Switzerland-specific parts | True Trip Costs",
@@ -183,14 +189,20 @@ export default {
       sections: [
         {
           h: "Switzerland runs on the EU process",
+          icon: "health",
+          key: { fig: "10 days", tag: "EU rules, not an EU member", text: "Switzerland is not an EU member but has adopted the EU import rules, so it is the standard EU move: an ISO microchip first, a rabies shot after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS. Enter within 10 days of endorsement.", tone: "teal" },
           p: ["Switzerland is not an EU member but has adopted the EU import rules, so bringing a dog or cat into Switzerland from the US is the standard EU move: an ISO microchip first, a rabies vaccination after the chip, then an EU Animal Health Certificate completed by a USDA-accredited vet and endorsed by APHIS, with the pet arriving within 10 days of endorsement. A first rabies shot adds a 21-day wait before travel.", "Because the core process is identical across the EU (and the countries that follow its rules), we do not repeat it per country. The full sequence, the microchip-before-rabies trap that costs people the most time, the 10-day clock, and the current APHIS endorsement fees all live on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Read that first, then come back for the Switzerland notes."]
         },
         {
           h: "The Switzerland-specific parts",
+          icon: "receipt",
+          key: { fig: "Same rules", tag: "At the border", text: "The core process is the same shared one. Swiss customs may ask to see the endorsed certificate and confirm the chip, and pets should arrive through a designated traveller point of entry.", tone: "teal" },
           p: ["Switzerland sits outside the EU but has adopted the EU import rules, so the core process is the same shared one: an ISO microchip, rabies after the chip, and an EU Animal Health Certificate endorsed by APHIS, with the pet arriving within 10 days of endorsement. There is no dog or cat tapeworm rule for Switzerland, unlike Ireland, Finland or Malta, and no quarantine or titer for a pet coming straight from the US.", "After you arrive, Switzerland requires dogs to be microchipped and registered in the national database (AMICUS) through the local commune once you have an address, and dog owners pay an annual dog tax set by the commune or canton. Some cantons keep their own restricted-breed lists and permit rules, so if your dog is a bull-type or mastiff-type breed, check the rules for the canton where you plan to live."]
         },
         {
           h: "Coming back to the US is the easy part",
+          icon: "plane",
+          key: { fig: "Easy", tag: "The return trip", text: "A dog flying home from Switzerland is on the simplest CDC path: usually a CDC Dog Import Form receipt, a microchip, and a minimum age of 6 months.", tone: "teal" },
           p: ["Good news for the return trip: a dog flying home to the US from Switzerland is on the simplest CDC path, typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement.", "For the wider picture, including how Switzerland compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."]
         }
       ],
