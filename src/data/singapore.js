@@ -176,6 +176,12 @@ export default {
   spokes: [
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Classed", v: "Schedule II (US, from 2026)" },
+        { k: "Quarantine", v: "None by default" },
+        { k: "But", v: "A 10-day home quarantine in two cases" },
+        { k: "Cost", v: "Several thousand dollars all in" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Singapore from the US (2026): the rabies-free country with no default quarantine, if you avoid two traps | True Trip Costs",
@@ -188,6 +194,8 @@ export default {
       sections: [
         {
           h: "Why Singapore is different from the other rabies-free destinations",
+          icon: "health",
+          key: { fig: "No wait", tag: "Schedule II, no default wait", text: "Australia, New Zealand and Japan are rabies-free and make you wait; Singapore is rabies-free too but classes the US as Schedule II, so there is no quarantine by default. The work is the paperwork and sequence.", tone: "teal" },
           p: [
             "Australia, New Zealand, and Japan are all rabies-free and all make you wait: long lead times, blood-test clocks, mandatory facility quarantine. Singapore is rabies-free too (since 1953), but it sorts countries into three rabies-risk schedules, and as of 2026 the <b>US sits in Schedule II</b>, the middle tier. Schedule I is a short rabies-free list (Australia, New Zealand, Ireland, the UK); Schedule III is everywhere else, and it carries a 30-day facility quarantine. Landing in Schedule II is the good outcome for a US owner.",
             "What Schedule II buys you is the headline: <b>no post-arrival quarantine by default</b>. Your pet clears inspection and goes home with you the same day, provided the paperwork is in order and you have not tripped one of the two quarantine triggers below. That makes Singapore one of the more manageable rabies-free moves, but only if you run the sequence precisely, because the strictness has moved from waiting to documentation."
@@ -195,6 +203,8 @@ export default {
         },
         {
           h: "The two traps that trigger a 10-day home quarantine",
+          icon: "alert",
+          key: { fig: "10 days", tag: "Two things to avoid", text: "Schedule II normally means no quarantine, but a minimum 10-day home quarantine becomes mandatory in two specific situations, so plan your whole move around avoiding both. Get the sequence and timing exactly right.", tone: "amber" },
           p: [
             "This is the part to plan your whole move around. Schedule II normally means no quarantine, but a <b>minimum 10-day home quarantine</b> becomes mandatory in two situations, so avoiding both is the goal:"
           ],
@@ -205,6 +215,8 @@ export default {
         },
         {
           h: "The steps, in the order that matters",
+          icon: "calendar",
+          key: { fig: "Sequence", tag: "Timing rules", text: "Follow the steps in sequence: the licences and the rabies titer both have timing rules, so starting late is the classic way to force a delay or a quarantine you did not want.", tone: "teal" },
           p: [
             "Follow these in sequence. The licences and the titer both have timing rules, so starting late is the classic way to force a delay or a quarantine you did not want."
           ],
@@ -220,6 +232,8 @@ export default {
         },
         {
           h: "Cost, and coming back to the US",
+          icon: "coins",
+          key: { fig: "$1000s", tag: "Air transport leads", text: "Budget several thousand dollars all in, the largest line being air transport since most pets fly as cargo, not in the cabin. Coming home to the US is the simple part.", tone: "teal" },
           p: [
             "Budget several thousand dollars all in. As with every long-haul pet move, the largest line is air transport, since most pets fly as cargo rather than in the cabin, followed by the pet-agent and clearance fees, the vet work, and the rabies titer. There is no facility-quarantine bill in the default Schedule II case, which keeps Singapore cheaper than the Schedule III or facility-quarantine destinations, another reason the middle-tier status matters.",
             "The return leg is easy. Because Singapore is rabies-free, a dog flying home to the US is on the simplest CDC path: typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement. See our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a> for the details, and <a href=\"/traveling-with-a-pet\">traveling with a pet</a> for how Singapore compares with other destinations on lead time and cost."

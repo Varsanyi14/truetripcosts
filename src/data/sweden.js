@@ -173,6 +173,12 @@ export default {
   spokes: [
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Process", v: "Shared EU entry" },
+        { k: "Need", v: "ISO chip, rabies, EU health cert" },
+        { k: "Enter within", v: "10 days of endorsement" },
+        { k: "Coming home", v: "Simple CDC path" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Sweden from the US (2026): the EU process, and the Sweden-specific parts | True Trip Costs",
@@ -185,14 +191,20 @@ export default {
       sections: [
         {
           h: "Sweden runs on the EU process",
+          icon: "health",
+          key: { fig: "10 days", tag: "No Sweden-only permit", text: "The standard EU move: an ISO microchip first, a rabies shot after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS. Enter Sweden within 10 days of that endorsement.", tone: "teal" },
           p: ["There is no Sweden-only pet permit and no national quarantine. Bringing a dog or cat into Sweden from the US is the standard EU move: an ISO microchip first, a rabies vaccination after the chip, then an EU Animal Health Certificate completed by a USDA-accredited vet and endorsed by APHIS, with the pet arriving within 10 days of endorsement. A first rabies shot adds a 21-day wait before travel.", "Because the core process is identical across the EU (and the countries that follow its rules), we do not repeat it per country. The full sequence, the microchip-before-rabies trap that costs people the most time, the 10-day clock, and the current APHIS endorsement fees all live on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Read that first, then come back for the Sweden notes."]
         },
         {
           h: "The Sweden-specific parts",
+          icon: "receipt",
+          key: { fig: "Declare", tag: "Report to customs", text: "Swedish customs may check the endorsed certificate and chip, and Sweden asks arriving pet owners to report to customs through the red channel on arrival, rather than walking straight out.", tone: "teal" },
           p: ["At the border, Swedish customs may ask to see the endorsed certificate and confirm the microchip, and Sweden asks arriving pet owners to report to customs (the red channel) on entry to confirm the pet. Pets should enter through a designated traveller point of entry, which Stockholm airport is. There is no dog or cat tapeworm rule for Sweden, unlike Ireland, Finland or Malta.", "After you arrive, Sweden requires dogs to be registered in the national dog register kept by the Swedish Board of Agriculture (Jordbruksverket) within a set period of taking up residence, handled online, and rabies vaccination must be kept current. There is no strict national banned-breed list. Register the dog once you have an address."]
         },
         {
           h: "Coming back to the US is the easy part",
+          icon: "plane",
+          key: { fig: "Easy", tag: "The return trip", text: "A dog flying home from Sweden is on the simplest CDC path: usually a CDC Dog Import Form receipt, a microchip, and a minimum age of 6 months.", tone: "teal" },
           p: ["Good news for the return trip: a dog flying home to the US from Sweden is on the simplest CDC path, typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement.", "For the wider picture, including how Sweden compares with other destinations on lead time and cost, see <a href=\"/traveling-with-a-pet\">traveling with a pet</a>."]
         }
       ],

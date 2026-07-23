@@ -178,6 +178,12 @@ export default {
   spokes: [
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Uber and Bolt (Bolt cheaper)" },
+        { k: "Airport pickup", v: "A designated e-hailing bay" },
+        { k: "Never", v: "An unsolicited ride" },
+        { k: "Johannesburg", v: "The Gautrain from OR Tambo" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -191,6 +197,8 @@ export default {
       sections: [
         {
           h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "10-20% off", tag: "Bolt is cheaper", text: "Uber and Bolt are both widely available in Johannesburg, Cape Town, Durban and Pretoria. Bolt is usually 10 to 20 percent cheaper, so compare the two before you ride.", tone: "teal" },
           p: [
             "<b>Uber</b> and <b>Bolt</b> are both widely available in <b>Johannesburg</b>, <b>Cape Town</b>, <b>Durban</b> and <b>Pretoria</b>, and they are the way most visitors get around. <b>Bolt</b> is usually 10 to 20 percent cheaper on the same route, so many travelers keep both and compare, especially when one is surging. <b>inDriver</b>, where you propose a fare, is another option.",
             "Two safety habits are worth building. Verify the <b>driver and plate</b> in the app before you get in, and where you can, request pickups from <b>inside a mall or hotel</b> rather than standing on the street. Since 2025, e-hailing drivers must hold a licence and are limited to set areas, which is mostly invisible to you but can occasionally affect how quickly a car turns up."
@@ -198,6 +206,8 @@ export default {
         },
         {
           h: "The airport e-hailing bays",
+          icon: "plane",
+          key: { fig: "The bay", tag: "Not the arrivals curb", text: "At the airports, Uber and Bolt do not pick up at the arrivals door. Walk to the designated e-hailing bay; at Cape Town that is up at Parkade 1 via the skybridge.", tone: "teal" },
           p: [
             "The operational catch is that at the airports, Uber and Bolt do <b>not</b> pick up at the arrivals door. You walk to a <b>designated e-hailing bay</b>. At <b>Cape Town</b> (CPT), the bays are at <b>Parkade 1, Ground Floor</b>, reached via the departures-level skybridge, so you pass the metered-taxi rank outside arrivals and follow the <b>e-hailing</b> signs. The airport Wi-Fi is free, so you can book on arrival, and it is roughly <b>150 to 250 rand</b> into the city bowl. At Johannesburg's <b>OR Tambo</b>, there are designated pickup areas outside the terminals.",
             "The single most important rule for an arriving passenger: <b>never accept an unsolicited ride</b> from anyone who approaches you inside the terminal. Use the official metered-taxi rank outside arrivals, or the app's e-hailing bay, and nothing offered to you in the hall."
@@ -205,6 +215,8 @@ export default {
         },
         {
           h: "The taxi turf tension, and minibus taxis",
+          icon: "alert",
+          key: { tag: "Avoid the flashpoints", text: "There is a long-running, sometimes violent conflict between e-hailing drivers and traditional metered and minibus-taxi operators, and it flares at certain transport hubs. Never take an unsolicited ride, and use the app bays.", tone: "amber" },
           p: [
             "There is a long-running, sometimes violent conflict between <b>e-hailing drivers</b> and the traditional <b>metered-taxi</b> and <b>minibus-taxi</b> operators, and it flares at certain transport hubs. Notably, some <b>Gautrain stations</b> are effectively no-go zones for app pickups: at <b>Sandton</b>, for example, drop-off at the station is fine, but pickup is moved about a kilometre away and the app will direct you there. It rarely touches a normal hotel-to-restaurant ride, so if the app ever sends you to an odd pickup point near a station, that is the reason.",
             "Separately, the <b>minibus taxis</b>, the packed shared vans that most South Africans rely on, are best <b>avoided by visitors</b>. They are cheap and everywhere, but the safety standards, route confusion and periodic disputes between operators make them a poor fit for a traveler who does not know the system."
@@ -212,6 +224,8 @@ export default {
         },
         {
           h: "Johannesburg: the Gautrain, and paying",
+          icon: "ticket",
+          key: { fig: "Gautrain", tag: "Safe rail link", text: "In Johannesburg the Gautrain is the safe, fast rail link from OR Tambo airport to Sandton, Rosebank and Pretoria, running frequently until evening and beating the highway traffic.", tone: "teal" },
           p: [
             "In Johannesburg, the <b>Gautrain</b> is the safe, fast rail link from <b>OR Tambo</b> airport to <b>Sandton</b>, <b>Rosebank</b> and <b>Pretoria</b>, running frequently until the evening and beating the highway traffic. Pick up a <b>Gautrain Gold Card</b> at the airport station, which also works on the buses that fan out from the stations.",
             "In the apps you pay by card, which is one less thing to manage. Metered taxis prefer cash and remain handy for Cape Town airport runs, where the regulated rate can beat app surge pricing. Tipping around 10 percent is normal for a good ride. For the wider money picture, including how much cash to carry, see the <a href=\"/south-africa\">South Africa money guide</a>."

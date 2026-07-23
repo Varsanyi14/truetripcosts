@@ -177,6 +177,12 @@ export default {
   spokes: [
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Middle tier", v: "More than EU, less than Australia" },
+        { k: "Need", v: "Microchip, rabies, RNATT titer" },
+        { k: "Also", v: "Import permit + quarantine reservation" },
+        { k: "Breed ban", v: "Pit Bull Terriers (since 2022)" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Taiwan from the US (2026): the titer clock, and how to skip facility quarantine | True Trip Costs",
@@ -189,6 +195,8 @@ export default {
       sections: [
         {
           h: "The titer is the clock",
+          icon: "health",
+          key: { fig: "RNATT", tag: "The titer sets timing", text: "Unlike Hong Kong, Taiwan requires a rabies neutralizing antibody titer (RNATT) of at least 0.5 IU/ml from a designated lab, and that test sets your lead time. Do the steps in strict order.", tone: "teal" },
           p: [
             "Unlike Hong Kong, Taiwan requires a rabies neutralizing antibody titer test (RNATT), and that test is what sets your lead time. The steps, in order: your pet must be at least 90 days old, implanted with an <b>ISO microchip</b>, and given a <b>rabies vaccination</b> (a booster at least 30 days before shipment, and no more than a year before). Then a blood sample is drawn for the RNATT, which must show a titer of <b>at least 0.5 IU/ml</b> and be taken <b>no less than 90 days and no more than one year before shipment</b>, at a designated laboratory.",
             "The US designated labs are the Kansas State University Rabies Laboratory, the Department of Defense laboratory in Texas, Auburn University, and the University of Missouri veterinary diagnostic laboratory. Because the blood draw has to sit inside that window before travel, it is usually the step that decides the earliest date your pet can arrive, so plan backward from it. Confirm the exact current timing on the official pages, since these windows are precise and have been adjusted."
@@ -196,6 +204,8 @@ export default {
         },
         {
           h: "The permit, and skipping facility quarantine",
+          icon: "receipt",
+          key: { fig: "Permit", tag: "Reserve quarantine space", text: "Taiwan requires an import permit and a reservation of post-entry quarantine space, applied for through APHIA before shipment. Meeting the terms lets a compliant pet skip facility quarantine.", tone: "teal" },
           p: [
             "Taiwan requires an import permit and a reservation of post-entry quarantine space, applied for through APHIA (Taiwan's Animal and Plant Health Inspection Agency) before shipment, submitting the rabies vaccination certificate, the RNATT result, and your identification. Apply well ahead, and note that Taiwan revised its import quarantine permit on 5 January 2026, with 2026 treated as a transition period where both the old and new versions applied, so confirm you are using the current form.",
             "Here is the improvement that matters for US owners: APHIA now states that detention in post-entry quarantine premises <b>may be waived</b> for a dog or cat that meets the defined rabies-test timing and submission criteria. In practice that means a fully compliant US pet can be released rather than held in a facility, which is what turns Taiwan from a quarantine destination into a manageable one. The waiver is conditional on getting the titer and paperwork exactly right, so precision is what buys you the release."
@@ -203,6 +213,8 @@ export default {
         },
         {
           h: "The breed ban, cost, and coming home",
+          icon: "alert",
+          key: { tag: "Pit Bull ban", text: "One hard rule to check first: Taiwan bans the import and breeding of Pit Bull Terriers, in force since 2022. If your dog is or resembles that type, confirm the position before you plan anything. Coming home to the US is simple.", tone: "amber" },
           p: [
             "One hard rule to check first: Taiwan bans the import and breeding of <b>Pit Bull Terriers</b>, in force since 2022. If your dog is or resembles that type, confirm the position before you spend on anything else, because this is a barrier, not a formality. Budget several thousand dollars all in, with air transport as the largest line, plus the titer test, the permit, and the vet work.",
             "The return leg is easy. A dog flying home to the US from Taiwan is on the simplest CDC path: typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement. See our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a>, and <a href=\"/traveling-with-a-pet\">traveling with a pet</a> for how Taiwan compares with other destinations."

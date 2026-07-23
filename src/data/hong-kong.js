@@ -175,6 +175,12 @@ export default {
   spokes: [
     {
       slug: "bringing-your-pet",
+      glance: [
+        { k: "Classed", v: "Group II (no titer, no quarantine)" },
+        { k: "The key", v: "An AFCD Special Permit first" },
+        { k: "Permit", v: "Before you book any flight" },
+        { k: "The risk", v: "Paperwork gaps trigger quarantine" }
+      ],
       live: true,
       topic: "pets",
       title: "Bringing a dog or cat to Hong Kong from the US (2026): no quarantine, if you get the permit right | True Trip Costs",
@@ -187,6 +193,8 @@ export default {
       sections: [
         {
           h: "Why Hong Kong is more manageable than it looks",
+          icon: "health",
+          key: { fig: "Group II", tag: "No titer needed", text: "Hong Kong sorts origins into risk groups, and the continental US is Group II, the rabies-controlled tier. A fully compliant Group II pet skips quarantine on arrival and needs no rabies titer test.", tone: "teal" },
           p: [
             "Hong Kong is rabies-controlled and sorts origins into risk groups. The continental US is <b>Group II</b>, the rabies-controlled tier, alongside Canada, most of Europe, Japan, and others. Group II is the good outcome: dogs and cats from Group II are <b>exempt from quarantine</b> on arrival, provided you comply fully with the permit conditions, and there is <b>no rabies antibody titer</b> required, unlike the higher-risk Group IIIA and IIIB origins that face a titer and a minimum 30-day quarantine.",
             "So Hong Kong is not a long-lead, biology-driven move like Australia or Japan. The lead time is set by paperwork and permit processing, not a fixed waiting clock. That makes it one of the more manageable rabies-controlled destinations, but the flip side is that the strictness lives entirely in getting the documents and the permit exactly right."
@@ -194,6 +202,8 @@ export default {
         },
         {
           h: "The permit comes before the plane ticket",
+          icon: "receipt",
+          key: { tag: "Permit before booking", text: "The rule that catches people: you must hold the AFCD Special Permit before you book travel, because airlines will not accept your pet without it. It is valid 6 months and covers one dog.", tone: "amber" },
           p: [
             "This is the rule that catches people. You must hold the AFCD Special Permit <b>before</b> you book travel, because airlines will not accept your pet without it. The permit is issued by Hong Kong's Agriculture, Fisheries and Conservation Department (AFCD), takes roughly 5 working days once your documents are in order, is valid for 6 months, and covers a single dog. Apply well ahead, and do not commit to a flight date until the permit is in hand."
           ],
@@ -208,6 +218,8 @@ export default {
         },
         {
           h: "The trap, the cost, and coming home",
+          icon: "alert",
+          key: { fig: "Paperwork", tag: "Get it exact", text: "The risk to plan around is documentation: a compliant pet skips quarantine, but any variation, an incomplete health certificate or missing records, can trigger it. Coming home to the US is simple.", tone: "teal" },
           p: [
             "The risk to plan around is documentation. A Group II pet that fully complies skips quarantine, but any variation, an incomplete health certificate, missing vaccination records, a permit condition not met, can trigger quarantine of up to 6 months at the owner's full expense. Pets under 5 months old are also held until they reach 5 months. In other words, the quarantine you are avoiding is only avoided by getting every document right, so this is a move where precision pays. Budget several thousand dollars all in, with air cargo the largest line, plus the permit, vet work, and health certificate.",
             "The return leg is easy. Because Hong Kong is not high-risk for rabies, a dog flying home to the US is on the simplest CDC path: typically a <a href=\"/bringing-a-dog-into-the-us\">CDC Dog Import Form</a> receipt, a microchip, a minimum age of 6 months, and a healthy appearance, with no titer and no quarantine. Cats have no federal requirement. See our guide to <a href=\"/bringing-a-dog-into-the-us\">bringing a dog into the US</a>, and <a href=\"/traveling-with-a-pet\">traveling with a pet</a> for how Hong Kong compares with other destinations."
