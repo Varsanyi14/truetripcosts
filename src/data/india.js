@@ -183,6 +183,64 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping (baksheesh)", v: "Small tips, widely appreciated" },
+        { k: "Restaurants", v: "About 10%" },
+        { k: "Check the bill", v: "For a service charge" },
+        { k: "How", v: "Cash, small rupee notes" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in India: baksheesh, and what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in India for US travelers in 2026: the baksheesh custom of small tips, about 10% at restaurants, the service charge to check for, and who to tip. Checked July 2026.",
+      h1: "Tipping in India",
+      lede: "India runs on baksheesh: small tips for service, given often. About 10% at restaurants, plus small amounts for the many people who help you. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "India has a <b>tipping culture</b> built on <b>baksheesh</b>: small tips for service are <b>customary and appreciated</b>. At a <b>sit-down restaurant</b>, about <b>10%</b> is normal for good service, though many add a <b>service charge</b>, so check the bill (it is technically optional, and you can ask to remove it). Beyond restaurants, <b>small tips</b> for porters, drivers, housekeeping and helpers are the norm. For <b>taxis</b>, use Ola or Uber, or round up. Keep <b>small rupee notes</b>, since you will tip often.",
+      sections: [
+        {
+          h: "Baksheesh: small tips are woven in",
+          icon: "coins",
+          key: { fig: "Small tips", tag: "Customary and appreciated", text: "India runs on baksheesh, small tips for service. They are customary and appreciated, so keep small rupee notes handy.", tone: "teal" },
+          p: [
+            "India has a genuine <b>tipping culture</b>, built around <b>baksheesh</b>, the custom of <b>small tips</b> for service. You will tip <b>often and in small amounts</b>: for a porter, a driver, a doorman, housekeeping, a helpful attendant.",
+            "None of it is large, but it is <b>customary and appreciated</b>, so the key is to keep a <b>stack of small rupee notes</b> on you."
+          ]
+        },
+        {
+          h: "Restaurants: about 10%, check the bill",
+          icon: "receipt",
+          key: { fig: "About 10%", tag: "Watch for a service charge", text: "About 10% is normal for good restaurant service. Many places add a service charge, which is technically optional and can be removed.", tone: "amber" },
+          p: [
+            "At a <b>sit-down restaurant</b>, about <b>10%</b> is normal for good service. But <b>many restaurants add a service charge</b> (often 5 to 10%) to the bill, and if it is there, you do <b>not need to tip on top</b>.",
+            "Worth knowing: in India a <b>service charge is officially voluntary</b>, not mandatory, so if it was added and service was poor, you can <b>politely ask for it to be removed</b>. Read the bill before adding anything."
+          ]
+        },
+        {
+          h: "Who to tip, and paying",
+          icon: "cash",
+          key: { fig: "Keep small notes", tag: "Porters, drivers, staff", text: "Small tips for porters, drivers, housekeeping and helpers are the norm. Keep small rupee notes; use Ola or Uber for taxis.", tone: "teal" },
+          p: [
+            "Beyond restaurants, tip a <b>porter</b> a small amount per bag, a <b>driver or guide</b> at the end of the day, and <b>housekeeping</b> a little per day. For <b>taxis and autos</b>, use <b>Ola or Uber</b> (a fixed price) or round up a metered fare. Keep <b>small rupee notes</b> in cash for all of it. For the wider picture, see the <a href='/india'>India money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in India?", a: "Yes, small tips (baksheesh) are customary and appreciated. About 10% is normal at a sit-down restaurant for good service, and small tips for porters, drivers, housekeeping and helpers are the norm. Keep small rupee notes handy." },
+        { q: "Is there a service charge in Indian restaurants?", a: "Often: many add a service charge of 5 to 10%. If it is there, you need not tip on top. In India a service charge is officially voluntary, so if service was poor you can politely ask for it to be removed." },
+        { q: "What is baksheesh in India?", a: "The custom of small tips for service, given often and in small amounts: for porters, drivers, doormen, housekeeping and helpers. It is customary and appreciated, so keep a stack of small rupee notes." },
+        { q: "Do you tip taxi drivers in India?", a: "Rounding up a metered fare is a kind gesture. The easiest option is Ola or Uber, which show a fixed price up front, so there is no need to negotiate or tip." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: India country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/India.html", type: "gov" }
+        ],
+        judgment: "India's baksheesh custom is well established, and the service charge is officially voluntary per government guidance. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "e-visa",
       glance: [
         { k: "Visa", v: "e-Tourist Visa, apply online" },

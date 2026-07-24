@@ -168,6 +168,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "10 to 15%, US-influenced" },
+        { k: "Restaurants", v: "Check for a 10% service charge" },
+        { k: "Resorts", v: "Tipping staff is appreciated" },
+        { k: "How", v: "US dollars or Jamaican dollars" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Jamaica: what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Jamaica for US travelers in 2026: why it leans US-influenced at 10 to 15%, the 10% service charge to check for, resort tipping, and paying in US dollars. Checked July 2026.",
+      h1: "Tipping in Jamaica",
+      lede: "Jamaica leans US-influenced on tipping: 10 to 15% at restaurants, though many add a 10% service charge. Check the bill, and know that resort policies vary. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Jamaica leans <b>US-influenced</b> on tipping. At a <b>restaurant</b>, <b>10 to 15%</b> is normal, but many add a <b>10% service charge</b>, so <b>check the bill</b>: if it is there, that is largely the tip. At <b>all-inclusive resorts</b>, tipping helpful staff is appreciated (some resorts have a no-tipping policy, so check). For <b>taxis</b>, agree the fare first and round up. Tips can be in <b>US dollars or Jamaican dollars</b>, both widely accepted.",
+      sections: [
+        {
+          h: "10 to 15%, US-influenced",
+          icon: "coins",
+          key: { fig: "10-15%", tag: "For good service", text: "At a restaurant, 10 to 15% is normal for good service, more US-influenced than light-tipping regions.", tone: "teal" },
+          p: [
+            "Jamaica is <b>more US-influenced</b> on tipping than light-tipping regions. At a <b>sit-down restaurant</b>, <b>10 to 15%</b> for good service is normal, and staff appreciate it.",
+            "At a <b>casual spot or for drinks</b>, rounding up or leaving a little is fine."
+          ]
+        },
+        {
+          h: "Check for a 10% service charge",
+          icon: "receipt",
+          key: { fig: "10%", tag: "Often already added", text: "Many restaurants and hotels add a 10% service charge. If it is there, that is largely the tip, so you need not add a full extra.", tone: "teal" },
+          p: [
+            "Many <b>restaurants and hotels</b> add a <b>10% service charge</b> to the bill. If a <b>service charge is there</b>, that is largely the tip, so you do <b>not need a full extra</b>, though rounding up for great service is common.",
+            "So <b>read the bill</b> before adding a tip on top."
+          ]
+        },
+        {
+          h: "Resorts, taxis, paying",
+          icon: "usd",
+          key: { fig: "USD or JMD", tag: "Both accepted", text: "At resorts, tipping staff is appreciated (check for a no-tipping policy). Taxis: agree the fare, round up. USD or JMD both work.", tone: "teal" },
+          p: [
+            "At <b>all-inclusive resorts</b>, tipping helpful <b>bar staff, servers and housekeeping</b> is appreciated, though <b>some resorts have a no-tipping policy</b>, so check at check-in. For <b>taxis</b>, <b>agree the fare first</b> (they are not reliably metered) and round up. Tips can be in <b>US dollars or Jamaican dollars</b>. For the wider picture, see the <a href='/jamaica'>Jamaica money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Jamaica?", a: "Yes, it leans US-influenced. At a restaurant, 10 to 15% is normal, but many add a 10% service charge, so check the bill: if it is there, that is largely the tip. At resorts, tipping helpful staff is appreciated." },
+        { q: "Is a service charge added in Jamaica?", a: "Often: many restaurants and hotels add 10%. If it is there, that is largely the tip, so you need not add a full extra, though rounding up for great service is common. Read the bill first." },
+        { q: "Do you tip at all-inclusive resorts in Jamaica?", a: "It is appreciated for helpful bar staff, servers and housekeeping, though some resorts have a no-tipping policy, so check at check-in. US dollars or Jamaican dollars both work." },
+        { q: "Can you tip in US dollars in Jamaica?", a: "Yes. Both US dollars and Jamaican dollars are widely accepted for tips, so small US bills are fine." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Jamaica country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Jamaica.html", type: "gov" }
+        ],
+        judgment: "Jamaica's tipping leans US-influenced through tourism, and the 10% service charge varies by venue. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "taxis-and-apps",
       glance: [
         { k: "No Uber", v: "Use a licensed red-plate taxi" },

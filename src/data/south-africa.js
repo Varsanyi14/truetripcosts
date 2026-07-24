@@ -177,6 +177,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "10 to 15%, expected" },
+        { k: "Why", v: "Servers rely on tips" },
+        { k: "Also tipped", v: "Car guards, petrol attendants" },
+        { k: "How", v: "Cash, in rand" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in South Africa: 10 to 15%, and the car guards (2026) | True Trip Costs",
+      description: "How tipping works in South Africa for US travelers in 2026: why 10 to 15% is expected, and the local customs of tipping car guards and petrol attendants a few rand. Checked July 2026.",
+      h1: "Tipping in South Africa",
+      lede: "South Africa does have a tipping culture, and it is expected: 10 to 15% at restaurants. There are also two local customs to know, tipping car guards and petrol attendants. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "South Africa <b>does</b> have a tipping culture, and it is <b>expected</b>: at a <b>restaurant</b>, <b>10 to 15%</b> is normal, and servers rely on it. Some places add a <b>service charge for larger groups</b>, so check the bill. Two local things to know: you tip <b>car guards</b> (who watch your parked car) a few rand, and <b>petrol station attendants</b> (who fill your tank) a few rand. Round up for <b>taxis</b> and tip a rideshare. Tips are in <b>rand</b>, in cash.",
+      sections: [
+        {
+          h: "10 to 15%, and servers rely on it",
+          icon: "coins",
+          key: { fig: "10-15%", tag: "Expected", text: "At a restaurant, 10 to 15% is expected, and servers rely on tips. Some places add a service charge for larger groups.", tone: "teal" },
+          p: [
+            "Unlike the light-tipping norms elsewhere, South Africa <b>does have a tipping culture</b>, and a restaurant tip is <b>expected</b>. At a <b>sit-down restaurant</b>, <b>10 to 15%</b> is normal for good service, and <b>servers genuinely rely on it</b>.",
+            "Some places add a <b>service charge for larger groups</b>, so check the bill; if it is there, you need not tip on top."
+          ]
+        },
+        {
+          h: "Car guards and petrol attendants",
+          icon: "cash",
+          key: { fig: "A few rand", tag: "A local custom", text: "You tip car guards (who watch your parked car) and petrol station attendants (who fill your tank) a few rand each.", tone: "teal" },
+          p: [
+            "Two local customs surprise visitors. <b>Car guards</b>, who watch over your parked car in a lot or on the street, are tipped a <b>few rand</b> when you return (more if they helped you park or it was a while).",
+            "And South African <b>petrol stations are full-service</b>: an attendant fills your tank, checks oil and cleans the windscreen, and is tipped a <b>few rand</b> for it."
+          ]
+        },
+        {
+          h: "Taxis, and paying",
+          icon: "zar",
+          key: { fig: "Rand", tag: "Round up, tip rideshare", text: "Round up a metered taxi and tip a rideshare driver a little. Tips are in rand, in cash.", tone: "teal" },
+          p: [
+            "For <b>taxis</b>, <b>round up</b> the metered fare, and for <b>Uber or Bolt</b>, a small tip in the app or in cash is appreciated. <b>Hotel porters</b> and <b>housekeeping</b>, a few rand is a kind gesture. Tips are in <b>rand</b>, in cash. For the wider picture, see the <a href='/south-africa'>South Africa money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in South Africa?", a: "Yes, and it is expected. At a restaurant, 10 to 15% is normal for good service, and servers rely on it. This is unlike the light-tipping norms of much of Europe." },
+        { q: "Do you tip car guards in South Africa?", a: "Yes, a few rand. Car guards watch over your parked car and are tipped when you return, a little more if they helped you park or it was a while." },
+        { q: "Do you tip petrol attendants in South Africa?", a: "Yes, a few rand. South African petrol stations are full-service: an attendant fills your tank and cleans the windscreen, and is tipped a small amount for it." },
+        { q: "How much do you tip at a South African restaurant?", a: "About 10 to 15% for good service, which is expected since servers rely on tips. Some places add a service charge for larger groups, so check the bill first." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: South Africa country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/SouthAfrica.html", type: "gov" }
+        ],
+        judgment: "South Africa has a real tipping culture where servers rely on tips, and the car guard and petrol attendant customs are widely observed. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "taxis-and-apps",
       glance: [
         { k: "Apps", v: "Uber and Bolt (Bolt cheaper)" },

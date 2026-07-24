@@ -183,6 +183,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping (baksheesh)", v: "Small tips, woven in" },
+        { k: "Restaurants", v: "Round up, or about 10%" },
+        { k: "Widely tipped", v: "Guides, parking attendants" },
+        { k: "How", v: "Cash, in small dirham" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Morocco: baksheesh, and what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Morocco for US travelers in 2026: the baksheesh custom of small tips, about 10% at restaurants, and who to tip, from guides to parking attendants. Checked July 2026.",
+      h1: "Tipping in Morocco",
+      lede: "Morocco runs on baksheesh: small tips for service, woven into daily life. About 10% at restaurants, plus small amounts for the many people who help you. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Morocco runs on <b>baksheesh</b>: small tips for service are <b>woven into daily life</b>. At a <b>restaurant</b>, <b>rounding up</b> or about <b>10%</b> for good service is normal; at a <b>cafe</b>, leave the small change. Beyond that, small tips are customary for <b>guides, parking attendants (gardiens), porters and a hammam attendant</b>. For <b>taxis</b>, insist on the meter (the compteur) and round up. Keep <b>small dirham notes and coins</b>, since you will tip often.",
+      sections: [
+        {
+          h: "Baksheesh: small tips everywhere",
+          icon: "coins",
+          key: { fig: "Small tips", tag: "Woven into daily life", text: "Morocco runs on baksheesh, small tips for service. Keep small dirham handy, since you will tip often.", tone: "teal" },
+          p: [
+            "Morocco has a strong <b>baksheesh</b> culture: <b>small tips</b> for service are <b>woven into daily life</b>, given often and in small amounts. The key is to keep a <b>stack of small dirham notes and coins</b> on you.",
+            "It is a <b>courtesy and appreciated</b>, and rarely more than a few dirham at a time for everyday help."
+          ]
+        },
+        {
+          h: "Restaurants and cafes",
+          icon: "receipt",
+          key: { fig: "About 10%", tag: "Round up at a cafe", text: "At a restaurant, round up or leave about 10% for good service. At a cafe, leave the small change.", tone: "teal" },
+          p: [
+            "At a <b>sit-down restaurant</b>, <b>rounding up</b> or about <b>10%</b> for good service is normal. Some tourist places add a <b>service charge</b>, so check the bill; if it is there, you need not tip on top.",
+            "At a <b>cafe</b> or for mint tea, leaving the <b>small change</b> or a few coins is plenty."
+          ]
+        },
+        {
+          h: "Guides, parking attendants, taxis",
+          icon: "mad",
+          key: { fig: "A few dirham", tag: "Gardiens and guides", text: "Small tips for guides, parking attendants (gardiens), porters and a hammam attendant are customary. Round up taxis, in dirham.", tone: "teal" },
+          p: [
+            "Small tips are customary for a <b>tour guide, a parking attendant (gardien) who watches your car, a porter, and a hammam attendant</b>, a few dirham each. For <b>taxis</b>, insist on the <b>meter (compteur)</b> and round up. Leave tips in <b>cash, in dirham</b>. For the wider picture, see the <a href='/morocco'>Morocco money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Morocco?", a: "Yes, small tips (baksheesh) are woven into daily life. At a restaurant, round up or leave about 10% for good service, and give a few dirham to guides, parking attendants, porters and a hammam attendant. Keep small dirham handy." },
+        { q: "What is baksheesh in Morocco?", a: "The custom of small tips for service, given often and in small amounts, rarely more than a few dirham at a time for everyday help. Keep a stack of small dirham notes and coins." },
+        { q: "Do you tip parking attendants in Morocco?", a: "Yes, a few dirham. Parking attendants (gardiens) who watch your car are customarily tipped a small amount, as are guides, porters and hammam attendants." },
+        { q: "How much do you tip at a Moroccan restaurant?", a: "Round up or about 10% for good service at a sit-down restaurant. Some tourist places add a service charge, so check the bill. At a cafe, the small change is plenty." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Morocco country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Morocco.html", type: "gov" }
+        ],
+        judgment: "Morocco's baksheesh custom is well established, given often in small amounts. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "taxis-and-apps",
       glance: [
         { k: "Two types", v: "Petit (in-city), grand (between towns)" },

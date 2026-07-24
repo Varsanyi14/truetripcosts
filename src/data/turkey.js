@@ -168,6 +168,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Modest, about 5 to 10%" },
+        { k: "Restaurants", v: "Round up, or 5 to 10%" },
+        { k: "Check the bill", v: "Some add service" },
+        { k: "How", v: "Cash, in lira" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Turkey: modest, and what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Turkey for US travelers in 2026: why it is modest at 5 to 10%, the service charge to check for, and small tips for a hamam, guides and taxis. Checked July 2026.",
+      h1: "Tipping in Turkey",
+      lede: "Turkey has a modest tipping culture: about 5 to 10% at restaurants, plus small tips for a hamam attendant, guides and hotel staff. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Turkey has a <b>modest tipping culture</b>. At a <b>restaurant</b>, <b>rounding up</b> or leaving <b>5 to 10%</b> for good service is normal; some tourist places add a <b>service charge</b>, so check the bill. Small tips are customary for <b>hotel staff, a hamam (bath) attendant and guides</b>. For <b>taxis</b>, round up the meter (and insist it is running). Leave tips in <b>cash</b>, in lira, which reaches the staff directly.",
+      sections: [
+        {
+          h: "Modest: 5 to 10% at restaurants",
+          icon: "coins",
+          key: { fig: "5-10%", tag: "For good service", text: "Rounding up or leaving 5 to 10% for good service is normal at a restaurant. It is modest, not a US-style percentage.", tone: "teal" },
+          p: [
+            "Turkey tips <b>modestly</b>. At a <b>sit-down restaurant</b>, <b>rounding up</b> or leaving <b>5 to 10%</b> for good service is the norm, well below US levels. At a <b>cafe or for drinks</b>, leaving the small change is plenty.",
+            "It is a courtesy, and staff earn a wage, so there is no set percentage to track."
+          ]
+        },
+        {
+          h: "Check the bill for a service charge",
+          icon: "receipt",
+          key: { fig: "Check first", tag: "Tourist-area spots", text: "Some tourist-area restaurants add a service charge. If it is on the bill, you do not need to tip on top.", tone: "teal" },
+          p: [
+            "Most places do <b>not</b> add a service charge, but some <b>tourist-area restaurants</b> do. If a <b>service charge appears</b> on the bill, you <b>do not need to tip on top</b>, so read the bill first.",
+            "A small extra for excellent service is still a kind gesture."
+          ]
+        },
+        {
+          h: "Hamam, guides, taxis, paying",
+          icon: "cash",
+          key: { fig: "Lira", tag: "Small tips, in cash", text: "Small tips are customary for hotel staff, a hamam attendant and guides. Round up taxis; leave tips in lira.", tone: "teal" },
+          p: [
+            "Small tips are customary for <b>hotel staff, a hamam (Turkish bath) attendant, and tour guides</b>. For <b>taxis</b>, <b>round up</b> the meter, and make sure the meter is running before you set off. Leave tips in <b>cash, in lira</b>. For the wider picture, see the <a href='/turkey'>Turkey money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Turkey?", a: "Modestly. At a restaurant, rounding up or leaving 5 to 10% for good service is normal. Small tips are customary for hotel staff, a hamam attendant and guides. It is well below US levels." },
+        { q: "Is a service charge added in Turkey?", a: "Usually not, but some tourist-area restaurants add one. If a service charge is on the bill, you do not need to tip on top, so read the bill first." },
+        { q: "How much do you tip at a Turkish restaurant?", a: "About 5 to 10% for good service, or round up. At a cafe or for drinks, the small change is plenty. It is a courtesy, not an obligation." },
+        { q: "Do you tip taxi drivers in Turkey?", a: "Rounding up the metered fare is normal. Make sure the meter is running before you set off, and leave the tip in cash, in lira." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Turkey country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Turkey.html", type: "gov" }
+        ],
+        judgment: "Turkish tipping is modest, and the tourist-area service charge is real but not universal. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "taxis-and-apps",
       glance: [
         { k: "Apps", v: "BiTaksi (also Uber)" },
