@@ -119,10 +119,14 @@ const label = r => (r.lo === r.hi ? `${r.lo}%` : `${r.lo} to ${r.hi}%`);
   </ol>
 
   <div class="tc-axis" aria-hidden="true">
-    <span class="tc-axis-line"></span>
-    {ticks.map(v => (
-      <span class="tc-tick" style={`left:${pct(v)}%`}>{v}%</span>
-    ))}
+    <span class="tc-axis-spacer"></span>
+    <span class="tc-axis-track">
+      <span class="tc-axis-line"></span>
+      {ticks.map(v => (
+        <span class="tc-tick" style={`left:${pct(v)}%`}>{v}%</span>
+      ))}
+    </span>
+    <span class="tc-axis-spacer-r"></span>
   </div>
 
   <p class="tc-empty" id={`${id}-empty`} hidden>No country by that name. Check the spelling, or clear the box to see all of them.</p>
@@ -135,7 +139,7 @@ const label = r => (r.lo === r.hi ? `${r.lo}%` : `${r.lo} to ${r.hi}%`);
   .tc-srckey{font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 14px;max-width:620px}
 
   .tc-rows{list-style:none;margin:0;padding:0}
-  .tc-row{display:grid;grid-template-columns:minmax(0,max-content) minmax(90px,1fr) var(--val);align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--line)}
+  .tc-row{display:grid;grid-template-columns:var(--lab) minmax(90px,1fr) var(--val);align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--line)}
   .tc-row.is-hidden{display:none}
 
   .tc-country{display:flex;align-items:center;gap:7px;min-width:0;max-width:var(--lab);font-size:13.5px;font-weight:600}
@@ -170,9 +174,14 @@ const label = r => (r.lo === r.hi ? `${r.lo}%` : `${r.lo} to ${r.hi}%`);
   .tc-mark{color:var(--muted);opacity:.5;margin-left:3px;font-size:14px;line-height:1;cursor:help}
   .tc-mark.is-low{opacity:.85;color:var(--teal)}
 
-  .tc-axis{position:relative;height:20px;margin:8px 0 0 auto;width:calc(100% - var(--lab) - var(--val) - 20px)}
+  /* The axis shares the row's exact 3-column grid, so its middle cell is the same
+     track as every .tc-plot. That guarantees pct(15) on the axis sits directly
+     under pct(15) in the bars and the band, at every breakpoint. */
+  .tc-axis{display:grid;grid-template-columns:var(--lab) minmax(90px,1fr) var(--val);gap:10px;margin:8px 0 0;padding-bottom:4px}
+  .tc-axis-spacer{min-width:0}
+  .tc-axis-track{position:relative;height:20px;min-width:0}
   .tc-axis-line{position:absolute;top:0;left:0;right:0;height:1px;background:var(--line)}
-  .tc-tick{position:absolute;top:5px;transform:translateX(-50%);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .tc-tick{position:absolute;top:5px;transform:translateX(-50%);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 
   .tc-empty{font-size:14px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:14px 0 0}
   .tc-empty[hidden]{display:none}
@@ -189,11 +198,16 @@ const label = r => (r.lo === r.hi ? `${r.lo}%` : `${r.lo} to ${r.hi}%`);
      on one line, so the country moves above its own bar at full width. Names stop
      truncating and the bar gets the whole row. */
   @media (max-width:430px){
-    .tc-row{grid-template-columns:1fr auto;grid-template-areas:"name name" "plot value";gap:4px 8px;padding:8px 0}
+    .tc-row{grid-template-columns:1fr var(--val);grid-template-areas:"name name" "plot value";gap:4px 8px;padding:8px 0}
     .tc-country{grid-area:name;font-size:13px;white-space:normal}
     .tc-country a,.tc-country span{white-space:normal;overflow:visible;text-overflow:clip}
     .tc-plot{grid-area:plot}
     .tc-val{grid-area:value}
-    .tc-axis{margin-left:0;margin-right:calc(var(--val) + 8px)}
+    /* Match the axis to the stacked row: plot cell then a value-width spacer, so
+       the track still lines up with the bars above it. The name spacer collapses.
+       Extra bottom clearance keeps the axis labels clear of the floating
+       scroll-to-top button, which sits in the bottom-right corner. */
+    .tc-axis{grid-template-columns:1fr var(--val);gap:8px;padding-bottom:56px}
+    .tc-axis-spacer{display:none}
   }
 </style>
