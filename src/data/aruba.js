@@ -20,6 +20,8 @@ export default {
   insuranceLevel: "medium",
   region: "Americas",
   signals: { cardFriendliness: 4, cashNeed: 2, taxRisk: 3, atmRisk: 3 },
+  hook: "Aruba is one of the easiest Caribbean islands for money, since US dollars are accepted almost everywhere alongside the florin and cards are widely taken, so you rarely need to exchange. The catch is the hotel bill: a 12.5% tourist levy, a service charge and a resort fee stack on top of the room, and every visitor pays a US$20 ED Card fee online before you fly.",
+  aliases: ["aruba", "aruban", "oranjestad", "palm beach", "eagle beach", "aruban florin", "florin", "awg", "afl", "one happy island", "dutch caribbean", "abc islands", "arikok", "ed card", "edcard"],
   title: "Money in Aruba (2026): US Dollars, the Florin, Cards, the ED Card Fee and Hotel Taxes | True Trip Costs",
   description: "How to handle money in Aruba as a US traveler in 2026: US dollars are accepted almost everywhere alongside the florin, cards are widely taken, and the real money story is the hotel bill (12.5% tourist levy, environmental levy, service charge and resort fee) plus the mandatory ED Card with its 20 dollar sustainability fee. Checked July 2026.",
   h1: "Money in Aruba, sorted.",
