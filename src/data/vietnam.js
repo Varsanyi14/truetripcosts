@@ -143,6 +143,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Vietnamese dong (VND)" },
+        { k: "Cards", v: "Hotels, malls, nicer restaurants" },
+        { k: "Cash for", v: "Street food, markets, taxis" },
+        { k: "Watch", v: "Big numbers, mind the zeros" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Vietnam, or can I use cards? (2026) | True Trip Costs",
+      description: "Yes, carry cash. Vietnam takes cards at hotels and nicer restaurants, but street food, markets and taxis run on cash. Mind the many zeros on dong notes. Choose dong not dollars. Checked July 2026.",
+      h1: "Do I need cash in Vietnam, or can I use cards?",
+      lede: "Short answer: cards for hotels and larger purchases, and dong cash for daily life. One quirk to watch: the dong has a lot of zeros, so notes are easy to mix up. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Both, and carry cash. Vietnam takes <b>cards at hotels, malls and nicer restaurants</b> in cities, where <b>contactless</b> is growing, but <b>street food, markets, small shops and taxis</b> are largely cash. The currency is the <b>dong</b>, which has <b>a lot of zeros</b> (a bowl of pho might be 50,000, a nicer dinner 500,000), so <b>mind the notes</b>, since large and small ones look similar. Choose <b>dong, not dollars</b>, on any card or ATM. Use <b>Grab</b> for taxis.",
+      sections: [
+        {
+          h: "Cash-reliant, and mind the zeros",
+          icon: "cash",
+          key: { fig: "Mind the zeros", tag: "Notes look alike", text: "Cards work in cities, but daily life is cash. The dong has many zeros, so 50,000 and 500,000 notes are easy to mix up.", tone: "teal" },
+          p: [
+            "Vietnam takes <b>cards at hotels, malls and nicer restaurants</b> in cities, and <b>contactless</b> is growing. But <b>street food, markets, small shops and taxis</b> run largely on <b>cash</b>, so carry <b>dong</b>.",
+            "The quirk to watch: the dong has <b>a lot of zeros</b>. A street bowl of pho might be <b>50,000</b> and a nicer dinner <b>500,000</b>, and the notes <b>look similar</b>, so check the number of zeros before you hand over a note, to avoid overpaying tenfold."
+          ]
+        },
+        {
+          h: "Choose dong, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose dong", text: "When a terminal or ATM offers dollars or dong, pick dong. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars or dong, always choose dong</b>. Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use ATMs at <b>major banks</b>. Some cap withdrawals low or charge foreign-card fees, though banks like <b>TPBank</b> tend to allow larger withdrawals. Use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "Getting cash, and taxis",
+          icon: "dong",
+          key: { fig: "Small notes", tag: "For daily spending", text: "Break large notes when you can, and keep smaller ones for daily spending. Use Grab for taxis, at a fixed price.", tone: "teal" },
+          p: [
+            "Keep a mix, and <b>break large notes</b> at hotels or bigger shops so you have smaller ones for <b>street food and small vendors</b>. For <b>taxis</b>, use <b>Grab</b>, which shows a fixed price and avoids meter disputes.",
+            "For tipping norms, see <a href='/vietnam/tipping'>tipping in Vietnam</a>, and for the wider picture, the <a href='/vietnam'>Vietnam money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Vietnam?", a: "Yes. Cards work at hotels, malls and nicer restaurants in cities, but street food, markets, small shops and taxis are largely cash. Carry dong, and mind the many zeros on the notes." },
+        { q: "Should I pay in dong or dollars in Vietnam?", a: "Always dong. If a card machine or ATM offers dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Why is Vietnamese money confusing?", a: "The dong has a lot of zeros, so amounts run into the tens and hundreds of thousands, and notes like 50,000 and 500,000 look similar. Check the number of zeros before handing over a note, to avoid overpaying tenfold." },
+        { q: "How do I pay for taxis in Vietnam?", a: "Use Grab, which shows a fixed price up front and avoids meter disputes. Otherwise use a metered taxi from a trusted company and pay in dong." }
+      ],
+      sources: {
+        links: [
+          { label: "State Bank of Vietnam: official exchange rate information", url: "https://www.sbv.gov.vn/webcenter/portal/en/home", type: "gov" },
+          { label: "US State Department: Vietnam country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Vietnam.html", type: "gov" }
+        ],
+        judgment: "Vietnam takes cards in cities but daily life runs on cash, and the dong's many zeros make notes easy to confuse. The dong rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Not required, but appreciated" },

@@ -183,6 +183,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Moroccan dirham (MAD)" },
+        { k: "Note", v: "A closed currency, get it on arrival" },
+        { k: "Cards", v: "Hotels and upscale spots" },
+        { k: "Cash for", v: "Souks, taxis, small vendors" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Morocco, or can I use cards? (2026) | True Trip Costs",
+      description: "Mostly cash. Cards work at hotels and upscale spots, but souks, taxis and small vendors run on cash. The dirham is a closed currency, so get it on arrival. Choose dirham not dollars. Checked July 2026.",
+      h1: "Do I need cash in Morocco, or can I use cards?",
+      lede: "Short answer: mostly cash. Cards work at hotels and upscale spots, but the souks, taxis and small vendors run on cash. And the dirham is a closed currency, so plan to get it on arrival. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Mostly cash. Morocco takes <b>cards at hotels, upscale restaurants and some shops</b>, but <b>souks (markets), taxis, small vendors, street food and tips (baksheesh)</b> run on cash. The currency is the <b>dirham</b>, which is a <b>closed currency</b>: you cannot easily get it abroad, so <b>withdraw dirham from an ATM on arrival</b>, and do not over-withdraw, since it is hard to change back. Choose <b>dirham, not dollars or euros</b>, on any card or ATM.",
+      sections: [
+        {
+          h: "Cash-reliant, and a closed currency",
+          icon: "cash",
+          key: { fig: "Closed currency", tag: "Get dirham on arrival", text: "Cards work at hotels and upscale spots, but souks and taxis are cash. The dirham is a closed currency, so get it from an ATM on arrival.", tone: "teal" },
+          p: [
+            "Morocco takes <b>cards at hotels, upscale restaurants and some larger shops</b>, but <b>souks (markets), taxis, small vendors, street food and tips (baksheesh)</b> are largely <b>cash</b>, so carry <b>dirham</b>.",
+            "One thing to plan for: the dirham is a <b>closed currency</b>, meaning you <b>cannot easily buy it abroad</b>. <b>Withdraw dirham from an ATM on arrival</b> (there are ATMs at the airport), and <b>do not over-withdraw</b>, since changing leftover dirham back can be a hassle."
+          ]
+        },
+        {
+          h: "Choose dirham, not dollars or euros",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose dirham", text: "When a terminal or ATM offers foreign currency or dirham, pick dirham. Foreign currency triggers dynamic currency conversion at a rate about 3 to 8% worse.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars, euros or dirham, always choose dirham</b>. Foreign currency triggers dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use ATMs at <b>major banks</b> (such as Attijariwafa or BMCE), common in cities and at the airport. Some charge a fee per withdrawal, so take out a sensible amount. Use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "Souks, haggling, and small notes",
+          icon: "mad",
+          key: { fig: "Small notes", tag: "For souks and baksheesh", text: "Keep small dirham notes for souks, taxis and the constant baksheesh. Haggling in markets is expected, and cash gives you room.", tone: "teal" },
+          p: [
+            "Keep plenty of <b>small dirham notes</b> for the <b>souks, taxis and the constant baksheesh</b>. <b>Haggling</b> in markets is expected, and paying <b>cash</b> gives you room to negotiate. For taxis, insist on the meter (the compteur) and have small notes ready.",
+            "For tipping norms, see <a href='/morocco/tipping'>tipping in Morocco</a>, and for the wider picture, the <a href='/morocco'>Morocco money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Morocco?", a: "Yes, mostly. Cards work at hotels and upscale spots, but souks, taxis, small vendors, street food and tips run on cash. Carry dirham, and keep small notes for the constant baksheesh." },
+        { q: "Can I get Moroccan dirham before I travel?", a: "Not easily: the dirham is a closed currency, so it is hard to buy abroad. Withdraw dirham from an ATM on arrival (there are ATMs at the airport), and do not over-withdraw, since changing it back is a hassle." },
+        { q: "Should I pay in dirham or dollars in Morocco?", a: "Always dirham. If a card machine or ATM offers dollars or euros, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Do I haggle with cash in Morocco?", a: "Yes. Haggling in the souks is expected, and paying cash gives you room to negotiate. Keep small dirham notes ready, and for taxis, insist on the meter." }
+      ],
+      sources: {
+        links: [
+          { label: "Bank Al-Maghrib: official exchange rate information", url: "https://www.bkam.ma/en", type: "gov" },
+          { label: "US State Department: Morocco country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Morocco.html", type: "gov" }
+        ],
+        judgment: "Morocco runs largely on cash, and the dirham is a closed currency you get on arrival, so over-withdrawing is a hassle. The dirham rate moves, and the firm rule is to decline foreign-currency conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping (baksheesh)", v: "Small tips, woven in" },

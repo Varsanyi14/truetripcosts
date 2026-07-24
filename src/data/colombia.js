@@ -160,6 +160,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Colombian peso (COP)" },
+        { k: "Cards", v: "Cities, hotels, nicer restaurants" },
+        { k: "Cash for", v: "Markets, small shops, taxis" },
+        { k: "ATMs", v: "Use ones inside bank branches" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Colombia, or can I use cards? (2026) | True Trip Costs",
+      description: "Both. Colombia takes cards in cities, but markets, small shops and taxis run on cash. Use ATMs inside bank branches to guard against skimming. Choose pesos not dollars. Checked July 2026.",
+      h1: "Do I need cash in Colombia, or can I use cards?",
+      lede: "Short answer: cards in cities for hotels and nicer places, and peso cash for markets, small shops and taxis. Use ATMs inside banks or malls for safety. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Both. Colombia takes <b>cards in cities</b>, at <b>hotels, malls and nicer restaurants</b>, where <b>contactless</b> is common, but <b>markets, small shops, street food and taxis</b> are largely cash. The currency is the <b>peso</b>, which runs into <b>large numbers</b>. For safety, use <b>ATMs inside bank branches or malls</b> rather than street machines, since card skimming happens. Choose <b>pesos, not dollars</b>, on any card or ATM. Use <b>DiDi or inDrive</b> for taxis.",
+      sections: [
+        {
+          h: "Cards in cities, cash for daily life",
+          icon: "phoneok",
+          key: { fig: "Cards in cities", tag: "Cash for markets", text: "Cards work in cities at hotels, malls and nicer restaurants, but markets, small shops and taxis are largely cash. Carry pesos.", tone: "teal" },
+          p: [
+            "Colombia takes <b>cards in cities</b>, at <b>hotels, malls, chains and nicer restaurants</b>, where <b>contactless</b> is common. But <b>markets, small shops, street food and taxis</b> are largely <b>cash</b>, so carry <b>pesos</b>.",
+            "The peso runs into <b>large numbers</b> (everyday amounts in the thousands and tens of thousands), so keep an eye on the zeros. Away from cities and tourist areas, plan on <b>more cash</b>."
+          ]
+        },
+        {
+          h: "Choose pesos, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose pesos", text: "When a terminal or ATM offers dollars or pesos, pick pesos. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars or pesos, always choose pesos</b>. Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use ATMs at <b>major banks</b> (such as Bancolombia or Davivienda). Some cap withdrawals or charge foreign-card fees, so take out a sensible amount. Use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "Use ATMs safely, and taxis",
+          icon: "peso",
+          key: { fig: "Bank ATMs", tag: "Guard against skimming", text: "Use ATMs inside bank branches or malls rather than street machines, to guard against skimming. Use DiDi or inDrive for taxis.", tone: "teal" },
+          p: [
+            "For safety, use <b>ATMs inside bank branches or shopping malls</b> rather than exposed street machines, since <b>card skimming</b> does happen, and shield the keypad. For <b>taxis</b>, use <b>DiDi or inDrive</b>, which show a fixed or metered price and are safer than hailing on the street.",
+            "For tipping norms, see <a href='/colombia/tipping'>tipping in Colombia</a>, and for the wider picture, the <a href='/colombia'>Colombia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Colombia?", a: "Yes. Cards work in cities at hotels, malls and nicer restaurants, but markets, small shops, street food and taxis are largely cash. Carry pesos, and more of them away from cities." },
+        { q: "Should I pay in pesos or dollars in Colombia?", a: "Always pesos. If a card machine or ATM offers dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Are ATMs safe in Colombia?", a: "Use ATMs inside bank branches or shopping malls rather than exposed street machines, since card skimming happens. Shield the keypad, and take out a sensible amount at once." },
+        { q: "How do I pay for taxis in Colombia?", a: "Use DiDi or inDrive, which show a fixed or metered price and are safer than hailing on the street. For a street taxi, agree the fare or use the meter, and pay in pesos." }
+      ],
+      sources: {
+        links: [
+          { label: "Banco de la Republica: official exchange rate information", url: "https://www.banrep.gov.co/en", type: "gov" },
+          { label: "US State Department: Colombia country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Colombia.html", type: "gov" }
+        ],
+        judgment: "Colombia takes cards in cities but daily life runs on cash, and ATM skimming is a known risk, so bank-branch machines are safest. The peso rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "A 10% voluntary tip" },

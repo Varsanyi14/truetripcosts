@@ -177,6 +177,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "South African rand (ZAR)" },
+        { k: "Cards", v: "Card-friendly, contactless common" },
+        { k: "Cash for", v: "Markets, car guards, petrol, tips" },
+        { k: "ATMs", v: "Use secure spots, watch skimming" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in South Africa, or can I use cards? (2026) | True Trip Costs",
+      description: "Card-friendly, with cash for the extras. Cards work well in cities, but carry rand for markets, car guards, petrol attendants and tips. Use ATMs in secure spots. Choose rand not dollars. Checked July 2026.",
+      h1: "Do I need cash in South Africa, or can I use cards?",
+      lede: "Short answer: a card for most of the day, and rand cash for markets, car guards, petrol attendants and tips. Use ATMs in secure spots and mind the skimming scams. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Card-friendly, with cash for the extras. South Africa is <b>more card-friendly</b> than much of the region: <b>contactless</b> is common, and cards work at <b>restaurants, shops, malls and hotels</b>. But <b>carry rand cash</b> for <b>markets, car guards, petrol attendants, tips and small vendors</b>. The currency is the <b>rand</b>. Use <b>ATMs in secure spots</b> (inside malls or banks) and beware skimming and 'helpful stranger' scams. Choose <b>rand, not dollars</b>, on any card or ATM.",
+      sections: [
+        {
+          h: "Card-friendly, cash for the extras",
+          icon: "phoneok",
+          key: { fig: "Cards widely", tag: "Contactless common", text: "South Africa is card-friendly, with contactless common in cities. Carry rand cash for markets, car guards, petrol and tips.", tone: "teal" },
+          p: [
+            "South Africa is <b>more card-friendly</b> than much of the region. <b>Contactless</b> cards, Apple Pay and Google Pay work well, and <b>Visa and Mastercard</b> are accepted at <b>restaurants, shops, malls and hotels</b> in cities and tourist areas.",
+            "But <b>carry rand cash</b> for the extras: <b>markets, car guards, petrol station attendants, tips and small vendors</b>, some of which are cash-only. A card covers most of the day, cash handles the rest."
+          ]
+        },
+        {
+          h: "Choose rand, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose rand", text: "When a terminal or ATM offers dollars or rand, pick rand. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars or rand, always choose rand</b>. Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use ATMs at <b>major banks</b> (such as Standard Bank, FNB, Absa or Nedbank). Use a <b>debit card</b> to avoid cash-advance fees, and take out a sensible amount at once."
+          ]
+        },
+        {
+          h: "Use ATMs safely",
+          icon: "zar",
+          key: { fig: "Secure ATMs", tag: "Skimming happens", text: "Use ATMs inside malls or banks, not isolated street machines. Decline help from strangers at the ATM, a common scam.", tone: "amber" },
+          p: [
+            "ATM fraud is a real risk, so use machines <b>inside malls or bank branches</b>, not isolated street ATMs, and shield the keypad. If a <b>stranger offers to help</b> at the ATM, decline firmly and walk away: this is a <b>common scam</b> to distract you and swap or capture your card.",
+            "For tipping norms, see <a href='/south-africa/tipping'>tipping in South Africa</a>, and for the wider picture, the <a href='/south-africa'>South Africa money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in South Africa?", a: "Some. South Africa is card-friendly, with contactless common in cities, so a card covers most of the day. Carry rand cash for markets, car guards, petrol attendants, tips and small vendors." },
+        { q: "Should I pay in rand or dollars in South Africa?", a: "Always rand. If a card machine or ATM offers dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Are ATMs safe in South Africa?", a: "Use machines inside malls or bank branches rather than isolated street ATMs, and shield the keypad. Decline help from strangers at the ATM, which is a common scam to distract you and swap or capture your card." },
+        { q: "Are cards widely accepted in South Africa?", a: "Yes, more so than in much of the region. Contactless is common and cards work at restaurants, shops, malls and hotels. Carry rand for markets, car guards, petrol attendants and tips." }
+      ],
+      sources: {
+        links: [
+          { label: "South African Reserve Bank: official exchange rate information", url: "https://www.resbank.co.za", type: "gov" },
+          { label: "US State Department: South Africa country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/SouthAfrica.html", type: "gov" }
+        ],
+        judgment: "South Africa is notably card-friendly for the region, but cash covers markets, car guards and petrol, and ATM skimming is a known risk. The rand rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "10 to 15%, expected" },

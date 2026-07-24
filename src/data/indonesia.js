@@ -178,6 +178,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Indonesian rupiah (IDR)" },
+        { k: "Cards", v: "Hotels, malls, upscale (Bali, Jakarta)" },
+        { k: "Cash for", v: "Warungs, markets, drivers" },
+        { k: "Watch", v: "Big numbers, ATM caps" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Indonesia, or can I use cards? (2026) | True Trip Costs",
+      description: "Yes, carry cash. Indonesia takes cards in Bali and Jakarta hubs, but warungs, markets and drivers run on cash. Mind the many zeros, and ATM withdrawal caps. Choose rupiah not dollars. Checked July 2026.",
+      h1: "Do I need cash in Indonesia, or can I use cards?",
+      lede: "Short answer: cards in tourist hubs like Bali and Jakarta, and rupiah cash for daily life. Watch the big numbers and the ATM withdrawal caps. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Both, and carry cash. Indonesia takes <b>cards at hotels, malls and upscale restaurants</b> in tourist hubs like <b>Bali and Jakarta</b>, but <b>warungs (local eateries), markets, small shops and drivers</b> are largely cash. The currency is the <b>rupiah</b>, which has <b>a lot of zeros</b> (amounts run into the tens and hundreds of thousands), so mind the notes. ATMs often <b>cap withdrawals</b> and dispense set denominations. Choose <b>rupiah, not dollars</b>, on any card or ATM.",
+      sections: [
+        {
+          h: "Cash-reliant, and big numbers",
+          icon: "cash",
+          key: { fig: "Big numbers", tag: "Cards in tourist hubs", text: "Cards work in Bali and Jakarta hubs, but warungs, markets and drivers are cash. The rupiah runs into large numbers, so mind the notes.", tone: "teal" },
+          p: [
+            "Indonesia takes <b>cards at hotels, malls and upscale restaurants</b> in <b>Bali, Jakarta and tourist hubs</b>, and contactless is growing there. But <b>warungs (local eateries), markets, small shops and private drivers</b> are largely <b>cash</b>, so carry <b>rupiah</b>.",
+            "The rupiah has <b>a lot of zeros</b>: amounts run into the <b>tens and hundreds of thousands</b>, so check the notes before you pay, since large and small denominations can look similar."
+          ]
+        },
+        {
+          h: "Choose rupiah, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose rupiah", text: "When a terminal or ATM offers dollars or rupiah, pick rupiah. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars or rupiah, always choose rupiah</b>. Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use ATMs at <b>major banks</b> (such as BCA, Mandiri or BNI). Many <b>cap withdrawals</b> per transaction and dispense either 50,000 or 100,000 notes (the machine usually says which), so plan around it. Use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "ATMs, Bali drivers, and paying",
+          icon: "coins",
+          key: { fig: "Break big notes", tag: "For small vendors", text: "Break large notes for small vendors and warungs. A private Bali driver is usually paid in cash, in rupiah.", tone: "teal" },
+          p: [
+            "<b>Break large notes</b> at hotels or bigger shops so you have smaller ones for <b>warungs and small vendors</b>. A <b>private driver for the day</b> in Bali, a common way to get around, is usually paid in <b>cash, in rupiah</b>.",
+            "For tipping norms, see <a href='/indonesia/tipping'>tipping in Indonesia</a>, and for the wider picture, the <a href='/indonesia'>Indonesia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Indonesia?", a: "Yes. Cards work at hotels, malls and upscale restaurants in Bali, Jakarta and tourist hubs, but warungs, markets, small shops and drivers are largely cash. Carry rupiah." },
+        { q: "Should I pay in rupiah or dollars in Indonesia?", a: "Always rupiah. If a card machine or ATM offers dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Why does Indonesian money have so many zeros?", a: "The rupiah is a low-value unit, so everyday amounts run into the tens and hundreds of thousands. Large and small notes can look similar, so check before you pay." },
+        { q: "Do Indonesian ATMs limit withdrawals?", a: "Often. Many cap the amount per transaction and dispense either 50,000 or 100,000 notes (the machine usually indicates which). Use ATMs at major banks like BCA, Mandiri or BNI, and always choose rupiah." }
+      ],
+      sources: {
+        links: [
+          { label: "Bank Indonesia: official exchange rate information", url: "https://www.bi.go.id/en/default.aspx", type: "gov" },
+          { label: "US State Department: Indonesia country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Indonesia.html", type: "gov" }
+        ],
+        judgment: "Indonesia takes cards in tourist hubs but daily life runs on cash, and the rupiah's many zeros plus ATM caps are practical hurdles. The rupiah rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Not obligatory" },
