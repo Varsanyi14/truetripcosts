@@ -170,6 +170,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Round up, or 10 to 15%" },
+        { k: "Restaurants", v: "10 to 15% for good service" },
+        { k: "Pubs", v: "No tip at the bar" },
+        { k: "Check the bill", v: "Groups may see a service charge" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Ireland: what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Ireland for US travelers in 2026: 10 to 15% at restaurants, no tip at the pub bar, the service charge on group bills, and the euro-versus-pound border. Checked July 2026.",
+      h1: "Tipping in Ireland",
+      lede: "Ireland tips more than most of Europe but less than the US: 10 to 15% at a restaurant, and nothing at the pub bar. Here is what you actually owe, and what to check on the bill.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Ireland tips <b>more than most of Europe but less than the US</b>. At a <b>sit-down restaurant</b>, <b>10 to 15%</b> for good service is normal, or simply round up. At a <b>pub</b>, there is <b>no tipping</b> when you order at the bar. Some restaurants add a <b>service charge</b>, especially for <b>larger groups</b>, so check the bill before adding more. Round up for <b>taxis</b>. Tips can go on the <b>card</b> or in cash, in euros (or pounds in Northern Ireland).",
+      sections: [
+        {
+          h: "Restaurants: 10 to 15%",
+          icon: "euro",
+          key: { fig: "10-15%", tag: "For good service", text: "At a sit-down restaurant, 10 to 15% for good service is normal, or just round up. More than most of Europe, less than the US.", tone: "teal" },
+          p: [
+            "At a <b>sit-down restaurant</b>, <b>10 to 15%</b> for good service is the norm, or simply <b>rounding up</b> for something casual. It is <b>more than most of Europe</b> (where a round-up is enough) but <b>less than the US</b> 18 to 20%.",
+            "For a <b>cafe or counter service</b>, tipping is optional; the tip jar is a nice gesture, not expected. Round up for <b>taxis</b>, and leave a euro or two a bag for a porter."
+          ]
+        },
+        {
+          h: "Pubs, and the service charge",
+          icon: "receipt",
+          key: { fig: "No pub tip", tag: "Check for a group charge", text: "No tipping at a pub when you order at the bar. Some restaurants add a service charge, especially for larger groups, so check the bill.", tone: "teal" },
+          p: [
+            "At a <b>pub</b>, when you <b>order and pay at the bar</b>, there is <b>no tipping</b>. For table service in a gastropub or restaurant, the restaurant norms above apply.",
+            "Some restaurants add a <b>service charge</b>, especially for <b>larger groups</b> (often <b>10 to 12.5%</b>). <b>Check the bill</b>: if a service charge is already there, you do not need to tip on top."
+          ]
+        },
+        {
+          h: "Cash or card, and the border",
+          icon: "cash",
+          key: { fig: "Euros", tag: "Pounds in the North", text: "Tips can go on the card or in cash, in euros. In Northern Ireland it is pounds, since that is part of the UK.", tone: "teal" },
+          p: [
+            "Tips can go on the <b>card</b> or in <b>cash</b>, in <b>euros</b> in the Republic. Remember the border: <b>Northern Ireland is part of the UK</b>, so there it is <b>pounds</b>, and UK tipping norms apply. For the wider picture, see <a href='/ireland/cash-or-card'>cash or card in Ireland</a> and the <a href='/ireland'>Ireland money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Ireland?", a: "Yes, more than most of Europe but less than the US. At a sit-down restaurant, 10 to 15% for good service is normal, or just round up. There is no tipping at a pub when you order at the bar." },
+        { q: "How much do you tip at an Irish restaurant?", a: "About 10 to 15% for good service, or round up for something casual. Check the bill first: some restaurants add a service charge, especially for larger groups, and then you need not tip on top." },
+        { q: "Do you tip in Irish pubs?", a: "Not when you order and pay at the bar. For table service in a gastropub or restaurant, normal restaurant tipping applies. You can offer to buy the bartender a drink, but it is not expected." },
+        { q: "Do you tip in euros or pounds in Ireland?", a: "Euros in the Republic of Ireland. In Northern Ireland, which is part of the UK, it is pounds, and UK tipping norms apply. Tips can go on the card or in cash." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Ireland country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Ireland.html", type: "gov" }
+        ],
+        judgment: "Irish tipping sits above most of Europe and below the US, and the group service charge is real but not universal. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Euro (EUR) in the Republic" },

@@ -174,6 +174,65 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "US-style, expected" },
+        { k: "Restaurants", v: "15 to 20%" },
+        { k: "The prompt", v: "Screens suggest high, tip pre-tax" },
+        { k: "Bars, taxis", v: "A dollar or two, or 10 to 15%" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Canada: it is like home, 15 to 20% (2026) | True Trip Costs",
+      description: "How tipping works in Canada for US travelers in 2026: it is US-style, 15 to 20% at restaurants, plus how to handle the card terminal that suggests high amounts and tips on tax. Checked July 2026.",
+      h1: "Tipping in Canada",
+      lede: "Unlike Europe, Canada tips just like the US: 15 to 20% at sit-down restaurants, and staff rely on it. The one thing to watch is the card terminal, which often suggests high amounts and calculates on the after-tax total. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Canada is a <b>US-style tipping country</b>, not a European one: staff <b>rely on tips</b>, and <b>15 to 20%</b> is expected at a sit-down restaurant (around 15% standard, 18 to 20% for good service). The thing to watch is the <b>card terminal</b>, which <b>suggests preset amounts</b> that can start high (18, 20, 25%) and often calculates the tip on the <b>after-tax total</b>. You can pick your own percentage and tip on the <b>pre-tax</b> amount. At <b>bars</b>, a dollar or two a drink or 15 to 20% on a tab; for <b>taxis and rideshare</b>, 10 to 15%.",
+      sections: [
+        {
+          h: "It is US-style: 15 to 20%",
+          icon: "cash",
+          key: { fig: "15-20%", tag: "Like the US", text: "Canada tips like the US: staff rely on it, and 15 to 20% is expected at sit-down restaurants. This is not Europe.", tone: "teal" },
+          p: [
+            "Unlike most of Europe, Canada follows the <b>US tipping model</b>: restaurant staff earn a lower base wage and <b>rely on tips</b>. At a <b>sit-down restaurant</b>, <b>15 to 20%</b> is expected, roughly <b>15%</b> as a baseline and <b>18 to 20%</b> for good service.",
+            "For a <b>quick counter-service</b> spot where you order at the till, tipping is optional, though the screen may still ask. Use your judgment: a coffee to go does not require a tip, a full table service does."
+          ]
+        },
+        {
+          h: "Watch the card terminal",
+          icon: "card",
+          key: { fig: "Pre-tax", tag: "Presets start high", text: "Terminals suggest preset tips that start high (18, 20, 25%) and often calculate on the after-tax total. You can enter your own amount and tip pre-tax.", tone: "amber" },
+          p: [
+            "When you pay by card, the <b>terminal will prompt for a tip</b>, and the presets often <b>start high</b>, commonly <b>18, 20 and 25%</b>, sometimes with no obvious modest option. This nudge toward bigger tips is often called tipflation.",
+            "Two things to know: you can always <b>choose a custom amount</b> or a lower percentage, and the machine frequently calculates the tip on the <b>after-tax total</b> (with GST or provincial tax added), which inflates it. If you prefer, tip on the <b>pre-tax</b> subtotal, which is perfectly normal."
+          ]
+        },
+        {
+          h: "Bars, taxis and the rest",
+          icon: "coins",
+          key: { fig: "10-20%", tag: "By situation", text: "Bars: a dollar or two a drink, or 15 to 20% on a tab. Taxis and rideshare: 10 to 15%. Round up for small services.", tone: "teal" },
+          p: [
+            "At a <b>bar</b>, leave a <b>dollar or two per drink</b>, or <b>15 to 20%</b> if you run a tab. For <b>taxis and rideshare</b>, <b>10 to 15%</b> is normal. <b>Hotel porters</b>, a couple of dollars a bag; <b>housekeeping</b>, a few dollars a day.",
+            "Tips can go on the <b>card</b> here, and the staff receive them, so you do not need cash the way you would in much of Europe. For the wider picture, see <a href='/canada/cash-or-card'>cash or card in Canada</a> and the <a href='/canada'>Canada money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Canada?", a: "Yes, just like the US. Staff rely on tips, and 15 to 20% is expected at a sit-down restaurant, around 15% as a baseline and 18 to 20% for good service. This is unlike Europe, where tipping is light." },
+        { q: "How much do you tip at a restaurant in Canada?", a: "About 15 to 20%: roughly 15% standard and 18 to 20% for good service. The card terminal may suggest higher presets and calculate on the after-tax total, but you can choose your own amount and tip on the pre-tax subtotal." },
+        { q: "Why does the Canadian card machine suggest such high tips?", a: "Preset tip options often start at 18, 20 or 25% and sometimes calculate on the after-tax total, which inflates the amount, a trend called tipflation. You can always enter a custom amount or a lower percentage, and tipping on the pre-tax subtotal is normal." },
+        { q: "Do you tip taxi drivers in Canada?", a: "Yes, about 10 to 15% for a taxi or rideshare, which you can add in the app or on the card. Round up for a short ride. Bars are a dollar or two a drink, or 15 to 20% on a tab." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Canada country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Canada.html", type: "gov" }
+        ],
+        judgment: "Canadian tipping follows the US model, and the terminal presets and tax-inclusive calculation are widely reported, so this is our practical read. Amounts are customary rather than a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "bringing-your-pet",
       glance: [
         { k: "The document", v: "A valid rabies certificate" },

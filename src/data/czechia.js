@@ -168,6 +168,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "About 10%, customary" },
+        { k: "Restaurants", v: "Round up to about 10%" },
+        { k: "How", v: "State the total when paying" },
+        { k: "Currency", v: "Koruna (not euros)" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Czechia: about 10%, and how to leave it (2026) | True Trip Costs",
+      description: "How tipping works in Czechia for US travelers in 2026: why about 10% is customary, how you state the total when paying, and why you tip in koruna. Checked July 2026.",
+      h1: "Tipping in Czechia",
+      lede: "Czechia tips a little more than Western Europe: about 10% at a restaurant, told to the server rather than left on the table. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Czechia tips a little <b>more than Western Europe</b>: about <b>10%</b> is customary at a restaurant for good service, usually by <b>rounding up</b> to roughly that. The local habit is to <b>state the total you want to pay</b> when the server takes your money, rather than leaving it on the table (much like Germany and Austria). Service is <b>usually not included</b>, though some Prague tourist spots add it, so check the bill. Pay in <b>Czech koruna</b>, not euros. Round up for taxis, and leave a little for good service elsewhere.",
+      sections: [
+        {
+          h: "About 10%, a bit more than the West",
+          icon: "coins",
+          key: { fig: "About 10%", tag: "Customary for good service", text: "Around 10% is customary at a restaurant for good service, usually by rounding up. A little more than Western Europe, but far from US levels.", tone: "teal" },
+          p: [
+            "Czechia sits between <b>Western Europe's round-up</b> and <b>US percentages</b>: about <b>10%</b> is customary at a sit-down restaurant for good service, usually by <b>rounding up</b> to roughly that figure. At a <b>pub, cafe or for drinks</b>, rounding up the coins is plenty.",
+            "It is a <b>courtesy</b>, not an obligation, and staff earn a wage. Round up for <b>taxis</b>, and leave a little for a porter or housekeeping if you like."
+          ]
+        },
+        {
+          h: "State the total when you pay",
+          icon: "receipt",
+          key: { fig: "Say the total", tag: "Like Germany", text: "When the server takes payment, state the total you want to pay including the tip, rather than leaving it on the table. Check the bill for a service charge first.", tone: "teal" },
+          p: [
+            "As in Germany and Austria, the habit is to <b>tell the server the total</b> you want to pay when they take your money, rather than leaving coins on the table. For a <b>270 koruna</b> bill you might say <b>300</b>, and get change for the rest.",
+            "Most places do <b>not</b> add a service charge, but some <b>Prague tourist restaurants</b> do, so <b>check the bill</b> before adding more. If a service charge is there, you need not tip on top."
+          ]
+        },
+        {
+          h: "Pay tips in koruna",
+          icon: "cash",
+          key: { fig: "Koruna", tag: "Not euros", text: "Tip in Czech koruna, not euros, which are poorly accepted. Cash is simplest and reaches the staff directly.", tone: "teal" },
+          p: [
+            "Tip in <b>Czech koruna</b>, not euros, which are poorly accepted and get a bad rate. <b>Cash</b> is simplest and reaches the staff directly, though you can also state the total when paying by card. For the wider picture, see the <a href='/czechia'>Czechia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Czechia?", a: "Yes, modestly. About 10% is customary at a restaurant for good service, usually by rounding up. A little more than Western Europe, but far below US levels. At a pub or cafe, rounding up the coins is plenty." },
+        { q: "How do you leave a tip in Czechia?", a: "Tell the server the total you want to pay when they take your money, rather than leaving it on the table. For a 270 koruna bill you might say 300. Check the bill first for a service charge, which some Prague tourist spots add." },
+        { q: "How much do you tip at a Czech restaurant?", a: "Around 10% for good service, usually by rounding up. At a pub, cafe or for drinks, rounding up the coins is plenty. It is a courtesy, not an obligation." },
+        { q: "Do you tip in euros or koruna in Czechia?", a: "Koruna. Czechia uses the koruna, not the euro, and euros are poorly accepted. Tip in koruna, in cash, or state the total when paying by card." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Czechia country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/CzechRepublic.html", type: "gov" }
+        ],
+        judgment: "Czech tipping is modest, a bit above Western Europe, and the say-the-total habit is a longstanding local practice. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "taxis-and-apps",
       glance: [
         { k: "Apps", v: "Bolt (cheapest), also Uber" },

@@ -177,6 +177,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "About 10%, customary" },
+        { k: "Restaurants", v: "Round up to about 10%" },
+        { k: "Careful", v: "Thank you can mean keep the change" },
+        { k: "Currency", v: "Zloty (not euros)" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Poland: about 10%, and the thank-you quirk (2026) | True Trip Costs",
+      description: "How tipping works in Poland for US travelers in 2026: why about 10% is customary, the quirk where saying thank you can mean keep the change, and why you tip in zloty. Checked July 2026.",
+      h1: "Tipping in Poland",
+      lede: "Poland tips a little more than Western Europe: about 10% at a restaurant. There is one quirk worth knowing, where saying thank you as you pay can mean keep the change. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Poland tips a little <b>more than Western Europe</b>: about <b>10%</b> is customary at a restaurant for good service (a <b>napiwek</b>), usually by rounding up. One quirk to know: <b>saying thank you (dziekuje) as you hand over money can mean keep the change</b>, so if you want change back, do not say it until you have received your change. Service is <b>usually not included</b>, though some tourist spots add it, so check the bill. Tip in <b>zloty</b>, not euros. Round up for taxis and small services.",
+      sections: [
+        {
+          h: "About 10%, a bit more than the West",
+          icon: "coins",
+          key: { fig: "About 10%", tag: "Customary for good service", text: "Around 10% is customary at a restaurant for good service, usually by rounding up. More than Western Europe, far below US levels.", tone: "teal" },
+          p: [
+            "Poland tips a little <b>more than Western Europe</b>: about <b>10%</b> is customary at a sit-down restaurant for good service, the <b>napiwek</b>, usually by <b>rounding up</b>. At a <b>bar, cafe or for drinks</b>, rounding up the coins is plenty.",
+            "It is a <b>courtesy</b>, not an obligation, and staff earn a wage. Round up for <b>taxis</b>, and leave a little for a porter or housekeeping if you like."
+          ]
+        },
+        {
+          h: "The thank-you quirk",
+          icon: "receipt",
+          key: { fig: "Mind dziekuje", tag: "Can mean keep the change", text: "Saying thank you (dziekuje) as you hand over money can signal keep the change. If you want change back, wait until you have it before saying thanks.", tone: "amber" },
+          p: [
+            "Here is the quirk that catches visitors out. If you <b>hand over money and say thank you (dziekuje)</b> at the same time, the server may take it to mean <b>keep the change</b>, and you could tip far more than you meant to.",
+            "So if you are <b>paying with a large note and want change</b>, do <b>not</b> say thank you until <b>after</b> you have your change, or simply <b>state the total</b> you want to pay (for a <b>90 zloty</b> bill, say <b>100</b>). Then a thank-you is safe."
+          ]
+        },
+        {
+          h: "Pay tips in zloty",
+          icon: "cash",
+          key: { fig: "Zloty", tag: "Not euros", text: "Tip in Polish zloty, not euros. Cash is simplest and reaches the staff directly.", tone: "teal" },
+          p: [
+            "Tip in <b>Polish zloty</b>, not euros, which are taken only at a poor rate in tourist spots. <b>Cash</b> is simplest and reaches the staff directly, though you can also state the total when paying by card. For the wider picture, see <a href='/poland/cash-or-card'>cash or card in Poland</a> and the <a href='/poland'>Poland money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Poland?", a: "Yes, modestly. About 10% is customary at a restaurant for good service, usually by rounding up. More than Western Europe, far below US levels. At a bar or cafe, rounding up the coins is plenty." },
+        { q: "What is the tipping quirk in Poland?", a: "If you hand over money and say thank you (dziekuje) at the same time, the server may take it to mean keep the change, so you could over-tip. If you want change, wait until you have it before saying thanks, or state the total you want to pay." },
+        { q: "How much do you tip at a Polish restaurant?", a: "Around 10% for good service, usually by rounding up. At a bar, cafe or for drinks, rounding up the coins is plenty. It is a courtesy, not an obligation." },
+        { q: "Do you tip in euros or zloty in Poland?", a: "Zloty. Poland uses the zloty, not the euro, and euros are taken only at a poor rate. Tip in zloty, in cash, or state the total when paying by card." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Poland country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Poland.html", type: "gov" }
+        ],
+        judgment: "Polish tipping is modest, and the thank-you quirk is a widely reported local convention. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Polish zloty (PLN), not euro" },

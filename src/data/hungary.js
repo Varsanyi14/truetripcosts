@@ -177,6 +177,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "10 to 15%, customary" },
+        { k: "Restaurants", v: "Round up, or state the total" },
+        { k: "Check the bill", v: "Some add a service charge" },
+        { k: "Currency", v: "Forint (not euros)" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Hungary: 10 to 15%, and the service charge (2026) | True Trip Costs",
+      description: "How tipping works in Hungary for US travelers in 2026: why 10 to 15% is customary, how to leave it, the service charge some Budapest spots add, and why you tip in forint. Checked July 2026.",
+      h1: "Tipping in Hungary",
+      lede: "Hungary tips a little more than Western Europe: about 10 to 15% at a restaurant. Watch for a service charge in Budapest tourist spots, and tip in forint. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Hungary tips a little <b>more than Western Europe</b>: about <b>10 to 15%</b> is customary at a restaurant for good service. The habit is to <b>state the total you want to pay</b> when the server takes your money, or tell them the tip, rather than leaving it on the table. Some places, especially <b>Budapest tourist spots and ruin bars</b>, add a <b>service charge</b>, so check the bill before adding more. Tip in <b>forint</b>, not euros. Round up for taxis and small services.",
+      sections: [
+        {
+          h: "10 to 15%, a bit more than the West",
+          icon: "coins",
+          key: { fig: "10-15%", tag: "Customary for good service", text: "About 10 to 15% is customary at a restaurant for good service. More than Western Europe, but not US-style obligation.", tone: "teal" },
+          p: [
+            "Hungary tips a little <b>more than Western Europe</b>: about <b>10 to 15%</b> at a sit-down restaurant for good service. At a <b>cafe, bar or for drinks</b>, rounding up or around 10% is plenty.",
+            "It is a <b>courtesy</b>, and staff earn a wage. Round up for <b>taxis</b>, and leave a little for a porter or housekeeping if you like."
+          ]
+        },
+        {
+          h: "How to leave it, and the service charge",
+          icon: "receipt",
+          key: { fig: "Check first", tag: "Some add service", text: "Tell the server the tip or the total, rather than leaving it on the table. Some Budapest tourist spots and ruin bars add a service charge, so check the bill.", tone: "teal" },
+          p: [
+            "The habit is to <b>tell the server the tip</b>, or the <b>total you want to pay</b>, when they take your money, rather than leaving it on the table. In some places, handing money and saying thanks can be read as keep the change, so <b>state the amount</b> if you want change.",
+            "Some <b>Budapest tourist restaurants and ruin bars</b> add a <b>service charge</b> (often around 10 to 12%), so <b>check the bill</b>. If it is there, you need not tip on top."
+          ]
+        },
+        {
+          h: "Pay tips in forint",
+          icon: "cash",
+          key: { fig: "Forint", tag: "Not euros", text: "Tip in Hungarian forint, not euros. Cash is simplest and reaches the staff directly.", tone: "teal" },
+          p: [
+            "Tip in <b>Hungarian forint</b>, not euros, which are taken only at a poor rate. <b>Cash</b> is simplest and reaches the staff directly, though you can also state the total when paying by card. For the wider picture, see <a href='/hungary/cash-or-card'>cash or card in Hungary</a> and the <a href='/hungary'>Hungary money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Hungary?", a: "Yes, modestly. About 10 to 15% is customary at a restaurant for good service. More than Western Europe, but not a US-style obligation. At a cafe or bar, rounding up or around 10% is plenty." },
+        { q: "How do you leave a tip in Hungary?", a: "Tell the server the tip, or the total you want to pay, when they take your money, rather than leaving it on the table. State the amount if you want change, since handing money and saying thanks can be read as keep the change." },
+        { q: "Is a service charge added in Hungary?", a: "Sometimes, especially at Budapest tourist restaurants and ruin bars, often around 10 to 12%. Check the bill, and if a service charge is there, you need not tip on top." },
+        { q: "Do you tip in euros or forint in Hungary?", a: "Forint. Hungary uses the forint, not the euro, and euros are taken only at a poor rate. Tip in forint, in cash, or state the total when paying by card." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Hungary country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Hungary.html", type: "gov" }
+        ],
+        judgment: "Hungarian tipping is modest, a bit above Western Europe, and the Budapest service charge is real but not universal. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Hungarian forint (HUF), not euro" },
