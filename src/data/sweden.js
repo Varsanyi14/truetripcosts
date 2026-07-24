@@ -172,6 +172,65 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not really expected" },
+        { k: "Why", v: "High wages, service included" },
+        { k: "Good service", v: "Round up, or 5 to 10%" },
+        { k: "The catch", v: "Near-cashless, terminals prompt" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Sweden: you do not really tip (2026) | True Trip Costs",
+      description: "How tipping works in Sweden for US travelers in 2026: why it is not really expected (high wages), when to round up, and how to handle the tip prompt in a near-cashless country. Checked July 2026.",
+      h1: "Tipping in Sweden",
+      lede: "Sweden is not really a tipping country. Wages are high and service is included, so tipping is not expected. The wrinkle: in a near-cashless country, terminals often prompt for a tip. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Sweden is <b>not really a tipping country</b>. Wages are <b>high</b> and service is effectively <b>included</b>, so tipping is <b>not expected</b> and leaving nothing is normal. For <b>good service at a restaurant</b>, it is common to <b>round up</b> or leave <b>5 to 10%</b> if you were really pleased, but it is optional. The catch: Sweden is <b>nearly cashless</b>, so card terminals <b>often prompt for a tip</b> now, which you can decline. At <b>cafes, bars and in taxis</b>, no tip is expected. Any tip is in <b>kronor</b>.",
+      sections: [
+        {
+          h: "You do not really tip here",
+          icon: "notip",
+          key: { fig: "Not expected", tag: "High wages", text: "Tipping is not expected in Sweden. Wages are high and service is effectively included, so leaving nothing is normal.", tone: "teal" },
+          p: [
+            "Sweden is <b>not really a tipping culture</b>. Hospitality <b>wages are high</b> and service is effectively <b>included</b> in prices, so tipping is <b>not expected</b>, and leaving nothing is completely normal.",
+            "At <b>cafes, bars and in taxis</b>, <b>no tip is expected</b>. The <b>price or the meter is the price</b>."
+          ]
+        },
+        {
+          h: "Round up for good service",
+          icon: "coins",
+          key: { fig: "5-10%", tag: "Optional at a restaurant", text: "For good restaurant service, rounding up or leaving 5 to 10% is a welcome gesture, but it is optional.", tone: "teal" },
+          p: [
+            "The one time Swedes might tip is for <b>good service at a sit-down restaurant</b>: <b>rounding up</b> the bill, or leaving <b>5 to 10%</b> if you were really pleased, is a welcome gesture.",
+            "But it is a <b>bonus for good service</b>, not a default. A normal meal needs no tip."
+          ]
+        },
+        {
+          h: "Near-cashless: watch the terminal",
+          icon: "card",
+          key: { fig: "You can decline", tag: "Sweden is near-cashless", text: "Sweden is nearly cashless, so card terminals often prompt for a tip. Since it is not expected, you can decline.", tone: "amber" },
+          p: [
+            "Sweden is <b>one of the most cashless countries in the world</b>, and card terminals <b>often prompt for a tip</b> now, sometimes with preset percentages. Since tipping is <b>not expected</b>, you can <b>decline without a second thought</b>.",
+            "If you do want to tip, adding it on the card is easiest, since you may carry no <b>kronor</b> at all. For the wider picture, see <a href='/sweden/cash-or-card'>cash or card in Sweden</a> and the <a href='/sweden'>Sweden money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Sweden?", a: "Not really. Wages are high and service is effectively included, so tipping is not expected and leaving nothing is normal. For good restaurant service, rounding up or 5 to 10% is a welcome gesture, but optional." },
+        { q: "How much do you tip at a Swedish restaurant?", a: "Nothing is expected. For good service, rounding up or leaving 5 to 10% is a welcome gesture, but a normal meal needs no tip. Cafes, bars and taxis need no tip." },
+        { q: "Why does the card machine in Sweden ask for a tip?", a: "Sweden is nearly cashless, and terminal tip prompts have become common, sometimes with presets. Since tipping is not expected, you can decline without a second thought." },
+        { q: "Do you tip taxi drivers in Sweden?", a: "No, it is not expected. The metered fare is what you pay, though rounding up is a small courtesy if you like." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Sweden country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Sweden.html", type: "gov" }
+        ],
+        judgment: "Sweden's no-tipping norm rests on high hospitality wages, and terminal tip prompts are common in one of the world's most cashless economies. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Swedish krona (SEK), not euro" },

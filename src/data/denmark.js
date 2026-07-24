@@ -168,6 +168,65 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not really expected" },
+        { k: "Why", v: "High wages, service included" },
+        { k: "Good service", v: "Round up, or 5 to 10%" },
+        { k: "Cafes, taxis", v: "No tip" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Denmark: you do not really tip (2026) | True Trip Costs",
+      description: "How tipping works in Denmark for US travelers in 2026: why it is not really expected (high wages, service included), when to round up, and how to handle the card terminal prompt. Checked July 2026.",
+      h1: "Tipping in Denmark",
+      lede: "Denmark is not really a tipping country. Wages are high and service is included, so tipping is not expected. Round up for good service if you like. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Denmark is <b>not really a tipping country</b>. Wages are <b>high</b> and service is <b>included</b> in prices by custom, so tipping is <b>not expected</b> and leaving nothing is normal. For <b>good service at a restaurant</b>, it is common to <b>round up</b> or leave <b>5 to 10%</b> if you were really pleased, but it is optional. At <b>cafes, bars and in taxis</b>, no tip is expected. Denmark is <b>largely cashless</b>, so terminals may <b>prompt for a tip</b>, which you can decline. Any tip is in <b>kroner</b>.",
+      sections: [
+        {
+          h: "You do not really tip here",
+          icon: "notip",
+          key: { fig: "Not expected", tag: "High wages", text: "Tipping is not expected in Denmark. Wages are high and service is included in prices, so leaving nothing is normal.", tone: "teal" },
+          p: [
+            "Denmark is <b>not really a tipping culture</b>. Hospitality <b>wages are high</b> and service is <b>included</b> in prices by custom, so tipping is <b>not expected</b>, and leaving nothing is completely normal.",
+            "At <b>cafes, bars and in taxis</b>, <b>no tip is expected</b>. The <b>price or the meter is the price</b>."
+          ]
+        },
+        {
+          h: "Round up for good service",
+          icon: "coins",
+          key: { fig: "5-10%", tag: "Optional at a restaurant", text: "For good restaurant service, rounding up or leaving 5 to 10% is a welcome gesture, but it is optional.", tone: "teal" },
+          p: [
+            "The one time Danes might tip is for <b>good service at a sit-down restaurant</b>: <b>rounding up</b> the bill, or leaving <b>5 to 10%</b> if you were really pleased, is a welcome gesture.",
+            "But it is a <b>bonus for good service</b>, not a default. A normal meal needs no tip."
+          ]
+        },
+        {
+          h: "Watch the card terminal",
+          icon: "card",
+          key: { fig: "You can decline", tag: "Denmark is cashless", text: "Denmark is largely cashless, so card terminals may prompt for a tip. Since it is not expected, you can decline.", tone: "amber" },
+          p: [
+            "Denmark is <b>largely cashless</b>, and card terminals <b>increasingly prompt for a tip</b>, sometimes with preset percentages. Since tipping is <b>not expected</b>, you can <b>decline without a second thought</b>.",
+            "If you do want to tip, adding it on the card or leaving <b>kroner</b> both work. For the wider picture, see <a href='/denmark/cash-or-card'>cash or card in Denmark</a> and the <a href='/denmark'>Denmark money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Denmark?", a: "Not really. Wages are high and service is included in prices, so tipping is not expected and leaving nothing is normal. For good restaurant service, rounding up or 5 to 10% is a welcome gesture, but optional." },
+        { q: "How much do you tip at a Danish restaurant?", a: "Nothing is expected. For good service, rounding up or leaving 5 to 10% is a welcome gesture, but a normal meal needs no tip. Cafes, bars and taxis need no tip." },
+        { q: "Why does the card machine in Denmark ask for a tip?", a: "Denmark is largely cashless, and terminal tip prompts have crept in, sometimes with presets. Since tipping is not expected, you can decline without a second thought." },
+        { q: "Do you tip taxi drivers in Denmark?", a: "No, it is not expected. The metered fare is what you pay, though rounding up is a small courtesy if you like." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Denmark country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Denmark.html", type: "gov" }
+        ],
+        judgment: "Denmark's no-tipping norm rests on high hospitality wages, with terminal prompts a growing wrinkle in a cashless economy. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Danish krone (DKK), not euro" },

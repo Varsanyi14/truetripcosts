@@ -175,6 +175,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Light, emerging" },
+        { k: "Restaurants", v: "About 10% in tourist spots" },
+        { k: "Check the bill", v: "Some add a service charge" },
+        { k: "How", v: "Cash, in lari" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Georgia: what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Georgia for US travelers in 2026: why it is light and emerging, about 10% in Tbilisi tourist restaurants, and the service charge to check for. Checked July 2026.",
+      h1: "Tipping in Georgia",
+      lede: "Georgia has a light, emerging tipping culture. It was not traditionally expected, but about 10% is now common in Tbilisi and tourist restaurants. Check the bill for a service charge first. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Georgia has a <b>light, emerging tipping culture</b>. It was not traditionally expected, but in <b>Tbilisi and tourist restaurants</b>, about <b>10%</b> for good service is now common. Some places add a <b>service charge</b> (often 10 to 15%), so <b>check the bill</b>: if it is there, you need not tip on top. Elsewhere, <b>rounding up</b> is a kind gesture. At <b>casual spots</b>, no tip is expected. Leave tips in <b>cash</b>, in lari.",
+      sections: [
+        {
+          h: "Light and emerging",
+          icon: "coins",
+          key: { fig: "About 10%", tag: "In tourist restaurants", text: "Tipping is light and emerging. In Tbilisi and tourist restaurants, about 10% for good service is now common.", tone: "teal" },
+          p: [
+            "Georgia has a <b>light and emerging</b> tipping culture. It was <b>not traditionally expected</b>, but in <b>Tbilisi and tourist-area restaurants</b>, leaving about <b>10%</b> for good service is now <b>common</b>.",
+            "At <b>casual eateries and for drinks</b>, no tip is expected, and rounding up is plenty."
+          ]
+        },
+        {
+          h: "Check the bill for a service charge",
+          icon: "receipt",
+          key: { fig: "10-15%", tag: "Some already add it", text: "Some restaurants, especially in Tbilisi, add a service charge of 10 to 15%. If it is on the bill, you need not tip on top.", tone: "teal" },
+          p: [
+            "A growing number of <b>restaurants, especially in Tbilisi</b>, add a <b>service charge</b> (often <b>10 to 15%</b>) to the bill. If a <b>service charge is there</b>, you do <b>not need to tip on top</b>, so read the bill first.",
+            "This is the main thing to watch, so you do not tip twice."
+          ]
+        },
+        {
+          h: "Elsewhere, and paying",
+          icon: "cash",
+          key: { fig: "Lari", tag: "Round up, in cash", text: "Elsewhere, rounding up is a kind gesture. Leave tips in cash, in lari.", tone: "teal" },
+          p: [
+            "Elsewhere, <b>rounding up</b> a taxi fare or leaving a little for a guide or hotel porter is a kind gesture, not a rule. Leave tips in <b>cash, in lari</b>. For the wider picture, see <a href='/georgia/cash-or-card'>cash or card in Georgia</a> and the <a href='/georgia'>Georgia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Georgia?", a: "Lightly, and it is emerging. In Tbilisi and tourist restaurants, about 10% for good service is now common, though it was not traditionally expected. At casual spots, no tip is expected." },
+        { q: "Is a service charge added in Georgia?", a: "Increasingly, especially in Tbilisi: often 10 to 15%. If a service charge is on the bill, you do not need to tip on top, so read the bill first." },
+        { q: "How much do you tip at a restaurant in Georgia?", a: "About 10% for good service in Tbilisi and tourist restaurants, if no service charge is already added. At casual eateries and for drinks, no tip is expected and rounding up is plenty." },
+        { q: "Do you tip taxi drivers in Georgia?", a: "Rounding up is a kind gesture but not a rule. Use Bolt or Yandex for a fixed price, or agree the fare first with a street taxi." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Georgia country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Georgia.html", type: "gov" }
+        ],
+        judgment: "Georgia's tipping is light and emerging, most visible in Tbilisi tourist restaurants, with a service charge increasingly added. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "visa-and-insurance",
       glance: [
         { k: "Visa", v: "None, up to 365 days" },

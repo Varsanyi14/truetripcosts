@@ -182,6 +182,65 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not really expected" },
+        { k: "Why", v: "High wages, service included" },
+        { k: "Good service", v: "Round up, or 5 to 10%" },
+        { k: "Cafes, taxis", v: "No tip" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Norway: you do not really tip (2026) | True Trip Costs",
+      description: "How tipping works in Norway for US travelers in 2026: why it is not really expected (high wages), when to round up for good service, and how to handle the card terminal prompt. Checked July 2026.",
+      h1: "Tipping in Norway",
+      lede: "Norway is not really a tipping country. Wages are high and service is included, so tipping is not expected. Round up for good service if you like. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Norway is <b>not really a tipping country</b>. Wages are <b>high</b> and service is effectively <b>included</b>, so tipping is <b>not expected</b> and leaving nothing is normal. For <b>good service at a restaurant</b>, it is common to <b>round up</b> the bill, or leave <b>5 to 10%</b> if you were really pleased, but it is optional. At <b>cafes, bars and in taxis</b>, no tip is expected. Norway is <b>largely cashless</b>, so card terminals may <b>prompt for a tip</b>, which you can decline. Any tip is in <b>kroner</b>.",
+      sections: [
+        {
+          h: "You do not really tip here",
+          icon: "notip",
+          key: { fig: "Not expected", tag: "High wages", text: "Tipping is not expected in Norway. Wages are high and service is effectively included, so leaving nothing is normal.", tone: "teal" },
+          p: [
+            "Norway is <b>not really a tipping culture</b>. Hospitality <b>wages are high</b> and service is effectively <b>included</b> in prices, so tipping is <b>not expected</b>, and leaving nothing is completely normal.",
+            "At <b>cafes, bars and in taxis</b>, <b>no tip is expected</b> at all. For US visitors, the <b>price or the meter is the price</b>."
+          ]
+        },
+        {
+          h: "Round up for good service",
+          icon: "coins",
+          key: { fig: "5-10%", tag: "Optional at a restaurant", text: "For good restaurant service, rounding up or leaving 5 to 10% is a welcome gesture, but it is optional.", tone: "teal" },
+          p: [
+            "The one time Norwegians might tip is for <b>good service at a sit-down restaurant</b>: <b>rounding up</b> the bill, or leaving <b>5 to 10%</b> if you were really pleased, is a welcome gesture.",
+            "But it is a <b>bonus for good service</b>, not a default, and far from the US norm. A normal meal needs no tip."
+          ]
+        },
+        {
+          h: "Watch the card terminal",
+          icon: "card",
+          key: { fig: "You can decline", tag: "Norway is cashless", text: "Norway is largely cashless, so card terminals may prompt for a tip. Since it is not expected, you can decline.", tone: "amber" },
+          p: [
+            "Norway is <b>largely cashless</b>, and card terminals <b>increasingly prompt for a tip</b>, sometimes with preset percentages. Since tipping is <b>not expected</b>, you can <b>decline without a second thought</b>.",
+            "If you do want to tip, adding it on the card or leaving <b>kroner</b> both work. For the wider picture, see <a href='/norway/cash-or-card'>cash or card in Norway</a> and the <a href='/norway'>Norway money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Norway?", a: "Not really. Wages are high and service is effectively included, so tipping is not expected and leaving nothing is normal. For good restaurant service, rounding up or 5 to 10% is a welcome gesture, but optional." },
+        { q: "How much do you tip at a Norwegian restaurant?", a: "Nothing is expected. For good service, rounding up the bill or leaving 5 to 10% is a welcome gesture, but a normal meal needs no tip. Cafes, bars and taxis need no tip." },
+        { q: "Why does the card machine in Norway ask for a tip?", a: "Norway is largely cashless, and terminal tip prompts have crept in, sometimes with presets. Since tipping is not expected, you can decline without a second thought." },
+        { q: "Do you tip taxi drivers in Norway?", a: "No, it is not expected. The metered fare is what you pay, though rounding up is a small courtesy if you like." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Norway country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Norway.html", type: "gov" }
+        ],
+        judgment: "Norway's no-tipping norm rests on high hospitality wages, with terminal prompts a growing wrinkle in a cashless economy. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Norwegian krone (NOK), not euro" },
