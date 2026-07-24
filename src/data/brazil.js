@@ -175,6 +175,64 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "A 10% service charge, usually added" },
+        { k: "On the bill", v: "The servico, technically optional" },
+        { k: "On top", v: "Nothing needed" },
+        { k: "Taxis", v: "Round up, not expected" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Brazil: the servico, and what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Brazil for US travelers in 2026: the 10% service charge (servico) usually on the bill, why it is technically optional, and what to do for taxis and small services. Checked July 2026.",
+      h1: "Tipping in Brazil",
+      lede: "In Brazil, a 10% service charge is usually already on your restaurant bill, so a tip is largely built in. Here is what you actually owe, and where a little extra makes sense.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "In Brazil, restaurants <b>usually add a 10% service charge</b> (the <b>servico</b>, or taxa de servico) to the bill, so a tip is <b>largely built in</b> and you do <b>not need to add more</b>. It is <b>technically optional</b> and you may decline it, but it is customary to pay and it goes to the staff. If service was special, a little extra is a kind gesture. For <b>taxis</b>, rounding up is a courtesy but not expected. Leave anything extra in <b>cash</b>, in reais.",
+      sections: [
+        {
+          h: "The 10% servico is usually on the bill",
+          icon: "receipt",
+          key: { fig: "10%", tag: "Usually already added", text: "Restaurants usually add a 10% service charge (the servico). That covers the tip, so you do not need to add more.", tone: "teal" },
+          p: [
+            "At most <b>sit-down restaurants</b>, a <b>10% service charge</b>, the <b>servico</b> (taxa de servico), is <b>already added</b> to the bill. That <b>stands in for a tip</b>, so you do <b>not need to add more</b> on top.",
+            "If service was genuinely special, leaving a little extra is a kind gesture, but it is far from required. At a <b>bar</b> or <b>botequim</b>, the same 10% is usually added to the tab."
+          ]
+        },
+        {
+          h: "It is technically optional",
+          icon: "coins",
+          key: { fig: "Optional", tag: "But customary to pay", text: "The servico is technically voluntary and you may ask to remove it, but it is customary to pay, and it goes to the staff.", tone: "teal" },
+          p: [
+            "The <b>servico is technically voluntary</b>: you are within your rights to <b>ask for it to be removed</b> if service was poor. In practice, though, it is <b>customary to pay it</b>, and it goes to the waiting staff.",
+            "So the simple approach is to <b>let the 10% stand</b> and add nothing further."
+          ]
+        },
+        {
+          h: "Taxis, and paying",
+          icon: "cash",
+          key: { fig: "Round up", tag: "Not expected", text: "For taxis, rounding up is a courtesy but not expected. Leave anything extra in cash, in reais.", tone: "teal" },
+          p: [
+            "For <b>taxis and rideshare</b>, <b>rounding up</b> is a courtesy but <b>not expected</b>, and the app total is final. <b>Hotel porters</b>, a few reais a bag is a kind gesture. Leave any extra in <b>cash, in reais</b>. For the wider picture, see <a href='/brazil/cash-or-card'>cash or card in Brazil</a> and the <a href='/brazil'>Brazil money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Brazil?", a: "Barely, because a 10% service charge (the servico) is usually already on the restaurant bill. That covers the tip, so you do not need to add more. A little extra for special service is a kind gesture." },
+        { q: "What is the servico in Brazil?", a: "A 10% service charge, usually added to restaurant and bar bills. It stands in for a tip and goes to the staff. It is technically voluntary and can be removed if service was poor, but it is customary to pay it." },
+        { q: "Do you tip taxi drivers in Brazil?", a: "Not really. Rounding up is a courtesy but not expected, and the app total is final for rideshare." },
+        { q: "How much do you tip at a Brazilian restaurant?", a: "Usually nothing beyond the 10% servico already on the bill. If service was genuinely special, a little extra is a kind gesture, but it is not required." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Brazil country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Brazil.html", type: "gov" }
+        ],
+        judgment: "Brazil's 10% servico is a well-established restaurant convention, technically optional but customary. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "entry-visa",
       glance: [
         { k: "Visa", v: "e-visa, apply online before you fly" },

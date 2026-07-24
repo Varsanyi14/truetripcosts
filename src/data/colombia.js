@@ -160,6 +160,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "A 10% voluntary tip" },
+        { k: "Restaurants", v: "The server asks to add it" },
+        { k: "Just say", v: "Yes, that is the tip" },
+        { k: "Taxis", v: "No tip, round up" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Colombia: the voluntary 10%, explained (2026) | True Trip Costs",
+      description: "How tipping works in Colombia for US travelers in 2026: the 10% voluntary tip the server asks about, when to say yes, and what to do for taxis. Checked July 2026.",
+      h1: "Tipping in Colombia",
+      lede: "In Colombia, restaurants add a voluntary 10% tip that the server asks you about. Say yes and that is the tip, no extra needed. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "In Colombia, sit-down restaurants add a <b>voluntary 10% tip</b> (the <b>propina voluntaria</b>), and the server will usually <b>ask whether to include it</b>, saying something like desea incluir la propina. <b>Say yes</b> and that <b>is the tip</b>, with nothing extra needed; you can decline if service was poor. At <b>casual spots and street food</b>, no tip is expected. For <b>taxis</b>, no tip is expected, though rounding up is a courtesy. Leave anything extra in <b>cash</b>, in pesos.",
+      sections: [
+        {
+          h: "The voluntary 10%, and the question",
+          icon: "receipt",
+          key: { fig: "10%", tag: "The server asks", text: "Restaurants add a voluntary 10% tip and the server asks whether to include it. Say yes and that is the tip.", tone: "teal" },
+          p: [
+            "At <b>sit-down restaurants</b>, a <b>voluntary 10% tip</b>, the <b>propina voluntaria</b>, is the norm. By law it is optional, so the server will usually <b>ask</b> whether to add it (desea incluir la propina, do you want to include the tip).",
+            "The easy answer is <b>yes</b>: that 10% <b>is the tip</b>, and nothing extra is needed. If service was genuinely poor, you can politely decline."
+          ]
+        },
+        {
+          h: "Where and how much",
+          icon: "coins",
+          key: { fig: "Casual: none", tag: "Restaurants only", text: "The 10% applies at sit-down restaurants. At casual spots, street food and cafes, no tip is expected.", tone: "teal" },
+          p: [
+            "The <b>10%</b> applies at <b>sit-down restaurants</b>. At <b>casual eateries, street food and cafes</b>, <b>no tip is expected</b>, and you simply pay the price.",
+            "It is a kind gesture to tip a <b>guide, driver or hotel porter</b> a small amount for good service, but it is not obligatory."
+          ]
+        },
+        {
+          h: "Taxis, and paying",
+          icon: "cash",
+          key: { fig: "No taxi tip", tag: "Round up if you like", text: "No tip is expected for taxis, though rounding up is a courtesy. Leave anything extra in cash, in pesos.", tone: "teal" },
+          p: [
+            "For <b>taxis</b>, <b>no tip is expected</b>, though rounding up the fare is a small courtesy. An app such as DiDi or inDrive shows a fixed or metered price, and the total is final. Leave any extra in <b>cash, in Colombian pesos</b>. For the wider picture, see the <a href='/colombia'>Colombia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Colombia?", a: "At sit-down restaurants, yes: a voluntary 10% tip that the server asks whether to include. Say yes and that is the tip, with nothing extra needed. At casual spots and street food, no tip is expected." },
+        { q: "What is the propina voluntaria in Colombia?", a: "A voluntary 10% tip that restaurants add. By law it is optional, so the server usually asks whether to include it. Saying yes covers the tip; you can decline if service was poor." },
+        { q: "Do you tip taxi drivers in Colombia?", a: "No, it is not expected, though rounding up is a small courtesy. With an app such as DiDi or inDrive, the shown price is final." },
+        { q: "How much do you tip at a Colombian restaurant?", a: "The voluntary 10% the server asks about, and nothing more. At casual eateries, street food and cafes, no tip is expected." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Colombia country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Colombia.html", type: "gov" }
+        ],
+        judgment: "Colombia's voluntary 10% and the server asking to include it are well-established restaurant conventions. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "taxis-and-apps",
       glance: [
         { k: "The one rule", v: "Never hail on the street" },

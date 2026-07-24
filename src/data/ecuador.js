@@ -175,6 +175,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "A 10% service, often added" },
+        { k: "Currency", v: "US dollars (yes, really)" },
+        { k: "Great service", v: "A little extra is welcome" },
+        { k: "Casual spots", v: "No tip" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Ecuador: the 10%, and it is in dollars (2026) | True Trip Costs",
+      description: "How tipping works in Ecuador for US travelers in 2026: the 10% service charge often on the bill, why the currency is US dollars, and what to leave for good service. Checked July 2026.",
+      h1: "Tipping in Ecuador",
+      lede: "In Ecuador, a 10% service charge is often already on your restaurant bill, and the whole thing is in US dollars, so there is no conversion to think about. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "In Ecuador, better restaurants <b>often add a 10% service charge</b> to the bill (alongside the sales tax), so a tip is <b>largely built in</b> and you do <b>not need to add more</b>. A convenient quirk: Ecuador uses the <b>US dollar</b> as its currency, so tips are in <b>dollars</b> with no conversion. For genuinely good service, a <b>little extra</b> is welcome. At <b>casual spots and markets</b>, no tip is expected. For <b>taxis</b>, rounding up is a courtesy, not a rule.",
+      sections: [
+        {
+          h: "The 10% service, often on the bill",
+          icon: "receipt",
+          key: { fig: "10%", tag: "Often already added", text: "Better restaurants often add a 10% service charge alongside the tax. That covers the tip, so you need not add more.", tone: "teal" },
+          p: [
+            "At <b>better restaurants</b>, a <b>10% service charge</b> is <b>often added</b> to the bill, alongside the sales tax. That <b>stands in for a tip</b>, so you do <b>not need to add more</b>. Check the bill so you know whether it is there.",
+            "At <b>casual eateries, set-menu almuerzo spots and markets</b>, there is usually no service charge and <b>no tip is expected</b>."
+          ]
+        },
+        {
+          h: "It is all in US dollars",
+          icon: "usd",
+          key: { fig: "US dollars", tag: "No conversion", text: "Ecuador uses the US dollar as its currency, so tips are in dollars with no conversion to think about.", tone: "teal" },
+          p: [
+            "A convenient quirk for US visitors: <b>Ecuador uses the US dollar</b> as its official currency (it adopted the dollar in 2000). So any <b>tip is simply in dollars</b>, with no exchange rate or conversion to work out.",
+            "For genuinely good service where no service charge applied, leaving a <b>little extra</b>, rounding up or roughly 10%, is a welcome gesture. Keep small bills and coins, which are handy for tips."
+          ]
+        },
+        {
+          h: "Taxis, and paying",
+          icon: "cash",
+          key: { fig: "Round up", tag: "Not a rule", text: "For taxis, rounding up is a courtesy, not a rule. Leave anything extra in cash, in US dollars.", tone: "teal" },
+          p: [
+            "For <b>taxis</b>, <b>rounding up</b> is a courtesy but <b>not a rule</b>; agree the fare or use the meter first. <b>Hotel porters</b>, a dollar or two a bag is a kind gesture. Leave any extra in <b>cash, in dollars</b>. For the wider picture, see <a href='/ecuador/cash-or-card'>cash or card in Ecuador</a> and the <a href='/ecuador'>Ecuador money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Ecuador?", a: "Lightly. Better restaurants often add a 10% service charge that covers the tip, so you need not add more. For good service where none applied, a little extra is welcome. At casual spots and markets, no tip is expected." },
+        { q: "What currency do you tip in Ecuador?", a: "US dollars. Ecuador uses the US dollar as its official currency, so tips are in dollars with no conversion to think about. Keep small bills and coins for tips." },
+        { q: "Is there a service charge in Ecuadorian restaurants?", a: "Often, at better restaurants: a 10% service charge alongside the tax. Check the bill; if it is there, it covers the tip. Casual spots usually have no service charge." },
+        { q: "Do you tip taxi drivers in Ecuador?", a: "Rounding up is a courtesy but not a rule. Agree the fare or use the meter first, and the total is what you pay." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Ecuador country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Ecuador.html", type: "gov" }
+        ],
+        judgment: "Ecuador uses the US dollar, and the 10% restaurant service charge is a common but not universal convention. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "visa-and-galapagos-fees",
       glance: [
         { k: "Visa", v: "None, 90 days per year" },

@@ -171,6 +171,64 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "On the bill", v: "10% service + 18% tax" },
+        { k: "Your server", v: "A small extra (5 to 10%) is customary" },
+        { k: "Resorts", v: "Tips for staff are appreciated" },
+        { k: "How", v: "US dollars or pesos" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in the Dominican Republic: the 10 and 18 (2026) | True Trip Costs",
+      description: "How tipping works in the Dominican Republic for US travelers in 2026: the 10% service charge and 18% tax on the bill, why a small extra for your server is customary, and resort tipping. Checked July 2026.",
+      h1: "Tipping in the Dominican Republic",
+      lede: "In the Dominican Republic, a 10% service charge and an 18% tax are added to restaurant bills, so the total runs well above the menu. A small extra for your server is customary. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "In the Dominican Republic, restaurant bills add a <b>10% service charge</b> and an <b>18% tax (ITBIS)</b>, so the total runs <b>well above the menu price</b>. The 10% service is <b>pooled among staff</b>, so it is customary to leave a <b>small extra of about 5 to 10%</b> directly for your server for good service. At <b>all-inclusive resorts</b>, tips for helpful staff are appreciated. For <b>taxis</b>, agree the fare and round up. Tips can be in <b>US dollars or pesos</b>, both widely accepted.",
+      sections: [
+        {
+          h: "The 10 and 18: service and tax",
+          icon: "receipt",
+          key: { fig: "10% + 18%", tag: "Total runs well above menu", text: "Bills add a 10% service charge and an 18% tax, so the total runs well above the menu price. Read the bill so you are not surprised.", tone: "amber" },
+          p: [
+            "The thing to know is what the locals call the <b>10 and 18</b>: restaurant bills add a <b>10% service charge</b> plus an <b>18% tax (ITBIS)</b> on top of the listed prices. So the <b>total runs roughly 28% above the menu</b>, which surprises visitors.",
+            "<b>Read the bill</b> so you understand the two charges. The 10% is the service charge; the 18% is government tax, not a tip."
+          ]
+        },
+        {
+          h: "A small extra for your server",
+          icon: "coins",
+          key: { fig: "5-10%", tag: "Directly to your server", text: "The 10% service is pooled, so a small extra of about 5 to 10% directly to your server for good service is customary.", tone: "teal" },
+          p: [
+            "Because the <b>10% service charge is pooled</b> among staff and modest, it is <b>customary to leave a small extra</b>, about <b>5 to 10%</b>, <b>directly for your server</b> for good service. This is the tip that actually reaches the person who served you.",
+            "At <b>all-inclusive resorts</b>, where meals are prepaid, tipping helpful <b>bar staff, servers and housekeeping</b> a small amount is appreciated and keeps service warm."
+          ]
+        },
+        {
+          h: "Taxis, and paying",
+          icon: "cash",
+          key: { fig: "USD or pesos", tag: "Both accepted", text: "For taxis, agree the fare and round up. Tips can be in US dollars or Dominican pesos, both widely accepted.", tone: "teal" },
+          p: [
+            "For <b>taxis</b>, <b>agree the fare first</b> (they are not always metered) and round up for a courtesy. Tips can be in <b>US dollars or Dominican pesos</b>, both widely accepted, so small US bills work fine. For the wider picture, see the <a href='/dominican-republic'>Dominican Republic money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in the Dominican Republic?", a: "Yes, a small extra. Bills already add a 10% service charge (plus 18% tax), but the 10% is pooled, so it is customary to leave about 5 to 10% directly for your server for good service." },
+        { q: "What is the 10 and 18 in the Dominican Republic?", a: "A 10% service charge and an 18% tax (ITBIS) added to restaurant bills, so the total runs roughly 28% above the menu price. The 10% is the service charge; the 18% is government tax, not a tip." },
+        { q: "Do you tip at all-inclusive resorts in the Dominican Republic?", a: "It is appreciated. Meals are prepaid, but tipping helpful bar staff, servers and housekeeping a small amount is customary and keeps service warm. US dollars or pesos both work." },
+        { q: "Can you tip in US dollars in the Dominican Republic?", a: "Yes. Both US dollars and Dominican pesos are widely accepted for tips, so small US bills are fine." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Dominican Republic country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/DominicanRepublic.html", type: "gov" }
+        ],
+        judgment: "The 10% service charge and 18% ITBIS on Dominican bills are standard, and the customary small extra for your server is our practical read from traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "e-ticket",
       glance: [
         { k: "Visa", v: "None for a tourist stay" },

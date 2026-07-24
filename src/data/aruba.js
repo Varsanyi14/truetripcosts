@@ -154,6 +154,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "US-style, tourism-driven" },
+        { k: "Restaurants", v: "Check for a 10 to 15% service charge" },
+        { k: "If none", v: "15 to 18%" },
+        { k: "How", v: "US dollars are fine" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Aruba: closer to US-style (2026) | True Trip Costs",
+      description: "How tipping works in Aruba for US travelers in 2026: why it leans US-style, the 10 to 15% service charge to check for, how much to tip if none is added, and paying in US dollars. Checked July 2026.",
+      h1: "Tipping in Aruba",
+      lede: "Aruba leans closer to US-style tipping than most of the Caribbean, thanks to heavy US tourism. Check the bill for a service charge, and tip a bit more if none is added. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Aruba leans <b>closer to US-style tipping</b> than most places, thanks to heavy US tourism. Many <b>restaurants add a 10 to 15% service charge</b>, so <b>check the bill</b>: if it is there, that is the tip, though rounding up a little is common. If <b>no</b> service charge is added, <b>15 to 18%</b> is normal. At <b>resorts</b>, tipping helpful staff is appreciated. For <b>taxis</b> (fixed-rate, no meter), rounding up is a courtesy. <b>US dollars are fine</b>, since they are accepted everywhere alongside the florin.",
+      sections: [
+        {
+          h: "Closer to US-style than the region",
+          icon: "tip",
+          key: { fig: "15-18%", tag: "If no service charge", text: "Aruba leans US-style thanks to US tourism. If no service charge is added, 15 to 18% is normal at a restaurant.", tone: "teal" },
+          p: [
+            "Because Aruba runs on <b>US tourism</b>, tipping expectations are <b>closer to home</b> than in much of the Caribbean or Latin America. At a <b>restaurant with no service charge</b>, <b>15 to 18%</b> for good service is normal, and staff will expect something.",
+            "It is more generous than the light-tipping norms of Europe, so budget for it as you would in the US."
+          ]
+        },
+        {
+          h: "Check the bill for a service charge",
+          icon: "receipt",
+          key: { fig: "10-15%", tag: "Often already added", text: "Many restaurants add a 10 to 15% service charge. If it is there, that is the tip, though rounding up a little is common.", tone: "teal" },
+          p: [
+            "Many <b>restaurants add a service charge</b>, often <b>10 to 15%</b>, to the bill. If a <b>service charge is there</b>, that is largely the tip, so you do not need a full extra; <b>rounding up</b> or adding a couple of percent for great service is common.",
+            "Since the service charge is sometimes only <b>10%</b>, a small top-up brings it in line with local expectations."
+          ]
+        },
+        {
+          h: "Resorts, taxis, and dollars",
+          icon: "usd",
+          key: { fig: "US dollars", tag: "Accepted everywhere", text: "Tips can be in US dollars, accepted everywhere. At resorts, tip helpful staff; taxis are fixed-rate, so round up.", tone: "teal" },
+          p: [
+            "At <b>resorts</b>, tipping helpful <b>bar staff, servers and housekeeping</b> is appreciated. <b>Taxis</b> are <b>fixed-rate</b> (no meter), so agree the posted fare and round up as a courtesy. Tips can be in <b>US dollars</b>, which are accepted everywhere alongside the Aruban florin. For the wider picture, see <a href='/aruba/cash-or-card'>cash or card in Aruba</a> and the <a href='/aruba'>Aruba money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Aruba?", a: "Yes, and more than in much of the Caribbean, since Aruba leans US-style thanks to US tourism. Check the bill for a 10 to 15% service charge; if none is added, 15 to 18% is normal at a restaurant." },
+        { q: "Is a service charge added in Aruba?", a: "Often: many restaurants add 10 to 15%. If it is there, that is largely the tip, though rounding up or adding a couple of percent for great service is common. If none is added, tip 15 to 18%." },
+        { q: "Can you tip in US dollars in Aruba?", a: "Yes. US dollars are accepted everywhere alongside the Aruban florin, so tipping in dollars is completely normal." },
+        { q: "Do you tip taxi drivers in Aruba?", a: "Aruba taxis are fixed-rate with no meter, so agree the posted fare and round up as a courtesy. It is not a large tip, just a small rounding." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Aruba information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Aruba.html", type: "gov" }
+        ],
+        judgment: "Aruba's tipping leans US-style because of heavy US tourism, and the restaurant service charge varies by venue. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Florin, but US dollars work everywhere" },
