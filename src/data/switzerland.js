@@ -170,6 +170,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Light, service included" },
+        { k: "Restaurants", v: "Round up, up to about 10%" },
+        { k: "Not expected", v: "But welcome for good service" },
+        { k: "How", v: "Cash, or tell the server" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Switzerland: light, and what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Switzerland for US travelers in 2026: why service is already included, how much to round up for good service, and why even that adds up in an expensive country. Checked July 2026.",
+      h1: "Tipping in Switzerland",
+      lede: "Switzerland is a light-tipping country. Service was folded into prices long ago and staff earn strong wages, so nobody expects a US-style percentage. Rounding up for good service is the norm. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Switzerland has a <b>light tipping culture</b>. Service has been <b>included</b> since tipping was folded into prices decades ago, and staff earn <b>strong wages</b>, so there is <b>no expected percentage</b> and no obligation. For good service, <b>rounding up</b> is the norm, or up to about <b>10%</b> at a nicer restaurant if you were really pleased. Because Switzerland is <b>expensive</b>, even rounding up adds up, so do not feel you owe more. Leave a tip in <b>cash</b> (francs) or tell the server the total.",
+      sections: [
+        {
+          h: "Light tipping, since service is included",
+          icon: "coins",
+          key: { fig: "Included", tag: "Not expected", text: "Service has been included in prices for decades and staff earn strong wages, so tipping is light and never obligatory.", tone: "teal" },
+          p: [
+            "Switzerland folded <b>service into prices</b> decades ago, and staff earn <b>strong wages</b>, so tipping is <b>light and not expected</b>. There is <b>no US-style percentage</b> to track, and no one will chase you for one.",
+            "For genuinely good service, the norm is simply to <b>round up</b> the bill to a convenient figure, or leave up to about <b>10%</b> at a nicer restaurant if you were really pleased. It is a courtesy, not an obligation."
+          ]
+        },
+        {
+          h: "When and how much to leave",
+          icon: "receipt",
+          key: { fig: "Round up", tag: "Up to about 10%", text: "For good service, round up or leave up to about 10% at a nicer place. Switzerland is expensive, so even rounding up adds up.", tone: "teal" },
+          p: [
+            "At an everyday meal, <b>rounding up</b> is plenty. At a <b>nicer restaurant</b> where service was excellent, up to about <b>10%</b> is generous. At a <b>cafe or bar</b>, leaving the small change is normal.",
+            "Because Switzerland is <b>one of Europe's most expensive</b> countries, even rounding up a bill is a meaningful amount, so <b>do not feel you owe more</b>. Round up a taxi fare, and leave a franc or two per bag for a porter."
+          ]
+        },
+        {
+          h: "Cash, or tell the server",
+          icon: "cash",
+          key: { fig: "Francs", tag: "Cash or say the total", text: "Leave a tip in francs, or tell the server the total when paying by card. There is no need for a set percentage.", tone: "teal" },
+          p: [
+            "Leave any tip in <b>cash, in francs</b>, or, when paying by card, <b>tell the server the total</b> you want to pay including the tip. Keep a few <b>franc coins and small notes</b> handy. For the wider picture, see <a href='/switzerland/cash-or-card'>cash or card in Switzerland</a> and the <a href='/switzerland'>Switzerland money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Switzerland?", a: "Only lightly, and only if you want to. Service is included in prices and staff earn strong wages, so there is no expected percentage. For good service, round up, or up to about 10% at a nicer restaurant." },
+        { q: "Is a service charge added in Switzerland?", a: "Service was folded into prices decades ago, so the listed price already covers it. There is no separate US-style tip expected; rounding up for good service is the norm." },
+        { q: "How much should I tip at a Swiss restaurant?", a: "Nothing is required. Round up the bill for good service, or up to about 10% at a nicer place if you were really pleased. Switzerland is expensive, so even rounding up is a meaningful amount." },
+        { q: "Cash or card for tips in Switzerland?", a: "Either. Leave cash in francs, or tell the server the total you want to pay when paying by card. There is no need for a set percentage." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Switzerland country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Switzerland.html", type: "gov" }
+        ],
+        judgment: "Swiss tipping is light because service was long ago included in prices, and this is our practical read of current norms rather than a single official table. Amounts are a guide; rounding up is the local habit. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Swiss franc (CHF), not euro" },

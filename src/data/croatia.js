@@ -177,6 +177,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Modest, appreciated" },
+        { k: "Restaurants", v: "Round up, or about 10%" },
+        { k: "Currency", v: "Euros (since 2023)" },
+        { k: "How", v: "Cash, in euros" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Croatia: what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Croatia for US travelers in 2026: why it is modest, how much to leave at restaurants and cafes, and why you now tip in euros rather than kuna. Checked July 2026.",
+      h1: "Tipping in Croatia",
+      lede: "Croatia has a modest tipping culture. Staff earn a wage, tips are appreciated rather than expected, and since 2023 you tip in euros, not the old kuna. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Croatia has a <b>modest tipping culture</b>. Staff earn a <b>wage</b>, so tips are <b>appreciated but not required</b>, and there is <b>no US-style percentage</b>. At a <b>restaurant</b>, <b>rounding up</b> or leaving about <b>10%</b> for good service is generous, more in a smart tourist spot; at a <b>cafe or konoba</b>, the <b>small change</b> is plenty. Since <b>2023 the currency is the euro</b> (not the old kuna), so leave tips in <b>euro cash</b>. Do not feel pressured to tip the way you would at home.",
+      sections: [
+        {
+          h: "How much to leave, by situation",
+          icon: "euro",
+          key: { fig: "About 10%", tag: "Restaurants, if you like", text: "Tips are appreciated but not required. For good restaurant service, round up or leave about 10%. At a cafe, the small change is plenty.", tone: "teal" },
+          p: [
+            "At a <b>sit-down restaurant</b>, tipping is <b>optional but appreciated</b>: for good service, <b>rounding up</b> or leaving about <b>10%</b> is generous, a little more at a smart tourist restaurant. At a <b>cafe, bar or konoba</b> (tavern), leaving the <b>small change</b> or a coin or two is normal.",
+            "Elsewhere: <b>round up</b> a taxi fare, leave <b>1 to 2 euros per bag</b> for a hotel porter, and a euro or two a day for housekeeping if you like. For a private guide or boat trip, a larger tip reflects a real service."
+          ]
+        },
+        {
+          h: "It is euros now, so tip in euros",
+          icon: "receipt",
+          key: { fig: "Euros now", tag: "Not the old kuna", text: "Croatia switched to the euro in 2023, so tip in euros. Some tourist spots may add a service charge, so check the bill first.", tone: "teal" },
+          p: [
+            "Since Croatia <b>joined the euro in 2023</b>, tips are in <b>euros</b>, not the old kuna, so ignore older advice quoting kuna amounts.",
+            "Most places do <b>not</b> add a service charge, but some <b>tourist-area restaurants</b> do. If a <b>service charge appears</b> on the bill, you <b>do not need to tip on top</b>, so read the bill before adding anything."
+          ]
+        },
+        {
+          h: "Leave it in cash",
+          icon: "cash",
+          key: { fig: "Cash", tag: "In euros", text: "Leave a tip in euro coins or small notes. Card terminals often have no tip line, and cash reaches the staff directly.", tone: "teal" },
+          p: [
+            "Leave any tip in <b>cash, in euros</b>, on the table. Croatian card machines often have <b>no tip prompt</b>, and cash reaches the staff directly. Keep a few <b>euro coins and small notes</b> for tips and cafe change. For the wider picture, see <a href='/croatia/cash-or-card'>cash or card in Croatia</a> and the <a href='/croatia'>Croatia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Croatia?", a: "Modestly, if you want to. Staff earn a wage, so tips are appreciated but not required. For good restaurant service, round up or leave about 10%. At a cafe, the small change is plenty." },
+        { q: "Do you tip in euros or kuna in Croatia?", a: "Euros. Croatia adopted the euro in 2023, retiring the kuna, so tips are in euros now. Ignore older advice quoting kuna amounts." },
+        { q: "How much should I tip at a Croatian restaurant?", a: "Nothing is required. For good service, rounding up or about 10% is generous, a little more at a smart tourist spot. At a cafe or konoba, the small change is normal." },
+        { q: "Is a service charge added in Croatia?", a: "Usually not, but some tourist-area restaurants add one. If a service charge is on the bill, you do not need to tip on top, so read the bill first." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Croatia country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Croatia.html", type: "gov" }
+        ],
+        judgment: "Croatian tipping is cultural and modest, and the euro switch in 2023 means older kuna guidance is out of date. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Euro (EUR), since 2023" },

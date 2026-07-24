@@ -176,6 +176,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Modest, appreciated" },
+        { k: "Restaurants", v: "Round up, or 5 to 10%" },
+        { k: "Check the bill", v: "For a service charge" },
+        { k: "How", v: "Cash, in euros" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Greece: what you actually owe at the taverna (2026) | True Trip Costs",
+      description: "How tipping works in Greece for US travelers in 2026: why it is modest, how much to leave at tavernas and cafes, and when a service charge is already on the bill. Checked July 2026.",
+      h1: "Tipping in Greece",
+      lede: "Greece has a modest tipping culture. Staff earn a wage, tips are appreciated rather than expected, and there is no US-style percentage. Here is what you actually owe, and when to check the bill first.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Greece has a <b>modest tipping culture</b>. Staff earn a <b>wage</b>, so tips are <b>appreciated but not obligatory</b>, and there is <b>no US-style percentage</b>. At a <b>restaurant or taverna</b>, <b>rounding up</b> or leaving <b>5 to 10%</b> for good service is generous; at a <b>cafe or for drinks</b>, the <b>small change</b> is plenty. Some tourist-area places add a <b>service charge</b>, so check the bill before adding more. Leave tips in <b>cash</b> (euros), which reaches the staff directly.",
+      sections: [
+        {
+          h: "How much to leave, by situation",
+          icon: "euro",
+          key: { fig: "5-10%", tag: "Tavernas, if you like", text: "Tips are appreciated but not obligatory. For good service at a taverna, round up or leave 5 to 10%. At a cafe, the small change is plenty.", tone: "teal" },
+          p: [
+            "At a <b>restaurant or taverna</b>, tipping is <b>optional but appreciated</b>: for good service, <b>rounding up</b> or leaving <b>5 to 10%</b> is generous. At a <b>cafe, bar or for drinks</b>, leaving the <b>small change</b> or a coin or two is normal, and often nothing at all.",
+            "Elsewhere: <b>round up</b> a taxi fare, leave <b>1 to 2 euros per bag</b> for a hotel porter, and a euro or two a day for housekeeping if you like. For a private guide or boat tour, a larger tip reflects a real service."
+          ]
+        },
+        {
+          h: "Check the bill for a service charge",
+          icon: "receipt",
+          key: { fig: "Check first", tag: "Tourist-area spots", text: "Some tourist-area tavernas add a service charge. If it is on the bill, you do not need to tip on top, so read the bill first.", tone: "teal" },
+          p: [
+            "Most places do <b>not</b> add a service charge, and the listed price is what you pay. But some <b>tourist-area tavernas and restaurants</b>, especially on the islands and in central Athens, add a <b>service charge</b> to the bill.",
+            "If a <b>service charge appears</b>, you <b>do not need to tip on top</b>, so read the bill before you add anything. A small extra for excellent service is still a kind gesture."
+          ]
+        },
+        {
+          h: "Leave it in cash",
+          icon: "cash",
+          key: { fig: "Cash", tag: "In euros", text: "Leave a tip in coins or small notes on the table. Card terminals often have no tip line, and cash reaches the staff directly.", tone: "teal" },
+          p: [
+            "Leave any tip in <b>cash, in euros</b>, on the table or in the dish. Greek card machines often have <b>no tip prompt</b>, and cash reaches the staff directly. Keep a few <b>euro coins and small notes</b> for tips and cafe change. For the wider picture, see the <a href='/greece'>Greece money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Greece?", a: "Modestly, if you want to. Staff earn a wage, so tips are appreciated but not obligatory. For good taverna service, round up or leave 5 to 10%. At a cafe, the small change is plenty." },
+        { q: "Is a service charge added in Greece?", a: "Usually not, but some tourist-area tavernas and restaurants, especially on the islands and in central Athens, add one. If a service charge is on the bill, you do not need to tip on top, so read the bill first." },
+        { q: "How much should I tip at a Greek taverna?", a: "Nothing is required. For good service, rounding up or 5 to 10% is generous. At a cafe or bar, the small change or a coin or two is normal, and often nothing at all." },
+        { q: "Cash or card for tips in Greece?", a: "Cash. Card terminals often have no tip line, so leave coins or small notes on the table, where they reach the staff directly." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Greece country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Greece.html", type: "gov" }
+        ],
+        judgment: "Greek tipping is cultural and modest, and the tourist-area service charge is real but not universal. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "taxis-and-apps",
       glance: [
         { k: "Apps", v: "FreeNow (also Uber, Bolt)" },

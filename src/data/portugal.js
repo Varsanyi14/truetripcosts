@@ -163,6 +163,64 @@ export default {
   // deeper on Portugal", and each spoke links back here, top and bottom.
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Light, not expected" },
+        { k: "Restaurants", v: "Round up, or 5 to 10%" },
+        { k: "Couvert", v: "A charge you can decline" },
+        { k: "How", v: "Cash, in euros" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Portugal: light, and what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Portugal for US travelers in 2026: why it is modest, how much to leave at restaurants and cafes, and what the couvert on your table is. Checked July 2026.",
+      h1: "Tipping in Portugal",
+      lede: "Portugal is a light-tipping country. Staff earn a wage, nobody expects a US-style percentage, and a modest tip for good service is welcome but never required. Here is what you actually owe, and what that couvert on the table is.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Portugal has a <b>light tipping culture</b>. Staff earn a <b>wage</b> and there is <b>no expected percentage</b>. For good service at a <b>restaurant</b>, <b>rounding up</b> or leaving <b>5 to 10%</b> is generous; at a <b>cafe or pastelaria</b>, the <b>small change</b> is plenty. One thing to know: the <b>couvert</b> (bread, olives or cheese brought to your table) is a <b>small charge you can decline</b>, not a tip, so send it back if you do not want it. Leave any tip in <b>cash</b>, and do not feel pressured to tip the way you would at home.",
+      sections: [
+        {
+          h: "How much to leave, by situation",
+          icon: "euro",
+          key: { fig: "5-10%", tag: "Restaurants, if you like", text: "Staff earn a wage, so nothing is required. For good restaurant service, round up or leave 5 to 10%. At a cafe, the small change is plenty.", tone: "teal" },
+          p: [
+            "At a <b>sit-down restaurant</b>, tipping is <b>optional</b>: for good service, <b>rounding up</b> or leaving <b>5 to 10%</b> is generous, well below the US norm. At a <b>cafe, pastelaria or for drinks</b>, the Portuguese typically leave just the <b>small change</b> or a coin or two.",
+            "Elsewhere: <b>round up</b> a taxi fare, leave <b>1 to 2 euros per bag</b> for a hotel porter, and a euro or two a day for housekeeping if you like."
+          ]
+        },
+        {
+          h: "The couvert is a charge, not a tip",
+          icon: "receipt",
+          key: { fig: "Optional", tag: "You can decline it", text: "The bread, olives or cheese brought to your table is the couvert, a small charge, not a free gift or a tip. Send it back if you do not want it.", tone: "teal" },
+          p: [
+            "When you sit down, a waiter may bring <b>bread, olives, cheese or other nibbles</b> you did not order. This is the <b>couvert</b>, and it is a <b>small charge</b>, typically a euro or two per item or per person, <b>not a free gift and not a tip</b>.",
+            "If you do not want it, it is perfectly normal to <b>wave it away or send it back</b>, and you will not be charged. If you eat it, it appears on the bill. Either way, it is separate from any tip you choose to leave."
+          ]
+        },
+        {
+          h: "Leave it in cash",
+          icon: "cash",
+          key: { fig: "Cash", tag: "In euros", text: "Leave a tip in coins or small notes. Card terminals often have no tip line, and cash reaches the staff directly.", tone: "teal" },
+          p: [
+            "Leave any tip in <b>cash, in euros</b>. Portuguese card machines often have <b>no tip prompt</b>, and cash reaches the staff directly. Keep a few <b>euro coins and small notes</b> for tips and cafe change. For the wider picture, see the <a href='/portugal'>Portugal money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Portugal?", a: "Only modestly, and only if you want to. Staff earn a wage and there is no expected percentage. For good restaurant service, round up or leave 5 to 10%. At a cafe, the small change is plenty." },
+        { q: "What is the couvert in Portugal?", a: "The bread, olives, cheese or nibbles a waiter brings to your table. It is a small charge, typically a euro or two, not a free gift and not a tip. You can wave it away or send it back and you will not be charged." },
+        { q: "How much should I tip at a Portuguese restaurant?", a: "Nothing is required. For good service, rounding up or 5 to 10% is generous. At a cafe or pastelaria, the small change or a coin or two is normal. Do not feel pressured to tip 15 to 20% the way you would at home." },
+        { q: "Cash or card for tips in Portugal?", a: "Cash. Card terminals often have no tip line, so leave coins or small notes on the table, where they reach the staff directly." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Portugal country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Portugal.html", type: "gov" }
+        ],
+        judgment: "Portuguese tipping is cultural and modest, and the couvert is a longstanding restaurant practice you can decline. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "euronet-atm-fees",
       glance: [
         { k: "The rule", v: "Use a Multibanco (MB) ATM" },
