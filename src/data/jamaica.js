@@ -168,6 +168,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Jamaican dollar (JMD), dollars accepted" },
+        { k: "Cards", v: "Resorts, hotels, nicer restaurants" },
+        { k: "Cash for", v: "Small vendors, route taxis, markets" },
+        { k: "On a card", v: "Choose Jamaican dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Jamaica, or can I use cards? (2026) | True Trip Costs",
+      description: "Both. Cards work at resorts and hotels, but small vendors, markets and route taxis run on cash. Pay in Jamaican dollars for the best value. Choose Jamaican dollars, not US dollars. Checked July 2026.",
+      h1: "Do I need cash in Jamaica, or can I use cards?",
+      lede: "Short answer: cards at resorts and hotels, and Jamaican-dollar cash for small vendors, markets and route taxis. US dollars are accepted in tourist areas, but local currency gives better value. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Both. Jamaica takes <b>cards at resorts, hotels and nicer restaurants</b>, where <b>contactless</b> is common, but <b>small vendors, markets, route taxis and street food</b> run on cash. It is a <b>dual-currency</b> tourist economy: the <b>Jamaican dollar</b> is official, but <b>US dollars are widely accepted</b> in resort areas, usually at a less favorable rate. Pay in <b>Jamaican dollars</b> for local prices. Keep some for the small stuff. Choose <b>Jamaican dollars, not US dollars</b>, on any card or ATM.",
+      sections: [
+        {
+          h: "Cards at resorts, cash for local life",
+          icon: "phoneok",
+          key: { fig: "Dual currency", tag: "Cards at resorts", text: "Cards work at resorts, hotels and nicer restaurants; small vendors, markets and route taxis are cash. Both currencies circulate.", tone: "teal" },
+          p: [
+            "Jamaica takes <b>cards at resorts, hotels, nicer restaurants and larger shops</b>, where <b>contactless</b> is common. But <b>small vendors, markets, street food and route taxis</b> run largely on <b>cash</b>, so carry <b>Jamaican dollars</b>.",
+            "It is a <b>dual-currency</b> tourist economy: the <b>Jamaican dollar</b> is official, but <b>US dollars are widely accepted</b> in resort areas, usually at a <b>less favorable rate</b> than paying in local currency."
+          ]
+        },
+        {
+          h: "Pay in Jamaican dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Local currency is better", text: "Choose Jamaican dollars on a card, and prefer paying in them in cash: US dollars in tourist areas come at a poorer rate.", tone: "amber" },
+          p: [
+            "On a <b>card</b>, if asked to charge in <b>US or Jamaican dollars, choose Jamaican dollars</b>, since US dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your bank's. In <b>cash</b>, US dollars are accepted in tourist zones but usually at a <b>poorer rate</b>.",
+            "So <b>pay in Jamaican dollars</b> for local prices. Use a bank ATM, and a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "Cash for small vendors and route taxis",
+          icon: "usd",
+          key: { fig: "Local cash", tag: "For the small stuff", text: "Keep Jamaican-dollar cash for small vendors, markets, street food and route taxis, where cards are not taken.", tone: "teal" },
+          p: [
+            "Keep <b>Jamaican-dollar cash</b> for the small stuff: <b>markets, small vendors, street food (a patty and a drink) and route taxis</b>. Small US bills can work in tourist zones, but local currency is simpler and better value.",
+            "For tipping norms, including the service charge some places add, see <a href='/jamaica/tipping'>tipping in Jamaica</a>, and for the wider picture, the <a href='/jamaica'>Jamaica money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Jamaica?", a: "Yes, for daily life. Cards work at resorts, hotels and nicer restaurants, but small vendors, markets, street food and route taxis run on cash. Carry Jamaican dollars." },
+        { q: "Should I pay in Jamaican dollars or US dollars in Jamaica?", a: "Jamaican dollars, for the best value. On a card, choose Jamaican dollars to avoid the 3 to 8% conversion. In cash, US dollars are accepted in tourist zones but usually at a poorer rate, so local currency is better." },
+        { q: "Are US dollars accepted in Jamaica?", a: "Yes, widely in resort and tourist areas, though usually at a less favorable rate than paying in Jamaican dollars. Away from tourist zones, local currency is expected." },
+        { q: "Can I use cards everywhere in Jamaica?", a: "At resorts, hotels and nicer restaurants, yes, with contactless common. Small vendors, markets, street food and route taxis run on cash, so carry Jamaican dollars for those." }
+      ],
+      sources: {
+        links: [
+          { label: "Bank of Jamaica: official exchange rate information", url: "https://boj.org.jm", type: "gov" },
+          { label: "US State Department: Jamaica country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Jamaica.html", type: "gov" }
+        ],
+        judgment: "Jamaica is a dual-currency tourist economy where paying in Jamaican dollars beats paying in US dollars. The rate moves, and the firm rule is to decline US-dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "10 to 15%, US-influenced" },

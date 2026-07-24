@@ -171,6 +171,66 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Peso (DOP), dollars accepted" },
+        { k: "Cards", v: "Resorts, hotels, nicer restaurants" },
+        { k: "Cash for", v: "Small vendors, taxis, colmados" },
+        { k: "On a card", v: "Choose pesos, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in the Dominican Republic, or can I use cards? (2026) | True Trip Costs",
+      description: "Both. Cards work at resorts and hotels, but small vendors, taxis and colmados run on cash. Pay in pesos for the best value. Choose pesos, not dollars. Checked July 2026.",
+      h1: "Do I need cash in the Dominican Republic, or can I use cards?",
+      lede: "Short answer: cards at resorts and hotels, and peso cash for small vendors, taxis and corner stores. Dollars are accepted in tourist areas, but pesos give better value. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Both. The Dominican Republic takes <b>cards at resorts, hotels and nicer restaurants</b>, where <b>contactless</b> is common, but <b>small vendors, taxis, markets and colmados (corner stores)</b> run on cash. It is a <b>dual-currency</b> tourist economy: the <b>peso</b> is official, but <b>US dollars are widely accepted</b> in resort areas. Pay in <b>pesos</b> for local prices, since dollar change comes back in pesos at a variable rate. Keep <b>peso cash</b> for the small stuff. Choose <b>pesos, not dollars</b>, on any card or ATM.",
+      sections: [
+        {
+          h: "Cards at resorts, cash for local life",
+          icon: "phoneok",
+          key: { fig: "Dual currency", tag: "Cards at resorts", text: "Cards work at resorts, hotels and nicer restaurants; small vendors, taxis and colmados are cash. Both pesos and US dollars circulate.", tone: "teal" },
+          p: [
+            "The Dominican Republic takes <b>cards at resorts, hotels, nicer restaurants and larger shops</b>, where <b>contactless</b> is common. But <b>small vendors, street food, markets, taxis and colmados (corner stores)</b> run largely on <b>cash</b>, so carry <b>pesos</b>.",
+            "It is a <b>dual-currency</b> tourist economy: the <b>peso</b> is official, but <b>US dollars are widely accepted</b> in resort areas, though usually at a less favorable rate than paying in pesos."
+          ]
+        },
+        {
+          h: "Pay in pesos, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Pesos give better value", text: "Choose pesos on a card, and prefer paying in pesos in cash: dollar change comes back in pesos at a variable rate.", tone: "amber" },
+          p: [
+            "On a <b>card</b>, if asked to charge in <b>dollars or pesos, choose pesos</b>, since dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your bank's. In <b>cash</b>, US dollars are accepted in tourist areas but <b>change comes back in pesos</b> at the vendor's rate, which is usually poor.",
+            "So <b>pay in pesos</b> for local prices. Use a bank ATM (some dispense both pesos and dollars), and use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "Cash for small vendors and taxis",
+          icon: "dop",
+          key: { fig: "Peso cash", tag: "For the small stuff", text: "Keep peso cash for small vendors, street food, taxis and colmados, where cards are not taken.", tone: "teal" },
+          p: [
+            "Keep <b>peso cash</b> for the small stuff: <b>street food, small vendors, taxis (agree the fare first) and colmados</b>. Small US bills can work in a pinch in tourist zones, but pesos are simpler and better value.",
+            "For tipping norms, including the service charge and tax on restaurant bills, see <a href='/dominican-republic/tipping'>tipping in the Dominican Republic</a>, and for the wider picture, the <a href='/dominican-republic'>Dominican Republic money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in the Dominican Republic?", a: "Yes, for daily life. Cards work at resorts, hotels and nicer restaurants, but small vendors, street food, taxis, markets and colmados run on cash. Carry pesos." },
+        { q: "Should I pay in pesos or dollars in the Dominican Republic?", a: "Pesos, for the best value. On a card, choose pesos, not dollars, to avoid the 3 to 8% conversion. In cash, dollars are accepted in tourist areas but change comes back in pesos at a poor rate, so pesos are better." },
+        { q: "Are US dollars accepted in the Dominican Republic?", a: "Yes, widely in resort and tourist areas, though usually at a less favorable rate than paying in pesos. Away from tourist zones, pesos are expected." },
+        { q: "Can I use cards everywhere in the Dominican Republic?", a: "At resorts, hotels and nicer restaurants, yes, with contactless common. Small vendors, taxis, markets and colmados run on cash, so carry pesos for those." }
+      ],
+      sources: {
+        links: [
+          { label: "Banco Central de la Republica Dominicana: official exchange rate information", url: "https://www.bancentral.gov.do", type: "gov" },
+          { label: "US State Department: Dominican Republic country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/DominicanRepublic.html", type: "gov" }
+        ],
+        judgment: "The Dominican Republic is a dual-currency tourist economy where paying in pesos beats paying in dollars. The peso rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "On the bill", v: "10% service + 18% tax" },

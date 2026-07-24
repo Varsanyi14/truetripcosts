@@ -168,6 +168,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Koruna (CZK), not euros" },
+        { k: "Cards", v: "Card-friendly, contactless common" },
+        { k: "Cash for", v: "Small shops, pubs, small towns" },
+        { k: "On a card", v: "Choose koruna, avoid Euronet" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Czechia, or can I use cards? (2026) | True Trip Costs",
+      description: "A little. Czechia is card-friendly, especially in Prague, but the currency is the koruna, not euros. Carry some koruna for small shops and pubs. Choose koruna, and avoid Euronet ATMs. Checked July 2026.",
+      h1: "Do I need cash in Czechia, or can I use cards?",
+      lede: "Short answer: cards work well, especially in Prague, but the currency is the koruna, not the euro, so do not pay in euros. Carry a little koruna for small shops and pubs. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cards, mostly. Czechia is <b>card-friendly</b>, especially in <b>Prague</b>, where <b>contactless</b> is common in shops, restaurants and transit. The currency is the <b>Czech koruna</b>, <b>not the euro</b>, so ignore euro prices and <b>do not pay in euros</b> (poor rate). Keep <b>some koruna cash</b> for <b>small shops, pubs outside the center, markets and small towns</b>. Choose <b>koruna, not euros or dollars</b>, on any card or ATM, and avoid standalone <b>Euronet</b> ATMs, which charge high fees.",
+      sections: [
+        {
+          h: "Card-friendly, and it is koruna",
+          icon: "phoneok",
+          key: { fig: "Koruna, not euros", tag: "Contactless common", text: "Czechia is card-friendly, especially in Prague. The currency is the koruna, not the euro, so do not pay in euros.", tone: "teal" },
+          p: [
+            "Czechia is <b>card-friendly</b>, especially in <b>Prague</b>, where <b>contactless</b>, Apple Pay and Google Pay work in shops, restaurants and on transit, and <b>Visa and Mastercard</b> are widely accepted.",
+            "The currency is the <b>Czech koruna</b>, <b>not the euro</b>. Some tourist spots quote or accept euros, but at a <b>poor rate</b>, so pay in <b>koruna</b>. Keep <b>some koruna cash</b> for <b>small shops, pubs outside the center, markets and small towns</b>."
+          ]
+        },
+        {
+          h: "Choose koruna, avoid Euronet",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose koruna", text: "Choose koruna on any terminal or ATM, and avoid standalone Euronet ATMs, which charge high fees and push the dollar conversion.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>euros, dollars or koruna, always choose koruna</b>. Foreign currency triggers dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use an ATM attached to a <b>real bank</b>, not a standalone <b>Euronet</b> kiosk, which charges high fees and pushes the dollar conversion. Use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "Cash for small spots",
+          icon: "coins",
+          key: { fig: "A little", tag: "For pubs and small towns", text: "Keep a little koruna cash for small shops, neighborhood pubs, markets and small towns, where cards are less certain.", tone: "teal" },
+          p: [
+            "A <b>card covers most spending</b> in Prague and larger towns. Keep <b>a little koruna cash</b> for <b>small shops, neighborhood pubs, markets and small towns</b>, where cards are less certain.",
+            "For tipping norms, see <a href='/czechia/tipping'>tipping in Czechia</a>, and for the wider picture, the <a href='/czechia'>Czechia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Czechia?", a: "A little. Czechia is card-friendly, especially in Prague, with contactless common, so a card covers most spending. Keep some koruna for small shops, neighborhood pubs, markets and small towns." },
+        { q: "Should I pay in koruna or euros in Czechia?", a: "Always koruna. Czechia uses the koruna, not the euro, and places that accept euros give a poor rate. On a card, choose koruna, not euros or dollars, to avoid the 3 to 8% conversion." },
+        { q: "Are Euronet ATMs a good idea in Czechia?", a: "No. Standalone Euronet kiosks charge high fees and push the dollar conversion. Use an ATM attached to a real bank instead, and always choose to be charged in koruna." },
+        { q: "Does Czechia use the euro?", a: "No. The currency is the Czech koruna. Some tourist spots quote or accept euros, but at a poor rate, so pay in koruna for the best value." }
+      ],
+      sources: {
+        links: [
+          { label: "Czech National Bank: official exchange rate information", url: "https://www.cnb.cz/en", type: "gov" },
+          { label: "US State Department: Czechia country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/CzechRepublic.html", type: "gov" }
+        ],
+        judgment: "Czechia is card-friendly but uses the koruna, not the euro, and the Euronet ATM fee trap is well documented. The koruna rate moves, and the firm rule is to decline foreign-currency conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "About 10%, customary" },

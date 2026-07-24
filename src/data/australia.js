@@ -179,6 +179,66 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Australian dollar (AUD)" },
+        { k: "Cards", v: "Near-cashless, tap for everything" },
+        { k: "Cash for", v: "Rarely needed (a few markets)" },
+        { k: "On a card", v: "Choose Australian dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Australia, or can I use cards? (2026) | True Trip Costs",
+      description: "Barely. Australia is nearly cashless: tap a card or phone for almost everything. Keep a little cash only for some markets or rural spots. Choose Australian dollars, and watch for card surcharges. Checked July 2026.",
+      h1: "Do I need cash in Australia, or can I use cards?",
+      lede: "Short answer: almost never. Australia is one of the most cashless countries anywhere, so you can tap for nearly everything. Here is how to handle it, including the card surcharge you may see.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cards, almost entirely. Australia is <b>nearly cashless</b>: <b>contactless</b> is the default, and you can <b>tap a card or phone for almost everything</b>, even small purchases, at cafes, shops, restaurants and on transit. Many places are effectively <b>card-only</b>. You will <b>rarely need cash</b>: perhaps a little for <b>some markets, small rural spots or a food van</b>. The currency is the <b>Australian dollar</b>. Choose <b>Australian dollars, not US dollars</b>, on any card or ATM. Note that some places add a small <b>card surcharge</b>, shown at the till.",
+      sections: [
+        {
+          h: "Near-cashless: tap for everything",
+          icon: "phoneok",
+          key: { fig: "Tap", tag: "Cards almost everywhere", text: "Australia is nearly cashless. Tap a card or phone for almost everything, even small purchases. You will rarely need cash.", tone: "teal" },
+          p: [
+            "Australia is <b>one of the most cashless countries anywhere</b>. <b>Contactless</b> is the default: you <b>tap a card or phone for almost everything</b>, even a coffee, at cafes, shops, restaurants and on transit, and many places are effectively <b>card-only</b>.",
+            "You will <b>rarely need cash</b>. Keep a <b>little</b> for the exceptions: <b>some weekend markets, small rural spots, or a food van</b>, though even those increasingly tap."
+          ]
+        },
+        {
+          h: "Choose Australian dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose AUD", text: "When a terminal or ATM offers US or Australian dollars, pick Australian dollars. US dollars trigger dynamic currency conversion at a rate about 3 to 8% worse.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>US or Australian dollars, always choose Australian dollars</b>. US dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "One local quirk: some businesses add a small <b>card surcharge</b> (often around 1 to 2%, more for Amex), which must be <b>shown at the till</b>. It is legal and common, so do not be surprised by it."
+          ]
+        },
+        {
+          h: "How little cash you need",
+          icon: "aud",
+          key: { fig: "Barely any", tag: "A little for markets", text: "Most travelers get by with almost no cash. Keep a small amount of Australian dollars for markets and rural spots, just in case.", tone: "teal" },
+          p: [
+            "Most travelers get by with <b>almost no cash</b> in Australia. If you like a buffer, keep a <b>small amount of Australian dollars</b> for weekend markets, rural areas or a food van. Use a bank ATM if you need more, and a <b>debit card</b> to avoid cash-advance fees.",
+            "For tipping norms (spoiler: you do not really tip), see <a href='/australia/tipping'>tipping in Australia</a>, and for the wider picture, the <a href='/australia'>Australia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Australia?", a: "Rarely. Australia is nearly cashless, and you can tap a card or phone for almost everything, even small purchases. Keep a little Australian-dollar cash only for some markets, rural spots or a food van." },
+        { q: "Should I pay in Australian dollars or US dollars in Australia?", a: "Always Australian dollars. If a card machine or ATM offers US dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Why was I charged a card surcharge in Australia?", a: "Some businesses add a small card surcharge, often around 1 to 2% (more for Amex), which must be shown at the till. It is legal and common in Australia, so it is normal to see it." },
+        { q: "Is Australia cashless?", a: "Nearly. Contactless is the default and many places are effectively card-only, so most travelers get by with almost no cash. Keep a little for markets or rural spots just in case." }
+      ],
+      sources: {
+        links: [
+          { label: "Reserve Bank of Australia: official exchange rate information", url: "https://www.rba.gov.au", type: "gov" },
+          { label: "US State Department: Australia country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Australia.html", type: "gov" }
+        ],
+        judgment: "Australia is one of the most cashless economies anywhere, so cards cover nearly everything, though disclosed card surcharges are common. The dollar rate moves, and the firm rule is to decline US-dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Not expected, not the culture" },

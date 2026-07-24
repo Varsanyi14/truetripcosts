@@ -20,6 +20,66 @@ export default {
   region: "Americas",
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Colon (CRC), dollars accepted" },
+        { k: "Cards", v: "Widely accepted, contactless growing" },
+        { k: "Cash for", v: "Sodas, markets, buses, remote areas" },
+        { k: "On a card", v: "Choose colones, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Costa Rica, or can I use cards? (2026) | True Trip Costs",
+      description: "A little. Costa Rica is card-friendly and dollars are widely accepted, but pay in colones for the best value and carry some for sodas, buses and small vendors. Choose colones, not dollars. Checked July 2026.",
+      h1: "Do I need cash in Costa Rica, or can I use cards?",
+      lede: "Short answer: cards work almost everywhere, dollars are accepted, but you get better value paying in colones, and you will want a little cash for sodas, buses and small vendors. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cards, mostly, with a little cash. Costa Rica is <b>card-friendly</b>: cards work at <b>hotels, restaurants, tour operators and supermarkets</b>, and <b>contactless</b> is growing. It is a <b>dual-currency</b> economy: the <b>colon</b> is official, but <b>US dollars are widely accepted</b>, especially in tourist areas. The catch is that paying in <b>dollars</b> often gets you <b>change in colones at a poor rate</b>, so <b>pay in colones</b> for local prices. Keep <b>some colones</b> for <b>sodas (local eateries), markets, buses and remote areas</b>. Choose <b>colones, not dollars</b>, on any card or ATM.",
+      sections: [
+        {
+          h: "Card-friendly, colones and dollars",
+          icon: "phoneok",
+          key: { fig: "Dual currency", tag: "Cards work widely", text: "Costa Rica is card-friendly, and both colones and US dollars circulate. Keep some colones for sodas, markets, buses and remote areas.", tone: "teal" },
+          p: [
+            "Costa Rica is <b>card-friendly</b>: cards work at <b>hotels, restaurants, tour operators, supermarkets and shops</b>, and <b>contactless</b> is growing. It runs on <b>two currencies</b>: the <b>colon</b> is official, but <b>US dollars are widely accepted</b>, especially in tourist areas.",
+            "Keep <b>some colones</b> for <b>sodas (small local eateries), markets, buses and remote areas</b>, where cards are less certain and small dollar bills are awkward."
+          ]
+        },
+        {
+          h: "Pay in colones, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Colones give better value", text: "Choose colones on a card, and prefer paying in colones in cash: paying in dollars often gives change in colones at a poor rate.", tone: "amber" },
+          p: [
+            "Two things about currency. On a <b>card</b>, if asked to charge in <b>dollars or colones, choose colones</b>, since dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your bank's. In <b>cash</b>, paying in <b>US dollars</b> is accepted but you often get <b>change in colones at the shop's rate</b>, which is usually poor.",
+            "So <b>pay in colones</b> for local prices and better value. For cash, use a bank ATM, which can dispense both colones and dollars, and use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "Cash for sodas and buses",
+          icon: "crc",
+          key: { fig: "A little", tag: "For local spots", text: "Keep some colones for sodas, markets, public buses and remote areas, where cards are less certain.", tone: "teal" },
+          p: [
+            "A <b>card covers most spending</b>, but keep <b>some colones</b> for the <b>sodas, markets, public buses and remote or rural areas</b>. Small vendors and bus fares are much easier in colones than with dollar bills.",
+            "For tipping norms, see <a href='/costa-rica/tipping'>tipping in Costa Rica</a>, and for the wider picture, the <a href='/costa-rica'>Costa Rica money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Costa Rica?", a: "A little. Costa Rica is card-friendly and both colones and US dollars are accepted, so a card covers most spending. Keep some colones for sodas, markets, buses and remote areas." },
+        { q: "Should I pay in colones or dollars in Costa Rica?", a: "Colones, for the best value. On a card, choose colones, not dollars, to avoid the 3 to 8% conversion. In cash, paying in dollars is accepted but you often get change in colones at a poor rate, so colones are better." },
+        { q: "Are US dollars accepted in Costa Rica?", a: "Yes, widely, especially in tourist areas. But you often get change in colones at the shop's rate, which is usually poor, so paying in colones gives better value for local prices." },
+        { q: "Can I use cards everywhere in Costa Rica?", a: "In most places: hotels, restaurants, tour operators and supermarkets take cards, with contactless growing. Sodas, markets, buses and remote areas lean on cash, so carry some colones." }
+      ],
+      sources: {
+        links: [
+          { label: "Banco Central de Costa Rica: official exchange rate information", url: "https://www.bccr.fi.cr", type: "gov" },
+          { label: "US State Department: Costa Rica country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/CostaRica.html", type: "gov" }
+        ],
+        judgment: "Costa Rica is card-friendly and dual-currency, but paying in colones beats paying in dollars, where change comes at a poor rate. The colon rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "staying-connected",
       glance: [
         { k: "Best network", v: "Kolbi (ICE), widest reach" },
