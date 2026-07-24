@@ -172,6 +172,76 @@ export default {
 
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Uber, Bolt (also FreeNow)" },
+        { k: "From Schiphol", v: "The train is fast and cheap" },
+        { k: "Watch for", v: "Street-taxi overcharging in Amsterdam" },
+        { k: "Tipping", v: "Round up a euro or two" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "medium",
+      title: "Taxis in the Netherlands: apps, Schiphol and Amsterdam (2026) | True Trip Costs",
+      description: "How taxis work in the Netherlands for US travelers in 2026: Uber and Bolt, why the train beats a taxi from Schiphol, the Amsterdam street-taxi overcharging to avoid, and how much to tip. Checked July 2026.",
+      h1: "Taxis in the Netherlands, and the Schiphol train",
+      lede: "In the Netherlands the train and the bike do most of the work, and when you do need a taxi, an app is the safe bet. Amsterdam street taxis have a reputation for overcharging, so here is how to avoid it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>Uber</b> or <b>Bolt</b>, which both work well in Dutch cities, with <b>FreeNow</b> as a third option. The big practical tip: from <b>Schiphol (AMS)</b> the <b>train</b> into Amsterdam is fast and cheap, so skip the taxi queue. The one thing to watch is <b>Amsterdam street taxis</b>, which have a longstanding reputation for <b>overcharging or refusing short fares</b>, so book through an app instead. Taxis are metered and regulated, and you <b>tip by rounding up</b> a euro or two.",
+      sections: [
+        {
+          h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "Uber or Bolt", tag: "The safe bet", text: "Uber and Bolt both work well in Dutch cities, with FreeNow a third option. An app gives a set fare and avoids the street-taxi problem.", tone: "teal" },
+          p: [
+            "<b>Uber</b> and <b>Bolt</b> both work well in <b>Amsterdam, Rotterdam, The Hague and Utrecht</b>, and <b>FreeNow</b> is a third option. Booking through an app gives you a fare estimate, the driver and plate in advance, and card payment.",
+            "Honestly, in much of the Netherlands you may not need a taxi at all: <b>trains, trams and bikes</b> cover most trips cheaply and quickly. An app is most useful late at night or with luggage."
+          ]
+        },
+        {
+          h: "From Schiphol, take the train",
+          icon: "plane",
+          key: { fig: "Train", tag: "Fast and cheap", text: "The train from Schiphol into Amsterdam Centraal takes about 15 to 20 minutes for a few euros, far cheaper than a metered taxi.", tone: "teal" },
+          p: [
+            "From <b>Schiphol (AMS)</b>, the <b>train</b> runs from directly under the terminal into <b>Amsterdam Centraal</b> in about <b>15 to 20 minutes</b> for a few euros, so it easily beats a taxi (roughly 40 to 50 euros) for a solo traveler.",
+            "Buy a ticket from a machine, the NS app, or tap a contactless card at the gates. If you do want a taxi, use the official rank or an app rather than anyone approaching you inside the terminal."
+          ]
+        },
+        {
+          h: "Amsterdam street taxis: use an app",
+          icon: "alert",
+          key: { tag: "A known problem", text: "Amsterdam street taxis have a longstanding reputation for overcharging tourists or refusing short fares. Booking through an app avoids it, since the fare is set in advance.", tone: "amber" },
+          p: [
+            "The one real caution is <b>Amsterdam street taxis</b>, which have a <b>longstanding reputation</b> for <b>overcharging visitors, taking long routes, or refusing short fares</b>. It is not universal, but it is common enough to plan around.",
+            "The fix is simple: <b>book through Uber, Bolt or FreeNow</b>, where the fare is set before you ride, or use an official taxi rank with a clearly marked, metered cab. Avoid unmarked cars and anyone touting for a ride."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "euro",
+          key: { fig: "Round up", tag: "A euro or two", text: "Taxis run on a regulated maximum tariff. Tip by rounding up the fare a euro or two; there is no set percentage.", tone: "teal" },
+          p: [
+            "Dutch taxis run on a <b>regulated maximum tariff</b> (a base fare plus per-kilometer and per-minute rates), and apps show the price up front. To <b>tip</b>, <b>round up</b> the fare by a euro or two; there is no set percentage.",
+            "For more, see <a href='/netherlands/tipping'>tipping in the Netherlands</a>, <a href='/netherlands/cash-or-card'>cash or card in the Netherlands</a>, and the <a href='/netherlands'>Netherlands money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in the Netherlands?", a: "Yes, Uber and Bolt both work well in Amsterdam, Rotterdam, The Hague and Utrecht, with FreeNow a third option. An app is the safe bet, since it sets the fare in advance." },
+        { q: "Should I take a taxi from Schiphol?", a: "Usually not for one person: the train into Amsterdam Centraal takes about 15 to 20 minutes for a few euros, far cheaper than a taxi. Use the train unless you have heavy bags or a group." },
+        { q: "Are Amsterdam taxis a ripoff?", a: "Street taxis have a longstanding reputation for overcharging tourists or refusing short fares. It is not universal, but book through Uber, Bolt or FreeNow, or use an official rank, to avoid it." },
+        { q: "Do you tip taxi drivers in the Netherlands?", a: "Only lightly: round up the fare by a euro or two. There is no set percentage, and taxis run on a regulated maximum tariff." }
+      ],
+      sources: {
+        links: [
+          { label: "I amsterdam: official city travel information", url: "https://www.iamsterdam.com/en", type: "gov" },
+          { label: "US State Department: Netherlands country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Netherlands.html", type: "gov" }
+        ],
+        judgment: "Dutch transport leans on trains and bikes, apps are the safe taxi option, and Amsterdam street-taxi overcharging is a well-known issue. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Euro (EUR)" },

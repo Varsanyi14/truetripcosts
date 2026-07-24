@@ -162,6 +162,76 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "GO (Uber also calls taxis)" },
+        { k: "Taxis", v: "Honest, metered, doors open for you" },
+        { k: "From the airport", v: "Trains usually beat a taxi" },
+        { k: "Tipping", v: "None, ever" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Japan: the GO app, and why the train usually wins (2026) | True Trip Costs",
+      description: "How taxis work in Japan for US travelers in 2026: the GO app (and Uber, which calls taxis), why trains beat a taxi from Narita or Haneda, how honest metered taxis work, and why you never tip. Checked July 2026.",
+      h1: "Taxis in Japan, and the GO app",
+      lede: "Japanese taxis are spotless, honest and metered, with doors that open for you and no tipping ever. They are also pricey, so from the airport the train usually wins. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>GO</b>, the taxi app most used in Japan, and <b>Uber</b> works too, though in Japan it <b>calls a licensed taxi</b> rather than a private car (the cheap UberX model is restricted here). Japanese taxis are <b>famously honest</b>: metered, clean, the rear door <b>opens and closes automatically</b>, and there is <b>no tipping</b>, ever. They are also <b>expensive</b>, so from <b>Narita or Haneda</b> the <b>train usually wins</b>. Most city taxis now take <b>cards and IC cards</b> (Suica, Pasmo) as well as cash.",
+      sections: [
+        {
+          h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "GO", tag: "Uber calls taxis too", text: "GO is the taxi app most used in Japan. Uber works but calls a licensed taxi, not a private car, so both simply dispatch a metered cab.", tone: "teal" },
+          p: [
+            "<b>GO</b> is the app most Japanese use to hail a taxi, with the widest coverage in cities, so install it first. <b>Uber</b> works too, but in Japan it <b>dispatches a licensed taxi</b> rather than a private car, since the cheap UberX private-car model is restricted. <b>DiDi</b> also operates in some cities.",
+            "The point of the app is convenience, not a cheaper ride: you see the car coming, avoid explaining directions in Japanese, and pay in the app. Coverage is strong in <b>Tokyo, Osaka, Kyoto</b> and other cities, thinner in rural areas where you may phone a local company."
+          ]
+        },
+        {
+          h: "From the airport, the train usually wins",
+          icon: "plane",
+          key: { fig: "Take the train", tag: "A taxi is pricey", text: "A taxi from Narita to central Tokyo can run 20,000 to 30,000 yen. The Narita Express, Skyliner or Airport Limousine bus cost a fraction of that.", tone: "teal" },
+          p: [
+            "A taxi from <b>Narita (NRT)</b> to central Tokyo can run <b>20,000 to 30,000 yen</b>, so unless you have heavy bags or a group, the <b>train wins</b>: the <b>Narita Express (N EX)</b> or the <b>Keisei Skyliner</b> reach the city in under an hour for a fraction of the price, and the <b>Airport Limousine bus</b> serves major hotels.",
+            "<b>Haneda (HND)</b> is much closer, so a taxi to central Tokyo is more reasonable (roughly <b>6,000 to 9,000 yen</b>), but the <b>Keikyu train or monorail</b> are still far cheaper and quick. Buy an <b>IC card</b> (Suica or Pasmo, or the mobile version) on arrival and trains become tap-and-go."
+          ]
+        },
+        {
+          h: "How Japanese taxis work",
+          icon: "wheel",
+          key: { fig: "Auto doors", tag: "Honest and metered", text: "The rear door opens and closes automatically, so do not touch it. Taxis are metered, honest and clean, with no need to negotiate or watch the meter.", tone: "teal" },
+          p: [
+            "A few things surprise first-timers. The <b>rear passenger door opens and closes automatically</b>, operated by the driver, so <b>stand back and do not pull it</b>. Drivers often wear white gloves, the cars are spotless, and the <b>meter is honest</b>, so there is no haggling or watching for tricks.",
+            "Have your <b>destination written down</b> or shown on a map on your phone, since not all drivers speak English and Japanese addresses are hard to convey. A green light in the windscreen means the taxi is <b>available</b>."
+          ]
+        },
+        {
+          h: "Fares, paying and no tipping",
+          icon: "yen",
+          key: { fig: "No tip", tag: "Metered, pricey", text: "Taxis are metered with a base fare and a per-distance rate, plus a late-night surcharge. You never tip, and most city taxis take cards and IC cards.", tone: "teal" },
+          p: [
+            "Fares are <b>metered</b>: a base fare of a few hundred yen plus a per-distance charge, with a <b>late-night surcharge</b> (roughly 22:00 to 05:00). Most <b>city taxis take cards and IC cards</b> (Suica, Pasmo) as well as cash, though a small-town taxi may be cash-only.",
+            "You do <b>not tip</b> in Japan, and trying to can cause confusion. Just pay the metered fare. For more, see <a href='/japan/tipping'>tipping in Japan</a>, <a href='/japan/cash-or-card'>cash or card in Japan</a>, and the <a href='/japan'>Japan money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in Japan?", a: "Yes, but in Japan Uber dispatches a licensed taxi rather than a private car, since the cheap UberX model is restricted. The app most Japanese use is GO, which works the same way. Both simply call a metered cab." },
+        { q: "Should I take a taxi from Narita to Tokyo?", a: "Usually not: a taxi can run 20,000 to 30,000 yen. The Narita Express, Keisei Skyliner or Airport Limousine bus reach the city for a fraction of that. Haneda is closer and cheaper, but its trains still win." },
+        { q: "Do you tip taxi drivers in Japan?", a: "No, never. Tipping is not part of Japanese culture and can cause confusion. Just pay the metered fare, by card, IC card or cash." },
+        { q: "Do Japanese taxis take cards?", a: "Most city taxis take cards and IC cards like Suica and Pasmo, as well as cash. A small-town or rural taxi may be cash-only, so carry some yen as a backup." }
+      ],
+      sources: {
+        links: [
+          { label: "Japan National Tourism Organization: official travel information", url: "https://www.japan.travel/en/", type: "gov" },
+          { label: "US State Department: Japan country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Japan.html", type: "gov" }
+        ],
+        judgment: "Japanese taxis are honest and metered, GO is the leading app, and trains beat a taxi from the airports. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Japanese yen (¥ JPY)" },

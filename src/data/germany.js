@@ -173,6 +173,76 @@ export default {
 
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "FreeNow (also Uber, Bolt)" },
+        { k: "Taxis", v: "Cream-colored, metered, regulated" },
+        { k: "From the airport", v: "The S-Bahn is usually cheaper" },
+        { k: "Tipping", v: "Round up a euro or two" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Germany: the FreeNow app, and honest meters (2026) | True Trip Costs",
+      description: "How taxis work in Germany for US travelers in 2026: the FreeNow app (and Uber, Bolt), why taxis are metered and regulated, when the S-Bahn beats a taxi from the airport, and how much to tip. Checked July 2026.",
+      h1: "Taxis in Germany, and the FreeNow app",
+      lede: "German taxis are metered, regulated and honest, so there are no games to watch for. Install FreeNow, know that the S-Bahn usually beats a taxi from the airport, and round up to tip. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>FreeNow</b>, the app Germans use most, and <b>Uber</b> and <b>Bolt</b> work in major cities too, though Uber here <b>dispatches licensed taxis or hire cars</b> rather than unlicensed private drivers. German taxis are <b>cream-colored, metered and tightly regulated</b>, so they are <b>honest</b> with no haggling. From the airport, the <b>S-Bahn or regional train</b> is usually cheaper and faster than a taxi. Cards are increasingly accepted, though some drivers still prefer cash, and you <b>tip by rounding up</b> a euro or two.",
+      sections: [
+        {
+          h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "FreeNow", tag: "Licensed taxis", text: "FreeNow is the app Germans use most. Uber and Bolt work in major cities, but all dispatch licensed taxis or hire cars, not unlicensed private drivers.", tone: "teal" },
+          p: [
+            "<b>FreeNow</b> (once MyTaxi) is the app most used in Germany and dispatches regular licensed taxis, so install it first. <b>Uber</b> and <b>Bolt</b> also work in <b>major cities</b> like Berlin, Munich, Frankfurt and Hamburg, but German regulation means they call <b>licensed taxis or private-hire cars</b>, not the unlicensed private drivers you might expect at home.",
+            "The advantage is the usual one: you see the fare estimate and driver in advance and pay in the app. Away from big cities, taxis are ordered by phone or found at a rank rather than hailed on the street."
+          ]
+        },
+        {
+          h: "From the airport, take the train",
+          icon: "plane",
+          key: { fig: "S-Bahn", tag: "Cheaper and faster", text: "From Frankfurt, Munich or Berlin airports, the S-Bahn or regional train into the city is usually cheaper and faster than a metered taxi.", tone: "teal" },
+          p: [
+            "From <b>Frankfurt (FRA), Munich (MUC) and Berlin (BER)</b> airports, the <b>S-Bahn or regional train</b> runs straight into the city and is usually <b>cheaper and faster</b> than a taxi, especially in traffic. A single ticket is a few euros, and the station is inside or under the terminal.",
+            "A taxi is <b>metered</b> and reliable if you prefer it or have heavy bags, with no flat airport fare in most cities. Buy a transit ticket from a machine or the local transport app, and validate it if required."
+          ]
+        },
+        {
+          h: "Metered, regulated and honest",
+          icon: "wheel",
+          key: { fig: "Metered", tag: "No games", text: "Fares are set by regulated local tariffs, so the meter is honest and there is nothing to negotiate. Confirm a card is accepted before you set off if you want to pay by card.", tone: "teal" },
+          p: [
+            "German taxis run on <b>regulated local tariffs</b>: a base fare plus a per-kilometer rate set by the city, so the <b>meter is honest</b> and there is <b>nothing to haggle over</b>. Cars are typically cream-colored and clearly marked.",
+            "<b>Cards</b> are increasingly accepted, but some drivers still prefer <b>cash</b>, so it is worth asking before you set off if you intend to pay by card. Keep a little cash as a backup."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "euro",
+          key: { fig: "Round up", tag: "A euro or two", text: "Tip by rounding up the fare a euro or two, or to the next round figure, as with restaurants. There is no set percentage.", tone: "teal" },
+          p: [
+            "Fares are metered and predictable. To <b>tip</b>, simply <b>round up</b> the fare by a euro or two, or to the next round figure, just as you would in a restaurant, and tell the driver the total you want to pay.",
+            "For more, see <a href='/germany/tipping'>tipping in Germany</a>, <a href='/germany/cash-or-card'>cash or card in Germany</a>, and the <a href='/germany'>Germany money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in Germany?", a: "Yes, in major cities like Berlin, Munich, Frankfurt and Hamburg, but German regulation means Uber dispatches licensed taxis or private-hire cars, not unlicensed private drivers. FreeNow is the app Germans use most, and Bolt also operates." },
+        { q: "Should I take a taxi or train from a German airport?", a: "The S-Bahn or regional train is usually cheaper and faster into the city from Frankfurt, Munich and Berlin airports. A metered taxi is reliable if you have heavy bags or prefer the door-to-door trip." },
+        { q: "Are German taxis honest?", a: "Yes. Fares run on regulated local tariffs, so the meter is honest and there is nothing to negotiate. Cars are metered and clearly marked, with no games to watch for." },
+        { q: "Do German taxis take cards?", a: "Increasingly, yes, but some drivers still prefer cash, so ask before you set off if you want to pay by card. Keep a little cash as a backup." }
+      ],
+      sources: {
+        links: [
+          { label: "German National Tourist Board: official travel information", url: "https://www.germany.travel/en/", type: "gov" },
+          { label: "US State Department: Germany country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Germany.html", type: "gov" }
+        ],
+        judgment: "German taxis are metered and regulated, FreeNow leads the apps, and trains beat a taxi from the airports. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Euro (EUR)" },

@@ -175,6 +175,76 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Uber, 99 (use them)" },
+        { k: "Why apps", v: "Safer and cheaper than street taxis" },
+        { k: "From the airport", v: "App or the official prepaid desk" },
+        { k: "Watch for", v: "Never hail an unofficial car" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "medium",
+      title: "Taxis in Brazil: use Uber or 99, and stay safe (2026) | True Trip Costs",
+      description: "How to get around Brazil by taxi for US travelers in 2026: why Uber and 99 are the safer, cheaper choice, how to leave the airport safely, and the street-taxi habits to avoid. Checked July 2026.",
+      h1: "Taxis in Brazil, and the apps to use",
+      lede: "In Brazil, the ride apps are not just cheaper than street taxis, they are the safer choice, which is why locals lean on them. Install Uber and 99, and here is how to use them and leave the airport smoothly.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>Uber</b> and <b>99</b> (a big local app), and use them as your default. In Brazil, apps are <b>safer and usually cheaper</b> than hailing a street taxi, because the driver, car and route are tracked and the fare is set in advance. From the <b>airport</b>, use an app from the designated pickup area or the <b>official prepaid taxi desk</b>, and <b>never accept a ride from someone approaching you</b> in the terminal. Basic city sense applies: do not flash your phone at the curb, and prefer apps at night.",
+      sections: [
+        {
+          h: "Which apps to install",
+          icon: "phoneok",
+          key: { fig: "Uber and 99", tag: "The default", text: "Uber and 99 both work across Brazilian cities. Locals use them over street taxis because they are cheaper and the trip is tracked.", tone: "teal" },
+          p: [
+            "<b>Uber</b> is widely used across Brazil, and <b>99</b> (a large local app) is just as popular and sometimes cheaper, so install both and compare. They cover <b>Sao Paulo, Rio de Janeiro</b> and cities large and small, and let you pay by card in the app.",
+            "Brazilians overwhelmingly prefer apps to hailing a street taxi, not only for price but because the <b>driver, car and route are recorded</b>, which is reassuring. You can share your trip status with someone as an extra step."
+          ]
+        },
+        {
+          h: "Leaving the airport safely",
+          icon: "plane",
+          key: { fig: "App or prepaid desk", tag: "Ignore touts", text: "From the airport, use an app from the marked pickup area or the official prepaid taxi desk. Never accept a ride from someone approaching you inside the terminal.", tone: "teal" },
+          p: [
+            "At <b>Sao Paulo (GRU) and Rio (GIG)</b>, the safe options are an <b>app</b> from the marked rideshare pickup area, or the <b>official prepaid taxi desk</b> inside the terminal, where you pay a set price up front at a counter.",
+            "<b>Never accept a ride from someone who approaches you</b> in the arrivals hall offering a taxi, as unofficial drivers are where problems happen. Walk to the official desk or the app pickup point instead."
+          ]
+        },
+        {
+          h: "Use apps, and mind your surroundings",
+          icon: "alert",
+          key: { tag: "Basic city sense", text: "Prefer apps over street taxis, especially at night. Do not stand at the curb flashing your phone, and wait for your ride somewhere sensible.", tone: "amber" },
+          p: [
+            "Brazil rewards <b>basic city sense</b>. Prefer <b>apps over street taxis</b>, especially <b>at night</b>, and in big cities do not stand at the curb <b>flashing your phone</b> while you wait, since phone snatching happens. Order the ride from inside a shop or lobby and step out when the car is close.",
+            "Confirm the <b>car, plate and driver</b> match the app before getting in, and prefer being dropped at a clear, populated spot. None of this is cause for alarm, just the sensible habits locals follow."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "coins",
+          key: { fig: "In the app", tag: "Round up", text: "App fares are set in advance and paid by card in the app. Tipping is not expected, though rounding up is a kind gesture.", tone: "teal" },
+          p: [
+            "App <b>fares are set in advance</b> and usually <b>paid by card in the app</b>, which removes cash and change from the equation. <b>Tipping is not expected</b> for a ride, though rounding up or a small tip in the app is a kind gesture.",
+            "For more, see <a href='/brazil/tipping'>tipping in Brazil</a>, <a href='/brazil/cash-or-card'>cash or card in Brazil</a>, and the <a href='/brazil'>Brazil money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in Brazil?", a: "Yes, Uber is widely used across Brazil, and the local app 99 is just as popular and sometimes cheaper. Install both and use them as your default, since they are safer and usually cheaper than street taxis." },
+        { q: "How do I get from the airport in Brazil safely?", a: "Use an app from the marked pickup area, or the official prepaid taxi desk inside the terminal, where you pay a set price at a counter. Never accept a ride from someone who approaches you in the arrivals hall." },
+        { q: "Are taxis safe in Brazil?", a: "App rides are the safer choice, since the driver, car and route are tracked. Prefer apps over street taxis, especially at night, confirm the car and plate match the app, and do not flash your phone at the curb." },
+        { q: "Do you tip taxi drivers in Brazil?", a: "Not really: tipping is not expected for a ride, though rounding up or a small tip in the app is a kind gesture. App fares are set in advance and paid by card." }
+      ],
+      sources: {
+        links: [
+          { label: "Brazil Ministry of Tourism: official travel information", url: "https://www.gov.br/turismo/pt-br", type: "gov" },
+          { label: "US State Department: Brazil country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Brazil.html", type: "gov" }
+        ],
+        judgment: "In Brazil the ride apps Uber and 99 are the safer, cheaper norm, and airport touts and street hailing are the things to avoid. Conditions and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "A 10% service charge, usually added" },

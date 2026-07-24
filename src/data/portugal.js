@@ -163,6 +163,76 @@ export default {
   // deeper on Portugal", and each spoke links back here, top and bottom.
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Bolt (also Uber, FreeNow)" },
+        { k: "Taxis", v: "Cream or black-and-green, metered" },
+        { k: "From Lisbon airport", v: "Metro is cheap, or use an app" },
+        { k: "Watch for", v: "Airport meter and route games" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Portugal: the Bolt app, and the Lisbon airport (2026) | True Trip Costs",
+      description: "How taxis work in Portugal for US travelers in 2026: why Bolt leads (with Uber and FreeNow), getting from Lisbon airport cheaply, the airport meter games to watch, and how much to tip. Checked July 2026.",
+      h1: "Taxis in Portugal, and the Bolt app",
+      lede: "Portuguese taxis are cheap and mostly honest, and ride apps are even cheaper, with Bolt the local favorite. The main thing to watch is the odd airport driver, so here is how to keep it simple.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>Bolt</b>, the local favorite and often the cheapest, and <b>Uber</b> and <b>FreeNow</b> work well too. Regular taxis are <b>cream or black-and-green, metered</b> and generally cheap and honest. From <b>Lisbon airport</b>, the <b>metro</b> is very cheap, or an app is clean and priced up front. The one thing to watch is the occasional <b>airport or tourist-rank driver</b> who runs the meter on a higher tariff or takes a long route, so an app sidesteps it. You <b>tip by rounding up</b>.",
+      sections: [
+        {
+          h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "Bolt", tag: "Often the cheapest", text: "Bolt is the local favorite and often the cheapest ride, with Uber and FreeNow also working well across Lisbon, Porto and the Algarve.", tone: "teal" },
+          p: [
+            "<b>Bolt</b> is the app Portuguese use most and is often the <b>cheapest</b>, so install it first. <b>Uber</b> works well too, and <b>FreeNow</b> connects you to licensed taxis. All three cover <b>Lisbon, Porto and the Algarve</b>, and they show the fare and driver up front.",
+            "Apps are usually <b>cheaper than a street taxi</b> for the same trip and remove any doubt about the meter, so they are the easy default for visitors."
+          ]
+        },
+        {
+          h: "From Lisbon airport",
+          icon: "plane",
+          key: { fig: "Metro", tag: "Or an app", text: "Lisbon airport is on the metro (red line), which is very cheap into the city. An app is clean and priced up front; a taxi is metered but the rank can involve overcharging.", tone: "teal" },
+          p: [
+            "<b>Lisbon airport (LIS)</b> sits right on the <b>metro (red line)</b>, which is the cheapest way into the city (a couple of euros plus a reusable card). An <b>app</b> is the easy door-to-door option, clean and priced in advance from the designated pickup area.",
+            "A regular <b>taxi</b> is <b>metered</b> and the city is not large, so central rides are cheap, but the airport rank is where the occasional meter or route game happens, so an app is the safer bet on arrival. From <b>Porto (OPO)</b>, the metro also reaches the city cheaply."
+          ]
+        },
+        {
+          h: "Insist on the meter",
+          icon: "alert",
+          key: { tag: "Mostly at the airport", text: "Most Portuguese taxis are honest, but the occasional airport or tourist-rank driver runs a higher tariff or takes a long way. Check the meter is on the day tariff, or use an app.", tone: "amber" },
+          p: [
+            "Portuguese taxis are <b>mostly honest and cheap</b>, but the exceptions cluster at the <b>airport rank and tourist spots</b>: a driver runs the meter on the higher <b>tariff 2</b> in town when tariff 1 applies, takes a <b>long route</b>, or quotes an inflated flat price.",
+            "The fixes: make sure the <b>meter is running on the correct tariff</b> (tariff 1 is the standard daytime city rate), have a rough idea of the route on your phone, and for arrivals just <b>use an app</b>, which prices the trip in advance."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "euro",
+          key: { fig: "Round up", tag: "Cheap and metered", text: "City rides are cheap on the meter, and apps show the fare up front. Tip by rounding up; there is no set percentage.", tone: "teal" },
+          p: [
+            "Fares are <b>cheap by Western European standards</b>: metered in a regular taxi, shown in advance in an app. There can be small legitimate extras (a night or weekend tariff, an airport fee), which appear on the meter. To <b>tip</b>, <b>round up</b> the fare; there is no set percentage.",
+            "For more, see <a href='/portugal/tipping'>tipping in Portugal</a>, <a href='/portugal/cash-or-card'>cash or card in Portugal</a>, and the <a href='/portugal'>Portugal money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What taxi app should I use in Portugal?", a: "Bolt is the local favorite and often the cheapest, with Uber and FreeNow also working well across Lisbon, Porto and the Algarve. All show the fare and driver up front and are usually cheaper than a street taxi." },
+        { q: "How do I get from Lisbon airport to the city?", a: "The metro (red line) runs from the airport and is the cheapest option. An app is a clean door-to-door choice priced in advance. A taxi is metered, but the airport rank is where overcharging is most likely, so an app is safer on arrival." },
+        { q: "Do Portuguese taxis overcharge?", a: "Most are honest and cheap, but the occasional airport or tourist-rank driver runs a higher tariff or takes a long route. Check the meter is on tariff 1 in town, or just use an app, which prices the trip up front." },
+        { q: "Do you tip taxi drivers in Portugal?", a: "Only lightly: round up the fare. There is no set percentage, and city rides are cheap on the meter." }
+      ],
+      sources: {
+        links: [
+          { label: "Visit Portugal: official travel information", url: "https://www.visitportugal.com/en", type: "gov" },
+          { label: "US State Department: Portugal country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Portugal.html", type: "gov" }
+        ],
+        judgment: "Portuguese taxis are cheap and mostly honest, Bolt leads the apps, and the airport rank is where overcharging clusters. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Euro (EUR)" },
