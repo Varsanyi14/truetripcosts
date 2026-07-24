@@ -297,6 +297,7 @@ export default {
       ],
       live: true,
       topic: "pets",
+      insurance: true,
       title: "Bringing a dog or cat to Ireland from the US (2026): the EU process, plus the dog tapeworm rule | True Trip Costs",
       description: "Moving to Ireland with a pet from the US: why it runs on the shared EU health-certificate process, no quarantine and no titer, plus the one Ireland-specific step, a timed dog tapeworm treatment. Checked July 2026.",
       h1: "Bringing your dog or cat to Ireland.",
@@ -321,6 +322,17 @@ export default {
           p: [
             "Ireland is one of a short list of rabies-free EU destinations (with Finland, Malta, and non-EU Norway) that add a dog tapeworm treatment. A vet must give your <b>dog</b> an approved treatment against echinococcus tapeworm and record it on the certificate <b>24 to 120 hours before the dog arrives in Ireland</b>, that is between one and five days out. This is a timing rule as much as a medical one: the treatment has to fall inside that window, so it usually happens at a final vet visit right before travel, and the exact time and date go on the certificate.",
             "Two things worth stressing. First, this applies to <b>dogs only</b>: cats coming to Ireland do not need it. Second, get the timing wrong and the certificate is not valid for Ireland, which can mean turning around at the border, so build the final vet visit into your travel plan deliberately. After you settle in, Ireland also requires dogs to be licensed, which is a simple local step handled once you have an address."
+          ]
+        },
+        {
+          h: "The money side, honestly",
+          p: [
+            "No insurance product reimburses quarantine boarding anywhere, so if you later move on to a destination that requires it, budget that as an out-of-pocket cost. Nationwide is the one US pet insurer that reimburses vet care at any licensed vet worldwide, and even it excludes boarding.",
+            "US pet insurance is written around a pet that lives in the US. Most policies carry a policy territory, typically the US and sometimes Canada or Puerto Rico, and even the ones that reimburse vet care worldwide generally require your primary residence to stay in the US. So a policy may well pay a vet bill on a trip abroad and still lapse the day the move becomes permanent. Read your own policy's territory and residency wording before you assume it travels with you, and for a permanent move plan on taking out local pet insurance in your new country.",
+            "As a rough sanity check on any quote, and this is our read of current market pricing rather than an official figure: a standard international pet move tends to run about $1,500 to $6,000. Full-service door-to-door typically costs 30 to 50 percent more than a transport-only booking where you handle the vet work and paperwork yourself.",
+            "The costs people forget are the small ones. USDA APHIS charges a user fee to endorse an export health certificate, currently $101 where no test verification is needed, $160 for a certificate covering one or two tests, and $206 for three to six tests, with rabies vaccination not counted in that tally. These rates rose on 10 January 2025, the first APHIS fee adjustment since 2012. Add an airline-compliant crate (roughly $50 to $400), the travel vet visits themselves, boarding on a layover, and summer heat surcharges.",
+            "Pet shipping attracts scammers, so verify any company before you send money. IPATA, the International Pet and Animal Transportation Association, is a trade association: its members ship under their own company names, IPATA itself does not ship pets, and there is no legitimate shipper with \"ipata\" in its name. Scammers clone real shippers' sites, logos and testimonials, so check the company in the member directory at ipata.org rather than trusting a logo on a website. Treat these as red flags: a quote dramatically below every other quote, a domain registered less than six months ago, email coming from a gmail address rather than the company domain, and any request to pay by Western Union or MoneyGram.",
+            "One dated note for EU moves: the EU's pet travel rules were remade by Commission Delegated Regulation (EU) 2026/131, which applies from 22 April 2026, with the new certificate models set out in Implementing Regulation (EU) 2026/705. On the US side, APHIS is switching to the new non-commercial certificate on 1 October 2026 and can endorse the current one up to 30 September 2026. We cover the detail on the <a href=\"/eu-pet-health-certificate\">EU pet health certificate</a> page."
           ]
         },
         {

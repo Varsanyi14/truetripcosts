@@ -195,7 +195,11 @@ const showKeyPoints = ANSWER_MODE === 'B' && !answerHasFragment && answerKeyPoin
 
   {insuranceUrl && (
     <section class="sp-sec">
-      <p style="font-size:14.5px;margin:0 0 6px">Routine care in {country.name} is cheap enough to pay for out of pocket. The reason to carry travel insurance is the rare, expensive emergency, a hospital deposit, surgery, or a flight home, where the bill is the part that hurts. {insuranceBrand} covers trip medical and evacuation.</p>
+      {spoke.topic === 'pets' ? (
+        <p style="font-size:14.5px;margin:0 0 6px">If you are taking a pet to {country.name} for a trip rather than moving for good, the expensive surprise is a vet bill abroad. {insuranceBrand} sells travel insurance with an optional pet add-on that covers veterinary fees for a pet travelling with you, plus some kennel costs if your own return is delayed. Be clear on what it is not: it is a travel policy, so it does not cover a permanent relocation, loss or injury during pet shipping, or quarantine fees. Nothing on the market covers mandatory quarantine.</p>
+      ) : (
+        <p style="font-size:14.5px;margin:0 0 6px">Routine care in {country.name} is cheap enough to pay for out of pocket. The reason to carry travel insurance is the rare, expensive emergency, a hospital deposit, surgery, or a flight home, where the bill is the part that hurts. {insuranceBrand} covers trip medical and evacuation.</p>
+      )}
       <span class="sp-alt-cta">
         <a class="pickbtn" href={insuranceUrl} target="_blank" rel="noopener sponsored">See {insuranceBrand} cover for {country.name}<NewTab /></a>
         <span class="tg earn">we may earn a commission</span>

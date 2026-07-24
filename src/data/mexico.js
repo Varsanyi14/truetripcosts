@@ -390,6 +390,7 @@ export default {
       ],
       live: true,
       topic: "pets",
+      insurance: true,
       title: "Bringing a dog or cat to Mexico from the US (2026): the easy entry and the screwworm catch on the way home | True Trip Costs",
       description: "Moving to Mexico with a pet from the US: why entry is one of the simplest anywhere, no health certificate and a quick SENASICA inspection, and why the real paperwork is on the return leg for dogs. Checked July 2026.",
       h1: "Bringing your dog or cat to Mexico.",
@@ -423,6 +424,16 @@ export default {
           p: [
             "Land crossings are common and simple, especially for people driving into Baja California, Sonora, or other northern states. The SENASICA inspection is the same at a land border as at an airport, and driving avoids airline cargo fees and crate rules entirely, which is why the all-in cost can be as low as a couple hundred dollars.",
             "Flying adds cost and logistics. Pets too large for the cabin fly as cargo, which is the single biggest expense on this route and pushes a fly-in move well above the drive-in figure. Check your airline's specific pet policy early, since cabin size limits, cargo booking windows, and seasonal embargoes vary by carrier."
+          ]
+        },
+        {
+          h: "The money side, honestly",
+          p: [
+            "No insurance product reimburses quarantine boarding anywhere, so if you later move on to a destination that requires it, budget that as an out-of-pocket cost. Nationwide is the one US pet insurer that reimburses vet care at any licensed vet worldwide, and even it excludes boarding.",
+            "US pet insurance is written around a pet that lives in the US. Most policies carry a policy territory, typically the US and sometimes Canada or Puerto Rico, and even the ones that reimburse vet care worldwide generally require your primary residence to stay in the US. So a policy may well pay a vet bill on a trip abroad and still lapse the day the move becomes permanent. Read your own policy's territory and residency wording before you assume it travels with you, and for a permanent move plan on taking out local pet insurance in your new country.",
+            "As a rough sanity check on any quote, and this is our read of current market pricing rather than an official figure: a standard international pet move tends to run about $1,500 to $6,000. Full-service door-to-door typically costs 30 to 50 percent more than a transport-only booking where you handle the vet work and paperwork yourself.",
+            "The costs people forget are the small ones. USDA APHIS charges a user fee to endorse an export health certificate, currently $101 where no test verification is needed, $160 for a certificate covering one or two tests, and $206 for three to six tests, with rabies vaccination not counted in that tally. These rates rose on 10 January 2025, the first APHIS fee adjustment since 2012. Add an airline-compliant crate (roughly $50 to $400), the travel vet visits themselves, boarding on a layover, and summer heat surcharges.",
+            "Pet shipping attracts scammers, so verify any company before you send money. IPATA, the International Pet and Animal Transportation Association, is a trade association: its members ship under their own company names, IPATA itself does not ship pets, and there is no legitimate shipper with \"ipata\" in its name. Scammers clone real shippers' sites, logos and testimonials, so check the company in the member directory at ipata.org rather than trusting a logo on a website. Treat these as red flags: a quote dramatically below every other quote, a domain registered less than six months ago, email coming from a gmail address rather than the company domain, and any request to pay by Western Union or MoneyGram."
           ]
         },
         {

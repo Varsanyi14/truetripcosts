@@ -395,6 +395,7 @@ export default {
       ],
       live: true,
       topic: "pets",
+      insurance: true,
       title: "Bringing a dog or cat to Great Britain from the US (2026): the steps and the cargo catch | True Trip Costs",
       description: "Moving to the UK with a pet from the US: microchip, rabies and the 21-day wait, the dog tapeworm rule, the GB pet health certificate, and why your pet flies as cargo, not in the cabin. Checked July 2026.",
       h1: "Bringing your dog or cat to Great Britain.",
@@ -434,6 +435,16 @@ export default {
           p: [
             "This catches people who expect to fly with a small dog or cat under the seat. Britain does not allow pets to arrive in the aircraft cabin on ordinary commercial flights; they must come in as registered manifest cargo through an approved route, with assistance dogs the main exception. That means an airline-approved crate, a cargo booking, and a handling fee at the animal reception centre, which together are the largest part of the bill.",
             "The upside is that there is no rabies titer, no waiting for lab results, and no quarantine when the paperwork is right. The APHIS endorsement fee itself is modest, since no laboratory test is involved on this route."
+          ]
+        },
+        {
+          h: "The money side, honestly",
+          p: [
+            "No insurance product reimburses quarantine boarding anywhere, so if you later move on to a destination that requires it, budget that as an out-of-pocket cost. Nationwide is the one US pet insurer that reimburses vet care at any licensed vet worldwide, and even it excludes boarding.",
+            "US pet insurance is written around a pet that lives in the US. Most policies carry a policy territory, typically the US and sometimes Canada or Puerto Rico, and even the ones that reimburse vet care worldwide generally require your primary residence to stay in the US. So a policy may well pay a vet bill on a trip abroad and still lapse the day the move becomes permanent. Read your own policy's territory and residency wording before you assume it travels with you, and for a permanent move plan on taking out local pet insurance in your new country.",
+            "As a rough sanity check on any quote, and this is our read of current market pricing rather than an official figure: a standard international pet move tends to run about $1,500 to $6,000. Full-service door-to-door typically costs 30 to 50 percent more than a transport-only booking where you handle the vet work and paperwork yourself.",
+            "The costs people forget are the small ones. USDA APHIS charges a user fee to endorse an export health certificate, currently $101 where no test verification is needed, $160 for a certificate covering one or two tests, and $206 for three to six tests, with rabies vaccination not counted in that tally. These rates rose on 10 January 2025, the first APHIS fee adjustment since 2012. Add an airline-compliant crate (roughly $50 to $400), the travel vet visits themselves, boarding on a layover, and summer heat surcharges.",
+            "Pet shipping attracts scammers, so verify any company before you send money. IPATA, the International Pet and Animal Transportation Association, is a trade association: its members ship under their own company names, IPATA itself does not ship pets, and there is no legitimate shipper with \"ipata\" in its name. Scammers clone real shippers' sites, logos and testimonials, so check the company in the member directory at ipata.org rather than trusting a logo on a website. Treat these as red flags: a quote dramatically below every other quote, a domain registered less than six months ago, email coming from a gmail address rather than the company domain, and any request to pay by Western Union or MoneyGram."
           ]
         },
         {
