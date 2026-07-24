@@ -4,27 +4,30 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import USBadge from '../components/USBadge.astro';
 import TipTiers from '../components/TipTiers.astro';
+import TipGrid from '../components/TipGrid.astro';
 import { tipping, usBaseline, tippingChecked } from '../data/tipping.js';
 
-// Everything on this page reads from tipping.js live. Nothing is re-typed here,
-// so correcting a row in the data corrects the bands, the callouts and the list
-// on the next build.
+// Everything reads from tipping.js live. Nothing is re-typed, so a correction to
+// the data corrects the ramp, the callouts and the grid on the next build.
 const rows = tipping;
-
 const TIERS = ['Not customary', 'Round up only', 'Small optional', 'Modest customary', 'Expected / standard'];
 const tierCount = t => rows.filter(r => r.tier === t).length;
 
-// The clusters worth calling out by name, all derived rather than listed by hand.
 const noTip = rows.filter(r => r.tierRank === 0);
 const usLevel = rows.filter(r => r.tierRank === 4);
 const cashEssential = rows.filter(r => /essential/i.test(r.cashOrCard));
-// Places where a service charge is normal but staff still expect something on
-// top, the combination most likely to catch a US traveler out.
-const chargePlusTip = rows.filter(r => r.serviceCharge !== 'rarely' && /additional tip expected/i.test(r.tipOnTop));
+const chargeOnBill = rows.filter(r => r.serviceCharge !== 'rarely');
 
 const regionsPresent = [...new Set(rows.map(r => r.region))].sort();
 const chargeLevels = ['always', 'often', 'rarely'];
 const chargeLabel = { always: 'Usually on the bill', often: 'Often on the bill', rarely: 'Rarely on the bill' };
+
+// Regions a US traveler should budget nothing extra for, versus a real line item.
+const lightRegions = ['Europe', 'Asia', 'Oceania'];
+const heavyRegions = ['North America', 'Caribbean'];
+const avgRank = list => list.length ? (list.reduce((a, r) => a + r.tierRank, 0) / list.length) : 0;
+const lightAvg = avgRank(rows.filter(r => lightRegions.includes(r.region)));
+const heavyAvg = avgRank(rows.filter(r => heavyRegions.includes(r.region)));
 
 function niceDate(iso) {
   if (!iso) return '';
@@ -42,82 +45,100 @@ const description = 'How tipping works in ' + rows.length + ' countries, measure
   <Nav />
   <main class="wrap tipage">
     <p class="ctx"><USBadge /> <span class="stamp">Checked {checkedLabel}</span></p>
-    <h1>Tipping, measured against what you do at home</h1>
+    <h1>Your tipping instinct is wrong almost everywhere</h1>
 
     <p class="tipage-lede">
-      The hard part is not what to tip in any one country. It is that your American instincts are wrong in
-      most of the world, and you cannot tell by how much. So this page uses the habit you already have,
-      {usBaseline.restaurant} at a US restaurant, as the yardstick for all {rows.length} countries.
-      Only {usLevel.length} tip anywhere near US levels. {noTip.length} expect nothing at all.
+      You already know what you leave at home. Here is how far off that is in {rows.length} countries.
     </p>
+
+    <section class="tipage-ramp" aria-label="Where countries sit against the US habit">
+      <TipTiers rows={rows} baseline={usBaseline} tiers={TIERS} id="ramp" />
+    </section>
+
+    <section class="bigstat" aria-label="The headline numbers">
+      <div class="bs">
+        <span class="bs-n">{noTip.length}</span>
+        <span class="bs-l">expect nothing</span>
+        <span class="bs-s">Leaving money is not the norm</span>
+      </div>
+      <div class="bs">
+        <span class="bs-n">{chargeOnBill.length}</span>
+        <span class="bs-l">put a charge on the bill</span>
+        <span class="bs-s">Tipping again is the costly mistake</span>
+      </div>
+      <div class="bs is-us">
+        <span class="bs-n">{usLevel.length}</span>
+        <span class="bs-l">tip like the US</span>
+        <span class="bs-s">Everywhere else expects less</span>
+      </div>
+    </section>
 
     <div class="tipage-honest">
       <p class="tipage-honest-h">This is custom, not law</p>
       <p>
-        Tipping norms are social habits, not published rules, and they vary by region, venue and season.
-        Individual places set their own policies, and a busy tourist strip often behaves differently from a
-        neighborhood spot an hour away. That makes this page a different kind of claim from our visa-fee and
-        tourist-tax pages, where the figures come from government sources. Treat what follows as well-researched
-        guidance to travel with, not as rules. Sourcing quality varies by country and every entry shows how
-        firm it is.
+        Tipping norms are social habits, not published rules. They vary by region, venue and season, and a
+        busy tourist strip behaves differently from a neighborhood spot an hour away. That makes this a
+        different kind of claim from our visa-fee and tourist-tax pages, where figures come from government
+        sources. Sourcing quality varies by country, and every tile below shows how firm it is.
       </p>
     </div>
 
-    <section class="tipage-bands" aria-label="Tipping tiers compared to the US">
-      <TipTiers rows={rows} baseline={usBaseline} tiers={TIERS} id="tiers" />
+    <section class="tipage-budget" aria-label="What to budget">
+      <h2>What to actually budget</h2>
+      <div class="bg-rows">
+        <div class="bg-row">
+          <span class="bg-lab">Europe, Asia, Oceania</span>
+          <span class="bg-track"><span class="bg-fill light" style={`width:${Math.round((lightAvg / 4) * 100)}%`}></span></span>
+          <span class="bg-val">near zero</span>
+        </div>
+        <div class="bg-row">
+          <span class="bg-lab">North America, Caribbean</span>
+          <span class="bg-track"><span class="bg-fill heavy" style={`width:${Math.round((heavyAvg / 4) * 100)}%`}></span></span>
+          <span class="bg-val">10 to 20%</span>
+        </div>
+      </div>
+      <p class="bg-note">
+        Across Europe and Japan the price you see is close to the price you pay. Across North America and
+        the Caribbean, add a real line item to every meal and carry small bills.
+      </p>
     </section>
 
-    <section class="tipage-calls" aria-label="What matters most">
-      <div class="tc">
-        <p class="tc-h">Do not tip in these {noTip.length}</p>
-        <p class="tc-b">
-          The single most useful thing on this page. In {noTip.map(r => r.country).join(', ')}, leaving money
-          is not the norm, and in Japan it may be politely refused. Paying the exact amount is correct and
-          not rude.
-        </p>
+    <section class="tipage-trap" aria-label="The service charge trap">
+      <h2>The trap: a service charge is not always a tip</h2>
+      <div class="trap">
+        <div class="trap-step">
+          <span class="trap-q">Charge on the bill?</span>
+          <span class="trap-a trap-no">No</span>
+          <span class="trap-r">Tip by the local norm</span>
+        </div>
+        <div class="trap-step">
+          <span class="trap-q">Charge on the bill?</span>
+          <span class="trap-a trap-yes">Yes</span>
+          <span class="trap-r">Usually add nothing</span>
+        </div>
+        <div class="trap-step trap-alert">
+          <span class="trap-q">But does it reach staff?</span>
+          <span class="trap-a trap-warn">Not always</span>
+          <span class="trap-r">Small cash to the server</span>
+        </div>
       </div>
-
-      <div class="tc">
-        <p class="tc-h">A service charge does not always reach the staff</p>
-        <p class="tc-b">
-          This one inverts the US assumption. In Taiwan the printed service charge is treated by law as
-          general restaurant revenue rather than a gratuity. In Egypt, Argentina, Georgia and Vietnam it
-          commonly does not reach the worker either. So "there is a service charge" does not reliably mean
-          "staff are taken care of", and a small amount handed over in cash often lands where the printed
-          charge does not.
-        </p>
-      </div>
-
-      <div class="tc">
-        <p class="tc-h">Bring cash in these {cashEssential.length}</p>
-        <p class="tc-b">
-          In {cashEssential.map(r => r.country).join(', ')} a tip realistically has to be cash. In Argentina
-          card terminals have no tip line at all, so anything you intend for the server has to come out of
-          your pocket.
-        </p>
-      </div>
-
-      <div class="tc">
-        <p class="tc-h">The money-side summary</p>
-        <p class="tc-b">
-          For budgeting rather than etiquette: across Europe and Japan, set aside almost nothing extra for
-          tips, the price you see is close to the price you pay. Across North America and the Caribbean,
-          budget a real 10 to 20 percent line item on top of every meal, and carry small bills, because that
-          is where tipping genuinely moves your daily spend.
-        </p>
-      </div>
+      <p class="trap-note">
+        Taiwan treats the printed charge as general restaurant revenue by law, not a gratuity. In Egypt,
+        Argentina, Georgia and Vietnam it commonly bypasses staff too. This inverts the US assumption, so
+        a printed charge does not reliably mean staff are taken care of.
+      </p>
     </section>
 
     <section class="tipage-detail" aria-labelledby="every-country">
-      <h2 id="every-country">Every country, with the one thing to remember</h2>
+      <h2 id="every-country">All {rows.length} countries</h2>
       <p class="tipage-sub">
-        Filter to what you need. Each entry shows whether a service charge is usually on the bill, whether to
-        tip in cash or card, and how firm our sourcing is.
+        Darker means more expected. A dot means a service charge is usually on the bill. Tap any country for
+        what to do and how firm our sourcing is.
       </p>
 
       <div class="tf" id="tip-filters">
         <div class="tf-group">
-          <p class="tf-lab">Tier <span class="tf-count" id="tf-count">{rows.length} of {rows.length} shown</span></p>
+          <p class="tf-lab">Tier <span class="tf-count" id="tf-count">{rows.length} shown</span></p>
           <div class="tf-btns" role="group" aria-label="Filter by tipping tier">
             <button type="button" class="tf-chip is-active" data-tier-btn="__all" aria-pressed="true">All</button>
             {TIERS.map(t => (
@@ -125,7 +146,6 @@ const description = 'How tipping works in ' + rows.length + ' countries, measure
             ))}
           </div>
         </div>
-
         <div class="tf-group">
           <p class="tf-lab">Service charge</p>
           <div class="tf-btns" role="group" aria-label="Filter by service charge">
@@ -135,7 +155,6 @@ const description = 'How tipping works in ' + rows.length + ' countries, measure
             ))}
           </div>
         </div>
-
         <div class="tf-group">
           <p class="tf-lab">Region</p>
           <div class="tf-btns" role="group" aria-label="Filter by region">
@@ -147,140 +166,161 @@ const description = 'How tipping works in ' + rows.length + ' countries, measure
         </div>
       </div>
 
-      <ol class="tl" id="tip-list">
-        {rows.map(r => (
-          <li
-            class:list={["tl-row", 'is-' + r.confidence]}
-            data-tier={r.tier}
-            data-charge={r.serviceCharge}
-            data-region={r.region}
-          >
-            <div class="tl-top">
-              <span class="tl-country">
-                {r.hasGuide ? <a href={`/${r.slug}`}>{r.country}</a> : <span>{r.country}</span>}
-              </span>
-              <span class="tl-tier">{r.tier}</span>
-              <span class={`tl-conf is-${r.confidence}`}>{r.confidence === 'low' ? 'thin sourcing' : r.confidence === 'medium' ? 'less certain' : 'firmer'}</span>
-            </div>
-
-            <p class="tl-remember">{r.remember}</p>
-
-            <dl class="tl-facts">
-              <div><dt>Restaurant</dt><dd>{r.restaurant}</dd></div>
-              <div><dt>Service charge</dt><dd>{chargeLabel[r.serviceCharge]}</dd></div>
-              <div><dt>On top of it</dt><dd>{r.tipOnTop}</dd></div>
-              <div><dt>Cash or card</dt><dd>{r.cashOrCard}</dd></div>
-            </dl>
-          </li>
-        ))}
-      </ol>
-
-      <p class="tl-empty" id="tl-empty" hidden>Nothing matches those filters together. Reset one of them to see countries again.</p>
+      <TipGrid rows={rows} id="grid" />
+      <p class="tl-empty" id="tl-empty" hidden>Nothing matches those filters together. Reset one to see countries again.</p>
     </section>
 
     <p class="tipage-foot">
       Checked {checkedLabel} by the True Trip Costs desk. Tipping norms move faster than most travel facts:
       card terminals keep nudging suggested percentages upward, Turkey banned mandatory service charges in
-      2026, and a 2025 Indian court ruling confirmed service charges there are voluntary. We re-check this
-      page as norms shift, and where sources disagreed we lowered the confidence rather than picking a
-      number that looked tidy.
+      2026, and a 2025 Indian court ruling confirmed service charges there are voluntary. Where sources
+      disagreed we lowered the confidence rather than picking a number that looked tidy.
     </p>
   </main>
   <Footer />
 
   <style>
     .tipage{max-width:900px}
-    .tipage h1{margin-bottom:12px}
-    .tipage-lede{font-size:17.5px;color:#3B4A46;line-height:1.55;max-width:680px;margin:0 0 20px}
+    .tipage h1{margin-bottom:10px}
+    .tipage-lede{font-size:18px;color:#3B4A46;line-height:1.5;max-width:620px;margin:0 0 22px}
+    .tipage-ramp{margin:0 0 22px}
 
-    .tipage-honest{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:14px 18px;margin:0 0 26px;max-width:720px;box-shadow:var(--shadow)}
+    .bigstat{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin:0 0 26px}
+    .bs{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:2px}
+    .bs.is-us{border-color:var(--amber);background:var(--amber-bg)}
+    .bs-n{font-family:var(--serif);font-size:34px;line-height:1;color:var(--ink)}
+    .bs-l{font-size:14px;font-weight:700;color:var(--ink)}
+    .bs-s{font-size:12.5px;color:var(--muted);line-height:1.4}
+
+    .tipage-honest{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:14px 18px;margin:0 0 30px;max-width:720px;box-shadow:var(--shadow)}
     .tipage-honest-h{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 6px}
     .tipage-honest p{font-size:14px;color:var(--muted);line-height:1.55;margin:0}
 
-    .tipage-bands{margin:0 0 34px}
+    .tipage h2{font-family:var(--serif);font-weight:500;font-size:clamp(20px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 12px}
 
-    .tipage-calls{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:0 0 40px}
-    .tc{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-    .tc-h{font-size:14.5px;font-weight:700;color:var(--ink);margin:0 0 6px}
-    .tc-b{font-size:13.5px;color:var(--muted);line-height:1.55;margin:0}
+    .tipage-budget{margin:0 0 34px}
+    .bg-rows{display:flex;flex-direction:column;gap:9px}
+    .bg-row{display:grid;grid-template-columns:minmax(120px,190px) 1fr auto;align-items:center;gap:11px}
+    .bg-lab{font-size:13.5px;font-weight:600;color:var(--ink)}
+    .bg-track{height:15px;background:rgba(10,86,68,.09);border-radius:5px;overflow:hidden}
+    .bg-fill{display:block;height:100%;border-radius:5px}
+    .bg-fill.light{background:rgba(10,86,68,.42)}
+    .bg-fill.heavy{background:var(--amber)}
+    .bg-val{font-family:var(--serif);font-size:14.5px;color:var(--ink);white-space:nowrap}
+    .bg-note{font-size:13.5px;color:var(--muted);line-height:1.55;margin:11px 0 0;max-width:660px}
 
-    .tipage-detail h2{font-family:var(--serif);font-weight:500;font-size:clamp(22px,3.4vw,30px);letter-spacing:-.01em;margin:0 0 8px}
-    .tipage-sub{font-size:14.5px;color:var(--muted);margin:0 0 18px;max-width:640px}
+    .tipage-trap{margin:0 0 36px}
+    .trap{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+    .trap-step{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px;display:flex;flex-direction:column;gap:5px}
+    .trap-step.trap-alert{border-color:var(--amber);background:var(--amber-bg)}
+    .trap-q{font-size:12.5px;color:var(--muted)}
+    .trap-a{font-size:13px;font-weight:700;align-self:flex-start;border-radius:999px;padding:2px 10px}
+    .trap-no{background:rgba(10,86,68,.12);color:var(--teal-deep)}
+    .trap-yes{background:rgba(10,86,68,.12);color:var(--teal-deep)}
+    .trap-warn{background:var(--amber);color:#fff}
+    .trap-r{font-size:14.5px;font-weight:700;color:var(--ink);line-height:1.35}
+    .trap-note{font-size:13.5px;color:var(--muted);line-height:1.55;margin:12px 0 0;max-width:680px}
 
-    .tf{display:flex;flex-direction:column;gap:14px;margin:0 0 20px}
-    .tf-lab{font-size:12.5px;font-weight:700;color:var(--ink);margin:0 0 7px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .tipage-sub{font-size:14px;color:var(--muted);margin:0 0 16px;max-width:640px;line-height:1.5}
+
+    .tf{display:flex;flex-direction:column;gap:12px;margin:0 0 16px}
+    .tf-lab{font-size:12.5px;font-weight:700;color:var(--ink);margin:0 0 6px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
     .tf-count{font-weight:600;color:var(--muted);font-size:12px}
-    .tf-btns{display:flex;flex-wrap:wrap;gap:7px}
+    .tf-btns{display:flex;flex-wrap:wrap;gap:6px}
     .tf-chip{font:inherit;font-size:12.5px;font-weight:600;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer;transition:background .16s ease,border-color .16s ease,color .16s ease}
     .tf-chip:hover{border-color:var(--amber);color:var(--amber)}
     .tf-chip.is-active{background:var(--amber);border-color:var(--amber);color:#fff}
     .tf-n{opacity:.75;font-variant-numeric:tabular-nums}
 
-    .tl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
-    .tl-row{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
-    .tl-row.is-hidden{display:none}
-    /* Always-on confidence: a left edge that reads solid, soft, or provisional. */
-    .tl-row.is-high{border-left:3px solid rgba(10,86,68,.75)}
-    .tl-row.is-medium{border-left:3px solid rgba(10,86,68,.34)}
-    .tl-row.is-low{border-left:3px dashed rgba(14,122,95,.6)}
-
-    .tl-top{display:flex;align-items:baseline;flex-wrap:wrap;gap:9px;margin:0 0 6px}
-    .tl-country{font-size:15.5px;font-weight:700;color:var(--ink)}
-    .tl-country a{color:var(--ink);text-decoration:none}
-    .tl-country a:hover{color:var(--teal-deep);text-decoration:underline}
-    .tl-tier{font-size:11.5px;font-weight:600;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:2px 9px}
-    .tl-conf{font-size:11px;font-weight:700;letter-spacing:.02em}
-    .tl-conf.is-high{color:#10502C}
-    .tl-conf.is-medium{color:#7A3D08}
-    .tl-conf.is-low{color:var(--muted);font-style:italic}
-
-    /* The practical takeaway stays visible at every width, never behind a hover. */
-    .tl-remember{font-size:14.5px;color:var(--ink);line-height:1.5;margin:0 0 9px;max-width:660px}
-
-    .tl-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px 14px;margin:0}
-    .tl-facts div{min-width:0}
-    .tl-facts dt{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:0 0 1px}
-    .tl-facts dd{font-size:13px;color:var(--ink);margin:0;line-height:1.4}
-
     .tl-empty{font-size:14.5px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0 0}
-    .tipage-foot{font-size:14px;color:var(--muted);line-height:1.55;margin:34px 0 8px;max-width:700px}
+    .tipage-foot{font-size:13.5px;color:var(--muted);line-height:1.55;margin:34px 0 8px;max-width:700px}
 
     @media (max-width:560px){
       .tipage-lede{font-size:16.5px}
-      .tipage-calls{grid-template-columns:1fr}
-      .tl-remember{font-size:14px}
-      .tl-facts{grid-template-columns:1fr 1fr;gap:8px 10px}
-      .tl-facts dd{font-size:12.5px}
+      .bigstat{grid-template-columns:1fr}
+      .bs{flex-direction:row;align-items:baseline;flex-wrap:wrap;gap:8px}
+      .bs-n{font-size:28px}
+      .bs-s{flex-basis:100%}
+      .bg-row{grid-template-columns:1fr;gap:4px}
+      .bg-val{justify-self:start}
     }
   </style>
 
   <script is:inline>
     (function () {
-      var list = document.getElementById('tip-list');
-      if (!list) return;
-      var rows = Array.prototype.slice.call(list.querySelectorAll('.tl-row'));
+      var grid = document.getElementById('grid-grid');
+      if (!grid) return;
+      var cells = Array.prototype.slice.call(grid.querySelectorAll('.tg-cell'));
+      var panel = document.getElementById('grid-panel');
       var countEl = document.getElementById('tf-count');
       var emptyEl = document.getElementById('tl-empty');
-      var total = rows.length;
-
+      var total = cells.length;
       var sel = { tier: '__all', charge: '__all', region: '__all' };
+      var openCell = null;
 
       function apply() {
         var shown = 0;
-        rows.forEach(function (row) {
-          var okTier = sel.tier === '__all' || row.getAttribute('data-tier') === sel.tier;
-          var okCharge = sel.charge === '__all' || row.getAttribute('data-charge') === sel.charge;
-          var okRegion = sel.region === '__all' || row.getAttribute('data-region') === sel.region;
-          var hidden = !(okTier && okCharge && okRegion);
-          row.classList.toggle('is-hidden', hidden);
-          if (!hidden) shown++;
+        cells.forEach(function (c) {
+          var ok = (sel.tier === '__all' || c.getAttribute('data-tier') === sel.tier)
+            && (sel.charge === '__all' || c.getAttribute('data-charge') === sel.charge)
+            && (sel.region === '__all' || c.getAttribute('data-region') === sel.region);
+          c.classList.toggle('is-hidden', !ok);
+          if (ok) shown++;
         });
-        if (countEl) countEl.textContent = shown + ' of ' + total + ' shown';
+        if (countEl) countEl.textContent = shown + ' shown';
         if (emptyEl) emptyEl.hidden = shown !== 0;
+        // A hidden country should not leave its detail panel open.
+        if (openCell && openCell.classList.contains('is-hidden')) closePanel();
       }
 
-      // Each filter group is single-select, so the three read as one sentence:
-      // this tier, this service charge, this region.
+      function closePanel() {
+        if (panel) { panel.hidden = true; panel.innerHTML = ''; }
+        if (openCell) {
+          openCell.classList.remove('is-open');
+          var b = openCell.querySelector('.tg-btn');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        }
+        openCell = null;
+      }
+
+      function openPanel(cell) {
+        var raw = cell.querySelector('.tg-data');
+        if (!raw || !panel) return;
+        var d;
+        try { d = JSON.parse(raw.textContent); } catch (e) { return; }
+        closePanel();
+        openCell = cell;
+        cell.classList.add('is-open');
+        var btn = cell.querySelector('.tg-btn');
+        if (btn) btn.setAttribute('aria-expanded', 'true');
+
+        var html = '<div class="tg-panel-h"><span class="tg-panel-c">' + d.country + '</span>'
+          + '<span class="tg-panel-t">' + d.tier + '</span>'
+          + '<button type="button" class="tg-close">Close</button></div>'
+          + '<p class="tg-remember">' + d.remember + '</p>'
+          + '<dl class="tg-facts">'
+          + '<div><dt>Restaurant</dt><dd>' + d.restaurant + '</dd></div>'
+          + '<div><dt>Service charge</dt><dd>' + d.charge + '</dd></div>'
+          + '<div><dt>On top of it</dt><dd>' + d.onTop + '</dd></div>'
+          + '<div><dt>Cash or card</dt><dd>' + d.cash + '</dd></div>'
+          + '<div><dt>Sourcing</dt><dd>' + d.sourcing + '</dd></div>'
+          + '</dl>';
+        if (d.hasGuide) html += '<a class="tg-guide" href="/' + d.slug + '">Full ' + d.country + ' money guide</a>';
+        panel.innerHTML = html;
+        panel.hidden = false;
+        var close = panel.querySelector('.tg-close');
+        if (close) close.addEventListener('click', closePanel);
+      }
+
+      grid.addEventListener('click', function (e) {
+        var btn = e.target.closest ? e.target.closest('.tg-btn') : null;
+        if (!btn) return;
+        var cell = btn.closest('.tg-cell');
+        if (!cell) return;
+        if (cell === openCell) { closePanel(); return; }
+        openPanel(cell);
+      });
+
       function wire(attr, key) {
         var btns = document.querySelectorAll('[' + attr + ']');
         btns.forEach(function (btn) {
@@ -295,7 +335,6 @@ const description = 'How tipping works in ' + rows.length + ' countries, measure
           });
         });
       }
-
       wire('data-tier-btn', 'tier');
       wire('data-charge-btn', 'charge');
       wire('data-region-btn', 'region');

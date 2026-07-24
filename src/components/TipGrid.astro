@@ -1,0 +1,114 @@
+---
+// The country grid: 53 tiles a reader can scan in seconds instead of a list
+// they have to read.
+//
+// Each tile encodes three things visually, with no text to parse:
+//   fill depth  = how much is expected (tier rank 0 to 4)
+//   corner dot  = a service charge is usually on the bill
+//   dashed edge = thinner sourcing (confidence)
+// Tapping a tile reveals that country's practical detail in place, so the
+// advice is one tap away rather than dumped on arrival.
+//
+// Reads the rows passed in (live data, nothing hardcoded).
+
+const { rows = [], id = 'tipgrid' } = Astro.props;
+
+const chargeLabel = { always: 'Usually on the bill', often: 'Often on the bill', rarely: 'Rarely on the bill' };
+const confWord = { high: 'firmer sourcing', medium: 'less certain', low: 'thin sourcing' };
+---
+
+<div class="tg" id={id}>
+  <ul class="tg-grid" id={`${id}-grid`}>
+    {rows.map(r => (
+      <li
+        class:list={["tg-cell", `r${r.tierRank}`, `c-${r.confidence}`, { 'has-charge': r.serviceCharge !== 'rarely' }]}
+        data-tier={r.tier}
+        data-charge={r.serviceCharge}
+        data-region={r.region}
+        data-slug={r.slug}
+      >
+        <button type="button" class="tg-btn" aria-expanded="false" aria-controls={`d-${r.slug}`}>
+          <span class="tg-name">{r.country}</span>
+          <span class="tg-pct">{r.addsPercent === '0' ? '0' : r.addsPercent}</span>
+        </button>
+
+        <script type="application/json" class="tg-data" set:html={JSON.stringify({
+          country: r.country, slug: r.slug, hasGuide: r.hasGuide,
+          remember: r.remember, restaurant: r.restaurant,
+          charge: chargeLabel[r.serviceCharge], onTop: r.tipOnTop,
+          cash: r.cashOrCard, sourcing: confWord[r.confidence], tier: r.tier
+        })} />
+      </li>
+    ))}
+  </ul>
+
+  <div class="tg-panel" id={`${id}-panel`} hidden aria-live="polite"></div>
+
+  <p class="tg-key" aria-hidden="true">
+    <span class="tg-k r0"></span><span class="tg-k r1"></span><span class="tg-k r2"></span><span class="tg-k r3"></span><span class="tg-k r4"></span>
+    <span class="tg-kt">tip nothing to US level</span>
+    <span class="tg-kd"></span><span class="tg-kt">service charge usual</span>
+    <span class="tg-kx"></span><span class="tg-kt">thinner sourcing</span>
+  </p>
+</div>
+
+<style>
+  .tg{margin:0}
+  .tg-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:7px}
+  .tg-cell{position:relative;border-radius:10px;overflow:hidden}
+  .tg-cell.is-hidden{display:none}
+  /* Tier depth is the fill: the grid reads as a heat map of expectation. */
+  .tg-cell.r0{background:rgba(10,86,68,.09)}
+  .tg-cell.r1{background:rgba(10,86,68,.19)}
+  .tg-cell.r2{background:rgba(10,86,68,.33)}
+  .tg-cell.r3{background:rgba(10,86,68,.52)}
+  .tg-cell.r4{background:var(--amber)}
+  .tg-cell.r3 .tg-name,.tg-cell.r3 .tg-pct,.tg-cell.r4 .tg-name,.tg-cell.r4 .tg-pct{color:#fff}
+  /* Thinner sourcing gets a dashed edge, always on, never colour alone. */
+  .tg-cell.c-low{outline:1.5px dashed rgba(14,122,95,.75);outline-offset:-2px}
+  .tg-cell.c-medium{outline:1px solid rgba(22,48,44,.12);outline-offset:-1px}
+
+  .tg-btn{display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%;text-align:left;background:transparent;border:0;padding:11px 11px 10px;cursor:pointer;font:inherit}
+  .tg-name{font-size:13px;font-weight:700;color:var(--ink);line-height:1.25}
+  .tg-pct{font-family:var(--serif);font-size:15px;color:var(--ink);opacity:.95}
+  .tg-btn:hover .tg-name{text-decoration:underline}
+  .tg-btn:focus-visible{outline:2px solid var(--amber);outline-offset:-2px}
+
+  /* A service charge on the bill: the single most expensive thing to miss. */
+  .tg-cell.has-charge .tg-btn::after{content:"";position:absolute;top:8px;right:8px;width:7px;height:7px;border-radius:50%;background:rgba(22,48,44,.4)}
+  .tg-cell.r3.has-charge .tg-btn::after,.tg-cell.r4.has-charge .tg-btn::after{background:rgba(255,255,255,.85)}
+
+  .tg-panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0 0}
+  .tg-panel[hidden]{display:none}
+  .tg-panel-h{display:flex;align-items:baseline;flex-wrap:wrap;gap:9px;margin:0 0 7px}
+  .tg-panel-c{font-size:16px;font-weight:700;color:var(--ink)}
+  .tg-panel-t{font-size:11.5px;font-weight:600;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:2px 9px}
+  .tg-close{margin-left:auto;background:transparent;border:0;font:inherit;font-size:12.5px;color:var(--teal-deep);cursor:pointer;padding:2px 4px}
+  .tg-close:hover{text-decoration:underline}
+  .tg-cell.is-open{outline:2px solid var(--amber);outline-offset:-2px}
+  .tg-remember{font-size:14px;color:var(--ink);line-height:1.5;margin:0 0 9px}
+  .tg-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:7px 12px;margin:0 0 8px}
+  .tg-facts dt{font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:0}
+  .tg-facts dd{font-size:12.5px;color:var(--ink);margin:0;line-height:1.35}
+  .tg-guide{font-size:12.5px;font-weight:600;color:var(--teal-deep);text-decoration:none}
+  .tg-guide:hover{text-decoration:underline}
+
+  .tg-key{display:flex;align-items:center;flex-wrap:wrap;gap:5px;font-size:11.5px;color:var(--muted);margin:14px 0 0}
+  .tg-k{width:15px;height:13px;border-radius:3px;display:inline-block}
+  .tg-k.r0{background:rgba(10,86,68,.09)}
+  .tg-k.r1{background:rgba(10,86,68,.19)}
+  .tg-k.r2{background:rgba(10,86,68,.33)}
+  .tg-k.r3{background:rgba(10,86,68,.52)}
+  .tg-k.r4{background:var(--amber)}
+  .tg-kt{margin:0 12px 0 4px}
+  .tg-kd{width:7px;height:7px;border-radius:50%;background:rgba(22,48,44,.4);display:inline-block}
+  .tg-kx{width:15px;height:13px;border-radius:3px;border:1.5px dashed rgba(14,122,95,.75);display:inline-block}
+
+  @media (max-width:560px){
+    .tg-grid{grid-template-columns:repeat(auto-fill,minmax(104px,1fr));gap:6px}
+    .tg-name{font-size:12px}
+    .tg-pct{font-size:13.5px}
+    .tg-btn{padding:9px 9px 8px}
+    .tg-facts{grid-template-columns:1fr 1fr}
+  }
+</style>
