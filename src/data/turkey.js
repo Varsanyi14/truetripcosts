@@ -168,6 +168,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Turkish lira (TRY)" },
+        { k: "Cards", v: "Widely accepted in cities" },
+        { k: "Cash for", v: "Bazaars, small vendors, taxis" },
+        { k: "Note", v: "Prices move fast (inflation)" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Turkey, or can I use cards? (2026) | True Trip Costs",
+      description: "Both. Turkey is card-friendly in cities, but carry lira cash for bazaars, small vendors and taxis. Prices move fast with inflation. Choose lira, not dollars or euros. Checked July 2026.",
+      h1: "Do I need cash in Turkey, or can I use cards?",
+      lede: "Short answer: a card for cities and larger purchases, lira cash for bazaars, small vendors and taxis. And with high inflation, prices move fast. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Both. Turkey is <b>card-friendly in cities</b>, where <b>contactless</b> is common in shops, restaurants and hotels. But <b>carry lira cash</b> for <b>bazaars, small vendors, street food and taxis</b>, and for haggling in markets. The currency is the <b>Turkish lira</b>, and with <b>high inflation, prices move fast</b>, so treat older price info with caution. Choose <b>lira, not dollars or euros</b>, on any card or ATM. Do not rely on paying in dollars: pay in lira.",
+      sections: [
+        {
+          h: "Cards in cities, cash for bazaars",
+          icon: "cash",
+          key: { fig: "Carry lira", tag: "Bazaars and taxis are cash", text: "Cards are widely accepted in cities, but carry lira cash for bazaars, small vendors, street food and taxis.", tone: "teal" },
+          p: [
+            "Turkey is <b>card-friendly in cities and tourist areas</b>: <b>contactless</b>, Apple Pay and Google Pay work in <b>shops, restaurants, malls and hotels</b>, and <b>Visa and Mastercard</b> are widely accepted.",
+            "But <b>carry lira cash</b> for the <b>bazaars, small vendors, street food, and taxis</b>, and for <b>haggling</b> in markets, where cash is expected and gives you room to negotiate. A card for the big stuff, cash for the rest."
+          ]
+        },
+        {
+          h: "Choose lira, not dollars or euros",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose lira", text: "When a terminal or ATM offers dollars, euros or lira, pick lira. Foreign currency triggers dynamic currency conversion at a rate about 3 to 8% worse.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars, euros or lira, always choose lira</b>. Foreign currency triggers dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use an ATM attached to a <b>major bank</b>, which are common in cities. Some ATMs charge a fee for foreign cards, so take out a sensible amount. Use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "Inflation, and how much cash",
+          icon: "coins",
+          key: { fig: "Prices move", tag: "High inflation", text: "Turkey has high inflation, so prices change fast and older figures may be stale. Draw cash in modest amounts as you go.", tone: "teal" },
+          p: [
+            "One thing to know: Turkey has had <b>high inflation</b>, so <b>prices change quickly</b> and older price guides can be out of date. Draw <b>lira in modest amounts as you go</b> rather than one large sum, and check current prices rather than relying on old figures.",
+            "For tipping norms, see <a href='/turkey/tipping'>tipping in Turkey</a>, and for the wider picture, the <a href='/turkey'>Turkey money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Turkey?", a: "Yes, alongside a card. Cards are widely accepted in cities, but carry lira cash for bazaars, small vendors, street food, taxis and haggling in markets." },
+        { q: "Should I pay in lira or dollars in Turkey?", a: "Always lira. If a card machine or ATM offers dollars or euros, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better. Pay in lira." },
+        { q: "Is Turkey cash or card?", a: "Both. Cities and tourist areas are card-friendly with contactless common, but bazaars, small vendors and taxis run on cash. Carry lira for those, and use cards for larger purchases." },
+        { q: "Does inflation affect prices in Turkey?", a: "Yes. Turkey has had high inflation, so prices change quickly and older figures may be stale. Draw lira in modest amounts as you go and check current prices rather than relying on old guides." }
+      ],
+      sources: {
+        links: [
+          { label: "Central Bank of the Republic of Turkiye: official exchange rates", url: "https://www.tcmb.gov.tr/wps/wcm/connect/en/tcmb+en", type: "gov" },
+          { label: "US State Department: Turkey country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Turkey.html", type: "gov" }
+        ],
+        judgment: "Turkey is card-friendly in cities but bazaars and small vendors run on cash, and high inflation means prices move fast. The lira rate moves, and the firm rule is to decline foreign-currency conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Modest, about 5 to 10%" },

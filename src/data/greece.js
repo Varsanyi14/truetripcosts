@@ -176,6 +176,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Euro (EUR)" },
+        { k: "Cards", v: "Fine in cities, cash on islands" },
+        { k: "Cash for", v: "Tavernas, kiosks, small islands" },
+        { k: "On a card", v: "Choose euros, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Greece, or can I use cards? (2026) | True Trip Costs",
+      description: "A fair bit. Greece is card-friendly in cities, but carry euro cash for tavernas, kiosks and especially the smaller islands, where some places are cash-only. Choose euros not dollars. Checked July 2026.",
+      h1: "Do I need cash in Greece, or can I use cards?",
+      lede: "Short answer: cards work in the cities and big resorts, but carry euro cash for tavernas, kiosks and the smaller islands. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "A mix. Greece is <b>card-friendly in cities and tourist areas</b> (Athens, Thessaloniki, big resorts), where <b>contactless</b>, Apple Pay and Google Pay work well. But <b>carry euro cash</b> for <b>tavernas, kiosks (periptero), small shops, and especially the smaller islands</b>, where cards are less certain and some places are cash-only. The currency is the <b>euro</b>. Choose <b>euros, not dollars</b> on any card or ATM.",
+      sections: [
+        {
+          h: "Cards in cities, cash on the islands",
+          icon: "phoneok",
+          key: { fig: "Carry cash", tag: "Islands lean cash", text: "Cards work well in cities and tourist areas, but carry euro cash for tavernas, kiosks and the smaller islands, which lean on cash.", tone: "teal" },
+          p: [
+            "Greece is <b>card-friendly in cities and larger tourist areas</b>, such as Athens, Thessaloniki and the big resorts, where <b>contactless</b> and mobile pay work well and <b>Visa and Mastercard</b> are accepted.",
+            "But <b>carry euro cash</b> for <b>tavernas, kiosks (periptero), bakeries, small shops, and the smaller islands</b>, where some places are <b>cash-only</b> or prefer it. The more remote you go, the more cash matters."
+          ]
+        },
+        {
+          h: "Choose euros, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose euros", text: "When a terminal or ATM offers dollars or euros, pick euros. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse than your bank's.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars or euros, always choose euros</b>. Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use an ATM attached to a <b>real bank</b> (a Greek bank branch) rather than a standalone <b>Euronet</b> kiosk, which charges high fees and pushes the dollar conversion."
+          ]
+        },
+        {
+          h: "How much cash, and the islands",
+          icon: "euro",
+          key: { fig: "Plan ahead", tag: "ATMs thin on small islands", text: "Take out enough euro cash before heading to a small island, where ATMs can be few, run dry, or charge high fees.", tone: "teal" },
+          p: [
+            "Plan your cash around the islands. On <b>small islands</b>, ATMs can be <b>few, occasionally out of cash, or high-fee</b>, so take out a sensible amount of euros <b>before you go</b> or in a larger town. Use a <b>debit card</b> to avoid cash-advance fees.",
+            "For tipping norms, see <a href='/greece/tipping'>tipping in Greece</a>, and for the wider picture, the <a href='/greece'>Greece money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Greece?", a: "Yes, more than in some of Europe. Cards work well in cities and tourist areas, but carry euro cash for tavernas, kiosks, small shops and especially the smaller islands, where some places are cash-only." },
+        { q: "Should I pay in euros or dollars in Greece?", a: "Always euros. If a card machine or ATM offers dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Do I need cash on the Greek islands?", a: "Yes. On smaller islands, cards are less certain and ATMs can be few, out of cash, or high-fee. Take out enough euros before you go or in a larger town." },
+        { q: "Are cards accepted in Greece?", a: "Widely in cities and tourist areas, with contactless and mobile pay common. Smaller islands, tavernas and kiosks lean on cash, so carry some euros. Always choose euros, not dollars, on the terminal." }
+      ],
+      sources: {
+        links: [
+          { label: "European Central Bank: the official euro reference exchange rates", url: "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html", type: "gov" },
+          { label: "US State Department: Greece country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Greece.html", type: "gov" }
+        ],
+        judgment: "Greece is card-friendly in cities but cash still matters on smaller islands, where ATMs can be sparse. The euro rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Modest, appreciated" },

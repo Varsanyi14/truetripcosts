@@ -183,6 +183,66 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Indian rupee (INR)" },
+        { k: "Cards", v: "Hotels, malls, nicer restaurants" },
+        { k: "Cash for", v: "Markets, street, autos, small shops" },
+        { k: "On a card", v: "Choose rupees, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in India, or can I use cards? (2026) | True Trip Costs",
+      description: "Yes, carry cash. India takes cards at hotels and nicer restaurants, but markets, street food, autos and small shops run on cash. Locals use UPI, hard for visitors. Choose rupees not dollars. Checked July 2026.",
+      h1: "Do I need cash in India, or can I use cards?",
+      lede: "Short answer: cards for hotels and larger purchases, and cash for daily life. Locals pay by UPI apps that are hard for visitors, so carry rupee cash in small notes. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Both, and carry cash. India takes <b>cards at hotels, malls, nicer restaurants and chains</b>, where <b>contactless</b> is growing. But <b>daily life runs on cash</b>: <b>markets, street food, small shops, autos and rickshaws</b> are largely cash. Locals use <b>UPI</b> apps, which are hard for visitors to set up, so <b>carry rupee cash</b>, in small notes. The currency is the <b>rupee</b>. Choose <b>rupees, not dollars</b>, on any card or ATM.",
+      sections: [
+        {
+          h: "Cards for big spends, cash for daily life",
+          icon: "cash",
+          key: { fig: "Carry cash", tag: "Street and autos are cash", text: "Cards work at hotels, malls and nicer restaurants, but markets, street food, small shops and autos run on cash. Carry small rupee notes.", tone: "teal" },
+          p: [
+            "India takes <b>cards at hotels, malls, nicer restaurants and chains</b>, and <b>contactless</b> is growing in cities. But <b>daily life runs on cash</b>: <b>markets, street food, small shops, chai stalls, autos and rickshaws</b> are largely cash.",
+            "Locals pay by <b>UPI</b> (apps like Google Pay and PhonePe linked to Indian bank accounts), which is <b>hard for visitors to set up</b>, so plan to <b>carry rupee cash</b> in <b>small notes</b>, since breaking large notes can be tricky."
+          ]
+        },
+        {
+          h: "Choose rupees, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose rupees", text: "When a terminal or ATM offers dollars or rupees, pick rupees. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars or rupees, always choose rupees</b>. Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use ATMs at <b>major banks</b> (such as HDFC, ICICI, SBI or Axis), which are common in cities. Some cap withdrawals or charge foreign-card fees, so take out a sensible amount. Use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "How much cash, and small notes",
+          icon: "coins",
+          key: { fig: "Small notes", tag: "For daily spending", text: "Keep a stack of small rupee notes for daily spending, tips and autos. Larger notes can be hard to break.", tone: "teal" },
+          p: [
+            "Keep a <b>stack of small rupee notes</b> for daily spending, autos and the small tips (baksheesh) that are customary. <b>Larger notes can be hard to break</b> at small vendors, so ask for smaller denominations at the ATM or when you change money.",
+            "For tipping norms, see <a href='/india/tipping'>tipping in India</a>, and for the wider picture, the <a href='/india'>India money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in India?", a: "Yes. Cards work at hotels, malls and nicer restaurants, but markets, street food, small shops, autos and rickshaws are largely cash. Locals use UPI apps that are hard for visitors, so carry rupee cash in small notes." },
+        { q: "Should I pay in rupees or dollars in India?", a: "Always rupees. If a card machine or ATM offers dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Can tourists use UPI in India?", a: "It is difficult, since UPI generally requires an Indian bank account. A few options for visitors exist but are fiddly, so most travelers rely on cards for big spends and cash for daily life." },
+        { q: "Why do I need small notes in India?", a: "Because larger notes can be hard to break at small vendors, autos and stalls, and small tips (baksheesh) are customary. Ask for smaller denominations at the ATM or when changing money." }
+      ],
+      sources: {
+        links: [
+          { label: "Reserve Bank of India: official reference rates and currency information", url: "https://www.rbi.org.in", type: "gov" },
+          { label: "US State Department: India country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/India.html", type: "gov" }
+        ],
+        judgment: "India takes cards at hotels and nicer venues, but daily life runs on cash and UPI, the latter hard for visitors. The rupee rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping (baksheesh)", v: "Small tips, widely appreciated" },

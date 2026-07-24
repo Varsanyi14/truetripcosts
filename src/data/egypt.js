@@ -174,6 +174,66 @@ export default {
 
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Egyptian pound (EGP)" },
+        { k: "Cash", v: "King, needed for almost everything" },
+        { k: "Cards", v: "Hotels and upscale spots only" },
+        { k: "On a card", v: "Choose pounds, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Egypt, or can I use cards? (2026) | True Trip Costs",
+      description: "Yes, cash is king. Cards work only at hotels and upscale spots, while markets, taxis, tips and daily spending are cash. Carry Egyptian pounds in small notes. Choose pounds not dollars. Checked July 2026.",
+      h1: "Do I need cash in Egypt, or can I use cards?",
+      lede: "Short answer: cash, mostly. Cards work at hotels and upscale spots, but almost everything else runs on cash, including the constant tipping. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cash, mostly. In Egypt <b>cash is king</b>: <b>cards work only at hotels, upscale restaurants and some shops</b>, while <b>markets, taxis, small vendors, tips (baksheesh) and most daily spending are cash</b>. The currency is the <b>Egyptian pound</b>. Carry <b>pound cash</b> in small notes, since you will need it constantly. When you do use a card or ATM, choose <b>pounds, not dollars</b>. Some big-ticket items are quoted in dollars or euros, but pay in pounds where you can.",
+      sections: [
+        {
+          h: "Cash is king in Egypt",
+          icon: "cash",
+          key: { fig: "Cash first", tag: "Cards only at hotels", text: "In Egypt cash is king. Cards work only at hotels and upscale spots; markets, taxis, tips and daily spending are cash.", tone: "amber" },
+          p: [
+            "In Egypt, plan around <b>cash</b>. <b>Cards work only at hotels, upscale restaurants and some larger shops</b>, and even then not always reliably. <b>Markets, taxis, small vendors, street food, tips (baksheesh), and most daily spending are cash</b>.",
+            "So <b>carry pound cash</b> and keep a good supply of <b>small notes</b>, since you will be paying cash and tipping constantly, and small vendors rarely have change for large notes."
+          ]
+        },
+        {
+          h: "Choose pounds, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose pounds", text: "When a terminal or ATM offers dollars or pounds, pick pounds. Foreign currency triggers dynamic currency conversion at a rate about 3 to 8% worse.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars or Egyptian pounds, always choose pounds</b>. Foreign currency triggers dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use ATMs at <b>major banks</b> (such as CIB, Banque Misr or the National Bank of Egypt), common in cities and at the airport. Withdraw a sensible amount, since fees per withdrawal can add up. Use a <b>debit card</b> to avoid cash-advance fees."
+          ]
+        },
+        {
+          h: "Dollars, tipping, and small notes",
+          icon: "coins",
+          key: { fig: "Small notes", tag: "For baksheesh", text: "Keep plenty of small pound notes for constant tipping (baksheesh) and small vendors. Pay in pounds even where dollars are quoted.", tone: "teal" },
+          p: [
+            "Some <b>big-ticket items</b> (tours, some hotels, dive packages) may be <b>quoted in dollars or euros</b>, and USD can be useful to carry as a backup, but <b>pay in pounds</b> for everyday things. Keep plenty of <b>small pound notes</b> for the constant <b>baksheesh</b> and for small vendors who cannot break large notes.",
+            "For tipping norms, see <a href='/egypt/tipping'>tipping in Egypt</a>, and for the wider picture, the <a href='/egypt'>Egypt money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Egypt?", a: "Yes, very much. Cash is king: cards work only at hotels and upscale spots, while markets, taxis, small vendors, tips and most daily spending are cash. Carry Egyptian pounds in small notes." },
+        { q: "Should I pay in pounds or dollars in Egypt?", a: "Always Egyptian pounds. If a card machine or ATM offers dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better. Some big-ticket items are quoted in dollars, but pay in pounds where you can." },
+        { q: "Are cards accepted in Egypt?", a: "Only at hotels, upscale restaurants and some larger shops, and not always reliably. Everyday spending, markets, taxis and tips run on cash, so carry plenty of Egyptian pounds." },
+        { q: "Why do I need small notes in Egypt?", a: "Because tipping (baksheesh) is constant and small vendors rarely have change for large notes. Keep a good supply of small pound notes for daily spending and tips." }
+      ],
+      sources: {
+        links: [
+          { label: "Central Bank of Egypt: official exchange rate information", url: "https://www.cbe.org.eg", type: "gov" },
+          { label: "US State Department: Egypt country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Egypt.html", type: "gov" }
+        ],
+        judgment: "Egypt runs heavily on cash, with cards limited largely to hotels and upscale venues, and baksheesh woven through daily life. The pound rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "taxis-and-apps",
       glance: [
         { k: "Apps", v: "Uber and Careem" },

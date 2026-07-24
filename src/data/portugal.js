@@ -163,6 +163,66 @@ export default {
   // deeper on Portugal", and each spoke links back here, top and bottom.
   spokes: [
     {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Euro (EUR)" },
+        { k: "Cards", v: "Card-friendly, contactless common" },
+        { k: "Cash for", v: "Small shops, markets, rural" },
+        { k: "On a card", v: "Choose euros, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Do I need cash in Portugal, or can I use cards? (2026) | True Trip Costs",
+      description: "A little. Portugal is card-friendly and contactless is common, but carry some euros for small shops, markets and rural spots. Choose euros not dollars, and avoid Euronet ATMs. Checked July 2026.",
+      h1: "Do I need cash in Portugal, or can I use cards?",
+      lede: "Short answer: a card for most things, a little euro cash for the rest. Portugal is card-friendly, especially in Lisbon and Porto, but small shops, markets and rural spots still like cash. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Cards, mostly, with a little cash. Portugal is <b>card-friendly</b>: <b>contactless</b> is common in Lisbon, Porto and tourist areas, and Apple Pay and Google Pay are widely taken. Keep <b>some euro cash</b> for <b>small shops, cafes, markets, and rural or small-town spots</b>, which still prefer it. The currency is the <b>euro</b>. Choose <b>euros, not dollars</b> on any card or ATM, and use a bank ATM rather than a standalone <b>Euronet</b> kiosk, which charges high fees.",
+      sections: [
+        {
+          h: "Card-friendly, with a little cash",
+          icon: "phoneok",
+          key: { fig: "Cards widely", tag: "Contactless common", text: "Portugal is card-friendly, with contactless common in cities and tourist areas. Keep some euro cash for small shops, markets and rural spots.", tone: "teal" },
+          p: [
+            "Portugal is <b>card-friendly</b>. <b>Contactless</b> cards, Apple Pay and Google Pay are widely accepted in <b>Lisbon, Porto and tourist areas</b>, and <b>Visa and Mastercard</b> work in most places.",
+            "Keep <b>some euro cash</b> for <b>small shops, cafes, bakeries, markets, and rural or small-town spots</b>, where cards are less certain. A card covers most spending, but cash smooths the small stuff."
+          ]
+        },
+        {
+          h: "Choose euros, not dollars",
+          icon: "atm",
+          key: { fig: "3-8% worse", tag: "Always choose euros", text: "When a terminal or ATM offers dollars or euros, pick euros. Dollars trigger dynamic currency conversion at a rate about 3 to 8% worse than your bank's.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge in <b>dollars or euros, always choose euros</b>. Dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
+            "For cash, use an ATM (a <b>multibanco</b>) attached to a <b>real bank</b>, not a standalone <b>Euronet</b> kiosk, which charges high fees and pushes the dollar conversion. See the <a href='/portugal/euronet-atm-fees'>Euronet ATM fees</a> guide for more."
+          ]
+        },
+        {
+          h: "How much cash, and paying",
+          icon: "euro",
+          key: { fig: "A little", tag: "For small spots", text: "A card covers most spending. Keep a little euro cash for markets, small shops and rural areas, and use a debit card at the ATM.", tone: "teal" },
+          p: [
+            "A <b>card covers most spending</b>, especially in the cities. Keep <b>a little euro cash</b> for <b>markets, small shops and rural areas</b>. Use a <b>debit card</b> at the ATM to avoid cash-advance fees, and take out a sensible amount to limit trips.",
+            "For tipping norms, see <a href='/portugal/tipping'>tipping in Portugal</a>, and for the wider picture, the <a href='/portugal'>Portugal money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Portugal?", a: "A little. Portugal is card-friendly and contactless is common in cities and tourist areas, so a card covers most spending. Keep some euro cash for small shops, markets and rural spots." },
+        { q: "Should I pay in euros or dollars in Portugal?", a: "Always euros. If a card machine or ATM offers dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
+        { q: "Are Euronet ATMs a good idea in Portugal?", a: "No. Standalone Euronet kiosks charge high fees and push the dollar conversion. Use an ATM (a multibanco) attached to a real bank instead, and always choose to be charged in euros." },
+        { q: "Is Portugal expensive for cards?", a: "Cards are widely accepted and fine to use, as long as you choose euros, not dollars, on the terminal. The cost comes from dynamic currency conversion or Euronet fees, both avoidable." }
+      ],
+      sources: {
+        links: [
+          { label: "European Central Bank: the official euro reference exchange rates", url: "https://www.ecb.europa.eu/stats/policy_and_exchange_rates/euro_reference_exchange_rates/html/index.en.html", type: "gov" },
+          { label: "US State Department: Portugal country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Portugal.html", type: "gov" }
+        ],
+        judgment: "Portugal is card-friendly, and the Euronet ATM fee trap is well documented. The euro rate moves, and the firm rule is to decline dollar conversion. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Light, not expected" },
