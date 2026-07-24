@@ -179,6 +179,65 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not expected, not the culture" },
+        { k: "Why", v: "Staff earn a high minimum wage" },
+        { k: "Nice restaurant", v: "A small tip is optional" },
+        { k: "Cafes, taxis", v: "No tip" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in New Zealand: you do not need to tip (2026) | True Trip Costs",
+      description: "How tipping works in New Zealand for US travelers in 2026: why it is not expected (staff earn a high minimum wage), when a small tip is optional, and how to handle the card terminal prompt. Checked July 2026.",
+      h1: "Tipping in New Zealand",
+      lede: "New Zealand is not a tipping country. Staff earn a high minimum wage, so tipping is not expected anywhere, and you can relax about it. A small tip for exceptional service is optional. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "New Zealand is <b>not a tipping country</b>. Hospitality staff earn a <b>high minimum wage</b>, so tipping is <b>not expected</b> at cafes, restaurants, bars or in taxis, and leaving nothing is completely normal. For <b>exceptional service at a nicer restaurant</b>, a <b>small tip</b> (around 10%, or rounding up) is a welcome gesture but never required. Card terminals sometimes <b>prompt for a tip</b>, US-style, but you can simply <b>decline</b>. Otherwise, the price or meter is what you pay.",
+      sections: [
+        {
+          h: "You do not need to tip",
+          icon: "notip",
+          key: { fig: "Not expected", tag: "High minimum wage", text: "Tipping is not expected anywhere in New Zealand. Staff earn a high minimum wage, so leaving nothing is completely normal.", tone: "teal" },
+          p: [
+            "New Zealand is <b>not a tipping culture</b>. Because hospitality staff earn a <b>high minimum wage</b>, tipping is <b>not expected</b> at <b>cafes, restaurants, bars or in taxis</b>. Leaving nothing is <b>completely normal</b>.",
+            "As in Australia, the <b>price or the meter is the price</b>, so US visitors can relax about it."
+          ]
+        },
+        {
+          h: "The exception: exceptional service",
+          icon: "tip",
+          key: { fig: "Optional", tag: "A nice restaurant", text: "For exceptional service at a nicer restaurant, a small tip (about 10%, or rounding up) is welcome but never expected.", tone: "teal" },
+          p: [
+            "The one time you might tip is for <b>genuinely exceptional service at a nicer restaurant</b>: leaving <b>around 10%</b>, or <b>rounding up</b>, is a welcome gesture. It is a <b>bonus for standout service</b>, not a default.",
+            "A normal meal, a cafe coffee or a bar round needs <b>no tip</b>."
+          ]
+        },
+        {
+          h: "Watch the card terminal",
+          icon: "card",
+          key: { fig: "You can decline", tag: "Prompts are creeping in", text: "Card terminals sometimes prompt for a tip, US-style, but tipping is not expected here, so decline without a second thought.", tone: "amber" },
+          p: [
+            "As in Australia, <b>card terminals sometimes prompt for a tip</b>, US-style. Since tipping is <b>not expected</b> in New Zealand, you can <b>decline without a second thought</b>.",
+            "No tip is needed at <b>cafes, bars or in taxis</b>. For the wider picture, see <a href='/new-zealand/cash-or-card'>cash or card in New Zealand</a> and the <a href='/new-zealand'>New Zealand money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in New Zealand?", a: "No, it is not expected. Hospitality staff earn a high minimum wage, so tipping is not the culture at cafes, restaurants, bars or in taxis. Leaving nothing is completely normal." },
+        { q: "How much do you tip at a New Zealand restaurant?", a: "Nothing is expected. For exceptional service at a nicer restaurant, a small tip of about 10% or rounding up is welcome, but a normal meal needs no tip." },
+        { q: "Why does the card machine in New Zealand ask for a tip?", a: "Terminal tip prompts have crept in, US-style, but tipping is not expected in New Zealand. You can decline without a second thought." },
+        { q: "Do you tip taxi drivers in New Zealand?", a: "No, it is not expected. The metered fare is what you pay, though rounding up is a small courtesy if you like." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: New Zealand country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/NewZealand.html", type: "gov" }
+        ],
+        judgment: "New Zealand's no-tipping norm rests on its high hospitality minimum wage, though US-style terminal prompts are a growing wrinkle. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "nzeta-and-ivl",
       glance: [
         { k: "Required", v: "NZeTA before you fly" },

@@ -143,6 +143,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not required, but appreciated" },
+        { k: "Restaurants", v: "Round up, or small change" },
+        { k: "Tourist areas", v: "Small tips are common" },
+        { k: "How", v: "Cash, in small dong notes" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Vietnam: what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Vietnam for US travelers in 2026: why it is appreciated but not required, the service charge some places add, and what to tip guides, drivers and spa staff. Checked July 2026.",
+      h1: "Tipping in Vietnam",
+      lede: "Vietnam has a light tipping culture: not required, but increasingly appreciated in tourist areas. Round up at restaurants, tip guides and spa staff a little, and use small dong notes. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Vietnam has a <b>light tipping culture</b>: not traditionally required, but <b>increasingly appreciated</b>, especially in tourist areas. At a <b>restaurant</b>, <b>rounding up</b> or leaving the <b>small change</b> is normal, and a bit more for good service; some tourist and upscale places add a <b>service charge</b>, so check the bill. It is common to tip a <b>guide, driver, spa therapist or hotel porter</b> a small amount. For <b>taxis</b>, use Grab or round up. Leave tips in <b>cash</b>, in small dong notes.",
+      sections: [
+        {
+          h: "Not required, but appreciated",
+          icon: "coins",
+          key: { fig: "Round up", tag: "Appreciated, not obligatory", text: "Tipping is not traditional but increasingly appreciated in tourist areas. Round up or leave the small change at a restaurant.", tone: "teal" },
+          p: [
+            "Vietnam did not traditionally have a tipping culture, but in <b>tourist areas it is increasingly appreciated</b>. At a <b>restaurant</b>, <b>rounding up</b> or leaving the <b>small change</b> is normal, with a bit more for good service. At a <b>street stall or local eatery</b>, no tip is expected.",
+            "Some <b>tourist and upscale restaurants</b> add a <b>service charge</b> (often 5 to 10%), so <b>check the bill</b>; if it is there, you need not tip on top."
+          ]
+        },
+        {
+          h: "Where a tip is a nice gesture",
+          icon: "tip",
+          key: { fig: "Small tips", tag: "Guides, spa, porters", text: "A small tip for a guide, driver, spa therapist or hotel porter is common and appreciated in tourist areas.", tone: "teal" },
+          p: [
+            "It is common and appreciated to leave a <b>small tip</b> for a <b>tour guide, driver, spa or massage therapist, or hotel porter</b>, especially on the tourist trail. Amounts are modest, a few dollars' worth of dong for a service well done.",
+            "It is a <b>kind gesture</b>, not an obligation, so there is no set percentage to track."
+          ]
+        },
+        {
+          h: "Taxis, and paying in dong",
+          icon: "dong",
+          key: { fig: "Small dong", tag: "Use Grab or round up", text: "For taxis, use Grab (a fixed price) or round up a metered fare. Leave tips in cash, in small dong notes.", tone: "teal" },
+          p: [
+            "For <b>taxis</b>, the easiest is <b>Grab</b>, which shows a fixed price, or <b>round up</b> a metered fare from a trusted company. Leave any tip in <b>cash, in small dong notes</b>, since large notes are hard to use for tips. For the wider picture, see the <a href='/vietnam'>Vietnam money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Vietnam?", a: "It is not required, but increasingly appreciated in tourist areas. Round up or leave the small change at a restaurant, and a bit more for good service. At street stalls, no tip is expected." },
+        { q: "Is there a service charge in Vietnam?", a: "Sometimes, at tourist and upscale restaurants, often 5 to 10%. Check the bill; if a service charge is there, you need not tip on top." },
+        { q: "Should I tip a guide or driver in Vietnam?", a: "Yes, a small tip for a tour guide, driver, spa therapist or hotel porter is common and appreciated in tourist areas. Amounts are modest, a few dollars' worth of dong." },
+        { q: "Do you tip taxi drivers in Vietnam?", a: "Rounding up a metered fare is a kind gesture but not required. The easiest option is Grab, which shows a fixed price up front, so there is no need to negotiate or tip." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Vietnam country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Vietnam.html", type: "gov" }
+        ],
+        judgment: "Vietnamese tipping is light and emerging, most visible in tourist areas, with a service charge common at some tourist and upscale restaurants. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "taxis-and-apps",
       glance: [
         { k: "Best app", v: "Grab (also Be, Xanh SM)" },

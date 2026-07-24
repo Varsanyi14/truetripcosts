@@ -179,6 +179,65 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not expected, not the culture" },
+        { k: "Why", v: "Staff earn a high minimum wage" },
+        { k: "Nice restaurant", v: "A small tip is optional" },
+        { k: "Cafes, taxis", v: "No tip" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Australia: you do not need to tip (2026) | True Trip Costs",
+      description: "How tipping works in Australia for US travelers in 2026: why it is not expected (staff earn a high minimum wage), when a small tip is optional, and how to handle the card terminal prompt. Checked July 2026.",
+      h1: "Tipping in Australia",
+      lede: "Australia is not a tipping country. Staff earn a high minimum wage, so tipping is not expected anywhere, and you can relax about it. A small tip for exceptional service is optional. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Australia is <b>not a tipping country</b>. Hospitality staff earn a <b>high minimum wage</b>, so tipping is <b>not expected</b> at cafes, restaurants, bars or in taxis, and no one will think twice if you leave nothing. For <b>exceptional service at a nicer restaurant</b>, a <b>small tip</b> (around 10%, or rounding up) is a welcome gesture but never required. Card terminals increasingly <b>prompt for a tip</b>, US-style, but you can simply <b>decline</b>. Otherwise, the price or meter is what you pay.",
+      sections: [
+        {
+          h: "You do not need to tip",
+          icon: "notip",
+          key: { fig: "Not expected", tag: "High minimum wage", text: "Tipping is not expected anywhere in Australia. Staff earn a high minimum wage, so leaving nothing is completely normal.", tone: "teal" },
+          p: [
+            "Australia is <b>not a tipping culture</b>. Because hospitality staff earn a <b>high minimum wage</b> (and do not depend on tips the way US servers do), tipping is <b>not expected</b> at <b>cafes, restaurants, bars or in taxis</b>. Leaving nothing is <b>completely normal</b> and nobody will bat an eye.",
+            "For visitors from the US, this is a genuine relief: the <b>price or the meter is the price</b>, full stop."
+          ]
+        },
+        {
+          h: "The exception: exceptional service",
+          icon: "tip",
+          key: { fig: "Optional", tag: "A nice restaurant", text: "For exceptional service at a nicer restaurant, a small tip (about 10%, or rounding up) is welcome but never expected.", tone: "teal" },
+          p: [
+            "The one time Australians might tip is for <b>genuinely exceptional service at a nicer restaurant</b>: leaving <b>around 10%</b>, or simply <b>rounding up</b> the bill, is a welcome gesture. Larger groups occasionally see a <b>service charge</b> on the bill, so check.",
+            "But this is a <b>bonus for standout service</b>, not a default. A normal meal needs no tip."
+          ]
+        },
+        {
+          h: "Watch the card terminal",
+          icon: "card",
+          key: { fig: "You can decline", tag: "Prompts are creeping in", text: "Card terminals increasingly prompt for a tip, US-style, but tipping is not expected here, so decline without a second thought.", tone: "amber" },
+          p: [
+            "One modern wrinkle: <b>card terminals increasingly prompt for a tip</b>, US-style, sometimes with preset percentages. Since tipping is <b>not expected</b> in Australia, you can <b>decline without a second thought</b>, and locals routinely do.",
+            "No tip is needed at <b>cafes, bars or in taxis</b>. For the wider picture, see the <a href='/australia'>Australia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Australia?", a: "No, it is not expected. Hospitality staff earn a high minimum wage, so tipping is not the culture at cafes, restaurants, bars or in taxis. Leaving nothing is completely normal." },
+        { q: "How much do you tip at an Australian restaurant?", a: "Nothing is expected. For exceptional service at a nicer restaurant, a small tip of about 10% or rounding up is a welcome gesture, but a normal meal needs no tip." },
+        { q: "Why does the card machine in Australia ask for a tip?", a: "Terminal tip prompts have crept in, US-style, but tipping is not expected in Australia. You can decline without a second thought, and locals routinely do." },
+        { q: "Do you tip taxi drivers in Australia?", a: "No, it is not expected. The metered fare is what you pay, though rounding up is a small courtesy if you like." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Australia country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Australia.html", type: "gov" }
+        ],
+        judgment: "Australia's no-tipping norm rests on its high hospitality minimum wage, though US-style terminal prompts are a growing wrinkle. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "eta",
       glance: [
         { k: "Visa", v: "ETA (subclass 601), before you fly" },

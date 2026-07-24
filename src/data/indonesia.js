@@ -178,6 +178,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not obligatory" },
+        { k: "Hotels, restaurants", v: "Often a ++ (service + tax)" },
+        { k: "Where not added", v: "A small tip is appreciated" },
+        { k: "Bali", v: "Small tips are common in tourist areas" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Indonesia: the ++, and what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Indonesia for US travelers in 2026: the plus plus service charge at hotels and restaurants, when a small tip is appreciated, and what to tip drivers and guides in Bali. Checked July 2026.",
+      h1: "Tipping in Indonesia",
+      lede: "Indonesia has a light tipping culture, and the main thing to know is the plus plus (++) service charge at hotels and restaurants. Where it is added you need not tip; where it is not, a small tip is appreciated. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Indonesia has a <b>light tipping culture</b>, and the main thing to know is the <b>plus plus (++)</b>: many <b>hotels and restaurants</b>, especially in <b>Bali and tourist areas</b>, add roughly <b>10% service plus tax</b> on top of listed prices. Where a <b>service charge is added</b>, you do <b>not need to tip on top</b>. Where it is <b>not</b>, a <b>small tip</b> for good service is appreciated but not obligatory. It is common to tip <b>drivers, guides, porters and spa staff</b> modestly. Leave tips in <b>cash</b>, in rupiah.",
+      sections: [
+        {
+          h: "The plus plus (++): service and tax",
+          icon: "receipt",
+          key: { fig: "The ++", tag: "Service plus tax", text: "Many hotels and restaurants add a ++ (roughly 10% service plus tax). Where it is added, you do not tip on top.", tone: "teal" },
+          p: [
+            "The main thing to understand is the <b>plus plus (++)</b>. Many <b>hotels and mid-range to upscale restaurants</b>, especially in <b>Bali and tourist areas</b>, add about <b>10% service charge plus a government tax</b> on top of the listed prices.",
+            "Where a <b>service charge is on the bill</b>, that <b>stands in for a tip</b>, so you do <b>not add more</b>. Expect the total to run <b>meaningfully above the menu price</b> at these places."
+          ]
+        },
+        {
+          h: "Where a small tip is appreciated",
+          icon: "coins",
+          key: { fig: "A little", tag: "If no service charge", text: "Where no service charge is added, a small tip for good service is appreciated but not obligatory. At street warungs, no tip is expected.", tone: "teal" },
+          p: [
+            "Where there is <b>no service charge</b>, a <b>small tip</b> for good service is appreciated but <b>not obligatory</b>: rounding up or leaving a little. At a <b>street warung or local eatery</b>, no tip is expected.",
+            "It is common to tip <b>drivers, guides, porters and spa staff</b> a modest amount for good service, especially in tourist areas."
+          ]
+        },
+        {
+          h: "Bali, drivers, and paying",
+          icon: "cash",
+          key: { fig: "Rupiah", tag: "Cash, small notes", text: "Leave tips in cash, in rupiah. Small notes are easiest, since rupiah figures run large.", tone: "teal" },
+          p: [
+            "Leave any tip in <b>cash, in rupiah</b>. Small notes are easiest, since rupiah figures run into the thousands. A <b>private driver for the day</b> in Bali, a common way to get around, is usually tipped a modest amount on top of the agreed fare. For the wider picture, see the <a href='/indonesia'>Indonesia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Indonesia?", a: "It is not obligatory. Many hotels and restaurants add a service charge (the ++), which covers the tip. Where none is added, a small tip for good service is appreciated. At street warungs, no tip is expected." },
+        { q: "What is the plus plus (++) in Indonesia?", a: "It means a service charge (about 10%) plus a government tax are added on top of listed prices, common at hotels and mid-range to upscale restaurants, especially in Bali. Where it appears, you do not tip on top." },
+        { q: "Should I tip a driver or guide in Indonesia?", a: "Yes, a modest tip for a driver, guide, porter or spa staff is common and appreciated for good service, especially in tourist areas. A private driver for the day in Bali is usually tipped a little on top of the fare." },
+        { q: "How much do you tip in Indonesia?", a: "Little, and only where no service charge applies. Round up or leave a small amount in rupiah for good service. Where a ++ service charge is on the bill, no extra tip is needed." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Indonesia country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Indonesia.html", type: "gov" }
+        ],
+        judgment: "Indonesian tipping is light, with the plus plus service charge common at hotels and tourist restaurants, especially in Bali. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "staying-connected",
       glance: [
         { k: "Best network", v: "Telkomsel, widest reach" },

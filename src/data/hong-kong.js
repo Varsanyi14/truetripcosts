@@ -174,6 +174,65 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Light, service often included" },
+        { k: "Restaurants", v: "A 10% service charge is common" },
+        { k: "On top", v: "Round up, or leave the small change" },
+        { k: "Taxis", v: "No tip, or round up" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Hong Kong: light, and what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Hong Kong for US travelers in 2026: why it is light, the 10% service charge at restaurants, and what to leave at casual spots and in taxis. Checked July 2026.",
+      h1: "Tipping in Hong Kong",
+      lede: "Hong Kong has a light tipping culture. Most sit-down restaurants add a 10% service charge, so a tip is largely built in, and casual spots and taxis expect little or nothing. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Hong Kong has a <b>light tipping culture</b>. Most <b>sit-down restaurants add a 10% service charge</b> to the bill, so a tip is <b>largely built in</b>; if you were pleased, people often <b>round up</b> or leave the <b>small change</b> on top, but it is not required. At <b>casual places, cha chaan teng, dai pai dong and cafes</b>, no tip is expected. For <b>taxis</b>, drivers usually just <b>round up to the nearest dollar</b> or keep small change. Leave anything extra in <b>cash</b> (HK dollars).",
+      sections: [
+        {
+          h: "Light tipping, mostly built in",
+          icon: "notip",
+          key: { fig: "Light", tag: "Not a big tipping culture", text: "Tipping is light in Hong Kong. Casual spots and taxis expect little or nothing, and a service charge covers most sit-down meals.", tone: "teal" },
+          p: [
+            "Hong Kong is <b>not a big tipping culture</b>. Staff earn a wage, and at <b>casual places, cha chaan teng (tea cafes), dai pai dong (open-air food stalls) and coffee shops</b>, <b>no tip is expected</b>.",
+            "At <b>sit-down restaurants</b>, a <b>service charge</b> usually does the work (see below), so you rarely need to think in percentages the way you would at home."
+          ]
+        },
+        {
+          h: "The 10% service charge",
+          icon: "receipt",
+          key: { fig: "10%", tag: "Usually already added", text: "Most sit-down restaurants add a 10% service charge. That covers the tip, so you need not add more, though people often round up.", tone: "teal" },
+          p: [
+            "Most <b>sit-down restaurants</b> add a <b>10% service charge</b> to the bill. That <b>stands in for a tip</b>, so you do <b>not need to add more</b>. If you were especially pleased, it is common to <b>round up</b> or leave the <b>small change</b> or a few coins on top, but it is optional.",
+            "If a place does <b>not</b> add a service charge, leaving the <b>small change</b> or roughly <b>10%</b> for good service is a kind gesture."
+          ]
+        },
+        {
+          h: "Taxis, and the rest",
+          icon: "hkd",
+          key: { fig: "Round up", tag: "Taxis and small change", text: "Taxi drivers usually just round up to the nearest dollar. Leave anything extra in HK dollars; an Octopus card covers most small spending.", tone: "teal" },
+          p: [
+            "For <b>taxis</b>, drivers typically <b>round up to the nearest HK dollar</b> or keep small change, and nothing more is expected. <b>Hotel porters</b>, a few HK dollars a bag is a kind gesture.",
+            "Leave any extra in <b>cash, in HK dollars</b>. Day-to-day, an <b>Octopus card</b> covers most small spending anyway. For the wider picture, see <a href='/hong-kong/cash-or-card'>cash or card in Hong Kong</a> and the <a href='/hong-kong'>Hong Kong money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Hong Kong?", a: "Lightly. Most sit-down restaurants add a 10% service charge that covers the tip, so you need not add more, though people often round up. Casual spots and taxis expect little or nothing." },
+        { q: "Is there a service charge in Hong Kong restaurants?", a: "Usually, at sit-down restaurants: a 10% service charge is common. It stands in for a tip, so you do not need to add more, though rounding up for good service is a kind gesture." },
+        { q: "Do you tip taxi drivers in Hong Kong?", a: "Not really. Drivers usually just round up to the nearest HK dollar or keep the small change, and nothing more is expected." },
+        { q: "How much do you tip in Hong Kong?", a: "Little. A 10% service charge covers most sit-down meals. Where none is added, leaving the small change or about 10% for good service is generous. Casual spots and taxis need no real tip." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Hong Kong information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/HongKong.html", type: "gov" }
+        ],
+        judgment: "Hong Kong tipping is light and mostly handled by the restaurant service charge. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Hong Kong dollar (HKD)" },
