@@ -176,6 +176,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not customary" },
+        { k: "Restaurants, taxis", v: "No tip" },
+        { k: "Upscale places", v: "A 10% service charge" },
+        { k: "Otherwise", v: "Keep your change" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Taiwan: you do not tip (2026) | True Trip Costs",
+      description: "How tipping works in Taiwan for US travelers in 2026: why tipping is not customary at restaurants, night markets or taxis, and the 10% service charge at upscale places. Checked July 2026.",
+      h1: "Tipping in Taiwan",
+      lede: "Taiwan is not a tipping country. At everyday restaurants, night markets and in taxis, no tip is expected. The main exception is a 10% service charge at upscale places. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Taiwan is <b>not a tipping country</b>. At <b>everyday restaurants, night markets and in taxis</b>, <b>no tip is expected</b>, and staff earn a wage. The main exception is <b>upscale restaurants and hotels</b>, which add a <b>10% service charge</b> to the bill; if it is there, that is the tip and you do not add more. Otherwise, the <b>total or meter is final</b> and you keep your change. An <b>EasyCard</b> covers most small transit and convenience spending anyway.",
+      sections: [
+        {
+          h: "Tipping is not customary in Taiwan",
+          icon: "notip",
+          key: { fig: "No tip", tag: "Not the culture", text: "At everyday restaurants, night markets and in taxis, no tip is expected. Staff earn a wage.", tone: "teal" },
+          p: [
+            "Taiwan <b>does not have a tipping culture</b>. At <b>local restaurants, night markets, cafes and in taxis</b>, <b>no tip is expected</b>, and staff are paid a wage. Leaving a tip is unusual and not necessary.",
+            "For most of your spending, the <b>bill or meter is what you pay</b>, and you keep your change."
+          ]
+        },
+        {
+          h: "The exception: a service charge",
+          icon: "receipt",
+          key: { fig: "About 10%", tag: "Upscale places", text: "Upscale restaurants and hotels add a 10% service charge. If it is on the bill, that stands in for a tip.", tone: "teal" },
+          p: [
+            "The main exception is <b>upscale restaurants and hotels</b>, which add a <b>10% service charge</b> to the bill. If a <b>service charge appears</b>, it stands in for a tip, so you do <b>not add more</b>.",
+            "Everywhere else, there is no service charge and no expected tip."
+          ]
+        },
+        {
+          h: "Taxis, markets and paying",
+          icon: "twd",
+          key: { fig: "Keep it", tag: "No taxi or market tip", text: "Do not tip taxis or night-market stalls. An EasyCard covers most small transit and convenience spending.", tone: "teal" },
+          p: [
+            "Do <b>not</b> tip <b>taxi drivers</b> or at <b>night-market stalls</b>; it is not expected and the fare or price is final. An <b>EasyCard</b> covers most transit and convenience-store spending. For the wider picture, see <a href='/taiwan/cash-or-card'>cash or card in Taiwan</a> and the <a href='/taiwan'>Taiwan money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Taiwan?", a: "No, it is not customary. At everyday restaurants, night markets and in taxis, no tip is expected. The main exception is upscale restaurants and hotels that add a 10% service charge, which stands in for a tip." },
+        { q: "Do you tip taxi drivers in Taiwan?", a: "No. Tipping taxis is not expected; the metered fare is what you pay. The same goes for night-market stalls, where the price is final." },
+        { q: "Is there a service charge in Taiwan?", a: "At everyday places, no. Upscale restaurants and hotels add a 10% service charge. If it is on the bill, it stands in for a tip, so you do not add more." },
+        { q: "Is it rude to tip in Taiwan?", a: "Not rude, but unnecessary and unusual. You can simply pay the bill or fare and keep your change, except where a service charge is already added." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Taiwan country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Taiwan.html", type: "gov" }
+        ],
+        judgment: "Taiwan's no-tipping norm is well established, with the 10% service charge at upscale restaurants and hotels the main exception. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "New Taiwan dollar (TWD)" },

@@ -175,6 +175,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not customary" },
+        { k: "Restaurants", v: "A 10% service charge (the ++)" },
+        { k: "On the bill", v: "Service charge plus GST" },
+        { k: "Hawkers, taxis", v: "No tip" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Singapore: the ++, and why you do not tip (2026) | True Trip Costs",
+      description: "How tipping works in Singapore for US travelers in 2026: why tipping is not customary, what the ++ service charge on menus means, and why you do not add more. Checked July 2026.",
+      h1: "Tipping in Singapore",
+      lede: "Singapore is not a tipping country. Most restaurants add a 10% service charge, shown as the ++, so a tip is already built in. At hawker centres and for taxis, no tip is expected. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Singapore is <b>not a tipping country</b>. Most <b>restaurants add a 10% service charge</b>, shown on menus as the <b>++</b> (service charge plus GST), so a tip is <b>already built in</b> and you do not add more. At <b>hawker centres and for taxis</b>, <b>no tip is expected</b>. Tipping is not part of the culture, and it was long discouraged (famously so at the airport). Otherwise, the total on the bill or meter is what you pay.",
+      sections: [
+        {
+          h: "Tipping is not customary here",
+          icon: "notip",
+          key: { fig: "No tip", tag: "Not the culture", text: "Singapore is not a tipping country. At hawker centres and for taxis, no tip is expected, and tipping was long discouraged.", tone: "teal" },
+          p: [
+            "Singapore <b>does not have a tipping culture</b>. At <b>hawker centres, food courts and for taxis</b>, <b>no tip is expected</b>, and staff earn a wage. Tipping has long been <b>officially discouraged</b>, most famously at Changi Airport, where it is asked that you do not tip.",
+            "So for most of your spending, the <b>bill or meter is final</b> and you keep your change."
+          ]
+        },
+        {
+          h: "The ++ : a 10% service charge",
+          icon: "receipt",
+          key: { fig: "The ++", tag: "Service charge plus GST", text: "Most restaurants add a 10% service charge, shown as ++ (service charge plus GST). That is the tip, so you do not add more.", tone: "teal" },
+          p: [
+            "At <b>sit-down restaurants</b>, the thing to understand is the <b>++</b> you see on menus and bills. It means a <b>10% service charge</b> plus <b>GST</b> are added on top of the listed prices. The <b>service charge stands in for a tip</b>, so you do <b>not add more</b>.",
+            "So a menu price is not the final price at these places: expect the total to run <b>about 19%</b> higher once the service charge and tax are added."
+          ]
+        },
+        {
+          h: "The rest, and paying",
+          icon: "sgd",
+          key: { fig: "Keep it", tag: "No extra tip", text: "No tip at hawkers, cafes or taxis. Where a service charge is added, that is the tip, so nothing extra is needed.", tone: "teal" },
+          p: [
+            "Elsewhere, <b>no extra tip</b> is needed: not at <b>hawker stalls, cafes or in taxis</b>. Where a <b>service charge is added</b>, that is the tip. For the wider picture, see <a href='/singapore/cash-or-card'>cash or card in Singapore</a> and the <a href='/singapore'>Singapore money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Singapore?", a: "No, it is not customary. Most restaurants add a 10% service charge (the ++), which stands in for a tip, so you do not add more. At hawker centres and for taxis, no tip is expected." },
+        { q: "What does ++ mean on a Singapore menu?", a: "It means a 10% service charge plus GST are added on top of the listed prices. The service charge stands in for a tip, so you do not add more, but expect the total to run about 19% above the menu price." },
+        { q: "Do you tip at hawker centres in Singapore?", a: "No. Hawker centres, food courts, cafes and taxis do not expect a tip. You simply pay the price shown or the meter." },
+        { q: "Do you tip taxi drivers in Singapore?", a: "No, it is not expected. The metered fare (plus any booking or surcharge shown) is what you pay." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Singapore country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Singapore.html", type: "gov" }
+        ],
+        judgment: "Singapore's no-tipping norm and the ++ service charge are well established, and GST is currently 9%, so the total runs roughly 19% over menu prices. Amounts here are our own read from recent traveler reports and local guidance. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Singapore dollar (SGD)" },

@@ -179,6 +179,64 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not expected" },
+        { k: "Restaurants, taxis", v: "No tip" },
+        { k: "High-end places", v: "May add a service charge" },
+        { k: "Trying to tip", v: "May be politely refused" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in South Korea: you do not tip (2026) | True Trip Costs",
+      description: "How tipping works in South Korea for US travelers in 2026: why tipping is not expected at restaurants or taxis, the service charge at upscale places, and why a tip may be politely refused. Checked July 2026.",
+      h1: "Tipping in South Korea",
+      lede: "South Korea is not a tipping country. At restaurants, cafes and in taxis, no tip is expected, and trying to leave one may be politely refused. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "South Korea is <b>not a tipping country</b>. At <b>restaurants, cafes and in taxis</b>, <b>no tip is expected</b>, and staff earn a wage. Trying to leave a tip may be <b>politely refused</b> or cause confusion. The main exception is <b>upscale hotels and some Western restaurants</b>, which add a <b>service charge</b> (often 10%) to the bill; if it is there, you do not add more. Otherwise, the total is the total, and you can simply <b>keep your change</b>.",
+      sections: [
+        {
+          h: "Tipping is not expected in Korea",
+          icon: "notip",
+          key: { fig: "No tip", tag: "Not customary", text: "At restaurants, cafes and in taxis, no tip is expected, and trying to leave one may be politely refused.", tone: "teal" },
+          p: [
+            "South Korea has <b>no tipping culture</b>. At <b>restaurants, cafes, bars and in taxis</b>, <b>no tip is expected</b>, and staff are paid a wage. Leaving money on the table can even be <b>politely returned</b> to you, since it is simply not the custom.",
+            "For visitors, this is one less thing to think about: the <b>bill or meter is what you pay</b>."
+          ]
+        },
+        {
+          h: "The one exception: a service charge",
+          icon: "receipt",
+          key: { fig: "About 10%", tag: "High-end places", text: "Upscale hotels and some Western restaurants add a service charge, often 10%. If it is on the bill, that stands in for a tip.", tone: "teal" },
+          p: [
+            "The main exception is <b>upscale hotels and some Western-style restaurants</b>, which add a <b>service charge</b>, often around <b>10%</b>, to the bill. If a <b>service charge appears</b>, it stands in for a tip, so you do <b>not add more</b>.",
+            "Everywhere else, there is no service charge and no expected tip."
+          ]
+        },
+        {
+          h: "Taxis, delivery and paying",
+          icon: "won",
+          key: { fig: "Keep it", tag: "No taxi tip", text: "Do not tip taxis or delivery. The fare or total is final, and a T-money card covers most transit anyway.", tone: "teal" },
+          p: [
+            "Do <b>not</b> tip <b>taxi drivers</b> or <b>delivery</b>; it is not expected, and the fare or total is final. Transit mostly runs on a <b>T-money card</b> in any case. For the wider picture, see <a href='/south-korea/cash-or-card'>cash or card in South Korea</a> and the <a href='/south-korea'>South Korea money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in South Korea?", a: "No. Tipping is not customary at restaurants, cafes or in taxis, and staff do not rely on it. Trying to leave a tip may be politely refused. The main exception is upscale hotels and some Western restaurants that add a service charge." },
+        { q: "Do you tip taxi drivers in South Korea?", a: "No. Tipping taxis is not expected in Korea; the metered fare is what you pay. The same goes for delivery and rideshare." },
+        { q: "Is there a service charge in Korean restaurants?", a: "At everyday places, no. Upscale hotels and some Western restaurants add a service charge, often 10%. If it is on the bill, it stands in for a tip, so you do not add more." },
+        { q: "Is it rude to tip in South Korea?", a: "Not rude, but unnecessary and unusual. A tip may be politely returned since it is not the custom. You can simply pay the bill or fare and keep your change." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: South Korea country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/SouthKorea.html", type: "gov" }
+        ],
+        judgment: "Korea's no-tipping norm is well established, with a service charge at upscale hotels and restaurants the main exception. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "k-eta",
       glance: [
         { k: "K-ETA", v: "Waived for US through 2026" },

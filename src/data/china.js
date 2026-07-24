@@ -174,6 +174,64 @@ export default {
 
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not customary" },
+        { k: "Restaurants, taxis", v: "No tip" },
+        { k: "Exceptions", v: "Tour guides and drivers" },
+        { k: "High-end hotels", v: "A small tip is fine" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in China: you do not tip (2026) | True Trip Costs",
+      description: "How tipping works in China for US travelers in 2026: why tipping is not customary at restaurants or taxis, the exceptions for tour guides and hotels, and how service charges work. Checked July 2026.",
+      h1: "Tipping in China",
+      lede: "China is not a tipping country. At everyday restaurants and in taxis, no tip is expected, and it can even cause confusion. The exceptions are tour guides and drivers, and high-end hotels. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "China is <b>not a tipping country</b>. At <b>everyday restaurants, cafes and in taxis</b>, <b>no tip is expected</b>, and offering one can cause mild confusion. Staff are paid a wage and do not rely on tips. The main <b>exceptions</b> are <b>tour guides and drivers on organized tours</b>, where a tip is expected and often built into the tour culture, and <b>high-end international hotels</b>, where a small tip for a porter is fine. Some <b>upscale or Western restaurants</b> add a <b>service charge</b>, so check the bill. Otherwise, keep your money.",
+      sections: [
+        {
+          h: "You do not tip in everyday China",
+          icon: "notip",
+          key: { fig: "No tip", tag: "Not customary", text: "At everyday restaurants, cafes and in taxis, no tip is expected. Staff earn a wage, and offering a tip can cause mild confusion.", tone: "teal" },
+          p: [
+            "In everyday China, <b>tipping is simply not part of the culture</b>. At <b>local restaurants, cafes and food stalls</b>, and in <b>taxis and rideshare</b>, <b>no tip is expected</b>, and trying to leave one can be waved off or cause mild confusion. Staff earn a wage and do not depend on tips.",
+            "This is genuinely a place where you can <b>relax about it</b>: the total on the bill or the meter is what you pay, full stop."
+          ]
+        },
+        {
+          h: "The exceptions: guides, drivers, hotels",
+          icon: "tip",
+          key: { fig: "Guides, drivers", tag: "Where a tip is expected", text: "Tour guides and drivers on organized tours are the main exception and do expect a tip. A small tip for a porter at a high-end hotel is also fine.", tone: "teal" },
+          p: [
+            "There are a few exceptions. <b>Tour guides and drivers on organized tours</b> are the main one: tipping them at the end of a tour is <b>expected</b>, and group tours often suggest a per-day amount. <b>High-end international hotels</b> are the other: a <b>small tip for a porter</b> or for exceptional service is fine, though not required.",
+            "Some <b>upscale restaurants and hotels</b> add a <b>service charge</b> (often 10 to 15%) to the bill. If it is there, that stands in for a tip, so you do not add more."
+          ]
+        },
+        {
+          h: "The rest, and paying",
+          icon: "cash",
+          key: { fig: "Keep it", tag: "No taxi or restaurant tip", text: "Do not tip taxis or local restaurants. Note that daily payment runs on mobile apps, but that is separate from tipping.", tone: "teal" },
+          p: [
+            "Do <b>not</b> tip <b>taxi drivers</b> or at <b>local restaurants</b>; it is not expected and the fare or bill is final. Day-to-day payment in China runs heavily on <b>mobile apps</b> (WeChat Pay and Alipay), but that is about <b>how you pay</b>, not tipping. For the wider picture, see <a href='/china/how-to-pay-in-china'>how to pay in China</a> and the <a href='/china'>China money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in China?", a: "Generally no. Tipping is not customary at everyday restaurants, cafes or in taxis, and staff do not rely on it. The main exceptions are tour guides and drivers on organized tours, who do expect a tip, and high-end international hotels." },
+        { q: "Do you tip taxi drivers in China?", a: "No. Tipping taxi drivers is not expected in China; the meter fare is what you pay. The same goes for rideshare, where the app total is final." },
+        { q: "Is there a service charge in Chinese restaurants?", a: "At everyday places, no. Some upscale restaurants and high-end hotels add a service charge, often 10 to 15%. If it is on the bill, it stands in for a tip, so you do not add more." },
+        { q: "Should I tip a tour guide in China?", a: "Yes. Tour guides and drivers on organized tours are the main exception to China's no-tipping norm, and a tip at the end is expected. Group tours often suggest a per-day amount per traveler." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: China country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/China.html", type: "gov" }
+        ],
+        judgment: "China's no-tipping norm is well established, with tour guides, drivers and high-end hotels the recognized exceptions. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "how-to-pay-in-china",
       glance: [
         { k: "Pay with", v: "Alipay and WeChat Pay" },

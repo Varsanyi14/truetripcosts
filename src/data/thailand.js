@@ -160,6 +160,64 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not required, but appreciated" },
+        { k: "Restaurants", v: "Round up, or small change" },
+        { k: "Check the bill", v: "Some add 10% service" },
+        { k: "Massage, porters", v: "A small tip is customary" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in Thailand: what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Thailand for US travelers in 2026: why it is appreciated but not required, the 10% service charge some places add, and what to tip for a massage or a porter. Checked July 2026.",
+      h1: "Tipping in Thailand",
+      lede: "Thailand has a light tipping culture: not required, but increasingly appreciated in tourist areas. Round up at restaurants, check the bill for a service charge, and leave a small tip for a massage. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Thailand has a <b>light tipping culture</b>: not traditionally required, but <b>increasingly appreciated</b>, especially in tourist areas. At a <b>restaurant</b>, <b>rounding up</b> or leaving the <b>small change</b> is normal, and a bit more for good service; some places add a <b>10% service charge</b>, so check the bill. It is customary to leave a <b>small tip for a massage</b> (often 50 to 100 baht) and for <b>hotel porters</b>. Round up for <b>taxis</b>. Leave tips in <b>cash</b>, in baht.",
+      sections: [
+        {
+          h: "Not required, but appreciated",
+          icon: "coins",
+          key: { fig: "Round up", tag: "Appreciated, not obligatory", text: "Tipping is not traditional but increasingly appreciated in tourist areas. Round up or leave the small change at a restaurant.", tone: "teal" },
+          p: [
+            "Thailand did not traditionally have a tipping culture, but in <b>tourist areas it is increasingly appreciated</b>. At a <b>restaurant</b>, <b>rounding up</b> or leaving the <b>small change</b> is normal, with a bit more for good service. At a <b>street stall or local eatery</b>, no tip is expected.",
+            "It is a <b>kind gesture</b>, not an obligation, so there is no set percentage to track."
+          ]
+        },
+        {
+          h: "Check the bill for a service charge",
+          icon: "receipt",
+          key: { fig: "Often 10%", tag: "At hotels and tourist spots", text: "Hotels and many tourist-area restaurants add a 10% service charge. If it is on the bill, you do not need to tip on top.", tone: "teal" },
+          p: [
+            "Many <b>hotels and tourist-area restaurants</b> add a <b>10% service charge</b> to the bill (sometimes with VAT on top). If a <b>service charge appears</b>, you <b>do not need to tip on top</b>, so read the bill first.",
+            "If there is no service charge and service was good, leaving <b>20 to 100 baht</b> or rounding up is generous."
+          ]
+        },
+        {
+          h: "Massage, porters, taxis",
+          icon: "baht",
+          key: { fig: "50-100 baht", tag: "For a massage", text: "A small tip for a massage (often 50 to 100 baht) and for hotel porters is customary. Round up taxis; leave tips in baht.", tone: "teal" },
+          p: [
+            "A <b>small tip for a massage</b> is customary, often <b>50 to 100 baht</b> depending on the length and place, and a similar amount for a <b>hotel porter</b>. <b>Round up</b> a metered taxi, or agree the fare first with a tuk-tuk. Leave tips in <b>cash, in baht</b>. For the wider picture, see <a href='/thailand/cash-or-card'>cash or card in Thailand</a> and the <a href='/thailand'>Thailand money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Thailand?", a: "It is not required, but increasingly appreciated in tourist areas. Round up or leave the small change at a restaurant, and a bit more for good service. At street stalls, no tip is expected." },
+        { q: "Is there a service charge in Thailand?", a: "Often, at hotels and tourist-area restaurants, usually 10% (sometimes with VAT on top). If a service charge is on the bill, you do not need to tip on top, so read the bill first." },
+        { q: "How much do you tip for a Thai massage?", a: "A small tip is customary, often 50 to 100 baht depending on the length and the place. A similar amount is normal for a hotel porter." },
+        { q: "Do you tip taxi drivers in Thailand?", a: "Rounding up a metered taxi is a kind gesture but not required. With a tuk-tuk, agree the fare before you set off rather than tipping after." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Thailand country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Thailand.html", type: "gov" }
+        ],
+        judgment: "Thai tipping is light and emerging, most visible in tourist areas, with the 10% service charge common at hotels and tourist restaurants. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
       slug: "tdac",
       glance: [
         { k: "Visa", v: "None, 60 days visa-free" },
