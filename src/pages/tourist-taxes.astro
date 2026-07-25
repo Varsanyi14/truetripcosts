@@ -34,6 +34,14 @@ function whenText(k) {
   const future = new Date(k.effective + 'T00:00:00') > new Date();
   return future ? ('Takes effect ' + nice) : ('In effect since ' + nice);
 }
+
+// Status to chip colour. In effect now is green, a confirmed future date is amber
+// (upcoming), and a proposed charge stays muted until it is actually law.
+function statusClass(k) {
+  if (k.status === 'proposed') return 'tt-proposed';
+  if (k.effective && new Date(k.effective + 'T00:00:00') > new Date()) return 'tt-soon';
+  return 'tt-live';
+}
 ---
 <Base
   title="Tourist taxes and entry fees by country, checked and dated"
@@ -54,24 +62,40 @@ function whenText(k) {
     {tracked.length > 0 && (
       <section class="fx-sec">
         <h2>Tracked entry fees and city levies</h2>
-        <p class="fx-note">The high-churn charges we check against their official source and date. Each entry links to that source and to the full country guide.</p>
-        <div class="fx-panel">
+        <p class="fx-note">The {tracked.length} high-churn charges we check against their official source and date. Type a country to jump to it, and the chip shows whether a charge is in effect now, coming, or only proposed. Each links to the official source and to the full country guide.</p>
+
+        <div class="tt-toolbar">
+          <div class="tt-filter">
+            <svg class="tt-filter-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="tt-filter-in" class="tt-filter-in" placeholder="Filter by country, like Italy" aria-label="Filter countries by name" autocomplete="off" />
+          </div>
+          <div class="tt-legend">
+            <span class="tt-legend-lab">Status</span>
+            <span class="cx-chip tt-live">In effect</span>
+            <span class="cx-chip tt-soon">Upcoming</span>
+            <span class="cx-chip tt-proposed">Proposed</span>
+          </div>
+        </div>
+
+        <div class="tt-grid" id="tt-grid">
           {tracked.map(k => (
-            <div class="fx-item">
-              <div class="fx-item-head">
-                <a class="fx-country" href={'/' + k.slug}>{k.country}</a>
-                <span class={'fx-pill ' + (k.status === 'proposed' ? 'is-proposed' : 'is-live')}>{whenText(k)}</span>
+            <div class="tt-card" data-name={(k.country + ' ' + k.label).toLowerCase()}>
+              <div class="tt-card-top">
+                <a class="tt-country" href={'/' + k.slug}>{k.country}</a>
+                <span class={'cx-chip ' + statusClass(k)}>{whenText(k)}</span>
               </div>
-              <p class="fx-feename">{k.label}</p>
-              <p class="fx-amount">{k.value}</p>
-              <div class="fx-meta">
+              <p class="tt-fee">{k.label}</p>
+              <p class="tt-amount">{k.value}</p>
+              <div class="tt-meta">
                 {k.source ? (<a href={k.source} target="_blank" rel="noopener">Official page</a>) : (<span>No official page yet</span>)}
-                <span class="fx-dot" aria-hidden="true">&middot;</span>
+                <span class="tt-dot" aria-hidden="true">&middot;</span>
                 <span>Checked {niceDate(k.checked)}</span>
               </div>
             </div>
           ))}
         </div>
+
+        <p class="tt-nomatch" id="tt-nomatch" hidden>No country by that name here yet. See <a href="/#guides">all country guides</a>.</p>
       </section>
     )}
 
@@ -83,29 +107,63 @@ function whenText(k) {
   <style>
     .fx-intro{max-width:680px;margin:22px 0 0}
     .fx-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
-    .fx-sec{margin:36px 0}
+    .fx-sec{margin:34px 0}
     .fx-sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 6px}
     .fx-note{font-size:14.5px;color:var(--muted);margin:0 0 16px;line-height:1.5;max-width:680px}
-    .fx-panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow:hidden}
-    .fx-item{padding:16px 18px;border-bottom:1px solid var(--line)}
-    .fx-item:last-child{border-bottom:0}
-    .fx-item-head{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:8px}
-    .fx-country{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);text-decoration:none}
-    .fx-country:hover{text-decoration:underline}
-    .fx-feename{font-weight:600;font-size:15.5px;color:var(--ink);line-height:1.35;margin:0 0 4px}
-    .fx-amount{font-size:15px;color:var(--ink);line-height:1.5;margin:0 0 9px}
-    .fx-meta{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
-    .fx-meta a{color:var(--teal-deep);font-weight:500;text-decoration:none}
-    .fx-meta a:hover{text-decoration:underline}
-    .fx-dot{color:var(--line)}
-    .fx-pill{display:inline-block;font-size:11.5px;font-weight:600;border-radius:999px;padding:3px 9px;white-space:nowrap;margin-left:auto}
-    .fx-pill.is-live{color:#10502C;background:var(--green-bg)}
-    .fx-pill.is-proposed{color:#7A3D08;background:var(--amber-bg)}
     .fx-keep{font-size:14px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line);padding-top:18px;margin:30px 0 40px;max-width:680px}
+    .fx-keep a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .fx-keep a:hover{text-decoration:underline}
+    .tt-toolbar{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:center;justify-content:space-between;margin:0 0 18px}
+    .tt-filter{display:flex;align-items:center;gap:10px;flex:1 1 260px;max-width:380px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:var(--card);transition:border-color .15s ease,box-shadow .15s ease}
+    .tt-filter:focus-within{border-color:var(--teal-deep);box-shadow:0 0 0 3px rgba(14,122,95,.12)}
+    .tt-filter-ic{color:var(--muted);flex:none;opacity:.6}
+    .tt-filter-in{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:1rem;color:var(--ink)}
+    .tt-filter-in::placeholder{color:var(--muted);opacity:.8}
+    .tt-legend{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .tt-legend-lab{font-size:12.5px;color:var(--muted)}
+    .tt-live{color:#10502C;background:var(--green-bg)}
+    .tt-soon{color:#7A3D08;background:var(--amber-bg)}
+    .tt-proposed{color:var(--muted);background:rgba(111,110,102,.12)}
+    .tt-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+    .tt-card{display:flex;flex-direction:column;padding:16px 18px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+    .tt-card.is-hidden{display:none}
+    .tt-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+    .tt-country{font-family:var(--serif);font-weight:600;font-size:18px;color:var(--teal-deep);line-height:1.2;text-decoration:none}
+    .tt-country:hover{text-decoration:underline}
+    .tt-card .cx-chip{flex:none;margin-top:2px}
+    .tt-fee{font-weight:500;font-size:15px;color:var(--ink);line-height:1.4;margin:9px 0 0}
+    .tt-amount{font-size:15px;color:var(--ink);line-height:1.5;margin:4px 0 0}
+    .tt-meta{font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:10px 0 0}
+    .tt-meta a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .tt-meta a:hover{text-decoration:underline}
+    .tt-dot{color:var(--line)}
+    .tt-nomatch{font-size:14px;color:var(--muted);margin:16px 0 0}
+    .tt-nomatch a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .tt-nomatch a:hover{text-decoration:underline}
     @media (max-width:560px){
-      .fx-item{padding:14px 15px}
       .fx-lede{font-size:16.5px}
-      .fx-pill{margin-left:0}
+      .tt-grid{grid-template-columns:1fr}
     }
   </style>
+
+  <script>
+    (function () {
+      var input = document.getElementById('tt-filter-in');
+      var grid = document.getElementById('tt-grid');
+      if (!input || !grid) return;
+      var none = document.getElementById('tt-nomatch');
+      var cards = Array.prototype.slice.call(grid.querySelectorAll('.tt-card'));
+      function norm(s) { return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+      input.addEventListener('input', function () {
+        var q = norm(input.value.trim());
+        var shown = 0;
+        for (var i = 0; i < cards.length; i++) {
+          var hit = q === '' || norm(cards[i].getAttribute('data-name')).indexOf(q) !== -1;
+          cards[i].classList.toggle('is-hidden', !hit);
+          if (hit) shown++;
+        }
+        if (none) none.hidden = shown !== 0;
+      });
+    })();
+  </script>
 </Base>
