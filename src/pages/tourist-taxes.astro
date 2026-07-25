@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import USBadge from '../components/USBadge.astro';
+import Hero from '../components/Hero.astro';
 import { countries } from '../data/index.js';
 
 // Everything on this page is read from the country guides. A fact fixed in one
@@ -40,10 +41,13 @@ function whenText(k) {
   <Nav />
   <main class="wrap">
 
+    <Hero
+      img="/hero/tourist-taxes.jpg"
+      alt="Illustration of an open passport with an entry stamp, a ticket, and a city gate, for a guide to tourist taxes and entry fees by country"
+      eyebrow="Fees and taxes"
+      title="Tourist taxes and entry fees, country by country." />
+
     <section class="fx-intro">
-      <p class="fx-lab">Fees and taxes</p>
-      <div style="margin:2px 0 12px"><USBadge /></div>
-      <h1>Tourist taxes and entry fees, country by country.</h1>
       <p class="fx-lede">The charges that catch US travelers out are the ones that move on political timelines: city accommodation levies, and entry fees like the UK ETA. This page keeps the ones we watch most closely in one place, with the amount, when it took effect, and a link to the official source. Every figure is pulled from a country guide and carries the same checked date. For the everyday taxes and tipping in a country, the full guide has the detail.</p>
     </section>
 
@@ -77,9 +81,7 @@ function whenText(k) {
   <Footer />
 
   <style>
-    .fx-lab{font-size:12px;font-weight:600;color:var(--teal-deep);letter-spacing:.08em;text-transform:uppercase;margin:26px 0 10px}
-    .fx-intro{max-width:680px}
-    .fx-intro h1{margin:0 0 14px}
+    .fx-intro{max-width:680px;margin:22px 0 0}
     .fx-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
     .fx-sec{margin:36px 0}
     .fx-sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 6px}

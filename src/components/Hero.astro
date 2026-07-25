@@ -1,0 +1,61 @@
+---
+// Shared page hero. Renders an illustration band with the headline overlaid on the
+// left, matching the taxis and homepage heroes. It is gated on the image existing
+// (same fs.existsSync approach the homepage uses), so a page can adopt the hero
+// before its art is drawn: with no image it falls back to a plain header, and the
+// band appears automatically once the file lands in public/hero/.
+//
+// Props:
+//   img       required, path under /public, e.g. "/hero/taxis.jpg"
+//   alt       image alt text, for SEO and screen readers
+//   title     the page H1 (rendered as a real <h1>, so keep it the page's only H1)
+//   eyebrow   optional small label above the H1 (the "fx-lab" style)
+//   stamp     optional small line under the H1, e.g. "Checked June 2026"
+//   slim      shorter band, for data pages where the chart should stay near the top
+//   showBadge whether to show the US-traveler badge (default true)
+import USBadge from './USBadge.astro';
+import fs from 'node:fs';
+const { img, alt = '', title, eyebrow, stamp, slim = false, showBadge = true } = Astro.props;
+const hasImg = img ? fs.existsSync(process.cwd() + '/public' + img) : false;
+---
+{hasImg ? (
+  <section class={"tx-hero" + (slim ? " is-slim" : "")}>
+    <img class="tx-hero-img" src={img} width="1920" height="640" alt={alt} fetchpriority="high" decoding="async" />
+    <div class="tx-hero-scrim" aria-hidden="true"></div>
+    <div class="tx-hero-body">
+      {eyebrow && <p class="hero-eyebrow">{eyebrow}</p>}
+      {showBadge && <div class="hero-badge"><USBadge /></div>}
+      <h1>{title}</h1>
+      {stamp && <p class="hero-stamp">{stamp}</p>}
+    </div>
+  </section>
+) : (
+  <section class="hero-fallback">
+    {eyebrow && <p class="hero-eyebrow">{eyebrow}</p>}
+    {showBadge && <div class="hero-badge"><USBadge /></div>}
+    <h1>{title}</h1>
+    {stamp && <p class="hero-stamp">{stamp}</p>}
+  </section>
+)}
+<style>
+  .tx-hero{position:relative;display:flex;align-items:center;min-height:clamp(200px,26vw,300px);border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--paper);margin:26px 0 0}
+  .tx-hero.is-slim{min-height:clamp(140px,18vw,205px)}
+  .tx-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center}
+  .tx-hero-scrim{position:absolute;inset:0;background:linear-gradient(90deg,var(--paper) 0%,rgba(245,244,239,.92) 40%,rgba(245,244,239,0) 66%)}
+  .tx-hero-body{position:relative;width:58%;max-width:520px;padding:30px 34px}
+  .tx-hero.is-slim .tx-hero-body{padding:22px 34px}
+  .tx-hero-body h1{margin:0;font-size:clamp(27px,4.2vw,40px);line-height:1.08}
+  .tx-hero.is-slim .tx-hero-body h1{font-size:clamp(23px,3.2vw,32px)}
+  .hero-eyebrow{font-size:12px;font-weight:600;color:var(--teal-deep);letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px}
+  .hero-badge{margin:2px 0 12px}
+  .hero-stamp{font-size:12.5px;color:var(--muted);margin:10px 0 0}
+  .hero-fallback{max-width:680px;margin:26px 0 0}
+  .hero-fallback h1{margin:0}
+  @media (max-width:720px){
+    .tx-hero{display:block;min-height:0;border-radius:16px}
+    .tx-hero.is-slim{min-height:0}
+    .tx-hero-img{position:static;width:100%;height:auto;display:block}
+    .tx-hero-scrim{display:none}
+    .tx-hero-body,.tx-hero.is-slim .tx-hero-body{position:static;width:auto;max-width:none;padding:18px 6px 4px}
+  }
+</style>
