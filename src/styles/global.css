@@ -246,7 +246,7 @@
     .home-hero.has-hero-img .lede{max-width:none}
   }
   @media(max-width:720px){
-    .home-hero.has-hero-img .hh-media{display:block;width:100%;aspect-ratio:16/9;max-height:none;background-position:center;background-size:cover;background-repeat:no-repeat;border-radius:16px}
+    .home-hero.has-hero-img .hh-media{display:block;width:100%;aspect-ratio:4/3;max-height:none;background-position:left center;background-size:cover;background-repeat:no-repeat;border-radius:16px}
     .home-hero.has-hero-img .hh-body{padding:20px 2px 4px}
   }
 
