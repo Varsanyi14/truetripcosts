@@ -193,7 +193,7 @@ export default {
         {
           h: "Which app to install",
           icon: "phoneok",
-          key: { fig: "Uber or Bolt", tag: "The safe bet", text: "Uber and Bolt both work well in Dutch cities, with FreeNow a third option. An app gives a set fare and avoids the street-taxi problem.", tone: "teal" },
+          key: { fig: "Apps", tag: "The safe bet", text: "Uber and Bolt both work well in Dutch cities, with FreeNow a third option. An app gives a set fare and avoids the street-taxi problem.", tone: "teal" },
           p: [
             "<b>Uber</b> and <b>Bolt</b> both work well in <b>Amsterdam, Rotterdam, The Hague and Utrecht</b>, and <b>FreeNow</b> is a third option. Booking through an app gives you a fare estimate, the driver and plate in advance, and card payment.",
             "Honestly, in much of the Netherlands you may not need a taxi at all: <b>trains, trams and bikes</b> cover most trips cheaply and quickly. An app is most useful late at night or with luggage."

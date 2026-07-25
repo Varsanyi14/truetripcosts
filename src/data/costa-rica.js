@@ -20,6 +20,76 @@ export default {
   region: "Americas",
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Uber, DiDi (both work)" },
+        { k: "Airport (SJO)", v: "Official orange taxis, or an app" },
+        { k: "Taxis", v: "Red, metered (ask for la maria)" },
+        { k: "Watch for", v: "Meter refusal, pirata taxis" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "medium",
+      title: "Taxis in Costa Rica: apps, the airport, and la maria (2026) | True Trip Costs",
+      description: "How taxis work in Costa Rica for US travelers in 2026: Uber and DiDi, the official orange airport taxis at SJO, why to insist on the meter (la maria), and how much to tip. Checked July 2026.",
+      h1: "Taxis in Costa Rica, and the apps to use",
+      lede: "Costa Rican taxis are cheap and metered, and ride apps make it easier still. The one habit to keep is insisting on the meter, called la maria. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>Uber</b> and <b>DiDi</b> (both widely used, DiDi especially), and official <b>red taxis</b> are metered too. The meter is called <b>la maria</b>, and the one habit to keep is <b>insisting it is on</b>, since some drivers skip it for tourists. From <b>San Jose airport (SJO)</b>, use the <b>official orange airport taxis</b> (a regulated fare) or an app. Avoid unmarked <b>pirata</b> (pirate) taxis. Fares are cheap, so pay in <b>colones</b> and round up to tip.",
+      sections: [
+        {
+          h: "Which apps to install",
+          icon: "phoneok",
+          key: { fig: "DiDi, Uber", tag: "Both work", text: "Uber and DiDi are both widely used in Costa Rica, DiDi especially. They show the fare up front and remove any meter doubt.", tone: "teal" },
+          p: [
+            "<b>Uber</b> and <b>DiDi</b> both work well in Costa Rica, and <b>DiDi</b> is especially popular, so install both and compare. They cover the <b>San Jose</b> area, the Central Valley and the main tourist spots, showing the fare and driver up front and taking card in the app.",
+            "Ride apps operate in a bit of a <b>legal gray area</b> here, so a driver may ask you to <b>sit up front</b> to look like a friend, especially near the airport. It is routine and nothing to worry about."
+          ]
+        },
+        {
+          h: "From San Jose airport",
+          icon: "plane",
+          key: { fig: "Official", tag: "Orange airport taxis", text: "From SJO, use the official orange airport taxis (a regulated fare) or an app. Official taxis and apps also serve Liberia (LIR).", tone: "teal" },
+          p: [
+            "At <b>San Jose (SJO, Juan Santamaria)</b>, the official <b>airport taxis are orange</b> (operated by Taxis Unidos) and run on a <b>regulated fare</b> from the marked stand outside arrivals. An <b>app</b> works too, with drivers meeting you at the designated pickup area.",
+            "From <b>Liberia (LIR)</b>, official taxis and apps both serve the beach towns of Guanacaste, though rides are longer, so agree the app fare or confirm the taxi rate first."
+          ]
+        },
+        {
+          h: "Insist on the meter (la maria)",
+          icon: "alert",
+          key: { tag: "Use red or orange taxis", text: "Official taxis are red (orange at the airport) and metered. Some drivers skip the meter, the maria, for tourists, and unmarked pirata taxis are best avoided. Insist on the meter or use an app.", tone: "amber" },
+          p: [
+            "Official Costa Rican taxis are <b>red</b> with a <b>yellow triangle</b> on the door (and <b>orange</b> at the airport), and they carry a meter called <b>la maria</b>. The classic issue is a driver who <b>will not switch on the maria</b> for a tourist and instead names an inflated flat price.",
+            "Insist the <b>maria is running</b> from the start, or just use an <b>app</b>, where the fare is set in advance. Avoid unofficial <b>pirata</b> (pirate) taxis, which are unmarked and unregulated."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "crc",
+          key: { fig: "Metered", tag: "Pay in colones", text: "Fares are cheap and metered. Pay in colones for the best value, and round up to tip; there is no set percentage.", tone: "teal" },
+          p: [
+            "Fares are <b>cheap</b>: metered in a red taxi, set up front in an app. Prices may be quoted in dollars in tourist areas, but <b>pay in colones</b> for the best value. To <b>tip</b>, <b>round up</b> the fare; there is no set percentage.",
+            "For more, see <a href='/costa-rica/cash-or-card'>cash or card in Costa Rica</a>, <a href='/costa-rica/tipping'>tipping in Costa Rica</a>, and the <a href='/costa-rica'>Costa Rica money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What taxi app should I use in Costa Rica?", a: "Uber and DiDi both work well, with DiDi especially popular. They show the fare up front and take card in the app. Ride apps operate in a legal gray area, so a driver may ask you to sit up front, which is routine." },
+        { q: "How do I get from San Jose airport (SJO)?", a: "Use the official orange airport taxis (operated by Taxis Unidos) on a regulated fare from the marked stand, or an app from the designated pickup area. Avoid unmarked pirata taxis." },
+        { q: "What is la maria in a Costa Rican taxi?", a: "It is the meter. Official red taxis (orange at the airport) are metered, but some drivers skip the maria for tourists and name an inflated price. Insist the meter is on, or use an app." },
+        { q: "Do you tip taxi drivers in Costa Rica?", a: "Only lightly: round up the fare. There is no set percentage. Fares are cheap and metered, and paying in colones gives better value than dollars." }
+      ],
+      sources: {
+        links: [
+          { label: "Costa Rica Tourism Board (ICT): official travel information", url: "https://www.visitcostarica.com/en", type: "gov" },
+          { label: "US State Department: Costa Rica country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/CostaRica.html", type: "gov" }
+        ],
+        judgment: "Costa Rican taxis are cheap and metered, apps like DiDi and Uber are widely used in a legal gray area, and the meter (la maria) games and pirata taxis are the things to watch. Fares and app rules shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Colon (CRC), dollars accepted" },

@@ -196,7 +196,7 @@ export default {
         {
           h: "Which apps to install",
           icon: "phoneok",
-          key: { fig: "Uber and 99", tag: "The default", text: "Uber and 99 both work across Brazilian cities. Locals use them over street taxis because they are cheaper and the trip is tracked.", tone: "teal" },
+          key: { fig: "Uber, 99", tag: "The default", text: "Uber and 99 both work across Brazilian cities. Locals use them over street taxis because they are cheaper and the trip is tracked.", tone: "teal" },
           p: [
             "<b>Uber</b> is widely used across Brazil, and <b>99</b> (a large local app) is just as popular and sometimes cheaper, so install both and compare. They cover <b>Sao Paulo, Rio de Janeiro</b> and cities large and small, and let you pay by card in the app.",
             "Brazilians overwhelmingly prefer apps to hailing a street taxi, not only for price but because the <b>driver, car and route are recorded</b>, which is reassuring. You can share your trip status with someone as an extra step."
@@ -205,7 +205,7 @@ export default {
         {
           h: "Leaving the airport safely",
           icon: "plane",
-          key: { fig: "App or prepaid desk", tag: "Ignore touts", text: "From the airport, use an app from the marked pickup area or the official prepaid taxi desk. Never accept a ride from someone approaching you inside the terminal.", tone: "teal" },
+          key: { fig: "Use apps", tag: "Ignore touts", text: "From the airport, use an app from the marked pickup area or the official prepaid taxi desk. Never accept a ride from someone approaching you inside the terminal.", tone: "teal" },
           p: [
             "At <b>Sao Paulo (GRU) and Rio (GIG)</b>, the safe options are an <b>app</b> from the marked rideshare pickup area, or the <b>official prepaid taxi desk</b> inside the terminal, where you pay a set price up front at a counter.",
             "<b>Never accept a ride from someone who approaches you</b> in the arrivals hall offering a taxi, as unofficial drivers are where problems happen. Walk to the official desk or the app pickup point instead."

@@ -192,7 +192,7 @@ export default {
         {
           h: "From the airport, the train usually wins",
           icon: "plane",
-          key: { fig: "Take the train", tag: "A taxi is pricey", text: "A taxi from Narita to central Tokyo can run 20,000 to 30,000 yen. The Narita Express, Skyliner or Airport Limousine bus cost a fraction of that.", tone: "teal" },
+          key: { fig: "Train", tag: "A taxi is pricey", text: "A taxi from Narita to central Tokyo can run 20,000 to 30,000 yen. The Narita Express, Skyliner or Airport Limousine bus cost a fraction of that.", tone: "teal" },
           p: [
             "A taxi from <b>Narita (NRT)</b> to central Tokyo can run <b>20,000 to 30,000 yen</b>, so unless you have heavy bags or a group, the <b>train wins</b>: the <b>Narita Express (N EX)</b> or the <b>Keisei Skyliner</b> reach the city in under an hour for a fraction of the price, and the <b>Airport Limousine bus</b> serves major hotels.",
             "<b>Haneda (HND)</b> is much closer, so a taxi to central Tokyo is more reasonable (roughly <b>6,000 to 9,000 yen</b>), but the <b>Keikyu train or monorail</b> are still far cheaper and quick. Buy an <b>IC card</b> (Suica or Pasmo, or the mobile version) on arrival and trains become tap-and-go."
