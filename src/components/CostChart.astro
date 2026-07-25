@@ -80,9 +80,11 @@ for (const name of tiers) {
   axisMaxByTier[name] = niceMax(rows.length ? Math.max(...rows.map(r => r.total)) : 0);
 }
 const axisMax = axisMaxByTier[defaultTier] || 0;
-// Desktop gets a denser axis; the client swaps to the mobile tick count at narrow
-// widths. Both are generated from the same tidy ladder.
-const ticks = ticksFor(axisMax, 7);
+// The SERVER renders the sparse tick set that is safe at EVERY width down to
+// 320px, so the axis never collides even if the enhancement script does not run.
+// The client may add density on wide desktops (see cost-comparison.astro), but
+// that is enhancement only: the default rendered here is always readable.
+const ticks = ticksFor(axisMax, 4);
 
 const pct = v => (axisMax ? (v / axisMax) * 100 : 0);
 ---

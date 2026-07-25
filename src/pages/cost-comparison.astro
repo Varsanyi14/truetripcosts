@@ -191,14 +191,12 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
           }
           return out;
         }
-        // Fewer ticks on a narrow screen so the labels cannot run together. At
-        // 320px even 4 centered labels read as one string, so the tightest phones
-        // get 3 ticks (zero, a middle value, the max); a little wider fits 4.
+        // Enhancement only. The server already rendered the sparse 4-tick set,
+        // which is collision-free at every width. Here we ADD density on wide
+        // desktops where there is clearly room; narrow and mid widths keep the
+        // safe default. If this script never runs, the axis is still correct.
         function wantTicks() {
-          var w = window.innerWidth || 0;
-          if (w && w <= 430) return 2;
-          if (w && w <= 560) return 4;
-          return 7;
+          return (window.innerWidth && window.innerWidth >= 768) ? 7 : 4;
         }
 
         function drawAxis() {
@@ -214,8 +212,13 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
           if (gridLayer) gridLayer.innerHTML = gHtml;
           if (scaleMaxEl) scaleMaxEl.textContent = '$' + axisMax;
         }
+        // Draw the axis immediately, before any payload or render logic that
+        // could throw, so the enhanced tick count is never blocked by an
+        // unrelated failure later in this block.
+        drawAxis();
+
         var payload = {};
-        try { payload = JSON.parse(payloadEl.textContent); } catch (e) { payload = {}; }
+        try { payload = payloadEl ? JSON.parse(payloadEl.textContent) : {}; } catch (e) { payload = {}; }
         var btns = cc.querySelectorAll('[data-tier-btn]');
         var current = cc.getAttribute('data-tier') || 'Mid-range';
         var pct = function (v) { return axisMax ? (v / axisMax) * 100 : 0; };
@@ -295,9 +298,8 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
           requestAnimationFrame(tick);
         }
 
-        // Draw once on load so the tick count matches this viewport, and again on
-        // resize or rotation.
-        drawAxis();
+        // Redraw on resize or rotation so the desktop density kicks in or drops
+        // as the viewport crosses 768px. The initial draw already happened above.
         var rzT = null;
         window.addEventListener('resize', function () {
           if (rzT) clearTimeout(rzT);
