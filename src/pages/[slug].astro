@@ -6,17 +6,19 @@ import CountryBriefing from '../components/CountryBriefing.astro';
 import Symbol from '../components/Symbol.astro';
 import { topicIcon } from '../data/topics.js';
 import { countries } from '../data/index.js';
+import fs from 'node:fs';
 
 export function getStaticPaths() {
   return countries.filter(c => c.live).map(c => ({ params: { slug: c.slug }, props: { country: c } }));
 }
 const { country } = Astro.props;
+const ogImage = fs.existsSync(process.cwd() + '/public/og/' + country.slug + '.jpg') ? ('/og/' + country.slug + '.jpg') : undefined;
 // If this country has a live pet-import spoke, surface a distinct relocation callout
 // on the money guide (separate from the auto-generated "Going deeper" list). Data-driven,
 // so it appears on its own for any country that gains a pets spoke.
 const petSpoke = (country.spokes || []).find(s => s.topic === 'pets' && s.live !== false);
 ---
-<Base title={country.title} description={country.description}>
+<Base title={country.title} description={country.description} ogImage={ogImage}>
   <Nav />
   <main class="wrap">
     <CountryBriefing country={country} />

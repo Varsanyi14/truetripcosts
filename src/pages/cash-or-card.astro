@@ -35,7 +35,7 @@ const cashSpokes = countries
     .map(s => ({ h1: s.h1, lede: s.lede, spokeSlug: s.slug, country: c.name, countrySlug: c.slug })))
   .sort((a, b) => a.country.localeCompare(b.country));
 ---
-<Base
+<Base ogImage="/og/cash-or-card.jpg"
   title="Cash or card by country, for US travelers"
   description="Whether to carry cash or lean on cards, country by country: how card-friendly each place is day to day and how much cash to expect. For US travelers.">
   <Nav />

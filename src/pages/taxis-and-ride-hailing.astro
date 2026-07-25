@@ -19,7 +19,7 @@ const taxiSpokes = countries
     .map(s => ({ h1: s.h1, lede: s.lede, spokeSlug: s.slug, country: c.name, countrySlug: c.slug, caution: s.caution })))
   .sort((a, b) => a.country.localeCompare(b.country));
 ---
-<Base
+<Base ogImage="/og/taxis-and-ride-hailing.jpg"
   title="Taxis and ride-hailing by country, for US travelers"
   description="Which taxi app to install, how the meter and airport scams actually work, and the official cheap way from the airport into town, country by country. For US travelers.">
   <Nav />
