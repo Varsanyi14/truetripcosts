@@ -191,9 +191,14 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
           }
           return out;
         }
-        // Fewer ticks on a narrow screen so the labels cannot run together.
+        // Fewer ticks on a narrow screen so the labels cannot run together. At
+        // 320px even 4 centered labels read as one string, so the tightest phones
+        // get 3 ticks (zero, a middle value, the max); a little wider fits 4.
         function wantTicks() {
-          return (window.innerWidth && window.innerWidth <= 560) ? 4 : 7;
+          var w = window.innerWidth || 0;
+          if (w && w <= 430) return 2;
+          if (w && w <= 560) return 4;
+          return 7;
         }
 
         function drawAxis() {
