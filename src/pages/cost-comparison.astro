@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import USBadge from '../components/USBadge.astro';
+import Hero from '../components/Hero.astro';
 import CostChart from '../components/CostChart.astro';
 import { countries } from '../data/index.js';
 
@@ -53,8 +54,12 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
 <Base title={title} description={description}>
   <Nav />
   <main class="wrap ccpage">
-    <p class="ctx"><USBadge /> <span class="stamp">Checked {checkedLabel}</span></p>
-    <h1>How much does a day cost, country by country?</h1>
+    <Hero
+      img="/hero/cost-comparison.jpg"
+      alt="Illustration of a balance scale weighing a stack of coins against a small suitcase, for a guide comparing the daily cost of travel by country"
+      title="How much does a day cost, country by country?"
+      stamp={"Checked " + checkedLabel}
+      slim />
     <p class="ccpage-lede">
       A typical day's cost for a US traveler, {live.length} countries ranked cheapest to priciest.
       Each bar is a room plus the on-the-ground spending (food, local transport, activities) for one day.
@@ -117,7 +122,7 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
   <style>
     .ccpage{max-width:860px}
     .ccpage h1{margin-bottom:10px}
-    .ccpage-lede{font-size:18px;color:#3B4A46;max-width:640px;margin:0 0 18px}
+    .ccpage-lede{font-size:18px;color:#3B4A46;max-width:640px;margin:22px 0 18px}
     .ccpage-honest{font-size:14px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:13px 16px;margin:0 0 30px;max-width:680px;box-shadow:var(--shadow)}
     .ccpage-chart{margin:0 0 46px}
     .ccpage-map h2{font-family:var(--serif);font-weight:500;font-size:clamp(22px,3.4vw,30px);letter-spacing:-.01em;margin:0 0 8px}
