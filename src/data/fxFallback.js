@@ -44,6 +44,7 @@ export default {
     NAD: 16.3784,
     NOK: 9.6907,
     NZD: 1.7213,
+    PHP: 60,
     SEK: 9.6617,
     SGD: 1.2914,
     THB: 33.4681,
