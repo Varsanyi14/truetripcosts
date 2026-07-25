@@ -177,6 +177,76 @@ export default {
 
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Bolt (also Uber, FreeNow)" },
+        { k: "Why apps", v: "Cheap, and no meter games" },
+        { k: "From the airport", v: "Train or bus, or an app" },
+        { k: "Watch for", v: "Street and station taxi overcharging" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Poland: the Bolt app, and avoiding overcharging (2026) | True Trip Costs",
+      description: "How taxis work in Poland for US travelers in 2026: why Bolt leads (with Uber and FreeNow), getting from the airport cheaply, the station and street taxi overcharging to avoid, and how much to tip. Checked July 2026.",
+      h1: "Taxis in Poland, and the Bolt app",
+      lede: "Poland is cheap and easy to get around by app, with Bolt the local favorite. The main thing to sidestep is the old-school station or street taxi that overcharges tourists. Here is how.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>Bolt</b>, the local favorite and usually the cheapest, and <b>Uber</b> and <b>FreeNow</b> work well too. Apps are the easy default because they are <b>cheap and price the trip up front</b>, sidestepping the one real issue: <b>station and street taxis that overcharge visitors</b>. From the airport, a <b>train or bus</b> into the city is cheap, or use an app. You <b>tip</b> by rounding up, and fares are in <b>zloty</b>.",
+      sections: [
+        {
+          h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "Bolt", tag: "Usually cheapest", text: "Bolt is the local favorite and usually the cheapest, with Uber and FreeNow also working well across Polish cities.", tone: "teal" },
+          p: [
+            "<b>Bolt</b> is the app Poles use most and is usually the <b>cheapest</b>, so install it first. <b>Uber</b> and <b>FreeNow</b> also work well across <b>Warsaw, Krakow, Wroclaw, Gdansk</b> and other cities, and all show the fare and driver up front.",
+            "Apps are the easy default for visitors: cheap, priced in advance, and paid by card, which removes any doubt about the meter or the fare."
+          ]
+        },
+        {
+          h: "From the airport",
+          icon: "plane",
+          key: { fig: "Train", tag: "Or an official taxi", text: "Warsaw and Krakow airports both have a cheap train or bus into the city. If you take a taxi, use the official rank or an app, not a tout.", tone: "teal" },
+          p: [
+            "From <b>Warsaw Chopin (WAW)</b>, a <b>train or city bus</b> runs into the center for a few zloty, and <b>Krakow (KRK)</b> has a train to the main station. Both are cheap and simple.",
+            "If you prefer a taxi, use the <b>official airport rank</b> (clearly branded companies) or an <b>app</b>, and ignore anyone <b>touting</b> for a ride inside the terminal, which is where overcharging starts."
+          ]
+        },
+        {
+          h: "Avoid station and street taxi overcharging",
+          icon: "alert",
+          key: { tag: "Use apps or official ranks", text: "The classic Polish issue is an unofficial or station taxi that overcharges tourists with an inflated rate. Booking through Bolt, Uber or FreeNow avoids it, since the fare is set in advance.", tone: "amber" },
+          p: [
+            "The one real caution is the <b>old-school station or street taxi</b>, especially around <b>train stations and tourist spots</b>, where an unofficial cab may run an <b>inflated tariff</b> or quote a high flat price to a visitor.",
+            "The fix is simple: <b>book through Bolt, Uber or FreeNow</b>, where the fare is fixed before you ride, or use a clearly branded <b>official taxi rank</b> with a visible meter. Avoid unmarked cars and anyone approaching you."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "coins",
+          key: { fig: "Round up", tag: "Cheap, in zloty", text: "Rides are cheap, shown up front in an app or metered in an official taxi. Tip by rounding up; there is no set percentage.", tone: "teal" },
+          p: [
+            "Fares are <b>cheap by Western European standards</b>: set in advance in an app, or metered in an official taxi, and paid in <b>zloty</b>. To <b>tip</b>, <b>round up</b> the fare; there is no set percentage.",
+            "For more, see <a href='/poland/tipping'>tipping in Poland</a>, <a href='/poland/cash-or-card'>cash or card in Poland</a>, and the <a href='/poland'>Poland money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What taxi app should I use in Poland?", a: "Bolt is the local favorite and usually the cheapest, with Uber and FreeNow also working well across Warsaw, Krakow, Wroclaw and Gdansk. All show the fare and driver up front and are paid by card." },
+        { q: "How do I get from Warsaw airport to the city?", a: "A train or city bus runs from Warsaw Chopin into the center for a few zloty. If you prefer a taxi, use the official airport rank or an app, and ignore anyone touting for a ride inside the terminal." },
+        { q: "Do Polish taxis overcharge tourists?", a: "Unofficial or station taxis sometimes do, especially near train stations and tourist spots, with an inflated tariff or flat price. Booking through Bolt, Uber or FreeNow avoids it, since the fare is set in advance." },
+        { q: "Do you tip taxi drivers in Poland?", a: "Lightly: round up the fare. There is no set percentage, and rides are cheap, shown up front in an app or metered in an official taxi." }
+      ],
+      sources: {
+        links: [
+          { label: "Polish Tourism Organisation: official travel information", url: "https://www.poland.travel/en", type: "gov" },
+          { label: "US State Department: Poland country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Poland.html", type: "gov" }
+        ],
+        judgment: "Poland is cheap and easy by app, Bolt leads, and unofficial station taxis are the thing to avoid. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "About 10%, customary" },

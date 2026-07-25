@@ -179,6 +179,76 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Uber, DiDi, Ola (also 13cabs)" },
+        { k: "Taxis", v: "Metered, cashless, small surcharge" },
+        { k: "From the airport", v: "App, or the train or SkyBus" },
+        { k: "Tipping", v: "None (round up if you like)" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Australia: the apps, and cashless cabs (2026) | True Trip Costs",
+      description: "How taxis work in Australia for US travelers in 2026: Uber, DiDi and Ola, the traditional 13cabs, cashless metered taxis with card surcharges, leaving the airport, and why tipping is not expected. Checked July 2026.",
+      h1: "Taxis in Australia, and the apps to use",
+      lede: "Getting around Australia is easy: Uber and its rivals are everywhere, taxis are metered and effectively cashless, and you do not tip. The one quirk is a small card surcharge. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>Uber</b>, and <b>DiDi</b> and <b>Ola</b> compete on price, while <b>13cabs</b> is the app for traditional taxis. Taxis are <b>metered, regulated and effectively cashless</b>: you tap a card or phone, and a small <b>card surcharge</b> (often 1 to 2%) is normal and shown up front. From the airport, an <b>app</b> is simplest, or the <b>train</b> in Sydney and the <b>SkyBus</b> in Melbourne. <b>Tipping is not expected</b>, though you can round up for a great trip.",
+      sections: [
+        {
+          h: "Which apps to install",
+          icon: "phoneok",
+          key: { fig: "Apps", tag: "Uber leads", text: "Uber is everywhere, with DiDi and Ola competing on price. 13cabs is the app for booking a traditional metered taxi.", tone: "teal" },
+          p: [
+            "<b>Uber</b> is the default across Australian cities, and <b>DiDi</b> and <b>Ola</b> often undercut it, so it is worth having a couple installed to compare. For a traditional taxi, the <b>13cabs</b> app (and similar state operators) books a metered cab.",
+            "Coverage is strong in <b>Sydney, Melbourne, Brisbane, Perth</b> and beyond. In smaller towns, apps thin out and a phone booking or a rank is the norm."
+          ]
+        },
+        {
+          h: "From the airport",
+          icon: "plane",
+          key: { fig: "By app", tag: "Or train or SkyBus", text: "An app is simplest from the marked rideshare zone. In Sydney the Airport Link train reaches the city; in Melbourne the SkyBus does.", tone: "teal" },
+          p: [
+            "An <b>app</b> is the easy option from the marked <b>rideshare pickup zone</b> at major airports. In <b>Sydney</b>, the <b>Airport Link train</b> runs straight into the city (with a station access fee built into the ticket). A metered <b>taxi</b> is reliable too, with an airport toll added.",
+            "In <b>Melbourne</b>, the <b>SkyBus</b> is the standard link from Tullamarine into the city, since there is no airport train yet, and Uber and taxis serve the marked zones."
+          ]
+        },
+        {
+          h: "Cashless, metered, small surcharge",
+          icon: "card",
+          key: { fig: "Cashless", tag: "Tap, small surcharge", text: "Taxis are metered and effectively cashless: tap a card or phone. A small card surcharge (often 1 to 2%) is legal and shown up front.", tone: "teal" },
+          p: [
+            "Taxis are <b>metered and regulated</b>, and Australia is <b>effectively cashless</b>, so you <b>tap a card or phone</b> in the taxi or pay in the app. Expect a small <b>card surcharge</b> (often 1 to 2%, sometimes a flat fee), which is <b>legal and disclosed</b> up front, so it is normal to see it.",
+            "There is nothing to negotiate: the meter or the app sets the fare. Apps show the price before you book, which is usually the easiest way to know the cost."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "aud",
+          key: { fig: "No tip", tag: "Round up if you like", text: "Fares are metered or set in the app. Tipping is not expected, though rounding up for a great trip is a welcome gesture.", tone: "teal" },
+          p: [
+            "Fares are <b>metered</b> in a taxi or <b>set in the app</b>, and paid by card or phone. <b>Tipping is not expected</b> in Australia, since drivers earn a proper wage, though <b>rounding up</b> for a particularly good trip is a welcome gesture.",
+            "For more, see <a href='/australia/tipping'>tipping in Australia</a>, <a href='/australia/cash-or-card'>cash or card in Australia</a>, and the <a href='/australia'>Australia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in Australia?", a: "Yes, Uber is the default across Australian cities, with DiDi and Ola often cheaper, so it is worth comparing. For a traditional metered taxi, the 13cabs app books one." },
+        { q: "How do I get from a big Australian airport to the city?", a: "An app from the marked rideshare zone is simplest. In Sydney the Airport Link train reaches the city; in Melbourne the SkyBus is the standard link from Tullamarine. Metered taxis serve both, with an airport toll." },
+        { q: "Do you tip taxi drivers in Australia?", a: "No, it is not expected, since drivers earn a proper wage. Rounding up for a great trip is a welcome gesture, but never required." },
+        { q: "Why did my Australian taxi add a surcharge?", a: "A small card surcharge, often 1 to 2%, is legal and common in Australia and must be shown up front. Taxis are effectively cashless, so you tap a card or phone and see the surcharge on the fare." }
+      ],
+      sources: {
+        links: [
+          { label: "Tourism Australia: official travel information", url: "https://www.australia.com", type: "gov" },
+          { label: "US State Department: Australia country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Australia.html", type: "gov" }
+        ],
+        judgment: "Australian taxis are metered, cashless and regulated, apps are the norm, and the card surcharge is disclosed. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Australian dollar (AUD)" },

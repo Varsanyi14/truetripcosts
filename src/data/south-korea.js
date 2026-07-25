@@ -179,6 +179,76 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Kakao T (Uber calls taxis too)" },
+        { k: "Taxis", v: "Orange or silver, metered, honest" },
+        { k: "From Incheon", v: "The AREX train or a limousine bus" },
+        { k: "Tipping", v: "None" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in South Korea: the Kakao T app, and Incheon (2026) | True Trip Costs",
+      description: "How taxis work in South Korea for US travelers in 2026: the Kakao T app (and Uber, which calls taxis), getting from Incheon by AREX train, honest metered taxis, and why you never tip. Checked July 2026.",
+      h1: "Taxis in South Korea, and the Kakao T app",
+      lede: "Korean taxis are cheap, honest and metered, and the Kakao T app makes hailing one effortless even with no Korean. From Incheon the train usually wins, and you never tip. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>Kakao T</b>, the app nearly everyone in Korea uses to hail a taxi, and <b>Uber</b> works too, dispatching a <b>licensed taxi</b> rather than a private car (Uber private ridehailing is restricted here). Taxis are <b>orange or silver, metered, cheap and honest</b>, so there are no games to watch. From <b>Incheon (ICN)</b>, the <b>AREX train</b> or an <b>airport limousine bus</b> usually beat a taxi into Seoul. You <b>never tip</b>, and taxis take cards and the <b>T-money</b> transit card.",
+      sections: [
+        {
+          h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "Kakao T", tag: "Uber calls taxis", text: "Kakao T is the app nearly all Koreans use. Uber works too, but dispatches a licensed taxi, not a private car, so both simply call a metered cab.", tone: "teal" },
+          p: [
+            "<b>Kakao T</b> is the app to install: nearly everyone in Korea uses it, and it hails a regular metered taxi with the destination set in the app, which solves the language barrier. <b>Uber</b> works too, as <b>Uber Taxi</b>, dispatching the same licensed taxis, since Uber private ridehailing is <b>restricted</b> in Korea.",
+            "You can pay in the app or in the car. Coverage is excellent in <b>Seoul, Busan</b> and other cities, and the app can show an English interface, so you rarely need to speak Korean to get where you are going."
+          ]
+        },
+        {
+          h: "From Incheon airport",
+          icon: "plane",
+          key: { fig: "Train", tag: "AREX or a bus", text: "From Incheon, the AREX express train reaches Seoul Station in about 45 minutes, and airport limousine buses serve major hotels. Both beat a taxi.", tone: "teal" },
+          p: [
+            "From <b>Incheon (ICN)</b>, the <b>AREX express train</b> runs to <b>Seoul Station</b> in about 45 minutes for a modest fare, and the all-stop AREX is cheaper still. <b>Airport limousine buses</b> run to hotel districts across the city and are easy with luggage.",
+            "A <b>taxi</b> into Seoul is reliable but pricey (roughly 60,000 to 90,000 won plus tolls, more late at night), so it mainly makes sense for a group or very late arrival. Buy a <b>T-money</b> card on arrival and the trains and buses become tap-and-go."
+          ]
+        },
+        {
+          h: "Honest, metered and cheap",
+          icon: "wheel",
+          key: { fig: "Metered", tag: "Types of taxi", text: "Regular orange or silver taxis are metered, cheap and honest. Black deluxe (mobeom) taxis cost more for extra comfort. There is nothing to negotiate.", tone: "teal" },
+          p: [
+            "Regular taxis are <b>orange or silver</b>, <b>metered, cheap and honest</b>, so there is nothing to haggle over. <b>Black deluxe (mobeom) taxis</b> and larger jumbo taxis cost more for extra space and service, which is worth knowing so a higher fare does not surprise you.",
+            "Hailing on the street works, but the app is easier for visitors. A red light in the windscreen means the taxi is <b>available</b>. At Incheon, an <b>International Taxi</b> stand offers English-speaking drivers on set fares if you prefer."
+          ]
+        },
+        {
+          h: "Fares, paying and no tipping",
+          icon: "won",
+          key: { fig: "No tip", tag: "Cards and T-money", text: "Fares are metered with a late-night surcharge. Taxis take cards and the T-money transit card, and you never tip.", tone: "teal" },
+          p: [
+            "Fares are <b>metered</b>: a low base fare plus distance, with a <b>late-night surcharge</b> (roughly 22:00 to 04:00). Nearly all taxis take <b>cards and the T-money</b> transit card as well as cash.",
+            "You do <b>not tip</b> in Korea, and there is no need to round up. Just pay the metered fare. For more, see <a href='/south-korea/tipping'>tipping in South Korea</a>, <a href='/south-korea/cash-or-card'>cash or card in South Korea</a>, and the <a href='/south-korea'>South Korea money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What taxi app should I use in South Korea?", a: "Kakao T, which nearly all Koreans use, sets the destination in the app and solves the language barrier. Uber works too, but dispatches a licensed taxi rather than a private car, since Uber private ridehailing is restricted in Korea." },
+        { q: "How do I get from Incheon airport to Seoul?", a: "The AREX express train reaches Seoul Station in about 45 minutes, and airport limousine buses serve hotel districts. Both beat a taxi, which is reliable but pricey (roughly 60,000 to 90,000 won plus tolls)." },
+        { q: "Do you tip taxi drivers in South Korea?", a: "No, never. Tipping is not customary in Korea, and there is no need to round up. Just pay the metered fare, by card, T-money card or cash." },
+        { q: "Are Korean taxis honest?", a: "Yes. Regular orange or silver taxis are metered, cheap and honest, with nothing to negotiate. Black deluxe (mobeom) taxis simply cost more for extra comfort, which is worth knowing so the higher fare does not surprise you." }
+      ],
+      sources: {
+        links: [
+          { label: "Korea Tourism Organization: official travel information", url: "https://english.visitkorea.or.kr", type: "gov" },
+          { label: "US State Department: South Korea country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/SouthKorea.html", type: "gov" }
+        ],
+        judgment: "Korean taxis are honest and metered, Kakao T is the leading app, and the AREX train beats a taxi from Incheon. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Not expected" },

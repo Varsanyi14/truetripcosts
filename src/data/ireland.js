@@ -170,6 +170,76 @@ export default {
 
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "FreeNow (Uber calls taxis too)" },
+        { k: "Taxis", v: "Metered, fares set by the regulator" },
+        { k: "From Dublin airport", v: "No rail: bus, taxi or app" },
+        { k: "Tipping", v: "Round up a euro or two" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Ireland: the FreeNow app, and Dublin airport (2026) | True Trip Costs",
+      description: "How taxis work in Ireland for US travelers in 2026: FreeNow (and Uber, which calls taxis), fares set by the regulator, getting from Dublin airport with no rail link, and how much to tip. Checked July 2026.",
+      h1: "Taxis in Ireland, and the FreeNow app",
+      lede: "Irish taxis are metered, honest and set by a national regulator, so there is nothing to haggle over. Install FreeNow, know that Dublin airport has no train, and round up to tip. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>FreeNow</b>, the app most used in Ireland, and <b>Uber</b> works too but <b>only dispatches licensed taxis</b> here (the private-car model is not allowed), with <b>Bolt</b> a third option. Taxis are <b>metered</b> and their fares are <b>set by the national regulator</b>, so they are honest with nothing to negotiate. From <b>Dublin airport</b>, there is <b>no rail link</b>, so it is a bus, a taxi or an app. You <b>tip</b> by rounding up a euro or two.",
+      sections: [
+        {
+          h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "FreeNow", tag: "Uber calls taxis", text: "FreeNow is the app most used in Ireland. Uber works but only dispatches licensed taxis, since the private-car model is not allowed. Bolt is a third option.", tone: "teal" },
+          p: [
+            "<b>FreeNow</b> is the app most used in Ireland and connects you to licensed taxis, so install it first. <b>Uber</b> operates here too, but it <b>only dispatches licensed taxis</b>, since the cheap private-car model is <b>not allowed</b> in Ireland, and <b>Bolt</b> is a third choice.",
+            "The apps show the fare estimate, the driver and the plate, and let you pay by card. Coverage is strong in <b>Dublin</b> and good in <b>Cork, Galway</b> and other cities, thinner in rural areas where you may phone a local company."
+          ]
+        },
+        {
+          h: "From Dublin airport",
+          icon: "plane",
+          key: { fig: "Buses", tag: "No airport rail", text: "Dublin airport has no train or tram. Airport coaches run into the city, and a metered taxi is about 25 to 30 euros, or use an app.", tone: "teal" },
+          p: [
+            "The thing to know is that <b>Dublin airport (DUB) has no rail or tram link</b>. Instead, frequent <b>airport coaches</b> (such as the Airlink, Aircoach and Dublin Express) run into the city center cheaply and are easy with luggage.",
+            "A metered <b>taxi</b> into central Dublin runs roughly <b>25 to 30 euros</b> from the rank outside arrivals, and an <b>app</b> works the same way. For a group or late arrival, the taxi or app is the simplest door-to-door option."
+          ]
+        },
+        {
+          h: "Metered, and set by the regulator",
+          icon: "wheel",
+          key: { fig: "Metered", tag: "Regulated fares", text: "Taxi fares are set by the National Transport Authority, so the meter is honest and standard nationwide. Cards are widely accepted.", tone: "teal" },
+          p: [
+            "Irish taxi fares are <b>set by the National Transport Authority</b>, a national maximum fare, so the <b>meter is honest</b> and consistent around the country, with legitimate higher rates at night, on Sundays and on public holidays. There is <b>nothing to negotiate</b>.",
+            "Most taxis take <b>cards</b>, and apps let you pay in-app, though it is worth a quick check if you plan to pay by card in a street-hailed cab. Keep a little cash as a backup in rural areas."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "euro",
+          key: { fig: "Round up", tag: "A euro or two", text: "Tip by rounding up the fare a euro or two, or roughly 10% on a longer trip. There is no strict expectation.", tone: "teal" },
+          p: [
+            "Fares are metered and regulated. To <b>tip</b>, <b>round up</b> the fare by a euro or two, or roughly 10% on a longer journey, which is a common courtesy rather than a strict expectation.",
+            "For more, see <a href='/ireland/tipping'>tipping in Ireland</a>, <a href='/ireland/cash-or-card'>cash or card in Ireland</a>, and the <a href='/ireland'>Ireland money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in Ireland?", a: "Yes, but in Ireland Uber only dispatches licensed taxis, since the cheap private-car model is not allowed. FreeNow is the app most used, and Bolt also operates. All simply call a metered, regulated taxi." },
+        { q: "How do I get from Dublin airport to the city?", a: "There is no rail or tram link. Frequent airport coaches (Airlink, Aircoach, Dublin Express) run into the city cheaply, a metered taxi is about 25 to 30 euros, and an app works the same way." },
+        { q: "Are Irish taxis expensive?", a: "Fares are set by the National Transport Authority, so they are standard and honest, with higher rates at night, on Sundays and on holidays. Apps show the price before you book." },
+        { q: "Do you tip taxi drivers in Ireland?", a: "Lightly: round up the fare by a euro or two, or roughly 10% on a longer trip. It is a common courtesy rather than a strict expectation." }
+      ],
+      sources: {
+        links: [
+          { label: "Transport for Ireland (National Transport Authority): official taxi fare information", url: "https://www.transportforireland.ie", type: "gov" },
+          { label: "US State Department: Ireland country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Ireland.html", type: "gov" }
+        ],
+        judgment: "Irish taxi fares are set by the national regulator, FreeNow leads the apps, and Dublin airport has no rail link. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Round up, or 10 to 15%" },

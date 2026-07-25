@@ -177,6 +177,76 @@ export default {
 
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Uber, Bolt (often cheapest)" },
+        { k: "Taxis", v: "Metered, but apps usually beat them" },
+        { k: "From the airport", v: "Shuttle bus, or an app" },
+        { k: "Currency", v: "Euros (since 2023)" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Croatia: Uber and Bolt, and the airports (2026) | True Trip Costs",
+      description: "How taxis work in Croatia for US travelers in 2026: why Uber and Bolt usually beat traditional taxis, getting from the airports by shuttle or app, coastal summer pricing, and how much to tip. Checked July 2026.",
+      h1: "Taxis in Croatia, and the apps to use",
+      lede: "In Croatia the ride apps are usually cheaper than a traditional taxi, especially on the coast in summer. Install Uber and Bolt, take an airport shuttle where it makes sense, and round up to tip. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>Uber</b> and <b>Bolt</b>, which both operate in <b>Zagreb, Split, Dubrovnik</b> and other cities and are usually <b>cheaper than a traditional taxi</b>. Regular taxis are metered, but on the tourist coast in summer they can be pricey, so an app is often the better deal. From the airports, a <b>shuttle bus</b> into town is cheap where it runs, or use an app. Croatia is on the <b>euro</b> (since 2023), and you <b>tip</b> by rounding up.",
+      sections: [
+        {
+          h: "Which apps to install",
+          icon: "phoneok",
+          key: { fig: "Uber, Bolt", tag: "Often cheapest", text: "Uber and Bolt both operate in Zagreb, Split, Dubrovnik and other cities, and are usually cheaper than a traditional taxi.", tone: "teal" },
+          p: [
+            "<b>Uber</b> and <b>Bolt</b> both work in <b>Zagreb, Split, Dubrovnik, Zadar</b> and other cities, and they are usually <b>cheaper than hailing a traditional taxi</b>, with the fare and driver shown up front and card payment in the app.",
+            "This is the main thing to know in Croatia: the apps often <b>undercut the regular taxis</b>, particularly in the tourist coastal cities, so they are the easy default for visitors."
+          ]
+        },
+        {
+          h: "From the airport",
+          icon: "plane",
+          key: { fig: "Shuttle", tag: "Or an app", text: "Airport shuttle buses run into town at Zagreb, Split and Dubrovnik and are cheap. An app or taxi works too; agree or confirm the fare.", tone: "teal" },
+          p: [
+            "At <b>Zagreb, Split and Dubrovnik</b>, an <b>airport shuttle bus</b> runs into the city or old town and is the cheapest option where the timing suits you. An <b>app</b> (Uber or Bolt) is the easy door-to-door choice.",
+            "A traditional <b>taxi</b> from the airport works too, but confirm the fare or that the meter is running first, since airport and coastal rides are where prices climb."
+          ]
+        },
+        {
+          h: "Apps usually beat traditional taxis",
+          icon: "alert",
+          key: { tag: "Confirm the fare", text: "Traditional taxis are metered but can be pricey on the coast in summer, and a few quote inflated flat fares to tourists. Use an app, or confirm the fare and meter before you set off.", tone: "amber" },
+          p: [
+            "Traditional taxis are metered, but on the <b>tourist coast in summer</b> they can be <b>expensive</b>, and a few drivers quote an <b>inflated flat fare</b> to visitors rather than using the meter.",
+            "So <b>use Uber or Bolt</b> where you can, since the fare is set in advance, or if you take a street taxi, <b>confirm the fare or that the meter is on</b> before you get in. This matters most in Split and Dubrovnik in high season."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "euro",
+          key: { fig: "Round up", tag: "In euros", text: "Croatia uses the euro since 2023. Apps show the fare up front; tip by rounding up, with no set percentage.", tone: "teal" },
+          p: [
+            "Croatia adopted the <b>euro in 2023</b>, so fares are in euros (ignore older kuna figures). Apps show the price before you ride, and traditional taxis are metered. To <b>tip</b>, <b>round up</b> the fare; there is no set percentage.",
+            "For more, see <a href='/croatia/tipping'>tipping in Croatia</a>, <a href='/croatia/cash-or-card'>cash or card in Croatia</a>, and the <a href='/croatia'>Croatia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in Croatia?", a: "Yes, Uber and Bolt both operate in Zagreb, Split, Dubrovnik, Zadar and other cities, and are usually cheaper than a traditional taxi. Both show the fare up front and take card in the app." },
+        { q: "How do I get from a Croatian airport to town?", a: "Airport shuttle buses run into the city or old town at Zagreb, Split and Dubrovnik and are cheap where the timing suits. An app is the easy door-to-door choice; a traditional taxi works too if you confirm the fare first." },
+        { q: "Are Croatian taxis expensive?", a: "Traditional taxis are metered but can be pricey on the tourist coast in summer, and a few quote inflated flat fares. Uber and Bolt usually beat them, so use an app or confirm the fare before you set off." },
+        { q: "Do you tip taxi drivers in Croatia?", a: "Lightly: round up the fare. There is no set percentage. Croatia uses the euro since 2023, so tips are in euros, not the old kuna." }
+      ],
+      sources: {
+        links: [
+          { label: "Croatian National Tourist Board: official travel information", url: "https://croatia.hr/en-gb", type: "gov" },
+          { label: "US State Department: Croatia country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Croatia.html", type: "gov" }
+        ],
+        judgment: "In Croatia the ride apps usually beat traditional taxis, especially on the coast in summer, and the country is now on the euro. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Modest, appreciated" },
