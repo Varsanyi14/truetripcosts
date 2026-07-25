@@ -54,7 +54,7 @@ const hasImg = img ? fs.existsSync(process.cwd() + '/public' + img) : false;
   @media (max-width:720px){
     .tx-hero{display:block;min-height:0;border-radius:16px}
     .tx-hero.is-slim{min-height:0}
-    .tx-hero-img{position:static;width:100%;height:auto;display:block}
+    .tx-hero-img{position:static;width:100%;height:auto;aspect-ratio:3 / 2;object-fit:cover;object-position:right center;display:block}
     .tx-hero-scrim{display:none}
     .tx-hero-body,.tx-hero.is-slim .tx-hero-body{position:static;width:auto;max-width:none;padding:18px 6px 4px}
   }
