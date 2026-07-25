@@ -179,7 +179,7 @@ export default {
         {
           h: "ATMs: low limits and a fee",
           icon: "atm",
-          key: { fig: "About 250 pesos", tag: "Choose pesos at the ATM", text: "Foreign-card withdrawals are capped around 10,000 to 20,000 pesos and add about a 250 peso fee each. Choose pesos, not dollars, and pull larger amounts less often.", tone: "amber" },
+          key: { fig: "250 pesos", tag: "Choose pesos at the ATM", text: "Foreign-card withdrawals are capped around 10,000 to 20,000 pesos and add about a 250 peso fee each. Choose pesos, not dollars, and pull larger amounts less often.", tone: "amber" },
           p: [
             "ATMs are easy to find in cities and malls (BPI, BDO, Metrobank and others), but foreign-card withdrawals are usually capped at <b>10,000 to 20,000 pesos</b> per transaction, and most banks charge a fee of about <b>250 pesos</b> on top of your home bank's. To limit fees, <b>pull larger amounts less often</b>.",
             "Always <b>choose pesos</b> if the machine offers to bill you in dollars, and take out enough <b>before heading to remote islands</b>, where ATMs are few and can run out of cash on weekends."
@@ -188,7 +188,7 @@ export default {
         {
           h: "Carry small bills",
           icon: "cash",
-          key: { tag: "Break big notes", text: "Jeepneys, tricycles, markets and small shops rarely have change for a 1,000 peso bill. Keep 20s, 50s and 100s for daily spending and tips.", tone: "teal" },
+          key: { fig: "Small notes", tag: "Break big notes", text: "Jeepneys, tricycles, markets and small shops rarely have change for a 1,000 peso bill. Keep 20s, 50s and 100s for daily spending and tips.", tone: "teal" },
           p: [
             "Break large notes when you can, since jeepneys, tricycles, markets and small shops rarely have change for a 1,000 peso bill. Keep a stock of <b>20s, 50s and 100s</b> for daily spending and tips.",
             "For the fuller money picture, including the new tourist VAT refund and how tipping works, see the <a href=\"/philippines\">Philippines money guide</a>."
@@ -254,7 +254,7 @@ export default {
         {
           h: "Use the official site, not a lookalike",
           icon: "alert",
-          key: { tag: "Ignore the paid lookalikes", text: "Complete eTravel only at etravel.gov.ph, where it is free. Third-party sites that charge a fee for the same form are scams the government has warned against.", tone: "amber" },
+          key: { fig: "Official only", tag: "Ignore the paid lookalikes", text: "Complete eTravel only at etravel.gov.ph, where it is free. Third-party sites that charge a fee for the same form are scams the government has warned against.", tone: "amber" },
           p: [
             "Complete eTravel at <b>etravel.gov.ph</b>, where there is no charge. The Department of Foreign Affairs has warned that <b>third-party websites charging a fee</b> to file the same free form are scams, so go straight to the official portal.",
             "For the money side of your trip, including cash, ATMs and tipping, see the <a href=\"/philippines\">Philippines money guide</a>."
@@ -311,7 +311,7 @@ export default {
         {
           h: "Jeepneys, tricycles and the airport",
           icon: "cash",
-          key: { tag: "Small bills and coins", text: "Jeepneys and tricycles are cash-only and very cheap. At the airport, take Grab or an official metered taxi from the rank, not a tout quoting a flat rate.", tone: "amber" },
+          key: { fig: "Cash only", tag: "Small bills and coins", text: "Jeepneys and tricycles are cash-only and very cheap. At the airport, take Grab or an official metered taxi from the rank, not a tout quoting a flat rate.", tone: "amber" },
           p: [
             "<b>Jeepneys</b> (the flamboyant shared jeeps) and <b>tricycles</b> (motorbike sidecars) are how locals get around short distances, for very little, and both are <b>cash-only</b>, so keep small bills and coins. Fares are low and often fixed by route; for tricycles, agree the fare first.",
             "At the airport, take <b>Grab</b> or an <b>official metered taxi</b> from the marshalled rank, not a driver who approaches you inside the terminal, where fixed special rates are a markup."
@@ -320,7 +320,7 @@ export default {
         {
           h: "Between the islands",
           icon: "plane",
-          key: { fig: "Ferries and flights", tag: "Book flights ahead", text: "Longer trips mean ferries or budget flights (Cebu Pacific, Philippine Airlines, AirAsia). Book ahead for better fares, and carry cash for small island terminals.", tone: "teal" },
+          key: { tag: "Book flights ahead", text: "Longer trips mean ferries or budget flights (Cebu Pacific, Philippine Airlines, AirAsia). Book ahead for better fares, and carry cash for small island terminals.", tone: "teal" },
           p: [
             "With more than seven thousand islands, longer trips mean <b>ferries</b> and <b>domestic flights</b> (Cebu Pacific, Philippine Airlines, AirAsia). Book flights ahead for the best fares, and note that baggage and terminal details vary by island airport.",
             "For how to carry cash, ATM limits and tipping drivers, see the <a href=\"/philippines\">Philippines money guide</a>."
