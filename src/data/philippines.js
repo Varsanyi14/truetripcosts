@@ -151,6 +151,12 @@ export default {
   spokes: [
     {
       slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Peso (PHP), about 60 per dollar" },
+        { k: "Cards", v: "Cities and malls only" },
+        { k: "Cash for", v: "Jeepneys, markets, islands" },
+        { k: "ATMs", v: "Low limits, about 250 peso fee" }
+      ],
       live: true,
       topic: "cash",
       title: "Do I need cash in the Philippines, or can I use cards? (2026) | True Trip Costs",
@@ -163,6 +169,8 @@ export default {
       sections: [
         {
           h: "Where cards work, and where they do not",
+          icon: "card",
+          key: { fig: "Cash-first", tag: "Cards in cities only", text: "Cards work at malls, hotels and bigger restaurants in Manila, Cebu and the tourist hubs. Almost everywhere else, plan on cash.", tone: "teal" },
           p: [
             "In the cities and tourist hubs, <b>Visa and Mastercard</b> are fine at malls, hotels, department stores and bigger restaurants, with Amex less consistent. A no-foreign-fee card is worth carrying for those.",
             "Everywhere else, plan on <b>cash</b>. Jeepneys, tricycles, sari-sari (corner) stores, wet markets, carinderias (local eateries), and most of the smaller islands do not take cards, and even in cities many small vendors are cash-only."
@@ -170,6 +178,8 @@ export default {
         },
         {
           h: "ATMs: low limits and a fee",
+          icon: "atm",
+          key: { fig: "About 250 pesos", tag: "Choose pesos at the ATM", text: "Foreign-card withdrawals are capped around 10,000 to 20,000 pesos and add about a 250 peso fee each. Choose pesos, not dollars, and pull larger amounts less often.", tone: "amber" },
           p: [
             "ATMs are easy to find in cities and malls (BPI, BDO, Metrobank and others), but foreign-card withdrawals are usually capped at <b>10,000 to 20,000 pesos</b> per transaction, and most banks charge a fee of about <b>250 pesos</b> on top of your home bank's. To limit fees, <b>pull larger amounts less often</b>.",
             "Always <b>choose pesos</b> if the machine offers to bill you in dollars, and take out enough <b>before heading to remote islands</b>, where ATMs are few and can run out of cash on weekends."
@@ -177,6 +187,8 @@ export default {
         },
         {
           h: "Carry small bills",
+          icon: "cash",
+          key: { tag: "Break big notes", text: "Jeepneys, tricycles, markets and small shops rarely have change for a 1,000 peso bill. Keep 20s, 50s and 100s for daily spending and tips.", tone: "teal" },
           p: [
             "Break large notes when you can, since jeepneys, tricycles, markets and small shops rarely have change for a 1,000 peso bill. Keep a stock of <b>20s, 50s and 100s</b> for daily spending and tips.",
             "For the fuller money picture, including the new tourist VAT refund and how tipping works, see the <a href=\"/philippines\">Philippines money guide</a>."
@@ -199,6 +211,12 @@ export default {
     },
     {
       slug: "visa-and-etravel",
+      glance: [
+        { k: "Visa", v: "Not needed, 30 days" },
+        { k: "eTravel", v: "Free and mandatory" },
+        { k: "When", v: "Within 72 hrs, both ways" },
+        { k: "Where", v: "etravel.gov.ph only" }
+      ],
       live: true,
       topic: "visas",
       title: "Do US citizens need a visa for the Philippines, and what is eTravel? (2026) | True Trip Costs",
@@ -217,6 +235,8 @@ export default {
       sections: [
         {
           h: "No visa for a normal visit",
+          icon: "passport",
+          key: { fig: "30 days", tag: "Visa-free, extendable", text: "US citizens get 30 days visa-free, extendable through the Bureau of Immigration. Bring a passport valid six months and an onward ticket.", tone: "teal" },
           p: [
             "US citizens are admitted <b>visa-free for 30 days</b> for tourism or business. If you want to stay longer, the Bureau of Immigration lets you extend, first to 59 days and then in increments up to a long-stay maximum, applied for before your current stay expires.",
             "Have a <b>passport valid for six months</b> beyond your stay, and be ready to show an <b>onward or return ticket</b> and proof of where you are staying, which the officer can ask for."
@@ -224,6 +244,8 @@ export default {
         },
         {
           h: "eTravel: free, mandatory, both ways",
+          icon: "ticket",
+          key: { fig: "Free", tag: "Required both ways", text: "The eTravel registration is a free, mandatory online form, within 72 hours before arrival and again on departure. You receive a QR code that airlines and immigration scan.", tone: "teal" },
           p: [
             "Every traveler must complete the <b>eTravel registration</b>, a digital arrival and health declaration that replaced the old paper card. Fill it in <b>within 72 hours before your flight</b>, and you receive a <b>QR code</b> that airlines and immigration scan. It is <b>not a visa</b>, just a required form.",
             "It is also required <b>when you leave</b> the Philippines, so you complete a departure eTravel too. Registration is <b>free</b>."
@@ -231,6 +253,8 @@ export default {
         },
         {
           h: "Use the official site, not a lookalike",
+          icon: "alert",
+          key: { tag: "Ignore the paid lookalikes", text: "Complete eTravel only at etravel.gov.ph, where it is free. Third-party sites that charge a fee for the same form are scams the government has warned against.", tone: "amber" },
           p: [
             "Complete eTravel at <b>etravel.gov.ph</b>, where there is no charge. The Department of Foreign Affairs has warned that <b>third-party websites charging a fee</b> to file the same free form are scams, so go straight to the official portal.",
             "For the money side of your trip, including cash, ATMs and tipping, see the <a href=\"/philippines\">Philippines money guide</a>."
@@ -253,6 +277,12 @@ export default {
     },
     {
       slug: "taxis-and-apps",
+      glance: [
+        { k: "Ride apps", v: "Grab (no Uber)" },
+        { k: "Local", v: "Jeepneys, tricycles (cash)" },
+        { k: "Taxis", v: "Insist on the meter" },
+        { k: "Islands", v: "Ferries and flights" }
+      ],
       live: true,
       topic: "taxis",
       caution: "medium",
@@ -271,6 +301,8 @@ export default {
       sections: [
         {
           h: "Grab first in the cities",
+          icon: "phoneok",
+          key: { fig: "Grab", tag: "Set fare, no haggling", text: "Grab is the ride app in Manila, Cebu and other cities, showing the fare up front, paid in-app or cash. Regular taxis are metered, but insist on the meter.", tone: "teal" },
           p: [
             "<b>Grab</b> is the ride app across Metro Manila, Cebu and other cities, covering cars and sometimes motorbikes. It shows the fare up front and lets you pay by card in-app or in cash, which sidesteps meter disputes. It needs a data connection, so keep your eSIM topped up.",
             "Regular <b>taxis</b> are metered and cheap, but some drivers quote a flat rate to visitors. Insist on the meter, and if a driver refuses, use Grab instead."
@@ -278,6 +310,8 @@ export default {
         },
         {
           h: "Jeepneys, tricycles and the airport",
+          icon: "cash",
+          key: { tag: "Small bills and coins", text: "Jeepneys and tricycles are cash-only and very cheap. At the airport, take Grab or an official metered taxi from the rank, not a tout quoting a flat rate.", tone: "amber" },
           p: [
             "<b>Jeepneys</b> (the flamboyant shared jeeps) and <b>tricycles</b> (motorbike sidecars) are how locals get around short distances, for very little, and both are <b>cash-only</b>, so keep small bills and coins. Fares are low and often fixed by route; for tricycles, agree the fare first.",
             "At the airport, take <b>Grab</b> or an <b>official metered taxi</b> from the marshalled rank, not a driver who approaches you inside the terminal, where fixed special rates are a markup."
@@ -285,6 +319,8 @@ export default {
         },
         {
           h: "Between the islands",
+          icon: "plane",
+          key: { fig: "Ferries and flights", tag: "Book flights ahead", text: "Longer trips mean ferries or budget flights (Cebu Pacific, Philippine Airlines, AirAsia). Book ahead for better fares, and carry cash for small island terminals.", tone: "teal" },
           p: [
             "With more than seven thousand islands, longer trips mean <b>ferries</b> and <b>domestic flights</b> (Cebu Pacific, Philippine Airlines, AirAsia). Book flights ahead for the best fares, and note that baggage and terminal details vary by island airport.",
             "For how to carry cash, ATM limits and tipping drivers, see the <a href=\"/philippines\">Philippines money guide</a>."
