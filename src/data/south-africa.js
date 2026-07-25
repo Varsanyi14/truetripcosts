@@ -5,7 +5,7 @@ export default {
   name: "South Africa",
   from: "United States",
   checked: "Jul 2026",
-  checkedISO: "2026-07-12",
+  checkedISO: "2026-07-25",
   sources: {
     changed: "Re-checked July 2026. The Electronic Travel Authorisation is now live for nationals of China, India, Indonesia and Mexico but is still not required for US citizens, who continue to get a free 90-day stamp on arrival. Load-shedding, VAT refund and tipping unchanged.",
     links: [
@@ -116,7 +116,7 @@ export default {
 
   keyFacts: [
     { label: "Tourist VAT refund", value: "The 15% VAT is refundable to foreign visitors on goods over R250 taken out of the country; ask for a tax invoice and claim at the airport with your passport and the goods", status: "enacted", effective: null, source: "https://www.sars.gov.za/types-of-tax/value-added-tax/vat-refunds-for-tourists-and-foreign-enterprises/", checked: "2026-07-12" },
-    { label: "Electronic Travel Authorisation (ETA)", value: "Now live for nationals of China, India, Indonesia and Mexico but not required for US visitors, who still get a free 90-day stamp on arrival; confirm on the official Home Affairs site before you fly", status: "proposed", effective: null, source: "https://www.saembassy.org/visas/civic_immigration/visitor_visa/", checked: "2026-07-21" }
+    { label: "Electronic Travel Authorisation (ETA)", value: "Now live for nationals of China, India, Indonesia and Mexico but not required for US visitors, who still get a free 90-day stamp on arrival; confirm on the official Home Affairs site before you fly", status: "proposed", effective: null, source: "https://www.saembassy.org/visas/civic_immigration/visitor_visa/", checked: "2026-07-25" }
   ],
 
   traps: [

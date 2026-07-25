@@ -5,7 +5,7 @@ export default {
   name: "Thailand",
   from: "United States",
   checked: "Jul 2026",
-  checkedISO: "2026-07-04",
+  checkedISO: "2026-07-25",
   sources: {
     changed: "Re-checked July 2026. The 300-baht arrival fee is still not being collected: it has no confirmed start date and is still awaiting formal Cabinet approval under the new government, though officials have signaled intent to move ahead for air arrivals only (land and sea dropped). The TDAC remains mandatory and free.",
     links: [
@@ -103,7 +103,7 @@ export default {
   // only a proposal, with no confirmed start date and no clean government page, so
   // it carries no source link and an unmistakable "proposed" marker.
   keyFacts: [
-    { label: "300-baht air arrival fee", value: "300 baht (about $9) for air arrivals, still not being collected", status: "proposed", effective: null, source: null, checked: "2026-07-21" }
+    { label: "300-baht air arrival fee", value: "300 baht (about $9) for air arrivals, still not being collected", status: "proposed", effective: null, source: null, checked: "2026-07-25" }
   ],
 
   traps: [
