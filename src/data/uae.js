@@ -9,6 +9,83 @@ export default {
   emergency: { medical: "998", note: "998 is the ambulance line and 999 is the police. The 112 and 911 numbers are not used here.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "low",
   region: "Middle East",
+  spokes: [
+    {
+      slug: "visa",
+      glance: [
+        { k: "Visa", v: "Free on arrival, nothing to apply for" },
+        { k: "Stay", v: "30 to 90 days, check your stamp" },
+        { k: "Passport", v: "Valid 6 months from entry" },
+        { k: "Covers", v: "All seven emirates" }
+      ],
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need a visa for Dubai and the UAE? (2026) | True Trip Costs",
+      description: "US citizens need no advance visa for the UAE: a free visa on arrival is stamped automatically. What it costs (nothing), the 30-versus-90-day confusion, the strict six-month passport rule, and the overstay fine. Checked July 2026.",
+      h1: "Do US citizens need a visa for Dubai and the UAE?",
+      lede: "Short answer: no, nothing to arrange in advance. US citizens get a free visa on arrival, stamped automatically at the airport, covering all seven emirates. Here is what is actually required, and the one detail even recent guides disagree on.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-26",
+      answer: "US citizens need <b>no visa in advance</b> for the UAE. A <b>free visa on arrival</b> is stamped into your passport automatically at any UAE airport, covering <b>all seven emirates</b> (Dubai, Abu Dhabi and the rest), so there is nothing to apply for and no fee. Guides disagree on the length: older ones say <b>30 days</b>, while the UAE Embassy has more recently cited up to <b>90 days within a 180-day period</b>, so <b>check the length written into your stamp</b> on arrival. Your passport must be valid <b>at least six months</b>, and you need a <b>return or onward ticket</b>.",
+      official: {
+        label: "US State Department: UAE entry and exit requirements",
+        url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/UnitedArabEmirates.html",
+        note: "The official US government page for UAE entry. There is nothing to apply for as a US tourist: the free visa on arrival is issued automatically. For extensions or other visa types, the UAE's own ICP and GDRFA portals are the authority, and any site selling you a UAE tourist visa in advance is offering something you do not need."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "A free visa on arrival, nothing to apply for",
+          icon: "passport",
+          key: { tag: "Free, automatic", text: "US citizens get a free visa on arrival, stamped automatically at any UAE airport. It covers all seven emirates. There is nothing to apply for and no fee, so ignore sites selling a UAE tourist visa.", tone: "teal" },
+          p: [
+            "US passport holders need <b>nothing in advance</b>. You arrive, present your passport and onward ticket, and immigration stamps a <b>free visa on arrival</b>, no form and no fee. A single entry covers <b>all seven emirates</b>, so one stamp is good for Dubai, Abu Dhabi, Sharjah and the rest.",
+            "Because it is free and automatic, <b>ignore any site offering to sell you a UAE tourist visa</b>. Those pre-arranged visit visas exist for nationalities that are not granted a visa on arrival, which does not include US citizens on a regular passport."
+          ]
+        },
+        {
+          h: "How long you get: check your stamp",
+          icon: "calendar",
+          key: { tag: "30 vs 90 days", text: "Older guides say 30 days; the UAE Embassy has more recently cited up to 90 days within 180. Sources genuinely differ, so check the length in your stamp and do not overstay it.", tone: "amber" },
+          p: [
+            "This is the one point even recent guides get wrong. For years the free visa on arrival was <b>30 days</b>, and many articles still say so. More recently the <b>UAE Embassy has cited up to 90 days within any 180-day period</b> for US citizens. The sources genuinely disagree, so the only safe move is to <b>check the length written into your stamp</b> when you land, and plan around that.",
+            "Whatever you are given, <b>do not overstay</b>: since February 2026 the UAE charges a flat <b>AED 50 per day</b> (about $14) overstay fine with no grace period. Extensions are possible before you expire, through the UAE's <b>ICP</b> or <b>GDRFA</b> portals for a fee."
+          ]
+        },
+        {
+          h: "The passport rules that get people bounced",
+          icon: "alert",
+          key: { tag: "Six months, and the X marker", text: "Your passport must be valid six months from entry, enforced strictly. And the UAE does not accept passports with an X gender marker, a rule that catches some US travelers.", tone: "amber" },
+          p: [
+            "Two passport points to know. First, validity: your passport must be valid <b>at least six months</b> from your date of entry, and this is <b>strictly enforced</b>, you can be denied boarding if it is short, so check before booking. You also want a blank page.",
+            "Second, and less known: the UAE government <b>does not accept US passports with the \"X\" gender marker</b> for travel to, through or within the country, and affected travelers have been denied boarding or entry. If that applies to you, confirm your options with the UAE Embassy before you book."
+          ]
+        },
+        {
+          h: "A couple of notes",
+          icon: "tag",
+          key: { tag: "Tourism only", text: "The free visa is for tourism and business visits, not working, which needs a sponsored work visa and a medical exam. Then see the money guide.", tone: "amber" },
+          p: [
+            "The visa on arrival covers <b>tourism and business visits</b>, not working or studying, which need a <b>sponsored residence or work visa</b> and an after-arrival medical exam. Longer tourist stays mean extending, or leaving and re-entering once your 180-day window resets.",
+            "For how money works once you are there, cards, cash, the dirham and tipping, see the <a href=\"/uae\">UAE money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Dubai or the UAE?", a: "No, nothing in advance. US citizens receive a free visa on arrival, stamped automatically at any UAE airport, which covers all seven emirates including Dubai and Abu Dhabi. There is no fee and no form. Working or long stays need a sponsored visa arranged separately." },
+        { q: "How long can US citizens stay in the UAE?", a: "Sources genuinely differ. Older guidance says 30 days, while the UAE Embassy has more recently cited up to 90 days within any 180-day period. Because of this, check the exact length written into your stamp on arrival and plan around that, rather than assuming. Extensions are possible for a fee before you expire." },
+        { q: "Is the UAE visa on arrival free for Americans?", a: "Yes. For US citizens on a regular passport, the visa on arrival is issued free and automatically at immigration; there is nothing to apply for or pay. Any website selling you a UAE tourist visa in advance is offering something you do not need. Pre-arranged visit visas are only for nationalities not granted a visa on arrival." },
+        { q: "What happens if I overstay in the UAE?", a: "Since February 2026 the UAE charges a flat overstay fine of about AED 50 (roughly $14) per day, with no grace period, applied to every visa category including the free visa on arrival. Extend through the UAE's ICP or GDRFA portals before your stay expires, or leave and re-enter after your 180-day window resets." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: United Arab Emirates entry, exit and visa requirements for US citizens", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/UnitedArabEmirates.html", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "US citizens get a free visa on arrival covering all seven emirates, and that much is stable. The allowed length is genuinely reported two ways in 2026 (30 days in older guidance, up to 90 within 180 per the UAE Embassy), so we flag both and advise checking your stamp rather than picking one. The six-month passport rule and the X-marker restriction are enforced. Checked July 2026."
+      }
+    }
+  ],
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 3, atmRisk: 3 },
   hook: "One of the most cashless places on earth, and the dirham is pinned to the dollar, so the exchange rate barely moves.",
   aliases: ["uae", "u.a.e.", "dubai", "abu dhabi", "emirates", "emirati"],
