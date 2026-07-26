@@ -172,8 +172,19 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
       <p class="lab">From the desk</p>
       <h2>If it were my trip</h2>
       <div class="desk">
-        <p class="desk-text">If I were flying over from the US, I would probably land in Croatia, Zagreb or Split depending on the flights, pick up a rental car, and drive down the coast, which is one of the loveliest stretches of the whole trip. I would hop across into Slovenia for a day or two as well, since it is such an easy border and a gentle way to add another country without upending the plan. From there I might drift on to Italy or Montenegro, and happily leave the rest for another visit rather than cram it all in. The driving is half the pleasure here, so I would coast rather than rush. For what it is worth, that is the route I would take, though everyone travels differently, and I hope your own trip is a wonderful one.</p>
-        <p class="desk-by">A personal aside from <a href="/about">the True Trip Costs desk</a>. The verdicts above stay neutral; this is just one traveler's route.</p>
+        <div class="desk-main">
+          <p class="desk-text">If I were flying over from the US, I would probably land in Croatia, Zagreb or Split depending on the flights, pick up a rental car, and drive down the coast, which is one of the loveliest stretches of the whole trip. I would hop across into Slovenia for a day or two as well, since it is such an easy border and a gentle way to add another country without upending the plan. From there I might drift on to Italy or Montenegro, and happily leave the rest for another visit rather than cram it all in. The driving is half the pleasure here, so I would coast rather than rush. For what it is worth, that is the route I would take, though everyone travels differently, and I hope your own trip is a wonderful one.</p>
+          <p class="desk-by">A personal aside from <a href="/about">the True Trip Costs desk</a>. The verdicts above stay neutral; this is just one traveler's route.</p>
+        </div>
+        <div class="desk-route" aria-hidden="true">
+          <p class="route-lab">The route</p>
+          <ol class="route">
+            <li class="rnode start"><span class="rdot"></span><span class="rlabel">Land in Croatia</span><span class="rnote">Zagreb or Split, drive the coast</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">Slovenia</span><span class="rnote">an easy border hop</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">Italy or Montenegro</span><span class="rnote">as the trip unfolds</span></li>
+            <li class="rnode end"><span class="rdot rdot-open"></span><span class="rlabel">The rest</span><span class="rnote">saved for another visit</span></li>
+          </ol>
+        </div>
       </div>
     </section>
 
@@ -263,15 +274,33 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
     /* From the desk: the personal itinerary, deliberately set apart from the
        neutral verdict cards (warm tint, serif body, a byline to /about) so the
        analysis above keeps its authority and this reads as the human bonus. */
-    .desk{background:var(--green-bg);border:1px solid #C2E0C8;border-radius:var(--radius);padding:20px 22px;margin-top:8px;max-width:720px}
+    .desk{background:var(--green-bg);border:1px solid #C2E0C8;border-radius:var(--radius);padding:20px 22px;margin-top:8px;max-width:720px;display:flex;gap:24px;align-items:flex-start}
+    .desk-main{flex:1 1 auto;min-width:0}
     .desk-text{font-family:var(--serif);font-weight:400;font-size:17px;line-height:1.6;color:#22403A;margin:0 0 14px}
     .desk-by{font-size:13px;color:#3B5B50;margin:0;line-height:1.55}
     .desk-by a{color:var(--teal-deep);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+
+    /* Route schematic: the personal itinerary as a small vertical journey strip,
+       companion to the desk paragraph. Decorative (aria-hidden); the prose carries
+       the detail. Beside the text on desktop, stacked below it on mobile. */
+    .desk-route{flex:0 0 206px;border-left:1px solid #C2E0C8;padding-left:20px;align-self:stretch}
+    .route-lab{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 14px}
+    .route{list-style:none;margin:0;padding:0;position:relative}
+    .route::before{content:"";position:absolute;left:5px;top:5px;bottom:11px;width:2px;background:#A9D3BF;border-radius:2px}
+    .rnode{position:relative;padding:0 0 15px 22px}
+    .rnode:last-child{padding-bottom:0}
+    .rdot{position:absolute;left:0;top:3px;width:12px;height:12px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px var(--green-bg)}
+    .rnode.start .rdot{background:var(--teal-deep)}
+    .rdot-open{background:var(--green-bg);border:2px solid #8FC3AC}
+    .rlabel{display:block;font-family:var(--serif);font-weight:500;font-size:15px;color:var(--ink);line-height:1.2}
+    .rnote{display:block;font-size:12px;color:#3B5B50;margin-top:2px;line-height:1.4}
 
     @media(max-width:640px){
       .se-lede{font-size:16.5px}
       .se-pick-main{font-size:19px}
       .desk-text{font-size:16px}
+      .desk{flex-direction:column;gap:0}
+      .desk-route{flex:none;width:100%;border-left:none;border-top:1px solid #C2E0C8;padding-left:0;padding-top:16px;margin-top:16px;align-self:auto}
 
       /* Collapse the matrix into one card per country: no horizontal scroll, each
          attribute on its own labeled row. The header row is visually hidden but
