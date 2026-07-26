@@ -4,50 +4,42 @@ import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import RegionMap from '../../components/RegionMap.astro';
-import seMap from '../../data/maps/southern-europe.js';
+import seaMap from '../../data/maps/southeast-asia.js';
 import { countries } from '../../data/index.js';
 
-// Southern Europe money comparison. A curated, decision-stage page: it targets
-// "which country" searches the country hubs cannot, so it complements them rather
-// than competing. Per the plan, it is deliberately more evergreen than a spoke:
-// it compares on slow-moving, relative attributes (relative cost, currency, card
-// habit, tipping norm, taxi ease) and leaves volatile specifics (exact prices,
-// fees, rules) to each country's guide, which is the source of truth and carries
-// its own date. Text here is written fresh for the comparison, never lifted from
-// the spokes, so there is no duplicate content.
+// Southeast Asia money comparison. Same recipe as the Southern Europe cluster:
+// decision-stage "which country" content the hubs cannot rank for, compared on
+// slow-moving relative attributes (cost, cash habit, tipping norm, taxi ease,
+// currency), with volatile detail left to each country's guide. Text is written
+// fresh for the comparison, never lifted from the spokes. Unlike Europe, these
+// five contrast sharply, so the framing leans into the differences.
+const order = ['thailand', 'vietnam', 'indonesia', 'philippines', 'singapore'];
 
-// Identifiers come from the live data so names and flags never drift. The taxi
-// "ease" column is derived from each country's own taxi guide (its caution field),
-// so this page can never contradict the guide it links to.
-const order = ['portugal', 'spain', 'italy', 'greece', 'croatia'];
-
-// The desk's comparative read. Cost is a 1 to 4 relative scale across these five,
-// not a figure. Everything here is durable enough to sit above the volatile detail.
 const rate = {
-  portugal: {
-    cost: 2, cashLean: 'card', cashTag: 'Mostly cards', tip: 'Round up', cur: 'Euro', curNote: '',
-    bestFor: 'Best value, and easiest overall',
-    verdict: 'The value pick of the five and the simplest to travel: cheap by Western European standards, card-friendly, and easy to get around with Bolt or Uber. Pick Portugal if the priority is stretching the budget without hassle.'
+  thailand: {
+    cost: 2, cashLean: 'cash', cashTag: 'Mostly cash', tip: 'Not expected', cur: 'Baht', curNote: '',
+    bestFor: 'The easiest, best all-rounder',
+    verdict: 'The most well-rounded introduction to the region: great food, easy travel, cheap, with the infrastructure to make a first trip smooth. Cash rules day to day, though cities take cards and QR. Bangkok taxis want a little care, so lean on the meter or Grab. Pick Thailand for a do-everything first trip.'
   },
-  spain: {
-    cost: 2, cashLean: 'card', cashTag: 'Cards everywhere', tip: 'Round up', cur: 'Euro', curNote: '',
-    bestFor: 'Most card-friendly, great cities',
-    verdict: 'The most card-friendly of the group, with tap-to-pay almost everywhere and honest, cheap taxis. Strong value once you step outside the top tourist spots. Pick Spain for big-city energy and to barely touch cash.'
+  vietnam: {
+    cost: 1, cashLean: 'cash', cashTag: 'Cash is king', tip: 'Not expected', cur: 'Dong', curNote: 'many zeros',
+    bestFor: 'Cheapest, and the food',
+    verdict: 'The best value of the five and a food lover\'s reward. Almost everything is cash, and the dong runs to so many zeros that it pays to count carefully. Grab makes getting around cheap and simple. Pick Vietnam to stretch a budget furthest, coffee and street food included.'
   },
-  italy: {
-    cost: 3, cashLean: 'cash', cashTag: 'Carry cash too', tip: 'Coperto', cur: 'Euro', curNote: '',
-    bestFor: 'The classic trip, and the priciest',
-    verdict: 'The priciest of the five, especially the north and the famous cities, and the one place to still carry cash: many spots prefer it, and a coperto cover charge per person is normal. Pick Italy for the once-in-a-lifetime hits, with a slightly bigger budget.'
+  indonesia: {
+    cost: 2, cashLean: 'cash', cashTag: 'Mostly cash', tip: 'Not expected', cur: 'Rupiah', curNote: 'many zeros',
+    bestFor: 'Beaches and value (Bali)',
+    verdict: 'Home to Bali, with beaches, culture and strong value once you arrive. Cash for most things, cards in tourist areas, and the rupiah also counts in many zeros. Ride apps are cheap but limited in a few Bali zones, so some care. Pick Indonesia for beaches and variety at a gentle price.'
   },
-  greece: {
-    cost: 2, cashLean: 'cash', cashTag: 'Carry cash too', tip: 'Round up', cur: 'Euro', curNote: '',
-    bestFor: 'Islands, and value away from the famous two',
-    verdict: 'Excellent value on the mainland and most islands, with cards common in tourist areas but cash still handy for tavernas and smaller islands. Santorini and Mykonos are the summer exceptions. Pick Greece for island-hopping and strong value.'
+  philippines: {
+    cost: 2, cashLean: 'cash', cashTag: 'Mostly cash', tip: 'About 10%', cur: 'Peso', curNote: '',
+    bestFor: 'Islands, and English',
+    verdict: 'Thousands of islands, warm hospitality, and widely spoken English make it an easy landing for Americans. It tips more than its neighbors, around 10% in US style, runs mostly on cash outside cities, and Grab covers the main hubs. Pick the Philippines for island-hopping without a language barrier.'
   },
-  croatia: {
-    cost: 3, cashLean: 'card', cashTag: 'Mostly cards', tip: 'Round up', cur: 'Euro', curNote: 'since 2023',
-    bestFor: 'Coast and nature, not the bargain it was',
-    verdict: 'On the euro since 2023, card-friendly, and stunning, but no longer a bargain: the Dalmatian coast in peak summer (Dubrovnik, Split, Hvar) runs genuinely pricey, while inland stays cheaper. Pick Croatia for the coastline, and shoulder season to save.'
+  singapore: {
+    cost: 4, cashLean: 'card', cashTag: 'Card-first', tip: 'None', cur: 'Dollar', curNote: 'S$',
+    bestFor: 'Easy and modern, but pricey',
+    verdict: 'The outlier: a spotless, card-first city-state that is effortless to get around but far pricier than its neighbors. No tipping, honest metered taxis and Grab, and world-class transit. Pick Singapore for a smooth, modern stop, and budget accordingly.'
   }
 };
 
@@ -71,24 +63,24 @@ const rows = order.map(slug => {
 });
 
 const checkedLabel = 'July 2026';
-const title = 'Southern Europe for travel money: Portugal, Spain, Italy, Greece, Croatia (2026) | True Trip Costs';
-const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia? A side-by-side money comparison for US travelers: daily cost, cash vs card, tipping, taxis and currency, with a clear pick for each. Checked July 2026.';
+const title = 'Southeast Asia for travel money: Thailand, Vietnam, Indonesia, Philippines, Singapore (2026) | True Trip Costs';
+const description = 'Deciding between Thailand, Vietnam, Indonesia, the Philippines and Singapore? A side-by-side money comparison for US travelers: daily cost, cash vs card, tipping, taxis and currency, with a clear pick for each. Checked July 2026.';
 ---
 
 <Base title={title} description={description}>
   <Nav />
   <main class="wrap se">
-    <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Compare', href: '/compare' }, { label: 'Southern Europe' }]} />
-    <div class="ctx"><span class="stamp">Checked {checkedLabel}</span> <span class="se-ctxtxt">Southern Europe &middot; money comparison</span></div>
-    <h1>Southern Europe for travel money, five countries compared</h1>
-    <p class="se-lede">You have narrowed it to Southern Europe but not the country. Here is how Portugal, Spain, Italy, Greece and Croatia stack up on the money side, so your friend in New York, or you, can pick with eyes open. Our read as the True Trip Costs desk, checked {checkedLabel}.</p>
+    <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Compare', href: '/compare' }, { label: 'Southeast Asia' }]} />
+    <div class="ctx"><span class="stamp">Checked {checkedLabel}</span> <span class="se-ctxtxt">Southeast Asia &middot; money comparison</span></div>
+    <h1>Southeast Asia for travel money, five countries compared</h1>
+    <p class="se-lede">Thinking about Southeast Asia but not sure which country? Here is how Thailand, Vietnam, Indonesia, the Philippines and Singapore compare on the money side, so you can pick with eyes open. Our read as the True Trip Costs desk, checked {checkedLabel}.</p>
 
-    <RegionMap region={seMap} alt="Outline map of Southern Europe with Portugal, Spain, Italy, Greece and Croatia highlighted among their neighbors" />
+    <RegionMap region={seaMap} alt="Outline map of Southeast Asia with Thailand, Vietnam, Indonesia, the Philippines and Singapore highlighted among their neighbors" />
 
     <div class="se-pick">
       <p class="se-pick-lab">The short answer</p>
-      <p class="se-pick-main"><b>Portugal</b> is the easiest, best-value trip of the five.</p>
-      <p class="se-pick-nuance">Prefer the classics? <a href="/italy">Italy</a>. Chasing islands? <a href="/greece">Greece</a>. Set on the coastline? <a href="/croatia">Croatia</a>.</p>
+      <p class="se-pick-main"><b>Thailand</b> is the easiest, best all-round first trip.</p>
+      <p class="se-pick-nuance">Cheapest? <a href="/vietnam">Vietnam</a>. Beaches? <a href="/indonesia">Indonesia</a>. Islands and English? <a href="/philippines">the Philippines</a>. Easy and modern, if pricey? <a href="/singapore">Singapore</a>.</p>
     </div>
 
     <section class="se-matrix-sec" aria-label="Money comparison matrix">
@@ -134,8 +126,8 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
 
     <section class="se-sec">
       <p class="lab">The honest headline</p>
-      <h2>On the money mechanics, these five are more alike than different</h2>
-      <p class="se-body">All five use the <b>euro</b> (Croatia switched in 2023, so there is no kuna to think about), <b>cards are widely accepted</b>, <b>tipping is light</b> everywhere (round up, no set percentage), and as a <b>US visitor you can reclaim VAT</b> on larger purchases in any of them. Each also adds a small <b>local tourist or city tax</b> on your accommodation. So the money plumbing is much the same across the region. Where they genuinely differ is <b>overall cost</b> and a few <b>local habits</b>, which is what the table above and the picks below focus on.</p>
+      <h2>These five differ more than you might expect</h2>
+      <p class="se-body">Unlike Europe, Southeast Asia shares neither a currency nor a single cash culture, and the gap between the cheapest and the priciest is wide. The through-line for all five: budget to <b>carry cash</b> (most of the region still runs on it, with cards and QR mainly in cities), keep a <b>ride app like Grab</b> on your phone, and treat <b>tipping as a small courtesy</b> rather than a rule, except in the <b>Philippines</b>, which tips US style. The big variables are <b>cost, currency and how cashless a place is</b>, which is where <b>Singapore</b> stands apart.</p>
     </section>
 
     <section class="se-sec">
@@ -162,32 +154,12 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
       <p class="lab">Quick picks</p>
       <h2>If you only remember five things</h2>
       <ul class="picks">
-        <li><b>Cheapest, easiest overall:</b> Portugal, with Greece close behind on the mainland.</li>
-        <li><b>Most card-friendly:</b> Spain, where you can almost leave the cash at the hotel.</li>
-        <li><b>Carry some cash:</b> Italy and Greece, for small places, tavernas and the odd cover charge.</li>
-        <li><b>Watch the summer spike:</b> Croatia's coast, and the Greek islands of Santorini and Mykonos.</li>
-        <li><b>The quirk to know:</b> Italy's coperto, a small per-person cover charge that is not a scam.</li>
+        <li><b>Cheapest:</b> Vietnam, with Indonesia close behind outside the resort areas.</li>
+        <li><b>Carry cash everywhere:</b> all but Singapore, which is card-first.</li>
+        <li><b>The pricey outlier:</b> Singapore, comfortably the most expensive of the five.</li>
+        <li><b>Tips like home:</b> the Philippines, at around 10%, unlike its no-tip neighbors.</li>
+        <li><b>Watch the zeros:</b> Vietnam's dong and Indonesia's rupiah run to big numbers, so count carefully.</li>
       </ul>
-    </section>
-
-    <section class="se-sec">
-      <p class="lab">From the desk</p>
-      <h2>If it were my trip</h2>
-      <div class="desk">
-        <div class="desk-main">
-          <p class="desk-text">If I were flying over from the US, I would probably land in Croatia, Zagreb or Split depending on the flights, pick up a rental car, and drive down the coast, which is one of the loveliest stretches of the whole trip. I would hop across into Slovenia for a day or two as well, since it is such an easy border and a gentle way to add another country without upending the plan. From there I might drift on to Italy or Montenegro, and happily leave the rest for another visit rather than cram it all in. The driving is half the pleasure here, so I would coast rather than rush. For what it is worth, that is the route I would take, though everyone travels differently, and I hope your own trip is a wonderful one.</p>
-          <p class="desk-by">A personal aside from <a href="/about">the True Trip Costs desk</a>. The verdicts above stay neutral; this is just one traveler's route.</p>
-        </div>
-        <div class="desk-route" aria-hidden="true">
-          <p class="route-lab">The route</p>
-          <ol class="route">
-            <li class="rnode start"><span class="rdot"></span><span class="rlabel">Land in Croatia</span><span class="rnote">Zagreb or Split, drive the coast</span></li>
-            <li class="rnode"><span class="rdot"></span><span class="rlabel">Slovenia</span><span class="rnote">an easy border hop</span></li>
-            <li class="rnode"><span class="rdot"></span><span class="rlabel">Italy or Montenegro</span><span class="rnote">as the trip unfolds</span></li>
-            <li class="rnode end"><span class="rdot rdot-open"></span><span class="rlabel">The rest</span><span class="rnote">saved for another visit</span></li>
-          </ol>
-        </div>
-      </div>
     </section>
 
     <section class="se-sec">
@@ -208,9 +180,8 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
     .se h1{margin:0 0 14px}
     .se-lede{font-size:18px;color:#3B4A46;max-width:660px;margin:0 0 26px}
 
-    /* Comparison matrix: a semantic table styled as a visual grid. Scrolls
-       horizontally on narrow screens with the country column pinned, so the
-       scannable rows survive on a phone. */
+    /* Comparison matrix: a semantic table styled as a visual grid, collapsing to
+       one card per country on mobile (see media query). */
     .matrix-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
     .matrix{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
     .matrix th,.matrix td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
@@ -273,36 +244,9 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
     .mx-hlink{color:inherit;text-decoration:none;border-bottom:1px dotted rgba(111,110,102,.5);padding-bottom:1px}
     .mx-hlink:hover{color:var(--teal-deep);border-bottom-color:var(--teal-deep)}
 
-    /* From the desk: the personal itinerary, deliberately set apart from the
-       neutral verdict cards (warm tint, serif body, a byline to /about) so the
-       analysis above keeps its authority and this reads as the human bonus. */
-    .desk{background:var(--green-bg);border:1px solid #C2E0C8;border-radius:var(--radius);padding:20px 22px;margin-top:8px;max-width:720px;display:flex;gap:24px;align-items:flex-start}
-    .desk-main{flex:1 1 auto;min-width:0}
-    .desk-text{font-family:var(--serif);font-weight:400;font-size:17px;line-height:1.6;color:#22403A;margin:0 0 14px}
-    .desk-by{font-size:13px;color:#3B5B50;margin:0;line-height:1.55}
-    .desk-by a{color:var(--teal-deep);font-weight:600;text-decoration:underline;text-underline-offset:2px}
-
-    /* Route schematic: the personal itinerary as a small vertical journey strip,
-       companion to the desk paragraph. Decorative (aria-hidden); the prose carries
-       the detail. Beside the text on desktop, stacked below it on mobile. */
-    .desk-route{flex:0 0 206px;border-left:1px solid #C2E0C8;padding-left:20px;align-self:stretch}
-    .route-lab{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 14px}
-    .route{list-style:none;margin:0;padding:0;position:relative}
-    .route::before{content:"";position:absolute;left:5px;top:5px;bottom:11px;width:2px;background:#A9D3BF;border-radius:2px}
-    .rnode{position:relative;padding:0 0 15px 22px}
-    .rnode:last-child{padding-bottom:0}
-    .rdot{position:absolute;left:0;top:3px;width:12px;height:12px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px var(--green-bg)}
-    .rnode.start .rdot{background:var(--teal-deep)}
-    .rdot-open{background:var(--green-bg);border:2px solid #8FC3AC}
-    .rlabel{display:block;font-family:var(--serif);font-weight:500;font-size:15px;color:var(--ink);line-height:1.2}
-    .rnote{display:block;font-size:12px;color:#3B5B50;margin-top:2px;line-height:1.4}
-
     @media(max-width:640px){
       .se-lede{font-size:16.5px}
       .se-pick-main{font-size:19px}
-      .desk-text{font-size:16px}
-      .desk{flex-direction:column;gap:0}
-      .desk-route{flex:none;width:100%;border-left:none;border-top:1px solid #C2E0C8;padding-left:0;padding-top:16px;margin-top:16px;align-self:auto}
 
       /* Collapse the matrix into one card per country: no horizontal scroll, each
          attribute on its own labeled row. The header row is visually hidden but

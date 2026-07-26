@@ -19,6 +19,7 @@ const { region, alt } = Astro.props;
     <g class="rmap-hi">
       {region.highlight.map(h => <path d={h.d} data-iso={h.iso} />)}
     </g>
+    {(region.markers || []).map(m => <circle class="rmap-mk" cx={m.cx} cy={m.cy} r={m.r || 7} />)}
   </svg>
 </figure>
 
@@ -29,6 +30,7 @@ const { region, alt } = Astro.props;
   .rmap svg{width:100%;height:auto;display:block;overflow:hidden}
   .rmap-bg path{fill:#E7E4DC;stroke:#F5F4EF;stroke-width:.7;stroke-linejoin:round;vector-effect:non-scaling-stroke}
   .rmap-hi path{fill:var(--teal);stroke:#F5F4EF;stroke-width:.9;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+  .rmap-mk{fill:none;stroke:var(--teal-deep);stroke-width:1.6;vector-effect:non-scaling-stroke}
   @media(max-width:640px){
     .rmap{max-width:none;margin:18px 0 22px}
   }

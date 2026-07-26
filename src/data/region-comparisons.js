@@ -7,7 +7,14 @@ export const clusters = [
   {
     href: '/compare/southern-europe',
     region: 'Southern Europe',
+    blurb: 'Portugal, Spain, Italy, Greece and Croatia, on cost, cash, tipping and getting around.',
     slugs: ['portugal', 'spain', 'italy', 'greece', 'croatia']
+  },
+  {
+    href: '/compare/southeast-asia',
+    region: 'Southeast Asia',
+    blurb: 'Thailand, Vietnam, Indonesia, the Philippines and Singapore, from cash habits to costs.',
+    slugs: ['thailand', 'vietnam', 'indonesia', 'philippines', 'singapore']
   }
 ];
 
