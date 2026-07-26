@@ -1,0 +1,234 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { countries } from '../../data/index.js';
+
+// Southern Europe money comparison. A curated, decision-stage page: it targets
+// "which country" searches the country hubs cannot, so it complements them rather
+// than competing. Per the plan, it is deliberately more evergreen than a spoke:
+// it compares on slow-moving, relative attributes (relative cost, currency, card
+// habit, tipping norm, taxi ease) and leaves volatile specifics (exact prices,
+// fees, rules) to each country's guide, which is the source of truth and carries
+// its own date. Text here is written fresh for the comparison, never lifted from
+// the spokes, so there is no duplicate content.
+
+// Identifiers come from the live data so names and flags never drift. The taxi
+// "ease" column is derived from each country's own taxi guide (its caution field),
+// so this page can never contradict the guide it links to.
+const order = ['portugal', 'spain', 'italy', 'greece', 'croatia'];
+
+// The desk's comparative read. Cost is a 1 to 4 relative scale across these five,
+// not a figure. Everything here is durable enough to sit above the volatile detail.
+const rate = {
+  portugal: {
+    cost: 2, cashLean: 'card', cashTag: 'Mostly cards', tip: 'Round up', cur: 'Euro', curNote: '',
+    bestFor: 'Best value, and easiest overall',
+    verdict: 'The value pick of the five and the simplest to travel: cheap by Western European standards, card-friendly, and easy to get around with Bolt or Uber. Pick Portugal if the priority is stretching the budget without hassle.'
+  },
+  spain: {
+    cost: 2, cashLean: 'card', cashTag: 'Cards everywhere', tip: 'Round up', cur: 'Euro', curNote: '',
+    bestFor: 'Most card-friendly, great cities',
+    verdict: 'The most card-friendly of the group, with tap-to-pay almost everywhere and honest, cheap taxis. Strong value once you step outside the top tourist spots. Pick Spain for big-city energy and to barely touch cash.'
+  },
+  italy: {
+    cost: 3, cashLean: 'cash', cashTag: 'Carry cash too', tip: 'Coperto', cur: 'Euro', curNote: '',
+    bestFor: 'The classic trip, and the priciest',
+    verdict: 'The priciest of the five, especially the north and the famous cities, and the one place to still carry cash: many spots prefer it, and a coperto cover charge per person is normal. Pick Italy for the once-in-a-lifetime hits, with a slightly bigger budget.'
+  },
+  greece: {
+    cost: 2, cashLean: 'cash', cashTag: 'Carry cash too', tip: 'Round up', cur: 'Euro', curNote: '',
+    bestFor: 'Islands, and value away from the famous two',
+    verdict: 'Excellent value on the mainland and most islands, with cards common in tourist areas but cash still handy for tavernas and smaller islands. Santorini and Mykonos are the summer exceptions. Pick Greece for island-hopping and strong value.'
+  },
+  croatia: {
+    cost: 3, cashLean: 'card', cashTag: 'Mostly cards', tip: 'Round up', cur: 'Euro', curNote: 'since 2023',
+    bestFor: 'Coast and nature, not the bargain it was',
+    verdict: 'On the euro since 2023, card-friendly, and stunning, but no longer a bargain: the Dalmatian coast in peak summer (Dubrovnik, Split, Hvar) runs genuinely pricey, while inland stays cheaper. Pick Croatia for the coastline, and shoulder season to save.'
+  }
+};
+
+const cautionMap = {
+  low: { label: 'Easy', cls: 'cx-low' },
+  medium: { label: 'Some care', cls: 'cx-medium' },
+  high: { label: 'Take care', cls: 'cx-high' }
+};
+
+const rows = order.map(slug => {
+  const c = countries.find(x => x.slug === slug);
+  const taxi = c ? (c.spokes || []).find(s => s.topic === 'taxis') : null;
+  const caution = (taxi && taxi.caution) ? taxi.caution : 'low';
+  return {
+    slug,
+    name: c ? c.name : slug,
+    iso2: c ? c.iso2 : '',
+    ...rate[slug],
+    taxi: cautionMap[caution] || cautionMap.low
+  };
+});
+
+const checkedLabel = 'July 2026';
+const title = 'Southern Europe for travel money: Portugal, Spain, Italy, Greece, Croatia (2026) | True Trip Costs';
+const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia? A side-by-side money comparison for US travelers: daily cost, cash vs card, tipping, taxis and currency, with a clear pick for each. Checked July 2026.';
+---
+
+<Base title={title} description={description}>
+  <Nav />
+  <main class="wrap se">
+    <div class="ctx"><span class="stamp">Checked {checkedLabel}</span> <span class="se-ctxtxt">Southern Europe &middot; money comparison</span></div>
+    <h1>Southern Europe for travel money, five countries compared</h1>
+    <p class="se-lede">You have narrowed it to Southern Europe but not the country. Here is how Portugal, Spain, Italy, Greece and Croatia stack up on the money side, so your friend in New York, or you, can pick with eyes open. Our read as the True Trip Costs desk, checked {checkedLabel}.</p>
+
+    <section class="se-matrix-sec" aria-label="Money comparison matrix">
+      <div class="matrix-scroll">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th class="mx-cty" scope="col">Country</th>
+              <th scope="col">Daily cost</th>
+              <th scope="col">Cash or card</th>
+              <th scope="col">Tipping</th>
+              <th scope="col">Taxis</th>
+              <th scope="col">Currency</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(r => (
+              <tr>
+                <th class="mx-cty" scope="row">
+                  <a href={`/${r.slug}`}>
+                    {r.iso2 && <img class="mx-flag" src={`https://flagcdn.com/${r.iso2}.svg`} alt="" width="26" height="18" loading="lazy" />}
+                    <span>{r.name}</span>
+                  </a>
+                </th>
+                <td>
+                  <span class="cost-dots" role="img" aria-label={`Cost ${r.cost} out of 4`}>
+                    {[1, 2, 3, 4].map(n => <i class:list={["cd", { on: n <= r.cost }]}></i>)}
+                  </span>
+                </td>
+                <td><span class:list={["lean", r.cashLean === 'card' ? 'lean-card' : 'lean-cash']}>{r.cashTag}</span></td>
+                <td><span class="tipchip">{r.tip}</span></td>
+                <td><span class:list={["cx-chip", r.taxi.cls]}>{r.taxi.label}</span></td>
+                <td><span class="mx-cur">{r.cur}{r.curNote && <em> {r.curNote}</em>}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mx-legend">
+        <b>Reading this.</b> Daily cost is a rough 1 to 4 scale across these five (more dots, pricier day), the desk's own read rather than a precise figure. Taxi ease comes straight from each country's taxi guide: <span class="cx-chip cx-low">Easy</span> is straightforward, <span class="cx-chip cx-medium">Some care</span> means a couple of things to watch. Tap any country for the detail behind its row.
+      </p>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">The honest headline</p>
+      <h2>On the money mechanics, these five are more alike than different</h2>
+      <p class="se-body">All five use the <b>euro</b> (Croatia switched in 2023, so there is no kuna to think about), <b>cards are widely accepted</b>, <b>tipping is light</b> everywhere (round up, no set percentage), and as a <b>US visitor you can reclaim VAT</b> on larger purchases in any of them. Each also adds a small <b>local tourist or city tax</b> on your accommodation. So the money plumbing is much the same across the region. Where they genuinely differ is <b>overall cost</b> and a few <b>local habits</b>, which is what the table above and the picks below focus on.</p>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">Which to pick</p>
+      <h2>A verdict on each</h2>
+      <div class="verdicts">
+        {rows.map(r => (
+          <div class="vrow">
+            <div class="vhead">
+              {r.iso2 && <img class="vflag" src={`https://flagcdn.com/${r.iso2}.svg`} alt="" width="30" height="21" loading="lazy" />}
+              <div>
+                <h3>{r.name}</h3>
+                <p class="vbest">{r.bestFor}</p>
+              </div>
+            </div>
+            <p class="vtext">{r.verdict}</p>
+            <a class="cta" href={`/${r.slug}`}>The {r.name} money guide <span class="arw">&rarr;</span></a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">Quick picks</p>
+      <h2>If you only remember five things</h2>
+      <ul class="picks">
+        <li><b>Cheapest, easiest overall:</b> Portugal, with Greece close behind on the mainland.</li>
+        <li><b>Most card-friendly:</b> Spain, where you can almost leave the cash at the hotel.</li>
+        <li><b>Carry some cash:</b> Italy and Greece, for small places, tavernas and the odd cover charge.</li>
+        <li><b>Watch the summer spike:</b> Croatia's coast, and the Greek islands of Santorini and Mykonos.</li>
+        <li><b>The quirk to know:</b> Italy's coperto, a small per-person cover charge that is not a scam.</li>
+      </ul>
+    </section>
+
+    <section class="se-sec">
+      <div class="se-honest">
+        <p><b>How we rate this.</b> The cost dots and the verdicts are the True Trip Costs desk's own comparative read for a US traveler, meant for choosing between these countries, not a precise index. We compare on things that move slowly, relative cost, currency, card habits, tipping norms and taxi ease, and leave the exact prices, fees and rules to each country's guide, which we date and check on its own. Checked {checkedLabel}. Confirm anything critical, especially entry rules and current fees, in the country guide before you rely on it.</p>
+      </div>
+      <div class="se-explore">
+        <a class="btn" href="/#guides">Browse all country guides</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+
+  <style>
+    .se{max-width:880px}
+    .se .ctx{margin:26px 0 12px}
+    .se-ctxtxt{color:var(--muted)}
+    .se h1{margin:0 0 14px}
+    .se-lede{font-size:18px;color:#3B4A46;max-width:660px;margin:0 0 26px}
+
+    /* Comparison matrix: a semantic table styled as a visual grid. Scrolls
+       horizontally on narrow screens with the country column pinned, so the
+       scannable rows survive on a phone. */
+    .matrix-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+    .matrix{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+    .matrix th,.matrix td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+    .matrix thead th{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--paper);white-space:nowrap}
+    .matrix tbody tr:last-child th,.matrix tbody tr:last-child td{border-bottom:none}
+    .matrix tbody tr:hover{background:#FBFBF9}
+    .mx-cty{position:sticky;left:0;background:var(--card);z-index:1}
+    .matrix thead .mx-cty{background:var(--paper);z-index:2}
+    .mx-cty a{display:inline-flex;align-items:center;gap:9px;color:var(--ink);text-decoration:none;font-family:var(--serif);font-weight:500;font-size:17px;line-height:1.15}
+    .mx-cty a:hover{color:var(--teal-deep)}
+    .mx-flag{border-radius:3px;border:1px solid var(--line);flex:none;display:block;object-fit:cover}
+    .cost-dots{display:inline-flex;gap:4px}
+    .cost-dots .cd{width:9px;height:9px;border-radius:50%;background:var(--green-bg);border:1px solid #CFE3DB}
+    .cost-dots .cd.on{background:var(--teal);border-color:var(--teal)}
+    .lean{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;border-radius:999px;padding:3px 10px;white-space:nowrap;line-height:1.4}
+    .lean::before{content:"";width:7px;height:7px;border-radius:2px;background:currentColor;flex:none}
+    .lean-card{color:var(--teal-deep);background:rgba(14,122,95,.12)}
+    .lean-cash{color:var(--amber);background:rgba(180,83,9,.12)}
+    .tipchip{display:inline-block;font-size:12.5px;font-weight:600;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px 10px;white-space:nowrap}
+    .mx-cur{font-size:13.5px;color:var(--ink);white-space:nowrap}
+    .mx-cur em{font-style:normal;color:var(--muted);font-size:12px}
+    .mx-legend{font-size:13px;color:var(--muted);line-height:1.7;margin:14px 2px 0}
+    .mx-legend .cx-chip{margin:0 3px;vertical-align:middle}
+    .mx-legend b{color:var(--ink);font-weight:600}
+
+    .se-sec{padding:30px 0 0;border-top:1px solid var(--line);margin-top:34px}
+    .se-body{font-size:16px;color:#3B4A46;max-width:680px;margin:0}
+    .se-body b{color:var(--ink);font-weight:600}
+
+    .verdicts{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+    .vrow{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px}
+    .vhead{display:flex;align-items:center;gap:12px;margin:0 0 8px}
+    .vflag{border-radius:3px;border:1px solid var(--line);flex:none;display:block;object-fit:cover}
+    .vhead h3{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.1;margin:0}
+    .vbest{font-size:12.5px;font-weight:600;color:var(--teal-deep);margin:2px 0 0}
+    .vtext{font-size:15px;color:#3B4A46;line-height:1.6;margin:0 0 6px}
+    .vrow .cta{margin-top:2px;font-size:13.5px}
+
+    .picks{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+    .picks li{font-size:15px;color:#3B4A46;line-height:1.55;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px}
+    .picks li b{color:var(--ink);font-weight:600}
+
+    .se-honest{font-size:14px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:14px 16px;max-width:720px;box-shadow:var(--shadow);line-height:1.6}
+    .se-honest b{color:var(--ink);font-weight:600}
+    .se-honest p{margin:0}
+    .se-explore{margin-top:20px}
+
+    @media(max-width:620px){
+      .se-lede{font-size:16.5px}
+      .matrix{min-width:600px}
+    }
+  </style>
+</Base>
