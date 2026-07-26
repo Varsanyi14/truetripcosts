@@ -21,6 +21,14 @@ export const clusters = [
     slugs: ['germany', 'austria', 'switzerland', 'czechia', 'hungary']
   },
   {
+    href: '/compare/nordics',
+    region: 'The Nordics',
+    parent: 'Europe',
+    blurb: 'Denmark, Sweden, Norway and Iceland, all pricey, all nearly cashless.',
+    pitch: 'The priciest, the most cashless, unreal landscapes.',
+    slugs: ['denmark', 'sweden', 'norway', 'iceland']
+  },
+  {
     href: '/compare/southeast-asia',
     region: 'Southeast Asia',
     parent: 'Asia',

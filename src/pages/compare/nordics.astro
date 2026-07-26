@@ -1,0 +1,313 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import RegionMap from '../../components/RegionMap.astro';
+import nordicsMap from '../../data/maps/nordics.js';
+import { countries } from '../../data/index.js';
+import { otherClusters } from '../../data/region-comparisons.js';
+
+// The Nordics money comparison. Four guided countries (Finland has no guide yet, so
+// it appears in the desk route but not the matrix). The regional story is uniformity:
+// these break the usual pattern, alike on the money basics and striking in what unites
+// them, the priciest region we cover, the most cashless on earth, no tipping, and each
+// with its own krone or krona rather than the euro. So you choose by landscape.
+const order = ['denmark', 'sweden', 'norway', 'iceland'];
+
+const rate = {
+  denmark: {
+    cost: 4, cashLean: "card", cashTag: "Nearly cashless", tip: "Not expected", cur: "Krone", curNote: "Danish",
+    bestFor: "Food and cycling",
+    verdict: "The gentlest, most walkable introduction: Copenhagen's design, cycling culture and some of the world's best restaurants, in a compact, easy package. It is essentially cashless, tipping is not expected, and prices are high but a shade below Norway's. Pick Denmark for a food-and-cities first trip, the least daunting of the Nordics."
+  },
+  sweden: {
+    cost: 3, cashLean: "card", cashTag: "Cash often refused", tip: "Not expected", cur: "Krona", curNote: "Swedish",
+    bestFor: "Cities, forests, lakes",
+    verdict: "Stockholm and Gothenburg on one hand, endless forest and lakes on the other, and the most cashless society of the four, some places will not take cash at all, so lean on a card or phone. A little cheaper than its neighbors, though still not cheap. No tipping expected. Pick Sweden for lively cities and deep nature together."
+  },
+  norway: {
+    cost: 4, cashLean: "card", cashTag: "Nearly cashless", tip: "Not expected", cur: "Krone", curNote: "Norwegian",
+    bestFor: "Fjords and scenic rail",
+    verdict: "The scenery headline of the region: fjords, mountain hikes and some of the world's great scenic railways. It is also among the most expensive countries anywhere, so budget hard, and it is card-first like its neighbors. No tipping expected. Pick Norway if the landscapes are the point, which, for most first-timers here, they are."
+  },
+  iceland: {
+    cost: 4, cashLean: "card", cashTag: "Card for everything", tip: "Not expected", cur: "Krona", curNote: "Icelandic",
+    bestFor: "Ring Road and waterfalls",
+    verdict: "Otherworldly, and worth the slightly longer flight west: waterfalls, volcanoes, glaciers and black-sand beaches, best over four or five days on the Ring Road or the Golden Circle. Most visitors rent a car rather than rely on taxis. Prices are very high and it is almost entirely cashless. No tipping. Pick Iceland for landscapes that look like nowhere else on earth."
+  }
+};
+
+const cautionMap = {
+  low: { label: 'Easy', cls: 'cx-low' },
+  medium: { label: 'Some care', cls: 'cx-medium' },
+  high: { label: 'Take care', cls: 'cx-high' }
+};
+
+const rows = order.map(slug => {
+  const c = countries.find(x => x.slug === slug);
+  const taxi = c ? (c.spokes || []).find(s => s.topic === 'taxis') : null;
+  const caution = (taxi && taxi.caution) ? taxi.caution : 'low';
+  return { slug, name: c ? c.name : slug, iso2: c ? c.iso2 : '', ...rate[slug], taxi: cautionMap[caution] || cautionMap.low };
+});
+
+const others = otherClusters('/compare/nordics');
+const checkedLabel = 'July 2026';
+const title = 'The Nordics for travel money: Denmark, Sweden, Norway, Iceland (2026) | True Trip Costs';
+const description = 'Deciding between Denmark, Sweden, Norway and Iceland? A side-by-side money comparison for US travelers: daily cost, cash vs card, tipping, taxis and currency, with a clear pick for each. Checked July 2026.';
+---
+
+<Base title={title} description={description}>
+  <Nav />
+  <main class="wrap se">
+    <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Compare', href: '/compare' }, { label: 'The Nordics' }]} />
+    <div class="ctx"><span class="stamp">Checked {checkedLabel}</span> <span class="se-ctxtxt">The Nordics &middot; money comparison</span></div>
+    <h1>The Nordics for travel money, four countries compared</h1>
+    <p class="se-lede">Thinking about the Nordics but not sure which country? Here is how Denmark, Sweden, Norway and Iceland compare on the money side, so you can pick with eyes open. Our read as the True Trip Costs desk, checked {checkedLabel}.</p>
+
+    <RegionMap region={nordicsMap} alt="Outline map of the Nordic region with Denmark, Sweden, Norway and Iceland highlighted, Iceland out to the west" />
+
+    <div class="se-pick">
+      <p class="se-pick-lab">The short answer</p>
+      <p class="se-pick-main"><b>Norway</b> is the one for the classic Nordic landscapes.</p>
+      <p class="se-pick-nuance">Most cashless, and cities too? <a href="/sweden">Sweden</a>. Food and cycling? <a href="/denmark">Denmark</a>. Otherworldly nature? <a href="/iceland">Iceland</a>.</p>
+    </div>
+
+    <section class="se-matrix-sec" aria-label="Money comparison matrix">
+      <div class="matrix-scroll">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th class="mx-cty" scope="col">Country</th>
+              <th scope="col"><a class="mx-hlink" href="/cost-comparison">Daily cost</a></th>
+              <th scope="col"><a class="mx-hlink" href="/cash-or-card">Cash or card</a></th>
+              <th scope="col"><a class="mx-hlink" href="/tipping-compared">Tipping</a></th>
+              <th scope="col"><a class="mx-hlink" href="/taxis-and-ride-hailing">Taxis</a></th>
+              <th scope="col">Currency</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(r => (
+              <tr>
+                <th class="mx-cty" scope="row">
+                  <a href={`/${r.slug}`}>
+                    {r.iso2 && <img class="mx-flag" src={`https://flagcdn.com/${r.iso2}.svg`} alt="" width="26" height="18" loading="lazy" />}
+                    <span>{r.name}</span>
+                  </a>
+                </th>
+                <td data-label="Daily cost">
+                  <span class="cost-dots" role="img" aria-label={`Cost ${r.cost} out of 4`}>
+                    {[1, 2, 3, 4].map(n => <i class:list={["cd", { on: n <= r.cost }]}></i>)}
+                  </span>
+                </td>
+                <td data-label="Cash or card"><span class:list={["lean", r.cashLean === 'card' ? 'lean-card' : 'lean-cash']}>{r.cashTag}</span></td>
+                <td data-label="Tipping"><span class="tipchip">{r.tip}</span></td>
+                <td data-label="Taxis"><span class:list={["cx-chip", r.taxi.cls]}>{r.taxi.label}</span></td>
+                <td data-label="Currency"><span class="mx-cur">{r.cur}{r.curNote && <em> {r.curNote}</em>}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mx-legend">
+        <b>Reading this.</b> Daily cost is a rough 1 to 4 scale across these four (more dots, pricier day), the desk's own read rather than a precise figure. Taxi ease comes from each country's taxi guide where we have one: <span class="cx-chip cx-low">Easy</span> is straightforward, <span class="cx-chip cx-medium">Some care</span> means a couple of things to watch. Tap any country for the detail behind its row.
+      </p>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">The honest headline</p>
+      <h2>The priciest region we compare, and the most cashless</h2>
+      <p class="se-body">The Nordics break the usual pattern: there is little to separate them on the money basics, and what unites them is striking. They are the <b>most expensive countries we cover</b>, with Norway, Denmark and Iceland at the top and Sweden only a little behind. They are also the <b>most cashless place on earth</b>, you can travel the whole region barely touching cash, and in Sweden some shops and cafes no longer take it at all. <b>Tipping is not expected</b>; service is included, and you round up only for something special. And <b>none use the euro</b>, each keeps its own krone or krona, so the currency changes at nearly every border. What you are really choosing between is the landscape.</p>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">Which to pick</p>
+      <h2>A verdict on each</h2>
+      <div class="verdicts">
+        {rows.map(r => (
+          <div class="vrow">
+            <div class="vhead">
+              {r.iso2 && <img class="vflag" src={`https://flagcdn.com/${r.iso2}.svg`} alt="" width="30" height="21" loading="lazy" />}
+              <div>
+                <h3>{r.name}</h3>
+                <p class="vbest">{r.bestFor}</p>
+              </div>
+            </div>
+            <p class="vtext">{r.verdict}</p>
+            <a class="cta" href={`/${r.slug}`}>The {r.name} money guide <span class="arw">&rarr;</span></a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">Quick picks</p>
+      <h2>If you only remember five things</h2>
+      <ul class="picks">
+        <li><b>All expensive:</b> Norway, Denmark and Iceland most of all; Sweden a touch less.</li>
+        <li><b>The most cashless on earth:</b> you can skip cash entirely, especially in Sweden.</li>
+        <li><b>No tipping expected:</b> service is included, round up only for something special.</li>
+        <li><b>A different currency almost everywhere:</b> krone and krona, never the euro.</li>
+        <li><b>Choose by landscape:</b> fjords in Norway, volcanoes and glaciers in Iceland.</li>
+      </ul>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">From the desk</p>
+      <h2>If it were my trip</h2>
+      <div class="desk">
+        <div class="desk-main">
+          <p class="desk-text">For the Nordics I would fly into Copenhagen or Stockholm, usually the easiest and best-value gateways from the US, then use the region's excellent trains, ferries and short flights to get around. Denmark brings charming cities, a cycling culture and some of the world's best food, while Sweden pairs lively cities with endless forests and lakes. Norway is a must for its dramatic fjords, mountain hikes and scenic railways, one of the most beautiful countries I have ever visited. Finland has a quieter charm, lakes, saunas, and in winter a real chance at the Northern Lights. Do not skip Iceland, even though it sits farther west: give it four or five days for the Ring Road or the Golden Circle, the waterfalls, volcanoes, glaciers and black-sand beaches. The Nordics are not cheap, but the landscapes are unlike anywhere else on earth. For nature, hiking, photography and the outdoors, few trips are more rewarding.</p>
+          <p class="desk-by">A personal aside from <a href="/about">the True Trip Costs desk</a>. The verdicts above stay neutral; this is just one traveler's route.</p>
+        </div>
+        <div class="desk-route" aria-hidden="true">
+          <p class="route-lab">The route</p>
+          <ol class="route">
+            <li class="rnode start"><span class="rdot"></span><span class="rlabel">Fly into Copenhagen</span><span class="rnote">or Stockholm, then rails and ferries</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">Sweden</span><span class="rnote">cities, forests, lakes</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">Norway</span><span class="rnote">the fjords and scenic rail</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">Finland</span><span class="rnote">lakes, saunas, winter aurora</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">Iceland</span><span class="rnote">the Ring Road, four or five days</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">More than one region in mind?</p>
+      <h2>Compare another part of the world</h2>
+      <div class="xreg">
+        {others.map(o => (
+          <a class="xreg-card" href={o.href}>
+            <span class="xreg-region">{o.region}</span>
+            <span class="xreg-pitch">{o.pitch}</span>
+            <span class="xreg-go">Compare <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="se-sec">
+      <div class="se-honest">
+        <p><b>How we rate this.</b> The cost dots and the verdicts are the True Trip Costs desk's own comparative read for a US traveler, meant for choosing between these countries, not a precise index. We compare on things that move slowly, relative cost, cash habits, tipping norms and taxi ease, and leave the exact prices, fees and rules to each country's guide, which we date and check on its own. Checked {checkedLabel}. Confirm anything critical, especially entry rules and current fees, in the country guide before you rely on it.</p>
+      </div>
+      <div class="se-explore">
+        <a class="btn" href="/#guides">Browse all country guides</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+
+  <style>
+    .se{max-width:880px}
+    .se .ctx{margin:26px 0 12px}
+    .se-ctxtxt{color:var(--muted)}
+    .se h1{margin:0 0 14px}
+    .se-lede{font-size:18px;color:#3B4A46;max-width:660px;margin:0 0 26px}
+
+    .matrix-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+    .matrix{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+    .matrix th,.matrix td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+    .matrix thead th{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--paper);white-space:nowrap}
+    .matrix tbody tr:last-child th,.matrix tbody tr:last-child td{border-bottom:none}
+    .matrix tbody tr:hover{background:#FBFBF9}
+    .mx-cty{position:sticky;left:0;background:var(--card);z-index:1}
+    .matrix thead .mx-cty{background:var(--paper);z-index:2}
+    .mx-cty a{display:inline-flex;align-items:center;gap:9px;color:var(--ink);text-decoration:none;font-family:var(--serif);font-weight:500;font-size:17px;line-height:1.15}
+    .mx-cty a:hover{color:var(--teal-deep)}
+    .mx-flag{border-radius:3px;border:1px solid var(--line);flex:none;display:block;object-fit:cover}
+    .cost-dots{display:inline-flex;gap:4px}
+    .cost-dots .cd{width:9px;height:9px;border-radius:50%;background:var(--green-bg);border:1px solid #CFE3DB}
+    .cost-dots .cd.on{background:var(--teal);border-color:var(--teal)}
+    .lean{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;border-radius:999px;padding:3px 10px;white-space:nowrap;line-height:1.4}
+    .lean::before{content:"";width:7px;height:7px;border-radius:2px;background:currentColor;flex:none}
+    .lean-card{color:var(--teal-deep);background:rgba(14,122,95,.12)}
+    .lean-cash{color:var(--amber);background:rgba(180,83,9,.12)}
+    .tipchip{display:inline-block;font-size:12.5px;font-weight:600;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px 10px;white-space:nowrap}
+    .mx-cur{font-size:13.5px;color:var(--ink);white-space:nowrap}
+    .mx-cur em{font-style:normal;color:var(--muted);font-size:12px}
+    .mx-legend{font-size:13px;color:var(--muted);line-height:1.7;margin:14px 2px 0}
+    .mx-legend .cx-chip{margin:0 3px;vertical-align:middle}
+    .mx-legend b{color:var(--ink);font-weight:600}
+
+    .se-sec{padding:30px 0 0;border-top:1px solid var(--line);margin-top:34px}
+    .se-body{font-size:16px;color:#3B4A46;max-width:680px;margin:0}
+    .se-body b{color:var(--ink);font-weight:600}
+
+    .verdicts{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+    .vrow{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px}
+    .vhead{display:flex;align-items:center;gap:12px;margin:0 0 8px}
+    .vflag{border-radius:3px;border:1px solid var(--line);flex:none;display:block;object-fit:cover}
+    .vhead h3{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.1;margin:0}
+    .vbest{font-size:12.5px;font-weight:600;color:var(--teal-deep);margin:2px 0 0}
+    .vtext{font-size:15px;color:#3B4A46;line-height:1.6;margin:0 0 6px}
+    .vrow .cta{margin-top:2px;font-size:13.5px}
+
+    .picks{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+    .picks li{font-size:15px;color:#3B4A46;line-height:1.55;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px}
+    .picks li b{color:var(--ink);font-weight:600}
+
+    .se-honest{font-size:14px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:14px 16px;max-width:720px;box-shadow:var(--shadow);line-height:1.6}
+    .se-honest b{color:var(--ink);font-weight:600}
+    .se-honest p{margin:0}
+    .se-explore{margin-top:20px}
+
+    .se-pick{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 20px;margin:0 0 30px;max-width:660px}
+    .se-pick-lab{font-size:12px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.09em;margin:0 0 6px}
+    .se-pick-main{font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.25;color:var(--ink);margin:0 0 6px}
+    .se-pick-main b{font-weight:600}
+    .se-pick-nuance{font-size:14.5px;color:var(--muted);margin:0}
+    .se-pick-nuance a{color:var(--teal-deep);font-weight:600;text-decoration:none}
+    .se-pick-nuance a:hover{text-decoration:underline}
+
+    .mx-hlink{color:inherit;text-decoration:none;border-bottom:1px dotted rgba(111,110,102,.5);padding-bottom:1px}
+    .mx-hlink:hover{color:var(--teal-deep);border-bottom-color:var(--teal-deep)}
+
+    /* From the desk: personal itinerary, set apart from the neutral verdicts. */
+    .desk{background:var(--green-bg);border:1px solid #C2E0C8;border-radius:var(--radius);padding:20px 22px;margin-top:8px;max-width:720px;display:flex;gap:24px;align-items:flex-start}
+    .desk-main{flex:1 1 auto;min-width:0}
+    .desk-text{font-family:var(--serif);font-weight:400;font-size:17px;line-height:1.6;color:#22403A;margin:0 0 14px}
+    .desk-by{font-size:13px;color:#3B5B50;margin:0;line-height:1.55}
+    .desk-by a{color:var(--teal-deep);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+    .desk-route{flex:0 0 206px;border-left:1px solid #C2E0C8;padding-left:20px;align-self:stretch}
+    .route-lab{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 14px}
+    .route{list-style:none;margin:0;padding:0;position:relative}
+    .route::before{content:"";position:absolute;left:5px;top:5px;bottom:11px;width:2px;background:#A9D3BF;border-radius:2px}
+    .rnode{position:relative;padding:0 0 15px 22px}
+    .rnode:last-child{padding-bottom:0}
+    .rdot{position:absolute;left:0;top:3px;width:12px;height:12px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px var(--green-bg)}
+    .rnode.start .rdot{background:var(--teal-deep)}
+    .rdot-open{background:var(--green-bg);border:2px solid #8FC3AC}
+    .rlabel{display:block;font-family:var(--serif);font-weight:500;font-size:15px;color:var(--ink);line-height:1.2}
+    .rnote{display:block;font-size:12px;color:#3B5B50;margin-top:2px;line-height:1.4}
+
+    /* Cross-region links: send undecided readers to the other comparison pages. */
+    .xreg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:8px}
+    .xreg-card{display:flex;flex-direction:column;gap:5px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;text-decoration:none;transition:border-color .2s ease,transform .2s ease}
+    .xreg-card:hover{border-color:#C2E0C8;transform:translateY(-1px)}
+    .xreg-region{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);line-height:1.15}
+    .xreg-pitch{font-size:13.5px;color:var(--muted);line-height:1.45}
+    .xreg-go{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--teal-deep);margin-top:2px}
+    .xreg-go svg{transition:transform .15s ease}
+    .xreg-card:hover .xreg-go svg{transform:translateX(3px)}
+
+    @media(max-width:640px){
+      .se-lede{font-size:16.5px}
+      .se-pick-main{font-size:19px}
+      .desk-text{font-size:16px}
+      .desk{flex-direction:column;gap:0}
+      .desk-route{flex:none;width:100%;border-left:none;border-top:1px solid #C2E0C8;padding-left:0;padding-top:16px;margin-top:16px;align-self:auto}
+
+      .matrix-scroll{overflow:visible;border:none;background:none;box-shadow:none;border-radius:0}
+      .matrix{min-width:0;width:100%}
+      .matrix thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+      .matrix tbody{display:block}
+      .matrix tbody tr{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin:0 0 12px}
+      .matrix tbody tr:hover{background:var(--card)}
+      .matrix tbody tr th.mx-cty{display:flex;align-items:center;gap:12px;padding:14px 15px;position:static;background:transparent;border-bottom:none}
+      .matrix tbody tr td{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 15px;text-align:right;border-top:1px solid var(--line);border-bottom:none}
+      .matrix tbody tr td::before{content:attr(data-label);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);text-align:left;white-space:nowrap;flex:none}
+      .mx-cty a{font-size:20px}
+    }
+  </style>
+</Base>
