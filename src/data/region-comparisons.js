@@ -77,3 +77,14 @@ export function clustersForRegion(regionLabel) {
 export function otherClusters(currentHref) {
   return clusters.filter(c => c.href !== currentHref);
 }
+
+// Higher-level "which part of a continent" comparison pages, keyed by the top-level
+// region label. Surfaced on the matching region hub, the compare hub and the nav. Add
+// an Asia entry here once an Asia capstone exists.
+export const regionMetaCompare = {
+  Europe: {
+    href: '/compare/europe',
+    label: 'Which part of Europe?',
+    blurb: 'Southern, Central and Nordic Europe compared on cost and character.'
+  }
+};

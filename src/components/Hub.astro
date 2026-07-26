@@ -4,7 +4,7 @@ import Nav from './Nav.astro';
 import Footer from './Footer.astro';
 import USBadge from './USBadge.astro';
 import { signalChips } from '../data/hubs.js';
-import { clustersForRegion } from '../data/region-comparisons.js';
+import { clustersForRegion, regionMetaCompare } from '../data/region-comparisons.js';
 import fs from 'node:fs';
 
 // One template for every hub. `hub` is the config from hubs.js (region today, thematic
@@ -15,6 +15,7 @@ const flagDir = process.cwd() + '/public/flags/';
 const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? '/flags/' + slug + '.svg' : '/flags/world.svg';
 const { hub, items = [] } = Astro.props;
 const regionClusters = clustersForRegion(hub.label);
+const metaCompare = regionMetaCompare[hub.label];
 
 const crumbBase = 'https://truetripcosts.com';
 const crumbLd = {
@@ -69,6 +70,16 @@ const crumbLd = {
           })}
         </div>
       </section>
+    )}
+
+    {metaCompare && (
+      <a class="hub-meta" href={metaCompare.href}>
+        <span class="hub-meta-tx">
+          <span class="hub-meta-h">{metaCompare.label}</span>
+          <span class="hub-meta-p">{metaCompare.blurb}</span>
+        </span>
+        <span class="hub-meta-go" aria-hidden="true">&#8594;</span>
+      </a>
     )}
 
     {regionClusters.length > 0 && (
@@ -142,5 +153,12 @@ const crumbLd = {
     .hub-cl-go{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--teal-deep);margin-top:2px}
     .hub-cl-go svg{transition:transform .15s ease}
     .hub-cl-card:hover .hub-cl-go svg{transform:translateX(3px)}
+    /* "Which part of X?" meta-comparison callout, above the cluster links. */
+    .hub-meta{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 18px;padding:16px 20px;border:1px solid rgba(14,122,95,.28);background:rgba(14,122,95,.07);border-radius:var(--radius);text-decoration:none;transition:border-color .2s ease,background .2s ease}
+    .hub-meta:hover{border-color:var(--teal);background:rgba(14,122,95,.1)}
+    .hub-meta-tx{display:flex;flex-direction:column;gap:3px}
+    .hub-meta-h{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--ink);line-height:1.15}
+    .hub-meta-p{font-size:14px;color:var(--muted);line-height:1.45}
+    .hub-meta-go{flex:none;color:var(--teal-deep);font-weight:700;font-size:18px}
   </style>
 </Base>

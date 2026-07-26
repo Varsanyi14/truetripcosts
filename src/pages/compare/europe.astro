@@ -1,0 +1,242 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import { clustersForRegion } from '../../data/region-comparisons.js';
+import { countries } from '../../data/index.js';
+
+// The Europe capstone: a level up from the country clusters. It compares the three
+// European sub-regions (Southern, Central, Nordic) on high-level character and money,
+// to catch the broad "I want Europe but where" search and funnel down into each cluster.
+// The clusters come from the data; the region-level read is editorial, keyed by href.
+const euClusters = clustersForRegion('Europe');
+const meta = {
+  '/compare/southern-europe': {
+    cost: 2, feel: 'Sun, coast and cafe culture',
+    cash: { t: 'Cards widely taken', lean: 'card' }, tip: 'Light, rounding', cur: 'Mostly euro',
+    verdict: 'The easy, sunny, best-value choice. Warm weather, coastlines, cards almost everywhere and light tipping, mostly on the euro. The gentlest introduction to Europe, and the kindest on the wallet.'
+  },
+  '/compare/central-europe': {
+    cost: 3, feel: 'Cities, castles and great trains',
+    cash: { t: 'Cash still matters', lean: 'cash' }, tip: 'Round up, about 10%', cur: 'Euro, plus others',
+    verdict: 'History, grand cities and the continent\u2019s best trains, at middling prices. You will carry more cash than in the south and juggle a few currencies beyond the euro. The pick for culture, castles and rail.'
+  },
+  '/compare/nordics': {
+    cost: 4, feel: 'Fjords, design and wilderness',
+    cash: { t: 'Nearly cashless', lean: 'card' }, tip: 'Not expected', cur: 'Krone and krona',
+    verdict: 'The splurge, and the scenery. The priciest corner of Europe and the most cashless, with no tipping and a different krona at nearly every border. Worth it when landscapes are the point and the budget allows.'
+  }
+};
+
+const rows = euClusters.map(c => ({
+  ...c,
+  ...(meta[c.href] || {}),
+  flags: c.slugs.map(s => {
+    const cc = countries.find(x => x.slug === s);
+    return cc ? { iso2: cc.iso2, name: cc.name } : null;
+  }).filter(Boolean)
+}));
+
+const checkedLabel = 'July 2026';
+const title = 'Which part of Europe? Southern, Central and Nordic Europe compared (2026) | True Trip Costs';
+const description = 'Not sure which part of Europe to visit? A high-level money and character comparison of Southern, Central and Nordic Europe for US travelers: relative cost, cash or card, tipping and currency, with a clear pick and links to each region.';
+---
+
+<Base title={title} description={description}>
+  <Nav />
+  <main class="wrap se">
+    <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Compare', href: '/compare' }, { label: 'Europe' }]} />
+    <div class="ctx"><span class="stamp">Checked {checkedLabel}</span> <span class="se-ctxtxt">Europe &middot; which region to visit</span></div>
+    <h1>Which part of Europe? The three regions compared</h1>
+    <p class="se-lede">You want to go to Europe, but where? Here is how its three regions compare on character and the money side, so you can pick a direction before you pick a country. Our read as the True Trip Costs desk, checked {checkedLabel}.</p>
+
+    <div class="se-pick">
+      <p class="se-pick-lab">The short answer</p>
+      <p class="se-pick-main"><b>Southern Europe</b> is the easiest, best-value first trip.</p>
+      <p class="se-pick-nuance">History, cities and trains? <a href="/compare/central-europe">Central Europe</a>. Once-in-a-lifetime landscapes, if the budget allows? <a href="/compare/nordics">the Nordics</a>.</p>
+    </div>
+
+    <section class="se-matrix-sec" aria-label="Europe regions comparison matrix">
+      <div class="matrix-scroll">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th class="mx-cty" scope="col">Region</th>
+              <th scope="col"><a class="mx-hlink" href="/cost-comparison">Cost</a></th>
+              <th scope="col"><a class="mx-hlink" href="/cash-or-card">Cash or card</a></th>
+              <th scope="col"><a class="mx-hlink" href="/tipping-compared">Tipping</a></th>
+              <th scope="col">Currency</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(r => (
+              <tr>
+                <th class="mx-cty mx-reg" scope="row">
+                  <a href={r.href}>
+                    <span class="mx-regflags">
+                      {r.flags.map(f => <img src={`https://flagcdn.com/${f.iso2}.svg`} alt="" width="20" height="14" loading="lazy" />)}
+                    </span>
+                    <span class="mx-regname">{r.region}</span>
+                    <span class="mx-regfeel">{r.feel}</span>
+                  </a>
+                </th>
+                <td data-label="Cost">
+                  <span class="cost-dots" role="img" aria-label={`Cost ${r.cost} out of 4`}>
+                    {[1, 2, 3, 4].map(n => <i class:list={["cd", { on: n <= r.cost }]}></i>)}
+                  </span>
+                </td>
+                <td data-label="Cash or card"><span class:list={["lean", r.cash.lean === 'card' ? 'lean-card' : 'lean-cash']}>{r.cash.t}</span></td>
+                <td data-label="Tipping"><span class="tipchip">{r.tip}</span></td>
+                <td data-label="Currency"><span class="mx-cur">{r.cur}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mx-legend">
+        <b>Reading this.</b> Cost is a rough 1 to 4 scale across the three regions (more dots, pricier), the desk's own read rather than a precise figure. Everything here is a regional generalisation; tap a region for the country-by-country comparison behind it.
+      </p>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">The honest headline</p>
+      <h2>The further north you go, the pricier and more cashless it gets</h2>
+      <p class="se-body">The three regions sort themselves neatly. <b>Southern Europe</b> is the warmest and best value, cards work almost everywhere, tipping is light, and most of it runs on the euro. <b>Central Europe</b> sits in the middle on price, with the continent's best trains and grandest cities, but more of a cash habit and several currencies beyond the euro. <b>The Nordics</b> are the most expensive and the most cashless on earth, with no tipping and a different krona at nearly every border. So the real trade is warmth and value in the south against dramatic landscapes in the north, with history and cities in between.</p>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">The regions</p>
+      <h2>A read on each, and where to compare the countries</h2>
+      <div class="verdicts">
+        {rows.map(r => (
+          <div class="vrow">
+            <div class="vhead">
+              <span class="vregflags">
+                {r.flags.map(f => <img src={`https://flagcdn.com/${f.iso2}.svg`} alt="" width="26" height="18" loading="lazy" />)}
+              </span>
+              <div>
+                <h3>{r.region}</h3>
+                <p class="vbest">{r.feel}</p>
+              </div>
+            </div>
+            <p class="vtext">{r.verdict}</p>
+            <a class="cta" href={r.href}>Compare {r.region} <span class="arw">&rarr;</span></a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">Quick picks</p>
+      <h2>If you only remember five things</h2>
+      <ul class="picks">
+        <li><b>Best value:</b> Southern Europe, comfortably.</li>
+        <li><b>Priciest:</b> the Nordics, comfortably.</li>
+        <li><b>Carry the most cash:</b> Central Europe, Germany especially.</li>
+        <li><b>Most cashless:</b> the Nordics, where some places refuse cash.</li>
+        <li><b>Easiest first trip:</b> Southern Europe, warm and card-friendly.</li>
+      </ul>
+    </section>
+
+    <section class="se-sec">
+      <div class="se-honest">
+        <p><b>How we rate this.</b> The cost dots and the reads on each region are the True Trip Costs desk's own high-level comparison for a US traveler, meant to help you choose a direction, not a precise index, and every region contains exceptions. Follow a region through to its country comparison, and then to each country's guide, which we date and check on its own. Checked {checkedLabel}.</p>
+      </div>
+      <div class="se-explore">
+        <a class="btn" href="/compare">See all region comparisons</a>
+        <a class="ghost se-ghost" href="/europe">Money in Europe, country by country &rarr;</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+
+  <style>
+    .se{max-width:880px}
+    .se .ctx{margin:26px 0 12px}
+    .se-ctxtxt{color:var(--muted)}
+    .se h1{margin:0 0 14px}
+    .se-lede{font-size:18px;color:#3B4A46;max-width:660px;margin:0 0 26px}
+
+    .matrix-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+    .matrix{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+    .matrix th,.matrix td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+    .matrix thead th{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--paper);white-space:nowrap}
+    .matrix tbody tr:last-child th,.matrix tbody tr:last-child td{border-bottom:none}
+    .matrix tbody tr:hover{background:#FBFBF9}
+    .mx-cty{position:sticky;left:0;background:var(--card);z-index:1}
+    .matrix thead .mx-cty{background:var(--paper);z-index:2}
+    .mx-cty a{display:inline-flex;align-items:center;gap:9px;color:var(--ink);text-decoration:none;font-family:var(--serif);font-weight:500;font-size:17px;line-height:1.15}
+    .mx-cty a:hover{color:var(--teal-deep)}
+    /* Region cell: flags row, region name, and the feel sub-line. */
+    .mx-reg a{flex-direction:column;align-items:flex-start;gap:4px}
+    .mx-regflags{display:inline-flex;gap:3px}
+    .mx-regflags img{border-radius:2px;border:1px solid var(--line);display:block}
+    .mx-regname{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink)}
+    .mx-reg a:hover .mx-regname{color:var(--teal-deep)}
+    .mx-regfeel{font-size:12.5px;color:var(--muted);font-family:var(--font);font-weight:400}
+    .cost-dots{display:inline-flex;gap:4px}
+    .cost-dots .cd{width:9px;height:9px;border-radius:50%;background:var(--green-bg);border:1px solid #CFE3DB}
+    .cost-dots .cd.on{background:var(--teal);border-color:var(--teal)}
+    .lean{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;border-radius:999px;padding:3px 10px;white-space:nowrap;line-height:1.4}
+    .lean::before{content:"";width:7px;height:7px;border-radius:2px;background:currentColor;flex:none}
+    .lean-card{color:var(--teal-deep);background:rgba(14,122,95,.12)}
+    .lean-cash{color:var(--amber);background:rgba(180,83,9,.12)}
+    .tipchip{display:inline-block;font-size:12.5px;font-weight:600;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px 10px;white-space:nowrap}
+    .mx-cur{font-size:13.5px;color:var(--ink);white-space:nowrap}
+    .mx-legend{font-size:13px;color:var(--muted);line-height:1.7;margin:14px 2px 0}
+    .mx-legend b{color:var(--ink);font-weight:600}
+
+    .se-sec{padding:30px 0 0;border-top:1px solid var(--line);margin-top:34px}
+    .se-body{font-size:16px;color:#3B4A46;max-width:680px;margin:0}
+    .se-body b{color:var(--ink);font-weight:600}
+
+    .verdicts{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+    .vrow{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px}
+    .vhead{display:flex;align-items:center;gap:12px;margin:0 0 8px}
+    .vregflags{display:inline-flex;gap:4px;flex:none}
+    .vregflags img{border-radius:3px;border:1px solid var(--line);display:block}
+    .vhead h3{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.1;margin:0}
+    .vbest{font-size:12.5px;font-weight:600;color:var(--teal-deep);margin:2px 0 0}
+    .vtext{font-size:15px;color:#3B4A46;line-height:1.6;margin:0 0 6px}
+    .vrow .cta{margin-top:2px;font-size:13.5px}
+
+    .picks{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+    .picks li{font-size:15px;color:#3B4A46;line-height:1.55;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px}
+    .picks li b{color:var(--ink);font-weight:600}
+
+    .se-honest{font-size:14px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:14px 16px;max-width:720px;box-shadow:var(--shadow);line-height:1.6}
+    .se-honest b{color:var(--ink);font-weight:600}
+    .se-honest p{margin:0}
+    .se-explore{margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
+    .se-ghost{color:var(--teal-deep);font-weight:600;text-decoration:none}
+    .se-ghost:hover{text-decoration:underline}
+
+    .se-pick{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 20px;margin:0 0 30px;max-width:660px}
+    .se-pick-lab{font-size:12px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.09em;margin:0 0 6px}
+    .se-pick-main{font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.25;color:var(--ink);margin:0 0 6px}
+    .se-pick-main b{font-weight:600}
+    .se-pick-nuance{font-size:14.5px;color:var(--muted);margin:0}
+    .se-pick-nuance a{color:var(--teal-deep);font-weight:600;text-decoration:none}
+    .se-pick-nuance a:hover{text-decoration:underline}
+
+    .mx-hlink{color:inherit;text-decoration:none;border-bottom:1px dotted rgba(111,110,102,.5);padding-bottom:1px}
+    .mx-hlink:hover{color:var(--teal-deep);border-bottom-color:var(--teal-deep)}
+
+    @media(max-width:640px){
+      .se-lede{font-size:16.5px}
+      .se-pick-main{font-size:19px}
+
+      .matrix-scroll{overflow:visible;border:none;background:none;box-shadow:none;border-radius:0}
+      .matrix{min-width:0;width:100%}
+      .matrix thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+      .matrix tbody{display:block}
+      .matrix tbody tr{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin:0 0 12px}
+      .matrix tbody tr:hover{background:var(--card)}
+      .matrix tbody tr th.mx-cty{display:flex;align-items:flex-start;gap:4px;padding:14px 15px;position:static;background:transparent;border-bottom:none}
+      .matrix tbody tr td{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 15px;text-align:right;border-top:1px solid var(--line);border-bottom:none}
+      .matrix tbody tr td::before{content:attr(data-label);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);text-align:left;white-space:nowrap;flex:none}
+      .mx-regname{font-size:19px}
+    }
+  </style>
+</Base>
