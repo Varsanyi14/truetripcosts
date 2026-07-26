@@ -107,15 +107,15 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
                     <span>{r.name}</span>
                   </a>
                 </th>
-                <td>
+                <td data-label="Daily cost">
                   <span class="cost-dots" role="img" aria-label={`Cost ${r.cost} out of 4`}>
                     {[1, 2, 3, 4].map(n => <i class:list={["cd", { on: n <= r.cost }]}></i>)}
                   </span>
                 </td>
-                <td><span class:list={["lean", r.cashLean === 'card' ? 'lean-card' : 'lean-cash']}>{r.cashTag}</span></td>
-                <td><span class="tipchip">{r.tip}</span></td>
-                <td><span class:list={["cx-chip", r.taxi.cls]}>{r.taxi.label}</span></td>
-                <td><span class="mx-cur">{r.cur}{r.curNote && <em> {r.curNote}</em>}</span></td>
+                <td data-label="Cash or card"><span class:list={["lean", r.cashLean === 'card' ? 'lean-card' : 'lean-cash']}>{r.cashTag}</span></td>
+                <td data-label="Tipping"><span class="tipchip">{r.tip}</span></td>
+                <td data-label="Taxis"><span class:list={["cx-chip", r.taxi.cls]}>{r.taxi.label}</span></td>
+                <td data-label="Currency"><span class="mx-cur">{r.cur}{r.curNote && <em> {r.curNote}</em>}</span></td>
               </tr>
             ))}
           </tbody>
@@ -264,11 +264,24 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
     .desk-by{font-size:13px;color:#3B5B50;margin:0;line-height:1.55}
     .desk-by a{color:var(--teal-deep);font-weight:600;text-decoration:underline;text-underline-offset:2px}
 
-    @media(max-width:620px){
+    @media(max-width:640px){
       .se-lede{font-size:16.5px}
-      .matrix{min-width:600px}
       .se-pick-main{font-size:19px}
       .desk-text{font-size:16px}
+
+      /* Collapse the matrix into one card per country: no horizontal scroll, each
+         attribute on its own labeled row. The header row is visually hidden but
+         kept for screen readers; each cell's label comes from its data-label. */
+      .matrix-scroll{overflow:visible;border:none;background:none;box-shadow:none;border-radius:0}
+      .matrix{min-width:0;width:100%}
+      .matrix thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+      .matrix tbody{display:block}
+      .matrix tbody tr{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin:0 0 12px}
+      .matrix tbody tr:hover{background:var(--card)}
+      .matrix tbody tr th.mx-cty{display:flex;align-items:center;gap:12px;padding:14px 15px;position:static;background:transparent;border-bottom:none}
+      .matrix tbody tr td{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 15px;text-align:right;border-top:1px solid var(--line);border-bottom:none}
+      .matrix tbody tr td::before{content:attr(data-label);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);text-align:left;white-space:nowrap;flex:none}
+      .mx-cty a{font-size:20px}
     }
   </style>
 </Base>
