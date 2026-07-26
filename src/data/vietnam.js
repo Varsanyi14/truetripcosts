@@ -409,6 +409,89 @@ export default {
         ],
         judgment: "These are the money traps most consistently reported by travelers in 2025 and 2026, concentrated in Ho Chi Minh City, Hanoi and the tourist hubs, not a ranked risk list, and dong amounts and the dominant app can shift, so treat figures as a recent read. Most of it is low-value and easily avoided. Checked July 2026."
       }
+    },
+    {
+      slug: "e-visa",
+      glance: [
+        { k: "Visa", v: "e-Visa, apply online" },
+        { k: "Validity", v: "Up to 90 days, single or multiple entry" },
+        { k: "Cost", v: "$25 single-entry, $50 multiple-entry" },
+        { k: "Where", v: "evisa.gov.vn only" }
+      ],
+      live: true,
+      topic: "visas",
+      title: "How do US citizens get a Vietnam e-visa? (2026) | True Trip Costs",
+      description: "US citizens need a visa for Vietnam, and the simplest route is the e-visa, applied for online before you fly. The one official portal, the fee ($25 single-entry, $50 multiple), the 90-day validity, and how to skip the sites that overcharge. Checked July 2026.",
+      h1: "How do US citizens get a Vietnam e-visa?",
+      lede: "Short answer: online, on one official government site, before you travel. US citizens need a visa for Vietnam, the e-visa is the easy route, but search results are full of middlemen charging well above the real fee. Here is the official site and the real cost.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-26",
+      answer: "US citizens need a <b>visa for Vietnam</b>, and the simplest route is the <b>e-visa</b>, applied for <b>online before you fly</b> on the one official portal, <b>evisa.gov.vn</b>. It is valid for <b>up to 90 days</b>, in a <b>single-entry ($25)</b> or <b>multiple-entry ($50)</b> version, and approval usually takes about <b>three to five working days</b>. There is no simple visa on arrival for US tourists, so arrange the e-visa in advance.",
+      official: {
+        label: "Official Vietnam e-Visa portal",
+        url: "https://evisa.gov.vn",
+        note: "This is the Vietnamese Immigration Department's official e-Visa site (it also runs at thithucdientu.gov.vn). The whole application is here: fill the form, upload your passport page and a photo, declare your entry port, and pay online. The fee is charged in Vietnamese dong, so the dollar amount can vary a little with the exchange rate."
+      },
+      expediter: true,
+      expediterNote: "Vietnam's form trips people up on small details, above all the entry port, which must match exactly where you actually arrive. If you would rather have someone check it, or you are short on time, a private visa service will file it for a fee on top of the government charge. You never need one, the official portal above is cheaper, but some travelers use one for peace of mind.",
+      expediterLabel: "File with a visa service",
+      sections: [
+        {
+          h: "Which e-visa, and what it costs",
+          icon: "receipt",
+          key: { fig: "$25 or $50", tag: "Single or multiple", text: "One e-visa, valid up to 90 days, in a single-entry version for $25 or a multiple-entry version for $50. The fee is charged in dong and is non-refundable.", tone: "teal" },
+          p: [
+            "There is one tourist <b>e-visa</b>, valid for <b>up to 90 days</b>. You choose <b>single-entry for $25</b> or <b>multiple-entry for $50</b>, the multiple-entry worth it if you plan to slip into Cambodia, Laos or Thailand and come back. The fee is set by the Immigration Department, charged in <b>Vietnamese dong</b> (so the dollar figure shifts a little with the exchange rate), and it is <b>non-refundable</b>, even if refused.",
+            "The visa runs from the <b>entry date you request</b>, not the day you apply, and it <b>cannot be extended</b>, so if you might stay longer, choose the multiple-entry or a later start rather than cutting it fine. Your passport needs <b>six months</b> of validity and a couple of blank pages."
+          ]
+        },
+        {
+          h: "How to apply, step by step",
+          icon: "qr",
+          key: { fig: "3 to 5 days", tag: "Apply ahead", text: "Apply on the official portal a week or two before you fly, with your passport, a photo and your exact entry port. Approval usually takes three to five working days.", tone: "teal" },
+          p: [
+            "Allow about <b>three to five working days</b>, and apply a week or two ahead to be safe."
+          ],
+          steps: [
+            "Go to the official portal, evisa.gov.vn, and start a new e-visa application. Go there directly, not through a search ad.",
+            "Fill in your details and upload a passport-style photo and a scan of your passport page.",
+            "Declare your entry and exit ports carefully, they must match where you actually arrive and leave, then pay the fee online.",
+            "Wait for the result by email, usually three to five working days. Download and print the e-visa and carry it, airlines check it at boarding and immigration checks it on arrival."
+          ]
+        },
+        {
+          h: "The official site, and the many that are not",
+          icon: "alert",
+          key: { tag: "Beware visa middlemen", text: "Like India, Vietnam draws swarms of lookalike sites that charge well above the $25 to $50 government fee to file the same form. Use only evisa.gov.vn.", tone: "amber" },
+          p: [
+            "Vietnam is one of the worst destinations for <b>visa middlemen</b>: search results are full of sites that charge well above the <b>$25 to $50</b> government fee to file the same application, and some only fill in the form for you at a markup. The official portals are <b>evisa.gov.vn</b> and <b>thithucdientu.gov.vn</b>, so if a site charges noticeably more, it is adding its own fee.",
+            "Be wary too of anything selling a Vietnam <b>visa on arrival</b>: the old approval-letter system is a private workaround rather than a government service, and for US citizens the clean route is the official e-visa arranged before you fly."
+          ]
+        },
+        {
+          h: "A couple of gotchas",
+          icon: "plane",
+          key: { tag: "Match your port, no extension", text: "The e-visa is tied to the entry port you declare and cannot be extended, so match it to how and where you arrive, and pick multiple-entry if you will leave and return.", tone: "amber" },
+          p: [
+            "The single biggest slip is the <b>entry port</b>: the e-visa lists the port you declared, and you are expected to arrive there, so if your plans change you may need to reapply. The e-visa <b>cannot be extended</b>, and if you leave and re-enter, say a side trip to Angkor Wat, you need the <b>multiple-entry</b> version. Overstaying brings daily fines.",
+            "For how money works once you are there, cards, cash, ATMs and the rest, see the <a href=\"/vietnam\">Vietnam money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Vietnam?", a: "Yes. US citizens need a visa, and the easiest route is the Vietnam e-visa, applied for online at evisa.gov.vn before you travel. Vietnam's short visa-free waiver does not include US passport holders, and there is no simple visa on arrival, so arrange the e-visa in advance. It is valid for up to 90 days, single or multiple entry." },
+        { q: "How much is the Vietnam e-visa for US citizens?", a: "The official government fee is $25 for a single-entry e-visa and $50 for a multiple-entry one, both valid up to 90 days. It is charged in Vietnamese dong, so the dollar amount can vary a little, and it is non-refundable. Third-party sites charge more to file the same form, so apply on the official portal." },
+        { q: "What is the official Vietnam e-visa website?", a: "evisa.gov.vn, run by the Vietnamese Immigration Department, which also operates at thithucdientu.gov.vn. Vietnam's search results are full of third-party sites that charge inflated fees for the same visa, so apply directly on the official site and confirm the current fee there." },
+        { q: "How long does the Vietnam e-visa take?", a: "Usually about three to five working days, though it can run longer in busy periods. Apply a week or two before you fly, and do not book non-refundable travel until it is approved. The e-visa cannot be extended, so for a longer trip choose the multiple-entry version or a later start date." }
+      ],
+      sources: {
+        links: [
+          { label: "Vietnam Immigration Department: the official Vietnam e-Visa portal, application, fees and conditions", url: "https://evisa.gov.vn", type: "gov" },
+          { label: "US Embassy in Vietnam: Vietnamese visas and entry and exit information for US citizens", url: "https://vn.usembassy.gov/vietnamese-visas-and-entry-exit/", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry and visa requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "Vietnam's e-visa fee is charged in dong and its rules have changed in recent years, with the 90-day, multiple-entry e-visa relatively new, so confirm the current fee and conditions on the official portal before you pay. Checked July 2026."
+      }
     }
   ]
 };
