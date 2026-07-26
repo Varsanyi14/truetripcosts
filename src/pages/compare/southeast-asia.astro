@@ -6,6 +6,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import RegionMap from '../../components/RegionMap.astro';
 import seaMap from '../../data/maps/southeast-asia.js';
 import { countries } from '../../data/index.js';
+import { otherClusters } from '../../data/region-comparisons.js';
 
 // Southeast Asia money comparison. Same recipe as the Southern Europe cluster:
 // decision-stage "which country" content the hubs cannot rank for, compared on
@@ -63,6 +64,7 @@ const rows = order.map(slug => {
 });
 
 const checkedLabel = 'July 2026';
+const others = otherClusters('/compare/southeast-asia');
 const title = 'Southeast Asia for travel money: Thailand, Vietnam, Indonesia, Philippines, Singapore (2026) | True Trip Costs';
 const description = 'Deciding between Thailand, Vietnam, Indonesia, the Philippines and Singapore? A side-by-side money comparison for US travelers: daily cost, cash vs card, tipping, taxis and currency, with a clear pick for each. Checked July 2026.';
 ---
@@ -185,6 +187,20 @@ const description = 'Deciding between Thailand, Vietnam, Indonesia, the Philippi
     </section>
 
     <section class="se-sec">
+      <p class="lab">More than one region in mind?</p>
+      <h2>Compare another part of the world</h2>
+      <div class="xreg">
+        {others.map(o => (
+          <a class="xreg-card" href={o.href}>
+            <span class="xreg-region">{o.region}</span>
+            <span class="xreg-pitch">{o.pitch}</span>
+            <span class="xreg-go">Compare <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="se-sec">
       <div class="se-honest">
         <p><b>How we rate this.</b> The cost dots and the verdicts are the True Trip Costs desk's own comparative read for a US traveler, meant for choosing between these countries, not a precise index. We compare on things that move slowly, relative cost, currency, card habits, tipping norms and taxi ease, and leave the exact prices, fees and rules to each country's guide, which we date and check on its own. Checked {checkedLabel}. Confirm anything critical, especially entry rules and current fees, in the country guide before you rely on it.</p>
       </div>
@@ -288,6 +304,16 @@ const description = 'Deciding between Thailand, Vietnam, Indonesia, the Philippi
     .rdot-open{background:var(--green-bg);border:2px solid #8FC3AC}
     .rlabel{display:block;font-family:var(--serif);font-weight:500;font-size:15px;color:var(--ink);line-height:1.2}
     .rnote{display:block;font-size:12px;color:#3B5B50;margin-top:2px;line-height:1.4}
+
+    /* Cross-region links: send undecided readers to the other comparison pages. */
+    .xreg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:8px}
+    .xreg-card{display:flex;flex-direction:column;gap:5px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;text-decoration:none;transition:border-color .2s ease,transform .2s ease}
+    .xreg-card:hover{border-color:#C2E0C8;transform:translateY(-1px)}
+    .xreg-region{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);line-height:1.15}
+    .xreg-pitch{font-size:13.5px;color:var(--muted);line-height:1.45}
+    .xreg-go{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--teal-deep);margin-top:2px}
+    .xreg-go svg{transition:transform .15s ease}
+    .xreg-card:hover .xreg-go svg{transform:translateX(3px)}
 
     @media(max-width:640px){
       .se-lede{font-size:16.5px}

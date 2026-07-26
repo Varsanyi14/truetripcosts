@@ -4,6 +4,7 @@ import Nav from './Nav.astro';
 import Footer from './Footer.astro';
 import USBadge from './USBadge.astro';
 import { signalChips } from '../data/hubs.js';
+import { clustersForRegion } from '../data/region-comparisons.js';
 import fs from 'node:fs';
 
 // One template for every hub. `hub` is the config from hubs.js (region today, thematic
@@ -13,6 +14,7 @@ import fs from 'node:fs';
 const flagDir = process.cwd() + '/public/flags/';
 const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? '/flags/' + slug + '.svg' : '/flags/world.svg';
 const { hub, items = [] } = Astro.props;
+const regionClusters = clustersForRegion(hub.label);
 
 const crumbBase = 'https://truetripcosts.com';
 const crumbLd = {
@@ -69,6 +71,21 @@ const crumbLd = {
       </section>
     )}
 
+    {regionClusters.length > 0 && (
+      <section class="hub-clusters">
+        <p class="hub-cl-lab">Deciding where to go in {hub.label}?</p>
+        <div class="hub-cl-grid">
+          {regionClusters.map(cl => (
+            <a class="hub-cl-card" href={cl.href}>
+              <span class="hub-cl-region">{cl.region}, compared</span>
+              <span class="hub-cl-pitch">{cl.pitch}</span>
+              <span class="hub-cl-go">Compare <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
     {hub.cardType === 'country' && items.length > 0 && (
       <p class="hub-compare">
         Compare across countries: <a href="/cost-comparison">the cost of a day, ranked</a>,
@@ -114,5 +131,16 @@ const crumbLd = {
     .hub-compare{font-size:15px;color:var(--muted);margin:0 0 40px}
     .hub-compare a{color:var(--teal-deep);font-weight:600;text-decoration:none}
     .hub-compare a:hover{text-decoration:underline}
+    /* Regional comparison clusters on a region hub (e.g. both Asia clusters on /asia). */
+    .hub-clusters{margin:0 0 30px}
+    .hub-cl-lab{font-size:12px;font-weight:600;color:var(--teal-deep);letter-spacing:.06em;text-transform:uppercase;margin:0 0 12px}
+    .hub-cl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+    .hub-cl-card{display:flex;flex-direction:column;gap:5px;background:rgba(14,122,95,.05);border:1px solid rgba(14,122,95,.2);border-radius:var(--radius);padding:16px 18px;text-decoration:none;transition:border-color .2s ease,background .2s ease}
+    .hub-cl-card:hover{border-color:var(--teal);background:rgba(14,122,95,.08)}
+    .hub-cl-region{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);line-height:1.15}
+    .hub-cl-pitch{font-size:13.5px;color:var(--muted);line-height:1.45}
+    .hub-cl-go{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--teal-deep);margin-top:2px}
+    .hub-cl-go svg{transition:transform .15s ease}
+    .hub-cl-card:hover .hub-cl-go svg{transform:translateX(3px)}
   </style>
 </Base>

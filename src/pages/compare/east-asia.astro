@@ -4,51 +4,42 @@ import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import RegionMap from '../../components/RegionMap.astro';
-import seMap from '../../data/maps/southern-europe.js';
+import eaMap from '../../data/maps/east-asia.js';
 import { countries } from '../../data/index.js';
 import { otherClusters } from '../../data/region-comparisons.js';
 
-// Southern Europe money comparison. A curated, decision-stage page: it targets
-// "which country" searches the country hubs cannot, so it complements them rather
-// than competing. Per the plan, it is deliberately more evergreen than a spoke:
-// it compares on slow-moving, relative attributes (relative cost, currency, card
-// habit, tipping norm, taxi ease) and leaves volatile specifics (exact prices,
-// fees, rules) to each country's guide, which is the source of truth and carries
-// its own date. Text here is written fresh for the comparison, never lifted from
-// the spokes, so there is no duplicate content.
+// East Asia money comparison. Same recipe as the other clusters: decision-stage
+// "which country" content, compared on slow-moving relative attributes, with the
+// volatile detail left to each guide. The regional story here is payments: modern
+// everywhere, but fragmented (a different habit per country, and China's foreign-card
+// gotcha), with the relief that tipping is not done anywhere.
+const order = ['japan', 'south-korea', 'taiwan', 'hong-kong', 'china'];
 
-// Identifiers come from the live data so names and flags never drift. The taxi
-// "ease" column is derived from each country's own taxi guide (its caution field),
-// so this page can never contradict the guide it links to.
-const order = ['portugal', 'spain', 'italy', 'greece', 'croatia'];
-
-// The desk's comparative read. Cost is a 1 to 4 relative scale across these five,
-// not a figure. Everything here is durable enough to sit above the volatile detail.
 const rate = {
-  portugal: {
-    cost: 2, cashLean: 'card', cashTag: 'Mostly cards', tip: 'Round up', cur: 'Euro', curNote: '',
-    bestFor: 'Best value, and easiest overall',
-    verdict: 'The value pick of the five and the simplest to travel: cheap by Western European standards, card-friendly, and easy to get around with Bolt or Uber. Pick Portugal if the priority is stretching the budget without hassle.'
+  japan: {
+    cost: 3, cashLean: "cash", cashTag: "Carry cash", tip: "None", cur: "Yen", curNote: "",
+    bestFor: "The all-rounder",
+    verdict: "The complete first trip: seamless trains, extraordinary food, deep culture and famously low crime. It leans on cash more than you would expect for somewhere so modern, so carry some, though IC transit cards and contactless now cover a lot. No tipping, ever, it tends to confuse rather than please. Pick Japan for the smoothest, richest introduction to the region."
   },
-  spain: {
-    cost: 2, cashLean: 'card', cashTag: 'Cards everywhere', tip: 'Round up', cur: 'Euro', curNote: '',
-    bestFor: 'Most card-friendly, great cities',
-    verdict: 'The most card-friendly of the group, with tap-to-pay almost everywhere and honest, cheap taxis. Strong value once you step outside the top tourist spots. Pick Spain for big-city energy and to barely touch cash.'
+  'south-korea': {
+    cost: 2, cashLean: "card", cashTag: "Card-first", tip: "None", cur: "Won", curNote: "counts high",
+    bestFor: "The most cashless, and the food",
+    verdict: "The easiest of the five on money: near-total card and contactless acceptance, so you can travel on almost no cash. Add world-class food, fast trains and cities that run late. No tipping here either. The won runs to big numbers, so prices look larger than they are. Pick South Korea for modern ease and the eating."
   },
-  italy: {
-    cost: 3, cashLean: 'cash', cashTag: 'Carry cash too', tip: 'Coperto', cur: 'Euro', curNote: '',
-    bestFor: 'The classic trip, and the priciest',
-    verdict: 'The priciest of the five, especially the north and the famous cities, and the one place to still carry cash: many spots prefer it, and a coperto cover charge per person is normal. Pick Italy for the once-in-a-lifetime hits, with a slightly bigger budget.'
+  taiwan: {
+    cost: 2, cashLean: "cash", cashTag: "Cash, cards in cities", tip: "None", cur: "NT$ dollar", curNote: "",
+    bestFor: "Value and night markets",
+    verdict: "The value pick, and a quiet favorite: friendly, safe, superb night markets and mountain scenery, at gentler prices than Japan. Cash still rules the markets and small shops, with cards in the cities and an EasyCard for transit. No tipping. Pick Taiwan for warmth and street food without the big-city price tag."
   },
-  greece: {
-    cost: 2, cashLean: 'cash', cashTag: 'Carry cash too', tip: 'Round up', cur: 'Euro', curNote: '',
-    bestFor: 'Islands, and value away from the famous two',
-    verdict: 'Excellent value on the mainland and most islands, with cards common in tourist areas but cash still handy for tavernas and smaller islands. Santorini and Mykonos are the summer exceptions. Pick Greece for island-hopping and strong value.'
+  'hong-kong': {
+    cost: 3, cashLean: "card", cashTag: "Cards and Octopus", tip: "None", cur: "HK$ dollar", curNote: "",
+    bestFor: "Skyline and dim sum",
+    verdict: "A dense, thrilling stop: one of the world's great skylines, the dim sum, and transit you tap through with an Octopus card that also buys small things. Cards are widely taken, though some small spots still want cash, and a 10% service charge usually stands in for tipping. Pick Hong Kong for a short, high-energy city hit."
   },
-  croatia: {
-    cost: 3, cashLean: 'card', cashTag: 'Mostly cards', tip: 'Round up', cur: 'Euro', curNote: 'since 2023',
-    bestFor: 'Coast and nature, not the bargain it was',
-    verdict: 'On the euro since 2023, card-friendly, and stunning, but no longer a bargain: the Dalmatian coast in peak summer (Dubrovnik, Split, Hvar) runs genuinely pricey, while inland stays cheaper. Pick Croatia for the coastline, and shoulder season to save.'
+  china: {
+    cost: 2, cashLean: "cash", cashTag: "Mobile pay", tip: "None", cur: "Yuan", curNote: "RMB",
+    bestFor: "Vast, and mobile-first",
+    verdict: "The vast one, and the one to prepare for. Foreign Visa and Mastercard are still patchy, so the fix is to set up Alipay or WeChat Pay and link your card before you go, then pay by phone the way locals do, with cash a distant backup. No tipping. The payoff is enormous: the Great Wall, the Forbidden City, Shanghai. Pick China for scale and history, with the payment setup done in advance."
   }
 };
 
@@ -62,35 +53,29 @@ const rows = order.map(slug => {
   const c = countries.find(x => x.slug === slug);
   const taxi = c ? (c.spokes || []).find(s => s.topic === 'taxis') : null;
   const caution = (taxi && taxi.caution) ? taxi.caution : 'low';
-  return {
-    slug,
-    name: c ? c.name : slug,
-    iso2: c ? c.iso2 : '',
-    ...rate[slug],
-    taxi: cautionMap[caution] || cautionMap.low
-  };
+  return { slug, name: c ? c.name : slug, iso2: c ? c.iso2 : '', ...rate[slug], taxi: cautionMap[caution] || cautionMap.low };
 });
 
+const others = otherClusters('/compare/east-asia');
 const checkedLabel = 'July 2026';
-const others = otherClusters('/compare/southern-europe');
-const title = 'Southern Europe for travel money: Portugal, Spain, Italy, Greece, Croatia (2026) | True Trip Costs';
-const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia? A side-by-side money comparison for US travelers: daily cost, cash vs card, tipping, taxis and currency, with a clear pick for each. Checked July 2026.';
+const title = 'East Asia for travel money: Japan, South Korea, Taiwan, Hong Kong, China (2026) | True Trip Costs';
+const description = 'Deciding between Japan, South Korea, Taiwan, Hong Kong and China? A side-by-side money comparison for US travelers: daily cost, how you pay, tipping, taxis and currency, with a clear pick for each. Checked July 2026.';
 ---
 
 <Base title={title} description={description}>
   <Nav />
   <main class="wrap se">
-    <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Compare', href: '/compare' }, { label: 'Southern Europe' }]} />
-    <div class="ctx"><span class="stamp">Checked {checkedLabel}</span> <span class="se-ctxtxt">Southern Europe &middot; money comparison</span></div>
-    <h1>Southern Europe for travel money, five countries compared</h1>
-    <p class="se-lede">You have narrowed it to Southern Europe but not the country. Here is how Portugal, Spain, Italy, Greece and Croatia stack up on the money side, so your friend in New York, or you, can pick with eyes open. Our read as the True Trip Costs desk, checked {checkedLabel}.</p>
+    <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Compare', href: '/compare' }, { label: 'East Asia' }]} />
+    <div class="ctx"><span class="stamp">Checked {checkedLabel}</span> <span class="se-ctxtxt">East Asia &middot; money comparison</span></div>
+    <h1>East Asia for travel money, five countries compared</h1>
+    <p class="se-lede">Thinking about East Asia but not sure which country? Here is how Japan, South Korea, Taiwan, Hong Kong and China compare on the money side, so you can pick with eyes open. Our read as the True Trip Costs desk, checked {checkedLabel}.</p>
 
-    <RegionMap region={seMap} alt="Outline map of Southern Europe with Portugal, Spain, Italy, Greece and Croatia highlighted among their neighbors" />
+    <RegionMap region={eaMap} alt="Outline map of East Asia with Japan, South Korea, Taiwan, Hong Kong and China highlighted among their neighbors" />
 
     <div class="se-pick">
       <p class="se-pick-lab">The short answer</p>
-      <p class="se-pick-main"><b>Portugal</b> is the easiest, best-value trip of the five.</p>
-      <p class="se-pick-nuance">Prefer the classics? <a href="/italy">Italy</a>. Chasing islands? <a href="/greece">Greece</a>. Set on the coastline? <a href="/croatia">Croatia</a>.</p>
+      <p class="se-pick-main"><b>Japan</b> is the smoothest, richest first trip.</p>
+      <p class="se-pick-nuance">Most cashless? <a href="/south-korea">South Korea</a>. Best value? <a href="/taiwan">Taiwan</a>. Skyline and dim sum? <a href="/hong-kong">Hong Kong</a>. Epic scale, with setup? <a href="/china">China</a>.</p>
     </div>
 
     <section class="se-matrix-sec" aria-label="Money comparison matrix">
@@ -100,7 +85,7 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
             <tr>
               <th class="mx-cty" scope="col">Country</th>
               <th scope="col"><a class="mx-hlink" href="/cost-comparison">Daily cost</a></th>
-              <th scope="col"><a class="mx-hlink" href="/cash-or-card">Cash or card</a></th>
+              <th scope="col"><a class="mx-hlink" href="/cash-or-card">How you pay</a></th>
               <th scope="col"><a class="mx-hlink" href="/tipping-compared">Tipping</a></th>
               <th scope="col"><a class="mx-hlink" href="/taxis-and-ride-hailing">Taxis</a></th>
               <th scope="col">Currency</th>
@@ -120,7 +105,7 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
                     {[1, 2, 3, 4].map(n => <i class:list={["cd", { on: n <= r.cost }]}></i>)}
                   </span>
                 </td>
-                <td data-label="Cash or card"><span class:list={["lean", r.cashLean === 'card' ? 'lean-card' : 'lean-cash']}>{r.cashTag}</span></td>
+                <td data-label="How you pay"><span class:list={["lean", r.cashLean === 'card' ? 'lean-card' : 'lean-cash']}>{r.cashTag}</span></td>
                 <td data-label="Tipping"><span class="tipchip">{r.tip}</span></td>
                 <td data-label="Taxis"><span class:list={["cx-chip", r.taxi.cls]}>{r.taxi.label}</span></td>
                 <td data-label="Currency"><span class="mx-cur">{r.cur}{r.curNote && <em> {r.curNote}</em>}</span></td>
@@ -136,8 +121,8 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
 
     <section class="se-sec">
       <p class="lab">The honest headline</p>
-      <h2>On the money mechanics, these five are more alike than different</h2>
-      <p class="se-body">All five use the <b>euro</b> (Croatia switched in 2023, so there is no kuna to think about), <b>cards are widely accepted</b>, <b>tipping is light</b> everywhere (round up, no set percentage), and as a <b>US visitor you can reclaim VAT</b> on larger purchases in any of them. Each also adds a small <b>local tourist or city tax</b> on your accommodation. So the money plumbing is much the same across the region. Where they genuinely differ is <b>overall cost</b> and a few <b>local habits</b>, which is what the table above and the picks below focus on.</p>
+      <h2>Modern everywhere, but each runs its own money system</h2>
+      <p class="se-body">These five are among the most developed places you can travel, yet your US card will not glide through all of them. Each leans on its own system: <b>Japan</b> still wants cash alongside its IC transit cards, <b>South Korea</b> and <b>Hong Kong</b> are card and contactless, and <b>China</b> runs on <b>Alipay and WeChat Pay</b>, where foreign cards are patchy unless you link them first. The relief that runs across the whole region: <b>tipping simply is not done</b>, so one worry from home disappears. Plan for a different payment habit in each country, and set up a mobile wallet before China.</p>
     </section>
 
     <section class="se-sec">
@@ -164,11 +149,11 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
       <p class="lab">Quick picks</p>
       <h2>If you only remember five things</h2>
       <ul class="picks">
-        <li><b>Cheapest, easiest overall:</b> Portugal, with Greece close behind on the mainland.</li>
-        <li><b>Most card-friendly:</b> Spain, where you can almost leave the cash at the hotel.</li>
-        <li><b>Carry some cash:</b> Italy and Greece, for small places, tavernas and the odd cover charge.</li>
-        <li><b>Watch the summer spike:</b> Croatia's coast, and the Greek islands of Santorini and Mykonos.</li>
-        <li><b>The quirk to know:</b> Italy's coperto, a small per-person cover charge that is not a scam.</li>
+        <li><b>Most cashless:</b> South Korea, closely followed by Hong Kong.</li>
+        <li><b>Still carry cash:</b> Japan and Taiwan, more than their modern feel suggests.</li>
+        <li><b>Prepare before you fly:</b> China, set up Alipay or WeChat Pay and link a card.</li>
+        <li><b>No tipping, anywhere:</b> a genuine relief across all five.</li>
+        <li><b>Priciest:</b> Japan and Hong Kong; Taiwan is the best value.</li>
       </ul>
     </section>
 
@@ -177,16 +162,18 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
       <h2>If it were my trip</h2>
       <div class="desk">
         <div class="desk-main">
-          <p class="desk-text">If I were flying over from the US, I would probably land in Croatia, Zagreb or Split depending on the flights, pick up a rental car, and drive down the coast, which is one of the loveliest stretches of the whole trip. I would hop across into Slovenia for a day or two as well, since it is such an easy border and a gentle way to add another country without upending the plan. From there I might drift on to Italy or Montenegro, and happily leave the rest for another visit rather than cram it all in. The driving is half the pleasure here, so I would coast rather than rush. For what it is worth, that is the route I would take, though everyone travels differently, and I hope your own trip is a wonderful one.</p>
+          <p class="desk-text">If you are flying all the way from the US, I would make it one big trip rather than a single stop. Start in Tokyo, since flights from the US are often the best value, then lean on Asia's excellent budget airlines and high-speed rail. See Japan beyond Tokyo, Kyoto, Osaka and Hiroshima are all unforgettable, then fly to South Korea for Seoul's food, nightlife and history. Carry on to Taiwan for some of the friendliest people anywhere, its night markets and mountains, then Hong Kong for a few days of skyline and food before crossing into mainland China, where Beijing's Great Wall and Forbidden City and Shanghai's old-and-futuristic mix are the highlights. With time, add Macau, an easy ferry from Hong Kong, for its blend of Portuguese and Chinese culture. Routed this way it minimizes backtracking and still delivers history, modern cities, food and culture in one sweep.</p>
           <p class="desk-by">A personal aside from <a href="/about">the True Trip Costs desk</a>. The verdicts above stay neutral; this is just one traveler's route.</p>
         </div>
         <div class="desk-route" aria-hidden="true">
           <p class="route-lab">The route</p>
           <ol class="route">
-            <li class="rnode start"><span class="rdot"></span><span class="rlabel">Land in Croatia</span><span class="rnote">Zagreb or Split, drive the coast</span></li>
-            <li class="rnode"><span class="rdot"></span><span class="rlabel">Slovenia</span><span class="rnote">an easy border hop</span></li>
-            <li class="rnode"><span class="rdot"></span><span class="rlabel">Italy or Montenegro</span><span class="rnote">as the trip unfolds</span></li>
-            <li class="rnode end"><span class="rdot rdot-open"></span><span class="rlabel">The rest</span><span class="rnote">saved for another visit</span></li>
+            <li class="rnode start"><span class="rdot"></span><span class="rlabel">Fly into Tokyo</span><span class="rnote">then Kyoto, Osaka, Hiroshima</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">South Korea</span><span class="rnote">Seoul's food and history</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">Taiwan</span><span class="rnote">night markets, mountains</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">Hong Kong</span><span class="rnote">skyline and dim sum</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">China</span><span class="rnote">Beijing, then Shanghai</span></li>
+            <li class="rnode end"><span class="rdot rdot-open"></span><span class="rlabel">Macau</span><span class="rnote">a ferry from Hong Kong, if time</span></li>
           </ol>
         </div>
       </div>
@@ -208,7 +195,7 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
 
     <section class="se-sec">
       <div class="se-honest">
-        <p><b>How we rate this.</b> The cost dots and the verdicts are the True Trip Costs desk's own comparative read for a US traveler, meant for choosing between these countries, not a precise index. We compare on things that move slowly, relative cost, currency, card habits, tipping norms and taxi ease, and leave the exact prices, fees and rules to each country's guide, which we date and check on its own. Checked {checkedLabel}. Confirm anything critical, especially entry rules and current fees, in the country guide before you rely on it.</p>
+        <p><b>How we rate this.</b> The cost dots and the verdicts are the True Trip Costs desk's own comparative read for a US traveler, meant for choosing between these countries, not a precise index. We compare on things that move slowly, relative cost, how you pay, tipping norms and taxi ease, and leave the exact prices, fees and rules to each country's guide, which we date and check on its own. Checked {checkedLabel}. Confirm anything critical, especially entry rules and current fees, in the country guide before you rely on it.</p>
       </div>
       <div class="se-explore">
         <a class="btn" href="/#guides">Browse all country guides</a>
@@ -224,9 +211,6 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
     .se h1{margin:0 0 14px}
     .se-lede{font-size:18px;color:#3B4A46;max-width:660px;margin:0 0 26px}
 
-    /* Comparison matrix: a semantic table styled as a visual grid. Scrolls
-       horizontally on narrow screens with the country column pinned, so the
-       scannable rows survive on a phone. */
     .matrix-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
     .matrix{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
     .matrix th,.matrix td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
@@ -274,8 +258,6 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
     .se-honest p{margin:0}
     .se-explore{margin-top:20px}
 
-    /* Headline pick: the one-line, snippet-friendly answer, conditional so it
-       stays honest (no single winner for every traveler). */
     .se-pick{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 20px;margin:0 0 30px;max-width:660px}
     .se-pick-lab{font-size:12px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.09em;margin:0 0 6px}
     .se-pick-main{font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.25;color:var(--ink);margin:0 0 6px}
@@ -284,23 +266,15 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
     .se-pick-nuance a{color:var(--teal-deep);font-weight:600;text-decoration:none}
     .se-pick-nuance a:hover{text-decoration:underline}
 
-    /* Column headers link out to the cross-country topic pages, so the matrix is
-       a hub in both directions: rows to countries, columns to topics. */
     .mx-hlink{color:inherit;text-decoration:none;border-bottom:1px dotted rgba(111,110,102,.5);padding-bottom:1px}
     .mx-hlink:hover{color:var(--teal-deep);border-bottom-color:var(--teal-deep)}
 
-    /* From the desk: the personal itinerary, deliberately set apart from the
-       neutral verdict cards (warm tint, serif body, a byline to /about) so the
-       analysis above keeps its authority and this reads as the human bonus. */
+    /* From the desk: personal itinerary, set apart from the neutral verdicts. */
     .desk{background:var(--green-bg);border:1px solid #C2E0C8;border-radius:var(--radius);padding:20px 22px;margin-top:8px;max-width:720px;display:flex;gap:24px;align-items:flex-start}
     .desk-main{flex:1 1 auto;min-width:0}
     .desk-text{font-family:var(--serif);font-weight:400;font-size:17px;line-height:1.6;color:#22403A;margin:0 0 14px}
     .desk-by{font-size:13px;color:#3B5B50;margin:0;line-height:1.55}
     .desk-by a{color:var(--teal-deep);font-weight:600;text-decoration:underline;text-underline-offset:2px}
-
-    /* Route schematic: the personal itinerary as a small vertical journey strip,
-       companion to the desk paragraph. Decorative (aria-hidden); the prose carries
-       the detail. Beside the text on desktop, stacked below it on mobile. */
     .desk-route{flex:0 0 206px;border-left:1px solid #C2E0C8;padding-left:20px;align-self:stretch}
     .route-lab{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 14px}
     .route{list-style:none;margin:0;padding:0;position:relative}
@@ -330,9 +304,6 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
       .desk{flex-direction:column;gap:0}
       .desk-route{flex:none;width:100%;border-left:none;border-top:1px solid #C2E0C8;padding-left:0;padding-top:16px;margin-top:16px;align-self:auto}
 
-      /* Collapse the matrix into one card per country: no horizontal scroll, each
-         attribute on its own labeled row. The header row is visually hidden but
-         kept for screen readers; each cell's label comes from its data-label. */
       .matrix-scroll{overflow:visible;border:none;background:none;box-shadow:none;border-radius:0}
       .matrix{min-width:0;width:100%}
       .matrix thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}

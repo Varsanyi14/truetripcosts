@@ -7,14 +7,26 @@ export const clusters = [
   {
     href: '/compare/southern-europe',
     region: 'Southern Europe',
+    parent: 'Europe',
     blurb: 'Portugal, Spain, Italy, Greece and Croatia, on cost, cash, tipping and getting around.',
+    pitch: 'Sunny coasts, light tipping, one shared currency.',
     slugs: ['portugal', 'spain', 'italy', 'greece', 'croatia']
   },
   {
     href: '/compare/southeast-asia',
     region: 'Southeast Asia',
+    parent: 'Asia',
     blurb: 'Thailand, Vietnam, Indonesia, the Philippines and Singapore, from cash habits to costs.',
+    pitch: 'Cheaper, cash first, and full of contrasts.',
     slugs: ['thailand', 'vietnam', 'indonesia', 'philippines', 'singapore']
+  },
+  {
+    href: '/compare/east-asia',
+    region: 'East Asia',
+    parent: 'Asia',
+    blurb: 'Japan, South Korea, Taiwan, Hong Kong and China, from payment apps to cost.',
+    pitch: 'Sleek modern cities, no tipping, a payment app each.',
+    slugs: ['japan', 'south-korea', 'taiwan', 'hong-kong', 'china']
   }
 ];
 
@@ -37,4 +49,15 @@ export function comparisonFor(slug, countries) {
   };
   const others = cluster.slugs.filter(s => s !== slug).map(nameOf);
   return { href: cluster.href, region: cluster.region, othersText: joinNames(others) };
+}
+
+// Clusters whose parent top-level region matches, for the region hub pages
+// (for example both Asia clusters appear on /asia).
+export function clustersForRegion(regionLabel) {
+  return clusters.filter(c => c.parent === regionLabel);
+}
+
+// The other clusters, for cross-linking between the comparison pages themselves.
+export function otherClusters(currentHref) {
+  return clusters.filter(c => c.href !== currentHref);
 }
