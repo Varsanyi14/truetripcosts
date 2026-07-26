@@ -1,0 +1,35 @@
+---
+// Reusable region locator map for comparison pages. Renders pre-generated,
+// projected SVG paths (built by scripts/build-region-map.mjs from public-domain
+// Natural Earth data) for a cluster of countries: a faint backdrop of neighbours
+// with the cluster's countries highlighted in teal.
+//
+// This is a decorative orientation graphic. The real, indexable content lives in
+// the page's text (the matrix, verdicts, headline pick), so the map takes an
+// `alt` string describing it for screen readers and carries no information that
+// is not already in the text. Add a new cluster by generating its data module
+// and passing it as `region`.
+const { region, alt } = Astro.props;
+---
+<figure class="rmap" role="img" aria-label={alt}>
+  <svg viewBox={region.viewBox} xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" focusable="false" aria-hidden="true">
+    <g class="rmap-bg">
+      {region.backdrop.map(d => <path d={d} />)}
+    </g>
+    <g class="rmap-hi">
+      {region.highlight.map(h => <path d={h.d} data-iso={h.iso} />)}
+    </g>
+  </svg>
+</figure>
+
+<style>
+  /* Quiet, modest inset by default so it sets the scene without pushing the
+     answer below the fold. Sea is the page background showing through. */
+  .rmap{margin:22px 0 26px;max-width:600px}
+  .rmap svg{width:100%;height:auto;display:block;overflow:hidden}
+  .rmap-bg path{fill:#E7E4DC;stroke:#F5F4EF;stroke-width:.7;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+  .rmap-hi path{fill:var(--teal);stroke:#F5F4EF;stroke-width:.9;stroke-linejoin:round;vector-effect:non-scaling-stroke}
+  @media(max-width:640px){
+    .rmap{max-width:none;margin:18px 0 22px}
+  }
+</style>
