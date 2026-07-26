@@ -1,0 +1,311 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import CompareFooterLinks from '../../components/CompareFooterLinks.astro';
+import RegionMap from '../../components/RegionMap.astro';
+import saMap from '../../data/maps/south-america.js';
+import { countries } from '../../data/index.js';
+import { otherClusters } from '../../data/region-comparisons.js';
+
+// South America money comparison. Four guided countries (Peru has no guide yet, so it
+// appears in the desk route but not the matrix). The regional story: good value across
+// the board, but each has a money quirk, Brazil is card and Pix friendly, Argentina's
+// exchange rates swing so cash dollars versus card can matter, Ecuador simply uses the
+// US dollar, and Colombia is the value pick. Spanish everywhere except Portuguese Brazil.
+const order = ['brazil', 'argentina', 'colombia', 'ecuador'];
+
+const rate = {
+  brazil: {
+    cost: 3, cashLean: "card", cashTag: "Cards and Pix", tip: "Service added", cur: "Real", curNote: "",
+    bestFor: "Beaches, Rio and Iguazu",
+    verdict: "The giant, and the icon: Rio, Iguazu Falls, the Amazon and endless coastline, enough for a whole trip on its own. It is the most card-friendly of the four, with Pix and cards everywhere, a 10% service charge usually stands in for tipping, and it runs a little pricier than its neighbors. Portuguese, not Spanish, sets it apart. Pick Brazil for the marquee sights and the beaches."
+  },
+  argentina: {
+    cost: 2, cashLean: "cash", cashTag: "Cash, bring USD", tip: "About 10%", cur: "Peso", curNote: "Argentine", taxiCaution: "medium",
+    bestFor: "Buenos Aires, wine, Patagonia",
+    verdict: "Buenos Aires, world-class steak and wine, and Patagonia if you have the time. The money quirk to know: exchange rates swing, and how you pay, cash US dollars versus card, can change what you effectively spend, so check the current picture before you go. Tip around 10%, in cash. Pick Argentina for the food, the wine and the drama of the south."
+  },
+  colombia: {
+    cost: 1, cashLean: "cash", cashTag: "Cards in cities", tip: "About 10%", cur: "Peso", curNote: "Colombian",
+    bestFor: "Medellin, Cartagena, coffee",
+    verdict: "The best value on the continent, and an easy, welcoming introduction: Medellin, Cartagena and the Coffee Region are three different trips in one country. Cards work in the cities, cash beyond them, and you tip about 10%. Pick Colombia for variety and value, and the gentlest learning curve of the four."
+  },
+  ecuador: {
+    cost: 2, cashLean: "cash", cashTag: "US dollars, small bills", tip: "About 10%", cur: "US dollar", curNote: "yes, USD",
+    bestFor: "Quito, and the Galapagos",
+    verdict: "Small, and unusually easy for Americans, because it runs on the US dollar, so there is no currency to convert. Quito's colonial center is a highlight, and the Galapagos, if the budget stretches, is extraordinary. Carry small bills, tip about 10%, and lean on ride apps for taxis. Pick Ecuador for the dollar convenience, Quito and the wildlife."
+  }
+};
+
+const cautionMap = {
+  low: { label: 'Easy', cls: 'cx-low' },
+  medium: { label: 'Some care', cls: 'cx-medium' },
+  high: { label: 'Take care', cls: 'cx-high' }
+};
+
+const rows = order.map(slug => {
+  const c = countries.find(x => x.slug === slug);
+  const taxi = c ? (c.spokes || []).find(s => s.topic === 'taxis') : null;
+  const caution = (taxi && taxi.caution) ? taxi.caution : (rate[slug].taxiCaution || 'low');
+  return { slug, name: c ? c.name : slug, iso2: c ? c.iso2 : '', ...rate[slug], taxi: cautionMap[caution] || cautionMap.low };
+});
+
+const others = otherClusters('/compare/south-america');
+const checkedLabel = 'July 2026';
+const title = 'South America for travel money: Brazil, Argentina, Colombia, Ecuador (2026) | True Trip Costs';
+const description = 'Deciding between Brazil, Argentina, Colombia and Ecuador? A side-by-side money comparison for US travelers: daily cost, cash vs card, tipping, taxis and currency, with a clear pick for each. Checked July 2026.';
+---
+
+<Base title={title} description={description}>
+  <Nav />
+  <main class="wrap se">
+    <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Compare', href: '/compare' }, { label: 'South America' }]} />
+    <div class="ctx"><span class="stamp">Checked {checkedLabel}</span> <span class="se-ctxtxt">South America &middot; money comparison</span></div>
+    <h1>South America for travel money, four countries compared</h1>
+    <p class="se-lede">Thinking about South America but not sure which country? Here is how Brazil, Argentina, Colombia and Ecuador compare on the money side, so you can pick with eyes open. Our read as the True Trip Costs desk, checked {checkedLabel}.</p>
+
+    <RegionMap region={saMap} maxWidth={300} alt="Outline map of South America with Brazil, Argentina, Colombia and Ecuador highlighted" />
+
+    <div class="se-pick">
+      <p class="se-pick-lab">The short answer</p>
+      <p class="se-pick-main"><b>Colombia</b> is the easiest, best-value first trip.</p>
+      <p class="se-pick-nuance">Iconic beaches and Rio? <a href="/brazil">Brazil</a>. Wine and Buenos Aires? <a href="/argentina">Argentina</a>. The US dollar and the Galapagos? <a href="/ecuador">Ecuador</a>.</p>
+    </div>
+
+    <section class="se-matrix-sec" aria-label="Money comparison matrix">
+      <div class="matrix-scroll">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th class="mx-cty" scope="col">Country</th>
+              <th scope="col"><a class="mx-hlink" href="/cost-comparison">Daily cost</a></th>
+              <th scope="col"><a class="mx-hlink" href="/cash-or-card">Cash or card</a></th>
+              <th scope="col"><a class="mx-hlink" href="/tipping-compared">Tipping</a></th>
+              <th scope="col"><a class="mx-hlink" href="/taxis-and-ride-hailing">Taxis</a></th>
+              <th scope="col">Currency</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(r => (
+              <tr>
+                <th class="mx-cty" scope="row">
+                  <a href={`/${r.slug}`}>
+                    {r.iso2 && <img class="mx-flag" src={`https://flagcdn.com/${r.iso2}.svg`} alt="" width="26" height="18" loading="lazy" />}
+                    <span>{r.name}</span>
+                  </a>
+                </th>
+                <td data-label="Daily cost">
+                  <span class="cost-dots" role="img" aria-label={`Cost ${r.cost} out of 4`}>
+                    {[1, 2, 3, 4].map(n => <i class:list={["cd", { on: n <= r.cost }]}></i>)}
+                  </span>
+                </td>
+                <td data-label="Cash or card"><span class:list={["lean", r.cashLean === 'card' ? 'lean-card' : 'lean-cash']}>{r.cashTag}</span></td>
+                <td data-label="Tipping"><span class="tipchip">{r.tip}</span></td>
+                <td data-label="Taxis"><span class:list={["cx-chip", r.taxi.cls]}>{r.taxi.label}</span></td>
+                <td data-label="Currency"><span class="mx-cur">{r.cur}{r.curNote && <em> {r.curNote}</em>}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mx-legend">
+        <b>Reading this.</b> Daily cost is a rough 1 to 4 scale across these four (more dots, pricier day), the desk's own read rather than a precise figure. Taxi ease reflects each country's local picture: <span class="cx-chip cx-low">Easy</span> is straightforward, <span class="cx-chip cx-medium">Some care</span> means a couple of things to watch, <span class="cx-chip cx-high">Take care</span> means lean on apps and stay alert. Tap any country for the detail behind its row.
+      </p>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">The honest headline</p>
+      <h2>Good value across the board, but each has a money quirk</h2>
+      <p class="se-body">South America is one of the better-value regions we cover, with <b>Colombia</b> the cheapest and <b>Brazil</b> a little pricier. What varies is how you pay and what to watch. <b>Brazil</b> is card and Pix friendly; <b>Argentina</b>'s exchange rates swing, so cash US dollars versus card can genuinely change your costs; <b>Ecuador</b> simply uses the US dollar, so there is nothing to convert; and <b>Colombia</b> leans on cash outside its cities. Tipping is a light habit at around 10%, often already added as a service charge. One practical note: it is Spanish everywhere except Brazil, which speaks Portuguese.</p>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">Which to pick</p>
+      <h2>A verdict on each</h2>
+      <div class="verdicts">
+        {rows.map(r => (
+          <div class="vrow">
+            <div class="vhead">
+              {r.iso2 && <img class="vflag" src={`https://flagcdn.com/${r.iso2}.svg`} alt="" width="30" height="21" loading="lazy" />}
+              <div>
+                <h3>{r.name}</h3>
+                <p class="vbest">{r.bestFor}</p>
+              </div>
+            </div>
+            <p class="vtext">{r.verdict}</p>
+            <a class="cta" href={`/${r.slug}`}>The {r.name} money guide <span class="arw">&rarr;</span></a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">Quick picks</p>
+      <h2>If you only remember five things</h2>
+      <ul class="picks">
+        <li><b>Best value:</b> Colombia, with the others close behind.</li>
+        <li><b>No currency to convert:</b> Ecuador uses the US dollar.</li>
+        <li><b>Watch the exchange rate:</b> Argentina, where cash and card can differ.</li>
+        <li><b>Most card-friendly:</b> Brazil, thanks to Pix.</li>
+        <li><b>Tip about 10%,</b> often already on the bill.</li>
+      </ul>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">From the desk</p>
+      <h2>If it were my trip</h2>
+      <div class="desk">
+        <div class="desk-main">
+          <p class="desk-text">For South America I would fly into Sao Paulo or Rio de Janeiro, which usually have the best fares from the US, then work my way around. See Brazil beyond the beaches: Rio is iconic, but do not miss Iguazu Falls on the Argentine border, or the Amazon if you can. From there, Argentina for Buenos Aires, the food and the wine, with Patagonia if time allows. Continue to Colombia, one of the best values on the continent, where Medellin, Cartagena and the Coffee Region are three very different experiences. Finish in Ecuador, for Quito's beautiful colonial center and, if the budget stretches, the Galapagos, one of the great wildlife destinations on earth. With extra time I would strongly add Peru: Machu Picchu and the Sacred Valley are unforgettable, and Peru slots naturally into this route. It is a superb mix of cities, natural wonders, wildlife and some of the best food in the Americas, with little backtracking.</p>
+          <p class="desk-by">A personal aside from <a href="/about">the True Trip Costs desk</a>. The verdicts above stay neutral; this is just one traveler's route.</p>
+        </div>
+        <div class="desk-route" aria-hidden="true">
+          <p class="route-lab">The route</p>
+          <ol class="route">
+            <li class="rnode start"><span class="rdot"></span><span class="rlabel">Fly into Sao Paulo</span><span class="rnote">or Rio: Iguazu, the Amazon</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">Argentina</span><span class="rnote">Buenos Aires, wine, Patagonia</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">Colombia</span><span class="rnote">Medellin, Cartagena, coffee</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">Ecuador</span><span class="rnote">Quito, and the Galapagos</span></li>
+            <li class="rnode end"><span class="rdot rdot-open"></span><span class="rlabel">Peru</span><span class="rnote">Machu Picchu, if time</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">More than one region in mind?</p>
+      <h2>Compare another part of the world</h2>
+      <div class="xreg">
+        {others.map(o => (
+          <a class="xreg-card" href={o.href}>
+            <span class="xreg-region">{o.region}</span>
+            <span class="xreg-pitch">{o.pitch}</span>
+            <span class="xreg-go">Compare <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="se-sec">
+      <div class="se-honest">
+        <p><b>How we rate this.</b> The cost dots and the verdicts are the True Trip Costs desk's own comparative read for a US traveler, meant for choosing between these countries, not a precise index. We compare on things that move slowly, relative cost, cash habits, tipping norms and taxi ease, and leave the exact prices, fees and rules to each country's guide, which we date and check on its own. Checked {checkedLabel}. Confirm anything critical, especially entry rules and current fees, in the country guide before you rely on it.</p>
+      </div>
+      <CompareFooterLinks href="/compare/south-america" />
+    </section>
+  </main>
+  <Footer />
+
+  <style>
+    .se{max-width:880px}
+    .se .ctx{margin:26px 0 12px}
+    .se-ctxtxt{color:var(--muted)}
+    .se h1{margin:0 0 14px}
+    .se-lede{font-size:18px;color:#3B4A46;max-width:660px;margin:0 0 26px}
+
+    .matrix-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+    .matrix{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+    .matrix th,.matrix td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
+    .matrix thead th{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--paper);white-space:nowrap}
+    .matrix tbody tr:last-child th,.matrix tbody tr:last-child td{border-bottom:none}
+    .matrix tbody tr:hover{background:#FBFBF9}
+    .mx-cty{position:sticky;left:0;background:var(--card);z-index:1}
+    .matrix thead .mx-cty{background:var(--paper);z-index:2}
+    .mx-cty a{display:inline-flex;align-items:center;gap:9px;color:var(--ink);text-decoration:none;font-family:var(--serif);font-weight:500;font-size:17px;line-height:1.15}
+    .mx-cty a:hover{color:var(--teal-deep)}
+    .mx-flag{border-radius:3px;border:1px solid var(--line);flex:none;display:block;object-fit:cover}
+    .cost-dots{display:inline-flex;gap:4px}
+    .cost-dots .cd{width:9px;height:9px;border-radius:50%;background:var(--green-bg);border:1px solid #CFE3DB}
+    .cost-dots .cd.on{background:var(--teal);border-color:var(--teal)}
+    .lean{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;border-radius:999px;padding:3px 10px;white-space:nowrap;line-height:1.4}
+    .lean::before{content:"";width:7px;height:7px;border-radius:2px;background:currentColor;flex:none}
+    .lean-card{color:var(--teal-deep);background:rgba(14,122,95,.12)}
+    .lean-cash{color:var(--amber);background:rgba(180,83,9,.12)}
+    .tipchip{display:inline-block;font-size:12.5px;font-weight:600;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px 10px;white-space:nowrap}
+    .mx-cur{font-size:13.5px;color:var(--ink);white-space:nowrap}
+    .mx-cur em{font-style:normal;color:var(--muted);font-size:12px}
+    .mx-legend{font-size:13px;color:var(--muted);line-height:1.7;margin:14px 2px 0}
+    .mx-legend .cx-chip{margin:0 3px;vertical-align:middle}
+    .mx-legend b{color:var(--ink);font-weight:600}
+
+    .se-sec{padding:30px 0 0;border-top:1px solid var(--line);margin-top:34px}
+    .se-body{font-size:16px;color:#3B4A46;max-width:680px;margin:0}
+    .se-body b{color:var(--ink);font-weight:600}
+
+    .verdicts{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+    .vrow{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px}
+    .vhead{display:flex;align-items:center;gap:12px;margin:0 0 8px}
+    .vflag{border-radius:3px;border:1px solid var(--line);flex:none;display:block;object-fit:cover}
+    .vhead h3{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.1;margin:0}
+    .vbest{font-size:12.5px;font-weight:600;color:var(--teal-deep);margin:2px 0 0}
+    .vtext{font-size:15px;color:#3B4A46;line-height:1.6;margin:0 0 6px}
+    .vrow .cta{margin-top:2px;font-size:13.5px}
+
+    .picks{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+    .picks li{font-size:15px;color:#3B4A46;line-height:1.55;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px}
+    .picks li b{color:var(--ink);font-weight:600}
+
+    .se-honest{font-size:14px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:14px 16px;max-width:720px;box-shadow:var(--shadow);line-height:1.6}
+    .se-honest b{color:var(--ink);font-weight:600}
+    .se-honest p{margin:0}
+
+    .se-pick{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 20px;margin:0 0 30px;max-width:660px}
+    .se-pick-lab{font-size:12px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.09em;margin:0 0 6px}
+    .se-pick-main{font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.25;color:var(--ink);margin:0 0 6px}
+    .se-pick-main b{font-weight:600}
+    .se-pick-nuance{font-size:14.5px;color:var(--muted);margin:0}
+    .se-pick-nuance a{color:var(--teal-deep);font-weight:600;text-decoration:none}
+    .se-pick-nuance a:hover{text-decoration:underline}
+
+    .mx-hlink{color:inherit;text-decoration:none;border-bottom:1px dotted rgba(111,110,102,.5);padding-bottom:1px}
+    .mx-hlink:hover{color:var(--teal-deep);border-bottom-color:var(--teal-deep)}
+
+    /* From the desk: personal itinerary, set apart from the neutral verdicts. */
+    .desk{background:var(--green-bg);border:1px solid #C2E0C8;border-radius:var(--radius);padding:20px 22px;margin-top:8px;max-width:720px;display:flex;gap:24px;align-items:flex-start}
+    .desk-main{flex:1 1 auto;min-width:0}
+    .desk-text{font-family:var(--serif);font-weight:400;font-size:17px;line-height:1.6;color:#22403A;margin:0 0 14px}
+    .desk-by{font-size:13px;color:#3B5B50;margin:0;line-height:1.55}
+    .desk-by a{color:var(--teal-deep);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+    .desk-route{flex:0 0 206px;border-left:1px solid #C2E0C8;padding-left:20px;align-self:stretch}
+    .route-lab{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 14px}
+    .route{list-style:none;margin:0;padding:0;position:relative}
+    .route::before{content:"";position:absolute;left:5px;top:5px;bottom:11px;width:2px;background:#A9D3BF;border-radius:2px}
+    .rnode{position:relative;padding:0 0 15px 22px}
+    .rnode:last-child{padding-bottom:0}
+    .rdot{position:absolute;left:0;top:3px;width:12px;height:12px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px var(--green-bg)}
+    .rnode.start .rdot{background:var(--teal-deep)}
+    .rdot-open{background:var(--green-bg);border:2px solid #8FC3AC}
+    .rlabel{display:block;font-family:var(--serif);font-weight:500;font-size:15px;color:var(--ink);line-height:1.2}
+    .rnote{display:block;font-size:12px;color:#3B5B50;margin-top:2px;line-height:1.4}
+
+    /* Cross-region links: send undecided readers to the other comparison pages. */
+    .xreg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:8px}
+    .xreg-card{display:flex;flex-direction:column;gap:5px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;text-decoration:none;transition:border-color .2s ease,transform .2s ease}
+    .xreg-card:hover{border-color:#C2E0C8;transform:translateY(-1px)}
+    .xreg-region{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);line-height:1.15}
+    .xreg-pitch{font-size:13.5px;color:var(--muted);line-height:1.45}
+    .xreg-go{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--teal-deep);margin-top:2px}
+    .xreg-go svg{transition:transform .15s ease}
+    .xreg-card:hover .xreg-go svg{transform:translateX(3px)}
+
+    @media(max-width:640px){
+      .se-lede{font-size:16.5px}
+      .se-pick-main{font-size:19px}
+      .desk-text{font-size:16px}
+      .desk{flex-direction:column;gap:0}
+      .desk-route{flex:none;width:100%;border-left:none;border-top:1px solid #C2E0C8;padding-left:0;padding-top:16px;margin-top:16px;align-self:auto}
+
+      .matrix-scroll{overflow:visible;border:none;background:none;box-shadow:none;border-radius:0}
+      .matrix{min-width:0;width:100%}
+      .matrix thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+      .matrix tbody{display:block}
+      .matrix tbody tr{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin:0 0 12px}
+      .matrix tbody tr:hover{background:var(--card)}
+      .matrix tbody tr th.mx-cty{display:flex;align-items:center;gap:12px;padding:14px 15px;position:static;background:transparent;border-bottom:none}
+      .matrix tbody tr td{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 15px;text-align:right;border-top:1px solid var(--line);border-bottom:none}
+      .matrix tbody tr td::before{content:attr(data-label);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);text-align:left;white-space:nowrap;flex:none}
+      .mx-cty a{font-size:20px}
+    }
+  </style>
+</Base>

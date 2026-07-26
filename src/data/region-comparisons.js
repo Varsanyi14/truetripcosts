@@ -43,6 +43,14 @@ export const clusters = [
     blurb: 'Japan, South Korea, Taiwan, Hong Kong and China, from payment apps to cost.',
     pitch: 'Sleek modern cities, no tipping, a payment app each.',
     slugs: ['japan', 'south-korea', 'taiwan', 'hong-kong', 'china']
+  },
+  {
+    href: '/compare/south-america',
+    region: 'South America',
+    parent: 'Americas',
+    blurb: 'Brazil, Argentina, Colombia and Ecuador, from the US dollar to exchange-rate quirks.',
+    pitch: 'Great value, vibrant cities, a currency quirk each.',
+    slugs: ['brazil', 'argentina', 'colombia', 'ecuador']
   }
 ];
 
