@@ -27,8 +27,8 @@ for (const b of basisBuckets) bucketCounts[b] = rows.filter(r => r.basisBucket =
 
 const totalM = (outboundTotal / 1e6).toFixed(1);
 
-const title = 'How many US travelers visited each country in 2024, ranked | True Trip Costs';
-const description = 'The True Trip Costs desk compilation of US travelers by destination country, 2024. Each figure is sourced and rated for confidence. Methodologies differ, so the numbers do not sum and are not strictly rank-comparable. Checked ' + outboundChecked + '.';
+const title = `US travelers by country, ranked (${outboundYear}) | True Trip Costs`;
+const description = 'US travelers by destination country for ' + outboundYear + ', each figure sourced and confidence-rated. Methods differ, so the numbers do not sum and are not comparable.';
 ---
 
 <Base ogImage="/og/us-outbound-travelers.jpg" title={title} description={description}>
