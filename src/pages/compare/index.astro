@@ -3,7 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
-import { clusters } from '../../data/region-comparisons.js';
+import { clusters, regionMetaCompare } from '../../data/region-comparisons.js';
 import { countries } from '../../data/index.js';
 
 // The comparison hub. Lists every regional comparison, data-driven from the
@@ -17,6 +17,8 @@ const cards = clusters.map(cl => ({
   })
 }));
 
+const metas = Object.values(regionMetaCompare);
+
 const title = 'Compare countries by region for travel money (2026) | True Trip Costs';
 const description = 'Side-by-side money comparisons of countries by region: cost, cash vs card, tipping, taxis and currency, to help US travelers choose where to go. Checked July 2026.';
 ---
@@ -27,6 +29,19 @@ const description = 'Side-by-side money comparisons of countries by region: cost
     <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Compare' }]} />
     <h1>Compare countries, by region</h1>
     <p class="cmp-lede">Still deciding where to go? These side-by-side guides weigh the countries in a region on the money side, cost, cash or card, tipping, taxis and currency, with a clear pick for each. Our read as the True Trip Costs desk.</p>
+    {metas.length > 0 && (
+      <div class="cmp-metas">
+        {metas.map(m => (
+          <a class="cmp-meta" href={m.href}>
+            <span class="cmp-meta-tx">
+              <span class="cmp-meta-h">{m.label}</span>
+              <span class="cmp-meta-p">{m.blurb}</span>
+            </span>
+            <span class="cmp-meta-go" aria-hidden="true">&#8594;</span>
+          </a>
+        ))}
+      </div>
+    )}
     <div class="cmp-grid">
       {cards.map(card => (
         <a class="cmp-card" href={card.href}>
@@ -57,5 +72,14 @@ const description = 'Side-by-side money comparisons of countries by region: cost
     .cmp-cta .arw{transition:transform .15s ease}
     .cmp-card:hover .cmp-cta .arw{transform:translateX(3px)}
     @media(max-width:560px){.cmp-lede{font-size:16.5px}}
+
+    /* "Which part of X?" meta comparisons, above the country-cluster grid. */
+    .cmp-metas{display:flex;flex-direction:column;gap:12px;margin:0 0 24px}
+    .cmp-meta{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 20px;border:1px solid rgba(14,122,95,.28);background:rgba(14,122,95,.07);border-radius:var(--radius);text-decoration:none;transition:border-color .2s ease,background .2s ease}
+    .cmp-meta:hover{border-color:var(--teal);background:rgba(14,122,95,.1)}
+    .cmp-meta-tx{display:flex;flex-direction:column;gap:3px}
+    .cmp-meta-h{font-family:var(--serif);font-weight:500;font-size:19px;color:var(--ink);line-height:1.15}
+    .cmp-meta-p{font-size:14px;color:var(--muted);line-height:1.45}
+    .cmp-meta-go{flex:none;color:var(--teal-deep);font-weight:700;font-size:18px}
   </style>
 </Base>
