@@ -177,6 +177,76 @@ export default {
 
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Bolt, Fotaxi (no Uber here)" },
+        { k: "Taxis", v: "Yellow, one regulated tariff" },
+        { k: "From Budapest airport", v: "The 100E bus, or Bolt" },
+        { k: "Watch for", v: "Unlicensed taxis, use yellow only" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Hungary: Bolt, yellow cabs, and no Uber (2026) | True Trip Costs",
+      description: "How taxis work in Hungary for US travelers in 2026: why Bolt rules and Uber does not operate, the single regulated Budapest tariff, the 100E airport bus, and avoiding unlicensed taxis. Checked July 2026.",
+      h1: "Taxis in Hungary, and the Bolt app",
+      lede: "Uber does not operate in Hungary, so Bolt is the app to have. Budapest taxis are all yellow and charge one regulated rate, and the main rule is to use only licensed cabs. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "<b>Uber does not operate in Hungary</b>, so install <b>Bolt</b> (the dominant app) or use <b>Fotaxi</b>, the official Budapest company. Licensed Budapest taxis are all <b>yellow</b> and charge a <b>single regulated tariff</b>, so a licensed cab will not overcharge. The one rule: <b>use only licensed yellow taxis</b> (or an app), never an unmarked car. From <b>Budapest airport (BUD)</b>, the <b>100E bus</b> is the cheap direct link, or take Fotaxi or Bolt. Fares are in <b>forint</b>.",
+      sections: [
+        {
+          h: "Which app: Bolt, not Uber",
+          icon: "phoneok",
+          key: { fig: "Bolt", tag: "No Uber here", text: "Uber does not operate in Hungary. Bolt is the dominant app, and Fotaxi is the official Budapest taxi company with its own app.", tone: "teal" },
+          p: [
+            "The key fact: <b>Uber does not operate in Hungary</b> (it left in 2016 and has not returned). Instead, <b>Bolt</b> is the dominant ride app, so install it, and <b>Fotaxi</b>, the main licensed Budapest company, has its own app too.",
+            "Either sets the fare up front and takes card, which is the easiest way for a visitor to get a fair, licensed ride."
+          ]
+        },
+        {
+          h: "From Budapest airport",
+          icon: "plane",
+          key: { fig: "100E bus", tag: "Or Fotaxi, Bolt", text: "The 100E airport bus runs direct to the city center cheaply. Otherwise use the official Fotaxi rank or Bolt, not a tout.", tone: "teal" },
+          p: [
+            "From <b>Budapest airport (BUD)</b>, the <b>100E airport bus</b> runs directly to the city center (Deak Ferenc ter) for a cheap fare and is easy with a small bag.",
+            "For a car, use the <b>official Fotaxi</b> desk or rank, or <b>Bolt</b>, both of which give a fair fixed or metered price. There is no direct train, so avoid anyone <b>touting</b> a taxi in the terminal."
+          ]
+        },
+        {
+          h: "Use licensed yellow taxis only",
+          icon: "alert",
+          key: { tag: "One regulated tariff", text: "Licensed Budapest taxis are all yellow and charge the same regulated tariff, so they will not overcharge. The risk is unmarked, unlicensed cars, so use a yellow taxi or an app.", tone: "amber" },
+          p: [
+            "Budapest regulates taxis tightly: <b>licensed cabs are all yellow</b> and charge a <b>single mandated tariff</b>, so a licensed taxi cannot legally overcharge you, which is reassuring.",
+            "The risk is <b>unmarked, unlicensed cars</b> that ignore the rules, especially near stations and nightlife. So <b>only get into a yellow licensed taxi</b> (with a company name and a visible meter) or book through <b>Bolt or Fotaxi</b>."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "coins",
+          key: { fig: "Round up", tag: "In forint", text: "Licensed fares run on the regulated tariff, in forint. Apps show the price up front; tip by rounding up, roughly 10%.", tone: "teal" },
+          p: [
+            "Licensed fares follow the <b>regulated tariff</b>, paid in <b>forint</b> (cards widely accepted), and apps show the price in advance. To <b>tip</b>, <b>round up</b> the fare, roughly 10% for good service.",
+            "For more, see <a href='/hungary/tipping'>tipping in Hungary</a>, <a href='/hungary/cash-or-card'>cash or card in Hungary</a>, and the <a href='/hungary'>Hungary money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in Hungary?", a: "No. Uber left Hungary in 2016 and does not operate there. Bolt is the dominant ride app, and Fotaxi, the official Budapest taxi company, has its own app. Both give a fair, licensed ride." },
+        { q: "How do I get from Budapest airport to the city?", a: "The 100E airport bus runs directly to the city center (Deak Ferenc ter) cheaply. For a car, use the official Fotaxi rank or Bolt. There is no direct train, so avoid anyone touting a taxi in the terminal." },
+        { q: "Are Budapest taxis a scam risk?", a: "Licensed yellow taxis charge one regulated tariff and cannot legally overcharge. The risk is unmarked, unlicensed cars, especially near stations and nightlife, so only use a yellow licensed taxi or book through Bolt or Fotaxi." },
+        { q: "Do you tip taxi drivers in Hungary?", a: "Yes, lightly: round up the fare, roughly 10% for good service. Licensed fares follow the regulated tariff and are paid in forint, with cards widely accepted." }
+      ],
+      sources: {
+        links: [
+          { label: "Hungarian Tourism Agency: official travel information", url: "https://visithungary.com/", type: "gov" },
+          { label: "US State Department: Hungary country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Hungary.html", type: "gov" }
+        ],
+        judgment: "Uber does not operate in Hungary, Bolt and Fotaxi do, Budapest uses one regulated taxi tariff, and unlicensed cars are the thing to avoid. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "10 to 15%, customary" },

@@ -170,6 +170,76 @@ export default {
 
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Uber (in the big cities)" },
+        { k: "Taxis", v: "Metered, honest, very expensive" },
+        { k: "From the airport", v: "The train easily beats a taxi" },
+        { k: "Tipping", v: "Round up (service included)" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Switzerland: pricey, and the train instead (2026) | True Trip Costs",
+      description: "How taxis work in Switzerland for US travelers in 2026: Uber in the big cities, why taxis are among the world's most expensive, when the train beats a taxi, and how much to tip. Checked July 2026.",
+      h1: "Taxis in Switzerland, and why to take the train",
+      lede: "Swiss taxis are honest and metered, but among the most expensive anywhere, and the public transport is so good that you will rarely want one. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "<b>Uber</b> works in the big cities (Zurich, Geneva, Basel, Lausanne), and regular taxis are <b>metered, honest and regulated</b> by the canton. The catch is price: Swiss taxis are among the <b>most expensive in the world</b>. Because the <b>trains, trams and buses</b> are superb and reasonably priced by comparison, most visitors barely use taxis. From the airport, the <b>train</b> easily beats a taxi. Service is <b>included</b>, so you only <b>round up</b>.",
+      sections: [
+        {
+          h: "Which app, and the transit alternative",
+          icon: "phoneok",
+          key: { fig: "Uber", tag: "In cities", text: "Uber works in Zurich, Geneva, Basel and Lausanne. But Swiss public transport is so good that most visitors rarely need a taxi at all.", tone: "teal" },
+          p: [
+            "<b>Uber</b> operates in the larger cities (Zurich, Geneva, Basel, Lausanne), and local taxi apps and ranks cover the rest. Regular taxis are ordered by phone or found at a rank rather than hailed.",
+            "The honest advice: Switzerland's <b>trains, trams and buses</b> are punctual, extensive and good value next to a taxi, so most visitors use transit for almost everything and keep taxis for late nights or heavy bags."
+          ]
+        },
+        {
+          h: "From the airport, take the train",
+          icon: "plane",
+          key: { fig: "Train", tag: "Beats a taxi", text: "From Zurich or Geneva airport, the train runs from under the terminal into the city in minutes, far cheaper than a very pricey taxi.", tone: "teal" },
+          p: [
+            "From <b>Zurich (ZRH)</b> and <b>Geneva (GVA)</b>, the <b>train station is inside the airport</b>, and trains reach the city center in around 10 to 15 minutes for a modest fare.",
+            "A <b>taxi</b> covers the same trip for many times the price, so unless you have a lot of luggage or a group, the train is the clear choice."
+          ]
+        },
+        {
+          h: "Honest and metered, but pricey",
+          icon: "wheel",
+          key: { fig: "Pricey", tag: "Use transit", text: "Taxis are metered and honest, with per-canton tariffs, so there is nothing to negotiate. They are simply expensive, so transit is usually better.", tone: "teal" },
+          p: [
+            "Swiss taxis run on <b>regulated per-canton tariffs</b>, so the <b>meter is honest</b> and there is nothing to haggle over. Cards are widely accepted.",
+            "The only real thing to know is that they are <b>expensive</b>, among the priciest anywhere, so treat a taxi as a convenience rather than a default and lean on public transport."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "coins",
+          key: { fig: "Round up", tag: "Service included", text: "Fares are metered and paid in francs. Service is included, so you only round up a little for good service.", tone: "teal" },
+          p: [
+            "Fares are <b>metered</b> and paid in <b>francs</b>, by card or cash. Service is <b>included</b>, so you do not owe a percentage, just <b>round up</b> a little for good service.",
+            "For more, see <a href='/switzerland/tipping'>tipping in Switzerland</a>, <a href='/switzerland/cash-or-card'>cash or card in Switzerland</a>, and the <a href='/switzerland'>Switzerland money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in Switzerland?", a: "Yes, Uber operates in the larger cities such as Zurich, Geneva, Basel and Lausanne. Regular taxis are metered and honest but expensive, so most visitors use the excellent public transport instead." },
+        { q: "Should I take a taxi from Zurich or Geneva airport?", a: "Usually not: the train station is inside the airport and reaches the city in 10 to 15 minutes for a modest fare, far cheaper than a very pricey taxi. Take the train unless you have heavy bags or a group." },
+        { q: "Are Swiss taxis expensive?", a: "Yes, among the most expensive in the world. They are metered and honest, with regulated per-canton tariffs, but the price is why most visitors lean on trains, trams and buses instead." },
+        { q: "Do you tip taxi drivers in Switzerland?", a: "Only by rounding up. Service is included in Switzerland, so you do not owe a percentage, just round up the fare a little for good service." }
+      ],
+      sources: {
+        links: [
+          { label: "Switzerland Tourism: official travel information", url: "https://www.myswitzerland.com/en/", type: "gov" },
+          { label: "US State Department: Switzerland country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Switzerland.html", type: "gov" }
+        ],
+        judgment: "Swiss taxis are honest and metered but very expensive, and the superb public transport is usually the better choice. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Light, service included" },

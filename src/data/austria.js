@@ -179,6 +179,76 @@ export default {
 
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Bolt, Uber (also 40100)" },
+        { k: "Taxis", v: "Metered, honest, regulated" },
+        { k: "From Vienna airport", v: "The S-Bahn or the CAT" },
+        { k: "Tipping", v: "Round up a euro or two" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Austria: the apps, and Vienna airport (2026) | True Trip Costs",
+      description: "How taxis work in Austria for US travelers in 2026: Bolt and Uber in Vienna, honest metered taxis, getting in from the airport by S-Bahn or the CAT, and how much to tip. Checked July 2026.",
+      h1: "Taxis in Austria, and the apps to use",
+      lede: "Austrian taxis are metered, honest and regulated, and in Vienna the apps make it easy. From the airport the train wins, and you tip by rounding up. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "In <b>Vienna</b>, install <b>Bolt</b> (popular and often cheapest) or <b>Uber</b>, which dispatches licensed taxis, and the local <b>40100</b> taxi app is another option. Taxis are <b>metered, honest and regulated</b>, so there is nothing to haggle over. From <b>Vienna airport (VIE)</b>, the <b>S-Bahn</b> is the cheap way in and the <b>CAT</b> (City Airport Train) is the fast one. You <b>tip</b> by rounding up a euro or two.",
+      sections: [
+        {
+          h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "Bolt", tag: "Uber too", text: "In Vienna, Bolt is popular and often cheapest, Uber dispatches licensed taxis, and the local 40100 app books a cab.", tone: "teal" },
+          p: [
+            "In <b>Vienna</b>, <b>Bolt</b> is widely used and often the cheapest, and <b>Uber</b> works, dispatching <b>licensed taxis</b> rather than private drivers. The long-standing local operator <b>40100</b> also has an app.",
+            "Outside Vienna, apps thin out, so taxis are usually ordered by phone or taken from a rank. All are metered, so an app mainly adds convenience and card payment."
+          ]
+        },
+        {
+          h: "From Vienna airport",
+          icon: "plane",
+          key: { fig: "S-Bahn", tag: "Or the CAT", text: "The S-Bahn (S7) is the cheap way into Vienna; the CAT is the fast non-stop train. A metered taxi or app works too.", tone: "teal" },
+          p: [
+            "From <b>Vienna airport (VIE)</b>, the <b>S-Bahn (line S7)</b> is the cheapest way into the city, and the <b>CAT (City Airport Train)</b> is the fast non-stop option to Wien Mitte, for a higher fare.",
+            "A metered <b>taxi</b> or an app into the center runs roughly 35 to 45 euros, which mainly makes sense for a group or heavy bags."
+          ]
+        },
+        {
+          h: "Metered, honest and regulated",
+          icon: "wheel",
+          key: { fig: "Metered", tag: "Honest", text: "Taxi fares are regulated, so the meter is honest with nothing to negotiate. Cards are widely accepted.", tone: "teal" },
+          p: [
+            "Austrian taxis run on <b>regulated tariffs</b>, so the <b>meter is honest</b> and consistent, with legitimate higher rates at night and on Sundays and holidays. There is <b>nothing to negotiate</b>.",
+            "<b>Cards</b> are widely accepted, though it is worth confirming in a street-hailed cab, and keeping a little cash as a backup."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "euro",
+          key: { fig: "Round up", tag: "A euro or two", text: "Tip by rounding up the fare a euro or two, telling the driver the total, as with restaurants. There is no set percentage.", tone: "teal" },
+          p: [
+            "Fares are metered and predictable. To <b>tip</b>, <b>round up</b> the fare by a euro or two and tell the driver the total you want to pay, just as in a restaurant.",
+            "For more, see <a href='/austria/tipping'>tipping in Austria</a>, <a href='/austria/cash-or-card'>cash or card in Austria</a>, and the <a href='/austria'>Austria money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in Austria?", a: "Yes, in Vienna, where it dispatches licensed taxis rather than private drivers. Bolt is popular and often cheaper, and the local 40100 app also books a cab. Outside Vienna, taxis are usually phoned or taken from a rank." },
+        { q: "How do I get from Vienna airport to the city?", a: "The S-Bahn (line S7) is the cheapest way in, and the CAT (City Airport Train) is the fast non-stop option to Wien Mitte for a higher fare. A metered taxi or app runs roughly 35 to 45 euros." },
+        { q: "Are Austrian taxis honest?", a: "Yes. Fares run on regulated tariffs, so the meter is honest and consistent, with higher rates at night and on Sundays and holidays. There is nothing to negotiate." },
+        { q: "Do you tip taxi drivers in Austria?", a: "Lightly: round up the fare by a euro or two and tell the driver the total, as you would in a restaurant. There is no set percentage." }
+      ],
+      sources: {
+        links: [
+          { label: "Austrian National Tourist Office: official travel information", url: "https://www.austria.info/en", type: "gov" },
+          { label: "US State Department: Austria country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Austria.html", type: "gov" }
+        ],
+        judgment: "Austrian taxis are metered, honest and regulated, Bolt and Uber serve Vienna, and the train beats a taxi from the airport. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping (Trinkgeld)", v: "Modest, about 5 to 10%" },

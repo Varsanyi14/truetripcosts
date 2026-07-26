@@ -168,6 +168,76 @@ export default {
 
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Dantaxi, Bolt (no Uber here)" },
+        { k: "Taxis", v: "Metered, honest, expensive" },
+        { k: "From Copenhagen airport", v: "The Metro beats a taxi" },
+        { k: "Tipping", v: "None (round up if you like)" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Denmark: the apps, no Uber, and the Metro (2026) | True Trip Costs",
+      description: "How taxis work in Denmark for US travelers in 2026: why Uber does not operate (use Dantaxi, Taxa 4x35 or Bolt), honest metered taxis, the Copenhagen airport Metro, and tipping. Checked July 2026.",
+      h1: "Taxis in Denmark, and getting around Copenhagen",
+      lede: "Uber does not operate in Denmark, so you use apps like Dantaxi or Bolt. Taxis are honest and metered but pricey, and in Copenhagen the Metro does most of the work. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "<b>Uber does not operate in Denmark</b>, so use a taxi app like <b>Dantaxi</b>, <b>Taxa 4x35</b> or <b>Viggo</b>, and <b>Bolt</b> also works in Copenhagen. Taxis are <b>metered, honest and regulated</b>, but <b>expensive</b>. From <b>Copenhagen airport (CPH)</b>, the <b>Metro</b> runs straight into the city and easily beats a taxi. Tipping is <b>not expected</b>, and Denmark is nearly cashless, so you pay by card or MobilePay.",
+      sections: [
+        {
+          h: "Which app: not Uber",
+          icon: "phoneok",
+          key: { fig: "Bolt", tag: "No Uber here", text: "Uber does not operate in Denmark. Use Dantaxi, Taxa 4x35 or Viggo, or Bolt in Copenhagen, to book a licensed metered taxi.", tone: "teal" },
+          p: [
+            "The fact to know: <b>Uber does not operate in Denmark</b> (it withdrew in 2017). Instead, use a taxi app: <b>Dantaxi</b> and <b>Taxa 4x35</b> are the big ones, <b>Viggo</b> is an electric-taxi app, and <b>Bolt</b> works in Copenhagen.",
+            "All book a <b>licensed, metered taxi</b> and take card, so getting a fair ride is easy once you have the right app installed."
+          ]
+        },
+        {
+          h: "From Copenhagen airport",
+          icon: "plane",
+          key: { fig: "Metro", tag: "Beats a taxi", text: "The Metro (M2) runs from Copenhagen airport into the city in about 15 minutes for a few kroner, far cheaper than a taxi.", tone: "teal" },
+          p: [
+            "From <b>Copenhagen airport (CPH, Kastrup)</b>, the <b>Metro (line M2)</b> runs straight into the city center in about <b>15 minutes</b> for a few kroner, and trains also serve the region.",
+            "A metered <b>taxi</b> into the center runs roughly 250 to 350 kroner, so the Metro is the obvious choice unless you have a group or heavy bags."
+          ]
+        },
+        {
+          h: "Metered, honest and expensive",
+          icon: "wheel",
+          key: { fig: "Metered", tag: "Honest, pricey", text: "Taxis are metered, regulated and honest, so there is nothing to negotiate. They are simply expensive, so transit is often better.", tone: "teal" },
+          p: [
+            "Danish taxis are <b>metered, regulated and honest</b>, so there is <b>nothing to haggle over</b>. Cars are clearly marked with the company name.",
+            "As across the Nordics, the main thing to know is that they are <b>expensive</b>, so Copenhagen's excellent Metro, trains, buses and bikes handle most trips more cheaply."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "card",
+          key: { fig: "Round up", tag: "Nearly cashless", text: "Fares are metered and paid by card or MobilePay, since Denmark is nearly cashless. Tipping is not expected, so just round up.", tone: "teal" },
+          p: [
+            "Fares are <b>metered</b> and paid by <b>card or MobilePay</b>, as Denmark is <b>nearly cashless</b>. Tipping is <b>not expected</b>, so at most <b>round up</b> for good service.",
+            "For more, see <a href='/denmark/tipping'>tipping in Denmark</a>, <a href='/denmark/cash-or-card'>cash or card in Denmark</a>, and the <a href='/denmark'>Denmark money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in Denmark?", a: "No. Uber withdrew from Denmark in 2017 and does not operate there. Use a taxi app like Dantaxi, Taxa 4x35 or Viggo, or Bolt in Copenhagen, all of which book a licensed metered taxi." },
+        { q: "How do I get from Copenhagen airport to the city?", a: "The Metro (line M2) runs straight into the city center in about 15 minutes for a few kroner, far cheaper than a taxi (roughly 250 to 350 kroner). Trains serve the region too." },
+        { q: "Are Danish taxis honest?", a: "Yes. Taxis are metered, regulated and honest, so there is nothing to negotiate. They are simply expensive, which is why Copenhagen's Metro, trains, buses and bikes handle most trips." },
+        { q: "Do you tip taxi drivers in Denmark?", a: "No, it is not expected. Fares are metered and paid by card or MobilePay since Denmark is nearly cashless, so at most round up for good service." }
+      ],
+      sources: {
+        links: [
+          { label: "VisitDenmark: official travel information", url: "https://www.visitdenmark.com/", type: "gov" },
+          { label: "US State Department: Denmark country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Denmark.html", type: "gov" }
+        ],
+        judgment: "Uber does not operate in Denmark, so taxi apps like Dantaxi and Bolt are the way, taxis are honest but expensive, and the Copenhagen Metro beats a taxi from the airport. Conditions shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Not really expected" },

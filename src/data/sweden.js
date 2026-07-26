@@ -172,6 +172,76 @@ export default {
 
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Uber, Bolt (also Taxi Stockholm)" },
+        { k: "Taxis", v: "Deregulated, fares vary a lot" },
+        { k: "From Arlanda", v: "The train, or a fixed-fare firm" },
+        { k: "Watch for", v: "Rogue taxis, check the price sticker" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "medium",
+      title: "Taxis in Sweden: the price sticker, and rogue cabs (2026) | True Trip Costs",
+      description: "How taxis work in Sweden for US travelers in 2026: Uber and Bolt, why deregulation lets rogue taxis overcharge, the mandatory comparison-price sticker to check, Arlanda airport, and tipping. Checked July 2026.",
+      h1: "Taxis in Sweden, and the price sticker",
+      lede: "Sweden deregulated taxis, so most are fine but a few rogue cabs charge wild rates, especially at the airport. The trick is the yellow comparison-price sticker, or just use an app. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>Uber</b> or <b>Bolt</b>, which both work in the cities, and reputable firms like <b>Taxi Stockholm</b>, <b>Taxi Kurir</b> and <b>Sverigetaxi</b> are safe bets. Sweden <b>deregulated taxis</b>, so fares vary a lot and a few <b>rogue cabs</b> charge extortionate rates, especially at <b>Arlanda</b> and tourist spots. Every taxi must show a yellow <b>comparison-price sticker</b> in the window: check it, or just use an app that shows the fare. Tipping is <b>not expected</b>, and Sweden is nearly cashless.",
+      sections: [
+        {
+          h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "Uber, Bolt", tag: "Or Taxi Sthlm", text: "Uber and Bolt both work in the cities, and reputable firms like Taxi Stockholm, Taxi Kurir and Sverigetaxi are safe bets.", tone: "teal" },
+          p: [
+            "<b>Uber</b> and <b>Bolt</b> both operate in <b>Stockholm, Gothenburg and Malmo</b>, and the established firms <b>Taxi Stockholm</b>, <b>Taxi Kurir</b> and <b>Sverigetaxi</b> are reputable and fair.",
+            "Using an app or a known company is the simplest way to sidestep the one real issue in Sweden, the rogue independent taxi, since the price is set or known in advance."
+          ]
+        },
+        {
+          h: "From Arlanda airport",
+          icon: "plane",
+          key: { fig: "Train", tag: "Or a fixed fare", text: "The Arlanda Express is fast; the commuter train and Flygbussarna coach are cheaper. A reputable taxi offers a fixed city fare; avoid rogue cabs at the rank.", tone: "teal" },
+          p: [
+            "From <b>Stockholm Arlanda (ARN)</b>, the <b>Arlanda Express</b> is the fast train, while the <b>commuter train</b> and the <b>Flygbussarna</b> coach are cheaper ways into the city.",
+            "If you want a taxi, the reputable firms offer a <b>fixed fare</b> to central Stockholm (often around 500 to 700 kronor), booked at their desk. This is exactly where <b>rogue taxis</b> lurk, so do not jump into an unknown cab at the rank."
+          ]
+        },
+        {
+          h: "Check the comparison-price sticker",
+          icon: "alert",
+          key: { tag: "Fares vary wildly", text: "Deregulation means fares vary a lot, and a few rogue taxis charge extortionate rates. By law every taxi shows a yellow comparison-price sticker in the window; check it, or use an app or known firm.", tone: "amber" },
+          p: [
+            "Because taxis are <b>deregulated</b>, fares vary a lot and a small number of <b>rogue cabs</b> charge <b>wildly high rates</b>, the classic Stockholm airport and tourist trap.",
+            "Your protection: by law, every taxi must display a yellow <b>comparison-price sticker (jamforpris)</b> in the rear window, showing the price for a standard trip. If that number looks high, walk away. Simpler still, <b>use an app or a known firm</b>, where the fare is set or fair."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "card",
+          key: { fig: "Round up", tag: "Nearly cashless", text: "Fares are paid by card or Swish, since Sweden is nearly cashless. Tipping is not expected, so just round up for good service.", tone: "teal" },
+          p: [
+            "Fares are paid by <b>card or Swish</b>, as Sweden is <b>nearly cashless</b>. Tipping is <b>not expected</b>, so at most <b>round up</b> for good service.",
+            "For more, see <a href='/sweden/tipping'>tipping in Sweden</a>, <a href='/sweden/cash-or-card'>cash or card in Sweden</a>, and the <a href='/sweden'>Sweden money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in Sweden?", a: "Yes, Uber and Bolt both work in Stockholm, Gothenburg and Malmo. Reputable firms like Taxi Stockholm, Taxi Kurir and Sverigetaxi are also fair. Using an app or known company sidesteps the rogue-taxi problem." },
+        { q: "Why are some Swedish taxis so expensive?", a: "Sweden deregulated taxis, so fares vary a lot and a few rogue cabs charge extortionate rates, especially at Arlanda and tourist spots. Check the yellow comparison-price sticker in the window, or use an app or known firm." },
+        { q: "How do I get from Arlanda to Stockholm?", a: "The Arlanda Express is the fast train; the commuter train and Flygbussarna coach are cheaper. Reputable taxis offer a fixed fare (around 500 to 700 kronor), but avoid jumping into an unknown cab at the rank." },
+        { q: "Do you tip taxi drivers in Sweden?", a: "No, it is not expected. Fares are paid by card or Swish since Sweden is nearly cashless, so at most round up for good service." }
+      ],
+      sources: {
+        links: [
+          { label: "Visit Sweden: official travel information", url: "https://visitsweden.com/", type: "gov" },
+          { label: "US State Department: Sweden country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Sweden.html", type: "gov" }
+        ],
+        judgment: "Sweden deregulated taxis, so rogue cabs can overcharge and the comparison-price sticker is your check, while apps and known firms are safe. Fares shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Not really expected" },

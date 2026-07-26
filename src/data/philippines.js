@@ -2,6 +2,7 @@ export default {
   slug: "philippines",
   live: true,
   name: "Philippines",
+  iso2: "ph",
   from: "United States",
   checked: "Jul 2026",
   checkedISO: "2026-07-25",
@@ -149,6 +150,66 @@ export default {
     pride: "The Philippines is an archipelago of more than seven thousand islands where Malay, Spanish, American and Chinese influences meet, English is widely spoken, and the warmth of Filipino hospitality is the thing visitors remember most. From the ancient rice terraces of the north to the karst lagoons of Palawan, it packs an extraordinary range into one sunny, friendly country."
   },
   spokes: [
+    {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Customary, about 10%" },
+        { k: "Restaurants", v: "Check for a 10% service charge" },
+        { k: "Also tipped", v: "Bellhops, drivers, guides" },
+        { k: "How", v: "Cash, in pesos" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in the Philippines: about 10%, explained (2026) | True Trip Costs",
+      description: "How tipping works in the Philippines for US travelers in 2026: why it is customary at about 10%, the service charge on restaurant bills, who else to tip, and how to leave it. Checked July 2026.",
+      h1: "Tipping in the Philippines",
+      lede: "The Philippines tips more than most of Asia, closer to the US: about 10% is customary and appreciated. The one thing to check is the service charge already on many bills. Here is what you actually owe.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "The Philippines has a <b>tipping culture</b>, more like the US than the rest of Asia: about <b>10%</b> is customary and appreciated for good service. Many restaurants already add a <b>10% service charge</b> (which by law now goes to staff), so <b>check the bill</b>: if it is there, an extra tip is optional, and if not, around 10% is normal. It is also customary to tip <b>bellhops, drivers, tour guides and Grab drivers</b> a small amount. Leave tips in <b>cash</b>, in pesos.",
+      sections: [
+        {
+          h: "About 10%, and it is customary",
+          icon: "coins",
+          key: { fig: "About 10%", tag: "More than most of Asia", text: "The Philippines tips closer to the US than the rest of Asia. About 10% for good service is customary and appreciated.", tone: "teal" },
+          p: [
+            "Unlike much of Asia, the Philippines <b>does tip</b>, a legacy of close US ties. At a <b>restaurant</b>, about <b>10%</b> for good service is customary and genuinely appreciated, and staff often rely on it.",
+            "At a <b>casual eatery or carinderia</b>, rounding up or leaving the small change is fine. It is warm and welcome rather than strictly obligatory."
+          ]
+        },
+        {
+          h: "Check the bill for a service charge",
+          icon: "receipt",
+          key: { fig: "10%", tag: "Goes to staff", text: "Many restaurants add a 10% service charge, which by law is distributed to employees. If it is on the bill, an extra tip is optional.", tone: "teal" },
+          p: [
+            "Many restaurants and hotels add a <b>10% service charge</b> to the bill, and by law this is <b>distributed to the staff</b>. If a <b>service charge appears</b>, you do <b>not need to add a full tip</b>, though leaving a little extra in cash for great service is a kind gesture.",
+            "If there is <b>no service charge</b>, leaving around <b>10%</b> is the norm. So read the bill first to see which applies."
+          ]
+        },
+        {
+          h: "Who else to tip, and paying",
+          icon: "peso",
+          key: { fig: "Small tips", tag: "Bellhops, drivers, guides", text: "A small tip for bellhops, drivers, tour guides and Grab drivers is customary. Leave tips in cash, in pesos.", tone: "teal" },
+          p: [
+            "Beyond restaurants, a <b>small tip</b> is customary for <b>bellhops and porters, hotel housekeeping, drivers, tour guides</b>, and rounding up for a <b>Grab</b> driver. Amounts are modest, a few pesos to a couple of hundred depending on the service.",
+            "Keep <b>small peso notes</b> for tips, since cash reaches the person directly. For more, see <a href='/philippines/taxis-and-apps'>taxis in the Philippines</a>, <a href='/philippines/cash-or-card'>cash or card in the Philippines</a>, and the <a href='/philippines'>Philippines money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in the Philippines?", a: "Yes, more than most of Asia and closer to the US: about 10% for good service is customary and appreciated. Many bills already include a 10% service charge, so check first, and tip bellhops, drivers and guides a small amount." },
+        { q: "Is there a service charge in Philippine restaurants?", a: "Often: many restaurants and hotels add a 10% service charge, which by law is distributed to staff. If it is on the bill, an extra tip is optional; if not, around 10% is the norm." },
+        { q: "How much should I tip in the Philippines?", a: "About 10% at a restaurant for good service if no service charge is added. For bellhops, drivers, housekeeping, guides and Grab drivers, a small amount, from a few pesos to a couple of hundred, is customary." },
+        { q: "Cash or card for tips in the Philippines?", a: "Cash, in pesos. Keep small peso notes for tips, since cash reaches the person directly, even where you pay the bill itself by card." }
+      ],
+      sources: {
+        links: [
+          { label: "Philippine Department of Tourism: official travel information", url: "https://philippines.travel/", type: "gov" },
+          { label: "US State Department: Philippines country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Philippines.html", type: "gov" }
+        ],
+        judgment: "Filipino tipping is customary at about 10%, closer to US norms than the rest of Asia, and the service charge on many bills is distributed to staff by law. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
     {
       slug: "cash-or-card",
       glance: [

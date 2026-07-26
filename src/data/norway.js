@@ -182,6 +182,76 @@ export default {
 
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Bolt, Uber (Uber in Oslo)" },
+        { k: "Taxis", v: "Very expensive, fares vary by firm" },
+        { k: "From Oslo airport", v: "The train beats a taxi" },
+        { k: "Watch for", v: "Check the price, fares differ a lot" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Norway: pricey, and fares that vary (2026) | True Trip Costs",
+      description: "How taxis work in Norway for US travelers in 2026: Bolt and Uber, why deregulation means fares vary a lot by company, the Oslo airport train, and how much to tip. Checked July 2026.",
+      h1: "Taxis in Norway, and checking the price",
+      lede: "Norwegian taxis are among the priciest anywhere, and since deregulation their fares vary a lot between companies, so it pays to check before you ride. The train usually wins. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>Bolt</b>, and <b>Uber</b> operates in <b>Oslo</b>, alongside established firms (Oslo Taxi and others). Norwegian taxis are <b>very expensive</b>, and since the market was <b>deregulated</b>, <b>fares vary a lot by company</b>, so check the price or use an app that shows it up front. From <b>Oslo airport (OSL)</b>, the <b>train</b> beats a taxi easily. Tipping is <b>not expected</b>, so you just round up. Fares are in <b>kroner</b>, and taxis take cards and Vipps.",
+      sections: [
+        {
+          h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "Bolt", tag: "Uber in Oslo", text: "Bolt works in the cities and Uber operates in Oslo, alongside established firms. An app shows the fare up front, which matters here.", tone: "teal" },
+          p: [
+            "<b>Bolt</b> works in Norwegian cities and <b>Uber</b> operates in <b>Oslo</b>, alongside established companies like Oslo Taxi. Since fares vary (see below), an <b>app that shows the price before you ride</b> is especially useful here.",
+            "Public transport in and around Oslo is good, so for many trips a tram, bus or train is far cheaper than any taxi."
+          ]
+        },
+        {
+          h: "From Oslo airport",
+          icon: "plane",
+          key: { fig: "Train", tag: "Beats a taxi", text: "From Oslo airport, the Flytoget express or a regular Vy train reaches the city cheaply. A taxi is very expensive.", tone: "teal" },
+          p: [
+            "From <b>Oslo airport (OSL, Gardermoen)</b>, the <b>Flytoget</b> airport express is fast, and a regular <b>Vy train</b> covers the same route for less, both far cheaper than a taxi.",
+            "A <b>taxi</b> into Oslo can run well over 800 kroner, so the train is the obvious choice unless you have a group or heavy bags."
+          ]
+        },
+        {
+          h: "Check the price: fares vary a lot",
+          icon: "alert",
+          key: { tag: "Since deregulation", text: "Norway deregulated taxis, so different companies charge very different rates and some independents are steep. Check the price sticker or use an app that shows the fare before you ride.", tone: "amber" },
+          p: [
+            "Since Norway <b>deregulated taxis</b>, <b>fares vary widely between companies</b>, and some independent cabs charge steep rates, especially at ranks and the airport.",
+            "So before you get in, <b>check the price</b> (there is a fare sticker in the window) or, more simply, <b>use an app</b> like Bolt or Uber that shows the total up front. Sticking to a well-known company also keeps the fare sensible."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "coins",
+          key: { fig: "Round up", tag: "Not expected", text: "Fares are metered but pricey, paid by card or Vipps. Tipping is not expected, so just round up for good service.", tone: "teal" },
+          p: [
+            "Fares are <b>metered but expensive</b>, paid by <b>card or Vipps</b> (cash rarely needed). Tipping is <b>not expected</b> in Norway, so at most <b>round up</b> for good service.",
+            "For more, see <a href='/norway/tipping'>tipping in Norway</a>, <a href='/norway/cash-or-card'>cash or card in Norway</a>, and the <a href='/norway'>Norway money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in Norway?", a: "Uber operates in Oslo, and Bolt works in the cities too, alongside established firms like Oslo Taxi. Since fares vary a lot between companies, an app that shows the price up front is especially useful." },
+        { q: "Should I take a taxi from Oslo airport?", a: "Usually not: the Flytoget express or a regular Vy train reaches the city far more cheaply, while a taxi can run well over 800 kroner. Take the train unless you have a group or heavy bags." },
+        { q: "Why do Norwegian taxi fares vary so much?", a: "Norway deregulated taxis, so different companies set very different rates and some independents are steep, especially at ranks and the airport. Check the fare sticker or use an app that shows the price before you ride." },
+        { q: "Do you tip taxi drivers in Norway?", a: "No, it is not expected. Fares are metered but expensive, paid by card or Vipps, so at most round up for good service." }
+      ],
+      sources: {
+        links: [
+          { label: "Visit Norway: official travel information", url: "https://www.visitnorway.com/", type: "gov" },
+          { label: "US State Department: Norway country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Norway.html", type: "gov" }
+        ],
+        judgment: "Norwegian taxis are very expensive, and deregulation means fares vary by company, so checking the price or using an app matters. The train beats a taxi from Oslo airport. Conditions shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Not really expected" },
