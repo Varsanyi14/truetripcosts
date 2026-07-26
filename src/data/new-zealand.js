@@ -179,6 +179,76 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Uber (also Ola, DiDi, Zoomy)" },
+        { k: "Taxis", v: "Metered, cashless, small surcharge" },
+        { k: "From the airport", v: "App or bus (no train)" },
+        { k: "Tipping", v: "None (round up if you like)" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in New Zealand: the apps, and cashless cabs (2026) | True Trip Costs",
+      description: "How taxis work in New Zealand for US travelers in 2026: Uber and its rivals, cashless metered taxis with a card surcharge, leaving the airport with no train, and why tipping is not expected. Checked July 2026.",
+      h1: "Taxis in New Zealand, and the apps to use",
+      lede: "New Zealand is easy to get around: Uber runs in the main cities, taxis are metered and effectively cashless, and you do not tip. Here is how it works, including the airport, where there is no train.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>Uber</b>, which runs in the main cities, with <b>Ola</b>, <b>DiDi</b> and the local <b>Zoomy</b> as alternatives, and traditional metered taxis everywhere. Taxis are <b>metered, regulated and effectively cashless</b>, with a small <b>card surcharge</b> that is normal and shown up front. From the airport there is <b>no train</b>, so it is an app, a taxi, or an airport bus. <b>Tipping is not expected</b>, though you can round up for a great trip.",
+      sections: [
+        {
+          h: "Which apps to install",
+          icon: "phoneok",
+          key: { fig: "Uber", tag: "Ola, DiDi, Zoomy too", text: "Uber runs in Auckland, Wellington, Christchurch and Queenstown, with Ola, DiDi and the local Zoomy as alternatives.", tone: "teal" },
+          p: [
+            "<b>Uber</b> is the main app in New Zealand and runs in <b>Auckland, Wellington, Christchurch and Queenstown</b>, with <b>Ola</b>, <b>DiDi</b> and the homegrown <b>Zoomy</b> competing. Traditional metered taxis (Corporate Cabs, Blue Bubble and others) operate everywhere.",
+            "In the big centers an app is the easy default. In smaller towns, apps thin out, so a phone booking or a rank is the norm."
+          ]
+        },
+        {
+          h: "From the airport",
+          icon: "plane",
+          key: { fig: "By app", tag: "Or airport bus", text: "There is no airport train in New Zealand. An app or taxi is the easy option, and a cheaper airport bus runs into Auckland and Wellington.", tone: "teal" },
+          p: [
+            "There is <b>no airport rail link</b> in New Zealand. From <b>Auckland (AKL)</b>, an <b>app or taxi</b> into the city runs roughly NZ$45 to NZ$90 (about 40 minutes), and the <b>SkyDrive airport bus</b> is a cheaper option.",
+            "<b>Wellington (WLG)</b> and <b>Queenstown (ZQN)</b> airports are close to town, so an app or taxi is quick and reasonable, with airport buses also available."
+          ]
+        },
+        {
+          h: "Cashless, metered, small surcharge",
+          icon: "card",
+          key: { fig: "Cashless", tag: "Small surcharge", text: "Taxis are metered and effectively cashless: tap a card or phone. A small card surcharge is normal and shown up front.", tone: "teal" },
+          p: [
+            "Taxis are <b>metered and regulated</b>, and New Zealand is <b>effectively cashless</b>, so you tap a card or phone or pay in the app. Expect a small <b>card surcharge</b>, which is <b>normal and disclosed</b>, so it is nothing to worry about.",
+            "There is nothing to negotiate: the meter or the app sets the fare, and apps show the price before you book."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "nzd",
+          key: { fig: "No tip", tag: "Round up if you like", text: "Fares are metered or set in the app. Tipping is not expected, though rounding up for a great trip is a welcome gesture.", tone: "teal" },
+          p: [
+            "Fares are <b>metered</b> in a taxi or <b>set in the app</b>, paid by card or phone. <b>Tipping is not expected</b> in New Zealand, since drivers earn a proper wage, though <b>rounding up</b> for a great trip is a welcome gesture.",
+            "For more, see <a href='/new-zealand/tipping'>tipping in New Zealand</a>, <a href='/new-zealand/cash-or-card'>cash or card in New Zealand</a>, and the <a href='/new-zealand'>New Zealand money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in New Zealand?", a: "Yes, Uber runs in Auckland, Wellington, Christchurch and Queenstown, with Ola, DiDi and the local Zoomy as alternatives. Traditional metered taxis operate everywhere too." },
+        { q: "How do I get from Auckland airport to the city?", a: "There is no airport train. An app or taxi runs roughly NZ$45 to NZ$90 (about 40 minutes), and the SkyDrive airport bus is a cheaper option. Wellington and Queenstown airports are closer to town." },
+        { q: "Do you tip taxi drivers in New Zealand?", a: "No, it is not expected, since drivers earn a proper wage. Rounding up for a great trip is a welcome gesture, but never required." },
+        { q: "Are New Zealand taxis cashless?", a: "Effectively yes: taxis are metered and you tap a card or phone, or pay in the app. A small card surcharge is normal and shown up front." }
+      ],
+      sources: {
+        links: [
+          { label: "Tourism New Zealand: official travel information", url: "https://www.newzealand.com/int/", type: "gov" },
+          { label: "US State Department: New Zealand country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/NewZealand.html", type: "gov" }
+        ],
+        judgment: "New Zealand taxis are metered, cashless and regulated, apps run in the main cities, and there is no airport rail. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Not expected, not the culture" },

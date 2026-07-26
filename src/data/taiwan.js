@@ -176,6 +176,76 @@ export default {
 
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Uber, LINE Taxi, Taiwan Taxi" },
+        { k: "Taxis", v: "Yellow, metered, cheap, honest" },
+        { k: "From Taoyuan", v: "The Airport MRT into Taipei" },
+        { k: "Tipping", v: "None" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Taiwan: the apps, and Taoyuan airport (2026) | True Trip Costs",
+      description: "How taxis work in Taiwan for US travelers in 2026: Uber and the LINE Taxi and Taiwan Taxi apps, cheap honest metered cabs, getting from Taoyuan by Airport MRT, and why you never tip. Checked July 2026.",
+      h1: "Taxis in Taiwan, and the apps to use",
+      lede: "Taiwanese taxis are cheap, plentiful and honest, and an app clears the one hurdle, the language. From Taoyuan the Airport MRT is easy, and you never tip. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>Uber</b>, which works well in Taiwan, or the local <b>LINE Taxi</b> and <b>Taiwan Taxi (55688)</b> apps. Regular taxis are <b>yellow, metered, cheap and honest</b>, so there is nothing to haggle over, though many drivers speak <b>limited English</b>, which is where an app or a written address helps. From <b>Taoyuan (TPE)</b>, the <b>Airport MRT</b> reaches Taipei easily. Taxis are mostly <b>cash</b>, and you <b>never tip</b>.",
+      sections: [
+        {
+          h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "Uber", tag: "Or LINE Taxi", text: "Uber works well in Taiwan, and the local LINE Taxi and Taiwan Taxi apps are popular. An app sets the destination and clears the language hurdle.", tone: "teal" },
+          p: [
+            "<b>Uber</b> works well in Taiwan and is easy for visitors, and locals use <b>LINE Taxi</b> (through the LINE messaging app) and <b>Taiwan Taxi (55688)</b>. Any of them sets the destination in the app, which is the real benefit given the language.",
+            "Street taxis are everywhere and cheap, so hailing one works too. Have your <b>destination written in Chinese</b> or shown on a map, since many drivers speak limited English."
+          ]
+        },
+        {
+          h: "From Taoyuan airport",
+          icon: "plane",
+          key: { fig: "MRT", tag: "Or High Speed Rail", text: "The Taoyuan Airport MRT runs into Taipei in about 40 minutes for a modest fare. High Speed Rail and buses are options too; a taxi is pricey.", tone: "teal" },
+          p: [
+            "From <b>Taoyuan (TPE)</b>, the <b>Airport MRT</b> runs into central Taipei in about 40 minutes for a modest fare (around NT$150), which is the easy choice. <b>High Speed Rail</b> and airport buses are alternatives.",
+            "A <b>taxi</b> into Taipei is reliable but pricey (roughly NT$1,000 to NT$1,200), so it mainly suits a group or a late arrival. An <b>EasyCard</b> covers the MRT and buses on a tap."
+          ]
+        },
+        {
+          h: "Cheap and honest, cash and language",
+          icon: "wheel",
+          key: { fig: "Cheap", tag: "Cash and language", text: "Yellow taxis are metered, cheap and honest. Most take cash (some cards or EasyCard), and a written Chinese address helps with the language.", tone: "teal" },
+          p: [
+            "Taiwanese taxis are <b>yellow, metered, cheap and honest</b>, with a low base fare and a late-night surcharge. There is <b>nothing to negotiate</b>, and they are plentiful in cities.",
+            "Two practical notes: most taxis are <b>cash</b> (some take cards or an EasyCard, but do not count on it), and <b>English is limited</b>, so a written or on-screen <b>Chinese address</b> makes the trip smooth."
+          ]
+        },
+        {
+          h: "Fares, paying and no tipping",
+          icon: "twd",
+          key: { fig: "No tip", tag: "Mostly cash", text: "Fares are metered and cheap, paid mostly in cash. You do not tip in Taiwan.", tone: "teal" },
+          p: [
+            "Fares are <b>metered and cheap</b>, paid mostly in <b>cash</b> (keep some NT dollars), or in the app when you book. You do <b>not tip</b> in Taiwan.",
+            "For more, see <a href='/taiwan/tipping'>tipping in Taiwan</a>, <a href='/taiwan/cash-or-card'>cash or card in Taiwan</a>, and the <a href='/taiwan'>Taiwan money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in Taiwan?", a: "Yes, Uber works well in Taiwan and is easy for visitors. Locals also use the LINE Taxi and Taiwan Taxi (55688) apps. Any of them sets the destination in the app, which helps with the language." },
+        { q: "How do I get from Taoyuan airport to Taipei?", a: "The Taoyuan Airport MRT runs into central Taipei in about 40 minutes for around NT$150. High Speed Rail and airport buses are alternatives; a taxi is reliable but pricey at roughly NT$1,000 to NT$1,200." },
+        { q: "Do Taiwanese taxis take cards?", a: "Most take cash, and some accept cards or an EasyCard, but do not count on it. Keep some NT dollars for taxis, or pay in the app when you book a ride." },
+        { q: "Do you tip taxi drivers in Taiwan?", a: "No. Tipping is not customary in Taiwan. Just pay the metered fare, which is cheap, in cash or in the app." }
+      ],
+      sources: {
+        links: [
+          { label: "Taiwan Tourism Administration: official travel information", url: "https://www.taiwan.net.tw/en/", type: "gov" },
+          { label: "US State Department: Taiwan country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Taiwan.html", type: "gov" }
+        ],
+        judgment: "Taiwanese taxis are cheap, honest and metered, Uber and local apps clear the language hurdle, and the Airport MRT beats a taxi from Taoyuan. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Not customary" },

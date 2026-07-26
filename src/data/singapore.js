@@ -175,6 +175,76 @@ export default {
 
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Grab (also Gojek, ComfortDelGro)" },
+        { k: "Taxis", v: "Metered, honest, strictly regulated" },
+        { k: "From Changi", v: "The MRT is cheap and fast" },
+        { k: "Tipping", v: "None" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Singapore: the Grab app, and Changi (2026) | True Trip Costs",
+      description: "How taxis work in Singapore for US travelers in 2026: the Grab app, metered honest taxis with legitimate surcharges, getting from Changi by MRT, and why you never tip. Checked July 2026.",
+      h1: "Taxis in Singapore, and the Grab app",
+      lede: "Singapore taxis are metered, honest and strictly regulated, and Grab makes booking effortless. The only thing to understand is the list of legitimate surcharges, not scams. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "Install <b>Grab</b>, the super-app most used in Singapore, with <b>Gojek</b>, the <b>ComfortDelGro</b> taxi app and <b>TADA</b> as alternatives. Taxis are <b>metered, honest and strictly regulated</b>, so there are no scams, but there is a long list of <b>legitimate surcharges</b> (peak hours, late night, the airport, road pricing) that can surprise you. From <b>Changi (SIN)</b>, the <b>MRT</b> is cheap and fast into the city. You <b>never tip</b>, and taxis take cards, PayNow and cash.",
+      sections: [
+        {
+          h: "Which app to install",
+          icon: "phoneok",
+          key: { fig: "Grab", tag: "The super-app", text: "Grab is the app most used in Singapore, with Gojek, the ComfortDelGro taxi app and TADA as alternatives. All price the trip up front.", tone: "teal" },
+          p: [
+            "<b>Grab</b> is the dominant ride and delivery app in Singapore, so install it first. <b>Gojek</b> competes on price, the <b>ComfortDelGro</b> app books that company's large taxi fleet, and <b>TADA</b> is another option. All show the fare up front and take card.",
+            "Street-hailing a taxi works fine too, since taxis are plentiful and honest, but an app removes any doubt about the fare and the surcharges."
+          ]
+        },
+        {
+          h: "From Changi airport",
+          icon: "plane",
+          key: { fig: "MRT", tag: "Cheap and fast", text: "The MRT from Changi reaches the city for a couple of Singapore dollars. A taxi is metered and reliable, with a fixed airport surcharge added.", tone: "teal" },
+          p: [
+            "From <b>Changi (SIN)</b>, the <b>MRT</b> runs into the city for a couple of Singapore dollars and is fast and easy. A metered <b>taxi</b> or a <b>Grab</b> is reliable too, typically S$20 to S$40 into the center, with a <b>fixed airport surcharge</b> added (higher at peak times).",
+            "Buy an <b>EZ-Link</b> or use a contactless card to tap through the MRT gates. For late arrivals or a group with luggage, the taxi or app is the simple door-to-door choice."
+          ]
+        },
+        {
+          h: "Honest, but mind the surcharges",
+          icon: "wheel",
+          key: { fig: "Surcharges", tag: "Legit extras", text: "Taxis are metered and honest, but legitimate surcharges apply for peak hours, late night, the airport and central road pricing (ERP). They are real, not a scam.", tone: "teal" },
+          p: [
+            "Singapore taxis are <b>metered, honest and strictly regulated</b>, so there is nothing to negotiate. What surprises visitors is the list of <b>legitimate surcharges</b>: a peak-hour percentage, a <b>late-night surcharge</b> (around 50% after midnight), an airport surcharge, a city or ERP road-pricing charge, and a small booking fee in an app.",
+            "These are <b>real and official</b>, not a driver overcharging you, and they show up on the meter or in the app. So the metered fare plus surcharges is simply how it works."
+          ]
+        },
+        {
+          h: "Fares, paying and no tipping",
+          icon: "sgd",
+          key: { fig: "No tip", tag: "Cards, PayNow, cash", text: "Fares are metered with official surcharges, and taxis take cards, PayNow and cash. You do not tip in Singapore.", tone: "teal" },
+          p: [
+            "Fares are <b>metered</b> plus the surcharges above, or set in the app. Taxis take <b>cards, PayNow and cash</b>. You do <b>not tip</b> in Singapore, including in taxis.",
+            "For more, see <a href='/singapore/tipping'>tipping in Singapore</a>, <a href='/singapore/cash-or-card'>cash or card in Singapore</a>, and the <a href='/singapore'>Singapore money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What taxi app should I use in Singapore?", a: "Grab is the dominant ride app, with Gojek, the ComfortDelGro taxi app and TADA as alternatives. All price the trip up front and take card. Street-hailing works fine too, since taxis are plentiful and honest." },
+        { q: "How do I get from Changi airport to the city?", a: "The MRT is cheap and fast into the city for a couple of Singapore dollars. A metered taxi or Grab runs S$20 to S$40 with a fixed airport surcharge added, which is the simple door-to-door option for a group or late arrival." },
+        { q: "Why is my Singapore taxi fare higher than the meter start?", a: "Legitimate surcharges apply: peak-hour, late-night (around 50% after midnight), airport, and central road pricing (ERP), plus a booking fee in an app. They are official, not a scam, and show on the meter or in the app." },
+        { q: "Do you tip taxi drivers in Singapore?", a: "No. Tipping is not customary in Singapore, including in taxis. Just pay the metered fare and surcharges, by card, PayNow or cash." }
+      ],
+      sources: {
+        links: [
+          { label: "Land Transport Authority (Singapore): official taxi fare and surcharge information", url: "https://www.lta.gov.sg", type: "gov" },
+          { label: "US State Department: Singapore country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Singapore.html", type: "gov" }
+        ],
+        judgment: "Singapore taxis are metered, honest and regulated, Grab leads the apps, and the surcharges are official rather than overcharging. Fares and surcharges shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Not customary" },

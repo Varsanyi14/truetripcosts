@@ -174,6 +174,76 @@ export default {
 
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Uber, HKTaxi (or just hail one)" },
+        { k: "Taxis", v: "Red, green, blue by area, metered" },
+        { k: "From the airport", v: "The Airport Express train" },
+        { k: "Tipping", v: "Round up the small change" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Hong Kong: the colors, cash, and the airport (2026) | True Trip Costs",
+      description: "How taxis work in Hong Kong for US travelers in 2026: Uber and HKTaxi, the red, green and blue taxi areas, why to carry cash, the Airport Express, and how much to tip. Checked July 2026.",
+      h1: "Taxis in Hong Kong, and the color zones",
+      lede: "Hong Kong taxis are cheap, honest and everywhere, but two things trip up visitors: they come in colors by area, and many still take only cash. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "You can just <b>hail a taxi</b> on the street (they are plentiful and cheap), or use <b>Uber</b> or <b>HKTaxi</b>. The quirk is the <b>colors</b>: <b>red</b> taxis serve urban Hong Kong Island and Kowloon, <b>green</b> the New Territories, and <b>blue</b> Lantau. They are <b>metered and honest</b>, but <b>many take only cash</b>, so carry <b>HK dollars</b>. From the airport, the <b>Airport Express</b> train is fast. You <b>tip</b> only by rounding up the change.",
+      sections: [
+        {
+          h: "Which app, or just hail one",
+          icon: "phoneok",
+          key: { fig: "Uber", tag: "Or street-hail", text: "Uber and HKTaxi both work, but taxis are so plentiful and cheap that street-hailing is easy. An app helps with the language and payment.", tone: "teal" },
+          p: [
+            "Taxis are <b>plentiful and cheap</b> in Hong Kong, so <b>street-hailing</b> is genuinely easy. If you prefer, <b>Uber</b> works (in a legal gray area but widely used) and <b>HKTaxi</b> books a regular cab.",
+            "An app helps with the <b>language</b> (many drivers speak limited English) and lets you pay by card, which matters because many street taxis are cash-only. Have your destination in <b>Chinese</b> as a backup."
+          ]
+        },
+        {
+          h: "From the airport",
+          icon: "plane",
+          key: { fig: "Train", tag: "Airport Express", text: "The Airport Express reaches Central in about 24 minutes. A taxi is metered but adds tunnel tolls, and the color must match your destination.", tone: "teal" },
+          p: [
+            "From <b>Hong Kong International (HKG)</b>, the <b>Airport Express</b> train reaches <b>Central in about 24 minutes</b>, with free porter and in-town check-in perks, and airport buses are a cheaper option.",
+            "A <b>taxi</b> is metered (roughly HK$250 to HK$350 to Central) and adds <b>tunnel tolls</b> for cross-harbour trips. Note the <b>color</b>: take a <b>red</b> taxi for the city, and be aware a driver may prefer trips that avoid the return toll."
+          ]
+        },
+        {
+          h: "The colors, and carry cash",
+          icon: "wheel",
+          key: { fig: "Carry cash", tag: "Red, green, blue", text: "Red taxis serve the city, green the New Territories, blue Lantau. They are metered and honest, but many take only cash, so carry HK dollars.", tone: "teal" },
+          p: [
+            "Hong Kong taxis are <b>color-coded by area</b>: <b>red</b> for urban Hong Kong Island and Kowloon (what you will use most), <b>green</b> for the New Territories, and <b>blue</b> for Lantau Island. A red taxi covers the main tourist areas.",
+            "They are <b>metered and honest</b>, but the practical catch is that <b>many take only cash</b> (though Octopus and e-payments are spreading), so always carry enough <b>HK dollars</b> for a taxi rather than assuming a card will work."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "hkd",
+          key: { fig: "Round up", tag: "Cash, plus tolls", text: "Fares are metered and cheap, with tunnel tolls and small luggage fees added. Carry cash, and tip only by rounding up the change.", tone: "teal" },
+          p: [
+            "Fares are <b>metered and cheap</b>, with legitimate extras for <b>tunnel tolls</b> and a small per-bag luggage fee. Pay in <b>cash</b> unless the taxi clearly takes cards or Octopus. To <b>tip</b>, just <b>round up</b> the change, which is all locals do.",
+            "For more, see <a href='/hong-kong/tipping'>tipping in Hong Kong</a>, <a href='/hong-kong/cash-or-card'>cash or card in Hong Kong</a>, and the <a href='/hong-kong'>Hong Kong money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in Hong Kong?", a: "Yes, Uber works in Hong Kong (in a legal gray area but widely used), and HKTaxi books a regular cab. But taxis are so plentiful and cheap that street-hailing is easy too." },
+        { q: "What do the taxi colors mean in Hong Kong?", a: "They mark the area a taxi serves: red for urban Hong Kong Island and Kowloon, green for the New Territories, and blue for Lantau Island. A red taxi covers the main tourist areas." },
+        { q: "Do Hong Kong taxis take cards?", a: "Many still take only cash, though Octopus and e-payments are spreading. Always carry enough HK dollars for a taxi rather than assuming a card will work, or use an app to pay by card." },
+        { q: "Do you tip taxi drivers in Hong Kong?", a: "Only by rounding up the change, which is what locals do. Fares are metered and cheap, with legitimate extras for tunnel tolls and luggage." }
+      ],
+      sources: {
+        links: [
+          { label: "Hong Kong Tourism Board: official travel information", url: "https://www.discoverhongkong.com/eng/index.html", type: "gov" },
+          { label: "US State Department: Hong Kong information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/HongKong.html", type: "gov" }
+        ],
+        judgment: "Hong Kong taxis are cheap, metered and honest, with color zones by area and a cash habit that catches visitors out. Fares, tolls and payment options shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "tipping",
       glance: [
         { k: "Tipping", v: "Light, service often included" },

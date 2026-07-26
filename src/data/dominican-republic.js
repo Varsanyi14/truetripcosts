@@ -171,6 +171,76 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Apps", v: "Uber, DiDi, inDrive (in cities)" },
+        { k: "Taxis", v: "No meters, agree the fare first" },
+        { k: "From Punta Cana", v: "Prebook a resort transfer" },
+        { k: "Watch for", v: "Motoconchos, tourist pricing" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "medium",
+      title: "Taxis in the Dominican Republic: agree the fare first (2026) | True Trip Costs",
+      description: "How to get around the Dominican Republic for US travelers in 2026: apps in the cities, why taxis have no meters so you agree the fare first, resort transfers from Punta Cana, and what to avoid. Checked July 2026.",
+      h1: "Taxis in the Dominican Republic",
+      lede: "The key thing in the Dominican Republic: taxis do not use meters, so you agree the fare before you get in. In the cities an app removes the guesswork, and for resorts a prebooked transfer is simplest. Here is how it works.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-23",
+      answer: "In the cities (<b>Santo Domingo, Santiago</b>), install <b>Uber</b>, <b>DiDi</b> or <b>inDrive</b>, which set the fare up front and remove the guesswork. The big thing to know: regular taxis <b>do not use meters</b>, so you <b>agree the fare before you get in</b>. For resort areas like <b>Punta Cana</b>, a <b>prebooked transfer</b> or your hotel's taxi is simplest, if pricey. Be wary of <b>motoconchos</b> (motorbike taxis) and tourist-rate overcharging. Pay in <b>pesos or US dollars</b>.",
+      sections: [
+        {
+          h: "Apps in the cities",
+          icon: "phoneok",
+          key: { fig: "Uber, DiDi", tag: "In cities", text: "In Santo Domingo and Santiago, Uber, DiDi and inDrive set the fare up front. In resort areas, apps are patchier and transfers dominate.", tone: "teal" },
+          p: [
+            "In <b>Santo Domingo and Santiago</b>, <b>Uber</b>, <b>DiDi</b> and <b>inDrive</b> all operate and are the easy choice, since they <b>set the fare in advance</b> and remove the negotiation. They also feel safer, since the driver and route are tracked.",
+            "In <b>resort areas</b> like Punta Cana, app coverage is patchier and <b>hotel taxis and transfers</b> dominate, so the app approach is mainly for the cities."
+          ]
+        },
+        {
+          h: "From Punta Cana airport",
+          icon: "plane",
+          key: { fig: "Prebook", tag: "Resort transfers", text: "Most resort guests prebook a transfer or use the hotel taxi. Airport taxis are fixed-rate and pricey; agree the price before you set off.", tone: "teal" },
+          p: [
+            "From <b>Punta Cana (PUJ)</b>, most resort guests <b>prebook a transfer</b> through the hotel or a shuttle company, which is the smoothest option. Official <b>airport taxis</b> are fixed-rate and <b>pricey</b> (often US$30 to US$40 even to nearby resorts).",
+            "From <b>Santo Domingo (SDQ)</b>, an app or an airport taxi both work. Wherever you land, <b>agree the price before you set off</b> if there is no meter and no app."
+          ]
+        },
+        {
+          h: "No meters: agree the fare first",
+          icon: "alert",
+          key: { tag: "And avoid motoconchos", text: "Regular taxis have no meters, so settle the fare before getting in, ideally in pesos. Be wary of motoconchos (motorbike taxis), which are cheap but risky, and of tourist-rate quotes.", tone: "amber" },
+          p: [
+            "The habit to build: regular Dominican taxis <b>do not use meters</b>, so <b>agree the fare before you get in</b>, and confirm the currency (a quote may be in pesos or dollars). Have a rough idea of the fair price from your hotel first.",
+            "Be wary of <b>motoconchos</b>, the motorbike taxis: they are cheap and everywhere, but <b>riskier</b> for a visitor (no helmet, traffic), so most travelers skip them. And expect the occasional <b>tourist-rate</b> quote, which is where an app or a hotel-arranged car helps."
+          ]
+        },
+        {
+          h: "Fares, paying and tipping",
+          icon: "dop",
+          key: { fig: "Pesos", tag: "Or US dollars", text: "Pay agreed fares or app fares in pesos or US dollars, both accepted in tourist areas. A small tip or rounding up is a kind gesture.", tone: "teal" },
+          p: [
+            "Pay an <b>agreed fare or an app fare</b> in <b>pesos or US dollars</b>, both widely accepted in tourist areas, though pesos give better value for a street deal. A <b>small tip or rounding up</b> is a kind gesture but not required for a ride.",
+            "For more, see <a href='/dominican-republic/tipping'>tipping in the Dominican Republic</a>, <a href='/dominican-republic/cash-or-card'>cash or card in the Dominican Republic</a>, and the <a href='/dominican-republic'>Dominican Republic money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Uber in the Dominican Republic?", a: "Yes, in the cities: Uber, DiDi and inDrive all operate in Santo Domingo and Santiago and set the fare up front. In resort areas like Punta Cana, coverage is patchier and hotel taxis and transfers dominate." },
+        { q: "Do Dominican taxis use meters?", a: "No. Regular taxis have no meters, so you agree the fare before you get in, and confirm whether the quote is in pesos or dollars. Get a rough idea of the fair price from your hotel first, or use an app in the cities." },
+        { q: "How do I get from Punta Cana airport to my resort?", a: "Most guests prebook a transfer through the hotel or a shuttle company, which is smoothest. Official airport taxis are fixed-rate and pricey, often US$30 to US$40 even to nearby resorts, so agree the price first." },
+        { q: "Are motoconchos safe in the Dominican Republic?", a: "They are cheap and everywhere, but riskier for a visitor (no helmet, heavy traffic), so most travelers skip them. Use an app in the cities or a hotel-arranged car instead." }
+      ],
+      sources: {
+        links: [
+          { label: "Dominican Republic Ministry of Tourism: official travel information", url: "https://www.godominicanrepublic.com/", type: "gov" },
+          { label: "US State Department: Dominican Republic country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/DominicanRepublic.html", type: "gov" }
+        ],
+        judgment: "Dominican taxis are unmetered, so agreeing the fare first is essential, apps cover the cities, and resort transfers dominate at Punta Cana. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Peso (DOP), dollars accepted" },
