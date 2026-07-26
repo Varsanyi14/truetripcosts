@@ -13,6 +13,14 @@ export const clusters = [
     slugs: ['portugal', 'spain', 'italy', 'greece', 'croatia']
   },
   {
+    href: '/compare/western-europe',
+    region: 'Western Europe',
+    parent: 'Europe',
+    blurb: 'The UK, France, the Netherlands and Ireland, the classic first-timer loop.',
+    pitch: 'The gentlest first trip: easy, card-friendly, English-easy.',
+    slugs: ['united-kingdom', 'france', 'netherlands', 'ireland']
+  },
+  {
     href: '/compare/central-europe',
     region: 'Central Europe',
     parent: 'Europe',
