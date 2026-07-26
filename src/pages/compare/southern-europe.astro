@@ -79,16 +79,22 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
     <h1>Southern Europe for travel money, five countries compared</h1>
     <p class="se-lede">You have narrowed it to Southern Europe but not the country. Here is how Portugal, Spain, Italy, Greece and Croatia stack up on the money side, so your friend in New York, or you, can pick with eyes open. Our read as the True Trip Costs desk, checked {checkedLabel}.</p>
 
+    <div class="se-pick">
+      <p class="se-pick-lab">The short answer</p>
+      <p class="se-pick-main"><b>Portugal</b> is the easiest, best-value trip of the five.</p>
+      <p class="se-pick-nuance">Prefer the classics? <a href="/italy">Italy</a>. Chasing islands? <a href="/greece">Greece</a>. Set on the coastline? <a href="/croatia">Croatia</a>.</p>
+    </div>
+
     <section class="se-matrix-sec" aria-label="Money comparison matrix">
       <div class="matrix-scroll">
         <table class="matrix">
           <thead>
             <tr>
               <th class="mx-cty" scope="col">Country</th>
-              <th scope="col">Daily cost</th>
-              <th scope="col">Cash or card</th>
-              <th scope="col">Tipping</th>
-              <th scope="col">Taxis</th>
+              <th scope="col"><a class="mx-hlink" href="/cost-comparison">Daily cost</a></th>
+              <th scope="col"><a class="mx-hlink" href="/cash-or-card">Cash or card</a></th>
+              <th scope="col"><a class="mx-hlink" href="/tipping-compared">Tipping</a></th>
+              <th scope="col"><a class="mx-hlink" href="/taxis-and-ride-hailing">Taxis</a></th>
               <th scope="col">Currency</th>
             </tr>
           </thead>
@@ -159,6 +165,15 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
     </section>
 
     <section class="se-sec">
+      <p class="lab">From the desk</p>
+      <h2>If it were my trip</h2>
+      <div class="desk">
+        <p class="desk-text">If I were flying over from the US, I would probably land in Croatia, Zagreb or Split depending on the flights, pick up a rental car, and drive down the coast, which is one of the loveliest stretches of the whole trip. I would hop across into Slovenia for a day or two as well, since it is such an easy border and a gentle way to add another country without upending the plan. From there I might drift on to Italy or Montenegro, and happily leave the rest for another visit rather than cram it all in. The driving is half the pleasure here, so I would coast rather than rush. For what it is worth, that is the route I would take, though everyone travels differently, and I hope your own trip is a wonderful one.</p>
+        <p class="desk-by">A personal aside from <a href="/about">the True Trip Costs desk</a>. The verdicts above stay neutral; this is just one traveler's route.</p>
+      </div>
+    </section>
+
+    <section class="se-sec">
       <div class="se-honest">
         <p><b>How we rate this.</b> The cost dots and the verdicts are the True Trip Costs desk's own comparative read for a US traveler, meant for choosing between these countries, not a precise index. We compare on things that move slowly, relative cost, currency, card habits, tipping norms and taxi ease, and leave the exact prices, fees and rules to each country's guide, which we date and check on its own. Checked {checkedLabel}. Confirm anything critical, especially entry rules and current fees, in the country guide before you rely on it.</p>
       </div>
@@ -226,9 +241,34 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
     .se-honest p{margin:0}
     .se-explore{margin-top:20px}
 
+    /* Headline pick: the one-line, snippet-friendly answer, conditional so it
+       stays honest (no single winner for every traveler). */
+    .se-pick{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 20px;margin:0 0 30px;max-width:660px}
+    .se-pick-lab{font-size:12px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.09em;margin:0 0 6px}
+    .se-pick-main{font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.25;color:var(--ink);margin:0 0 6px}
+    .se-pick-main b{font-weight:600}
+    .se-pick-nuance{font-size:14.5px;color:var(--muted);margin:0}
+    .se-pick-nuance a{color:var(--teal-deep);font-weight:600;text-decoration:none}
+    .se-pick-nuance a:hover{text-decoration:underline}
+
+    /* Column headers link out to the cross-country topic pages, so the matrix is
+       a hub in both directions: rows to countries, columns to topics. */
+    .mx-hlink{color:inherit;text-decoration:none;border-bottom:1px dotted rgba(111,110,102,.5);padding-bottom:1px}
+    .mx-hlink:hover{color:var(--teal-deep);border-bottom-color:var(--teal-deep)}
+
+    /* From the desk: the personal itinerary, deliberately set apart from the
+       neutral verdict cards (warm tint, serif body, a byline to /about) so the
+       analysis above keeps its authority and this reads as the human bonus. */
+    .desk{background:var(--green-bg);border:1px solid #C2E0C8;border-radius:var(--radius);padding:20px 22px;margin-top:8px;max-width:720px}
+    .desk-text{font-family:var(--serif);font-weight:400;font-size:17px;line-height:1.6;color:#22403A;margin:0 0 14px}
+    .desk-by{font-size:13px;color:#3B5B50;margin:0;line-height:1.55}
+    .desk-by a{color:var(--teal-deep);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+
     @media(max-width:620px){
       .se-lede{font-size:16.5px}
       .matrix{min-width:600px}
+      .se-pick-main{font-size:19px}
+      .desk-text{font-size:16px}
     }
   </style>
 </Base>
