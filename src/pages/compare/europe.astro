@@ -43,7 +43,8 @@ const rows = euClusters.map(c => ({
   }).filter(Boolean)
 }));
 
-const checkedLabel = 'July 2026';
+const checkedLabel = 'Jul 2026';
+const checkedISO = '2026-07-26';
 const title = 'Which part of Europe? Southern, Western, Central and Nordic Europe compared (2026) | True Trip Costs';
 const description = 'Not sure which part of Europe to visit? A high-level money and character comparison of Southern, Central and Nordic Europe for US travelers: relative cost, cash or card, tipping and currency, with a clear pick and links to each region.';
 ---
@@ -155,6 +156,7 @@ const description = 'Not sure which part of Europe to visit? A high-level money 
     </section>
   </main>
   <Footer />
+  <script type="application/ld+json" set:html={JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: title, description, dateModified: checkedISO, datePublished: checkedISO, author: { "@type": "Organization", name: "True Trip Costs" } })}></script>
 
   <style>
     .se{max-width:880px}

@@ -53,7 +53,8 @@ const rows = order.map(slug => {
 });
 
 const others = otherClusters('/compare/western-europe');
-const checkedLabel = 'July 2026';
+const checkedLabel = 'Jul 2026';
+const checkedISO = '2026-07-26';
 const title = 'Western Europe for first-timers: the UK, France, the Netherlands, Ireland (2026) | True Trip Costs';
 const description = 'Planning your first trip to Europe? A side-by-side money comparison of the UK, France, the Netherlands and Ireland for US travelers: cost, cash vs card, tipping, taxis and currency, with a clear pick. Checked July 2026.';
 ---
@@ -187,6 +188,7 @@ const description = 'Planning your first trip to Europe? A side-by-side money co
     </section>
   </main>
   <Footer />
+  <script type="application/ld+json" set:html={JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: title, description, dateModified: checkedISO, datePublished: checkedISO, author: { "@type": "Organization", name: "True Trip Costs" } })}></script>
 
   <style>
     .se{max-width:880px}

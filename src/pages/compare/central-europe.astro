@@ -58,7 +58,8 @@ const rows = order.map(slug => {
 });
 
 const others = otherClusters('/compare/central-europe');
-const checkedLabel = 'July 2026';
+const checkedLabel = 'Jul 2026';
+const checkedISO = '2026-07-26';
 const title = 'Central Europe for travel money: Germany, Austria, Switzerland, Czechia, Hungary (2026) | True Trip Costs';
 const description = 'Deciding between Germany, Austria, Switzerland, Czechia and Hungary? A side-by-side money comparison for US travelers: daily cost, cash vs card, tipping, taxis and currency, with a clear pick for each. Checked July 2026.';
 ---
@@ -193,6 +194,7 @@ const description = 'Deciding between Germany, Austria, Switzerland, Czechia and
     </section>
   </main>
   <Footer />
+  <script type="application/ld+json" set:html={JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: title, description, dateModified: checkedISO, datePublished: checkedISO, author: { "@type": "Organization", name: "True Trip Costs" } })}></script>
 
   <style>
     .se{max-width:880px}

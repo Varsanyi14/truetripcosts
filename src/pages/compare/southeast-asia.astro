@@ -65,7 +65,8 @@ const rows = order.map(slug => {
   };
 });
 
-const checkedLabel = 'July 2026';
+const checkedLabel = 'Jul 2026';
+const checkedISO = '2026-07-26';
 const others = otherClusters('/compare/southeast-asia');
 const title = 'Southeast Asia for travel money: Thailand, Vietnam, Indonesia, Philippines, Singapore (2026) | True Trip Costs';
 const description = 'Deciding between Thailand, Vietnam, Indonesia, the Philippines and Singapore? A side-by-side money comparison for US travelers: daily cost, cash vs card, tipping, taxis and currency, with a clear pick for each. Checked July 2026.';
@@ -202,6 +203,7 @@ const description = 'Deciding between Thailand, Vietnam, Indonesia, the Philippi
     </section>
   </main>
   <Footer />
+  <script type="application/ld+json" set:html={JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: title, description, dateModified: checkedISO, datePublished: checkedISO, author: { "@type": "Organization", name: "True Trip Costs" } })}></script>
 
   <style>
     .se{max-width:880px}
