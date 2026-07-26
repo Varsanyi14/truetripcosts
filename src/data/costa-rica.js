@@ -284,6 +284,81 @@ export default {
         judgment: "Tipping norms are cultural, not legislated rates, so the figures here are our own read from recent traveler reports and local guidance, not a single official table. The 10% restaurant service charge is a real, consistent practice, but whether an extra tip is expected is a judgment call that varies by place. Checked July 2026."
       }
     },
+    {
+      slug: "visa",
+      glance: [
+        { k: "Visa", v: "None for US citizens" },
+        { k: "Stay", v: "Up to 180 days, officer decides" },
+        { k: "Must have", v: "Onward or return ticket" },
+        { k: "Form", v: "None, no online entry form" }
+      ],
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need a visa for Costa Rica? (2026) | True Trip Costs",
+      description: "US citizens need no visa and no online form for Costa Rica: you are stamped in on arrival. The onward-ticket rule that catches people, the up-to-180-day stay set by the officer, and the small extras. Checked July 2026.",
+      h1: "Do US citizens need a visa for Costa Rica?",
+      lede: "Short answer: no visa, and no online form. US citizens are stamped in on arrival, now for up to 180 days. The one thing that trips people up is the onward-ticket rule. Here is what actually matters at the border.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-26",
+      answer: "US citizens need <b>no visa</b> for Costa Rica, and there is <b>no online entry form</b> to fill in (the old COVID health pass is gone). You are simply <b>stamped in on arrival</b>. The one requirement people miss is <b>proof of onward travel</b>: you must show a <b>return or onward ticket</b> dated within your allowed stay, or you can be refused at check-in. US citizens can now be granted up to <b>180 days</b>, though the officer sets the exact length on arrival, so <b>check your stamp</b>.",
+      official: {
+        label: "Costa Rica Tourism Board: official entry requirements",
+        url: "https://www.visitcostarica.com/planning-your-trip/entry-requirements",
+        note: "The official tourism-board page on entry rules. There is nothing to apply for and no form to file as a US tourist: it confirms visa-free entry and spells out the onward-ticket and funds requirements. For visa questions the immigration authority (DGME) is the final word."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "No visa, and no form to fill in",
+          icon: "passport",
+          key: { fig: "Up to 180 days", tag: "Stamp on arrival", text: "US citizens need no visa and no online form. You are stamped in on arrival for up to 180 days, though the officer decides the exact length, so check your stamp.", tone: "teal" },
+          p: [
+            "US passport holders need <b>no visa</b> for Costa Rica and <b>no online entry form</b>. The COVID-era digital health pass was <b>scrapped in 2022</b> and never came back, so despite what some older pages say, there is nothing to register before you fly. You are simply <b>stamped in on arrival</b>.",
+            "On stay length the picture has shifted: the current standard for US citizens is <b>up to 180 days</b>, but the <b>immigration officer sets the actual number</b> on arrival, and many travelers still get 90. So do not assume, <b>check the date written in your passport</b> before you leave the airport."
+          ]
+        },
+        {
+          h: "The onward ticket is the real requirement",
+          icon: "plane",
+          key: { tag: "Show your exit", text: "Costa Rica requires proof you will leave: a return or onward ticket dated within your allowed stay. Arrive on a one-way ticket and you can be denied boarding or entry.", tone: "amber" },
+          p: [
+            "The requirement that catches people is <b>proof of onward travel</b>. Costa Rica expects every non-resident to show a <b>return or onward ticket</b> that leaves the country <b>within the allowed stay</b> (dated within 90 days of arrival if that is your window). This applies at airports and land borders.",
+            "If you arrive on a <b>one-way ticket</b>, the <b>airline can refuse to board you</b>, and immigration can turn you back. If your plans are open, a cheap onward bus or flight ticket, or a ticket out of a different country, satisfies the rule."
+          ]
+        },
+        {
+          h: "Funds, yellow fever and the exit tax",
+          icon: "alert",
+          key: { tag: "A few extras", text: "Expect to show funds of about $100 per month of stay. Yellow fever vaccination is required only if arriving from certain countries. A $29 exit tax applies, usually already in your airfare.", tone: "amber" },
+          p: [
+            "A few smaller things. Officers can ask you to show <b>funds of about $100 for each month</b> of your stay, and where you are staying. <b>Yellow fever</b> vaccination is required only if you are <b>arriving from</b> certain countries in Africa or South America (Brazil, Colombia, Peru and Venezuela among them), not for a direct trip from the US.",
+            "There is a <b>$29 departure tax</b> when you leave, but it is <b>usually already included</b> in your airline ticket, so most travelers never pay it separately. Carry a passport <b>valid for your stay</b>, with six months a safe margin."
+          ]
+        },
+        {
+          h: "A couple of notes",
+          icon: "tag",
+          key: { tag: "Extending is awkward", text: "Extending a tourist stay from inside Costa Rica is possible but convoluted; most who want longer get a proper visa. Then see the money guide.", tone: "amber" },
+          p: [
+            "If you want to stay <b>beyond what you were given</b>, extending from inside the country is <b>possible but awkward</b>, and the US Embassy warns the process is convoluted, so most people who want longer arrange a proper <b>visa</b> (there are digital-nomad, pensionado and rentista options). Working locally needs the right visa too.",
+            "For how money works once you are there, the colon, US dollars, cards and the rest, see the <a href=\"/costa-rica\">Costa Rica money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Costa Rica?", a: "No. US citizens enter Costa Rica visa-free for tourism and are stamped in on arrival. There is no online entry form to complete either; the COVID-era health pass was removed in 2022. You do need a passport and, importantly, proof of onward travel." },
+        { q: "How long can US citizens stay in Costa Rica?", a: "Up to 180 days is now the standard maximum for US citizens, but the immigration officer sets the actual length on arrival and many travelers still receive 90 days. Always check the date written into your passport before leaving the airport, and do not overstay it." },
+        { q: "Do I need an onward ticket for Costa Rica?", a: "Yes, and this is the requirement travelers most often miss. Costa Rica requires proof you will leave within your allowed stay, so you must show a return or onward ticket. Arrive on a one-way ticket and the airline can deny boarding, or immigration can refuse entry. A cheap onward ticket satisfies the rule." },
+        { q: "Is there an online entry form or health pass for Costa Rica?", a: "No, not any more. Costa Rica required a digital health pass during the pandemic, but all COVID-era requirements were permanently removed in April 2022. As of 2026 there is no mandatory online form for US tourists; you just need a passport and an onward ticket. Ignore any site charging to file an entry form." }
+      ],
+      sources: {
+        links: [
+          { label: "Costa Rica Tourism Board: the official entry-requirements page, including the onward-ticket rule", url: "https://www.visitcostarica.com/planning-your-trip/entry-requirements", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "Costa Rica's visa-free entry for US citizens is stable, COVID-era digital forms were removed in 2022, and the onward-ticket rule is enforced. Stay length has trended toward a 180-day maximum but is set by the officer on arrival, so treat 180 as a ceiling, not a guarantee, and check your stamp. Checked July 2026."
+      }
+    }
   ],
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 2 },
   hook: "Dollars work almost everywhere, but paying in colones quietly saves you money.",

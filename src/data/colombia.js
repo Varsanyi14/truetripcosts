@@ -347,6 +347,87 @@ export default {
         ],
         judgment: "Ride-hailing in Colombia sits in a legal gray zone and can involve friction at airports, and fares move with the peso, so treat figures as a recent read and check the price in your app. The advice to never street-hail is the constant. Checked July 2026."
       }
+    },
+    {
+      slug: "check-mig",
+      glance: [
+        { k: "Visa", v: "None for US citizens, up to 90 days" },
+        { k: "Check-Mig", v: "Required, free, before every flight" },
+        { k: "Stay", v: "90 days, extendable to 180 a year" },
+        { k: "Where", v: "migracioncolombia.gov.co only" }
+      ],
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need a visa for Colombia? The Check-Mig form (2026) | True Trip Costs",
+      description: "US citizens need no visa for Colombia for up to 90 days, but everyone must file the free Check-Mig form before each flight. What Check-Mig is, when to do it, and how to avoid the sites charging for a free government form. Checked July 2026.",
+      h1: "Do US citizens need a visa for Colombia?",
+      lede: "Short answer: no visa, but yes to one free online form. US citizens enter Colombia visa-free for up to 90 days; the catch is Check-Mig, which every traveler files before flying. Here is how it works, and how not to overpay for it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-26",
+      answer: "US citizens need <b>no visa</b> for Colombia for tourism or business, up to <b>90 days</b> on arrival (extendable once, to a maximum of 180 days a calendar year). What you <b>do</b> need is <b>Check-Mig</b>, a <b>free online form</b> from Migracion Colombia that every traveler completes <b>between 1 and 72 hours before</b> each flight to or from Colombia. It is <b>free</b> on the official site, airlines check it at boarding, and it is not a visa, just a registration.",
+      official: {
+        label: "Migracion Colombia: the official Check-Mig form",
+        url: "https://apps.migracioncolombia.gov.co/check-mig",
+        note: "The official government Check-Mig portal. It is completely free. Complete it in the 72 hours before each flight to or from Colombia. Many third-party sites charge $30 to $50 to file this free form, so use only this official page."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "No visa, but you must file Check-Mig",
+          icon: "passport",
+          key: { fig: "Free", tag: "Every traveler, every flight", text: "US citizens need no visa for up to 90 days. Everyone, visa or not, must complete the free Check-Mig form online before each flight to or from Colombia. Airlines check it at boarding.", tone: "teal" },
+          p: [
+            "US passport holders enter Colombia <b>visa-free</b> for tourism or business and are stamped in for up to <b>90 days</b> on arrival. The one thing you must not skip is <b>Check-Mig</b>: a short <b>online form</b> from <b>Migracion Colombia</b> that <b>every</b> traveler completes, whether or not they need a visa, before <b>each</b> flight to or from Colombia.",
+            "It is <b>not a visa</b> and does not guarantee entry, it is a registration that speeds the border and that <b>airlines check at boarding</b>. Skip it and you may be held up at check-in."
+          ]
+        },
+        {
+          h: "How and when to file it",
+          icon: "calendar",
+          key: { fig: "1 to 72 hours", tag: "Before each flight", text: "Complete Check-Mig online in the window from 72 hours to 1 hour before departure, once for arrival and again for your departure flight. Save the confirmation.", tone: "teal" },
+          p: [
+            "Fill it in <b>between 72 hours and 1 hour before</b> your flight. It takes a few minutes and asks for your passport details and your flight (airline, number, dates), so have your booking to hand. You complete it <b>twice</b>: once for your <b>arrival</b> flight and again for your <b>departure</b>. Save or print the confirmation."
+          ],
+          steps: [
+            "Go to the official Migracion Colombia site, apps.migracioncolombia.gov.co/check-mig. Go there directly, not through a search ad.",
+            "Enter your passport and personal details and your flight information for the trip into Colombia.",
+            "Submit and save the confirmation. It is free, so if you are asked to pay, you are on the wrong site.",
+            "Repeat the whole thing for your departure flight before you leave Colombia."
+          ]
+        },
+        {
+          h: "The free-form trap",
+          icon: "alert",
+          key: { tag: "The form is free", text: "Check-Mig is completely free on the official site. A crowd of third-party sites charge $30 to $50 to file it for you. Use only the official Migracion Colombia portal.", tone: "amber" },
+          p: [
+            "Because the form is <b>free and required</b>, a whole industry of <b>third-party sites</b> has sprung up charging <b>$30 to $50</b> to fill in the same government form. They are not official and add nothing you cannot do yourself in a few minutes. Use only <b>apps.migracioncolombia.gov.co</b>.",
+            "A few practical extras: carry a passport with a <b>blank page</b>, have a <b>return or onward ticket</b> to show, and note that <b>yellow fever</b> vaccination is required for some national parks, and if you are arriving from a country where yellow fever is a risk."
+          ]
+        },
+        {
+          h: "A couple of notes",
+          icon: "tag",
+          key: { tag: "Extendable to 180", text: "You can extend the 90-day stay once inside Colombia, up to 180 days in a calendar year. Working or longer stays need a visa. Then see the money guide.", tone: "amber" },
+          p: [
+            "The <b>90 days</b> can be <b>extended once</b> inside Colombia (through Migracion Colombia) up to a total of <b>180 days per calendar year</b>. Working, studying or living there needs a proper <b>visa</b> arranged separately, Check-Mig does not cover any of that.",
+            "For how money works once you are there, cash, cards, the peso and the rest, see the <a href=\"/colombia\">Colombia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Colombia?", a: "No. US citizens visit Colombia visa-free for tourism or business, and are stamped in for up to 90 days on arrival, extendable once to a maximum of 180 days per calendar year. You do need a valid passport and a completed Check-Mig form. Working or longer stays require a visa." },
+        { q: "What is Check-Mig and is it required?", a: "Check-Mig is a free online pre-registration form from Migracion Colombia that every traveler must complete before each flight to or from Colombia, whether or not they need a visa. It is not a visa; it is a border registration that airlines check at boarding. Complete it between 72 hours and 1 hour before departure." },
+        { q: "How much does the Colombia Check-Mig cost?", a: "Nothing. Check-Mig is completely free on the official Migracion Colombia site, apps.migracioncolombia.gov.co/check-mig. Many third-party sites charge $30 to $50 to file the same form; they are not official. Use only the government portal, and if you are asked to pay, you are on the wrong site." },
+        { q: "Do I need to fill out Check-Mig to leave Colombia too?", a: "Yes. Check-Mig applies to both entry and exit, so you complete it once for your arrival flight and again for your departure, each time within the 72-hour-to-1-hour window before the flight. Save the confirmation, as airlines may ask for it at check-in." }
+      ],
+      sources: {
+        links: [
+          { label: "Migracion Colombia: the official, free Check-Mig registration form", url: "https://apps.migracioncolombia.gov.co/check-mig", type: "gov" },
+          { label: "US Department of State: Colombia country information, entry and exit requirements for US citizens", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Colombia.html", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "Colombia's 90-day visa-free entry for US citizens is stable, and Check-Mig has been required since 2022 and remains so in 2026, though airport enforcement can be inconsistent, so complete it to be safe. The form is free; only the official Migracion Colombia site is legitimate. Checked July 2026."
+      }
     }
   ]
 };

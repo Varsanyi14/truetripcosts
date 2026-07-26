@@ -435,6 +435,82 @@ export default {
         ],
         judgment: "These are the money traps most consistently reported in Istanbul in 2025 and 2026, not a ranked risk list, and with high inflation the lira figures move quickly, so treat them as a recent read and check your app. The city is safe for the vast majority of visitors; these tricks rely on politeness and confusion and are easy to sidestep. Checked July 2026."
       }
+    },
+    {
+      slug: "visa",
+      glance: [
+        { k: "Visa", v: "None for US citizens, up to 90 days" },
+        { k: "e-Visa", v: "Not needed, US citizens are exempt" },
+        { k: "Rule", v: "90 days within any 180" },
+        { k: "Passport", v: "Valid 6 months from entry" }
+      ],
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need a visa for Turkey? (2026) | True Trip Costs",
+      description: "US citizens no longer need a visa or e-visa for Turkey: entry is now visa-free for up to 90 days in any 180. The recent change, the rolling 90/180 rule, and why to ignore sites still selling a Turkey e-visa. Checked July 2026.",
+      h1: "Do US citizens need a visa for Turkey?",
+      lede: "Short answer: no, not any more. Turkey recently dropped the e-visa it used to require from Americans, so US citizens now enter visa-free for up to 90 days. Here is the current rule, and why so much advice online is out of date.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-26",
+      answer: "US citizens need <b>no visa</b> for Turkey for tourism or short business, and <b>no e-visa</b> either. Turkey <b>dropped the e-visa requirement for US passport holders</b>, so you now enter visa-free for up to <b>90 days within any 180-day period</b>. This is recent, so ignore older advice, and any site still trying to sell you a Turkey e-visa: as a US tourist you do not need one. Your passport should be <b>valid at least six months</b> from your arrival.",
+      official: {
+        label: "Turkey's official e-Visa portal and visa checker",
+        url: "https://www.evisa.gov.tr",
+        note: "Turkey's official government e-Visa site. US citizens do not need an e-visa, and the site's checker confirms it. If any other site tries to charge you for a Turkey e-visa as a US tourist, this free official page is what to check against."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "You no longer need an e-visa",
+          icon: "passport",
+          key: { tag: "US citizens now visa-free", text: "Turkey used to require a paid e-visa from Americans. It dropped that: US passport holders now enter visa-free for up to 90 days in any 180. Older guides and reseller sites have not all caught up.", tone: "teal" },
+          p: [
+            "Here is the recent change that trips people up. Turkey <b>used to require US citizens to buy an e-visa</b> (around $50) before flying. It <b>scrapped that requirement</b> for US passport holders, who now enter <b>visa-free</b> for tourism and short business, up to <b>90 days within any 180-day period</b>. Because the change is recent, plenty of older articles, and plenty of reseller sites, still tell Americans to get the e-visa.",
+            "So if a site offers to sell you a Turkey e-visa as a US tourist, <b>you do not need it</b>. The official e-Visa portal is only for nationalities that still require one, and even they should use the government site rather than a middleman."
+          ]
+        },
+        {
+          h: "The 90/180 rule, and what to carry",
+          icon: "calendar",
+          key: { fig: "90 in 180", tag: "Rolling window", text: "You can stay up to 90 days in any rolling 180-day window, not a calendar year. Carry a passport valid six months from entry, and be ready to show onward travel.", tone: "teal" },
+          p: [
+            "The allowance is <b>90 days within any 180-day period</b>, and it is a <b>rolling window</b>, not a calendar-year reset, so a border officer looks back over the previous 180 days. Track your entry and exit dates if you visit more than once in a season.",
+            "Bring a passport <b>valid at least six months</b> beyond your arrival, with a blank page. Officers may ask for a <b>return or onward ticket</b> and where you are staying, so have those ready."
+          ]
+        },
+        {
+          h: "When you do need a visa",
+          icon: "alert",
+          key: { tag: "Longer, or working", text: "Visa-free entry is for tourism and short business only. Working, studying, or staying beyond 90 days needs a proper sticker visa and usually a residence permit, arranged the right way.", tone: "amber" },
+          p: [
+            "Visa-free entry covers <b>tourism and short business</b> only. If you plan to <b>work, study, or stay beyond 90 days</b>, you need a proper <b>sticker visa</b> from a Turkish consulate and, in most cases, a <b>residence permit</b> applied for before your visa-free time runs out. Do not try to stretch the visa-free stay for these.",
+            "There is <b>no visa on arrival</b>: the walk-up windows at Turkish airports have closed. You either qualify for visa-free entry or arrange the right visa in advance."
+          ]
+        },
+        {
+          h: "Before you rely on this",
+          icon: "tag",
+          key: { tag: "It is a recent change", text: "Because Turkey only recently made US citizens visa-free, confirm the current rule on the official site before you book, and never pay a reseller for an e-visa you do not need.", tone: "amber" },
+          p: [
+            "Because this shift is <b>recent</b>, and Turkey does adjust its visa arrangements, it is worth a <b>quick check on the official site</b> before you book, just to confirm the visa-free rule still holds for US citizens on your travel dates.",
+            "For how money works once you are there, cards, cash, the lira and the rest, see the <a href=\"/turkey\">Turkey money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Turkey?", a: "No. US citizens enter Turkey visa-free for tourism or short business, for up to 90 days within any 180-day period. Turkey dropped the e-visa requirement for US passport holders, so there is nothing to apply for and no fee. Longer stays, work or study need a proper sticker visa arranged in advance." },
+        { q: "Do US citizens still need a Turkey e-visa?", a: "No, not any more. Turkey removed the e-visa requirement for US passport holders, who now enter visa-free. The change is recent, so older guides and many reseller sites still tell Americans to buy an e-visa. As a US tourist you do not need one; the official e-Visa portal is only for nationalities that still require it." },
+        { q: "How long can US citizens stay in Turkey without a visa?", a: "Up to 90 days within any 180-day period. This is a rolling window rather than a calendar-year reset, so keep track of your entry and exit dates if you visit more than once. Staying longer, or working or studying, needs a sticker visa and usually a residence permit." },
+        { q: "Is there a visa on arrival in Turkey?", a: "No. The walk-up visa-on-arrival windows at Turkish airports have closed. US citizens either enter visa-free for short stays, or, for longer stays, work or study, arrange a sticker visa through a Turkish consulate before travel." }
+      ],
+      sources: {
+        links: [
+          { label: "Republic of Turkey: the official e-Visa portal and visa-requirement checker", url: "https://www.evisa.gov.tr", type: "gov" },
+          { label: "US Department of State: Turkey country information, entry and exit requirements for US citizens", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Turkey.html", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "Turkey made US citizens visa-free for short stays relatively recently, dropping the former e-visa requirement, and it has changed its visa arrangements before, so confirm the current rule on the official site before you travel. The 90/180 limit is a rolling window, not a calendar-year reset. Checked July 2026."
+      }
     }
   ]
 };
