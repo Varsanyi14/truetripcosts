@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import CompareByRegion from '../components/CompareByRegion.astro';
 import USBadge from '../components/USBadge.astro';
 import Hero from '../components/Hero.astro';
 import { caution } from '../data/topics.js';
@@ -72,6 +73,7 @@ const taxiSpokes = countries
 
     <p class="fx-keep">These are our own reads from experience and each country's guide, not official figures, and they are checked when we check the guide. Ride-hailing apps have no travel booking to sell, so we earn nothing here. For the fees behind a trip, see <a href="/tourist-taxes">tourist taxes and entry fees</a>, and for how each place pays, see <a href="/cash-or-card">cash or card</a>. More on how we work is on our <a href="/methodology">methodology page</a>.</p>
 
+    <CompareByRegion />
   </main>
   <Footer />
 

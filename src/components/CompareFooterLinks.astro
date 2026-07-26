@@ -1,0 +1,25 @@
+---
+// Explore-up links for a comparison cluster page. Given the cluster's href, it
+// links to that region's guide hub (/europe, /asia) and, if the region has a
+// capstone (Which part of Europe?), to that too, plus the compare hub. Closes two
+// reciprocal gaps: region guides link down to clusters, and the capstone links down
+// to clusters, but the clusters did not link back up. All derived from the data.
+import { clusters, regionMetaCompare } from '../data/region-comparisons.js';
+import { REGIONS } from '../data/hubs.js';
+const { href } = Astro.props;
+const cluster = clusters.find(c => c.href === href);
+const parent = cluster ? cluster.parent : null;
+const region = parent ? REGIONS[parent] : null;      // { slug, label }
+const capstone = parent ? regionMetaCompare[parent] : null;
+---
+<div class="cmp-explore">
+  {region && <a class="btn" href={`/${region.slug}`}>Money in {region.label}, country by country</a>}
+  {capstone && <a class="cmp-x" href={capstone.href}>{capstone.label} &rarr;</a>}
+  <a class="cmp-x" href="/compare">All region comparisons &rarr;</a>
+</div>
+
+<style>
+  .cmp-explore{margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
+  .cmp-x{color:var(--teal-deep);font-weight:600;font-size:14px;text-decoration:none}
+  .cmp-x:hover{text-decoration:underline}
+</style>

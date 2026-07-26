@@ -1,0 +1,25 @@
+---
+// A compact "compare a whole region" callout for the cross-country topic pages
+// (cost, cash or card, tipping, taxis). Data-driven from the clusters, so a new
+// cluster appears here on its own. Closes the reciprocal link: the comparison
+// matrices already link out to these topic pages, and now these link back.
+import { clusters } from '../data/region-comparisons.js';
+---
+<section class="cbr" aria-label="Compare by region">
+  <p class="cbr-lab">Compare a whole region</p>
+  <p class="cbr-p">Weighing up where to go? See how the countries in a region stack up on cost, cash, tipping and getting around, with a clear pick for each.</p>
+  <div class="cbr-links">
+    {clusters.map(c => <a class="cbr-chip" href={c.href}>{c.region}</a>)}
+    <a class="cbr-chip cbr-all" href="/compare">All comparisons &rarr;</a>
+  </div>
+</section>
+
+<style>
+  .cbr{margin:36px 0 0;padding:24px;border:1px solid rgba(14,122,95,.2);background:rgba(14,122,95,.05);border-radius:var(--radius)}
+  .cbr-lab{font-size:12px;font-weight:600;color:var(--teal-deep);letter-spacing:.08em;text-transform:uppercase;margin:0 0 6px}
+  .cbr-p{font-size:15px;color:#3B4A46;line-height:1.5;margin:0 0 14px;max-width:60ch}
+  .cbr-links{display:flex;flex-wrap:wrap;gap:9px}
+  .cbr-chip{display:inline-flex;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;box-shadow:var(--shadow);transition:border-color .2s ease,color .2s ease}
+  .cbr-chip:hover{border-color:var(--teal);color:var(--teal-deep)}
+  .cbr-all{color:var(--teal-deep);background:transparent;box-shadow:none;border-color:rgba(14,122,95,.3)}
+</style>

@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import CompareByRegion from '../components/CompareByRegion.astro';
 import USBadge from '../components/USBadge.astro';
 import Hero from '../components/Hero.astro';
 import TipChart from '../components/TipChart.astro';
@@ -138,6 +139,7 @@ const description = 'What to tip in ' + rows.length + ' countries, measured agai
       faint dot flags a figure we are less certain of, and a dashed bar flags the one country where sources
       genuinely conflicted. Country names link to our full money guide for that country.
     </p>
+    <CompareByRegion />
   </main>
   <Footer />
 

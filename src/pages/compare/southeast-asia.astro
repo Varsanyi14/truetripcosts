@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
+import CompareFooterLinks from '../../components/CompareFooterLinks.astro';
 import RegionMap from '../../components/RegionMap.astro';
 import seaMap from '../../data/maps/southeast-asia.js';
 import { countries } from '../../data/index.js';
@@ -204,9 +205,7 @@ const description = 'Deciding between Thailand, Vietnam, Indonesia, the Philippi
       <div class="se-honest">
         <p><b>How we rate this.</b> The cost dots and the verdicts are the True Trip Costs desk's own comparative read for a US traveler, meant for choosing between these countries, not a precise index. We compare on things that move slowly, relative cost, currency, card habits, tipping norms and taxi ease, and leave the exact prices, fees and rules to each country's guide, which we date and check on its own. Checked {checkedLabel}. Confirm anything critical, especially entry rules and current fees, in the country guide before you rely on it.</p>
       </div>
-      <div class="se-explore">
-        <a class="btn" href="/#guides">Browse all country guides</a>
-      </div>
+      <CompareFooterLinks href="/compare/southeast-asia" />
     </section>
   </main>
   <Footer />

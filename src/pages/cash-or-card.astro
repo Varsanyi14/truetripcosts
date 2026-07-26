@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import CompareByRegion from '../components/CompareByRegion.astro';
 import USBadge from '../components/USBadge.astro';
 import Hero from '../components/Hero.astro';
 import { countries } from '../data/index.js';
@@ -89,6 +90,7 @@ const cashSpokes = countries
 
     <p class="fx-keep">This is our own read from experience and each country's guide, not an official figure, and it is checked when we check the guide. For the fees behind a trip, see <a href="/tourist-taxes">tourist taxes and entry fees</a>, and every guide has the full money picture. More on how we work is on our <a href="/methodology">methodology page</a>.</p>
 
+    <CompareByRegion />
   </main>
   <Footer />
 
