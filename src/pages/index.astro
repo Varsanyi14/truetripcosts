@@ -68,6 +68,15 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
       </div>
     </section>
 
+    <section class="home-compare">
+      <div class="hc-tx">
+        <p class="hc-lab">Not sure where to go yet?</p>
+        <h2 class="hc-h">Compare countries by region.</h2>
+        <p class="hc-p">Weighing up Europe, or Southeast Asia, for one trip? See how the countries in a region compare on the money side, cost, cash or card, tipping and getting around, with a clear pick for each.</p>
+      </div>
+      <a class="hc-cta" href="/compare">Compare by region <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </section>
+
     <section class="qa" aria-label="Quick answers">
       <p class="qa-lab">Quick answers</p>
       <div class="qa-grid">
@@ -220,6 +229,19 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
     .dsc-go{color:var(--teal-deep,#0A5644);font-weight:700}
     .dsc-chip:hover .dsc-q{color:var(--teal-deep,#0A5644)}
     @media (max-width:560px){ .dsc-grid{flex-direction:column} .dsc-chip{justify-content:space-between} }
+    /* Homepage "compare by region" band: the counterpart to the hero search, for
+       visitors who have not settled on a country. Links to the /compare hub. */
+    .home-compare{display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap;margin:16px 0 6px;padding:22px 24px;border:1px solid rgba(14,122,95,.22);background:rgba(14,122,95,.06);border-radius:var(--radius,14px)}
+    .hc-tx{flex:1;min-width:260px}
+    .hc-lab{font-size:12px;font-weight:600;color:var(--teal-deep,#0A5644);letter-spacing:.08em;text-transform:uppercase;margin:0 0 6px}
+    .hc-h{font-family:var(--serif);font-weight:500;font-size:23px;color:var(--ink,#16302C);margin:0 0 8px;line-height:1.15}
+    .hc-p{font-size:14.5px;color:#3B4A46;line-height:1.5;margin:0;max-width:62ch}
+    .hc-cta{flex:none;display:inline-flex;align-items:center;gap:8px;background:var(--teal,#0E7A5F);color:#fff;font-weight:600;font-size:15px;padding:12px 20px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:background .2s ease}
+    .hc-cta:hover{background:var(--teal-deep,#0A5644)}
+    .hc-cta svg{transition:transform .15s ease}
+    .hc-cta:hover svg{transform:translateX(3px)}
+    @media (max-width:600px){ .home-compare{padding:18px} .hc-h{font-size:20px} .hc-cta{width:100%;justify-content:center} }
+
     /* Hero typeahead: a small list of matching guides under the hero search box. */
     .hero-search{position:relative;max-width:420px;margin:0 0 24px}
     .hero-search .cfilter{margin-bottom:0}
