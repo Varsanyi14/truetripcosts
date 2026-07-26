@@ -1,4 +1,13 @@
 ---
+import { clusters, regionMetaCompare } from '../data/region-comparisons.js';
+
+// Group the region comparisons by continent for the Guides menu, so the list stays
+// scannable as it grows. Order is fixed; each cluster slots into its parent continent,
+// and a continent's capstone (Which part of Europe?) leads its group.
+const CONTINENTS = ['Europe', 'Asia', 'Americas'];
+const regionGroups = CONTINENTS
+  .map(key => ({ key, capstone: regionMetaCompare[key] || null, items: clusters.filter(c => c.parent === key) }))
+  .filter(g => g.capstone || g.items.length);
 ---
 <nav class="topnav">
   <div class="wrap navin">
@@ -11,15 +20,13 @@
         <summary class="gmenu-sum">Guides<svg class="gmenu-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
         <div class="gmenu-panel">
           <a href="/#guides">All country guides</a>
-          <p class="gmenu-lab">Compare by region</p>
-          <a href="/compare/europe">Which part of Europe?</a>
-          <a href="/compare/southern-europe">Southern Europe</a>
-          <a href="/compare/western-europe">Western Europe</a>
-          <a href="/compare/central-europe">Central Europe</a>
-          <a href="/compare/nordics">The Nordics</a>
-          <a href="/compare/southeast-asia">Southeast Asia</a>
-          <a href="/compare/east-asia">East Asia</a>
-          <a href="/compare/south-america">South America</a>
+          {regionGroups.map(g => (
+            <Fragment>
+              <p class="gmenu-lab">{g.key}</p>
+              {g.capstone && <a href={g.capstone.href}>{g.capstone.label}</a>}
+              {g.items.map(c => <a href={c.href}>{c.region}</a>)}
+            </Fragment>
+          ))}
           <p class="gmenu-lab">Compare by topic</p>
           <a href="/cost-comparison">Cost of a day, compared</a>
           <a href="/us-outbound-travelers">Where Americans travel, ranked</a>

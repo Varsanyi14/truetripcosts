@@ -1,0 +1,40 @@
+---
+// The "Compare another part of the world" cards, shared across the comparison pages.
+// Takes the already-computed list of other clusters and resolves each one's country
+// flags from its slugs, so the cards get a light visual cue without heavy map assets.
+import { countries } from '../data/index.js';
+const { others = [] } = Astro.props;
+const cards = others.map(o => ({
+  href: o.href,
+  region: o.region,
+  pitch: o.pitch,
+  flags: (o.slugs || [])
+    .map(s => { const c = countries.find(x => x.slug === s); return c && c.iso2 ? c.iso2 : null; })
+    .filter(Boolean)
+}));
+---
+<div class="xreg">
+  {cards.map(o => (
+    <a class="xreg-card" href={o.href}>
+      <span class="xreg-flags">
+        {o.flags.map(iso => <img src={`https://flagcdn.com/${iso}.svg`} alt="" width="20" height="14" loading="lazy" />)}
+      </span>
+      <span class="xreg-region">{o.region}</span>
+      <span class="xreg-pitch">{o.pitch}</span>
+      <span class="xreg-go">Compare <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+  ))}
+</div>
+
+<style>
+  .xreg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:8px}
+  .xreg-card{display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;text-decoration:none;transition:border-color .2s ease,transform .2s ease}
+  .xreg-card:hover{border-color:#C2E0C8;transform:translateY(-1px)}
+  .xreg-flags{display:inline-flex;gap:3px}
+  .xreg-flags img{width:20px;height:14px;border-radius:2px;border:1px solid var(--line);display:block}
+  .xreg-region{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);line-height:1.15}
+  .xreg-pitch{font-size:13.5px;color:var(--muted);line-height:1.45}
+  .xreg-go{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--teal-deep);margin-top:2px}
+  .xreg-go svg{transition:transform .15s ease}
+  .xreg-card:hover .xreg-go svg{transform:translateX(3px)}
+</style>

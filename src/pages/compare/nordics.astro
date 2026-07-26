@@ -4,6 +4,7 @@ import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import CompareFooterLinks from '../../components/CompareFooterLinks.astro';
+import CompareOtherRegions from '../../components/CompareOtherRegions.astro';
 import RegionMap from '../../components/RegionMap.astro';
 import nordicsMap from '../../data/maps/nordics.js';
 import { countries } from '../../data/index.js';
@@ -177,15 +178,7 @@ const description = 'Deciding between Denmark, Sweden, Norway and Iceland? A sid
     <section class="se-sec">
       <p class="lab">More than one region in mind?</p>
       <h2>Compare another part of the world</h2>
-      <div class="xreg">
-        {others.map(o => (
-          <a class="xreg-card" href={o.href}>
-            <span class="xreg-region">{o.region}</span>
-            <span class="xreg-pitch">{o.pitch}</span>
-            <span class="xreg-go">Compare <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </a>
-        ))}
-      </div>
+      <CompareOtherRegions others={others} />
     </section>
 
     <section class="se-sec">
