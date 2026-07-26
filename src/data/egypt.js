@@ -443,6 +443,81 @@ export default {
         ],
         judgment: "These are the money traps most consistently reported by travelers in 2025 and 2026, not a ranked risk list, and amounts vary by place and situation. The great majority of visits see none of the worst of it, and the habits above avoid nearly all of it. Baksheesh norms are cultural rather than fixed, so treat any figure as a guide. Checked July 2026."
       }
+    },
+    {
+      slug: "e-visa",
+      glance: [
+        { k: "Visa", v: "Required, e-visa or on arrival" },
+        { k: "Cost", v: "About $25 to $30, single entry" },
+        { k: "Stay", v: "30 days, extendable" },
+        { k: "Where", v: "visa2egypt.gov.eg only" }
+      ],
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need a visa for Egypt? (2026) | True Trip Costs",
+      description: "US citizens need a visa for Egypt: an e-visa online (about $25) or a visa on arrival ($30). The one official portal, the strict six-month passport rule, and the free Sinai-only stamp and its catch. Checked July 2026.",
+      h1: "Do US citizens need a visa for Egypt?",
+      lede: "Short answer: yes, but it is quick. US citizens need a tourist visa, easiest as an e-visa on one official site before you fly, or bought on arrival. Here is the real fee, the passport rule Egypt enforces strictly, and the free Sinai exception.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-26",
+      answer: "US citizens need a <b>tourist visa</b> for Egypt. The easy route is the <b>e-visa</b>, applied for online before you fly on the one official portal, <b>visa2egypt.gov.eg</b>, for about <b>$25</b> (single entry, 30 days). You can also buy a <b>visa on arrival</b> at major airports, which rose to <b>$30</b> in March 2026. Your passport must be valid <b>at least six months</b>, a rule Egypt enforces strictly. One exception: a trip <b>only</b> to the South Sinai resorts can use a free stamp (see below).",
+      official: {
+        label: "Egypt's official e-Visa portal",
+        url: "https://visa2egypt.gov.eg",
+        note: "The only official Government of Egypt e-Visa site, and note the address is .gov.eg, not .com. Create an account, upload a passport photo, pay by card, and the approval arrives by email to print. Fees change, so confirm the current amount, and never pay the $75 or more that scam sites charge for this."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "Yes, you need a visa: e-visa or on arrival",
+          icon: "passport",
+          key: { fig: "30 days", tag: "Two easy routes", text: "US citizens need a tourist visa. Apply for the e-visa online before you fly (recommended), or buy a visa on arrival at the airport. Both give a single entry of up to 30 days.", tone: "teal" },
+          p: [
+            "US passport holders need a <b>tourist visa</b>, and there are two simple routes. The <b>e-visa</b> is applied for <b>online before you fly</b> and emailed to you to print, so you reach immigration already cleared. The <b>visa on arrival</b> is bought at the airport when you land. Both are <b>single entry</b> for up to <b>30 days</b>, and a <b>multiple-entry</b> e-visa (valid six months) is available if you will leave and return, say a side trip to Jordan.",
+            "The e-visa is the calmer choice: it takes about <b>three to seven days</b> to approve, so apply a week or two ahead and skip the arrival-hall queue."
+          ]
+        },
+        {
+          h: "The cost, and the one official site",
+          icon: "receipt",
+          key: { fig: "$25 to $30", tag: "One official site", text: "The e-visa is about $25 single entry (around $60 multiple); the visa on arrival rose to $30 in March 2026. The only official site is visa2egypt.gov.eg, not the scam sites charging $75 and up.", tone: "amber" },
+          p: [
+            "Fees have moved recently, so confirm the current amount before you pay, but as a guide: the <b>e-visa</b> is about <b>$25</b> for single entry (around <b>$60</b> multiple), and the <b>visa on arrival rose to $30</b> on 1 March 2026. At the airport you pay in <b>US dollars cash</b> (or sometimes card) at the <b>bank window before passport control</b>, not to any tout.",
+            "The <b>one official e-visa site is visa2egypt.gov.eg</b> (note: .gov.eg, not .com). Egypt is a magnet for lookalike sites that charge <b>$75 to $160</b> for the same $25 visa and harvest your data, so go there directly, never through a search ad."
+          ]
+        },
+        {
+          h: "The free Sinai stamp, and its catch",
+          icon: "alert",
+          key: { tag: "Sinai only, no Cairo", text: "A trip only to the South Sinai resorts (Sharm el-Sheikh, Dahab, Taba) can enter free for up to about 15 days, but that stamp does not let you visit Cairo, Luxor or the pyramids.", tone: "amber" },
+          p: [
+            "If you are flying <b>only</b> to the <b>South Sinai resorts</b>, Sharm el-Sheikh, Dahab, Nuweiba or Taba, and staying in that region, you can often enter on a <b>free Sinai-only stamp</b> for up to about <b>15 days</b>, instead of paying for a visa. It is handed to you on arrival.",
+            "The catch is real: the free stamp <b>does not let you leave the Sinai</b>, so no Cairo, no Luxor, no pyramids, and not the famous dive sites off the mainland. If there is any chance you will venture beyond the resort zone, get the <b>full visa</b> instead."
+          ]
+        },
+        {
+          h: "A couple of gotchas",
+          icon: "tag",
+          key: { tag: "Six-month passport, strictly", text: "Egypt strictly enforces the six-month passport rule, and people get caught out constantly. Extensions are possible before your 30 days end. Then see the money guide.", tone: "amber" },
+          p: [
+            "The single most common slip is <b>passport validity</b>: Egypt enforces the <b>six-month</b> rule strictly, and travelers are denied boarding or entry over it, so check yours before booking. You also need a <b>blank page</b>. To stay <b>beyond 30 days</b>, extend at an Egyptian immigration office before your visa expires; overstaying brings a fine paid at the airport.",
+            "For how money works once you are there, cash, cards, the pound and tipping, see the <a href=\"/egypt\">Egypt money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Egypt?", a: "Yes. US citizens need a tourist visa. The easiest route is the e-visa, applied for online at the official visa2egypt.gov.eg before you fly, for about $25 (single entry, 30 days). You can also buy a visa on arrival at major airports, which rose to $30 in March 2026." },
+        { q: "How much is the Egypt visa for US citizens?", a: "As a guide, the e-visa is about $25 for single entry and around $60 for multiple entry, while the visa on arrival rose to $30 on 1 March 2026. Fees change, so confirm the current amount on the official portal. Third-party sites charge $75 to $160 for the same visa, so avoid them." },
+        { q: "What is the official Egypt e-visa website?", a: "visa2egypt.gov.eg, the only official Government of Egypt e-visa portal, and note it ends in .gov.eg, not .com. Egypt's search results are full of lookalike sites that charge several times the real fee, so apply directly on the official site and confirm the current fee there." },
+        { q: "Can I visit Sharm el-Sheikh without a visa?", a: "Often, yes, on a free Sinai-only stamp. Travelers flying only to the South Sinai resorts (Sharm el-Sheikh, Dahab, Nuweiba, Taba) and staying in that region can usually enter free for up to about 15 days. But the stamp does not allow travel to Cairo, Luxor or the pyramids; for those you need the full visa." }
+      ],
+      sources: {
+        links: [
+          { label: "Government of Egypt: the official e-Visa portal, application, fees and eligible nationalities", url: "https://visa2egypt.gov.eg", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "US citizens need a visa for Egypt, and the e-visa and visa-on-arrival routes are both well established. Fees moved in March 2026 (the on-arrival fee rose to $30), so confirm the current amount on the official portal. The six-month passport rule is enforced strictly, and the free Sinai-only stamp excludes the mainland. Checked July 2026."
+      }
     }
   ]
 };

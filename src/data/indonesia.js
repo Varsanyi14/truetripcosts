@@ -442,6 +442,82 @@ export default {
         ],
         judgment: "The no-app zones and airport rules shift, and fares move, so treat rupiah figures as a recent read and check the price in your app. Grab and Gojek need a local SIM to register. Checked July 2026."
       }
+    },
+    {
+      slug: "visa",
+      glance: [
+        { k: "Visa", v: "Required, visa on arrival" },
+        { k: "Cost", v: "About $35, plus $10 Bali levy" },
+        { k: "Stay", v: "30 days, extend once to 60" },
+        { k: "Where", v: "evisa.imigrasi.go.id only" }
+      ],
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need a visa for Bali (Indonesia)? (2026) | True Trip Costs",
+      description: "US citizens need a visa on arrival for Indonesia, about $35, plus a separate $10 Bali tourist levy. The e-VOA that skips the airport queue, the arrival card, the six-month passport rule, and how not to overpay. Checked July 2026.",
+      h1: "Do US citizens need a visa for Bali and Indonesia?",
+      lede: "Short answer: yes, a visa on arrival, and Bali adds a small tourist levy on top. US citizens are no longer visa-free here. Here is the real cost, the online version that skips the airport queue, and the extras to sort before you land.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-26",
+      answer: "US citizens need a <b>visa on arrival (VoA)</b> for Indonesia, including Bali, they are <b>no longer visa-free</b>. It costs about <b>$35</b> (IDR 500,000), is <b>single entry</b> for <b>30 days</b>, and can be <b>extended once</b> for another 30. The easy way is the <b>e-VOA</b>, bought online before you fly at the official portal so you use the airport autogates. For Bali specifically, a separate <b>tourist levy of about $10</b> also applies. Your passport must be valid <b>six months</b>.",
+      official: {
+        label: "Indonesia Immigration: the official e-VOA portal",
+        url: "https://evisa.imigrasi.go.id",
+        note: "The Indonesian Directorate General of Immigration's official e-Visa and e-VOA portal. Apply for the e-VOA here, pay by card, and use the airport autogates on arrival. Fees change, so confirm the current amount; resellers add a markup for the same government visa. The Bali tourist levy is paid separately (below)."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "You now need a visa on arrival",
+          icon: "passport",
+          key: { fig: "About $35", tag: "No longer visa-free", text: "US citizens are no longer visa-free for Indonesia. You need a visa on arrival, about $35, single entry for 30 days, extendable once to 60 days total.", tone: "teal" },
+          p: [
+            "This is the change that catches returning visitors: US citizens are <b>no longer visa-free</b> for Indonesia. You now need a <b>visa on arrival (VoA)</b>, which costs <b>IDR 500,000 (about $35)</b>, is <b>single entry</b>, and allows a stay of <b>30 days</b>. You can <b>extend it once</b> for another 30 days, a maximum of 60, after which you must leave.",
+            "It covers <b>tourism and short business</b>, not paid work, and pointedly not <b>remote work</b> for pay, which needs a different permit. Your passport needs <b>six months</b> validity and two blank pages."
+          ]
+        },
+        {
+          h: "Get the e-VOA and skip the queue",
+          icon: "qr",
+          key: { fig: "Apply ahead", tag: "Use the autogates", text: "The e-VOA is the same visa, bought online before you fly. It lets you use the airport autogates and skip the arrival counter, and makes any extension easier. Apply a few days ahead.", tone: "teal" },
+          p: [
+            "The <b>e-VOA</b> is the electronic version of the same visa, bought <b>online before you fly</b> at the official portal, <b>evisa.imigrasi.go.id</b>. It is the same $35, but it lets you use the <b>automated e-gates</b> at Ngurah Rai (Bali) or Jakarta and skip the on-arrival visa counter, which can be a long, slow queue after a night flight. Apply <b>2 to 14 days</b> ahead.",
+            "You can still queue for the paper <b>VoA</b> on arrival and pay $35 by cash or card, but the e-VOA is smoother and makes a later extension easier to do. Resellers charge a markup for the same government visa, so use the official site."
+          ]
+        },
+        {
+          h: "The Bali levy and the arrival card",
+          icon: "receipt",
+          key: { tag: "Two more small steps", text: "Bali charges a separate tourist levy of about $10, paid online for a QR receipt. Most visitors also complete a free online arrival and customs card before landing.", tone: "amber" },
+          p: [
+            "Two extras to sort before you land. For <b>Bali</b> specifically, there is a <b>tourist levy of IDR 150,000 (about $10)</b> per visitor, <b>separate</b> from your visa, paid online at the official <b>lovebali.baliprov.go.id</b> for a QR receipt to show if asked. It is Bali-only, not the rest of Indonesia.",
+            "Most travelers should also complete the free <b>All Indonesia arrival card and customs declaration</b> online, usually within <b>72 hours</b> before arrival, which gives you a QR code for the airport. Both are <b>free</b> on their official government sites, so do not pay a third party for either."
+          ]
+        },
+        {
+          h: "A couple of gotchas",
+          icon: "tag",
+          key: { tag: "Onward ticket, strict overstay", text: "Bring a return or onward ticket; immigration can ask for it. Overstaying is expensive, about $65 a day. Then see the money guide.", tone: "amber" },
+          p: [
+            "Have a <b>return or onward ticket</b> ready, immigration can ask for proof you will leave within your stay, and visa-on-arrival does not guarantee entry. <b>Overstaying</b> is costly, around <b>IDR 1,000,000 (about $65) per day</b>, and going well over can mean deportation and a ban, so extend in time if you linger.",
+            "For how money works once you are there, cash, cards, the rupiah and tipping, see the <a href=\"/indonesia\">Indonesia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Bali?", a: "Yes. US citizens need a visa on arrival for Indonesia, including Bali; they are no longer visa-free. It costs about $35 (IDR 500,000), is single entry for 30 days, and can be extended once for another 30. For Bali, a separate tourist levy of about $10 also applies." },
+        { q: "How much does the Indonesia visa on arrival cost?", a: "IDR 500,000, about $35 USD, whether you buy it online as an e-VOA or at the airport counter. An extension is another IDR 500,000. For Bali specifically, add a separate tourist levy of IDR 150,000 (about $10). Fees change, so confirm on the official immigration portal." },
+        { q: "What is the difference between VOA and e-VOA for Indonesia?", a: "They are the same visa, cost and duration; the difference is where you get it. The e-VOA is bought online before you fly at evisa.imigrasi.go.id, letting you use the airport autogates and skip the on-arrival visa counter. The VOA is bought in that counter queue on landing. The e-VOA is smoother and makes extensions easier." },
+        { q: "Is the Bali tourist levy the same as the visa?", a: "No, it is separate. The Bali tourist levy is IDR 150,000 (about $10) per foreign visitor, paid online at the official lovebali.baliprov.go.id for a QR receipt, and it applies only in Bali. It is on top of your $35 visa on arrival, and both are separate again from the free All Indonesia arrival card." }
+      ],
+      sources: {
+        links: [
+          { label: "Indonesia Directorate General of Immigration: the official e-Visa and e-VOA portal", url: "https://evisa.imigrasi.go.id", type: "gov" },
+          { label: "Love Bali: the official Bali provincial government site for the tourist levy", url: "https://lovebali.baliprov.go.id", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "US citizens now need a visa on arrival for Indonesia, a change from the earlier visa-free access, and Bali adds a separate tourist levy. Fees and the digital arrival requirements have shifted recently, so confirm the current amounts and steps on the official immigration and Love Bali sites before you travel. Checked July 2026."
+      }
     }
   ]
 };
