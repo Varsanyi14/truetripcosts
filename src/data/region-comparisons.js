@@ -13,6 +13,14 @@ export const clusters = [
     slugs: ['portugal', 'spain', 'italy', 'greece', 'croatia']
   },
   {
+    href: '/compare/central-europe',
+    region: 'Central Europe',
+    parent: 'Europe',
+    blurb: 'Germany, Austria, Switzerland, Czechia and Hungary, from currencies to cost.',
+    pitch: 'Great trains, several currencies, a big value gap.',
+    slugs: ['germany', 'austria', 'switzerland', 'czechia', 'hungary']
+  },
+  {
     href: '/compare/southeast-asia',
     region: 'Southeast Asia',
     parent: 'Asia',
