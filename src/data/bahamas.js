@@ -9,6 +9,83 @@ export default {
   emergency: { medical: "911", note: "911 works like it does in the US for police, fire and ambulance, free from any phone. 919 is an alternate that also reaches police and fire. Save your hotel address to read out, and remember that on the Out Islands help can be further away.", checked: "Jul 2026", checkedISO: "2026-07-04" },
   insuranceLevel: "medium",
   region: "Americas",
+  spokes: [
+    {
+      slug: "visa",
+      glance: [
+        { k: "Visa", v: "None for US citizens" },
+        { k: "Stay", v: "Generous, up to 8 months" },
+        { k: "Form", v: "None to file in advance" },
+        { k: "Passport", v: "Book to fly, card for cruises" }
+      ],
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need a visa for the Bahamas? (2026) | True Trip Costs",
+      description: "US citizens need no visa and no advance form for the Bahamas. The passport rule that differs for flights versus cruises, the onward-ticket requirement, and the handy US pre-clearance at Nassau. Checked July 2026.",
+      h1: "Do US citizens need a visa for the Bahamas?",
+      lede: "Short answer: no visa, and no online form to file. US citizens are stamped in on arrival for a generous stay. The one thing to get right is your passport: a book to fly, a card only for cruises. Here is what actually matters.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-26",
+      answer: "US citizens need <b>no visa</b> for the Bahamas and <b>no advance online form</b> (the old health-travel visa is gone). You are <b>stamped in on arrival</b> for a generous stay, up to <b>eight months</b> for tourism, with the officer deciding. The catch is your <b>passport</b>: air travel needs a <b>passport book</b>, while a <b>passport card</b> only works for <b>cruises and sea arrivals</b>. Have a <b>return or onward ticket</b> and your accommodation ready, and you fill a short immigration card on arrival.",
+      official: {
+        label: "The Islands of the Bahamas: official travel and entry information",
+        url: "https://www.bahamas.com",
+        note: "The official Bahamas tourism site. There is nothing to apply for and no form to file in advance as a US tourist: you complete a short immigration card on arrival and make an oral customs declaration. The Bahamas Department of Immigration is the authority on entry and any longer stays."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "No visa, and no form to file first",
+          icon: "passport",
+          key: { fig: "Up to 8 months", tag: "Stamp on arrival", text: "US citizens need no visa and no advance online form. You are stamped in on arrival for a generous stay, and fill a short immigration card at the airport.", tone: "teal" },
+          p: [
+            "US passport holders need <b>no visa</b> for the Bahamas and <b>nothing to file online in advance</b>. The pandemic-era <b>Bahamas Health Travel Visa</b> was discontinued, so despite older pages mentioning it, there is no digital form to complete before you fly. You are <b>stamped in on arrival</b>, up to <b>eight months</b> for tourism, with the officer setting the length.",
+            "At the airport you fill a short <b>immigration card</b> and make an <b>oral customs declaration</b>, both quick. Each traveler, including children, needs their <b>own passport</b>."
+          ]
+        },
+        {
+          h: "The passport rule: book to fly, card to cruise",
+          icon: "plane",
+          key: { tag: "Book vs card", text: "To fly to the Bahamas you need a passport book. A passport card is accepted only for cruises and sea arrivals, not air travel, which trips up a lot of travelers.", tone: "teal" },
+          p: [
+            "This is the point that catches people. To <b>fly</b> to the Bahamas, US citizens need a <b>passport book</b>. A <b>passport card</b> is <b>only</b> valid for <b>cruise and sea arrivals</b>, not for flying, so a cruise passenger can use a card, but if you fly home you cannot. When in doubt, travel with the book.",
+            "The Bahamas does not enforce the six-month-validity rule on US citizens, your passport need only be valid for your stay, but <b>airlines may set their own</b> validity rules, so check with your carrier."
+          ]
+        },
+        {
+          h: "The onward ticket, and a handy perk",
+          icon: "alert",
+          key: { tag: "Show your exit, then skip a queue", text: "Bring a return or onward ticket and proof of accommodation. A bonus: Nassau has US pre-clearance, so you clear US immigration before flying home.", tone: "amber" },
+          p: [
+            "Immigration can ask for a <b>return or onward ticket</b>, where you are staying, and proof of <b>funds</b>, so have them ready, visa-free does not guarantee entry. Yellow fever vaccination is required only if you are <b>arriving from</b> a risk country.",
+            "One genuine perk: <b>Nassau's airport has US pre-clearance</b>, so you clear <b>US immigration and customs before you board</b> your flight home and arrive in the US as a domestic passenger, which saves time on connections."
+          ]
+        },
+        {
+          h: "A couple of notes",
+          icon: "tag",
+          key: { tag: "Tourism only", text: "Working needs the right permit, and longer stays or extensions go through the Bahamas immigration department. Then see the money guide.", tone: "amber" },
+          p: [
+            "Visa-free entry is for <b>tourism and business visits</b>, not working, which needs a permit. For a stay <b>beyond what you were granted</b>, or an extension, the <b>Bahamas Department of Immigration</b> is the authority.",
+            "For how money works once you are there, and the fact that <b>US dollars are used interchangeably</b> with the Bahamian dollar, see the <a href=\"/bahamas\">Bahamas money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for the Bahamas?", a: "No. US citizens visit the Bahamas visa-free for tourism or business and are stamped in on arrival, commonly for a generous stay of up to eight months at the officer's discretion. There is also no advance online form to complete; you fill a short immigration card at the airport." },
+        { q: "Can I use a passport card for the Bahamas?", a: "Only for cruises and sea arrivals. To fly to the Bahamas, US citizens need a passport book; a passport card is not valid for air travel. Cruise passengers can use a passport card, but if any part of your trip involves flying, carry the book." },
+        { q: "Is there an online entry form or health visa for the Bahamas?", a: "No, not any more. The Bahamas required a Health Travel Visa during the pandemic, but it has been discontinued. As of 2026 there is no mandatory advance online form for US tourists; you fill a short immigration card and make an oral customs declaration on arrival." },
+        { q: "Does the Bahamas have US pre-clearance?", a: "Yes, at Nassau's Lynden Pindling International Airport. You clear US immigration and customs in Nassau before boarding your flight home, arriving in the US as a domestic passenger. It is a real time-saver, especially if you have a connecting flight." }
+      ],
+      sources: {
+        links: [
+          { label: "The Islands of the Bahamas: the official tourism site's travel and entry information", url: "https://www.bahamas.com", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "Visa-free entry to the Bahamas for US citizens is long-standing, and the pandemic-era Health Travel Visa has been discontinued, so no advance form applies in 2026. The passport-book-for-air rule is a US Customs and Border Protection requirement. Stay length is set by the officer on arrival. Checked July 2026."
+      }
+    }
+  ],
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 3, atmRisk: 4 },
   sources: {
     changed: "Sources added on first publish. Verified with the Bahamas Department of Inland Revenue that the standard VAT rate is 10%, and with the official tourism board that non-resident visitors can reclaim it on shopping through Global Blue, often refunded at the till. Confirmed with the Government of The Bahamas that the air departure tax is BS$15 and normally built into airfare, and with the Royal Bahamas Police Force that 911 and 919 are the emergency numbers. The Bahamian dollar's 1 to 1 peg with the US dollar, and the interchangeable use of both currencies, is long standing.",

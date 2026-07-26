@@ -360,6 +360,87 @@ export default {
         ],
         judgment: "Fares are negotiated rather than metered and move with fuel and season, so agree the price first and treat any figures as a recent read. Ride-hailing apps were not operating in Jamaica as of this check, so confirm current options before you travel. Checked July 2026."
       }
+    },
+    {
+      slug: "c5-form",
+      glance: [
+        { k: "Visa", v: "None for US citizens, up to 6 months" },
+        { k: "C5 form", v: "Required, free, before arrival" },
+        { k: "Must have", v: "Onward ticket and your address" },
+        { k: "Where", v: "enterjamaica.gov.jm only" }
+      ],
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need a visa for Jamaica? The C5 form (2026) | True Trip Costs",
+      description: "US citizens need no visa for Jamaica, but everyone must complete the free online C5 form before arrival. What the C5 is, the onward-ticket rule, and how to avoid the sites charging for a free government form. Checked July 2026.",
+      h1: "Do US citizens need a visa for Jamaica?",
+      lede: "Short answer: no visa, but yes to one free online form. US citizens enter Jamaica visa-free; the step you cannot skip is the C5 declaration, which every arriving traveler files. Here is how it works, and how not to overpay for it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-26",
+      answer: "US citizens need <b>no visa</b> for Jamaica and can be admitted for up to <b>six months</b>, with the officer setting the exact length on arrival. What everyone must do is complete the <b>C5 form</b>, Jamaica's combined <b>immigration and customs declaration</b>, <b>online before you fly</b>, on the official government site. It is <b>free</b>, gives you a <b>QR code</b> to show at the airport, and is separate from any visa. Have a <b>return or onward ticket</b> and your <b>address in Jamaica</b> ready.",
+      official: {
+        label: "Government of Jamaica: the official C5 form",
+        url: "https://enterjamaica.gov.jm",
+        note: "The official Jamaican government portal for the C5 immigration and customs declaration. It is completely free and you can file it up to 30 days before travel. Many third-party sites charge $50 to $100 to complete this free form, so use only this official page (also reachable through the official visitjamaica.com)."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "No visa, but the C5 is required",
+          icon: "passport",
+          key: { fig: "Free", tag: "Every traveler", text: "US citizens need no visa and can get up to six months. Everyone must file the free C5 immigration and customs form online before arrival, air or sea, including children.", tone: "teal" },
+          p: [
+            "US passport holders enter Jamaica <b>visa-free</b> and are typically admitted for <b>up to six months</b>, though the officer decides the exact length on arrival, so check your stamp. The one thing everyone must do, whatever their nationality and including children, is complete the <b>C5 form</b>: Jamaica's combined <b>immigration and customs declaration</b>.",
+            "It is <b>not a visa</b>, just a declaration, and it applies whether you arrive by <b>air or cruise ship</b>. File it <b>online before you travel</b> and you clear the airport on a <b>QR code</b> instead of filling a paper card in the arrivals hall."
+          ]
+        },
+        {
+          h: "How and when to file it",
+          icon: "qr",
+          key: { fig: "Up to 30 days ahead", tag: "Before you fly", text: "Complete the C5 online up to 30 days before travel, with your passport, flight and where you are staying. Save the QR code. You cannot do it months in advance.", tone: "teal" },
+          p: [
+            "You can file the C5 from <b>up to 30 days before</b> travel, not months ahead. It asks for your <b>passport details, flight, and where you are staying</b>, so have your booking to hand, and each traveler needs their <b>own</b> submission. Save or screenshot the <b>QR code</b> it gives you."
+          ],
+          steps: [
+            "Go to the official site, enterjamaica.gov.jm. Go there directly, not through a search ad.",
+            "Enter your passport, flight and accommodation details.",
+            "Submit and save the QR code confirmation. It is free, so if you are asked to pay, you are on the wrong site.",
+            "Show the QR code at immigration on arrival, and keep it for departure."
+          ]
+        },
+        {
+          h: "The free-form trap",
+          icon: "alert",
+          key: { tag: "The C5 is free", text: "The C5 is completely free on the official site. A crowd of lookalike sites charge $50 to $100 to file it for you. Use only enterjamaica.gov.jm.", tone: "amber" },
+          p: [
+            "Because the form is <b>free and mandatory</b>, plenty of <b>lookalike sites</b> charge <b>$50 to $100</b> to fill in the same government form, and some look convincingly official. They add nothing you cannot do in a few minutes. Use only <b>enterjamaica.gov.jm</b>.",
+            "A couple of extras: carry a <b>return or onward ticket</b> and be ready to show <b>funds</b> (often assessed around $50 to $100 a day) and your accommodation. A passport valid for your stay is enough, though six months is a safe margin."
+          ]
+        },
+        {
+          h: "A couple of notes",
+          icon: "tag",
+          key: { tag: "Tourism only", text: "Working on a tourist entry is not allowed, and staying past your stamp needs an extension from PICA. Then see the money guide.", tone: "amber" },
+          p: [
+            "Visa-free entry is for <b>tourism and business visits</b>, not working, and staying <b>beyond your stamped date</b> needs a formal extension from PICA, Jamaica's immigration agency. Yellow fever vaccination is only required if you are <b>arriving from</b> a risk country.",
+            "For how money works once you are there, the Jamaican dollar, US dollars, cards and the rest, see the <a href=\"/jamaica\">Jamaica money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Jamaica?", a: "No. US citizens visit Jamaica visa-free and are usually admitted for up to six months, with the officer setting the exact length on arrival. There is no visa to apply for, but every traveler must complete the free online C5 immigration and customs form before arriving." },
+        { q: "What is the Jamaica C5 form?", a: "The C5 is Jamaica's combined immigration and customs declaration, mandatory for every arriving passenger by air or sea, including children. You complete it online before you travel and receive a QR code to show at the airport. It is not a visa; it is a declaration, and it is free." },
+        { q: "How much does the Jamaica C5 form cost?", a: "Nothing. The C5 is completely free on the official government site, enterjamaica.gov.jm. Many third-party sites charge $50 to $100 to file the same form; they are not official. Use only the government portal, and if you are asked to pay, you are on the wrong site." },
+        { q: "When should I complete the Jamaica C5 form?", a: "You can file it from up to 30 days before travel, but not months in advance. Do it before you fly so you clear the airport on a QR code rather than filling a paper card on arrival. Each traveler needs their own submission, and you keep the confirmation for departure." }
+      ],
+      sources: {
+        links: [
+          { label: "Government of Jamaica: the official, free C5 immigration and customs declaration portal", url: "https://enterjamaica.gov.jm", type: "gov" },
+          { label: "Visit Jamaica (Jamaica Tourist Board): official entry requirements and the C5 declaration", url: "https://www.visitjamaica.com/plan-your-adventure/travel-tips/entry-requirements/", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "Jamaica's visa-free entry for US citizens is stable, and the online C5 declaration is a standing, mandatory requirement in 2026, not a pandemic leftover. The form is free; only the official government site is legitimate. Stay length is set by the officer on arrival. Checked July 2026."
+      }
     }
   ]
 };

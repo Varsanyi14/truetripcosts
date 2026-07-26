@@ -433,6 +433,81 @@ export default {
         ],
         judgment: "Ireland applies the shared EU pet-entry framework plus a dog tapeworm treatment, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The tapeworm timing is the part to get right, so we point you to the official pages and dated this July 2026."
       }
+    },
+    {
+      slug: "visa",
+      glance: [
+        { k: "Visa", v: "None for US citizens, up to 90 days" },
+        { k: "ETIAS", v: "Does not apply, Ireland is not Schengen" },
+        { k: "ETA", v: "Only for Northern Ireland (the UK)" },
+        { k: "Need", v: "A valid passport, nothing to apply for" }
+      ],
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need a visa or ETIAS for Ireland? (2026) | True Trip Costs",
+      description: "US citizens need no visa for Ireland, and no ETIAS: Ireland is not in the Schengen Area. The one catch is Northern Ireland, which is part of the UK and needs the UK ETA. What actually applies in 2026. Checked July 2026.",
+      h1: "Do US citizens need a visa or ETIAS for Ireland?",
+      lede: "Short answer: no visa, and no ETIAS. Ireland sits outside the Schengen Area, so Europe's coming authorization does not touch it. The one wrinkle is Northern Ireland, which is a different country. Here is what actually applies.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-26",
+      answer: "US citizens need <b>no visa</b> for Ireland for tourism or business, up to <b>90 days</b>, with nothing to apply for in advance. And <b>ETIAS does not apply</b>: Ireland is an EU member but <b>opted out of the Schengen Area</b>, so Europe's coming travel authorization will not cover it. The one thing to know: <b>Northern Ireland is part of the UK</b>, so visiting Belfast or the north needs the <b>UK ETA</b>, which is separate. For the Republic, just bring a <b>valid passport</b>.",
+      official: {
+        label: "Irish Immigration Service: coming to visit Ireland",
+        url: "https://www.irishimmigration.ie",
+        note: "Ireland's official immigration site. There is nothing to apply for as a US tourist: it confirms visa-free entry for short stays and lists which nationalities do need a visa. Ireland runs its own immigration system, separate from both the Schengen Area and the UK."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "No visa, and no ETIAS",
+          icon: "passport",
+          key: { fig: "90 days", tag: "Not in Schengen", text: "US citizens enter Ireland visa-free for up to 90 days with nothing to apply for. ETIAS does not apply, because Ireland opted out of the Schengen Area.", tone: "teal" },
+          p: [
+            "US passport holders enter Ireland <b>visa-free</b> for tourism or business, up to <b>90 days</b>, stamped in on arrival with <b>nothing to apply for</b> and no fee. Ireland is an <b>EU member</b> but it <b>opted out of the Schengen Area</b> and runs its own immigration system.",
+            "That is why <b>ETIAS</b>, the EU travel authorization expected to start for Schengen countries later in 2026, <b>will not apply to Ireland</b>. When it launches, you would need it for the Schengen portion of a trip, but never for Ireland itself."
+          ]
+        },
+        {
+          h: "Northern Ireland is the UK, and needs the UK ETA",
+          icon: "alert",
+          key: { tag: "The one real wrinkle", text: "The island holds two countries. The Republic needs nothing; Northern Ireland is part of the UK, so Belfast and the north need the UK ETA, separate and paid.", tone: "amber" },
+          p: [
+            "Here is the wrinkle that trips people up. The island of Ireland is <b>two countries</b>: the <b>Republic of Ireland</b> (independent, EU) and <b>Northern Ireland</b> (part of the <b>UK</b>). Since 2025, US citizens need a <b>UK Electronic Travel Authorization (ETA)</b> to visit the north, Belfast, the Causeway Coast and the like, which is <b>separate</b> from anything Irish and costs a small fee. Our <a href=\"/united-kingdom\">UK guide</a> covers it.",
+            "There is <b>no checkpoint</b> on the land border, so you can drive Dublin to Belfast without stopping, but the UK ETA is still the legal requirement for the northern leg."
+          ]
+        },
+        {
+          h: "A useful quirk: Ireland resets your Schengen clock",
+          icon: "calendar",
+          key: { tag: "Extra time in Europe", text: "Time in Ireland does not count against the Schengen 90/180 limit, so it is a handy add-on if you have used up, or want to save, your Schengen days.", tone: "teal" },
+          p: [
+            "Because Ireland is outside Schengen, <b>time spent there does not count</b> toward the Schengen <b>90 days in 180</b>. That makes Ireland a genuinely useful stop on a longer European trip: you can spend your 90 Schengen days and <b>separately</b> spend up to 90 in Ireland, or start in Ireland and enter Schengen with a full allowance.",
+            "Your passport needs to be <b>valid for your stay</b> with a blank page; Ireland does not require the six-month buffer some countries do. Immigration may still ask for a <b>return ticket</b>, funds and where you are staying."
+          ]
+        },
+        {
+          h: "A couple of notes",
+          icon: "tag",
+          key: { tag: "Tourism only", text: "Working needs an employment permit and a long-stay visa. Staying past 90 days means registering with Irish immigration. Then see the money guide.", tone: "amber" },
+          p: [
+            "Visa-free entry is for <b>tourism and business</b>, not working, which needs an <b>employment permit</b> and a long-stay visa arranged first. To stay <b>beyond 90 days</b> you register with Irish immigration before your time runs out.",
+            "For how money works once you are there, the euro, cards, tipping and the rest, see the <a href=\"/ireland\">Ireland money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Ireland?", a: "No. US citizens visit Ireland visa-free for tourism or business for up to 90 days, stamped in on arrival with nothing to apply for and no fee. Be ready to show a return ticket, funds and accommodation, since visa-free entry does not guarantee admission. Working or longer stays need the right permit and visa." },
+        { q: "Does ETIAS apply to Ireland?", a: "No. Ireland is an EU member but opted out of the Schengen Area, so ETIAS does not and will not apply to Ireland, even after it launches for Schengen countries later in 2026. You would need ETIAS only for the Schengen part of a trip, never for Ireland itself." },
+        { q: "Do I need a UK ETA to visit Northern Ireland?", a: "Yes. Northern Ireland is part of the UK, so since 2025 US citizens need a UK Electronic Travel Authorization to visit Belfast or the north, separate from anything for the Republic of Ireland. There is no checkpoint on the land border, but the UK ETA is still legally required for the northern leg." },
+        { q: "Does time in Ireland count toward the Schengen 90-day limit?", a: "No. Because Ireland is outside the Schengen Area, days spent there do not count against your Schengen 90-days-in-180 allowance. Ireland is a useful way to extend a European trip: you can spend your Schengen days and, separately, up to 90 days in Ireland." }
+      ],
+      sources: {
+        links: [
+          { label: "Irish Immigration Service (Department of Justice): visa and entry requirements for visiting Ireland", url: "https://www.irishimmigration.ie", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "Ireland's visa-free entry for US citizens is stable, and its position outside Schengen means ETIAS will not apply to it. The UK ETA requirement for Northern Ireland took effect in 2025 and is separate; confirm its details in our UK guide before a cross-border trip. Checked July 2026."
+      }
     }
   ]
 };
