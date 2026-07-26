@@ -455,6 +455,82 @@ export default {
         ],
         judgment: "Tipping norms in Japan are cultural and longstanding, not a recent policy. The no-tipping standard is consistent across the country and is not a judgment call. The ryokan kokorozuke exception is a soft custom, not a rule. Checked July 2026."
       }
+    },
+    {
+      slug: "visa",
+      glance: [
+        { k: "Visa", v: "None for stays up to 90 days" },
+        { k: "Authorization", v: "None required, JESTA not yet in force" },
+        { k: "Need", v: "A valid passport and onward ticket" },
+        { k: "Visit Japan Web", v: "Optional, free, speeds entry" }
+      ],
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need a visa for Japan? (2026) | True Trip Costs",
+      description: "US citizens need no visa for Japan for stays up to 90 days, and there is no travel authorization to apply for. What Visit Japan Web is, what immigration still expects, and the JESTA system that is coming but not yet live. Checked July 2026.",
+      h1: "Do US citizens need a visa for Japan?",
+      lede: "Short answer: no, for stays up to 90 days, and there is nothing to apply for. Japan is one of the easiest countries for Americans to enter. Here is what you actually need, what Visit Japan Web does, and the change that is coming but is not here yet.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-26",
+      answer: "US citizens need <b>no visa</b> for Japan for stays of <b>up to 90 days</b> for tourism or short business, under Japan's visa-exemption program, and there is <b>no travel authorization to apply for</b>. You just need a <b>valid passport</b> and, in practice, an <b>onward or return ticket</b>. Japan's <b>Visit Japan Web</b> lets you pre-fill the immigration and customs forms for a faster airport arrival, but it is <b>optional and free</b>.",
+      official: {
+        label: "Japan MOFA: visa exemption for short stays",
+        url: "https://www.mofa.go.jp/j_info/visit/visa/short/novisa.html",
+        note: "The Ministry of Foreign Affairs page listing the countries, the US among them, whose citizens do not need a visa for a short stay of up to 90 days. There is nothing to apply for or pay as a US tourist. For the optional digital arrival step, see Visit Japan Web below."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "Do you need a visa? No, for 90 days",
+          icon: "passport",
+          key: { fig: "90 days", tag: "Visa-free", text: "US citizens enter visa-free for up to 90 days for tourism or short business, on nationality alone. You get a stamp on arrival. There is nothing to apply for and no fee.", tone: "teal" },
+          p: [
+            "US passport holders enter Japan <b>visa-free for up to 90 days</b> for tourism, visiting, or short business that does not involve being paid by a Japanese source. You are simply admitted and stamped on arrival on the strength of your <b>nationality</b>, so a US green card does not help a non-US citizen here. This has held for decades.",
+            "Your passport must be <b>valid for your stay</b>. Japan does not formally demand the six-month buffer some countries do, but airlines occasionally want to see comfortable validity, so do not travel on a nearly expired passport."
+          ]
+        },
+        {
+          h: "Visit Japan Web, the optional digital shortcut",
+          icon: "qr",
+          key: { fig: "Free", tag: "Optional, speeds entry", text: "Visit Japan Web lets you pre-register immigration and customs before you land and clear on a QR code. It is free and official, but optional: you can still fill paper forms on the plane.", tone: "teal" },
+          p: [
+            "<b>Visit Japan Web</b> is Japan's official online service for pre-filling your <b>immigration and customs</b> forms before you land, so you scan a QR code at the airport instead of filling cards by hand. It also streamlines <b>tax-free shopping</b>. It is <b>free</b> and run by the government's Digital Agency, and it is <b>optional</b>: skip it and you fill the paper arrival and customs cards on the plane as travelers always have.",
+            "Because it is free, ignore any site or app charging a fee to do Visit Japan Web for you. The only official site is on a go.jp government domain, linked in the sources below."
+          ]
+        },
+        {
+          h: "Visa-free does not mean preparation-free",
+          icon: "alert",
+          key: { tag: "Show your onward plans", text: "Immigration can ask for a return or onward ticket, an address for your first night, and evidence of funds. A few travelers are turned away for having none, so have them ready.", tone: "amber" },
+          p: [
+            "Entry is easy but not automatic. Japanese immigration can ask to see a <b>return or onward ticket</b>, the <b>address</b> where you are staying your first night, and that you have <b>enough funds</b> for the trip. Travelers have been refused at Narita for being unable to show any onward plan, so have these to hand, and put your first hotel on the arrival form.",
+            "The 90 days is for <b>tourism and short business</b> only. Paid work, teaching, performing for a fee, or a long study program all need the right visa arranged before you travel, and overstaying even by a day can mean detention and a re-entry ban."
+          ]
+        },
+        {
+          h: "What is not required, yet",
+          icon: "tag",
+          key: { tag: "JESTA is coming", text: "Japan has announced a JESTA authorization along the lines of the US ESTA, but it is not in force in 2026 and there is nothing to apply for. Watch the official MOFA site for a start date.", tone: "amber" },
+          p: [
+            "You may have read about <b>JESTA</b>, an electronic travel authorization Japan has announced along the lines of the US ESTA. As of 2026 it is <b>not in force</b>: US citizens still enter visa-free with <b>nothing to apply for in advance</b>. If it launches, it will be announced ahead of time on the official government sites, so there is nothing to buy now and no early-signup site to trust.",
+            "For how money works once you are there, cards, cash, IC transit cards and the rest, see the <a href=\"/japan\">Japan money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Japan?", a: "No. US citizens can enter Japan visa-free for up to 90 days for tourism or short business, under Japan's visa-exemption program. You are stamped in on arrival, with nothing to apply for and no fee. Longer stays, paid work or study need a visa arranged before you travel." },
+        { q: "Is Visit Japan Web required for US citizens?", a: "No, it is optional and free. Visit Japan Web lets you pre-fill the immigration and customs forms and clear on a QR code for a faster arrival, but you can still complete the paper cards on the plane. Because it is free, do not pay any third-party site to do it for you." },
+        { q: "Do US citizens need a JESTA for Japan?", a: "Not in 2026. Japan has announced a JESTA travel authorization similar to the US ESTA, but it is not yet in force, and US citizens still enter visa-free with nothing to apply for. Any site selling a JESTA now is premature; watch the official MOFA site for a real start date." },
+        { q: "How long can US citizens stay in Japan without a visa?", a: "Up to 90 days for tourism or short business. Tourist stays generally cannot be extended, so for longer you must leave and re-enter, which can draw questions, or arrange the appropriate visa in advance. Overstaying can lead to detention and a re-entry ban." }
+      ],
+      sources: {
+        links: [
+          { label: "Japan Ministry of Foreign Affairs: visa exemptions for short-term stays, listing the US among visa-free nationalities", url: "https://www.mofa.go.jp/j_info/visit/visa/short/novisa.html", type: "gov" },
+          { label: "Digital Agency of Japan: the official, free Visit Japan Web service for immigration and customs", url: "https://services.digital.go.jp/en/visit-japan-web/", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "Japan's 90-day visa-free access for US citizens is long-standing MOFA policy, and Visit Japan Web is an optional, free government service. A JESTA authorization has been announced but is not in force as of July 2026, so treat any earlier start date with caution and confirm on the official MOFA site. Checked July 2026."
+      }
     }
   ]
 };

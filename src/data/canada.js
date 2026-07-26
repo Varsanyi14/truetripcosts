@@ -594,6 +594,82 @@ export default {
         ],
         judgment: "Rideshare coverage, airport fixed fares and train prices are current for 2026 but vary by city and change over time (Montreal's airport taxi fare is posted in the low-to-mid C$40s, and sources cite figures from C$42 to C$48), so treat the numbers as a recent read and confirm the posted airport fare on arrival. Checked July 2026."
       }
+    },
+    {
+      slug: "visa-and-eta",
+      glance: [
+        { k: "Visa", v: "None for US citizens" },
+        { k: "eTA", v: "Not required, US citizens are exempt" },
+        { k: "Need", v: "A valid US passport to fly" },
+        { k: "Stay", v: "Usually up to 6 months" }
+      ],
+      live: true,
+      topic: "visas",
+      title: "Do US citizens need a visa or eTA for Canada? (2026) | True Trip Costs",
+      description: "US citizens need no visa and no eTA for Canada, despite a very common mix-up. What you actually carry by air, land and sea, the six-month stay, and the criminal-record rule that quietly turns people away. Checked July 2026.",
+      h1: "Do US citizens need a visa or eTA for Canada?",
+      lede: "Short answer: no to both. This is the most common Canada mix-up, US citizens are exempt from the eTA and need no visa. Here is what you actually carry, and the one rule that quietly turns people away at the border.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-26",
+      answer: "US citizens need <b>no visa and no eTA</b> for Canada. This is the single most common Canada mix-up: the eTA is Canada's online authorization for <b>other</b> visa-exempt nationalities, and <b>US citizens are specifically exempt</b> from it, whether you fly, drive or arrive by sea. You do need a <b>valid US passport</b> to fly in, or, by land or sea, a passport, passport card, NEXUS card or enhanced driver's license. You can usually stay <b>up to six months</b>, set by the officer on arrival.",
+      official: {
+        label: "Government of Canada: what you need to enter Canada",
+        url: "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/entry-requirements-country.html",
+        note: "The official IRCC page on entry documents. There is nothing to apply for as a US citizen: it confirms the eTA and visa exemption and lists exactly which documents work by air, land and sea. For a criminal record or a permit, IRCC is again the authority."
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "The eTA is not for you",
+          icon: "passport",
+          key: { tag: "US citizens exempt", text: "Canada's eTA is the online authorization for other visa-exempt nationalities. US citizens are specifically exempt, by air, land or sea, so there is nothing to apply for and nothing to pay.", tone: "teal" },
+          p: [
+            "This is the single most common Canada mix-up. Canada's <b>eTA</b> (electronic travel authorization) is required for many visa-exempt nationalities flying in, so US travelers assume they need one too. They do not: <b>US citizens are specifically exempt from the eTA</b>, whether you fly, drive or arrive by sea. If a website offers to sell you a Canadian eTA as a US citizen, it is charging for something you do not need.",
+            "US <b>green card</b> holders who are not US citizens are also exempt from the eTA, but should travel with their permanent resident card."
+          ]
+        },
+        {
+          h: "What you actually carry, by air, land and sea",
+          icon: "plane",
+          key: { fig: "Passport to fly", tag: "More options by land", text: "A valid US passport to fly. By land or sea you can instead use a passport card, NEXUS card or enhanced driver's license. A regular driver's license alone is not enough.", tone: "teal" },
+          p: [
+            "To <b>fly</b> to Canada you need a <b>valid US passport</b>. Arriving by <b>land or sea</b> you have more options: a passport, a <b>passport card</b>, a <b>NEXUS card</b>, or an <b>enhanced driver's license</b> from a participating state all work, but a regular driver's license on its own does not, and has not since 2009. Children under 16 can cross by land or sea on a birth certificate, though a passport is simpler.",
+            "You can usually stay <b>up to six months</b>. The border officer sets the actual length on arrival and may ask about your plans, so have your return date and where you are staying to hand."
+          ]
+        },
+        {
+          h: "The rule that quietly turns people away",
+          icon: "alert",
+          key: { tag: "Old DUIs matter", text: "Canada can refuse entry over a criminal record, including a single DUI or another offense that seems minor at home. If that could apply, sort out rehabilitation or a permit well before you travel.", tone: "amber" },
+          p: [
+            "Canada is stricter than most on <b>criminal inadmissibility</b>: an old <b>DUI</b>, or another offense that feels minor at home, can get a US citizen turned away at the border. If that might apply to you, look into <b>criminal rehabilitation</b> or a <b>Temporary Resident Permit</b> on the official IRCC site well before you travel, rather than hoping it will not come up.",
+            "For frequent crossers, <b>NEXUS</b> (about $50 for five years) buys fast lanes at airports and land borders, and doubles as Global Entry for the trip home."
+          ]
+        },
+        {
+          h: "A couple of notes",
+          icon: "tag",
+          key: { tag: "Tourism only", text: "Visa-free entry is for tourism and short business visits. Working or studying needs a permit, and Canada does not require the six-month passport buffer some countries do.", tone: "amber" },
+          p: [
+            "Visa-free entry covers <b>tourism, visiting and short business trips</b>, not working or studying, which need a permit. Your passport only has to be valid for your stay: Canada does not require the six-month buffer that many countries do.",
+            "For how money works once you are there, cards, cash, tipping and the rest, see the <a href=\"/canada\">Canada money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Canada?", a: "No. US citizens do not need a visa to visit Canada for tourism or short business trips, and can usually stay up to six months. You do need proper ID: a valid US passport to fly, or a passport, passport card, NEXUS card or enhanced driver's license by land or sea." },
+        { q: "Do US citizens need an eTA for Canada?", a: "No, and this is the most common Canada mix-up. The eTA is Canada's online authorization for other visa-exempt nationalities flying in; US citizens are specifically exempt from it, whether they arrive by air, land or sea. If a site tries to charge you for a Canadian eTA as a US citizen, you do not need it." },
+        { q: "What documents do US citizens need to enter Canada?", a: "To fly, a valid US passport. By land or sea, you can instead use a passport card, a NEXUS card, or an enhanced driver's license from a participating state; a regular driver's license alone is not accepted. Children under 16 can cross by land or sea with a birth certificate." },
+        { q: "Can a DUI stop you entering Canada?", a: "It can. Canada treats a DUI, and some other offenses that seem minor at home, as grounds to refuse entry. If you have any criminal record, look into criminal rehabilitation or a Temporary Resident Permit on the official IRCC site before you travel, rather than risk being turned away at the border." }
+      ],
+      sources: {
+        links: [
+          { label: "Government of Canada (IRCC): entry requirements by country, and the eTA exemption for US citizens", url: "https://www.canada.ca/en/immigration-refugees-citizenship/services/visit-canada/entry-requirements-country.html", type: "gov" },
+          { label: "US Customs and Border Protection: the Western Hemisphere Travel Initiative documents accepted by land and sea", url: "https://www.cbp.gov/travel/us-citizens/western-hemisphere-travel-initiative", type: "gov" },
+          { label: "US Department of State: the country information pages, the official router for entry requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "US citizens' visa-free, eTA-exempt access to Canada is long-standing and stated plainly on the official IRCC pages. The accepted documents for land and sea, and the criminal-inadmissibility rules, can change, so confirm on IRCC before you travel. Checked July 2026."
+      }
     }
   ]
 };
