@@ -19,22 +19,29 @@ const regionGroups = CONTINENTS
       <details class="gmenu">
         <summary class="gmenu-sum">Guides<svg class="gmenu-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
         <div class="gmenu-panel">
-          <a href="/#guides">All country guides</a>
-          {regionGroups.map(g => (
-            <Fragment>
-              <p class="gmenu-lab">{g.key}</p>
-              {g.capstone && <a href={g.capstone.href}>{g.capstone.label}</a>}
-              {g.items.map(c => <a href={c.href}>{c.region}</a>)}
-            </Fragment>
-          ))}
-          <p class="gmenu-lab">Compare by topic</p>
-          <a href="/passports-and-visas">Passports and visas</a>
-          <a href="/cost-comparison">Cost of a day, compared</a>
-          <a href="/us-outbound-travelers">Where Americans travel, ranked</a>
-          <a href="/tipping-compared">Tipping, country by country</a>
-          <a href="/tourist-taxes">Tourist taxes and fees</a>
-          <a href="/cash-or-card">Cash or card</a>
-          <a href="/taxis-and-ride-hailing">Taxis and ride-hailing</a>
+          <div class="gm-cols">
+            <div class="gm-col gm-col-regions">
+              <p class="gm-zone">By region</p>
+              {regionGroups.map(g => (
+                <div class="gm-group" data-cont={g.key}>
+                  <p class="gm-group-h"><span class="gm-dot" aria-hidden="true"></span>{g.key}</p>
+                  {g.capstone && <a class="gm-link gm-cap" href={g.capstone.href}>{g.capstone.label}</a>}
+                  {g.items.map(c => <a class="gm-link" href={c.href}>{c.region}</a>)}
+                </div>
+              ))}
+            </div>
+            <div class="gm-col gm-col-topics">
+              <p class="gm-zone">By topic</p>
+              <a class="gm-link" href="/passports-and-visas">Passports and visas</a>
+              <a class="gm-link" href="/cost-comparison">Cost of a day, compared</a>
+              <a class="gm-link" href="/us-outbound-travelers">Where Americans travel, ranked</a>
+              <a class="gm-link" href="/tipping-compared">Tipping, country by country</a>
+              <a class="gm-link" href="/tourist-taxes">Tourist taxes and fees</a>
+              <a class="gm-link" href="/cash-or-card">Cash or card</a>
+              <a class="gm-link" href="/taxis-and-ride-hailing">Taxis and ride-hailing</a>
+            </div>
+          </div>
+          <a class="gm-all" href="/#guides"><span>All country guides</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
       </details>
       <a class="navcta" href="#" data-open-signup>Get updates</a>
@@ -49,10 +56,35 @@ const regionGroups = CONTINENTS
     .gmenu-sum:hover{color:var(--teal-deep)}
     .gmenu-chev{transition:transform .15s ease}
     .gmenu[open] .gmenu-chev{transform:rotate(180deg)}
-    .gmenu-panel{position:absolute;top:calc(100% + 8px);right:0;min-width:210px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:6px;z-index:60}
-    .gmenu-panel a{display:block;padding:9px 11px;border-radius:8px;font-size:14px;color:var(--ink);text-decoration:none;white-space:nowrap}
-    .gmenu-panel a:hover{background:var(--paper);color:var(--teal-deep)}
-    .gmenu-lab{margin:9px 11px 4px;padding-top:9px;border-top:1px solid var(--line);font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+    .gmenu-panel{position:absolute;top:calc(100% + 8px);right:0;width:540px;max-width:calc(100vw - 32px);background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:16px 18px;z-index:60}
+    .gm-cols{display:grid;grid-template-columns:1fr 1fr}
+    .gm-col-regions{padding-right:16px}
+    .gm-col-topics{border-left:1px solid var(--line);padding-left:18px}
+    .gm-zone{margin:2px 0 10px 8px;font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-deep)}
+    .gm-col-topics .gm-zone{margin-left:8px}
+    .gm-group{margin:0 0 13px}
+    .gm-group:last-child{margin-bottom:0}
+    .gm-group-h{display:flex;align-items:center;gap:7px;margin:0 0 3px;padding:0 8px;font-family:var(--serif);font-weight:600;font-size:13.5px;color:var(--ink)}
+    .gm-dot{width:8px;height:8px;border-radius:50%;flex:none;background:var(--muted)}
+    .gm-group[data-cont="Europe"] .gm-dot{background:#0E7A5F}
+    .gm-group[data-cont="Asia"] .gm-dot{background:#C0592B}
+    .gm-group[data-cont="Americas"] .gm-dot{background:#3A6EA5}
+    .gm-group[data-cont="Middle East"] .gm-dot{background:#C99A2E}
+    .gm-group[data-cont="Africa"] .gm-dot{background:#6F8F3E}
+    .gm-link{display:block;padding:6px 8px 6px 22px;border-radius:8px;font-size:13.5px;color:#3B4A46;text-decoration:none;line-height:1.3}
+    .gm-col-topics .gm-link{padding-left:8px}
+    .gm-link:hover{background:var(--paper);color:var(--teal-deep)}
+    .gm-cap{color:var(--teal-deep);font-weight:600}
+    .gm-all{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:14px;padding:12px 10px 2px;border-top:1px solid var(--line);font-size:13px;font-weight:600;color:var(--teal-deep);text-decoration:none}
+    .gm-all:hover{color:var(--ink)}
+    .gm-all svg{transition:transform .15s ease}
+    .gm-all:hover svg{transform:translateX(3px)}
+    @media(max-width:640px){
+      .gmenu-panel{width:min(92vw,320px);padding:14px}
+      .gm-cols{grid-template-columns:1fr}
+      .gm-col-regions{padding-right:0}
+      .gm-col-topics{border-left:none;border-top:1px solid var(--line);padding-left:0;padding-top:13px;margin-top:11px}
+    }
   </style>
 </nav>
 
