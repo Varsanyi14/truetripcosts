@@ -4,7 +4,7 @@ import { clusters, regionMetaCompare } from '../data/region-comparisons.js';
 // Group the region comparisons by continent for the Guides menu, so the list stays
 // scannable as it grows. Order is fixed; each cluster slots into its parent continent,
 // and a continent's capstone (Which part of Europe?) leads its group.
-const CONTINENTS = ['Europe', 'Asia', 'Americas'];
+const CONTINENTS = ['Europe', 'Asia', 'Americas', 'Middle East', 'Africa'];
 const regionGroups = CONTINENTS
   .map(key => ({ key, capstone: regionMetaCompare[key] || null, items: clusters.filter(c => c.parent === key) }))
   .filter(g => g.capstone || g.items.length);

@@ -59,6 +59,22 @@ export const clusters = [
     blurb: 'Brazil, Argentina, Colombia and Ecuador, from the US dollar to exchange-rate quirks.',
     pitch: 'Great value, vibrant cities, a currency quirk each.',
     slugs: ['brazil', 'argentina', 'colombia', 'ecuador']
+  },
+  {
+    href: '/compare/middle-east',
+    region: 'Middle East',
+    parent: 'Middle East',
+    blurb: 'The UAE, Turkey and Egypt, from the cashless Gulf to cash-first Egypt.',
+    pitch: 'Gulf ease, Turkish value, or Egypt on a budget.',
+    slugs: ['uae', 'turkey', 'egypt']
+  },
+  {
+    href: '/compare/africa',
+    region: 'Africa',
+    parent: 'Africa',
+    blurb: 'Morocco, South Africa and Namibia, our African guides compared.',
+    pitch: 'Souks on cash, card-friendly South Africa, or a Namibian self-drive.',
+    slugs: ['morocco', 'south-africa', 'namibia']
   }
 ];
 
