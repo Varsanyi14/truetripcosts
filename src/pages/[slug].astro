@@ -6,7 +6,7 @@ import CountryBriefing from '../components/CountryBriefing.astro';
 import Symbol from '../components/Symbol.astro';
 import { topicIcon } from '../data/topics.js';
 import { countries } from '../data/index.js';
-import { comparisonFor } from '../data/region-comparisons.js';
+import { comparisonsFor } from '../data/region-comparisons.js';
 import fs from 'node:fs';
 
 export function getStaticPaths() {
@@ -20,7 +20,7 @@ const ogImage = fs.existsSync(process.cwd() + '/public/og/' + country.slug + '.j
 const petSpoke = (country.spokes || []).find(s => s.topic === 'pets' && s.live !== false);
 // If this country belongs to a regional comparison cluster, surface a slim link
 // to that comparison from its hub. Data-driven via src/data/region-comparisons.js.
-const comparison = comparisonFor(country.slug, countries);
+const comparisons = comparisonsFor(country.slug, countries);
 ---
 <Base title={country.title} description={country.description} ogImage={ogImage}>
   <Nav />
@@ -57,13 +57,13 @@ const comparison = comparisonFor(country.slug, countries);
         </ul>
       </section>
     )}
-    {comparison && (
-      <a class="regionbar" href={comparison.href}>
+    {comparisons.map(cmp => (
+      <a class="regionbar" href={cmp.href}>
         <span class="regionbar-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V10M12 21V4M19 21v-7"/></svg></span>
-        <span class="regionbar-tx">Weighing up {comparison.region}? See how <b>{country.name}</b> compares with {comparison.othersText} on the money side.</span>
+        <span class="regionbar-tx">Weighing up {cmp.region}? See how <b>{country.name}</b> compares with {cmp.othersText} on the money side.</span>
         <svg class="regionbar-arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-    )}
+    ))}
     <section class="guide-cta">
       <div class="gc-txt">
         <p class="gc-h">This is how {country.name} stands today.</p>

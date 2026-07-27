@@ -72,9 +72,9 @@ export const clusters = [
     href: '/compare/africa',
     region: 'Africa',
     parent: 'Africa',
-    blurb: 'Morocco, South Africa and Namibia, our African guides compared.',
-    pitch: 'Souks on cash, card-friendly South Africa, or a Namibian self-drive.',
-    slugs: ['morocco', 'south-africa', 'namibia']
+    blurb: 'Egypt, Morocco, South Africa and Namibia, our African guides compared.',
+    pitch: 'Pyramids, souks, card-friendly South Africa, or a self-drive.',
+    slugs: ['egypt', 'morocco', 'south-africa', 'namibia']
   }
 ];
 
@@ -97,6 +97,22 @@ export function comparisonFor(slug, countries) {
   };
   const others = cluster.slugs.filter(s => s !== slug).map(nameOf);
   return { href: cluster.href, region: cluster.region, othersText: joinNames(others) };
+}
+
+// All clusters a country belongs to (a transcontinental country like Egypt sits in two),
+// so its guide can link to every comparison it appears in, keeping the links reciprocal.
+export function comparisonsFor(slug, countries) {
+  const nameOf = s => {
+    const c = (countries || []).find(x => x.slug === s);
+    return c ? c.name : s;
+  };
+  return clusters
+    .filter(c => c.slugs.includes(slug))
+    .map(cluster => ({
+      href: cluster.href,
+      region: cluster.region,
+      othersText: joinNames(cluster.slugs.filter(s => s !== slug).map(nameOf))
+    }));
 }
 
 // Clusters whose parent top-level region matches, for the region hub pages

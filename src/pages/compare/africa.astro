@@ -15,9 +15,14 @@ import { otherClusters } from '../../data/region-comparisons.js';
 // with a closed currency, and Namibia is a self-drive safari where cash matters on the
 // road and the South African rand travels alongside its own dollar. A looser "region"
 // than the others (North Africa plus Southern Africa), framed as our African guides.
-const order = ['morocco', 'south-africa', 'namibia'];
+const order = ['egypt', 'morocco', 'south-africa', 'namibia'];
 
 const rate = {
+  egypt: {
+    cost: 1, cashLean: "cash", cashTag: "Cash-first", tip: "Baksheesh, widely", cur: "Pound", curNote: "Egyptian",
+    bestFor: "Cairo, the Nile, on a budget",
+    verdict: "North Africa's icon, and the cheapest of the four. Egypt runs on cash outside the hotels, tipping (baksheesh) is expected almost everywhere and adds up, and it is the only one of these four that needs a visa. But your dollars stretch furthest here, on the pyramids, the Nile and the Red Sea. Pick Egypt for world-famous history on a tight budget, if you do not mind carrying cash and tipping often."
+  },
   morocco: {
     cost: 2, cashLean: "cash", cashTag: "Cash-first", tip: "Light, small tips", cur: "Dirham", curNote: "closed currency",
     bestFor: "Marrakesh, souks, cash",
@@ -51,8 +56,8 @@ const rows = order.map(slug => {
 const others = otherClusters('/compare/africa');
 const checkedLabel = 'Jul 2026';
 const checkedISO = '2026-07-26';
-const title = 'Africa for travel money: Morocco, South Africa and Namibia compared (2026) | True Trip Costs';
-const description = 'A side-by-side money comparison of Morocco, South Africa and Namibia for US travelers: daily cost, cash versus card, tipping, taxis and currency, with a clear pick. Checked July 2026.';
+const title = 'Africa for travel money: Egypt, Morocco, South Africa and Namibia compared (2026) | True Trip Costs';
+const description = 'A side-by-side money comparison of Egypt, Morocco, South Africa and Namibia for US travelers: daily cost, cash versus card, tipping, taxis and currency, with a clear pick. Checked July 2026.';
 ---
 
 <Base title={title} description={description}>
@@ -60,15 +65,15 @@ const description = 'A side-by-side money comparison of Morocco, South Africa an
   <main class="wrap se">
     <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Compare', href: '/compare' }, { label: 'Africa' }]} />
     <div class="ctx"><span class="stamp">Checked {checkedLabel}</span> <span class="se-ctxtxt">Africa &middot; money comparison</span></div>
-    <h1>Africa for travel money, three countries compared</h1>
-    <p class="se-lede">Morocco, South Africa and Namibia are three very different trips, all good value for a US traveler, but you pay for them in quite different ways. Here is how they compare on the money side. Our read as the True Trip Costs desk, checked {checkedLabel}.</p>
+    <h1>Africa for travel money, four countries compared</h1>
+    <p class="se-lede">Egypt, Morocco, South Africa and Namibia are four very different trips, all good value for a US traveler, but you pay for them in quite different ways. Here is how they compare on the money side. Our read as the True Trip Costs desk, checked {checkedLabel}.</p>
 
-    <RegionMap region={afMap} maxWidth={300} alt="Outline map of Africa with Morocco, South Africa and Namibia highlighted" />
+    <RegionMap region={afMap} maxWidth={300} alt="Outline map of Africa with Egypt, Morocco, South Africa and Namibia highlighted" />
 
     <div class="se-pick">
       <p class="se-pick-lab">The short answer</p>
       <p class="se-pick-main"><b>South Africa</b> is the easiest on the money side, and superb value.</p>
-      <p class="se-pick-nuance">Souks and culture on cash? <a href="/morocco">Morocco</a>. A self-drive safari? <a href="/namibia">Namibia</a>.</p>
+      <p class="se-pick-nuance">The pyramids and the Nile on a budget? <a href="/egypt">Egypt</a>. Souks and culture on cash? <a href="/morocco">Morocco</a>. A self-drive safari? <a href="/namibia">Namibia</a>.</p>
     </div>
 
     <section class="se-matrix-sec" aria-label="Money comparison matrix">
@@ -108,14 +113,14 @@ const description = 'A side-by-side money comparison of Morocco, South Africa an
         </table>
       </div>
       <p class="mx-legend">
-        <b>Reading this.</b> Daily cost is a rough 1 to 4 scale across these three (more dots, pricier day), the desk's own read rather than a precise figure. Taxi ease reflects each country's local picture: <span class="cx-chip cx-low">Easy</span> is straightforward, <span class="cx-chip cx-medium">Some care</span> means a couple of things to watch. Tap any country for the detail behind its row.
+        <b>Reading this.</b> Daily cost is a rough 1 to 4 scale across these four (more dots, pricier day), the desk's own read rather than a precise figure. Taxi ease reflects each country's local picture: <span class="cx-chip cx-low">Easy</span> is straightforward, <span class="cx-chip cx-medium">Some care</span> means a couple of things to watch. Tap any country for the detail behind its row.
       </p>
     </section>
 
     <section class="se-sec">
       <p class="lab">The honest headline</p>
       <h2>All good value, but they pay very differently</h2>
-      <p class="se-body">All three are strong value for a US traveler; what really differs is <b>how you pay</b> and how you get around. <b>South Africa</b> is the most <b>card-friendly</b>, and the weak rand makes it one of the best-value destinations anywhere. <b>Morocco</b> runs largely on <b>cash</b>, and its dirham is a <b>closed currency</b> you can only get on arrival and should spend before you leave. <b>Namibia</b> is a <b>self-drive safari</b>: towns take cards, but you carry cash for fuel, lodges and tips out on the road, and the <b>South African rand is accepted alongside</b> its own dollar. Tipping is light in Morocco, US-style in South Africa, and includes guide tips on safari.</p>
+      <p class="se-body">All four are strong value for a US traveler; what really differs is <b>how you pay</b> and how you get around. <b>South Africa</b> is the most <b>card-friendly</b>, and the weak rand makes it one of the best-value destinations anywhere. <b>Egypt</b> is the <b>cheapest</b> and most hands-on: cash rules outside the hotels, tipping (<b>baksheesh</b>) is expected almost everywhere, and it is the only one of the four that <b>needs a visa</b>. <b>Morocco</b> also runs largely on <b>cash</b>, with a dirham that is a <b>closed currency</b> you can only get on arrival and should spend before you leave. And <b>Namibia</b> is a <b>self-drive safari</b>: towns take cards, but you carry cash for fuel, lodges and tips on the road, where the <b>South African rand is accepted alongside</b> its own dollar. Tipping is light in Morocco, pervasive in Egypt, US-style in South Africa, and includes guide tips on safari.</p>
     </section>
 
     <section class="se-sec">
@@ -142,11 +147,11 @@ const description = 'A side-by-side money comparison of Morocco, South Africa an
       <p class="lab">Quick picks</p>
       <h2>If you only remember five things</h2>
       <ul class="picks">
+        <li><b>Cheapest, and most iconic:</b> Egypt, the pyramids and the Nile on a budget.</li>
         <li><b>Best value, easiest on cards:</b> South Africa, where the weak rand stretches your money.</li>
-        <li><b>Carry the most cash:</b> Morocco, and get its dirham there, you cannot buy it abroad.</li>
-        <li><b>The self-drive safari:</b> Namibia, cash for fuel and lodges off the main roads.</li>
-        <li><b>One currency, two countries:</b> the South African rand is taken across Namibia.</li>
-        <li><b>Tipping:</b> light in Morocco, 10 to 15% in South Africa, plus guide tips on safari.</li>
+        <li><b>The most cash-first:</b> Egypt and Morocco, and get Moroccan dirhams there, you cannot buy them abroad.</li>
+        <li><b>The self-drive safari:</b> Namibia, cash for fuel and lodges, and the rand works alongside its dollar.</li>
+        <li><b>Only one needs a visa:</b> Egypt; Morocco, South Africa and Namibia are visa-free.</li>
       </ul>
     </section>
 
