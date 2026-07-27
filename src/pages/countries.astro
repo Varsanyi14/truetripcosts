@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { countries } from '../data/index.js';
+import fs from 'node:fs';
+
+// The plain "just show me the list" page: every live country guide, A to Z.
+// New countries appear here on their own once their data file sets live:true,
+// so there is nothing to hand-edit when the list grows.
+const flagDir = process.cwd() + '/public/flags/';
+const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? `/flags/${slug}.svg` : '/flags/world.svg';
+const live = countries.filter(c => c.live).slice().sort((a, b) => a.name.localeCompare(b.name));
+---
+<Base
+  title="Every country guide: the money side, A to Z"
+  description="The full list of True Trip Costs money guides, one per country: cards or cash, the fees to dodge, tourist taxes and tipping. Pick a country to open its guide."
+>
+  <Nav />
+  <main class="wrap">
+    <section class="cg-head">
+      <p class="lab">Money guides</p>
+      <h1>Every country guide</h1>
+      <p class="sub">Every guide so far, one per country, {live.length} in all. Tap a country to open its money briefing. Know where you are going already? The search on the <a href="/">home page</a> jumps straight there.</p>
+    </section>
+
+    <section aria-label="All country guides">
+      <div class="cg">
+        {live.map(c => (
+          <a class="cgi" href={'/' + c.slug}>
+            <span class="cgi-flag" aria-hidden="true"><img src={flagSrc(c.slug)} alt="" width="30" height="22" loading="lazy" /></span>
+            <span class="cgi-name">{c.name}</span>
+            <span class="cgi-go" aria-hidden="true">&#8594;</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+
+  <style>
+    .cg-head{padding:48px 0 8px}
+    .cg-head h1{font-size:clamp(30px,5vw,44px);margin:0 0 12px}
+    .cg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:12px 0 64px}
+    .cgi{display:flex;align-items:center;gap:12px;padding:13px 15px;border:1px solid var(--line,#E5E3DB);border-radius:12px;background:var(--card,#FFFFFF);box-shadow:var(--shadow);text-decoration:none;transition:border-color .2s ease,transform .2s ease}
+    .cgi:hover{border-color:var(--teal,#0E7A5F);transform:translateY(-2px)}
+    .cgi-flag{flex:none;display:inline-flex;line-height:0}
+    .cgi-flag img{width:30px;height:22px;border-radius:3px;box-shadow:0 0 0 1px rgba(22,48,44,.08);display:block}
+    .cgi-name{flex:1;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink,#16302C);line-height:1.15}
+    .cgi-go{color:var(--teal-deep,#0A5644);font-weight:700;opacity:0;transition:opacity .2s ease}
+    .cgi:hover .cgi-go{opacity:1}
+    @media (max-width:720px){ .cg{grid-template-columns:1fr 1fr} }
+    @media (max-width:460px){ .cg{grid-template-columns:1fr} }
+  </style>
+</Base>
