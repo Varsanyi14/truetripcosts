@@ -156,6 +156,28 @@ const description = 'A side-by-side money comparison of Egypt, Morocco, South Af
     </section>
 
     <section class="se-sec">
+      <p class="lab">From the desk</p>
+      <h2>If it were my trip</h2>
+      <div class="desk">
+        <div class="desk-main">
+          <p class="desk-text">For Egypt, Morocco, South Africa and Namibia, I would usually fly into Cairo, Casablanca, or Cape Town or Johannesburg, depending on airfare and the order of your trip. Most travelers start in Egypt or South Africa, which have the best flight connections from the US, then use regional flights to move between countries, since overland travel between them is impractical.</p>
+          <p class="desk-text">Egypt is unforgettable for its ancient history: the Pyramids of Giza, the temples of Luxor and Karnak, the Valley of the Kings, and a cruise along the Nile all live up to the hype. Morocco offers a completely different experience, with colorful medinas, bustling souks, striking Islamic architecture, the blue streets of Chefchaouen, the Atlas Mountains, and overnight trips into the Sahara. South Africa combines world-class cities with incredible wildlife and scenery: Cape Town is one of the most beautiful cities anywhere, the Garden Route is a wonderful coastal road trip, and safaris in places like Kruger National Park offer some of the best chances anywhere to see the Big Five. Namibia feels like another planet, with the towering red dunes of Sossusvlei, the rugged Skeleton Coast, dramatic desert landscapes, and exceptional self-drive safari in Etosha National Park.</p>
+          <p class="desk-text">Plan on at least two weeks to visit all four, though three weeks or more allows a much more relaxed pace. The trip combines some of the world's greatest archaeological sites, vibrant cultures, spectacular deserts and unforgettable wildlife. If you enjoy history, photography, road trips and nature, it is one of the most diverse and rewarding journeys you can take.</p>
+          <p class="desk-by">A personal aside from <a href="/about">the True Trip Costs desk</a>. The verdicts above stay neutral; this is just one traveler's route.</p>
+        </div>
+        <div class="desk-route" aria-hidden="true">
+          <p class="route-lab">The route</p>
+          <ol class="route">
+            <li class="rnode start"><span class="rdot"></span><span class="rlabel">Egypt</span><span class="rnote">Pyramids, Luxor, a Nile cruise</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">Morocco</span><span class="rnote">Medinas, the Atlas, the Sahara</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">South Africa</span><span class="rnote">Cape Town, the Garden Route, Kruger</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">Namibia</span><span class="rnote">Sossusvlei dunes, Etosha</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="se-sec">
       <p class="lab">More than one region in mind?</p>
       <h2>Compare another part of the world</h2>
       <CompareOtherRegions others={others} />
@@ -235,6 +257,23 @@ const description = 'A side-by-side money comparison of Egypt, Morocco, South Af
     .mx-hlink{color:inherit;text-decoration:none;border-bottom:1px dotted rgba(111,110,102,.5);padding-bottom:1px}
     .mx-hlink:hover{color:var(--teal-deep);border-bottom-color:var(--teal-deep)}
 
+    /* From the desk: personal itinerary, set apart from the neutral verdicts. */
+    .desk{background:var(--green-bg);border:1px solid #C2E0C8;border-radius:var(--radius);padding:20px 22px;margin-top:8px;max-width:720px;display:flex;gap:24px;align-items:flex-start}
+    .desk-main{flex:1 1 auto;min-width:0}
+    .desk-text{font-family:var(--serif);font-weight:400;font-size:17px;line-height:1.6;color:#22403A;margin:0 0 14px}
+    .desk-by{font-size:13px;color:#3B5B50;margin:0;line-height:1.55}
+    .desk-by a{color:var(--teal-deep);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+    .desk-route{flex:0 0 206px;border-left:1px solid #C2E0C8;padding-left:20px;align-self:stretch}
+    .route-lab{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 14px}
+    .route{list-style:none;margin:0;padding:0;position:relative}
+    .route::before{content:"";position:absolute;left:5px;top:5px;bottom:11px;width:2px;background:#A9D3BF;border-radius:2px}
+    .rnode{position:relative;padding:0 0 15px 22px}
+    .rnode:last-child{padding-bottom:0}
+    .rdot{position:absolute;left:0;top:3px;width:12px;height:12px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px var(--green-bg)}
+    .rnode.start .rdot{background:var(--teal-deep)}
+    .rlabel{display:block;font-family:var(--serif);font-weight:500;font-size:15px;color:var(--ink);line-height:1.2}
+    .rnote{display:block;font-size:12px;color:#3B5B50;margin-top:2px;line-height:1.4}
+
     /* Cross-region links: send undecided readers to the other comparison pages. */
     .xreg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:8px}
     .xreg-card{display:flex;flex-direction:column;gap:5px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;text-decoration:none;transition:border-color .2s ease,transform .2s ease}
@@ -248,6 +287,9 @@ const description = 'A side-by-side money comparison of Egypt, Morocco, South Af
     @media(max-width:640px){
       .se-lede{font-size:16.5px}
       .se-pick-main{font-size:19px}
+      .desk-text{font-size:16px}
+      .desk{flex-direction:column;gap:0}
+      .desk-route{flex:none;width:100%;border-left:none;border-top:1px solid #C2E0C8;padding-left:0;padding-top:16px;margin-top:16px;align-self:auto}
 
       .matrix-scroll{overflow:visible;border:none;background:none;box-shadow:none;border-radius:0}
       .matrix{min-width:0;width:100%}
