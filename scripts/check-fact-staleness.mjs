@@ -22,6 +22,13 @@
 // page-level checkedISO is older than the general threshold, so guides without a
 // keyFacts block still get a nudge while that rollout is in progress.
 //
+// As a third, clearly-separated pass it walks every live spoke (the focused
+// sub-pages under each country) and flags any whose page-level checkedISO is
+// missing or older than the general threshold. Spokes carry a page-level date
+// rather than a keyFacts block, so this mirrors the secondary pass, one row per
+// live spoke, using the general threshold for every topic (no per-topic spoke
+// thresholds). Findings are identified as country-slug / spoke-slug.
+//
 // Thresholds (days) match the review cadence described on /methodology:
 //   exchange rate 30, fee or entry rule 90, tax or levy 120, general 180.
 //
@@ -135,8 +142,31 @@ async function main() {
     if (age > THRESHOLDS.general) noKf.push({ slug: c.slug, msg: 'guide last checked ' + age + ' days ago, over the ' + THRESHOLDS.general + '-day general mark' });
   }
 
+  // --- third pass: page-level check date on each live spoke ---
+  // One row per live spoke. Spokes carry a page-level checkedISO rather than a
+  // keyFacts block, so this mirrors the secondary pass above and uses the general
+  // threshold for every topic. Kept deliberately simple: no per-topic spoke
+  // thresholds. Each finding is identified as country-slug / spoke-slug (with the
+  // topic in parentheses when present) so the row stays unambiguous even when two
+  // spokes share a topic.
+  const spokeFindings = [];
+  let liveSpokes = 0;
+  for (const c of live) {
+    if (!Array.isArray(c.spokes)) continue;
+    for (const s of c.spokes) {
+      if (!s || s.live !== true) continue;
+      liveSpokes++;
+      const id = c.slug + ' / ' + (s.slug || '(unslugged spoke)') + (s.topic ? ' (' + s.topic + ')' : '');
+      const checked = parseISO(s.checkedISO);
+      if (!checked) { spokeFindings.push({ id, msg: 'no usable checkedISO' }); continue; }
+      const age = daysBetween(today, checked);
+      if (age > THRESHOLDS.general) spokeFindings.push({ id, msg: 'spoke last checked ' + age + ' days ago, over the ' + THRESHOLDS.general + '-day general mark' });
+    }
+  }
+
   // --- report ---
   log('Guides carrying a keyFacts block: ' + withKeyFacts + ' of ' + live.length + '.');
+  log('Scanned ' + liveSpokes + ' live spokes across the catalogue.');
   if (findings.length === 0) {
     log('keyFacts: nothing due for a look right now.\n');
   } else {
@@ -156,7 +186,13 @@ async function main() {
     log('');
   }
 
-  const total = findings.length + noKf.length;
+  if (spokeFindings.length > 0) {
+    log('Spokes past the general mark (' + spokeFindings.length + '):');
+    for (const f of spokeFindings.sort((a, b) => a.id.localeCompare(b.id))) log('    - ' + f.id + ': ' + f.msg);
+    log('');
+  }
+
+  const total = findings.length + noKf.length + spokeFindings.length;
   log('Done. ' + total + ' item(s) worth a look.' + (STRICT && total > 0 ? ' Exiting non-zero (strict mode).' : ''));
   if (STRICT && total > 0) process.exit(1);
 }
