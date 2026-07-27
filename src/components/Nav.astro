@@ -56,7 +56,7 @@ const regionGroups = CONTINENTS
     .gmenu-sum:hover{color:var(--teal-deep)}
     .gmenu-chev{transition:transform .15s ease}
     .gmenu[open] .gmenu-chev{transform:rotate(180deg)}
-    .gmenu-panel{position:absolute;top:calc(100% + 8px);right:0;width:540px;max-width:calc(100vw - 32px);background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:16px 18px;z-index:60}
+    .gmenu-panel{position:absolute;top:calc(100% + 8px);right:0;width:540px;max-width:calc(100vw - 32px);max-height:calc(100vh - 96px);overflow-y:auto;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:16px 18px;z-index:60}
     .gm-cols{display:grid;grid-template-columns:1fr 1fr}
     .gm-col-regions{padding-right:16px}
     .gm-col-topics{border-left:1px solid var(--line);padding-left:18px}
@@ -80,7 +80,7 @@ const regionGroups = CONTINENTS
     .gm-all svg{transition:transform .15s ease}
     .gm-all:hover svg{transform:translateX(3px)}
     @media(max-width:640px){
-      .gmenu-panel{width:min(92vw,320px);padding:14px}
+      .gmenu-panel{width:min(92vw,320px);padding:14px;max-height:calc(100vh - 84px);overflow-y:auto;-webkit-overflow-scrolling:touch}
       .gm-cols{grid-template-columns:1fr}
       .gm-col-regions{padding-right:0}
       .gm-col-topics{border-left:none;border-top:1px solid var(--line);padding-left:0;padding-top:13px;margin-top:11px}
