@@ -1,0 +1,290 @@
+---
+// A real sample answer on the homepage: one compact card showing six money facts for a
+// featured country, rotating through the set so a first-time visitor sees both the shape
+// of a guide and the breadth of the site in about ten seconds.
+//
+// HOW IT IS BUILT, and why. Every featured country is server-rendered as a stacked panel
+// in the same grid cell, with only the first carrying `is-on`. So without JS the visitor
+// still gets a complete, readable card (the first country), and the rotation is pure
+// progressive enhancement that only ever toggles a class. Stacking in one grid cell also
+// means the card height is the tallest panel, so it never jumps as it rotates.
+//
+// The dots are hidden until the script adds `hp-js`, so no-JS visitors are never shown a
+// control that does nothing.
+//
+// Facts come from src/data/home-preview.js, curated by hand from each country's own guide.
+// Icons are inline tabler-style strokes on currentColor, matching how the small icons are
+// done in Spoke.astro, which is what lets one cell go amber while the rest stay teal.
+import { homePreview } from '../data/home-preview.js';
+
+// The six slots are fixed and ordered, so the card reads the same on every rotation.
+// `warn` marks the single amber cell.
+const SLOTS = [
+  { key: 'cards',      label: 'Cards',       icon: 'card' },
+  { key: 'carry',      label: 'Carry',       icon: 'cash' },
+  { key: 'atms',       label: 'ATMs',        icon: 'bank' },
+  { key: 'touristTax', label: 'Tourist tax', icon: 'receipt' },
+  { key: 'tipping',    label: 'Tipping',     icon: 'coin' },
+  { key: 'watchOut',   label: 'Watch out',   icon: 'alert', warn: true }
+];
+
+// Tabler-style stroke icons, 24x24, drawn on currentColor so the cell's colour drives them.
+// The alert triangle is the same shape Spoke.astro uses for its amber callout.
+const ICONS = {
+  card: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h.01M11 15h2"/>',
+  cash: '<rect x="7" y="9" width="14" height="10" rx="2"/><circle cx="14" cy="14" r="2"/><path d="M17 9V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/>',
+  bank: '<path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>',
+  receipt: '<path d="M5 21V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 15l6-6"/><circle cx="9.5" cy="9.5" r=".6" fill="currentColor"/><circle cx="14.5" cy="14.5" r=".6" fill="currentColor"/>',
+  coin: '<circle cx="12" cy="12" r="9"/><path d="M14.8 9a2 2 0 0 0-1.8-1h-2a2 2 0 0 0 0 4h2a2 2 0 0 1 0 4h-2a2 2 0 0 1-1.8-1"/><path d="M12 6v2M12 16v2"/>',
+  alert: '<path d="M12 3.5 21 19H3z"/><path d="M12 10v4"/><circle cx="12" cy="16.6" r=".7" fill="currentColor"/>'
+};
+
+const items = Array.isArray(homePreview) ? homePreview : [];
+---
+
+{items.length > 0 && (
+  <section class="hp-wrap" aria-label="A sample country guide">
+    <p class="hp-lab">What a guide actually tells you</p>
+    <div class="hp" id="hp">
+
+      <div class="hp-card">
+        <div class="hp-panels">
+          {items.map((c, i) => (
+            <div class={'hp-panel' + (i === 0 ? ' is-on' : '')} data-hp-panel>
+              <div class="hp-head">
+                <span class="hp-name"><span class="hp-flag" aria-hidden="true">{c.flag}</span>{c.name}</span>
+                <span class="stamp">Checked {c.checked}</span>
+              </div>
+              <div class="hp-grid">
+                {SLOTS.map(s => (
+                  <div class={'hp-f' + (s.warn ? ' is-warn' : '')}>
+                    <p class="hp-k">
+                      <span class="hp-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={ICONS[s.icon]}></svg></span>
+                      {s.label}
+                    </p>
+                    <p class="hp-v">{c.facts[s.key]}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="hp-foot">
+          <span class="hp-links">
+            {items.map((c, i) => (
+              <a class={'hp-more' + (i === 0 ? ' is-on' : '')} data-hp-link href={'/' + c.slug}>Read the full {c.name} guide <span class="hp-arw" aria-hidden="true">&#8594;</span></a>
+            ))}
+          </span>
+          {items.length > 1 && (
+            <span class="hp-dots" id="hp-dots">
+              {items.map((c, i) => (
+                <button
+                  type="button"
+                  class={'hp-dot' + (i === 0 ? ' is-on' : '')}
+                  data-hp-dot
+                  aria-label={'Show ' + c.name}
+                  aria-current={i === 0 ? 'true' : undefined}
+                ></button>
+              ))}
+            </span>
+          )}
+        </div>
+      </div>
+
+    </div>
+  </section>
+)}
+
+<style>
+  .hp-wrap{border-top:0;padding:20px 0 0;margin-top:6px}
+  .hp-lab{font-size:12px;font-weight:600;color:var(--teal-deep,#0A5644);letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px}
+
+  .hp-card{max-width:540px;background:var(--card,#FFFFFF);border:1px solid var(--line,#E5E3DB);border-radius:var(--radius,14px);box-shadow:var(--shadow);padding:16px 18px}
+
+  /* Every panel sits in the same grid cell, so the card is as tall as its tallest country
+     and never resizes mid-rotation. Only the panel with `is-on` is visible, and
+     visibility:hidden keeps the rest out of the tab order and off screen readers. */
+  .hp-panels{display:grid}
+  .hp-panel{grid-area:1/1;visibility:hidden;opacity:0;transition:opacity .3s ease,visibility .3s ease}
+  .hp-panel.is-on{visibility:visible;opacity:1}
+
+  .hp-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 12px}
+  .hp-name{display:inline-flex;align-items:center;gap:9px;font-family:var(--serif);font-weight:500;font-size:19px;color:var(--ink,#16302C);line-height:1.15}
+  .hp-flag{font-size:19px;line-height:1;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+  .hp-head .stamp{flex:none}
+
+  /* Hairline grid, the same construction as the At a glance table on the spokes, so the
+     card reads as a tool rather than a paragraph. */
+  .hp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line,#E5E3DB);border:1px solid var(--line,#E5E3DB);border-radius:12px;overflow:hidden}
+  .hp-f{background:var(--card,#FFFFFF);padding:11px 13px;min-width:0}
+  .hp-k{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep,#0A5644);margin:0 0 4px}
+  .hp-ic{flex:none;display:inline-flex;color:var(--teal,#0E7A5F)}
+  .hp-ic svg{display:block}
+  .hp-v{font-size:14.5px;font-weight:600;color:var(--ink,#16302C);line-height:1.3;margin:0}
+  /* The one watch-out cell, on the site's existing amber callout colours. */
+  .hp-f.is-warn{background:var(--amber-bg,#FBEEDC)}
+  .hp-f.is-warn .hp-k{color:#8A4708}
+  .hp-f.is-warn .hp-ic{color:var(--amber,#B45309)}
+
+  /* Deliberately does NOT wrap. The links block is a grid of every country's link stacked
+     in one cell, so its width is the widest label and stays constant as the card rotates;
+     the dots are flex:none. Together they fit one row for eight countries, which is why the
+     featured set is capped at eight. nowrap plus ellipsis is a safety valve only, for a
+     font fallback rendering wider than Inter. */
+  .hp-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:13px 0 0}
+  .hp-links{display:grid;min-width:0;flex:1 1 auto}
+  .hp-more{grid-area:1/1;display:inline-flex;align-items:center;gap:6px;visibility:hidden;font-size:13.5px;font-weight:600;color:var(--teal-deep,#0A5644);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .hp-more.is-on{visibility:visible}
+  .hp-more:hover{text-decoration:underline}
+  .hp-arw{transition:transform .15s ease}
+  .hp-more:hover .hp-arw{transform:translateX(3px)}
+
+  /* Dots stay hidden until the script announces itself, so a no-JS visitor is never
+     offered a control that cannot work. */
+  .hp-dots{display:none;align-items:center;gap:0;flex:0 0 auto}
+  .hp.hp-js .hp-dots{display:inline-flex}
+  /* 24px targets with no gap, so adjacent dot centres sit 24px apart and each target meets
+     the WCAG 2.5.8 minimum outright. The visible dot is the 8px pseudo-element inside. */
+  .hp-dot{width:24px;height:24px;padding:0;border:0;background:transparent;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;-webkit-appearance:none;appearance:none}
+  .hp-dot::before{content:"";width:8px;height:8px;border-radius:999px;background:#C6D2CD;transition:background .18s ease,transform .18s ease}
+  .hp-dot:hover::before{background:#9FB3AC}
+  .hp-dot.is-on::before{background:var(--teal,#0E7A5F);transform:scale(1.3)}
+  .hp-dot:focus-visible{outline:2px solid var(--teal-deep,#0A5644);outline-offset:1px}
+
+  /* The card stops being a full 540px once the viewport drops under about 584px, because
+     .wrap takes 22px each side. Below that the longest label (United Kingdom) plus eight
+     dots no longer fit one row, so stack the footer BEFORE that happens rather than let
+     the link ellipsize. This breakpoint is about the footer only. */
+  @media (max-width:600px){
+    .hp-foot{flex-direction:column;align-items:flex-start;gap:11px}
+    /* Footer is stacked here, so the link owns the full width and can wrap instead of
+       ellipsizing on a narrow phone. Because every country's link shares one grid cell,
+       the cell reserves the tallest label's height for all of them, so a two-line
+       United Kingdom does not make the card jump when it rotates. */
+    .hp-more{white-space:normal;overflow:visible;text-overflow:clip}
+  }
+  @media (max-width:560px){
+    .hp-card{padding:14px 15px}
+    .hp-name{font-size:17.5px}
+    .hp-head{gap:8px}
+    /* One column on small screens: six stacked rows, still on the hairline grid. */
+    .hp-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:380px){
+    .hp-head{flex-direction:column;align-items:flex-start;gap:6px}
+    .hp-card{padding:13px 13px}
+    .hp-f{padding:10px 12px}
+  }
+  /* No reduced-motion block here on purpose: global.css already neutralises every
+     transition site-wide under prefers-reduced-motion, with !important, so a local
+     rule would be dead code. The part that does need handling in this component is
+     the auto-advance timer, which the script below switches off. */
+</style>
+
+<script>
+  // Rotation for the homepage sample card. Enhancement only: the first country is already
+  // server-rendered, so if this never runs the card is still complete and readable.
+  // Early-returns if the markup is absent or malformed, so it can never throw.
+  (function () {
+    var root = document.getElementById('hp');
+    if (!root) return;
+    var panels = root.querySelectorAll('[data-hp-panel]');
+    var links = root.querySelectorAll('[data-hp-link]');
+    var dots = root.querySelectorAll('[data-hp-dot]');
+    if (panels.length < 2 || dots.length !== panels.length) return;
+
+    root.classList.add('hp-js');
+
+    var DELAY = 5500;
+    var at = 0;
+    var timer = null;
+
+    // Three INDEPENDENT reasons to pause, tracked separately on purpose. Folding them into
+    // one flag means whichever event clears it first wins, which is how a phone ends up
+    // frozen: a tap both hovers and focuses, and then neither ever undoes itself.
+    var hoverHeld = false;   // a mouse is resting on the card
+    var focusHeld = false;   // a keyboard visitor is inside the card
+    var tabHidden = false;   // this tab is in the background
+
+    // Was the last input a key press? A tap focuses the dot it hits and never blurs, so
+    // focus alone is not evidence that someone is reading with a keyboard.
+    var viaKeyboard = false;
+    document.addEventListener('keydown', function () { viaKeyboard = true; }, true);
+    var notKeyboard = function () { viaKeyboard = false; };
+    document.addEventListener('pointerdown', notKeyboard, true);
+    document.addEventListener('mousedown', notKeyboard, true);
+    document.addEventListener('touchstart', notKeyboard, true);
+
+    var mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+    function reduced() { return !!(mq && mq.matches); }
+    function paused() { return hoverHeld || focusHeld || tabHidden; }
+
+    function show(n) {
+      at = (n + panels.length) % panels.length;
+      for (var i = 0; i < panels.length; i++) {
+        var on = i === at;
+        panels[i].classList.toggle('is-on', on);
+        if (links[i]) links[i].classList.toggle('is-on', on);
+        dots[i].classList.toggle('is-on', on);
+        if (on) dots[i].setAttribute('aria-current', 'true');
+        else dots[i].removeAttribute('aria-current');
+      }
+    }
+
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function sync() {
+      stop();
+      // Reduced motion: no auto-advance at all. The dots stay as manual controls.
+      if (paused() || reduced()) return;
+      timer = setInterval(function () { show(at + 1); }, DELAY);
+    }
+
+    for (var i = 0; i < dots.length; i++) {
+      (function (n) {
+        dots[n].addEventListener('click', function () {
+          show(n);
+          sync(); // restart the clock so a deliberate pick gets its full turn
+        });
+      })(i);
+    }
+
+    // Hover pause is only meaningful for a pointer that can leave again. Touch fires
+    // mouseenter with no matching mouseleave, so ignore anything that is not a mouse.
+    if (window.PointerEvent) {
+      root.addEventListener('pointerenter', function (e) {
+        if (e.pointerType === 'mouse') { hoverHeld = true; stop(); }
+      });
+      root.addEventListener('pointerleave', function (e) {
+        if (e.pointerType === 'mouse') { hoverHeld = false; sync(); }
+      });
+    } else {
+      root.addEventListener('mouseenter', function () { hoverHeld = true; stop(); });
+      root.addEventListener('mouseleave', function () { hoverHeld = false; sync(); });
+    }
+
+    root.addEventListener('focusin', function () {
+      if (!viaKeyboard) return;
+      focusHeld = true;
+      stop();
+    });
+    root.addEventListener('focusout', function (e) {
+      if (root.contains(e.relatedTarget)) return;
+      focusHeld = false;
+      sync();
+    });
+
+    document.addEventListener('visibilitychange', function () {
+      tabHidden = !!document.hidden;
+      sync();
+    });
+
+    if (mq) {
+      var onMq = function () { sync(); };
+      if (mq.addEventListener) mq.addEventListener('change', onMq);
+      else if (mq.addListener) mq.addListener(onMq);
+    }
+
+    sync();
+  })();
+</script>

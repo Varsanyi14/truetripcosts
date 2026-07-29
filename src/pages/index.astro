@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import USBadge from '../components/USBadge.astro';
+import HomePreview from '../components/HomePreview.astro';
 import { countries } from '../data/index.js';
 import fs from 'node:fs';
 const live = countries.filter(c => c.live);
@@ -75,6 +76,8 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
         </div>
       </div>
     </section>
+
+    <HomePreview />
 
     <section class="rail-wrap" id="guides" aria-label="Browse country guides">
       <p class="rail-lab">Popular guides</p>
