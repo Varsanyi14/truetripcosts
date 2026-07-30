@@ -15,7 +15,11 @@
 //  2. Two to four words per value. The nuance lives in the full guide; this is the teaser.
 //  3. `checked` mirrors the country's own `checked` label. Never invent a date. When a
 //     country guide is re-checked, update it here too, or the pill will lie.
-//  4. `slug` must match a live country slug, since the card links to /<slug>.
+//  4. `slug` must match a live country slug. It does double duty: the card links to
+//     /<slug>, and the flag is read from public/flags/<slug>.svg. There is deliberately
+//     NO flag field here. Flag emoji were tried and pulled: Windows renders a
+//     regional-indicator pair as the letters (JP, DE) instead of a flag, so a large share
+//     of desktop visitors never saw a flag at all.
 //  5. `watchOut` is the single amber fact. The other five render teal.
 //
 // Order is the rotation order. EIGHT is a deliberate cap, not an accident: the footer row
@@ -32,7 +36,6 @@ export const homePreview = [
   {
     slug: "japan",
     name: "Japan",
-    flag: "\u{1F1EF}\u{1F1F5}",
     checked: "Jul 2026",
     facts: {
       cards: "Cities yes, rural cash",
@@ -47,7 +50,6 @@ export const homePreview = [
   {
     slug: "mexico",
     name: "Mexico",
-    flag: "\u{1F1F2}\u{1F1FD}",
     checked: "Jul 2026",
     facts: {
       cards: "Hotels yes, stalls cash",
@@ -62,7 +64,6 @@ export const homePreview = [
   {
     slug: "italy",
     name: "Italy",
-    flag: "\u{1F1EE}\u{1F1F9}",
     checked: "Jul 2026",
     facts: {
       cards: "Almost everywhere, by law",
@@ -77,7 +78,6 @@ export const homePreview = [
   {
     slug: "france",
     name: "France",
-    flag: "\u{1F1EB}\u{1F1F7}",
     checked: "Jul 2026",
     facts: {
       cards: "Tap is the norm",
@@ -92,7 +92,6 @@ export const homePreview = [
   {
     slug: "united-kingdom",
     name: "United Kingdom",
-    flag: "\u{1F1EC}\u{1F1E7}",
     checked: "Jul 2026",
     facts: {
       cards: "Nearly cashless country",
@@ -107,7 +106,6 @@ export const homePreview = [
   {
     slug: "thailand",
     name: "Thailand",
-    flag: "\u{1F1F9}\u{1F1ED}",
     checked: "Jul 2026",
     facts: {
       cards: "Malls yes, street cash",
@@ -122,7 +120,6 @@ export const homePreview = [
   {
     slug: "germany",
     name: "Germany",
-    flag: "\u{1F1E9}\u{1F1EA}",
     checked: "Jul 2026",
     facts: {
       cards: "Widely, but not everywhere",
@@ -137,7 +134,6 @@ export const homePreview = [
   {
     slug: "vietnam",
     name: "Vietnam",
-    flag: "\u{1F1FB}\u{1F1F3}",
     checked: "Jul 2026",
     facts: {
       cards: "Cities yes, street cash",
