@@ -497,6 +497,68 @@ export default {
         ],
         judgment: "The sticker requirement and the nationwide validity come from official German sources. The fine is reported as a fixed penalty but published figures vary between 80 and 100 euros, and sticker prices vary by issuer, so both are given as ranges rather than exact amounts. Check the specific city if you are driving a diesel. Checked July 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Strong, including small towns" },
+        { k: "Carrier roaming", v: "About $12 a day" },
+        { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
+        { k: "Signal gaps", v: "Long-distance ICE trains" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Staying connected in Germany (2026): the eSIM math, and why the train loses signal | True Trip Costs",
+      description: "Germany's coverage is strong almost everywhere, so this is a cost question. Your US carrier charges about 12 dollars a day to roam; a Nomad eSIM is a few dollars per gigabyte. The one weak spot is the fast train. Checked Jul 2026.",
+      h1: "Staying connected in Germany.",
+      lede: "German mobile coverage is strong, including in small towns and much of the countryside, so the real decision is how you pay for data rather than whether you will have any. The one place it reliably disappoints is the long-distance train.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "Coverage is <b>strong across Germany</b>, small towns included, so this is mostly a cost question. Your US carrier charges about <b>12 dollars a day</b> to roam (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b>'s included roaming is often <b>slow 2G</b>, fine for messages but not maps. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly and works on landing, so for a data-first trip it is the cheaper option. If you are travelling rurally or by <b>ICE train</b>, favour an eSIM that rides <b>Deutsche Telekom</b>, which has the most consistent reach. Never roam <b>pay-per-use</b>, which runs about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "A cost question first",
+          icon: "roamfee",
+          key: { fig: "$12/day", tag: "Roaming default", text: "Coverage is good almost everywhere, so this is mainly about cost. A US carrier day pass runs about $12 a day, and T-Mobile included roaming is often slow 2G, fine for messages but not maps.", tone: "teal" },
+          p: [
+            "Germany's networks are good in the places you will be, so the decision is how you pay. The expensive default is roaming on your US plan: <b>AT&amp;T and Verizon</b> charge about <b>12 dollars a day</b>, so a week runs around <b>84 dollars</b> and a two-week trip is most of a nice dinner in Munich. <b>T-Mobile</b> and some Google Fi and Visible plans include roaming, but frequently at <b>slow 2G-style speeds</b> that handle messaging and struggle with maps, transit apps and rideshare, so read your own plan's fine print rather than assuming.",
+            "Whatever you choose, do not roam with <b>no plan at all</b>. Pay-per-use data runs around <b>2 dollars a megabyte</b>, which is thousands per gigabyte, and phones quietly use data in the background, so <b>turn off data roaming</b> until an eSIM or a day pass is active."
+          ]
+        },
+        {
+          h: "Why an eSIM is usually cheapest, and which network to want",
+          icon: "qr",
+          key: { fig: "Telekom", tag: "The network to favour", text: "A travel eSIM is a few dollars per gigabyte, well under day-pass fees. For rural regions or heavy train travel, pick one that rides Deutsche Telekom, which has the most consistent reach.", tone: "teal" },
+          p: [
+            "A <b>travel eSIM</b> is the cheapest way for most visitors to get real data in Germany. A <b>Nomad eSIM</b> is a few dollars per gigabyte, well under day-pass pricing, and it <b>activates before you fly</b> and works from landing, with no shop visit and no German paperwork. Your US number stays reachable on your normal plan while the eSIM carries the data, which is what most people actually want.",
+            "In a city, the network behind the eSIM barely matters. Outside one it does. <b>Deutsche Telekom</b> has the strongest and most consistent nationwide reach, including small towns, the <b>Alps</b> and the <b>Black Forest</b>. <b>Vodafone</b> is a close second and is strongest in the west. <b>O2</b> has closed much of its old rural gap but still trails outside the cities. So if your trip is city-to-city, any of them is fine; if you are driving through the countryside or spending days on trains, <b>favour a Telekom-backed plan</b>. One more thing worth checking before you buy: if your trip continues into other European countries, a regional plan often costs barely more than a Germany-only one."
+          ]
+        },
+        {
+          h: "The train is the weak spot",
+          icon: "alert",
+          key: { fig: "ICE trains", tag: "Where signal drops", text: "Long-distance ICE routes run through long tunnels and rural stretches where signal comes and goes. Free onboard wifi helps, and offline downloads help more.", tone: "amber" },
+          p: [
+            "The famous German connectivity complaint is not the countryside, it is the <b>long-distance train</b>. <b>ICE</b> routes run through long tunnels and open rural stretches where signal drops in and out, and a call on a fast train between cities is a coin flip regardless of which network or eSIM you are on. The trains carry <b>free onboard wifi</b>, branded WIFIonICE, which helps for messaging and email though it is shared with a carriage full of other people and is not something to stake a video call on.",
+            "So plan around it rather than paying to fix it: <b>download offline maps</b>, tickets, boarding passes and anything you want to read before you board, and keep your <b>DB Navigator</b> tickets available offline. The same habit covers a rural drive or a hiking day in the Alps or the Black Forest. In town you will have fast 4G and 5G in the bigger centers, and public wifi is common in cafes and hotels. This guide is written for US travelers departing the US. For more, see <a href='/germany/cash-or-card'>cash or card in Germany</a>, <a href='/germany/driving-and-tolls'>driving and tolls in Germany</a>, and the <a href='/germany'>Germany money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is an eSIM cheaper than roaming in Germany?", a: "For most US travelers, yes. A Nomad eSIM is a few dollars per gigabyte, against about 12 dollars a day for an AT&T or Verizon roaming pass, so a week of roaming costs roughly 84 dollars where an eSIM with a sensible data allowance costs a fraction of that. Set it up before you fly and it works from landing." },
+        { q: "How much does it cost to use my US phone in Germany?", a: "About 12 dollars a day on an AT&T or Verizon day pass, so roughly 84 dollars a week. T-Mobile and some other plans include roaming but often at slow 2G speeds that struggle with maps. Never roam with no plan at all, since pay-per-use runs about 2 dollars a megabyte." },
+        { q: "Which German network has the best coverage?", a: "Deutsche Telekom, with the most consistent nationwide reach including small towns, the Alps and the Black Forest. Vodafone is a close second and strongest in the west, while O2 has closed much of its old rural gap but still trails outside the cities. For rural travel or long train days, favour a Telekom-backed eSIM." },
+        { q: "Why does my phone lose signal on German trains?", a: "Long-distance ICE routes pass through long tunnels and rural stretches where coverage is patchy, and it affects every network. The trains carry free onboard wifi, which helps for messaging, but download maps, tickets and reading material before you board rather than relying on either." }
+      ],
+      sources: {
+        links: [
+          { label: "Tom's Guide: a 2026 comparison of US carrier international roaming plans and day-pass prices", url: "https://www.tomsguide.com/us/wireless-carriers-international-travel-plans,review-4327.html", type: "news" },
+          { label: "US State Department: Germany country information and local conditions for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Germany.html", type: "gov" }
+        ],
+        judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own account before you fly. The network ranking and the ICE train caveat are the True Trip Costs desk's read from coverage reporting and traveler accounts rather than one official table. Checked Jul 2026."
+      }
     }
   ]
 };

@@ -531,6 +531,68 @@ export default {
         ],
         judgment: "Japan's 90-day visa-free access for US citizens is long-standing MOFA policy, and Visit Japan Web is an optional, free government service. A JESTA authorization has been announced but is not in force as of July 2026, so treat any earlier start date with caution and confirm on the official MOFA site. Checked July 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Among the best anywhere" },
+        { k: "Carrier roaming", v: "About $12 a day" },
+        { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
+        { k: "Signal gaps", v: "Effectively none worth planning around" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Staying connected in Japan (2026): the eSIM math, and why coverage is a non-issue | True Trip Costs",
+      description: "Japan has some of the best mobile coverage anywhere, including the bullet trains, so this is purely a cost question. Your US carrier charges about 12 dollars a day to roam; a Nomad eSIM is a few dollars per gigabyte. Checked Jul 2026.",
+      h1: "Staying connected in Japan.",
+      lede: "Japan is the rare country where you can stop thinking about coverage entirely, because it is excellent almost everywhere including at 200 miles an hour on a bullet train. That leaves one question, and it is purely about money.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "Coverage in Japan is <b>among the best anywhere</b>: 4G almost everywhere, including the <b>bullet trains</b> and most rural and mountain areas, with 5G growing in the cities. So there is nothing to plan around and this is <b>purely a cost decision</b>. Your US carrier charges about <b>12 dollars a day</b> to roam (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b>'s included roaming is often <b>slow 2G</b>, which is a poor fit for a country where you will lean on transit apps and maps all day. A <b>Nomad eSIM</b> is a few dollars per gigabyte and works from landing. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "Almost purely a cost question",
+          icon: "roamfee",
+          key: { fig: "$12/day", tag: "Roaming default", text: "Coverage is a non-issue in Japan, so the only question is what you pay. A US carrier day pass runs about $12 a day, and T-Mobile included roaming is often slow 2G.", tone: "teal" },
+          p: [
+            "Because coverage is not a problem here, the whole decision is price. Roaming on your US plan is the expensive default: <b>AT&amp;T and Verizon</b> day passes run about <b>12 dollars a day</b>, so a week is roughly <b>84 dollars</b> and a two-week trip approaches <b>170</b>. <b>T-Mobile</b> and some Google Fi and Visible plans include roaming, but often at <b>slow 2G-style speeds</b>. That matters more in Japan than in most places, because you will lean on <b>maps and transit apps</b> constantly to navigate a rail network with more exits per station than some towns have streets, and 2G handles that badly.",
+            "The thing not to do is roam with <b>no plan</b>. Pay-per-use data runs about <b>2 dollars a megabyte</b>, thousands per gigabyte, and background app activity alone can run a bill up before you have opened anything, so <b>turn off data roaming</b> until an eSIM or a pass is active."
+          ]
+        },
+        {
+          h: "The eSIM, and the pocket wifi it replaced",
+          icon: "qr",
+          key: { fig: "Few $/GB", tag: "The cheap option", text: "A travel eSIM is a few dollars per gigabyte, well under day-pass fees, and it activates before you fly. It has largely replaced the rented pocket wifi box.", tone: "teal" },
+          p: [
+            "A <b>travel eSIM</b> is the cheapest way for most visitors to get real data in Japan. A <b>Nomad eSIM</b> is a few dollars per gigabyte, well under day-pass pricing, and it <b>activates before you fly</b> and works from landing, with no counter to find at Narita or Kansai after a long flight. Your US number stays reachable on your normal plan while the eSIM carries the data. Since Japanese networks are strong across the board, which one the eSIM rides is not something you need to research the way you would in Australia.",
+            "Japan's traditional answer was the <b>rented pocket wifi</b> box, reserved in advance and collected at the airport. It still exists and it still makes sense for a family or a group sharing one connection, but for one or two people an eSIM is cheaper and simpler: nothing to collect, nothing to return, nothing extra to charge each night, and no deposit. <b>Free wifi</b> is also widespread in stations, convenience stores, cafes and hotels, which is a useful backstop but not a plan, since it usually wants a sign-in and rarely follows you onto a train."
+          ]
+        },
+        {
+          h: "Coverage you can forget about",
+          icon: "phoneok",
+          key: { fig: "Even at speed", tag: "Including the shinkansen", text: "Japan has 4G almost everywhere, including bullet trains and most rural and mountain areas, with 5G growing in the cities. There is no gap worth planning around.", tone: "teal" },
+          p: [
+            "This section is short because there is little to warn you about. Japan has <b>4G almost everywhere</b>, including on the <b>shinkansen</b> at full speed, in most <b>rural and mountain areas</b>, and in the long tunnels that would break the signal elsewhere, with <b>5G growing across the cities</b>. Deep in the mountains or far out on a small island you may find a thin patch, and it is not the sort of thing most itineraries need to plan around.",
+            "One practical note that is about money rather than signal: Japan still runs on <b>cash more than most rich countries</b>, and having working data is what lets you find the right ATM, read a menu, buy rail tickets in an app and top up an IC card without guesswork, which is a real reason not to travel here on a 2G roaming allowance. This guide is written for US travelers departing the US. For more, see <a href='/japan/cash-or-card'>cash or card in Japan</a>, <a href='/japan/taxis-and-apps'>taxis and apps in Japan</a>, and the <a href='/japan'>Japan money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is an eSIM cheaper than roaming in Japan?", a: "For most US travelers, clearly yes. A Nomad eSIM is a few dollars per gigabyte, against about 12 dollars a day for an AT&T or Verizon roaming pass, so a week of roaming at roughly 84 dollars buys far more data as an eSIM. Set it up before you fly and it works from landing." },
+        { q: "Do I need pocket wifi in Japan?", a: "Not usually. A rented pocket wifi box still suits a family or group sharing one connection, but for one or two people an eSIM is cheaper and simpler: nothing to collect or return, no deposit, and no extra device to charge each night." },
+        { q: "Will I have signal on the bullet train in Japan?", a: "Yes, generally throughout, including in the long tunnels that would break the signal in most countries. Japanese coverage is among the best anywhere, so there is no gap worth planning your trip around." },
+        { q: "How much does it cost to use my US phone in Japan?", a: "About 12 dollars a day on an AT&T or Verizon day pass, so roughly 84 dollars a week. T-Mobile and some other plans include roaming but often at slow 2G speeds, which is a poor fit for the maps and transit apps you will use constantly here. Never roam with no plan, since pay-per-use runs about 2 dollars a megabyte." }
+      ],
+      sources: {
+        links: [
+          { label: "Tom's Guide: a 2026 comparison of US carrier international roaming plans and day-pass prices", url: "https://www.tomsguide.com/us/wireless-carriers-international-travel-plans,review-4327.html", type: "news" },
+          { label: "Japan National Tourism Organization: official visitor information for travel in Japan", url: "https://www.japan.travel/en/", type: "official" }
+        ],
+        judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own account before you fly. Japan's coverage strength is consistent across every account the True Trip Costs desk has seen, which is why this spoke leans on the money math rather than warning about gaps. Checked Jul 2026."
+      }
     }
   ]
 };
