@@ -13,8 +13,8 @@ export default {
   hook: "A cash country: cards work at hotels and malls, but markets, taxis, tips and street food all want pounds.",
   aliases: ["cairo", "giza", "luxor", "aswan", "alexandria", "sharm el sheikh", "hurghada", "egyptian pound", "egp", "pound", "nile", "pyramids", "egyptian"],
 
-  title: "Money in Egypt (2026): Cash, Cards, Pounds and Tipping | True Trip Costs",
-  description: "How to handle money in Egypt as a US traveler in 2026: why it's a cash country, how much to tip (baksheesh), paying in Egyptian pounds not dollars, the service and tax that hotels and restaurants add, which ATMs to use, and why prices move with the pound. Checked July 2026.",
+  title: "Tipping in Egypt and baksheesh: money in 2026",
+  description: "Baksheesh is part of daily life, so carry small notes. Egypt is a cash country: cards work at hotels, but markets and taxis want pounds. Checked 2026.",
 
   h1: "Money in Egypt, sorted.",
   lede: "A calm, current plan for the money side of your trip: why you should carry cash and small notes, how tipping (baksheesh) really works, and the service and tax that gets added at hotels and tourist restaurants.",

@@ -23,8 +23,8 @@ export default {
   hook: "About as card-friendly as travel gets: tap your card or phone almost everywhere. The one habit worth knowing is that until 1 October 2026 many places still add a card surcharge, so check the bill, choose Australian dollars over US dollars, and carry only a little cash.",
   aliases: ["australia", "aus", "aussie", "oz", "sydney", "melbourne", "brisbane", "perth", "adelaide", "cairns", "gold coast", "tasmania", "uluru", "great barrier reef", "outback", "aud", "australian dollar", "eta", "subclass 601", "gst", "trs", "tourist refund scheme", "eftpos", "opal", "myki"],
 
-  title: "Money in Australia (2026): Cards, Surcharges, Cash, ATMs, the GST Refund and Tipping | True Trip Costs",
-  description: "How to handle money in Australia as a US traveler in 2026: near-universal cards and contactless, the card surcharges that still apply until the 1 October 2026 ban, the dollar-conversion trap, easy ATMs, the AUD 20 app-only ETA, the 10% GST refund on goods through the Tourist Refund Scheme, and why nobody tips. Checked July 2026.",
+  title: "Australia money 2026: cards, surcharges and cash",
+  description: "Tap almost everywhere: Australia is about as card-friendly as travel gets. Check the bill for a surcharge until the October 2026 ban. Checked 2026.",
 
   h1: "Money in Australia, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your card covers almost everything, the surcharge to watch for until the October 2026 ban, the little cash worth carrying, the GST you can claim back on shopping, and the ETA to sort before you fly.",

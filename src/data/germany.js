@@ -20,8 +20,8 @@ export default {
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 3, atmRisk: 4 },
   hook: "More cash-loving than its reputation suggests, with a patchwork of city bed taxes to plan for.",
 
-  title: "Money in Germany (2026): Cash, Cards, ATMs and City Taxes | True Trip Costs",
-  description: "How to handle money in Germany as a US traveler in 2026: why cash still rules more than you'd expect, fee-free Cash Group and Sparkasse ATMs, the dollar conversion trap, light round-up tipping, and the city-by-city bed tax (Bettensteuer) in Berlin, Hamburg, Cologne and Frankfurt (but not Munich, where Bavaria bans it). Checked July 2026.",
+  title: "Germany money 2026: why cash still matters, plus ATMs",
+  description: "Germany uses more cash than you expect, so carry euros. Cash Group and Sparkasse ATMs are fee-free, and some cities add a bed tax. Checked 2026.",
 
   h1: "Money in Germany, sorted.",
   lede: "A calm, current plan for the money side of your trip: why a famously efficient country still runs more on cash than you'd guess, and the small per-city tax that varies more than anywhere else in Europe.",

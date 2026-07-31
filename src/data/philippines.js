@@ -22,8 +22,8 @@ export default {
   signals: { cardFriendliness: 3, cashNeed: 4, taxRisk: 2, atmRisk: 4 },
   hook: "The Philippines is affordable and largely cash-first: the peso is about 60 to the dollar, cards work in Manila, Cebu and the tourist hubs, but jeepneys, tricycles, markets and small islands run on cash, so carry small bills. Before you fly, do the free eTravel registration online, and only on the official site.",
   aliases: ["philippines", "filipino", "manila", "cebu", "boracay", "palawan", "el nido", "coron", "bohol", "siargao", "davao", "vigan", "banaue", "php", "peso", "philippine peso", "etravel", "e-travel", "pinas", "pilipinas"],
-  title: "Money in the Philippines (2026): the Peso, Cash vs Cards, ATMs, eTravel and the New VAT Refund | True Trip Costs",
-  description: "How to handle money in the Philippines as a US traveler in 2026: the peso, why it is a cash-first country, where cards work, ATM limits and fees, the free mandatory eTravel registration, modest tipping, and the new tourist VAT refund. Checked July 2026.",
+  title: "Philippines money 2026: the peso, cash and cards",
+  description: "A cash-first country: cards work in Manila and the tourist hubs, but jeepneys, markets and small islands want pesos. eTravel is free to file. Checked 2026.",
   h1: "Money in the Philippines, sorted.",
   lede: "A calm, current plan for the money side of your trip: why you carry cash here, where a card actually works, the ATM habits that save you fees, and the free entry form you must do before you fly.",
   hero: {

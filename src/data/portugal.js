@@ -19,8 +19,8 @@ export default {
   rentalCommon: true,
   region: "Europe",
   signals: { cardFriendliness: 4, cashNeed: 2, taxRisk: 3, atmRisk: 4 },
-  title: "Money in Portugal (2026): Cards, Cash, Multibanco ATMs, Tipping and the Tourist Tax | True Trip Costs",
-  description: "How to handle money in Portugal as a US traveler in 2026: cards work almost everywhere, the dollar conversion trap, Multibanco ATMs vs the yellow Euronet ones, light tipping, the Lisbon and Porto tourist taxes, and the 23% IVA refund. Checked July 2026.",
+  title: "Tipping in Portugal 2026, plus cards and ATM fees",
+  description: "Tipping is light here, just round up. Cards work almost everywhere, and the yellow Euronet ATMs cost far more than a bank Multibanco machine. Checked 2026.",
   h1: "Money in Portugal, sorted.",
   lede: "A calm, current plan for the money side of your trip: what you can tap, the little things you still want euros for, and the small rules that trip up first-timers.",
   hero: {

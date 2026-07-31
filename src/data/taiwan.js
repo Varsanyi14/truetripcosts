@@ -23,8 +23,8 @@ export default {
   hook: "Card-friendly in the cities, but night markets, small eateries and the old streets still run on cash, so tap where you can, keep a stack of New Taiwan dollars for the stalls, load an EasyCard for transit, and always choose New Taiwan dollars over US dollars.",
   aliases: ["taiwan", "taipei", "kaohsiung", "taichung", "tainan", "jiufen", "shifen", "taroko", "sun moon lake", "twd", "ntd", "nt$", "new taiwan dollar", "easycard", "taiwan arrival card", "twac", "mrt", "night market", "shilin", "raohe", "bubble tea", "beef noodle", "taipei 101", "hsr", "high speed rail"],
 
-  title: "Money in Taiwan (2026): Cards, Cash, EasyCard, ATMs, the 5% Tax Refund and Tipping | True Trip Costs",
-  description: "How to handle money in Taiwan as a US traveler in 2026: cards in the cities and surging mobile pay, the cash you still need for night markets and the old streets, the EasyCard that runs the MRT and buses, the convenience-store ATMs that take your card, the dollar-conversion trap, the 5% VAT refund for visitors, and why nobody tips. Checked July 2026.",
+  title: "How much cash to bring to Taiwan: money in 2026",
+  description: "Cards work in the cities, but night markets and small eateries want cash. Load an EasyCard for transit, and nobody expects a tip. Checked 2026.",
 
   h1: "Money in Taiwan, sorted.",
   lede: "A calm, current plan for the money side of your trip: where your card is fine and where the stalls still want cash, the little New Taiwan dollars worth carrying, the EasyCard that runs the trains and buses, and the 5% tax you can claim back on shopping.",

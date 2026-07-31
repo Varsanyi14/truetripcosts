@@ -22,8 +22,8 @@ export default {
   hook: "On the euro since 2023 and widely card-friendly, so tap in the towns, keep some euros for the islands, konobas and ferries, use bank ATMs rather than the coastal Euronet machines, and always pay in euros, not US dollars.",
   aliases: ["croatia", "croatian", "hrvatska", "zagreb", "split", "dubrovnik", "hvar", "zadar", "rovinj", "istria", "dalmatia", "plitvice", "euro", "eur", "kuna", "konoba", "adriatic", "diocletian"],
 
-  title: "Money in Croatia (2026): Cards, Cash, the Euro, ATMs, Taxes and Tipping | True Trip Costs",
-  description: "How to handle money in Croatia as a US traveler in 2026: the euro (adopted in 2023), widely accepted cards, the cash you still want for islands and konobas, the coastal Euronet ATM trap, the dollar-conversion trap, the 25% VAT refund on shopping, the sojourn tax, and how tipping works. Checked July 2026.",
+  title: "Tipping in Croatia, plus cards, cash and the euro",
+  description: "Croatia has used the euro since 2023 and cards work widely. Tipping is light, near 10% for good service, and cash helps on the islands. Checked 2026.",
 
   h1: "Money in Croatia, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your card covers the towns, the euros worth keeping for the islands and konobas, the ATMs to skip, and the taxes to know now that Croatia is on the euro.",

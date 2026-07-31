@@ -10,8 +10,8 @@ export default {
   insuranceLevel: "high",
   region: "Asia",
   signals: { cardFriendliness: 1, cashNeed: 5, taxRisk: 3, atmRisk: 4 },
-  title: "Money in Vietnam (2026): Cash, Cards, ATM Fees and the Dong Conversion Trap | True Trip Costs",
-  description: "How to handle money in Vietnam as a US traveler in 2026: cash vs card, the best ATMs and their fees, how much cash to bring, tipping, and the traps to avoid. Checked July 2026.",
+  title: "Vietnam money 2026: cash, cards and ATM fees",
+  description: "Vietnam runs on cash, and most ATMs charge a fee with low limits. Pay in dong rather than dollars, and watch the zeros: the notes look alike. Checked 2026.",
   h1: "Money in Vietnam, sorted.",
   lede: "A calm, current plan for the money side of your trip: what to pay with, how much cash to carry, and the local traps to dodge.",
   hero: {

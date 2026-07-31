@@ -24,8 +24,8 @@ export default {
   hook: "Maybe the most cashless country on earth: tap for everything, carry almost no cash, decline dollar conversion, and budget for very high prices plus a small nightly lodging tax.",
   aliases: ["iceland", "reykjavik", "keflavik", "kef", "golden circle", "ring road", "blue lagoon", "akureyri", "vik", "icelandic krona", "isk", "krona", "kronur", "lopapeysa"],
 
-  title: "Money in Iceland (2026): Cards, Cash, ATMs, VAT and the Lodging Tax | True Trip Costs",
-  description: "How to handle money in Iceland as a US traveler in 2026: why it is one of the most cashless countries anywhere, why it is krona and not euros, the dollar-conversion trap, bank ATMs, the 24% VAT you can partly claim back on shopping, the small nightly lodging tax, and the new per-kilometre road tax for rental cars. Checked July 2026.",
+  title: "How much cash to bring to Iceland: almost none",
+  description: "Iceland is close to cashless, so tap for everything, fuel pumps included. It is krona, not euros, and the cost to plan for is the prices. Checked 2026.",
 
   h1: "Money in Iceland, sorted.",
   lede: "A calm, current plan for the money side of your trip: why you can go the whole way without cash, why it is krona and not euros, the shopping tax you can claim back, the small nightly lodging tax, and the new road tax that can surprise anyone renting a car.",

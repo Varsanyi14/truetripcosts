@@ -21,8 +21,8 @@ export default {
   hook: "Card-friendly in the cities, but carry cash for the coast and small towns, dodge the steep ATM fees, and skip the hotel tax you should not be paying.",
   aliases: ["colombia", "bogota", "medellin", "cartagena", "cali", "santa marta", "barranquilla", "coffee region", "eje cafetero", "peso", "cop", "colombian peso", "caribbean coast"],
 
-  title: "Money in Colombia (2026): Cards, Cash, ATM Fees, the Hotel IVA Exemption and Tipping | True Trip Costs",
-  description: "How to handle money in Colombia as a US traveler in 2026: where cards work and where cash is king, the steep ATM fees and low limits and how to beat them, the dollar-conversion trap, the 19% hotel IVA that foreign tourists do not owe, and light 10% tipping. Checked July 2026.",
+  title: "Colombia ATM fees, cards and cash: money in 2026",
+  description: "ATM fees are steep and limits low, so withdraw more, less often. Cards work in the cities, and foreign tourists do not owe the 19% hotel IVA. Checked 2026.",
 
   h1: "Money in Colombia, sorted.",
   lede: "A calm, current plan for the money side of your trip: what your card covers in the cities, the cash you want everywhere else, the ATM fees worth dodging, and the hotel tax you should not be paying.",

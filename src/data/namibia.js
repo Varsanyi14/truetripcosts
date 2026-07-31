@@ -22,8 +22,8 @@ export default {
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 2, atmRisk: 3 },
   hook: "Namibia is card-friendly in towns but cash matters on the long empty roads, so carry Namibian dollars or rand for fuel stops, tips and remote lodges. The new bit for US travelers: since April 2025 you must pay a visa, about US$88, so sort it online before you fly.",
   aliases: ["namibia", "namibian", "windhoek", "swakopmund", "walvis bay", "sossusvlei", "etosha", "damaraland", "skeleton coast", "luderitz", "namib desert", "namib", "fish river canyon", "caprivi", "namibian dollar", "nad", "rand", "zar", "biltong", "kapana", "himba", "e-visa", "evisa", "visa on arrival"],
-  title: "Money in Namibia (2026): The New Visa Fee, Cards, Cash, the Rand Peg and Tipping | True Trip Costs",
-  description: "How to handle money in Namibia as a US traveler in 2026: the new visa fee Americans must pay, why cards work in towns but cash rules the long roads, how the Namibian dollar and rand work together, ATMs, tipping, and traps to avoid. Checked July 2026.",
+  title: "Namibia money 2026: the new visa fee, cards and cash",
+  description: "US visitors now pay a visa fee on arrival. Cards work in the towns, but the long roads run on cash, so carry Namibian dollars or rand. Checked 2026.",
   h1: "Money in Namibia, sorted.",
   lede: "A calm, current plan for the money side of your trip: the visa you now have to pay for, why you carry cash on the long roads, how the Namibian dollar and the rand fit together, and the small rules that trip up first-timers.",
   hero: {

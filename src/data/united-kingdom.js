@@ -19,8 +19,8 @@ export default {
   insuranceLevel: "low",
   region: "Europe",
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 3, atmRisk: 4 },
-  title: "Money in the United Kingdom (2026): Cards, Contactless, Cash, ATMs, Tipping and the Edinburgh Visitor Levy | True Trip Costs",
-  description: "How to handle money in the UK as a US traveler in 2026: tap-to-pay beats cash almost everywhere, the dollar conversion trap, free LINK cashpoints vs fee machines, light tipping and the 12.5% service charge, why there is no VAT refund in Great Britain, the new Edinburgh visitor levy, and the UK ETA you now need before you fly. Checked July 2026.",
+  title: "Do I need cash in the UK? Cash or card in 2026",
+  description: "Barely any. Tap to pay works almost everywhere, buses included. Use free LINK cashpoints, and note there is no VAT refund in Great Britain. Checked 2026.",
   h1: "Money in the UK, sorted.",
   lede: "A calm, current plan for the money side of your trip: what you can tap (almost everything), the few times you still want pound coins and notes, and the small rules and new charges that catch first-timers.",
   hero: {

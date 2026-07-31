@@ -21,8 +21,8 @@ export default {
   hook: "Card-friendly and tidy, but it's francs, not euros, and everything costs more than you expect.",
   aliases: ["zurich", "geneva", "bern", "basel", "lucerne", "lausanne", "zermatt", "interlaken", "st moritz", "st. moritz", "grindelwald", "swiss franc", "chf", "franc", "matterhorn", "jungfrau", "swiss", "helvetia"],
 
-  title: "Money in Switzerland (2026): Cards, Cash, Francs and Tipping | True Trip Costs",
-  description: "How to handle money in Switzerland as a US traveler in 2026: cards and tap work almost everywhere, why it's francs and not euros, how little you tip, paying in francs not dollars, the per-night visitor's tax and Guest Card, VAT that's already in the price, and which ATMs to use. Checked July 2026.",
+  title: "Will Switzerland take euros? Money in 2026",
+  description: "Some places accept them at a poor rate, but you pay in francs. Cards work almost everywhere, tipping is minimal, and prices run high. Checked 2026.",
 
   h1: "Money in Switzerland, sorted.",
   lede: "A calm, current plan for the money side of your trip: why you barely need cash, why it's francs and not euros, how modest the tipping is, and the small per-night tax that often pays for your train rides.",

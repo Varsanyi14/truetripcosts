@@ -22,8 +22,8 @@ export default {
   hook: "One of the most cashless countries in Europe, so tap your card or phone almost everywhere, keep a little zloty for the smallest stalls, sidestep the Euronet ATMs and their poor rates, and always pay in zloty, not euros or dollars.",
   aliases: ["poland", "polish", "krakow", "cracow", "warsaw", "warszawa", "gdansk", "wroclaw", "zakopane", "zloty", "zlotych", "pln", "zl", "wawel", "pierogi", "blik", "auschwitz", "malbork"],
 
-  title: "Money in Poland (2026): Cards, Cash, Zloty, ATMs, Taxes and Tipping | True Trip Costs",
-  description: "How to handle money in Poland as a US traveler in 2026: near-universal cards and mobile pay, the little cash you still want, why it is zloty and not euros, the Euronet ATM trap, the dollar-conversion trap, the 23% VAT refund on shopping, city taxes, and how tipping works. Checked July 2026.",
+  title: "Does Poland accept euros? Money in 2026",
+  description: "Not really, you pay in zloty. Poland is close to cashless, so tap almost everywhere, keep a little zloty for stalls, and skip Euronet ATMs. Checked 2026.",
 
   h1: "Money in Poland, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your card covers almost everything, the small amount of zloty worth carrying, the ATMs to avoid, and the taxes to know in a country that is cheaper than most of Europe.",

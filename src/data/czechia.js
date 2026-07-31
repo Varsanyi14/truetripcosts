@@ -20,8 +20,8 @@ export default {
   hook: "One of Europe's most card-friendly countries, with a small Prague city fee and a couple of tourist-money traps to dodge.",
   aliases: ["czech republic", "czech", "prague", "praha", "brno", "cesky krumlov", "karlovy vary", "plzen", "pilsen", "koruna", "czk", "bohemia", "moravia"],
 
-  title: "Money in Czechia (2026): Cards, Cash, ATMs and the Prague City Fee | True Trip Costs",
-  description: "How to handle money in Czechia as a US traveler in 2026: why cards and contactless work almost everywhere, which ATMs to use and which yellow ones to avoid, the dollar-conversion trap, the koruna versus the euro, Prague's per-night city fee, and light round-up tipping. Checked July 2026.",
+  title: "Cash or card in Prague? Czechia money in 2026",
+  description: "Cards work almost everywhere, so you need little cash. It is koruna, not euros, and the yellow tourist ATMs are the ones to walk past. Checked 2026.",
 
   h1: "Money in Czechia, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your tap-to-pay card covers almost everything, the two tourist traps that quietly cost the most, and the small nightly city fee in Prague.",

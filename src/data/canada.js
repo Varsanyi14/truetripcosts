@@ -21,8 +21,8 @@ export default {
   hook: "As card-friendly as the US, but the sticker price hides sales tax and a US-style tip.",
   aliases: ["toronto", "vancouver", "montreal", "quebec", "quebec city", "ottawa", "calgary", "banff", "niagara", "canadian dollar", "cad", "loonie", "toonie", "ontario", "british columbia", "alberta"],
 
-  title: "Money in Canada (2026): Cards, Cash, Sales Tax and Tipping | True Trip Costs",
-  description: "How to handle money in Canada as a US traveler in 2026: cards and tap work almost everywhere, why sales tax is added at the register (not on the tag), US-style tipping, which ATMs to use, paying in Canadian dollars not US, and the hotel taxes that vary by province. Checked July 2026.",
+  title: "Canada money 2026: cards, cash, sales tax, tipping",
+  description: "Cards work almost everywhere, but the shelf price is not the final one: sales tax is added at the register and a US-style tip on top. Checked 2026.",
 
   h1: "Money in Canada, sorted.",
   lede: "A calm, current plan for the money side of your trip: why you barely need cash, the two costs that never show up on the price tag, and the hotel taxes that vary by province.",

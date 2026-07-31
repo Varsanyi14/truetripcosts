@@ -12,8 +12,8 @@ export default {
   signals: { cardFriendliness: 2, cashNeed: 4, taxRisk: 4 },
   hook: "Bali runs more on cash and QR codes than tourists expect, plus a one-time entry levy on top.",
 
-  title: "Money in Indonesia (2026): Cash, Cards, QRIS and the Bali Entry Levy | True Trip Costs",
-  description: "How to handle money in Indonesia as a US traveler in 2026: cash vs card in Bali and beyond, why QRIS mostly is not a tool for tourists, fee-free bank ATMs, the one-time Bali entry levy, the 21% hotel tax and service charge, and tipping. Checked July 2026.",
+  title: "Bali and Indonesia money 2026: cash, ATM fees, levy",
+  description: "Bali runs on cash more than visitors expect, and bank ATMs are the fee-free ones. Budget the one-time Bali entry levy and the 21% hotel tax. Checked 2026.",
 
   h1: "Money in Indonesia, sorted.",
   lede: "Most US trips to Indonesia mean Bali, so this guide leads there, with notes for Jakarta and beyond. A calm, current plan for what to pay with, how much cash to carry, and the one-time fee that catches first-timers at the airport.",

@@ -20,8 +20,8 @@ export default {
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 3 },
   hook: "Cards work in the cities, but the islands still run on cash and a nightly climate fee.",
 
-  title: "Money in Greece (2026): Cash, Cards, ATMs and the Climate Resilience Fee | True Trip Costs",
-  description: "How to handle money in Greece as a US traveler in 2026: cards in Athens and Thessaloniki, why the islands still want cash, fee-free Greek bank ATMs, the per-night Climate Resilience Fee by hotel rating, tipping, and the VAT refund. Checked July 2026.",
+  title: "How much cash to bring to Greece: money in 2026",
+  description: "Cards work in Athens and the bigger towns, but the islands want euros in hand. Greek bank ATMs are fee-free, and hotels add a climate fee. Checked 2026.",
 
   h1: "Money in Greece, sorted.",
   lede: "A calm, current plan for the money side of your trip: what to tap in the cities, how much cash to carry for the islands, and the per-night fee that surprises first-timers at checkout.",
