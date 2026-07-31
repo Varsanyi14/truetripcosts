@@ -505,7 +505,7 @@ export default {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Strong in cities, coast, islands" },
-        { k: "Carrier roaming", v: "About $12 a day" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
         { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
         { k: "Signal gaps", v: "Rural interior and mountains" }
       ],
@@ -514,19 +514,19 @@ export default {
       topic: "connectivity",
       caution: "low",
       title: "Staying connected in Spain (2026): the eSIM math, and where the signal thins | True Trip Costs",
-      description: "Spain's coverage is excellent in cities and along the coast, so it is a cost question. Your US carrier charges about 12 dollars a day to roam; a Nomad eSIM is a few dollars per gigabyte. Expect gaps in the interior. Checked Jul 2026.",
+      description: "Spain's coverage is excellent in cities and along the coast, so it is a cost question. Your US carrier charges about 10 to 12 dollars a day to roam; a Nomad eSIM is a few dollars per gigabyte. Expect gaps in the interior. Checked Jul 2026.",
       h1: "Staying connected in Spain.",
       lede: "Spain is well covered where you will be, the cities, the coast, the islands, so the real decision is how you pay for data. For most US travelers an eSIM is far cheaper than the carrier day pass. Here is the math, and the few places signal drops.",
       checked: "Jul 2026",
-      checkedISO: "2026-07-22",
-      answer: "Coverage is <b>strong</b> in cities, along the coast and on the islands, so this is mostly a cost question. Your US carrier charges about <b>12 dollars a day</b> to roam in Spain (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b>'s included roaming is often <b>slow 2G</b>, fine for messages but not maps. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly and works from landing, so for a data-first trip it is the cheapest option. Expect <b>weaker signal in the rural interior and the mountains</b>. Never roam <b>pay-per-use</b>, which runs about 2 dollars a megabyte.",
+      checkedISO: "2026-07-31",
+      answer: "Coverage is <b>strong</b> in cities, along the coast and on the islands, so this is mostly a cost question. Your US carrier charges about <b>10 to 12 dollars a day</b> to roam in Spain (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b> is worth checking before you buy anything, because its current mid and upper tiers include a real <b>high-speed allowance</b> abroad, from <b>5GB up to 30GB</b> depending on plan, and only slow to <b>256kbps</b> after that. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly and works from landing, so for a data-first trip it is the cheapest option. Expect <b>weaker signal in the rural interior and the mountains</b>. Never roam <b>pay-per-use</b>, which runs about 2 dollars a megabyte.",
       sections: [
         {
           h: "A cost question first",
           icon: "roamfee",
-          key: { fig: "$12/day", tag: "Roaming default", text: "Coverage is good where visitors go, so this is mainly about cost. A US carrier day pass runs about $12 a day, and T-Mobile included roaming is often slow 2G, fine for messages but not maps.", tone: "teal" },
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "Coverage is good where visitors go, so this is mainly about cost. A US carrier day pass runs about $10 to $12 a day, and T-Mobile is the exception, with 5GB to 30GB of high-speed data abroad on its current mid and upper tiers, so check yours before buying.", tone: "teal" },
           p: [
-            "Spain has strong mobile coverage across the places visitors go, so the main decision is how you pay. The expensive default is roaming on your US plan: <b>AT&amp;T and Verizon</b> charge about <b>12 dollars a day</b>, roughly <b>84 dollars</b> for a week. <b>T-Mobile</b> and some Google Fi and Visible plans include roaming, but often at <b>slow 2G-style speeds</b> that handle messaging but struggle with maps and rideshare, so check your plan's fine print.",
+            "Spain has strong mobile coverage across the places visitors go, so the main decision is how you pay. The expensive default is roaming on your US plan: <b>AT&amp;T and Verizon</b> charge about <b>10 to 12 dollars a day</b>, roughly <b>70 to 84 dollars</b> for a week. <b>T-Mobile</b> is the exception worth checking first: its current tiers include a genuine <b>high-speed allowance</b> abroad, roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next, and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> only once that is used up. The entry <b>Essentials</b> tier is the one throttled from the start. Google Fi and Visible set their own terms, so read your own plan rather than assuming.",
             "Whatever you pick, do not roam with <b>no plan</b>. Pay-per-use data is around <b>2 dollars a megabyte</b>, thousands per gigabyte, and phones use data in the background, so <b>turn off data roaming</b> until an eSIM or pass is active."
           ]
         },
@@ -550,17 +550,19 @@ export default {
         }
       ],
       faqs: [
-        { q: "Do I need an eSIM for Spain?", a: "For most US travelers it is the cheapest way to get real data. Spain's coverage is strong in cities and along the coast, so it is a cost question: a Nomad eSIM is a few dollars per gigabyte, versus about 12 dollars a day for an AT&T or Verizon roaming pass. Set it up before you fly and it works from landing." },
-        { q: "How much does it cost to use my US phone in Spain?", a: "About 12 dollars a day on an AT&T or Verizon day pass, so roughly 84 dollars a week. T-Mobile and some other plans include roaming but often at slow 2G speeds. Never roam with no plan, since pay-per-use runs about 2 dollars a megabyte." },
+        { q: "Do I need an eSIM for Spain?", a: "For most US travelers it is the cheapest way to get real data. Spain's coverage is strong in cities and along the coast, so it is a cost question: a Nomad eSIM is a few dollars per gigabyte, versus about 10 to 10 to 12 dollars a day for an AT&T or Verizon roaming pass. Set it up before you fly and it works from landing." },
+        { q: "How much does it cost to use my US phone in Spain?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. T-Mobile is worth checking first, since its current mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps. Never roam with no plan, since pay-per-use runs about 2 dollars a megabyte." },
         { q: "Will I have signal in the Spanish countryside?", a: "Mostly, but not everywhere. Coverage is strong in cities, along the coast and on the main islands, while parts of the Pyrenees and Sierra Nevada and the empty inland meseta have gaps. Download offline maps before a mountain hike or a back-road drive, whatever network or eSIM you use." },
         { q: "Is an eSIM or a local SIM better for Spain?", a: "An eSIM is simpler for most visitors: no SIM counter and it works from landing if you set it up beforehand. A physical Spanish SIM can suit very heavy, long-stay use, but for a normal trip a Nomad eSIM is more convenient, and coverage is strong either way." }
       ],
       sources: {
         links: [
+        { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+        { label: "Verizon: international travel pages, TravelPass rate and the North America inclusion", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
           { label: "US Department of State: Spain country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Spain.html", type: "gov" },
           { label: "Tom's Guide: a 2026 comparison of US carrier international roaming plans and day-pass prices", url: "https://www.tomsguide.com/us/wireless-carriers-international-travel-plans,review-4327.html", type: "guide" }
         ],
-        judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own plan. The steady points are that Spanish coverage is strong where visitors go, that a day pass is the pricey default, and that signal thins in the rural interior and the mountains."
+        judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own plan. The steady points are that Spanish coverage is strong where visitors go, that a day pass is the pricey default, and that signal thins in the rural interior and the mountains. Corrected on 31 July 2026, and worth saying what changed. This page previously quoted a flat 12 dollars a day for a carrier day pass and described T-Mobile's included roaming as slow 2G that could not handle maps. Both were wrong in the same direction, the direction that flatters the eSIM we earn a commission on. On price, 10 dollars a day is the current eligible-plan rate for both AT&T's International Day Pass and Verizon's TravelPass, with 12 dollars applying to AT&T's non-eligible plans, so the honest figure is a range. On T-Mobile, its own roaming pages now list a real high-speed allowance abroad, 5GB on Experience More, Magenta MAX and Go5G Plus, 15GB on Experience Beyond and Go5G Next and 30GB on Better Value, dropping to 256kbps only after that, with the entry Essentials tier the one throttled from the start. We have rewritten the figures and the T-Mobile description throughout and cite the carriers directly. Carrier terms move faster than anything else we cover, so check your own plan rather than trusting this paragraph."
       }
     },
     {

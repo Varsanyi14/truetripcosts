@@ -632,7 +632,7 @@ export default {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Strong in cities, coast and towns" },
-        { k: "Carrier roaming", v: "About $12 a day" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
         { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
         { k: "Signal gaps", v: "The remote Outback, for long stretches" }
       ],
@@ -641,19 +641,19 @@ export default {
       topic: "connectivity",
       caution: "medium",
       title: "Staying connected in Australia (2026): the eSIM math, and where the Outback drops out | True Trip Costs",
-      description: "Australia's coverage is strong in the cities, along the coast and in the main towns, and thin in the remote Outback. Your US carrier charges about 12 dollars a day to roam; a Nomad eSIM is a few dollars per gigabyte. Checked Jul 2026.",
+      description: "Australia's coverage is strong in the cities, along the coast and in the main towns, and thin in the remote Outback. Your US carrier charges about 10 to 12 dollars a day to roam; a Nomad eSIM is a few dollars per gigabyte. Checked Jul 2026.",
       h1: "Staying connected in Australia.",
       lede: "Two things to sort here. The cost question, which an eSIM usually answers, and the distance question, because Australia is enormous and the coverage map has real holes in it once you leave the settled edge.",
       checked: "Jul 2026",
-      checkedISO: "2026-07-30",
-      answer: "Coverage is <b>strong across the cities, the coast and the main towns</b>, and genuinely <b>thin in the remote Outback</b>, where you can lose signal for long stretches. On cost, your US carrier charges about <b>12 dollars a day</b> to roam (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b>'s included roaming is often <b>slow 2G</b>, fine for messages but not maps. A <b>Nomad eSIM</b> is a few dollars per gigabyte and works from landing, which is the cheaper route for a data-first trip. If you are leaving the cities, favour an eSIM that rides <b>Telstra</b>, which reaches furthest. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      checkedISO: "2026-07-31",
+      answer: "Coverage is <b>strong across the cities, the coast and the main towns</b>, and genuinely <b>thin in the remote Outback</b>, where you can lose signal for long stretches. On cost, your US carrier charges about <b>10 to 12 dollars a day</b> to roam (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b> is worth checking before you buy anything, because its current mid and upper tiers include a real <b>high-speed allowance</b> abroad, from <b>5GB up to 30GB</b> depending on plan, and only slow to <b>256kbps</b> after that. A <b>Nomad eSIM</b> is a few dollars per gigabyte and works from landing, which is the cheaper route for a data-first trip. If you are leaving the cities, favour an eSIM that rides <b>Telstra</b>, which reaches furthest. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
       sections: [
         {
           h: "A cost question first",
           icon: "roamfee",
-          key: { fig: "$12/day", tag: "Roaming default", text: "A US carrier day pass runs about $12 a day, so a two-week Australia trip is real money. T-Mobile included roaming is often slow 2G, fine for messages but not maps.", tone: "teal" },
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "A US carrier day pass runs about $10 to $12 a day, so a two-week Australia trip is real money. T-Mobile is the exception, with 5GB to 30GB of high-speed data abroad on its current mid and upper tiers, so check yours before buying.", tone: "teal" },
           p: [
-            "Australia is a long-trip destination, which makes the roaming math worse than it looks. <b>AT&amp;T and Verizon</b> day passes run about <b>12 dollars a day</b>, so a week is around <b>84 dollars</b> and the two or three weeks most people spend here turns into a few hundred dollars for data you can buy far cheaper. <b>T-Mobile</b> and some Google Fi and Visible plans include roaming, often at <b>slow 2G-style speeds</b> that manage messaging but not maps or rideshare, so check what your own plan actually includes.",
+            "Australia is a long-trip destination, which makes the roaming math worse than it looks. <b>AT&amp;T and Verizon</b> day passes run about <b>10 to 12 dollars a day</b>, so a week is around <b>70 to 84 dollars</b> and the two or three weeks most people spend here turns into a few hundred dollars for data you can buy far cheaper. <b>T-Mobile</b> is the exception worth checking first: its current tiers include a genuine <b>high-speed allowance</b> abroad, roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next, and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> only once that is used up. The entry <b>Essentials</b> tier is the one throttled from the start. Google Fi and Visible set their own terms, so read your own plan rather than assuming.",
             "The trap to avoid entirely is roaming with <b>no plan</b>. Pay-per-use data runs about <b>2 dollars a megabyte</b>, thousands per gigabyte, and phones use data in the background without being asked, so <b>turn off data roaming</b> until your eSIM or pass is live. <b>Physical prepaid SIMs</b> are easy to buy in Australia at airports, supermarkets and phone shops if you prefer one, but for a normal trip an eSIM saves you the errand on your first jet-lagged morning."
           ]
         },
@@ -677,17 +677,19 @@ export default {
         }
       ],
       faqs: [
-        { q: "Is an eSIM cheaper than roaming in Australia?", a: "Usually by a wide margin, and the long trips people take here make the gap bigger. A Nomad eSIM is a few dollars per gigabyte, against about 12 dollars a day for an AT&T or Verizon roaming pass, so a two-week trip that would cost well over a hundred dollars in day passes costs a fraction of that on an eSIM." },
+        { q: "Is an eSIM cheaper than roaming in Australia?", a: "Usually by a wide margin, and the long trips people take here make the gap bigger. A Nomad eSIM is a few dollars per gigabyte, against about 10 to 10 to 12 dollars a day for an AT&T or Verizon roaming pass, so a two-week trip that would cost well over a hundred dollars in day passes costs a fraction of that on an eSIM." },
         { q: "Which Australian network has the best coverage?", a: "Telstra, by a clear margin once you leave the cities, which is why it is the network to favour if your trip includes long drives, national parks or remote towns. Optus is solid across the populated areas and Vodafone, part of TPG, is competitive in the cities and thinner beyond them." },
         { q: "Will my phone work in the Outback?", a: "Often not. On remote highways you can be out of range for hours of driving rather than minutes, and some small settlements have one carrier or none. Download offline maps before you leave a town, and for genuinely remote travel the carriers sell satellite messaging and handsets." },
         { q: "Should I buy an Australian SIM card or use an eSIM?", a: "Prepaid SIMs are easy to buy at airports, supermarkets and phone shops, so either works. An eSIM is simpler for a normal trip since it is set up before you fly and works on landing, with no errand on your first morning. A physical SIM can suit a long stay with very heavy use." }
       ],
       sources: {
         links: [
+        { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+        { label: "Verizon: international travel pages, TravelPass rate and the North America inclusion", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
           { label: "Telstra: the carrier's official coverage and network pages, including the searchable coverage map and remote-area options", url: "https://www.telstra.com.au/coverage-networks/our-coverage", type: "carrier" },
           { label: "Tom's Guide: a 2026 comparison of US carrier international roaming plans and day-pass prices", url: "https://www.tomsguide.com/us/wireless-carriers-international-travel-plans,review-4327.html", type: "news" }
         ],
-        judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot. Coverage maps predict outdoor coverage rather than guarantee it, so the Outback advice here is deliberately conservative: assume no signal between towns and be pleasantly surprised. Checked Jul 2026."
+        judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot. Coverage maps predict outdoor coverage rather than guarantee it, so the Outback advice here is deliberately conservative: assume no signal between towns and be pleasantly surprised. Checked Jul 2026. Corrected on 31 July 2026, and worth saying what changed. This page previously quoted a flat 12 dollars a day for a carrier day pass and described T-Mobile's included roaming as slow 2G that could not handle maps. Both were wrong in the same direction, the direction that flatters the eSIM we earn a commission on. On price, 10 dollars a day is the current eligible-plan rate for both AT&T's International Day Pass and Verizon's TravelPass, with 12 dollars applying to AT&T's non-eligible plans, so the honest figure is a range. On T-Mobile, its own roaming pages now list a real high-speed allowance abroad, 5GB on Experience More, Magenta MAX and Go5G Plus, 15GB on Experience Beyond and Go5G Next and 30GB on Better Value, dropping to 256kbps only after that, with the entry Essentials tier the one throttled from the start. We have rewritten the figures and the T-Mobile description throughout and cite the carriers directly. Carrier terms move faster than anything else we cover, so check your own plan rather than trusting this paragraph."
       }
     }
   ]

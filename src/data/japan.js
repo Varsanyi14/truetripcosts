@@ -536,7 +536,7 @@ export default {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Among the best anywhere" },
-        { k: "Carrier roaming", v: "About $12 a day" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
         { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
         { k: "Signal gaps", v: "Effectively none worth planning around" }
       ],
@@ -545,19 +545,19 @@ export default {
       topic: "connectivity",
       caution: "low",
       title: "Staying connected in Japan (2026): the eSIM math, and why coverage is a non-issue | True Trip Costs",
-      description: "Japan has some of the best mobile coverage anywhere, including the bullet trains, so this is purely a cost question. Your US carrier charges about 12 dollars a day to roam; a Nomad eSIM is a few dollars per gigabyte. Checked Jul 2026.",
+      description: "Japan has some of the best mobile coverage anywhere, including the bullet trains, so this is purely a cost question. Your US carrier charges about 10 to 12 dollars a day to roam; a Nomad eSIM is a few dollars per gigabyte. Checked Jul 2026.",
       h1: "Staying connected in Japan.",
       lede: "Japan is the rare country where you can stop thinking about coverage entirely, because it is excellent almost everywhere including at 200 miles an hour on a bullet train. That leaves one question, and it is purely about money.",
       checked: "Jul 2026",
-      checkedISO: "2026-07-30",
-      answer: "Coverage in Japan is <b>among the best anywhere</b>: 4G almost everywhere, including the <b>bullet trains</b> and most rural and mountain areas, with 5G growing in the cities. So there is nothing to plan around and this is <b>purely a cost decision</b>. Your US carrier charges about <b>12 dollars a day</b> to roam (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b>'s included roaming is often <b>slow 2G</b>, which is a poor fit for a country where you will lean on transit apps and maps all day. A <b>Nomad eSIM</b> is a few dollars per gigabyte and works from landing. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      checkedISO: "2026-07-31",
+      answer: "Coverage in Japan is <b>among the best anywhere</b>: 4G almost everywhere, including the <b>bullet trains</b> and most rural and mountain areas, with 5G growing in the cities. So there is nothing to plan around and this is <b>purely a cost decision</b>. Your US carrier charges about <b>10 to 12 dollars a day</b> to roam (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b> is worth checking before you buy anything, because its current mid and upper tiers include a real <b>high-speed allowance</b> abroad, from <b>5GB up to 30GB</b> depending on plan, and only slow to <b>256kbps</b> after that. A <b>Nomad eSIM</b> is a few dollars per gigabyte and works from landing. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
       sections: [
         {
           h: "Almost purely a cost question",
           icon: "roamfee",
-          key: { fig: "$12/day", tag: "Roaming default", text: "Coverage is a non-issue in Japan, so the only question is what you pay. A US carrier day pass runs about $12 a day, and T-Mobile included roaming is often slow 2G.", tone: "teal" },
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "Coverage is a non-issue in Japan, so the only question is what you pay. A US carrier day pass runs about $10 to $12 a day, and T-Mobile is the exception, with 5GB to 30GB of high-speed data abroad on its current mid and upper tiers, so check yours before buying.", tone: "teal" },
           p: [
-            "Because coverage is not a problem here, the whole decision is price. Roaming on your US plan is the expensive default: <b>AT&amp;T and Verizon</b> day passes run about <b>12 dollars a day</b>, so a week is roughly <b>84 dollars</b> and a two-week trip approaches <b>170</b>. <b>T-Mobile</b> and some Google Fi and Visible plans include roaming, but often at <b>slow 2G-style speeds</b>. That matters more in Japan than in most places, because you will lean on <b>maps and transit apps</b> constantly to navigate a rail network with more exits per station than some towns have streets, and 2G handles that badly.",
+            "Because coverage is not a problem here, the whole decision is price. Roaming on your US plan is the expensive default: <b>AT&amp;T and Verizon</b> day passes run about <b>10 to 12 dollars a day</b>, so a week is roughly <b>70 to 84 dollars</b> and a two-week trip approaches <b>170</b>. <b>T-Mobile</b> is the exception worth checking first: its current tiers include a genuine <b>high-speed allowance</b> abroad, roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next, and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> only once that is used up. The entry <b>Essentials</b> tier is the one throttled from the start. Google Fi and Visible set their own terms, so read your own plan rather than assuming. That matters more in Japan than in most places, because you will lean on <b>maps and transit apps</b> constantly to navigate a rail network with more exits per station than some towns have streets, and a throttled 256kbps connection handles that badly.",
             "The thing not to do is roam with <b>no plan</b>. Pay-per-use data runs about <b>2 dollars a megabyte</b>, thousands per gigabyte, and background app activity alone can run a bill up before you have opened anything, so <b>turn off data roaming</b> until an eSIM or a pass is active."
           ]
         },
@@ -576,22 +576,24 @@ export default {
           key: { fig: "Even at speed", tag: "Including the shinkansen", text: "Japan has 4G almost everywhere, including bullet trains and most rural and mountain areas, with 5G growing in the cities. There is no gap worth planning around.", tone: "teal" },
           p: [
             "This section is short because there is little to warn you about. Japan has <b>4G almost everywhere</b>, including on the <b>shinkansen</b> at full speed, in most <b>rural and mountain areas</b>, and in the long tunnels that would break the signal elsewhere, with <b>5G growing across the cities</b>. Deep in the mountains or far out on a small island you may find a thin patch, and it is not the sort of thing most itineraries need to plan around.",
-            "One practical note that is about money rather than signal: Japan still runs on <b>cash more than most rich countries</b>, and having working data is what lets you find the right ATM, read a menu, buy rail tickets in an app and top up an IC card without guesswork, which is a real reason not to travel here on a 2G roaming allowance. This guide is written for US travelers departing the US. For more, see <a href='/japan/cash-or-card'>cash or card in Japan</a>, <a href='/japan/taxis-and-apps'>taxis and apps in Japan</a>, and the <a href='/japan'>Japan money guide</a>."
+            "One practical note that is about money rather than signal: Japan still runs on <b>cash more than most rich countries</b>, and having working data is what lets you find the right ATM, read a menu, buy rail tickets in an app and top up an IC card without guesswork, which is a real reason not to travel here on a throttled roaming connection. This guide is written for US travelers departing the US. For more, see <a href='/japan/cash-or-card'>cash or card in Japan</a>, <a href='/japan/taxis-and-apps'>taxis and apps in Japan</a>, and the <a href='/japan'>Japan money guide</a>."
           ]
         }
       ],
       faqs: [
-        { q: "Is an eSIM cheaper than roaming in Japan?", a: "For most US travelers, clearly yes. A Nomad eSIM is a few dollars per gigabyte, against about 12 dollars a day for an AT&T or Verizon roaming pass, so a week of roaming at roughly 84 dollars buys far more data as an eSIM. Set it up before you fly and it works from landing." },
+        { q: "Is an eSIM cheaper than roaming in Japan?", a: "For most US travelers, clearly yes. A Nomad eSIM is a few dollars per gigabyte, against about 10 to 10 to 12 dollars a day for an AT&T or Verizon roaming pass, so a week of roaming at roughly 70 to 84 dollars buys far more data as an eSIM. Set it up before you fly and it works from landing." },
         { q: "Do I need pocket wifi in Japan?", a: "Not usually. A rented pocket wifi box still suits a family or group sharing one connection, but for one or two people an eSIM is cheaper and simpler: nothing to collect or return, no deposit, and no extra device to charge each night." },
         { q: "Will I have signal on the bullet train in Japan?", a: "Yes, generally throughout, including in the long tunnels that would break the signal in most countries. Japanese coverage is among the best anywhere, so there is no gap worth planning your trip around." },
-        { q: "How much does it cost to use my US phone in Japan?", a: "About 12 dollars a day on an AT&T or Verizon day pass, so roughly 84 dollars a week. T-Mobile and some other plans include roaming but often at slow 2G speeds, which is a poor fit for the maps and transit apps you will use constantly here. Never roam with no plan, since pay-per-use runs about 2 dollars a megabyte." }
+        { q: "How much does it cost to use my US phone in Japan?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. T-Mobile is worth checking first, since its current mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps. Never roam with no plan, since pay-per-use runs about 2 dollars a megabyte." }
       ],
       sources: {
         links: [
+        { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+        { label: "Verizon: international travel pages, TravelPass rate and the North America inclusion", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
           { label: "Tom's Guide: a 2026 comparison of US carrier international roaming plans and day-pass prices", url: "https://www.tomsguide.com/us/wireless-carriers-international-travel-plans,review-4327.html", type: "news" },
           { label: "Japan National Tourism Organization: official visitor information for travel in Japan", url: "https://www.japan.travel/en/", type: "official" }
         ],
-        judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own account before you fly. Japan's coverage strength is consistent across every account the True Trip Costs desk has seen, which is why this spoke leans on the money math rather than warning about gaps. Checked Jul 2026."
+        judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own account before you fly. Japan's coverage strength is consistent across every account the True Trip Costs desk has seen, which is why this spoke leans on the money math rather than warning about gaps. Checked Jul 2026. Corrected on 31 July 2026, and worth saying what changed. This page previously quoted a flat 12 dollars a day for a carrier day pass and described T-Mobile's included roaming as slow 2G that could not handle maps. Both were wrong in the same direction, the direction that flatters the eSIM we earn a commission on. On price, 10 dollars a day is the current eligible-plan rate for both AT&T's International Day Pass and Verizon's TravelPass, with 12 dollars applying to AT&T's non-eligible plans, so the honest figure is a range. On T-Mobile, its own roaming pages now list a real high-speed allowance abroad, 5GB on Experience More, Magenta MAX and Go5G Plus, 15GB on Experience Beyond and Go5G Next and 30GB on Better Value, dropping to 256kbps only after that, with the entry Essentials tier the one throttled from the start. We have rewritten the figures and the T-Mobile description throughout and cite the carriers directly. Carrier terms move faster than anything else we cover, so check your own plan rather than trusting this paragraph."
       }
     }
   ]
