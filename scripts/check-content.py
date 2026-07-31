@@ -3,7 +3,7 @@
 # Scans SHIPPING surface only: src/ code+copy (.js .jsx .ts .tsx .astro .css) and
 # the built site dist/*.html. Internal docs (.md, package.json) are excluded so the
 # gate never trips on text that merely DESCRIBES these rules.
-import io, os, sys
+import io, os, re, sys
 
 SRC_EXT  = {'.js', '.jsx', '.ts', '.tsx', '.astro', '.css'}
 def files():
@@ -40,8 +40,23 @@ def show(title, hits):
     print(f"{title}: {'clean' if not hits else str(tot)+' in '+str(len(hits))+' file(s)'}")
     for n, name, p in sorted(hits): print(f"    {n:4d}  {name:22s} {p}")
 
+# Spoke keystat figures must stay short. The fig sits beside its own text column,
+# so an over-long headline leaves the text a sliver and it renders one word per
+# line. The CSS now wraps instead of breaking, but keep the copy tight so the
+# callout still reads as a headline number. Most figs are 3 to 10 characters.
+FIG_MAX = 20
+figs = []
+for dp, dn, fn in os.walk(os.path.join('src', 'data')):
+    for f in sorted(fn):
+        if not f.lower().endswith('.js'): continue
+        p = os.path.join(dp, f)
+        t = io.open(p, encoding='utf-8', errors='replace').read()
+        long_figs = [m.group(1) for m in re.finditer(r'fig:\s*"([^"]*)"', t) if len(m.group(1)) > FIG_MAX]
+        if long_figs: figs.append((len(long_figs), f'fig over {FIG_MAX} chars', p + '  ' + ' | '.join(long_figs)))
+
 print("== TTC content gate (src + dist) ==")
 show("HARD  em/en dashes + U.S.", hard)
+show("HARD  long spoke figures ", figs)
 show("WARN  dash look-alikes   ", warn)
-print("\nRESULT:", "FAIL" if hard else ("PASS (warnings)" if warn else "PASS"))
-sys.exit(1 if hard else 0)
+print("\nRESULT:", "FAIL" if (hard or figs) else ("PASS (warnings)" if warn else "PASS"))
+sys.exit(1 if (hard or figs) else 0)

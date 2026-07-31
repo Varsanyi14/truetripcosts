@@ -725,7 +725,7 @@ export default {
         {
           h: "Arriving: the only taxi queue that counts",
           icon: "taxi",
-          key: { fig: "Official flat fare", tag: "Posted at the rank", text: "Paris fixes the fare between the airports and each bank of the Seine, and the figures are posted at the official rank. Anyone offering a ride inside the terminal is outside that system.", tone: "amber" },
+          key: { fig: "Flat fare", tag: "Posted at the rank", text: "Paris fixes the fare between the airports and each bank of the Seine, and the figures are posted at the official rank. Anyone offering a ride inside the terminal is outside that system.", tone: "amber" },
           p: [
             "Paris sets <b>official flat fares</b> between <b>Charles de Gaulle (CDG)</b> or <b>Orly (ORY)</b> and the city, priced differently for the <b>Right Bank and the Left Bank</b>, covering the whole car regardless of passengers or luggage. The figures are <b>posted at the official taxi rank</b> and are the ones to work from, since they are adjusted periodically and any number you read months in advance may be stale. Ask for the flat fare by name, and expect to pay by card.",
             "The costly mistake is accepting a ride from <b>someone who approaches you inside the terminal or at baggage claim</b>. Licensed taxis do not tout for business indoors, and the rides sold that way routinely run several times the official fare, sometimes with a payment terminal that produces a surprise total. <b>Walk out to the marked rank</b>, or pre-book a licensed car and match the plate. The <b>RER B train</b> and the <b>Roissybus</b> are far cheaper again if you are travelling light."

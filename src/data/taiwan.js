@@ -342,7 +342,7 @@ export default {
         {
           h: "How much cash, and getting it",
           icon: "twd",
-          key: { fig: "Enough for markets", tag: "Cards for big spends", text: "Use cards for hotels and larger purchases, and keep enough NT dollars for night markets, small eateries and temples.", tone: "teal" },
+          key: { fig: "Cash for markets", tag: "Cards for big spends", text: "Use cards for hotels and larger purchases, and keep enough NT dollars for night markets, small eateries and temples.", tone: "teal" },
           p: [
             "Split it: use <b>cards for hotels and larger purchases</b>, and keep <b>enough NT dollars</b> for the day's night markets, small eateries and temples. An <b>EasyCard</b> covers transit and convenience-store snacks, so you rarely need coins.",
             "For the wider picture, see the <a href='/taiwan'>Taiwan money guide</a>."

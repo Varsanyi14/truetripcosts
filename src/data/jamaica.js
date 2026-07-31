@@ -397,7 +397,7 @@ export default {
         {
           h: "How and when to file it",
           icon: "qr",
-          key: { fig: "Up to 30 days ahead", tag: "Before you fly", text: "Complete the C5 online up to 30 days before travel, with your passport, flight and where you are staying. Save the QR code. You cannot do it months in advance.", tone: "teal" },
+          key: { fig: "30 days ahead", tag: "Before you fly", text: "Complete the C5 online up to 30 days before travel, with your passport, flight and where you are staying. Save the QR code. You cannot do it months in advance.", tone: "teal" },
           p: [
             "You can file the C5 from <b>up to 30 days before</b> travel, not months ahead. It asks for your <b>passport details, flight, and where you are staying</b>, so have your booking to hand, and each traveler needs their <b>own</b> submission. Save or screenshot the <b>QR code</b> it gives you."
           ],

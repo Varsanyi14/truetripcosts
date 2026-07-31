@@ -268,7 +268,7 @@ export default {
         {
           h: "The cheap ways: jitneys and the water taxi",
           icon: "ticket",
-          key: { fig: "About 1.25 to 1.50", tag: "The jitney bus", text: "Privately run buses cover the Bay Street corridor and Cable Beach for around a dollar and a half, exact change only.", tone: "teal" },
+          key: { fig: "1.25 to 1.50", tag: "The jitney bus", text: "Privately run buses cover the Bay Street corridor and Cable Beach for around a dollar and a half, exact change only.", tone: "teal" },
           p: [
             "The <b>jitneys</b> are Nassau's privately run buses, and they are the local way to move: roughly <b>1.25 to 1.50 dollars</b> a ride on the main downtown and Cable Beach routes, <b>exact change required</b>, and you <b>pay as you get off</b> rather than when you board. They run roughly from early morning to early evening, and you wave to stop one rather than wait at a marked stop. They do not serve the airport.",
             "Between Nassau and Paradise Island, the <b>water taxi</b> is both cheaper and nicer than a cab: about <b>7 dollars</b> a person for a ten minute crossing, leaving from Woodes Rogers Wharf near the cruise port. It is the best value ride in the city.",

@@ -188,7 +188,7 @@ export default {
         {
           h: "Card-friendly, and it is koruna",
           icon: "phoneok",
-          key: { fig: "Koruna, not euros", tag: "Contactless common", text: "Czechia is card-friendly, especially in Prague. The currency is the koruna, not the euro, so do not pay in euros.", tone: "teal" },
+          key: { fig: "Koruna", tag: "Contactless common", text: "Czechia is card-friendly, especially in Prague. The currency is the koruna, not the euro, so do not pay in euros.", tone: "teal" },
           p: [
             "Czechia is <b>card-friendly</b>, especially in <b>Prague</b>, where <b>contactless</b>, Apple Pay and Google Pay work in shops, restaurants and on transit, and <b>Visa and Mastercard</b> are widely accepted.",
             "The currency is the <b>Czech koruna</b>, <b>not the euro</b>. Some tourist spots quote or accept euros, but at a <b>poor rate</b>, so pay in <b>koruna</b>. Keep <b>some koruna cash</b> for <b>small shops, pubs outside the center, markets and small towns</b>."

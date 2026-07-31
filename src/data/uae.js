@@ -106,7 +106,7 @@ export default {
         {
           h: "Close to fully cashless",
           icon: "card",
-          key: { fig: "Tap for nearly all of it", tag: "Cards and phone wallets", text: "Taxis, the metro, malls, restaurants and hotels all take cards, and Apple Pay and Google Pay are widely accepted.", tone: "teal" },
+          key: { fig: "Near cashless", tag: "Cards and phone wallets", text: "Taxis, the metro, malls, restaurants and hotels all take cards, and Apple Pay and Google Pay are widely accepted.", tone: "teal" },
           p: [
             "Dubai and Abu Dhabi are among the most cashless places you will visit. A <b>no-foreign-fee Visa or Mastercard</b>, plus <b>Apple Pay or Google Pay</b> on your phone, will cover taxis, the Dubai Metro, malls, supermarkets, restaurants, hotels and attractions. Contactless is the norm rather than the exception, and terminals are everywhere.",
             "Amex acceptance is decent at hotels and larger retailers but thinner at small independents, so do not rely on it as your only card. Bring a backup card and keep it separate from the first."
@@ -236,7 +236,7 @@ export default {
         {
           h: "Metered, regulated, and cheap by US standards",
           icon: "taxi",
-          key: { fig: "About 2.19 AED per km", tag: "Adjusted monthly with fuel", text: "Every licensed Dubai taxi runs the same RTA meter formula, so the fare does not depend on the company or your negotiating skills.", tone: "teal" },
+          key: { fig: "2.19 AED a km", tag: "Adjusted monthly with fuel", text: "Every licensed Dubai taxi runs the same RTA meter formula, so the fare does not depend on the company or your negotiating skills.", tone: "teal" },
           p: [
             "Dubai taxis are among the easiest in the world to use. Fares are set by the <b>Roads and Transport Authority</b>, the meter is always used, and <b>there is no haggling</b>. Flag one on the street, from a hotel rank or at a mall entrance and the same rate applies whichever company owns the car.",
             "The distance rate sits at roughly <b>2.19 dirhams a kilometre</b>, but treat that as a band rather than a fixed number: the RTA <b>revises it monthly in line with fuel prices</b>, so it drifts within a few fils either way. A 10 kilometre run across town typically lands somewhere around 35 dirhams, or about 10 dollars.",
