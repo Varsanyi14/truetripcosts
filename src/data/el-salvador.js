@@ -80,7 +80,7 @@ export default {
         "You do <b>not</b> need to buy any foreign currency, or set up a Bitcoin wallet, or download anything to pay for things. Dollars work."
       ],
       cta: { label: "See no-fee card options", tag: "earn", href: "#" } },
-    { sym: "plane", when: "On arrival",
+    { sym: "plane", when: "At the airport",
       bullets: [
         "At San Salvador airport follow signs for <b>Extranjeros</b>. Have your passport and onward ticket ready; there are no forms to fill in.",
         "Skip the airport currency desk entirely. There is nothing to change.",
@@ -88,7 +88,7 @@ export default {
         "Pre-book your ride or use <b>Uber</b>, which operates in the capital. Agree any taxi fare before the door closes."
       ],
       cta: null },
-    { sym: "receipt", when: "While you are there",
+    { sym: "bowl", when: "Day to day",
       bullets: [
         `<b>Read the bill before you tip.</b> Mid-range and better restaurants frequently print a <b>${F.propina} propina</b> or <b>propina sugerida</b> as a line item. Tip again without noticing and you have paid roughly 20%.`,
         `<b>${F.iva} IVA</b> is normally already inside the displayed price, so a menu or shelf price is usually what you pay.`,
@@ -96,14 +96,12 @@ export default {
         "Tip in <b>cash</b>, always, even when you pay the bill by card."
       ],
       cta: null },
-    { sym: "shield", when: "Staying sensible",
+    { sym: "usd", when: "A golden rule",
       bullets: [
-        `<b>${F.emergency}</b> is the emergency number, exactly as at home, though operators generally speak Spanish.`,
-        "<b>POLITUR</b>, the tourist police, patrol 19 tourist areas and are the people to ask about local conditions.",
-        "The US State Department rates El Salvador <b>" + F.advisory + "</b>, its lowest advisory tier. Even so, US government staff there are barred from using public buses and from intercity travel after dark, which is a useful signal about buses and night driving.",
-        "Use ride-hailing or a hotel-arranged car rather than hailing on the street, and avoid driving at night or on unpaved roads."
+        "<b>You are already in dollars, so the rule here is about denominations, not exchange.</b> Ones, fives and tens are what actually spend. A fifty is close to unusable outside a bank or a large supermarket.",
+        `<b>Read the check before you tip.</b> The ${F.propina} propina is frequently already printed on it, and adding a second one takes you to roughly 20% without meaning to.`
       ],
-      cta: null }
+            cta: null }
   ],
 
   cash: {
@@ -221,6 +219,82 @@ export default {
   },
 
   spokes: [
+    {
+      slug: "visa-and-tourist-card",
+      topic: "visas",
+      live: true,
+      glance: [
+        { k: "Visa", v: "Not required for US citizens" },
+        { k: "Tourist card", v: "Abolished in 2025, entry is free" },
+        { k: "Length of stay", v: "90 days, shared with 3 countries" },
+        { k: "Still worth packing", v: "$12, as insurance" }
+      ],
+      title: "Do you need a visa or tourist card for El Salvador? (2026) | True Trip Costs",
+      description: "El Salvador abolished the $12 tourist card in 2025, so entry is free for US citizens, though official US pages were slow to say so. What the booth actually asks for, and why your 90 days are shared with Guatemala, Honduras and Nicaragua. Checked July 2026.",
+      h1: "Do you need a visa or a tourist card for El Salvador?",
+      lede: "The short answer is no to both, and the second half of that is recent enough that most of the internet, including some official pages, still says otherwise.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-31",
+      answer: `<b>No visa</b>, and <b>no tourist card fee</b>. US citizens enter for tourism or business for up to <b>90 days</b> on a passport, with no form to fill in. The <b>${F.entryCard} Tarjeta Migratoria de Ingreso</b>, which nearly every guide still tells you to budget for, was <b>abolished in April 2025</b>: El Salvador's Legislative Assembly struck every article of the migration law that created it. Two things to understand anyway. Official US pages were <b>slow to reflect the change</b>, so carry <b>${F.entryCard}</b> in small bills as cheap insurance against a booth working from habit. And your 90 days are not really El Salvador's: under the <b>CA-4 agreement</b> they are <b>shared with Guatemala, Honduras and Nicaragua</b>, which catches people doing a Central America loop.`,
+      sections: [
+        {
+          h: "The fee that no longer exists",
+          icon: "receipt",
+          key: { fig: "Abolished", tag: "The 12 dollar entry card", text: "El Salvador's Legislative Assembly removed the Tarjeta Migratoria de Ingreso from the migration law in April 2025, including the fee itself. Entry is free.", tone: "teal" },
+          p: [
+            `For years, entering El Salvador meant buying a <b>Tarjeta Migratoria de Ingreso</b>, commonly called the tourist card, for <b>${F.entryCard}</b> in cash at the border. It was not a visa, just a fee, and it applied to Americans, Canadians, Mexicans, Brazilians and a long list of others.`,
+            "In April 2025 the <b>Legislative Assembly</b> reformed the <b>Ley Especial de Migracion y de Extranjeria</b> and derogated the card entirely, striking the fee from article 325 along with the supporting references elsewhere in the law. The request came from the director general of migration himself, whose argument was blunt: telling people they have to pay to enter the country is unacceptable, particularly when Salvadorans pay nothing to enter the United States or Mexico. The stated aim was to remove a barrier and encourage tourism.",
+            "So there is nothing to buy on arrival. You will not be issued a card, and the officer will simply stamp your passport. This is the single most common thing published about El Salvador entry that is now wrong."
+          ]
+        },
+        {
+          h: "Why so many sources still say twelve dollars",
+          icon: "alert",
+          key: { fig: "Carry $12", tag: "Cheap insurance anyway", text: "Official US pages continued to describe the fee well after it was abolished. The cost of carrying the cash is nothing; the cost of arguing at a booth is your afternoon.", tone: "amber" },
+          p: [
+            "This is worth being specific about, because it is a useful lesson in how travel information decays. The <b>US Embassy in El Salvador's own travel-requirements page</b> was still instructing US citizens to obtain a tourist card for ${F.entryCard} at the port of entry months after the Salvadoran legislature had abolished it. Commercial visa sites, which largely copy from official pages, carried the old figure too, and many still do.",
+            "We are not pointing that out to score a point. Official sources are still the right place to check, and we link them below. But an official page can be out of date, and where a foreign legislature has changed its own law, the legislature's record is the better authority than another country's summary of it.",
+            `The practical upshot is not to argue. Put <b>${F.entryCard}</b> in small bills in your passport and forget about it. If an officer asks, paying twelve dollars costs less than a twenty-minute dispute at a booth after a long flight, and if nobody asks, which is what should happen, you have lost nothing.`
+          ]
+        },
+        {
+          h: "Your 90 days are shared with three other countries",
+          icon: "calendar",
+          key: { fig: "90 days", tag: "Pooled across four countries", text: "The CA-4 agreement treats El Salvador, Guatemala, Honduras and Nicaragua as one zone for your 90 days. Crossing between them does not reset the clock.", tone: "amber" },
+          p: [
+            "El Salvador belongs to the <b>Central America-4 Border Control Agreement</b>, alongside <b>Guatemala, Honduras and Nicaragua</b>. For a visitor this has one important consequence: your <b>90 days apply to all four countries combined</b>, not to each in turn. Hopping from El Salvador into Guatemala and back does not give you a fresh 90 days, and the clock starts at your <b>first entry into the CA-4 zone</b>, wherever that was.",
+            "The officer at that first entry point sets the length of stay you are granted, which may be the full 90 days or less. That matters if you are doing the classic Central America overland loop, because people plan it assuming each border resets the count. To genuinely reset, you have to <b>leave the CA-4 region</b>, for example to Costa Rica, Belize or Mexico, and come back.",
+            "If you need longer, extensions are requested from the <b>Direccion General de Migracion y Extranjeria</b> in San Salvador, and the application has to be filed <b>before</b> your existing permission expires rather than afterward. No holiday runs into this, but a longer stay or a remote-work trip might."
+          ]
+        },
+        {
+          h: "What the booth actually wants",
+          icon: "passport",
+          key: { fig: "3 things", tag: "Passport, onward ticket, address", text: "There is no arrival form to complete. Have your passport, proof of onward travel and your accommodation details ready, and be able to show you can fund the stay if asked.", tone: "teal" },
+          p: [
+            "Follow the signs for <b>Extranjeros</b>. There are <b>no landing cards or forms</b> to fill in. The officer will ask the purpose of your visit and how long you are staying, then stamp you in. Have three things to hand: your <b>passport</b>, <b>proof of onward or return travel</b>, and the <b>address of your first night's accommodation</b>. You may also be asked to show <b>sufficient funds</b> for the stay, and entry can be refused for lack of either that or the documents needed for your next destination.",
+            "On <b>passport validity</b>, sources conflict and it is worth knowing which to trust. Commercial visa sites commonly state a six-month requirement. The <b>US Embassy in El Salvador states there is no requirement</b> for a US passport to be valid for any particular period, nor to have a specific number of blank pages. We would still not travel on a passport with a couple of weeks left, because onward countries and airlines have their own rules, but the six-month figure appears to be imported rather than Salvadoran.",
+            "One carve-out worth knowing, given how many Salvadoran-Americans travel here: if your <b>US passport lists El Salvador as your place of birth</b>, the embassy's guidance is that neither the tourist card nor the proof-of-funds question applies to you. Show the passport and go through.",
+            "Finally, there is <b>no departure tax to pay at the airport</b>. It is included in your airline ticket, so nobody should be asking you for cash on the way out."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for El Salvador?", a: "No. US citizens enter visa-free for tourism or business for up to 90 days, with no form to complete on arrival. You need a passport, proof of onward or return travel, and ideally your first night's address. Proof of sufficient funds can be requested." },
+        { q: "Is there still a $12 tourist card fee for El Salvador?", a: `No. The ${F.entryCard} Tarjeta Migratoria de Ingreso was abolished in April 2025, when El Salvador's Legislative Assembly reformed the Ley Especial de Migracion y de Extranjeria and struck every article covering it, including the fee in article 325. Entry is free. Because several official and commercial pages were slow to update, carrying ${F.entryCard} in small bills is cheap insurance rather than a necessity.` },
+        { q: "How long can I stay in El Salvador?", a: "Up to 90 days, but the important detail is that those days are shared. Under the CA-4 agreement the same 90 days cover El Salvador, Guatemala, Honduras and Nicaragua combined, and the clock starts when you first enter any of the four. Crossing between them does not reset it; you have to leave the CA-4 region entirely for that." },
+        { q: "Does my passport need six months of validity for El Salvador?", a: "Sources disagree. Commercial visa sites often say six months, but the US Embassy in El Salvador states there is no specific validity requirement for a US passport, and no requirement for a set number of blank pages. Airlines and any onward country may still impose their own rules, so travelling with very little validity left is unwise regardless." },
+        { q: "Is there a departure tax when leaving El Salvador?", a: "Not one you pay separately. Departure tax is included in the price of your airline ticket, so there should be no cash demand at the airport on your way out." }
+      ],
+      sources: {
+        links: [
+          { label: "Asamblea Legislativa de El Salvador: the April 2025 reform that removed the Tarjeta Migratoria de Ingreso and its fee from the migration law", url: "https://www.asamblea.gob.sv/node/13554", type: "gov" },
+          { label: "US Embassy in El Salvador: entry requirements for US citizens, including the passport-validity position and the place-of-birth exemption", url: "https://sv.usembassy.gov/services/travel-requirements/", type: "gov" },
+          { label: "US State Department: El Salvador country information and current travel advisory", url: "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/el-salvador-travel-advisory.html", type: "gov" }
+        ],
+        judgment: `The central claim on this page is primary-sourced and we are confident in it: the Legislative Assembly's own published record shows it reformed the Ley Especial de Migracion y de Extranjeria in April 2025, derogating the articles covering the Tarjeta Migratoria de Ingreso including the ${F.entryCard} charge in article 325, at the request of the director general of migration. Salvadoran press and legal summaries of the reform agree. Set against that, the US Embassy's travel-requirements page still described the fee as payable months afterward, and many commercial visa services still do. We treat the legislature's record as authoritative on El Salvador's own law, and we tell you to carry the cash anyway because enforcement habit at a booth is not something a statute fixes overnight. The CA-4 pooling of 90 days is consistently documented and is the detail most likely to catch someone on an overland loop. On passport validity the sources genuinely conflict, and we quote the US Embassy's explicit statement that there is no set requirement rather than the six-month figure that circulates commercially, while still advising against cutting it fine. One source we found claimed a 180-day stay for US citizens; that is an outlier against the CA-4 framework and every other source, so we have not used it. Note also that this same law was amended again in March 2026 on investor residency and family reunification, so it is an actively changing statute: check the official pages before you fly rather than relying on this line. Overstay penalties are reported but we could not confirm the amounts on a primary source, so we have not published a figure. Checked July 2026.`
+      }
+    },
     {
       slug: "cash-or-card",
       topic: "cash",
@@ -380,7 +454,7 @@ export default {
       sections: [
         {
           h: "Why the app matters more here",
-          icon: "phone",
+          icon: "phoneok",
           key: { fig: "No meters", tag: "In Salvadoran taxis", text: "Street taxis do not run meters, so the fare is whatever you agree. An app replaces a negotiation you cannot benchmark with a price you can see.", tone: "amber" },
           p: [
             "Salvadoran taxis do not generally have <b>meters</b>. That is not presented as a trick; it is simply how they work, and locals negotiate as a matter of course. The difficulty for a visitor is that negotiating requires knowing roughly what a ride should cost, and on your first day you do not. The gap between what a local pays and what a newly arrived tourist agrees to can be considerable, without anyone doing anything improper.",

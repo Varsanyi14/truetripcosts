@@ -74,8 +74,19 @@ export default {
   // ---- emergency: already single-source, the number is interpolated in prose ----
   emergency: { medical: "112", note: "112 reaches police, ambulance and fire from any phone.", checked: "Jul 2026", checkedISO: "2026-07-03" },
 
-  // ---- expose the facts object so the shape stays consistent across guides ----
-  facts: F,
+  // ---- facts: the CARD ARRAY rendered in the currency section ----
+  // Shape is { sym, k, v } per card. This is NOT the F object above.
+  // Setting `facts: F` breaks the build with "c.facts.map is not a function",
+  // because the component calls .map() on it. Keep F as a module-local const and
+  // interpolate from it; `facts` is separate and is always an array.
+  // `sym` must be a key that exists in src/components/Symbol.astro. An unknown
+  // name is NOT an error: Symbol.astro does `S[name] || ''`, so a typo renders
+  // nothing at all, silently, and the build and the content gate both pass.
+  // Check the name against Symbol.astro before you invent one.
+  facts: [
+    { sym: "card", k: "Short label for the card", v: "A sentence or three on this aspect of paying in the country." },
+    { sym: "atm", k: "Another label", v: "Same shape. Three to five cards is typical across the guides." },
+  ],
 
   // ---- keyFacts: OPTIONAL. Only for the high-churn fees and taxes that move on
   //      political timelines (arrival fees, city accommodation levies, ETA-style
