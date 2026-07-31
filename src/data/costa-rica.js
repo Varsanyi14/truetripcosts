@@ -363,8 +363,8 @@ export default {
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 2 },
   hook: "Dollars work almost everywhere, but paying in colones quietly saves you money.",
 
-  title: "Money in Costa Rica (2026): Dollars vs Colones, Cards, ATMs and Tipping | True Trip Costs",
-  description: "How to handle money in Costa Rica as a US traveler in 2026: when to pay in US dollars versus colones, fee-free bank ATMs, the 13% VAT and 10% service charge already on your bill, light tipping, and why you barely need to exchange currency. Checked July 2026.",
+  title: "Costa Rica currency: dollars or colones? (2026)",
+  description: "Pay in colones rather than dollars, use fee-free bank ATMs, and skip the tip: a 10% service charge is already on your bill. Checked 2026.",
 
   h1: "Money in Costa Rica, sorted.",
   lede: "A calm, current plan for the money side of your trip: the dollar works almost everywhere here, but knowing when to reach for colones instead is what keeps a little extra in your pocket.",

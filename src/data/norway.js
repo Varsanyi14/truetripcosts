@@ -23,8 +23,8 @@ export default {
   hook: "Card-friendly and nearly cashless, but it is kroner not euros, everything is expensive, and a new opt-in visitor's tax started in summer 2026 in places like Lofoten and Bergen.",
   aliases: ["norway", "oslo", "bergen", "tromso", "lofoten", "stavanger", "alesund", "geiranger", "fjords", "trondheim", "norwegian krone", "nok", "krone", "kroner"],
 
-  title: "Money in Norway (2026): Cards, Cash, Kroner, VAT and the New Visitor's Tax | True Trip Costs",
-  description: "How to handle money in Norway as a US traveler in 2026: near-universal cards and contactless, why it is kroner and not euros, the dollar-conversion trap, bank ATMs, the 25% VAT you can partly claim back, light tipping, high prices, and the new opt-in visitor's contribution of up to 3% that started in summer 2026. Checked July 2026.",
+  title: "Can you use euros in Norway? Money in 2026",
+  description: "No, Norway runs on kroner, and you barely need cash: cards work nearly everywhere. Prices are high, and a new visitor's tax began in 2026. Checked 2026.",
 
   h1: "Money in Norway, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your card covers almost everything, why it is kroner and not euros, how little you tip, the shopping tax you can claim back, and the new visitor's contribution that some towns started charging in summer 2026.",

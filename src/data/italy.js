@@ -18,8 +18,8 @@ export default {
   rentalCommon: true,
   region: "Europe",
   signals: { cardFriendliness: 4, cashNeed: 2, taxRisk: 3, atmRisk: 4 },
-  title: "Money in Italy (2026): Cards, Cash, ATMs, the Coperto, Tipping and Tourist Taxes | True Trip Costs",
-  description: "How to handle money in Italy as a US traveler in 2026: cards work almost everywhere, the dollar conversion trap, bank Bancomats vs Euronet ATMs, the coperto cover charge, light tipping, and the tourist taxes in Rome, Florence and Venice plus the Venice access fee. Checked July 2026.",
+  title: "Italy currency and money in 2026: cards, cash, ATMs",
+  description: "Italy uses the euro and cards work almost everywhere. Choose euros over dollars, favour bank Bancomats over Euronet, and expect a coperto. Checked 2026.",
   h1: "Money in Italy, sorted.",
   lede: "A calm, current plan for the money side of your trip: what you can tap, the little things you still want euros for, and the small rules that trip up first-timers.",
   hero: {

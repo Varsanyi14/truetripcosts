@@ -22,8 +22,8 @@ export default {
   hook: "Card-first and nearly cashless, with a flat 25% tax already in every price; the krone is tied to the euro but you still pay in kroner, not euros.",
   aliases: ["denmark", "copenhagen", "kobenhavn", "aarhus", "odense", "aalborg", "nyhavn", "billund", "danish krone", "dkk", "krone", "kroner"],
 
-  title: "Money in Denmark (2026): Cards, Cash, Kroner, the Euro Peg and 25% VAT | True Trip Costs",
-  description: "How to handle money in Denmark as a US traveler in 2026: near-universal cards and contactless, why the krone is pegged to the euro but you still pay in kroner, the dollar-conversion trap, bank ATMs, the flat 25% VAT you can partly claim back, light tipping, high prices, and the tourist-tax picture. Checked July 2026.",
+  title: "Can you use euros in Denmark? Money in 2026",
+  description: "No, you pay in kroner, though the krone is pegged to the euro. Cards work nearly everywhere and 25% VAT is already in every price. Checked 2026.",
 
   h1: "Money in Denmark, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your card covers almost everything, why the krone is tied to the euro yet you still pay in kroner, how little you tip, the shopping tax you can claim back, and where a tourist charge might turn up.",

@@ -20,8 +20,8 @@ export default {
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 3 },
   hook: "One of Europe's most cashless countries, with a catch: not every card type works everywhere.",
 
-  title: "Money in the Netherlands (2026): Cards, Cash, ATMs and Amsterdam's Tourist Tax | True Trip Costs",
-  description: "How to handle money in the Netherlands as a US traveler in 2026: why a debit card works better than a credit card, fee-free Geldmaat ATMs, light round-up tipping, and Amsterdam's percentage-based tourist tax on top of a new 21% VAT on hotel rooms. Checked July 2026.",
+  title: "Tipping in the Netherlands, plus cards and cash",
+  description: "Tipping is light: round up rather than add a percentage. A debit card often works where credit will not, and Geldmaat ATMs are fee-free. Checked 2026.",
 
   h1: "Money in the Netherlands, sorted.",
   lede: "A calm, current plan for the money side of your trip: why this is one of the most cashless countries in Europe, the one card quirk that catches US travelers out, and the tax change that just made Amsterdam hotel rooms noticeably pricier.",

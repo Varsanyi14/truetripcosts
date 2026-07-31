@@ -13,8 +13,8 @@ export default {
   hook: "Cards work in the cities, but bazaars, taxis and street food still want lira, and the lira moves fast.",
   aliases: ["turkey", "turkiye", "istanbul", "cappadocia", "antalya", "izmir", "ankara", "bodrum", "fethiye", "turkish lira", "try", "lira", "turkish"],
 
-  title: "Money in Turkey (2026): Cards, Cash, Lira and Tipping | True Trip Costs",
-  description: "How to handle money in Turkey as a US traveler in 2026: cards and tap work in cities but cash still rules the bazaars, why the lira moves fast with inflation, paying in lira not dollars, which ATMs to use, the accommodation tax, VAT that's already in the price, and how much to tip. Checked July 2026.",
+  title: "Turkey money 2026: paying by card, cash and lira",
+  description: "Cards and tap work in the cities, but bazaars, taxis and street food want lira. Always pay in lira rather than dollars, since it moves fast. Checked 2026.",
 
   h1: "Money in Turkey, sorted.",
   lede: "A calm, current plan for the money side of your trip: where cards work and where you still need cash, why the lira moves so fast, and the small tips (bahsis) that smooth the way.",

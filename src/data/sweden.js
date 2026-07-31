@@ -22,8 +22,8 @@ export default {
   hook: "One of the most cashless places on earth, so your card is king, but it is kronor not euros, plenty of spots take no cash at all, and prices run high.",
   aliases: ["sweden", "stockholm", "gothenburg", "goteborg", "malmo", "uppsala", "gamla stan", "lapland", "kiruna", "swedish krona", "sek", "krona", "kronor"],
 
-  title: "Money in Sweden (2026): Cards, Cashless Shops, Kronor and VAT | True Trip Costs",
-  description: "How to handle money in Sweden as a US traveler in 2026: one of the world's most cashless countries, why some venues take no cash at all, why it is kronor and not euros, the dollar-conversion trap, bank ATMs, the 25% VAT you can partly claim back, light tipping, high prices, and no tourist tax. Checked July 2026.",
+  title: "Sweden money 2026: kronor, cards and going cashless",
+  description: "Sweden uses kronor, not euros, and is close to cashless: some places take no cash at all. Cards work everywhere and 25% VAT is in the price. Checked 2026.",
 
   h1: "Money in Sweden, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your card covers everything (and cash almost nothing), why it is kronor and not euros, how little you tip, the shopping tax you can claim back, and why there is no tourist tax to worry about.",

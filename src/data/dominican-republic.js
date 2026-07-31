@@ -20,8 +20,8 @@ export default {
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 3 },
   hook: "Dollars work in the resort zones, but pesos and a watch for the 28% checkout jump save you money.",
 
-  title: "Money in the Dominican Republic (2026): Dollars vs Pesos, Cards, ATMs and the 28% Bill | True Trip Costs",
-  description: "How to handle money in the Dominican Republic as a US traveler in 2026: when to pay in US dollars versus pesos, the 18% ITBIS tax and 10% service charge that inflate restaurant bills, fee-aware bank ATMs, tipping, and why you need pesos off the resort. Checked July 2026.",
+  title: "Dominican Republic money: pesos, cards, the 28% bill",
+  description: "Dollars work in the resort zones, pesos win outside them. Restaurant bills add 18% ITBIS plus 10% service, so read one before you tip again. Checked 2026.",
 
   h1: "Money in the Dominican Republic, sorted.",
   lede: "A calm, current plan for the money side of your trip: dollars go a long way in the resort zones, but knowing when to reach for pesos, and why your restaurant bill jumps about 28% at checkout, is what keeps your budget honest.",

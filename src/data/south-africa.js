@@ -23,8 +23,8 @@ export default {
   hook: "South Africa is very card-friendly, so you can tap almost everywhere. Keep some cash for tips, petrol attendants and car guards, use bank ATMs carefully, and remember the 15% VAT is refundable on things you take home.",
   aliases: ["south africa", "sa", "cape town", "johannesburg", "joburg", "jozi", "durban", "pretoria", "stellenbosch", "kruger", "garden route", "table mountain", "safari", "rand", "zar", "vat refund", "braai", "bo-kaap", "load shedding"],
 
-  title: "Money in South Africa (2026): Cards, Cash, ATMs, the VAT Refund, Tipping and Load-Shedding | True Trip Costs",
-  description: "How to handle money in South Africa as a US traveler in 2026: near-universal cards and contactless, the cash you still need for tips and petrol attendants, ATM safety, the dollar-conversion trap, the 15% VAT refund on goods, the new ETA, load-shedding, and how tipping works. Checked July 2026.",
+  title: "South Africa money 2026: cards, cash and ATM fees",
+  description: "Tap almost everywhere, but keep cash for tips, petrol attendants and car guards. Use bank ATMs with care, and claim 15% VAT back on goods. Checked 2026.",
 
   h1: "Money in South Africa, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your card covers almost everything, the cash worth keeping for tips and petrol attendants, how to use ATMs safely, the VAT you can claim back on shopping, and the entry rules to check before you fly.",

@@ -23,8 +23,8 @@ export default {
   hook: "About as cashless as travel gets: tap your card almost everywhere, carry a little euro cash as backup, decline dollar conversion, and mind two things: the VAT you can claim back on shopping and the car-rental insurance excess.",
   aliases: ["ireland", "republic of ireland", "eire", "dublin", "galway", "cork", "killarney", "ring of kerry", "cliffs of moher", "euro", "eur", "guinness", "wild atlantic way"],
 
-  title: "Money in Ireland (2026): Cards, Cash, ATMs, the VAT Refund and Car-Rental Insurance | True Trip Costs",
-  description: "How to handle money in Ireland as a US traveler in 2026: near-universal cards and contactless, how little cash you need, fee-free bank ATMs, the dollar-conversion trap, the VAT refund non-EU visitors can claim on shopping, the car-rental insurance catch, and light tipping. Checked July 2026.",
+  title: "Do I need cash in Ireland? Cash or card in 2026",
+  description: "Barely any. Ireland is close to cashless, so tap almost everywhere, keep a little euro cash as backup, and decline dollar conversion. Checked 2026.",
 
   h1: "Money in Ireland, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your card covers almost everything, the little cash worth carrying, the VAT you can claim back on shopping, and the one place Ireland can bite your budget, renting a car.",

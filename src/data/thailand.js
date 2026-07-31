@@ -18,8 +18,8 @@ export default {
   insuranceLevel: "medium",
   region: "Asia",
   signals: { cardFriendliness: 2, cashNeed: 4, taxRisk: 2, atmRisk: 5 },
-  title: "Money in Thailand (2026): Cash, Cards, ATMs, the 220 Baht Fee and Tipping | True Trip Costs",
-  description: "How to handle money in Thailand as a US traveler in 2026: cash vs card, the steep ATM fee and how to beat it, the dollar conversion trap, tipping and the ++ service charge, and the tourist VAT refund. Checked July 2026.",
+  title: "Thailand money 2026: cash, cards and the ATM fee",
+  description: "Thai ATMs charge a flat 220 baht per withdrawal, so take out more, less often. Cards work in cities, cash rules markets, and pay in baht. Checked 2026.",
   h1: "Money in Thailand, sorted.",
   lede: "A calm, current plan for the money side of your trip: what you can tap, where you still need baht, and the small rules that trip up first-timers.",
   hero: {

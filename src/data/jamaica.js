@@ -13,8 +13,8 @@ export default {
   hook: "Two currencies, one simple rule: pay in Jamaican dollars or by card, not US dollars, since paying in USD quietly costs you 5 to 10% on the vendor's rate. Keep JMD cash for taxis, jerk stands and tips.",
   aliases: ["jamaica", "montego bay", "mobay", "negril", "ocho rios", "kingston", "port antonio", "jmd", "jamaican dollar", "reggae", "jerk", "blue mountains"],
 
-  title: "Money in Jamaica (2026): JMD vs US Dollars, Cards, ATMs, Taxes and Tipping | True Trip Costs",
-  description: "How to handle money in Jamaica as a US traveler in 2026: the dual-currency trap and why paying in Jamaican dollars beats US dollars, where cards work, modest ATM fees at Scotiabank and NCB, the GCT and room taxes on your bill, the all-inclusive tipping rule, and connectivity. Checked July 2026.",
+  title: "Does Jamaica take US dollars? Money in 2026",
+  description: "They are taken, but cost you 5 to 10% on the vendor's rate. Pay in Jamaican dollars or by card, and keep JMD for taxis. Checked 2026.",
 
   h1: "Money in Jamaica, sorted.",
   lede: "A calm, current plan for the money side of your trip: why paying in Jamaican dollars beats US dollars, where your card works, the cash worth carrying, and the taxes and tipping rules that catch people out.",

@@ -18,8 +18,8 @@ export default {
   rentalCommon: true,
   region: "Europe",
   signals: { cardFriendliness: 4, cashNeed: 2, taxRisk: 3, atmRisk: 4 },
-  title: "Money in Spain (2026): Cards, Cash, ATMs, Tipping and the Tourist Tax | True Trip Costs",
-  description: "How to handle money in Spain as a US traveler in 2026: cards work almost everywhere, the dollar conversion trap, bank ATMs vs Euronet, light tipping, the Catalonia and Balearic tourist taxes including Barcelona's 2026 rise, and the IVA refund with no minimum spend. Checked July 2026.",
+  title: "Spain money 2026: cards, tipping and the IVA refund",
+  description: "The IVA refund has no minimum spend, so small purchases qualify. Cards work almost everywhere, choose euros over dollars, and use bank ATMs. Checked 2026.",
   h1: "Money in Spain, sorted.",
   lede: "A calm, current plan for the money side of your trip: what you can tap, the little things you still want euros for, and the small rules that trip up first-timers.",
   hero: {

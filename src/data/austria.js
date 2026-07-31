@@ -21,8 +21,8 @@ export default {
   hook: "Cards work fine, but Austria still runs on more cash than most of Western Europe.",
   aliases: ["vienna", "wien", "salzburg", "innsbruck", "hallstatt", "graz", "linz", "tyrol", "tirol", "austrian", "euro", "eur", "alps", "alpine"],
 
-  title: "Money in Austria (2026): Cards, Cash, Euros and Tipping | True Trip Costs",
-  description: "How to handle money in Austria as a US traveler in 2026: cards and tap work in most places but cash is still common, why to pay in euros not dollars, how little you tip, which ATMs to use, the per-night tourist tax, VAT that's already in the price, and how to claim it back. Checked July 2026.",
+  title: "Austria currency in 2026: euros, cards and cash",
+  description: "Austria uses the euro and cards work in most places, though cash is still common. Choose euros over dollars and expect a nightly tourist tax. Checked 2026.",
 
   h1: "Money in Austria, sorted.",
   lede: "A calm, current plan for the money side of your trip: why you should carry a bit more cash than elsewhere in Europe, how modest the tipping is, and the small nightly tourist tax added at your hotel.",

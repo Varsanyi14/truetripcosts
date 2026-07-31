@@ -100,8 +100,8 @@ export default {
   hook: "The Bahamian dollar is pegged 1 to 1 with the US dollar, so USD and local notes are used interchangeably at par, no exchange needed. Tap your card in Nassau and the resorts, and carry small bills for taxis, the straw market, the Out Islands and tips.",
   aliases: ["bahamas", "the bahamas", "nassau", "paradise island", "freeport", "grand bahama", "exuma", "exumas", "eleuthera", "harbour island", "abaco", "bimini", "atlantis", "baha mar", "bsd", "bahamian dollar", "junkanoo"],
 
-  title: "Money in the Bahamas (2026): US Dollars, Cards, ATMs, the VAT Refund and Tipping | True Trip Costs",
-  description: "How to handle money in the Bahamas as a US traveler in 2026: the Bahamian dollar's 1 to 1 peg with the US dollar and how both are used at par, where cards work, ATM fees, why the Out Islands and straw markets need cash, the 10% VAT and the visitor VAT refund on shopping, US-style tipping, and connectivity. Checked July 2026.",
+  title: "Can you use US dollars in the Bahamas? Money 2026",
+  description: "Yes, at par: the Bahamian dollar is pegged 1 to 1, so nothing to exchange. Tap in Nassau, and keep small bills for taxis and the Out Islands. Checked 2026.",
 
   h1: "Money in the Bahamas, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your US dollars work at par, where your card covers you, the cash worth carrying for the Out Islands and markets, and the taxes and tipping rules that catch people out.",

@@ -20,8 +20,8 @@ export default {
   rentalCommon: true,
   region: "Americas",
   signals: { cardFriendliness: 2, cashNeed: 4, taxRisk: 3, atmRisk: 4 },
-  title: "Money in Mexico (2026): Cash, Cards, ATMs, Tipping and VISITAX | True Trip Costs",
-  description: "How to handle money in Mexico as a US traveler in 2026: cash vs card, dodging the dollar conversion trap, the best ATMs, tipping, card surcharges, and VISITAX for Cancun and Tulum. Checked July 2026.",
+  title: "Mexico money 2026: cash, cards, ATMs and VISITAX",
+  description: "Cards work widely, but always choose pesos over dollars and use bank ATMs. Check whether VISITAX applies to you in Cancun or Tulum. Checked 2026.",
   h1: "Money in Mexico, sorted.",
   lede: "A calm, current plan for the money side of your trip: what to put on a card, where you still need pesos, and the small rules that trip up first-timers.",
   hero: {

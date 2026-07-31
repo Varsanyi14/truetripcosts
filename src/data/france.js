@@ -19,8 +19,8 @@ export default {
   rentalCommon: true,
   region: "Europe",
   signals: { cardFriendliness: 4, cashNeed: 2, taxRisk: 3, atmRisk: 4 },
-  title: "Money in France (2026): Cash, Cards, ATMs, Tipping and the VAT Refund | True Trip Costs",
-  description: "How to handle money in France as a US traveler in 2026: cash vs card, which ATMs to use and which to avoid, the dollar conversion trap, tipping with service compris, the tourist tax, and the VAT refund. Checked July 2026.",
+  title: "France money 2026: ATMs, cards, cash and tipping",
+  description: "Cards work almost everywhere. Use bank ATMs rather than Euronet, choose euros over dollars, and tip lightly: service is included. Checked 2026.",
   h1: "Money in France, sorted.",
   lede: "A calm, current plan for the money side of your trip: what to tap, the little cash you still want, and the small rules that trip up first-timers.",
   hero: {
