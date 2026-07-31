@@ -25,8 +25,10 @@ export const affiliate = {
     china: "https://lotusflareinc.pxf.io/c/7445152/3248343/34279?u=https%3A%2F%2Fwww.nomadesim.com%2Fchina-eSIM",
     indonesia: "https://lotusflareinc.pxf.io/c/7445152/3248343/34279?u=https%3A%2F%2Fwww.nomadesim.com%2Findonesia-eSIM",
     "costa-rica": "https://lotusflareinc.pxf.io/c/7445152/3248343/34279?u=https%3A%2F%2Fwww.nomadesim.com%2Fcosta-rica-eSIM",
+    germany: "https://lotusflareinc.pxf.io/c/7445152/3248343/34279?u=https%3A%2F%2Fwww.nomadesim.com%2Fgermany-eSIM",
+    australia: "https://lotusflareinc.pxf.io/c/7445152/3248343/34279?u=https%3A%2F%2Fwww.nomadesim.com%2Faustralia-eSIM",
+    japan: "https://lotusflareinc.pxf.io/c/7445152/3248343/34279?u=https%3A%2F%2Fwww.nomadesim.com%2Fjapan-eSIM",
     // vietnam: "https://your-esim-deep-link",
-    // japan: "https://your-esim-deep-link",
   },
 
   // Passport and visa expediter (RushMyPassport / RushMyTravelVisa, via Rakuten, MID 24807).
