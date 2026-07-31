@@ -144,5 +144,191 @@ export default {
         note: "Good to know: the Mekong runs the length of the country" }
     ],
     pride: "Lao people are gentle, unhurried and quick to smile, proud of their Buddhist faith, their handwoven silk and a way of life the country calls sabai, an easy contentment. Return a nop, take things slowly, show respect at the temples, and Laos opens up warmly."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Lao kip (LAK)" },
+        { k: "Cards", v: "Rare outside upscale hotels" },
+        { k: "Carry", v: "Kip, in small notes" },
+        { k: "ATMs", v: "Low limits, a fee each time" }
+      ],
+      live: true,
+      topic: "cash",
+      caution: "medium",
+      title: "Do I need cash in Laos, or can I use cards? (2026) | True Trip Costs",
+      description: "Cash, every day. Laos runs on kip, cards work only at bigger hotels and a few upscale spots, and ATM limits are low, so plan several withdrawals. Checked July 2026.",
+      h1: "Do I need cash in Laos, or can I use cards?",
+      lede: "Cash, and plenty of it. Laos is the most cash-dependent country we cover, and the friction is not acceptance, it is the ATM: low limits and a fee every time. A little planning fixes it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "Cash, almost entirely, and the cash is the <b>Lao kip</b>. Cards work only at <b>bigger international hotels and a few upscale restaurants and shops</b> in Vientiane and Luang Prabang, often with a surcharge, so treat a card as a backup rather than your way of paying. Pull kip from a <b>bank ATM</b> and expect to do it more than once, because <b>per-withdrawal limits are low</b> and each pull carries a fee. Bring a <b>fee-friendly debit card</b>, keep <b>small kip notes</b> for stalls and tuk-tuks, carry a little <b>clean US dollars or Thai baht</b> as backup, and always choose <b>kip</b> on any screen.",
+      sections: [
+        {
+          h: "Cash first, and the cash is kip",
+          icon: "cash",
+          key: { fig: "Small notes", tag: "The biggest note is small", text: "The largest kip note is worth under five dollars, and vendors often cannot change it. Keep a stack of smaller notes for street food, markets and tuk-tuks.", tone: "teal" },
+          p: [
+            "Street food, markets, tuk-tuks, guesthouses, small shops and almost everything outside a handful of city addresses run on <b>kip in hand</b>. Cards are accepted at <b>bigger international hotels</b> and some upscale restaurants and shops in <b>Vientiane and Luang Prabang</b>, frequently with a <b>2 to 3 percent surcharge</b>, and Apple Pay and Google Pay are not widely supported. Plan your trip as a cash trip and you will not be caught out.",
+            "Because the kip is a <b>high-denomination currency</b>, the largest note is worth under five dollars and you will carry thick stacks. Keep <b>small notes</b> deliberately: a vendor often cannot break the biggest one, and having exact-ish change is the difference between a smooth transaction and a stalled one. One more thing to plan for: the kip is a <b>closed currency</b> you cannot exchange abroad, so spend it down before you fly out."
+          ]
+        },
+        {
+          h: "ATMs: low limits and a fee every time",
+          icon: "atm",
+          key: { fig: "1 to 2 million", tag: "The usual per-pull cap", text: "Most machines cap a withdrawal near 1 to 2 million kip, roughly 45 to 90 dollars, and charge 20,000 to 40,000 kip on top of your bank's fee. Several small pulls get expensive.", tone: "amber" },
+          p: [
+            "This is the real friction. Bank ATMs in the cities and tourist towns take Visa and Mastercard and dispense kip, but most cap a single withdrawal near <b>1 to 2 million kip</b>, roughly <b>45 to 90 dollars</b>, and charge <b>20,000 to 40,000 kip</b> each time on top of whatever your own bank adds. Several small withdrawals across a week add up to real money.",
+            "Three ways to soften it. <b>Take the maximum the machine allows</b> rather than what you need today. <b>Step inside a bank branch</b>, where you can often withdraw a larger sum for the same single fee. And carry a <b>debit card that refunds ATM fees</b>, which cancels the charge entirely and is the single most useful thing to sort before you fly. Use machines attached to real banks, in daylight, and take your cash and card promptly, since some machines retrieve them quickly."
+          ]
+        },
+        {
+          h: "Dollars and baht as backup, kip for everything else",
+          icon: "usd",
+          key: { fig: "Choose kip", tag: "Not your home currency", text: "An offer to charge you in dollars is dynamic currency conversion at a poor rate, and it stings more here because the withdrawal already carries a fee.", tone: "amber" },
+          p: [
+            "<b>Clean US dollars or Thai baht</b> are worth carrying as a backup: they are accepted in some tourist spots and near the Thai border, and they are the currencies taken for the <b>visa on arrival</b>, which also wants two passport photos. Notes must be <b>crisp and unmarked</b>, and dollar bills should be newer than 2009. You will get a <b>worse rate</b> spending them than paying in kip, so treat them as insurance rather than spending money.",
+            "On any card terminal or ATM screen, <b>choose kip</b>. Taking the offer to be charged in your home currency is dynamic currency conversion, which layers a poor rate on top of a fee you are already paying. Check the rate before you travel too: the kip has had a rough few years of inflation, so a figure from a few months ago may be well out of date. This guide is written for US travelers departing the US. For more, see <a href='/laos/tipping'>tipping in Laos</a>, <a href='/laos/taxis-and-ride-hailing'>taxis and ride-hailing in Laos</a>, and the <a href='/laos'>Laos money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Laos?", a: "Yes, every day. Kip is what street food, markets, tuk-tuks, guesthouses and small shops take. Cards work only at bigger hotels and a few upscale spots in Vientiane and Luang Prabang, often with a surcharge." },
+        { q: "How much can I withdraw from an ATM in Laos?", a: "Not much at once. Most machines cap a single withdrawal near 1 to 2 million kip, roughly 45 to 90 dollars, and charge 20,000 to 40,000 kip on top of your own bank's fee. Take the maximum allowed, or step inside a branch where a larger withdrawal often costs the same single fee." },
+        { q: "Can I use US dollars or Thai baht in Laos?", a: "Sometimes, in tourist areas and near the Thai border, and they are the currencies accepted for the visa on arrival. The rate is worse than paying in kip and small purchases are kip only, so carry a little clean, newer cash as backup rather than as your main money." },
+        { q: "Can I take leftover kip home from Laos?", a: "It is best not to. The kip is a closed currency that you cannot exchange outside the country, so spend it down or change it back before you leave." }
+      ],
+      sources: {
+        links: [
+          { label: "Bank of the Lao PDR: the central bank's official kip exchange rates", url: "https://www.bol.gov.la/en/ExchangRate", type: "bank" },
+          { label: "US State Department: Laos country information, noting that most care providers there accept cash only", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Laos.html", type: "gov" }
+        ],
+        judgment: "The ATM caps, the per-withdrawal fees and the card surcharges are our own read from recent traveler and bank reports rather than one official table, and they vary by bank and machine. The kip has seen high inflation, so treat any dollar equivalent as a snapshot. Checked July 2026."
+      }
+    },
+    {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not traditional, welcome" },
+        { k: "Restaurants", v: "Round up, or leave small notes" },
+        { k: "Service charge", v: "Check upscale bills" },
+        { k: "How", v: "Small kip notes, handed over" }
+      ],
+      live: true,
+      topic: "tipping",
+      caution: "low",
+      title: "Tipping in Laos: what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Laos for US travelers in 2026: why it is not traditional but increasingly welcome, what to leave at restaurants, and what guides, drivers and hotel staff usually get. Checked July 2026.",
+      h1: "Tipping in Laos",
+      lede: "Laos is not a tipping culture, so there is no percentage to remember and nobody is waiting for one. In tourist areas a small tip has become normal and is genuinely appreciated, which is a different thing from expected.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "Tipping is <b>not traditional</b> in Laos and there is <b>no set percentage</b>. In tourist areas it has become <b>increasingly welcome</b>, and against local wages a small amount means a lot. <b>Rounding up</b> a tuk-tuk fare, leaving <b>small kip notes</b> after a good meal, or tipping a <b>guide or driver</b> who looked after you are all kind gestures rather than obligations. Some upscale hotels and restaurants already add a <b>service charge</b>, so check the bill before adding more. Tip in <b>kip</b> where you can, and <b>hand it over directly</b>.",
+      sections: [
+        {
+          h: "Not traditional, increasingly welcome",
+          icon: "coins",
+          key: { fig: "No percentage", tag: "Optional, not expected", text: "There is no tipping norm to follow in Laos. Rounding up or leaving small kip notes for good service is appreciated, and leaving nothing is perfectly normal.", tone: "teal" },
+          p: [
+            "Laos has <b>no tipping tradition</b>, and at a local noodle shop or a market stall nothing is expected at all. What has changed is the tourist trail: in <b>Luang Prabang, Vientiane and Vang Vieng</b>, small tips have become normal at places used to visitors, and given local wages they are received warmly.",
+            "The practical version: at a <b>casual place</b>, round up or leave your small change. At a <b>tourist restaurant or a nicer place</b>, leaving a little more for good service is fine. There is no percentage to calculate and no awkwardness in leaving nothing, which is a genuinely relaxing way to travel."
+          ]
+        },
+        {
+          h: "Check the bill at upscale places",
+          icon: "receipt",
+          key: { fig: "Service charge", tag: "Sometimes already added", text: "Bigger hotels and restaurants may add a service charge of around 10 percent, with VAT shown separately, so read the bill before you add anything.", tone: "amber" },
+          p: [
+            "Bigger hotels and restaurants sometimes add a <b>service charge</b> of around 10 percent, and Laos's <b>10 percent VAT</b> may be shown separately rather than folded into the menu price. Between the two, a bill can land a little above what you expected, so it is worth a look before you decide what to add.",
+            "Where a service charge is already there, <b>you have done your part</b>. If you want to make sure a specific person gets something, a small amount handed to them directly is the way, since a service charge is pooled by the house."
+          ]
+        },
+        {
+          h: "Guides, drivers and hotel staff",
+          icon: "tip",
+          key: { fig: "Small notes", tag: "Kip, handed over", text: "Tip in kip in small notes, handed to the person. A guide or driver who gave you a full day is the one place worth being more generous.", tone: "teal" },
+          p: [
+            "The people most often tipped are the ones who spend real time with you: a <b>guide</b> on a day trip, a <b>driver</b> on a long road or river journey, a <b>boat operator</b> on the Mekong. Scale it to the day rather than a percentage of anything, and be more generous than you would for a short errand.",
+            "Tip in <b>kip</b>, in <b>small notes</b>, and <b>hand it over directly</b> rather than leaving it on a table. Keeping a few small notes back for this is worth doing, since breaking a large note specifically to tip is a nuisance. This guide is written for US travelers departing the US. For the wider picture, see <a href='/laos/cash-or-card'>cash or card in Laos</a>, <a href='/laos/taxis-and-ride-hailing'>taxis and ride-hailing in Laos</a>, and the <a href='/laos'>Laos money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Laos?", a: "It is not traditional and there is no set percentage, so leaving nothing is normal. In tourist areas a small tip has become common and is genuinely appreciated, especially for guides, drivers and good service at places used to visitors." },
+        { q: "Should I tip in kip or dollars in Laos?", a: "Kip, in small notes, handed to the person directly. Kip is what the recipient can actually spend, and small notes save you breaking a large one just to leave a tip." },
+        { q: "Do restaurants in Laos add a service charge?", a: "Bigger hotels and restaurants sometimes add around 10 percent, and the 10 percent VAT may appear separately rather than in the menu price. Read the bill before adding anything, since where a service charge is already there you have done your part." },
+        { q: "How much should I tip a guide in Laos?", a: "There is no set figure. Scale it to the length and difficulty of the day rather than to a percentage, and be more generous for someone who gave you a full day than for a short errand." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Laos country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Laos.html", type: "gov" },
+          { label: "Bank of the Lao PDR: the central bank's official kip exchange rates, for what a small note is worth", url: "https://www.bol.gov.la/en/ExchangRate", type: "bank" }
+        ],
+        judgment: "Tipping norms are social rather than official, so what counts as normal here is the True Trip Costs desk's read from recent traveler reports and local practice, not a published schedule. Service charges vary by property, so the bill is the thing to read. Checked July 2026."
+      }
+    },
+    {
+      slug: "taxis-and-ride-hailing",
+      glance: [
+        { k: "Metered taxis", v: "Scarce" },
+        { k: "Everyday rides", v: "Tuk-tuks and songthaews" },
+        { k: "App", v: "LOCA, in the main towns" },
+        { k: "Fares", v: "Agree before you get in" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis, tuk-tuks and the LOCA app in Laos (2026) | True Trip Costs",
+      description: "How to get around Laos as a US traveler in 2026: why metered taxis are scarce, how tuk-tuks and songthaews work, the LOCA ride app, and why you agree the fare first. Checked July 2026.",
+      h1: "Taxis, tuk-tuks and ride apps in Laos",
+      lede: "Metered taxis barely exist here. Getting around means tuk-tuks, shared songthaews and, in the bigger towns, a local ride app that takes the negotiation out of it. One habit covers the rest: settle the fare first.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "<b>Metered taxis are scarce</b> in Laos. Everyday rides are <b>tuk-tuks</b> and <b>songthaews</b>, the shared pickup trucks with benches in the back that run set routes for a small fare. In Vientiane, Luang Prabang and the other main towns, the local app <b>LOCA</b> books a licensed car or taxi at a <b>fare shown up front</b>, which is the simplest option for a visitor and takes cash, card or a QR payment. If you are taking a tuk-tuk the usual way, <b>agree the fare before you get in</b>, for the whole trip, and carry <b>small kip notes</b> to pay it.",
+      sections: [
+        {
+          h: "What is actually on the road",
+          icon: "taxi",
+          key: { fig: "Tuk-tuks", tag: "And shared songthaews", text: "Tuk-tuks do short hops and hired days. Songthaews are converted pickups running set routes for a small fare, which you flag down and pay when you get off.", tone: "teal" },
+          p: [
+            "Forget the idea of stepping off a curb into a metered cab: that is not how Laos works. <b>Tuk-tuks</b> handle short hops around town and can be hired for a half or full day, and they wait in obvious places, outside markets, temples, bus stations and hotels. Fares are <b>negotiated, not metered</b>.",
+            "<b>Songthaews</b>, converted pickup trucks with two benches in the back, run <b>set routes</b> like informal buses: you flag one down, squeeze in, and pay a small fare when you get off. They are the cheapest way to move around and between nearby towns, at the cost of stopping whenever anyone else wants on."
+          ]
+        },
+        {
+          h: "LOCA, the local ride app",
+          icon: "qr",
+          key: { fig: "LOCA", tag: "Fare shown up front", text: "LOCA is the licensed Lao ride app, covering Vientiane, Luang Prabang and other main towns, with the fare set in the app and cash, card or QR payment.", tone: "teal" },
+          p: [
+            "<b>LOCA</b> is the Lao-built ride app and the easiest answer for a visitor. It books licensed cars, taxis and motorbike rides with the <b>fare shown before you accept</b>, English in the app, and payment by <b>cash, card or a Lao QR code</b>, so there is nothing to negotiate and no cash-only trap. Coverage runs across <b>Vientiane and Luang Prabang</b> and reaches other main towns including Vang Vieng, Pakse and Savannakhet.",
+            "Two practicalities. It needs <b>mobile data</b>, so sort an eSIM or a local SIM before you rely on it, and cars can be thin on the ground at busy times or late in the evening, especially outside the capital. For an <b>airport pickup</b> or the run to the railway station with luggage, booking ahead through the app is the calmest way to do it."
+          ]
+        },
+        {
+          h: "Agree the fare, and carry small notes",
+          icon: "coins",
+          key: { fig: "Agree first", tag: "Before you get in", text: "Settle the price out loud before the ride starts, including any waiting time. A fare left open until you arrive is a negotiation, not a price.", tone: "amber" },
+          p: [
+            "With a tuk-tuk, the price is whatever you agree, so <b>agree it before you get in</b> and be clear that it covers the <b>whole trip</b> and any <b>waiting time</b> if you are asking the driver to hold. Confirm whether the price is <b>per person or for the vehicle</b>, which is the most common misunderstanding. Asking your guesthouse what a ride should cost before you walk out gives you a reference point, since fares move with fuel prices and there is no published tariff.",
+            "Pay in <b>small kip notes</b>. A driver rarely has change for the largest note, and a hundred-dollar bill from an ATM is no use to anyone here. Rounding up is a normal thank you, and a driver who gave you a full day deserves more than rounding. This guide is written for US travelers departing the US. For the wider picture, see <a href='/laos/cash-or-card'>cash or card in Laos</a>, <a href='/laos/tipping'>tipping in Laos</a>, and the <a href='/laos'>Laos money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is there Uber or Grab in Laos?", a: "No. The local app is LOCA, which books licensed cars, taxis and motorbike rides in Vientiane, Luang Prabang and other main towns, with the fare shown before you accept and payment by cash, card or QR." },
+        { q: "How do tuk-tuk fares work in Laos?", a: "They are negotiated, not metered. Agree the price out loud before you get in, confirm it covers the whole trip and any waiting time, and check whether it is per person or for the vehicle. Asking your guesthouse what a ride should cost gives you a reference point." },
+        { q: "What is a songthaew?", a: "A converted pickup truck with two benches in the back, running set routes like an informal bus. You flag one down, ride with whoever else is going that way, and pay a small fare when you get off. It is the cheapest way to get around." },
+        { q: "Can I pay for rides by card in Laos?", a: "In the LOCA app, yes, along with QR payment or cash. Everything else, tuk-tuks and songthaews included, is cash in kip, so keep small notes on you." }
+      ],
+      sources: {
+        links: [
+          { label: "LOCA: the licensed Lao ride-hailing service's own information on coverage, transparent fares and payment options", url: "https://loca.la/ride-taxi/", type: "official" },
+          { label: "US State Department: Laos country information, including road and transportation safety", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Laos.html", type: "gov" }
+        ],
+        judgment: "App coverage grows and tuk-tuk fares move with fuel prices, so we have avoided quoting prices and stuck to the habits that hold: use the app where it reaches, and agree the fare before you get in. Checked July 2026."
+      }
+    }
+  ]
 };

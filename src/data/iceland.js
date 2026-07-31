@@ -177,5 +177,182 @@ export default {
         note: "Say it: the Icelandic sagas" },
     ],
     pride: "Icelanders are independent, literary and quietly proud of a tiny nation that has kept its language, its sagas and the world's oldest parliament alive on a wild volcanic island. They say more books are written and read here, per person, than almost anywhere. Show real interest in the sagas and you win a friend."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Icelandic krona (ISK)" },
+        { k: "Cards", v: "Work essentially everywhere" },
+        { k: "Carry", v: "Almost no cash" },
+        { k: "On a card", v: "Choose krona, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      caution: "low",
+      title: "Do I need cash in Iceland, or can I use cards? (2026) | True Trip Costs",
+      description: "Almost none. Iceland is about as cashless as travel gets, so tap for everything, keep a small krona backup at most, and choose krona rather than dollars. The real cost is the prices. Checked July 2026.",
+      h1: "Do I need cash in Iceland, or can I use cards?",
+      lede: "Short answer: barely any. Iceland is one of the most cashless countries on earth, and plenty of visitors complete a whole trip without touching a banknote. The money problem here is not payment, it is the prices.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "You can go the whole trip without cash. <b>Cards, contactless, Apple Pay and Google Pay work essentially everywhere</b> in Iceland, from a Reykjavik cafe to a remote guesthouse and, unusually, at unattended <b>fuel pumps</b>. Keep <b>3,000 to 5,000 krona</b> as a just-in-case backup if it makes you comfortable, and know that many visitors never spend it. It is <b>krona, not euros</b>: Iceland is outside the EU and the eurozone, so do not arrive with euros. Always choose <b>krona, not dollars</b>, on any screen. The real budgeting job here is <b>the prices</b>, not the cash.",
+      sections: [
+        {
+          h: "Card for everything, including the fuel pump",
+          icon: "card",
+          key: { fig: "Tap it", tag: "Cards are near-universal", text: "Visa and Mastercard with contactless cover hotels, restaurants, tours, museums, rural stops and unattended fuel pumps. Amex is accepted in bigger places but is patchier.", tone: "teal" },
+          p: [
+            "<b>Visa and Mastercard</b> are near-universal, and <b>contactless</b> with Apple Pay or Google Pay is completely standard. That extends further than you might expect: small rural shops, tours, museums, swimming pools and even honesty-box farm stands increasingly take cards. <b>Amex</b> works at larger hotels and shops but is less reliable, so bring a Visa or Mastercard as your main card and a backup from a different bank.",
+            "The one place a card is not optional is the <b>self-service fuel pump</b>, which many rural stations are. A pump may ask for a <b>PIN</b> and may place a temporary hold on your card, so travel with a card you know the PIN for, which matters more here than the fee difference between your cards."
+          ]
+        },
+        {
+          h: "The real cost is the prices, not the cash",
+          icon: "coins",
+          key: { fig: "Budget up", tag: "This is the expensive part", text: "High wages, remoteness and import costs make everything pricey, from a coffee to a short tour. Pad your daily number rather than your wallet.", tone: "amber" },
+          p: [
+            "Cambodia and Argentina give you a cash puzzle to solve. Iceland does not, and instead hands you a <b>price</b> problem: high wages, remoteness and import costs push the cost of a coffee, a bowl of soup, a beer or a short tour well above what most visitors expect. <b>VAT is already in the price</b>, so the number on the tag or the menu is what you pay, which at least makes it easy to see what you are spending.",
+            "The practical response is to <b>plan a higher daily figure</b> than you would almost anywhere in Europe, and to look for the cheap wins that exist: the swimming pools, the tap water, which is excellent, a supermarket rather than a restaurant lunch. If you are <b>renting a car</b>, budget the 2026 per-kilometre road tax and the parking-app fees at popular sites too, both of which are billed after the fact and land on your card later."
+          ]
+        },
+        {
+          h: "Krona, not euros, and never dollars on the screen",
+          icon: "atm",
+          key: { fig: "Choose krona", tag: "Dollar offers cost you", text: "An offer to charge you in dollars is dynamic currency conversion, roughly 3 to 8 percent worse than your own bank's rate. Choose krona every time.", tone: "amber" },
+          p: [
+            "Two currency mistakes to avoid. First, <b>Iceland does not use the euro</b>, so euros brought from a European leg of your trip will not spend here. Second, when a terminal or an ATM asks whether to charge you in <b>dollars or krona, choose krona</b>: taking the dollar offer is dynamic currency conversion, which runs roughly <b>3 to 8 percent worse</b> than your own bank's rate.",
+            "If you do want a little cash, use a <b>bank ATM</b> from <b>Landsbankinn, Islandsbanki or Arion</b>. They are easy to find in Reykjavik and the towns and thin in the countryside, so take what you need when you see one. Read the on-screen fee, take a modest amount, and remember that your own bank's foreign-ATM charge usually matters more than the machine's. Do not change a large pile of dollars into krona: you will struggle to spend it and lose money changing it back. This guide is written for US travelers departing the US. For more, see <a href='/iceland/tipping'>tipping in Iceland</a>, <a href='/iceland/taxis-and-ride-hailing'>taxis and ride-hailing in Iceland</a>, and the <a href='/iceland'>Iceland money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Iceland?", a: "Barely, if at all. Cards and contactless work essentially everywhere, including remote guesthouses and unattended fuel pumps. Keep 3,000 to 5,000 krona as a backup if you like, but many visitors never spend it, and there is no reason to exchange a large sum." },
+        { q: "Can I use euros or dollars in Iceland?", a: "No. Iceland is outside the EU and the eurozone and uses the Icelandic krona, so euros and dollars are not accepted in normal shops. Your card handles everything, and it should be charged in krona." },
+        { q: "Should I pay in krona or dollars in Iceland?", a: "Always krona. An offer to charge you in dollars is dynamic currency conversion, which costs roughly 3 to 8 percent more than letting your own bank do the exchange. Decline it on terminals and at ATMs alike." },
+        { q: "Do I need a PIN for my card in Iceland?", a: "It is worth having one. Self-service fuel pumps, which many rural stations are, may ask for a PIN and can place a temporary hold on your card, so travel with a card whose PIN you know rather than relying on signature or tap alone." }
+      ],
+      sources: {
+        links: [
+          { label: "Central Bank of Iceland: the official reference exchange rate for the krona, published each business day", url: "https://cb.is/statistics/official-exchange-rate/", type: "bank" },
+          { label: "US State Department: Iceland country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Iceland.html", type: "gov" }
+        ],
+        judgment: "How close Iceland is to fully cashless, and the small krona backup we suggest, are the True Trip Costs desk's read from recent traveler reports rather than an official figure. The krona rate moves, so check it before you travel. Checked July 2026."
+      }
+    },
+    {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not expected" },
+        { k: "Service", v: "Already in the price" },
+        { k: "Restaurants", v: "Nothing needed" },
+        { k: "Taxis", v: "Just pay the fare" }
+      ],
+      live: true,
+      topic: "tipping",
+      caution: "low",
+      title: "Tipping in Iceland: what you actually owe (2026) | True Trip Costs",
+      description: "Almost nothing. Service is included and tipping is not expected in Iceland, so you can relax at restaurants, bars and taxis. Here is where a tip is still a kind gesture. Checked July 2026.",
+      h1: "Tipping in Iceland",
+      lede: "This is the easiest tipping page we write. Service is included, wages are decent, and nobody is waiting for a percentage. You can put your mental arithmetic away for the whole trip.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "Tipping in Iceland is <b>not expected</b>. Wages are decent and <b>service is included in the price</b>, so there is <b>no obligation</b> at restaurants, bars or cafes, and none of the card-terminal tip prompting you are used to at home. <b>Taxis</b> are not tipped: just pay the fare. If service was genuinely exceptional, <b>rounding up</b> or leaving a small amount is a warm gesture and will be received as one. The only place a tip is at all common is for a <b>private guide or driver</b> on a long day out, and even there it is optional.",
+      sections: [
+        {
+          h: "Service is in the price, so nothing is owed",
+          icon: "notip",
+          key: { fig: "Nothing owed", tag: "Service is included", text: "Restaurant, bar and cafe prices include service, and staff are paid a proper wage. Leaving nothing is normal and nobody will think twice about it.", tone: "teal" },
+          p: [
+            "Restaurant, bar and cafe prices in Iceland <b>include service</b>, and staff are on wages that do not depend on your generosity. Leaving <b>nothing at all</b> is completely normal, and no one will react to it. There is also no tipping-screen culture: you are unlikely to be prompted for a percentage when you tap your card.",
+            "If a meal or a day was exceptional and you want to mark it, <b>rounding the bill up</b> or leaving a small amount is a kind gesture that will be taken as a compliment rather than an expectation. That is the whole rule, and the useful part is what it does to your budget: unlike at home, you do not need to add 15 to 20 percent to every estimate you make for the trip."
+          ]
+        },
+        {
+          h: "Where a tip is still a nice thing to do",
+          icon: "tip",
+          key: { fig: "Guides", tag: "Optional, appreciated", text: "A private guide or driver who makes a long day work is the one place a tip is reasonably common, and cash is easiest if you want to give one.", tone: "teal" },
+          p: [
+            "The exception, such as it is, is a <b>private guide or driver</b>: someone who spends a long day getting you to the right places in bad weather, or a small-group tour leader who clearly went beyond the itinerary. A tip there is <b>appreciated but still optional</b>, and since you are carrying almost no cash, it is worth keeping a little for exactly this if you think you might want to.",
+            "<b>Hotel housekeeping and porters</b> are not routinely tipped in Iceland. For everything else, the answer is the same: the price is the price. This guide is written for US travelers departing the US. For the wider picture, see <a href='/iceland/cash-or-card'>cash or card in Iceland</a>, <a href='/iceland/taxis-and-ride-hailing'>taxis and ride-hailing in Iceland</a>, and the <a href='/iceland'>Iceland money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Iceland?", a: "Not really. Service is included in prices and staff are paid properly, so there is no obligation at restaurants, bars, cafes or in taxis. Rounding up for exceptional service is a kind gesture, never an expectation." },
+        { q: "Do I tip taxi drivers in Iceland?", a: "No. Pay the metered or agreed fare and that is the transaction complete. Nobody is expecting a percentage on top." },
+        { q: "Should I tip a tour guide in Iceland?", a: "It is the one place a tip is reasonably common, especially for a private guide or driver on a long day, and it is still optional. Cash is easiest if you want to give one, so keep a little back for it." },
+        { q: "Will I be prompted to tip on the card machine in Iceland?", a: "Usually not. Iceland does not have the tipping-screen culture familiar in North America, so expect to tap and be done." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Iceland country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Iceland.html", type: "gov" },
+          { label: "Visit Reykjavik: the city's official visitor information site", url: "https://visitreykjavik.is/", type: "official" }
+        ],
+        judgment: "That service is included and tipping is not expected is long established and widely stated locally. Where a tip is still normal, mainly private guides and drivers, is the True Trip Costs desk's read from recent traveler reports rather than a published rule. Checked July 2026."
+      }
+    },
+    {
+      slug: "taxis-and-ride-hailing",
+      glance: [
+        { k: "Uber", v: "Not a thing here" },
+        { k: "Instead", v: "Book by app or phone" },
+        { k: "Apps", v: "Hopp Taxi, Hreyfill" },
+        { k: "Cost", v: "Expensive, and card-friendly" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Iceland: no Uber, and how to book one (2026) | True Trip Costs",
+      description: "How taxis work in Iceland for US travelers in 2026: why there is no widespread Uber, which apps to install, why taxis are booked rather than hailed, and why the airport coach beats a cab. Checked July 2026.",
+      h1: "Taxis in Iceland, and why there is no Uber",
+      lede: "There is no widespread Uber here, which surprises people. Taxis are licensed, metered, card-friendly and expensive, and the usual way to get one is to book it rather than wave at the street.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "There is <b>no widespread Uber in Iceland</b>. Taxis are <b>licensed and metered</b>, and you get one by <b>booking it</b>, by app or by phone, or from a rank at the airport, a hotel or a bus station, rather than hailing on the street. The apps to know are <b>Hopp Taxi</b>, which works much like a ride-hailing app, and <b>Hreyfill</b>, one of the long-established companies. Fares are <b>expensive by any standard</b>, so for the Keflavik run the <b>airport coach is far cheaper</b>. <b>Cards are fine</b>, and tipping is not expected.",
+      sections: [
+        {
+          h: "No Uber, so book instead of hailing",
+          icon: "taxi",
+          key: { fig: "Book it", tag: "App or phone", text: "Iceland has no widespread Uber. Licensed taxi companies take app and phone bookings, and ranks sit outside the airport terminal, hotels and bus stations.", tone: "teal" },
+          p: [
+            "Ride-hailing as Americans know it never really arrived in Iceland. What exists instead is a small number of <b>licensed taxi companies</b> operating on <b>official meters</b>, several of them around the clock. You reach them by <b>app or telephone</b>, or you take one from a <b>rank</b> at Keflavik, a hotel or a bus station. Street hailing is not the habit here and, outside central Reykjavik, not much use.",
+            "<b>Hopp Taxi</b> is the one that behaves most like the app you are used to: book, track and pay in the app without cash. <b>Hreyfill</b>, operating since 1943, is one of the established companies and also takes app and phone bookings, including <b>fixed-price airport transfers</b> when arranged in advance. Outside the capital area, taxis are scarce, and in much of the country a rental car or a scheduled bus is the only realistic way to move."
+          ]
+        },
+        {
+          h: "Expensive, so weigh the alternative",
+          icon: "coins",
+          key: { fig: "Take the coach", tag: "For the Keflavik run", text: "A taxi from Keflavik into Reykjavik is one of the priciest rides you can take here. The scheduled airport coach does the same journey for a fraction of it.", tone: "amber" },
+          p: [
+            "Iceland is expensive and taxis are no exception, which makes the <b>Keflavik to Reykjavik</b> journey the decision that matters most. It is roughly <b>45 minutes to an hour</b> by road, and a metered taxi for it is one of the priciest rides you are likely to take on your trip. The scheduled <b>airport coach</b> costs a fraction of that, runs to meet flights, and drops at a central terminal with hotel transfers, which is why most visitors take it.",
+            "A taxi earns its keep in other situations: <b>late arrivals, heavy bags, a group splitting one fare</b>, or a fixed-price transfer booked ahead so the meter is not a surprise. Within Reykjavik, distances are short and the city is walkable, so the taxi is more of an occasional convenience than a daily expense."
+          ]
+        },
+        {
+          h: "Paying, and what not to worry about",
+          icon: "card",
+          key: { fig: "Card is fine", tag: "No tip needed", text: "Meters are official and cards are accepted, so there is nothing to negotiate. Pay the fare in krona and leave it there, since taxi drivers are not tipped.", tone: "teal" },
+          p: [
+            "Fares run on <b>official meters</b> set by the company and there is <b>nothing to haggle over</b>, so the games you watch for elsewhere are simply not part of the picture. <b>Cards are accepted</b>, and if you booked through an app you have already paid. Choose <b>krona</b> if a terminal offers you dollars.",
+            "<b>Tipping is not expected</b>: pay the fare and that is the end of it. If you want a firm number before you commit, ask for a <b>fixed price</b> when you book a transfer, which the companies will quote. This guide is written for US travelers departing the US. For the wider picture, see <a href='/iceland/cash-or-card'>cash or card in Iceland</a>, <a href='/iceland/tipping'>tipping in Iceland</a>, and the <a href='/iceland'>Iceland money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is there Uber in Iceland?", a: "No, not in any widespread sense. Licensed taxi companies do the job instead, booked by app or phone or taken from a rank. Hopp Taxi is the app that works most like ride-hailing, and Hreyfill is one of the established companies." },
+        { q: "How much is a taxi from Keflavik airport to Reykjavik?", a: "Expensive enough that most visitors take the coach instead. The drive is roughly 45 minutes to an hour and a metered taxi is one of the priciest rides on a typical Iceland trip, so ask for a fixed-price transfer if you want a taxi, or book the scheduled airport bus." },
+        { q: "Can I hail a taxi on the street in Iceland?", a: "Sometimes in central Reykjavik, but it is not the habit and not reliable. Booking by app or phone, or using a rank at the airport, a hotel or a bus station, is how it works here." },
+        { q: "Do Icelandic taxis take cards?", a: "Yes, cards are accepted, and if you book through an app you have already paid. Choose krona rather than dollars if a terminal offers you the choice, and no tip is expected." }
+      ],
+      sources: {
+        links: [
+          { label: "Visit Reykjavik: the city's official page on taxis, meters and fixed-price airport transfers, including the Hopp Taxi app", url: "https://visitreykjavik.is/getting-around-reykjavik/taxi-reykjavik", type: "official" },
+          { label: "Hreyfill: the Reykjavik taxi company's own booking and airport transfer information", url: "https://www.hreyfill.is/en/", type: "official" }
+        ],
+        judgment: "That taxis are booked rather than hailed, and that the airport coach beats a cab on price, are well established. We have avoided quoting fares because Icelandic prices move and a metered ride depends on traffic and time of day. Checked July 2026."
+      }
+    }
+  ]
 };

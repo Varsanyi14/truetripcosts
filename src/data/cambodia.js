@@ -148,5 +148,191 @@ export default {
         note: "Good to know: the festival celebrates the Tonle Sap reversing its flow" }
     ],
     pride: "Cambodians carry themselves with warmth and a quiet strength, proud of Angkor and of a culture that endured its darkest years and came back. Greet people with a sampeah, show respect at the temples, and the welcome you get in return is genuine and generous."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Everyday money", v: "US dollars" },
+        { k: "Change", v: "Riel, at 4,000 to the dollar" },
+        { k: "Cards", v: "Hotels and nicer city spots" },
+        { k: "Bring", v: "Clean, newer small bills" }
+      ],
+      live: true,
+      topic: "cash",
+      caution: "low",
+      title: "Do I need cash in Cambodia, or can I use cards? (2026) | True Trip Costs",
+      description: "Cash, and the cash is US dollars. Cambodia prices in dollars, hands back riel as change, and takes cards mainly in the cities, so bring clean, newer small bills. Checked July 2026.",
+      h1: "Do I need cash in Cambodia, or can I use cards?",
+      lede: "Cash, mostly, and here is the unusual part: the everyday cash is the US dollar. That makes Cambodia one of the simplest countries anywhere for an American to handle, with one condition about the state of your banknotes.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "Cash for most things, and the cash is <b>US dollars</b>. Prices are quoted in dollars, ATMs hand out dollars, and the <b>riel</b> appears only as your <b>change under a dollar</b>, counted at a steady 4,000 to the dollar. Bring <b>clean, newer bills in small denominations</b>, because torn or heavily worn notes get refused. <b>Cards</b> work at hotels, tour operators and nicer restaurants in Phnom Penh and Siem Reap, and a growing number of places take a <b>KHQR scan</b>, but markets, tuk-tuks and street food are cash. You barely need to convert anything, so the only screen to refuse is one offering to lock in its own rate.",
+      sections: [
+        {
+          h: "You spend dollars, and get riel as change",
+          icon: "usd",
+          key: { fig: "4,000 riel", tag: "Riel is the small change", text: "Anything under a dollar comes back in riel at a steady 4,000 to the dollar, so 2,000 riel is about 50 cents. Spend it down before you fly home, since it is hard to use elsewhere.", tone: "teal" },
+          p: [
+            "Cambodia runs on the <b>US dollar</b>. Hotels, tours, restaurants and most shops price in dollars, and there is nothing for you to convert before you travel. The <b>Cambodian riel</b> does the job that coins do elsewhere: if something costs 3 dollars 50 and you pay with a 5, expect a dollar back plus riel for the rest, counted at <b>4,000 riel to the dollar</b>.",
+            "That 4,000 convention sits a touch below the market rate the National Bank of Cambodia publishes, so you lose a cent or two here and there. It is not worth a second thought. What is worth doing is <b>spending your riel down before you leave</b>, since it is a currency you cannot easily use or exchange outside the country."
+          ]
+        },
+        {
+          h: "Bring clean, newer bills, and keep them small",
+          icon: "cash",
+          key: { fig: "Clean notes", tag: "Worn bills get refused", text: "Cambodia is strict about the condition of US notes. Torn, taped or heavily worn bills are often turned away, even at banks, so check what you are handed as change.", tone: "amber" },
+          p: [
+            "This is the one rule that catches people out: <b>the condition of your dollar bills matters</b>. Torn, taped or badly worn notes are frequently refused by shops and sometimes by banks, and a 2025 directive eased this for lightly marked notes without changing the rule for badly damaged ones. Ask your bank for <b>clean, newer bills</b>, and <b>inspect the change you are given</b>, because a note you accept today is a note you have to spend tomorrow.",
+            "Keep them <b>small</b>: ones, fives, tens and twenties. A market stall or a tuk-tuk driver cannot break a fifty, and ATMs here are fond of handing out hundreds, which is exactly the note you least want. Small bills also make the easiest tips."
+          ]
+        },
+        {
+          h: "ATMs, cards and paying by QR",
+          icon: "atm",
+          key: { fig: "4 to 6 dollars", tag: "Flat fee per withdrawal", text: "Bank ATMs dispense dollars for a flat fee of roughly 4 to 6 dollars, with a limit near 500. Take a larger amount at once, and try an ACLEDA machine if you want smaller notes.", tone: "teal" },
+          p: [
+            "Bank ATMs from the likes of <b>ABA and ACLEDA</b> dispense <b>US dollars</b>, typically for a flat fee of about <b>4 to 6 dollars</b> per withdrawal on top of anything your own bank adds, with a limit around 500 dollars. Because the fee is flat, <b>one larger withdrawal beats several small ones</b>, and a card that refunds ATM fees removes the cost entirely. If you want notes smaller than a hundred, an ACLEDA machine is the one to try.",
+            "<b>Cards</b> are fine at hotels, tour operators, malls and nicer restaurants in <b>Phnom Penh and Siem Reap</b>, and many places now take Apple Pay, Google Pay or a <b>KHQR scan</b> through the free Bakong Tourist app. Two small things to know: because the transaction is processed abroad, your US bank may add a <b>foreign transaction fee even though the bill is in dollars</b>, and if any terminal or ATM offers to lock in its own rate, decline it. This guide is written for US travelers departing the US. For more, see <a href='/cambodia/tipping'>tipping in Cambodia</a>, <a href='/cambodia/taxis-and-ride-hailing'>taxis and ride-hailing in Cambodia</a>, and the <a href='/cambodia'>Cambodia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Cambodia?", a: "Yes, and it is US dollars. Markets, street food, tuk-tuks and anywhere rural are cash. Cards cover hotels, tours and nicer restaurants in Phnom Penh and Siem Reap, but you will want a stack of clean, small dollar bills for daily life." },
+        { q: "Should I buy Cambodian riel before I travel?", a: "No. Prices are in dollars and ATMs dispense dollars, so riel will simply come to you as change under a dollar at 4,000 to the dollar. Spend it down before you leave, since it is hard to use or exchange abroad." },
+        { q: "Will my old dollar bills be refused in Cambodia?", a: "They can be. Cambodia is strict about the condition of US notes, and torn, taped or heavily worn bills are often turned away. Bring clean, newer bills in small denominations and check the notes you are handed as change." },
+        { q: "How much do ATMs charge in Cambodia?", a: "Usually a flat fee of about 4 to 6 dollars per withdrawal on top of your own bank's charge, with a limit around 500 dollars, and they dispense US dollars, often only in hundreds. Because the fee is flat, take a larger amount at once, and try an ACLEDA machine for smaller notes." }
+      ],
+      sources: {
+        links: [
+          { label: "National Bank of Cambodia: the official daily riel exchange rate, published each working day", url: "https://www.nbc.gov.kh/english/", type: "bank" },
+          { label: "US State Department: Cambodia country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Cambodia.html", type: "gov" }
+        ],
+        judgment: "The dual-currency system and the 4,000 riel convention are long established and easy to verify. The ATM fee range, the withdrawal limits and how strictly worn notes are refused are our own read from recent traveler and bank reports rather than one official table. Checked July 2026."
+      }
+    },
+    {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Not required, genuinely welcome" },
+        { k: "Restaurants", v: "Round up, or 5 to 10 percent" },
+        { k: "Service charge", v: "Check the bill first" },
+        { k: "How", v: "Small dollar bills, handed over" }
+      ],
+      live: true,
+      topic: "tipping",
+      caution: "low",
+      title: "Tipping in Cambodia: what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Cambodia for US travelers in 2026: why it is optional but appreciated, what to leave at restaurants, and what tuk-tuk drivers, guides and hotel staff usually get. Checked July 2026.",
+      h1: "Tipping in Cambodia",
+      lede: "Nothing here is obligatory, and a small tip goes a long way. Because you are already spending US dollars, tipping is simpler than almost anywhere: a dollar or two, handed over, in the currency you are carrying.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "Tipping is <b>not required</b> in Cambodia, and it is <b>genuinely appreciated</b>, because local wages are low. At a local eatery, <b>rounding up</b> is plenty; at a sit-down restaurant, <b>5 to 10 percent</b> is generous when no service charge is on the bill, so <b>check the bill first</b>. A <b>dollar or two</b> suits a tuk-tuk driver, <b>a few dollars a day</b> works for housekeeping, and a guide who looked after you well is worth more. Tip in <b>US dollars</b>, in clean small bills, and <b>hand it to the person</b> rather than leaving it on a table.",
+      sections: [
+        {
+          h: "Not required, and it matters more than the amount suggests",
+          icon: "coins",
+          key: { fig: "Round up", tag: "Optional, not expected", text: "No one will chase you for a tip, and small amounts are meaningful against local wages. Rounding up at a local eatery is fine, and 5 to 10 percent is generous at a sit-down restaurant.", tone: "teal" },
+          p: [
+            "Cambodia has <b>no strict tipping custom</b>, and nothing bad happens if you leave nothing. It is also a place where a small amount is worth real money to the person receiving it, which is why tipping has become normal on the tourist trail. At a <b>street stall or local eatery</b>, rounding up or leaving your riel change is plenty.",
+            "At a <b>sit-down restaurant</b>, <b>5 to 10 percent</b> is a generous tip where nothing has been added for you. Some hotels and nicer restaurants add a <b>service charge</b> of around 10 percent, and a 10 percent VAT may be shown separately, so <b>read the bill</b> before deciding what to add."
+          ]
+        },
+        {
+          h: "Drivers, guides and hotel staff",
+          icon: "tip",
+          key: { fig: "A dollar or two", tag: "For a tuk-tuk ride", text: "A dollar or two suits a tuk-tuk driver, a few dollars a day covers housekeeping, and a guide or driver who made your day is worth more than either.", tone: "teal" },
+          p: [
+            "For a <b>tuk-tuk driver</b>, a <b>dollar or two</b> on top of the fare is a normal thank you, and a driver who waits for you at temples all day deserves considerably more. For <b>housekeeping</b>, <b>a few dollars a day</b> left at the end of your stay is well received, and for a <b>guide</b> at Angkor or on a day tour, more again, scaled to how long you had them.",
+            "<b>Spa and massage staff</b> are usually tipped a few dollars, and porters a dollar a bag. None of it is a rule, and all of it is noticed."
+          ]
+        },
+        {
+          h: "How to give it",
+          icon: "usd",
+          key: { fig: "Clean bills", tag: "Dollars, handed over", text: "Tip in US dollars in clean, newer small notes, and hand it directly to the person. Worn or torn notes cause the same problem as a tip as they do in a shop.", tone: "amber" },
+          p: [
+            "Tip in <b>US dollars</b>, since that is the working currency, and keep the notes <b>clean and small</b>. A torn or heavily worn bill is as awkward for the person you hand it to as it would be at a market stall, so it is not much of a gift. Riel is fine for rounding up a small bill.",
+            "<b>Hand the tip over directly</b> rather than leaving it on the table, which is both the local habit and the surest way for it to reach the person who earned it. This guide is written for US travelers departing the US. For the wider picture, see <a href='/cambodia/cash-or-card'>cash or card in Cambodia</a>, <a href='/cambodia/taxis-and-ride-hailing'>taxis and ride-hailing in Cambodia</a>, and the <a href='/cambodia'>Cambodia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Cambodia?", a: "It is not required and it is genuinely appreciated. Rounding up at a local eatery is fine, 5 to 10 percent is generous at a sit-down restaurant where no service charge has been added, and a dollar or two suits a tuk-tuk driver." },
+        { q: "Should I tip in dollars or riel in Cambodia?", a: "US dollars, in clean, newer small bills, because that is the everyday currency. Riel works for rounding up a small bill. Hand the tip over directly rather than leaving it on the table." },
+        { q: "How much should I tip a tuk-tuk driver?", a: "A dollar or two on top of the fare for a short ride. A driver who waits for you around the Angkor temples for a full day is doing a different job and should get considerably more." },
+        { q: "Do restaurants in Cambodia add a service charge?", a: "Some hotels and nicer restaurants add around 10 percent, and a 10 percent VAT may appear separately on the bill. Check before you add anything, since where a service charge is already there you have done your part." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Cambodia country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Cambodia.html", type: "gov" },
+          { label: "National Bank of Cambodia: the official riel exchange rate, for how dollar and riel change is counted", url: "https://www.nbc.gov.kh/english/", type: "bank" }
+        ],
+        judgment: "Tipping norms are social rather than official, so the amounts here are the True Trip Costs desk's read from recent traveler reports and local practice, not a published schedule. The one hard rule is the same as for any cash in Cambodia: clean, newer notes. Checked July 2026."
+      }
+    },
+    {
+      slug: "taxis-and-ride-hailing",
+      glance: [
+        { k: "Apps", v: "PassApp and Grab" },
+        { k: "Rides", v: "Tuk-tuk, rickshaw, car or moto" },
+        { k: "Fares", v: "App price or meter, not haggling" },
+        { k: "Paying", v: "Cash in dollars, or card in app" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis and tuk-tuks in Cambodia: PassApp and Grab (2026) | True Trip Costs",
+      description: "How to get around Cambodia as a US traveler in 2026: the PassApp and Grab ride apps, why an app price or a meter beats haggling, what a tuk-tuk ride costs to settle, and how to pay. Checked July 2026.",
+      h1: "Taxis, tuk-tuks and ride apps in Cambodia",
+      lede: "The tuk-tuk is how you get around here, and the apps have taken the negotiation out of it. Install one before you land and the fare stops being something you argue about on a hot street corner.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "Install <b>PassApp</b>, the Cambodian app, and <b>Grab</b>, the regional one. Both show the <b>fare before you ride</b> and both dispatch tuk-tuks, rickshaws, cars and motos, so you are not haggling on the street. If you take a ride the old-fashioned way, <b>agree the price before you get in</b> or use a metered vehicle: those are the two clean options, and negotiating mid-journey is not one of them. Fares are small and paid in <b>US dollars</b>, so carry <b>small clean bills</b>, though Grab also lets you pay by card in the app. At the airport, use the <b>official taxi desk or the app pickup point</b>.",
+      sections: [
+        {
+          h: "Which app to install",
+          icon: "qr",
+          key: { fig: "PassApp", tag: "The local one", text: "PassApp was built in Phnom Penh and dispatches metered tuk-tuks, rickshaws and cars. Grab covers the same ground and more often lets you pay by card in the app.", tone: "teal" },
+          p: [
+            "<b>PassApp</b> is the Cambodian-built app and the one many locals use, dispatching <b>metered tuk-tuks, rickshaws, cars and SUVs</b> with the fare estimated up front and a receipt emailed after. <b>Grab</b> is the regional app most visitors already have, covering cars and motos as well as tuk-tuks, and it more often supports <b>paying by card in the app</b> rather than cash to the driver.",
+            "Either removes the part of a Cambodian tuk-tuk ride that visitors dislike most: working out what a fair price is, in a language you do not speak, before you can leave. Coverage is strongest in <b>Phnom Penh and Siem Reap</b>, and you will want mobile data for it, so sort an eSIM or local SIM early. Away from the cities, the app cars thin out and a driver arranged through your guesthouse is the normal route."
+          ]
+        },
+        {
+          h: "If you are not using an app, settle it first",
+          icon: "taxi",
+          key: { fig: "Agree first", tag: "Or use the meter", text: "Fix the price before you get in, or take a metered vehicle. What you want to avoid is starting a journey with the fare still open, which is where the disagreements happen.", tone: "amber" },
+          p: [
+            "Tuk-tuks waiting outside hotels, temples and markets do not run on meters, so the fare is whatever you agree. <b>Agree it before you get in</b>, for the whole trip, including waiting time if you are asking the driver to hold. A price settled on the pavement is a price; a price left open until you arrive is a negotiation you will lose.",
+            "For a <b>full day</b> around the Angkor temples, hiring a tuk-tuk driver for the day is the standard arrangement, and it is worth agreeing the route as well as the price, since the small and grand circuits are different amounts of driving. A good driver you can rebook for a second day is the most useful thing you will find in Siem Reap."
+          ]
+        },
+        {
+          h: "Paying, tipping and the airport",
+          icon: "usd",
+          key: { fig: "Small bills", tag: "Dollars in hand", text: "Fares are small and settled in US dollars, so keep ones and fives on you. A dollar or two on top is a normal thank you for a good ride.", tone: "teal" },
+          p: [
+            "Fares are low and paid in <b>US dollars</b>, so a hundred-dollar note from an ATM is no help at all: keep <b>ones and fives</b> in your pocket. Riel is handy for rounding. A <b>dollar or two on top</b> is a normal thank you, and a driver who waited around for you all day deserves more.",
+            "Arriving at <b>Phnom Penh or Siem Reap</b>, use the <b>official taxi desk</b> in the terminal or the marked <b>app pickup area</b>, rather than the first offer you get walking out. Because ride apps need data, having your eSIM working before you land is what makes this easy. This guide is written for US travelers departing the US. For the wider picture, see <a href='/cambodia/cash-or-card'>cash or card in Cambodia</a>, <a href='/cambodia/tipping'>tipping in Cambodia</a>, and the <a href='/cambodia'>Cambodia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is there Uber in Cambodia?", a: "No. The apps to use are PassApp, which was built in Cambodia and dispatches metered tuk-tuks and cars, and Grab, the regional app. Both show the fare before you ride." },
+        { q: "How do I avoid overpaying for a tuk-tuk in Cambodia?", a: "Use PassApp or Grab so the fare is set in the app, or agree the price out loud before you get in. What causes trouble is starting the journey with the fare still undecided." },
+        { q: "Can I pay for rides by card in Cambodia?", a: "In Grab, often yes. PassApp leans towards cash to the driver. Either way, keep small US dollar bills on you, since fares are small and a large note is useless to a tuk-tuk driver." },
+        { q: "How much should I pay a tuk-tuk driver for a day at Angkor?", a: "Hiring a driver for a full day is the standard arrangement, and the price depends on which temple circuit you want, so agree the route and the fare together before you set out. A generous tip on top is normal for a long, hot day of waiting." }
+      ],
+      sources: {
+        links: [
+          { label: "PassApp: the Cambodian ride app's own listing, describing metered tuk-tuk, rickshaw and car bookings", url: "https://play.google.com/store/apps/details?id=kh.com.passapp.passenger", type: "official" },
+          { label: "US State Department: Cambodia country information, including road and transportation safety", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Cambodia.html", type: "gov" }
+        ],
+        judgment: "Which app has the most cars, and what a fair tuk-tuk fare looks like, both move around, so we have avoided quoting prices and stuck to the habits that hold: use an app, or agree the fare before you get in. Checked July 2026."
+      }
+    }
+  ]
 };

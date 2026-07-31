@@ -165,5 +165,191 @@ export default {
         note: "Good to know: San Martin is honored as El Libertador" },
     ],
     pride: "The heart of Argentine friendship is mate, a bitter green tea shared from one gourd and a metal straw, passed around the circle. Being offered the gourd is a small act of belonging. That, and a Sunday asado, is the country at its warmest."
-  }
+  },
+
+  spokes: [
+    {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Currency", v: "Argentine peso (ARS)" },
+        { k: "Cards", v: "Fine for most things now" },
+        { k: "Cash for", v: "Taxis, kiosks, markets, tips" },
+        { k: "On a card", v: "Choose pesos, not dollars" }
+      ],
+      live: true,
+      topic: "cash",
+      caution: "medium",
+      title: "Do I need cash in Argentina, or can I use cards? (2026) | True Trip Costs",
+      description: "Less than you would expect. Since Argentina lifted its currency controls a foreign card gets a fair rate, so tap for most things and keep pesos for taxis, small shops and tips. Checked July 2026.",
+      h1: "Do I need cash in Argentina, or can I use cards?",
+      lede: "Short answer: cards cover most of a city trip, and you want pesos for the small stuff. The old blue-dollar trick is finished, which makes this much simpler than it was a few years ago. Here is how to handle it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "Cards for most things, pesos for the small stuff. Since Argentina lifted its currency controls, a <b>foreign Visa or Mastercard now gets a fair rate</b> in pesos, so tap or dip for hotels, restaurants, shops and Uber. Keep <b>some pesos in small notes</b> for ordinary taxis, kiosks, markets, casual cafes and tips. Always choose <b>pesos, never dollars</b>, on any card terminal or ATM screen. <b>Amex is rarely accepted</b>, so carry Visa or Mastercard. The one real catch: <b>Argentine ATMs are the expensive way</b> to get cash, so plan where your pesos come from.",
+      sections: [
+        {
+          h: "The blue-dollar era is over, so cards are fine",
+          icon: "card",
+          key: { fig: "A fair rate", tag: "Cards are the default now", text: "The official, street and card rates converged after the currency controls came off, so a foreign card is charged in pesos at a rate close to the street rate. There is no longer a prize for arriving with a thick envelope of dollars.", tone: "teal" },
+          p: [
+            "For years the move was to bring US dollar cash and change it at the street rate for far more pesos. That gap has closed. A <b>foreign Visa or Mastercard</b> is charged in pesos at a rate that is now competitive, so cards are the easy default for <b>hotels, restaurants, shops, tours and Uber</b>. Visa applies the rate at the moment of purchase, while Mastercard charges the official rate and refunds the difference within a few days, which can look odd on your statement and is nothing to worry about.",
+            "<b>Amex is rarely accepted</b>, so do not make it your only card, and bring a backup from a different bank. Your own bank's foreign transaction fee still applies unless your card waives it, which is the one cost you control before you leave. Ignore the alarming card-dollar figures in the local press: those describe what Argentine residents pay on foreign spending, not what a visitor's card gets here."
+          ]
+        },
+        {
+          h: "Where you still want pesos",
+          icon: "cash",
+          key: { fig: "Small notes", tag: "Taxis, kiosks, tips", text: "Ordinary taxis, small shops, market stalls, casual cafes and tips are cash. Because the largest note is worth only a few dollars, keep a stack of smaller ones rather than one big note.", tone: "teal" },
+          p: [
+            "Cash still handles <b>ordinary street taxis, small shops, market stalls, casual cafes and every tip</b>, and it leans more essential the further you get from Buenos Aires. Card receipts here often have no tip line, so a tip left on a card may never reach your server: <b>pesos in hand</b> are the sure way.",
+            "Keep <b>small notes</b>. The largest peso note is worth only a handful of dollars, so a big note is hard to break in a kiosk and awkward in a taxi. The better value for a larger cash top-up is exchanging US dollars at an <b>official casa de cambio</b> or picking up pesos from <b>Western Union</b>, both of which sit close to the street rate. In Buenos Aires, note that the subway and buses take a <b>SUBE card</b> rather than cash, so pick one up at a kiosk or station early."
+          ]
+        },
+        {
+          h: "Choose pesos, and go easy on the ATM",
+          icon: "atm",
+          key: { fig: "Say no", tag: "Dollar offers cost you", text: "Any screen offering to charge you in dollars is dynamic currency conversion, which quietly adds a few percent. Choose pesos on every terminal and every ATM.", tone: "amber" },
+          p: [
+            "When a card terminal or an ATM asks whether to charge you in <b>dollars or pesos, always choose pesos</b>. Choosing your home currency is dynamic currency conversion, and it adds a few percent at a rate set by the machine rather than your bank. Decline it every time, on every screen.",
+            "Argentine <b>ATMs are the pricey option</b>: per-withdrawal limits are low, often the equivalent of 70 to 150 dollars, and the flat fee can run 10 percent or more of a small withdrawal. A fee-refunding card such as <b>Charles Schwab</b> is the main way to make them bearable. Withdraw inside a bank in daylight, take the largest amount the machine allows, and check the rate shortly before you travel, because inflation is still high and figures move fast. This guide is written for US travelers departing the US. For more, see <a href='/argentina/tipping'>tipping in Argentina</a>, <a href='/argentina/taxis-and-ride-hailing'>taxis and ride-hailing in Argentina</a>, and the <a href='/argentina'>Argentina money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in Argentina?", a: "Some, but less than you would expect. Cards now get a fair rate and cover hotels, restaurants, shops and Uber. Keep pesos in small notes for ordinary taxis, kiosks, markets, casual cafes and tips, and a little more if you are heading away from Buenos Aires." },
+        { q: "Should I still bring US dollars to Argentina?", a: "A modest amount is handy, but you no longer need a thick envelope of them. The street, official and card rates converged after the currency controls came off, so the old bargain is gone. Clean dollar bills still exchange well at an official casa de cambio or through Western Union if you want a larger cash top-up." },
+        { q: "Should I pay in pesos or dollars on a card machine?", a: "Always pesos. If a terminal or ATM offers to charge you in dollars, decline it. That is dynamic currency conversion, and it adds a few percent at the machine's own rate rather than your bank's." },
+        { q: "What is the cheapest way to get pesos?", a: "Exchanging US dollars at an official casa de cambio, or collecting pesos from Western Union, both of which sit close to the street rate. Argentine ATMs are the expensive route, with low per-withdrawal limits and a steep flat fee, though a card that refunds ATM fees takes most of the sting out." }
+      ],
+      sources: {
+        links: [
+          { label: "Central Bank of Argentina: the official peso exchange rate and monetary statistics", url: "https://www.bcra.gob.ar/en/", type: "bank" },
+          { label: "US State Department: Argentina country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Argentina.html", type: "gov" }
+        ],
+        judgment: "That cards now get a fair rate is settled, and that ATMs are the expensive way to buy pesos is our own read from recent traveler and bank reports rather than one official table. The peso moves fast, so treat any figure as a snapshot. Checked July 2026."
+      }
+    },
+    {
+      slug: "tipping",
+      glance: [
+        { k: "Restaurants", v: "About 10 percent" },
+        { k: "On the bill", v: "Usually not, so add it" },
+        { k: "How", v: "Cash pesos, handed over" },
+        { k: "Cubierto", v: "A cover charge, not a tip" }
+      ],
+      live: true,
+      topic: "tipping",
+      caution: "low",
+      title: "Tipping in Argentina: what you actually owe (2026) | True Trip Costs",
+      description: "How tipping works in Argentina for US travelers in 2026: about 10 percent in cash at sit-down restaurants, why the cubierto is not a tip, and what to leave drivers, guides and hotel staff. Checked July 2026.",
+      h1: "Tipping in Argentina",
+      lede: "Tipping here is modest, almost always cash, and rarely on the bill. About 10 percent at a sit-down restaurant covers it, with a couple of local quirks worth knowing before the check arrives.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "Modest, and in cash. At a <b>sit-down restaurant</b>, around <b>10 percent</b> is the norm for good service, a little more for something special, and it is <b>usually not added to the bill</b>. Card terminals often have <b>no tip line</b>, and a tip added to a card may not reach your server, so leave it in <b>cash pesos</b>. Watch for the <b>cubierto</b>, a small per-person cover charge that goes to the house, not the waiter, so it does not replace your tip. <b>Taxis</b> are not really tipped beyond rounding up, and Uber is settled in the app.",
+      sections: [
+        {
+          h: "About 10 percent, in cash, at the table",
+          icon: "coins",
+          key: { fig: "10 percent", tag: "Cash, not the card", text: "Around 10 percent is the norm at a sit-down restaurant, usually not printed on the bill. Card machines often have no tip line, so leave it in cash where you can hand it over.", tone: "teal" },
+          p: [
+            "In a <b>sit-down restaurant or cafe with table service</b>, around <b>10 percent</b> is the everyday norm and closer to 15 percent for a memorable meal. It is <b>rarely added for you</b>, so it is on you to leave it. At a counter, a bakery or a quick coffee, nothing is expected.",
+            "Leave it in <b>cash pesos</b> if you can, ideally handed to the person who served you. Many card terminals here simply have no tip field, and where they do, the money does not reliably reach the staff. This is the main reason to keep small peso notes on you even when you are paying for the meal itself by card."
+          ]
+        },
+        {
+          h: "The cubierto is not a tip",
+          icon: "receipt",
+          key: { fig: "Cubierto", tag: "A cover charge", text: "Many restaurants add a small per-person cubierto for bread and the table setting. It goes to the restaurant rather than your server, so a tip is still expected on top.", tone: "amber" },
+          p: [
+            "Plenty of restaurants add a small per-person <b>cubierto</b>, a cover charge for bread and the table setting. It is legitimate and it will be printed on the bill, but it goes to <b>the house, not your server</b>, so it does not stand in for a tip. Read the bill before you decide what to leave.",
+            "Some places, especially in tourist areas, also add a <b>service charge</b>. Where one is already on the bill you have done your part, and anything extra is a bonus rather than an expectation."
+          ]
+        },
+        {
+          h: "Drivers, guides and hotel staff",
+          icon: "tip",
+          key: { fig: "Round up", tag: "Taxis and small services", text: "Round up an ordinary taxi fare, and a little more if the driver handles your bags. Uber is paid in the app, and a small note is welcome for porters and housekeeping.", tone: "teal" },
+          p: [
+            "For an <b>ordinary taxi</b>, round the fare up rather than working out a percentage, and add a little if the driver helps with luggage. <b>Uber and the other apps</b> are settled in the app, where a tip is optional. For <b>hotel porters and housekeeping</b>, a small note is appreciated, and a <b>private guide or driver</b> who makes your day is worth more.",
+            "One local quirk: because the peso loses value quickly, a <b>small US dollar bill</b> is genuinely welcome to guides, porters and drivers who prefer to save in dollars, even though pesos are far more practical for everything else. This guide is written for US travelers departing the US. For the wider picture, see <a href='/argentina/cash-or-card'>cash or card in Argentina</a>, <a href='/argentina/taxis-and-ride-hailing'>taxis and ride-hailing in Argentina</a>, and the <a href='/argentina'>Argentina money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much should I tip in a restaurant in Argentina?", a: "Around 10 percent for good service at a sit-down restaurant, and closer to 15 percent for something special. It is usually not added to the bill, so leave it yourself, in cash where you can." },
+        { q: "Can I tip by card in Argentina?", a: "Often not. Many card terminals have no tip line, and where a tip can be added it does not reliably reach the person who served you. Cash pesos handed over directly are the sure route, so keep small notes even when you pay the bill by card." },
+        { q: "What is the cubierto on my bill?", a: "A small per-person cover charge for bread and the table setting. It is normal and legitimate, but it goes to the restaurant rather than your server, so it does not replace a tip." },
+        { q: "Do you tip taxi drivers in Argentina?", a: "Not as a percentage. Rounding the fare up is normal, with a little extra if the driver helps with your bags. Rides booked through an app are paid in the app, where a tip is optional." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Argentina country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Argentina.html", type: "gov" },
+          { label: "Visit Argentina: the national tourism board's official visitor information", url: "https://www.argentina.travel/en", type: "official" }
+        ],
+        judgment: "Tipping norms are social rather than official, so the percentages here are the True Trip Costs desk's read from recent traveler reports and local practice, not a published schedule. The cubierto and the missing tip line on card terminals are the two things visitors most often get wrong. Checked July 2026."
+      }
+    },
+    {
+      slug: "taxis-and-ride-hailing",
+      glance: [
+        { k: "Apps", v: "Uber, Cabify, DiDi in Buenos Aires" },
+        { k: "Street taxis", v: "Black and yellow, metered" },
+        { k: "Safer bet", v: "A radio taxi or an app" },
+        { k: "Paying", v: "Pesos in small notes, or in app" }
+      ],
+      live: true,
+      topic: "taxis",
+      caution: "low",
+      title: "Taxis in Argentina: apps, radio taxis and the meter (2026) | True Trip Costs",
+      description: "How taxis work in Argentina for US travelers in 2026: which ride apps operate in Buenos Aires, why a radio taxi beats a cold street hail, how the meter works, and what to carry to pay. Checked July 2026.",
+      h1: "Taxis in Argentina, and which apps work",
+      lede: "Taxis are cheap, plentiful and metered, and the money question is mostly about how you order one. An app or a radio taxi gives you a record and a price, which is why they are the better default here.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "In Buenos Aires, <b>Uber, Cabify and DiDi</b> all operate, and an app or a phone-ordered <b>radio taxi</b> is the safer money choice than flagging down whatever passes. Street taxis are <b>black and yellow, licensed and metered</b>, and the meter should be running from the start. Fares are in <b>pesos</b>, so carry <b>small notes</b>, since drivers are often short of change and some do not take cards. Round up rather than tipping a percentage. At the airports, use the <b>official taxi desk or the signposted app pickup area</b> rather than anyone who approaches you inside the terminal.",
+      sections: [
+        {
+          h: "Apps, and why a radio taxi beats a cold hail",
+          icon: "taxi",
+          key: { fig: "Book it", tag: "App or radio taxi", text: "Uber, Cabify and DiDi operate in Buenos Aires, and radio taxi firms take phone and app bookings. Either way you get a price and a record, which a street hail does not give you.", tone: "teal" },
+          p: [
+            "<b>Uber, Cabify and DiDi</b> all operate in Buenos Aires, showing the fare and the driver before you get in, and settling in the app. The local equivalent is a <b>radio taxi</b>, a licensed firm you order by phone or app, identifiable by the company sign on the roof or door. Argentina's own tourism board points visitors to radio taxi services and official apps as the safe way to ride.",
+            "Most street taxis are perfectly fine, but a cold hail is the one option with <b>no record of your trip</b>, which is why the sensible default is to order rather than flag. If you do hail one, check that the <b>meter is on</b> from the start and that the driver's license is displayed inside. App coverage is best in Buenos Aires and thinner in smaller cities, where a phone-ordered taxi or a remis arranged through your hotel is the normal way to travel."
+          ]
+        },
+        {
+          h: "The meter, the fare and paying",
+          icon: "coins",
+          key: { fig: "Small notes", tag: "Change is scarce", text: "Fares are metered in pesos and many drivers cannot break a large note. Carry small notes, count your change, and check whether a card is accepted before you set off.", tone: "amber" },
+          p: [
+            "Fares run on a <b>regulated meter</b> and are quoted in <b>pesos</b>, with a higher tariff late at night. There is nothing to negotiate in an ordinary taxi, and a driver who wants to agree a price up front instead of using the meter is the moment to find another cab.",
+            "Pay with <b>small notes</b> where you can. Change is genuinely scarce, a large note is the usual source of a fare dispute, and while more drivers now take cards, plenty still do not, so ask before you set off if that matters. Count what you are handed back. To <b>tip</b>, round the fare up, and add a little if the driver handles your bags."
+          ]
+        },
+        {
+          h: "Airports, and getting into town",
+          icon: "alert",
+          key: { fig: "Official desk", tag: "Or the app pickup point", text: "At Ezeiza and Aeroparque, book at the official taxi or remis counter inside the terminal, or walk to the signposted app pickup area. Skip anyone who approaches you in the arrivals hall.", tone: "teal" },
+          p: [
+            "At <b>Ezeiza (EZE)</b> and <b>Aeroparque (AEP)</b>, the clean options are the <b>official taxi or remis counter</b> inside the terminal, where the fare is arranged before you leave the building, or the <b>signposted pickup area</b> for Uber and Cabify outside. Anyone who approaches you in the arrivals hall offering a ride is the one to walk past.",
+            "A pre-booked <b>remis</b>, a private car at a fixed price, is the other normal way to do the airport run and is often what a hotel will arrange for you. This guide is written for US travelers departing the US. For the wider picture, see <a href='/argentina/cash-or-card'>cash or card in Argentina</a>, <a href='/argentina/tipping'>tipping in Argentina</a>, and the <a href='/argentina'>Argentina money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does Uber work in Argentina?", a: "Yes in Buenos Aires, along with Cabify and DiDi, and coverage is thinner in smaller cities. All three show the fare and the driver before you ride and settle in the app, which is why they are a good default for a visitor." },
+        { q: "Are taxis in Buenos Aires safe?", a: "Ordinary licensed taxis are generally fine, and the safer habit is to order a radio taxi by phone or app rather than hail one cold, because that leaves a record of the trip. Check that the meter is running from the start and that the driver's license is on display." },
+        { q: "Can I pay for a taxi by card in Argentina?", a: "Sometimes. More drivers take cards than a few years ago, but many still prefer cash, so ask before you set off. Carry small peso notes, since change is scarce and a large note is the usual source of a dispute." },
+        { q: "What is the best way to get from Ezeiza airport into Buenos Aires?", a: "Book at the official taxi or remis counter inside the terminal, or walk out to the signposted pickup area for Uber and Cabify. A pre-arranged remis at a fixed price is also normal. Avoid anyone offering you a ride in the arrivals hall." }
+      ],
+      sources: {
+        links: [
+          { label: "Visit Argentina: the tourism board's guide to getting around by Uber, Cabify and DiDi, and its advice to use radio taxis or official apps", url: "https://www.argentina.travel/en/news/useful-apps-to-get-around-argentina-uber-cabify-or-didi", type: "official" },
+          { label: "US State Department: Argentina country information, including transportation and safety", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Argentina.html", type: "gov" }
+        ],
+        judgment: "App coverage and taxi tariffs change, and city fares are set locally, so we have kept this to the habits that hold: order rather than hail, watch the meter, carry small notes. Checked July 2026."
+      }
+    }
+  ]
 };
