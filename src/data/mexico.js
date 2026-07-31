@@ -165,6 +165,84 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "staying-connected",
+      topic: "connectivity",
+      live: true,
+      esim: true,
+      caution: "low",
+      glance: [
+        { k: "Check first", v: "Your own plan, Mexico is usually included" },
+        { k: "Big three unlimited", v: "Generally covered at no extra cost" },
+        { k: "If you do buy", v: "The network matters more than the price" },
+        { k: "The rural answer", v: "Telcel, and only Telcel" }
+      ],
+      title: "Staying connected in Mexico: you are probably already covered (2026) | True Trip Costs",
+      description: "Most US travelers to Mexico already have it included and should buy nothing. Which plans genuinely leave you exposed, why an included plan can still be the wrong answer outside the cities, and why the cheapest eSIM may be on the network that does not reach where you are going. Checked July 2026.",
+      h1: "Staying connected in Mexico.",
+      lede: "This is the page where the honest answer costs us money, so we will lead with it: if you are on a current unlimited plan from a big US carrier, Mexico is almost certainly already included and you should buy nothing at all.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-31",
+      answer: "Check your <b>own plan first</b>, and for most people that is the whole job. <b>Mexico is included at no extra cost</b> on most current unlimited plans from <b>T-Mobile, AT&amp;T and Verizon</b>, unlike Europe where the same carriers charge around 12 dollars a day. If someone at the airport is selling you a SIM, that is your cue to <b>check, not to buy</b>. Four situations genuinely leave you exposed: <b>prepaid, legacy or basic plans</b>, some <b>budget carriers</b> (Visible includes Mexico only on its Plus tiers), <b>data caps and throttling</b> hidden inside the word included, and <b>hotspot</b>, which is conditioned separately. One more thing nobody selling you data will mention: if you are heading somewhere remote, the question is not price but <b>which network</b>, and the answer is <b>Telcel</b>.",
+      sections: [
+        {
+          h: "Check your plan, then probably stop",
+          icon: "roamfee",
+          key: { fig: "Included", tag: "On most big-three unlimited", text: "Mexico and Canada are bundled into most current unlimited plans at no extra charge, which is not true of Europe. For a large majority of US travelers the correct action is none.", tone: "teal" },
+          p: [
+            "Mexico is the friendliest destination in this whole section, because the big three treat it almost as an extension of home. <b>T-Mobile</b> includes Mexico on Magenta, Go5G and Go5G Plus. <b>Verizon</b> includes it on its unlimited plans, and the Simplicity Plan launched in June 2026 spells out unlimited talk, text and data roaming in Canada and Mexico. <b>AT&amp;T</b> works in Mexico on most unlimited plans, riding AT&amp;T Mexico, Telcel or Movistar depending on where you are, and calls to Mexican numbers are included on most current unlimited talk and text plans.",
+            "Compare that with what the same carriers charge for Europe, roughly <b>12 dollars a day</b>, and you can see why Mexico gets treated differently. It is bundled, not sold. So the first and often only step is to open your carrier app and confirm that international roaming in Mexico is switched on and included on your specific plan.",
+            "We will be blunt about our own position here, because it matters. We earn a commission when someone buys an eSIM through us, and on this page most readers should not. Telling you to buy nothing is the point of the site rather than an exception to it. If you are on a current unlimited plan and staying in the cities or the tourist corridors, you are done: turn on roaming, land, and get on with your trip."
+          ]
+        },
+        {
+          h: "Who is genuinely not covered",
+          icon: "alert",
+          key: { fig: "4 gaps", tag: "Where included stops being true", text: "Prepaid and legacy plans, some budget carriers, data caps inside the word included, and hotspot. Each is worth thirty seconds of checking before you fly.", tone: "amber" },
+          p: [
+            "<b>Prepaid, legacy and basic plans.</b> This is the biggest gap. Older plans and many prepaid tiers were never sold with North American roaming, and on those you can land on <b>per-minute long-distance charges</b> instead. If your plan is not a current-generation unlimited plan, assume nothing and check it explicitly.",
+            "<b>Budget carriers and MVNOs vary enormously.</b> The instructive case is <b>Visible</b>, which Verizon owns and which runs on Verizon's network, yet includes Mexico and Canada only on its <b>Plus and Plus Pro</b> tiers rather than the base plan. Being on a major network is not the same as being on a plan that travels. Mint, Cricket, Metro, Boost and the rest each have their own rules.",
+            "<b>Included does not always mean unlimited.</b> T-Mobile's Better Value plan, launched in January 2026, comes with <b>30GB</b> in Mexico and Canada rather than unlimited, and across carriers you may hit reduced speeds after a threshold. For a week of maps and WhatsApp that is irrelevant. For streaming or working, read the number.",
+            "<b>Hotspot and long stays are conditioned separately.</b> Tethering can be restricted or unavailable while roaming even when your own data works, so check it if you plan to work off your phone. And carriers monitor extended roaming: a month in Oaxaca is a different proposition from ten days in Cancun, and prolonged use abroad can bring reduced speeds or restricted service."
+          ]
+        },
+        {
+          h: "The part nobody selling data will tell you",
+          icon: "phoneok",
+          key: { fig: "Telcel", tag: "The only rural network", text: "Outside the cities and tourist corridors, coverage is effectively a one-network question. Many travel eSIMs run on AT&T Mexico or Movistar, which is the wrong answer for remote Mexico.", tone: "amber" },
+          p: [
+            "Here is the thing that changes the decision, and it is a coverage question rather than a price one. <b>Telcel</b> is dominant, with roughly <b>60 to 65% market share</b> and reported population coverage near 99%, and crucially it is the network you can actually rely on <b>beyond the tourist belt</b>: the Oaxaca backcountry, Chiapas, Baja, the Copper Canyon, long highway stretches. In the cities all three networks are fine. Outside them it is close to a one-horse race.",
+            "That has an awkward implication for travel eSIMs, including the one we link. Many of them ride <b>AT&amp;T Mexico or Movistar</b> rather than Telcel, and providers do not always state which network they use. Sources disagree about which network specific brands run on in Mexico, which is itself a reason to check at the point of purchase rather than trust a comparison page, ours included. If your trip is city and resort, this does not matter. If you are going remote, <b>the network is the whole decision</b> and a cheaper plan on the wrong network is worse than no plan.",
+            "For genuinely remote travel the reliable answer is a <b>local Telcel prepaid SIM</b>, bought in Mexico. Telcel's Amigo prepaid packages run roughly <b>100 to 500 pesos</b>, about <b>5 to 25 dollars</b>, for something in the range of 3 to 10GB over 30 days, which works out cheaper per gigabyte than any travel eSIM. You can buy chips and top-ups for cash at <b>Oxxo</b> stores, which are everywhere. As of 2026 travelers also report being able to convert a Telcel prepaid SIM to an eSIM at a full Telcel <b>Centro de Atencion a Clientes</b>, taking around 15 to 30 minutes, which finally makes Telcel usable on newer US iPhones with no SIM tray. Not every small kiosk can do it, so go to a proper service centre."
+          ]
+        },
+        {
+          h: "So what should you actually do",
+          icon: "tag",
+          key: { fig: "Buy nothing", tag: "For most readers, honestly", text: "Confirm your plan includes Mexico and stop. Buy only if you fall into one of the four gaps, or if you are heading somewhere where Telcel is the only network that reaches.", tone: "teal" },
+          p: [
+            "<b>If you are on a current unlimited plan and staying in cities, resorts or the main tourist corridors:</b> confirm roaming is on and buy nothing. That is the answer for most people reading this.",
+            "<b>If you fall into one of the four gaps above</b>, prepaid or legacy plan, a budget carrier that excludes Mexico, a cap too small for how you use data, or a hotspot you actually need, then a travel eSIM bought before you fly is the least hassle and is cheaper than any pay-per-use roaming, which you should never do.",
+            "<b>If you are going beyond the tourist belt</b>, buy for coverage rather than for price, and that means Telcel. Either a local Telcel prepaid SIM once you arrive, or an eSIM you have confirmed runs on Telcel. Download offline maps either way, because no plan fixes a dead zone.",
+            "For what your card does at the till once you are there, see the <a href='/mexico/cash-or-card'>Mexico cash and cards guide</a>. Canada is the other trip where your existing plan often covers you, and that is written up in the <a href='/canada/staying-connected'>Canada connectivity guide</a>. The wider picture is on our <a href='/staying-connected'>staying connected</a> page."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does my US phone plan work in Mexico?", a: "Probably, and at no extra cost. Mexico is included on most current unlimited plans from T-Mobile, AT&T and Verizon, unlike Europe where the same carriers charge around 12 dollars a day. The exceptions are prepaid, legacy and basic plans, and some budget carriers. Open your carrier app and confirm before you fly, and if it is included, buy nothing." },
+        { q: "Do I need to buy a SIM card or eSIM for Mexico?", a: "Most US travelers do not. If someone is selling you one at the airport, treat that as a prompt to check your own plan rather than a reason to buy. You genuinely need one in four cases: a prepaid or legacy plan without North American roaming, a budget carrier that excludes Mexico, a data cap too small for how you use your phone, or a hotspot requirement. Going somewhere remote is a fifth reason, but that is about coverage rather than cost." },
+        { q: "Which Mexican network has the best coverage?", a: "Telcel, by a clear margin, with roughly 60 to 65% market share and the only network you can rely on beyond the cities and tourist corridors, including places like the Oaxaca backcountry, Chiapas and Baja. In cities all three networks are fine. This matters when buying, because many travel eSIMs run on AT&T Mexico or Movistar instead, which is the wrong network for remote travel." },
+        { q: "Is a Telcel SIM cheaper than a travel eSIM for Mexico?", a: "Per gigabyte, yes, clearly. Telcel Amigo prepaid packages run roughly 100 to 500 pesos, about 5 to 25 dollars, for something like 3 to 10GB over 30 days, and you can buy chips and top-ups for cash at Oxxo stores. A travel eSIM costs more per gigabyte but works from the moment you land with no shop visit. For a short city trip the eSIM convenience usually wins; for a longer or more remote trip Telcel wins on both price and coverage." },
+        { q: "Does Visible work in Mexico?", a: "Only on the Plus and Plus Pro tiers, which include talk, text and data in Mexico and Canada. The base Visible plan does not, despite Visible being owned by Verizon and running on Verizon's network. It is the clearest example of why being on a major network is not the same as being on a plan that travels." }
+      ],
+      sources: {
+        links: [
+          { label: "Verizon: plan comparison, including which plans carry Canada and Mexico roaming", url: "https://www.verizon.com/plans/compare/", type: "card" },
+          { label: "US State Department: Mexico country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Mexico.html", type: "gov" }
+        ],
+        judgment: "We have written this page against our own commercial interest, so it is worth being clear about what is solid and what is not. That Mexico is bundled into most current big-three unlimited plans, rather than sold as a daily pass the way Europe is, is consistent across carrier pages and current comparison reporting, and Verizon's own plan pages confirm it for the Simplicity Plan. But carrier terms are the fastest-moving thing we cover and they vary by plan generation, so the instruction is to check your own plan rather than to trust this paragraph. The four gaps are documented patterns rather than a complete list: the Visible tier restriction, T-Mobile's 30GB allowance on the Better Value plan, and reduced speeds on prolonged roaming are all specific and current, but every MVNO has its own rules and we cannot enumerate them. Telcel's market share is reported in the 60 to 65% range depending on source and its coverage lead outside the cities is consistently described, though the near-99% population figure is a carrier-derived claim rather than an independent measurement. Telcel prepaid prices are converted from peso packages that change, so treat the dollar range as approximate. On which network individual travel eSIM brands use in Mexico, sources genuinely conflict, including about brands we could otherwise recommend, so we deliberately tell you to verify the network at purchase instead of naming one, and we would rather lose the sale than send someone remote on the wrong network. Checked July 2026."
+      }
+    },
+    {
       slug: "fmm-and-visitax",
       glance: [
         { k: "Visa", v: "None, up to 180 days" },
