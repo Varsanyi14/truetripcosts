@@ -10,7 +10,7 @@ export default {
     changed: "First publication. Confirmed the money facts that matter most this year: Croatia is now on the euro (adopted in 2023), which is worth about 1.15 US dollars, cards are widely taken, and there is a small nightly sojourn tax that is higher on the coast in summer. VAT is 25%, and non-EU visitors can reclaim it on shopping over about 100 euros. On entry, Croatia joined Schengen in 2023 and the EU's biometric Entry/Exit System went live in April 2026, with a US passport still all you need for now. Updated 31 July 2026: the EU removed its late-2026 ETIAS target, so this guide no longer quotes a start date for it.",
     links: [
       { label: "Croatian Tax Administration (Porezna uprava): the 25% VAT and the tax-free refund for travelers from outside the EU", url: "https://www.porezna-uprava.hr/en", type: "revenue" },
-      { label: "European Union travel portal: the Entry/Exit System (EES) in operation at Schengen borders, and ETIAS not yet running with no launch date", url: "https://travel-europe.europa.eu/ees_en", type: "gov" },
+      { label: "European Union travel portal: the Entry/Exit System (EES) at Schengen borders, and the ETIAS travel authorization", url: "https://travel-europe.europa.eu/ees_en", type: "gov" },
       { label: "Croatia.hr: the official tourism site, for the sojourn tax, ferries and visitor basics", url: "https://croatia.hr/en-gb", type: "tourism" },
     ],
     judgment: "The daily cash share, the tipping feel, and the exact sojourn tax you pay are our own estimate from experience and consistent traveler reports, not an official figure. The sojourn tax varies by town and season and is shown here as a representative amount.",
@@ -35,7 +35,7 @@ export default {
 
   recentChange: {
     date: "Jul 2026",
-    text: "Two changes since a pre-2023 visit. On <b>1 January 2023 Croatia joined both the euro and the Schengen area</b>, so the old kuna is gone (everything is now priced and paid in euros) and there are no longer routine passport checks at land borders with neighbors like Slovenia or Hungary. Since April 2026, arriving from outside the EU, you give a quick fingerprint and photo at the border under the new <b>EES</b> system, with <b>no fee and no form</b>. A separate authorization, <b>ETIAS</b>, is <b>not running and has no launch date</b>: the EU removed its late-2026 target in July 2026 and says it will announce a real date several months ahead. Any site selling you an ETIAS today is selling something that does not exist yet. A US passport is all you need for now."
+    text: "Two changes since a pre-2023 visit. On <b>1 January 2023 Croatia joined both the euro and the Schengen area</b>, so the old kuna is gone (everything is now priced and paid in euros) and there are no longer routine passport checks at land borders with neighbors like Slovenia or Hungary. Because Croatia is now inside Schengen, the EU's biometric border system applies when you arrive from outside the EU."
   },
 
   notice: 'We only cover trips departing from the United States right now. Want an email the moment we add your home country? <a href="#" onclick="return false"><b>Sign up for an alert</b></a>.',
@@ -59,7 +59,7 @@ export default {
       "Bring a <b>no-foreign-fee Visa or Mastercard</b>, plus a backup. Amex is patchier here.",
       "Croatia is on the <b>euro</b> now, so pack as you would for any eurozone trip; the old kuna is gone.",
       "Plan to pay by card in the towns and carry some euros for islands, konobas and ferries.",
-      "At the border you will now be fingerprinted and photographed under the new <b>EES</b> system. There is no fee and no form, and a US passport is all you need for now."
+      "At the border you will be fingerprinted and photographed under the EU's <b>EES</b> system, so allow extra time on arrival in summer."
     ], cta: { label: "See no-fee card options", tag: "earn", href: "#" } },
     { sym: "plane", when: "At the airport", bullets: [
       "Skip the exchange counters and <b>Euronet</b> ATMs. Use a bank ATM, and <b>decline 'convert to US dollars.'</b>",
@@ -141,7 +141,7 @@ export default {
     { q: "Can I get a VAT refund on shopping in Croatia?", a: "Yes. Non-EU visitors can reclaim the 25% VAT on goods: spend over about 100 euros in one store, ask for a tax-free form, keep the goods unused, and have customs stamp it when you leave the EU. After fees you get back roughly 17%, and it is for goods, not hotels or meals." },
     { q: "Do I need to register with the police in Croatia?", a: "If you stay in a hotel or a registered rental, it is done for you automatically at check-in. If you stay privately with friends or family, you must register yourself at the local police within 24 hours, with your passport." },
     { q: "Do you tip in Croatia?", a: "Lightly. Round up or leave about 10% for good table service, in cash, after checking touristy bills for a service charge. Tipping is not expected for a quick coffee or drink beyond rounding up." },
-    { q: "Do I need a visa or ETIAS for Croatia?", a: "Not right now. US citizens visit visa-free for up to 90 days in any 180. Croatia joined Schengen in 2023, and since April 2026 you give a fingerprint and photo at the border under the new EES system, with no fee and no form. ETIAS, a small online fee, is not yet running and has no launch date: the EU withdrew its late-2026 target in July 2026 and will announce a real one several months in advance." }
+    { q: "Do I need a visa or ETIAS for Croatia?", a: "Not right now. US citizens visit visa-free for up to 90 days in any 180. Croatia joined Schengen in 2023, and since April 2026 you give a fingerprint and photo at the border under the EES system, with no fee and no form. ETIAS, a separate online authorization, is not yet in operation, and the EU has said it will announce a start date several months before it begins, so there is nothing to apply for and nothing to buy today." }
   ],
   culture: {
     heading: "A little Croatian goes a long way",

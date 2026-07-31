@@ -1,0 +1,126 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import CompareByRegion from '../components/CompareByRegion.astro';
+import USBadge from '../components/USBadge.astro';
+import { countries } from '../data/index.js';
+import fs from 'node:fs';
+
+// Money scams, topic hub. Gathers every topic:"scams" country spoke, the same aggregation
+// cash-or-card, taxis-and-ride-hailing, driving-and-car-rental and staying-connected use, so
+// adding a scams spoke to any guide surfaces it here automatically. Before this page existed
+// these 11 spokes were reachable only from inside their own country guide. Checked July 2026.
+
+const flagDir = process.cwd() + '/public/flags/';
+const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? '/flags/' + slug + '.svg' : '/flags/world.svg';
+
+const spokes = countries
+  .filter(c => c.live)
+  .flatMap(c => (c.spokes || [])
+    .filter(s => s.topic === 'scams' && s.live !== false)
+    .map(s => ({ h1: s.h1, lede: s.lede, spokeSlug: s.slug, country: c.name, countrySlug: c.slug })))
+  .sort((a, b) => a.country.localeCompare(b.country));
+---
+<Base
+  title="Common money scams by country, for US travelers: what they cost and how to avoid them"
+  description="The traps that cost US travelers money abroad are almost never violent. They are the airport taxi, the pay-in-dollars prompt on a card machine, the meter that stays off, and the commission funnel. What each one costs and the official fares that defeat them, country by country.">
+  <Nav />
+  <main class="wrap">
+
+    <section class="ms-intro">
+      <p class="lab">Money scams</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
+      <h1>Almost none of it is crime. It is the payment.</h1>
+      <p class="ms-lede">Search this subject and you get warnings about pickpockets. The things that actually take real money off US travelers are quieter than that: a fixed airport fare you did not know existed, a card machine offering to bill you in dollars, a meter that stays off, a stranger who tells you the palace is closed today. They are mostly legal, or close to it, and they are all defeated by knowing one number or saying one word.</p>
+    </section>
+
+    <section class="ms-four">
+      <div class="ms-card">
+        <span class="ms-k">1. The airport ride</span>
+        <p>The single most expensive trap, and the easiest to defeat, because several cities set an official flat fare and publish it. Rome is 55 euros between Fiumicino and anywhere inside the Aurelian Walls. Athens is 40 euros by day and 55 overnight to the centre. Paris sets fixed fares from both airports. Know your number before you land, and never accept a ride from someone who approaches you inside the terminal.</p>
+      </div>
+      <div class="ms-card">
+        <span class="ms-k">2. The pay-in-dollars prompt</span>
+        <p>The most widespread one, and it is not really a scam so much as a legal markup with a friendly interface. A card terminal or ATM offers to charge you in US dollars instead of the local currency, and quietly adds a few percent on the exchange. It is on every purchase you accept it on. Always choose the local currency, every time, on every machine.</p>
+      </div>
+      <div class="ms-card">
+        <span class="ms-k">3. The meter that stays off</span>
+        <p>Meter refused, meter rigged, the long route, no change for a big note, or the note swap where the driver claims the bill you handed over was smaller than it was. This one recurs across Vietnam, Mexico, India, Turkey, Egypt and Morocco. Use the app where there is a real one, agree the fare before the door closes where there is not, and carry small notes.</p>
+      </div>
+      <div class="ms-card">
+        <span class="ms-k">4. The commission funnel</span>
+        <p>A helpful stranger tells you the site is closed today, or that your hotel has shut, and offers an alternative. The alternative pays them. It is the tuk-tuk gem and tailor tour in Bangkok, the redirected hotel in India, the fake guide in the Marrakech medina. Verify closures yourself, and treat unsolicited helpfulness near a famous landmark as a sales call.</p>
+      </div>
+    </section>
+
+    <section class="ms-sec">
+      <h2>Three habits that cover most of it</h2>
+      <div class="ms-panel ms-pad">
+        <p><b>Look up the airport fare before you fly.</b> Where a flat fare exists it is set by the city and it is not negotiable, so the whole scam collapses the moment you know the figure. Where no flat fare exists, find out what the normal metered range is instead.</p>
+        <p><b>Say local currency, always.</b> On terminals, on ATMs, at hotel checkout. There is no situation in which being billed in dollars abroad is better for you. This one habit is worth more over a trip than avoiding every taxi trick combined.</p>
+        <p><b>Treat the first offer near a landmark as a sale.</b> Not hostility, just arithmetic: the person who approaches you at the airport exit, the temple gate or the medina entrance is working, and you are the product. A polite no costs nothing.</p>
+        <p class="ms-do">None of this requires suspicion of a whole country. It requires knowing the four or five specific setups that recur in the place you are going, which is what the country pages below are for.</p>
+      </div>
+    </section>
+
+    {spokes.length > 0 && (
+      <section class="ms-sec">
+        <h2>Country by country</h2>
+        <p class="ms-note">The specific setups that recur in each place, and what each one costs. Each write-up lives in that country's guide.</p>
+        <div class="ms-panel">
+          {spokes.map(s => (
+            <a class="ms-spoke" href={'/' + s.countrySlug + '/' + s.spokeSlug}>
+              <span class="ms-spoke-c"><span class="ms-flag"><img src={flagSrc(s.countrySlug)} alt="" width="22" height="16" loading="lazy" /></span>{s.country}</span>
+              <span class="ms-spoke-h">{s.h1}</span>
+              <span class="ms-spoke-d">{s.lede}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <p class="ms-keep">Official flat fares and published rates are checked against the city or authority that sets them and dated on each page. The recurring setups themselves are our own read from experience and consistent traveler reports, not an official register, and they change as apps and enforcement change. For the pay-in-dollars problem in detail, see <a href="/cash-or-card">cash or card by country</a>, and for airport transfers specifically, <a href="/taxis-and-ride-hailing">taxis and ride-hailing</a>. More on how we work is on our <a href="/methodology">methodology page</a>.</p>
+
+    <CompareByRegion />
+  </main>
+  <Footer />
+
+  <style>
+    .ms-intro{max-width:720px;margin:22px 0 0}
+    .ms-intro h1{font-family:var(--serif);font-weight:500;font-size:clamp(26px,4.6vw,38px);letter-spacing:-.015em;line-height:1.15;margin:0 0 12px}
+    .ms-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
+    .ms-four{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:30px 0 0}
+    .ms-card{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:16px 18px}
+    .ms-k{display:block;font-weight:600;font-size:14px;color:var(--teal-deep);margin:0 0 6px}
+    .ms-card p{font-size:14.5px;color:#3B4A46;line-height:1.55;margin:0}
+    .ms-sec{margin:36px 0}
+    .ms-sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 6px}
+    .ms-note{font-size:14.5px;color:var(--muted);margin:0 0 16px;line-height:1.5;max-width:720px}
+    .ms-panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+    .ms-pad{padding:16px 18px}
+    .ms-pad p{font-size:15px;color:#3B4A46;line-height:1.6;margin:0 0 12px}
+    .ms-pad p:last-child{margin-bottom:0}
+    .ms-do{border-top:1px solid var(--line);padding-top:12px;color:var(--muted);font-size:14.5px}
+    .ms-spoke{display:block;padding:15px 18px;border-bottom:1px solid var(--line);text-decoration:none;transition:background-color .15s ease}
+    .ms-spoke:last-child{border-bottom:0}
+    .ms-spoke:hover{background:var(--paper)}
+    .ms-spoke-c{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:13px;color:var(--muted);margin:0 0 5px}
+    .ms-flag{display:inline-flex;line-height:0;flex:none}
+    .ms-flag img{width:22px;height:16px;border-radius:3px;border:1px solid var(--line);object-fit:cover;display:block}
+    .ms-spoke-h{display:block;font-family:var(--serif);font-weight:500;font-size:16.5px;color:var(--teal-deep);line-height:1.3;margin:0 0 3px}
+    .ms-spoke:hover .ms-spoke-h{text-decoration:underline}
+    .ms-spoke-d{display:block;font-size:14px;color:var(--muted);line-height:1.5}
+    .ms-keep{font-size:14px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line);padding-top:18px;margin:30px 0 40px;max-width:720px}
+    .ms-keep a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .ms-keep a:hover{text-decoration:underline}
+    @media (max-width:700px){
+      .ms-four{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      .ms-lede{font-size:16.5px}
+      .ms-spoke{padding:14px 15px}
+      .ms-card{padding:15px 16px}
+    }
+  </style>
+</Base>

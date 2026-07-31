@@ -1,5 +1,6 @@
 ---
 import Symbol from './Symbol.astro';
+import EESNotice from './EESNotice.astro';
 import NewTab from './NewTab.astro';
 import { affiliate, esimLink, visaLink } from '../data/links.js';
 import { fallbackFxPct, shortlistFor, cardsChecked, wiseCard } from '../data/cards.js';
@@ -263,6 +264,8 @@ const kfState = (f) => {
     <p set:html={c.recentChange.text}></p>
   </div>
 )}
+
+<EESNotice country={c} />
 
 <section id="cards">
   <p class="lab">The three things people ask</p>

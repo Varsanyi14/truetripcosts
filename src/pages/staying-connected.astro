@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import CompareByRegion from '../components/CompareByRegion.astro';
+import USBadge from '../components/USBadge.astro';
+import { countries } from '../data/index.js';
+import fs from 'node:fs';
+
+// Staying connected, topic hub. Gathers every topic:"connectivity" country spoke, the same
+// aggregation cash-or-card, taxis-and-ride-hailing and driving-and-car-rental use, so adding
+// a connectivity spoke to any guide surfaces it here automatically. Before this page existed
+// these 11 spokes were reachable only from inside their own country guide. Checked July 2026.
+
+const flagDir = process.cwd() + '/public/flags/';
+const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? '/flags/' + slug + '.svg' : '/flags/world.svg';
+
+const spokes = countries
+  .filter(c => c.live)
+  .flatMap(c => (c.spokes || [])
+    .filter(s => s.topic === 'connectivity' && s.live !== false)
+    .map(s => ({ h1: s.h1, lede: s.lede, spokeSlug: s.slug, country: c.name, countrySlug: c.slug })))
+  .sort((a, b) => a.country.localeCompare(b.country));
+---
+<Base
+  title="Staying connected abroad, for US travelers: eSIMs, roaming and when your own plan already works"
+  description="Phone data abroad is usually a cost question, not a coverage one. When your existing US plan already covers you, when a carrier day pass is worth it, when the specific local network matters, and where the internet itself works differently. Country by country.">
+  <Nav />
+  <main class="wrap">
+
+    <section class="sc-intro">
+      <p class="lab">Staying connected</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
+      <h1>Phone data abroad is mostly a cost question.</h1>
+      <p class="sc-lede">In most of the places US travelers go, coverage is not the problem. The problem is that your carrier will happily charge you about 12 dollars a day for something an eSIM does for a fraction of it, and that in a handful of countries the choice genuinely matters for reasons that have nothing to do with price. Here is how to tell which situation you are in, then the detail for your destination.</p>
+    </section>
+
+    <section class="sc-four">
+      <div class="sc-card">
+        <span class="sc-k">1. Check what you already have</span>
+        <p>Sometimes the answer is that you need to do nothing, and we would rather tell you that than sell you something. Canada is the clearest case: T-Mobile includes it on most plans, and Verizon and AT&amp;T sell a Canada and Mexico pass for a few dollars a day. Look at your own plan before you buy anything.</p>
+      </div>
+      <div class="sc-card">
+        <span class="sc-k">2. Usually it is just price</span>
+        <p>Across western Europe, Japan, the UK and Australia, coverage is strong and this is purely a cost decision. The US carrier day passes run about 12 dollars a day, which on a two-week trip is real money, and an eSIM bought before you fly is typically a small fraction of that for the same networks.</p>
+      </div>
+      <div class="sc-card">
+        <span class="sc-k">3. Sometimes the network matters</span>
+        <p>In a few countries the cheapest eSIM is the wrong one, because reach varies enormously by carrier. In Indonesia you want something Telkomsel-backed once you leave South Bali, and in Costa Rica a Kolbi-backed plan is what actually works in the cloud forests and on remote coasts. Price second, network first.</p>
+      </div>
+      <div class="sc-card">
+        <span class="sc-k">4. Sometimes the internet is different</span>
+        <p>China is its own category. On a Chinese network the Great Firewall blocks Google, Maps, Gmail, WhatsApp, Instagram, Facebook and YouTube, and VPNs have become unreliable. The fix is not a cheaper local SIM, it is a roaming eSIM set up before you fly that routes your traffic outside the country.</p>
+      </div>
+    </section>
+
+    <section class="sc-sec">
+      <h2>What we earn, and where we do not</h2>
+      <p class="sc-note">We earn a commission on eSIM links, so it is worth being plain about the incentive.</p>
+      <div class="sc-panel sc-pad">
+        <p>An eSIM is genuinely the right answer for most trips, and it is also the thing on this page we get paid for. Those two facts sit uncomfortably together, so the rule we hold ourselves to is simple: where your existing plan already covers you, we say so and earn nothing. Canada is the obvious example, and it is written up that way.</p>
+        <p>We also flag the places where coverage is honestly thin no matter what you buy, such as the remote Australian Outback, rather than implying a data plan solves geography. And where the local network matters more than the price, we name the network to look for instead of pointing you at the cheapest option.</p>
+      </div>
+    </section>
+
+    {spokes.length > 0 && (
+      <section class="sc-sec">
+        <h2>Country by country</h2>
+        <p class="sc-note">Where a country has a connectivity wrinkle worth walking through, we have written it up. Each one lives in that country's guide.</p>
+        <div class="sc-panel">
+          {spokes.map(s => (
+            <a class="sc-spoke" href={'/' + s.countrySlug + '/' + s.spokeSlug}>
+              <span class="sc-spoke-c"><span class="sc-flag"><img src={flagSrc(s.countrySlug)} alt="" width="22" height="16" loading="lazy" /></span>{s.country}</span>
+              <span class="sc-spoke-h">{s.h1}</span>
+              <span class="sc-spoke-d">{s.lede}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <p class="sc-keep">Carrier pricing and eSIM plans change faster than almost anything else we cover, so treat the day-pass figures as current ranges and check your own plan before you travel. For what your card does to every other purchase abroad, see <a href="/cash-or-card">cash or card by country</a>, and for getting around, <a href="/taxis-and-ride-hailing">taxis and ride-hailing</a>. More on how we work, and how we handle commission, is on our <a href="/methodology">methodology page</a>.</p>
+
+    <CompareByRegion />
+  </main>
+  <Footer />
+
+  <style>
+    .sc-intro{max-width:720px;margin:22px 0 0}
+    .sc-intro h1{font-family:var(--serif);font-weight:500;font-size:clamp(26px,4.6vw,38px);letter-spacing:-.015em;line-height:1.15;margin:0 0 12px}
+    .sc-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
+    .sc-four{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:30px 0 0}
+    .sc-card{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:16px 18px}
+    .sc-k{display:block;font-weight:600;font-size:14px;color:var(--teal-deep);margin:0 0 6px}
+    .sc-card p{font-size:14.5px;color:#3B4A46;line-height:1.55;margin:0}
+    .sc-sec{margin:36px 0}
+    .sc-sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 6px}
+    .sc-note{font-size:14.5px;color:var(--muted);margin:0 0 16px;line-height:1.5;max-width:720px}
+    .sc-panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+    .sc-pad{padding:16px 18px}
+    .sc-pad p{font-size:15px;color:#3B4A46;line-height:1.6;margin:0 0 12px}
+    .sc-pad p:last-child{margin-bottom:0}
+    .sc-spoke{display:block;padding:15px 18px;border-bottom:1px solid var(--line);text-decoration:none;transition:background-color .15s ease}
+    .sc-spoke:last-child{border-bottom:0}
+    .sc-spoke:hover{background:var(--paper)}
+    .sc-spoke-c{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:13px;color:var(--muted);margin:0 0 5px}
+    .sc-flag{display:inline-flex;line-height:0;flex:none}
+    .sc-flag img{width:22px;height:16px;border-radius:3px;border:1px solid var(--line);object-fit:cover;display:block}
+    .sc-spoke-h{display:block;font-family:var(--serif);font-weight:500;font-size:16.5px;color:var(--teal-deep);line-height:1.3;margin:0 0 3px}
+    .sc-spoke:hover .sc-spoke-h{text-decoration:underline}
+    .sc-spoke-d{display:block;font-size:14px;color:var(--muted);line-height:1.5}
+    .sc-keep{font-size:14px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line);padding-top:18px;margin:30px 0 40px;max-width:720px}
+    .sc-keep a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .sc-keep a:hover{text-decoration:underline}
+    @media (max-width:700px){
+      .sc-four{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      .sc-lede{font-size:16.5px}
+      .sc-spoke{padding:14px 15px}
+      .sc-card{padding:15px 16px}
+    }
+  </style>
+</Base>

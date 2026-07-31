@@ -1,0 +1,32 @@
+---
+// Shared EES / ETIAS border notice for Schengen country guides.
+//
+// Renders nothing unless the country is in the Schengen list, so it is safe to drop into
+// any country surface. All copy comes from src/data/schengen.js, which is the single place
+// to edit when the border position changes. See the note at the top of that file.
+//
+// Styling deliberately reuses the global .recentchange / .rcpill classes so this matches
+// the existing money-update callout and adds no new theme. The only scoped rule is spacing
+// between paragraphs, since .recentchange p sets margin:0 for the single-paragraph case.
+
+import { isSchengen, borderStatus as b } from '../data/schengen.js';
+
+const { country: c } = Astro.props;
+const show = c && isSchengen(c.slug);
+---
+{show && (
+  <div class="recentchange ees">
+    <span class="rcpill">Border update &middot; {b.checked}</span>
+    <p set:html={b.ees}></p>
+    <p set:html={b.queues}></p>
+    <p set:html={b.etias}></p>
+    <p class="ees-more">Full detail, and the official EU pages, on <a href="/passports-and-visas">passports and visas</a>.</p>
+  </div>
+)}
+
+<style>
+  .ees p + p{margin-top:8px}
+  .ees .ees-more{font-size:13.5px;color:var(--muted);margin-top:10px}
+  .ees .ees-more a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+  .ees .ees-more a:hover{text-decoration:underline}
+</style>
