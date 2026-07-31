@@ -39,7 +39,10 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
       <div class="hh-body">
         <div style="display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:0 0 16px"><USBadge /><span class="tagpill" style="margin:0">The fees nobody quotes you</span></div>
         <h1>The money side of your trip, sorted.</h1>
-        <p class="lede">What to pay with, how much cash to carry, and the fees nobody quotes you. Checked and dated. Sometimes the honest answer is that you do not need to do anything.</p>
+        <div class="hero-note">
+          <p class="hero-note-lab">What we do</p>
+          <p class="hero-note-p">What to pay with, how much cash to carry, and the fees nobody quotes you. Checked and dated. Sometimes the honest answer is that you do not need to do anything.</p>
+        </div>
         <div class="hero-search">
           <div class="cfilter cfilter-hero">
             <svg class="cfilter-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
@@ -175,6 +178,23 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
     .dsc-chip:hover .dsc-q{color:var(--teal-deep,#0A5644)}
     @media (max-width:560px){ .dsc-grid{flex-direction:column} .dsc-chip{justify-content:space-between} }
     /* home-compare band styles removed; the region path now lives in the hero */
+
+    /* Hero top spacing: global.css sets .home-hero{padding:52px 0 6px}, which left a
+       dead band under the nav and pushed the search box below the fold on a phone.
+       Scoped override only, so other pages keep the roomier hero. The pill row and the
+       H1 are untouched: h1 already carries margin:0 0 16px, so the pill-to-H1 gap is
+       unchanged and only the space above the pills shrinks. */
+    .home-hero{padding-top:18px}
+
+    /* Hero note: the intro sentence, re-housed on a deep-green holder so it reads as
+       support for the H1 and the search rather than competing with them. Echoes the
+       eyebrow treatment of the dark card lower down. Type is smaller than the old
+       .lede (17.5px) on purpose. The .lede rule itself stays in global.css for the
+       other pages that use it. */
+    .hero-note{background:var(--teal-deep,#0A5644);border-radius:14px;padding:16px 18px;margin:0 0 20px;max-width:560px}
+    .hero-note-lab{margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green-bg,#E7F3E9);opacity:.85}
+    .hero-note-p{margin:0;font-size:15px;line-height:1.5;color:#EAF3EE}
+    @media (max-width:560px){ .hero-note-p{font-size:14px} }
 
     /* Hero typeahead: a small list of matching guides under the hero search box. */
     .hero-search{position:relative;max-width:560px;margin:24px 0 4px}
