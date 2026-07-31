@@ -396,7 +396,7 @@ export default {
       slug: "staying-connected",
       glance: [
         { k: "Check first", v: "Your US plan, Canada is often bundled" },
-        { k: "Carrier pass", v: "About $5 to $6 a day (with Mexico)" },
+        { k: "Most unlimited plans", v: "Canada included, no extra cost" },
         { k: "If not included", v: "A travel eSIM, a few $ per GB" },
         { k: "The catch", v: "Highway and park dead zones" }
       ],
@@ -405,20 +405,20 @@ export default {
       topic: "connectivity",
       caution: "medium",
       title: "Staying connected in Canada (2026): check your US plan first, then the eSIM math | True Trip Costs",
-      description: "In Canada your US plan may already cover you cheaply: T-Mobile includes it and Verizon and AT&T have 5 to 6 dollar a day Canada passes. If not, an eSIM beats the day pass. Watch the highway and park dead zones. Checked Jul 2026.",
+      description: "In Canada your US plan almost certainly covers you already at no extra cost, because all three big carriers include Canada on their current unlimited plans. Who genuinely still pays, why a day pass is nearer 10 to 12 dollars than 5 to 6, and the highway and park dead zones. Checked Jul 2026.",
       h1: "Staying connected in Canada.",
-      lede: "Canada is the one trip on this list where your US plan may already have you covered without paying more, so start there. If it does not, or you want real data, an eSIM is cheaper than a day pass. The thing to plan for is the dead zones on rural highways and in the parks.",
+      lede: "Canada is the trip where your US plan has almost certainly already got you covered at no extra cost, so start there and expect to buy nothing. If it does not, or you want real data, an eSIM is cheaper than a day pass. The thing to plan for is the dead zones on rural highways and in the parks.",
       checked: "Jul 2026",
-      checkedISO: "2026-07-22",
-      answer: "Check your <b>US plan first</b>. Canada is often bundled cheaply: <b>T-Mobile</b> includes it on most plans, and <b>Verizon and AT&amp;T</b> sell a Canada-and-Mexico pass for about <b>5 to 6 dollars a day</b> rather than the 12 dollars they charge for Europe. If your plan does not include it, or you want fast, generous data, a <b>Nomad eSIM</b> is cheaper and works from landing. Coverage in cities and towns is excellent on all three networks (<b>Rogers, Bell, Telus</b>), but expect <b>dead zones on rural highways and in the national parks</b>, so download offline maps for a road trip. Never roam <b>pay-per-use</b>, which runs about 2 dollars a megabyte.",
+      checkedISO: "2026-07-31",
+      answer: "Check your <b>US plan first</b>. Canada is <b>bundled, not sold</b>: all three big carriers include it, along with Mexico, at <b>no extra cost</b> on their current <b>unlimited</b> plans, which is what most people hold. A day pass only comes into it if you are on an older, basic or prepaid plan, and then it runs nearer <b>10 to 12 dollars a day</b>. If your plan does not include it, or you want fast, generous data, a <b>Nomad eSIM</b> is cheaper and works from landing. Coverage in cities and towns is excellent on all three networks (<b>Rogers, Bell, Telus</b>), but expect <b>dead zones on rural highways and in the national parks</b>, so download offline maps for a road trip. Never roam <b>pay-per-use</b>, which runs about 2 dollars a megabyte.",
       sections: [
         {
           h: "Check your US plan first",
           icon: "roamfee",
-          key: { fig: "$5-6/day", tag: "Cheaper than Europe", text: "Canada is the cheap exception, usually bundled with Mexico. T-Mobile includes it on most plans, and other US carriers sell a Canada-and-Mexico pass for about $5 to $6 a day, not the $12 they charge for Europe.", tone: "teal" },
+          key: { fig: "Included", tag: "On most unlimited plans", text: "Canada is not a country you buy a pass for. All three big carriers include it at no extra cost on their current unlimited plans, so for most travelers the right action is none.", tone: "teal" },
           p: [
-            "Canada is the cheap exception among overseas trips, because it is usually lumped in with Mexico on US carrier plans. <b>T-Mobile</b> includes Canada roaming on most of its plans at no extra charge (at your normal speeds on the better plans, slower on others), and <b>Verizon and AT&amp;T</b> offer a <b>Canada and Mexico day pass around 5 to 6 dollars</b>, well under the roughly <b>12 dollars a day</b> those two charge for Europe. So before buying anything, check what your plan already includes.",
-            "The one thing to avoid is roaming with <b>no plan at all</b>. Pay-per-use data runs about <b>2 dollars a megabyte</b>, which is thousands of dollars a gigabyte, and a phone burns data in the background even with the screen off. If you are not sure your plan covers Canada, <b>turn off data roaming</b> until you have sorted an eSIM or a pass."
+            "Canada is not a country you should be buying a pass for. All three big carriers now treat it, along with Mexico, as an extension of home on their current <b>unlimited</b> plans. <b>Verizon</b> states on its own international pages that calling, texting and data in Canada and Mexico are <b>included at no extra cost</b> on Unlimited and Simplicity plans. <b>AT&amp;T</b> includes unlimited talk, text and data in Canada and Mexico on eligible unlimited plans, and its International Day Pass is <b>not needed</b> for North America on those plans. <b>T-Mobile</b> includes Canada on most of its plans, at normal speeds on the better tiers and slower on others. So check your plan, and if it is a current unlimited plan, <b>buy nothing</b>.",
+            "Who does still pay? Anyone <b>not</b> on a current unlimited plan. Older, basic and some prepaid plans exclude Canada, and then the options are an add-on such as AT&amp;T's <b>Roam North America</b>, or a day pass at around <b>10 to 12 dollars a day</b>, which is the same order as Europe rather than the bargain it is sometimes called. The thing to avoid outright is roaming with <b>no plan at all</b>: pay-per-use runs about <b>2 dollars a megabyte</b>, thousands of dollars a gigabyte, and a phone burns data in the background with the screen off. If you are unsure, <b>turn off data roaming</b> until you have checked. One border quirk worth knowing: around <b>Windsor and Detroit</b>, Canadian towers reach across, so your phone can register on a Canadian network while you are still in the US. It should not be billed, but check the statement if you were near a crossing."
           ]
         },
         {
@@ -441,17 +441,18 @@ export default {
         }
       ],
       faqs: [
-        { q: "Does my US phone plan work in Canada?", a: "Often yes, and cheaply. T-Mobile includes Canada roaming on most plans, and Verizon and AT&T sell a Canada and Mexico day pass around 5 to 6 dollars, versus about 12 dollars a day for Europe. Check what your plan includes before buying anything, and never roam with no plan, since pay-per-use runs about 2 dollars a megabyte." },
-        { q: "Do I need an eSIM for Canada?", a: "Not always. If your US plan already covers Canada at a usable speed, you may not need anything. If it does not, or you want fast, generous data, a Nomad eSIM is a few dollars per gigabyte and works from landing, which beats stacking up day-pass fees on a longer trip." },
+        { q: "Does my US phone plan work in Canada?", a: "Almost certainly, and at no extra cost if you are on a current unlimited plan. Verizon includes Canada and Mexico on Unlimited and Simplicity plans, AT&T includes them on eligible unlimited plans, and T-Mobile includes Canada on most plans. If you are on an older, basic or prepaid plan, Canada may be excluded, and a day pass then runs about 10 to 12 dollars a day. Never roam with no plan at all, since pay-per-use is about 2 dollars a megabyte." },
+        { q: "Do I need an eSIM for Canada?", a: "Most people do not. On a current unlimited plan Canada is included and you need nothing at all. An eSIM earns its place in two cases: your plan is an older, basic or prepaid one that excludes Canada, or it includes Canada only at reduced speeds and you want usable data. In either case an eSIM at a few dollars per gigabyte beats stacking up 10 to 12 dollar day passes." },
         { q: "Which Canadian network has the best coverage?", a: "Rogers, Bell and Telus all offer strong coverage in cities and towns, so for most travelers the differences are small. What matters more is that coverage thins out on rural highways and in the parks, so download offline maps for a road trip regardless of network or eSIM." },
         { q: "Will I have signal in Banff or on the highway?", a: "In the townsites, yes. On long rural highway stretches and in the backcountry of parks like Banff and Jasper, often not. Download offline maps before you drive, do not count on live navigation off the main routes, and let someone know your plan if you are heading somewhere remote." }
       ],
       sources: {
         links: [
           { label: "US Department of State: Canada country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Canada.html", type: "gov" },
-          { label: "Tom's Guide: a 2026 comparison of US carrier international roaming plans and day-pass prices", url: "https://www.tomsguide.com/us/wireless-carriers-international-travel-plans,review-4327.html", type: "guide" }
+          { label: "Verizon: international travel pages confirming Canada and Mexico are included at no extra cost on Unlimited and Simplicity plans", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+            { label: "AT&T: Canada and Mexico roaming, and which plans include it", url: "https://www.att.com/international/canada-roaming/", type: "card" }
         ],
-        judgment: "Carrier prices and inclusions change and depend on your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own plan. The steady points are that Canada is usually cheap to add to a US plan, that pay-per-use roaming is punishing, and that coverage is excellent in towns but patchy on rural highways and in the parks."
+        judgment: "Corrected on 31 July 2026, and worth stating what changed. This page previously said Verizon and AT&T sell a Canada and Mexico day pass for about 5 to 6 dollars a day, and treated buying one as the normal path. That was wrong in the direction that costs a reader money. Both carriers state on their own pages that Canada and Mexico are included at no extra cost on their current unlimited plans, which is what most customers hold, and independent 2026 reporting confirms AT&T's International Day Pass is not needed for North America on those plans. Where a pass genuinely applies, on older or non-unlimited plans, the current published rate is nearer 10 to 12 dollars a day rather than 5 to 6. We have rewritten the answer, the key figure, the section and both FAQs, and we now cite the carriers directly instead of a comparison article. Carrier terms are the fastest-moving thing we cover and vary by plan generation, so check your own plan rather than trusting this paragraph. The steady points are unchanged: pay-per-use roaming is punishing at about 2 dollars a megabyte, and coverage is excellent in towns but patchy on rural highways and in the parks."
       }
     },
     {
