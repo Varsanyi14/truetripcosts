@@ -313,7 +313,7 @@ export default {
         {
           h: "Paying, tipping and the airport",
           icon: "usd",
-          key: { fig: "Small bills", tag: "Dollars in hand", text: "Fares are small and settled in US dollars, so keep ones and fives on you. A dollar or two on top is a normal thank you for a good ride.", tone: "teal" },
+          key: { fig: "Small bills", tag: "Dollars in hand", text: "The hundred-dollar note an ATM just handed you is useless to a tuk-tuk driver. Break it at a hotel or a supermarket before you need a ride, and save the riel for rounding up.", tone: "teal" },
           p: [
             "Fares are low and paid in <b>US dollars</b>, so a hundred-dollar note from an ATM is no help at all: keep <b>ones and fives</b> in your pocket. Riel is handy for rounding. A <b>dollar or two on top</b> is a normal thank you, and a driver who waited around for you all day deserves more.",
             "Arriving at <b>Phnom Penh or Siem Reap</b>, use the <b>official taxi desk</b> in the terminal or the marked <b>app pickup area</b>, rather than the first offer you get walking out. Because ride apps need data, having your eSIM working before you land is what makes this easy. This guide is written for US travelers departing the US. For the wider picture, see <a href='/cambodia/cash-or-card'>cash or card in Cambodia</a>, <a href='/cambodia/tipping'>tipping in Cambodia</a>, and the <a href='/cambodia'>Cambodia money guide</a>."

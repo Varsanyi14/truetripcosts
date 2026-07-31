@@ -564,7 +564,7 @@ export default {
         {
           h: "The eSIM, and the pocket wifi it replaced",
           icon: "qr",
-          key: { fig: "Few $/GB", tag: "The cheap option", text: "A travel eSIM is a few dollars per gigabyte, well under day-pass fees, and it activates before you fly. It has largely replaced the rented pocket wifi box.", tone: "teal" },
+          key: { fig: "Few $/GB", tag: "The cheap option", text: "Set it up at home the night before and connectivity is solved before you board. The one case left for the old rented wifi box is a group who want to share a single connection.", tone: "teal" },
           p: [
             "A <b>travel eSIM</b> is the cheapest way for most visitors to get real data in Japan. A <b>Nomad eSIM</b> is a few dollars per gigabyte, well under day-pass pricing, and it <b>activates before you fly</b> and works from landing, with no counter to find at Narita or Kansai after a long flight. Your US number stays reachable on your normal plan while the eSIM carries the data. Since Japanese networks are strong across the board, which one the eSIM rides is not something you need to research the way you would in Australia.",
             "Japan's traditional answer was the <b>rented pocket wifi</b> box, reserved in advance and collected at the airport. It still exists and it still makes sense for a family or a group sharing one connection, but for one or two people an eSIM is cheaper and simpler: nothing to collect, nothing to return, nothing extra to charge each night, and no deposit. <b>Free wifi</b> is also widespread in stations, convenience stores, cafes and hotels, which is a useful backstop but not a plan, since it usually wants a sign-in and rarely follows you onto a train."

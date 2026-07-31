@@ -178,7 +178,7 @@ export default {
         {
           h: "ATMs: low limits and a fee every time",
           icon: "atm",
-          key: { fig: "1 to 2 million", tag: "The usual per-pull cap", text: "Most machines cap a withdrawal near 1 to 2 million kip, roughly 45 to 90 dollars, and charge 20,000 to 40,000 kip on top of your bank's fee. Several small pulls get expensive.", tone: "amber" },
+          key: { fig: "1 to 2 million", tag: "The usual per-pull cap", text: "That cap is per withdrawal rather than per day, so a week of spending money means several trips and several fees. A card that refunds those charges is the one thing worth sorting before you fly.", tone: "amber" },
           p: [
             "This is the real friction. Bank ATMs in the cities and tourist towns take Visa and Mastercard and dispense kip, but most cap a single withdrawal near <b>1 to 2 million kip</b>, roughly <b>45 to 90 dollars</b>, and charge <b>20,000 to 40,000 kip</b> each time on top of whatever your own bank adds. Several small withdrawals across a week add up to real money.",
             "Three ways to soften it. <b>Take the maximum the machine allows</b> rather than what you need today. <b>Step inside a bank branch</b>, where you can often withdraw a larger sum for the same single fee. And carry a <b>debit card that refunds ATM fees</b>, which cancels the charge entirely and is the single most useful thing to sort before you fly. Use machines attached to real banks, in daylight, and take your cash and card promptly, since some machines retrieve them quickly."
