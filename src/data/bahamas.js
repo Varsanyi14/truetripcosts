@@ -84,6 +84,211 @@ export default {
         ],
         judgment: "Visa-free entry to the Bahamas for US citizens is long-standing, and the pandemic-era Health Travel Visa has been discontinued, so no advance form applies in 2026. The passport-book-for-air rule is a US Customs and Border Protection requirement. Stay length is set by the officer on arrival. Checked July 2026."
       }
+    },
+    {
+      slug: "cash-or-card",
+      glance: [
+        { k: "US dollars", v: "Accepted at par, nothing to exchange" },
+        { k: "Cards", v: "Fine in Nassau and the resorts" },
+        { k: "Cash", v: "Essential on the Out Islands" },
+        { k: "Watch for", v: "Choosing dollars on a terminal" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Cash or card in the Bahamas: US dollars at par (2026) | True Trip Costs",
+      description: "How to pay in the Bahamas in 2026: the Bahamian dollar is pegged 1 to 1, so your US dollars work at par with nothing to exchange. Where cards work, why the Out Islands need cash, and the ATM fees. Checked July 2026.",
+      h1: "Cash or card in the Bahamas",
+      lede: "Your US dollars already work here at par, which makes this one of the simplest money destinations in the Caribbean. The part that catches people is where cards stop working, and it is not where you would guess.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-31",
+      answer: "The Bahamian dollar is <b>pegged 1 to 1 with the US dollar</b>, and the two circulate interchangeably at par, so you can spend US dollars everywhere and <b>never exchange a thing</b>. There is no penalty for paying cash in dollars, and change often comes back as a mix of both. <b>Visa and Mastercard</b> work well at hotels, resorts, Bay Street shops and tourist restaurants, with Amex and Discover less consistent. Where you genuinely need <b>cash</b> is the local side: straw markets, the Fish Fry, taxis, water taxis, tips, and above all the <b>Out Islands</b>, where card acceptance and ATMs thin out fast. On a card terminal or ATM, always choose <b>Bahamian dollars</b>, never dollars.",
+      sections: [
+        {
+          h: "Your dollars already work, at par",
+          icon: "usd",
+          key: { fig: "1 to 1", tag: "No exchange needed", text: "The Bahamian dollar is pegged to the US dollar and both circulate side by side, so a dollar is a dollar and you can arrive with nothing but your usual cash.", tone: "teal" },
+          p: [
+            "This is the rare destination where you can skip the currency question entirely. The <b>Bahamian dollar (BSD)</b> has long been pegged <b>1 to 1</b> with the US dollar, and the two are used <b>interchangeably at par</b>. Hand over a US twenty and you may get change in Bahamian notes, Bahamian coins, US notes, or a mix, all at face value.",
+            "There is <b>no penalty and no bad rate</b> for paying cash in US dollars, so there is nothing to gain from exchanging money before you travel or after you land. One small practical note: <b>Bahamian notes are hard to change back at home</b>, so spend them before you fly rather than taking them as souvenirs by accident."
+          ]
+        },
+        {
+          h: "Where cards are fine, and where they stop",
+          icon: "card",
+          key: { fig: "The Out Islands", tag: "Bring cash", text: "Nassau, Paradise Island and Freeport take cards readily. The Exumas, Eleuthera, Harbour Island and Andros do not, and ATMs are scarce.", tone: "amber" },
+          p: [
+            "In <b>Nassau, Paradise Island and Freeport</b>, a no-foreign-fee <b>Visa or Mastercard</b> covers hotels, the big resorts including Atlantis and Baha Mar, Bay Street shops, tourist restaurants and tour operators. <b>Amex and Discover are less consistent</b>, so do not make either your only card.",
+            "The gap is the local economy and the outer islands. Nassau's <b>Straw Market</b> and the food stalls at <b>Arawak Cay</b>, better known as the Fish Fry, run on cash, and bargaining at the market expects it. <b>Taxis, water taxis, jitneys, small vendors and tips</b> are all cash too.",
+            "Then there are the <b>Out Islands</b>. The Exumas, Eleuthera, Harbour Island, Andros and the rest have limited card acceptance and few, sometimes unreliable, ATMs. <b>Withdraw what you need in Nassau or Freeport before you go</b>, because running short on a Family Island is a genuine hassle rather than an inconvenience."
+          ]
+        },
+        {
+          h: "ATMs, fees, and the one prompt to refuse",
+          icon: "atm",
+          key: { fig: "3 to 10 dollars", tag: "Typical ATM fee", text: "Use bank ATMs and expect a local fee on top of your home bank's charge, with withdrawal limits often around 300 to 500 dollars.", tone: "amber" },
+          p: [
+            "Stick to <b>bank ATMs</b>: RBC Royal Bank, Scotiabank, CIBC and Bank of the Bahamas all have machines in Nassau, on Paradise Island and in Freeport. Some dispense Bahamian dollars, some dispense US dollars, and either is fine at par. Expect a local fee of roughly <b>3 to 10 dollars</b> a withdrawal on top of whatever your own bank charges, with limits commonly around <b>300 to 500 dollars</b>, so take out fewer, larger amounts.",
+            "On any terminal or ATM, decline the offer to bill you in <b>US dollars</b>. That is dynamic currency conversion, and even though the currencies sit at par it quietly applies a padded rate and costs you a few percent. <b>Choose Bahamian dollars</b> every time.",
+            "One quirk worth knowing: <b>some US banks still treat the Bahamas as foreign</b> and add a foreign transaction fee even though the currency is at par, so a no-foreign-fee card saves a small but real amount across a trip."
+          ]
+        },
+        {
+          h: "The 10% VAT, and getting it back on shopping",
+          icon: "receipt",
+          key: { fig: "10% VAT", tag: "Reclaimable on goods", text: "Visitors can claim the VAT back on shopping through Global Blue, often refunded at the till, but not on hotels or meals.", tone: "teal" },
+          p: [
+            "Prices carry a <b>10% VAT</b>. As a visitor leaving the country you can reclaim it on <b>goods you take home</b> through the Global Blue tax-free scheme, and at affiliated stores the refund is often given <b>immediately at the till</b>. Look for the signage on Bay Street, at Cable Beach and Baha Mar, on Paradise Island and in Freeport. The minimum purchase is around 25 dollars for non-consumables, and the trip window is short, so keep your receipts and sort it out <b>before you check your bags</b>.",
+            "Read the hotel bill too. On top of the VAT, many resorts add a <b>service charge or gratuity of about 15%</b> and sometimes a resort levy, so the advertised nightly rate is rarely the final number. Your air departure tax of about 15 dollars is normally already inside your airfare.",
+            "For what to leave staff by hand, see <a href='/bahamas/tipping'>tipping in the Bahamas</a>, and <a href='/bahamas/taxis-and-apps'>getting around by taxi</a> for the cash you will need on arrival. The <a href='/bahamas'>Bahamas money guide</a> has the full picture."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Can I use US dollars in the Bahamas?", a: "Yes, everywhere. The Bahamian dollar is pegged 1 to 1 with the US dollar and both circulate interchangeably at par, so you can spend dollars without exchanging anything and get change in a mix of both. The only place to choose Bahamian dollars is on a card terminal or ATM, to avoid dynamic currency conversion." },
+        { q: "Do I need cash in the Bahamas?", a: "Some, and considerably more if you leave Nassau. Cards cover hotels, resorts, Bay Street shops and tourist restaurants, but the straw markets, the Fish Fry, taxis, water taxis, small vendors and tips are cash. The Out Islands have very limited card acceptance and few ATMs, so stock up in Nassau or Freeport first." },
+        { q: "What is the best way to get Bahamian dollars?", a: "A bank ATM in Nassau, on Paradise Island or in Freeport: RBC Royal Bank, Scotiabank, CIBC or Bank of the Bahamas. Expect about 3 to 10 dollars a withdrawal plus your home bank's fee, with limits often around 300 to 500 dollars. Since both currencies are at par, you may not need local cash at all." },
+        { q: "Are there foreign transaction fees in the Bahamas?", a: "Sometimes, which surprises people. Even though the Bahamian dollar is at par with the US dollar, some US banks still classify purchases and withdrawals here as foreign and add a fee, so a no-foreign-fee card is worth using." }
+      ],
+      sources: {
+        links: [
+          { label: "The Islands of the Bahamas: the official tourism site", url: "https://www.bahamas.com", type: "gov" },
+          { label: "US Department of State: the country information pages for US citizens", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
+        ],
+        judgment: "The 1 to 1 peg, the interchangeable use of both currencies and the 10% VAT with its Global Blue refund route are established and confirmed with official sources. ATM fee bands, withdrawal limits, the thinness of card acceptance on the Out Islands and which US banks treat the Bahamas as foreign are our own read from recent trips and card terms rather than a published table. Checked July 2026."
+      }
+    },
+    {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "US-style, unusually for the region" },
+        { k: "Restaurants", v: "15 to 20%, if nothing is added" },
+        { k: "Often added", v: "A 15% gratuity at resorts" },
+        { k: "Taxis", v: "About 15%" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in the Bahamas: how much to tip (2026) | True Trip Costs",
+      description: "Tipping in the Bahamas in 2026: it follows US customs, so 15 to 20% at restaurants, but check the bill first because resorts often add about 15% automatically. Taxis, bars and housekeeping too. Checked July 2026.",
+      h1: "Tipping in the Bahamas",
+      lede: "Tipping here follows US customs, which is unusual for the Caribbean and makes it easy to get right. The one thing to watch is the automatic gratuity many resorts add, so you do not pay twice.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-31",
+      answer: "Tipping in the Bahamas follows <b>US customs</b>, which is unusual for the Caribbean and means your instincts from home are about right. At a sit-down restaurant, <b>15 to 20%</b> is standard for good service, but <b>check the bill first</b>: many places, especially resort restaurants and larger parties, add an <b>automatic gratuity of about 15%</b>, in which case nothing more is needed. Otherwise: <b>a dollar or two a drink</b> at a bar, <b>a dollar or two a bag</b> for porters, <b>a few dollars a day</b> for housekeeping, <b>15 to 20%</b> for guides, dive operators and charter crews, and about <b>15%</b> for taxi drivers. Tip in cash, US or Bahamian dollars, small bills, handed to the person.",
+      sections: [
+        {
+          h: "US customs apply here",
+          icon: "tip",
+          key: { fig: "15 to 20%", tag: "Restaurants, if nothing is added", text: "Unusually for the Caribbean, tipping norms mirror the US, so budget for it the way you would at home.", tone: "teal" },
+          p: [
+            "Most of the Caribbean tips lightly. The Bahamas does not. Decades of US tourism have made <b>US tipping customs the local standard</b>, so at a sit-down restaurant with nothing added to the bill, <b>15 to 20%</b> for good service is what staff expect, and it is not considered generous so much as normal.",
+            "The practical consequence is budgeting: plan for tips as a real line in your trip cost rather than loose change. Across a week of restaurants, bars, taxis, tours and housekeeping it adds up much as it would at home."
+          ]
+        },
+        {
+          h: "Check the bill before you tip again",
+          icon: "receipt",
+          key: { fig: "About 15%", tag: "Often added automatically", text: "Resort restaurants and larger parties frequently carry an automatic gratuity. If it is there, you have already tipped.", tone: "amber" },
+          p: [
+            "This is where visitors lose money without noticing. Many hotels and resort restaurants add an <b>automatic gratuity of about 15%</b>, and some also add a service charge or resort levy on top of the <b>10% VAT</b>. Larger parties are almost always charged it automatically.",
+            "If a gratuity is already on the bill, <b>that is the tip</b> and nothing further is needed, though rounding up a little for genuinely good service is common. Read the itemised lines rather than the total, because on a resort bill the wording varies and it is easy to tip twice on the same meal."
+          ]
+        },
+        {
+          h: "The everyday amounts, and on the water",
+          icon: "coins",
+          key: { fig: "1 to 2 dollars", tag: "Per drink, per bag", text: "Bars a dollar or two a drink, porters a dollar or two a bag, housekeeping a few dollars a day, guides and boat crews 15 to 20%.", tone: "teal" },
+          p: [
+            "At <b>bars</b>, a dollar or two a drink is normal. <b>Porters</b> take a dollar or two a bag, and <b>housekeeping</b> a few dollars a day, best left in the room rather than saved to the end. For <b>taxis</b>, about <b>15%</b> on top of the agreed fare is customary.",
+            "The Bahamas runs on water, and the people who run those trips are tipped like restaurant staff: <b>tour guides, snorkelling and dive operators, and fishing charter captains and mates</b> generally get <b>15 to 20%</b>. On a full-day charter that is a real amount, so factor it in when you book rather than at the dock.",
+            "Tip in <b>cash</b>, in either US or Bahamian dollars since both are at par, with <b>small bills</b> and handed directly to the person so it actually reaches them. Keep ones and fives back for this. See <a href='/bahamas/cash-or-card'>cash or card in the Bahamas</a> for where to get them and <a href='/bahamas/taxis-and-apps'>taxis and getting around</a> for the fares themselves."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in the Bahamas?", a: "Yes, and on US terms, which is unusual for the Caribbean. At a restaurant with nothing added to the bill, 15 to 20% is standard. Bars take a dollar or two a drink, housekeeping a few dollars a day, and taxi drivers about 15%." },
+        { q: "Is gratuity already included in the Bahamas?", a: "Often, especially at resorts. Many hotel and resort restaurants add an automatic gratuity of about 15%, and larger parties nearly always have it applied. If it is on the bill, that is the tip, so read the itemised lines to avoid tipping twice." },
+        { q: "Can I tip in US dollars in the Bahamas?", a: "Yes. The Bahamian dollar is pegged 1 to 1 with the US dollar and both are accepted at par, so tipping in US dollars is completely normal. Small bills are best, handed directly to the person." },
+        { q: "How much do you tip a boat or fishing charter in the Bahamas?", a: "Generally 15 to 20% of the charter price for the captain and mate, split between them, and the same range for dive operators and tour guides. On a full-day charter that is a significant sum, so budget for it when you book." }
+      ],
+      sources: {
+        links: [
+          { label: "The Islands of the Bahamas: the official tourism site", url: "https://www.bahamas.com", type: "gov" }
+        ],
+        judgment: "There is no official tipping schedule, and the automatic gratuity varies by property and party size. The percentages and dollar amounts here are our own read from recent trips and consistent local guidance, and the pattern of resorts adding about 15% is widely reported rather than published centrally. Checked July 2026."
+      }
+    },
+    {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Uber and Lyft", v: "Neither operates here" },
+        { k: "Fares", v: "Government-set zones, no meter" },
+        { k: "Rule one", v: "Agree the fare before you get in" },
+        { k: "Jitney bus", v: "About 1.25 to 1.50 dollars" }
+      ],
+      live: true,
+      topic: "taxis",
+      title: "Nassau taxis: no Uber, and the fares to expect (2026) | True Trip Costs",
+      description: "Getting around the Bahamas in 2026: there is no Uber or Lyft, taxis use government-set zone fares rather than meters, so agree the price first. Typical routes, the extras, jitneys and the water taxi. Checked July 2026.",
+      h1: "Taxis and ride-hailing in the Bahamas",
+      lede: "There is no Uber here, and no meter in the taxi either. That combination catches a lot of visitors out, so here are the going rates and the one habit that prevents every dispute.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-31",
+      answer: "<b>Uber and Lyft do not operate in Nassau</b>, or anywhere in the Bahamas, so taxis are the default. Fares are <b>set by the government in zones</b> rather than run on a meter, which means the price is fixed in principle but <b>quoted by the driver</b> in practice, so <b>agree it before you get in</b>. Expect roughly <b>45 to 55 dollars</b> from the airport to Paradise Island, <b>18 to 24</b> from the cruise port to Cable Beach, and single figures for short downtown hops, for two passengers. Extra passengers are about <b>3 dollars</b> each, the Paradise Island bridge toll is <b>1 dollar</b> each way, and a <b>15% tip</b> is customary. The cheap alternatives are the <b>jitney buses</b> and the <b>water taxi</b>.",
+      sections: [
+        {
+          h: "No Uber, no Lyft, and no meter",
+          icon: "alert",
+          key: { fig: "No ride-hailing", tag: "Confirmed by the destination", text: "Neither Uber nor Lyft operates in Nassau. Licensed taxis carry yellow plates, and the fare is agreed rather than metered.", tone: "amber" },
+          p: [
+            "If you land expecting to open an app, you will be disappointed: the official Nassau Paradise Island destination information states plainly that <b>Nassau does not have Uber or Lyft</b>. A locally built ride app or two exists with fixed, pre-shown fares, and hotels will call a car for you, but the default way to get around is a licensed taxi.",
+            "Bahamian taxis come in any colour, so identify them by the <b>yellow licence plate</b> and a visible driver licence. Unlicensed drivers, known locally as hackers, do work the tourist areas, and they are the ones most likely to invent a price at the end of the ride.",
+            "Taxis are legally metered but in practice <b>fares are quoted from government-set zone rates</b>, and those rates are not posted anywhere a visitor will see them. That is the whole problem, and the fix is simple."
+          ]
+        },
+        {
+          h: "Agree the fare first, and know the going rates",
+          icon: "coins",
+          key: { fig: "45 to 55 dollars", tag: "Airport to Paradise Island", text: "For two passengers. Short downtown hops run single figures, and the cruise port to Cable Beach is around 18 to 24.", tone: "teal" },
+          p: [
+            "One habit prevents every dispute: <b>settle the price before you open the door</b>, and repeat it back. Drivers expect this and it is not considered rude. If a quote sounds far above the figures below, say so or wait for the next car.",
+            "As a rough guide for <b>two passengers</b>: short hops <b>within downtown Nassau or on Paradise Island</b> run from around <b>6 dollars</b>, <b>downtown to Paradise Island</b> about <b>9 to 13</b>, <b>Cable Beach to Paradise Island</b> around <b>18</b>, the <b>cruise port to Cable Beach or Baha Mar</b> about <b>18 to 24</b>, and the <b>airport to Atlantis or Paradise Island</b> roughly <b>45 to 55</b>.",
+            "The underlying official tariff is set by distance, historically about <b>3 dollars for the first quarter mile</b> and a small amount for each additional quarter mile, for up to two passengers. You will rarely hear it quoted that way, which is why the route figures above are the more useful number to carry."
+          ]
+        },
+        {
+          h: "The extras that get added",
+          icon: "receipt",
+          key: { fig: "3 dollars each", tag: "Per extra passenger", text: "Beyond two passengers, each additional person is about 3 dollars, plus the bridge toll and a customary 15% tip.", tone: "amber" },
+          p: [
+            "Quoted fares generally cover <b>two passengers</b>. Each additional person is about <b>3 dollars</b>, so a family of five pays meaningfully more than the headline rate and should confirm the total, not the base.",
+            "Crossing to Paradise Island adds the <b>bridge toll of about 1 dollar</b> each way, usually built into the quote but worth asking about. A <b>night surcharge</b> of roughly a quarter is commonly reported for the small hours, and luggage is normally included, though it is worth mentioning if you have a lot.",
+            "A <b>tip of about 15%</b> on the agreed fare is customary here, since tipping follows US norms. See <a href='/bahamas/tipping'>tipping in the Bahamas</a> for the rest, and bring <b>small bills</b>: drivers take cash and rarely have change for large notes."
+          ]
+        },
+        {
+          h: "The cheap ways: jitneys and the water taxi",
+          icon: "ticket",
+          key: { fig: "About 1.25 to 1.50", tag: "The jitney bus", text: "Privately run buses cover the Bay Street corridor and Cable Beach for around a dollar and a half, exact change only.", tone: "teal" },
+          p: [
+            "The <b>jitneys</b> are Nassau's privately run buses, and they are the local way to move: roughly <b>1.25 to 1.50 dollars</b> a ride on the main downtown and Cable Beach routes, <b>exact change required</b>, and you <b>pay as you get off</b> rather than when you board. They run roughly from early morning to early evening, and you wave to stop one rather than wait at a marked stop. They do not serve the airport.",
+            "Between Nassau and Paradise Island, the <b>water taxi</b> is both cheaper and nicer than a cab: about <b>7 dollars</b> a person for a ten minute crossing, leaving from Woodes Rogers Wharf near the cruise port. It is the best value ride in the city.",
+            "Some hotels and resorts run a <b>complimentary airport shuttle</b>, which is worth confirming when you book, since it removes the most expensive taxi ride of the trip. If you decide to rent a car, remember the Bahamas <b>drives on the left</b>. For the cash side, see <a href='/bahamas/cash-or-card'>cash or card in the Bahamas</a> and the <a href='/bahamas'>Bahamas money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is there Uber in Nassau?", a: "No. Neither Uber nor Lyft operates in Nassau or elsewhere in the Bahamas, which the official destination information confirms. Licensed taxis are the default, a locally built ride app with fixed fares exists, and hotels will call a car for you." },
+        { q: "Do Nassau taxis have meters?", a: "In practice, no. Fares are government-set by zone and quoted by the driver rather than metered, and the official rates are not posted anywhere visitors will see them. Always agree the fare before you get in, and repeat it back to be sure." },
+        { q: "How much is a taxi from Nassau airport to Atlantis?", a: "Roughly 45 to 55 dollars for two passengers, plus about 3 dollars for each additional person and a customary 15% tip. Confirm the total before you load bags. Some resorts run a complimentary airport shuttle, which is worth checking when you book." },
+        { q: "What is the cheapest way to get around Nassau?", a: "The jitney buses at roughly 1.25 to 1.50 dollars a ride, exact change, paid as you exit, covering the downtown and Cable Beach routes. Between Nassau and Paradise Island the water taxi is about 7 dollars a person for a ten minute crossing." }
+      ],
+      sources: {
+        links: [
+          { label: "Nassau Paradise Island: the official destination guidance on taxis, jitneys, water taxis and the absence of ride-hailing", url: "https://www.nassauparadiseisland.com/plan-your-trip/getting-around", type: "gov" },
+          { label: "The Islands of the Bahamas: the official tourism site", url: "https://www.bahamas.com", type: "gov" }
+        ],
+        judgment: "That Uber and Lyft do not operate, and the jitney and water taxi fares, come from the official destination information. Taxi zone rates are set by government but are not published where visitors can check them, and third-party tables disagree, so the route figures here are bands drawn from recent traveller reports and operator listings rather than an official schedule. The night surcharge is widely reported by local operators rather than published centrally, so treat it as indicative. Checked July 2026."
+      }
     }
   ],
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 3, atmRisk: 4 },

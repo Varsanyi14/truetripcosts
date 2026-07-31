@@ -84,6 +84,207 @@ export default {
         ],
         judgment: "US citizens get a free visa on arrival covering all seven emirates, and that much is stable. The allowed length is genuinely reported two ways in 2026 (30 days in older guidance, up to 90 within 180 per the UAE Embassy), so we flag both and advise checking your stamp rather than picking one. The six-month passport rule and the X-marker restriction are enforced. Checked July 2026."
       }
+    },
+    {
+      slug: "cash-or-card",
+      glance: [
+        { k: "Cards", v: "Run almost everything" },
+        { k: "Cash to carry", v: "About 200 to 500 dirhams" },
+        { k: "The rate", v: "Pegged at about 3.67 to the dollar" },
+        { k: "Watch for", v: "The pay in dollars prompt" }
+      ],
+      live: true,
+      topic: "cash",
+      title: "Cash or card in the UAE: paying in Dubai (2026) | True Trip Costs",
+      description: "How to pay in the UAE in 2026: cards and phone wallets cover almost everything, the dirham is pegged to the dollar at about 3.67, and the one real trap is the pay in dollars prompt. Checked July 2026.",
+      h1: "Cash or card in the United Arab Emirates",
+      lede: "Dubai and Abu Dhabi are close to fully cashless, so a no-fee card and your phone cover nearly everything. Here is the small amount of cash still worth carrying, and the one terminal prompt to refuse.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-31",
+      answer: "The UAE is one of the easiest places in the world to pay as an American. <b>Cards and phone wallets run almost everything</b>: taxis, the metro, malls, restaurants and hotels. Keep roughly <b>200 to 500 dirhams</b> in cash for the souks, small local eateries and tips. The dirham is <b>pegged to the US dollar</b> at about <b>3.67 to 1</b> and has been since 1997, so the rate holds steady for your whole trip and there is no rate risk to manage. The one thing that quietly costs you money is the <b>pay in dollars</b> prompt on a card machine or ATM, which adds roughly 3 to 8%. Always choose <b>dirhams</b>.",
+      sections: [
+        {
+          h: "Close to fully cashless",
+          icon: "card",
+          key: { fig: "Tap for nearly all of it", tag: "Cards and phone wallets", text: "Taxis, the metro, malls, restaurants and hotels all take cards, and Apple Pay and Google Pay are widely accepted.", tone: "teal" },
+          p: [
+            "Dubai and Abu Dhabi are among the most cashless places you will visit. A <b>no-foreign-fee Visa or Mastercard</b>, plus <b>Apple Pay or Google Pay</b> on your phone, will cover taxis, the Dubai Metro, malls, supermarkets, restaurants, hotels and attractions. Contactless is the norm rather than the exception, and terminals are everywhere.",
+            "Amex acceptance is decent at hotels and larger retailers but thinner at small independents, so do not rely on it as your only card. Bring a backup card and keep it separate from the first."
+          ]
+        },
+        {
+          h: "The cash still worth carrying",
+          icon: "cash",
+          key: { fig: "200 to 500 AED", tag: "Roughly 55 to 135 dollars", text: "Enough for the souks, small local eateries, taxis you cannot tap in, and tips. Anything more usually goes home unspent.", tone: "teal" },
+          p: [
+            "You still want a little cash, but less than most guides suggest. The places it earns its keep are the <b>souks</b>, where cash helps you bargain and stall holders prefer it, <b>small local restaurants and cafeterias</b> in older parts of Deira and Bur Dubai, and <b>tips</b>, which are best given in dirhams and handed over directly.",
+            "About <b>200 to 500 dirhams</b> for a typical week is plenty. Bahraini-style haggling aside, nothing here demands a thick wallet, and dirhams are awkward to change back at home, so err on the low side and top up if you run short."
+          ]
+        },
+        {
+          h: "The peg, and the prompt that costs you",
+          icon: "usd",
+          key: { fig: "3.67 to 1", tag: "Fixed since 1997", text: "The dirham is pegged to the US dollar, so the rate does not move during your trip. Divide dirhams by roughly 3.7 for the dollar figure.", tone: "teal" },
+          p: [
+            "The dirham has been <b>pegged to the US dollar at 3.6725</b> since 1997, so unlike most destinations there is no exchange rate to watch. A price in dirhams means the same in dollars on your last day as on your first. For quick mental math, <b>divide by 3.7</b>: 100 dirhams is about 27 dollars.",
+            "Because the peg already fixes the rate, <b>dynamic currency conversion</b> is pure loss. If a terminal or ATM offers to bill you in US dollars, it applies its own padded rate, typically <b>3 to 8% worse</b>, on a conversion that carries no risk in the first place. Choose <b>dirhams</b> every time and let your own bank convert.",
+            "A handful of tourist-facing hotels, souk stalls and tour desks will accept US dollar bills, but they set their own rate and it is normally a poor one, so you lose on every note. Pay in dirhams or tap your card instead."
+          ]
+        },
+        {
+          h: "ATMs, exchange houses and the 5% VAT",
+          icon: "atm",
+          key: { fig: "5% VAT", tag: "Reclaimable on shopping only", text: "Non-residents can claim back most of the 5% VAT on goods, but not on hotels, restaurants or anything used in the country.", tone: "amber" },
+          p: [
+            "Bank ATMs are everywhere in malls, metro stations and hotel lobbies, and are the cleanest way to get dirhams. If you would rather change cash, use an in-mall or in-metro <b>exchange house</b> such as Al Ansari, LuLu Exchange or UAE Exchange, where rates are tight. <b>Skip the airport counters and hotel desks</b>, which can run 4 to 6% worse, and do not buy dirhams before you leave home.",
+            "The UAE charges <b>5% VAT</b>. As a non-resident you can reclaim it on eligible <b>shopping</b>: spend at least 250 dirhams at a participating store, ask for the tax-free tag, and validate at a Planet kiosk before you fly, which returns roughly 85% of the VAT after the fee. VAT on hotels, restaurants and services you consume here is <b>not</b> refundable.",
+            "Hotel bills carry more than the room rate. Expect the 5% VAT plus a service charge and municipality fee, and on top of that Dubai's per-night Tourism Dirham by star rating, or a 4% accommodation fee in Abu Dhabi. See the <a href='/uae'>UAE money guide</a> for the full picture, and <a href='/uae/tipping'>tipping in the UAE</a> for what to leave by hand."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need cash in the UAE?", a: "Not much. Dubai and Abu Dhabi run almost entirely on cards and phone wallets, which cover taxis, the metro, malls and restaurants. Carry roughly 200 to 500 dirhams for the souks, small local eateries and tips, and put the rest on a card." },
+        { q: "Can I pay with US dollars in Dubai?", a: "Rarely, and it costs you. Some tourist-facing hotels, souk stalls and tour desks take dollar bills, but they set their own rate and it is usually poor. Shops, taxis, the metro and restaurants price in dirhams and expect dirhams or a card. Since the dirham is pegged to the dollar, paying in dirhams carries no rate risk." },
+        { q: "Should I choose dirhams or dollars on a card machine in the UAE?", a: "Always dirhams. Choosing dollars is dynamic currency conversion, which adds roughly 3 to 8% at a padded rate. The dirham is already pegged to the dollar, so there is nothing to gain and a few percent to lose." },
+        { q: "Where is the best place to exchange money in the UAE?", a: "In-mall or in-metro exchange houses like Al Ansari, LuLu Exchange or UAE Exchange have tight rates. Avoid airport counters and hotel desks, which can be 4 to 6% worse, and do not buy dirhams at home before you travel. If you are mostly paying by card, you may not need to exchange at all." }
+      ],
+      sources: {
+        links: [
+          { label: "UAE Federal Tax Authority: the 5% VAT and the tourist refund scheme operated with Planet", url: "https://tax.gov.ae/en/services/tourist.vat.refunds.aspx", type: "gov" },
+          { label: "US Department of State: United Arab Emirates country information for US citizens", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/UnitedArabEmirates.html", type: "gov" }
+        ],
+        judgment: "The dirham's peg at 3.6725 to the dollar and the 5% VAT with its Planet refund route are official and stable. Card acceptance being near universal in Dubai and Abu Dhabi, the 200 to 500 dirham cash figure, and the size of the dynamic currency conversion markup are our own read from recent trips and card terms rather than a published table. Checked July 2026."
+      }
+    },
+    {
+      slug: "tipping",
+      glance: [
+        { k: "Tipping", v: "Customary, but not heavy" },
+        { k: "Restaurants", v: "A 10% service charge is often added" },
+        { k: "If none", v: "10 to 15% in cash" },
+        { k: "How", v: "Cash in dirhams, handed over" }
+      ],
+      live: true,
+      topic: "tipping",
+      title: "Tipping in the UAE: how much to tip in Dubai (2026) | True Trip Costs",
+      description: "Tipping in the UAE in 2026: why the 10% service charge on your bill may not reach your server, what to leave if none is added, and the everyday dirham amounts for valets, housekeeping and taxis. Checked July 2026.",
+      h1: "Tipping in the United Arab Emirates",
+      lede: "Tipping here is customary but lighter than at home, and cash in dirhams matters more than the percentage. Here is what to leave, and why the service charge on your bill is not the whole story.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-31",
+      answer: "Tipping in the UAE is <b>customary but not heavy</b>, and much lighter than in the US. Restaurants frequently add a <b>10% service charge</b>, but it often goes to the business rather than your server, so <b>rounding up or leaving 10 to 15% in cash</b> for good service is normal even when the charge appears. For everyday help a few dirhams goes a long way: <b>5 to 10 dirhams</b> for a valet, <b>10 to 15 dirhams a day</b> for housekeeping, a couple of dirhams a bag for a porter, and simply <b>rounding up</b> a taxi fare. <b>Cash in dirhams</b> beats adding it to a card, because it reaches the person directly. Nobody will chase you for a tip.",
+      sections: [
+        {
+          h: "Customary, but lighter than home",
+          icon: "tip",
+          key: { fig: "10 to 15%", tag: "If no service charge", text: "Well short of US expectations. Many staff rely on tips because base wages can be low, so something is always welcome.", tone: "teal" },
+          p: [
+            "The UAE sits between the light-tipping habits of much of Europe and the heavy expectations of the US. At a sit-down restaurant with <b>no service charge</b>, <b>10 to 15%</b> for good service is generous and normal. Nobody will be offended by less, and nobody will chase you down for it.",
+            "The reason to bother is practical rather than social: much of the service workforce is on <b>low base pay</b>, often supporting family elsewhere, so a modest tip lands harder than the same money would at home."
+          ]
+        },
+        {
+          h: "The 10% service charge, and why cash still matters",
+          icon: "receipt",
+          key: { fig: "10%", tag: "Often already on the bill", text: "A service charge is common in restaurants and hotels, but it frequently goes to the business rather than the person who served you.", tone: "amber" },
+          p: [
+            "Check the bill. Restaurants and hotels commonly add a <b>10% service charge</b>, and hotel bills often carry a municipality fee and the 5% VAT alongside it. The catch is that a service charge is <b>not reliably a tip</b>: in many venues it goes to the operation, not to your server.",
+            "That is why the local habit is to <b>round up or add a small amount in cash</b> even when a service charge is printed on the bill. A few dirhams left on the table is understood as being for the person, and adding a tip to the card total is not."
+          ]
+        },
+        {
+          h: "The everyday amounts",
+          icon: "coins",
+          key: { fig: "5 to 15 AED", tag: "Covers most small services", text: "Valet 5 to 10 dirhams, housekeeping 10 to 15 a day, a couple of dirhams a bag for a porter, and round up the taxi.", tone: "teal" },
+          p: [
+            "Keep small notes for the everyday round. A <b>valet</b> is 5 to 10 dirhams, <b>hotel housekeeping</b> 10 to 15 dirhams a day left in the room, a <b>porter</b> a couple of dirhams a bag, and a <b>supermarket bagger or petrol attendant</b> a dirham or two if you feel like it.",
+            "For <b>taxis</b>, rounding the fare up to the next note is the norm rather than a percentage, and drivers do not expect more. See <a href='/uae/taxis-and-apps'>taxis and ride-hailing in the UAE</a> for how the fares work, or the <a href='/uae'>UAE money guide</a> for the wider money picture. Delivery riders, who work long hours in real heat, are one group where a little extra is genuinely well received."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do you tip in Dubai?", a: "Yes, but modestly. Tipping is customary rather than obligatory, and lighter than in the US. If no service charge is added, 10 to 15% is generous at a restaurant. For small services, a few dirhams is normal, and cash in dirhams is preferred." },
+        { q: "Is the service charge in the UAE the tip?", a: "Not reliably. Many restaurants and hotels add about 10%, but it often goes to the business rather than the person who served you. That is why locals still round up or leave a small amount in cash on top, even when the charge appears on the bill." },
+        { q: "Should I tip in dollars or dirhams in the UAE?", a: "Dirhams. Dollar bills are awkward for staff to change and lose value at the exchange counter, so a tip in local cash is worth more to the person receiving it. Keep small dirham notes on hand for this." },
+        { q: "Do you tip taxi drivers in the UAE?", a: "Rounding up is the norm, not a percentage. Taxis are metered and regulated, so paying the fare and rounding to the next convenient note is entirely normal and drivers do not expect more." }
+      ],
+      sources: {
+        links: [
+          { label: "US Department of State: United Arab Emirates country information for US citizens", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/UnitedArabEmirates.html", type: "gov" }
+        ],
+        judgment: "There is no official tipping schedule in the UAE, and the 10% service charge varies by venue and is not always distributed to staff. The percentages and dirham amounts here are our own read from recent trips and consistent local guidance, not a published standard. Checked July 2026."
+      }
+    },
+    {
+      slug: "taxis-and-apps",
+      glance: [
+        { k: "Street taxis", v: "Metered and regulated" },
+        { k: "Minimum fare", v: "About 12 to 13 dirhams" },
+        { k: "From the airport", v: "A 25 dirham start" },
+        { k: "Apps", v: "Careem and Uber, and pricier" }
+      ],
+      live: true,
+      topic: "taxis",
+      title: "Taxis in Dubai: fares, Careem and Uber (2026) | True Trip Costs",
+      description: "How taxis work in the UAE in 2026: the metered RTA fares, why a short hop still costs the 12 dirham minimum, the 25 dirham airport start, Salik tolls, and how Careem and Uber compare. Checked July 2026.",
+      h1: "Taxis and ride-hailing in the United Arab Emirates",
+      lede: "Dubai taxis are metered, government-regulated and cheap by US standards, with no haggling and no meter games. Here is what the meter actually does, and where the extras come from.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-31",
+      answer: "Taxis in Dubai are <b>metered and regulated</b> by the Roads and Transport Authority, so every licensed cab runs the same formula and there is nothing to negotiate. A street hail starts at about <b>5 dirhams</b> (a little more at night) and adds roughly <b>2.19 dirhams a kilometre</b>, but a <b>minimum fare of about 12 dirhams</b> means any short hop costs at least that. Picking up at <b>Dubai airport</b> starts at a fixed <b>25 dirhams</b> instead. <b>Salik road tolls</b> are added to your meter at 4 dirhams a gate, and waiting time runs half a dirham a minute. <b>Careem and Uber</b> both operate and typically cost 10 to 25% more than a street taxi. Cards, phone wallets and Nol all work in the cab.",
+      sections: [
+        {
+          h: "Metered, regulated, and cheap by US standards",
+          icon: "taxi",
+          key: { fig: "About 2.19 AED per km", tag: "Adjusted monthly with fuel", text: "Every licensed Dubai taxi runs the same RTA meter formula, so the fare does not depend on the company or your negotiating skills.", tone: "teal" },
+          p: [
+            "Dubai taxis are among the easiest in the world to use. Fares are set by the <b>Roads and Transport Authority</b>, the meter is always used, and <b>there is no haggling</b>. Flag one on the street, from a hotel rank or at a mall entrance and the same rate applies whichever company owns the car.",
+            "The distance rate sits at roughly <b>2.19 dirhams a kilometre</b>, but treat that as a band rather than a fixed number: the RTA <b>revises it monthly in line with fuel prices</b>, so it drifts within a few fils either way. A 10 kilometre run across town typically lands somewhere around 35 dirhams, or about 10 dollars.",
+            "Pink-roofed <b>ladies taxis</b> with female drivers are available for women and families at the same regulated rates."
+          ]
+        },
+        {
+          h: "The minimum fare is what a short hop really costs",
+          icon: "coins",
+          key: { fig: "12 to 13 AED", tag: "The floor on any trip", text: "The flagfall is small, but a minimum fare applies regardless of distance, so a five minute ride still costs the minimum.", tone: "amber" },
+          p: [
+            "The starting fare looks low, about <b>5 dirhams</b> by day and <b>5.50</b> at night (roughly 10pm to 6am), which is why people are surprised by the total on a short trip. The number that actually governs a quick hop is the <b>minimum fare</b>: around <b>12 dirhams</b> for a street hail and <b>13</b> for an app booking, whatever the distance.",
+            "Booking through an app also adds a <b>booking fee</b>, roughly 4 dirhams off-peak and up to 7.50 in peak hours. None of this is large in dollar terms, but it explains why a two kilometre ride and a four kilometre ride can cost nearly the same."
+          ]
+        },
+        {
+          h: "Airport pickups, tolls and waiting",
+          icon: "plane",
+          key: { fig: "25 AED start", tag: "Dubai airport pickups", text: "Taxis from the airport ranks start at a fixed 25 dirhams instead of the usual flagfall, then meter normally.", tone: "amber" },
+          p: [
+            "Taking a taxi <b>from Dubai International</b> means a fixed <b>25 dirham</b> start rather than the ordinary flagfall, after which the meter runs as usual. Airport to Downtown or Dubai Marina generally lands in the 60 to 100 dirham range depending on traffic, which is 16 to 27 dollars. Going the other way, to the airport, there is no such surcharge.",
+            "Two extras appear on longer runs. <b>Salik tolls</b>, the road gantries on routes like Sheikh Zayed Road, are passed through to you at about <b>4 dirhams a gate</b>, and <b>waiting time</b> in heavy traffic is charged at about <b>0.50 dirhams a minute</b>. Both are legitimate and appear on the meter, so they are worth knowing rather than worrying about."
+          ]
+        },
+        {
+          h: "Apps, paying, and the metro alternative",
+          icon: "card",
+          key: { fig: "10 to 25% more", tag: "Careem and Uber", text: "Both apps work well and show the price up front, but a street taxi is normally the cheaper option for the same car.", tone: "teal" },
+          p: [
+            "<b>Careem</b> (owned by Uber and the regional favourite) and <b>Uber</b> both operate across the UAE, and the RTA taxi fleet can be hailed through the apps too. They are reliable and quote the fare in advance, which some people prefer, but they generally run <b>10 to 25% above</b> the street meter for the same journey.",
+            "Paying is easy: nearly all taxis take <b>cards and phone wallets</b>, and many accept the <b>Nol</b> transit card. For anything along its line, the <b>Dubai Metro</b> is dramatically cheaper than a cab and runs on the same Nol card, so a mix of metro plus short taxi hops is the cheapest way around the city.",
+            "For what to leave the driver, see <a href='/uae/tipping'>tipping in the UAE</a>, and <a href='/uae/cash-or-card'>cash or card in the UAE</a> for how to pay for everything else. Note that Abu Dhabi is regulated separately by its own Integrated Transport Centre, with similar metered fares."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Are taxis in Dubai expensive?", a: "No, they are cheap by US standards. Fares are set by the RTA at roughly 2.19 dirhams a kilometre with a small starting fare, so a 10 kilometre trip across the city is around 35 dirhams, about 10 dollars. The minimum fare of about 12 dirhams applies on very short trips." },
+        { q: "Does Uber work in Dubai?", a: "Yes, and so does Careem, which Uber owns and which is the regional favourite. Both are reliable and quote the price up front, but they typically cost 10 to 25% more than hailing a metered street taxi for the same trip." },
+        { q: "How much is a taxi from Dubai airport?", a: "Airport pickups start at a fixed 25 dirhams rather than the usual flagfall, then run on the meter. Expect roughly 60 to 100 dirhams to Downtown or Dubai Marina depending on traffic, which is about 16 to 27 dollars. There is no airport surcharge on the trip back." },
+        { q: "Can you pay by card in a Dubai taxi?", a: "Yes. Almost all licensed taxis take cards and phone wallets such as Apple Pay and Google Pay, and many also accept the Nol transit card. You do not need cash for taxis in Dubai." }
+      ],
+      sources: {
+        links: [
+          { label: "Dubai Roads and Transport Authority: the regulator that sets taxi tariffs", url: "https://www.rta.ae", type: "gov" },
+          { label: "Gulf News: the RTA announcement of app booking fees, flagfall and the e-hail minimum fare", url: "https://gulfnews.com/uae/rta-announces-new-dubai-taxi-fares-1.500334930", type: "guide" }
+        ],
+        judgment: "Third-party fare tables for Dubai disagree, mostly because they confuse the small flagfall with the higher minimum fare, and because the RTA revises the per-kilometre rate monthly with fuel prices. We have given the structure the RTA actually announced, with the distance rate as a band rather than a precise figure, so treat totals as estimates and check the RTA app for a live quote. Careem and Uber pricing is dynamic and our 10 to 25% premium is an observed range. Checked July 2026."
+      }
     }
   ],
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 3, atmRisk: 3 },
