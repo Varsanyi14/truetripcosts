@@ -449,7 +449,7 @@ export default {
       h1: "Do US citizens need a visa or ETIAS for Ireland?",
       lede: "Short answer: no visa, and no ETIAS. Ireland sits outside the Schengen Area, so Europe's coming authorization does not touch it. The one wrinkle is Northern Ireland, which is a different country. Here is what actually applies.",
       checked: "Jul 2026",
-      checkedISO: "2026-07-26",
+      checkedISO: "2026-07-31",
       answer: "US citizens need <b>no visa</b> for Ireland for tourism or business, up to <b>90 days</b>, with nothing to apply for in advance. And <b>ETIAS does not apply</b>: Ireland is an EU member but <b>opted out of the Schengen Area</b>, so Europe's coming travel authorization will not cover it. The one thing to know: <b>Northern Ireland is part of the UK</b>, so visiting Belfast or the north needs the <b>UK ETA</b>, which is separate. For the Republic, just bring a <b>valid passport</b>.",
       official: {
         label: "Irish Immigration Service: coming to visit Ireland",
@@ -464,7 +464,7 @@ export default {
           key: { fig: "90 days", tag: "Not in Schengen", text: "US citizens enter Ireland visa-free for up to 90 days with nothing to apply for. ETIAS does not apply, because Ireland opted out of the Schengen Area.", tone: "teal" },
           p: [
             "US passport holders enter Ireland <b>visa-free</b> for tourism or business, up to <b>90 days</b>, stamped in on arrival with <b>nothing to apply for</b> and no fee. Ireland is an <b>EU member</b> but it <b>opted out of the Schengen Area</b> and runs its own immigration system.",
-            "That is why <b>ETIAS</b>, the EU travel authorization expected to start for Schengen countries later in 2026, <b>will not apply to Ireland</b>. When it launches, you would need it for the Schengen portion of a trip, but never for Ireland itself."
+            "That is why <b>ETIAS</b>, the EU travel authorization for Schengen countries, <b>will not apply to Ireland</b>. ETIAS is <b>not running and has no launch date</b>: the EU removed its late-2026 target in July 2026 and will announce a real date several months ahead. Whenever it does launch, you would need it for the Schengen portion of a trip, but never for Ireland itself."
           ]
         },
         {
@@ -497,7 +497,7 @@ export default {
       ],
       faqs: [
         { q: "Do US citizens need a visa for Ireland?", a: "No. US citizens visit Ireland visa-free for tourism or business for up to 90 days, stamped in on arrival with nothing to apply for and no fee. Be ready to show a return ticket, funds and accommodation, since visa-free entry does not guarantee admission. Working or longer stays need the right permit and visa." },
-        { q: "Does ETIAS apply to Ireland?", a: "No. Ireland is an EU member but opted out of the Schengen Area, so ETIAS does not and will not apply to Ireland, even after it launches for Schengen countries later in 2026. You would need ETIAS only for the Schengen part of a trip, never for Ireland itself." },
+        { q: "Does ETIAS apply to Ireland?", a: "No. Ireland is an EU member but opted out of the Schengen Area, so ETIAS does not and will not apply to Ireland, even once it launches for Schengen countries. ETIAS is not running today and has no launch date, after the EU removed its late-2026 target in July 2026. You would need ETIAS only for the Schengen part of a trip, never for Ireland itself." },
         { q: "Do I need a UK ETA to visit Northern Ireland?", a: "Yes. Northern Ireland is part of the UK, so since 2025 US citizens need a UK Electronic Travel Authorization to visit Belfast or the north, separate from anything for the Republic of Ireland. There is no checkpoint on the land border, but the UK ETA is still legally required for the northern leg." },
         { q: "Does time in Ireland count toward the Schengen 90-day limit?", a: "No. Because Ireland is outside the Schengen Area, days spent there do not count against your Schengen 90-days-in-180 allowance. Ireland is a useful way to extend a European trip: you can spend your Schengen days and, separately, up to 90 days in Ireland." }
       ],
@@ -506,7 +506,7 @@ export default {
           { label: "Irish Immigration Service (Department of Justice): visa and entry requirements for visiting Ireland", url: "https://www.irishimmigration.ie", type: "gov" },
           { label: "US Department of State: the country information pages, the official router for entry requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
         ],
-        judgment: "Ireland's visa-free entry for US citizens is stable, and its position outside Schengen means ETIAS will not apply to it. The UK ETA requirement for Northern Ireland took effect in 2025 and is separate; confirm its details in our UK guide before a cross-border trip. Checked July 2026."
+        judgment: "Ireland's visa-free entry for US citizens is stable, and its position outside Schengen means ETIAS will not apply to it. On ETIAS timing we deliberately quote no date: the EU removed its late-2026 target from its official ETIAS pages in July 2026, and those pages now say only that a start date will be announced several months in advance. Some other EU pages still carried the old last-quarter-of-2026 wording when we checked, which is why we rely on the official ETIAS pages rather than secondary EU summaries. The UK ETA requirement for Northern Ireland took effect in 2025 and is separate; confirm its details in our UK guide before a cross-border trip. Checked July 2026."
       }
     }
   ]

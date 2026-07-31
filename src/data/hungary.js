@@ -5,12 +5,12 @@ export default {
   name: "Hungary",
   from: "United States",
   checked: "Jul 2026",
-  checkedISO: "2026-07-16",
+  checkedISO: "2026-07-31",
   sources: {
-    changed: "First publication. Confirmed the money facts that matter most this year: the forint sits at about 315 to the US dollar, cards are widely taken, and Hungary has the highest VAT in the EU at 27%, which also means the best tourist refund in Europe, about 18% back after fees. Budapest charges a 4% tourist tax on the room. On entry, the EU's biometric Entry/Exit System went live in April 2026, and a US passport is still all you need for now.",
+    changed: "First publication. Confirmed the money facts that matter most this year: the forint sits at about 315 to the US dollar, cards are widely taken, and Hungary has the highest VAT in the EU at 27%, which also means the best tourist refund in Europe, about 18% back after fees. Budapest charges a 4% tourist tax on the room. On entry, the EU's biometric Entry/Exit System went live in April 2026, and a US passport is still all you need for now. Updated 31 July 2026: the EU removed its late-2026 ETIAS target, so this guide no longer quotes a start date for it.",
     links: [
       { label: "National Tax and Customs Administration (NAV): the 27% VAT and the tax-free refund for non-EU travelers", url: "https://nav.gov.hu/en", type: "revenue" },
-      { label: "European Union travel portal: the Entry/Exit System (EES) now in operation at Schengen borders, and ETIAS due to follow", url: "https://travel-europe.europa.eu/ees_en", type: "gov" },
+      { label: "European Union travel portal: the Entry/Exit System (EES) in operation at Schengen borders, and ETIAS not yet running with no launch date", url: "https://travel-europe.europa.eu/ees_en", type: "gov" },
       { label: "VisitHungary: the official tourism site, for getting around and visitor basics", url: "https://visithungary.com/", type: "tourism" },
     ],
     judgment: "The daily cash share, the tipping feel, and which vendors will want cash are our own estimate from experience and consistent traveler reports, not an official figure. Town tourist-tax amounts outside Budapest vary and are shown here as a representative figure.",
@@ -35,7 +35,7 @@ export default {
 
   recentChange: {
     date: "Jul 2026",
-    text: "The way you cross the border changed in 2026, though not the cost. Since April 2026 the EU's <b>Entry/Exit System (EES)</b> has been live: instead of a passport stamp, you give a quick fingerprint and photo at the border, which then tracks your 90 days automatically. There is <b>no fee and no form</b>. A separate online authorization, <b>ETIAS</b>, is due to start in late 2026 and will add a small fee once it applies, but for now a US passport is all you need."
+    text: "The way you cross the border changed in 2026, though not the cost. Since April 2026 the EU's <b>Entry/Exit System (EES)</b> has been live: instead of a passport stamp, you give a quick fingerprint and photo at the border, which then tracks your 90 days automatically. There is <b>no fee and no form</b>. A separate online authorization, <b>ETIAS</b>, will add a small fee once it starts, but it is <b>not running and has no launch date</b>: the EU removed its late-2026 target in July 2026 and says it will announce a real date several months ahead. Any site selling you an ETIAS today is selling something that does not exist yet. For now a US passport is all you need."
   },
 
   notice: 'We only cover trips departing from the United States right now. Want an email the moment we add your home country? <a href="#" onclick="return false"><b>Sign up for an alert</b></a>.',
@@ -141,7 +141,7 @@ export default {
     { q: "Can I get a VAT refund on shopping in Hungary?", a: "Yes, and it is the best in Europe. Hungary's VAT is 27%, so after fees you get back about 18%. Spend over about 55,000 forint in one store, ask for a tax-free form, keep the goods unused, and have customs stamp it when you leave the EU. It is for goods, not hotels or meals." },
     { q: "Are Budapest taxis safe to use?", a: "Yes, if you book rather than hail. Use the Bolt app or call a reputable company, and avoid the unmarked cabs waiting at the airport and tourist areas, which are known to overcharge visitors." },
     { q: "Do you tip in Hungary?", a: "A little more than elsewhere in Europe: around 10% for good table service. Check the bill first for a service charge (szervizdij), often already added. When tipping, tell the server the total you want to pay rather than leaving cash on the table." },
-    { q: "Do I need a visa or ETIAS for Hungary?", a: "Not right now. US citizens visit visa-free for up to 90 days in any 180. Since April 2026 you give a fingerprint and photo at the border under the new EES system, with no fee and no form. ETIAS, a small online authorization fee, is due to start in late 2026." }
+    { q: "Do I need a visa or ETIAS for Hungary?", a: "Not right now. US citizens visit visa-free for up to 90 days in any 180. Since April 2026 you give a fingerprint and photo at the border under the new EES system, with no fee and no form. ETIAS, a small online authorization fee, is not yet running and has no launch date: the EU withdrew its late-2026 target in July 2026 and will announce a real one several months in advance." }
   ],
   culture: {
     heading: "A little Hungarian goes a long way",
