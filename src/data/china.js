@@ -22,8 +22,8 @@ export default {
   hook: "China runs on mobile QR payments, and the big shift for visitors is that Alipay and WeChat Pay now let you link a foreign Visa or Mastercard, no Chinese bank account needed. Set both up before you fly, carry some yuan as a backup, and bring a card for hotels. Two more things to sort before you go: a visa, and a way around the Great Firewall.",
   aliases: ["china", "beijing", "shanghai", "guangzhou", "shenzhen", "chengdu", "xian", "xi'an", "guilin", "hangzhou", "great wall", "forbidden city", "cny", "rmb", "yuan", "renminbi", "chinese yuan", "alipay", "wechat pay", "prc", "mainland china"],
 
-  title: "Money in China (2026): Alipay, WeChat Pay, Cash, the Visa and the Great Firewall | True Trip Costs",
-  description: "How to handle money in China as a US traveler in 2026: why Alipay and WeChat Pay now take foreign cards, how much cash to carry, where physical cards work, the tourist visa you need, the 13% VAT and its refund, tipping (not expected), and getting online past the Great Firewall. Checked July 2026.",
+  title: "China money 2026: Alipay, WeChat Pay and cash",
+  description: "Alipay and WeChat Pay now take foreign cards, so set both up before you fly. Physical cards work in few places, and tipping is not expected. Checked 2026.",
 
   h1: "Money in China, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your phone matters more than your wallet, how to set up the pay apps before you land, the cash worth carrying, and the two things first-timers forget, a visa and a way past the Great Firewall.",

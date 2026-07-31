@@ -22,8 +22,8 @@ export default {
   signals: { cardFriendliness: 1, cashNeed: 5, taxRisk: 2, atmRisk: 4 },
   hook: "Laos is a cash-first country where the kip rules daily life, so bring a fee-friendly debit card, pull kip in small amounts from a bank ATM because limits are low, keep clean US dollars or Thai baht as backup, and pay in kip rather than dollars.",
   aliases: ["laos", "lao", "lao pdr", "laotian", "vientiane", "luang prabang", "vang vieng", "pakse", "4000 islands", "si phan don", "plain of jars", "nong khiaw", "mekong", "kip", "lak", "bcel", "ldb", "tak bat", "alms giving", "khao piak", "laap", "sticky rice", "that luang", "ldif", "evisa"],
-  title: "Money in Laos (2026): Cash, the Kip, ATM Limits, Cards, Visa and Tipping | True Trip Costs",
-  description: "How to handle money in Laos as a US traveler in 2026: why it is cash-first, the kip and its rate, low ATM limits and fees, when cards work, the visa, tipping, and the traps to avoid. Checked July 2026.",
+  title: "Laos money 2026: the kip, cash and ATM limits",
+  description: "A cash-first country where the kip rules. ATM limits are low and each withdrawal carries a fee, so bring a card that refunds them. Checked 2026.",
   h1: "Money in Laos, sorted.",
   lede: "A calm, current plan for the money side of your trip: how much cash to carry, why ATMs need patience, and the local rules to know before you go.",
   hero: {

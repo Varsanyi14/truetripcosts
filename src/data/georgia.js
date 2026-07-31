@@ -23,8 +23,8 @@ export default {
   hook: "US citizens can stay in Georgia visa-free for up to a year, but from 2026 you must carry travel insurance to enter. The lari is the currency, Tbilisi and Batumi are very card-friendly, and you will want cash for markets, rural areas and shared minibuses.",
   aliases: ["georgia", "tbilisi", "batumi", "kutaisi", "sakartvelo", "caucasus", "kakheti", "svaneti", "kazbegi", "mtskheta", "gel", "lari", "georgian lari", "georgian", "republic of georgia"],
 
-  title: "Money in Georgia (2026): the Lari, Cards, ATMs, the New Travel-Insurance Rule and Tipping | True Trip Costs",
-  description: "How to handle money in the country of Georgia as a US traveler in 2026: the lari, tap-friendly Tbilisi and Batumi, ATMs and the dollar trick, the 18% VAT, light tipping, the 365-day visa-free entry, and the new Decree 602 rule that requires travel insurance to enter. Checked July 2026.",
+  title: "Tipping in Georgia, plus the lari, cards and cash",
+  description: "Tipping is light, and Tbilisi and Batumi are card-friendly. The currency is the lari, and from 2026 you must carry travel insurance. Checked 2026.",
 
   h1: "Money in Georgia, sorted.",
   lede: "A calm, current plan for the money side of your trip: what you can tap (most of Tbilisi and Batumi), the cash worth carrying for markets and the mountains, the lari in plain terms, and the two entry rules that surprise first-timers, a full year visa-free but insurance now required.",

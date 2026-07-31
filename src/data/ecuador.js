@@ -22,8 +22,8 @@ export default {
   hook: "Ecuador uses the US dollar as its official currency, so there is nothing to exchange and prices are already in dollars. Tap your card in Quito, Guayaquil and Cuenca, carry small bills for taxis, markets and the countryside, and bring cash for the Galapagos, where the park fees are cash only.",
   aliases: ["ecuador", "quito", "guayaquil", "cuenca", "galapagos", "galapagos islands", "otavalo", "cotopaxi", "banos", "amazon", "usd", "us dollar", "dollarized", "ecuadorian", "sucre"],
 
-  title: "Money in Ecuador (2026): US Dollars, Cards, ATMs, the Galapagos Fees and Tipping | True Trip Costs",
-  description: "How to handle money in Ecuador as a US traveler in 2026: it uses the US dollar so there is nothing to convert, where cards work and where you need cash, ATM fees and a safety habit, the 15% VAT, the cash-only Galapagos park and transit fees, modest tipping, and how to carry money safely. Checked July 2026.",
+  title: "Ecuador uses the US dollar: money guide for 2026",
+  description: "Nothing to exchange: the US dollar is the official currency. Carry small bills for taxis and markets, and expect cash-only Galapagos fees. Checked 2026.",
 
   h1: "Money in Ecuador, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your dollars simply work, where your card covers you, the cash worth carrying for taxis, markets and the Galapagos, and the safety habits that keep it all easy.",

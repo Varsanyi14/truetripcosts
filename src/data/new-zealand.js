@@ -23,8 +23,8 @@ export default {
   hook: "Very card-friendly, tap for almost everything. Two things to know: unlike Australia, New Zealand has not banned card surcharges, so you still meet about 2 to 3% at some places, and before you fly you pay an NZeTA plus a NZD 100 visitor levy. Choose New Zealand dollars over US dollars, and carry a little cash.",
   aliases: ["new zealand", "nz", "aotearoa", "kiwi", "auckland", "wellington", "christchurch", "queenstown", "rotorua", "milford sound", "south island", "north island", "nzd", "new zealand dollar", "nzeta", "ivl", "international visitor levy", "gst", "eftpos", "paywave", "maori", "haka"],
 
-  title: "Money in New Zealand (2026): Cards, Surcharges, the Visitor Levy, Cash, ATMs, GST and Tipping | True Trip Costs",
-  description: "How to handle money in New Zealand as a US traveler in 2026: near-universal cards and contactless, the card surcharges that still apply (no ban yet, unlike Australia), the NZeTA and the NZD 100 International Visitor Levy, the dollar-conversion trap, easy ATMs, the 15% GST with no tourist refund, and why nobody tips. Checked July 2026.",
+  title: "New Zealand money 2026: cards, surcharges, the levy",
+  description: "Tap for almost everything, but card surcharges are not banned as in Australia. Budget the visitor levy before you fly, and skip the tip. Checked 2026.",
 
   h1: "Money in New Zealand, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your card covers almost everything, the surcharge that still applies here, the NZeTA and visitor levy to pay before you fly, the little cash worth carrying, and why the 15% GST is not refundable on the way out.",

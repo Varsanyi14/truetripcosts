@@ -22,8 +22,8 @@ export default {
   hook: "The blue-dollar bargain is over: your card now gets a fair rate, so tap for most things, keep some cash for taxis and small spots, skip the pricey ATMs, and carry travel insurance.",
   aliases: ["argentina", "buenos aires", "patagonia", "mendoza", "bariloche", "iguazu", "iguazu falls", "el calafate", "ushuaia", "salta", "cordoba", "peso", "ars", "argentine peso", "blue dollar", "dolar blue", "mep", "malbec", "tango", "obelisco"],
 
-  title: "Money in Argentina (2026): Cards, the Blue Dollar Myth, MEP, Cash and Tipping | True Trip Costs",
-  description: "How to handle money in Argentina as a US traveler in 2026: why the blue-dollar advantage is gone, the fair rate your card now gets (MEP), the cash still worth carrying and how to get it, the pricey ATMs, the 21% hotel VAT refund, the new travel-insurance rule, and 10% cash tipping. Checked July 2026.",
+  title: "Argentina money 2026: cards now get a fair rate",
+  description: "The blue-dollar bargain is over, so your card gets a fair rate. Keep pesos for taxis and small spots, and skip the pricey ATMs. Checked 2026.",
 
   h1: "Money in Argentina, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your card now gets a fair rate, the cash still worth carrying and how to get it cheaply, the ATMs to go easy on, and the hotel tax you should not be paying.",

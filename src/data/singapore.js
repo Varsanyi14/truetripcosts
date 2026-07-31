@@ -22,8 +22,8 @@ export default {
   hook: "About as cashless as a city gets: tap a Visa or Mastercard for almost everything, straight onto the train and bus gates too, carry only a few dollars for hawker stalls and wet markets, always choose Singapore dollars over US dollars, and remember the 9% GST is refundable on the things you shop for and carry home.",
   aliases: ["singapore", "singapura", "sg", "sgp", "changi", "sentosa", "orchard road", "marina bay", "gardens by the bay", "sgd", "singapore dollar", "gst", "ez-link", "ezlink", "simplygo", "mrt", "hawker", "kopitiam", "merlion", "chinatown", "little india", "kampong glam", "chili crab", "laksa"],
 
-  title: "Money in Singapore (2026): Cards, Contactless, the GST Refund, ATMs and Tipping | True Trip Costs",
-  description: "How to handle money in Singapore as a US traveler in 2026: tap-to-pay almost everywhere including the MRT and buses, the small cash for hawker stalls, ATMs on every corner, the dollar-conversion trap, the 9% GST you can claim back on shopping, and why you do not tip. Checked July 2026.",
+  title: "Singapore cash or card? Money guide for 2026",
+  description: "Card, almost entirely: tap for the MRT, buses and most shops. Keep a few dollars for hawker stalls, claim the 9% GST back, and do not tip. Checked 2026.",
 
   h1: "Money in Singapore, sorted.",
   lede: "A calm, current plan for the money side of your trip: why a tap of your card covers almost everything, including the trains and buses, the small cash worth carrying for hawker food, the fee-free way to get dollars, and the 9% GST you can claim back on what you buy to take home.",

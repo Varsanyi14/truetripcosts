@@ -90,8 +90,8 @@ export default {
   hook: "One of the most cashless places on earth, and the dirham is pinned to the dollar, so the exchange rate barely moves.",
   aliases: ["uae", "u.a.e.", "dubai", "abu dhabi", "emirates", "emirati"],
 
-  title: "Money in the UAE (2026): Cards, Cash, the Dollar-Pegged Dirham and Dubai's Tourist Tax | True Trip Costs",
-  description: "How to handle money in the United Arab Emirates as a US traveler in 2026: why the dirham is fixed to the dollar, how little cash you need in Dubai and Abu Dhabi, the DCC trap to refuse, tipping, the 5% VAT you can reclaim, and Dubai's per-night Tourism Dirham. Checked July 2026.",
+  title: "Does Dubai accept US dollars? UAE money in 2026",
+  description: "Some do, but you pay in dirhams, pinned to the dollar so the rate barely moves. Dubai is near cashless, and adds a nightly tourist fee. Checked 2026.",
 
   h1: "Money in the UAE, sorted.",
   lede: "A calm, current plan for the money side of your trip: the dirham is locked to the US dollar so the exchange rate stays steady, cards run almost everything, and the only real traps are the exchange counter and one sneaky terminal prompt.",

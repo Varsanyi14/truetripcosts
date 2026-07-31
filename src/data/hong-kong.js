@@ -23,8 +23,8 @@ export default {
   hook: "One of the easiest places anywhere to pay by card or phone, with a little cash kept back for taxis, red minibuses and the market stalls, an Octopus card for everything that moves, and Hong Kong dollars chosen over US dollars every time.",
   aliases: ["hong kong", "hongkong", "hk", "kowloon", "tsim sha tsui", "central", "mong kok", "hkd", "hk$", "hong kong dollar", "octopus", "octopus card", "mtr", "star ferry", "ding ding", "tram", "victoria harbour", "the peak", "dim sum", "yum cha", "man mo", "cha chaan teng"],
 
-  title: "Money in Hong Kong (2026): Cards, Cash, Octopus, ATMs, Taxes and Tipping | True Trip Costs",
-  description: "How to handle money in Hong Kong as a US traveler in 2026: near-universal cards and mobile pay, the cash you still want for taxis and markets, the Octopus card that runs the MTR, trams and Star Ferry, 24-hour ATMs, the dollar-conversion trap, the free-port no-VAT rule and the 3% hotel tax, and how tipping works. Checked July 2026.",
+  title: "Do I need cash in Hong Kong? Money in 2026",
+  description: "A little. Cards and phones work almost everywhere, but taxis, minibuses and market stalls want cash. An Octopus card covers transit. Checked 2026.",
 
   h1: "Money in Hong Kong, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your card covers almost everything, the cash worth keeping for taxis and markets, the Octopus card that runs the MTR, trams and the Star Ferry, and the two taxes to know in a city with no sales tax.",

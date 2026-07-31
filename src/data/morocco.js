@@ -23,8 +23,8 @@ export default {
   hook: "Morocco runs on cash. The dirham is a closed currency you can only get once you arrive, so plan to withdraw it from a bank ATM on landing, keep small notes for souks, taxis and tips, and use cards mainly for city hotels and bigger restaurants.",
   aliases: ["morocco", "maroc", "marrakech", "marrakesh", "fes", "fez", "casablanca", "rabat", "tangier", "chefchaouen", "essaouira", "agadir", "sahara", "atlas mountains", "medina", "souk", "dirham", "mad", "taxe de sejour", "riad"],
 
-  title: "Money in Morocco (2026): the Closed Dirham, Cash, Cards, ATMs, the Tourist Tax and Tipping | True Trip Costs",
-  description: "How to handle money in Morocco as a US traveler in 2026: why the dirham is a closed currency you get on arrival, how cash-first the country really is, where cards work, the dollar-conversion trap, ATM fees, the per-night taxe de sejour, bargaining, and how tipping works. Checked July 2026.",
+  title: "Morocco money 2026: the closed dirham, cash, cards",
+  description: "You cannot get dirhams before you fly, so use a bank ATM on arrival. Morocco runs on cash: keep small notes for souks, taxis and tips. Checked 2026.",
 
   h1: "Money in Morocco, sorted.",
   lede: "A calm, current plan for the money side of your trip: why Morocco runs on cash, how to get the closed dirham on arrival, where your card actually works, the small tips that are expected, and the nightly tourist tax to keep cash aside for.",

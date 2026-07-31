@@ -13,8 +13,8 @@ export default {
   hook: "The country runs on QR-code payments, but cash still rules the street and cards fill the gap.",
   aliases: ["bharat", "delhi", "mumbai", "jaipur", "goa", "kerala", "rupee", "upi"],
 
-  title: "Money in India (2026): Cash, Cards, UPI for Tourists, ATMs and GST | True Trip Costs",
-  description: "How to handle money in India as a US traveler in 2026: why UPI runs everything (and how tourists can now tap in), how much cash to carry for autos and street food, cards in hotels and cities, fee-aware ATMs, the DCC trap, tipping, and GST on your bill. Checked July 2026.",
+  title: "India money 2026: cash, cards and UPI for tourists",
+  description: "UPI runs the country and tourists can now use it, but cash still rules autos and street food. Cards cover hotels and cities. Pay in rupees. Checked 2026.",
 
   h1: "Money in India, sorted.",
   lede: "A calm, current plan for the money side of your trip: India runs on instant QR-code payments, cash is still essential for the street, and a card covers the hotels and nicer spots. Here is how to combine all three without stress.",

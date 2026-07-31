@@ -22,8 +22,8 @@ export default {
   signals: { cardFriendliness: 2, cashNeed: 4, taxRisk: 2, atmRisk: 4 },
   hook: "Cambodia runs on US dollars, so there is barely anything to convert: pay and withdraw in clean, newer dollar bills, take your change in riel, keep small notes for markets and tuk-tuks, and just decline any screen that offers to lock in a rate.",
   aliases: ["cambodia", "cambodian", "khmer", "phnom penh", "siem reap", "angkor", "angkor wat", "sihanoukville", "battambang", "kampot", "koh rong", "tonle sap", "riel", "khr", "usd", "us dollar", "dollarized", "aba", "acleda", "bakong", "khqr", "e-arrival card", "evisa", "fish amok", "apsara", "tuk tuk"],
-  title: "Money in Cambodia (2026): US Dollars, Riel, ATMs, Visa and Tipping | True Trip Costs",
-  description: "How to handle money in Cambodia as a US traveler in 2026: why you spend US dollars, how riel change works, ATM fees and the 100 dollar bill problem, the visa, tipping, and the traps to avoid. Checked July 2026.",
+  title: "Cambodia runs on US dollars: money guide 2026",
+  description: "You spend US dollars and get riel as change, so there is little to convert. Bring clean, newer small bills, because worn notes get refused. Checked 2026.",
   h1: "Money in Cambodia, sorted.",
   lede: "A calm, current plan for the money side of your trip: why you pay in dollars, where the riel fits, and the small rules that trip up first-timers.",
   hero: {

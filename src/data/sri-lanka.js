@@ -22,8 +22,8 @@ export default {
   signals: { cardFriendliness: 2, cashNeed: 4, taxRisk: 2, atmRisk: 3 },
   hook: "Sri Lanka runs largely on cash in rupees, so plan to pull LKR from a bank ATM on arrival, keep small notes for tuk-tuks, markets and tips, and decline any screen that offers to charge you in dollars. Your mandatory ETA is now free for US travelers, but you still must get it before you fly.",
   aliases: ["sri lanka", "sri-lanka", "srilanka", "sri lankan", "ceylon", "colombo", "kandy", "galle", "sigiriya", "ella", "mirissa", "unawatuna", "arugam bay", "nuwara eliya", "anuradhapura", "polonnaruwa", "yala", "rupee", "lkr", "eta", "pickme", "tuk tuk", "tuk-tuk", "hoppers", "kottu", "cultural triangle", "hill country"],
-  title: "Money in Sri Lanka (2026): Rupees, Cards, ATMs, the Free ETA and Tipping | True Trip Costs",
-  description: "How to handle money in Sri Lanka as a US traveler in 2026: why it is a cash-first country, how ATMs and cards work, the mandatory ETA that is now free for Americans, tipping, and the traps to avoid. Checked July 2026.",
+  title: "Do I need cash in Sri Lanka? Money in 2026",
+  description: "Yes, it is a cash-first country. Pull rupees from a bank ATM on arrival, keep small notes for tuk-tuks and markets, and the ETA is now free. Checked 2026.",
   h1: "Money in Sri Lanka, sorted.",
   lede: "A calm, current plan for the money side of your trip: why you carry rupees, where cards fit, the free-but-mandatory ETA, and the small rules that trip up first-timers.",
   hero: {

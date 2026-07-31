@@ -22,8 +22,8 @@ export default {
   hook: "One of the most card-friendly places anywhere, with one catch worth knowing: foreign cards are sometimes refused at self-order kiosks and unmarked ATMs, so tap freely, keep a little won for the gaps, put a T-money card in your pocket, and always choose won over dollars.",
   aliases: ["south korea", "korea", "republic of korea", "rok", "seoul", "busan", "incheon", "jeju", "gyeongju", "dmz", "won", "krw", "korean won", "t-money", "tmoney", "k-eta", "keta", "hangul", "hanbok", "k-pop", "kimchi", "korean bbq"],
 
-  title: "Money in South Korea (2026): Cards, Cash, T-money, ATMs, the VAT Refund and Tipping | True Trip Costs",
-  description: "How to handle money in South Korea as a US traveler in 2026: near-universal cards and contactless, the foreign-card snags at kiosks and ATMs, the T-money transit card and cash top-ups, the Global ATMs that take your card, the dollar-conversion trap, the 10% VAT refund for visitors, and why nobody tips. Checked July 2026.",
+  title: "South Korea money 2026: cards, cash and T-money",
+  description: "Among the most card-friendly countries anywhere, but foreign cards are sometimes refused at kiosks. Keep a little won and a T-money card. Checked 2026.",
 
   h1: "Money in South Korea, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your card covers almost everything, the handful of places a foreign card still gets refused, the little cash worth carrying, the T-money card that runs the buses and subway, and the VAT you can claim back on shopping.",

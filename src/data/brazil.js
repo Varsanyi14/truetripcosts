@@ -22,8 +22,8 @@ export default {
   hook: "One of the most cashless places anywhere: tap your card almost everywhere, keep a little cash for the beach, always pay in reais, and sort your e-visa before you fly.",
   aliases: ["brazil", "brasil", "rio", "rio de janeiro", "sao paulo", "salvador", "iguazu", "iguacu", "amazon", "real", "reais", "brl", "pix", "carnival", "carnaval", "copacabana", "evisa", "e-visa"],
 
-  title: "Money in Brazil (2026): Cards, Pix, the E-Visa, ATMs and Tipping | True Trip Costs",
-  description: "How to handle money in Brazil as a US traveler in 2026: near-universal cards and contactless, what Pix is and whether you actually need it, the required e-visa, ATM limits and the dollar-conversion trap, light tipping, and the new 2026 taxes and coastal fees. Checked July 2026.",
+  title: "Brazil money 2026: cards, Pix, ATM fees and cash",
+  description: "Among the most cashless places anywhere: tap almost everywhere and pay in reais. Keep a little cash for the beach, and sort your e-visa. Checked 2026.",
 
   h1: "Money in Brazil, sorted.",
   lede: "A calm, current plan for the money side of your trip: why your card covers almost everything, what Pix is and whether you need it, the cash worth carrying, and the e-visa you have to sort before you fly.",

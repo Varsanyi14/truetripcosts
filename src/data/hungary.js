@@ -22,8 +22,8 @@ export default {
   hook: "Cards are taken almost everywhere, so tap where you can, keep some forint for market stalls, baths and taxis, use bank ATMs rather than the tourist-area exchange booths and Euronet machines, and always pay in forint, not euros or dollars.",
   aliases: ["hungary", "hungarian", "budapest", "buda", "pest", "forint", "huf", "ft", "magyar", "lake balaton", "eger", "szechenyi", "goulash", "ruin bar", "thermal baths", "danube", "parliament"],
 
-  title: "Money in Hungary (2026): Cards, Cash, Forint, ATMs, Taxes and Tipping | True Trip Costs",
-  description: "How to handle money in Hungary as a US traveler in 2026: widely accepted cards, the forint cash you still want for markets and baths, why it is not euros, the exchange-booth and Euronet ATM traps, the dollar-conversion trap, the 27% VAT and Europe's best refund, Budapest's tourist tax, and how tipping works. Checked July 2026.",
+  title: "Does Hungary accept euros? Money in 2026",
+  description: "Not really, you pay in forint. Cards work almost everywhere, but skip exchange booths and Euronet ATMs, and keep forint for markets. Checked 2026.",
 
   h1: "Money in Hungary, sorted.",
   lede: "A calm, current plan for the money side of your trip: where your card is fine and where forint still helps, the ATMs and exchange booths to skip, the taxes to know, and why shopping here earns the best VAT refund in Europe.",
