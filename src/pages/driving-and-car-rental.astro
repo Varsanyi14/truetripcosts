@@ -1,0 +1,127 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import CompareByRegion from '../components/CompareByRegion.astro';
+import USBadge from '../components/USBadge.astro';
+import { countries } from '../data/index.js';
+import fs from 'node:fs';
+
+// Driving and car rental, topic hub. Gathers every topic:"driving" country spoke, the
+// same aggregation cash-or-card and taxis-and-ride-hailing use, so adding a driving
+// spoke to any guide surfaces it here automatically with nothing re-typed. Modeled on
+// cash-or-card.astro for the gathering and traveling-with-a-pet.astro for the
+// image-less header, since there is no driving hero image yet. Checked July 2026.
+
+const flagDir = process.cwd() + '/public/flags/';
+const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? '/flags/' + slug + '.svg' : '/flags/world.svg';
+
+const drivingSpokes = countries
+  .filter(c => c.live)
+  .flatMap(c => (c.spokes || [])
+    .filter(s => s.topic === 'driving' && s.live !== false)
+    .map(s => ({ h1: s.h1, lede: s.lede, spokeSlug: s.slug, country: c.name, countrySlug: c.slug })))
+  .sort((a, b) => a.country.localeCompare(b.country));
+---
+<Base
+  title="Driving and renting a car abroad, for US travelers: the fees the quote leaves out"
+  description="The rental desk is where unquoted costs live. Mandatory local insurance your credit card cannot replace, what the collision waiver still excludes, how tolls get billed in a hire car, and the excess in your agreement. Country by country, for US travelers.">
+  <Nav />
+  <main class="wrap">
+
+    <section class="dr-intro">
+      <p class="lab">Driving and car rental</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
+      <h1>The rental desk is where the unquoted costs live.</h1>
+      <p class="dr-lede">Almost nothing about renting a car abroad works the way it does at home. The rate you booked is often not the price, the coverage on your credit card may not apply in the country you are visiting, the waiver you paid for may exclude the damage you are most likely to get, and the tolls may be settled weeks later with a fee attached. This is the money side of driving abroad, country by country, with the figures dated and the sources named.</p>
+    </section>
+
+    <section class="dr-four">
+      <div class="dr-card">
+        <span class="dr-k">1. Insurance the quote leaves out</span>
+        <p>Some countries require local liability cover by law, and no US policy or credit card satisfies it. Costa Rica and Mexico are the clearest cases: the charge is legitimate, it cannot be declined, and it is often missing from the online rate, which is how a cheap booking becomes a much larger counter total.</p>
+      </div>
+      <div class="dr-card">
+        <span class="dr-k">2. What the waiver still excludes</span>
+        <p>Paying for the biggest waiver on offer does not always widen what counts. In Iceland both the standard and the super collision waiver typically exclude gravel, glass, tires and blown sand, which is to say the damage you are most likely to get. Read what each line covers, not what it is called.</p>
+      </div>
+      <div class="dr-card">
+        <span class="dr-k">3. How tolls reach your card</span>
+        <p>Where tolling is cameras rather than booths, the rental company sits in the middle and charges for it. That can mean a small per-crossing fee, a daily pass costing more than the tolls, or a fine plus an admin fee if you miss a deadline you never knew existed. Ask how tolls are billed before you take the keys.</p>
+      </div>
+      <div class="dr-card">
+        <span class="dr-k">4. The excess you agreed to</span>
+        <p>The waiver caps your liability at an excess, and abroad that figure is often four digits. It usually applies even when nobody was at fault, and breaching the agreement, unsealed roads being the common one, can void the cover entirely rather than just costing you the excess.</p>
+      </div>
+    </section>
+
+    <section class="dr-sec">
+      <h2>The card-coverage trap, before you rely on it</h2>
+      <p class="dr-note">Credit-card rental cover is the most misunderstood part of this, because it is written per card and per country rather than as a general benefit. Two patterns are worth knowing before you decline anything at a counter.</p>
+      <div class="dr-panel dr-pad">
+        <p><b>It is per country.</b> Standard Visa and Mastercard rental cover has long excluded the Republic of Ireland, and most American Express cards exclude Australia, New Zealand and Italy. Those lists move: some issuers have removed exclusions and now confirm worldwide cover in writing, while others have dropped rental benefits altogether. No general article can tell you where you stand, including this one.</p>
+        <p><b>It never covers your liability to others.</b> Card benefits are written for damage to the rental car. They do not satisfy a country's mandatory third-party liability requirement, which is why the required local cover in places like Costa Rica is not something a card can replace.</p>
+        <p class="dr-do"><b>So do this:</b> call your issuer, ask about the specific country, and get a dated letter naming you and the card. Many rental desks abroad will ask to see one. Then decide the waiver on that basis rather than at the counter after a long flight.</p>
+      </div>
+    </section>
+
+    {drivingSpokes.length > 0 && (
+      <section class="dr-sec">
+        <h2>Driving costs, country by country</h2>
+        <p class="dr-note">Where a country has a driving or rental wrinkle worth walking through, we have written it up. Each one lives in that country's guide.</p>
+        <div class="dr-panel">
+          {drivingSpokes.map(s => (
+            <a class="dr-spoke" href={'/' + s.countrySlug + '/' + s.spokeSlug}>
+              <span class="dr-spoke-c"><span class="dr-flag"><img src={flagSrc(s.countrySlug)} alt="" width="22" height="16" loading="lazy" /></span>{s.country}</span>
+              <span class="dr-spoke-h">{s.h1}</span>
+              <span class="dr-spoke-d">{s.lede}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <p class="dr-keep">Rental pricing is set by companies rather than by governments, so daily figures here are current market ranges, not tariffs, and we say so on each page. Where a rule is law, such as a mandatory liability requirement, we state it flatly and link the official source. For what your card does to every other purchase abroad, see <a href="/cash-or-card">cash or card by country</a>, and for getting around without driving at all, <a href="/taxis-and-ride-hailing">taxis and ride-hailing</a>. More on how we work is on our <a href="/methodology">methodology page</a>.</p>
+
+    <CompareByRegion />
+  </main>
+  <Footer />
+
+  <style>
+    .dr-intro{max-width:720px;margin:22px 0 0}
+    .dr-intro h1{font-family:var(--serif);font-weight:500;font-size:clamp(26px,4.6vw,38px);letter-spacing:-.015em;line-height:1.15;margin:0 0 12px}
+    .dr-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
+    .dr-four{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:30px 0 0}
+    .dr-card{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:16px 18px}
+    .dr-k{display:block;font-weight:600;font-size:14px;color:var(--teal-deep);margin:0 0 6px}
+    .dr-card p{font-size:14.5px;color:#3B4A46;line-height:1.55;margin:0}
+    .dr-sec{margin:36px 0}
+    .dr-sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 6px}
+    .dr-note{font-size:14.5px;color:var(--muted);margin:0 0 16px;line-height:1.5;max-width:720px}
+    .dr-panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+    .dr-pad{padding:16px 18px}
+    .dr-pad p{font-size:15px;color:#3B4A46;line-height:1.6;margin:0 0 12px}
+    .dr-pad p:last-child{margin-bottom:0}
+    .dr-do{border-top:1px solid var(--line);padding-top:12px}
+    .dr-spoke{display:block;padding:15px 18px;border-bottom:1px solid var(--line);text-decoration:none;transition:background-color .15s ease}
+    .dr-spoke:last-child{border-bottom:0}
+    .dr-spoke:hover{background:var(--paper)}
+    .dr-spoke-c{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:13px;color:var(--muted);margin:0 0 5px}
+    .dr-flag{display:inline-flex;line-height:0;flex:none}
+    .dr-flag img{width:22px;height:16px;border-radius:3px;border:1px solid var(--line);object-fit:cover;display:block}
+    .dr-spoke-h{display:block;font-family:var(--serif);font-weight:500;font-size:16.5px;color:var(--teal-deep);line-height:1.3;margin:0 0 3px}
+    .dr-spoke:hover .dr-spoke-h{text-decoration:underline}
+    .dr-spoke-d{display:block;font-size:14px;color:var(--muted);line-height:1.5}
+    .dr-keep{font-size:14px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line);padding-top:18px;margin:30px 0 40px;max-width:720px}
+    .dr-keep a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .dr-keep a:hover{text-decoration:underline}
+    @media (max-width:700px){
+      .dr-four{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      .dr-lede{font-size:16.5px}
+      .dr-spoke{padding:14px 15px}
+      .dr-card{padding:15px 16px}
+    }
+  </style>
+</Base>

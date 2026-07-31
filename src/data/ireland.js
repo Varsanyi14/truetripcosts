@@ -170,6 +170,81 @@ export default {
 
   spokes: [
     {
+      slug: "renting-a-car",
+      glance: [
+        { k: "Liability", v: "Included by law, unlimited" },
+        { k: "The problem", v: "Card cover often excludes Ireland" },
+        { k: "If you decline", v: "Hold of about 5,000 euros" },
+        { k: "M50 toll", v: "Pay by 8pm the next day" }
+      ],
+      live: true,
+      topic: "driving",
+      title: "Renting a car in Ireland: the credit-card insurance problem (2026) | True Trip Costs",
+      description: "Ireland is the one country where US credit-card rental cover most often does not apply, and where the fine print has been moving in both directions. How to find out what your card actually does, and the Dublin toll that fines you by 8pm the next day. Checked July 2026.",
+      h1: "Renting a car in Ireland, and the credit-card catch",
+      lede: "Ireland is the country where the sentence people rely on, my card covers the rental, is least likely to be true. It is also the one where the answer depends on your specific card rather than on any general rule.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-31",
+      answer: "Two things to get right. First, <b>liability is not your problem here</b>: Irish law requires third-party cover and it is <b>included in the rental price</b>, so unlike Costa Rica or Mexico there is no mandatory insurance ambushing you at the desk. Second, the <b>collision damage waiver is</b> the problem, because Ireland is the destination US card benefits <b>most often exclude</b>. Standard Visa and Mastercard rental cover has long excluded the Republic of Ireland, and most Amex cards exclude it too, though some issuers have quietly moved the other way. Decline the counter's waiver without written proof your card applies and you are exposed to a hold of around <b>5,000 euros</b> and the full value of an expensive car. Separately, Dublin's <b>M50</b> has no toll booth: pay online by <b>8pm the next day</b> or a 3.80 euro toll becomes a fine plus a rental admin fee.",
+      carExcess: true,
+      sections: [
+        {
+          h: "Why Ireland is the exception",
+          icon: "alert",
+          key: { tag: "Check the card, not the rule", text: "Ireland appears on more US card exclusion lists than almost anywhere. Standard Visa and Mastercard cover has excluded it for years, and most Amex cards exclude it, but individual issuers have started covering it. Only your own policy wording settles it.", tone: "amber" },
+          p: [
+            "For years the short version was simple: <b>standard Visa and Mastercard</b> rental collision cover excluded the <b>Republic of Ireland</b>, alongside Israel and Jamaica, and <b>most American Express</b> cards excluded it as well. The usual explanation offered is road conditions and claim frequency. Elite tiers were the exception, with some <b>World Elite Mastercard</b> products covering Ireland where the standard product did not.",
+            "What has changed is that this is no longer a stable rule. Some US issuers have <b>removed the Ireland exclusion</b> and now issue letters confirming worldwide cover, while others have gone the other way and dropped rental benefits entirely. Meanwhile several travel-insurance rental add-ons still name Ireland as excluded. The result is that any page telling you confidently that your card does or does not cover Ireland is guessing, including the rental company's own summary.",
+            "So the only reliable move is to <b>get it in writing from your issuer</b> for your exact card, dated close to your trip. Rental desks in Ireland routinely ask for a <b>letter of authorization</b> naming you and the card, and some want it issued within about <b>two weeks</b> of pickup. A phone call to the number on the back of the card usually produces one by email the same day. Ask specifically whether the <b>Republic of Ireland</b> is covered, whether <b>theft</b> is included as well as collision, and what the benefit caps out at."
+          ]
+        },
+        {
+          h: "What declining actually costs you",
+          icon: "card",
+          key: { fig: "5,000 euros", tag: "Typical hold if you decline", text: "Declining the counter waiver to rely on your card means a large authorization hold, and Irish cars are expensive to repair because of a 65% registration tax on new vehicles.", tone: "amber" },
+          p: [
+            "If you do decline the waiver, expect a hold in the region of <b>5,000 euros</b> on the card, and expect the company to insist the full rental is charged to that same card. Taking <b>any</b> part of their collision cover voids the card benefit, so it is genuinely one or the other.",
+            "The exposure is larger than it looks because Irish cars cost more than their US equivalents, thanks to a <b>vehicle registration tax</b> of up to around <b>65%</b> on new vehicles. A card benefit capped at $25,000 to $50,000 of damage stretches less far here, and the excess on the rental company's own basic waiver is high to begin with.",
+            "The counter's alternatives are <b>CDW</b> at roughly <b>15 to 30 euros a day</b> and <b>Super CDW</b>, which cuts the excess toward zero, at another <b>10 to 30 euros a day</b> on top. Note what even the paid waivers usually leave out: <b>tires, glass, windscreen, roof, undercarriage, mirrors and the interior</b>. That gap is why a standalone excess policy bought before you travel is often the cheaper and broader option, and it sidesteps the whole card-exclusion question."
+          ]
+        },
+        {
+          h: "The M50, the one toll that catches visitors",
+          icon: "receipt",
+          key: { fig: "8pm next day", tag: "The M50 payment deadline", text: "Dublin's M50 is barrier-free with no booth and no way to pay at the road. Miss the deadline and a small toll becomes a fine, plus your rental company's admin fee.", tone: "amber" },
+          p: [
+            "Most Irish tolls are ordinary barrier plazas on the M1, M4, M7 and M8, where you tap a card or drop coins and drive on. Keep a few euros in coins and they are a non-event. Northern Ireland has <b>no tolls at all</b>.",
+            "The <b>M50</b>, the ring road you meet immediately on leaving Dublin Airport, is different. Between <b>Junction 6 and Junction 7</b> there is no booth and no barrier: a gantry photographs your plate at speed and nothing tells you it happened. You then have until <b>8pm the following day</b> to pay. Without an account the video rate is about <b>3.80 euros</b>, against roughly <b>2 euros</b> on a registered account, which is why quoted figures differ from source to source. Miss the deadline and a surcharge lands, then a fixed charge notice of <b>41 euros or more</b>, and the rental company adds its own <b>30 to 50 euros</b> for handling the notice.",
+            "Rental company policies here vary more than anything else in this guide. Some fleets are pre-registered with <b>eFlow</b> and bill your card automatically after the rental, typically the toll plus about <b>1.23 euros</b> per crossing; others leave it entirely to you. So ask one question at the counter: <b>does this car have a toll tag, or do I pay the M50 myself?</b> If it is on you, note the registration number from the key tag and set a phone reminder. If you would rather control it, you can add the rental plate to your own eFlow account and pay the cheaper account rate with no rental markup."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "tag",
+          key: { fig: "In writing", tag: "Ask your issuer before you go", text: "Settle the card question with your issuer in writing before you travel, decide the waiver on that basis, and handle the M50 deliberately rather than discovering it later.", tone: "teal" },
+          p: [
+            "Ireland rewards doing the boring thing early. Call your card issuer, ask about the <b>Republic of Ireland</b> specifically, and get the letter. If the answer is no, or if the caps and exclusions leave you uncomfortable, price a standalone excess policy against the counter's Super CDW rather than deciding at the desk after a transatlantic flight.",
+            "Budget an <b>automatic transmission</b> deliberately too. Manual is the default in Ireland and automatics are a smaller, pricier part of the fleet, so they sell out and cost more, particularly in summer. If you are not confident shifting with your left hand on narrow roads, book the automatic early and treat the premium as part of the price.",
+            "Your <b>US license is fine</b> for a tourist stay and no international permit is needed. For paying for fuel, tolls and parking once you are moving, see the <a href='/ireland/cash-or-card'>Ireland cash and cards guide</a>, and if your trip crosses into Belfast or the north, that is the UK, with its own rules and its own currency."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does my credit card cover a rental car in Ireland?", a: "You cannot assume it does, and Ireland is the destination most likely to be excluded. Standard Visa and Mastercard rental cover has excluded the Republic of Ireland for years and most Amex cards exclude it, though some issuers have recently removed the exclusion. Call your issuer, ask about the Republic of Ireland specifically, and get a dated letter of authorization, because the rental desk will often ask to see one." },
+        { q: "Is car rental insurance mandatory in Ireland?", a: "Third-party liability is required by law and is already included in the rental price, so there is no mandatory insurance added at the counter the way there is in Costa Rica or Mexico. What the counter sells is the optional collision damage waiver, and that is where the decision and the cost sit." },
+        { q: "What happens if I decline the collision damage waiver?", a: "Expect a hold of roughly 5,000 euros on your credit card, and the full rental must be charged to that same card. Accepting any part of the rental company's collision cover voids your card benefit, so it is one or the other. Irish cars are also expensive to repair, because new vehicles carry a registration tax of up to around 65%." },
+        { q: "How do I pay the M50 toll in a rental car?", a: "The M50 is barrier-free, so there is no booth and no way to pay at the road. Ask at the counter whether the car has an eFlow toll tag. If it does, the toll plus a small per-crossing fee is billed to your card afterward. If it does not, pay online at eFlow.ie by 8pm the day after you drive through, using the registration number on the key tag. Miss it and you get a fine plus a rental admin fee of 30 to 50 euros." },
+        { q: "Do I need an international driving permit for Ireland?", a: "No. A valid US driver's license is accepted for a tourist visit. What is worth arranging early is an automatic transmission, since manual is the default in Ireland and automatics are scarcer and more expensive, especially in summer." }
+      ],
+      sources: {
+        links: [
+          { label: "eFlow: the official M50 barrier-free toll operator, for paying a toll and the current rates", url: "https://www.eflow.ie/", type: "gov" },
+          { label: "Transport Infrastructure Ireland: the national toll roads, operators and current toll schedules", url: "https://www.tii.ie/roads-tolling/tolling-information/", type: "gov" }
+        ],
+        judgment: "The stable facts are that third-party liability is legally required and included in Irish rental prices, and that the M50 is barrier-free with a next-day payment deadline. Credit-card coverage is deliberately not stated as a rule here, because it genuinely conflicts across sources: current comparison reporting still lists the Republic of Ireland as excluded from standard Visa and Mastercard rental cover and from most Amex products, while individual issuers have removed the exclusion and now confirm worldwide coverage in writing, and some rental agencies describe North American card cover as broadly withdrawn. All of those can be true at once because the answer is per-card, so we tell you to obtain your own issuer's wording rather than pick the tidiest version. On the M50 rate, quoted figures differ because there are two tiers: roughly 2 euros on a registered account and about 3.80 euros at the unregistered video rate, and Irish tolls are reviewed each January. Daily waiver prices, the 5,000 euro hold and the 30 to 50 euro admin fee are typical current figures from rental operators, not regulated amounts. Checked July 2026."
+      }
+    },
+    {
       slug: "taxis-and-apps",
       glance: [
         { k: "Apps", v: "FreeNow (Uber calls taxis too)" },

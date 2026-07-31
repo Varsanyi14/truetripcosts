@@ -181,6 +181,81 @@ export default {
 
   spokes: [
     {
+      slug: "renting-a-car",
+      glance: [
+        { k: "The catch", v: "Super CDW still excludes the likely damage" },
+        { k: "Gravel and ash", v: "Separate add-ons, roughly $5 to $30 a day" },
+        { k: "Windscreen", v: "Can run $575 to $1,600" },
+        { k: "Never covered", v: "River crossings, at any price" }
+      ],
+      live: true,
+      topic: "driving",
+      title: "Renting a car in Iceland: what the insurance does not cover (2026) | True Trip Costs",
+      description: "In Iceland the standard collision waiver, and even the super version, excludes the damage you are most likely to get: gravel chips, windscreen cracks, tires and blown sand. What the separate add-ons cost, what F-roads do to your cover, and the one thing no policy covers. Checked July 2026.",
+      h1: "Renting a car in Iceland, and what the insurance skips",
+      lede: "Iceland inverts the usual advice. Buying the biggest waiver the counter offers still leaves out the damage that actually happens here, because the common claims sit in their own separate categories.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-31",
+      answer: "In most countries the collision damage waiver is the thing that matters. In Iceland it is <b>not enough on its own</b>, because both <b>CDW and Super CDW normally exclude</b> the four things most likely to happen to your car: <b>gravel chips</b>, <b>windscreen and glass</b>, <b>tires</b>, and <b>blown sand or volcanic ash</b>. Those are sold separately as <b>Gravel Protection</b> and <b>Sand and Ash Protection (SAAP)</b>, together roughly <b>$5 to $30 a day</b>. Around <b>30%</b> of Iceland's roads are unpaved, so this is not an edge case: a single windscreen crack runs about <b>$575 to $1,600</b>. Two absolutes: driving a 2WD on an <b>F-road is illegal</b> and voids your cover, and <b>no policy at any price covers a river crossing</b>.",
+      carExcess: true,
+      sections: [
+        {
+          h: "What the waiver leaves out, even the expensive one",
+          icon: "alert",
+          key: { tag: "Super CDW is not full cover", text: "CDW and Super CDW in Iceland typically exclude gravel, glass, tires and sand or ash damage. Super CDW lowers your deductible on what is covered; it does not widen what counts.", tone: "amber" },
+          p: [
+            "Icelandic rentals include a <b>collision damage waiver</b>, and the counter will offer a <b>Super CDW</b> that cuts your deductible toward zero. The important thing to understand is what the upgrade does and does not do: it reduces what you pay on a <b>covered</b> claim, but it carries <b>the same exclusions</b> as the basic waiver. Paying more does not broaden the list.",
+            "The excluded list is the problem, because it is essentially a description of Iceland. <b>Gravel and stone chips</b>, <b>windscreen and window glass</b>, <b>tires</b>, and damage from <b>blown sand and volcanic ash</b> all sit outside standard CDW and Super CDW at most Icelandic companies. Roughly <b>30%</b> of the road network is unpaved, and even the paved Ring Road has gravel patches and construction stretches where a passing truck can pepper your front end.",
+            "The numbers make it concrete. A windscreen crack is commonly <b>70,000 to 200,000 ISK</b> to fix or replace, about <b>$575 to $1,600</b>. Gravel paint damage runs roughly <b>37,000 to 122,000 ISK</b>, about <b>$300 to $1,000</b>. Sand and ash damage to paint, glass and lights, if you are caught in it without cover, can exceed <b>1,000,000 ISK</b>."
+          ]
+        },
+        {
+          h: "The two add-ons that actually match the risk",
+          icon: "receipt",
+          key: { fig: "$5-30 a day", tag: "Gravel plus sand and ash", text: "Gravel Protection and Sand and Ash Protection are the two that map onto real Icelandic claims. Some companies bundle them, some include gravel by default, so read what you are already getting.", tone: "teal" },
+          p: [
+            "<b>Gravel Protection</b> is the one most people should take, and it is usually the cheaper of the two at roughly <b>$5 to $15 a day</b>, though some companies price it nearer <b>$29</b> bundled with wind cover. It handles the stone chips and glass damage that are the single most common surprise charge on an Icelandic rental. Some operators now include it by default, so check before you buy it twice.",
+            "<b>Sand and Ash Protection (SAAP)</b> is more seasonal and more specific. Strong winds lift loose sand and volcanic ash off dry ground and sandblast paint, glass, lights and trim. The worst window is <b>February through April</b>, when the snow has thawed but vegetation has not grown back to hold the sand down, and the exposed areas are mainly along the <b>South Coast</b> and in the <b>Northeast</b>. Expect around <b>$13 to $15 a day</b>. With it, your exposure typically drops to a fixed deductible in the region of <b>90,000 ISK</b>; without it, you are liable for the lot.",
+            "Naming is inconsistent and worth reading carefully: some companies fold gravel into a product they call SAAP, others sell wind and gravel together, others separate all three. Rather than matching the label, ask which of <b>gravel, glass, tires, sand and ash</b> each line item actually covers, and what the deductible is on each."
+          ]
+        },
+        {
+          h: "F-roads, rivers and the ways cover disappears entirely",
+          icon: "wheel",
+          key: { fig: "0 coverage", tag: "River crossings, always", text: "No Icelandic policy covers water damage from fording a river, and taking a 2WD onto an F-road is illegal and voids everything. These are not deductibles, they are total exclusions.", tone: "amber" },
+          p: [
+            "<b>F-roads</b> are the mountain and highland tracks. They require a genuine <b>4x4</b>, they are open only in summer, and taking a <b>2WD onto an F-road is illegal</b> in Iceland. Do it and any damage is entirely yours, regardless of what you bought at the counter. Even in a 4x4, check whether your specific rental agreement permits F-roads at all, because some contracts and some third-party excess policies exclude them.",
+            "<b>River crossings</b> are the absolute. Many F-roads include unbridged fords, and <b>no insurance sold in Iceland covers water damage</b> to the engine or underbody. Not CDW, not Super CDW, not the add-ons, not a standalone excess policy. An engine flooded at a crossing is a bill you own outright, and it is a large one. If a ford looks deep, that is the end of the drive.",
+            "Two smaller ones worth knowing. Iceland's wind is strong enough to tear a car door off its hinges when you open it, which is a real and frequent claim, so open doors holding the handle and pointing into the wind. And <b>single-vehicle</b> damage and <b>underbody</b> strikes are treated separately by many policies, which is another reason to read the deductible list rather than the product name."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "tag",
+          key: { fig: "Cover the odds", tag: "Not the worst case", text: "In Iceland the sensible spend is on the likely damage, gravel and glass, rather than on lowering a deductible you may never touch. Then budget the per-kilometre road charge.", tone: "teal" },
+          p: [
+            "The counterintuitive advice is to prioritise <b>breadth over deductible</b>. A Super CDW that lowers your excess but still excludes glass and gravel is worse value in Iceland than basic cover plus the gravel add-on. Work out what each option covers, then decide, and remember that a standalone excess policy bought before you travel often covers glass, tires and underbody that the counter's waiver will not.",
+            "Budget the vehicle honestly. A small 2WD runs roughly <b>$40 to $80 a day</b> in shoulder and winter season, while a 4x4 in peak summer is more like <b>$120 to $200 and up</b>. If your route has no F-roads, you may not need the 4x4 at all; if it does, you are not choosing.",
+            "One newer cost people miss: since <b>1 January 2026</b> Iceland charges a <b>per-kilometre road tax</b> in place of much of the old fuel tax, and rental companies pass it on with a margin, so long-distance driving now carries a line item beyond fuel. The <a href='/iceland'>Iceland guide</a> has the current rates, and the <a href='/iceland/cash-or-card'>Iceland cash and cards guide</a> covers paying for fuel on the road."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need extra insurance for a rental car in Iceland?", a: "Gravel Protection is the one most drivers should take, because gravel chips and windscreen cracks are the most common claim and both the standard CDW and Super CDW normally exclude them. Sand and Ash Protection matters most from February through April and along the South Coast and Northeast. Together they run roughly $5 to $30 a day." },
+        { q: "Does Super CDW cover everything in Iceland?", a: "No, and this is the thing most people get wrong. Super CDW lowers your deductible on covered damage, but it carries the same exclusions as the basic waiver, so gravel, glass, tires and sand or ash damage are usually still on you. Paying more does not widen the list of what counts." },
+        { q: "Can I drive an F-road in Iceland?", a: "Only in a genuine 4x4, only in summer, and only if your rental agreement allows it. Taking a 2WD onto an F-road is illegal in Iceland and voids your coverage entirely, so any damage is yours. Check the agreement, because some contracts and some third-party excess policies exclude F-roads even for 4x4s." },
+        { q: "Is river-crossing damage ever covered in Iceland?", a: "No. No policy sold in Iceland covers water damage to the engine or underbody from fording a river, including Super CDW and standalone excess policies. Many F-roads have unbridged crossings, and a flooded engine is a bill you pay in full. If a ford looks deep, turn around." },
+        { q: "What does a rental car cost in Iceland?", a: "Roughly $40 to $80 a day for a small 2WD in shoulder or winter season, rising to about $120 to $200 and up for a 4x4 in peak summer. Add the insurance that actually matches the risk, fuel, and since 1 January 2026 a per-kilometre road charge that rental companies pass on with a margin." }
+      ],
+      sources: {
+        links: [
+          { label: "Safetravel.is, run by Icelandic Search and Rescue: road and travel conditions, F-road status and river-crossing guidance", url: "https://safetravel.is/", type: "gov" },
+          { label: "Road.is (Icelandic Road and Coastal Administration): live road conditions and seasonal F-road openings", url: "https://www.road.is/", type: "gov" }
+        ],
+        judgment: "The structural facts here are consistent across every Icelandic operator we checked and are stated flatly: standard CDW and Super CDW exclude gravel, glass, tire and sand or ash damage; gravel and sand and ash cover are sold separately; 2WD use on F-roads is illegal; and no policy covers river fording. The prices are not. Daily add-on rates vary widely by company and by how products are bundled, from around $5 a day for gravel alone to about $29 for a combined wind and gravel product, so the ranges are a current band rather than a tariff. Repair figures are converted from ISK ranges published by Icelandic rental operators and move with exchange rates and with the specific vehicle. The share of unpaved road is a commonly cited approximation of about 30%, not an official statistic we could verify to the decimal. Company naming for these products genuinely conflicts, with some bundling gravel into SAAP and others separating wind, which is why we tell you to check what each line covers instead of trusting the label. Checked July 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Icelandic krona (ISK)" },

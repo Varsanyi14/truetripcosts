@@ -20,6 +20,80 @@ export default {
   region: "Americas",
   spokes: [
     {
+      slug: "renting-a-car",
+      glance: [
+        { k: "Online rate", v: "Usually not the real price" },
+        { k: "Required by law", v: "Local liability, cannot decline" },
+        { k: "Add per day", v: "Roughly $10 to $25" },
+        { k: "Never covered", v: "Driving through water" }
+      ],
+      live: true,
+      topic: "driving",
+      title: "What does renting a car in Costa Rica really cost? (2026) | True Trip Costs",
+      description: "Costa Rican law requires local liability cover that no credit card can replace, and it is usually missing from the online quote. What the counter adds, what you can decline, and the hold nobody warns you about. Checked July 2026.",
+      h1: "What does renting a car in Costa Rica really cost?",
+      lede: "Costa Rica is one of the great drives and also one of the places where the rate you booked is least likely to be the price you pay. A single mandatory insurance explains most of the gap.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-31",
+      answer: "The rate you booked online is usually <b>not the final price</b>. Costa Rican law requires <b>local third-party liability cover</b>, sold as <b>TPL</b>, <b>PLI</b> or simply <b>Liability Protection</b> and underwritten through the state insurer <b>INS</b>, and <b>no credit card can replace it</b>. Budget roughly <b>$10 to $25 a day</b> on top, depending on the vehicle. The <b>collision damage waiver is separate and optional</b>, but declining it means a <b>large hold on your card</b> and paying for any repairs in Costa Rica before you can claim a cent back. One rule overrides everything: <b>no policy sold anywhere covers driving into water</b>.",
+      carExcess: true,
+      sections: [
+        {
+          h: "The insurance your quote leaves out",
+          icon: "alert",
+          key: { fig: "$10-25", tag: "Per day, and not optional", text: "Costa Rican law requires local third-party liability cover on every rental. It is not an upsell, you cannot decline it, and no credit card substitutes for it.", tone: "amber" },
+          p: [
+            "Every rental in Costa Rica has to carry <b>third-party liability</b> cover written through the state insurer, the <b>Instituto Nacional de Seguros (INS)</b>. You will see it billed as <b>TPL</b>, <b>PLI</b>, <b>SLI</b> or <b>Liability Protection</b>, and the naming is inconsistent between companies, which is part of why it confuses people. What it does is narrow: it pays for injury or damage you cause to <b>other people</b>, typically to around <b>$20,000</b> for third-party property and up to about <b>$100,000</b> for third-party injury. It pays nothing toward the rental car itself.",
+            "This is the charge that breaks the online quote. It is legally required, so it gets added at pickup whether or not the booking site showed it, and it commonly runs <b>$10 to $25 a day</b> depending on the size of the vehicle. A $15 a day economy booking can land nearer <b>$30 to $40</b> before you have agreed to a single optional extra. Your <b>US auto policy does not satisfy it</b> and neither does any <b>credit card benefit</b>, because card cover is written for damage to the rental car, not for your liability to others."
+          ]
+        },
+        {
+          h: "Declining the collision waiver has its own price",
+          icon: "card",
+          key: { fig: "$1,000+", tag: "Typical hold on your card", text: "You can decline the collision waiver and lean on your card, but expect a large authorization hold and expect to pay repairs in Costa Rica first, then claim later.", tone: "amber" },
+          p: [
+            "The <b>collision damage waiver</b> (CDW or LDW) is the genuinely optional one, and it is where the counter makes its money. Take it and your liability for damage to the car drops to a deductible, commonly <b>$1,500 to $3,000</b>. Decline it and use your credit card instead, and two things follow that the pitch tends to skip.",
+            "First, the <b>hold</b>. Declining the waiver means the company wants security, and holds of <b>$1,000 and up</b> are standard, with travelers reporting demands far higher at some airport desks. It has to sit on <b>one</b> card, so a thin credit limit can end the conversation at the counter. Second, the <b>sequence</b>: you pay for the repair in Costa Rica out of your own pocket, then claim reimbursement from your card issuer afterward. Bring a <b>letter of coverage</b> from your issuer, and pay for the whole rental on that same card, or the benefit does not apply at all.",
+            "Note the asymmetry that trips people up: accepting <b>any</b> collision cover from the rental company voids your card's collision benefit, but paying the <b>mandatory liability</b> does not, because that one is required by law rather than sold as a waiver."
+          ]
+        },
+        {
+          h: "Tolls, fuel and the roads themselves",
+          icon: "coins",
+          key: { fig: "3 toll roads", tag: "Ruta 27, Ruta 1 and Ruta 32", text: "Costa Rica has only three tolled highways, and the tolls are small. Fuel is the bigger line, and it is government-regulated so the price is the same everywhere.", tone: "teal" },
+          p: [
+            "Tolls are a minor cost. Only <b>three</b> highways are tolled: <b>Ruta 27</b> from San Jose to Caldera, which is the main run to the Pacific beaches and has nine plazas, plus a couple of plazas each on <b>Ruta 1</b> and <b>Ruta 32</b>. The whole San Jose to Caldera stretch comes to roughly <b>4,000 to 4,500 colones</b>, about <b>$8</b>. Keep small colones in the car anyway. Card acceptance at the booths has been expanding, but reports still conflict on how reliable it is plaza to plaza, and where dollars are taken your change comes back in colones at a poor rate.",
+            "Fuel matters more. Prices are <b>set by the government</b>, so they are identical at every station in the country and there is nothing to shop around for, but the level is well above what US drivers expect, in the region of <b>$1.50 to $1.65 a liter</b>, which is roughly <b>$5.70 to $6.25 a gallon</b>. Stations are full service, so an attendant pumps for you. Confirm gasoline or diesel out loud, because a wrong fill is on you.",
+            "The other real cost is the vehicle. Plenty of the places people actually drive to, including stretches around Monteverde and much of the Nicoya peninsula, involve steep unpaved roads that get worse in the May to November rains, and a <b>4x4</b> runs far more than an economy car. Decide the vehicle by your route rather than by the daily rate, and see the <a href='/costa-rica/cash-or-card'>Costa Rica cash and cards guide</a> for how to pay once you are on the road."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "tag",
+          key: { fig: "Get all-in", tag: "Quote with liability included", text: "Compare cars on an all-in quote that already includes the mandatory liability, and never drive into water, which voids every policy sold.", tone: "teal" },
+          p: [
+            "Do one thing before you book: get a quote that <b>explicitly includes the mandatory liability cover</b>, in writing, and compare companies on that number. A booking site showing a rate without it is not comparable to one that includes it, and the gap is not small. If you cannot get an all-in figure, assume the real price is the headline rate plus <b>$10 to $25 a day</b>.",
+            "Then make the collision-waiver decision on paper rather than at the desk, knowing what your card actually covers in Costa Rica, whether you can absorb a four-figure hold, and whether you are willing to pay a repair bill locally and claim it back later. If any of those is a problem, buying the cover is the calmer choice, not the naive one.",
+            "Finally, the rule that no amount of insurance solves: <b>do not drive through a river</b>. Navigation apps in Costa Rica will route you across shallow crossings to save time. Water damage voids the liability cover and the collision waiver alike, and you own the whole bill."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is car rental insurance mandatory in Costa Rica?", a: "The liability part is. Costa Rican law requires third-party liability cover, written through the state insurer INS, on every rental. You cannot decline it and no credit card replaces it, so budget roughly $10 to $25 a day on top of the rate. The collision damage waiver is separate and optional." },
+        { q: "Does my credit card cover a rental car in Costa Rica?", a: "It may cover damage to the car, but never the mandatory liability. To use a card benefit you have to decline the company's collision waiver, pay for the whole rental with that card, and usually show a letter of coverage from your issuer. Expect a hold of $1,000 or more, and expect to pay repairs in Costa Rica first and claim afterward." },
+        { q: "Why is the price so much higher at the counter?", a: "Because the legally required liability cover is often left out of the online quote. It gets added at pickup because the law requires it, which is how a cheap-looking rate becomes $30 to $40 a day or more. The charge is legitimate; the missing disclosure is what catches people." },
+        { q: "Do I need a 4x4 in Costa Rica?", a: "It depends entirely on your route, not on the season alone. Paved main roads and the Ruta 27 corridor are fine in a normal car, but steep unpaved access roads in areas like Monteverde and much of the Nicoya peninsula are a different matter, especially in the May to November rains. Pick the vehicle for where you are actually going." },
+        { q: "Are there many toll roads in Costa Rica?", a: "No, only three tolled highways, and the amounts are small. San Jose to Caldera on Ruta 27 totals about 4,000 to 4,500 colones, roughly $8. Keep small colones in the car, since card acceptance at the booths is improving but still inconsistent." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Costa Rica country information, including road conditions and driving guidance", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/CostaRica.html", type: "gov" },
+          { label: "Instituto Nacional de Seguros (INS), the state insurer that underwrites the mandatory liability cover", url: "https://www.grupoins.com/", type: "gov" }
+        ],
+        judgment: "That third-party liability cover is legally required and cannot be replaced by a credit card is the settled part, and it is the only part we state flatly. The daily cost is not fixed by law: it varies by company, vehicle class and how the charge is bundled, so the $10 to $25 range is a typical band from current rental-company published rates rather than an official tariff, and the same goes for the $1,500 to $3,000 collision deductibles. Card-hold amounts vary widely between desks; $1,000 is common and travelers report far higher, so we give it as a floor. Sources genuinely conflict on card acceptance at Ruta 27 toll plazas, with toll trackers reporting card readers at all nine and driving guides still advising cash, so we say to carry colones either way. Fuel is government-regulated and therefore uniform nationwide, but the level is revised periodically, so treat the per-liter figure as approximate and check before you budget a long drive. Checked July 2026."
+      }
+    },
+    {
       slug: "taxis-and-apps",
       glance: [
         { k: "Apps", v: "Uber, DiDi (both work)" },

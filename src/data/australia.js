@@ -179,6 +179,81 @@ export default {
   // rendered by components/Spoke.astro via src/pages/[slug]/[spoke].astro.
   spokes: [
     {
+      slug: "driving-and-tolls",
+      glance: [
+        { k: "Tolls", v: "All electronic, no cash anywhere" },
+        { k: "Toll states", v: "NSW, Victoria and Queensland only" },
+        { k: "Rental admin", v: "About $3 a toll, or a daily pass" },
+        { k: "Standard excess", v: "Often AU$3,000 to $8,000" }
+      ],
+      live: true,
+      topic: "driving",
+      title: "Driving in Australia: tolls, rental fees and the excess (2026) | True Trip Costs",
+      description: "Australian tolls are entirely cashless, and the rental company's handling fee often costs more than the toll. Which states have tolls and which have none, what the daily toll pass really costs, and the four-figure excess sitting in your rental agreement. Checked July 2026.",
+      h1: "Driving in Australia: tolls, fees and the excess",
+      lede: "Two things decide what driving in Australia costs you, and neither is the daily rate. One is how your rental company handles tolls, which varies more than almost anything else. The other is the excess buried in the agreement.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-31",
+      answer: "Australian toll roads have been <b>100% electronic since 2013</b>. There is <b>no cash option anywhere</b>, no booth to stop at, and no way to settle up at the road. Tolls exist in <b>three states only</b>: New South Wales, Victoria and Queensland. Western Australia, South Australia, Tasmania, the Northern Territory and the ACT have <b>none at all</b>. The cost that surprises people is not the toll but the <b>rental company's handling of it</b>, which ranges from nothing extra, to about <b>$3 per crossing</b>, to a prepaid daily toll pass at <b>AU$20 to $55 a day</b> depending on the state. Separately, check your <b>excess</b>: the standard figure is commonly <b>AU$3,000 to $8,000</b>, and it applies even when a kangaroo or a hailstorm is at fault.",
+      carExcess: true,
+      sections: [
+        {
+          h: "Cashless tolls, and the fee on top of the fee",
+          icon: "receipt",
+          key: { fig: "AU$20-55", tag: "A day, for a prepaid toll pass", text: "Toll policies vary more between rental companies than any other charge. Some add nothing, some bill about $3 a crossing, some sell a daily pass that costs more than the tolls.", tone: "amber" },
+          p: [
+            "Because there is no cash lane, your rental car's plate is simply photographed and the toll gets settled later, which means the rental company is in the middle of the transaction and prices that position differently at every brand. Some bill you the toll and a per-crossing admin fee of around <b>AU$3</b>. Some state they add <b>no fee</b> at all and pass through the toll. Others sell a <b>prepaid daily toll pass</b>, and those are the ones to look at closely: published daily rates run around <b>AU$55 in New South Wales</b>, <b>AU$33 in Victoria</b> and <b>AU$20 in Queensland</b>, charged for the days you hold it rather than the days you actually use a toll road.",
+            "That matters because a single trip across Sydney using several motorways is roughly <b>AU$15 to $30</b> in actual tolls. If your driving is one airport run and a couple of city crossings, a $55 a day pass costs multiples of the tolls it covers. If you are commuting across Sydney daily for a week, it may pay. There is no general answer, which is exactly why the counter can sell it either way.",
+            "The expensive mistake is leaving a toll unpaid. Escalation is quick: the base toll plus a video fee in the first two weeks, then a further admin fee, then enforcement fees, then debt collection. On top of that the rental company charges its own <b>AU$15 to $30</b> per toll notice it has to process. So ask one question at pickup: <b>how are tolls charged on this car, and what is the fee</b>. Get the answer in writing."
+          ]
+        },
+        {
+          h: "Where the tolls actually are",
+          icon: "wheel",
+          key: { fig: "3 states", tag: "The rest are toll-free", text: "Tolls are concentrated in Sydney, Melbourne and southeast Queensland. Hire in Perth, Adelaide, Darwin, Hobart or Canberra and tolls are simply not part of your trip.", tone: "teal" },
+          p: [
+            "<b>Sydney</b> has by far the most, including the Harbour Bridge and Tunnel, the Eastern Distributor, the Cross City and Lane Cove tunnels, the M2, M4, M5, M7, M8 and NorthConnex, with rates that vary by time of day and direction. <b>Melbourne</b> has three: CityLink, EastLink and the West Gate Tunnel. <b>Southeast Queensland</b> covers the Gateway and Logan motorways, Legacy Way, the Clem Jones tunnel and Airport Link.",
+            "Everywhere else is free. If your trip is Perth and the southwest, Adelaide and the Barossa, Tasmania, the Red Centre or Canberra, tolls are not a line item and a daily toll pass is money for nothing. Confirm it against your route before you buy anything at the counter.",
+            "If you do want to avoid tolls in the toll cities, both Google Maps and Apple Maps have an avoid-tolls setting, but be honest about the trade: the toll-free alternatives through Sydney cost roughly <b>30 to 90 minutes</b> extra, and Melbourne <b>15 to 45</b>. Brisbane has the most usable free alternatives. Buying back an hour in Sydney traffic for a few dollars is often the better deal."
+          ]
+        },
+        {
+          h: "The excess, and what voids it",
+          icon: "alert",
+          key: { fig: "AU$3-8k", tag: "Standard excess on a hire car", text: "Liability cover is included in Australia, but the damage excess is high and applies even for animal strikes and hail. Unsealed-road driving can void the waiver entirely.", tone: "amber" },
+          p: [
+            "The good news is that <b>injury liability is included</b>: compulsory third party cover comes with the vehicle's registration, so there is no mandatory insurance ambush at the desk. The catch is the <b>damage excess</b>. Australian hire cars come with a basic collision or loss damage waiver that caps your liability at an excess commonly quoted at <b>AU$3,000 to $8,000</b>, and sometimes higher. That figure is held or authorized against your card, and it applies even where nobody was at fault, including <b>animal strikes and hail</b>.",
+            "The exclusions are where cover disappears rather than just costing you the excess. Driving on <b>unsealed or dirt roads</b> when the agreement prohibits it can <b>void the waiver entirely</b>, leaving you liable for the full repair. The same goes for <b>beach driving</b>, unauthorised drivers, and <b>overhead or underbody strikes</b> such as car-park height bars and cattle grids. Even paid excess-reduction products frequently still exclude <b>windscreen, tires and lost keys</b>. If your itinerary includes any unsealed road, and in Australia plenty of good destinations do, confirm in writing that your vehicle class and your cover both permit it.",
+            "On credit cards, Australia is one of the destinations <b>American Express rental cover commonly excludes</b>, alongside New Zealand and Italy, so it is not a reliable fallback here. A standalone excess policy bought before you travel is usually far cheaper than the counter's excess reduction and often covers glass, tires and underbody that the counter's version will not. One useful protection you do have: under <b>Australian Consumer Law</b> you are entitled to an itemised repair invoice and a fair opportunity to dispute damage charges before your card is debited, so ask for the invoice and do not accept a bare figure."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "tag",
+          key: { fig: "Ask 2 things", tag: "Tolls and excess, at the counter", text: "Settle how tolls are billed and what the excess is before you take the keys, and price the toll pass against your actual route rather than buying it by default.", tone: "teal" },
+          p: [
+            "Two questions at the counter cover most of the risk: <b>how are tolls billed and at what fee</b>, and <b>what is the excess and what voids it</b>. Both answers should be in writing on the agreement, not verbal. Then price the daily toll pass against your real route: if you are not driving in Sydney, Melbourne or southeast Queensland, decline it.",
+            "Your <b>US license is valid</b> and no international permit is needed, since an international driving permit is a translation and a US license is already in English. In New South Wales and Victoria the visitor limit is around <b>six months</b>, which no holiday reaches. Remember you are driving on the <b>left</b>, in a right-hand-drive car, and that the first few roundabouts are where habits betray people.",
+            "One last cost that is not the car: distances. Australian legs are far longer than the map suggests, so fuel is a serious budget line and outback roadhouse prices run well above city ones. Plan realistic daily distances, and see the <a href='/australia/cash-or-card'>Australia cash and cards guide</a> for paying at the pump."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Can I pay Australian tolls with cash?", a: "No. Australian toll roads have been entirely electronic since 2013 and there is no cash option anywhere in the country. Your rental car's plate is photographed and the toll is settled afterward through the rental company or a toll account, which is why the rental company's handling fee matters as much as the toll itself." },
+        { q: "Should I buy the rental company's daily toll pass?", a: "Only if your route justifies it. Published daily rates run about AU$55 in New South Wales, AU$33 in Victoria and AU$20 in Queensland, and they are charged for the days you hold the pass, not the days you use a toll road. A single cross-Sydney trip is roughly AU$15 to $30 in actual tolls, so for light city driving the pass often costs more than the tolls." },
+        { q: "Which parts of Australia have no toll roads?", a: "Western Australia, South Australia, Tasmania, the Northern Territory and the ACT have none. Tolls exist only in New South Wales, Victoria and Queensland, concentrated around Sydney, Melbourne and southeast Queensland. Hire in Perth, Adelaide, Darwin, Hobart or Canberra and tolls will not be part of your trip." },
+        { q: "What is the excess on an Australian hire car?", a: "Commonly AU$3,000 to $8,000, and sometimes more. Injury liability is included through the vehicle's compulsory third party cover, but the damage excess is yours and it applies even for animal strikes and hail. Driving on unsealed roads when the agreement prohibits it can void the waiver altogether." },
+        { q: "Do I need an international driving permit in Australia?", a: "No, not with a US license. An international driving permit is essentially a translation, and a US license is already in English, so it is accepted as it is. New South Wales and Victoria set a visitor driving limit of around six months, which no holiday will reach." }
+      ],
+      sources: {
+        links: [
+          { label: "Linkt: a major Australian toll operator, for current toll roads, rates and visitor account options", url: "https://www.linkt.com.au/", type: "gov" },
+          { label: "Australian Competition and Consumer Commission: your rights on car hire damage charges under Australian Consumer Law", url: "https://www.accc.gov.au/consumers/travel-and-transport/car-hire", type: "gov" }
+        ],
+        judgment: "The settled facts are that Australian tolling is fully electronic with no cash option, that tolls exist only in New South Wales, Victoria and Queensland, and that compulsory third party injury cover comes with the vehicle. Everything with a dollar sign is a current market figure rather than a regulated one. Rental toll handling genuinely conflicts between operators, from published statements of no added fee, to roughly AU$3 per crossing, to daily toll-pass rates around AU$55, $33 and $20 by state, so we describe the range and tell you to ask rather than quoting one policy as the norm. Excess figures of AU$3,000 to $8,000 are the band appearing across Australian insurers and motoring bodies, and vary by vehicle, operator and driver age. Toll rates themselves are adjusted quarterly by the operators, and the New South Wales weekly toll cap ended on 1 January 2026 and was replaced by a quarterly rebate scheme aimed at registered local account holders, which is unlikely to help a visitor. Confirm current rates with the operator and the fee schedule with your rental company. Checked July 2026."
+      }
+    },
+    {
       slug: "taxis-and-apps",
       glance: [
         { k: "Apps", v: "Uber, DiDi, Ola (also 13cabs)" },
