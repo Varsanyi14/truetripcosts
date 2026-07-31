@@ -702,6 +702,67 @@ export default {
         ],
         judgment: "The Madrid fixed fare and the Barcelona VTC restrictions are current for 2026, but app availability, city rules and meter rates change, and Barcelona's private-hire rules in particular have shifted repeatedly, so treat the euro figures as a recent read and check the app for your city on arrival. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Biggest cost trap", v: "The card machine, not the street" },
+        { k: "Cards", v: "Always choose euros, check the total" },
+        { k: "Watch for", v: "Non-bank ATMs, padded bills" },
+        { k: "Rule of thumb", v: "Read the screen before you tap" }
+      ],
+      live: true,
+      topic: "scams",
+      caution: "medium",
+      title: "Common money scams in Spain, and what they cost you (2026) | True Trip Costs",
+      description: "The money traps that actually cost visitors in Spain: the dollar-conversion push on card terminals, non-bank ATM fees, padded bills in tourist zones, and the distraction setups in Barcelona and Madrid. Checked July 2026.",
+      h1: "Common money scams in Spain, and what they cost you",
+      lede: "Spain is a safe, card-friendly country, and the things that cost visitors money here are rarely dramatic. Most of it happens quietly, on a card terminal or at the bottom of a bill, and every one of them is easy to sidestep once you know the shape of it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "The expensive traps in Spain are <b>paperwork, not crime</b>. The costliest is the <b>card terminal that offers to charge you in dollars</b>, which quietly adds a few percent to every purchase, followed by <b>non-bank ATMs</b> that stack their own fee on top of your bank's. In tourist zones, watch for <b>padded restaurant bills</b>: extras you did not order, menus with no prices, and a tip line filled in for you. The <b>street setups</b> in central Barcelona and Madrid are distraction plays that cost you a wallet rather than a negotiation. Read the screen, read the bill, and use bank ATMs.",
+      sections: [
+        {
+          h: "The card machine and the bill",
+          icon: "receipt",
+          key: { fig: "Choose euros", tag: "The costliest habit", text: "A terminal offering to charge you in dollars is dynamic currency conversion, which adds a few percent at its own rate. Choose euros every time, and read the total before you tap.", tone: "amber" },
+          p: [
+            "The single most expensive thing that happens to US visitors in Spain is not a scam at all in the legal sense: it is the <b>offer to be charged in dollars</b> at a card terminal, a practice called dynamic currency conversion. It looks like a courtesy and it costs a few percent on every transaction, because the machine sets the rate rather than your bank. <b>Choose euros, every time</b>. The same applies at every ATM screen.",
+            "Two related habits worth building. First, <b>look at the amount on the terminal before you tap</b>, since a misplaced decimal or an added zero is easier to fix in the moment than on a statement. Second, in heavily touristed streets, <b>read the itemized bill</b>: bread, olives or a plate of tapas that arrived unasked can appear on it, a <b>menu with no prices</b> is a warning sign in itself, and occasionally a <b>tip line is filled in for you</b>. Spain has no strong tipping obligation, so you are not being rude to question it. For what is normal, see <a href='/spain/tipping'>tipping in Spain</a>."
+          ]
+        },
+        {
+          h: "Cash machines, and help you did not ask for",
+          icon: "atm",
+          key: { fig: "Bank ATMs", tag: "Skip the standalone kiosks", text: "Standalone ATMs in tourist areas charge their own fee and push the dollar conversion hardest. Use a machine attached to a real bank and decline any offer to convert.", tone: "amber" },
+          p: [
+            "Spain is full of <b>standalone ATMs</b> in tourist streets, stations and airports that are not attached to a bank. They tend to charge a <b>higher fee of their own</b>, on top of anything your bank adds, and they push the <b>dollar conversion</b> hardest of all. Use a machine attached to a real bank, take a slightly larger amount less often, and decline the conversion offer.",
+            "Be wary of <b>help you did not ask for</b> at a machine: someone who offers to guide you through the screens, or who tells you the machine is broken and points you to another one. Cover your PIN, and if a card is retained, call your bank rather than accepting a stranger's assistance. In the same family, <b>anyone in plain clothes claiming to be police</b> and asking to inspect your cash or cards for counterfeits is not doing a real thing: real officers do not need to count your money. Decline politely and walk into a shop or a busy street. For the wider cash picture, see <a href='/spain/cash-or-card'>cash or card in Spain</a>."
+          ]
+        },
+        {
+          h: "Street setups, and the taxi from the airport",
+          icon: "alert",
+          key: { fig: "Two seconds", tag: "That is all it takes", text: "The street plays are distractions: something spilled on you, a petition thrust at you, a shirt-tugging hug. The cost is your wallet, so keep it somewhere a bump cannot reach.", tone: "teal" },
+          p: [
+            "The classic city setups all work the same way: <b>create two seconds of confusion, then take a wallet or phone</b>. The familiar versions are something <b>spilled or splashed on your clothes</b> followed by eager help cleaning it, a <b>petition or clipboard</b> pushed at your chest, a sudden <b>hug or a football-shirt tug</b> in a crowd, and the <b>three-cup or shell game</b> on a busy promenade, which you cannot win. None of it is aggressive and all of it is avoidable: keep your wallet and phone somewhere a bump cannot reach, and treat any unexpected physical contact as a cue to check your pockets rather than to help.",
+            "For taxis, the honest picture is that Spanish cabs are metered and mostly straightforward. <b>Madrid sets a single fixed fare</b> between Barajas airport and the city center inside the M-30, posted at the rank, so ask for it by name and you cannot be metered up. Elsewhere, use the <b>official rank or an app</b> rather than someone approaching you in the terminal, and check that the <b>meter is running</b> from the start. This guide is written for US travelers departing the US. For more, see <a href='/spain/taxis-and-apps'>taxis and apps in Spain</a>, <a href='/spain/cash-or-card'>cash or card in Spain</a>, and the <a href='/spain'>Spain money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What is the most common scam in Spain?", a: "Not a street trick: it is the card terminal offering to charge you in dollars, which adds a few percent at the machine's own rate. Choose euros on every terminal and ATM. After that, non-bank ATM fees and padded restaurant bills in tourist zones cost visitors the most." },
+        { q: "Are the pickpocket tricks in Barcelona really that bad?", a: "They are real and they are non-violent. Almost all of them are distractions, something spilled on you, a petition pushed at you, a sudden hug in a crowd, designed to buy two seconds. Keep your wallet and phone where a bump cannot reach them and treat unexpected contact as a cue to check your pockets." },
+        { q: "Can someone claiming to be police ask to check my money in Spain?", a: "No. Real officers have no reason to inspect your cash or cards for counterfeits. If someone in plain clothes asks, decline politely and walk into a shop or a busy street rather than handing anything over." },
+        { q: "How do I avoid being overcharged in a Spanish restaurant?", a: "Ask for the menu with prices before you order, wave away anything that arrives unasked, and read the itemized bill. Watch for a tip line filled in for you, since tipping in Spain is modest and not obligatory." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Spain country information, including crime and common tourist scams", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Spain.html", type: "gov" },
+          { label: "Barcelona City Council: official visitor information for the city", url: "https://ajuntament.barcelona.cat/turisme/en", type: "gov" }
+        ],
+        judgment: "Which tricks are most common in which square changes year to year, so the True Trip Costs desk has stuck to the mechanics and the money cost rather than a catalogue of street theatre. The card-terminal and ATM points are the ones that cost the most and get written about the least. Checked July 2026."
+      }
     }
   ]
 };

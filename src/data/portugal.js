@@ -673,6 +673,67 @@ export default {
         ],
         judgment: "Portugal applies the shared EU pet-entry framework, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The local registration and any breed rules vary, so we point you to the official pages and dated this July 2026."
       }
+    },
+    {
+      slug: "driving-and-tolls",
+      glance: [
+        { k: "Two systems", v: "Booths, and electronic only" },
+        { k: "In a rental", v: "The transponder is fitted by law" },
+        { k: "The surcharge", v: "Roughly 1.50 to 2 euros a day" },
+        { k: "Rule of thumb", v: "Never use a Via Verde lane without a device" }
+      ],
+      live: true,
+      topic: "driving",
+      caution: "medium",
+      title: "Driving in Portugal: the electronic toll trap explained (2026) | True Trip Costs",
+      description: "How Portuguese tolls actually work for a US visitor in 2026: the motorways with no booths, the rental transponder and its daily surcharge, the options for a foreign plate, and which motorways are now free. Checked July 2026.",
+      h1: "Driving in Portugal, and the electronic toll trap",
+      lede: "Portugal has two kinds of toll road and only one of them lets you pay at the roadside. That is the whole problem in one sentence, and the fix is a small transponder you should sort before you drive rather than after.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "Portugal runs <b>two toll systems side by side</b>. On the classic motorways like the <b>A1 and A2</b> you take a ticket and pay at a booth by cash or card at the exit. On the <b>electronic-only motorways</b>, signed as electronic toll only, there is <b>no booth and no way to pay on the spot</b>: gantries photograph your plate and you must have registered a payment method in advance. In a Portuguese <b>rental</b>, the law requires an <b>electronic toll device</b> to be fitted, and you pay the tolls plus a <b>daily service fee of roughly 1.50 to 2 euros</b> billed after the trip. With a <b>foreign plate</b>, register <b>EASYToll</b> at the border, buy a <b>TOLLCard</b>, or rent a transponder. Good news since <b>1 January 2025</b>: the old ex-SCUT motorways, including the <b>A22 in the Algarve</b>, are now <b>toll-free</b>.",
+      sections: [
+        {
+          h: "Two kinds of toll road, and only one has a booth",
+          icon: "wheel",
+          key: { fig: "No booth", tag: "On electronic-only roads", text: "Electronic-only motorways have gantries instead of toll plazas. There is no cash lane and no card reader, so arriving without a registered payment method leaves you owing money to a camera.", tone: "amber" },
+          p: [
+            "On the main <b>barrier motorways</b>, the A1 Lisbon to Porto and the A2 towards the Algarve among them, the system is familiar: <b>take a ticket on entry, pay at the exit</b> by cash, card or transponder. Distances are real money, with a run like <b>Lisbon to Porto costing roughly 25 euros</b> for a car as of 2026, so check the current tariff if it matters to your budget. Whatever you do, <b>do not drift into a Via Verde lane</b> without a device fitted: those lanes are for transponders only and using one without one is a fine rather than a shortcut.",
+            "The other kind is the problem. <b>Electronic-only motorways</b> have <b>no toll plazas at all</b>, only <b>gantries that read your plate</b>, and they are signed as electronic toll only. There is nowhere to hand over money, so if you have not registered a payment method in advance, you have simply incurred an unpaid toll. There is a <b>short window</b>, a matter of days, to settle it at a <b>CTT post office or a Payshop</b> afterwards, and after that it becomes a fine that follows the vehicle's owner, which in a rental means it follows you with the rental company's admin fee attached. One genuinely good change: the <b>ex-SCUT motorways</b>, including the <b>A22 along the Algarve</b>, the A23, A24, A25 and the A4 Transmontana, have been <b>toll-free since 1 January 2025</b>, so older advice about the Algarve toll trap is now out of date."
+          ]
+        },
+        {
+          h: "In a rental, the transponder is the answer",
+          icon: "receipt",
+          key: { fig: "Fitted by law", tag: "Since January 2023", text: "Portuguese law requires rental companies to equip their cars with an automatic toll device. You pay the tolls plus a daily service fee, charged to your card after the rental ends.", tone: "teal" },
+          p: [
+            "Since <b>January 2023</b>, Portuguese law has required <b>car rental companies to fit an automatic toll payment device</b> to their vehicles, so a car picked up in Portugal should already have one. Practically, that solves the electronic-only problem: you drive, the gantries read the device, and the <b>tolls plus a daily service fee</b> are charged to your card afterwards. The fee is typically <b>around 1.50 to 2 euros a day as of 2026</b>, and it is usually charged for the whole rental period rather than only the days you use a motorway.",
+            "This is the part with the reputation, and the reputation is mostly about <b>the bill arriving weeks later</b> rather than the amount. Two things to do at the counter: <b>confirm the fee policy in writing</b>, specifically whether the daily charge applies to every day of the rental, and <b>ask them to point at the device</b> so you know it is there and active. Then keep an eye on your card statement for the weeks after you get home, since that is when the tolls, the service fee and any fines land. If you would rather not have the device at all, some companies allow you to decline it, but then the electronic-only roads become your problem to register for, which is rarely worth the saving."
+          ]
+        },
+        {
+          h: "If you bring a foreign-plated car",
+          icon: "tag",
+          key: { fig: "Three options", tag: "EASYToll, TOLLCard, transponder", text: "Link a card to your plate at a border Welcome Point, buy a prepaid TOLLCard, or rent a Via Verde Visitors transponder. Do it before you use an electronic-only road, not after.", tone: "teal" },
+          p: [
+            "Driving in from Spain in your own or a Spanish-registered car changes the job. Three routes work. <b>EASYToll</b>: at an automated <b>Welcome Point</b> near the border you link a Visa or Mastercard to your number plate, valid for a limited period, and tolls are then charged automatically. <b>TOLLCard</b>: a <b>prepaid card</b> in small fixed amounts, bought online, at post offices and at service stations, activated by text message. <b>Via Verde Visitors</b>: a <b>rented transponder</b> that works in the fast lanes as well as on the electronic roads. If you already have a Spanish <b>Via-T</b> device, it is generally accepted across the Portuguese network, though it is worth confirming with your issuer that international use is active.",
+            "Whichever you pick, <b>set it up before you use an electronic-only motorway</b>, because the whole design assumes prior registration. And carry an <b>International Driving Permit</b> alongside your US license: it is the standardised translation of your license, cheap, valid for a year, and only obtainable in the US before you leave, so it removes a question a rental desk or an officer might otherwise ask. This guide is written for US travelers departing the US. For more, see <a href='/portugal/cash-or-card'>cash or card in Portugal</a>, <a href='/portugal/euronet-atm-fees'>the Euronet ATM fee trap</a>, and the <a href='/portugal'>Portugal money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How do tolls work on Portuguese motorways?", a: "Two ways. Barrier motorways like the A1 and A2 give you a ticket on entry and take cash or card at the exit. Electronic-only motorways have no booths at all, just gantries reading your plate, so you must have a registered payment method before you drive on them." },
+        { q: "Does my rental car in Portugal come with a toll transponder?", a: "It should. Portuguese law has required rental companies to fit an automatic toll device since January 2023. You pay the tolls plus a daily service fee, roughly 1.50 to 2 euros a day as of 2026, charged to your card after the rental. Confirm at the counter whether the daily fee applies to every day of the rental." },
+        { q: "Is the A22 in the Algarve still tolled?", a: "No. The A22 and the other ex-SCUT motorways, including the A23, A24, A25 and the A4 Transmontana, have been toll-free since 1 January 2025, so older warnings about the Algarve toll are out of date." },
+        { q: "What happens if I drive an electronic toll road in Portugal without registering?", a: "You owe an unpaid toll to a camera. There is a short window of a few days to settle it at a CTT post office or a Payshop, after which it becomes a fine that follows the registered owner, which in a rental means it reaches you with the company's admin fee added." }
+      ],
+      sources: {
+        links: [
+          { label: "Visit Portugal: the official tourism board's page on tolls, the electronic-only roads and the options for foreign-registered vehicles", url: "https://www.visitportugal.com/en/content/tolls", type: "official" },
+          { label: "US State Department: Portugal country information for US travelers, including driving and road conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Portugal.html", type: "gov" }
+        ],
+        judgment: "The two-system structure, the rental device requirement and the ex-SCUT roads going toll-free are all documented. Toll tariffs are revised most years and rental service fees vary by company, so those figures are given as approximations, and the payment window after an unregistered trip is reported inconsistently, so we describe it as a matter of days rather than a fixed count. Checked July 2026."
+      }
     }
   ]
 };

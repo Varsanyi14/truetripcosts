@@ -712,6 +712,67 @@ export default {
         ],
         judgment: "The IDP requirement and the ZTL camera system are well established; the exact fine and admin-fee amounts vary by city and rental company, and can arrive up to a year or more later, so treat the euro figures as typical 2026 ranges. The steady advice is to carry an IDP, avoid the historic-center ZTLs, and cover the insurance excess before the counter. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Biggest cost trap", v: "The airport taxi that ignores the fixed fare" },
+        { k: "Rome from FCO", v: "55 euros fixed, all in" },
+        { k: "Watch for", v: "Padded bills, ticket resellers" },
+        { k: "Rule of thumb", v: "Know the number before you get in" }
+      ],
+      live: true,
+      topic: "scams",
+      caution: "medium",
+      title: "Common money scams in Italy, and what they cost you (2026) | True Trip Costs",
+      description: "The money traps that cost visitors in Italy: airport taxis that ignore the official fixed fare, the broken card machine, padded restaurant bills near landmarks, and skip-the-line ticket resellers. Checked July 2026.",
+      h1: "Common money scams in Italy, and what they cost you",
+      lede: "Italy's tourist money traps are mostly overcharging rather than theft, and the good news is that the biggest one has an official number attached to it. Know the fixed airport fare, read the bill, and buy tickets from the actual ticket office.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "The costliest trap is the <b>airport taxi</b>. Rome sets a <b>fixed fare of 55 euros</b> between Fiumicino and anywhere inside the <b>Aurelian Walls</b>, luggage and supplements included, and a lower fixed fare from Ciampino, so a driver quoting more is not quoting the rule. Watch the <b>card machine that is suddenly broken</b>, which turns a card fare into a cash one. In restaurants near the landmarks, the money leaks through <b>unordered extras</b>, <b>no-price menus</b> and <b>fish or steak priced by weight</b>. Outside the big sights, <b>skip-the-line resellers</b> charge a markup for tickets you can buy officially. And if you drive, the real cost is the <b>ZTL camera fine</b>, covered in our rental piece.",
+      sections: [
+        {
+          h: "Airport taxis: know the fixed fare",
+          icon: "taxi",
+          key: { fig: "55 euros", tag: "Fiumicino to central Rome", text: "Rome's airport authority publishes a fixed fare of 55 euros between Fiumicino and anywhere inside the Aurelian Walls, including luggage and all supplements. Ask for it by name at the official rank.", tone: "amber" },
+          p: [
+            "Rome's fixed airport fares are the most useful numbers in this guide. As of 2026, <b>Fiumicino (FCO) to anywhere inside the Aurelian Walls is 55 euros</b>, one way, <b>including luggage and all supplements</b>, with a lower fixed fare from <b>Ciampino (CIA)</b>, and the airport authority publishes both. Older articles still quote 45 or 50 euros, so if a figure online looks low, it is out of date rather than a bargain. Two traps sit around the rule. First, it only applies <b>inside the walls</b>: a hotel outside them is metered, though there is a published ceiling for journeys inside the ring road. Second, <b>taxis licensed by the Comune di Fiumicino rather than the Comune di Roma</b> wait at the same airport and run their own, higher fixed fare, so check the door.",
+            "Use the <b>official rank</b> outside the terminal, never a driver who approaches you inside it, and expect to be able to pay by <b>card</b>. The <b>broken card machine</b> is a recurring move: if a driver announces the reader is not working after you have arrived, that is the moment to ask for a receipt and note the licence number. Within cities, check the meter shows the <b>standard urban tariff</b> rather than the higher band meant for motorway or out-of-town runs, and use <b>itTaxi or FREE NOW</b> to book a licensed cab with a record. See also <a href='/italy/taxis-and-apps'>taxis and apps in Italy</a>."
+          ]
+        },
+        {
+          h: "Restaurant bills near the landmarks",
+          icon: "receipt",
+          key: { fig: "Read it", tag: "Coperto is legitimate", text: "A per-person coperto and a service charge are normal and printed. What is not normal is unordered extras, a menu with no prices, or a weight-priced fish nobody weighed in front of you.", tone: "amber" },
+          p: [
+            "Start with what is <b>legitimate</b>, because visitors often mistake it for a scam: a small per-person <b>coperto</b> (cover charge) and sometimes a <b>servizio</b> are normal in Italy and should be printed on the menu. Knowing that lets you spot what is not normal: <b>bread, water or antipasti you did not order</b> appearing on the bill, a <b>menu with no prices</b> or a different menu for tourists, and <b>fish or steak priced by the etto</b> (per 100 grams) where nobody shows you the weight. The last one is where a modest-looking plate becomes an eye-watering line item.",
+            "The fixes are unglamorous and they work: <b>ask for the printed menu with prices</b>, ask what a by-weight dish will actually cost before you agree, wave away anything that arrives unasked, and <b>read the itemized bill</b> rather than the total. A restaurant that will not produce a price list is telling you something. If a bill is plainly wrong, ask for it to be corrected and ask for a <b>receipt</b>, which Italian businesses are required to issue."
+          ]
+        },
+        {
+          h: "Tickets, street setups, and the fine that arrives by mail",
+          icon: "alert",
+          key: { fig: "Buy official", tag: "Skip-the-line markups", text: "Resellers outside the Colosseum and the Vatican charge a markup for entry you can book yourself. Buy from the official site or ticket office and skip the middleman, not the line.", tone: "teal" },
+          p: [
+            "Outside the big sights, people will offer to sell you <b>skip-the-line tickets</b> or a <b>guided entry</b> at a markup over the official price, and occasionally the ticket is not valid at all. Buy from the <b>official site or the ticket office</b>. The street plays are the familiar distraction family: a <b>friendship bracelet</b> tied onto your wrist and then charged for, a <b>rose</b> pressed into your hand, a <b>costumed centurion</b> who wants payment for the photo you have already taken. None is dangerous, all of them work on politeness, and the answer to each is a firm no and no eye contact with the object being offered.",
+            "One trap costs far more than any of these and is not a scam at all: the <b>ZTL</b>, the camera-controlled restricted zone in nearly every historic center. Drive into one in a rental and the fine reaches you <b>months later through the rental company</b>, with its own admin fee, sometimes more than once. If you are renting, read <a href='/italy/renting-a-car'>what renting a car in Italy really costs</a> before you drive into Florence or Rome. This guide is written for US travelers departing the US. For more, see <a href='/italy/cash-or-card'>cash or card in Italy</a>, <a href='/italy/tipping'>tipping in Italy</a>, and the <a href='/italy'>Italy money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much should a taxi from Fiumicino to central Rome cost?", a: "As of 2026 the official fixed fare is 55 euros to anywhere inside the Aurelian Walls, one way, with luggage and all supplements included. A lower fixed fare applies from Ciampino. Older sources quoting 45 or 50 euros are out of date, and taxis licensed by the Comune di Fiumicino rather than Rome run their own higher fixed fare." },
+        { q: "Is the coperto on my Italian restaurant bill a scam?", a: "No. A small per-person cover charge, and sometimes a service charge, is normal and should be printed on the menu. What is not normal is unordered extras appearing on the bill, a menu with no prices, or a by-weight fish that nobody weighed in front of you." },
+        { q: "What is the most expensive mistake for a tourist in Italy?", a: "Driving into a ZTL, the camera-controlled zone in almost every historic center. The fine arrives months later through your rental company with an added admin fee, and it can arrive more than once for repeated entries." },
+        { q: "Should I buy skip-the-line tickets from someone outside the Colosseum?", a: "No. Buy from the official site or ticket office. Resellers charge a markup for entry you can book yourself, and occasionally what they sell is not valid." }
+      ],
+      sources: {
+        links: [
+          { label: "Aeroporti di Roma: the official Fiumicino taxi page, listing the fixed fare to central Rome and the published fare limits", url: "https://www.adr.it/web/aeroporti-di-roma-en/pax-fco-taxi", type: "official" },
+          { label: "US State Department: Italy country information, including crime and common tourist scams", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Italy.html", type: "gov" }
+        ],
+        judgment: "The fixed airport fares come from the airport authority's own published table and are the firmest numbers here, though municipalities can change them without notice, so check before you travel. Which street setups are running where is our own read from recent reports. Checked July 2026."
+      }
     }
   ]
 };

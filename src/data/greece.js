@@ -452,6 +452,67 @@ export default {
         ],
         judgment: "Greece applies the shared EU pet-entry framework, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The local registration and any breed rules vary, so we point you to the official pages and dated this July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Biggest cost trap", v: "The airport taxi that runs the meter" },
+        { k: "Athens from ATH", v: "40 euros day, 55 euros night, fixed" },
+        { k: "Watch for", v: "Tariff 2 in town, bar invitations" },
+        { k: "Rule of thumb", v: "Ask for the flat rate by name" }
+      ],
+      live: true,
+      topic: "scams",
+      caution: "medium",
+      title: "Common money scams in Greece, and what they cost you (2026) | True Trip Costs",
+      description: "The money traps that cost visitors in Greece: the airport taxi that ignores the legal flat fare, the tariff-2 meter trick in Athens, the bar invitation in the center, and island ATM fees. Checked July 2026.",
+      h1: "Common money scams in Greece, and what they cost you",
+      lede: "Greece has a reputation for taxi trouble that is now mostly out of date, and one setup in central Athens that is still worth knowing about. The useful thing is that the airport fare is fixed by law, so the biggest number of your trip is already decided.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "The airport run is fixed by law: <b>40 euros in the day and 55 euros overnight</b> between Athens airport and central Athens, tolls and standard luggage included, so <b>ask for the flat rate by name</b> and the meter is irrelevant. In town, the trick to know is a driver running <b>tariff 2</b>, the higher out-of-town and overnight rate, during a normal daytime city trip. The costliest thing in central Athens is not a taxi at all but the <b>friendly invitation to a bar</b>, which ends in a bill running to hundreds. On the islands, watch <b>non-bank ATM fees</b> and the <b>dollar conversion</b> offer. Restaurants add money through <b>extras you did not order</b> and <b>fish priced by weight</b>.",
+      sections: [
+        {
+          h: "The airport fare is fixed, so use it",
+          icon: "taxi",
+          key: { fig: "40 or 55 euros", tag: "Athens airport, fixed by law", text: "The flat fare between Athens airport and central Athens is 40 euros from 05:00 to midnight and 55 euros overnight, including tolls and standard luggage. Ask for the flat rate before you set off.", tone: "amber" },
+          p: [
+            "Between <b>Athens International Airport (ATH)</b> and <b>central Athens</b>, a <b>regulated flat fare</b> applies rather than the meter: as of 2026 that is <b>40 euros between 05:00 and midnight</b> and <b>55 euros from midnight to 05:00</b>, covering <b>tolls and normal luggage</b>. It is set by law, it does not change with traffic or route, and the way to invoke it is simply to <b>say flat rate</b> before you set off. Destinations beyond the central zone are metered, so if your hotel is out in the suburbs or on the coast, expect the meter instead.",
+            "Use the <b>official rank</b> outside arrivals and the <b>yellow licensed taxis</b>, not an offer made to you in the terminal. Two useful alternatives: <b>Metro Line 3</b> runs from the airport to Syntagma for a fraction of the fare, and the <b>X95 express bus</b> runs around the clock, which matters for a late arrival when the night fare applies. If you prefer an app, <b>Uber, FREE NOW and Bolt</b> in Greece dispatch <b>licensed yellow taxis on the regulated meter</b> rather than private drivers, which gives you a record of the trip. See also <a href='/greece/taxis-and-apps'>taxis and apps in Greece</a>."
+          ]
+        },
+        {
+          h: "Tariff 2, and other meter habits",
+          icon: "receipt",
+          key: { fig: "Tariff 1", tag: "For a daytime city trip", text: "Greek meters have a low urban daytime rate and a higher rate for nights and out-of-town runs. A daytime trip inside Athens should be on the lower one, so glance at the meter.", tone: "amber" },
+          p: [
+            "Greek taxi meters run <b>two tariff bands</b>: the lower one for daytime trips inside the city, and a higher one for overnight hours and journeys outside the urban zone. The classic overcharge is a driver setting the meter to the <b>higher band during a normal daytime city trip</b>, which roughly doubles the rate for the same ride. You do not need to know the per-kilometer figures to catch it: <b>glance at the tariff number on the meter</b> at the start, and ask if it looks like the higher one.",
+            "The rest of the picture is ordinary and mostly honest: legitimate <b>surcharges exist</b> for a phone booking, for the airport and ports, and for large luggage, and they should be small and explainable. Ask for a <b>receipt</b>, which drivers are required to give. Sharing a cab with strangers is normal practice in Athens and is not itself a trick, though each passenger pays their own fare. Tipping is a matter of <b>rounding up</b>, not a percentage."
+          ]
+        },
+        {
+          h: "The bar invitation, the bill, and island cash machines",
+          icon: "alert",
+          key: { fig: "Walk away", tag: "The bar invitation", text: "A friendly stranger in central Athens suggests a drink at a bar he knows, where the drinks and the company arrive unasked and the bill runs to hundreds. Choose your own bar.", tone: "amber" },
+          p: [
+            "The most expensive setup in central Athens is social. A <b>personable stranger</b> strikes up a conversation near Syntagma, Plaka or Monastiraki and suggests a drink at a place he knows; inside, <b>drinks and company arrive unasked</b>, prices bear no relation to any menu, and the bill runs to <b>hundreds of euros</b> with staff making it awkward to leave. It tends to target solo travelers. The defence is simply to <b>choose your own bar</b> and be politely wary of a new acquaintance steering you to a specific venue. If you are landed with a wildly wrong bill, you can involve the <b>tourist police</b> rather than paying quietly.",
+            "Two smaller leaks. In restaurants, especially on the tourist strips, watch for <b>bread, water or dips arriving unasked</b> and appearing on the bill, and for <b>fish priced by the kilo</b> where the weight is never shown to you: ask what a by-weight dish will cost before agreeing. On the <b>islands</b>, cash machines are often <b>standalone kiosks rather than bank ATMs</b>, charging their own fee and pushing the offer to convert to dollars hardest, so use a bank machine where you can, take a larger amount less often, and <b>always choose euros</b>. This guide is written for US travelers departing the US. For more, see <a href='/greece/cash-or-card'>cash or card in Greece</a>, <a href='/greece/tipping'>tipping in Greece</a>, and the <a href='/greece'>Greece money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is a taxi from Athens airport to the city center?", a: "A flat fare set by law: as of 2026, 40 euros between 05:00 and midnight and 55 euros overnight, including tolls and standard luggage, to anywhere in central Athens. Say flat rate before you set off. Destinations outside the central zone are metered instead." },
+        { q: "What is the tariff 2 taxi trick in Athens?", a: "Greek meters have a lower urban daytime rate and a higher rate for overnight hours and out-of-town journeys. Some drivers set the higher band for a normal daytime trip inside the city, which roughly doubles the rate. Glance at the tariff number on the meter when you set off." },
+        { q: "Is the bar scam in Athens still a thing?", a: "It is still reported in the center. A friendly stranger suggests a drink at a bar he knows, drinks and company appear unasked, and the bill runs to hundreds. Choose your own bar, and if you are presented with a wildly wrong bill you can involve the tourist police rather than paying quietly." },
+        { q: "Are ATMs on the Greek islands expensive?", a: "They can be. Many island machines are standalone kiosks rather than bank ATMs, with their own fee on top of your bank's and the hardest push to convert to dollars. Use a bank machine where you can, withdraw a larger amount less often, and always choose euros." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Greece country information, including the bar and nightclub overcharging reported in central Athens", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Greece.html", type: "gov" },
+          { label: "Athens airport taxi guide: the regulated day and night flat fares to central Athens, with the rank location and alternatives", url: "https://taxitoathens.com/athens-airport-taxi-guide-2026/", type: "official" }
+        ],
+        judgment: "The flat airport fare is set by law and consistently reported, though it is periodically revised, so check before you travel. The per-kilometer meter rates are quoted inconsistently across sources, which is why we describe the tariff-band trick rather than printing figures. Checked July 2026."
+      }
     }
   ]
 };

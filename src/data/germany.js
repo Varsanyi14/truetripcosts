@@ -436,6 +436,67 @@ export default {
         ],
         judgment: "Germany applies the shared EU pet-entry framework, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The German-specific dog tax and state breed rules are local matters that vary, so confirm them for your city. We point you to the official pages and dated this July 2026."
       }
+    },
+    {
+      slug: "driving-and-tolls",
+      glance: [
+        { k: "Motorway toll", v: "None for cars" },
+        { k: "The real trap", v: "The city Umweltzone sticker" },
+        { k: "Sticker", v: "Roughly 5 to 15 euros, one off" },
+        { k: "Rule of thumb", v: "Check the windscreen at pickup" }
+      ],
+      live: true,
+      topic: "driving",
+      caution: "medium",
+      title: "Driving in Germany: tolls, the Umweltzone sticker and fines (2026) | True Trip Costs",
+      description: "What driving in Germany actually costs a US visitor in 2026: no motorway toll for cars, why the green Umweltzone sticker is the trap that catches tourists, and how rental fines reach you later. Checked July 2026.",
+      h1: "Driving in Germany: tolls, stickers and fines",
+      lede: "Germany is one of the cheapest countries in Europe to drive through, because there is no motorway toll for cars at all. The cost that catches visitors is much smaller and much easier to trip over: a windscreen sticker for city centers.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "There is <b>no motorway toll for passenger cars</b> in Germany as of 2026, so there is <b>no vignette to buy</b> and any website selling you one is selling you nothing. Trucks pay a distance-based toll, which is what the toll signage you see refers to. The real cost trap is the <b>Umweltzone</b>: roughly <b>50 to 60 cities</b>, including Berlin, Munich, Frankfurt, Cologne, Stuttgart and Hamburg, can only be entered with a <b>green Umweltplakette</b> on the windscreen. The sticker is a <b>one-off of roughly 5 to 15 euros</b>; entering without it is a fine in the region of <b>80 to 100 euros</b>, and <b>foreign and rental cars are not exempt</b>. Carry an <b>International Driving Permit</b> alongside your US license.",
+      sections: [
+        {
+          h: "No toll for cars, so ignore the vignette sellers",
+          icon: "wheel",
+          key: { fig: "No vignette", tag: "For passenger cars", text: "Germany has no motorway toll for cars, so there is nothing to buy before you drive in. Websites offering a German car vignette are selling a product that does not exist.", tone: "teal" },
+          p: [
+            "Unlike Austria, Switzerland and Slovenia next door, Germany charges <b>no toll for passenger cars</b> on the Autobahn or anywhere else, as of 2026. A national car toll was legislated and then struck down before it ever took effect, and it has not returned. This is worth stating plainly because it has a money consequence: if you land on a site selling a <b>German vignette</b> for your car, there is <b>nothing to buy</b>, and you would be paying for a sticker with no legal function.",
+            "The <b>toll signage you do see</b> refers to the distance-based toll paid by <b>trucks</b>, which is collected electronically and has nothing to do with your rental. So the running costs of a German road trip are the ordinary ones: <b>fuel</b>, which is well above US prices and where the tank you return matters, <b>parking</b>, and the occasional <b>tunnel or bridge</b> with its own charge. If you are crossing into Austria, Switzerland or Czechia, budget for <b>their</b> vignettes before the border, since those are real and enforced."
+          ]
+        },
+        {
+          h: "The Umweltzone sticker is the trap",
+          icon: "tag",
+          key: { fig: "80 to 100 euros", tag: "For a missing sticker", text: "Around 50 to 60 German cities require a green Umweltplakette to enter. The sticker costs a few euros once; driving in without one is a fine in the region of 80 to 100 euros as of 2026.", tone: "amber" },
+          p: [
+            "Most German cities of any size have an <b>Umweltzone</b>, a low-emission zone you may only enter with a <b>green Umweltplakette</b> displayed on the windscreen. That includes <b>Berlin, Munich, Frankfurt, Cologne, Stuttgart, Hamburg, Hannover, Leipzig and Nuremberg</b>, among roughly 50 to 60 in total. The zones are marked with a sign reading <b>UMWELTZONE</b>, and three things about them catch visitors out: they are <b>much larger than the pedestrian center</b>, often covering whole inner districts; there is <b>no exemption for passing through</b>; and <b>navigation apps do not route around them</b>, because they optimise for time, not compliance.",
+            "The economics are lopsided in your favour if you get it right. The sticker is a <b>one-off of roughly 5 to 15 euros</b>, tied to the number plate for the life of the vehicle, and it is valid <b>nationwide</b>. Getting caught without one is a fixed fine in the region of <b>80 to 100 euros as of 2026</b>. <b>Foreign-registered cars are not exempt</b>, and if it happens in a rental the fine reaches you later <b>through the rental company with its own admin fee on top</b>. German rental cars almost always carry the sticker already, but <b>look for it in the top corner of the windscreen at pickup</b> and ask if you cannot see it, because that ten-second check is the whole of the risk management here. A few cities, notably <b>Stuttgart and Hamburg</b>, layer extra restrictions on older diesels on top of the general rule, so check the specific city if you are driving a diesel."
+          ]
+        },
+        {
+          h: "Parking, fines and what to carry",
+          icon: "receipt",
+          key: { fig: "Carry an IDP", tag: "Alongside your US license", text: "An International Driving Permit is cheap, valid for a year, and issued before you leave. It is what a rental desk or an officer may ask to see next to your US license.", tone: "teal" },
+          p: [
+            "Get an <b>International Driving Permit</b> before you fly. Your US license is what actually authorises you to drive, and the IDP is the standardised translation of it: cheap, valid for a year, and issued in the US rather than abroad, which is the point, since you cannot get one once you have landed. Whether you are asked for it varies by rental desk and by officer, and carrying one removes the question entirely.",
+            "For <b>parking</b>, city centers run on meters and apps, and residential areas often use a <b>Parkscheibe</b>, the cardboard clock disc you set to your arrival time and leave on the dash. Rental cars usually have one in the glovebox. German cars are also required to carry a <b>warning triangle, a high-visibility vest and a first-aid kit</b>, and being without them is a small fine, so check the boot at pickup rather than assuming. Finally, <b>speed and parking fines caught on camera</b> are forwarded to the rental company, which charges you the fine plus an administration fee, usually weeks after you are home. This guide is written for US travelers departing the US. For more, see <a href='/germany/cash-or-card'>cash or card in Germany</a>, <a href='/germany/taxis-and-apps'>taxis and apps in Germany</a>, and the <a href='/germany'>Germany money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need to pay a toll to drive on the German Autobahn?", a: "No. As of 2026 there is no motorway toll for passenger cars in Germany, and no vignette to buy. The toll signage you see refers to the distance-based toll paid by trucks. If a website offers to sell you a German car vignette, there is nothing there to buy." },
+        { q: "What is the Umweltzone sticker and do I need one in a rental?", a: "It is a green Umweltplakette that lets you enter the low-emission zones in roughly 50 to 60 German cities, including Berlin, Munich and Frankfurt. German rental cars almost always have one already, but check the top corner of the windscreen at pickup and ask if you cannot see it." },
+        { q: "How much is the fine for driving into a German Umweltzone without a sticker?", a: "A fixed penalty in the region of 80 to 100 euros as of 2026, and foreign-registered cars are not exempt. In a rental it reaches you later through the rental company with an added admin fee. The sticker itself is a one-off of roughly 5 to 15 euros." },
+        { q: "Do US drivers need an International Driving Permit in Germany?", a: "Carry one. Your US license is the document that authorises you to drive and the IDP is its standardised translation, which a rental desk or a police officer may ask to see. It is cheap, valid for a year, and must be obtained in the US before you travel." }
+      ],
+      sources: {
+        links: [
+          { label: "German Embassy London: the official explanation of environmental zones, the windscreen sticker and the rule that foreign vehicles must comply", url: "https://uk.diplo.de/uk-en/02/a-z/environmental-zones-2487904", type: "gov" },
+          { label: "visitBerlin: the city's official page on Berlin's environmental zone, including where visitors can buy the sticker", url: "https://www.visitberlin.de/en/berlin-environmental-zone", type: "official" }
+        ],
+        judgment: "The sticker requirement and the nationwide validity come from official German sources. The fine is reported as a fixed penalty but published figures vary between 80 and 100 euros, and sticker prices vary by issuer, so both are given as ranges rather than exact amounts. Check the specific city if you are driving a diesel. Checked July 2026."
+      }
     }
   ]
 };

@@ -702,6 +702,67 @@ export default {
         ],
         judgment: "Toll rates, the Crit'Air fine and parking penalties are current for 2026 but vary by route, city and company, and ZFE rules can change, so treat the figures as typical ranges and confirm your car's Crit'Air sticker and the all-in price at pickup. The steady advice is to budget tolls, confirm the sticker, and cover the insurance excess before the counter. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Biggest cost trap", v: "The unofficial driver at arrivals" },
+        { k: "Airport taxis", v: "Official flat fares, posted at the rank" },
+        { k: "Watch for", v: "The gold ring, the bracelet, the clipboard" },
+        { k: "Rule of thumb", v: "Only the queue outside is real" }
+      ],
+      live: true,
+      topic: "scams",
+      caution: "medium",
+      title: "Common money scams in France, and what they cost you (2026) | True Trip Costs",
+      description: "The money traps that cost visitors in Paris and beyond: unofficial drivers at the airport, the gold-ring and bracelet setups, ticket-machine helpers in the Metro, and the dollar-conversion push. Checked July 2026.",
+      h1: "Common money scams in France, and what they cost you",
+      lede: "Paris has a small, well-rehearsed repertoire of money tricks, and most of them are performed on the same handful of streets. They rely on your politeness rather than any threat, and each one has a tell you can learn in a sentence.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "The most expensive one happens before you leave the airport: a <b>driver who approaches you inside the terminal</b> offering a taxi, at several times the official price. Paris sets <b>official flat fares</b> from Charles de Gaulle and Orly to the Right and Left Banks, posted at the rank, so <b>only join the marked queue outside</b>. In the city, the recurring plays are the <b>gold ring</b> found at your feet, a <b>friendship bracelet</b> tied on at Montmartre, a <b>petition or clipboard</b> at your chest, and the <b>three-card game</b> near the big sights. On card terminals, <b>choose euros, not dollars</b>. And remember that <b>service is already included</b> in a French bill, so a tip line is optional, not owed.",
+      sections: [
+        {
+          h: "Arriving: the only taxi queue that counts",
+          icon: "taxi",
+          key: { fig: "Official flat fare", tag: "Posted at the rank", text: "Paris fixes the fare between the airports and each bank of the Seine, and the figures are posted at the official rank. Anyone offering a ride inside the terminal is outside that system.", tone: "amber" },
+          p: [
+            "Paris sets <b>official flat fares</b> between <b>Charles de Gaulle (CDG)</b> or <b>Orly (ORY)</b> and the city, priced differently for the <b>Right Bank and the Left Bank</b>, covering the whole car regardless of passengers or luggage. The figures are <b>posted at the official taxi rank</b> and are the ones to work from, since they are adjusted periodically and any number you read months in advance may be stale. Ask for the flat fare by name, and expect to pay by card.",
+            "The costly mistake is accepting a ride from <b>someone who approaches you inside the terminal or at baggage claim</b>. Licensed taxis do not tout for business indoors, and the rides sold that way routinely run several times the official fare, sometimes with a payment terminal that produces a surprise total. <b>Walk out to the marked rank</b>, or pre-book a licensed car and match the plate. The <b>RER B train</b> and the <b>Roissybus</b> are far cheaper again if you are travelling light."
+          ]
+        },
+        {
+          h: "The Paris street repertoire",
+          icon: "alert",
+          key: { fig: "Three tricks", tag: "Ring, bracelet, clipboard", text: "A gold ring found at your feet, a bracelet tied onto your wrist at Montmartre, and a petition pushed at your chest. Two want a payment, one wants your pockets.", tone: "amber" },
+          p: [
+            "Three setups account for most of what visitors experience. The <b>gold ring</b>: someone picks up a ring near you, insists it must be yours, and once you engage tries to sell it to you as gold. The <b>friendship bracelet</b> on the steps below Sacre-Coeur in Montmartre: a man begins weaving a thread onto your wrist while chatting, then asks for payment, and the pressure is social rather than physical. The <b>petition or clipboard</b>, usually presented by a group of young people: while your hands and eyes are on the paper, your pockets are not. There is also the <b>three-card or shell game</b> near the tourist bridges, which is not a game you can win, and the occasional <b>bracelet or trinket seller</b> who does not take no for an answer until you keep walking.",
+            "The response to all of them is the same and it feels slightly rude, which is exactly why they work: <b>do not take the object, do not stop walking, and do not engage</b>. Keep your wallet and phone somewhere a bump cannot reach, and treat the busy approaches to the Eiffel Tower, Sacre-Coeur, the Louvre and the Gare du Nord as the places to be most deliberate. None of this is dangerous; it is all designed to cost you a wallet or a payment you did not intend to make."
+          ]
+        },
+        {
+          h: "Ticket machines, terminals, and the tip line",
+          icon: "card",
+          key: { fig: "Choose euros", tag: "And no tip is owed", text: "Decline any offer to charge your card in dollars. And service is already included in a French bill, so a suggested tip on a terminal is a choice, not a debt.", tone: "teal" },
+          p: [
+            "At <b>Metro and rail ticket machines</b>, be wary of a stranger who offers to help you buy a ticket, or who sells you one directly: paper tickets are being phased out in favour of contactless and the <b>Navigo</b> system, and a ticket bought from a person on the concourse can be used, invalid, or simply overpriced. Buy from the <b>machine, a staffed window or the official app</b>. At the machine, cover your PIN.",
+            "On card terminals, <b>choose euros rather than dollars</b>: the dollar option is dynamic currency conversion and it costs a few percent at the machine's own rate. And a specifically French point worth knowing, because it saves real money over a trip: <b>service is already included</b> in restaurant and cafe prices by law, so a tip is a small optional gesture rather than the 15 to 20 percent you would add at home. If a terminal suggests a percentage, that is a prompt, not a bill. See <a href='/france/tipping'>tipping in France</a>. This guide is written for US travelers departing the US. For more, see <a href='/france/cash-or-card'>cash or card in France</a>, <a href='/france/taxis-and-apps'>taxis and apps in France</a>, and the <a href='/france'>France money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is a taxi from Charles de Gaulle into Paris?", a: "Paris sets official flat fares from CDG and Orly, priced differently for the Right Bank and the Left Bank and covering the whole car. The current figures are posted at the official rank, which is where to check them, since they are adjusted periodically. Never take a ride from someone approaching you inside the terminal." },
+        { q: "What is the gold ring scam in Paris?", a: "Someone picks up a ring near your feet, insists it must be yours, and once you engage tries to sell it to you as gold. The answer is not to take it and not to stop walking." },
+        { q: "Do I need to tip in France?", a: "Service is already included in restaurant and cafe prices by law, so a tip is a small optional gesture rather than an obligation. A suggested percentage on a card terminal is a prompt, not a debt." },
+        { q: "Is it safe to buy a Metro ticket from someone at the station?", a: "No. Buy from a machine, a staffed window or the official app. Tickets sold by people on the concourse can be already used, invalid or simply overpriced, and the offer of help at a machine is often the setup for something else." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: France country information, including crime and the scams reported around Paris landmarks", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/France.html", type: "gov" },
+          { label: "Paris je t'aime: the official Paris tourist office's visitor information", url: "https://parisjetaime.com/eng/", type: "official" }
+        ],
+        judgment: "We have deliberately not printed the airport flat fares, because Paris adjusts them and the posted figure at the rank is the only one that is current on the day you land. The street repertoire is our own read from recent reports and it changes location more often than it changes method. Checked July 2026."
+      }
     }
   ]
 };

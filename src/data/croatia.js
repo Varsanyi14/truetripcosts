@@ -452,6 +452,67 @@ export default {
         ],
         judgment: "Croatia applies the shared EU pet-entry framework, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The local registration and any breed rules vary, so we point you to the official pages and dated this July 2026."
       }
+    },
+    {
+      slug: "driving-and-tolls",
+      glance: [
+        { k: "Vignette", v: "None, Croatia charges by distance" },
+        { k: "How", v: "Ticket in, pay at the exit" },
+        { k: "Paying", v: "Euro cash, card or an ENC device" },
+        { k: "Coming change", v: "Free-flow tolling from March 2027" }
+      ],
+      live: true,
+      topic: "driving",
+      caution: "medium",
+      title: "Driving in Croatia: tolls, no vignette, and the 2027 change (2026) | True Trip Costs",
+      description: "How Croatian motorway tolls work for a US visitor in 2026: no vignette, a ticket-and-pay-at-the-exit system in euros, several operators on one trip, and the free-flow switch scheduled for 2027. Checked July 2026.",
+      h1: "Driving in Croatia: tolls and the 2027 change",
+      lede: "Croatia is refreshingly simple to drive: there is no vignette to buy, and you pay for exactly the distance you use. The two things worth knowing are that a single trip can involve several toll operators, and that the whole system is due to change in 2027.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-30",
+      answer: "Croatia has <b>no motorway vignette</b>. You pay by <b>distance</b>: take a ticket at the entry plaza, hand it in at the exit, and pay for the stretch you drove. Payment is by <b>euro cash, card or an ENC electronic device</b>, and tariffs include VAT. A long run like <b>Zagreb to Split costs roughly 30 euros</b> for a car as of 2026, so use the operator's calculator to price your route. One quirk: the network is run by <b>several operators</b>, so a multi-leg trip pays each one separately. And a real change is scheduled: the barrier system stays for now, with a <b>nationwide free-flow system due on 1 March 2027</b>, so confirm the position before a 2027 trip.",
+      sections: [
+        {
+          h: "No vignette: ticket in, pay at the exit",
+          icon: "wheel",
+          key: { fig: "By distance", tag: "Not by time", text: "Unlike Slovenia, Austria or Switzerland, Croatia sells no time-based vignette. You take a ticket entering the motorway and pay at the exit for the distance driven.", tone: "teal" },
+          p: [
+            "If you have driven in Slovenia, Austria or Switzerland you will be looking for a sticker to buy at the border. In Croatia there is <b>nothing to buy in advance</b>. The motorways run a <b>distance-based toll</b>: on most of the network you take a <b>ticket at the entry plaza</b>, keep it somewhere you will not lose it, and <b>hand it in at the exit</b>, where the toll is calculated from the two points and your vehicle category. Some shorter stretches use a single plaza that is both entry and exit, where you simply pay as you pass.",
+            "At the booth you can pay with <b>euro cash</b>, since Croatia has been on the euro since 2023, with a <b>card</b>, or with an <b>ENC electronic device</b>. Tariffs are <b>VAT inclusive</b>, and vehicle category depends on height and axles, which matters if you have rented something tall or fitted a roof box, since that can move you into a higher band. As a sense of scale, a full <b>Zagreb to Split</b> run is <b>roughly 30 euros</b> for an ordinary car as of 2026. Rates are revised periodically, so price your actual route on the motorway operator's own calculator rather than trusting a figure from a blog."
+          ]
+        },
+        {
+          h: "Several operators, and the change coming in 2027",
+          icon: "calendar",
+          key: { fig: "1 March 2027", tag: "Free-flow tolling", text: "Croatia plans to replace barriers with a nationwide free-flow system read from plates and devices, scheduled for 1 March 2027. Through 2026 the ticket-and-booth system still applies.", tone: "amber" },
+          p: [
+            "The network is not one company. <b>Hrvatske autoceste (HAC)</b> runs most of it, including the A1 down the Dalmatian coast, while <b>Bina Istra</b> operates the Istrian motorways, <b>AZM</b> the A2 towards Slovenia and <b>ARZ</b> the Zagreb to Rijeka corridor. The practical effect is that a <b>multi-leg trip pays each operator separately</b>, so Istria to Split can mean more than one toll transaction, and some tunnels are charged on their own. Budget for the total route rather than a single number.",
+            "The <b>ENC device</b> is optional for cars. It gives you the electronic lanes and a discount, but the size of the discount depends on the account type and it needs registration and a deposit, so it earns its keep on a long or repeated trip rather than a week's holiday. Most <b>rental cars do not come with one</b>, so assume you are paying at the booth. Looking ahead: Croatia is <b>replacing the barriers with a nationwide free-flow system</b>, read from number plates and devices, currently scheduled for <b>1 March 2027</b>. Timelines here have moved before, and through 2026 the ticket-and-booth system is what you will meet, so <b>check the current position</b> if you are planning a 2027 drive."
+          ]
+        },
+        {
+          h: "The other costs of a Croatian road trip",
+          icon: "receipt",
+          key: { fig: "Ask first", tag: "Before crossing a border", text: "Taking a rental into Bosnia or Montenegro usually needs the company's permission and extra cover, arranged in advance. Turning up at the border without it is where a plan falls apart.", tone: "amber" },
+          p: [
+            "Three costs sit outside the toll booth. <b>Ferries</b> to the islands are separate and, at smaller ports, cash is the easy way to pay. <b>Parking</b> in the coastal towns is metered and often wants coins, which is one of the reasons to keep euros on you here. And the <b>coastal road</b>, the old Adriatic Highway, is toll-free and beautiful and much slower than the motorway, which makes the toll a genuine choice rather than a tax: on a long transfer day the motorway usually wins, on a scenic day it does not.",
+            "If your route crosses a border, plan it before you collect the car. Taking a rental into <b>Bosnia and Herzegovina or Montenegro</b> normally requires the rental company's <b>permission and additional cross-border cover</b>, arranged in advance and usually for a fee, and the paperwork is checked at the frontier. Note that the <b>Peljesac Bridge</b> now carries the coastal route past the Bosnian corridor, so the Dubrovnik drive no longer requires those two crossings at all. Finally, carry an <b>International Driving Permit</b> with your US license: it is the standardised translation, cheap, valid for a year, and only obtainable in the US before you travel. Camera-caught fines reach you later through the rental company with an admin fee. This guide is written for US travelers departing the US. For more, see <a href='/croatia/cash-or-card'>cash or card in Croatia</a>, <a href='/croatia/taxis-and-apps'>taxis and apps in Croatia</a>, and the <a href='/croatia'>Croatia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does Croatia have a motorway vignette?", a: "No. Croatia charges by distance rather than by time, so there is nothing to buy before you enter. You take a ticket at the motorway entry plaza and pay at the exit for the stretch you drove." },
+        { q: "How much is the toll from Zagreb to Split?", a: "Roughly 30 euros for an ordinary car as of 2026, though rates are revised periodically and your exact entry and exit points change the figure. Price your route on the motorway operator's own calculator before you go." },
+        { q: "Can I pay Croatian tolls by card?", a: "Yes. Toll plazas take euro cash, most international cards, or an ENC electronic device. The ENC gives you the faster lanes and a discount but needs registration and a deposit, and most rental cars do not come with one." },
+        { q: "Can I take my Croatian rental car into Bosnia or Montenegro?", a: "Usually only with the rental company's permission and extra cross-border cover, arranged in advance and normally for a fee, with the paperwork checked at the border. Note that the Peljesac Bridge means the drive to Dubrovnik no longer crosses Bosnia at all." }
+      ],
+      sources: {
+        links: [
+          { label: "Hrvatske autoceste: the motorway operator's official toll page, explaining distance-based charging, the open and closed systems and accepted payment methods", url: "https://www.hac.hr/en/toll", type: "official" },
+          { label: "Croatian National Tourist Board: official visitor information for driving and travel in Croatia", url: "https://croatia.hr/en-gb", type: "gov" }
+        ],
+        judgment: "The distance-based system and the payment methods come from the operator's own page. The Zagreb to Split figure is an approximation from recent published tariffs, ENC discounts vary by account type, and the 1 March 2027 free-flow date is a scheduled change that has already slipped once, so treat it as planned rather than certain. Checked July 2026."
+      }
     }
   ]
 };
