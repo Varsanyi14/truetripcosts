@@ -84,6 +84,29 @@
   .pickcta{display:flex;flex-wrap:wrap;align-items:center;gap:9px 12px;margin-top:12px}
   .pickcta .tg{margin:0}
   .ins-foot .pickcta{margin-top:0}
+
+  /* Utility evaluation box (src/components/UtilityBox.astro). The single container
+     every commercial recommendation sits in, so it is findable and reads as an
+     evaluated pick rather than an ad. Same restraint as .recentchange below: white
+     card, hairline border, one soft teal left accent. No new colors, no new radius,
+     and .pickbtn / .pickcta / .tg are reused untouched. Global rather than scoped so
+     it also styles prose slotted in from the caller. */
+  .utilbox{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--radius);padding:16px 20px;margin:26px 0;box-shadow:var(--shadow);max-width:66ch}
+  .utilbox-k{display:block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 6px}
+  .utilbox-body p{font-size:14.5px;color:#3B4A46;line-height:1.6;margin:0 0 8px}
+  .utilbox-body p:last-child{margin-bottom:0}
+  .utilbox-body b{font-weight:600;color:var(--ink)}
+  /* .pickbtn is nowrap by default, which is right for the short labels elsewhere on
+     the site. In here the labels carry a country name ("Cover a rental in Dominican
+     Republic with RentalCover") and would overflow a narrow phone and force a
+     sideways scroll, so inside the box the label is allowed to wrap. On desktop the
+     labels fit one line anyway, so this changes nothing there. */
+  .utilbox .pickbtn{white-space:normal;text-align:left;line-height:1.25;max-width:100%}
+  @media(max-width:560px){
+    .utilbox{padding:14px 16px;margin:22px 0;border-radius:12px}
+    .utilbox-body p{font-size:15px}
+    .utilbox .pickbtn{min-height:44px;padding:10px 16px}
+  }
   .lab-ico-row{display:flex;align-items:center;gap:7px}
   .lab-ico-row svg{width:16px;height:16px;flex:none}
   /* Currency anchor panel: a dated mid-market snapshot, refreshed daily via

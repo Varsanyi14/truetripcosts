@@ -1,0 +1,36 @@
+---
+// The utility evaluation box: one calm, consistent container for the commercial
+// recommendations (eSIM, insurance, rental excess cover, paid visa service).
+//
+// Why this exists: those callouts were honest but they rendered as plain
+// <section class="sp-sec"> blocks, visually identical to every other content
+// section, so a reader who actually WANTED to act could not find them, and they
+// did not read as an evaluated pick. This gives them a bordered card of their own,
+// following the same house pattern as .recentchange in global.css.
+//
+// The structure is fixed on purpose, eyebrow, then the honest do-you-even-need-it
+// prose, then the button, then the disclosure. The component always renders the
+// disclosure, so a future callout cannot ship without one, and `earn` defaults to
+// true so a forgotten prop yields the stronger disclosure, never the weaker one.
+//
+// Styles live in global.css, not in a scoped <style> here, because the prose is
+// passed in through <slot /> and slotted content carries the CALLER's scope id,
+// so a scoped rule in this file would not reach it.
+import NewTab from './NewTab.astro';
+
+const {
+  href,                    // outbound affiliate URL, required
+  label,                   // button text, e.g. "Get an eSIM for Japan"
+  eyebrow = 'Worth it?',   // uppercased by CSS, kept calm and question-shaped
+  earn = true,             // true, "we may earn a commission". false, "we earn nothing"
+} = Astro.props;
+---
+
+<aside class="utilbox">
+  <p class="utilbox-k">{eyebrow}</p>
+  <div class="utilbox-body"><slot /></div>
+  <span class="pickcta">
+    <a class="pickbtn" href={href} target="_blank" rel="noopener sponsored">{label}<NewTab /></a>
+    <span class={earn ? 'tg earn' : 'tg free'}>{earn ? 'we may earn a commission' : 'we earn nothing'}</span>
+  </span>
+</aside>

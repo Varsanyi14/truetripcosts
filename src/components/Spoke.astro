@@ -8,6 +8,7 @@
 import { regionOf, REGIONS } from '../data/hubs.js';
 import NewTab from './NewTab.astro';
 import Symbol from './Symbol.astro';
+import UtilityBox from './UtilityBox.astro';
 import { topicIcon, caution } from '../data/topics.js';
 import { visaLink, esimLink, affiliate } from '../data/links.js';
 const { country, spoke } = Astro.props;
@@ -144,6 +145,7 @@ const showKeyPoints = ANSWER_MODE === 'B' && !answerHasFragment && answerKeyPoin
       <p class="sp-links"><a href={spoke.official.url} target="_blank" rel="noopener" class="sp-route-link">{spoke.official.label}<NewTab /></a> <span class="tg free">we earn nothing</span></p>
       {expediterUrl && (
         <div class="sp-alt">
+          <span class="utilbox-k">Worth it?</span>
           {spoke.expediterNote && <span class="sp-alt-tx" set:html={spoke.expediterNote}></span>}
           <div class="sp-alt-cta">
             <a href={expediterUrl} target="_blank" rel="noopener sponsored" class="pickbtn">{spoke.expediterLabel || 'Use a private service'}<NewTab /></a>
@@ -184,37 +186,25 @@ const showKeyPoints = ANSWER_MODE === 'B' && !answerHasFragment && answerKeyPoin
   ))}
 
   {esimUrl && (
-    <section class="sp-sec">
-      <p style="font-size:14.5px;margin:0 0 6px">If an eSIM is the cheaper, simpler call for {country.name}, {esimBrand ? `${esimBrand} covers it.` : `there is a tracked eSIM option.`}</p>
-      <span class="sp-alt-cta">
-        <a class="pickbtn" href={esimUrl} target="_blank" rel="noopener sponsored">{esimBrand ? `Get your ${esimBrand} eSIM for ${country.name}` : `Get an eSIM for ${country.name}`}<NewTab /></a>
-        <span class="tg earn">we may earn a commission</span>
-      </span>
-    </section>
+    <UtilityBox href={esimUrl} label={esimBrand ? `Get your ${esimBrand} eSIM for ${country.name}` : `Get an eSIM for ${country.name}`}>
+      <p>If an eSIM is the cheaper, simpler call for {country.name}, {esimBrand ? `${esimBrand} covers it.` : `there is a tracked eSIM option.`}</p>
+    </UtilityBox>
   )}
 
   {insuranceUrl && (
-    <section class="sp-sec">
+    <UtilityBox href={insuranceUrl} label={`See ${insuranceBrand} cover for ${country.name}`}>
       {spoke.topic === 'pets' ? (
-        <p style="font-size:14.5px;margin:0 0 6px">If you are taking a pet to {country.name} for a trip rather than moving for good, the expensive surprise is a vet bill abroad. {insuranceBrand} sells travel insurance with an optional pet add-on that covers veterinary fees for a pet travelling with you, plus some kennel costs if your own return is delayed. Be clear on what it is not: it is a travel policy, so it does not cover a permanent relocation, loss or injury during pet shipping, or quarantine fees. Nothing on the market covers mandatory quarantine.</p>
+        <p>If you are taking a pet to {country.name} for a trip rather than moving for good, the expensive surprise is a vet bill abroad. {insuranceBrand} sells travel insurance with an optional pet add-on that covers veterinary fees for a pet travelling with you, plus some kennel costs if your own return is delayed. Be clear on what it is not: it is a travel policy, so it does not cover a permanent relocation, loss or injury during pet shipping, or quarantine fees. Nothing on the market covers mandatory quarantine.</p>
       ) : (
-        <p style="font-size:14.5px;margin:0 0 6px">Routine care in {country.name} is cheap enough to pay for out of pocket. The reason to carry travel insurance is the rare, expensive emergency, a hospital deposit, surgery, or a flight home, where the bill is the part that hurts. {insuranceBrand} covers trip medical and evacuation.</p>
+        <p>Routine care in {country.name} is cheap enough to pay for out of pocket. The reason to carry travel insurance is the rare, expensive emergency, a hospital deposit, surgery, or a flight home, where the bill is the part that hurts. {insuranceBrand} covers trip medical and evacuation.</p>
       )}
-      <span class="sp-alt-cta">
-        <a class="pickbtn" href={insuranceUrl} target="_blank" rel="noopener sponsored">See {insuranceBrand} cover for {country.name}<NewTab /></a>
-        <span class="tg earn">we may earn a commission</span>
-      </span>
-    </section>
+    </UtilityBox>
   )}
 
   {carExcessUrl && (
-    <section class="sp-sec">
-      <p style="font-size:14.5px;margin:0 0 6px">The mandatory liability cover is non-negotiable, but the counter's collision and theft upsell is where you can save. If your card does not cover the car in {country.name}, a standalone excess policy bought ahead is usually cheaper, and often covers parts the counter waiver leaves out, like tires, glass and the underbody. {carExcessBrand} covers rentals in {country.name}.</p>
-      <span class="sp-alt-cta">
-        <a class="pickbtn" href={carExcessUrl} target="_blank" rel="noopener sponsored">Cover a rental in {country.name} with {carExcessBrand}<NewTab /></a>
-        <span class="tg earn">we may earn a commission</span>
-      </span>
-    </section>
+    <UtilityBox href={carExcessUrl} label={`Cover a rental in ${country.name} with ${carExcessBrand}`}>
+      <p>The mandatory liability cover is non-negotiable, but the counter's collision and theft upsell is where you can save. If your card does not cover the car in {country.name}, a standalone excess policy bought ahead is usually cheaper, and often covers parts the counter waiver leaves out, like tires, glass and the underbody. {carExcessBrand} covers rentals in {country.name}.</p>
+    </UtilityBox>
   )}
 
   {faqs.length > 0 && (
