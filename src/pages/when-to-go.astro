@@ -1,0 +1,337 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import CompareByRegion from '../components/CompareByRegion.astro';
+import { seasons, seasonsChecked } from '../data/seasons.js';
+
+// Everything reads from seasons.js live. Nothing is re-typed here, and nothing is
+// counted by hand. The US-traveler badge arrives through Hero, which renders it.
+const rows = seasons;
+
+const REGION_ORDER = ['Europe', 'Asia', 'Americas', 'Middle East', 'Africa', 'Oceania'];
+const groups = REGION_ORDER
+  .map(key => ({
+    key,
+    id: 'r-' + key.toLowerCase().replace(/\s+/g, '-'),
+    items: rows.filter(r => r.region === key).sort((a, b) => a.country.localeCompare(b.country))
+  }))
+  .filter(g => g.items.length);
+
+const wellDocumented = rows.filter(r => r.confidence === 'high').length;
+const partlyInferred = rows.filter(r => r.confidence === 'medium').length;
+const flagged = rows.filter(r => r.confidence === 'low');
+
+const CONF_LABEL = { high: 'High', medium: 'Medium', low: 'Low' };
+const CONF_TITLE = {
+  high: 'Well documented pattern, widely agreed',
+  medium: 'Seasons are clear, the money side is partly inference',
+  low: 'Pattern is not documented well enough to state plainly'
+};
+
+function niceDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso + 'T00:00:00');
+  if (isNaN(d.getTime())) return iso;
+  return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long' });
+}
+const checkedLabel = niceDate(seasonsChecked);
+
+const title = 'When to go: cheaper and pricier months by country';
+const description = 'Which months tend to be busy and pricey in ' + rows.length +
+  ' countries, and which are quieter and cheaper. Seasons and named windows, not invented price charts.';
+---
+
+<Base ogImage="/og/when-to-go.jpg" title={title} description={description}>
+  <Nav />
+  <main class="wrap wtg">
+    <Hero
+      img="/hero/when-to-go.jpg"
+      alt="Illustration of a wall calendar beside a packed bag and a folded map, for a guide to when travel gets busy and expensive"
+      title="When is it cheaper, and when does it get pricey?"
+      stamp={"Checked " + checkedLabel}
+      slim />
+
+    <p class="wtg-lede">
+      The month you pick moves your budget more than almost anything else you decide. Here is when each of
+      our {rows.length} countries tends to fill up and firm up on price, when it tends to go quiet and cheap,
+      and what is actually driving the difference.
+    </p>
+
+    <div class="wtg-honest">
+      <p class="wtg-honest-h">Why there is no price chart on this page</p>
+      <p>
+        Most travel sites hand you a month-by-month price chart: a tidy row of bars, July taller than March,
+        one figure per month. Those numbers are largely invented. Real fares and room rates swing by city, by
+        route, by hotel tier, by how far ahead you book and by the year, so there is no honest single answer
+        to what a country costs in July. Filling twelve months for {rows.length} countries would mean making
+        up hundreds of numbers, and we are not going to do that.
+      </p>
+      <p>
+        What we can tell you truthfully is which windows tend to be busy and expensive, which tend to be
+        quieter and cheaper, and the real thing behind each one: a school holiday, a monsoon, a festival, a
+        ski season, a fixed holiday week. That part holds up. The season is the honest signal, not the
+        number. <a href="/methodology">More on how we decide what to chart</a>.
+      </p>
+    </div>
+
+    <div class="wtg-find">
+      <label class="wtg-find-lab" for="wtg-filter">Going somewhere specific?</label>
+      <input
+        type="text"
+        id="wtg-filter"
+        class="wtg-find-in"
+        placeholder="Type a country, like Japan"
+        aria-label="Find a country in the seasonality comparison"
+        autocomplete="off"
+      />
+    </div>
+
+    <section class="wtg-list" aria-label="When each country is busy and when it is cheaper">
+      {groups.map(g => (
+        <div class="wtg-group" data-group={g.key}>
+          <h2 class="wtg-group-h" id={g.id}>{g.key}</h2>
+          <div class="wtg-head" aria-hidden="true">
+            <span>Country</span>
+            <span>Busy and pricey</span>
+            <span>Cheaper and quieter</span>
+            <span>What drives the peak</span>
+            <span class="wtg-head-c">Confidence</span>
+          </div>
+          {g.items.map(r => (
+            <details class="wtg-row" data-name={r.country.toLowerCase()}>
+              <summary class="wtg-sum">
+                <span class="wtg-grid">
+                  <span class="wtg-cty">{r.country}</span>
+                  <span class="wtg-cell" data-lab="Busy and pricey">{r.peak}</span>
+                  <span class="wtg-cell" data-lab="Cheaper and quieter">{r.cheapestWindow}</span>
+                  <span class="wtg-cell wtg-drv" data-lab="What drives the peak">{r.peakDriver}</span>
+                  <span class="wtg-cell wtg-confcell" data-lab="Confidence">
+                    <span class={"wc wc-" + r.confidence} title={CONF_TITLE[r.confidence]}>
+                      {CONF_LABEL[r.confidence]}
+                      {r.confidence !== 'high' && <i class="wc-dot" aria-hidden="true">&#8226;</i>}
+                    </span>
+                  </span>
+                  <span class="wtg-chev" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>
+                  </span>
+                </span>
+              </summary>
+              <div class="wtg-body">
+                <dl class="wtg-dl">
+                  <div><dt>Peak</dt><dd>{r.peak}</dd></div>
+                  <div><dt>Shoulder</dt><dd>{r.shoulder}</dd></div>
+                  <div><dt>Quietest</dt><dd>{r.off}</dd></div>
+                  <div><dt>Weather to know</dt><dd>{r.weatherNote}</dd></div>
+                  <div><dt>Costliest weeks</dt><dd>{r.avoidIfBudget}</dd></div>
+                </dl>
+                <p class="wtg-note">{r.note}</p>
+                <a class="wtg-guide" href={"/" + r.slug}>The {r.country} money guide
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </a>
+              </div>
+            </details>
+          ))}
+        </div>
+      ))}
+      <p class="wtg-empty" id="wtg-empty" hidden>No country by that name here yet. Try another spelling, or browse the list above.</p>
+    </section>
+
+    <p class="wtg-legend">
+      <b>Reading this.</b> Tap a country for its shoulder months, the weather behind the season and the catch
+      worth knowing. Confidence is about how firmly the pattern is documented, not how strong the season is.
+      Of these, {wellDocumented} rows rest on well documented patterns, {partlyInferred} are marked medium
+      because the seasons are clear but the money side is partly our own inference, and
+      {flagged.length === 1
+        ? <span> one, {flagged[0].country}, is marked low because the pattern is not documented well enough to state plainly.</span>
+        : <span> {flagged.length} are marked low because the pattern is not documented well enough to state plainly.</span>}
+    </p>
+
+    <section class="wtg-more" aria-labelledby="knowmore">
+      <h2 id="knowmore">What a monthly chart would hide</h2>
+
+      <div class="wm">
+        <h3>Some countries run on two clocks at once</h3>
+        <p>
+          Sri Lanka has two monsoons hitting opposite coasts, so the south is at its best from December and
+          the east from April. Thailand does the same on a smaller scale: when Phuket is wet, Koh Samui is
+          often fine. Australia and South Africa each have two peaks pulling against each other, one on the
+          coast in the southern summer and one inland or up north in the southern winter. India flips the
+          whole map with the monsoon, and Brazil's beaches and its wildlife seasons are direct opposites. A
+          single national figure for any of them would be an average of two contradictory things.
+        </p>
+      </div>
+
+      <div class="wm">
+        <h3>Sometimes the cheapest month is when it is shut</h3>
+        <p>
+          In Greece and on the Turkish coast, much of the island and resort infrastructure closes outside
+          roughly April to October, and ferry schedules thin out with it. Switzerland and Austria have real
+          gaps between their summer and ski seasons, in late spring and November, when lifts and mountain
+          hotels shut for maintenance. Iceland's highland roads open only in summer. Those weeks are quiet
+          and cheap for an honest reason, and the trade is access rather than money.
+        </p>
+      </div>
+
+      <div class="wm">
+        <h3>In the Caribbean, cheap and risky are the same weeks</h3>
+        <p>
+          The Bahamas, Jamaica, the Dominican Republic and Mexico's coasts all bottom out in September and
+          October, which is the peak of the Atlantic hurricane season. That is not a bargain hiding in plain
+          sight, it is the market pricing a risk. If you take that window, book refundable and watch the
+          forecast. Aruba sits south of the main belt, which lowers the risk rather than removing it, and
+          inland Mexico sidesteps the question entirely.
+        </p>
+      </div>
+
+      <div class="wm">
+        <h3>Sometimes it is not the season at all, it is one week</h3>
+        <p>
+          Oktoberfest empties Munich's hotel supply and does nothing to Hamburg. A trade fair does the same
+          to Frankfurt or Hannover for a few days. Edinburgh in August is a whole city on festival pricing
+          while London barely notices. Singapore has almost no weather season, so what moves a room rate
+          there is whether a race or a convention is in town. In every one of those cases, the useful
+          question is not which month, it is which week.
+        </p>
+      </div>
+
+      <div class="wm">
+        <h3>The holidays that matter are often not yours</h3>
+        <p>
+          Holy Week fills beaches in Mexico, the Philippines and the Dominican Republic. Chinese New Year and
+          Golden Week move so many people that trains, flights and sights fill regardless of foreign demand.
+          Tet closes family businesses across Vietnam. Ferragosto empties Italian cities and fills the coast.
+          Several of these move each year, and Ramadan and Eid shift earlier annually against the Western
+          calendar, so the only reliable move is to check the date for your own travel year.
+        </p>
+      </div>
+    </section>
+
+    <p class="wtg-foot">
+      Compiled by the True Trip Costs desk and checked {checkedLabel}. This is timing guidance, not a price
+      quote, and we have deliberately not put a number on any of it. The cheapest month for you depends on
+      your route, your dates and how far ahead you book, so use the season to choose a window and then check
+      real fares for your own days. For what a day actually costs once you are there, see the
+      <a href="/cost-comparison">cost of a day compared</a>, and each country name above opens its full money
+      guide.
+    </p>
+    <CompareByRegion />
+  </main>
+  <Footer />
+
+  <style>
+    .wtg{max-width:880px}
+    .wtg-lede{font-size:17.5px;color:#3B4A46;line-height:1.55;max-width:640px;margin:22px 0 20px}
+
+    /* Part A: the absence of a fake chart, made visible. */
+    .wtg-honest{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:16px 20px;margin:0 0 26px;max-width:720px;box-shadow:var(--shadow)}
+    .wtg-honest-h{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 8px}
+    .wtg-honest p:not(.wtg-honest-h){font-size:14.5px;color:#3B4A46;line-height:1.6;margin:0 0 10px}
+    .wtg-honest p:last-child{margin-bottom:0}
+    .wtg-honest a{color:var(--teal-deep);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+
+    .wtg-find{margin:0 0 22px;max-width:420px}
+    .wtg-find-lab{display:block;font-size:12.5px;font-weight:700;color:var(--ink);margin:0 0 6px}
+    .wtg-find-in{width:100%;box-sizing:border-box;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px;box-shadow:var(--shadow)}
+    .wtg-find-in:focus{outline:2px solid var(--amber);outline-offset:1px;border-color:var(--amber)}
+
+    .wtg-list{padding:0;border-top:none;margin-top:0}
+    .wtg-group{margin:0 0 26px}
+    .wtg-group.is-hidden{display:none}
+    .wtg-group-h{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:-.01em;margin:0 0 8px}
+
+    /* Column key, repeated per region so it is never far away when scrolling. */
+    .wtg-head{display:grid;grid-template-columns:150px 1.15fr 1.15fr 1.5fr 108px;gap:14px;align-items:end;padding:0 14px 6px;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+    .wtg-head-c{text-align:right}
+
+    .wtg-row{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);margin:0 0 8px}
+    .wtg-row.is-hidden{display:none}
+    .wtg-row[open]{border-color:rgba(14,122,95,.35)}
+
+    .wtg-sum{display:block;padding:13px 14px;cursor:pointer;list-style:none;border-radius:12px}
+    .wtg-sum::-webkit-details-marker{display:none}
+    .wtg-grid{display:grid;grid-template-columns:150px 1.15fr 1.15fr 1.5fr 78px 16px;gap:14px;align-items:start}
+    .wtg-sum:hover{background:#FBFBF9}
+    .wtg-sum:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+    .wtg-cty{font-size:15px;font-weight:700;color:var(--ink);line-height:1.3}
+    .wtg-cell{font-size:13.5px;color:#3B4A46;line-height:1.45}
+    .wtg-drv{color:var(--muted)}
+    .wtg-confcell{justify-self:end;text-align:right}
+    .wtg-chev{color:var(--muted);display:flex;justify-content:flex-end;padding-top:3px;transition:transform .15s ease}
+    .wtg-row[open] .wtg-chev{transform:rotate(180deg)}
+
+    .wc{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600;letter-spacing:.02em;color:var(--muted);white-space:nowrap}
+    .wc-dot{font-style:normal;color:var(--teal);opacity:.85}
+    .wc-low{color:var(--amber);border:1px dashed var(--amber);border-radius:999px;padding:1px 7px}
+
+    .wtg-body{padding:2px 16px 16px;border-top:1px solid var(--line);margin:0 14px}
+    .wtg-dl{margin:12px 0 0;display:grid;gap:9px}
+    .wtg-dl>div{display:grid;grid-template-columns:132px 1fr;gap:12px;align-items:baseline}
+    .wtg-dl dt{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+    .wtg-dl dd{margin:0;font-size:14px;color:var(--ink);line-height:1.5}
+    .wtg-note{font-size:14px;color:#3B4A46;line-height:1.6;margin:13px 0 0;max-width:66ch}
+    .wtg-guide{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--teal-deep);text-decoration:none;margin:12px 0 0}
+    .wtg-guide:hover{text-decoration:underline}
+
+    .wtg-empty{font-size:14.5px;color:var(--muted);margin:6px 0 0}
+
+    .wtg-legend{font-size:13.5px;color:var(--muted);line-height:1.6;margin:14px 0 0;max-width:720px;background:var(--amber-bg);border:1px solid var(--amber);border-radius:12px;padding:13px 16px}
+    .wtg-legend b{color:var(--ink)}
+
+    .wtg-more h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,28px);letter-spacing:-.01em;margin:0 0 16px}
+    .wm{margin:0 0 22px;max-width:700px}
+    .wm h3{font-size:15.5px;font-weight:700;color:var(--ink);margin:0 0 6px}
+    .wm p{font-size:14.5px;color:var(--muted);line-height:1.6;margin:0}
+
+    .wtg-foot{font-size:13.5px;color:var(--muted);line-height:1.55;margin:30px 0 8px;max-width:700px}
+    .wtg-foot a{color:var(--teal-deep);font-weight:500}
+
+    /* Phone first. The five-column read collapses into a labeled stack, so nothing
+       is ever cut off and there is no sideways scroll to discover. */
+    @media (max-width:840px){
+      .wtg-lede{font-size:16.5px}
+      .wtg-head{display:none}
+      .wtg-sum{padding:14px 15px}
+      .wtg-grid{display:block}
+      .wtg-cty{display:block;font-size:16px;margin:0 0 2px;padding-right:22px}
+      .wtg-cell{display:block;margin:9px 0 0}
+      .wtg-cell::before{content:attr(data-lab);display:block;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:0 0 2px}
+      .wtg-confcell{justify-self:auto;text-align:left}
+      .wtg-chev{position:absolute;top:15px;right:14px}
+      .wtg-row{position:relative}
+      .wtg-body{margin:0 15px;padding:2px 0 16px}
+      .wtg-dl>div{grid-template-columns:1fr;gap:2px}
+      .wm p{font-size:14px}
+    }
+  </style>
+
+  <script is:inline>
+    (function () {
+      var input = document.getElementById('wtg-filter');
+      if (!input) return;
+      var rows = Array.prototype.slice.call(document.querySelectorAll('.wtg-row'));
+      var groups = Array.prototype.slice.call(document.querySelectorAll('.wtg-group'));
+      var empty = document.getElementById('wtg-empty');
+
+      function norm(s) {
+        return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      }
+
+      input.addEventListener('input', function () {
+        var q = norm(input.value.trim());
+        var shown = 0;
+        rows.forEach(function (row) {
+          var hit = q === '' || norm(row.getAttribute('data-name')).indexOf(q) !== -1;
+          row.classList.toggle('is-hidden', !hit);
+          if (hit) shown++;
+        });
+        groups.forEach(function (g) {
+          var any = g.querySelector('.wtg-row:not(.is-hidden)');
+          g.classList.toggle('is-hidden', !any);
+        });
+        if (empty) empty.hidden = shown !== 0;
+      });
+    })();
+  </script>
+</Base>
