@@ -91,6 +91,10 @@ const description = 'US travelers by destination country for ' + outboundYear + 
       </div>
     </section>
 
+    <p class="obpage-rel">
+      Knowing where Americans go says nothing about when to go. For that, see which months each country runs
+      <a href="/when-to-go">busy and pricey, and which run quieter and cheaper</a>.
+    </p>
     <p class="obpage-foot">
       This is the True Trip Costs desk's own compilation for {outboundYear}, each figure sourced and rated
       for confidence, checked {outboundChecked}. It is not an official single ranking, and the figures are
@@ -135,7 +139,9 @@ const description = 'US travelers by destination country for ' + outboundYear + 
     .rg-tab.is-active{background:var(--amber);border-color:var(--amber);color:#fff}
 
     .ob-empty{font-size:14.5px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0 0}
-    .obpage-foot{font-size:14px;color:var(--muted);line-height:1.55;margin:34px 0 8px;max-width:700px}
+    .obpage-rel{font-size:14.5px;color:#3B4A46;line-height:1.55;margin:34px 0 0;max-width:700px}
+    .obpage-rel a{color:var(--teal-deep);font-weight:600}
+    .obpage-foot{font-size:14px;color:var(--muted);line-height:1.55;margin:16px 0 8px;max-width:700px}
   </style>
 
   <script is:inline>

@@ -4,6 +4,7 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import Symbol from '../components/Symbol.astro';
+import MonthStrip from '../components/MonthStrip.astro';
 import CompareByRegion from '../components/CompareByRegion.astro';
 import { seasons, seasonsChecked } from '../data/seasons.js';
 import { countries } from '../data/index.js';
@@ -27,35 +28,12 @@ const wellDocumented = rows.filter(r => r.confidence === 'high').length;
 const partlyInferred = rows.filter(r => r.confidence === 'medium').length;
 const flagged = rows.filter(r => r.confidence === 'low');
 
-const INITIALS = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
-const MONTH = ['January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December'];
-const ABBR = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const TIER = { peak: 'busy and pricey', shoulder: 'in between', off: 'cheaper and quieter' };
-
 const CONF_LABEL = { high: 'High', medium: 'Medium', low: 'Low' };
 const CONF_TITLE = {
   high: 'Well documented pattern, widely agreed',
   medium: 'Seasons are clear, the money side is partly inference',
   low: 'Pattern is not documented well enough to state plainly'
 };
-
-// One spoken sentence per strip, so the shape of a year is never carried by colour
-// alone. Screen readers get this; the coloured cells themselves are hidden from them.
-function joinList(a) {
-  if (a.length === 0) return '';
-  if (a.length === 1) return a[0];
-  return a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1];
-}
-function stripLabel(r) {
-  const bucket = { peak: [], shoulder: [], off: [] };
-  r.months.forEach((t, i) => bucket[t].push(ABBR[i]));
-  const parts = [];
-  if (bucket.peak.length) parts.push('busy and pricey in ' + joinList(bucket.peak));
-  if (bucket.off.length) parts.push('cheaper and quieter in ' + joinList(bucket.off));
-  if (bucket.shoulder.length) parts.push('in between in ' + joinList(bucket.shoulder));
-  return r.country + ' month by month, ' + parts.join('; ') + '.';
-}
 
 function niceDate(iso) {
   if (!iso) return '';
@@ -149,27 +127,22 @@ const description = 'Which months tend to be busy and pricey in ' + rows.length 
             {g.items.map(r => (
               <article class="wtg-card" data-name={r.country.toLowerCase()}>
                 <div class="wtg-head">
-                  {iso2[r.slug] && (
-                    <img class="wtg-flag" src={`https://flagcdn.com/${iso2[r.slug]}.svg`}
-                      alt="" width="22" height="15" loading="lazy" decoding="async" />
-                  )}
-                  <h3 class="wtg-cty"><a href={"/" + r.slug}>{r.country}</a></h3>
+                  <h3 class="wtg-cty">
+                    <a class="wtg-ctya" href={"/" + r.slug}>
+                      {iso2[r.slug] && (
+                        <img class="wtg-flag" src={`https://flagcdn.com/${iso2[r.slug]}.svg`}
+                          alt="" width="22" height="15" loading="lazy" decoding="async" />
+                      )}
+                      <span>{r.country}</span>
+                    </a>
+                  </h3>
                   <span class={"wc wc-" + r.confidence} title={CONF_TITLE[r.confidence]}>
                     {CONF_LABEL[r.confidence]}
                     {r.confidence !== 'high' && <i class="wc-dot" aria-hidden="true">&#8226;</i>}
                   </span>
                 </div>
 
-                <div class="ms" role="img" aria-label={stripLabel(r)}>
-                  <div class="ms-labs" aria-hidden="true">
-                    {INITIALS.map(l => <span>{l}</span>)}
-                  </div>
-                  <div class="ms-cells" aria-hidden="true">
-                    {r.months.map((t, i) => (
-                      <span class={"ms-c is-" + t} title={MONTH[i] + ': ' + TIER[t]}></span>
-                    ))}
-                  </div>
-                </div>
+                <div class="wtg-strip"><MonthStrip row={r} /></div>
 
                 <dl class="wtg-read">
                   <div>
@@ -336,22 +309,16 @@ const description = 'Which months tend to be busy and pricey in ' + rows.length 
     .wtg-head{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 11px}
     .wtg-flag{flex:none;width:22px;height:15px;border-radius:2px;box-shadow:0 0 0 1px rgba(22,48,44,.10);object-fit:cover;display:block}
     .wtg-cty{font-size:15.5px;font-weight:700;line-height:1.25;margin:0;min-width:0}
-    .wtg-cty a{color:var(--ink);text-decoration:none}
-    .wtg-cty a:hover{color:var(--teal-deep);text-decoration:underline}
+    .wtg-ctya{display:inline-flex;align-items:center;gap:8px;color:var(--ink);text-decoration:none}
+    .wtg-ctya:hover{color:var(--teal-deep)}
+    .wtg-ctya:hover span{text-decoration:underline}
 
     .wc{display:inline-flex;align-items:center;gap:4px;margin-left:auto;font-size:11px;font-weight:600;letter-spacing:.02em;color:var(--muted);white-space:nowrap}
     .wc-dot{font-style:normal;color:var(--teal);opacity:.85}
     .wc-low{color:var(--amber);border:1px dashed var(--amber);border-radius:999px;padding:1px 7px}
 
-    /* The 12-month strip. Twelve equal fractions, so it cannot overflow a phone. */
-    .ms{margin:0 0 12px}
-    .ms-labs,.ms-cells{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px}
-    .ms-labs{margin:0 0 3px}
-    .ms-labs span{font-size:9.5px;font-weight:600;line-height:1;text-align:center;color:var(--muted)}
-    .ms-c{display:block;height:26px;border-radius:4px;background:#E4E1D6}
-    .ms-c.is-peak{background:#B45309}
-    .ms-c.is-off{background:#0E7A5F}
-    .ms-c.is-shoulder{background:#E4E1D6;box-shadow:inset 0 0 0 1px rgba(22,48,44,.08)}
+    /* The strip itself lives in MonthStrip.astro, which reserves its own height. */
+    .wtg-strip{margin:0 0 12px}
 
     .wtg-read{margin:0;display:grid;gap:8px}
     .wtg-read>div{display:grid;gap:2px;min-width:0}
@@ -392,8 +359,6 @@ const description = 'Which months tend to be busy and pricey in ' + rows.length 
       .wtg-lede{font-size:16.5px}
       .wtg-key{padding:14px 15px;gap:11px}
       .wtg-card{padding:13px 14px}
-      .ms-c{height:30px}
-      .ms-labs span{font-size:10px}
       .wm p{font-size:14px}
     }
   </style>

@@ -1,5 +1,6 @@
 ---
 import Symbol from './Symbol.astro';
+import MonthStrip from './MonthStrip.astro';
 import EESNotice from './EESNotice.astro';
 import NewTab from './NewTab.astro';
 import { affiliate, esimLink, visaLink } from '../data/links.js';
@@ -7,8 +8,12 @@ import { fallbackFxPct, shortlistFor, cardsChecked, wiseCard } from '../data/car
 import { countries } from '../data/index.js';
 import { regionOf, REGIONS, REGION_PHRASE } from '../data/hubs.js';
 import fxFallback from '../data/fxFallback.js';
+import { seasons } from '../data/seasons.js';
 import fs from 'node:fs';
 const { country: c } = Astro.props;
+// This country's own seasonality row, if we have one. A country with no row renders
+// no seasonality section at all rather than an empty box.
+const season = seasons.find(s => s.slug === c.slug) || null;
 // Flag per related country, matching the homepage and hubs: /flags/<slug>.svg,
 // falling back to the globe so nothing ever renders broken.
 const flagDir = process.cwd() + '/public/flags/';
@@ -858,7 +863,36 @@ const kfState = (f) => {
   </details>
 </section>
 
-
+{season && (
+<section class="seas" id="when-to-go">
+  <p class="lab">When to go</p>
+  <h2>Cheaper and busier months in {c.name}.</h2>
+  <p class="sub">The month you pick moves the budget as much as the country does. Here is the shape of {c.name}'s year, with no price attached to it, because an honest one does not exist.</p>
+  <div class="seas-box">
+    <MonthStrip row={season} />
+    <ul class="seas-key">
+      <li><span class="seas-sw is-peak" aria-hidden="true"></span>Busy and pricey</li>
+      <li><span class="seas-sw is-shoulder" aria-hidden="true"></span>In between</li>
+      <li><span class="seas-sw is-off" aria-hidden="true"></span>Cheaper and quieter</li>
+    </ul>
+    <dl class="seas-lines">
+      <div><dt>Cheaper and quieter</dt><dd>{season.cheapestWindow}</dd></div>
+      <div><dt>What drives the peak</dt><dd>{season.peakDriver}</dd></div>
+    </dl>
+    {season.confidence !== 'high' && (
+      <p class="seas-conf">
+        <b>{season.confidence === 'low' ? 'Low confidence' : 'Medium confidence'}.</b>
+        {season.confidence === 'low'
+          ? ' The seasons are clear enough, but the pattern is not documented firmly enough for us to state it plainly, so treat this as a light steer.'
+          : ' The seasons are well established, though the money side of them is partly our own inference.'}
+      </p>
+    )}
+    <a class="seas-link" href="/when-to-go">See all {seasons.length} countries compared on the when to go page
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+)}
 
 {c.culture && (
 <section class="culture" id="culture">
@@ -1439,5 +1473,21 @@ const kfState = (f) => {
   .chead-lead{display:flex;align-items:center;gap:14px;min-width:0}
   .acc-ico{flex:none}
   .rel-go{color:var(--teal-deep);font-weight:700}
+  .seas-box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;max-width:640px}
+  .seas-key{list-style:none;display:flex;flex-wrap:wrap;gap:7px 16px;margin:12px 0 0;padding:0}
+  .seas-key li{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--ink)}
+  .seas-sw{flex:none;width:12px;height:12px;border-radius:3px;display:inline-block}
+  .seas-sw.is-peak{background:#B45309}
+  .seas-sw.is-off{background:#0E7A5F}
+  .seas-sw.is-shoulder{background:#E4E1D6;box-shadow:inset 0 0 0 1px rgba(22,48,44,.10)}
+  .seas-lines{margin:14px 0 0;display:grid;gap:9px}
+  .seas-lines>div{display:grid;gap:2px;min-width:0}
+  .seas-lines dt{font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+  .seas-lines dd{margin:0;font-size:14.5px;color:var(--ink);line-height:1.45;overflow-wrap:break-word}
+  .seas-conf{font-size:13px;color:var(--muted);line-height:1.55;margin:12px 0 0}
+  .seas-conf b{color:var(--ink)}
+  .seas-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--teal-deep);text-decoration:none;margin:14px 0 0}
+  .seas-link:hover{text-decoration:underline}
+  @media (max-width:560px){.seas-box{padding:14px 15px}.seas-lines dd{font-size:14px}}
   .rel-card:hover .rel-name{color:var(--teal-deep)}
 </style>

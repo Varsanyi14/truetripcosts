@@ -1,0 +1,78 @@
+---
+// The shared 12-month season strip, used on /when-to-go and on every country guide.
+//
+// It colours the tier values that already exist in a seasons row (peak, shoulder,
+// off) and nothing else. There is no number in here, and no figure is derived: the
+// strip is a picture of prose that is already on the page.
+//
+// Props:
+//   row      a row from src/data/seasons.js. Renders nothing unless it has a
+//            12-value months array, so a country without seasonality data skips
+//            cleanly rather than showing an empty box.
+//
+// LAYOUT SHIFT: the container and both of its rows carry explicit heights, so the
+// strip occupies its final space from first paint. Nothing below it can move as
+// fonts or styles arrive, which matters because this now appears on guides that
+// are already tight on layout shift.
+const { row } = Astro.props;
+
+const INITIALS = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
+const MONTH = ['January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'];
+const ABBR = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const TIER = { peak: 'busy and pricey', shoulder: 'in between', off: 'cheaper and quieter' };
+const VALID = ['peak', 'shoulder', 'off'];
+
+const months = (row && Array.isArray(row.months) && row.months.length === 12
+  && row.months.every(t => VALID.includes(t))) ? row.months : null;
+
+// One spoken sentence per strip, so the shape of a year is never carried by colour
+// alone. Screen readers get this; the coloured cells themselves are hidden from them.
+function joinList(a) {
+  if (a.length === 0) return '';
+  if (a.length === 1) return a[0];
+  return a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1];
+}
+function stripLabel(r) {
+  const bucket = { peak: [], shoulder: [], off: [] };
+  r.months.forEach((t, i) => bucket[t].push(ABBR[i]));
+  const parts = [];
+  if (bucket.peak.length) parts.push('busy and pricey in ' + joinList(bucket.peak));
+  if (bucket.off.length) parts.push('cheaper and quieter in ' + joinList(bucket.off));
+  if (bucket.shoulder.length) parts.push('in between in ' + joinList(bucket.shoulder));
+  return r.country + ' month by month, ' + parts.join('; ') + '.';
+}
+---
+{months && (
+  <div class="ms" role="img" aria-label={stripLabel(row)}>
+    <div class="ms-labs" aria-hidden="true">
+      {INITIALS.map(l => <span>{l}</span>)}
+    </div>
+    <div class="ms-cells" aria-hidden="true">
+      {months.map((t, i) => (
+        <span class={"ms-c is-" + t} title={MONTH[i] + ': ' + TIER[t]}></span>
+      ))}
+    </div>
+  </div>
+)}
+
+<style>
+  /* Heights are explicit at both breakpoints: 11 + 3 + 26 and 12 + 3 + 30. */
+  .ms{height:40px;box-sizing:border-box}
+  .ms-labs,.ms-cells{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px}
+  .ms-labs{height:11px;margin:0 0 3px;overflow:hidden}
+  .ms-labs span{font-size:9.5px;font-weight:600;line-height:1;text-align:center;color:var(--muted)}
+  .ms-cells{height:26px}
+  .ms-c{display:block;height:26px;border-radius:4px;background:#E4E1D6}
+  .ms-c.is-peak{background:#B45309}
+  .ms-c.is-off{background:#0E7A5F}
+  .ms-c.is-shoulder{background:#E4E1D6;box-shadow:inset 0 0 0 1px rgba(22,48,44,.08)}
+
+  @media (max-width:560px){
+    .ms{height:45px}
+    .ms-labs{height:12px}
+    .ms-labs span{font-size:10px}
+    .ms-cells{height:30px}
+    .ms-c{height:30px}
+  }
+</style>
