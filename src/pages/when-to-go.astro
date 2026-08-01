@@ -3,12 +3,16 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
+import Symbol from '../components/Symbol.astro';
 import CompareByRegion from '../components/CompareByRegion.astro';
 import { seasons, seasonsChecked } from '../data/seasons.js';
+import { countries } from '../data/index.js';
 
-// Everything reads from seasons.js live. Nothing is re-typed here, and nothing is
-// counted by hand. The US-traveler badge arrives through Hero, which renders it.
+// Everything reads from seasons.js live. Nothing is re-typed here and nothing is
+// counted by hand. Flags come from the country data by slug, the same flagcdn
+// approach the comparison matrices use. The US-traveler badge arrives via Hero.
 const rows = seasons;
+const iso2 = Object.fromEntries(countries.map(c => [c.slug, c.iso2]));
 
 const REGION_ORDER = ['Europe', 'Asia', 'Americas', 'Middle East', 'Africa', 'Oceania'];
 const groups = REGION_ORDER
@@ -23,12 +27,35 @@ const wellDocumented = rows.filter(r => r.confidence === 'high').length;
 const partlyInferred = rows.filter(r => r.confidence === 'medium').length;
 const flagged = rows.filter(r => r.confidence === 'low');
 
+const INITIALS = ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'];
+const MONTH = ['January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'];
+const ABBR = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const TIER = { peak: 'busy and pricey', shoulder: 'in between', off: 'cheaper and quieter' };
+
 const CONF_LABEL = { high: 'High', medium: 'Medium', low: 'Low' };
 const CONF_TITLE = {
   high: 'Well documented pattern, widely agreed',
   medium: 'Seasons are clear, the money side is partly inference',
   low: 'Pattern is not documented well enough to state plainly'
 };
+
+// One spoken sentence per strip, so the shape of a year is never carried by colour
+// alone. Screen readers get this; the coloured cells themselves are hidden from them.
+function joinList(a) {
+  if (a.length === 0) return '';
+  if (a.length === 1) return a[0];
+  return a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1];
+}
+function stripLabel(r) {
+  const bucket = { peak: [], shoulder: [], off: [] };
+  r.months.forEach((t, i) => bucket[t].push(ABBR[i]));
+  const parts = [];
+  if (bucket.peak.length) parts.push('busy and pricey in ' + joinList(bucket.peak));
+  if (bucket.off.length) parts.push('cheaper and quieter in ' + joinList(bucket.off));
+  if (bucket.shoulder.length) parts.push('in between in ' + joinList(bucket.shoulder));
+  return r.country + ' month by month, ' + parts.join('; ') + '.';
+}
 
 function niceDate(iso) {
   if (!iso) return '';
@@ -76,6 +103,27 @@ const description = 'Which months tend to be busy and pricey in ' + rows.length 
       </p>
     </div>
 
+    <div class="wtg-key">
+      <div class="wtg-key-ic" aria-hidden="true"><Symbol name="calendar" /></div>
+      <div class="wtg-key-body">
+        <p class="wtg-key-h">How to read the calendar</p>
+        <ul class="wtg-swatches">
+          <li><span class="sw is-peak" aria-hidden="true"></span>Busy and pricey</li>
+          <li><span class="sw is-shoulder" aria-hidden="true"></span>In between</li>
+          <li><span class="sw is-off" aria-hidden="true"></span>Cheaper and quieter</li>
+        </ul>
+        <p class="wtg-key-p">
+          Twelve cells, January to December. The colours are tiers, never amounts, and every window is written
+          out in words under its strip. Confidence says how firmly a pattern is documented, not how strong the
+          season is. Of these, {wellDocumented} rest on well documented patterns, {partlyInferred} are marked
+          medium because the seasons are clear but the money side is partly our own inference, and
+          {flagged.length === 1
+            ? <span> one, {flagged[0].country}, is marked low because the pattern is not documented well enough to state plainly.</span>
+            : <span> {flagged.length} are marked low because the pattern is not documented well enough to state plainly.</span>}
+        </p>
+      </div>
+    </div>
+
     <div class="wtg-find">
       <label class="wtg-find-lab" for="wtg-filter">Going somewhere specific?</label>
       <input
@@ -88,65 +136,82 @@ const description = 'Which months tend to be busy and pricey in ' + rows.length 
       />
     </div>
 
+    <nav class="wtg-jump" aria-label="Jump to a region">
+      <span class="wtg-jump-lab">Jump to</span>
+      {groups.map(g => <a class="wtg-jump-a" href={"#" + g.id}>{g.key}</a>)}
+    </nav>
+
     <section class="wtg-list" aria-label="When each country is busy and when it is cheaper">
       {groups.map(g => (
         <div class="wtg-group" data-group={g.key}>
           <h2 class="wtg-group-h" id={g.id}>{g.key}</h2>
-          <div class="wtg-head" aria-hidden="true">
-            <span>Country</span>
-            <span>Busy and pricey</span>
-            <span>Cheaper and quieter</span>
-            <span>What drives the peak</span>
-            <span class="wtg-head-c">Confidence</span>
-          </div>
-          {g.items.map(r => (
-            <details class="wtg-row" data-name={r.country.toLowerCase()}>
-              <summary class="wtg-sum">
-                <span class="wtg-grid">
-                  <span class="wtg-cty">{r.country}</span>
-                  <span class="wtg-cell" data-lab="Busy and pricey">{r.peak}</span>
-                  <span class="wtg-cell" data-lab="Cheaper and quieter">{r.cheapestWindow}</span>
-                  <span class="wtg-cell wtg-drv" data-lab="What drives the peak">{r.peakDriver}</span>
-                  <span class="wtg-cell wtg-confcell" data-lab="Confidence">
-                    <span class={"wc wc-" + r.confidence} title={CONF_TITLE[r.confidence]}>
-                      {CONF_LABEL[r.confidence]}
-                      {r.confidence !== 'high' && <i class="wc-dot" aria-hidden="true">&#8226;</i>}
-                    </span>
+          <div class="wtg-cards">
+            {g.items.map(r => (
+              <article class="wtg-card" data-name={r.country.toLowerCase()}>
+                <div class="wtg-head">
+                  {iso2[r.slug] && (
+                    <img class="wtg-flag" src={`https://flagcdn.com/${iso2[r.slug]}.svg`}
+                      alt="" width="22" height="15" loading="lazy" decoding="async" />
+                  )}
+                  <h3 class="wtg-cty"><a href={"/" + r.slug}>{r.country}</a></h3>
+                  <span class={"wc wc-" + r.confidence} title={CONF_TITLE[r.confidence]}>
+                    {CONF_LABEL[r.confidence]}
+                    {r.confidence !== 'high' && <i class="wc-dot" aria-hidden="true">&#8226;</i>}
                   </span>
-                  <span class="wtg-chev" aria-hidden="true">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="m6 9 6 6 6-6"/></svg>
-                  </span>
-                </span>
-              </summary>
-              <div class="wtg-body">
-                <dl class="wtg-dl">
-                  <div><dt>Peak</dt><dd>{r.peak}</dd></div>
-                  <div><dt>Shoulder</dt><dd>{r.shoulder}</dd></div>
-                  <div><dt>Quietest</dt><dd>{r.off}</dd></div>
-                  <div><dt>Weather to know</dt><dd>{r.weatherNote}</dd></div>
-                  <div><dt>Costliest weeks</dt><dd>{r.avoidIfBudget}</dd></div>
+                </div>
+
+                <div class="ms" role="img" aria-label={stripLabel(r)}>
+                  <div class="ms-labs" aria-hidden="true">
+                    {INITIALS.map(l => <span>{l}</span>)}
+                  </div>
+                  <div class="ms-cells" aria-hidden="true">
+                    {r.months.map((t, i) => (
+                      <span class={"ms-c is-" + t} title={MONTH[i] + ': ' + TIER[t]}></span>
+                    ))}
+                  </div>
+                </div>
+
+                <dl class="wtg-read">
+                  <div>
+                    <dt><span class="sw is-peak" aria-hidden="true"></span>Busy and pricey</dt>
+                    <dd>{r.peak}</dd>
+                  </div>
+                  <div>
+                    <dt><span class="sw is-off" aria-hidden="true"></span>Cheaper and quieter</dt>
+                    <dd>{r.cheapestWindow}</dd>
+                  </div>
+                  <div>
+                    <dt><span class="wtg-ic" aria-hidden="true"><Symbol name="tag" /></span>What drives it</dt>
+                    <dd>{r.peakDriver}</dd>
+                  </div>
                 </dl>
+
                 <p class="wtg-note">{r.note}</p>
-                <a class="wtg-guide" href={"/" + r.slug}>The {r.country} money guide
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                </a>
-              </div>
-            </details>
-          ))}
+
+                <details class="wtg-more-d">
+                  <summary>More on the season
+                    <svg class="wtg-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+                  </summary>
+                  <dl class="wtg-read wtg-read-x">
+                    <div><dt>Shoulder</dt><dd>{r.shoulder}</dd></div>
+                    <div><dt>Quietest</dt><dd>{r.off}</dd></div>
+                    <div><dt>Weather to know</dt><dd>{r.weatherNote}</dd></div>
+                    <div>
+                      <dt><span class="wtg-ic" aria-hidden="true"><Symbol name="alert" /></span>Costliest weeks</dt>
+                      <dd>{r.avoidIfBudget}</dd>
+                    </div>
+                  </dl>
+                  <a class="wtg-guide" href={"/" + r.slug}>The {r.country} money guide
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </a>
+                </details>
+              </article>
+            ))}
+          </div>
         </div>
       ))}
       <p class="wtg-empty" id="wtg-empty" hidden>No country by that name here yet. Try another spelling, or browse the list above.</p>
     </section>
-
-    <p class="wtg-legend">
-      <b>Reading this.</b> Tap a country for its shoulder months, the weather behind the season and the catch
-      worth knowing. Confidence is about how firmly the pattern is documented, not how strong the season is.
-      Of these, {wellDocumented} rows rest on well documented patterns, {partlyInferred} are marked medium
-      because the seasons are clear but the money side is partly our own inference, and
-      {flagged.length === 1
-        ? <span> one, {flagged[0].country}, is marked low because the pattern is not documented well enough to state plainly.</span>
-        : <span> {flagged.length} are marked low because the pattern is not documented well enough to state plainly.</span>}
-    </p>
 
     <section class="wtg-more" aria-labelledby="knowmore">
       <h2 id="knowmore">What a monthly chart would hide</h2>
@@ -203,16 +268,18 @@ const description = 'Which months tend to be busy and pricey in ' + rows.length 
           Golden Week move so many people that trains, flights and sights fill regardless of foreign demand.
           Tet closes family businesses across Vietnam. Ferragosto empties Italian cities and fills the coast.
           Several of these move each year, and Ramadan and Eid shift earlier annually against the Western
-          calendar, so the only reliable move is to check the date for your own travel year.
+          calendar, so the only reliable move is to check the date for your own travel year. It is also why a
+          holiday lasting a week never colours a whole month on the calendars above.
         </p>
       </div>
     </section>
 
     <p class="wtg-foot">
       Compiled by the True Trip Costs desk and checked {checkedLabel}. This is timing guidance, not a price
-      quote, and we have deliberately not put a number on any of it. The cheapest month for you depends on
-      your route, your dates and how far ahead you book, so use the season to choose a window and then check
-      real fares for your own days. For what a day actually costs once you are there, see the
+      quote, and we have deliberately not put a number on any of it. The coloured months restate each
+      country's own stated seasons and add nothing to them. The cheapest month for you depends on your route,
+      your dates and how far ahead you book, so use the season to choose a window and then check real fares
+      for your own days. For what a day actually costs once you are there, see the
       <a href="/cost-comparison">cost of a day compared</a>, and each country name above opens its full money
       guide.
     </p>
@@ -221,63 +288,92 @@ const description = 'Which months tend to be busy and pricey in ' + rows.length 
   <Footer />
 
   <style>
-    .wtg{max-width:880px}
+    .wtg{max-width:900px}
     .wtg-lede{font-size:17.5px;color:#3B4A46;line-height:1.55;max-width:640px;margin:22px 0 20px}
 
     /* Part A: the absence of a fake chart, made visible. */
-    .wtg-honest{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:16px 20px;margin:0 0 26px;max-width:720px;box-shadow:var(--shadow)}
+    .wtg-honest{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:16px 20px;margin:0 0 20px;max-width:720px;box-shadow:var(--shadow)}
     .wtg-honest-h{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 8px}
     .wtg-honest p:not(.wtg-honest-h){font-size:14.5px;color:#3B4A46;line-height:1.6;margin:0 0 10px}
     .wtg-honest p:last-child{margin-bottom:0}
     .wtg-honest a{color:var(--teal-deep);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+
+    /* The key, which doubles as the confidence explainer. */
+    .wtg-key{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 18px;margin:0 0 20px;max-width:720px;box-shadow:var(--shadow)}
+    .wtg-key-ic{flex:none;width:32px;height:32px}
+    .wtg-key-ic svg{width:32px;height:32px;display:block}
+    .wtg-key-body{min-width:0}
+    .wtg-key-h{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:2px 0 9px}
+    .wtg-swatches{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 10px;padding:0}
+    .wtg-swatches li{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--ink)}
+    .wtg-key-p{font-size:13.5px;color:var(--muted);line-height:1.6;margin:0}
+
+    .sw{flex:none;width:13px;height:13px;border-radius:3px;display:inline-block}
+    .sw.is-peak{background:#B45309}
+    .sw.is-off{background:#0E7A5F}
+    .sw.is-shoulder{background:#E4E1D6;box-shadow:inset 0 0 0 1px rgba(22,48,44,.10)}
 
     .wtg-find{margin:0 0 22px;max-width:420px}
     .wtg-find-lab{display:block;font-size:12.5px;font-weight:700;color:var(--ink);margin:0 0 6px}
     .wtg-find-in{width:100%;box-sizing:border-box;font:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 14px;box-shadow:var(--shadow)}
     .wtg-find-in:focus{outline:2px solid var(--amber);outline-offset:1px;border-color:var(--amber)}
 
+    .wtg-jump{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:0 0 20px}
+    .wtg-jump-lab{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+    .wtg-jump-a{font-size:13px;font-weight:600;color:var(--teal-deep);text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:5px 12px;box-shadow:var(--shadow)}
+    .wtg-jump-a:hover{border-color:var(--teal);background:var(--green-bg)}
+
     .wtg-list{padding:0;border-top:none;margin-top:0}
-    .wtg-group{margin:0 0 26px}
+    .wtg-group{margin:0 0 24px}
     .wtg-group.is-hidden{display:none}
-    .wtg-group-h{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:-.01em;margin:0 0 8px}
+    .wtg-group-h{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:-.01em;margin:0 0 10px;scroll-margin-top:64px}
 
-    /* Column key, repeated per region so it is never far away when scrolling. */
-    .wtg-head{display:grid;grid-template-columns:150px 1.15fr 1.15fr 1.5fr 108px;gap:14px;align-items:end;padding:0 14px 6px;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
-    .wtg-head-c{text-align:right}
+    /* minmax(0,1fr) so a long word can never push a card past its column. */
+    .wtg-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .wtg-card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px;min-width:0}
+    .wtg-card.is-hidden{display:none}
 
-    .wtg-row{background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);margin:0 0 8px}
-    .wtg-row.is-hidden{display:none}
-    .wtg-row[open]{border-color:rgba(14,122,95,.35)}
+    .wtg-head{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:0 0 11px}
+    .wtg-flag{flex:none;width:22px;height:15px;border-radius:2px;box-shadow:0 0 0 1px rgba(22,48,44,.10);object-fit:cover;display:block}
+    .wtg-cty{font-size:15.5px;font-weight:700;line-height:1.25;margin:0;min-width:0}
+    .wtg-cty a{color:var(--ink);text-decoration:none}
+    .wtg-cty a:hover{color:var(--teal-deep);text-decoration:underline}
 
-    .wtg-sum{display:block;padding:13px 14px;cursor:pointer;list-style:none;border-radius:12px}
-    .wtg-sum::-webkit-details-marker{display:none}
-    .wtg-grid{display:grid;grid-template-columns:150px 1.15fr 1.15fr 1.5fr 78px 16px;gap:14px;align-items:start}
-    .wtg-sum:hover{background:#FBFBF9}
-    .wtg-sum:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
-    .wtg-cty{font-size:15px;font-weight:700;color:var(--ink);line-height:1.3}
-    .wtg-cell{font-size:13.5px;color:#3B4A46;line-height:1.45}
-    .wtg-drv{color:var(--muted)}
-    .wtg-confcell{justify-self:end;text-align:right}
-    .wtg-chev{color:var(--muted);display:flex;justify-content:flex-end;padding-top:3px;transition:transform .15s ease}
-    .wtg-row[open] .wtg-chev{transform:rotate(180deg)}
-
-    .wc{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600;letter-spacing:.02em;color:var(--muted);white-space:nowrap}
+    .wc{display:inline-flex;align-items:center;gap:4px;margin-left:auto;font-size:11px;font-weight:600;letter-spacing:.02em;color:var(--muted);white-space:nowrap}
     .wc-dot{font-style:normal;color:var(--teal);opacity:.85}
     .wc-low{color:var(--amber);border:1px dashed var(--amber);border-radius:999px;padding:1px 7px}
 
-    .wtg-body{padding:2px 16px 16px;border-top:1px solid var(--line);margin:0 14px}
-    .wtg-dl{margin:12px 0 0;display:grid;gap:9px}
-    .wtg-dl>div{display:grid;grid-template-columns:132px 1fr;gap:12px;align-items:baseline}
-    .wtg-dl dt{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-    .wtg-dl dd{margin:0;font-size:14px;color:var(--ink);line-height:1.5}
-    .wtg-note{font-size:14px;color:#3B4A46;line-height:1.6;margin:13px 0 0;max-width:66ch}
-    .wtg-guide{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--teal-deep);text-decoration:none;margin:12px 0 0}
+    /* The 12-month strip. Twelve equal fractions, so it cannot overflow a phone. */
+    .ms{margin:0 0 12px}
+    .ms-labs,.ms-cells{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:3px}
+    .ms-labs{margin:0 0 3px}
+    .ms-labs span{font-size:9.5px;font-weight:600;line-height:1;text-align:center;color:var(--muted)}
+    .ms-c{display:block;height:26px;border-radius:4px;background:#E4E1D6}
+    .ms-c.is-peak{background:#B45309}
+    .ms-c.is-off{background:#0E7A5F}
+    .ms-c.is-shoulder{background:#E4E1D6;box-shadow:inset 0 0 0 1px rgba(22,48,44,.08)}
+
+    .wtg-read{margin:0;display:grid;gap:8px}
+    .wtg-read>div{display:grid;gap:2px;min-width:0}
+    .wtg-read dt{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+    .wtg-read dd{margin:0;font-size:13.5px;color:var(--ink);line-height:1.45;overflow-wrap:break-word}
+    .wtg-read-x dd{color:#3B4A46}
+    .wtg-ic{flex:none;width:14px;height:14px;display:inline-flex}
+    .wtg-ic svg{width:14px;height:14px;display:block}
+
+    .wtg-note{font-size:13.5px;color:#3B4A46;line-height:1.55;margin:11px 0 0}
+
+    .wtg-more-d{margin:10px 0 0;border-top:1px solid var(--line);padding-top:9px}
+    .wtg-more-d summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:600;color:var(--teal-deep)}
+    .wtg-more-d summary::-webkit-details-marker{display:none}
+    .wtg-more-d summary:hover{text-decoration:underline}
+    .wtg-chev{flex:none;transition:transform .15s ease}
+    .wtg-more-d[open] .wtg-chev{transform:rotate(180deg)}
+    .wtg-more-d .wtg-read{margin-top:10px}
+    .wtg-guide{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--teal-deep);text-decoration:none;margin:11px 0 0}
     .wtg-guide:hover{text-decoration:underline}
 
     .wtg-empty{font-size:14.5px;color:var(--muted);margin:6px 0 0}
-
-    .wtg-legend{font-size:13.5px;color:var(--muted);line-height:1.6;margin:14px 0 0;max-width:720px;background:var(--amber-bg);border:1px solid var(--amber);border-radius:12px;padding:13px 16px}
-    .wtg-legend b{color:var(--ink)}
 
     .wtg-more h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,28px);letter-spacing:-.01em;margin:0 0 16px}
     .wm{margin:0 0 22px;max-width:700px}
@@ -287,21 +383,17 @@ const description = 'Which months tend to be busy and pricey in ' + rows.length 
     .wtg-foot{font-size:13.5px;color:var(--muted);line-height:1.55;margin:30px 0 8px;max-width:700px}
     .wtg-foot a{color:var(--teal-deep);font-weight:500}
 
-    /* Phone first. The five-column read collapses into a labeled stack, so nothing
-       is ever cut off and there is no sideways scroll to discover. */
+    /* Phone first. One card per row, and the strip keeps its twelve fractions, so at
+       360px every cell still lands above twenty pixels and nothing scrolls sideways. */
     @media (max-width:840px){
+      .wtg-cards{grid-template-columns:minmax(0,1fr)}
+    }
+    @media (max-width:560px){
       .wtg-lede{font-size:16.5px}
-      .wtg-head{display:none}
-      .wtg-sum{padding:14px 15px}
-      .wtg-grid{display:block}
-      .wtg-cty{display:block;font-size:16px;margin:0 0 2px;padding-right:22px}
-      .wtg-cell{display:block;margin:9px 0 0}
-      .wtg-cell::before{content:attr(data-lab);display:block;font-size:10.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:0 0 2px}
-      .wtg-confcell{justify-self:auto;text-align:left}
-      .wtg-chev{position:absolute;top:15px;right:14px}
-      .wtg-row{position:relative}
-      .wtg-body{margin:0 15px;padding:2px 0 16px}
-      .wtg-dl>div{grid-template-columns:1fr;gap:2px}
+      .wtg-key{padding:14px 15px;gap:11px}
+      .wtg-card{padding:13px 14px}
+      .ms-c{height:30px}
+      .ms-labs span{font-size:10px}
       .wm p{font-size:14px}
     }
   </style>
@@ -310,7 +402,7 @@ const description = 'Which months tend to be busy and pricey in ' + rows.length 
     (function () {
       var input = document.getElementById('wtg-filter');
       if (!input) return;
-      var rows = Array.prototype.slice.call(document.querySelectorAll('.wtg-row'));
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.wtg-card'));
       var groups = Array.prototype.slice.call(document.querySelectorAll('.wtg-group'));
       var empty = document.getElementById('wtg-empty');
 
@@ -321,13 +413,13 @@ const description = 'Which months tend to be busy and pricey in ' + rows.length 
       input.addEventListener('input', function () {
         var q = norm(input.value.trim());
         var shown = 0;
-        rows.forEach(function (row) {
-          var hit = q === '' || norm(row.getAttribute('data-name')).indexOf(q) !== -1;
-          row.classList.toggle('is-hidden', !hit);
+        cards.forEach(function (card) {
+          var hit = q === '' || norm(card.getAttribute('data-name')).indexOf(q) !== -1;
+          card.classList.toggle('is-hidden', !hit);
           if (hit) shown++;
         });
         groups.forEach(function (g) {
-          var any = g.querySelector('.wtg-row:not(.is-hidden)');
+          var any = g.querySelector('.wtg-card:not(.is-hidden)');
           g.classList.toggle('is-hidden', !any);
         });
         if (empty) empty.hidden = shown !== 0;
