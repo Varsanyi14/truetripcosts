@@ -17,17 +17,12 @@ const rest = liveCountries
   .sort((a, b) => a.name.localeCompare(b.name));
 const destOptions = current ? [current, ...rest] : rest;
 
-// US-departure framing for search snippets. The guides are written for a trip
-// leaving the US, so a country guide's title and description should say so, without
-// hand-editing every data file. This only touches country-guide pages, and only
-// when the phrase is not already present, so nothing ever double-frames. Hub and
-// homepage titles are authored with the framing already, so they pass through.
-const framedTitle = (current && !/US travel/i.test(title))
-  ? (title.includes('| True Trip Costs') ? title.replace('| True Trip Costs', 'for US Travelers | True Trip Costs') : title + ' for US Travelers')
-  : title;
-const framedDesc = (current && !/US travel|leaving the US/i.test(description))
-  ? ('For travelers leaving the US. ' + description)
-  : description;
+// Titles and descriptions are authored in full in the data files, tuned to the
+// SERP length limits. The US-departure angle is carried by the copy itself, so no
+// auto-framing is appended here (appending it pushed rendered tags past the limits
+// and truncated the click-earning text).
+const framedTitle = title;
+const framedDesc = description;
 ---
 <!doctype html>
 <html lang="en">

@@ -36,8 +36,8 @@ export default {
 
   hook: "Your dollars are the local money, so there is no exchange rate to lose anything to. The costs that remain are a flat ATM fee and a tip that may already be on the bill.",
 
-  title: "El Salvador travel costs for US travelers: dollars, tipping and the fees that are gone",
-  description: "El Salvador uses the US dollar, so there is nothing to exchange and no pay-in-dollars trap. What to watch instead: the 10% propina already printed on your bill, a flat ATM fee that is the whole cost, and the $12 entry card that was abolished but is still listed on official US pages. Checked July 2026.",
+  title: "El Salvador money: it uses the US dollar (2026)",
+  description: "El Salvador runs on the US dollar, nothing to exchange. Watch the 10% propina on the bill, flat ATM fees, and the scrapped entry card. Checked 2026.",
   h1: "What does a trip to El Salvador really cost?",
   lede: "El Salvador is the rare country where the honest answer to most money questions is that it costs you nothing extra. It has used the US dollar since 2001, so there is no conversion, no spread and no prompt to decline. That frees us up to talk about the three things that do cost money here.",
 
@@ -229,8 +229,8 @@ export default {
         { k: "Length of stay", v: "90 days, shared with 3 countries" },
         { k: "Still worth packing", v: "$12, as insurance" }
       ],
-      title: "Do you need a visa or tourist card for El Salvador? (2026) | True Trip Costs",
-      description: "El Salvador abolished the $12 tourist card in 2025, so entry is free for US citizens, though official US pages were slow to say so. What the booth actually asks for, and why your 90 days are shared with Guatemala, Honduras and Nicaragua. Checked July 2026.",
+      title: "El Salvador visa and tourist card for US citizens",
+      description: "El Salvador scrapped the $12 tourist card in 2025, so entry is free. What the booth actually asks for, and why your 90 days are shared with 3 neighbors.",
       h1: "Do you need a visa or a tourist card for El Salvador?",
       lede: "The short answer is no to both, and the second half of that is recent enough that most of the internet, including some official pages, still says otherwise.",
       checked: "Jul 2026",
@@ -305,8 +305,8 @@ export default {
         { k: "ATM fee", v: "About $3 to $6, flat" },
         { k: "What matters", v: "Small bills, ones to tens" }
       ],
-      title: "Cash or card in El Salvador? (2026) | True Trip Costs",
-      description: "El Salvador uses the US dollar, so there is no conversion and no pay-in-dollars trap. The real questions are where terminals exist, why the flat ATM fee is your whole cost, and why small bills matter more here than almost anywhere. Checked July 2026.",
+      title: "Cash or card in El Salvador? It uses US dollars",
+      description: "El Salvador uses the US dollar, so no conversion and no pay-in-dollars trap. Where terminals exist, the flat ATM fee, and why small bills matter here.",
       h1: "Cash or card in El Salvador?",
       lede: "Most of our cash-or-card guides are about avoiding a bad exchange rate. This one cannot be, because there is no exchange rate. What replaces it is a simpler question about where you can tap and what you can break.",
       checked: "Jul 2026",
@@ -380,8 +380,8 @@ export default {
         { k: "Taxis", v: "No tip expected" },
         { k: "Always", v: "Tip in cash" }
       ],
-      title: "Tipping in El Salvador: read the bill first (2026) | True Trip Costs",
-      description: "The 10% propina is frequently printed on the check already, so the common mistake in El Salvador is tipping twice and paying about 20%. What to give guides, drivers and hotel staff, and why cash matters. Checked July 2026.",
+      title: "Tipping in El Salvador: read the bill first 2026",
+      description: "The 10% propina is often already printed on the check, so the common mistake is tipping twice and paying about 20%. Guides, drivers and hotel staff too.",
       h1: "Tipping in El Salvador, and how not to do it twice",
       lede: "Most tipping guides worry you are about to under-tip. In El Salvador the more likely error runs the other way, because the tip is often already on the bill and easy to miss.",
       checked: "Jul 2026",
@@ -444,8 +444,8 @@ export default {
         { k: "Airport to city", v: "Roughly $25 to $35" },
         { k: "Buses", v: "Cheap, but widely advised against" }
       ],
-      title: "Taxis and ride-hailing in El Salvador (2026) | True Trip Costs",
-      description: "Uber works in San Salvador and solves the two problems with Salvadoran taxis at once: no meters and no agreed price. What the airport run costs, why the app is worth it, and the honest position on public buses. Checked July 2026.",
+      title: "Taxis and ride-hailing in El Salvador 2026",
+      description: "Uber works in San Salvador and fixes both problems with local taxis: no meters and no agreed price. What the airport run costs, and the truth on buses.",
       h1: "Taxis and ride-hailing in El Salvador",
       lede: "Getting around San Salvador is one of the places where an app is not just cheaper but genuinely simpler, because the alternative involves negotiating every fare from scratch.",
       checked: "Jul 2026",
