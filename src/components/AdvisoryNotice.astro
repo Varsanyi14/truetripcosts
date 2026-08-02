@@ -1,0 +1,37 @@
+---
+// Shared US State Department advisory notice for country guides.
+//
+// Renders nothing unless the country's slug is listed in src/data/advisories.js, so it is
+// safe to drop into any country surface. All copy comes from that one data file, which is
+// the single place to edit when an advisory level changes. See the note at the top of it.
+//
+// Styling deliberately reuses the global .recentchange / .rcpill classes, exactly as
+// EESNotice does, so this matches the existing callout and adds no new theme. The only
+// scoped rules are paragraph spacing and the link line.
+
+import { advisoryFor } from '../data/advisories.js';
+
+const { country: c } = Astro.props;
+const a = c && advisoryFor(c.slug);
+const body = a ? a.body.split('{name}').join(c.name) : '';
+---
+{a && (
+  <div class="recentchange advisory">
+    <span class="rcpill">Travel advisory &middot; {a.checked}</span>
+    <p set:html={body}></p>
+    {a.note && <p set:html={a.note}></p>}
+    <p set:html={a.money}></p>
+    <p class="adv-more">
+      <a href={a.url} target="_blank" rel="noopener noreferrer">
+        Read the official {a.level} advisory for {c.name} &#8594;
+      </a>
+    </p>
+  </div>
+)}
+
+<style>
+  .advisory p + p{margin-top:8px}
+  .advisory .adv-more{font-size:13.5px;color:var(--muted);margin-top:10px}
+  .advisory .adv-more a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+  .advisory .adv-more a:hover{text-decoration:underline}
+</style>

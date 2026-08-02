@@ -2,6 +2,7 @@
 import Symbol from './Symbol.astro';
 import MonthStrip from './MonthStrip.astro';
 import EESNotice from './EESNotice.astro';
+import AdvisoryNotice from './AdvisoryNotice.astro';
 import NewTab from './NewTab.astro';
 import { affiliate, esimLink, visaLink } from '../data/links.js';
 import { fallbackFxPct, shortlistFor, cardsChecked, wiseCard } from '../data/cards.js';
@@ -269,6 +270,8 @@ const kfState = (f) => {
     <p set:html={c.recentChange.text}></p>
   </div>
 )}
+
+<AdvisoryNotice country={c} />
 
 <EESNotice country={c} />
 

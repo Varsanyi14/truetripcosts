@@ -14,6 +14,7 @@ export default {
   date: "15 Jul 2026",
   rates: {
     AED: 3.6725,
+    OMR: 0.3845,
     ARS: 1474.74,
     AUD: 1.4362,
     AWG: 1.79,
