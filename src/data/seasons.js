@@ -534,6 +534,17 @@ export const seasons = [
     note: "Two separate seasons with different geography: the fjords in summer and the far north in winter. Late autumn falls between them and is quiet because there is genuinely less to do, with short days and closed summer routes."
   },
   {
+    country: "Oman", slug: "oman", hasGuide: true, region: "Middle East",
+    peak: "Nov to Mar", shoulder: "Apr, Oct", off: "May to Sep",
+    months: ["peak","peak","peak","shoulder","off","off","off","off","off","shoulder","peak","peak"],
+    peakDriver: "Cool, dry winter weather, the wadi and diving season, and the Christmas and New Year window",
+    weatherNote: "May to Sep is punishing inland and humid on the coast, which is exactly when hotel rates fall. Salalah is the exception: the khareef monsoon turns the Dhofar hills green from about Jun to Sep, so southern Oman runs its own peak in the months the north empties out",
+    cheapestWindow: "May to Sep in the north",
+    avoidIfBudget: "Christmas and New Year, and Salalah during the khareef",
+    confidence: "high",
+    note: "The national pattern is as predictable as the UAE's, but Oman has a split personality. North in winter, south in summer. If you are going to Salalah in the khareef, treat it as high season and price it that way."
+  },
+  {
     country: "Philippines", slug: "philippines", hasGuide: true, region: "Asia",
     peak: "Dec to Feb, plus Holy Week",
     shoulder: "Mar to May, Nov",

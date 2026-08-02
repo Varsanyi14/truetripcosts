@@ -64,9 +64,9 @@ export const clusters = [
     href: '/compare/middle-east',
     region: 'Middle East',
     parent: 'Middle East',
-    blurb: 'The UAE, Turkey and Egypt, from the cashless Gulf to cash-first Egypt.',
-    pitch: 'Gulf ease, Turkish value, or Egypt on a budget.',
-    slugs: ['uae', 'turkey', 'egypt']
+    blurb: 'The UAE, Oman, Turkey and Egypt, from the cashless Gulf to cash-first Egypt.',
+    pitch: 'Gulf ease, Omani calm, Turkish value, or Egypt on a budget.',
+    slugs: ['uae', 'oman', 'turkey', 'egypt']
   },
   {
     href: '/compare/africa',

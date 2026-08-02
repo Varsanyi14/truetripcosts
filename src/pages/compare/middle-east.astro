@@ -10,17 +10,23 @@ import meMap from '../../data/maps/middle-east.js';
 import { countries } from '../../data/index.js';
 import { otherClusters } from '../../data/region-comparisons.js';
 
-// Middle East money comparison. Three guided countries that differ sharply on exactly
+// Middle East money comparison. Four guided countries that differ sharply on exactly
 // what the matrix compares: the UAE is nearly cashless and priciest with a dollar-pegged
-// dirham, Turkey is the value middle with an inflation-driven lira, and Egypt is cheapest,
-// cash-first, baksheesh-heavy, and the only one that needs a visa. A high-contrast trio.
-const order = ['uae', 'turkey', 'egypt'];
+// dirham, Oman is the calmer Gulf alternative, also dollar-pegged but still cash in the
+// souks, Turkey is the value middle with an inflation-driven lira, and Egypt is cheapest,
+// cash-first, baksheesh-heavy, and the only one that needs a visa on arrival.
+const order = ['uae', 'oman', 'turkey', 'egypt'];
 
 const rate = {
   uae: {
     cost: 3, cashLean: "card", cashTag: "Nearly cashless", tip: "Light, often added", cur: "Dirham", curNote: "USD-pegged", taxiCaution: "low",
     bestFor: "Dubai, Abu Dhabi, cashless ease",
     verdict: "The easy, seamless one, and the priciest. Dubai and Abu Dhabi are close to fully cashless, so a tap-and-go card covers almost everything, the dirham is pegged to the US dollar so the rate never moves, and US citizens get a free visa on arrival. Tipping is light, often a service charge plus a little extra. Pick the UAE for a smooth, modern, low-friction trip if the higher prices are worth it."
+  },
+  oman: {
+    cost: 3, cashLean: "cash", cashTag: "Cards, then cash", tip: "Round up, light", cur: "Rial", curNote: "USD-pegged", taxiCaution: "medium",
+    bestFor: "Wadis, forts, the quiet Gulf",
+    verdict: "The calm one, and the Gulf without the glitter. Money works much like the UAE, the rial is pegged to the US dollar so the rate never moves, and cards cover Muscat's hotels, malls and supermarkets. The difference is that cash still runs the souks, the street taxis and everywhere rural, so you carry more of it than you would in Dubai. Tipping is lighter than the UAE, often just rounding up. Two quirks: the rial splits into 1,000 baisa, so prices carry three decimals and 3.500 means about nine dollars, and Uber does not operate, so you use local apps or agree the fare. Pick Oman for mountains, wadis and forts at a slower pace, if you do not mind handling cash."
   },
   turkey: {
     cost: 2, cashLean: "card", cashTag: "Cards in cities", tip: "About 10%", cur: "Lira", curNote: "high inflation",
@@ -48,10 +54,10 @@ const rows = order.map(slug => {
 });
 
 const others = otherClusters('/compare/middle-east');
-const checkedLabel = 'Jul 2026';
-const checkedISO = '2026-07-26';
-const title = 'Middle East for travel money: the UAE, Turkey and Egypt compared (2026) | True Trip Costs';
-const description = 'A side-by-side money comparison of the UAE, Turkey and Egypt for US travelers: daily cost, cash versus card, tipping, taxis, currency and which needs a visa, with a clear pick. Checked July 2026.';
+const checkedLabel = 'Aug 2026';
+const checkedISO = '2026-08-02';
+const title = 'Middle East travel money: the UAE, Oman, Turkey and Egypt compared | True Trip Costs';
+const description = 'A side-by-side money comparison of the UAE, Oman, Turkey and Egypt for US travelers: daily cost, cash versus card, tipping, taxis and currency, with a clear pick. Checked August 2026.';
 ---
 
 <Base title={title} description={description}>
@@ -59,15 +65,15 @@ const description = 'A side-by-side money comparison of the UAE, Turkey and Egyp
   <main class="wrap se">
     <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Compare', href: '/compare' }, { label: 'Middle East' }]} />
     <div class="ctx"><span class="stamp">Checked {checkedLabel}</span> <span class="se-ctxtxt">Middle East &middot; money comparison</span></div>
-    <h1>The Middle East for travel money, three countries compared</h1>
-    <p class="se-lede">The UAE, Turkey and Egypt are three very different trips, and the money side splits them cleanly, from the cashless Gulf to cash-first Egypt. Here is how they compare so you can plan with eyes open. Our read as the True Trip Costs desk, checked {checkedLabel}.</p>
+    <h1>The Middle East for travel money, four countries compared</h1>
+    <p class="se-lede">The UAE, Oman, Turkey and Egypt are four very different trips, and the money side splits them cleanly, from the cashless Gulf to cash-first Egypt. Here is how they compare so you can plan with eyes open. Our read as the True Trip Costs desk, checked {checkedLabel}.</p>
 
-    <RegionMap region={meMap} maxWidth={480} alt="Outline map of the Middle East and eastern Mediterranean with Turkey, Egypt and the United Arab Emirates highlighted" />
+    <RegionMap region={meMap} maxWidth={480} alt="Outline map of the Middle East and eastern Mediterranean with Turkey, Egypt, Oman and the United Arab Emirates highlighted" />
 
     <div class="se-pick">
       <p class="se-pick-lab">The short answer</p>
       <p class="se-pick-main"><b>The UAE</b> is the easiest on the money side.</p>
-      <p class="se-pick-nuance">Best all-round value? <a href="/turkey">Turkey</a>. Iconic history on a budget? <a href="/egypt">Egypt</a>.</p>
+      <p class="se-pick-nuance">Quieter Gulf trip? <a href="/oman">Oman</a>. Best all-round value? <a href="/turkey">Turkey</a>. Iconic history on a budget? <a href="/egypt">Egypt</a>.</p>
     </div>
 
     <section class="se-matrix-sec" aria-label="Money comparison matrix">
@@ -107,14 +113,14 @@ const description = 'A side-by-side money comparison of the UAE, Turkey and Egyp
         </table>
       </div>
       <p class="mx-legend">
-        <b>Reading this.</b> Daily cost is a rough 1 to 4 scale across these three (more dots, pricier day), the desk's own read rather than a precise figure. Taxi ease reflects each country's local picture: <span class="cx-chip cx-low">Easy</span> is straightforward, <span class="cx-chip cx-medium">Some care</span> means a couple of things to watch. Tap any country for the detail behind its row.
+        <b>Reading this.</b> Daily cost is a rough 1 to 4 scale across these four (more dots, pricier day), the desk's own read rather than a precise figure. Taxi ease reflects each country's local picture: <span class="cx-chip cx-low">Easy</span> is straightforward, <span class="cx-chip cx-medium">Some care</span> means a couple of things to watch. Tap any country for the detail behind its row.
       </p>
     </section>
 
     <section class="se-sec">
       <p class="lab">The honest headline</p>
-      <h2>Three different trips, split cleanly by how you pay</h2>
-      <p class="se-body">These three could hardly be more different on money. The <b>UAE</b> is close to <b>cashless</b> and the priciest, with the dirham <b>pegged to the US dollar</b> so the rate never moves. <b>Turkey</b> is the best <b>value</b>, cards work in the cities while cash still matters in markets, and the one quirk is the <b>lira</b>, which high inflation keeps moving. <b>Egypt</b> is the <b>cheapest</b> and the most hands-on: cash rules outside the hotels, and tipping (<b>baksheesh</b>) is expected almost everywhere. One more split: Egypt is the only one of the three that <b>needs a visa</b>, while the UAE and Turkey are visa-free for US citizens.</p>
+      <h2>Four different trips, split cleanly by how you pay</h2>
+      <p class="se-body">These four could hardly be more different on money. The <b>UAE</b> is close to <b>cashless</b> and the priciest, with the dirham <b>pegged to the US dollar</b> so the rate never moves. <b>Oman</b> is the quieter Gulf option at similar prices, also <b>dollar-pegged</b>, but you handle real cash there: cards cover Muscat's hotels and malls while the souks, street taxis and the whole interior do not. <b>Turkey</b> is the best <b>value</b>, cards work in the cities while cash still matters in markets, and the one quirk is the <b>lira</b>, which high inflation keeps moving. <b>Egypt</b> is the <b>cheapest</b> and the most hands-on: cash rules outside the hotels, and tipping (<b>baksheesh</b>) is expected almost everywhere. One more split: <b>Egypt is the only one that needs a visa</b>, while the UAE and Turkey are visa-free and Oman waives it for stays of 14 days or less.</p>
     </section>
 
     <section class="se-sec">
@@ -139,13 +145,14 @@ const description = 'A side-by-side money comparison of the UAE, Turkey and Egyp
 
     <section class="se-sec">
       <p class="lab">Quick picks</p>
-      <h2>If you only remember five things</h2>
+      <h2>If you only remember six things</h2>
       <ul class="picks">
         <li><b>Easiest on the money side:</b> the UAE, close to cashless.</li>
         <li><b>Cheapest:</b> Egypt, by a distance.</li>
         <li><b>Best all-round value:</b> Turkey, cheaper than the Gulf with more variety.</li>
-        <li><b>Only one needs a visa:</b> Egypt; the UAE and Turkey are visa-free.</li>
-        <li><b>Three currencies:</b> the dirham is pegged to the dollar, the lira swings, the pound floats.</li>
+        <li><b>The quiet Gulf alternative:</b> Oman, Gulf ease with real cash in the souks.</li>
+        <li><b>Only one needs a visa:</b> Egypt; the UAE and Turkey are visa-free, and Oman waives it up to 14 days.</li>
+        <li><b>Four currencies:</b> the dirham and the rial are both pegged to the dollar, the lira swings, the pound floats.</li>
       </ul>
     </section>
 
