@@ -18,6 +18,7 @@ export default {
     QAR: 3.64,
     BHD: 0.376,
     SAR: 3.75,
+    KWD: 0.307,
     ARS: 1474.74,
     AUD: 1.4362,
     AWG: 1.79,

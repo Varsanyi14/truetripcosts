@@ -454,6 +454,17 @@ export const seasons = [
     note: "Crowds and rates swing hard around cherry blossom and Golden Week, and the shoulder months give similar weather with less of both. No price figure is quoted because it varies too much by city and route."
   },
   {
+    country: "Kuwait", slug: "kuwait", hasGuide: true, region: "Middle East",
+    peak: "Nov to Mar", shoulder: "Apr, Oct", off: "May to Sep",
+    months: ["peak","peak","peak","shoulder","off","off","off","off","off","shoulder","peak","peak"],
+    peakDriver: "Mild winter weather and the kashta season, when Kuwaiti families camp in the desert from roughly November to March",
+    weatherNote: "Kuwait records some of the highest temperatures on earth in summer, regularly past 50C in July and August, and it is genuinely dangerous rather than merely uncomfortable. Nothing outdoors is realistic then. Ramadan and Eid shift earlier each year and change opening hours substantially",
+    cheapestWindow: "Jun to Sep, for the obvious reason",
+    avoidIfBudget: "National Day and Liberation Day in late February, when the city fills up",
+    confidence: "high",
+    note: "The most extreme summer in the Gulf and the most pleasant winter, so the season choice is not close. Late February has the added draw of National and Liberation Day celebrations, which is the one time hotel rooms tighten. Note that alcohol is prohibited outright, which quietly changes what an evening costs compared with Dubai or Manama."
+  },
+  {
     country: "Laos", slug: "laos", hasGuide: true, region: "Asia",
     peak: "Nov to Feb",
     shoulder: "Mar, Oct",

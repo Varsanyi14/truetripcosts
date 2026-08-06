@@ -67,6 +67,31 @@ const BY_SLUG = {
       "because we could not verify a stable Saudi-specific URL at this check. Select Saudi " +
       "Arabia from the list for the current wording.",
   },
+  kuwait: {
+    level: "Level 3",
+    label: "Reconsider Travel",
+    checked: "Aug 2026",
+    checkedISO: "2026-08-02",
+    url: "https://kw.usembassy.gov/travel-advisory-kuwait-june-28-2026/",
+    body:
+      "The US State Department rates {name} <b>Level 3, Reconsider Travel</b>, citing armed " +
+      "conflict, landmines and crime. It follows the hostilities between the United States and " +
+      "Iran that began on February 28, 2026, with an ongoing threat of drone and missile " +
+      "attacks and seriously disrupted commercial flights. Kuwait goes further than its " +
+      "neighbours in one respect: on March 5, 2026 the <b>US Embassy in Kuwait suspended " +
+      "operations</b>, including routine consular services, and the State Department is running " +
+      "a departure assistance process for US citizens who want to leave.",
+    money:
+      "Two money consequences, and the second is specific to Kuwait. First, as elsewhere in the " +
+      "region, travel insurance bought after an advisory is already public will generally not " +
+      "pay out for cancelling because of that advisory, so what helps is a <b>refundable rate</b>, " +
+      "the airline's own rebooking policy, or a <b>cancel for any reason</b> upgrade. The FAA has " +
+      "also issued a NOTAM or Special Federal Aviation Regulation covering civil aviation in the " +
+      "region. Second, <b>with the embassy shut there is no walk-in consular help</b>: replacing a " +
+      "lost passport is not the routine errand it normally is. Carry a photocopy, keep a scan " +
+      "somewhere you can reach without your bag, and treat travel insurance as load-bearing " +
+      "rather than optional.",
+  },
   uae: {
     ...GULF_2026,
     url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/UnitedArabEmirates.html",
