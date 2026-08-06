@@ -606,6 +606,17 @@ export const seasons = [
     note: "One of the most predictable patterns anywhere: the comfortable season and the expensive season are the same months. The wrinkle is events. Doha is small enough that a single Formula One or major football weekend can do more to your room rate than the season does, so check the calendar before you fix dates."
   },
   {
+    country: "Saudi Arabia", slug: "saudi-arabia", hasGuide: true, region: "Middle East",
+    peak: "Nov to Mar", shoulder: "Apr, Oct", off: "May to Sep",
+    months: ["peak","peak","peak","shoulder","off","off","off","off","off","shoulder","peak","peak"],
+    peakDriver: "Cool, dry winter weather, the AlUla season and the events calendar, and the Riyadh Season running through the cooler months",
+    weatherNote: "May to Sep is brutal across most of the country, regularly over 45C, and the interior is the worst of it. The mountains of Asir around Abha are the genuine exception, cooler and greener in summer and busy with domestic visitors precisely then. Ramadan and Hajj both shift earlier each year and change everything about opening hours, crowds and prices",
+    cheapestWindow: "May to Sep, outside Hajj",
+    avoidIfBudget: "The Hajj season, when travel and accommodation across the country tighten and price, plus AlUla's peak winter weeks",
+    confidence: "high",
+    note: "The comfortable months and the expensive months are the same, as everywhere in the Gulf. Two Saudi-specific wrinkles: Hajj moves the whole country's travel economy for several weeks each year, and Asir in the southwest inverts the national pattern by being at its best in summer."
+  },
+  {
     country: "Singapore", slug: "singapore", hasGuide: true, region: "Asia",
     peak: "Dec to early Jan, Chinese New Year, and the Grand Prix week",
     shoulder: "Feb to Apr, Jul to Aug",

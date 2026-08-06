@@ -17,6 +17,7 @@ import uae from './uae.js';
 import oman from './oman.js';
 import qatar from './qatar.js';
 import bahrain from './bahrain.js';
+import saudiArabia from './saudi-arabia.js';
 import india from './india.js';
 import czechia from './czechia.js';
 import canada from './canada.js';
@@ -56,4 +57,4 @@ import namibia from './namibia.js';
 import aruba from './aruba.js';
 import philippines from './philippines.js';
 
-export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, oman, qatar, bahrain, india, czechia, canada, switzerland, austria, turkey, egypt, colombia, brazil, argentina, jamaica, ireland, bahamas, iceland, norway, sweden, denmark, southKorea, singapore, australia, newZealand, morocco, southAfrica, taiwan, hongKong, poland, hungary, croatia, cambodia, laos, ecuador, elSalvador, georgia, china, sriLanka, namibia, aruba, philippines];
+export const countries = [vietnam, japan, mexico, thailand, italy, france, spain, portugal, uk, greece, indonesia, germany, netherlands, costaRica, dominicanRepublic, uae, oman, qatar, bahrain, saudiArabia, india, czechia, canada, switzerland, austria, turkey, egypt, colombia, brazil, argentina, jamaica, ireland, bahamas, iceland, norway, sweden, denmark, southKorea, singapore, australia, newZealand, morocco, southAfrica, taiwan, hongKong, poland, hungary, croatia, cambodia, laos, ecuador, elSalvador, georgia, china, sriLanka, namibia, aruba, philippines];

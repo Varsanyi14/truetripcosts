@@ -59,6 +59,14 @@ const BY_SLUG = {
       "which is the concrete reason flights into Bahrain have been disrupted rather than a " +
       "general caution.",
   },
+  "saudi-arabia": {
+    ...GULF_2026,
+    url: "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories.html",
+    note:
+      "This link goes to the State Department's advisory index rather than a country page, " +
+      "because we could not verify a stable Saudi-specific URL at this check. Select Saudi " +
+      "Arabia from the list for the current wording.",
+  },
   uae: {
     ...GULF_2026,
     url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/UnitedArabEmirates.html",
