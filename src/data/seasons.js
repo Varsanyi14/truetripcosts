@@ -584,6 +584,17 @@ export const seasons = [
     note: "The Algarve carries almost all of the seasonality, while Lisbon and Porto are much steadier and pleasant in the shoulder months. Madeira runs on its own clock, with New Year its single biggest week."
   },
   {
+    country: "Qatar", slug: "qatar", hasGuide: true, region: "Middle East",
+    peak: "Nov to Mar", shoulder: "Apr, Oct", off: "May to Sep",
+    months: ["peak","peak","peak","shoulder","off","off","off","off","off","shoulder","peak","peak"],
+    peakDriver: "Cool, dry winter weather, a dense events calendar from Formula One to the tennis and the shopping festival weeks, and the Christmas and New Year window",
+    weatherNote: "May to Sep is extremely hot and humid, regularly over 40C, which is exactly when hotel rates fall hardest. Qatar leans into it with an indoor summer programme rather than pretending otherwise, and the malls, museums and souq arcades are built for it. Ramadan and Eid shift earlier each year and change opening hours",
+    cheapestWindow: "Jun to Sep",
+    avoidIfBudget: "Christmas and New Year, and any major event weekend, which move hotel prices sharply in a city with a finite number of rooms",
+    confidence: "high",
+    note: "One of the most predictable patterns anywhere: the comfortable season and the expensive season are the same months. The wrinkle is events. Doha is small enough that a single Formula One or major football weekend can do more to your room rate than the season does, so check the calendar before you fix dates."
+  },
+  {
     country: "Singapore", slug: "singapore", hasGuide: true, region: "Asia",
     peak: "Dec to early Jan, Chinese New Year, and the Grand Prix week",
     shoulder: "Feb to Apr, Jul to Aug",
