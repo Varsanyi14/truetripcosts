@@ -50,6 +50,15 @@ const BY_SLUG = {
       "suspended routine consular services, so replacing a lost passport in country is not the " +
       "routine errand it normally is.",
   },
+  bahrain: {
+    ...GULF_2026,
+    url: "https://bh.usembassy.gov/travel-advisory-bahrain-march-2026/",
+    note:
+      "Bahrain's ordered departure was dated March 2, 2026, and the FAA has issued a Special " +
+      "Federal Aviation Regulation and a NOTAM covering civil aviation in and near Bahrain, " +
+      "which is the concrete reason flights into Bahrain have been disrupted rather than a " +
+      "general caution.",
+  },
   uae: {
     ...GULF_2026,
     url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/UnitedArabEmirates.html",

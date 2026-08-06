@@ -105,6 +105,17 @@ export const seasons = [
     note: "Cheapest and riskiest are the same weeks, and that is the whole trade. If you take the Sep to Oct window, book refundable and watch the forecast. Nov and early Dec are the quieter compromise, past most of the risk and before winter rates land."
   },
   {
+    country: "Bahrain", slug: "bahrain", hasGuide: true, region: "Middle East",
+    peak: "Nov to Mar", shoulder: "Apr, Oct", off: "May to Sep",
+    months: ["peak","peak","peak","shoulder","off","off","off","off","off","shoulder","peak","peak"],
+    peakDriver: "Mild, dry winter weather, the Formula One Grand Prix, and the Christmas and New Year window",
+    weatherNote: "May to Sep is very hot and humid, which is when rates fall hardest on an island with a finite number of hotel rooms. Ramadan and Eid shift earlier each year and change opening hours and the feel of the place considerably",
+    cheapestWindow: "Jun to Sep",
+    avoidIfBudget: "Grand Prix weekend, when rooms are booked out and priced accordingly, plus Christmas and New Year",
+    confidence: "high",
+    note: "Bahrain is small and its hotel stock is limited, so single events move prices more than the season does. The Grand Prix is the obvious one: rates across Manama and Juffair rise sharply for that weekend. Check the calendar before you fix dates, then pick your month."
+  },
+  {
     country: "Brazil", slug: "brazil", hasGuide: true, region: "Americas",
     peak: "Dec to Mar, with Carnival the sharpest spike",
     shoulder: "Apr to May, Sep to Nov",
