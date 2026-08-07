@@ -38,7 +38,7 @@ export const moneyRules = {
       'Eight money habits for US travelers in Costa Rica: match the currency, insist on la maria, skip the second tip line, refuse conversion to dollars.',
     h1: 'Costa Rica money rules',
     standfirst:
-      'Eight things worth remembering while you are there. Each one links to the fuller explanation in the guide.',
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     // Shown as "Rules as of {checked}". Bump this when a rule changes, not on a
     // routine guide refresh, since the point of the page is that it stays put.
     checked: 'August 2026',

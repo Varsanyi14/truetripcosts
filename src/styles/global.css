@@ -770,3 +770,14 @@
   .to-top:focus-visible{outline:2px solid var(--teal-deep);outline-offset:2px}
   .to-top svg{width:20px;height:20px;display:block}
   @media (prefers-reduced-motion:reduce){.to-top{transition:opacity .001s}}
+
+/* Money rules pocket card link bar. Used on country guides and their spokes, so it lives
+   here rather than scoped to one page. Its icon is the brand's amber ledger double-line,
+   which is the visual tie back to the card it opens. */
+.rulesbar{display:flex;align-items:center;gap:13px;margin:26px 0 0;padding:14px 18px;border:1px solid rgba(14,122,95,.2);background:rgba(14,122,95,.05);border-radius:var(--radius);text-decoration:none;color:var(--ink);transition:border-color .2s ease,background .2s ease}
+.rulesbar:hover{border-color:var(--teal);background:rgba(14,122,95,.08)}
+.rulesbar-mk{flex:none;width:34px;height:34px;border-radius:999px;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px}
+.rulesbar-mk span{display:block;width:16px;height:3px;border-radius:2px;background:#E8A54A}
+.rulesbar-tx{flex:1;min-width:0;font-size:14.5px;line-height:1.45;color:#3B4A46}
+.rulesbar-tx b{color:var(--ink);font-weight:600}
+.rulesbar-arw{flex:none;color:var(--teal-deep)}

@@ -7,6 +7,7 @@ import Symbol from '../components/Symbol.astro';
 import { topicIcon } from '../data/topics.js';
 import { countries } from '../data/index.js';
 import { comparisonsFor } from '../data/region-comparisons.js';
+import { rulesFor } from '../data/money-rules.js';
 import fs from 'node:fs';
 
 export function getStaticPaths() {
@@ -21,6 +22,10 @@ const petSpoke = (country.spokes || []).find(s => s.topic === 'pets' && s.live !
 // If this country belongs to a regional comparison cluster, surface a slim link
 // to that comparison from its hub. Data-driven via src/data/region-comparisons.js.
 const comparisons = comparisonsFor(country.slug, countries);
+// If this country has a money rules pocket card, link to it from the guide. Without an
+// inbound link the card is an orphan: readers never find it and it receives no internal
+// authority from the cluster it is meant to support.
+const moneyRules = rulesFor(country.slug);
 ---
 <Base title={country.title} description={country.description} ogImage={ogImage}>
   <Nav />
@@ -56,6 +61,13 @@ const comparisons = comparisonsFor(country.slug, countries);
           ))}
         </ul>
       </section>
+    )}
+    {moneyRules && (
+      <a class="rulesbar" href={'/' + country.slug + '/rules'}>
+        <span class="rulesbar-mk" aria-hidden="true"><span></span><span></span></span>
+        <span class="rulesbar-tx">Going soon? Save the <b>{country.name} money rules</b> to your phone, the short pocket version to glance at while you are there.</span>
+        <svg class="rulesbar-arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     )}
     {comparisons.map(cmp => (
       <a class="regionbar" href={cmp.href}>
