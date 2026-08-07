@@ -30,6 +30,68 @@
 // both (scripts/check-content.py).
 
 export const moneyRules = {
+  'united-kingdom': {
+    title: 'UK money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in the UK: pay in pounds, get the ETA before you fly, the 12.5 percent is the tip, and there is no VAT refund.',
+    h1: 'UK money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        lead: true,
+        h: 'Pay in pounds, whatever the screen suggests',
+        p: 'Terminals and cash machines will float the dollar option, and taking it hands over 3 to 8 percent. Sterling every time, and your own bank does the sum.',
+        href: '/united-kingdom/cash-or-card',
+        linkLabel: 'Cards, cash and cashpoints',
+      },
+      {
+        // Not strictly an in-country rule, but the consequence of missing it is being
+        // refused at the gate, which outranks every other item on the card.
+        h: 'No ETA, no boarding',
+        p: 'Since February 2026 US visitors need one to fly, and the airline stops you without it. Apply through the official government app, not the copycat sites that resell it at a markup.',
+        href: '/united-kingdom/eta',
+        linkLabel: 'What the UK ETA involves',
+      },
+      {
+        h: 'Some cash machines charge, most do not',
+        p: 'The ones wedged into corner shops and the Euronet units at airports and big stations all take a cut. A LINK machine at a bank costs nothing, and the screen says so before you commit.',
+        href: '/united-kingdom/cash-or-card',
+        linkLabel: 'Getting cash without a fee',
+      },
+      {
+        h: 'Do not buy an Oyster card',
+        p: 'The card or phone already in your pocket opens the same gates at the same price, and hits the same daily ceiling once you have ridden enough. London buses stopped taking coins years ago.',
+        href: '/united-kingdom/taxis-and-apps',
+        linkLabel: 'Getting around London',
+      },
+      {
+        h: 'That 12.5 percent on the bill is the tip',
+        p: 'Restaurants add it, London ones especially, and it is discretionary, so you may ask for it off if the service earned that. Nothing further is needed. At a pub bar you tip nothing at all.',
+        href: '/united-kingdom/tipping',
+        linkLabel: 'Service charges, and pubs',
+      },
+      {
+        h: 'Britain will not refund your VAT',
+        p: 'The visitor scheme ended in 2021 and has never returned, so the 20 percent stays put on anything you carry out. Shopping here is not the tax-back exercise the rest of Europe trains you to expect.',
+        href: '/united-kingdom/vat-refund',
+        linkLabel: 'Why there is no VAT refund',
+      },
+      {
+        h: 'Leave Heathrow on the Elizabeth line, not in a cab',
+        p: 'One flat fare into the middle of London, a fraction of what a black cab wants for the same journey, and in traffic it usually arrives sooner.',
+        href: '/united-kingdom/taxis-and-apps',
+        linkLabel: 'Cabs, apps and the airport run',
+      },
+      {
+        h: 'Scottish notes are sterling, but spend them up there',
+        p: 'Banks in Scotland and Northern Ireland print their own pounds. It is real money, though it does not count as legal tender in England and plenty of shops there will wave it away. Swap them for Bank of England notes before heading south.',
+        href: '/united-kingdom/cash-or-card',
+        linkLabel: 'Notes, and what gets accepted',
+      },
+    ],
+  },
   italy: {
     title: 'Italy money rules: 8 things to remember',
     description:
