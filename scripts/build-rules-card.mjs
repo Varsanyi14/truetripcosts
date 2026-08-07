@@ -74,23 +74,24 @@ function html(slug, data) {
     @font-face{font-family:M;src:url(data:font/woff2;base64,${FONTS.mono500}) format('woff2');font-weight:500}
     @font-face{font-family:S;src:url(data:font/woff2;base64,${FONTS.serif500}) format('woff2');font-weight:500}
     @font-face{font-family:I;src:url(data:font/woff2;base64,${FONTS.sans400}) format('woff2');font-weight:400}
+    :root{--fit:1}
     *{margin:0;padding:0;box-sizing:border-box}
-    body{width:1080px;height:1920px;background:#F5F4EF;font-family:I;display:flex;flex-direction:column;padding:56px 52px 44px}
-    .top{display:flex;align-items:center;gap:20px;margin-bottom:34px}
+    body{width:1080px;height:1920px;background:#F5F4EF;font-family:I;display:flex;flex-direction:column;padding:calc(56px * var(--fit)) 52px calc(44px * var(--fit))}
+    .top{display:flex;align-items:center;gap:20px;margin-bottom:calc(34px * var(--fit))}
     .wm{font-family:M;font-weight:600;font-size:25px;letter-spacing:.14em;text-transform:uppercase;color:#16302C}
     .eyebrow{font-family:M;font-weight:600;font-size:22px;letter-spacing:.16em;text-transform:uppercase;color:#0A5644;margin-bottom:14px}
-    h1{font-family:S;font-weight:500;font-size:76px;line-height:1;letter-spacing:-.02em;color:#16302C;margin-bottom:20px}
-    .stamp{display:inline-block;font-family:M;font-weight:500;font-size:20px;letter-spacing:.05em;text-transform:uppercase;color:#10502C;background:#E7F3EA;border-radius:999px;padding:11px 20px;margin-bottom:30px}
-    .list{display:flex;flex-direction:column;gap:12px;flex:1}
-    .r{display:flex;gap:20px;background:#fff;border:1px solid #E5E3DB;border-radius:16px;padding:20px 24px;align-items:flex-start}
+    h1{font-family:S;font-weight:500;font-size:calc(76px * var(--fit));line-height:1;letter-spacing:-.02em;color:#16302C;margin-bottom:calc(20px * var(--fit))}
+    .stamp{display:inline-block;font-family:M;font-weight:500;font-size:20px;letter-spacing:.05em;text-transform:uppercase;color:#10502C;background:#E7F3EA;border-radius:999px;padding:11px 20px;margin-bottom:calc(30px * var(--fit))}
+    .list{display:flex;flex-direction:column;gap:calc(12px * var(--fit));flex:1}
+    .r{display:flex;gap:20px;background:#fff;border:1px solid #E5E3DB;border-radius:16px;padding:calc(20px * var(--fit)) 24px;align-items:flex-start}
     .r.lead{background:#16302C;border-color:#16302C;border-top:6px solid #F0A83C}
     .n{font-family:M;font-weight:600;font-size:28px;color:#6F6E66;width:34px;flex:none;line-height:1.25}
     .r.lead .n{color:#F0A83C}
-    .h{font-family:S;font-weight:500;font-size:32px;line-height:1.16;color:#16302C;margin-bottom:7px;letter-spacing:-.01em}
+    .h{font-family:S;font-weight:500;font-size:calc(32px * var(--fit));line-height:1.16;color:#16302C;margin-bottom:calc(7px * var(--fit));letter-spacing:-.01em}
     .r.lead .h{color:#fff}
-    .p{font-size:24px;line-height:1.36;color:#3B4A46}
+    .p{font-size:calc(24px * var(--fit));line-height:1.36;color:#3B4A46}
     .r.lead .p{color:#C6D6D0}
-    .foot{display:flex;justify-content:space-between;align-items:center;margin-top:26px;padding-top:20px;border-top:1px solid #E5E3DB}
+    .foot{display:flex;justify-content:space-between;align-items:center;margin-top:calc(26px * var(--fit));padding-top:calc(20px * var(--fit));border-top:1px solid #E5E3DB}
     .url{font-family:M;font-weight:500;font-size:21px;letter-spacing:.04em;color:#16302C;white-space:nowrap}
     .note{font-size:18px;color:#6F6E66;text-align:right;max-width:430px;line-height:1.35;padding-left:24px}
   </style></head><body>
@@ -125,10 +126,26 @@ for (const slug of slugs) {
   await page.setContent(html(slug, data), { waitUntil: 'load' });
   await page.evaluate(() => document.fonts.ready);
 
-  // Overflow means a rule was added or the copy grew past the frame. Fail loudly rather
-  // than quietly shipping a card with a rule cropped off the bottom.
-  const overflow = await page.evaluate(() => document.body.scrollHeight - 1920);
-  if (overflow > 0) throw new Error(`Card content overflows by ${overflow}px for "${slug}". Shorten a rule or raise the frame height.`);
+  // Countries differ in how much their rules need saying: Mexico's run noticeably longer
+  // than Costa Rica's. Rather than trimming good copy to fit a fixed layout, the card
+  // scales itself down until it fits, in small steps, and reports what it settled on.
+  // The floor is 0.82 because below that the body type stops being comfortable at arm's
+  // length, which is the whole point of the card, so that case fails loudly instead.
+  let fit = 1;
+  const FLOOR = 0.82;
+  const overflowAt = async (v) => page.evaluate((val) => {
+    document.documentElement.style.setProperty('--fit', String(val));
+    return document.body.scrollHeight - 1920;
+  }, v);
+  let over = await overflowAt(fit);
+  while (over > 0 && fit > FLOOR) {
+    fit = Math.round((fit - 0.02) * 100) / 100;
+    over = await overflowAt(fit);
+  }
+  if (over > 0) {
+    throw new Error(`"${slug}" still overflows by ${over}px at the ${FLOOR} floor. Shorten a rule rather than shrinking the type further.`);
+  }
+  if (fit < 1) console.log(`  (scaled to ${fit} to fit ${data.rules.length} rules)`);
 
   const out = path.join(root, 'public', 'rules-cards', `${slug}.jpg`);
   fs.mkdirSync(path.dirname(out), { recursive: true });

@@ -30,6 +30,68 @@
 // both (scripts/check-content.py).
 
 export const moneyRules = {
+  mexico: {
+    title: 'Mexico money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in Mexico: pay in pesos, avoid airport ATMs, check the bill for propina, and the car insurance no quote includes.',
+    h1: 'Mexico money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        // The dollar sign is the trap almost nobody sees coming, and it sits on every
+        // menu in the country, so it leads.
+        lead: true,
+        h: 'That dollar sign on the menu means pesos',
+        p: 'Prices are written with a $ and they are not dollars. If a terminal or an ATM then offers to bill you in actual dollars, turn it down: the rate baked into that offer takes 5 to 10 percent.',
+        href: '/mexico/cash-or-card',
+        linkLabel: 'Paying in pesos, not dollars',
+      },
+      {
+        h: 'Take cash out inside a bank, never at the airport',
+        p: 'Machines in arrivals halls and on tourist streets carry the fattest fees and see the most tampering. Use a BBVA, Banorte, Santander or HSBC lobby, in daylight.',
+        href: '/mexico/money-scams',
+        linkLabel: 'The money traps that keep recurring',
+      },
+      {
+        h: 'You will want pesos in your pocket every day',
+        p: 'Hotels, resorts and city restaurants take cards happily. Taxis, market stalls, taco stands and tips do not, and some places add 3 to 5 percent to accept one anyway.',
+        href: '/mexico/cash-or-card',
+        linkLabel: 'How much cash to carry',
+      },
+      {
+        h: 'Tipping is real here, and it wants to be cash',
+        p: 'Around 10 to 15 percent in a restaurant, more at a resort. Give it in pesos: dollars leave the staff to go and change them at a rate that costs them.',
+        href: '/mexico/tipping',
+        linkLabel: 'What to tip, and to whom',
+      },
+      {
+        h: 'Read the bill before you add that tip',
+        p: 'Resorts and tourist restaurants often print propina or servicio on it, which means the service charge is already sitting there. Add your own and it has been paid twice.',
+        href: '/mexico/tipping',
+        linkLabel: 'The resort double-tip trap',
+      },
+      {
+        h: 'The rental quote is not the rental price',
+        p: 'Mexico insists on its own liability cover, sold as TPL or seguro de responsabilidad civil, and no US policy or credit card counts instead. It is the gap between the number you booked online and what the desk actually charges.',
+        href: '/mexico/renting-a-car',
+        linkLabel: 'What a rental really costs',
+      },
+      {
+        h: 'Uber cannot pick you up at Cancun airport',
+        p: 'That run belongs to the taxi union, so settle the number before the door shuts. Once you are in town the apps quote the fare up front, which street taxis do not.',
+        href: '/mexico/taxis-and-apps',
+        linkLabel: 'Uber, DiDi and the airport catch',
+      },
+      {
+        h: 'Heading to Cancun or Tulum? Pay Visitax first',
+        p: 'It is a Quintana Roo state charge, paid online before you travel, and the QR code gets scanned on your way back out of the country. Leaving it to the airport is the expensive route.',
+        href: '/mexico/fmm-and-visitax',
+        linkLabel: 'Visitax and the FMM tourist card',
+      },
+    ],
+  },
   'costa-rica': {
     // Kept short deliberately. Rendered title is 44 characters, description 148,
     // both inside the limits where Google stops showing the text.
