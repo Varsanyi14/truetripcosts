@@ -117,7 +117,7 @@ export default {
   keyFacts: [
     { label: "International Visitor Levy (IVL)", value: "NZD 100 per visitor, paid with your NZeTA, non-refundable", status: "enacted", effective: "2024-10-01", source: "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/nzeta", checked: "2026-07-12" },
     { label: "NZeTA (entry authorization)", value: "Required for US visitors: NZD 17 in the app or NZD 23 online, valid two years, multiple entry", status: "enacted", effective: null, source: "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/nzeta", checked: "2026-07-12" },
-    { label: "Card surcharge ban", value: "A ban on in-store card surcharges was promised for May 2026 but stalled in Parliament, so surcharges still apply", status: "proposed", effective: null, source: "https://www.rnz.co.nz/news/business/597751/card-payment-surcharge-ban-to-go-ahead-finance-minister-says", checked: "2026-07-12" }
+    { label: "Card surcharge ban", value: "A ban on in-store card surcharges was promised for May 2026 but stalled in Parliament, so surcharges still apply", status: "proposed", effective: null, source: "https://www.rnz.co.nz/news/business/597751/card-payment-surcharge-ban-to-go-ahead-finance-minister-says", checked: "2026-08-03" }
   ],
 
   traps: [

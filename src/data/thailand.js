@@ -103,7 +103,7 @@ export default {
   // only a proposal, with no confirmed start date and no clean government page, so
   // it carries no source link and an unmistakable "proposed" marker.
   keyFacts: [
-    { label: "300-baht air arrival fee", value: "300 baht (about $9) for air arrivals, still not being collected", status: "proposed", effective: null, source: null, checked: "2026-07-25" }
+    { label: "300-baht air arrival fee", value: "300 baht (about $9) for air arrivals, still not being collected", status: "proposed", effective: null, source: null, checked: "2026-08-03" }
   ],
 
   traps: [
