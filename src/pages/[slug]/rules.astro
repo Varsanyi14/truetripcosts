@@ -1,0 +1,331 @@
+---
+import Base from '../../layouts/Base.astro';
+import Footer from '../../components/Footer.astro';
+import LogoMark from '../../components/LogoMark.astro';
+import { countries } from '../../data/index.js';
+import { rulesFor } from '../../data/money-rules.js';
+
+// The money rules pocket card, at /{country}/rules. A phone page, pulled up while the
+// reader is actually in the country: the distilled version of the guide rather than a
+// second copy of it.
+//
+// Routing: this sits alongside [slug]/[spoke].astro, and Astro prefers the static
+// "rules" segment over the dynamic "[spoke]" one, so there is no collision. No country
+// has a spoke slugged "rules" either, so nothing is shadowed today; that stays true as
+// long as nobody adds one.
+//
+// Rollout is data-driven. A country gets a card when it appears in money-rules.js AND
+// is live, so this page cannot outrun the guide it links to.
+export function getStaticPaths() {
+  return countries
+    .filter(c => c.live && rulesFor(c.slug))
+    .map(c => ({ params: { slug: c.slug }, props: { country: c, data: rulesFor(c.slug) } }));
+}
+
+const { country, data } = Astro.props;
+const lead = data.rules.find(r => r.lead) || data.rules[0];
+const rest = data.rules.filter(r => r !== lead);
+const guideHref = '/' + country.slug;
+
+// Breadcrumbs as structured data only, no visual trail. The hierarchy is worth giving
+// Google, but a crumb row costs real height on a phone and this page is trying to be
+// glanceable above all else.
+const site = 'https://truetripcosts.com';
+const crumbs = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: site + '/' },
+    { '@type': 'ListItem', position: 2, name: country.name, item: site + guideHref },
+    { '@type': 'ListItem', position: 3, name: 'Money rules' },
+  ],
+};
+---
+
+<Base title={data.title} description={data.description} mono={true}>
+  <div class="card-page">
+    <header class="rhead">
+      <a class="rbrand" href="/">
+        <LogoMark size={44} />
+        <span class="rbrand-tx">True Trip Costs<small>The money side of travel</small></span>
+      </a>
+      <a class="rhead-link" href={guideHref}>Full guide</a>
+    </header>
+
+    <main class="rwrap">
+      <p class="reyebrow">{country.name} / Money rules</p>
+      <h1>{data.h1}</h1>
+      <p class="rstand">{data.standfirst}</p>
+
+      <div class="rmeta">
+        <span class="rstamp">Rules as of {data.checked}</span>
+        <button class="rprint" type="button" data-print>
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg>
+          Save or print
+        </button>
+      </div>
+
+      <ol class="rlist">
+        <li>
+          <a class="rule rule-lead" href={lead.href}>
+            <span class="rnum">1</span>
+            <span class="rbody">
+              <span class="rh">{lead.h}</span>
+              <span class="rp">{lead.p}</span>
+              <span class="rlink">{lead.linkLabel}
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </span>
+          </a>
+        </li>
+        {rest.map((r, i) => (
+          <li>
+            <a class="rule" href={r.href}>
+              <span class="rnum">{i + 2}</span>
+              <span class="rbody">
+                <span class="rh">{r.h}</span>
+                <span class="rp">{r.p}</span>
+                <span class="rlink">{r.linkLabel}
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                </span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ol>
+
+      <a class="rguide" href={guideHref}>
+        <span class="rguide-tx">
+          <span class="rguide-h">Full {country.name} money guide</span>
+          <span class="rguide-p">Current costs, ATM fees, what a day actually runs, and the sources behind every figure.</span>
+        </span>
+        <svg class="rguide-arw" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+
+      <p class="rhonest">
+        These are the rules that do not really change, which is why they are worth
+        carrying. Exact fees, rates and prices do move, so check the <a href={guideHref}>{country.name} guide</a> for anything current before you rely on a number.
+      </p>
+
+      <p class="rprinturl">truetripcosts.com{guideHref}/rules</p>
+
+      <section class="rnews">
+        <p class="rnews-h">Going somewhere else?</p>
+        <p class="rnews-p">
+          We will send the money rules for wherever you are headed next, free, and tell
+          you if something shifts before you go.
+        </p>
+        <button class="btn" type="button" data-open-signup>Get rules for any country</button>
+      </section>
+    </main>
+
+    <Footer />
+  </div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(crumbs)} />
+
+  <script is:inline>
+    (function () {
+      var b = document.querySelector('[data-print]');
+      if (b) b.addEventListener('click', function () { window.print(); });
+    })();
+  </script>
+</Base>
+
+<style>
+  /* Money rules card. Mobile is the real target, so the base rules here are the phone
+     layout and the only breakpoint widens things for desktop. Deliberately narrower
+     than the site's 760px .wrap: at arm's length a single short column reads faster,
+     and it keeps the page feeling like a card rather than an article. */
+  .card-page {
+    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    /* The brighter on-dark amber. The site's global --amber (#B45309) is tuned for
+       amber TEXT on paper and goes muddy as a signature bar on ink, so the signature
+       gets its own token instead of overriding a shared one. */
+    --amber-sig: #E8A54A;
+  }
+
+  /* Header: brand mark plus one escape hatch to the guide. No site nav on purpose,
+     this page is meant to be saved to a home screen and glanced at, and a mega menu
+     works against that. The mark and the footer carry the routes back into the site. */
+  .rhead {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    max-width: 620px; margin: 0 auto; padding: 14px 18px;
+  }
+  .rbrand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; }
+  .rbrand-tx { font-weight: 600; font-size: 15px; letter-spacing: -.01em; line-height: 1.15; }
+  .rbrand-tx small { display: block; font-weight: 400; font-size: 10.5px; color: var(--muted); letter-spacing: 0; margin-top: 2px; }
+  /* Below ~360px the tagline forced the wordmark itself onto two lines and the header
+     grew to three rows, eating the space rule one should occupy. The mark and the name
+     carry the brand on their own at that width. */
+  @media (max-width: 359px) {
+    .rbrand-tx small { display: none; }
+    .rbrand-tx { font-size: 14px; }
+  }
+  .rhead-link {
+    flex: none; font-family: var(--mono); font-size: 11.5px; font-weight: 500;
+    letter-spacing: .04em; text-transform: uppercase; color: var(--teal-deep);
+    text-decoration: none; border: 1px solid var(--line); border-radius: 999px;
+    padding: 9px 13px; background: var(--card);
+  }
+  .rhead-link:hover { border-color: var(--teal); }
+
+  .rwrap { max-width: 620px; margin: 0 auto; padding: 6px 18px 0; }
+
+  .reyebrow {
+    font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--teal-deep); margin: 0 0 10px;
+  }
+  .card-page h1 {
+    font-family: var(--serif); font-weight: 500; font-size: clamp(30px, 8vw, 40px);
+    line-height: 1.04; letter-spacing: -.02em; margin: 0 0 12px;
+  }
+  .rstand { font-size: 16px; line-height: 1.5; color: #3B4A46; margin: 0 0 18px; }
+
+  .rmeta { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin: 0 0 22px; }
+  .rstamp {
+    font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .03em;
+    text-transform: uppercase; color: #10502C; background: var(--green-bg);
+    border-radius: 999px; padding: 6px 11px;
+  }
+  .rprint {
+    display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono);
+    font-size: 11px; font-weight: 500; letter-spacing: .03em; text-transform: uppercase;
+    color: var(--muted); background: none; border: 1px solid var(--line);
+    border-radius: 999px; padding: 6px 11px; cursor: pointer;
+  }
+  .rprint:hover { color: var(--teal-deep); border-color: var(--teal); }
+
+  /* Both of the small pill controls sit under the 44px touch target guidance at their
+     drawn size (28px and 38px), and growing them would turn quiet metadata into
+     furniture that competes with rule one. So the hit area is extended past the visible
+     edge instead: the pill still reads as a label, the thumb still gets 44px. Neither
+     overlaps anything interactive, the adjacent date stamp is not a control. */
+  .rprint, .rhead-link { position: relative; }
+  .rprint::after, .rhead-link::after {
+    content: ''; position: absolute; left: 0; right: 0; top: 50%;
+    transform: translateY(-50%); height: 44px;
+  }
+
+  /* The rules. Each card is one big anchor: on a phone the whole block is the tap
+     target, which is far more forgiving than a link buried in the last line. */
+  .rlist { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .rule {
+    display: flex; gap: 13px; align-items: flex-start; text-decoration: none;
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 16px 16px 15px; box-shadow: var(--shadow); color: inherit;
+    transition: border-color .18s ease, transform .18s ease;
+  }
+  .rule:hover { border-color: #C2E0C8; transform: translateY(-1px); }
+  .rule:active { transform: translateY(0); }
+  .rnum {
+    flex: none; width: 26px; font-family: var(--mono); font-size: 15px; font-weight: 600;
+    line-height: 1.3; color: var(--muted); font-variant-numeric: tabular-nums;
+  }
+  .rbody { min-width: 0; }
+  .rh {
+    display: block; font-family: var(--serif); font-weight: 500; font-size: 18px;
+    line-height: 1.22; letter-spacing: -.01em; color: var(--ink); margin: 0 0 6px;
+  }
+  .rp { display: block; font-size: 14.5px; line-height: 1.5; color: #3B4A46; margin: 0 0 10px; }
+  /* Inline rather than inline-flex on purpose: as a flex row, a label long enough to
+     wrap pushed its arrow to the far right of the second line and read as a stray
+     glyph. Inline keeps the arrow travelling with the last word. */
+  .rlink { display: inline; font-size: 13px; font-weight: 600; color: var(--teal-deep); }
+  .rlink svg { vertical-align: -2px; margin-left: 4px; transition: transform .15s ease; }
+  .rule:hover .rlink svg { transform: translateX(3px); }
+
+  /* Rule one, the mistake nearly every US visitor makes, on ink so it reads first.
+     This is where the amber signature does its work, and the only place on the page
+     that gets to be loud. */
+  .rule-lead { background: var(--ink); border-color: var(--ink); position: relative; padding-top: 21px; }
+  .rule-lead::before {
+    content: ''; position: absolute; top: 0; left: 16px; right: 16px; height: 3px;
+    background: var(--amber-sig); border-radius: 0 0 2px 2px;
+  }
+  .rule-lead:hover { border-color: var(--ink); }
+  .rule-lead .rnum { color: var(--amber-sig); }
+  .rule-lead .rh { color: #fff; font-size: 19px; }
+  .rule-lead .rp { color: #C6D6D0; }
+  .rule-lead .rlink { color: var(--amber-sig); }
+
+  /* Route back to the full guide. The rules page is a doorway into the cluster, not a
+     dead end, so this is the loudest link that is not a rule. */
+  .rguide {
+    display: flex; align-items: center; gap: 13px; margin: 22px 0 0; padding: 16px 18px;
+    border: 1px solid rgba(14, 122, 95, .25); background: rgba(14, 122, 95, .06);
+    border-radius: var(--radius); text-decoration: none; color: inherit;
+    transition: border-color .18s ease, background .18s ease;
+  }
+  .rguide:hover { border-color: var(--teal); background: rgba(14, 122, 95, .1); }
+  .rguide-tx { flex: 1; min-width: 0; }
+  .rguide-h { display: block; font-family: var(--serif); font-weight: 600; font-size: 17px; color: var(--teal-deep); line-height: 1.2; margin: 0 0 4px; }
+  .rguide-p { display: block; font-size: 13.5px; line-height: 1.45; color: #3B4A46; }
+  .rguide-arw { flex: none; color: var(--teal-deep); transition: transform .15s ease; }
+  .rguide:hover .rguide-arw { transform: translateX(3px); }
+
+  .rhonest { font-size: 13.5px; line-height: 1.55; color: var(--muted); margin: 20px 0 0; }
+  .rhonest a { color: var(--teal-deep); font-weight: 500; }
+
+  /* Screen-hidden, print-only: a printed or PDF'd card is useless if the reader cannot
+     find the live page again, and the links are stripped in print. */
+  .rprinturl { display: none; }
+
+  /* Soft invite, not a gate. Nothing above it is hidden or blurred. */
+  .rnews {
+    margin: 26px 0 0; padding: 20px 18px; border: 1px solid var(--line);
+    border-top: 3px solid var(--amber-sig); border-radius: var(--radius);
+    background: var(--card); box-shadow: var(--shadow);
+  }
+  .rnews-h { font-family: var(--serif); font-weight: 500; font-size: 20px; color: var(--ink); margin: 0 0 6px; line-height: 1.2; }
+  .rnews-p { font-size: 14.5px; line-height: 1.5; color: #3B4A46; margin: 0 0 14px; }
+  .rnews .btn { width: 100%; justify-content: center; padding: 13px 20px; font-size: 15px; }
+
+  .card-page :global(footer) { margin-top: 34px; }
+
+  /* Desktop. The column stays narrow, it just gets more air and slightly larger type,
+     because the card format is the point on any screen. */
+  @media (min-width: 640px) {
+    .rhead { padding: 18px 22px 8px; }
+    .rwrap { padding: 8px 22px 0; }
+    .rstand { font-size: 17px; }
+    .rule { padding: 18px 20px 17px; gap: 15px; }
+    .rh { font-size: 19px; }
+    .rule-lead .rh { font-size: 21px; }
+    .rp { font-size: 15px; }
+    .rnews { padding: 24px 22px; }
+    .rnews .btn { width: auto; }
+  }
+
+  /* Print, and print-to-PDF, which is the fallback for anyone who would rather carry
+     paper than a saved page. Interactive furniture goes, the ink card inverts so it
+     does not eat a cartridge, and every rule is kept off a page break. */
+  @media print {
+    .rhead-link, .rprint, .rnews, .rguide-arw, .card-page :global(footer) { display: none !important; }
+    .card-page { --amber-sig: #B45309; }
+    .rhead, .rwrap { max-width: none; padding: 0; }
+    /* Zeroing the header padding above closed the gap that keeps the eyebrow off the
+       brand tagline, so it is restored here rather than left to collide. */
+    .rhead { margin-bottom: 10px; }
+    .rprinturl {
+      display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em;
+      /* Explicitly 500, because only 500 and 600 of Plex Mono are loaded. Inheriting the
+         paragraph default of 400 would leave the browser to clamp or synthesise it. */
+      font-weight: 500;
+      color: #555; margin: 14px 0 0;
+    }
+    .card-page h1 { font-size: 26px; }
+    .rstand, .rhonest { color: #333; }
+    .rlist { gap: 6px; }
+    .rule, .rguide {
+      box-shadow: none; border: 1px solid #ccc; background: #fff !important;
+      break-inside: avoid; page-break-inside: avoid; padding: 10px 12px;
+    }
+    .rule-lead { border: 2px solid #16302C; }
+    .rule-lead .rh, .rule-lead .rp, .rule-lead .rnum, .rule-lead .rlink { color: #16302C !important; }
+    .rh { font-size: 15px; }
+    .rp { font-size: 12px; color: #333; }
+    .rlink { display: none; }
+    .rule-lead::before { display: none; }
+  }
+</style>
