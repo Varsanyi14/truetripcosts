@@ -30,6 +30,70 @@
 // both (scripts/check-content.py).
 
 export const moneyRules = {
+  italy: {
+    title: 'Italy money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in Italy: choose euros, dodge the ZTL fine, the coperto is not a tip, and the city tax your hotel collects.',
+    h1: 'Italy money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        // Currency leads on every card in this series. It is the loss that applies to
+        // every visitor, driver or not, and keeping rule one consistent across countries
+        // makes the format recognisable. Italy's larger single loss, the ZTL fine, sits
+        // directly beneath it and is still above the fold on a phone.
+        lead: true,
+        h: 'Choose euros, and learn the Italian for it',
+        p: 'Terminals and cash machines will both ask whether you would rather be charged in dollars. Saying yes costs 3 to 8 percent. On an Italian screen the option you want reads senza conversione, without conversion.',
+        href: '/italy/cash-or-card',
+        linkLabel: 'Cards, euros and cash machines',
+      },
+      {
+        h: 'Drive into a historic centre and a camera bills you',
+        p: 'ZTL zones ring the old heart of nearly every Italian city. Each entry is its own fine, in the region of 80 to 130 euros, the rental firm adds a handling charge, and it reaches you months after you are home.',
+        href: '/italy/renting-a-car',
+        linkLabel: 'The ZTL trap, and what driving costs',
+      },
+      {
+        h: 'Walk past the bright blue cash machines',
+        p: 'The free-standing ones near the big sights are the dearest draw in Italy and the pushiest about dollars. Use a Bancomat at an actual bank, and check the fee on screen first.',
+        href: '/italy/cash-or-card',
+        linkLabel: 'Where to get euros',
+      },
+      {
+        h: 'Coperto is a table charge, not a gratuity',
+        p: 'A couple of euros a head, printed on the menu, entirely legitimate. Italians add very little on top of it, so look at what is already there before you decide to.',
+        href: '/italy/tipping',
+        linkLabel: 'The coperto, and what to tip',
+      },
+      {
+        h: 'Your hotel will want the city tax separately',
+        p: 'Almost every town sets its own, it lands per head for each night you stay, and the rate you booked online rarely covers it. Many places still want cash on the way out.',
+        href: '/italy/tourist-tax',
+        linkLabel: 'What each city charges',
+      },
+      {
+        h: 'Day-tripping to Venice? Buy the entry code first',
+        p: 'There is a published list of dates when entering the old city requires a QR code you have paid for, and even people who owe nothing must still register. Book it early on the official site and it costs half.',
+        href: '/italy/tourist-tax',
+        linkLabel: 'The Venice access fee',
+      },
+      {
+        h: 'Hailing a cab off the street will not work',
+        p: 'Italian cabs are licensed to ranks and apps, so find a rank or open itTaxi or FreeNow. Into central Rome from Fiumicino the fare is set by rule, bags included, so a driver quoting his own figure is ignoring it.',
+        href: '/italy/taxis-and-apps',
+        linkLabel: 'Taxis, apps and the airport fare',
+      },
+      {
+        h: 'Spent over 70 euros in one shop? Claim the VAT back',
+        p: 'One store, one day, and the goods go home unused. Get the form validated at an airport kiosk before you check the bag it is packed in, because afterwards there is nothing to claim.',
+        href: '/italy/vat-refund',
+        linkLabel: 'How the VAT refund works',
+      },
+    ],
+  },
   mexico: {
     title: 'Mexico money rules: 8 things to remember',
     description:
