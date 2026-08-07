@@ -1,5 +1,6 @@
 ---
 import { clusters, regionMetaCompare } from '../data/region-comparisons.js';
+import LogoMark from './LogoMark.astro';
 
 // Group the region comparisons by continent for the Guides menu, so the list stays
 // scannable as it grows. Order is fixed; each cluster slots into its parent continent,
@@ -12,7 +13,7 @@ const regionGroups = CONTINENTS
 <nav class="topnav">
   <div class="wrap navin">
     <a class="logo" href="/" style="text-decoration:none;color:inherit">
-      <svg width="30" height="30" viewBox="0 0 64 64" aria-hidden="true"><defs><mask id="ttcNav"><rect width="64" height="64" fill="#fff"/><circle cx="32" cy="25" r="2.8" fill="#000"/></mask></defs><ellipse cx="32" cy="13" rx="3.4" ry="8" fill="none" stroke="#0E7A5F" stroke-width="2.3"/><rect x="17" y="19" width="30" height="38" rx="6" fill="#0E7A5F" mask="url(#ttcNav)"/><path d="M24.5 39 L30 45 L41.5 31" fill="none" stroke="#B45309" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <LogoMark size={30} title="True Trip Costs" />
       <span>True Trip Costs<small>The money side of travel</small></span>
     </a>
     <div class="navlinks">
