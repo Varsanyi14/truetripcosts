@@ -15,7 +15,11 @@
   h1,h2,h3,h4{margin:0}
 
   .topnav{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
-  .navin{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 0}
+  .navin{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 22px}/* 22px matches .wrap's gutter, so the mark and the Get updates button line up with the
+   content column below rather than sitting flush to the screen edge. The rule previously
+   zeroed the horizontal padding it inherits from .wrap. That went unnoticed because the
+   old logo carried about 8px of transparent padding inside its own artwork; the current
+   mark is ink to the edge of its box, which made the missing gutter obvious. */
   .logo{display:flex;align-items:center;gap:9px;font-weight:600;font-size:17px;letter-spacing:-.01em}
   .logo small{display:block;font-weight:400;font-size:11px;color:var(--muted);line-height:1}
   .fromsel{display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--muted)}
