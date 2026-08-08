@@ -199,17 +199,6 @@ const description = 'Deciding between Brazil, Argentina, Colombia and Ecuador? A
     .se h1{margin:0 0 14px}
     .se-lede{font-size:18px;color:#3B4A46;max-width:660px;margin:0 0 26px}
 
-    .matrix-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
-    .matrix{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
-    .matrix th,.matrix td{text-align:left;padding:14px 16px;border-bottom:1px solid var(--line);vertical-align:middle}
-    .matrix thead th{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);background:var(--paper);white-space:nowrap}
-    .matrix tbody tr:last-child th,.matrix tbody tr:last-child td{border-bottom:none}
-    .matrix tbody tr:hover{background:#FBFBF9}
-    .mx-cty{position:sticky;left:0;background:var(--card);z-index:1}
-    .matrix thead .mx-cty{background:var(--paper);z-index:2}
-    .mx-cty a{display:inline-flex;align-items:center;gap:9px;color:var(--ink);text-decoration:none;font-family:var(--serif);font-weight:500;font-size:17px;line-height:1.15}
-    .mx-cty a:hover{color:var(--teal-deep)}
-    .mx-flag{border-radius:3px;border:1px solid var(--line);flex:none;display:block;object-fit:cover}
     .cost-dots{display:inline-flex;gap:4px}
     .cost-dots .cd{width:9px;height:9px;border-radius:50%;background:var(--green-bg);border:1px solid #CFE3DB}
     .cost-dots .cd.on{background:var(--teal);border-color:var(--teal)}
@@ -218,11 +207,6 @@ const description = 'Deciding between Brazil, Argentina, Colombia and Ecuador? A
     .lean-card{color:var(--teal-deep);background:rgba(14,122,95,.12)}
     .lean-cash{color:var(--amber);background:rgba(180,83,9,.12)}
     .tipchip{display:inline-block;font-size:12.5px;font-weight:600;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px 10px;white-space:nowrap}
-    .mx-cur{font-size:13.5px;color:var(--ink);white-space:nowrap}
-    .mx-cur em{font-style:normal;color:var(--muted);font-size:12px}
-    .mx-legend{font-size:13px;color:var(--muted);line-height:1.7;margin:14px 2px 0}
-    .mx-legend .cx-chip{margin:0 3px;vertical-align:middle}
-    .mx-legend b{color:var(--ink);font-weight:600}
 
     .se-sec{padding:30px 0 0;border-top:1px solid var(--line);margin-top:34px}
     .se-body{font-size:16px;color:#3B4A46;max-width:680px;margin:0}
@@ -253,8 +237,6 @@ const description = 'Deciding between Brazil, Argentina, Colombia and Ecuador? A
     .se-pick-nuance a{color:var(--teal-deep);font-weight:600;text-decoration:none}
     .se-pick-nuance a:hover{text-decoration:underline}
 
-    .mx-hlink{color:inherit;text-decoration:none;border-bottom:1px dotted rgba(111,110,102,.5);padding-bottom:1px}
-    .mx-hlink:hover{color:var(--teal-deep);border-bottom-color:var(--teal-deep)}
 
     /* From the desk: personal itinerary, set apart from the neutral verdicts. */
     .desk{background:var(--green-bg);border:1px solid #C2E0C8;border-radius:var(--radius);padding:20px 22px;margin-top:8px;max-width:720px;display:flex;gap:24px;align-items:flex-start}
@@ -291,16 +273,6 @@ const description = 'Deciding between Brazil, Argentina, Colombia and Ecuador? A
       .desk{flex-direction:column;gap:0}
       .desk-route{flex:none;width:100%;border-left:none;border-top:1px solid #C2E0C8;padding-left:0;padding-top:16px;margin-top:16px;align-self:auto}
 
-      .matrix-scroll{overflow:visible;border:none;background:none;box-shadow:none;border-radius:0}
-      .matrix{min-width:0;width:100%}
-      .matrix thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-      .matrix tbody{display:block}
-      .matrix tbody tr{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin:0 0 12px}
-      .matrix tbody tr:hover{background:var(--card)}
-      .matrix tbody tr th.mx-cty{display:flex;align-items:center;gap:12px;padding:14px 15px;position:static;background:transparent;border-bottom:none}
-      .matrix tbody tr td{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 15px;text-align:right;border-top:1px solid var(--line);border-bottom:none}
-      .matrix tbody tr td::before{content:attr(data-label);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);text-align:left;white-space:nowrap;flex:none}
-      .mx-cty a{font-size:20px}
     }
   </style>
 </Base>

@@ -235,14 +235,14 @@ const description = 'Not sure which part of Europe to visit? A high-level money 
       .se-pick-main{font-size:19px}
 
       .matrix-scroll{overflow:visible;border:none;background:none;box-shadow:none;border-radius:0}
-      .matrix{min-width:0;width:100%}
+      .matrix{min-width:0;width:100%;table-layout:fixed}
       .matrix thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
       .matrix tbody{display:block}
       .matrix tbody tr{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);margin:0 0 12px}
       .matrix tbody tr:hover{background:var(--card)}
       .matrix tbody tr th.mx-cty{display:flex;align-items:flex-start;gap:4px;padding:14px 15px;position:static;background:transparent;border-bottom:none}
-      .matrix tbody tr td{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 15px;text-align:right;border-top:1px solid var(--line);border-bottom:none}
-      .matrix tbody tr td::before{content:attr(data-label);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);text-align:left;white-space:nowrap;flex:none}
+      .matrix tbody tr td{flex-wrap:wrap;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 15px;text-align:right;border-top:1px solid var(--line);border-bottom:none}
+      .matrix tbody tr td::before{content:attr(data-label);font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);text-align:left;white-space:nowrap;flex:none}
       .mx-regname{font-size:19px}
     }
   </style>
