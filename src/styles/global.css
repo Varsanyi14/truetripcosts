@@ -5,6 +5,12 @@
     --muted:#6F6E66;--line:#E5E3DB;--radius:14px;
     --shadow:0 1px 2px rgba(22,48,44,.05),0 10px 30px rgba(22,48,44,.07);
     --font:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;--serif:Fraunces,Georgia,serif;
+    /* IBM Plex Mono, for small labels and metadata only. The logo wordmark is set in it,
+       so using it for eyebrows, date stamps and data labels makes the whole site echo the
+       mark. Never apply it to body prose or headings: monospace is good for short utility
+       text and poor for reading. Falls back to the system mono if Google Fonts is blocked,
+       which keeps labels legible with no layout surprise. */
+    --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -26,7 +32,7 @@
   .fromsel select{font-family:inherit;font-size:13.5px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
 
   .ctx{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:26px 0 12px}
-  .stamp{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;color:#10502C;background:var(--green-bg);border-radius:999px;padding:3px 9px}
+  .stamp{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:#10502C;background:var(--green-bg);border-radius:999px;padding:3px 9px}
   h1{font-family:var(--serif);font-weight:500;font-size:clamp(30px,5vw,44px);line-height:1.05;letter-spacing:-.02em;margin:0 0 16px}
 
   .verdict{background:var(--ink);color:#EAF0ED;border-radius:18px;padding:24px 26px;font-size:19px;line-height:1.5}
@@ -49,7 +55,7 @@
   .blocked .bback{font-size:14.5px}
 
   section{padding:30px 0;border-top:1px solid var(--line);margin-top:30px}
-  .lab{font-size:12.5px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.1em;margin:0 0 10px}
+  .lab{font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.09em;margin:0 0 10px}
   h2{font-family:var(--serif);font-weight:500;font-size:25px;line-height:1.12;letter-spacing:-.01em;margin:0 0 6px}
   .sub{font-size:15.5px;color:var(--muted);margin:0 0 18px}
 
@@ -332,7 +338,7 @@
   .modal.in .box{transform:none}
   .modal .x{position:absolute;top:11px;right:12px;width:32px;height:32px;border:0;background:none;color:var(--muted);font-size:23px;line-height:1;border-radius:8px;cursor:pointer;transition:background .18s ease,color .18s ease}
   .modal .x:hover{background:#ECEAE3;color:var(--ink)}
-  .sg-lab{font-size:12.5px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.1em;margin:0 0 8px}
+  .sg-lab{font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.09em;margin:0 0 8px}
   .sg-title{font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.15;letter-spacing:-.01em;margin:0 0 8px}
   .sg-sub{font-size:14.5px;color:#3B4A46;margin:0 0 16px}
   .sg-field{display:block;margin:0 0 12px}
@@ -525,7 +531,7 @@
   .kf-tag-green{background:var(--green-bg);color:var(--green)}
   .kf-tag-upcoming{background:var(--paper);color:var(--teal-deep);border:1px solid var(--line)}
   .kf-tag-amber{background:var(--amber-bg);color:var(--amber)}
-  .kf-checked{font-size:12px;color:var(--muted)}
+  .kf-checked{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:var(--muted)}
   .kf-src{font-size:12.5px;font-weight:600;color:var(--teal-deep);text-decoration:none}
   .kf-src:hover{text-decoration:underline}
   .kf-nosrc{font-size:12px;color:var(--muted);font-style:italic}
@@ -603,7 +609,7 @@
 
   /* ----- country rail on the landing page ----- */
   .rail-wrap{margin:30px 0 8px}
-  .rail-lab{font-size:12.5px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.1em;margin:0 0 12px}
+  .rail-lab{font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.09em;margin:0 0 12px}
   .rail{display:flex;gap:13px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:2px 2px 12px;scrollbar-width:thin}
   .rcard{flex:0 0 218px;scroll-snap-align:start;display:flex;flex-direction:column;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;text-decoration:none;color:inherit;box-shadow:var(--shadow);transition:border-color .15s ease,transform .12s ease}
   .rcard:hover{border-color:#CFCDC3;transform:translateY(-2px)}
@@ -645,7 +651,7 @@
 .ins-skip-h{font-weight:600;color:var(--ink);margin:0 0 5px;font-size:15px}
 .ins-skip p{margin:0;font-size:14px;line-height:1.6;color:#3B4A46}
 .ins-dial{margin:20px 0 0;border:1px solid var(--line);border-radius:12px;padding:15px 16px;background:#FCFCFA}
-.ins-dlab{font-size:11.5px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.09em;margin:0 0 9px}
+.ins-dlab{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.06em;margin:0 0 9px}
 .ins-gauge{margin:2px 0 11px;max-width:460px;padding:7px 0 0;cursor:pointer;outline:none;touch-action:none;user-select:none;-webkit-user-select:none}
 .ins-gauge:focus-visible{outline:2px solid var(--teal);outline-offset:4px;border-radius:6px}
 .ins-track{position:relative;height:6px;border-radius:999px;background:#E7E4DC}

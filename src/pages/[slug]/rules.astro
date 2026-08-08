@@ -52,7 +52,7 @@ const crumbs = {
 };
 ---
 
-<Base title={data.title} description={data.description} mono={true}>
+<Base title={data.title} description={data.description}>
   <div class="card-page">
     <header class="rhead">
       <a class="rbrand" href="/">
@@ -161,7 +161,6 @@ const crumbs = {
      than the site's 760px .wrap: at arm's length a single short column reads faster,
      and it keeps the page feeling like a card rather than an article. */
   .card-page {
-    --mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
     /* The brighter on-dark amber. The site's global --amber (#B45309) is tuned for
        amber TEXT on paper and goes muddy as a signature bar on ink, so the signature
        gets its own token instead of overriding a shared one. */
