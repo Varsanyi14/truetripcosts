@@ -30,6 +30,66 @@
 // both (scripts/check-content.py).
 
 export const moneyRules = {
+  france: {
+    title: 'France money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in France: say euros not dollars, service is included by law, carry a chip-and-PIN card, and the CDG fixed fare.',
+    h1: 'France money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        lead: true,
+        h: 'Say euros, not dollars, every single time',
+        p: 'Card readers and cash machines will both offer to switch you into dollars. Accept, and you lose 3 to 8 percent your own bank would never have charged.',
+        href: '/france/cash-or-card',
+        linkLabel: 'Paying by card in France',
+      },
+      {
+        h: 'The standalone kiosks are the dear way to get cash',
+        p: 'Euronet and Travelex units sit exactly where tourists are, and their own fee bites even when you have refused the dollar conversion. Draw from a machine at a bank.',
+        href: '/france/cash-or-card',
+        linkLabel: 'Getting euros without the fee',
+      },
+      {
+        h: 'Service is in the price already, by law',
+        p: 'That is what service compris means, and staff draw a proper wage for it, so the American percentage simply does not apply here. A tip line on a terminal is an offer, not a bill.',
+        href: '/france/tipping',
+        linkLabel: 'What a pourboire is worth',
+      },
+      {
+        h: 'Bring one card that has a chip and a PIN',
+        p: 'Tapping is fine anywhere with a person behind the counter. It is the unattended machines that catch you out, motorway barriers, station kiosks and parking meters, which may want the PIN.',
+        href: '/france/cash-or-card',
+        linkLabel: 'Which cards work where',
+      },
+      {
+        h: 'The fare in from Charles de Gaulle is fixed, not offered',
+        p: 'A licensed taxi charges a flat rate set by decree, bags and tolls included, at any hour of the day. Anyone touting a price at you in the arrivals hall is not one of those.',
+        href: '/france/taxis-and-apps',
+        linkLabel: 'The CDG fixed fare, and touts',
+      },
+      {
+        h: 'Driving? You will want a Crit Air sticker',
+        p: 'Low-emission zones now cover the middle of a lengthening list of French cities, and they expect that sticker in the windscreen. Motorway tolls are billed by the kilometre, so crossing the country mounts up.',
+        href: '/france/renting-a-car',
+        linkLabel: 'Tolls, stickers and parking',
+      },
+      {
+        h: 'The taxe de sejour lands at checkout',
+        p: 'Every commune sets its own, it is levied on each adult for each night, and Paris sits well above the rest of the country. Your booking rate will not have covered it.',
+        href: '/france/tourist-tax',
+        linkLabel: 'What the taxe de sejour costs',
+      },
+      {
+        h: 'Over 100 euros in one shop? There is tax to reclaim',
+        p: 'Non-EU visitors can recover part of the 20 percent on goods leaving unused. Get the form stamped at a PABLO machine before the purchase disappears into a checked bag. The operator keeps a slice.',
+        href: '/france/vat-refund',
+        linkLabel: 'How the detaxe works',
+      },
+    ],
+  },
   'united-kingdom': {
     title: 'UK money rules: 8 things to remember',
     description:
@@ -199,7 +259,7 @@ export const moneyRules = {
         linkLabel: 'The resort double-tip trap',
       },
       {
-        h: 'The rental quote is not the rental price',
+        h: 'Your US car insurance stops at the border',
         p: 'Mexico insists on its own liability cover, sold as TPL or seguro de responsabilidad civil, and no US policy or credit card counts instead. It is the gap between the number you booked online and what the desk actually charges.',
         href: '/mexico/renting-a-car',
         linkLabel: 'What a rental really costs',
