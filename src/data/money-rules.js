@@ -584,6 +584,246 @@ export const moneyRules = {
       },
     ],
   },
+  germany: {
+    title: 'Germany money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in Germany: carry cash, say the total instead of leaving a tip, no car toll, and the green windscreen sticker.',
+    h1: 'Germany money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        lead: true,
+        h: 'Carry cash. Germany is not as card-first as it looks',
+        p: 'The richest country in Europe and the bakery still wants coins. Supermarkets, hotels and chains take cards, but bars, small restaurants and market stalls often do not. Carry small notes, they dislike large ones.',
+        href: '/germany/cash-or-card',
+        linkLabel: 'Where cards work in Germany',
+      },
+      {
+        h: 'Say the total. Do not leave it on the table',
+        p: 'This is the habit that catches Americans out. When the server tells you what you owe, you name the figure you want to pay, tip included, and hand over the money. Cash left behind on the table is not how it is done here.',
+        href: '/germany/tipping',
+        linkLabel: 'How to tip in Germany',
+      },
+      {
+        h: 'Trinkgeld is modest, and you round rather than calculate',
+        p: 'Somewhere around 5 to 10 percent covers a restaurant, and it is arrived at by rounding up to a tidy figure rather than working out a percentage. At a bar or a cafe, leaving the coins is plenty.',
+        href: '/germany/tipping',
+        linkLabel: 'What Trinkgeld is worth',
+      },
+      {
+        h: 'Choose euros, not dollars, at every screen',
+        p: 'Terminals and cash machines both offer the switch. Saying yes is dynamic currency conversion, a rate roughly 3 to 8 percent worse than the one your own bank would have given you for nothing.',
+        href: '/germany/cash-or-card',
+        linkLabel: 'Paying by card in Germany',
+      },
+      {
+        h: 'There is no car toll, whatever anyone tries to sell you',
+        p: 'Austria, Switzerland and Slovenia all charge one, so drivers arrive expecting to buy a windscreen vignette here too. Germany has none for cars, so anyone selling you one near the border is selling you nothing.',
+        href: '/germany/driving-and-tolls',
+        linkLabel: 'Tolls and the vignette myth',
+      },
+      {
+        h: 'The green sticker is the real driving trap',
+        p: 'Most cities of any size are low-emission zones you may only enter showing an Umweltplakette on the glass, Berlin and Munich among them. Check the windscreen when you collect the car, and bring an International Driving Permit.',
+        href: '/germany/driving-and-tolls',
+        linkLabel: 'The Umweltzone and the permit',
+      },
+      {
+        h: 'FreeNow is the app, and Uber sends a real taxi',
+        p: 'Install FreeNow first, it has the widest reach. Uber and Bolt work in the big cities, but German rules mean they call a licensed taxi rather than the cheap private car you know from home.',
+        href: '/germany/taxis-and-apps',
+        linkLabel: 'Taxis and apps in Germany',
+      },
+      {
+        h: 'From the airport, the train is usually the answer',
+        p: 'Frankfurt, Munich and Berlin all have the station inside or underneath the terminal, and the S-Bahn or regional train into the city costs a few euros. In traffic it also beats a taxi on time, not just on price.',
+        href: '/germany/taxis-and-apps',
+        linkLabel: 'Getting in from the airport',
+      },
+    ],
+  },
+  'dominican-republic': {
+    title: 'Dominican Republic money rules: 8 to remember',
+    description:
+      'Eight money habits for US travelers in the Dominican Republic: the E-Ticket is free and needed twice, the 10 and 18 on your bill, and pay in pesos.',
+    h1: 'Dominican Republic money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        lead: true,
+        h: 'The E-Ticket is free, and you need it twice',
+        p: 'Once to come in and once to go home, each with its own code. It is a government form, ten minutes, no charge. The search results are thick with lookalike sites charging real money to type it in for you.',
+        href: '/dominican-republic/e-ticket',
+        linkLabel: 'Filing the E-Ticket yourself',
+      },
+      {
+        h: 'The menu price is about a quarter off the truth',
+        p: 'Locals call it the 10 and 18: restaurants add a service charge and then a tax on top of the listed prices, so the total lands well above what you read. Nothing is wrong with the bill, it is just built that way.',
+        href: '/dominican-republic/tipping',
+        linkLabel: 'Reading a Dominican bill',
+      },
+      {
+        h: 'Then leave a little directly for your server',
+        p: 'The service charge on the bill is modest and gets pooled, so a small extra handed over is the part that reaches the person who looked after you. Around 5 to 10 percent is customary.',
+        href: '/dominican-republic/tipping',
+        linkLabel: 'Tipping in the Dominican Republic',
+      },
+      {
+        h: 'Choose pesos, not dollars, on every card screen',
+        p: 'Saying yes to dollars is dynamic currency conversion, worth 3 to 8 percent to whoever offered it. Choose pesos and let your own bank convert, which it does for far less.',
+        href: '/dominican-republic/cash-or-card',
+        linkLabel: 'Paying by card here',
+      },
+      {
+        h: 'Dollars are accepted, but your change will not be',
+        p: 'US notes work in the resort areas, but the change comes back in pesos at whatever rate the vendor decided. Paying in pesos is simply better value for anything bought on the street.',
+        href: '/dominican-republic/cash-or-card',
+        linkLabel: 'Which currency to carry',
+      },
+      {
+        h: 'No meters, so agree the fare and the currency',
+        p: 'Ordinary taxis do not run a meter, so settle the number before you get in and confirm whether it is pesos or dollars, because the gap is enormous. Ask your hotel what a fair price looks like.',
+        href: '/dominican-republic/taxis-and-apps',
+        linkLabel: 'Taxis, apps and motoconchos',
+      },
+      {
+        h: 'At Punta Cana, book the transfer before you fly',
+        p: 'App coverage thins out in the resort areas, and official airport taxis run fixed rates that are steep even for a short hop. A transfer through the hotel or a shuttle firm is the calm option.',
+        href: '/dominican-republic/taxis-and-apps',
+        linkLabel: 'Getting from the airport',
+      },
+      {
+        h: 'Bring the passport book, not the passport card',
+        p: 'The card is not accepted for an international flight, which is a bad thing to learn at the airport. Six months of validity beyond your trip is the safe standard, whatever easing is in force.',
+        href: '/dominican-republic/e-ticket',
+        linkLabel: 'Entry rules and documents',
+      },
+    ],
+  },
+  jamaica: {
+    title: 'Jamaica money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in Jamaica: red plate taxis only, the C5 form is free, choose Jamaican dollars, and check for a service charge.',
+    h1: 'Jamaica money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        lead: true,
+        h: 'Look at the plate. Red is legal, white is not',
+        p: 'A licensed taxi carries a red plate, a Transport Authority sticker and a globe on the roof. The white-plate cars touting for business are unlicensed and uninsured for you. Be firm about this one.',
+        href: '/jamaica/taxis-and-apps',
+        linkLabel: 'Licensed taxis in Jamaica',
+      },
+      {
+        h: 'The C5 form is free, and only one site has it',
+        p: 'Everybody needs one, children included, before arrival. It is a free government form that takes a few minutes. Lookalike sites charge serious money to fill in the same thing and some look convincingly official.',
+        href: '/jamaica/c5-form',
+        linkLabel: 'Filing the C5 yourself',
+      },
+      {
+        h: 'You cannot file it months ahead, only weeks',
+        p: 'The window opens 30 days before you travel, so doing it early does not work. Have your flight and accommodation to hand, file one per traveler, and screenshot the code it gives you.',
+        href: '/jamaica/c5-form',
+        linkLabel: 'When to file the C5',
+      },
+      {
+        h: 'There is no Uber, so settle the number first',
+        p: 'The listings you find for ride apps here are private transfer firms borrowing the name. What you actually use is a licensed taxi, and the fare is agreed before you get in, not metered on the way.',
+        href: '/jamaica/taxis-and-apps',
+        linkLabel: 'Why the app does not work here',
+      },
+      {
+        h: 'Always ask which dollars they mean',
+        p: 'Both currencies circulate in the tourist areas and the two numbers are wildly different, so a quote of twenty could be a small fare or a large one. Confirm it out loud before you agree to anything.',
+        href: '/jamaica/taxis-and-apps',
+        linkLabel: 'Agreeing a fare',
+      },
+      {
+        h: 'On a card, choose Jamaican dollars',
+        p: 'Being billed in US dollars is dynamic currency conversion, roughly 3 to 8 percent worse than your own bank would manage. In cash, US notes are taken in the resort zones but usually at a rate that favours the till.',
+        href: '/jamaica/cash-or-card',
+        linkLabel: 'Paying by card in Jamaica',
+      },
+      {
+        h: 'Read the bill before you add a tip',
+        p: 'A service charge is commonly added already, and where it is, the tip is broadly dealt with. Tipping runs closer to the US habit here than elsewhere in the Caribbean, so 10 to 15 percent where nothing was added.',
+        href: '/jamaica/tipping',
+        linkLabel: 'Tipping in Jamaica',
+      },
+      {
+        h: 'Keep local cash for the parts worth having',
+        p: 'Cards cover the resorts and the nicer restaurants. Markets, street food and the route taxis run on Jamaican dollars, and that is most of what you will remember about eating here.',
+        href: '/jamaica/cash-or-card',
+        linkLabel: 'How much cash to carry',
+      },
+    ],
+  },
+  india: {
+    title: 'India money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in India: use only the official e-Visa site, book autos in an app, tip small and often, and always pay in rupees.',
+    h1: 'India money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        lead: true,
+        h: 'One website issues the e-Visa. The rest are middlemen',
+        p: 'India is among the worst destinations anywhere for visa agents, and the results are full of sites charging well over the government fee for the same form. Some are simply scams. Use the official portal.',
+        href: '/india/e-visa',
+        linkLabel: 'Applying for the e-Visa',
+      },
+      {
+        h: 'The e-Visa only works if you fly into the right port',
+        p: 'It is valid at designated airports and seaports, not at a land border, and it cannot be extended once you are there. Check your arrival point against the list before booking, and allow a week or two to apply.',
+        href: '/india/e-visa',
+        linkLabel: 'The e-Visa conditions',
+      },
+      {
+        h: 'If a driver says your hotel is closed, call the hotel',
+        p: 'Flooded, full, burnt down, never existed: the story varies and the destination is always a place that pays him commission. It clusters around New Delhi station. One phone call to your booking ends it.',
+        href: '/india/money-scams',
+        linkLabel: 'The hotel is closed scam',
+      },
+      {
+        h: 'Never buy gems or carpets to sell at home',
+        p: 'The costliest trap here is the export scheme: a friendly introduction, goods described as investment grade, and a resale market that does not exist. Buy things because you want them, never because of the profit.',
+        href: '/india/money-scams',
+        linkLabel: 'The gem and carpet scam',
+      },
+      {
+        h: 'Book the auto in an app and skip the whole argument',
+        p: 'Drivers are meant to run the meter and frequently will not, offering a flat price several times over the real one. Uber, Ola and Rapido all quote before you ride, which removes the negotiation entirely.',
+        href: '/india/taxis-and-apps',
+        linkLabel: 'Autos, meters and apps',
+      },
+      {
+        h: 'The men who approach you at arrivals are not the taxi',
+        p: 'They offer a prepaid ride well over the odds, sometimes taking hold of a bag to move you along. Use the app or the real prepaid counter. In Delhi, the Airport Express metro avoids all of it.',
+        href: '/india/taxis-and-apps',
+        linkLabel: 'Getting out of the airport',
+      },
+      {
+        h: 'Baksheesh means many small tips, not big ones',
+        p: 'You will tip often and never much: a porter, a driver, a doorman, housekeeping. In restaurants around 10 percent is normal, but check the bill first, because a service charge is frequently added and is officially voluntary.',
+        href: '/india/tipping',
+        linkLabel: 'Tipping and baksheesh',
+      },
+      {
+        h: 'Choose rupees, and ask for small notes',
+        p: 'Refuse the dollar option on any terminal or cash machine. Then get your cash into small notes, because large ones are hard to break at a stall and most of what you will enjoy here is a cash transaction.',
+        href: '/india/cash-or-card',
+        linkLabel: 'Cash and cards in India',
+      },
+    ],
+  },
 };
 
 export function rulesFor(slug) {
