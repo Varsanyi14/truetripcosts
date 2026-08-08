@@ -69,6 +69,14 @@ export const clusters = [
     slugs: ['uae', 'oman', 'turkey', 'egypt']
   },
   {
+    href: '/compare/gulf',
+    region: 'The Gulf',
+    parent: 'Middle East',
+    blurb: 'The UAE, Oman, Qatar, Saudi Arabia, Bahrain and Kuwait, on cost, cards, tipping and entry.',
+    pitch: 'Five currencies pegged to the dollar, and one that is not.',
+    slugs: ['uae', 'oman', 'qatar', 'saudi-arabia', 'bahrain', 'kuwait']
+  },
+  {
     href: '/compare/africa',
     region: 'Africa',
     parent: 'Africa',

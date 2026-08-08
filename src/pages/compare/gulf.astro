@@ -1,0 +1,300 @@
+---
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import CompareFooterLinks from '../../components/CompareFooterLinks.astro';
+import CompareOtherRegions from '../../components/CompareOtherRegions.astro';
+import RegionMap from '../../components/RegionMap.astro';
+import gulfMap from '../../data/maps/gulf.js';
+import { countries } from '../../data/index.js';
+import { otherClusters } from '../../data/region-comparisons.js';
+
+// The Gulf money comparison, the deeper cut under /compare/middle-east: all six Gulf
+// states TTC covers rather than the four-country regional overview. Same recipe as the
+// other clusters, compared on slow-moving relative attributes (cost, cash habit, tipping
+// norm, taxi ease, currency), with volatile detail left to each country's guide.
+//
+// Two things make this set different from every other cluster on the site. First, the
+// six sit closer together on cost than any other region we compare, so the dots do less
+// work here and the legend says so. Second, the real spread is in the currency peg and
+// the entry rules, not the price, which is why both get their own headline treatment.
+//
+// The cost dots come from the mid-range daily totals in each guide's cash.styles
+// (Oman 250, UAE 260, Bahrain 285, Saudi 290, Qatar 310, Kuwait 310), banded on the same
+// scale the published pages use. UAE and Oman keep the 3 dots they already carry on
+// /compare/middle-east, so the two pages cannot contradict each other.
+const order = ['uae', 'oman', 'qatar', 'saudi-arabia', 'bahrain', 'kuwait'];
+
+const rate = {
+  uae: {
+    cost: 3, cashLean: "card", cashTag: "Nearly cashless", tip: "Light, often added", cur: "Dirham", curNote: "USD-pegged", taxiCaution: "low",
+    bestFor: "Dubai, Abu Dhabi, cashless ease",
+    verdict: "The default anchor, and the smoothest of the six on the money side. Dubai and Abu Dhabi are close to fully cashless, so a no-fee card and your phone cover nearly everything, and the dirham has been pegged to the dollar at about 3.6725 since 1997, so the rate does not move during your trip. Entry is free on arrival with nothing to apply for, though the length written into your stamp varies, so read it rather than assuming. Tipping is customary but lighter than at home, usually a 10% service charge already on the bill plus a little cash. VAT is 5% on goods, refundable on eligible purchases, and not charged on hotels or restaurants. Carry a few hundred dirhams for souqs and tips, and refuse the pay-in-dollars prompt at terminals."
+  },
+  oman: {
+    cost: 3, cashLean: "cash", cashTag: "Cards, then cash", tip: "Round up, light", cur: "Rial", curNote: "USD-pegged", taxiCaution: "medium",
+    bestFor: "Wadis, forts, the quiet Gulf",
+    verdict: "The scenic one, and the most hands-on with cash of the six. The rial is pegged to the dollar and worth about 2.60 dollars, which makes it one of the few currencies where a single note is worth more than a few dollars, and it divides into 1,000 baisa, so prices carry three decimals. Cards are fine in Muscat's malls, hotels and chains, while the souks, small taxis and everywhere rural still want cash. US citizens need no visa for stays of 14 days or less, with an eVisa beyond that. Tipping is not expected: service is usually included or simply not charged for. Two practical quirks: Uber does not operate, so you use local apps or agree the fare, and a 4% tourism levy sits on top of 5% VAT, so ask your hotel what lands on the final bill."
+  },
+  qatar: {
+    cost: 4, cashLean: "card", cashTag: "Nearly cashless", tip: "Not compulsory", cur: "Riyal", curNote: "USD-pegged", taxiCaution: "low",
+    bestFor: "Doha, no sales tax, easy entry",
+    verdict: "The easiest of the six to enter and the only one with no sales tax at all. The riyal is pegged to the dollar at 3.64, and because there is no VAT the tag price is the price, which makes budgeting unusually simple. US citizens get a free stamp on arrival that is valid two years for multiple entries and allows each stay of up to 90 days, better terms than most travel sites still report. Cards are accepted deeply enough to go days without a note, with cash kept for souq stalls and small tips. Where you see a percentage added to a bill it is a service charge rather than a tax. Uber works normally, Careem left in 2023, and the metro is the cheapest way across Doha."
+  },
+  'saudi-arabia': {
+    cost: 3, cashLean: "card", cashTag: "Card-first", tip: "Not obligatory", cur: "Riyal", curNote: "USD-pegged", taxiCaution: "medium",
+    bestFor: "AlUla, Riyadh, the newest opening",
+    verdict: "The one that needs planning before you fly, and the only one of the six requiring a visa arranged in advance. The tourist eVisa runs a year with multiple entries and bundles mandatory medical insurance into the price. The riyal is pegged to the dollar at 3.75, and the country went card-first quickly, so cards and phone payments cover almost everything in the cities. The number to plan around is 15% VAT, the highest in the Gulf, though it is refundable on goods you export. Tipping is not obligatory and service is often charged for already. Uber and Careem are both licensed, the Riyadh Metro is very cheap and reaches the airport, and the advice from the guide is to stick to official ranks rather than unlicensed street taxis."
+  },
+  bahrain: {
+    cost: 3, cashLean: "card", cashTag: "Card-easy", tip: "10% often added", cur: "Dinar", curNote: "USD-pegged", taxiCaution: "low",
+    bestFor: "Manama, ride apps, a short hop",
+    verdict: "The easiest of the six for ride apps, and the clearest on tipping. Both Uber and Careem operate, both can collect at the airport, and the app is usually cheaper than the meter rather than dearer, which is the reverse of the pattern elsewhere in the Gulf. A 10% service charge is standard on hotel and restaurant bills, so the tipping question is normally answered before you reach for your wallet. The arithmetic is the thing to watch: the dinar is pegged to the dollar, worth about 2.66 dollars, and divides into 1,000 fils. On the tax side it is the second highest of the six, 10% VAT plus a 5% government levy, and hotel stays carry a flat nightly tourist charge on top. Entry needs a visa, either on arrival for up to 14 days or an eVisa reaching 90 days a visit."
+  },
+  kuwait: {
+    cost: 4, cashLean: "card", cashTag: "Card-easy", tip: "Not expected", cur: "Dinar", curNote: "basket-pegged", taxiCaution: "medium",
+    bestFor: "The one currency that is not dollar-pegged",
+    verdict: "The exception to the Gulf's defining money rule. Every neighbour fixes its currency to the dollar; Kuwait pegs to an undisclosed weighted basket of currencies instead, so this is the only Gulf trip where the exchange rate is a moving number rather than a fixed one. The dinar is the highest-valued currency unit in the world, worth roughly 3.25 to 3.30 dollars, and divides into 1,000 fils, so prices read to three decimals and casually rounding up a tip is a bigger gesture than it looks. There is no VAT at all, and no excise, property or transfer taxes either. Entry is a visa on arrival for KD 10, with stays up to three months. Careem is the app to have, Uber is unreliable here, and apps reportedly cannot collect at the airport. Note too that alcohol is completely prohibited, which quietly changes what an evening costs."
+  }
+};
+
+const cautionMap = {
+  low: { label: 'Easy', cls: 'cx-low' },
+  medium: { label: 'Some care', cls: 'cx-medium' },
+  high: { label: 'Take care', cls: 'cx-high' }
+};
+
+const rows = order.map(slug => {
+  const c = countries.find(x => x.slug === slug);
+  const taxi = c ? (c.spokes || []).find(s => s.topic === 'taxis') : null;
+  const caution = (taxi && taxi.caution) ? taxi.caution : (rate[slug].taxiCaution || 'low');
+  return { slug, name: c ? c.name : slug, iso2: c ? c.iso2 : '', ...rate[slug], taxi: cautionMap[caution] || cautionMap.low };
+});
+
+const others = otherClusters('/compare/gulf');
+const checkedLabel = 'Aug 2026';
+const checkedISO = '2026-08-08';
+const title = 'The Gulf for travel money: six countries compared (2026) | True Trip Costs';
+const description = 'Deciding between the UAE, Oman, Qatar, Saudi Arabia, Bahrain and Kuwait? A side-by-side money comparison for US travelers: daily cost, cash versus card, tipping, taxis, currency pegs and entry rules. Checked August 2026.';
+---
+
+<Base title={title} description={description}>
+  <Nav />
+  <main class="wrap se">
+    <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Compare', href: '/compare' }, { label: 'The Gulf' }]} />
+    <div class="ctx"><span class="stamp">Checked {checkedLabel}</span> <span class="se-ctxtxt">The Gulf &middot; money comparison</span></div>
+    <h1>The Gulf for travel money, six countries compared</h1>
+    <p class="se-lede">The UAE, Oman, Qatar, Saudi Arabia, Bahrain and Kuwait look interchangeable from a distance and are not. Prices sit close together, but the currency pegs and the entry rules do not, and those are the two things that actually catch people out. Here is how the six compare. Our read as the True Trip Costs desk, checked {checkedLabel}.</p>
+
+    <RegionMap region={gulfMap} maxWidth={520} alt="Outline map of the Arabian peninsula with Kuwait, Bahrain, Qatar, Saudi Arabia, the United Arab Emirates and Oman highlighted among their neighbors" />
+
+    <div class="se-pick">
+      <p class="se-pick-lab">The short answer</p>
+      <p class="se-pick-main"><b>The UAE</b> is the easiest anchor for a first Gulf trip.</p>
+      <p class="se-pick-nuance">Quietest and most scenic? <a href="/oman">Oman</a>. Easiest entry, no sales tax? <a href="/qatar">Qatar</a>. Newest to open up? <a href="/saudi-arabia">Saudi Arabia</a>. Best for ride apps? <a href="/bahrain">Bahrain</a>. The one rate that moves? <a href="/kuwait">Kuwait</a>.</p>
+    </div>
+
+    <section class="se-matrix-sec" aria-label="Money comparison matrix">
+      <div class="matrix-scroll">
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th class="mx-cty" scope="col">Country</th>
+              <th scope="col"><a class="mx-hlink" href="/cost-comparison">Daily cost</a></th>
+              <th scope="col"><a class="mx-hlink" href="/cash-or-card">Cash or card</a></th>
+              <th scope="col"><a class="mx-hlink" href="/tipping-compared">Tipping</a></th>
+              <th scope="col"><a class="mx-hlink" href="/taxis-and-ride-hailing">Taxis</a></th>
+              <th scope="col">Currency</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map(r => (
+              <tr>
+                <th class="mx-cty" scope="row">
+                  <a href={`/${r.slug}`}>
+                    {r.iso2 && <img class="mx-flag" src={`https://flagcdn.com/${r.iso2}.svg`} alt="" width="26" height="18" loading="lazy" />}
+                    <span>{r.name}</span>
+                  </a>
+                </th>
+                <td data-label="Daily cost">
+                  <span class="cost-dots" role="img" aria-label={`Cost ${r.cost} out of 4`}>
+                    {[1, 2, 3, 4].map(n => <i class:list={["cd", { on: n <= r.cost }]}></i>)}
+                  </span>
+                </td>
+                <td data-label="Cash or card"><span class:list={["lean", r.cashLean === 'card' ? 'lean-card' : 'lean-cash']}>{r.cashTag}</span></td>
+                <td data-label="Tipping"><span class="tipchip">{r.tip}</span></td>
+                <td data-label="Taxis"><span class:list={["cx-chip", r.taxi.cls]}>{r.taxi.label}</span></td>
+                <td data-label="Currency"><span class="mx-cur">{r.cur}{r.curNote && <em> {r.curNote}</em>}</span></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mx-legend">
+        <b>Reading this.</b> Daily cost is a rough 1 to 4 scale across these six (more dots, pricier day), the desk's own read rather than a precise figure. These six sit closer together on cost than any other region we compare, and all of them are expensive by global standards, so read the dots as a nudge rather than a gap. Taxi ease reflects each country's local picture: <span class="cx-chip cx-low">Easy</span> is straightforward, <span class="cx-chip cx-medium">Some care</span> means a couple of things to watch. Tap any country for the detail behind its row.
+      </p>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">The honest headline</p>
+      <h2>The prices are close, the pegs and the paperwork are not</h2>
+      <p class="se-body">If you are comparing these six on cost, you are comparing the wrong thing: the daily spread is narrow and all of them are pricey. The real differences are two. First, the <b>currency peg</b>. Five of the six are fixed to the <b>US dollar</b>, the dirham at about 3.6725, the Qatari riyal at 3.64, the Saudi riyal at 3.75, the Bahraini dinar at 0.376 and the Omani rial at about 2.60 dollars to the rial, so the rate simply does not move while you are there. <b>Kuwait is the exception</b>, pegged to an undisclosed <b>basket of currencies</b> rather than the dollar, which makes it the only one of the six where the rate is a moving number. Second, <b>entry</b>. Qatar and the UAE are free on arrival, Oman waives it for 14 days or less, Bahrain and Kuwait charge on arrival or by eVisa, and <b>only Saudi Arabia needs a visa arranged before you fly</b>. Beyond that the picture is consistent: cards work across all six, cash is still for souqs and tips, tipping is light and often already on the bill as a service charge, and sales tax runs from <b>15% in Saudi Arabia</b> down through 10% in Bahrain and 5% in the UAE and Oman to <b>none at all in Qatar and Kuwait</b>.</p>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">Which to pick</p>
+      <h2>A verdict on each</h2>
+      <div class="verdicts">
+        {rows.map(r => (
+          <div class="vrow">
+            <div class="vhead">
+              {r.iso2 && <img class="vflag" src={`https://flagcdn.com/${r.iso2}.svg`} alt="" width="30" height="21" loading="lazy" />}
+              <div>
+                <h3>{r.name}</h3>
+                <p class="vbest">{r.bestFor}</p>
+              </div>
+            </div>
+            <p class="vtext">{r.verdict}</p>
+            <a class="cta" href={`/${r.slug}`}>The {r.name} money guide <span class="arw">&rarr;</span></a>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">Quick picks</p>
+      <h2>If you only remember six things</h2>
+      <ul class="picks">
+        <li><b>Only one currency is not pegged to the dollar:</b> Kuwait, which tracks a basket instead, so it is the one rate that moves.</li>
+        <li><b>Only one needs a visa before you fly:</b> Saudi Arabia, on a one-year eVisa; the other five are handled free or on arrival.</li>
+        <li><b>Easiest entry:</b> Qatar, free on arrival and valid two years for multiple entries, up to 90 days a stay.</li>
+        <li><b>No sales tax at all:</b> Qatar and Kuwait. The highest is Saudi Arabia at 15%, then Bahrain at 10%.</li>
+        <li><b>Do not tip US percentages anywhere here:</b> check the bill for a service charge first, then round up in cash if you want to.</li>
+        <li><b>Where cash still matters most:</b> Oman, well beyond the souqs. The other five you can mostly tap through.</li>
+      </ul>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">From the desk</p>
+      <h2>If it were my trip</h2>
+      <div class="desk">
+        <div class="desk-main">
+          <p class="desk-text">If you are flying all the way from the US, I would not try to "do" every Gulf country, I would base myself and add selectively. Fly into Dubai or Abu Dhabi and use that as your anchor. Dubai is the energy, the food, the architecture and the sheer wow factor; Abu Dhabi is the calmer, more cultural side of the same coin. Then add Oman, which is the one I would not skip: rent a car and get out into the mountains, wadis and desert, it feels like a completely different world from the glass towers. For getting around, taxis, Uber or the metro work well in Dubai and Abu Dhabi, while Oman is a driving country. With 10 to 14 days, I would add Doha or a few days in Saudi Arabia rather than rushing through all six Gulf states. And do not spend the whole trip sightseeing: eat where locals eat, take a desert night, wander a souq, and leave a few days unplanned. The best experiences are usually the ones you did not schedule.</p>
+          <p class="desk-by">A personal aside from <a href="/about">the True Trip Costs desk</a>. The verdicts above stay neutral; this is just one traveler's route.</p>
+        </div>
+        <div class="desk-route" aria-hidden="true">
+          <p class="route-lab">The route</p>
+          <ol class="route">
+            <li class="rnode start"><span class="rdot"></span><span class="rlabel">Fly into Dubai</span><span class="rnote">or Abu Dhabi, your anchor</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">Abu Dhabi</span><span class="rnote">the calmer, cultural side</span></li>
+            <li class="rnode"><span class="rdot"></span><span class="rlabel">Oman</span><span class="rnote">rent a car, mountains and wadis</span></li>
+            <li class="rnode end"><span class="rdot rdot-open"></span><span class="rlabel">Doha or Saudi Arabia</span><span class="rnote">with 10 to 14 days</span></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="se-sec">
+      <p class="lab">More than one region in mind?</p>
+      <h2>Compare another part of the world</h2>
+      <CompareOtherRegions others={others} />
+    </section>
+
+    <section class="se-sec">
+      <div class="se-honest">
+        <p><b>How we rate this.</b> The cost dots and the verdicts are the True Trip Costs desk's own comparative read for a US traveler, meant for choosing between these countries, not a precise index. We compare on things that move slowly, relative cost, currency pegs, card habits, tipping norms and taxi ease, and leave the exact prices, fees and rules to each country's guide, which we date and check on its own. Checked {checkedLabel}. Confirm anything critical, especially entry rules and current fees, in the country guide before you rely on it.</p>
+      </div>
+      <CompareFooterLinks href="/compare/gulf" />
+    </section>
+  </main>
+  <Footer />
+  <script type="application/ld+json" set:html={JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: title, description, dateModified: checkedISO, datePublished: checkedISO, author: { "@type": "Organization", name: "True Trip Costs" } })}></script>
+
+  <style>
+    .se{max-width:880px}
+    .se .ctx{margin:26px 0 12px}
+    .se-ctxtxt{color:var(--muted)}
+    .se h1{margin:0 0 14px}
+    .se-lede{font-size:18px;color:#3B4A46;max-width:660px;margin:0 0 26px}
+
+    .cost-dots{display:inline-flex;gap:4px}
+    .cost-dots .cd{width:9px;height:9px;border-radius:50%;background:var(--green-bg);border:1px solid #CFE3DB}
+    .cost-dots .cd.on{background:var(--teal);border-color:var(--teal)}
+    .lean{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;border-radius:999px;padding:3px 10px;white-space:nowrap;line-height:1.4}
+    .lean::before{content:"";width:7px;height:7px;border-radius:2px;background:currentColor;flex:none}
+    .lean-card{color:var(--teal-deep);background:rgba(14,122,95,.12)}
+    .lean-cash{color:var(--amber);background:rgba(180,83,9,.12)}
+    .tipchip{display:inline-block;font-size:12.5px;font-weight:600;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px 10px;white-space:nowrap}
+
+    .se-sec{padding:30px 0 0;border-top:1px solid var(--line);margin-top:34px}
+    .se-body{font-size:16px;color:#3B4A46;max-width:680px;margin:0}
+    .se-body b{color:var(--ink);font-weight:600}
+
+    .verdicts{display:flex;flex-direction:column;gap:14px;margin-top:8px}
+    .vrow{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px 20px}
+    .vhead{display:flex;align-items:center;gap:12px;margin:0 0 8px}
+    .vflag{border-radius:3px;border:1px solid var(--line);flex:none;display:block;object-fit:cover}
+    .vhead h3{font-family:var(--serif);font-weight:500;font-size:20px;line-height:1.1;margin:0}
+    .vbest{font-size:12.5px;font-weight:600;color:var(--teal-deep);margin:2px 0 0}
+    .vtext{font-size:15px;color:#3B4A46;line-height:1.6;margin:0 0 6px}
+    .vrow .cta{margin-top:2px;font-size:13.5px}
+
+    .picks{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+    .picks li{font-size:15px;color:#3B4A46;line-height:1.55;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px}
+    .picks li b{color:var(--ink);font-weight:600}
+
+    .se-honest{font-size:14px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:14px 16px;max-width:720px;box-shadow:var(--shadow);line-height:1.6}
+    .se-honest b{color:var(--ink);font-weight:600}
+    .se-honest p{margin:0}
+
+    .se-pick{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 20px;margin:0 0 30px;max-width:660px}
+    .se-pick-lab{font-size:12px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.09em;margin:0 0 6px}
+    .se-pick-main{font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.25;color:var(--ink);margin:0 0 6px}
+    .se-pick-main b{font-weight:600}
+    .se-pick-nuance{font-size:14.5px;color:var(--muted);margin:0}
+    .se-pick-nuance a{color:var(--teal-deep);font-weight:600;text-decoration:none}
+    .se-pick-nuance a:hover{text-decoration:underline}
+
+    /* From the desk: the personal itinerary, set apart from the neutral verdict
+       cards (warm tint, serif body, a byline to /about) so the analysis keeps its
+       authority and this reads as the human bonus. */
+    .desk{background:var(--green-bg);border:1px solid #C2E0C8;border-radius:var(--radius);padding:20px 22px;margin-top:8px;max-width:720px;display:flex;gap:24px;align-items:flex-start}
+    .desk-main{flex:1 1 auto;min-width:0}
+    .desk-text{font-family:var(--serif);font-weight:400;font-size:17px;line-height:1.6;color:#22403A;margin:0 0 14px}
+    .desk-by{font-size:13px;color:#3B5B50;margin:0;line-height:1.55}
+    .desk-by a{color:var(--teal-deep);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+
+    /* Route schematic: the itinerary as a small vertical journey strip, companion
+       to the desk paragraph. Decorative (aria-hidden); the prose carries detail. */
+    .desk-route{flex:0 0 206px;border-left:1px solid #C2E0C8;padding-left:20px;align-self:stretch}
+    .route-lab{font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 14px}
+    .route{list-style:none;margin:0;padding:0;position:relative}
+    .route::before{content:"";position:absolute;left:5px;top:5px;bottom:11px;width:2px;background:#A9D3BF;border-radius:2px}
+    .rnode{position:relative;padding:0 0 15px 22px}
+    .rnode:last-child{padding-bottom:0}
+    .rdot{position:absolute;left:0;top:3px;width:12px;height:12px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 3px var(--green-bg)}
+    .rnode.start .rdot{background:var(--teal-deep)}
+    .rdot-open{background:var(--green-bg);border:2px solid #8FC3AC}
+    .rlabel{display:block;font-family:var(--serif);font-weight:500;font-size:15px;color:var(--ink);line-height:1.2}
+    .rnote{display:block;font-size:12px;color:#3B5B50;margin-top:2px;line-height:1.4}
+
+    /* Cross-region links: send undecided readers to the other comparison pages. */
+    .xreg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:8px}
+    .xreg-card{display:flex;flex-direction:column;gap:5px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px;text-decoration:none;transition:border-color .2s ease,transform .2s ease}
+    .xreg-card:hover{border-color:#C2E0C8;transform:translateY(-1px)}
+    .xreg-region{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);line-height:1.15}
+    .xreg-pitch{font-size:13.5px;color:var(--muted);line-height:1.45}
+    .xreg-go{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--teal-deep);margin-top:2px}
+    .xreg-go svg{transition:transform .15s ease}
+    .xreg-card:hover .xreg-go svg{transform:translateX(3px)}
+
+    @media(max-width:640px){
+      .se-lede{font-size:16.5px}
+      .se-pick-main{font-size:19px}
+      .desk-text{font-size:16px}
+      .desk{flex-direction:column;gap:0}
+      .desk-route{flex:none;width:100%;border-left:none;border-top:1px solid #C2E0C8;padding-left:0;padding-top:16px;margin-top:16px;align-self:auto}
+    }
+  </style>
+</Base>
