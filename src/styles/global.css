@@ -106,13 +106,16 @@
   .utilbox-body p{font-size:14.5px;color:#3B4A46;line-height:1.6;margin:0 0 8px}
   .utilbox-body p:last-child{margin-bottom:0}
   .utilbox-body b{font-weight:600;color:var(--ink)}
-  /* .pickbtn is nowrap by default, which is right for the short labels elsewhere on
-     the site. In here the labels carry a country name ("Cover a rental in Dominican
-     Republic with RentalCover") and would overflow a narrow phone and force a
-     sideways scroll, so inside the box the label is allowed to wrap. On desktop the
-     labels fit one line anyway, so this changes nothing there. */
-  .utilbox .pickbtn{white-space:normal;text-align:left;line-height:1.25;max-width:100%}
+  /* Every .pickbtn may wrap, not just the ones inside a utilbox. This rule used to be
+     scoped to .utilbox, which left the affiliate buttons in CountryBriefing and the
+     expediter button in Spoke.astro still set to nowrap, and those overflowed a narrow
+     phone and forced a sideways scroll on all 59 country guides. The labels have since
+     been shortened so they fit one line anyway, so this is the safety net: a future long
+     label, a long brand name, or a 320px screen now wraps instead of overflowing.
+     Desktop is unaffected, since the labels fit one line there in any case. */
+  .pickbtn{white-space:normal;text-align:left;line-height:1.25;max-width:100%}
   @media(max-width:560px){
+    .btn{white-space:normal}
     .utilbox{padding:14px 16px;margin:22px 0;border-radius:12px}
     .utilbox-body p{font-size:15px}
     .utilbox .pickbtn{min-height:44px;padding:10px 16px}

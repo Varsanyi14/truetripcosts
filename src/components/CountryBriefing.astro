@@ -260,7 +260,7 @@ const kfState = (f) => {
 <div class="verdict">
   <span class="vlead">The short version</span>
   <Fragment set:html={c.verdict} />
-  <div class="vcta"><a class="btn light" href="#calc">Estimate your on-the-ground money costs
+  <div class="vcta"><a class="btn light" href="#calc">Estimate your daily costs
     <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
 </div>
 
@@ -370,7 +370,7 @@ const kfState = (f) => {
     <Fragment>
       <p style="font-size:14.5px;margin:6px 0 0">If an eSIM is the cheaper call, {esimBrand ? `${esimBrand} covers ${c.name}.` : `there is a tracked eSIM option for ${c.name}.`}</p>
       <span class="pickcta">
-        <a class="pickbtn" href={esim} {...ext(esim)}>{esimBrand ? `Get your ${esimBrand} eSIM for ${c.name}` : `Get an eSIM for ${c.name}`}<span class="arw">&#8594;</span>{ext(esim).target && <NewTab />}</a>
+        <a class="pickbtn" href={esim} {...ext(esim)}>{esimBrand ? `Get your ${esimBrand} eSIM` : 'Get an eSIM'}<span class="arw">&#8594;</span>{ext(esim).target && <NewTab />}</a>
         <span class="tg earn">we may earn a commission</span>
       </span>
     </Fragment>
@@ -503,7 +503,7 @@ const kfState = (f) => {
   <p>If your card does not cover it, or you would rather have cover built for this, a standalone policy bought ahead is the cheaper way to handle it. It covers the damage and theft the rental leaves you liable for, often including parts the counter cover leaves out like tires, glass and the underbody, and mechanical faults stay the rental company's problem.{carExcess ? ` ${carBrand} covers rentals in ${c.name}. Read what the policy includes before you buy.` : ""}</p>
   <span class="pickcta">
     {ext(carExcess).target && (
-      <a class="pickbtn" href={carExcess} {...ext(carExcess)}>Cover a rental in {c.name} with {carBrand}<span class="arw">&#8594;</span><NewTab /></a>
+      <a class="pickbtn" href={carExcess} {...ext(carExcess)}>Cover your rental with {carBrand}<span class="arw">&#8594;</span><NewTab /></a>
     )}
     <span class={commLabel(carExcess).cls}>{commLabel(carExcess).text}</span>
   </span>
