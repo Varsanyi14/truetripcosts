@@ -26,8 +26,24 @@
    zeroed the horizontal padding it inherits from .wrap. That went unnoticed because the
    old logo carried about 8px of transparent padding inside its own artwork; the current
    mark is ink to the edge of its box, which made the missing gutter obvious. */
-  .logo{display:flex;align-items:center;gap:9px;font-weight:600;font-size:17px;letter-spacing:-.01em}
-  .logo small{display:block;font-weight:400;font-size:11px;color:var(--muted);line-height:1}
+  /* The wordmark beside the mark, set to match the exported lockup: Plex Mono, uppercase,
+     tracked. It was Inter at 17px, which meant the same wordmark rendered one way in the nav
+     and another on the money rules pages, and neither matched the logo file. The mark's own
+     TTC letters are vector outlines of the same typeface, so this brings the text into
+     agreement with the artwork sitting next to it.
+     The tagline stays in the body font: it is a sentence, not part of the lockup. */
+  .logo{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-weight:600;font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;line-height:1.15}
+  .logo small{display:block;font-family:var(--font);font-weight:400;font-size:10.5px;letter-spacing:0;text-transform:none;color:var(--muted);line-height:1.2;margin-top:3px}
+  /* Below 430px the nav is competing for width with Guides and Get updates, and the
+     tracked wordmark needs 135px on one line. Tightening it and dropping the tagline
+     keeps the lockup readable and actually makes the nav shorter than it was in Inter:
+     60px against 98px at 320px. The tagline is a sentence, not part of the lockup, so
+     it is the right thing to lose first. The mark carries its own aria-label, so the
+     link keeps an accessible name either way. */
+  @media(max-width:429px){
+    .logo{font-size:11px;letter-spacing:.05em}
+    .logo small{display:none}
+  }
   .fromsel{display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--muted)}
   .fromsel select{font-family:inherit;font-size:13.5px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 8px}
 
