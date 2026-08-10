@@ -824,6 +824,196 @@ export const moneyRules = {
       },
     ],
   },
+  // Batch three: Netherlands, Iceland, Indonesia. Portugal was already carrying a
+  // card from the previous batch and is left untouched.
+  netherlands: {
+    title: 'Netherlands money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in the Netherlands: carry a debit card, choose euros, take the train from Schiphol, and round up when you tip.',
+    h1: 'Netherlands money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        // The one country in the series where the lead is not about currency. Being
+        // refused at a till is the thing that actually happens to Americans here, and
+        // it is the same reasoning that puts cash at the top of the Germany card.
+        lead: true,
+        h: 'Carry a debit card, not only a credit card',
+        p: 'Almost nowhere in Europe leans harder on cards, which is what makes the exception sting. Tills here are built around debit, so an American credit card is sometimes refused at a supermarket or a discount chain. When one gets declined, the phone wallet usually goes through anyway.',
+        href: '/netherlands/cash-or-card',
+        linkLabel: 'Which card to bring',
+      },
+      {
+        h: 'Say euros when the screen offers you dollars',
+        p: 'Card readers and cash machines both float the home-currency option, and taking it hands 3 to 8 percent to whoever owns the machine. Pick euros and the conversion goes back to your own bank.',
+        href: '/netherlands/cash-or-card',
+        linkLabel: 'Why euros, not dollars',
+      },
+      {
+        h: 'Some places have stopped taking cash at all',
+        p: 'The usual warning runs backwards here. A growing number of cafes, shops and museums are card-only, so the card is the essential thing and the notes are the spare. One small note in your pocket covers the rare stall that wants coins.',
+        href: '/netherlands/cash-or-card',
+        linkLabel: 'How little cash you need',
+      },
+      {
+        h: 'If you do want cash, find a yellow Geldmaat',
+        p: 'The Dutch banks share one machine network and it charges ordinary rates. The unbranded boxes tucked into souvenir shops do not, and they are the pushiest about billing you in dollars.',
+        href: '/netherlands/cash-or-card',
+        linkLabel: 'Where to get euros',
+      },
+      {
+        h: 'From Schiphol, the train beats the taxi rank',
+        p: 'It leaves from under the terminal and reaches central Amsterdam in about twenty minutes for a few euros, against many times that in a cab. Your contactless card opens the gate, so there is no transit pass to buy first.',
+        href: '/netherlands/taxis-and-apps',
+        linkLabel: 'Getting in from Schiphol',
+      },
+      {
+        h: 'Book a cab in an app rather than flagging one down',
+        p: 'Amsterdam street taxis have a long reputation for the scenic route and for turning down anything short. Uber, Bolt and FreeNow all settle the price before you get in, and a marked cab at an official rank runs a regulated meter.',
+        href: '/netherlands/taxis-and-apps',
+        linkLabel: 'Taxis, apps and street cabs',
+      },
+      {
+        h: 'Round up, do not work out a percentage',
+        p: 'Staff here draw a proper wage, so a fooi is a courtesy and the American arithmetic does not apply. Rounding up the bill is generous, 5 to 10 percent marks something memorable, and at a bar the change on the counter is plenty.',
+        href: '/netherlands/tipping',
+        linkLabel: 'What a fooi is worth',
+      },
+      {
+        h: 'The card machine may ask you for a tip',
+        p: 'Unusual for Europe, and easy to accept by reflex. Nothing has been added to a Dutch bill and nothing is expected, so treat the prompt as an invitation rather than a correction.',
+        href: '/netherlands/tipping',
+        linkLabel: 'Tipping on the card machine',
+      },
+    ],
+  },
+  iceland: {
+    title: 'Iceland money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in Iceland: it is krona not euros, cards cover the whole trip, nobody expects a tip, and what car cover skips.',
+    h1: 'Iceland money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        // Arriving with euros is the distinctly Icelandic version of the currency
+        // mistake, so it leads and the conversion rule sits directly under it.
+        lead: true,
+        h: 'It is krona, and euros will not spend here',
+        p: 'Iceland belongs to neither the EU nor the eurozone, so euros carried over for the trip have to be changed a second time, at your expense. The price is in Icelandic krona and that is what to pay in.',
+        href: '/iceland/cash-or-card',
+        linkLabel: 'Krona, cards and cash machines',
+      },
+      {
+        h: 'Refuse every offer to charge you in dollars',
+        p: 'Terminals and cash machines both make it. Taking it lets the machine set your exchange rate rather than your bank, and that swap costs 3 to 8 percent. Krona every time.',
+        href: '/iceland/cash-or-card',
+        linkLabel: 'Declining the dollar conversion',
+      },
+      {
+        h: 'You can cross this country without a banknote',
+        p: 'Cards and phone wallets reach almost everything, from a Reykjavik cafe to a guesthouse in the middle of nowhere, which makes Iceland one of the few places where carrying no cash is a workable plan. Keep a token reserve and expect never to break it.',
+        href: '/iceland/cash-or-card',
+        linkLabel: 'How little cash you need',
+      },
+      {
+        h: 'Nobody is waiting for a tip',
+        p: 'Service is inside the price and wages are decent, so restaurants, bars and taxis expect nothing and the terminals do not nag. A private guide who has made your day is the one case where a little cash is a warm gesture.',
+        href: '/iceland/tipping',
+        linkLabel: 'Why tipping is not a thing',
+      },
+      {
+        h: 'No Uber here, and the airport cab is the dearest ride',
+        p: 'Licensed firms run official meters and you reach them by app, by phone or from a rank, so hailing is not the habit. For the run in from Keflavik the scheduled coach covers the same road for a fraction of the fare.',
+        href: '/iceland/taxis-and-ride-hailing',
+        linkLabel: 'Taxis, apps and the Keflavik run',
+      },
+      {
+        h: 'The rental waiver leaves out what actually happens',
+        p: 'Gravel chips, glass, tires and blown sand or ash all sit outside the standard collision cover, and outside the expensive upgrade too, because that upgrade lowers your deductible without lengthening the list. Roughly a third of the roads here are unpaved.',
+        href: '/iceland/renting-a-car',
+        linkLabel: 'What the insurance skips',
+      },
+      {
+        h: 'Nothing sold in Iceland covers a river crossing',
+        p: 'Ford one and a flooded engine is yours outright, whatever you bought at the counter. Taking a two-wheel drive onto an F-road is illegal as well as uninsured. These are not deductibles, they are the cover disappearing.',
+        href: '/iceland/renting-a-car',
+        linkLabel: 'F-roads, fords and voided cover',
+      },
+      {
+        h: 'Some of the driving bills arrive after you fly home',
+        p: 'Car parks at the big waterfalls have a camera instead of a booth and expect an app, the tunnel in the north is paid online by plate, and the road tax is charged by distance. All of it reaches your rental agreement later, with a handling fee on top, so ask the desk how it bills each one.',
+        href: '/iceland/renting-a-car',
+        linkLabel: 'Parking, tolls and the road tax',
+      },
+    ],
+  },
+  indonesia: {
+    title: 'Indonesia money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in Indonesia: carry rupiah, count the zeros, pay the Bali levy on the official site, and read the plus plus.',
+    h1: 'Indonesia money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        // Most US trips here are Bali trips, and the guide is written that way, so the
+        // card follows it. Cash leads because it is the assumption travelers arrive
+        // with backwards.
+        lead: true,
+        h: 'Most of what you will do runs on cash',
+        p: 'Hotels, smarter restaurants and larger shops take cards, and a few add a percentage for the privilege. Warungs, markets, parking attendants and boats do not, and between them they account for most of an ordinary day.',
+        href: '/indonesia/cash-or-card',
+        linkLabel: 'How much rupiah to carry',
+      },
+      {
+        h: 'Count the zeros, then count them again',
+        p: 'A hundred thousand note and a ten thousand note are easy to mix up at a glance, and rupiah figures run long enough that misreading one costs real money. Slow down at the moment of paying, particularly on day one.',
+        href: '/indonesia/cash-or-card',
+        linkLabel: 'Reading rupiah notes',
+      },
+      {
+        h: 'Choose rupiah, never dollars, at the terminal',
+        p: 'The offer to bill you in your own currency is dynamic currency conversion, and it takes 3 to 8 percent on the way past. Your bank will do the same sum for less.',
+        href: '/indonesia/cash-or-card',
+        linkLabel: 'Paying by card in Indonesia',
+      },
+      {
+        h: 'Draw cash inside a bank or a mall, not off the street',
+        p: 'The standalone boxes along the tourist strips are where card skimming turns up. Use a machine inside a branch of one of the big banks, or in a shopping centre, and do it in daylight.',
+        href: '/indonesia/cash-or-card',
+        linkLabel: 'Getting rupiah safely',
+      },
+      {
+        h: 'Pay the Bali levy on the government site only',
+        p: 'Lookalike pages charge several times the real figure and exist mainly to collect card numbers. The official address ends in .go.id, the levy is once per trip rather than per night, and a counter on arrival is the safe fallback.',
+        href: '/indonesia/visa',
+        linkLabel: 'The Bali levy and the visa on arrival',
+      },
+      {
+        h: 'Read the bill for the plus plus before you tip',
+        p: 'Hotels and tourist restaurants routinely add service and tax on top of the listed price, and where that is already sitting there it stands in for the tip. At a warung nothing is expected at all.',
+        href: '/indonesia/tipping',
+        linkLabel: 'The plus plus, and what to tip',
+      },
+      {
+        h: 'Tip in rupiah, in cash, with your right hand',
+        p: 'A tip added on a card tends to vanish into a pool, so cash is what actually reaches the driver, the guide or the spa. Small notes make it easy, and the right hand is the polite one.',
+        href: '/indonesia/tipping',
+        linkLabel: 'Tipping in Indonesia',
+      },
+      {
+        h: 'Book the ride in an app, and be ready to walk a little',
+        p: 'Grab and Gojek both price the trip before you get in and undercut a street cab. Local unions block app pickups in parts of Ubud, Canggu and Uluwatu, so a driver may ask you to meet him round the corner. Being dropped off there is rarely the problem.',
+        href: '/indonesia/taxis-and-apps',
+        linkLabel: 'Ride apps, and the no-app zones',
+      },
+    ],
+  },
 };
 
 export function rulesFor(slug) {
