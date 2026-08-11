@@ -872,10 +872,10 @@ export const moneyRules = {
         linkLabel: 'How little cash you need',
       },
       {
-        h: 'If you do want cash, find a yellow Geldmaat',
-        p: 'The Dutch banks share one machine network and it charges ordinary rates. The unbranded boxes tucked into souvenir shops do not, and they are the pushiest about billing you in dollars.',
-        href: '/netherlands/cash-or-card',
-        linkLabel: 'Where to get euros',
+        h: 'Your room costs more than the rate you booked',
+        p: 'Amsterdam takes a slice of the room every night with no ceiling on it, and national VAT on hotel rooms climbed steeply in January. In the capital the two together run to about a third above the advertised price, and they land when you check out.',
+        href: '/netherlands/tourist-tax',
+        linkLabel: 'What a Dutch hotel adds',
       },
       {
         h: 'From Schiphol, the train beats the taxi rank',
@@ -1070,16 +1070,16 @@ export const moneyRules = {
         linkLabel: 'Where to change money',
       },
       {
-        h: 'Do not buy dirhams before you fly',
-        p: 'The currency is thinly traded outside the Gulf, so a bank or bureau at home sells it to you badly. Arrive with dollars, or with nothing, and draw what you need once you are on the ground.',
-        href: '/uae/cash-or-card',
-        linkLabel: 'Getting dirhams',
-      },
-      {
         h: 'Tap for everything, keep a little cash for the souk',
         p: 'Cabs, the metro, malls and restaurants all take a card or a phone without a second thought. What still wants notes is the souk, the small local place, and anything you hand to a person as thanks.',
         href: '/uae/cash-or-card',
         linkLabel: 'How much cash to carry',
+      },
+      {
+        h: 'The room rate is not the room bill',
+        p: 'Tax is genuinely light here, but a municipality fee, a service charge and a nightly city charge all stack on top, commonly a fifth to a third above the figure you were quoted. Ask what the all-in nightly total is before you book.',
+        href: '/uae/hotel-taxes-and-fees',
+        linkLabel: 'What a hotel bill adds',
       },
       {
         h: 'No visa to arrange, but read what gets stamped in',
@@ -1309,9 +1309,15 @@ export const moneyRules = {
         // neighbours carries the point without dating the card.
         lead: true,
         h: 'Budget for the highest VAT in the Gulf',
-        p: 'It lands on almost everything and it runs to several times what the UAE or Oman charge, so a menu or shelf figure is not what you will end up paying. Arriving straight from Qatar, where there is none at all, the jump is jarring. What softens it is that shopping here is reclaimable.',
+        p: 'It lands on almost everything and it runs to several times what the UAE or Oman charge, so a menu or shelf figure is not what you will end up paying. Arriving straight from Qatar, where there is none at all, the jump is jarring.',
         href: '/saudi-arabia/cash-or-card',
         linkLabel: 'What VAT does to prices',
+      },
+      {
+        h: 'The tax comes back, but only if you ask as you pay',
+        p: 'A refund on goods carried home has run since 2025, and it begins at the counter rather than at departures: the form is raised against your passport while the sale is happening. Clear the minimum inside one approved shop, because spending spread over several will not count.',
+        href: '/saudi-arabia/vat-refund',
+        linkLabel: 'Claiming the refund',
       },
       {
         h: 'Cards work almost everywhere, metro gates included',
@@ -1336,12 +1342,6 @@ export const moneyRules = {
         p: 'Running one is against the law and the fine falls on the driver, but the exposure falls on you: no record of the journey and nobody to complain to. The apps and the official ranks are licensed, and priced low enough that the risk buys you nothing.',
         href: '/saudi-arabia/taxis-and-apps',
         linkLabel: 'Licensed cars, and the apps',
-      },
-      {
-        h: 'The visa fee has medical insurance inside it',
-        p: 'That is unusual and worth something real, so read what you have already bought before adding cover you do not need. Apply on the official portal, where approval often comes back within minutes.',
-        href: '/saudi-arabia/visa',
-        linkLabel: 'The eVisa, and what it covers',
       },
       {
         h: 'Two things on the bill, and only one is service',

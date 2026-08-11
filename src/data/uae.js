@@ -298,10 +298,10 @@ export default {
     topic: "taxes",
     title: "UAE hotel taxes and fees: what lands on the bill",
     description:
-      "A UAE hotel bill stacks 5% VAT, a municipality fee, a service charge and a nightly Tourism Dirham, often 20 to 30% above the room rate. Checked 2026.",
+      "A UAE hotel bill stacks 5% VAT, a municipality charge, a service charge and a nightly Tourism Dirham, often 20 to 30% over the room rate. Checked 2026.",
     h1: "UAE hotel taxes and fees, itemised",
     lede:
-      "Short answer: the UAE taxes lightly and charges hotels heavily. VAT is only 5%, but by the time a municipality fee, a service charge and a nightly city fee are added, a room can settle a fifth to a third above the rate you were quoted.",
+      "Short answer: the UAE taxes lightly and charges hotels heavily. VAT is only 5%, but once the municipality has taken its cut, the hotel has added service, and the city has charged for the night, a room settles a fifth to a third above the rate you were quoted.",
     checked: "Aug 2026",
     checkedISO: "2026-08-11",
     answer:
@@ -361,7 +361,7 @@ export default {
           fig: "About 10%",
           tag: "The hotel's own",
           text:
-            "The service charge belongs to the property, not the government. It is usually mandatory, and it is not the same thing as a tip.",
+            "The service charge belongs to the property rather than the government. It is normally unavoidable, and it is not a gratuity, whatever it looks like on the bill.",
           tone: "amber",
         },
         p: [
