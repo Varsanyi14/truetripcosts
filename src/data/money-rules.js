@@ -35,6 +35,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in France: say euros not dollars, service is included by law, carry a chip-and-PIN card, and the CDG fixed fare.',
     h1: 'France money rules',
+    blurb: 'Service sits in the price by law, and the fare in from the airport is set by decree.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -95,6 +96,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in the UK: pay in pounds, get the ETA before you fly, the 12.5 percent is the tip, and there is no VAT refund.',
     h1: 'UK money rules',
+    blurb: 'Nothing to reclaim on the way out, and no travel card worth buying.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -157,6 +159,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Italy: choose euros, dodge the ZTL fine, the coperto is not a tip, and the city tax your hotel collects.',
     h1: 'Italy money rules',
+    blurb: 'Drive into an old city centre and a camera bills you months after you fly home.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -221,6 +224,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Mexico: pay in pesos, avoid airport ATMs, check the bill for propina, and the car insurance no quote includes.',
     h1: 'Mexico money rules',
+    blurb: 'The dollar sign on a menu means pesos, and the tip wants to be cash.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -285,6 +289,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Costa Rica: match the currency, insist on la maria, skip the second tip line, refuse conversion to dollars.',
     h1: 'Costa Rica money rules',
+    blurb: 'Two currencies circulate, and crossing them over lets the seller pick the rate.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     // Shown as "Rules as of {checked}". Bump this when a rule changes, not on a
@@ -349,6 +354,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Canada: choose Canadian dollars, the eTA is not for you, shelf prices are pre-tax, and tipping runs US-style.',
     h1: 'Canada money rules',
+    blurb: 'The shelf price is never the price, and the tipping runs the way it does at home.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -409,6 +415,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Japan: most bank ATMs reject foreign cards, get an IC card, never tip, and always choose yen over dollars.',
     h1: 'Japan money rules',
+    blurb: 'Most bank machines refuse a foreign card, and a tip is not expected anywhere.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -469,6 +476,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Spain: choose euros, skip the kiosk cash machines, tipping is light, and the tourist tax hits only two regions.',
     h1: 'Spain money rules',
+    blurb: 'No cover charge, no service charge, and a tax refund with no minimum spend.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -529,6 +537,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Portugal: use Multibanco not Euronet, the couvert is a charge, and never enter a Via Verde lane unequipped.',
     h1: 'Portugal money rules',
+    blurb: 'One national machine network is cheap, and the bright yellow ones are not.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -589,6 +598,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Germany: carry cash, say the total instead of leaving a tip, no car toll, and the green windscreen sticker.',
     h1: 'Germany money rules',
+    blurb: 'Less card-friendly than it looks, and you say the total rather than leaving it.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -649,6 +659,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in the Dominican Republic: the E-Ticket is free and needed twice, the 10 and 18 on your bill, and pay in pesos.',
     h1: 'Dominican Republic money rules',
+    blurb: 'The menu price hides about a quarter, and the entry form is needed twice.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -709,6 +720,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Jamaica: red plate taxis only, the C5 form is free, choose Jamaican dollars, and check for a service charge.',
     h1: 'Jamaica money rules',
+    blurb: 'Two currencies share one name, so always ask which dollars are meant.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -769,6 +781,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in India: use only the official e-Visa site, book autos in an app, tip small and often, and always pay in rupees.',
     h1: 'India money rules',
+    blurb: 'One official site issues the visa, and the rest are middlemen.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -831,6 +844,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in the Netherlands: carry a debit card, choose euros, take the train from Schiphol, and round up when you tip.',
     h1: 'Netherlands money rules',
+    blurb: 'So card-first that some places refuse cash, and debit beats credit at the till.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -894,6 +908,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Iceland: it is krona not euros, cards cover the whole trip, nobody expects a tip, and what car cover skips.',
     h1: 'Iceland money rules',
+    blurb: 'Cashless to the point of not needing notes, and euros are no use here.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -956,6 +971,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Indonesia: carry rupiah, count the zeros, pay the Bali levy on the official site, and read the plus plus.',
     h1: 'Indonesia money rules',
+    blurb: 'Cash still runs most of the day, and the zeros are easy to misread.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -1035,6 +1051,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in the UAE: the dirham is pegged, skip the airport exchange desk, tip in cash, and read your entry stamp.',
     h1: 'UAE money rules',
+    blurb: 'The rate cannot move against you, so the only real leak is the exchange desk.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -1095,6 +1112,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Oman: read the three decimals, break the big notes early, agree taxi fares first, and carry cash for the souk.',
     h1: 'Oman money rules',
+    blurb: 'Three decimals on every price, and the souk still runs on cash.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -1158,6 +1176,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Qatar: no VAT so the tag is final, Careem has gone, the metro beats the airport cab, and tipping is optional.',
     h1: 'Qatar money rules',
+    blurb: 'No VAT at all, so the tag is the price, and one familiar ride app has gone.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -1218,6 +1237,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Bahrain: read the three decimals, both ride apps work here, apps undercut the meter, tip in small notes.',
     h1: 'Bahrain money rules',
+    blurb: 'Card-easy and arithmetic-hard, and the one Gulf state where both ride apps work.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -1278,6 +1298,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Saudi Arabia: budget for the highest VAT in the Gulf, take the Riyadh Metro, never an unlicensed taxi.',
     h1: 'Saudi Arabia money rules',
+    blurb: 'The highest VAT in the Gulf, and one of only two you can claim back.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',
@@ -1341,6 +1362,7 @@ export const moneyRules = {
     description:
       'Eight money habits for US travelers in Kuwait: the rate really moves here, no VAT, install Careem, agree the fare first, and read the three decimals.',
     h1: 'Kuwait money rules',
+    blurb: 'The one Gulf currency that is not pegged, so here the rate genuinely moves.',
     standfirst:
       'Eight things worth remembering while you are there, each linking to the fuller explanation.',
     checked: 'August 2026',

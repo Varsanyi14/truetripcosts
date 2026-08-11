@@ -1,0 +1,136 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { countries } from '../data/index.js';
+import { moneyRules } from '../data/money-rules.js';
+import fs from 'node:fs';
+
+// The index for the pocket card series, at /rules.
+//
+// WHY THIS EXISTS: the cards were well linked inside their own country cluster, from the
+// guide and from every spoke, and linked from nowhere else at all. No site page pointed at
+// one, no card pointed at another, and a reader finishing Qatar and flying to Oman next had
+// no route between them. The card's own newsletter block asked for an email address to solve
+// a problem a link solves better.
+//
+// Data-driven on purpose, the same as the cards themselves: a country appears here when it
+// gains a key in money-rules.js and is live, so the list cannot drift from what actually
+// exists. The one-line description per country is the blurb field on that entry, written for
+// this page rather than lifted from the card, so this reads as its own page and not as a
+// summary of twenty-two others.
+const flagDir = process.cwd() + '/public/flags/';
+const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? `/flags/${slug}.svg` : '/flags/world.svg';
+
+const withCards = countries
+  .filter(c => c.live && moneyRules[c.slug])
+  .map(c => ({ ...c, card: moneyRules[c.slug] }));
+
+// Fixed running order rather than alphabetical by region, so the page does not reshuffle
+// itself as the series grows. A region with no cards yet simply does not appear.
+const REGION_ORDER = ['Europe', 'Middle East', 'Asia', 'Americas', 'Africa', 'Oceania'];
+const groups = REGION_ORDER
+  .map(region => ({
+    region,
+    items: withCards
+      .filter(c => c.region === region)
+      .sort((a, b) => a.name.localeCompare(b.name)),
+  }))
+  .filter(g => g.items.length);
+
+const total = withCards.length;
+---
+
+<Base
+  title="Money rules by country: the card to keep on your phone"
+  description="One short page of money rules for each country we cover: refuse the dollar conversion, what to tip, where cash still matters. Made for your phone."
+>
+  <Nav />
+  <main class="wrap">
+    <section class="rh-head">
+      <p class="lab">Money rules</p>
+      <h1>The pocket card, country by country</h1>
+      <p class="sub">
+        Each of these is one short page of the money habits that do not really change in that
+        country: refuse the conversion to dollars, what a tip is actually worth, where cash is
+        still the only thing that works. They are built for a phone, so you can save one before
+        you fly and glance at it while you are standing at a till. {total} countries so far.
+      </p>
+      <p class="rh-note">
+        Prices, fees and exchange rates move, so those live in the full country guide next to the
+        date they were checked. These pages carry the habits instead, which is why they are worth
+        keeping.
+      </p>
+    </section>
+
+    {groups.map(g => (
+      <section class="rh-grp" aria-label={'Money rules in ' + g.region}>
+        <h2 class="rh-grp-h">{g.region} <span class="rh-count">{g.items.length}</span></h2>
+        <div class="rh-grid">
+          {g.items.map(c => (
+            <a class="rh-card" href={'/' + c.slug + '/rules'}>
+              <span class="rh-flag" aria-hidden="true">
+                <img src={flagSrc(c.slug)} alt="" width="30" height="22" loading="lazy" />
+              </span>
+              <span class="rh-tx">
+                <span class="rh-name">{c.name}</span>
+                <span class="rh-blurb">{c.card.blurb}</span>
+              </span>
+              <span class="rh-go" aria-hidden="true">&#8594;</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+
+    <section class="rh-foot">
+      <p class="rh-foot-p">
+        Not the country you are going to? The full money guide exists for a good many more, and a
+        card follows once the guide behind it is solid. See <a href="/countries">every country guide</a>,
+        or start from a question on the <a href="/">home page</a>.
+      </p>
+    </section>
+  </main>
+  <Footer />
+
+  <style>
+    .rh-head{padding:48px 0 8px;max-width:660px}
+    .rh-head h1{font-size:clamp(30px,5vw,44px);margin:0 0 12px}
+    .rh-note{font-size:14px;line-height:1.6;color:var(--muted);margin:14px 0 0}
+
+    .rh-grp{padding:26px 0 0;border-top:none;margin-top:0}
+    .rh-grp-h{
+      display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:11.5px;
+      font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-deep);
+      margin:0 0 12px;
+    }
+    .rh-count{
+      font-size:10.5px;font-weight:500;letter-spacing:.03em;color:#10502C;
+      background:var(--green-bg);border-radius:999px;padding:3px 8px;
+    }
+    .rh-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .rh-card{
+      display:flex;align-items:flex-start;gap:12px;padding:14px 15px;
+      border:1px solid var(--line);border-radius:12px;background:var(--card);
+      box-shadow:var(--shadow);text-decoration:none;
+      transition:border-color .2s ease,transform .2s ease;
+    }
+    .rh-card:hover{border-color:var(--teal);transform:translateY(-2px)}
+    .rh-flag{flex:none;display:inline-flex;line-height:0;margin-top:2px}
+    .rh-flag img{width:30px;height:22px;border-radius:3px;box-shadow:0 0 0 1px rgba(22,48,44,.08);display:block}
+    .rh-tx{flex:1;min-width:0}
+    .rh-name{
+      display:block;font-family:var(--serif);font-weight:500;font-size:17px;
+      color:var(--ink);line-height:1.2;margin:0 0 4px;
+    }
+    .rh-blurb{display:block;font-size:13.5px;line-height:1.5;color:var(--muted)}
+    .rh-go{flex:none;color:var(--teal-deep);font-weight:700;opacity:0;transition:opacity .2s ease;margin-top:2px}
+    .rh-card:hover .rh-go{opacity:1}
+
+    .rh-foot{padding:34px 0 64px;border-top:1px solid var(--line);margin-top:34px}
+    .rh-foot-p{font-size:14.5px;line-height:1.6;color:var(--muted);margin:0;max-width:620px}
+    .rh-foot-p a{color:var(--teal-deep);font-weight:500}
+
+    @media (max-width:720px){ .rh-grid{grid-template-columns:1fr} }
+  </style>
+</Base>
