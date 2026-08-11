@@ -371,7 +371,106 @@ export default {
         ],
         judgment: "That both Uber and Careem operate under TGA licensing, and that the Riyadh Metro opened in late 2024 with all lines running from January 2025, are well attested across current sources. Metro fares of about SAR 4 for two hours are consistently reported but come from travel sources rather than an operator tariff page we could open. Airport taxi estimates vary from SAR 50 to 180 across current sources, so we give the range and say so. Fuel and rental figures are 2026 estimates.",
       }
-    }
+    },
+  {
+    slug: "vat-refund",
+    glance: [
+      { k: "VAT rate", v: "15%, the highest in the Gulf" },
+      { k: "Minimum spend", v: "Over SAR 500 at one retailer" },
+      { k: "The catch", v: "Ask for the form at the till" },
+      { k: "Export window", v: "90 days, goods unused" },
+    ],
+    live: true,
+    topic: "taxes",
+    title: "Saudi VAT refund for tourists: how to claim the 15%",
+    description:
+      "Saudi Arabia has refunded VAT to visitors since April 2025. The minimum spend, the form you must request as you pay, and where the claim happens.",
+    h1: "The Saudi VAT refund, and the step everyone misses",
+    lede:
+      "Short answer: Saudi Arabia charges the highest VAT in the Gulf and, unusually for the region, gives it back on shopping. The scheme works, but it starts at the till rather than at the airport, and that is where most claims are lost before they begin.",
+    checked: "Aug 2026",
+    checkedISO: "2026-08-11",
+    answer:
+      "Saudi VAT runs at <b>15%</b> and, since <b>18 April 2025</b>, a visitor can get it back on things they carry home. Four gates stand between you and the money. You have to be <b>over 18 and not resident here</b>. Your spending has to clear <b>SAR 500 in one approved shop</b>, and pooling small receipts from several shops will not do it, although three receipts from one shop on a single day are treated as one. The goods have to leave the country <b>within 90 days, unused</b>. And the paperwork has to be started <b>while you are still at the counter paying</b>, against your passport, with the claim finished at the airport. That last gate is the one that closes quietly, because a receipt on its own proves nothing later.",
+    official: {
+      label: "ZATCA: the tourist VAT refund scheme",
+      url: "https://zatca.gov.sa/en",
+      note:
+        "The Zakat, Tax and Customs Authority runs the scheme. Participating retailers are approved individually, so the shop, not the tax authority, is where you confirm you can claim.",
+    },
+    sections: [
+      {
+        h: "Why this one is worth the trouble",
+        key: {
+          fig: "15%",
+          tag: "The highest in the Gulf",
+          text:
+            "Qatar levies none, the UAE and Oman a twentieth, Bahrain a tenth. The size of the Saudi rate is what makes the paperwork worth doing.",
+          tone: "teal",
+        },
+        p: [
+          "VAT arrived here at 5% in 2018 and was <b>tripled to 15% in July 2020</b>. That is a long way above the rest of the region, and it is the reason prices feel a step up from Doha or Muscat. It is also why the refund matters more here than anywhere else in the Gulf: the same effort recovers three times what it would in the UAE.",
+          "On a serious purchase the arithmetic is real money rather than a rounding error. If you are shopping deliberately, in gold, electronics, perfume or clothing, treat the refund as part of the price you negotiate with yourself before you buy, not as a bonus you might chase afterwards.",
+        ],
+      },
+      {
+        h: "The threshold is per shop, and it does not pool",
+        key: {
+          fig: "SAR 500",
+          tag: "At a single retailer",
+          text:
+            "The minimum has to be cleared inside one approved shop. Spending spread across different shops does not add up, though three receipts from one shop on a single day do.",
+          tone: "amber",
+        },
+        p: [
+          "You need to clear <b>SAR 500 inside one approved shop</b>. Two half-sized receipts from two different shops will not combine to get you there, and that single rule disqualifies more visitors than any other. Where it does bend: <b>three receipts from one shop on a single day</b> count together. So concentrating a planned purchase in one place is a tactic, not a coincidence.",
+          "Not every shop is in the scheme. It covers more than <b>1,400 approved outlets</b>, which sounds comprehensive right up to the moment you are standing in one that is not. The window stickers to look for say <b>Tax Free</b> or <b>VAT Refund Available</b>. If you cannot see one, the question belongs before you hand over a card, not after.",
+        ],
+      },
+      {
+        h: "The claim starts at the till, not at departures",
+        key: {
+          fig: "At the till",
+          tag: "Passport in hand",
+          text:
+            "The form is issued against your passport at the moment of purchase. Without it there is nothing to validate at the airport, no matter how large the receipt.",
+          tone: "amber",
+        },
+        p: [
+          "This is the step that decides whether you get anything. <b>Request the form while you are still at the counter, passport out</b>, as you pay. The paperwork is generated against the passport, so it cannot be created retrospectively from a receipt, and airport staff have nothing to process without it. Arriving at departures with a bag of receipts and no forms is the common way this goes wrong.",
+          "Then <b>complete the claim at the airport before you leave</b>, allowing time for it, and keep the goods <b>unused and available to show</b>. The export window is <b>90 days</b> from purchase, which is generous for a normal trip and only matters if you buy on one visit and leave on another.",
+        ],
+      },
+      {
+        h: "What does not qualify",
+        key: {
+          fig: "Goods only",
+          tag: "Not the trip itself",
+          text:
+            "Hotels, meals, taxis and anything consumed in the country are outside the scheme. It refunds what you carry out, not what you spend while there.",
+          tone: "teal",
+        },
+        p: [
+          "The refund covers <b>goods exported for personal use</b>. It does not cover your hotel, your restaurant bills, your rides or anything else consumed inside the country, which is the same shape as every other visitor refund scheme in the world and still surprises people who expect the 15% back on a whole trip.",
+          "Nor does it reach a hotel bill. Beyond the 15% itself, properties here often put a <b>service charge</b> on the room, and a few add a <b>municipality fee</b> as well, none of it recoverable. Worth asking whether a quoted rate is the whole rate when you book. That is a different question from the refund, and for most budgets a larger one.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "How does the Saudi tourist VAT refund actually work?",
+        a: "Yes, and have been able to since 18 April 2025. If you are over 18, not resident, and you spend past SAR 500 in a single approved shop, the 15% comes back on goods you take home unused inside 90 days. The one thing that trips people is timing: the form is raised against your passport at the counter while you pay, and the claim is finished at the airport on the way out.",
+      },
+      {
+        q: "What is the minimum spend for the Saudi VAT refund?",
+        a: "Past SAR 500 in one approved shop, somewhere around 133 dollars. Small receipts gathered across several shops will not reach the threshold, which is stricter than it sounds, although three receipts from one shop on a single day are treated as one. The practical move is to put a planned purchase through a single approved store rather than spreading it around.",
+      },
+      {
+        q: "What if I forgot to ask for the form when I paid?",
+        a: "Then there is no claim to make. The refund document is issued against your passport at the point of sale, so it cannot be produced later from a receipt alone, and airport staff have nothing to validate without it. If you intend to claim, the question to ask before handing over a card is whether the store participates and whether they will issue the form.",
+      },
+    ],
+  }
   ],
 
   signals: { cardFriendliness: 5, cashNeed: 2, taxRisk: 4, atmRisk: 2 },

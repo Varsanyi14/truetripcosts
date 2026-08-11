@@ -285,7 +285,106 @@ export default {
         ],
         judgment: "Third-party fare tables for Dubai disagree, mostly because they confuse the small flagfall with the higher minimum fare, and because the RTA revises the per-kilometre rate monthly with fuel prices. We have given the structure the RTA actually announced, with the distance rate as a band rather than a precise figure, so treat totals as estimates and check the RTA app for a live quote. Careem and Uber pricing is dynamic and our 10 to 25% premium is an observed range. Checked July 2026."
       }
-    }
+    },
+  {
+    slug: "hotel-taxes-and-fees",
+    glance: [
+      { k: "On top of the room", v: "Roughly 20 to 30%" },
+      { k: "VAT", v: "5%, and not reclaimable on hotels" },
+      { k: "Dubai", v: "A flat Tourism Dirham per night" },
+      { k: "Abu Dhabi", v: "A 4% fee on the room bill instead" },
+    ],
+    live: true,
+    topic: "taxes",
+    title: "UAE hotel taxes and fees: what lands on the bill",
+    description:
+      "A UAE hotel bill stacks 5% VAT, a municipality fee, a service charge and a nightly Tourism Dirham, often 20 to 30% above the room rate. Checked 2026.",
+    h1: "UAE hotel taxes and fees, itemised",
+    lede:
+      "Short answer: the UAE taxes lightly and charges hotels heavily. VAT is only 5%, but by the time a municipality fee, a service charge and a nightly city fee are added, a room can settle a fifth to a third above the rate you were quoted.",
+    checked: "Aug 2026",
+    checkedISO: "2026-08-11",
+    answer:
+      "Four separate things can sit on top of a UAE room rate. <b>VAT at 5%</b>, low by any standard. A <b>municipality fee</b>, around 7% in Dubai. A <b>service charge</b>, usually about 10%, which is the hotel's own rather than a tax. And a nightly city fee: Dubai's <b>Tourism Dirham</b> is a fixed nightly sum, scaled to how many stars the property holds, and it stops accruing after 30 nights in a row, while <b>Abu Dhabi</b> charges a <b>4% accommodation fee</b> on the bill instead. Together they commonly add <b>20 to 30%</b> to a bare rate. The 5% VAT here is <b>not</b> reclaimable, because the visitor refund scheme covers shopping you export, not a bed you slept in.",
+    official: {
+      label: "Federal Tax Authority: what the tourist VAT refund covers",
+      url: "https://tax.gov.ae/en/services/tourist.vat.refunds.aspx",
+      note:
+        "The federal position on VAT and what the visitor refund does and does not cover. Municipality fees and the nightly city fee are set at emirate level, so Dubai and Abu Dhabi publish their own.",
+    },
+    sections: [
+      {
+        h: "The tax part is the small part",
+        key: {
+          fig: "5%",
+          tag: "VAT, and that is all",
+          text:
+            "One of the lowest VAT rates anywhere, with no personal income tax and no separate departure tax to pay at the airport.",
+          tone: "teal",
+        },
+        p: [
+          "<b>VAT is 5%</b>, which is genuinely low, and there is no personal income tax and nothing extra to hand over at the airport when you leave. If the UAE had a reputation for expensive hotel bills built on taxation, the numbers would not support it.",
+          "What builds the bill is the layer above the tax. A <b>municipality fee of around 7%</b> applies in Dubai, set by the emirate rather than federally, so the figure is not uniform across the country. It is a charge on the accommodation, and like the VAT it is normally folded into the rate a hotel quotes you rather than presented separately.",
+        ],
+      },
+      {
+        h: "Dubai charges a flat fee per night, by star rating",
+        key: {
+          fig: "Per night",
+          tag: "Set by star rating",
+          text:
+            "A fixed sum attaches to the room for every night you hold it, more at a five-star than at a hotel apartment, and it stops after 30 nights in a row.",
+          tone: "amber",
+        },
+        p: [
+          "The <b>Tourism Dirham</b> attaches to the room for each night you have it, as a fixed sum rather than a proportion, and it climbs with the star rating on the door: most at a five-star, least at a budget place or a hotel apartment. After <b>30 nights in a row</b> it stops, so a long stay is not billed indefinitely.",
+          "Because it is flat, it behaves the opposite way to a percentage. On a cheap room over many nights it is proportionally significant. On a suite it disappears into the noise. Anyone comparing a modest hotel against a smarter one should run this per night rather than assume it scales with the rate.",
+        ],
+      },
+      {
+        h: "Abu Dhabi does it differently",
+        key: {
+          fig: "4%",
+          tag: "Of the room bill",
+          text:
+            "Abu Dhabi applies a percentage accommodation fee rather than Dubai's flat nightly charge, so the two emirates are not comparable line for line.",
+          tone: "teal",
+        },
+        p: [
+          "<b>Abu Dhabi adds a 4% fee on the room bill</b> in place of a flat nightly amount. Same idea, different mechanism, and it means a like-for-like comparison between the emirates has to be done on the all-in total rather than on any single line.",
+          "This is worth knowing if you are splitting a trip. Moving between Dubai and Abu Dhabi changes which charges apply and how they are calculated, and the hotel is not obliged to make that legible in a quoted rate.",
+        ],
+      },
+      {
+        h: "The service charge is not a tax, and the VAT is not coming back",
+        key: {
+          fig: "About 10%",
+          tag: "The hotel's own",
+          text:
+            "The service charge belongs to the property, not the government. It is usually mandatory, and it is not the same thing as a tip.",
+          tone: "amber",
+        },
+        p: [
+          "The <b>service charge of around 10%</b> is the hotel's own charge, not a government one. It is normally unavoidable, it is folded into the rate, and it is not a tip in any meaningful sense, since there is no guarantee it reaches the person who carried your bag. If you want a member of staff to receive something, cash in a hand is the mechanism that works.",
+          "And the 5% VAT on all of this is <b>not reclaimable</b>. The visitor refund scheme, run through Planet, covers <b>goods you take out of the country</b> above a minimum spend at a participating shop, and explicitly not hotels, restaurants or anything consumed here. Ask for the <b>all-in nightly total</b> when you book, because that is the only number that means anything.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "How much do UAE hotels add to the room rate?",
+        a: "Commonly 20 to 30%. Four things pile up: VAT at 5%, a Dubai municipality fee near 7%, a service charge around 10%, and a nightly city charge, which in Dubai is the fixed Tourism Dirham scaled to star rating and in Abu Dhabi a 4% accommodation fee instead. Most of it is folded into the quoted rate rather than itemised, so the useful question when booking is what the all-in nightly total comes to.",
+      },
+      {
+        q: "Can I claim the VAT back on a Dubai hotel?",
+        a: "No. The UAE visitor refund scheme covers goods you export unused, above a minimum spend at a participating retailer, and it excludes hotels, restaurants and anything else consumed in the country. Hotel VAT is a cost rather than something recoverable. Shopping is a separate matter and the refund there is worth claiming.",
+      },
+      {
+        q: "Is the hotel service charge a tip?",
+        a: "Not really. It is the property's own charge, usually around 10% and usually mandatory, and it is not a government tax. There is no guarantee any of it reaches the staff who served you, which is why cash given directly is the reliable way to tip in the UAE.",
+      },
+    ],
+  }
   ],
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 3, atmRisk: 3 },
   hook: "One of the most cashless places on earth, and the dirham is pinned to the dollar, so the exchange rate barely moves.",

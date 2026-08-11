@@ -447,6 +447,105 @@ export default {
         ],
         judgment: "the Netherlands applies the shared EU pet-entry framework, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The local registration and any breed rules vary, so we point you to the official pages and dated this July 2026."
       }
-    }
+    },
+  {
+    slug: "tourist-tax",
+    glance: [
+      { k: "Amsterdam", v: "12.5% of the room rate" },
+      { k: "Most other towns", v: "A few euros per person, per night" },
+      { k: "Hotel VAT", v: "Rose from 9% to 21% in January 2026" },
+      { k: "Amsterdam, all in", v: "Roughly a third on top of the room" },
+    ],
+    live: true,
+    topic: "taxes",
+    title: "Netherlands tourist tax: what a hotel adds in 2026",
+    description:
+      "Amsterdam takes 12.5% of a room rate, a proportion no European city beats, and hotel VAT reached 21% in January 2026. What both do to your bill.",
+    h1: "Netherlands tourist tax, and the VAT rise that landed in January",
+    lede:
+      "Short answer: two separate charges sit on a Dutch hotel bill, and in Amsterdam they now add up to about a third of the room rate. One is set by the city, the other by the national government, and the second one moved this year.",
+    checked: "Aug 2026",
+    checkedISO: "2026-08-11",
+    answer:
+      "A Dutch hotel bill carries a <b>city tourist tax</b> and <b>national VAT</b>, and they are unrelated to each other. In Amsterdam the city takes <b>12.5% of the net room rate</b>, a percentage no other European city beats, and it keeps taking it however long you stay. Elsewhere the model is different: most municipalities ask for <b>a few euros for each guest, each night</b>, a flat figure set town by town. The second charge is national. Hotel VAT stood at 9% until the end of 2025 and <b>became 21% on 1 January 2026</b>, wherever in the country you sleep. Stacked in Amsterdam, the two land at roughly <b>a third on top of the advertised rate</b>, which is why a quoted nightly price and a checkout total can look like different holidays.",
+    official: {
+      label: "Dutch government: VAT on overnight accommodation rose to 21%",
+      url: "https://business.gov.nl/amendments/vat-overnight-accommodation-goes-up/",
+      note:
+        "The national VAT change. City tourist tax is set by each municipality, so the rate for anywhere outside Amsterdam is published by that town rather than nationally.",
+    },
+    sections: [
+      {
+        h: "Amsterdam takes a percentage, and takes the most in Europe",
+        key: {
+          fig: "12.5%",
+          tag: "Of the room rate",
+          text:
+            "Charged on the net nightly rate, before VAT, with no cap on how many nights it runs for. No European city charges a higher percentage.",
+          tone: "amber",
+        },
+        p: [
+          "The capital bills a proportion rather than a flat sum, and <b>12.5% of the net nightly rate</b> is not matched anywhere else on the continent. Nothing caps it, so a fortnight attracts the same proportion as a weekend, and the sum is worked out on the room price before VAT goes on.",
+          "It is collected by the property, not by you at a desk, and it usually appears as a separate line when you settle up. That timing is what catches people: a rate compared on a booking site is frequently the pre-tax number, so the figure you decided on and the figure you are asked for can differ by a noticeable margin.",
+        ],
+      },
+      {
+        h: "Everywhere else charges by the head, not by the rate",
+        key: {
+          fig: "A few euros",
+          tag: "Per person, per night",
+          text:
+            "Rotterdam, Utrecht, The Hague and most smaller towns charge a small flat amount for each guest each night, set locally rather than nationally.",
+          tone: "teal",
+        },
+        p: [
+          "Outside the capital the model changes completely. Most towns ask for <b>a modest fixed sum for every guest, every night</b>, usually a handful of euros, with the figure decided locally, which means no single national number exists to quote you. On a cheap room that flat fee is proportionally heavier than Amsterdam's percentage. On an expensive one it is far lighter.",
+          "The practical consequence is that the tax is worth checking per town rather than assumed from the country. A family of four in a modest place outside the capital can pay more tourist tax than a couple in a similar room in Amsterdam.",
+        ],
+      },
+      {
+        h: "The VAT on your room more than doubled this year",
+        key: {
+          fig: "9% to 21%",
+          tag: "From 1 January 2026",
+          text:
+            "Hotel accommodation moved from the low VAT band to the standard one. Camping stays were left on the low band.",
+          tone: "amber",
+        },
+        p: [
+          "Through 2025 a Dutch hotel room sat in the reduced VAT band, at <b>9%</b>. With effect from <b>1 January 2026</b> accommodation was moved up to the standard band, <b>21%</b>. Campsites were left where they were. This is national, so it applies in Maastricht exactly as it does in Amsterdam.",
+          "Because it landed recently, displayed prices are the thing to watch. When this page was checked, some booking platforms had not fully worked the new rate into the totals they showed, which means the number you are quoted deserves a second look rather than trust.",
+        ],
+      },
+      {
+        h: "What to actually do about it",
+        key: {
+          fig: "Ask for all in",
+          tag: "Before you book",
+          text:
+            "The only reliable protection is asking the property for the total including city tax and VAT, and comparing that figure rather than the headline rate.",
+          tone: "teal",
+        },
+        p: [
+          "Ask the property for the <b>total including tourist tax and VAT</b> and compare hotels on that, because the advertised rate is not a like-for-like number between a platform and a direct booking. If you are choosing between Amsterdam and a base outside it, run the sum both ways: the percentage model and the flat-fee model can reverse which option is cheaper.",
+          "Do not expect to reclaim any of it. Tourist tax is not refundable, and hotel VAT is not part of the visitor refund scheme either, which covers <b>goods you carry home unused</b> rather than anything you consume in the country. Shopping is a separate matter, and worth a form if you spend meaningfully in one store.",
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: "How much is the tourist tax in Amsterdam?",
+        a: "The city takes 12.5% of the net room rate, a proportion nowhere else in Europe matches, and no cap limits how many nights it applies to. It is charged on the price before VAT and normally added when you check out rather than when you book. On top of it sits the national 21% VAT on hotel rooms, so an Amsterdam stay carries roughly a third above the advertised rate once both are counted.",
+      },
+      {
+        q: "Did hotel VAT really go up in the Netherlands?",
+        a: "Yes. On 1 January 2026 VAT on overnight accommodation moved from the reduced 9% band to the standard 21% band, nationwide. Camping stays remained at 9%. It is a large jump and it arrived recently, so some displayed prices lagged behind it, which makes checking the all-in total worthwhile rather than assuming the quoted rate already includes it.",
+      },
+      {
+        q: "Can I get the tourist tax or hotel VAT refunded?",
+        a: "No. Neither is refundable to a visitor. The Dutch VAT refund scheme covers goods that non-EU visitors take home unused, above a per-store minimum, and it specifically excludes accommodation, meals and anything else consumed while you are in the country. Budget for the hotel taxes as a real cost rather than something recoverable later.",
+      },
+    ],
+  }
   ]
 };
