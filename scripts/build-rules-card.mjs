@@ -11,6 +11,10 @@
 // the page renders from, so the image cannot drift from the page. If you change a rule,
 // rerun this and commit the new JPG.
 //
+// The State Department advisory is read from src/data/advisories.js, the same file the page
+// reads, for the same reason. An image is the copy someone carries offline with no link
+// back, so a card for a listed country has to say so on its face.
+//
 // RUN:  node scripts/build-rules-card.mjs
 // Needs Chromium once:  npx playwright install chromium
 // Needs the brand fonts:  npm i --no-save @fontsource/ibm-plex-mono @fontsource/fraunces
@@ -24,6 +28,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { moneyRules } from '../src/data/money-rules.js';
+import { advisoryFor } from '../src/data/advisories.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -61,6 +66,7 @@ const MARK = `
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 function html(slug, data) {
+  const adv = advisoryFor(slug);
   const lead = data.rules.find(r => r.lead) || data.rules[0];
   const rest = data.rules.filter(r => r !== lead);
   const row = (r, n, isLead) => `
@@ -82,6 +88,9 @@ function html(slug, data) {
     .eyebrow{font-family:M;font-weight:600;font-size:22px;letter-spacing:.16em;text-transform:uppercase;color:#0A5644;margin-bottom:14px}
     h1{font-family:S;font-weight:500;font-size:calc(76px * var(--fit));line-height:1;letter-spacing:-.02em;color:#16302C;margin-bottom:calc(20px * var(--fit))}
     .stamp{display:inline-block;font-family:M;font-weight:500;font-size:20px;letter-spacing:.05em;text-transform:uppercase;color:#10502C;background:#E7F3EA;border-radius:999px;padding:11px 20px;margin-bottom:calc(30px * var(--fit))}
+    .adv{background:#FBEEDC;border:1px solid #F0D6AE;border-left:6px solid #B45309;border-radius:14px;padding:calc(15px * var(--fit)) 22px;margin-bottom:calc(22px * var(--fit))}
+    .adv-l{font-family:M;font-weight:600;font-size:19px;letter-spacing:.07em;text-transform:uppercase;color:#7A3D08;margin-bottom:calc(6px * var(--fit))}
+    .adv-t{font-size:calc(22px * var(--fit));line-height:1.32;color:#7A3D08}
     .list{display:flex;flex-direction:column;gap:calc(12px * var(--fit));flex:1}
     .r{display:flex;gap:20px;background:#fff;border:1px solid #E5E3DB;border-radius:16px;padding:calc(20px * var(--fit)) 24px;align-items:flex-start}
     .r.lead{background:#16302C;border-color:#16302C;border-top:6px solid #F0A83C}
@@ -99,6 +108,10 @@ function html(slug, data) {
     <div class="eyebrow">${esc(data.h1.replace(/ money rules$/i, ''))} / Money rules</div>
     <h1>${esc(data.h1)}</h1>
     <div><span class="stamp">Rules as of ${esc(data.checked)}</span></div>
+    ${adv ? `<div class="adv">
+      <div class="adv-l">Travel advisory &middot; ${esc(adv.level)}, ${esc(adv.label)}</div>
+      <div class="adv-t">Checked ${esc(adv.checked)} by the US State Department. It changes what your insurance will do and whether flights still run, rather than how you pay. The guide has the detail.</div>
+    </div>` : ''}
     <div class="list">
       ${row(lead, 1, true)}
       ${rest.map((r, i) => row(r, i + 2, false)).join('')}
