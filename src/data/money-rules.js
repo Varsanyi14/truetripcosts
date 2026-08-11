@@ -1421,6 +1421,258 @@ export const moneyRules = {
       },
     ],
   },
+  // Batch five: the top-25 outbound gaps. Chosen off src/data/outbound.js rather than by
+  // feel: ranks 14 to 17 sat immediately below the block that already had cards, so this
+  // closes the hole rather than extending a tail. None of the four carries a State
+  // Department advisory, so no advisory strip renders on these.
+  greece: {
+    title: 'Greece money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in Greece: cities take cards, islands want cash, draw euros before the ferry, and refuse the dollar conversion.',
+    h1: 'Greece money rules',
+    blurb: 'Cities take cards, the islands still want notes, and island machines run dry in August.',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        lead: true,
+        h: 'Cities take cards, islands take notes',
+        p: 'Athens, Thessaloniki and the larger resorts run on plastic, and a shop is legally obliged to have a terminal. Reach a small island, a village taverna or a beach bar and that stops being true, so notes are what you reach for.',
+        href: '/greece/cash-or-card',
+        linkLabel: 'Where cards work',
+      },
+      {
+        h: 'Draw your cash before the ferry, not after',
+        p: 'A small island can have one or two machines serving everyone on it, and on a busy August weekend they do empty. Take out what the trip needs while you are on the mainland or somewhere larger.',
+        href: '/greece/cash-or-card',
+        linkLabel: 'Cash on the islands',
+      },
+      {
+        h: 'Say euros when a screen offers dollars',
+        p: 'Card readers and cash machines both put the question, and agreeing costs 3 to 8 percent for nothing in return. Greece is gentle on your money right up until you accept it.',
+        href: '/greece/cash-or-card',
+        linkLabel: 'Declining the dollar conversion',
+      },
+      {
+        h: 'Prefer a bank machine to a standalone box',
+        p: 'The machines belonging to Greek banks cost less to use than the independent ones parked along tourist streets, and the difference is worth a short walk. Whatever your own bank charges sits on top either way.',
+        href: '/greece/cash-or-card',
+        linkLabel: 'Which machine to use',
+      },
+      {
+        h: 'Ask for the airport flat fare by name',
+        p: 'The run between Athens airport and the middle of town is fixed in law, one figure by day and a higher one overnight, with tolls and ordinary luggage inside it. Name the flat rate and the meter stops being relevant.',
+        href: '/greece/taxis-and-apps',
+        linkLabel: 'The Athens airport fare',
+      },
+      {
+        h: 'The apps here call a licensed yellow cab',
+        p: 'FreeNow, Uber and Bolt all summon a regulated taxi running the official meter, because the cheap unlicensed-driver model was never allowed here. What the app buys you is a tracked ride and a receipt, not a lower fare.',
+        href: '/greece/taxis-and-apps',
+        linkLabel: 'Which apps to install',
+      },
+      {
+        h: 'A terminal that is suddenly broken usually is not',
+        p: 'Taking cards is a legal requirement, which does not stop a taxi or a small taverna announcing the machine is down to move you onto notes. Rarely worth the argument, so keep euros within reach.',
+        href: '/greece/money-scams',
+        linkLabel: 'Getting steered onto cash',
+      },
+      {
+        h: 'Round up, or a little more for a meal worth it',
+        p: 'Staff are on a wage, so a tip is thanks rather than the arithmetic you do at home, and 5 to 10 percent marks something you enjoyed. Leave it in cash, which reaches the person instead of a pooled card total.',
+        href: '/greece/tipping',
+        linkLabel: 'What to tip in Greece',
+      },
+    ],
+  },
+  switzerland: {
+    title: 'Switzerland money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in Switzerland: it is francs not euros, cards cover nearly everything, take the train, and tipping stays light.',
+    h1: 'Switzerland money rules',
+    blurb: 'Francs, not euros, and the taxi is the most expensive way to cross a short distance.',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        // Surrounded by the eurozone and not in it, which is exactly why people arrive
+        // holding the wrong currency. Same reasoning as the Iceland lead.
+        lead: true,
+        h: 'It is francs, and leftover euros will not spend',
+        p: 'Switzerland sits outside both the EU and the eurozone while being ringed by it, so euros carried over from the last leg are dead weight. Near a border or in a big station a few places take them, at a rate that punishes you, with change handed back in francs.',
+        href: '/switzerland/cash-or-card',
+        linkLabel: 'Francs, and where cards work',
+      },
+      {
+        h: 'Say francs when a screen offers dollars',
+        p: 'The offer to bill you at home appears on terminals and cash machines alike and costs 3 to 8 percent. In a country this expensive it is the one leak that is entirely optional.',
+        href: '/switzerland/cash-or-card',
+        linkLabel: 'Declining the dollar conversion',
+      },
+      {
+        h: 'Cards do nearly all of it, so carry little',
+        p: 'Contactless and the phone wallets are taken almost everywhere, which makes a fat wallet pointless here. What still wants coins and small notes is up the mountain: high huts, cable-car kiosks and the occasional rural honesty box.',
+        href: '/switzerland/cash-or-card',
+        linkLabel: 'How much cash to carry',
+      },
+      {
+        h: 'Draw francs from a bank machine',
+        p: 'The big banks and the cantonal ones run the machines worth using. It is a low-friction country for this, so there is no reason to accept a worse rate from something standing in a tourist thoroughfare.',
+        href: '/switzerland/cash-or-card',
+        linkLabel: 'Getting francs',
+      },
+      {
+        h: 'The taxi is the expensive way to cross town',
+        p: 'Swiss taxis are among the priciest anywhere, metered honestly and regulated by the canton, which does not make them good value. The trains, trams and buses are excellent and sensibly priced, and using them is the single biggest saving available here.',
+        href: '/switzerland/taxis-and-apps',
+        linkLabel: 'Taxis against the train',
+      },
+      {
+        h: 'Uber only turns up in the big cities',
+        p: 'Zurich, Geneva, Basel and Lausanne have it. Elsewhere you are on regulated metered cabs, so do not build an evening around an app that will not answer in a smaller town.',
+        href: '/switzerland/taxis-and-apps',
+        linkLabel: 'Where the apps work',
+      },
+      {
+        h: 'Service is in the price by law, so relax',
+        p: 'The custom was absorbed into menu prices generations back and wages are strong, so no percentage is owed and nobody is counting. Rounding up is the local habit, and about 10 percent after a good dinner is generous rather than expected.',
+        href: '/switzerland/tipping',
+        linkLabel: 'What tipping looks like here',
+      },
+      {
+        h: 'No terminal is going to prompt you for a tip',
+        p: 'The North American screen habit does not exist here. If you want to leave something you say the total you want charged, or you leave coins on the table, and both are perfectly normal.',
+        href: '/switzerland/tipping',
+        linkLabel: 'How to leave it',
+      },
+    ],
+  },
+  bahamas: {
+    title: 'Bahamas money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in the Bahamas: your dollars spend at par, pick Bahamian dollars on a card screen, and carry cash off Nassau.',
+    h1: 'Bahamas money rules',
+    blurb: 'Your own dollars spend at par, but a card screen will still try to convert them.',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        lead: true,
+        h: 'Your own dollars spend here, at par',
+        p: 'One Bahamian dollar equals one of yours by law, and both currencies move around the islands together, so the notes already in your wallet work and change arrives as a blend of the two. Nothing to exchange, no penalty for using yours, no arithmetic.',
+        href: '/bahamas/cash-or-card',
+        linkLabel: 'The peg, and paying in dollars',
+      },
+      {
+        h: 'On a card screen, still pick Bahamian dollars',
+        p: 'This is the trap folded inside the good news. Handing over your own notes is free of charge, but selecting them on a terminal or a cash machine is the conversion racket, which helps itself to a few percent whether or not the currencies sit level.',
+        href: '/bahamas/cash-or-card',
+        linkLabel: 'Declining the conversion',
+      },
+      {
+        h: 'Stock up in Nassau before the Out Islands',
+        p: 'Eleuthera, Harbour Island, Andros and the Exumas all run thin on card acceptance and thinner still on machines, not all of which can be relied on. Draw what the trip needs while you are somewhere large.',
+        href: '/bahamas/cash-or-card',
+        linkLabel: 'Cash on the Family Islands',
+      },
+      {
+        h: 'The straw market and the Fish Fry want cash',
+        p: 'Nassau market stalls and the food shacks out at Arawak Cay do not take a card, and the market expects you to haggle rather than accept a first number. Small bills do both jobs.',
+        href: '/bahamas/cash-or-card',
+        linkLabel: 'Where cash is the only option',
+      },
+      {
+        h: 'No ride-hailing at all, so settle the fare first',
+        p: 'Neither Uber nor Lyft operates anywhere in the islands, so a taxi is the only answer. Fares are set by government zone rather than by meter, which sounds fixed and arrives as a number from the driver, so agree it before the door shuts.',
+        href: '/bahamas/taxis-and-apps',
+        linkLabel: 'Taxis, zones and fares',
+      },
+      {
+        h: 'Read the bill first, then tip like you would at home',
+        p: 'Tipping runs on US lines here, rare in this part of the Caribbean, so what you would do at home is roughly right. Resort restaurants and larger parties often add a gratuity of about 15 percent already, and where it is there nothing more is needed.',
+        href: '/bahamas/tipping',
+        linkLabel: 'Automatic gratuities, and what to add',
+      },
+      {
+        h: 'Hand the tip over in cash',
+        p: 'Either currency is fine and small bills are easiest. Given directly it reaches the porter, the housekeeper or the boat captain, which is not something a line added to a card can promise.',
+        href: '/bahamas/tipping',
+        linkLabel: 'Tipping in the Bahamas',
+      },
+      {
+        h: 'Flying in means the passport book, not the card',
+        p: 'The card is for arriving by land or sea, so air travel needs the book. There is no form to file beforehand and no visa to buy, and the stay you are stamped in for is generous.',
+        href: '/bahamas/visa',
+        linkLabel: 'Entry, and which document',
+      },
+    ],
+  },
+  turkey: {
+    title: 'Turkey money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in Turkey: old prices are useless, pay in lira, the bazaar wants cash, and read the bill for a servis charge.',
+    h1: 'Turkey money rules',
+    blurb: 'Inflation makes old prices useless, and the bazaar runs on cash that bargains.',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        // The only card in the series whose lead is about the age of information rather
+        // than a payment habit, because here that is the expensive mistake.
+        lead: true,
+        h: 'Do not trust a price you read months ago',
+        p: 'Inflation has run hard enough that a number printed in a guidebook, posted on a blog or left on a forum a while back can be wildly stale. Check a live rate and a current menu, and refuse to anchor on anything you read last year.',
+        href: '/turkey/cash-or-card',
+        linkLabel: 'The lira, and what things cost',
+      },
+      {
+        h: 'Pay in lira, on every screen',
+        p: 'The offer to charge you at home costs 3 to 8 percent. Some tourist shops also price in euros or dollars, so ask what the lira figure is and compare the two before you agree to anything.',
+        href: '/turkey/cash-or-card',
+        linkLabel: 'Declining the dollar conversion',
+      },
+      {
+        h: 'The bazaar runs on cash, and cash bargains',
+        p: 'Markets, street food, small cafes and plenty of taxis want notes, and paying with them gives you leverage while haggling. The largest note is not very large, so a real stack is thicker than you expect.',
+        href: '/turkey/cash-or-card',
+        linkLabel: 'Cash, cards and haggling',
+      },
+      {
+        h: 'You do not need an e-visa any more',
+        p: 'Turkey dropped the requirement for US passports, so a short tourist stay is visa-free and anybody selling you one online is selling nothing at all. Another case where the older advice is the expensive advice.',
+        href: '/turkey/visa',
+        linkLabel: 'Entry rules for US passports',
+      },
+      {
+        h: 'The meter runs from the start, or you get out',
+        p: 'A taksimetre going from the beginning is the rule, and a driver who will not start it is telling you something useful. The apps summon a licensed yellow cab, which means the meter is still what you pay, though you also get an estimate up front, a tracked route and a receipt.',
+        href: '/turkey/taxis-and-apps',
+        linkLabel: 'BiTaksi, Uber and the meter',
+      },
+      {
+        h: 'Learn the note swap before it happens to you',
+        p: 'The classic is a driver insisting the large note you handed over was a small one. Around Sultanahmet, Taksim and the Grand Bazaar there is also the dropped brush that you kindly hand back and then pay for. Say the value out loud as you pass it across.',
+        href: '/turkey/money-scams',
+        linkLabel: 'The recurring tricks',
+      },
+      {
+        h: 'Look for servis on the bill before adding to it',
+        p: 'Some places, mostly the ones facing tourists, have already put a service charge on. Where it is there a little extra is plenty, and where it is not, 5 to 10 percent is the usual shape of a bahsis.',
+        href: '/turkey/tipping',
+        linkLabel: 'Reading the bill',
+      },
+      {
+        h: 'Keep small notes for the people cash reaches',
+        p: 'A tip on a card seldom arrives with the staff. Notes are what work for housekeeping, a porter, a guide, a hamam attendant, or whoever is minding the shoes at a mosque door.',
+        href: '/turkey/tipping',
+        linkLabel: 'Tipping in Turkey',
+      },
+    ],
+  },
 };
 
 export function rulesFor(slug) {
