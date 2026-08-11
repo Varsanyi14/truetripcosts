@@ -595,6 +595,83 @@ export default {
         ],
         judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own account before you fly. Japan's coverage strength is consistent across every account the True Trip Costs desk has seen, which is why this spoke leans on the money math rather than warning about gaps. Checked Jul 2026. Corrected on 31 July 2026, and worth saying what changed. This page previously quoted a flat 12 dollars a day for a carrier day pass and described T-Mobile's included roaming as slow 2G that could not handle maps. Both were wrong in the same direction, the direction that flatters the eSIM we earn a commission on. On price, 10 dollars a day is the current eligible-plan rate for both AT&T's International Day Pass and Verizon's TravelPass, with 12 dollars applying to AT&T's non-eligible plans, so the honest figure is a range. On T-Mobile, its own roaming pages now list a real high-speed allowance abroad, 5GB on Experience More, Magenta MAX and Go5G Plus, 15GB on Experience Beyond and Go5G Next and 30GB on Better Value, dropping to 256kbps only after that, with the entry Essentials tier the one throttled from the start. We have rewritten the figures and the T-Mobile description throughout and cite the carriers directly. Carrier terms move faster than anything else we cover, so check your own plan rather than trusting this paragraph."
       }
+    },
+    {
+      slug: "rail",
+      glance: [
+        { k: "Pass?", v: "Only for long Shinkansen runs" },
+        { k: "Point-to-point", v: "Cheaper on most first trips" },
+        { k: "Book at", v: "The official JR Pass site" },
+        { k: "Watch for", v: "Nozomi costs extra on a pass" }
+      ],
+      live: true,
+      topic: "rail",
+      caution: "medium",
+      title: "Is the Japan Rail Pass worth it in 2026?",
+      description: "Often not. The nationwide pass only pays off across long Shinkansen legs, and agency prices rise on October 1, 2026. Here is the break-even.",
+      h1: "Do you need a Japan Rail Pass?",
+      lede: "For years the answer was a reflexive yes. Since the 2023 price jump it is usually no, and the honest test is arithmetic you can do in about a minute before you spend anything.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-11",
+      answer: "For most first trips to Japan, <b>no</b>. The nationwide pass is <b>50,000 yen for seven days</b> in ordinary class, and it only pays off once your planned long-distance legs add up to roughly that much on their own. A <b>Tokyo to Kyoto round-trip does not get there</b>, and neither does a Tokyo stay with a day trip attached. It starts to win on a <b>wide Shinkansen spread</b>, something like Tokyo to Kyoto to Hiroshima inside one seven-day window, or a run out to Kyushu or Hokkaido. Two things narrow it further: a <b>regional pass</b> often beats the nationwide one on a single-region trip, and the pass does <b>not cover Nozomi or Mizuho</b> trains without paying a surcharge. Prices rise on <b>October 1, 2026</b>, but only through overseas agencies, so <b>buy direct</b>.",
+      sections: [
+        {
+          h: "The test: add up your long legs first",
+          icon: "ticket",
+          key: { fig: "50,000 yen", tag: "What you have to beat", text: "Price your actual route as individual tickets before you look at a pass. If the total for your long-distance legs lands under the pass, the pass is a worse deal, and no amount of convenience closes a gap of tens of thousands of yen.", tone: "teal" },
+          p: [
+            "There is only one honest way to answer this and it is not a rule of thumb. Open the fare search, price the <b>long-distance legs you already know you are taking</b>, and add them up. That total is the number the pass has to beat. Everything else, the local trains, the buses, the airport runs, is small change by comparison and will not swing the decision.",
+            "Run that math on the itineraries most Americans actually book and the pass loses. A <b>Tokyo base with a Kyoto round-trip</b> comes in well under the seven-day pass. So does <b>Tokyo, Hakone and back</b>. So does a single one-way to Osaka with flights home from Kansai. The pass starts to make sense when you are covering real ground: <b>Tokyo to Kyoto to Hiroshima</b> and back inside the window, or pushing out to <b>Fukuoka, Kanazawa, Sapporo</b>. If your trip reads as two cities and a day trip, buy tickets.",
+            "The reason this flipped is worth knowing, because a lot of older advice has not caught up. In <b>October 2023</b> the nationwide pass went up by roughly <b>70 percent</b> in one step, from around 29,650 yen to 50,000 for the seven-day ordinary pass. Guidance written before that, including plenty still sitting high in search results, was correct when it was published and is wrong now. If a page tells you the pass is an automatic buy, check when it was last touched."
+            // FUTURE UtilityBox MOUNT POINT.
+            // A rail-pass affiliate belongs here, at the end of this section, once one is
+            // vetted. Nothing renders now on purpose: for most readers the answer above is
+            // "do not buy a pass," and that has to read as a finished thought rather than a
+            // run-up to a product. Activating it is a data change in three parts, no
+            // restructuring: (1) add `railPass: true` to this spoke object, (2) add a
+            // railPass entry to the affiliate registry in src/data/links.js, (3) add the
+            // matching `railPassUrl` gate and <UtilityBox> block to Spoke.astro alongside
+            // the existing esim, insurance and carExcess blocks, which already carry the
+            // disclosure. Prop shape is the same: href, label, and the do-you-need-it prose
+            // passed as the slot.
+          ]
+        },
+        {
+          h: "What it costs, and the October 1 change",
+          icon: "coins",
+          key: { tag: "Buy direct", text: "From October 1, 2026 the same pass has two prices. Overseas travel agencies charge the higher one, and JR has said its own booking site holds the pre-October rate for a limited period. The reseller is the expensive door.", tone: "amber" },
+          p: [
+            "The ordinary nationwide pass runs <b>50,000 yen for seven days, 80,000 for fourteen and 100,000 for twenty-one</b>. Green Car versions sit higher and rarely change the answer, since the gap buys comfort rather than savings. Children aged six to eleven pay half, and under-sixes travel free if they are not taking a reserved seat of their own.",
+            "JR Group announced in <b>April 2026</b> that prices rise about <b>5 to 6 percent on October 1</b>: the seven-day ordinary pass to 53,000 yen, the fourteen-day to 84,000 and the twenty-one-day to 105,000. The part worth your attention is that the increase applies to passes bought through <b>overseas agencies</b>, while JR has said the <b>official booking site</b> will hold the earlier price for a limited window. It has not published how long that window runs, so we are not going to invent an end date. The practical read is the same one that applies to rail almost everywhere: <b>buy from the operator</b>, not from a reseller, and you are on the better side of the split.",
+            "If your dates fall either side of October 1, the trigger is when you buy rather than when you travel. An exchange order bought before the change holds its price into 2027, so a trip in November booked in September is charged at the earlier rate."
+          ]
+        },
+        {
+          h: "The narrower pass, and two things it is not",
+          icon: "ic",
+          key: { tag: "Nozomi is not included", text: "The nationwide pass does not cover Nozomi or Mizuho, the fastest services on the main line, unless you pay a surcharge for that leg. Pass holders normally ride Hikari or Sakura instead, which are slower by a modest margin.", tone: "amber" },
+          p: [
+            "If your trip sits inside one region, the nationwide pass is usually the wrong product rather than a close call. <b>JR East, JR West and the Kansai area passes</b> cover a smaller map for a lot less, and on a Tokyo-and-around trip or a Kyoto-Osaka-Nara trip one of those often wins outright. This is the most common way readers overpay here: comparing the nationwide pass against individual tickets, deciding the pass is not worth it, and never checking whether a <b>narrower pass</b> would have been.",
+            "Two things get folded into this decision that do not belong in it. The first is the <b>IC card</b>, a Suica, ICOCA or Pasmo. Those are for local transit and convenience stores, they are not an intercity product, and having one changes nothing about the pass question. See <a href='/japan/cash-or-card'>cash or card in Japan</a> for where they do matter. The second is <b>seat reservations</b>. A pass is not a boarding pass: some services still require a reserved seat, which you arrange at a JR ticket office, the <b>midori-no-madoguchi</b>, or online. It is free with the pass, but it is a step, and on a busy holiday route it is the step that decides whether you are sitting down.",
+            "Rail economics do not travel well, and what holds here fails in Italy for different reasons, so our <a href='/rail-passes'>country-by-country verdict on rail passes</a> sets Japan against the rest. Everything else on the money side sits in the <a href='/japan'>Japan money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is the Japan Rail Pass worth it in 2026?", a: "Only for wide itineraries. Price your long-distance legs as individual tickets first: if they total less than the pass, tickets win. A Tokyo to Kyoto round-trip does not reach it, while Tokyo to Kyoto to Hiroshima and back inside one week can." },
+        { q: "How much is the Japan Rail Pass now?", a: "The ordinary nationwide pass is 50,000 yen for seven days, 80,000 for fourteen and 100,000 for twenty-one. From October 1, 2026 those rise to 53,000, 84,000 and 105,000 through overseas agencies, while JR has said its official site holds the earlier price for a limited period." },
+        { q: "Does the Japan Rail Pass cover the Nozomi?", a: "Not without a surcharge. Nozomi and Mizuho, the fastest services on the Tokaido and Sanyo line, sit outside the pass unless you pay extra for that leg. Pass holders usually take Hikari or Sakura, which cover the same route a little slower." },
+        { q: "Should I get a regional JR pass instead?", a: "Often, yes. If your trip stays in one region, a JR East, JR West or Kansai area pass covers what you need for considerably less than the nationwide pass. Check the regional option before concluding that no pass is worth it." },
+        { q: "Is a Suica the same as a rail pass?", a: "No. Suica, ICOCA and Pasmo are stored-value cards for local trains, buses and shops. They do not cover Shinkansen travel as a pass does, and owning one has no bearing on whether the pass is worth buying." }
+      ],
+      sources: {
+        links: [
+          { label: "Japan Rail Pass: the official site, the current price table and the direct booking channel", url: "https://japanrailpass.net/en/", type: "official" },
+          { label: "Japan National Tourism Organization: the JR Group announcement of the October 1, 2026 price increase and the official-site pricing window", url: "https://www.japan.travel/en/ca/news/price-increases-are-coming-to-the-nationwide-japan-rail-pass-2026/", type: "official" },
+          { label: "Japan Guide: the nationwide pass, the Nozomi and Mizuho exclusion, and the regional pass alternatives", url: "https://www.japan-guide.com/e/e2361.html", type: "guide" }
+        ],
+        judgment: "The pass prices and the October 1, 2026 increase come from JR Group and its official site, so those are firm. The break-even framing is our own read: we deliberately lead on the arithmetic rather than a single verdict, because the answer genuinely depends on your route and any fixed verdict would be wrong for somebody. Our sense that most US first trips fall below the break-even is a judgment drawn from the itineraries these guides see most often, not a measured figure. The duration of the official-site pricing window was not published when we checked, so we describe it without an end date rather than guess one. Rail pricing moves, and this page sits in the quarterly review cycle. Checked Aug 2026."
+      }
     }
   ]
 };

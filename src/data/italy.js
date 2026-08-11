@@ -775,6 +775,81 @@ export default {
         ],
         judgment: "The fixed airport fares come from the airport authority's own published table and are the firmest numbers here, though municipalities can change them without notice, so check before you travel. Which street setups are running where is our own read from recent reports. Checked July 2026."
       }
+    },
+    {
+      slug: "rail",
+      glance: [
+        { k: "Pass?", v: "Rarely worth it here" },
+        { k: "Point-to-point", v: "Advance fares are cheap" },
+        { k: "Book at", v: "Trenitalia or Italo direct" },
+        { k: "Watch for", v: "Paper tickets need stamping" }
+      ],
+      live: true,
+      topic: "rail",
+      caution: "medium",
+      title: "Do I need a rail pass in Italy? Usually not",
+      description: "Almost never. Two operators compete on the fast routes, advance fares are low, and a pass excludes Italo and charges extra to reserve a seat.",
+      h1: "Do you need a rail pass in Italy?",
+      lede: "Italy is the clearest case anywhere for skipping the pass. The country has cheap, frequent high-speed trains run by two rival operators, and a pass manages to be both more expensive and more restrictive than simply buying the tickets.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-11",
+      answer: "Almost certainly <b>no</b>. Book <b>point-to-point in advance</b> and Italian rail is some of the best value in Europe, because <b>Trenitalia and Italo compete</b> head to head on the busy routes and discount hard to fill seats. A rail pass fights that in three ways: it <b>does not cover Italo</b> at all, so it removes one of the two competitors; every fast train still needs a <b>paid seat reservation on top</b>, around 13 euros per Frecce leg; and the cheap advance fares you are giving up are exactly where the savings were. Buy <b>direct from the operator</b>, since resellers add a margin. One thing to get right on the day: only an <b>open paper ticket</b> still needs stamping before you board, and a ticket bought in the app validates itself.",
+      sections: [
+        {
+          h: "Why a pass loses here, in three parts",
+          icon: "ticket",
+          key: { fig: "13 euros", tag: "Charged on top of a pass", text: "A Eurail or Interrail pass does not let you simply board a fast train in Italy. Frecciarossa, Frecciargento and Frecciabianca all require a paid seat reservation, about 13 euros a leg, with Intercity around 3. The pass is the start of the bill, not the end of it.", tone: "amber" },
+          p: [
+            "Start with what a pass covers, because the gap is the whole argument. Eurail and Interrail passes cover <b>Trenitalia</b> services, the Frecce, the Intercity trains and the regional network. They do <b>not cover Italo</b>, which is a separate private company running its own fast trains on the same major routes. Since the competition between those two is precisely why Italian fares are low, buying a pass means paying more in order to shop at one of the two stores.",
+            "Then the reservations. On the fast trains a <b>seat reservation is compulsory</b>, not optional, and a pass does not include it. Expect roughly <b>13 euros for each Frecciarossa, Frecciargento or Frecciabianca leg</b> and about <b>3 euros on Intercity</b>, paid on top of what the pass already cost. Booking those through the pass provider's own service can add a small fee again. Regional trains need no reservation and cannot be reserved, so the pass is at its least bad on exactly the trains that were cheapest anyway.",
+            "Finally the fares you are walking away from. Both operators sell <b>advance fares</b> that fall a long way below the walk-up price, sold under names like <b>Super Economy</b> and <b>Economy</b>, and released weeks ahead. They are restrictive, usually tied to one train with limited changes, which is a fair trade at the price. Put those three together and the arithmetic rarely gets close: for a normal Italy trip the pass costs more, covers less, and still asks for a reservation fee at every fast train."
+            // FUTURE UtilityBox MOUNT POINT.
+            // Same socket as the Japan rail spoke. Nothing renders here yet, deliberately:
+            // Italy is the strongest "do not buy the pass" case on the site, so this section
+            // has to stand as a complete answer rather than a lead-in to a product. If a
+            // vetted rail affiliate lands, the honest placement is a ticket-booking link
+            // rather than a pass, since that is what we are actually recommending. Turning
+            // it on is a data change: `railPass: true` here, a registry entry in
+            // src/data/links.js, and the matching gate plus <UtilityBox> in Spoke.astro,
+            // which already bakes in the disclosure. Prop shape: href, label, slot prose.
+          ]
+        },
+        {
+          h: "Validation: only if you are holding paper",
+          icon: "qr",
+          key: { tag: "The rule in one line", text: "The green platform machine only matters for an open paper ticket. Buy in the app or on the website and your ticket activates itself at the scheduled departure of the train you chose, with nothing to stamp.", tone: "teal" },
+          p: [
+            "Italy's most famous rail trap is the fine for boarding with an unstamped ticket, and it has quietly shrunk to a narrow case. The Italian for the stamp is <b>convalida</b>, validation, and what it applies to now depends entirely on which kind of ticket you are holding. A <b>digital regional ticket</b>, the normal thing you get buying a regionale journey on the Trenitalia website or app, is <b>validated automatically</b> at the scheduled departure of the train you picked, and you show a moving green bar on your phone if a <b>conductor</b> asks. An <b>electronic regional ticket</b>, used for group and day tickets, arrives already validated. Only a <b>single paper ticket</b> bought at a ticket office, a machine or a tabaccheria still has to go into the platform machine before the train leaves, and from that stamp you have four hours to finish the trip.",
+            "So the practical version is short: <b>if it came out of a machine as paper, stamp it. If it is on your phone, do not go looking for the box.</b> Two things worth knowing beyond that. Travelers report the little green and white machines being <b>removed from some stations</b>, which fits the shift to digital, and if you are holding paper and there is no working machine you are entitled to ask the <b>on-board staff</b> to sort it out with no surcharge rather than riding at risk. And if you are caught with no valid ticket, or cannot show ID against a ticket issued in your name, you pay the fare plus a fine.",
+            "One more option that removes the question: on some routes Trenitalia runs <b>TAP and TAP</b>, where you tap a contactless Visa, Mastercard or American Express card straight onto the validating machine to buy a second-class regional fare on the spot. One adult, one card, and if a conductor checks you quote the last four digits of the card you tapped."
+          ]
+        },
+        {
+          h: "Which train, and where to buy it",
+          icon: "coins",
+          key: { fig: "2 operators", tag: "Check both, always", text: "Trenitalia and Italo run the same major routes at similar speeds and price independently, so the cheaper one changes by route and by day. Comparing the two takes a minute and is the single biggest saving available on Italian rail.", tone: "teal" },
+          p: [
+            "The tier names are worth a moment because they decide both the price and whether you need a reservation. <b>Regionale</b> and <b>regionale veloce</b> are the slow and semi-fast local trains: flat fares, no reservations, no advance discount, and the right tool for short hops like Florence to Pisa or along the Cinque Terre. The fast trains are Trenitalia's <b>Frecce</b>, the Frecciarossa, Frecciargento and Frecciabianca, and Italo's own services. Those are reserved, and those are where advance booking saves real money. <b>Seconda classe</b>, second class, is normally all you need on any of them.",
+            "Buy from <b>Trenitalia or Italo directly</b>. Third-party resellers and aggregators sell the same seats with a booking margin on top, sometimes wrapped in a service fee at checkout, and they are a common way to overpay by a few euros a leg for nothing. The station <b>biglietteria</b>, the staffed ticket office, and the self-service machines both work fine if you would rather not use an app, and the machines run in English and take cards.",
+            "The same call, made country by country, is on our <a href='/rail-passes'>page on where a pass earns its price</a>. Paying at a ticket machine without losing money to a currency prompt belongs to <a href='/italy/cash-or-card'>cards, euros and cash machines</a>. For the wider picture, start at the <a href='/italy'>Italy money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is a rail pass worth it in Italy?", a: "For a normal Italy trip, no. Advance point-to-point fares on Trenitalia and Italo are cheap, a pass does not cover Italo at all, and every fast train still needs a paid seat reservation on top of the pass, around 13 euros a leg." },
+        { q: "Do I still need to validate my train ticket in Italy?", a: "Only if it is an open paper ticket bought at a ticket office, machine or tabaccheria, which goes into the platform machine before departure. A regional ticket bought on the Trenitalia app or website validates itself at the scheduled departure time." },
+        { q: "Does a Eurail pass cover Italo trains?", a: "No. Italo is a separate private operator, and no Eurail or Interrail pass covers it. That matters because Italo competes with Trenitalia on the main routes, so a pass shuts you out of half the fast-train market." },
+        { q: "Is Trenitalia or Italo cheaper?", a: "It varies by route and by day, which is why checking both is worth the minute it takes. They price independently on the same city pairs, so the cheaper one is not consistent, and both discount hardest for booking well ahead." },
+        { q: "What is the cheapest way to travel by train in Italy?", a: "Book point-to-point in advance, direct with the operator, and compare Trenitalia against Italo. Advance fares such as Super Economy sit far below walk-up prices. Use regionale trains for short hops, where fares are flat and buying ahead saves nothing." }
+      ],
+      sources: {
+        links: [
+          { label: "Trenitalia: travelling on Regional trains, the official rules on digital, electronic and paper ticket validation and the four-hour limits", url: "https://www.trenitalia.com/en/information/travelling-on-regional-trains.html", type: "official" },
+          { label: "Trenitalia: the Interrail and Eurail pass page, for what a pass covers on its network", url: "https://www.trenitalia.com/en/offers/interrail.html", type: "official" },
+          { label: "Seat 61: train travel in Italy, including passholder reservation fees on the Frecce and Intercity trains", url: "https://www.seat61.com/train-travel-in-italy.htm", type: "guide" }
+        ],
+        judgment: "The validation rules come straight from Trenitalia's own regional travel pages, which is the firmest part of this spoke and the reason we state the paper-versus-digital split as fact rather than hedging it. Passholder reservation fees are quoted by rail specialists rather than published prominently by the operator, and figures we saw ranged from about 10 to 14 euros depending on the seller, so treat 13 euros as the working number and expect a euro or two either way. That a pass rarely wins in Italy is our own read, though it follows fairly directly from the Italo exclusion and the compulsory reservation charge. The reports of platform validating machines being withdrawn are from travelers rather than an operator announcement, so we describe the direction and do not claim the machines are gone. Checked Aug 2026."
+      }
     }
   ]
 };

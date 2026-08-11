@@ -19,6 +19,7 @@ export const topicIcon = {
   scams: 'alert',
   "tourist-tax": 'receipt',
   "vat-refund": 'refund',
+  rail: 'train',
 };
 
 // Caution tier -> chip label. The three-step "how careful to be" signal shown on the
