@@ -1014,6 +1014,391 @@ export const moneyRules = {
       },
     ],
   },
+  // Batch four: the Gulf six. All six sit under a shared State Department advisory in
+  // src/data/advisories.js, which is why rules.astro gained the advisory strip in the same
+  // change: a card for a Level 3 country that never mentions the level would be the guide
+  // telling a reader one thing and the pocket version telling them nothing.
+  //
+  // These six countries share a region and very little else on money. The peg is the clean
+  // example: five of them fix to the dollar and Kuwait does not, so the same rule number
+  // carries the opposite advice. Where they genuinely do overlap, declining the dollar
+  // conversion and reading the bill before tipping, each card comes at it through that
+  // country's own angle rather than repeating a house sentence six times.
+  //
+  // A constraint worth recording: these guides run four spokes each (visa, cash-or-card,
+  // tipping, taxis-and-apps) and no tax spoke. So the hotel add-on stacks, and the Saudi
+  // refund mechanics, are deliberately absent. Both are real money facts and both live on
+  // the guide, but a rule has to point at a spoke that actually covers it. A hotel-taxes
+  // spoke, or saudi-arabia/vat-refund, would each earn a rule here immediately.
+  uae: {
+    title: 'UAE money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in the UAE: the dirham is pegged, skip the airport exchange desk, tip in cash, and read your entry stamp.',
+    h1: 'UAE money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        lead: true,
+        h: 'The dirham does not move against the dollar',
+        p: 'The peg has held for decades and will not shift while you are there. That also means a terminal offering to bill you in dollars is offering you nothing, and accepting it costs 3 to 8 percent for a conversion you never needed.',
+        href: '/uae/cash-or-card',
+        linkLabel: 'Paying by card in the UAE',
+      },
+      {
+        h: 'Never change money at the airport or your hotel',
+        p: 'Those two desks run the worst rates on offer anywhere in the country. The exchange houses inside the malls are where locals go, and if you are paying by card for most things you may never need one at all.',
+        href: '/uae/cash-or-card',
+        linkLabel: 'Where to change money',
+      },
+      {
+        h: 'Do not buy dirhams before you fly',
+        p: 'The currency is thinly traded outside the Gulf, so a bank or bureau at home sells it to you badly. Arrive with dollars, or with nothing, and draw what you need once you are on the ground.',
+        href: '/uae/cash-or-card',
+        linkLabel: 'Getting dirhams',
+      },
+      {
+        h: 'Tap for everything, keep a little cash for the souk',
+        p: 'Cabs, the metro, malls and restaurants all take a card or a phone without a second thought. What still wants notes is the souk, the small local place, and anything you hand to a person as thanks.',
+        href: '/uae/cash-or-card',
+        linkLabel: 'How much cash to carry',
+      },
+      {
+        h: 'No visa to arrange, but read what gets stamped in',
+        p: 'It is issued free on arrival at any UAE airport and covers all seven emirates, so anyone selling you one in advance is selling you nothing. The length written into the stamp is the part that varies, so look at it rather than trusting a figure you read online.',
+        href: '/uae/visa',
+        linkLabel: 'What the stamp gives you',
+      },
+      {
+        h: 'The service charge may never reach your server',
+        p: 'Restaurants add one routinely and it is not the same thing as a tip here. If the service was good, a little cash into a hand is the part you can actually be sure about.',
+        href: '/uae/tipping',
+        linkLabel: 'Service charges, and tipping',
+      },
+      {
+        h: 'A few dirhams goes a long way, and cash is the form',
+        p: 'Valet, porter, housekeeping: small notes given directly are the norm rather than a percentage of anything. Keep some back for the purpose, because a tip added to a card disappears into the till.',
+        href: '/uae/tipping',
+        linkLabel: 'What to tip, and to whom',
+      },
+      {
+        h: 'Dubai cabs run one formula, so there is nothing to haggle over',
+        p: 'Every licensed taxi is metered to the same regulated rate, a minimum fare means a very short hop costs the same as a slightly longer one, and road tolls land on the meter as you pass a gate. Cards work in the car, and the apps cost more than a street hail.',
+        href: '/uae/taxis-and-apps',
+        linkLabel: 'Taxis, apps and tolls',
+      },
+    ],
+  },
+  oman: {
+    title: 'Oman money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in Oman: read the three decimals, break the big notes early, agree taxi fares first, and carry cash for the souk.',
+    h1: 'Oman money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        // The decimal leads on three of these six cards, because in Oman, Bahrain and
+        // Kuwait it is the error that actually empties a wallet and it is invisible to
+        // anyone who has only ever used a two-decimal currency.
+        lead: true,
+        h: 'That price has three decimals, so read it twice',
+        p: 'The rial divides into a thousand baisa, so a tag marked 3.500 means three and a half rials, not three fifty. Everything else about paying here is easy, and this is the one that stings in a souk.',
+        href: '/oman/cash-or-card',
+        linkLabel: 'Reading rial prices',
+      },
+      {
+        h: 'Break the big notes early',
+        p: 'A single large rial note is worth more than a hundred dollars, which makes it awkward in a cafe or a taxi. Change one down at a hotel or a supermarket on the first day and keep the small ones moving.',
+        href: '/oman/cash-or-card',
+        linkLabel: 'Notes, and what to carry',
+      },
+      {
+        h: 'Cards run the cities, cash runs everything else',
+        p: 'Hotels, malls, supermarkets and chains in Muscat and Salalah take one without fuss. The souk, the roadside stop, the short taxi ride and most of the country beyond those two cities do not.',
+        href: '/oman/cash-or-card',
+        linkLabel: 'Where cards work',
+      },
+      {
+        h: 'Say rials when the screen offers dollars',
+        p: 'The rial is fixed against the dollar, so the conversion a terminal wants to sell you buys you nothing whatsoever. It is the one steady leak in an otherwise simple country.',
+        href: '/oman/cash-or-card',
+        linkLabel: 'Declining the dollar conversion',
+      },
+      {
+        h: 'No Uber here, so use a licensed app or agree the fare',
+        p: 'The transport ministry licenses a handful of local on-demand apps, and those fix the price in advance so there is nothing left to argue about. In a street taxi the meter frequently stays off, so agree the figure while you are still on the pavement.',
+        href: '/oman/taxis-and-apps',
+        linkLabel: 'Taxis, apps and fares',
+      },
+      {
+        h: 'At Muscat airport, take the official pickup',
+        p: 'Whoever walks up to you in arrivals is not the authorised service and has no fixed price to honour. Use the sanctioned rank, or a transfer booked before you landed.',
+        href: '/oman/taxis-and-apps',
+        linkLabel: 'Getting out of the airport',
+      },
+      {
+        h: 'Two weeks comes free, and it comes with conditions',
+        p: 'The short visa-free stay is conditional: they want to see where you are sleeping, cover for medical bills, and a ticket out of the country. It cannot be stretched or turned into anything else once you are in, so a longer trip means applying before you fly.',
+        href: '/oman/visa',
+        linkLabel: 'What the exemption requires',
+      },
+      {
+        h: 'Look for a service charge before you add anything',
+        p: 'Hotels and tourist restaurants usually put one on the bill, and where it is there the question is already settled. Where it is not, a small note is plenty, and cash is what reaches the person who served you.',
+        href: '/oman/tipping',
+        linkLabel: 'Tipping in Oman',
+      },
+    ],
+  },
+  qatar: {
+    title: 'Qatar money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in Qatar: no VAT so the tag is final, Careem has gone, the metro beats the airport cab, and tipping is optional.',
+    h1: 'Qatar money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        lead: true,
+        h: 'There is no VAT, so the tag is the price',
+        p: 'Almost nowhere else in the region can say that, and it makes budgeting here unusually honest. A service charge can still land on a restaurant bill, but that one is the property helping itself, not the state.',
+        href: '/qatar/cash-or-card',
+        linkLabel: 'What things actually cost',
+      },
+      {
+        h: 'Careem does not work here any more',
+        p: 'It closed its Qatar ride-hailing operation years ago and a great many travel pages have never caught up. Uber works, the turquoise Karwa cars are the official cabs, and you can book a Karwa through the Uber app.',
+        href: '/qatar/taxis-and-apps',
+        linkLabel: 'Which apps work in Doha',
+      },
+      {
+        h: 'From the airport, the metro costs a fraction of the cab',
+        p: 'A standard journey costs small change against a taxi into town, and the line reaches the terminal. With heavy bags or a late landing the cab earns its money, but you are picking it rather than stuck with it.',
+        href: '/qatar/taxis-and-apps',
+        linkLabel: 'The metro, and the airport run',
+      },
+      {
+        h: 'If you read that you get thirty days, that is out of date',
+        p: 'The rule changed, and a US passport now collects a multiple-entry stamp good for years, with a generous stay allowed on each visit. There is no form to file in advance and no fee to pay.',
+        href: '/qatar/visa',
+        linkLabel: 'What the entry stamp gives you',
+      },
+      {
+        h: 'Say riyals, every screen, every time',
+        p: 'The currency has been fixed to the dollar since 1980, so a machine offering to charge you at home is offering margin and no benefit. Let your own bank do the arithmetic.',
+        href: '/qatar/cash-or-card',
+        linkLabel: 'Declining the dollar conversion',
+      },
+      {
+        h: 'Cards cover nearly everything, official cabs included',
+        p: 'Hotels, malls, restaurants, the metro and most of the government taxis all take one, and the phone wallets work widely. A small float of notes handles the souq stalls and the occasional driver who cannot.',
+        href: '/qatar/cash-or-card',
+        linkLabel: 'How much cash to carry',
+      },
+      {
+        h: 'A percentage on the bill is service, not tax',
+        p: 'With no tax in the country, an added percentage can only be the restaurant charging for service, and where you see it you have already covered that. Nothing further is expected of you.',
+        href: '/qatar/tipping',
+        linkLabel: 'Reading the bill',
+      },
+      {
+        h: 'If you tip, tip in cash',
+        p: 'It is genuinely optional here, drivers do not expect it, and rounding up reads as a courtesy rather than a duty. In a city where you tap for everything else, notes are the only form that reaches a person.',
+        href: '/qatar/tipping',
+        linkLabel: 'Tipping in Qatar',
+      },
+    ],
+  },
+  bahrain: {
+    title: 'Bahrain money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in Bahrain: read the three decimals, both ride apps work here, apps undercut the meter, tip in small notes.',
+    h1: 'Bahrain money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        lead: true,
+        h: 'A small-looking number is not a small amount',
+        p: 'Prices run to three decimal places here, because the dinar breaks into a thousand parts rather than a hundred. A figure that looks tiny is several times what you read, and with the dinar worth well over two dollars, a few of those in a souq is real money gone.',
+        href: '/bahrain/cash-or-card',
+        linkLabel: 'Reading dinar prices',
+      },
+      {
+        h: 'Both ride apps work here, which is rare in the Gulf',
+        p: 'Uber and Careem each operate, and the airport gives them their own pickup point at the kerb. One of them has pulled out of Qatar next door and the other never arrived in Oman, so this is the country where your usual app simply works.',
+        href: '/bahrain/taxis-and-apps',
+        linkLabel: 'Uber, Careem and the airport',
+      },
+      {
+        h: 'The app usually undercuts the meter',
+        p: 'Into central Manama a booked car tends to come in below what a metered taxi wants for the same run, and you see the number before you commit. There is no train here, so every trip is a road trip.',
+        href: '/bahrain/taxis-and-apps',
+        linkLabel: 'Apps against the meter',
+      },
+      {
+        h: 'Choose dinars at every terminal',
+        p: 'The dinar is fixed to the dollar, so letting a machine convert on your behalf stacks a padded rate on top of a perfectly stable one. Decline it on card readers and cash machines alike.',
+        href: '/bahrain/cash-or-card',
+        linkLabel: 'Declining the dollar conversion',
+      },
+      {
+        h: 'Card for most of it, small notes for the souq',
+        p: 'Hotels, malls, restaurants and fuel across Manama take contactless as a matter of course. Keep a modest float in small notes for Manama Souq, the independent cafes and tips.',
+        href: '/bahrain/cash-or-card',
+        linkLabel: 'Cards, cash and ATMs',
+      },
+      {
+        h: 'The bill answers the tipping question more clearly here',
+        p: 'A service charge on a hotel or restaurant bill is standard rather than occasional, so where it is printed you have paid for service. Anything beyond it is genuinely your own choice.',
+        href: '/bahrain/tipping',
+        linkLabel: 'Service charges, and tipping',
+      },
+      {
+        h: 'Calibrate the tip to what a note is worth',
+        p: 'A single dinar is already a real tip and five is a substantial one, which is not the instinct an American arrives with. Keep the fils coins and the single notes back for the purpose.',
+        href: '/bahrain/tipping',
+        linkLabel: 'What to tip in Bahrain',
+      },
+      {
+        h: 'The visa has two routes, and they are not the same length',
+        p: 'You can take one on arrival for a short single-entry stay, or apply through the official portal beforehand for longer and for multiple entries. Both carry a fee, and that portal is the only place worth reading the current one.',
+        href: '/bahrain/visa',
+        linkLabel: 'Visa on arrival, or eVisa',
+      },
+    ],
+  },
+  'saudi-arabia': {
+    title: 'Saudi Arabia money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in Saudi Arabia: budget for the highest VAT in the Gulf, take the Riyadh Metro, never an unlicensed taxi.',
+    h1: 'Saudi Arabia money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        // The rate itself is left out on purpose. It has moved twice since introduction,
+        // which puts it outside what this page format is for, and the comparison to the
+        // neighbours carries the point without dating the card.
+        lead: true,
+        h: 'Budget for the highest VAT in the Gulf',
+        p: 'It lands on almost everything and it runs to several times what the UAE or Oman charge, so a menu or shelf figure is not what you will end up paying. Arriving straight from Qatar, where there is none at all, the jump is jarring. What softens it is that shopping here is reclaimable.',
+        href: '/saudi-arabia/cash-or-card',
+        linkLabel: 'What VAT does to prices',
+      },
+      {
+        h: 'Cards work almost everywhere, metro gates included',
+        p: 'Riyadh, Jeddah and the main cities are comfortably card-first, phone wallets included, and machines are easy to find. A small float covers the souks, the small vendors and tips.',
+        href: '/saudi-arabia/cash-or-card',
+        linkLabel: 'Cards, cash and ATMs',
+      },
+      {
+        h: 'Say riyals when a screen offers dollars',
+        p: 'The riyal is fixed to the dollar and will not budge while you are there, so the conversion on offer is margin for the machine and nothing at all for you.',
+        href: '/saudi-arabia/cash-or-card',
+        linkLabel: 'Declining the dollar conversion',
+      },
+      {
+        h: 'The Riyadh Metro undercuts a booked car heavily',
+        p: 'A ticket costs about a dollar against many times that for the same trip by app, and a line runs from the main airport into the city. It is the largest single saving available to you here.',
+        href: '/saudi-arabia/taxis-and-apps',
+        linkLabel: 'The metro and the airport run',
+      },
+      {
+        h: 'The unlicensed street taxi is not worth the saving',
+        p: 'Running one is against the law and the fine falls on the driver, but the exposure falls on you: no record of the journey and nobody to complain to. The apps and the official ranks are licensed, and priced low enough that the risk buys you nothing.',
+        href: '/saudi-arabia/taxis-and-apps',
+        linkLabel: 'Licensed cars, and the apps',
+      },
+      {
+        h: 'The visa fee has medical insurance inside it',
+        p: 'That is unusual and worth something real, so read what you have already bought before adding cover you do not need. Apply on the official portal, where approval often comes back within minutes.',
+        href: '/saudi-arabia/visa',
+        linkLabel: 'The eVisa, and what it covers',
+      },
+      {
+        h: 'Two things on the bill, and only one is service',
+        p: 'The tax is the government taking its share, and a service charge is the property taking its own. Where the service charge appears you are finished, and where it does not, around 10 percent in a sit-down place is generous.',
+        href: '/saudi-arabia/tipping',
+        linkLabel: 'Reading a Saudi bill',
+      },
+      {
+        h: 'Ten riyals, not one note',
+        p: 'A riyal is worth a small fraction of what a unit of the neighbouring currencies is worth, so the gesture that lands as generous one border away lands as nothing here. Tip in cash, and scale it to the money actually in your hand.',
+        href: '/saudi-arabia/tipping',
+        linkLabel: 'What to tip in Saudi Arabia',
+      },
+    ],
+  },
+  kuwait: {
+    title: 'Kuwait money rules: 8 things to remember',
+    description:
+      'Eight money habits for US travelers in Kuwait: the rate really moves here, no VAT, install Careem, agree the fare first, and read the three decimals.',
+    h1: 'Kuwait money rules',
+    standfirst:
+      'Eight things worth remembering while you are there, each linking to the fuller explanation.',
+    checked: 'August 2026',
+    rules: [
+      {
+        // The one card in the series whose lead contradicts its neighbours. Five Gulf
+        // cards say the rate cannot move. This one has to say the opposite, and say it
+        // first, because the habit a traveler picks up next door is the error here.
+        lead: true,
+        h: 'Here, unlike next door, the rate actually moves',
+        p: 'The other five all tie their money to the dollar. Kuwait tracks a basket of currencies it keeps private instead, so a figure carried over from a previous Gulf trip will be wrong. Look it up fresh before you go.',
+        href: '/kuwait/cash-or-card',
+        linkLabel: 'The dinar, and the rate',
+      },
+      {
+        h: 'Three decimals, and the strongest currency unit anywhere',
+        p: 'The dinar divides into a thousand parts, so prices carry three decimals and a modest-looking number is nothing of the kind. Because the unit is worth more than any other currency on earth, misreading one of those decimals costs more here than it would elsewhere.',
+        href: '/kuwait/cash-or-card',
+        linkLabel: 'Reading dinar prices',
+      },
+      {
+        h: 'No VAT, so the shelf price is final',
+        p: 'Kuwait never adopted it, which puts it alongside Qatar and against the rest of the region. Where a percentage does appear, the business set it as a service charge and no government is taking a cut.',
+        href: '/kuwait/cash-or-card',
+        linkLabel: 'What things actually cost',
+      },
+      {
+        h: 'Install Careem before you land, and do not count on Uber',
+        p: 'Careem operates here properly, while Uber shows up as active in some sources and absent in others, which is not something to discover at the kerb. Local apps are worth having as a backup.',
+        href: '/kuwait/taxis-and-apps',
+        linkLabel: 'Which apps work in Kuwait',
+      },
+      {
+        h: 'Have an arrival plan that is not an app',
+        p: 'Reports say the apps are not permitted to pick up at the international airport at all, which leaves the official rank or the bus. Work that out before you are outside with your bags.',
+        href: '/kuwait/taxis-and-apps',
+        linkLabel: 'Getting out of the airport',
+      },
+      {
+        h: 'Agree the fare before the door closes',
+        p: 'Street taxis have meters and frequently do not use them, so the number matters more than the machine. Settle it out loud, in dinars, before the car is moving.',
+        href: '/kuwait/taxis-and-apps',
+        linkLabel: 'Street taxis and fares',
+      },
+      {
+        h: 'The visa is bought at the border, and big cash gets declared',
+        p: 'A tourist visa on arrival costs a modest fee and covers a stay of some months. Separately, carrying more than a set amount of cash into the country has to be declared at the border. Neither is difficult, both are easier known in advance.',
+        href: '/kuwait/visa',
+        linkLabel: 'The visa, and the cash rule',
+      },
+      {
+        h: 'Tip in coins, not notes',
+        p: 'Because a single note here is worth more than it is anywhere else, handing one over overshoots what the gesture means, and the coins are the right size. Check the bill first, since a service charge is often sitting there already.',
+        href: '/kuwait/tipping',
+        linkLabel: 'Tipping in Kuwait',
+      },
+    ],
+  },
 };
 
 export function rulesFor(slug) {
