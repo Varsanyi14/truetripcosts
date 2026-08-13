@@ -445,6 +445,84 @@ export default {
         ],
         judgment: "Switzerland applies the shared EU pet-entry framework, which it has adopted despite sitting outside the EU, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The local registration and any breed rules vary, so we point you to the official pages and dated this July 2026."
       }
+    },
+    {
+      slug: "rail",
+      glance: [
+        { k: "Pass?", v: "Yes, if you keep moving" },
+        { k: "Real rival", v: "The Half Fare Card" },
+        { k: "Rough break-even", v: "Four travel days or more" },
+        { k: "Watch for", v: "Mountain lifts are discounted" }
+      ],
+      live: true,
+      topic: "rail",
+      caution: "medium",
+      title: "Is the Swiss Travel Pass worth it in 2026?",
+      description: "Often yes, and Switzerland is the rare country where a pass wins. The thing to compare it against is not tickets, it is the cheaper Half Fare Card.",
+      h1: "Is the Swiss Travel Pass worth it?",
+      lede: "Everywhere else on this site the answer is usually to skip the pass. Switzerland is the exception, because Swiss trains are genuinely expensive and the pass covers an unusual amount. The catch is that its real competitor is not a stack of tickets.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-13",
+      answer: "Often <b>yes</b>, which makes Switzerland the exception. Swiss point-to-point fares are high, and the <b>Swiss Travel Pass</b> covers more than a rail pass usually does: trains, <b>buses and lake boats</b>, city transit in dozens of towns, the scenic panoramic routes, a few mountain railways outright, and free entry to <b>over 500 museums</b>. Adult second-class prices run from about <b>CHF 254 for three consecutive days to CHF 499 for fifteen</b>. But the honest comparison is not pass against tickets. It is pass against the <b>Half Fare Card</b>, about <b>CHF 150</b> for a month, which takes <b>50 percent</b> off nearly everything. The pass wins if you are moving <b>most days</b>. Sit in one base with a couple of big mountain trips and the <b>card wins</b>.",
+      sections: [
+        {
+          h: "Why the pass can genuinely win here",
+          icon: "ticket",
+          key: { tag: "Expensive by design", text: "The math flips in Switzerland for one reason: individual fares are high enough that a few long legs approach the price of a pass. A single cross-country run can cost what an entire day of a longer pass works out to.", tone: "teal" },
+          p: [
+            "Swiss rail is superb and priced accordingly. A long domestic leg like <b>Zurich to Zermatt</b> runs somewhere in the region of <b>CHF 75 to 100</b> one way at full fare, and Zurich to Interlaken is not far below it. Two or three journeys of that kind and you are already in pass territory, which is simply not true in Spain or Italy where the same distance costs a quarter as much. That is the whole reason this page reaches a different conclusion from the others.",
+            "The pass also covers an unusually wide network for the money. Beyond trains it includes <b>buses and lake steamers</b>, local transit in a long list of towns, and the <b>panoramic routes</b> that people plan whole trips around. A few mountain excursions, among them <b>Rigi, Stoos and Stanserhorn</b>, are included outright rather than discounted. And <b>free admission to more than 500 museums</b> is a real line item on a rainy week, not a token. Children under six travel free, and those aged six to fifteen travel free alongside a parent holding a pass, under the <b>Swiss Family Card</b> issued at no charge, which can make a family's math lopsided in the pass's favor.",
+            "Prices for an adult in second class start at roughly <b>CHF 254 for three consecutive days</b> and rise to about <b>CHF 499 for fifteen</b>, which is the shape of the deal: the longer the pass, the less each day costs. Rates are set centrally and are <b>the same wherever you buy</b>, so shopping around for a better price on the pass itself is wasted effort. Buy from the official Swiss channel and skip the resellers."
+            // FUTURE UtilityBox MOUNT POINT.
+            // A rail-pass affiliate belongs here, at the end of this section, once one is
+            // vetted. Nothing renders now on purpose: for most readers the answer above is
+            // "do not buy a pass," and that has to read as a finished thought rather than a
+            // run-up to a product. Activating it is a data change in three parts, no
+            // restructuring: (1) add `railPass: true` to this spoke object, (2) add a
+            // railPass entry to the affiliate registry in src/data/links.js, (3) add the
+            // matching `railPassUrl` gate and <UtilityBox> block to Spoke.astro alongside
+            // the existing esim, insurance and carExcess blocks, which already carry the
+            // disclosure. Prop shape is the same: href, label, and the do-you-need-it prose
+            // passed as the slot.
+          ]
+        },
+        {
+          h: "The Half Fare Card is the comparison nobody makes",
+          icon: "coins",
+          key: { fig: "CHF 150", tag: "One month, half off", text: "This is the product that beats the pass on a surprising number of trips, and it is the one most visitors have never heard of. It costs a fraction of a long pass and halves nearly every fare for a full month.", tone: "amber" },
+          p: [
+            "Switzerland sells a second thing that almost no US visitor considers: the <b>Half Fare Card</b>, roughly <b>CHF 150</b>, valid for a <b>month</b>, cutting about <b>50 percent</b> off fares across trains, buses, boats and most mountain railways. You still buy a ticket for every journey, which is the part people dislike, and in exchange you have a far lower entry price and no clock ticking on unused days.",
+            "The place it beats the pass outright is the one most people are actually saving for. On the big mountain excursions the <b>card's 50 percent is a bigger discount than the pass gives</b>. The pass includes a handful of summits and takes a share off the rest, but on the single most expensive trip in the country, the run up to the <b>Jungfraujoch</b>, a passholder gets a noticeably smaller reduction than a Half Fare Card holder does. If your itinerary is one valley base plus two or three headline lift trips, the cheaper product is very likely the better one, and that is the opposite of what the pass marketing implies.",
+            "The rule that emerges from running these side by side is about <b>how many days you move</b>, not how long you stay. Four or more days of real travel, changing towns and using transit constantly, and the pass pulls ahead, especially once museums are in the mix. Fewer moving days, a single base, or a trip with rest and hiking days in it, and the <b>Half Fare Card</b> usually wins. A two-week stay with four active days is a card trip, not a pass trip."
+          ]
+        },
+        {
+          h: "What the pass does not cover, and the day counter",
+          icon: "alert",
+          key: { tag: "Days burn whether you travel or not", text: "The standard pass runs on consecutive calendar days from the moment you start it. A rest day, a hiking day or a day you drive still counts as one of your days and is simply gone.", tone: "amber" },
+          p: [
+            "Three things reliably surprise people. First, the standard pass is <b>consecutive</b>: once it starts, the days run one after another whether or not you board anything, so a rest day is a paid day you did not use. The <b>Flex</b> version lets you pick your travel days inside a month and costs roughly <b>15 percent more</b>, which is the right buy if your trip has genuine gaps in it. The common mistake runs the other way too, buying Flex and then traveling every day anyway, which just means paying the premium for nothing.",
+            "Second, <b>mountain railways are mostly discounted rather than free</b>. A handful are fully included, the rest give you a share off, and the cable cars and cogwheel trains to the famous viewpoints are individually expensive enough that the difference matters. Do not budget a Swiss trip assuming the summits are covered.",
+            "Third, the <b>scenic trains still want a paid seat reservation</b>. The pass covers the fare on routes like the <b>Glacier Express</b>, but the compulsory reservation is charged separately and varies by season, and on some summit lines a reservation is mandatory in the busy months regardless of what ticket you hold. Book those before you arrive, because they sell out. One naming note while you are reading signs: the national railway appears as <b>SBB</b>, <b>CFF</b> or <b>FFS</b> depending on which language you are standing in, and all three are the same company. For the same decision elsewhere, see <a href='/rail-passes'>rail passes judged country by country</a>, and the <a href='/switzerland'>Switzerland money guide</a> for the wider picture."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is the Swiss Travel Pass worth it?", a: "For a touring trip, often yes, because Swiss point-to-point fares are high and the pass covers trains, buses, boats, city transit and over 500 museums. It wins if you move most days. For a single-base trip with a few mountain excursions, the cheaper Half Fare Card usually beats it." },
+        { q: "How much is the Swiss Travel Pass in 2026?", a: "An adult second-class pass runs from about CHF 254 for three consecutive days to roughly CHF 499 for fifteen, with the cost per day falling as the duration rises. Rates are set centrally and are the same wherever you buy, so there is no cheaper seller to find." },
+        { q: "Swiss Travel Pass or Half Fare Card?", a: "Count your moving days. Four or more days of real travel with frequent transit favors the pass, especially with museums included. Fewer active days, one base, or rest days in the itinerary favors the Half Fare Card at about CHF 150 for a month." },
+        { q: "Does the Swiss Travel Pass cover mountain railways?", a: "Only partly. A few excursions such as Rigi, Stoos and Stanserhorn are included outright, and most other cable cars and cogwheel trains are discounted rather than free. On the most expensive summit trips a Half Fare Card gives the bigger reduction." },
+        { q: "Do I need a seat reservation with a Swiss Travel Pass?", a: "On the scenic panoramic trains, yes. The pass covers the fare but the compulsory reservation is charged on top and varies by season, and some summit lines require a reservation in the busy months whatever ticket you hold. Book those before you travel." },
+        { q: "Is the consecutive or the Flex pass better?", a: "Consecutive if your trip length roughly matches the pass and you travel most days, since the Flex version costs about 15 percent more. Flex if you have rest days, hiking days or days you are driving, because a consecutive pass burns those days whether you use them or not." }
+      ],
+      sources: {
+        links: [
+          { label: "Switzerland Travel Centre: the official Swiss Travel System shop, current pass prices, coverage and the family card terms", url: "https://www.swissrailways.com/en/buy-swiss-travel-pass", type: "official" },
+          { label: "Switzerland Travel Centre: the official Half Fare Card page and its price", url: "https://www.swissrailways.com/en/buy-swiss-half-fare-card", type: "official" },
+          { label: "MySwissAlps: how pass validity and consecutive travel days work, and the Flex comparison", url: "https://www.myswissalps.com/travel-ticket/swiss-travel-pass/", type: "guide" }
+        ],
+        judgment: "Pass and card prices, and what each covers, come from the official Swiss Travel System shop, so those are firm. Our confidence in the verdict itself is deliberately rated lower than on the other countries here, and it is worth saying why: this is the one page on the site where we recommend buying a pass, and the margin is thinner than the marketing suggests. The break-even depends on how many days you actually move, and specialist sources that run the numbers in detail disagree about how often the pass beats the Half Fare Card, with several concluding the card wins more often than travelers assume. The four-moving-days rule of thumb is a synthesis of those analyses, not a published threshold. Point-to-point fares such as Zurich to Zermatt are approximate full-fare figures that move with route and class. Seat reservation charges on the scenic routes vary by season and we describe them without quoting an amount. If your trip is one base plus a few excursions, price the card properly before taking our tier at face value. Checked Aug 2026."
+      }
     }
   ]
 };

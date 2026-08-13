@@ -765,6 +765,83 @@ export default {
         ],
         judgment: "Which tricks are most common in which square changes year to year, so the True Trip Costs desk has stuck to the mechanics and the money cost rather than a catalogue of street theatre. The card-terminal and ATM points are the ones that cost the most and get written about the least. Checked July 2026."
       }
+    },
+    {
+      slug: "rail",
+      glance: [
+        { k: "Pass?", v: "No, it covers one operator" },
+        { k: "Operators", v: "Four compete on fast routes" },
+        { k: "Cheapest", v: "Advance fares, all sites checked" },
+        { k: "Free extra", v: "Local connection with a fast fare" }
+      ],
+      live: true,
+      topic: "rail",
+      caution: "medium",
+      title: "Do you need a rail pass in Spain? Almost never",
+      description: "Four operators now compete on Spain's fast routes and a pass covers only one of them. Advance fares on the busy corridors can drop to 20 or 30 euros.",
+      h1: "Do you need a rail pass in Spain?",
+      lede: "Spain has quietly become the most competitive high-speed rail market in Europe, and that competition is the reason fares are low. A pass opts you out of most of it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-13",
+      answer: "<b>Almost never</b>, and the reason is sharper here than anywhere else we have looked. <b>Four operators</b> now run fast trains on Spain's main corridors: the national <b>AVE</b>, its own budget brand <b>Avlo</b>, plus the private <b>Iryo</b> and <b>Ouigo</b>. A rail pass covers the <b>national operator only</b>, so buying one shuts you out of three of the four and cancels the competition that made the route cheap. On Madrid to Barcelona and similar runs, <b>advance fares</b> commonly land in the <b>20 to 40 euro</b> range and the budget brands go lower still. On top of that, the national fast trains charge a passholder a <b>compulsory reservation fee</b>. Buy tickets, and check all the operators.",
+      sections: [
+        {
+          h: "A pass covers one operator out of four",
+          icon: "ticket",
+          key: { tag: "The competition is the discount", text: "Spain's fast fares fell because rival companies started running the same city pairs. A pass is valid on the national operator's trains, so it puts you back in a one-company market and charges a reservation fee for the privilege.", tone: "amber" },
+          p: [
+            "Until recently Spain had one high-speed operator. It now has four sharing the same tracks between the big cities, and they price independently against each other. The national operator runs <b>AVE</b>, its premium high-speed service, and <b>Avlo</b>, its own no-frills brand. <b>Iryo</b> is a private full-service competitor, and <b>Ouigo</b> is the Spanish arm of the French budget brand. On Madrid to Barcelona, Madrid to Valencia, Madrid to Seville and Malaga you can usually pick between several of them on the same day.",
+            "A rail pass is valid on the <b>national operator's network</b>. It is not valid on <b>Iryo</b>, and it is not valid on the budget brands. So the pass removes exactly the pressure that pushed fares down, and it leaves you with the operator whose premium fares tend to be the highest of the group. Then it charges again: nearly every long-distance national service requires a <b>compulsory seat reservation</b> that a passholder pays for separately, commonly quoted at around <b>10 to 15 euros</b> a leg and higher on some routes. Only the local and some regional services escape it.",
+            "There is one honest exception worth naming. If your dates are genuinely unsettled and you would otherwise be buying walk-up fares, which in Spain are expensive, a pass or the national operator's own multi-trip product can beat paying full price at the counter. That is a narrow case, and it is a bet on your own indecision rather than a saving."
+            // FUTURE UtilityBox MOUNT POINT.
+            // A rail-pass affiliate belongs here, at the end of this section, once one is
+            // vetted. Nothing renders now on purpose: for most readers the answer above is
+            // "do not buy a pass," and that has to read as a finished thought rather than a
+            // run-up to a product. Activating it is a data change in three parts, no
+            // restructuring: (1) add `railPass: true` to this spoke object, (2) add a
+            // railPass entry to the affiliate registry in src/data/links.js, (3) add the
+            // matching `railPassUrl` gate and <UtilityBox> block to Spoke.astro alongside
+            // the existing esim, insurance and carExcess blocks, which already carry the
+            // disclosure. Prop shape is the same: href, label, and the do-you-need-it prose
+            // passed as the slot.
+          ]
+        },
+        {
+          h: "How to actually get the cheap fare",
+          icon: "coins",
+          key: { fig: "20 to 40 euros", tag: "Booked ahead", text: "Fast fares on the busy corridors sit in that band when bought early and climb steeply as the train fills. The budget brands can undercut it further if you travel light and do not mind an airline-style boarding routine.", tone: "teal" },
+          p: [
+            "Book as soon as your dates are firm. Fast-train sales generally open a <b>few months ahead</b>, the national operator's booking horizon is famously erratic and can be anywhere from a couple of weeks to most of a year out, and prices rise as seats sell. Booked early, high-speed fares on the competitive corridors commonly land around <b>20 to 40 euros</b>, and the budget services can be lower again. Bought on the day, the same seat can cost several times that.",
+            "Two things about the budget brands before you jump. <b>Ouigo</b> runs an airline-style operation: strict baggage limits checked at the gate, extras charged separately, and add the suitcase when you book rather than at the station where it costs more. <b>Iryo</b> is a fuller service with better baggage terms, though its cheapest tier is also carry-on only. Read the bag allowance on whichever you pick, because that is where the advertised fare quietly grows.",
+            "A specific warning for US travelers, because it is a recurring annoyance rather than a rumor: the national operator's own website has a poor record with <b>North American cards</b>, with declines and checkout failures that have nothing to do with your bank. If it fails, paying through a wallet or an alternative payment method at checkout usually gets it through, and the competing operators' sites are generally easier to use."
+          ]
+        },
+        {
+          h: "The free local connection, and the slow trains",
+          icon: "tag",
+          key: { tag: "Combinado Cercanias", text: "A long-distance fast ticket usually includes a free local commuter train to or from the station at either end, valid in a window around your booked departure. It is not automatic in your head, so claim it when you book.", tone: "teal" },
+          p: [
+            "One genuinely useful thing the national operator gives away and most visitors never claim. <b>Cercanias</b> is the local commuter network in Madrid and other big cities, branded <b>Rodalies</b> in the Barcelona area. With a long-distance fast ticket you are entitled to a <b>free Cercanias journey</b> to the departure station and another from your arrival station, valid within a few hours either side of your train. That is a couple of euros each way you would otherwise pay, and it means the mainline station is effectively connected to wherever you are staying at no cost.",
+            "Below the fast network sit <b>Media Distancia</b>, the medium-distance regional services, and the local <b>Cercanias</b> trains. Fares are low, and on most of them a reservation is not needed and not possible, so there is nothing to book ahead and no saving from doing so. If your trip is short hops rather than long corridors, this is the tier you will actually use and the pass question stops being interesting.",
+            "The vocabulary on the booking screen: <b>Larga Distancia</b> is long distance, <b>Turista</b> is standard class and <b>Preferente</b> is the upgraded one, though the newer fare names have mostly replaced those two. For how the pass decision lands in other countries, see <a href='/rail-passes'>rail passes compared by country</a>, and the <a href='/spain'>Spain money guide</a> for everything else on the money side."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is a rail pass worth it in Spain?", a: "Rarely. A pass covers the national operator only, and Spain now has four competing fast-train operators, so a pass shuts you out of three of them and removes the competition that keeps fares low. It also charges a compulsory reservation fee on national long-distance trains." },
+        { q: "Which Spanish train operator is cheapest?", a: "It varies by route and date, which is why checking all of them is the actual advice. The budget brands are often lowest, the private full-service competitor is frequently below the national premium service, and all four discount hardest for early booking." },
+        { q: "Does a Eurail pass cover Iryo or Ouigo in Spain?", a: "No. Rail passes are valid on the national operator's services. The private and budget competitors are separate companies selling their own tickets, and they are often the cheaper option on the routes they serve." },
+        { q: "How far in advance should I book Spanish train tickets?", a: "As soon as your dates are firm. Fast-train sales usually open a few months out and the cheapest fares sell first, so early booking on the competitive corridors can mean 20 to 40 euros against several times that on the day." },
+        { q: "What is the free Cercanias connection?", a: "With a long-distance fast ticket you get a free local commuter train to the departure station and from the arrival station, valid within a few hours of your booked train. You have to claim it rather than being given it, so ask when you book." }
+      ],
+      sources: {
+        links: [
+          { label: "Seat 61: train travel in Spain, on the competing operators, fare tiers and the erratic booking horizons", url: "https://www.seat61.com/train-travel-in-spain.htm", type: "guide" },
+          { label: "Renfe: the national operator's own site, fare tiers and the free local connection with a long-distance ticket", url: "https://www.renfe.com/es/en", type: "official" },
+          { label: "Spain Traveller: the national multi-trip pass, what it covers and how it differs from a Eurail Spain pass", url: "https://www.spain-traveller.com/en/renfe-spain-pass/", type: "guide" }
+        ],
+        judgment: "That four operators compete and that a pass covers only the national one are matters of published fact, and they are the load-bearing part of this verdict. The surcharge a passholder pays to reserve is documented by specialists rather than promoted by the operator, and their estimates spread across roughly 10 to 35 euros by service and corridor, so we quote the commoner lower band and flag that it climbs. The 20 to 40 euro advance-fare range is a well-attested pattern on the competitive corridors, not a quoted price, and your route and date will move it. The card-payment problems on the national operator's site are widely and consistently reported by North American travelers rather than acknowledged by the operator, so we describe them as a known annoyance. Checked Aug 2026."
+      }
     }
   ]
 };

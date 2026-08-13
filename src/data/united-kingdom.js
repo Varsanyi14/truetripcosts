@@ -679,6 +679,84 @@ export default {
         ],
         judgment: "Black-cab tariffs are regulated (the minimum rose to 4.40 pounds in April 2026) but the metered total varies with traffic, and app surge and train fares move, so treat the pound figures as a recent 2026 read. The steady point is that from Heathrow the train beats a car for most travelers. Checked July 2026."
       }
+    },
+    {
+      slug: "rail",
+      glance: [
+        { k: "Pass?", v: "No, book early instead" },
+        { k: "The lever", v: "How far ahead you book" },
+        { k: "Maybe worth it", v: "A Railcard, about 35 pounds" },
+        { k: "Watch for", v: "Rush-hour fares are punishing" }
+      ],
+      live: true,
+      topic: "rail",
+      caution: "medium",
+      title: "Do you need a BritRail pass? Book advance instead",
+      description: "A pass rarely wins in Britain. The lever is booking early: London to Edinburgh can be 25 to 40 pounds ahead of time against about 140 on the day.",
+      h1: "Do you need a rail pass in Britain?",
+      lede: "British rail pricing punishes people who turn up and rewards people who commit months ahead, by a factor that can reach five. That makes the booking date the thing to get right, and a pass mostly the wrong tool.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-13",
+      answer: "For most US visitors, <b>no</b>. Britain's fare system has a huge gap between walk-up and booked-ahead prices: <b>London to Edinburgh</b> is roughly <b>25 to 40 pounds</b> booked well in advance against about <b>140 pounds</b> at the full flexible fare. The cheap tier is called an <b>advance single</b>, which is a one-way ticket locked to one specific train, released around <b>twelve weeks out</b> and sold in limited numbers. A <b>BritRail</b> pass, sold only outside the UK, buys you flexibility at roughly the cost of the mid-tier flexible fare, so it beats walk-up prices and loses to booked-ahead ones. If you want a discount rather than a pass, a <b>Railcard</b> at around <b>35 pounds</b> takes a <b>third off</b> and is the better buy for many trips.",
+      sections: [
+        {
+          h: "Three ticket names, and one that is cheap",
+          icon: "calendar",
+          key: { fig: "12 weeks", tag: "When the cheap fares land", text: "Advance tickets are released in batches a few months out and the lowest prices sell first. Booking the week you travel puts you in the flexible tiers, which is where British rail earns its expensive reputation.", tone: "teal" },
+          p: [
+            "Every train company in Britain uses the same three names, which is the one simple thing about the system. <b>Anytime</b> is the fully flexible fare and the most expensive. <b>Off-Peak</b> is flexible within time restrictions. <b>Advance</b> is the cheap tier, sold in limited quantities for one named departure. Britain calls a one-way ticket a <b>single</b>, so the product you are looking for appears as an <b>advance single</b>: read that as a one-way fixed to a specific train.",
+            "The gap between those tiers is the whole story. On the London to Edinburgh run, the flexible fare is around <b>140 pounds</b> one way while advance fares typically sit at <b>25 to 40 pounds</b>, with the very cheapest allocation going first. Tickets generally open about <b>twelve weeks</b> before travel. So the discipline that saves real money in Britain is calendar discipline: work out your intercity legs, and book them the week they are released rather than the week you fly.",
+            "The trade is rigid. An advance ticket is valid on <b>that train only</b>. Miss it and you are buying again, and changes carry a fee plus any fare difference. If your itinerary genuinely cannot be pinned to departure times, that inflexibility is a real cost and it is the strongest argument anyone has for a pass here."
+            // FUTURE UtilityBox MOUNT POINT.
+            // A rail-pass affiliate belongs here, at the end of this section, once one is
+            // vetted. Nothing renders now on purpose: for most readers the answer above is
+            // "do not buy a pass," and that has to read as a finished thought rather than a
+            // run-up to a product. Activating it is a data change in three parts, no
+            // restructuring: (1) add `railPass: true` to this spoke object, (2) add a
+            // railPass entry to the affiliate registry in src/data/links.js, (3) add the
+            // matching `railPassUrl` gate and <UtilityBox> block to Spoke.astro alongside
+            // the existing esim, insurance and carExcess blocks, which already carry the
+            // disclosure. Prop shape is the same: href, label, and the do-you-need-it prose
+            // passed as the slot.
+          ]
+        },
+        {
+          h: "A Railcard, and the split-ticket trick",
+          icon: "gbp",
+          key: { tag: "A third off, if you qualify", text: "These are discount cards rather than passes, and visitors can buy the main ones. The two that suit most travelers are a pair card for two adults going everywhere together and a family card that needs a child in the group.", tone: "teal" },
+          p: [
+            "Britain's real discount product is the <b>Railcard</b>, an annual card costing somewhere around <b>35 pounds</b> that takes <b>a third off</b> most fares, including advance tickets. Two versions suit visitors. The <b>Two Together</b> card names two adults and discounts both, on the condition that they travel together for the whole journey. The <b>Family and Friends</b> card discounts up to four adults by a third and children far more steeply, provided at least one child is traveling on a child fare. Any adult can buy either, and the official sites keep a section specifically for people visiting from outside Britain, so this is not a residents-only benefit.",
+            "Two conditions to check. Most Railcards are <b>blocked during the weekday morning rush</b>, roughly until half past nine, so a discounted early departure will not work. And card prices are revised periodically, with the figures quoted across retailers not always agreeing, so confirm the current price on the official site rather than trusting a number on a page. One long round-trip usually covers the cost, which makes the arithmetic easy: if you have two intercity legs and you qualify, buy it.",
+            "Then there is <b>split ticketing</b>, a genuine quirk of a fragmented fare system. Buying two tickets that cover consecutive parts of the same journey, on the same train you were going to take anyway, sometimes costs less than one through ticket. Savings are commonly in the <b>15 to 45 percent</b> range and dedicated sites do the searching for you. It is entirely legitimate as long as the train calls at the station where the tickets split."
+          ]
+        },
+        {
+          h: "Why the pass usually loses",
+          icon: "alert",
+          key: { tag: "Flexibility priced as a product", text: "A BritRail pass works out close to the cost of buying flexible tickets on the day. That makes it a reasonable hedge against uncertainty and a poor way to save money on a planned trip.", tone: "amber" },
+          p: [
+            "The <b>BritRail</b> pass is sold only to people living outside the UK and Ireland and must be bought <b>before you arrive</b>, which by itself makes it hard to price against fares you can see on a screen. Rail specialists who have run the comparison land in the same place: for long distances a pass works out at roughly what a <b>flexible off-peak ticket bought on the day</b> would cost, which means it beats walk-up pricing and is more expensive than advance fares. It also does <b>not guarantee you a seat</b>, so on a busy long-distance train you may still want to reserve, which is free to arrange but is another step.",
+            "Where it makes sense is narrow and worth stating fairly: a dense itinerary with a new city every night, travel starting in the <b>morning peak</b> when flexible fares are at their worst, plans you cannot commit to twelve weeks out, or a family with young children. Outside those, three or four intercity journeys booked ahead will cost less than the pass. It also excludes some services you might assume are included, the cross-Channel trains and the dedicated Heathrow airport express among them.",
+            "One last timing note that is easy to miss: British fares are <b>revised upward most years in March</b>, so a price you researched in the winter for a summer trip is likely to be a little out of date by the time you buy. For the same judgment made elsewhere, see <a href='/rail-passes'>how rail passes compare country by country</a>, and the <a href='/united-kingdom'>United Kingdom money guide</a> for the rest of the money side."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is a BritRail pass worth it?", a: "Usually not. It costs roughly what flexible tickets bought on the day would cost, so it beats walk-up fares and loses to advance ones. It suits a dense itinerary you cannot commit to, travel in the weekday morning peak, or a family, but three or four intercity legs booked ahead cost less." },
+        { q: "What is the cheapest way to book British train travel?", a: "Book advance one-way tickets as soon as they are released, roughly twelve weeks ahead, since the cheapest allocations sell first. Add a Railcard if you qualify, travel outside the weekday morning rush, and check whether split ticketing beats the through fare on your route." },
+        { q: "What is an advance single?", a: "British terminology for a one-way ticket tied to one specific train, and the cheapest fare type on the network. It is sold in limited numbers from about twelve weeks before travel. It is not valid on any other train, so missing your departure means buying again." },
+        { q: "Can a US visitor buy a UK Railcard?", a: "Yes, for the main cards. Any adult can buy a Two Together card for two named adults traveling together, or a Family and Friends card if a child is traveling with you, and the official sites have guidance for visitors from outside Britain. Most cards are not valid during the weekday morning peak." },
+        { q: "Is split ticketing legal in the UK?", a: "Yes. Buying separate tickets covering consecutive legs of one journey is allowed, provided the train actually stops at the station where the tickets split. It can cut 15 to 45 percent off a through fare, and specialist sites will search the combinations for you." }
+      ],
+      sources: {
+        links: [
+          { label: "Seat 61: a guide to train travel in Britain, on ticket types and how a BritRail pass compares with flexible and advance fares", url: "https://www.seat61.com/train-travel-in-britain.htm", type: "guide" },
+          { label: "Two Together Railcard: the official retailer's eligibility and validity terms, including the weekday morning restriction", url: "https://www.twotogether-railcard.co.uk/help/faqs/", type: "official" },
+          { label: "Family and Friends Railcard: official eligibility, confirming any adult may buy one", url: "https://www.familyandfriends-railcard.co.uk/help/faqs/am-i-eligible-to-use-a-family-friends-railcard/", type: "official" },
+          { label: "Rick Steves: Britain rail passes, on the gap between full flexible and advance fares", url: "https://www.ricksteves.com/travel-tips/transportation/trains/britain-rail-passes", type: "guide" }
+        ],
+        judgment: "Ticket types, the advance release window and Railcard eligibility and restrictions come from the official retailers and are firm. Railcard pricing is the one figure we could not pin cleanly: retailers and reference sources quoted both 30 and 35 pounds for the cards named here, so we give an approximate figure and tell you to confirm it rather than publishing a number we cannot stand behind. The London to Edinburgh fares are widely cited illustrative figures rather than a fixed price list, and they move with date and demand. BritRail pass pricing is not straightforward to verify because the product is sold outside the UK through several vendors at varying prices, so our conclusion rests on specialist comparisons rather than a single quoted rate, and it is the weakest-sourced claim on this page. Split-ticket savings vary by route. Checked Aug 2026."
+      }
     }
   ]
 };

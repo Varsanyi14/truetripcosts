@@ -95,4 +95,70 @@ export const railPasses = [
       'A pass excludes Italo, one of the two competing fast operators, and still charges a compulsory seat reservation on every Frecce leg.',
     railSpoke: '/italy/rail',
   },
+  {
+    country: 'Switzerland',
+    slug: 'switzerland',
+    region: 'Europe',
+    tier: 'worth',
+    passType: 'Swiss Travel Pass, or the Half Fare Card',
+    confidence: 'medium',
+    reason:
+      'Point-to-point fares are high enough that a touring trip clears the pass price. On fewer moving days the cheaper Half Fare Card beats it.',
+    railSpoke: '/switzerland/rail',
+  },
+  {
+    country: 'Germany',
+    slug: 'germany',
+    region: 'Europe',
+    tier: 'depends',
+    passType: 'German Rail Pass, plus the regional Deutschland-Ticket',
+    confidence: 'high',
+    reason:
+      'Seat reservations are optional here, so a pass is cheap to use. Advance saver fares still win on a fixed itinerary, and the flat regional ticket excludes fast trains.',
+    railSpoke: '/germany/rail',
+  },
+  {
+    country: 'France',
+    slug: 'france',
+    region: 'Europe',
+    tier: 'point-to-point',
+    passType: 'None worth buying',
+    confidence: 'high',
+    reason:
+      'Every fast train charges a passholder a compulsory reservation fee from a small quota, while advance fares booked direct undercut the pass outright.',
+    railSpoke: '/france/rail',
+  },
+  {
+    country: 'Spain',
+    slug: 'spain',
+    region: 'Europe',
+    tier: 'point-to-point',
+    passType: 'None worth buying',
+    confidence: 'high',
+    reason:
+      'Four operators compete on the fast corridors and a pass covers only the national one, so it removes the competition that made those fares cheap.',
+    railSpoke: '/spain/rail',
+  },
+  {
+    country: 'United Kingdom',
+    slug: 'united-kingdom',
+    region: 'Europe',
+    tier: 'point-to-point',
+    passType: 'A Railcard, not a pass',
+    confidence: 'high',
+    reason:
+      'The gap between advance and walk-up fares is enormous, and a pass prices out near the flexible fare. A discount Railcard is the better buy.',
+    railSpoke: '/united-kingdom/rail',
+  },
+  {
+    country: 'Netherlands',
+    slug: 'netherlands',
+    region: 'Europe',
+    tier: 'point-to-point',
+    passType: 'None worth buying',
+    confidence: 'high',
+    reason:
+      'Short distances, low fares, no domestic seat reservations and turn-up-and-go frequency leave a pass with no inefficiency to fix.',
+    railSpoke: '/netherlands/rail',
+  },
 ];

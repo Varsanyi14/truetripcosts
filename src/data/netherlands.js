@@ -546,6 +546,83 @@ export default {
         a: "No. Neither is refundable to a visitor. The Dutch VAT refund scheme covers goods that non-EU visitors take home unused, above a per-store minimum, and it specifically excludes accommodation, meals and anything else consumed while you are in the country. Budget for the hotel taxes as a real cost rather than something recoverable later.",
       },
     ],
-  }
+  },
+    {
+      slug: "rail",
+      glance: [
+        { k: "Pass?", v: "No, the country is too small" },
+        { k: "How to pay", v: "Tap a contactless card" },
+        { k: "Reservations", v: "None on domestic trains" },
+        { k: "Watch for", v: "Check out or you lose 33.30" }
+      ],
+      live: true,
+      topic: "rail",
+      caution: "medium",
+      title: "Do you need a rail pass in the Netherlands? No",
+      description: "The country is small enough that fares stay low and a pass never earns its price. The real money risk is forgetting to check out and losing 33.30 euros.",
+      h1: "Do you need a rail pass in the Netherlands?",
+      lede: "This is the shortest rail answer on the site, because the Dutch network removes the question. Trains are frequent, distances are short, nothing needs reserving, and you pay by tapping the card already in your pocket.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-13",
+      answer: "<b>No</b>, and there is not much of a debate to have. The Netherlands is small enough that almost every trip a visitor makes is <b>under two hours</b>, fares are correspondingly low, and <b>no domestic train requires a seat reservation</b>, so the flexibility a pass sells you is something you already have. Just <b>tap a contactless Visa or Mastercard</b>, or a phone wallet, at the reader. The system is called <b>OVpay</b> and it works with a foreign card. Two things to actually remember: <b>American Express is not accepted</b>, and you must <b>check out at the end of every journey</b> or lose a deposit of <b>33.30 euros</b>. That check-out habit, not the pass question, is where visitors lose money here.",
+      sections: [
+        {
+          h: "Tap in, and then genuinely tap out",
+          icon: "card",
+          key: { fig: "33.30 euros", tag: "The check-out trap", text: "Tapping in reserves a deposit against your card. Tap out at the end and you are charged the real fare and the deposit is released. Walk off the platform without tapping and the deposit is what you paid for the trip.", tone: "amber" },
+          p: [
+            "Dutch public transport runs as one national system: the same tap works on trains, trams, buses, metros and ferries. Since 2023 you can use your <b>own contactless bank card or phone</b> rather than buying a local travel card, under the name <b>OVpay</b>, and a foreign <b>Visa or Mastercard</b> is fine. <b>American Express and Diners Club are not accepted</b>, which is the one card-choice detail worth checking before you land.",
+            "Here is the part that costs people money, and it is a genuine design quirk rather than a scam. The system charges by distance, so it needs both ends of your journey. Tapping in places a hold of about <b>33.30 euros</b> against the card. Tap out at your destination and you are charged the actual fare, usually a few euros, and the hold is released. <b>Fail to tap out and the hold becomes the fare.</b> The readers are on the platform or at the gate line, not on the train, so the habit to build is looking for one every single time you leave a station, including at an interchange where you have not left the building.",
+            "It is fixable. The <b>OVpay app</b> shows your journeys and charges and is where you report a missed check-out to get the difference back. If you tapped in and then decided not to travel, tapping out at the same station within an hour costs you nothing."
+            // FUTURE UtilityBox MOUNT POINT.
+            // A rail-pass affiliate belongs here, at the end of this section, once one is
+            // vetted. Nothing renders now on purpose: for most readers the answer above is
+            // "do not buy a pass," and that has to read as a finished thought rather than a
+            // run-up to a product. Activating it is a data change in three parts, no
+            // restructuring: (1) add `railPass: true` to this spoke object, (2) add a
+            // railPass entry to the affiliate registry in src/data/links.js, (3) add the
+            // matching `railPassUrl` gate and <UtilityBox> block to Spoke.astro alongside
+            // the existing esim, insurance and carExcess blocks, which already carry the
+            // disclosure. Prop shape is the same: href, label, and the do-you-need-it prose
+            // passed as the slot.
+          ]
+        },
+        {
+          h: "The travel card you no longer need to buy",
+          icon: "qr",
+          key: { tag: "Skip the plastic", text: "The old smartcard is being retired. The anonymous version stopped being sold in mid 2026 and the existing cards stop working at the end of 2027, so a visitor arriving now should not spend money on one.", tone: "teal" },
+          p: [
+            "For years the answer to paying for Dutch transport was the <b>OV-chipkaart</b>, a plastic smartcard you bought for a few euros and loaded with credit. Guidance recommending that is now out of date, and following it costs you a card fee plus whatever credit you leave unspent. The <b>anonymous version stopped being sold in July 2026</b>, existing cards are being wound down and stop working at the <b>end of 2027</b>, and a replacement product is arriving in phases for residents who need season tickets and age discounts.",
+            "None of that transition is your problem as a visitor. Tapping your own bank card sidesteps the whole thing, and it is what the Dutch tourism side now recommends. If you would rather hold a ticket, the operator's app sells single journeys as a <b>QR code</b> on your phone, which is also a reasonable answer if you are traveling with someone whose card you do not want to use.",
+            "The one case for buying a paper or disposable ticket at a machine is if you have no contactless card at all, and it carries a surcharge of around <b>1.60 euros</b> on top of the fare for the privilege."
+          ]
+        },
+        {
+          h: "Intercity or Sprinter, and the small print",
+          icon: "ticket",
+          key: { tag: "Two speeds, one fare", text: "Intercity trains skip the small stops, Sprinters call at everything, and the standard fare between two stations is the same either way. So take the Intercity unless your station is one the Sprinter serves.", tone: "teal" },
+          p: [
+            "The two service names you will see on the board are <b>Intercity</b> and <b>Sprinter</b>. Intercity runs between the larger cities and skips the minor stations. <b>Sprinter</b> stops at everything, which is what you want for smaller towns and suburbs. The ordinary fare between any two stations does not change between them, so this is a question of time rather than money: take the Intercity if it serves your stop.",
+            "Two exceptions to the flat picture. <b>Intercity Direct</b>, the faster run on the Amsterdam to Schiphol to Rotterdam to Breda line, carries a <b>small supplement</b> for the Schiphol to Rotterdam section, which is easy to miss and easy to pay. And the main routes generally run at least twice an hour, often more, which is the underlying reason a pass is pointless here: turning up and going is already the normal way to travel.",
+            "Children get a good deal worth knowing if you are a family: the youngest travel free, and <b>children up to eleven can travel free</b> accompanied by an adult under the operator's child scheme, which you set up rather than being given automatically. For how this compares elsewhere, see <a href='/rail-passes'>our rail-pass verdicts by country</a>, with the <a href='/netherlands'>Netherlands money guide</a> covering everything else."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is a rail pass worth it in the Netherlands?", a: "No. Distances are short, fares are low, trains run at least twice an hour on main routes and no domestic service needs a reservation, so a pass has no inefficiency to fix. Tap a contactless card instead." },
+        { q: "Can I use my US credit card on Dutch trains?", a: "Yes, if it is a contactless Visa or Mastercard, or one of those in a phone wallet. The system is called OVpay and it works on trains, trams, buses and metros. American Express and Diners Club are not accepted." },
+        { q: "What happens if I forget to check out on a Dutch train?", a: "You are charged the deposit that was held when you tapped in, about 33.30 euros, instead of the real fare. You can report the missed check-out in the OVpay app and recover the difference, but the habit of tapping out every time is what avoids it." },
+        { q: "Do I still need an OV-chipkaart?", a: "No. The anonymous card stopped being sold in July 2026 and existing cards stop working at the end of 2027. Visitors should tap their own contactless bank card or buy a single ticket in the operator's app instead of paying for a card." },
+        { q: "What is the difference between an Intercity and a Sprinter?", a: "Intercity trains run between larger cities and skip minor stations. Sprinters stop everywhere, so they serve smaller towns. The standard fare between two stations is the same on either, so pick on speed rather than price." }
+      ],
+      sources: {
+        links: [
+          { label: "Holland.com: the official Dutch tourism guidance on paying for public transport, recommending OVpay contactless for visitors", url: "https://www.holland.com/global/tourism/getting-around/information/getting-around-in-the-netherlands/pay-in-public-transport", type: "tourism" },
+          { label: "Amsterdam Tips: Dutch train fares and the smartcard system, including the check-in deposit and the single-ticket surcharge", url: "https://www.amsterdamtips.com/train-tickets-netherlands", type: "guide" },
+          { label: "Amsterdam Tips: the OV-chipkaart, the deposit mechanics and the phase-out timetable", url: "https://www.amsterdamtips.com/ov-chipkaart", type: "guide" }
+        ],
+        judgment: "The contactless system, the absence of domestic seat reservations and the smartcard phase-out dates are all documented by the operator and the national tourism body, so the practical advice here is firm. The 33.30 euro check-in deposit is consistently reported and is the figure the system has used, though it is the kind of number that gets revised, so treat it as the current amount rather than a permanent one. The Intercity Direct supplement exists but the amount varies, so we describe it without quoting a figure. That a pass is pointless in the Netherlands is our own read, and it is about as safe as a judgment on this site gets, resting on short distances, low fares and turn-up-and-go frequency rather than on any single price. Checked Aug 2026."
+      }
+    }
   ]
 };

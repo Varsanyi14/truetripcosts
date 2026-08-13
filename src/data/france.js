@@ -765,6 +765,83 @@ export default {
         ],
         judgment: "We have deliberately not printed the airport flat fares, because Paris adjusts them and the posted figure at the rank is the only one that is current on the day you land. The street repertoire is our own read from recent reports and it changes location more often than it changes method. Checked July 2026."
       }
+    },
+    {
+      slug: "rail",
+      glance: [
+        { k: "Pass?", v: "Rarely pays off here" },
+        { k: "Point-to-point", v: "Advance fares are the win" },
+        { k: "Book at", v: "SNCF Connect, direct" },
+        { k: "Watch for", v: "TGV reservation fees on a pass" }
+      ],
+      live: true,
+      topic: "rail",
+      caution: "medium",
+      title: "Do you need a rail pass in France? Usually not",
+      description: "Advance fares booked direct on SNCF Connect beat a pass on most French trips, and every TGV charges a reservation fee on top of the pass anyway.",
+      h1: "Do you need a rail pass in France?",
+      lede: "France runs some of the best fast trains in the world and sells them cheaply if you commit early. A pass asks you to pay for flexibility, then charges you again at every fast train you board.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-13",
+      answer: "For nearly every US trip to France, <b>no</b>. The saving here comes from <b>booking early and booking direct</b>: fares on <b>SNCF Connect</b> open a few months out and the cheap tiers go first, so a Paris to Marseille or Paris to Lyon leg reserved well ahead costs a fraction of the walk-up price. A pass runs into the same wall Italy has: a <b>seat reservation is compulsory on every TGV</b>, it is <b>not included</b>, and passholders pay roughly <b>10 to 20 euros a leg</b> for it, from a limited pool of passholder seats that <b>sells out in summer</b>. <b>OUIGO</b>, the no-frills TGV, undercuts the pass outright on the routes it serves. If you want a discount that is not a pass, the <b>Carte Avantage</b> is the French answer at about 49 euros a year.",
+      sections: [
+        {
+          h: "The reservation fee is the tax on your pass",
+          icon: "ticket",
+          key: { fig: "10 to 20 euros", tag: "Per fast train, on top", text: "A France pass does not let you simply step onto a TGV. Reservation is compulsory, it is charged separately, and the passholder allocation on each train is small enough that peak-summer departures sell out weeks ahead.", tone: "amber" },
+          p: [
+            "France is one of the worst places in Europe to travel on a rail pass, and the reason is structural rather than a matter of price. Every <b>TGV</b> and most <b>Intercites</b> services require a booked seat. Ordinary ticket buyers never notice, because the reservation is bundled into the fare they pay. Hold a pass and it becomes a separate line item at roughly <b>10 to 20 euros per leg</b>, so a week with five fast trains adds most of a hundred euros to a pass you have already bought.",
+            "There is a second problem that costs travelers their plans rather than their money. Each train carries only a <b>small quota of passholder seats</b>, and on Friday and Sunday departures, holiday weekends and anything heading to the coast in July or August, that quota can be gone <b>weeks in advance</b> while ordinary tickets are still on sale. The workaround rail regulars use is to book a passholder seat to an intermediate city and continue on a <b>TER</b>, the regional service, since TER trains take no reservations at all. That works, and it is a lot of effort to rescue a product you paid extra for.",
+            "So the honest comparison is not pass against fare. It is pass plus reservations plus the risk of no seat, against a fare you locked in months ago for less."
+            // FUTURE UtilityBox MOUNT POINT.
+            // A rail-pass affiliate belongs here, at the end of this section, once one is
+            // vetted. Nothing renders now on purpose: for most readers the answer above is
+            // "do not buy a pass," and that has to read as a finished thought rather than a
+            // run-up to a product. Activating it is a data change in three parts, no
+            // restructuring: (1) add `railPass: true` to this spoke object, (2) add a
+            // railPass entry to the affiliate registry in src/data/links.js, (3) add the
+            // matching `railPassUrl` gate and <UtilityBox> block to Spoke.astro alongside
+            // the existing esim, insurance and carExcess blocks, which already carry the
+            // disclosure. Prop shape is the same: href, label, and the do-you-need-it prose
+            // passed as the slot.
+          ]
+        },
+        {
+          h: "OUIGO, and the catch worth knowing",
+          icon: "euro",
+          key: { tag: "Cheap, with conditions", text: "OUIGO uses the same high-speed trains stripped of the extras, and its fares can start around ten euros. The trade is real though: some departures use outlying stations rather than the central one, and the baggage allowance is enforced the way an airline enforces it.", tone: "teal" },
+          p: [
+            "Alongside the full-service <b>TGV INOUI</b>, the national operator runs <b>OUIGO</b>, a budget high-speed brand on the same tracks and often the same equipment. Fares can start near <b>10 euros</b> and routinely land below what a passholder would pay in reservation fees alone. If your route has a OUIGO service and your dates are fixed, this is frequently the cheapest way to cross France by train, and it removes the pass question entirely.",
+            "Two conditions to check before you congratulate yourself. Some OUIGO departures use <b>stations away from the city center</b>, which can mean a suburban transfer at one or both ends and turns a cheap fare into a longer day. And the <b>baggage rules are enforced</b>: you get a cabin bag and a personal item, with anything larger paid for in advance, cheaper online than at the platform. Read the allowance before booking rather than at the gate.",
+            "Whether a rail pass can be used on OUIGO at all is something our sources genuinely disagreed on, some describing a passholder fee and others saying the brand is excluded outright. We are not going to resolve that here, and it barely matters in practice: at these fares the ordinary ticket is the cheaper move regardless of the answer."
+          ]
+        },
+        {
+          h: "The card that is not a pass, and the yellow machine",
+          icon: "receipt",
+          key: { tag: "Carte Avantage", text: "About 49 euros a year for roughly a third off fast-train fares, and the discount extends to people traveling with you. For a longer stay or a return visit it beats a pass on simple arithmetic.", tone: "teal" },
+          p: [
+            "France sells a discount card rather than pushing tourists toward passes, and for a visitor it is the more sensible product. The <b>Carte Avantage</b> costs around <b>49 euros a year</b> and takes roughly <b>30 percent</b> off fares on the fast network, with the benefit reaching companions traveling with the cardholder rather than the holder alone. On a two-week trip with several long legs, or if France is somewhere you return to, it pays for itself quickly and asks nothing about which train you board.",
+            "One piece of platform vocabulary, because it is where a small fine lives. <b>Composter</b>, to stamp, is what the yellow machines at the entrance to French platforms do, and a <b>paper ticket bought at a station</b> is meant to go through one before you board. This is now the narrow case rather than the norm: an <b>e-ticket</b> or a fare held in the app needs nothing done to it. If you bought paper for a <b>TER</b> at a machine, stamp it. Otherwise walk past.",
+            "Worth noting as a planning matter rather than a money one: French rail strikes happen, they are usually announced in advance, and the operator posts disruption notices on its own site and app. Build a little slack into a day where the train is the only way to make a flight. For how this decision plays out in other countries, see <a href='/rail-passes'>our verdict on rail passes by country</a>, and the <a href='/france'>France money guide</a> for the rest."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is a France rail pass worth it?", a: "Usually not. Compulsory TGV seat reservations cost a passholder roughly 10 to 20 euros a leg on top of the pass, and advance fares booked directly with the national operator are often cheaper than the reservation fees alone. A pass mainly buys flexibility, not savings." },
+        { q: "How do I get the lowest fare on a French train?", a: "Book point-to-point as early as your dates are firm, directly on SNCF Connect rather than a reseller, and check whether OUIGO serves your route. For regional hops, TER fares are low and need no advance booking or reservation." },
+        { q: "Is OUIGO the same as a TGV?", a: "It uses high-speed trains on the same lines, with the extras removed. Fares can start near 10 euros. In exchange, some departures leave from outlying stations rather than the central one, and baggage limits are enforced strictly, with larger bags paid for in advance." },
+        { q: "Do I need to validate a train ticket in France?", a: "Only a paper ticket bought at a station, which goes into the yellow platform machine before you board. An e-ticket or a fare in the app needs no stamping. The rule mostly catches people holding paper regional tickets." },
+        { q: "What is the Carte Avantage?", a: "A French discount card, around 49 euros a year, giving roughly a third off fast-train fares. Unusually, the discount extends to companions traveling with the cardholder, which makes it good value for a couple or a family on a longer trip." }
+      ],
+      sources: {
+        links: [
+          { label: "SNCF Connect: the national operator's official booking site, fare tiers and booking horizons", url: "https://www.sncf-connect.com/en-en/", type: "official" },
+          { label: "Seat 61: train travel in France, including compulsory TGV reservations and the passholder reservation fee range", url: "https://www.seat61.com/train-travel-in-france.htm", type: "guide" },
+          { label: "Rick Steves: France rail passes, on advance-purchase discounts and the OUIGO exclusion", url: "https://www.ricksteves.com/travel-tips/transportation/trains/france-rail-passes", type: "guide" }
+        ],
+        judgment: "The compulsory-reservation rule and the advance-fare structure are published by the operator and are the firm part of this page. What a passholder pays to reserve is not something the operator publicises, and the estimates reaching us from rail specialists clustered between 10 and 20 euros according to train and availability, so we print a band instead of one figure. Whether a pass can be used on OUIGO is genuinely contested across otherwise reliable sources, so we say so plainly instead of picking a side. The Carte Avantage price is the current published figure and these cards are repriced periodically. That a pass rarely wins in France is our own read, though it follows from the reservation charge and the passholder quota. Checked Aug 2026."
+      }
     }
   ]
 };

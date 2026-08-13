@@ -561,6 +561,83 @@ export default {
         ],
         judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own account before you fly. The network ranking and the ICE train caveat are the True Trip Costs desk's read from coverage reporting and traveler accounts rather than one official table. Checked Jul 2026. Corrected on 31 July 2026, and worth saying what changed. This page previously quoted a flat 12 dollars a day for a carrier day pass and described T-Mobile's included roaming as slow 2G that could not handle maps. Both were wrong in the same direction, the direction that flatters the eSIM we earn a commission on. On price, 10 dollars a day is the current eligible-plan rate for both AT&T's International Day Pass and Verizon's TravelPass, with 12 dollars applying to AT&T's non-eligible plans, so the honest figure is a range. On T-Mobile, its own roaming pages now list a real high-speed allowance abroad, 5GB on Experience More, Magenta MAX and Go5G Plus, 15GB on Experience Beyond and Go5G Next and 30GB on Better Value, dropping to 256kbps only after that, with the entry Essentials tier the one throttled from the start. We have rewritten the figures and the T-Mobile description throughout and cite the carriers directly. Carrier terms move faster than anything else we cover, so check your own plan rather than trusting this paragraph."
       }
+    },
+    {
+      slug: "rail",
+      glance: [
+        { k: "Pass?", v: "Genuinely competitive here" },
+        { k: "Reservations", v: "Optional, not compulsory" },
+        { k: "Cheapest fare", v: "Sparpreis, booked early" },
+        { k: "Not a tourist pass", v: "Deutschland-Ticket" }
+      ],
+      live: true,
+      topic: "rail",
+      caution: "medium",
+      title: "Is a German rail pass worth it in 2026?",
+      description: "Germany is the rare place a pass competes, because seat reservations are optional rather than compulsory. Advance Sparpreis fares usually still win.",
+      h1: "Do you need a rail pass in Germany?",
+      lede: "Germany is the one country in this part of Europe where a pass is cheap to actually use, which makes this a closer call than France or Spain. It still usually loses to a fare you booked early, and there is a separate ticket that confuses everybody.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-13",
+      answer: "Closer than you would expect, and for most trips still <b>no</b>. What makes Germany different is that <b>seat reservations are optional</b> on the fast <b>ICE</b> and Intercity trains rather than compulsory, so a pass here does not get taxed at every boarding the way it does in France, Spain or Italy. Reserving is about <b>5.50 euros</b> in second class if you want a guaranteed seat, and you can skip it. Against that, <b>Sparpreis</b> advance fares are cheap when booked well ahead and are usually the cheaper answer for a fixed itinerary. A pass earns its price if you are moving <b>most days</b>, taking more than one long leg some days, or traveling with <b>children</b>, who ride free on a pass. Separately: the <b>Deutschland-Ticket</b> is not a fast-train pass and <b>does not cover ICE</b>.",
+      sections: [
+        {
+          h: "Why a pass actually competes in Germany",
+          icon: "ticket",
+          key: { fig: "5.50 euros", tag: "Optional, not required", text: "You can board an ICE or Intercity train on a pass and sit in any unreserved seat. Reserving costs about 5.50 euros in second class and buys certainty on a busy Friday, but nothing forces you to pay it.", tone: "teal" },
+          p: [
+            "The single fact that changes the arithmetic here: on domestic <b>ICE, Intercity and EuroCity</b> services, a seat reservation is <b>optional</b>. You are entitled to board and take any seat that is not already reserved. That leaves Germany unusually cheap to cross on a pass by European standards, and it is the reason a German pass can pencil out on itineraries where a French or Spanish one cannot. If you want a guaranteed seat, reserving costs roughly <b>5.50 euros</b> in second class and a little more in first, per journey rather than per train, so a trip with a connection is one fee.",
+            "Reserve anyway on <b>Friday afternoons, Sunday evenings and around holidays</b>, when long-distance trains fill and standing for three hours is a real outcome. And check before you board in high summer, because a handful of busy <b>cross-border ICE routes</b>, the Amsterdam and Copenhagen corridors among them, switch to compulsory reservation for part of the season. Domestic services do not.",
+            "The other thing that tilts toward a pass is a family. <b>Children under 12 travel free</b> on an accompanying adult's Eurail or Interrail pass, which is a large discount that individual fares do not match, so a couple with two kids should run the numbers rather than assume tickets win."
+            // FUTURE UtilityBox MOUNT POINT.
+            // A rail-pass affiliate belongs here, at the end of this section, once one is
+            // vetted. Nothing renders now on purpose: for most readers the answer above is
+            // "do not buy a pass," and that has to read as a finished thought rather than a
+            // run-up to a product. Activating it is a data change in three parts, no
+            // restructuring: (1) add `railPass: true` to this spoke object, (2) add a
+            // railPass entry to the affiliate registry in src/data/links.js, (3) add the
+            // matching `railPassUrl` gate and <UtilityBox> block to Spoke.astro alongside
+            // the existing esim, insurance and carExcess blocks, which already carry the
+            // disclosure. Prop shape is the same: href, label, and the do-you-need-it prose
+            // passed as the slot.
+          ]
+        },
+        {
+          h: "Sparpreis, the fare that usually still wins",
+          icon: "coins",
+          key: { tag: "Book early, ride cheap", text: "The saver fare is the reason most Germany trips do not need a pass. It ties you to one departure and can be refunded only as operator credit before the day, which is the whole trade: you accept a fixed train and pay a lot less for it.", tone: "teal" },
+          p: [
+            "The national operator sells <b>Sparpreis</b> and <b>Super Sparpreis</b> fares, the saver tiers, on a quota basis for a specific long-distance departure. Sales open a long way out, up to about <b>twelve months</b> on domestic routes, and the cheapest allocations go first on the busy corridors like Berlin to Munich. Book a firm itinerary early and the fares land well below walk-up prices. Regional connections at either end of the journey are covered without pinning you to a particular local train.",
+            "Understand what you are giving up, because it is not nothing. A <b>Sparpreis</b> is valid on the departure you booked. Before the travel day it can usually be refunded as <b>operator credit rather than cash</b> with a fee taken off, and from the day of departure onward there are <b>no changes and no refunds</b>. Super Sparpreis is tighter again. If your plans are genuinely unsettled, that is precisely where a pass starts to look reasonable, and it is worth saying that flexibility is a real thing to buy rather than a marketing line.",
+            "One practical note for a US traveler: buy from the operator's own site or app rather than a reseller. The official channel sells every fare tier and adds no booking fee, and it runs in English."
+          ]
+        },
+        {
+          h: "The Deutschland-Ticket is a different product entirely",
+          icon: "calendar",
+          key: { fig: "63 euros", tag: "Regional only, no ICE", text: "It is a monthly subscription for local and regional transit nationwide, not a tourist rail pass, and it is not valid on the fast ICE and Intercity trains. It also renews automatically until you cancel it.", tone: "amber" },
+          p: [
+            "This is the most misunderstood ticket in Germany, so be clear about what it is. The <b>Deutschland-Ticket</b> costs <b>63 euros a month</b> as of January 2026, up from 58, and it covers <b>unlimited local and regional transport across the whole country</b>: regional trains, S-Bahn, trams, buses, city metros. For that money it is remarkable, and for a certain kind of trip, a slow month moving between smaller towns, or a stay based in one city using a lot of transit, it is the cheapest thing on this page by a distance.",
+            "Now the two things that catch visitors. It is <b>not valid on ICE, Intercity or EuroCity</b> trains, which are exactly the services you would use to cross the country quickly, so it does not answer the question this page is about. And it is sold as a <b>monthly subscription that renews automatically</b>, on a calendar-month basis, with cancellation possible up to around the tenth of the month. Buy it for a two-week trip and forget to cancel and you have bought a second month. Treat it as a subscription you must switch off, not a ticket you use up.",
+            "So the honest framing is three products, not two: advance <b>Sparpreis</b> fares for a fixed fast-train itinerary, a <b>pass</b> if you are moving constantly or cannot commit, and the <b>Deutschland-Ticket</b> if your trip is genuinely regional and slow. For the same call in other countries see <a href='/rail-passes'>where a rail pass earns its price</a>, and the <a href='/germany'>Germany money guide</a> for everything else."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is a German rail pass worth it?", a: "It is a real contender, unlike in France or Spain, because seat reservations are optional rather than compulsory so a pass is cheap to use. Advance Sparpreis fares still usually win for a fixed itinerary. A pass pulls ahead if you move most days, cannot commit to departures, or travel with children, who ride free on it." },
+        { q: "Do I need a seat reservation on an ICE train?", a: "Not normally. Domestic ICE and Intercity services let you board and take any unreserved seat. A reservation costs about 5.50 euros in second class and is worth it on Friday afternoons, Sunday evenings and holidays. A few cross-border routes make it compulsory in high summer." },
+        { q: "Does the Deutschland-Ticket cover ICE trains?", a: "No, and this is the most common misunderstanding about it. The Deutschland-Ticket covers local and regional transport only: regional trains, S-Bahn, trams, buses and metros. Fast ICE, Intercity and EuroCity trains are excluded, so it cannot replace a fast-train fare or a pass." },
+        { q: "How much is the Deutschland-Ticket in 2026?", a: "63 euros a month from January 2026, up from 58 euros in 2025 and 49 at launch in 2023. It is a subscription billed by calendar month that renews automatically, so cancel it before you leave, generally by around the tenth of the month." },
+        { q: "What is a Sparpreis ticket?", a: "The advance saver fare on German long-distance trains, sold in limited quantities for a specific departure. Booking early gets the cheapest tiers. In exchange it is tied to that train, refundable only as operator credit before the travel day, and not refundable at all once the day arrives." }
+      ],
+      sources: {
+        links: [
+          { label: "Deutsche Bahn: official FAQ confirming the Deutschland-Ticket price of 63 euros per month from 1 January 2026", url: "https://int.bahn.de/en/faq/deutschlandticket-cost-new", type: "official" },
+          { label: "Seat 61: train travel in Germany, on optional seat reservations, the reservation fee, and Sparpreis fare conditions", url: "https://www.seat61.com/train-travel-in-germany.htm", type: "guide" },
+          { label: "Deutsche Bahn: the Deutschland-Ticket product pages, coverage and subscription terms", url: "https://www.bahn.de/angebot/regio/deutschland-ticket", type: "official" }
+        ],
+        judgment: "The Deutschland-Ticket price and its exclusion of fast trains come from the operator directly, so both are firm, as is the optional-reservation rule. The reservation fee of about 5.50 euros in second class is consistently quoted by rail specialists and matches the operator's own optional-extra pricing. Which of the three products wins is route-dependent by nature, and calling Germany a genuine toss-up rather than a clear no is our own read: it rests on the absence of compulsory reservation fees, which is a published rule, and on Sparpreis quotas, which vary by route and date in ways no page can predict for you. The summer cross-border reservation exceptions change season to season, so check the schedule rather than trusting a date here. Checked Aug 2026."
+      }
     }
   ]
 };
