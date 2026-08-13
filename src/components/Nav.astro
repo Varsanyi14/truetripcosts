@@ -9,6 +9,47 @@ const CONTINENTS = ['Europe', 'Asia', 'Americas', 'Middle East', 'Africa'];
 const regionGroups = CONTINENTS
   .map(key => ({ key, capstone: regionMetaCompare[key] || null, items: clusters.filter(c => c.parent === key) }))
   .filter(g => g.capstone || g.items.length);
+
+// The topic side of the menu, grouped into three clusters so it reads as a trip
+// sequence (plan it, land in it, compare across it) instead of one flat list of 13.
+// Order inside each group is deliberate: the country hub leads, then the per-country
+// spokes traffic-first, then the cross-country comparison tools with the authority
+// page last. Labels and hrefs are unchanged from the flat list; grouping and order
+// are the only difference. Each group carries an id so the header can name the group
+// for assistive tech, matching how the region column labels its own groups visually.
+const topicGroups = [
+  {
+    id: 'gm-topics-before',
+    label: 'Before you go',
+    items: [
+      { href: '/rules', label: 'Money rules, country by country' },
+      { href: '/passports-and-visas', label: 'Passports and visas' },
+    ],
+  },
+  {
+    id: 'gm-topics-in-country',
+    label: 'In each country',
+    items: [
+      { href: '/cash-or-card', label: 'Cash or card' },
+      { href: '/tipping-compared', label: 'Tipping, country by country' },
+      { href: '/taxis-and-ride-hailing', label: 'Taxis and ride-hailing' },
+      { href: '/driving-and-car-rental', label: 'Driving and car rental' },
+      { href: '/staying-connected', label: 'Staying connected' },
+      { href: '/money-scams', label: 'Money scams' },
+    ],
+  },
+  {
+    id: 'gm-topics-compare',
+    label: 'Compare across countries',
+    items: [
+      { href: '/cost-comparison', label: 'Cost of a day, compared' },
+      { href: '/when-to-go', label: 'When to go, cheaper and pricier months' },
+      { href: '/rail-passes', label: 'Rail passes, worth it or not' },
+      { href: '/tourist-taxes', label: 'Tourist taxes and fees' },
+      { href: '/us-outbound-travelers', label: 'Where Americans travel, ranked' },
+    ],
+  },
+];
 ---
 <nav class="topnav">
   <div class="wrap navin">
@@ -32,20 +73,12 @@ const regionGroups = CONTINENTS
               ))}
             </div>
             <div class="gm-col gm-col-topics">
-              <p class="gm-zone">By topic</p>
-              <a class="gm-link" href="/rules">Money rules, country by country</a>
-              <a class="gm-link" href="/passports-and-visas">Passports and visas</a>
-              <a class="gm-link" href="/cost-comparison">Cost of a day, compared</a>
-              <a class="gm-link" href="/us-outbound-travelers">Where Americans travel, ranked</a>
-              <a class="gm-link" href="/tipping-compared">Tipping, country by country</a>
-              <a class="gm-link" href="/when-to-go">When to go, cheaper and pricier months</a>
-              <a class="gm-link" href="/rail-passes">Rail passes, worth it or not</a>
-              <a class="gm-link" href="/tourist-taxes">Tourist taxes and fees</a>
-              <a class="gm-link" href="/cash-or-card">Cash or card</a>
-              <a class="gm-link" href="/taxis-and-ride-hailing">Taxis and ride-hailing</a>
-              <a class="gm-link" href="/driving-and-car-rental">Driving and car rental</a>
-              <a class="gm-link" href="/staying-connected">Staying connected</a>
-              <a class="gm-link" href="/money-scams">Money scams</a>
+              {topicGroups.map(g => (
+                <div class="gm-tgroup" role="group" aria-labelledby={g.id}>
+                  <p class="gm-zone" id={g.id}>{g.label}</p>
+                  {g.items.map(t => <a class="gm-link" href={t.href}>{t.label}</a>)}
+                </div>
+              ))}
             </div>
           </div>
           <a class="gm-all" href="/countries"><span>All country guides</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -69,6 +102,8 @@ const regionGroups = CONTINENTS
     .gm-col-topics{border-left:1px solid var(--line);padding-left:18px}
     .gm-zone{margin:2px 0 10px 8px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--teal-deep)}
     .gm-col-topics .gm-zone{margin-left:8px}
+    .gm-tgroup{margin:0 0 13px}
+    .gm-tgroup:last-child{margin-bottom:0}
     .gm-group{margin:0 0 13px}
     .gm-group:last-child{margin-bottom:0}
     .gm-group-h{display:flex;align-items:center;gap:7px;margin:0 0 3px;padding:0 8px;font-family:var(--serif);font-weight:600;font-size:13.5px;color:var(--ink)}
