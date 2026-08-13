@@ -10,6 +10,7 @@ import { countries } from '../data/index.js';
 import { regionOf, REGIONS, REGION_PHRASE } from '../data/hubs.js';
 import fxFallback from '../data/fxFallback.js';
 import { seasons } from '../data/seasons.js';
+import { tipping as tippingRows } from '../data/tipping.js';
 import fs from 'node:fs';
 const { country: c } = Astro.props;
 // This country's own seasonality row, if we have one. A country with no row renders
@@ -82,6 +83,62 @@ const ext = (h, paid = true) => (typeof h === "string" && /^https?:\/\//i.test(h
 // country and needs nothing set per country. It is a reference link, not a paid
 // one, so it opens in a new tab with noopener only, no sponsored.
 const atmMap = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent("ATM in " + c.name);
+// ----- the tipping line in the calculator -----
+// Tips are the classic hidden cost, so the calculator names the local norm rather
+// than leaving it buried inside the daily spend figure.
+//
+// It reads the SAME desk row that /tipping-compared already publishes
+// (src/data/tipping.js), so there is exactly one source of truth for the call and
+// no second per-country field to drift out of sync. Tier, the restaurant-scoped
+// figure and the service-charge caveat are all the desk's own words, already
+// dated and confidence-rated in that file, so nothing here is a new judgment.
+//
+// Two hard rules hold this line honest. It never computes a dollar tip off total
+// spend, and it never touches the total: the daily spend styles already count
+// tips (see the on-the-ground line's own note), so an added figure would both
+// fabricate a rate and double count. Where the desk has no row for a country yet,
+// the line degrades to a pointer at that country's tipping guide and claims nothing.
+const TIP_CHARGE = {
+  always: 'A service charge is always on the bill here',
+  usually: 'A service charge is usually already on the bill',
+  often: 'A service charge is often already on the bill',
+  sometimes: 'A service charge is sometimes on the bill',
+  rarely: 'A service charge is rarely printed here',
+};
+function tipOnTopClause(row) {
+  const s = String(row.tipOnTop || '').toLowerCase();
+  if (s.startsWith('no,')) return 'where it is, that is the tip and nothing goes on top';
+  if (s.startsWith('yes')) return 'and a tip on top is still expected';
+  return 'and anything on top is optional';
+}
+// Restores the percent sign on a leading bare figure ("5 to 10" becomes "5 to 10%"),
+// the unit this column already carries site-wide. Anything that already states a
+// percent is left exactly as the desk wrote it, and a figure that does not open with
+// a number ("round up", "not expected") is never touched. It changes no number and
+// invents none.
+const tipPct = (s) => {
+  const v = String(s || '');
+  if (v.includes('%')) return v;              // the desk already stated the unit
+  return v.replace(/(\d+)(?!.*\d)/, '$1%');   // mark the last figure, e.g. "5 to 10"
+};
+const tipRow = tippingRows.find(r => r.slug === c.slug) || null;
+const tipCalc = tipRow ? {
+  none: tipRow.tierRank === 0,
+  tier: tipRow.tier,
+  label: tipRow.tierRank === 0 ? 'Tips' : 'Tips, on sit-down meals',
+  figure: tipRow.tierRank === 0 ? '$0' : tipPct(tipRow.restaurant),
+  note: tipRow.tierRank === 0
+    ? 'No tipping culture here, so this line is genuinely zero and the money stays in your pocket.'
+    : (TIP_CHARGE[tipRow.serviceCharge] || 'Read the bill first') + ', ' + tipOnTopClause(tipRow)
+      + '. Counted inside your on-the-ground spend above, so this is the norm to expect, not a fee on top of the total.',
+} : {
+  none: false,
+  tier: '',
+  label: 'Tips',
+  figure: 'See the guide',
+  note: 'The desk has not tiered the tipping norm for ' + c.name + ' yet, so the calculator does not put a figure on it.',
+};
+
 // Everything the honest-number module needs, handed to the client as inert JSON.
 // It asks the traveler nothing about their card, so no card data ships here: just
 // the exchange rate, the tourist-tax block, and the default foreign-fee assumption.
@@ -718,8 +775,30 @@ const kfState = (f) => {
     </div>
 
     <div class="hn-result">
-      <p class="ebig">In {c.name}, plan for about <span class="amt num" id="hnTotal">$0</span>.</p>
-      <p class="erange">Realistically somewhere between <span class="num" id="hnLo">$0</span> and <span class="num" id="hnHi">$0</span>.</p>
+      <!-- The three numbers a traveler actually holds, named. On the ground is the
+           hero: it is what you spend once you land, the figure this site exists to
+           get right. Getting there sits beside it honestly (empty by default, and
+           it says so rather than showing a bare $0 that reads as free travel), and
+           Total trip is simply the two added up. No new math: these are the same
+           figures render() already computes for the bar and the itemized lines. -->
+      <div class="hn-three">
+        <div class="hn3">
+          <span class="hn3-l">Getting there</span>
+          <span class="hn3-v num" id="hnAir">$0</span>
+          <span class="hn3-n" id="hnAirNote">&nbsp;</span>
+        </div>
+        <div class="hn3 hn3-hero">
+          <span class="hn3-l">On the ground</span>
+          <span class="hn3-v num" id="hnGround">$0</span>
+          <span class="hn3-n">what {c.name} costs once you land</span>
+        </div>
+        <div class="hn3">
+          <span class="hn3-l">Total trip</span>
+          <span class="hn3-v num" id="hnTotal">$0</span>
+          <span class="hn3-n" id="hnTripNote">&nbsp;</span>
+        </div>
+      </div>
+      <p class="erange">Total trip realistically somewhere between <span class="num" id="hnLo">$0</span> and <span class="num" id="hnHi">$0</span>.</p>
       <p class="escope" id="hnSub">&nbsp;</p>
 
       <!-- The shape of the trip: one stacked bar showing how the total splits across
@@ -751,6 +830,16 @@ const kfState = (f) => {
           <div class="hn-line" id="hnFlightLine" hidden><span class="hn-k">Flights (<span id="hnFlightTravLabel">2</span> travelers, round trip)<em id="hnFlightNote">paid in dollars at booking, so no foreign fee on this line</em></span><span class="hn-v num" id="hnFlightV">$0</span></div>
           <div class="hn-line" id="hnHotelLine"><span class="hn-k">Hotel (<span id="hnNightsLabel">7</span> nights)<em id="hnHotelNote">on the card, prepaid or paid at the desk</em></span><span class="hn-v num" id="hnRoomV">$0</span></div>
           <div class="hn-line"><span class="hn-k">On-the-ground spend<em>food, local transport, activities, tips</em></span><span class="hn-v num" id="hnSpend">$0</span></div>
+          <!-- Tips: named as the local norm, never as a computed dollar figure. The
+               figure shown is the desk's own restaurant-scoped number from
+               tipping.js, so it is scoped to sit-down meals and not applied to
+               spend it does not cover (street food, a tuk-tuk, a convenience
+               store). Advisory by design: it adds nothing to the total, because
+               the daily spend line above already counts tips. -->
+          <div class="hn-line hn-tip" id="hnTipLine">
+            <span class="hn-k">{tipCalc.label}<em>{tipCalc.tier && <b>{tipCalc.tier}. </b>}{tipCalc.note} <a href={'/' + c.slug + '/tipping'}>How tipping works here</a></em></span>
+            <span class="hn-v hn-tipv">{tipCalc.figure}</span>
+          </div>
         </div>
         <div class="esplit">
           <div class="ebar" aria-hidden="true"><div class="c1" id="cashBar" style="width:40%"></div><div class="c2" id="cardBar" style="width:60%"></div></div>
@@ -1359,6 +1448,22 @@ const kfState = (f) => {
         : 'your ' + usd(room) + ' room and the ' + usd(card) + ' card half of your spend, both on the statement weeks later';
       id('hnCashAmt').textContent = usd(cash);
       id('hnAtmNote').textContent = 'a few dollars per withdrawal, plus the roughly ' + fmtPct(fallbackFxPct) + ' most US banks add on foreign cash';
+
+      // ----- the three named numbers -----
+      // On the ground is everything the calculator sums for in-country, which is the
+      // total less the flight leg. Nothing new is computed here.
+      const ground = total - flightTotal;
+      roll(id('hnGround'), ground, usd, animate);
+      roll(id('hnAir'), flightTotal, usd, animate);
+      // A bare $0 on the flight line would read as free travel, so say what it means.
+      const airNote = id('hnAirNote');
+      if (airNote) airNote.textContent = (flightTotal > 0)
+        ? (estFlight ? 'a typical fare, edit it above' : 'your fare, as entered')
+        : 'not counted, add flights above';
+      const tripNote = id('hnTripNote');
+      if (tripNote) tripNote.textContent = (flightTotal > 0)
+        ? 'getting there plus on the ground'
+        : 'on the ground only, until flights go in';
 
       roll(id('hnTotal'), total, usd, animate);
       roll(id('hnLo'), bandLo, usd, animate);
