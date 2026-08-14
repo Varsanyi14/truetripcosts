@@ -734,6 +734,83 @@ export default {
         ],
         judgment: "The two-system structure, the rental device requirement and the ex-SCUT roads going toll-free are all documented. Toll tariffs are revised most years and rental service fees vary by company, so those figures are given as approximations, and the payment window after an unregistered trip is reported inconsistently, so we describe it as a matter of days rather than a fixed count. Checked July 2026."
       }
+    },
+    {
+      slug: "rail",
+      glance: [
+        { k: "Pass?", v: "No, the fares are too low" },
+        { k: "Cheapest", v: "Promo, up to 65 percent off" },
+        { k: "Book at", v: "cp.pt, from 60 days out" },
+        { k: "Watch for", v: "A pass pays a seat supplement" }
+      ],
+      live: true,
+      topic: "rail",
+      caution: "medium",
+      title: "Do you need a rail pass in Portugal? No",
+      description: "Portuguese fares are among the lowest in Western Europe. Booked ahead, Lisbon to Porto can cost about ten euros, which no pass can beat.",
+      h1: "Do you need a rail pass in Portugal?",
+      lede: "Some countries need a careful comparison. This one does not. Portuguese long-distance fares booked in advance are so low that the pass conversation ends before it starts, and the only real skill is booking on time.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-13",
+      answer: "<b>No</b>, and this is the clearest case on the site. The national operator sells <b>Promo</b> fares at up to <b>65 percent</b> off, opening <b>60 days</b> before departure, and its own price list puts Lisbon to Porto on an <b>Intercidades</b> train at around <b>10.50 euros</b>, with Lisbon to Faro on the fast <b>Alfa Pendular</b> near 9 euros. Walk up on the day and the same Lisbon to Porto seat is closer to <b>28 euros</b> in second class, so booking ahead is the whole game. A rail pass fails twice here: those fares are lower than the per-day cost of any pass, and a passholder still owes a <b>reservation supplement</b> on Alfa Pendular and Intercidades trains, which are the only ones worth taking between cities.",
+      sections: [
+        {
+          h: "The fares are the entire argument",
+          icon: "euro",
+          key: { fig: "10.50 euros", tag: "Lisbon to Porto, booked early", text: "That is the operator's own published Promo price on an Intercidades train, not an estimate. Against a walk-up fare near 28 euros in second class, the discount for deciding early is most of the ticket.", tone: "teal" },
+          p: [
+            "The national operator, <b>CP</b>, publishes its <b>Promo</b> discounts openly, and the numbers do the arguing. From Lisbon, second-class <b>Intercidades</b> Promo fares run about <b>8.50 euros to Coimbra</b>, <b>10.50 to Porto</b> and <b>11 euros to Braga or Guarda</b>. On the faster <b>Alfa Pendular</b>, the tilting train that is the flagship of the network, Lisbon to <b>Faro</b> in Turistica class comes in around <b>9 euros</b>. Those are operator prices for crossing an entire country.",
+            "The window is the thing to get right. Promo tickets go on sale about <b>60 days</b> ahead and stop being available roughly <b>5 days</b> before departure, they exist in limited numbers, and they cannot be exchanged or refunded. Fares rose by a little over 2 percent at the start of 2026, which tells you how gently this network is priced. Miss the window and Lisbon to Porto is nearer <b>28 euros</b> on Intercidades, about <b>35.70</b> in Alfa Pendular Turistica and <b>49.90</b> in the upgraded Conforto class. Even the worst of those is not pass territory.",
+            "Summer and weekends are the exception to the relaxed feel. Friday and Sunday departures toward Porto and the Algarve fill weeks ahead in high season, so on those days booking early is about getting a seat rather than getting a discount."
+            // FUTURE UtilityBox MOUNT POINT.
+            // A rail-pass affiliate belongs here, at the end of this section, once one is
+            // vetted. Nothing renders now on purpose: for most readers the answer above is
+            // "do not buy a pass," and that has to read as a finished thought rather than a
+            // run-up to a product. Activating it is a data change in three parts, no
+            // restructuring: (1) add `railPass: true` to this spoke object, (2) add a
+            // railPass entry to the affiliate registry in src/data/links.js, (3) add the
+            // matching `railPassUrl` gate and <UtilityBox> block to Spoke.astro alongside
+            // the existing esim, insurance and carExcess blocks, which already carry the
+            // disclosure. Prop shape is the same: href, label, and the do-you-need-it prose
+            // passed as the slot.
+          ]
+        },
+        {
+          h: "Why a pass loses twice over",
+          icon: "ticket",
+          key: { tag: "You pay to sit down anyway", text: "A pass is accepted on most CP services, but the two fast intercity types require a paid seat supplement on top. So the pass covers the part that was already cheap and charges you for the part you actually wanted.", tone: "amber" },
+          p: [
+            "European passes are valid on most of the CP network, which sounds like good news until you look at which trains carry a condition. <b>Alfa Pendular</b> and <b>Intercidades</b>, the only two types you would sensibly use to travel between cities, require a <b>seat reservation supplement</b> that a passholder pays separately. Regional services need nothing extra, but they are also the services whose fares were trivial to begin with. The pass therefore covers the cheap half of the network for free and adds a charge to the expensive half.",
+            "There is a structural reason the supplement exists, and it is a nice feature rather than a trick. On the fast trains <b>every ticket is a named, numbered seat</b>, printed with your car and seat. There is no scramble for space and no boarding queue: you find your car on the platform indicator and sit down. That is why a pass cannot simply wave you aboard, and it is also why the trains are pleasant.",
+            "Put the two halves together and the total for a pass plus supplements comfortably exceeds a handful of Promo tickets, on a network where a cross-country fare is roughly the price of two coffees at home. There is no itinerary we can construct where the pass wins, which is not something we can say about most countries."
+          ]
+        },
+        {
+          h: "Which train, which station, and the slow way",
+          icon: "tag",
+          key: { tag: "Regional is cheaper still", text: "For short and medium hops the slower Regional and InterRegional trains cost noticeably less than the fast services on the same route, need no advance booking, and are frequently the right answer rather than a compromise.", tone: "teal" },
+          p: [
+            "Four tiers, and the names tell you the price. <b>Alfa Pendular</b> is the fastest and dearest, with <b>Turistica</b> as standard class and <b>Conforto</b> as the upgrade. <b>Intercidades</b> is a little slower and a little cheaper, and on a three-hour run the difference between them is around half an hour, which is rarely worth the gap. Below those, <b>InterRegional</b> and <b>Regional</b> services are cheaper again at full fare and get no advance discount because they do not need one, and <b>Urbanos</b> are the suburban lines around Lisbon and Porto. On a route like Lisbon to Coimbra the Regional full fare undercuts the Alfa Pendular by most of ten euros for an hour more of your day.",
+            "Stations catch people out, so know your endpoints. Lisbon's long-distance trains use <b>Santa Apolonia</b> and <b>Oriente</b> rather than one central hub. In Porto, intercity services arrive at <b>Campanha</b> on the edge of the city, and a short local connection carries you the last few minutes into <b>Sao Bento</b>, which is the beautiful one in the centre. Budget that hop rather than being surprised by it.",
+            "One thing to be aware of without relying on it: Portugal sells a low-cost flat-rate monthly rail product aimed at regular travellers, and it covers regional and urban trains rather than the fast intercity services, so it sits outside what we are weighing here. Terms and eligibility are worth checking directly if you are staying for a season rather than a holiday. For the same judgment applied elsewhere, see <a href='/rail-passes'>our verdicts on rail passes by country</a>, and the <a href='/portugal'>Portugal money guide</a> for everything else."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is a rail pass worth it in Portugal?", a: "No. Advance Promo fares reach 65 percent off, putting Lisbon to Porto near ten euros, and a passholder still owes a seat supplement on the Alfa Pendular and Intercidades trains that are the only sensible way to travel between cities. There is no itinerary where the pass wins." },
+        { q: "How much is the train from Lisbon to Porto?", a: "Booked early on a Promo fare, around 10.50 euros in Intercidades second class. Walk up on the day and it is nearer 28 euros in Intercidades second class, about 35.70 in Alfa Pendular Turistica, or 49.90 in Conforto. The discount for booking ahead is most of the ticket." },
+        { q: "How far in advance can I book Portuguese train tickets?", a: "Promo fares open about 60 days before departure and are withdrawn roughly 5 days before. They are limited in number and cannot be exchanged or refunded. On summer Fridays and Sundays toward Porto and the Algarve, booking early is also how you get a seat at all." },
+        { q: "What is the difference between Alfa Pendular and Intercidades?", a: "Alfa Pendular is the fastest and most expensive service, with Turistica as standard and Conforto as the upgrade. Intercidades is slightly slower and cheaper. On Lisbon to Porto the gap is roughly half an hour, so the cheaper train is usually the better value." },
+        { q: "Do I get a reserved seat on Portuguese trains?", a: "On the fast services, yes. Every Alfa Pendular and Intercidades ticket is a named seat with a car and seat number printed on it, so there is no scramble for space. That is also why a rail pass has to pay a supplement to put you in one." }
+      ],
+      sources: {
+        links: [
+          { label: "CP Comboios de Portugal: the official Promo ticket page, listing the discount and the published Promo fares from Lisbon by train type", url: "https://www.cp.pt/info/en/w/promo-ticket", type: "official" },
+          { label: "Europe Trains Guide: Portuguese train types, the advance-purchase window, and Regional versus intercity full fares on the same routes", url: "https://europetrainsguide.com/Countries/Portugal/Portugal-CP.html", type: "guide" },
+          { label: "The Portugal Brief: the CP network in 2026, including that passes are valid on most services but the fast trains require a reservation supplement", url: "https://theportugalbrief.pt/getting-around-portugal-by-train-a-complete-guide-to-cp-services-routes-tickets-and-tips-for-2026/", type: "guide" }
+        ],
+        judgment: "The Promo fares here come from the operator's own published price list, which makes this the best-sourced verdict in the rail section and the reason it carries high confidence. Walk-up fares for Lisbon to Porto are quoted from reporting of the January 2026 revision rather than read off the operator's site, so treat them as close rather than exact. The seat supplement charged to passholders on the fast trains is documented but not published as a single figure we could verify, so we describe it without an amount rather than guess. The flat-rate monthly rail product is mentioned deliberately vaguely: it exists and it excludes the fast intercity trains, but we could not confirm its terms for a short-term visitor, so we point you to check rather than describe it as available. Fares are revised early most years. Checked Aug 2026."
+      }
     }
   ]
 };

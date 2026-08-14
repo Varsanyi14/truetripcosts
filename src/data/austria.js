@@ -454,6 +454,84 @@ export default {
         ],
         judgment: "Austria applies the shared EU pet-entry framework, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The local registration and any breed rules vary, so we point you to the official pages and dated this July 2026."
       }
+    },
+    {
+      slug: "rail",
+      glance: [
+        { k: "Pass?", v: "Only if you cannot plan" },
+        { k: "Reservations", v: "Optional on domestic trains" },
+        { k: "Cheapest fare", v: "Sparschiene, from about 10" },
+        { k: "Second operator", v: "Westbahn, Vienna to Salzburg" }
+      ],
+      live: true,
+      topic: "rail",
+      caution: "medium",
+      title: "Do you need a rail pass in Austria?",
+      description: "A pass is cheap to use here, since reservations are optional, but saver fares from about ten euros undercut it on any trip you can plan in advance.",
+      h1: "Do you need a rail pass in Austria?",
+      lede: "Austria is a small country with unusually cheap advance fares and unusually relaxed rules about boarding. Both of those matter, and they pull in opposite directions, which is why this one is closer than it looks.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-13",
+      answer: "Probably <b>not</b>, though the reasoning is different from most of Europe. Austria is friendly to passes in two ways: <b>reservations are optional</b> on domestic long-distance trains, so nobody taxes you at the gate, and an Austria pass is unusually valid on <b>Westbahn</b>, the private operator competing on the Vienna to Salzburg run. That is the opposite of Italy or Spain, where the competitor is excluded. What sinks it is the fare table. <b>Sparschiene</b> saver tickets start around <b>10 euros</b> and are released months ahead, and the country is compact enough that even full-price legs stay modest. So a pass loses on a trip you can plan, and only earns its keep if your dates are genuinely loose. For a longer stay, the <b>Vorteilscard</b> at about 66 euros is the better instrument.",
+      sections: [
+        {
+          h: "Two reasons a pass is not absurd here",
+          icon: "ticket",
+          key: { tag: "Nobody charges you to board", text: "On domestic Railjet, EuroCity and Intercity services a reservation is a convenience you may buy, not a fee you must pay. That removes the per-leg surcharge that ruins passes in France, Spain and Italy.", tone: "teal" },
+          p: [
+            "Start with what Austria does not do to you. On domestic day trains, the fast <b>Railjet</b> and the EuroCity and Intercity services, a <b>seat reservation is optional</b>. Turn up, board, sit in anything unreserved. You can pay a small amount to lock a seat and it is worth doing on a Friday evening or leaving Vienna at the start of a holiday, but no rule forces it. Compare that with a French TGV, where a passholder pays every single time, and Austria immediately looks like a better country to hold a pass in.",
+            "The second point is genuinely unusual. <b>Westbahn</b> is a private company running its own trains against the national operator between Vienna, Linz and Salzburg, and its walk-up fares often undercut the state railway by ten or twenty euros. Elsewhere on this site a competing operator is the reason a pass fails, because passes exclude them. Here the Austria pass is <b>valid on Westbahn</b> as well as on the national network, so buying one does not shut you out of the cheaper option. Worth knowing separately: neither company sells the other's tickets, so if you are buying rather than passing, check both sites for that corridor. Westbahn will also sell you a ticket on board at no penalty, which is close to extinct in Europe.",
+            "Where a pass does still leak is at the edges. Some independent mountain and tourist lines sit outside it, the Zillertalbahn and the Achenseebahn among them, so a day trip built around one of those is paid for separately whatever you are holding."
+            // FUTURE UtilityBox MOUNT POINT.
+            // A rail-pass affiliate belongs here, at the end of this section, once one is
+            // vetted. Nothing renders now on purpose: for most readers the answer above is
+            // "do not buy a pass," and that has to read as a finished thought rather than a
+            // run-up to a product. Activating it is a data change in three parts, no
+            // restructuring: (1) add `railPass: true` to this spoke object, (2) add a
+            // railPass entry to the affiliate registry in src/data/links.js, (3) add the
+            // matching `railPassUrl` gate and <UtilityBox> block to Spoke.astro alongside
+            // the existing esim, insurance and carExcess blocks, which already carry the
+            // disclosure. Prop shape is the same: href, label, and the do-you-need-it prose
+            // passed as the slot.
+          ]
+        },
+        {
+          h: "The fare that ends the argument",
+          icon: "euro",
+          key: { fig: "About 10 euros", tag: "Where saver fares start", text: "Sparschiene tickets are released months ahead in limited numbers and tie you to one departure. On a country this size they leave a pass with almost nothing to beat, which is why planning ahead matters more here than choosing a product.", tone: "teal" },
+          p: [
+            "<b>Sparschiene</b> is the saver fare, and it is the reason this page ends where it does. Allocations open a long way out, commonly three to six months, and the cheapest tier starts near <b>10 euros</b> for a long domestic leg. Vienna to Salzburg or Vienna to Graz booked early costs less than lunch. The catch is the usual one: the ticket is tied to <b>one specific departure</b> and is generally neither changeable nor refundable, so it rewards a decision and punishes a maybe.",
+            "Scale matters too. Austria is compact, and even a <b>Standardticket</b>, the flexible full fare valid on any train that day, does not reach the numbers that make a pass tempting in Switzerland. Add those two facts together and the honest conclusion is that a pass here is not being compared against expensive tickets, it is being compared against cheap ones. It loses.",
+            "Two group and family notes that beat any pass on the right trip. Children under six travel free without a ticket, which is more generous than most neighbors. And the <b>Einfach-Raus-Ticket</b> is a single day ticket covering two to five people travelling together on regional trains for roughly the price of one long-distance fare, which for a slow day in the countryside is the cheapest thing available."
+          ]
+        },
+        {
+          h: "Two Austrian products that are not tourist passes",
+          icon: "tag",
+          key: { tag: "The Klimaticket is for residents", text: "It covers almost everything that moves in Austria, including intercity trains and city transit, which makes it sound perfect. Then you see the price: it is an annual ticket costing over a thousand euros, aimed at people who live there.", tone: "amber" },
+          p: [
+            "The <b>Klimaticket</b> gets recommended to visitors constantly and it is the wrong product for almost all of them. What it covers is genuinely sweeping: national operator trains including the fast ones, Westbahn, regional services, and the trams, buses and metros of all nine provinces on one code. But it is sold as an <b>annual ticket priced above a thousand euros</b>, and the arithmetic only works for someone taking well over a dozen long-distance trips a year. That is a resident's commuting product wearing a tourist's clothes. Provincial versions covering a single region cost less and are still annual.",
+            "The one Austrian card that can pay for a visitor is the <b>Vorteilscard</b>, a discount card rather than a pass. The standard version runs about <b>66 euros</b> for a year and takes <b>50 percent</b> off standard single tickets, with reduced versions for seniors and younger travellers costing considerably less, and it extends to most private Austrian railways too. Two or three long journeys at full fare and it has paid for itself. One caveat we could not pin down cleanly: how it interacts with an already-discounted <b>Sparschiene</b> fare is described inconsistently, with some sources saying the two do not stack at all and others describing a smaller reduction, so do not assume you will get half off the cheapest tickets as well.",
+            "So the shape of the decision is three-way. Book <b>Sparschiene</b> if you know your dates. Buy a <b>Vorteilscard</b> if you are staying a while, travelling a lot at full fare, or qualify for a reduced version. Consider a pass only if your itinerary is genuinely undecided. For how this call lands elsewhere, see <a href='/rail-passes'>our country-by-country read on rail passes</a>, and the <a href='/austria'>Austria money guide</a> for the rest."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is an Austria rail pass worth it?", a: "Usually not, though it is a closer call than in most of Europe. Reservations are optional on domestic long-distance trains and the pass covers the private Westbahn services, so it is cheap and flexible to use. Saver fares from around ten euros simply undercut it on any trip you can book ahead." },
+        { q: "Do I need a seat reservation on a Railjet?", a: "No. On domestic Railjet, EuroCity and Intercity trains a reservation is optional, so you can board and take any unreserved seat. Paying the small fee is sensible on Friday evenings, Sunday returns and the start of holiday periods, when long-distance trains fill up." },
+        { q: "Should a tourist buy a Klimaticket?", a: "Almost never. It covers nearly all Austrian public transport including intercity trains, but it is an annual ticket costing over a thousand euros and is designed for residents. It only makes sense above roughly fifteen long-distance trips a year, which no holiday reaches." },
+        { q: "What is a Sparschiene ticket?", a: "The saver fare on Austrian long-distance trains, released months ahead in limited numbers and starting around ten euros. It is tied to one specific departure and is generally not refundable or changeable, so it suits firm plans rather than flexible ones." },
+        { q: "Is Westbahn cheaper than the national railway?", a: "Often, on the Vienna to Linz to Salzburg corridor where it competes, by roughly ten to twenty euros against walk-up fares. Neither company sells the other's tickets, so check both for that route. Westbahn also sells tickets on board without a penalty." },
+        { q: "Is the Vorteilscard worth it for a visitor?", a: "It can be. About 66 euros a year for 50 percent off standard single tickets, less for seniors and younger travellers, and valid on most private Austrian railways too. Two or three full-fare long journeys cover the cost. How it combines with already-cheap saver fares is described inconsistently, so check before relying on it." }
+      ],
+      sources: {
+        links: [
+          { label: "OBB: the official Vorteilscard page, confirming the 50 percent discount on standard single tickets and its validity on private railways", url: "https://www.oebb.at/en/tickets-kundenkarten/kundenkarten/vorteilscard", type: "official" },
+          { label: "ShowMeTheJourney: Austrian tickets and rail passes, on Westbahn coverage, the operators that sell which tickets, and the independent lines outside a pass", url: "https://showmethejourney.com/train-ticket-guides/austria-tickets-and-rail-passes/", type: "guide" },
+          { label: "Rick Steves: Austria rail passes and point-to-point tips, including Westbahn fares and reduced Vorteilscard versions", url: "https://www.ricksteves.com/travel-tips/transportation/trains/austria-rail-passes", type: "guide" }
+        ],
+        judgment: "The optional-reservation rule, the Vorteilscard terms and the pass validity on Westbahn are all published and firm. Our confidence in the verdict is rated medium rather than high for one specific reason: we could not verify current Austria pass pricing from a source we trust, so the tier rests on the structure of the fares rather than on arithmetic we have done. Read it as our judgment that cheap saver fares beat a pass on a planned trip in a small country, not as a calculation. Sparschiene starting prices are widely quoted from around ten euros and move by route, date and how early you look. Klimaticket pricing was reported differently across sources we checked, with the figures separated by a few hundred euros, so we describe it as above a thousand euros a year rather than pick one, which is enough to make the point that it is not a visitor's product. How the Vorteilscard interacts with saver fares is genuinely contested and we say so on the page. Checked Aug 2026."
+      }
     }
   ]
 };

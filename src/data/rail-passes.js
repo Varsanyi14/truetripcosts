@@ -161,4 +161,26 @@ export const railPasses = [
       'Short distances, low fares, no domestic seat reservations and turn-up-and-go frequency leave a pass with no inefficiency to fix.',
     railSpoke: '/netherlands/rail',
   },
+  {
+    country: 'Austria',
+    slug: 'austria',
+    region: 'Europe',
+    tier: 'depends',
+    passType: 'Austria pass, or the Vorteilscard discount card',
+    confidence: 'medium',
+    reason:
+      'Reservations are optional and the pass even covers the private competitor, but saver fares from about ten euros undercut it on any trip you can plan.',
+    railSpoke: '/austria/rail',
+  },
+  {
+    country: 'Portugal',
+    slug: 'portugal',
+    region: 'Europe',
+    tier: 'point-to-point',
+    passType: 'None worth buying',
+    confidence: 'high',
+    reason:
+      'The operator publishes advance fares around ten euros across the country, and a passholder still owes a seat supplement on the only fast trains worth taking.',
+    railSpoke: '/portugal/rail',
+  },
 ];
