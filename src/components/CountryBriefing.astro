@@ -6,6 +6,7 @@ import GutPunch from './GutPunch.astro';
 import BreadthReveal from './BreadthReveal.astro';
 import ArrivalClosingThesis from './ArrivalClosingThesis.astro';
 import TTCedCard from './TTCedCard.astro';
+import CalcResult from './CalcResult.astro';
 import EESNotice from './EESNotice.astro';
 import AdvisoryNotice from './AdvisoryNotice.astro';
 import NewTab from './NewTab.astro';
@@ -646,7 +647,7 @@ const kfState = (f) => {
 )}
 
 {c.taxfree && (
-  <section>
+  <section id="taxes-and-refunds">
     <p class="lab">{c.taxfree.label || "Tax-free shopping"}</p>
     <h2>{c.taxfree.heading}</h2>
     <p class="sub" set:html={c.taxfree.text}></p>
@@ -797,123 +798,7 @@ const kfState = (f) => {
       </div>
     </div>
 
-    <div class="hn-result">
-      <!-- The three numbers a traveler actually holds, named. On the ground is the
-           hero: it is what you spend once you land, the figure this site exists to
-           get right. Getting there sits beside it honestly (empty by default, and
-           it says so rather than showing a bare $0 that reads as free travel), and
-           Total trip is simply the two added up. No new math: these are the same
-           figures render() already computes for the bar and the itemized lines. -->
-      <div class="hn-three">
-        <div class="hn3">
-          <span class="hn3-l">Getting there</span>
-          <span class="hn3-v num" id="hnAir">$0</span>
-          <span class="hn3-n" id="hnAirNote">&nbsp;</span>
-        </div>
-        <div class="hn3 hn3-hero">
-          <span class="hn3-l">On the ground</span>
-          <span class="hn3-v num" id="hnGround">$0</span>
-          <span class="hn3-n">what {c.name} costs once you land</span>
-        </div>
-        <div class="hn3">
-          <span class="hn3-l">Total trip</span>
-          <span class="hn3-v num" id="hnTotal">$0</span>
-          <span class="hn3-n" id="hnTripNote">&nbsp;</span>
-        </div>
-      </div>
-      <p class="erange">Total trip realistically somewhere between <span class="num" id="hnLo">$0</span> and <span class="num" id="hnHi">$0</span>.</p>
-      <p class="escope" id="hnSub">&nbsp;</p>
-
-      <!-- The shape of the trip: one stacked bar showing how the total splits across
-           the five components. Pure CSS widths driven by render(), no chart library.
-           The bar is decorative (the itemized groups below carry the real figures),
-           so it is aria-hidden; the legend carries each component's share. -->
-      <div class="hn-shape">
-        <div class="hs-bar" aria-hidden="true">
-          <div class="hs-seg flt" id="hsFlt"></div>
-          <div class="hs-seg room" id="hsRoom"></div>
-          <div class="hs-seg spend" id="hsSpend"></div>
-          <div class="hs-seg cfee" id="hsCfee"></div>
-          <div class="hs-seg afee" id="hsAfee"></div>
-          <div class="hs-seg tax" id="hsTax"></div>
-        </div>
-        <div class="hs-legend">
-          <span class="hs-l flt" id="hlFlt" hidden><span class="mdot"></span>flights <b>0%</b></span>
-          <span class="hs-l room" id="hlRoom"><span class="mdot"></span>hotel <b>0%</b></span>
-          <span class="hs-l spend" id="hlSpend"><span class="mdot"></span>on the ground <b>0%</b></span>
-          <span class="hs-l cfee" id="hlCfee"><span class="mdot"></span>card fee <b>0%</b></span>
-          <span class="hs-l afee" id="hlAfee"><span class="mdot"></span>cash fees <b>0%</b></span>
-          <span class="hs-l tax" id="hlTax"><span class="mdot"></span>tourist tax <b>0%</b></span>
-        </div>
-      </div>
-
-      <div class="hn-group">
-        <div class="hn-ghead"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h13a1 1 0 0 1 1 1v3"/><path d="M3 7v10a2 2 0 0 0 2 2h14a1 1 0 0 0 1-1v-3"/><path d="M21 12h-4a2 2 0 0 0 0 4h4z"/></svg><span>What you'll spend</span></div>
-        <div class="hn-rows">
-          <div class="hn-line" id="hnFlightLine" hidden><span class="hn-k">Flights (<span id="hnFlightTravLabel">2</span> travelers, round trip)<em id="hnFlightNote">paid in dollars at booking, so no foreign fee on this line</em></span><span class="hn-v num" id="hnFlightV">$0</span></div>
-          <div class="hn-line" id="hnHotelLine"><span class="hn-k">Hotel (<span id="hnNightsLabel">7</span> nights)<em id="hnHotelNote">on the card, prepaid or paid at the desk</em></span><span class="hn-v num" id="hnRoomV">$0</span></div>
-          <div class="hn-line"><span class="hn-k">On-the-ground spend<em>food, local transport, activities, tips</em></span><span class="hn-v num" id="hnSpend">$0</span></div>
-          <!-- Tips: named as the local norm, never as a computed dollar figure. The
-               figure shown is the desk's own restaurant-scoped number from
-               tipping.js, so it is scoped to sit-down meals and not applied to
-               spend it does not cover (street food, a tuk-tuk, a convenience
-               store). Advisory by design: it adds nothing to the total, because
-               the daily spend line above already counts tips. -->
-          <div class="hn-line hn-tip" id="hnTipLine">
-            <span class="hn-k">{tipCalc.label}<em>{tipCalc.tier && <b>{tipCalc.tier}. </b>}{tipCalc.note} <a href={'/' + c.slug + '/tipping'}>How tipping works here</a></em></span>
-            <span class="hn-v hn-tipv">{tipCalc.figure}</span>
-          </div>
-        </div>
-        <div class="esplit">
-          <div class="ebar" aria-hidden="true"><div class="c1" id="cashBar" style="width:40%"></div><div class="c2" id="cardBar" style="width:60%"></div></div>
-          <div class="elegend"><span class="el cash"><span class="mdot"></span>cash <b id="cashUsd">$0</b></span><span class="el card"><span class="mdot"></span>card <b id="cardUsd">$0</b></span></div>
-          <p class="ehint" style="margin-top:8px">Whether at an ATM or a card terminal in a shop or restaurant, always choose to be charged in the local currency, not dollars. Paying in dollars (called dynamic currency conversion) lets the machine set its own, worse, exchange rate on top of any fee.</p>
-        </div>
-      </div>
-
-      <div class="hn-group hn-fees">
-        <div class="hn-ghead"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg><span>Fees most cards add</span></div>
-        <div class="hn-rows">
-          <div class="hn-line hn-fee" id="hnCardFeeLine"><span class="hn-k">Card fee, about <span id="hnFeeQ">3%</span> on the <b id="hnCardBase">$0</b> you put on the card<em id="hnCardFeeNote">your room and the card half of your spend, both on the statement weeks later</em></span><span class="hn-v num" id="hnCardFee">$0</span></div>
-          <div class="hn-line hn-fee" id="hnAtmFeeLine"><span class="hn-k">ATM and bank fees on the <b id="hnCashAmt">$0</b> cash you pull<em id="hnAtmNote">a few dollars per withdrawal, plus the roughly 3% most US banks add on foreign cash</em></span><span class="hn-v num" id="hnAtmFee">$0</span></div>
-        </div>
-        <label class="hn-toggle hn-lever" id="hnNoFeeWrap">
-          <input type="checkbox" id="hnNoFee" />
-          <span class="hn-switch" aria-hidden="true"></span>
-          <span class="hn-toggle-l">See it with a no-foreign-fee card</span>
-        </label>
-        <p class="hn-feenote" id="hnFeeNote">&nbsp;</p>
-      </div>
-
-      <div class="hn-group">
-        <div class="hn-ghead"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg><span>Local taxes</span></div>
-        <div class="hn-rows">
-          <div class="hn-line" id="hnTaxLine"><span class="hn-k"><span id="hnTaxLabel">Tourist tax</span><em>collected at the desk even on a prepaid room</em></span><span class="hn-v num" id="hnTax">$0</span></div>
-        </div>
-        <p class="hn-note" id="hnTaxNote" hidden></p>
-      </div>
-
-      <div class="hn-cashnote"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg><p id="hnHint">&nbsp;</p></div>
-      <a class="cta" href="#calcNoFee">See the card I'd bring <span class="arw">&#8594;</span></a>
-      <p class="hn-fine">Rough guide, not a quote. The percentage here is a blended stand-in for a typical US card's foreign fee, not your exact rate. The real number moves with the card you carry: one no-foreign-fee card can cover both sides, while a plain rewards credit card only removes the fee on what you buy, and cash still costs a little unless that card also waives ATM and foreign-cash fees. A debit card, or accepting the "pay in dollars" (dynamic currency conversion) offer at a till or ATM, can push it higher. Rates checked Jun 2026 and rounded.</p>
-
-      <details class="hna">
-        <summary class="hna-sum"><span>How this estimate is built</span><svg class="hna-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
-        <div class="hna-body">
-          <p class="hna-intro">These are the assumptions behind the number. Change the room price, nights, travelers, or travel style above, and every line here moves with them.</p>
-          <dl class="hna-list">
-            <div class="hna-item"><dt>Hotel</dt><dd id="hnaRoom">&nbsp;</dd></div>
-            <div class="hna-item"><dt>Daily spending</dt><dd id="hnaSpend">&nbsp;</dd></div>
-            <div class="hna-item"><dt>Flights</dt><dd id="hnaFlight">&nbsp;</dd></div>
-            <div class="hna-item"><dt>Cash vs card</dt><dd id="hnaSplit">&nbsp;</dd></div>
-            <div class="hna-item"><dt>ATM withdrawals</dt><dd id="hnaAtm">&nbsp;</dd></div>
-            <div class="hna-item"><dt>Foreign fee</dt><dd id="hnaFee">&nbsp;</dd></div>
-            <div class="hna-item"><dt>The range</dt><dd id="hnaRange">&nbsp;</dd></div>
-            <div class="hna-item"><dt>Tourist tax</dt><dd id="hnaTax">&nbsp;</dd></div>
-          </dl>
-        </div>
-      </details>
-    </div>
+    <CalcResult country={c} tipCalc={tipCalc} />
   </div>
 
   <noscript>
@@ -1611,8 +1496,12 @@ const kfState = (f) => {
      never got it, so every "Check yours" and "Estimate your daily costs" link in the guides
      and the country data files has been landing clipped. Same figure, so all the jumps on
      the page now agree. #hn-app is the target the door's TTC it button prefers, because
-     that is where the controls are. */
-  #true-cost,#calc,#hn-app,#everything-we-checked,#ttcCard{scroll-margin-top:74px}
+     that is where the controls are.
+     Only elements rendered BY THIS COMPONENT belong here. Astro appends this component's
+     scope id to each selector, so a rule written here for a child component's element
+     (the breadth reveal, the TTC-ed card) silently matches nothing. Those two carry the
+     same rule inside their own style blocks instead. */
+  #true-cost,#calc,#hn-app,#taxes-and-refunds,#insurance,#when-to-go{scroll-margin-top:74px}
   .rel{margin:38px 0 8px}
   .rel-h{font-family:var(--serif);font-weight:500;font-size:clamp(20px,3vw,26px);letter-spacing:-.01em;margin:0 0 6px}
   .rel-sub{font-size:14.5px;color:var(--muted);line-height:1.5;margin:0 0 16px;max-width:640px}

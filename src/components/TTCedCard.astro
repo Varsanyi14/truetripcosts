@@ -264,7 +264,11 @@ const tipLine = (tipRow && tipRow.tierRank === 0)
   /* A real card: border, shadow, its own ground. It is meant to survive being cropped out
      of the page as a screenshot, so it carries its own headline, stamp and attribution and
      depends on nothing above it. */
-  .ttc{margin:22px 0 0;padding:22px 24px;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:var(--radius);box-shadow:var(--shadow)}
+  /* Clears the sticky nav on an in-page jump, matching the 74px the rest of the site uses.
+     It lives here rather than in CountryBriefing because Astro scopes styles per component:
+     a rule written there for this element would carry that component's scope id and match
+     nothing. */
+  .ttc{scroll-margin-top:74px;margin:22px 0 0;padding:22px 24px;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:var(--radius);box-shadow:var(--shadow)}
   .ttc-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px}
   .ttc-h{margin:0;font-family:var(--serif);font-weight:500;font-size:23px;line-height:1.2;color:var(--ink);letter-spacing:-.01em}
   /* Quiet attribution in the corner, so a screenshot says where it came from without the

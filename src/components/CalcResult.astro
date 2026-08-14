@@ -1,0 +1,417 @@
+---
+// THE CALCULATOR RESULT, restructured: a hero that is always visible, and four collapsible
+// sections beneath it. This is the DETAIL behind the breadth reveal's GLANCE, and the two are
+// wired to be recognisably the same content: the reveal's "fees nobody quotes" row is the
+// section here that carries the same name, now costed.
+//
+// WHAT CHANGED AND WHAT DID NOT. Every element id the calculator's render() writes to is
+// preserved exactly, in the same shape, with the same classes. Only the containers around
+// them are new. That is deliberate and it is the whole safety strategy for this phase: the
+// estimator's script is the most delicate code on the site, so this restructure does not
+// touch a line of it. render() keeps calling getElementById and keeps finding everything,
+// including the elements it reaches for without a null check. A DOM test drives every control
+// afterwards to prove it.
+//
+// WHY IT NEEDED RESTRUCTURING. The old result was one long column: three numbers, a bar, then
+// five stacked groups, then fine print, roughly two thousand pixels of it on a phone. The
+// numbers a traveler actually holds were at the top and everything else competed with them
+// equally. Now the three named numbers, the shape bar and the plain-English assumptions line
+// are the only things that are always open, and the rest is there when it is wanted.
+//
+// WHAT IS OPEN BY DEFAULT, AND WHY ONLY THAT. "Fees nobody quotes you" is highlighted and
+// open; the other three are closed. That is the one section that exists because the rest of
+// the internet hides it, so hiding it here behind a click would be a small betrayal of the
+// premise. Everything else is detail a reader can ask for.
+//
+// THE SOURCED LINES (shortlist A) come from calc-lines.js, which reads existing verified
+// fields and computes nothing. Each is placed where its unit makes sense:
+//   Getting there   entry charges (one-off PER PERSON), named zeros, the departure-tax trap,
+//                   and the insurance tier. Everything that happens before you land.
+//   On the ground   the season tier beside the hotel line, tips scope, the service-charge
+//                   guard. Everything that happens once you are there.
+//   Fees            the two card fees with their unit, the lodging tax, the VAT-refund
+//                   position, and what a different card would avoid.
+// The brief listed the named zeros under both "Getting there" and the fees section. They are
+// rendered once, in Getting there, beside the charges they are the counterpart to: showing
+// the same $0 twice on one page would read as two separate zeros.
+import { calcLinesFor } from '../data/calc-lines.js';
+import { comparisonsFor } from '../data/region-comparisons.js';
+import { countries } from '../data/index.js';
+
+const { country: c, tipCalc } = Astro.props;
+const L = calcLinesFor(c);
+// The region-compare link carries NO figures, on purpose: a number on a link is a claim the
+// reader cannot check until they have clicked it.
+const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
+const cur = (c.cash && c.cash.cur) || 'the local currency';
+---
+<div class="hn-result">
+
+  {/* ================= HERO, always visible ================= */}
+
+  <!-- The three numbers a traveler actually holds, named. On the ground is the hero: it is
+       what you spend once you land, the figure this site exists to get right. Getting there
+       sits beside it honestly (empty by default, and it says so rather than showing a bare
+       $0 that reads as free travel), and Total trip is simply the two added up. No new math:
+       these are the same figures render() already computes for the bar and the lines below. -->
+  <div class="hn-three">
+    <div class="hn3">
+      <span class="hn3-l">Getting there</span>
+      <span class="hn3-v num" id="hnAir">$0</span>
+      <span class="hn3-n" id="hnAirNote">&nbsp;</span>
+    </div>
+    <div class="hn3 hn3-hero">
+      <span class="hn3-l">On the ground</span>
+      <span class="hn3-v num" id="hnGround">$0</span>
+      <span class="hn3-n">what {c.name} costs once you land</span>
+    </div>
+    <div class="hn3">
+      <span class="hn3-l">Total trip</span>
+      <span class="hn3-v num" id="hnTotal">$0</span>
+      <span class="hn3-n" id="hnTripNote">&nbsp;</span>
+    </div>
+  </div>
+  <p class="erange">Total trip realistically somewhere between <span class="num" id="hnLo">$0</span> and <span class="num" id="hnHi">$0</span>.</p>
+  <p class="escope" id="hnSub">&nbsp;</p>
+
+  <!-- The shape of the trip: one stacked bar showing how the total splits across the
+       components. Pure CSS widths driven by render(), no chart library. The bar is decorative
+       (the sections below carry the real figures), so it is aria-hidden; the legend carries
+       each component's share. -->
+  <div class="hn-shape">
+    <div class="hs-bar" aria-hidden="true">
+      <div class="hs-seg flt" id="hsFlt"></div>
+      <div class="hs-seg room" id="hsRoom"></div>
+      <div class="hs-seg spend" id="hsSpend"></div>
+      <div class="hs-seg cfee" id="hsCfee"></div>
+      <div class="hs-seg afee" id="hsAfee"></div>
+      <div class="hs-seg tax" id="hsTax"></div>
+    </div>
+    <div class="hs-legend">
+      <span class="hs-l flt" id="hlFlt" hidden><span class="mdot"></span>flights <b>0%</b></span>
+      <span class="hs-l room" id="hlRoom"><span class="mdot"></span>hotel <b>0%</b></span>
+      <span class="hs-l spend" id="hlSpend"><span class="mdot"></span>on the ground <b>0%</b></span>
+      <span class="hs-l cfee" id="hlCfee"><span class="mdot"></span>card fee <b>0%</b></span>
+      <span class="hs-l afee" id="hlAfee"><span class="mdot"></span>cash fees <b>0%</b></span>
+      <span class="hs-l tax" id="hlTax"><span class="mdot"></span>tourist tax <b>0%</b></span>
+    </div>
+  </div>
+
+  {cmp && (
+    <a class="cs-cmp" href={cmp.href}>See how {c.name} compares across {cmp.region}
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  )}
+
+  {/* ================= COLLAPSIBLE DETAIL ================= */}
+
+  <div class="cs-set">
+
+    {/* ----- Getting there. Everything before you land. Collapsed. ----- */}
+    <details class="cs">
+      <summary class="cs-sum">
+        <span class="cs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.8 16 14l-6 2 1.5 4.5L10 22l-2-3.5L4 17l1.5-1.5L10 17l2-6-5.8-1.8a2 2 0 0 1 .4-3.6l1.6-.4 3.3 3.3 4.6-1.4a2 2 0 0 1 2.3 2.8z"/></svg></span>
+        <span class="cs-t">Getting there</span>
+        <span class="cs-hint">flights, and what the border costs</span>
+        <svg class="cs-chev" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="cs-body">
+        <div class="hn-rows">
+          <div class="hn-line" id="hnFlightLine" hidden><span class="hn-k">Flights (<span id="hnFlightTravLabel">2</span> travelers, round trip)<em id="hnFlightNote">paid in dollars at booking, so no foreign fee on this line</em></span><span class="hn-v num" id="hnFlightV">$0</span></div>
+        </div>
+
+        {/* A1. ONE-OFF PER PERSON, and it says so on every line: this figure multiplies by
+            travelers and never by nights, which is the whole reason it is not in the tax
+            engine. The value is the guide's own prose, quoted, so ranges and conditions
+            survive rather than being flattened into a single number. */}
+        {L.entryCharges && L.entryCharges.map(e => (
+          <div class="cs-line cs-line-charge">
+            <span class="cs-line-h">{e.label}</span>
+            <span class="cs-line-u">one-off, per person</span>
+            <span class="cs-line-d">{e.value}</span>
+            {e.source && <a class="cs-src" href={e.source} target="_blank" rel="noopener">official source</a>}
+          </div>
+        ))}
+
+        {L.entryConditional && L.entryConditional.map(e => (
+          <div class="cs-line">
+            <span class="cs-line-h">{e.label}</span>
+            <span class="cs-line-u">only on some trips</span>
+            <span class="cs-line-d">{e.value}</span>
+          </div>
+        ))}
+
+        {L.entryRequirements && L.entryRequirements.map(e => (
+          <div class="cs-line">
+            <span class="cs-line-h">{e.label}</span>
+            <span class="cs-line-u">a condition of entry, not a charge</span>
+            <span class="cs-line-d">{e.value}</span>
+          </div>
+        ))}
+
+        {L.entryExemptions && L.entryExemptions.map(e => (
+          <div class="cs-line cs-line-zero">
+            <span class="cs-line-h">{e.label}</span>
+            <span class="cs-line-u">a way to pay nothing</span>
+            <span class="cs-line-d">{e.value}</span>
+          </div>
+        ))}
+
+        {/* A proposed fee is a watch-flag ZERO. Pricing it would charge every reader for a
+            fee that is not being collected. */}
+        {L.entryProposed && L.entryProposed.map(e => (
+          <div class="cs-line cs-line-zero">
+            <span class="cs-line-h">{e.label}</span>
+            <span class="cs-line-u">announced, not charged</span>
+            <span class="cs-line-d">{e.value}</span>
+          </div>
+        ))}
+
+        {/* A3. A NAMED zero, never a bare $0: the words are what make it a fact rather than
+            an empty field. */}
+        {L.namedZeros && L.namedZeros.map(z => (
+          <div class="cs-line cs-line-zero">
+            <span class="cs-line-h">{z.label}<span class="cs-zero">$0</span></span>
+            <span class="cs-line-d">{z.value}</span>
+            {z.source && <a class="cs-src" href={z.source} target="_blank" rel="noopener">official source</a>}
+          </div>
+        ))}
+
+        {L.schengen && (
+          <div class="cs-line cs-line-zero">
+            <span class="cs-line-h">The Schengen border<span class="cs-zero">$0</span></span>
+            <span class="cs-line-d">{L.schengen.ees} {L.schengen.etias}</span>
+            <a class="cs-src cs-src-in" href="/passports-and-visas">How the Schengen border works now</a>
+          </div>
+        )}
+
+        {/* Departure tax is a TRAP, not a line. It is inside the airfare, so giving it a
+            figure would double-count it against the fare the traveler entered above. A
+            reassuring sentence is the honest treatment. */}
+        <p class="cs-note">Departure tax is not a separate line here. Where a country charges one it is collected inside your airfare, so it is already in the flight figure, and adding it again would count it twice.</p>
+
+        {/* A2. A named tier that moves no total. The premium depends on age, cover and trip
+            length, none of which this page asks for, so no figure is invented. */}
+        {L.insurance && (
+          <div class="cs-line">
+            <span class="cs-line-h">Travel insurance<span class="cs-tier">{L.insurance.label}</span></span>
+            <span class="cs-line-u">not priced here</span>
+            <span class="cs-line-d">{L.insurance.note} A premium depends on your age, the cover and the length of the trip, so this calculator names the priority rather than guessing a figure.</span>
+            <a class="cs-src cs-src-in" href="#insurance">What cover is worth in {c.name}</a>
+          </div>
+        )}
+      </div>
+    </details>
+
+    {/* ----- On the ground detail. Collapsed. ----- */}
+    <details class="cs">
+      <summary class="cs-sum">
+        <span class="cs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M10 21v-6h4v6"/></svg></span>
+        <span class="cs-t">On the ground detail</span>
+        <span class="cs-hint">your room, your days, and how much of it is cash</span>
+        <svg class="cs-chev" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="cs-body">
+        <div class="hn-rows">
+          <div class="hn-line" id="hnHotelLine"><span class="hn-k">Hotel (<span id="hnNightsLabel">7</span> nights)<em id="hnHotelNote">on the card, prepaid or paid at the desk</em></span><span class="hn-v num" id="hnRoomV">$0</span></div>
+          <div class="hn-line"><span class="hn-k">On-the-ground spend<em>food, local transport, activities, tips</em></span><span class="hn-v num" id="hnSpend">$0</span></div>
+          <!-- Tips: named as the local norm, never as a computed dollar figure. The figure
+               shown is the desk's own restaurant-scoped number from tipping.js, so it is
+               scoped to sit-down meals and not applied to spend it does not cover (street
+               food, a tuk-tuk, a convenience store). Advisory by design: it adds nothing to
+               the total, because the daily spend line above already counts tips. -->
+          <div class="hn-line hn-tip" id="hnTipLine">
+            <span class="hn-k">{tipCalc.label}<em>{tipCalc.tier && <b>{tipCalc.tier}. </b>}{tipCalc.note} <a href={'/' + c.slug + '/tipping'}>How tipping works here</a></em></span>
+            <span class="hn-v hn-tipv">{tipCalc.figure}</span>
+          </div>
+        </div>
+
+        {/* A5. Categorical, beside the hotel line. seasons.js holds no figures on purpose,
+            because a single number for what a month costs is not a sourceable fact. So this
+            names the windows and says plainly that the room price is NOT season-adjusted. */}
+        {L.season && (
+          <div class="cs-line">
+            <span class="cs-line-h">When you go</span>
+            <span class="cs-line-u">not applied to the room price above</span>
+            <span class="cs-line-d">
+              {L.season.peak && <Fragment>Busiest and dearest: {L.season.peak}. </Fragment>}
+              {L.season.cheapest && <Fragment>Quieter and cheaper: {L.season.cheapest}. </Fragment>}
+              The room price you entered is taken as given, so nothing here moves the total. We publish no seasonal uplift because an honest one does not exist.
+            </span>
+            <a class="cs-src cs-src-in" href="#when-to-go">{c.name} month by month</a>
+          </div>
+        )}
+
+        {/* A6 scope, and A8 the double-tipping guard. Both categorical, and neither adds a
+            cent to any total. */}
+        {L.tips && (
+          <div class="cs-line">
+            <span class="cs-line-h">Tipping{L.tips.tier && <span class="cs-tier">{L.tips.tier}</span>}</span>
+            <span class="cs-line-u">already inside the daily figure, adds nothing</span>
+            <span class="cs-line-d">
+              {L.tips.none
+                ? 'Not a tipping culture, so there is genuinely nothing to add.'
+                : (L.tips.scope ? ('Sit-down meals run about ' + L.tips.scope + ' where tipping applies, which is the scope of this norm rather than a rate on everything you spend. ') : '')}
+              {L.tips.serviceCharge && <Fragment>{L.tips.serviceCharge}, so read the bill before you add anything on top.</Fragment>}
+            </span>
+          </div>
+        )}
+
+        <div class="esplit">
+          <div class="ebar" aria-hidden="true"><div class="c1" id="cashBar" style="width:40%"></div><div class="c2" id="cardBar" style="width:60%"></div></div>
+          <div class="elegend"><span class="el cash"><span class="mdot"></span>cash <b id="cashUsd">$0</b></span><span class="el card"><span class="mdot"></span>card <b id="cardUsd">$0</b></span></div>
+          <p class="ehint" style="margin-top:8px">Whether at an ATM or a card terminal in a shop or restaurant, always choose to be charged in the local currency, not dollars. Paying in dollars (called dynamic currency conversion) lets the machine set its own, worse, exchange rate on top of any fee.</p>
+        </div>
+      </div>
+    </details>
+
+    {/* ----- Fees nobody quotes you. HIGHLIGHTED and OPEN. -----
+        The one section that exists because the rest of the internet hides it, which is why it
+        is the only one not behind a click. It is the same "fees nobody quotes" row the breadth
+        reveal previewed further up the page, now costed against the traveler's own inputs. */}
+    <details class="cs cs-fees" open>
+      <summary class="cs-sum">
+        <span class="cs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span>
+        <span class="cs-t">Fees nobody quotes you</span>
+        <span class="cs-hint">the part that lands on the statement weeks later</span>
+        <svg class="cs-chev" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="cs-body">
+        <div class="hn-rows">
+          <div class="hn-line hn-fee" id="hnCardFeeLine"><span class="hn-k">Card fee, about <span id="hnFeeQ">3%</span> on the <b id="hnCardBase">$0</b> you put on the card<em id="hnCardFeeNote">your room and the card half of your spend, both on the statement weeks later</em></span><span class="hn-v num" id="hnCardFee">$0</span></div>
+          <div class="hn-line hn-fee" id="hnAtmFeeLine"><span class="hn-k">ATM and bank fees on the <b id="hnCashAmt">$0</b> cash you pull<em id="hnAtmNote">a few dollars per withdrawal, plus the roughly 3% most US banks add on foreign cash</em></span><span class="hn-v num" id="hnAtmFee">$0</span></div>
+          <div class="hn-line" id="hnTaxLine"><span class="hn-k"><span id="hnTaxLabel">Tourist tax</span><em>collected at the desk even on a prepaid room, per night rather than per trip</em></span><span class="hn-v num" id="hnTax">$0</span></div>
+        </div>
+        <p class="hn-note" id="hnTaxNote" hidden></p>
+
+        {/* "What you can avoid", not "Save $X!". The distinction is the point: this states
+            what a different card would do and lets the reader decide, rather than dressing a
+            product recommendation up as a saving they have already made. */}
+        <div class="cs-avoid">
+          <p class="cs-avoid-k">What you can avoid</p>
+          <label class="hn-toggle hn-lever" id="hnNoFeeWrap">
+            <input type="checkbox" id="hnNoFee" />
+            <span class="hn-switch" aria-hidden="true"></span>
+            <span class="hn-toggle-l">See it with a no-foreign-fee card</span>
+          </label>
+          <p class="hn-feenote" id="hnFeeNote">&nbsp;</p>
+          <p class="cs-avoid-p">Whichever card you carry, always choose {cur} rather than dollars at a till or an ATM. Paying in dollars lets the machine set its own worse rate on top of any fee, and that one costs nothing to avoid.</p>
+        </div>
+
+        {/* A7. Availability, and the real detail only where the guide carries it as a dated,
+            sourced field. Where the refund lives in prose, this points at the prose rather
+            than lifting a rate out of it, because a figure parsed from a sentence was never
+            verified as a figure. Never an estimated dollar refund: that depends on what the
+            traveler buys, which this page does not ask. */}
+        {L.vatRefund && L.vatRefund.kind === 'sourced' && (
+          <div class="cs-line cs-line-back">
+            <span class="cs-line-h">{L.vatRefund.label}</span>
+            <span class="cs-line-u">money back, not a cost</span>
+            <span class="cs-line-d">{L.vatRefund.value}</span>
+            {L.vatRefund.source && <a class="cs-src" href={L.vatRefund.source} target="_blank" rel="noopener">official source</a>}
+          </div>
+        )}
+        {L.vatRefund && L.vatRefund.kind === 'pointer' && (
+          <div class="cs-line cs-line-back">
+            <span class="cs-line-h">Tax back on shopping</span>
+            <span class="cs-line-u">money back, not a cost</span>
+            <span class="cs-line-d">{c.name}'s position on tax and refunds is set out in full further up this guide, with the rates and any minimum spend. Nothing is estimated into the total here.</span>
+            <a class="cs-src cs-src-in" href="#taxes-and-refunds">{L.vatRefund.heading || 'Taxes and refunds'}</a>
+          </div>
+        )}
+      </div>
+    </details>
+
+    {/* ----- Where these numbers come from. Collapsed. ----- */}
+    <details class="cs">
+      <summary class="cs-sum">
+        <span class="cs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg></span>
+        <span class="cs-t">Where these numbers come from</span>
+        <span class="cs-hint">every assumption, and what we do not claim</span>
+        <svg class="cs-chev" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="cs-body">
+        <p class="hna-intro">These are the assumptions behind the number. Change the room price, nights, travelers, or travel style above, and every line here moves with them.</p>
+        <dl class="hna-list">
+          <div class="hna-item"><dt>Hotel</dt><dd id="hnaRoom">&nbsp;</dd></div>
+          <div class="hna-item"><dt>Daily spending</dt><dd id="hnaSpend">&nbsp;</dd></div>
+          <div class="hna-item"><dt>Flights</dt><dd id="hnaFlight">&nbsp;</dd></div>
+          <div class="hna-item"><dt>Cash vs card</dt><dd id="hnaSplit">&nbsp;</dd></div>
+          <div class="hna-item"><dt>ATM withdrawals</dt><dd id="hnaAtm">&nbsp;</dd></div>
+          <div class="hna-item"><dt>Foreign fee</dt><dd id="hnaFee">&nbsp;</dd></div>
+          <div class="hna-item"><dt>The range</dt><dd id="hnaRange">&nbsp;</dd></div>
+          <div class="hna-item"><dt>Tourist tax</dt><dd id="hnaTax">&nbsp;</dd></div>
+        </dl>
+        <div class="hn-cashnote"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg><p id="hnHint">&nbsp;</p></div>
+        <p class="hn-fine">Rough guide, not a quote. The percentage here is a blended stand-in for a typical US card's foreign fee, not your exact rate. The real number moves with the card you carry: one no-foreign-fee card can cover both sides, while a plain rewards credit card only removes the fee on what you buy, and cash still costs a little unless that card also waives ATM and foreign-cash fees. A debit card, or accepting the "pay in dollars" (dynamic currency conversion) offer at a till or ATM, can push it higher. Rates checked Jun 2026 and rounded.</p>
+        <a class="cs-src cs-src-in" href="/methodology">How we check and date every figure</a>
+      </div>
+    </details>
+
+  </div>
+
+  <a class="cta" href="#calcNoFee">See the card I'd bring <span class="arw">&#8594;</span></a>
+</div>
+
+<style>
+  /* ----- the region-compare link. No figures on it, deliberately. ----- */
+  .cs-cmp{display:inline-flex;align-items:center;gap:8px;margin:14px 0 0;font-size:14.5px;font-weight:600;color:var(--teal-deep);text-decoration:none}
+  .cs-cmp:hover{text-decoration:underline}
+  .cs-cmp svg{transition:transform .15s ease}
+  .cs-cmp:hover svg{transform:translateX(3px)}
+
+  /* ----- the collapsible set ----- */
+  .cs-set{margin:20px 0 0;display:grid;gap:9px}
+  .cs{border:1px solid var(--line);border-radius:12px;background:var(--card);overflow:hidden}
+  .cs-sum{display:flex;align-items:center;gap:11px;padding:13px 15px;cursor:pointer;list-style:none;font-size:15.5px}
+  .cs-sum::-webkit-details-marker{display:none}
+  .cs-sum:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+  .cs-ic{flex:none;width:29px;height:29px;border-radius:999px;background:var(--paper);color:var(--teal-deep);display:flex;align-items:center;justify-content:center}
+  .cs-t{font-weight:600;color:var(--ink);flex:none}
+  /* The hint says what is inside, so a reader can decide without opening it. It is the first
+     thing to go when the row gets tight. */
+  .cs-hint{flex:1;min-width:0;font-size:13.5px;color:var(--muted);line-height:1.35}
+  .cs-chev{flex:none;color:var(--muted);transition:transform .2s ease}
+  .cs[open] .cs-chev{transform:rotate(180deg)}
+  .cs-body{padding:2px 15px 15px}
+
+  /* The fees section is the one that stays open, and it is tinted and edged so it reads as
+     the section that matters even once the others are opened too. No --bg-accent token exists
+     on the site, so this uses the same teal tint the region bars and the guide prompt already
+     use, at the same values. */
+  .cs-fees{border-color:rgba(14,122,95,.3);background:rgba(14,122,95,.05);border-left:3px solid var(--teal)}
+  .cs-fees .cs-ic{background:#fff;border:1px solid rgba(14,122,95,.2)}
+  .cs-fees .cs-t{color:var(--teal-deep)}
+
+  /* ----- a sourced line: a label, its unit, its detail ----- */
+  .cs-line{display:block;padding:11px 0 0;margin:11px 0 0;border-top:1px solid var(--line)}
+  .cs-line-h{display:block;font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.35}
+  /* The unit is not decoration. A per-person one-off and a per-night charge are different
+     money on the same trip, and this line is what stops the two being read as one. */
+  .cs-line-u{display:block;margin-top:2px;font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+  .cs-line-d{display:block;margin-top:5px;font-size:14px;color:#3B4A46;line-height:1.55}
+  .cs-line-charge .cs-line-u{color:var(--amber)}
+  .cs-line-zero .cs-line-u,.cs-line-back .cs-line-u{color:#10502C}
+
+  /* A named zero. The words beside it are what make it a fact rather than an empty field, so
+     the figure never appears without them. */
+  .cs-zero{display:inline-block;margin-left:8px;font-family:var(--mono);font-size:11.5px;font-weight:600;color:#10502C;background:var(--green-bg);border-radius:999px;padding:2px 9px;vertical-align:1px}
+  .cs-tier{display:inline-block;margin-left:8px;font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--teal-deep);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:2px 8px;vertical-align:1px}
+
+  .cs-src{display:inline-flex;align-items:center;gap:5px;margin-top:6px;font-size:13px;font-weight:600;color:var(--teal-deep);text-decoration:none}
+  .cs-src:hover{text-decoration:underline}
+  .cs-note{margin:12px 0 0;padding:10px 12px;background:var(--paper);border-radius:9px;font-size:13.5px;color:var(--muted);line-height:1.55}
+
+  /* "What you can avoid", never "Save $X!". */
+  .cs-avoid{margin:13px 0 0;padding:12px 14px;background:#fff;border:1px solid rgba(14,122,95,.2);border-radius:10px}
+  .cs-avoid-k{margin:0 0 8px;font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--teal-deep)}
+  .cs-avoid-p{margin:8px 0 0;font-size:13.5px;color:var(--muted);line-height:1.55}
+
+  @media (max-width:560px){
+    .cs-sum{gap:9px;padding:12px 13px;flex-wrap:wrap}
+    /* The hint drops to its own line rather than squeezing the title to two words. */
+    .cs-hint{flex:1 0 100%;order:4;font-size:13px}
+    .cs-t{flex:1;min-width:0}
+    .cs-body{padding:2px 13px 13px}
+  }
+</style>
