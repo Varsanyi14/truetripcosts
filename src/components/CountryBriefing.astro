@@ -1,6 +1,9 @@
 ---
 import Symbol from './Symbol.astro';
 import MonthStrip from './MonthStrip.astro';
+import CountryDoor from './CountryDoor.astro';
+import GutPunch from './GutPunch.astro';
+import BreadthReveal from './BreadthReveal.astro';
 import EESNotice from './EESNotice.astro';
 import AdvisoryNotice from './AdvisoryNotice.astro';
 import NewTab from './NewTab.astro';
@@ -714,8 +717,26 @@ const kfState = (f) => {
   </div>
 </section>
 
-<section id="calc">
-  <p class="lab">What it really costs</p>
+{/* THE TRUE-COST FLOW. One section, read top to bottom, at three depths:
+    the door invites and shows what the desk holds, the gut-punch lands this country's
+    one surprising fact, the breadth reveal glances across everything we checked, and
+    the calculator is that same glance zoomed all the way in.
+
+    The `calc` id sits on the estimator block below, NOT on this section. That is
+    deliberate: more than twenty "Check yours" and "Estimate your daily costs" links
+    across the guides and the country data files point at #calc, and every one of them
+    is asking for the NUMBER. Anchoring the section instead would land all of them
+    three screens above it. The breadth reveal's own zoom link points at the same #calc,
+    so the glance and the detail share one target. */}
+<section id="true-cost">
+  <CountryDoor country={c} />
+
+  <GutPunch country={c} />
+
+  <BreadthReveal country={c} />
+
+  <div id="calc" class="tc-number">
+  <p class="lab">The number</p>
   <h2>What you'll really spend in {c.name}.</h2>
   <p class="sub">Your flights if you want them counted, your room, your on-the-ground spending, the two fees most US cards add without telling you, and {c.name}'s tourist tax. One number, nothing waiting on the statement. No bank to pick, no sign-up, nothing saved.</p>
   {art && <figure class="secart"><img src={art.cost} alt="" loading="lazy" decoding="async" width="1400" height="788" /></figure>}
@@ -953,6 +974,7 @@ const kfState = (f) => {
       </div>
     </div>
   </details>
+  </div>
 </section>
 
 {season && (

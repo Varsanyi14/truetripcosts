@@ -1,0 +1,125 @@
+---
+// THE BREADTH REVEAL. The "wow, all this in one place" glance, immediately below the
+// gut-punch and immediately above the calculator.
+//
+// IT IS THE SAME CONTENT AS THE CALCULATOR, AT A DIFFERENT DEPTH. That is the whole idea
+// and the reason this is not a competing section: the "fees nobody quotes" rows here are
+// the calculator's highlighted fees group seen from further away. A row names the RULE,
+// and the closing link scrolls DOWN into the calculator where that rule becomes a number
+// against the traveler's own nights and travelers. Glance, then detail.
+//
+// No row may show COMPUTED money. A figure quoted from its own sourced field is fine and
+// carries its unit; anything multiplied by the traveler's nights or travelers belongs in
+// the calculator, which is the only place that knows them. See breadth.js for the rule.
+//
+// ONE CALM COLUMN, not a grid. Generous rows, hairline dividers, and a colour-coded icon
+// per row doing the categorisation at a glance. The colour is the only thing carrying the
+// category visually, so it has to be legible without the label: accent for a fee, green
+// for money you keep, amber for a trap, grey for timing.
+//
+// ABSENCE IS NOT ZERO. Every row and every category comes from breadthFor(), which emits
+// nothing where the country holds nothing. This component cannot manufacture a category
+// to square the column, because it has no default row to fall back on: it renders what it
+// is handed. 35 of 59 countries render three categories rather than four, so three is the
+// normal shape, not a failure state, and it has to read as finished.
+import { breadthFor, breadthCount } from '../data/breadth.js';
+
+const { country: c } = Astro.props;
+const groups = breadthFor(c);
+const total = breadthCount(groups);
+
+// One icon per category. Simple, flat, single-stroke shapes: a receipt for a fee, a
+// wallet for money kept, a warning for a trap, a clock for timing. Colour is applied by
+// the tone class, not baked into the path, so a category cannot end up the wrong colour.
+const ICONS = {
+  fee: '<path d="M5 3h14v18l-3-2-2 2-2-2-2 2-3-2z"/><path d="M9 8h6M9 12h6"/>',
+  keep: '<path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M16 12h2"/>',
+  trap: '<path d="M12 4 3 19h18z"/><path d="M12 10v4M12 17h.01"/>',
+  time: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+};
+---
+{groups.length > 0 && (
+<section class="br" id="everything-we-checked">
+  <p class="lab">Everything we checked</p>
+  <h2>What {c.name} actually charges you, in one place.</h2>
+  <p class="sub">{total} things we verified for {c.name}, grouped by the kind of thing they are. The numbers are below; this is the shape of them.</p>
+
+  <div class="br-list">
+    {groups.map(g => (
+      <div class="br-group">
+        <p class={'br-cat br-cat-' + g.tone}>{g.label}</p>
+        {g.rows.map(r => (
+          <div class="br-row">
+            <span class={'br-ic br-ic-' + g.tone} aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" set:html={ICONS[g.tone]}></svg>
+            </span>
+            <span class="br-tx">
+              <span class="br-h">{r.title}</span>
+              {r.detail && <span class="br-d">{r.detail}</span>}
+              {r.href && <a class="br-more" href={r.href}>The full picture
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>}
+            </span>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+
+  {/* The zoom. This scrolls DOWN into the calculator on the same page, never off to
+      another one: the reveal and the calculator are one thought at two depths. */}
+  <a class="br-zoom" href="#calc">
+    <span class="br-zoom-tx">See all of it in {c.name}'s true cost</span>
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+  </a>
+</section>
+)}
+
+<style>
+  /* This renders as a <section> nested inside the true-cost section, so it explicitly
+     drops the global section rule's top hairline and vertical padding. The flow already
+     has one divider at its top; a second one inside it would break the page into pieces
+     that are meant to read as one thought. */
+  .br{margin:34px 0 0;padding:0;border-top:0}
+  .br-list{margin:16px 0 0;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+
+  /* The quiet mono category label. It sits above its rows rather than beside them, which
+     is what keeps this one column instead of a two-column grid. */
+  .br-cat{margin:0;padding:13px 20px 7px;font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;line-height:1.4}
+  .br-cat-fee{color:var(--teal-deep)}
+  .br-cat-keep{color:#10502C}
+  .br-cat-trap{color:var(--amber)}
+  .br-cat-time{color:var(--muted)}
+  /* Hairlines between groups, never above the first one. */
+  .br-group + .br-group{border-top:1px solid var(--line)}
+
+  .br-row{display:flex;gap:13px;align-items:flex-start;padding:12px 20px 15px}
+  /* And a hairline between rows inside a group, so a group with two rows still reads as
+     two things rather than one paragraph. */
+  .br-row + .br-row{border-top:1px solid var(--line)}
+
+  .br-ic{flex:none;width:30px;height:30px;border-radius:999px;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .br-ic-fee{background:rgba(14,122,95,.09);color:var(--teal-deep)}
+  .br-ic-keep{background:var(--green-bg);color:#10502C}
+  .br-ic-trap{background:var(--amber-bg);color:var(--amber)}
+  .br-ic-time{background:#EEEDE6;color:var(--muted)}
+
+  .br-tx{flex:1;min-width:0}
+  .br-h{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink);line-height:1.3}
+  .br-d{display:block;margin-top:4px;font-size:14.5px;color:var(--muted);line-height:1.55}
+  .br-more{display:inline-flex;align-items:center;gap:5px;margin-top:6px;font-size:13.5px;font-weight:600;color:var(--teal-deep);text-decoration:none}
+  .br-more:hover{text-decoration:underline}
+
+  /* The zoom into the calculator. A down arrow, not a right arrow: it says "further down
+     this page", which is exactly what it does. */
+  .br-zoom{display:inline-flex;align-items:center;gap:9px;margin:16px 0 0;padding:12px 18px;background:rgba(14,122,95,.05);border:1px solid rgba(14,122,95,.2);border-radius:999px;color:var(--teal-deep);text-decoration:none;font-size:15px;font-weight:600;transition:background .2s ease,border-color .2s ease}
+  .br-zoom:hover{background:rgba(14,122,95,.09);border-color:var(--teal)}
+  .br-zoom svg{transition:transform .15s ease}
+  .br-zoom:hover svg{transform:translateY(2px)}
+
+  @media (max-width:560px){
+    .br-cat{padding:12px 15px 6px}
+    .br-row{padding:11px 15px 13px;gap:11px}
+    .br-h{font-size:16px}
+    .br-zoom{font-size:14.5px;padding:11px 16px}
+  }
+</style>

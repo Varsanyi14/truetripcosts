@@ -1,0 +1,174 @@
+---
+// THE GUT-PUNCH. One surprising, true fact about this country, in one frame used for all
+// of them, immediately below the door and above the breadth reveal.
+//
+// ONE FRAME, 59 COUNTRIES. The skeleton never changes: the assumption the traveler is
+// carrying, then the fact that breaks it, then what to do about it. That sameness is the
+// point. It makes the facts comparable, and it means a country with a modest fact still
+// looks deliberate beside one with a dramatic fact, because the frame is doing the design
+// work rather than the content.
+//
+// THE SHAPE ACCENT is optional and rare. It renders only when the fact carries accent
+// data AND a shape with a visual form, which heroFactFor() already resolves, so this
+// component never has to decide whether a fact "deserves" one. A hybrid fact
+// (Netherlands, Mexico) is labelled with its shape but ships no accent, and that is a
+// designed outcome rather than a missing feature: forcing a two-part transformation onto
+// a fact that is really about two charges landing at once would misstate it.
+//
+// GRACEFUL DEGRADE. A country with no fact renders NOTHING at all, not an empty frame and
+// not a placeholder. The page then opens on the breadth reveal, which is a complete
+// opening in its own right. 33 of the 59 countries take that path today, so it is the
+// common case rather than the edge case, and it has to look intentional.
+import { heroFactFor } from '../data/hero-facts.js';
+
+const { country: c } = Astro.props;
+const f = heroFactFor(c.slug);
+
+// The checked date travels with the fact. It reads from the country's own `checked` field
+// unless the fact was verified later, so it can never drift from the guide it sits on.
+const checked = f ? (f.checked || c.checked || '') : '';
+
+// Which flag kinds the READER needs to see, and which are desk notes.
+// A volatile, seasonal or freshness-limited fact changes what the traveler should do with
+// it, so it is shown. A novelty or sourcing note is an editorial task and stays out of
+// the reader's way: it belongs in the data and in the staleness check, not on the page.
+const READER_FLAGS = { volatile: true, seasonal: true, freshness: true };
+const showFlag = !!(f && f.flag && READER_FLAGS[f.flag.kind]);
+---
+{f && (
+<section class="gp" aria-labelledby="gp-fact">
+  <div class="gp-top">
+    <p class="gp-lab">The one thing most people get wrong about {c.name}</p>
+    <span class="gp-check">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      Checked {checked}
+    </span>
+  </div>
+
+  {f.setup && <p class="gp-setup">{f.setup}</p>}
+
+  <p class="gp-fact" id="gp-fact">{f.fact}</p>
+
+  {/* dead-advice: the old advice struck through, then the correction. */}
+  {f.accent && f.shape === 'dead-advice' && (
+    <div class="gp-acc gp-dead">
+      <p class="gp-dead-old"><span class="gp-acc-k">The old advice</span><s>{f.accent.old}</s></p>
+      <p class="gp-dead-new"><span class="gp-acc-k">Now</span><b>{f.accent.now}</b></p>
+    </div>
+  )}
+
+  {/* price-isnt-price: the menu-price to real-price transformation. */}
+  {f.accent && f.shape === 'price-isnt-price' && (
+    <div class="gp-acc gp-shift">
+      <div class="gp-shift-side">
+        <span class="gp-acc-k">What you compare</span>
+        <b class="gp-shift-v">{f.accent.from}</b>
+        <span class="gp-shift-n">{f.accent.fromNote}</span>
+      </div>
+      <span class="gp-shift-arw" aria-hidden="true">&#8594;</span>
+      <div class="gp-shift-side gp-shift-real">
+        <span class="gp-acc-k">What you pay</span>
+        <b class="gp-shift-v">{f.accent.to}</b>
+        <span class="gp-shift-n">{f.accent.toNote}</span>
+      </div>
+    </div>
+  )}
+
+  {/* money-you-shouldnt-pay: the exemption, or the should-be-zero, highlighted. */}
+  {f.accent && f.shape === 'money-you-shouldnt-pay' && (
+    <div class="gp-acc gp-exempt">
+      <b class="gp-exempt-fig">{f.accent.figure}</b>
+      <span class="gp-exempt-tx">
+        <span class="gp-exempt-l">{f.accent.label}</span>
+        <span class="gp-exempt-n">{f.accent.note}</span>
+      </span>
+    </div>
+  )}
+
+  {f.escape && (
+    <p class="gp-escape">
+      <span class="gp-escape-ic" aria-hidden="true">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </span>
+      <span><span class="gp-escape-k">What to do</span>{f.escape}</span>
+    </p>
+  )}
+
+  {f.caveat && <p class="gp-caveat">{f.caveat}</p>}
+
+  {showFlag && <p class="gp-flag">{f.flag.note}</p>}
+
+  {f.spoke && (
+    <a class="gp-spoke" href={f.spoke.href}>{f.spoke.label}
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  )}
+</section>
+)}
+
+<style>
+  /* The frame. A single calm card, no image, no colour block: the surprise has to come
+     from the sentence, which is the whole anti-wanderlust position of the site. */
+  .gp{margin:30px 0 0;padding:24px 26px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .gp-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:10px;margin:0 0 12px}
+  .gp-lab{font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.09em;margin:0;line-height:1.4}
+  /* The checked stamp travels with the fact, never as a separate reassurance elsewhere. */
+  .gp-check{display:inline-flex;align-items:center;gap:5px;flex:none;font-family:var(--mono);font-size:11px;color:#10502C;white-space:nowrap}
+
+  .gp-setup{margin:0 0 8px;font-size:15px;color:var(--muted);line-height:1.55}
+  /* The fact itself, set in the serif at hero scale. It is the only thing on this card
+     competing for attention. */
+  .gp-fact{margin:0;font-family:var(--serif);font-weight:500;font-size:25px;line-height:1.28;color:var(--ink);letter-spacing:-.01em}
+
+  /* ----- the shape accents ----- */
+  .gp-acc{margin:18px 0 0;border-radius:12px}
+  .gp-acc-k{display:block;font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 3px}
+
+  /* dead-advice */
+  .gp-dead{padding:14px 16px;background:var(--paper);border:1px solid var(--line)}
+  .gp-dead p{margin:0;font-size:15px;line-height:1.5}
+  .gp-dead-old s{color:var(--muted);text-decoration-thickness:1.5px}
+  .gp-dead-new{margin-top:9px !important;padding-top:9px;border-top:1px solid var(--line)}
+  .gp-dead-new b{color:var(--ink);font-weight:600}
+
+  /* price-isnt-price */
+  .gp-shift{display:flex;align-items:stretch;gap:14px;padding:14px 16px;background:var(--paper);border:1px solid var(--line)}
+  .gp-shift-side{flex:1;min-width:0}
+  .gp-shift-v{display:block;font-family:var(--serif);font-size:19px;font-weight:500;color:var(--muted);line-height:1.2}
+  .gp-shift-real .gp-shift-v{color:var(--ink)}
+  .gp-shift-n{display:block;margin-top:4px;font-size:13px;color:var(--muted);line-height:1.45}
+  .gp-shift-arw{flex:none;align-self:center;color:var(--teal);font-size:19px;line-height:1}
+
+  /* money-you-shouldnt-pay */
+  .gp-exempt{display:flex;align-items:center;gap:15px;padding:14px 16px;background:var(--green-bg);border:1px solid #C2E0C8}
+  .gp-exempt-fig{flex:none;font-family:var(--serif);font-size:29px;font-weight:500;color:var(--teal-deep);line-height:1;text-decoration:line-through;text-decoration-thickness:2px;text-decoration-color:rgba(10,86,68,.45)}
+  .gp-exempt-tx{min-width:0}
+  .gp-exempt-l{display:block;font-size:15px;font-weight:600;color:var(--ink);line-height:1.35}
+  .gp-exempt-n{display:block;margin-top:2px;font-size:13.5px;color:#3B4A46;line-height:1.45}
+
+  /* ----- the escape ----- */
+  .gp-escape{display:flex;gap:10px;align-items:flex-start;margin:18px 0 0;font-size:15.5px;line-height:1.55;color:var(--ink)}
+  .gp-escape-ic{flex:none;width:23px;height:23px;border-radius:999px;background:var(--green-bg);color:#10502C;display:flex;align-items:center;justify-content:center;margin-top:1px}
+  .gp-escape-k{display:block;font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 2px}
+
+  /* A caveat that keeps the fact true, and a reader-facing freshness note. Both are
+     small, because a caveat that shouts undermines the fact it is protecting. */
+  .gp-caveat{margin:10px 0 0 33px;font-size:13.5px;color:var(--muted);line-height:1.5}
+  .gp-flag{margin:10px 0 0 33px;font-size:13px;color:var(--amber);line-height:1.5}
+
+  .gp-spoke{display:inline-flex;align-items:center;gap:6px;margin:16px 0 0;font-size:14.5px;font-weight:600;color:var(--teal-deep);text-decoration:none}
+  .gp-spoke:hover{text-decoration:underline}
+  .gp-spoke svg{transition:transform .15s ease}
+  .gp-spoke:hover svg{transform:translateX(3px)}
+
+  @media (max-width:560px){
+    .gp{padding:19px 18px;margin-top:24px}
+    .gp-fact{font-size:21px}
+    .gp-exempt-fig{font-size:25px}
+    /* The transformation stacks rather than squeezing two columns into a phone, and the
+       arrow turns to point down so the before-and-after reading order still holds. */
+    .gp-shift{flex-direction:column;gap:10px}
+    .gp-shift-arw{align-self:flex-start;transform:rotate(90deg)}
+    .gp-caveat,.gp-flag{margin-left:0}
+  }
+</style>
