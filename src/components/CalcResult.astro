@@ -340,6 +340,26 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
                       : (a.figure ? <span class="cs-keep-fig">{a.figure}</span> : null)}
                   </div>
                   {a.figureNote && <span class="cs-keep-fnote">{a.figureNote}</span>}
+
+                  {/* THE PRICE TAG. Both figures come from the country's own guide, and this
+                      block renders only when both exist. The gap between them is the argument,
+                      so it is shown rather than described: nothing here is computed, and where
+                      a guide names the fake in words only, this block simply does not appear
+                      and the item reads as prose instead. */}
+                  {a.priceVs && (
+                    <span class="cs-vs">
+                      <span class="cs-vs-side">
+                        <span class="cs-vs-k">Official</span>
+                        <b class="cs-vs-real">{a.priceVs.real}</b>
+                      </span>
+                      <span class="cs-vs-arw" aria-hidden="true">&#8594;</span>
+                      <span class="cs-vs-side">
+                        <span class="cs-vs-k">The lookalikes</span>
+                        <b class="cs-vs-fake">{a.priceVs.fake}</b>
+                      </span>
+                    </span>
+                  )}
+
                   <span class="cs-keep-d">{a.detail}</span>
                   <span class="cs-keep-esc">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
@@ -487,6 +507,17 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
   .cs-keep-fig{flex:none;font-family:var(--serif);font-size:16px;font-weight:500;color:#10502C;line-height:1.2;white-space:nowrap}
   .cs-keep-fnote{display:block;margin-top:1px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right}
   .cs-keep-d{display:block;margin-top:6px;font-size:13.5px;color:#3B4A46;line-height:1.55}
+
+  /* The price tag. Deliberately echoes the gut-punch's price-isnt-price accent at the top of
+     the page, because it is the same shape of fact: what you should pay, then what you are
+     actually being asked for. The real side is the calm one and the fake side carries the
+     amber, so the eye lands on the number that is wrong. */
+  .cs-vs{display:flex;align-items:stretch;gap:12px;margin:9px 0 0;padding:9px 11px;background:var(--paper);border:1px solid var(--line);border-radius:8px}
+  .cs-vs-side{flex:1;min-width:0}
+  .cs-vs-k{display:block;font-family:var(--mono);font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+  .cs-vs-real{display:block;margin-top:2px;font-family:var(--serif);font-size:17px;font-weight:500;color:#10502C;line-height:1.2}
+  .cs-vs-fake{display:block;margin-top:2px;font-family:var(--serif);font-size:17px;font-weight:500;color:var(--amber);line-height:1.2}
+  .cs-vs-arw{flex:none;align-self:center;color:var(--muted);font-size:16px;line-height:1}
   .cs-keep-esc{display:flex;gap:7px;align-items:flex-start;margin-top:8px;font-size:13.5px;font-weight:600;color:#10502C;line-height:1.45}
   .cs-keep-esc svg{flex:none;margin-top:2px}
   .cs-keep-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:13px;font-weight:600;color:var(--teal-deep);text-decoration:none}
@@ -528,5 +559,9 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
     /* The figure drops under the heading rather than squeezing it, and its caption follows. */
     .cs-keep-top{flex-direction:column;gap:2px}
     .cs-keep-fnote{text-align:left}
+    /* The two prices stack on a phone rather than squeezing, and the arrow turns to point
+       down so the official-then-fake reading order still holds. */
+    .cs-vs{flex-direction:column;gap:7px}
+    .cs-vs-arw{align-self:flex-start;transform:rotate(90deg)}
   }
 </style>
