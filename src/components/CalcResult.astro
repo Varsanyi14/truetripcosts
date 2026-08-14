@@ -35,7 +35,7 @@
 // rendered once, in Getting there, beside the charges they are the counterpart to: showing
 // the same $0 twice on one page would read as two separate zeros.
 import { calcLinesFor } from '../data/calc-lines.js';
-import { avoidableFor } from '../data/avoidable.js';
+import { avoidableFor, exposureFor } from '../data/avoidable.js';
 import { comparisonsFor } from '../data/region-comparisons.js';
 import { countries } from '../data/index.js';
 
@@ -44,6 +44,33 @@ const L = calcLinesFor(c);
 // The avoidable half of the fees section. Per country, and empty items are simply absent
 // rather than shown as "not applicable": see avoidable.js.
 const avoidable = avoidableFor(c);
+// THE EXPOSURE SECTION. The same items, now split into the two sides that head them: what
+// this traveler pays if they do nothing, and what they simply never lose once they know.
+// The split is declared per item in avoidable.js rather than inferred here, so the number at
+// the top and the row underneath it can only ever come from one decision.
+const exPay = avoidable.filter(a => a.side !== 'dodge');
+const exDodge = avoidable.filter(a => a.side === 'dodge');
+// The static half of the two totals. The live half (the fee lines, the card base a
+// percentage band applies to, the traveler count a per-person figure multiplies by) is
+// filled by the calculator's render() from the data attributes below, because those depend
+// on inputs this component cannot see at build time.
+const EX = exposureFor(c);
+// Whether there is anything honest to measure at all. A country can reach this section with
+// items that carry no sourced figure between them, and when it does the section shows the
+// list and no total. It never shows a reassuring badge instead: "low exposure" is a claim
+// about facts we do not hold, and it is the danger score wearing the other hat.
+const exHasFigure = EX.payLive || EX.payPctHi > 0 || EX.payFlatHi > 0 || EX.payPpHi > 0
+  || EX.dodgeFlatHi > 0 || EX.dodgePpHi > 0;
+// The two groups in the drop-down, in the same order as the two figures above them, so a
+// reader who has just read a number finds its rows in the place the number implied. Within
+// each group the items keep the reading order avoidable.js sorts them into, which puts the
+// price-against-price rows first: a real price beside a fake one is the sharpest thing on
+// the list. An empty group does not render, so a country with nothing on one side shows one
+// group rather than an empty heading.
+const exGroups = [
+  { key: 'pay', label: "What you'll pay unless you act", cls: 'cs-half-pay', items: exPay },
+  { key: 'dodge', label: "What we'll help you dodge", cls: 'cs-half-keep', items: exDodge },
+].filter(g => g.items.length > 0);
 // Whether Getting there holds a real entry charge, so the fees half can cross-reference it
 // instead of printing the same charge twice.
 const hasEntryCharge = !!(L.entryCharges && L.entryCharges.length);
@@ -316,73 +343,12 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
             rather than repeated: the same charge printed in two sections reads as two charges. */}
         {hasEntryCharge && <p class="cs-xref">Plus the one-off entry charge, which sits in Getting there above with the flights, because it is per person rather than per night.</p>}
 
-        {/* ================= (b) WHAT WE'LL HELP YOU KEEP =================
-            The active half, and the reason the site exists. Everything above happens TO the
-            traveler; everything below is a charge they can refuse. Each item names the escape
-            and links to the page that explains it, because telling someone a scam exists
-            without handing them the way out is just alarming them.
-            Each item appears only where it genuinely applies to this country: a dollar-currency
-            country gets no "decline paying in dollars" line, and a country whose own guide says
-            there is no refund scheme gets no "claim your VAT" line. See avoidable.js. */}
-        {avoidable.length > 0 && (
-          <div class="cs-keep">
-            <p class="cs-half cs-half-keep">What we'll help you keep</p>
-            <p class="cs-keep-lead">None of the below is in the total above, because you should not be paying any of it.</p>
-            <ul class="cs-keep-list">
-              {avoidable.map(a => (
-                <li class="cs-keep-item">
-                  <div class="cs-keep-top">
-                    <span class="cs-keep-h">{a.title}</span>
-                    {/* A figure only where a sourced field supports one. Everything else is
-                        named with no number rather than given an invented saving. */}
-                    {a.liveFigureId
-                      ? <span class="cs-keep-fig num" id={a.liveFigureId}>&nbsp;</span>
-                      : (a.figure ? <span class="cs-keep-fig">{a.figure}</span> : null)}
-                  </div>
-                  {a.figureNote && <span class="cs-keep-fnote">{a.figureNote}</span>}
-
-                  {/* THE PRICE TAG. Both figures come from the country's own guide, and this
-                      block renders only when both exist. The gap between them is the argument,
-                      so it is shown rather than described: nothing here is computed, and where
-                      a guide names the fake in words only, this block simply does not appear
-                      and the item reads as prose instead. */}
-                  {a.priceVs && (
-                    <span class="cs-vs">
-                      <span class="cs-vs-side">
-                        <span class="cs-vs-k">Official</span>
-                        <b class="cs-vs-real">{a.priceVs.real}</b>
-                      </span>
-                      <span class="cs-vs-arw" aria-hidden="true">&#8594;</span>
-                      <span class="cs-vs-side">
-                        <span class="cs-vs-k">The lookalikes</span>
-                        <b class="cs-vs-fake">{a.priceVs.fake}</b>
-                      </span>
-                    </span>
-                  )}
-
-                  <span class="cs-keep-d">{a.detail}</span>
-                  <span class="cs-keep-esc">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-                    {a.escape}
-                  </span>
-                  <a class="cs-keep-link" href={a.href}>{a.hrefLabel}
-                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-                  </a>
-                </li>
-              ))}
-            </ul>
-
-            {/* The toggle stays, because it is the one item on the list the traveler can watch
-                happen: flip it and both fee lines above go to zero. It belongs with the
-                avoidable half rather than with the costs. */}
-            <label class="hn-toggle hn-lever" id="hnNoFeeWrap">
-              <input type="checkbox" id="hnNoFee" />
-              <span class="hn-switch" aria-hidden="true"></span>
-              <span class="hn-toggle-l">See it with a no-foreign-fee card</span>
-            </label>
-            <p class="hn-feenote" id="hnFeeNote">&nbsp;</p>
-          </div>
-        )}
+        {/* THE AVOIDABLE HALF USED TO SIT HERE, and it now has its own section below, because
+            it was never the same kind of thing as the three lines above it. Those are costs.
+            Those are the ones that are not, and burying them at the bottom of a closed
+            section made them read as a footnote to the fees rather than as the point.
+            Cross-referenced rather than repeated: the items live in exactly one place. */}
+        <p class="cs-xref">What you can refuse, and what the lookalike sites charge, is set out under Costs nobody tells you about below, with the two figures kept apart from these ones.</p>
 
         {/* A7. Availability, and the real detail only where the guide carries it as a dated,
             sourced field. Where the refund lives in prose, this points at the prose rather
@@ -407,6 +373,179 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
         )}
       </div>
     </details>
+
+    {/* ================= COSTS NOBODY TELLS YOU ABOUT =================
+        The section this whole page is for, given an anchor and a measure of its own.
+
+        WHY IT IS NOT A DANGER SCORE, which is the thing it would most easily have become.
+        Everything below is AVOIDABLE. A single blended number over avoidable costs would be
+        a fear gauge, and a fear gauge is structurally the same move as the lookalike site's
+        countdown timer: it works on the reader rather than for them. It would also be
+        arithmetically wrong, because it would add money the traveler will hand over to money
+        they will never lose, and those two are not the same quantity.
+
+        So there are TWO numbers and they never touch. Amber is what this trip costs if the
+        reader does nothing at all. Green is what stays in their account the moment they know,
+        and green is the one that matters: it is the value of the advice, quantified, which is
+        the opposite of a threat.
+
+        THE BAR IS A PROPORTION, NEVER A SCORE. Its full width is the trip total the
+        calculator already computes, so the two blocks can only ever show how small this is
+        against the trip. A bar that cannot exceed the real total cannot inflate.
+
+        WHERE A FIGURE IS A RANGE THE BAR SHOWS THE RANGE: a solid block to the low end, a
+        hatched block out to the high one. Collapsing a sourced band to its midpoint would
+        invent the one number nobody published. */}
+    {avoidable.length > 0 && (
+      <section class="ex" id="costs-nobody-tells-you-about" aria-labelledby="exHead">
+        <div class="ex-top">
+          <span class="ex-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3.6 6.4v5.1c0 4.6 3.6 8.4 8.4 9.5 4.8-1.1 8.4-4.9 8.4-9.5V6.4z"/><path d="M9.4 12.1 11.3 14l3.5-3.6"/></svg></span>
+          <h3 class="ex-h" id="exHead">Costs nobody tells you about</h3>
+        </div>
+
+        {/* The framing line. Calm on purpose: no alarm word, no urgency, no exclamation. The
+            reader is being handed a list, not a warning. */}
+        <p class="ex-lead">Most of it you can keep. Here is every dollar of it.</p>
+
+        {/* The static half of both totals, handed to render() as attributes rather than
+            recomputed there. The live half is the fee lines and the reader's own inputs.
+            Every number here was read back out of a sourced string in avoidable.js by a
+            strict parser, so none of them can disagree with the row it came from. */}
+        {exHasFigure && (
+          <div
+            class="ex-nums"
+            id="exNums"
+            data-pay-live={EX.payLive ? '1' : '0'}
+            data-pay-pct-lo={String(EX.payPctLo)}
+            data-pay-pct-hi={String(EX.payPctHi)}
+            data-pay-flat-lo={String(EX.payFlatLo)}
+            data-pay-flat-hi={String(EX.payFlatHi)}
+            data-pay-pp-lo={String(EX.payPpLo)}
+            data-pay-pp-hi={String(EX.payPpHi)}
+            data-pay-unpriced={String(EX.payUnpriced)}
+            data-dodge-flat-lo={String(EX.dodgeFlatLo)}
+            data-dodge-flat-hi={String(EX.dodgeFlatHi)}
+            data-dodge-pp-lo={String(EX.dodgePpLo)}
+            data-dodge-pp-hi={String(EX.dodgePpHi)}
+            data-dodge-unpriced={String(EX.dodgeUnpriced)}
+          >
+            {/* AMBER. Avoidable but real: money that genuinely leaves the account if the
+                reader does nothing. Hidden rather than shown as $0 where a country has no
+                priced pay-side item. */}
+            <div class="ex-n ex-n-pay" id="exPay" hidden>
+              <span class="ex-n-v num" id="exPayV">&nbsp;</span>
+              <span class="ex-n-l">you'll pay unless you act</span>
+              <span class="ex-n-n" id="exPayN">&nbsp;</span>
+            </div>
+            {/* GREEN, and the hero. Where nothing on this side carries a sourced price the
+                value is a COUNT rather than a dollar figure, and it says so: a scam with no
+                published price is still worth naming, and is never worth pricing. */}
+            <div class="ex-n ex-n-dodge" id="exDodge" hidden>
+              <span class="ex-n-v" id="exDodgeV">&nbsp;</span>
+              <span class="ex-n-l" id="exDodgeL">&nbsp;</span>
+              <span class="ex-n-n" id="exDodgeN">&nbsp;</span>
+            </div>
+          </div>
+        )}
+
+        {/* THE EXPOSURE BAR. Full width is the trip total, so the blocks are a proportion and
+            nothing else. Decorative, because every figure it draws is written in words
+            immediately above it, so it carries no screen-reader duty. */}
+        {exHasFigure && (
+          <div class="ex-barwrap" id="exBarWrap" hidden>
+            <div class="ex-bar" aria-hidden="true">
+              <div class="ex-seg ex-seg-pay" id="exSegPay"></div>
+              <div class="ex-seg ex-seg-payband" id="exSegPayBand"></div>
+              <div class="ex-seg ex-seg-dodge" id="exSegDodge"></div>
+              <div class="ex-seg ex-seg-dodgeband" id="exSegDodgeBand"></div>
+            </div>
+            <p class="ex-scale" id="exScale">&nbsp;</p>
+          </div>
+        )}
+
+        {/* THE DROP-DOWN: every element itemized, each with its link to the page that
+            explains the way out. The rows are unchanged from the block that used to sit at
+            the bottom of the fees section; they are grouped by the same `side` field that
+            drives the two numbers above, so a reader can go from either figure straight to
+            the rows behind it. */}
+        <details class="ex-list">
+          <summary class="ex-sum">
+            <span class="ex-sum-t">Every one of them, and how to avoid it</span>
+            <span class="ex-sum-n">{avoidable.length} {avoidable.length === 1 ? 'item' : 'items'}</span>
+            <svg class="cs-chev" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="ex-body">
+            <p class="ex-body-lead">None of this is in the trip total above, and none of it ever will be. Two of these are money you hand over by default and the rest is money you keep by knowing, so they are counted apart and never added together.</p>
+
+            {exGroups.map(g => (
+              <div class={'ex-group ex-group-' + g.key}>
+                <p class={'cs-half ' + g.cls}>{g.label}</p>
+                <ul class="cs-keep-list">
+                  {g.items.map(a => (
+                    <li class="cs-keep-item">
+                      <div class="cs-keep-top">
+                        <span class="cs-keep-h">{a.title}</span>
+                        {/* A figure only where a sourced field supports one. Everything else
+                            is named with no number rather than given an invented saving. */}
+                        {a.liveFigureId
+                          ? <span class="cs-keep-fig num" id={a.liveFigureId}>&nbsp;</span>
+                          : (a.figure ? <span class="cs-keep-fig">{a.figure}</span> : null)}
+                      </div>
+                      {a.figureNote && <span class="cs-keep-fnote">{a.figureNote}</span>}
+
+                      {/* THE PRICE TAG. Both figures come from the country's own guide, and
+                          this block renders only when both exist. The gap between them is the
+                          argument, so it is shown rather than described: nothing here is
+                          computed, and where a guide names the fake in words only, this block
+                          simply does not appear and the item reads as prose instead. */}
+                      {a.priceVs && (
+                        <span class="cs-vs">
+                          <span class="cs-vs-side">
+                            <span class="cs-vs-k">Official</span>
+                            <b class="cs-vs-real">{a.priceVs.real}</b>
+                          </span>
+                          <span class="cs-vs-arw" aria-hidden="true">&#8594;</span>
+                          <span class="cs-vs-side">
+                            <span class="cs-vs-k">The lookalikes</span>
+                            <b class="cs-vs-fake">{a.priceVs.fake}</b>
+                          </span>
+                        </span>
+                      )}
+
+                      <span class="cs-keep-d">{a.detail}</span>
+                      <span class="cs-keep-esc">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                        {a.escape}
+                      </span>
+                      {/* Every item links to its own how-to. An item that named a cost and
+                          left the reader to find the way out would be alarming them, which is
+                          the one thing this section is built not to do. */}
+                      <a class="cs-keep-link" href={a.href}>{a.hrefLabel}
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* The toggle sits with the pay side, because that is the side it moves: flip
+                    it and the amber figure above drops by the two fee lines. It renders once,
+                    inside the group that owns it. */}
+                {g.key === 'pay' && (
+                  <Fragment>
+                    <label class="hn-toggle hn-lever" id="hnNoFeeWrap">
+                      <input type="checkbox" id="hnNoFee" />
+                      <span class="hn-switch" aria-hidden="true"></span>
+                      <span class="hn-toggle-l">See it with a no-foreign-fee card</span>
+                    </label>
+                    <p class="hn-feenote" id="hnFeeNote">&nbsp;</p>
+                  </Fragment>
+                )}
+              </div>
+            ))}
+          </div>
+        </details>
+      </section>
+    )}
 
     {/* ----- Where these numbers come from. Collapsed. ----- */}
     <details class="cs">
@@ -523,6 +662,62 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
   .cs-keep-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:13px;font-weight:600;color:var(--teal-deep);text-decoration:none}
   .cs-keep-link:hover{text-decoration:underline}
 
+  /* ===== COSTS NOBODY TELLS YOU ABOUT =====
+     Its own block rather than a fifth collapsible row, because the two figures and the bar
+     have to be visible without a click: a measure a reader has to open is not a measure at a
+     glance. The list underneath is the part that collapses. */
+  .ex{border:1px solid rgba(14,122,95,.3);border-radius:12px;background:var(--card);padding:15px 15px 13px;border-left:3px solid var(--teal)}
+  .ex-top{display:flex;align-items:center;gap:11px}
+  .ex-ic{flex:none;width:29px;height:29px;border-radius:999px;background:#fff;border:1px solid rgba(14,122,95,.2);color:var(--teal-deep);display:flex;align-items:center;justify-content:center}
+  .ex-h{margin:0;font-size:15.5px;font-weight:600;color:var(--teal-deep);line-height:1.3}
+  .ex-lead{margin:9px 0 0;font-size:13.5px;color:#3B4A46;line-height:1.55}
+
+  /* The two figures, side by side and visibly SEPARATE. The gap between them is doing real
+     work: they are two different quantities and the layout must never suggest that adding
+     them would mean anything. No total row, no plus sign, no shared baseline rule. */
+  .ex-nums{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:13px 0 0}
+  .ex-n{padding:11px 12px;border-radius:10px;border:1px solid var(--line);background:var(--paper);min-width:0}
+  .ex-n[hidden]{display:none}
+  /* A single visible figure spans the row rather than leaving a hole where the other would
+     have been, which is what a data-poor country looks like: intentional, not broken. */
+  .ex-nums:has(.ex-n[hidden]) .ex-n:not([hidden]){grid-column:1 / -1}
+  .ex-n-pay{background:var(--amber-bg);border-color:rgba(180,83,9,.22)}
+  .ex-n-dodge{background:var(--green-bg);border-color:#C2E0C8}
+  .ex-n-v{display:block;font-family:var(--serif);font-size:22px;font-weight:500;line-height:1.15;font-variant-numeric:tabular-nums}
+  .ex-n-pay .ex-n-v{color:var(--amber)}
+  .ex-n-dodge .ex-n-v{color:#10502C}
+  .ex-n-l{display:block;margin-top:3px;font-size:13px;font-weight:600;color:var(--ink);line-height:1.4}
+  .ex-n-n{display:block;margin-top:4px;font-size:12px;color:var(--muted);line-height:1.45}
+
+  /* THE BAR. Full width is the trip total, so a block can only ever be a proportion of a
+     real number. The track is the rest of the trip and is deliberately neutral: colouring it
+     would turn a proportion into a verdict. */
+  .ex-barwrap{margin:12px 0 0}
+  .ex-barwrap[hidden]{display:none}
+  .ex-bar{display:flex;height:10px;border-radius:999px;background:var(--line);overflow:hidden}
+  .ex-seg{height:100%;width:0;transition:width .3s ease}
+  .ex-seg-pay{background:var(--amber)}
+  .ex-seg-dodge{background:var(--green)}
+  /* The hatched half of a block is the distance from a sourced range's low end to its high
+     one. It reads as "somewhere in here", which is what the sources actually say, and it
+     stops the eye taking the far edge for a figure. */
+  .ex-seg-payband{background:repeating-linear-gradient(135deg,rgba(180,83,9,.85) 0 3px,rgba(180,83,9,.3) 3px 6px)}
+  .ex-seg-dodgeband{background:repeating-linear-gradient(135deg,rgba(21,128,61,.85) 0 3px,rgba(21,128,61,.3) 3px 6px)}
+  .ex-scale{margin:7px 0 0;font-size:12.5px;color:var(--muted);line-height:1.5}
+
+  /* ----- the itemized drop-down ----- */
+  .ex-list{margin:13px 0 0;border-top:1px solid var(--line)}
+  .ex-sum{display:flex;align-items:center;gap:10px;padding:11px 0 0;cursor:pointer;list-style:none}
+  .ex-sum::-webkit-details-marker{display:none}
+  .ex-sum:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+  .ex-sum-t{flex:1;min-width:0;font-size:14px;font-weight:600;color:var(--teal-deep);line-height:1.35}
+  .ex-sum-n{flex:none;font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+  .ex-list[open] .cs-chev{transform:rotate(180deg)}
+  .ex-body{padding:2px 0 0}
+  .ex-body-lead{margin:9px 0 2px;font-size:13px;color:var(--muted);line-height:1.55}
+  .ex-group{margin:12px 0 0}
+  .ex-group .cs-half{margin-top:0}
+
   /* ----- a sourced line: a label, its unit, its detail ----- */
   .cs-line{display:block;padding:11px 0 0;margin:11px 0 0;border-top:1px solid var(--line)}
   .cs-line-h{display:block;font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.35}
@@ -563,5 +758,14 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
        down so the official-then-fake reading order still holds. */
     .cs-vs{flex-direction:column;gap:7px}
     .cs-vs-arw{align-self:flex-start;transform:rotate(90deg)}
+
+    /* The two figures stack rather than shrink. Side by side at this width they would each
+       get about 150px, which breaks "$190 to $470" across two lines and makes a range read
+       as two separate numbers. Stacked, each keeps its own line and the gap between them
+       still says they are separate quantities. */
+    .ex{padding:13px 13px 12px}
+    .ex-nums{grid-template-columns:1fr;gap:9px}
+    .ex-n-v{font-size:20px}
+    .ex-h{font-size:15px}
   }
 </style>

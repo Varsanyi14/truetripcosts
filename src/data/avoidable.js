@@ -23,6 +23,33 @@
 // calculator's own computed cardFee plus atmFee, which is exactly what the existing
 // no-foreign-fee toggle already demonstrates. That is not a savings estimate, it is the fee
 // the calculator is already charging, quoted back.
+//
+// ---------------------------------------------------------------------------
+// THE EXPOSURE SPLIT, and the one number this file must never produce.
+//
+// The items below now carry two extra fields, `side` and `worth`, which exist so the
+// calculator can put an honest measure at the head of this list instead of a bare column of
+// rows. There are TWO measures and there is never a third:
+//
+//   side: 'pay'    AVOIDABLE BUT REAL. Money the traveler genuinely hands over if they do
+//                  nothing at all: their own bank's foreign fees, the dynamic currency
+//                  conversion they accept at the terminal, the exchange desk they use.
+//   side: 'dodge'  PURE AVOIDANCE. Money that never leaves their account once they know:
+//                  the lookalike site's price for a free form, the reseller's markup, tax
+//                  they can reclaim, a tip they were about to pay twice.
+//
+// THOSE TWO ARE NEVER ADDED TOGETHER. A blended total would sum money-they-will-pay with
+// money-they-will-never-lose, which is not a quantity, and the result would be one large
+// alarming number about a page whose entire argument is that none of this has to happen.
+// There is no danger score here, no percentage at risk, no combined figure. If a future
+// change makes these two sum into one, that change is wrong.
+//
+// `worth` IS NOT A NEW FACT. Every figure it carries is read back out of the sourced string
+// already rendered on the item, by the two strict parsers below. Nothing is transcribed by
+// hand, so a figure and its own number cannot drift apart, and a sourced value that is not a
+// plain dollar amount (another currency, a multiple, a phrase) parses to null and the item is
+// COUNTED rather than priced. Inventing a scam's price to fatten a total would be the same
+// sin as the scam.
 
 import { arrivalFormFor } from './arrival-forms.js';
 import { entryChargesFor, isBillable } from './entry-charges.js';
@@ -184,7 +211,61 @@ const EXEMPTION = {
   },
 };
 
+// The site-wide DCC band, written once. The item's visible figure and the number the exposure
+// total reads are the same constant, so they cannot drift.
+const DCC_BAND = 'about 3 to 8%';
+
 const plain = (s) => String(s || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+
+// ---------------------------------------------------------------------------
+// THE TWO PARSERS. Both are deliberately strict and both fail closed.
+//
+// They exist so that no figure in this file is ever written down twice. The item shows the
+// sourced string; the exposure total reads its number back out of that same string. Change
+// the string and the number follows, which is the only arrangement where the headline and the
+// row underneath it cannot disagree.
+//
+// FAILING CLOSED IS THE POINT. Anything that is not a plain dollar amount returns null:
+// "IDR 150,000", "20 pounds", "two to three times that", "the published portal fee",
+// "nothing", "free". Those are all real values on real items below, and every one of them
+// SHOULD be unpriced. A looser parser would have to guess an exchange rate or a multiplier,
+// and a guessed number in a total presented as honest is worse than no total at all.
+
+// "$30", "$30 to $50", "about $81", "$20 a person". Anything else is null.
+const USD_RE = /^(?:about\s+)?\$([\d,]+(?:\.\d{1,2})?)(?:\s+to\s+\$([\d,]+(?:\.\d{1,2})?))?(\s+(?:a|per)\s+person)?$/i;
+function usdRange(s) {
+  const m = USD_RE.exec(String(s == null ? '' : s).trim());
+  if (!m) return null;
+  const lo = parseFloat(m[1].replace(/,/g, ''));
+  const hi = m[2] ? parseFloat(m[2].replace(/,/g, '')) : lo;
+  if (!isFinite(lo) || !isFinite(hi) || lo < 0 || hi < lo) return null;
+  return { lo, hi, perPerson: !!m[3] };
+}
+
+// "about 3 to 8%", "19%". Used for one item only, see the guard at its call site.
+const PCT_RE = /^(?:about\s+)?(\d+(?:\.\d+)?)(?:\s+to\s+(\d+(?:\.\d+)?))?\s*%$/i;
+function pctRange(s) {
+  const m = PCT_RE.exec(String(s == null ? '' : s).trim());
+  if (!m) return null;
+  const lo = parseFloat(m[1]);
+  const hi = m[2] ? parseFloat(m[2]) : lo;
+  if (!isFinite(lo) || !isFinite(hi) || lo < 0 || hi < lo) return null;
+  return { lo, hi };
+}
+
+// The markup is the gap between the two prices, and it only exists where BOTH sides parse as
+// dollars. Egypt is currently the only country where they do. Everywhere else the reseller
+// item is real, named and counted, with no figure attached, which is exactly what the guides
+// support.
+function markupRange(official, fake) {
+  const o = usdRange(official), f = usdRange(fake);
+  if (!o || !f) return null;
+  const lo = f.lo - o.hi, hi = f.hi - o.lo;
+  if (!(hi > 0)) return null;
+  // An entry charge is per person by definition, stated as such on the object
+  // entry-charges.js returns, so the markup that rides it is per person too.
+  return { kind: 'usd', lo: Math.max(0, lo), hi, perPerson: true };
+}
 
 // Builds the avoidable list for one country. Order is deliberate: the two that cost the most
 // and are easiest to refuse come first.
@@ -206,10 +287,25 @@ export function avoidableFor(c) {
       escape: 'Choose ' + cur + ' every time, at a till and at an ATM.',
       detail: 'Dynamic currency conversion lets the machine set its own rate on top of any fee, and it runs about 3 to 8 percent on whatever you put on the card. It is the single easiest charge on this page to refuse, and it costs nothing to say no.',
       // A range, not a dollar figure: the band is sourced, the multiplication would not be.
-      figure: 'about 3 to 8%',
+      figure: DCC_BAND,
       figureNote: 'on what you card',
       href: '/' + c.slug + '#cards',
       hrefLabel: 'How to decline it',
+      side: 'pay',
+      // THE ONE PERCENTAGE THAT IS ALLOWED TO BECOME MONEY, and only as a band.
+      //
+      // The line above says the multiplication is not sourced, and that still holds for a
+      // SINGLE dollar figure: picking 3, or 8, or anything between, would be choosing an end
+      // of a band nobody measured. Carrying both ends through to both ends of the exposure
+      // total keeps the band a band. The reader sees "$70 to $190", never "$130".
+      //
+      // The base is the card base the calculator already computes, which is what the item
+      // already claims in words ("on what you card"), so this adds no new assumption beyond
+      // the one the row is already making.
+      //
+      // NOT the exemption rate below, which is also a percentage and must stay unpriced. See
+      // the note on that item for why.
+      worth: (() => { const p = pctRange(DCC_BAND); return p ? { kind: 'pctCardBase', lo: p.lo, hi: p.hi } : null; })(),
     });
   }
 
@@ -226,6 +322,11 @@ export function avoidableFor(c) {
     figureNote: 'what the fees above come to',
     href: '#calcNoFee',
     hrefLabel: 'The cards that do not charge it',
+    side: 'pay',
+    // The only exact figure in the whole exposure measure, because it is not an estimate of
+    // anything: it is the fee the calculator is charging on this reader's own inputs, three
+    // lines further up the same page. The calculator fills it at render time.
+    worth: { kind: 'liveFees' },
   });
 
   // 3. Exchange desks. Name-only: no honest spread figure exists per country, and the guides
@@ -238,6 +339,12 @@ export function avoidableFor(c) {
       detail: 'Exchange counters make their money on the spread rather than on a stated fee, which is why we publish no percentage for it: it moves by counter, by hour and by note. The rule is what is reliable, not the number.',
       href: '/' + c.slug + '#cash',
       hrefLabel: 'Getting cash here',
+      side: 'pay',
+      // Real money, and genuinely unpriced. The spread moves by counter and by hour, the
+      // guides say so, and no figure exists to read. So it is named in the list and counted
+      // beside the total rather than summed into it: a phantom figure here would make the
+      // amber number look more precise than the facts behind it.
+      worth: null,
     });
   }
 
@@ -255,6 +362,10 @@ export function avoidableFor(c) {
         : c.name + ' refunds sales tax to visitors on qualifying shopping, with the rate and any minimum spend set out in this guide. Most travelers never claim it, and we put no dollar figure on it, because it depends on what you buy.',
       href: '#taxes-and-refunds',
       hrefLabel: 'The rate and the minimum spend',
+      side: 'dodge',
+      // Money the traveler is owed, and deliberately unpriced: what comes back depends on
+      // what they buy, which this page never asks. Counted, never estimated.
+      worth: null,
     });
   }
 
@@ -284,6 +395,13 @@ export function avoidableFor(c) {
       priceVs: fake ? { real: 'free', fake: fake } : null,
       href: '/arrival-forms',
       hrefLabel: 'Every form, and its real site',
+      side: 'dodge',
+      // The whole fake price is the dodge, because the real price is nothing. Per person: the
+      // form is filed per traveler, so two travelers are quoted for two forms.
+      //
+      // Only three guides publish a range. The other five forms are real and the lookalikes
+      // are real, and they carry no number here, because none is sourced.
+      worth: (() => { const u = usdRange(fake); return u ? { kind: 'usd', lo: u.lo, hi: u.hi, perPerson: true } : null; })(),
     });
   }
 
@@ -305,6 +423,13 @@ export function avoidableFor(c) {
       priceVs: r.fake ? { real: r.official, fake: r.fake } : null,
       href: '#true-cost',
       hrefLabel: 'The official source for this charge',
+      side: 'dodge',
+      // THE MARKUP IS THE DODGE, NOT THE WHOLE RESELLER PRICE. The official charge is owed
+      // either way, so only the gap above it is money the traveler keeps. Both sides have to
+      // parse as dollars for the gap to exist, which today is Egypt alone: Indonesia's is in
+      // rupiah and expressed as a multiple, and the rest have no sourced fake side at all.
+      // Those are counted, not priced.
+      worth: markupRange(r.official, r.fake),
     });
   } else if (charges.length) {
     // A real charge with no reseller data of its own: named, never figured.
@@ -315,6 +440,8 @@ export function avoidableFor(c) {
       detail: 'The charge itself is unavoidable. Paying an agent on top of it is not, and the sites that rank above the official one are agents. We publish no figure for the markup because it varies by reseller.',
       href: '#true-cost',
       hrefLabel: 'The official source for this charge',
+      side: 'dodge',
+      worth: null,
     });
   }
 
@@ -332,6 +459,11 @@ export function avoidableFor(c) {
       priceVs: { real: 'nothing', fake: 'whatever they ask' },
       href: '/' + c.slug,
       hrefLabel: 'What you actually need to enter',
+      side: 'dodge',
+      // "Whatever they ask" is the honest fake side and it is not a number, so this item is
+      // counted. Pricing a document that does not exist would be inventing the scam's own
+      // price list.
+      worth: null,
     });
   }
 
@@ -347,6 +479,9 @@ export function avoidableFor(c) {
       detail: 'A service charge is ' + (tipRow.serviceCharge === 'always' ? 'always' : 'usually') + ' added to the bill in ' + c.name + ', so a tip on top of it is paying for service twice. We put no figure on this one, because what you would have added is up to you.',
       href: '/' + c.slug + '/tipping',
       hrefLabel: 'How tipping works here',
+      side: 'dodge',
+      // Categorical by design: what the traveler would have added is up to the traveler.
+      worth: null,
     });
   }
 
@@ -362,6 +497,27 @@ export function avoidableFor(c) {
       figureNote: 'you should not be paying',
       href: ex.href,
       hrefLabel: 'How the exemption works',
+      side: 'dodge',
+      // DELIBERATELY UNPRICED, and this is the closest call in the file, so here is the
+      // reasoning in full.
+      //
+      // The rate is sourced and the calculator holds a room total, so 19% of the room looks
+      // computable. It is not, for two reasons that both push the same way. First, the base:
+      // a room price a traveler types in is whatever their booking site showed them, and
+      // whether that already includes the local VAT is unknown to this page. Second, the
+      // arithmetic: where a price IS tax-inclusive, removing a 21% VAT takes about 17.4% off
+      // the gross, not 21%, so the sourced rate is the wrong multiplier against the wrong
+      // base. Two unknowns compounding into the site's headline honesty measure is not a
+      // trade worth making.
+      //
+      // So it shows its rate on its own row, where the reader can apply it to a bill they can
+      // actually see, and it is COUNTED beside the total rather than summed into it. This
+      // understates the dodge total for Colombia and Argentina, on purpose. Understating is
+      // survivable; a confident wrong number on this page is not.
+      //
+      // FLAGGED TO MAIN: if the guides ever state whether quoted room rates are VAT
+      // inclusive, this becomes computable and should be revisited.
+      worth: null,
     });
   }
 
@@ -373,3 +529,59 @@ export function avoidableFor(c) {
 
 // Exported so a check or a page can report the coverage hole rather than discover it later.
 export const refundStatusFor = (slug) => REFUND[slug] || 'absent';
+
+// ---------------------------------------------------------------------------
+// THE EXPOSURE SUMMARY: the static half of the two honest numbers.
+//
+// Returns the parts that are known at build time. The calculator supplies the rest at render
+// time, because two of the inputs are the reader's own: the card base the percentage band
+// applies to, and how many travelers a per-person figure multiplies by.
+//
+// THE SHAPE IS TWO SIDES THAT NEVER MEET. Nothing in here adds `pay` to `dodge`, and the
+// consumer must not either. Each side carries a low and a high because several sourced
+// figures are ranges, and a range collapsed to its middle is a number nobody published.
+//
+// `unpriced` is a COUNT, not a zero. It is how many real items on that side carry no sourced
+// figure, so the page can say "and three more we will help you avoid" instead of quietly
+// implying that three items are worth nothing. Absence is not zero, on this page most of all.
+export function exposureFor(c) {
+  const items = avoidableFor(c);
+  const s = {
+    // pay side: avoidable but real
+    payLive: false,        // the calculator's own card and ATM fee lines belong to this side
+    payPctLo: 0, payPctHi: 0,   // percent of the card base (DCC)
+    payFlatLo: 0, payFlatHi: 0, // whole-trip dollars
+    payPpLo: 0, payPpHi: 0,     // dollars per traveler
+    payUnpriced: 0,
+    // dodge side: pure avoidance
+    dodgeFlatLo: 0, dodgeFlatHi: 0,
+    dodgePpLo: 0, dodgePpHi: 0,
+    dodgeUnpriced: 0,
+    // how many items are on each side at all, so a consumer can tell an empty side from a
+    // side that is merely unpriced
+    payItems: 0, dodgeItems: 0,
+  };
+  for (const it of items) {
+    const side = (it.side === 'dodge') ? 'dodge' : 'pay';
+    s[side + 'Items'] += 1;
+    const w = it.worth;
+    if (!w) { s[side + 'Unpriced'] += 1; continue; }
+    if (w.kind === 'liveFees') { s.payLive = true; continue; }
+    if (w.kind === 'pctCardBase') {
+      // Guarded on purpose. A percentage of the card base is money the traveler pays, so it
+      // can only ever sit on the pay side; a dodge item reaching for this kind would be a
+      // modelling mistake, and it is counted rather than silently misfiled.
+      if (side !== 'pay') { s[side + 'Unpriced'] += 1; continue; }
+      s.payPctLo += w.lo; s.payPctHi += w.hi;
+      continue;
+    }
+    if (w.kind === 'usd') {
+      const k = side + (w.perPerson ? 'Pp' : 'Flat');
+      s[k + 'Lo'] += w.lo; s[k + 'Hi'] += w.hi;
+      continue;
+    }
+    // An unrecognised kind is counted, never guessed at.
+    s[side + 'Unpriced'] += 1;
+  }
+  return s;
+}

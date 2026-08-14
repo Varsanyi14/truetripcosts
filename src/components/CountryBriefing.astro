@@ -1459,6 +1459,128 @@ const kfState = (f) => {
       // is precisely what the no-foreign-fee toggle takes to zero. Not an estimated saving.
       setPrev('avFees', shown(cardFee) + shown(atmFee));
 
+      // ----- COSTS NOBODY TELLS YOU ABOUT: the two figures and the exposure bar -----
+      //
+      // THE RULE THIS BLOCK EXISTS TO KEEP: there are two numbers and they are never added.
+      // `pay` is money that leaves the account if the reader does nothing. `dodge` is money
+      // that never leaves it once they know. Summing them would put money-they-will-never-
+      // lose into a figure presented as a cost, which is both wrong arithmetic and the exact
+      // fear-gauge this section is built to be the opposite of. There is no combined total
+      // anywhere below, no percentage at risk, and no score.
+      //
+      // The static half of each figure arrives as data attributes from avoidable.js, where
+      // every number was parsed back out of a sourced string. This adds only the parts that
+      // depend on the reader's own inputs: the live fee lines, the card base a sourced
+      // percentage band applies to, and the traveler count a per-person figure multiplies by.
+      const exN = id('exNums');
+      if (exN) {
+        const d = exN.dataset;
+        const n = k => { const v = parseFloat(d[k]); return isFinite(v) ? v : 0; };
+        const live = (d.payLive === '1');
+        const feesNow = shown(cardFee) + shown(atmFee);
+
+        // Both ends of every sourced range carried through to both ends of the figure. A
+        // band collapsed to its middle would be the one number nobody published.
+        const payFixed = (live ? feesNow : 0) + n('payFlatLo') + n('payPpLo') * trav;
+        const payLo = payFixed + cardBase * (n('payPctLo') / 100);
+        const payHi = (live ? feesNow : 0) + n('payFlatHi') + n('payPpHi') * trav + cardBase * (n('payPctHi') / 100);
+        const dodgeLo = n('dodgeFlatLo') + n('dodgePpLo') * trav;
+        const dodgeHi = n('dodgeFlatHi') + n('dodgePpHi') * trav;
+
+        // Whether a SIDE carries a sourced figure at all is a build-time fact about the
+        // country, not a runtime fact about this reader's inputs. Keeping the two apart is
+        // what lets the no-foreign-fee toggle show an honest $0 (a real result the reader
+        // just caused) without a country that simply has no priced item on that side ever
+        // showing a $0 it did not earn: that one hides instead.
+        const hasPay = live || n('payPctHi') > 0 || n('payFlatHi') > 0 || n('payPpHi') > 0;
+        const hasDodge = n('dodgeFlatHi') > 0 || n('dodgePpHi') > 0;
+        const payUn = Math.round(n('payUnpriced'));
+        const dodgeUn = Math.round(n('dodgeUnpriced'));
+
+        const money = (lo, hi) => (Math.round(lo) === Math.round(hi)) ? usd(lo) : (usd(lo) + ' to ' + usd(hi));
+        // A share of the trip, per side and never blended. Under one percent says so rather
+        // than rounding to a zero that would read as nothing.
+        const share = (lo, hi) => {
+          if (!(total > 0)) return '';
+          const f = v => { const q = (v / total) * 100; return (q > 0 && q < 1) ? '<1' : String(Math.round(q)); };
+          const a = f(lo), b = f(hi);
+          return (a === b) ? ('About ' + a + '% of your trip.') : ('About ' + a + '% to ' + b + '% of your trip.');
+        };
+        const setTx = (elId, tx) => { const e = id(elId); if (e) e.textContent = tx; };
+
+        // ----- amber: avoidable but real -----
+        const payBox = id('exPay');
+        if (payBox) payBox.hidden = !hasPay;
+        if (hasPay) {
+          setTx('exPayV', money(payLo, payHi));
+          const bits = [];
+          if (live) bits.push(state.noFee ? 'your no-foreign-fee card just took the two fee lines to $0' : 'the two fee lines above');
+          if (n('payPctHi') > 0) bits.push(fmtPct(n('payPctLo')) + ' to ' + fmtPct(n('payPctHi')) + ' on the ' + usd(cardBase) + ' you put on the card');
+          let note = bits.length ? (bits.join(', plus ') + '. ') : '';
+          note = note.charAt(0).toUpperCase() + note.slice(1);
+          // An unpriced item is COUNTED, never valued at zero. Saying how many are missing
+          // from the figure is what stops the figure being read as the whole story.
+          if (payUn > 0) note += 'Plus ' + payUn + ' more we put no figure on. ';
+          setTx('exPayN', note + share(payLo, payHi));
+        }
+
+        // ----- green: pure avoidance, and the one that is the point -----
+        const dodgeBox = id('exDodge');
+        if (dodgeBox) dodgeBox.hidden = !(hasDodge || dodgeUn > 0);
+        if (hasDodge) {
+          setTx('exDodgeV', money(dodgeLo, dodgeHi));
+          setTx('exDodgeL', "in scams and markups we'll help you dodge");
+          setTx('exDodgeN', (dodgeUn > 0 ? ('Plus ' + dodgeUn + ' more below with no published price, so ' + (dodgeUn === 1 ? 'it is' : 'they are') + ' not in this figure. ') : '') + share(dodgeLo, dodgeHi));
+        } else if (dodgeUn > 0) {
+          // NO SOURCED PRICE ANYWHERE ON THIS SIDE, which is the normal case: only four of
+          // the guides publish what a lookalike charges. So the figure is a COUNT and it is
+          // presented as a count. The alternative is inventing a scam's price list to fill a
+          // slot, which would make this the least honest number on a site whose entire
+          // argument is the opposite.
+          //
+          // "KEEP", NOT "DODGE", and the difference matters. This side holds more than scams:
+          // a sales tax you can claim back and a service charge you were about to tip on top
+          // of are both here, and neither is a charge anybody is trying to dodge. The figure
+          // above can say "scams and markups" because only a scam price or a reseller markup
+          // can ever contribute a number to it. This one cannot.
+          setTx('exDodgeV', String(dodgeUn));
+          setTx('exDodgeL', dodgeUn === 1 ? "thing here we'll help you keep" : "things here we'll help you keep");
+          setTx('exDodgeN', dodgeUn === 1
+            ? 'No published price we can verify for it, so nothing is counted in dollars. It is listed below with the way out.'
+            : 'No published price we can verify for these, so nothing is counted in dollars. Each is listed below with the way out.');
+        }
+
+        // ----- the bar: a proportion of the real trip total, and nothing else -----
+        const barWrap = id('exBarWrap');
+        const bar = barWrap ? barWrap.querySelector('.ex-bar') : null;
+        const anyFigure = (payHi > 0 || dodgeHi > 0);
+        if (barWrap) barWrap.hidden = !(total > 0 && anyFigure);
+        if (total > 0 && anyFigure) {
+          const pct = v => Math.max(0, (v / total) * 100);
+          const wPay = pct(payLo), wPayB = pct(payHi - payLo), wDodge = pct(dodgeLo), wDodgeB = pct(dodgeHi - dodgeLo);
+          const raw = wPay + wPayB + wDodge + wDodgeB;
+          // WHEN IT WILL NOT FIT, IT IS NOT DRAWN. A traveler can set this to a prepaid room,
+          // no flights and one night, and then a per-person visa markup is genuinely larger
+          // than the total that remains. Scaling the blocks down to fit would draw a full bar
+          // and say "all of your trip is exposed", which is false and is precisely the alarm
+          // this section refuses to raise. So the bar steps aside and says what is missing.
+          // The two figures above stay: they are still true, it is the proportion that is not
+          // yet meaningful.
+          const fits = (raw <= 100);
+          if (bar) bar.hidden = !fits;
+          if (fits) {
+            const seg = (elId, w) => { const e = id(elId); if (e) e.style.width = w + '%'; };
+            seg('exSegPay', wPay); seg('exSegPayBand', wPayB);
+            seg('exSegDodge', wDodge); seg('exSegDodgeBand', wDodgeB);
+            const banded = (wPayB > 0 || wDodgeB > 0);
+            setTx('exScale', 'The full bar is your ' + usd(total) + ' trip, so both blocks are drawn to scale against it.'
+              + (banded ? ' The hatched part of a block is a range the sources give, not a firmer number inside it.' : ''));
+          } else {
+            setTx('exScale', 'Your trip is set to ' + usd(total) + ' at the moment, which these figures are larger than, so there is nothing sensible to draw them against. Add your flights and your room above and the bar comes back.');
+          }
+        }
+      }
+
       const cp = Math.round(cashShare * 100);
       id('cashBar').style.width = cp + '%';
       id('cardBar').style.width = (100 - cp) + '%';
