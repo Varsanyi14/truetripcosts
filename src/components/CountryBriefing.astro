@@ -1606,6 +1606,13 @@ const kfState = (f) => {
   .rel-hlink{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
   .rel-hlink:hover{text-decoration-color:var(--teal)}
   #cards{scroll-margin-top:74px}
+  /* Every in-page jump target has to clear the sticky nav, or it lands with its first line
+     tucked underneath. The site already does this for #cards and .cardlist at 74px; #calc
+     never got it, so every "Check yours" and "Estimate your daily costs" link in the guides
+     and the country data files has been landing clipped. Same figure, so all the jumps on
+     the page now agree. #hn-app is the target the door's TTC it button prefers, because
+     that is where the controls are. */
+  #true-cost,#calc,#hn-app,#everything-we-checked,#ttcCard{scroll-margin-top:74px}
   .rel{margin:38px 0 8px}
   .rel-h{font-family:var(--serif);font-weight:500;font-size:clamp(20px,3vw,26px);letter-spacing:-.01em;margin:0 0 6px}
   .rel-sub{font-size:14.5px;color:var(--muted);line-height:1.5;margin:0 0 16px;max-width:640px}

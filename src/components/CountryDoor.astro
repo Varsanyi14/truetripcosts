@@ -116,9 +116,21 @@ const teaser = doorPool
   // The door: the picker button, and the roll-up teaser with its three guardrails.
   (function () {
     // ----- the picker -----
-    // Same country: scroll to the number already on this page. Different country: open
-    // that guide at its calculator. Falls through to a plain link-free no-op if either
-    // element is missing, so a partial render can never throw.
+    // Same country: scroll to the calculator on this page. Different country: open that
+    // guide at its calculator. Falls through to a plain link-free no-op if either element
+    // is missing, so a partial render can never throw.
+    //
+    // WHERE "TTC IT" LANDS, and why it is the controls rather than the answer. The estimator
+    // is preferred over the #calc wrapper because the wrapper starts with a heading, a
+    // paragraph of scope copy and a full-width section illustration: jumping there puts a
+    // screen of preamble between the traveler and anything they can touch.
+    //
+    // It deliberately does NOT jump to the TTC-ed card. The card is the payoff, but a card
+    // reached before the traveler has said anything is a confident number describing OUR
+    // defaults: seven nights, two travelers, a mid-range room they never chose. This site
+    // exists to argue against exactly that kind of headline figure, so the verb hands over
+    // the inputs first and the number sits immediately below them. Assumptions before
+    // answer, which is the same order the card itself uses on its own face.
     const sel = document.getElementById('doorSel');
     const go = document.getElementById('doorGo');
     if (sel && go) {
@@ -127,7 +139,10 @@ const teaser = doorPool
         const to = sel.value;
         if (!to) return;
         if (to === here) {
-          const target = document.getElementById('calc') || document.getElementById('hn-app');
+          // The estimator when it is live, the section wrapper as the fallback for the
+          // moment before the calculator has initialized.
+          const app = document.getElementById('hn-app');
+          const target = (app && !app.hidden) ? app : document.getElementById('calc');
           if (target) { try { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) { target.scrollIntoView(); } }
           return;
         }
