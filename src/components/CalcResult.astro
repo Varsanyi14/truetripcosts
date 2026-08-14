@@ -35,15 +35,21 @@
 // rendered once, in Getting there, beside the charges they are the counterpart to: showing
 // the same $0 twice on one page would read as two separate zeros.
 import { calcLinesFor } from '../data/calc-lines.js';
+import { avoidableFor } from '../data/avoidable.js';
 import { comparisonsFor } from '../data/region-comparisons.js';
 import { countries } from '../data/index.js';
 
 const { country: c, tipCalc } = Astro.props;
 const L = calcLinesFor(c);
+// The avoidable half of the fees section. Per country, and empty items are simply absent
+// rather than shown as "not applicable": see avoidable.js.
+const avoidable = avoidableFor(c);
+// Whether Getting there holds a real entry charge, so the fees half can cross-reference it
+// instead of printing the same charge twice.
+const hasEntryCharge = !!(L.entryCharges && L.entryCharges.length);
 // The region-compare link carries NO figures, on purpose: a number on a link is a claim the
 // reader cannot check until they have clicked it.
 const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
-const cur = (c.cash && c.cash.cur) || 'the local currency';
 ---
 <div class="hn-result">
 
@@ -113,6 +119,15 @@ const cur = (c.cash && c.cash.cur) || 'the local currency';
         <span class="cs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.8 16 14l-6 2 1.5 4.5L10 22l-2-3.5L4 17l1.5-1.5L10 17l2-6-5.8-1.8a2 2 0 0 1 .4-3.6l1.6-.4 3.3 3.3 4.6-1.4a2 2 0 0 1 2.3 2.8z"/></svg></span>
         <span class="cs-t">Getting there</span>
         <span class="cs-hint">flights, and what the border costs</span>
+        {/* The preview is the FLIGHT total only, not flights plus the border charge. The
+            brief asked for a combined figure, and it cannot be built honestly: entry charges
+            are published as prose with ranges, conditions and their own currencies ("about
+            $36 on the official portal, or $30 on arrival", "NZD 17 in the app or NZD 23
+            online"). Summing that into one dollar figure would mean picking an end of each
+            range and inventing a conversion. So the number here is the one render() already
+            computes, and the border charges sit inside as sourced lines with their units.
+            Flagged to MAIN. */}
+        <span class="cs-prev num" id="prevGetting">&nbsp;</span>
         <svg class="cs-chev" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
       </summary>
       <div class="cs-body">
@@ -209,6 +224,7 @@ const cur = (c.cash && c.cash.cur) || 'the local currency';
         <span class="cs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-5 7 5v13"/><path d="M10 21v-6h4v6"/></svg></span>
         <span class="cs-t">On the ground detail</span>
         <span class="cs-hint">your room, your days, and how much of it is cash</span>
+        <span class="cs-prev num" id="prevGround">&nbsp;</span>
         <svg class="cs-chev" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
       </summary>
       <div class="cs-body">
@@ -265,38 +281,88 @@ const cur = (c.cash && c.cash.cur) || 'the local currency';
       </div>
     </details>
 
-    {/* ----- Fees nobody quotes you. HIGHLIGHTED and OPEN. -----
-        The one section that exists because the rest of the internet hides it, which is why it
-        is the only one not behind a click. It is the same "fees nobody quotes" row the breadth
-        reveal previewed further up the page, now costed against the traveler's own inputs. */}
-    <details class="cs cs-fees" open>
+    {/* ----- Fees nobody quotes you. Closed like the rest, but still edged. -----
+        It used to be the only section open, on the argument that hiding it would betray the
+        premise. The number in the header does that job better: a traveler seeing $234 against
+        a $4,000 trip opens it themselves, and one seeing $65 against $11,000 has learned
+        something true without opening anything. The open state was doing the work the figure
+        should have been doing.
+        It keeps a subtle left edge because it is still the section this site exists for, and
+        it is the same "fees nobody quotes" row the breadth reveal previews further up, now
+        costed against the traveler's own inputs. */}
+    <details class="cs cs-fees">
       <summary class="cs-sum">
         <span class="cs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span>
         <span class="cs-t">Fees nobody quotes you</span>
         <span class="cs-hint">the part that lands on the statement weeks later</span>
+        {/* The unavoidable half only. The avoidable items below carry their own figures and
+            are deliberately NOT added in: a total of money you will not spend is not a
+            quantity, and folding it into a cost line would be nonsense. */}
+        <span class="cs-prev num" id="prevFees">&nbsp;</span>
         <svg class="cs-chev" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
       </summary>
       <div class="cs-body">
+
+        {/* ================= (a) WHAT YOU'LL PAY ================= */}
+        <p class="cs-half cs-half-pay">What you'll pay</p>
         <div class="hn-rows">
           <div class="hn-line hn-fee" id="hnCardFeeLine"><span class="hn-k">Card fee, about <span id="hnFeeQ">3%</span> on the <b id="hnCardBase">$0</b> you put on the card<em id="hnCardFeeNote">your room and the card half of your spend, both on the statement weeks later</em></span><span class="hn-v num" id="hnCardFee">$0</span></div>
           <div class="hn-line hn-fee" id="hnAtmFeeLine"><span class="hn-k">ATM and bank fees on the <b id="hnCashAmt">$0</b> cash you pull<em id="hnAtmNote">a few dollars per withdrawal, plus the roughly 3% most US banks add on foreign cash</em></span><span class="hn-v num" id="hnAtmFee">$0</span></div>
           <div class="hn-line" id="hnTaxLine"><span class="hn-k"><span id="hnTaxLabel">Tourist tax</span><em>collected at the desk even on a prepaid room, per night rather than per trip</em></span><span class="hn-v num" id="hnTax">$0</span></div>
         </div>
         <p class="hn-note" id="hnTaxNote" hidden></p>
+        {/* The entry charge is a cost too, but it lives in Getting there beside the flights it
+            belongs with, and it is one-off per person rather than per night. Cross-referenced
+            rather than repeated: the same charge printed in two sections reads as two charges. */}
+        {hasEntryCharge && <p class="cs-xref">Plus the one-off entry charge, which sits in Getting there above with the flights, because it is per person rather than per night.</p>}
 
-        {/* "What you can avoid", not "Save $X!". The distinction is the point: this states
-            what a different card would do and lets the reader decide, rather than dressing a
-            product recommendation up as a saving they have already made. */}
-        <div class="cs-avoid">
-          <p class="cs-avoid-k">What you can avoid</p>
-          <label class="hn-toggle hn-lever" id="hnNoFeeWrap">
-            <input type="checkbox" id="hnNoFee" />
-            <span class="hn-switch" aria-hidden="true"></span>
-            <span class="hn-toggle-l">See it with a no-foreign-fee card</span>
-          </label>
-          <p class="hn-feenote" id="hnFeeNote">&nbsp;</p>
-          <p class="cs-avoid-p">Whichever card you carry, always choose {cur} rather than dollars at a till or an ATM. Paying in dollars lets the machine set its own worse rate on top of any fee, and that one costs nothing to avoid.</p>
-        </div>
+        {/* ================= (b) WHAT WE'LL HELP YOU KEEP =================
+            The active half, and the reason the site exists. Everything above happens TO the
+            traveler; everything below is a charge they can refuse. Each item names the escape
+            and links to the page that explains it, because telling someone a scam exists
+            without handing them the way out is just alarming them.
+            Each item appears only where it genuinely applies to this country: a dollar-currency
+            country gets no "decline paying in dollars" line, and a country whose own guide says
+            there is no refund scheme gets no "claim your VAT" line. See avoidable.js. */}
+        {avoidable.length > 0 && (
+          <div class="cs-keep">
+            <p class="cs-half cs-half-keep">What we'll help you keep</p>
+            <p class="cs-keep-lead">None of the below is in the total above, because you should not be paying any of it.</p>
+            <ul class="cs-keep-list">
+              {avoidable.map(a => (
+                <li class="cs-keep-item">
+                  <div class="cs-keep-top">
+                    <span class="cs-keep-h">{a.title}</span>
+                    {/* A figure only where a sourced field supports one. Everything else is
+                        named with no number rather than given an invented saving. */}
+                    {a.liveFigureId
+                      ? <span class="cs-keep-fig num" id={a.liveFigureId}>&nbsp;</span>
+                      : (a.figure ? <span class="cs-keep-fig">{a.figure}</span> : null)}
+                  </div>
+                  {a.figureNote && <span class="cs-keep-fnote">{a.figureNote}</span>}
+                  <span class="cs-keep-d">{a.detail}</span>
+                  <span class="cs-keep-esc">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                    {a.escape}
+                  </span>
+                  <a class="cs-keep-link" href={a.href}>{a.hrefLabel}
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            {/* The toggle stays, because it is the one item on the list the traveler can watch
+                happen: flip it and both fee lines above go to zero. It belongs with the
+                avoidable half rather than with the costs. */}
+            <label class="hn-toggle hn-lever" id="hnNoFeeWrap">
+              <input type="checkbox" id="hnNoFee" />
+              <span class="hn-switch" aria-hidden="true"></span>
+              <span class="hn-toggle-l">See it with a no-foreign-fee card</span>
+            </label>
+            <p class="hn-feenote" id="hnFeeNote">&nbsp;</p>
+          </div>
+        )}
 
         {/* A7. Availability, and the real detail only where the guide carries it as a dated,
             sourced field. Where the refund lives in prose, this points at the prose rather
@@ -327,7 +393,14 @@ const cur = (c.cash && c.cash.cur) || 'the local currency';
       <summary class="cs-sum">
         <span class="cs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg></span>
         <span class="cs-t">Where these numbers come from</span>
-        <span class="cs-hint">every assumption, and what we do not claim</span>
+        {/* Shortened so "claim" stops orphaning onto a line of its own, same meaning. The
+            balanced wrap below is the belt to this braces: at an awkward width the browser
+            evens the lines out rather than leaving one word stranded. */}
+        <span class="cs-hint">every assumption, and its limits</span>
+        {/* No figure here, deliberately. This section is methodology, so any number in its
+            header would be a number about nothing. A quiet tag keeps the four headers visually
+            consistent without inventing a total. */}
+        <span class="cs-prev cs-prev-tag">sources</span>
         <svg class="cs-chev" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
       </summary>
       <div class="cs-body">
@@ -370,18 +443,54 @@ const cur = (c.cash && c.cash.cur) || 'the local currency';
   .cs-t{font-weight:600;color:var(--ink);flex:none}
   /* The hint says what is inside, so a reader can decide without opening it. It is the first
      thing to go when the row gets tight. */
-  .cs-hint{flex:1;min-width:0;font-size:13.5px;color:var(--muted);line-height:1.35}
+  /* text-wrap:balance evens out a two-line hint instead of stranding one word, which is what
+     put "claim" on a line by itself. Unsupported browsers just wrap normally. */
+  .cs-hint{flex:1;min-width:0;font-size:13.5px;color:var(--muted);line-height:1.35;text-wrap:balance}
   .cs-chev{flex:none;color:var(--muted);transition:transform .2s ease}
   .cs[open] .cs-chev{transform:rotate(180deg)}
   .cs-body{padding:2px 15px 15px}
 
-  /* The fees section is the one that stays open, and it is tinted and edged so it reads as
-     the section that matters even once the others are opened too. No --bg-accent token exists
-     on the site, so this uses the same teal tint the region bars and the guide prompt already
-     use, at the same values. */
-  .cs-fees{border-color:rgba(14,122,95,.3);background:rgba(14,122,95,.05);border-left:3px solid var(--teal)}
+  /* THE PREVIEW FIGURE. This is what replaced the always-open fees section: the number on a
+     closed row is the hook, so it has to be legible enough to stop a reader without shouting
+     at them. Tabular figures keep the four rows' numbers aligned down the right edge. */
+  .cs-prev{flex:none;font-family:var(--serif);font-size:17px;font-weight:500;color:var(--ink);line-height:1.2;font-variant-numeric:tabular-nums}
+  /* The methodology row's tag, which sits where the others' figures sit so the column still
+     reads as a column, without pretending to be a figure. */
+  .cs-prev-tag{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  .cs-fees .cs-prev{color:var(--teal-deep)}
+
+  /* The fees section is closed like the rest now, so it keeps only a left edge and a faint
+     tint: enough to say "this is the one that matters" without the always-open treatment doing
+     that job. No --bg-accent token exists on the site, so this reuses the teal tint the region
+     bars and the guide prompt already use, at the same values. */
+  .cs-fees{border-color:rgba(14,122,95,.3);background:rgba(14,122,95,.04);border-left:3px solid var(--teal)}
   .cs-fees .cs-ic{background:#fff;border:1px solid rgba(14,122,95,.2)}
   .cs-fees .cs-t{color:var(--teal-deep)}
+
+  /* ----- the two halves of the fees section ----- */
+  .cs-half{margin:12px 0 8px;font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.09em}
+  .cs-half-pay{color:var(--muted)}
+  .cs-half-keep{color:#10502C;margin-top:0}
+  .cs-xref{margin:10px 0 0;font-size:13.5px;color:var(--muted);line-height:1.55}
+
+  /* The avoidable half, set on its own ground so the split is visible at a glance: costs
+     above, refusals below. Green, because this is the only block on the page that is about
+     money staying put. */
+  .cs-keep{margin:16px 0 0;padding:13px 15px;background:var(--green-bg);border:1px solid #C2E0C8;border-radius:10px}
+  .cs-keep-lead{margin:0 0 11px;font-size:13.5px;color:#3B4A46;line-height:1.55}
+  .cs-keep-list{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+  .cs-keep-item{padding:11px 13px;background:#fff;border:1px solid #D3E7D8;border-radius:9px}
+  .cs-keep-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .cs-keep-h{font-size:14.5px;font-weight:600;color:var(--ink);line-height:1.35}
+  /* A figure appears here only where a sourced field supports one, so this style is used by
+     roughly half the items and its absence is normal rather than a gap. */
+  .cs-keep-fig{flex:none;font-family:var(--serif);font-size:16px;font-weight:500;color:#10502C;line-height:1.2;white-space:nowrap}
+  .cs-keep-fnote{display:block;margin-top:1px;font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:right}
+  .cs-keep-d{display:block;margin-top:6px;font-size:13.5px;color:#3B4A46;line-height:1.55}
+  .cs-keep-esc{display:flex;gap:7px;align-items:flex-start;margin-top:8px;font-size:13.5px;font-weight:600;color:#10502C;line-height:1.45}
+  .cs-keep-esc svg{flex:none;margin-top:2px}
+  .cs-keep-link{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:13px;font-weight:600;color:var(--teal-deep);text-decoration:none}
+  .cs-keep-link:hover{text-decoration:underline}
 
   /* ----- a sourced line: a label, its unit, its detail ----- */
   .cs-line{display:block;padding:11px 0 0;margin:11px 0 0;border-top:1px solid var(--line)}
@@ -403,15 +512,21 @@ const cur = (c.cash && c.cash.cur) || 'the local currency';
   .cs-note{margin:12px 0 0;padding:10px 12px;background:var(--paper);border-radius:9px;font-size:13.5px;color:var(--muted);line-height:1.55}
 
   /* "What you can avoid", never "Save $X!". */
-  .cs-avoid{margin:13px 0 0;padding:12px 14px;background:#fff;border:1px solid rgba(14,122,95,.2);border-radius:10px}
-  .cs-avoid-k{margin:0 0 8px;font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--teal-deep)}
-  .cs-avoid-p{margin:8px 0 0;font-size:13.5px;color:var(--muted);line-height:1.55}
 
   @media (max-width:560px){
+    /* On a phone the header becomes two rows: icon, title, figure, chevron across the top,
+       then the hint underneath. The figure stays on the top row beside the title, because it
+       is the whole reason the row is worth looking at. */
     .cs-sum{gap:9px;padding:12px 13px;flex-wrap:wrap}
-    /* The hint drops to its own line rather than squeezing the title to two words. */
-    .cs-hint{flex:1 0 100%;order:4;font-size:13px}
-    .cs-t{flex:1;min-width:0}
+    .cs-hint{flex:1 0 100%;order:5;font-size:12.5px}
+    .cs-t{flex:1;min-width:0;font-size:15px}
+    .cs-prev{order:3;font-size:16px}
+    .cs-chev{order:4}
     .cs-body{padding:2px 13px 13px}
+    .cs-keep{padding:11px 11px}
+    .cs-keep-item{padding:10px 11px}
+    /* The figure drops under the heading rather than squeezing it, and its caption follows. */
+    .cs-keep-top{flex-direction:column;gap:2px}
+    .cs-keep-fnote{text-align:left}
   }
 </style>
