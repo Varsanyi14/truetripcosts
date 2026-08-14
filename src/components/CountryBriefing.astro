@@ -5,6 +5,7 @@ import CountryDoor from './CountryDoor.astro';
 import GutPunch from './GutPunch.astro';
 import BreadthReveal from './BreadthReveal.astro';
 import ArrivalClosingThesis from './ArrivalClosingThesis.astro';
+import TTCedCard from './TTCedCard.astro';
 import EESNotice from './EESNotice.astro';
 import AdvisoryNotice from './AdvisoryNotice.astro';
 import NewTab from './NewTab.astro';
@@ -918,6 +919,13 @@ const kfState = (f) => {
   <noscript>
     <div class="reveal"><div class="t">The full total needs JavaScript switched on. With it off: take your round trip flights and the room price, add your on-the-ground spending, add about 3% for a typical US card's foreign fee on what you put on the card, a few dollars plus about 3% for each ATM cash withdrawal, and {c.name}'s tourist tax.</div></div>
   </noscript>
+
+  {/* THE TTC-ED CARD. Foot of the calculator, so it summarizes the numbers directly above
+      it. It mirrors the calculator's own rendered figures rather than recomputing them, so
+      it cannot disagree with the block it summarizes, and it hides itself if the calculator
+      did not run. The affiliate card shortlist below is an appendix to the calculator
+      rather than part of it, which is why the payoff card sits above it. */}
+  <TTCedCard country={c} />
 
   <details class="cardlist" id="calcNoFee" open>
     <summary class="cardlist-sum">

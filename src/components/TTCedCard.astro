@@ -1,0 +1,312 @@
+---
+// THE "TTC-ed" CARD. The payoff at the foot of the calculator: one screenshot-shareable
+// block that says what this trip actually costs, with the assumptions on its face.
+//
+// THE PROBLEM IT SOLVES. A screenshot of a big number is the misleading headline this whole
+// site exists to argue against. "Japan costs $4,200" is worthless and slightly dishonest:
+// for how many nights, how many people, what kind of room, flights in or not? So the
+// assumptions are not a footnote on this card, they are part of it. If the numbers ever
+// render without them, the card has become the thing it was built to replace.
+//
+// HOW IT CANNOT DESYNC, which is the brief's hard requirement. The card does NO math. Not
+// a simplified version of the calculator's math, not a cached copy of its output: none. It
+// mirrors the text of the calculator's own hero elements, which render() has already
+// written. There is exactly one computation on this page and the card is a second view of
+// it, so "card disagrees with calculator" is not a bug that can happen. It is not
+// reachable from the code.
+//
+// WHY MIRRORING RATHER THAN EXTENDING render(). Writing the card from inside render() would
+// also be correct, and would arguably be tidier. Mirroring wins on one specific ground:
+// it needs no edit to the calculator's script, which is the most delicate code on the site
+// and the one place a regression would be expensive and quiet. The whole card is additive.
+//
+// IT SELF-GATES. It ships hidden and unhides itself only once it has found its sources and
+// seeded real values. If the calculator never initializes, or the JSON payload is
+// malformed, or the script throws, the card simply does not appear rather than showing a
+// frame full of zeros. A hidden honest card beats a shown broken one.
+//
+// DISTINCT FROM THE ARRIVAL THESIS (phase 5), on purpose. This is personal and numeric:
+// what MY trip costs. That one is educational and universal: this scam exists. They are two
+// different things to send someone, so they must not look like one object. This is a
+// bordered, stamped, attributed card. The closer is flat text with no figures at all.
+import { tipping as tippingRows } from '../data/tipping.js';
+
+const { country: c } = Astro.props;
+
+// The tipping line, read from the same desk row /tipping-compared publishes, so there is
+// no second per-country field to drift. It is ADVISORY and adds nothing to any total: the
+// daily spend figure already counts tips. That is stated on the card's face rather than
+// left implicit, because a shared screenshot has no other way to carry it.
+const tipRow = tippingRows.find(r => r.slug === c.slug) || null;
+const tipLine = (tipRow && tipRow.tierRank === 0)
+  ? 'Nothing expected in tips here, so nothing is added for them.'
+  : 'Tips are already inside the daily spending figure, never added on top.';
+---
+{/* hidden until the mirror confirms it has live values. See the self-gating note above. */}
+<div class="ttc" id="ttcCard" hidden>
+  <div class="ttc-top">
+    <p class="ttc-h">{c.name}, TTC-ed</p>
+    <span class="ttc-attrib">truetripcosts.com</span>
+  </div>
+
+  {/* On the ground leads, because it is the figure this site exists to get right. Getting
+      there and Total trip are the supporting pair beside it. */}
+  <div class="ttc-hero">
+    <span class="ttc-hero-l">What {c.name} costs once you land</span>
+    <span class="ttc-hero-v num" id="ttcGround">&nbsp;</span>
+  </div>
+
+  <div class="ttc-pair">
+    <div class="ttc-p">
+      <span class="ttc-p-l">Getting there</span>
+      <span class="ttc-p-v num" id="ttcAir">&nbsp;</span>
+      <span class="ttc-p-n" id="ttcAirNote">&nbsp;</span>
+    </div>
+    <div class="ttc-p">
+      <span class="ttc-p-l">Total trip</span>
+      <span class="ttc-p-v num" id="ttcTotal">&nbsp;</span>
+      <span class="ttc-p-n" id="ttcRange">&nbsp;</span>
+    </div>
+  </div>
+
+  {/* THE HONESTY SPINE. Not a caveat block, not collapsed, not small print: this is what
+      makes a screenshot of the number above mean anything at all. */}
+  <div class="ttc-assume">
+    <p class="ttc-assume-k">What this assumes</p>
+    <p class="ttc-assume-p" id="ttcAssume">&nbsp;</p>
+    <p class="ttc-assume-p ttc-assume-tip">{tipLine}</p>
+  </div>
+
+  <div class="ttc-foot">
+    <span class="ttc-stamp">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+      Checked {c.checked}, every figure sourced
+    </span>
+    <button type="button" class="ttc-share" id="ttcShare" data-slug={c.slug} data-name={c.name}>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7"/><path d="M12 16V4"/><path d="m8 8 4-4 4 4"/></svg>
+      <span id="ttcShareL">Share this</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  // The card's only job: mirror what the calculator already rendered. No arithmetic here,
+  // deliberately. See the desync note at the top of this component.
+  (function () {
+    const card = document.getElementById('ttcCard');
+    if (!card) return;
+
+    // Each pair is [source element the calculator writes, card element that shows it].
+    // Every one of these is written by render(); nothing is derived here.
+    const MIRROR = [
+      ['hnGround', 'ttcGround'],
+      ['hnAir', 'ttcAir'],
+      ['hnTotal', 'ttcTotal'],
+      ['hnAirNote', 'ttcAirNote'],
+      ['hnSub', 'ttcAssume'],
+    ];
+
+    const pairs = MIRROR
+      .map(([from, to]) => [document.getElementById(from), document.getElementById(to)])
+      .filter(([a, b]) => a && b);
+
+    // If the calculator is not on the page in the shape we expect, show nothing at all
+    // rather than an empty frame.
+    if (pairs.length !== MIRROR.length) return;
+
+    const lo = document.getElementById('hnLo');
+    const hi = document.getElementById('hnHi');
+    const range = document.getElementById('ttcRange');
+
+    const txt = (el) => (el && el.textContent ? el.textContent.trim() : '');
+
+    function paint() {
+      for (const [from, to] of pairs) to.textContent = txt(from);
+      // The confidence range, phrased for the card. The two figures are the calculator's
+      // own; only the words around them are written here.
+      if (range) {
+        const a = txt(lo), b = txt(hi);
+        range.textContent = (a && b && a !== '$0' && b !== '$0') ? ('realistically ' + a + ' to ' + b) : '';
+      }
+    }
+
+    // A number the calculator animates fires many mutations while it rolls. Coalescing to
+    // one paint per frame keeps the card exactly in step without doing the work repeatedly.
+    let queued = false;
+    function schedule() {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => { queued = false; paint(); });
+    }
+
+    // textContent assignment replaces the child text node, so childList catches it;
+    // characterData covers any in-place edit.
+    const obs = new MutationObserver(schedule);
+    const opts = { childList: true, characterData: true, subtree: true };
+    for (const [from] of pairs) obs.observe(from, opts);
+    if (lo) obs.observe(lo, opts);
+    if (hi) obs.observe(hi, opts);
+
+    paint();
+
+    // ----- self-gating -----
+    // The card appears only once the calculator has actually initialized. The signal is the
+    // calculator's own: it clears the `hidden` attribute on #hn-app at the end of init, so
+    // that flag means render() has run at least once.
+    //
+    // The obvious test, "does the hero show a value", is wrong and was caught by the DOM
+    // test: the markup ships with a literal $0 in those elements, so a truthiness check
+    // passes before the calculator has done anything and the card would appear showing $0
+    // for a trip. Watching the app's own flag cannot be fooled that way.
+    const app = document.getElementById('hn-app');
+    if (!app) return;
+
+    function reveal() {
+      if (app.hidden) return false;
+      paint();
+      card.hidden = false;
+      return true;
+    }
+
+    // Script order between the calculator bundle and this inline script is not guaranteed,
+    // so handle both: reveal now if init already happened, otherwise watch for it. No
+    // polling, and the observer disconnects itself once it has fired.
+    if (!reveal()) {
+      const gate = new MutationObserver(() => { if (reveal()) gate.disconnect(); });
+      gate.observe(app, { attributes: true, attributeFilter: ['hidden'] });
+    }
+
+    // ----- share -----
+    // The shared text carries the ASSUMPTIONS, not just the number. Sharing "Japan: $4,200"
+    // would recreate the misleading headline this card exists to prevent, so the assumption
+    // sentence and the tipping note travel with the figures.
+    const btn = document.getElementById('ttcShare');
+    const label = document.getElementById('ttcShareL');
+    if (!btn) return;
+
+    // The SETTLED figure, which matters only for sharing.
+    //
+    // The calculator animates a number over about 420ms, and during that roll the displayed
+    // text is a real intermediate value. On screen that is fine and even good: the card and
+    // the hero animate in step, so they always agree. In a SHARED artifact it is not fine.
+    // A screenshot or a pasted message outlives the moment, so capturing a frame from
+    // halfway through the roll would preserve a figure that was never the answer. A DOM
+    // test caught exactly that: sharing within the animation window shipped a mid-roll
+    // total.
+    //
+    // The calculator's roll() parks its target on the element as `_v` before animating, so
+    // that value is the settled answer even mid-roll. Reading it is a deliberate coupling to
+    // the calculator's internals, so it is guarded: anything other than a finite number
+    // falls back to the displayed text, which is correct except inside that one window.
+    // Waiting for the animation instead is not an option, because navigator.share needs the
+    // user's gesture still to be live and a deferred call gets blocked.
+    const usd = (v) => '$' + Math.round(v).toLocaleString('en-US');
+    function settled(id) {
+      const el = document.getElementById(id);
+      if (!el) return '';
+      const v = el._v;
+      return (typeof v === 'number' && isFinite(v)) ? usd(v) : txt(el);
+    }
+
+    function shareText() {
+      const name = btn.dataset.name || '';
+      const assume = txt(document.getElementById('ttcAssume'));
+      const airNote = txt(document.getElementById('ttcAirNote'));
+      const tip = txt(document.querySelector('.ttc-assume-tip'));
+      const lines = [
+        name + ', TTC-ed',
+        'On the ground: ' + settled('hnGround'),
+        'Getting there: ' + settled('hnAir') + (airNote ? ' (' + airNote + ')' : ''),
+        'Total trip: ' + settled('hnTotal'),
+        '',
+        assume,
+        tip,
+      ];
+      return lines.join('\n');
+    }
+
+    function url() {
+      return 'https://truetripcosts.com/' + (btn.dataset.slug || '');
+    }
+
+    function flash(msg) {
+      if (!label) return;
+      const was = label.textContent;
+      label.textContent = msg;
+      setTimeout(() => { label.textContent = was; }, 2200);
+    }
+
+    btn.addEventListener('click', async () => {
+      const text = shareText();
+      const link = url();
+      // Native share where the device offers it, which is the calm option on a phone.
+      if (navigator.share) {
+        try {
+          await navigator.share({ title: (btn.dataset.name || '') + ', TTC-ed', text: text, url: link });
+          return;
+        } catch (e) {
+          // A cancelled share is not an error, and must not fall through to a surprise
+          // clipboard write the person did not ask for.
+          if (e && e.name === 'AbortError') return;
+        }
+      }
+      try {
+        await navigator.clipboard.writeText(text + '\n' + link);
+        flash('Copied');
+      } catch (e) {
+        flash('Press and hold to copy');
+      }
+    });
+  })();
+</script>
+
+<style>
+  /* A real card: border, shadow, its own ground. It is meant to survive being cropped out
+     of the page as a screenshot, so it carries its own headline, stamp and attribution and
+     depends on nothing above it. */
+  .ttc{margin:22px 0 0;padding:22px 24px;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .ttc-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px}
+  .ttc-h{margin:0;font-family:var(--serif);font-weight:500;font-size:23px;line-height:1.2;color:var(--ink);letter-spacing:-.01em}
+  /* Quiet attribution in the corner, so a screenshot says where it came from without the
+     card turning into an advert for the site. */
+  /* Quiet attribution in the corner, so a screenshot says where it came from without the
+     card turning into an advert for the site. Named ttc-attrib rather than ttc-mark: the
+     latter is already LogoMark's class, and although Astro's scoping keeps the styles apart,
+     two different things sharing a class name on the same page is a trap for whoever reads
+     this next. */
+  .ttc-attrib{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--muted)}
+
+  .ttc-hero{display:block;margin:16px 0 0}
+  .ttc-hero-l{display:block;font-size:13.5px;color:var(--muted);line-height:1.4}
+  .ttc-hero-v{display:block;margin-top:2px;font-family:var(--serif);font-weight:500;font-size:42px;line-height:1.05;color:var(--teal-deep);letter-spacing:-.02em}
+
+  .ttc-pair{display:flex;gap:14px;margin:16px 0 0;padding:14px 0 0;border-top:1px solid var(--line)}
+  .ttc-p{flex:1;min-width:0}
+  .ttc-p-l{display:block;font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  .ttc-p-v{display:block;margin-top:3px;font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.15;color:var(--ink)}
+  .ttc-p-n{display:block;margin-top:3px;font-size:12.5px;color:var(--muted);line-height:1.4}
+
+  /* The honesty spine, given real weight on the card's face. Tinted so it reads as part of
+     the card rather than as small print that a screenshot might crop off. */
+  .ttc-assume{margin:16px 0 0;padding:13px 15px;background:var(--paper);border-radius:10px}
+  .ttc-assume-k{margin:0 0 5px;font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+  .ttc-assume-p{margin:0;font-size:14px;line-height:1.55;color:#3B4A46}
+  .ttc-assume-tip{margin-top:5px !important;color:var(--muted)}
+
+  .ttc-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:15px 0 0}
+  .ttc-stamp{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;color:#10502C}
+  .ttc-share{display:inline-flex;align-items:center;gap:7px;font-family:inherit;font-size:14px;font-weight:600;color:var(--teal-deep);background:#fff;border:1px solid rgba(14,122,95,.3);border-radius:999px;padding:8px 15px;cursor:pointer;transition:background .18s ease,border-color .18s ease}
+  .ttc-share:hover{background:rgba(14,122,95,.06);border-color:var(--teal)}
+  .ttc-share:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+
+  @media (max-width:560px){
+    .ttc{padding:18px 16px}
+    .ttc-h{font-size:20px}
+    .ttc-hero-v{font-size:34px}
+    .ttc-p-v{font-size:19px}
+    /* The supporting pair stacks rather than squeezing two figures into half a phone. */
+    .ttc-pair{flex-direction:column;gap:11px}
+    .ttc-foot{gap:12px}
+    .ttc-share{width:100%;justify-content:center}
+  }
+</style>
