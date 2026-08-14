@@ -532,6 +532,69 @@ export default {
         ],
         judgment: "The optional-reservation rule, the Vorteilscard terms and the pass validity on Westbahn are all published and firm. Our confidence in the verdict is rated medium rather than high for one specific reason: we could not verify current Austria pass pricing from a source we trust, so the tier rests on the structure of the fares rather than on arithmetic we have done. Read it as our judgment that cheap saver fares beat a pass on a planned trip in a small country, not as a calculation. Sparschiene starting prices are widely quoted from around ten euros and move by route, date and how early you look. Klimaticket pricing was reported differently across sources we checked, with the figures separated by a few hundred euros, so we describe it as above a thousand euros a year rather than pick one, which is enough to make the point that it is not a visitor's product. How the Vorteilscard interacts with saver fares is genuinely contested and we say so on the page. Checked Aug 2026."
       }
+    },
+    {
+      slug: "driving-and-tolls",
+      glance: [
+        { k: "10-day vignette", v: "12.80 EUR" },
+        { k: "Bills you again", v: "Five motorway sections" },
+        { k: "Grossglockner", v: "46.50 EUR a day, in season" },
+        { k: "From 2027", v: "Digital vignette only" }
+      ],
+      live: true,
+      topic: "driving",
+      caution: "medium",
+      title: "Austria vignette: the roads it does not cover",
+      description: "The 12.80 EUR ten-day vignette covers the network, then five sections bill again at a barrier. Plus the 46.50 EUR Grossglockner, open May to November.",
+      h1: "The Austrian vignette, and the roads it does not cover",
+      lede: "Austria's motorway pass works like Switzerland's right up to the point where it does not. Five sections of the network charge you again at a barrier, all year round, and the scenic roads are private and priced on their own. Here is what to add to the vignette before you drive.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-14",
+      answer: "The <b>10-day vignette costs 12.80 EUR</b> and covers the motorway and expressway network, but <b>five sections bill you again at a barrier</b>: the whole <b>A13 Brenner</b>, the <b>A10 Tauern and Katschberg</b> tunnels, the <b>S16 Arlberg</b> tunnel, the <b>A11 Karawanken</b>, and the <b>A9 Bosruck and Gleinalm</b> tunnels. Those are the ones that <b>always apply</b>, whatever the season. The scenic roads are separate and private: the <b>Grossglockner High Alpine Road is 46.50 EUR</b> for a car for the day, which is <b>three and a half times the ten-day pass, for one road</b>, and it is <b>open roughly the start of May to the start of November</b>, so in winter it is simply closed. <b>Trace your actual route</b> before you buy anything.",
+      sections: [
+        {
+          h: "Five sections charge again, all year",
+          icon: "receipt",
+          key: { fig: "12.80 EUR", tag: "The ten-day vignette", text: "It covers the network, but not the A13 Brenner, the A10 Tauern and Katschberg tunnels, the S16 Arlberg, the A11 Karawanken or the A9 Bosruck and Gleinalm. Those bill separately at a barrier.", tone: "amber" },
+          p: [
+            "The <b>10-day vignette costs 12.80 EUR</b> and covers the motorway and expressway network, which is where the resemblance to Switzerland ends. <b>Five sections bill you again at a barrier</b>: the whole <b>A13 Brenner</b>, the <b>A10 Tauern and Katschberg</b> tunnels, the <b>S16 Arlberg</b> tunnel, the <b>A11 Karawanken</b>, and the <b>A9 Bosruck and Gleinalm</b> tunnels. If your route crosses the Brenner or uses one of the tunnel routes, <b>budget the section toll on top of the vignette</b> and expect to stop at a barrier, where <b>cash and cards both work</b>.",
+            "These are the ones worth planning around, because they <b>apply year round</b>. A summer reader and a February reader meet the same barriers on the same roads, which is not true of the scenic passes below. The practical step is unglamorous and it is the whole job: <b>trace your actual route</b> before you buy anything, rather than buying a vignette and assuming the network is now paid for."
+          ]
+        },
+        {
+          h: "The Grossglockner, and only in season",
+          icon: "calendar",
+          key: { fig: "46.50 EUR", tag: "A day, for one road", text: "The Grossglockner High Alpine Road is private and priced accordingly, at three and a half times the ten-day vignette. It is open roughly the start of May to the start of November, so for a winter trip it is closed rather than expensive.", tone: "amber" },
+          p: [
+            "The <b>Grossglockner High Alpine Road</b> is private, and priced accordingly: <b>46.50 EUR</b> for a car for the day, <b>three and a half times the ten-day pass, for one road</b>. Before the price matters, check the calendar, because the road is <b>open roughly the start of May to the start of November</b>. For a winter trip it is not an expensive option, it is a <b>closed</b> one, and the five motorway sections above are the part of this page that still applies to you.",
+            "In season, three things move the number. <b>Entry after 6pm drops the car rate to 36.50 EUR</b>. A <b>second visit later in the same calendar year is 17.50 EUR</b> if you keep your first ticket, which is <b>tied to your plate</b>. And one catch specifically for visitors: the <b>discounted advance tickets sold through the OAMTC, ARBO and ADAC motoring clubs exclude rental cars</b>, so that saving is closed to most US travelers. <b>Parking at the Ferleiten toll point is a separate 10 EUR a day</b>."
+          ]
+        },
+        {
+          h: "The sticker is ending, and the 18-day catch",
+          icon: "ticket",
+          key: { fig: "18 days", tag: "If you buy a digital one online", text: "A digital 2-month or annual vignette bought online is not valid until the 18th day after purchase, under EU distance-selling law. The 1-day and 10-day versions can be set to start immediately.", tone: "amber" },
+          p: [
+            "One change is worth knowing even for a single trip: the <b>physical windscreen sticker is being sold for the last time in 2026</b>. From the <b>2027 vignette year the digital vignette tied to your licence plate is the only option</b>, so if you drive in Austria regularly, the version you are used to buying at a border petrol station is on its way out.",
+            "The trap in the digital version is timing. If you buy a <b>digital 2-month or annual vignette online, it is not valid until the 18th day after purchase</b> under EU distance-selling law, which is a genuine problem for anyone who buys the week before a trip. The <b>1-day and 10-day versions can be set to start immediately</b>, so for a normal holiday the short options are both cheaper and simpler. For more, see <a href='/austria/rail'>rail tickets in Austria</a>, <a href='/austria/cash-or-card'>cash or card in Austria</a>, and the <a href='/austria'>Austria money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does the Austrian vignette cover the Brenner motorway?", a: "No. The whole A13 Brenner is a section toll charged again at a barrier on top of the vignette, and it applies year round. The same is true of the A10 Tauern and Katschberg tunnels, the S16 Arlberg, the A11 Karawanken and the A9 Bosruck and Gleinalm tunnels." },
+        { q: "How much is the Grossglockner High Alpine Road?", a: "46.50 EUR for a car for the day, which is three and a half times the 12.80 EUR ten-day vignette. Entry after 6pm drops it to 36.50 EUR, and a second visit later in the same calendar year is 17.50 EUR if you keep your first ticket, which is tied to your plate." },
+        { q: "Is the Grossglockner open all year?", a: "No. It is open roughly the start of May to the start of November. On a winter trip the road is closed, so the costs that still matter are the five year-round motorway section tolls rather than the scenic roads." },
+        { q: "Can I use a motoring club discount on the Grossglockner in a rental car?", a: "No. The discounted advance tickets sold through the OAMTC, ARBO and ADAC motoring clubs specifically exclude rental cars, so that saving is closed to most US travelers. Parking at the Ferleiten toll point is a separate 10 EUR a day." },
+        { q: "Is the Austrian vignette sticker being discontinued?", a: "Yes. The physical windscreen sticker is being sold for the last time in 2026, and from the 2027 vignette year the digital vignette tied to your licence plate is the only option." }
+      ],
+      sources: {
+        links: [
+          { label: "Grossglockner Hochalpenstrassen AG: prices and opening times for the 2026 season, including the evening rate and the repeat-visit ticket", url: "https://www.grossglockner.at/en/for-your-visit/prices-opening-times", type: "official" },
+          { label: "oesterreich.gv.at: the vignette for vehicles up to 3.5 t, on prices, the switch to digital only and which vignettes can start immediately", url: "https://www.oesterreich.gv.at/en/themen/mobilitaet/kfz/10/Vignette-und-Maut/Vignette-fuer-Fahrzeuge-bis-3,5-t", type: "gov" },
+          { label: "ASFINAG: the official vignette and section toll pages, on the last year of the adhesive sticker and the separately tolled sections", url: "https://www.asfinag.at/en/toll/vignette/", type: "official" }
+        ],
+        judgment: "The two figures this page rests on, 12.80 EUR for the ten-day vignette and 46.50 EUR for a car on the Grossglockner, are both official and current for 2026. One thing we have deliberately left off the page: the individual A13 Brenner section-toll amount is quoted differently across the sources we checked, by a couple of euros, so rather than pick one we tell you the Brenner charges separately and leave you to see the price at the barrier. Season dates for the Grossglockner move with the snow, so early May and early November are approximate and the road's own site is the place to confirm before a shoulder-season drive. The 2027 switch to digital-only is legislated rather than proposed, but the detail of how it will be sold is still being built out. Checked Aug 2026."
+      }
     }
   ]
 };

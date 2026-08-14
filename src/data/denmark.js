@@ -170,29 +170,30 @@ export default {
     {
       slug: "taxis-and-apps",
       glance: [
-        { k: "Apps", v: "Dantaxi, Bolt (no Uber here)" },
+        { k: "Apps", v: "Taxa 4x35, Viggo, Bolt, Uber" },
         { k: "Taxis", v: "Metered, honest, expensive" },
+        { k: "Fares", v: "Set per company, so compare" },
         { k: "From Copenhagen airport", v: "The Metro beats a taxi" },
         { k: "Tipping", v: "None (round up if you like)" }
       ],
       live: true,
       topic: "taxis",
       caution: "low",
-      title: "Taxis in Denmark: no Uber, the apps, the Metro",
-      description: "Uber does not operate in Denmark, so use Dantaxi, Taxa 4x35 or Bolt. Meters are honest, the Copenhagen airport Metro is quick, and tips are not expected.",
+      title: "Taxis in Denmark: the apps, and the Metro",
+      description: "Uber returned to Copenhagen in 2025 dispatching metered taxis. Every car runs a meter, but tariffs are set per company, so compare. The Metro still wins.",
       h1: "Taxis in Denmark, and getting around Copenhagen",
-      lede: "Uber does not operate in Denmark, so you use apps like Dantaxi or Bolt. Taxis are honest and metered but pricey, and in Copenhagen the Metro does most of the work. Here is how it works.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-23",
-      answer: "<b>Uber does not operate in Denmark</b>, so use a taxi app like <b>Dantaxi</b>, <b>Taxa 4x35</b> or <b>Viggo</b>, and <b>Bolt</b> also works in Copenhagen. Taxis are <b>metered, honest and regulated</b>, but <b>expensive</b>. From <b>Copenhagen airport (CPH)</b>, the <b>Metro</b> runs straight into the city and easily beats a taxi. Tipping is <b>not expected</b>, and Denmark is nearly cashless, so you pay by card or MobilePay.",
+      lede: "Every for-hire car in Denmark runs a fare meter, which is the law that pushed Uber out in 2017 and shaped what came back. Taxis are honest but pricey, tariffs are set company by company rather than fixed citywide, and in Copenhagen the Metro still does most of the work. Here is how it works.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-14",
+      answer: "Denmark's <b>2017 taxi law requires every for-hire car to run a fare meter</b>, which pushed Uber out of the country entirely. <b>Uber returned to Copenhagen in January 2025</b>, dispatching <b>metered Drivr taxis</b>, and <b>Bolt</b> operates here by having <b>bought the local firm Viggo</b>. So the apps that work are <b>Taxa 4x35, Viggo, Bolt and Uber</b>, all dispatching a licensed metered cab. Taxis are <b>honest and metered</b>, but <b>expensive</b>, and because <b>each company sets its own published tariff</b> under a national cap rather than sharing one citywide rate, it is <b>worth comparing</b> rather than assuming the price is the same everywhere. From <b>Copenhagen airport (CPH)</b>, the <b>Metro</b> runs straight into the city and easily beats a taxi. Tipping is <b>not expected</b>, and Denmark is nearly cashless, so you pay by card or MobilePay.",
       sections: [
         {
-          h: "Which app: not Uber",
+          h: "Which app, and why the meter is the point",
           icon: "phoneok",
-          key: { fig: "Bolt", tag: "No Uber here", text: "Uber does not operate in Denmark. Use Dantaxi, Taxa 4x35 or Viggo, or Bolt in Copenhagen, to book a licensed metered taxi.", tone: "teal" },
+          key: { fig: "Jan 2025", tag: "Uber came back", text: "Uber left over the 2017 fare-meter requirement and returned to Copenhagen in January 2025, dispatching metered Drivr taxis. Bolt operates here by having bought the local firm Viggo.", tone: "teal" },
           p: [
-            "The fact to know: <b>Uber does not operate in Denmark</b> (it withdrew in 2017). Instead, use a taxi app: <b>Dantaxi</b> and <b>Taxa 4x35</b> are the big ones, <b>Viggo</b> is an electric-taxi app, and <b>Bolt</b> works in Copenhagen.",
-            "All book a <b>licensed, metered taxi</b> and take card, so getting a fair ride is easy once you have the right app installed."
+            "The fact to know is the law rather than the brand. Denmark's <b>2017 taxi law requires every for-hire car to run a fare meter</b>, and Uber <b>withdrew from the country entirely</b> rather than comply. It <b>returned to Copenhagen in January 2025</b> on different terms, <b>dispatching metered Drivr taxis</b> instead of private drivers, and <b>Bolt</b> got in by <b>buying the local firm Viggo</b>. If you read a guide saying there is no Uber in Denmark, it is out of date.",
+            "So <b>Taxa 4x35, Viggo, Bolt and Uber</b> all book a <b>licensed, metered taxi</b> and take card, and you can treat them as <b>interchangeable and choose on wait time</b>. One thing not to assume: Danish taxi tariffs are <b>set by each company</b> and published, under a <b>national price cap</b>, rather than fixed at one citywide rate, so the fare depends on which car you get into and comparing is worth the ten seconds."
           ]
         },
         {
@@ -224,7 +225,8 @@ export default {
         }
       ],
       faqs: [
-        { q: "Is Uber in Denmark?", a: "No. Uber withdrew from Denmark in 2017 and does not operate there. Use a taxi app like Dantaxi, Taxa 4x35 or Viggo, or Bolt in Copenhagen, all of which book a licensed metered taxi." },
+        { q: "Is Uber in Denmark?", a: "Yes, again. Uber withdrew in 2017 rather than meet the new taxi law's fare-meter requirement, and returned to Copenhagen in January 2025, dispatching metered Drivr taxis rather than private drivers. Bolt also operates, having bought the local firm Viggo. Taxa 4x35 and Viggo work the same way." },
+        { q: "Is ride-hailing cheaper than a taxi in Copenhagen?", a: "Not in the way it is elsewhere, because every for-hire car here runs a meter and the apps dispatch licensed taxis. But tariffs are set by each company under a national cap rather than fixed citywide, so prices are not identical either. Compare the quote, and expect all of them to be expensive next to the Metro." },
         { q: "How do I get from Copenhagen airport to the city?", a: "The Metro (line M2) runs straight into the city center in about 15 minutes for a few kroner, far cheaper than a taxi (roughly 250 to 350 kroner). Trains serve the region too." },
         { q: "Are Danish taxis honest?", a: "Yes. Taxis are metered, regulated and honest, so there is nothing to negotiate. They are simply expensive, which is why Copenhagen's Metro, trains, buses and bikes handle most trips." },
         { q: "Do you tip taxi drivers in Denmark?", a: "No, it is not expected. Fares are metered and paid by card or MobilePay since Denmark is nearly cashless, so at most round up for good service." }
@@ -234,7 +236,7 @@ export default {
           { label: "VisitDenmark: official travel information", url: "https://www.visitdenmark.com/", type: "gov" },
           { label: "US State Department: Denmark country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Denmark.html", type: "gov" }
         ],
-        judgment: "Uber does not operate in Denmark, so taxi apps like Dantaxi and Bolt are the way, taxis are honest but expensive, and the Copenhagen Metro beats a taxi from the airport. Conditions shift over time, so this is our practical read. Checked July 2026."
+        judgment: "The Uber position in Denmark changed recently enough that most guides still have it wrong, so it is worth being precise: Uber returned to Copenhagen in January 2025 dispatching metered Drivr taxis, and Bolt operates here through its purchase of Viggo. We have deliberately not told you that every Danish taxi charges an identical regulated rate, because that is not what the rules do. The 2017 law mandates a meter in every for-hire car, and separately each company sets and publishes its own tariff under a national cap, which means the fare depends on which car you get into and comparing is worth doing. Whether Uber's ownership of other Danish taxi brands has changed the app landscape further is something we are still checking, so we name only what we could verify. Airport fares are quoted inconsistently across sources, some as a fixed price and some as metered, so we keep the range and point you at the Metro. Checked Aug 2026."
       }
     },
     {

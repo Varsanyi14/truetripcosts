@@ -175,38 +175,38 @@ export default {
     {
       slug: "taxis-and-apps",
       glance: [
-        { k: "Apps", v: "Uber, Bolt, Fotaxi" },
+        { k: "Apps", v: "Uber, Bolt, City Taxi, Fotaxi" },
         { k: "Taxis", v: "Yellow, one regulated tariff" },
-        { k: "From Budapest airport", v: "The 100E bus, or a rank taxi" },
+        { k: "From Budapest airport", v: "100E bus, or the Fotaxi stand" },
         { k: "Watch for", v: "Unlicensed taxis, use yellow only" }
       ],
       live: true,
       topic: "taxis",
       caution: "low",
       title: "Taxis in Hungary: Uber, Bolt and Budapest cabs",
-      description: "Uber is back in Budapest through Fotaxi, alongside Bolt, and both call licensed yellow taxis on one regulated tariff. The 100E airport bus too.",
+      description: "Uber is back in Budapest but dispatches Fotaxi cabs, and one tariff is set by law, so switching apps saves nothing. The airport curb rule too.",
       h1: "Taxis in Hungary, and the apps to use",
       lede: "Uber is back in Budapest (run through Fotaxi), so Uber and Bolt both work, and every licensed taxi charges the same regulated rate. The main rule is simply to use licensed yellow cabs. Here is how it works.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-26",
-      answer: "Good news since 2024: <b>Uber is back in Budapest</b>, operating <b>through Fotaxi</b>, so you can use the normal <b>Uber app</b>, and <b>Bolt</b> works well too. The catch that is really a feature: every Uber and every licensed taxi is a <b>yellow cab on the same regulated city tariff</b>, so an app is <b>not cheaper</b> than a street taxi, just easier (fare shown up front, card payment, no language barrier). The one rule: <b>use only licensed yellow taxis</b> or an app, never an unmarked car. From <b>Budapest airport (BUD)</b>, the <b>100E bus</b> is the cheap direct link, or take a taxi from the official rank. Fares are in <b>forint</b>.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-14",
+      answer: "Good news since 2024: <b>Uber is back in Budapest</b>, operating <b>through Fotaxi</b>, so you can use the normal <b>Uber app</b>, and <b>Bolt</b> works well too. The catch that is really a feature: every Uber and every licensed taxi is a <b>yellow cab on the same regulated city tariff</b>, so an app is <b>not cheaper</b> than a street taxi, just easier (fare shown up front, card payment, no language barrier). The one rule: <b>use only licensed yellow taxis</b> or an app, never an unmarked car. From <b>Budapest airport (BUD)</b>, the <b>100E bus</b> is the cheap direct link, or take a taxi from the official rank. Fares are in <b>forint</b>, on a tariff of <b>1,000 HUF to start plus 400 HUF per km</b>. One airport rule to know: only <b>Fotaxi may collect from the arrivals curb</b>, so a Bolt or Uber car has to meet you up at Departures, and the run into town is roughly <b>28 to 35 EUR</b>.",
       sections: [
         {
           h: "Which app: Uber is back, plus Bolt",
           icon: "phoneok",
-          key: { fig: "Uber, Bolt", tag: "Uber runs via Fotaxi", text: "Uber returned to Budapest in 2024, operating through Fotaxi, so the standard Uber app works. Bolt is the other strong option, and Fotaxi has its own app.", tone: "teal" },
+          key: { fig: "Pick on wait", tag: "Not on price", text: "Hungary sets one taxi tariff by law, so Uber, Bolt and City Taxi all charge the same regulated fare. Switching apps to hunt a cheaper price does nothing, so choose on availability.", tone: "teal" },
           p: [
-            "The news for returning visitors: <b>Uber came back to Budapest in June 2024</b>, this time <b>operating through Fotaxi</b>, the main licensed taxi company. So you can use the <b>standard Uber app</b> exactly as you would anywhere, <b>Bolt</b> is the other widely used app, and <b>Fotaxi</b> has its own app too.",
+            "The news for returning visitors: <b>Uber left Hungary in 2016</b> and <b>came back to Budapest in 2024</b>, this time <b>dispatching licensed Fotaxi cabs rather than private drivers</b>. So you can use the <b>standard Uber app</b> exactly as you would anywhere, <b>Bolt</b> and <b>City Taxi</b> are the other widely used options, and <b>Fotaxi</b> has its own app too.",
             "In Budapest, <b>only the standard Uber option</b> is offered, and every car is a licensed taxi (more on that below). Uber has since expanded to a few other Hungarian cities such as Miskolc, but Budapest is where you will use it most."
           ]
         },
         {
           h: "From Budapest airport",
           icon: "plane",
-          key: { fig: "100E bus", tag: "Or a rank taxi", text: "The 100E airport bus runs direct to the city center cheaply. For a car, Fotaxi is the official airport operator and Uber runs off it too, from the marked rank or the app.", tone: "teal" },
+          key: { fig: "Fotaxi only", tag: "At the arrivals curb", text: "Only Fotaxi may collect from the arrivals curb at Budapest Airport, so use the Fotaxi stand or kiosk there. A Bolt or Uber car has to meet you up at Departures instead.", tone: "amber" },
           p: [
             "From <b>Budapest airport (BUD)</b>, the <b>100E airport bus</b> runs directly to the city center (Deak Ferenc ter) for a cheap flat fare and is easy with a small bag. There is <b>no direct train</b>.",
-            "For a car, <b>Fotaxi</b> is the official airport taxi operator, and because it runs Uber too, an <b>Uber</b> works from the airport as well: take the marked <b>taxi rank</b>, or order in the app from the dedicated pickup zone. Avoid anyone <b>touting</b> a ride inside the terminal."
+            "For a car, the rule at the airport is specific: <b>only Fotaxi may collect from the arrivals curb</b>, so the simplest route is the <b>Fotaxi stand or kiosk</b> there. If you would rather use <b>Bolt or Uber</b>, the car <b>has to meet you up at Departures</b>, one level above, which is worth knowing before you stand at arrivals waiting for it. Expect roughly <b>28 to 35 EUR</b> into the city center, and avoid anyone <b>touting</b> a ride inside the terminal."
           ]
         },
         {
@@ -223,14 +223,15 @@ export default {
           icon: "coins",
           key: { fig: "Round up", tag: "In forint", text: "Every licensed ride runs on the same regulated tariff, in forint. Apps show the price up front; tip by rounding up, roughly 10%.", tone: "teal" },
           p: [
-            "Because the tariff is <b>uniform and regulated</b>, the fare is the same whether you hail a yellow cab or book an app, paid in <b>forint</b> (cards widely accepted), and apps show the price in advance. To <b>tip</b>, <b>round up</b> the fare, roughly 10% for good service.",
+            "Because Hungary <b>sets one taxi tariff by law</b>, the fare is the same whether you hail a yellow cab or book an app, paid in <b>forint</b> (cards widely accepted), and apps show the price in advance. The regulated rate has been <b>1,000 HUF to start plus 400 HUF per km</b> since <b>1 May 2023</b>. To <b>tip</b>, <b>round up</b> the fare, roughly 10% for good service.",
             "For more, see <a href='/hungary/tipping'>tipping in Hungary</a>, <a href='/hungary/cash-or-card'>cash or card in Hungary</a>, and the <a href='/hungary'>Hungary money guide</a>."
           ]
         }
       ],
       faqs: [
         { q: "Is Uber in Budapest?", a: "Yes. Uber returned to Budapest in June 2024, operating through Fotaxi, so you can use the standard Uber app. Every Uber car is a licensed yellow taxi on the regulated city tariff, and Bolt works well too." },
-        { q: "Is Uber cheaper than a taxi in Budapest?", a: "No. Every Uber car is a licensed yellow taxi charging the same regulated city tariff as any other cab, so an app is not cheaper. It is just easier: the fare is shown up front, you can pay by card, and there is no language barrier." },
+        { q: "Is Uber cheaper than a taxi in Budapest?", a: "No, and neither is any other app. Hungary sets one taxi tariff by law, so Uber, Bolt and City Taxi all charge the same regulated fare and switching apps to hunt a cheaper price does nothing. Pick whichever has a car free." },
+        { q: "Which taxi app works at Budapest Airport?", a: "All of them, but the pickup point differs. Only Fotaxi may collect from the arrivals curb, so the Fotaxi stand or kiosk is the simplest option. A Bolt or Uber car has to meet you up at Departures instead. Expect roughly 28 to 35 EUR into the city center." },
         { q: "How do I get from Budapest airport to the city?", a: "The 100E airport bus runs directly to the city center (Deak Ferenc ter) cheaply. For a car, Fotaxi is the official airport operator and Uber runs off it too, from the marked rank or the app. There is no direct train." },
         { q: "Are Budapest taxis a scam risk?", a: "Licensed yellow taxis, including Uber and Bolt cars, charge one regulated tariff and cannot legally overcharge. The risk is unmarked, unlicensed cars, especially near stations and nightlife, so only use a yellow licensed taxi or an app." }
       ],
@@ -239,7 +240,7 @@ export default {
           { label: "Hungarian Tourism Agency: official travel information", url: "https://visithungary.com/", type: "gov" },
           { label: "US State Department: Hungary country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Hungary.html", type: "gov" }
         ],
-        judgment: "Uber returned to Budapest in 2024 through Fotaxi and runs as licensed yellow taxis on the city's single regulated tariff, alongside Bolt. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+        judgment: "The load-bearing fact here is regulatory rather than commercial: Hungary sets one taxi tariff by law, so app choice is a question of which car is free, not which is cheaper, and that has held since the current rate took effect on 1 May 2023. Uber left in 2016 and returned to Budapest in 2024 dispatching Fotaxi cabs rather than private drivers, which is why the Uber app here behaves like a taxi dispatcher. The airport curb rule is the part most likely to trip a visitor up, and airport access arrangements do get renegotiated, so confirm the pickup point in your app on the day. The 28 to 35 EUR airport range is a fare estimate rather than a fixed price, and it moves with traffic and the forint. Checked Aug 2026."
       }
     },
     {

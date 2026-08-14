@@ -263,7 +263,7 @@ export default {
     {
       slug: "taxis-and-apps",
       glance: [
-        { k: "Best app", v: "Grab (also Be, Xanh SM)" },
+        { k: "Two big apps", v: "Xanh SM and Grab (also Be)" },
         { k: "Fares", v: "Fixed in-app, no meter" },
         { k: "Street taxis", v: "Only Mai Linh or Vinasun" },
         { k: "Airport", v: "Plan ahead, first-day scams" }
@@ -272,12 +272,12 @@ export default {
       topic: "taxis",
       caution: "low",
       title: "Vietnam taxi apps, and the airport scam to skip",
-      description: "Grab leads in Vietnam, with electric Xanh SM and Be. How fake-taxi and rigged-meter tricks work at Hanoi and Ho Chi Minh City airports, and the way in.",
+      description: "Grab is no longer the only ride app in Vietnam: electric Xanh SM overtook it. Compare both in-app, and skip the fake-taxi trick at Hanoi and HCMC airports.",
       h1: "Which taxi app to use in Vietnam, and the airport scam to skip",
       lede: "The honest answer is that installing one app before you land makes most of the risk disappear. Here is the app to use, the fake-taxi trick to know, and how to get from the airport into town without the tourist markup.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-19",
-      answer: "Install <b>Grab</b> before you arrive. It is the dominant ride app in Vietnam and shows a fixed price up front, so there is no meter to argue about. <b>Xanh SM</b> (electric cars and bikes) and <b>Be</b> also work well in the big cities. On the street, only two taxi brands are widely trusted, <b>Mai Linh</b> (green) and <b>Vinasun</b> (white), and fakes copy their look, so if the name is not exactly right, walk on. At <b>Noi Bai</b> (Hanoi) and <b>Tan Son Nhat</b> (Ho Chi Minh City) airports, ignore anyone who approaches you offering a taxi and book your own ride instead.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-14",
+      answer: "For a decade the standard advice was just use Grab. That changed: in 2025 the local electric-taxi app <b>Xanh SM</b> overtook Grab to become <b>Vietnam's largest ride app</b>, with roughly <b>44.7% of the market against Grab's 36%</b> by mid-2025, and its fares often beat Grab's surge pricing. So <b>install Grab, Xanh SM and Be</b>, then <b>compare the in-app quote for each trip</b>. All three show a fixed price up front, so there is no meter to argue about. On the street, only two taxi brands are widely trusted, <b>Mai Linh</b> (green) and <b>Vinasun</b> (white), and fakes copy their look, so if the name is not exactly right, walk on. At <b>Noi Bai</b> (Hanoi) and <b>Tan Son Nhat</b> (Ho Chi Minh City) airports, ignore anyone who approaches you offering a taxi and book your own ride instead.",
       sections: [
         {
           h: "The scam, and the two names worth trusting",
@@ -291,10 +291,10 @@ export default {
         {
           h: "Which app to install",
           icon: "phoneok",
-          key: { fig: "Grab", tag: "Fixed price", text: "Grab is the one to have, the largest ride app in Vietnam, working in Hanoi, Ho Chi Minh City, Da Nang and Hoi An. It shows a fixed price up front. Be and Xanh SM also work in the big cities.", tone: "teal" },
+          key: { fig: "44.7%", tag: "Xanh SM, against Grab's 36%", text: "The local electric-taxi app Xanh SM overtook Grab in 2025 to become Vietnam's largest ride app. Install both, plus Be, and compare the quote for each trip rather than defaulting to one.", tone: "teal" },
           p: [
-            "<b>Grab</b> is the one to have. It is the largest ride app in Vietnam, works in Hanoi, Ho Chi Minh City, Da Nang, Hoi An and most cities a visitor goes, and it does both cars and motorbike rides. Because the price is fixed in the app, the meter argument never happens. If you have used Grab elsewhere in Southeast Asia, it is the same app and login.",
-            "Two local alternatives are worth adding as backups. <b>Xanh SM</b> is an all-electric fleet, often a little cheaper and easy to spot. <b>Be</b> is another Vietnamese app. Any of the three protects you the same way. One warning that applies to all of them: if a street driver flashes a Grab price on his own phone, do not trust it, because he may have picked a pricier option. Check the fare in your own app."
+            "The advice most guides still give, just use Grab, is out of date. In 2025 <b>Xanh SM</b>, a Vietnamese all-electric taxi app, <b>overtook Grab</b> to become the <b>largest ride app in Vietnam</b>, on roughly <b>44.7% of the market against Grab's 36%</b> by mid-2025, and its fares <b>often beat Grab's surge pricing</b>. <b>Grab</b> is still the broader super-app, works in Hanoi, Ho Chi Minh City, Da Nang, Hoi An and most cities a visitor goes, does cars and motorbike rides, and uses the same app and login you may already have from elsewhere in Southeast Asia.",
+            "So the useful habit is not picking a winner, it is <b>installing Grab, Xanh SM and Be and comparing the in-app quote</b> for each trip, since which one is cheapest genuinely varies by city, hour and surge. Any of the three protects you the same way. One warning that applies to all of them: if a street driver flashes a Grab price on his own phone, do not trust it, because he may have picked a pricier option. Check the fare in your own app."
           ]
         },
         {
@@ -302,7 +302,7 @@ export default {
           icon: "plane",
           key: { fig: "Plan ahead", tag: "First-day scams", text: "At Noi Bai (Hanoi) and Tan Son Nhat (Ho Chi Minh City), people approach offering rides at inflated rates. Book a Grab to the app pickup point, or use a trusted-brand taxi at the rank.", tone: "teal" },
           p: [
-            "This is where first-day scams happen, so have a plan. At <b>Noi Bai</b> (Hanoi) and <b>Tan Son Nhat</b> (Ho Chi Minh City), people will approach you inside and just outside arrivals offering a taxi. Politely decline and keep walking. Open your app and book a ride to the marked ride-hailing pickup point, or head to the official metered-taxi rank and use only a Mai Linh or Vinasun car.",
+            "This is where first-day scams happen, so have a plan. At <b>Noi Bai</b> (Hanoi) and <b>Tan Son Nhat</b> (Ho Chi Minh City), people will approach you inside and just outside arrivals offering a taxi. Politely decline and keep walking. Open your app and book a ride to the marked ride-hailing pickup point, or head to the official metered-taxi rank and use only a Mai Linh or Vinasun car. The rule that settles it: <b>only get in a car whose plate matches your app</b>, and <b>ignore touts who shout app names or wave a phone showing an inflated Grab fare</b>.",
             "As a rough sense of the fare, a metered or app ride from Noi Bai into central Hanoi tends to run around <b>250,000 to 400,000 dong</b> (roughly 10 to 16 US dollars), depending on traffic and car size. A fake cab may try to charge a million dong or more for the same trip, so a quote well above that range is your signal to walk away."
           ]
         },
@@ -318,7 +318,7 @@ export default {
       ],
       faqs: [
         { q: "Does Uber work in Vietnam?", a: "No. Uber left Vietnam in 2018 when it sold its Southeast Asia business to Grab, so there is no Uber here. Grab is the main ride app, with Xanh SM (electric) and Be as local alternatives. Install one before you land and use it instead of hailing on the street." },
-        { q: "Which taxi app is best in Vietnam?", a: "Grab is the most widely used and works in all the cities most visitors see, with a fixed price shown before you ride. Xanh SM, an all-electric fleet, is often slightly cheaper, and Be is another Vietnamese option. Any of the three removes the meter argument and lets you track the route." },
+        { q: "Which taxi app is best in Vietnam?", a: "There is no longer one answer, which is the change worth knowing. Xanh SM, an all-electric Vietnamese fleet, overtook Grab in 2025 to become the largest ride app, on roughly 44.7% of the market against Grab's 36% by mid-2025, and often beats Grab's surge pricing. Install Grab, Xanh SM and Be and compare the quote for each trip." },
         { q: "Are taxis at Hanoi and Ho Chi Minh City airports a scam?", a: "The legitimate ones are fine, but the airports draw touts and fake cabs. Ignore anyone who approaches you offering a taxi, and either book a ride in your app to the marked pickup point or use the official rank with a Mai Linh (green) or Vinasun (white) car. A real metered ride into central Hanoi from Noi Bai is roughly 250,000 to 400,000 dong." },
         { q: "How do I read a Vietnamese taxi meter?", a: "Vietnamese dong has many zeros, so meters usually drop the last three. A reading of 64.0 means 64,000 dong, not 640,000. Watch that the meter is running from the start and climbing at a normal pace. If it races, or the driver says it is broken and quotes a flat price, get out. Using an app avoids the issue entirely." }
       ],
@@ -328,7 +328,7 @@ export default {
           { label: "US Department of State: Vietnam country information, general safety and local-travel context for US visitors", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Vietnam.html", type: "gov" },
           { label: "Vietnam Unlock: a recent traveler guide describing the fake-taxi and airport pickup scams and how ride apps avoid them", url: "https://vietnamunlock.com/vietnam-scams/", type: "guide" }
         ],
-        judgment: "The dominant app can shift, since Xanh SM has grown fast since 2023, and fares move with fuel and traffic, so treat the dong figures as a recent read and check the price in your own app before you ride. Apps also come and go from smaller towns, so confirm coverage there. Checked July 2026."
+        judgment: "One caution on the market-share figures, because they are less settled than a single number suggests. The 44.7% against 36% reading is a market-share measure for mid-2025, and other surveys using different metrics put Grab ahead on usage rate, so the honest summary is that two apps now compete closely rather than that one has won outright. That is also why our advice is to compare both rather than to switch allegiance. If Xanh SM's lead reverses, the practical instruction does not change. Fares move with fuel, traffic and surge, so treat the dong figures as a recent read and check the price in your own app before you ride. Apps also come and go from smaller towns, so confirm coverage there. Checked Aug 2026."
       }
     },
     {

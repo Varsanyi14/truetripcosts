@@ -329,6 +329,67 @@ export default {
         ],
         judgment: "App coverage grows and tuk-tuk fares move with fuel prices, so we have avoided quoting prices and stuck to the habits that hold: use the app where it reaches, and agree the fare before you get in. Checked July 2026."
       }
+    },
+    {
+      slug: "rail",
+      glance: [
+        { k: "Booking site", v: "None that works" },
+        { k: "Official app", v: "Needs a Lao, Thai or Chinese number" },
+        { k: "Sales window", v: "About 7 days out, from 6:30 AM" },
+        { k: "At the counter", v: "Cash, plus a 20,000 kip fee" }
+      ],
+      live: true,
+      topic: "rail",
+      caution: "high",
+      title: "Laos-China Railway tickets: the booking problem",
+      description: "The train is the easy part. Why the official LCR app needs a local phone number, how the 7-day sales window works, and what a station counter costs.",
+      h1: "Booking the Laos-China Railway, and why that is the hard part",
+      lede: "The Laos-China Railway is fast, comfortable and the obvious way to move between Vientiane and Luang Prabang. Getting a seat is what catches visitors out, because the booking and payment side was not built for anyone without a local phone number. Here is how it actually works.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-14",
+      answer: "The train is easy, the ticket is not. There is <b>no functioning booking website</b>, the official <b>LCR app requires a Lao, Thai or Chinese phone number</b>, and seats for popular runs like <b>Vientiane to Luang Prabang</b> sell out <b>within minutes</b> of the sales window opening, which is roughly <b>7 days ahead at 6:30 AM</b>. Some downtown offices accept <b>only local QR or UnionPay</b>, not cash or foreign cards. So there are two routes that work for a visitor: a <b>station counter with cash</b> as soon as your date opens, where a <b>20,000 kip</b> fee applies, or a <b>small markup to an agent</b> like Baolau or 12Go. Carry a <b>passport for every passenger</b>, because names are printed on the ticket and checked on exit.",
+      sections: [
+        {
+          h: "Why there is no simple way to book",
+          icon: "phoneok",
+          key: { fig: "No website", tag: "And the app needs a local number", text: "There is no functioning booking site for the railway. The official LCR app will only register a Lao, Thai or Chinese phone number, which rules it out for most visitors arriving without a local SIM.", tone: "amber" },
+          p: [
+            "Every other part of this railway is straightforward. The booking is not, and the reason is worth understanding before you plan around it: there is <b>no functioning booking website</b>, and the <b>official LCR app requires a Lao, Thai or Chinese phone number</b> to set up an account. If you land without a local SIM, the official channel is simply closed to you, which is not how rail booking works almost anywhere else you will have travelled.",
+            "The second wrinkle is payment. Some <b>downtown ticket offices accept only local QR or UnionPay</b>, so a visitor turning up with cash or a foreign Visa or Mastercard can be turned away at the window. That combination, no website, an app you cannot register for, and offices that may not take your money, is what turns a simple train ride into the fiddliest booking in the region."
+          ]
+        },
+        {
+          h: "The sales window, and how fast it goes",
+          icon: "calendar",
+          key: { fig: "6:30 AM", tag: "About 7 days ahead", text: "Seats for the popular runs, Vientiane to Luang Prabang above all, sell out within minutes of the window opening. Treat the opening time as an appointment, not a rough guide.", tone: "amber" },
+          p: [
+            "Tickets go on sale on a rolling window of roughly <b>7 days</b>, opening at <b>6:30 AM</b>. For the runs visitors want most, <b>Vientiane to Luang Prabang</b> being the obvious one, seats can be gone <b>within minutes</b>. This is the single fact that should shape your itinerary: you cannot book the train months ahead the way you would book a European train, and you cannot casually decide on the day.",
+            "Practically, that means fixing your travel dates far enough ahead to know them, then treating the moment the window opens as a small appointment. If your plans are loose, plan on the possibility that the train is full and keep a road or air option in mind, rather than building a tight itinerary around a seat you do not have yet."
+          ]
+        },
+        {
+          h: "Paying, the counter fee and the passport rule",
+          icon: "passport",
+          key: { fig: "20,000 kip", tag: "Station counter fee", text: "Buying in person with cash at a station counter carries a 20,000 kip fee. An agent such as Baolau or 12Go charges a small markup instead, which is the sensible trade if you cannot get a local SIM.", tone: "teal" },
+          p: [
+            "There are two routes that reliably work. The first is to <b>go to a station counter with cash</b> as soon as your date opens, where a <b>20,000 kip</b> fee applies. The second is to <b>pay a small markup to an agent</b> such as <b>Baolau or 12Go</b>, which is the sensible choice if you cannot get a local SIM, since you are buying your way past the app registration problem rather than the price of the seat.",
+            "One rule catches people out at the end of the journey rather than the start: <b>carry a passport for every passenger</b>. Names are <b>printed on the ticket and checked on exit</b>, so a ticket bought for a slightly different spelling, or a passport left at the guesthouse, becomes a problem at the barrier rather than on the platform. For the wider money picture, see <a href='/laos/cash-or-card'>cash or card in Laos</a>, <a href='/laos/taxis-and-ride-hailing'>taxis and ride apps in Laos</a>, and the <a href='/laos'>Laos money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Can I book Laos-China Railway tickets online?", a: "Not through an official website, because there is not a functioning one. The official route is the LCR app, which requires a Lao, Thai or Chinese phone number. Visitors without a local SIM use a station counter or an agent such as Baolau or 12Go instead." },
+        { q: "How far in advance do Laos train tickets go on sale?", a: "Roughly 7 days ahead, with the window opening at 6:30 AM. Seats on popular runs such as Vientiane to Luang Prabang can sell out within minutes, so the opening moment matters more than booking early in the usual sense." },
+        { q: "Can I pay for a Laos train ticket with a foreign card?", a: "Not everywhere. Some downtown ticket offices accept only local QR or UnionPay, and not cash or foreign cards. A station counter takes cash, with a 20,000 kip fee, which is why carrying kip is the reliable approach." },
+        { q: "Do I need my passport to travel on the Laos-China Railway?", a: "Yes, for every passenger. Names are printed on the ticket and checked on exit, so each traveller needs their own passport both to buy the ticket and to complete the journey." }
+      ],
+      sources: {
+        links: [
+          { label: "Nomadic Notes: how to buy tickets for the Laos-China Railway, on the app, the counters, the agents and the sales window", url: "https://www.nomadicnotes.com/laos-china-railway-tickets/", type: "guide" },
+          { label: "Laos-Adventures by Tiger Trail: the LCR ticket app, station practicalities and the passport requirement", url: "https://laos-adventures.com/train", type: "guide" }
+        ],
+        judgment: "This is the most volatile page we keep on Laos, and we would rather say so than pretend otherwise. The rules here change often: the advance sales window moved from 3 days to 7 days in July 2025, and app payment options are expanding, so the position is genuinely moving under us. Treat every detail on this page as dated to August 2026 and re-verify before you rely on it, especially the app registration rules and which offices take which payment method. The shape of the problem, no working website and an app built around local phone numbers, has held for years, so that is the part we are confident about. Checked Aug 2026."
+      }
     }
   ]
 };

@@ -458,6 +458,67 @@ export default {
         ],
         judgment: "Norway applies the shared EU pet-entry framework plus a dog tapeworm treatment, which it has adopted despite sitting outside the EU, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The tapeworm timing is the part to get right, so we point you to the official pages and dated this July 2026."
       }
+    },
+    {
+      slug: "driving-and-tolls",
+      glance: [
+        { k: "Where it applies", v: "Oslo, Bergen, Trondheim" },
+        { k: "Day permit", v: "35 NOK" },
+        { k: "Longer", v: "450 NOK a month, 1,400 a season" },
+        { k: "No permit", v: "750 NOK, charged to the driver" }
+      ],
+      live: true,
+      topic: "driving",
+      caution: "medium",
+      title: "Norway studded tyre fee: ask what your rental has",
+      description: "Oslo, Bergen and Trondheim charge to drive on studded winter tyres: 35 NOK a day, 750 NOK if you skip it. Most rentals are studless and exempt.",
+      h1: "The Norwegian city charge for studded winter tyres",
+      lede: "Norway is the rare country that charges you to use studded winter tyres rather than banning them. Whether it costs you anything comes down to one question at the rental counter, because studless tyres are exempt and most rentals have them. Here is the fee, and how to tell if it is yours to pay.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-14",
+      answer: "Norway is the rare country that <b>charges</b> you to use studded winter tyres rather than banning them. In <b>Oslo, Bergen and Trondheim</b> a studded-tyre permit costs <b>35 NOK a day</b>, <b>450 NOK a month</b> or <b>1,400 NOK for the season</b>, and driving without one is a <b>750 NOK fine charged to the driver, not the rental company</b>. Then the caveat that decides whether any of this is your problem: it is <b>winter only</b>, and it applies <b>only if the rental has studded tyres</b>. Studless friction tyres are <b>exempt</b>, and <b>most rentals are studless</b>, so <b>ask which ones you have</b> before you budget for anything.",
+      sections: [
+        {
+          h: "A charge, not a ban",
+          icon: "wheel",
+          key: { fig: "35 NOK", tag: "A day, in the big cities", text: "Oslo, Bergen and Trondheim price studded tyres rather than forbidding them: 35 NOK a day, 450 NOK a month or 1,400 NOK for the season, with a 750 NOK fine for driving without a permit.", tone: "teal" },
+          p: [
+            "Most countries that dislike studded tyres ban them. Norway prices them instead, which is why this cost surprises people who have driven other winter destinations. In <b>Oslo, Bergen and Trondheim</b> a studded-tyre permit costs <b>35 NOK a day</b>, <b>450 NOK a month</b> or <b>1,400 NOK for the season</b>, and the fine for driving without one is <b>750 NOK</b>.",
+            "The part that matters for a rental is who pays. The fine is <b>charged to the driver, not the rental company</b>, so it is not something that quietly appears on the company's account and gets absorbed. It lands on you, which is reason enough to sort the permit on the morning you plan to drive into one of those three cities."
+          ]
+        },
+        {
+          h: "First, ask which tyres you have",
+          icon: "alert",
+          key: { tag: "Most rentals are exempt", text: "Studless friction tyres carry no fee at all. Only studded tyres need a permit, so one question at the rental counter settles whether this cost applies to you.", tone: "amber" },
+          p: [
+            "Before any of the above becomes a cost, establish whether it applies. Winter rentals in Norway come on one of two types, and only one of them is charged. <b>Studless friction tyres are exempt</b>. <b>Studded tyres need the permit.</b> <b>Most rentals are studless</b>, so for a lot of visitors the honest answer is that this fee never touches them, and the useful action is simply to <b>ask which tyres your winter rental has</b> when you collect the car.",
+            "It is also worth knowing what you are not looking for. In Oslo there is <b>no windscreen sticker to display</b>: the permission is registered electronically against the vehicle's registration number, so there is nothing to check in the car and nothing to stick on the glass. If your rental does have studs and you have paid, that is the whole of it."
+          ]
+        },
+        {
+          h: "Where to buy it, and where it stops working",
+          icon: "card",
+          key: { fig: "City by city", tag: "Not a national permit", text: "You buy from the city, at oslo.kommune.no or the relevant city site, and the permit does not travel. Sweden and Denmark take a different approach and ban studs on some streets instead.", tone: "teal" },
+          p: [
+            "This is a municipal charge rather than a national one, so you buy it from the city: <b>oslo.kommune.no</b> for Oslo, or the relevant city site for Bergen and Trondheim. Buy it for the days you will actually drive in the city, since the day, month and season options exist precisely because most visitors need only the first of the three.",
+            "One boundary worth planning around on a longer trip: the permit <b>does not carry into Sweden or Denmark</b>. Those countries take the opposite approach and <b>ban studs on some streets</b> instead of charging for them, so a cross-border winter drive is a separate question rather than an extension of what you have already paid. For the rest of the money picture, see <a href='/norway/cash-or-card'>cash or card in Norway</a>, <a href='/norway/taxis-and-apps'>taxis and apps in Norway</a>, and the <a href='/norway'>Norway money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I have to pay a studded tyre fee in Norway?", a: "Only if your car actually has studded tyres and you are driving in Oslo, Bergen or Trondheim in winter. Studless friction tyres are exempt, and most rentals are studless, so ask which ones you have before assuming this is a cost." },
+        { q: "How much is the studded tyre permit in Oslo?", a: "35 NOK a day, 450 NOK a month, or 1,400 NOK for the season. You buy it from the city, at oslo.kommune.no for Oslo or the relevant city site elsewhere, and in Oslo it is registered electronically rather than shown as a sticker." },
+        { q: "What happens if I drive on studs without a permit?", a: "A 750 NOK fine, and it is charged to the driver rather than the rental company. That is the main reason to settle the question at the counter rather than assume the rental firm has handled it." },
+        { q: "Does the Norwegian studded tyre permit work in Sweden or Denmark?", a: "No. It does not carry across the border. Sweden and Denmark ban studs on some streets rather than charging for them, so treat a cross-border winter drive as a separate question." }
+      ],
+      sources: {
+        links: [
+          { label: "City of Oslo: the studded tyre fee, in English, confirming the daily, monthly and season prices and the 750 NOK penalty", url: "https://www.oslo.kommune.no/english/street-transport-and-parking/studded-tyre-fee/", type: "gov" },
+          { label: "Oslo kommune: piggdekkgebyr, the Norwegian page, on where the charge applies and how the electronic permit is registered", url: "https://www.oslo.kommune.no/gate-transport-og-parkering/piggdekkgebyr/", type: "gov" }
+        ],
+        judgment: "The prices and the penalty come straight from the city's own pages, so those are firm. The legal framing sits in the national road-use regulation, Forskrift 1999-05-07-437, and the charge has been the subject of a parliamentary proposal, Stortinget Dokument 8:35 S for the 2025 to 2026 session, so it is a live policy question rather than a settled one. We have deliberately led with the caveat rather than the number, because the fee only applies if the rental has studded tyres and most rentals are studless, which means the fact most readers need is the question to ask rather than the amount to budget. City rates are set individually and have moved in recent years, so confirm with the city site for the winter you are travelling. Checked Aug 2026."
+      }
     }
   ]
 };
