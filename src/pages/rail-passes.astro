@@ -87,14 +87,14 @@ const description = 'Whether a rail pass beats buying tickets in ' + rows.length
         })}
       </ol>
 
-      <div class="rp-legend" aria-label="What each verdict means">
+      <dl class="rp-legend" aria-label="What each verdict means">
         {usedTiers.map(t => (
-          <p class="rp-leg">
-            <span class={'rp-chip rp-' + t.key}>{t.short}</span>
-            <span class="rp-leg-tx"><strong>{t.label}.</strong> {t.gloss}</span>
-          </p>
+          <Fragment>
+            <dt class="rp-leg-t"><span class={'rp-chip rp-' + t.key}>{t.short}</span></dt>
+            <dd class="rp-leg-d"><strong>{t.label}.</strong> {t.gloss}</dd>
+          </Fragment>
         ))}
-      </div>
+      </dl>
     </section>
 
     <div class="rp-honest">
@@ -199,7 +199,11 @@ const description = 'Whether a rail pass beats buying tickets in ' + rows.length
 
     .rp-reason{font-size:14.5px;color:var(--ink);line-height:1.55;margin:9px 0 0;max-width:640px}
 
-    .rp-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin:11px 0 0}
+    /* Bottom-aligned, not centred. The pass-type cell is two lines (a small label above
+       its value) and the confidence is one, so centring floated the confidence between
+       the two and it lined up with neither. Aligning to the end puts it on the value's
+       line, which is the thing it belongs beside. */
+    .rp-meta{display:flex;flex-wrap:wrap;align-items:end;gap:8px 18px;margin:11px 0 0}
     .rp-pt{font-size:13px;color:var(--muted);line-height:1.4}
     .rp-pt-k{display:block;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep)}
     .rp-conf{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);text-transform:capitalize}
@@ -207,12 +211,15 @@ const description = 'Whether a rail pass beats buying tickets in ' + rows.length
     .rp-conf-medium .rp-conf-dot{background:var(--teal);opacity:.45}
     .rp-conf-low .rp-conf-dot{background:none;border:1.5px dashed var(--muted);width:9px;height:9px}
 
-    .rp-legend{margin:18px 0 0;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-radius:12px}
-    .rp-leg{display:flex;align-items:flex-start;gap:11px;margin:0 0 10px}
-    .rp-leg:last-child{margin-bottom:0}
-    .rp-leg .rp-chip{margin-left:0;margin-top:1px}
-    .rp-leg-tx{font-size:13.5px;color:var(--muted);line-height:1.5}
-    .rp-leg-tx strong{color:var(--ink);font-weight:700}
+    /* One grid for the whole legend, not a flex row per line. That is what keeps the
+       gloss column aligned: `max-content` sizes the chip column to the WIDEST chip and
+       every row then shares it, so a longer tier label can never push one line's text
+       out of step with the others again. Adding a tier needs no measurement here. */
+    .rp-legend{margin:18px 0 0;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-radius:12px;display:grid;grid-template-columns:max-content 1fr;column-gap:12px;row-gap:10px;align-items:start}
+    .rp-leg-t{margin:0;padding-top:1px}
+    .rp-leg-t .rp-chip{margin-left:0}
+    .rp-leg-d{margin:0;font-size:13.5px;color:var(--muted);line-height:1.5}
+    .rp-leg-d strong{color:var(--ink);font-weight:700}
 
     .rp-honest{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:14px 18px;margin:0 0 34px;max-width:720px;box-shadow:var(--shadow)}
     .rp-honest-h{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 6px}
@@ -233,6 +240,13 @@ const description = 'Whether a rail pass beats buying tickets in ' + rows.length
       .rp-country{font-size:18px}
       .rp-chip{margin-left:0}
       .rm p{font-size:14px}
+      /* On a phone a max-content chip column would take most of the width, so the chip
+         goes on its own line and the gloss runs full width. Tight gap between a chip and
+         its own gloss, wider gap between entries, so the pairing stays obvious. */
+      .rp-legend{grid-template-columns:1fr;row-gap:4px}
+      .rp-leg-t{padding-top:0}
+      .rp-leg-d{margin:0 0 8px}
+      .rp-leg-d:last-child{margin-bottom:0}
     }
   </style>
 </Base>
