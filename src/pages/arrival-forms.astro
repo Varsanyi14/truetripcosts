@@ -1,0 +1,239 @@
+---
+// /arrival-forms, the standalone thesis and the shareable artifact for it.
+//
+// WHY IT HAS ITS OWN PAGE. The closer at the foot of a country guide reaches the person
+// already going to that one country. The pattern is bigger than any single country, and it
+// is the kind of thing a traveler forwards to someone else ("did you know this exists?"),
+// which needs a URL of its own. So the closer alarms, and links here; this page carries
+// the whole argument.
+//
+// IT IS A DIFFERENT SHARE ARTIFACT FROM THE TTC-ED CARD, deliberately. The card is
+// personal and numeric: what MY trip costs. This is educational and universal: this scam
+// exists and here are the real sites. They must not look like the same object, so this
+// page carries no calculator, no dollar total and no personal inputs, and the card carries
+// no thesis. Two different jobs, two different things to send someone.
+//
+// EVERY COUNT IS COMPUTED from src/data/arrival-forms.js. Nothing about the scale of this
+// is typed into the copy, because a page whose argument IS the scale cannot afford a
+// hardcoded number that drifts.
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import USBadge from '../components/USBadge.astro';
+import NewTab from '../components/NewTab.astro';
+import { arrivalForms, freeForms, paidForms, freeCount, formsCount, numWord, thesisLine, warnedForms, pendingForms, arrivalFormsChecked } from '../data/arrival-forms.js';
+import { countries } from '../data/index.js';
+import fs from 'node:fs';
+
+const flagDir = process.cwd() + '/public/flags/';
+const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? '/flags/' + slug + '.svg' : null;
+const liveSlugs = new Set(countries.filter(c => c.live && !c.blocked).map(c => c.slug));
+// A form's country links to its money guide only where that guide is live, so this page
+// never produces a dead internal link as the list grows.
+const guideHref = (slug) => liveSlugs.has(slug) ? ('/' + slug) : null;
+const iso = (slug) => {
+  const c = countries.find(x => x.slug === slug);
+  return String((c && c.iso2) || slug.slice(0, 2)).toUpperCase();
+};
+// External links here are official government portals and one government warning. They
+// are reference links, never paid, so they take noopener and no sponsored marker.
+const gov = { target: '_blank', rel: 'noopener' };
+---
+<Base
+  title="The arrival forms you file before you fly, and the paid fakes that copy them"
+  description={'At least ' + numWord(formsCount) + ' countries now make you file a form online before you fly. Almost all of them are free, and the paid lookalikes outrank the official sites. The real portal for each, in one place.'}>
+  <Nav />
+  <main class="wrap">
+
+    <section class="af-intro">
+      <p class="lab">Arrival forms</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
+      {/* No figure in the headline. The fake sites do charge, and the reported amounts run
+          from tens of dollars upward, but we have no primary source that pins a number, and
+          this page cannot open on an invented one. The claim that IS sourced, a government
+          publishing a scam warning, is the stronger line anyway. */}
+      <h1>The form you have never heard of, and the site that wants to charge you for it.</h1>
+      <p class="af-lede">{thesisLine()} They are new, they are obscure, and they are mandatory, which is a perfect recipe for a scam. Search any of them and you will meet paid lookalikes before you meet the real thing, because the official sites do not buy ads and the copies do. Here is every one we can source, with the real address.</p>
+      <p class="af-stamp">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        Checked {arrivalFormsChecked}, every portal verified against the issuing government
+      </p>
+    </section>
+
+    {/* The proof, and it is not ours. A government publishing a scam warning about its own
+        entry form is stronger evidence than anything the desk could assert, so it leads
+        rather than sitting in a footnote. */}
+    {warnedForms.length > 0 && (
+      <section class="af-proof">
+        <p class="af-proof-k">This is documented, not a suspicion</p>
+        {warnedForms.map(f => (
+          <p class="af-proof-p">{f.officialWarning.label}: fraudulent sites were buying the words travelers search for, taking fees and personal details for a filing that costs nothing.{' '}
+            <a href={f.officialWarning.url} {...gov}>Read the notice<NewTab /></a>
+          </p>
+        ))}
+      </section>
+    )}
+
+    <section>
+      <p class="lab">The free ones</p>
+      <h2>{numWord(freeCount).charAt(0).toUpperCase() + numWord(freeCount).slice(1)} filings that cost nothing.</h2>
+      <p class="sub">Mandatory, free, and filed on these addresses and nowhere else. If a site asks for a card number, you are on the wrong one.</p>
+      <ul class="af-list">
+        {freeForms.map(f => (
+          <li class="af-row">
+            <span class="af-flag">
+              {flagSrc(f.slug)
+                ? <img src={flagSrc(f.slug)} alt="" width="26" height="19" loading="lazy" decoding="async" />
+                : <span class="af-iso">{iso(f.slug)}</span>}
+            </span>
+            <span class="af-body">
+              <span class="af-head">
+                <span class="af-cty">{f.country}</span>
+                <span class="af-name">{f.name}</span>
+                <span class="af-free">free</span>
+              </span>
+              <span class="af-when">{f.when}</span>
+              <span class="af-note">{f.note}</span>
+              {f.caution && <span class="af-caution">{f.caution}</span>}
+              <span class="af-links">
+                <a class="af-official" href={f.official} {...gov}>{f.official.replace(/^https?:\/\//, '').replace(/\/$/, '')}<NewTab /></a>
+                {guideHref(f.slug) && <a class="af-guide" href={guideHref(f.slug)}>Money guide to {f.country}
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>}
+              </span>
+            </span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    {paidForms.length > 0 && (
+      <section>
+        <p class="lab">The exception</p>
+        <h2>{paidForms.length === 1 ? 'The one that really does charge.' : 'The ones that really do charge.'}</h2>
+        <p class="sub">Worth naming precisely, because "they are all free" is the kind of shortcut that makes a traveler distrust the rest of the advice the first time it fails.</p>
+        <ul class="af-list">
+          {paidForms.map(f => (
+            <li class="af-row af-row-paid">
+              <span class="af-flag">
+                {flagSrc(f.slug)
+                  ? <img src={flagSrc(f.slug)} alt="" width="26" height="19" loading="lazy" decoding="async" />
+                  : <span class="af-iso">{iso(f.slug)}</span>}
+              </span>
+              <span class="af-body">
+                <span class="af-head">
+                  <span class="af-cty">{f.country}</span>
+                  <span class="af-name">{f.name}</span>
+                  <span class="af-paid">{f.cost}</span>
+                </span>
+                <span class="af-when">{f.when}</span>
+                <span class="af-note">{f.note}</span>
+                <span class="af-links">
+                  <a class="af-official" href={f.official} {...gov}>{f.official.replace(/^https?:\/\//, '').replace(/\/$/, '')}<NewTab /></a>
+                  {guideHref(f.slug) && <a class="af-guide" href={guideHref(f.slug)}>Money guide to {f.country}
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>}
+                </span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <section>
+      <p class="lab">How to tell</p>
+      <h2>Four things the real site always does.</h2>
+      <ul class="af-tells">
+        <li><b>It is on a government domain.</b> A country's own top-level domain, usually with gov in it. A .com or .org selling an arrival card is a reseller at best.</li>
+        <li><b>It does not ask for a card number.</b> With one exception on this page, these filings are free, so a payment screen is the tell.</li>
+        <li><b>It does not promise to be fast.</b> Expedited processing is a made-up product. The government processes your form at the speed it processes it.</li>
+        <li><b>You reached it by typing the address, not by searching.</b> This is the whole game. The copies outrank the originals, so use the address rather than the search box.</li>
+      </ul>
+      <p class="af-fine">If you have already paid one of these sites, you may have filed nothing at all: some of them just take the money. Check directly on the official portal above, and file again there if there is no record. It is free.</p>
+    </section>
+
+    {pendingForms.length > 0 && (
+      <section>
+        <p class="lab">Not listed yet</p>
+        <h2>{numWord(pendingForms.length).charAt(0).toUpperCase() + numWord(pendingForms.length).slice(1)} more we know about and will not link yet.</h2>
+        <p class="sub">These countries do require a filing, and we say so in their guides. What we do not yet have is the one thing that makes listing it useful: the official portal address, verified. Naming a form without handing over the real site would send you to exactly the sites this page is about, so they wait here until we have it.</p>
+        <ul class="af-pending">
+          {pendingForms.map(f => (
+            <li>
+              <span class="af-pend-c">{f.country}</span>
+              <span class="af-pend-n">{f.name}</span>
+              {guideHref(f.slug) && <a href={guideHref(f.slug)}>What the guide says</a>}
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <section class="guide-cta">
+      <div class="gc-txt">
+        <p class="gc-h">These rules keep arriving.</p>
+        <p class="gc-p">Two of the forms on this page did not exist two years ago. We can let you know for free when another lands.</p>
+      </div>
+      <a class="btn" href="#" data-open-signup>Keep me posted</a>
+    </section>
+
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .af-intro{padding-top:8px}
+  .af-lede{font-size:17px;line-height:1.62;color:#3B4A46;margin:12px 0 0}
+  .af-stamp{display:inline-flex;align-items:center;gap:6px;margin:14px 0 0;font-family:var(--mono);font-size:11px;color:#10502C;line-height:1.4}
+
+  /* The government warning. Amber, because it is the one alarming thing on a page that is
+     otherwise reassuring, and it should not be mistaken for our own editorial voice. */
+  .af-proof{margin:26px 0 0;padding:16px 18px;background:var(--amber-bg);border:1px solid #EBCFA6;border-radius:var(--radius)}
+  .af-proof-k{margin:0 0 6px;font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--amber)}
+  .af-proof-p{margin:0;font-size:15px;line-height:1.58;color:#5A3410}
+  .af-proof-p a{display:inline-flex;align-items:center;gap:5px;margin-left:6px;font-weight:600;color:#8A4A0B;white-space:nowrap}
+
+  .af-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:10px}
+  .af-row{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--green);border-radius:12px;padding:15px 17px;box-shadow:var(--shadow)}
+  .af-row-paid{border-left-color:var(--amber)}
+
+  .af-flag{flex:none;width:26px;height:19px;display:flex;align-items:center;justify-content:center;margin-top:3px}
+  .af-flag img{display:block;width:26px;height:19px;border-radius:2px;object-fit:cover}
+  /* Non-emoji fallback, same rule as the door: emoji flags do not render on Windows. */
+  .af-iso{font-family:var(--mono);font-size:10px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:2px;padding:1px 3px;line-height:1.1}
+
+  .af-body{flex:1;min-width:0}
+  .af-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+  .af-cty{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);line-height:1.2}
+  .af-name{font-size:14.5px;color:var(--muted)}
+  .af-free{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:#10502C;background:var(--green-bg);border-radius:999px;padding:2px 8px}
+  .af-paid{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--amber);background:#FBEEDC;border-radius:999px;padding:2px 8px}
+
+  .af-when{display:block;margin:5px 0 0;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+  .af-note{display:block;margin:6px 0 0;font-size:14.5px;color:#3B4A46;line-height:1.55}
+  .af-caution{display:block;margin:7px 0 0;padding:8px 11px;background:var(--paper);border-radius:8px;font-size:13.5px;color:var(--muted);line-height:1.5}
+
+  .af-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin:10px 0 0}
+  /* The official address is set in mono and shown in full, because the address IS the
+     advice on this page: a reader should be able to read it, recognise it, and type it. */
+  .af-official{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--teal-deep);word-break:break-all}
+  .af-guide{display:inline-flex;align-items:center;gap:5px;font-size:13.5px;color:var(--muted);text-decoration:none}
+  .af-guide:hover{color:var(--teal-deep);text-decoration:underline}
+
+  .af-tells{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:9px}
+  .af-tells li{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;font-size:15px;line-height:1.55;color:#3B4A46}
+  .af-tells b{color:var(--ink)}
+  .af-fine{margin:14px 0 0;font-size:14px;color:var(--muted);line-height:1.6}
+
+  .af-pending{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+  .af-pending li{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;padding:11px 15px;border:1px dashed var(--line);border-radius:10px;font-size:14.5px}
+  .af-pend-c{font-weight:600;color:var(--ink)}
+  .af-pend-n{color:var(--muted)}
+  .af-pending a{font-size:13.5px}
+
+  @media (max-width:560px){
+    .af-lede{font-size:15.5px}
+    .af-row{padding:14px;gap:11px}
+    .af-cty{font-size:17px}
+    .af-official{font-size:11.5px}
+  }
+</style>

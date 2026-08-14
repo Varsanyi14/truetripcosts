@@ -1,0 +1,69 @@
+---
+// THE ARRIVAL-FORM CLOSER. The parting thought at the foot of a country guide, below the
+// calculator, and the last thing a traveler reads before they leave the page.
+//
+// IT IS THE SITE-LEVEL THESIS, NOT THIS COUNTRY'S FACT. Everything above it is about the
+// one place they are going. This is the pattern behind it: the same trap is being set in a
+// growing list of countries, and knowing the shape of it protects them on the next trip
+// too. That is why it stands regardless of whether this particular country has a form.
+//
+// FORM 1 HERE ALARMS, /arrival-forms EQUIPS. This block is deliberately short and carries
+// no addresses: its job is to make the scale land and send the reader to the page that
+// holds every official portal. The one exception is a country that HAS a form, where the
+// reader has already been equipped a few screens up in the breadth reveal, and this closer
+// simply notes that their form is part of the pattern. Never state the scam without the
+// real site being one click away, which on this page it always is.
+//
+// DISTINCT FROM THE TTC-ED CARD (phase 4). The card shares a personal number: what my trip
+// costs. This shares a universal warning: this thing exists. Two different objects to
+// forward, so they must not look alike. This one is text, has no figures, and is styled as
+// a closing note rather than as a card.
+import { arrivalFormFor, formsCount, freeCount, numWord, thesisLine } from '../data/arrival-forms.js';
+
+const { country: c } = Astro.props;
+// Whether this country is itself on the list changes only the framing, never the claim.
+const mine = arrivalFormFor(c.slug);
+---
+<section class="afc">
+  <p class="afc-lab">Before you fly</p>
+
+  <p class="afc-thesis">{thesisLine()}</p>
+
+  <p class="afc-body">
+    {!mine
+      ? c.name + ' does not ask for one, so this is not a job for this trip. It is worth knowing anyway, because the list keeps growing and the pattern is always the same: the filing is new, obscure and mandatory, and the paid lookalikes outrank the government site because the real ones do not buy ads.'
+      : (mine.free
+        ? 'That includes ' + c.name + ', where the ' + mine.name + ' is one of them. The filings are new, obscure and mandatory, which is exactly the combination a scam needs: search for any of them and the paid lookalikes come up before the government site does, because the real ones do not buy ads.'
+        /* The country that genuinely charges is the one place the usual advice inverts, so
+           it gets its own sentence rather than the free-form wording with a fee bolted on.
+           Telling an Aruba reader "any site charging you is fake" would be plainly wrong,
+           and one wrong line here costs the whole page its credibility. */
+        : 'And ' + c.name + ' is that one. The ' + mine.name + ' really does carry a fee, so here the usual test is inverted: the question is not whether a site charges you, it is whether it charges you the right amount on the right address. Everywhere else on the list, a payment screen is the tell.')}
+  </p>
+
+  <a class="afc-link" href="/arrival-forms">
+    <span class="afc-link-tx">See every form we can source, with the official address for each</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+</section>
+
+<style>
+  /* A closing note, not a card. Flat, no shadow, one rule above it, so it reads as the
+     desk's parting remark rather than as another module competing for attention. The
+     TTC-ed card in phase 4 is the object with a border and a shadow; these two must stay
+     visually distinct because they are two different things to send someone. */
+  .afc{padding:26px 0 4px}
+  .afc-lab{margin:0 0 9px;font-family:var(--mono);font-size:11.5px;font-weight:600;text-transform:uppercase;letter-spacing:.09em;color:var(--amber)}
+  .afc-thesis{margin:0;font-family:var(--serif);font-weight:500;font-size:22px;line-height:1.3;color:var(--ink);letter-spacing:-.01em}
+  .afc-body{margin:11px 0 0;font-size:15.5px;line-height:1.6;color:var(--muted)}
+  .afc-link{display:inline-flex;align-items:center;gap:9px;margin:15px 0 0;font-size:15px;font-weight:600;color:var(--teal-deep);text-decoration:none}
+  .afc-link:hover .afc-link-tx{text-decoration:underline}
+  .afc-link svg{flex:none;transition:transform .15s ease}
+  .afc-link:hover svg{transform:translateX(3px)}
+
+  @media (max-width:560px){
+    .afc{padding-top:22px}
+    .afc-thesis{font-size:19px}
+    .afc-body{font-size:15px}
+  }
+</style>

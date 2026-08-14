@@ -33,6 +33,7 @@
 //           percentages, ever: seasons.js holds no figures on purpose.
 
 import { entryChargesFor, isBillable, isNamedZero } from './entry-charges.js';
+import { arrivalFormFor } from './arrival-forms.js';
 import { seasons } from './seasons.js';
 import { tipping as tippingRows } from './tipping.js';
 import { isSchengen, borderStatus } from './schengen.js';
@@ -154,17 +155,48 @@ function keepRows(c) {
 
 // ----- traps to dodge -----
 function trapRows(c) {
-  if (!Array.isArray(c.traps) || c.traps.length === 0) return [];
+  const rows = [];
+
+  // FORM 2, the country insert. It leads the traps group where a country has a pre-flight
+  // form, because it is the trap the traveler is most likely to walk into before they have
+  // even packed: the filing is obscure, mandatory, and surrounded by paid lookalikes that
+  // outrank the real site.
+  //
+  // THESIS ALARMS, COUNTRY PAGE EQUIPS. The row does not just say a scam exists, it hands
+  // over the official address, the fee position and the deadline, in that order. The whole
+  // insert is carried on the `form` object so BreadthReveal can render it as an actionable
+  // block rather than as one more line of prose. A country with no form gets no row: there
+  // is no branch here that emits a generic warning.
+  const form = arrivalFormFor(c.slug);
+  if (form) {
+    rows.push({
+      title: form.free
+        ? form.name + ' is mandatory and free, and the sites that charge are not it'
+        : form.name + ' is mandatory, and only the official site charges the real amount',
+      detail: form.note,
+      form: {
+        name: form.name,
+        official: form.official,
+        free: form.free,
+        cost: form.cost || '',
+        when: form.when,
+        caution: form.caution || '',
+      },
+    });
+  }
+
+  if (!Array.isArray(c.traps) || c.traps.length === 0) return rows;
   // The glance takes the guide's first trap, which is the one the desk put first, and
   // counts the rest rather than listing them: the calculator and the traps section below
   // carry the full set.
   const first = splitTrap(c.traps[0]);
-  if (!first.title) return [];
+  if (!first.title) return rows;
   const more = c.traps.length - 1;
-  return [{
+  rows.push({
     title: first.title,
     detail: first.detail + (more > 0 ? ' Plus ' + more + ' more we checked on this page.' : ''),
-  }];
+  });
+  return rows;
 }
 
 // ----- timing -----

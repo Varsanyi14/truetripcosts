@@ -23,6 +23,8 @@
 // is handed. 35 of 59 countries render three categories rather than four, so three is the
 // normal shape, not a failure state, and it has to read as finished.
 import { breadthFor, breadthCount } from '../data/breadth.js';
+import { formsCount, numWord } from '../data/arrival-forms.js';
+import NewTab from './NewTab.astro';
 
 const { country: c } = Astro.props;
 const groups = breadthFor(c);
@@ -56,6 +58,27 @@ const ICONS = {
             <span class="br-tx">
               <span class="br-h">{r.title}</span>
               {r.detail && <span class="br-d">{r.detail}</span>}
+
+              {/* FORM 2, the arrival-form insert. THESIS ALARMS, COUNTRY PAGE EQUIPS: the
+                  row above named the trap, so this hands over the real address, the fee
+                  position and the deadline immediately, before the link out to the wider
+                  thesis. The official URL is shown in full and in mono rather than hidden
+                  behind link text, because on this specific subject the address is the
+                  advice: recognising it is how a traveler avoids the copies. */}
+              {r.form && (
+                <span class="br-form">
+                  <span class="br-form-top">
+                    <span class={'br-form-tag' + (r.form.free ? '' : ' br-form-tag-paid')}>{r.form.free ? 'free on the official site' : r.form.cost}</span>
+                    <span class="br-form-when">{r.form.when}</span>
+                  </span>
+                  <a class="br-form-url" href={r.form.official} target="_blank" rel="noopener">{r.form.official.replace(/^https?:\/\//, '').replace(/\/$/, '')}<NewTab /></a>
+                  {r.form.free && <span class="br-form-warn">Any site asking you to pay for this one is not the real one.</span>}
+                  {r.form.caution && <span class="br-form-caution">{r.form.caution}</span>}
+                  <a class="br-form-more" href="/arrival-forms">At least {numWord(formsCount)} countries do this now, and the fakes follow every one
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+                </span>
+              )}
+
               {r.href && <a class="br-more" href={r.href}>The full picture
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>}
             </span>
@@ -108,6 +131,21 @@ const ICONS = {
   .br-d{display:block;margin-top:4px;font-size:14.5px;color:var(--muted);line-height:1.55}
   .br-more{display:inline-flex;align-items:center;gap:5px;margin-top:6px;font-size:13.5px;font-weight:600;color:var(--teal-deep);text-decoration:none}
   .br-more:hover{text-decoration:underline}
+
+  /* The arrival-form insert. Tinted and inset so it reads as the one row that hands you
+     something to act on rather than something to know, which is the difference between
+     the thesis and the country page. */
+  .br-form{display:block;margin:9px 0 0;padding:11px 13px;background:var(--paper);border:1px solid var(--line);border-radius:10px}
+  .br-form-top{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+  .br-form-tag{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:#10502C;background:var(--green-bg);border-radius:999px;padding:2px 8px}
+  .br-form-tag-paid{color:var(--amber);background:#FBEEDC}
+  .br-form-when{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  /* Mono and shown in full: on this subject the address is the advice. */
+  .br-form-url{display:inline-flex;align-items:center;gap:5px;margin:8px 0 0;font-family:var(--mono);font-size:12.5px;font-weight:600;color:var(--teal-deep);word-break:break-all}
+  .br-form-warn{display:block;margin:7px 0 0;font-size:13.5px;color:var(--amber);line-height:1.5}
+  .br-form-caution{display:block;margin:6px 0 0;font-size:13px;color:var(--muted);line-height:1.5}
+  .br-form-more{display:inline-flex;align-items:center;gap:5px;margin:9px 0 0;font-size:13px;font-weight:600;color:var(--teal-deep);text-decoration:none;line-height:1.4}
+  .br-form-more:hover{text-decoration:underline}
 
   /* The zoom into the calculator. A down arrow, not a right arrow: it says "further down
      this page", which is exactly what it does. */

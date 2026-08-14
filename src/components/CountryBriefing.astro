@@ -4,6 +4,7 @@ import MonthStrip from './MonthStrip.astro';
 import CountryDoor from './CountryDoor.astro';
 import GutPunch from './GutPunch.astro';
 import BreadthReveal from './BreadthReveal.astro';
+import ArrivalClosingThesis from './ArrivalClosingThesis.astro';
 import EESNotice from './EESNotice.astro';
 import AdvisoryNotice from './AdvisoryNotice.astro';
 import NewTab from './NewTab.astro';
@@ -975,6 +976,15 @@ const kfState = (f) => {
     </div>
   </details>
   </div>
+
+  {/* THE ARRIVAL CLOSER, the parting site-level thesis. It sits here, immediately after
+      the calculator (and after the TTC-ed card once phase 4 lands), because that is the
+      flow the brief specifies: door, gut-punch, breadth reveal, calculator, card, closer.
+      Note that the guide body continues below it with seasonality, culture and the
+      related-countries list, so this is the end of the TRUE-COST FLOW rather than the last
+      thing on the page. If it should instead be the final word before the signup prompt,
+      it is a one-line move into [slug].astro. */}
+  <ArrivalClosingThesis country={c} />
 </section>
 
 {season && (
