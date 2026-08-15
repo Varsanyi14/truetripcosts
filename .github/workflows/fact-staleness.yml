@@ -10,6 +10,12 @@ name: Fact staleness check
 # Delivery only. No triage, ranking, routing, or costUpdate behavior. It just
 # carries what the scanner found to a place that emails. Human triage stays
 # manual. The GITHUB_TOKEN is the built-in one; no new secret is needed.
+#
+# Delivery keys off the scanner's "Past a threshold" count, not its total. The
+# total includes standing items (hero-fact flags, pending arrival forms) that
+# report on every run by design, so keying off it would open an issue every
+# Monday forever. The full report, standing items included, still goes into the
+# issue body whenever the issue does fire.
 on:
   schedule:
     - cron: '0 7 * * 1'      # every Monday at 07:00 UTC
@@ -42,20 +48,31 @@ jobs:
           set -o pipefail
           node scripts/check-fact-staleness.mjs 2>&1 | tee staleness-report.txt
 
-          # The scanner prints a machine-readable tail: "Done. N item(s) worth a look."
-          # Read N from it. If we cannot parse it, treat as 0 (deliver nothing).
-          count="$(grep -oE 'Done\. [0-9]+ item' staleness-report.txt | grep -oE '[0-9]+' | head -n1)"
-          if [ -z "$count" ]; then count=0; fi
-          echo "count=$count" >> "$GITHUB_OUTPUT"
-          echo "Parsed finding count: $count"
+          # The scanner prints two machine-readable counts near the tail:
+          #   "Past a threshold: N item(s) that aged out."   -> N genuinely aged out
+          #   "Done. N item(s) worth a look."                -> N including standing items
+          # Delivery keys off the FIRST one. Standing items (hero flags, pending forms)
+          # report on every run by design, so delivering off the total would open an
+          # issue every Monday forever and train everyone to ignore it. The full report
+          # still goes into the issue body when it does fire, so nothing is lost.
+          # If we cannot parse a count, treat it as 0 (deliver nothing).
+          aged="$(grep -oE 'Past a threshold: [0-9]+ item' staleness-report.txt | grep -oE '[0-9]+' | head -n1)"
+          total="$(grep -oE 'Done\. [0-9]+ item' staleness-report.txt | grep -oE '[0-9]+' | head -n1)"
+          if [ -z "$aged" ]; then aged=0; fi
+          if [ -z "$total" ]; then total=0; fi
+          echo "count=$aged" >> "$GITHUB_OUTPUT"
+          echo "total=$total" >> "$GITHUB_OUTPUT"
+          echo "Parsed counts: $aged aged out, $total worth a look in total."
 
       - name: Deliver findings to a tracking issue
-        # Only when the scan found something. A clean run skips this entirely.
+        # Only when something genuinely aged out. A run whose only findings are
+        # standing items (hero flags, pending forms) skips this entirely.
         if: steps.scan.outputs.count != '0'
         continue-on-error: true   # a delivery hiccup must never turn a green run red
         env:
           GH_TOKEN: ${{ github.token }}
           COUNT: ${{ steps.scan.outputs.count }}
+          TOTAL: ${{ steps.scan.outputs.total }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
           set -euo pipefail
@@ -67,7 +84,9 @@ jobs:
 
           # Build the issue body from the captured report.
           {
-            echo "The weekly fact staleness scan found ${COUNT} item(s) worth a look."
+            echo "The weekly fact staleness scan found ${COUNT} item(s) past a review threshold."
+            echo ""
+            echo "The full report below lists ${TOTAL} item(s) in total. The difference is standing items: hero-fact flags and arrival forms still pending a sourced official URL. Those report on every run and do not open this issue on their own, but they are worth clearing."
             echo ""
             echo "Last run: ${STAMP}"
             echo "Run log: ${RUN_URL}"
@@ -86,7 +105,7 @@ jobs:
 
           if [ -n "$NUM" ]; then
             gh issue edit "$NUM" --body-file issue-body.txt
-            gh issue comment "$NUM" --body "Updated ${STAMP}: ${COUNT} item(s) currently flagged. See the issue body for the full report."
+            gh issue comment "$NUM" --body "Updated ${STAMP}: ${COUNT} item(s) currently past a threshold, ${TOTAL} in the full report. See the issue body."
             echo "Updated existing issue #${NUM}."
           else
             gh issue create --title "$TITLE" --label "$LABEL" --body-file issue-body.txt
