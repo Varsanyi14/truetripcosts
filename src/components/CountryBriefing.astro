@@ -631,6 +631,20 @@ const kfState = (f) => {
         var v = parseFloat((input.value || "").replace(/[^0-9.]/g, ""));
         out.textContent = isFinite(v) ? fmtUsd(v / current) : "";
       }
+      // ONE RATE, ONE PLACE. This panel is the only thing on the site that
+      // fetches a rate, so it publishes the value it settled on rather than
+      // letting anything else go and ask again. The calculator's ATM cash line
+      // reads this to put a quiet dollar bracket beside its local figure. The
+      // date goes with it, read straight off the label this panel just wrote,
+      // so a bracket can never claim to be fresher than the rate behind it.
+      // Nothing is published until a rate actually applies, which is what makes
+      // "no rate, no bracket" the default rather than something to remember.
+      function publish(rate) {
+        try {
+          window.__ttcFx = { cur: cur, rate: rate, date: (dateEl && dateEl.textContent) || "" };
+          document.dispatchEvent(new CustomEvent("ttc:fx", { detail: window.__ttcFx }));
+        } catch (e) {}
+      }
       function apply(rate, dateLabel) {
         if (!rate || !isFinite(rate)) { el.hidden = true; return; }
         el.hidden = false;
@@ -638,6 +652,7 @@ const kfState = (f) => {
         rateEl.textContent = fmtLocal(rate) + " " + cur;
         if (dateLabel && dateEl) dateEl.textContent = dateLabel;
         recalc();
+        publish(rate);
       }
       if (input) input.addEventListener("input", recalc);
       var fb = parseFloat(el.getAttribute("data-fx-fb") || "");
@@ -1067,6 +1082,9 @@ const kfState = (f) => {
 
 
 <script>
+  // Formatting only. It holds no rate and fetches nothing: see the file header.
+  import { usdBracket } from '../data/usd-bracket.js';
+
   // The all-in cost planner. Reads the inert JSON in #hn-data (exchange rate,
   // currency, the country's tourist-tax block, the default foreign-fee assumption)
   // and the per-country spend styles from the segmented control, then renders one
@@ -1107,9 +1125,33 @@ const kfState = (f) => {
 
     const id = x => document.getElementById(x);
     const usd = x => '$' + Math.round(x).toLocaleString('en-US');
-    const loc = x => (Math.round(x * rate / round) * round).toLocaleString('en-US') + ' ' + cur;
+    // Split in two so the dollar bracket below can convert the figure the reader
+    // actually sees, rounded exactly as it is printed, rather than the unrounded
+    // value behind it. Same arithmetic as before, in two steps instead of one.
+    const locNum = x => Math.round(x * rate / round) * round;
+    const loc = x => locNum(x).toLocaleString('en-US') + ' ' + cur;
     const fmtPct = p => (Number.isInteger(p) ? p : Math.round(p * 10) / 10) + '%';
     const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+    // THE LIVE RATE, BORROWED RATHER THAN FETCHED.
+    //
+    // The currency anchor panel further up this page already reads /api/rates,
+    // already falls back to the baked snapshot when that is unavailable, and
+    // already prints the date it settled on. It publishes the result, so this
+    // reads that value and never asks for its own. One fetch on the page, one
+    // rate, one date, and no way for the panel and the calculator to disagree.
+    //
+    // It returns null in three cases, and all three end the same way, with no
+    // bracket at all: the country is on the dollar or pegged to it (the panel
+    // does not render, so nothing is published), the currency is in neither the
+    // live feed nor the fallback (the panel hides itself), or the live fetch is
+    // still in flight on first paint. The third resolves itself: the panel
+    // fires ttc:fx when the rate lands and the line is written again.
+    function fxNow() {
+      const f = (typeof window !== 'undefined') ? window.__ttcFx : null;
+      if (!f || f.cur !== cur || !cur || cur === 'USD') return null;
+      return (isFinite(f.rate) && f.rate > 0) ? f : null;
+    }
 
     // Smoothly roll a number from its previous value to the new one.
     function roll(el, to, fmt, animate) {
@@ -1610,9 +1652,21 @@ const kfState = (f) => {
         : 'Most US cards add about ' + fmtPct(fallbackFxPct) + ' on what you buy and on the cash you pull, plus a few dollars per ATM withdrawal, and choosing "pay in dollars" adds more on top. A no-foreign-fee card takes it all to $0.';
 
       // How much local cash, in how many ATM visits, plus the exchange-rate line.
+      //
+      // THE ONE FIGURE THIS CALCULATOR STATES IN THE LOCAL CURRENCY, and so the
+      // only one that earns a dollar bracket. Every other number on the page is
+      // already in dollars, and a bracket after those would be absurd. The
+      // bracket is deliberately quiet and deliberately approximate: it converts
+      // the rounded figure the reader can see, at the mid-market rate the panel
+      // above published, and says when that rate was checked. Where no rate is
+      // available for this currency there is simply no bracket, which is the
+      // honest outcome rather than a fallback worth inventing.
       const vw = (pulls === 1) ? 'visit' : 'visits';
+      const fx = fxNow();
+      const cashBr = (cash > 0 && fx) ? usdBracket(locNum(cash), cur, fx.rate) : '';
+      const fxWhen = (cashBr && fx.date) ? (' The dollars in brackets use the mid-market rate, checked ' + fx.date + '.') : '';
       id('hnHint').textContent = (cash > 0)
-        ? ('That is about ' + pulls + ' ATM ' + vw + ' to pull roughly ' + loc(cash) + ' in cash. ' + rateNote)
+        ? ('That is about ' + pulls + ' ATM ' + vw + ' to pull roughly ' + loc(cash) + (cashBr ? ' ' + cashBr : '') + ' in cash. ' + rateNote + fxWhen)
         : rateNote;
 
       // How this estimate is built (assumptions panel), echoing the live figures.
@@ -1650,6 +1704,13 @@ const kfState = (f) => {
     app.hidden = false;
     state.room = roomVal();
     render();
+
+    // The baked snapshot is applied during parse, so the first paint already
+    // carries a bracket wherever a fallback rate exists. The live rate lands a
+    // moment later and the panel says so; this redraws the one line that shows
+    // it. Without animation, because nothing the traveler chose has changed and
+    // rolling a number they did not touch would suggest otherwise.
+    document.addEventListener('ttc:fx', () => render(false));
   })();
 
   // Open the curated card shortlist when an in-page link points at it, and honour a
