@@ -10,6 +10,7 @@ import CalcResult from './CalcResult.astro';
 import EESNotice from './EESNotice.astro';
 import AdvisoryNotice from './AdvisoryNotice.astro';
 import NewTab from './NewTab.astro';
+import UsdProse from './UsdProse.astro';
 import { affiliate, esimLink, visaLink } from '../data/links.js';
 import { fallbackFxPct, shortlistFor, cardsChecked, wiseCard } from '../data/cards.js';
 import { countries } from '../data/index.js';
@@ -1053,6 +1054,12 @@ const kfState = (f) => {
     </div>
   </section>
 )}
+
+<!-- The dollar bracket for figures written into this guide's prose. Renders in
+     the browser off the rate the currency panel above already published, so it
+     is always as current as that panel and disappears cleanly when no rate is
+     available. Placed last because the one line it adds is a footnote. -->
+<UsdProse cur={fxCur} />
 
 <script type="application/ld+json" set:html={JSON.stringify(crumbLd)}></script>
 <script type="application/ld+json" set:html={JSON.stringify(faqLd)}></script>

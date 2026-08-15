@@ -9,6 +9,7 @@ import { regionOf, REGIONS } from '../data/hubs.js';
 import NewTab from './NewTab.astro';
 import Symbol from './Symbol.astro';
 import UtilityBox from './UtilityBox.astro';
+import UsdProse from './UsdProse.astro';
 import { topicIcon, caution } from '../data/topics.js';
 import { visaLink, esimLink, affiliate } from '../data/links.js';
 const { country, spoke } = Astro.props;
@@ -277,6 +278,12 @@ const showKeyPoints = ANSWER_MODE === 'B' && !answerHasFragment && answerKeyPoin
       </div>
     </details>
   )}
+
+  <!-- The dollar bracket for figures written into this spoke's prose. A spoke
+       carries no currency panel, so there is no live rate to borrow here and it
+       reads the baked snapshot instead, carrying that snapshot's own date into
+       the footnote. Same detection, same rounding, same "no rate, no bracket". -->
+  <UsdProse cur={(country.cash && country.cash.cur) || ''} />
 </article>
 
 <script type="application/ld+json" set:html={JSON.stringify(crumbLd)}></script>

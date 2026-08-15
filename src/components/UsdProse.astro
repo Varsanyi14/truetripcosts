@@ -1,0 +1,194 @@
+---
+// THE PROSE BRACKET, RENDERED. Phase 1 put a quiet "(~$340)" beside the one
+// figure the calculator states in local currency. This does the same for the
+// figures written into sentences, and it does it the same way: in the browser,
+// at page load, off the rate the page already settled on.
+//
+// NOTHING IS BAKED. Not one conversion is written into a data file or into the
+// built HTML. The bracket is added to the rendered text after the rate arrives,
+// which is the whole reason it can be trusted: a figure baked at build time is
+// only as current as the last deploy, and this site's promise is that its
+// numbers are checked and dated. A page served from cache for a month still
+// shows a bracket computed against today's rate, or it shows none at all.
+//
+// ONE RATE, STILL. It fetches nothing. On a country guide the currency panel
+// has already read /api/rates, already fallen back to the baked snapshot if it
+// had to, and already published what it settled on, so this subscribes and uses
+// that. A spoke has no panel, so there it reads the baked snapshot directly:
+// the same fxFallback.js the panel itself falls back to, imported at build time,
+// no network call and no second source. It carries whichever date belongs to the
+// rate it used, which is what keeps the footnote honest on both kinds of page.
+//
+// WHERE IT WILL NOT GO. Anything the page rewrites itself, and anything that is
+// not prose: the calculator, the currency panel, the shareable card, form
+// controls, navigation. Those either own their own figures or are not sentences.
+import fxFallback from '../data/fxFallback.js';
+import { FX_PAR } from '../data/usd-prose.js';
+
+const { cur } = Astro.props;
+// A country on the dollar, or pegged to it, gets nothing at all: the same
+// exclusion the currency panel makes, for the same reason. Ecuador does not
+// need to be told what a dollar is worth in dollars.
+const on = !!cur && FX_PAR.indexOf(cur) === -1;
+const fb = on ? fxFallback.rates[cur] : null;
+---
+
+{on && (
+  <p class="usdp" data-usdp data-usdp-cur={cur} data-usdp-fb={fb ? String(fb) : ""} data-usdp-fbdate={fxFallback.date} hidden></p>
+)}
+
+<script>
+  // Formatting and detection only. Neither module holds a rate or fetches one.
+  import { findFigures } from '../data/usd-prose.js';
+  import { usdText } from '../data/usd-bracket.js';
+
+  (function () {
+    const note = document.querySelector('[data-usdp]');
+    if (!note) return;
+    const cur = note.getAttribute('data-usdp-cur');
+    const fbRate = parseFloat(note.getAttribute('data-usdp-fb') || '');
+    const fbDate = note.getAttribute('data-usdp-fbdate') || '';
+    const scope = note.closest('main') || document.body;
+    if (!cur) return;
+
+    // Regions this must not touch. The first four rewrite their own text from
+    // script, so anything inserted into them is erased on the next render, or
+    // worse, survives into a figure it was never measuring. The rest are not
+    // prose. Kept as a selector rather than a tag test so a future interactive
+    // block can opt out by name.
+    const OFF = '#fx, #hn-app, .estimator, #ttcCard, #calc, script, style, svg, select, option, input, textarea, button, label, noscript, .usdb, [data-usd-skip]';
+    // Inline elements contribute to a sentence rather than starting a new one.
+    // Everything else ends the run, which is what makes "<b>250,000 to 400,000
+    // dong</b> (roughly 10 to 16 US dollars)" read as the single sentence it is.
+    const INLINE = { B: 1, I: 1, EM: 1, STRONG: 1, SPAN: 1, A: 1, U: 1, SMALL: 1, ABBR: 1, CODE: 1, MARK: 1, SUP: 1, SUB: 1, TIME: 1, BDI: 1, WBR: 1 };
+
+    function blockOf(node) {
+      let el = node.parentNode;
+      while (el && el !== scope && INLINE[el.nodeName]) el = el.parentNode;
+      return el;
+    }
+
+    // WHY THE TEXT IS ASSEMBLED PER BLOCK RATHER THAN PER TEXT NODE. A figure and
+    // the thing that disqualifies it are routinely on opposite sides of a tag.
+    // This site writes "<b>250,000 to 400,000 dong</b> (roughly 10 to 16 US
+    // dollars)": the figure is inside the bold, the conversion that makes a
+    // bracket a duplicate is outside it. Match text node by text node and the
+    // check never sees the gloss, and the reader gets the same number twice.
+    // So each block is flattened into one string, matched whole, and the
+    // offsets are mapped back to the nodes they came from.
+    function runs() {
+      const walk = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT, {
+        acceptNode(n) {
+          if (!n.nodeValue) return NodeFilter.FILTER_REJECT;
+          if (n.parentElement && n.parentElement.closest(OFF)) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      const out = [];
+      let cursor = null;
+      let n;
+      while ((n = walk.nextNode())) {
+        const b = blockOf(n);
+        if (!b) continue;
+        if (!cursor || cursor.block !== b) {
+          cursor = { block: b, text: '', parts: [] };
+          out.push(cursor);
+        }
+        cursor.parts.push({ node: n, at: cursor.text.length, len: n.nodeValue.length });
+        cursor.text += n.nodeValue;
+      }
+      return out.filter(r => /\d/.test(r.text));
+    }
+
+    // The rate, borrowed and never asked for. Three outcomes, and only one of
+    // them draws anything: the panel published a rate for this currency, or the
+    // baked snapshot has one, or there is no rate and there are no brackets. The
+    // third is a real answer, not a failure to handle.
+    function rateNow() {
+      const f = (typeof window !== 'undefined') ? window.__ttcFx : null;
+      if (f && f.cur === cur && isFinite(f.rate) && f.rate > 0) return { rate: f.rate, date: f.date || fbDate };
+      if (isFinite(fbRate) && fbRate > 0) return { rate: fbRate, date: fbDate };
+      return null;
+    }
+
+    // Undo the last pass completely before running another, so a rate arriving
+    // late redraws rather than doubles. normalize() stitches the split text
+    // nodes back together, which leaves the block exactly as the server sent it.
+    function clear() {
+      const old = scope.querySelectorAll('.usdb');
+      for (let i = 0; i < old.length; i++) {
+        const p = old[i].parentNode;
+        if (!p) continue;
+        p.removeChild(old[i]);
+        p.normalize();
+      }
+    }
+
+    function paint() {
+      clear();
+      const fx = rateNow();
+      if (!fx) { note.hidden = true; return; }
+      let drawn = 0;
+
+      const all = runs();
+      for (let r = 0; r < all.length; r++) {
+        const run = all[r];
+        const hits = findFigures(run.text, cur);
+        if (!hits.length) continue;
+        // Backwards, so an insertion never moves an offset still to be used.
+        for (let h = hits.length - 1; h >= 0; h--) {
+          const hit = hits[h];
+          const txt = usdText(hit.lo, hit.hi, cur, fx.rate);
+          if (!txt) continue;
+          const part = find(run.parts, hit.end);
+          if (!part) continue;
+          // A figure inside a link is left alone: the bracket would take the
+          // link's styling and read as part of what is being clicked.
+          if (part.node.parentElement && part.node.parentElement.closest('a')) continue;
+          const span = document.createElement('span');
+          span.className = 'usdb';
+          span.textContent = hit.paren ? ', ' + txt : ' (' + txt + ')';
+          insert(part, hit.end, span);
+          drawn++;
+        }
+      }
+
+      if (drawn > 0) {
+        note.textContent = 'Dollar figures in brackets are approximate, converted at the mid-market rate'
+          + (fx.date ? ', checked ' + fx.date + '.' : '.');
+        note.hidden = false;
+      } else {
+        note.hidden = true;
+      }
+    }
+
+    function find(parts, offset) {
+      for (let i = 0; i < parts.length; i++) {
+        const p = parts[i];
+        if (offset > p.at && offset <= p.at + p.len) return p;
+      }
+      return null;
+    }
+
+    function insert(part, offset, span) {
+      const local = offset - part.at;
+      const node = part.node;
+      const after = (local >= node.nodeValue.length) ? node.nextSibling : node.splitText(local);
+      node.parentNode.insertBefore(span, after);
+    }
+
+    paint();
+    // The panel publishes the live rate a moment after first paint on a country
+    // guide, and says so. Redraw against it, exactly as the ATM line does.
+    document.addEventListener('ttc:fx', paint);
+  })();
+</script>
+
+<style is:global>
+  /* Deliberately quiet, and deliberately not a link, a badge or a highlight. It
+     is an aside inside a sentence, so it takes the muted colour the rest of the
+     site uses for secondary text and stays on one line: a range broken across
+     two lines reads as two separate figures. */
+  .usdb { color: var(--muted); font-weight: 400; white-space: nowrap; }
+  .usdp { margin: 18px 0 0; font-size: 13px; color: var(--muted); line-height: 1.5; }
+</style>

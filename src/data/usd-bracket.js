@@ -88,3 +88,33 @@ export function usdBracket(amount, cur, unitsPerUsd) {
   if (n == null) return '';
   return '(~$' + n.toLocaleString('en-US') + ')';
 }
+
+// ---------------------------------------------------------------------------
+// PHASE 2 ADDITION. Everything above is untouched: same rules, same rounding,
+// same refusals. This adds the two shapes prose needs that a single held figure
+// never did, and adds nothing else.
+//
+// RANGES, BECAUSE PROSE IS FULL OF THEM. "10,000 to 20,000 yen" is one price
+// with two ends, and it earns one bracket, never two. Either end failing to
+// convert kills the whole thing rather than producing half a range, which would
+// be the most misleading output available: a reader who sees a bracket on one
+// end will read the other as the same currency. Where both ends round to the
+// same dollar figure the range collapses, so a bracket never reads "~$9 to $9".
+//
+// NO PARENTHESES, BECAUSE THE SENTENCE OFTEN HAS ITS OWN. Roughly a sixth of the
+// figures this site states in prose already sit inside an aside the writer
+// opened: "a low fee (around 110 to 220 yen)". Adding a bracket inside that
+// bracket gives "(around 110 to 220 yen (~$1))", which is noisier than the sum
+// it saves. So the caller is handed the text and decides on the punctuation, and
+// an aside gets "(around 110 to 220 yen, ~$1)" instead. The "~" is not optional
+// in either shape, for the reason rule 1 gives.
+export function usdText(lo, hi, cur, unitsPerUsd) {
+  if (!cur || cur === 'USD') return '';
+  const a = roundUsd(usdFromLocal(lo, unitsPerUsd));
+  if (a == null) return '';
+  if (hi == null) return '~$' + a.toLocaleString('en-US');
+  const b = roundUsd(usdFromLocal(hi, unitsPerUsd));
+  if (b == null) return '';
+  if (b === a) return '~$' + a.toLocaleString('en-US');
+  return '~$' + a.toLocaleString('en-US') + ' to $' + b.toLocaleString('en-US');
+}
