@@ -421,6 +421,87 @@ export default {
         ],
         judgment: "The app coverage and the safety habits are our read from advisories and recent traveler reports, not an official transport table, so use your judgment and check the current advisory. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "The real risk", v: "The taxi you flagged down" },
+        { k: "Taxis", v: "Order it, never hail it" },
+        { k: "Your wallet", v: "Only what you need today" },
+        { k: "Galapagos fees", v: "Cash only, bring it with you" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Ecuador, and what they cost",
+      description: "The secuestro express, drink spiking and card skimming. What each one is, how to stay out of the situation, and the Galapagos fees you must carry in cash.",
+      h1: "Common money scams in Ecuador, and what they cost you",
+      lede: "Ecuador packs an extraordinary amount into a small country and most visits pass without any of this. But we are not going to tell you a few habits defuse it, because the main way money leaves a foreign visitor here is not an overcharge. It is a taxi you flagged down in the street, or a drink you did not watch being poured. That changes the advice: it is about not entering the situation, and about carrying less so there is less to take. Note that this page covers money; the US State Department has Ecuador at a raised advisory level with a kidnapping indicator, and parts of the country carry separate warnings, so read the full advisory before you plan a route.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "Two things account for most money taken from visitors, and both work by removing your ability to refuse. The <b>secuestro express</b>, where a taxi picked up in the street is intercepted by the driver's accomplices and the passenger is driven between ATMs, with the driver often complicit. And <b>drink spiking</b>, using Rohypnol or scopolamine, which the State Department notes targets men through dating apps and in nightlife areas at weekends. Add ordinary <b>card skimming</b>. The escapes: <b>order a taxi by phone or app, never hail one</b>, <b>never accept a drink from a stranger</b>, <b>use ATMs in protected indoor areas</b>, <b>avoid withdrawing large amounts at once</b>, and <b>carry only the cash and cards you need that day</b>. Separately: the <b>Galapagos fees are cash only</b>.",
+      sections: [
+        {
+          h: "The secuestro express, and the taxi you flagged",
+          icon: "taxi",
+          key: { fig: "Order it by phone", tag: "Never hail one", text: "US security reporting describes taxi passengers intercepted by armed accomplices and forced to withdraw money at ATMs, and notes that in many cases the driver is complicit.", tone: "teal" },
+          p: [
+            "This is the one that shapes how you move around Ecuador. US security reporting describes robberies and assaults against <b>taxi passengers</b> as a significant concern, especially in <b>Guayaquil and Manta</b>, in which armed thieves intercept the vehicle, threaten the passenger and <b>force them to withdraw money from ATMs</b>. The detail that matters most is this: <b>in many cases the taxi driver is complicit</b>. Locally it is the <b>secuestro express</b>. Canada's advice adds that these are often organised gangs who may take a victim to an ATM, or hold them longer and force <b>online bank transfers</b>, and that they sometimes work in collaboration with taxi or rideshare drivers.",
+            "So the rule is the State Department's own: <b>avoid hailing taxis on the street</b>. Order by phone, use an app such as <b>Uber, inDrive or Cabify</b>, or use a service affiliated with your hotel. Australia's advice adds a useful check: <b>registered taxis carry a panic button and security cameras</b>, and express kidnappings usually involve unregistered ones, so look for the orange plates and the equipment. Canada notes taxis are generally fine by day and that these incidents cluster at <b>night</b>, which is a reasonable way to calibrate. Pre-arrange your airport transfer, especially in Guayaquil, since the State Department records travelers robbed even as they exit the arrivals areas at Quito and Guayaquil airports. The <a href=\"/ecuador/taxis-and-apps\">Ecuador taxis and apps guide</a> has the detail."
+          ]
+        },
+        {
+          h: "Drinks, and who is buying",
+          icon: "alert",
+          key: { tag: "Never from a stranger", text: "The State Department names Rohypnol and scopolamine used to facilitate robberies, and says men are targeted on dating apps and at weekends in popular nightlife areas.", tone: "teal" },
+          p: [
+            "The State Department's Ecuador guidance is specific in a way worth quoting closely: <b>do not leave food or drinks unattended, and never accept drinks from a stranger</b>, because incapacitating drugs including <b>Rohypnol and scopolamine</b> have been used to facilitate robberies. It also names the target group, which cuts against the usual assumption: <b>men are targeted on dating apps and on weekends in popular nightlife areas</b>. Australia's advice notes scopolamine has also been administered through aerosol sprays and paper handouts, so declining a leaflet pressed on you in the street is not paranoid.",
+            "What follows is the same as elsewhere: cards, phone and cash go while you cannot object, and there is a real medical risk alongside the financial one. The escapes sit entirely before the drink. <b>Watch what you are drinking being poured</b>, prefer sealed and branded bottles, never leave a glass and come back to it, and be cautious about going somewhere private with someone new. Tell someone at home who you are meeting and where. If you are robbed, do not resist."
+          ]
+        },
+        {
+          h: "At the ATM, and what you carry",
+          icon: "atm",
+          key: { fig: "Carry a day's worth", tag: "Indoors only", text: "The State Department advises using ATMs in well-protected indoor areas, avoiding large single withdrawals, and carrying only the cash and cards you actually need.", tone: "teal" },
+          p: [
+            "Because Ecuador uses the <b>US dollar</b>, there is no exchange rate to worry about, and the whole ATM question becomes one of where and how much. The State Department's advice is short and worth following exactly: <b>use ATMs in well-protected indoor areas</b>, meaning inside a bank branch or a mall rather than a street-facing machine, <b>avoid withdrawing large amounts of cash at one time</b>, and <b>carry only the cash or credit cards that you need</b>. Roughly 50 to 100 dollars on you at a time is the usual working figure, with the rest in the hotel safe.",
+            "Two additions. <b>Lower your daily withdrawal limit with your bank before you fly</b>, which costs nothing and caps the worst case in the forced-withdrawal scenario above. And on cards, the State Department is explicit: <b>do not let your credit card out of your sight</b>, to avoid skimming, which Canada also flags. Turn on transaction alerts so a bad charge reaches your phone the same day. Practical dollar detail: bring <b>clean, smaller bills</b>, since worn or torn notes get refused and change for fifties and hundreds is scarce, as the <a href=\"/ecuador/cash-or-card\">Ecuador cash and cards guide</a> explains."
+          ]
+        },
+        {
+          h: "The Galapagos cash, which is a fee and not a scam",
+          icon: "usd",
+          key: { fig: "$220 in cash", tag: "Bring it from the mainland", text: "The Galapagos national park fee and transit control card are official government charges, payable in cash, and there are no airport ATMs on the islands. Carry clean notes from the mainland.", tone: "amber" },
+          p: [
+            "This one belongs on the page for the opposite reason to everything above: people meet it, feel ambushed, and assume they are being scammed. They are not. The <b>Galapagos transit control card</b> bought at the mainland airport and the <b>national park entrance fee</b> are official Ecuadorian government charges, currently <b>20 dollars and 200 dollars</b> respectively for most adult foreign visitors. What makes them feel wrong is the logistics: they are <b>cash only</b>, and there are <b>no airport ATMs on the islands</b>, so you must carry the money with you in clean, acceptable notes. Turning up without it is a genuine problem rather than a negotiation.",
+            "Because the fees are official and fixed, the correct response to anyone offering to arrange them differently, or quoting another number, is to decline. Check the current amounts before you fly, since they have changed, and see the <a href=\"/ecuador/visa-and-galapagos-fees\">Ecuador visa and Galapagos fees guide</a>. While you are reading bills: sit-down restaurants often add a <b>10 percent service charge</b> alongside the tax, so you rarely need to add much on top, as the <a href=\"/ecuador/tipping\">Ecuador tipping guide</a> covers."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "coins",
+          key: { fig: "Decisions", tag: "Not just vigilance", text: "Order taxis rather than hailing them, never accept a drink from a stranger, withdraw indoors in smaller amounts, and carry only what you need for the day.", tone: "teal" },
+          p: [
+            "Vigilance is not the tool here, because you cannot watch your wallet carefully enough to beat a car you cannot get out of. Every useful item is a <b>decision made in advance</b>: <b>order a taxi by phone or app rather than hailing one</b>, <b>never accept a drink from a stranger and watch yours being poured</b>, <b>use ATMs in protected indoor areas and avoid large single withdrawals</b>, <b>lower your daily cap before you fly</b>, and <b>carry only the cash and cards you need today</b>. Route planning matters more in Ecuador than in most places, because risk varies sharply by province, so check the current advisory rather than treating the country as uniform.",
+            "If something happens: emergency services are <b>911</b>, and Quito has a dedicated <b>tourist police</b> unit used to handling foreigners. Report it even if you expect nothing back, because your insurer will want the record, and call your card issuer immediately. Handled with those few decisions made, Ecuador is a rewarding and manageable country, and the Galapagos, the Andes and the Amazon are why people come. For getting and spending money well while you are there, see the <a href=\"/ecuador/cash-or-card\">Ecuador cash and cards guide</a> and the <a href=\"/ecuador\">Ecuador cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Ecuador safe for tourists?", a: "Most visits pass without incident, but risk varies sharply by province and the US State Department has Ecuador at a raised advisory level with a kidnapping indicator. This page covers money, where the main risks are the secuestro express in street-hailed taxis, drink spiking, and card skimming. Check the current advisory before planning a route, since some areas carry separate warnings." },
+        { q: "What is a secuestro express in Ecuador?", a: "An express kidnapping. A passenger who hailed a taxi in the street is intercepted by armed accomplices of the driver and forced to withdraw money at a series of ATMs. US security reporting names Guayaquil and Manta particularly, and notes that in many cases the driver is complicit. Order taxis by phone or app instead, and never hail one on the street." },
+        { q: "Are taxi apps safe in Ecuador?", a: "They are much safer than hailing on the street, and Uber, inDrive and Cabify all operate. Be aware that Canada's advice notes gangs sometimes work in collaboration with taxi or rideshare drivers, so an app is a strong safeguard rather than a perfect one. Registered taxis carry a panic button and cameras, incidents cluster at night, and hotel-arranged cars are a good option after dark." },
+        { q: "Is drink spiking a risk in Ecuador?", a: "Yes, and the State Department is specific: Rohypnol and scopolamine have been used to facilitate robberies, and men are targeted on dating apps and at weekends in popular nightlife areas. Australia's advice notes scopolamine has also been delivered by aerosol spray and paper handouts. Never accept a drink from a stranger, watch yours being poured, and do not leave it unattended." },
+        { q: "How much cash should I carry in Ecuador?", a: "Only what you need for the day, commonly around 50 to 100 dollars, with the rest in the hotel safe. The State Department advises using ATMs in well-protected indoor areas, avoiding large single withdrawals, and carrying only the cards you need. Lower your daily withdrawal limit with your bank before you fly, which caps the worst case at no cost." },
+        { q: "Why are the Galapagos fees cash only?", a: "They are official Ecuadorian government charges, currently a 20 dollar transit control card bought at the mainland airport and a 200 dollar national park entrance fee for most adult foreign visitors, and the islands have no airport ATMs. It is a fee, not a scam. Bring the money in clean, smaller notes from the mainland, and check current amounts before you fly since they have changed." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Ecuador country information, including the avoid-hailing-taxis rule, ATM advice and drink spiking warning", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Ecuador.html", type: "gov" },
+          { label: "OSAC: Ecuador country security report, including taxi interceptions, complicit drivers and the kidnapping indicator", url: "https://www.osac.gov/Content/Report/19e89ddd-38d6-4062-aa6d-1c2aad29162d", type: "gov" },
+          { label: "Government of Canada: Ecuador travel advice, including express kidnapping, forced transfers and card fraud", url: "https://travel.gc.ca/destinations/ecuador", type: "gov" }
+        ],
+        judgment: "The instruction to avoid hailing taxis, to use ATMs in well-protected indoor areas, to avoid large single withdrawals, to keep a card in sight, and the naming of Rohypnol and scopolamine with men targeted through dating apps and weekend nightlife all come from current US State Department country information for Ecuador. The taxi interception mechanism, the complicit-driver point and the Guayaquil and Manta focus come from US security reporting. The organised-gang framing, the forced online transfers, the note that gangs sometimes work with taxi or rideshare drivers and the day-versus-night distinction come from Government of Canada advice. The registered-taxi panic button and camera detail comes from Australian government advice. We have attached no dollar figure to the express kidnapping or spiking sections because the loss is whatever your accounts allow, which is the argument for a low daily cap and carrying a day's cash. Galapagos fees are official charges that have changed before, so verify them before travel. Ecuador uses the US dollar. Checked August 2026."
+      }
     }
   ]
 };

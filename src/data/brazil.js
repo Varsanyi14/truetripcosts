@@ -454,6 +454,86 @@ export default {
         ],
         judgment: "Card acceptance, the IOF tax on foreign cards (around 4.38%) and Pix access for visitors are all shifting in Brazil, and much of the rest is our practical read, so treat amounts as a guide and confirm with your own bank. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "The real risk", v: "Being unable to say no" },
+        { k: "Taxis", v: "Uber or 99, never street" },
+        { k: "Your wallet", v: "Carry one card, not four" },
+        { k: "Drinks", v: "Watch yours being poured" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Brazil, and what they cost",
+      description: "Drink spiking, the sequestro relampago, forced Pix transfers and card cloning. What each one is, how to stay out of the situation, and the legal costs that quietly add up.",
+      h1: "Common money scams in Brazil, and what they cost you",
+      lede: "Brazil is one of the great travel countries and millions of visits pass without any of this. But we are not going to tell you a few habits defuse it, because that would be dishonest. The main ways money leaves a foreign visitor in Brazil are not an inflated bill or a rigged meter. They are a drink you did not watch being poured, and a car you cannot get out of. That changes the advice: it is about not entering the situation, and about limiting what can be taken if you do. The situations are specific and recognisable. Note that this page covers money; the US State Department has Brazil at Level 2 with a kidnapping risk indicator, so read the full advisory for the wider picture.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "Three things account for most money taken from foreign visitors, and two of them work by removing your ability to refuse. <b>Drink spiking</b>, known locally as <b>boa noite Cinderela</b>, which the State Department calls common, especially in Rio, with foreigners targeted through dating apps or at bars before being drugged and robbed. The <b>sequestro relampago</b>, or express kidnapping, where someone is taken to a series of ATMs, and increasingly forced to open their banking app and send money by <b>Pix</b>. And ordinary <b>card cloning and skimming</b>. The escapes: <b>watch your drink being poured</b>, <b>never accept one from a stranger</b>, <b>use Uber or 99 rather than a street taxi</b>, <b>use ATMs inside branches and malls</b>, and <b>carry one card, not your whole wallet</b>.",
+      sections: [
+        {
+          h: "How money is actually taken here",
+          icon: "alert",
+          key: { tag: "Watch it poured", text: "The State Department says assaults using sedatives placed in drinks are common, especially in Rio, and that criminals target foreigners through dating apps or at bars before drugging and robbing them.", tone: "teal" },
+          p: [
+            "This is the part that makes Brazil different from most guides on this site, so it is worth stating plainly. The US State Department's Brazil advisory says assaults <b>including with sedatives and drugs placed in drinks are common, especially in Rio de Janeiro</b>, and that criminals <b>target foreigners through dating apps or at bars</b> before drugging and robbing them. The local name is <b>boa noite Cinderela</b>, goodnight Cinderella. What follows is your phone, cards and cash going while you are unable to object, and sometimes contactless payments or withdrawals made with your own card. There is a genuine medical risk here as well as a financial one, which is the honest reason to treat it as more than a wallet problem.",
+            "The escapes all sit before the drink. <b>Watch your drink being poured</b>, and prefer something opened in front of you. <b>Never accept a drink or food from a stranger</b>, and never leave one unattended and come back to it. The advisory's own list adds two more that are easy to underrate: <b>avoid going to bars or nightclubs alone</b>, and <b>be alert to date drug scams</b>, since the dating-app route is named explicitly. Tell someone at home who you are meeting and where. And if a night does go wrong, the same advisory is blunt about the priority: <b>do not physically resist a robbery attempt</b>."
+          ]
+        },
+        {
+          h: "The sequestro relampago, and Pix",
+          icon: "taxi",
+          key: { fig: "Uber or 99", tag: "Never a street taxi", text: "In an express kidnapping, victims are taken to several ATMs to withdraw cash, and increasingly forced to open their banking app and send money by Pix, which is far harder to reverse.", tone: "teal" },
+          p: [
+            "US security reporting describes the <b>sequestro relampago</b> plainly: kidnappers take ATM users at gunpoint to several machines to withdraw cash. The newer version matters more for your money, because it is faster and harder to undo. Criminals now <b>force victims to open their banking app and transfer funds</b>, primarily through <b>Pix</b>, Brazil's instant payment system. A Pix transfer settles in seconds and is not a card charge you can dispute later. Brazilians are the most frequent targets, but foreigners are vulnerable too.",
+            "In practice this reaches tourists through transport and through ATMs. Use <b>Uber and 99</b> as the default, since the driver, car and route are tracked and the fare is set in advance, and <b>never accept a ride from someone approaching you in a terminal</b>. From the airport, use an app from the designated pickup area or the official prepaid taxi desk. The <a href=\"/brazil/taxis-and-apps\">Brazil taxis and apps guide</a> has the detail. US government employees are advised not to use municipal buses at all because of robbery risk, which is a useful signal for how to treat them. One more, worth knowing even though tourists rarely have Pix: it needs a local tax ID, so most visitors cannot use it, which quietly removes that exposure."
+          ]
+        },
+        {
+          h: "At the ATM, and what is in your wallet",
+          icon: "atm",
+          key: { fig: "Carry one card", tag: "Inside a branch", text: "US security reporting advises limiting the cards in your wallet to reduce both the potential loss and the duration of an incident. Use ATMs inside bank branches or malls, never street machines at night.", tone: "teal" },
+          p: [
+            "Two things meet at the cash machine. The first is ordinary <b>card cloning and skimming</b>, which is common in Brazil, so use ATMs <b>inside bank branches or shopping malls</b>, cover the keypad, keep your card in sight when you pay, and skip standalone street machines, especially after dark. Foreign-card withdrawal limits are low anyway, often 800 to 1,000 reais and lower at night.",
+            "The second is a single piece of preparation that is unusually good, and it comes straight from US security reporting: <b>limit the number of bank and credit cards in your wallet</b>, because that reduces both the potential loss and, pointedly, <b>the duration of an incident</b>. So carry one card and a little cash for the day, and leave the rest in the hotel safe. Lower your daily withdrawal limit with your bank before you fly for the same reason. It costs nothing and it caps the worst case in advance. If your phone is your bank, a lock screen and app-level authentication are doing more work here than you might think, and the advisory also notes phone snatching is bold and frequent, so keep it in a pocket rather than your hand."
+          ]
+        },
+        {
+          h: "The money that leaves without anyone meeting you",
+          icon: "receipt",
+          key: { fig: "About 4.38%", tag: "Legal, not a scam", text: "Brazil's IOF tax hits foreign cards at around 4.38 percent, and one bank has been adding a steep conversion markup at its ATMs. Neither is a scam, and both cost more than most cons.", tone: "amber" },
+          p: [
+            "Over a two-week trip, the quiet legal costs beat everything else on this page, and nobody warns you about them because nothing improper is happening. Brazil applies the <b>IOF tax</b> to foreign card transactions at around <b>4.38 percent</b>. Separately, <b>Bradesco</b> ATMs have been reported adding a steep conversion markup of roughly 9.5 percent, so choose a different bank's machine. And on every terminal and ATM, choose <b>reais</b> rather than dollars, since the dollar option layers a marked-up rate on top of everything else. The mechanics are in the <a href=\"/brazil/cash-or-card\">Brazil cash and cards guide</a>.",
+            "Two more to plan for. Restaurants add a <b>10 percent service charge</b>, the servico, so a tip is largely built in and you do not need to add more, which the <a href=\"/brazil/tipping\">Brazil tipping guide</a> covers. And the <b>e-visa</b> is now required for US citizens and costs a fixed 80.90 dollars from the official government portal only, so any site quoting more is a middleman; see the <a href=\"/brazil/entry-visa\">Brazil entry and visa guide</a>. On islands and in small beach towns, ATMs are unreliable and card machines lose signal, so carry enough cash before you go."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "coins",
+          key: { fig: "Decisions", tag: "Not just vigilance", text: "Watch your drink poured, use Uber or 99, withdraw inside branches, carry one card rather than your whole wallet, and lower your daily cap before you fly.", tone: "teal" },
+          p: [
+            "Vigilance is not the tool here, because you cannot watch a wallet carefully enough to beat a drink you did not see poured. So the list is short and every item is a <b>decision made in advance</b>: <b>watch your drink being poured and never accept one from a stranger</b>, <b>use Uber or 99 rather than a street taxi</b>, <b>withdraw inside bank branches and malls</b>, <b>carry one card rather than your whole wallet</b>, and <b>lower your daily withdrawal cap before you fly</b>. Then behave normally, because most of Brazil most of the time is exactly the country you came to see.",
+            "If something happens: emergency police are <b>190</b>, and tourist police units, the <b>DEAT</b> in Rio and Delegacia do Turista elsewhere, exist specifically for foreigners and are used to handling reports in English. File the report even if you expect nothing back, since your insurer will want it, and call your card issuer immediately to freeze the account. For getting and spending money well while you are there, see the <a href=\"/brazil/cash-or-card\">Brazil cash and cards guide</a> and the <a href=\"/brazil\">Brazil cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Brazil safe for tourists?", a: "Millions of visits pass without incident, but Brazil is not in the same category as most destinations on this site. The US State Department has it at Level 2 with a kidnapping risk indicator. This page covers money, where the risks are drink spiking, express kidnapping with forced ATM withdrawals or Pix transfers, and card cloning. Read the current advisory for the wider picture." },
+        { q: "What is boa noite Cinderela?", a: "The local name for drink spiking, literally goodnight Cinderella. The US State Department says assaults using sedatives placed in drinks are common, especially in Rio de Janeiro, and that criminals target foreigners through dating apps or at bars before drugging and robbing them. Watch your drink being poured, never accept one from a stranger, and avoid going to bars alone." },
+        { q: "What is a sequestro relampago?", a: "An express kidnapping. Victims are taken at gunpoint to several ATMs to withdraw cash. The newer and more damaging version forces victims to open their banking app and send money by Pix, Brazil's instant transfer system, which settles in seconds and cannot be disputed like a card charge. Use Uber or 99 rather than street taxis, and withdraw inside bank branches." },
+        { q: "How many cards should I carry in Brazil?", a: "One, plus a little cash for the day. US security reporting advises limiting the cards in your wallet specifically because it reduces both the potential loss and the duration of an incident. Leave the rest in the hotel safe, and lower your daily withdrawal limit with your bank before you fly, which caps the worst case in advance at no cost." },
+        { q: "Can tourists use Pix in Brazil?", a: "Mostly no. Pix requires a Brazilian tax ID, so most visitors cannot set it up, and that quietly removes one exposure since forced Pix transfers are now part of express kidnappings. It does mean carrying a card and some cash instead. Note that foreign cards attract Brazil's IOF tax at around 4.38 percent on top of whatever your bank charges." },
+        { q: "Which ATMs should I use in Brazil?", a: "Machines inside bank branches or shopping malls, never standalone street machines, and not at night. Card cloning is common, so cover the keypad and keep your card in sight when paying. Avoid Bradesco machines specifically, which have been reported adding a conversion markup of roughly 9.5 percent, and always choose reais rather than dollars on the screen." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Brazil travel advisory, including sedative assaults, dating app targeting and the do-not-resist advice", url: "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/brazil-travel-advisory.html", type: "gov" },
+          { label: "OSAC: Brazil country security report, including express kidnapping, forced Pix transfers and the limit-your-cards advice", url: "https://www.osac.gov/Content/Report/7ce0bb41-df62-4e92-b4b0-1d02a39be392", type: "gov" }
+        ],
+        judgment: "The drink-spiking and dating-app warnings, the instruction not to resist a robbery, the advice against bars alone and the municipal bus guidance all come from the current US State Department advisory for Brazil, which sits at Level 2 with a kidnapping risk indicator added in 2025. The express kidnapping mechanism, the shift to forced Pix transfers and the advice to limit the cards in your wallet to reduce both loss and incident duration come from US security reporting for Brazil. We have attached no dollar figure to the spiking or express-kidnapping sections because no honest typical figure exists; the loss is whatever your cards and accounts allow, which is the argument for carrying one card and lowering the daily cap. The 4.38 percent IOF and the reported Bradesco markup are legal charges rather than scams and are labelled as such. Real conversions use roughly 5.2 to the dollar. Checked August 2026."
+      }
     }
   ]
 };

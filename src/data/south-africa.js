@@ -364,6 +364,87 @@ export default {
         ],
         judgment: "The airport e-hailing bays and the no-go zones can shift, and fares move with the rand and surge pricing, so treat rand figures as a recent read and check your app. The advice to avoid minibus taxis and unsolicited rides is the constant. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "The real risk", v: "Being helped at the ATM" },
+        { k: "Your card", v: "Never let it leave you" },
+        { k: "ATM security guards", v: "Not allowed to help you" },
+        { k: "Set before you fly", v: "A daily withdrawal cap" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in South Africa, and what they cost",
+      description: "The ATM card swap, skimming at machines and till points, and the airport follow-home. What each one is, how to stay out of the situation, and how to claim your 15% VAT back.",
+      h1: "Common money scams in South Africa, and what they cost you",
+      lede: "South Africa is a magnificent country to travel in and most visits are trouble free, and the money scams here are unusually well documented, which makes them unusually avoidable. But we are not going to pretend the context is ordinary. The US State Department has South Africa at Level 2 with crime, terrorism, unrest and kidnapping indicators, and it notes that kidnappers target foreign travelers specifically to make them withdraw cash or hand over account passwords. So the advice is partly about the con at the cash machine, and partly about limiting what anyone can take. Read the full advisory for the wider picture; this page covers money.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "The signature scam here is the <b>ATM card swap</b>, where a stranger offers to help, cancels your transaction so the card ejects, and swaps it for another before you notice. Around it: <b>skimming</b> at machines and at till points, the <b>follow-home</b> from OR Tambo airport, and unlicensed taxis. South African police and the banking industry both publish the escapes, and they are specific: <b>never accept help at an ATM from anyone, including the security guard</b>, <b>go inside the bank instead</b>, <b>never let your card leave your sight</b>, and <b>set a daily withdrawal limit with your bank before you fly</b>. Separately, and in your favour, you can reclaim the <b>15 percent VAT</b> on bigger purchases at the airport.",
+      sections: [
+        {
+          h: "The card swap, and the person offering to help",
+          icon: "atm",
+          key: { tag: "Refuse all help", text: "SABRIC describes the method exactly: a stranger offers to assist, presses cancel so your card ejects, and swaps it for another before you notice, usually before you enter your PIN.", tone: "teal" },
+          p: [
+            "This is South Africa's signature money scam and the banking industry body, <b>SABRIC</b>, publishes the method step by step. While you are at an ATM, an unknown person approaches to <b>assist</b> you. They press cancel so the machine ejects your card, and swap it for another one without you realising, usually <b>before you have entered your PIN</b>, which is why the transaction then fails and you assume the machine is faulty. You walk away with somebody else's card and they walk away with yours. SABRIC also describes how the confusion is manufactured: changing the <b>screen language</b> so the display looks unfamiliar, activating the <b>cardless function</b> to alter the layout, or <b>jamming the card slot or PIN pad</b> so you go to a quieter machine around the corner.",
+            "The instructions from SABRIC and from the South African Police Service are unusually absolute, and one of them surprises people. <b>Do not accept help at an ATM from anyone</b>, and SABRIC spells out the exception that is not an exception: <b>not even the security personnel guarding the ATM, and not even someone presenting as a bank official</b>. SAPS says the same, noting that security staff at ATMs are there to deter crime and are <b>not authorised to assist with transactions</b>. Go inside the branch instead. If the machine keeps your card, call your bank's stop-card line yourself and <b>never let anyone else make that call for you</b>. Do not use a machine whose screen looks unfamiliar or whose slot or keypad appears tampered with, and never force a card into a slot."
+          ]
+        },
+        {
+          h: "Your card at the till, and skimming",
+          icon: "card",
+          key: { tag: "It never leaves you", text: "Card skimmers can be fitted to any reader, not just an ATM. If a card cannot be processed at your table, walk with it rather than letting it go out of sight.", tone: "teal" },
+          p: [
+            "The second half of the card problem happens away from the machine. <b>Skimming devices can be fitted to any card reader</b>, including till points at restaurants and filling stations, and South Africa is a country where fuel is full service, so handing a card through a car window is routine. The rule is the one South African banks give their own customers: <b>your card never leaves your sight</b>. If a staff member needs a different machine, either walk with them or ask them to bring the machine to you. Cover the keypad every time, including at a till.",
+            "Two practical additions. Turn on <b>transaction alerts</b> before you travel so a bad charge reaches your phone in minutes rather than at the end of the month, and check your statement while you are still in the country, since reporting from home is much harder. On any terminal or ATM, choose <b>rand</b> rather than US dollars, because the dollar option adds a marked-up rate to every transaction you accept it on. The <a href=\"/south-africa/cash-or-card\">South Africa cash and cards guide</a> covers how to carry money here."
+          ]
+        },
+        {
+          h: "Arriving, and the follow-home",
+          icon: "taxi",
+          key: { fig: "E-hailing bay", tag: "Not the arrivals curb", text: "The State Department notes crime victims have been followed from OR Tambo airport in Johannesburg and robbed on reaching their hotel. Book transport in advance and use the designated pickup bay.", tone: "teal" },
+          p: [
+            "One specific pattern is worth planning around because it happens at the moment you are least alert. The US State Department records that crime victims have been <b>followed from OR Tambo airport in Johannesburg and then robbed when they reach their home or hotel</b>. It is not a scam in the con-artist sense, but it is how money leaves people who have just landed with everything they brought. The countermeasures are ordinary: <b>arrange your transport before you land</b> rather than sorting it at the curb, keep laptops and camera bags out of sight in the car, and if you think you are being followed, drive to a petrol station or police station rather than to where you are staying.",
+            "For transport generally, use <b>Uber or Bolt</b>, both of which work well in the big cities. Two local details matter: at the airports, app pickup is at a <b>designated e-hailing bay</b> rather than the arrivals curb, and at Cape Town that bay is up at Parkade 1 via the skybridge. And <b>never take an unsolicited ride from someone inside the terminal</b>. The <a href=\"/south-africa/taxis-and-apps\">South Africa taxis and apps guide</a> has the rest, including the friction between app drivers and metered taxis at some pickup points."
+          ]
+        },
+        {
+          h: "The 15 percent you can claim back",
+          icon: "refund",
+          key: { fig: "15% VAT", tag: "Get a tax invoice", text: "Foreign visitors can reclaim the 15 percent VAT on goods taken home, but you need a proper tax invoice showing the VAT, and checked items must be inspected before you check in.", tone: "amber" },
+          p: [
+            "Now the item that goes the other way, and on a safari-and-shopping trip it is worth real money. Foreign visitors can <b>reclaim the 15 percent VAT</b> on goods they take out of South Africa. The catch is entirely procedural, and people miss it at the airport rather than at the shop. You need a proper <b>tax invoice</b> showing the VAT amount and the seller's VAT number, with your name on it for larger purchases, so ask for it at the till rather than accepting a card slip. Then, for anything going in <b>checked luggage</b>, the goods must be <b>inspected and the paperwork stamped before you check in</b>, which means arriving early and going to the VAT desk first.",
+            "Two smaller money habits that are customs rather than cons. Fuel is full service, so the attendant who fills up and cleans your windscreen expects a few rand, and the <b>car guard</b> who watches your parked car expects a few rand when you return. Neither is a scam, both are normal, and the amounts are small; the <a href=\"/south-africa/tipping\">South Africa tipping guide</a> has the going rates. Keep a little cash for exactly this, and for the occasional localized power outage that briefly knocks out card machines."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "zar",
+          key: { fig: "Decisions", tag: "Set it in advance", text: "SAPS itself recommends setting a daily ATM withdrawal limit with your bank. Do that before you fly, carry one card, refuse all help at machines, and book transport in advance.", tone: "teal" },
+          p: [
+            "The best single piece of advice here is not ours, it is the South African Police Service's own: <b>consider setting a daily ATM withdrawal limit with your bank</b>. Do it before you fly. It costs nothing, and it puts a ceiling on the worst case, including the scenario the State Department describes where someone is made to withdraw cash. Alongside it: <b>refuse all help at a cash machine, including from guards</b>, <b>never let your card leave your sight</b>, <b>carry one card and a little cash rather than your whole wallet</b>, <b>use ATMs inside malls and banks in daylight</b>, and <b>book transport before you land</b>.",
+            "If something happens: emergency numbers are <b>10111</b> for police and <b>112</b> from a mobile, and SAPS runs <b>Crime Stop on 08600 10111</b> and the MySAPS app for reports. Call your bank's stop-card line yourself, immediately, and file a police report even if you expect nothing back, since your insurer will need it. And to keep proportion: these are documented, patterned scams with published countermeasures, which is exactly what makes them avoidable. For getting and spending money well while you are there, see the <a href=\"/south-africa/cash-or-card\">South Africa cash and cards guide</a> and the <a href=\"/south-africa\">South Africa cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is South Africa safe for tourists?", a: "Most visits are trouble free, but the context is not ordinary. The US State Department has South Africa at Level 2 with crime, terrorism, unrest and kidnapping indicators, and notes that kidnappers target foreign travelers to make them withdraw cash or hand over account passwords. This page covers money scams, which are well documented and avoidable. Read the current advisory for the wider picture." },
+        { q: "What is the ATM card swap scam in South Africa?", a: "A stranger offers to help you at the machine, presses cancel so your card ejects, and swaps it for another before you notice, usually before you have entered your PIN. The banking body SABRIC publishes the method. Criminals also change the screen language or jam the slot to create confusion. Refuse all help and go inside the branch instead." },
+        { q: "Should I let the ATM security guard help me?", a: "No. This surprises people, but both SABRIC and the South African Police Service are explicit: do not accept assistance at an ATM from anyone, not even the security personnel guarding it or someone presenting as a bank official. SAPS notes that ATM security staff are there to deter crime and are not authorised to assist with transactions. Go inside the bank for help." },
+        { q: "What should I do if an ATM keeps my card in South Africa?", a: "Contact your bank's stop-card line yourself, immediately, and never allow anyone else to make that call on your behalf, which SAPS flags as a fraud method in itself. Do not accept help from bystanders. If the machine's screen looked unfamiliar or the slot or keypad seemed tampered with, mention that to the bank, and check your statement straight away." },
+        { q: "How do I reclaim VAT in South Africa?", a: "You can reclaim the 15 percent VAT on goods you take home, but you need a proper tax invoice showing the VAT amount and the seller's VAT number, so ask at the till rather than accepting a card slip. For anything going in checked luggage, the goods must be inspected and the paperwork stamped before you check in, so go to the VAT desk first and arrive early." },
+        { q: "How do I get from Johannesburg airport safely?", a: "Arrange transport before you land rather than sorting it at the curb, and never accept an unsolicited ride from someone inside the terminal. Uber and Bolt both work, but app pickup is at a designated e-hailing bay, not the arrivals curb. The State Department notes victims have been followed from OR Tambo and robbed on arriving at their hotel, so keep bags out of sight in the car." }
+      ],
+      sources: {
+        links: [
+          { label: "SABRIC: ATM card swopping, the banking industry warning describing the method and the refuse-all-help rule", url: "https://www.sabric.co.za/media-and-news/press-releases/atm-card-swopping/", type: "gov" },
+          { label: "SAnews: South African Police Service warning on ATM scams, including the daily withdrawal limit advice", url: "https://www.sanews.gov.za/south-africa/saps-warns-increase-atm-related-scams", type: "gov" },
+          { label: "US State Department: South Africa travel advisory, including the OR Tambo follow-home pattern and kidnapping indicator", url: "https://travel.state.gov/en/international-travel/travel-advisories/south-africa.html", type: "gov" }
+        ],
+        judgment: "The card swap method, the confusion tactics and the instruction to refuse help from anyone including ATM security personnel and apparent bank officials come from SABRIC, the South African Banking Risk Information Centre. The parallel police guidance, the point that ATM security staff are not authorised to assist with transactions, the warning never to let anyone else call your bank for you and the recommendation to set a daily ATM withdrawal limit come from a South African Police Service statement carried by the government news service. The follow-home from OR Tambo and the kidnapping context come from the current US State Department advisory, which sits at Level 2 with crime, terrorism, unrest and kidnapping indicators. We have attached no figure to the card swap because the loss depends entirely on your daily limit, which is exactly why setting it low in advance is the advice. Rand conversions use roughly 16.4 to the dollar. Checked August 2026."
+      }
     }
   ]
 };
