@@ -513,6 +513,86 @@ export default {
         ],
         judgment: "The distance-based system and the payment methods come from the operator's own page. The Zagreb to Split figure is an approximation from recent published tariffs, ENC discounts vary by account type, and the 1 March 2027 free-flow date is a scheduled change that has already slipped once, so treat it as planned rather than certain. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Most cost", v: "The bill, mostly" },
+        { k: "Seafood", v: "Priced by the kilogram" },
+        { k: "Receipts", v: "You are owed one by law" },
+        { k: "Parking", v: "Do not scan a QR sticker" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Croatia, and what they cost",
+      description: "Seafood priced by the kilo, unordered extras on the bill, port and airport taxi overcharging and fake parking QR codes. What each costs, and how to sidestep it.",
+      h1: "Common money scams in Croatia, and what they cost you",
+      lede: "Croatia is one of Europe's safest countries, it absorbs nearly twenty million visitors a year without much trouble, and violent crime against tourists is close to nonexistent. What can go wrong here is almost entirely about the bill: a fish priced by the kilogram, a plate you did not order, a taxi at the port with no meter running. These are coastal-season pricing habits more than cons, and reading one document defeats most of them. Here is each, what it costs, and how to sidestep it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "Croatia's money traps are concentrated on the summer coast. <b>Fish and shellfish are priced by the kilogram</b>, so a shared fish can land at a number nobody expected. <b>Bread, olives or a small plate</b> brought unasked are chargeable items. <b>Taxis</b> at ferry ports, cruise berths and airports quote flat rates well above the meter. And in Dubrovnik, drivers have been caught by <b>fake QR stickers pasted over parking meter codes</b>. Two habits cover nearly all of it: <b>ask the price per kilo and the weight before the fish is cooked</b>, and <b>take the receipt</b>, which Croatian law requires the business to give you. Add the usual pair: <b>skip the Euronet ATMs</b> and <b>always choose euros</b>.",
+      sections: [
+        {
+          h: "Seafood priced by the kilogram",
+          icon: "bowl",
+          key: { fig: "Ask the weight", tag: "Before it is cooked", text: "Coastal menus price fish and shellfish per kilogram, not per portion. Ask the price per kilo and the weight of the fish you are choosing, before it goes to the kitchen.", tone: "amber" },
+          p: [
+            "This is not a scam, it is how the Adriatic coast has always sold fish, and it is the single most common bill shock in Croatia. A konoba menu lists whole fish and shellfish <b>by the kilogram</b>, not by the plate. You pick a fish, it is weighed, and the price is the weight times the rate. A fish that looked like a reasonable shared main can weigh well over a kilo, and premium species carry premium per-kilo rates, so the number at the end can be several times what a per-portion reading suggested.",
+            "The fix is one question, asked at the right moment: <b>before the fish goes to the kitchen</b>, ask the price per kilogram and the weight of the specific fish. A good restaurant will show you the fish and the scale without any awkwardness, and that is a decent test of the place. Frozen fish must be marked as such on Croatian menus, so check that too. None of this applies to the fixed-price grilled and fried dishes further down the menu, which are usually excellent value."
+          ]
+        },
+        {
+          h: "Unordered extras, and the receipt you are owed",
+          icon: "receipt",
+          key: { tag: "Take the receipt", text: "Bread, olives or a couvert brought unasked are chargeable, not complimentary. Croatian law requires a fiscalized receipt for consumer sales, so ask for it and check the itemization.", tone: "teal" },
+          p: [
+            "The second coastal habit is small plates arriving without being ordered: <b>bread, olives, a couvert, a dip</b>. These are chargeable items, itemized at a few euros each, and accepting them is treated as ordering them. Decline what you do not want as it arrives, rather than at the bill. In the busiest tourist streets you may also meet the version with no printed prices at all, or a menu produced verbally, which is the tell to walk on.",
+            "Croatia gives you a strong tool here, and most visitors do not use it. Under the <b>Fiscalization Act</b>, a business is required to issue a <b>fiscalized receipt</b> for a consumer sale, reported to the Tax Administration, and from 1 January 2026 that applies regardless of how you paid. The receipt must show the supplier, the items, the total and the tax by rate. So <b>ask for the receipt and read it before you pay</b>. It is a completely normal request here, it is itemized rather than a scrawled total, and it is the quickest way to see a charge you did not agree to."
+          ]
+        },
+        {
+          h: "Taxis at the port and the airport",
+          icon: "taxi",
+          key: { fig: "Uber or Bolt", tag: "Not the one waiting", text: "Ferry terminals, cruise berths and airports are where flat rates well above the meter appear. Croatian taxis come in every colour, so you cannot spot a licensed one by looking.", tone: "teal" },
+          p: [
+            "Most Croatian drivers are straight, and the overcharging concentrates exactly where you would expect: <b>Dubrovnik's Port Gruz</b> at cruise arrival and departure, <b>Split's ferry terminal and airport</b>, and late-night arrivals generally. The move is a flat rate quoted instead of the meter, at a multiple of the metered fare. A complication worth knowing: <b>Croatian taxis come in many colours</b>, so unlike Budapest you cannot identify a licensed one by looking at it.",
+            "<b>Uber and Bolt</b> both operate in Zagreb, Split, Dubrovnik and Zadar, they fix the fare before you get in, and they are usually cheaper than a traditional cab on the coast in summer. That is the default. If you do take a street taxi, check the <b>pricing table displayed on the vehicle</b> and make sure the meter runs from the start. Where an airport or port shuttle bus exists, it is cheaper than all of it. The <a href=\"/croatia/taxis-and-apps\">Croatia taxis and apps guide</a> has the detail."
+          ]
+        },
+        {
+          h: "Parking, and the QR sticker over the QR code",
+          icon: "qr",
+          key: { tag: "Pay at the meter", text: "Croatian press reported that in July 2025 fake QR stickers were found pasted over the real codes on Dubrovnik parking meters, sending drivers to a page that harvested card details.", tone: "teal" },
+          p: [
+            "This one is newer and worth a moment because the loss is your card details rather than a parking fee. In <b>July 2025</b>, Croatian press reported that stickers carrying <b>fake QR codes</b> had been pasted over the legitimate codes on parking meters in Dubrovnik, with the police involved and city staff peeling them off. Drivers who scanned were taken to a convincing copy of the payment page, which captured card number, expiry and security code, and the parking was never actually paid, so a ticket followed as well.",
+            "The technique, known as quishing, is documented worldwide, with warnings from US law enforcement and councils in the UK and Australia, so treat it as a general habit rather than a Dubrovnik problem. Two defenses: <b>pay at the meter face itself</b>, by card or coin, or use the city's own official parking app rather than a code found on a post; and if you do scan, <b>look at the sticker first</b>, since a fake one sits slightly raised, misaligned, or over other printed text. Check the address in your browser before typing a card number into anything."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "euro",
+          key: { fig: "Habits", tag: "How to avoid it", text: "Ask the price per kilo and the weight before the fish is cooked, take the receipt, book rides in an app, skip the Euronet ATMs, and always choose euros at the terminal.", tone: "teal" },
+          p: [
+            "Croatia's whole list is really two habits and a couple of housekeeping rules: <b>ask the price per kilo and the weight before the fish is cooked</b>, <b>take the receipt and read it</b>, <b>book rides in an app at ports and airports</b>, and <b>do not scan a roadside QR sticker</b>. Add the standard pair that costs quietly everywhere: <b>avoid the standalone Euronet ATMs</b> that cluster along the tourist coast and use a machine attached to a Croatian bank such as Zagrebacka, PBZ or Erste, and <b>always choose euros</b> rather than dollars at any terminal or ATM.",
+            "One thing that is not a trap but does surprise people: Croatia switched fully to the <b>euro</b> in 2023, so any guidance quoting kuna prices is out of date, and leftover kuna cannot be spent. Carry some euro cash for the islands, small konobas and dockside sellers, since cards thin out once you leave the bigger towns. For getting and spending money well while you are there, see the <a href=\"/croatia/cash-or-card\">Croatia cash and cards guide</a> and the <a href=\"/croatia\">Croatia cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Croatia safe for tourists?", a: "Very. Croatia is one of Europe's safest countries, it hosts close to twenty million visitors a year, and violent crime against tourists is close to nonexistent. What travelers actually meet is billing: seafood priced by the kilogram, small plates charged as items, and taxi overcharging at ferry ports and airports. All of it is avoidable with a couple of habits." },
+        { q: "Why was my fish so expensive in Croatia?", a: "Because coastal menus price whole fish and shellfish by the kilogram rather than per portion, so the bill is the weight times the rate. A fish that looks like a shared main can weigh well over a kilo. Ask the price per kilo and the weight of the specific fish before it goes to the kitchen. A good restaurant will show you the fish and the scale." },
+        { q: "Am I entitled to a receipt in Croatia?", a: "Yes. Under Croatia's Fiscalization Act, a business must issue a fiscalized receipt for a consumer sale and report it to the Tax Administration, and from 1 January 2026 that applies regardless of how you paid. The receipt shows the supplier, the items, the total and the tax by rate, so asking for it and reading it before you pay is both normal and the fastest way to catch a charge you did not agree to." },
+        { q: "Is the bread and olives free in a Croatian restaurant?", a: "Usually not. Bread, olives or a small plate brought without being ordered are chargeable items, itemized at a few euros each, and accepting them counts as ordering them. Decline what you do not want as it arrives rather than arguing at the bill. A restaurant with no printed prices at all is a reason to walk on." },
+        { q: "How do I avoid taxi overcharging in Croatia?", a: "Use Uber or Bolt, which operate in Zagreb, Split, Dubrovnik and Zadar and fix the fare before you get in. Overcharging concentrates at Dubrovnik's Port Gruz on cruise days, Split's ferry terminal and airport, and late-night arrivals. Croatian taxis come in many colours, so you cannot spot a licensed one by looking; check the pricing table on the vehicle and that the meter runs." },
+        { q: "Are the parking QR codes in Dubrovnik safe to scan?", a: "Be careful. Croatian press reported in July 2025 that fake QR stickers had been found pasted over the real codes on Dubrovnik parking meters, sending drivers to a page that harvested card details while the parking went unpaid. Pay at the meter face itself or use the city's official parking app, and inspect any sticker, since a fake one sits slightly raised or misaligned." }
+      ],
+      sources: {
+        links: [
+          { label: "UK FCDO: Croatia travel advice, safety and security", url: "https://www.gov.uk/foreign-travel-advice/croatia/safety-and-security", type: "gov" },
+          { label: "US State Department: Croatia country information and safety guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Croatia.html", type: "gov" }
+        ],
+        judgment: "The receipt obligation comes from Croatia's Fiscalization Act, which took effect in its current form on 1 January 2026 and requires a fiscalized consumer receipt regardless of payment method. The per-kilogram seafood pricing and the chargeable unordered plates are long-standing coastal conventions rather than scams, and we have framed them that way; we have not attached a figure to either, because the amount depends entirely on the fish and the venue. The Dubrovnik fake QR parking codes are reported by Croatian press for July 2025 with police involvement, and we have described them as reported rather than as a government advisory item; the underlying technique is documented by law enforcement in several countries. Croatia has used the euro since 2023. Checked August 2026."
+      }
     }
   ]
 };

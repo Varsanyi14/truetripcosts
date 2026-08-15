@@ -449,6 +449,86 @@ export default {
         ],
         judgment: "Hungary applies the shared EU pet-entry framework, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The local registration and any breed rules vary, so we point you to the official pages and dated this July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Most cost", v: "Avoidable entirely" },
+        { k: "The big one", v: "Never follow a stranger" },
+        { k: "Taxis", v: "Yellow and licensed, or app" },
+        { k: "Bills", v: "Ask the price before ordering" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Budapest, and what they cost",
+      description: "The friendly stranger who suggests a bar, unlicensed taxis, exchange booths and service charges. What each costs a US visitor in Hungary, and how to sidestep it.",
+      h1: "Common money scams in Hungary, and what they cost you",
+      lede: "Hungary is a low-crime country, the US rates it at its calmest advisory level, and Budapest is a comfortable city to walk at night. There is one genuine scam here worth knowing about in detail, and it is unusual in that it is entirely optional: it only happens if you follow a stranger to a bar they chose. Everything else is ordinary money housekeeping, a taxi rule, an exchange rule and a bill to read. Here is each, what it costs, and how to sidestep it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "One scam dominates: the <b>konzumlany</b>, or consumption girl, where a friendly stranger steers you to a specific bar and the bill arrives at many times what the drinks were worth. Around it sit the usual suspects: <b>unlicensed taxis</b> at the airport and tourist spots, <b>exchange booths and Euronet ATMs</b> with poor rates, a <b>service charge</b> you may tip on top of by mistake, and items brought to the table that turn out to be chargeable. The golden rules: <b>never follow someone who approached you to a bar they picked</b>, <b>use only licensed yellow taxis or an app</b>, <b>get forint from a bank ATM</b>, and <b>check the printed prices before you order</b>.",
+      sections: [
+        {
+          h: "The friendly stranger and the bar bill",
+          icon: "cocktail",
+          key: { fig: "$160-600", tag: "Choose your own bar", text: "A stranger suggests a bar they know, and the bill arrives at 50,000 to 200,000 forint for a round. The venue is in on it. Never follow someone who approached you to a bar they chose.", tone: "teal" },
+          p: [
+            "This is Budapest's signature con and it has run for decades. A well-dressed, friendly stranger, often a woman speaking excellent English, sometimes a couple, approaches you near <b>Vaci utca, Vorosmarty ter, Deak ter</b> or in the District VII ruin bar area and suggests a great bar nearby. The venue is complicit. Drinks arrive unpriced, your companion orders freely, and the bill lands at <b>50,000 to 200,000 forint</b>, roughly <b>160 to 600 dollars</b>, for what looked like a round or two. The stranger takes a commission, and a large member of staff tends to appear while payment is discussed. The dramatic cases go far higher; Hungarian press reported a single beer billed at 630 euros in one venue. Treat that as the far end, not the going rate.",
+            "Hungarian police have taken this seriously. A 2025 investigation into a ring of complicit bars identified <b>33 victims</b> among hundreds, put the damage above a billion forint, and led to arrests in February and again in June. The defense costs nothing: <b>choose your own venue</b>. A genuine invitation from a person you just met does not require going to one specific bar within minutes. If you are already holding a bad bill, ask for an <b>itemized receipt</b>, stay calm rather than refusing outright if staff are pressing, and report it afterwards to the Budapest tourist police on <b>+36 1 438 8080</b>, who speak English. The general emergency number is <b>112</b>."
+          ]
+        },
+        {
+          h: "Taxis: yellow, licensed, or an app",
+          icon: "taxi",
+          key: { fig: "Only yellow", tag: "Never an unmarked car", text: "Every licensed Budapest taxi is yellow and on the same regulated city tariff, so an app is not cheaper, just clearer. Unmarked cars at the airport and tourist spots are the ones that overcharge.", tone: "teal" },
+          p: [
+            "Budapest solved most of this with regulation, and the result is a rule that is easy to remember. <b>Every licensed taxi in Budapest is yellow and runs the same regulated city tariff</b>, so no licensed cab is cheaper than another and there is nothing to shop around for. That means an app is not a discount, it is just clearer: the fare is shown up front, you pay by card, and there is no language barrier. <b>Bolt</b> is the workhorse here.",
+            "The risk is the car that is not on that tariff. <b>Never get into an unmarked car</b>, and never take a ride from a driver who approaches you in the arrivals hall at Budapest airport or at a tourist square. Use the official rank, book in an app, or take the <b>100E</b> bus, which is the cheap direct link into town. If you are overcharged, note the plate and report it to the tourist police number above. The full picture is in the <a href=\"/hungary/taxis-and-apps\">Hungary taxis and apps guide</a>."
+          ]
+        },
+        {
+          h: "Exchange booths, Euronet, and the big numbers",
+          icon: "cash",
+          key: { tag: "Bank ATMs only", text: "Tourist-area exchange kiosks and standalone Euronet machines give poor rates. Use an ATM attached to a real bank, and count carefully, since forint notes run into the thousands.", tone: "amber" },
+          p: [
+            "Nothing here is illegal, which is the point. Tourist-area <b>exchange kiosks</b> and standalone <b>Euronet ATMs</b> quote poor rates and lean on fees, and they sit exactly where visitors arrive. Use a machine attached to a real Hungarian bank instead: <b>OTP, K and H, or Erste</b>. On any terminal or ATM, decline the offer to charge you in dollars and choose <b>forint</b>, so your own bank sets the rate. Places that accept euros do so at a rate they pick.",
+            "The forint's own arithmetic is worth a second of care. Notes run into the <b>thousands and tens of thousands</b>, so a missing or extra zero is easy to miss when you are tired, and 20,000 forint is only about 63 dollars. Count what you are handed, and check a bill's total against the menu rather than eyeballing the digits. The <a href=\"/hungary/cash-or-card\">Hungary cash and cards guide</a> covers how to carry money here."
+          ]
+        },
+        {
+          h: "The bill: service charge, and things you did not order",
+          icon: "receipt",
+          key: { fig: "10 to 12.5%", tag: "Check before tipping", text: "Many Budapest restaurants add a service charge, the szervizdij, so tipping on top means paying twice. Bread and olives brought unasked are usually chargeable items, not a gift.", tone: "amber" },
+          p: [
+            "Two ordinary things catch Americans out. First, many Budapest restaurants add a <b>service charge</b>, the <b>szervizdij</b>, typically <b>10 to 12.5 percent</b>. If it is on the bill, you do not need to tip on top, and adding a US-style 20 percent means paying twice for the same thing. Look for the line before you decide, which the <a href=\"/hungary/tipping\">Hungary tipping guide</a> covers.",
+            "Second, <b>bread, olives or a small plate arriving unasked</b> is normally a chargeable item here rather than a courtesy, itemized at a few euros each. That is legal once you accept it, so decline it if you do not want it. The related tell in the tourist streets is a place with <b>no printed prices</b>, or staff outside actively recruiting passers-by. Ask for the menu with prices before you sit, and if there is not one, keep walking."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "coins",
+          key: { fig: "Habits", tag: "How to avoid it", text: "Choose your own bar, use yellow taxis or an app, pull forint from a bank ATM, choose forint at the terminal, and check the printed prices and the service line before you order or tip.", tone: "teal" },
+          p: [
+            "One item on this page can cost hundreds of dollars, and it requires your cooperation to happen at all. The habits: <b>choose your own bar rather than a stranger's</b>, <b>use licensed yellow taxis or an app</b>, <b>get forint from a bank ATM</b>, <b>choose forint at every terminal</b>, and <b>check the printed prices and the service line</b>. Everything else in Hungary is honest and good value; ordinary Budapest restaurants, the baths and public transport are all straightforward.",
+            "Handled calmly, none of this should shape your trip, and most visitors meet none of it. Save the tourist police number, <b>+36 1 438 8080</b>, and the emergency number, <b>112</b>, and forget about it. For getting and spending money well while you are there, see the <a href=\"/hungary/cash-or-card\">Hungary cash and cards guide</a> and the <a href=\"/hungary\">Hungary cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Budapest safe for tourists?", a: "Yes. Hungary is a low-crime country and the US rates it at its calmest advisory level. The one scam worth knowing in detail is the konzumlany bar setup, which only happens if you follow a stranger to a bar they picked. The rest are ordinary money issues: unlicensed taxis, poor exchange rates and service charges you might tip on top of." },
+        { q: "What is the konzumlany scam in Budapest?", a: "A friendly stranger, often a woman speaking good English, approaches you near Vaci utca, Vorosmarty ter, Deak ter or the ruin bar district and suggests a specific bar nearby. The venue is in on it, drinks arrive unpriced, and the bill lands at 50,000 to 200,000 forint, roughly 160 to 600 dollars. The stranger earns a commission. Choose your own venue and it cannot happen." },
+        { q: "What do I do if a Budapest bar hands me a huge bill?", a: "Ask for an itemized receipt. If staff are pressing and you feel uncomfortable, negotiating down is generally safer than refusing outright, and you should report it afterwards rather than fight it there. The Budapest tourist police are on +36 1 438 8080 and speak English; the general emergency number is 112. Keep any receipt and card slip." },
+        { q: "How do I avoid taxi overcharging in Budapest?", a: "Every licensed Budapest taxi is yellow and runs the same regulated city tariff, so use only those, or book through an app such as Bolt where the fare shows up front. Never get into an unmarked car, and never take a ride from anyone who approaches you in the airport arrivals hall. The 100E bus is the cheap direct link from the airport." },
+        { q: "Where should I change money in Hungary?", a: "At an ATM attached to a real bank such as OTP, K and H or Erste. Avoid tourist-area exchange kiosks and standalone Euronet machines, which quote poor rates. Decline any offer to charge you in dollars and choose forint. Places that accept euros set their own rate, so pay in forint, and count what you are handed, since forint notes run into the thousands." },
+        { q: "Do I tip in Hungary if there is a service charge?", a: "No. Many Budapest restaurants add a service charge, the szervizdij, usually 10 to 12.5 percent, and adding a US-style tip on top means paying twice. Check the bill for the line first. If there is no service charge, 10 to 15 percent is customary, stated to the server as the total you want to pay rather than left on the table." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Hungary country information and safety guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Hungary.html", type: "gov" },
+          { label: "Daily News Hungary: police investigation into bars defrauding foreign tourists with hostesses, with victim and damage figures", url: "https://dailynewshungary.com/wealth-foreign-tourists-fell-victim-budapest/", type: "media" }
+        ],
+        judgment: "The 50,000 to 200,000 forint range is the typical reported bill for the konzumlany setup, and the 33 identified victims, the damage figure above a billion forint and the February and June 2025 arrests come from Hungarian press reporting on the police investigation. The 630 euro single beer is one dramatic reported case and we have flagged it as the far end rather than presenting it as what to expect. The service charge range and the tourist police number are widely published locally. We have not restated Budapest taxi tariffs here, since those sit in the taxis guide and move; the rule that matters is that all licensed cabs are yellow and share one regulated tariff. Forint conversions use roughly 315 to the dollar. Checked August 2026."
+      }
     }
   ]
 };

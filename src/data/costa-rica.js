@@ -432,6 +432,86 @@ export default {
         ],
         judgment: "Costa Rica's visa-free entry for US citizens is stable, COVID-era digital forms were removed in 2022, and the onward-ticket rule is enforced. Stay length has trended toward a 180-day maximum but is set by the officer on arrival, so treat 180 as a ceiling, not a guarantee, and check your stamp. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Most cost", v: "The rental counter, mostly" },
+        { k: "Car insurance", v: "Required, and rarely quoted" },
+        { k: "Prices", v: "Pay in the currency shown" },
+        { k: "Flat tire", v: "Drive to a gas station" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Costa Rica, and what they cost",
+      description: "The rental quote that is not the quote, the helpful stranger at a flat tire, the colones-or-dollars gap and unofficial taxis. What each costs, and how to sidestep it.",
+      h1: "Common money scams in Costa Rica, and what they cost you",
+      lede: "Costa Rica is safe for the great majority of visitors and almost none of this is dramatic. The single biggest money surprise here is not a con at all, it is a rental car quote that leaves out a charge the law requires. The rest are ordinary traps: a currency gap at the till, an unofficial taxi, a stranger who is unusually keen to help. A few habits defuse nearly all of them. Here is each one, what it costs, and how to sidestep it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "The costliest surprise in Costa Rica is the <b>rental car quote</b>, because Costa Rican law requires a third-party liability cover that most online quotes leave out and no credit card can replace. After that: the <b>colones or dollars</b> gap, where paying in the other currency lets the merchant set the rate; the <b>convert to USD</b> prompt on card machines and ATMs; unofficial <b>pirata taxis</b> and drivers who skip the meter; and the <b>flat tire</b> setup, where strangers who stop to help take your bags instead. The golden rules that beat them: <b>budget the mandatory insurance before you book</b>, <b>pay in the currency on the price tag</b>, <b>use official taxis or an app</b>, and <b>never accept roadside help from strangers</b>.",
+      sections: [
+        {
+          h: "The rental car quote that is not the quote",
+          icon: "wheel",
+          key: { fig: "$10-25 a day", tag: "Not optional", text: "Costa Rican law requires third-party liability cover, sold as TPL or PLI, and no credit card replaces it. Most online quotes omit it, so budget it before you book.", tone: "amber" },
+          p: [
+            "This is not a scam, it is a legal requirement presented badly, and it costs more than everything else on this page combined. Costa Rican law requires local <b>third-party liability</b> cover, sold as TPL, PLI or simply Liability Protection and underwritten through the state insurer INS. <b>No credit card benefit replaces it</b>, and you cannot decline it. Budget roughly <b>10 to 25 dollars a day</b> on top of the headline rate, which on a ten-day trip is a hundred to two hundred and fifty dollars that was never in the price you compared. Aggregator sites are the worst offenders here, because they quote the metal and nothing else.",
+            "The honest fix is arithmetic rather than vigilance: get a quote that already includes the mandatory cover, then compare. The separate <b>collision damage waiver</b> is genuinely optional, but declining it means a large hold on your card and paying for any repairs in Costa Rica before you can claim a cent back from your card issuer. One exclusion overrides every policy sold: <b>driving into water voids the lot</b>, so ignore any navigation app that routes you across a riverbed. The full breakdown is in the <a href=\"/costa-rica/renting-a-car\">Costa Rica car rental guide</a>."
+          ]
+        },
+        {
+          h: "The flat tire, and the helpful stranger",
+          icon: "alert",
+          key: { fig: "Keep driving", tag: "Do not stop there", text: "The US Embassy describes rental car tires going flat and people who stop to help stealing the bags. If you get a flat, drive on to a service station or another public place and change it yourself.", tone: "teal" },
+          p: [
+            "The US Embassy in Costa Rica names this one directly in its own crime guidance: a rental car's tire goes flat, people stop to help change it, and passports, bags, cash and a camera leave with them. The embassy's advice is unusually specific and worth following exactly. If you get a flat, <b>drive on if you can</b>, to the nearest service station or another public area, and <b>change it yourself while watching your valuables</b>. Most rental companies cover damage to the tire, so there is no reason to solve it at the roadside. Be wary of strangers offering help with car trouble at all.",
+            "The same logic covers the car when you are not in it. A November 2025 embassy security alert added a detail worth knowing: thieves use <b>signal blockers</b> so a key fob press does not actually lock the car, then help themselves. Pull the handle to check the door is really locked, park in secured lots where you can, and take valuables with you rather than leaving them in the trunk."
+          ]
+        },
+        {
+          h: "Colones or dollars, and the gap in between",
+          icon: "atm",
+          key: { fig: "5 to 10%", tag: "Pay what is shown", text: "Pay in the currency on the price tag. Mixing colones and dollars lets the merchant pick the rate, costing roughly 5 to 10 percent, and the convert-to-USD prompt costs more again.", tone: "amber" },
+          p: [
+            "Costa Rica runs on two currencies, and the gap between them is where money quietly goes. <b>Pay in the currency on the price tag</b>: colones for a colon price, dollars for a dollar price. Mixing them hands the merchant the exchange rate, and it will not be a good one, typically costing you <b>5 to 10 percent</b>. Paying dollars for a colon price is the common version, because your change comes back in colones at whatever rate they choose.",
+            "The separate, legal version is the <b>convert to USD</b> prompt on card machines and ATMs. Decline it every time and choose colones, so your own bank sets the rate rather than a marked-up one at the till. The US Embassy also advises changing money at <b>banks or other financial institutions</b>, noting that street money changers have passed counterfeit US dollars and local currency. Bring small, clean US bills as backup, since fifties and hundreds are hard to break and torn or worn notes get refused. The mechanics are in the <a href=\"/costa-rica/cash-or-card\">Costa Rica cash and cards guide</a>."
+          ]
+        },
+        {
+          h: "Taxis, the maria, and the pirata",
+          icon: "taxi",
+          key: { fig: "Meter on", tag: "Official or app", text: "Official red taxis are metered, and the meter is called la maria. Insist it is running. Avoid unmarked pirata taxis, and at the airport use the official orange taxis or an app.", tone: "teal" },
+          p: [
+            "Official taxis in Costa Rica are <b>red</b>, they are metered, and the meter has a name: <b>la maria</b>. The one habit is to insist it is on, because some drivers skip it for visitors and name a figure at the end instead. Fares are genuinely cheap when the meter runs, so this is a small loss rather than a large one, but it is the most frequent one. <b>Uber and DiDi</b> both work well here and remove the question entirely by fixing the price up front.",
+            "The one to avoid is the <b>pirata</b>, an unofficial taxi in an unmarked car, particularly one whose driver approaches you rather than waiting at a rank. At San Jose airport, use the <b>official orange airport taxis</b>, which run a regulated fare, or book an app. The full picture is in the <a href=\"/costa-rica/taxis-and-apps\">Costa Rica taxis and apps guide</a>."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "coins",
+          key: { fig: "Habits", tag: "How to avoid it", text: "Budget the mandatory car insurance before you book, pay in the currency on the tag, use official taxis or an app, and set a daily withdrawal cap on your account before you fly.", tone: "teal" },
+          p: [
+            "One item on this page costs real money and it is the one nobody warns you about: <b>budget the mandatory rental insurance before you book</b>. The rest are habits. <b>Pay in the currency on the price tag</b>, <b>decline convert to USD</b>, <b>use official taxis or an app</b>, and <b>do not stop for roadside help</b>. One more, straight from the embassy's own financial advice for visitors: <b>set a daily withdrawal limit</b> on your account before you fly and keep less in any single account, which caps your exposure whatever happens.",
+            "Two smaller ones worth knowing. Your restaurant bill already carries a <b>10 percent service charge</b> by law, and some tourist spots then hand over a US-style receipt with a blank tip line, hoping for another 18 to 20 percent on top; the <a href=\"/costa-rica/tipping\">Costa Rica tipping guide</a> has the detail. And informal parking attendants in high-visibility vests will watch your car for a small tip, which is a local custom rather than a scam, though the amount is yours to choose. For getting and spending money well, see the <a href=\"/costa-rica/cash-or-card\">Costa Rica cash and cards guide</a> and the <a href=\"/costa-rica\">Costa Rica cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Costa Rica safe for tourists?", a: "For the great majority of visitors, yes, and most trips are trouble free. The issues travelers actually meet are money ones: a rental quote missing the insurance the law requires, the colones-or-dollars gap at the till, unofficial taxis, and the roadside flat-tire setup. A few habits avoid nearly all of them." },
+        { q: "Why is my Costa Rica rental car so much more expensive at the counter?", a: "Because Costa Rican law requires third-party liability cover that most online quotes, especially on aggregator sites, leave out. It runs roughly 10 to 25 dollars a day, cannot be declined, and no credit card benefit replaces it. Get a quote that already includes it before comparing prices. The optional collision damage waiver is a separate decision." },
+        { q: "Should I pay in colones or US dollars in Costa Rica?", a: "Pay in whichever currency the price is shown in. Costa Rica quotes in both, and mixing them lets the merchant set the exchange rate, which typically costs you 5 to 10 percent. Separately, always decline the convert-to-USD prompt on card machines and ATMs, and choose colones so your own bank sets the rate." },
+        { q: "What should I do if I get a flat tire in a rental car in Costa Rica?", a: "Drive on if the car will move, to a service station or another busy public place, and change it there yourself while keeping an eye on your bags. The US Embassy describes cases where people who stopped to help change a tire took passports, bags, cash and a camera. Most rental companies cover the tire damage, so there is no reason to fix it at the roadside." },
+        { q: "How do I avoid taxi overcharging in Costa Rica?", a: "Official taxis are red and metered, and the meter is called la maria, so insist it is running before you set off. Uber and DiDi both operate here and fix the fare in advance, which removes the question. Avoid unmarked pirata taxis, especially any driver who approaches you, and at San Jose airport use the official orange airport taxis or an app." },
+        { q: "Do I need to tip on top of the service charge in Costa Rica?", a: "Usually not. Sit-down restaurants add a 10 percent service charge by law, so it is already on your bill. Some places in tourist areas then present a US-style receipt with a blank tip line. An extra 5 to 10 percent for genuinely exceptional service is a kind gesture, not an expectation. Tour guides and private drivers are the people who do rely on tips." }
+      ],
+      sources: {
+        links: [
+          { label: "US Embassy in Costa Rica: threat from crime, including the flat-tire theft setup and changing money at banks", url: "https://cr.usembassy.gov/services/threat-from-crime/", type: "gov" },
+          { label: "US Embassy San Jose: security alert of 25 November 2025, including key fob signal blockers and financial precautions", url: "https://cr.usembassy.gov/security-alert-u-s-embassy-san-jose-costa-rica-november-25-2025/", type: "gov" }
+        ],
+        judgment: "The flat-tire theft setup, the advice to change money at banks rather than street changers, the key fob signal blockers and the financial precautions all come from US Embassy San Jose guidance and its November 2025 security alert. The 10 to 25 dollars a day for mandatory liability cover is a typical 2026 range across rental companies, not a fixed tariff, and it varies by vehicle; the legal requirement itself is not in doubt. The 5 to 10 percent currency gap is our own estimate of the spread merchants apply when you pay in the other currency, not an official figure. Checked August 2026."
+      }
     }
   ],
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 2 },

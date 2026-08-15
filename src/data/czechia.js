@@ -444,6 +444,86 @@ export default {
         ],
         judgment: "Czechia applies the shared EU pet-entry framework, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The local registration and any breed rules vary, so we point you to the official pages and dated this July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Most cost", v: "Tens of dollars, avoidable" },
+        { k: "Exchange booths", v: "You have three hours" },
+        { k: "Taxis", v: "Book an app, never hail" },
+        { k: "At the ATM", v: "Choose koruna, skip Euronet" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Czechia, and what they cost",
+      description: "Prague taxi overcharging, exchange booths with terrible rates, Euronet ATMs and padded restaurant bills. What each costs, and the Czech law that lets you undo a bad exchange.",
+      h1: "Common money scams in Czechia, and what they cost you",
+      lede: "Czechia is one of Europe's safer countries and violent crime against visitors is rare, so almost nothing here is dramatic. Prague's old reputation for fleecing tourists has faded a long way as ride apps took over, but three traps survive in the tourist core: the taxi that finds a reason not to run the meter, the exchange booth with an unbeatable-looking sign, and the bill with things on it you did not order. There is also a Czech law that quietly gives you a way out of the second one. Here is each, what it costs, and how to sidestep it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "Three traps cluster in the Prague tourist core: <b>taxi overcharging</b>, mostly from drivers who approach you at the airport, the main station or a tourist square; <b>exchange booths</b> advertising zero commission while quoting a poor rate, or handing back less than the board promised; and <b>padded restaurant bills</b>, where a couvert, a service charge or items you did not order appear at the end. Add the standard pair, <b>Euronet ATMs</b> and the <b>pay in dollars</b> prompt. The golden rules: <b>book a ride in an app rather than hailing</b>, <b>get koruna from a bank ATM instead of a booth</b>, <b>read the bill before you tip</b>, and <b>always choose koruna</b>. And if a booth does catch you, Czech law gives you <b>three hours to undo it</b>.",
+      sections: [
+        {
+          h: "Exchange booths, and the three-hour law",
+          icon: "cash",
+          key: { fig: "Three hours", tag: "You can undo it", text: "Czech law lets you cancel a currency exchange free of charge within three hours, at the same booth, for amounts up to about 1,000 euros. Insist on the receipt, since it is what makes the right work.", tone: "teal" },
+          p: [
+            "The tourist-area exchange kiosk, the <b>smenarna</b>, is Prague's most durable money trap. The board advertises <b>zero commission</b> while the rate itself is dreadful, or the headline number turns out to apply to some amount you are not exchanging, or the count in the handover comes back short. It is a slow, legal-looking way to lose ten to twenty percent of whatever you change.",
+            "What makes Czechia unusual is that the law gives you a way back. The Czech National Bank sets out the rules plainly: you have the right to <b>cancel an exchange free of charge and without giving a reason within three hours</b>, at the same booth, for amounts up to the equivalent of about <b>1,000 euros</b>. The booth <b>may not prevent you</b> from exercising that right, and it is obliged to <b>issue you a receipt</b>, which is what makes the right usable, so insist on one and check the date and time on it. If a booth refuses, complain there first, then in writing to the Czech National Bank, which can sanction them. Two more rules from the same source are useful ammunition: booths may not charge separate fees beyond the rate itself, and only <b>one rate table</b> is allowed, so the VIP rate trick is banned. Simplest of all, skip the booth and pull koruna from a bank ATM."
+          ]
+        },
+        {
+          h: "Taxis: the driver who approaches you",
+          icon: "taxi",
+          key: { fig: "2 to 3x", tag: "Book, do not hail", text: "The classic is a driver who approaches you at the airport or main station with a fixed price, or a meter that never starts. Use Bolt, Uber or Liftago, where the fare is set before you get in.", tone: "teal" },
+          p: [
+            "Prague's taxi reputation is largely historical now, because apps dominate and most licensed drivers are straight. What survives is targeted at arrivals: a friendly man, sometimes in something that looks like a uniform, <b>approaches you inside the terminal or at the main station</b> and offers a fixed price. The car is unmarked or vaguely marked, and the final figure is <b>two to three times</b> the quote once luggage fees, a night surcharge or a changed story appear. An investigation published in late 2025 documented a fake operator at Prague Airport charging 70 koruna a kilometre plus a 500 koruna luggage fee, against a city-set maximum far below that, and issuing a receipt for a company that did not exist.",
+            "The defense is simple and total: <b>never take a ride from someone who approaches you</b>. Book <b>Bolt, Uber or Liftago</b> from the arrivals hall, where the airport Wi-Fi is free, and the price is fixed before you get in. If you want a traditional cab, use a known company such as AAA Radiotaxi and check the <b>rate is displayed on the door</b>, which licensed Prague taxis are required to show, then make sure the meter runs from the start. The <a href=\"/czechia/taxis-and-apps\">Czechia taxis and apps guide</a> has the full picture, including the Airport Express bus, which is cheaper than all of it."
+          ]
+        },
+        {
+          h: "At the ATM and the card machine",
+          icon: "atm",
+          key: { tag: "Choose koruna", text: "Skip the bright yellow Euronet machines clustered around the sights, which charge high fees and push the dollar conversion. Use a Czech bank ATM, and always choose koruna.", tone: "amber" },
+          p: [
+            "Two costs here are entirely legal, which is exactly why nobody warns you. The first is the <b>bright yellow Euronet ATM</b>, which clusters around Old Town Square, Wenceslas Square and Charles Bridge precisely because that is where disoriented visitors are. They charge high fees and push the conversion prompt hard. Use a machine attached to a real Czech bank instead: <b>CSOB, Komercni banka, Ceska sporitelna, Raiffeisenbank or UniCredit</b>. Searching maps for <b>bankomat</b> finds them.",
+            "The second is the <b>pay in dollars</b> offer on card machines and ATMs, which uses a marked-up rate and costs you a few percent every time you accept it. Always choose <b>koruna</b>. The same applies to paying in euros: Czechia kept the koruna, and places that accept euros set their own rate, which is never in your favour. The mechanics are in the <a href=\"/czechia/cash-or-card\">Czechia cash and cards guide</a>."
+          ]
+        },
+        {
+          h: "The bill: couvert, service and the tourist menu",
+          icon: "receipt",
+          key: { tag: "Read it first", text: "Tourist-area restaurants may add a couvert for bread, a service charge, or items you did not order. Ask for the menu with prices before you sit, and check the itemized bill before you tip.", tone: "teal" },
+          p: [
+            "In the streets immediately around Old Town Square, a few places run the standard European bill-padding playbook: a <b>couvert</b> charged for bread or nuts you did not order, a <b>service charge</b> added and then a blank tip line offered on top, or prices that were never actually shown to you. Some venues will quote verbally rather than hand over a printed menu, which is the tell. Ask for the <b>menu with prices</b> before you sit down, and walk if there is not one.",
+            "At the end, look at the <b>itemized bill</b> rather than the total. If a service charge is already there you do not need to tip on top, and Czech tipping is about 10 percent by rounding up, stated to the server rather than left on the table, which the <a href=\"/czechia/tipping\">Czechia tipping guide</a> covers. Walking two streets away from the main square generally solves the whole problem, since prices in ordinary Prague pubs are a fraction of the ones on the square."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "coins",
+          key: { fig: "Habits", tag: "How to avoid it", text: "Book rides in an app, get koruna from a bank ATM, choose koruna at every terminal, and read the itemized bill. Keep any exchange receipt, since it is what makes the three-hour right work.", tone: "teal" },
+          p: [
+            "Everything here costs tens of dollars at most and is avoided by four habits: <b>book a ride in an app rather than hailing one</b>, <b>get koruna from a bank ATM rather than a booth</b>, <b>choose koruna at every terminal</b>, and <b>read the itemized bill before you tip</b>. If you do use an exchange booth, <b>keep the receipt</b>, because without it the three-hour cancellation right is much harder to use.",
+            "Handled calmly, none of this should shape your trip, and Prague outside the immediate tourist core is straightforwardly good value. For getting and spending money well while you are there, see the <a href=\"/czechia/cash-or-card\">Czechia cash and cards guide</a> and the <a href=\"/czechia\">Czechia cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Prague safe for tourists?", a: "Yes. Czechia is one of Europe's safer countries and violent crime against visitors is rare. What travelers meet are money annoyances rather than threats: taxi overcharging aimed at arrivals, exchange booths with poor rates, Euronet ATM fees and the occasional padded restaurant bill. All four are avoidable with a few habits." },
+        { q: "Can I get my money back from a bad exchange office in Prague?", a: "Often yes. The Czech National Bank confirms you can cancel an exchange free of charge, without giving a reason, within three hours, at the same booth, for amounts up to the equivalent of about 1,000 euros. The booth cannot obstruct you and must issue a receipt, so insist on one. If refused, complain there, then in writing to the Czech National Bank." },
+        { q: "Are Prague taxis still a scam?", a: "Much less than they were, since Bolt, Uber and Liftago now dominate and fix the fare in advance. What survives targets arrivals: someone approaching you inside the airport or main station with a fixed price, in an unmarked car, where the final figure lands two to three times higher. Never take a ride from a driver who approaches you." },
+        { q: "Should I use exchange booths or ATMs in Czechia?", a: "Bank ATMs, from CSOB, Komercni banka, Ceska sporitelna, Raiffeisenbank or UniCredit. Avoid the bright yellow Euronet machines clustered around the sights, which charge high fees and push the dollar conversion. If you do use an exchange booth, ignore zero commission signs, check the rate itself, count the money before leaving, and keep the receipt." },
+        { q: "Should I pay in koruna, euros or dollars in Czechia?", a: "Koruna, always. Czechia kept its own currency, so places that accept euros set their own rate and it will not favour you. On card machines and ATMs, decline the offer to charge you in dollars, since that uses a marked-up rate costing a few percent every time. Choosing koruna lets your own bank set the rate." },
+        { q: "What is a couvert on a Czech restaurant bill?", a: "A cover charge, usually for bread or nuts brought to the table without being ordered. It is legal where disclosed, but it appears mostly in tourist-area restaurants near Old Town Square. Ask for a printed menu with prices before you sit, check the itemized bill at the end, and note whether a service charge is already included before adding a tip." }
+      ],
+      sources: {
+        links: [
+          { label: "Czech National Bank: ten golden rules for bureau-de-change clients, including the three-hour right to cancel", url: "https://www.cnb.cz/en/supervision-financial-market/consumer-protection-and-financial-literacy/consumer-protection/ten_golden_rules_currency_exchange/", type: "gov" },
+          { label: "Expats.cz: investigation into imposter taxi operators at Prague Airport and the fares they charged", url: "https://www.expats.cz/czech-news/article/triple-the-price-how-prague-airport-s-imposter-taxi-drivers-exploit-travelers", type: "media" }
+        ],
+        judgment: "The three-hour cancellation right, the 1,000 euro limit, the obligation to issue a receipt, the ban on separate fees and the single-rate-table rule all come from the Czech National Bank's own consumer guidance, which is the primary source. The Prague Airport imposter taxi figures come from an Expats.cz investigation published in late 2025 and describe one documented operator, not a typical fare. We have deliberately not quoted the exact regulated per-kilometre maximum, because sources disagree on the current number; the mechanism that matters is that licensed taxis must display their rate on the door and run the meter. Koruna conversions use roughly 22 to the dollar. Checked August 2026."
+      }
     }
   ]
 };

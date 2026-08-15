@@ -438,6 +438,87 @@ export default {
         ],
         judgment: "Entry rules and passport-validity measures change (a temporary passport-validity allowance runs through 31 December 2026), so confirm the current requirement on the official site before you travel. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Most cost", v: "Tens of dollars, avoidable" },
+        { k: "Your card", v: "Never let it leave you" },
+        { k: "Taxis", v: "No meters, agree it first" },
+        { k: "The E-Ticket", v: "Free, on the official site" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in the Dominican Republic, and what they cost",
+      description: "Card cloning, unmetered taxi fares, sites charging for the free E-Ticket and the menu price that is not the final price. What each costs, and how to sidestep it.",
+      h1: "Common money scams in the Dominican Republic, and what they cost you",
+      lede: "The Dominican Republic is safe for the great majority of visitors, most trips are resort-and-beach and entirely trouble free, and almost none of this is dramatic. The traps that actually take money off US travelers here are quiet ones: a card that leaves your table, a fare nobody agreed, a website charging for a free form, a bill that grew by a quarter between the menu and the checkout. Here is each one, what it costs, and how to sidestep it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "Four things account for most of it. <b>Card cloning</b>, which the UK FCDO names directly and Canada describes as tampered card readers, is the one worth real care. <b>Taxis have no meters</b>, so an unagreed fare is whatever the driver says at the end. Sites that <b>charge for the E-Ticket</b> are selling you a free government form. And the <b>menu price is not the final price</b>, because 18 percent tax and a 10 percent service charge land at checkout. The golden rules: <b>keep your card in sight or pay cash</b>, <b>agree the fare before you get in or use an app</b>, <b>file the E-Ticket only at the official site</b>, and <b>read the bill before you tip</b>.",
+      sections: [
+        {
+          h: "Cards, ATMs and the cloning problem",
+          icon: "card",
+          key: { tag: "Keep it in view", text: "The UK FCDO says plainly that bank card cloning is a risk here: keep your card in view when paying, or pay cash. Canada describes tampered card readers saving your details during a legitimate purchase.", tone: "teal" },
+          p: [
+            "This is the one that can cost real money, and both the UK and Canadian governments flag it. The FCDO's wording is a single actionable sentence: bank card cloning and identity theft are a risk, so <b>keep your payment card in view when paying, or pay in cash</b>. That matters because the local habit in many restaurants is for a server to carry your card away to a terminal. Ask for the machine to come to the table, or walk to the counter yourself. Canada adds the mechanism: <b>tampered card readers</b> that quietly save your card details during an otherwise legitimate purchase, which is why the charge often appears weeks or months after you have flown home.",
+            "For ATMs, use machines <b>inside a bank branch</b>, a hotel lobby or a shopping mall rather than free-standing street machines, cover the keypad, and glance at the reader for anything irregular. Decline help from anyone who offers it at a machine. Then do the thing that actually limits the damage: turn on <b>transaction alerts</b>, check your statement while you are still travelling rather than after, and consider a card with a low limit for the trip. The <a href=\"/dominican-republic/cash-or-card\">Dominican Republic cash and cards guide</a> covers how to carry money here."
+          ]
+        },
+        {
+          h: "Taxis: there is no meter",
+          icon: "taxi",
+          key: { fig: "Agree it first", tag: "Or use an app", text: "Dominican taxis do not use meters, so the fare is whatever was agreed, or whatever is claimed at the end. Agree it before you get in, or use Uber, DiDi or inDrive where the app sets it.", tone: "teal" },
+          p: [
+            "The structural fact to know is that <b>regular Dominican taxis do not run meters</b>. There is nothing to insist on and nothing to check, so the fare is either what you agreed before the door closed or what the driver says when you arrive. Settle it first, out loud, every time. In Santo Domingo and Santiago, <b>Uber, DiDi and inDrive</b> remove the problem by fixing the price in the app, and they are the easy default. In resort areas like Punta Cana, a prebooked transfer or your hotel's own taxi is simplest, if pricier.",
+            "Two notes from government advice. The US State Department recommends <b>asking a hotel or restaurant to call a taxi for you</b> rather than hailing one off the street, and using a well-known company or a ride-hailing app. Australia's Smartraveller advises using official airport taxis or a rideshare for airport runs, and travelling in daylight where you can. <b>Motoconchos</b>, the motorbike taxis, are cheap and tempting; US government employees are prohibited from using them, which tells you what you need to know. The full picture is in the <a href=\"/dominican-republic/taxis-and-apps\">Dominican Republic taxis and apps guide</a>."
+          ]
+        },
+        {
+          h: "The E-Ticket, and the sites that charge for it",
+          icon: "passport",
+          key: { fig: "It is free", tag: "Official site only", text: "The E-Ticket is a free government form required to enter and leave. Lookalike sites charge a fee for filing it for you. File it yourself at eticket.migracion.gob.do.", tone: "amber" },
+          p: [
+            "Every arrival and departure needs the <b>E-Ticket</b>, a digital form filed online before you fly. It is <b>free</b>, and it is filed on the official government portal at <b>eticket.migracion.gob.do</b>. That single fact is the whole defense, because a cottage industry of lookalike sites, some of them buying the top search results, will file it on your behalf for a fee. They are not doing anything you cannot do in a few minutes, and handing your passport details to an unnecessary middleman is its own small risk.",
+            "The rule generalizes: <b>if a government form is free, any site charging for it is not the government</b>. Check the domain before you type anything, and be suspicious of a search result labelled as an ad. The requirement itself is straightforward and covered in the <a href=\"/dominican-republic/e-ticket\">Dominican Republic E-Ticket guide</a>."
+          ]
+        },
+        {
+          h: "The bill: the menu price is not the price",
+          icon: "receipt",
+          key: { fig: "About 28%", tag: "Read the bill", text: "Many restaurants add 18 percent ITBIS tax and a 10 percent service charge at checkout, roughly 28 percent on top, when the menu says impuestos no incluidos. The service charge is the tip.", tone: "amber" },
+          p: [
+            "This is not a scam, it is a pricing convention, and it catches almost every first-time visitor. Many Dominican restaurants add <b>18 percent ITBIS</b> tax and a <b>10 percent service charge</b> at checkout, roughly <b>28 percent</b> on top of the menu price, and the menu will say so in small type: <b>impuestos no incluidos</b>. A 150 peso beer rings up closer to 190. Nothing improper is happening, but if you budget from menu prices you will be out by more than a quarter across a week.",
+            "The part worth acting on is the tip. That <b>10 percent service charge is the tip</b>, so you are not expected to add another American-sized one on top, though rounding up for good service is normal. Check the bill for the service line before you decide, which is covered in the <a href=\"/dominican-republic/tipping\">Dominican Republic tipping guide</a>. As with prices generally, <b>pay in the currency on the price tag</b>: paying dollars for a peso price hands the seller the exchange rate."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "peso",
+          key: { fig: "Habits", tag: "How to avoid it", text: "Keep your card in sight, agree every taxi fare before you get in, file the E-Ticket only on the official site, and read the bill for the service charge before you tip.", tone: "teal" },
+          p: [
+            "Almost everything here costs tens of dollars and is avoided by the same short list: <b>keep your card in sight or pay cash</b>, <b>agree the fare before you get in</b>, <b>file the E-Ticket only at the official government site</b>, and <b>read the bill before you tip</b>. The one worth active care, because it can reach real money and you will not notice it at the time, is card cloning, so guard the card and watch the statement.",
+            "Two smaller ones. <b>Street money changers</b> are best skipped entirely, given the counterfeit and short-changing risk; use bank ATMs or a licensed casa de cambio. And Canada's advice flags a distinctly local one: unofficial lawyers, known locally as <b>pirate lawyers</b>, wait near tourist police stations in areas like Punta Cana and offer help to detained foreigners at excessive fees, so if anything goes wrong, contact your embassy first. For getting and spending money well while you are there, see the <a href=\"/dominican-republic/cash-or-card\">Dominican Republic cash and cards guide</a> and the <a href=\"/dominican-republic\">Dominican Republic cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is the Dominican Republic safe for tourists?", a: "For the great majority of visitors, yes, and the overwhelming share of trips are resort-based and trouble free. What travelers actually meet are money issues rather than anything dramatic: card cloning, unagreed taxi fares, sites charging for a free entry form, and a bill that grows by about 28 percent at checkout. A few habits avoid nearly all of them." },
+        { q: "Is credit card cloning really a problem in the Dominican Republic?", a: "It is flagged by the UK FCDO, the Canadian government and the US State Department. The FCDO's advice is to keep your payment card in view when paying, or pay in cash, which matters because servers often carry cards away to a terminal. Canada describes tampered card readers that save your details during a legitimate purchase, so charges can appear long after you get home." },
+        { q: "Do taxis in the Dominican Republic use meters?", a: "No. Regular taxis do not run meters, so the fare is whatever you agreed before getting in or whatever the driver claims at the end. Agree it first, every time. In Santo Domingo and Santiago, Uber, DiDi and inDrive fix the price in the app. In resort areas, a prebooked transfer or your hotel's taxi is simplest." },
+        { q: "Do I have to pay for the Dominican Republic E-Ticket?", a: "No. The E-Ticket is free and required both to enter and to leave, and you file it yourself at the official government site, eticket.migracion.gob.do. Any site charging you a fee for it is a middleman, not the government. Check the domain before entering passport details, and be wary of search results marked as ads." },
+        { q: "Why was my restaurant bill higher than the menu prices?", a: "Many Dominican restaurants add 18 percent ITBIS tax and a 10 percent service charge at checkout, roughly 28 percent on top, and the menu usually notes it as impuestos no incluidos. It is a pricing convention, not a scam. The 10 percent service charge is the tip, so you are not expected to add an American-sized one on top." },
+        { q: "Where should I change money in the Dominican Republic?", a: "At bank ATMs or a licensed casa de cambio, not with street money changers, where counterfeit notes and short-changing are real risks. Bring small, clean US bills as backup, since fifties and hundreds are hard to use outside banks and worn notes get refused. On any card machine or ATM, decline the convert-to-dollars option and choose pesos." }
+      ],
+      sources: {
+        links: [
+          { label: "UK FCDO: Dominican Republic travel advice, safety and security, including bank card cloning", url: "https://www.gov.uk/foreign-travel-advice/dominican-republic/safety-and-security", type: "gov" },
+          { label: "Government of Canada: Dominican Republic travel advice, including card reader tampering and pirate lawyers", url: "https://travel.gc.ca/destinations/dominican-republic", type: "gov" },
+          { label: "US State Department: Dominican Republic travel advisory and local transport guidance", url: "https://travel.state.gov/en/international-travel/travel-advisories/dominican-republic.html", type: "gov" }
+        ],
+        judgment: "The card cloning advice, the tampered card reader mechanism, the pirate lawyer warning and the taxi guidance all come from current UK FCDO, Canadian and US government advice for the Dominican Republic. The roughly 28 percent figure is the arithmetic of the 18 percent ITBIS and the 10 percent service charge applied at checkout, which is a legal and disclosed pricing convention rather than a scam, and not every restaurant applies both. We have deliberately not quoted specific taxi fares, since there are no meters and rates vary widely by route and season. Peso conversions use roughly 60 to the dollar. Checked August 2026."
+      }
     }
   ]
 };
