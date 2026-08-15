@@ -2,8 +2,8 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import USBadge from '../components/USBadge.astro';
 import HomePreview from '../components/HomePreview.astro';
+import LatestChecks from '../components/LatestChecks.astro';
 import { countries } from '../data/index.js';
 import fs from 'node:fs';
 const live = countries.filter(c => c.live);
@@ -37,46 +37,37 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
   <main class="wrap">
     <section class="home-hero">
       <div class="hh-body">
-        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:0 0 16px"><USBadge /><span class="tagpill" style="margin:0">The fees nobody quotes you</span></div>
-        <h1>The money side of your trip, sorted.</h1>
-        <div class="hero-note">
-          <p class="hero-note-lab">What we do</p>
-          <p class="hero-note-p">What to pay with, how much cash to carry, and the fees nobody quotes you. Checked and dated. Sometimes the honest answer is that you do not need to do anything.</p>
-        </div>
-        <div class="hero-search">
-          <div class="cfilter cfilter-hero">
-            <svg class="cfilter-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-            <input type="text" id="country-filter-hero" class="cfilter-in" placeholder="Know your country? Type it, like Japan" aria-label="Search country guides" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="hero-ta-list" aria-autocomplete="list" />
-          </div>
-          <div class="hero-ta" id="hero-ta" hidden>
-            <div class="hero-ta-list" id="hero-ta-list" role="listbox" aria-label="Matching country guides">
-              {live.map(c => (
-                <a class="hero-ta-item" href={'/' + c.slug} data-name={[c.name, ...(c.aliases || [])].join(' ').toLowerCase()}>
-                  <img class="hero-ta-flag" src={flagSrc(c.slug)} alt="" width="22" height="16" loading="lazy" />
-                  <span class="hero-ta-name">{c.name}</span>
-                  <span class="hero-ta-go" aria-hidden="true">&#8594;</span>
-                </a>
-              ))}
+        <h1 class="entry-h">Where are you headed?</h1>
+        <p class="entry-sub">Pick your country and see what the trip really costs. Checked, dated, and never a sales pitch.</p>
+        <div class="entry-row">
+          <div class="hero-search">
+            <div class="cfilter cfilter-hero">
+              <svg class="cfilter-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+              <input type="text" id="country-filter-hero" class="cfilter-in" placeholder="Type a country, like Japan" aria-label="Search country guides" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="hero-ta-list" aria-autocomplete="list" />
             </div>
-            <p class="hero-ta-none" id="hero-ta-none" hidden>No guide for that one yet. <a href="#" data-open-signup>Get a heads-up as we add countries</a>.</p>
+            <div class="hero-ta" id="hero-ta" hidden>
+              <div class="hero-ta-list" id="hero-ta-list" role="listbox" aria-label="Matching country guides">
+                {live.map(c => (
+                  <a class="hero-ta-item" href={'/' + c.slug} data-name={[c.name, ...(c.aliases || [])].join(' ').toLowerCase()}>
+                    <img class="hero-ta-flag" src={flagSrc(c.slug)} alt="" width="22" height="16" loading="lazy" />
+                    <span class="hero-ta-name">{c.name}</span>
+                    <span class="hero-ta-go" aria-hidden="true">&#8594;</span>
+                  </a>
+                ))}
+              </div>
+              <p class="hero-ta-none" id="hero-ta-none" hidden>No guide for that one yet. <a href="#" data-open-signup>Get a heads-up as we add countries</a>.</p>
+            </div>
           </div>
+          {/* PLAIN-VERB FALLBACK, not wired live: for a later A/B test the label below can
+              be swapped to "See the real cost". "TTC it" is the shipped default, and the
+              definer line under this row is what carries the acronym. Keep the budget on
+              this screen to one button use plus one definer: no "your TTC journey", no
+              "TTC-powered", and never a bare cold "TTC" anywhere else on the entry. */}
+          <button type="button" id="hero-go" class="btn entry-go">TTC it <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
         </div>
-        <p class="hero-or">or start another way</p>
-        <div class="hero-paths">
-          <a class="hpath" href="/compare">
-            <span class="hpath-k">Know your region</span>
-            <span class="hpath-v">Compare by area <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            <span class="hpath-d">See how the countries in a region stack up on the money side.</span>
-          </a>
-          <a class="hpath" href="#worries">
-            <span class="hpath-k">Just a worry</span>
-            <span class="hpath-v">Start from the question <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            <span class="hpath-d">Cards, cash, visas, taxes and taxis, tackled head-on.</span>
-          </a>
-        </div>
-        <div class="hpcta">
-          <a class="ghost" href="#why">Why this exists &#8594;</a>
-        </div>
+        <p class="entry-def">TTC = True Trip Costs. It runs the real, decomposed cost for the country you pick.</p>
+        <p class="entry-browse">or browse <a href="/compare">by region</a>, <a href="#worries">by worry</a>, or <a href="/countries">all countries</a></p>
+        <LatestChecks />
       </div>
     </section>
 
@@ -194,15 +185,41 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
        unchanged and only the space above the pills shrinks. */
     .home-hero{padding-top:18px}
 
-    /* Hero note: the intro sentence, re-housed on a deep-green holder so it reads as
-       support for the H1 and the search rather than competing with them. Echoes the
-       eyebrow treatment of the dark card lower down. Type is smaller than the old
-       .lede (17.5px) on purpose. The .lede rule itself stays in global.css for the
-       other pages that use it. */
-    .hero-note{background:var(--teal-deep,#0A5644);border-radius:14px;padding:16px 18px;margin:0 0 20px;max-width:560px}
-    .hero-note-lab{margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--green-bg,#E7F3E9);opacity:.85}
-    .hero-note-p{margin:0;font-size:15px;line-height:1.5;color:#EAF3EE}
-    @media (max-width:560px){ .hero-note-p{font-size:14px} }
+    /* THE ENTRY. One action on land: a country picker and one button, with everything
+       else on the screen subordinate to it. The old entry state stacked a pill row, an
+       H1, a dark intro card, a two-card paths grid and a ghost link above the fold, which
+       is a persuasion wall for a visitor who already knows where they are going. This is
+       a re-proportioning of that hero, not a new page: the search control, the flow the
+       button leads to and every section below are untouched.
+
+       The prompt stays a question and the support line stays one sentence. Do not grow
+       either into a value proposition: the moment this screen argues, it has stopped
+       being an entry. */
+    .entry-h{font-size:clamp(30px,5vw,42px);margin:0 0 10px}
+    .entry-sub{margin:0 0 20px;font-size:15px;line-height:1.55;color:var(--muted,#6F6E66);max-width:52ch}
+
+    /* Picker and button read as one control: side by side with room, stacked on a phone
+       so the button stays a full-width target. */
+    .entry-row{display:flex;align-items:stretch;gap:10px;max-width:560px}
+    .entry-row .hero-search{margin:0;flex:1 1 auto;min-width:0}
+    .entry-go{flex:none;padding:0 20px;font-size:15px;font-weight:600;background:var(--teal-deep,#0A5644);border-color:var(--teal-deep,#0A5644);box-shadow:0 1px 2px rgba(10,86,68,.12),0 8px 20px rgba(10,86,68,.16)}
+    .entry-go:hover{background:#084736;border-color:#084736}
+    .entry-go svg{transition:transform .15s ease}
+    .entry-go:hover svg{transform:translateX(3px)}
+    @media (max-width:560px){
+      .entry-row{flex-direction:column;align-items:stretch;max-width:none}
+      .entry-go{width:100%;justify-content:center}
+    }
+
+    /* The acronym is defined once, next to its only use, via what the button does. */
+    .entry-def{margin:9px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted,#6F6E66);max-width:56ch}
+
+    /* The one subordinate way through for an undecided visitor. A text line on purpose:
+       not a button, not a card, nothing that competes with the action above it. These
+       destinations all still exist in full below the fold. */
+    .entry-browse{margin:14px 0 0;font-size:13.5px;color:var(--muted,#6F6E66)}
+    .entry-browse a{color:var(--muted,#6F6E66);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(111,110,102,.4)}
+    .entry-browse a:hover{color:var(--teal-deep,#0A5644);text-decoration-color:var(--teal,#0E7A5F)}
 
     /* Hero typeahead: a small list of matching guides under the hero search box. */
     .hero-search{position:relative;max-width:560px;margin:24px 0 4px}
@@ -217,18 +234,10 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
     .hero-ta-none{margin:0;padding:12px 14px;font-size:14px;color:var(--muted,#6F6E66)}
     .hero-ta-none a{color:var(--teal-deep,#0A5644);font-weight:600}
     @media (max-width:640px){ .hero-search{max-width:none} }
-    /* Secondary entry paths beneath the hero search, clearly subordinate to it. */
-    .hero-or{margin:16px 0 12px;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted,#6F6E66)}
-    .hero-paths{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:560px;margin:0}
-    .hpath{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border:1px solid var(--line,#E5E3DB);border-radius:12px;background:var(--card,#FFFFFF);box-shadow:var(--shadow);text-decoration:none;transition:border-color .2s ease,transform .2s ease}
-    .hpath:hover{border-color:var(--teal,#0E7A5F);transform:translateY(-1px)}
-    .hpath-k{font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted,#6F6E66)}
-    .hpath-v{display:inline-flex;align-items:center;gap:6px;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink,#16302C);line-height:1.15}
-    .hpath-v svg{color:var(--teal-deep,#0A5644);transition:transform .15s ease}
-    .hpath:hover .hpath-v{color:var(--teal-deep,#0A5644)}
-    .hpath:hover .hpath-v svg{transform:translateX(3px)}
-    .hpath-d{font-size:13px;color:var(--muted,#6F6E66);line-height:1.45}
-    @media (max-width:560px){ .hero-paths{grid-template-columns:1fr} }
+    /* The .hero-or eyebrow and the two-card .hero-paths grid were removed with the
+       persuasion block. The region and worry paths now hang off the one quiet
+       .entry-browse line above, and both destinations are still on the page in full
+       (the #worries chips below, and /compare). */
     /* "See all" button under the featured rail. */
     .rail-allbtn{margin-top:18px}
     .rail-allbtn svg{transition:transform .15s ease}
@@ -306,6 +315,24 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
           if (target) { e.preventDefault(); window.location.href = target.getAttribute('href'); }
         } else if (e.key === 'Escape') { closePanel(); }
       });
+
+      // The button does exactly what Enter does: open the highlighted guide, or the top
+      // match if nothing is highlighted. It must never guess. An empty field means no
+      // country has been chosen, so every item is still unfiltered and vis[0] would be
+      // whatever happens to sort first, which is the one wrong answer available here.
+      // In that case, and when what was typed matches nothing, it keeps focus in the
+      // field and navigates nowhere.
+      var goBtn = document.getElementById('hero-go');
+      if (goBtn) {
+        goBtn.addEventListener('click', function () {
+          if (hero.value.trim() === '') { hero.focus(); return; }
+          var vis = visible();
+          var target = (active >= 0 && vis[active]) ? vis[active] : null;
+          if (!target) { run(); target = visible()[0] || null; }
+          if (target) window.location.href = target.getAttribute('href');
+          else hero.focus();
+        });
+      }
 
       for (var j = 0; j < items.length; j++) {
         (function (it) {
