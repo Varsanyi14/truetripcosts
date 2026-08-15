@@ -448,6 +448,86 @@ export default {
         ],
         judgment: "Poland applies the shared EU pet-entry framework, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The local registration and any breed rules vary, so we point you to the official pages and dated this July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Most cost", v: "Small sums, avoidable" },
+        { k: "Taxis", v: "Book an app, never accept" },
+        { k: "Bars", v: "Skip the discount lure" },
+        { k: "Your card", v: "Nobody calls to verify it" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Poland, and what they cost",
+      description: "The unlicensed airport taxi, the bar that lures you with a discount, the fake call from reception and exchange booths with poor rates. What each costs, and how to sidestep it.",
+      h1: "Common money scams in Poland, and what they cost you",
+      lede: "Poland is a genuinely low-crime country, it sits at the calmest US advisory level, and violent crime against visitors is uncommon. Scams here are rare and usually small, and most travelers meet none of them. The short list worth knowing is: a driver who approaches you at the airport, a bar that hands out discount flyers, a phone call from someone claiming to be reception, and an exchange booth with a sign that is too good. Here is each one, what it costs, and how to sidestep it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "Four things account for most of it. <b>Unlicensed taxis</b> at Warsaw Chopin, Krakow and the main stations, where a driver approaches you and the meter never quite works. <b>Bars and clubs that lure you with a discount</b>, which the Canadian government warns about directly, and where drinks have been spiked and cards overcharged. The fake <b>call from reception</b> asking you to confirm your card number. And <b>exchange booths and Euronet ATMs</b> quoting poor rates, alongside the <b>pay in dollars</b> prompt. The golden rules: <b>book a ride in an app</b>, <b>never follow a flyer or a tout into a bar</b>, <b>hang up and walk to the desk</b>, and <b>always choose zloty</b>.",
+      sections: [
+        {
+          h: "The driver who approaches you",
+          icon: "taxi",
+          key: { fig: "Book it in the app", tag: "Not the arrivals hall", text: "The pattern is a friendly driver who reaches you before the official rank, with no meter running or a suspicious one, and a figure several times the real fare at the other end.", tone: "teal" },
+          p: [
+            "This is Poland's most reported tourist money problem and it is entirely avoidable. You land tired at <b>Warsaw Chopin</b>, or arrive at a main station, and a friendly English-speaking driver reaches you before you get to the official rank. The ride is fine. The number at the end is several times what a legitimate taxi would have charged, there is no meter running or the meter reads oddly, and refusing produces a scene rather than a negotiation. It is a markup, not a mugging, but it is an unpleasant first hour in a country.",
+            "The fix is one habit: <b>never take a ride from someone who approaches you</b>. <b>Bolt</b> is the local favourite and usually cheapest, and <b>Uber and FreeNow</b> both work well; all three show the price before you confirm. If you want a traditional cab, use the <b>official rank</b>, take one with a company name and phone number printed on the car, and check the meter starts immediately. From the airports, the train or bus into the city is cheaper than all of it. The <a href=\"/poland/taxis-and-apps\">Poland taxis and apps guide</a> has the detail."
+          ]
+        },
+        {
+          h: "The bar with the discount flyer",
+          icon: "cocktail",
+          key: { tag: "Choose your own bar", text: "Canada's travel advice warns about bars and clubs that lure customers with promises of discounts, where drinks have been spiked and cards then overcharged. Pick your own venue and keep your card in sight.", tone: "teal" },
+          p: [
+            "This is the one worth real care, and it is government-documented rather than folklore. The Canadian government's Poland advice says plainly: exercise caution at <b>bars, nightclubs and adult entertainment venues that lure clients with promises of discounts</b>, because customers have been served <b>spiked drinks and then overcharged on their credit cards</b> while under the influence. It clusters in the nightlife streets of <b>Krakow and Warsaw</b>, and the approach is either a flyer, a tout, or a friendly stranger who knows a place.",
+            "The escape is upstream and costs nothing: <b>choose your own venue</b> rather than accepting one that was offered to you. Canada's advice adds two more habits that fit this exactly: <b>never leave a drink unattended</b> or with a stranger, and be wary of accepting snacks, drinks, gum or cigarettes from new acquaintances. Keep your card in sight when you pay, and turn on <b>transaction alerts</b> so an unexpected charge reaches your phone that night rather than a month later. Canada also notes that <b>credit card and ATM fraud happen particularly at bars and nightclubs</b>, so paying cash for a night out in an unfamiliar venue caps the downside neatly."
+          ]
+        },
+        {
+          h: "The call from reception",
+          icon: "card",
+          key: { tag: "Hang up, walk down", text: "A late call from someone claiming to be the front desk asks you to confirm your card number for a problem with the booking. A real hotel does not do this. Hang up and walk to the desk.", tone: "teal" },
+          p: [
+            "This one is widely reported by travelers in Poland and it is worth knowing precisely because it is so easy to fall for while half asleep. The room phone rings late. The caller apologizes for the hour, says there is a problem with the card on your booking, and asks you to <b>read out the number</b> to fix it. It sounds routine, you are tired, and the card is right there in your wallet. The charges follow.",
+            "The rule is absolute and takes two minutes: <b>no legitimate hotel asks for a full card number over the phone</b>. Hang up, and if you are unsure whether it was real, <b>walk down to the front desk and ask in person</b>. Do not call back a number the caller gave you. The same principle covers everything else in this family: nobody who calls, emails or messages you needs your full card number, your PIN or a code from your bank's text message. Canada's advice also flags <b>public Wi-Fi</b> being compromised to harvest card details, so avoid entering card numbers on an open network."
+          ]
+        },
+        {
+          h: "Exchange booths, Euronet, and the dollars prompt",
+          icon: "atm",
+          key: { tag: "Choose zloty", text: "Old Town kantors advertising an unbeatable rate usually have a catch, and standalone Euronet ATMs charge heavily. Use a bank ATM and choose zloty on every terminal.", tone: "amber" },
+          p: [
+            "Nothing here is illegal, which is why nobody warns you. In the Old Town areas of Krakow, Warsaw and Gdansk, an exchange booth, a <b>kantor</b>, may advertise a rate that beats everyone. The catch is usually a fee revealed at the counter, or a rate that applies only to amounts you are not exchanging. Kantors themselves are a normal and generally good way to change money in Poland; it is the tourist-street ones with the unbeatable sign that are worth walking past. <b>Ask exactly how many zloty you will receive</b> before handing anything over, and count it before you leave.",
+            "The standalone <b>Euronet</b> machines, blue and yellow, cluster in tourist areas and charge high fees while pushing the conversion prompt. Use an ATM attached to a real bank instead. And on every card machine and ATM, choose <b>zloty</b> rather than dollars, since the dollar option uses a marked-up rate that costs a few percent each time. Poland kept the zloty, so places accepting euros set their own rate too. The <a href=\"/poland/cash-or-card\">Poland cash and cards guide</a> covers it."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "coins",
+          key: { fig: "Habits", tag: "How to avoid it", text: "Book rides in an app, choose your own bar, hang up on anyone asking for a card number, and choose zloty everywhere. Report anything before you leave the country, since you cannot do it afterwards.", tone: "teal" },
+          p: [
+            "Poland is cheaper and calmer than most of Western Europe, and the whole list here is four habits: <b>book rides in an app rather than accepting one</b>, <b>choose your own bar rather than a flyer's</b>, <b>hang up on anyone asking for a card number</b>, and <b>choose zloty at every terminal</b>. One practical detail from Canada's advice is worth carrying because it is easy to get wrong: <b>report any crime to Polish police before you leave the country</b>, since a police report cannot be filed once you have gone, and your insurer will want one.",
+            "One quirk that is not a scam but does cost small change: saying <b>dziekuje</b> as you hand a server your money is commonly read as keep the change, so save it until after you have your change if you want it back. That and the rest of the tipping norms are in the <a href=\"/poland/tipping\">Poland tipping guide</a>. For getting and spending money well while you are there, see the <a href=\"/poland/cash-or-card\">Poland cash and cards guide</a> and the <a href=\"/poland\">Poland cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Poland safe for tourists?", a: "Yes. Poland is a low-crime country at the calmest US advisory level, violent crime against visitors is uncommon, and most travelers meet no scams at all. The short list worth knowing is unlicensed taxis at airports and stations, bars that lure you with discounts, a fake call from reception asking for your card number, and exchange booths with poor rates." },
+        { q: "How do I avoid taxi scams at Warsaw Chopin Airport?", a: "Never accept a ride from a driver who approaches you in the arrivals hall. Book Bolt, Uber or FreeNow, which all show the price before you confirm, or use the official taxi rank and take a car with a company name and phone number printed on it, checking the meter starts immediately. The train or bus into the city is cheaper again." },
+        { q: "Are bar scams a real risk in Krakow and Warsaw?", a: "They are documented by the Canadian government, which advises caution at bars, nightclubs and adult entertainment venues that lure customers with promises of discounts, where drinks have been spiked and credit cards then overcharged. It also notes that card and ATM fraud occur particularly at bars and nightclubs. Choose your own venue rather than one handed to you on a flyer." },
+        { q: "Did my hotel really call to verify my credit card number?", a: "Almost certainly not. A late call from someone claiming to be the front desk, asking you to read out your card number to fix a problem with the booking, is a widely reported scam in Poland. No legitimate hotel asks for a full card number by phone. Hang up, and if in doubt walk down to the desk and ask in person rather than calling a number the caller gave you." },
+        { q: "Where should I change money in Poland?", a: "A kantor, or exchange office, is a normal and generally good option, but skip the tourist-street ones advertising an unbeatable rate, and ask exactly how many zloty you will receive before handing anything over. Avoid standalone Euronet ATMs, which charge high fees. Use an ATM attached to a real bank, and always choose zloty rather than dollars." },
+        { q: "What should I do if I am scammed in Poland?", a: "Report it to the local police before you leave the country. Canada's travel advice notes specifically that you cannot complete a police report after leaving Poland, and your travel insurer will normally want one. Emergency numbers are 112, or 997 for police. Contact your card issuer straight away for anything card-related, and keep every receipt." }
+      ],
+      sources: {
+        links: [
+          { label: "Government of Canada: Poland travel advice, including discount-lure bars, card fraud at nightlife venues and reporting crimes before departure", url: "https://travel.gc.ca/destinations/poland", type: "gov" },
+          { label: "UK FCDO: Poland travel advice, safety and security", url: "https://www.gov.uk/foreign-travel-advice/poland/safety-and-security", type: "gov" }
+        ],
+        judgment: "The discount-lure bar scam with spiked drinks and card overcharging, the note that card and ATM fraud occur particularly at bars and nightclubs, the warning about accepting snacks, drinks, gum or cigarettes from new acquaintances, the public Wi-Fi risk and the requirement to report a crime before leaving Poland all come from current Government of Canada travel advice. The unlicensed taxi overcharge and the fake call from reception are consistently reported by travelers and travel media rather than named in a government advisory, so we have described them as reported and given the escape rather than attaching figures. We have deliberately not repeated a claim circulating online that Warsaw airport taxi complaints fell by a set percentage after a January 2026 fixed-rate change, because we could not source it. Zloty conversions use roughly 3.8 to the dollar. Checked August 2026."
+      }
     }
   ]
 };

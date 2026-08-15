@@ -425,6 +425,86 @@ export default {
         ],
         judgment: "Ride-app coverage and fares change, and this is partly our practical read, so confirm the apps operate where you are going and treat fares as a guide. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Most cost", v: "A few dollars a time" },
+        { k: "Tuk-tuks", v: "Meter, or agree it first" },
+        { k: "Gems", v: "Do not buy to resell" },
+        { k: "Rented gear", v: "Photograph it first" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Sri Lanka, and what they cost",
+      description: "The tuk-tuk meter that is broken, the gem shop your driver recommended and the surf school that finds damage. What each costs a US visitor, and how to sidestep it.",
+      h1: "Common money scams in Sri Lanka, and what they cost you",
+      lede: "Sri Lanka is a warm, welcoming country and the money traps here are small ones. Fares are so low that overpaying is usually a matter of a few dollars, and the two that can reach real money, the gem shop and the damage claim, are both defused by a decision you make before you spend anything. Almost all of it starts in the same place: a tuk-tuk driver who suggests somewhere you were not going. Here is each one, what it costs, and how to sidestep it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "The US State Department and its own security reporting name these directly. <b>Tuk-tuk fare tricks</b>, where the meter is broken and a phone app does the charging instead. The <b>special tour</b>, where a driver offers festivals, temples or a <b>gem shop</b> and you are pressed to buy cut glass at sapphire prices. And the <b>surf school damage claim</b>, where the board you returned is suddenly broken. Add the commission diversion, where somewhere you booked is reported closed. The golden rules: <b>insist on the meter or agree the fare first</b>, <b>use PickMe or Uber</b>, <b>never buy gems to resell</b>, <b>photograph rented gear before you use it</b>, and <b>phone your hotel yourself</b>.",
+      sections: [
+        {
+          h: "The tuk-tuk, the meter and the phone",
+          icon: "taxi",
+          key: { fig: "Agree it first", tag: "Or use PickMe", text: "The State Department notes drivers claiming a broken meter and charging inflated prices through third-party apps. Sri Lanka's security reporting describes the phone slipping away near the destination.", tone: "teal" },
+          p: [
+            "The State Department puts it plainly: tuk-tuk scams are frequent, and drivers may claim their <b>meter is broken</b> and charge inflated prices using third-party apps. The US security reporting for Sri Lanka describes the mechanism in detail, and it is a neat one. The driver runs your ride on an app on <b>his</b> phone rather than the meter, and as you approach the destination the phone slips down out of view or the app closes, after which the figure quoted is well above the routine fare.",
+            "Three escapes, in order of how well they work. Best is to <b>book through an app yourself</b>: <b>PickMe</b> is the main local one and <b>Uber</b> runs in Colombo and larger cities, and both set a fair fare with no negotiation. Next is to <b>insist the meter runs</b> from the start in a metered tuk-tuk. Failing both, <b>agree the price before you get in</b>, out loud, and the official advice adds a useful detail: <b>carry the exact amount</b> so there is no change conversation at the end. Fares are genuinely low here, so this is about principle more than money, but it also sets the tone for the rest of the ride. The <a href=\"/sri-lanka/taxis-and-apps\">Sri Lanka taxis and apps guide</a> has the full picture."
+          ]
+        },
+        {
+          h: "The special tour, and the gem shop",
+          icon: "tag",
+          key: { tag: "Never buy to resell", text: "The State Department warns about drivers offering special tours or access to gem shops, where tourists are pressed to buy stones that are cut glass or worth far less than the asking price.", tone: "teal" },
+          p: [
+            "This is the one that can reach real money, and both the State Department and its security reporting name it. A tuk-tuk or taxi driver offers a <b>special tour</b>, or access to a festival, a temple opening or a <b>gem shop</b>. Sri Lanka genuinely is a sapphire country, which is exactly what makes the pitch work. Inside, the pressure is heavy and the stones are, in the official wording, either <b>cut glass or worth far less</b> than the price being asked, sometimes with a certificate that means nothing. The same structure powers the spice-garden and jewellery versions, where the driver takes a commission on whatever you spend.",
+            "The rule that protects you is not about spotting fake stones, because you cannot. It is: <b>never buy gems as an investment or to resell at home</b>. That single decision removes the entire premise of the pitch, since the scam depends on you believing you are getting export-profit value. If you want a stone as a souvenir, buy it at a price you would be happy to have paid for costume jewellery, from a shop <b>you</b> found rather than one a driver suggested, and walk out the moment anyone applies pressure. A driver who insists on a stop you did not ask for is telling you who is paying him."
+          ]
+        },
+        {
+          h: "The rented board, and the damage that appears",
+          icon: "wheel",
+          key: { fig: "Photograph it", tag: "Before you use it", text: "The State Department advises taking photos of your surfboard before using it, because surf schools have claimed renters damaged boards and demanded high repair fees.", tone: "teal" },
+          p: [
+            "The US State Department gives this one a specific instruction, which tells you how routine it has become on the south coast: surf schools sometimes claim that customers <b>damaged boards</b> and demand high repair fees, so <b>take photos of your surfboard before using it</b>. Boards pick up dings constantly, most of them are old, and once you are standing on the sand with wet hair and a flight to catch, arguing about which ding is yours is a fight you will lose.",
+            "Ninety seconds fixes it, and the habit generalizes to everything you rent in Sri Lanka. <b>Photograph or video the item from every angle before you take it</b>, with the shop in shot so the file is timestamped and located. That covers boards, snorkel gear and, importantly, <b>scooters</b>, where the same claim is worth far more. And do not leave your <b>passport</b> as a deposit with anyone; offer cash instead, because a shop holding your passport controls whatever number it decides to name."
+          ]
+        },
+        {
+          h: "Somewhere you booked, suddenly closed",
+          icon: "phoneok",
+          key: { tag: "Phone them yourself", text: "Travelers consistently report drivers claiming a booked hotel has closed, burned down or become unreachable, then offering somewhere better that pays them a commission. Call your hotel and check.", tone: "teal" },
+          p: [
+            "This one is not named in a government advisory, so treat it as a consistent traveler report rather than an official warning, but it follows exactly the commission logic the advisories do describe. You arrive at a station or airport, and a driver tells you the place you booked has <b>closed, burned down, is full, or the road is shut</b>. He knows somewhere better. The alternative pays him a referral fee, and it is usually worse and dearer than what you had.",
+            "The escape takes one minute: <b>phone your hotel yourself</b> and ask. Have the number and the address saved offline before you land, along with a map, so you can check the road independently. If the driver still refuses to take you to the address you asked for, <b>get out and find another</b>, or open PickMe. The related version at temples and sites is the unofficial guide who starts walking and explaining before you have agreed anything, then asks for payment; a firm no thank you at the first sentence is enough, and it is not rude here."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "coins",
+          key: { fig: "Habits", tag: "How to avoid it", text: "Use PickMe or insist on the meter, never buy gems to resell, photograph anything you rent, and phone your hotel yourself. Keep small notes, since nobody can break a 5,000 rupee note.", tone: "teal" },
+          p: [
+            "Almost everything here costs a few dollars, and the two that do not, the gem purchase and the damage claim, are both settled by a decision made before you spend anything. The habits: <b>use PickMe or insist on the meter</b>, <b>never buy gems to resell</b>, <b>photograph anything you rent</b>, and <b>phone your hotel yourself</b>. One practical detail that prevents more small friction than any of them: <b>carry small notes</b>, because tuk-tuk drivers and small sellers often genuinely cannot change a 5,000 rupee note, and a missing note is easy to lose track of in the confusion.",
+            "Two that are not scams but do cost money. Many hotels and nicer restaurants add a <b>10 percent service charge</b>, so read the bill before tipping again, which the <a href=\"/sri-lanka/tipping\">Sri Lanka tipping guide</a> covers. And the tourist <b>ETA</b> is now free for US citizens but still mandatory, so apply only on the official government portal and ignore any site charging a fee, as the <a href=\"/sri-lanka/eta\">Sri Lanka ETA guide</a> explains. For getting and spending money well while you are there, see the <a href=\"/sri-lanka/cash-or-card\">Sri Lanka cash and cards guide</a> and the <a href=\"/sri-lanka\">Sri Lanka cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What are the most common tourist scams in Sri Lanka?", a: "The US State Department names three: tuk-tuk drivers claiming a broken meter and charging inflated fares through an app on their phone, drivers offering special tours or gem shops where you are pressed to buy overpriced or fake stones, and surf schools claiming you damaged a board and demanding a high repair fee. All three are avoidable with a habit each." },
+        { q: "How do I avoid tuk-tuk overcharging in Sri Lanka?", a: "Book through PickMe, the main local app, or Uber in Colombo and larger cities, so the fare is set without negotiation. Otherwise insist the meter runs from the start, or agree the price out loud before you get in. Official advice adds a useful detail: carry the exact amount so there is no change conversation at the end of the ride." },
+        { q: "Are gems in Sri Lanka a scam?", a: "The country genuinely produces sapphires, which is what makes the pitch work. The scam is the pressure sale, usually reached through a driver's special tour, where stones turn out to be cut glass or worth far less than the asking price. The rule that protects you is simple: never buy gems as an investment or to resell at home, and only buy from a shop you found yourself." },
+        { q: "Why should I photograph a rented surfboard in Sri Lanka?", a: "Because the US State Department advises it directly. Surf schools have claimed renters damaged boards and demanded high repair fees, and boards carry old dings constantly, so proving which one is yours is impossible after the fact. Photograph or video the board from every angle before you use it, and do the same for scooters and any other rented gear." },
+        { q: "A driver told me my hotel is closed. Is that true?", a: "Probably not. Travelers consistently report drivers claiming a booked hotel has closed, burned down or become unreachable, then offering an alternative that pays them a commission. Phone your hotel and ask. Save the number, address and an offline map before you land. If the driver still will not take you to the address you gave, get out and book through PickMe." },
+        { q: "Is Sri Lanka dangerous for tourists?", a: "This page covers money traps only, and on that front Sri Lanka is a low-stakes place: the common scams are small overcharges and pressure sales, not threats. The US advisory level for Sri Lanka reflects separate civil unrest and terrorism considerations rather than anything about tourist money scams, so check the current advisory for that side of the picture before you travel." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Sri Lanka travel advisory and travel guidance, including tuk-tuk, gem shop and surf school scams", url: "https://travel.state.gov/en/international-travel/travel-advisories/sri-lanka.html", type: "gov" },
+          { label: "OSAC: Sri Lanka country security report, including the tuk-tuk phone app mechanism and the gem shop pressure sale", url: "https://www.osac.gov/Country/SriLanka/Content/Detail/Report/ab831dc8-9e0d-489e-aa01-1ce3ecc6106f", type: "gov" }
+        ],
+        judgment: "The broken-meter and phone-app tuk-tuk trick, the special tour and gem shop pressure sale with stones described as cut glass or worth far less than the asking price, the surf school damage claim and the instruction to photograph a board before using it all come from current US State Department travel guidance for Sri Lanka and its accompanying country security report. The hotel-closed commission diversion and the spice garden version are consistent traveler reports rather than advisory items, and we have marked them as such and attached no figure. This page covers money scams only; Sri Lanka's overall advisory level reflects civil unrest and terrorism considerations that are unrelated to tourist money traps, and we have not imported that framing here. Rupee conversions use roughly 336 to the dollar. Checked August 2026."
+      }
     }
   ]
 };

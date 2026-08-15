@@ -350,6 +350,86 @@ export default {
         ],
         judgment: "App coverage and taxi tariffs change, and city fares are set locally, so we have kept this to the habits that hold: order rather than hail, watch the meter, carry small notes. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Most cost", v: "Tens of dollars, avoidable" },
+        { k: "Taxis", v: "Pre-arrange, do not flag one" },
+        { k: "Your notes", v: "Look at what you are handed" },
+        { k: "Street exchange", v: "No longer worth it" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Argentina, and what they cost",
+      description: "The taxi note swap, the airport handler, the staged breakdown and the mustard distraction. What each costs a US visitor, and why the street exchange is no longer worth the risk.",
+      h1: "Common money scams in Argentina, and what they cost you",
+      lede: "The US State Department calls Argentina generally safe for travelers and rates it at its calmest advisory level. Almost nothing here is dramatic. What tourists do meet is a small, well-documented family of money tricks, and nearly all of them happen in or around a taxi you flagged down in the street. One decision, pre-arranging your ride instead of hailing it, removes most of the list. Here is each one, what it costs, and how to sidestep it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "The State Department lists four taxi scams by name, and they are the core of this page: the driver who <b>helps you with your money</b> and swaps good notes for counterfeit ones; the airport <b>handler</b> who takes payment for the ride, after which the driver demands it again; the taxi that <b>breaks down</b> so a second one arrives and both drivers want paying; and the <b>mustard trick</b>, where something is sprayed on you from a distance and a helper robs you while cleaning it off. Add <b>street money changers</b>, now barely worth using at all. The golden rules: <b>pre-arrange a remise or use an app</b>, <b>look at every note you are handed</b>, <b>never accept help cleaning a stain</b>, and <b>change money at a place with a storefront</b>.",
+      sections: [
+        {
+          h: "The note swap, and the driver who helps",
+          icon: "cash",
+          key: { tag: "Look at the note", text: "The State Department describes drivers who pretend to help tourists with unfamiliar money while trading valid bills for counterfeit ones. Hand over one note at a time and look at what comes back.", tone: "teal" },
+          p: [
+            "This is the classic Argentine one and it works because peso notes are unfamiliar and the numbers are large. You hand over a note, the driver studies it, says something is wrong with it, and hands back a different note that is counterfeit or a lower denomination. Or he offers to help you count, and good bills quietly become bad ones. The State Department names it directly among its Argentina taxi scams. The loss is the face value of whatever you were given, so usually <b>tens of dollars</b>, and you only find out when the next place refuses it.",
+            "Three habits close it. <b>Hand over one note at a time</b> rather than a fan of them, <b>keep your own note in sight</b> while it is being examined, and <b>look at what comes back</b> before you get out. Carrying <b>small notes and the right change</b> removes the whole conversation, which is worth doing anyway since drivers are often short of change. If you are unsure what a real note looks like, the ones from a bank ATM are your reference set."
+          ]
+        },
+        {
+          h: "The handler, and the taxi that breaks down",
+          icon: "taxi",
+          key: { fig: "Paying twice", tag: "Pre-arrange it", text: "A handler at the airport takes payment, then the driver demands it again at the end. Or the taxi breaks down, a second one arrives, and both drivers want paying. Book a remise or an app instead.", tone: "teal" },
+          p: [
+            "Two more from the same State Department list, and both are variations on being made to pay twice. In the first, a <b>handler</b> at the airport takes your money for the ride, and at the other end the driver says he has seen nothing and asks again. In the second, the taxi <b>breaks down</b> mid-journey, a second taxi conveniently appears to finish the trip, and both drivers present a bill. Neither is violent and neither is large, but both are awkward to argue in a second language at the kerb.",
+            "The State Department's own escape is the cleanest: <b>pre-arrange the ride</b>. Use a taxi dispatch service, a ride-hailing app, or one of the flat-rate <b>remise</b> services, which are private cars with drivers booked from the airport service counters or through your hotel. In city centres, it advises using taxis called by a central dispatcher or arranged by your hotel rather than flagged in the street. <b>Uber, Cabify and DiDi</b> all operate in Buenos Aires and fix the fare in the app, which ends the argument before it starts. The full picture is in the <a href=\"/argentina/taxis-and-ride-hailing\">Argentina taxis and ride-hailing guide</a>."
+          ]
+        },
+        {
+          h: "The stain, and the stranger who helps clean it",
+          icon: "alert",
+          key: { tag: "Walk away", text: "The State Department describes mustard or another substance sprayed on a tourist from a distance, then an accomplice robbing them while pretending to help clean it. Keep walking and deal with it yourself.", tone: "teal" },
+          p: [
+            "This one runs worldwide but Argentina's version is specific enough that the State Department spells it out: something, often <b>mustard</b> or a similar liquid, lands on you seemingly from nowhere, and a helpful person immediately appears with tissues. While they dab at your jacket, your bag, wallet or phone leaves. The stain is the entire point of the operation, so the moment to act is before you look down at it.",
+            "The rule is short: <b>if something lands on you, hold your bag and keep walking</b>. Do not set anything down, do not let anyone else touch you, and clean it yourself somewhere you have chosen. The same instinct covers the other close-quarters ones on the State Department's list, including bag snatching in restaurants: keep your bag on your lap rather than on the back of a chair or on the floor, and do not leave a phone sitting on the table."
+          ]
+        },
+        {
+          h: "Changing money, and the advice that died",
+          icon: "atm",
+          key: { tag: "Storefront only", text: "The State Department says to exchange money only at banks, hotels and exchangers with an actual storefront. The blue-dollar street rate is no longer worth the counterfeit risk, because the gap has closed.", tone: "amber" },
+          p: [
+            "Argentina's most famous piece of travel advice is now out of date, and that matters here. For years the <b>blue dollar</b> street rate beat the official one by enough to justify the walk down an alley. That gap has closed: the street rate now sits within a few percent of what your card gets, so following a <b>cambio, cambio</b> tout is a small gain at best and a net loss once short-changing or a counterfeit note enters the picture. The <a href=\"/argentina/cash-or-card\">Argentina cash and cards guide</a> has the current mechanics.",
+            "The State Department's instruction is simple: exchange money only at <b>banks, hotels, and money exchangers with actual storefronts</b>. Two practical details from the same page are worth carrying: you must <b>show your passport</b> to exchange money, and you should <b>keep every receipt</b> from buying pesos until you leave. On cards, always choose <b>pesos</b> rather than dollars, and expect low per-withdrawal ATM limits, which is why fewer, larger withdrawals cost less."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "coins",
+          key: { fig: "Habits", tag: "How to avoid it", text: "Pre-arrange rides rather than hailing them, hand over one note at a time and look at what comes back, walk away from anyone helping with a stain, and change money only at a storefront.", tone: "teal" },
+          p: [
+            "Look at the list and one theme runs through it: almost every trap here begins with a taxi you flagged down or a stranger who approached you. So the habits are few. <b>Pre-arrange the ride or use an app</b>, <b>hand over one note at a time and check what comes back</b>, <b>keep walking if something lands on you</b>, and <b>change money only at a place with a storefront</b>. None of it costs more than tens of dollars when it does happen.",
+            "Two more that are not scams but do cost money. The <b>cubierto</b>, a small per-person cover charge for bread and the table setting, goes to the house rather than your server, so it does not replace a tip; the <a href=\"/argentina/tipping\">Argentina tipping guide</a> covers that. And tips are best left in <b>cash pesos</b>, since card terminals often have no tip line. For getting and spending money well while you are there, see the <a href=\"/argentina/cash-or-card\">Argentina cash and cards guide</a> and the <a href=\"/argentina\">Argentina cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Argentina safe for tourists?", a: "The US State Department rates Argentina at its calmest level and describes it as generally safe for travelers. Petty crime happens in tourist areas and in Buenos Aires, and the money issues tourists actually meet are a short, well-documented list of taxi tricks. Pre-arranging rides rather than hailing them removes most of them." },
+        { q: "What is the taxi counterfeit bill scam in Argentina?", a: "A driver offers to help you with unfamiliar peso notes, then swaps a valid bill for a counterfeit or lower-value one while examining it. The State Department lists it among Argentina's taxi scams. Hand over one note at a time, keep your own note in sight while it is checked, look at what comes back, and carry small notes so change is not needed." },
+        { q: "How do I avoid taxi scams in Buenos Aires?", a: "Pre-arrange the ride. The State Department recommends a taxi dispatch service, a ride-hailing app, or a flat-rate remise booked at an airport service counter or through your hotel. Uber, Cabify and DiDi all operate in Buenos Aires and fix the fare in the app. In the city, use a dispatcher-called or hotel-arranged taxi rather than one flagged in the street." },
+        { q: "Should I still use the blue dollar rate in Argentina?", a: "No, that advice is out of date. The street rate now sits within a few percent of what a foreign card gets in pesos, so the gain is minimal and it disappears entirely if you are short-changed or handed a counterfeit note. The State Department advises exchanging only at banks, hotels or exchangers with an actual storefront, and you will need your passport." },
+        { q: "What is the mustard scam?", a: "Something is sprayed on you from a distance, often mustard or a similar liquid, and a helpful stranger appears immediately with tissues. While they clean the stain, an accomplice takes your bag, wallet or phone. The State Department names it directly. If something lands on you, hold your bag, keep walking, and clean it yourself somewhere you chose." },
+        { q: "Should I pay in pesos or dollars in Argentina?", a: "Pesos, on every card terminal and ATM screen. Accepting the offer to be charged in dollars uses a marked-up rate that costs you a few percent each time. Note that ATM per-withdrawal limits are low and the flat fee can be steep, so fewer and larger withdrawals cost less. Keep small peso notes for taxis, kiosks and tips." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Argentina travel advisory and travel guidance, including the named taxi scams and currency advice", url: "https://travel.state.gov/en/international-travel/travel-advisories/argentina.html", type: "gov" },
+          { label: "OSAC: Argentina country security report, referenced by the State Department advisory", url: "https://www.osac.gov/Country/Argentina/Content/Detail/Report/905ecf39-8463-4323-9ad7-1c74073427dc", type: "gov" }
+        ],
+        judgment: "All four taxi scams here, the note swap, the airport handler, the staged breakdown and the mustard distraction, are listed by name in the US State Department's own Argentina travel guidance, along with the remise and dispatcher escapes and the instruction to exchange money only at banks, hotels or exchangers with storefronts. The advisory was at Level 1, exercise normal precautions, when checked, with the crime and unrest risk indicators removed in July 2026. We have attached no figure to the note swap because the loss is simply the face value of the note substituted, and no honest typical figure exists. The blue dollar point reflects the current narrow gap between street, card and official rates rather than a specific quoted rate. Checked August 2026."
+      }
     }
   ]
 };
