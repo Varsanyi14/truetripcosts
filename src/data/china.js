@@ -492,6 +492,86 @@ export default {
         ],
         judgment: "App coverage, metro payment options and rail booking steps are our read from recent traveler reports, not an official transport table, so check current details locally. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Most cost", v: "Avoidable entirely" },
+        { k: "The big one", v: "Never follow a stranger" },
+        { k: "Taxis", v: "Meter, app, or agree first" },
+        { k: "Cash", v: "Small notes, check change" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in China, and what they cost",
+      description: "The tea house invitation, the art student gallery, taxi meter refusal and counterfeit notes in change. What each costs a US visitor, and the habit that beats nearly all of them.",
+      h1: "Common money scams in China, and what they cost you",
+      lede: "China is safe for the great majority of visitors, violent crime against foreigners is rare, and nearly everything below is defeated by one habit: do not follow a stranger who approached you to a venue you did not choose. These are ordinary money traps clustered around a few famous landmarks, plus the usual taxi and cash-handling ones. Here is each, what it costs, and how to sidestep it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "A short list comes up again and again, almost all of it around a handful of landmarks: the <b>tea house invitation</b> and the <b>art student gallery</b>, where a friendly stranger walks you to a venue and the bill is inflated; the <b>bar or KTV</b> version of the same setup; <b>taxi</b> meter refusal, airport overcharging and the <b>note swap</b>; and <b>counterfeit notes</b> handed back as change. There is also a phone version, callers posing as <b>police</b> demanding a transfer. The golden rules that beat almost all of it: <b>never follow a street stranger to a venue</b>, <b>insist on the meter or use DiDi</b>, <b>pay by phone where you can</b>, and <b>check any note handed back to you</b>. None of it should shape your trip.",
+      sections: [
+        {
+          h: "The invitation you did not ask for",
+          icon: "receipt",
+          key: { fig: "$75-300", tag: "Say no and walk", text: "A friendly stranger invites you to tea, an art show, a massage or a bar. The bill arrives inflated, typically 500 to 2,000 yuan, and your new friends melt away. Never follow a stranger to a venue.", tone: "teal" },
+          p: [
+            "This is the one to know, and Canada's travel advice names the exact places: <b>Tiananmen Square</b> in Beijing, and <b>the Bund, East Nanjing Road and People's Square</b> in Shanghai. A polite English-speaking stranger, often a pair, strikes up a conversation, then suggests a traditional tea ceremony, a look at their art school's exhibition, a massage or a nearby bar. Inside, you drink or eat modestly and are handed a bill that bears no relation to it. Typical bills run <b>500 to 2,000 yuan, roughly 75 to 300 dollars</b>, and staff can be insistent about payment. Your companions either vanish or offer to split, having paid nothing.",
+            "The escape is entirely upstream of the bill: <b>do not go anywhere with someone who approached you</b>. It is not rudeness; a genuine local connection almost never begins with a stranger steering you into a shop within minutes. If you want a tea house or a gallery, walk into an established one yourself and ask for a priced menu before you sit. If you are already holding a bad bill, Canada's guidance is specific: get somewhere safe, write down the name and address of the venue, report it to the police and get a report, then call your card issuer, which will usually want that police report to reverse the charge."
+          ]
+        },
+        {
+          h: "Taxis, the airport, and the fapiao",
+          icon: "taxi",
+          key: { fig: "3 to 5x", tag: "Meter or app", text: "Meter broken plus a flat fare is the classic, most often at airports and stations, and the flat fare is usually several times the metered one. Say da biao, or book DiDi so the price is fixed.", tone: "teal" },
+          p: [
+            "Canada's travel advice puts it plainly: taxi, motorcycle and pedicab drivers sometimes overcharge, especially at airports, and may hand back counterfeit currency. The classic move is <b>the meter is broken</b> followed by a flat fare that is typically <b>several times</b> what the metered ride would have been. Ignore anyone touting inside a terminal, join the signed official queue, and either ask for the meter (<b>da biao</b>) or book through <b>DiDi</b>, where the price is set before you get in.",
+            "Three small habits from the same advisory finish the job: use only licensed taxis or a reputable app, <b>ask for the receipt (fapiao)</b> so you have something to complain with or trace a lost item, and <b>take your luggage out of the trunk before you pay</b>, so nobody is holding your bag while the fare is being discussed. The full transport picture is in the <a href=\"/china/taxis-and-apps\">China taxis and apps guide</a>."
+          ]
+        },
+        {
+          h: "At the card machine and on your phone",
+          icon: "qr",
+          key: { tag: "Choose yuan", text: "On a physical card, always choose yuan rather than dollars: the dollar option uses a poor built-in rate. On Alipay or WeChat Pay, check the amount on your own screen before you approve it.", tone: "amber" },
+          p: [
+            "The most common everyday cost in China is not a con at all. When a hotel or shop terminal offers to charge you <b>in US dollars or yuan</b>, choose <b>yuan</b>, so your own bank sets the rate rather than a marked-up one at the till. Everyday spending in China mostly runs through <b>Alipay and WeChat Pay</b> anyway, which sidesteps the whole question; set both up before you fly, as covered in the <a href=\"/china/how-to-pay-in-china\">China payment guide</a>.",
+            "Paying by phone has its own version of care. Canada's advice is to be cautious about scanning QR codes from unofficial or unfamiliar sources, and to <b>verify the charge on your screen before authorizing it</b>. That one glance is the whole defense, and it also catches ordinary mistakes. For ATMs, use machines inside a bank, shield the keypad, and check your statement."
+          ]
+        },
+        {
+          h: "Cash, counterfeit notes and the phone call",
+          icon: "coins",
+          key: { tag: "Check the note", text: "Counterfeit notes are far less common than they were and now turn up mostly in small cash transactions. Carry small denominations, and never accept a note handed back as a replacement for the one you gave.", tone: "teal" },
+          p: [
+            "China's counterfeit note problem has shrunk a long way as the country moved to phone payments. Canada's current advice is that a small number of fake notes still circulate and are most often met in <b>low-volume cash transactions</b>, so this is a habit rather than a worry. Two rules cover it: <b>carry small denominations</b> so you are not handing over 100 yuan notes for a 10 yuan purchase, and keep your own note in sight while a vendor inspects it, because the con is the swap, not the inspection. If a driver or vendor hands your note back saying it is fake, look closely at the note you are being given: it is often not the one you handed over. Refuse damaged or poor-quality notes too.",
+            "There is a phone version worth knowing about because it targets foreigners specifically: a caller claiming to be the <b>police</b>, saying you are under investigation for identity theft or money laundering, and asking you to transfer funds to clear it up. Real police do not do this. Do not send money, and hang up."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { fig: "Habits", tag: "How to avoid it", text: "Never follow a street stranger to a venue, insist on the meter or use DiDi, pay by phone, choose yuan on a card, and check any note handed back. Almost nothing here survives those five.", tone: "teal" },
+          p: [
+            "Nearly every trap on this page starts the same way: someone you did not approach steers you somewhere you did not choose. Five habits cover the lot: <b>never follow a street stranger to a venue</b>, <b>insist on the meter or use DiDi</b>, <b>pay by phone where you can</b>, <b>choose yuan on a physical card</b>, and <b>check any note handed back to you</b>. The one worth active care, because it is the one that can reach real money, is the tea house and bar invitation, and it is also the easiest to refuse.",
+            "Handled calmly, none of this should shape your trip, and most visitors meet none of it. For getting and spending money well while you are there, see the <a href=\"/china/how-to-pay-in-china\">China payment guide</a> and the <a href=\"/china\">China cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is China safe for tourists?", a: "For the great majority of visitors, yes. Violent crime against foreigners is rare and most trips are trouble free. What tourists actually meet are money traps: the tea house or art gallery invitation near famous landmarks, taxi overcharging, and occasional counterfeit notes in change. A few habits, chiefly never following a stranger to a venue, avoid nearly all of it." },
+        { q: "What is the tea house scam in China?", a: "A friendly English-speaking stranger near a landmark invites you for a traditional tea ceremony, an art exhibition, a massage or a drink, and the bill afterwards is wildly inflated, commonly 500 to 2,000 yuan, roughly 75 to 300 dollars. Canada's travel advice names Tiananmen Square, the Bund, East Nanjing Road and People's Square as the areas where it clusters. Do not follow a stranger to a venue." },
+        { q: "What should I do if I have been handed a huge bill in a Chinese bar or tea house?", a: "Get somewhere safe first. Note the name and address of the venue, since police need it to identify who was involved and issue a report. Report it and obtain that report, then call your card company, which will usually want a copy of it to reverse the charge. Police in China are 110. Do not go back to the venue to argue." },
+        { q: "How do I avoid taxi scams in China?", a: "Use licensed taxis or book through DiDi, where the fare is set in advance. If you take a street taxi, ask for the meter (da biao) and agree a fare first only if there genuinely is no meter. Ask for the receipt, or fapiao, and take your luggage out of the trunk before you pay. Ignore anyone touting for rides inside an airport terminal." },
+        { q: "Are counterfeit banknotes still a problem in China?", a: "Much less than they were, because almost everything is now paid by phone. A small number of fake notes still circulate and are mostly encountered in small cash transactions. Carry small denominations, keep your own note in sight while it is being checked, and be wary if someone hands a note back claiming yours was fake, since the swap is the scam." },
+        { q: "Should I pay in yuan or dollars in China?", a: "Yuan. If a hotel or shop terminal offers to bill you in your home currency, decline, so your own bank sets the exchange rate rather than a marked-up one at the till. In practice most of your spending will go through Alipay or WeChat Pay, which avoids the question, but check the amount on your screen before approving any QR payment." }
+      ],
+      sources: {
+        links: [
+          { label: "Government of Canada: China travel advice, including scams, taxis, fraud and money", url: "https://travel.gc.ca/destinations/china", type: "gov" },
+          { label: "US State Department: China country information and safety guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/China.html", type: "gov" }
+        ],
+        judgment: "The named landmark areas, the taxi advice including the fapiao and the luggage rule, the counterfeit note picture and the fake police call all come from the Government of Canada's current China travel advice. The 500 to 2,000 yuan bill is a typical reported range, not a fixed tariff, and individual cases have run far higher; we have deliberately given the typical range rather than the worst case. Government advisories treat all of this as routine petty crime awareness rather than a safety emergency, and so do we. Checked August 2026."
+      }
     }
   ]
 };

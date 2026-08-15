@@ -518,6 +518,86 @@ export default {
         ],
         judgment: "US citizens now need a visa on arrival for Indonesia, a change from the earlier visa-free access, and Bali adds a separate tourist levy. Fees and the digital arrival requirements have shifted recently, so confirm the current amounts and steps on the official immigration and Love Bali sites before you travel. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Most cost", v: "Tens of dollars, avoidable" },
+        { k: "Scooters", v: "Film it before you ride" },
+        { k: "Changing money", v: "Licensed only, count it" },
+        { k: "Taxis", v: "Bluebird or an app" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Indonesia, and what they cost",
+      description: "Scooter damage claims, money changer sleight of hand, taxi meter refusal and card fraud. What each costs a US visitor in Bali and beyond, and how to sidestep it.",
+      h1: "Common money scams in Indonesia, and what they cost you",
+      lede: "Indonesia is safe for the great majority of visitors and almost none of this is dramatic. What tourists actually meet, especially in Bali, are money traps built on confusion: a fast count at a money changer, damage on a scooter that was already there, a meter that stays off. They cost tens of dollars rather than hundreds, and a few habits defuse nearly all of them. Here is each one, what it costs, and how to sidestep it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "Four traps come up again and again: the <b>scooter damage claim</b>, where a rental shop points at scratches that were already there; the <b>money changer</b> with an unbeatable board rate and a fast, confusing count; <b>taxi meter refusal</b> and airport flat rates; and <b>card and ATM fraud</b>, including a fake help number stuck on the machine. Underneath several of them sits one avoidable mistake: <b>leaving your passport as a deposit</b>. The golden rules that beat them: <b>film the scooter before you ride</b>, <b>change money only at a licensed counter and count it yourself</b>, <b>use Bluebird or an app</b>, <b>never hand over your passport as security</b>, and <b>always choose rupiah</b>. None of it should ruin a trip.",
+      sections: [
+        {
+          h: "The scooter damage claim",
+          icon: "wheel",
+          key: { fig: "$50-300", tag: "Film it first", text: "You return the scooter and the shop points at scratches that were already there, then names a repair price. Photograph and video the bike from every angle before you ride off.", tone: "teal" },
+          p: [
+            "This is the classic Bali one. You rent a scooter, ride it carefully, bring it back, and the shop finds damage. Sometimes it was there before you arrived; sometimes it appears between drop-off and inspection. Either way you are asked for a repair figure you cannot argue with, typically in the range of <b>50 to 300 dollars</b>. The defense takes ninety seconds: before you ride off, <b>photograph the bike from every angle and take a slow video walk-around</b> with the shop's frontage in shot, so the timestamp and the location are both in the file. Read the rental agreement, and rent from a shop with a real review history rather than the nearest stand.",
+            "The version that turns a nuisance into a problem is the <b>passport deposit</b>. Do not do it. A shop holding your passport has leverage over any figure it chooses to name, and you cannot replace the document quickly. Reputable shops take a cash deposit instead. Check too whether your travel insurance actually covers you on two wheels and whether your license is valid for it, because many policies exclude scooters or require the right permit, and Bali police do check."
+          ]
+        },
+        {
+          h: "Changing money, and the fast count",
+          icon: "cash",
+          key: { fig: "Count it twice", tag: "Licensed only", text: "An unlicensed changer offers a board rate that beats the banks, then counts fast and confusingly and palms notes back. Use a licensed counter and count the money yourself before you leave.", tone: "teal" },
+          p: [
+            "The UK and Australian governments both flag this one directly: <b>unlicensed money changers may short-change you</b>, and it clusters in the tourist strips of Kuta, Seminyak and Ubud. The bait is a board rate noticeably better than the banks, which should be the tell rather than the attraction. The method is a fast, chatty, confusing count, notes folded or palmed back out of the stack, or a calculator that shows one figure while another is paid. Because rupiah runs in large numbers, with roughly <b>17,900 to the dollar</b>, a short count is easy to miss.",
+            "The escape is specific and worth memorizing. The FCDO says a licensed exchange is identified by a <b>Bank of Indonesia logo and a QR code</b>, and that you can open that code to check the business name and its operating licence. Then <b>count the money yourself, in front of them, before you leave the counter</b>, and do not let the notes go back across the desk once counted. Better still, skip cash exchange altogether and pull rupiah from a bank ATM, which is covered in the <a href=\"/indonesia/cash-or-card\">Indonesia cash and cards guide</a>."
+          ]
+        },
+        {
+          h: "Taxis, apps and the airport",
+          icon: "taxi",
+          key: { fig: "Meter or app", tag: "Bluebird or Grab", text: "Meter refusal and flat airport rates are the usual move. Use a registered company such as Bluebird, or Grab or Gojek, and check the driver matches the app before you get in.", tone: "teal" },
+          p: [
+            "Meter refused, or a flat fare quoted at the airport, is the standard transport trap and it is a markup rather than a mugging. The FCDO names the registered companies to use: <b>Bluebird, Silverbird and Express</b>. Bluebird in particular is widely imitated, so check the logo and the driver ID rather than the paint. Otherwise use <b>Grab or Gojek</b>, where the fare is set before you get in and the ride is tracked.",
+            "One extra warning from the same advisory is worth carrying: <b>be wary of drivers who claim to be registered with an app and try to pick you up on the street</b>. If you booked in the app, check the car, the plate and the driver's face match what the app shows before you open the door, and share the journey. The full picture is in the <a href=\"/indonesia/taxis-and-apps\">Indonesia taxis and apps guide</a>."
+          ]
+        },
+        {
+          h: "Cards, ATMs and the number on the machine",
+          icon: "atm",
+          key: { tag: "Choose rupiah", text: "Card fraud is common, so keep the card in sight. Ignore any help number stuck on an ATM, since criminals put fake ones there to ask for your card details. And always choose rupiah, not dollars.", tone: "amber" },
+          p: [
+            "The FCDO calls <b>credit card fraud common</b> in Indonesia and gives two specific instructions: do not lose sight of your card during a transaction, and treat any phone number stuck to an ATM with suspicion, because criminals place <b>fake help numbers</b> on machines so that a caller can talk you through handing over your card details. If a machine misbehaves, call the number on the back of your own card instead. Use ATMs inside bank branches, cover the keypad, and glance at the card slot.",
+            "The quieter, legal cost is the same one you meet everywhere: when a card machine or ATM offers to charge you <b>in US dollars or rupiah</b>, always choose <b>rupiah</b>. Dollars uses a poor built-in rate that costs you a few percent on every transaction you accept it on, and over a two-week trip that adds up to more than any single scam on this page."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "coins",
+          key: { fig: "Habits", tag: "How to avoid it", text: "Film the scooter, use a licensed changer and count it yourself, book transport in an app, agree prices before any treatment, and never leave your passport as security.", tone: "teal" },
+          p: [
+            "Almost everything here costs tens of dollars and is avoided by the same short list: <b>film the scooter before you ride</b>, <b>change money only at a licensed counter and count it yourself</b>, <b>use Bluebird or an app</b>, <b>choose rupiah at the terminal</b>, and <b>never hand over your passport as security</b>. One more from the FCDO belongs on the list: there has been a rise in fee disputes at <b>tattoo parlours, nail salons and spas</b> in Bali, so agree the price before anything starts. Australia's Smartraveller adds a note about organised <b>card game</b> invitations in Bali, which is the same shape as everything else here: a stranger, a venue you did not pick, a bill.",
+            "Handled calmly, none of this should shape your trip. For getting and spending money well while you are there, see the <a href=\"/indonesia/cash-or-card\">Indonesia cash and cards guide</a> and the <a href=\"/indonesia\">Indonesia cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Bali safe for tourists?", a: "For the great majority of visitors, yes, and most trips are trouble free. What tourists actually meet are money traps rather than anything dramatic: scooter damage claims, money changer short-changing, taxi meter refusal and card fraud. A few habits, chiefly filming the scooter, counting your own cash and booking transport in an app, avoid nearly all of them." },
+        { q: "How do I avoid the Bali scooter rental scam?", a: "Photograph the scooter from every angle and take a slow video walk-around before you ride off, with the shop in shot so the file is timestamped and located. Read the agreement, rent from a shop with real reviews, and never leave your passport as the deposit. Reputable shops take cash instead. Inflated repair claims typically run 50 to 300 dollars." },
+        { q: "Should I leave my passport as a deposit in Indonesia?", a: "No. A rental shop holding your passport has leverage over whatever repair figure it decides to name, and a lost or withheld passport is slow and expensive to replace abroad. Offer a cash deposit instead, and if a shop insists on the passport, walk away and find another. This applies to scooters, cars and tour operators alike." },
+        { q: "How do I spot a legitimate money changer in Bali?", a: "A licensed exchange displays a Bank of Indonesia logo and a QR code, and the UK FCDO advises opening that code to check the business name and operating licence. Treat a board rate that clearly beats the banks as a warning rather than a bargain, count the money yourself before leaving the counter, and do not let notes go back across the desk once counted." },
+        { q: "Which taxis are safe to use in Indonesia?", a: "Registered companies such as Bluebird, Silverbird and Express, or the Grab and Gojek apps where the fare is set before you get in. Bluebird is widely imitated, so check the logo and driver ID rather than the paint colour. Be wary of anyone claiming to be an app driver while touting on the street, and check the car, plate and driver match the app." },
+        { q: "Is ATM fraud a risk in Indonesia?", a: "Card fraud is common enough that the UK FCDO advises never losing sight of your card during a transaction. Criminals have also stuck fake customer help numbers on ATMs so that a caller can ask for your card details. Use machines inside bank branches, cover the keypad, ignore any number on the machine, and call the number on the back of your own card if something goes wrong." }
+      ],
+      sources: {
+        links: [
+          { label: "UK FCDO: Indonesia travel advice, safety and security, including scams and money changers", url: "https://www.gov.uk/foreign-travel-advice/indonesia/safety-and-security", type: "gov" },
+          { label: "Australian Government Smartraveller: Indonesia travel advice, safety and money", url: "https://www.smartraveller.gov.au/destinations/asia/indonesia", type: "gov" }
+        ],
+        judgment: "The money changer, card fraud, fake ATM number, registered taxi company and salon fee points all come from current UK FCDO and Australian Smartraveller advice for Indonesia. The 50 to 300 dollar scooter repair range is a typical reported range from traveler accounts and travel insurer guidance, not an official figure, and individual claims have been higher. The rupiah conversion uses roughly 17,900 to the dollar. The vast majority of visits see none of this. Checked August 2026."
+      }
     }
   ]
 };

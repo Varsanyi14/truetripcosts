@@ -400,6 +400,86 @@ export default {
         ],
         judgment: "App coverage, taxi practice and island transport are our read from recent traveler reports, not an official transport table, so check current fares and conditions locally. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Most cost", v: "Tens of dollars, avoidable" },
+        { k: "At the airport", v: "Grab or the marshalled rank" },
+        { k: "Taxis", v: "Meter, or use Grab" },
+        { k: "New friends", v: "Decline food and drinks" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in the Philippines, and what they cost",
+      description: "Airport taxi flat rates, the friendly stranger swindle, ATM skimming and the pay-in-dollars prompt. What each costs a US visitor, and the habits that beat them.",
+      h1: "Common money scams in the Philippines, and what they cost you",
+      lede: "The Philippines is safe for the great majority of visitors, Filipino hospitality is real, and almost none of this is dramatic. The traps tourists actually meet are ordinary money ones: a fare quoted instead of metered, a stranger who is unusually keen to help, a card machine offering dollars. They cost tens of dollars and a few habits defuse nearly all of them. Here is each one, what it costs, and how to sidestep it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "The list is short: the <b>airport ride</b>, where the meter stays off and a flat rate appears; the <b>friendly stranger</b>, known locally as <b>budol-budol</b>, where someone befriends you soon after arrival and you end up handing over cash or valuables; <b>ATM skimming</b> and card fraud; and the <b>pay in dollars</b> prompt on card machines, which uses a poor built-in rate. There is also the airport story everyone has heard, <b>tanim-bala</b>, and it is worth knowing what actually happened with it. The golden rules that beat most of it: <b>use Grab or the marshalled rank</b>, <b>insist on the meter</b>, <b>decline food, drinks and rides from new acquaintances</b>, and <b>always choose pesos</b>.",
+      sections: [
+        {
+          h: "The airport ride",
+          icon: "taxi",
+          key: { fig: "Meter or Grab", tag: "Skip the tout", text: "The classic is a driver who approaches you inside arrivals with a flat rate instead of a meter. Use Grab or the marshalled rank outside, and confirm the meter is running before you move.", tone: "teal" },
+          p: [
+            "Manila's airport is where the money side of a Philippines trip most often goes wrong, and the mechanism is always the same: someone approaches you <b>inside the terminal</b> with a fixed price, or a driver announces the meter is broken. The flat rate is typically a few times what the ride is worth. The defense is to ignore anyone who approaches you, walk out to the <b>marshalled rank</b>, or book <b>Grab</b>, where the fare is set in the app before you get in and the trip is tracked. Confirm out loud that the meter will run before the doors close, and if a driver refuses, get out and take the next one. The full picture is in the <a href=\"/philippines/taxis-and-apps\">Philippines taxis and apps guide</a>.",
+            "The extreme cases make the news precisely because they are extreme. One widely reported incident involved two visitors charged around <b>10,000 pesos, roughly 170 dollars</b>, for a short hop between terminals, with the driver producing an official-looking laminated rate card that turned out to be fake. Treat that as what can happen at the far end rather than the going rate. The US State Department also advises asking a hotel or restaurant to call a taxi for you rather than flagging one down, and making a note of the plate number, which is a sensible habit anywhere."
+          ]
+        },
+        {
+          h: "The unusually friendly stranger",
+          icon: "alert",
+          key: { tag: "Decline politely", text: "The US State Department advises being wary of people who befriend you just after you arrive, and declining food, drinks and rides from strangers. Travelers have been drugged and robbed after accepting an invitation.", tone: "teal" },
+          p: [
+            "Filipinos are genuinely, unusually welcoming, which is exactly what makes this one hard to spot and worth naming. The US State Department's advice is direct: be wary of unknown people who try to befriend you, <b>especially just after you arrive in the country</b>, and do not accept food, drinks or rides in private vehicles from strangers even when they seem legitimate. It notes that solo travelers have been drugged and robbed after accepting an invitation to visit a tourist spot. Locally the swindle-gang version is called <b>budol-budol</b>: a conversation, a second person joining in, a story, and cash or valuables changing hands.",
+            "There is no honest average figure here, because the losses range from a wallet to a bank withdrawal, so treat it as a habit rather than a price. The habit is small and costs nothing socially: <b>decline invitations from people you did not seek out</b>, especially in your first days and especially anything involving a private car or a drink. Hospitality you meet through a hotel, a tour operator or a restaurant is a completely different thing, and there is no reason to be guarded about it."
+          ]
+        },
+        {
+          h: "Cards, ATMs and the dollars prompt",
+          icon: "atm",
+          key: { tag: "Choose pesos", text: "Card and ATM fraud are common, including skimming devices fitted to card readers. Use bank-lobby ATMs, cover the keypad, and always choose pesos rather than dollars at the terminal.", tone: "amber" },
+          p: [
+            "The State Department describes the exact mechanism worth guarding against: an <b>illicit device attached to an ATM card reader</b> that records the card details and PIN. Use machines <b>inside bank branches</b> rather than free-standing ones in convenience stores or malls, cover the keypad, and glance at the card slot for anything loose or bulky. Keep your card in sight when you pay, and turn on transaction alerts so a bad charge reaches your phone straight away. Philippine ATMs also charge their own withdrawal fee, so fewer, larger withdrawals cost less, which is covered in the <a href=\"/philippines/cash-or-card\">Philippines cash and cards guide</a>.",
+            "The everyday cost that is not a scam at all: when a card machine or ATM asks whether to charge you <b>in US dollars or pesos</b>, always choose <b>pesos</b>. Dollars uses a poor built-in rate that costs you a few percent on every transaction you accept it on, and it is legal, so nobody is going to warn you. Carry small bills too, for jeepneys, tricycles and market stalls, since the no-change problem is real and 1,000 peso notes are awkward."
+          ]
+        },
+        {
+          h: "Tanim-bala, and what actually happened",
+          icon: "plane",
+          key: { fig: "About $3", tag: "Wrap the bag", text: "The 2015 bullet-planting extortion at Manila airport was real and documented, with about 30 police-recorded cases that year. The rules changed in 2016. Bag wrapping costs around 160 pesos.", tone: "amber" },
+          p: [
+            "You will read about <b>tanim-bala</b> (bullet planting), the Manila airport extortion scheme in which a bullet appeared in a passenger's bag at screening and a payment was demanded to make the problem go away. It was real: the Philippine National Police Aviation Security Group recorded about <b>30 cases in 2015</b>, up from 21 in 2013 and 12 in 2014, the national investigation bureau confirmed it existed, and criminal charges were filed against airport personnel over the case of an American traveler who refused to pay. It was a genuine documented episode, not a rumor, and it received a great deal of international coverage.",
+            "It is also not the state of play today. In 2016 the rules were changed so that a passenger found with ammunition is profiled and cleared rather than arrested, which removed the leverage the scheme depended on. Occasional incidents since have revived the worry, so it is worth knowing rather than dismissing. The cheap defense is simply <b>wrapping your checked bag</b>, available at the airport for around <b>160 pesos, roughly 3 dollars</b>, and keeping your bags closed and in sight before they go to the belt. Treat this as a known airport story to be aware of, not something to expect."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "peso",
+          key: { fig: "Habits", tag: "How to avoid it", text: "Book transport in Grab or take the marshalled rank, insist on the meter, decline invitations from strangers, use bank-lobby ATMs, and always choose pesos. That covers nearly all of it.", tone: "teal" },
+          p: [
+            "Almost everything here costs tens of dollars at most and is avoided by the same few habits: <b>book Grab or take the marshalled rank</b>, <b>insist on the meter</b>, <b>decline food, drinks and rides from new acquaintances</b>, <b>use bank-lobby ATMs</b>, and <b>always choose pesos</b>. The ones worth active care, because they can reach real money, are card skimming and the friendly-stranger swindle, so guard your card details and be a little reserved in your first few days.",
+            "Handled calmly, none of this should shape your trip, and the Philippines rewards openness more than most places. For getting and spending money well while you are there, see the <a href=\"/philippines/cash-or-card\">Philippines cash and cards guide</a> and the <a href=\"/philippines\">Philippines cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is the Philippines safe for tourists?", a: "For the great majority of visitors, yes, and most trips are trouble free. What tourists actually meet are money traps rather than anything dramatic: airport taxi flat rates, the friendly-stranger swindle, and card or ATM fraud. Using Grab, insisting on the meter, declining invitations from people you did not seek out, and using bank ATMs avoid nearly all of them." },
+        { q: "How do I avoid taxi scams at Manila airport?", a: "Ignore anyone who approaches you inside the terminal, and either book Grab, where the fare is set in the app, or take a taxi from the marshalled rank outside. Confirm the meter will run before the doors close, and if the driver refuses, get out and take the next one. It also helps to note the plate number, or ask a hotel to call a taxi for you." },
+        { q: "What is budol-budol?", a: "The Filipino term for a swindle in which someone befriends or distracts a target and talks them into handing over cash or valuables, often with a second person joining the conversation. The US State Department advises being wary of strangers who befriend you soon after arrival and declining food, drinks and rides in private vehicles, since travelers have been drugged and robbed after accepting invitations." },
+        { q: "Is the tanim-bala bullet scam at Manila airport still happening?", a: "It was a real documented episode. Philippine police recorded around 30 cases in 2015 and criminal charges were filed against airport staff. In 2016 the rules changed so that passengers found with ammunition are profiled and cleared rather than arrested, which removed the leverage. Occasional incidents have since caused concern, so know about it rather than expect it. Bag wrapping at the airport costs around 160 pesos." },
+        { q: "Should I pay in pesos or dollars in the Philippines?", a: "Pesos, always. Accepting a card machine's offer to charge you in US dollars uses a poor built-in rate that costs you a few percent every time, and it is entirely legal, so no one will warn you. Choosing pesos lets your own bank set the rate. The same applies at ATMs, so decline any convert-to-dollars prompt." },
+        { q: "How do I avoid ATM card skimming in the Philippines?", a: "Use ATMs inside bank branches rather than free-standing machines in stores or malls, cover the keypad while entering your PIN, and check the card slot for anything loose or bulky, since the State Department describes devices fitted to card readers that record card details and PINs. Keep your card in sight when paying, and turn on transaction alerts before you travel." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Philippines country information, crime and safety guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Philippines.html", type: "gov" },
+          { label: "Rappler: a look back at the 2015 tanim-bala bullet-planting episode at Manila airport, with the police case figures", url: "https://www.rappler.com/newsbreak/iq/look-back-tanim-bala-bullet-planting-issue-naia-2015/", type: "media" }
+        ],
+        judgment: "The friendly-stranger, taxi and ATM skimming points come from current US State Department country information for the Philippines. The tanim-bala case counts are the Philippine National Police Aviation Security Group figures as reported by Rappler, and we describe the 2016 policy change alongside them rather than presenting a decade-old wave as current practice. The 10,000 peso airport fare is one widely reported extreme incident, flagged as such, not a typical fare, and we have deliberately not quoted zone-by-zone airport taxi tariffs because those move. Peso conversions use roughly 60 to the dollar. Checked August 2026."
+      }
     }
   ]
 };

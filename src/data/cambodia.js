@@ -333,6 +333,87 @@ export default {
         ],
         judgment: "Which app has the most cars, and what a fair tuk-tuk fare looks like, both move around, so we have avoided quoting prices and stuck to the habits that hold: use an app, or agree the fare before you get in. Checked July 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Most cost", v: "A few dollars at a time" },
+        { k: "Your change", v: "Check the dollar bills" },
+        { k: "Angkor tickets", v: "One official seller only" },
+        { k: "Visas", v: "Know the fee before you go" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Cambodia, and what they cost",
+      description: "Fake dollar bills in your change, Angkor ticket resale, inflated visa fees at land borders and commission-driven tuk-tuk routing. What each costs, and how to sidestep it.",
+      h1: "Common money scams in Cambodia, and what they cost you",
+      lede: "Cambodia is safe for the great majority of visitors and almost none of this is dramatic. Because the country runs on US dollars, its money traps are unusually simple: a fake note in your change, a fee somebody padded, a ticket sold by the wrong person. They cost a few dollars at a time, and a handful of habits defuse nearly all of them. Here is each one, what it costs, and how to sidestep it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "Cambodia's money traps follow from its dollarized cash: <b>fake dollar bills handed back as change</b>, and short-changing in <b>riel</b>. Add three more: <b>Angkor passes</b> bought from anyone other than the official seller, <b>inflated visa fees</b> at land borders, and <b>commission-driven tuk-tuk routing</b>, where a helpful driver steers you to shops and guesthouses that pay him. One avoidable mistake sits under several of them: <b>handing over your passport as a rental deposit</b>. The golden rules that beat most of it: <b>check every note you are handed</b>, <b>buy Angkor passes only from Angkor Enterprise</b>, <b>know the official visa fee before you travel</b>, <b>use an app or agree the fare first</b>, and <b>never leave your passport as security</b>.",
+      sections: [
+        {
+          h: "Your change, and the fake dollar bill",
+          icon: "usd",
+          key: { fig: "$1-20", tag: "Check every note", text: "The UK FCDO reports travelers being given fake dollar bills as change in shops and clubs. The loss is the face value of the note, so usually a few dollars, occasionally twenty.", tone: "teal" },
+          p: [
+            "Cambodia prices in <b>US dollars</b> and gives <b>riel</b> as change under a dollar, which makes it one of the easiest countries anywhere for an American to handle, and also creates its most common trap. The UK FCDO records travelers being handed <b>fake dollar bills as change</b> in shops and clubs. The cost is simply the face value of whatever note you were given, so usually a dollar or five, sometimes a twenty, and the annoyance is that you will not discover it until the next place refuses it. Check that notes you receive are genuine, and also that they are not torn or heavily worn, because Cambodia rejects damaged dollars and a battered note in your pocket is money you cannot spend.",
+            "The riel side is quieter. Change under a dollar comes back at a steady <b>4,000 riel to the dollar</b>, so 2,000 riel is 50 cents. Know that one number and short-changing has nowhere to hide. Carrying <b>clean, newer small bills</b> is the single best preparation for the whole country, and the mechanics are in the <a href=\"/cambodia/cash-or-card\">Cambodia cash and cards guide</a>."
+          ]
+        },
+        {
+          h: "Angkor tickets: one official seller",
+          icon: "ticket",
+          key: { fig: "$37/$62/$72", tag: "Official seller only", text: "Angkor passes cost 37 dollars for one day, 62 for three and 72 for seven, and Angkor Enterprise is the only official seller. A discount pass from a driver is a markup or a dud.", tone: "amber" },
+          p: [
+            "The Angkor pass has one price and one seller. In 2026 it is <b>37 dollars for one day, 62 for three days and 72 for seven</b>, sold only by <b>Angkor Enterprise</b>, either online at its official government site or at the ticket centre on Road 60 and its self-service kiosks. The price is identical wherever you buy it, so there is no such thing as a discount pass. Anything offered by a driver or a shop is therefore either a markup on the same ticket or a counterfeit that will not scan at the gate, which means paying twice. Children under 12 enter free with a passport as proof. A licensed tour that includes the pass in its price is fine; a stranger selling you the pass itself is not.",
+            "Two smaller Angkor costs are worth planning for. Several nearby sites are <b>not covered</b> by the Angkor pass and need separate tickets, so check before you set off rather than at the gate. And the Cambodian authorities enforce a <b>dress code</b> at Angkor Wat and other religious sites: you can be refused entry in shorts or skirts above the knee, or with bare shoulders. Being turned away on a ticket you have already paid for is a real and entirely avoidable cost."
+          ]
+        },
+        {
+          h: "Visas, land borders and padded fees",
+          icon: "passport",
+          key: { fig: "$30-36", tag: "Know the fee", text: "The official e-visa is about 36 dollars all in and the visa on arrival about 30. The FCDO warns that officials and tour operators at land borders can add unofficial fees or inflate the price.", tone: "teal" },
+          p: [
+            "The Cambodian tourist visa has a published price, and knowing it is the whole defense. The official <b>e-visa</b> costs about <b>36 dollars</b> all in, a 30 dollar visa plus a 6 dollar processing fee, applied for on the government portal. A <b>visa on arrival</b> at the airport is about <b>30 dollars</b> in clean US cash with a passport photo. Every air arrival also files a separate <b>e-Arrival Card</b>, which is free. Third-party visa sites charge well above the official fee for the same document, so use the government site, and see the <a href=\"/cambodia\">Cambodia cost guide</a> for the current entry requirements.",
+            "The FCDO is specific about where this goes wrong: at land crossings, <b>local officials and tour operators can ask for unofficial fees or inflate visa prices</b>, and it advises knowing the correct requirements and fees before you travel. Note that the land borders with Thailand, including the Poipet crossing, remain suspended, so most visitors now fly in and this applies mainly to the Vietnam and Laos crossings. If you are quoted more than the published fee at a border, the published fee is the answer."
+          ]
+        },
+        {
+          h: "Tuk-tuks, commissions and your passport",
+          icon: "taxi",
+          key: { tag: "Agree it first", text: "Travelers consistently report drivers steering them to guesthouses and shops that pay a commission. The service is real, the advice is not neutral. Use an app, or agree the fare and the stops first.", tone: "teal" },
+          p: [
+            "Cambodia's tuk-tuks are genuinely useful and most drivers are exactly what they appear to be. The pattern travelers report consistently, though it is not something government advisories track, is <b>commission routing</b>: a driver who befriends you at the airport or bus station, then mentions your guesthouse has closed or moved, or knows a better shop, a better tailor, a better tour. The ride is real; the recommendation is paid for. It rarely costs much directly, but it costs you the afternoon and it inflates whatever you buy at the other end. Verify a closure yourself with a phone call, and <b>agree the fare and the stops before you set off</b>, or use <b>PassApp or Grab</b>, where the price is fixed in advance. The <a href=\"/cambodia/taxis-and-ride-hailing\">Cambodia taxis and ride-hailing guide</a> covers how each option works.",
+            "One rule from the FCDO is worth pulling out because it turns a small dispute into a large one: <b>do not hand over your passport as a guarantee for returning a motorcycle or scooter</b>. Offer a cash deposit instead. The same advisory notes that police can issue on-the-spot fines for riding without a helmet, and that riding without one may also void your insurance, so a cheap helmet is the cheapest thing you will buy in Cambodia."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { fig: "Habits", tag: "How to avoid it", text: "Check every note, buy Angkor passes from the official seller, know the visa fee, agree fares and stops first, and never leave your passport as security. That is most of it.", tone: "teal" },
+          p: [
+            "Almost everything here costs a few dollars at a time and is avoided by the same short list: <b>check every note you are handed</b>, <b>buy the Angkor pass from Angkor Enterprise</b>, <b>know the official visa fee</b>, <b>agree the fare and the stops before you set off</b>, and <b>never leave your passport as security</b>. The ones worth active care, because they can reach real money, are the passport deposit and buying an Angkor pass from anyone other than the official seller.",
+            "Handled calmly, none of this should shape your trip, and Cambodia's dollarized cash means there is barely anything to convert in the first place. For getting and spending money well while you are there, see the <a href=\"/cambodia/cash-or-card\">Cambodia cash and cards guide</a> and the <a href=\"/cambodia\">Cambodia cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Cambodia safe for tourists?", a: "For the great majority of visitors, yes, and most trips are trouble free. The issues tourists actually meet are money ones rather than anything dramatic: fake dollar bills in change, padded fees at land borders, and commission-driven recommendations from drivers. Checking your notes, knowing the official prices and agreeing fares in advance avoid nearly all of them." },
+        { q: "Are there fake US dollars in Cambodia?", a: "Yes, and the UK FCDO records travelers being given fake dollar bills as change in shops and clubs. Check that notes handed to you are genuine, and check they are not torn or heavily worn either, since Cambodia refuses damaged dollars. The cost is the face value of the note, so usually a few dollars, and the problem only surfaces when the next place declines it." },
+        { q: "How much is an Angkor Wat ticket in 2026, and where do I buy it?", a: "Thirty seven dollars for one day, 62 for three days and 72 for seven, and the only official seller is Angkor Enterprise, either on its government website or at the ticket centre on Road 60 and its kiosks in Siem Reap. The price is the same everywhere, so a discounted pass offered by a driver is either a markup or a counterfeit that will not scan. Under 12s enter free with a passport." },
+        { q: "How much is a Cambodian visa, and can I be overcharged?", a: "The official e-visa is about 36 dollars all in, a 30 dollar visa plus a 6 dollar processing fee, on the government portal. A visa on arrival at the airport is about 30 dollars in clean US cash. The FCDO warns that at land borders, officials and tour operators can ask for unofficial fees or inflate the price, so know the published fee before you travel. The e-Arrival Card is separate and free." },
+        { q: "Should I leave my passport as a deposit for a scooter in Cambodia?", a: "No. The UK FCDO says plainly not to hand over your passport as a guarantee for returning a motorcycle or scooter. A shop holding your passport controls whatever repair or late figure it decides to name, and replacing the document abroad is slow. Offer a cash deposit instead, and wear a helmet, since police issue on-the-spot fines and riding without one can void your insurance." },
+        { q: "Do tuk-tuk drivers in Cambodia take you to shops for commission?", a: "It is a pattern travelers report consistently, though government advisories do not track it. A driver may say your guesthouse has closed or moved, or steer you toward a particular shop, tailor or tour that pays him. The ride itself is real. Verify any closure yourself, agree the fare and the stops before you set off, or use PassApp or Grab so the price is fixed in advance." }
+      ],
+      sources: {
+        links: [
+          { label: "UK FCDO: Cambodia travel advice, safety and security, including scams, land borders and vehicle hire", url: "https://www.gov.uk/foreign-travel-advice/cambodia/safety-and-security", type: "gov" },
+          { label: "Angkor Enterprise: the official government ticketing site for the Angkor Archaeological Park", url: "https://www.angkorenterprise.gov.kh/", type: "gov" },
+          { label: "Cambodia e-Visa: official government portal for the tourist visa and its fee", url: "https://www.evisa.gov.kh", type: "gov" }
+        ],
+        judgment: "The fake dollar bills, the inflated visa prices at land borders, the passport deposit warning and the Angkor dress code all come from current UK FCDO advice for Cambodia. Angkor pass prices are the official Angkor Enterprise figures for 2026 and the visa fees are the official portal figures, both of which can change. The tuk-tuk commission pattern is not in any government advisory; it is a consistent traveler report and we have marked it as such rather than dressing it up as an official warning, and we have not attached a figure to it because there is no honest one. The riel converts at a steady 4,000 to the dollar. Checked August 2026."
+      }
     }
   ]
 };

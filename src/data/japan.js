@@ -672,6 +672,86 @@ export default {
         ],
         judgment: "The pass prices and the October 1, 2026 increase come from JR Group and its official site, so those are firm. The break-even framing is our own read: we deliberately lead on the arithmetic rather than a single verdict, because the answer genuinely depends on your route and any fixed verdict would be wrong for somebody. Our sense that most US first trips fall below the break-even is a judgment drawn from the itineraries these guides see most often, not a measured figure. The duration of the official-site pricing window was not published when we checked, so we describe it without an end date rather than guess one. Rail pricing moves, and this page sits in the quarterly review cycle. Checked Aug 2026."
       }
+    },
+    {
+      slug: "money-scams",
+      glance: [
+        { k: "Most cost", v: "Nothing, if you skip touts" },
+        { k: "At the ATM", v: "Choose yen, not dollars" },
+        { k: "Sitting down", v: "Ask about the seat charge" },
+        { k: "Nightlife", v: "Never follow a street tout" }
+      ],
+      live: true,
+      topic: "scams",
+      title: "Common money scams in Japan, and what they cost",
+      description: "Japan is one of the safest countries anywhere. What surprises Americans is the seat charge, the pay-in-dollars prompt, and rip-off bars in a few nightlife blocks.",
+      h1: "Common money scams in Japan, and what they cost you",
+      lede: "Japan is one of the safest countries in the world to visit, and on the great majority of trips none of this comes up at all. Most of what surprises Americans is not a con but a charge nobody explained: a seat fee at an izakaya, a service charge at a hotel restaurant, a card machine offering dollars. There is one genuine scam, it lives in a handful of nightlife blocks, and a single habit defuses it completely. Here is each one, what it costs, and how to sidestep it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "Most of what catches Americans out in Japan is not a scam at all: the <b>otoshi</b> seat charge at an izakaya, a flat <b>table charge</b> at a bar, a <b>service charge</b> at a hotel restaurant, and the <b>pay in dollars</b> prompt on card machines and ATMs, which uses a poor built-in rate. The one real con is the <b>rip-off bar</b> (in Japanese, <b>bottakuri</b>), where a street tout walks you into a bar in Kabukicho or Roppongi and the bill arrives inflated, sometimes alongside <b>drink spiking and card fraud</b>. The golden rules that beat all of it: <b>always choose yen</b>, <b>ask what the seat charge is before you sit down</b>, and <b>never follow a street tout into a bar</b>. That last habit costs you nothing and removes the only expensive scenario here.",
+      sections: [
+        {
+          h: "The charges that are not scams",
+          icon: "receipt",
+          key: { fig: "$2-6 a head", tag: "Ask before you sit", text: "The otoshi seat charge at an izakaya is a real Japanese custom, not a tourist markup: roughly 300 to 600 yen per person, charged to locals too. Ask what it is before you sit.", tone: "amber" },
+          p: [
+            "The single most common surprise on a Japanese bill is the <b>otoshi</b>, a small dish that arrives unordered at an izakaya and is charged per person. It is a seat fee in the shape of an appetizer, and it is a genuine custom rather than a tourist markup: the regular at the counter pays it too. Reckon on roughly <b>300 to 600 yen</b> a head, about <b>2 to 4 dollars</b>, occasionally up to 1,000 yen at a smarter place. A group of six can therefore see it six times, which is where the shock usually comes from.",
+            "The same idea turns up as a flat <b>table charge</b> at bars, often <b>500 to 1,000 yen</b> per person and more at hotel or Ginza bars, and as a <b>service charge</b> of 10 to 15 percent at hotel restaurants. None of these is a tip, and none of them is a con, but they are frequently not on the menu. Asking what the charge is before you sit down is completely normal and costs nothing. Japan does not tip at all, which is why these charges exist in the first place, and the full picture is in the <a href=\"/japan/tipping\">Japan tipping guide</a>."
+          ]
+        },
+        {
+          h: "At the ATM and the card machine",
+          icon: "atm",
+          key: { tag: "Choose yen", text: "When a machine asks whether to charge in US dollars or yen, always pick yen. Dollars triggers dynamic currency conversion, a poor built-in rate that costs you a few percent every time.", tone: "amber" },
+          p: [
+            "When a card terminal or ATM asks whether to charge you <b>in US dollars or yen</b>, always choose <b>yen</b>. Choosing dollars triggers dynamic currency conversion, a marked-up rate dressed up as a convenience, and it costs you a few percent on every transaction you accept it on. This is legal and it is everywhere, which is what makes it the most expensive habit on this page over a whole trip. The mechanics are in the <a href=\"/japan/cash-or-card\">Japan cash and cards guide</a>.",
+            "Japan is still a cash country in a lot of small restaurants, shrines and rural taxis, so you will use ATMs. Many Japanese bank machines reject foreign cards outright, so use <b>7-Eleven (Seven Bank) or Japan Post</b> ATMs, which do work. Skimming is rare in Japan compared with most of the world, but the FCDO does note card skimming and cloning when you pay for food or drink, so keep your card in sight and turn on transaction alerts before you fly."
+          ]
+        },
+        {
+          h: "The one real con: touts and rip-off bars",
+          icon: "cocktail",
+          key: { fig: "Walk past", tag: "Never follow a tout", text: "A street tout leads you to a bar and the bill arrives inflated. Padded bills typically add tens of dollars, full rip-off bar bills run into the hundreds, and reported cases go far higher.", tone: "teal" },
+          p: [
+            "In a handful of Tokyo nightlife blocks, a friendly, fluent English-speaking promoter (a <b>kyakuhiki</b>, or customer puller) offers a cheap all-you-can-drink deal at a bar just around the corner. Inside, charges you were not told about accumulate: table fees, weekend fees, drinks ordered by staff on your tab. In the mild version, a promised 3,500 yen night lands at 15,000, so the padding is typically <b>tens of dollars, roughly 40 to 100</b>. In the full <b>bottakuri</b> version the bill runs into the <b>hundreds of dollars</b>, and reported police cases have been far higher than that. Treat the high numbers as what can happen, not as the going rate.",
+            "Japanese police name the same four Tokyo districts every time: <b>Kabukicho, Roppongi, Shibuya and Ikebukuro</b>. The UK FCDO advice is a single sentence and it is the whole defense: do not follow street touts into bars. Street soliciting is itself illegal under local ordinance, with fines up to 500,000 yen, so a venue that recruits on the pavement is already breaking the law before you walk in. Choose the bar yourself, and if a bill still looks wrong, ask for it itemized, say clearly that you will call the police, and dial <b>110</b>. That threat works in your favor, not theirs."
+          ]
+        },
+        {
+          h: "Drink spiking and card fraud",
+          icon: "card",
+          key: { tag: "Card in sight", text: "Reported losses from spiking plus card fraud in nightlife districts range from hundreds to many thousands of dollars. Do not accept drinks from strangers, and set up transaction alerts.", tone: "teal" },
+          p: [
+            "The version worth real care, because it is the one that can cost serious money, is <b>drink spiking followed by card fraud</b>. The FCDO describes victims waking with no memory of the night and finding large amounts billed to their cards, with losses reported from the hundreds into the thousands. The US State Department's own country reporting notes cases of Americans being taken to ATMs and made to withdraw cash after being unable to pay an inflated tab. This is concentrated in the same few nightlife blocks and almost never touches anyone who did not follow a stranger into a venue.",
+            "The habits are ordinary ones: do not accept drinks from strangers, do not leave a drink unattended, keep your card in sight when you pay, and turn on <b>push alerts for card transactions</b> so a bad charge wakes your phone rather than surfacing weeks later. Carrying a little cash for an unfamiliar bar and leaving the card in the hotel safe also caps the downside neatly."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "yen",
+          key: { fig: "Habits", tag: "How to avoid it", text: "Choose yen, ask about the seat charge, pick your own bar, and keep your card in sight. Taxis, trains and shops in Japan are honest and metered, so the rest of the trip takes care of itself.", tone: "teal" },
+          p: [
+            "Almost everything on this page costs you a few dollars and is not a scam at all, and the one expensive scenario is avoided by a decision you make on the pavement. The habits: <b>choose yen</b>, <b>ask about the seat charge</b>, <b>pick your own bar rather than a tout's</b>, and <b>keep your card in sight</b>. Everyday Japan does not need defending: taxis are tightly regulated and metered, trains are fixed-price, shop prices are the shop prices, and short-changing is close to unheard of. See the <a href=\"/japan/taxis-and-apps\">Japan taxis and apps guide</a> for how transport actually prices.",
+            "Handled calmly, none of this should shape your trip, and for most visitors none of it will come up. For getting and spending money well while you are there, see the <a href=\"/japan/cash-or-card\">Japan cash and cards guide</a> and the <a href=\"/japan\">Japan cost guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Japan safe for tourists?", a: "Yes, and it is one of the safest countries in the world for a visitor. Violent crime against tourists is rare and everyday transactions are honest. The issues travelers actually meet are money ones: an unexplained seat charge, the pay-in-dollars prompt on a card machine, and rip-off bars in a few Tokyo nightlife blocks. A handful of habits avoid all of them." },
+        { q: "What is the otoshi charge on my Japanese restaurant bill?", a: "It is a seat charge served as a small unordered appetizer at izakaya, typically 300 to 600 yen per person and occasionally up to 1,000 at smarter places. It is a genuine Japanese custom, charged to locals as well, and it stands in for tipping, which Japan does not do. It is charged per person, so a group sees it once each. Ask what it is before you sit down." },
+        { q: "What is a bottakuri bar in Tokyo?", a: "A rip-off bar. A street tout offers a cheap deal, then charges you far more than agreed once you are inside, often through table fees and drinks ordered by staff on your tab. Mild cases add tens of dollars; full cases run into the hundreds, and reported police cases have gone much higher. The defense is total: never follow a street tout into a bar." },
+        { q: "Which parts of Tokyo should I be careful in at night?", a: "Japanese police repeatedly name four Tokyo districts as higher risk for tout-led bar scams and drink spiking: Kabukicho, Roppongi, Shibuya and Ikebukuro. They are all perfectly fine to visit and eat in. The risk is specific to accepting an invitation from someone who approached you on the street, so choose your own venue and the risk goes away." },
+        { q: "Should I pay in yen or dollars in Japan?", a: "Yen, always. Accepting a card machine's offer to charge you in US dollars triggers dynamic currency conversion, which uses a marked-up rate and costs you a few percent every time. Choosing yen lets your own bank set the rate. The same applies at ATMs, so decline any convert-to-dollars prompt. See the Japan cash and cards guide." },
+        { q: "What do I do if a bar in Japan hands me an inflated bill?", a: "Stay calm, ask for the bill itemized, and refuse charges you did not agree to. Say plainly that you will call the police, and then call 110. Street soliciting is illegal under local ordinance in Tokyo's entertainment districts, so police involvement works against the venue, not you. If you feel physically unsafe, pay and report it afterwards, keeping the receipt." }
+      ],
+      sources: {
+        links: [
+          { label: "UK FCDO: Japan travel advice, safety and security, including drink spiking and credit card fraud", url: "https://www.gov.uk/foreign-travel-advice/japan/safety-and-security", type: "gov" },
+          { label: "US State Department: Japan country information and safety guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Japan.html", type: "gov" }
+        ],
+        judgment: "The seat and table charge ranges are typical 2026 figures from Japanese restaurant reporting, not a fixed price list, and every venue sets its own. The rip-off bar figures are deliberately given as a typical range plus a note that reported cases run much higher, because the headline police cases are extreme single incidents rather than what a visitor should expect. The four named Tokyo districts come from Japanese police, relayed in UK and US government advice. The vast majority of visits to Japan see none of this. Checked August 2026."
+      }
     }
   ]
 };
