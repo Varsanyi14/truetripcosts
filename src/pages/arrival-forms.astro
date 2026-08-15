@@ -176,6 +176,17 @@ const gov = { target: '_blank', rel: 'noopener' };
       <a class="btn" href="#" data-open-signup>Keep me posted</a>
     </section>
 
+    {/* The desk's why, and the last thing on the page. Deliberately not a component, not a
+        card and not a heading: one paragraph in the secondary body voice, with room above
+        it and nothing after it. A box, an accent background or an "Our Mission" label
+        would turn a conviction into a marketing block, which on this page of all pages
+        would cost us the credibility everything above it is built on.
+
+        It sits BELOW the signup prompt on purpose. Read in that order, the closing clause
+        answers the button rather than being contradicted by it: yes we ask for an email,
+        and no, nothing here is for sale. */}
+    <p class="af-why">We think no American should lose money abroad just because nobody told them the truth about it. So we quantify what a trip really costs, show you what you can avoid, and never sell you anything to do it.</p>
+
   </main>
   <Footer />
 </Base>
@@ -230,8 +241,15 @@ const gov = { target: '_blank', rel: 'noopener' };
   .af-pend-n{color:var(--muted)}
   .af-pending a{font-size:13.5px}
 
+  /* No rule, no background, no label. Space is the only thing setting it apart, so the
+     space has to be generous: any tighter and it reads as a caption belonging to the
+     signup box above it. Everything else is inherited page body styling, one step quieter,
+     which is what keeps it looking found rather than announced. */
+  .af-why{max-width:60ch;margin:38px 0 4px;font-size:15.5px;line-height:1.68;color:var(--muted)}
+
   @media (max-width:560px){
     .af-lede{font-size:15.5px}
+    .af-why{margin-top:30px;font-size:15px}
     .af-row{padding:14px;gap:11px}
     .af-cty{font-size:17px}
     .af-official{font-size:11.5px}
