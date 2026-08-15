@@ -43,6 +43,14 @@
 //   3. A fact with an expiry or a freshness risk carries a `flag`. The flag is not
 //      decoration: check-fact-staleness reads them, and a flagged fact is a re-verify
 //      task, not a finished one.
+//      FLAG KINDS. `volatile`, `seasonal` and `freshness` are shown to the READER by
+//      GutPunch, because they change what the traveler should do with the fact. Every
+//      other kind is a desk note and stays off the page: `date-conflict`, `novelty`,
+//      `watch`, and two added in the August 2026 fill, `sourcing` (the claim is dated and
+//      checked but has no primary source attached) and `verify` (the whole fact rests on
+//      one detail that has moved before and needs a confirmation pass). Adding a kind is
+//      safe by construction: GutPunch reads an allowlist, so an unknown kind is silently
+//      a desk note rather than something new appearing on the page.
 //   4. Never add a figure that is not already published and dated elsewhere on the site.
 
 // The four shapes a fact can take. `null` (or a shape with no accent data) renders the
@@ -352,6 +360,399 @@ export const heroFacts = {
     setup: 'You assume the Swiss Travel Pass is the obvious buy.',
     fact: 'The decision is the Half Fare Card against the pass. At about CHF 150 for a month the Half Fare Card takes 50 percent off nearly everything, and the pass only wins if you are moving most days.',
     escape: 'Count your travel days first. One base with a couple of big day trips favours the Half Fare Card.',
+    accent: null,
+    doorPool: false,
+  },
+
+  // ---------------------------------------------------------------------------
+  // PASS 3. The fill, from the desk's FINDINGS document of 14 August 2026.
+  //
+  // Every entry below takes its fact from that document's row for that country, and
+  // nothing here was sourced independently. Where the document flagged a caution, the
+  // caution won: a desk-estimate percentage is reworded to the behavior behind it, a
+  // superlative is softened to what the sourcing carries, and a fact resting on an
+  // unconfirmed detail ships with a flag rather than a confident face.
+  //
+  // NO NEW DOOR FACTS. Every entry here is doorPool: false. A door fact is the most
+  // public claim the site makes and the pool stays at the eight the desk signed off by
+  // name. Promoting one of these is an editorial decision for MAIN, not a side effect of
+  // a data fill.
+  //
+  // SHAPES ARE ASSIGNED SPARINGLY, which is why most of these are null. A shape is a
+  // claim about the fact's form, and the accent only renders when the shape has a visual
+  // one AND the data supports both halves of it. Several facts below are labelled with a
+  // shape and carry no accent, which is the Netherlands pattern: honest about the form,
+  // unwilling to invent the second half.
+  // ---------------------------------------------------------------------------
+
+  // ----- Western Europe -----
+
+  france: {
+    shape: 'counterintuition',
+    setup: 'You brace yourself to be quoted a price for the ride into Paris.',
+    fact: 'The fare from Charles de Gaulle into Paris is fixed by government decree, bags and tolls included, at any hour. There is nothing to negotiate, so anyone approaching you in the arrivals hall with a price is by definition not a licensed taxi.',
+    escape: 'Walk past everyone who offers you a ride and join the official rank outside. The number is set before you get in.',
+    accent: null,
+    doorPool: false,
+  },
+
+  ireland: {
+    shape: null,
+    setup: 'You assume a toll road has a booth, or at least a moment where somebody asks you for money.',
+    fact: "Dublin's M50 has neither. A camera reads your plate and you have until 8pm the next day to pay it yourself online. Miss that and eFlow adds a late fee of about 4 euros per trip, which the rental company passes to you later.",
+    escape: 'Pay on the eFlow site the same evening you drive it, rather than assuming the rental desk handles it.',
+    accent: null,
+    doorPool: false,
+  },
+
+  germany: {
+    shape: 'counterintuition',
+    // THE PERCENTAGE IS DELIBERATELY GONE. The FINDINGS row carries a 30 to 40% figure
+    // that sits in our own verdict prose rather than in a sourced field, and the document
+    // says so and offers the alternative: word the behavior without the number. It costs
+    // this line almost nothing and it keeps an unsourced statistic off the page.
+    setup: "You expect Europe's efficiency capital to be the easiest place in the region to tap a card.",
+    fact: 'Germany is one of its most cash-loving countries instead. Bakeries, market stalls, small restaurants and traditional shops often prefer cash or take nothing else, and a counter with a card reader on it can still be cash-only under 20 or 30 euros.',
+    escape: 'Carry 50 to 100 euros, ask before you order, and pull it from a Sparkasse or Cash Group machine rather than a standalone one.',
+    accent: null,
+    doorPool: false,
+  },
+
+  iceland: {
+    shape: null,
+    // FIGURES LEFT OFF ON PURPOSE. The FINDINGS row carries a per-km rate and a Ring Road
+    // total that the document marks as ours and asks to be confirmed before this fronts
+    // anything. They are also in kronur, which a US reader cannot price anyway, so the
+    // mechanism carries the whole surprise and the numbers would add risk without adding
+    // meaning. The superlative is softened for the same reason: Sweden's guide makes a
+    // near-identical claim, so neither can own it.
+    setup: 'You price the rental car, the fuel and the room, and assume the road itself is free.',
+    fact: 'Iceland is among the most cashless countries anywhere, and since 1 January 2026 it charges a road tax by the kilometre on every vehicle. Rental firms bill it on with their own margin on top, so a Ring Road loop adds a charge that appeared in no quote you were shown.',
+    escape: 'Ask the rental company how it bills the road tax and what its own per-kilometre margin is, before you sign.',
+    accent: null,
+    flag: { kind: 'novelty', note: 'Newest fact in the set, effective 1 Jan 2026. The per-km rate and the Ring Road total are held back deliberately until confirmed against the guide sources. Add them here once they are.' },
+    doorPool: false,
+  },
+
+  poland: {
+    shape: 'counterintuition',
+    // "COMMONLY READ AS" IS LOAD-BEARING. This is a behavioral norm, not a rule, and the
+    // guide already words it that way. Stated as a certainty it would be wrong often
+    // enough to matter.
+    setup: 'You say thank you as you hand over the money, because that is what you do at home.',
+    fact: 'In Poland that is commonly read as "keep the change". The politeness reflex is the tip, and it lands before you have decided to leave one.',
+    escape: 'Say the total you want to pay instead, and save the thank-you until after your change is back in your hand.',
+    accent: null,
+    doorPool: false,
+  },
+
+  croatia: {
+    // Labelled for the record, no accent: the fact is that the menu number is a rate
+    // rather than a price, and there is no second figure to put beside it.
+    shape: 'price-isnt-price',
+    setup: 'You read the price beside the fish and take it for the price of the dish.',
+    fact: 'Fish and shellfish on the Croatian coast are priced by the kilogram, not by the plate, so the number on the menu is a rate rather than a total, and what arrives decides what you pay.',
+    escape: 'Ask for the weight and the total before you order it, not after it reaches the table.',
+    accent: null,
+    doorPool: false,
+  },
+
+  // ----- The Gulf -----
+
+  uae: {
+    shape: 'counterintuition',
+    setup: 'You do the prepared thing and buy some dirhams before you fly.',
+    fact: 'That is the expensive move. The dirham is thinly traded outside the UAE, so US rates run roughly 4 to 8% worse, and the exchange desks at the airport and in hotels are 4 to 6% worse than the ones in the malls. The dirham has been fixed to the dollar since 1997, so there is nothing to time.',
+    escape: 'Bring dollars or just your card, and if you want cash use an ATM or an in-mall exchange house.',
+    accent: null,
+    doorPool: false,
+  },
+
+  qatar: {
+    shape: null,
+    setup: 'You assume a Gulf state means a tax you have not budgeted for, the way Saudi Arabia does at 15%.',
+    fact: 'Qatar has no VAT, no sales tax and no tourist or hotel tax at all, so the price on the tag is the price you pay. The metro across Doha is about QR 2, roughly 55 cents.',
+    escape: 'Nothing to avoid here. This is the rare country where the arithmetic is just the shelf price.',
+    accent: null,
+    doorPool: false,
+  },
+
+  'saudi-arabia': {
+    shape: 'money-you-shouldnt-pay',
+    setup: 'You expect to sort out a tax refund at the airport on your way home, as you would in Europe.',
+    fact: 'Saudi Arabia charges 15% VAT, three times the UAE and Oman, and it is one of only two Gulf states where a visitor can claim it back. The claim starts at the till, not at departures, so leaving it until the airport means losing it.',
+    escape: 'Ask the retailer for the refund form with your passport at the moment you buy. No form, no refund, however large the receipt.',
+    accent: { figure: '15%', label: 'VAT on what you buy', note: 'reclaimable, but only if you ask for the form at the till rather than at the airport' },
+    doorPool: false,
+  },
+
+  oman: {
+    shape: null,
+    setup: 'You read that Oman is visa-free for Americans and stop reading there.',
+    fact: 'The 14-day exemption is conditional in a way almost nobody checks: you need a confirmed hotel booking, health insurance and a return ticket, and those 14 days cannot be extended or turned into anything else.',
+    escape: 'Carry the booking, the policy and the onward ticket. For anything longer, apply for the eVisa on the ROP portal before you fly.',
+    caveat: 'Fourteen days or fewer. A longer stay is a different application.',
+    accent: null,
+    doorPool: false,
+  },
+
+  bahrain: {
+    shape: 'price-isnt-price',
+    setup: 'You book the room at the rate you were quoted.',
+    fact: 'Bahrain adds more to a hotel bill than any Gulf state except Saudi Arabia, and it arrives in four separate parts: 10% VAT, a 5% government levy, a 10% property service charge and a flat BD 3 per room per night. Expect roughly a quarter on top of the rate.',
+    escape: 'Ask whether the rate is all-in when you book, because it frequently is not.',
+    accent: {
+      from: 'the quoted rate', fromNote: 'what the booking page showed you',
+      to: 'about 25% more', toNote: 'VAT, government levy, service charge and BD 3 a night, added at the desk',
+    },
+    doorPool: false,
+  },
+
+  kuwait: {
+    shape: 'counterintuition',
+    // SUPERLATIVE SOFTENED. The FINDINGS document flags "the highest-valued currency unit
+    // in the world" as our own assertion. "One of the highest-valued" is what the sourcing
+    // carries and the line loses nothing.
+    setup: 'You carry over the exchange rate that served you fine in Dubai or Doha.',
+    fact: 'Every one of Kuwait\'s neighbours fixes its currency to the US dollar. Kuwait pegs the dinar to an undisclosed basket instead, so this is the one Gulf trip where the rate genuinely moves. It is also one of the highest-valued currency units anywhere, and it splits into 1,000 fils, so a price written 2.750 is about nine dollars.',
+    escape: 'Check the rate before you go rather than reusing a number from another Gulf state, and read the three decimals carefully.',
+    accent: null,
+    doorPool: false,
+  },
+
+  // ----- Asia -----
+
+  'south-korea': {
+    shape: null,
+    setup: 'Your card works everywhere, so you assume the ATM is a formality.',
+    fact: 'Korean ATMs take four-digit PINs only. A five or six digit PIN fails every time, and a few failed attempts across different machines can trip your own bank\'s fraud lock while you are standing there.',
+    escape: 'Set a four-digit PIN before you fly, and use a machine marked Global ATM or Global Service rather than a plain domestic one.',
+    accent: null,
+    doorPool: false,
+  },
+
+  china: {
+    shape: 'dead-advice',
+    setup: 'Everything you have read says mobile payments in China are closed to foreigners without a Chinese bank account.',
+    fact: 'That wall came down. Alipay and WeChat Pay now let you link a foreign Visa or Mastercard with a passport and a face scan, no Chinese bank account, which is the change that makes an independent trip workable.',
+    escape: 'Set up both apps before you fly. Verification takes time, and one can work where the other fails.',
+    accent: {
+      old: 'You need a Chinese bank account, so bring cash and expect to struggle',
+      now: 'a foreign Visa or Mastercard links with a passport and a face scan',
+    },
+    doorPool: false,
+  },
+
+  'hong-kong': {
+    shape: null,
+    setup: 'You plan to claim the tax back on your shopping at the airport.',
+    fact: 'There is nothing to claim. Hong Kong is a free port with no sales tax or VAT at all, so the price on the tag is the price. The one lodging cost is a 3% Hotel Accommodation Tax, reinstated on 1 January 2025, which some hotels collect separately at check-in.',
+    escape: 'Read the folio at check-in for the 3%, and do not go looking for a refund desk that does not exist.',
+    accent: null,
+    doorPool: false,
+  },
+
+  singapore: {
+    shape: 'price-isnt-price',
+    setup: 'You read a Singapore menu price and add up what dinner will cost.',
+    fact: 'Two plus signs after a price mean 19% is still coming: 9% GST and a 10% service charge, added at the end. S$10++ is about S$12. A price marked "nett" already includes everything.',
+    escape: 'Learn the two symbols before you order. Nett is the real price, ++ is not.',
+    accent: {
+      from: 'S$10++', fromNote: 'the number printed on the menu',
+      to: 'about S$12', toNote: 'after 9% GST and a 10% service charge',
+    },
+    doorPool: false,
+  },
+
+  thailand: {
+    shape: null,
+    setup: 'You plan to pull cash as you go, a bit at a time, the way you would at home.',
+    fact: 'Thai ATMs charge a flat fee of about 220 baht per foreign-card withdrawal regardless of the amount, so four small withdrawals cost four times what one large one does. AEON machines are the cheapest at about 150.',
+    escape: 'Take out a large sum at once from a bank ATM, and take your card back straight away, because Thai machines dispense the cash first and return the card second.',
+    accent: null,
+    doorPool: false,
+  },
+
+  indonesia: {
+    shape: 'price-isnt-price',
+    setup: "You search for Bali's tourist levy and pay on the site at the top of the results.",
+    fact: 'The levy is IDR 150,000 on the official site, and the lookalike sites charge two to three times that for the same thing, existing mainly to harvest card details. The only official domain ends in .go.id.',
+    escape: 'Pay on the .go.id site or at the counter on arrival, and ignore everything else that ranks above it.',
+    accent: {
+      from: 'IDR 150,000', fromNote: 'the official levy, on the .go.id site',
+      to: 'two to three times that', toNote: 'what the lookalike sites charge for the identical filing',
+    },
+    flag: { kind: 'sourcing', note: 'The guide states this levy twice, as IDR 150,000 in traps and as about 10 dollars in the visa spoke. They agree at current rates, but the guide should state one and derive the other. Reconcile there, then re-check this line.' },
+    doorPool: false,
+  },
+
+  india: {
+    shape: 'dead-advice',
+    // THE WEAKEST ROW IN THIS PASS, and shipped flagged rather than confidently. The
+    // FINDINGS document rates it True md and asks for a confirmation pass, because the
+    // tourist UPI route has opened and closed before and the whole hook rests on it being
+    // available right now. It is in the same bucket as Czechia, Colombia and Turkey, which
+    // the desk shipped on the same terms.
+    setup: 'Everything you have read says UPI, the QR system the whole country runs on, is closed to foreign visitors.',
+    fact: 'A visitor can now tap into it through a prepaid tourist UPI wallet loaded with an international card, so you no longer have to sit outside the system that most of India actually pays with.',
+    escape: 'Set the wallet up before you fly, and still carry a card for hotels and cash for the street.',
+    accent: {
+      old: 'UPI is for residents, so plan on cash and a card and nothing else',
+      now: 'a prepaid tourist wallet takes an international card',
+    },
+    flag: { kind: 'verify', note: 'Confirm the tourist UPI route is currently open before this stays up. It has changed repeatedly and the whole fact rests on present availability. If it has closed, drop this entry rather than reword it.' },
+    doorPool: false,
+  },
+
+  'sri-lanka': {
+    shape: 'money-you-shouldnt-pay',
+    setup: 'You go to pay for the Sri Lankan ETA, because it has always cost money.',
+    fact: 'It became free for US citizens on 25 May 2026 and it is still mandatory. The fee died, the requirement did not, and the lookalike sites are still charging for it.',
+    escape: 'Apply on the official government portal before you fly, and confirm the fee shows as zero for your passport.',
+    accent: { figure: 'free', label: 'the tourist ETA, since 25 May 2026', note: 'still mandatory, and still being sold by sites that rank above the real one' },
+    doorPool: false,
+  },
+
+  // ----- Africa -----
+
+  morocco: {
+    shape: null,
+    setup: 'You order some local currency before you fly, the way you would for anywhere else.',
+    fact: 'You cannot. The dirham is a closed currency: it is not sold outside Morocco, and you cannot take more than 2,000 MAD out of the country, so the money only exists inside its own borders. Shops that quote you in euros instead are charging 5 to 15% for the privilege.',
+    escape: 'Withdraw dirham from a bank ATM on arrival, pay in dirham every time, keep the exchange receipts, and convert what is left before you fly home.',
+    accent: null,
+    flag: { kind: 'sourcing', note: 'Both Morocco keyFacts entries carry source: null. The claim is dated and checked but has no primary source attached. Close it with Office des Changes or the central bank before this fact is promoted anywhere more public than the country page.' },
+    doorPool: false,
+  },
+
+  egypt: {
+    shape: 'counterintuition',
+    // NO CASH PERCENTAGE. meter.cashPct 72 is a desk estimate and the guide's own
+    // judgment field says so, so the fact is worded as the behavior rather than as a
+    // statistic. The document is explicit about this one.
+    setup: 'You bring a card and assume cash is the backup, as it is nearly everywhere now.',
+    fact: 'Egypt inverts that. The constant cost is baksheesh, the small expected tips that run through the whole day, and no card can pay them. A pocket of 5, 10 and 20 pound notes is the single most useful thing you can carry.',
+    escape: 'Pull pounds from a bank ATM and break them into small notes immediately, and treat the card as the backup for hotels and the largest bills.',
+    accent: null,
+    doorPool: false,
+  },
+
+  'south-africa': {
+    shape: null,
+    setup: 'You know the tipping rules: restaurants, bars, maybe a porter.',
+    fact: 'South Africa tips people Americans have never tipped. The petrol attendant who fills your tank, checks your oil and cleans your windscreen expects R5 to R10, and the car guard who watched your parked car expects about R5. Fuel is full service and there is no self-serve option to opt into.',
+    escape: 'Keep a pocket of small rand specifically for this. It is a few dollars a day and it is not optional in practice.',
+    accent: null,
+    doorPool: false,
+  },
+
+  namibia: {
+    shape: 'dead-advice',
+    setup: 'You read that Namibia is visa-free for Americans, which it was for years.',
+    fact: 'It stopped on 1 April 2025. Entry now costs about N$1,600, roughly US$88 per person, and a great many guides and blog posts still say it is free.',
+    escape: 'Apply on the official e-visa portal before you fly, or pay on arrival at main airports and border posts, and bring a printed approval if you applied online.',
+    accent: {
+      old: 'Namibia is visa-free for US passports, just turn up',
+      now: 'about US$88 a person, required since 1 April 2025',
+    },
+    doorPool: false,
+  },
+
+  // ----- The Americas -----
+
+  canada: {
+    shape: 'price-isnt-price',
+    setup: 'You expect Canada to work like home, because on this it nearly does.',
+    fact: 'Nothing on a Canadian tag or menu is the real number. Sales tax of 5 to 15% depending on the province is added at the register, and a tip of 15 to 20% is expected on top, prompted at 18, 20 or 25% on the terminal. A listed 100 dollar dinner lands near 130.',
+    escape: 'Budget above the sticker on everything, and tip on the pre-tax amount, which is what the local norm actually is.',
+    accent: {
+      from: '$100', fromNote: 'the price printed on the menu',
+      to: 'near $130', toNote: 'after provincial sales tax at the register and a 15 to 20% tip',
+    },
+    doorPool: false,
+  },
+
+  brazil: {
+    shape: 'counterintuition',
+    setup: 'You picture Brazil as a cash-and-caution trip and plan the hard part for when you arrive.',
+    fact: 'Brazil is more cashless than most of Europe, and you can tap a card at a beach bar. The hard part happens before you leave home: a US visitor needs an e-visa at about 81 dollars, airlines are fined for boarding you without one, and it can take up to ten working days.',
+    escape: 'Sort the e-visa on the official VFS portal early, and bring one no-foreign-fee card for everything else. Pix runs the country but needs a Brazilian tax ID, so it is not for you.',
+    accent: null,
+    doorPool: false,
+  },
+
+  'costa-rica': {
+    shape: 'money-you-shouldnt-pay',
+    setup: 'The bill arrives with a blank tip line, so you fill it in.',
+    fact: 'A 10% service charge is already on that bill by law, and some tourist-area places hand you a US-style receipt with an empty tip line hoping you add 18 to 20% on top of it. Separately, paying in the currency the price was not quoted in lets the merchant set the rate, which costs about 5 to 10%.',
+    escape: 'You have already tipped. Pay colones for sodas, markets, taxis and buses, and dollars for hotels, tours and shuttles, matching whichever the price is quoted in.',
+    accent: { figure: '10%', label: 'service charge already on the bill', note: 'so the blank tip line underneath it is asking you for the same thing twice' },
+    doorPool: false,
+  },
+
+  'dominican-republic': {
+    shape: 'price-isnt-price',
+    setup: 'You read the menu, pick the RD$150 beer, and expect to pay RD$150.',
+    fact: 'Where a Dominican menu says "impuestos no incluidos", 18% ITBIS and a 10% service charge are added at the end, roughly 28% on top. That beer rings up closer to RD$190.',
+    escape: 'Look for that phrase on the menu and do the arithmetic before you order, and remember the service is already paid.',
+    accent: {
+      from: 'RD$150', fromNote: 'the price printed on the menu',
+      to: 'about RD$190', toNote: 'after 18% ITBIS and a 10% service charge',
+    },
+    doorPool: false,
+  },
+
+  jamaica: {
+    shape: null,
+    setup: 'US dollars are taken everywhere in the tourist areas, so you use them and feel efficient about it.',
+    fact: 'Every time you do, the vendor sets the exchange rate, and it is almost never in your favor. Paying in dollars quietly costs about 5 to 10%, and both currencies use the dollar sign, so a quoted number can mean two very different things.',
+    escape: 'Pay in Jamaican dollars or by card, and confirm which currency a price is in before you agree to it.',
+    accent: null,
+    doorPool: false,
+  },
+
+  bahamas: {
+    shape: 'counterintuition',
+    setup: 'You bring US cash, which here is genuinely the local money.',
+    fact: 'The Bahamian dollar is pegged one to one with the US dollar and the two circulate side by side, so paying cash in dollars costs you nothing at all. Yet some US banks still treat a Bahamas card purchase or ATM withdrawal as foreign and charge a fee on a transaction with no conversion in it.',
+    escape: 'Spend US cash freely, choose Bahamian dollars on any terminal or ATM screen, and bring a no-foreign-fee card so nobody charges you for converting nothing.',
+    accent: null,
+    doorPool: false,
+  },
+
+  aruba: {
+    shape: 'price-isnt-price',
+    // HEDGED ON PURPOSE. The two levies are sourced. The resort-fee range and the
+    // quarter-to-a-third total are the desk's own observation and the data says so, so
+    // both are worded as a typical case rather than as a rule.
+    setup: 'You compare Aruba hotels on the nightly rate, because that is the number they show you.',
+    fact: "Two of the charges are government: a 12.5% tourist levy and an environmental levy of about 3 dollars a night. Then the property adds its own 10 to 15% service charge and, commonly, a resort fee of 30 to 90 dollars a night. Together they typically add something like a quarter to a third to the rate.",
+    escape: 'Ask for an all-in nightly figure including levies, service charge and resort fee before you book. Only the first two are taxes; the rest is the hotel\'s choice.',
+    accent: {
+      from: 'the nightly rate', fromNote: 'what you compared hotels on',
+      to: 'typically a quarter to a third more', toNote: 'two government levies, then the service charge and resort fee on top',
+    },
+    doorPool: false,
+  },
+
+  // ----- Oceania -----
+
+  'new-zealand': {
+    shape: null,
+    setup: 'You budget for the flights and the room and assume the border is free.',
+    fact: 'New Zealand charges about NZ$117 a person before you land: an NZeTA at NZ$17 in the official app, or NZ$23 on the website, plus a NZ$100 International Visitor Levy in the same non-refundable transaction. A family of four is roughly NZ$468 before a room is booked. And unlike Australia next door, there is no GST refund on your shopping on the way out.',
+    escape: 'Use the official app rather than the website, allow up to 72 hours, and do not plan any shopping around a refund that does not exist here.',
+    accent: null,
+    doorPool: false,
+  },
+
+  // ----- Caucasus -----
+
+  georgia: {
+    shape: null,
+    setup: 'You check the visa rules, find none, and stop looking.',
+    fact: 'A US citizen can stay in Georgia for 365 days on arrival with no visa, the most generous entry in the set. Since 1 January 2026 every tourist must also carry travel insurance of at least 30,000 GEL, about 11,000 dollars, for the whole stay, and almost nobody has heard of it.',
+    escape: 'Most standard US policies already qualify. Carry the certificate as a PDF or a printout in English, because border officers can ask for it.',
     accent: null,
     doorPool: false,
   },

@@ -17,8 +17,14 @@
 //
 // GRACEFUL DEGRADE. A country with no fact renders NOTHING at all, not an empty frame and
 // not a placeholder. The page then opens on the breadth reveal, which is a complete
-// opening in its own right. 33 of the 59 countries take that path today, so it is the
-// common case rather than the edge case, and it has to look intentional.
+// opening in its own right.
+//
+// AS OF THE AUGUST 2026 FILL, NO LIVE COUNTRY TAKES THAT PATH: all 59 carry a fact. The
+// branch stays, and it is not dead code waiting to be tidied away. It is what a new
+// country looks like on the day it goes live and before the desk has found its fact, and
+// it is what a fact looks like the moment one is pulled for being wrong. Deleting it
+// would make "we have nothing strong to say here yet" unrepresentable, and being able to
+// say nothing is the whole reason a country is allowed to have no hero fact.
 import { heroFactFor } from '../data/hero-facts.js';
 
 const { country: c } = Astro.props;
