@@ -275,66 +275,77 @@ export default {
       slug: "visa-and-ed-card",
       glance: [
         { k: "Visa", v: "None, up to 90 days" },
-        { k: "Required", v: "The ED Card, online before boarding" },
-        { k: "Fee", v: "$20 per person sustainability fee" },
-        { k: "Where", v: "edcardaruba.aw, the official site" }
+        { k: "The form", v: "Free, and mandatory" },
+        { k: "The fee", v: "$20, once per calendar year" },
+        { k: "Where", v: "edcardaruba.aw, nowhere else" }
       ],
       live: true,
       topic: "visas",
-      title: "Aruba visa and ED Card fee for US travelers 2026",
-      description: "No visa for US citizens up to 90 days, but every air traveler files the online ED Card before boarding, now with a 20 dollar per-person fee. Checked 2026.",
-      h1: "Do US citizens need a visa for Aruba?",
-      lede: "Short answer: no visa, but there is a form you must do before you fly, and it now costs 20 dollars a person. Here is what it is, and how to avoid paying extra to a lookalike site.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-22",
-      answer: "No visa. US citizens can visit Aruba for tourism for <b>up to 90 days</b> without one. What is required is the <b>ED Card</b> (Embarkation and Disembarkation card), a <b>mandatory online form</b> every air traveler must complete <b>before boarding</b>, and since 2024 it includes a <b>20 dollar per-person sustainability fee</b> (children under 8 exempt). Do it at the <b>official site, edcardaruba.aw</b>, within the window before arrival. You also need a <b>passport valid for your stay</b> and, if asked, a return ticket.",
+      title: "Aruba ED Card cost 2026: the $20 fee, and the visa rules",
+      description: "The Aruba ED Card form is free. Most air travelers pay a 20 dollar sustainability fee once per calendar year. Copycat sites charge far more for the same form. Checked 2026.",
+      h1: "How much does the Aruba ED Card cost, and do you need a visa?",
+      lede: "Short answer: no visa, and the form itself is free. What you pay is a 20 dollar sustainability fee, once per calendar year rather than per trip. The reason people end up paying much more is a set of copycat websites that buy ads, outrank the government portal, and charge to file the same free form. Here is what it actually costs, and how to make sure you pay only that.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-15",
+      answer: "No visa. US citizens can visit Aruba for tourism for <b>up to 90 days</b> without one. What is required is the <b>ED Card</b> (Embarkation and Disembarkation card), a <b>mandatory online form</b> every air traveler completes <b>before boarding</b>. The <b>form is free</b>. What costs money is a separate <b>20 dollar per-person sustainability fee</b> collected through the same portal, charged <b>once per calendar year</b> rather than per trip, with <b>children under 8 exempt</b> and <b>cruise passengers exempt</b> since it applies to air arrivals only. Do it at the <b>official site, edcardaruba.aw</b>, and nowhere else. You also need a <b>passport valid for your stay</b> and, if asked, a return ticket.",
       official: {
         label: "Official Aruba ED Card portal",
         url: "https://edcardaruba.aw/",
-        note: "This is the only official site, and it collects the 20 dollar sustainability fee directly. Many lookalike sites charge an extra fee to file the same form, so go straight to edcardaruba.aw."
+        note: "This is the only official site. The form is free and the only charge is the 20 dollar sustainability fee. Lookalike sites buy ads and often appear above the government portal in search results, so type the address rather than clicking an ad."
       },
       expediter: false,
       sections: [
         {
-          h: "No visa, but a required form",
+          h: "No visa, but a form you cannot skip",
           icon: "receipt",
-          key: { fig: "90 days", tag: "ED Card required", text: "For tourism, US citizens need no visa and can stay up to 90 days, with a passport valid for the stay. The catch is the ED Card, a mandatory online form every air traveler completes before boarding.", tone: "teal" },
+          key: { fig: "90 days", tag: "ED Card required", text: "US citizens need no visa and can stay up to 90 days. The catch is the ED Card, a mandatory online form every air traveler completes before boarding. You cannot do it at the airport.", tone: "teal" },
           p: [
             "For tourism, US citizens need <b>no visa</b> and can stay <b>up to 90 days</b>. You do need a <b>passport valid for the length of your stay</b>, and immigration may ask for a <b>return or onward ticket</b> and proof of where you are staying.",
-            "The catch that surprises people is the <b>ED Card</b>. It replaced the old paper immigration card and is now a digital form that <b>every</b> air traveler must complete before departure, regardless of nationality or age. Airlines check it, and you cannot fill it in at the airport."
+            "The part that catches people out is the <b>ED Card</b>. It replaced the old paper immigration card and is now a digital form that <b>every</b> air traveler must complete before departure, regardless of nationality or age, children and infants included. Airlines check it at the gate, and <b>you cannot fill it in at the airport</b>, so this is a before-you-leave-home job rather than a formality on the day."
           ]
         },
         {
-          h: "The 20 dollar sustainability fee",
+          h: "What it actually costs",
           icon: "usd",
-          key: { fig: "$20", tag: "Since July 2024", text: "Since July 2024 the ED Card also collects a $20 per-person sustainability fee for visitors arriving by air, paid by card as you complete the form. Children may be treated differently.", tone: "teal" },
+          key: { fig: "$20 a year", tag: "The form is free", text: "The ED Card form costs nothing. The 20 dollar sustainability fee is a separate government levy collected through the same portal, charged once per calendar year rather than per trip.", tone: "teal" },
           p: [
-            "Since July 2024, the ED Card also collects a <b>20 dollar per-person sustainability fee</b> for visitors arriving by air, paid by card as you complete the form. <b>Children under 8 are exempt.</b> It funds island infrastructure and environmental programs.",
-            "Complete the form in the window your instructions give (generally within a few days before arrival, and not at the airport), and save the <b>confirmation with its QR code</b> as a screenshot or printout to show at check-in and on arrival."
+            "This distinction matters, because it is exactly what the copycat sites blur. <b>The ED Card form is free.</b> What you pay is a separate <b>20 dollar per-person sustainability fee</b>, introduced in 2024, collected through the same portal by card as you complete the form. It funds island infrastructure and environmental work.",
+            "Three exemptions are worth knowing because they save real money. The fee is charged <b>once per calendar year</b>, not per trip, so a second visit inside the same year should not be charged again; recognition works from your passport number, so use the same details and keep your confirmation. <b>Children under 8 are exempt</b>, though they still need their own ED Card. And it applies to <b>air arrivals only</b>, so <b>cruise passengers do not pay it</b>. A family of two adults and two children over 8 therefore pays <b>80 dollars</b> in total, for the year."
           ]
         },
         {
-          h: "Use the official site, not a lookalike",
+          h: "The copycat sites, and what they cost you",
           icon: "alert",
-          key: { tag: "One official site", text: "Fill the ED Card in at edcardaruba.aw, the government portal, where the only charge is the $20 fee. Third-party sites advertise Aruba entry help and add a markup for the same free form.", tone: "amber" },
+          key: { fig: "$80 vs $400+", tag: "Type the address", text: "A family of four pays about 80 dollars on the official portal. Reported charges on copycat sites run from roughly 35 to 100 dollars a head for the identical free form.", tone: "amber" },
           p: [
-            "Fill the ED Card in at <b>edcardaruba.aw</b>, the government portal, where the only charge is the <b>20 dollar</b> fee. A number of third-party sites advertise Aruba entry help and charge an <b>extra service fee</b> to submit the identical form, so go directly to the official site.",
-            "For the money side of your trip, including the hotel taxes and how tipping works, see the <a href=\"/aruba\">Aruba money guide</a>."
+            "A small industry has grown up around this form. These sites look official, buy search ads, and frequently appear <b>above</b> the government portal in results. They file the identical form and offer nothing extra: no faster processing, no priority, no advantage of any kind. Reported charges run from roughly <b>35 to 100 dollars per person</b>, against an official cost of 20. Do the arithmetic on a family of four with two children over 8 and the gap is stark: about <b>80 dollars</b> officially, against <b>400 dollars or more</b> through a middleman.",
+            "The defense is one habit and it takes a second. <b>Type edcardaruba.aw into the address bar rather than clicking a search result</b>, and be especially wary of anything marked as an ad. Check the domain before you enter passport details or card numbers, since <b>.aw</b> is Aruba's own country code and a middleman will be on something else. If a site quotes you more than 20 dollars a person, you are not on the government portal. This is the same pattern as paid ETA and visa reseller sites worldwide, and the same rule applies: <b>a free government form has no legitimate middleman</b>."
+          ]
+        },
+        {
+          h: "Doing it right, and when",
+          icon: "calendar",
+          key: { tag: "Save the QR code", text: "Complete the form in the window before arrival, not at the airport, and save the confirmation QR code as a screenshot and a printout. You will need it at check-in and at the border.", tone: "teal" },
+          p: [
+            "Complete the form in the <b>window before arrival</b> that the portal specifies, generally within a few days of departure rather than weeks ahead, and not at the airport. Have your passport, flight numbers, dates, and the name and address of your hotel or rental to hand. File <b>one form per traveler</b>, including children, and pay the fee for everyone aged 8 and over.",
+            "Then <b>save the confirmation and its QR code</b>, as a screenshot and ideally a printout, because you show it at airline check-in and again at Aruban border control, and airport wifi is not something to rely on. Keep it after the trip too: it is your evidence of having paid the fee if you return the same calendar year. For the rest of the money side of your trip, including the resort fees and levies that get added to the room rate, see the <a href=\"/aruba/hotel-taxes-and-fees\">Aruba hotel taxes and fees guide</a> and the <a href=\"/aruba\">Aruba money guide</a>."
           ]
         }
       ],
       faqs: [
-        { q: "Do US citizens need a visa for Aruba in 2026?", a: "No. US citizens can visit Aruba for tourism for up to 90 days without a visa. You need a passport valid for your stay and, if asked, a return ticket, plus the mandatory online ED Card completed before you fly. There is no visa application and no ESTA (that is for entering the US, not Aruba)." },
-        { q: "What is the Aruba ED Card, and is it mandatory?", a: "The ED Card (Embarkation and Disembarkation card) is a mandatory online entry form that every air traveler to Aruba must complete before boarding, including US citizens and children. It replaced the old paper card, airlines check it, and it cannot be done at the airport. It also collects the 20 dollar sustainability fee." },
-        { q: "How much is the Aruba entry fee?", a: "There is a 20 dollar per-person sustainability fee for air arrivals, introduced in 2024 and paid through the ED Card as you complete it. Children under 8 are exempt. There is no separate visa fee, since US citizens do not need a visa, and the old departure tax is now built into your airfare." },
-        { q: "What is the official website for the Aruba ED Card?", a: "The official government portal is edcardaruba.aw, and it is the only site that both files the form and collects the 20 dollar fee at cost. Many lookalike sites charge an extra service fee to submit the same form, so apply directly at the official portal to avoid overpaying." }
+        { q: "How much does the Aruba ED Card cost?", a: "The form itself is free. What you pay is a separate 20 dollar per-person sustainability fee, collected through the same official portal as you complete the form. It applies to air travelers aged 8 and over and is charged once per calendar year rather than per trip. If any site quotes you more than 20 dollars a person, you are not on the government portal." },
+        { q: "Do I pay the Aruba sustainability fee every time I visit?", a: "No. It is charged once per calendar year rather than per trip, so a second visit inside the same year should not be charged again. Recognition works from your passport number, so use the same details each time and keep your confirmation from the first trip as evidence. You still complete a new ED Card for every arrival." },
+        { q: "Do cruise passengers pay the Aruba ED Card fee?", a: "No. The sustainability fee applies to visitors arriving by air, so cruise passengers are exempt. Children under 8 are also exempt from the fee, though they still need their own ED Card. Local residents and some Aruban students studying abroad are exempt as well." },
+        { q: "What is the official website for the Aruba ED Card?", a: "edcardaruba.aw, and nothing else. It is the only site that files the form and collects the 20 dollar fee at cost. Copycat sites buy search ads and often appear above the official portal in results, charging far more for the identical form. Type the address into the address bar rather than clicking a search result, and check for the .aw domain." },
+        { q: "Do US citizens need a visa for Aruba in 2026?", a: "No. US citizens can visit Aruba for tourism for up to 90 days without a visa. You need a passport valid for your stay and, if asked, a return ticket, plus the mandatory online ED Card completed before you fly. There is no visa application and no ESTA, which is for entering the US rather than Aruba." },
+        { q: "Can I complete the Aruba ED Card at the airport?", a: "No. It must be done online before you fly, and airlines check it at the gate, so a missing ED Card can mean being denied boarding. Complete it in the window the portal specifies, generally within a few days of departure, and save the confirmation QR code as a screenshot and a printout to show at check-in and at the border." }
       ],
       sources: {
         links: [
           { label: "Government of Aruba ED Card portal: the mandatory form and the 20 dollar sustainability fee", url: "https://edcardaruba.aw/", type: "gov" },
           { label: "US State Department: Aruba entry requirements for US citizens", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Aruba.html", type: "gov" }
         ],
-        judgment: "Entry rules and fees can change, and the ED Card window and fee are set by Aruba, so confirm the current requirement on the official portal before you travel. Checked July 2026."
+        judgment: "The 20 dollar fee, the free form, and the exemptions for children under 8, cruise passengers and repeat visitors within the same year are the current published position, but entry rules and fees are set by Aruba and change, so confirm on the official portal before you fly. Sources differ on whether the fee began in July or October 2024, so we give the year only. Once-per-calendar-year recognition works from the passport number and has been rolled out in stages, so keep your confirmation rather than assuming the system will match you. The 35 to 100 dollars per person charged by copycat sites is a reported range from Aruba-based and travel sources rather than an official figure, and it moves; the fixed, checkable fact is that the official cost is 20 dollars a head, so treat anything above that as a middleman. Checked August 2026."
       }
     },
     {
