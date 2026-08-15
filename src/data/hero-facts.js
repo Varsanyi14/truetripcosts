@@ -420,17 +420,22 @@ export const heroFacts = {
 
   iceland: {
     shape: null,
-    // FIGURES LEFT OFF ON PURPOSE. The FINDINGS row carries a per-km rate and a Ring Road
-    // total that the document marks as ours and asks to be confirmed before this fronts
-    // anything. They are also in kronur, which a US reader cannot price anyway, so the
-    // mechanism carries the whole surprise and the numbers would add risk without adding
-    // meaning. The superlative is softened for the same reason: Sweden's guide makes a
-    // near-identical claim, so neither can own it.
+    // FIGURES RESTORED, AND THE DOLLAR IS THE GUIDE'S OWN. They were held back on the
+    // first pass pending confirmation. They are confirmed: the per-km margin, the loop
+    // distance, the total and the conversion all sit in iceland.js, in the road-tax `text`
+    // and in `traps`.
+    //
+    // THE BRACKET IS NOT MINE TO CALCULATE. A US reader cannot price 13,200 ISK, so the
+    // figure needs a dollar beside it or it is decoration. But converting it here would
+    // mean picking an exchange rate, and a rate picked in this file drifts away from the
+    // guide on the same page. So the bracket quotes the conversion the guide already
+    // publishes, which is 105 dollars. Note for the next editor: if the guide's figure is
+    // ever restated, restate it here too. The two must move together.
     setup: 'You price the rental car, the fuel and the room, and assume the road itself is free.',
-    fact: 'Iceland is among the most cashless countries anywhere, and since 1 January 2026 it charges a road tax by the kilometre on every vehicle. Rental firms bill it on with their own margin on top, so a Ring Road loop adds a charge that appeared in no quote you were shown.',
+    fact: 'Iceland is among the most cashless countries anywhere, and since 1 January 2026 it charges a road tax by the kilometre on every vehicle. Rental firms bill it on with a margin of their own, often around 8.8 ISK per km, so a Ring Road loop adds about 13,200 ISK (about $105) to your card after you drop the car off, and it appeared in no quote you were shown.',
     escape: 'Ask the rental company how it bills the road tax and what its own per-kilometre margin is, before you sign.',
     accent: null,
-    flag: { kind: 'novelty', note: 'Newest fact in the set, effective 1 Jan 2026. The per-km rate and the Ring Road total are held back deliberately until confirmed against the guide sources. Add them here once they are.' },
+    flag: { kind: 'novelty', note: 'Newest fact in the set, effective 1 Jan 2026. The figures trace to iceland.js, whose source for them is a rental company blog rather than an official Icelandic one, and the government rate is about 6.95 ISK per km against the roughly 8.8 ISK rental firms bill. Worth attaching an official source, and worth revisiting once the fact is no longer new.' },
     doorPool: false,
   },
 
