@@ -1,27 +1,34 @@
 // THE VERDICT CARD: the screenshot-sized country card at the top of every guide.
 //
 // WHAT THIS IS. A selector and formatter, not a source. It holds no facts of its own,
-// in the same way latest-checks.js and usd-prose.js hold none. It reads two sources
+// in the same way latest-checks.js and usd-prose.js hold none. It reads three sources
 // that already exist, decides which of their lines belong on a card, and puts them in
-// a fixed order. Fix a line in money-rules.js or hero-facts.js and the card changes on
-// the next build. Nothing is ever re-typed here as a second copy of a fact.
+// a fixed order. Fix a line in money-rules.js, hero-facts.js or a country's spokes and
+// the card changes on the next build. Nothing is ever re-typed here as a second copy
+// of a fact.
 //
-// THE TWO SOURCES.
+// THE THREE SOURCES, in the order a card fills from them.
 //   1. src/data/money-rules.js. The rich source. Its `rules[].h` headings are already
 //      verdict-shaped one-liners ("Do not tip. Say something instead"), so a card row
 //      is the heading VERBATIM. Nothing is rewritten, so nothing can drift.
 //   2. src/data/hero-facts.js. The fallback, for a country with no rules pocket. The
 //      `escape` field is a "do this" instruction, usually two or three clauses long.
 //      A card row is one clause of it, selected by hand, again verbatim.
+//   3. The country's own `spokes[].glance` pairs, in src/data/<slug>.js. The desk has
+//      already written and checked these as terse key/value lines, so a card row is
+//      one glance pair VERBATIM. This is what turns a one-row hero-fact card into a
+//      real card, and it means the next spoke wave thickens the cards for free.
+//      See SPOKE_ROWS for the selection rule and the anti-duplication rule.
 //
 // THE ANTI-FABRICATION RAIL, and this is the whole point of the file. A row's text is
 // never composed here. It is either:
-//   a heading read straight out of the pocket by index, or
-//   a clause that MUST appear, character for character, inside that country's escape.
-// The substring test runs on every build (see rowsFromEscape). A clause that no longer
-// matches its source is DROPPED, not shown and not repaired. So if somebody rewords an
-// escape line next year, the affected row quietly disappears and the note row takes
-// over. The card gets shorter. It never goes stale and it never invents.
+//   a heading read straight out of the pocket by its own text, or
+//   a clause that MUST appear, character for character, inside that country's escape, or
+//   a glance pair read straight out of a named spoke, key and value both verbatim.
+// The match test runs on every build (see rowsFromEscape and rowsFromSpokes). A pointer
+// that no longer matches its source is DROPPED, not shown and not repaired. So if
+// somebody rewords an escape line or a glance value next year, the affected row quietly
+// disappears and the card gets shorter. It never goes stale and it never invents.
 //
 // That is why the maps below hold pointers rather than prose: an index into rules[],
 // or a substring that is checked against the source before it can render. Neither can
@@ -51,6 +58,13 @@ export const LABEL_ORDER = ['Do', 'Carry', 'Withdraw', "Don't", 'Expect'];
 
 // A rich card aims for 4 or 5 rows. Below this the card is genuinely short and says so.
 export const MIN_FULL_ROWS = 3;
+
+// The ceiling. Five rows is the shape the pocket cards already settled on and the one
+// that still screenshots as a card; six is the most the harvest may add up to. Past
+// that the thing stops reading as a verdict and starts reading as a list, which is what
+// the guide below is for. The cap CUTS, in source and tier order, and never truncates a
+// row: a line is shown whole or not at all.
+export const MAX_ROWS = 6;
 
 // A row is one line on a phone. Anything longer is a paragraph and belongs in the guide.
 // This is a selection gate, never a truncation: a line is shown whole or not at all,
@@ -363,6 +377,299 @@ export const ESCAPE_ROWS = {
   ],
 };
 
+// ---------------------------------------------------------------------------
+// SPOKE_ROWS: the third source, and the reason a thin card can now be a real one.
+//
+// Every country file carries a `spokes` array, and each spoke carries a `glance`
+// list of terse key/value pairs that the desk already wrote and already checked.
+// Those lines are verdict-shaped by construction, so the card can borrow them the
+// same way it borrows a pocket heading: as a POINTER, never as a copy.
+//
+// THE ANCHOR IS THE SOURCE STRING, in three parts. `spoke` is the spoke's slug,
+// `k` and `v` are the glance pair exactly as that spoke writes them. All three
+// must resolve to exactly one live glance entry or the row is dropped and the
+// audit reports it. Reword a glance line next year and the row disappears rather
+// than relabelling itself around new words, which is the same failure mode the
+// pocket rows are anchored against.
+//
+// WHAT GETS DISPLAYED. By default the row reads `k: v`, both halves verbatim,
+// because most glance values are written to lean on their key ("Not required, but
+// appreciated" says nothing on its own). Where the key only repeats the row's own
+// label chip, `show: 'v'` renders the value alone. Nothing is case-fixed: a value
+// like "evisa.gov.vn only" has to stay as the desk typed it.
+//
+// THE SELECTION RULE, which is the whole judgment here. A card is screenshot
+// sized, so these are not every line a spoke has. `tier` records why a line earned
+// its slot, and rows are taken in that order when the cap bites:
+//   1  corrects a wrong belief   ("Uber and Lyft: Neither operates here")
+//   2  surprising, least known   ("Cash for: Fuel and remote areas")
+//   3  important but confirming  ("Taxis: Metered, honest") - almost never used
+// The card's job is to disabuse, not to summarise. A line that confirms what a
+// traveller already assumes is the first thing cut, and a spoke with no line worth
+// showing contributes nothing. There is no padding to the cap anywhere in here.
+//
+// `theme` is a dedupe key. Two spokes often make the same point in different words
+// (Thailand's taxis spoke and its scams spoke both say to insist on the meter), and
+// only the first row of a theme is shown. It does NOT dedupe against pocket rows,
+// which cannot be matched by string: that judgment was made by hand at triage time,
+// which is why no row below repeats a point its country's pocket already makes.
+// ---------------------------------------------------------------------------
+export const SPOKE_ROWS = {
+  // Countries with a money-rules pocket. The pocket leads and these fill at most
+  // one remaining slot, with a theme the pocket does not already cover.
+  france: [
+    { label: 'Expect', spoke: 'taxis-and-apps', k: 'CDG airport', v: 'Flat 56 euros to the Right Bank', tier: 1, theme: 'taxi-airport' },
+  ],
+  italy: [
+    { label: 'Expect', spoke: 'money-scams', k: 'Rome from FCO', v: '55 euros fixed, all in', tier: 1, theme: 'taxi-airport' },
+  ],
+  spain: [
+    { label: 'Expect', spoke: 'taxis-and-apps', k: 'Madrid airport', v: 'Fixed 33 euros inside the M-30', tier: 1, theme: 'taxi-airport' },
+  ],
+  greece: [
+    { label: 'Expect', spoke: 'money-scams', k: 'Athens from ATH', v: '40 euros day, 55 euros night, fixed', tier: 1, theme: 'taxi-airport' },
+  ],
+  portugal: [
+    { label: 'Expect', spoke: 'tram-28-contactless', k: 'Tram 28', v: 'Contactless mixed, do not rely on it', tier: 1, theme: 'transit' },
+  ],
+  germany: [
+    { label: 'Expect', spoke: 'driving-and-tolls', k: 'The real trap', v: 'The city Umweltzone sticker', tier: 1, theme: 'driving' },
+  ],
+  'united-kingdom': [
+    { label: 'Expect', spoke: 'vat-refund', k: 'VAT refund', v: 'None in Great Britain', tier: 1, theme: 'vat' },
+  ],
+  japan: [
+    { label: 'Do', spoke: 'money-scams', k: 'Sitting down', v: 'Ask about the seat charge', tier: 1, theme: 'seat-charge' },
+  ],
+  mexico: [
+    { label: 'Expect', spoke: 'fmm-and-visitax', k: 'Visitax', v: 'Quintana Roo only, ~283 pesos', tier: 1, theme: 'entry-fee' },
+  ],
+  canada: [
+    { label: 'Do', spoke: 'staying-connected', k: 'Check first', v: 'Your US plan, Canada is often bundled', tier: 1, theme: 'connectivity' },
+  ],
+  'costa-rica': [
+    { label: 'Expect', spoke: 'money-scams', k: 'Car insurance', v: 'Required, and rarely quoted', tier: 1, theme: 'car-insurance' },
+  ],
+  'dominican-republic': [
+    { label: 'Do', spoke: 'taxis-and-apps', k: 'Taxis', v: 'No meters, agree the fare first', tier: 1, theme: 'taxi' },
+  ],
+  jamaica: [
+    { label: 'Do', spoke: 'taxis-and-apps', k: 'No Uber', v: 'Use a licensed red-plate taxi', tier: 1, theme: 'taxi' },
+  ],
+  india: [
+    { label: 'Do', spoke: 'e-visa', k: 'Where', v: 'indianvisaonline.gov.in only', tier: 1, theme: 'visa-site' },
+  ],
+  netherlands: [
+    { label: 'Do', spoke: 'taxis-and-apps', k: 'From Schiphol', v: 'The train is fast and cheap', tier: 2, theme: 'taxi-airport' },
+  ],
+  iceland: [
+    { label: 'Expect', spoke: 'renting-a-car', k: 'The catch', v: 'Super CDW still excludes the likely damage', tier: 1, theme: 'car-insurance' },
+  ],
+  indonesia: [
+    { label: 'Expect', spoke: 'visa', k: 'Visa', v: 'Required, visa on arrival', tier: 1, theme: 'visa' },
+  ],
+  uae: [
+    { label: 'Expect', spoke: 'visa', k: 'Visa', v: 'Free on arrival, nothing to apply for', tier: 1, theme: 'visa' },
+  ],
+  oman: [
+    { label: 'Expect', spoke: 'taxis-and-apps', k: 'Uber', v: 'Does not operate in Oman', tier: 1, theme: 'taxi' },
+  ],
+  qatar: [
+    { label: 'Expect', spoke: 'visa', k: 'Visa', v: 'Free on arrival, no application', tier: 1, theme: 'visa' },
+  ],
+  bahrain: [
+    { label: 'Expect', spoke: 'visa', k: 'Visa', v: 'Required, and not free', tier: 1, theme: 'visa' },
+  ],
+  'saudi-arabia': [
+    { label: 'Expect', spoke: 'visa', k: 'Visa', v: 'Required, and it costs', tier: 1, theme: 'visa' },
+  ],
+  kuwait: [
+    { label: 'Expect', spoke: 'taxis-and-apps', k: 'Uber', v: 'Contested, do not rely on it', tier: 1, theme: 'taxi' },
+  ],
+  switzerland: [
+    { label: 'Expect', spoke: 'cash-or-card', k: 'Euros', v: 'Sometimes taken, poor change', tier: 1, theme: 'currency' },
+  ],
+  bahamas: [
+    { label: 'Expect', spoke: 'taxis-and-apps', k: 'Uber and Lyft', v: 'Neither operates here', tier: 1, theme: 'taxi' },
+  ],
+  turkey: [
+    { label: 'Expect', spoke: 'visa', k: 'e-Visa', v: 'Not needed, US citizens are exempt', tier: 1, theme: 'visa' },
+  ],
+
+  // Countries with no pocket. These are the thin cards the harvest is for: the
+  // hero-fact clause leads and the spokes carry the rest of the card.
+  vietnam: [
+    { label: 'Do', spoke: 'e-visa', k: 'Where', v: 'evisa.gov.vn only', tier: 1, theme: 'visa-site' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not required, but appreciated', tier: 1, theme: 'tipping' },
+    { label: 'Expect', spoke: 'money-scams', k: 'The notes', v: 'Big dong notes look alike', tier: 1, theme: 'notes' },
+    { label: 'Carry', spoke: 'cash-or-card', k: 'Cash for', v: 'Street food, markets, taxis', tier: 2, theme: 'cash-need' },
+  ],
+  thailand: [
+    { label: 'Do', spoke: 'tdac', k: 'TDAC', v: 'Free, file online within 72 hours', tier: 1, theme: 'entry-form' },
+    { label: "Don't", spoke: 'taxis-and-apps', k: 'Meter refusal', v: 'Quotes 2 to 4x, walk away', tier: 1, theme: 'taxi-meter' },
+    { label: 'Expect', spoke: 'tipping', k: 'Check the bill', v: 'Some add 10% service', tier: 1, theme: 'tipping' },
+    { label: 'Carry', spoke: 'cash-or-card', k: 'Cash for', v: 'Street food, markets, taxis, temples', tier: 2, theme: 'cash-need' },
+  ],
+  czechia: [
+    { label: 'Expect', spoke: 'cash-or-card', k: 'Currency', v: 'Koruna (CZK), not euros', tier: 1, theme: 'currency' },
+    { label: 'Withdraw', spoke: 'money-scams', k: 'At the ATM', v: 'Choose koruna, skip Euronet', tier: 1, theme: 'atm' },
+    { label: 'Do', spoke: 'money-scams', k: 'Taxis', v: 'Book an app, never hail', tier: 1, theme: 'taxi' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'About 10%, customary', tier: 2, theme: 'tipping' },
+  ],
+  austria: [
+    { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose euros, not dollars', tier: 1, theme: 'dcc' },
+    { label: 'Do', spoke: 'tipping', k: 'The habit', v: 'Tell the server, do not leave it', tier: 1, theme: 'tipping' },
+    { label: 'Carry', spoke: 'cash-or-card', k: 'Cards', v: 'Fine in cities, cash for small spots', tier: 2, theme: 'cash-need' },
+    { label: 'Expect', spoke: 'taxis-and-apps', k: 'From Vienna airport', v: 'The S-Bahn or the CAT', tier: 2, theme: 'taxi-airport' },
+  ],
+  egypt: [
+    { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose pounds, not dollars', tier: 1, theme: 'dcc' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping (baksheesh)', v: 'Constant and expected', tier: 1, theme: 'tipping' },
+  ],
+  colombia: [
+    { label: 'Do', spoke: 'taxis-and-apps', k: 'The one rule', v: 'Never hail on the street', tier: 1, theme: 'taxi' },
+    { label: 'Do', spoke: 'check-mig', k: 'Check-Mig', v: 'Required, free, before every flight', tier: 1, theme: 'entry-form' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'A 10% voluntary tip', tier: 2, theme: 'tipping' },
+    { label: 'Withdraw', spoke: 'cash-or-card', k: 'ATMs', v: 'Use ones inside bank branches', tier: 2, theme: 'atm' },
+  ],
+  brazil: [
+    { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose reais (mind the IOF)', tier: 1, theme: 'dcc' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'A 10% service charge, usually added', tier: 1, theme: 'tipping' },
+  ],
+  argentina: [
+    { label: 'Expect', spoke: 'tipping', k: 'Cubierto', v: 'A cover charge, not a tip', tier: 1, theme: 'cover-charge' },
+    { label: 'Do', spoke: 'taxis-and-ride-hailing', k: 'Safer bet', v: 'A radio taxi or an app', tier: 2, theme: 'taxi' },
+    { label: 'Carry', spoke: 'cash-or-card', k: 'Cash for', v: 'Taxis, kiosks, markets, tips', tier: 2, theme: 'cash-need' },
+  ],
+  ireland: [
+    { label: 'Expect', spoke: 'renting-a-car', k: 'The problem', v: 'Card cover often excludes Ireland', tier: 1, theme: 'car-insurance' },
+    { label: 'Expect', spoke: 'cash-or-card', k: 'The border', v: 'Northern Ireland uses pounds', tier: 1, theme: 'currency' },
+    { label: 'Expect', spoke: 'tipping', k: 'Pubs', v: 'No tip at the bar', tier: 1, theme: 'tipping' },
+    { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose euros, not dollars', tier: 1, theme: 'dcc' },
+  ],
+  norway: [
+    { label: 'Carry', spoke: 'cash-or-card', k: 'Cash', v: 'Rarely needed, often refused', tier: 1, theme: 'cash-need' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not really expected', tier: 1, theme: 'tipping' },
+    { label: 'Expect', spoke: 'taxis-and-apps', k: 'Taxis', v: 'Very expensive, fares vary by firm', tier: 1, theme: 'taxi' },
+  ],
+  sweden: [
+    { label: 'Expect', spoke: 'taxis-and-apps', k: 'Taxis', v: 'Deregulated, fares vary a lot', tier: 1, theme: 'taxi' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not really expected', tier: 1, theme: 'tipping' },
+    { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose krona, not dollars', tier: 1, theme: 'dcc' },
+  ],
+  denmark: [
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not really expected', tier: 1, theme: 'tipping' },
+    { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose krone, not dollars', tier: 1, theme: 'dcc' },
+    { label: 'Carry', spoke: 'cash-or-card', k: 'Cash', v: 'Rarely needed, some places refuse it', tier: 2, theme: 'cash-need' },
+  ],
+  'south-korea': [
+    { label: 'Do', spoke: 'k-eta', k: 'You still need', v: 'The free e-Arrival Card', tier: 1, theme: 'entry-form' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not expected', tier: 1, theme: 'tipping' },
+    { label: 'Do', spoke: 'cash-or-card', k: 'Transit', v: 'A T-money card', tier: 2, theme: 'transit' },
+  ],
+  singapore: [
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not customary', tier: 1, theme: 'tipping' },
+    { label: 'Carry', spoke: 'cash-or-card', k: 'Cash for', v: 'Hawker stalls and small vendors', tier: 2, theme: 'cash-need' },
+    { label: 'Do', spoke: 'taxis-and-apps', k: 'From Changi', v: 'The MRT is cheap and fast', tier: 2, theme: 'taxi-airport' },
+  ],
+  australia: [
+    { label: 'Expect', spoke: 'driving-and-tolls', k: 'Tolls', v: 'All electronic, no cash anywhere', tier: 1, theme: 'tolls' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not expected, not the culture', tier: 1, theme: 'tipping' },
+    { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose Australian dollars', tier: 1, theme: 'dcc' },
+  ],
+  'new-zealand': [
+    { label: 'Expect', spoke: 'cash-or-card', k: 'Local quirk', v: 'Card surcharges, about 1.5 to 2%', tier: 1, theme: 'surcharge' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not expected, not the culture', tier: 1, theme: 'tipping' },
+    { label: 'Carry', spoke: 'cash-or-card', k: 'Cash for', v: 'A little, NZ$100 to NZ$200 a trip', tier: 2, theme: 'cash-need' },
+  ],
+  morocco: [
+    { label: 'Expect', spoke: 'cash-or-card', k: 'Note', v: 'A closed currency, get it on arrival', show: 'v', tier: 1, theme: 'currency' },
+    { label: 'Expect', spoke: 'taxis-and-apps', k: 'Petit taxi', v: 'Has a meter, often refused', tier: 1, theme: 'taxi-meter' },
+  ],
+  'south-africa': [
+    { label: 'Withdraw', spoke: 'money-scams', k: 'ATM security guards', v: 'Not allowed to help you', tier: 1, theme: 'atm' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: '10 to 15%, expected', tier: 1, theme: 'tipping' },
+    { label: 'Do', spoke: 'taxis-and-apps', k: 'Airport pickup', v: 'A designated e-hailing bay', tier: 2, theme: 'taxi-airport' },
+  ],
+  taiwan: [
+    { label: 'Carry', spoke: 'cash-or-card', k: 'Carry', v: 'NT dollars, it is cash-reliant', show: 'v', tier: 1, theme: 'cash-need' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not customary', tier: 1, theme: 'tipping' },
+    { label: 'Do', spoke: 'cash-or-card', k: 'Transit', v: 'Get an EasyCard', tier: 2, theme: 'transit' },
+  ],
+  'hong-kong': [
+    { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose HKD, not US dollars', tier: 1, theme: 'dcc' },
+    { label: 'Expect', spoke: 'tipping', k: 'Restaurants', v: 'A 10% service charge is common', tier: 1, theme: 'tipping' },
+    { label: 'Do', spoke: 'cash-or-card', k: 'The key', v: 'Get an Octopus card', show: 'v', tier: 2, theme: 'transit' },
+  ],
+  poland: [
+    { label: 'Expect', spoke: 'cash-or-card', k: 'Currency', v: 'Polish zloty (PLN), not euro', tier: 1, theme: 'currency' },
+    { label: 'Do', spoke: 'taxis-and-apps', k: 'Why apps', v: 'Cheap, and no meter games', tier: 1, theme: 'taxi' },
+    { label: 'Expect', spoke: 'money-scams', k: 'Your card', v: 'Nobody calls to verify it', tier: 1, theme: 'card-call' },
+  ],
+  hungary: [
+    { label: 'Expect', spoke: 'cash-or-card', k: 'Currency', v: 'Hungarian forint (HUF), not euro', tier: 1, theme: 'currency' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: '10 to 15%, customary', tier: 1, theme: 'tipping' },
+    { label: 'Carry', spoke: 'cash-or-card', k: 'Cards', v: 'Fine in Budapest, carry some forint', tier: 2, theme: 'cash-need' },
+  ],
+  croatia: [
+    { label: 'Expect', spoke: 'cash-or-card', k: 'Currency', v: 'Euro (EUR), since 2023', tier: 1, theme: 'currency' },
+    { label: 'Expect', spoke: 'driving-and-tolls', k: 'Vignette', v: 'None, Croatia charges by distance', tier: 1, theme: 'tolls' },
+    { label: 'Do', spoke: 'taxis-and-apps', k: 'Apps', v: 'Uber, Bolt (often cheapest)', tier: 2, theme: 'taxi' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Modest, appreciated', tier: 2, theme: 'tipping' },
+  ],
+  cambodia: [
+    { label: 'Expect', spoke: 'cash-or-card', k: 'Everyday money', v: 'US dollars', tier: 1, theme: 'currency' },
+    { label: 'Do', spoke: 'taxis-and-ride-hailing', k: 'Fares', v: 'App price or meter, not haggling', tier: 1, theme: 'taxi' },
+    { label: 'Do', spoke: 'money-scams', k: 'Angkor tickets', v: 'One official seller only', tier: 1, theme: 'tickets' },
+  ],
+  laos: [
+    { label: 'Withdraw', spoke: 'cash-or-card', k: 'ATMs', v: 'Low limits, a fee each time', tier: 1, theme: 'atm' },
+    { label: 'Do', spoke: 'taxis-and-ride-hailing', k: 'Fares', v: 'Agree before you get in', tier: 1, theme: 'taxi' },
+    { label: 'Carry', spoke: 'cash-or-card', k: 'Carry', v: 'Kip, in small notes', show: 'v', tier: 2, theme: 'cash-need' },
+  ],
+  ecuador: [
+    { label: 'Expect', spoke: 'cash-or-card', k: 'Currency', v: 'US dollar', tier: 1, theme: 'currency' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'A 10% service, often added', tier: 1, theme: 'tipping' },
+    { label: 'Do', spoke: 'money-scams', k: 'Taxis', v: 'Order it, never hail it', tier: 1, theme: 'taxi' },
+    { label: 'Carry', spoke: 'cash-or-card', k: 'Cash for', v: 'Taxis, markets, small towns', tier: 2, theme: 'cash-need' },
+  ],
+  'el-salvador': [
+    { label: 'Expect', spoke: 'tipping', k: 'The real risk', v: 'Tipping twice, not too little', tier: 1, theme: 'tipping' },
+    { label: 'Withdraw', spoke: 'cash-or-card', k: 'ATM fee', v: 'About $3 to $6, flat', tier: 1, theme: 'atm' },
+    { label: 'Carry', spoke: 'cash-or-card', k: 'What matters', v: 'Small bills, ones to tens', tier: 2, theme: 'cash-need' },
+  ],
+  georgia: [
+    { label: 'Do', spoke: 'taxis-and-apps', k: 'Street taxis', v: 'Agree the fare first', tier: 1, theme: 'taxi' },
+    { label: 'Carry', spoke: 'cash-or-card', k: 'Cash for', v: 'Marshrutkas, markets', tier: 2, theme: 'cash-need' },
+    { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Light, emerging', tier: 2, theme: 'tipping' },
+  ],
+  china: [
+    { label: 'Expect', spoke: 'staying-connected', k: 'Firewall blocks', v: 'Google, Maps, WhatsApp, Instagram', tier: 1, theme: 'connectivity' },
+    { label: 'Do', spoke: 'visa-and-transit', k: 'Visa', v: 'Tourist (L) visa, in advance', show: 'v', tier: 1, theme: 'visa' },
+    { label: 'Carry', spoke: 'how-to-pay-in-china', k: 'Backup', v: 'Some cash and a physical card', tier: 2, theme: 'cash-need' },
+  ],
+  'sri-lanka': [
+    { label: 'Expect', spoke: 'tipping', k: 'Restaurants', v: '10% often already added, check', tier: 1, theme: 'tipping' },
+    { label: 'Do', spoke: 'taxis-and-apps', k: 'Best apps', v: 'PickMe (local) and Uber', tier: 2, theme: 'taxi' },
+    { label: 'Carry', spoke: 'cash-or-card', k: 'Cash for', v: 'Tuk-tuks, street food, temples', tier: 2, theme: 'cash-need' },
+  ],
+  namibia: [
+    { label: 'Expect', spoke: 'cash-or-card', k: 'Also spend', v: 'SA rand 1:1', tier: 1, theme: 'currency' },
+    { label: 'Do', spoke: 'taxis-and-apps', k: 'Ride apps', v: 'LEFA, Yango (no Uber)', tier: 1, theme: 'taxi' },
+    { label: 'Carry', spoke: 'cash-or-card', k: 'Cash for', v: 'Fuel and remote areas', tier: 1, theme: 'cash-need' },
+  ],
+  aruba: [
+    { label: 'Expect', spoke: 'hotel-taxes-and-fees', k: 'Resort fee', v: 'Commonly $30 to $90 a night', tier: 1, theme: 'hotel-fees' },
+    { label: 'Expect', spoke: 'tipping', k: 'Restaurants', v: 'Check for a 10 to 15% service charge', tier: 1, theme: 'tipping' },
+    { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose florin, not dollars', tier: 1, theme: 'dcc' },
+  ],
+  philippines: [
+    { label: 'Expect', spoke: 'tipping', k: 'Restaurants', v: 'Check for a 10% service charge', tier: 1, theme: 'tipping' },
+    { label: 'Withdraw', spoke: 'cash-or-card', k: 'ATMs', v: 'Low limits, about 250 peso fee', tier: 1, theme: 'atm' },
+    { label: 'Do', spoke: 'visa-and-etravel', k: 'eTravel', v: 'Free and mandatory', tier: 1, theme: 'entry-form' },
+  ],
+};
+
 // Month abbreviations as the guides write them ("Jul 2026"), spelled out for the pill so
 // a hero-fact card and a pocket card ("August 2026") do not read as two different
 // products. Expanding an abbreviation changes no fact. Anything unrecognised is passed
@@ -446,6 +753,73 @@ function rowsFromEscape(slug, fact) {
   return out;
 }
 
+// Rows from a country's spokes. THE THREE-PART MATCH TEST LIVES HERE. The spoke is
+// found by its slug, then the glance pair by its key AND its value, and all three have
+// to resolve to exactly one live line or the row is dropped. Matching on the value as
+// well as the key is what stops a relabel: if somebody rewrites "Not required, but
+// appreciated" into something firmer, the key still exists and a key-only pointer would
+// happily render the new wording under the bucket the old wording was classified into.
+// That is the pocket-index failure again in a different costume, so the value is part
+// of the anchor and a reworded line drops out and shows up in the audit.
+//
+// Sorted by tier, so when the cap bites it cuts the confirming lines before the ones
+// that overturn a costly assumption. Rows keep their theme and tier for the audit and
+// for the dedupe below; the card component reads only `label` and `text`.
+export function resolveSpokeRows(slug, country) {
+  const plan = SPOKE_ROWS[slug];
+  const spokes = country && Array.isArray(country.spokes) ? country.spokes : [];
+  if (!plan || !spokes.length) return [];
+  const out = [];
+  for (const step of plan.slice().sort((a, b) => (a.tier || 3) - (b.tier || 3))) {
+    const hitSpokes = spokes.filter(s => s && s.live !== false && s.slug === step.spoke);
+    if (hitSpokes.length !== 1) continue;
+    const glance = Array.isArray(hitSpokes[0].glance) ? hitSpokes[0].glance : [];
+    const hits = glance.filter(g => g && typeof g.k === 'string' && typeof g.v === 'string'
+      && g.k.trim() === step.k && g.v.trim() === step.v);
+    if (hits.length !== 1) continue;
+    const text = spokeText(step, hits[0]);
+    if (text.length > MAX_ROW_CHARS) continue;
+    out.push({ label: step.label, text, source: 'spokes', theme: step.theme, tier: step.tier || 3 });
+  }
+  return out;
+}
+
+// The displayed string, assembled out of the source's own two halves and nothing else.
+// The default keeps the key because most glance values lean on it ("Not required, but
+// appreciated" is not a sentence about anything). `show: 'v'` drops a key that only
+// repeats the row's label chip. No capitalisation fix: a value like "evisa.gov.vn only"
+// has to survive exactly as typed.
+function spokeText(step, pair) {
+  return step.show === 'v' ? pair.v.trim() : pair.k.trim() + ': ' + pair.v.trim();
+}
+
+// Two spokes often make one point twice: Thailand's taxis spoke and its scams spoke
+// both say to insist on the meter, and a card carrying both looks padded and reads as
+// two rules. `theme` is the hand-written key that collapses them, first row wins, and
+// because rows arrive in source-then-tier order the winner is the better-sourced or
+// more disabusing of the two. The normalised-text pass underneath it catches the case
+// where two sources happen to agree word for word.
+//
+// It does NOT dedupe a spoke row against a pocket row. Nothing mechanical can see that
+// "Do not tip. Say something instead" and "Tipping: Not customary" are the same point,
+// so that judgment is made by hand when a row is triaged into SPOKE_ROWS. If a pocket
+// later grows a rule that a spoke row already covers, the audit's card-shape listing is
+// where it shows up, not here.
+function dedupe(rows) {
+  const seenText = new Set();
+  const seenTheme = new Set();
+  const out = [];
+  for (const r of rows) {
+    const key = r.text.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+    if (seenText.has(key)) continue;
+    if (r.theme && seenTheme.has(r.theme)) continue;
+    seenText.add(key);
+    if (r.theme) seenTheme.add(r.theme);
+    out.push(r);
+  }
+  return out;
+}
+
 // The card for one country. `country` is a country object from src/data/index.js.
 // Returns null only when there is no country to describe. Everything else degrades:
 // a country with no rows still gets a valid card carrying the note and the footer.
@@ -455,10 +829,17 @@ export function verdictFor(country) {
   const pocket = moneyRules[slug] || null;
   const fact = heroFacts[slug] || null;
 
-  // The pocket is the richer source, so a country that has one is read from it alone.
-  // Mixing the two would put a pocket heading and an escape clause about the same habit
-  // on the same card, said two different ways.
-  const rows = sortRows(pocket ? rowsFromPocket(slug, pocket) : rowsFromEscape(slug, fact));
+  // SOURCE PRIORITY. The pocket is the richest source, so a country that has one leads
+  // with it and never also draws on the hero fact: mixing those two would put a pocket
+  // heading and an escape clause about the same habit on the same card, said two
+  // different ways. Spokes then fill whatever the leading source left, up to the cap.
+  //
+  // Order matters twice over. It decides which rows survive the cap (the pocket or the
+  // escape always does), and, because sortRows is stable, it decides which row leads
+  // inside a shared label, so a pocket rule still sits above a harvested glance line.
+  const lead = pocket ? rowsFromPocket(slug, pocket) : rowsFromEscape(slug, fact);
+  const filler = resolveSpokeRows(slug, country);
+  const rows = sortRows(dedupe(lead.concat(filler)).slice(0, MAX_ROWS));
 
   // The checked date is the GUIDE's own date, and only ever that. Not the pocket's
   // `checked` string, and not a hero fact's re-verify override.
@@ -470,14 +851,20 @@ export function verdictFor(country) {
   // the extra precision buys it. One date, the guide's, so the pill and the stamp agree.
   //
   // This changes nothing about where the ROWS come from: they still trace to the pocket
-  // headings or the hero escape exactly as before. The pocket is still the row source,
-  // it is just no longer the date source. Nothing is rounded to today, and a country
-  // with no date on its guide shows no pill at all rather than an invented one.
+  // headings, the hero escape or a spoke's own glance pair exactly as before. The pocket
+  // is still a row source, it is just not the date source. Nothing is rounded to today,
+  // and a country with no date on its guide shows no pill at all rather than an invented
+  // one.
   const checked = longMonth(country.checked || '');
 
-  // The note is shown when the card is genuinely short: no pocket to draw on, or fewer
-  // rows than a full card. A rich card does not need it and does not get it.
-  const thin = !pocket || rows.length < MIN_FULL_ROWS;
+  // The note is shown when the card is genuinely short, and short now means short:
+  // fewer rows than a full card, whatever they were drawn from. Under v1 this also
+  // fired on every card without a pocket, which was right when a pocketless card was
+  // one clause of a hero fact. It is no longer right: a country with four rows lifted
+  // from its own checked spokes is not a country we are still checking, and saying so
+  // under four real rules reads as false modesty rather than honesty. The wording is
+  // unchanged, and a card that the spokes leave short still says so.
+  const thin = rows.length < MIN_FULL_ROWS;
   const note = !thin
     ? null
     : rows.length > 0
@@ -492,7 +879,11 @@ export function verdictFor(country) {
     checked,
     rows,
     note,
-    source: pocket ? 'money-rules' : (rows.length ? 'hero-facts' : 'none'),
+    // The leading source, kept as v1 wrote it so anything reading `source` still reads
+    // the same thing. `sources` is the honest full list for the audit, because a card
+    // can now be fed by two of the three.
+    source: pocket ? 'money-rules' : (lead.length ? 'hero-facts' : (rows.length ? 'spokes' : 'none')),
+    sources: Array.from(new Set(rows.map(r => r.source))),
   };
 }
 
@@ -528,6 +919,68 @@ export function verdictAudit(countries) {
         }
       }
     }
+
+    // The third source gets the same treatment, and it applies to every country
+    // whether or not it has a pocket, because spokes fill behind both leading sources.
+    const spokes = Array.isArray(c.spokes) ? c.spokes : [];
+    for (const step of (SPOKE_ROWS[c.slug] || [])) {
+      const where = step.spoke + ' / ' + step.k + ': ' + step.v;
+      const hitSpokes = spokes.filter(s => s && s.live !== false && s.slug === step.spoke);
+      if (hitSpokes.length === 0) {
+        problems.push({ slug: c.slug, kind: 'spoke-not-found', detail: where });
+        continue;
+      }
+      if (hitSpokes.length > 1) {
+        problems.push({ slug: c.slug, kind: 'spoke-ambiguous', detail: where });
+        continue;
+      }
+      const glance = Array.isArray(hitSpokes[0].glance) ? hitSpokes[0].glance : [];
+      const hits = glance.filter(g => g && typeof g.k === 'string' && typeof g.v === 'string'
+        && g.k.trim() === step.k && g.v.trim() === step.v);
+      if (hits.length === 0) {
+        problems.push({ slug: c.slug, kind: 'glance-not-in-spoke', detail: where });
+      } else if (hits.length > 1) {
+        problems.push({ slug: c.slug, kind: 'glance-ambiguous', detail: where });
+      } else if (spokeText(step, hits[0]).length > MAX_ROW_CHARS) {
+        problems.push({ slug: c.slug, kind: 'spoke-row-too-long', detail: where });
+      }
+    }
+
+    // Cheap rail across all three maps: a bucket typo would otherwise sort to the front
+    // of the card and render with the wrong glyph rather than failing.
+    const labels = []
+      .concat(POCKET_ROWS[c.slug] || [], ESCAPE_ROWS[c.slug] || [], SPOKE_ROWS[c.slug] || [])
+      .map(step => step.label);
+    for (const label of labels) {
+      if (!LABEL_ORDER.includes(label)) problems.push({ slug: c.slug, kind: 'unknown-label', detail: String(label) });
+    }
   }
   return problems;
+}
+
+// Desk report, not a gate. Two things worth seeing that are not failures:
+//   `untriaged`  live spokes with no row in SPOKE_ROWS. Usually correct (a pets spoke
+//                has nothing card-shaped in it), sometimes a new wave nobody has
+//                triaged yet. Failing the build on these would mean a content wave
+//                could not land until the card caught up, which is backwards.
+//   `unused`     rows that resolve cleanly but never reach the card, because the cap
+//                cut them or a theme was already taken. Worth knowing before writing
+//                more of them.
+export function spokeReport(countries) {
+  const out = [];
+  for (const c of countries) {
+    if (!c.live) continue;
+    const spokes = (Array.isArray(c.spokes) ? c.spokes : []).filter(s => s && s.live !== false);
+    const plan = SPOKE_ROWS[c.slug] || [];
+    const used = new Set(plan.map(step => step.spoke));
+    const resolved = resolveSpokeRows(c.slug, c);
+    const shown = new Set((verdictFor(c) || { rows: [] }).rows.map(r => r.text));
+    out.push({
+      slug: c.slug,
+      untriaged: spokes.filter(s => !used.has(s.slug)).map(s => s.slug),
+      unused: resolved.filter(r => !shown.has(r.text)).map(r => r.text),
+      unresolved: plan.length - resolved.length,
+    });
+  }
+  return out;
 }

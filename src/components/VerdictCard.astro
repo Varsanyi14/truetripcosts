@@ -2,9 +2,10 @@
 // THE VERDICT CARD. A screenshot-sized summary that opens every country guide.
 //
 // It is a presentation layer and nothing else. Every line it shows is read out of
-// src/data/verdict.js, which in turn reads money-rules.js and hero-facts.js and is not
-// allowed to compose a sentence of its own. There is no copy in this file except the
-// wordmark, the subhead and the link label. See the header of verdict.js for the rails.
+// src/data/verdict.js, which in turn reads money-rules.js, hero-facts.js and the
+// country's own spokes, and is not allowed to compose a sentence of its own. There is
+// no copy in this file except the wordmark, the subhead, the line above the footer and
+// the link label. See the header of verdict.js for the rails.
 //
 // NAMING. The class prefix is `tvc`, not `verdict`: global.css already owns `.verdict`
 // for the dark "The short version" block further down the same page, and two meanings
@@ -77,10 +78,12 @@ const slugFor = (label) => label === "Don't" ? 'dont' : label.toLowerCase();
 
     {v.note && (<p class="tvc-note">{v.note}</p>)}
 
+    <p class="tvc-more">That's the short version. Below: every fee we checked, what it all adds up to, and the traps we help you dodge.</p>
+
     <div class="tvc-foot">
       <span class="tvc-mark">truetripcosts.com</span>
-      <a class="tvc-link" href="#cards">Read the full guide
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <a class="tvc-link" href="#cards">See the full breakdown
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
       </a>
     </div>
   </div>
@@ -124,6 +127,17 @@ const slugFor = (label) => label === "Don't" ? 'dont' : label.toLowerCase();
   .tvc-note{font-size:13.5px;font-style:italic;line-height:1.5;color:var(--muted);margin:14px 0 0;padding-top:13px;border-top:1px solid var(--line)}
   .tvc-rows + .tvc-note{margin-top:12px}
 
+  /* The line that points down. The card is self-contained enough that a reader can take
+     it for the whole summary and never scroll, so this names the three concrete things
+     waiting below (the fees, the total, the dodge list) rather than saying there is
+     more. Muted italic, the same voice as the note row, because it is a statement about
+     the page rather than about the country. It rides above the footer and takes over the
+     footer's top rule so the card does not end in two hairlines. */
+  .tvc-more{font-size:13.5px;font-style:italic;line-height:1.5;color:var(--muted);margin:14px 0 0;padding-top:13px;border-top:1px solid var(--line)}
+  .tvc-rows + .tvc-more{margin-top:12px}
+  /* After the note there is no rule and no gap: the two lines are one muted block. */
+  .tvc-note + .tvc-more{border-top:0;padding-top:0;margin-top:7px}
+
   /* The footer. The wordmark is the point: the card travels as a screenshot and has to
      say where it came from without any surrounding page.
      It wraps rather than breaking at a fixed width. The two items need about 294px side
@@ -133,11 +147,14 @@ const slugFor = (label) => label === "Don't" ? 'dont' : label.toLowerCase();
      allowed to wrap on its own and the link drops to a second line when it must. */
   .tvc-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:7px 12px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
   .tvc-note + .tvc-foot{border-top:0;padding-top:10px;margin-top:10px}
+  .tvc-more + .tvc-foot{border-top:0;padding-top:0;margin-top:11px}
   .tvc-mark{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.06em;color:var(--muted)}
   .tvc-link{display:inline-flex;align-items:center;gap:5px;font-size:13.5px;font-weight:600;color:var(--teal-deep);text-decoration:none;white-space:nowrap}
   .tvc-link:hover{text-decoration:underline}
+  /* The nudge goes down, matching the arrow: the link scrolls the same page, it does
+     not leave it. */
   .tvc-link svg{transition:transform .15s ease}
-  .tvc-link:hover svg{transform:translateX(2px)}
+  .tvc-link:hover svg{transform:translateY(2px)}
 
   /* Phone. The label drops under the glyph rather than holding a column, because at
      360px a 74px label column leaves the line about 22 characters and it wraps to four
