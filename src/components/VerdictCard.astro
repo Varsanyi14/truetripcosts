@@ -1,0 +1,166 @@
+---
+// THE VERDICT CARD. A screenshot-sized summary that opens every country guide.
+//
+// It is a presentation layer and nothing else. Every line it shows is read out of
+// src/data/verdict.js, which in turn reads money-rules.js and hero-facts.js and is not
+// allowed to compose a sentence of its own. There is no copy in this file except the
+// wordmark, the subhead and the link label. See the header of verdict.js for the rails.
+//
+// NAMING. The class prefix is `tvc`, not `verdict`: global.css already owns `.verdict`
+// for the dark "The short version" block further down the same page, and two meanings
+// for one class name is a trap for whoever edits next.
+//
+// THE TITLE IS NOT A HEADING. It renders as a styled paragraph rather than an h2. The
+// page's own h1 sits directly below this card, and putting a heading above it would
+// leave every guide with a heading outline that starts in the wrong place. The card is
+// a summary of the page, not a section of it.
+//
+// The element is a div rather than a section because global.css gives every `section` a
+// top border and 30px of padding, which would draw a rule across the top of the page.
+import fs from 'node:fs';
+import { verdictFor } from '../data/verdict.js';
+
+const { country } = Astro.props;
+const v = verdictFor(country);
+
+// Flags follow the same convention as the homepage, the hubs and the guide body:
+// public/flags/<slug>.svg. A country with no flag file simply renders without one
+// rather than falling back to the globe, because a generic globe on a card titled with
+// a country name is decoration standing in for information.
+const flagPath = process.cwd() + '/public/flags/' + (country && country.slug) + '.svg';
+const flag = (country && country.slug && fs.existsSync(flagPath)) ? '/flags/' + country.slug + '.svg' : null;
+
+// One small line icon per label. Drawn here rather than pulled from Symbol.astro because
+// that set is a 48px multi-colour house set built for section headers: dropped into an
+// 18px row it reads as five coloured blobs. These are single-stroke and inherit the row
+// colour, so the amber row tints its icon with it. The Withdraw glyph is the same bank
+// path the guide's own sources list already uses.
+const ICONS = {
+  'Do': '<rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19"/><path d="M6 15h4"/>',
+  'Carry': '<rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 9.5h.01M18 14.5h.01"/>',
+  'Withdraw': '<path d="M3 21h18"/><path d="M4 10h16"/><path d="M6 10v11M10 10v11M14 10v11M18 10v11"/><path d="M12 3 4 8h16z"/>',
+  "Don't": '<circle cx="12" cy="12" r="9"/><path d="M5.6 5.6 18.4 18.4"/>',
+  'Expect': '<path d="M5 3h14v18l-2.4-1.5L14.2 21l-2.2-1.5L9.8 21l-2.4-1.5L5 21z"/><path d="M9 8.5h6M9 12.5h6"/>',
+};
+const iconFor = (label) => ICONS[label] || ICONS['Do'];
+const slugFor = (label) => label === "Don't" ? 'dont' : label.toLowerCase();
+---
+{v && (
+  <div class="tvc">
+    <div class="tvc-head">
+      {flag && (<span class="tvc-flag" aria-hidden="true"><img src={flag} alt="" width="30" height="21" /></span>)}
+      <div class="tvc-id">
+        <p class="tvc-title">{v.title}</p>
+        <p class="tvc-sub">{v.subhead}</p>
+      </div>
+      {v.checked && (
+        <span class="tvc-pill">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+          checked {v.checked}
+        </span>
+      )}
+    </div>
+
+    {v.rows.length > 0 && (
+      <ul class="tvc-rows">
+        {v.rows.map(r => (
+          <li class={'tvc-row tvc-' + slugFor(r.label)}>
+            <span class="tvc-ic" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><Fragment set:html={iconFor(r.label)} /></svg>
+            </span>
+            <span class="tvc-lab">{r.label}</span>
+            <span class="tvc-tx">{r.text}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+
+    {v.note && (<p class="tvc-note">{v.note}</p>)}
+
+    <div class="tvc-foot">
+      <span class="tvc-mark">truetripcosts.com</span>
+      <a class="tvc-link" href="#cards">Read the full guide
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+)}
+
+<style>
+  /* The card. Paper-white on the site's paper background, one hairline border and the
+     shared shadow, so it sits in the same family as the guide's other cards rather than
+     announcing itself. Nothing here is an image: the only art is the five row glyphs. */
+  .tvc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px 22px 16px;margin:22px 0 26px}
+
+  .tvc-head{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}
+  .tvc-flag{flex:none;width:30px;height:21px;margin-top:5px;border-radius:3px;overflow:hidden;box-shadow:0 0 0 1px rgba(22,48,44,.10)}
+  .tvc-flag img{width:100%;height:100%;display:block;object-fit:cover}
+  .tvc-id{flex:1;min-width:0}
+  /* Serif, matching the guide's own headings. Not an h2: see the note in the frontmatter. */
+  .tvc-title{font-family:var(--serif);font-weight:500;font-size:23px;line-height:1.15;letter-spacing:-.01em;color:var(--ink);margin:0}
+  .tvc-sub{font-size:13.5px;color:var(--muted);margin:3px 0 0;line-height:1.3}
+  /* The checked pill, built on the same treatment as the guide's `.stamp`. */
+  .tvc-pill{flex:none;display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:#10502C;background:var(--green-bg);border-radius:999px;padding:4px 10px;margin-top:4px;white-space:nowrap}
+
+  .tvc-rows{list-style:none;margin:16px 0 0;padding:0}
+  /* Three columns: glyph, label, line. The label is a topic chip, so it holds its own
+     column and the lines stack into one readable left edge. */
+  .tvc-row{display:grid;grid-template-columns:20px 74px 1fr;align-items:baseline;gap:0 10px;padding:9px 10px;margin:0 -10px;border-radius:9px}
+  .tvc-row + .tvc-row{box-shadow:inset 0 1px 0 var(--line)}
+  .tvc-ic{color:var(--teal);align-self:center;display:flex}
+  .tvc-ic svg{display:block}
+  .tvc-lab{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--teal-deep);align-self:center}
+  .tvc-tx{font-size:15px;line-height:1.4;color:var(--ink)}
+
+  /* The caution row. Amber, which is the site's caution tint, never red: the card is a
+     briefing, not a warning. The tint sits behind the whole row so it reads at a glance
+     in a screenshot, and the border above it is suppressed so the block stays clean. */
+  .tvc-dont{background:var(--amber-bg)}
+  .tvc-dont .tvc-ic,.tvc-dont .tvc-lab{color:var(--amber)}
+  .tvc-dont,.tvc-dont + .tvc-row{box-shadow:none}
+
+  /* The honest note. Muted italic, no tint and no icon: it is a statement about our own
+     coverage, not a caution about the country. */
+  .tvc-note{font-size:13.5px;font-style:italic;line-height:1.5;color:var(--muted);margin:14px 0 0;padding-top:13px;border-top:1px solid var(--line)}
+  .tvc-rows + .tvc-note{margin-top:12px}
+
+  /* The footer. The wordmark is the point: the card travels as a screenshot and has to
+     say where it came from without any surrounding page.
+     It wraps rather than breaking at a fixed width. The two items need about 294px side
+     by side, which is more than a 320 or 360px phone gives them, and the exact figure
+     moves with whichever font actually loads. A breakpoint tuned to one measurement
+     would clip the wordmark the first time Plex Mono was substituted, so the row is
+     allowed to wrap on its own and the link drops to a second line when it must. */
+  .tvc-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:7px 12px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+  .tvc-note + .tvc-foot{border-top:0;padding-top:10px;margin-top:10px}
+  .tvc-mark{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.06em;color:var(--muted)}
+  .tvc-link{display:inline-flex;align-items:center;gap:5px;font-size:13.5px;font-weight:600;color:var(--teal-deep);text-decoration:none;white-space:nowrap}
+  .tvc-link:hover{text-decoration:underline}
+  .tvc-link svg{transition:transform .15s ease}
+  .tvc-link:hover svg{transform:translateX(2px)}
+
+  /* Phone. The label drops under the glyph rather than holding a column, because at
+     360px a 74px label column leaves the line about 22 characters and it wraps to four
+     lines. Stacked, every rule reads on one or two lines and the card stays screenshot
+     shaped. */
+  @media (max-width:520px){
+    .tvc{padding:17px 16px 13px}
+    .tvc-title{font-size:20px}
+    /* The head becomes a grid on phones. As a wrapping flexbox the pill would sit
+       beside the title and squeeze it to three lines; here it gets a row of its own and
+       still hugs its own text rather than stretching into a full-width green bar. */
+    .tvc-head{display:grid;grid-template-columns:auto 1fr;gap:0 10px;align-items:start}
+    .tvc-flag{grid-row:1;grid-column:1;margin-top:4px}
+    .tvc-id{grid-row:1;grid-column:2}
+    .tvc-pill{grid-row:2;grid-column:1 / -1;justify-self:start;margin-top:11px}
+    .tvc-row{grid-template-columns:20px 1fr;gap:2px 9px;padding:9px 8px;margin:0 -8px}
+    .tvc-lab{grid-column:2}
+    .tvc-tx{grid-column:2;font-size:14.5px}
+    .tvc-ic{grid-row:1 / span 2;align-self:start;margin-top:1px}
+    .tvc-foot{gap:8px}
+    .tvc-link{font-size:13px}
+  }
+  @media (max-width:345px){
+    .tvc-mark{font-size:10.5px;letter-spacing:.05em}
+  }
+</style>

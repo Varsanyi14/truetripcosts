@@ -2,6 +2,7 @@
 import Symbol from './Symbol.astro';
 import MonthStrip from './MonthStrip.astro';
 import CountryDoor from './CountryDoor.astro';
+import VerdictCard from './VerdictCard.astro';
 import GutPunch from './GutPunch.astro';
 import BreadthReveal from './BreadthReveal.astro';
 import ArrivalClosingThesis from './ArrivalClosingThesis.astro';
@@ -306,6 +307,7 @@ const kfState = (f) => {
   {regionHubLive && (<Fragment><a href={'/' + regionHub.slug}>{regionHub.label}</a><span class="crumb-sep" aria-hidden="true">&#8250;</span></Fragment>)}
   <span aria-current="page">{c.name}</span>
 </nav>
+<VerdictCard country={c} />
 <div class={"hero" + (c.hero && c.hero.img ? "" : " solo")}>
   <div class="hcopy">
     <div class="ctx">
