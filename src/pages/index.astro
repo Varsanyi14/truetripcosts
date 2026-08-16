@@ -279,8 +279,15 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
       var items = Array.prototype.slice.call(listEl.querySelectorAll('.hero-ta-item'));
       var active = -1;
 
+      // Reads the row order from the DOM rather than from the static `items` array,
+      // because run() now re-ranks the panel by moving rows. Everything downstream reads
+      // its order from here (arrow keys, Enter's single-match confirm, the button's top
+      // match, the mousemove index), so this has to agree with what the visitor is
+      // actually looking at. Filtering `items` instead would leave those reading the
+      // original data order while the panel rendered the ranked one.
       function visible() {
-        return items.filter(function (it) { return !it.classList.contains('is-hidden'); });
+        var rows = Array.prototype.slice.call(listEl.querySelectorAll('.hero-ta-item'));
+        return rows.filter(function (it) { return !it.classList.contains('is-hidden'); });
       }
       function clearActive() {
         for (var i = 0; i < items.length; i++) items[i].classList.remove('is-active');
@@ -288,6 +295,31 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
       }
       function openPanel() { panel.hidden = false; hero.setAttribute('aria-expanded', 'true'); }
       function closePanel() { panel.hidden = true; hero.setAttribute('aria-expanded', 'false'); clearActive(); }
+
+      // Orders the matching rows the way someone typing expects to read them. The match
+      // test above stays exactly as forgiving as it was; this only decides who goes first.
+      // Three tiers, alphabetical inside each: the country NAME starts with what was
+      // typed, then the name merely contains it, then rows that matched on an alias alone.
+      // Tiering on the name and not on the data-name blob is the whole trick, since that
+      // blob is the name plus every alias and matches far too easily to rank on.
+      //
+      // This RANKS, it never RESTRICTS. An alias-only save still appears, just below any
+      // real name match, so "chinatown" still reaches Singapore and "prague" still reaches
+      // Czechia. Demoting them only stops them crowding out the country someone actually
+      // spelled. appendChild on a row already in the list MOVES it, so the panel is
+      // reordered in place: no clones, no rebuild, no duplicated rows across keystrokes.
+      function rank(q) {
+        var rows = visible().map(function (el) {
+          var span = el.querySelector('.hero-ta-name');
+          var nm = norm(span ? span.textContent.trim() : '');
+          return { el: el, name: nm, tier: nm.indexOf(q) === 0 ? 0 : (nm.indexOf(q) !== -1 ? 1 : 2) };
+        });
+        rows.sort(function (a, b) {
+          if (a.tier !== b.tier) return a.tier - b.tier;
+          return a.name < b.name ? -1 : (a.name > b.name ? 1 : 0);
+        });
+        for (var k = 0; k < rows.length; k++) listEl.appendChild(rows[k].el);
+      }
 
       function run() {
         var q = norm(hero.value.trim());
@@ -300,6 +332,7 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
         }
         clearActive();
         if (noneEl) noneEl.hidden = shown !== 0;
+        rank(q);
         openPanel();
       }
 
