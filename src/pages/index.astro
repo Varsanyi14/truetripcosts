@@ -202,7 +202,14 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
        so the button stays a full-width target. */
     .entry-row{display:flex;align-items:stretch;gap:10px;max-width:560px}
     .entry-row .hero-search{margin:0;flex:1 1 auto;min-width:0}
-    .entry-go{flex:none;padding:0 20px;font-size:15px;font-weight:600;background:var(--teal-deep,#0A5644);border-color:var(--teal-deep,#0A5644);box-shadow:0 1px 2px rgba(10,86,68,.12),0 8px 20px rgba(10,86,68,.16)}
+    /* min-height stops the button collapsing when the row stacks. On desktop the row is
+       align-items:stretch, so the button already takes the row's height (the input's
+       ~49.6px box: 1rem text at line-height 1.6, plus 11px padding and a 1px border top
+       and bottom) and this floor never applies. Under 560px the row turns into a column,
+       stretch stops governing the cross axis, and the button had only horizontal padding
+       to give it height. 48px sits just under the input rather than over it, so the two
+       read as the same control in both layouts. */
+    .entry-go{flex:none;min-height:48px;padding:0 20px;display:inline-flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;background:var(--teal-deep,#0A5644);border-color:var(--teal-deep,#0A5644);box-shadow:0 1px 2px rgba(10,86,68,.12),0 8px 20px rgba(10,86,68,.16)}
     .entry-go:hover{background:#084736;border-color:#084736}
     .entry-go svg{transition:transform .15s ease}
     .entry-go:hover svg{transform:translateX(3px)}
@@ -212,7 +219,11 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
     }
 
     /* The acronym is defined once, next to its only use, via what the button does. */
-    .entry-def{margin:9px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted,#6F6E66);max-width:56ch}
+    /* The quietest line in the entry, on purpose: headline, then support line, then this.
+       12px with a touch of opacity puts a visible step between it and .entry-sub above,
+       which at 15px was reading as a second support line rather than a footnote. Do not
+       go smaller or fainter than this: it still has to be read once. */
+    .entry-def{margin:9px 0 0;font-size:12px;line-height:1.5;color:var(--muted,#6F6E66);opacity:.85;max-width:56ch}
 
     /* The one subordinate way through for an undecided visitor. A text line on purpose:
        not a button, not a card, nothing that competes with the action above it. These
