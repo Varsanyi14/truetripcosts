@@ -413,6 +413,21 @@ export const ESCAPE_ROWS = {
 // only the first row of a theme is shown. It does NOT dedupe against pocket rows,
 // which cannot be matched by string: that judgment was made by hand at triage time,
 // which is why no row below repeats a point its country's pocket already makes.
+//
+// DELIBERATELY NOT HARVESTED, recorded so the next person does not read a gap as an
+// oversight. check-verdict section 7 lists every untriaged spoke as a note, and these
+// three will show up there forever. They are decisions, not to-dos.
+//   dominican-republic/hotel-taxes-and-fees  The pocket already says "The menu price is
+//     about a quarter off the truth", which is the same 28% arithmetic the glance states.
+//     Pocket wins on a shared theme, and the remaining glance lines are thin. Nothing.
+//   bahrain/hotel-taxes-and-fees   A strong fact ("About 25%, plus a flat fee"), held on
+//     card SHAPE rather than content: that card already carries three Expect rows, and a
+//     fourth in six turns a card into a list of warnings. Every hotel-tax line is an
+//     Expect by nature, so the harvest cannot balance itself, and the cap has to.
+//   oman/hotel-taxes-and-fees      Same reason, and the weaker fact of the two: 14% is
+//     the smallest stack in the wave and the card already has a service-charge Expect.
+// If either Bahrain or Oman later gains a Do or Carry row from another source, the tax
+// row becomes affordable and is worth revisiting.
 // ---------------------------------------------------------------------------
 export const SPOKE_ROWS = {
   // Countries with a money-rules pocket. The pocket leads and these fill at most
@@ -443,6 +458,11 @@ export const SPOKE_ROWS = {
   ],
   mexico: [
     { label: 'Expect', spoke: 'fmm-and-visitax', k: 'Visitax', v: 'Quintana Roo only, ~283 pesos', tier: 1, theme: 'entry-fee' },
+    // Different theme from the Visitax row above: that is a one-time entry fee, this is tax on
+    // the room. 'About a fifth' is vaguer than the other percentage rows on purpose, because
+    // the state lodging tax genuinely runs 2 to 5% and a single national figure would be
+    // fabricated precision. Hedged at source, so hedged here.
+    { label: 'Expect', spoke: 'hotel-taxes-and-fees', k: 'On top of the room', v: 'About a fifth', tier: 1, theme: 'hotel-bill' },
   ],
   canada: [
     { label: 'Do', spoke: 'staying-connected', k: 'Check first', v: 'Your US plan, Canada is often bundled', tier: 1, theme: 'connectivity' },
@@ -455,6 +475,11 @@ export const SPOKE_ROWS = {
   ],
   jamaica: [
     { label: 'Do', spoke: 'taxis-and-apps', k: 'No Uber', v: 'Use a licensed red-plate taxi', tier: 1, theme: 'taxi' },
+    // The only forward-dated row on any card, and it changes a 2027 booking decision.
+    // Deliberate consequence: when the rate actually moves in April 2027 the glance gets
+    // reworded, this anchor stops resolving, and the row DROPS itself while check-verdict
+    // reports it. The card gets shorter on a known date rather than carrying a stale one.
+    { label: 'Expect', spoke: 'hotel-taxes-and-fees', k: 'Tourism GCT', v: '10% now, 15% from Apr 2027', tier: 1, theme: 'hotel-bill' },
   ],
   india: [
     { label: 'Do', spoke: 'e-visa', k: 'Where', v: 'indianvisaonline.gov.in only', tier: 1, theme: 'visa-site' },
@@ -470,6 +495,11 @@ export const SPOKE_ROWS = {
   ],
   uae: [
     { label: 'Expect', spoke: 'visa', k: 'Visa', v: 'Free on arrival, nothing to apply for', tier: 1, theme: 'visa' },
+    // Not the size of the bill, which the pocket already makes as 'The room rate is not the
+    // room bill'. This is the refund direction, and it is the negation trap in its purest
+    // form: the UAE runs a famous visitor refund through Planet, so a traveller reasonably
+    // assumes hotel VAT is reclaimable. It is not. Verbatim, so the 'not' survives.
+    { label: 'Expect', spoke: 'hotel-taxes-and-fees', k: 'VAT', v: '5%, and not reclaimable on hotels', tier: 1, theme: 'vat' },
   ],
   oman: [
     { label: 'Expect', spoke: 'taxis-and-apps', k: 'Uber', v: 'Does not operate in Oman', tier: 1, theme: 'taxi' },
@@ -482,6 +512,12 @@ export const SPOKE_ROWS = {
   ],
   'saudi-arabia': [
     { label: 'Expect', spoke: 'visa', k: 'Visa', v: 'Required, and it costs', tier: 1, theme: 'visa' },
+    // The pocket already says 'Budget for the highest VAT in the Gulf', so the 15% glance line
+    // is out as a duplicate and the roughly 20% total is too close to call. This one is
+    // unambiguously additive: nothing else on the card mentions a second levy, and the
+    // star-rating split is the least-known thing about a Saudi room bill. Tier 2 rather than
+    // 1, because it is surprising rather than belief-correcting.
+    { label: 'Expect', spoke: 'hotel-taxes-and-fees', k: 'Municipality levy', v: '5%, or 2.5% lower down', tier: 2, theme: 'hotel-bill' },
   ],
   kuwait: [
     { label: 'Expect', spoke: 'taxis-and-apps', k: 'Uber', v: 'Contested, do not rely on it', tier: 1, theme: 'taxi' },
@@ -491,6 +527,12 @@ export const SPOKE_ROWS = {
   ],
   bahamas: [
     { label: 'Expect', spoke: 'taxis-and-apps', k: 'Uber and Lyft', v: 'Neither operates here', tier: 1, theme: 'taxi' },
+    // The strongest row the hotel-taxes wave produced. Nothing else on this card says the room
+    // carries tax at all, and 21% is both specific and geographically qualified. Note what is
+    // NOT taken: 'Resort fee: Set per property, often steep' carries no figure, so as a row it
+    // says almost nothing. The hedging that makes it honest in the spoke is what disqualifies
+    // it here, which is the rail working rather than a gap.
+    { label: 'Expect', spoke: 'hotel-taxes-and-fees', k: 'On top of the room', v: 'About 21% around Nassau', tier: 1, theme: 'hotel-bill' },
   ],
   turkey: [
     { label: 'Expect', spoke: 'visa', k: 'e-Visa', v: 'Not needed, US citizens are exempt', tier: 1, theme: 'visa' },
@@ -662,6 +704,12 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'hotel-taxes-and-fees', k: 'Resort fee', v: 'Commonly $30 to $90 a night', tier: 1, theme: 'hotel-fees' },
     { label: 'Expect', spoke: 'tipping', k: 'Restaurants', v: 'Check for a 10 to 15% service charge', tier: 1, theme: 'tipping' },
     { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose florin, not dollars', tier: 1, theme: 'dcc' },
+    // The thinnest card in the set at four rows, and its two free slots are better spent
+    // off the ED card spoke than on a third hotel-bill row: the fee is a genuine surprise
+    // (once per CALENDAR YEAR, not per trip) and the portal row is an anti-scam fact, since
+    // third-party ED card sites resell the free form at a markup.
+    { label: 'Expect', spoke: 'visa-and-ed-card', k: 'The fee', v: '$20, once per calendar year', tier: 1, theme: 'entry-fee' },
+    { label: 'Do', spoke: 'visa-and-ed-card', k: 'Where', v: 'edcardaruba.aw, nowhere else', tier: 1, theme: 'official-site' },
   ],
   philippines: [
     { label: 'Expect', spoke: 'tipping', k: 'Restaurants', v: 'Check for a 10% service charge', tier: 1, theme: 'tipping' },
