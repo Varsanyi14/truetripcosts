@@ -85,9 +85,14 @@ export default {
   },
 
   tax: {
-    none: true,
+    unit: "percentOfRoom",
     currency: "JMD",
-    note: "Jamaica has no simple per-person nightly tourist tax to add at the desk. What you will see instead: the 15% General Consumption Tax (GCT) on restaurant and shop bills, a lower tourism GCT rate on hotels, still 10% today and legislated to rise to 15% from 1 April 2027, a small flat Guest Accommodation Room Tax of about 1 to 4 US dollars per room per night by hotel size, and sometimes a resort fee. Arrival and departure taxes are almost always built into your airfare."
+    capNights: null,
+    note: "Jamaica has no per-person nightly bed tax. On a hotel room you pay the lower tourism rate of General Consumption Tax, still 10% today and legislated to rise to 15% from 1 April 2027, plus a small flat Guest Accommodation Room Tax set by the size of the property: US$1 per room per night up to 50 rooms, US$2 from 51 to 100, and US$4 at 101 rooms and above. This models the 10%, so add the flat room tax on top. Restaurant and shop bills carry the standard 15% GCT. Some resorts add a resort fee of their own. Arrival and departure taxes are almost always built into your airfare.",
+    regions: [
+      { key: "hotel", label: "Hotel room (10% tourism GCT)", pct: 10, note: "The lower tourism GCT rate, 10% today and legislated to reach 15% on 1 April 2027. On top of it sits the Guest Accommodation Room Tax, a flat US$1 to US$4 per room per night depending on how many rooms the property has, which the calculator does not model, so add roughly a dollar or two a night for a small place and 4 dollars at a large resort. A resort fee, where one applies, is the property's own and is not included." },
+      { key: "restaurant", label: "Restaurant meal or shopping (15% GCT)", pct: 15, note: "The standard 15% GCT applies outside the tourism concession, so restaurant and shop bills carry the full rate. Many restaurant bills also add a service charge of around 10%, which is the establishment's own rather than a tax." }
+    ]
   },
 
   currencyHeading: "The Jamaican dollar, in plain terms.",
@@ -101,7 +106,7 @@ export default {
   taxfree: {
     label: "Taxes and fees",
     heading: "The taxes on your bill, and the ones already in your airfare.",
-    text: "Jamaica has <b>no simple per-person nightly tourist tax</b> to hand over at the desk, but a few charges are worth knowing. Restaurant and shop bills carry the <b>15% General Consumption Tax (GCT)</b>, Jamaica's version of VAT, usually shown on the bill. Hotels pay a <b>lower tourism GCT rate</b>, which is <b>still 10% today</b>. It is legislated to rise to the standard <b>15% from 1 April 2027</b>, phased in, and the hotel industry is contesting it, so a trip before that date is not paying the higher rate. On top of that, hotels charge a small flat <b>Guest Accommodation Room Tax</b> of roughly <b>1 to 4 US dollars per room per night</b> depending on the property's size, and some resorts add a <b>resort fee</b>. The good news on entry and exit: Jamaica's <b>arrival and departure taxes</b> (its Tourism Enhancement Fee and airport taxes) are <b>almost always built into your airfare</b>, so you should not be paying them separately at the airport, though it is worth confirming with your airline. There is no tourist VAT-refund scheme on shopping, so there is nothing to reclaim when you leave."
+    text: "Jamaica has <b>no simple per-person nightly tourist tax</b> to hand over at the desk, but a few charges are worth knowing. Restaurant and shop bills carry the <b>15% General Consumption Tax (GCT)</b>, Jamaica's version of VAT, usually shown on the bill. Hotels pay a <b>lower tourism GCT rate</b>, which is <b>still 10% today</b>. It is legislated to rise to the standard <b>15% from 1 April 2027</b>, phased in, and the hotel industry is contesting it, so a trip before that date is not paying the higher rate. On top of that, hotels charge a small flat <b>Guest Accommodation Room Tax</b>, set by property size: <b>US$1 per room per night up to 50 rooms</b>, <b>US$2</b> from 51 to 100, and <b>US$4</b> at 101 rooms and above, and some resorts add a <b>resort fee</b>. The good news on entry and exit: Jamaica's <b>arrival and departure taxes</b> (its Tourism Enhancement Fee and airport taxes) are <b>almost always built into your airfare</b>, so you should not be paying them separately at the airport, though it is worth confirming with your airline. There is no tourist VAT-refund scheme on shopping, so there is nothing to reclaim when you leave."
   },
 
   traps: [
@@ -121,7 +126,7 @@ export default {
       { label: "Tax Administration Jamaica: the 15% General Consumption Tax (GCT)", url: "https://www.jamaicatax.gov.jm/", type: "revenue" },
       { label: "Jamaica Information Service: the 2026 to 2027 revenue measures legislating the tourism GCT rise from 10% to 15%, effective 1 April 2027", url: "https://jis.gov.jm/govt-projects-29-4b-from-new-revenue-measures-in-fiscal-year-2026-27/", type: "gov" },
     ],
-    judgment: "The small flat room tax of roughly 1 to 4 US dollars per room per night, the resort-fee habit, and the daily cash share, tipping norms and likely ATM behavior are our own read from recent traveler and bank reports, not a single official table.",
+    judgment: "The Guest Accommodation Room Tax tiers are now confirmed against Tax Administration Jamaica's own guidance rather than inferred, so they are no longer our estimate. Note that TAJ's published table overlaps at 51 rooms, printing the lowest band as 1 to 51 and the next as 51 to 100; we use up to 50 rooms for the lowest band, which matches the original 2012 measure. The resort-fee habit, the daily cash share, tipping norms and likely ATM behavior remain our own read from recent traveler and bank reports.",
   },
 
   faqs: [
@@ -440,6 +445,81 @@ export default {
           { label: "US Department of State: the country information pages, the official router for entry requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
         ],
         judgment: "Jamaica's visa-free entry for US citizens is stable, and the online C5 declaration is a standing, mandatory requirement in 2026, not a pandemic leftover. The form is free; only the official government site is legitimate. Stay length is set by the officer on arrival. Checked July 2026."
+      }
+    },
+    {
+      slug: "hotel-taxes-and-fees",
+      glance: [
+        { k: "On top of the room", v: "10% GCT plus a flat fee" },
+        { k: "Tourism GCT", v: "10% now, 15% from Apr 2027" },
+        { k: "Room tax", v: "US$1 to US$4 a night" },
+        { k: "Charged", v: "Per room, not per person" }
+      ],
+      live: true,
+      topic: "taxes",
+      title: "Jamaica hotel taxes and fees: the 10% and the room tax",
+      description: "A Jamaica hotel bill adds the 10% tourism GCT plus a flat room tax of US$1 to US$4 a night. The GCT is legislated to reach 15% in April 2027. Checked 2026.",
+      h1: "Jamaica hotel taxes and fees, explained",
+      lede: "Short answer: less than most of the Caribbean today, and more from April 2027. Jamaica charges hotels a reduced rate of its sales tax plus a small flat nightly room tax, and the reduced rate is legislated to disappear. Here is what stacks now, what changes, and why the date matters more than the amount.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-17",
+      answer: "Two government charges sit on a Jamaica room rate. The <b>General Consumption Tax</b>, Jamaica's sales tax, which is <b>15% as standard</b> but charged to hotels and tourism businesses at a reduced <b>10%</b>. And the <b>Guest Accommodation Room Tax</b>, a flat charge set by the size of the property: <b>US$1 per room per night up to 50 rooms</b>, <b>US$2</b> from 51 to 100 rooms, and <b>US$4</b> at 101 rooms and above. Both are charged <b>per room, not per person</b>, and GCT is <b>not</b> charged on the room tax, so nothing compounds here. The reduced 10% tourism rate is <b>legislated to rise to 15% on 1 April 2027</b>, though the industry is contesting it and the path is not settled. Arrival and departure taxes are almost always <b>inside your airfare</b>. There is <b>no VAT refund</b> on shopping.",
+      official: {
+        label: "Tax Administration Jamaica: the Guest Accommodation Room Tax rates and rules",
+        url: "https://www.jamaicatax.gov.jm/guest-accommodation-room-tax1",
+        note: "TAJ publishes the room tax tiers, the per-room basis, the exemptions and the rule that GCT is not charged on it. Note that TAJ's own table overlaps at 51 rooms; we use up to 50 for the lowest band, matching the original measure. Resort fees are set by each property."
+      },
+      sections: [
+        {
+          h: "The tourism GCT: 10% today, and a date on the calendar",
+          icon: "receipt",
+          key: { fig: "10%", tag: "Reduced, for now", text: "Hotels pay a concessional 10% rather than the standard 15%. That concession is legislated to end on 1 April 2027, which makes the date matter more than the rate.", tone: "teal" },
+          p: [
+            "Jamaica's <b>General Consumption Tax</b> is <b>15% as standard</b>, but hotels and other tourism businesses have long paid a reduced effective rate of about <b>10%</b>. That is what sits on a room rate today, and it is why a Jamaica hotel bill currently stacks less than a Dominican one at 28% or a Nassau one at about 21%.",
+            "The concession is going. Following Hurricane Melissa in late 2025, the 2026 to 2027 revenue measures legislated the tourism rate up to the standard <b>15%</b>, effective <b>1 April 2027</b>, with the delay explicitly intended to give the industry time to recover. So a trip taken before that date pays 10%, and a trip after it is budgeted at 15% unless something changes."
+          ]
+        },
+        {
+          h: "Whether it actually reaches 15% is not settled",
+          icon: "alert",
+          key: { tag: "An endpoint, not a guarantee", text: "The measure has passed and the date is real, but the hotel association is formally opposed and has been meeting the government through 2026. Treat 15% as the legislated endpoint rather than a certainty.", tone: "amber" },
+          p: [
+            "This is worth saying plainly rather than presenting 15% as a settled fact. The increase <b>passed Parliament</b> as part of the 2026 to 2027 revenue package and the <b>1 April 2027 date is real</b>. But the <b>Jamaica Hotel and Tourist Association has formally rejected it</b>, arguing the cost cannot simply be passed to visitors when contracts already extend into 2027, and it has been meeting the finance minister and the Prime Minister through 2026 with no compromise announced.",
+            "There is one further ambiguity we could not resolve. Reputable Jamaican reporting describes the increase as <b>phased in over two fiscal years</b>, but no source publishes intermediate rates, and other accounts describe it as a single step to 15%. It is possible the phasing refers to the revenue profile rather than the rate. We are not going to invent a waypoint: <b>10% now, 15% legislated for 1 April 2027, exact path unconfirmed</b>. If you are booking for 2027 or later, budget 15% and treat anything lower as a bonus."
+          ]
+        },
+        {
+          h: "The room tax is flat, per room, and set by the hotel's size",
+          icon: "coins",
+          key: { fig: "US$1 to $4", tag: "By property size", text: "A flat nightly charge scaled to how many rooms the property has, not to what you paid. It is charged per room rather than per person, so two people in one room pay it once.", tone: "teal" },
+          p: [
+            "The <b>Guest Accommodation Room Tax</b> is a flat charge on every occupied room each night, and the rate depends on <b>how big the property is</b>, not what your room costs: <b>US$1</b> up to 50 rooms, <b>US$2</b> from 51 to 100 rooms, and <b>US$4</b> at 101 rooms and above. A large all-inclusive is therefore at the top band and a small guesthouse at the bottom. Unusually, the tiers are <b>set in US dollars</b> in the legislation itself and converted monthly at the Bank of Jamaica rate, so for a US traveller these are exact figures rather than currency approximations.",
+            "Three details that work in your favour. It is charged <b>per room, not per person</b>, so a couple sharing pays once and a family in one room pays once. <b>GCT is not charged on it</b>, so unlike the Bahamas, where VAT applies to the area levies and the pieces compound, nothing stacks on top of this. And a stay of more than <b>60 unbroken nights</b> is reclassified as residential and stops attracting the tax from the 61st night. It does apply to complimentary rooms, which is why a free night on points can still show a small charge."
+          ]
+        },
+        {
+          h: "Resort fees, all-inclusives, and nothing to reclaim",
+          icon: "usd",
+          key: { fig: "No refund", tag: "Nothing to claim back", text: "Some resorts add a fee of their own, set per property. There is no tourist VAT-refund scheme in Jamaica, so the GCT you pay is a cost rather than something recoverable at the airport.", tone: "amber" },
+          p: [
+            "Beyond the two government charges, <b>some resorts add a resort fee</b>. This is the property's own, it is not a tax, and there is no standard figure, so read the fees section of your own booking. Many <b>all-inclusive</b> properties fold the taxes and gratuities into the package price instead, and a good number formally ask guests not to tip, which means the comparison worth making is the <b>all-in total</b> rather than the nightly rate. See the <a href=\"/jamaica/tipping\">Jamaica tipping guide</a> for how that policy works in practice.",
+            "Two closing points. Jamaica's <b>arrival and departure taxes</b>, its Tourism Enhancement Fee and airport charges, are <b>almost always built into your airfare</b>, so you should not be paying them at the airport, though it is worth confirming with your airline. And there is <b>no tourist VAT-refund scheme</b> here, so the GCT is simply part of the price with nothing to reclaim on the way out. For cards, cash and why paying in US dollars quietly costs you, see the <a href=\"/jamaica\">Jamaica money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much tax is on a hotel room in Jamaica?", a: "Today, 10% General Consumption Tax at the reduced tourism rate, plus a flat Guest Accommodation Room Tax of US$1 per room per night at properties up to 50 rooms, US$2 from 51 to 100 rooms, and US$4 at 101 rooms and above. Both are charged per room rather than per person, and GCT is not charged on the room tax. Some resorts add a resort fee of their own on top, which is not a tax." },
+        { q: "Is Jamaica's hotel tax going up to 15%?", a: "That is the legislation. The reduced 10% tourism rate is set to rise to the standard 15% on 1 April 2027, passed as part of the 2026 to 2027 revenue measures after Hurricane Melissa. It has not happened yet, so a trip before that date pays 10%. The hotel association is formally contesting the increase and reporting describes it as phased over two fiscal years without publishing intermediate rates, so treat 15% as the legislated endpoint rather than a certainty." },
+        { q: "What is the Guest Accommodation Room Tax in Jamaica?", a: "A flat government charge on each occupied room per night, scaled to the size of the property rather than the price of the room: US$1 up to 50 rooms, US$2 from 51 to 100, US$4 at 101 and above. The tiers are set in US dollars in the legislation. It is charged per room, not per person, it applies to complimentary rooms, and a stay of more than 60 unbroken nights stops attracting it from the 61st night." },
+        { q: "Do I pay the room tax per person in Jamaica?", a: "No, per room per night. Tax Administration Jamaica states this directly: two people booked into one room are charged once, not twice. That is worth knowing if you are comparing Jamaica against the Bahamas, where some resorts charge mandatory gratuities per person per night instead, which behaves very differently for a family." },
+        { q: "Can I claim a tax refund when leaving Jamaica?", a: "No. There is no tourist VAT or GCT refund scheme in Jamaica, so the tax you pay on hotels, meals and shopping is simply part of the price. On the other hand, the arrival and departure taxes are almost always already inside your airfare, so you should not owe anything extra at the airport when you fly home." }
+      ],
+      sources: {
+        links: [
+          { label: "Tax Administration Jamaica: the Guest Accommodation Room Tax rates, per-room basis and exemptions", url: "https://www.jamaicatax.gov.jm/guest-accommodation-room-tax1", type: "revenue" },
+          { label: "Jamaica Information Service: the 2026 to 2027 revenue measures raising the tourism GCT to 15% from 1 April 2027", url: "https://jis.gov.jm/govt-projects-29-4b-from-new-revenue-measures-in-fiscal-year-2026-27/", type: "gov" }
+        ],
+        judgment: "The room tax tiers, the per-room basis, the 60-night residential rule and the fact that GCT is not charged on the room tax all come from Tax Administration Jamaica's own guidance. One caveat on that source: TAJ's published table overlaps at 51 rooms, printing the lowest band as 1 to 51 and the next as 51 to 100, so we use up to 50 rooms for the lowest band, which matches the 2012 measure that introduced the tax. The current tourism GCT rate of about 10% is confirmed by international tax practices rather than a single official rate table. On the 2027 increase, the measure and the 1 April 2027 date are well reported, but the phasing is genuinely unresolved: Jamaican reporting describes it as phased over two fiscal years while other accounts describe a single step, and no source publishes intermediate rates, so we have stated the endpoint and said the path is unconfirmed rather than guessing. Resort fees are set by each property. Checked August 2026."
       }
     }
   ]

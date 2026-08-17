@@ -11,7 +11,10 @@
 // rather than something you only notice by loading the page, and a closing section
 // lists the spokes nobody has triaged yet and the triaged rows the cap left off.
 //
-// Exits 1 if any pointer no longer resolves.
+// A final section checks that any country with a tax spoke also models that charge in the
+// tax block the calculator reads, since the two are separate homes for the same number.
+//
+// Exits 1 if any pointer no longer resolves, or a tax spoke has no charge behind it.
 
 import { countries } from '../src/data/index.js';
 import { verdictFor, verdictAudit, spokeReport, MIN_FULL_ROWS, MAX_ROWS } from '../src/data/verdict.js';
@@ -76,6 +79,45 @@ for (const r of unused) {
 }
 if (!unused.length) console.log('  ok    every triaged spoke row reaches its card');
 
-const failed = problems.length > 0 || missing.length > 0 || wrong.length > 0 || over.length > 0;
+
+// A tax spoke and the calculator are two homes for the same number, and nothing used to
+// check they agree. They drifted the moment the hotel-taxes wave shipped: the Bahamas
+// spoke described a 21% government side while tax.none still told the calculator there
+// was nothing to charge, and the Saudi tax note still said the municipality fee could not
+// be confirmed after the spoke confirmed it. Both were silent. This section makes that
+// class loud: a country describing an accommodation charge in a spoke must model one, and
+// the spoke's headline figure should still be findable in the block the calculator reads.
+console.log('\n8. Tax spokes agree with the calculator');
+const TAX_SPOKES = ['hotel-taxes-and-fees', 'tourist-tax'];
+const taxSpoked = live
+  .map(c => ({ c, s: (c.spokes || []).find(s => s.live && TAX_SPOKES.includes(s.slug)) }))
+  .filter(x => x.s);
+const unmodelled = taxSpoked.filter(x => !x.c.tax || x.c.tax.none);
+console.log(unmodelled.length
+  ? `  FAIL  ${unmodelled.map(x => x.c.slug).join(', ')}: a tax spoke describes charges the tax block does not model`
+  : `  ok    all ${taxSpoked.length} countries with a tax spoke model a charge the calculator can read`);
+
+const drift = [];
+for (const { c, s } of taxSpoked) {
+  const pcts = ((c.tax && c.tax.regions) || []).map(r => r.pct).filter(n => typeof n === 'number');
+  if (!pcts.length) continue;
+  const headline = (s.glance || []).map(g => String(g.v)).join(' ') + ' ' + String(s.answer || '');
+  const seen = pcts.filter(n => headline.includes(`${n}%`));
+  if (!seen.length) drift.push(`${c.slug} (block has ${pcts.map(n => n + '%').join(', ')}, spoke headline names none)`);
+}
+console.log(drift.length
+  ? `  note  ${drift.join('; ')}`
+  : '  ok    every modelled percentage is named in its spoke glance or answer');
+
+const hedges = ['could not confirm a standard rate', 'we have not confirmed'];
+const stale = taxSpoked.filter(({ c }) => {
+  const note = String((c.tax && c.tax.note) || '') + ((c.tax && c.tax.regions) || []).map(r => r.note || '').join(' ');
+  return hedges.some(h => note.includes(h));
+});
+console.log(stale.length
+  ? `  note  ${stale.map(x => x.c.slug).join(', ')}: tax block still hedges a figure the spoke may now state`
+  : '  ok    no tax block hedges a figure its spoke has since pinned down');
+
+const failed = problems.length > 0 || missing.length > 0 || wrong.length > 0 || over.length > 0 || unmodelled.length > 0;
 console.log('\nRESULT:', failed ? 'FAIL' : 'PASS');
 process.exit(failed ? 1 : 0);

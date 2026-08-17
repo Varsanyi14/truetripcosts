@@ -566,19 +566,19 @@ export default {
     unit: "percentOfRoom",
     currency: "OMR",
     capNights: null,
-    note: "Oman has no European-style per-night tourist tax. Instead the charges stack on the bill as percentages: 5% VAT, a 4% tourism tax under the Tourism Law, and a municipality charge on hotel stays, plus a discretionary service charge at many properties. Roughly 14% before any service charge, and quoted room rates often exclude it, so ask whether the rate is all-in.",
+    note: `Oman has no European-style per-night tourist tax. Instead the charges stack on the bill as percentages: ${F.vat} VAT, a ${F.tourism} tourism tax under the Tourism Law, and a ${F.municipality} municipality charge on hotel stays, plus a discretionary service charge at many properties. Roughly 14% before any service charge, and quoted room rates often exclude it, so ask whether the rate is all-in.`,
     regions: [
       {
         key: "hotel",
         label: "Hotel room (VAT, tourism tax and municipality)",
         pct: 14,
-        note: "5% VAT plus the 4% tourism tax plus a municipality charge on hotel stays. Many properties add a service charge on top of this, which is not a tax and not something you can decline.",
+        note: `${F.vat} VAT plus the ${F.tourism} tourism tax plus a ${F.municipality} municipality charge on hotel stays. Many properties add a service charge on top of this, which is not a tax, is not a standard rate and is not something you can decline.`,
       },
       {
         key: "restaurant",
         label: "Restaurant in a tourist area",
         pct: 9,
-        note: "5% VAT and the 4% tourism tax, which applies to restaurants in designated tourist areas as well as hotels. A local cafe outside those areas will usually just charge the price on the board.",
+        note: `${F.vat} VAT and the ${F.tourism} tourism tax, which applies to restaurants in designated tourist areas as well as hotels. The municipality charge applies to hotel occupancy rather than meals, so it does not appear here. A local cafe outside those areas will usually just charge the price on the board.`,
       }
     ],
   },

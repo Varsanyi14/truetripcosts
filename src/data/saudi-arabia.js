@@ -667,19 +667,25 @@ export default {
     unit: "percentOfRoom",
     currency: "SAR",
     capNights: null,
-    note: "Saudi Arabia's VAT is 15%, the highest in the Gulf, and it applies to hotel stays as it does to almost everything else. Many properties add a service charge, and some a municipality fee, on top of that, so a quoted room rate can land meaningfully higher than advertised. Ask whether the rate is all-in when you book. There is no separate per-night tourist tax of the kind Bahrain levies. Unlike almost all of the region, the VAT on goods you take home is reclaimable, which is covered in the taxes section below.",
+    note: `Saudi Arabia's VAT is ${F.vat}, the highest in the Gulf, and it applies to hotel stays as it does to almost everything else. Beside it sits a municipality levy on each occupied room, ${F.municipality} at four-star and above and ${F.municipalityLow} at three-star and below, so pick the band that matches your hotel. Together they come to about 20% or about 17.5%. Many properties add a service charge on top, which is the hotel's own and not a tax, and we have not modelled it because the rate is not standard. There is no separate per-night tourist tax of the kind Bahrain levies. Unlike almost all of the region, the VAT on goods you take home is reclaimable, which is covered in the taxes section below.`,
     regions: [
       {
-        key: "hotel",
-        label: "Hotel room (15% VAT)",
-        pct: 15,
-        note: "The 15% VAT is certain. Many properties add a service charge and some a municipality fee on top, which varies by hotel and which we have not modelled here because we could not confirm a standard rate, so treat this as the floor and ask your hotel.",
+        key: "hotel4",
+        label: "Hotel room, four-star and above (VAT and municipality)",
+        pct: 20,
+        note: `${F.vat} VAT plus a ${F.municipality} municipality levy on the occupied room, about 20% together. Many properties add a service charge on top, which is the hotel's own rather than a tax and is not a standard rate, so treat this as the government floor and ask whether your rate is all-in.`,
+      },
+      {
+        key: "hotel3",
+        label: "Hotel room, three-star and below (VAT and municipality)",
+        pct: 17.5,
+        note: `${F.vat} VAT plus the reduced ${F.municipalityLow} municipality levy that applies at three-star and below, about 17.5% together. This is the band a large share of Makkah and Madinah accommodation falls into. A service charge may still be added on top.`,
       },
       {
         key: "restaurant",
         label: "Restaurant meal",
         pct: 15,
-        note: "15% VAT, plus a service charge at some establishments. A local cafeteria will usually just charge the price on the board.",
+        note: `${F.vat} VAT, plus a service charge at some establishments. The municipality levy applies to occupied rooms rather than meals, so it does not appear here. A local cafeteria will usually just charge the price on the board.`,
       }
     ],
   },
