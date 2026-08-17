@@ -467,6 +467,25 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
               }
             }
 
+            // The picker sits above a 59-bar chart, so the bar you just picked can be a
+            // long way down the page. Bring it into view, but only once there is actually
+            // something to look at: for a multi-region country that means after the
+            // sub-choice, because scrolling away the moment the country is picked would
+            // take the sub-picker with it, and that is the reader's next action.
+            function revealRow(row) {
+              if (typeof row.scrollIntoView !== 'function') return;
+              var box = row.getBoundingClientRect ? row.getBoundingClientRect() : null;
+              var vh = window.innerHeight || 0;
+              // Already comfortably on screen: leave the page where the reader put it.
+              // Scrolling a bar that is right in front of them is just a lurch.
+              if (box && vh && box.top >= 80 && box.bottom <= vh - 80) return;
+              try {
+                row.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+              } catch (e) {
+                row.scrollIntoView(); // older Safari takes no options object
+              }
+            }
+
             function applyTax(animate) {
               clearOthers(pick.slug, animate);
               if (!pick.slug) { legendKey.hidden = true; return; }
@@ -499,6 +518,7 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
                 noteEl.hidden = true;   // nothing was added, so nothing to explain
                 legendKey.hidden = true;
                 showCap(cap);
+                if (animate) revealRow(row);
                 return;
               }
 
@@ -536,6 +556,7 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
                 noteEl.hidden = true;
                 legendKey.hidden = true;
                 showCap(cap);
+                if (animate) revealRow(row);
                 return;
               }
 
@@ -582,6 +603,9 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
               showCap(cap);
               // The caption grows as the segment does, so re-measure once the text is set.
               requestAnimationFrame(function () { showCap(cap); });
+              // animate is false on a tier change or a resize, where the reader is already
+              // looking at the chart and moving the page under them would be an intrusion.
+              if (animate) revealRow(row);
             }
 
             reapplyTax = function () { applyTax(false); };

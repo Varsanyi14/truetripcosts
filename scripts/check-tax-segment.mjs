@@ -300,7 +300,58 @@ console.log('\n6. The priciest bar overflows honestly');
 }
 
 // ---------------------------------------------------------------------------
-console.log('\n7. Reduced motion skips the tweens rather than the answer');
+console.log('\n7. The picked bar is brought into view, at the right moment');
+{
+  const { window: w } = makeDom(false);
+  const d = w.document;
+  await wait(SETTLE);
+  const fire = (el, t) => el.dispatchEvent(new w.Event(t, { bubbles: true }));
+  // jsdom has no scrollIntoView, so record the calls instead. The stubbed
+  // getBoundingClientRect returns zeros for rows, which reads as off screen, so every
+  // reveal that is allowed to fire will fire.
+  const scrolled = [];
+  w.Element.prototype.scrollIntoView = function (opts) {
+    scrolled.push({ slug: this.getAttribute && this.getAttribute('data-slug'), opts });
+  };
+  d.querySelector('.cc-taxopen').click();
+  const cSel = d.querySelector('.cc-taxcountry'), sSel = d.querySelector('.cc-taxsub');
+
+  // A multi-region country must NOT scroll on the country choice: the sub-picker is the
+  // reader's next action and scrolling would carry it off screen.
+  cSel.value = 'italy'; fire(cSel, 'change'); await wait(SETTLE);
+  check('no jump while the sub-choice is still pending', scrolled.length, 0);
+  sSel.value = 'rome'; fire(sSel, 'change'); await wait(SETTLE);
+  check('jumps once the answer is drawn', scrolled.length, 1);
+  check('and jumps to the picked bar', scrolled[0].slug, 'italy');
+  check('centred, and smoothly for a reader who allows motion',
+    `${scrolled[0].opts.block}/${scrolled[0].opts.behavior}`, 'center/smooth');
+
+  // A single-rate country resolves at once, so it may jump at once.
+  scrolled.length = 0;
+  cSel.value = 'bahrain'; fire(cSel, 'change'); await wait(SETTLE);
+  check('a single-rate country jumps on the country choice', scrolled.length, 1);
+  check('to the right bar', scrolled[0].slug, 'bahrain');
+
+  // A no-charge country still jumps: "no separate hotel tax here" is the answer.
+  scrolled.length = 0;
+  cSel.value = 'thailand'; fire(cSel, 'change'); await wait(SETTLE);
+  check('a no-charge country jumps to its bar too', scrolled.length, 1);
+
+  // Changing travel style redraws the segment, but the reader is already looking at the
+  // chart, so moving the page under them would be an intrusion.
+  scrolled.length = 0;
+  d.querySelector('[data-tier-btn="Comfort"]').click(); await wait(SETTLE);
+  check('a tier change does not move the page', scrolled.length, 0);
+
+  // Nor does clearing.
+  scrolled.length = 0;
+  d.querySelector('.cc-taxclear').click(); await wait(SETTLE);
+  check('clearing does not move the page', scrolled.length, 0);
+  w.close();
+}
+
+// ---------------------------------------------------------------------------
+console.log('\n8. Reduced motion skips the tweens rather than the answer');
 {
   const { window: w } = makeDom(true);
   const d = w.document;
@@ -310,7 +361,10 @@ console.log('\n7. Reduced motion skips the tweens rather than the answer');
   d.querySelector('.cc-taxopen').click();
   const cSel = d.querySelector('.cc-taxcountry');
 
+  const scrolled = [];
+  w.Element.prototype.scrollIntoView = function (opts) { scrolled.push(opts); };
   cSel.value = 'bahrain'; fire(cSel, 'change');
+  check('the jump is instant, not smooth', scrolled.length && scrolled[0].behavior, 'auto');
   check('the width is final on the first frame',
     rowOf('bahrain').querySelector('.cc-taxseg').style.width, String((38.75 / 500) * 100) + '%');
   check('the figure is final on the first frame, with no roll',
@@ -325,7 +379,7 @@ console.log('\n7. Reduced motion skips the tweens rather than the answer');
 }
 
 // ---------------------------------------------------------------------------
-console.log('\n8. Clearing returns the chart to its default');
+console.log('\n9. Clearing returns the chart to its default');
 {
   const { window: w } = makeDom(false);
   const d = w.document;
