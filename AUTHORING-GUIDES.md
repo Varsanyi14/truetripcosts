@@ -93,6 +93,24 @@ Rules, because this sends real email:
 
 Testing safely: set the GitHub repo variable `ALERTS_DRY_RUN` to `true` and the Action creates a draft in Buttondown instead of sending, so you can review it. Set it back to `false`, or delete it, to go live.
 
+## What the room figure includes
+
+`cash.styles[].room` is a **base rate before hotel taxes**. Write the nightly rate a hotel would quote, not the bill it hands you.
+
+This is not a style preference, it is what the code already assumes. The country calculator in `CountryBriefing.astro` computes the `tax` block **on** the room figure and adds the result to its total (`total = room + spend + cardFee + atmFee + tax + flight`). A tax-inclusive room number would therefore be counted twice on every country page.
+
+The convention had been implicit for a long time and two surfaces read the figure differently as a result, which is why it is written down here. If you are adding a country, the check is simple: would a hotel quote this number, or would it appear on the final invoice? Quote the first.
+
+### The known consequence
+
+`/cost-comparison` ranks 59 countries on `per + room`, so it ranks on a pre-tax basis. Hotel taxes range from nothing (Qatar, Kuwait) to more than a quarter (the Dominican Republic), so a high-tax destination sits lower in that ranking than it would all-in. Measured on the mid-range tier, 35 countries change position once tax is included, 17 by three places or more, and Bahrain moves ten.
+
+That is disclosed in the page's own lede and honesty note rather than left implied, and the chart's legend reads "Room, before tax". It is not silently wrong, it is deliberately pre-tax and labelled. If we later decide the chart should rank all-in, that is a change to the chart plus a decision about which `tax.regions` entry represents each country, and `tax` has no `defaultIndex` today. It is not a licence to redefine `room`.
+
+### What is correctly out of scope
+
+One-time entry charges (Mexico's Visitax, the Bali levy, Baja California Sur's fee) are trip costs rather than daily ones, so a per-day figure omits them by design. They live in `tax.regions[].oneTimePerPerson`, where the calculator picks them up for a whole trip.
+
 ## Spoke scannability fields (glance, key, icon)
 
 Spokes are long: the median is about 6,800 characters across 3 to 5 sections. Three optional fields give the reader somewhere for the eye to land, and every new spoke should carry them. A spoke without them still renders correctly, it just reads as a wall of prose next to the ones that have them, so treat these as part of the standard spoke shape, not as an extra.

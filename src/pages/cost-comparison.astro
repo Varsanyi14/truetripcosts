@@ -63,14 +63,19 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
       slim />
     <p class="ccpage-lede">
       A typical day's cost for a US traveler, {live.length} countries ranked cheapest to priciest.
-      Each bar is a room plus the on-the-ground spending (food, local transport, activities) for one day.
+      Each bar is a room rate plus the on-the-ground spending (food, local transport, activities) for one day.
+      The room rate here is the <b>base rate before hotel taxes</b>, which in some countries add a fifth or more
+      on top, so use a country's own calculator for an all-in figure.
     </p>
 
     <p class="ccpage-honest">
       These are the True Trip Costs desk's own estimates of a typical day for a US traveler, room plus
       on-the-ground spending. They are meant for comparison and planning, not an official cost-of-living
-      index and not a precise quote. Checked {checkedLabel}. Switch the travel style to see how the
-      ranking shifts.
+      index and not a precise quote. <b>Hotel taxes are not in these bars.</b> They are charged on top of a
+      room rate and they vary a lot by country, from nothing at all to more than a quarter, so a high-tax
+      destination sits lower in this ranking than it would on an all-in basis. Each country's guide has a
+      calculator that adds its own taxes to a room figure you choose. Checked {checkedLabel}. Switch the
+      travel style to see how the ranking shifts.
     </p>
 
     <section class="ccpage-chart" aria-label="Daily cost ranking">

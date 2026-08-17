@@ -111,6 +111,23 @@ export default {
   //      replace its content. The `tax` object and the interpolation pattern are
   //      shown below so corrections propagate. ----
 
+  // The daily-spend block. `styles` holds three tiers, each with a per-person daily
+  // spend and a nightly room figure:
+  //   { n: "Mid-range", per: 120, cash: 0.35, room: 220 }
+  //
+  // WHAT `room` INCLUDES, and this one matters because two surfaces read it. It is a
+  // BASE RATE BEFORE HOTEL TAXES. The country calculator computes the `tax` block
+  // below ON this figure and adds the result to its total, so a tax-inclusive room
+  // number would be counted twice there. Write the rate a hotel would quote you
+  // before tax, not the bill.
+  //
+  // The consequence, which is deliberate and disclosed rather than hidden: the
+  // cost-comparison chart ranks countries on `per + room` and therefore on a pre-tax
+  // basis, so a high-tax destination sits lower there than it would all-in, by up to
+  // about ten places. That page says so in its own copy. If that ever changes, it
+  // changes there rather than by quietly redefining this figure.
+  // cash: { rate: 1, cur: "EUR", round: 50, defaultIndex: 1, styles: [ ... ] },
+
   // The tourist-tax block the calculator reads. Its rate, cap and unit drive the
   // calculator AND should drive whatever you write in prose about the tax, so the
   // two never disagree. Use null when there is no nightly tax. See ireland.js.

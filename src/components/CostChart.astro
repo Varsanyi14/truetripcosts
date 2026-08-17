@@ -10,6 +10,13 @@
 //   { n: 'Budget'|'Mid-range'|'Comfort', per: <number>, room: <number> }
 // TOTAL for a tier = per + room (a typical day including a room).
 //
+// `room` is a BASE RATE BEFORE HOTEL TAXES, which is the site-wide convention: the
+// country calculator computes a country's tourist tax ON this figure and adds it to its
+// total, so folding tax in here would double-count there. The consequence is that this
+// chart ranks on a pre-tax basis and a high-tax country sits lower than it would all-in,
+// by up to about ten places. The page says so in its own copy rather than leaving it
+// implied. See AUTHORING-GUIDES.md, "What the room figure includes".
+//
 // The component server-renders the default tier (so the page is correct and
 // readable with no JS), and embeds a compact per-tier payload that the page's
 // script uses to recompute, re-sort and animate when the tier changes.
@@ -130,7 +137,7 @@ const pct = v => (axisMax ? (v / axisMax) * 100 : 0);
         <span class="cc-track">
           <span class="cc-bar">
             <span class="cc-seg cc-room" style={`width:${pct(row.room)}%`}
-              title={`Room: $${row.room}`}></span>
+              title={`Room: $${row.room} base rate, before hotel taxes`}></span>
             <span class="cc-seg cc-per" style={`width:${pct(row.per)}%`}
               title={`On the ground: $${row.per}`}></span>
           </span>
@@ -141,7 +148,7 @@ const pct = v => (axisMax ? (v / axisMax) * 100 : 0);
   </ol>
 
   <p class="cc-legend" aria-hidden="true">
-    <span class="cc-key cc-room"></span> Room
+    <span class="cc-key cc-room"></span> Room, before tax
     <span class="cc-key cc-per"></span> On the ground (food, local transport, activities)
     <span class="cc-hint">Full bar length is the typical daily total.</span>
   </p>
