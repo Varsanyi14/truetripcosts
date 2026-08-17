@@ -1,0 +1,140 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import CompareByRegion from '../components/CompareByRegion.astro';
+import USBadge from '../components/USBadge.astro';
+import { countries } from '../data/index.js';
+import fs from 'node:fs';
+
+// Hotel taxes and fees, topic hub. Gathers every country spoke with the slug
+// "hotel-taxes-and-fees", the same aggregation cash-or-card, money-scams,
+// taxis-and-ride-hailing, driving-and-car-rental and staying-connected use, so adding one
+// to any guide surfaces it here automatically. Before this page existed these 8 spokes were
+// reachable only from inside their own country guide, which is exactly where the scams
+// spokes were before that hub was built.
+//
+// NOTE on the filter: this one gathers by SLUG, not by topic, unlike its siblings. The tax
+// family's topic values are inconsistent: topic:"taxes" holds the eight hotel-bill spokes
+// but also Netherlands' per-night tourist tax and Saudi Arabia's VAT-refund spoke, while
+// four European vat-refund spokes and three European tourist-tax spokes sit under their own
+// topics. Filtering on topic would pull in two pages that are not about a hotel bill and
+// miss seven that are about tax. The slug is the clean discriminator. If the topic values
+// are ever normalised, switch this back to a topic filter to match the other hubs.
+//
+// This page deliberately does not restate any rate. Percentages go stale and the country
+// spokes are the dated, sourced home for them; the cards here carry each spoke's own h1 and
+// lede so there is one place to correct a figure, not two. See AUTHORING-GUIDES.md.
+
+const flagDir = process.cwd() + '/public/flags/';
+const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? '/flags/' + slug + '.svg' : '/flags/world.svg';
+
+const spokes = countries
+  .filter(c => c.live)
+  .flatMap(c => (c.spokes || [])
+    .filter(s => s.slug === 'hotel-taxes-and-fees' && s.live !== false)
+    .map(s => ({ h1: s.h1, lede: s.lede, spokeSlug: s.slug, country: c.name, countrySlug: c.slug, region: c.region })))
+  .sort((a, b) => a.country.localeCompare(b.country));
+---
+<Base
+  title="Hotel taxes and fees by country, for US travelers: what lands on the bill"
+  description="The room rate is not the bill. Government levies, municipality fees, service charges, resort fees and per-person gratuities, what each one is and which are set by law rather than by the hotel, country by country.">
+  <Nav />
+  <main class="wrap">
+
+    <section class="ht-intro">
+      <p class="lab">Hotel taxes and fees</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
+      <h1>The room rate is not the bill.</h1>
+      <p class="ht-lede">A nightly rate can settle a fifth to a third higher once everything is added, and almost none of it is visible when you compare prices. Some of it is government tax. Some of it is the hotel charging you for the pool. The two behave completely differently, and telling them apart is the whole skill.</p>
+    </section>
+
+    <section class="ht-four">
+      <div class="ht-card">
+        <span class="ht-k">1. The government charge, which is a real number</span>
+        <p>A national VAT, an accommodation tax, a municipality levy, a tourist levy. These are set in law, they are checkable, and they are the same at every hotel in the jurisdiction. If a page tells you a country's accommodation tax is a range, be sceptical: the rate is usually a fact. What varies is whether the quoted rate already includes it.</p>
+      </div>
+      <div class="ht-card">
+        <span class="ht-k">2. The hotel's own charge, which is not</span>
+        <p>A service charge or a resort fee is set by the property, not the government, and there is no national figure to look up. Anyone quoting you a country's resort fee as a flat number is guessing. It is usually mandatory despite not being a tax, it is often left out of the headline rate, and the only reliable source is the fees section of your own booking.</p>
+      </div>
+      <div class="ht-card">
+        <span class="ht-k">3. Per room, or per person</span>
+        <p>The detail that decides whether a charge is trivial or serious. Most accommodation charges attach to the room, so a couple pays once. A few resorts charge a mandatory daily gratuity <b>per person</b> instead, which scales with the size of your party and can outweigh everything else on the bill for a family of four. Always check which basis applies.</p>
+      </div>
+      <div class="ht-card">
+        <span class="ht-k">4. Whether it compounds</span>
+        <p>Two countries can both list a 10% tax and a 10% levy and arrive at different totals, because in one the tax applies to the levy as well. It sounds pedantic and it is worth a percentage point or two on a long stay. It is also the reason a hotel's own itemisation of its charges will not always add up the way you expect.</p>
+      </div>
+    </section>
+
+    <section class="ht-sec">
+      <h2>Three questions that cover most of it</h2>
+      <div class="ht-panel ht-pad">
+        <p><b>Is this rate all-in?</b> The single most useful question at booking, and the one that makes every other detail on this page unnecessary. In much of the Gulf and the Caribbean the quoted rate routinely excludes the entire stack, so the number you compared against another hotel was never the number you were going to pay.</p>
+        <p><b>Which charges are per person?</b> Ask specifically, because the answer changes the arithmetic rather than nudging it. A resort fee of 70 dollars a night and a gratuity of 30 dollars per person a night are the same size on paper and nothing like the same size for a family.</p>
+        <p><b>Is the tax refundable?</b> Usually no, and the distinction matters. Where a country runs a visitor refund scheme it almost always covers goods you export, not a bed you slept in, so hotel tax is a cost rather than something to reclaim at the airport. A few countries refund nothing at all because they charge nothing to refund.</p>
+        <p class="ht-do">What none of this needs is a spreadsheet. It needs the two or three specific charges that apply where you are going, which is what the country pages below are for.</p>
+      </div>
+    </section>
+
+    {spokes.length > 0 && (
+      <section class="ht-sec">
+        <h2>Country by country</h2>
+        <p class="ht-note">What actually lands on a hotel bill in each place, which parts are government and which are the property's, and what the quoted rate usually leaves out. Each write-up lives in that country's guide, with its own checked date and official source.</p>
+        <div class="ht-panel">
+          {spokes.map(s => (
+            <a class="ht-spoke" href={'/' + s.countrySlug + '/' + s.spokeSlug}>
+              <span class="ht-spoke-c"><span class="ht-flag"><img src={flagSrc(s.countrySlug)} alt="" width="22" height="16" loading="lazy" /></span>{s.country}</span>
+              <span class="ht-spoke-h">{s.h1}</span>
+              <span class="ht-spoke-d">{s.lede}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <p class="ht-keep">Government rates are checked against the tax authority or ministry that sets them and dated on each country page. Service charges and resort fees are set by each property, so where we give a figure it is a range from recent reports rather than a published rate, and where a resort's own schedule is quoted it is named as that resort's and not a national norm. For per-night bed taxes and entry fees specifically, see <a href="/tourist-taxes">tourist taxes and fees</a>, and for what a day actually costs once the room is paid for, <a href="/cost-comparison">cost of a day, compared</a>. More on how we work is on our <a href="/methodology">methodology page</a>.</p>
+
+    <CompareByRegion />
+  </main>
+  <Footer />
+
+  <style>
+    .ht-intro{max-width:720px;margin:22px 0 0}
+    .ht-intro h1{font-family:var(--serif);font-weight:500;font-size:clamp(26px,4.6vw,38px);letter-spacing:-.015em;line-height:1.15;margin:0 0 12px}
+    .ht-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
+    .ht-four{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:30px 0 0}
+    .ht-card{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:16px 18px}
+    .ht-k{display:block;font-weight:600;font-size:14px;color:var(--teal-deep);margin:0 0 6px}
+    .ht-card p{font-size:14.5px;color:#3B4A46;line-height:1.55;margin:0}
+    .ht-sec{margin:36px 0}
+    .ht-sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 6px}
+    .ht-note{font-size:14.5px;color:var(--muted);margin:0 0 16px;line-height:1.5;max-width:720px}
+    .ht-panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+    .ht-pad{padding:16px 18px}
+    .ht-pad p{font-size:15px;color:#3B4A46;line-height:1.6;margin:0 0 12px}
+    .ht-pad p:last-child{margin-bottom:0}
+    .ht-do{border-top:1px solid var(--line);padding-top:12px;color:var(--muted);font-size:14.5px}
+    .ht-spoke{display:block;padding:15px 18px;border-bottom:1px solid var(--line);text-decoration:none;transition:background-color .15s ease}
+    .ht-spoke:last-child{border-bottom:0}
+    .ht-spoke:hover{background:var(--paper)}
+    .ht-spoke-c{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:13px;color:var(--muted);margin:0 0 5px}
+    .ht-flag{display:inline-flex;line-height:0;flex:none}
+    .ht-flag img{width:22px;height:16px;border-radius:3px;border:1px solid var(--line);object-fit:cover;display:block}
+    .ht-spoke-h{display:block;font-family:var(--serif);font-weight:500;font-size:16.5px;color:var(--teal-deep);line-height:1.3;margin:0 0 3px}
+    .ht-spoke:hover .ht-spoke-h{text-decoration:underline}
+    .ht-spoke-d{display:block;font-size:14px;color:var(--muted);line-height:1.5}
+    .ht-keep{font-size:14px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line);padding-top:18px;margin:30px 0 40px;max-width:720px}
+    .ht-keep a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .ht-keep a:hover{text-decoration:underline}
+    @media (max-width:700px){
+      .ht-four{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      .ht-lede{font-size:16.5px}
+      .ht-spoke{padding:14px 15px}
+      .ht-card{padding:15px 16px}
+    }
+  </style>
+</Base>
