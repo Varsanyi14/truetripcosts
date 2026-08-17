@@ -18,6 +18,7 @@ export const topicIcon = {
   "all-inclusive": 'cocktail',
   scams: 'alert',
   "tourist-tax": 'receipt',
+  taxes: 'receipt',
   "vat-refund": 'refund',
   rail: 'train',
 };

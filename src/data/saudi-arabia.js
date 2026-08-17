@@ -2,7 +2,9 @@
 //
 // Verified August 2026 against: SAMA (the 3.75 peg, unchanged since June 1986, reaffirmed by
 // the Governor at the AlUla Conference 2026), ZATCA and Bahrain-independent tax sources on
-// the 15% VAT and the tourist VAT refund scheme live since 18 April 2025, the official Visit
+// the 15% VAT and the tourist VAT refund scheme live since 18 April 2025, the Ministry of
+// Municipal and Rural Affairs levy of 5% per occupied room and 2.5% at three-star and below,
+// the official Visit
 // Saudi eVisa portal (one year, multiple entry, mandatory medical insurance bundled), the
 // CST National Numbering Plan and my.gov.sa for emergency numbers, and current reporting on
 // the Riyadh Metro fares and the TGA-licensed ride-hailing market.
@@ -14,6 +16,8 @@ const F = {
   peg: "3.75 riyals to the dollar",
   perRiyal: "about 27 cents",
   vat: "15%",
+  municipality: "5%",
+  municipalityLow: "2.5%",
   refundMin: "SAR 500",
   refundFrom: "18 April 2025",
   metro: "SAR 4",
@@ -470,6 +474,80 @@ export default {
         a: "Then there is no claim to make. The refund document is issued against your passport at the point of sale, so it cannot be produced later from a receipt alone, and airport staff have nothing to validate without it. If you intend to claim, the question to ask before handing over a card is whether the store participates and whether they will issue the form.",
       },
     ],
+  },
+  {
+    slug: "hotel-taxes-and-fees",
+    glance: [
+      { k: "On top of the room", v: "About 20%" },
+      { k: "VAT", v: `${F.vat}, the Gulf's highest` },
+      { k: "Municipality levy", v: `${F.municipality}, or ${F.municipalityLow} lower down` },
+      { k: "Hotel", v: "Service charge at many" }
+    ],
+    live: true,
+    topic: "taxes",
+    title: "Saudi hotel taxes and fees: about 20% on the room",
+    description: `A Saudi hotel bill adds ${F.vat} VAT and a municipality levy of ${F.municipality}, halved at three-star and below, so about 20% over the rate. Checked 2026.`,
+    h1: "Saudi Arabia hotel taxes and fees, explained",
+    lede: "Short answer: about a fifth on top, and how much depends on the stars on the door. Saudi Arabia charges the highest VAT in the Gulf, and the municipality levy beside it asks cheaper hotels for half what it asks the smart ones. Here is what lands on the bill.",
+    checked: "Aug 2026",
+    checkedISO: "2026-08-17",
+    answer: `Two government charges sit on a Saudi room rate. <b>VAT at ${F.vat}</b>, the highest in the Gulf, introduced at 5% in 2018 and tripled in July 2020. And a <b>municipality levy</b> on each occupied room, <b>${F.municipality}</b> at four-star and above but <b>${F.municipalityLow}</b> at three-star and below. Together they land a room at roughly <b>20%</b> over the quoted rate. Many properties add a <b>service charge</b> on top, which is the hotel's own and not a tax. One genuine bright spot: unlike almost everywhere in the region, the VAT you pay on <b>shopping</b> is reclaimable, though never the VAT on the bed.`,
+    official: {
+      label: "ZATCA: the 15% VAT and the tourist refund scheme",
+      url: "https://zatca.gov.sa/en",
+      note: "The VAT rate and the refund scheme are official. The municipality levy is set by the Ministry of Municipal and Rural Affairs at 5% per occupied room, reduced to 2.5% at three-star and below. Service charges are set by each property, so check your booking's fine print."
+    },
+    sections: [
+      {
+        h: "The Gulf's highest VAT, by a distance",
+        icon: "receipt",
+        key: { fig: "15%", tag: "Tripled in 2020", text: "Introduced at 5% in 2018 and tripled in July 2020. That is three times the UAE and Oman, half again on Bahrain, and against nothing at all in Qatar and Kuwait.", tone: "teal" },
+        p: [
+          `Saudi <b>VAT is ${F.vat}</b>, introduced at 5% in 2018 and <b>tripled in July 2020</b>. It applies to hotel stays as it does to almost everything else. For context, that is <b>three times</b> the 5% charged in the UAE and Oman, half again on Bahrain's 10%, and against <b>nothing at all</b> in Qatar and Kuwait. If you are moving around the Gulf, this is the single biggest reason a Saudi room bill reads differently from a Doha one.`,
+          "There is no separate per-night tourist tax of the kind Bahrain levies, and nothing extra to hand over at the airport when you leave. The Saudi stack is short. It is just steep."
+        ]
+      },
+      {
+        h: "The levy that depends on your star rating",
+        icon: "coins",
+        key: { fig: "5% or 2.5%", tag: "Set by star rating", text: "The municipality levy is 5% on each occupied room at four-star and above, and halved to 2.5% at three-star and below. It is the one charge here that rewards booking down.", tone: "amber" },
+        p: [
+          `Beside the VAT sits a <b>municipality levy</b> charged on <b>each occupied room</b>, set by the Ministry of Municipal and Rural Affairs. It is <b>${F.municipality}</b> at four-star hotels and above, and <b>${F.municipalityLow}</b> at three-star and below, which makes it the one charge on this page that gets cheaper as your hotel does. It applies to hotels, furnished apartments and commercial residential facilities alike, and only to rooms that are actually occupied.`,
+          "This matters more than it looks for <b>Makkah and Madinah</b>. A great deal of accommodation there sits at three-star and below, serving pilgrims rather than leisure travellers, so the <b>lower rate is the one that applies to a large share of stays</b>. A room at 15% VAT plus 2.5% lands near 18% all-in, against about 20% for a smarter property. Neither is small, but they are not the same number and a quote should be read accordingly."
+        ]
+      },
+      {
+        h: "The service charge is the hotel's own",
+        icon: "usd",
+        key: { fig: "Varies", tag: "Not legislated", text: "Many properties add a service charge, some do not, and the rate is not standard. We are not printing a figure that would only be right in some places.", tone: "amber" },
+        p: [
+          "Many Saudi properties add a <b>service charge</b> on top of the government charges. This is the hotel's own, it is <b>not a tax</b> and it is not legislated, and the rate is not standard across the market, so we are deliberately not printing a percentage that would only be right at some places. Where it appears it is normally not optional.",
+          "The practical question at booking is therefore the same one that works everywhere: <b>is this rate all-in?</b> With 20% in government charges before a property adds anything, the difference between a quoted rate and a final bill is worth establishing in advance rather than at checkout."
+        ]
+      },
+      {
+        h: "The VAT on shopping comes back. The VAT on the room does not",
+        icon: "refund",
+        key: { fig: "Shopping only", tag: "Never the bed", text: "Saudi Arabia runs the best refund scheme in the region, live since April 2025, but it covers goods you export unused. A room you slept in is consumed here and is never reclaimable.", tone: "teal" },
+        p: [
+          `Unlike most of the region, Saudi VAT is <b>reclaimable on shopping</b>, through a ZATCA scheme live since <b>${F.refundFrom}</b> with a minimum spend at a single participating retailer. The full rules, the minimum, the export window and what to ask for at the till are in the <a href="/saudi-arabia/vat-refund">Saudi VAT refund guide</a>.`,
+          "What matters here is the boundary. The refund covers <b>goods you take out of the country unused</b>. It does not cover hotels, restaurants or anything else consumed in the Kingdom, so the 15% on your room is a <b>cost, not a deferred rebate</b>, and no amount of paperwork at the airport changes that. Getting this backwards is a common and expensive assumption. For cards, cash and the riyal's peg, see the <a href=\"/saudi-arabia\">Saudi Arabia money guide</a>."
+        ]
+      }
+    ],
+    faqs: [
+      { q: "How much tax is on a hotel room in Saudi Arabia?", a: "About 20%. There is 15% VAT, the highest in the Gulf, plus a municipality levy on each occupied room of 5% at four-star and above or 2.5% at three-star and below. Many hotels then add a service charge of their own, which is not a tax and varies by property. There is no separate per-night tourist tax." },
+      { q: "What is the municipality fee on Saudi hotels?", a: "A levy set by the Ministry of Municipal and Rural Affairs, charged on each occupied room: 5% at four-star hotels and above, halved to 2.5% at three-star and below. It applies to hotels, furnished apartments and other commercial residential facilities, and it sits on top of the 15% VAT rather than inside it." },
+      { q: "Can I claim the VAT back on a hotel in Saudi Arabia?", a: "No. Saudi Arabia does run a genuinely useful tourist VAT refund, live since April 2025, but it covers goods you export from the country unused, above a minimum spend at a single participating retailer. Hotels, restaurants and anything consumed in the Kingdom are excluded, so the 15% on your room is a cost rather than something you reclaim." },
+      { q: "Do hotels in Makkah and Madinah charge the same taxes?", a: "The 15% VAT is the same everywhere. The municipality levy depends on the property's star rating rather than the city, and because a large share of accommodation in Makkah and Madinah sits at three-star and below, the lower 2.5% rate applies to many of those stays. That puts a modest room nearer 18% all-in than 20%." }
+    ],
+    sources: {
+      links: [
+        { label: "ZATCA: the 15% VAT rate and the tourist refund scheme", url: "https://zatca.gov.sa/en", type: "revenue" },
+        { label: "Saudi national platform: government services and official rates", url: "https://my.gov.sa/en", type: "gov" }
+      ],
+      judgment: "The 15% VAT and the tourist refund scheme are official and linked above. The municipality levy at 5% per occupied room, and 2.5% at three-star and below, comes from Ministry of Municipal and Rural Affairs reporting and a Gulf tax practice note rather than a ministry page we could open in English, so treat the structure as solid and the exact current rate as worth confirming with your hotel. As corroboration rather than proof, four Makkah and Madinah properties priced on a booking site at this check showed totals about 20 to 21% over the nightly rate, which is what 15% and 5% compound to. The service charge is set by each property and we have not printed a rate. Checked August 2026."
+    }
   }
   ],
 

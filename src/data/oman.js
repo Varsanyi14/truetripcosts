@@ -3,6 +3,9 @@
 // Verified August 2026 against: the Central Bank of Oman fixed-peg page, the Oman Ministry
 // of Foreign Affairs entry-visa page, the Royal Oman Police eVisa portal, gov.om for the
 // emergency number and the 4% tourism tax, and PwC / the Oman Tax Authority for the 5% VAT.
+// The 5% municipality charge on hotel occupancy is from secondary tax references, not a
+// government page we could open: it reconciles the 14% hotel total exactly, but it is the
+// softest figure in this file. Re-check it before relying on the 14%.
 //
 // Correction-prone facts live in F and are interpolated, so fixing one value fixes every
 // sentence that uses it. See AUTHORING-GUIDES.md.
@@ -13,6 +16,7 @@ const F = {
   perDollar: "about 0.385 rials",
   vat: "5%",
   tourism: "4%",
+  municipality: "5%",
   visaFreeDays: "14 days",
   emergency: "9999",
 };
@@ -368,6 +372,80 @@ export default {
           { label: "Times of Oman: the Ministry's list of licensed on-demand taxi apps", url: "https://timesofoman.com/article/129112-eight-on-demand-taxi-apps-announced", type: "news" }
         ],
         judgment: "That Uber does not operate, and that the Ministry licenses a named set of on-demand apps, is well supported. Careem's current status in Muscat we could not confirm: reputable current sources contradict each other, so we have said so rather than pick one. Airport fare ranges vary with distance and luggage and we have not printed a figure for that reason.",
+      }
+    },
+    {
+      slug: "hotel-taxes-and-fees",
+      glance: [
+        { k: "On top of the room", v: "About 14%, before service" },
+        { k: "VAT", v: `${F.vat}, among the lowest` },
+        { k: "Tourism tax", v: `${F.tourism} under the Tourism Law` },
+        { k: "Municipality", v: `${F.municipality} on hotel stays` }
+      ],
+      live: true,
+      topic: "taxes",
+      title: "Oman hotel taxes and fees: the 14% on a room",
+      description: `An Oman hotel bill adds ${F.vat} VAT, a ${F.tourism} tourism tax and a municipality charge, roughly 14% before any service charge. Checked 2026.`,
+      h1: "Oman hotel taxes and fees, explained",
+      lede: "Short answer: Oman taxes lightly and then charges the room three separate times. No single line is large, the VAT is one of the lowest anywhere, but quoted rates commonly leave all three out and the total is not trivial. Here is what the bill actually adds.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-17",
+      answer: `Three government charges stack on an Oman room rate, none of them big on its own. <b>VAT at ${F.vat}</b>, introduced in April 2021 and among the lowest rates in the world. A <b>${F.tourism} tourism tax</b> collected under the Tourism Law. And a <b>municipality charge</b> on hotel occupancy, which we understand to be <b>${F.municipality}</b>. Together that is roughly <b>14%</b>. Many properties then add a <b>service charge</b> of their own on top, which is not a tax and not something you can decline. There is <b>no per-night tourist tax</b> of the European kind here, and <b>no tourist VAT refund</b> you should plan around.`,
+      official: {
+        label: "Gov.om: the 4% tourism tax on hotels and tourist-area restaurants",
+        url: "https://gov.om/en/w/pay-the-4-tourism-tax-for-restaurants-and-hotel-establishments",
+        note: "The tourism tax is official, as is the 5% VAT via the Oman Tax Authority. The municipality charge on hotel stays comes from secondary tax references rather than a government page we could open, so the 14% total is a working figure. Service charges are set by each property."
+      },
+      sections: [
+        {
+          h: "Three charges, none of them large",
+          icon: "receipt",
+          key: { fig: "About 14%", tag: "Before any service charge", text: "Five percent VAT, a 4% tourism tax and a municipality charge on hotel occupancy. No single line stands out, which is exactly why the total surprises people.", tone: "teal" },
+          p: [
+            `Oman's <b>VAT is ${F.vat}</b>, introduced in April 2021 and one of the lowest rates anywhere, well under Saudi Arabia's 15% and Bahrain's 10%. Beside it sit two more government charges on accommodation: a <b>${F.tourism} tourism tax</b> under the Tourism Law, and a <b>municipality charge</b> on hotel occupancy that we understand to be <b>${F.municipality}</b>. The three together land a room at roughly <b>14%</b> over the quoted rate.`,
+            "This is the shape worth internalising. Oman is a genuinely low-tax country whose hotel bills are not especially low, because the charges are layered rather than large. Nobody argues about a 4% line. Three of them together are a different matter, and quoted rates here commonly exclude the lot."
+          ]
+        },
+        {
+          h: "The tourism tax reaches past hotels",
+          icon: "coins",
+          key: { fig: "4%", tag: "Hotels and tourist restaurants", text: "The tourism tax is not only on beds. It applies to restaurants in designated tourist areas too, which is why a meal in a tourist district costs more than the same food outside one.", tone: "teal" },
+          p: [
+            `The <b>${F.tourism} tourism tax</b> is collected under the Tourism Law and it is not confined to accommodation: it also applies to <b>restaurants in designated tourist areas</b>. A meal in a hotel or a tourist district therefore carries 5% VAT plus the 4% tourism tax, around 9%, while a local cafe outside those areas will usually just charge the price on the board.`,
+            "This is useful for reading a bill rather than disputing one. If you see a 4% line on a restaurant receipt in Muscat or Salalah, it is a real government charge and not an invention of the restaurant."
+          ]
+        },
+        {
+          h: "The service charge is the variable",
+          icon: "usd",
+          key: { fig: "Varies", tag: "Set by each property", text: "The service charge is the hotel's own, it is not legislated, and the rate is not standard across properties. Where a bill already shows one, the tipping question is largely settled.", tone: "amber" },
+          p: [
+            "On top of the 14% in government charges, many properties add a <b>service charge</b> of their own. This one is <b>not a tax</b>, it is set by the hotel rather than by law, and the rate is not standard, so we are not printing a figure that would only be right for some places. It is normally not something you can decline.",
+            "There is a practical upside. Where a service charge is already on the bill, the tipping question is largely answered, which is the convention across Oman generally. See the <a href=\"/oman/tipping\">Oman tipping guide</a> for how that works in restaurants and taxis."
+          ]
+        },
+        {
+          h: "No refund desk you should count on",
+          icon: "refund",
+          key: { fig: "No refund", tag: "Plan without it", text: "Oman's VAT framework provides for refunds in various circumstances, but we could not confirm an operating tourist scheme with airport desks and a minimum spend. Assume the 5% is a cost.", tone: "teal" },
+          p: [
+            "Be realistic here. Oman's VAT framework does provide for refunds in various circumstances, and some third-party pages describe a tourist refund process in generic terms, but at this check we could not confirm an <b>operating tourist scheme</b> of the kind the UAE runs through Planet, with staffed airport desks and a published minimum spend. <b>Assume you cannot reclaim the 5%</b>, and treat any refund a retailer offers as a bonus rather than a plan.",
+            "The one question worth asking at booking is whether the quoted rate is <b>all-in</b>, because Omani rates often are not and 14% on a week of rooms is worth knowing about in advance. For cards, cash and the rial's unusually large notes, see the <a href=\"/oman\">Oman money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much tax is on a hotel room in Oman?", a: "Roughly 14% in government charges: 5% VAT, a 4% tourism tax under the Tourism Law, and a municipality charge on hotel occupancy which we understand to be 5%. Many hotels then add a service charge of their own on top, which is not a tax. Quoted rates often exclude all of it, so ask whether yours is all-in." },
+        { q: "Does Oman have a tourist tax per night?", a: "No, not in the European sense. There is no flat per-person or per-room nightly bed tax of the kind Bahrain or much of Europe charges. Oman's charges are percentages of the room rate instead: 5% VAT, a 4% tourism tax and a municipality charge on hotel stays, which is why the total scales with how expensive your room is." },
+        { q: "What is the 4% tourism tax in Oman?", a: "A government charge collected under the Tourism Law from hotel establishments and from restaurants in designated tourist areas. It sits alongside the 5% VAT, so a hotel meal or a meal in a tourist district commonly carries about 9% in government charges. A local cafe outside those areas will usually just charge the listed price." },
+        { q: "Can tourists claim VAT back in Oman?", a: "You should not plan on it. Oman's VAT law provides for refunds in various circumstances, but at this check we could not confirm an operating tourist refund scheme with airport desks and a minimum spend of the sort the UAE and Saudi Arabia run. Budget as though the 5% is part of the price. Hotel VAT would not be refundable anyway, since these schemes cover goods you export." }
+      ],
+      sources: {
+        links: [
+          { label: "Gov.om: the 4% tourism tax paid by restaurants and hotel establishments", url: "https://gov.om/en/w/pay-the-4-tourism-tax-for-restaurants-and-hotel-establishments", type: "revenue" },
+          { label: "Oman Tax Authority: the VAT portal, laws and refund procedures", url: "https://tms.taxoman.gov.om/portal/web/taxportal/vat-tax", type: "revenue" }
+        ],
+        judgment: "The 5% VAT and the 4% tourism tax are official and linked above. The municipality charge on hotel occupancy, and therefore the roughly 14% total, rests on secondary tax references rather than a government page we could open: it is the softest figure on this page, and it is worth noting that it reconciles the 14% exactly, which is corroboration rather than proof. The service charge is set by each property and we have deliberately not printed a rate for it. That we could not confirm an operating tourist VAT refund scheme is a statement about what we could verify. Checked August 2026."
       }
     }
   ],

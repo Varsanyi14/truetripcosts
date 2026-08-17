@@ -519,6 +519,71 @@ export default {
         ],
         judgment: "The card cloning advice, the tampered card reader mechanism, the pirate lawyer warning and the taxi guidance all come from current UK FCDO, Canadian and US government advice for the Dominican Republic. The roughly 28 percent figure is the arithmetic of the 18 percent ITBIS and the 10 percent service charge applied at checkout, which is a legal and disclosed pricing convention rather than a scam, and not every restaurant applies both. We have deliberately not quoted specific taxi fares, since there are no meters and rates vary widely by route and season. Peso conversions use roughly 60 to the dollar. Checked August 2026."
       }
+    },
+    {
+      slug: "hotel-taxes-and-fees",
+      glance: [
+        { k: "On top of the room", v: "About 28%" },
+        { k: "ITBIS", v: "18%, the national VAT" },
+        { k: "Service charge", v: "10%, added by law" },
+        { k: "Nightly tourist tax", v: "None" }
+      ],
+      live: true,
+      topic: "taxes",
+      title: "Dominican Republic hotel taxes: the 28% on a bill",
+      description: "A Dominican hotel bill adds 18% ITBIS and a 10% service charge set by law, roughly 28% over the rate. There is no nightly tourist tax. Checked 2026.",
+      h1: "Dominican Republic hotel taxes and fees, explained",
+      lede: "Short answer: roughly 28% more than the rate you were quoted, which is a bigger jump than almost anywhere in the Caribbean. The unusual part is that both charges are fixed in law rather than set by the hotel, so for once the numbers are not a range. Here is what stacks, and what changes when your stay is all-inclusive.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-17",
+      answer: "Two charges sit on a Dominican room rate and both are set in law. <b>ITBIS</b>, the national value-added tax, is <b>18%</b>. On top of it a <b>10% service charge</b>, known as the propina legal, is added to hotel, restaurant and bar bills <b>by law</b> rather than at each property's discretion. Together they lift a rate by roughly <b>28%</b>. There is <b>no separate nightly tourist tax</b>, and no resort-fee culture of the kind Aruba or the Bahamas has. There is <b>no VAT refund</b> for visitors, so the 18% is simply part of the price, and the old tourist card, about 10 US dollars, is now inside your airfare. If your stay is <b>all-inclusive</b>, both charges are usually already inside the package price, so the number that matters is the all-in total.",
+      official: {
+        label: "Dominican Republic Tourism (official): taxes and the service charge",
+        url: "https://www.godominicanrepublic.com/travel/faqs",
+        note: "The official tourism board confirms ITBIS at 18% and that hotels, restaurants and bars add a further 10% service charge by law. Because the 10% is statutory rather than set by each property, it is one of the few hotel-side charges anywhere that can be stated as a fixed figure."
+      },
+      sections: [
+        {
+          h: "Both charges are set by law, not by the hotel",
+          icon: "receipt",
+          key: { fig: "28%", tag: "ITBIS plus service", text: "Eighteen percent ITBIS and a 10% service charge, both statutory. Applied to the room total they come to about 28%, which is a larger jump than almost anywhere in the region.", tone: "teal" },
+          p: [
+            "<b>ITBIS</b> is the Dominican Republic's value-added tax and it runs at <b>18%</b>. Alongside it, a <b>10% service charge</b>, the propina legal and sometimes labelled on a bill as Ley or Servicio, is added to hotel, restaurant and bar bills. Together they come to roughly <b>28%</b> on top of the base rate.",
+            "That second charge deserves a note, because it breaks the usual rule. Almost everywhere else, a hotel service charge is set by the property, which is why we normally quote it as a range and tell you to read the fine print. Here it is <b>written into law</b>, so <b>10% is 10%</b> rather than a typical figure, and the same charge shows up on a restaurant bill down the road. The one thing to watch is presentation: some places fold both charges into the prices they display, while others note that taxes are not included and add them at the end, so read a menu or a rate quote before assuming which you are looking at."
+          ]
+        },
+        {
+          h: "What all-inclusive does to the arithmetic",
+          icon: "usd",
+          key: { fig: "All-in", tag: "Usually already inside", text: "At an all-inclusive the 28% is normally already in the package price you were quoted, so the trap is not a surprise at checkout. It is comparing a package total against a bare room rate elsewhere.", tone: "amber" },
+          p: [
+            "The Dominican market is dominated by <b>all-inclusive resorts</b>, and that changes where the risk sits. At a genuine all-inclusive the ITBIS and the service charge are normally <b>already inside the package price</b> you were quoted, so you are unlikely to be ambushed at checkout the way you might be at a European city hotel. Ask, and get it in writing, but that is the usual arrangement.",
+            "The real trap is <b>comparison</b>. A Dominican package quote that already contains 28% in charges looks expensive beside a bare room rate somewhere that has not added its taxes yet, and travellers routinely draw the wrong conclusion from that. Compare all-in totals against all-in totals. Anything you buy outside the resort, a meal in town or a bar tab, will carry the same 18% and 10% on top of its own listed prices, which is worth knowing before your first bill arrives."
+          ]
+        },
+        {
+          h: "No bed tax, and nothing to reclaim",
+          icon: "refund",
+          key: { fig: "No refund", tag: "The 18% is a cost", text: "There is no per-night tourist tax to hand over and no VAT-refund scheme for visitors, so the 18% is simply part of the price rather than something to claim back on the way out.", tone: "teal" },
+          p: [
+            "Two absences worth stating plainly, because both are good news. There is <b>no per-night tourist or city tax</b> in the Dominican Republic, nothing to hand over at the desk on arrival, and nothing to budget per night beyond the percentages above. And the old <b>tourist card</b>, about 10 US dollars, is now <b>bundled into your airfare</b> rather than bought separately, as is the roughly 20 dollar departure tax.",
+            "The one absence that is not good news: there is <b>no VAT-refund scheme</b> for visitors here, so the 18% is a cost rather than something to reclaim at the airport. Do not go looking for a refund desk. For pesos, cards, and why paying in US dollars in the resort zones quietly costs you, see the <a href=\"/dominican-republic\">Dominican Republic money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much tax is added to a hotel bill in the Dominican Republic?", a: "About 28%. There is 18% ITBIS, the national value-added tax, plus a 10% service charge that is added by law rather than set by the hotel. Both are statutory, so the figures are fixed rather than typical. There is no separate nightly tourist tax on top, and at an all-inclusive resort both charges are usually already inside the package price." },
+        { q: "What is the 10% service charge in the Dominican Republic?", a: "It is the propina legal, a service charge added by law to hotel, restaurant and bar bills, often shown as Ley or Servicio. Unlike a discretionary hotel service charge it is statutory, which is why it is a flat 10% everywhere rather than a range. It is shared among staff and frequently does not reach your server directly, which is why a little extra cash for good service is still customary." },
+        { q: "Is there a tourist tax in the Dominican Republic?", a: "No. There is no per-night tourist or city tax to pay at your hotel, unlike Aruba, the Bahamas or much of Europe. The charges that affect your bill are the 18% ITBIS and the 10% statutory service charge. The old tourist card of about 10 US dollars is now included in your airfare rather than bought on arrival." },
+        { q: "Can I get a VAT refund in the Dominican Republic?", a: "No. There is no tourist VAT-refund scheme, so the 18% ITBIS is simply part of the price of whatever you buy, with nothing to reclaim at the airport when you leave. This is different from the Bahamas or Saudi Arabia, both of which do refund tax on shopping that visitors export." }
+      ],
+      sources: {
+        links: [
+          { label: "Dominican Republic Tourism (official): the 18% ITBIS and the 10% service charge added by law", url: "https://www.godominicanrepublic.com/travel/faqs", type: "tourism" },
+          { label: "E-Ticket: the official migration portal, where the bundled entry charges are handled", url: "https://eticket.migracion.gob.do", type: "gov" }
+        ],
+        judgment: "The 18% ITBIS and the statutory 10% service charge are confirmed with the official tourism board, which is what allows us to state the 10% as a fixed figure rather than a range, unlike hotel service charges almost anywhere else. The roughly 28% is the arithmetic of the two applied at checkout, and not every establishment applies both to every line, so treat it as the working total rather than a guaranteed one. Whether an all-inclusive package has the charges inside it is a matter for your own booking, and worth confirming in writing. Checked August 2026."
+      }
     }
   ]
 };

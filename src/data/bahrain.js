@@ -373,6 +373,80 @@ export default {
         ],
         judgment: "That both Uber and Careem operate, and the BD 2 plus BD 2 metered airport structure, come from the airport's own page, which is the best source available. Fare ranges into Manama vary widely across current secondary sources, from BD 6 to BD 16, so we have given the range and said plainly that we would not quote one number. Bus fares are approximate.",
       }
+    },
+    {
+      slug: "hotel-taxes-and-fees",
+      glance: [
+        { k: "On top of the room", v: "About 25%, plus a flat fee" },
+        { k: "Government", v: `${F.vat} VAT and a ${F.levy} levy` },
+        { k: "Tourist tax", v: F.tourist },
+        { k: "Hotel", v: "Service charge about 10%" }
+      ],
+      live: true,
+      topic: "taxes",
+      title: "Bahrain hotel taxes and fees: the four-part stack",
+      description: `A Bahrain hotel bill stacks ${F.vat} VAT, a ${F.levy} government levy, a 10% service charge and a BD 3 nightly tourist tax, roughly a quarter over the rate. Checked 2026.`,
+      h1: "Bahrain hotel taxes and fees, in four parts",
+      lede: "Short answer: the rate you were quoted is probably missing four separate charges. Bahrain adds more to a hotel bill than any Gulf state except Saudi Arabia, and it is the only one in the region that charges a flat nightly tax on top of the percentages. Here is exactly what stacks on.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-17",
+      answer: `Four things sit on top of a Bahrain room rate. <b>VAT at ${F.vat}</b>, doubled from 5% in January 2022 and the second highest in the Gulf. A <b>${F.levy} government levy</b> on the accommodation. The hotel's own <b>service charge</b>, usually around <b>10%</b>, which is not a tax. And a flat <b>tourist tax of ${F.tourist}</b>, introduced in 2024 and worth about <b>8 US dollars</b> a night. The percentages come to roughly <b>25%</b> and the flat fee sits on top of that, so a <b>quarter more</b> than the quoted rate is the working figure. Rates quoted here frequently <b>exclude all of it</b>, so ask whether yours is all-in. There is <b>no tourist VAT refund</b> you should count on.`,
+      official: {
+        label: "Bahrain National Portal: VAT at 10% in the Kingdom of Bahrain",
+        url: "https://www.bahrain.bh/",
+        note: "The VAT rate is official. The government levy, the nightly tourist tax and the service charge come from Gulf business reporting rather than a government page we could open, and the service charge is set by each property, so check your booking's fine print."
+      },
+      sections: [
+        {
+          h: "The government takes two bites",
+          icon: "receipt",
+          key: { fig: "15%", tag: "VAT plus the levy", text: "Ten percent VAT, doubled from 5% in January 2022, plus a separate 5% government levy on the accommodation. That is 15% before the hotel has added anything of its own.", tone: "teal" },
+          p: [
+            `Bahrain's <b>VAT is ${F.vat}</b>, doubled from 5% on 1 January 2022, which makes it the <b>second highest in the Gulf</b> behind Saudi Arabia at 15% and double the UAE and Oman. Alongside it sits a separate <b>${F.levy} government levy</b> on accommodation. Both are government charges, both apply to the room, and together they are <b>15%</b> before the property has added a thing.`,
+            "One to keep an eye on: Bahrain's 2025 to 2026 budget raised the possibility of a further VAT increase. No rate and no date have been announced, so this holds for now rather than forever, and it is worth a fresh look before a future trip."
+          ]
+        },
+        {
+          h: "The flat nightly tax the percentages hide",
+          icon: "coins",
+          key: { fig: "BD 3", tag: "Per room, per night", text: "About 8 US dollars a night, charged per room rather than per person, and it does not scale with the room rate. On a cheap room over a week it is real money; on a suite it disappears.", tone: "amber" },
+          p: [
+            `On top of the percentages, Bahrain charges a flat <b>tourist tax of ${F.tourist}</b>, introduced in 2024. One dinar is ${F.perDinar}, so that is roughly <b>8 US dollars a night</b>, charged <b>per room rather than per person</b>.`,
+            "Because it is flat, it behaves the opposite way to a percentage. It is proportionally heavy on a budget room over a long stay and trivial on an expensive one, so run it per night rather than assuming it scales with the rate. This is the charge that makes Bahrain structurally unusual in the Gulf: everywhere else in the region the accommodation charges are percentages, or a nightly fee, not both."
+          ]
+        },
+        {
+          h: "The service charge belongs to the hotel",
+          icon: "usd",
+          key: { fig: "About 10%", tag: "Not a tax, not a tip", text: "The service charge is the property's own rather than the government's. It is normally unavoidable, it is commonly around 10%, and there is no guarantee it reaches the person who served you.", tone: "amber" },
+          p: [
+            "The <b>service charge</b>, commonly around <b>10%</b>, is the hotel's own charge and not a government one. It is set by each property, so treat 10% as the usual figure rather than a fixed rule, and read the fine print on your booking. It is normally unavoidable and it is <b>not a tip</b> in any useful sense, since nothing guarantees it reaches the person who carried your bag.",
+            "If you want a member of staff to receive something, cash in a hand is the mechanism that works. For how tipping actually operates here, see the <a href=\"/bahrain/tipping\">Bahrain tipping guide</a>."
+          ]
+        },
+        {
+          h: "Nothing to reclaim on the way out",
+          icon: "refund",
+          key: { fig: "No refund", tag: "Budget for the 10%", text: "At this check we could not confirm an operating tourist VAT refund scheme of the kind the UAE runs with staffed airport desks and a minimum spend. Treat the 10% as part of the price.", tone: "teal" },
+          p: [
+            "Be realistic about refunds. At this check we could not confirm an operating tourist VAT refund scheme in Bahrain of the kind the UAE runs through Planet, with staffed airport desks and a published minimum spend. <b>Budget as though the 10% is simply part of the price</b>, and if a retailer offers you a refund route, treat it as a bonus rather than a plan.",
+            "The practical move at booking is one question: <b>is this rate all-in?</b> Quoted Bahrain rates frequently exclude the whole stack, and the all-in nightly total is the only number worth comparing. For cards, cash and the dinar's odd three-decimal arithmetic, see the <a href=\"/bahrain\">Bahrain money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much do Bahrain hotels add to the room rate?", a: "Roughly a quarter, plus a flat fee. Four charges stack: 10% VAT, a 5% government levy, a service charge commonly around 10%, and a flat tourist tax of BD 3 per room per night, about 8 US dollars. The percentages come to about 25% and the nightly fee sits on top. Quoted rates often exclude all of it, so ask whether the rate is all-in." },
+        { q: "What is the tourist tax in Bahrain?", a: "A flat BD 3 per room per night, introduced in 2024, which is roughly 8 US dollars. It is charged per room rather than per person and it does not scale with the room rate, so it weighs more heavily on a budget stay than an expensive one. It is separate from the 10% VAT and the 5% government levy, which are percentages of the rate." },
+        { q: "Is the 10% service charge on a Bahrain hotel bill a tip?", a: "No. It is the property's own charge, not a government tax and not a gratuity, and there is no guarantee any of it reaches the person who served you. It is normally unavoidable and it is set by each hotel, so the exact figure varies. If you want to tip someone directly, cash handed to them is what works." },
+        { q: "Can I claim the VAT back on a Bahrain hotel?", a: "No, and you should not plan on reclaiming Bahraini VAT on anything. At this check we could not confirm an operating tourist refund scheme of the kind the UAE runs with airport desks and a minimum spend. Treat the 10% as part of the price. Hotel VAT is not refundable anywhere in the region regardless, since refund schemes cover goods you export, not a bed you slept in." }
+      ],
+      sources: {
+        links: [
+          { label: "Bahrain National Portal: VAT at 10% in the Kingdom of Bahrain", url: "https://www.bahrain.bh/", type: "revenue" },
+          { label: "Central Bank of Bahrain: the 0.376 peg behind the dollar conversions here", url: "https://www.cbb.gov.bh/monetary-policy/", type: "gov" }
+        ],
+        judgment: "The 10% VAT rate is official. The rest of the stack, specifically the 5% government levy, the BD 3 per night tourist tax and the 10% service charge, rests on reputable Gulf business reporting rather than a government page we could open, so the roughly 25% figure is a working estimate rather than a published total. The service charge is set by each property and varies. That we could not confirm an operating tourist VAT refund scheme is a statement about what we could verify, not proof that none exists. Checked August 2026."
+      }
     }
   ],
 

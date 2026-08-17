@@ -289,6 +289,83 @@ export default {
         ],
         judgment: "That Uber and Lyft do not operate, and the jitney and water taxi fares, come from the official destination information. Taxi zone rates are set by government but are not published where visitors can check them, and third-party tables disagree, so the route figures here are bands drawn from recent traveller reports and operator listings rather than an official schedule. The night surcharge is widely reported by local operators rather than published centrally, so treat it as indicative. Checked July 2026."
       }
+    },
+    {
+      slug: "hotel-taxes-and-fees",
+      glance: [
+        { k: "On top of the room", v: "About 21% around Nassau" },
+        { k: "Government", v: "10% VAT, plus area levies" },
+        { k: "Resort fee", v: "Set per property, often steep" },
+        { k: "Gratuities", v: "Sometimes charged per person" }
+      ],
+      live: true,
+      topic: "taxes",
+      title: "Bahamas hotel taxes and fees: the 21% and the rest",
+      description: "A Bahamas hotel bill adds 10% VAT plus area levies, about 21% around Nassau, then a resort fee and at some properties a per-person nightly gratuity. Checked 2026.",
+      h1: "Bahamas hotel taxes and fees, explained",
+      lede: "Short answer: the headline room rate is a long way from the bill. Around Nassau the government side alone reaches about a fifth, then the resort adds a fee of its own, and at some properties a mandatory gratuity charged per person rather than per room. Here is exactly what stacks on top.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-17",
+      answer: "On a Bahamas room rate you will see <b>VAT at 10%</b>, which applies nationwide. Around <b>Nassau, Paradise Island and Cable Beach</b> one or more <b>area levies</b> stack on top of it, and because the VAT applies to the levies too, the government side of the bill lands at roughly <b>21%</b>. Out on the other islands the picture is simpler. Then come the hotel's own charges: a <b>resort fee</b>, set per property, and at some resorts a <b>mandatory gratuity charged per person per night</b> rather than per room, which is the line that hits families hardest. Stays of <b>45 continuous days or more</b> are exempt from the VAT. The <b>air departure tax</b>, about 15 US dollars, is normally inside your airfare. Unusually for the region, you <b>can</b> reclaim the VAT on shopping you take home.",
+      official: {
+        label: "Bahamas Department of Inland Revenue: the standard VAT rate is 10%",
+        url: "https://inlandrevenue.finance.gov.bs/value-added-tax/about-vat/",
+        note: "The 10% VAT is official. The area levies are set by promotion boards and resort associations rather than nationally, and properties itemise them differently, so we give the combined total instead of a breakdown. Resort fees and gratuities are set by each property and must be read on your own booking."
+      },
+      sections: [
+        {
+          h: "The government side: 10% everywhere, more around Nassau",
+          icon: "receipt",
+          key: { fig: "About 21%", tag: "Nassau and Paradise Island", text: "Ten percent VAT nationwide, then area levies on top around Nassau, Paradise Island and Cable Beach. Because VAT applies to the levies as well, the total lands near 21% rather than 20%.", tone: "teal" },
+          p: [
+            "<b>VAT is 10%</b> and it applies across the country, to the room rate rather than per person. Around <b>Nassau, Paradise Island and Cable Beach</b>, one or more <b>area levies</b> sit on top: a promotion board levy covering Nassau and Paradise Island, and at some properties a further downtown or resort-association levy. Because the <b>VAT is charged on the levies too</b>, the pieces compound and the government side of a bill in those areas comes to roughly <b>21%</b>.",
+            "We give you the total rather than a breakdown on purpose. Properties in these areas itemise the same charges differently, splitting them into two lines or three and describing them as VAT-inclusive or not, so any single hotel's decomposition is that hotel's accounting rather than a national rule. The <b>21% total is the reliable number</b>. Out on the other islands there is generally no promotion board levy, so expect closer to the bare 10%, and a stay of <b>45 continuous days or more</b> is exempt from the VAT altogether."
+          ]
+        },
+        {
+          h: "The resort fee, which is not a tax",
+          icon: "usd",
+          key: { fig: "Per property", tag: "Read your own booking", text: "Resort fees here are set by each hotel and there is no standard figure. At the large Nassau and Paradise Island resorts they are substantial, sometimes charged as a percentage rather than a flat nightly sum.", tone: "amber" },
+          p: [
+            "On top of the government charges most of the larger properties add a <b>resort fee</b>, covering things like Wi-Fi, loungers, pool access and activities. It is <b>not a tax</b>, it is set by each hotel, and it is normally mandatory rather than optional. There is no national figure to quote: at the big Nassau and Paradise Island resorts it is <b>substantial</b>, and it is sometimes levied as a <b>percentage of the rate</b> rather than a flat nightly amount, which is unusual and makes it scale with how much you are already paying.",
+            "The practical consequence is that the same advertised rate can settle very differently at two hotels a mile apart. Read the fees section of your own booking before you compare prices, and ask what the <b>all-in nightly total</b> comes to."
+          ]
+        },
+        {
+          h: "The charge to actually look for: gratuities per person, per night",
+          icon: "coins",
+          key: { fig: "Per person", tag: "One resort's published rates", text: "Some Paradise Island resorts add a mandatory daily gratuity charged per person rather than per room, scaling with how many people are in the booking. For a family this can outweigh the resort fee.", tone: "amber" },
+          p: [
+            "This is the line most likely to surprise you, and it is worth understanding the mechanism rather than any single number. A few of the large resorts add a <b>mandatory daily gratuity</b> that is charged <b>per person per night</b>, typically for guests aged 12 and over, rather than per room. Everything else on your bill scales with the room. This scales with <b>how many people are in it</b>.",
+            "To make that concrete with a published example: <b>Atlantis</b> on Paradise Island sets out mandatory daily gratuities in its own guest information that run from roughly <b>14 US dollars per person per night</b> at its entry-level towers to considerably more at its premium ones, alongside a separate nightly resort fee. Those are <b>that resort's published rates and nobody else's</b>, and they are not a Bahamas norm: plenty of properties charge no per-person gratuity at all. We cite them because the structure is what matters. If you are travelling as a family of four, a per-person charge is the one line on a Bahamas bill capable of quietly doubling."
+          ]
+        },
+        {
+          h: "The one refund here that is worth claiming",
+          icon: "refund",
+          key: { fig: "10% back", tag: "On shopping, not the room", text: "Unusually for the Caribbean, visitors can reclaim the 10% VAT on goods they take home, and at participating shops it is deducted at the till rather than claimed at the airport.", tone: "teal" },
+          p: [
+            "Here is the genuine good news, and it runs the opposite way to most of the Caribbean. As a non-resident visitor you <b>can reclaim the 10% VAT on goods</b> you buy to take home, through the <b>Global Blue</b> tax-free scheme, and at affiliated shops the refund is commonly given <b>immediately at the till</b> rather than chased at the airport. Look for Global Blue signage on Bay Street and around the Nassau resorts, bring photo identification proving you are not a resident, and note that food, alcohol, tobacco and medicines are excluded.",
+            "The boundary is the same one that applies everywhere: the refund covers <b>goods you export</b>, not the room you slept in. None of the 21% on your hotel bill is reclaimable. For how to pay, the dollar peg and where cash still matters, see the <a href=\"/bahamas\">Bahamas money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much do Bahamas hotels add to the room rate?", a: "Around Nassau, Paradise Island and Cable Beach the government side comes to roughly 21%: a 10% VAT plus area levies, with the VAT applying to the levies as well so the pieces compound. Elsewhere in the islands expect closer to the bare 10%. On top of that most larger properties add a resort fee, and some add a mandatory per-person daily gratuity, both set by the hotel rather than the government." },
+        { q: "What is the hotel tax in the Bahamas?", a: "The national charge is VAT at 10% on the room rate. There is no separate per-person nightly bed tax. What raises the figure around Nassau, Paradise Island and Cable Beach is a set of area levies charged by promotion boards and resort associations, which together with the VAT on them takes the government side to about 21%. Stays of 45 continuous days or more are VAT exempt." },
+        { q: "Do Bahamas resorts charge mandatory gratuities?", a: "Some do, and it is worth checking because of how it is calculated. A few of the large Paradise Island resorts add a mandatory daily gratuity charged per person per night for guests aged 12 and up, rather than per room, so it scales with the size of your party. Atlantis publishes rates from roughly 14 US dollars per person per night upward at its own properties. Many other Bahamas hotels charge no per-person gratuity at all, so read your own booking." },
+        { q: "Can tourists get a VAT refund in the Bahamas?", a: "Yes, on shopping. Non-resident visitors can reclaim the 10% VAT on goods taken home through the Global Blue scheme, and at participating shops the deduction is often applied at the till rather than claimed at the airport. Food, alcohol, tobacco and medicines are excluded, and so is anything consumed in the country, which means none of the tax on your hotel bill is recoverable." },
+        { q: "Is the Bahamas departure tax included in my airfare?", a: "Normally yes. The air departure tax of about 15 US dollars per person is almost always built into the ticket, so you should not be paying it separately at the airport, though it is worth confirming with your airline. Cruise passengers arriving by sea pay separate per-person taxes and tourism levies instead." }
+      ],
+      sources: {
+        links: [
+          { label: "Bahamas Department of Inland Revenue: the standard VAT rate is 10%", url: "https://inlandrevenue.finance.gov.bs/value-added-tax/about-vat/", type: "revenue" },
+          { label: "Global Blue: how tax-free shopping and the VAT refund work in the Bahamas", url: "https://www.globalblue.com/en/shoppers/how-to-shop-tax-free/destinations/bahamas", type: "guide" },
+          { label: "Government of The Bahamas: the air departure (passenger) tax", url: "https://www.bahamas.gov.bs/departure-tax", type: "gov" },
+          { label: "Atlantis Paradise Island: the resort's own published fees and mandatory gratuities", url: "https://www.atlantisbahamas.com/faq", type: "guide" }
+        ],
+        judgment: "The 10% VAT and the Global Blue refund are official and linked above. The roughly 21% around Nassau, Paradise Island and Cable Beach is the combined total that appears on real hotel invoices in those areas, and we have deliberately not published a component breakdown of the area levies: properties itemise them differently, describing them as VAT-inclusive or not and splitting them across two lines or three, so any one hotel's decomposition is its own accounting rather than a national rule. Resort fees and per-person gratuities are set by each property. The Atlantis figures are that resort's published rates, cited to show the mechanism, and they are explicitly not a Bahamas norm. Checked August 2026."
+      }
     }
   ],
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 3, atmRisk: 4 },
