@@ -115,17 +115,25 @@ export default {
   // spend and a nightly room figure:
   //   { n: "Mid-range", per: 120, cash: 0.35, room: 220 }
   //
-  // WHAT `room` INCLUDES, and this one matters because two surfaces read it. It is a
-  // BASE RATE BEFORE HOTEL TAXES. The country calculator computes the `tax` block
-  // below ON this figure and adds the result to its total, so a tax-inclusive room
-  // number would be counted twice there. Write the rate a hotel would quote you
-  // before tax, not the bill.
+  // WHAT `room` INCLUDES, and this one matters because two surfaces read it. It is the
+  // RATE A HOTEL OR BOOKING SITE DISPLAYS, not the final invoice. And `tax` below is
+  // whatever a country adds ON TOP of that displayed rate. The calculator applies the
+  // one to the other, so the pair only works if both halves keep to that split.
   //
-  // The consequence, which is deliberate and disclosed rather than hidden: the
-  // cost-comparison chart ranks countries on `per + room` and therefore on a pre-tax
-  // basis, so a high-tax destination sits lower there than it would all-in, by up to
-  // about ten places. That page says so in its own copy. If that ever changes, it
-  // changes there rather than by quietly redefining this figure.
+  // Note what that means, because it is not "pre-tax everywhere". Across most of Europe
+  // and in Japan a displayed accommodation rate already includes the sales tax by law,
+  // so `tax` there is only the nightly city or bed tax and the VAT is correctly absent.
+  // In much of the Caribbean, the Gulf and Mexico the displayed rate excludes tax, so
+  // `tax` there is the full government stack including VAT. Both are right. A European
+  // block that looks like it is "missing its VAT" is not a gap, and adding VAT to it
+  // would double-count against a rate that already contains it.
+  //
+  // The consequence for the chart, deliberate and disclosed rather than hidden: the
+  // cost-comparison ranking is on `per + room`, so it omits whatever each country adds
+  // on top. A destination that bills its taxes separately therefore sits lower there
+  // than it would all-in, by up to about ten places, and one that folds them into the
+  // rate sits about where it belongs. That page says so in its own copy. If that ever
+  // changes, it changes there rather than by quietly redefining this figure.
   // cash: { rate: 1, cur: "EUR", round: 50, defaultIndex: 1, styles: [ ... ] },
 
   // The tourist-tax block the calculator reads. Its rate, cap and unit drive the

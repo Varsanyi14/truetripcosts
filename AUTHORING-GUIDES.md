@@ -95,17 +95,29 @@ Testing safely: set the GitHub repo variable `ALERTS_DRY_RUN` to `true` and the 
 
 ## What the room figure includes
 
-`cash.styles[].room` is a **base rate before hotel taxes**. Write the nightly rate a hotel would quote, not the bill it hands you.
+`cash.styles[].room` is the **rate a hotel or booking site displays**, not the final invoice. `tax` is whatever the country adds **on top of that displayed rate**. The calculator applies the second to the first, so the pair only works if both halves keep to that split.
 
-This is not a style preference, it is what the code already assumes. The country calculator in `CountryBriefing.astro` computes the `tax` block **on** the room figure and adds the result to its total (`total = room + spend + cardFee + atmFee + tax + flight`). A tax-inclusive room number would therefore be counted twice on every country page.
+Confirmed with the desk: the room figures across all 59 guides were gathered from displayed rates.
 
-The convention had been implicit for a long time and two surfaces read the figure differently as a result, which is why it is written down here. If you are adding a country, the check is simple: would a hotel quote this number, or would it appear on the final invoice? Quote the first.
+### This is not "pre-tax everywhere", and that matters
 
-### The known consequence
+Across most of Europe and in Japan a displayed accommodation rate already includes the sales tax, because consumer price-display rules require it. So those `tax` blocks correctly hold only the nightly city or bed tax (the *tassa di soggiorno*, the *taxe de sejour*, the *Bettensteuer*) and the VAT is deliberately absent.
 
-`/cost-comparison` ranks 59 countries on `per + room`, so it ranks on a pre-tax basis. Hotel taxes range from nothing (Qatar, Kuwait) to more than a quarter (the Dominican Republic), so a high-tax destination sits lower in that ranking than it would all-in. Measured on the mid-range tier, 35 countries change position once tax is included, 17 by three places or more, and Bahrain moves ten.
+In much of the Caribbean, the Gulf and Mexico the displayed rate excludes tax, which is why those blocks hold the full government stack including VAT: the Bahamas at about 21%, Bahrain at about 25%, Mexico at about 21% in Quintana Roo.
 
-That is disclosed in the page's own lede and honesty note rather than left implied, and the chart's legend reads "Room, before tax". It is not silently wrong, it is deliberately pre-tax and labelled. If we later decide the chart should rank all-in, that is a change to the chart plus a decision about which `tax.regions` entry represents each country, and `tax` has no `defaultIndex` today. It is not a licence to redefine `room`.
+**Both are correct.** A European block that looks like it is missing its VAT is not a gap, and adding VAT to it would double-count against a rate that already contains it. The UAE is the clearest illustration of the rule: its `taxfree` states that the VAT, service charge and municipality fee are folded into the quoted rate, and its `tax` block accordingly models only the nightly Tourism Dirham. That is the block being right, not incomplete.
+
+The test when adding a country: **would a hotel display this number, or does it appear only on the final bill?** Put the displayed one in `room`, and put the difference in `tax`.
+
+### The known consequence for the chart
+
+`/cost-comparison` ranks 59 countries on `per + room`, so it omits whatever each country adds on top. A destination that bills its taxes separately sits lower there than it would all-in, and one that folds them into the rate sits about where it belongs. Measured on the mid-range tier, adding the modelled charges moves 35 countries, 17 by three places or more, and Bahrain by ten.
+
+That is disclosed in the page's own lede and honesty note rather than left implied, and the chart legend reads "Room, before tax". It is not silently wrong, it is deliberately a displayed-rate ranking and labelled as one.
+
+### Where the split is genuinely ambiguous
+
+One market does not pick a side. Mexican rates appear both ways, `plus impuestos` and `impuestos incluidos`, sometimes for the same property on different booking sites, which the Mexico hotel-taxes spoke covers in its own section. The `tax` block there models the charges as added on top, because that is what a US-facing booking site usually displays, and the region notes carry a conditional saying so. If you hit another market like this, do the same: model the common case and make the note carry the exception, rather than picking a figure that is wrong half the time.
 
 ### What is correctly out of scope
 
