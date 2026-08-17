@@ -90,6 +90,9 @@ const topicGroups = [
   </div>
 
   <style>
+    /* The Guides panel is anchored to this row on narrow screens, not to the Guides
+       summary itself: see the note in the max-width:640px block below. */
+    .navin{position:relative}
     .navlinks{display:flex;align-items:center;gap:16px}
     .gmenu{position:relative}
     .gmenu-sum{display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink);cursor:pointer;list-style:none;white-space:nowrap}
@@ -123,7 +126,17 @@ const topicGroups = [
     .gm-all svg{transition:transform .15s ease}
     .gm-all:hover svg{transform:translateX(3px)}
     @media(max-width:640px){
-      .gmenu-panel{width:min(92vw,320px);padding:14px;max-height:calc(100vh - 84px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+      /* The panel is anchored right:0 to .gmenu, which is the Guides summary, and that
+         summary is not at the screen edge: Get updates and the 22px gutter sit to the
+         right of it, about 130px in total. So a 320px panel hung from that point ran off
+         the LEFT of the viewport, by roughly 30px at 420px wide and 60px at 390px, and
+         content past the left edge cannot be scrolled to. Dropping .gmenu out of the
+         positioning flow hands the job to .navin, so right:22px now means 22px from the
+         screen edge, matching the gutter the nav and the content column already use.
+         Width comes off the viewport rather than being a flat 320px cap, so the panel
+         fits at 320px too instead of being trimmed by the base max-width. */
+      .gmenu{position:static}
+      .gmenu-panel{right:22px;width:min(calc(100vw - 44px),320px);padding:14px;max-height:calc(100vh - 84px);overflow-y:auto;-webkit-overflow-scrolling:touch}
       .gm-cols{grid-template-columns:1fr}
       .gm-col-regions{padding-right:0}
       .gm-col-topics{border-left:none;border-top:1px solid var(--line);padding-left:0;padding-top:13px;margin-top:11px}
