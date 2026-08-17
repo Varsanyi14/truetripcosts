@@ -89,14 +89,14 @@ const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? `/flags/${slu
   .lc-run{display:flex;align-items:center}
   @keyframes lc-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  .lc-item{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;padding-right:38px;font-size:13.5px;line-height:2.1;color:#3B4A46}
+  .lc-item{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;padding-right:38px;font-size:12px;line-height:2.1;color:#3B4A46}
   .lc-flag{flex:none;border-radius:2px;box-shadow:0 0 0 1px rgba(22,48,44,.08)}
   .lc-country{font-weight:600;color:var(--ink,#16302C)}
   .lc-fact{color:#3B4A46}
   .lc-chk{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--muted,#6F6E66);background:var(--green-bg,#E7F3E9);border-radius:999px;padding:1px 8px}
 
   @media (max-width:560px){
-    .lc-item{font-size:13px;padding-right:30px}
+    .lc-item{font-size:12px;padding-right:30px}
     .lc-fact{color:#4A5A55}
   }
 
