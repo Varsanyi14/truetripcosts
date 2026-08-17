@@ -246,6 +246,12 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
         var current = cc.getAttribute('data-tier') || 'Mid-range';
         var pct = function (v) { return axisMax ? (v / axisMax) * 100 : 0; };
 
+        // Set by the tax-segment block further down, if it runs at all. Held here
+        // so render() and the resize handler can redraw a picked country's segment
+        // against the new tier scale or the new bar width without knowing whether
+        // the enhancement loaded.
+        var reapplyTax = function () {};
+
         function rowsFor(tier) { return payload[tier] || []; }
 
         function render(tier) {
@@ -282,6 +288,11 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
             if (per) per.style.width = pct(r.per) + '%';
             if (total) animateNumber(total, r.total);
           });
+
+          // A tax segment is per tier: a percentage of the room scales with the
+          // room figure, and Japan's banded rate can land in a different band. So
+          // it is recomputed here, before the reduced-motion return below.
+          reapplyTax();
 
           if (reduce) return; // no movement animation for reduced-motion users
 
@@ -326,7 +337,7 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
         var rzT = null;
         window.addEventListener('resize', function () {
           if (rzT) clearTimeout(rzT);
-          rzT = setTimeout(drawAxis, 150);
+          rzT = setTimeout(function () { drawAxis(); reapplyTax(); }, 150);
         });
 
         btns.forEach(function (b) {
@@ -343,6 +354,280 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
             render(tier);
           });
         });
+
+        /* ---- One destination's hotel tax, appended to its own bar ----
+           Progressive enhancement on top of the pre-tax chart. The default above
+           is untouched until a reader picks a country, and only ever that one
+           country's bar changes: nothing is re-sorted and no other bar is taxed.
+           Every node comes from the component's template so the scoped styles
+           apply, and so a reader without JS sees the plain chart and nothing else. */
+        var taxTpl = cc.querySelector('template[data-cc-taxbits="daily-cost"]');
+        var taxPayEl = document.querySelector('script[data-cc-taxpayload="daily-cost"]');
+        var taxData = null;
+        try { taxData = taxPayEl ? JSON.parse(taxPayEl.textContent) : null; } catch (e) { taxData = null; }
+
+        if (taxTpl && taxTpl.content && taxData && taxData.byCountry) {
+          var bits = taxTpl.content;
+          var ui = bits.querySelector('.cc-taxui').cloneNode(true);
+          var scaleEl = cc.querySelector('.cc-scale');
+          if (scaleEl && scaleEl.parentNode) {
+            scaleEl.parentNode.insertBefore(ui, scaleEl.nextSibling);
+
+            var prompt = ui.querySelector('.cc-taxprompt');
+            var openBtn = ui.querySelector('.cc-taxopen');
+            var panel = ui.querySelector('.cc-taxpanel');
+            var cSel = ui.querySelector('.cc-taxcountry');
+            var subWrap = ui.querySelector('.cc-taxsubwrap');
+            var subQ = ui.querySelector('.cc-taxsubq');
+            var subSel = ui.querySelector('.cc-taxsub');
+            var clearBtn = ui.querySelector('.cc-taxclear');
+
+            // The legend gains a key for the hatched amber only while one is drawn.
+            var legendEl = cc.querySelector('.cc-legend');
+            var legendKey = bits.querySelector('.cc-taxlegend').cloneNode(true);
+            legendKey.hidden = true;
+            if (legendEl) legendEl.appendChild(legendKey);
+
+            var pick = { slug: '', key: '' };
+
+            cSel.insertBefore(new Option('Pick a destination', ''), cSel.firstChild);
+            cSel.value = '';
+
+            function tierIdx() {
+              var i = (taxData.tiers || []).indexOf(current);
+              return i < 0 ? 0 : i;
+            }
+            function rowFor(slug) {
+              return listEl.querySelector('.cc-row[data-slug="' + slug + '"]');
+            }
+            function modelRow(slug) {
+              var rows = rowsFor(current);
+              for (var i = 0; i < rows.length; i++) if (rows[i].slug === slug) return rows[i];
+              return null;
+            }
+            function ensureNode(row, sel, into) {
+              var n = row.querySelector(sel);
+              if (!n) {
+                n = bits.querySelector(sel).cloneNode(true);
+                (into || row).appendChild(n);
+              }
+              return n;
+            }
+            function hideCap(cap) {
+              cap.style.maxHeight = '0px';
+              cap.style.opacity = '0';
+            }
+            function showCap(cap) {
+              cap.style.maxHeight = cap.scrollHeight + 'px';
+              cap.style.opacity = '1';
+            }
+            // A roll in flight has to be stopped before anything else writes to the
+            // figure. Switching country or travel style mid-roll otherwise leaves the
+            // old animation counting toward a number that is no longer the answer, and
+            // it wins, because it writes last.
+            function stopRoll(el) {
+              if (el.ccRaf) { cancelAnimationFrame(el.ccRaf); el.ccRaf = 0; }
+            }
+            // The dollar figure settles into place rather than snapping, on the same
+            // ease-out the segment uses, so the two read as one movement.
+            function rollTo(el, to, animate) {
+              stopRoll(el);
+              var from = parseFloat((el.textContent || '').replace(/[^0-9.]/g, '')) || 0;
+              if (!animate || reduce || from === to) { el.textContent = '$' + to; return; }
+              var start = null, dur = 620;
+              function tick(ts) {
+                if (start === null) start = ts;
+                var p = Math.min(1, (ts - start) / dur);
+                var e = 1 - Math.pow(1 - p, 3);
+                el.textContent = '$' + Math.round(from + (to - from) * e);
+                el.ccRaf = (p < 1) ? requestAnimationFrame(tick) : 0;
+              }
+              el.ccRaf = requestAnimationFrame(tick);
+            }
+            function clearRow(row, animate) {
+              row.classList.remove('is-picked', 'is-taxed', 'is-over');
+              var seg = row.querySelector('.cc-taxseg');
+              var cap = row.querySelector('.cc-cap');
+              if (seg) seg.style.width = '0%';
+              if (cap) hideCap(cap);
+              var drop = function () {
+                row.ccDrop = 0;
+                if (seg && seg.parentNode) seg.parentNode.removeChild(seg);
+                if (cap && cap.parentNode) cap.parentNode.removeChild(cap);
+              };
+              // The old segment shrinks back to nothing as the new one grows, then
+              // the nodes go. Reduced motion skips straight to the end state.
+              if (row.ccDrop) clearTimeout(row.ccDrop);
+              if (animate && !reduce) row.ccDrop = setTimeout(drop, 660); else drop();
+            }
+            function clearOthers(slug, animate) {
+              var picked = listEl.querySelectorAll('.cc-row.is-picked');
+              for (var i = 0; i < picked.length; i++) {
+                if (picked[i].getAttribute('data-slug') !== slug) clearRow(picked[i], animate);
+              }
+            }
+
+            function applyTax(animate) {
+              clearOthers(pick.slug, animate);
+              if (!pick.slug) { legendKey.hidden = true; return; }
+              var row = rowFor(pick.slug);
+              var mr = modelRow(pick.slug);
+              if (!row || !mr) { legendKey.hidden = true; return; }
+              var m = taxData.byCountry[pick.slug] || {};
+
+              // Re-picking a country inside the shrink-out window must not have its
+              // fresh nodes removed by the previous pick's pending cleanup.
+              if (row.ccDrop) { clearTimeout(row.ccDrop); row.ccDrop = 0; }
+
+              row.classList.add('is-picked');
+              var cap = ensureNode(row, '.cc-cap');
+              var rule = cap.querySelector('.cc-cap-rule');
+              var amtWrap = cap.querySelector('.cc-cap-amt');
+              var amtEl = cap.querySelector('.cc-taxamt');
+              var extraEl = cap.querySelector('.cc-cap-extra');
+              var noteEl = cap.querySelector('.cc-cap-n');
+
+              // A country with no charge modelled. Absence is not zero and it is not
+              // a gap either: it is a useful answer, so it gets said plainly.
+              if (!m.o || !m.o.length) {
+                row.classList.remove('is-taxed', 'is-over');
+                var s0 = row.querySelector('.cc-taxseg');
+                if (s0) s0.style.width = '0%';
+                rule.textContent = (m.s || '') + ': ' + (m.n || 'no separate hotel tax here') + '.';
+                amtWrap.hidden = true;
+                extraEl.textContent = '';
+                noteEl.hidden = true;   // nothing was added, so nothing to explain
+                legendKey.hidden = true;
+                showCap(cap);
+                return;
+              }
+
+              // Multi-region country, no sub-choice yet: the pick registers as a
+              // highlight, but no figure is drawn until we know which rate applies.
+              if (!pick.key) {
+                row.classList.remove('is-taxed', 'is-over');
+                var s1 = row.querySelector('.cc-taxseg');
+                if (s1) s1.style.width = '0%';
+                hideCap(cap);
+                legendKey.hidden = true;
+                return;
+              }
+
+              var opt = null;
+              for (var i = 0; i < m.o.length; i++) if (m.o[i].k === pick.key) opt = m.o[i];
+              if (!opt) { hideCap(cap); return; }
+
+              var idx = tierIdx();
+              var usd = opt.u[idx];
+              var phrase = (typeof opt.p === 'string') ? opt.p : opt.p[idx];
+
+              rule.textContent = opt.s + ': ' + phrase + '.';
+              extraEl.textContent = opt.t ? (' ' + opt.t) : '';
+
+              var barEl = row.querySelector('.cc-bar');
+              var seg = ensureNode(row, '.cc-taxseg', barEl);
+
+              if (!usd || usd <= 0) {
+                // A real, sourced zero. London and Munich belong here, and the honest
+                // answer is the sentence, not a zero-width segment.
+                row.classList.remove('is-taxed', 'is-over');
+                seg.style.width = '0%';
+                amtWrap.hidden = true;
+                noteEl.hidden = true;
+                legendKey.hidden = true;
+                showCap(cap);
+                return;
+              }
+
+              var leftPct = pct(mr.total);
+              var wPct = pct(usd);
+
+              // The gutter between the bar's right edge and the row's is the room the
+              // add-on has to run into when a taxed bar passes the axis maximum. It is
+              // measured, not assumed, so it survives a resize and the mobile layout.
+              var trackEl = row.querySelector('.cc-track');
+              var barW = barEl.getBoundingClientRect().width;
+              var gutter = trackEl && barW
+                ? Math.max(0, trackEl.getBoundingClientRect().right - barEl.getBoundingClientRect().right)
+                : 0;
+              var maxRight = 100 + (barW ? (gutter / barW) * 100 : 0);
+              var over = (leftPct + wPct) > 100.01;
+              if (leftPct + wPct > maxRight) wPct = Math.max(0, maxRight - leftPct);
+
+              row.classList.toggle('is-over', over);
+              row.classList.add('is-taxed');
+              seg.style.left = leftPct + '%';
+
+              if (animate && !reduce) {
+                requestAnimationFrame(function () { seg.style.width = wPct + '%'; });
+              } else {
+                seg.style.transition = 'none';
+                seg.style.width = wPct + '%';
+                void seg.offsetWidth;
+                seg.style.transition = '';
+              }
+
+              if (usd < 1) {
+                // Rounding a real 60-cent charge to "$1" would overstate it, and to
+                // "$0" would deny it. Say what it is instead.
+                stopRoll(amtEl);
+                amtEl.textContent = 'under $1';
+                amtWrap.hidden = false;
+              } else {
+                amtWrap.hidden = false;
+                rollTo(amtEl, Math.round(usd), animate);
+              }
+              noteEl.hidden = false;
+              legendKey.hidden = false;
+              showCap(cap);
+              // The caption grows as the segment does, so re-measure once the text is set.
+              requestAnimationFrame(function () { showCap(cap); });
+            }
+
+            reapplyTax = function () { applyTax(false); };
+
+            function setCountry(slug) {
+              clearOthers(slug, true);
+              pick.slug = slug;
+              pick.key = '';
+              subWrap.hidden = true;
+              subSel.innerHTML = '';
+              clearBtn.hidden = !slug;
+              if (!slug) { applyTax(true); return; }
+              var m = taxData.byCountry[slug];
+              if (m && m.q && m.o && m.o.length > 1) {
+                subQ.textContent = m.q;
+                subSel.appendChild(new Option('Choose one', ''));
+                for (var i = 0; i < m.o.length; i++) {
+                  subSel.appendChild(new Option(m.o[i].l || m.o[i].s, m.o[i].k));
+                }
+                subSel.value = '';
+                subWrap.hidden = false;
+              } else if (m && m.o && m.o.length === 1) {
+                pick.key = m.o[0].k;
+              }
+              applyTax(true);
+            }
+
+            openBtn.addEventListener('click', function () {
+              prompt.hidden = true;
+              panel.hidden = false;
+              cSel.focus();
+            });
+            cSel.addEventListener('change', function () { setCountry(cSel.value); });
+            subSel.addEventListener('change', function () {
+              pick.key = subSel.value || '';
+              applyTax(true);
+            });
+            clearBtn.addEventListener('click', function () {
+              setCountry('');
+              cSel.value = '';
+              panel.hidden = true;
+              prompt.hidden = false;
+              openBtn.focus();
+            });
+          }
+        }
       }
 
       /* ---- Region switch: cross-fade panels ---- */

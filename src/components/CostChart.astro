@@ -97,6 +97,251 @@ const axisMax = axisMaxByTier[defaultTier] || 0;
 const ticks = ticksFor(axisMax, 4);
 
 const pct = v => (axisMax ? (v / axisMax) * 100 : 0);
+
+// ---------------------------------------------------------------------------
+// TAX SEGMENT (progressive enhancement, off until the reader asks for it)
+//
+// The default chart above is PRE-TAX and stays that way. A reader can pick ONE
+// destination and see what its hotels add on top of the displayed rate, drawn as
+// an amber segment appended past that country's ranked length. No other bar
+// changes and the ranking is never re-sorted on tax.
+//
+// Country data is READ here, never rewritten.
+// ---------------------------------------------------------------------------
+
+// A chart bar is ONE person's on-the-ground spend plus ONE room, so a per-person
+// tax computes at one traveler. Two people in that room would double a per-person
+// tax while the bar itself did not move, so do not "fix" this to a party size the
+// chart does not model.
+const TAX_TRAVELERS = 1;
+
+// Not every row in a country's tax.regions is a hotel-room charge. Several
+// countries use the same array to hold a restaurant or shopping rate beside the
+// hotel rate, and Iceland holds a campsite pitch. A restaurant rate has no place
+// in a hotel-tax segment, so those rows are dropped by an explicit slug and key
+// list rather than by sniffing the label, which means a later data edit cannot
+// quietly change what this chart taxes.
+const TAX_SKIP = {
+  oman: ['restaurant'],
+  bahrain: ['restaurant'],
+  jamaica: ['restaurant'],
+  'saudi-arabia': ['restaurant'],
+  iceland: ['camp'],
+};
+
+// The sub-picker question, per country. This is the honesty surface: the label
+// has to match what actually varies. A country's regions are NOT all cities. They
+// are a mix of cities, sub-national areas, hotel star classes and stay types, so
+// calling a star-class picker "which city?" would assert a precision we do not
+// have. Every country with more than one taxable region needs an entry here or
+// the build fails below, on purpose.
+const TAX_QUESTION = {
+  // Place varies. One question covers a city and an area alike, which "which
+  // city?" would not: "Nice and the Riviera" and "Atlantic Canada" are not cities.
+  japan: 'Where in Japan are you staying?',
+  mexico: 'Where in Mexico are you staying?',
+  italy: 'Where in Italy are you staying?',
+  france: 'Where in France are you staying?',
+  spain: 'Where in Spain are you staying?',
+  portugal: 'Where in Portugal are you staying?',
+  'united-kingdom': 'Where in the UK are you staying?',
+  germany: 'Where in Germany are you staying?',
+  netherlands: 'Where in the Netherlands are you staying?',
+  czechia: 'Where in Czechia are you staying?',
+  canada: 'Where in Canada are you staying?',
+  switzerland: 'Where in Switzerland are you staying?',
+  austria: 'Where in Austria are you staying?',
+  bahamas: 'Where in the Bahamas are you staying?',
+  norway: 'Where in Norway are you staying?',
+  poland: 'Where in Poland are you staying?',
+  hungary: 'Where in Hungary are you staying?',
+  // Not place. Greece is set by the official star rating, and one of its options
+  // is a short-term rental, which is not a hotel class at all.
+  greece: 'What kind of place are you staying?',
+  'saudi-arabia': 'What class of hotel?',
+  // Two dimensions at once. The UAE names both in every option, so the question
+  // can name both. Morocco mixes city with property class and Croatia mixes area
+  // with season, inconsistently across their options, so the only question that
+  // asserts nothing false is the descriptive one.
+  uae: 'Where in the UAE, and what class of hotel?',
+  morocco: 'Which best describes your stay?',
+  croatia: 'Which best describes your stay?',
+};
+
+// Where the charge is not purely a government tax, the caption says what is in
+// the stack. These strings are the region label's own parenthetical, verbatim.
+const TAX_STACK = {
+  oman: 'VAT, tourism tax and municipality',
+  bahrain: 'VAT, levy and service charge',
+  'saudi-arabia': 'VAT and municipality',
+  egypt: 'service + tax',
+};
+
+// Bali and the rest of Indonesia are both 21%, so once the one-time Bali entry
+// levy is out of a per-day bar (it is a per-trip cost) the picker would change
+// nothing at all. Collapse to the single rate and name the levy in the caption.
+const TAX_COLLAPSE = {
+  indonesia: { keep: 'other', levyFrom: 'bali', levyLead: 'Bali also charges a one-time entry levy of' },
+};
+
+// Display order only. The data's own order is left alone.
+//
+// Greece is the one country whose regions sit in an order that reads as scrambled in a
+// dropdown: 3-star, 1-2-star, rental, 4-star, 5-star. Since the question asks what kind
+// of place you are staying, the hotel classes run in ascending order and the short-term
+// rental, which is not a class at all, sits last rather than interrupting them.
+//
+// Place-based pickers are deliberately NOT sorted: their data order puts the likeliest
+// answer first, which is the right order for a reader scanning a list.
+const TAX_ORDER = {
+  greece: ['budget', 'midrange', 'upscale', 'luxury', 'rental'],
+};
+
+const trimNum = n => {
+  const v = Math.round(n * 100) / 100;
+  return v >= 1000 ? v.toLocaleString('en-US') : String(v);
+};
+
+// FX: the country's own cash.rate, in local units per 1 US dollar. This is the
+// rate the country page calculator uses (CountryBriefing.astro), so a tax shown
+// on this chart agrees with the same tax shown there. fxFallback is deliberately
+// not used: it is the currency panel's safety net, and it carries no PLN or HUF,
+// so Poland and Hungary could not be converted from it at all.
+function taxUsd(c, r, roomUSD) {
+  const t = c.tax;
+  const unit = r.unit || t.unit;
+  const rate = c.cash && c.cash.rate;
+  if (!rate) return null;
+  // capNights is deliberately not read. No cap in the data binds at one night,
+  // and a per-day figure has no nights count to cap.
+  if (unit === 'perPersonPerNight') return ((r.rate || 0) * TAX_TRAVELERS) / rate;
+  if (unit === 'flatPerNight') return (r.rate || 0) / rate;
+  if (unit === 'percentOfRoom') return ((r.pct || 0) / 100) * roomUSD;
+  if (unit === 'tieredPerPersonPerNight') {
+    const ppLocal = (roomUSD / TAX_TRAVELERS) * rate;
+    let band = 0;
+    for (const b of (r.bands || [])) { if (b.upTo == null || ppLocal < b.upTo) { band = b.rate; break; } }
+    return (band * TAX_TRAVELERS) / rate;
+  }
+  return null; // an unrecognised unit draws no segment rather than a guessed one
+}
+
+// The rule in words, taken from the unit and the figure in the data. Percentages
+// read the same at every tier; a banded rate does not, so it is resolved per tier.
+function taxPhrase(c, r, roomUSD) {
+  const t = c.tax;
+  const unit = r.unit || t.unit;
+  const cur = t.currency || (c.cash && c.cash.cur) || '';
+  const stack = TAX_STACK[c.slug] ? ` (${TAX_STACK[c.slug]})` : '';
+  if (unit === 'percentOfRoom') return (r.pct ? `${trimNum(r.pct)}% on the room${stack}` : 'no hotel tax');
+  if (unit === 'perPersonPerNight') return (r.rate ? `${trimNum(r.rate)} ${cur} a person a night${stack}` : 'no hotel tax');
+  if (unit === 'flatPerNight') return (r.rate ? `${trimNum(r.rate)} ${cur} a room a night${stack}` : 'no hotel tax');
+  if (unit === 'tieredPerPersonPerNight') {
+    const rate = c.cash && c.cash.rate;
+    const ppLocal = rate ? (roomUSD / TAX_TRAVELERS) * rate : 0;
+    let band = 0;
+    for (const b of (r.bands || [])) { if (b.upTo == null || ppLocal < b.upTo) { band = b.rate; break; } }
+    return band ? `${trimNum(band)} ${cur} a person a night at this room price` : 'no hotel tax at this room price';
+  }
+  return '';
+}
+
+const usdWords = v => (v < 1 ? 'under $1' : `about $${Math.round(v)}`);
+
+// The one-time per-person fees (Mexico's VISITAX and Embrace It, Bali's entry
+// levy) are per-trip charges. A cost-of-a-day bar has no honest place for them,
+// and dividing by a nights count this chart does not have would be invented
+// precision. They are named in the caption and left out of the segment.
+function oneTimeText(c, r, lead) {
+  const amt = r.oneTimePerPerson;
+  const rate = c.cash && c.cash.rate;
+  if (!amt || !rate) return '';
+  return `${lead || 'Plus a one-time visitor fee of'} ${usdWords(amt / rate)} a person, a per-trip cost that is not in this bar.`;
+}
+
+function taxModelFor(c) {
+  const t = c.tax;
+  if (!t || t.none || !Array.isArray(t.regions) || !t.regions.length) {
+    return { n: 'no separate hotel tax here', s: c.name };
+  }
+  const skip = TAX_SKIP[c.slug] || [];
+  const collapse = TAX_COLLAPSE[c.slug];
+  let regions = t.regions.filter(r => !skip.includes(r.key));
+  let levyNote = '';
+  if (collapse) {
+    const src = t.regions.find(r => r.key === collapse.levyFrom);
+    if (src) levyNote = oneTimeText(c, src, collapse.levyLead);
+    regions = regions.filter(r => r.key === collapse.keep);
+  }
+  if (!regions.length) return { n: 'no separate hotel tax here', s: c.name };
+
+  const order = TAX_ORDER[c.slug];
+  if (order) {
+    // A rename or removal in the data would otherwise let the order quietly decay back
+    // to whatever the file happens to hold, so a stale map fails the build instead.
+    const keys = regions.map(r => r.key);
+    const gone = order.filter(k => keys.indexOf(k) < 0);
+    if (gone.length) {
+      throw new Error(
+        `CostChart: TAX_ORDER for "${c.slug}" lists ${gone.map(k => `"${k}"`).join(', ')}, ` +
+        'which no longer exists in its tax.regions. Update the display order to match the data.'
+      );
+    }
+    const rank = r => { const i = order.indexOf(r.key); return i < 0 ? order.length : i; };
+    regions = regions.slice().sort((a, b) => rank(a) - rank(b));
+  }
+
+  const multi = regions.length > 1;
+  if (multi && !TAX_QUESTION[c.slug]) {
+    throw new Error(
+      `CostChart: "${c.slug}" has ${regions.length} taxable regions but no entry in TAX_QUESTION. ` +
+      'Add a sub-picker label that matches what actually varies in its tax.regions (place, hotel ' +
+      'class or stay type). An unlabelled or mislabelled picker asserts precision the data does not have.'
+    );
+  }
+
+  const options = regions.map(r => {
+    // With a sub-picker the caption names the choice, as the reader made it. With
+    // no sub-picker there is nothing to name but the country, and a bare region
+    // label like "Hotel room" would read as a non-answer.
+    const subject = multi ? String(r.label).split(' (')[0] : c.name;
+    const phrases = tiers.map(name => {
+      const row = (payload[name] || []).find(x => x.slug === c.slug);
+      return taxPhrase(c, r, row ? row.room : 0);
+    });
+    const usds = tiers.map(name => {
+      const row = (payload[name] || []).find(x => x.slug === c.slug);
+      const v = row ? taxUsd(c, r, row.room) : null;
+      return v == null ? null : Math.round(v * 100) / 100;
+    });
+    const same = phrases.every(p => p === phrases[0]);
+    const extra = [oneTimeText(c, r), levyNote].filter(Boolean).join(' ');
+    const o = { k: r.key, s: subject, p: same ? phrases[0] : phrases, u: usds };
+    // The dropdown gets the label whole, because an option has to disambiguate on
+    // its own ("Abu Dhabi (any hotel)" answers the class half of the UAE question,
+    // "Abu Dhabi" does not). The caption gets the short form, because it is prose.
+    if (multi && r.label !== subject) o.l = r.label;
+    if (extra) o.t = extra;
+    return o;
+  });
+
+  const model = { o: options };
+  if (multi) model.q = TAX_QUESTION[c.slug];
+  return model;
+}
+
+const taxPayload = { tiers, byCountry: {} };
+for (const c of countries) {
+  const row = initial.find(x => x.slug === c.slug) || (payload[tiers[0]] || []).find(x => x.slug === c.slug);
+  if (!row) continue; // a country with no usable cash.styles has no bar to tax
+  taxPayload.byCountry[c.slug] = taxModelFor(c);
+}
+// Alphabetical, because a reader hunting for their destination is scanning names,
+// not costs. The chart itself stays sorted by cost.
+const taxCountries = countries
+  .filter(c => taxPayload.byCountry[c.slug])
+  .map(c => ({ slug: c.slug, name: c.name }))
+  .sort((a, b) => a.name.localeCompare(b.name));
 ---
 
 <div
@@ -157,6 +402,47 @@ const pct = v => (axisMax ? (v / axisMax) * 100 : 0);
   </p>
 
   <script type="application/json" data-cc-payload={id} set:html={JSON.stringify(payload)} />
+
+  {/*
+    Everything the tax segment needs lives in a template, so a reader with no JS
+    gets exactly the pre-tax chart above and nothing else: a template renders
+    nothing. Authoring the nodes here rather than building them as strings in the
+    page script also keeps them inside this component's scoped styles.
+  */}
+  <template data-cc-taxbits={id}>
+    <span class="cc-taxseg" aria-hidden="true"></span>
+    <span class="cc-cap">
+      <span class="cc-cap-l"><span class="cc-cap-rule"></span><span class="cc-cap-amt" hidden> That is <span class="cc-taxamt">$0</span> on this bar.</span><span class="cc-cap-extra"></span></span>
+      <span class="cc-cap-n">Still ranked on its pre-tax cost.</span>
+    </span>
+    <span class="cc-taxlegend"><span class="cc-key cc-keytax"></span> What this one adds on top</span>
+    <div class="cc-taxui">
+      <p class="cc-taxprompt">
+        Going somewhere? <button type="button" class="cc-taxopen">Add what its hotels add on top.</button>
+      </p>
+      <div class="cc-taxpanel" hidden>
+        <div class="cc-taxfields">
+          <label class="cf cc-taxf">
+            <span class="cf-l">Which destination?</span>
+            <span class="selwrap"><select class="cc-taxcountry">
+              {taxCountries.map(c => (<option value={c.slug}>{c.name}</option>))}
+            </select></span>
+          </label>
+          <label class="cf cc-taxf cc-taxsubwrap" hidden>
+            <span class="cf-l cc-taxsubq"></span>
+            <span class="selwrap"><select class="cc-taxsub"></select></span>
+          </label>
+        </div>
+        <p class="cc-taxfoot">
+          Only the country you pick changes. Every other bar stays on its pre-tax cost, and the
+          ranking never re-sorts on tax.
+          <button type="button" class="cc-taxclear" hidden>Clear tax, show all pre-tax</button>
+        </p>
+      </div>
+    </div>
+  </template>
+
+  <script type="application/json" data-cc-taxpayload={id} set:html={JSON.stringify(taxPayload)} />
 </div>
 
 <style>
@@ -207,7 +493,59 @@ const pct = v => (axisMax ? (v / axisMax) * 100 : 0);
     .cc-name{display:block;text-align:left;padding-right:0;white-space:normal;overflow:visible;text-overflow:clip;margin:0 0 4px;font-size:13px}
     .cc-total{min-width:46px;font-size:14px}
   }
+  /* ---- Tax segment: the picker, the amber add-on, the caption ---- */
+
+  /* The prompt is a quiet line, not a call to action. It sits under the scale
+     note so the reader meets the chart first and the option second. */
+  .cc-taxui{margin:0 0 14px}
+  .cc-taxprompt{font-size:12.5px;color:var(--muted);margin:0;line-height:1.45}
+  .cc-taxopen{font:inherit;font-size:12.5px;font-weight:600;color:var(--teal-deep);background:none;border:0;border-bottom:1px solid rgba(10,86,68,.35);padding:0;cursor:pointer;transition:color .18s ease,border-color .18s ease}
+  .cc-taxopen:hover{color:var(--amber);border-bottom-color:var(--amber)}
+  .cc-taxpanel{margin:12px 0 0;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:12px;box-shadow:var(--shadow);max-width:580px}
+  .cc-taxpanel[hidden]{display:none}
+  .cc-taxfields{display:flex;flex-wrap:wrap;gap:12px}
+  .cc-taxf{flex:1 1 210px;min-width:0}
+  .cc-taxsubwrap[hidden]{display:none}
+  .cc-taxfoot{font-size:12px;color:var(--muted);line-height:1.5;margin:12px 0 0}
+  .cc-taxclear{display:block;font:inherit;font-size:12px;font-weight:600;color:var(--teal-deep);background:none;border:0;border-bottom:1px solid rgba(10,86,68,.35);padding:0;margin:8px 0 0;cursor:pointer}
+  .cc-taxclear:hover{color:var(--amber);border-bottom-color:var(--amber)}
+  .cc-taxclear[hidden]{display:none}
+
+  /* The picked row. Teal because that is the chart's own family, and a tint plus a
+     bolder name reads as "this one" without competing with the amber add-on. */
+  .cc-row.is-picked{background:rgba(14,122,95,.07);border-radius:8px}
+  .cc-row.is-picked .cc-name{color:var(--teal-deep);font-weight:700}
+  .cc-row.is-picked .cc-seg.cc-room{background:var(--teal)}
+
+  /* The add-on segment is absolutely positioned, so the two existing flex segments
+     are untouched and cannot be squeezed by it when a taxed bar runs past the axis
+     maximum. Amber and hatched so it never reads as part of the ranked length. */
+  .cc-taxseg{position:absolute;top:0;bottom:0;left:0;width:0;border-radius:0 5px 5px 0;background-color:var(--amber);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.5) 0 3px,rgba(255,255,255,0) 3px 7px);transition:width .62s cubic-bezier(.22,.61,.36,1)}
+  /* The bar clips its segments to get its rounded ends. A taxed bar has to let the
+     add-on through, so the clip comes off and the room segment keeps its own left
+     radius instead of borrowing the parent's. */
+  .cc-row.is-taxed .cc-bar{overflow:visible}
+  .cc-row.is-taxed .cc-seg.cc-room{border-radius:5px 0 0 5px}
+  /* Priciest-bar case (Aruba, at two travel styles): the taxed length runs past the
+     track. The segment draws its true width into the gutter rather than being
+     clipped, and the dollar figure steps aside instead of being overrun. Both
+     figures are in the caption directly below, so nothing is lost, and the cell
+     keeps its width so the bar itself does not resize. */
+  .cc-row.is-over .cc-total{visibility:hidden}
+
+  .cc-cap{grid-column:2;display:block;max-height:0;opacity:0;overflow:hidden;font-size:12.5px;line-height:1.45;color:var(--muted);transition:max-height .34s ease,opacity .34s ease}
+  .cc-cap-l{display:block;font-style:italic;padding-top:5px}
+  .cc-cap-amt[hidden],.cc-cap-n[hidden]{display:none}
+  .cc-cap-n{display:block;font-size:11.5px;color:var(--amber);padding-top:2px;font-style:normal}
+  .cc-taxamt{font-variant-numeric:tabular-nums;font-style:normal;font-weight:600;color:var(--ink)}
+  .cc-taxlegend{display:inline}
+  .cc-key.cc-keytax{background-color:var(--amber);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.5) 0 2px,rgba(255,255,255,0) 2px 5px);margin-left:8px}
+
+  @media (max-width:560px){
+    .cc-cap{grid-column:auto}
+  }
   @media (prefers-reduced-motion: reduce){
     .cc-seg{transition:none}
+    .cc-taxseg,.cc-cap{transition:none}
   }
 </style>
