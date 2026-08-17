@@ -90,7 +90,12 @@ export default {
   // traveler enters their own fare, and hides the estimate if this block is absent.
   flight: { low: 300, high: 700, checked: "Jul 2026", checkedISO: "2026-07-18" },
   tax: {
-    unit: "flatPerNight",
+    // Every region below is percentOfRoom, so this top-level value is what a
+    // reader inherits when none is set. It said flatPerNight, which no region
+    // ever used and which breadth.js reads directly (c.tax.unit) to describe
+    // the charge, so the fees list told readers Mexico's tax was "charged per
+    // room, per night, not per person" when it is a percentage of the room.
+    unit: "percentOfRoom",
     currency: "MXN",
     capNights: null,
     note: "Two things stack on a Mexican room rate everywhere: the federal IVA at 16%, and a state lodging tax (the ISH) that each state sets for itself, typically 2 to 5%. On top of those, a few areas add visitor fees you pay separately, in Quintana Roo, Baja California Sur and Puerto Vallarta. This models the IVA, plus the state ISH where we can source the rate, plus any one-time visitor fee, on the assumption that your quoted rate excludes them, which is what a US-facing booking site usually shows. If your rate said impuestos incluidos, the percentages are already inside it and only the one-time fee is extra. Flat per-night environmental charges are not modelled, so add those from the notes below. At an all-inclusive the IVA and ISH are normally already inside the package price.",

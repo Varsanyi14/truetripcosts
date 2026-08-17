@@ -79,7 +79,10 @@ export default {
   // few cities now add a small nightly charge, and the units differ by city, so each region
   // can override the unit. Edinburgh's is a percentage of the room (the whole room, not per
   // person), capped at 5 nights. Manchester and Liverpool charge a flat amount per room each
-  // night through a business-district levy. Most of the UK, including London, charges nothing.
+  // night through a business-district levy. Most of the UK charges nothing, and London is
+  // listed on its own rather than folded into the catch-all: it is the likeliest pick, and
+  // "London: no hotel tax" is a useful answer to be able to give by name. Edinburgh stays
+  // first so the calculator's default region is unchanged.
   // Typical economy round trip per person from major US gateways, as a verified
   // RANGE, never a point. Sourced from fare-tracker averages (Kayak, momondo,
   // Skyscanner published route data), deliberately wide to cover season and
@@ -94,9 +97,10 @@ export default {
     note: "Most of the UK, including London, has no hotel or tourist tax today, though more cities are looking at one.",
     regions: [
       { key: "edinburgh", label: "Edinburgh", unit: "percentOfRoom", pct: 5, capNights: 5, taxLabel: "Edinburgh visitor levy", note: "Edinburgh's visitor levy applies as of 24 July 2026: 5% of the room rate each night, charged on the whole room (not per person) and capped at the first 5 nights." },
+      { key: "london", label: "London", rate: 0, note: "London charges no hotel or tourist tax. The rate you are quoted already includes 20% VAT, and nothing further is added at checkout." },
       { key: "manchester", label: "Manchester", rate: 1, note: "Manchester adds a City Visitor Charge of about 1 pound per room, per night, at participating city-centre hotels." },
       { key: "liverpool", label: "Liverpool", rate: 2, note: "Liverpool adds a City Visitor Charge of about 2 pounds per room, per night, at participating city-centre hotels." },
-      { key: "other", label: "Elsewhere in the UK (including London)", rate: 0, note: "Most of the UK, including London, has no hotel or tourist tax today." }
+      { key: "other", label: "Elsewhere in the UK", rate: 0, note: "Most of the UK has no hotel or tourist tax today." }
     ]
   },
   currencyHeading: "The pound, in plain terms.",
