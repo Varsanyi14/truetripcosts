@@ -4,8 +4,8 @@ export default {
   live: true,
   name: "Jamaica",
   from: "United States",
-  checked: "Jul 2026",
-  checkedISO: "2026-07-03",
+  checked: "Aug 2026",
+  checkedISO: "2026-08-17",
   emergency: { medical: "110", note: "110 reaches fire and ambulance and 119 the police, both free from any phone even with no SIM or credit. (911 connects in some areas, but 119 and 110 are the numbers to rely on.) Save your hotel address to read out.", checked: "Jul 2026", checkedISO: "2026-07-03" },
   insuranceLevel: "medium",
   region: "Americas",
@@ -25,8 +25,8 @@ export default {
   },
 
   recentChange: {
-    date: "2026 to 2027",
-    text: "Following Hurricane Melissa in late 2025, Jamaica's 2026 to 2027 budget is raising the lower tourism GCT rate on hotels and tours from 10% toward 15%, so hotel, tour and excursion prices are edging up. Prices were already on the higher side for the Caribbean, so budget realistically."
+    date: "From Apr 2027",
+    text: "Following Hurricane Melissa in late 2025, Jamaica legislated an increase in the lower tourism GCT rate on hotels and tours from 10% to the standard 15%. It has not happened yet: the rate is still 10% today and the increase takes effect from 1 April 2027, phased in, and the hotel industry is contesting it. Prices are already on the higher side for the Caribbean, so budget realistically, but a trip before April 2027 is not paying the higher rate."
   },
 
   notice: 'We only cover trips departing from the United States right now. Want an email the moment we add your home country? <a href="#" onclick="return false"><b>Sign up for an alert</b></a>.',
@@ -87,7 +87,7 @@ export default {
   tax: {
     none: true,
     currency: "JMD",
-    note: "Jamaica has no simple per-person nightly tourist tax to add at the desk. What you will see instead: the 15% General Consumption Tax (GCT) on restaurant and shop bills, a lower tourism GCT on hotels that is rising toward 15% in the 2026 to 2027 budget, a small flat Guest Accommodation Room Tax of about 1 to 4 US dollars per room per night by hotel size, and sometimes a resort fee. Arrival and departure taxes are almost always built into your airfare."
+    note: "Jamaica has no simple per-person nightly tourist tax to add at the desk. What you will see instead: the 15% General Consumption Tax (GCT) on restaurant and shop bills, a lower tourism GCT rate on hotels, still 10% today and legislated to rise to 15% from 1 April 2027, a small flat Guest Accommodation Room Tax of about 1 to 4 US dollars per room per night by hotel size, and sometimes a resort fee. Arrival and departure taxes are almost always built into your airfare."
   },
 
   currencyHeading: "The Jamaican dollar, in plain terms.",
@@ -101,7 +101,7 @@ export default {
   taxfree: {
     label: "Taxes and fees",
     heading: "The taxes on your bill, and the ones already in your airfare.",
-    text: "Jamaica has <b>no simple per-person nightly tourist tax</b> to hand over at the desk, but a few charges are worth knowing. Restaurant and shop bills carry the <b>15% General Consumption Tax (GCT)</b>, Jamaica's version of VAT, usually shown on the bill. Hotels have long paid a <b>lower tourism GCT rate</b>, which is <b>rising toward 15% in the 2026 to 2027 budget</b>, so hotel and tour prices are edging up. On top of that, hotels charge a small flat <b>Guest Accommodation Room Tax</b> of roughly <b>1 to 4 US dollars per room per night</b> depending on the property's size, and some resorts add a <b>resort fee</b>. The good news on entry and exit: Jamaica's <b>arrival and departure taxes</b> (its Tourism Enhancement Fee and airport taxes) are <b>almost always built into your airfare</b>, so you should not be paying them separately at the airport, though it is worth confirming with your airline. There is no tourist VAT-refund scheme on shopping, so there is nothing to reclaim when you leave."
+    text: "Jamaica has <b>no simple per-person nightly tourist tax</b> to hand over at the desk, but a few charges are worth knowing. Restaurant and shop bills carry the <b>15% General Consumption Tax (GCT)</b>, Jamaica's version of VAT, usually shown on the bill. Hotels pay a <b>lower tourism GCT rate</b>, which is <b>still 10% today</b>. It is legislated to rise to the standard <b>15% from 1 April 2027</b>, phased in, and the hotel industry is contesting it, so a trip before that date is not paying the higher rate. On top of that, hotels charge a small flat <b>Guest Accommodation Room Tax</b> of roughly <b>1 to 4 US dollars per room per night</b> depending on the property's size, and some resorts add a <b>resort fee</b>. The good news on entry and exit: Jamaica's <b>arrival and departure taxes</b> (its Tourism Enhancement Fee and airport taxes) are <b>almost always built into your airfare</b>, so you should not be paying them separately at the airport, though it is worth confirming with your airline. There is no tourist VAT-refund scheme on shopping, so there is nothing to reclaim when you leave."
   },
 
   traps: [
@@ -116,10 +116,10 @@ export default {
   tippingHeading: "Customary off-resort, often included at all-inclusives.",
   tipping: "Tipping in Jamaica is customary in most places, with one big exception. At sit-down restaurants a tip of around <b>10 to 15%</b> is normal for good service, though many bills already include a <b>service charge</b> (often 10%), which is shared among staff, so check before adding more. For tour guides and private drivers, <b>10 to 20%</b> of the cost is standard, and a little cash for a bellhop (a few hundred Jamaican dollars a bag) or housekeeping (a few hundred a day) is appreciated. The exception is <b>all-inclusive resorts</b>, many of which fold gratuities into the price and formally ask guests not to tip, so check your resort's policy before handing out cash. Tips are welcome in <b>Jamaican dollars or US dollars</b>, and small US bills are easy to give, but note that a <b>15% GCT</b> on a bill is a government tax, not a tip. Cash, handed to the person, is the surest way to reach them.",
   sources: {
-    changed: "Sources added on first publish, checked July 2026. Jamaica's General Consumption Tax is 15%, with a lower tourism rate on hotels of about 10%. Following Hurricane Melissa in late 2025, the 2026 to 2027 budget raises that tourism rate from 10% toward the standard 15%, phased in by April 2027, so hotel and tour costs are set to rise.",
+    changed: "Sources added on first publish, checked July 2026. Jamaica's General Consumption Tax is 15%, with a lower tourism rate on hotels of about 10%. Corrected Aug 2026: we previously wrote that the tourism GCT rate was already rising, which read as if it had happened. It has not. Following Hurricane Melissa in late 2025 the 2026 to 2027 budget legislated a rise from 10% to the standard 15%, but the effective date is 1 April 2027, phased in, and the Jamaica Hotel and Tourist Association is contesting it. The rate on a hotel bill today is still 10%.",
     links: [
       { label: "Tax Administration Jamaica: the 15% General Consumption Tax (GCT)", url: "https://www.jamaicatax.gov.jm/", type: "revenue" },
-      { label: "Jamaica Information Service: the 2026 to 2027 budget raising the tourism GCT rate from 10% toward 15%", url: "https://jis.gov.jm/govt-projects-29-4b-from-new-revenue-measures-in-fiscal-year-2026-27/", type: "gov" },
+      { label: "Jamaica Information Service: the 2026 to 2027 revenue measures legislating the tourism GCT rise from 10% to 15%, effective 1 April 2027", url: "https://jis.gov.jm/govt-projects-29-4b-from-new-revenue-measures-in-fiscal-year-2026-27/", type: "gov" },
     ],
     judgment: "The small flat room tax of roughly 1 to 4 US dollars per room per night, the resort-fee habit, and the daily cash share, tipping norms and likely ATM behavior are our own read from recent traveler and bank reports, not a single official table.",
   },
@@ -130,7 +130,7 @@ export default {
     { q: "What is the best way to get Jamaican dollars?", a: "A bank ATM at a fair rate. Use Scotiabank, NCB or Sagicor machines inside banks or malls; expect a modest fee of about 500 to 1,000 JMD (4 to 8 dollars) plus your home bank's charge, with limits around 30,000 to 50,000 JMD per withdrawal. A Charles Schwab card refunds ATM fees, and a Bank of America card can use Scotiabank through the Global ATM Alliance. Decline \"convert to dollars\" and choose JMD." },
     { q: "Should I pay in Jamaican dollars or US dollars on a card terminal?", a: "Always Jamaican dollars. If the terminal or ATM offers to charge you in US dollars, decline; that dynamic currency conversion adds a few percent on top. Choosing JMD lets your card's network handle the exchange at a fairer rate." },
     { q: "Can I tip at an all-inclusive resort in Jamaica?", a: "Often not. Many all-inclusive resorts include gratuities in the price and ask guests not to tip, while others welcome a little cash for great service, so check your resort's specific policy. Off-resort, tipping is customary: around 10 to 15% at restaurants (minus any service charge already on the bill) and 10 to 20% for guides and drivers, in Jamaican or US dollars." },
-    { q: "Do I have to pay a tourist tax or departure tax in Jamaica?", a: "There is no simple per-person nightly tourist tax to hand over, but hotel bills carry GCT (a tourism rate rising toward 15% in the 2026 to 2027 budget) plus a small flat room tax of about 1 to 4 US dollars per room per night, and some resorts add a resort fee. Jamaica's arrival and departure taxes are almost always built into your airfare, so you should not owe them separately at the airport, but confirm with your airline." },
+    { q: "Do I have to pay a tourist tax or departure tax in Jamaica?", a: "There is no simple per-person nightly tourist tax to hand over, but hotel bills carry GCT (a lower tourism rate, still 10% today, legislated to rise to 15% from 1 April 2027) plus a small flat room tax of about 1 to 4 US dollars per room per night, and some resorts add a resort fee. Jamaica's arrival and departure taxes are almost always built into your airfare, so you should not owe them separately at the airport, but confirm with your airline." },
     { q: "How much cash should I bring for a week in Jamaica?", a: "It depends on your trip. At an all-inclusive you may need very little beyond tips (where allowed) and a few excursions. Traveling independently, roughly 200 to 400 US dollars' worth of Jamaican dollars across a week beyond your card spending covers taxis, local food, markets and tips. Get it from bank ATMs rather than the airport, and keep small JMD notes for taxis and jerk stands." }
   ],
 
