@@ -54,9 +54,30 @@ for dp, dn, fn in os.walk(os.path.join('src', 'data')):
         long_figs = [m.group(1) for m in re.finditer(r'fig:\s*"([^"]*)"', t) if len(m.group(1)) > FIG_MAX]
         if long_figs: figs.append((len(long_figs), f'fig over {FIG_MAX} chars', p + '  ' + ' | '.join(long_figs)))
 
+# Stray escapes in the guide data. A backslash has no business appearing in TTC prose,
+# so a string whose VALUE contains one is always a mistake. The sequence below is the
+# one that actually shipped: an escaped backslash immediately followed by an escaped
+# quote, which is valid JavaScript, parses cleanly, builds 454 pages without complaint,
+# and then renders a visible backslash to the reader (a one-time \\"Embrace It\\" fee).
+# Nothing else catches it: the build only cares that the file parses, and the dash gate
+# only looks at characters. Scoped to src/data because that is prose, where a backslash
+# is never wanted; components and pages manipulate strings and may escape legitimately.
+BS = chr(92)
+BAD_ESC = {BS * 3 + '"': 'escaped backslash before a quote', BS * 3 + "'": 'escaped backslash before an apostrophe'}
+esc = []
+for dp, dn, fn in os.walk(os.path.join('src', 'data')):
+    for f in sorted(fn):
+        if not f.lower().endswith('.js'): continue
+        p = os.path.join(dp, f)
+        t = io.open(p, encoding='utf-8', errors='replace').read()
+        for k, name in BAD_ESC.items():
+            n = t.count(k)
+            if n: esc.append((n, name, p))
+
 print("== TTC content gate (src + dist) ==")
 show("HARD  em/en dashes + U.S.", hard)
 show("HARD  long spoke figures ", figs)
+show("HARD  stray escapes      ", esc)
 show("WARN  dash look-alikes   ", warn)
-print("\nRESULT:", "FAIL" if (hard or figs) else ("PASS (warnings)" if warn else "PASS"))
-sys.exit(1 if (hard or figs) else 0)
+print("\nRESULT:", "FAIL" if (hard or figs or esc) else ("PASS (warnings)" if warn else "PASS"))
+sys.exit(1 if (hard or figs or esc) else 0)

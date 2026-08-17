@@ -110,7 +110,7 @@ export default {
   taxfree: {
     label: "Tourist taxes",
     heading: "The taxes nobody mentions until the airport.",
-    text: "Start with the two that apply to a hotel room anywhere in Mexico, because neither is a tourist tax and both are easy to miss. The federal <b>IVA is 16%</b> and it applies to lodging. On top of it your state charges a <b>lodging tax (the ISH)</b>, set state by state and typically <b>2 to 5%</b>, which is <b>5% in Quintana Roo</b> (6% if you book through a digital platform) and was changed in several states for 2026. Together those are commonly <b>a fifth on top of the room rate</b>, and whether they are already inside the price you were quoted depends entirely on the hotel or the booking site, so read the tax breakdown before you compare two rates. At an <b>all-inclusive</b> they are normally already in the package. Then come the charges that are genuinely extra. Two catch first-timers in the Cancun and Riviera Maya area. <b>VISITAX</b> is a Quintana Roo state tax of about 283 pesos (roughly $16) per person, for anyone visiting Cancun, Tulum, Playa del Carmen, Cozumel or Isla Mujeres. You pay it once for your whole stay at the official site, visitax.gob.mx, and save the QR code; as of 2026 it is checked at the airport on departure. Steer clear of the lookalike sites that charge two to three times the real amount. Separately, many Quintana Roo hotels add a small <b>environmental or sanitation tax</b>, commonly a few dollars per room per night (around 75 pesos in Cancun, varying by town), collected by the hotel at check-in or checkout. Quintana Roo is no longer the only place: <b>Baja California Sur</b> (Los Cabos, La Paz, Loreto) now charges its own one-time <b>\"Embrace It\"</b> visitor fee of about 28 dollars per person, also paid online and checked at the airport, and <b>Puerto Vallarta</b> added a smaller foreign-visitor fee in 2026. None is large, but they are easy to forget."
+    text: "Start with the two that apply to a hotel room anywhere in Mexico, because neither is a tourist tax and both are easy to miss. The federal <b>IVA is 16%</b> and it applies to lodging. On top of it your state charges a <b>lodging tax (the ISH)</b>, set state by state and typically <b>2 to 5%</b>, which is <b>5% in Quintana Roo</b> (6% if you book through a digital platform) and was changed in several states for 2026. Together those are commonly <b>a fifth on top of the room rate</b>, and whether they are already inside the price you were quoted depends entirely on the hotel or the booking site, so read the tax breakdown before you compare two rates. At an <b>all-inclusive</b> they are normally already in the package. Then come the charges that are genuinely extra. Two catch first-timers in the Cancun and Riviera Maya area. The full breakdown of what lands on a room bill, and how to tell whether a quoted rate already includes it, is in <a href='/mexico/hotel-taxes-and-fees'>Mexico hotel taxes and fees</a>. <b>VISITAX</b> is a Quintana Roo state tax of about 283 pesos (roughly $16) per person, for anyone visiting Cancun, Tulum, Playa del Carmen, Cozumel or Isla Mujeres. You pay it once for your whole stay at the official site, visitax.gob.mx, and save the QR code; as of 2026 it is checked at the airport on departure. Steer clear of the lookalike sites that charge two to three times the real amount. Separately, many Quintana Roo hotels add a small <b>environmental or sanitation tax</b>, commonly a few dollars per room per night (around 75 pesos in Cancun, varying by town), collected by the hotel at check-in or checkout. Quintana Roo is no longer the only place: <b>Baja California Sur</b> (Los Cabos, La Paz, Loreto) now charges its own one-time <b>\"Embrace It\"</b> visitor fee of about 28 dollars per person, also paid online and checked at the airport, and <b>Puerto Vallarta</b> added a smaller foreign-visitor fee in 2026. None is large, but they are easy to forget."
   },
   traps: [
     "<b>\"Pay in dollars?\" Always say no.</b> At a card terminal or ATM, choosing dollars (dynamic currency conversion) quietly adds 5 to 10%. Pick pesos every time, and remember the \"$\" on a price tag already means pesos.",
@@ -1033,6 +1033,81 @@ export default {
           { label: "US State Department: Mexico country information and safety guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Mexico.html", type: "gov" }
         ],
         judgment: "These are the money traps most consistently reported by travelers in 2025 and 2026, not a ranked risk list, and amounts vary by place and situation. The vast majority of visits see none of this, and the habits above avoid nearly all of it. For timeshare or consumer disputes, Mexico's PROFECO is the official consumer agency. Checked July 2026."
+      }
+    },
+    {
+      slug: "hotel-taxes-and-fees",
+      glance: [
+        { k: "On top of the room", v: "About a fifth" },
+        { k: "IVA", v: "16%, federal, on lodging" },
+        { k: "State lodging tax", v: "2 to 5%, and 5% in Quintana Roo" },
+        { k: "In the quoted rate?", v: "Sometimes. You have to ask" }
+      ],
+      live: true,
+      topic: "taxes",
+      title: "Mexico hotel taxes: the 16% IVA and the state tax",
+      description: "A Mexican hotel bill adds 16% IVA plus a state lodging tax of 2 to 5%, about a fifth on the room. Whether it is inside your quoted rate varies. Checked 2026.",
+      h1: "Mexico hotel taxes and fees, explained",
+      lede: "Short answer: about a fifth on top of the room rate, from two taxes that rarely get mentioned until checkout. The harder problem is not the amount. It is that you often cannot tell from a quoted rate whether they are already inside it, which makes comparing two hotels in Mexico genuinely misleading.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-17",
+      answer: "Two taxes sit on a Mexican room rate. The federal <b>IVA at 16%</b>, which applies to lodging everywhere in the country. And a <b>state lodging tax</b>, the ISH, which each state sets for itself and which typically runs <b>2 to 5%</b>; in <b>Quintana Roo</b>, the state holding Cancun, the Riviera Maya, Tulum and Cozumel, it is <b>5%</b>, or 6% if you book through a digital platform. Together that is roughly <b>21%</b> in the Caribbean resort belt and about a fifth elsewhere. On top, Quintana Roo hotels collect a small <b>environmental charge</b> of around <b>76 pesos, roughly 4 dollars, per room per night</b>, at the desk. The catch is presentation: some rates are quoted with the taxes in and some without, so <b>ask for the all-in nightly total</b>. At an <b>all-inclusive</b> the taxes are normally already in the package. There is <b>no tourist VAT refund</b> in Mexico.",
+      official: {
+        label: "SATQ, the Quintana Roo tax authority: the state lodging tax law",
+        url: "https://satq.qroo.gob.mx/contenidos/dmarcolegal/e821150a-eda1-11f0-8e6b-005056a29996",
+        note: "The 16% IVA is federal and set by the SAT. The lodging tax is state law, so the rate comes from each state's own legislation and there is no single national page for it. Quintana Roo publishes its own here."
+      },
+      sections: [
+        {
+          h: "The 16% IVA, which is federal and certain",
+          icon: "receipt",
+          key: { fig: "16%", tag: "On the room, everywhere", text: "The federal value-added tax applies to lodging across the whole country, at the same rate in Cancun and in Oaxaca. It is the largest single charge on a Mexican hotel bill.", tone: "teal" },
+          p: [
+            "The <b>IVA</b> is Mexico's value-added tax, it runs at <b>16%</b>, and it applies to accommodation everywhere in the country at the same rate. There is no tourist or resort variation to look up: Cancun and Oaxaca City pay the same. It is comfortably the <b>largest single charge</b> on a Mexican hotel bill, larger than any of the visitor fees that get far more attention.",
+            "One consequence worth drawing out. Because the IVA is a general tax rather than a tourist levy, it does not appear in the lists of tourist taxes travellers tend to search for, which is part of why a Mexican hotel bill surprises people who thought they had done their homework. It is not hidden. It is just filed under the wrong heading."
+          ]
+        },
+        {
+          h: "The state lodging tax, which is not the same everywhere",
+          icon: "coins",
+          key: { fig: "2% to 5%", tag: "Set state by state", text: "The ISH is state law, not federal, so the rate depends on which state your hotel sits in. Several states changed theirs for 2026, and published rate tables go stale fast.", tone: "amber" },
+          p: [
+            "Alongside the IVA, each state charges its own <b>lodging tax</b>, the impuesto sobre hospedaje or ISH, on the room. It is <b>state law rather than federal</b>, so the rate depends on where your hotel is, and it typically falls between <b>2 and 5%</b>. In <b>Quintana Roo</b> it is <b>5%</b>, raised under a reform of that state's lodging tax law in 2023, and <b>6%</b> where the booking goes through a digital platform rather than the hotel. With the IVA that puts a Cancun or Riviera Maya room at roughly <b>21%</b> in tax.",
+            "Be careful with rate tables you find elsewhere, including ours. <b>Several states changed their ISH for 2026</b>, Yucatan cut its rate, others tightened the rules on platforms, and a number of online calculators still print figures we believe are years out of date, including 3% and 4% for Quintana Roo. Where we could not confirm a current state rate from the state's own law, we have said so rather than guessed: for <b>Baja California Sur</b> in particular, treat the 16% IVA as the floor and ask the hotel what the total comes to."
+          ]
+        },
+        {
+          h: "The real problem is whether it is already in the rate",
+          icon: "usd",
+          key: { fig: "Ask", tag: "Quoting is inconsistent", text: "Some Mexican rates are quoted with tax included and some without, and the same hotel can be presented both ways on different booking sites. Comparing headline rates is unreliable.", tone: "amber" },
+          p: [
+            "This is the part that actually costs people money, and it is not the rates. Mexican accommodation is quoted <b>both ways</b>. A hotel may show a rate <b>plus impuestos</b>, added at the end, or one described as <b>impuestos incluidos</b>, and the same property can appear both ways across different booking sites. A rate that looks 20% cheaper may simply be the one that has not added the tax yet.",
+            "So the only number worth comparing is the <b>all-in nightly total</b>, and the only reliable way to get it is to read the tax breakdown at the final step of the booking, or ask the hotel directly. If you are weighing two properties, get both to the same basis before you decide. This is the single most useful habit for Mexico and it takes about a minute."
+          ]
+        },
+        {
+          h: "What is genuinely extra, and what is covered elsewhere",
+          icon: "tag",
+          key: { fig: "Separate", tag: "Entry fees are not room tax", text: "The visitor fees Mexico is known for, VISITAX and the state fees, are separate one-time charges rather than taxes on your room, and they live in their own guide.", tone: "teal" },
+          p: [
+            "Two things are genuinely additional to the taxes above. Quintana Roo hotels collect a small <b>environmental charge</b>, around <b>76 pesos, roughly 4 dollars, per room per night</b>, usually taken at check-in or checkout rather than shown at booking. And a few properties add their own charges, though Mexico has nothing like the resort-fee culture of Aruba or the Bahamas.",
+            "The visitor fees Mexico is better known for are a different thing entirely: <b>VISITAX</b> in Quintana Roo, the <b>Embrace It</b> fee in Baja California Sur and Puerto Vallarta's own charge are <b>one-time fees per person</b>, not taxes on your room, and they are covered in the <a href='/mexico/fmm-and-visitax'>Mexico entry fees and Visitax guide</a>. If your stay is an all-inclusive, the room taxes are normally inside the package and what is not is set out in <a href='/mexico/all-inclusive-costs'>what an all-inclusive really costs</a>. Finally, there is <b>no tourist VAT refund</b> in Mexico, so the 16% is part of the price rather than something to reclaim on the way out. For cards, cash and pesos, see the <a href='/mexico'>Mexico money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much tax is added to a hotel room in Mexico?", a: "About a fifth. The federal IVA is 16% on lodging everywhere in the country, and your state adds its own lodging tax (ISH) of typically 2 to 5% on top, which is 5% in Quintana Roo. That puts a Cancun or Riviera Maya room near 21% in tax. Quintana Roo hotels also collect a small environmental charge of roughly 4 dollars per room per night at the desk." },
+        { q: "What is the hotel tax in Cancun?", a: "The 16% federal IVA plus Quintana Roo's 5% state lodging tax, so roughly 21% on the room rate, and 6% rather than 5% if you booked through a digital platform. On top of that, hotels there collect an environmental charge of about 76 pesos, roughly 4 dollars, per room per night. VISITAX is separate: a one-time state fee per person, not a tax on your room." },
+        { q: "Is tax included in Mexican hotel prices?", a: "Sometimes, and that is the problem. Mexican rates are quoted both ways, plus impuestos or impuestos incluidos, and the same hotel can appear both ways on different booking sites. A rate that looks much cheaper may just be the one that has not added the tax yet, so compare all-in nightly totals rather than headline rates, and read the tax breakdown at the final booking step." },
+        { q: "Do all-inclusive resorts in Mexico include the taxes?", a: "Normally yes, the IVA and the state lodging tax are usually inside the package price you were quoted. What is often not included is the Quintana Roo environmental charge collected at the desk, along with premium drinks, spa treatments, excursions and tips. Ask whether your package total is all-in when you book." },
+        { q: "Can tourists claim VAT back in Mexico?", a: "No, there is no general tourist VAT refund scheme for visitors to Mexico, so the 16% IVA is simply part of the price of your room, your meals and your shopping. This is different from the Bahamas or Saudi Arabia, both of which do refund tax on goods a visitor exports." }
+      ],
+      sources: {
+        links: [
+          { label: "SATQ, the Quintana Roo tax authority: the state lodging tax law", url: "https://satq.qroo.gob.mx/contenidos/dmarcolegal/e821150a-eda1-11f0-8e6b-005056a29996", type: "revenue" },
+          { label: "VISITAX: the official Quintana Roo visitor fee portal, which is separate from the room taxes here", url: "https://www.visitax.gob.mx/sitio/", type: "gov" }
+        ],
+        judgment: "The 16% IVA is federal and certain. The state lodging tax is set by each state, so there is no single national rate and we give the 2 to 5% band rather than a per-state table. Quintana Roo at 5%, and 6% through digital platforms, traces to a 2023 reform of that state's lodging tax law and is stated consistently across several Mexican accounting practices; note that some online rate calculators still print 3% or 4% for Quintana Roo and we believe those are stale, so please do not correct our figure down without checking the state law itself. For Baja California Sur we could not confirm a current rate, so we treat the 16% as a floor there rather than publishing a number. The Quintana Roo environmental charge of about 76 pesos per room per night is carried from an earlier check and one secondary source now quotes a lower figure for a similarly named charge, which we could not reconcile, so treat it as approximate. Checked August 2026."
       }
     }
   ]
