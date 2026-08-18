@@ -80,7 +80,22 @@ const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? `/flags/${slu
      leave rather than being chopped at the edge. Both stops are 44px: at 13.5px text a
      22px left fade was about one character wide, so items arrived already sliced through
      a word and the strip read as broken rather than moving. */
-  .lc-strip{position:relative;overflow:hidden;
+  /* text-size-adjust: the reason two rounds of shrinking .lc-item did not land on a
+     phone. Mobile WebKit and Blink default this to `auto` and inflate text inside blocks
+     that are much wider than the viewport. .lc-track is width:max-content, so the run is
+     several viewport widths across and is the only block on the front door that trips
+     that heuristic: 15px hero copy in a normal-width block renders at 15px while 12px
+     ticker text renders larger than its declared size. Cutting the px only scaled the
+     inflated result, which is why the strip kept reading as dominant. Pinning this to
+     100% opts the strip out, so the size set below is the size that ships. Do not remove
+     it, or the next size change will not land either.
+
+     PREFIXED ONLY, ON PURPOSE. Safari supports `-webkit-text-size-adjust` and not the
+     unprefixed property, and the CSS minifier collapses the pair to the unprefixed one
+     and drops the prefix, verified in dist. Adding `text-size-adjust:100%` alongside this
+     therefore deletes the only declaration iOS reads and puts the inflation straight
+     back. Blink honors the prefixed form too, so this one line covers both. */
+  .lc-strip{position:relative;overflow:hidden;-webkit-text-size-adjust:100%;
     -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 44px,#000 calc(100% - 44px),transparent 100%);
     mask-image:linear-gradient(90deg,transparent 0,#000 44px,#000 calc(100% - 44px),transparent 100%)}
   .lc-track{display:flex;width:max-content;animation:lc-scroll 90s linear infinite}
@@ -96,7 +111,10 @@ const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? `/flags/${slu
   .lc-chk{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;color:var(--muted,#6F6E66);background:var(--green-bg,#E7F3E9);border-radius:999px;padding:1px 8px}
 
   @media (max-width:560px){
-    .lc-item{font-size:12px;padding-right:30px}
+    /* 11.5px is the floor: these are real dated facts and stay legible while scrolling.
+       Below this the checked pill (10.5px) and the label (11px) stop reading as the
+       smaller type, which is the inversion the size relationship exists to avoid. */
+    .lc-item{font-size:11.5px;padding-right:30px}
     .lc-fact{color:#4A5A55}
   }
 
