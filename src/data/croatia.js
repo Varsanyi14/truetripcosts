@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "croatia",
   iso2: "hr",
@@ -592,6 +594,70 @@ export default {
           { label: "US State Department: Croatia country information and safety guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Croatia.html", type: "gov" }
         ],
         judgment: "The receipt obligation comes from Croatia's Fiscalization Act, which took effect in its current form on 1 January 2026 and requires a fiscalized consumer receipt regardless of payment method. The per-kilogram seafood pricing and the chargeable unordered plates are long-standing coastal conventions rather than scams, and we have framed them that way; we have not attached a figure to either, because the amount depends entirely on the fish and the venue. The Dubrovnik fake QR parking codes are reported by Croatian press for July 2025 with police involvement, and we have described them as reported rather than as a government advisory item; the underlying technique is documented by law enforcement in several countries. Croatia has used the euro since 2023. Checked August 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Strong on the coast and in the cities" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
+        { k: "Signal gaps", v: "Island ferries, the Velebit interior" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "eSIM for Croatia: the cost math, and island crossings",
+      description: "Croatian coverage is strong along the coast and in the cities, so this is a cost question. The gaps are the island ferries and the mountainous interior.",
+      h1: "Staying connected in Croatia.",
+      lede: "Croatia covers its coast, its cities and its main islands well, so this is mostly a price decision. What thins out is the bit between islands and the limestone interior nobody drives through by accident.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>strong</b> in Zagreb, Split, Dubrovnik and along the Dalmatian coast, and good on the larger islands including Hvar, Brac and Korcula. It thins on <b>ferry and catamaran crossings</b>, on the smaller islands away from the port towns, and in the mountainous interior of the <b>Velebit</b> and around Plitvice's back trails. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and works from landing. A <b>local prepaid SIM</b> is also cheap here and, because this is an <b>EU</b> country, it carries <b>Roam Like At Home</b> across the rest of the union at no surcharge, which is worth pricing if the trip continues into other EU countries. For island hopping, <b>download your ferry times and maps before you sail</b>. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "A cost question first",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `Croatian networks are good where visitors go, so the question is price. A US carrier day pass is about <b>${S.dayPass}</b>, so <b>${S.week}</b> for a week, with <b>AT&amp;T</b> capping at <b>${S.capFees}</b> and <b>Verizon</b> having <b>${S.verizonNoCap}</b>. <b>T-Mobile</b>'s tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value.`,
+            `A <b>Nomad eSIM</b> at a few dollars per gigabyte undercuts the pass for a normal week. An <b>A1</b>, <b>Hrvatski Telekom</b> or <b>Telemach</b> tourist pack is inexpensive and, since Croatia is in the EU, carries EU roaming, which is worth pricing if you are continuing to Slovenia or Italy. Do not roam with <b>no plan</b>, at about <b>${S.ppu}</b>.`
+          ]
+        },
+        {
+          h: "Between the islands, and inland",
+          icon: "alert",
+          key: { fig: "Mid-crossing", tag: "Where signal drops", text: "Catamaran and ferry crossings lose signal on open water. The Velebit interior and back trails are thin on every network.", tone: "amber" },
+          p: [
+            `The coast is well served and the water between it is not. Longer <b>catamaran and ferry runs</b>, to Vis, Lastovo and the outer Kornati, drop coverage on open water, and the smaller islands can be thin once you leave the port town. Inland, the <b>Velebit</b> range, the Lika plateau and the back trails around <b>Plitvice</b> and Krka have real gaps, as do some of the tunnels and gorges on the older inland roads.`,
+            `So download the things you will want: <b>ferry timetables</b>, which change seasonally and matter more here than almost anywhere, your accommodation address, and offline maps for the island or the park. That is preparation rather than purchase, and no plan substitutes for it.`
+          ]
+        },
+        {
+          h: "On the coast you are fine",
+          icon: "phoneok",
+          key: { fig: "The coast", tag: "Well covered", text: "Zagreb, Split, Dubrovnik and the Dalmatian coast have fast 4G and urban 5G, and the big islands are solid in the towns.", tone: "teal" },
+          p: [
+            `Where most of a Croatian trip happens, there is little to warn about: <b>Zagreb, Split, Zadar, Dubrovnik</b> and the coastal road have fast 4G with 5G in the cities, and <b>Hvar, Brac, Korcula</b> and the other larger islands are solid in the towns, at the ports and along the main roads. Old-town Dubrovnik and Diocletian's palace are comfortably covered.`,
+            `The practical reason to carry data here is the same as in Greece: ferry changes, parking apps and finding a konoba at the end of a driving day. This guide is written for US travelers departing the US. For more, see <a href='/croatia/cash-or-card'>cash or card in Croatia</a>, <a href='/croatia/taxis-and-apps'>taxis and apps in Croatia</a>, and the <a href='/croatia'>Croatia money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Will I have signal on Croatian ferries?`, a: `Not throughout. Longer catamaran and ferry runs to the outer islands lose coverage on open water, and smaller islands thin out beyond the port town. Download ferry timetables and offline maps before you sail, since Croatian schedules change seasonally.` },
+        { q: `How much does it cost to use my US phone in Croatia?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` },
+        { q: `Do I need an eSIM for Croatia?`, a: `It is the cheapest way for most US travelers to get real data, at a few dollars per gigabyte against about $10 to $12 a day for a carrier pass. A local A1, Hrvatski Telekom or Telemach tourist pack is also cheap and carries EU roaming if you are continuing to Slovenia or Italy.` },
+        { q: `Is coverage good on the Croatian islands?`, a: `On the larger ones, yes: Hvar, Brac and Korcula are solid in the towns, at the ports and on the main roads. Smaller and outer islands are thinner away from the port, and the water between them is the real gap.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Croatia country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Croatia.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. The ferry point is the honest headline and no data plan fixes it. The seasonal-timetable warning is included because it is the practical reason a Croatian island trip goes wrong, and it is a downloading habit rather than a purchase. Coverage reads are the desk's from operator footprints and traveler accounts. Carrier figures are an Aug 2026 snapshot."
       }
     }
   ]

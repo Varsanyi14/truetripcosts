@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "czechia",
   iso2: "cz",
@@ -523,6 +525,70 @@ export default {
           { label: "Expats.cz: investigation into imposter taxi operators at Prague Airport and the fares they charged", url: "https://www.expats.cz/czech-news/article/triple-the-price-how-prague-airport-s-imposter-taxi-drivers-exploit-travelers", type: "media" }
         ],
         judgment: "The three-hour cancellation right, the 1,000 euro limit, the obligation to issue a receipt, the ban on separate fees and the single-rate-table rule all come from the Czech National Bank's own consumer guidance, which is the primary source. The Prague Airport imposter taxi figures come from an Expats.cz investigation published in late 2025 and describe one documented operator, not a typical fare. We have deliberately not quoted the exact regulated per-kilometre maximum, because sources disagree on the current number; the mechanism that matters is that licensed taxis must display their rate on the door and run the meter. Koruna conversions use roughly 22 to the dollar. Checked August 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Excellent, few gaps worth naming" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A local SIM, and it is cheap" },
+        { k: "Signal gaps", v: "None worth planning around" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "eSIM for Czechia: cheap local data, no coverage story",
+      description: "Czech coverage is excellent and local prepaid data is cheap, so this page is short. The only decision is whether the errand is worth the saving.",
+      h1: "Staying connected in Czechia.",
+      lede: "Czechia has excellent coverage and some of the cheaper prepaid data in Europe, and no connectivity story worth padding out. That makes this page short, which is the honest length for it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>excellent</b> across Prague, the regional cities, the countryside and the rail network, with no gap worth planning a trip around. On price, a local <b>O2</b>, <b>T-Mobile CZ</b> or <b>Vodafone</b> prepaid SIM with a data bundle is genuinely cheap, and because Czechia is in the <b>EU</b> it carries <b>Roam Like At Home</b> across the union. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and needs no shop visit. Both undercut roaming comfortably, so the only real decision is whether a shop errand is worth the difference. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "Cheap either way, so pick on effort",
+          icon: "tag",
+          key: { fig: "Cheap both ways", tag: "Local SIM or eSIM", text: "Czech prepaid data is inexpensive and carries EU roaming. A travel eSIM costs a little more and needs no shop. Both beat roaming.", tone: "teal" },
+          p: [
+            `Czech prepaid is inexpensive and widely sold, in <b>O2</b>, <b>T-Mobile CZ</b> and <b>Vodafone</b> shops and in supermarkets, and the data bundles are generous for the money. Because Czechia is in the EU, that allowance travels with you across the union under <b>Roam Like At Home</b>, so it is the better buy if Prague is one stop on a wider trip.`,
+            `A <b>Nomad eSIM</b> at a few dollars per gigabyte is the frictionless option: no shop, no counter, working from landing. For a long weekend that convenience is probably worth the small premium; for two weeks moving through central Europe the local SIM wins. We earn on the eSIM, so it is worth being plain that on price alone the local SIM is ahead.`
+          ]
+        },
+        {
+          h: "What roaming costs, if you do nothing",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `The expensive default is roaming on your US plan at about <b>${S.dayPass}</b>, so <b>${S.week}</b> for a week. <b>AT&amp;T</b> caps that at <b>${S.capFees}</b>, about <b>${S.capAmount}</b>, so a long trip stops compounding, while <b>Verizon has ${S.verizonNoCap}</b>. Check <b>T-Mobile</b> first if that is your carrier: its current tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value, slowing to <b>${S.throttle}</b> after.`,
+            `What not to do is roam with <b>no plan at all</b>. Pay-per-use runs about <b>${S.ppu}</b>, thousands per gigabyte, and phones use data in the background, so <b>turn off data roaming</b> until something is active.`
+          ]
+        },
+        {
+          h: "Nothing much to warn you about",
+          icon: "phoneok",
+          key: { fig: "No real gaps", tag: "Coverage", text: "Strong in Prague, the regional cities, the countryside and on the trains, with widespread urban 5G.", tone: "teal" },
+          p: [
+            `This section is short because Czechia does not give us much. Coverage is strong in <b>Prague, Brno, Olomouc</b> and the regional towns, across the countryside, on the trains and in the beer-hall basements, with 5G widespread in the cities. Deep in the <b>Sumava</b> forest or in the sandstone gorges of Bohemian Switzerland you can lose it, which is a hiking detail rather than something to plan a trip around.`,
+            `We would rather say that plainly than invent a caveat to make the page look thorough. Download offline maps for a forest hike, on the general principle that a phone has other ways to fail. This guide is written for US travelers departing the US. For more, see <a href='/czechia/cash-or-card'>cash or card in Czechia</a>, <a href='/czechia/taxis-and-apps'>taxis and apps in Czechia</a>, and the <a href='/czechia'>Czechia money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Is a Czech SIM card cheaper than an eSIM?`, a: `On price, yes. Czech prepaid data is inexpensive and carries EU roaming across the union, so it is the better buy for a longer European trip. A travel eSIM costs a little more per gigabyte and needs no shop visit, which is worth the difference on a short city break.` },
+        { q: `How much does it cost to use my US phone in Czechia?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` },
+        { q: `Is phone coverage good in Czechia?`, a: `Yes, excellent, including Prague, the regional cities, the countryside and the rail network, with widespread urban 5G. There is no gap worth planning a trip around. The Sumava forest and the sandstone gorges can thin out, which is a hiking detail.` },
+        { q: `Do I need data in Prague at all?`, a: `Not strictly. Wifi is common in cafes, hotels and restaurants and the city centre is walkable and well signed. Data is worth having for transit apps, taxis and looking things up on the move, and at Czech prices it is cheap enough not to agonise over.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Czechia country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/CzechRepublic.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. This is deliberately a short spoke. Czech coverage is genuinely excellent, there is no network to favour and no signal gap worth a paragraph, so padding it would make the page look more useful while telling you less. On price the local SIM is ahead of the eSIM we earn on, and the page says so. No SIM registration requirement is stated here because we could not confirm one to the standard we hold ourselves to, and inventing a paperwork warning would be worse than omitting it."
       }
     }
   ]

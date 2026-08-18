@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "ireland",
   iso2: "ie",
@@ -582,6 +584,71 @@ export default {
           { label: "US Department of State: the country information pages, the official router for entry requirements by destination", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages.html", type: "gov" }
         ],
         judgment: "Ireland's visa-free entry for US citizens is stable, and its position outside Schengen means ETIAS will not apply to it. On ETIAS timing we deliberately quote no date: the EU removed its late-2026 target from its official ETIAS pages in July 2026, and those pages now say only that a start date will be announced several months in advance. Some other EU pages still carried the old last-quarter-of-2026 wording when we checked, which is why we rely on the official ETIAS pages rather than secondary EU summaries. The UK ETA requirement for Northern Ireland took effect in 2025 and is separate; confirm its details in our UK guide before a cross-border trip. Checked July 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Strong in the cities and towns" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
+        { k: "Crossing the border", v: "Northern Ireland is the UK" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "eSIM for Ireland: check it covers Northern Ireland too",
+      description: "Irish coverage is strong in the cities and thinner in the rural west. The trap is the border: Northern Ireland is the UK, and many EU plans stop there.",
+      h1: "Staying connected in Ireland.",
+      lede: "Ireland covers its cities and towns well and its far west less so. The thing most likely to catch you out is not a mountain, it is an invisible border: drive north from Donegal and your plan may quietly stop working.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>strong</b> in Dublin, Cork, Galway and the towns, and thinner across the rural west, <b>Connemara</b>, the Beara and Dingle peninsulas, parts of <b>Donegal</b> and the Wicklow uplands. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and works from landing. A <b>local prepaid SIM</b> is also cheap here and, because this is an <b>EU</b> country, it carries <b>Roam Like At Home</b> across the rest of the union at no surcharge, which is worth pricing if the trip continues into other EU countries. The Ireland-specific check: <b>Northern Ireland is part of the UK</b>, which since Brexit sits outside the EU roaming zone, so an Ireland-only or EU-only plan may not cover Belfast, the Causeway or the Mournes. If your trip crosses the border, and on this island it is easy to cross without noticing, <b>make sure the plan names both</b>. The US carrier day passes cover both. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "The border is the trap",
+          icon: "alert",
+          key: { fig: "The border", tag: "Check both", text: "Northern Ireland is the UK and outside EU roaming. An Ireland-only or EU-only plan may stop at the border, which is unmarked.", tone: "amber" },
+          p: [
+            `There is no checkpoint and often no sign, so the first indication you have left the Republic can be a roaming notification. <b>Northern Ireland is part of the United Kingdom</b>, and since Brexit the UK is <b>outside the EU roaming zone</b>, so an Irish prepaid SIM or a travel eSIM sold as covering Ireland or the EU may not work in <b>Belfast, Derry, the Causeway Coast or the Mournes</b>, or may work at a surcharge.`,
+            `Anyone driving the Wild Atlantic Way into Donegal, doing Dublin and Belfast, or looping the Causeway should <b>check the covered-country list for both jurisdictions by name</b> before buying. Plans covering Ireland and the UK together are common and usually cost barely more. The <b>AT&amp;T and Verizon</b> day passes cover both, which is one case where the expensive default is also the simple one.`
+          ]
+        },
+        {
+          h: "A cost question otherwise",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `Otherwise this is money. Roaming is about <b>${S.dayPass}</b>, so <b>${S.week}</b> a week, with <b>AT&amp;T</b> capping at <b>${S.capFees}</b>, about <b>${S.capAmount}</b>, and <b>Verizon</b> having <b>${S.verizonNoCap}</b>. <b>T-Mobile</b>'s tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value.`,
+            `A <b>Nomad eSIM</b> at a few dollars per gigabyte is much cheaper than the pass. An Irish prepaid SIM from <b>Three</b>, <b>Vodafone</b> or <b>Eir</b> is inexpensive and carries EU roaming, and again, check what it does across the border. Do not roam with <b>no plan</b>, at about <b>${S.ppu}</b>.`
+          ]
+        },
+        {
+          h: "The rural west, and the driving",
+          icon: "wheel",
+          key: { fig: "The west", tag: "Where signal thins", text: "Connemara, the Beara and Dingle peninsulas and parts of Donegal thin out, on narrow roads where a map matters.", tone: "teal" },
+          p: [
+            `Coverage thins where the road narrows: <b>Connemara</b>, the <b>Beara</b> and <b>Dingle</b> peninsulas, the Sky Road and the boreens, parts of <b>Donegal</b> and the Wicklow uplands, and the ferry crossings to the Aran Islands and Skellig. None of it is dramatic by Namibian or Icelandic standards, and it lands at inconvenient moments, because these are exactly the roads where you are navigating turn by turn.`,
+            `So <b>download offline maps</b> for a west-coast driving day, and save your B&amp;B address and number rather than trusting a booking email to load. In Dublin, Cork and Galway you will have fast 4G and 5G with nothing to think about. This guide is written for US travelers departing the US. For more, see <a href='/ireland/cash-or-card'>cash or card in Ireland</a>, <a href='/ireland/taxis-and-apps'>taxis and apps in Ireland</a>, and the <a href='/ireland'>Ireland money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Will my Irish SIM or eSIM work in Northern Ireland?`, a: `Not necessarily. Northern Ireland is part of the UK, which sits outside the EU roaming zone since Brexit, so an Ireland-only or EU-only plan may stop working at the border or charge a surcharge. The border is unmarked and easy to cross without noticing. Check that the plan names both jurisdictions. The AT&T and Verizon day passes cover both.` },
+        { q: `How much does it cost to use my US phone in Ireland?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` },
+        { q: `Will I have signal in Connemara and on the Dingle peninsula?`, a: `Patchily. The rural west, Connemara, the Beara and Dingle peninsulas, parts of Donegal and the Wicklow uplands all thin out, and it lands exactly where you are navigating narrow roads turn by turn. Download offline maps and save your accommodation details before you set off.` },
+        { q: `Do I need an eSIM for Ireland?`, a: `It is the cheapest way for most US travelers to get real data, at a few dollars per gigabyte against about $10 to $12 a day for a carrier pass. If your trip includes Northern Ireland, buy one that covers both Ireland and the UK, which usually costs barely more.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Ireland country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Ireland.html", type: "gov" },
+          { label: "European Commission: how EU roaming works and which countries are covered", url: "https://europa.eu/youreurope/citizens/consumers/telecoms-internet/mobile-roaming-costs/index_en.htm", type: "official" }
+        ],
+        judgment: "Checked Aug 2026. The border point is the most useful thing on this page and it costs us a click: the honest advice is to check a country list for two jurisdictions before buying anything, including from us. It matters more here than at other borders precisely because this one is unmarked, so a traveler can be roaming on different terms without having noticed a change. The western coverage read is the desk's from operator footprints and traveler accounts."
       }
     }
   ]

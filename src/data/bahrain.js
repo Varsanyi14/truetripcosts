@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 // Bahrain money guide.
 //
 // Verified August 2026 against: the Central Bank of Bahrain monetary policy page (the 0.376
@@ -446,6 +448,71 @@ export default {
           { label: "Central Bank of Bahrain: the 0.376 peg behind the dollar conversions here", url: "https://www.cbb.gov.bh/monetary-policy/", type: "gov" }
         ],
         judgment: "The 10% VAT rate is official. The rest of the stack, specifically the 5% government levy, the BD 3 per night tourist tax and the 10% service charge, rests on reputable Gulf business reporting rather than a government page we could open, so the roughly 25% figure is a working estimate rather than a published total. The service charge is set by each property and varies. That we could not confirm an operating tourist VAT refund scheme is a statement about what we could verify, not proof that none exists. Checked August 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Excellent, it is a small island" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "App calling", v: "Generally works, unlike the UAE" },
+        { k: "Cheapest", v: "A local SIM, and it is cheap" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Bahrain: excellent coverage, lighter restrictions than its neighbours",
+      description: "Bahrain is small and comprehensively covered, and app calling generally works, unlike in the UAE. That makes this a short page and a cheap decision.",
+      h1: "Staying connected in Bahrain.",
+      lede: "Bahrain is an island you can drive across in an hour, comprehensively covered, with lighter internet restrictions than its larger neighbours. There is not much of a story here, which is the honest thing to report.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>excellent</b> across the island: Manama, Muharraq, the causeway, the circuit and the southern desert road all have fast 4G with widespread 5G, and there is nothing to plan around. A local <b>Batelco</b>, <b>stc</b> or <b>Zain</b> tourist SIM is cheap, bought with your <b>passport</b>, and a <b>Nomad eSIM</b> is a few dollars per gigabyte. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. On <b>app calling</b>, Bahrain is generally reported as lighter than the UAE and Qatar, with WhatsApp and FaceTime calling usually working, though the regional picture is not uniform and some sources describe periodic restrictions. <b>Messaging works regardless.</b> Assume calling probably works and keep an ordinary cellular call as the fallback. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "A short page, because it is a small island",
+          icon: "phoneok",
+          key: { fig: "No real gaps", tag: "Coverage", text: "Manama, Muharraq, the causeway and the southern desert road all have fast 4G and widespread 5G. Nothing to plan around.", tone: "teal" },
+          p: [
+            `Bahrain is about 30 miles long and densely built, so the network reaches essentially everywhere a visitor goes: <b>Manama</b> and the financial district, <b>Muharraq</b> and the airport, the <b>King Fahd Causeway</b>, the Formula 1 circuit and the southern desert road, with fast 4G and widespread 5G. The Tree of Life and the Bahrain Fort are covered. There is no mountain, no wilderness and no tunnel network to warn you about.`,
+            `We would rather write a short page than invent a warning. The one habit worth keeping is downloading offline maps if you are driving into the southern desert, on the general principle that a phone fails for reasons other than signal.`
+          ]
+        },
+        {
+          h: "App calling, lighter than the neighbours",
+          icon: "alert",
+          key: { fig: "Usually fine", tag: "Unlike the UAE", text: "Bahrain generally permits app calling, unlike the UAE. The regional picture is not uniform, so keep a fallback.", tone: "teal" },
+          p: [
+            `This is worth stating because travelers arriving from Dubai reasonably assume the whole Gulf works the same way, and it does not. <b>Bahrain is generally reported as permitting app calling</b>, so WhatsApp and FaceTime calls usually connect on a local network, and it filters less broadly than the UAE or Saudi Arabia. Some sources describe periodic restrictions on some services, so it is not a guarantee.`,
+            `Worth knowing how thin the evidence is. Almost every page on the internet about Gulf app-calling is published by a company selling a VPN or an eSIM, both of which are the advertised fix, and they contradict each other flatly: on the same week in 2026 we found sources calling this country blocked, intermittent and permitted. So we are not going to give you a confident answer we do not have. <b>Messaging works everywhere in the Gulf.</b> Assume <b>app calling might not</b>, have a backup before you land, and test it on arrival rather than at the moment you need it.`
+          ]
+        },
+        {
+          h: "Cost, and what your plan may already do",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `A local <b>Batelco</b>, <b>stc</b> or <b>Zain</b> tourist SIM is cheap, sold at the airport and in malls with your <b>passport</b>, and any of them covers the island fine, so buy on price rather than researching networks. A <b>Nomad eSIM</b> at a few dollars per gigabyte skips the counter, which on a two-night stopover is worth more than the difference.`,
+            `Roaming is about <b>${S.dayPass}</b>, so <b>${S.week}</b> a week, with <b>AT&amp;T</b> capping at <b>${S.capFees}</b> and <b>Verizon</b> having <b>${S.verizonNoCap}</b>. Check <b>T-Mobile</b> first: its tiers include <b>${S.tmoRange}</b> before slowing to <b>${S.throttle}</b>, and on a short Bahrain stop that may be all you need, in which case buy nothing. This guide is written for US travelers departing the US. For more, see <a href='/bahrain/cash-or-card'>cash or card in Bahrain</a>, <a href='/bahrain/taxis-and-apps'>taxis and apps in Bahrain</a>, and the <a href='/bahrain'>Bahrain money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Does WhatsApp calling work in Bahrain?`, a: `Generally yes, unlike in the UAE. Bahrain filters less broadly than its larger neighbours and app calling usually connects on a local network, though some sources describe periodic restrictions, so it is not a guarantee. Messaging works regardless, and an ordinary cellular call is the reliable fallback.` },
+        { q: `Do I need a SIM card in Bahrain?`, a: `For a short stop, possibly not: check your own plan first, since a T-Mobile mid or upper tier includes 5GB to 30GB abroad and hotel wifi is universal. If you want data, a Batelco, stc or Zain tourist SIM is cheap and any of them covers the island fine.` },
+        { q: `Is phone coverage good in Bahrain?`, a: `Yes, excellent. The island is small and densely built, so Manama, Muharraq, the causeway, the circuit and the southern desert road all have fast 4G with widespread 5G. There is no coverage gap worth planning around.` },
+        { q: `How much does it cost to use my US phone in Bahrain?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Bahrain country information and local laws", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Bahrain.html", type: "gov" },
+          { label: "Batelco: prepaid and visitor plan pages", url: "https://www.batelco.com/", type: "official" }
+        ],
+        judgment: "Checked Aug 2026. A deliberately short spoke: Bahrain is small, well covered and has no registration quirk or coverage gap worth a paragraph. The one genuinely useful point is regional rather than local, that a traveler arriving from Dubai should not assume the UAE's app-calling block applies here, and it is stated with the same hedge as the rest of our Gulf pages because the sources on this topic sell the fix they describe. On a short stop the honest answer may be to buy nothing at all."
       }
     }
   ],

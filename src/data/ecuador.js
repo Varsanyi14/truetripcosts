@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "ecuador",
   iso2: "ec",
@@ -501,6 +503,71 @@ export default {
           { label: "Government of Canada: Ecuador travel advice, including express kidnapping, forced transfers and card fraud", url: "https://travel.gc.ca/destinations/ecuador", type: "gov" }
         ],
         judgment: "The instruction to avoid hailing taxis, to use ATMs in well-protected indoor areas, to avoid large single withdrawals, to keep a card in sight, and the naming of Rohypnol and scopolamine with men targeted through dating apps and weekend nightlife all come from current US State Department country information for Ecuador. The taxi interception mechanism, the complicit-driver point and the Guayaquil and Manta focus come from US security reporting. The organised-gang framing, the forced online transfers, the note that gangs sometimes work with taxi or rideshare drivers and the day-versus-night distinction come from Government of Canada advice. The registered-taxi panic button and camera detail comes from Australian government advice. We have attached no dollar figure to the express kidnapping or spiking sections because the loss is whatever your accounts allow, which is the argument for a low daily cap and carrying a day's cash. Galapagos fees are official charges that have changed before, so verify them before travel. Ecuador uses the US dollar. Checked August 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Good in Quito, Guayaquil, the Andes corridor" },
+        { k: "Signal gaps", v: "The Oriente and remote Andes" },
+        { k: "The Galapagos", v: "Its own destination, check the plan" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "Ecuador: check whether your plan covers the Galapagos",
+      description: "Ecuadorian coverage is good along the Andes corridor and thin in the Amazon. The Galapagos is a separate destination that plans often exclude, and connectivity there is limited.",
+      h1: "Staying connected in Ecuador.",
+      lede: "Mainland Ecuador is straightforward: decent coverage in the corridor where everyone travels, gaps in the Amazon. The part that catches people is the Galapagos, which for your phone is somewhere else entirely.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>good in Quito, Guayaquil, Cuenca</b> and along the Andes corridor including Banos and Otavalo, and it thins in the <b>Oriente</b>, the Amazon lodges east of Coca and Tena, on the remote Andean paramo and parts of the northern coast. <b>Claro</b> has the widest reach, with <b>Movistar</b> competitive in the cities. The Ecuador-specific check is the <b>Galapagos</b>: it is listed as its own destination by the US carriers, travel eSIM plans covering Ecuador do not always include it, and connectivity on the islands is <b>limited and slow</b> even when covered, with lodge and boat wifi often satellite-backed. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte; a local SIM is cheaper with your <b>passport</b>. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "The Galapagos is a separate question",
+          icon: "alert",
+          key: { fig: "The Galapagos", tag: "Check by name", text: "Listed as its own destination, often excluded from Ecuador plans, and slow even where covered. Boat days are offline days.", tone: "amber" },
+          p: [
+            `If the islands are on your itinerary, sort this before you fly. The <b>Galapagos</b> appears as its own entry on the US carriers' destination lists, and travel eSIM plans sold as covering Ecuador do not always extend to it, so <b>look for it by name</b>. Then set expectations: even where covered, island connectivity is <b>limited and slow</b>, concentrated around Puerto Ayora, Puerto Baquerizo Moreno and Puerto Villamil, with much of the archipelago having nothing.`,
+            `A liveaboard <b>cruise</b> is effectively an offline week, and any wifi on board is satellite, slow and often charged. That is worth knowing in advance rather than discovering it, and it is genuinely part of the appeal for some people. Download everything before you sail, and keep <b>data roaming off</b> on the boat so your phone does not find a maritime network and bill for it.`
+          ]
+        },
+        {
+          h: "On the mainland, the corridor is fine",
+          icon: "phoneok",
+          key: { fig: "Claro", tag: "The widest reach", text: "Claro reaches furthest, including much of the Andes corridor. The Oriente and the remote paramo are thin on any network.", tone: "teal" },
+          p: [
+            `Mainland coverage follows the corridor most visitors travel: <b>Quito, Guayaquil, Cuenca</b>, Banos, Otavalo, Riobamba and the Panamericana all have workable 4G with 5G in the big cities, and the mountain roads between them mostly hold. <b>Claro</b> has the widest footprint and is the safe default, with <b>Movistar</b> fine in the cities.`,
+            `Where it thins: the <b>Oriente</b>, especially the Amazon lodges reached by canoe from Coca or Tena, which frequently have no signal at all and satellite wifi at best; the remote <b>paramo</b> and the higher Andean approaches; and parts of the northern coast. So an Amazon leg is an offline leg, and a Cotopaxi or Quilotoa day wants <b>offline maps</b>. Note also that Quito sits at 9,350 feet, and altitude affects phones and batteries less than it affects you, but a dying battery on a long bus day is still the common failure.`
+          ]
+        },
+        {
+          h: "What each option costs",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `A local <b>Claro</b> or <b>Movistar</b> prepaid SIM with a data bundle is cheap, bought with your <b>passport</b> in a carrier shop or at the airport, and it is the cheaper option if you are staying a while. A <b>Nomad eSIM</b> at a few dollars per gigabyte works from landing and avoids the counter, which matters if you land late in Quito and want a ride.`,
+            `Roaming is about <b>${S.dayPass}</b>, so <b>${S.week}</b> a week, with <b>AT&amp;T</b> capping at <b>${S.capFees}</b>, about <b>${S.capAmount}</b>, and <b>Verizon</b> having <b>${S.verizonNoCap}</b>. <b>T-Mobile</b>'s tiers include <b>${S.tmoRange}</b> before <b>${S.throttle}</b>. Ecuador uses the <b>US dollar</b>, which removes one layer of friction: see <a href='/ecuador/cash-or-card'>cash or card in Ecuador</a>. For more, see <a href='/ecuador/taxis-and-apps'>taxis and apps in Ecuador</a> and the <a href='/ecuador'>Ecuador money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Does my Ecuador plan cover the Galapagos?`, a: `Not always. The Galapagos is listed as its own destination by the US carriers and travel eSIM plans covering Ecuador do not always include it, so look for it by name. Even where covered, island connectivity is limited and slow, concentrated in the main ports, and a liveaboard cruise is effectively an offline week.` },
+        { q: `Which network is best in Ecuador?`, a: `Claro has the widest reach, including much of the Andes corridor and the smaller towns, with Movistar competitive in the cities. Neither covers the Oriente or the remote paramo reliably.` },
+        { q: `Will I have signal in the Ecuadorian Amazon?`, a: `Frequently not. Lodges reached by canoe from Coca or Tena often have no signal at all and satellite wifi at best. Treat an Amazon leg as offline: download maps and your booking details, and leave your itinerary with somebody.` },
+        { q: `How much does it cost to use my US phone in Ecuador?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "AT&T: the International Day Pass destination list, which names the Galapagos Islands separately", url: "https://www.att.com/support/article/wireless/KM1395068/", type: "card" },
+          { label: "US State Department: Ecuador country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Ecuador.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. The Galapagos point is the useful content and it is a check rather than a purchase: its separate listing was verified against AT&T's own destination list, and the honest addition is that even a plan covering it buys you limited and slow service, because the islands genuinely are not wired. Saying so costs us a sale on the leg of the trip people are most anxious about. Mainland coverage and Claro's reach advantage are the desk's read from operator footprints and traveler accounts."
       }
     }
   ]

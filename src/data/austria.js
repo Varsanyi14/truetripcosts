@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "austria",
   iso2: "at",
@@ -594,6 +596,70 @@ export default {
           { label: "ASFINAG: the official vignette and section toll pages, on the last year of the adhesive sticker and the separately tolled sections", url: "https://www.asfinag.at/en/toll/vignette/", type: "official" }
         ],
         judgment: "The two figures this page rests on, 12.80 EUR for the ten-day vignette and 46.50 EUR for a car on the Grossglockner, are both official and current for 2026. One thing we have deliberately left off the page: the individual A13 Brenner section-toll amount is quoted differently across the sources we checked, by a couple of euros, so rather than pick one we tell you the Brenner charges separately and leave you to see the price at the barrier. Season dates for the Grossglockner move with the snow, so early May and early November are approximate and the road's own site is the place to confirm before a shoulder-season drive. The 2027 switch to digital-only is legislated rather than proposed, but the detail of how it will be sold is still being built out. Checked Aug 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Strong, including small towns" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
+        { k: "Signal gaps", v: "High alpine valleys and gondolas" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "eSIM for Austria: the cost math, and alpine gaps",
+      description: "Austrian coverage is strong including the small towns, so this is a cost question. The gaps are the high side valleys and some gondolas.",
+      h1: "Staying connected in Austria.",
+      lede: "Austria covers its cities, towns and main valleys well, which for a country that is mostly mountains is a real achievement. The gaps are high up and narrow, and they are worth knowing before a hiking day.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>strong across Austria</b>, including the small towns and most valley floors, with fast 4G and urban 5G in Vienna, Salzburg, Innsbruck and Graz, and a working signal on the rail network including the long tunnels. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly and works from landing. A <b>local prepaid SIM</b> is also cheap here and, because this is an <b>EU</b> country, it carries <b>Roam Like At Home</b> across the rest of the union at no surcharge, which is worth pricing if the trip continues into other EU countries. Where it thins is predictable: <b>high side valleys</b>, the upper stations of some <b>gondolas</b>, glacier terrain and hut-to-hut trails above the treeline, so <b>download offline maps</b> before a mountain day. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "A cost question first",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `Austrian networks are good where you will be, so the decision is what you pay. Roaming on your US plan is the expensive default at about <b>${S.dayPass}</b>, roughly <b>${S.week}</b> a week, with <b>AT&amp;T</b> capping at <b>${S.capFees}</b> and <b>Verizon</b> having <b>${S.verizonNoCap}</b>. <b>T-Mobile</b>'s tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value.`,
+            `A <b>Nomad eSIM</b> at a few dollars per gigabyte comes in well under the day pass. An <b>A1</b>, <b>Magenta</b> or <b>Drei</b> prepaid SIM is inexpensive and carries EU roaming, which matters if you are continuing into Germany, Italy or Slovenia. And do not roam with <b>no plan</b>: pay-per-use is about <b>${S.ppu}</b>.`
+          ]
+        },
+        {
+          h: "Where the mountains take it away",
+          icon: "alert",
+          key: { fig: "Side valleys", tag: "Where signal thins", text: "Valley floors and towns are covered. High side valleys, some gondola top stations and above-treeline trails are not.", tone: "amber" },
+          p: [
+            `Austrian coverage follows the valleys, which is where the roads, railways and villages are, and it does that well: you will have signal in <b>Zell am See, Hallstatt, Mayrhofen</b> and the ski villages, along the motorways and through the rail tunnels. Above and beside them it gets patchy: the upper reaches of narrow <b>side valleys</b>, the top stations of some <b>gondolas</b>, glacier terrain around the Grossglockner, and hut-to-hut routes above the treeline.`,
+            `So a mountain day is worth preparing for rather than paying for. <b>Download offline maps</b> and the route, check the weather before you leave signal, and note that Austrian mountain rescue is reached on <b>140</b> while <b>112</b> works everywhere for emergencies and can sometimes connect on a network you have no subscription with.`
+          ]
+        },
+        {
+          h: "In town, and on the train",
+          icon: "train",
+          key: { fig: "Even in tunnels", tag: "The railways", text: "Austrian rail generally holds a signal, including through the long tunnels that break it in neighbouring countries.", tone: "teal" },
+          p: [
+            `In the cities there is nothing to plan around: fast 4G and 5G in <b>Vienna, Salzburg, Innsbruck and Graz</b>, coverage on the U-Bahn, and public wifi common in cafes and hotels. The <b>railways</b> are better than in Germany, generally holding a connection including through the long alpine tunnels, so a Vienna to Innsbruck run is workable rather than a coin flip.`,
+            `One practical note that is about money rather than signal: if your trip continues to <b>Switzerland</b>, that is outside the EU roaming zone and outside a lot of Europe plans, so check the country list rather than assuming your Austrian arrangement follows you. This guide is written for US travelers departing the US. For more, see <a href='/austria/cash-or-card'>cash or card in Austria</a>, <a href='/austria/taxis-and-apps'>taxis and apps in Austria</a>, and the <a href='/austria'>Austria money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Will I have signal in the Austrian Alps?`, a: `On the valley floors and in the ski villages, yes. Higher up it thins: the upper reaches of narrow side valleys, some gondola top stations, glacier terrain and above-treeline trails. Download offline maps before a mountain day. Mountain rescue is 140, and 112 works everywhere for emergencies.` },
+        { q: `How much does it cost to use my US phone in Austria?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` },
+        { q: `Do Austrian trains have phone coverage?`, a: `Generally yes, including through the long alpine tunnels, which is better than long-distance rail in neighbouring Germany. A Vienna to Innsbruck run is workable rather than a coin flip.` },
+        { q: `Does my Austrian plan work in Switzerland?`, a: `Check, because it often does not. Switzerland is outside the EU and the EEA, so EU roaming does not extend there and many regional Europe plans exclude it. Look for Switzerland by name on the covered-country list before you rely on it.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Austria country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Austria.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. The alpine coverage read is the desk's from operator footprints and consistent traveler accounts rather than one official table, and the honest summary is that reach follows the valleys. The Switzerland note is included because an Austria trip so often continues there and the roaming zone stops at the border even though nothing else does. Carrier figures are an Aug 2026 snapshot. No SIM registration requirement is stated because we could not confirm one to our own standard."
       }
     }
   ]

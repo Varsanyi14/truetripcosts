@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 // EL SALVADOR. Dollarized since 2001, so the money advice inverts almost every other
 // guide on this site: there is no exchange rate, no conversion spread and no
 // pay-in-dollars prompt to decline, because dollars are the local money. Modeled on
@@ -495,6 +497,71 @@ export default {
           { label: "US State Department: El Salvador travel advisory, including the restrictions placed on US government employees", url: "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/el-salvador-travel-advisory.html", type: "gov" }
         ],
         judgment: "The restriction on US government employees using public buses, and the prohibition on intercity travel after dark, are quoted from the State Department's own advisory and are the firmest claims here. That Salvadoran taxis do not generally use meters, and that Uber operates in San Salvador, are consistently reported and match how visitors describe getting around, but app coverage changes and is worth checking before you rely on it. The 25 to 35 dollar airport fare is a current market range from traveler reporting rather than a regulated tariff, and unlike Rome or Athens there is no official flat airport fare here to hold anyone to, which is precisely why we suggest fixing the price in advance. The distance from the airport to the city is approximate. Checked July 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Good in San Salvador and on the coast" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A local SIM, and it is cheap" },
+        { k: "Signal gaps", v: "The northern mountains" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "El Salvador: cheap local data, and a small country to cover",
+      description: "Salvadoran coverage is good in the capital, along the coast and on the main highways. Local data is cheap, and the country is small enough that gaps are brief.",
+      h1: "Staying connected in El Salvador.",
+      lede: "El Salvador is small, increasingly visited, and reasonably well covered where visitors go. Local data is cheap and the gaps are short, which makes this a short page.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>good in San Salvador, along the Pacific coast</b> from La Libertad to El Tunco and El Zonte, and on the main highways including the route to Santa Ana and Suchitoto. It thins in the <b>northern mountains</b> toward the Honduran border, in the Morazan interior and on some volcano approaches. A local <b>Tigo</b> or <b>Claro</b> prepaid SIM with a data bundle is cheap, bought with your <b>passport</b>, and it is the cheaper option; a <b>Nomad eSIM</b> at a few dollars per gigabyte works from landing. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. El Salvador is on <b>AT&amp;T's covered-destination list</b>, so a day pass applies rather than pay-per-use. The country uses the <b>US dollar</b>, which removes a layer of friction from topping up. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "Cheap, and the local SIM wins on price",
+          icon: "tag",
+          key: { fig: "Cheap local", tag: "Tigo or Claro", text: "A local prepaid bundle is inexpensive and priced in US dollars, which removes the top-up puzzle. Either network covers the visitor route.", tone: "teal" },
+          p: [
+            `A <b>Tigo</b> or <b>Claro</b> prepaid SIM with a data bundle is inexpensive, sold in carrier shops, malls and at the airport with your <b>passport</b>, and both networks cover the capital, the coast and the main highways comfortably, so there is no network worth paying extra for. One quiet advantage: El Salvador uses the <b>US dollar</b>, so topping up does not involve a currency conversion or an unfamiliar payment app.`,
+            `That makes the local SIM the cheaper answer, and we earn nothing on it. A <b>Nomad eSIM</b> at a few dollars per gigabyte is the convenience option: no shop, working from landing, useful if you are arriving late at Comalapa and want a ride sorted before you leave the terminal.`
+          ]
+        },
+        {
+          h: "Where it thins, briefly",
+          icon: "phoneok",
+          key: { fig: "The north", tag: "Where signal thins", text: "The northern mountains, the Morazan interior and some volcano approaches are patchy. The country is small, so gaps are short.", tone: "teal" },
+          p: [
+            `The gaps here are real but brief, because the country is small: the <b>northern mountains</b> toward the Honduran border, the <b>Morazan</b> interior, the higher approaches on <b>Santa Ana</b> and <b>Izalco</b>, and some of the back roads inland from the coast. You are rarely more than an hour from coverage, which is a different situation from Patagonia or Namibia.`,
+            `So the usual habit is enough: <b>download offline maps</b> for a volcano hike or a drive into the hills, and save your accommodation's number. Surf towns along the coast have workable coverage and widespread cafe wifi. This guide is written for US travelers departing the US. For more, see <a href='/el-salvador/cash-or-card'>cash or card in El Salvador</a>, <a href='/el-salvador/taxis-and-apps'>taxis and apps in El Salvador</a>, and the <a href='/el-salvador'>El Salvador money guide</a>.`
+          ]
+        },
+        {
+          h: "What roaming costs, and the covered-list check",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `Worth confirming because it changes the advice completely: <b>El Salvador is on AT&amp;T's covered-destination list</b>, so a day pass applies at about <b>${S.dayPass}</b> rather than the pay-per-use rate you would face in an uncovered country. <b>AT&amp;T</b> caps land fees at <b>${S.capFees}</b>, about <b>${S.capAmount}</b>, and <b>Verizon has ${S.verizonNoCap}</b>.`,
+            `<b>T-Mobile</b>'s current tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value, slowing to <b>${S.throttle}</b> after, so check your own plan first: on a week of surfing with cafe wifi that may be all you need. Do not roam with <b>no plan</b>, at about <b>${S.ppu}</b>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `How much is a SIM card in El Salvador?`, a: `A Tigo or Claro prepaid bundle is cheap, bought with your passport in a carrier shop, a mall or at the airport. Since El Salvador uses the US dollar, topping up involves no currency conversion, which removes the usual friction.` },
+        { q: `Is El Salvador covered by US carrier day passes?`, a: `Yes. El Salvador is on AT&T's covered-destination list, so a day pass applies at about $10 to $12 a day rather than the pay-per-use rate that would apply in an uncovered country. That is worth confirming, because the advice would be completely different otherwise.` },
+        { q: `Will I have signal on the Salvadoran coast?`, a: `Yes, generally good along the Pacific coast from La Libertad through El Tunco and El Zonte, with widespread cafe wifi in the surf towns. It thins in the northern mountains, the Morazan interior and on the higher volcano approaches.` },
+        { q: `How much does it cost to use my US phone in El Salvador?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "AT&T: the International Day Pass destination list, which includes El Salvador", url: "https://www.att.com/support/article/wireless/KM1395068/", type: "card" },
+          { label: "US State Department: El Salvador country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/ElSalvador.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. El Salvador's inclusion on AT&T's covered-destination list was verified against AT&T's own list, because it was one of two countries in this wave we would not state a day-pass price for without checking: in an uncovered country the honest line is a pay-per-use warning instead. The local SIM is cheaper than the eSIM we earn on and the page says so. Coverage reads are the desk's from operator footprints and traveler accounts, and the country's size means the gaps are short."
       }
     }
   ]

@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "hungary",
   iso2: "hu",
@@ -528,6 +530,70 @@ export default {
           { label: "Daily News Hungary: police investigation into bars defrauding foreign tourists with hostesses, with victim and damage figures", url: "https://dailynewshungary.com/wealth-foreign-tourists-fell-victim-budapest/", type: "media" }
         ],
         judgment: "The 50,000 to 200,000 forint range is the typical reported bill for the konzumlany setup, and the 33 identified victims, the damage figure above a billion forint and the February and June 2025 arrests come from Hungarian press reporting on the police investigation. The 630 euro single beer is one dramatic reported case and we have flagged it as the far end rather than presenting it as what to expect. The service charge range and the tourist police number are widely published locally. We have not restated Budapest taxi tariffs here, since those sit in the taxis guide and move; the rule that matters is that all licensed cabs are yellow and share one regulated tariff. Forint conversions use roughly 315 to the dollar. Checked August 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Excellent, metro included" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A local SIM, and it is cheap" },
+        { k: "Signal gaps", v: "None worth planning around" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "eSIM for Hungary: cheap data, and no coverage story",
+      description: "Hungarian coverage is excellent and prepaid data is cheap. This page is short because there is nothing here to plan around.",
+      h1: "Staying connected in Hungary.",
+      lede: "Hungary has excellent coverage, including deep in the Budapest metro, and cheap prepaid data. There is no connectivity trap here, so this page is short rather than padded.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>excellent</b> across Budapest and the regional towns, on the rail network and around Lake Balaton, and notably <b>deep in the Budapest metro</b>, including the century-old M1. On price, a local <b>Yettel</b>, <b>Telekom</b> or <b>One</b> prepaid SIM with a data bundle is cheap and carries <b>Roam Like At Home</b> across the EU. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and needs no shop. Both are far cheaper than roaming, so the decision is whether the errand is worth the difference. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "Cheap either way",
+          icon: "tag",
+          key: { fig: "Cheap both ways", tag: "Local SIM or eSIM", text: "Hungarian prepaid is inexpensive and carries EU roaming. A travel eSIM costs a little more and skips the shop. Both beat roaming easily.", tone: "teal" },
+          p: [
+            `Hungarian prepaid data is inexpensive, sold in <b>Yettel</b>, <b>Telekom</b> and <b>One</b> shops and in supermarkets, and because Hungary is in the <b>EU</b> the allowance travels across the union under <b>Roam Like At Home</b>. That makes it the better buy if Budapest is one stop on a wider central European trip.`,
+            `A <b>Nomad eSIM</b> at a few dollars per gigabyte is the no-errand option, working from landing. For a long weekend that is probably worth the premium; for a longer trip the local SIM is ahead on price. We earn a commission on the eSIM and not on a Yettel SIM, which is worth knowing when reading a page that says the local SIM is cheaper.`
+          ]
+        },
+        {
+          h: "What roaming costs",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `Roaming on your US plan is about <b>${S.dayPass}</b>, so <b>${S.week}</b> for a week. <b>AT&amp;T</b> caps it at <b>${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily, which is the difference that matters on a long stay. <b>T-Mobile</b>'s tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value, slowing to <b>${S.throttle}</b>.`,
+            `Do not roam with <b>no plan</b>: pay-per-use is about <b>${S.ppu}</b>, and background app activity finds it on its own, so <b>turn off data roaming</b> until something is active.`
+          ]
+        },
+        {
+          h: "Nothing to warn you about, including underground",
+          icon: "phoneok",
+          key: { fig: "The metro too", tag: "Coverage", text: "Excellent across the country and working deep in the Budapest metro, including the M1. No gap worth planning around.", tone: "teal" },
+          p: [
+            `Short section, honestly. Coverage is strong in <b>Budapest, Debrecen, Szeged and Pecs</b>, across the Great Plain, along the Danube and around <b>Lake Balaton</b>, with 5G widespread in the capital and a working signal <b>in the metro tunnels</b>. Rural coverage is good by regional standards. The <b>Bukk</b> and <b>Matra</b> hills can thin, which is a hiking note.`,
+            `So the useful advice is short: buy something cheap before you need it, and do not bother researching networks. Download offline maps for a hills day on general principle. This guide is written for US travelers departing the US. For more, see <a href='/hungary/cash-or-card'>cash or card in Hungary</a>, <a href='/hungary/taxis-and-apps'>taxis and apps in Hungary</a>, and the <a href='/hungary'>Hungary money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Is a Hungarian SIM card cheaper than an eSIM?`, a: `On price, yes, and it carries EU roaming across the union, which makes it the better buy for a wider central European trip. A travel eSIM costs a little more per gigabyte and needs no shop visit, which is worth the difference on a short break.` },
+        { q: `How much does it cost to use my US phone in Hungary?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` },
+        { q: `Is there phone signal in the Budapest metro?`, a: `Yes, including in the tunnels and on the century-old M1 line. Hungarian coverage is strong generally, in the capital, the regional towns, along the Danube and around Lake Balaton.` },
+        { q: `Do I need data in Budapest?`, a: `Not strictly, since wifi is common in cafes, bars and hotels and the centre is walkable. It is worth having for transit apps, taxis and thermal-bath opening hours, and Hungarian prepaid is cheap enough that it is not a decision worth agonising over.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Hungary country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Hungary.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. Another deliberately short spoke: Hungarian coverage is excellent, prepaid data is cheap, and there is no registration quirk or signal gap worth a paragraph, so the page says so and stops. The local SIM is cheaper than the eSIM we earn on and the page states it. No SIM registration requirement is named because we could not confirm one to our own standard, and a wrong paperwork warning is a real harm."
       }
     }
   ]

@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "bahamas",
   iso2: "bs",
@@ -365,6 +367,71 @@ export default {
           { label: "Atlantis Paradise Island: the resort's own published fees and mandatory gratuities", url: "https://www.atlantisbahamas.com/faq", type: "guide" }
         ],
         judgment: "The 10% VAT and the Global Blue refund are official and linked above. The roughly 21% around Nassau, Paradise Island and Cable Beach is the combined total that appears on real hotel invoices in those areas, and we have deliberately not published a component breakdown of the area levies: properties itemise them differently, describing them as VAT-inclusive or not and splitting them across two lines or three, so any one hotel's decomposition is its own accounting rather than a national rule. Resort fees and per-person gratuities are set by each property. The Atlantis figures are that resort's published rates, cited to show the mechanism, and they are explicitly not a Bahamas norm. Checked August 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Good on New Providence and Grand Bahama" },
+        { k: "The real trap", v: "At-sea and cruise roaming" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Signal gaps", v: "The Out Islands" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "Bahamas: the phone bill risk is the boat, not the island",
+      description: "Nassau and Freeport are well covered and the Out Islands are not. The expensive mistake here is roaming at sea, where ships and boats bill at maritime rates.",
+      h1: "Staying connected in the Bahamas.",
+      lede: "The Bahamas is the one country on this site where the biggest phone bill risk has nothing to do with which plan you bought. It is the water, and it catches cruise passengers and day-boat trippers alike.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>good on New Providence and Grand Bahama</b>, in Nassau, Paradise Island and Freeport, and it thins across the <b>Out Islands</b>: the Exumas away from Georgetown, southern Eleuthera, Andros, the Abacos beyond Marsh Harbour. The expensive mistake here is not the tariff, it is <b>at sea</b>. On a cruise ship or a boat away from land your phone can latch onto a <b>maritime or satellite network</b> billed far above any day pass: <b>AT&amp;T</b>'s at-sea rate is <b>${S.cruise}</b> a day and an unmanaged maritime connection can be worse. Keep <b>data roaming off</b> until you are ashore on a land network. On land, a local <b>BTC</b> or <b>Aliv</b> tourist SIM is roughly <b>20 to 30 dollars</b>, a <b>Nomad eSIM</b> is a few dollars per gigabyte. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "The boat is where the money goes",
+          icon: "alert",
+          key: { fig: "At sea", tag: "The real trap", text: "Ships and boats route through maritime networks that bill far above any day pass. AT&T charges $20 a day at sea. Keep roaming off until ashore.", tone: "amber" },
+          p: [
+            `This is the part worth reading twice, because it is the only genuinely expensive mistake available here. Once you are on a <b>cruise ship</b> or a boat out of sight of land, your phone can connect to a <b>maritime or satellite network</b> that has nothing to do with Bahamian carriers and bills accordingly. <b>AT&amp;T</b> sells an at-sea day at <b>${S.cruise}</b>, which covers ship and shore for that day; an unmanaged connection outside a plan is where the four-figure stories come from.`,
+            `Two related traps. Boats off <b>South Florida</b> can pick up Bahamian networks before you have legally arrived anywhere, starting a roaming day you did not intend. And on a cruise, a day in port can be billed at the <b>at-sea</b> rate rather than the land rate depending on which network your phone is holding. The habit that solves all of it: <b>data roaming off</b> the moment you board, on until you are ashore and can see a Bahamian carrier name.`
+          ]
+        },
+        {
+          h: "On the islands themselves",
+          icon: "phoneok",
+          key: { fig: "Out Islands", tag: "Where signal thins", text: "Nassau and Freeport are well covered. The Exumas, Andros, southern Eleuthera and the outer Abacos are patchy.", tone: "teal" },
+          p: [
+            `On land the picture is straightforward: <b>Nassau, Paradise Island</b> and <b>Freeport</b> have solid 4G and workable 5G, and the resort strips and the airports are fine. It thins as you go out: the <b>Exumas</b> away from Georgetown, <b>Andros</b>, southern <b>Eleuthera</b>, the outer <b>Abacos</b> and the smaller cays, where a lodge may run on generator power and satellite wifi.`,
+            `So an Out Islands trip is a downloading trip: <b>offline maps</b>, your ferry or charter details, and your lodge's number saved rather than sitting in an email. Bahamian resort and marina <b>wifi</b> is common and often satellite-backed, which means it works and it is slow.`
+          ]
+        },
+        {
+          h: "What the land options cost",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `A local <b>BTC</b> or <b>Aliv</b> tourist SIM is roughly <b>20 to 30 dollars</b>, which is expensive for the data you get, because a small island market with two operators prices like one. A <b>Nomad eSIM</b> at a few dollars per gigabyte is usually the better value here, and that is a genuine inversion of the advice on most of our pages rather than a nudge.`,
+            `Roaming on land is about <b>${S.dayPass}</b>, so <b>${S.week}</b> a week, with <b>AT&amp;T</b> capping land fees at <b>${S.capFees}</b>, about <b>${S.capAmount}</b>, and <b>Verizon</b> having <b>${S.verizonNoCap}</b>. Note the cap covers land and air only: <b>at-sea days are charged separately</b> and do not benefit from it. <b>T-Mobile</b>'s tiers include <b>${S.tmoRange}</b> before <b>${S.throttle}</b>. This guide is written for US travelers departing the US. For more, see <a href='/bahamas/cash-or-card'>cash or card in the Bahamas</a>, <a href='/bahamas/taxis-and-apps'>taxis and apps in the Bahamas</a>, and the <a href='/bahamas'>Bahamas money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Why is my phone bill so high after a Bahamas cruise?`, a: `Almost certainly at-sea roaming. On a ship or a boat away from land your phone can connect to a maritime or satellite network billed far above any day pass. AT&T charges $20 a day at sea, and an unmanaged connection can be much worse. Keep data roaming off until you are ashore on a Bahamian network.` },
+        { q: `Does the AT&T fee cap cover cruise days?`, a: `No. The 10-fee cap per bill period applies to land and air travel only. At-sea days are charged separately at the higher at-sea rate and do not benefit from the cap, which is worth knowing before a long cruise.` },
+        { q: `Is coverage good in the Bahamas Out Islands?`, a: `Less than on New Providence and Grand Bahama. The Exumas away from Georgetown, Andros, southern Eleuthera, the outer Abacos and the smaller cays are patchy, and lodges often run on satellite wifi. Download offline maps and your charter details before you go.` },
+        { q: `How much does it cost to use my US phone in the Bahamas?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "AT&T: International Day Pass details, including the separate at-sea daily rate", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Bahamas country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/TheBahamas.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. The headline here is deliberately not the eSIM. The largest phone-bill risk on a Bahamian trip is at-sea roaming, which no product on this page prevents and which a habit, turning data roaming off until you are ashore, prevents entirely. The at-sea rate and the fact that AT&T's 10-fee cap covers land and air only were both verified against AT&T's own pages, and the second point is the sort of detail that quietly changes a long-cruise bill. Local SIM pricing is a current read for a small two-operator market."
       }
     }
   ],

@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "portugal",
   iso2: "pt",
@@ -810,6 +812,71 @@ export default {
           { label: "The Portugal Brief: the CP network in 2026, including that passes are valid on most services but the fast trains require a reservation supplement", url: "https://theportugalbrief.pt/getting-around-portugal-by-train-a-complete-guide-to-cp-services-routes-tickets-and-tips-for-2026/", type: "guide" }
         ],
         judgment: "The Promo fares here come from the operator's own published price list, which makes this the best-sourced verdict in the rail section and the reason it carries high confidence. Walk-up fares for Lisbon to Porto are quoted from reporting of the January 2026 revision rather than read off the operator's site, so treat them as close rather than exact. The seat supplement charged to passholders on the fast trains is documented but not published as a single figure we could verify, so we describe it without an amount rather than guess. The flat-rate monthly rail product is mentioned deliberately vaguely: it exists and it excludes the fast intercity trains, but we could not confirm its terms for a short-term visitor, so we point you to check rather than describe it as available. Fares are revised early most years. Checked Aug 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Strong, cities and the coast" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
+        { k: "Check the plan", v: "Madeira and the Azores" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "eSIM for Portugal: check it covers Madeira and the Azores",
+      description: "Portuguese coverage is strong on the mainland and the islands, so this is a cost question. The one thing to check before buying is whether your plan names the Atlantic islands.",
+      h1: "Staying connected in Portugal.",
+      lede: "Portugal is well covered wherever you are likely to go, so this is a cost decision rather than a coverage one. The wrinkle worth two minutes is the Atlantic islands, which some plans treat as separate destinations.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>strong</b> across Lisbon, Porto, the Algarve and the towns, thinner in the <b>interior</b> around the Serra da Estrela and in some Douro valleys. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly and works from landing. A <b>local prepaid SIM</b> is also cheap here and, because this is an <b>EU</b> country, it carries <b>Roam Like At Home</b> across the rest of the union at no surcharge, which is worth pricing if the trip continues into other EU countries. The Portugal-specific check: <b>Madeira and the Azores</b> are listed as their own destinations by the US carriers, and a regional Europe eSIM plan does not always include them, so if your trip includes either, <b>look for them by name</b> before you buy. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "A cost question first",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `Portuguese networks are good where visitors go, so the decision is what you pay. Roaming on your US plan is the expensive default at about <b>${S.dayPass}</b>, roughly <b>${S.week}</b> for a week, though the <b>AT&amp;T</b> cap means a longer trip stops compounding after ten billed days while <b>Verizon</b> keeps charging. <b>T-Mobile</b>'s current tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value, so check your own plan before buying anything.`,
+            `A <b>Nomad eSIM</b> at a few dollars per gigabyte undercuts the day pass comfortably for a normal week. A local <b>MEO</b>, <b>Vodafone</b> or <b>NOS</b> prepaid SIM is inexpensive too and carries EU roaming, so on a multi-country European trip it can be the better buy. Do not roam with <b>no plan</b>: pay-per-use is about <b>${S.ppu}</b>.`
+          ]
+        },
+        {
+          h: "The islands are a separate question",
+          icon: "alert",
+          key: { fig: "The Azores", tag: "Check by name", text: "Madeira and the Azores are listed as their own destinations, and a regional Europe plan does not always include them. Read the country list.", tone: "amber" },
+          p: [
+            `This is the Portugal-specific thing worth knowing, and it is a purchasing detail rather than a coverage one. <b>Madeira</b> and the <b>Azores</b> appear as their own entries on the US carriers' destination lists, and travel eSIM plans sold as covering Europe sometimes leave them out. Coverage on both archipelagos is genuinely good, with 4G across the populated parts of Madeira and the main Azorean islands, so the risk is not signal, it is buying a plan that stops at the mainland.`,
+            `So if Funchal or Sao Miguel is on the itinerary, <b>open the covered-country list and look for the island group by name</b>. On the islands themselves, expect thinner coverage on the calderas, the high Madeira levada walks and the smaller Azorean islands, which is a hiking note rather than a trip-planning one.`
+          ]
+        },
+        {
+          h: "Where the mainland thins",
+          icon: "phoneok",
+          key: { fig: "The interior", tag: "Where signal thins", text: "Cities, the coast and the Algarve are strong. The Serra da Estrela and some Douro valleys are patchier.", tone: "teal" },
+          p: [
+            `On the mainland there is little to warn about. <b>Lisbon, Porto</b>, the <b>Algarve</b> and the coastal towns have fast 4G and widespread urban 5G, and the trains and motorways hold a signal. It thins in the <b>Serra da Estrela</b>, parts of the <b>Douro</b> and <b>Alentejo</b> back roads, and on some of the wilder Atlantic coast.`,
+            `For a hiking day or a back-road drive, <b>download offline maps</b>, which is the same advice as anywhere with hills. This guide is written for US travelers departing the US. For more, see <a href='/portugal/cash-or-card'>cash or card in Portugal</a>, <a href='/portugal/tram-28-contactless'>Tram 28 and contactless in Lisbon</a>, and the <a href='/portugal'>Portugal money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Do Europe eSIM plans cover Madeira and the Azores?`, a: `Not always. Both are listed as their own destinations by the US carriers, and travel eSIM plans sold as covering Europe sometimes exclude them. Coverage on the islands is good, so the risk is buying a plan that stops at the mainland. Look for the island group by name before you buy.` },
+        { q: `How much does it cost to use my US phone in Portugal?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` },
+        { q: `Is a Portuguese SIM card better than an eSIM?`, a: `For a single-country trip the eSIM is simpler and cheaper. For a longer European loop a Portuguese prepaid SIM can win, since Portugal is in the EU and the allowance roams across the union at no surcharge. If Lisbon is your first stop of several, price both.` },
+        { q: `Will I have signal in the Portuguese countryside?`, a: `Mostly yes. Coverage is strong in the cities, on the coast and along the motorways, and thinner in the Serra da Estrela, parts of the Douro and Alentejo back roads. Download offline maps for a hiking day or a rural drive.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Portugal country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Portugal.html", type: "gov" },
+          { label: "AT&T: the International Day Pass destination list, which names Madeira and the Azores separately", url: "https://www.att.com/support/article/wireless/KM1395068/", type: "card" }
+        ],
+        judgment: "Checked Aug 2026. The island point is the useful part of this page and it is a check rather than a purchase: Madeira and the Azores are listed as separate destinations, so a plan sold as covering Europe may not cover the part of Portugal you are flying to. We earn a commission on eSIM links, which is exactly why the advice here is to read the country list before clicking one. Carrier figures are an Aug 2026 snapshot and move faster than anything else we cover."
       }
     }
   ]

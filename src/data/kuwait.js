@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 // Kuwait money guide.
 //
 // Verified August 2026 against: the Central Bank of Kuwait exchange rate policy page (the
@@ -375,6 +377,71 @@ export default {
           { label: "US State Department: Kuwait country information, including local travel notes", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Kuwait.html", type: "gov" }
         ],
         judgment: "Careem's presence is confirmed by its own Kuwait pages. Uber's is genuinely contested across current sources and we have said so rather than choose, because either answer risks leaving a reader stranded. The airport pickup restriction rests on one detailed first-hand account, which we have flagged as such while still advising a fallback, on the grounds that the cost of being wrong is asymmetric. Fare figures are approximate and drawn from secondary sources, not a published tariff.",
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Excellent in the city and suburbs" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "App calling", v: "Generally works, keep a fallback" },
+        { k: "Cheapest", v: "A local SIM, and it is cheap" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Kuwait: excellent city coverage, and a cheap local SIM",
+      description: "Kuwait City and its suburbs are comprehensively covered and local data is cheap. App calling generally works, unlike in the UAE.",
+      h1: "Staying connected in Kuwait.",
+      lede: "Kuwait is compact, urban and well covered, and local data is cheap. There is little to warn about, which makes this a short page rather than a padded one.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>excellent across Kuwait City and the suburbs</b>, along the Gulf Road, at the airport and out to the desert highways, with fast 4G and widespread 5G. It thins only in the far desert and along the northern and western borders, which are not places most visitors go. A local <b>Zain</b>, <b>stc</b> or <b>Ooredoo</b> tourist SIM is cheap with your <b>passport</b>, and a <b>Nomad eSIM</b> is a few dollars per gigabyte. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. On <b>app calling</b>, Kuwait is generally reported as having no active block, so WhatsApp and FaceTime calls usually work on a local network, though the regional picture is not uniform. <b>Messaging works regardless.</b> Keep an ordinary cellular call as the fallback. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "Not much to warn you about",
+          icon: "phoneok",
+          key: { fig: "No real gaps", tag: "Coverage", text: "Kuwait City, the suburbs, the Gulf Road and the desert highways all have fast 4G with widespread 5G.", tone: "teal" },
+          p: [
+            `Kuwait is small and heavily urbanised, and the network reflects that: fast 4G and widespread 5G across <b>Kuwait City</b>, the suburbs, the Gulf Road, the malls and the airport, and workable coverage along the desert highways. It thins in the far desert and toward the northern and western borders, which are restricted or unremarkable for visitors anyway.`,
+            `So there is no network to research and no gap to plan around, and we would rather say that than manufacture a caveat. If you are driving out to a desert camp, <b>download offline maps</b>, which is general good practice rather than a Kuwait-specific warning.`
+          ]
+        },
+        {
+          h: "App calling, generally permitted",
+          icon: "alert",
+          key: { fig: "Usually fine", tag: "Unlike the UAE", text: "Kuwait is generally reported as having no active VoIP block. The regional picture is not uniform, so keep a fallback.", tone: "teal" },
+          p: [
+            `Worth stating because the Gulf is not one policy. <b>Kuwait is generally reported as having no active app-calling block</b>, so WhatsApp and FaceTime calls usually connect on a local network, which is different from the UAE and from what a traveler arriving via Dubai might expect. That also means you do not need an eSIM to <b>restore</b> calling here: buy one for the usual reasons, skipping the counter or keeping your own number, not as a workaround.`,
+            `Worth knowing how thin the evidence is. Almost every page on the internet about Gulf app-calling is published by a company selling a VPN or an eSIM, both of which are the advertised fix, and they contradict each other flatly: on the same week in 2026 we found sources calling this country blocked, intermittent and permitted. So we are not going to give you a confident answer we do not have. <b>Messaging works everywhere in the Gulf.</b> Assume <b>app calling might not</b>, have a backup before you land, and test it on arrival rather than at the moment you need it.`
+          ]
+        },
+        {
+          h: "Cost, and checking your own plan first",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `A local <b>Zain</b>, <b>stc</b> or <b>Ooredoo</b> tourist SIM is cheap, sold at the airport and in malls with your <b>passport</b>, and all three cover the city comfortably, so there is no network worth paying extra for. A <b>Nomad eSIM</b> at a few dollars per gigabyte avoids the counter.`,
+            `Roaming is about <b>${S.dayPass}</b>, so <b>${S.week}</b> a week, with <b>AT&amp;T</b> capping at <b>${S.capFees}</b>, about <b>${S.capAmount}</b>, and <b>Verizon</b> having <b>${S.verizonNoCap}</b>. Check <b>T-Mobile</b> before buying anything, since its tiers include <b>${S.tmoRange}</b> before slowing to <b>${S.throttle}</b>, and on a short business trip with hotel wifi that is often enough on its own. This guide is written for US travelers departing the US. For more, see <a href='/kuwait/cash-or-card'>cash or card in Kuwait</a>, <a href='/kuwait/taxis-and-apps'>taxis and apps in Kuwait</a>, and the <a href='/kuwait'>Kuwait money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Does WhatsApp calling work in Kuwait?`, a: `Generally yes. Kuwait is reported as having no active app-calling block, so calls usually connect on a local network, unlike in the UAE. The regional picture is not uniform, so keep an ordinary cellular call as your fallback. You do not need an eSIM to restore calling here.` },
+        { q: `How much is a SIM card in Kuwait?`, a: `A Zain, stc or Ooredoo tourist SIM is cheap, bought at the airport or in a mall with your passport. All three cover the city comfortably, so there is no network worth paying extra for.` },
+        { q: `Is phone coverage good in Kuwait?`, a: `Yes, excellent across Kuwait City and the suburbs, with fast 4G and widespread 5G, and workable coverage along the desert highways. It thins only in the far desert and toward the borders.` },
+        { q: `How much does it cost to use my US phone in Kuwait?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Kuwait country information and local laws", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Kuwait.html", type: "gov" },
+          { label: "Zain Kuwait: prepaid and visitor plan pages", url: "https://www.kw.zain.com/", type: "official" }
+        ],
+        judgment: "Checked Aug 2026. Short on purpose. The useful content is the one line that costs us a sale: you do not need an eSIM here as a calling workaround, because Kuwait is generally reported as not blocking app calling, so buy one for convenience or do not buy one at all. As with every Gulf page, the app-calling position carries a hedge, because the sources on this topic sell either a VPN or an eSIM and disagree with each other."
       }
     }
   ],

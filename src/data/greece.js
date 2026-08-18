@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "greece",
   iso2: "gr",
@@ -512,6 +514,70 @@ export default {
           { label: "Athens airport taxi guide: the regulated day and night flat fares to central Athens, with the rank location and alternatives", url: "https://taxitoathens.com/athens-airport-taxi-guide-2026/", type: "official" }
         ],
         judgment: "The flat airport fare is set by law and consistently reported, though it is periodically revised, so check before you travel. The per-kilometer meter rates are quoted inconsistently across sources, which is why we describe the tariff-band trick rather than printing figures. Checked July 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Strong on the mainland and big islands" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
+        { k: "Signal gaps", v: "Ferry crossings, small islands" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "eSIM for Greece: the cost math, and ferry dead zones",
+      description: "Greek coverage is strong in Athens and on the big islands, so this is a cost question. The gaps are the ferry crossings and the smaller islands, which no plan fixes.",
+      h1: "Staying connected in Greece.",
+      lede: "Greece covers its cities and its big islands well, so the decision is mostly financial. The exception is the bit of a Greek holiday that involves being on a boat, where everybody loses signal equally.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>strong</b> in Athens, Thessaloniki and on the larger islands including Crete, Rhodes, Corfu and most of the Cyclades, and it thins on <b>ferry crossings</b>, the smaller islands and in the mountainous interior of the Peloponnese and Epirus. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and works from landing. A <b>local prepaid SIM</b> is also cheap here and, because this is an <b>EU</b> country, it carries <b>Roam Like At Home</b> across the rest of the union at no surcharge, which is worth pricing if the trip continues into other EU countries. For island hopping, the practical move is not a different plan but <b>downloading your ferry tickets and maps before you sail</b>, since a two-hour crossing is often two hours offline. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "A cost question first",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `Greek networks are good where visitors go, so the question is price. A US carrier day pass is about <b>${S.dayPass}</b>, roughly <b>${S.week}</b> a week, with the <b>AT&amp;T</b> cap meaning a long trip stops compounding after ten billed days and <b>Verizon</b> not capping at all. <b>T-Mobile</b>'s current tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value.`,
+            `A <b>Nomad eSIM</b> at a few dollars per gigabyte is cheaper than the day pass for a normal week. A local <b>Cosmote</b>, <b>Vodafone</b> or <b>Nova</b> tourist pack is inexpensive and carries EU roaming, so on a trip through several EU countries it competes. Do not roam with <b>no plan</b>, at about <b>${S.ppu}</b>.`
+          ]
+        },
+        {
+          h: "The ferries are the real gap",
+          icon: "alert",
+          key: { fig: "Mid-crossing", tag: "Where signal drops", text: "Open-water stretches between islands lose signal on every network. Download tickets, maps and reading before you board.", tone: "amber" },
+          p: [
+            `The Greek connectivity complaint is not the islands, it is getting between them. Once a ferry is <b>out of sight of land</b>, coverage drops on every network, and the longer Cyclades and Dodecanese runs can be several hours. Onboard wifi, where it exists, is usually satellite-backed, shared with a full deck and slow. Small islands can also be thin once you leave the port town, and the interior mountains of the <b>Peloponnese</b>, <b>Epirus</b> and <b>Crete</b>'s Lefka Ori have real gaps.`,
+            `None of that is fixed by which plan you buy, so plan around it: <b>download your ferry tickets</b> so they open offline, save your accommodation address, and grab offline maps for the island before you sail rather than after you land. The habit also covers a hiking day in the Samaria gorge or the Vikos.`
+          ]
+        },
+        {
+          h: "On the big islands you are fine",
+          icon: "phoneok",
+          key: { fig: "The big islands", tag: "Well covered", text: "Crete, Rhodes, Corfu and most of the Cyclades have solid 4G in the towns and along the main roads.", tone: "teal" },
+          p: [
+            `Where visitors spend most of their time, coverage is good: <b>Athens</b> has fast 4G and 5G including much of the metro, and <b>Crete, Rhodes, Corfu, Santorini, Naxos, Paros</b> and the other larger islands have solid 4G in the towns, at the ports and along the main roads. Archaeological sites near towns are fine.`,
+            `The thinner spots on an island are the far headlands, the mountain villages and the remote beaches reached by dirt track, which is the sort of thing to check before relying on a phone to summon a taxi at the end of the day. This guide is written for US travelers departing the US. For more, see <a href='/greece/cash-or-card'>cash or card in Greece</a>, <a href='/greece/money-scams'>money traps in Greece</a>, and the <a href='/greece'>Greece money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Will I have phone signal on Greek ferries?`, a: `Not for the whole crossing. Once the ferry is out of sight of land, coverage drops on every network, and the longer Cyclades and Dodecanese runs can be hours. Onboard wifi is usually satellite-backed and slow. Download your tickets, maps and reading before you board.` },
+        { q: `How much does it cost to use my US phone in Greece?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` },
+        { q: `Do I need an eSIM for Greece?`, a: `It is the cheapest way for most US travelers to get real data, at a few dollars per gigabyte against about $10 to $12 a day for a carrier pass. A local Cosmote, Vodafone or Nova tourist pack is also cheap and carries EU roaming, which is worth pricing if the trip continues into other EU countries.` },
+        { q: `Is coverage good on the Greek islands?`, a: `On the big ones, yes. Crete, Rhodes, Corfu, Santorini and most of the Cyclades have solid 4G in the towns, at the ports and on the main roads. Smaller islands thin out beyond the port town, and remote headlands and mountain villages can have nothing.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Greece country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Greece.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. The ferry gap is the honest headline here, and it is worth stating plainly on a page that carries an eSIM link, because no data plan closes it: it is open water and there are no towers. The coverage read on the larger islands is the desk's from operator footprints and consistent traveler accounts. Carrier figures are an Aug 2026 snapshot."
       }
     }
   ]

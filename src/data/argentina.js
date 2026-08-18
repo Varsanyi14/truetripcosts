@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "argentina",
   iso2: "ar",
@@ -429,6 +431,70 @@ export default {
           { label: "OSAC: Argentina country security report, referenced by the State Department advisory", url: "https://www.osac.gov/Country/Argentina/Content/Detail/Report/905ecf39-8463-4323-9ad7-1c74073427dc", type: "gov" }
         ],
         judgment: "All four taxi scams here, the note swap, the airport handler, the staged breakdown and the mustard distraction, are listed by name in the US State Department's own Argentina travel guidance, along with the remise and dispatcher escapes and the instruction to exchange money only at banks, hotels or exchangers with storefronts. The advisory was at Level 1, exercise normal precautions, when checked, with the crime and unrest risk indicators removed in July 2026. We have attached no figure to the note swap because the loss is simply the face value of the note substituted, and no honest typical figure exists. The blue dollar point reflects the current narrow gap between street, card and official rates rather than a specific quoted rate. Checked August 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Fine in Buenos Aires and the cities" },
+        { k: "Signal gaps", v: "Patagonia, Ruta 40, the Andes" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Local SIM", v: "Cheap, but fiddly for visitors" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "Argentina: cheap local data, awkward to buy, big Patagonian gaps",
+      description: "Argentine data is cheap and the local SIM is genuinely fiddly for foreigners. Coverage is fine in the cities and absent across long stretches of Patagonia.",
+      h1: "Staying connected in Argentina.",
+      lede: "Argentina is the country where the cheap option is real but awkward. Local data costs very little, buying it as a foreigner is inconsistent, and none of it helps once you are on Ruta 40.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>fine in Buenos Aires, Cordoba, Mendoza and Bariloche</b> and along the main highways, and there are <b>long gaps</b> across <b>Patagonia</b>, on <b>Ruta 40</b>, in the high Andes and the Puna, and on the roads to El Chalten and the glaciers. On price, local prepaid from <b>Personal</b>, <b>Claro</b> or <b>Movistar</b> is cheap in peso terms, and <b>buying it as a visitor is inconsistent</b>: some shops sell and register on a passport in minutes, others want a local ID number, and the top-up process assumes a local payment method. A <b>Nomad eSIM</b> at a few dollars per gigabyte skips all of that, which here is the honest argument for it. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. Before a Patagonian drive, <b>download the whole route offline</b>. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "Patagonia is the real story",
+          icon: "alert",
+          key: { fig: "Ruta 40", tag: "Long empty stretches", text: "Patagonia, Ruta 40, the high Andes and the Puna have long gaps with nothing on any network.", tone: "amber" },
+          p: [
+            `The distances here are the point. Argentina is bigger than India and much of the south is close to empty, so a Patagonian driving day crosses long stretches with <b>no signal on any network</b>: much of <b>Ruta 40</b>, the roads between El Calafate, El Chalten and the Chilean border crossings, the Puna and the high Andean passes, and plenty of the steppe in between. Fuel stops can be a hundred miles apart and so can other cars.`,
+            `No plan fixes that, which is worth saying on a page carrying an eSIM link. What helps is preparation: <b>download the entire route</b> rather than the next leg, save your accommodation numbers and any bus or park bookings so they open offline, carry them on paper too, and tell somebody your plan for the day. In the cities and along the main corridors you will have workable 4G with 5G in Buenos Aires.`
+          ]
+        },
+        {
+          h: "The local SIM is cheap and awkward",
+          icon: "tag",
+          key: { fig: "Inconsistent", tag: "Buying as a visitor", text: "Local prepaid is cheap, but registration and top-up for foreigners varies by shop and assumes a local payment method.", tone: "amber" },
+          p: [
+            `In peso terms, Argentine mobile data is inexpensive, and if you can buy and top up a local line you will pay very little. The friction is procedural rather than legal: some carrier shops register a foreigner on a <b>passport</b> without fuss, others ask for a local ID, and the <b>top-up</b> flows, apps and kiosks generally assume a local card or an Argentine account. Add an economy where prices and payment methods move quickly and it becomes an errand with an uncertain ending.`,
+            `So the honest framing is not that the eSIM is cheaper here, because it is not, but that it is <b>predictable</b>: a <b>Nomad eSIM</b> at a few dollars per gigabyte works from landing with no shop, no local ID question and no top-up puzzle. If you are staying weeks, especially in Buenos Aires, the local SIM is worth the errand. For a two-week loop with flights and buses, the eSIM is the one that will not eat an afternoon. Also read <a href='/argentina/cash-or-card'>cash or card in Argentina</a>, since paying for things here has its own rules.`
+          ]
+        },
+        {
+          h: "What roaming costs",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `Roaming is the expensive default at about <b>${S.dayPass}</b>, so <b>${S.week}</b> a week, and the caps matter on the long trips Argentina invites: <b>AT&amp;T</b> stops at <b>${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily, so a three-week Patagonian trip is a very different bill on the two networks. <b>T-Mobile</b>'s tiers include <b>${S.tmoRange}</b> before slowing to <b>${S.throttle}</b>.`,
+            `Whatever you choose, do not roam with <b>no plan</b>: pay-per-use is about <b>${S.ppu}</b>. This guide is written for US travelers departing the US. For more, see <a href='/argentina/taxis-and-apps'>taxis and apps in Argentina</a> and the <a href='/argentina'>Argentina money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Will I have signal in Patagonia?`, a: `Often not. Much of Ruta 40, the roads between El Calafate, El Chalten and the Chilean border crossings, the Puna and the high Andean passes have long stretches with nothing on any network. Download the entire route offline, carry your accommodation numbers on paper and tell somebody your plan for the day.` },
+        { q: `Can I buy a local SIM card in Argentina as a tourist?`, a: `Sometimes easily and sometimes not. Local prepaid is cheap, but registration varies by shop, some ask for a local ID rather than a passport, and top-up flows generally assume a local card or Argentine account. It is worth the errand for a long stay and often not for a two-week trip.` },
+        { q: `How much does it cost to use my US phone in Argentina?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` },
+        { q: `Is an eSIM the cheapest option in Argentina?`, a: `No, a local SIM is cheaper if you can get one working. The eSIM's advantage here is predictability rather than price: it works from landing with no shop visit, no local ID question and no top-up puzzle, which on a short trip is worth the premium.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Argentina country information and road conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Argentina.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. Two honest points. The local SIM is cheaper and we say so, and the reason we still describe the eSIM as reasonable here is procedural rather than commercial: visitor registration and top-up genuinely vary by shop and assume local payment methods, which is a different situation from the clean airport-counter purchase in Sri Lanka or Georgia. The Patagonian coverage gaps are the desk's read from operator footprints and consistent self-drive accounts, and they are the part of this page to act on. Peso pricing moves fast enough that no figure is quoted."
       }
     }
   ]

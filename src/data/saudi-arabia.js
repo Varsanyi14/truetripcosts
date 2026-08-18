@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 // Saudi Arabia money guide.
 //
 // Verified August 2026 against: SAMA (the 3.75 peg, unchanged since June 1986, reaffirmed by
@@ -548,7 +550,72 @@ export default {
       ],
       judgment: "The 15% VAT and the tourist refund scheme are official and linked above. The municipality levy at 5% per occupied room, and 2.5% at three-star and below, comes from Ministry of Municipal and Rural Affairs reporting and a Gulf tax practice note rather than a ministry page we could open in English, so treat the structure as solid and the exact current rate as worth confirming with your hotel. As corroboration rather than proof, four Makkah and Madinah properties priced on a booking site at this check showed totals about 20 to 21% over the nightly rate, which is what 15% and 5% compound to. The service charge is set by each property and we have not printed a rate. Checked August 2026."
     }
-  }
+  },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Strong in cities and on highways" },
+        { k: "SIM registration", v: "Biometric, at the airport" },
+        { k: "App calling", v: "Unblocked in 2017, but check on arrival" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "Saudi Arabia: biometric SIM registration, and the VoIP question",
+      description: "Saudi coverage is strong in the cities and along the highways. Registration is biometric, and the 2017 VoIP unblocking is contested by some 2026 sources.",
+      h1: "Staying connected in Saudi Arabia.",
+      lede: "Saudi Arabia has two things worth knowing that are not about price: buying a local SIM involves fingerprints, and the country's much-reported 2017 decision to allow internet calling is disputed by some current sources.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>strong in Riyadh, Jeddah, Dammam, AlUla and Medina</b> and along the main highways, and it thins across the interior desert, the Empty Quarter and the mountain roads of the southwest. A local <b>STC</b>, <b>Mobily</b> or <b>Zain</b> tourist SIM is inexpensive and often sold cheaply at the airport, and <b>registration is biometric</b>: expect to give <b>fingerprints</b> at a kiosk or counter along with your passport, which is more friction than most countries and is normal here. A <b>Nomad eSIM</b> at a few dollars per gigabyte avoids that entirely. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. On <b>app calling</b>, Saudi Arabia <b>lifted its VoIP restrictions in 2017</b> and WhatsApp calling has generally worked since, though some 2026 sources claim renewed blocking and we could not resolve the disagreement, so <b>test it on arrival</b> and keep an ordinary cellular call as the fallback. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "Registration involves fingerprints",
+          icon: "passport",
+          key: { fig: "Biometric", tag: "SIM registration", text: "Passport plus fingerprints at a kiosk or counter. Normal here, more friction than most places, and the honest case for an eSIM.", tone: "amber" },
+          p: [
+            `Saudi Arabia registers SIMs biometrically. Buying a local prepaid line means presenting your <b>passport</b> and giving <b>fingerprints</b> at a carrier kiosk or counter, commonly at the airport on arrival, where the staff do this constantly and it is quick. It is not an obstacle so much as a step nobody warns visitors about, and it surprises people who expected to grab a SIM from a shelf.`,
+            `That friction is the honest argument for a <b>Nomad eSIM</b> here: a few dollars per gigabyte, set up before you fly, no kiosk and no biometrics. It costs more per gigabyte than the local SIM, so it is a convenience purchase rather than a saving, and on a short trip it is a reasonable one. If you are staying longer or want a Saudi number for domestic apps and deliveries, do the local SIM.`
+          ]
+        },
+        {
+          h: "The VoIP question, unresolved",
+          icon: "alert",
+          key: { fig: "2017", tag: "Ban lifted, then disputed", text: "Saudi Arabia lifted its VoIP restrictions in 2017 and calling has generally worked since. Some 2026 sources claim renewed blocking.", tone: "amber" },
+          p: [
+            `The well-documented history is that Saudi Arabia <b>lifted its ban on internet calling in September 2017</b>, deliberately, as part of opening up to business, and WhatsApp and FaceTime calling have generally worked there since. That is the position most sources describe and it is the one we would report.`,
+            `What stops us stating it flatly is that some <b>2026 sources claim the calls are blocked again</b> by the major carriers, and we could not resolve that disagreement to our own standard. Worth knowing how thin the evidence is. Almost every page on the internet about Gulf app-calling is published by a company selling a VPN or an eSIM, both of which are the advertised fix, and they contradict each other flatly: on the same week in 2026 we found sources calling this country blocked, intermittent and permitted. So we are not going to give you a confident answer we do not have. <b>Messaging works everywhere in the Gulf.</b> Assume <b>app calling might not</b>, have a backup before you land, and test it on arrival rather than at the moment you need it.`
+          ]
+        },
+        {
+          h: "Coverage and cost",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `Coverage is good where visitors go: fast 4G and 5G in <b>Riyadh, Jeddah and Dammam</b>, solid service at <b>AlUla</b> and Diriyah, along the highways and on the Haramain high-speed line, and around <b>Medina</b>. It thins in the interior desert, deep in the <b>Empty Quarter</b> and on the mountain roads of the <b>Asir</b> southwest, so a desert or mountain drive wants <b>offline maps</b> and a paper note of where you are staying.`,
+            `Roaming is about <b>${S.dayPass}</b>, so <b>${S.week}</b> a week, with <b>AT&amp;T</b> capping at <b>${S.capFees}</b>, about <b>${S.capAmount}</b>, and <b>Verizon</b> having <b>${S.verizonNoCap}</b>, which matters on the longer stays business travel here tends to involve. <b>T-Mobile</b>'s tiers include <b>${S.tmoRange}</b> before <b>${S.throttle}</b>. This guide is written for US travelers departing the US. For more, see <a href='/saudi-arabia/cash-or-card'>cash or card in Saudi Arabia</a>, <a href='/saudi-arabia/taxis-and-apps'>taxis and apps in Saudi Arabia</a>, and the <a href='/saudi-arabia'>Saudi Arabia money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Do I need fingerprints to buy a SIM card in Saudi Arabia?`, a: `Yes, registration is biometric: expect to present your passport and give fingerprints at a carrier kiosk or counter, commonly at the airport. It is quick and routine there, and it is more friction than most countries. A travel eSIM avoids it entirely, at a higher price per gigabyte.` },
+        { q: `Does WhatsApp calling work in Saudi Arabia?`, a: `Probably, and we will not state it flatly. Saudi Arabia lifted its VoIP restrictions in September 2017 and calling has generally worked since, which is what most sources describe. Some 2026 sources claim renewed blocking and we could not resolve the disagreement. Test it on arrival and keep an ordinary cellular call as the fallback.` },
+        { q: `Is phone coverage good in Saudi Arabia?`, a: `Strong in Riyadh, Jeddah, Dammam, AlUla and Medina, along the main highways and on the Haramain high-speed line. It thins in the interior desert, the Empty Quarter and the Asir mountain roads, so download offline maps for a desert or mountain drive.` },
+        { q: `How much does it cost to use my US phone in Saudi Arabia?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Saudi Arabia country information and local laws", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/SaudiArabia.html", type: "gov" },
+          { label: "STC: prepaid and visitor SIM plan pages", url: "https://www.stc.com.sa/", type: "official" }
+        ],
+        judgment: "Checked Aug 2026. Two deliberate positions. The biometric registration step is stated plainly because it is the thing nobody warns visitors about, and it is also the honest argument for the product we earn on, so the page says the local SIM is still cheaper per gigabyte. And the VoIP position is left unresolved: the 2017 lifting is well documented and widely corroborated, some 2026 sources assert renewed blocking, and effectively every source on this topic sells a VPN or an eSIM. Rather than pick, this page reports both readings and tells you to test on arrival."
+      }
+    }
   ],
 
   signals: { cardFriendliness: 5, cashNeed: 2, taxRisk: 4, atmRisk: 2 },

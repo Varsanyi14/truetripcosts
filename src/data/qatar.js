@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 // Qatar money guide.
 //
 // Verified August 2026 against: Qatar Central Bank (the 3.64 peg, Amiri Decree No. 34 of
@@ -371,6 +373,71 @@ export default {
           { label: "Hamad International Airport taxi guide: Karwa meter rates and the ride-hailing pick-up point", url: "https://doha-doh-international-airport.com/doha-airport-taxis", type: "news" }
         ],
         judgment: "Careem's 2023 exit is reported specifically and with dates by multiple current sources, while the sources still listing Careem do so in generic boilerplate, which is why we have called it. Metro and taxi figures are approximate and drawn from secondary sources rather than a published tariff we could open, so they are written as ranges and flagged as a guide. Uber's presence and the Karwa-through-Uber option are well attested.",
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Excellent, the whole country" },
+        { k: "App calling", v: "Restricted, and reported inconsistently" },
+        { k: "Messaging", v: "Works normally" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "Qatar: coverage is a non-issue, app calling is the question",
+      description: "Qatari coverage is excellent, so this is not about signal. WhatsApp and FaceTime calling is restricted and reported inconsistently, so plan a backup before you land.",
+      h1: "Staying connected in Qatar.",
+      lede: "Qatar is small, rich and comprehensively covered, so signal is not the story. The story is whether you can call home on WhatsApp, and the honest answer is that we could not pin it down.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>excellent across the whole country</b>, in Doha, on the highways, at the airport and out toward the dunes, with widespread 5G, so there is nothing to plan around on signal. The question is <b>app calling</b>: Qatar licenses internet calling to its own operators, and <b>WhatsApp and FaceTime calling is widely reported as restricted</b>, though accounts differ on how consistently. <b>Messaging, photos and voice notes work normally</b>, and <b>ordinary cellular calls always work</b> on your own number. A local <b>Ooredoo</b> or <b>Vodafone Qatar</b> tourist pack is inexpensive with your <b>passport</b>, and a <b>Nomad eSIM</b> is a few dollars per gigabyte. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. Have a fallback ready before you land rather than working it out at the moment you need a call. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "What is restricted, and what is not",
+          icon: "alert",
+          key: { fig: "Calls only", tag: "Messaging is fine", text: "WhatsApp and FaceTime calling is restricted on Qatari networks. Text, photos, voice notes and ordinary cellular calls work normally.", tone: "amber" },
+          p: [
+            `The shape of the restriction is narrower than the phrase implies, and knowing it saves confusion on arrival. <b>Restricted</b>: WhatsApp and FaceTime voice and video calling, and most other consumer app calling, which Qatar licenses to <b>Ooredoo</b> and <b>Vodafone Qatar</b> rather than permitting generally. <b>Working normally</b>: WhatsApp and iMessage text, photos and voice notes, and <b>ordinary cellular calls and SMS</b> on your own number at your carrier's international rate. Business platforms such as <b>Zoom and Teams</b> generally work for meetings, which is why a work trip can feel unaffected while a family call does not.`,
+            `Worth knowing how thin the evidence is. Almost every page on the internet about Gulf app-calling is published by a company selling a VPN or an eSIM, both of which are the advertised fix, and they contradict each other flatly: on the same week in 2026 we found sources calling this country blocked, intermittent and permitted. So we are not going to give you a confident answer we do not have. <b>Messaging works everywhere in the Gulf.</b> Assume <b>app calling might not</b>, have a backup before you land, and test it on arrival rather than at the moment you need it.`
+          ]
+        },
+        {
+          h: "What to plan around instead",
+          icon: "phoneok",
+          key: { fig: "A cellular call", tag: "The reliable route", text: "An ordinary phone call on your own number always works. Licensed operator calling apps are the local route.", tone: "teal" },
+          p: [
+            `Three things that hold up. First, an <b>ordinary phone call</b>: unglamorous, billed at your international rate, and it works every time, which is what you want for the one call that matters. Second, the <b>licensed operator route</b>, since Qatar permits internet calling through Ooredoo and Vodafone Qatar's own services. Third, <b>Zoom or Teams</b> for anything that can be a meeting.`,
+            `On <b>VPNs</b>, which every forum recommends: using one for ordinary purposes is common and using one specifically to reach a service the country restricts sits against the letter of local telecom rules, so we are not going to call it a clean answer. A travel eSIM routes your data out of the country and often sidesteps a national block as a side effect of how roaming works, and that is a byproduct, not a feature we can promise. Test whatever you are relying on <b>on arrival</b>, not at the moment you need it.`
+          ]
+        },
+        {
+          h: "Coverage and cost, briefly",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `There is nothing to warn about on coverage: Qatar is compact and comprehensively built out, with fast 5G in <b>Doha</b>, coverage on the metro, along the highways and at Hamad International, and workable signal out at the inland sea and the dune camps, which is unusual for desert terrain.`,
+            `On cost, a local <b>Ooredoo</b> or <b>Vodafone Qatar</b> tourist pack is inexpensive with your <b>passport</b>, and a <b>Nomad eSIM</b> is a few dollars per gigabyte with no counter. Roaming is about <b>${S.dayPass}</b>, so <b>${S.week}</b> a week, with <b>AT&amp;T</b> capping at <b>${S.capFees}</b> and <b>Verizon</b> having <b>${S.verizonNoCap}</b>. <b>T-Mobile</b>'s tiers include <b>${S.tmoRange}</b> before <b>${S.throttle}</b>. This guide is written for US travelers departing the US. For more, see <a href='/qatar/cash-or-card'>cash or card in Qatar</a>, <a href='/qatar/taxis-and-apps'>taxis and apps in Qatar</a>, and the <a href='/qatar'>Qatar money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Does WhatsApp work in Qatar?`, a: `Messaging does: text, photos and voice notes all work normally. WhatsApp and FaceTime calling is widely reported as restricted, since Qatar licenses internet calling to its own operators, though accounts differ on how consistently. Ordinary cellular calls on your own number always work.` },
+        { q: `How do I call home from Qatar?`, a: `An ordinary cellular call on your own number is the reliable route, billed at your carrier's international rate. Qatar permits internet calling through Ooredoo and Vodafone Qatar's licensed services. Zoom and Teams generally work for meetings. Test whatever you plan to use on arrival rather than when you need it.` },
+        { q: `Is phone coverage good in Qatar?`, a: `Yes, excellent across the whole country, with fast 5G in Doha, coverage on the metro and along the highways, and workable signal out at the inland sea and dune camps, which is unusual for desert terrain. Signal is not the issue here.` },
+        { q: `How much does it cost to use my US phone in Qatar?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Qatar country information and local laws", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Qatar.html", type: "gov" },
+          { label: "Ooredoo Qatar: tourist plan and prepaid pages", url: "https://www.ooredoo.qa/", type: "official" }
+        ],
+        judgment: "Checked Aug 2026. Qatar is the Gulf country where the sources most consistently agree that app calling is restricted, so this page states that, and it still declines to say how reliably, because the accounts differ and nearly every one of them is published by a VPN or eSIM seller with an interest in the answer. The advice that follows from genuine uncertainty is to carry a fallback and test on arrival, which costs nothing and works whichever way the block is running that week."
       }
     }
   ],

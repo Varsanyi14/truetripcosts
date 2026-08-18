@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "denmark",
   iso2: "dk",
@@ -445,6 +447,71 @@ export default {
           }
         ],
         judgment: "Denmark applies the shared EU pet-entry framework, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The local registration and any breed rules vary, so we point you to the official pages and dated this July 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Excellent, effectively everywhere" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
+        { k: "Not included", v: "Greenland and the Faroes" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "eSIM for Denmark: check Greenland and the Faroes separately",
+      description: "Danish coverage is excellent, so this is purely cost. The catch is that Greenland and the Faroe Islands are separate destinations that most plans exclude.",
+      h1: "Staying connected in Denmark.",
+      lede: "Denmark has among the best coverage in Europe and no signal story worth telling. The one thing worth knowing is that two parts of the Kingdom are not part of your Denmark plan.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>excellent</b>, effectively everywhere: Copenhagen, Aarhus, the small towns, the islands, the bridges and the trains, with widespread 5G. So this is <b>purely a cost decision</b>. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly and works from landing. A <b>local prepaid SIM</b> is also cheap here and, because this is an <b>EU</b> country, it carries <b>Roam Like At Home</b> across the rest of the union at no surcharge, which is worth pricing if the trip continues into other EU countries. The Denmark-specific catch: <b>Greenland</b> and the <b>Faroe Islands</b> are part of the Kingdom of Denmark and are <b>not</b> part of your Denmark arrangement. Both are listed as separate destinations by the US carriers, both sit <b>outside EU roaming</b>, and both are excluded from most eSIM plans sold as covering Denmark or Europe. If either is on the itinerary, <b>check it by name</b>. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "Greenland and the Faroes are separate",
+          icon: "alert",
+          key: { fig: "Two exclusions", tag: "Check by name", text: "Greenland and the Faroes are listed as their own destinations, outside EU roaming, and excluded from most Europe plans.", tone: "amber" },
+          p: [
+            `This is the part worth reading before you buy. <b>Greenland</b> and the <b>Faroe Islands</b> are constituent parts of the Kingdom of Denmark and, for telecoms purposes, entirely separate: both appear as their own entries on the US carriers' destination lists, neither is inside the <b>EU roaming zone</b>, and travel eSIM plans covering Denmark or Europe routinely leave them out. A plan bought for Copenhagen will not necessarily work in Torshavn or Nuuk.`,
+            `If either is on the itinerary, <b>open the covered-country list and look for it by name</b>, and price a plan for that leg separately. In Greenland especially, expect coverage in the settlements and effectively nothing between them, so a boat or icecap trip is an offline trip whatever you buy. On any boat, <b>turn data roaming off</b> to avoid latching onto a maritime network at maritime rates.`
+          ]
+        },
+        {
+          h: "In Denmark itself, purely cost",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `Mainland Denmark and the islands give us nothing to warn about, so the decision is money. Roaming is about <b>${S.dayPass}</b>, roughly <b>${S.week}</b> a week, with <b>AT&amp;T</b> capping at <b>${S.capFees}</b>, about <b>${S.capAmount}</b>, and <b>Verizon</b> having <b>${S.verizonNoCap}</b>. Check <b>T-Mobile</b> first if that is your carrier: its tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value, slowing to <b>${S.throttle}</b>.`,
+            `A <b>Nomad eSIM</b> at a few dollars per gigabyte is well under the day pass. Danish prepaid from <b>Lebara</b>, <b>Oister</b> or <b>CBB</b> is cheap and carries EU roaming, which competes on a Scandinavian or wider European trip. Do not roam with <b>no plan</b>, at about <b>${S.ppu}</b>.`
+          ]
+        },
+        {
+          h: "Nothing else to warn you about",
+          icon: "phoneok",
+          key: { fig: "No real gaps", tag: "Coverage", text: "Among the best in Europe: cities, small towns, islands, bridges and trains, with widespread 5G.", tone: "teal" },
+          p: [
+            `Short, because Denmark has solved it. Coverage is strong in <b>Copenhagen, Aarhus, Odense and Aalborg</b>, across Jutland and the islands, over the <b>Great Belt</b> and <b>Oresund</b> crossings and on the trains, with 5G widespread. There is no mountain range, no wilderness and no tunnel network worth a warning, and cycling the whole country will not take you out of coverage.`,
+            `The one habit still worth keeping is downloading what you need before a long island or ferry day, on the general principle that a phone fails for reasons other than signal. This guide is written for US travelers departing the US. For more, see <a href='/denmark/cash-or-card'>cash or card in Denmark</a>, <a href='/denmark/taxis-and-apps'>taxis and apps in Denmark</a>, and the <a href='/denmark'>Denmark money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Does my Denmark plan cover Greenland or the Faroe Islands?`, a: `Usually not. Both are part of the Kingdom of Denmark and both are separate destinations for telecoms: outside EU roaming, listed individually by the US carriers, and excluded from most eSIM plans sold as covering Denmark or Europe. Check by name and price that leg separately.` },
+        { q: `How much does it cost to use my US phone in Denmark?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` },
+        { q: `Is phone coverage good in Denmark?`, a: `Among the best in Europe. Cities, small towns, the islands, the Great Belt and Oresund crossings and the trains are all well covered, with widespread 5G. There is no gap worth planning a trip around.` },
+        { q: `Is a Danish SIM card cheaper than an eSIM?`, a: `Danish prepaid from Lebara, Oister or CBB is cheap and carries EU roaming across the union, so it competes well on a Scandinavian or wider European trip. For a short Copenhagen visit a travel eSIM is simpler. Both are far cheaper than roaming.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "AT&T: the International Day Pass destination list, which names Greenland and the Faroe Islands separately", url: "https://www.att.com/support/article/wireless/KM1395068/", type: "card" },
+          { label: "US State Department: Denmark country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Denmark.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. The Greenland and Faroes exclusion is the useful content on this page and it is a check rather than a purchase: their separate listing was verified against AT&T's own destination list, and the EU roaming zone genuinely does not extend to either. Everything else about Danish connectivity is unremarkable, so the page says so rather than manufacturing a warning. Carrier figures are an Aug 2026 snapshot."
       }
     }
   ]

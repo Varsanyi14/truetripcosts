@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "norway",
   iso2: "no",
@@ -518,6 +520,72 @@ export default {
           { label: "Oslo kommune: piggdekkgebyr, the Norwegian page, on where the charge applies and how the electronic permit is registered", url: "https://www.oslo.kommune.no/gate-transport-og-parkering/piggdekkgebyr/", type: "gov" }
         ],
         judgment: "The prices and the penalty come straight from the city's own pages, so those are firm. The legal framing sits in the national road-use regulation, Forskrift 1999-05-07-437, and the charge has been the subject of a parliamentary proposal, Stortinget Dokument 8:35 S for the 2025 to 2026 session, so it is a live policy question rather than a settled one. We have deliberately led with the caveat rather than the number, because the fee only applies if the rental has studded tyres and most rentals are studless, which means the fact most readers need is the question to ask rather than the amount to budget. City rates are set individually and have moved in recent years, so confirm with the city site for the winter you are travelling. Checked Aug 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Strong along the coast and valleys" },
+        { k: "Signal gaps", v: "Mountain passes and inland Finnmark" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Not included", v: "Svalbard, on most plans" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "Norway: good coverage, and two things plans leave out",
+      description: "Norwegian coverage is strong where people live and thin in the mountains and the far inland. Svalbard is a separate destination that most plans exclude.",
+      h1: "Staying connected in Norway.",
+      lede: "Norway covers its coast and valleys better than a country this shape has any right to, and then stops sharply above and inland. The two things worth checking before you buy are the mountain passes and Svalbard.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>strong along the populated coast and up the valleys</b>, including the fjord towns, the Lofoten road and most of the rail network, and it thins in the <b>high mountain passes</b>, inland <b>Finnmark</b>, the Hardangervidda plateau and on long stretches of the E6 in the far north. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. Norway is in the <b>EEA</b>, so an EU or Norwegian prepaid SIM roams here under <b>Roam Like At Home</b>. The two Norway-specific checks: <b>Svalbard</b> is a separate destination that most eSIM plans and EU roaming leave out, and long road <b>tunnels</b>, of which Norway has more than anywhere, drop signal routinely. A <b>Nomad eSIM</b> is a few dollars per gigabyte. Before a mountain drive, <b>download offline maps</b> and check <b>vegvesen.no</b> for pass closures. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "Svalbard is not Norway, for your phone",
+          icon: "alert",
+          key: { fig: "Svalbard", tag: "Usually excluded", text: "Listed as its own destination and outside EU roaming. Check the plan by name, and expect maritime rates on a boat.", tone: "amber" },
+          p: [
+            `If Longyearbyen is on your itinerary, read this before you buy anything. <b>Svalbard</b> is listed as a separate destination by the US carriers, sits <b>outside the EU roaming zone</b>, and is excluded from a lot of travel eSIM plans sold as covering Norway or Europe. Coverage in and around <b>Longyearbyen</b> itself is fine; the problem is what you are paying for it.`,
+            `The sharper risk on Svalbard is at sea. Once a boat is away from the settlement, a phone can latch onto a <b>maritime or satellite network</b> billed at rates that make a day pass look like nothing, so <b>turn data roaming off</b> on any boat trip and leave it off until you are back ashore. The same warning applies to the coastal Hurtigruten in mainland Norway.`
+          ]
+        },
+        {
+          h: "The passes, the plateau and the tunnels",
+          icon: "wheel",
+          key: { fig: "The passes", tag: "Where signal drops", text: "High mountain passes, the Hardangervidda and inland Finnmark thin out on every network, and Norway has more road tunnels than anywhere.", tone: "amber" },
+          p: [
+            `Coverage follows the coast and the valley floors, so a Norwegian road trip crosses in and out of it. Expect gaps on the high <b>mountain passes</b>, across the <b>Hardangervidda</b>, in inland <b>Finnmark</b> and on long empty stretches of the E6 north of Tromso. Norway also has <b>more road tunnels than any country</b>, many of them kilometres long, and most take your signal with them.`,
+            `So plan a driving day offline: <b>download the whole route</b> rather than the next leg, check <b>vegvesen.no</b> for pass closures and conditions before you set off, since a summer pass can shut in an afternoon, and keep your accommodation details available without a connection. <b>112</b> reaches emergency services and can sometimes connect on a network you have no subscription with.`
+          ]
+        },
+        {
+          h: "Where you actually are, it is good",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `For the parts of Norway most visitors spend most of their time in, coverage is genuinely strong: <b>Oslo, Bergen, Trondheim, Tromso</b>, the fjord towns, <b>Lofoten</b>'s main road and the Bergen and Flam railways all hold up, with fast 4G and urban 5G. So this is largely a cost question after all.`,
+            `Roaming is about <b>${S.dayPass}</b>, so <b>${S.week}</b> a week, with <b>AT&amp;T</b> capping at <b>${S.capFees}</b> and <b>Verizon</b> having <b>${S.verizonNoCap}</b>. <b>T-Mobile</b>'s tiers include <b>${S.tmoRange}</b> before slowing to <b>${S.throttle}</b>. Norwegian prepaid from <b>Telenor</b> or <b>Telia</b> is available but pricier than most of Europe, so a <b>Nomad eSIM</b> at a few dollars per gigabyte is usually the better value here. This guide is written for US travelers departing the US. For more, see <a href='/norway/cash-or-card'>cash or card in Norway</a>, <a href='/norway/taxis-and-apps'>taxis and apps in Norway</a>, and the <a href='/norway'>Norway money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Does my Norway plan cover Svalbard?`, a: `Often not. Svalbard is listed as its own destination by the US carriers, sits outside the EU roaming zone and is excluded from many travel eSIM plans sold as covering Norway. Check it by name. On boat trips away from Longyearbyen, turn data roaming off, since maritime networks bill at far higher rates.` },
+        { q: `Will I have signal driving in Norway?`, a: `Along the coast and the valleys, yes. On high mountain passes, across the Hardangervidda, in inland Finnmark and in Norway's many long road tunnels, frequently not. Download the whole route offline and check vegvesen.no for pass closures before you set off.` },
+        { q: `How much does it cost to use my US phone in Norway?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` },
+        { q: `Is a Norwegian SIM card worth buying?`, a: `Usually not, since Norwegian prepaid is pricier than most of Europe. A travel eSIM at a few dollars per gigabyte is generally better value. Norway is in the EEA, so if you already hold an EU SIM it roams here at no surcharge under Roam Like At Home.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "Norwegian Public Roads Administration: road and mountain pass conditions", url: "https://www.vegvesen.no/", type: "gov" },
+          { label: "AT&T: the International Day Pass destination list, which names Svalbard separately", url: "https://www.att.com/support/article/wireless/KM1395068/", type: "card" },
+          { label: "US State Department: Norway country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Norway.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. Two things here cost us rather than earn: Svalbard's exclusion is a reason to check a country list rather than click a link, and the maritime-roaming warning is the largest single bill risk on any Norwegian trip and has nothing to do with the products on this page. Svalbard's separate listing was verified against AT&T's own destination list. Pass conditions come from vegvesen.no, which supersedes anything here on the day you drive."
       }
     }
   ]

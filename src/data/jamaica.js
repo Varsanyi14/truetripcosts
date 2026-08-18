@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "jamaica",
   iso2: "jm",
@@ -520,6 +522,70 @@ export default {
           { label: "Jamaica Information Service: the 2026 to 2027 revenue measures raising the tourism GCT to 15% from 1 April 2027", url: "https://jis.gov.jm/govt-projects-29-4b-from-new-revenue-measures-in-fiscal-year-2026-27/", type: "gov" }
         ],
         judgment: "The room tax tiers, the per-room basis, the 60-night residential rule and the fact that GCT is not charged on the room tax all come from Tax Administration Jamaica's own guidance. One caveat on that source: TAJ's published table overlaps at 51 rooms, printing the lowest band as 1 to 51 and the next as 51 to 100, so we use up to 50 rooms for the lowest band, which matches the 2012 measure that introduced the tax. The current tourism GCT rate of about 10% is confirmed by international tax practices rather than a single official rate table. On the 2027 increase, the measure and the 1 April 2027 date are well reported, but the phasing is genuinely unresolved: Jamaican reporting describes it as phased over two fiscal years while other accounts describe a single step, and no source publishes intermediate rates, so we have stated the endpoint and said the path is unconfirmed rather than guessing. Resort fees are set by each property. Checked August 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Good in Kingston and the resort corridor" },
+        { k: "Signal gaps", v: "Blue Mountains, Cockpit Country" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "Often resort wifi, at $0" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Jamaica eSIM: resort wifi may cover it, and the hills will not",
+      description: "Coverage is good in Kingston, Montego Bay and along the north coast. The Blue Mountains and Cockpit Country are thin, and resort wifi covers a lot of trips.",
+      h1: "Staying connected in Jamaica.",
+      lede: "If your week is a north-coast resort, the wifi probably covers it. If you are driving into the Blue Mountains or across the island, the calculation changes and so does the coverage.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>good in Kingston, Montego Bay, Ocho Rios and Negril</b> and along the north-coast corridor, and it thins in the <b>Blue Mountains</b>, across <b>Cockpit Country</b>, in the interior parishes and on the south coast beyond Treasure Beach. On an <b>all-inclusive week</b>, resort wifi covers most of what you need and buying data is optional, which is worth saying plainly. If you are moving around, a local <b>Digicel</b> or <b>Flow</b> prepaid SIM is roughly <b>10 to 20 dollars</b>, and <b>Digicel</b> generally has the wider reach inland. A <b>Nomad eSIM</b> is a few dollars per gigabyte. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "On a resort week, wifi may be enough",
+          icon: "phoneok",
+          key: { fig: "Often $0", tag: "On an all-inclusive", text: "Resort wifi covers a week of beach and buffet. Check whether the faster tier costs extra, which is the real expense.", tone: "teal" },
+          p: [
+            `The most common Jamaican trip needs the least. Resorts along the <b>north coast</b> have wifi throughout the property, usually free in rooms and public areas, and for a week of beach, pool and a couple of excursions that is genuinely sufficient. Download your maps and bookings before you fly and you are set.`,
+            `The thing to check is whether your resort runs a <b>free basic tier and a paid faster one</b>, since the free tier can struggle in the evening. A data plan is often cheaper than the resort's premium wifi upgrade, which is the one case where buying data reliably saves money on this kind of trip. We earn on eSIMs, so it is worth being plain that plenty of Jamaica visitors need neither.`
+          ]
+        },
+        {
+          h: "Off the corridor, it thins",
+          icon: "alert",
+          key: { fig: "The hills", tag: "Where signal drops", text: "The Blue Mountains, Cockpit Country and the interior parishes are patchy on every network. Digicel reaches furthest.", tone: "amber" },
+          p: [
+            `Away from the coast road the picture changes. The <b>Blue Mountains</b>, including the peak trail and the coffee-estate roads, <b>Cockpit Country</b>, the interior of St Elizabeth and Trelawny, and the road over the middle of the island all have patchy to absent coverage. <b>Digicel</b> generally reaches furthest inland, with <b>Flow</b> competitive in the towns.`,
+            `So for a driving day or a hike, <b>download offline maps</b> and save your accommodation's number, and note that Jamaican route-finding rewards a map that does not need a connection. Fares here are negotiated rather than metered and route taxis work on local knowledge, so having data to check a price is worth more than it sounds: see <a href='/jamaica/taxis-and-apps'>taxis and apps in Jamaica</a>.`
+          ]
+        },
+        {
+          h: "What each option costs",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `A local <b>Digicel</b> or <b>Flow</b> prepaid SIM with a data bundle is roughly <b>10 to 20 dollars</b>, bought at the airport or in a phone shop. Caribbean prepaid is not priced like Latin American prepaid, so a <b>Nomad eSIM</b> at a few dollars per gigabyte can come in cheaper for light use, which is the opposite of the pattern on our Asian and South American pages. Compare both rather than assuming.`,
+            `Roaming is about <b>${S.dayPass}</b>, so <b>${S.week}</b> a week, with <b>AT&amp;T</b> capping at <b>${S.capFees}</b> and <b>Verizon</b> having <b>${S.verizonNoCap}</b>. <b>T-Mobile</b>'s tiers include <b>${S.tmoRange}</b> before <b>${S.throttle}</b>. If you are arriving by <b>cruise</b>, keep data roaming off at sea, where ship networks bill at maritime rates rather than the day-pass rate. This guide is written for US travelers departing the US. For more, see <a href='/jamaica/cash-or-card'>cash or card in Jamaica</a> and the <a href='/jamaica'>Jamaica money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Do I need data for an all-inclusive in Jamaica?`, a: `Usually not. Resort wifi covers a week of beach and buffet, and downloading maps and bookings before you fly handles the rest. Check whether your resort charges for a faster wifi tier, since a data plan is often cheaper than that upgrade.` },
+        { q: `Which network is best in Jamaica?`, a: `Digicel generally reaches furthest inland, with Flow competitive in the towns. Neither covers the Blue Mountains, Cockpit Country or the interior parishes reliably.` },
+        { q: `How much is a SIM card in Jamaica?`, a: `Roughly 10 to 20 dollars for a Digicel or Flow prepaid SIM with a data bundle, from the airport or a phone shop. Caribbean prepaid is pricier than Latin American prepaid, so a travel eSIM can work out cheaper for light use. Compare both.` },
+        { q: `How much does it cost to use my US phone in Jamaica?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Jamaica country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Jamaica.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. For the most common Jamaican trip, a north-coast all-inclusive, the honest answer is that resort wifi is enough and we earn nothing saying so. Where we do suggest buying, the reasoning is inverted from our Asian pages: Caribbean prepaid is expensive enough that the eSIM can be the better value, so this page says compare rather than asserting a winner. The inland coverage read is the desk's from operator footprints and traveler accounts."
       }
     }
   ]

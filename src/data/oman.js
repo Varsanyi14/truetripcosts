@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 // Oman money guide.
 //
 // Verified August 2026 against: the Central Bank of Oman fixed-peg page, the Oman Ministry
@@ -446,6 +448,71 @@ export default {
           { label: "Oman Tax Authority: the VAT portal, laws and refund procedures", url: "https://tms.taxoman.gov.om/portal/web/taxportal/vat-tax", type: "revenue" }
         ],
         judgment: "The 5% VAT and the 4% tourism tax are official and linked above. The municipality charge on hotel occupancy, and therefore the roughly 14% total, rests on secondary tax references rather than a government page we could open: it is the softest figure on this page, and it is worth noting that it reconciles the 14% exactly, which is corroboration rather than proof. The service charge is set by each property and we have deliberately not printed a rate for it. That we could not confirm an operating tourist VAT refund scheme is a statement about what we could verify. Checked August 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Good in the cities and on the coast" },
+        { k: "Signal gaps", v: "The desert, the Jebel, Musandam" },
+        { k: "App calling", v: "Reported inconsistently, plan a backup" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "Oman: desert coverage gaps, and unclear app calling",
+      description: "Omani coverage is good in the cities and thin across the desert and the mountains. Whether WhatsApp calling works is reported inconsistently, so plan a backup.",
+      h1: "Staying connected in Oman.",
+      lede: "Oman gives you two things to think about, and neither is price. The desert and the mountains have real coverage gaps, and whether app calling works is a question we could not answer confidently, which is worth saying rather than guessing at.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>good in Muscat, Salalah, Nizwa and Sur</b> and along the main coastal highways, and it thins badly in the <b>Wahiba Sands</b>, on the <b>Jebel Shams and Jebel Akhdar</b> roads, across the interior desert and in much of <b>Musandam</b>, which is separated from the rest of the country. A local <b>Omantel</b> or <b>Ooredoo</b> tourist SIM is cheap, bought with your <b>passport</b>. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and works from landing. On <b>app calling</b>, Oman is reported as blocked by some sources, intermittent by others and working by others again, and we could not resolve it, so <b>assume WhatsApp and FaceTime calling may not work</b> and have a licensed app or an ordinary cellular call as your fallback. Before a desert or mountain drive, <b>download offline maps</b>. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "The desert and the Jebel are the real gaps",
+          icon: "alert",
+          key: { fig: "The Wahiba", tag: "Where signal drops", text: "Cities and coastal highways are fine. The sands, the mountain roads and much of Musandam have long stretches of nothing.", tone: "amber" },
+          p: [
+            `Omani coverage follows the coast and the towns, which is most of where people live, and the interior is genuinely empty. Expect long stretches with nothing in the <b>Wahiba Sands</b>, on the graded tracks up <b>Jebel Shams</b> and <b>Jebel Akhdar</b>, across the desert toward the Empty Quarter, in the wadis once you are off the tarmac, and through much of <b>Musandam</b>'s fjord roads.`,
+            `That matters more than the equivalent gap in Europe, because these are self-drive routes with long gaps between fuel and traffic, and a soft-sand mistake or a flat tyre is a wait rather than a phone call. So <b>download offline maps</b> for the whole route, carry water and a paper note of your lodge or camp number, and tell somebody the plan for the day. A desert camp will have no coverage and may have satellite wifi at best.`
+          ]
+        },
+        {
+          h: "App calling, honestly unresolved",
+          icon: "phoneok",
+          key: { fig: "Unresolved", tag: "Plan a backup", text: "Sources disagree on whether WhatsApp calling works in Oman. Messaging does. Assume calling might not and carry a fallback.", tone: "amber" },
+          p: [
+            `Worth knowing how thin the evidence is. Almost every page on the internet about Gulf app-calling is published by a company selling a VPN or an eSIM, both of which are the advertised fix, and they contradict each other flatly: on the same week in 2026 we found sources calling this country blocked, intermittent and permitted. So we are not going to give you a confident answer we do not have. <b>Messaging works everywhere in the Gulf.</b> Assume <b>app calling might not</b>, have a backup before you land, and test it on arrival rather than at the moment you need it.`,
+            `What that means practically. <b>Messaging, photos and voice notes</b> work: nobody disputes that. <b>Ordinary cellular calls</b> always work, on your own number at your carrier's international rate, which is the boring fallback that never fails. Some travelers report app calling working normally on an Omani SIM; others report it blocked. A travel eSIM routes traffic out of the country and often sidesteps a national block as a side effect, and that is a byproduct rather than a feature and not something we will promise. If a specific call matters, plan on a cellular call.`
+          ]
+        },
+        {
+          h: "What each option costs",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `A local <b>Omantel</b> or <b>Ooredoo</b> tourist SIM is inexpensive, sold at Muscat airport and in carrier shops with your <b>passport</b>, and Omantel generally has the wider reach outside the cities, which matters more here than the price does. A <b>Nomad eSIM</b> at a few dollars per gigabyte skips the counter and works from landing.`,
+            `Roaming is the expensive default at about <b>${S.dayPass}</b>, so <b>${S.week}</b> a week, with <b>AT&amp;T</b> capping at <b>${S.capFees}</b>, about <b>${S.capAmount}</b>, and <b>Verizon</b> having <b>${S.verizonNoCap}</b>. <b>T-Mobile</b>'s tiers include <b>${S.tmoRange}</b> before slowing to <b>${S.throttle}</b>, so check yours first. This guide is written for US travelers departing the US. For more, see <a href='/oman/cash-or-card'>cash or card in Oman</a>, <a href='/oman/taxis-and-apps'>taxis and apps in Oman</a>, and the <a href='/oman'>Oman money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Does WhatsApp calling work in Oman?`, a: `We could not establish it confidently, and we would rather say so than guess. Sources describe Oman as blocked, intermittent and permitted, and almost all of them sell a VPN or an eSIM as the fix. Messaging definitely works. Assume calling might not, and keep an ordinary cellular call as your fallback.` },
+        { q: `Will I have signal in the Omani desert?`, a: `Often not. The Wahiba Sands, the Jebel Shams and Jebel Akhdar roads, the interior desert and much of Musandam have long stretches with nothing on any network. Download offline maps for the whole route, carry your camp's number on paper and tell somebody your plan.` },
+        { q: `How much is a SIM card in Oman?`, a: `An Omantel or Ooredoo tourist SIM is inexpensive, sold at Muscat airport and in carrier shops with your passport. Omantel generally has the wider reach outside the cities, which matters more than the price if you are heading inland.` },
+        { q: `How much does it cost to use my US phone in Oman?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Oman country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Oman.html", type: "gov" },
+          { label: "Omantel: prepaid and tourist SIM plan pages", url: "https://www.omantel.om/", type: "official" }
+        ],
+        judgment: "Checked Aug 2026. The app-calling position here is deliberately unresolved and that is the honest state of the evidence: within one week we found reputable-looking sources calling Oman blocked, intermittent and permitted, and effectively all of them sell either a VPN or an eSIM, which are the two products the answer sells. Rather than pick the reading that suits us, this page tells you messaging works, calling may not, and to carry a fallback. The desert coverage gaps are the desk's read from operator footprints and consistent self-drive accounts, and they are the part of this page most worth acting on."
       }
     }
   ],

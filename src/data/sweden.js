@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "sweden",
   iso2: "se",
@@ -447,6 +449,70 @@ export default {
           }
         ],
         judgment: "Sweden applies the shared EU pet-entry framework, set by the EU and administered on the US side by APHIS, not by us. The process is stable in substance, though the EU certificate format changes on 1 October 2026, which we cover on the EU pet health certificate page. The local registration and any breed rules vary, so we point you to the official pages and dated this July 2026."
+      }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Strong in the south and the cities" },
+        { k: "Signal gaps", v: "The northern interior and Lapland" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A travel eSIM, a few $ per GB" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "eSIM for Sweden: the cost math, and the empty north",
+      description: "Swedish coverage is strong in the south and the cities and thin across the northern interior. Long train routes are patchier than you would expect.",
+      h1: "Staying connected in Sweden.",
+      lede: "Sweden is a long country with most of its people in the bottom third, and the network follows them. In the south this is purely a cost question. North of Ostersund it stops being one.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: `Coverage is <b>strong across the south and the cities</b>, in Stockholm, Gothenburg and Malmo and through the populated Baltic coast, and it thins across the <b>northern interior</b>, in <b>Lapland</b> away from the towns and ski resorts, and on the long empty stretches of the inland route. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. Sweden is in the <b>EU</b>, so an EU or Swedish prepaid SIM roams here under <b>Roam Like At Home</b>, and Swedish prepaid from <b>Comviq</b>, <b>Telia</b> or <b>Telenor</b> is reasonably cheap. A <b>Nomad eSIM</b> is a few dollars per gigabyte and works from landing. One thing that surprises people: <b>long-distance trains</b> are patchier than the country's reputation suggests. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
+      sections: [
+        {
+          h: "A cost question, in the south at least",
+          icon: "roamfee",
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "A US carrier day pass is the expensive default. AT&T caps it at 10 daily fees a bill period, Verizon does not cap at all, and T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            `In the part of Sweden most visitors see, coverage is not the issue. Roaming on your US plan is about <b>${S.dayPass}</b>, roughly <b>${S.week}</b> a week, with <b>AT&amp;T</b> capping at <b>${S.capFees}</b>, about <b>${S.capAmount}</b>, and <b>Verizon</b> having <b>${S.verizonNoCap}</b>. <b>T-Mobile</b>'s tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value.`,
+            `A <b>Nomad eSIM</b> at a few dollars per gigabyte undercuts that comfortably. Swedish prepaid, <b>Comviq</b> especially, is cheap by Nordic standards and carries EU roaming, so it competes on a longer European trip. And do not roam with <b>no plan</b>, at about <b>${S.ppu}</b>. Sweden is also close to cashless, so a working phone is more load-bearing here than in most of Europe: see <a href='/sweden/cash-or-card'>cash or card in Sweden</a>.`
+          ]
+        },
+        {
+          h: "North of the cities, it thins",
+          icon: "alert",
+          key: { fig: "The interior", tag: "Where signal drops", text: "Lapland away from the towns, the northern interior and the inland route have real gaps on every network.", tone: "amber" },
+          p: [
+            `Sweden's population is concentrated in the south, and above it the map empties out. Expect real gaps across the <b>northern interior</b>, in <b>Lapland</b> away from Kiruna, Abisko and the ski resorts, along the <b>Inlandsbanan</b> corridor and on hiking routes including stretches of the <b>Kungsleden</b>. Winter adds a practical wrinkle: cold flattens a phone battery fast, which matters more than signal on an aurora night.`,
+            `So a trip north is worth preparing for: <b>download offline maps</b> and your accommodation details, carry a power bank, and if you are hiking, treat the route as offline and tell somebody your plan. <b>112</b> reaches emergency services and can sometimes connect on a network you have no subscription with.`
+          ]
+        },
+        {
+          h: "The trains are the surprise",
+          icon: "train",
+          key: { fig: "Long routes", tag: "Patchier than expected", text: "Long-distance Swedish rail drops in and out through forest and rural stretches. Download before you board.", tone: "teal" },
+          p: [
+            `The thing that catches people out is not the wilderness, it is the train. <b>Long-distance routes</b>, Stockholm to Gothenburg and especially anything heading north, run through long forested and rural stretches where the signal comes and goes, and onboard wifi is shared and variable. It is a familiar complaint for anyone who has taken a German ICE.`,
+            `The fix is a habit rather than a purchase: <b>download</b> your tickets, maps and anything you want to read before you board, and keep your SJ tickets available offline. In the cities themselves coverage is excellent, including on the Stockholm metro. This guide is written for US travelers departing the US. For more, see <a href='/sweden/taxis-and-apps'>taxis and apps in Sweden</a> and the <a href='/sweden'>Sweden money guide</a>.`
+          ]
+        }
+      ],
+      faqs: [
+        { q: `Will I have signal in Swedish Lapland?`, a: `In Kiruna, Abisko and the ski resorts, yes. Away from the towns, across the northern interior and on hiking routes including stretches of the Kungsleden, there are real gaps on every network. Download offline maps, carry a power bank, since cold drains batteries fast, and tell somebody your route.` },
+        { q: `How much does it cost to use my US phone in Sweden?`, a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` },
+        { q: `Do Swedish trains have good phone coverage?`, a: `Less than you would expect. Long-distance routes run through forested and rural stretches where the signal drops in and out, and onboard wifi is shared and variable. Download tickets, maps and reading before you board. City coverage, including the Stockholm metro, is excellent.` },
+        { q: `Is a Swedish SIM card worth buying?`, a: `It can be. Comviq and the other Swedish prepaid options are cheap by Nordic standards and carry EU roaming across the union. A travel eSIM at a few dollars per gigabyte is simpler for a short trip. Both are far cheaper than a carrier day pass.` }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "US State Department: Sweden country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Sweden.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. The train point is the desk's read from consistent traveler accounts rather than an operator statement, and it is included because it is the gap that actually interrupts a Swedish trip, while the far north is the one people already expect. Sweden being close to cashless makes a working phone more load-bearing here than elsewhere in Europe, which is a reason to have a plan rather than a reason to buy ours specifically. Carrier figures are an Aug 2026 snapshot."
       }
     }
   ]
