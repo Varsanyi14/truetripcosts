@@ -623,6 +623,70 @@ export default {
         ],
         judgment: "The contactless system, the absence of domestic seat reservations and the smartcard phase-out dates are all documented by the operator and the national tourism body, so the practical advice here is firm. The 33.30 euro check-in deposit is consistently reported and is the figure the system has used, though it is the kind of number that gets revised, so treat it as the current amount rather than a permanent one. The Intercity Direct supplement exists but the amount varies, so we describe it without quoting a figure. That a pass is pointless in the Netherlands is our own read, and it is about as safe as a judgment on this site gets, resting on short distances, low fares and turn-up-and-go frequency rather than on any single price. Checked Aug 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Among the best in Europe" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
+        { k: "Signal gaps", v: "None worth planning around" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "eSIM for the Netherlands: purely a cost decision",
+      description: "Dutch coverage is among the best in Europe, trains included, so there is nothing to plan around. US roaming runs 10 to 12 dollars a day; an eSIM is a few per gigabyte.",
+      h1: "Staying connected in the Netherlands.",
+      lede: "The Netherlands has some of the best mobile coverage in Europe, trains and countryside included, so there is nothing here to plan around. That makes this page short and the decision purely financial.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>among the best in Europe</b>, in the cities, across the countryside and on the trains, so this is <b>purely a cost decision</b>. Your US carrier charges about <b>10 to 12 dollars a day</b> to roam (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b> is worth checking before you buy anything, because its mid and upper tiers include a real <b>high-speed allowance</b> abroad, from <b>5GB up to 30GB</b> depending on plan, slowing to <b>256kbps</b> only after that. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly and works from landing. A Dutch prepaid SIM is also cheap and carries <b>EU roaming</b>, which is worth a look if the trip continues into the rest of the EU. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "A cost question, and only that",
+          icon: "roamfee",
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "A US carrier day pass runs about $10 to $12 a day. T-Mobile is the exception, with 5GB to 30GB of high-speed data abroad on its mid and upper tiers, so check yours before buying.", tone: "teal" },
+          p: [
+            "Dutch networks are strong everywhere you are likely to be, so the only question is what you pay. The expensive default is roaming on your US plan: <b>AT&amp;T and Verizon</b> charge about <b>10 to 12 dollars a day</b>, roughly <b>70 to 84 dollars</b> for a week. <b>T-Mobile</b> is the exception worth checking first: its current tiers include a genuine <b>high-speed allowance</b> abroad, roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> only once that is used up. The entry <b>Essentials</b> tier is throttled from the start. Google Fi and Visible set their own terms, so read your own plan rather than assuming.",
+            "Whatever you choose, do not roam with <b>no plan at all</b>. Pay-per-use data runs about <b>2 dollars a megabyte</b>, thousands per gigabyte, and phones use data in the background, so <b>turn off data roaming</b> until an eSIM or a pass is active."
+          ]
+        },
+        {
+          h: "The eSIM, and when a Dutch SIM is the better buy",
+          icon: "qr",
+          key: { fig: "Few $/GB", tag: "The cheap option", text: "A travel eSIM is the cheapest way to get real data here. A Dutch prepaid SIM carries EU roaming, so it can be the better buy if the trip continues into the EU.", tone: "teal" },
+          p: [
+            "A <b>travel eSIM</b> is the cheapest way for most visitors to get real data in the Netherlands. A <b>Nomad eSIM</b> is a few dollars per gigabyte, well under day-pass pricing, it <b>activates before you fly</b> and works from landing, and your US number stays reachable on your normal plan while the eSIM carries the data. Which Dutch network it rides barely matters: KPN, VodafoneZiggo and Odido are all strong where visitors go.",
+            "The alternative worth a moment is a <b>Dutch prepaid SIM</b>, which is inexpensive and, because the Netherlands is in the EU, carries <b>Roam Like At Home</b> across the rest of the EU at no extra cost. On a single-country trip that is no advantage. On a two or three week loop through Belgium, Germany and France it can beat a per-country eSIM, so if Amsterdam is your first stop of several, price both."
+          ]
+        },
+        {
+          h: "Nothing much to warn you about",
+          icon: "phoneok",
+          key: { fig: "No real gaps", tag: "Coverage", text: "Strong in the cities, across the polders and on the trains, with widespread 5G. There is no gap here worth planning your trip around.", tone: "teal" },
+          p: [
+            "This section is short because the country genuinely does not give us much. Coverage is strong in <b>Amsterdam, Rotterdam, Utrecht and The Hague</b>, across the countryside and the polders, and on the <b>trains</b>, which is not true of long-distance rail in neighboring Germany. 5G is widespread in the cities. There is no mountain range, no Outback and no tunnel network to warn you about, and we would rather say so than invent a caveat to make the page look thorough.",
+            "The one habit still worth keeping is downloading what you need before a cycling day out in the countryside, on the general principle that a phone can fail for reasons unrelated to signal. This guide is written for US travelers departing the US. For more, see <a href='/netherlands/cash-or-card'>cash or card in the Netherlands</a>, <a href='/netherlands/rail'>trains in the Netherlands</a>, and the <a href='/netherlands'>Netherlands money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need an eSIM for the Netherlands?", a: "For most US travelers it is the cheapest way to get real data. Dutch coverage is excellent, so it is purely a cost question: a Nomad eSIM is a few dollars per gigabyte against about 10 to 12 dollars a day for an AT&T or Verizon roaming pass. Set it up before you fly and it works from landing." },
+        { q: "How much does it cost to use my US phone in the Netherlands?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps. Never roam with no plan, since pay-per-use runs about 2 dollars a megabyte." },
+        { q: "Is a Dutch SIM card better than an eSIM?", a: "For a single-country trip, no, the eSIM is simpler and cheaper. For a longer European loop it can be, because a Dutch prepaid SIM carries EU roaming across the rest of the EU at no extra cost. If the Netherlands is your first stop of several, price both." },
+        { q: "Will I have signal on Dutch trains?", a: "Generally yes. Coverage on the Dutch rail network is good, which is not true of long-distance trains in some neighboring countries. There is no signal gap in the Netherlands worth planning a trip around." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass, the daily rate and the covered-destination list", url: "https://www.att.com/international/day-pass/", type: "card" },
+          { label: "US State Department: Netherlands country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/TheNetherlands.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. This is a short spoke on purpose. Dutch coverage is genuinely excellent and there is no registration quirk, no network to favour and no signal gap worth a paragraph, so padding it out with invented detail would make it look more useful while telling you less. The honest content is the cost comparison and the EU-roaming point about a local SIM on a multi-country trip. Carrier day-pass figures are an Aug 2026 snapshot and move faster than anything else we cover, so check your own plan before you fly."
+      }
     }
   ]
 };

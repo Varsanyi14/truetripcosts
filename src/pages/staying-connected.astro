@@ -9,8 +9,9 @@ import fs from 'node:fs';
 
 // Staying connected, topic hub. Gathers every topic:"connectivity" country spoke, the same
 // aggregation cash-or-card, taxis-and-ride-hailing and driving-and-car-rental use, so adding
-// a connectivity spoke to any guide surfaces it here automatically. Before this page existed
-// these 11 spokes were reachable only from inside their own country guide. Checked July 2026.
+// a connectivity spoke to any guide surfaces it here automatically, so a wave of new spokes
+// needs no edit here. Before this page existed they were reachable only from inside their own
+// country guide. Checked Aug 2026.
 
 const flagDir = process.cwd() + '/public/flags/';
 const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? '/flags/' + slug + '.svg' : '/flags/world.svg';
@@ -32,7 +33,7 @@ const spokes = countries
       <p class="lab">Staying connected</p>
       <div style="margin:2px 0 12px"><USBadge /></div>
       <h1>Phone data abroad is mostly a cost question.</h1>
-      <p class="sc-lede">In most of the places US travelers go, coverage is not the problem. The problem is that your carrier will happily charge you about 12 dollars a day for something an eSIM does for a fraction of it, and that in a handful of countries the choice genuinely matters for reasons that have nothing to do with price. Here is how to tell which situation you are in, then the detail for your destination.</p>
+      <p class="sc-lede">In most of the places US travelers go, coverage is not the problem. The problem is that your carrier will happily charge you about 10 to 12 dollars a day for something an eSIM does for a fraction of it, and that in a fair number of countries the cheapest honest answer is not an eSIM at all. Here is how to tell which situation you are in, then the detail for your destination.</p>
     </section>
 
     <section class="sc-four">
@@ -42,7 +43,7 @@ const spokes = countries
       </div>
       <div class="sc-card">
         <span class="sc-k">2. Usually it is just price</span>
-        <p>Across western Europe, Japan, the UK and Australia, coverage is strong and this is purely a cost decision. The US carrier day passes run about 12 dollars a day, which on a two-week trip is real money, and an eSIM bought before you fly is typically a small fraction of that for the same networks.</p>
+        <p>Across western Europe, Japan, the UK and Australia, coverage is strong and this is purely a cost decision. The US carrier day passes run about 10 to 12 dollars a day, which on a two-week trip is real money, and an eSIM bought before you fly is typically a small fraction of that for the same networks.</p>
       </div>
       <div class="sc-card">
         <span class="sc-k">3. Sometimes the network matters</span>
@@ -59,7 +60,8 @@ const spokes = countries
       <p class="sc-note">We earn a commission on eSIM links, so it is worth being plain about the incentive.</p>
       <div class="sc-panel sc-pad">
         <p>An eSIM is genuinely the right answer for most trips, and it is also the thing on this page we get paid for. Those two facts sit uncomfortably together, so the rule we hold ourselves to is simple: where your existing plan already covers you, we say so and earn nothing. Canada is the obvious example, and it is written up that way.</p>
-        <p>We also flag the places where coverage is honestly thin no matter what you buy, such as the remote Australian Outback, rather than implying a data plan solves geography. And where the local network matters more than the price, we name the network to look for instead of pointing you at the cheapest option.</p>
+        <p>We also flag the places where coverage is honestly thin no matter what you buy, such as the remote Australian Outback and most of Namibia, rather than implying a data plan solves geography. And where the local network matters more than the price, we name the network to look for instead of pointing you at the cheapest option.</p>
+        <p>The version of this that costs us the most is worth stating plainly, because it comes up more often than we expected. In a number of countries a local SIM bought on arrival is simply cheaper than any eSIM, sometimes by a factor of ten: India is the clearest case, at a few dollars for a month of daily data. In a few others, a short stay on hotel and public wifi genuinely needs no data plan at all. Those pages say so, in the first paragraph rather than the last, and we earn nothing from them.</p>
       </div>
     </section>
 

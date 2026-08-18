@@ -457,6 +457,71 @@ export default {
         ],
         judgment: "The rabies schedules, the quarantine triggers, and the licence and pet-agent rules are set by Singapore's AVS and administered on the US side by APHIS, not by us. The US schedule and the pet-agent requirement both changed in 2026, so we point you to the official pages and dated this July 2026. Costs vary with your pet's size, your route, and agent fees, so treat the figures as a starting point and confirm the current AVS requirements, including your schedule and whether either quarantine trigger applies to you, before you begin."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Superb, the whole island" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "Often nothing, on wifi" },
+        { k: "Local SIM", v: "About $15 for 100GB or more" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Singapore eSIM: on a short stop you may not need one",
+      description: "Singapore has near-total coverage and free wifi almost everywhere, so a short stopover often needs no data plan at all. If you do want one, the local SIM is remarkable value.",
+      h1: "Staying connected in Singapore.",
+      lede: "Singapore is small, almost entirely covered and full of free wifi. That combination produces an answer we do not often get to give: on a short stop you may not need to buy anything at all.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>superb across the whole island</b>, the MRT included, so there is nothing to plan around. On a <b>short stopover</b>, between hotel wifi, mall and cafe wifi and the public <b>Wireless@SG</b> network, a lot of travelers get through Singapore without buying data at all, and that is a real answer rather than a fallback. If you want a connection that follows you into a taxi queue, a <b>local prepaid SIM</b> from Singtel or StarHub is unusually good value, roughly <b>15 to 25 dollars</b> for <b>100GB</b> or more, bought with your passport at the airport or any 7-Eleven. A <b>Nomad eSIM</b> is a few dollars per gigabyte and earns its place if you want data working before you land or you are continuing through the region. Your US carrier's day pass is about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), and <b>T-Mobile</b> may already include a <b>high-speed allowance</b> abroad, from <b>5GB up to 30GB</b> by plan. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "On a short stop, wifi may be the whole answer",
+          icon: "phoneok",
+          key: { fig: "Often nothing", tag: "The honest answer", text: "Hotel, mall and cafe wifi plus the public Wireless@SG network cover a two or three day stop. We earn nothing telling you this, and it is still the right advice.", tone: "teal" },
+          p: [
+            "Singapore is roughly the size of a large city and it is wired accordingly. Hotels, malls, hawker centers, cafes, Changi itself and the public <b>Wireless@SG</b> network mean that on a <b>two or three day stop</b> you can plan the day over breakfast wifi, ride the MRT on downloaded directions and pick the signal back up at the next stop. Plenty of stopover travelers do exactly that and never buy a data plan.",
+            "This page sells eSIMs, so it is worth saying plainly that a short Singapore stop is one of the places where the honest answer is to buy nothing. The case for buying data is not the island being hard to navigate, it is wanting a connection that is with you continuously, in a taxi queue or a Grab or a hawker center at 11pm, without hunting a sign-in page. If that is worth a few dollars to you, buy it. If it is not, you are fine."
+          ]
+        },
+        {
+          h: "If you do want data, the local SIM is remarkable value",
+          icon: "sgd",
+          key: { fig: "100GB+", tag: "For $15 to $25", text: "Singtel and StarHub tourist SIMs carry more data than a trip could use, bought with a passport at the airport or a 7-Eleven.", tone: "teal" },
+          p: [
+            "A local <b>tourist SIM</b> from <b>Singtel</b> or <b>StarHub</b> runs about <b>15 to 25 dollars</b> and carries <b>100GB</b> or more, which no visitor is going to exhaust. You need your <b>passport</b> at purchase, registration is done at the counter and it works immediately. On a per-gigabyte basis nothing else here comes close, so if you are staying a week or working from a laptop, this is the cheap answer.",
+            "A <b>Nomad eSIM</b> is the better fit for two specific situations: you want to land already connected, or Singapore is one leg of a regional trip and a plan covering several countries is simpler than a SIM per border. It is a few dollars per gigabyte. For a single long Singapore stay, the local SIM wins on price and it is not close."
+          ]
+        },
+        {
+          h: "Coverage, and the one cost worth watching",
+          icon: "roamfee",
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "The day pass is the expensive default. T-Mobile's mid and upper tiers include 5GB to 30GB of high-speed data abroad, so check yours before buying anything.", tone: "teal" },
+          p: [
+            "This section is short because there is nothing to warn you about. Coverage is strong island-wide, <b>underground on the MRT</b> included, 5G is widespread, and there is no gap worth planning around. The only real money risk is roaming with <b>no plan at all</b>: pay-per-use is about <b>2 dollars a megabyte</b> and phones use data in the background, so <b>turn off data roaming</b> until an eSIM, a local SIM or a day pass is active.",
+            "If you do roam, <b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b>, and <b>T-Mobile</b>'s current mid and upper tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that. This guide is written for US travelers departing the US. For more, see <a href='/singapore/cash-or-card'>cash or card in Singapore</a> and the <a href='/singapore'>Singapore money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need an eSIM for Singapore?", a: "On a short stopover, quite possibly not. Hotel, mall and cafe wifi plus the public Wireless@SG network cover a two or three day stop for most people. Buy data if you want a connection with you continuously rather than because the island is hard to navigate without one." },
+        { q: "How much is a SIM card in Singapore?", a: "A Singtel or StarHub tourist SIM is roughly 15 to 25 dollars and carries 100GB or more, which is far more than a visitor will use. You need your passport at purchase, and they are sold at Changi and in convenience stores across the island." },
+        { q: "Is there free wifi in Singapore?", a: "Yes, widely. Hotels, malls, hawker centers, cafes and Changi all have it, and the public Wireless@SG network covers many public spaces. It is good enough that a short stopover can reasonably run on wifi alone." },
+        { q: "How much does it cost to use my US phone in Singapore?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps. Never roam with no plan, since pay-per-use runs about 2 dollars a megabyte." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass, the daily rate and the covered-destination list", url: "https://www.att.com/international/day-pass/", type: "card" },
+          { label: "IMDA Singapore: the public Wireless@SG network, coverage and how to connect", url: "https://www.imda.gov.sg/", type: "gov" },
+          { label: "Singtel: prepaid and tourist SIM plan pages", url: "https://www.singtel.com/", type: "official" }
+        ],
+        judgment: "Checked Aug 2026. The uncomfortable part of this page is that its honest recommendation for the most common Singapore trip, a stopover of a night or three, is to buy nothing, and we earn a commission on eSIMs. We have written it that way because the alternative is telling a reader to spend money on a problem the island does not have. Local SIM pricing is a current read and the allowances are generous enough that the exact figure rarely changes the decision. Carrier day-pass figures are an Aug 2026 snapshot and move faster than anything else here."
+      }
     }
   ]
 };

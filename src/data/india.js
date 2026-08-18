@@ -532,6 +532,72 @@ export default {
         ],
         judgment: "These are the money traps most consistently reported by travelers in 2025 and 2026, concentrated in Delhi and the northern tourist circuit, not a ranked risk list, and rupee amounts vary by city, so treat figures as a recent read. Ride-hailing has made transport markedly fairer, and these patterns are predictable and avoidable. Checked July 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Broad 4G, 5G in the cities" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A local SIM, about $4 a month" },
+        { k: "SIM registration", v: "Passport, visa, photo in the shop" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "India SIM card vs eSIM: the local one is far cheaper",
+      description: "A Jio or Airtel prepaid plan is about 4 dollars for 28 days at 2GB a day, roughly a tenth of an eSIM. What it costs you is paperwork, and here is exactly how much.",
+      h1: "Staying connected in India.",
+      lede: "India is the clearest case on this site of the honest answer costing us money. A local SIM here is not slightly cheaper than a travel eSIM, it is roughly a tenth of the price. What it costs you instead is an hour of paperwork and, occasionally, a day of waiting.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>broad</b>: 4G across most of the country and 5G in the cities, thinner in the Himalaya, parts of the northeast and deep rural districts. The honest headline here is not the eSIM. A <b>local prepaid SIM</b> from <b>Jio</b> or <b>Airtel</b> costs about <b>300 rupees</b>, near <b>4 dollars</b>, and carries <b>1.5GB to 2GB a day for 28 days</b> with unlimited local calls, which is more data than most travelers use in a month for less than one day of carrier roaming. Your US carrier charges about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b> is worth checking first, because its mid and upper tiers include a real <b>high-speed allowance</b> abroad, from <b>5GB up to 30GB</b> depending on plan, slowing to <b>256kbps</b> after that. What the local SIM costs you is <b>paperwork</b>: your original passport, your visa, an address, a photograph taken in the shop, and anywhere from <b>15 minutes to 48 hours</b> before it works. A <b>Nomad eSIM</b> buys you arrival-day certainty and nothing else, which is a real reason to choose it and not a price argument. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "The local SIM is the cheap answer, and it is not close",
+          icon: "tag",
+          key: { fig: "About $4", tag: "For 28 days", text: "A Jio or Airtel prepaid plan runs about 300 rupees for 28 days with 1.5GB to 2GB a day. A single day of carrier roaming costs more than the whole month.", tone: "teal" },
+          p: [
+            "A prepaid plan from <b>Jio</b> or <b>Airtel</b>, India's two strongest networks, costs about <b>300 rupees</b>, near <b>4 dollars</b>, and carries <b>1.5GB to 2GB a day for 28 days</b> along with unlimited local calls. Put that beside the alternatives and the gap is not a rounding error: a week of <b>AT&amp;T or Verizon</b> day passes is <b>70 to 84 dollars</b>, and a travel eSIM with a sensible allowance is a few dollars per gigabyte. The local SIM undercuts both by a wide margin, and we earn nothing when you buy one.",
+            "So the recommendation on this page is a local SIM for anyone staying more than a couple of days, and the reason is arithmetic rather than preference. <b>Airtel</b> has the better reach in the hills and the northeast, <b>Jio</b> has the widest 5G and usually the larger daily allowance, and in the cities either is fine. What you should not do is roam with <b>no plan</b>: pay-per-use runs about <b>2 dollars a megabyte</b>, thousands per gigabyte, and background app activity alone will find it, so <b>turn off data roaming</b> until something is active."
+          ]
+        },
+        {
+          h: "What the paperwork actually costs you",
+          icon: "passport",
+          key: { fig: "Up to 48h", tag: "Before it works", text: "Original passport, your visa, a local address and a photo taken in the shop. Usually live within a few hours, sometimes the next day. That delay is the real argument for an eSIM.", tone: "amber" },
+          p: [
+            "India enforces <b>KYC</b> registration on every prepaid SIM, and for a visitor that means turning up in person at a carrier store or an airport counter with your <b>original passport</b> rather than a copy, your <b>Indian visa</b>, an address where you are staying, usually a hotel booking, and a <b>photograph taken there and then</b>. Activation is commonly <b>two to four hours</b> and can stretch to <b>48</b>, and you may have to make a short verification call before incoming calls work. Budget an hour of your first afternoon and it is a non-event; budget nothing and it can eat your arrival day.",
+            "Two warnings worth more than the money they save. Vendors offering a <b>pre-activated SIM, no passport needed</b> are selling a line registered to a stranger, it stops working within days, and it is not a shortcut. And a <b>local carrier eSIM</b> is no easier than a physical one here, because a visitor still has to do the same in-store registration and wait for approval. The eSIM that actually skips the queue is an international travel eSIM bought before you fly, which is a different product from a Jio or Airtel eSIM."
+          ]
+        },
+        {
+          h: "Where roaming and a travel eSIM still make sense",
+          icon: "roamfee",
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "T-Mobile is the exception worth checking before you buy anything, with 5GB to 30GB of high-speed data abroad on its mid and upper tiers.", tone: "teal" },
+          p: [
+            "The expensive default is roaming on your US plan: <b>AT&amp;T and Verizon</b> day passes run about <b>10 to 12 dollars a day</b>, so a week is roughly <b>70 to 84 dollars</b>. <b>T-Mobile</b> is the exception worth checking first, because its current tiers include a genuine <b>high-speed allowance</b> abroad, roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> only once that is used up. The entry <b>Essentials</b> tier is throttled from the start. Google Fi and Visible set their own terms, so read your own plan rather than assuming.",
+            "The honest case for a <b>Nomad eSIM</b> in India is the <b>first day</b>: a car to arrange at 2am in Delhi, a UPI-adjacent app to load, a hotel to find, all before any store is open. It is a few dollars per gigabyte, it activates before you fly, and it is the wrong choice if what you care about is the total bill. Many travelers do both, an eSIM for landing and a local SIM the next afternoon. On coverage, expect thin patches in the <b>Himalaya</b>, the far northeast and deep rural districts, so <b>download offline maps</b> for hill driving. This guide is written for US travelers departing the US. For more, see <a href='/india/cash-or-card'>cash or card in India</a>, <a href='/india/taxis-and-apps'>taxis and apps in India</a>, and the <a href='/india'>India money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is an eSIM cheaper than a local SIM in India?", a: "No, and not by a little. A Jio or Airtel prepaid plan is about 300 rupees, near 4 dollars, for 28 days at 1.5GB to 2GB a day. A travel eSIM costs several times that for less data. The eSIM buys you a working phone the moment you land and no store visit, which is worth something, but in India it is the convenient option rather than the cheap one." },
+        { q: "What do I need to buy a SIM card in India?", a: "Your original passport rather than a copy, your Indian visa, the address where you are staying and a photograph taken in the shop. Registration is required by law. Activation usually takes two to four hours and can take up to 48. Avoid street vendors selling pre-activated SIMs with no documents, since those are registered to somebody else and stop working within days." },
+        { q: "How much does it cost to use my US phone in India?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps. Never roam with no plan, since pay-per-use runs about 2 dollars a megabyte." },
+        { q: "Which Indian mobile network is best for travelers?", a: "Airtel has the better reach in the hills and the northeast, and Jio has the widest 5G and usually the larger daily data allowance. In the cities either is fine. Coverage is broad nationally, with thin patches in the Himalaya, parts of the northeast and deep rural districts." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass, the daily rate and the covered-destination list", url: "https://www.att.com/international/day-pass/", type: "card" },
+          { label: "Reliance Jio: prepaid plan pages, for the current entry-level data allowances", url: "https://www.jio.com/", type: "official" },
+          { label: "Airtel India: prepaid plan pages and store locations for visitor registration", url: "https://www.airtel.in/", type: "official" },
+          { label: "US State Department: India country information and local conditions for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/India.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. Two things to be plain about. First, we earn a commission on eSIM links and nothing at all on Indian prepaid SIMs, so a page telling you to buy the local SIM is a page arguing against our own revenue, which is the only way this section is worth reading. Second, Indian tariffs have risen in steps over the past two years and will again, so treat 300 rupees as a current entry point rather than a fixed price, and treat the activation window as the genuinely variable part: airport counters can be quick, a neighborhood store on a busy afternoon is not. Carrier day-pass figures are an Aug 2026 snapshot and move faster than anything else here, so check your own plan before you fly."
+      }
     }
   ]
 };

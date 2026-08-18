@@ -523,6 +523,71 @@ export default {
         ],
         judgment: "Pass and card prices, and what each covers, come from the official Swiss Travel System shop, so those are firm. Our confidence in the verdict itself is deliberately rated lower than on the other countries here, and it is worth saying why: this is the one page on the site where we recommend buying a pass, and the margin is thinner than the marketing suggests. The break-even depends on how many days you actually move, and specialist sources that run the numbers in detail disagree about how often the pass beats the Half Fare Card, with several concluding the card wins more often than travelers assume. The four-moving-days rule of thumb is a synthesis of those analyses, not a published threshold. Point-to-point fares such as Zurich to Zermatt are approximate full-fare figures that move with route and class. Seat reservation charges on the scenic routes vary by season and we describe them without quoting an amount. If your trip is one base plus a few excursions, price the card properly before taking our tier at face value. Checked Aug 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Best in Europe, Alps included" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Check the plan", v: "Many Europe eSIMs leave it out" },
+        { k: "Cheapest", v: "Close: a Swiss SIM or an eSIM" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "eSIM for Switzerland: check it covers Switzerland",
+      description: "Swiss coverage is the best in Europe. The trap is regulatory: Switzerland is outside the EU roaming zone, so many Europe data plans quietly exclude it. Check before you buy.",
+      h1: "Staying connected in Switzerland.",
+      lede: "Swiss coverage is the best in Europe, mountains and tunnels included, so this is a pure cost question with one trap in it. Switzerland is not in the EU roaming zone, and a lot of Europe data plans quietly leave it out.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>the best in Europe</b>: strong in the cities, up the mountains, on the trains and through the long tunnels, so there is nothing to plan around. The trap is regulatory. Switzerland is <b>not in the EU or the EEA</b>, so it sits outside <b>Roam Like At Home</b>, and many <b>regional Europe eSIM plans and carrier Europe add-ons exclude it</b>. <b>Check the country list before you buy</b>, because a Europe plan that stops at the Swiss border is worse than useless on an Alps trip. For US travelers the <b>AT&amp;T and Verizon</b> day passes do cover Switzerland, at about <b>10 to 12 dollars a day</b>, and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data abroad before slowing to <b>256kbps</b>. The genuinely close call is between a <b>Nomad eSIM</b> at a few dollars per gigabyte and <b>Swisscom</b> prepaid, which sells <b>unlimited data at about 2 francs a day</b> on the country's best network once you have bought the starter pack. For a heavy-data week the Swiss SIM can win. For light use, or for not visiting a counter, the eSIM does. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "The trap: Switzerland is not in the EU roaming zone",
+          icon: "alert",
+          key: { fig: "Not in the EU", tag: "Check the plan", text: "Switzerland is outside the EU and the EEA, so Roam Like At Home does not apply and many regional Europe plans exclude it. Read the country list, not the plan name.", tone: "amber" },
+          p: [
+            "Switzerland is in <b>Schengen</b>, which is why nobody checks your passport at the border, and it is <b>not in the EU or the EEA</b>, which is why your phone notices the border even when you do not. EU roaming rules do not extend here. For a US traveler the practical consequence is not about EU carriers, it is about what you buy: a <b>regional Europe eSIM</b> or a carrier <b>Europe add-on</b> may cover 30-odd countries and still exclude Switzerland, and the plan name will not tell you.",
+            "So the single most useful thing on this page is a check rather than a purchase: before you buy anything for an Alps trip, <b>open the covered-country list and look for Switzerland by name</b>. Plenty of plans do include it, often as a Europe-plus tier for slightly more. A traveler who buys a Europe plan for a week in Zermatt and discovers the gap on arrival has been failed by whoever sold it, and we would rather that not be us. The <b>AT&amp;T and Verizon</b> day passes do include Switzerland."
+          ]
+        },
+        {
+          h: "The math is genuinely close here",
+          icon: "roamfee",
+          key: { fig: "~2 francs", tag: "Swisscom daily", text: "Swisscom prepaid sells unlimited data at roughly 2 francs a day on the best network in the country, after a starter pack of about 20 to 40 francs.", tone: "teal" },
+          p: [
+            "Most countries on this site have a clear answer. Switzerland does not. <b>Swisscom</b> prepaid sells <b>unlimited data for about 2 francs a day</b>, on the strongest network in Europe, which on a data-heavy week is hard to beat once the <b>starter pack</b>, roughly <b>20 to 40 francs</b>, is paid for. Against that, a <b>Nomad eSIM</b> is a few dollars per gigabyte with nothing to collect, no passport at a counter and no starter pack. If you are streaming and tethering for ten days, run the Swiss numbers. If you want maps, messaging and a few photos uploaded, the eSIM is cheaper and simpler.",
+            "Two practical notes. Swiss shops sell <b>physical SIMs</b>, so if your phone has no SIM tray a local plan means a local eSIM ordered online rather than a counter purchase, and staff cannot help with that. And Swiss prepaid data is <b>valid in Switzerland only</b>: it does not roam into the EU on the terms an EU SIM would, so it is the wrong buy if Switzerland is one stop on a longer European trip. In that case a regional plan that explicitly names Switzerland is the clean answer."
+          ]
+        },
+        {
+          h: "Coverage you can genuinely forget about",
+          icon: "phoneok",
+          key: { fig: "Even in tunnels", tag: "Best in Europe", text: "Strong in cities, up the mountains, on the trains and through the long rail tunnels. There is no gap worth planning your trip around.", tone: "teal" },
+          p: [
+            "This section is short because Switzerland has solved it. Coverage is strong in the cities, across the valleys, up most of the <b>cable cars and mountain railways</b>, along the passes and through the long <b>rail tunnels</b> that break the signal in neighboring countries. The scenic trains, the Glacier Express and the Bernina among them, generally hold a connection. High off-piste terrain and the deepest side valleys can thin out, and that is a hiking detail rather than a trip-planning problem.",
+            "So the decision here really is only about price and about the country list, which is unusual and worth saying plainly rather than manufacturing a warning. <b>Download offline maps</b> for a serious mountain day anyway, on the general principle that a phone in the Alps has other ways to fail. This guide is written for US travelers departing the US. For more, see <a href='/switzerland/cash-or-card'>cash or card in Switzerland</a> and the <a href='/switzerland'>Switzerland money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does my Europe data plan cover Switzerland?", a: "Often not, and you have to check by name. Switzerland is outside the EU and the EEA, so EU roaming rules do not apply and many regional Europe eSIM plans and carrier Europe add-ons exclude it. Open the covered-country list before you buy. The AT&T and Verizon day passes do cover Switzerland." },
+        { q: "Is an eSIM or a Swiss SIM cheaper in Switzerland?", a: "It is genuinely close. Swisscom prepaid sells unlimited data for about 2 francs a day after a starter pack of roughly 20 to 40 francs, which wins on a heavy-data week. A travel eSIM at a few dollars per gigabyte wins for lighter use and needs no counter visit. Swiss prepaid data is valid in Switzerland only, so it is the wrong choice if the trip continues into the EU." },
+        { q: "How much does it cost to use my US phone in Switzerland?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps. Never roam with no plan, since pay-per-use runs about 2 dollars a megabyte." },
+        { q: "Will I have signal on Swiss trains and in the mountains?", a: "Generally yes, including through the long rail tunnels and on the scenic routes, and up most cable cars and mountain railways. Swiss coverage is the strongest in Europe. High off-piste terrain and the deepest side valleys can thin out, so download offline maps for a serious mountain day." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass, the daily rate and the covered-destination list", url: "https://www.att.com/international/day-pass/", type: "card" },
+          { label: "Swisscom: prepaid plans and daily unlimited data pricing", url: "https://www.swisscom.ch/", type: "official" },
+          { label: "European Commission: how the EU roaming rules work and which countries they cover", url: "https://europa.eu/youreurope/citizens/consumers/telecoms-internet/mobile-roaming-costs/index_en.htm", type: "official" }
+        ],
+        judgment: "Checked Aug 2026. The load-bearing fact here is the one that costs us a sale: many of the Europe plans a reader would otherwise buy exclude Switzerland, so the useful advice is to check a country list rather than to click a link. That is verified against the roaming rules themselves, since Switzerland is neither an EU nor an EEA member and Schengen membership has nothing to do with telecoms. Swisscom's daily unlimited price is a current read in francs and the starter-pack cost varies by retailer, so treat the comparison as close rather than settled and run your own numbers if you expect heavy use. Carrier day-pass figures are an Aug 2026 snapshot."
+      }
     }
   ]
 };

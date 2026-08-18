@@ -426,6 +426,71 @@ export default {
         ],
         judgment: "The two local apps (LEFA and Yango) and the absence of Uber and Bolt are confirmed against the apps' own sites and recent traveler reports, though coverage and the towns served change over time, so confirm before you rely on an app. The self-drive emphasis and the shared-taxi caution are our practical read. Checked July 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Towns and main roads only" },
+        { k: "Signal gaps", v: "Most of the country, plan offline" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Best network", v: "MTC, and it is not close" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "high",
+      title: "Namibia: no SIM fixes the coverage, so plan offline",
+      description: "MTC covers the towns and the main roads. Beyond them there is often no signal at any price, on any network. Buy data cheaply, then prepare properly to be offline.",
+      h1: "Staying connected in Namibia.",
+      lede: "Namibia is the country on this site where buying the right data plan changes the least. Coverage follows the towns and the tarred roads, and once you leave them there is frequently no signal at all, on any network, at any price. The planning that matters here is offline planning.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "<b>MTC</b> covers the towns, the B-roads and the main tourist stops, and beyond those <b>coverage simply stops</b>: much of the <b>Namib</b>, the <b>Kaokoveld</b>, the <b>Skeleton Coast</b>, the Fish River area and most of the gravel <b>D-roads</b> have no usable signal on any network. No eSIM and no local SIM changes that, because the problem is <b>towers rather than tariffs</b>, so the honest plan is to buy data cheaply for the connected half of the trip and <b>prepare properly for the rest</b>. A <b>local MTC prepaid SIM</b> is a few dollars, though registration now requires <b>ID, an address and biometrics</b>, so a <b>Nomad eSIM</b> set up before you fly is the simpler route for a two-week trip. Your US carrier's day pass runs about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data. Before you drive: <b>download offline maps</b>, carry the route on paper, and tell somebody your plan for the day. On the remote D-roads a <b>satellite messenger</b> is the only thing that actually works, and it is worth the rental.",
+      sections: [
+        {
+          h: "The gap is geography, and no purchase closes it",
+          icon: "alert",
+          key: { fig: "No signal", tag: "Most of the map", text: "Much of the Namib, the Kaokoveld, the Skeleton Coast and most gravel D-roads have no usable signal on any network. This is not a plan you can buy your way out of.", tone: "amber" },
+          p: [
+            "Namibia is larger than Texas with roughly the population of Houston, and the network follows the people. In <b>Windhoek, Swakopmund, Walvis Bay</b> and the bigger towns you will have solid 4G. Along the tarred <b>B-roads</b> and at the main lodges and park gates you will usually have something. Away from those, across the <b>Namib</b>, the <b>Kaokoveld</b> and <b>Damaraland</b>, along the <b>Skeleton Coast</b> and on most of the gravel <b>D-roads</b>, expect nothing for hours at a time, and expect it to be nothing on every network.",
+            "We sell eSIMs, and the honest thing to say on this page is that an eSIM does not solve Namibia. It solves the price of data where data exists, which is a smaller and more specific claim. Anyone telling you a particular plan keeps you connected across the north or the desert is selling you geography they do not control."
+          ]
+        },
+        {
+          h: "Buy data anyway, and buy it cheaply",
+          icon: "tag",
+          key: { fig: "A few $", tag: "MTC prepaid", text: "MTC prepaid data is cheap and has by far the widest reach. Registration now wants ID, an address and biometrics, which is the friction a travel eSIM avoids.", tone: "teal" },
+          p: [
+            "For the connected part of the trip, <b>MTC</b> is the network to be on and the gap between it and the alternatives is not subtle. A local prepaid SIM with a data bundle is a <b>few dollars</b>, sold at the airport, in Windhoek and in supermarkets. The catch is registration: Namibia now requires <b>identification, an address and biometric capture</b> to activate a SIM, which is a counter visit rather than a purchase, and reports of how smoothly it goes for visitors vary.",
+            "That friction is the honest case for a <b>Nomad eSIM</b> here: a few dollars per gigabyte, set up at home, working when you land, no counter and no biometrics. On a two-week trip where you will be out of coverage half the time anyway, paying slightly more per gigabyte to skip the registration is a reasonable trade, and it is a convenience argument rather than a price one. Whichever you choose, do not roam with <b>no plan</b>: pay-per-use runs about <b>2 dollars a megabyte</b>."
+          ]
+        },
+        {
+          h: "What to do instead, and here it genuinely matters",
+          icon: "wheel",
+          key: { fig: "Offline maps", tag: "Before you drive", text: "Download the whole route, carry it on paper, tell somebody your plan for the day, and rent a satellite messenger for the remote roads.", tone: "amber" },
+          p: [
+            "Treat this as trip preparation rather than a phone setting. <b>Download offline maps</b> for the entire route before you leave a town with signal, not for the next leg only. Save your lodge bookings, gate times, directions and phone numbers so they open <b>offline</b>, because a booking confirmation living in a webmail inbox is useless on the D3707. Carry the route and the key numbers <b>on paper</b> as well, since a flat phone is a common failure and a printed page is not. Tell your lodge or somebody at home <b>which road you are taking and when you expect to arrive</b>.",
+            "For the remote stretches, the Kaokoveld, the far northwest, long gravel days between fuel stops, a <b>satellite messenger</b> or a personal locator beacon is the only device that works where there is no tower, and the rental cost is small against a breakdown in genuine emptiness. Fuel, water and a second spare belong in the same category of planning. This guide is written for US travelers departing the US. For more, see <a href='/namibia/cash-or-card'>cash or card in Namibia</a>, <a href='/namibia/taxis-and-apps'>taxis and apps in Namibia</a>, and the <a href='/namibia'>Namibia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Will my phone work in Namibia?", a: "In Windhoek, Swakopmund, Walvis Bay and the larger towns, yes, on solid 4G. Along the tarred B-roads and at the main lodges, usually. Across the Namib, the Kaokoveld, the Skeleton Coast and most gravel D-roads, frequently not at all, on any network. Plan your driving days on the assumption of no signal." },
+        { q: "Is an eSIM enough for Namibia?", a: "It is enough for the parts of the country that have coverage, which is a smaller claim than it sounds. An eSIM sets the price you pay for data where data exists. It cannot create signal in the desert or the northwest, so it is not a substitute for offline maps, paper backups and telling somebody your route." },
+        { q: "Which network has the best coverage in Namibia?", a: "MTC, by a clear margin. If you buy a local SIM, buy MTC. Note that Namibia now requires identification, an address and biometric capture to register a SIM, which is a counter visit rather than a quick purchase." },
+        { q: "Do I need a satellite messenger in Namibia?", a: "For the remote gravel roads, the Kaokoveld and long stretches between fuel stops, it is the only communication that works where there are no towers, and the rental cost is small against the risk. For a trip limited to Windhoek, Swakopmund, Sossusvlei and Etosha on tarred roads, it is optional." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass, the daily rate and the covered-destination list", url: "https://www.att.com/international/day-pass/", type: "card" },
+          { label: "MTC Namibia: prepaid data bundles and SIM registration requirements", url: "https://www.mtc.com.na/", type: "official" },
+          { label: "US State Department: Namibia country information, road and safety conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Namibia.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. This spoke is deliberately the least commercial one in the set, because Namibia is the clearest case where the product we earn on does not fix the problem the reader has. The coverage picture is the True Trip Costs desk's read from operator coverage maps and consistent traveler accounts rather than a single official table, and the honest summary is that reach follows the tarred roads and the towns. The biometric SIM registration requirement is current as of this check and the visitor experience of it is reported unevenly, so treat it as a reason to arrive with a plan rather than a fixed procedure. Carrier day-pass figures are an Aug 2026 snapshot."
+      }
     }
   ]
 };
