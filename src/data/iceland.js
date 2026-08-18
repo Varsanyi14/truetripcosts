@@ -428,6 +428,72 @@ export default {
         ],
         judgment: "That taxis are booked rather than hailed, and that the airport coach beats a cab on price, are well established. We have avoided quoting fares because Icelandic prices move and a metered ride depends on traffic and time of day. Checked July 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Good on the Ring Road and coast" },
+        { k: "Signal gaps", v: "The Highlands and the F-roads" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A local SIM, and it is cheap" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "Iceland: coverage is a safety question, not a price one",
+      description: "The Ring Road and the coast are well covered. The Highlands and F-roads are not, on any network, and in Iceland that is a weather and safety matter rather than a billing one.",
+      h1: "Staying connected in Iceland.",
+      lede: "Iceland is the country where we would rather talk about coverage than price. Data here is cheap and the Ring Road is well covered. It is the interior, in weather that changes inside an hour, where a phone stops working and the consequences are not about money.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>good along the Ring Road and the populated coast</b>, including the small towns, and it <b>stops in the Highlands</b>: the interior, the <b>F-roads</b>, most of Landmannalaugar and Thorsmork away from the huts, and long stretches of the Westfjords and the eastern interior have no usable signal on any network. A <b>local SIM</b> from <b>Siminn</b>, <b>Nova</b> or <b>Vodafone Iceland</b> is cheap and sold at Keflavik and in supermarkets, and a <b>Nomad eSIM</b> at a few dollars per gigabyte is the simpler route. Your US carrier's day pass is about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that. What matters more than any of that: install <b>112 Iceland</b> before you drive, read <b>safetravel.is</b> and <b>road.is</b> each morning, <b>download offline maps</b> for the whole route, and treat an interior day as offline. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "The Ring Road is fine, the interior is not",
+          icon: "alert",
+          key: { fig: "The Highlands", tag: "No signal at all", text: "Route 1 and the coastal towns are well covered. The interior, the F-roads and most of the trekking country have nothing, on any network.", tone: "amber" },
+          p: [
+            "Iceland's network follows Route 1 and the coast where the people are, and it does that job well: <b>Reykjavik</b> and the whole south coast are strong, the small towns around the Ring Road are covered, and even the tunnels and the Snaefellsnes loop generally hold. Then it stops. The <b>Highlands</b> are effectively unserved: the <b>F-roads</b>, Landmannalaugar and Thorsmork away from the huts, the Kjolur and Sprengisandur crossings, the interior of the <b>Westfjords</b> and the eastern uplands.",
+            "That is not a tariff problem and no plan solves it, which is worth saying plainly on a page carrying an eSIM link. It matters more here than the same gap would matter in, say, rural France, because Icelandic weather turns fast, a river crossing can rise in an afternoon and the distance to the next vehicle can be long."
+          ]
+        },
+        {
+          h: "The things that actually keep you safe",
+          icon: "wheel",
+          key: { fig: "112 Iceland", tag: "Install it first", text: "The 112 Iceland app can send your location to emergency services and log your position for a route. Check road.is and safetravel.is every morning.", tone: "amber" },
+          p: [
+            "Before you drive anywhere: install <b>112 Iceland</b>, which can send your <b>location</b> to emergency services with one press and log your position so a search has a starting point, and note that a phone with no signal can still sometimes reach an emergency number on another network. Check <b>road.is</b> for closures and conditions and <b>safetravel.is</b> for warnings every morning, because both change daily and a closed F-road is closed for a reason. Leave a <b>travel plan</b> on safetravel.is for an interior trip.",
+            "Then the offline habits: <b>download offline maps</b> for the entire route rather than the next leg, save your accommodation and any tour bookings so they open without a connection, and keep the numbers on paper. A <b>car charger</b> matters more here than most places, since navigation and weather checks in the cold drain a battery fast. None of this costs anything and all of it is worth more than the data plan."
+          ]
+        },
+        {
+          h: "The price side, briefly",
+          icon: "roamfee",
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "Icelandic prepaid is cheap and sold at Keflavik. AT&T caps its Day Pass at 10 daily fees a bill period; Verizon does not cap.", tone: "teal" },
+          p: [
+            "Iceland is expensive at almost everything and mobile data is the exception. A <b>Siminn</b>, <b>Nova</b> or <b>Vodafone Iceland</b> prepaid SIM with a generous data bundle costs little, is sold at <b>Keflavik</b> arrivals and in supermarkets and petrol stations, and needs no registration hassle. Siminn generally has the widest rural reach. A <b>Nomad eSIM</b> at a few dollars per gigabyte works from landing and avoids the queue after a red-eye, which is when most US flights arrive.",
+            "Roaming is the expensive default at <b>10 to 12 dollars a day</b> on <b>AT&amp;T or Verizon</b>, though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that, so check yours before buying: on a five-day Ring Road trip a T-Mobile allowance may cover it. This guide is written for US travelers departing the US. For more, see <a href='/iceland/cash-or-card'>cash or card in Iceland</a>, <a href='/iceland/taxis-and-apps'>taxis and apps in Iceland</a>, and the <a href='/iceland'>Iceland money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Will my phone work in the Icelandic Highlands?", a: "Generally no. The interior, the F-roads, the Kjolur and Sprengisandur crossings and most of the trekking country have no usable signal on any network, and no data plan changes that. The Ring Road and the coastal towns are well covered." },
+        { q: "What should I install before driving in Iceland?", a: "The 112 Iceland app, which can send your location to emergency services and log your position for a route. Then download offline maps for the whole route, and check road.is for closures and safetravel.is for warnings every morning, since both change daily." },
+        { q: "Is a SIM card cheap in Iceland?", a: "Yes, unusually so for Iceland. A Siminn, Nova or Vodafone Iceland prepaid SIM with a generous data bundle costs little and is sold at Keflavik arrivals, in supermarkets and at petrol stations, with no registration hassle. Siminn generally has the widest rural reach." },
+        { q: "How much does it cost to use my US phone in Iceland?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad, which may cover a short Ring Road trip outright." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "SafeTravel Iceland: official travel conditions, warnings and travel plan registration", url: "https://safetravel.is/", type: "official" },
+          { label: "Road and Coastal Administration: Icelandic road conditions and F-road closures", url: "https://www.road.is/", type: "gov" },
+          { label: "US State Department: Iceland country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Iceland.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. This spoke deliberately spends most of its space on things that cost nothing, because in Iceland the connectivity question is a safety question and the product we earn on does not answer it. Data is genuinely cheap here, which is the one thing in Iceland that is, so the price section is short on purpose. The Highlands coverage picture is the desk's read from operator coverage maps and consistent traveler and rescue-service accounts rather than a single official table, and the official sources for conditions are road.is and safetravel.is, which supersede anything on this page on the day you travel."
+      }
     }
   ]
 };

@@ -438,6 +438,71 @@ export default {
         ],
         judgment: "Taiwan's titer requirement, import permit, quarantine waiver, and breed ban are set by APHIA and administered on the US side by APHIS, not by us. The permit was revised in January 2026 and the titer windows are precise, so we point you to the official pages and dated this July 2026. Costs vary with your pet's size and route, so treat the figures as a starting point and confirm the current APHIA requirements, the titer timing, and the waiver criteria before you begin."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Excellent, the high-speed rail too" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Airport SIM", v: "Unlimited, about $10 for 5 days" },
+        { k: "Cheapest", v: "Close: heavy use favours the SIM" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Taiwan SIM card vs eSIM: unlimited for about $10",
+      description: "Taiwan's airport counters sell unlimited-data tourist SIMs for around 10 dollars for five days. Against an eSIM it is genuinely close, and heavy use favours the SIM.",
+      h1: "Staying connected in Taiwan.",
+      lede: "Taiwan sells something most countries do not: genuinely unlimited data, over the counter at the airport, for about the price of two bowls of beef noodle soup. That makes this the rare page where the honest answer depends on how much data you use.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>excellent</b>: fast 4G and widespread 5G across the island, working signal on the <b>high-speed rail</b>, in the Taipei metro and around most of the coast, thinning only in the <b>high mountains</b> and the Taroko back country. The airport counters at <b>Taoyuan</b> sell <b>unlimited-data tourist SIMs</b> from <b>Chunghwa Telecom</b>, <b>Taiwan Mobile</b> and <b>Far EasTone</b>, roughly <b>10 dollars for 5 days</b> or <b>16 dollars for 10</b>, with your <b>passport and a second ID</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and needs no counter. So this is genuinely close: if you tether, stream or work, the <b>unlimited SIM wins</b>; for maps, messaging and photos, the <b>eSIM is usually cheaper</b> and simpler. <b>Chunghwa</b> has the best reach if you are leaving the cities. Your US carrier's day pass is about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "Unlimited over the counter, and what it costs",
+          icon: "twd",
+          key: { fig: "~$10", tag: "Unlimited, 5 days", text: "Taoyuan's arrival counters sell unlimited-data tourist SIMs by the day. Passport plus a second ID, and the price is per period rather than per gigabyte.", tone: "teal" },
+          p: [
+            "All three networks run counters in the <b>Taoyuan arrivals hall</b> and sell the same shape of product: an <b>unlimited-data</b> tourist SIM priced by duration rather than allowance, roughly <b>10 dollars for 5 days</b>, <b>16 dollars for 10</b>, with longer options up to a month. Bring your <b>passport and a second piece of ID</b>, which is a Taiwanese requirement that catches people out, and note that the city stores are often priced worse than the airport rather than better.",
+            "Unlimited here mostly means unlimited, though some plans apply a daily full-speed threshold before easing off, so if you intend to tether a laptop all week it is worth reading the specific plan on the board. <b>Chunghwa Telecom</b> is the strongest network overall, especially outside the cities and in the mountains, and is the one to pick if your trip leaves Taipei."
+          ]
+        },
+        {
+          h: "The honest comparison, which depends on you",
+          icon: "roamfee",
+          key: { fig: "It depends", tag: "Genuinely close", text: "Heavy use favours the unlimited local SIM. Light use favours a travel eSIM, which is cheaper for a few gigabytes and needs no counter.", tone: "teal" },
+          p: [
+            "We earn a commission on eSIMs, so here is the comparison without a thumb on it. If you are a <b>heavy user</b>, tethering a laptop, streaming on the train, uploading video, the <b>unlimited local SIM</b> is the better buy and nothing else comes close, because you are paying by the day rather than the gigabyte. If you are a <b>normal traveler</b> using maps, messaging, a translation app and photo uploads, a few gigabytes covers a week and a <b>Nomad eSIM</b> at a few dollars per gigabyte usually comes in cheaper, with the added benefits of working from landing and skipping the queue after a long flight.",
+            "The tiebreakers are practical rather than financial. The eSIM wins if you land late, if the queue is long, if you want to keep your US number active on the physical SIM, or if your phone has no SIM tray. The local SIM wins if you want a Taiwanese number, if you are staying a month, or if you would simply rather not think about a data allowance at all. Both are far cheaper than roaming."
+          ]
+        },
+        {
+          h: "Coverage you can forget, and the wifi note",
+          icon: "phoneok",
+          key: { fig: "Even on the HSR", tag: "Coverage", text: "Fast 4G and widespread 5G across the island, including the high-speed rail and the Taipei metro. Only the high mountains thin out.", tone: "teal" },
+          p: [
+            "There is little to warn you about. Taiwan is densely covered: strong signal in <b>Taipei, Taichung, Tainan and Kaohsiung</b>, on the <b>high-speed rail</b> at full speed, in the metro, around the coastal ring and in the smaller towns. Where it thins is the <b>high mountains</b>: the Central Range, the Taroko back country, the trail to Jade Mountain, and some of the mountain roads and tunnels between the east and west coasts.",
+            "Free <b>wifi</b> is also widespread, in metro stations, convenience stores, cafes and the public iTaiwan network, which is a decent backstop but not a plan for navigating an unfamiliar city on foot. For a mountain hike, <b>download offline maps</b> and note that permits and weather matter more up there than signal does. This guide is written for US travelers departing the US. For more, see <a href='/taiwan/cash-or-card'>cash or card in Taiwan</a>, <a href='/taiwan/taxis-and-apps'>taxis and apps in Taiwan</a>, and the <a href='/taiwan'>Taiwan money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is an eSIM or a local SIM better in Taiwan?", a: "It depends on how much data you use, and the answer is genuinely close. The airport unlimited SIM, about 10 dollars for five days, wins for heavy use, tethering or streaming, because you pay by the day rather than the gigabyte. A travel eSIM at a few dollars per gigabyte is usually cheaper for maps, messaging and photos, and it works from landing with no counter visit." },
+        { q: "How much is a tourist SIM at Taoyuan airport?", a: "Roughly 10 dollars for five days of unlimited data, or about 16 dollars for ten, from Chunghwa Telecom, Taiwan Mobile or Far EasTone. Bring your passport and a second piece of ID, which Taiwan requires. City stores are often priced worse than the airport." },
+        { q: "Which network is best in Taiwan?", a: "Chunghwa Telecom, particularly outside the cities and in the mountains. Taiwan Mobile and Far EasTone are fine for a trip focused on Taipei and the west-coast cities. All three sell the same style of unlimited tourist plan at the airport." },
+        { q: "How much does it cost to use my US phone in Taiwan?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week, which is more than an unlimited local SIM costs for the same period. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "Chunghwa Telecom: prepaid tourist SIM plans and airport service counters", url: "https://www.cht.com.tw/", type: "official" },
+          { label: "US State Department: Taiwan country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Taiwan.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. This is one of the few pages where we do not give a single answer, because the honest one turns on usage: unlimited-by-the-day pricing beats per-gigabyte pricing for heavy users and loses to it for light ones, and pretending otherwise would just be choosing whichever conclusion suited us. Tourist SIM prices are quoted in New Taiwan dollars and converted at recent rates, so treat the dollar figures as approximate and the airport board as authoritative on the day. The second-ID requirement is a Taiwanese rule that surprises people and is worth arriving prepared for."
+      }
     }
   ]
 };

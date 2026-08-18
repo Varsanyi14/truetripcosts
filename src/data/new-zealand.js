@@ -551,6 +551,72 @@ export default {
         ],
         judgment: "The steps, the quarantine, and the import standard are set by New Zealand's MPI and administered on the US side by APHIS, not by us. The rules are strict and, in 2026, mid-transition between an old and a new standard, so we point you to the official pages and dated this July 2026. Costs vary with your pet's size, your route, and quarantine fees, so treat the figures as a starting point and confirm the current MPI requirements, including which standard applies to you, before you begin."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Good in towns and on main routes" },
+        { k: "Signal gaps", v: "Fiordland, the Alps, DOC tracks" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Worth knowing", v: "T-Mobile satellite covers NZ" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "New Zealand: the gaps are the back country, not the price",
+      description: "Towns and main highways are covered. Fiordland, the Southern Alps and most DOC tracks are not. T-Mobile's satellite service is one of the few things that reaches them.",
+      h1: "Staying connected in New Zealand.",
+      lede: "New Zealand covers its towns and highways well and its back country hardly at all, which is awkward given that the back country is why most people come. The interesting wrinkle is that satellite messaging has quietly started to fill the gap, and New Zealand is one of the two countries where T-Mobile includes it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>good in the cities, the towns and along the main highways</b>, and genuinely absent across a lot of what visitors come for: <b>Fiordland</b>, the <b>Southern Alps</b>, most <b>DOC tracks</b> including long stretches of the Great Walks, the remote West Coast, and parts of <b>State Highway 6</b> and the road to Milford. A local <b>traveller pack</b> from <b>One NZ</b>, <b>Spark</b> or <b>2degrees</b> is roughly <b>18 to 30 dollars</b> for a month with calls and data, and <b>Spark</b> and <b>One NZ</b> have the widest rural reach. A <b>Nomad eSIM</b> is a few dollars per gigabyte. Your US carrier's day pass is about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. Worth knowing before you choose: <b>T-Mobile lists its T-Satellite off-grid coverage in Canada and New Zealand specifically</b>, which is unusual and genuinely useful in a country this empty. Whatever you carry, <b>download offline maps</b>, and for a serious tramp take a <b>personal locator beacon</b>, which is what DOC and the rescue services actually expect. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "The gaps are where you are going",
+          icon: "alert",
+          key: { fig: "Fiordland", tag: "No signal at all", text: "Towns and highways are fine. Fiordland, the Alps, most DOC tracks and stretches of the West Coast have nothing, on any network.", tone: "amber" },
+          p: [
+            "<b>Auckland, Wellington, Christchurch, Queenstown</b> and the towns are well covered with 4G and urban 5G, and the main highways are mostly fine. The trouble is that a New Zealand itinerary is largely made of the other thing. <b>Fiordland</b> is effectively unserved outside Te Anau and the Milford terminus, the <b>Southern Alps</b> and their passes drop out, most <b>DOC tracks</b> including much of the Routeburn, Kepler, Milford and Abel Tasman have no coverage between huts, the remote <b>West Coast</b> is patchy, and the drive into Milford loses signal for long stretches.",
+            "That is geography, and no plan buys past it. Which matters more here than in most countries because New Zealand's hazards are weather and terrain in places where nobody is coming past: an alpine crossing that turns, a river up after rain, a sprained ankle four hours from a road."
+          ]
+        },
+        {
+          h: "What actually reaches the back country",
+          icon: "phoneok",
+          key: { fig: "A beacon", tag: "For a serious tramp", text: "A personal locator beacon is what DOC and the rescue services expect, and it works where no network does. Satellite messaging on a phone is a newer partial answer.", tone: "amber" },
+          p: [
+            "For any serious tramp, the answer is a <b>personal locator beacon</b>. They rent cheaply from DOC visitor centres, outdoor shops and airports across the country, they work with no network at all, and they are what the rescue services expect you to be carrying. Leave your intentions with somebody and use the <b>DOC hut and track alerts</b> before you go, since a track closure or a flooded crossing is the sort of thing that changes on the day.",
+            "The newer partial answer is <b>satellite messaging from the phone itself</b>, and this is the one place where which US carrier you are on genuinely changes your options: <b>T-Mobile lists New Zealand as one of two countries, with Canada, where its T-Satellite off-grid coverage applies</b>. That is basic messaging rather than data and it is not a substitute for a beacon in an emergency, and it is a real difference from having nothing. Recent iPhones and Pixels also have their own satellite SOS features, which vary by model and region. None of this comes from an eSIM, which is worth saying on a page that sells one."
+          ]
+        },
+        {
+          h: "The price side, and which network to want",
+          icon: "nzd",
+          key: { fig: "$18 to $30", tag: "Traveller pack", text: "One NZ, Spark and 2degrees sell month-long traveller packs. Spark and One NZ have the widest rural reach, which matters more than the price.", tone: "teal" },
+          p: [
+            "A local <b>traveller pack</b> is about <b>18 to 30 dollars</b> for a month with data and calls, sold at the airports and in supermarkets, and no registration hassle. As in most thinly populated countries, <b>buy the network rather than the price</b>: <b>Spark</b> and <b>One NZ</b> reach furthest into the rural areas and along the highways, and <b>2degrees</b> is cheaper and thinner outside the centres. A <b>Nomad eSIM</b> at a few dollars per gigabyte is simpler for a shorter trip and rides the same networks, so it buys convenience rather than reach.",
+            "Roaming is about <b>10 to 12 dollars a day</b> on <b>AT&amp;T or Verizon</b>, though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily, which matters on the three-week trips New Zealand tends to produce. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that, and given the satellite point above, a T-Mobile customer should look at their own plan before buying anything here. This guide is written for US travelers departing the US. For more, see <a href='/new-zealand/cash-or-card'>cash or card in New Zealand</a>, <a href='/new-zealand/taxis-and-apps'>taxis and apps in New Zealand</a>, and the <a href='/new-zealand'>New Zealand money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Will I have phone signal on the Great Walks?", a: "Mostly not. Most DOC tracks, including much of the Routeburn, Kepler, Milford and Abel Tasman, have no coverage between huts, and Fiordland and the Southern Alps are largely unserved. No data plan changes that. For a serious tramp, rent a personal locator beacon, which is what DOC and the rescue services expect." },
+        { q: "Which New Zealand network has the best coverage?", a: "Spark and One NZ reach furthest into rural areas and along the highways, with 2degrees cheaper and thinner outside the centres. In a country this empty, buy the network rather than the cheapest pack." },
+        { q: "Does satellite messaging work in New Zealand?", a: "Partly, and it is worth checking before you buy anything. T-Mobile lists New Zealand as one of two countries, with Canada, where its T-Satellite off-grid coverage applies, which is basic messaging rather than data. Recent iPhones and Pixels also have satellite SOS features that vary by model and region. Neither replaces a personal locator beacon in an emergency." },
+        { q: "How much does it cost to use my US phone in New Zealand?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. That matters on the long trips New Zealand tends to produce. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad and its satellite service covers New Zealand." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "T-Mobile: international roaming and T-Satellite off-grid coverage, listing New Zealand", url: "https://www.t-mobile.com/cell-phone-plans/international-roaming-plans", type: "card" },
+          { label: "Department of Conservation: hut and track alerts, and locator beacon hire", url: "https://www.doc.govt.nz/", type: "gov" },
+          { label: "US State Department: New Zealand country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/NewZealand.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. The satellite point is the most useful thing on this page and the most likely to date, so treat it as an Aug 2026 read: T-Mobile's own international pages name Canada and New Zealand for T-Satellite off-grid coverage, and handset satellite SOS features vary by model and region and change with software releases. It is messaging, not data, and it is not a substitute for a personal locator beacon, which is what DOC and the rescue services expect and what this page recommends. The coverage gaps are the desk's read from operator maps and consistent tramper accounts."
+      }
     }
   ]
 };

@@ -445,6 +445,72 @@ export default {
         ],
         judgment: "The card swap method, the confusion tactics and the instruction to refuse help from anyone including ATM security personnel and apparent bank officials come from SABRIC, the South African Banking Risk Information Centre. The parallel police guidance, the point that ATM security staff are not authorised to assist with transactions, the warning never to let anyone else call your bank for you and the recommendation to set a daily ATM withdrawal limit come from a South African Police Service statement carried by the government news service. The follow-home from OR Tambo and the kidnapping context come from the current US State Department advisory, which sits at Level 2 with crime, terrorism, unrest and kidnapping indicators. We have attached no figure to the card swap because the loss depends entirely on your daily limit, which is exactly why setting it low in advance is the advice. Rand conversions use roughly 16.4 to the dollar. Checked August 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Good in cities and on the N-routes" },
+        { k: "SIM registration", v: "RICA: passport and an address" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "An MTN bundle, if you do RICA" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "South Africa SIM card: RICA, and the bundle gap",
+      description: "MTN bundles are cheap, Vodacom tourist bundles are not, and every SIM needs RICA registration with a passport and an address. Here is which route is worth the paperwork.",
+      h1: "Staying connected in South Africa.",
+      lede: "South Africa has a real price gap hidden in plain sight: an ordinary MTN data bundle and a Vodacom tourist bundle can differ by four times for the same gigabytes. The catch on both is RICA, the registration law, and whether it is worth your first afternoon.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>good in Cape Town, Johannesburg, Durban and along the N1, N2 and N3</b>, and thinner in the <b>Kruger interior</b>, the <b>Karoo</b>, the <b>Drakensberg</b> and along the Wild Coast. On price there is a real gap: an ordinary <b>MTN</b> prepaid data bundle can be around <b>5 dollars for 10GB</b>, while <b>Vodacom</b>'s tourist bundles run nearer <b>20 dollars for 3GB</b>, so which counter you walk up to matters more than which network. Every SIM needs <b>RICA</b> registration: your <b>passport</b> plus a <b>local address</b>, where airport counters will normally accept your accommodation booking, and activation can take up to <b>24 hours</b>. A <b>Nomad eSIM</b> at a few dollars per gigabyte skips RICA entirely, which is the honest case for it here. Your US carrier's day pass is about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. <b>Vodacom</b> and <b>MTN</b> have the widest reach; for game reserves and the Drakensberg, <b>download offline maps</b>. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "The bundle gap is the real money story",
+          icon: "zar",
+          key: { fig: "4x apart", tag: "Bundle vs tourist pack", text: "An ordinary MTN bundle can be about $5 for 10GB where a Vodacom tourist bundle is nearer $20 for 3GB. Ask for the standard bundle, not the tourist one.", tone: "amber" },
+          p: [
+            "This is the part nobody tells visitors. South African carriers sell <b>ordinary prepaid data bundles</b> to their own market at competitive prices, and separately sell <b>tourist bundles</b> at prices set for people who will not comparison shop. The spread is large: an <b>MTN</b> promotional bundle can be around <b>5 dollars for 10GB</b>, while a <b>Vodacom tourist bundle</b> sits nearer <b>20 dollars for 3GB</b>. Same country, same towers, roughly a four-fold difference per gigabyte.",
+            "So the useful move is to buy a cheap SIM, complete RICA, and then <b>load a standard prepaid data bundle</b> through the carrier's app or USSD menu rather than accepting the tourist pack you are offered at the counter. Ask what the ordinary bundles cost before agreeing to anything. If that sounds like more effort than a holiday deserves, that is a legitimate view, and it is the honest argument for the eSIM."
+          ]
+        },
+        {
+          h: "RICA, and what it actually requires",
+          icon: "passport",
+          key: { fig: "Up to 24h", tag: "RICA activation", text: "Passport plus a local address, with airport counters normally accepting your accommodation booking. Activation can take up to a day.", tone: "amber" },
+          p: [
+            "South Africa's <b>RICA</b> law requires every SIM to be registered before it works: your <b>passport</b>, and a <b>local address</b>, which is the part that trips up visitors since the rule was written for residents with utility bills. In practice the counters at <b>Cape Town and Johannesburg</b> airports and the RICA agents in supermarkets deal with tourists constantly and will normally accept your <b>hotel, B&amp;B or lodge booking</b> as the address. Some agents are stricter than others, so carry the booking confirmation with the address on it.",
+            "Activation is usually minutes at an airport counter and can take up to <b>24 hours</b> elsewhere, which is worth knowing if you land in the evening and want data for the drive out. The alternative is a <b>Nomad eSIM</b>, which needs no RICA, no address and no counter, at a few dollars per gigabyte: more than an MTN bundle, less than a Vodacom tourist pack, and available before you land. That is the trade, stated plainly, and we do earn on the eSIM."
+          ]
+        },
+        {
+          h: "Coverage, and one warning that has expired",
+          icon: "phoneok",
+          key: { fig: "The Kruger", tag: "Where signal thins", text: "Cities and the main N-routes are well covered. Game reserve interiors, the Karoo, the Drakensberg and the Wild Coast are not.", tone: "teal" },
+          p: [
+            "<b>Vodacom</b> and <b>MTN</b> have the widest footprints and are effectively interchangeable for a city-and-Garden-Route trip, with strong 4G and urban 5G. The gaps are where you would guess: the interior of <b>Kruger</b> and the private reserves, much of the <b>Karoo</b> between towns, the <b>Drakensberg</b> passes and hiking areas, the <b>Wild Coast</b>, and stretches of the northern Cape. A lodge will usually have wifi and often nothing else, so <b>download offline maps</b> for self-drive safari and mountain days.",
+            "One correction worth making, because older guidance still repeats it: for years the honest advice here included a warning that <b>load shedding</b> could degrade mobile towers during rolling blackouts. As of this check that no longer applies. South Africa has had <b>no national load shedding since May 2025</b>, a run of well over a year, and Eskom projected none through the 2026 winter. Localised load reduction continues in some residential areas for infrastructure reasons, and it is not the visitor-facing coverage problem it was in 2023. This guide is written for US travelers departing the US. For more, see <a href='/south-africa/cash-or-card'>cash or card in South Africa</a>, <a href='/south-africa/taxis-and-apps'>taxis and apps in South Africa</a>, and the <a href='/south-africa'>South Africa money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What is RICA and do I need it as a tourist?", a: "RICA is South Africa's SIM registration law, and yes, every SIM needs it before it works. You need your passport and a local address, and airport counters will normally accept your accommodation booking, so carry the confirmation. Activation is usually minutes at an airport counter and can take up to 24 hours elsewhere." },
+        { q: "How much should a data bundle cost in South Africa?", a: "Much less than the tourist packs suggest. An ordinary MTN prepaid bundle can be around 5 dollars for 10GB, while a Vodacom tourist bundle sits nearer 20 dollars for 3GB. Buy a cheap SIM, complete RICA, then load a standard bundle through the carrier's app rather than accepting the tourist pack at the counter." },
+        { q: "Does load shedding still affect phone coverage in South Africa?", a: "Not as of this check. South Africa has had no national load shedding since May 2025 and Eskom projected none through the 2026 winter, so the old warning about blackouts degrading towers no longer applies. Localised load reduction continues in some residential areas for infrastructure reasons rather than generation shortfalls." },
+        { q: "How much does it cost to use my US phone in South Africa?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "Vodacom: RICA registration requirements and what documents are accepted", url: "https://www.vodacom.co.za/vodacom/help/rica", type: "official" },
+          { label: "Eskom: system status and the winter outlook behind the load shedding position", url: "https://www.eskom.co.za/", type: "official" },
+          { label: "US State Department: South Africa country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/SouthAfrica.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026, and two things here are deliberate. First, the bundle gap: we are pointing you at the cheaper local route even though we earn nothing on it, because a four-fold difference per gigabyte between an ordinary bundle and a tourist pack is the single most useful fact on this page. Second, the load shedding line is a retirement rather than a warning. We checked it specifically because older travel guidance still repeats it, and the position as of August 2026 is 441 consecutive days without national load shedding since 16 May 2025, with Eskom projecting none through the winter. If that changes it will be widely reported, and this page should be re-checked before it is trusted on the point."
+      }
     }
   ]
 };

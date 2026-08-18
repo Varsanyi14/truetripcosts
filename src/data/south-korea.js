@@ -526,6 +526,71 @@ export default {
         ],
         judgment: "Korea's titer requirement and arrival inspection are set by APQA and administered on the US side by APHIS, not by us. The no-permit, same-day-release path is real but conditional on full compliance, especially the titer, so we point you to the official pages and dated this July 2026. Costs vary with your pet's size and route, so treat the figures as a starting point and confirm the current APQA requirements and titer timing before you begin."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Among the best anywhere" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Local unlimited", v: "About $25 to $40" },
+        { k: "Cheapest", v: "An eSIM, unless you use a lot" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "South Korea eSIM: coverage is a non-issue, so it is cost",
+      description: "Korean coverage is among the best anywhere, subway and KTX included. Local unlimited SIMs run 25 to 40 dollars, so a travel eSIM is usually cheaper for normal use.",
+      h1: "Staying connected in South Korea.",
+      lede: "Korea has close to the best mobile coverage in the world and free wifi almost everywhere, so there is nothing to plan around. This is a pure cost question, and unusually for Asia the local unlimited SIM is the expensive option.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>among the best anywhere</b>: fast 5G across the cities, working signal deep in the <b>Seoul subway</b>, on the <b>KTX</b> at speed, in the tunnels and across most of the countryside and the islands. Free <b>wifi</b> is close to ubiquitous in cafes, stations, subway cars and public spaces. So this is purely cost. A local <b>tourist SIM or eSIM</b> from <b>KT</b>, <b>SK Telecom</b> or <b>LG U+</b> is roughly <b>25 to 40 dollars</b> for unlimited data over 5 to 30 days, bought with your <b>passport</b> at Incheon or online; that is expensive by Asian standards. A <b>Nomad eSIM</b> at a few dollars per gigabyte is usually <b>cheaper for normal use</b>, and the local unlimited plan only wins if you are a heavy user or want a Korean number. Your US carrier's day pass is about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "Coverage you can genuinely ignore",
+          icon: "phoneok",
+          key: { fig: "Even underground", tag: "Coverage", text: "Fast 5G across the cities, signal deep in the Seoul subway and on the KTX at speed. There is no gap worth planning around.", tone: "teal" },
+          p: [
+            "This section is short because Korea has solved it more thoroughly than almost anywhere. You will have fast <b>5G</b> in Seoul, Busan and the other cities, a working connection <b>deep in the subway</b> and in the tunnels, signal on the <b>KTX</b> at full speed, and good coverage across the countryside, up the mountains around Seoraksan and on <b>Jeju</b>. Free <b>wifi</b> is everywhere, including in subway carriages and most cafes.",
+            "The practical consequence is that nobody needs to research networks here the way they would in Indonesia or Namibia. Any option you buy will work. That makes the decision purely financial, which is the situation we would rather be honest in than dress up."
+          ]
+        },
+        {
+          h: "The local unlimited plan is the expensive one",
+          icon: "won",
+          key: { fig: "$25 to $40", tag: "Local unlimited", text: "Korean tourist plans are priced well above the Asian norm. A travel eSIM at a few dollars per gigabyte usually undercuts them for normal use.", tone: "amber" },
+          p: [
+            "Korea inverts the pattern from most of our Asia pages. A <b>KT, SK Telecom or LG U+</b> tourist plan runs about <b>25 to 40 dollars</b> for unlimited data over 5 to 30 days, sold at <b>Incheon</b> arrivals and bookable online for pickup. That is a lot next to the 5 dollars that buys a month in Vietnam, and it reflects a high-cost domestic market rather than a tourist markup.",
+            "Against that, a <b>Nomad eSIM</b> at a few dollars per gigabyte covers a normal week for less, and we should be clear that we earn on that, so here is the check: the local plan wins if you will genuinely use a lot of data, tethering or streaming daily, since unlimited is unlimited, or if you want a <b>Korean number</b>, which is worth more here than in most countries because some domestic apps, delivery services and reservation systems want one. For maps, messaging, translation and photos, the eSIM is the cheaper answer."
+          ]
+        },
+        {
+          h: "Roaming, and what your plan may already cover",
+          icon: "roamfee",
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "AT&T caps its Day Pass at 10 daily fees a bill period; Verizon does not. T-Mobile's mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            "Check your own plan before buying anything, because Korea is a country where a T-Mobile customer may need nothing: <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after, and on a week in Seoul with wifi everywhere, 5GB goes a long way. Verizon's <b>Unlimited Ultimate</b> tier includes international data outright, so a Verizon customer should look too.",
+            "Otherwise <b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b>, so <b>70 to 84 dollars</b> a week, and <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. Do not roam with <b>no plan</b>, since pay-per-use is about <b>2 dollars a megabyte</b>. This guide is written for US travelers departing the US. For more, see <a href='/south-korea/cash-or-card'>cash or card in South Korea</a>, <a href='/south-korea/taxis-and-apps'>taxis and apps in South Korea</a>, and the <a href='/south-korea'>South Korea money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need an eSIM for South Korea?", a: "Coverage is not the issue, so it is purely cost. A travel eSIM at a few dollars per gigabyte is usually cheaper than a Korean tourist plan at 25 to 40 dollars for unlimited data. Check your own US plan first: a T-Mobile mid or upper tier includes 5GB to 30GB abroad, and Verizon's Unlimited Ultimate includes international data outright." },
+        { q: "Why are Korean tourist SIMs expensive?", a: "It reflects a high-cost domestic mobile market rather than a tourist markup. Unlimited plans from KT, SK Telecom and LG U+ run about 25 to 40 dollars for 5 to 30 days, which is well above the Asian norm. They are worth it for heavy users, or if you want a Korean number for domestic apps and reservations." },
+        { q: "Is there free wifi in South Korea?", a: "Yes, close to ubiquitous, including in cafes, stations, public spaces and subway carriages. Combined with coverage that is among the best anywhere, that means a light user can get by on very little data." },
+        { q: "How much does it cost to use my US phone in South Korea?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad, which with Korea's ubiquitous wifi may be all you need." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "KT: prepaid tourist SIM and eSIM plan pages", url: "https://www.kt.com/", type: "official" },
+          { label: "US State Department: South Korea country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/SouthKorea.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. Korea is the Asian country where our usual advice inverts, and saying so matters because a reader arriving from our Vietnam or Cambodia pages would reasonably expect the local SIM to be the cheap option and it is not. The honest first move here is checking your existing US plan, since coverage plus ubiquitous wifi means a modest included allowance goes further in Korea than almost anywhere. Local plan pricing is a current read in won and varies by duration and outlet."
+      }
     }
   ]
 };

@@ -571,7 +571,7 @@ export default {
         { q: "How much is a SIM card in Egypt?", a: "Roughly 6 to 12 dollars for a tourist data pack from Vodafone, Orange, Etisalat or WE, with your passport for registration. Shops in town are usually cheaper than the arrivals-hall kiosks, which are priced for tourists." },
         { q: "Which network is best in Egypt?", a: "Vodafone Egypt generally has the widest reach and is the safe default, with Orange, Etisalat and WE competitive on price. None covers the Western Desert or the Sinai interior reliably." },
         { q: "Will I have signal on a Nile cruise?", a: "In the towns yes, between them often not. The stretches between Luxor and Aswan lose coverage for long periods, and onboard wifi is frequently satellite and slow. Download maps and your booking details before you board." },
-        { q: "How much does it cost to use my US phone in Egypt?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad." }
+        { q: "How much does it cost to use my US phone in Egypt?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad." }
       ],
         sources: {
         links: [

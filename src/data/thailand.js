@@ -530,6 +530,71 @@ export default {
         ],
         judgment: "These are the money traps most consistently reported by travelers and flagged by the US Embassy in 2025 and 2026, not a ranked risk list, and baht amounts vary by place, so treat figures as a recent read. Thailand is safe for the vast majority of visitors; these are well-rehearsed patterns that awareness defuses. Checked July 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Excellent, islands and trains too" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Airport SIM", v: "About $9 to $18, big allowance" },
+        { k: "Cheapest", v: "Close, and both beat roaming" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Thailand SIM card vs eSIM: both are cheap, here is the math",
+      description: "An AIS or TrueMove tourist SIM at the airport runs 9 to 18 dollars with a large allowance. Coverage is excellent almost everywhere, so this is purely a cost comparison.",
+      h1: "Staying connected in Thailand.",
+      lede: "Thailand has better mobile coverage than most of Europe, including on the islands, so nothing here needs planning around. Both the local SIM and the eSIM are cheap, and which one wins comes down to how you like to arrive.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>excellent</b>: strong 4G and widespread 5G across Bangkok and the cities, along the coasts, on the <b>islands</b> including Phuket, Samui and the Phi Phi group, and on the long-distance trains, with thin patches only in the far northern hills and the deep national parks. The airport counters at <b>Suvarnabhumi and Don Mueang</b> sell tourist SIMs from <b>AIS</b>, <b>TrueMove H</b> and <b>dtac</b> for roughly <b>9 to 18 dollars</b> with a large or unlimited allowance for 8 to 30 days, with your <b>passport</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and works from landing. Both are far cheaper than your US carrier's day pass at about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that. <b>AIS</b> has the widest reach if you are heading north or to smaller islands. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "Both options are cheap, so pick on arrival style",
+          icon: "baht",
+          key: { fig: "$9 to $18", tag: "Airport tourist SIM", text: "AIS, TrueMove H and dtac all sell large-allowance tourist SIMs at the airport counters. A travel eSIM costs a similar amount and needs no queue.", tone: "teal" },
+          p: [
+            "This is a comfortable decision because both answers are cheap. An airport <b>tourist SIM</b> is roughly <b>9 to 18 dollars</b> for a big or unlimited allowance over 8 to 30 days, with your <b>passport</b>, from counters that are open late and used to tourists. A <b>Nomad eSIM</b> at a few dollars per gigabyte lands in similar territory for a normal week's usage and activates before you fly.",
+            "So the tiebreaker is practical. The <b>local SIM</b> wins if you want a Thai number for Grab, hotel calls and app verifications, if you are staying a month, or if you are a heavy user on an unlimited plan. The <b>eSIM</b> wins if you land at 1am at Suvarnabhumi and would rather walk past the queue with data already working, if you are hopping between Thailand and neighbours on one regional plan, or if you want your US number to stay live on the physical SIM. Both beat roaming by a wide margin."
+          ]
+        },
+        {
+          h: "Which network, if you are leaving the cities",
+          icon: "phoneok",
+          key: { fig: "AIS", tag: "The widest reach", text: "AIS generally reaches furthest into the north and the smaller islands. TrueMove H is strong in Bangkok and the main resorts.", tone: "teal" },
+          p: [
+            "In <b>Bangkok, Chiang Mai, Phuket</b> and the main resort areas any network is fine and speeds are genuinely good. Outside them, <b>AIS</b> has the broadest footprint, including the northern hills around Pai and Mae Hong Son, the Isaan countryside and the smaller islands, with <b>TrueMove H</b> close behind and strongest in the cities and big resorts. If your trip is a Bangkok and Samui week, the difference will not show up; if it is a motorbike loop in the north, ask for AIS.",
+            "The thin spots worth knowing: the <b>far northern hills</b> and border areas, the interior of the big <b>national parks</b> such as Khao Yai and Khao Sok, some <b>dive boats</b> and the crossings out to the more remote islands, and stretches of the Mae Hong Son loop. The <b>overnight trains</b> and the ferries to the main islands hold a signal for most of the route."
+          ]
+        },
+        {
+          h: "Roaming, and the one bill-shock risk",
+          icon: "roamfee",
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "AT&T caps its Day Pass at 10 daily fees a bill period; Verizon does not cap. Check T-Mobile first, since its mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            "Roaming is the expensive default here rather than a competitive option: <b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b>, so a week is <b>70 to 84 dollars</b> against about 12 dollars for a local SIM covering the same week. <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily, which is worth knowing for the long winter trips Thailand attracts. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that, so a T-Mobile customer on a mid or upper tier may need nothing at all for a short trip.",
+            "The genuine bill-shock risk is roaming with <b>no plan</b> at about <b>2 dollars a megabyte</b>, and Thailand is a place it happens, because a long-haul arrival at 1am with a dying phone is exactly when people switch data roaming on without thinking. <b>Turn off data roaming</b> before you land and leave it off until an eSIM, a local SIM or a pass is active. This guide is written for US travelers departing the US. For more, see <a href='/thailand/cash-or-card'>cash or card in Thailand</a>, <a href='/thailand/taxis-and-apps'>taxis and apps in Thailand</a>, and the <a href='/thailand'>Thailand money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is a local SIM or an eSIM better for Thailand?", a: "Both are cheap, so pick on practicalities. The local SIM wins if you want a Thai number for Grab and hotel calls, if you are staying a month, or if you are a heavy user on an unlimited plan. The eSIM wins if you want data working the moment you land, if Thailand is one leg of a regional trip, or if you want your US number to stay live." },
+        { q: "How much is a tourist SIM in Thailand?", a: "Roughly 9 to 18 dollars for a large or unlimited allowance over 8 to 30 days from AIS, TrueMove H or dtac, bought with your passport at the airport counters. That is a fraction of a week of US carrier roaming." },
+        { q: "Which Thai network has the best coverage?", a: "AIS generally reaches furthest into the northern hills, the Isaan countryside and the smaller islands, with TrueMove H close behind and strongest in Bangkok and the big resorts. For a Bangkok and Samui trip the difference will not show up." },
+        { q: "How much does it cost to use my US phone in Thailand?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week, against about 12 dollars for a local SIM covering the same week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "AIS Thailand: tourist SIM and prepaid data package pages", url: "https://www.ais.th/", type: "official" },
+          { label: "US State Department: Thailand country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Thailand.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. Thailand is a rare case where both options we could point you at are cheap, so this page picks on practicalities rather than manufacturing a price verdict. Tourist SIM contents move with promotions and the airport boards change, so the 9 to 18 dollar range is the current shape of the offer rather than a fixed product. The network reach ranking is the desk's read from operator footprints and consistent traveler accounts, and it only matters once you leave the cities and the main resorts."
+      }
     }
   ]
 };

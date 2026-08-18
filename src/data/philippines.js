@@ -480,6 +480,71 @@ export default {
         ],
         judgment: "The friendly-stranger, taxi and ATM skimming points come from current US State Department country information for the Philippines. The tanim-bala case counts are the Philippine National Police Aviation Security Group figures as reported by Rappler, and we describe the 2016 policy change alongside them rather than presenting a decade-old wave as current practice. The 10,000 peso airport fare is one widely reported extreme incident, flagged as such, not a typical fare, and we have deliberately not quoted zone-by-zone airport taxi tariffs because those move. Peso conversions use roughly 60 to the dollar. Checked August 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Decent in Manila and Cebu" },
+        { k: "Signal gaps", v: "Islands, ferries, Palawan" },
+        { k: "SIM registration", v: "Required, and tourist SIMs expire" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "Philippines SIM card: registration, and a 30-day clock",
+      description: "Every SIM must be registered under the SIM Registration Act, and a tourist SIM is typically valid about 30 days. Coverage is decent in the cities and patchy across the islands.",
+      h1: "Staying connected in the Philippines.",
+      lede: "The Philippines has two wrinkles that catch visitors: every SIM has to be registered under a 2022 law, and a tourist registration typically runs on a 30-day clock. Neither is hard, and both are worth knowing before you are standing at a counter with a boat to catch.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>decent in Metro Manila, Cebu and the bigger cities</b> and genuinely <b>patchy across the islands</b>: parts of Palawan away from El Nido and Puerto Princesa, the smaller Visayan islands, the inter-island <b>ferries</b> and boat transfers, and the mountain interior of northern Luzon. A local SIM from <b>Globe</b> or <b>Smart</b> runs roughly <b>9 to 18 dollars</b> for a tourist data pack, and every SIM must be <b>registered</b> under the SIM Registration Act: your <b>passport</b>, a local address, and sometimes an onward ticket, with a <b>tourist registration typically valid about 30 days</b>. A <b>Nomad eSIM</b> at a few dollars per gigabyte is an international roaming product rather than a Philippine SIM, so it sits outside that registration process entirely, which is the honest case for it here. Your US carrier's day pass is about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. For island hopping, <b>download offline maps</b> and screenshot your ferry bookings. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "Registration, and the clock on a tourist SIM",
+          icon: "passport",
+          key: { fig: "About 30 days", tag: "Tourist SIM validity", text: "The SIM Registration Act requires passport, a local address and sometimes an onward ticket. A tourist registration typically runs about 30 days.", tone: "amber" },
+          p: [
+            "The <b>SIM Registration Act</b>, in force since 2022, requires every Philippine SIM to be registered before it can be used, and it applies to visitors. Expect to provide your <b>passport</b>, a <b>local address</b> (your hotel or resort booking normally works) and in some cases a <b>return or onward ticket</b>. Registration is done online or at the counter and takes a few minutes when the network cooperates.",
+            "The part that surprises people is the <b>validity window</b>: a tourist registration is commonly described as running about <b>30 days</b> before the SIM deactivates unless extended. For a two-week trip that is irrelevant. For a longer stay, a return visit, or anyone leaving a SIM in a drawer for next year, it is not, and a number that stops working takes any app verifications tied to it with it. Buy from an official <b>Globe</b> or <b>Smart</b> store or airport counter rather than a stall, since a pre-registered SIM sold to you is registered to somebody else."
+          ]
+        },
+        {
+          h: "The islands are the coverage problem",
+          icon: "alert",
+          key: { fig: "The ferries", tag: "Where signal drops", text: "Manila and Cebu are decent. Smaller islands, boat transfers, Palawan away from the towns and the Luzon interior are patchy to absent.", tone: "amber" },
+          p: [
+            "An archipelago of seven thousand islands is a hard place to build a network, and it shows. <b>Metro Manila</b> and <b>Cebu</b> are decent, if not fast by regional standards, and the main resort towns are covered. Away from them: much of <b>Palawan</b> outside El Nido, Coron and Puerto Princesa, the smaller <b>Visayan</b> islands, the long <b>ferry and bangka</b> crossings that hold an itinerary together, the surf coasts of northern Luzon and the <b>Cordillera</b> interior around Sagada and Banaue.",
+            "So island-hopping days are offline days. <b>Download offline maps</b>, screenshot your <b>ferry and transfer bookings</b> rather than trusting an email to load at the pier, and note down your accommodation's number. Resort and cafe <b>wifi</b> is common on the tourist trail and often satellite-backed, which means it works and it is slow. <b>Smart</b> generally has slightly wider reach, with <b>Globe</b> competitive in the cities and <b>DITO</b> cheaper and thinner."
+          ]
+        },
+        {
+          h: "The cost comparison",
+          icon: "roamfee",
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "AT&T caps its Day Pass at 10 daily fees a bill period; Verizon does not. A local tourist pack is $9 to $18 and needs the registration.", tone: "teal" },
+          p: [
+            "A local tourist data pack at <b>9 to 18 dollars</b> undercuts roaming comfortably, since <b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b>, and <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that, so check your own plan before buying: on a week in Manila and Cebu a T-Mobile allowance may be enough.",
+            "Between the local SIM and a <b>Nomad eSIM</b> at a few dollars per gigabyte, the local pack is usually cheaper per gigabyte and the eSIM avoids the registration process, the address question and the 30-day clock, since a travel eSIM roams onto Philippine networks rather than being a Philippine SIM. That is a real distinction rather than a marketing one, and it is also the thing we earn on, so weigh it accordingly: if you are here for two weeks and do not mind the counter, buy local. This guide is written for US travelers departing the US. For more, see <a href='/philippines/cash-or-card'>cash or card in the Philippines</a>, <a href='/philippines/taxis-and-apps'>taxis and apps in the Philippines</a>, and the <a href='/philippines'>Philippines money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need to register a SIM card in the Philippines?", a: "Yes. The SIM Registration Act has required it since 2022 and it applies to visitors. Expect to provide your passport, a local address such as your hotel booking, and in some cases a return or onward ticket. A tourist registration is commonly valid about 30 days before the SIM deactivates unless extended." },
+        { q: "Is an eSIM easier than a local SIM in the Philippines?", a: "It avoids the registration process entirely, because a travel eSIM roams onto Philippine networks rather than being a Philippine SIM, so there is no address question and no 30-day clock. A local tourist pack at 9 to 18 dollars is usually cheaper per gigabyte. If you are here two weeks and do not mind the counter, buy local." },
+        { q: "Will I have signal island hopping in the Philippines?", a: "Often not. Ferry and bangka crossings, the smaller Visayan islands, much of Palawan outside the main towns and the Cordillera interior are patchy to absent. Download offline maps and screenshot your ferry bookings rather than relying on an email to load at the pier." },
+        { q: "How much does it cost to use my US phone in the Philippines?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week, against 9 to 18 dollars for a local tourist pack. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "Globe Telecom: SIM registration requirements and tourist plan pages", url: "https://www.globe.com.ph/", type: "official" },
+          { label: "US State Department: Philippines country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Philippines.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. The 30-day tourist validity is widely described in carrier-facing registration material and is the detail most likely to catch a long-stay visitor, so it is stated as commonly described rather than as a precise statutory figure, and anyone staying longer should confirm with the carrier at purchase. The registration distinction between a Philippine SIM and an international travel eSIM is real and it also favours the product we earn on, which is why this page states the local pack is cheaper per gigabyte in the same breath. Coverage is the desk's read from operator footprints and consistent traveler accounts."
+      }
     }
   ]
 };

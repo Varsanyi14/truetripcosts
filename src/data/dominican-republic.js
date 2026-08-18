@@ -584,6 +584,71 @@ export default {
         ],
         judgment: "The 18% ITBIS and the statutory 10% service charge are confirmed with the official tourism board, which is what allows us to state the 10% as a fixed figure rather than a range, unlike hotel service charges almost anywhere else. The roughly 28% is the arithmetic of the two applied at checkout, and not every establishment applies both to every line, so treat it as the working total rather than a guaranteed one. Whether an all-inclusive package has the charges inside it is a matter for your own booking, and worth confirming in writing. Checked August 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Good in resorts and cities" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "Often resort wifi, at $0" },
+        { k: "Signal gaps", v: "The Cordillera, Samana back roads" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Dominican Republic eSIM: resort wifi may be enough",
+      description: "On an all-inclusive week, resort wifi covers most of it. Data earns its place the moment you leave the gate, and coverage thins in the Cordillera and on back roads.",
+      h1: "Staying connected in the Dominican Republic.",
+      lede: "If your week is an all-inclusive in Punta Cana, the resort wifi is probably all you need and we would rather tell you that than sell you something. If you are leaving the gate to drive, hike or move between towns, the answer changes.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>good in Santo Domingo, Punta Cana, Puerto Plata and the resort corridors</b>, and thinner in the <b>Cordillera Central</b>, on the <b>Samana</b> back roads and in the rural interior. On an <b>all-inclusive week</b>, resort wifi covers most of what you need, and that is a legitimate answer rather than a fallback. The moment you leave the gate it changes: a <b>local SIM</b> from <b>Claro</b> or <b>Altice</b> is roughly <b>10 to 25 dollars</b> for a tourist bundle with your <b>passport</b>, and <b>Claro</b> has the wider reach outside the cities. A <b>Nomad eSIM</b> is a few dollars per gigabyte and is the simpler option for a short trip. Your US carrier's day pass is about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "Inside the resort, wifi is usually enough",
+          icon: "phoneok",
+          key: { fig: "Often $0", tag: "On an all-inclusive", text: "Resort wifi covers an all-inclusive week for most people. Check whether your resort charges for the faster tier, which is the one real cost here.", tone: "teal" },
+          p: [
+            "The all-inclusive is the most common Dominican trip and it is also the one that needs the least. Resorts in <b>Punta Cana, Bavaro and Puerto Plata</b> have wifi throughout the property, usually free in the rooms and public areas, and for a week of beach, buffet and pool that is genuinely sufficient. Download your maps and any bookings before you fly and you are set.",
+            "One thing worth checking, because it is the actual cost here rather than the phone plan: some resorts run a <b>free basic tier and a paid faster one</b>, and the free tier can struggle in the evening when a few hundred guests are all streaming. If that would ruin your week, a data plan is a cheaper fix than the resort's premium wifi upgrade, which is the one place buying data reliably saves money on this kind of trip."
+          ]
+        },
+        {
+          h: "Leaving the gate is when data earns its place",
+          icon: "dop",
+          key: { fig: "Claro", tag: "The wider reach", text: "Claro reaches further outside the cities than Altice. A tourist bundle runs about $10 to $25 with a passport, and an eSIM is simpler for a short trip.", tone: "teal" },
+          p: [
+            "Off the property the calculation flips. Fares here are negotiated rather than metered, ride-hailing works in the cities and not everywhere, and the roads reward having a map that updates. <b>Claro</b> is the network with the wider reach outside the main centers, with <b>Altice</b> competitive in Santo Domingo and Santiago; a tourist data bundle is roughly <b>10 to 25 dollars</b> with your <b>passport</b>, from a carrier shop or the airport.",
+            "A <b>Nomad eSIM</b> at a few dollars per gigabyte is the easier route for a week and usually the cheaper of the two for light use, which is not the case in most countries but is here, because Caribbean prepaid is not priced like Latin American prepaid. We earn on the eSIM, so treat that as a fact to check rather than a recommendation to trust: compare the local bundle on the day."
+          ]
+        },
+        {
+          h: "Where the signal thins",
+          icon: "alert",
+          key: { fig: "The Cordillera", tag: "Where signal drops", text: "The Cordillera Central, the Samana back roads and the rural interior lose coverage. Whale-watching boats and mountain hikes are offline.", tone: "amber" },
+          p: [
+            "The gaps are geographic. The <b>Cordillera Central</b> around Jarabacoa and Constanza, the climb toward <b>Pico Duarte</b>, the back roads on the <b>Samana</b> peninsula and much of the rural interior lose signal on any network, and the <b>whale-watching boats</b> out of Samana bay are offline by definition. The far southwest toward Pedernales and Bahia de las Aguilas is thin.",
+            "So for any day that leaves the coast road, <b>download offline maps</b> and save your accommodation details so they open without a connection. No plan changes the coverage, and that is worth saying on a page that carries an eSIM link. This guide is written for US travelers departing the US. For more, see <a href='/dominican-republic/cash-or-card'>cash or card in the Dominican Republic</a>, <a href='/dominican-republic/taxis-and-apps'>taxis and apps in the Dominican Republic</a>, and the <a href='/dominican-republic'>Dominican Republic money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need data for an all-inclusive in the Dominican Republic?", a: "Usually not. Resort wifi covers a week of beach and buffet, and downloading maps and bookings before you fly handles the rest. Check whether your resort charges for a faster wifi tier, since a data plan is often cheaper than the resort's premium upgrade." },
+        { q: "Which network is best in the Dominican Republic?", a: "Claro has the wider reach outside the main centers, with Altice competitive in Santo Domingo and Santiago. Neither covers the Cordillera Central, the Samana back roads or the rural interior reliably." },
+        { q: "How much is a SIM card in the Dominican Republic?", a: "Roughly 10 to 25 dollars for a Claro or Altice tourist bundle, bought with your passport at a carrier shop or the airport. Caribbean prepaid is not priced like Latin American prepaid, so a travel eSIM at a few dollars per gigabyte can work out cheaper for light use. Compare both." },
+        { q: "How much does it cost to use my US phone in the Dominican Republic?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "Claro Dominican Republic: prepaid and tourist plan pages", url: "https://www.claro.com.do/", type: "official" },
+          { label: "US State Department: Dominican Republic country information and road conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/DominicanRepublic.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. For the most common trip here, an all-inclusive week, the honest answer is that resort wifi is enough and we earn nothing from saying so. The genuinely useful money note is the resort premium-wifi upsell, which a data plan often undercuts. Local bundle pricing is a current read and varies by outlet, and unlike our Latin American pages the local SIM is not automatically the cheaper option, so this page tells you to compare rather than asserting a winner."
+      }
     }
   ]
 };
