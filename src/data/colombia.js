@@ -509,6 +509,71 @@ export default {
         ],
         judgment: "The drugging mechanism, the dating app warning and the do-not-resist advice come from the US Embassy in Bogota's own current crime guidance, dated July 2026. The paseo millonario, its association with street-hailed cabs, and the kidnapping indicator come from US security reporting for Colombia. The express kidnapping in unlicensed taxis, the El Dorado authorized-taxi rule, the note-the-plate habit and the detail that dating app victims often meet several times in public before being drugged all come from current Government of Canada travel advice. We have deliberately not quoted the national estimate of scopolamine incidents that circulates widely, because it is a single-source figure for a whole country and would read as a per-visitor risk, which it is not. We have attached no dollar figure to the drugging or express-kidnapping sections because no honest typical figure exists; the loss is whatever your cards and accounts allow, which is exactly why lowering the daily cap in advance is the useful advice. The 19 percent IVA exemption for foreign tourists is a standing Colombian rule but is applied inconsistently by hotels, so treat it as something to claim rather than expect. Checked August 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Good cities and the coffee region" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A Claro SIM, a few dollars" },
+        { k: "Signal gaps", v: "Amazon, Pacific coast, La Guajira" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Colombia SIM card: Claro for a few dollars",
+      description: "A Claro SIM is a few dollars for plenty of data and has the widest reach in the country. Coverage is good in the cities and thin in the Amazon and on the Pacific coast.",
+      h1: "Staying connected in Colombia.",
+      lede: "Colombia is cheap and easy on this front: a Claro SIM costs a few dollars, covers more of the country than anything else, and takes a passport and a few minutes.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>good in Bogota, Medellin, Cartagena and the coffee region</b> and along the main highways, and thin in the <b>Amazon</b>, on the <b>Pacific coast</b> and across <b>La Guajira</b>. On price the local option is clearly cheaper: a <b>Claro</b> SIM with a data package costs a <b>few dollars</b>, sold in carrier shops, malls and at the airports with your <b>passport</b>, and <b>Claro</b> has the widest reach in the country by a clear margin, with <b>Movistar</b> and <b>Tigo</b> fine in the cities. Your US carrier charges about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data abroad before slowing to <b>256kbps</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and worth it if you want data before you leave the airport, which in Bogota is a reasonable thing to want. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "Claro, and it is not really a contest",
+          icon: "tag",
+          key: { fig: "A few $", tag: "Claro prepaid", text: "Claro has the widest reach in Colombia and sells data cheaply. Movistar and Tigo are fine in the cities and thinner outside them.", tone: "teal" },
+          p: [
+            "<b>Claro</b> is the default here for the same reason Telcel is in Mexico: it reaches places the others do not, including much of the rural coffee region, the Santander highlands and the smaller Caribbean towns. A prepaid SIM with a data package is a <b>few dollars</b>, bought with your <b>passport</b> at a carrier shop, a mall counter or the airport. <b>Movistar</b> and <b>Tigo</b> compete well in Bogota, Medellin and Cali and fade faster outside them.",
+            "The comparison with roaming is not close: a week of <b>AT&amp;T or Verizon</b> day passes is <b>70 to 84 dollars</b> against a few dollars for the local package, and a travel eSIM costs several times the local option for less data. We earn on eSIM links and nothing on a Claro SIM."
+          ]
+        },
+        {
+          h: "The gaps, and the reason to have data at all",
+          icon: "phoneok",
+          key: { fig: "The Amazon", tag: "Where signal thins", text: "Cities, the coffee region and main highways are covered. The Amazon, the Pacific coast and La Guajira are not, on any network.", tone: "amber" },
+          p: [
+            "In the cities you will have fast 4G and 5G in the bigger centers. The gaps are geographic and predictable: the <b>Amazon</b> around Leticia, the <b>Pacific coast</b> toward Nuqui and Bahia Solano where towns are reached by boat or small plane, much of <b>La Guajira</b> beyond Cabo de la Vela, and stretches of mountain highway between departments. <b>Tayrona</b> has patchy coverage inside the park.",
+            "Worth naming why data matters here more than the price suggests. Ride-hailing and <b>InDrive, Uber, Cabify and DiDi</b> availability varies by city and is how most visitors avoid the fare arguments and the security judgment calls that come with hailing on the street, and that needs a live connection. Having working data is a safety-adjacent convenience in Colombia rather than a luxury, which is a reason not to travel here on a throttled roaming connection."
+          ]
+        },
+        {
+          h: "Roaming and the eSIM case",
+          icon: "roamfee",
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "AT&T caps its Day Pass at 10 daily fees per bill period. T-Mobile's mid and upper tiers include 5GB to 30GB of high-speed data abroad.", tone: "teal" },
+          p: [
+            "<b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b>, so a week is <b>70 to 84 dollars</b>, and <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, so check your own plan before buying anything.",
+            "The genuine case for a <b>Nomad eSIM</b> in Colombia is having a working connection <b>before you leave the terminal</b>, so you can order a ride rather than negotiate one, and that is worth a few dollars per gigabyte to plenty of people. It is the convenience option and not the cheap one, and both beat roaming comfortably. This guide is written for US travelers departing the US. For more, see <a href='/colombia/cash-or-card'>cash or card in Colombia</a>, <a href='/colombia/taxis-and-apps'>taxis and apps in Colombia</a>, and the <a href='/colombia'>Colombia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Which network is best in Colombia?", a: "Claro, by a clear margin on reach, including much of the rural coffee region and the smaller Caribbean towns. Movistar and Tigo compete well in Bogota, Medellin and Cali but fade faster outside the cities." },
+        { q: "How much is a SIM card in Colombia?", a: "A few dollars for a Claro prepaid SIM with a data package, bought with your passport at a carrier shop, a mall counter or the airport. That is a fraction of a week of US carrier roaming." },
+        { q: "Is an eSIM worth it for Colombia?", a: "On price, no: a Claro SIM is cheaper. The real argument is arriving with data already working so you can order a ride rather than negotiate one at the terminal, which matters more in Colombia than the few dollars it costs. Both options beat roaming comfortably." },
+        { q: "How much does it cost to use my US phone in Colombia?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "Claro Colombia: prepaid plan and data package pages", url: "https://www.claro.com.co/", type: "official" },
+          { label: "US State Department: Colombia country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Colombia.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. The local SIM is cheaper and we earn nothing on it, so that is stated first. The counter-argument on this page is not commercial padding: in Colombia, ordering a ride through an app rather than hailing on the street is a judgment most travelers are advised to make, and that needs a live connection from the moment you land, which is the one thing a pre-installed eSIM does better than a SIM bought after baggage claim. Claro's reach advantage is the desk's read from operator footprints and consistent traveler accounts."
+      }
     }
   ]
 };

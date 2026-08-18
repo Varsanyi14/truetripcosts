@@ -421,6 +421,71 @@ export default {
         ],
         judgment: "App coverage and the street-taxi habits are our read from recent traveler reports, not an official transport table, so use your judgment and check current fares locally. Checked July 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Strong in Tbilisi, Batumi, main roads" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "An airport SIM, $4 to $9" },
+        { k: "Signal gaps", v: "Svaneti, Tusheti, high Caucasus" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Georgia SIM card: a few dollars at the airport",
+      description: "A Magti or Silknet SIM at Tbilisi airport is 4 to 9 dollars for plenty of data. Coverage is strong in the cities and thin in Svaneti and the high Caucasus.",
+      h1: "Staying connected in Georgia.",
+      lede: "Georgian data is cheap enough that the decision takes about a minute: buy a SIM in the arrivals hall for the price of a couple of coffees. The part worth planning is the mountains, where no plan helps.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>strong in Tbilisi, Batumi, Kutaisi</b> and along the main roads, and thin in <b>Svaneti</b>, <b>Tusheti</b> and the high <b>Caucasus</b> valleys. The cheap answer is local: a <b>Magti</b> or <b>Silknet</b> SIM at <b>Tbilisi or Kutaisi airport</b> costs about <b>4 to 9 dollars</b> for plenty of data over a week or a month, needs your <b>passport</b>, and takes a few minutes. Your US carrier charges about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b> day passes, and Georgia is on AT&amp;T's covered list), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data abroad before slowing to <b>256kbps</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and is the better call if you land at 4am, which in Tbilisi is common. Before a mountain drive, <b>download offline maps</b>: the <b>Tusheti</b> road and the upper Svaneti valleys lose signal entirely. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "The airport SIM costs about as much as lunch",
+          icon: "tag",
+          key: { fig: "$4 to $9", tag: "At the airport", text: "Magti and Silknet sell tourist packs in the arrivals hall. Passport, a few minutes, and less than one day of carrier roaming.", tone: "teal" },
+          p: [
+            "Both <b>Magti</b> and <b>Silknet</b> have counters at <b>Tbilisi airport</b>, and <b>Magti</b> generally has the stronger network outside the cities. A tourist pack is roughly <b>4 to 9 dollars</b> for a generous allowance over a week or a month, with your <b>passport</b> at purchase. It is one of the better value data markets in the region.",
+            "The comparison with the alternatives is lopsided: a week of <b>AT&amp;T or Verizon</b> day passes is <b>70 to 84 dollars</b>, and a travel eSIM is a few dollars per gigabyte, so several times the local pack for less data. We earn a commission on eSIMs and nothing on a Magti SIM, and for a week in Georgia the SIM is the right buy."
+          ]
+        },
+        {
+          h: "The mountains are where it stops",
+          icon: "alert",
+          key: { fig: "Tusheti", tag: "No signal at all", text: "Tbilisi, Batumi and the main roads are well covered. Svaneti, Tusheti and the high Caucasus valleys lose signal entirely, on any network.", tone: "amber" },
+          p: [
+            "Georgia is small and mountainous, and the network follows the valleys people live in. <b>Tbilisi, Batumi, Kutaisi, Signagi</b> and the <b>Kakheti</b> wine roads are comfortable, with fast 4G and 5G in the capital. Then it stops: the <b>Abano pass</b> road into <b>Tusheti</b>, one of the more serious mountain drives in Europe, has effectively nothing, and upper <b>Svaneti</b> beyond Mestia, the <b>Kazbegi</b> side valleys and the trekking routes are patchy to absent.",
+            "So a mountain day is an offline day whatever you buy. <b>Download offline maps</b> and your guesthouse details, and if you are driving the Tusheti road or trekking Mestia to Ushguli, tell somebody the plan. This is a coverage problem, not a price one, and no eSIM or SIM changes it."
+          ]
+        },
+        {
+          h: "When roaming or an eSIM is the better answer",
+          icon: "roamfee",
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "Georgia is on AT&T's covered-destination list, so the day pass applies, capped at 10 fees a bill period. Check T-Mobile before buying anything.", tone: "teal" },
+          p: [
+            "Confirmed on this check because it changes the advice: <b>Georgia is on AT&amp;T's covered-destination list</b>, so the day pass applies at about <b>10 to 12 dollars a day</b> rather than pay-per-use, and <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value.",
+            "The honest case for a <b>Nomad eSIM</b> here is the <b>arrival time</b>: a lot of flights into Tbilisi land between midnight and 5am, and having data before you negotiate a taxi is worth something. It is a few dollars per gigabyte, more than the local SIM, and it is a convenience purchase. This guide is written for US travelers departing the US. For more, see <a href='/georgia/cash-or-card'>cash or card in Georgia</a>, <a href='/georgia/taxis-and-apps'>taxis and apps in Georgia</a>, and the <a href='/georgia'>Georgia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is a SIM card in Georgia?", a: "About 4 to 9 dollars for a Magti or Silknet tourist pack with a generous allowance, bought with your passport at Tbilisi or Kutaisi airport. That is less than one day of US carrier roaming." },
+        { q: "Which network is best in Georgia?", a: "Magti generally has the stronger network outside the cities, with Silknet competitive in Tbilisi and Batumi. Neither reaches Tusheti or the upper Svaneti valleys, where coverage is absent on any network." },
+        { q: "Will I have signal in the Georgian mountains?", a: "Not in the high valleys. The Abano pass road into Tusheti has effectively nothing, and upper Svaneti beyond Mestia, the Kazbegi side valleys and the trekking routes are patchy to absent. Download offline maps before a mountain day and tell somebody your plan." },
+        { q: "How much does it cost to use my US phone in Georgia?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, and Georgia is on AT&T's covered-destination list so the day pass applies rather than pay-per-use. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land. T-Mobile is worth checking first." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "AT&T: the International Day Pass destination list, which includes Georgia", url: "https://www.att.com/support/article/wireless/KM1395068/", type: "card" },
+          { label: "US State Department: Georgia country information, including mountain road conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Georgia.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. Georgia inclusion on AT&T's covered-destination list was verified against AT&T's own list on this check. The mountain coverage picture is the desk's read from operator footprints and traveler accounts rather than a single official source, and the Tusheti road in particular is reported as no-signal consistently enough to state plainly. Local pack pricing moves with promotions and the lari, so treat the 4 to 9 dollar range as a current shape rather than a fixed price. We earn on eSIM links and nothing on a Magti SIM."
+      }
     }
   ]
 };

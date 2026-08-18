@@ -444,6 +444,71 @@ export default {
         ],
         judgment: "Hong Kong's group classification, Special Permit, and quarantine rules are set by AFCD and administered on the US side by APHIS, not by us. The Group II no-quarantine outcome is real but conditional on full compliance, and AFCD revised its country groupings in recent years, so we point you to the official pages and dated this July 2026. Costs vary with your pet's size and route, so treat the figures as a starting point and confirm the current AFCD requirements and your group before you begin."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Superb, MTR tunnels included" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A local SIM, $6 to $13" },
+        { k: "Not the mainland", v: "No firewall here" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Hong Kong SIM card: cheap, and no firewall",
+      description: "A local prepaid SIM is 6 to 13 dollars for plenty of data on excellent coverage. Hong Kong is outside the mainland firewall, which matters if you are crossing the border.",
+      h1: "Staying connected in Hong Kong.",
+      lede: "Hong Kong has excellent coverage, cheap prepaid data and free wifi almost everywhere, so this is an easy one. The wrinkle worth knowing is the border: Hong Kong is not behind the mainland firewall, and that changes what to buy if you are crossing.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>superb</b>, including deep in the <b>MTR tunnels</b> and out on the islands, with widespread 5G and free wifi in malls, cafes and stations. The cheapest option is a <b>local prepaid SIM</b> from <b>3HK</b>, <b>csl</b> or <b>China Mobile Hong Kong</b>, roughly <b>6 to 13 dollars</b> for a week or a month of plenty, sold at the airport and in convenience stores. Prepaid SIMs need <b>real-name registration</b> with your passport, in force since 2023, which the shop handles. Your US carrier charges about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data abroad. The point people miss: <b>Hong Kong is not behind the mainland firewall</b>, so Google, Maps, WhatsApp and Instagram all work normally here. If your trip <b>crosses into mainland China</b>, that changes everything, and a roaming plan set up before you fly is the answer rather than a mainland SIM. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "Cheap prepaid, and free wifi as a backstop",
+          icon: "hkd",
+          key: { fig: "$6 to $13", tag: "Local prepaid", text: "3HK, csl and China Mobile Hong Kong sell prepaid data cheaply at the airport and in convenience stores. Real-name registration with a passport applies.", tone: "teal" },
+          p: [
+            "Hong Kong's prepaid market is competitive and cheap: roughly <b>6 to 13 dollars</b> buys a week or a month of data from <b>3HK</b>, <b>csl</b> or <b>China Mobile Hong Kong</b>, sold at <b>HKIA</b> and in 7-Eleven and Circle K stores across the city. Since 2023 prepaid SIMs require <b>real-name registration</b>, so bring your <b>passport</b>; the shop or the app walks through it and it is not onerous.",
+            "On top of that, free <b>wifi</b> is close to ubiquitous in malls, MTR stations, cafes and hotels, which for a short stay is a genuine backstop. Against a US day pass at <b>10 to 12 dollars a day</b>, the local SIM wins outright on any stay longer than a day, and a travel eSIM at a few dollars per gigabyte sits in between. We earn on eSIM links and nothing on a 3HK SIM."
+          ]
+        },
+        {
+          h: "The border is the thing to plan around",
+          icon: "alert",
+          key: { fig: "Not the same", tag: "Hong Kong vs mainland", text: "Hong Kong has no firewall: Google, Maps and WhatsApp work normally. Cross into the mainland and they do not, so set up roaming before you fly.", tone: "amber" },
+          p: [
+            "This is the part worth reading twice, because plenty of visitors assume Hong Kong and the mainland behave the same way online. They do not. In Hong Kong, <b>Google, Gmail, Maps, WhatsApp, Instagram, Facebook and YouTube all work normally</b>. A Hong Kong SIM or a travel eSIM here needs no workaround and no VPN.",
+            "If your itinerary <b>crosses into Shenzhen or further</b>, the calculus flips: on a mainland network the <b>Great Firewall</b> blocks those services and VPNs have become unreliable. The practical answer is a <b>roaming plan set up before you fly</b>, which routes your traffic outside the mainland, rather than buying a mainland SIM when you get there. A Hong Kong prepaid SIM roaming into the mainland can also work for the same reason, and it is worth checking the roaming rate before relying on it. For the detail, see the <a href='/china/staying-connected'>staying connected in China</a> page."
+          ]
+        },
+        {
+          h: "Coverage you can ignore, and the roaming numbers",
+          icon: "roamfee",
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "AT&T caps its Day Pass at 10 daily fees per bill period. T-Mobile's mid and upper tiers include 5GB to 30GB of high-speed data abroad.", tone: "teal" },
+          p: [
+            "There is nothing to warn you about on coverage. Hong Kong has among the densest networks anywhere: fast 4G and 5G across the territory, working signal in the <b>MTR tunnels</b>, on the <b>Star Ferry</b>, up to <b>The Peak</b> and out to <b>Lantau</b> and the outlying islands. Remote hiking trails on the far side of the New Territories can thin, which is a detail rather than a plan.",
+            "On the alternatives: <b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b> and <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, while <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value. A <b>Nomad eSIM</b> is the simplest option for a short stopover or a multi-city Asia trip, at a few dollars per gigabyte. This guide is written for US travelers departing the US. For more, see <a href='/hong-kong/cash-or-card'>cash or card in Hong Kong</a>, <a href='/hong-kong/taxis-and-apps'>taxis and apps in Hong Kong</a>, and the <a href='/hong-kong'>Hong Kong money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is Hong Kong behind the Great Firewall?", a: "No. Google, Gmail, Maps, WhatsApp, Instagram, Facebook and YouTube all work normally in Hong Kong, and you need no VPN or workaround. Cross into mainland China and that changes, so if your trip includes Shenzhen or beyond, set up a roaming plan before you fly rather than buying a mainland SIM." },
+        { q: "How much is a SIM card in Hong Kong?", a: "Roughly 6 to 13 dollars for a week or a month of data from 3HK, csl or China Mobile Hong Kong, sold at the airport and in convenience stores. Prepaid SIMs need real-name registration with your passport, in force since 2023, which the shop handles." },
+        { q: "Do I need data in Hong Kong at all?", a: "For a very short stay, possibly not. Free wifi is close to ubiquitous in malls, MTR stations, cafes and hotels. Data is worth having for maps and taxis on the move, and at local prepaid prices it is cheap enough that it is rarely worth agonizing over." },
+        { q: "How much does it cost to use my US phone in Hong Kong?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "OFCA Hong Kong: the real-name registration requirement for prepaid SIM cards", url: "https://www.ofca.gov.hk/", type: "gov" },
+          { label: "3 Hong Kong: prepaid SIM and tourist data plan pages", url: "https://web.three.com.hk/", type: "official" }
+        ],
+        judgment: "Checked Aug 2026. The firewall distinction is the most useful thing on this page and the most commonly got wrong: Hong Kong is outside the mainland's filtering, and a traveler who plans for a firewall that is not there wastes money, while one who assumes Hong Kong rules apply in Shenzhen loses access to their maps at the worst moment. Real-name registration for prepaid SIMs has been in force since 2023 and is handled at the counter. Local pricing moves with promotions, so the 6 to 13 dollar range is a current shape. We earn on eSIM links and nothing on a local SIM."
+      }
     }
   ]
 };

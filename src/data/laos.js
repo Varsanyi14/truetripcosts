@@ -390,6 +390,71 @@ export default {
         ],
         judgment: "This is the most volatile page we keep on Laos, and we would rather say so than pretend otherwise. The rules here change often: the advance sales window moved from 3 days to 7 days in July 2025, and app payment options are expanding, so the position is genuinely moving under us. Treat every detail on this page as dated to August 2026 and re-verify before you rely on it, especially the app registration rules and which offices take which payment method. The shape of the problem, no working website and an app built around local phone numbers, has held for years, so that is the part we are confident about. Checked Aug 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Fine in the towns, thin between" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A local SIM, a few dollars" },
+        { k: "Signal gaps", v: "The mountain north, river routes" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "Laos SIM card: cheap data, and real gaps between towns",
+      description: "A Unitel SIM costs a few dollars and Unitel has the widest reach. Coverage is fine in Vientiane and Luang Prabang and genuinely thin in the mountainous north.",
+      h1: "Staying connected in Laos.",
+      lede: "Laos sells data for almost nothing and has less of a network to sell it on than its neighbors. The right move is a cheap local SIM plus the habit of downloading things before you leave a town.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>fine in Vientiane, Luang Prabang, Pakse and Vang Vieng</b> and along <b>Route 13</b>, and genuinely <b>thin between them</b>: the mountainous north, the eastern highlands, the Bolaven back roads and the Mekong river routes have real gaps. On price, a <b>local SIM</b> from <b>Unitel</b> or <b>Lao Telecom</b> costs a <b>few dollars</b> for a generous data pack, bought with your <b>passport</b> at the airport or a phone shop, and <b>Unitel</b> has the widest reach by a clear margin, which matters more here than the price does. Your US carrier charges about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b> day passes, and Laos is on AT&amp;T's covered list), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data. A <b>Nomad eSIM</b> is a few dollars per gigabyte and does not change the coverage, so <b>download offline maps</b> before any long bus or boat day. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "Cheap, and the network matters more than the price",
+          icon: "tag",
+          key: { fig: "A few $", tag: "Unitel", text: "Data costs almost nothing. What varies is reach, and Unitel has clearly the most of it, so buy the network rather than the cheapest pack.", tone: "teal" },
+          p: [
+            "A <b>Unitel</b> or <b>Lao Telecom</b> SIM with a data pack is a <b>few dollars</b>, and at that price the difference between the options is not money, it is <b>where the signal exists</b>. <b>Unitel</b> has the broadest network in the country, including a lot of the north, and it is the one to ask for by name. Buy at <b>Vientiane or Luang Prabang airport</b> or an official shop, with your <b>passport</b>.",
+            "Against a US carrier day pass at <b>10 to 12 dollars a day</b>, a month of Lao data for a few dollars is not a close comparison, and a travel eSIM costs several times it. We earn nothing on a Unitel SIM and it is still the right buy for a Laos-only trip."
+          ]
+        },
+        {
+          h: "The gaps between towns are the real story",
+          icon: "alert",
+          key: { fig: "Route 13", tag: "Fine on it, thin off it", text: "Towns and the main highway are covered. The mountainous north, the eastern highlands and the river routes are not, on any network.", tone: "amber" },
+          p: [
+            "In the towns you will have workable 4G, with 5G in parts of <b>Vientiane</b>. Off them, Laos is mountains and river valleys with a young network, and the gaps are real rather than nominal: much of the <b>north</b> around Nong Khiaw and Phongsali, the <b>eastern highlands</b>, the <b>Bolaven plateau</b> back roads, and the <b>slow boat</b> down the Mekong from Huay Xai, which is two days with long stretches of nothing.",
+            "No purchase fixes that, which is worth saying on a page that carries an eSIM link. What helps is preparation: <b>download offline maps</b> and your accommodation details before leaving a town, screenshot your bus or boat booking, and treat a long travel day as offline by default. Guesthouse <b>wifi</b> on the tourist trail is common and often the best connection you will have."
+          ]
+        },
+        {
+          h: "Roaming, and the eSIM case",
+          icon: "roamfee",
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "Laos is on AT&T's covered-destination list, so the day pass applies rather than pay-per-use, and AT&T caps it at 10 fees a bill period.", tone: "teal" },
+          p: [
+            "Worth confirming because it changes the arithmetic: <b>Laos is on AT&amp;T's covered-destination list</b>, so a day pass applies at about <b>10 to 12 dollars a day</b> rather than pay-per-use, and <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after.",
+            "A <b>Nomad eSIM</b> makes sense here mainly as part of a <b>regional plan</b>, since Laos is usually one leg of a trip through Thailand, Vietnam or Cambodia, and one plan across all of them beats a SIM per border. It rides the same Lao networks, so it does not buy you coverage the local SIM lacks. This guide is written for US travelers departing the US. For more, see <a href='/laos/cash-or-card'>cash or card in Laos</a>, <a href='/laos/taxis-and-apps'>taxis and apps in Laos</a>, and the <a href='/laos'>Laos money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Which network has the best coverage in Laos?", a: "Unitel, by a clear margin, including much of the mountainous north. Ask for it by name rather than taking the cheapest pack on the counter, because at these prices the difference between options is reach rather than money." },
+        { q: "How much is a SIM card in Laos?", a: "A few dollars for a Unitel or Lao Telecom data pack, bought with your passport at the airport or an official phone shop. That is a fraction of one day of US carrier roaming." },
+        { q: "Will I have signal on the slow boat down the Mekong?", a: "Not for much of it. The two-day slow boat from Huay Xai passes long stretches with no coverage on any network, and the same is true of the mountainous north and the eastern highlands. Download maps, bookings and anything you want to read before you leave a town." },
+        { q: "How much does it cost to use my US phone in Laos?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, and Laos is on AT&T's covered-destination list so the day pass applies rather than pay-per-use. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB abroad." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "AT&T: the International Day Pass destination list, which includes Laos", url: "https://www.att.com/support/article/wireless/KM1395068/", type: "card" },
+          { label: "US State Department: Laos country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Laos.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. Laos inclusion on AT&T's covered-destination list was verified against AT&T's own list on this check, since an uncovered country would need a pay-per-use warning instead of a daily rate. The coverage picture is the desk's read from operator footprints and consistent traveler accounts rather than one official table, and the honest summary is that the towns and Route 13 are fine while the north and the river routes are not. No data plan changes that, which is why this page spends as much space on offline habits as on price."
+      }
     }
   ]
 };

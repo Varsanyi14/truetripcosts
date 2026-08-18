@@ -511,6 +511,71 @@ export default {
         ],
         judgment: "Turkey made US citizens visa-free for short stays relatively recently, dropping the former e-visa requirement, and it has changed its visa arrangements before, so confirm the current rule on the official site before you travel. The 90/180 limit is a rolling window, not a calendar-year reset. Checked July 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Strong cities and the coast" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Local tourist SIM", v: "Expensive, $25 to $40" },
+        { k: "Cheapest", v: "A travel eSIM, a few $ per GB" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "eSIM for Turkey: the rare place it wins on price",
+      description: "Turkish tourist SIMs run 25 to 40 dollars, so an eSIM genuinely undercuts them. Coverage is strong on the coast and thinner in the Anatolian interior.",
+      h1: "Staying connected in Turkey.",
+      lede: "Turkey is the exception on this site: nearly everywhere else a local SIM is cheaper than a travel eSIM, and here it is not. Turkish tourist SIMs are priced well above the regional norm, which makes the eSIM the honest recommendation rather than the convenient one.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>strong in Istanbul, along the Aegean and Mediterranean coasts</b> and in the bigger interior cities, and thinner in the <b>Anatolian interior</b> and the eastern mountains. On price, Turkey inverts the usual pattern: <b>tourist SIMs are expensive</b>, commonly <b>25 to 40 dollars</b> for a 20GB to 30GB visitor package from <b>Turkcell</b>, <b>Vodafone TR</b> or <b>Turk Telekom</b>, because visitor tariffs are set well above what residents pay. A <b>Nomad eSIM</b> at a few dollars per gigabyte undercuts that, so here the cheapest option and the easiest one are the same thing. Your US carrier charges about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data abroad. Two Turkey-specific notes: Turkey is <b>outside the EU roaming zone</b>, so check a regional Europe plan actually names it, and if you are staying <b>longer than 120 days</b> there is a handset registration rule worth knowing about. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "The rare country where the eSIM is genuinely cheapest",
+          icon: "roamfee",
+          key: { fig: "$25 to $40", tag: "Local tourist SIM", text: "Turkish visitor tariffs are set well above resident pricing, so a tourist SIM costs more than a travel eSIM with a similar allowance.", tone: "amber" },
+          p: [
+            "Most pages on this site have to work against our own commercial interest. This one does not, and it is worth explaining why rather than just banking it. Turkish operators sell <b>visitor packages</b> at prices far above what a local pays: commonly <b>25 to 40 dollars</b> for <b>20GB to 30GB</b> valid a month from <b>Turkcell</b>, <b>Vodafone TR</b> or <b>Turk Telekom</b>, with your passport at a carrier shop. It is a deliberate tourist tariff rather than a market price.",
+            "A <b>Nomad eSIM</b> at a few dollars per gigabyte comes in under that for a normal trip's usage, activates before you fly and skips the shop entirely. So in Turkey the cheapest option, the fastest option and the one we earn on happen to coincide. Where a local SIM still wins is a <b>long stay</b> with heavy usage, or if you want a Turkish number for domestic calls and app verifications."
+          ]
+        },
+        {
+          h: "Two Turkey-specific rules worth knowing",
+          icon: "passport",
+          key: { fig: "120 days", tag: "Handset rule", text: "Turkey is outside the EU roaming zone, so check a Europe plan names it. And a foreign handset on a Turkish network can be blocked after 120 days without registration.", tone: "amber" },
+          p: [
+            "First, <b>Turkey is not in the EU or the EEA</b>, so it sits outside <b>Roam Like At Home</b> and a fair number of regional <b>Europe</b> eSIM plans and carrier Europe add-ons leave it out. If Istanbul is one stop on a European trip, open the covered-country list and look for Turkey by name rather than trusting the plan title. The <b>AT&amp;T and Verizon</b> day passes do cover Turkey.",
+            "Second, a rule that catches long-stay visitors rather than tourists: a <b>foreign handset</b> used on a Turkish network with a Turkish SIM can be <b>blocked after about 120 days</b> unless the device is registered and a fee paid. For a two-week holiday it is irrelevant. For a digital nomad stint or a repeat visitor spending months in Turkey it is real, and it is another reason a roaming eSIM, which does not put a Turkish SIM in your phone, is the simpler route."
+          ]
+        },
+        {
+          h: "Coverage, and where it thins",
+          icon: "phoneok",
+          key: { fig: "The interior", tag: "Where signal thins", text: "Istanbul, the coasts and the big cities are strong. The Anatolian interior, the eastern mountains and the long bus routes are patchier.", tone: "teal" },
+          p: [
+            "<b>Istanbul</b> is comprehensively covered, including much of the metro and the ferries across the Bosphorus, and the <b>Aegean and Mediterranean coasts</b> from Cesme round to Antalya are strong, as are <b>Ankara, Izmir</b> and <b>Cappadocia</b>'s towns. 5G has been slower to arrive here than in western Europe, so expect good 4G rather than headline speeds.",
+            "It thins across the <b>Anatolian interior</b>, in the eastern mountains toward Kars and Van, on some long-distance bus routes and in the valleys around Cappadocia once you are walking rather than driving. A balloon flight is fine; a hike down the Ihlara valley may not be. <b>Download offline maps</b> for interior driving and long bus days. This guide is written for US travelers departing the US. For more, see <a href='/turkey/cash-or-card'>cash or card in Turkey</a>, <a href='/turkey/taxis-and-apps'>taxis and apps in Turkey</a>, and the <a href='/turkey'>Turkey money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is an eSIM cheaper than a Turkish SIM card?", a: "Yes, and Turkey is one of the few countries where that is true. Turkish operators sell visitor packages at 25 to 40 dollars for 20GB to 30GB, well above what residents pay, so a travel eSIM at a few dollars per gigabyte undercuts them for a normal trip. A local SIM still makes sense for a long stay with heavy use or if you need a Turkish number." },
+        { q: "Does my Europe data plan cover Turkey?", a: "Often not. Turkey is outside the EU and the EEA, so EU roaming rules do not apply and many regional Europe eSIM plans and carrier Europe add-ons exclude it. Check the covered-country list for Turkey by name before you buy. The AT&T and Verizon day passes do cover it." },
+        { q: "What is the 120-day phone rule in Turkey?", a: "A foreign handset used on a Turkish network with a Turkish SIM can be blocked after roughly 120 days unless the device is registered and a fee paid. It does not affect a normal holiday, but it matters for a long stay, and it is another reason a roaming eSIM is simpler for extended visits." },
+        { q: "How much does it cost to use my US phone in Turkey?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "Turkcell: prepaid and visitor package pages", url: "https://www.turkcell.com.tr/", type: "official" },
+          { label: "European Commission: how EU roaming works and which countries are covered", url: "https://europa.eu/youreurope/citizens/consumers/telecoms-internet/mobile-roaming-costs/index_en.htm", type: "official" }
+        ],
+        judgment: "Checked Aug 2026. This is the page where our recommendation and our commission agree, which is exactly why the reasoning is spelled out rather than asserted: Turkish visitor tariffs are set well above resident pricing, and that is what makes the eSIM cheaper here when it is not cheaper in most of the region. Visitor package prices move and the lira moves faster, so the 25 to 40 dollar range is a current read rather than a fixed figure, and it is worth a look at a carrier shop window if you are unsure. The 120-day handset registration rule is long-standing and affects long stays rather than holidays."
+      }
     }
   ]
 };

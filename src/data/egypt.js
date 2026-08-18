@@ -518,6 +518,71 @@ export default {
         ],
         judgment: "US citizens need a visa for Egypt, and the e-visa and visa-on-arrival routes are both well established. Fees moved in March 2026 (the on-arrival fee rose to $30), so confirm the current amount on the official portal. The six-month passport rule is enforced strictly, and the free Sinai-only stamp excludes the mainland. Checked July 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Good Cairo, Nile, Red Sea coast" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A local SIM, about $6 to $12" },
+        { k: "Signal gaps", v: "Western Desert, Sinai interior" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "medium",
+      title: "Egypt SIM card: about $10 for plenty of data",
+      description: "Vodafone, Orange, Etisalat and WE sell tourist data for roughly 6 to 12 dollars. Coverage is good along the Nile and the Red Sea and thin in the Western Desert.",
+      h1: "Staying connected in Egypt.",
+      lede: "Egyptian data is cheap and the tourist packs are generous, so the local SIM is the answer on price. The two things worth knowing are where the signal stops and that the airport counters price higher than the shops in town.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>good in Cairo, along the Nile valley through Luxor and Aswan, and on the Red Sea coast</b>, and thin in the <b>Western Desert</b>, the <b>Sinai interior</b> and on the desert roads. On price the local option wins: a tourist SIM from <b>Vodafone Egypt</b>, <b>Orange</b>, <b>Etisalat</b> or <b>WE</b> costs roughly <b>6 to 12 dollars</b> for a large data allowance, and you need your <b>passport</b> to register. Your US carrier charges about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data abroad before slowing to <b>256kbps</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and avoids the counter, which some travelers will prefer given that the airport kiosks are the pushiest part of arriving in Egypt. If you are heading into the <b>desert</b> or up <b>Sinai</b>, <b>download offline maps</b> first. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "Cheap data, and where to buy it",
+          icon: "tag",
+          key: { fig: "$6 to $12", tag: "Large allowance", text: "All four networks sell tourist packs. Vodafone generally has the widest reach. Shops in town are usually cheaper than the airport kiosks.", tone: "teal" },
+          p: [
+            "A tourist data pack runs roughly <b>6 to 12 dollars</b> for an allowance most visitors will not finish, and all four networks sell one: <b>Vodafone Egypt</b> generally has the broadest reach and is the safe default, with <b>Orange</b>, <b>Etisalat</b> and <b>WE</b> competitive. Registration needs your <b>passport</b>. Against a week of US carrier day passes at <b>70 to 84 dollars</b>, it is not a close comparison, and we earn nothing on the local SIM.",
+            "One practical warning that is really about money. The <b>arrivals-hall kiosks</b> at Cairo and Hurghada are set up for tourists and priced accordingly, and the pitch can be firm. An official <b>carrier shop in town</b> usually sells the same pack for less, and if you already have data working through an eSIM or a T-Mobile allowance you can make that decision unhurried rather than at the airport. Agree the price and what is included <b>before</b> the SIM goes in the phone."
+          ]
+        },
+        {
+          h: "Where the signal stops",
+          icon: "alert",
+          key: { fig: "The desert", tag: "Where signal drops", text: "Cairo, the Nile valley and the Red Sea coast are covered. The Western Desert, the Sinai interior and the long desert roads are not.", tone: "amber" },
+          p: [
+            "Egypt's population lives along the Nile and the coasts, and the network does too. <b>Cairo, Alexandria, Luxor, Aswan</b>, the Red Sea resorts and the road between them are comfortable, with 4G throughout and 5G in the cities. Outside that: the <b>Western Desert</b> and the oases route toward Siwa, the <b>Sinai interior</b> including the St Catherine and Mount Sinai roads, the desert highways and the <b>Nile cruise</b> stretches between towns all lose signal for long periods.",
+            "That is geography rather than tariff, so plan for it: <b>download offline maps</b>, save your hotel and Nile cruise details offline, and expect a desert camp or a remote dive site to have nothing. On a cruise boat, the onboard <b>wifi</b> is often satellite and slow, which is worth knowing before you rely on it for anything."
+          ]
+        },
+        {
+          h: "Roaming and the eSIM",
+          icon: "roamfee",
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "AT&T caps its Day Pass at 10 daily fees per bill period. T-Mobile's mid and upper tiers include 5GB to 30GB of high-speed data abroad.", tone: "teal" },
+          p: [
+            "<b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b>, so a week is <b>70 to 84 dollars</b>, and <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, so check yours first: on a short Nile trip that may be all you need.",
+            "The honest case for a <b>Nomad eSIM</b> in Egypt is arriving with data already working, which is worth more here than in most countries: it lets you decline the airport kiosk, order a ride, and check what a taxi should cost before anybody quotes you a number. It is a few dollars per gigabyte and it is the convenience option, not the cheap one. This guide is written for US travelers departing the US. For more, see <a href='/egypt/cash-or-card'>cash or card in Egypt</a>, <a href='/egypt/taxis-and-apps'>taxis and apps in Egypt</a>, and the <a href='/egypt'>Egypt money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is a SIM card in Egypt?", a: "Roughly 6 to 12 dollars for a tourist data pack from Vodafone, Orange, Etisalat or WE, with your passport for registration. Shops in town are usually cheaper than the arrivals-hall kiosks, which are priced for tourists." },
+        { q: "Which network is best in Egypt?", a: "Vodafone Egypt generally has the widest reach and is the safe default, with Orange, Etisalat and WE competitive on price. None covers the Western Desert or the Sinai interior reliably." },
+        { q: "Will I have signal on a Nile cruise?", a: "In the towns yes, between them often not. The stretches between Luxor and Aswan lose coverage for long periods, and onboard wifi is frequently satellite and slow. Download maps and your booking details before you board." },
+        { q: "How much does it cost to use my US phone in Egypt?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "Vodafone Egypt: prepaid and tourist data pack pages", url: "https://www.vodafone.com.eg/", type: "official" },
+          { label: "US State Department: Egypt country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Egypt.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. Two honest points pull in different directions here and both belong on the page. The local SIM is cheaper and we earn nothing on it. At the same time, arriving in Egypt with data already working has a value beyond convenience, because it lets a traveler decline the airport kiosk and check a fare before being quoted one, and that is a real argument for the product we do earn on. Local pack pricing moves with the pound and with promotions, so the 6 to 12 dollar range is a current shape rather than a fixed price."
+      }
     }
   ]
 };

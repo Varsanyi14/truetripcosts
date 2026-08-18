@@ -492,6 +492,71 @@ export default {
         ],
         judgment: "Vietnam's e-visa fee is charged in dong and its rules have changed in recent years, with the 90-day, multiple-entry e-visa relatively new, so confirm the current fee and conditions on the official portal before you pay. Checked July 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Excellent, the remote north included" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A Viettel SIM, $5 to $8" },
+        { k: "SIM registration", v: "Passport, and it is enforced" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Vietnam SIM card: Viettel for $5 beats everything",
+      description: "A Viettel or Vinaphone SIM is 5 to 8 dollars for a month of generous data on excellent coverage. Registration needs your passport and is genuinely enforced.",
+      h1: "Staying connected in Vietnam.",
+      lede: "Vietnam has better mobile coverage than most of Europe and charges almost nothing for it. The local SIM is the answer here, and the only real friction is that registration is properly enforced.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>excellent</b>, and unusually so: strong in the cities, along the whole coast, through the <b>Mekong delta</b> and up into the <b>remote north</b> around Sapa and Ha Giang where you would not expect it. The cheapest option is clearly local. A <b>Viettel</b> or <b>Vinaphone</b> SIM costs about <b>5 to 8 dollars</b> for a month of generous data, sold at the airports and in phone shops, and <b>registration with your passport is required and enforced</b>, so buy from an official counter rather than a street stall. Your US carrier charges about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data abroad before slowing to <b>256kbps</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and suits a regional trip or a late arrival. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "Viettel for a few dollars, on very good coverage",
+          icon: "tag",
+          key: { fig: "$5 to $8", tag: "For a month", text: "Viettel has the widest reach in the country, including the northern mountains. A month of generous data costs less than one day of carrier roaming.", tone: "teal" },
+          p: [
+            "<b>Viettel</b> is the network to want. It has the broadest footprint in Vietnam by a clear margin, including the <b>northern mountains</b>, the <b>Ha Giang loop</b> and rural stretches where other networks fade, and a tourist data package runs about <b>5 to 8 dollars</b> for a month. <b>Vinaphone</b> is a solid second and <b>Mobifone</b> is fine in the cities. Buy at an <b>airport counter</b> or an official carrier shop in town.",
+            "One day of a US carrier day pass costs more than the whole month of local data, and a travel eSIM costs several times it. We earn a commission on eSIMs and nothing on a Viettel SIM, and the honest recommendation for a Vietnam trip is still Viettel."
+          ]
+        },
+        {
+          h: "Registration is real, so buy from an official counter",
+          icon: "passport",
+          key: { fig: "Passport", tag: "Required, enforced", text: "Vietnam enforces SIM registration and has cut off unregistered lines. Buy at an airport counter or carrier shop, not from a street stall.", tone: "amber" },
+          p: [
+            "Vietnam requires every SIM to be <b>registered to an identified person</b>, and unlike some countries that write the rule and shrug, it has run enforcement waves and <b>disconnected unregistered lines</b> in bulk. For a visitor the process is simple: your <b>passport</b>, a few minutes at the counter, and it works. What matters is where you buy.",
+            "A SIM sold from a <b>street stall or a market table</b>, already activated and asking for no documents, is registered to somebody else's identity and can be cut off mid-trip. It is a small saving against losing your data on day four in Hue. The airport counters and the official <b>Viettel Store</b> and <b>Vinaphone</b> shops are everywhere and cost the same."
+          ]
+        },
+        {
+          h: "Coverage worth noting, and when to buy something else",
+          icon: "roamfee",
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "Roaming is the expensive default and AT&T caps at 10 fees a bill period. Check T-Mobile first, since its mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          p: [
+            "The coverage point deserves a line because it is genuinely unusual: Vietnam has invested heavily and you will have a working connection in places that would be dead zones in richer countries, including much of the <b>Ha Giang loop</b>, the <b>Hai Van pass</b> and the delta. The thin spots are deep in the national parks, on some boat routes in <b>Ha Long bay</b> and in the far mountain valleys. The <b>overnight trains</b> hold a signal for most of the route.",
+            "On the alternatives: <b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b> and <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value. A <b>Nomad eSIM</b> is worth it for a <b>multi-country trip</b> or a 1am arrival at Tan Son Nhat, and it is the convenience option rather than the cheap one. This guide is written for US travelers departing the US. For more, see <a href='/vietnam/cash-or-card'>cash or card in Vietnam</a>, <a href='/vietnam/taxis-and-apps'>taxis and apps in Vietnam</a>, and the <a href='/vietnam'>Vietnam money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is a SIM card in Vietnam?", a: "About 5 to 8 dollars for a month of generous data from Viettel or Vinaphone, sold at the airports and in official carrier shops. You need your passport to register. That is less than one day of US carrier roaming." },
+        { q: "Which network is best in Vietnam?", a: "Viettel, by a clear margin on reach. It covers the northern mountains, the Ha Giang loop and rural areas where other networks fade. Vinaphone is a solid second and Mobifone is fine in the cities." },
+        { q: "Do I need to register a SIM card in Vietnam?", a: "Yes, with your passport, and it is genuinely enforced. Vietnam has run enforcement waves and disconnected unregistered lines in bulk. Buy from an airport counter or an official carrier shop rather than a street stall, since a pre-activated stall SIM is registered to somebody else and can be cut off mid-trip." },
+        { q: "How much does it cost to use my US phone in Vietnam?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "Viettel: prepaid and tourist data package pages", url: "https://viettel.vn/", type: "official" },
+          { label: "US State Department: Vietnam country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Vietnam.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. The two load-bearing points are that Vietnamese coverage is genuinely better than its income level suggests, which is the desk's read from operator maps and consistent traveler accounts, and that SIM registration is enforced rather than nominal, which is why this page tells you where to buy rather than only what to buy. Local package contents shift with promotions, so the 5 to 8 dollar range is the current shape of the offer. We earn on eSIM links and nothing on a Viettel SIM."
+      }
     }
   ]
 };

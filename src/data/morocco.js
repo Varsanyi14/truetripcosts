@@ -450,6 +450,71 @@ export default {
         ],
         judgment: "These are the money traps most consistently reported in Morocco's tourist medinas in 2025 and 2026, concentrated in Marrakech and Fes, not a ranked risk list, and dirham amounts move, so treat figures as a recent read. The pattern is financial pressure rather than danger, and understanding it defuses most of the risk. Checked July 2026."
       }
+    },
+    {
+      slug: "staying-connected",
+      glance: [
+        { k: "Coverage", v: "Good cities, coast, main routes" },
+        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Cheapest", v: "A local SIM, about $5 to $10" },
+        { k: "Signal gaps", v: "High Atlas, Sahara, Rif roads" }
+      ],
+      live: true,
+      esim: true,
+      topic: "connectivity",
+      caution: "low",
+      title: "Morocco SIM card: about $10 at the airport",
+      description: "Maroc Telecom, Orange and inwi sell generous tourist data for around 5 to 10 dollars. Coverage is good in the cities and thins in the High Atlas and the Sahara.",
+      h1: "Staying connected in Morocco.",
+      lede: "Moroccan data is cheap and the airport counters are used to visitors, so the practical answer is a local SIM bought on arrival. The part that needs planning is the mountains and the desert, where no plan helps.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-18",
+      answer: "Coverage is <b>good in the cities, along the coast and on the main routes</b> between Marrakech, Fes, Casablanca and Tangier, and thin in the <b>High Atlas</b>, the <b>Sahara</b> and the back roads of the <b>Rif</b>. On price the local option wins: a SIM from <b>Maroc Telecom</b>, <b>Orange Maroc</b> or <b>inwi</b> costs about <b>5 to 10 dollars</b> for a generous data pack, sold at the airports and in shops everywhere, with your <b>passport</b> at purchase. Your US carrier charges about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data abroad before slowing to <b>256kbps</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and is the simpler route, particularly since Moroccan carriers have been slower than most to support eSIM for visitors. Before a desert trip or a mountain drive, <b>download offline maps</b>. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      sections: [
+        {
+          h: "The local SIM is cheap and easy to buy",
+          icon: "mad",
+          key: { fig: "$5 to $10", tag: "Generous data", text: "Maroc Telecom, Orange and inwi all sell tourist data packs at the airports. Passport at purchase, and Maroc Telecom has the widest rural reach.", tone: "teal" },
+          p: [
+            "All three networks sell visitor data packs and the counters at <b>Marrakech, Casablanca and Fes</b> airports handle tourists all day: roughly <b>5 to 10 dollars</b> for a generous allowance over a couple of weeks, with your <b>passport</b>. <b>Maroc Telecom</b> generally has the widest rural reach, which matters if you are heading toward the Atlas or the south; <b>Orange</b> and <b>inwi</b> are competitive in the cities and often cheaper.",
+            "A week of <b>AT&amp;T or Verizon</b> day passes is <b>70 to 84 dollars</b>, so the local SIM is a fraction of it, and a travel eSIM at a few dollars per gigabyte costs several times the local pack for less data. We earn a commission on eSIMs and nothing on a Maroc Telecom SIM, and for a two-week Morocco trip the SIM is the cheaper answer."
+          ]
+        },
+        {
+          h: "Where it thins, and it thins in the places you are going",
+          icon: "alert",
+          key: { fig: "High Atlas", tag: "Where signal drops", text: "Cities and main routes are fine. The High Atlas passes, the Sahara south of Zagora and the Rif back roads lose signal, on any network.", tone: "amber" },
+          p: [
+            "The gaps here are not obscure corners, they are on plenty of itineraries. The <b>Tizi n'Tichka</b> and <b>Tizi n'Test</b> passes over the High Atlas drop in and out, the <b>Todra</b> and <b>Dades</b> gorges are patchy once you are off the main road, the <b>Sahara</b> south of Zagora and Merzouga is largely empty of signal, and the <b>Rif</b> back roads around Chefchaouen thin quickly. A desert camp will have no coverage and possibly satellite wifi.",
+            "None of that is fixed by which plan you buy. <b>Download offline maps</b> before a mountain drive or a desert night, save your riad address and booking so they open offline, and if you are driving the passes, note that a breakdown there is a wait rather than a phone call. In the medinas the opposite problem applies: the signal is fine and the navigation is the hard part, so offline maps earn their place there too."
+          ]
+        },
+        {
+          h: "Roaming, the eSIM, and one practical note",
+          icon: "roamfee",
+          key: { fig: "$10-12/day", tag: "Roaming default", text: "AT&T caps its Day Pass at 10 daily fees per bill period. T-Mobile's mid and upper tiers include 5GB to 30GB of high-speed data abroad.", tone: "teal" },
+          p: [
+            "<b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b>, so a week is <b>70 to 84 dollars</b>, and <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, so check yours before buying anything.",
+            "The practical note in the eSIM's favour: Moroccan carriers have been <b>slower than most to offer eSIM to visitors</b>, so if your phone has no SIM tray, a local plan may mean a physical SIM you cannot use and the travel eSIM becomes the only workable option rather than merely the convenient one. Worth checking your handset before you count on the counter. This guide is written for US travelers departing the US. For more, see <a href='/morocco/cash-or-card'>cash or card in Morocco</a>, <a href='/morocco/taxis-and-apps'>taxis and apps in Morocco</a>, and the <a href='/morocco'>Morocco money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is a SIM card in Morocco?", a: "About 5 to 10 dollars for a generous data pack from Maroc Telecom, Orange or inwi, bought with your passport at the airport or a phone shop. That is a fraction of a week of US carrier roaming." },
+        { q: "Which network has the best coverage in Morocco?", a: "Maroc Telecom generally has the widest rural reach, which matters if you are heading into the Atlas or the south. Orange and inwi are competitive in the cities and often cheaper. None of them covers the High Atlas passes or the deep Sahara reliably." },
+        { q: "Will I have signal in the Sahara or the Atlas mountains?", a: "Often not. The Tizi n'Tichka and Tizi n'Test passes drop in and out, the gorges are patchy off the main road, and the desert south of Zagora and Merzouga is largely without signal. A desert camp will have none. Download offline maps and save your bookings so they open offline." },
+        { q: "How much does it cost to use my US phone in Morocco?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad." }
+      ],
+        sources: {
+        links: [
+          { label: "T-Mobile: international roaming pages listing the high-speed data allowance by plan tier", url: "https://www.t-mobile.com/customers/unlimited-roaming-sms-data", type: "card" },
+          { label: "Verizon: international travel pages, the TravelPass daily rate and what it includes", url: "https://www.verizon.com/plans/international/international-travel/travel-pass/", type: "card" },
+          { label: "AT&T: International Day Pass details, the daily rate and the 10-fee cap per bill period", url: "https://www.att.com/support/article/wireless/KM1175103/", type: "card" },
+          { label: "Maroc Telecom: prepaid and tourist data offer pages", url: "https://www.iam.ma/", type: "official" },
+          { label: "US State Department: Morocco country information and road conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Morocco.html", type: "gov" }
+        ],
+        judgment: "Checked Aug 2026. The local SIM is the cheaper answer and we earn nothing on it, which is worth stating on a page that carries an eSIM link. The one honest point in the eSIM's favour is handset-specific rather than commercial: Moroccan carriers have lagged on visitor eSIM support, so a phone without a SIM tray may have no local option at all. The coverage gaps are the desk's read from operator footprints and consistent traveler accounts, and the passes and deep desert are reported as unreliable often enough to state plainly."
+      }
     }
   ]
 };
