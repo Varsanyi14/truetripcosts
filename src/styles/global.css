@@ -869,3 +869,91 @@
 .rulesbar-tx{flex:1;min-width:0;font-size:14.5px;line-height:1.45;color:#3B4A46}
 .rulesbar-tx b{color:var(--ink);font-weight:600}
 .rulesbar-arw{flex:none;color:var(--teal-deep)}
+
+  /* ---------------------------------------------------------------------------
+     FIND A PAGE (site search)
+
+     Lives here rather than in SearchBox.astro for two reasons. The result rows are built
+     in the browser, so Astro's scoping attribute would never reach them, and a component
+     style block big enough to hold all this pushed the Nav chunk past the 4kB threshold
+     Astro uses to decide between an inline <style> and an external file, which quietly
+     broke scripts/check-nav-dropdown.mjs (it resolves the nav geometry out of the inlined
+     CSS). Keeping it global keeps the nav chunk small and inline. Every selector is
+     prefixed .ttcs, .nsearch or .gm-search, so none of it can reach anything else.
+     --------------------------------------------------------------------------- */
+  /* Find a page. The box lives in the nav row, between the wordmark and Guides, and
+     shrinks before anything else does: flex:1 with a cap, so it takes the slack in the
+     760px column rather than pushing the wordmark onto two lines. The numbers, measured
+     against the real type: the wordmark needs about 175px, Guides 62px and Get updates
+     85px, which leaves roughly 350px for the box at full width and about 230px at 641px.
+     Below that there is no room for an input at all, so the box goes and the Guides menu,
+     which is the menu on a phone, carries a row through to /search instead. The
+     breakpoint is the 640px one the panel below already uses.
+
+     flex-basis is 0 on purpose: the box takes the slack that is left after the wordmark,
+     Guides and Get updates have what they need, and it is the thing that gives way if a
+     width turns out tighter than the type measures. The wordmark can never be squeezed
+     into two lines by it, and the row can never overflow. */
+  .nsearch{flex:1 1 0;min-width:0;max-width:290px;position:relative}
+  .gm-search{display:none;align-items:center;gap:9px;margin:0 0 12px;padding:11px 12px;border:1px solid var(--line);border-radius:10px;font-size:13.5px;font-weight:500;color:var(--teal-deep);text-decoration:none;background:var(--paper)}
+  .gm-search:hover{border-color:var(--teal)}
+
+  /* Below 640px there is no room for an input in the nav row, so the box goes and the
+     Guides menu, which is the menu on a phone, carries a row through to /search. */
+  @media(max-width:640px){
+    .nsearch{display:none}
+    .gm-search{display:flex}
+  }
+
+/* Global rather than scoped on purpose: the result rows are built in the browser, and
+   Astro's scoping attribute only lands on markup that exists at build time. Every
+   selector here is prefixed .ttcs so it cannot reach anything else on the site. */
+.ttcs{position:relative}
+.ttcs-label{display:block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 7px}
+.ttcs-field{display:flex;align-items:center;gap:9px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:0 12px}
+.ttcs-field:focus-within{border-color:var(--teal);box-shadow:0 0 0 3px rgba(14,122,95,.12)}
+.ttcs-mag{flex:none;color:var(--muted)}
+.ttcs-input{flex:1;min-width:0;font-family:inherit;font-size:16px;color:var(--ink);background:none;border:0;padding:12px 0;outline:none}
+.ttcs-input::placeholder{color:var(--muted)}
+.ttcs-clear{flex:none;display:flex;align-items:center;justify-content:center;width:26px;height:26px;border:0;border-radius:999px;background:var(--paper);color:var(--muted);cursor:pointer;padding:0}
+.ttcs-clear:hover{color:var(--ink)}
+.ttcs-hint{font-size:12.5px;color:var(--muted);margin:9px 0 0;line-height:1.45}
+.ttcs-status{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);margin:10px 0 0}
+.ttcs-status:empty{display:none}
+
+.ttcs-list{list-style:none;margin:8px 0 0;padding:0;max-height:min(58vh,420px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.ttcs-row{display:block;padding:9px 10px;border-radius:10px;text-decoration:none;color:var(--ink)}
+.ttcs-row:hover{background:var(--paper)}
+.ttcs-row[aria-selected="true"]{background:var(--green-bg)}
+.ttcs-row:focus-visible{outline:2px solid var(--teal-deep);outline-offset:1px}
+.ttcs-row-head{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
+.ttcs-row-t{font-family:var(--serif);font-weight:500;font-size:15.5px;line-height:1.25;color:var(--ink)}
+.ttcs-row-c{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--teal-deep);background:var(--green-bg);border-radius:999px;padding:2px 7px;white-space:nowrap}
+.ttcs-row-d{display:block;margin-top:3px;font-size:13px;line-height:1.45;color:#5C6A66;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.ttcs-more{margin:10px 0 0;font-size:13.5px}
+.ttcs-more a{font-weight:500}
+
+.ttcs-empty{margin:12px 0 0}
+.ttcs-empty-h{font-family:var(--serif);font-weight:500;font-size:17px;margin:0 0 5px;color:var(--ink)}
+.ttcs-empty-p{font-size:13.5px;color:var(--muted);margin:0;line-height:1.5}
+.ttcs-starts{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)}
+.ttcs-starts-h{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:0 0 7px;line-height:1.5}
+.ttcs-starts-list{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:7px}
+.ttcs-starts-list a{display:inline-block;font-size:13px;padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:var(--card);text-decoration:none}
+.ttcs-starts-list a:hover{border-color:var(--teal);color:var(--teal-deep)}
+
+.ttcs-fail{margin:12px 0 0;font-size:13.5px;color:var(--amber);background:var(--amber-bg);border:1px solid #F0D6AE;border-radius:10px;padding:11px 13px}
+
+/* The compact version in the nav. The box sits in the nav row itself, and everything it
+   says back floats under it as one card. The label and the standing hint are noise in a
+   nav, so they only show on the /search page. */
+.ttcs[data-variant="bar"] .ttcs-label{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.ttcs[data-variant="bar"] .ttcs-hint{display:none}
+.ttcs[data-variant="bar"] .ttcs-field{border-radius:999px;padding:0 10px 0 12px;background:var(--card)}
+.ttcs[data-variant="bar"] .ttcs-input{font-size:14.5px;padding:7px 0}
+.ttcs[data-variant="bar"] .ttcs-clear{width:22px;height:22px}
+.ttcs[data-variant="bar"] .ttcs-out{position:absolute;top:calc(100% + 9px);left:0;width:min(420px,calc(100vw - 44px));max-height:calc(100vh - 96px);overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:12px;z-index:61}
+.ttcs[data-variant="bar"] .ttcs-status{margin:0 0 6px}
+.ttcs[data-variant="bar"] .ttcs-list{margin:0;max-height:min(52vh,340px)}
+.ttcs[data-variant="bar"] .ttcs-row-d{-webkit-line-clamp:1}
+.ttcs[data-variant="bar"] .ttcs-empty{margin:2px 0 0}

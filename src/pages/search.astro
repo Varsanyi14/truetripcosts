@@ -1,0 +1,59 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import SearchBox from '../components/SearchBox.astro';
+import { indexCounts } from '../data/search-index.js';
+
+// The full-page version of the search box, and the place the nav panel sends a reader who
+// wants the whole list. It accepts ?q= so a set of results can be shared or bookmarked.
+//
+// The counts below are read from the index at build time rather than typed, so the page
+// cannot claim to search more of the site than it does. If a spoke wave lands, the number
+// moves on its own.
+const counts = indexCounts();
+const title = 'Search True Trip Costs: find a country, a topic or a tool';
+const description = 'Find any page on True Trip Costs by typing: ' + counts.country
+  + ' country money guides, the ' + counts.spoke + ' topic pages inside them, '
+  + counts.card + ' money rules cards and ' + counts.page
+  + ' hubs, comparison tools and reference pages. If a subject is not covered yet, this says so.';
+---
+<Base title={title} description={description} robots="noindex,follow">
+  <Nav />
+  <main class="wrap">
+    <section class="sr-head">
+      <p class="lab">Find a page</p>
+      <h1>Search the site.</h1>
+      <p class="sub">
+        Type a country, a city, or a subject like tipping, eSIM or hotel tax. This looks across
+        {counts.country} country guides, the {counts.spoke} topic pages inside them,
+        {counts.card} money rules cards and {counts.page} hubs, comparison tools and reference pages.
+        It searches nothing else, so if we have not covered something it will tell you plainly
+        instead of guessing.
+      </p>
+    </section>
+
+    <section class="sr-box" aria-label="Search">
+      <SearchBox variant="page" id="pagesearch" autofocus={true} limit={60} />
+    </section>
+
+    <section class="sr-else">
+      <p class="lab">Or browse</p>
+      <p class="sub">
+        Know where you are going? <a href="/countries">Every country guide</a> is listed A to Z, and the
+        <a href="/">home page</a> opens a guide in one tap. Weighing up a region instead?
+        <a href="/compare">Compare countries by region</a>. Traveling soon?
+        <a href="/rules">The money rules cards</a> are built for your phone.
+      </p>
+    </section>
+  </main>
+  <Footer />
+
+  <style>
+    .sr-head{padding:48px 0 4px}
+    .sr-head h1{margin:0 0 12px}
+    .sr-box{padding:6px 0 0;border-top:0;margin-top:0}
+    .sr-else{padding-bottom:64px}
+    .sr-else .sub{margin-bottom:0}
+  </style>
+</Base>

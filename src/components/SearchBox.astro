@@ -1,0 +1,425 @@
+---
+// The search box. Finds pages, and only pages that exist.
+//
+// It fetches /search-index.json once, on the first interaction, and filters it in memory.
+// There is no search library, no hosted search, and no request to anything but this site.
+// It does not answer questions and it does not reach the open web: it is a way through
+// the site, not an oracle.
+//
+// The rails, in code terms:
+//   Every link comes from a record in the index, so a result cannot point at a page that
+//   was never built. Nothing is ever assembled out of what the reader typed.
+//   When nothing matches, it says nothing matches. The pages offered under that line are
+//   labelled as not being matches, and they are read from the index too, so they cannot
+//   outlive the pages they point at.
+//   Row text is the page's own name and its own description. Nothing is written here to
+//   make a page sound like more than it is.
+//
+// Nothing is stored. No localStorage, no sessionStorage, no cookie: state lives in the
+// page for as long as the reader is on it and then it is gone.
+//
+// Two variants. "bar" is the compact box that sits in the nav on every page: a short list
+// of results hanging under it, and a link to the full set. "page" is /search: a longer
+// list, and it keeps ?q= in the address bar so a search can be shared or bookmarked.
+const {
+  variant = 'page',
+  id = 'ttcs',
+  autofocus = false,
+  limit = variant === 'bar' ? 8 : 60,
+  placeholder = variant === 'bar' ? 'Find a page' : 'A country, or a topic like tipping',
+} = Astro.props;
+const inputId = id + '-input';
+const listId = id + '-list';
+const statusId = id + '-status';
+---
+
+<div class="ttcs" data-ttc-search data-variant={variant} data-limit={String(limit)} data-prefix={id}>
+  <label class="ttcs-label" for={inputId}>Find a page</label>
+  <div class="ttcs-field">
+    <svg class="ttcs-mag" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+    <input
+      class="ttcs-input"
+      id={inputId}
+      type="text"
+      role="combobox"
+      aria-expanded="false"
+      aria-controls={listId}
+      aria-describedby={statusId}
+      aria-autocomplete="list"
+      autocomplete="off"
+      autocorrect="off"
+      spellcheck="false"
+      enterkeyhint="go"
+      placeholder={placeholder}
+      data-autofocus={autofocus ? 'yes' : null}
+    />
+    <button class="ttcs-clear" type="button" aria-label="Clear" hidden>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+
+  <p class="ttcs-hint">Searches the pages on this site: country guides, topic pages, the money rules cards and the comparison tools.</p>
+
+  <!-- Everything the search says back lives in here, so the nav variant can float the lot
+       as one card under the box while /search keeps it in the flow of the page. -->
+  <div class="ttcs-out" hidden>
+    <p class="ttcs-status" id={statusId} role="status" aria-live="polite"></p>
+
+    <ul class="ttcs-list" id={listId} role="listbox" aria-label="Search results" hidden></ul>
+
+    <p class="ttcs-more" hidden><a class="ttcs-more-a" href="/search">See all matches</a></p>
+
+    <div class="ttcs-empty" hidden>
+      <p class="ttcs-empty-h">We do not have a page on that yet.</p>
+      <p class="ttcs-empty-p">This looks only at pages that exist here, so an empty answer is the real one rather than a miss.</p>
+      <div class="ttcs-starts">
+        <p class="ttcs-starts-h">Not a match for what you typed, just where people usually start:</p>
+        <ul class="ttcs-starts-list"></ul>
+      </div>
+    </div>
+
+    <p class="ttcs-fail" hidden>The page list is not loading right now. You can browse <a href="/countries">every country guide</a> or open the Guides menu instead.</p>
+  </div>
+
+  <noscript>
+    <p class="ttcs-hint">Typing needs JavaScript. Without it, <a href="/countries">every country guide</a> is listed A to Z, and the Guides menu holds the topic pages and comparison tools.</p>
+  </noscript>
+</div>
+
+<script>
+  // One script for every instance on the page, and one fetch of the index shared between
+  // them. Written in plain ES5-ish style to match the other scripts on the site.
+  (function () {
+    var roots = document.querySelectorAll('[data-ttc-search]');
+    if (!roots.length) return;
+
+    // Lowercase, strip accents, and treat punctuation as a space. Both the index text and
+    // the query go through this, so "Vietnam," and "vietnam" are the same word and
+    // "Curacao" finds "Cura\u00E7ao".
+    function norm(s) {
+      return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, ' ').trim();
+    }
+
+    // Class weights, used only to break ties between records that matched equally well.
+    // A country guide is the broadest answer, then a topic page or tool, then a card, then
+    // one country's spoke.
+    var WEIGHT = { country: 4, page: 3, card: 2, spoke: 1 };
+
+    var indexPromise = null;
+    function loadIndex() {
+      if (indexPromise) return indexPromise;
+      indexPromise = fetch('/search-index.json', { credentials: 'same-origin' })
+        .then(function (r) {
+          if (!r.ok) throw new Error('search index http ' + r.status);
+          return r.json();
+        })
+        .then(function (data) {
+          var records = (data && data.records ? data.records : []).map(function (r) {
+            return {
+              u: r.u, t: r.t, d: r.d || '', c: r.c || '', k: r.k,
+              nt: norm(r.t),
+              nh: norm([r.t, r.c, r.d, r.x].join(' '))
+            };
+          });
+          var byUrl = {};
+          records.forEach(function (r) { byUrl[r.u] = r; });
+          // The starting points are resolved against the records, so a link can only be
+          // offered if the page is in the index. A url that has gone is simply dropped.
+          var starts = (data && data.starts ? data.starts : []).map(function (u) { return byUrl[u]; })
+            .filter(Boolean);
+          return { records: records, starts: starts };
+        });
+      return indexPromise;
+    }
+
+    function wordStart(hay, needle) {
+      var at = hay.indexOf(needle);
+      while (at > -1) {
+        if (at === 0 || hay.charAt(at - 1) === ' ') return true;
+        at = hay.indexOf(needle, at + 1);
+      }
+      return false;
+    }
+
+    // Substring and token matching over a few hundred records, which is quick enough to
+    // run on every keystroke and simple enough to reason about. A record is a candidate
+    // only if every word typed appears somewhere in its own text. Ranking then puts an
+    // exact name first, a name that starts with the query next, a word-boundary hit next,
+    // and a mid-string hit last, exactly as the brief asks.
+    function search(query, index) {
+      var q = norm(query);
+      if (q.length < 2) return [];
+      var tokens = q.split(' ');
+      var hits = [];
+      for (var i = 0; i < index.records.length; i++) {
+        var r = index.records[i];
+        var all = true;
+        for (var j = 0; j < tokens.length; j++) {
+          if (r.nh.indexOf(tokens[j]) === -1) { all = false; break; }
+        }
+        if (!all) continue;
+        var tier = 1;
+        if (r.nt === q) tier = 5;
+        else if (r.nt.indexOf(q) === 0) tier = 4;
+        else if (wordStart(r.nt, q)) tier = 3;
+        else if (r.nt.indexOf(q) > -1) tier = 2;
+        var titleHits = 0;
+        for (var k = 0; k < tokens.length; k++) if (r.nt.indexOf(tokens[k]) > -1) titleHits++;
+        hits.push({ r: r, s: tier * 1000 + titleHits * 20 + (WEIGHT[r.k] || 0) });
+      }
+      hits.sort(function (a, b) { return b.s - a.s || a.r.t.localeCompare(b.r.t); });
+      return hits.map(function (h) { return h.r; });
+    }
+
+    function row(rec, id) {
+      var li = document.createElement('li');
+      li.setAttribute('role', 'presentation');
+      var a = document.createElement('a');
+      a.className = 'ttcs-row';
+      a.setAttribute('role', 'option');
+      a.setAttribute('aria-selected', 'false');
+      a.id = id;
+      a.href = rec.u;                       // straight from the index, never from the query
+      var head = document.createElement('span');
+      head.className = 'ttcs-row-head';
+      var t = document.createElement('span');
+      t.className = 'ttcs-row-t';
+      t.textContent = rec.t;
+      head.appendChild(t);
+      if (rec.c) {
+        var c = document.createElement('span');
+        c.className = 'ttcs-row-c';
+        c.textContent = rec.c;
+        head.appendChild(c);
+      }
+      a.appendChild(head);
+      if (rec.d) {
+        var d = document.createElement('span');
+        d.className = 'ttcs-row-d';
+        d.textContent = rec.d;
+        a.appendChild(d);
+      }
+      li.appendChild(a);
+      return li;
+    }
+
+    function setup(rootEl) {
+      var root = rootEl;
+      var variant = root.getAttribute('data-variant') || 'page';
+      var limit = parseInt(root.getAttribute('data-limit'), 10) || 8;
+      var prefix = root.getAttribute('data-prefix') || 'ttcs';
+      var input = root.querySelector('.ttcs-input');
+      var clear = root.querySelector('.ttcs-clear');
+      var out = root.querySelector('.ttcs-out');
+      var list = root.querySelector('.ttcs-list');
+      var status = root.querySelector('.ttcs-status');
+      var empty = root.querySelector('.ttcs-empty');
+      var startsList = root.querySelector('.ttcs-starts-list');
+      var more = root.querySelector('.ttcs-more');
+      var moreLink = root.querySelector('.ttcs-more-a');
+      var fail = root.querySelector('.ttcs-fail');
+      var index = null;
+      var results = [];
+      var active = -1;
+      var urlTimer = null;
+
+      function setActive(next) {
+        var options = list.querySelectorAll('.ttcs-row');
+        if (active > -1 && options[active]) options[active].setAttribute('aria-selected', 'false');
+        active = next;
+        if (active > -1 && options[active]) {
+          options[active].setAttribute('aria-selected', 'true');
+          input.setAttribute('aria-activedescendant', options[active].id);
+          if (options[active].scrollIntoView) options[active].scrollIntoView({ block: 'nearest' });
+        } else {
+          input.removeAttribute('aria-activedescendant');
+        }
+      }
+
+      // In the nav the output is a floating card, so it must not sit open and empty over
+      // the page. It shows when there is something to show and nothing else.
+      function syncOut() {
+        out.hidden = list.hidden && empty.hidden && fail.hidden;
+      }
+
+      function reset() {
+        list.textContent = '';
+        list.hidden = true;
+        empty.hidden = true;
+        more.hidden = true;
+        status.textContent = '';
+        input.setAttribute('aria-expanded', 'false');
+        setActive(-1);
+        results = [];
+        syncOut();
+      }
+
+      function fillStarts() {
+        if (!index || startsList.childNodes.length) return;
+        index.starts.forEach(function (rec) {
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.href = rec.u;
+          a.textContent = rec.t;
+          li.appendChild(a);
+          startsList.appendChild(li);
+        });
+      }
+
+      function render(query) {
+        if (!index) return;
+        results = search(query, index);
+        list.textContent = '';
+        setActive(-1);
+
+        if (norm(query).length < 2) {
+          reset();
+          return;
+        }
+
+        if (!results.length) {
+          list.hidden = true;
+          more.hidden = true;
+          fillStarts();
+          empty.hidden = false;
+          status.textContent = 'No pages match ' + query + '.';
+          input.setAttribute('aria-expanded', 'false');
+          syncOut();
+          return;
+        }
+
+        empty.hidden = true;
+        var shown = results.slice(0, limit);
+        shown.forEach(function (rec, i) { list.appendChild(row(rec, prefix + '-opt-' + i)); });
+        list.hidden = false;
+        input.setAttribute('aria-expanded', 'true');
+
+        var n = results.length;
+        var counted = n === 1 ? '1 page matches' : n + ' pages match';
+        status.textContent = n > shown.length ? counted + ', showing the first ' + shown.length : counted;
+
+        if (variant !== 'page' && n > shown.length) {
+          moreLink.href = '/search?q=' + encodeURIComponent(query.trim());
+          moreLink.textContent = 'See all ' + n + ' matches';
+          more.hidden = false;
+        } else {
+          more.hidden = true;
+        }
+        syncOut();
+      }
+
+      function ensureIndex() {
+        return loadIndex().then(function (data) {
+          index = data;
+          fail.hidden = true;
+          syncOut();
+          return data;
+        }).catch(function () {
+          fail.hidden = false;
+          status.textContent = 'The page list did not load.';
+          syncOut();
+          throw new Error('index unavailable');
+        });
+      }
+
+      function onInput() {
+        clear.hidden = !input.value;
+        if (!index) {
+          ensureIndex().then(function () { render(input.value); }, function () {});
+        } else {
+          render(input.value);
+        }
+        if (variant === 'page') {
+          if (urlTimer) clearTimeout(urlTimer);
+          urlTimer = setTimeout(syncUrl, 350);
+        }
+      }
+
+      // Keeps ?q= in the address bar in step with the box, so a result list can be shared.
+      // replaceState only: it writes nothing to the machine and leaves the back button
+      // pointing wherever the reader came from.
+      function syncUrl() {
+        if (!window.history || !history.replaceState) return;
+        var q = input.value.trim();
+        var url = location.pathname + (q ? '?q=' + encodeURIComponent(q) : '');
+        history.replaceState(null, '', url);
+      }
+
+      input.addEventListener('focus', function () { ensureIndex().catch(function () {}); });
+      input.addEventListener('input', onInput);
+
+      input.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+          var options = list.querySelectorAll('.ttcs-row');
+          if (!options.length) return;
+          e.preventDefault();
+          var next = e.key === 'ArrowDown'
+            ? (active + 1 >= options.length ? 0 : active + 1)
+            : (active - 1 < 0 ? options.length - 1 : active - 1);
+          setActive(next);
+          return;
+        }
+        if (e.key === 'Enter') {
+          var options = list.querySelectorAll('.ttcs-row');
+          var target = active > -1 ? options[active] : options[0];
+          if (target) { e.preventDefault(); window.location.assign(target.href); }
+          return;
+        }
+        if (e.key === 'Escape') {
+          if (input.value) {
+            e.stopPropagation();          // first Escape clears, a second can close the panel
+            input.value = '';
+            clear.hidden = true;
+            reset();
+            if (variant === 'page') syncUrl();
+          }
+        }
+      });
+
+      clear.addEventListener('click', function () {
+        input.value = '';
+        clear.hidden = true;
+        reset();
+        input.focus();
+        if (variant === 'page') syncUrl();
+      });
+
+      // The nav box floats its results over the page, so a click anywhere else puts them
+      // away. On /search the results are part of the page and stay put.
+      if (variant !== 'page') {
+        document.addEventListener('click', function (e) {
+          if (!out.hidden && !root.contains(e.target)) {
+            out.hidden = true;
+            input.setAttribute('aria-expanded', 'false');
+            setActive(-1);
+          }
+        });
+        input.addEventListener('focus', function () {
+          if (out.hidden && input.value) render(input.value);
+        });
+      }
+
+      // /search?q=japan arrives with a query already in hand.
+      var initial = '';
+      if (variant === 'page') {
+        try {
+          initial = new URLSearchParams(location.search).get('q') || '';
+        } catch (err) { initial = ''; }
+      }
+      if (initial) {
+        input.value = initial;
+        clear.hidden = false;
+        ensureIndex().then(function () { render(initial); }, function () {});
+      }
+      if (input.getAttribute('data-autofocus') && !initial) {
+        // Only on /search, where the reader came to type.
+        input.focus();
+      }
+
+      root.ttcsFocus = function () { input.focus(); input.select(); };
+    }
+
+    Array.prototype.forEach.call(roots, setup);
+  })();
+</script>

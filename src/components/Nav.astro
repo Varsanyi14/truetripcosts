@@ -1,6 +1,12 @@
 ---
 import { clusters, regionMetaCompare } from '../data/region-comparisons.js';
 import LogoMark from './LogoMark.astro';
+import SearchBox from './SearchBox.astro';
+
+// The nav carries the search box itself from 641px up, which is where there is room for it
+// between the wordmark and Guides. /search is the one page that does not get it: that page
+// is the same box at full size, and two of them on one screen would just be a puzzle.
+const onSearchPage = Astro.url.pathname.replace(/\/+$/, '') === '/search';
 
 // Group the region comparisons by continent for the Guides menu, so the list stays
 // scannable as it grows. Order is fixed; each cluster slots into its parent continent,
@@ -59,10 +65,19 @@ const topicGroups = [
       <LogoMark size={30} title="True Trip Costs" />
       <span>True Trip Costs<small>The money side of travel</small></span>
     </a>
+    {!onSearchPage && (
+      <div class="nsearch">
+        <SearchBox variant="bar" id="navsearch" limit={8} />
+      </div>
+    )}
     <div class="navlinks">
       <details class="gmenu">
         <summary class="gmenu-sum">Guides<svg class="gmenu-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
         <div class="gmenu-panel">
+          <a class="gm-search" href="/search">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+            <span>Search every page</span>
+          </a>
           <div class="gm-cols">
             <div class="gm-col gm-col-regions">
               <p class="gm-zone">By region</p>
@@ -126,6 +141,7 @@ const topicGroups = [
     .gm-all:hover{color:var(--ink)}
     .gm-all svg{transition:transform .15s ease}
     .gm-all:hover svg{transform:translateX(3px)}
+
     @media(max-width:640px){
       /* The panel is anchored right:0 to .gmenu, which is the Guides summary, and that
          summary is not at the screen edge: Get updates and the 22px gutter sit to the
@@ -164,4 +180,5 @@ const topicGroups = [
       });
     });
   })();
+
 </script>

@@ -5,7 +5,11 @@ import { countries } from '../data/index.js';
 // classes in global.css use it sitewide. It used to be opt-in via a `mono` prop, which
 // is gone: the labels appear on nearly every page now, so gating it saved nothing and
 // meant a page could style a label in a font it had not loaded.
-const { title, description, ogImage } = Astro.props;
+// robots is optional and defaults to nothing, so every existing page ships byte for byte
+// the same head as before. It exists for pages that are tools rather than reading: the
+// search page passes noindex,follow, because a search box has nothing for a search engine
+// to rank and the pages it finds are all indexed on their own.
+const { title, description, ogImage, robots } = Astro.props;
 const site = 'https://truetripcosts.com';
 const canonical = site + Astro.url.pathname;
 const ogImageUrl = site + (ogImage || '/og.png');
@@ -37,6 +41,7 @@ const framedDesc = description;
   <meta name='impact-site-verification' content='0bfc70de-72c2-4c02-b65f-54f326b8ade3' value='0bfc70de-72c2-4c02-b65f-54f326b8ade3'>
   <title>{framedTitle}</title>
   <meta name="description" content={framedDesc} />
+  {robots && <meta name="robots" content={robots} />}
   <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
