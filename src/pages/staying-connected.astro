@@ -3,8 +3,9 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import CompareByRegion from '../components/CompareByRegion.astro';
-import USBadge from '../components/USBadge.astro';
+import Hero from '../components/Hero.astro';
 import { countries } from '../data/index.js';
+import { TIERS, VERDICTS, PENDING_VERIFICATION, PRODUCT_TONE, tierOf } from '../data/connectivity-verdicts.js';
 import fs from 'node:fs';
 
 // Staying connected, topic hub. Gathers every topic:"connectivity" country spoke, the same
@@ -20,8 +21,28 @@ const spokes = countries
   .filter(c => c.live)
   .flatMap(c => (c.spokes || [])
     .filter(s => s.topic === 'connectivity' && s.live !== false)
-    .map(s => ({ h1: s.h1, lede: s.lede, spokeSlug: s.slug, country: c.name, countrySlug: c.slug })))
+    .map(s => ({ h1: s.h1, lede: s.lede, spokeSlug: s.slug, country: c.name, countrySlug: c.slug,
+                 checkedISO: s.checkedISO, verdict: VERDICTS[c.slug] || null })))
   .sort((a, b) => a.country.localeCompare(b.country));
+
+// Only tiers actually in use appear in the legend, the way rail-passes.astro does it, so a
+// tier can be defined here and stay dormant until a country needs it.
+const usedTiers = TIERS.filter(x => spokes.some(s => s.verdict && s.verdict.tier === x.key))
+  .sort((a, b) => b.rank - a.rank);
+
+// The honest headline figure, counted from the tier field and never from prose. `esim` is
+// the only tier where the product we earn a commission on is the answer, so everything else
+// is a country where our own recommendation costs us the commission.
+const tiered = spokes.filter(s => s.verdict);
+const notOurProduct = tiered.filter(s => tierOf(s.verdict.tier)?.tone !== PRODUCT_TONE).length;
+
+// The hero stamp uses the OLDEST check across the spokes on purpose. A freshness promise on
+// an aggregate page is only as good as its weakest link, so this is the date every country
+// listed has been checked since, not the date the newest one was.
+const dates = spokes.map(s => s.checkedISO).filter(Boolean).sort();
+const stampMonth = dates.length
+  ? new Date(dates[0] + 'T00:00:00Z').toLocaleString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })
+  : '';
 ---
 <Base
   title="Staying connected abroad, for US travelers: eSIMs, roaming and when your own plan already works"
@@ -29,10 +50,15 @@ const spokes = countries
   <Nav />
   <main class="wrap">
 
+    <Hero
+      img="/hero/staying-connected.jpg"
+      alt="Illustration of a phone showing signal bars and a SIM card with its punch-out tray on a table, for a guide to staying connected abroad"
+      eyebrow="Staying connected"
+      title="Phone data abroad is mostly a cost question."
+      stamp={stampMonth ? "Checked " + stampMonth : undefined}
+      slim />
+
     <section class="sc-intro">
-      <p class="lab">Staying connected</p>
-      <div style="margin:2px 0 12px"><USBadge /></div>
-      <h1>Phone data abroad is mostly a cost question.</h1>
       <p class="sc-lede">In most of the places US travelers go, coverage is not the problem. The problem is that your carrier will happily charge you about 10 to 12 dollars a day for something an eSIM does for a fraction of it, and that in a fair number of countries the cheapest honest answer is not an eSIM at all. Here is how to tell which situation you are in, then the detail for your destination.</p>
     </section>
 
@@ -69,15 +95,35 @@ const spokes = countries
       <section class="sc-sec">
         <h2>Country by country</h2>
         <p class="sc-note">Where a country has a connectivity wrinkle worth walking through, we have written it up. Each one lives in that country's guide.</p>
+        {tiered.length > 0 && (
+          <p class="sc-note sc-count">Of the {tiered.length} countries we have given a verdict so far, <strong>{notOurProduct}</strong> have an honest answer that is not the eSIM we earn a commission on. The rest of the list is still being checked.</p>
+        )}
         <div class="sc-panel">
-          {spokes.map(s => (
-            <a class="sc-spoke" href={'/' + s.countrySlug + '/' + s.spokeSlug}>
-              <span class="sc-spoke-c"><span class="sc-flag"><img src={flagSrc(s.countrySlug)} alt="" width="22" height="16" loading="lazy" /></span>{s.country}</span>
-              <span class="sc-spoke-h">{s.h1}</span>
-              <span class="sc-spoke-d">{s.lede}</span>
-            </a>
-          ))}
+          {spokes.map(s => {
+            const t = s.verdict ? tierOf(s.verdict.tier) : null;
+            return (
+              <a class="sc-spoke" href={'/' + s.countrySlug + '/' + s.spokeSlug}>
+                <span class="sc-spoke-c">
+                  <span class="sc-flag"><img src={flagSrc(s.countrySlug)} alt="" width="22" height="16" loading="lazy" /></span>{s.country}
+                  {t && <span class={'sc-chip sc-' + s.verdict.tier}>{t.short}</span>}
+                </span>
+                <span class="sc-spoke-h">{s.h1}</span>
+                <span class="sc-spoke-d">{s.verdict ? s.verdict.why : s.lede}</span>
+              </a>
+            );
+          })}
         </div>
+
+        {usedTiers.length > 0 && (
+          <dl class="sc-legend" aria-label="What each verdict means">
+            {usedTiers.map(t => (
+              <Fragment>
+                <dt class="sc-leg-t"><span class={'sc-chip sc-' + t.key}>{t.short}</span></dt>
+                <dd class="sc-leg-d"><strong>{t.label}.</strong> {t.gloss}</dd>
+              </Fragment>
+            ))}
+          </dl>
+        )}
       </section>
     )}
 
@@ -91,6 +137,27 @@ const spokes = countries
     .sc-intro{max-width:720px;margin:22px 0 0}
     .sc-intro h1{font-family:var(--serif);font-weight:500;font-size:clamp(26px,4.6vw,38px);letter-spacing:-.015em;line-height:1.15;margin:0 0 12px}
     .sc-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
+    /* VERDICT CHIPS. The colour encoding is the honesty payload, so it is worth spelling
+       out: .sc-esim is the ONLY tier carrying the product-wins swatch, the same green the
+       rail hub uses for "pass usually wins". Every other tier is half-strength teal, neutral
+       grey or amber caution, including the three tiers where the honest answer costs us the
+       commission. A reader glancing down the list therefore sees the product-wins colour on
+       a minority of countries, which is the true state of things.
+       scripts/check-connectivity-verdicts.mjs parses these rules and fails if any tier other
+       than esim resolves to the product swatch, so a later well-meaning edit cannot quietly
+       make the eSIM look like it wins more often than it does. */
+    .sc-chip{margin-left:auto;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:4px 10px;white-space:nowrap}
+    .sc-esim{background:var(--green-bg);color:#10502C}
+    .sc-too-close{background:rgba(14,122,95,.12);color:var(--teal-deep)}
+    .sc-coverage{background:var(--amber-bg);color:#7A3D08}
+    .sc-local-sim{background:var(--line);color:var(--muted)}
+    .sc-wifi{background:var(--line);color:var(--muted)}
+    .sc-in-plan{background:var(--line);color:var(--muted)}
+    .sc-count{margin:0 0 10px}
+    .sc-legend{margin:18px 0 0;padding:14px 16px;background:var(--paper);border:1px solid var(--line);border-radius:12px;display:grid;grid-template-columns:max-content 1fr;column-gap:12px;row-gap:10px;align-items:start}
+    .sc-leg-t{margin:0}
+    .sc-leg-t .sc-chip{margin-left:0}
+    .sc-leg-d{margin:0;font-size:14px;color:#3B4A46;line-height:1.5}
     .sc-four{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:30px 0 0}
     .sc-card{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:16px 18px}
     .sc-k{display:block;font-weight:600;font-size:14px;color:var(--teal-deep);margin:0 0 6px}
