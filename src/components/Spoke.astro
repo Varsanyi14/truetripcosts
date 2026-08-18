@@ -188,7 +188,14 @@ const showKeyPoints = ANSWER_MODE === 'B' && !answerHasFragment && answerKeyPoin
 
   {esimUrl && (
     <UtilityBox href={esimUrl} label={esimBrand ? `Get your ${esimBrand} eSIM for ${country.name}` : `Get an eSIM for ${country.name}`}>
-      <p>If an eSIM is the cheaper, simpler call for {country.name}, {esimBrand ? `${esimBrand} covers it.` : `there is a tracked eSIM option.`}</p>
+      {/* "the right call" rather than "the cheaper, simpler call" on purpose. The
+          connectivity wave produced roughly 20 spokes whose whole argument is that an eSIM
+          is NOT the cheaper option here: India's local SIM is a tenth of the price, Poland's
+          starter roams EU-wide for under 10 dollars, and Singapore and Aruba often need no
+          data plan at all. A shared callout asserting "cheaper" on those pages contradicted
+          the article above it. "Right" is true whether the argument came out on price or on
+          convenience, and it is the same one word on all 39 pages. */}
+      <p>If an eSIM is the right call for {country.name}, {esimBrand ? `${esimBrand} covers it.` : `there is a tracked eSIM option.`}</p>
     </UtilityBox>
   )}
 

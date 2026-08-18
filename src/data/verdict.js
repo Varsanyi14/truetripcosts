@@ -483,12 +483,17 @@ export const SPOKE_ROWS = {
   ],
   india: [
     { label: 'Do', spoke: 'e-visa', k: 'Where', v: 'indianvisaonline.gov.in only', tier: 1, theme: 'visa-site' },
+  // Connectivity: the paperwork, not the price. The price argument is worth reading on the page;
+  // the passport, visa and in-store photo are worth knowing before you land.
+    { label: 'Do', spoke: 'staying-connected', k: 'SIM registration', v: 'Passport, visa, photo in the shop', tier: 1, theme: 'sim-registration' },
   ],
   netherlands: [
     { label: 'Do', spoke: 'taxis-and-apps', k: 'From Schiphol', v: 'The train is fast and cheap', tier: 2, theme: 'taxi-airport' },
   ],
   iceland: [
     { label: 'Expect', spoke: 'renting-a-car', k: 'The catch', v: 'Super CDW still excludes the likely damage', tier: 1, theme: 'car-insurance' },
+  // Connectivity: a safety row rather than a money one. The Highlands have no signal on any network.
+    { label: 'Expect', spoke: 'staying-connected', k: 'Signal gaps', v: 'The Highlands and the F-roads', tier: 1, theme: 'connectivity' },
   ],
   indonesia: [
     { label: 'Expect', spoke: 'visa', k: 'Visa', v: 'Required, visa on arrival', tier: 1, theme: 'visa' },
@@ -524,6 +529,9 @@ export const SPOKE_ROWS = {
   ],
   switzerland: [
     { label: 'Expect', spoke: 'cash-or-card', k: 'Euros', v: 'Sometimes taken, poor change', tier: 1, theme: 'currency' },
+  // Connectivity: a purchasing row, not a coverage one. Switzerland is outside the EU roaming
+  // zone, so a regional Europe plan bought for an Alps trip may exclude the Alps.
+    { label: 'Do', spoke: 'staying-connected', k: 'Check the plan', v: 'Many Europe eSIMs leave it out', tier: 1, theme: 'connectivity' },
   ],
   bahamas: [
     { label: 'Expect', spoke: 'taxis-and-apps', k: 'Uber and Lyft', v: 'Neither operates here', tier: 1, theme: 'taxi' },
@@ -623,6 +631,8 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'cash-or-card', k: 'Local quirk', v: 'Card surcharges, about 1.5 to 2%', tier: 1, theme: 'surcharge' },
     { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not expected, not the culture', tier: 1, theme: 'tipping' },
     { label: 'Carry', spoke: 'cash-or-card', k: 'Cash for', v: 'A little, NZ$100 to NZ$200 a trip', tier: 2, theme: 'cash-need' },
+  // Connectivity: the gaps are exactly where visitors go, and no plan closes them.
+    { label: 'Expect', spoke: 'staying-connected', k: 'Signal gaps', v: 'Fiordland, the Alps, DOC tracks', tier: 1, theme: 'connectivity' },
   ],
   morocco: [
     { label: 'Expect', spoke: 'cash-or-card', k: 'Note', v: 'A closed currency, get it on arrival', show: 'v', tier: 1, theme: 'currency' },
@@ -632,6 +642,8 @@ export const SPOKE_ROWS = {
     { label: 'Withdraw', spoke: 'money-scams', k: 'ATM security guards', v: 'Not allowed to help you', tier: 1, theme: 'atm' },
     { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: '10 to 15%, expected', tier: 1, theme: 'tipping' },
     { label: 'Do', spoke: 'taxis-and-apps', k: 'Airport pickup', v: 'A designated e-hailing bay', tier: 2, theme: 'taxi-airport' },
+  // Connectivity: RICA is documents-at-the-counter, so it belongs on the card as a Do.
+    { label: 'Do', spoke: 'staying-connected', k: 'SIM registration', v: 'RICA: passport and an address', tier: 1, theme: 'sim-registration' },
   ],
   taiwan: [
     { label: 'Carry', spoke: 'cash-or-card', k: 'Carry', v: 'NT dollars, it is cash-reliant', show: 'v', tier: 1, theme: 'cash-need' },
@@ -642,6 +654,9 @@ export const SPOKE_ROWS = {
     { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose HKD, not US dollars', tier: 1, theme: 'dcc' },
     { label: 'Expect', spoke: 'tipping', k: 'Restaurants', v: 'A 10% service charge is common', tier: 1, theme: 'tipping' },
     { label: 'Do', spoke: 'cash-or-card', k: 'The key', v: 'Get an Octopus card', show: 'v', tier: 2, theme: 'transit' },
+  // Connectivity: pairs with the china card's firewall row and corrects the belief it creates,
+  // since travelers who know about the mainland firewall often assume Hong Kong sits behind it.
+    { label: 'Expect', spoke: 'staying-connected', k: 'Not the mainland', v: 'No firewall here', tier: 1, theme: 'connectivity' },
   ],
   poland: [
     { label: 'Expect', spoke: 'cash-or-card', k: 'Currency', v: 'Polish zloty (PLN), not euro', tier: 1, theme: 'currency' },
@@ -699,6 +714,9 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'cash-or-card', k: 'Also spend', v: 'SA rand 1:1', tier: 1, theme: 'currency' },
     { label: 'Do', spoke: 'taxis-and-apps', k: 'Ride apps', v: 'LEFA, Yango (no Uber)', tier: 1, theme: 'taxi' },
     { label: 'Carry', spoke: 'cash-or-card', k: 'Cash for', v: 'Fuel and remote areas', tier: 1, theme: 'cash-need' },
+  // Connectivity: the honest headline of the namibia spoke is that no purchase fixes the
+  // coverage, which changes what you pack rather than what you buy.
+    { label: 'Expect', spoke: 'staying-connected', k: 'Signal gaps', v: 'Most of the country, plan offline', tier: 1, theme: 'connectivity' },
   ],
   aruba: [
     { label: 'Expect', spoke: 'hotel-taxes-and-fees', k: 'Resort fee', v: 'Commonly $30 to $90 a night', tier: 1, theme: 'hotel-fees' },
@@ -715,7 +733,10 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'tipping', k: 'Restaurants', v: 'Check for a 10% service charge', tier: 1, theme: 'tipping' },
     { label: 'Withdraw', spoke: 'cash-or-card', k: 'ATMs', v: 'Low limits, about 250 peso fee', tier: 1, theme: 'atm' },
     { label: 'Do', spoke: 'visa-and-etravel', k: 'eTravel', v: 'Free and mandatory', tier: 1, theme: 'entry-form' },
+  // Connectivity: a registration you cannot skip, plus a validity clock that catches long stays.
+    { label: 'Expect', spoke: 'staying-connected', k: 'SIM registration', v: 'Required, and tourist SIMs expire', tier: 1, theme: 'sim-registration' },
   ],
+
 };
 
 // Month abbreviations as the guides write them ("Jul 2026"), spelled out for the pill so

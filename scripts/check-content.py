@@ -45,13 +45,41 @@ def show(title, hits):
 # line. The CSS now wraps instead of breaking, but keep the copy tight so the
 # callout still reads as a headline number. Most figs are 3 to 10 characters.
 FIG_MAX = 20
+# Matches both a plain literal, fig: "$10-12/day", and a template literal,
+# fig: `${S.dayPassFig}`, which the carrier-spine interpolation introduced. Without the
+# backtick arm this check silently stopped covering every interpolated keystat: the regex
+# would not match, so no figure was measured and the section reported clean. A gate that
+# quietly narrows its own scope is worse than one that fails.
+#
+# Interpolated figs are RESOLVED before measuring, by reading the token table out of
+# carrier-spine.js, because the point of the limit is how wide the figure renders and
+# "${S.dayPassFig}" is 17 characters of source standing for 10 characters of output.
+# Measuring the source would have flagged long token names and missed genuinely long
+# figures, which is a check that looks like it works.
+SPINE_TOKENS = {}
+_spine = os.path.join('src', 'data', 'carrier-spine.js')
+if os.path.exists(_spine):
+    _t = io.open(_spine, encoding='utf-8', errors='replace').read()
+    _m = re.search(r'export const S = \{(.*?)\n\};', _t, re.S)
+    if _m:
+        for k, v in re.findall(r'(\w+):\s*"((?:[^"\\]|\\.)*)"', _m.group(1)):
+            SPINE_TOKENS[k] = v
+
+def resolve_fig(val):
+    return re.sub(r'\$\{S\.(\w+)\}', lambda m: SPINE_TOKENS.get(m.group(1), m.group(0)), val)
+
+FIG_RE = re.compile(r'fig:\s*(?:"([^"]*)"|`([^`]*)`)')
 figs = []
 for dp, dn, fn in os.walk(os.path.join('src', 'data')):
     for f in sorted(fn):
         if not f.lower().endswith('.js'): continue
         p = os.path.join(dp, f)
         t = io.open(p, encoding='utf-8', errors='replace').read()
-        long_figs = [m.group(1) for m in re.finditer(r'fig:\s*"([^"]*)"', t) if len(m.group(1)) > FIG_MAX]
+        long_figs = []
+        for m in FIG_RE.finditer(t):
+            raw = m.group(1) if m.group(1) is not None else m.group(2)
+            val = resolve_fig(raw)
+            if len(val) > FIG_MAX: long_figs.append(val)
         if long_figs: figs.append((len(long_figs), f'fig over {FIG_MAX} chars', p + '  ' + ' | '.join(long_figs)))
 
 # Stray escapes in the guide data. A backslash has no business appearing in TTC prose,

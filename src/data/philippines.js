@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "philippines",
   live: true,
@@ -487,7 +489,7 @@ export default {
         { k: "Coverage", v: "Decent in Manila and Cebu" },
         { k: "Signal gaps", v: "Islands, ferries, Palawan" },
         { k: "SIM registration", v: "Required, and tourist SIMs expire" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" }
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` }
       ],
       live: true,
       esim: true,
@@ -499,7 +501,7 @@ export default {
       lede: "The Philippines has two wrinkles that catch visitors: every SIM has to be registered under a 2022 law, and a tourist registration typically runs on a 30-day clock. Neither is hard, and both are worth knowing before you are standing at a counter with a boat to catch.",
       checked: "Aug 2026",
       checkedISO: "2026-08-18",
-      answer: "Coverage is <b>decent in Metro Manila, Cebu and the bigger cities</b> and genuinely <b>patchy across the islands</b>: parts of Palawan away from El Nido and Puerto Princesa, the smaller Visayan islands, the inter-island <b>ferries</b> and boat transfers, and the mountain interior of northern Luzon. A local SIM from <b>Globe</b> or <b>Smart</b> runs roughly <b>9 to 18 dollars</b> for a tourist data pack, and every SIM must be <b>registered</b> under the SIM Registration Act: your <b>passport</b>, a local address, and sometimes an onward ticket, with a <b>tourist registration typically valid about 30 days</b>. A <b>Nomad eSIM</b> at a few dollars per gigabyte is an international roaming product rather than a Philippine SIM, so it sits outside that registration process entirely, which is the honest case for it here. Your US carrier's day pass is about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. For island hopping, <b>download offline maps</b> and screenshot your ferry bookings. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      answer: `Coverage is <b>decent in Metro Manila, Cebu and the bigger cities</b> and genuinely <b>patchy across the islands</b>: parts of Palawan away from El Nido and Puerto Princesa, the smaller Visayan islands, the inter-island <b>ferries</b> and boat transfers, and the mountain interior of northern Luzon. A local SIM from <b>Globe</b> or <b>Smart</b> runs roughly <b>9 to 18 dollars</b> for a tourist data pack, and every SIM must be <b>registered</b> under the SIM Registration Act: your <b>passport</b>, a local address, and sometimes an onward ticket, with a <b>tourist registration typically valid about 30 days</b>. A <b>Nomad eSIM</b> at a few dollars per gigabyte is an international roaming product rather than a Philippine SIM, so it sits outside that registration process entirely, which is the honest case for it here. Your US carrier's day pass is about <b>${S.dayPass}</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon's TravelPass has ${S.verizonNoCap}</b> and keeps billing daily. For island hopping, <b>download offline maps</b> and screenshot your ferry bookings. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
       sections: [
         {
           h: "Registration, and the clock on a tourist SIM",
@@ -522,9 +524,9 @@ export default {
         {
           h: "The cost comparison",
           icon: "roamfee",
-          key: { fig: "$10-12/day", tag: "Roaming default", text: "AT&T caps its Day Pass at 10 daily fees a bill period; Verizon does not. A local tourist pack is $9 to $18 and needs the registration.", tone: "teal" },
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "AT&T caps its Day Pass at 10 daily fees a bill period; Verizon does not. A local tourist pack is $9 to $18 and needs the registration.", tone: "teal" },
           p: [
-            "A local tourist data pack at <b>9 to 18 dollars</b> undercuts roaming comfortably, since <b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b>, and <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that, so check your own plan before buying: on a week in Manila and Cebu a T-Mobile allowance may be enough.",
+            `A local tourist data pack at <b>9 to 18 dollars</b> undercuts roaming comfortably, since <b>AT&amp;T and Verizon</b> day passes are about <b>${S.dayPass}</b>, and <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon's TravelPass has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value, slowing to <b>${S.throttle}</b> after that, so check your own plan before buying: on a week in Manila and Cebu a T-Mobile allowance may be enough.`,
             "Between the local SIM and a <b>Nomad eSIM</b> at a few dollars per gigabyte, the local pack is usually cheaper per gigabyte and the eSIM avoids the registration process, the address question and the 30-day clock, since a travel eSIM roams onto Philippine networks rather than being a Philippine SIM. That is a real distinction rather than a marketing one, and it is also the thing we earn on, so weigh it accordingly: if you are here for two weeks and do not mind the counter, buy local. This guide is written for US travelers departing the US. For more, see <a href='/philippines/cash-or-card'>cash or card in the Philippines</a>, <a href='/philippines/taxis-and-apps'>taxis and apps in the Philippines</a>, and the <a href='/philippines'>Philippines money guide</a>."
           ]
         }
@@ -533,7 +535,7 @@ export default {
         { q: "Do I need to register a SIM card in the Philippines?", a: "Yes. The SIM Registration Act has required it since 2022 and it applies to visitors. Expect to provide your passport, a local address such as your hotel booking, and in some cases a return or onward ticket. A tourist registration is commonly valid about 30 days before the SIM deactivates unless extended." },
         { q: "Is an eSIM easier than a local SIM in the Philippines?", a: "It avoids the registration process entirely, because a travel eSIM roams onto Philippine networks rather than being a Philippine SIM, so there is no address question and no 30-day clock. A local tourist pack at 9 to 18 dollars is usually cheaper per gigabyte. If you are here two weeks and do not mind the counter, buy local." },
         { q: "Will I have signal island hopping in the Philippines?", a: "Often not. Ferry and bangka crossings, the smaller Visayan islands, much of Palawan outside the main towns and the Cordillera interior are patchy to absent. Download offline maps and screenshot your ferry bookings rather than relying on an email to load at the pier." },
-        { q: "How much does it cost to use my US phone in the Philippines?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week, against 9 to 18 dollars for a local tourist pack. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad." }
+        { q: "How much does it cost to use my US phone in the Philippines?", a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week, against 9 to 18 dollars for a local tourist pack. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad.` }
       ],
         sources: {
         links: [

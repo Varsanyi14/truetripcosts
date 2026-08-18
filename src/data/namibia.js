@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "namibia",
   iso2: "na",
@@ -432,7 +434,7 @@ export default {
       glance: [
         { k: "Coverage", v: "Towns and main roads only" },
         { k: "Signal gaps", v: "Most of the country, plan offline" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` },
         { k: "Best network", v: "MTC, and it is not close" }
       ],
       live: true,
@@ -445,7 +447,7 @@ export default {
       lede: "Namibia is the country on this site where buying the right data plan changes the least. Coverage follows the towns and the tarred roads, and once you leave them there is frequently no signal at all, on any network, at any price. The planning that matters here is offline planning.",
       checked: "Aug 2026",
       checkedISO: "2026-08-18",
-      answer: "<b>MTC</b> covers the towns, the B-roads and the main tourist stops, and beyond those <b>coverage simply stops</b>: much of the <b>Namib</b>, the <b>Kaokoveld</b>, the <b>Skeleton Coast</b>, the Fish River area and most of the gravel <b>D-roads</b> have no usable signal on any network. No eSIM and no local SIM changes that, because the problem is <b>towers rather than tariffs</b>, so the honest plan is to buy data cheaply for the connected half of the trip and <b>prepare properly for the rest</b>. A <b>local MTC prepaid SIM</b> is a few dollars, though registration now requires <b>ID, an address and biometrics</b>, so a <b>Nomad eSIM</b> set up before you fly is the simpler route for a two-week trip. Your US carrier's day pass runs about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data. Before you drive: <b>download offline maps</b>, carry the route on paper, and tell somebody your plan for the day. On the remote D-roads a <b>satellite messenger</b> is the only thing that actually works, and it is worth the rental.",
+      answer: `<b>MTC</b> covers the towns, the B-roads and the main tourist stops, and beyond those <b>coverage simply stops</b>: much of the <b>Namib</b>, the <b>Kaokoveld</b>, the <b>Skeleton Coast</b>, the Fish River area and most of the gravel <b>D-roads</b> have no usable signal on any network. No eSIM and no local SIM changes that, because the problem is <b>towers rather than tariffs</b>, so the honest plan is to buy data cheaply for the connected half of the trip and <b>prepare properly for the rest</b>. A <b>local MTC prepaid SIM</b> is a few dollars, though registration now requires <b>ID, an address and biometrics</b>, so a <b>Nomad eSIM</b> set up before you fly is the simpler route for a two-week trip. Your US carrier's day pass runs about <b>${S.dayPass}</b> (<b>AT&amp;T and Verizon</b>), and <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data. Before you drive: <b>download offline maps</b>, carry the route on paper, and tell somebody your plan for the day. On the remote D-roads a <b>satellite messenger</b> is the only thing that actually works, and it is worth the rental.`,
       sections: [
         {
           h: "The gap is geography, and no purchase closes it",
@@ -462,7 +464,7 @@ export default {
           key: { fig: "A few $", tag: "MTC prepaid", text: "MTC prepaid data is cheap and has by far the widest reach. Registration now wants ID, an address and biometrics, which is the friction a travel eSIM avoids.", tone: "teal" },
           p: [
             "For the connected part of the trip, <b>MTC</b> is the network to be on and the gap between it and the alternatives is not subtle. A local prepaid SIM with a data bundle is a <b>few dollars</b>, sold at the airport, in Windhoek and in supermarkets. The catch is registration: Namibia now requires <b>identification, an address and biometric capture</b> to activate a SIM, which is a counter visit rather than a purchase, and reports of how smoothly it goes for visitors vary.",
-            "That friction is the honest case for a <b>Nomad eSIM</b> here: a few dollars per gigabyte, set up at home, working when you land, no counter and no biometrics. On a two-week trip where you will be out of coverage half the time anyway, paying slightly more per gigabyte to skip the registration is a reasonable trade, and it is a convenience argument rather than a price one. If you do roam, note that <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, which matters on the long trips Namibia tends to involve. Whichever you choose, do not roam with <b>no plan</b>: pay-per-use runs about <b>2 dollars a megabyte</b>."
+            `That friction is the honest case for a <b>Nomad eSIM</b> here: a few dollars per gigabyte, set up at home, working when you land, no counter and no biometrics. On a two-week trip where you will be out of coverage half the time anyway, paying slightly more per gigabyte to skip the registration is a reasonable trade, and it is a convenience argument rather than a price one. If you do roam, note that <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, which matters on the long trips Namibia tends to involve. Whichever you choose, do not roam with <b>no plan</b>: pay-per-use runs about <b>${S.ppu}</b>.`
           ]
         },
         {

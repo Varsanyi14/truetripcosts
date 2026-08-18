@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "vietnam",
   iso2: "vn",
@@ -497,7 +499,7 @@ export default {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Excellent, the remote north included" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` },
         { k: "Cheapest", v: "A Viettel SIM, $5 to $8" },
         { k: "SIM registration", v: "Passport, and it is enforced" }
       ],
@@ -511,7 +513,7 @@ export default {
       lede: "Vietnam has better mobile coverage than most of Europe and charges almost nothing for it. The local SIM is the answer here, and the only real friction is that registration is properly enforced.",
       checked: "Aug 2026",
       checkedISO: "2026-08-18",
-      answer: "Coverage is <b>excellent</b>, and unusually so: strong in the cities, along the whole coast, through the <b>Mekong delta</b> and up into the <b>remote north</b> around Sapa and Ha Giang where you would not expect it. The cheapest option is clearly local. A <b>Viettel</b> or <b>Vinaphone</b> SIM costs about <b>5 to 8 dollars</b> for a month of generous data, sold at the airports and in phone shops, and <b>registration with your passport is required and enforced</b>, so buy from an official counter rather than a street stall. Your US carrier charges about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data abroad before slowing to <b>256kbps</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and suits a regional trip or a late arrival. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      answer: `Coverage is <b>excellent</b>, and unusually so: strong in the cities, along the whole coast, through the <b>Mekong delta</b> and up into the <b>remote north</b> around Sapa and Ha Giang where you would not expect it. The cheapest option is clearly local. A <b>Viettel</b> or <b>Vinaphone</b> SIM costs about <b>5 to 8 dollars</b> for a month of generous data, sold at the airports and in phone shops, and <b>registration with your passport is required and enforced</b>, so buy from an official counter rather than a street stall. Your US carrier charges about <b>${S.dayPass}</b> (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and suits a regional trip or a late arrival. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
       sections: [
         {
           h: "Viettel for a few dollars, on very good coverage",
@@ -534,10 +536,10 @@ export default {
         {
           h: "Coverage worth noting, and when to buy something else",
           icon: "roamfee",
-          key: { fig: "$10-12/day", tag: "Roaming default", text: "Roaming is the expensive default and AT&T caps at 10 fees a bill period. Check T-Mobile first, since its mid and upper tiers include 5GB to 30GB abroad.", tone: "teal" },
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: `Roaming is the expensive default and AT&T caps at 10 fees a bill period. Check T-Mobile first, since its mid and upper tiers include ${S.tmoRange} abroad.`, tone: "teal" },
           p: [
             "The coverage point deserves a line because it is genuinely unusual: Vietnam has invested heavily and you will have a working connection in places that would be dead zones in richer countries, including much of the <b>Ha Giang loop</b>, the <b>Hai Van pass</b> and the delta. The thin spots are deep in the national parks, on some boat routes in <b>Ha Long bay</b> and in the far mountain valleys. The <b>overnight trains</b> hold a signal for most of the route.",
-            "On the alternatives: <b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b> and <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value. A <b>Nomad eSIM</b> is worth it for a <b>multi-country trip</b> or a 1am arrival at Tan Son Nhat, and it is the convenience option rather than the cheap one. This guide is written for US travelers departing the US. For more, see <a href='/vietnam/cash-or-card'>cash or card in Vietnam</a>, <a href='/vietnam/taxis-and-apps'>taxis and apps in Vietnam</a>, and the <a href='/vietnam'>Vietnam money guide</a>."
+            `On the alternatives: <b>AT&amp;T and Verizon</b> day passes are about <b>${S.dayPass}</b> and <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s current tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value. A <b>Nomad eSIM</b> is worth it for a <b>multi-country trip</b> or a 1am arrival at Tan Son Nhat, and it is the convenience option rather than the cheap one. This guide is written for US travelers departing the US. For more, see <a href='/vietnam/cash-or-card'>cash or card in Vietnam</a>, <a href='/vietnam/taxis-and-apps'>taxis and apps in Vietnam</a>, and the <a href='/vietnam'>Vietnam money guide</a>.`
           ]
         }
       ],
@@ -545,7 +547,7 @@ export default {
         { q: "How much is a SIM card in Vietnam?", a: "About 5 to 8 dollars for a month of generous data from Viettel or Vinaphone, sold at the airports and in official carrier shops. You need your passport to register. That is less than one day of US carrier roaming." },
         { q: "Which network is best in Vietnam?", a: "Viettel, by a clear margin on reach. It covers the northern mountains, the Ha Giang loop and rural areas where other networks fade. Vinaphone is a solid second and Mobifone is fine in the cities." },
         { q: "Do I need to register a SIM card in Vietnam?", a: "Yes, with your passport, and it is genuinely enforced. Vietnam has run enforcement waves and disconnected unregistered lines in bulk. Buy from an airport counter or an official carrier shop rather than a street stall, since a pre-activated stall SIM is registered to somebody else and can be cut off mid-trip." },
-        { q: "How much does it cost to use my US phone in Vietnam?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps." }
+        { q: "How much does it cost to use my US phone in Vietnam?", a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` }
       ],
         sources: {
         links: [

@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "france",
   iso2: "fr",
@@ -575,7 +577,7 @@ export default {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Strong in cities and towns" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` },
         { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
         { k: "Signal gaps", v: "Mountains and deep countryside" }
       ],
@@ -584,20 +586,20 @@ export default {
       topic: "connectivity",
       caution: "low",
       title: "eSIM for France: the cost math, and Alpine gaps",
-      description: "Coverage is excellent in French cities and towns, so this is a cost question. US roaming runs 10 to 12 dollars a day; an eSIM is a few per gigabyte.",
+      description: `Coverage is excellent in French cities and towns, so this is a cost question. US roaming runs ${S.dayPass}; an eSIM is a few per gigabyte.`,
       h1: "Staying connected in France.",
       lede: "France is well covered where you will be, from Paris to the villages, so the real decision is how you pay for data. For most US travelers an eSIM is far cheaper than the carrier day pass. Here is the math, and the few places signal drops.",
       checked: "Jul 2026",
       checkedISO: "2026-07-31",
-      answer: "Coverage is <b>strong</b> across cities and towns, so this is mostly a cost question. Your US carrier charges about <b>10 to 12 dollars a day</b> to roam in France (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b> is worth checking before you buy anything, because its current mid and upper tiers include a real <b>high-speed allowance</b> abroad, from <b>5GB up to 30GB</b> depending on plan, and only slow to <b>256kbps</b> after that. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly and works from landing, so for a data-first trip it is the cheapest option. Expect <b>weaker signal in the mountains</b> (the Alps and Pyrenees) and deep rural areas. Never roam <b>pay-per-use</b>, which runs about 2 dollars a megabyte.",
+      answer: `Coverage is <b>strong</b> across cities and towns, so this is mostly a cost question. Your US carrier charges about <b>${S.dayPass}</b> to roam in France (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b> is worth checking before you buy anything, because its current mid and upper tiers include a real <b>high-speed allowance</b> abroad, from <b>5GB up to 30GB</b> depending on plan, and only slow to <b>${S.throttle}</b> after that. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly and works from landing, so for a data-first trip it is the cheapest option. Expect <b>weaker signal in the mountains</b> (the Alps and Pyrenees) and deep rural areas. Never roam <b>pay-per-use</b>, which runs about ${S.ppu}.`,
       sections: [
         {
           h: "A cost question first",
           icon: "roamfee",
-          key: { fig: "$10-12/day", tag: "Roaming default", text: "Coverage is good where visitors go, so this is mainly about cost. A US carrier day pass runs about $10 to $12 a day, and T-Mobile is the exception, with 5GB to 30GB of high-speed data abroad on its current mid and upper tiers, so check yours before buying.", tone: "teal" },
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: `Coverage is good where visitors go, so this is mainly about cost. A US carrier day pass runs about ${S.dayPassGlance}, and T-Mobile is the exception, with ${S.tmoRange} of high-speed data abroad on its current mid and upper tiers, so check yours before buying.`, tone: "teal" },
           p: [
-            "France has good mobile coverage across the places visitors go, so the main decision is how you pay. The expensive default is roaming on your US plan: <b>AT&amp;T and Verizon</b> charge about <b>10 to 12 dollars a day</b>, roughly <b>70 to 84 dollars</b> for a week. <b>T-Mobile</b> is the exception worth checking first: its current tiers include a genuine <b>high-speed allowance</b> abroad, roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next, and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> only once that is used up. The entry <b>Essentials</b> tier is the one throttled from the start. Google Fi and Visible set their own terms, so read your own plan rather than assuming.",
-            "Whatever you pick, do not roam with <b>no plan</b>. Pay-per-use data is around <b>2 dollars a megabyte</b>, thousands per gigabyte, and phones use data in the background, so <b>turn off data roaming</b> until an eSIM or pass is active."
+            `France has good mobile coverage across the places visitors go, so the main decision is how you pay. The expensive default is roaming on your US plan: <b>AT&amp;T and Verizon</b> charge about <b>${S.dayPass}</b>, roughly <b>${S.week}</b> for a week. <b>T-Mobile</b> is the exception worth checking first: its current tiers include a genuine <b>high-speed allowance</b> abroad, roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next, and <b>${S.tmoHigh}</b> on Better Value, slowing to <b>${S.throttle}</b> only once that is used up. The entry <b>Essentials</b> tier is the one throttled from the start. Google Fi and Visible set their own terms, so read your own plan rather than assuming.`,
+            `Whatever you pick, do not roam with <b>no plan</b>. Pay-per-use data is around <b>${S.ppu}</b>, thousands per gigabyte, and phones use data in the background, so <b>turn off data roaming</b> until an eSIM or pass is active.`
           ]
         },
         {
@@ -620,8 +622,8 @@ export default {
         }
       ],
       faqs: [
-        { q: "Do I need an eSIM for France?", a: "For most US travelers it is the cheapest way to get real data. France's coverage is strong in cities and towns, so it is a cost question: a Nomad eSIM is a few dollars per gigabyte, versus about 10 to 12 dollars a day for an AT&T or Verizon roaming pass. Set it up before you fly and it works from landing." },
-        { q: "How much does it cost to use my US phone in France?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily, which matters on a trip longer than 10 days. T-Mobile is worth checking first, since its current mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps. Never roam with no plan, since pay-per-use runs about 2 dollars a megabyte." },
+        { q: "Do I need an eSIM for France?", a: `For most US travelers it is the cheapest way to get real data. France's coverage is strong in cities and towns, so it is a cost question: a Nomad eSIM is a few dollars per gigabyte, versus about ${S.dayPass} for an AT&T or Verizon roaming pass. Set it up before you fly and it works from landing.` },
+        { q: "How much does it cost to use my US phone in France?", a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily, which matters on a trip longer than 10 days. T-Mobile is worth checking first, since its current mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}. Never roam with no plan, since pay-per-use runs about ${S.ppu}.` },
         { q: "Will I have signal in the French Alps?", a: "Not always. Coverage is strong in cities and towns, but parts of the Alps and Pyrenees and the remote Massif Central have gaps. Download offline maps before a mountain hike or a back-road drive, whatever network or eSIM you use." },
         { q: "Is an eSIM or a local SIM better for France?", a: "An eSIM is simpler for most visitors: no SIM counter and it works from landing if you set it up beforehand. A physical French SIM can suit very heavy, long-stay use, but for a normal trip a Nomad eSIM is more convenient, and coverage is strong either way." }
       ],
@@ -632,7 +634,7 @@ export default {
           { label: "US Department of State: France country information and local conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/France.html", type: "gov" },
           { label: "Tom's Guide: a 2026 comparison of US carrier international roaming plans and day-pass prices", url: "https://www.tomsguide.com/us/wireless-carriers-international-travel-plans,review-4327.html", type: "guide" }
         ],
-        judgment: "Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own plan. The steady points are that French coverage is strong where visitors go, that a day pass is the pricey default, and that signal thins in the mountains and deep countryside. Corrected on 31 July 2026, and worth saying what changed. This page previously quoted a flat 12 dollars a day for a carrier day pass and described T-Mobile's included roaming as slow 2G that could not handle maps. Both were wrong in the same direction, the direction that flatters the eSIM we earn a commission on. On price, 10 dollars a day is the current eligible-plan rate for both AT&T's International Day Pass and Verizon's TravelPass, with 12 dollars applying to AT&T's non-eligible plans, so the honest figure is a range. On T-Mobile, its own roaming pages now list a real high-speed allowance abroad, 5GB on Experience More, Magenta MAX and Go5G Plus, 15GB on Experience Beyond and Go5G Next and 30GB on Better Value, dropping to 256kbps only after that, with the entry Essentials tier the one throttled from the start. We have rewritten the figures and the T-Mobile description throughout and cite the carriers directly. Carrier terms move faster than anything else we cover, so check your own plan rather than trusting this paragraph."
+        judgment: `Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot and check your own plan. The steady points are that French coverage is strong where visitors go, that a day pass is the pricey default, and that signal thins in the mountains and deep countryside. Corrected on 31 July 2026, and worth saying what changed. This page previously quoted a flat 12 dollars a day for a carrier day pass and described T-Mobile's included roaming as slow 2G that could not handle maps. Both were wrong in the same direction, the direction that flatters the eSIM we earn a commission on. On price, 10 dollars a day is the current eligible-plan rate for both AT&T's International Day Pass and Verizon's TravelPass, with 12 dollars applying to AT&T's non-eligible plans, so the honest figure is a range. On T-Mobile, its own roaming pages now list a real high-speed allowance abroad, 5GB on Experience More, Magenta MAX and Go5G Plus, 15GB on Experience Beyond and Go5G Next and 30GB on Better Value, dropping to ${S.throttle} only after that, with the entry Essentials tier the one throttled from the start. We have rewritten the figures and the T-Mobile description throughout and cite the carriers directly. Carrier terms move faster than anything else we cover, so check your own plan rather than trusting this paragraph.`
       }
     },
     {

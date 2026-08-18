@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "poland",
   iso2: "pl",
@@ -533,7 +535,7 @@ export default {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Excellent, countryside included" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` },
         { k: "Cheapest", v: "A local SIM under $10, EU-wide" },
         { k: "Signal gaps", v: "None worth planning around" }
       ],
@@ -547,7 +549,7 @@ export default {
       lede: "Poland has some of the cheapest mobile data in Europe on a network that is genuinely good, and because it is in the EU that data follows you across the union. If Poland is your first stop of several, this page is worth reading before you buy anything.",
       checked: "Aug 2026",
       checkedISO: "2026-08-18",
-      answer: "Coverage is <b>excellent</b> across the cities, the countryside and the rail network, so there is nothing to plan around. The interesting part is price. A <b>local prepaid starter</b> from <b>Play</b>, <b>Plus</b>, <b>Orange</b> or <b>T-Mobile Polska</b> costs <b>under 10 dollars</b> for tens of gigabytes, needs your <b>passport</b> because Poland has required prepaid registration since 2016, and because Poland is in the <b>EU</b> that allowance travels with you across the union under <b>Roam Like At Home</b>. Your US carrier charges about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data abroad before slowing to <b>256kbps</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and is simpler, with nothing to buy on arrival. On price, for a trip of a week or more, the Polish SIM is hard to beat. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      answer: `Coverage is <b>excellent</b> across the cities, the countryside and the rail network, so there is nothing to plan around. The interesting part is price. A <b>local prepaid starter</b> from <b>Play</b>, <b>Plus</b>, <b>Orange</b> or <b>T-Mobile Polska</b> costs <b>under 10 dollars</b> for tens of gigabytes, needs your <b>passport</b> because Poland has required prepaid registration since 2016, and because Poland is in the <b>EU</b> that allowance travels with you across the union under <b>Roam Like At Home</b>. Your US carrier charges about <b>${S.dayPass}</b> (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and is simpler, with nothing to buy on arrival. On price, for a trip of a week or more, the Polish SIM is hard to beat. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
       sections: [
         {
           h: "The cheapest data in Europe, and it crosses borders",
@@ -570,10 +572,10 @@ export default {
         {
           h: "Coverage, and nothing much else",
           icon: "phoneok",
-          key: { fig: "$10-12/day", tag: "Roaming default", text: "AT&T caps its Day Pass at 10 daily fees per bill period. T-Mobile's mid and upper tiers include 5GB to 30GB of high-speed data abroad.", tone: "teal" },
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: `AT&T caps its Day Pass at 10 daily fees per bill period. T-Mobile's mid and upper tiers include ${S.tmoRange} of high-speed data abroad.`, tone: "teal" },
           p: [
             "This section is short because Poland does not give us much to warn about. Coverage is strong in <b>Warsaw, Krakow, Gdansk and Wroclaw</b>, across the countryside, on the trains and in the <b>Tatra</b> foothills, with 5G widespread in the cities. High in the Tatras and deep in the <b>Bialowieza</b> forest you can lose it, which is a hiking note rather than a trip-planning one.",
-            "On the alternatives: <b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b> and <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value. Do not roam with <b>no plan</b>, since pay-per-use is about <b>2 dollars a megabyte</b>. This guide is written for US travelers departing the US. For more, see <a href='/poland/cash-or-card'>cash or card in Poland</a>, <a href='/poland/taxis-and-apps'>taxis and apps in Poland</a>, and the <a href='/poland'>Poland money guide</a>."
+            `On the alternatives: <b>AT&amp;T and Verizon</b> day passes are about <b>${S.dayPass}</b> and <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s current tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value. Do not roam with <b>no plan</b>, since pay-per-use is about <b>${S.ppu}</b>. This guide is written for US travelers departing the US. For more, see <a href='/poland/cash-or-card'>cash or card in Poland</a>, <a href='/poland/taxis-and-apps'>taxis and apps in Poland</a>, and the <a href='/poland'>Poland money guide</a>.`
           ]
         }
       ],
@@ -581,7 +583,7 @@ export default {
         { q: "Is a Polish SIM card cheaper than an eSIM?", a: "Yes, clearly, for any stay of about a week or more. A Play or Plus starter is under 10 dollars for tens of gigabytes, where a travel eSIM costs a few dollars per gigabyte. The eSIM buys you no shop visit and no registration form, which is worth something on a long weekend and not much on a longer trip." },
         { q: "Does a Polish SIM work in other EU countries?", a: "Yes. Poland is in the EU, so a Polish prepaid allowance works across the union under Roam Like At Home at no surcharge, subject to a fair-use policy aimed at permanent roaming rather than a normal trip. It does not cover the UK or Switzerland, both of which sit outside the zone." },
         { q: "Do I need a passport to buy a SIM card in Poland?", a: "Yes. Poland has required prepaid SIM registration since 2016, so bring your passport to the shop. It is a counter formality rather than a wait, and the SIM works immediately." },
-        { q: "How much does it cost to use my US phone in Poland?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps." }
+        { q: "How much does it cost to use my US phone in Poland?", a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` }
       ],
         sources: {
         links: [

@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "south-africa",
   iso2: "za",
@@ -451,7 +453,7 @@ export default {
       glance: [
         { k: "Coverage", v: "Good in cities and on the N-routes" },
         { k: "SIM registration", v: "RICA: passport and an address" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` },
         { k: "Cheapest", v: "An MTN bundle, if you do RICA" }
       ],
       live: true,
@@ -464,7 +466,7 @@ export default {
       lede: "South Africa has a real price gap hidden in plain sight: an ordinary MTN data bundle and a Vodacom tourist bundle can differ by four times for the same gigabytes. The catch on both is RICA, the registration law, and whether it is worth your first afternoon.",
       checked: "Aug 2026",
       checkedISO: "2026-08-18",
-      answer: "Coverage is <b>good in Cape Town, Johannesburg, Durban and along the N1, N2 and N3</b>, and thinner in the <b>Kruger interior</b>, the <b>Karoo</b>, the <b>Drakensberg</b> and along the Wild Coast. On price there is a real gap: an ordinary <b>MTN</b> prepaid data bundle can be around <b>5 dollars for 10GB</b>, while <b>Vodacom</b>'s tourist bundles run nearer <b>20 dollars for 3GB</b>, so which counter you walk up to matters more than which network. Every SIM needs <b>RICA</b> registration: your <b>passport</b> plus a <b>local address</b>, where airport counters will normally accept your accommodation booking, and activation can take up to <b>24 hours</b>. A <b>Nomad eSIM</b> at a few dollars per gigabyte skips RICA entirely, which is the honest case for it here. Your US carrier's day pass is about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. <b>Vodacom</b> and <b>MTN</b> have the widest reach; for game reserves and the Drakensberg, <b>download offline maps</b>. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      answer: `Coverage is <b>good in Cape Town, Johannesburg, Durban and along the N1, N2 and N3</b>, and thinner in the <b>Kruger interior</b>, the <b>Karoo</b>, the <b>Drakensberg</b> and along the Wild Coast. On price there is a real gap: an ordinary <b>MTN</b> prepaid data bundle can be around <b>5 dollars for 10GB</b>, while <b>Vodacom</b>'s tourist bundles run nearer <b>20 dollars for 3GB</b>, so which counter you walk up to matters more than which network. Every SIM needs <b>RICA</b> registration: your <b>passport</b> plus a <b>local address</b>, where airport counters will normally accept your accommodation booking, and activation can take up to <b>24 hours</b>. A <b>Nomad eSIM</b> at a few dollars per gigabyte skips RICA entirely, which is the honest case for it here. Your US carrier's day pass is about <b>${S.dayPass}</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon's TravelPass has ${S.verizonNoCap}</b> and keeps billing daily. <b>Vodacom</b> and <b>MTN</b> have the widest reach; for game reserves and the Drakensberg, <b>download offline maps</b>. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
       sections: [
         {
           h: "The bundle gap is the real money story",
@@ -498,7 +500,7 @@ export default {
         { q: "What is RICA and do I need it as a tourist?", a: "RICA is South Africa's SIM registration law, and yes, every SIM needs it before it works. You need your passport and a local address, and airport counters will normally accept your accommodation booking, so carry the confirmation. Activation is usually minutes at an airport counter and can take up to 24 hours elsewhere." },
         { q: "How much should a data bundle cost in South Africa?", a: "Much less than the tourist packs suggest. An ordinary MTN prepaid bundle can be around 5 dollars for 10GB, while a Vodacom tourist bundle sits nearer 20 dollars for 3GB. Buy a cheap SIM, complete RICA, then load a standard bundle through the carrier's app rather than accepting the tourist pack at the counter." },
         { q: "Does load shedding still affect phone coverage in South Africa?", a: "Not as of this check. South Africa has had no national load shedding since May 2025 and Eskom projected none through the 2026 winter, so the old warning about blackouts degrading towers no longer applies. Localised load reduction continues in some residential areas for infrastructure reasons rather than generation shortfalls." },
-        { q: "How much does it cost to use my US phone in South Africa?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps." }
+        { q: "How much does it cost to use my US phone in South Africa?", a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` }
       ],
         sources: {
         links: [

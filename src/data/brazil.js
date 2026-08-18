@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "brazil",
   iso2: "br",
@@ -539,7 +541,7 @@ export default {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Good in cities and on the coast" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` },
         { k: "Cheapest", v: "A local chip, about $3 to $6" },
         { k: "The CPF myth", v: "A passport is enough at TIM" }
       ],
@@ -553,7 +555,7 @@ export default {
       lede: "Almost everything written online about Brazilian SIM cards says a tourist cannot buy one without a CPF tax number. That was a real obstacle once. It is now out of date, and correcting it happens to make our own eSIM look less necessary.",
       checked: "Aug 2026",
       checkedISO: "2026-08-18",
-      answer: "Coverage is <b>good in the cities and along the coast</b>, thinner in the <b>Amazon</b>, the <b>Pantanal</b> and on interior highways. On the money: a local prepaid <b>chip</b> from <b>Vivo, Claro or TIM</b> costs roughly <b>17 to 30 reais</b>, about <b>3 to 6 dollars</b>, for 4GB to 25GB, which undercuts everything else per gigabyte. The famous obstacle is the <b>CPF</b>, Brazil's individual tax number, and the honest 2026 position is that <b>the law lets a foreigner register with a passport</b> and the difficulty is the shop rather than the statute. <b>TIM</b> sells to visitors on a passport most consistently, <b>Claro</b> varies by store and <b>Vivo</b> is the strictest, and the carriers have also added dedicated <b>tourist packages that ask for no CPF</b>. So plan on a <b>carrier store or an airport counter</b> rather than a newsstand, and bring your passport. If you would rather skip that entirely, a <b>Nomad eSIM</b> is a few dollars per gigabyte and works from landing. Roaming on <b>AT&amp;T or Verizon</b> is about <b>10 to 12 dollars a day</b>, and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data before slowing to <b>256kbps</b>. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      answer: `Coverage is <b>good in the cities and along the coast</b>, thinner in the <b>Amazon</b>, the <b>Pantanal</b> and on interior highways. On the money: a local prepaid <b>chip</b> from <b>Vivo, Claro or TIM</b> costs roughly <b>17 to 30 reais</b>, about <b>3 to 6 dollars</b>, for 4GB to 25GB, which undercuts everything else per gigabyte. The famous obstacle is the <b>CPF</b>, Brazil's individual tax number, and the honest 2026 position is that <b>the law lets a foreigner register with a passport</b> and the difficulty is the shop rather than the statute. <b>TIM</b> sells to visitors on a passport most consistently, <b>Claro</b> varies by store and <b>Vivo</b> is the strictest, and the carriers have also added dedicated <b>tourist packages that ask for no CPF</b>. So plan on a <b>carrier store or an airport counter</b> rather than a newsstand, and bring your passport. If you would rather skip that entirely, a <b>Nomad eSIM</b> is a few dollars per gigabyte and works from landing. Roaming on <b>AT&amp;T or Verizon</b> is about <b>${S.dayPass}</b>, and <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data before slowing to <b>${S.throttle}</b>. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
       sections: [
         {
           h: "The CPF story, corrected",
@@ -570,7 +572,7 @@ export default {
           key: { fig: "$3 to $6", tag: "Local prepaid", text: "A local chip carries 4GB to 25GB for a few dollars. A travel eSIM costs more per gigabyte and skips the store visit entirely.", tone: "teal" },
           p: [
             "Per gigabyte, the <b>local chip</b> wins and it is not close: roughly <b>17 to 30 reais</b>, about <b>3 to 6 dollars</b>, for 4GB to 25GB, with unlimited WhatsApp messaging bundled on many plans. The costs are the store visit, the language, and the small chance of a clerk who says no. A <b>Nomad eSIM</b> is a few dollars per gigabyte, so more per unit of data, and buys arrival-day certainty: it activates before you fly, works on landing, and needs no Portuguese and no counter.",
-            "Roaming is the expensive default: <b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b>, so a week is <b>70 to 84 dollars</b>. Check <b>T-Mobile</b> first if that is your carrier, since its current mid and upper tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value before slowing to <b>256kbps</b>. And do not roam with <b>no plan</b>: pay-per-use at about <b>2 dollars a megabyte</b> is where the horror-story bills come from, so <b>turn off data roaming</b> until something is active."
+            `Roaming is the expensive default: <b>AT&amp;T and Verizon</b> day passes are about <b>${S.dayPass}</b>, so a week is <b>${S.week}</b>. Check <b>T-Mobile</b> first if that is your carrier, since its current mid and upper tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value before slowing to <b>${S.throttle}</b>. And do not roam with <b>no plan</b>: pay-per-use at about <b>${S.ppu}</b> is where the horror-story bills come from, so <b>turn off data roaming</b> until something is active.`
           ]
         },
         {
@@ -587,7 +589,7 @@ export default {
         { q: "Do I need a CPF to buy a SIM card in Brazil?", a: "No. Brazilian law lets a foreign national register a prepaid line with a passport, and the carriers have added tourist packages that ask for no CPF. The problem is that some store staff have never processed a passport registration and will tell you otherwise. TIM handles visitors most consistently, Claro varies by store and Vivo is the strictest." },
         { q: "How much does a Brazilian SIM card cost?", a: "Roughly 17 to 30 reais, about 3 to 6 dollars, for a prepaid chip with 4GB to 25GB, often with unlimited WhatsApp messaging included. Per gigabyte that undercuts both roaming and a travel eSIM. Buy it at a carrier store or an airport counter with your passport rather than at a newsstand." },
         { q: "Is an eSIM or a local SIM better for Brazil?", a: "The local chip is cheaper per gigabyte. The eSIM is easier: it activates before you fly, works on landing and needs no store visit, no Portuguese and no chance of a clerk who insists on a CPF. If you want the cheapest data and do not mind an errand, buy local. If you want to land connected, buy the eSIM knowing it is the convenience option." },
-        { q: "How much does it cost to use my US phone in Brazil?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily, which matters on a trip longer than 10 days. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps. Never roam with no plan, since pay-per-use runs about 2 dollars a megabyte." }
+        { q: "How much does it cost to use my US phone in Brazil?", a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily, which matters on a trip longer than 10 days. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}. Never roam with no plan, since pay-per-use runs about ${S.ppu}.` }
       ],
         sources: {
         links: [

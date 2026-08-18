@@ -80,6 +80,12 @@ console.log(`   spine checked ${carrierSpine.checked} (${carrierSpine.checkedISO
 
 const hard = [];
 const notes = [];
+const accepted = carrierSpine.accepted || [];
+// A note the desk has already ruled on is not a note. It reports as accepted, with the
+// reason, so the output stays worth reading. Matching is by slug plus a keyword from the
+// recorded `what`, deliberately loose: if the prose changes enough that the match breaks,
+// the case resurfaces as a fresh note, which is the safe direction.
+const isAccepted = (slug, kind) => accepted.find((a) => a.slug === slug && a.what.includes(kind));
 
 // 1. Retired figures must not reappear in reader-facing prose.
 console.log('1. Retired figures stay retired');
@@ -125,8 +131,13 @@ for (const { slug, spoke } of spokes) {
 if (!oddities.size) console.log('  ok    every day-pass figure in prose is a canonical form');
 else {
   for (const [fig, slugs] of [...oddities.entries()].sort((a, b) => b[1].size - a[1].size)) {
-    notes.push(`day-pass figure "${fig}" is not a canonical form: ${[...slugs].join(', ')}`);
-    console.log(`  note  "${fig}" in ${[...slugs].join(', ')}`);
+    const open = [...slugs].filter((s) => !isAccepted(s, 'bare'));
+    for (const s of [...slugs].filter((s) => isAccepted(s, 'bare'))) {
+      console.log(`  ok    "${fig}" in ${s}: accepted, ${isAccepted(s, 'bare').why}`);
+    }
+    if (!open.length) continue;
+    notes.push(`day-pass figure "${fig}" is not a canonical form: ${open.join(', ')}`);
+    console.log(`  note  "${fig}" in ${open.join(', ')}`);
   }
   console.log('        context can be legitimate (a precise eligible-plan rate, a regional comparison), so this is a read rather than a failure');
 }
@@ -137,9 +148,13 @@ const capRe = /caps? (?:its |the )?Day Pass|10 daily fees/i;
 const statesFig = spokes.filter(({ spoke }) => FIG_RE.test(readerProse(spoke)) || /\$10 to \$12/.test(readerProse(spoke)));
 const missingCap = statesFig.filter(({ spoke }) => !capRe.test(readerProse(spoke))).map((x) => x.slug);
 console.log(`  ok    ${statesFig.length - missingCap.length} of ${statesFig.length} spokes stating a day-pass figure also state the cap`);
-if (missingCap.length) {
-  notes.push(`spokes stating a day-pass figure without the AT&T cap: ${missingCap.join(', ')}`);
-  console.log(`  note  without the cap: ${missingCap.join(', ')}`);
+const capOpen = missingCap.filter((s) => !isAccepted(s, 'without the AT&T cap'));
+for (const s of missingCap.filter((s) => isAccepted(s, 'without the AT&T cap'))) {
+  console.log(`  ok    ${s}: accepted, ${isAccepted(s, 'without the AT&T cap').why}`);
+}
+if (capOpen.length) {
+  notes.push(`spokes stating a day-pass figure without the AT&T cap: ${capOpen.join(', ')}`);
+  console.log(`  note  without the cap: ${capOpen.join(', ')}`);
   console.log('        bundled-country spokes may frame it differently on purpose, so check before editing');
 }
 

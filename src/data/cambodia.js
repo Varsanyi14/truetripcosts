@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "cambodia",
   iso2: "kh",
@@ -419,7 +421,7 @@ export default {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Good in the cities and Siem Reap" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` },
         { k: "Cheapest", v: "A local SIM, a few dollars" },
         { k: "Signal gaps", v: "Cardamoms, islands, rural east" }
       ],
@@ -433,7 +435,7 @@ export default {
       lede: "Cambodian mobile data is among the cheapest in the world. A few dollars buys more gigabytes than most travelers use in a month, which makes the decision here easy and makes our commission argument weak.",
       checked: "Aug 2026",
       checkedISO: "2026-08-18",
-      answer: "Coverage is <b>good in Phnom Penh, Siem Reap, Battambang and Sihanoukville</b> and along the main roads, thinner in the <b>Cardamom mountains</b>, on the southern islands and in the rural northeast. On price, Cambodia is at the cheap end of the world: a <b>local SIM</b> from <b>Smart</b> or <b>Cellcard</b> costs a <b>few dollars</b> for tens of gigabytes, bought at the airport or any phone shop with your <b>passport</b>. Your US carrier charges about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b> day passes, and Cambodia is on AT&amp;T's covered list), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data abroad before slowing to <b>256kbps</b>. So one day of roaming costs more than a month of local data. A <b>Nomad eSIM</b> is a few dollars per gigabyte and earns its place if you are crossing several borders or want data from touchdown. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      answer: `Coverage is <b>good in Phnom Penh, Siem Reap, Battambang and Sihanoukville</b> and along the main roads, thinner in the <b>Cardamom mountains</b>, on the southern islands and in the rural northeast. On price, Cambodia is at the cheap end of the world: a <b>local SIM</b> from <b>Smart</b> or <b>Cellcard</b> costs a <b>few dollars</b> for tens of gigabytes, bought at the airport or any phone shop with your <b>passport</b>. Your US carrier charges about <b>${S.dayPass}</b> (<b>AT&amp;T and Verizon</b> day passes, and Cambodia is on AT&amp;T's covered list), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. So one day of roaming costs more than a month of local data. A <b>Nomad eSIM</b> is a few dollars per gigabyte and earns its place if you are crossing several borders or want data from touchdown. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
       sections: [
         {
           h: "One of the cheapest data markets anywhere",
@@ -456,9 +458,9 @@ export default {
         {
           h: "When roaming or an eSIM makes sense anyway",
           icon: "roamfee",
-          key: { fig: "$10-12/day", tag: "Roaming default", text: "Cambodia is on AT&T's covered-destination list, so the day pass applies rather than pay-per-use. Check T-Mobile first if that is your carrier.", tone: "teal" },
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "Cambodia is on AT&T's covered-destination list, so the day pass applies rather than pay-per-use. Check T-Mobile first if that is your carrier.", tone: "teal" },
           p: [
-            "Worth confirming because it changes the numbers: <b>Cambodia is on AT&amp;T's covered-destination list</b>, so a day pass applies at about <b>10 to 12 dollars a day</b> rather than the pay-per-use rate you would face in an uncovered country. AT&amp;T also caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value.",
+            `Worth confirming because it changes the numbers: <b>Cambodia is on AT&amp;T's covered-destination list</b>, so a day pass applies at about <b>${S.dayPass}</b> rather than the pay-per-use rate you would face in an uncovered country. AT&amp;T also caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10. <b>T-Mobile</b>'s current tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value.`,
             "The genuine case for a <b>Nomad eSIM</b> in Cambodia is a <b>multi-country trip</b>: if you are moving Thailand to Cambodia to Vietnam, one regional plan beats buying a SIM at every border, and the per-gigabyte premium buys you not repeating the errand three times. For a Cambodia-only trip, buy local. This guide is written for US travelers departing the US. For more, see <a href='/cambodia/cash-or-card'>cash or card in Cambodia</a>, <a href='/cambodia/taxis-and-apps'>taxis and apps in Cambodia</a>, and the <a href='/cambodia'>Cambodia money guide</a>."
           ]
         }
@@ -467,7 +469,7 @@ export default {
         { q: "How much does a SIM card cost in Cambodia?", a: "A few dollars for a Smart or Cellcard tourist pack carrying tens of gigabytes, sold at the airports and in phone shops everywhere. You need your passport to register. Cambodian data is among the cheapest in the world, and one day of US carrier roaming costs more than the whole pack." },
         { q: "Is an eSIM worth it for Cambodia?", a: "For a Cambodia-only trip, not on price: a local SIM is a few dollars for far more data. An eSIM earns its place on a multi-country trip through Thailand, Cambodia and Vietnam, where one regional plan saves buying a SIM at each border, or if you want data working the moment you land." },
         { q: "Which network is best in Cambodia?", a: "Smart generally has the better reach and speed, with Cellcard competitive and sometimes stronger in the provinces. Either covers Phnom Penh, Siem Reap, Battambang and the main roads well. Both thin out in the Cardamom mountains, on the southern islands and in the rural northeast." },
-        { q: "How much does it cost to use my US phone in Cambodia?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, and Cambodia is on AT&T's covered-destination list so the day pass applies rather than pay-per-use. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad." }
+        { q: "How much does it cost to use my US phone in Cambodia?", a: `About ${S.dayPass} on an AT&T or Verizon day pass, and Cambodia is on AT&T's covered-destination list so the day pass applies rather than pay-per-use. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad.` }
       ],
         sources: {
         links: [

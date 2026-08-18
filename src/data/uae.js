@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "uae",
   iso2: "ae",
@@ -391,7 +393,7 @@ export default {
         { k: "Coverage", v: "Excellent everywhere you will go" },
         { k: "App calling", v: "Blocked on local networks" },
         { k: "Messaging", v: "Works normally" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" }
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` }
       ],
       live: true,
       esim: true,
@@ -403,7 +405,7 @@ export default {
       lede: "The thing to know about the UAE is not the price of data, it is that WhatsApp and FaceTime calling do not work on Emirati networks. Messaging is fine. Calling is blocked, and has been for years.",
       checked: "Aug 2026",
       checkedISO: "2026-08-18",
-      answer: "Coverage is <b>excellent everywhere a visitor goes</b>, so this is not a coverage question and barely a price one. The real issue is that <b>WhatsApp and FaceTime voice and video calling are blocked</b> on UAE networks, along with most other consumer app calling, while <b>messaging, photos and voice notes work normally</b>. Ordinary <b>cellular calls are unaffected</b>: your US number still rings and still dials, at your plan's usual international rates. The licensed route for app calling is <b>Botim</b>, which needs a paid subscription. You will also read that a travel eSIM gets around the block, and there is something to it: a travel eSIM usually carries your traffic <b>out of the country</b> before it reaches the internet, and the filtering happens inside the UAE, so app calling <b>sometimes</b> works. That is a <b>side effect of how roaming is routed rather than a feature</b>, travelers report it inconsistently, and it can stop without notice, so do not build a trip's calls on it. On price, the <b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b>, <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data, a <b>Nomad eSIM</b> is a few dollars per gigabyte, and du and Etisalat often give arriving visitors a <b>free tourist SIM</b> with some data on it.",
+      answer: `Coverage is <b>excellent everywhere a visitor goes</b>, so this is not a coverage question and barely a price one. The real issue is that <b>WhatsApp and FaceTime voice and video calling are blocked</b> on UAE networks, along with most other consumer app calling, while <b>messaging, photos and voice notes work normally</b>. Ordinary <b>cellular calls are unaffected</b>: your US number still rings and still dials, at your plan's usual international rates. The licensed route for app calling is <b>Botim</b>, which needs a paid subscription. You will also read that a travel eSIM gets around the block, and there is something to it: a travel eSIM usually carries your traffic <b>out of the country</b> before it reaches the internet, and the filtering happens inside the UAE, so app calling <b>sometimes</b> works. That is a <b>side effect of how roaming is routed rather than a feature</b>, travelers report it inconsistently, and it can stop without notice, so do not build a trip's calls on it. On price, the <b>AT&amp;T and Verizon</b> day passes are about <b>${S.dayPass}</b>, <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data, a <b>Nomad eSIM</b> is a few dollars per gigabyte, and du and Etisalat often give arriving visitors a <b>free tourist SIM</b> with some data on it.`,
       sections: [
         {
           h: "What is actually blocked, and what is not",
@@ -437,7 +439,7 @@ export default {
         { q: "Does WhatsApp work in the UAE?", a: "Messaging does: text, photos, documents and voice notes all work normally. WhatsApp voice and video calling is blocked on UAE networks, as is FaceTime and most other consumer app calling. Ordinary cellular calls and SMS on your own number are unaffected." },
         { q: "Will a travel eSIM let me make WhatsApp calls in Dubai?", a: "Often, but it is not reliable and nobody can guarantee it. A travel eSIM usually routes your data out of the country before it reaches the internet, and the block sits inside the UAE network, so calls frequently get through. Routing varies by provider and can change without notice, so treat it as a bonus rather than a plan. For a call that matters, use an ordinary cellular call or a licensed app such as Botim." },
         { q: "How do I call home from the UAE?", a: "An ordinary cellular call on your own number works normally, at your carrier's international rate. Botim is the UAE-licensed internet-calling app and needs a paid subscription. Zoom and Microsoft Teams generally work for meetings. WhatsApp and FaceTime calling do not work on local networks." },
-        { q: "How much does it cost to use my US phone in the UAE?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily, which matters on a trip longer than 10 days. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps. du and Etisalat also give arriving visitors a free tourist SIM with some data on it, and a travel eSIM is a few dollars per gigabyte." }
+        { q: "How much does it cost to use my US phone in the UAE?", a: `About ${S.dayPass} on an AT&T or Verizon day pass. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily, which matters on a trip longer than 10 days. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}. du and Etisalat also give arriving visitors a free tourist SIM with some data on it, and a travel eSIM is a few dollars per gigabyte.` }
       ],
         sources: {
         links: [

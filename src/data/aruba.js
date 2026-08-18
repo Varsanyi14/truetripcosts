@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "aruba",
   iso2: "aw",
@@ -483,7 +485,7 @@ export default {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Excellent, the whole island" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` },
         { k: "Cheapest", v: "Often nothing, on resort wifi" },
         { k: "Local SIM", v: "About $15 to $25" }
       ],
@@ -497,7 +499,7 @@ export default {
       lede: "Aruba is 20 miles long, covered end to end, and the kind of place where most visitors spend the week between a hotel, a beach and a handful of restaurants that all have wifi. That makes the honest answer here uncomfortable for us: often, buy nothing.",
       checked: "Aug 2026",
       checkedISO: "2026-08-18",
-      answer: "Coverage is <b>excellent across the whole island</b> on <b>Setar</b> and <b>Digicel</b>, so there is nothing to plan around. For a typical <b>resort week</b>, between hotel wifi, restaurant and beach-bar wifi and the airport, plenty of visitors never buy data and never miss it. If you want a connection that travels with you, a <b>local tourist SIM</b> is about <b>15 to 25 dollars</b>, which is not cheap for a small island, and a <b>Nomad eSIM</b> at a few dollars per gigabyte is usually the better value of the two and needs no shop. Your US carrier's day pass is about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>, and Aruba is on both covered lists), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that. The one genuine reason to carry data here is the <b>rental car</b>: if you are driving to Arikok or the north coast, offline maps and a working phone matter more than they do on the strip. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      answer: `Coverage is <b>excellent across the whole island</b> on <b>Setar</b> and <b>Digicel</b>, so there is nothing to plan around. For a typical <b>resort week</b>, between hotel wifi, restaurant and beach-bar wifi and the airport, plenty of visitors never buy data and never miss it. If you want a connection that travels with you, a <b>local tourist SIM</b> is about <b>15 to 25 dollars</b>, which is not cheap for a small island, and a <b>Nomad eSIM</b> at a few dollars per gigabyte is usually the better value of the two and needs no shop. Your US carrier's day pass is about <b>${S.dayPass}</b> (<b>AT&amp;T and Verizon</b>, and Aruba is on both covered lists), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon's TravelPass has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value, slowing to <b>${S.throttle}</b> after that. The one genuine reason to carry data here is the <b>rental car</b>: if you are driving to Arikok or the north coast, offline maps and a working phone matter more than they do on the strip. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
       sections: [
         {
           h: "On a resort week, wifi is usually the whole answer",
@@ -531,7 +533,7 @@ export default {
         { q: "Do I need an eSIM for Aruba?", a: "For a typical resort week, quite possibly not. Hotel, restaurant and beach-bar wifi cover most of it, and the island is one road and hard to get lost on. Data is worth buying if you want a connection that travels with you, or if you are renting a car and driving to Arikok and the north coast." },
         { q: "How much is a SIM card in Aruba?", a: "About 15 to 25 dollars for a Setar or Digicel tourist SIM with a modest allowance. Island prepaid is not cheap, which is why a travel eSIM at a few dollars per gigabyte is usually better value here, unlike in most countries." },
         { q: "Is there good phone coverage in Aruba?", a: "Yes, excellent across the whole island on both Setar and Digicel, including Arikok national park and the north coast. There is no coverage gap worth planning around. The reason to carry data on the rough north-coast tracks is distance from help, not signal." },
-        { q: "How much does it cost to use my US phone in Aruba?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, and Aruba is on both covered lists. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad. If you are on a cruise, keep data roaming off at sea, where ship networks bill at maritime rates." }
+        { q: "How much does it cost to use my US phone in Aruba?", a: `About ${S.dayPass} on an AT&T or Verizon day pass, and Aruba is on both covered lists. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad. If you are on a cruise, keep data roaming off at sea, where ship networks bill at maritime rates.` }
       ],
         sources: {
         links: [

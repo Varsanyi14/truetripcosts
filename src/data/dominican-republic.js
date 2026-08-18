@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "dominican-republic",
   iso2: "do",
@@ -589,7 +591,7 @@ export default {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Good in resorts and cities" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` },
         { k: "Cheapest", v: "Often resort wifi, at $0" },
         { k: "Signal gaps", v: "The Cordillera, Samana back roads" }
       ],
@@ -603,7 +605,7 @@ export default {
       lede: "If your week is an all-inclusive in Punta Cana, the resort wifi is probably all you need and we would rather tell you that than sell you something. If you are leaving the gate to drive, hike or move between towns, the answer changes.",
       checked: "Aug 2026",
       checkedISO: "2026-08-18",
-      answer: "Coverage is <b>good in Santo Domingo, Punta Cana, Puerto Plata and the resort corridors</b>, and thinner in the <b>Cordillera Central</b>, on the <b>Samana</b> back roads and in the rural interior. On an <b>all-inclusive week</b>, resort wifi covers most of what you need, and that is a legitimate answer rather than a fallback. The moment you leave the gate it changes: a <b>local SIM</b> from <b>Claro</b> or <b>Altice</b> is roughly <b>10 to 25 dollars</b> for a tourist bundle with your <b>passport</b>, and <b>Claro</b> has the wider reach outside the cities. A <b>Nomad eSIM</b> is a few dollars per gigabyte and is the simpler option for a short trip. Your US carrier's day pass is about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      answer: `Coverage is <b>good in Santo Domingo, Punta Cana, Puerto Plata and the resort corridors</b>, and thinner in the <b>Cordillera Central</b>, on the <b>Samana</b> back roads and in the rural interior. On an <b>all-inclusive week</b>, resort wifi covers most of what you need, and that is a legitimate answer rather than a fallback. The moment you leave the gate it changes: a <b>local SIM</b> from <b>Claro</b> or <b>Altice</b> is roughly <b>10 to 25 dollars</b> for a tourist bundle with your <b>passport</b>, and <b>Claro</b> has the wider reach outside the cities. A <b>Nomad eSIM</b> is a few dollars per gigabyte and is the simpler option for a short trip. Your US carrier's day pass is about <b>${S.dayPass}</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon's TravelPass has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value, slowing to <b>${S.throttle}</b> after that. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
       sections: [
         {
           h: "Inside the resort, wifi is usually enough",
@@ -637,7 +639,7 @@ export default {
         { q: "Do I need data for an all-inclusive in the Dominican Republic?", a: "Usually not. Resort wifi covers a week of beach and buffet, and downloading maps and bookings before you fly handles the rest. Check whether your resort charges for a faster wifi tier, since a data plan is often cheaper than the resort's premium upgrade." },
         { q: "Which network is best in the Dominican Republic?", a: "Claro has the wider reach outside the main centers, with Altice competitive in Santo Domingo and Santiago. Neither covers the Cordillera Central, the Samana back roads or the rural interior reliably." },
         { q: "How much is a SIM card in the Dominican Republic?", a: "Roughly 10 to 25 dollars for a Claro or Altice tourist bundle, bought with your passport at a carrier shop or the airport. Caribbean prepaid is not priced like Latin American prepaid, so a travel eSIM at a few dollars per gigabyte can work out cheaper for light use. Compare both." },
-        { q: "How much does it cost to use my US phone in the Dominican Republic?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps." }
+        { q: "How much does it cost to use my US phone in the Dominican Republic?", a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` }
       ],
         sources: {
         links: [

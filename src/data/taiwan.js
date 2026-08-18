@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "taiwan",
   iso2: "tw",
@@ -443,7 +445,7 @@ export default {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Excellent, the high-speed rail too" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` },
         { k: "Airport SIM", v: "Unlimited, about $10 for 5 days" },
         { k: "Cheapest", v: "Close: heavy use favours the SIM" }
       ],
@@ -457,7 +459,7 @@ export default {
       lede: "Taiwan sells something most countries do not: genuinely unlimited data, over the counter at the airport, for about the price of two bowls of beef noodle soup. That makes this the rare page where the honest answer depends on how much data you use.",
       checked: "Aug 2026",
       checkedISO: "2026-08-18",
-      answer: "Coverage is <b>excellent</b>: fast 4G and widespread 5G across the island, working signal on the <b>high-speed rail</b>, in the Taipei metro and around most of the coast, thinning only in the <b>high mountains</b> and the Taroko back country. The airport counters at <b>Taoyuan</b> sell <b>unlimited-data tourist SIMs</b> from <b>Chunghwa Telecom</b>, <b>Taiwan Mobile</b> and <b>Far EasTone</b>, roughly <b>10 dollars for 5 days</b> or <b>16 dollars for 10</b>, with your <b>passport and a second ID</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and needs no counter. So this is genuinely close: if you tether, stream or work, the <b>unlimited SIM wins</b>; for maps, messaging and photos, the <b>eSIM is usually cheaper</b> and simpler. <b>Chunghwa</b> has the best reach if you are leaving the cities. Your US carrier's day pass is about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      answer: `Coverage is <b>excellent</b>: fast 4G and widespread 5G across the island, working signal on the <b>high-speed rail</b>, in the Taipei metro and around most of the coast, thinning only in the <b>high mountains</b> and the Taroko back country. The airport counters at <b>Taoyuan</b> sell <b>unlimited-data tourist SIMs</b> from <b>Chunghwa Telecom</b>, <b>Taiwan Mobile</b> and <b>Far EasTone</b>, roughly <b>10 dollars for 5 days</b> or <b>16 dollars for 10</b>, with your <b>passport and a second ID</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and needs no counter. So this is genuinely close: if you tether, stream or work, the <b>unlimited SIM wins</b>; for maps, messaging and photos, the <b>eSIM is usually cheaper</b> and simpler. <b>Chunghwa</b> has the best reach if you are leaving the cities. Your US carrier's day pass is about <b>${S.dayPass}</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon's TravelPass has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value, slowing to <b>${S.throttle}</b> after that. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
       sections: [
         {
           h: "Unlimited over the counter, and what it costs",
@@ -491,7 +493,7 @@ export default {
         { q: "Is an eSIM or a local SIM better in Taiwan?", a: "It depends on how much data you use, and the answer is genuinely close. The airport unlimited SIM, about 10 dollars for five days, wins for heavy use, tethering or streaming, because you pay by the day rather than the gigabyte. A travel eSIM at a few dollars per gigabyte is usually cheaper for maps, messaging and photos, and it works from landing with no counter visit." },
         { q: "How much is a tourist SIM at Taoyuan airport?", a: "Roughly 10 dollars for five days of unlimited data, or about 16 dollars for ten, from Chunghwa Telecom, Taiwan Mobile or Far EasTone. Bring your passport and a second piece of ID, which Taiwan requires. City stores are often priced worse than the airport." },
         { q: "Which network is best in Taiwan?", a: "Chunghwa Telecom, particularly outside the cities and in the mountains. Taiwan Mobile and Far EasTone are fine for a trip focused on Taipei and the west-coast cities. All three sell the same style of unlimited tourist plan at the airport." },
-        { q: "How much does it cost to use my US phone in Taiwan?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week, which is more than an unlimited local SIM costs for the same period. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad." }
+        { q: "How much does it cost to use my US phone in Taiwan?", a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week, which is more than an unlimited local SIM costs for the same period. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad.` }
       ],
         sources: {
         links: [

@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "iceland",
   iso2: "is",
@@ -434,7 +436,7 @@ export default {
       glance: [
         { k: "Coverage", v: "Good on the Ring Road and coast" },
         { k: "Signal gaps", v: "The Highlands and the F-roads" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` },
         { k: "Cheapest", v: "A local SIM, and it is cheap" }
       ],
       live: true,
@@ -447,7 +449,7 @@ export default {
       lede: "Iceland is the country where we would rather talk about coverage than price. Data here is cheap and the Ring Road is well covered. It is the interior, in weather that changes inside an hour, where a phone stops working and the consequences are not about money.",
       checked: "Aug 2026",
       checkedISO: "2026-08-18",
-      answer: "Coverage is <b>good along the Ring Road and the populated coast</b>, including the small towns, and it <b>stops in the Highlands</b>: the interior, the <b>F-roads</b>, most of Landmannalaugar and Thorsmork away from the huts, and long stretches of the Westfjords and the eastern interior have no usable signal on any network. A <b>local SIM</b> from <b>Siminn</b>, <b>Nova</b> or <b>Vodafone Iceland</b> is cheap and sold at Keflavik and in supermarkets, and a <b>Nomad eSIM</b> at a few dollars per gigabyte is the simpler route. Your US carrier's day pass is about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that. What matters more than any of that: install <b>112 Iceland</b> before you drive, read <b>safetravel.is</b> and <b>road.is</b> each morning, <b>download offline maps</b> for the whole route, and treat an interior day as offline. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      answer: `Coverage is <b>good along the Ring Road and the populated coast</b>, including the small towns, and it <b>stops in the Highlands</b>: the interior, the <b>F-roads</b>, most of Landmannalaugar and Thorsmork away from the huts, and long stretches of the Westfjords and the eastern interior have no usable signal on any network. A <b>local SIM</b> from <b>Siminn</b>, <b>Nova</b> or <b>Vodafone Iceland</b> is cheap and sold at Keflavik and in supermarkets, and a <b>Nomad eSIM</b> at a few dollars per gigabyte is the simpler route. Your US carrier's day pass is about <b>${S.dayPass}</b> (<b>AT&amp;T and Verizon</b>), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon's TravelPass has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value, slowing to <b>${S.throttle}</b> after that. What matters more than any of that: install <b>112 Iceland</b> before you drive, read <b>safetravel.is</b> and <b>road.is</b> each morning, <b>download offline maps</b> for the whole route, and treat an interior day as offline. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
       sections: [
         {
           h: "The Ring Road is fine, the interior is not",
@@ -470,10 +472,10 @@ export default {
         {
           h: "The price side, briefly",
           icon: "roamfee",
-          key: { fig: "$10-12/day", tag: "Roaming default", text: "Icelandic prepaid is cheap and sold at Keflavik. AT&T caps its Day Pass at 10 daily fees a bill period; Verizon does not cap.", tone: "teal" },
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: "Icelandic prepaid is cheap and sold at Keflavik. AT&T caps its Day Pass at 10 daily fees a bill period; Verizon does not cap.", tone: "teal" },
           p: [
             "Iceland is expensive at almost everything and mobile data is the exception. A <b>Siminn</b>, <b>Nova</b> or <b>Vodafone Iceland</b> prepaid SIM with a generous data bundle costs little, is sold at <b>Keflavik</b> arrivals and in supermarkets and petrol stations, and needs no registration hassle. Siminn generally has the widest rural reach. A <b>Nomad eSIM</b> at a few dollars per gigabyte works from landing and avoids the queue after a red-eye, which is when most US flights arrive.",
-            "Roaming is the expensive default at <b>10 to 12 dollars a day</b> on <b>AT&amp;T or Verizon</b>, though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, while <b>Verizon's TravelPass has no equivalent cap</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that, so check yours before buying: on a five-day Ring Road trip a T-Mobile allowance may cover it. This guide is written for US travelers departing the US. For more, see <a href='/iceland/cash-or-card'>cash or card in Iceland</a>, <a href='/iceland/taxis-and-apps'>taxis and apps in Iceland</a>, and the <a href='/iceland'>Iceland money guide</a>."
+            `Roaming is the expensive default at <b>${S.dayPass}</b> on <b>AT&amp;T or Verizon</b>, though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, while <b>Verizon's TravelPass has ${S.verizonNoCap}</b> and keeps billing daily. <b>T-Mobile</b>'s current tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value, slowing to <b>${S.throttle}</b> after that, so check yours before buying: on a five-day Ring Road trip a T-Mobile allowance may cover it. This guide is written for US travelers departing the US. For more, see <a href='/iceland/cash-or-card'>cash or card in Iceland</a>, <a href='/iceland/taxis-and-apps'>taxis and apps in Iceland</a>, and the <a href='/iceland'>Iceland money guide</a>.`
           ]
         }
       ],
@@ -481,7 +483,7 @@ export default {
         { q: "Will my phone work in the Icelandic Highlands?", a: "Generally no. The interior, the F-roads, the Kjolur and Sprengisandur crossings and most of the trekking country have no usable signal on any network, and no data plan changes that. The Ring Road and the coastal towns are well covered." },
         { q: "What should I install before driving in Iceland?", a: "The 112 Iceland app, which can send your location to emergency services and log your position for a route. Then download offline maps for the whole route, and check road.is for closures and safetravel.is for warnings every morning, since both change daily." },
         { q: "Is a SIM card cheap in Iceland?", a: "Yes, unusually so for Iceland. A Siminn, Nova or Vodafone Iceland prepaid SIM with a generous data bundle costs little and is sold at Keflavik arrivals, in supermarkets and at petrol stations, with no registration hassle. Siminn generally has the widest rural reach." },
-        { q: "How much does it cost to use my US phone in Iceland?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad, which may cover a short Ring Road trip outright." }
+        { q: "How much does it cost to use my US phone in Iceland?", a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad, which may cover a short Ring Road trip outright.` }
       ],
         sources: {
         links: [

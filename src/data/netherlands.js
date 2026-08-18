@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "netherlands",
   iso2: "nl",
@@ -628,7 +630,7 @@ export default {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Among the best in Europe" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` },
         { k: "Cheapest", v: "A travel eSIM, a few $ per GB" },
         { k: "Signal gaps", v: "None worth planning around" }
       ],
@@ -637,20 +639,20 @@ export default {
       topic: "connectivity",
       caution: "low",
       title: "eSIM for the Netherlands: purely a cost decision",
-      description: "Dutch coverage is among the best in Europe, trains included, so there is nothing to plan around. US roaming runs 10 to 12 dollars a day; an eSIM is a few per gigabyte.",
+      description: `Dutch coverage is among the best in Europe, trains included, so there is nothing to plan around. US roaming runs ${S.dayPass}; an eSIM is a few per gigabyte.`,
       h1: "Staying connected in the Netherlands.",
       lede: "The Netherlands has some of the best mobile coverage in Europe, trains and countryside included, so there is nothing here to plan around. That makes this page short and the decision purely financial.",
       checked: "Aug 2026",
       checkedISO: "2026-08-18",
-      answer: "Coverage is <b>among the best in Europe</b>, in the cities, across the countryside and on the trains, so this is <b>purely a cost decision</b>. Your US carrier charges about <b>10 to 12 dollars a day</b> to roam (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b> is worth checking before you buy anything, because its mid and upper tiers include a real <b>high-speed allowance</b> abroad, from <b>5GB up to 30GB</b> depending on plan, slowing to <b>256kbps</b> only after that. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly and works from landing. A Dutch prepaid SIM is also cheap and carries <b>EU roaming</b>, which is worth a look if the trip continues into the rest of the EU. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      answer: `Coverage is <b>among the best in Europe</b>, in the cities, across the countryside and on the trains, so this is <b>purely a cost decision</b>. Your US carrier charges about <b>${S.dayPass}</b> to roam (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b> is worth checking before you buy anything, because its mid and upper tiers include a real <b>high-speed allowance</b> abroad, from <b>5GB up to 30GB</b> depending on plan, slowing to <b>${S.throttle}</b> only after that. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly and works from landing. A Dutch prepaid SIM is also cheap and carries <b>EU roaming</b>, which is worth a look if the trip continues into the rest of the EU. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
       sections: [
         {
           h: "A cost question, and only that",
           icon: "roamfee",
-          key: { fig: "$10-12/day", tag: "Roaming default", text: "A US carrier day pass runs about $10 to $12 a day. T-Mobile is the exception, with 5GB to 30GB of high-speed data abroad on its mid and upper tiers, so check yours before buying.", tone: "teal" },
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: `A US carrier day pass runs about ${S.dayPassGlance}. T-Mobile is the exception, with ${S.tmoRange} of high-speed data abroad on its mid and upper tiers, so check yours before buying.`, tone: "teal" },
           p: [
-            "Dutch networks are strong everywhere you are likely to be, so the only question is what you pay. The expensive default is roaming on your US plan: <b>AT&amp;T and Verizon</b> charge about <b>10 to 12 dollars a day</b>, roughly <b>70 to 84 dollars</b> for a week. <b>T-Mobile</b> is the exception worth checking first: its current tiers include a genuine <b>high-speed allowance</b> abroad, roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> only once that is used up. The entry <b>Essentials</b> tier is throttled from the start. Google Fi and Visible set their own terms, so read your own plan rather than assuming.",
-            "Whatever you choose, do not roam with <b>no plan at all</b>. Pay-per-use data runs about <b>2 dollars a megabyte</b>, thousands per gigabyte, and phones use data in the background, so <b>turn off data roaming</b> until an eSIM or a pass is active."
+            `Dutch networks are strong everywhere you are likely to be, so the only question is what you pay. The expensive default is roaming on your US plan: <b>AT&amp;T and Verizon</b> charge about <b>${S.dayPass}</b>, roughly <b>${S.week}</b> for a week. <b>T-Mobile</b> is the exception worth checking first: its current tiers include a genuine <b>high-speed allowance</b> abroad, roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value, slowing to <b>${S.throttle}</b> only once that is used up. The entry <b>Essentials</b> tier is throttled from the start. Google Fi and Visible set their own terms, so read your own plan rather than assuming.`,
+            `Whatever you choose, do not roam with <b>no plan at all</b>. Pay-per-use data runs about <b>${S.ppu}</b>, thousands per gigabyte, and phones use data in the background, so <b>turn off data roaming</b> until an eSIM or a pass is active.`
           ]
         },
         {
@@ -673,8 +675,8 @@ export default {
         }
       ],
       faqs: [
-        { q: "Do I need an eSIM for the Netherlands?", a: "For most US travelers it is the cheapest way to get real data. Dutch coverage is excellent, so it is purely a cost question: a Nomad eSIM is a few dollars per gigabyte against about 10 to 12 dollars a day for an AT&T or Verizon roaming pass. Set it up before you fly and it works from landing." },
-        { q: "How much does it cost to use my US phone in the Netherlands?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily, which matters on a trip longer than 10 days. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps. Never roam with no plan, since pay-per-use runs about 2 dollars a megabyte." },
+        { q: "Do I need an eSIM for the Netherlands?", a: `For most US travelers it is the cheapest way to get real data. Dutch coverage is excellent, so it is purely a cost question: a Nomad eSIM is a few dollars per gigabyte against about ${S.dayPass} for an AT&T or Verizon roaming pass. Set it up before you fly and it works from landing.` },
+        { q: "How much does it cost to use my US phone in the Netherlands?", a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily, which matters on a trip longer than 10 days. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}. Never roam with no plan, since pay-per-use runs about ${S.ppu}.` },
         { q: "Is a Dutch SIM card better than an eSIM?", a: "For a single-country trip, no, the eSIM is simpler and cheaper. For a longer European loop it can be, because a Dutch prepaid SIM carries EU roaming across the rest of the EU at no extra cost. If the Netherlands is your first stop of several, price both." },
         { q: "Will I have signal on Dutch trains?", a: "Generally yes. Coverage on the Dutch rail network is good, which is not true of long-distance trains in some neighboring countries. There is no signal gap in the Netherlands worth planning a trip around." }
       ],

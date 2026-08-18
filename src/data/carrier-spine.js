@@ -41,6 +41,37 @@
 // share one review date, and the honest way to handle that is one review of this file
 // rather than 47 pretend-independent ones.
 
+// THE PROSE TOKENS. This is what the spokes interpolate, and it is the reason this file
+// went from a reference to a real single source of truth (ruled 18 August 2026).
+//
+// Only FIGURES live here, never sentences. The wording around a figure varies by country
+// on purpose, because the Namibia page and the Netherlands page should not read as the
+// same paragraph with the nouns swapped, and assembling sentences from fragments is the
+// thing verdict.js exists to prevent. So a spoke writes its own sentence and interpolates
+// the number:
+//
+//   answer: `Your US carrier charges about <b>${S.dayPass}</b> to roam.`
+//
+// Change a value here and every spoke that states it updates on the next build. The
+// figures array below points at these same constants, so the checker and the prose can
+// never disagree about what the canonical form is.
+export const S = {
+  dayPass: "10 to 12 dollars a day",      // in running prose
+  dayPassGlance: "$10 to $12 a day",      // in the at-a-glance grid
+  dayPassFig: "$10-12/day",               // in a section keystat
+  week: "70 to 84 dollars",               // seven days at the day-pass rate
+  capFees: "10 daily fees per line per bill period",
+  capAmount: "120 dollars",
+  verizonNoCap: "no equivalent cap",
+  tmoRange: "5GB to 30GB",                // the summary form, in FAQs and short answers
+  tmoLow: "5GB",                          // Experience More, Magenta MAX, Go5G Plus
+  tmoMid: "15GB",                         // Experience Beyond, Go5G Next
+  tmoHigh: "30GB",                        // Better Value
+  throttle: "256kbps",
+  ppu: "2 dollars a megabyte",            // pay-per-use, no plan active
+  cruise: "20 dollars",                   // AT&T Day Pass at sea, per day
+};
+
 export const carrierSpine = {
   checked: "Aug 2026",
   checkedISO: "2026-08-18",
@@ -54,7 +85,7 @@ export const carrierSpine = {
     {
       id: "day-pass",
       label: "AT&T and Verizon day-pass rate, per line per day, on land",
-      canonical: ["10 to 12 dollars a day", "$10 to $12 a day", "$10-12/day"],
+      canonical: [S.dayPass, S.dayPassGlance, S.dayPassFig],
       note: "AT&T's own page says $12 and third parties still list $10 for eligible plans, "
         + "so the honest figure is a range rather than a single number. Verizon's support "
         + "page says $12, and $6 for Mexico and Canada.",
@@ -63,7 +94,7 @@ export const carrierSpine = {
     {
       id: "att-cap",
       label: "AT&T Day Pass fee cap, per line per bill period, land and air only",
-      canonical: ["10 daily fees per line per bill period", "120 dollars"],
+      canonical: [S.capFees, S.capAmount],
       note: "AT&T: you never pay more than 10 daily fees per line per bill period for land "
         + "or air travel, and you keep using the phone for the rest of that bill period at "
         + "no further daily charge. A trip straddling two bill periods can meet the cap "
@@ -73,7 +104,7 @@ export const carrierSpine = {
     {
       id: "verizon-no-cap",
       label: "Verizon TravelPass has no equivalent per-cycle cap",
-      canonical: ["no equivalent cap"],
+      canonical: [S.verizonNoCap],
       note: "TravelPass keeps billing daily with no ceiling, so a three-week trip is roughly "
         + "252 dollars against about 120 on AT&T for the same days. The asymmetry is more "
         + "useful to a reader than the AT&T cap stated alone.",
@@ -82,7 +113,7 @@ export const carrierSpine = {
     {
       id: "tmobile-tiers",
       label: "T-Mobile included high-speed roaming allowance by plan tier",
-      canonical: ["5GB", "15GB", "30GB", "256kbps"],
+      canonical: [S.tmoLow, S.tmoMid, S.tmoHigh, S.throttle],
       note: "5GB on Experience More, Magenta MAX and Go5G Plus. 15GB on Experience Beyond "
         + "and Go5G Next. 30GB on Better Value, which is a limited-time plan. Unlimited at "
         + "up to 256kbps after the allowance. Entry Essentials is throttled from the start. "
@@ -92,7 +123,7 @@ export const carrierSpine = {
     {
       id: "pay-per-use",
       label: "Pay-per-use data rate with no plan active",
-      canonical: ["2 dollars a megabyte"],
+      canonical: [S.ppu],
       note: "Verizon publishes $2.05/MB. Roughly 2 dollars a megabyte is the honest round "
         + "figure and it is thousands per gigabyte, which is where the horror-story bills "
         + "come from. Every spoke should tell a reader to turn data roaming off until "
@@ -102,7 +133,7 @@ export const carrierSpine = {
     {
       id: "att-cruise",
       label: "AT&T Day Pass at sea",
-      canonical: ["20 dollars"],
+      canonical: [S.cruise],
       note: "$20 per day per line for any day used at sea, covering ship and shore that "
         + "day, with data reduced to 512kbps after 500MB on some ships. Relevant to the "
         + "Caribbean spokes, where a cruise day is the real bill-shock risk.",
@@ -175,6 +206,33 @@ export const carrierSpine = {
         + "source, so this is retired rather than restated. Do not present it as an option "
         + "for long trips.",
       correctedISO: "2026-08-18",
+    },
+  ],
+
+  // Accepted exceptions. Ruled 18 August 2026: leave these as they are. Recorded here so
+  // the checker reports them as decided rather than raising the same two notes every run,
+  // which is how a checker teaches people to skim past its output. If the prose changes,
+  // delete the entry rather than editing it, so the next reader re-decides.
+  accepted: [
+    {
+      slug: "mexico",
+      what: "states a bare \"12 dollars a day\" rather than the 10-to-12 range",
+      why: "It is used as a rough comparison to what the same carriers charge in Europe, not "
+        + "as Mexico's own rate, and the mexico spoke's whole argument is that Mexico is "
+        + "usually included in your plan already. Reviewed and left.",
+    },
+    {
+      slug: "canada",
+      what: "states a day-pass figure without the AT&T cap",
+      why: "The canada spoke is built around checking whether your plan already covers "
+        + "Canada, so a 10-day cap on a pass most readers should not buy would be noise. "
+        + "Reviewed and left.",
+    },
+    {
+      slug: "mexico",
+      what: "states a day-pass figure without the AT&T cap",
+      why: "Same reason as canada: the page is about Mexico usually being bundled. Reviewed "
+        + "and left.",
     },
   ],
 

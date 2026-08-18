@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "colombia",
   iso2: "co",
@@ -514,7 +516,7 @@ export default {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Good cities and the coffee region" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` },
         { k: "Cheapest", v: "A Claro SIM, a few dollars" },
         { k: "Signal gaps", v: "Amazon, Pacific coast, La Guajira" }
       ],
@@ -528,7 +530,7 @@ export default {
       lede: "Colombia is cheap and easy on this front: a Claro SIM costs a few dollars, covers more of the country than anything else, and takes a passport and a few minutes.",
       checked: "Aug 2026",
       checkedISO: "2026-08-18",
-      answer: "Coverage is <b>good in Bogota, Medellin, Cartagena and the coffee region</b> and along the main highways, and thin in the <b>Amazon</b>, on the <b>Pacific coast</b> and across <b>La Guajira</b>. On price the local option is clearly cheaper: a <b>Claro</b> SIM with a data package costs a <b>few dollars</b>, sold in carrier shops, malls and at the airports with your <b>passport</b>, and <b>Claro</b> has the widest reach in the country by a clear margin, with <b>Movistar</b> and <b>Tigo</b> fine in the cities. Your US carrier charges about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data abroad before slowing to <b>256kbps</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and worth it if you want data before you leave the airport, which in Bogota is a reasonable thing to want. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      answer: `Coverage is <b>good in Bogota, Medellin, Cartagena and the coffee region</b> and along the main highways, and thin in the <b>Amazon</b>, on the <b>Pacific coast</b> and across <b>La Guajira</b>. On price the local option is clearly cheaper: a <b>Claro</b> SIM with a data package costs a <b>few dollars</b>, sold in carrier shops, malls and at the airports with your <b>passport</b>, and <b>Claro</b> has the widest reach in the country by a clear margin, with <b>Movistar</b> and <b>Tigo</b> fine in the cities. Your US carrier charges about <b>${S.dayPass}</b> (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and worth it if you want data before you leave the airport, which in Bogota is a reasonable thing to want. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
       sections: [
         {
           h: "Claro, and it is not really a contest",
@@ -536,7 +538,7 @@ export default {
           key: { fig: "A few $", tag: "Claro prepaid", text: "Claro has the widest reach in Colombia and sells data cheaply. Movistar and Tigo are fine in the cities and thinner outside them.", tone: "teal" },
           p: [
             "<b>Claro</b> is the default here for the same reason Telcel is in Mexico: it reaches places the others do not, including much of the rural coffee region, the Santander highlands and the smaller Caribbean towns. A prepaid SIM with a data package is a <b>few dollars</b>, bought with your <b>passport</b> at a carrier shop, a mall counter or the airport. <b>Movistar</b> and <b>Tigo</b> compete well in Bogota, Medellin and Cali and fade faster outside them.",
-            "The comparison with roaming is not close: a week of <b>AT&amp;T or Verizon</b> day passes is <b>70 to 84 dollars</b> against a few dollars for the local package, and a travel eSIM costs several times the local option for less data. We earn on eSIM links and nothing on a Claro SIM."
+            `The comparison with roaming is not close: a week of <b>AT&amp;T or Verizon</b> day passes is <b>${S.week}</b> against a few dollars for the local package, and a travel eSIM costs several times the local option for less data. We earn on eSIM links and nothing on a Claro SIM.`
           ]
         },
         {
@@ -551,9 +553,9 @@ export default {
         {
           h: "Roaming and the eSIM case",
           icon: "roamfee",
-          key: { fig: "$10-12/day", tag: "Roaming default", text: "AT&T caps its Day Pass at 10 daily fees per bill period. T-Mobile's mid and upper tiers include 5GB to 30GB of high-speed data abroad.", tone: "teal" },
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: `AT&T caps its Day Pass at 10 daily fees per bill period. T-Mobile's mid and upper tiers include ${S.tmoRange} of high-speed data abroad.`, tone: "teal" },
           p: [
-            "<b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b>, so a week is <b>70 to 84 dollars</b>, and <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10. <b>T-Mobile</b>'s current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, so check your own plan before buying anything.",
+            `<b>AT&amp;T and Verizon</b> day passes are about <b>${S.dayPass}</b>, so a week is <b>${S.week}</b>, and <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10. <b>T-Mobile</b>'s current tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value, so check your own plan before buying anything.`,
             "The genuine case for a <b>Nomad eSIM</b> in Colombia is having a working connection <b>before you leave the terminal</b>, so you can order a ride rather than negotiate one, and that is worth a few dollars per gigabyte to plenty of people. It is the convenience option and not the cheap one, and both beat roaming comfortably. This guide is written for US travelers departing the US. For more, see <a href='/colombia/cash-or-card'>cash or card in Colombia</a>, <a href='/colombia/taxis-and-apps'>taxis and apps in Colombia</a>, and the <a href='/colombia'>Colombia money guide</a>."
           ]
         }
@@ -562,7 +564,7 @@ export default {
         { q: "Which network is best in Colombia?", a: "Claro, by a clear margin on reach, including much of the rural coffee region and the smaller Caribbean towns. Movistar and Tigo compete well in Bogota, Medellin and Cali but fade faster outside the cities." },
         { q: "How much is a SIM card in Colombia?", a: "A few dollars for a Claro prepaid SIM with a data package, bought with your passport at a carrier shop, a mall counter or the airport. That is a fraction of a week of US carrier roaming." },
         { q: "Is an eSIM worth it for Colombia?", a: "On price, no: a Claro SIM is cheaper. The real argument is arriving with data already working so you can order a ride rather than negotiate one at the terminal, which matters more in Colombia than the few dollars it costs. Both options beat roaming comfortably." },
-        { q: "How much does it cost to use my US phone in Colombia?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad." }
+        { q: "How much does it cost to use my US phone in Colombia?", a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad.` }
       ],
         sources: {
         links: [

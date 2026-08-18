@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "mexico",
   iso2: "mx",
@@ -207,7 +209,7 @@ export default {
           p: [
             "<b>Prepaid, legacy and basic plans.</b> This is the biggest gap. Older plans and many prepaid tiers were never sold with North American roaming, and on those you can land on <b>per-minute long-distance charges</b> instead. If your plan is not a current-generation unlimited plan, assume nothing and check it explicitly.",
             "<b>Budget carriers and MVNOs vary enormously.</b> The instructive case is <b>Visible</b>, which Verizon owns and which runs on Verizon's network, yet includes Mexico and Canada only on its <b>Plus and Plus Pro</b> tiers rather than the base plan. Being on a major network is not the same as being on a plan that travels. Mint, Cricket, Metro, Boost and the rest each have their own rules.",
-            "<b>Included does not always mean unlimited.</b> T-Mobile's Better Value plan, launched in January 2026, comes with <b>30GB</b> in Mexico and Canada rather than unlimited, and across carriers you may hit reduced speeds after a threshold. For a week of maps and WhatsApp that is irrelevant. For streaming or working, read the number.",
+            `<b>Included does not always mean unlimited.</b> T-Mobile's Better Value plan, launched in January 2026, comes with <b>${S.tmoHigh}</b> in Mexico and Canada rather than unlimited, and across carriers you may hit reduced speeds after a threshold. For a week of maps and WhatsApp that is irrelevant. For streaming or working, read the number.`,
             "<b>Hotspot and long stays are conditioned separately.</b> Tethering can be restricted or unavailable while roaming even when your own data works, so check it if you plan to work off your phone. And carriers monitor extended roaming: a month in Oaxaca is a different proposition from ten days in Cancun, and prolonged use abroad can bring reduced speeds or restricted service."
           ]
         },

@@ -1,3 +1,5 @@
+import { S } from './carrier-spine.js';
+
 export default {
   slug: "sri-lanka",
   iso2: "lk",
@@ -510,7 +512,7 @@ export default {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Good coast, Colombo, hill country" },
-        { k: "Carrier roaming", v: "$10 to $12 a day" },
+        { k: "Carrier roaming", v: `${S.dayPassGlance}` },
         { k: "Cheapest", v: "An airport SIM, $5 to $10" },
         { k: "Signal gaps", v: "Yala, the deep interior" }
       ],
@@ -524,7 +526,7 @@ export default {
       lede: "Sri Lanka is one of the countries where the cheap answer is also an easy one. The tourist SIM counters sit in the Colombo arrivals hall, they take about ten minutes, and what they sell costs less than a single day of carrier roaming.",
       checked: "Aug 2026",
       checkedISO: "2026-08-18",
-      answer: "Coverage is <b>good along the coast, in Colombo and through the hill country</b>, thinner in <b>Yala</b>, the deep interior and on some hill roads. The cheapest option is not the eSIM. A <b>tourist SIM</b> from <b>Dialog</b> or <b>Mobitel</b>, bought at the counters in the <b>Colombo arrivals hall</b>, runs about <b>5 to 10 dollars</b> for <b>25GB or more</b> with local calls included, which is less than one day of carrier roaming. You need your <b>passport</b> and about ten minutes. Your US carrier charges about <b>10 to 12 dollars a day</b> (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>5GB to 30GB</b> of high-speed data abroad before slowing to <b>256kbps</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and is the right call if you want data working before you land or you would rather not queue. Never roam <b>pay-per-use</b>, at about 2 dollars a megabyte.",
+      answer: `Coverage is <b>good along the coast, in Colombo and through the hill country</b>, thinner in <b>Yala</b>, the deep interior and on some hill roads. The cheapest option is not the eSIM. A <b>tourist SIM</b> from <b>Dialog</b> or <b>Mobitel</b>, bought at the counters in the <b>Colombo arrivals hall</b>, runs about <b>5 to 10 dollars</b> for <b>25GB or more</b> with local calls included, which is less than one day of carrier roaming. You need your <b>passport</b> and about ten minutes. Your US carrier charges about <b>${S.dayPass}</b> (<b>AT&amp;T and Verizon</b> day passes), though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10, and <b>T-Mobile</b>'s mid and upper tiers include <b>${S.tmoRange}</b> of high-speed data abroad before slowing to <b>${S.throttle}</b>. A <b>Nomad eSIM</b> is a few dollars per gigabyte and is the right call if you want data working before you land or you would rather not queue. Never roam <b>pay-per-use</b>, at about ${S.ppu}.`,
       sections: [
         {
           h: "The airport SIM is cheap, generous and quick",
@@ -532,7 +534,7 @@ export default {
           key: { fig: "$5 to $10", tag: "For 25GB or more", text: "Dialog and Mobitel sell tourist packs in the Colombo arrivals hall. Passport, about ten minutes, and it costs less than one day of roaming.", tone: "teal" },
           p: [
             "The <b>tourist SIM</b> counters at <b>Bandaranaike airport</b> are in the arrivals hall before you leave the building, and both <b>Dialog</b> and <b>Mobitel</b> sell packs aimed squarely at visitors: roughly <b>5 to 10 dollars</b> for <b>25GB to 50GB</b>, valid a month, with local calls and often some international minutes included. Bring your <b>passport</b>. The staff do this all day and it takes about ten minutes.",
-            "Set that against the alternatives and the case makes itself. A week of <b>AT&amp;T or Verizon</b> day passes is <b>70 to 84 dollars</b>. A travel eSIM is a few dollars per gigabyte, so a 10GB allowance costs several times the local pack. We earn a commission on eSIMs and nothing on a Dialog SIM, and the honest recommendation for most trips here is still the counter in the arrivals hall."
+            `Set that against the alternatives and the case makes itself. A week of <b>AT&amp;T or Verizon</b> day passes is <b>${S.week}</b>. A travel eSIM is a few dollars per gigabyte, so a 10GB allowance costs several times the local pack. We earn a commission on eSIMs and nothing on a Dialog SIM, and the honest recommendation for most trips here is still the counter in the arrivals hall.`
           ]
         },
         {
@@ -547,9 +549,9 @@ export default {
         {
           h: "When roaming or an eSIM is the better buy",
           icon: "roamfee",
-          key: { fig: "$10-12/day", tag: "Roaming default", text: "T-Mobile is the exception worth checking, with 5GB to 30GB of high-speed data abroad on its mid and upper tiers. AT&T caps its Day Pass at 10 fees a bill period.", tone: "teal" },
+          key: { fig: `${S.dayPassFig}`, tag: "Roaming default", text: `T-Mobile is the exception worth checking, with ${S.tmoRange} of high-speed data abroad on its mid and upper tiers. AT&T caps its Day Pass at 10 fees a bill period.`, tone: "teal" },
           p: [
-            "Roaming on your US plan is the expensive default: <b>AT&amp;T and Verizon</b> day passes are about <b>10 to 12 dollars a day</b>, so a week is <b>70 to 84 dollars</b>, though <b>AT&amp;T caps its Day Pass at 10 daily fees per line per bill period</b>, about <b>120 dollars</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10. <b>T-Mobile</b> is the exception worth checking before you buy anything: its current tiers include roughly <b>5GB</b> on Experience More, Magenta MAX and Go5G Plus, <b>15GB</b> on Experience Beyond and Go5G Next and <b>30GB</b> on Better Value, slowing to <b>256kbps</b> after that. If you are on one of those and travelling light, you may need nothing at all.",
+            `Roaming on your US plan is the expensive default: <b>AT&amp;T and Verizon</b> day passes are about <b>${S.dayPass}</b>, so a week is <b>${S.week}</b>, though <b>AT&amp;T caps its Day Pass at ${S.capFees}</b>, about <b>${S.capAmount}</b>, and covers the rest of that bill period on land, so the daily arithmetic stops past day 10. <b>T-Mobile</b> is the exception worth checking before you buy anything: its current tiers include roughly <b>${S.tmoLow}</b> on Experience More, Magenta MAX and Go5G Plus, <b>${S.tmoMid}</b> on Experience Beyond and Go5G Next and <b>${S.tmoHigh}</b> on Better Value, slowing to <b>${S.throttle}</b> after that. If you are on one of those and travelling light, you may need nothing at all.`,
             "The honest case for a <b>Nomad eSIM</b> here is a late landing, a pre-booked transfer to confirm, or simply not wanting to queue after a long flight. It is a few dollars per gigabyte and it works from touchdown. That is convenience, not price. This guide is written for US travelers departing the US. For more, see <a href='/sri-lanka/cash-or-card'>cash or card in Sri Lanka</a>, <a href='/sri-lanka/taxis-and-apps'>taxis and apps in Sri Lanka</a>, and the <a href='/sri-lanka'>Sri Lanka money guide</a>."
           ]
         }
@@ -558,7 +560,7 @@ export default {
         { q: "Is a local SIM cheaper than an eSIM in Sri Lanka?", a: "Clearly. A Dialog or Mobitel tourist pack at Colombo airport is about 5 to 10 dollars for 25GB or more, which is less than one day of carrier roaming and a fraction of an equivalent eSIM allowance. You need your passport and about ten minutes at the arrivals counter." },
         { q: "Where do I buy a SIM card in Sri Lanka?", a: "At the Dialog and Mobitel counters in the Colombo airport arrivals hall, before you leave the building. Bring your passport. They also sell in town, but the airport counters are set up for visitors and the pricing is the same tourist pack." },
         { q: "Which network has the best coverage in Sri Lanka?", a: "Dialog generally has the widest reach, with Mobitel close behind and sometimes better in the hill country. Both cover Colombo, the south coast, Kandy and the cultural triangle well. Coverage thins inside Yala and the other parks and in the deep interior." },
-        { q: "How much does it cost to use my US phone in Sri Lanka?", a: "About 10 to 12 dollars a day on an AT&T or Verizon day pass, so roughly 70 to 84 dollars a week. AT&T caps its Day Pass at 10 daily fees per line per bill period, so about 120 dollars covers the rest of that bill period on land, while Verizon's TravelPass has no equivalent cap and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include 5GB to 30GB of high-speed data abroad before slowing to 256kbps." }
+        { q: "How much does it cost to use my US phone in Sri Lanka?", a: `About ${S.dayPass} on an AT&T or Verizon day pass, so roughly ${S.week} a week. AT&T caps its Day Pass at ${S.capFees}, so about ${S.capAmount} covers the rest of that bill period on land, while Verizon's TravelPass has ${S.verizonNoCap} and keeps billing daily. T-Mobile is worth checking first, since its mid and upper tiers include ${S.tmoRange} of high-speed data abroad before slowing to ${S.throttle}.` }
       ],
         sources: {
         links: [
