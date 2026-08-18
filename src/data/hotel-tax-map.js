@@ -107,6 +107,15 @@ export const STATES = {
   // version of this map did to 26 countries. A warm off-scale fill says "we looked, and
   // here is what we found" without implying a number.
   noBedTax:  { fill: '#F5E3C4', label: 'Checked: no tourist or hotel tax' },
+  // CHECKED, THERE IS A CHARGE, AND THE FIGURE IS NOT ON THIS SCALE YET. 29 covered
+  // countries sat in the not-yet-checked grey while their guides carried a researched, dated
+  // tax position: Morocco's per-person nightly charge, Egypt's percentage, and 27 more. The
+  // figures live in the guides' prose rather than in a numeric field, so they cannot be lifted
+  // onto this map's axis without MAIN reading each one. What CAN be stated honestly today is
+  // that we checked, that there is a charge, and what SHAPE it takes, which is real
+  // information a reader wants. Rendered as hairlines over the grey rather than a flat tone:
+  // it reads as "grey with something in it", which is exactly the status.
+  checkedShape: { fill: 'url(#htm-lines)', swatch: '#E7E4DC', label: 'Checked: there is a charge, figure not yet on this scale' },
 };
 
 export const bandFor = (pct) => {
@@ -128,9 +137,23 @@ export const colours = (e) => !!e && e.state === 'checked' && bandFor(e.addedPct
 // places. It also cannot invent a country, because the country has to exist to be derived.
 export const isNoBedTax = (e) => !!e && e.state === 'noBedTax';
 
+// Checked, a charge exists, and its shape is known, but no figure sits on this map's axis
+// yet. Also derived in the component from src/data/index.js, same reasoning as noBedTax.
+export const isCheckedShape = (e) => !!e && e.state === 'checkedShape';
+
+// Plain-language names for the tax shapes the guides record. Held here so the map, the rows
+// and the gate all say the same thing about the same unit.
+export const SHAPE_WORDS = {
+  percentOfRoom: 'a percentage of the room rate',
+  perPersonPerNight: 'a set amount per person, per night',
+  perRoomPerNight: 'a set amount per room, per night',
+  flatPerNight: 'a flat amount per night',
+  tieredPerPersonPerNight: 'a banded amount per person, per night, rising with the room rate',
+};
+
 // Anything we can honestly say something definite about, which is the number worth showing
 // a reader. NOT the same as `colours`, because a no-bed-tax finding carries no percentage.
-export const isChecked = (e) => colours(e) || isNoBedTax(e) || (!!e && e.state === 'varies');
+export const isChecked = (e) => colours(e) || isNoBedTax(e) || isCheckedShape(e) || (!!e && e.state === 'varies');
 
 // Does this country carry a flat government charge the percentage fill cannot show?
 export const hasFlat = (e) => !!e && Array.isArray(e.flat) && e.flat.length > 0;
@@ -314,7 +337,12 @@ export const hotelTaxMap = [
     country: 'Japan',
     slug: 'japan',
     spoke: null,
-    state: 'pending',
+    // Hand-written ONLY to add what the guide does not carry: the inclusive-display note and
+    // the Kyoto change. The state and shape still match the guide (tiered per person per
+    // night), because an entry here that contradicts the guide downward is how Japan and
+    // Thailand both ended up marked unchecked while their guides said otherwise.
+    state: 'checkedShape',
+    shape: 'tieredPerPersonPerNight',
     display: 'inclusive',
     displayNote: 'Consumption tax is inside the price you are quoted, so very little appears on top at checkout. The tax is real and it is already in the rate you compared, which is not the same thing as a cheap tax.',
     pendingVerification: 'Needs the consumption tax treatment plus the city accommodation taxes that do land on top, each sourced, before this can colour.',

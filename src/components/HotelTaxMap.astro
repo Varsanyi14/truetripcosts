@@ -16,7 +16,7 @@
 // the data file is the single gate, and everything here routes through it, so a country
 // with a half-written entry falls to the not-yet-checked fill by default rather than by a
 // branch here remembering to check.
-import { BANDS, STATES, bandFor, colours, hasFlat, isNoBedTax, isChecked, hotelTaxMap, hotelTaxWatchlist, byIso, hotelTaxMapChecked } from '../data/hotel-tax-map.js';
+import { BANDS, STATES, bandFor, colours, hasFlat, isNoBedTax, isCheckedShape, isChecked, SHAPE_WORDS, hotelTaxMap, hotelTaxWatchlist, byIso, hotelTaxMapChecked } from '../data/hotel-tax-map.js';
 import world from '../data/maps/world.js';
 import { countries } from '../data/index.js';
 
@@ -31,18 +31,20 @@ import { countries } from '../data/index.js';
 // A hand-written entry in hotel-tax-map.js always wins, so MAIN can override any of these
 // by adding a real entry for that ISO.
 const derived = countries
-  .filter(c => c.live && c.tax && c.tax.none === true && !byIso[(c.iso2 || '').toUpperCase()])
+  .filter(c => c.live && c.tax && !byIso[(c.iso2 || '').toUpperCase()])
   .map(c => {
     // Resolve the link from the country's OWN spokes rather than guessing a path. Guessing
     // is what shipped a 404 to /netherlands/hotel-taxes-and-fees.
     const taxSpoke = (c.spokes || []).find(s => s && s.live === true && s.topic === 'taxes');
+    const none = c.tax.none === true;
     return {
       iso: (c.iso2 || '').toUpperCase(),
       country: c.name,
       slug: c.slug,
       spoke: taxSpoke ? taxSpoke.slug : null,
-      state: 'noBedTax',
+      state: none ? 'noBedTax' : 'checkedShape',
       note: c.tax.note,
+      shape: none ? null : (c.tax.unit || null),
       checkedISO: c.checkedISO,
       derived: true,
     };
@@ -78,6 +80,7 @@ const DOT_BELOW = 45;
 function fillFor(entry) {
   if (colours(entry)) return bandFor(entry.addedPct).fill;
   if (isNoBedTax(entry)) return STATES.noBedTax.fill;
+  if (isCheckedShape(entry)) return STATES.checkedShape.fill;
   if (entry && entry.state === 'varies') return 'url(#htm-hatch)';
   return STATES.unchecked.fill;
 }
@@ -107,9 +110,9 @@ const unmappable = entries.filter(e => !drawnIso.has(e.iso) && !microByIso[e.iso
 // varies countries, then the entries we are holding without a figure.
 // Order: countries with a figure (darkest first), then the varies countries, then the
 // checked no-bed-tax findings alphabetically, then the entries we are still holding open.
-const RANK = { checked: 0, varies: 1, noBedTax: 2, pending: 3 };
+const RANK = { checked: 0, varies: 1, checkedShape: 2, noBedTax: 3, pending: 4 };
 const rows = entries.slice().sort((a, b) => {
-  const ra = RANK[a.state] ?? 4, rb = RANK[b.state] ?? 4;
+  const ra = RANK[a.state] ?? 5, rb = RANK[b.state] ?? 5;
   if (ra !== rb) return ra - rb;
   if (a.state === 'checked' && b.state === 'checked') return (b.addedPct || 0) - (a.addedPct || 0);
   return a.country.localeCompare(b.country);
@@ -117,8 +120,16 @@ const rows = entries.slice().sort((a, b) => {
 
 const figureCount = entries.filter(colours).length;
 const noTaxCount = entries.filter(isNoBedTax).length;
+const shapeCount = entries.filter(isCheckedShape).length;
 const variesCount = entries.filter(e => e.state === 'varies').length;
 const checkedCount = entries.filter(isChecked).length;
+// COUNT COVERED COUNTRIES AGAINST THE COVERED DENOMINATOR. The map also carries entries for
+// places TTC has no guide for yet (the Maldives, the US), so counting every entry against 59
+// produced "61 of the 59 countries we cover". Same mistake as the original "2 of 234", just
+// from the other direction: mixing two populations in one fraction.
+const coveredIsos = new Set(countries.filter(c => c.live).map(c => (c.iso2 || '').toUpperCase()));
+const coveredChecked = entries.filter(e => coveredIsos.has(e.iso) && isChecked(e)).length;
+const beyondCovered = entries.filter(e => !coveredIsos.has(e.iso) && isChecked(e)).length;
 // THE DENOMINATOR IS THE COUNTRIES TTC COVERS, not every country and territory on earth.
 // The first version divided by 234, the full Natural Earth list including dependencies,
 // which made the page read as 99 percent ignorant no matter how much work landed behind it.
@@ -155,7 +166,7 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
       <svg class="htm-svg" viewBox={world.viewBox} xmlns="http://www.w3.org/2000/svg"
            preserveAspectRatio="xMidYMid meet"
            role="img"
-           aria-label={`World map shading each country by the share a government adds on top of a quoted hotel room rate. ${figureCount} countries carry a percentage figure, ${noTaxCount} have been checked and have no tourist or hotel tax at all, ${variesCount} vary too much internally for a single figure, and the rest are not yet checked. Every figure is written out in the list below this map.`}>
+           aria-label={`World map shading each country by the share a government adds on top of a quoted hotel room rate. ${figureCount} countries carry a percentage figure, ${shapeCount} have a charge whose shape is known but no figure on this scale, ${noTaxCount} have been checked and have no tourist or hotel tax at all, and ${variesCount} vary too much internally for a single figure. Everything is written out in the list below this map.`}>
         <defs>
           {/* Hatch = varies too much within the country for one figure. Distinct from every
               band and from the not-yet-checked fill, so the three can never be confused. */}
@@ -174,6 +185,13 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
           </pattern>
           <pattern id="htm-stipple-sm" width="3" height="3" patternUnits="userSpaceOnUse">
             <circle cx="1.5" cy="1.5" r="0.55" fill="#F5F4EF" fill-opacity=".9" />
+          </pattern>
+          {/* Hairlines = checked, there is a charge, no figure on this scale yet. Horizontal
+              so it cannot be confused with the 45 degree hatch that means "varies", and laid
+              over the grey base so it reads as the unchecked tone with content added. */}
+          <pattern id="htm-lines" width="4" height="4" patternUnits="userSpaceOnUse">
+            <rect width="4" height="4" fill={STATES.checkedShape.swatch} />
+            <line x1="0" y1="1" x2="4" y2="1" stroke="#A8A79C" stroke-width="1" />
           </pattern>
         </defs>
 
@@ -220,8 +238,9 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
     <ul class="htm-states">
       <li><span class="htm-sw htm-sw-hatch"></span><span class="htm-st"><b>{STATES.varies.label}.</b> No single national figure would be right anywhere in it, so we give representative cities instead of one colour.</span></li>
       <li><span class="htm-sw htm-sw-stip"></span><span class="htm-st"><b>Plus a flat charge this colour cannot show.</b> A per-person or per-night fee has no percentage until you fix a room rate, so it is stated in its own units rather than converted into a shade.</span></li>
+      <li><span class="htm-sw htm-sw-lines"></span><span class="htm-st"><b>{STATES.checkedShape.label}.</b> We checked, there is a government charge, and its shape is on the country's row. Getting it onto this percentage scale needs one more step, so it sits off the scale rather than being guessed onto it.</span></li>
       <li><span class="htm-sw" style={`background:${STATES.noBedTax.fill}`}></span><span class="htm-st"><b>{STATES.noBedTax.label}.</b> We looked and found no tourist or hotel tax at all. This is a finding, not a gap. It is off the colour scale rather than at the light end of it, because VAT and property charges are separate questions and this map does not claim to have answered them here yet.</span></li>
-      <li><span class="htm-sw" style={`background:${STATES.unchecked.fill}`}></span><span class="htm-st"><b>{STATES.unchecked.label}.</b> This means we have not verified it, never that there is nothing to pay. An uncoloured country is a gap in our work, not a country without tax.</span></li>
+      <li><span class="htm-sw" style={`background:${STATES.unchecked.fill}`}></span><span class="htm-st"><b>{STATES.unchecked.label}.</b> Almost all of the grey is countries outside the {coveredCount} we cover, not countries we looked at and gave up on. Either way it never means there is nothing to pay: grey is the absence of our work, not the absence of a tax.</span></li>
     </ul>
   </div>
 
@@ -249,7 +268,7 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
 
   <div class="htm-list">
     <p class="htm-lk">Every country we hold something for</p>
-    <p class="htm-note">We hold a checked position on {checkedCount} of the {coveredCount} countries we cover: {figureCount} with a percentage figure, {noTaxCount} with no tourist or hotel tax at all, and {variesCount} where the rate varies too much inside the country for one number to be honest. This list is the map's real content, with the government charges separated from the property's own, and each one dated.</p>
+    <p class="htm-note">We hold a checked, dated position on {coveredChecked === coveredCount ? `all ${coveredCount}` : `${coveredChecked} of the ${coveredCount}`} countries we cover{beyondCovered > 0 ? `, plus ${beyondCovered} beyond them` : ''}: {noTaxCount} with no tourist or hotel tax at all, {shapeCount} where there is a charge and its shape is known, {figureCount} pinned to a percentage on the scale above, and {variesCount} where the rate varies too much inside the country for one national number to be honest. This list is the map's real content, with the government charges separated from the property's own, and each one dated.</p>
 
     {rows.map(e => {
       const band = colours(e) ? bandFor(e.addedPct) : null;
@@ -264,6 +283,7 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
             {e.display === 'mixed' && <span class="htm-tag htm-tag-q">Part in the price, part added</span>}
             {e.state === 'varies' && <span class="htm-tag htm-tag-v">Varies within the country</span>}
             {isNoBedTax(e) && <span class="htm-tag htm-tag-n">No tourist or hotel tax</span>}
+            {isCheckedShape(e) && <span class="htm-tag">Figure not yet on the scale</span>}
           </div>
 
           {colours(e) && (
@@ -273,7 +293,13 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
           {e.cityBasisNote && <p class="htm-why">{e.cityBasisNote}</p>}
           {e.displayNote && <p class="htm-why">{e.displayNote}</p>}
           {e.variesNote && <p class="htm-why">{e.variesNote}</p>}
-          {isNoBedTax(e) && <p class="htm-why">{e.note}</p>}
+          {isCheckedShape(e) && (
+            <p class="htm-fig-line">A government charge applies here, levied as <b class="shape">{SHAPE_WORDS[e.shape] || 'a charge set locally'}</b></p>
+          )}
+          {(isNoBedTax(e) || isCheckedShape(e)) && <p class="htm-why">{e.note}</p>}
+          {isCheckedShape(e) && !e.pendingVerification && (
+            <p class="htm-partial">Why this is not shaded on the scale: the rate is written out on this country's own page, and moving it onto a single comparable percentage needs a person to check the base it applies to and whether it is already inside the quoted rate. Until that is done it would be a guess, so it stays off the scale.</p>
+          )}
           {isNoBedTax(e) && (
             <p class="htm-partial">What this row does not tell you: whether VAT is added on top of a quoted rate here, or already inside it. That is the question this map colours, and it has not been checked for this country yet. The finding above is that there is no separate tourist or hotel tax to add.</p>
           )}
@@ -419,6 +445,7 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
   .htm-states b{color:var(--ink)}
   .htm-sw{width:18px;height:14px;border-radius:3px;border:1px solid rgba(22,48,44,.16);flex:none;margin-top:2px}
   .htm-sw-hatch{background:repeating-linear-gradient(45deg,#CFD8D3 0 2px,#8C9A94 2px 4px)}
+  .htm-sw-lines{background:repeating-linear-gradient(180deg,#E7E4DC 0 2px,#A8A79C 2px 3px)}
   .htm-sw-stip{background:#3D8F76;background-image:radial-gradient(#F5F4EF 1.1px,transparent 1.2px);background-size:5px 5px}
 
   .htm-honest{margin:26px 0 0}
@@ -434,6 +461,7 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
   .htm-rhead{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:0 0 8px}
   .htm-chip{width:16px;height:16px;border-radius:4px;border:1px solid rgba(22,48,44,.18);flex:none;background:#E7E4DC}
   .htm-chip[data-state=varies]{background:repeating-linear-gradient(45deg,#CFD8D3 0 2px,#8C9A94 2px 4px)}
+  .htm-chip[data-state=checkedShape]{background:repeating-linear-gradient(180deg,#E7E4DC 0 2px,#A8A79C 2px 3px)}
   .htm-rname{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink)}
   .htm-rname a{color:var(--teal-deep);text-decoration:none}
   .htm-rname a:hover{text-decoration:underline}
@@ -443,6 +471,7 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
   .htm-tag-n{color:#7A3D08;background:var(--amber-bg);border-color:#F0D6AE}
   .htm-fig-line{font-size:16px;color:var(--ink);margin:0 0 6px}
   .htm-fig-line b{font-size:20px;font-weight:600;color:var(--teal-deep)}
+  .htm-fig-line b.shape{font-size:16px;font-weight:600}
   .htm-why{font-size:14px;color:#3B4A46;line-height:1.55;margin:0 0 6px}
   .htm-total{font-size:14px;color:#3B4A46;line-height:1.55;margin:8px 0 6px;padding:10px 12px;background:var(--paper);border-radius:10px}
   .htm-comp{margin:10px 0 0;padding:10px 0 0;border-top:1px solid var(--line)}

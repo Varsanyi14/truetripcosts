@@ -16,7 +16,7 @@
 // Exits 1 on any FAIL. Notes are advisory and do not fail the run.
 
 import {
-  BANDS, STATES, bandFor, colours, hasFlat, isNoBedTax,
+  BANDS, STATES, bandFor, colours, hasFlat, isNoBedTax, isCheckedShape, SHAPE_WORDS,
   hotelTaxMap, hotelTaxWatchlist, hotelTaxMapCheckedISO, byIso,
 } from '../src/data/hotel-tax-map.js';
 import world from '../src/data/maps/world.js';
@@ -26,11 +26,13 @@ import { countries } from '../src/data/index.js';
 // that hotel-tax-map.js does not already cover. Rebuilt here the same way so the gate audits
 // what actually renders, not just the hand-written half.
 const derived = countries
-  .filter(c => c.live && c.tax && c.tax.none === true && !byIso[(c.iso2 || '').toUpperCase()])
+  .filter(c => c.live && c.tax && !byIso[(c.iso2 || '').toUpperCase()])
   .map(c => ({
     iso: (c.iso2 || '').toUpperCase(), country: c.name, slug: c.slug,
     spoke: ((c.spokes || []).find(s => s && s.live === true && s.topic === 'taxes') || {}).slug || null,
-    state: 'noBedTax', note: c.tax.note, checkedISO: c.checkedISO, derived: true,
+    state: c.tax.none === true ? 'noBedTax' : 'checkedShape',
+    note: c.tax.note, shape: c.tax.none === true ? null : (c.tax.unit || null),
+    checkedISO: c.checkedISO, derived: true,
   }));
 const rendered = [...hotelTaxMap, ...derived];
 
@@ -107,7 +109,7 @@ for (const e of hotelTaxMap.filter(e => e.state !== 'checked')) {
 }
 
 // ---------------------------------------------------------------------------
-console.log('\n3b. Derived no-bed-tax findings are honest about what they are');
+console.log('\n3b. Derived findings are honest about what they are');
 // These say "we checked and there is no tourist tax", which is a COMPONENT finding, not an
 // answer on this map's axis. So the one thing they must never do is carry a percentage: that
 // would put them on the colour scale and claim a number nobody verified.
@@ -120,8 +122,25 @@ for (const e of derived) {
   const target = !e.slug ? null : (e.spoke ? `/${e.slug}/${e.spoke}` : `/${e.slug}`);
   check(!!target, `${id}: resolves to a page rather than linking nowhere`, String(target));
 }
-check(derived.every(isNoBedTax), 'every derived entry reports as a no-bed-tax finding');
+check(derived.every(e => isNoBedTax(e) || isCheckedShape(e)),
+  'every derived entry is either a no-bed-tax finding or a known-shape finding');
 check(!derived.some(e => colours(e)), 'no derived entry can colour a band');
+// A known-shape row states the SHAPE of the charge, so the shape has to be a unit we have
+// words for. An unrecognised unit would render as a vague fallback and quietly lose meaning.
+for (const e of rendered.filter(isCheckedShape)) {
+  check(!!e.shape && !!SHAPE_WORDS[e.shape],
+    `${e.iso} (${e.country}): its tax unit has plain-language words`, String(e.shape));
+}
+// Every covered country must land in some checked state. If this fails, the map has gone back
+// to calling researched countries unchecked, which is the failure this whole state exists for.
+const coveredLive = countries.filter(c => c.live);
+const unaccounted = coveredLive.filter(c => {
+  const i = (c.iso2 || '').toUpperCase();
+  return !byIso[i] && !derived.some(d => d.iso === i);
+});
+check(unaccounted.length === 0,
+  'every covered country appears on the map in some checked state',
+  unaccounted.map(c => c.slug).join(', '));
 
 // ---------------------------------------------------------------------------
 console.log('\n4. Property charges cannot reach a fill');
@@ -251,8 +270,13 @@ console.log('  coloured:', coloured.length, coloured.length ? '(' + coloured.map
 console.log('  occupied bands:', BANDS.filter(b => coloured.some(e => bandFor(e.addedPct) === b)).map(b => b.label).join(', ') || 'none');
 console.log('  empty bands (legend still shows them):',
   BANDS.filter(b => !coloured.some(e => bandFor(e.addedPct) === b)).map(b => b.label).join(', ') || 'none');
-const covered = countries.filter(c => c.live).length;
-console.log('  checked position on', rendered.filter(e => e.state !== 'pending').length, 'of the', covered, 'countries TTC covers');
+// Count COVERED countries only. The rendered set also holds entries for countries TTC does
+// not cover (the Maldives, the US), so counting the whole set against 59 produced "60 of 59".
+const coveredIsos = new Set(countries.filter(c => c.live).map(c => (c.iso2 || '').toUpperCase()));
+const coveredChecked = rendered.filter(e => coveredIsos.has(e.iso) && e.state !== 'pending').length;
+console.log('  checked position on', coveredChecked, 'of the', coveredIsos.size, 'countries TTC covers');
+console.log('  entries for countries TTC does not cover:',
+  rendered.filter(e => !coveredIsos.has(e.iso)).map(e => e.iso).join(', ') || 'none');
 console.log('  sources still needed:',
   hotelTaxMap.flatMap(e => (e.government || []).filter(g => !g.source || !g.source.url).map(g => `${e.iso}/${g.label}`)).length
   + hotelTaxWatchlist.filter(w => !w.source || !w.source.url).length);
