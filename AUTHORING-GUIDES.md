@@ -75,7 +75,21 @@ Three incidents inside a single wave showed what that costs:
 
 **When a carrier moves a price:** update the figure in the spine, move the old one into `retired` with a reason and a date, run `node scripts/check-carrier-spine.mjs`, and every spoke still carrying the old figure fails loudly with the file list. Then fix that prose by hand and update `checkedISO`.
 
-**An honest tension, left open on purpose.** The spine is a reference and a checker, not a template: no spoke prose is interpolated from it. That stops short of what the `F` pattern above recommends, and the section above is right that interpolation is the stronger fix, which is how `emergency.medical`, the `tax` object and `fallbackFxPct` already work. Two reasons it was not done in one step. The figures sit inside sentences whose wording and bold tags vary per country, so interpolating the numbers is straightforward while the cap clause is a whole sentence whose placement genuinely differs. And converting 40 spokes' double-quoted strings to backtick templates is a large mechanical diff that deserves its own commit rather than riding along inside a content wave. The checker is complementary either way: interpolation cannot catch a retired *description* such as "slow 2G", or a claim like "long trips make the gap bigger" that no figure appears in. If you do the interpolation pass, keep the checker.
+**Figures are interpolated, sentences are not.** The spine exports a token table, `S`, and the spokes interpolate it:
+
+```js
+import { S } from './carrier-spine.js';
+
+answer: `Your US carrier charges about <b>${S.dayPass}</b> to roam.`,
+```
+
+Change `S.dayPass` and every spoke that states it updates on the next build. As of the 18 August 2026 refactor that is 219 string literals across 36 files, and one edit to one line moves 114 statements across 35 pages.
+
+What is deliberately NOT interpolated is the sentence around the figure. The Namibia page and the Netherlands page should not read as the same paragraph with the nouns swapped, and assembling prose from fragments is exactly what `verdict.js` exists to prevent. So a spoke writes its own sentence and interpolates the number.
+
+The checker is still needed after interpolation, for the things a token cannot catch: a retired *description* such as "slow 2G", or a claim like "long trips make the gap bigger" that contains no figure at all.
+
+**Two traps this refactor set, both now handled, both worth knowing if you do something similar.** Converting a `fig: "..."` to a template literal made it invisible to the content gate's keystat length check, which matches double quotes; the gate now matches backticks too and resolves the token so it measures the rendered figure rather than the source text. And adding rows to `verdict.js` by appending new country keys silently replaced those countries' existing rows, because a duplicate key in an object literal wins: append into the existing array instead, and note that `check-verdict.mjs` reports PASS either way, since every pointer still resolves.
 
 ## Per-country rollout checklist
 
