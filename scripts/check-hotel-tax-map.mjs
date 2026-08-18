@@ -16,10 +16,23 @@
 // Exits 1 on any FAIL. Notes are advisory and do not fail the run.
 
 import {
-  BANDS, STATES, bandFor, colours, hasFlat,
-  hotelTaxMap, hotelTaxWatchlist, hotelTaxMapCheckedISO,
+  BANDS, STATES, bandFor, colours, hasFlat, isNoBedTax,
+  hotelTaxMap, hotelTaxWatchlist, hotelTaxMapCheckedISO, byIso,
 } from '../src/data/hotel-tax-map.js';
 import world from '../src/data/maps/world.js';
+import { countries } from '../src/data/index.js';
+
+// The component derives a no-bed-tax entry for every live country with tax.none === true
+// that hotel-tax-map.js does not already cover. Rebuilt here the same way so the gate audits
+// what actually renders, not just the hand-written half.
+const derived = countries
+  .filter(c => c.live && c.tax && c.tax.none === true && !byIso[(c.iso2 || '').toUpperCase()])
+  .map(c => ({
+    iso: (c.iso2 || '').toUpperCase(), country: c.name, slug: c.slug,
+    spoke: ((c.spokes || []).find(s => s && s.live === true && s.topic === 'taxes') || {}).slug || null,
+    state: 'noBedTax', note: c.tax.note, checkedISO: c.checkedISO, derived: true,
+  }));
+const rendered = [...hotelTaxMap, ...derived];
 
 let fails = 0, notes = 0;
 const check = (ok, label, detail) => {
@@ -47,7 +60,10 @@ check(new Set(bandFills).size === bandFills.length, 'every band has its own dist
 // two bands, an unchecked country would read as a low figure.
 const stateFills = Object.values(STATES).map(s => s.fill);
 check(!stateFills.some(f => bandFills.includes(f)),
-  'the not-yet-checked and varies fills are not reused by any band');
+  'the off-scale state fills are not reused by any band');
+check(new Set(stateFills).size === stateFills.length,
+  'the off-scale states are all visually distinct from each other',
+  stateFills.join(' '));
 
 // Spot-check the gate at the boundaries so an off-by-one in bandFor cannot ship.
 check(bandFor(0) === BANDS[0], 'zero lands in the first band');
@@ -60,9 +76,9 @@ check(bandFor(null) === null && bandFor(-1) === null && bandFor('12') === null,
 console.log('\n2. Every entry can actually be put on the map');
 const drawn = new Set(world.countries.map(c => c.iso).filter(Boolean));
 const micro = new Set(world.micro.map(m => m.iso));
-const isos = hotelTaxMap.map(e => e.iso);
+const isos = rendered.map(e => e.iso);
 check(new Set(isos).size === isos.length, 'no country appears twice in the data');
-const unmappable = hotelTaxMap.filter(e => !drawn.has(e.iso) && !micro.has(e.iso));
+const unmappable = rendered.filter(e => !drawn.has(e.iso) && !micro.has(e.iso));
 check(unmappable.length === 0, 'every entry has a shape or a centroid in the geometry',
   unmappable.length ? unmappable.map(e => `${e.iso} (${e.country})`).join(', ') : '');
 check(/^0 0 \d+(\.\d+)? \d+(\.\d+)?$/.test(world.viewBox), 'the geometry carries a usable viewBox', world.viewBox);
@@ -89,6 +105,23 @@ for (const e of hotelTaxMap.filter(e => e.state !== 'checked')) {
   check(e.addedPct === undefined || e.addedPct === null,
     `${e.iso} (${e.country}): state "${e.state}" carries no figure that could colour it`);
 }
+
+// ---------------------------------------------------------------------------
+console.log('\n3b. Derived no-bed-tax findings are honest about what they are');
+// These say "we checked and there is no tourist tax", which is a COMPONENT finding, not an
+// answer on this map's axis. So the one thing they must never do is carry a percentage: that
+// would put them on the colour scale and claim a number nobody verified.
+for (const e of derived) {
+  const id = `${e.iso} (${e.country})`;
+  check(e.addedPct === undefined || e.addedPct === null,
+    `${id}: carries no percentage, so it cannot reach the colour scale`);
+  check(!!e.note && e.note.length > 40, `${id}: carries the researched note from its guide`);
+  check(!!e.checkedISO, `${id}: carries the guide's checked date`);
+  const target = !e.slug ? null : (e.spoke ? `/${e.slug}/${e.spoke}` : `/${e.slug}`);
+  check(!!target, `${id}: resolves to a page rather than linking nowhere`, String(target));
+}
+check(derived.every(isNoBedTax), 'every derived entry reports as a no-bed-tax finding');
+check(!derived.some(e => colours(e)), 'no derived entry can colour a band');
 
 // ---------------------------------------------------------------------------
 console.log('\n4. Property charges cannot reach a fill');
@@ -211,13 +244,15 @@ check(!!parse(hotelTaxMapCheckedISO), 'the map carries a parseable page-level ch
 // ---------------------------------------------------------------------------
 console.log('\n== shape ==');
 const byState = {};
-for (const e of hotelTaxMap) byState[e.state] = (byState[e.state] || 0) + 1;
-console.log('  entries:', hotelTaxMap.length, '|', Object.entries(byState).map(([k, v]) => `${k} ${v}`).join(', '));
+for (const e of rendered) byState[e.state] = (byState[e.state] || 0) + 1;
+console.log('  entries:', rendered.length, '(' + hotelTaxMap.length, 'hand-written +', derived.length, 'derived) |',
+  Object.entries(byState).map(([k, v]) => `${k} ${v}`).join(', '));
 console.log('  coloured:', coloured.length, coloured.length ? '(' + coloured.map(e => `${e.iso} ${e.addedPct}%${hasFlat(e) ? ' +flat' : ''}`).join(', ') + ')' : '');
 console.log('  occupied bands:', BANDS.filter(b => coloured.some(e => bandFor(e.addedPct) === b)).map(b => b.label).join(', ') || 'none');
 console.log('  empty bands (legend still shows them):',
   BANDS.filter(b => !coloured.some(e => bandFor(e.addedPct) === b)).map(b => b.label).join(', ') || 'none');
-console.log('  world coverage:', coloured.length, 'of', world.countries.filter(c => c.iso).length + world.micro.length, 'countries');
+const covered = countries.filter(c => c.live).length;
+console.log('  checked position on', rendered.filter(e => e.state !== 'pending').length, 'of the', covered, 'countries TTC covers');
 console.log('  sources still needed:',
   hotelTaxMap.flatMap(e => (e.government || []).filter(g => !g.source || !g.source.url).map(g => `${e.iso}/${g.label}`)).length
   + hotelTaxWatchlist.filter(w => !w.source || !w.source.url).length);

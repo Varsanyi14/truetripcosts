@@ -100,6 +100,13 @@ export const BANDS = [
 export const STATES = {
   unchecked: { fill: '#E7E4DC', label: 'Not yet checked' },
   varies:    { fill: '#CFD8D3', label: 'Varies too much within the country for one figure' },
+  // CHECKED, AND THERE IS NO BED TAX. Not a band, and deliberately not on the teal ramp,
+  // because we have verified a COMPONENT (no tourist or hotel tax) and not the map's axis
+  // (what VAT adds on top). Putting it in the light band would claim a percentage nobody
+  // checked; leaving it grey would call our own research ignorance, which is what the first
+  // version of this map did to 26 countries. A warm off-scale fill says "we looked, and
+  // here is what we found" without implying a number.
+  noBedTax:  { fill: '#F5E3C4', label: 'Checked: no tourist or hotel tax' },
 };
 
 export const bandFor = (pct) => {
@@ -112,6 +119,18 @@ export const bandFor = (pct) => {
 // between the data and a fill, deliberately one function so it can be tested and so no
 // component branch can route around it.
 export const colours = (e) => !!e && e.state === 'checked' && bandFor(e.addedPct) !== null;
+
+// A country we have checked and found to have no tourist or hotel tax. These are NOT
+// hand-written here: they are derived in the component from `tax.none === true` in
+// src/data/index.js, which is the same researched, dated field the country guides publish
+// and the calculator reads. Deriving rather than transcribing means the map reflects what
+// the site already knows the day a guide changes, and nobody has to remember to update two
+// places. It also cannot invent a country, because the country has to exist to be derived.
+export const isNoBedTax = (e) => !!e && e.state === 'noBedTax';
+
+// Anything we can honestly say something definite about, which is the number worth showing
+// a reader. NOT the same as `colours`, because a no-bed-tax finding carries no percentage.
+export const isChecked = (e) => colours(e) || isNoBedTax(e) || (!!e && e.state === 'varies');
 
 // Does this country carry a flat government charge the percentage fill cannot show?
 export const hasFlat = (e) => !!e && Array.isArray(e.flat) && e.flat.length > 0;
@@ -280,27 +299,14 @@ export const hotelTaxMap = [
     checkedISO: '2026-08-17',
   },
 
-  {
-    // Listed so its proposal can be named and excluded, which is the whole point of
-    // carrying an entry with no figure. Colours exactly like an unchecked country.
-    iso: 'TH',
-    country: 'Thailand',
-    slug: 'thailand',
-    spoke: null,
-    state: 'pending',
-    pendingVerification: 'Needs the in-force position on VAT and any accommodation levy before this can colour.',
-    watch: [
-      {
-        label: 'Proposed 300 baht arrival fee',
-        status: 'proposed',
-        note: 'Announced repeatedly and repeatedly deferred. Not collected, so it is excluded from the colour and from any total.',
-        source: null,
-        pendingSource: 'Needs the current official position from the Thai cabinet or Ministry of Tourism and Sports.',
-      },
-    ],
-    property: [],
-    checkedISO: '2026-08-17',
-  },
+  // THAILAND IS DELIBERATELY NOT HAND-WRITTEN HERE. Its guide already carries a researched,
+  // dated finding (tax.none === true) plus the current position on the proposed arrival fee,
+  // so the component derives it and the map shows what the guide shows. Transcribing it into
+  // this file is how it went wrong the first time: the hand-written entry said the proposal
+  // was 300 baht and marked the country unchecked, while the guide already said the proposal
+  // had been raised to 450 baht in August 2026 and that there is no hotel tax at all. A
+  // second copy of a fact is a fact that goes stale. Add an entry here only to say something
+  // the guide does not.
 
   {
     // Carried to hold the inclusive-display note and the Kyoto change, with no figure yet.
@@ -340,7 +346,7 @@ export const hotelTaxWatchlist = [
   { iso: 'GB', where: 'Glasgow', label: 'Visitor levy begins', effective: '2027-01-25', status: 'scheduled', source: null, pendingSource: 'Needs the Glasgow City Council scheme document.' },
   { iso: 'GB', where: 'Edinburgh', label: 'Visitor levy in force', effective: '2026-07-24', status: 'in-force', source: null, pendingSource: 'Needs the City of Edinburgh Council scheme document confirming the live rate.' },
   { iso: 'TR', where: 'Turkey', label: 'Temporary 1% accommodation tax window', effective: '2026-05-01', ends: '2026-12-31', status: 'scheduled', source: null, pendingSource: 'Needs the Turkish Revenue Administration notice, including whether the window was extended.' },
-  { iso: 'TH', where: 'Thailand', label: 'Proposed 300 baht arrival fee', status: 'proposed', source: null, pendingSource: 'Needs the current cabinet position. Excluded from the map until collected.' },
+  { iso: 'TH', where: 'Thailand', label: 'Proposed air arrival fee, raised to 450 baht in August 2026', status: 'proposed', source: null, pendingSource: 'Needs the current cabinet position. Still not collected, so it is excluded from the map. The Thailand guide carries the live wording.' },
   { iso: 'GB', where: 'London', label: 'Proposed visitor levy', status: 'proposed', source: null, pendingSource: 'Needs the current position from the Greater London Authority. Excluded from the map until collected.' },
   { iso: 'NZ', where: 'Auckland', label: 'Proposed bed tax', status: 'proposed', source: null, pendingSource: 'Needs the current Auckland Council position. Excluded from the map until collected.' },
 ];
