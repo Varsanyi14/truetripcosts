@@ -176,9 +176,9 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
       ))}
     </ul>
     <ul class="htm-states">
-      <li><span class="htm-sw htm-sw-hatch"></span><b>{STATES.varies.label}.</b> No single national figure would be right anywhere in it, so we give representative cities instead of one colour.</li>
-      <li><span class="htm-sw htm-sw-stip"></span><b>Plus a flat charge this colour cannot show.</b> A per-person or per-night fee has no percentage until you fix a room rate, so it is stated in its own units rather than converted into a shade.</li>
-      <li><span class="htm-sw" style={`background:${STATES.unchecked.fill}`}></span><b>{STATES.unchecked.label}.</b> This means we have not verified it, never that there is nothing to pay. An uncoloured country is a gap in our work, not a country without tax.</li>
+      <li><span class="htm-sw htm-sw-hatch"></span><span class="htm-st"><b>{STATES.varies.label}.</b> No single national figure would be right anywhere in it, so we give representative cities instead of one colour.</span></li>
+      <li><span class="htm-sw htm-sw-stip"></span><span class="htm-st"><b>Plus a flat charge this colour cannot show.</b> A per-person or per-night fee has no percentage until you fix a room rate, so it is stated in its own units rather than converted into a shade.</span></li>
+      <li><span class="htm-sw" style={`background:${STATES.unchecked.fill}`}></span><span class="htm-st"><b>{STATES.unchecked.label}.</b> This means we have not verified it, never that there is nothing to pay. An uncoloured country is a gap in our work, not a country without tax.</span></li>
     </ul>
   </div>
 
@@ -362,7 +362,12 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
   .htm-bands{list-style:none;margin:0 0 14px;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px}
   .htm-bands li{display:flex;align-items:center;gap:7px;font-size:13.5px;color:#3B4A46}
   .htm-states{list-style:none;margin:0;padding:14px 0 0;border-top:1px solid var(--line);display:grid;gap:10px}
+  /* Two columns, and therefore EXACTLY TWO CHILDREN. The prose must stay wrapped in
+     .htm-st: a bare text node beside the swatch and the <b> is a third child, and CSS grid
+     wraps loose text in an anonymous grid item, which then lands in row 2 of the 18px
+     column and renders one word per line. That shipped once. Do not unwrap it. */
   .htm-states li{display:grid;grid-template-columns:18px 1fr;gap:9px;font-size:13.5px;color:#3B4A46;line-height:1.5}
+  .htm-st{min-width:0}
   .htm-states b{color:var(--ink)}
   .htm-sw{width:18px;height:14px;border-radius:3px;border:1px solid rgba(22,48,44,.16);flex:none;margin-top:2px}
   .htm-sw-hatch{background:repeating-linear-gradient(45deg,#CFD8D3 0 2px,#8C9A94 2px 4px)}
