@@ -66,6 +66,21 @@
 // list-level row rather than repeated against every form, which would be the same
 // finding printed nine times. A per-entry date is read when present.
 //
+// As a sixth pass it reads hotel-tax-map.js, the country figures behind the world
+// choropleth on /hotel-tax-map. A map is the worst place on the site to be out of date,
+// because a screenshot of it travels without its checked stamp and keeps being true-looking
+// long after the number moved. Four checks:
+//   - each entry's checkedISO against the tax threshold (every figure here is a tax figure)
+//   - each government component's own checkedISO, which can be older than its entry's
+//   - `effective` dates, upcoming and just-passed, on the same SOON/JUST windows as keyFacts
+//   - the standing to-do list: any entry with pendingVerification, any component or
+//     watchlist row with pendingSource, and every status "proposed" row
+// The standing rows are the Phase 2 worklist and never age out, so they report every run
+// and are excluded from the aged count, exactly like the hero flags and pending forms.
+// The watchlist is read in full: an unsourced watchlist row is invisible to readers (the
+// component filters on source) but must never become invisible to the desk, or a forward
+// date passes with nobody looking.
+//
 // Thresholds (days) match the review cadence described on /methodology:
 //   exchange rate 30, fee or entry rule 90, tax or levy 120, general 180.
 //
@@ -88,6 +103,7 @@ import path from 'node:path';
 const DATA_INDEX = 'src/data/index.js';
 const HERO_FACTS = 'src/data/hero-facts.js';
 const ARRIVAL_FORMS = 'src/data/arrival-forms.js';
+const HOTEL_TAX_MAP = 'src/data/hotel-tax-map.js';
 const STRICT = String(process.env.FACT_STALENESS_STRICT || '').toLowerCase() === 'true';
 
 const THRESHOLDS = { exchange: 30, fee: 90, tax: 120, general: 180 };
@@ -361,11 +377,97 @@ async function main() {
     }
   }
 
+  // --- sixth pass: the hotel tax world map ---
+  // Every figure on this map is a tax figure, so the tax threshold applies throughout and
+  // there is no classifier call: passing a label like "Green tax" through classify() would
+  // land it in the same bucket anyway, and hard-coding it means a component labelled
+  // "arrival fee" cannot quietly get the looser fee threshold.
+  const mapFindings = [];
+  let mapEntries = 0, mapColoured = 0, mapWatch = 0;
+  const mapMod = await loadModule('.', HOTEL_TAX_MAP);
+  if (mapMod) {
+    const entries = Array.isArray(mapMod.hotelTaxMap) ? mapMod.hotelTaxMap : [];
+    const watchlist = Array.isArray(mapMod.hotelTaxWatchlist) ? mapMod.hotelTaxWatchlist : [];
+    const colours = typeof mapMod.colours === 'function' ? mapMod.colours : () => false;
+    const TAX = THRESHOLDS.tax;
+    mapEntries = entries.length;
+    mapWatch = watchlist.length;
+
+    // An effective date, checked the same way keyFacts does it so the two passes cannot
+    // disagree about what "soon" means.
+    const effCheck = (id, value, standing) => {
+      const eff = parseISO(value);
+      if (!eff) return;
+      const d = daysBetween(eff, today);
+      if (d > 0 && d <= SOON_DAYS) {
+        mapFindings.push({ id, standing, msg: 'takes effect in ' + d + ' days, so confirm the wording and move it out of scheduled on the day' });
+      } else if (d < 0 && -d <= JUST_DAYS) {
+        mapFindings.push({ id, standing, msg: 'effective date passed ' + (-d) + ' days ago, so confirm it is in force as written and now counted' });
+      }
+    };
+
+    for (const e of entries) {
+      if (!e) continue;
+      const id = 'map / ' + (e.country || e.iso || 'unnamed');
+      if (colours(e)) mapColoured++;
+
+      const checked = parseISO(e.checkedISO);
+      if (!checked) {
+        mapFindings.push({ id, standing: false, msg: 'no usable checkedISO on the entry, so its age cannot be judged' });
+      } else {
+        const age = daysBetween(today, checked);
+        if (age > TAX) mapFindings.push({ id, standing: false, msg: 'stale: checked ' + age + ' days ago, over the ' + TAX + '-day mark for a tax figure' });
+      }
+
+      // A component can be older than the entry that holds it, and a coloured country is
+      // only as fresh as the oldest number inside it.
+      for (const g of (Array.isArray(e.government) ? e.government : [])) {
+        if (!g) continue;
+        const gid = id + ' / ' + (g.label || 'unlabelled component');
+        const gc = parseISO(g.checkedISO);
+        if (!gc) {
+          mapFindings.push({ id: gid, standing: false, msg: 'no usable checkedISO on this component' });
+        } else {
+          const age = daysBetween(today, gc);
+          if (age > TAX) mapFindings.push({ id: gid, standing: false, msg: 'stale: checked ' + age + ' days ago, over the ' + TAX + '-day mark for a tax figure' });
+        }
+        effCheck(gid, g.effective, false);
+        if (g.pendingSource) mapFindings.push({ id: gid, standing: true, msg: 'no official source attached yet. ' + g.pendingSource });
+        else if (!g.source || !g.source.url) mapFindings.push({ id: gid, standing: true, msg: 'no official source attached yet, and no pendingSource note saying what is needed' });
+        if (g.status === 'proposed') mapFindings.push({ id: gid, standing: true, msg: 'marked proposed, so confirm it has not been enacted or dropped' });
+      }
+
+      // Per-country watch rows: scheduled or proposed changes deliberately excluded from
+      // the figure. They are standing until somebody resolves them.
+      for (const w of (Array.isArray(e.watch) ? e.watch : [])) {
+        if (!w) continue;
+        const wid = id + ' / watch: ' + (w.label || 'unlabelled');
+        effCheck(wid, w.effective, false);
+        if (w.status === 'proposed') mapFindings.push({ id: wid, standing: true, msg: 'still a proposal, so confirm it is not now being collected' });
+        if (w.pendingSource) mapFindings.push({ id: wid, standing: true, msg: 'not shown to readers until sourced. ' + w.pendingSource });
+      }
+
+      if (e.pendingVerification) mapFindings.push({ id, standing: true, msg: 'holds no coloured figure yet. ' + e.pendingVerification });
+    }
+
+    // The watchlist. Read in full regardless of whether a row is displayed, because the
+    // component hides unsourced rows from readers and that must not hide them from us.
+    for (const w of watchlist) {
+      if (!w) continue;
+      const wid = 'map watchlist / ' + [w.where, w.label].filter(Boolean).join(', ');
+      effCheck(wid, w.effective, false);
+      effCheck(wid + ' (ends)', w.ends, false);
+      if (w.status === 'proposed') mapFindings.push({ id: wid, standing: true, msg: 'still a proposal, so confirm it is not now being collected' });
+      if (!w.source || !w.source.url) mapFindings.push({ id: wid, standing: true, msg: 'unsourced, so it is hidden from readers and tracked here only.' + (w.pendingSource ? ' ' + w.pendingSource : '') });
+    }
+  }
+
   // --- report ---
   log('Guides carrying a keyFacts block: ' + withKeyFacts + ' of ' + live.length + '.');
   log('Scanned ' + liveSpokes + ' live spokes across the catalogue.');
   if (heroFacts) log('Scanned ' + heroScanned + ' hero facts on live guides, of ' + heroEntries + ' in the map.');
   if (formsMod) log('Scanned ' + formsScanned + ' arrival forms.');
+  if (mapMod) log('Scanned ' + mapEntries + ' hotel tax map entries (' + mapColoured + ' currently coloured) and ' + mapWatch + ' watchlist rows.');
   if (findings.length === 0) {
     log('keyFacts: nothing due for a look right now.\n');
   } else {
@@ -405,6 +507,15 @@ async function main() {
     log('');
   }
 
+  if (mapFindings.length > 0) {
+    log('Hotel tax map worth a look (' + mapFindings.length + '):');
+    // Aged rows first, then the standing Phase 2 worklist, so a date that actually moved
+    // is not buried under a to-do list that prints every run.
+    const sorted = mapFindings.slice().sort((a, b) => (Number(a.standing) - Number(b.standing)) || a.id.localeCompare(b.id));
+    for (const f of sorted) log('    - ' + f.id + ': ' + f.msg);
+    log('');
+  }
+
   // Two counts, because they answer different questions. `aged` is the trigger: items
   // that genuinely passed a date threshold, which is a new event worth an email.
   // `total` also includes standing items, the hero flags and pending forms, which
@@ -412,11 +523,14 @@ async function main() {
   // mean an issue every single Monday forever, which trains everyone to ignore it.
   // The standing rows still print above, so nothing is hidden from the run log.
   const standing = heroFindings.filter(f => f.standing).length
-    + formFindings.filter(f => f.standing).length;
+    + formFindings.filter(f => f.standing).length
+    + mapFindings.filter(f => f.standing).length;
   const aged = findings.length + noKf.length + spokeFindings.length
     + heroFindings.filter(f => !f.standing).length
-    + formFindings.filter(f => !f.standing).length;
-  const total = findings.length + noKf.length + spokeFindings.length + heroFindings.length + formFindings.length;
+    + formFindings.filter(f => !f.standing).length
+    + mapFindings.filter(f => !f.standing).length;
+  const total = findings.length + noKf.length + spokeFindings.length + heroFindings.length
+    + formFindings.length + mapFindings.length;
 
   log('Past a threshold: ' + aged + ' item(s) that aged out.'
     + (standing > 0 ? ' Plus ' + standing + ' standing item(s), the hero flags and pending forms listed above, which report every run and never age out.' : ''));

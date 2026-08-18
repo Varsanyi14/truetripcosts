@@ -78,6 +78,15 @@ const spokes = countries
       </div>
     </section>
 
+    <section class="ht-sec">
+      <h2>See it all at once</h2>
+      <p class="ht-note">The same question as this page, drawn as a world map: which countries add the most on top of a quoted room rate, and which look expensive only because the tax is already inside the price. Government charges only, each one sourced and dated.</p>
+      <a class="ht-mapcta" href="/hotel-tax-map">
+        <span class="ht-mapcta-h">Hotel tax by country, mapped</span>
+        <span class="ht-mapcta-d">Shaded by what a government adds at checkout, with resort fees kept out of the colour</span>
+      </a>
+    </section>
+
     {spokes.length > 0 && (
       <section class="ht-sec">
         <h2>Country by country</h2>
@@ -125,6 +134,11 @@ const spokes = countries
     .ht-spoke-h{display:block;font-family:var(--serif);font-weight:500;font-size:16.5px;color:var(--teal-deep);line-height:1.3;margin:0 0 3px}
     .ht-spoke:hover .ht-spoke-h{text-decoration:underline}
     .ht-spoke-d{display:block;font-size:14px;color:var(--muted);line-height:1.5}
+    .ht-mapcta{display:block;border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:15px 18px;text-decoration:none;transition:background-color .15s ease}
+    .ht-mapcta:hover{background:var(--paper)}
+    .ht-mapcta-h{display:block;font-family:var(--serif);font-weight:500;font-size:17px;color:var(--teal-deep);line-height:1.3;margin:0 0 4px}
+    .ht-mapcta:hover .ht-mapcta-h{text-decoration:underline}
+    .ht-mapcta-d{display:block;font-size:14px;color:var(--muted);line-height:1.5}
     .ht-keep{font-size:14px;color:var(--muted);line-height:1.55;border-top:1px solid var(--line);padding-top:18px;margin:30px 0 40px;max-width:720px}
     .ht-keep a{color:var(--teal-deep);font-weight:500;text-decoration:none}
     .ht-keep a:hover{text-decoration:underline}

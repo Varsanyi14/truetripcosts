@@ -1,0 +1,65 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import HotelTaxMap from '../components/HotelTaxMap.astro';
+import CompareByRegion from '../components/CompareByRegion.astro';
+import USBadge from '../components/USBadge.astro';
+
+// The hotel tax world map. A NEW PAGE rather than the hero of /hotel-taxes-and-fees, and
+// the reasoning is worth keeping because it will come up again for the next map.
+//
+// The hub answers the query directly in its opening lines and already ranks on it. Putting
+// a whole-world map above that copy pushes the answer below the fold, which is the exact
+// failure RegionMap.astro's own note warns about ("so it sets the scene without pushing the
+// answer below the fold"), and a world choropleth is far heavier than a locator inset. A
+// page that exists to be screenshotted and linked also wants its own canonical URL to
+// collect those links, rather than sending them to a hub whose job is the four-part
+// explainer. So the hub keeps its opening and gains a prominent link down to here, and the
+// map gets a URL of its own.
+//
+// The map does not try to rank as an island. Every shaded country links to its own hotel
+// taxes spoke or its guide, which is where the sourced, dated detail lives and where the
+// existing rankings are; the map is the discovery surface that feeds them.
+---
+<Base
+  title="Hotel tax by country, mapped: what governments add to a room rate"
+  description="A world map of what government tax and mandatory levies add on top of a quoted hotel room rate, country by country. Government charges only, each one sourced and dated, with resort fees kept separate.">
+  <Nav />
+  <main class="wrap">
+
+    <section class="htx-intro">
+      <p class="lab">Hotel taxes and fees</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
+      <h1>The world, shaded by what gets added at checkout.</h1>
+      <p class="htx-lede">Two hotel rooms can be advertised at the same price and settle hundreds of dollars apart, because what a government adds on top of a quoted rate ranges from nothing to roughly a third. This map colours countries by that gap alone: the tax and mandatory levies that appear after you have already compared prices.</p>
+      <p class="htx-lede htx-lede2">It is a deliberately narrow question, and the narrowness is the point. A map of total tax burden would shade half of Europe dark and tell you nothing useful, because that tax is already inside the price you were quoted. What costs you a surprise is the part that is not.</p>
+    </section>
+
+    <HotelTaxMap />
+
+    <section class="htx-more">
+      <h2>Where the detail lives</h2>
+      <p>Each shaded country above links to its own write-up, which is where the rates are kept current, sourced against the authority that sets them and dated. For the four kinds of charge that land on a hotel bill and how to tell them apart, start with the <a href="/hotel-taxes-and-fees">hotel taxes and fees guide</a>. For per-night bed taxes and entry charges specifically, see <a href="/tourist-taxes">tourist taxes and fees</a>, and for what a day costs once the room is paid for, <a href="/cost-comparison">cost of a day, compared</a>.</p>
+      <p class="htx-keep">Government rates are read off the tax authority, ministry or city that sets them and dated on the country's row. Service charges and resort fees are set by each property, so where we give a figure it is a range from recent reports rather than a published rate, and it never affects the shading. A country left unshaded has not been checked yet, which is not the same as a country with nothing to pay. More on how we work is on our <a href="/methodology">methodology page</a>.</p>
+    </section>
+
+    <CompareByRegion />
+  </main>
+  <Footer />
+
+  <style>
+    .htx-intro{max-width:720px;margin:22px 0 0}
+    .htx-intro h1{font-family:var(--serif);font-weight:500;font-size:clamp(26px,4.6vw,38px);letter-spacing:-.015em;line-height:1.15;margin:0 0 12px}
+    .htx-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
+    .htx-lede2{font-size:16px;color:var(--muted);margin:12px 0 0}
+    .htx-more h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 10px}
+    .htx-more p{font-size:15px;color:#3B4A46;line-height:1.6;margin:0 0 12px;max-width:720px}
+    .htx-more a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .htx-more a:hover{text-decoration:underline}
+    .htx-keep{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin-top:6px}
+    @media (max-width:560px){
+      .htx-lede{font-size:16.5px}
+    }
+  </style>
+</Base>
