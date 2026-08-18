@@ -61,6 +61,22 @@ What already works this way, and is the model to follow:
 
 What to move into `F`: any fact that appears in more than one sentence, or any number that gets corrected over time (rates, fees, dates, entry requirements). Pure one-off prose can stay prose.
 
+### When the same fact is in forty files, not four sentences
+
+The `F` pattern above solves one fact repeated inside one guide. It does not solve a fact repeated across many guides, which is what the connectivity wave produced: every `staying-connected` spoke states the US carrier day-pass rate, AT&T's fee cap, Verizon's lack of one, T-Mobile's allowance by tier and the pay-per-use rate. At 40-plus spokes that is a couple of hundred hand-typed instances of the fastest-moving facts on the site after exchange rates.
+
+Three incidents inside a single wave showed what that costs:
+
+1. **31 July 2026.** A flat "12 dollars a day" and a description of T-Mobile's included roaming as slow 2G were both wrong, both in the direction that flattered the eSIM affiliate link, and both had to be corrected by hand in 12 files. The hand fix left an artifact, "10 to 10 to 12 dollars", live in seven of them for about three weeks.
+2. **18 August 2026.** AT&T's own pages cap the Day Pass at 10 daily fees per bill period. No spoke said so, which overstated roaming on any trip past 10 days, and japan carried a two-week figure the cap makes wrong.
+3. **18 August 2026.** Verizon has no equivalent cap, the more useful half of the fact, needing a 23-file sweep to add.
+
+`src/data/carrier-spine.js` is the single home for those figures, and `scripts/check-carrier-spine.mjs` is what watches them. The spine holds each figure with its canonical written forms and its source, a `retired` list of figures we have already corrected and must never print again, and an `unverified` list of open questions the checker surfaces on every run. It carries its own `checkedISO` and a 90-day `reviewDays`, tighter than the 180-day general threshold in the staleness scanner, because carrier terms move faster than anything else here.
+
+**When a carrier moves a price:** update the figure in the spine, move the old one into `retired` with a reason and a date, run `node scripts/check-carrier-spine.mjs`, and every spoke still carrying the old figure fails loudly with the file list. Then fix that prose by hand and update `checkedISO`.
+
+**An honest tension, left open on purpose.** The spine is a reference and a checker, not a template: no spoke prose is interpolated from it. That stops short of what the `F` pattern above recommends, and the section above is right that interpolation is the stronger fix, which is how `emergency.medical`, the `tax` object and `fallbackFxPct` already work. Two reasons it was not done in one step. The figures sit inside sentences whose wording and bold tags vary per country, so interpolating the numbers is straightforward while the cap clause is a whole sentence whose placement genuinely differs. And converting 40 spokes' double-quoted strings to backtick templates is a large mechanical diff that deserves its own commit rather than riding along inside a content wave. The checker is complementary either way: interpolation cannot catch a retired *description* such as "slow 2G", or a claim like "long trips make the gap bigger" that no figure appears in. If you do the interpolation pass, keep the checker.
+
 ## Per-country rollout checklist
 
 For each guide, in order:

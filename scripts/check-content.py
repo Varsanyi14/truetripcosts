@@ -74,10 +74,48 @@ for dp, dn, fn in os.walk(os.path.join('src', 'data')):
             n = t.count(k)
             if n: esc.append((n, name, p))
 
+# Leaked build-script identifiers in the guide data. Same species as the stray escape
+# above: a defect that parses cleanly, survives the build in some contexts, and renders as
+# nonsense to a reader. The one that actually shipped was a generator emitting
+#   a: "About 10 to 12 dollars a day. " + CAP_FAQ + " T-Mobile is worth checking"
+# into nine data files, because a Python concatenation sat inside a triple-quoted string
+# and was never interpolated. That is valid JavaScript referencing an undefined identifier,
+# so every file imported fine in isolation and the failure only appeared at page
+# generation as "CAP_FAQ is not defined". Nothing but the build caught it.
+#
+# Scoped to the PROSE data files only, and the scoping is the fiddly part. Most of src/data
+# is pure object literals where a concatenation is always a mistake, but a handful of
+# modules (usd-prose.js, breadth.js, avoidable.js) build strings for real and concatenate
+# legitimately. The discriminator is executable code: a guide file contains no arrow
+# functions and no function declarations, a builder module contains several. Checking every
+# file produced 14 false positives on first run, which is how a gate gets ignored, so
+# code-bearing modules are skipped and named in the output rather than silently excluded.
+LEAK = [
+    (re.compile(r'"\s*\+\s*[A-Za-z_][A-Za-z0-9_]*\s*\+\s*"'), 'leaked identifier in a double-quoted string'),
+    (re.compile(r"'\s*\+\s*[A-Za-z_][A-Za-z0-9_]*\s*\+\s*'"), 'leaked identifier in a single-quoted string'),
+    (re.compile(r'%[sdr]\b'), 'printf placeholder left in copy'),
+    (re.compile(r'\{\d+\}'), 'brace placeholder left in copy'),
+]
+HAS_CODE = re.compile(r'=>|\bfunction\s*\(')
+leak, leak_skipped = [], []
+for dp, dn, fn in os.walk(os.path.join('src', 'data')):
+    for f in sorted(fn):
+        if not f.lower().endswith('.js'): continue
+        p = os.path.join(dp, f)
+        t = io.open(p, encoding='utf-8', errors='replace').read()
+        if HAS_CODE.search(t):
+            leak_skipped.append(os.path.basename(p)); continue
+        for rx, name in LEAK:
+            n = len(rx.findall(t))
+            if n: leak.append((n, name, p))
+
 print("== TTC content gate (src + dist) ==")
 show("HARD  em/en dashes + U.S.", hard)
 show("HARD  long spoke figures ", figs)
 show("HARD  stray escapes      ", esc)
+show("HARD  leaked identifiers ", leak)
+if leak_skipped:
+    print(f"    (prose scan skipped {len(leak_skipped)} builder module(s) that concatenate legitimately: {', '.join(leak_skipped)})")
 show("WARN  dash look-alikes   ", warn)
-print("\nRESULT:", "FAIL" if (hard or figs or esc) else ("PASS (warnings)" if warn else "PASS"))
-sys.exit(1 if (hard or figs or esc) else 0)
+print("\nRESULT:", "FAIL" if (hard or figs or esc or leak) else ("PASS (warnings)" if warn else "PASS"))
+sys.exit(1 if (hard or figs or esc or leak) else 0)
