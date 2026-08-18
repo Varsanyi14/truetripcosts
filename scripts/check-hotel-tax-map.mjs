@@ -25,13 +25,23 @@ import { countries } from '../src/data/index.js';
 // The component derives a no-bed-tax entry for every live country with tax.none === true
 // that hotel-tax-map.js does not already cover. Rebuilt here the same way so the gate audits
 // what actually renders, not just the hand-written half.
+// Mirrors the component: a country is a no-charge finding if the flag says so OR if every
+// region figure is zero, which is how Costa Rica, the Dominican Republic and India record it.
+const noCharge = (c) => {
+  if (c.tax.none === true) return true;
+  const rs = Array.isArray(c.tax.regions) ? c.tax.regions : [];
+  if (typeof c.tax.pct === 'number') return !(c.tax.pct > 0);
+  const any = rs.some(r => (typeof r.pct === 'number' && r.pct > 0) || (typeof r.rate === 'number' && r.rate > 0));
+  return rs.length > 0 && !any;
+};
+
 const derived = countries
   .filter(c => c.live && c.tax && !byIso[(c.iso2 || '').toUpperCase()])
   .map(c => ({
     iso: (c.iso2 || '').toUpperCase(), country: c.name, slug: c.slug,
     spoke: ((c.spokes || []).find(s => s && s.live === true && s.topic === 'taxes') || {}).slug || null,
-    state: c.tax.none === true ? 'noBedTax' : 'checkedShape',
-    note: c.tax.note, shape: c.tax.none === true ? null : (c.tax.unit || null),
+    state: noCharge(c) ? 'noBedTax' : 'checkedShape',
+    note: c.tax.note, shape: noCharge(c) ? null : (c.tax.unit || null),
     checkedISO: c.checkedISO, derived: true,
   }));
 const rendered = [...hotelTaxMap, ...derived];
@@ -130,6 +140,13 @@ check(!derived.some(e => colours(e)), 'no derived entry can colour a band');
 for (const e of rendered.filter(isCheckedShape)) {
   check(!!e.shape && !!SHAPE_WORDS[e.shape],
     `${e.iso} (${e.country}): its tax unit has plain-language words`, String(e.shape));
+}
+// A row saying "a government charge applies here" must have a non-zero figure behind it
+// somewhere, or it is asserting a charge the guide does not record.
+for (const e of derived.filter(isCheckedShape)) {
+  const c = countries.find(x => (x.iso2 || '').toUpperCase() === e.iso);
+  check(!!c && !noCharge(c),
+    `${e.iso} (${e.country}): claims a charge applies and has a non-zero figure to back it`);
 }
 // Every covered country must land in some checked state. If this fails, the map has gone back
 // to calling researched countries unchecked, which is the failure this whole state exists for.

@@ -36,7 +36,16 @@ const derived = countries
     // Resolve the link from the country's OWN spokes rather than guessing a path. Guessing
     // is what shipped a 404 to /netherlands/hotel-taxes-and-fees.
     const taxSpoke = (c.spokes || []).find(s => s && s.live === true && s.topic === 'taxes');
-    const none = c.tax.none === true;
+    // "There is a charge" must be tested against the FIGURES, not just the absence of a
+    // tax.none flag. Costa Rica, the Dominican Republic and India carry unit:"flatPerNight"
+    // with every region at rate 0 and a note saying no nightly tourist tax applies: the flag
+    // is missing but the finding is the same as tax.none. Reading the flag alone made the map
+    // tell a reader "a government charge applies here, levied as a flat amount per night" for
+    // three countries whose own guides say the opposite. Test the numbers.
+    const regions = Array.isArray(c.tax.regions) ? c.tax.regions : [];
+    const anyCharge = typeof c.tax.pct === 'number' ? c.tax.pct > 0
+      : regions.some(r => (typeof r.pct === 'number' && r.pct > 0) || (typeof r.rate === 'number' && r.rate > 0));
+    const none = c.tax.none === true || (regions.length > 0 && !anyCharge);
     return {
       iso: (c.iso2 || '').toUpperCase(),
       country: c.name,
