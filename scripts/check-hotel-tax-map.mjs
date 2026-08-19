@@ -110,6 +110,43 @@ for (const e of coloured) {
   check(traceable, `${id}: at least one component carries a source or a note saying which source is still needed`);
 }
 
+// ---------------------------------------------------------------------------
+// THE FILL IS A SOURCED CLAIM. Hard rail, and the reason this block exists at all.
+//
+// The check above accepts `pendingSource` in place of a real source, which is right for an
+// entry we are still building but wrong the moment that entry COLOURS. The Maldives shipped
+// shaded with `source: null` on both of its government figures and a pendingSource note on
+// each, and passed every gate, because "verified by MAIN, URL to follow" satisfied
+// traceability. That put an unsourced fill on half the shaded map while the page's own panel
+// told readers a country colours only when its rate is read off the authority that sets it.
+// A rule the code states in prose and does not enforce is not a rule.
+//
+// WHY THIS IS STRICTER THAN "figures that feed the fill". The honest line would be to demand
+// sources only on the figures behind `addedPct`, but that line is not drawable from this
+// data: `addedPct` is one hand-computed number explained in prose by `addedBasis`, and no
+// field links a government row to it. The Netherlands proves the point. Its 21% VAT is
+// `basis: percentOfRoom` yet contributes nothing to the 10.3% fill, because the VAT is
+// already inside the quoted price, so neither `basis` nor `inQuotedPrice` identifies a
+// contributor. Rather than guess, this demands a source on EVERY government figure of a
+// colouring country. That is stricter than strictly necessary and never wrong, and it
+// actually matches the promise better: every government row is DISPLAYED to the reader in
+// that country's detail, not just the one driving the colour.
+//
+// If a future coloured country genuinely needs to show a flat charge whose source is still
+// pending, do not loosen this. Make the exception explicit in the data so it is visible in
+// review, because the failure mode being prevented here is precisely an exception that
+// nobody could see.
+console.log('\n3a. Every government figure behind a fill is sourced, not just promised');
+for (const e of coloured) {
+  const id = `${e.iso} (${e.country})`;
+  for (const g of (e.government || [])) {
+    const sourced = !!(g.source && g.source.url);
+    check(sourced,
+      `${id}: "${g.label}" carries a real source`,
+      sourced ? g.source.url : (g.pendingSource ? 'source is null, only a pendingSource note' : 'source is null'));
+  }
+}
+
 // The inverse rail: a state that is not "checked" must not be able to colour, so it must
 // not carry a figure at all. A stray addedPct on a varies or pending entry is one edit away
 // from a fill nobody intended.

@@ -231,10 +231,14 @@ export const hotelTaxMap = [
   },
 
   {
-    // MAIN-verified anchor. Figures come from the Phase 1 brief and still need their
-    // official URLs attached in Phase 2, which is what pendingSource records. They colour
-    // because MAIN verified them; the missing URL is a Phase 2 blocker, not a Phase 1 one,
-    // and the checker lists it every run until it is filled.
+    // Both figures are read off MIRA, the authority that sets them, and dated.
+    // WHY THIS COMMENT USED TO SAY OTHERWISE. This entry shipped coloured with both
+    // sources null and a pendingSource note on each, on the reasoning that the figures were
+    // verified and the URLs were a later chore. That made half the shaded map break the rule
+    // the page states out loud, because the fill is exactly the claim a reader cannot check
+    // for themselves. The rule is now enforced by scripts/check-hotel-tax-map.mjs: a country
+    // that colours must carry a real source on every government figure, so this cannot
+    // happen again by intent or by accident.
     iso: 'MV',
     country: 'Maldives',
     slug: null,
@@ -251,10 +255,10 @@ export const hotelTaxMap = [
         figure: '17%',
         basis: 'percentOfRoom',
         inQuotedPrice: false,
-        note: 'Charged on tourism-sector goods and services including accommodation.',
-        source: null,
-        pendingSource: 'Needs the Maldives Inland Revenue Authority page for the current TGST rate and its effective date.',
-        checkedISO: '2026-08-17',
+        note: 'Charged on tourism-sector goods and services including accommodation. Rose from 16% on 1 July 2025 under the seventh amendment to the Goods and Services Tax Act.',
+        effective: '2025-07-01',
+        source: { label: 'Maldives Inland Revenue Authority: GST rates by sector', url: 'https://www.mira.gov.mv/Pages/View/gst', type: 'revenue' },
+        checkedISO: '2026-08-19',
       },
       {
         label: 'Green tax',
@@ -263,10 +267,10 @@ export const hotelTaxMap = [
         amount: 12,
         currency: 'USD',
         inQuotedPrice: false,
-        note: 'A flat environmental charge on each guest for each night. Rates differ by property type, so confirm the figure for where you are staying.',
-        source: null,
-        pendingSource: 'Needs the official green tax schedule, including the per-property-type rates and any child exemption.',
-        checkedISO: '2026-08-17',
+        note: 'A flat environmental charge on each guest for each day of stay. Doubled from 6 dollars on 1 January 2025. Resorts, resort hotels and tourist vessels charge 12; a hotel or guesthouse on an inhabited island with 50 or fewer registered rooms charges 6. Children under two are exempt.',
+        effective: '2025-01-01',
+        source: { label: 'Maldives Inland Revenue Authority: green tax rates and exemptions', url: 'https://www.mira.gov.mv/Pages/View/whatisgreentax', type: 'revenue' },
+        checkedISO: '2026-08-19',
       },
     ],
     // The flat components restated for the stipple and the worked examples. Same figures
@@ -278,7 +282,7 @@ export const hotelTaxMap = [
     property: [
       { label: 'Service charge', range: '10%', note: 'Set by the property, not the government. Widely applied but not a tax, and not refundable.' },
     ],
-    checkedISO: '2026-08-17',
+    checkedISO: '2026-08-19',
   },
 
   {
@@ -367,7 +371,11 @@ export const hotelTaxMap = [
 // which is why every one carries pendingSource. A date is not a rate, but an unsourced
 // date on a public page is still an unsourced claim, so none of these are shown yet.
 export const hotelTaxWatchlist = [
-  { iso: 'NL', where: 'Amsterdam', label: 'Accommodation VAT rose to 21%', effective: '2026-01-01', status: 'in-force', source: { label: 'Dutch government: VAT on overnight accommodation goes up', url: 'https://business.gov.nl/amendments/vat-overnight-accommodation-goes-up/', type: 'gov' }, checkedISO: '2026-07-04' },
+  // The accommodation VAT rise is a NATIONAL change, and its source is the Dutch national
+  // government. It was labelled Amsterdam here, which put a national measure under a city
+  // heading inside the one component whose whole job is verifiability. Amsterdam's own
+  // charge is the 12.5% city tourist tax, which is not what rose.
+  { iso: 'NL', where: 'Netherlands', label: 'Accommodation VAT rose to 21%', effective: '2026-01-01', status: 'in-force', source: { label: 'Dutch government: VAT on overnight accommodation goes up', url: 'https://business.gov.nl/amendments/vat-overnight-accommodation-goes-up/', type: 'gov' }, checkedISO: '2026-07-04' },
   { iso: 'JP', where: 'Kyoto', label: 'Accommodation tax tiers rise', effective: '2026-03-01', status: 'scheduled', source: null, pendingSource: 'Needs the City of Kyoto tier schedule.' },
   { iso: 'BT', where: 'Bhutan', label: 'GST comes into force', effective: '2026-01-01', status: 'scheduled', source: null, pendingSource: 'Needs the Bhutan Department of Revenue and Customs commencement notice, and a check on whether it replaced or sits beside the Sustainable Development Fee.' },
   { iso: 'ES', where: 'Barcelona', label: 'City surcharge escalates in steps to 2029', effective: '2026-01-01', status: 'scheduled', source: null, pendingSource: 'Needs the Barcelona city council schedule showing each step and its date.' },
