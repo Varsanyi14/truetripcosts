@@ -957,3 +957,50 @@
 .ttcs[data-variant="bar"] .ttcs-list{margin:0;max-height:min(52vh,340px)}
 .ttcs[data-variant="bar"] .ttcs-row-d{-webkit-line-clamp:1}
 .ttcs[data-variant="bar"] .ttcs-empty{margin:2px 0 0}
+
+/* ---------------------------------------------------------------------------
+   THE PAGE BOX ON A PHONE. Order and density, no behaviour.
+
+   Measured on a 380px viewport with a query in the box: the standing hint sat between
+   the input and the first result, so it was taking the vertical space the results needed
+   at exactly the moment the reader had stopped needing to be told what the box does. One
+   change, and it is order only.
+
+   THE HINT MOVES BELOW THE OUTPUT. It is the "searches only pages that exist here"
+   promise, so it stays on the page and stays in the DOM before the results, where a
+   screen reader meets it as the description of the field it belongs to. Visually it
+   follows the results at this width instead of standing between the reader and them.
+   When there is nothing to show, .ttcs-out is display:none and the hint sits directly
+   under the input exactly as before.
+
+   THE RESULT ROWS ARE NOT TOUCHED, and that is a measured decision rather than a cautious
+   one. Two levers were tried against six real queries at 380px and dropped, because
+   neither paid for what it cost:
+
+     Trimming the row description to one line, the treatment the nav variant uses, takes a
+     typical row from 107px to 88px. Across those six queries that bought one extra whole
+     row on one of them and none on the other five, because what makes a row tall here is
+     the title wrapping to two lines with its type label wrapping under it, not the
+     description.
+
+     Hiding the "Find a page" label at this width, which the nav variant also does, frees
+     20px above the results and bought no extra row at all.
+
+   The constraint on how many results fit is row height, and row height is mostly title
+   and label wrap. That is a separate decision about the rows themselves rather than
+   something this ordering fix should quietly make.
+
+   The empty state is deliberately not touched. It keeps its own order, its own words and
+   its own separated "where people usually start" block.
+   --------------------------------------------------------------------------- */
+@media (max-width:560px){
+  .ttcs[data-variant="page"]{display:flex;flex-direction:column}
+  .ttcs[data-variant="page"] .ttcs-label{order:1}
+  .ttcs[data-variant="page"] .ttcs-field{order:2}
+  .ttcs[data-variant="page"] .ttcs-out{order:3}
+  .ttcs[data-variant="page"] .ttcs-hint{order:4;margin:16px 0 0}
+  .ttcs[data-variant="page"] noscript{order:5}
+  /* [hidden] is a UA rule, and nothing here sets display on .ttcs-out, so it still wins.
+     Stated anyway, because a flex item that lost its hidden would sit open and empty. */
+  .ttcs[data-variant="page"] .ttcs-out[hidden]{display:none}
+}

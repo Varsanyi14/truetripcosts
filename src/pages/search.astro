@@ -20,18 +20,27 @@ const description = 'Find any page on True Trip Costs by typing: ' + counts.coun
 ---
 <Base title={title} description={description} robots="noindex,follow">
   <Nav />
-  <main class="wrap">
+  <main class="wrap sr-main">
     <section class="sr-head">
       <p class="lab">Find a page</p>
       <h1>Search the site.</h1>
-      <p class="sub">
-        Type a country, a city, or a subject like tipping, eSIM or hotel tax. This looks across
-        {counts.country} country guides, the {counts.spoke} topic pages inside them,
-        {counts.card} money rules cards and {counts.page} hubs, comparison tools and reference pages.
-        It searches nothing else, so if we have not covered something it will tell you plainly
-        instead of guessing.
-      </p>
     </section>
+
+    {/* WHAT THIS SEARCHES. Its own block rather than the third paragraph of .sr-head, purely
+        so the mobile rule below can order it after the box. Same words, same counts, read
+        from the index exactly as before: nothing here is a copy change, and on desktop it
+        still sits between the heading and the box, which is where it reads best.
+
+        On a phone it goes BELOW the box. A reader on a narrow screen arrives wanting to
+        type, and this paragraph runs to about five lines there, which was pushing the input
+        itself to roughly 460px down the page: past the fold once the keyboard is up. It is
+        honest and worth keeping, so it moves rather than going away. */}
+    <p class="sub sr-what">
+      Type a country, a city, or a subject like tipping, eSIM or hotel tax. This looks across {counts.country} country
+      guides, the {counts.spoke} topic pages inside them, {counts.card} money rules cards and {counts.page} hubs,
+      comparison tools and reference pages. It searches nothing else, so if we have not covered something it will
+      tell you plainly instead of guessing.
+    </p>
 
     <section class="sr-box" aria-label="Search">
       <SearchBox variant="page" id="pagesearch" autofocus={true} limit={60} />
@@ -55,5 +64,34 @@ const description = 'Find any page on True Trip Costs by typing: ' + counts.coun
     .sr-box{padding:6px 0 0;border-top:0;margin-top:0}
     .sr-else{padding-bottom:64px}
     .sr-else .sub{margin-bottom:0}
+
+    /* ---------------------------------------------------------------------------
+       MOBILE: THE INPUT COMES FIRST.
+
+       Confirmed on a real phone: in source order the reader met the heading, then about
+       five lines of grey explanation, and only then the input, which put the field
+       roughly 460px down a 664px viewport and left nothing above the keyboard to read.
+       Typing did not help, because the paragraph stayed above the input and went on
+       eating the space the results needed.
+
+       So at narrow widths the column is reordered: heading, box, then the explanation,
+       then the browse block. Order only. Nothing is deleted, nothing is hidden, and the
+       DOM order is unchanged, which matters because it is also the tab order. The
+       paragraph being reordered holds no links and nothing focusable, so moving it
+       visually cannot separate a reader's focus from what they can see.
+
+       560px is the breakpoint the jump list and the calculator's own mobile rules
+       already use, so this adds no new one.
+       --------------------------------------------------------------------------- */
+    @media (max-width:560px){
+      .sr-main{display:flex;flex-direction:column}
+      .sr-head{order:1;padding:22px 0 2px}
+      .sr-head h1{margin:0}
+      .sr-box{order:2;padding:14px 0 0}
+      /* Below the results, with a rule above it so it reads as a footnote to the box
+         rather than a stranded paragraph. */
+      .sr-what{order:3;margin:26px 0 0;padding-top:16px;border-top:1px solid var(--line);font-size:14.5px}
+      .sr-else{order:4;padding-top:22px;padding-bottom:48px}
+    }
   </style>
 </Base>
