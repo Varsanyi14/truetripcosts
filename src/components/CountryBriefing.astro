@@ -288,6 +288,49 @@ const kfState = (f) => {
   if (f.effective) { const e = new Date(f.effective + "T00:00:00Z"); if (!isNaN(e.getTime()) && e > kfNow) return "upcoming"; }
   return "inEffect";
 };
+
+// ----- "On this page": the jump list -----
+// The guides are long on purpose, but a reader who arrives with one question ("which
+// ATM?", "do I tip?") should not have to scroll past six other topics to reach the
+// answer. This is a quiet anchor list under the short version. Navigation only: it
+// adds no content and restructures nothing.
+//
+// THE RULE THAT MAKES IT HONEST. Most of the deep sections render conditionally, so a
+// hardcoded list of links would point at anchors that do not exist on some countries.
+// Instead of re-stating each condition (two copies that can drift), each guard is
+// hoisted into ONE named const here, and BOTH the jump entry and the <section> it
+// points at read that same const. The list is therefore a provable subset of what
+// renders: to break the pairing you would have to edit the guard out of the section
+// and leave it in the list, which is a single visible variable, not a hidden
+// assumption. Never add an entry whose `on` is a fresh expression; point it at the
+// same const the section is wrapped in.
+const showConnectivity = !!c.connectivity;
+const showCarRental = !!c.rentalCommon;
+const showTaxfree = !!c.taxfree;
+const showSeason = !!season;
+const showCulture = !!c.culture;
+// The exchange-rate panel is the one section with TWO states. It renders whenever the
+// currency is not at par with the dollar (fxShowPanel), but it ships `hidden` when no
+// rate is baked for that currency, and its own script un-hides it if /api/rates has a
+// live one. A jump link to a hidden section scrolls nowhere, so this entry carries the
+// SAME `hidden` expression as the section, and the section's script toggles the entry
+// alongside itself. The link is visible exactly when the section is.
+const fxHidden = !fxFb;
+// Labels are the reader's words, not the section's headline: someone scanning this list
+// is matching it against the question in their head.
+const JUMP = [
+  { id: "cards",             label: "Will my card work?",  on: true },
+  { id: "cash",              label: "Cash or card",        on: true },
+  { id: "connectivity",      label: "Staying connected",   on: showConnectivity },
+  { id: "insurance",         label: "Medical cover",       on: true },
+  { id: "car-rental",        label: "Car rental",          on: showCarRental },
+  { id: "fx",                label: "Exchange rate",       on: fxShowPanel, hidden: fxHidden },
+  { id: "taxes-and-refunds", label: "Tax-free shopping",   on: showTaxfree },
+  { id: "tipping",           label: "Tipping",             on: true },
+  { id: "true-cost",         label: "What it really costs",on: true },
+  { id: "when-to-go",        label: "When to go",          on: showSeason },
+  { id: "culture",           label: "Culture and customs", on: showCulture },
+].filter(j => j.on);
 ---
 {c.blocked && (
   <section class="blocked">
@@ -351,6 +394,22 @@ const kfState = (f) => {
 <AdvisoryNotice country={c} />
 
 <EESNotice country={c} />
+
+{/* "On this page". Placed at the end of the opening block, after the short version and
+    any advisory, and immediately before the first deep section. It sits below the
+    notices deliberately: a reader who jumps straight to Tipping from here should have
+    passed the travel advisory on the way, not skipped over it. Entries come from JUMP,
+    which is built from the same guards that wrap the sections themselves. */}
+{JUMP.length > 1 && (
+  <nav class="onpage" aria-label="On this page">
+    <p class="lab">On this page</p>
+    <ul>
+      {JUMP.map(j => (
+        <li hidden={j.hidden} data-jump={j.id}><a href={"#" + j.id}>{j.label}</a></li>
+      ))}
+    </ul>
+  </nav>
+)}
 
 <section id="cards">
   <p class="lab">The three things people ask</p>
@@ -418,8 +477,8 @@ const kfState = (f) => {
   </div>
 </section>
 
-{c.connectivity && (
-<section>
+{showConnectivity && (
+<section id="connectivity">
   <p class="lab lab-ico-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 10.5a10.5 10.5 0 0 1 15 0"/><path d="M7.2 13.4a6.5 6.5 0 0 1 9.6 0"/><path d="M9.8 16.2a2.8 2.8 0 0 1 4.4 0"/><circle cx="12" cy="18.7" r="0.7" fill="currentColor" stroke="none"/></svg>Staying connected</p>
   <h2>Will my phone work here? And what will it cost?</h2>
   <p class="sub">{c.connectivity.works} The cost is where people get caught out, and on most US plans it lands in one of two buckets.</p>
@@ -571,7 +630,7 @@ const kfState = (f) => {
   }
 </script>
 
-{c.rentalCommon && (
+{showCarRental && (
 <section id="car-rental">
   <p class="lab lab-ico-row"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2"/><path d="M12 10V3.5"/><path d="M10.27 13 4.64 16.25"/><path d="M13.73 13 19.36 16.25"/></svg>Renting a car</p>
   <h2>Where the rental desk makes its money.</h2>
@@ -622,6 +681,13 @@ const kfState = (f) => {
       var el = document.getElementById("fx");
       if (!el) return;
       var cur = el.getAttribute("data-fx-cur");
+      // The "On this page" entry for this section shares its visibility. Without this,
+      // a country with no baked rate would ship the link hidden and never reveal it
+      // even once the live rate arrived and the section appeared. One helper, called
+      // from the same two places that set el.hidden, so the link and the section
+      // cannot end up in different states.
+      var jump = document.querySelector('[data-jump="fx"]');
+      function show(on) { el.hidden = !on; if (jump) jump.hidden = !on; }
       function fmtLocal(n) { return n >= 100 ? Math.round(n).toLocaleString("en-US") : (Math.round(n * 100) / 100).toString(); }
       function fmtUsd(n) { return "$" + (n >= 1000 ? Math.round(n).toLocaleString("en-US") : (Math.round(n * 100) / 100).toFixed(2)); }
       var input = el.querySelector("[data-fx-input]");
@@ -649,8 +715,8 @@ const kfState = (f) => {
         } catch (e) {}
       }
       function apply(rate, dateLabel) {
-        if (!rate || !isFinite(rate)) { el.hidden = true; return; }
-        el.hidden = false;
+        if (!rate || !isFinite(rate)) { show(false); return; }
+        show(true);
         current = rate;
         rateEl.textContent = fmtLocal(rate) + " " + cur;
         if (dateLabel && dateEl) dateEl.textContent = dateLabel;
@@ -660,7 +726,7 @@ const kfState = (f) => {
       if (input) input.addEventListener("input", recalc);
       var fb = parseFloat(el.getAttribute("data-fx-fb") || "");
       if (isFinite(fb) && fb > 0) apply(fb, el.getAttribute("data-fx-fbdate") || "");
-      else el.hidden = true;
+      else show(false);
       fetch("/api/rates").then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
         if (d && d.rates && d.rates[cur]) apply(d.rates[cur], d.date || "");
       }).catch(function () {});
@@ -675,7 +741,7 @@ const kfState = (f) => {
 </section>
 )}
 
-{c.taxfree && (
+{showTaxfree && (
   <section id="taxes-and-refunds">
     <p class="lab">{c.taxfree.label || "Tax-free shopping"}</p>
     <h2>{c.taxfree.heading}</h2>
@@ -735,7 +801,7 @@ const kfState = (f) => {
   </div>
 </section>
 
-<section>
+<section id="tipping">
   <p class="lab">Tipping</p>
   <h2>{c.tippingHeading}</h2>
   <p class="sub" set:html={c.tipping}></p>
@@ -915,7 +981,7 @@ const kfState = (f) => {
   <ArrivalClosingThesis country={c} />
 </section>
 
-{season && (
+{showSeason && (
 <section class="seas" id="when-to-go">
   <p class="lab">When to go</p>
   <h2>Cheaper and busier months in {c.name}.</h2>
@@ -946,7 +1012,7 @@ const kfState = (f) => {
 </section>
 )}
 
-{c.culture && (
+{showCulture && (
 <section class="culture" id="culture">
   <details>
     <summary>
@@ -1768,6 +1834,28 @@ const kfState = (f) => {
      (the breadth reveal, the TTC-ed card) silently matches nothing. Those two carry the
      same rule inside their own style blocks instead. */
   #true-cost,#calc,#hn-app,#taxes-and-refunds,#insurance,#when-to-go{scroll-margin-top:74px}
+  /* The remaining jump targets. #cash, #connectivity, #car-rental, #fx, #tipping and
+     #culture were reachable by hand-typed anchor before, but nothing on the page linked
+     to them, so the missing offset never showed. The "On this page" list links to all of
+     them, so they need the same 74px as the rest. */
+  #cash,#connectivity,#car-rental,#fx,#tipping,#culture{scroll-margin-top:74px}
+
+  /* "On this page". A plain text link list and nothing more: no icons, no pills, no card,
+     no sticky rail. It has to read as part of the editorial page rather than a widget, so
+     the only ornament is the same mono .lab the sections use. Two columns where there is
+     room, one on a phone, which is where the list earns its keep. */
+  .onpage{margin:26px 0 0;padding:16px 0 0;border-top:1px solid var(--line)}
+  .onpage ul{list-style:none;margin:0;padding:0;columns:2;column-gap:34px}
+  .onpage li{margin:0;break-inside:avoid}
+  .onpage a{display:block;padding:7px 0;font-size:15px;line-height:1.35;color:var(--teal-deep);text-decoration:none}
+  .onpage a:hover{text-decoration:underline}
+  .onpage a:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:3px}
+  @media (max-width:560px){
+    /* One column, and taller rows: 44px of tap target, the same floor the calculator's
+       steppers use. */
+    .onpage ul{columns:1}
+    .onpage a{padding:11px 0;font-size:15.5px;min-height:22px}
+  }
   .rel{margin:38px 0 8px}
   .rel-h{font-family:var(--serif);font-weight:500;font-size:clamp(20px,3vw,26px);letter-spacing:-.01em;margin:0 0 6px}
   .rel-sub{font-size:14.5px;color:var(--muted);line-height:1.5;margin:0 0 16px;max-width:640px}
