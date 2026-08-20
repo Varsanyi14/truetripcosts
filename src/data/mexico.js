@@ -752,7 +752,7 @@ export default {
       }
     },
     {
-      slug: "entry-fees",
+      slug: "attraction-fees",
       glance: [
         { k: "Chichen Itza", v: "About 697 pesos (~$40)" },
         { k: "The catch", v: "Two tickets at two windows" },
@@ -760,7 +760,7 @@ export default {
         { k: "Cenotes", v: "150 to 500 pesos, cash" }
       ],
       live: true,
-      topic: "entry-fees",
+      topic: "attractions",
       title: "Mexico entry fees: Chichen Itza, cenotes, cash",
       description: "Chichen Itza charges two separate fees, about 690 to 700 pesos for foreigners, cenotes run $9 to $38, and almost everything is cash only. Checked 2026.",
       h1: "What do attractions really cost in Mexico?",

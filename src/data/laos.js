@@ -394,6 +394,116 @@ export default {
       }
     },
     {
+      slug: "visa",
+      glance: [
+        { k: "Visa", v: "Required, 30 days" },
+        { k: "Cheapest", v: "About $40 on arrival, in cash" },
+        { k: "Online", v: "Roughly $50 on the official portal" },
+        { k: "Also", v: "A free online immigration form" }
+      ],
+      live: true,
+      topic: "visas",
+      title: "Laos visa for US citizens: about $40 on arrival, $50 online",
+      description: "US citizens need a Laos tourist visa, valid 30 days. The visa on arrival is about $40 in cash, the official e-visa roughly $50. Bring two photos. Checked 2026.",
+      h1: "Do US citizens need a visa for Laos?",
+      lede: "Yes, and the online route is the expensive one. Laos charges roughly ten dollars a person more to apply in advance than to buy the visa at the airport counter, which is the reverse of the usual advice. Here is what each costs, and what the cheaper one wants from you.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-16",
+      answer: "Yes. US citizens need a <b>tourist visa</b> for Laos, valid <b>30 days</b>. The <b>visa on arrival</b> at the airport is <b>about $40</b>, paid in cash in clean US dollars or Thai baht, with <b>two passport photos</b>. The official <b>e-visa</b> is <b>roughly $50</b>, so applying in advance costs about <b>ten dollars more</b> per person, not less. Both are one-off and per person. A <b>free online Lao immigration form</b> is also required before arrival, and it is genuinely free.",
+      official: {
+        label: "Lao e-Visa, the official government portal",
+        url: "https://laoevisa.gov.la",
+        note: "The government's own e-visa site, at roughly $50. The visa on arrival at the airport is about $40 in cash, so the portal is the convenient route rather than the cheap one. It buys you an approval in hand and no counter queue. We earn nothing by sending you here.",
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "The online route costs about ten dollars more",
+          icon: "usd",
+          key: {
+            fig: "$40 vs $50",
+            tag: "On arrival is cheaper",
+            text: "About $40 at the airport counter, roughly $50 through the official e-visa portal. The gap is wider here than in neighbouring Cambodia.",
+            tone: "teal"
+          },
+          p: [
+            "The usual advice, in most of the world, is to sort the visa online before you fly because it is cheaper as well as calmer. In Laos it is only calmer. The <b>visa on arrival</b> runs at <b>about $40</b>, and the official <b>e-visa</b> at <b>roughly $50</b>.",
+            "That is a <b>ten dollar gap per person</b>, so a family of four is looking at forty dollars for the convenience. Worth paying if you land late, travel with children, or simply do not want to hunt for clean notes and photographs before a counter. Not worth paying by accident, which is what happens when you follow generic advice that assumes online is always cheaper."
+          ]
+        },
+        {
+          h: "What the cheaper route wants from you",
+          icon: "cash",
+          key: {
+            fig: "2 photos",
+            tag: "Plus cash, in dollars or baht",
+            text: "The counter wants two passport photos and the fee in clean notes, and it takes Thai baht as well as US dollars.",
+            tone: "amber"
+          },
+          p: [
+            "The on-arrival route is cheaper but it is the one with a shopping list, and every item on it is easier to sort at home than at an airport at the end of a flight:"
+          ],
+          steps: [
+            "<b>The fee in cash</b>, in clean US dollars or Thai baht. Two accepted currencies is unusually flexible, and useful if you are arriving overland from Thailand with baht already in your pocket.",
+            "<b>Two passport photos.</b> Two, not one. This is the item people are most often short of, and it is the hardest to fix on the spot.",
+            "<b>A passport with space in it</b>, plus your onward travel and accommodation details."
+          ]
+        },
+        {
+          h: "Arriving by land or by rail, and what we have not checked",
+          icon: "train",
+          key: {
+            tag: "Our figure covers the airport",
+            text: "The about-$40 on-arrival price is sourced for the airport. We have not verified whether the same route and price apply at land or railway crossings.",
+            tone: "amber"
+          },
+          p: [
+            "This matters more in Laos than it would elsewhere, because the <b>China to Laos railway</b> has made arriving by train a normal thing to do rather than an adventure, and plenty of visitors now cross by land from Thailand as well.",
+            "Our sourced figure, <b>about $40 on arrival</b>, is for the <b>airport</b>. We have <b>not</b> verified that the visa on arrival is available, or priced the same, at railway and land crossings. That is a gap in what we know rather than a claim that it is unavailable. If you are arriving overland, the safe move is the <b>official e-visa in advance</b>, and paying the roughly ten dollars extra rather than testing an assumption at a border post. For the trains themselves, see the <a href=\"/laos/rail\">Laos rail guide</a>."
+          ]
+        },
+        {
+          h: "The free immigration form, and why there is no link here",
+          icon: "alert",
+          key: {
+            tag: "Free, required, and deliberately unlinked",
+            text: "A free online Lao immigration form is required before arrival. We have not verified a dedicated official URL for it, so we will not name it and leave you to search.",
+            tone: "amber"
+          },
+          p: [
+            "Separately from the visa, Laos requires a <b>free online immigration form</b> before you arrive. It is a different filing from the e-visa, and it costs <b>nothing</b>.",
+            "We have not linked it, deliberately. The rule on this site is that an arrival form is never named without its real government address in the same breath, because a named form with no link sends you straight to a search page, and lookalike sites buy those search terms precisely because these filings are new, obscure and mandatory. Naming it and leaving you to find it would push you into the exact harm the rule exists to prevent.",
+            "So: the form exists, it is <b>free</b>, and until we can source its own official portal we point you at the <b>e-visa site above</b> to complete it through the official channel. If any site quotes you a price for a Lao immigration form, that price is the whole product."
+          ]
+        },
+        {
+          h: "Who else will try to sell you this visa",
+          icon: "receipt",
+          key: {
+            tag: "The markup is the avoidable part",
+            text: "The visa fee is unavoidable. An agent's cut on top of it is not, and much of what outranks the government portal is an agent.",
+            tone: "amber"
+          },
+          p: [
+            "The fee itself is real and you will pay it. What is optional is the layer on top. Search for a Laos visa and a good deal of what ranks above the official portal is a reseller, submitting the same application to the same government site and charging you for the keystrokes.",
+            "<b>We publish no figure for that markup</b>, because none is sourced for Laos and it varies by reseller. That is on purpose: putting a made-up number on what a middleman charges would be the same fault as the middleman. What we can give you precisely is the official price, <b>about $40 on arrival or roughly $50 online</b>, and the official address, <b>laoevisa.gov.la</b>. Anything above that is somebody's fee rather than Laos's. For how money works once you are in, see the <a href=\"/laos\">Laos money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Laos in 2026?", a: "Yes. A tourist visa is required, valid 30 days. You can buy it on arrival at the airport for about $40 in cash, in clean US dollars or Thai baht, with two passport photos, or apply in advance on the official portal at laoevisa.gov.la for roughly $50." },
+        { q: "Is the Laos e-visa cheaper than the visa on arrival?", a: "No. It is about ten dollars more per person. The visa on arrival runs around $40 and the official e-visa around $50. You pay the difference for an approval in hand and no counter queue, not for a lower price, which is the reverse of the usual advice." },
+        { q: "What do I need for a Laos visa on arrival?", a: "The fee in cash in clean US dollars or Thai baht, two passport photos, and a passport with space in it, plus your onward travel and accommodation details. Two photos rather than one is the item travelers are most often caught short on." },
+        { q: "Can I get a Laos visa on arrival at a land or rail border?", a: "We have not verified that. Our sourced figure of about $40 on arrival covers the airport, and we have not confirmed whether the same route and price apply at railway or land crossings. If you are arriving overland, apply for the official e-visa in advance rather than assuming." }
+      ],
+      sources: {
+        links: [
+          { label: "Lao e-Visa, the official government portal: the tourist e-visa, entry points and fee", url: "https://laoevisa.gov.la", type: "gov" }
+        ],
+        judgment: "The roughly $40 on-arrival fee, the roughly $50 e-visa, the 30-day validity, the two-photo and clean-cash requirements, the acceptance of Thai baht as well as US dollars, and the free online immigration form all come from this guide's own check against the official Lao e-visa portal, dated 16 July 2026. They are read from the Laos guide's own entry fact rather than copied, so the two cannot drift apart. Three things we deliberately do not publish: a figure for reseller markup, because none is sourced and inventing one would be the same fault as the reseller; a link for the free immigration form, because we have not verified its own official portal; and any claim about the visa on arrival at railway or land crossings, because our source covers the airport and the China to Laos railway makes that a real question rather than an edge case. Our read that the extra ten dollars is worth paying if you land late or travel with children is judgment, not policy."
+      }
+    },
+    {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Fine in the towns, thin between" },

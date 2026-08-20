@@ -305,7 +305,7 @@ export default {
       }
     },
     {
-      slug: "entry-visa",
+      slug: "e-visa",
       glance: [
         { k: "Visa", v: "e-visa, apply online before you fly" },
         { k: "Cost", v: "US$80.90, valid 10 years" },

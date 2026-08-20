@@ -418,6 +418,117 @@ export default {
       }
     },
     {
+      slug: "visa",
+      glance: [
+        { k: "Visa", v: "Required, 30 days" },
+        { k: "Cheapest", v: "$30 on arrival, in cash" },
+        { k: "Online", v: "About $36 on the official portal" },
+        { k: "Also", v: "A free e-Arrival Card" }
+      ],
+      live: true,
+      topic: "visas",
+      title: "Cambodia visa for US citizens: $30 on arrival, $36 online",
+      description: "US citizens need a Cambodia tourist visa, valid 30 days. The visa on arrival is $30 in clean cash, the official e-visa about $36 with its processing fee. Checked 2026.",
+      h1: "Do US citizens need a visa for Cambodia?",
+      lede: "Yes, and Cambodia breaks the usual rule. Almost everywhere, applying online in advance is the cheaper route. Here it is the dearer one, and the cheaper route wants clean cash and a photo. Here is what each actually costs, and the official place to get it.",
+      checked: "Jul 2026",
+      checkedISO: "2026-07-16",
+      answer: "Yes. US citizens need a <b>tourist visa</b> for Cambodia, valid <b>30 days</b>, and there are two routes at two different prices. The <b>visa on arrival</b> at the airport is <b>$30</b>, paid in clean US dollar notes with a passport photo. The official <b>e-visa</b> is <b>about $36</b>, because a <b>$6 processing fee</b> sits on top of the same $30 visa. Both are one-off and per person, so two travelers pay twice. Separately, a <b>free e-Arrival Card</b> is required within <b>7 days</b> of arrival, and free means free.",
+      official: {
+        label: "Cambodia e-Visa, the official Ministry of Foreign Affairs portal",
+        url: "https://www.evisa.gov.kh",
+        note: "The government's own e-visa site, and the only one that charges the official price. The total here is about $36: the $30 visa plus a $6 processing fee. The visa on arrival at the airport is $30 with no processing fee, paid in cash. We earn nothing by sending you here.",
+      },
+      expediter: false,
+      sections: [
+        {
+          h: "The online route costs more, not less",
+          icon: "usd",
+          key: {
+            fig: "$30 vs $36",
+            tag: "On arrival is cheaper",
+            text: "The visa on arrival is $30. The official e-visa is about $36, because a $6 processing fee rides on top of the same $30 visa.",
+            tone: "teal"
+          },
+          p: [
+            "Most countries price the online application at or below the on-arrival one, which is why the standard advice everywhere is to apply before you fly. <b>Cambodia inverts that.</b> The visa itself is <b>$30</b> whichever way you get it. The official portal adds a <b>$6 processing fee</b> on top, so applying online lands at <b>about $36</b>.",
+            "Six dollars a person is not a reason to reorganize a trip, and paying it buys you a printed approval and no counter queue at the end of a long flight. But it is worth knowing which way the trade runs here, because a great deal of general advice assumes the opposite, and any site telling you the e-visa is the cheaper option has it backwards."
+          ]
+        },
+        {
+          h: "What the cheaper route wants from you",
+          icon: "cash",
+          key: {
+            fig: "Clean cash",
+            tag: "Bring it with you",
+            text: "The visa on arrival is paid in US dollar notes, and the requirement is specifically for clean ones, with a passport photo.",
+            tone: "amber"
+          },
+          p: [
+            "The saving comes with conditions, and they are the kind that go wrong at a counter rather than at a desk at home. Have these ready before you land:"
+          ],
+          steps: [
+            "<b>$30 in clean US dollars.</b> The fee is cash, in US dollar notes, and clean ones. Cambodia uses the US dollar as its everyday currency, with the riel appearing mostly as change, so dollars are normal here rather than a foreign-exchange exercise.",
+            "<b>A passport photo</b>, and it is worth carrying a spare rather than being one short at the counter.",
+            "<b>A passport with space in it</b>, plus your onward travel and accommodation details."
+          ]
+        },
+        {
+          h: "How you arrive changes which route is even open",
+          icon: "plane",
+          key: {
+            tag: "Most travelers fly in",
+            text: "Our sourced answer for the visa on arrival covers the airport. Overland travel from Thailand is largely suspended, so flying is the usual route in any case.",
+            tone: "teal"
+          },
+          p: [
+            "The <b>$30 on-arrival</b> price is sourced for the <b>airport</b>. That covers most people, because overland travel from Thailand is <b>largely suspended</b> and the great majority of visitors now fly in. See the US Embassy advisory below for the current position on that border.",
+            "If you are planning to cross by land from anywhere else, treat the on-arrival route as <b>unconfirmed by us</b> rather than as available, and apply online first. We would rather send you to the portal with six dollars of processing fee than have you arrive at a post we have not checked."
+          ]
+        },
+        {
+          h: "The free e-Arrival Card, and why there is no link here",
+          icon: "alert",
+          key: {
+            tag: "Free, required, and deliberately unlinked",
+            text: "The e-Arrival Card is free and due within 7 days of arrival. We have not verified a dedicated official URL for it, so we will not name it and leave you to search.",
+            tone: "amber"
+          },
+          p: [
+            "Alongside the visa, Cambodia requires a <b>free e-Arrival Card</b> within <b>7 days</b> of arrival. It is a separate filing from the visa and it costs <b>nothing</b>.",
+            "We have not linked it, and the reason is the whole point. The rule on this site is that we never name an arrival form without handing over its real government address in the same breath, because a named form with no link sends you to a search page, and paid lookalike sites buy exactly those search terms. New, obscure and mandatory is the combination they farm.",
+            "So the honest version is this: the e-Arrival Card exists, it is <b>free</b>, and until we can source its own official portal we will point you to the <b>e-visa site above</b> and to the airport itself to complete it through the official channel. Pay nobody for it. If you are quoted a price for an e-Arrival Card, you are on the wrong site."
+          ]
+        },
+        {
+          h: "Who else will try to sell you this visa",
+          icon: "receipt",
+          key: {
+            tag: "The markup is the avoidable part",
+            text: "The $30 is unavoidable. An agent's fee on top of it is not, and the sites ranking above the government portal are agents.",
+            tone: "amber"
+          },
+          p: [
+            "The visa fee is a real cost and you will pay it. What is optional is what sits on top. Search for a Cambodia visa and much of what ranks above the official portal is a reseller, filing the same application through the same government site and charging you for the typing.",
+            "<b>We publish no figure for that markup</b>, because none is sourced for Cambodia and it varies by reseller. The asymmetry is deliberate: inventing a number for what a middleman charges would be the same fault as the middleman. What we can give you exactly is the official price, <b>$30 on arrival or about $36 online</b>, and the official address, <b>evisa.gov.kh</b>. Anything above that figure is somebody's fee, not Cambodia's. For how money works once you are through the border, see the <a href=\"/cambodia\">Cambodia money guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do US citizens need a visa for Cambodia in 2026?", a: "Yes. A tourist visa is required, valid 30 days. You can buy it on arrival at the airport for $30 in clean US dollar notes with a passport photo, or apply in advance on the official portal at evisa.gov.kh for about $36, which is the same $30 visa plus a $6 processing fee." },
+        { q: "Is the Cambodia e-visa cheaper than the visa on arrival?", a: "No, and this is the opposite of most countries. The visa is $30 either way, but the official online portal adds a $6 processing fee, so the e-visa comes to about $36. You pay the extra for a printed approval and no queue, not for a lower price." },
+        { q: "What do I need for a Cambodia visa on arrival?", a: "$30 in clean US dollar notes, a passport photo, and a passport with space in it, plus your onward travel and accommodation details. The fee is cash, and the requirement is specifically for clean notes. Our sourced figure covers the airport." },
+        { q: "Is the Cambodia e-Arrival Card free?", a: "Yes. It is free and required within 7 days of arrival, and it is separate from the visa. We do not link it here because we have not verified its dedicated official portal, and naming a form without its real address is how travelers end up on paid lookalike sites. Complete it through the official channel and pay nobody for it." }
+      ],
+      sources: {
+        links: [
+          { label: "Cambodia e-Visa, the official Ministry of Foreign Affairs portal: the tourist visa, its fee and the processing fee", url: "https://www.evisa.gov.kh", type: "gov" },
+          { label: "US Embassy in Cambodia: the current Cambodia to Thailand land border travel advisory", url: "https://kh.usembassy.gov/travel-advisory-cambodia-thailand-border/", type: "gov" }
+        ],
+        judgment: "The $30 on-arrival fee, the roughly $36 online total and the $6 processing fee inside it, the 30-day validity, the clean-cash and photo requirements and the free e-Arrival Card all come from this guide's own check against the Ministry of Foreign Affairs e-visa portal, dated 16 July 2026. They are read from the Cambodia guide's own entry fact rather than restated as a second copy, so the two cannot drift apart. Two things we deliberately do not publish: a figure for reseller markup, because none is sourced for Cambodia and inventing one would be the same fault as the reseller, and a link for the e-Arrival Card, because we have not verified its own official portal and a named form without its real address sends readers to the paid lookalikes. Our read that the six dollars is worth paying for a printed approval is judgment, not policy."
+      }
+    },
+    {
       slug: "staying-connected",
       glance: [
         { k: "Coverage", v: "Good in the cities and Siem Reap" },

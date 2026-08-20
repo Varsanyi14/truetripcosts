@@ -1,0 +1,48 @@
+# Permanent redirects for renamed URLs.
+#
+# WHY THIS FILE EXISTS. Until August 2026 the site had no redirect mechanism at all:
+# no `redirects` key in astro.config.mjs, no _redirects, and worker.js passes everything
+# outside /api/* straight to env.ASSETS.fetch with not_found_handling = "404-page". That
+# meant renaming any live slug silently 404'd a URL Google had already indexed, which on
+# a site whose growth depends on ranking is real harm rather than untidiness.
+#
+# THE STANDING RULE, from MAIN, 20 August 2026: any slug rename anywhere on this site
+# ships its 301 in the SAME commit as the rename. This file is not a one-off for the
+# entry-levies wave. It is where that rule lives from now on.
+#
+# HOW IT WORKS. Cloudflare Workers with static assets parse a plain-text `_redirects` in
+# the asset directory. Astro copies everything in public/ verbatim into dist/, which is
+# the directory wrangler.toml points [assets] at, so this file lands where Workers reads
+# it and is never served as a page itself.
+#
+# THREE THINGS THAT ARE EASY TO GET WRONG:
+#   1. THE CODE IS NOT OPTIONAL. Cloudflare defaults an omitted code to 302 (temporary),
+#      which passes no ranking to the new URL. Every line here states 301 explicitly. A
+#      302 would look like it worked and quietly discard the thing the redirect exists
+#      to protect.
+#   2. BOTH SLASH FORMS. Astro builds each page to {path}/index.html, so a reader or a
+#      backlink can arrive at either /old or /old/. Each rename therefore gets two lines.
+#   3. ORDER MATTERS. The first matching line wins, and static rules must precede any
+#      wildcard. There are no wildcards here yet; keep it that way if you can, because a
+#      wildcard over a country slug would capture spokes nobody intended.
+#
+# Redirects are NOT applied to requests worker.js serves itself. That is harmless here:
+# worker.js owns only /api/notify and /api/rates, and run_worker_first is scoped to
+# ["/api/*"], so every page request reaches the static-asset path where these apply.
+#
+# Format: [source] [destination] [code]
+
+# ---- entry-levies wave, 20 August 2026 ----
+
+# Brazil's entry spoke was the odd one out: it is an e-visa, the other three e-visa
+# countries were already slugged e-visa, and "Brazil e-visa" is the search term.
+/brazil/entry-visa   /brazil/e-visa   301
+/brazil/entry-visa/  /brazil/e-visa   301
+
+# The only slug on the site that was a lie about its own content. /mexico/entry-fees is
+# about Chichen Itza tickets and cenote admission, not border costs, so it promised entry
+# fees to anyone searching for them and delivered ruin admission. It also collided head-on
+# with the entry-cost family. Its h1 already said "What do attractions really cost in
+# Mexico?", so the slug was the part that was wrong.
+/mexico/entry-fees   /mexico/attraction-fees   301
+/mexico/entry-fees/  /mexico/attraction-fees   301

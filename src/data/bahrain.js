@@ -665,6 +665,16 @@ export default {
     text: "Bahrain's <b>VAT is 10%</b>, doubled from 5% on 1 January 2022, which makes it the <b>second highest in the Gulf</b> behind Saudi Arabia at 15% and well above the UAE and Oman at 5%. Qatar, next door, has none at all. On hotel stays that 10% sits alongside a <b>5% government levy</b>, a <b>10% service charge</b> and a flat <b>BD 3 per room per night</b> tourist tax introduced in 2024. <b>On refunds, be realistic.</b> At this check we could not confirm an operating tourist VAT refund scheme of the kind the UAE runs with staffed airport desks and a minimum spend. Budget as though the 10% is simply part of the price, and if a retailer offers you a refund route, treat it as a bonus rather than a plan. <b>One to watch:</b> the 2025-26 budget raised the possibility of a further VAT increase, with no rate or date announced.",
   },
 
+  keyFacts: [
+    // NO FIGURE, DELIBERATELY. The spoke's own judgment block says why: every amount we
+    // found was secondary and undated, while the NPRA portal publishes the live one. This
+    // fact exists to tell a reader the cost is REAL and where the current number is, which
+    // is more use than a number we cannot stand behind. Classified `unpriced` in
+    // entry-charges.js. If a primary source ever carries the fee, this becomes a normal
+    // priced keyFact and the kind promotes to `charge`.
+    { label: "Bahrain visitor visa (US citizens)", value: "Required and not free. Two routes: a visa on arrival at Bahrain International Airport, single entry, for stays of up to 14 days, or an eVisa in advance through the NPRA portal, which reaches 90 days a visit on multiple-entry versions. We publish no amount because the portal is the only current source for it", status: "enacted", effective: null, source: "https://www.evisa.gov.bh/", checked: "2026-08-02" },
+  ],
+
   traps: [
     "<b>Reading 4.500 as four fifty.</b> The dinar carries three decimals because it splits into 1,000 fils. That price is four and a half dinars, about twelve dollars. In a souq, over a few purchases, this is the mistake that actually costs you money.",
     '<b>"Would you like to pay in dollars?" Always say no.</b> The dinar is pegged to the dollar, so dynamic currency conversion adds a padded rate of several percent for nothing at all. Choose dinars on every terminal and every ATM screen.',

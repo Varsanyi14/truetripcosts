@@ -665,6 +665,18 @@ export default {
     text: "Oman's <b>VAT is 5%</b>, introduced in April 2021 and one of the lowest rates anywhere. On top of it, hotels and tourist-area restaurants collect a <b>4% tourism tax</b> under the Tourism Law, and hotel stays also carry a <b>municipality charge</b>, which is why a room bill lands around 14% above the quoted rate before any service charge. <b>On refunds, be realistic.</b> Oman's VAT framework provides for refunds in various circumstances, but at this check we could not confirm an operating tourist refund scheme of the kind the UAE runs with Planet, with staffed airport desks and a minimum spend. Budget as though you cannot reclaim the 5%, and if a retailer offers you a refund route, treat it as a bonus rather than a plan.",
   },
 
+  keyFacts: [
+    // A genuine sourced zero, and it covers most trips here. Named rather than left as an
+    // empty field, so it reads as "we checked and it is free" and not as missing data.
+    // The conditions are part of the fact: the waiver is refusable at the border without
+    // them, which is not the same as unconditional visa-free entry.
+    { label: "Visa-free stay for US citizens (14 days or less)", value: "No visa and no fee for a stay of up to 14 days, conditional on a passport valid six months, a confirmed hotel booking, health insurance and a return ticket. The 14 days cannot be extended or converted at the border", status: "enacted", effective: null, source: "https://www.fm.gov.om/en/visitors/entry-visas/", checked: "2026-08-02" },
+    // NO FIGURE, DELIBERATELY, and CONDITIONAL on trip length. The label carries the
+    // condition so this can never be read as everyone's cost. See the `unpriced` note in
+    // entry-charges.js for why no amount is printed.
+    { label: "Oman eVisa (stays over 14 days)", value: "Required and not free once a trip runs past 14 days, applied for in advance through the Royal Oman Police portal. Most US trips here never meet it. We publish no amount because the figures we found were secondary and of varying dates, and the ROP portal is the only current source", status: "enacted", effective: null, source: "https://www.fm.gov.om/en/visitors/entry-visas/", checked: "2026-08-02" },
+  ],
+
   traps: [
     '<b>"Would you like to pay in dollars?" Always say no.</b> The rial is pegged to the dollar, so dynamic currency conversion adds a padded rate of several percent for absolutely nothing. Choose rials on every terminal and every ATM screen, and let your own bank convert.',
     "<b>Reading 3.500 as three fifty.</b> The rial has three decimal places because it splits into 1,000 baisa. That price is three and a half rials, about nine dollars. On a restaurant bill or a souk tag, this is the mistake that stings.",

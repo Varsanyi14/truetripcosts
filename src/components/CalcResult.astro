@@ -72,8 +72,10 @@ const exGroups = [
   { key: 'dodge', label: "What we'll help you dodge", cls: 'cs-half-keep', items: exDodge },
 ].filter(g => g.items.length > 0);
 // Whether Getting there holds a real entry charge, so the fees half can cross-reference it
-// instead of printing the same charge twice.
-const hasEntryCharge = !!(L.entryCharges && L.entryCharges.length);
+// instead of printing the same charge twice. Unpriced counts: it is a real per-person entry
+// cost sitting in that section, and the cross-reference is about WHERE it lives, not about
+// whether it carries a number.
+const hasEntryCharge = !!((L.entryCharges && L.entryCharges.length) || (L.entryUnpriced && L.entryUnpriced.length));
 // The region-compare link carries NO figures, on purpose: a number on a link is a claim the
 // reader cannot check until they have clicked it.
 const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
@@ -172,6 +174,18 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
             <span class="cs-line-u">one-off, per person</span>
             <span class="cs-line-d">{e.value}</span>
             {e.source && <a class="cs-src" href={e.source} target="_blank" rel="noopener">official source</a>}
+          </div>
+        ))}
+
+        {/* A2. A REAL PAID CHARGE WE WILL NOT PRICE. It carries the charge styling, not the
+            zero styling, because it IS a cost: styling it like a named zero would tell the
+            reader the opposite of the truth. The unit line says what is missing and why. */}
+        {L.entryUnpriced && L.entryUnpriced.map(e => (
+          <div class="cs-line cs-line-charge">
+            <span class="cs-line-h">{e.label}</span>
+            <span class="cs-line-u">a real cost, no figure we can source</span>
+            <span class="cs-line-d">{e.value}</span>
+            {e.source && <a class="cs-src" href={e.source} target="_blank" rel="noopener">read the current fee</a>}
           </div>
         ))}
 
@@ -666,7 +680,12 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
      Its own block rather than a fifth collapsible row, because the two figures and the bar
      have to be visible without a click: a measure a reader has to open is not a measure at a
      glance. The list underneath is the part that collapses. */
-  .ex{border:1px solid rgba(14,122,95,.3);border-radius:12px;background:var(--card);padding:15px 15px 13px;border-left:3px solid var(--teal)}
+  /* RIDE-ALONG FIX A. #costs-nobody-tells-you-about is a real anchor target and was the one
+     id inside the calculator with no jump offset, so a jump landed its heading partly behind
+     the 58px sticky nav. 74px is the site-wide figure, the same one check-jumplist.mjs
+     enforces on every listed target and the same one #true-cost, #calc and the rest carry.
+     Reused rather than re-chosen: a second offset value is how these drift apart. */
+  .ex{border:1px solid rgba(14,122,95,.3);border-radius:12px;background:var(--card);padding:15px 15px 13px;border-left:3px solid var(--teal);scroll-margin-top:74px}
   .ex-top{display:flex;align-items:center;gap:11px}
   .ex-ic{flex:none;width:29px;height:29px;border-radius:999px;background:#fff;border:1px solid rgba(14,122,95,.2);color:var(--teal-deep);display:flex;align-items:center;justify-content:center}
   .ex-h{margin:0;font-size:15.5px;font-weight:600;color:var(--teal-deep);line-height:1.3}

@@ -772,6 +772,14 @@ export default {
     text: `Saudi VAT is <b>${F.vat}</b>, introduced at 5% in 2018 and tripled in July 2020. That is the highest in the Gulf, against 5% in the UAE and Oman, 10% in Bahrain and nothing at all in Qatar. <b>But it is reclaimable, and the scheme actually works.</b> ZATCA launched a tourist VAT refund on <b>${F.refundFrom}</b>, and it now runs at <b>more than 1,400 approved retail outlets</b>. The rules, in order: you must be a <b>non-resident aged 18 or over</b>; you must spend more than <b>${F.refundMin}</b>, about 133 dollars, <b>at a single participating retailer</b>, and you cannot combine receipts from different stores, though up to three receipts from the same store on the same day can be added together; the goods must be <b>for personal use, unused, and exported within 90 days</b>; and you must ask for the <b>refund form at the till</b>, presenting your passport, then claim at the airport before you leave. Look for <b>Tax Free</b> or <b>VAT Refund Available</b> signage, because not every store participates. <b>Worth planning for if you are shopping seriously</b>, because 15% back on a significant purchase is real money, and it is the best refund proposition in the region.`,
   },
 
+  keyFacts: [
+    // NO FIGURE, DELIBERATELY. See the Bahrain note and the `unpriced` kind in
+    // entry-charges.js. The spoke's judgment block is explicit that current sources quote
+    // different amounts for the online and the on-arrival routes, so printing one would
+    // mean picking a side of a disagreement we cannot settle.
+    { label: "Saudi tourist eVisa (US citizens)", value: "Required and not free. A one-year, multiple-entry tourist eVisa from the official Visit Saudi portal, with mandatory medical insurance bundled into the fee, and a visa on arrival also available to US passport holders. We publish no amount because sources quote different figures for the two routes and the portal is the only current one", status: "enacted", effective: null, source: "https://visa.visitsaudi.com/", checked: "2026-08-02" },
+  ],
+
   traps: [
     "<b>Budgeting without the 15%.</b> It is the highest rate in the Gulf and it lands on almost everything, so a menu or shelf price is not the price. If you have just come from Qatar, where there is no VAT at all, the difference is jarring.",
     "<b>Leaving the VAT refund until the airport.</b> The refund starts at the till, not at departures: you need the form issued by the retailer with your passport at the time of purchase. No form, no refund, however large the receipt.",

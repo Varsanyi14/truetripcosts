@@ -13,7 +13,7 @@ export const topicIcon = {
   connectivity: 'phoneok',
   health: 'health',
   driving: 'wheel',
-  "entry-fees": 'ticket',
+  attractions: 'ticket',
   seasons: 'calendar',
   "all-inclusive": 'cocktail',
   scams: 'alert',

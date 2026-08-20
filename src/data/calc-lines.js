@@ -26,7 +26,7 @@
 //   Departure tax is a TRAP, not a line: it is inside the airfare, so pricing it would
 //     double-count against the flight the traveler already entered.
 
-import { entryChargesFor, isBillable, isNamedZero } from './entry-charges.js';
+import { entryChargesFor, isBillable, isNamedZero, isUnpriced } from './entry-charges.js';
 import { seasons } from './seasons.js';
 import { tipping as tippingRows } from './tipping.js';
 import { isSchengen, borderStatus } from './schengen.js';
@@ -125,6 +125,19 @@ export function calcLinesFor(c) {
     out.entryProposed = proposed.map(e => ({
       label: e.label,
       value: sentence(e.value, 'It adds nothing to the total until it is actually collected.'),
+    }));
+  }
+  // A real paid charge with no sourceable figure. It is NOT in the total above, and the
+  // reason is the opposite of a zero's: there is nothing to add because we cannot price
+  // it, not because there is nothing to pay. Saying that out loud is the whole point of
+  // the kind, so the sentence appended here names the gap rather than hiding it.
+  const unpriced = entry.filter(isUnpriced);
+  if (unpriced.length) {
+    out.entryUnpriced = unpriced.map(e => ({
+      label: e.label,
+      value: sentence(e.value, 'Not in the total above, because we will not publish a figure we cannot source. It is a real cost, so budget for it.'),
+      source: e.source,
+      checked: e.checked,
     }));
   }
   // A condition of entry with no fee we can source. Named as a requirement, never priced.

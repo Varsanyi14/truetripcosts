@@ -27,7 +27,26 @@
 //                insurance decree). Named as a requirement, never priced.
 //   exemption    A documented route to paying nothing (China's transit rule).
 //   proposed     Announced but not being collected. A watch-flag zero, NOT a charge.
-//                Thailand's 300-baht fee has sat here for years.
+//                Thailand's air arrival fee has sat here for years.
+//   unpriced     A real, mandatory, PAID entry charge with no figure this desk can source
+//                to a primary authority. Named as a real cost, never priced, never
+//                billable. Bahrain and Saudi Arabia both require a paid visa and both
+//                spokes deliberately publish no fee, because every amount found was
+//                secondary and undated while the government portal carries the live one.
+//
+//                WHY THIS KIND EXISTS, and it is not a TODO. A uniform family of entry
+//                pages creates exactly one pressure: to go and find a number for Bahrain
+//                from a secondary site, so the page looks complete. That is the thing
+//                those pages already refuse to do. `unpriced` gives the refusal somewhere
+//                to live in the data, so it reads as a decision rather than an omission.
+//                Filling one in later is a promotion to `charge` once a primary source
+//                carries the figure, not a correction of a mistake.
+//
+//                THE RAIL ON IT: an unpriced charge renders as a NAMED REAL COST and
+//                says where the live number is ("a paid visa is required; the fee is set
+//                on the NPRA portal"). Never a zero, never a vague "fees may apply". The
+//                reader learns there IS a cost and where to read it.
+
 //
 // UNIT DISCIPLINE: everything in this file is ONE-OFF PER PERSON. It multiplies by
 // travelers and never by nights. That is the whole reason entry charges are kept apart
@@ -99,7 +118,29 @@ export const entryCharges = {
   ],
 
   // ----- proposed: a watch-flag zero, never a charge -----
-  thailand: [{ label: '300-baht air arrival fee', kind: 'proposed' }],
+  // The label tracks the guide's keyFact EXACTLY. It was '300-baht air arrival fee' until
+  // the guide renamed it to 'Air arrival fee' when the proposal moved to 450 baht in
+  // August 2026. The two strings stopped matching, the lookup went quiet, and the
+  // watch-flag rendered nowhere for weeks. That failure is safe by design but it is still
+  // a failure, which is why scripts/check-entry-costs.mjs now asserts every indexed label
+  // resolves. Keeping the amount OUT of the label is what stops this recurring.
+  thailand: [{ label: 'Air arrival fee', kind: 'proposed' }],
+
+  // ----- unpriced: a real paid charge with no sourceable figure -----
+  // All three keyFacts carry the requirement, the route and the portal, and no amount.
+  // That is deliberate on every one of them: see the kind's note at the top of this file.
+  bahrain: [{ label: 'Bahrain visitor visa (US citizens)', kind: 'unpriced' }],
+  'saudi-arabia': [{ label: 'Saudi tourist eVisa (US citizens)', kind: 'unpriced' }],
+
+  // Oman is the one that does not fit a single kind cleanly. The 14-day exemption is a
+  // genuine sourced zero, and the eVisa beyond it is real, paid and unpriced. It is
+  // classified `unpriced` per MAIN's ruling, and the CONDITIONALITY is carried in the
+  // label and the keyFact's own wording rather than in the kind, so no reader is told
+  // that every Oman trip costs money. Flagged as a taxonomy edge.
+  oman: [
+    { label: 'Visa-free stay for US citizens (14 days or less)', kind: 'zero' },
+    { label: 'Oman eVisa (stays over 14 days)', kind: 'unpriced' },
+  ],
 };
 
 // Reads a country's own keyFacts and returns only the entry/border ones, each carrying the
@@ -130,8 +171,17 @@ export function entryChargesFor(country) {
 }
 
 // Just the ones that are genuinely a cost to a normal US trip. Deliberately excludes
-// conditional, zero, requirement, exemption and proposed.
+// conditional, zero, requirement, exemption, proposed and unpriced.
+//
+// UNPRICED IS EXCLUDED ON PURPOSE, and the reason is worth stating: it is a real cost,
+// unlike a zero. It is out of the total because there is no figure to add, not because
+// there is nothing to pay. A consumer that wants "what does entry cost" gets a short
+// total and a named unpriced line beside it, never a total that quietly swallowed a
+// charge it could not price.
 export const isBillable = (row) => row.kind === 'charge';
 
 // The named zeros, for the "money you keep" reading. An explicit sourced zero only.
 export const isNamedZero = (row) => row.kind === 'zero';
+
+// A real paid charge with no sourceable figure. Named as a cost, never priced.
+export const isUnpriced = (row) => row.kind === 'unpriced';

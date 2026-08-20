@@ -32,7 +32,7 @@
 //   timing  When the country is dear and when it is cheap, as categorical tiers. No
 //           percentages, ever: seasons.js holds no figures on purpose.
 
-import { entryChargesFor, isBillable, isNamedZero } from './entry-charges.js';
+import { entryChargesFor, isBillable, isNamedZero, isUnpriced } from './entry-charges.js';
 import { arrivalFormFor } from './arrival-forms.js';
 import { seasons } from './seasons.js';
 import { tipping as tippingRows } from './tipping.js';
@@ -107,6 +107,18 @@ function feeRows(c) {
     rows.push({
       title: 'More than one charge to get in',
       detail: entry.map(e => e.label).join(' and ') + ', each one-off and per person, and they stack.',
+    });
+  }
+
+  // A real paid charge we cannot price. It belongs in the exposure list precisely BECAUSE
+  // there is no figure: a reader who sees no border line at all assumes the border is
+  // free, and here it is not. The row names the cost and points at the portal that carries
+  // the number. It never appears in the "money you keep" half, which is the half for zeros.
+  const unpriced = entryChargesFor(c).filter(isUnpriced);
+  for (const u of unpriced) {
+    rows.push({
+      title: 'A charge to get in that nobody publishes a price for',
+      detail: sentence(u.value, 'One-off, per person.'),
     });
   }
 

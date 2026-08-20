@@ -71,6 +71,16 @@ export const arrivalForms = [
     via: 'guide',
   },
   {
+    slug: 'jamaica',
+    country: 'Jamaica',
+    name: 'C5 form',
+    official: 'https://enterjamaica.gov.jm',
+    free: true,
+    when: 'Before you fly',
+    note: "Jamaica's combined immigration and customs declaration, filed online before arrival for a QR code to show at the airport. Free on the official government site, and separate from any visa.",
+    via: 'guide',
+  },
+  {
     slug: 'philippines',
     country: 'Philippines',
     name: 'eTravel',
