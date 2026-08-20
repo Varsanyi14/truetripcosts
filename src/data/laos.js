@@ -567,6 +567,77 @@ export default {
         ],
         judgment: "Checked Aug 2026. Laos inclusion on AT&T's covered-destination list was verified against AT&T's own list on this check, since an uncovered country would need a pay-per-use warning instead of a daily rate. The coverage picture is the desk's read from operator footprints and consistent traveler accounts rather than one official table, and the honest summary is that the towns and Route 13 are fine while the north and the river routes are not. No data plan changes that, which is why this page spends as much space on offline habits as on price."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "You pay", v: "Out of pocket, deposits normal" },
+        { k: "Serious care", v: "Thailand, not Laos" },
+        { k: "The catch", v: "The border bridge shuts at night" },
+        { k: "Real risk", v: "Evacuation, and delay" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Laos: the border is the real story",
+      description: "Serious cases go to Thailand, and hospitals both sides want large deposits first. The Friendship Bridge closes overnight, which can cost hours. Checked 2026.",
+      h1: "What does getting sick in Laos cost?",
+      lede: "Laos has the starkest medical geography of anywhere we cover. Serious care is not in the country, it is across the river in Thailand, and the honest planning question is not what a doctor charges but how you get across and how fast.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "The State Department is unusually direct about Laos: <b>serious medical cases frequently require medical evacuation to private hospitals in Thailand</b>, by ground or air ambulance, and <b>hospitals in both Thailand and Laos require large deposits before treating patients</b>. Medical care is <b>limited, especially in rural areas</b>, and first responders may not reach remote parts of the country at all. There is one detail worth knowing before you need it: the <b>Friendship Bridge from Vientiane to Nong Khai closes from 10pm to 6am</b>, and while ambulances can usually cross after hours, <b>arranging the opening can take several hours even in a severe emergency</b>. The State Department does not pay medical bills. This is a place where <b>evacuation cover</b> is the point of the policy.",
+      insurance: true,
+      careFirst: "If something looks serious, start moving toward care first and settle the money afterwards.",
+      sections: [
+        {
+          h: "The care you need is probably in Thailand",
+          icon: "plane",
+          key: { tag: "Across the river", text: "The State Department says serious cases frequently require evacuation to private hospitals in Thailand, by ground or air ambulance, and that hospitals both sides want large deposits first.", tone: "amber" },
+          p: [
+            "This is the fact that shapes everything else. <b>Serious medical cases frequently require medical evacuation to private hospitals in Thailand</b>, by ground ambulance or air ambulance. Care in Laos is <b>limited, especially in rural areas</b>, and the State Department notes that in remote parts of the country, emergency response and appropriate treatment are simply not available locally.",
+            "Two things follow. First, <b>hospitals in Thailand and Laos require large deposits prior to treating patients</b>, so the money question arrives before the treatment does. Second, the useful thing your policy buys here is not a discount on a consultation, it is <b>somebody who can arrange a transfer at 3am and guarantee payment to a hospital in another country</b>. <b>If something looks serious, start moving toward care first and settle the money afterwards.</b>"
+          ]
+        },
+        {
+          h: "The bridge closes at night",
+          icon: "alert",
+          key: { tag: "10pm to 6am", text: "The Friendship Bridge to Nong Khai closes overnight. Ambulances can usually cross, but arranging the opening can take several hours, even in a severe emergency.", tone: "amber" },
+          p: [
+            "This is the detail almost nobody knows and it is the one worth carrying. <b>All land border crossings between Laos and its neighbours close during the night</b>, and the <b>Friendship Bridge that connects Vientiane to Nong Khai in Thailand closes from 10pm to 6am daily</b>. It is generally possible for ambulances to cross after hours, but the State Department warns that <b>it sometimes takes several hours to arrange for the crossing to be opened, even in cases of severe medical emergencies</b>.",
+            "We are stating this flatly rather than dramatically, because the useful response is practical rather than fearful: if you are in Vientiane, know that a night-time emergency has a <b>logistical delay built into it</b> that daytime does not, and that an insurer's assistance line with local contacts is the thing most likely to shorten it. It is also a reason to take a serious symptom seriously early in the evening rather than waiting to see how it goes."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We found no Lao routine-care price list we would stand behind, so we published none. The structure is what you plan around here anyway.", tone: "teal" },
+          p: [
+            "We have <b>not sourced routine-care prices for Laos</b> that we would put our name to, so this page carries none. On a medical page, an invented figure is not a small sin: it is a number a sick traveler might make a decision on. We would rather the page be short and true.",
+            "The structure is the useful part, and it is well documented: <b>you pay</b>, <b>deposits come before treatment on both sides of the border</b>, <b>serious care means Thailand</b>, and <b>the crossing has hours in it at night</b>. Those four facts plan a trip better than a consultation price would."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Check the evac limit", text: "The number that decides how this goes is your policy's medical evacuation limit, not its medical limit. Check it before you fly, and keep every receipt.", tone: "teal" },
+          p: [
+            "Before you go, check one number: the <b>medical evacuation limit</b> on your policy. In Laos that is the figure doing the work, and it is the one people never look at. Check too whether your insurer <b>guarantees payment to the hospital</b> or reimburses you later, because a deposit demand at a Thai private hospital is a different experience depending on the answer.",
+            "On the ground, keep <b>reachable cash</b>, keep <b>every receipt and medical report</b>, and call the assistance line early. For how to hold and move money in Laos, see the <a href='/laos/cash-or-card'>Laos cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I need travel insurance for Laos?", a: "This is one of the clearest cases we cover. The State Department strongly recommends supplemental insurance to cover medical evacuation, because serious cases frequently require transfer to private hospitals in Thailand and hospitals on both sides require large deposits before treating patients." },
+        { q: "Can I get serious medical treatment in Laos?", a: "Often not locally. Medical care is limited, especially in rural areas, and serious cases are frequently evacuated to private hospitals in Thailand. In remote areas the State Department notes that emergency response and appropriate treatment are not available in-country." },
+        { q: "What is the problem with the Friendship Bridge at night?", a: "It closes from 10pm to 6am. Ambulances can usually cross after hours, but arranging for the crossing to be opened sometimes takes several hours, even in cases of severe medical emergencies. It is a real delay to plan around rather than a reason to panic." },
+        { q: "Will hospitals in Laos or Thailand bill my insurer directly?", a: "Do not assume so. Hospitals in Thailand and Laos require large deposits prior to treating patients. Whether your insurer guarantees payment to the hospital or reimburses you afterwards is worth confirming before you travel, because it changes what happens at the admissions desk." },
+        { q: "How much does a doctor cost in Laos?", a: "We have not sourced a price list for Laos that we would stand behind, so we have not published one. You pay out of pocket, and deposits are normal. The cost that actually shapes a trip here is evacuation, not consultation." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Laos country information, on evacuation to Thailand, large hospital deposits and the Friendship Bridge night closure", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Laos.html", type: "gov" }
+        ],
+        judgment: "No local price figures appear on this page, because we could not source Lao routine-care prices we would stand behind. Every claim here, including the bridge closure and the deposit practice, comes from the State Department's Laos country information page. Border and hospital practice can change, and an individual case can differ, so confirm with your insurer's assistance line at the time. Checked August 2026."
+      }
     }
   ]
 };

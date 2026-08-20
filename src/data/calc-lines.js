@@ -61,8 +61,17 @@ const SERVICE_CHARGE = {
 // What each insurance tier means (A2). A named tier that moves no total, ever: the calculator
 // prices no policy, because a premium depends on age, cover and trip length, none of which
 // this page asks for.
+// The `low` note deliberately makes NO claim about what care costs. It used to read
+// "Good public healthcare and low medical costs for visitors", which is defensible for
+// Czechia or Poland and false for Switzerland, Norway, Denmark, Sweden, Iceland, Japan,
+// Canada, Ireland and the United Kingdom, all of which sit in this tier and all of which
+// bill a visitor at full unsubsidised rates. The dial measures HOW MUCH COVER MATTERS,
+// which is a judgment about quality and reachability of care. It was overloaded with a
+// COST claim it should never have carried, and the fix is to stop it carrying one rather
+// than to re-triage the field. See CountryBriefing's own `low` dial line, which has always
+// talked only about hospitals being good and easy to reach: that is the honest reading.
 const INSURANCE = {
-  low: { label: 'Lower priority', note: 'Good public healthcare and low medical costs for visitors, so cover is about cancellations and belongings more than hospital bills.' },
+  low: { label: 'Lower priority', note: 'Care is well run and easy to reach, and for many trips the bigger risks are cancellations and belongings, but a serious emergency is still chargeable to visitors, so do not read this as no cover needed.' },
   medium: { label: 'Worth carrying', note: 'Treatment as a visitor is chargeable and can run to real money, so medical cover earns its place.' },
   high: { label: 'Strongly advised', note: 'Medical costs for visitors are high or care is far from major towns, so cover and evacuation matter here.' },
 };

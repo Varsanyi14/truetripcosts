@@ -592,6 +592,78 @@ export default {
         ],
         judgment: "Checked Aug 2026. Cambodia's inclusion on AT&T's covered-destination list was verified directly against AT&T's own list on this check, because it changes the advice completely: in an uncovered country the honest line is a pay-per-use warning rather than a daily rate. Local pack contents move with promotions and the pricing is low enough that the exact figure rarely changes the decision, so this page says a few dollars rather than inventing precision. We earn on eSIM links and nothing on a Smart or Cellcard SIM."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "You pay", v: "Out of pocket, usually cash" },
+        { k: "Public hospitals", v: "Not free to visitors" },
+        { k: "Serious care", v: "Bangkok or Singapore" },
+        { k: "Real risk", v: "The evacuation, not the clinic" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Cambodia: what it costs a visitor",
+      description: "Care is not free here, even in a public hospital, and payment comes before treatment. Clinics stabilise you; serious care means Bangkok. Checked 2026.",
+      h1: "What does getting sick in Cambodia cost?",
+      lede: "The everyday side is manageable: Phnom Penh and Siem Reap have clinics used to foreign patients, and you walk in and pay. The part worth planning for is that Cambodia stabilises serious cases rather than treating them, so the real bill is the flight to Bangkok.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Medical care is <b>not free in Cambodia</b>, and that includes public hospitals: as a visitor you are charged either way. Both <b>public and private hospitals and ambulance services want payment, or proof of insurance, before they treat or admit you</b>, and most providers <b>take cash only</b>. The State Department is blunt about the consequences: not paying can get you <b>discharged</b>, and can <b>bar you from future travel to Cambodia</b>. A few internationally run clinics in <b>Phnom Penh and Siem Reap</b> handle basic care and stabilisation. For anything beyond that, the route is <b>Bangkok or Singapore</b>. That flight is the number that matters, and it is what <b>travel medical cover</b> is actually for.",
+      insurance: true,
+      careFirst: "If something looks serious, get to care first and deal with the money afterwards.",
+      sections: [
+        {
+          h: "You pay, and you pay before treatment",
+          icon: "cash",
+          key: { tag: "Cash first", text: "Public and private hospitals and ambulances all want payment or proof of insurance before they treat you. Most providers take cash only, and card is not reliable.", tone: "amber" },
+          p: [
+            "Start with the thing people get wrong: a public hospital is <b>not free to you</b>. The State Department states it plainly, that medical care is not free in Cambodia and you will incur expenses even if you are treated in a public facility. Both <b>public and private hospitals, and ambulance services, require payment or proof of local insurance before providing treatment or admitting a patient</b>. <b>Most care providers only accept cash</b>, and credit card is not always available.",
+            "There is a real consequence attached, which is unusual enough to state: <b>lack of payment could result in being discharged</b>, and <b>lack of payment may bar future travel to Cambodia</b>. So the practical planning here is not clever, it is boring. Have cash you can reach, know your policy number, and call your insurer's assistance line early rather than late, because a direct-billing arrangement is what turns a deposit demand into a phone call. <b>If something looks serious, get to care first and deal with the money afterwards.</b>"
+          ]
+        },
+        {
+          h: "Cambodia stabilises. Bangkok treats",
+          icon: "plane",
+          key: { tag: "The real cost", text: "A few international clinics in Phnom Penh and Siem Reap manage basic care and stabilisation. For anything more, the CDC points travelers to Bangkok or Singapore.", tone: "amber" },
+          p: [
+            "This is the shape of the risk, and it is the whole reason this page exists. The CDC's guidance for Cambodia is that a few internationally run clinics and hospitals in <b>Siem Reap and Phnom Penh</b> can provide <b>basic medical care and stabilisation</b>, and that for anything other than basic care and stabilisation, travelers should seek medical care in <b>Bangkok or Singapore</b>. Outside those two cities the picture thins quickly, and the State Department notes that first responders cannot reach remote areas.",
+            "So the expensive event in Cambodia is rarely a ward bill. It is <b>an air ambulance and a receiving hospital in another country</b>, arranged at short notice, for a patient who cannot fly commercially. That is the specific gap a travel medical policy is built to absorb, and it is why the evacuation limit on a policy matters more here than the medical limit."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We have not found a Cambodian clinic price list we would stand behind, so we have published none. A made-up number on a medical page is worse than no number.", tone: "teal" },
+          p: [
+            "We would rather tell you this than pad the page. We have <b>not sourced a routine-care price list for Cambodia</b> that we would put our name to, so we have not printed one. Recalling a plausible figure and dressing it as research is exactly the failure this site exists to avoid, and on a medical page a wrong number is not a credibility problem, it is advice somebody might act on.",
+            "What we can tell you honestly is the structure, and the structure is what you actually plan around: <b>you pay</b>, <b>you pay up front</b>, <b>cash works and card may not</b>, and <b>the serious scenario is a flight</b>. If you want a figure before you travel, ask your insurer what evacuation limit your policy carries, which is the number that decides how this goes."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "tag",
+          key: { tag: "Plan for the flight", text: "Keep reachable cash for the small stuff, keep every receipt, and treat the evacuation limit on your policy as the number that matters here.", tone: "teal" },
+          p: [
+            "Practically: carry <b>reachable cash</b>, because the clinic that will see you today may not take your card. Keep <b>every receipt, prescription and invoice</b>, since travel policies here work by reimbursement rather than by billing the hospital. And <b>call the assistance line early</b>, because that is what arranges payment and, if it comes to it, the aircraft.",
+            "The honest summary is that Cambodia is a cheap country where the medical downside is not cheap, and the two facts are unrelated. For getting hold of cash and knowing where cards work, see the <a href='/cambodia/cash-or-card'>Cambodia cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare free for tourists in Cambodia?", a: "No. Medical care is not free in Cambodia and you will incur expenses even if you are treated in a public healthcare facility. Both public and private hospitals, and ambulance services, require payment or proof of local insurance before they will treat or admit you." },
+        { q: "Do Cambodian hospitals take credit cards?", a: "Not reliably. Most care providers in Cambodia only accept cash payments and credit card payment is not always available. Carry cash you can reach quickly, and contact your insurer's assistance line early if a deposit is being asked for." },
+        { q: "What happens if I cannot pay a hospital bill in Cambodia?", a: "The State Department warns that lack of payment could result in being discharged from the hospital, and that it may also bar future travel to Cambodia. This is the scenario travel medical cover is designed to prevent." },
+        { q: "Do I need travel insurance for Cambodia?", a: "The case for it here is the evacuation rather than the doctor visit. Clinics in Phnom Penh and Siem Reap handle basic care and stabilisation, and the CDC advises seeking care in Bangkok or Singapore for anything beyond that. A flight and a receiving hospital abroad is the bill a policy is built to absorb." },
+        { q: "How much does a doctor cost in Cambodia?", a: "We have not sourced a price list for Cambodia that we would stand behind, so we have not published one. What we can say is that you pay out of pocket, usually in cash, and usually before treatment. Confirm the cost at the point of care." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Cambodia country information, including the health section on payment before treatment and cash-only providers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Cambodia.html", type: "gov" },
+          { label: "CDC Yellow Book: Cambodia, on stabilisation locally and seeking care in Bangkok or Singapore", url: "https://www.cdc.gov/yellow-book/hcp/asia/cambodia.html", type: "gov" }
+        ],
+        judgment: "This page deliberately carries no local price figures. We could not source a Cambodian routine-care price list we would stand behind, so we have published the structure instead: who pays, when, in what form, and what the serious scenario actually is. Every factual claim here traces to the State Department country information page or the CDC Yellow Book. Costs and hospital practice vary by facility and by case, so confirm at the point of care. Checked August 2026."
+      }
     }
   ]
 };

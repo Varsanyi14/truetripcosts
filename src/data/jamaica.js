@@ -587,6 +587,85 @@ export default {
         ],
         judgment: "Checked Aug 2026. For the most common Jamaican trip, a north-coast all-inclusive, the honest answer is that resort wifi is enough and we earn nothing saying so. Where we do suggest buying, the reasoning is inverted from our Asian pages: Caribbean prepaid is expensive enough that the eSIM can be the better value, so this page says compare rather than asserting a winner. The inland coverage read is the desk's from operator footprints and traveler accounts."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "You pay", v: "Cash, often before treatment" },
+        { k: "Where care is", v: "Kingston and Montego Bay" },
+        { k: "Serious case", v: "$15,000 to $20,000 or more" },
+        { k: "Real risk", v: "The flight to Florida" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Jamaica: the $15,000 number",
+      description: "The US Embassy puts hospitalisation or evacuation to the United States at 15,000 to 20,000 dollars or more, and private doctors often want cash first. Checked 2026.",
+      h1: "What does getting sick in Jamaica cost?",
+      lede: "Jamaica is close to home, which makes people relax about this, and the closeness is exactly what the number is built on. The US Embassy in Kingston publishes a figure for the serious case, and it is the most concrete thing on this page.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Two facts do the work here, both from the <b>US Embassy in Kingston</b>. First, <b>private doctors and hospitals often require cash payment before providing services, even in emergency cases</b>. Second, <b>serious medical problems requiring hospitalisation or medical evacuation to the United States can cost 15,000 to 20,000 dollars or more</b>. Care itself is concentrated: <b>comprehensive but basic emergency services are only in Kingston and Montego Bay</b>, with smaller public hospitals in each parish, and <b>prescription drugs, emergency care and ambulances are limited in outlying parishes</b>. If you are at a resort on the north coast or in the hills, distance is part of your risk.",
+      insurance: true,
+      careFirst: "If it looks serious, get moving toward Kingston or Montego Bay first and settle the money afterwards.",
+      // One officially published fact, in every shape it takes on the page. The US Embassy
+      // in Kingston states it; sources.links[0] is that page. No routine-care price appears
+      // on this spoke, which is why jamaica is still in PRICE_EXEMPT.
+      sourcedFigures: [
+        { fact: "US Embassy Kingston: serious problems requiring hospitalisation or medical evacuation to the United States can cost 15,000 to 20,000 dollars or more",
+          kind: "evacuation", src: 0,
+          forms: ["15,000 to 20,000 dollars", "$15,000 to $20,000", "$15-20k+"] }
+      ],
+      sections: [
+        {
+          h: "Cash, and often before treatment",
+          icon: "cash",
+          key: { tag: "Even in emergencies", text: "The US Embassy states that private doctors and hospitals in Jamaica often require cash payment prior to providing services, even in emergency cases.", tone: "amber" },
+          p: [
+            "The US Embassy in Kingston puts it without hedging: <b>private doctors and hospitals in Jamaica often require cash payment prior to providing services, even in emergency cases</b>. That is a sentence worth sitting with, because it describes a moment where the money question arrives before the medical one, and it is not the moment to be discovering how your policy works.",
+            "The practical answer is unglamorous. Know your <b>policy number and assistance line</b> before you travel, and call it early, because a guarantee of payment from an insurer is what changes that conversation. Keep <b>reachable funds</b> as a fallback. <b>If it looks serious, get moving toward Kingston or Montego Bay first and settle the money afterwards.</b>"
+          ]
+        },
+        {
+          h: "The 15,000 dollar number",
+          icon: "plane",
+          key: { fig: "$15-20k+", tag: "Embassy figure", text: "The US Embassy in Kingston states that serious problems requiring hospitalisation or medical evacuation to the United States can cost 15,000 to 20,000 dollars or more.", tone: "amber" },
+          p: [
+            "This is the only hard figure on this page, and it is here because an official source publishes it. The US Embassy in Kingston states that <b>serious medical problems requiring hospitalisation and, or, medical evacuation to the United States can cost 15,000 to 20,000 dollars or more</b>. Note the <b>or more</b>: it is a floor for a common case, not a ceiling.",
+            "We are giving it to you straight rather than dramatising it, because the honest framing is that this is a <b>survivable number if you are covered and a trip-ending one if you are not</b>. It is also, relative to an evacuation from Asia or Africa, on the cheaper end, precisely because Florida is close. Proximity is doing you a favour here."
+          ]
+        },
+        {
+          h: "Where the care actually is",
+          icon: "alert",
+          key: { tag: "Two cities", text: "Emergency services are concentrated in Kingston and Montego Bay. Prescription drugs, emergency care and ambulance availability are limited in outlying parishes.", tone: "amber" },
+          p: [
+            "The Embassy describes <b>comprehensive but basic emergency medical services located only in Kingston and Montego Bay</b>, with smaller public hospitals in each parish. Beyond those two centres, the <b>availability of prescription drugs, emergency medical care and ambulance services is limited</b>, and ambulance service varies both in quality of care and in whether a vehicle is available at all in remote parts of the country.",
+            "For a lot of visitors that is the operative fact, because a lot of visitors are not in Kingston. A villa in the hills, a small resort on the south coast or a day out in the interior all put <b>distance between you and the emergency capacity</b>, and distance is the part of this that insurance cannot shorten. Knowing which of the two cities you would head for is a five second piece of planning worth doing."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "tag",
+          key: { tag: "Cover the transfer", text: "Routine care you can handle. The thing to insure is hospitalisation and the flight, and the Embassy has told you roughly what that costs.", tone: "teal" },
+          p: [
+            "We have <b>not published routine-care prices</b> for Jamaica, because we could not source ones we would defend, and the figure that matters is already public and already on this page. Check that your policy's <b>medical and evacuation limits comfortably clear the Embassy's range</b>, and check whether your insurer <b>guarantees payment</b> or reimburses later.",
+            "Keep <b>reachable cash</b>, keep <b>every receipt</b>, and carry the assistance number offline. For how cash and cards actually behave across the island, see the <a href='/jamaica/cash-or-card'>Jamaica cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much does a medical emergency cost in Jamaica?", a: "The US Embassy in Kingston states that serious medical problems requiring hospitalisation and, or, medical evacuation to the United States can cost 15,000 to 20,000 dollars or more. That is a floor for a common case rather than a ceiling." },
+        { q: "Do Jamaican hospitals want payment before treatment?", a: "Often, yes. The US Embassy states that private doctors and hospitals in Jamaica often require cash payment prior to providing services, even in emergency cases. Calling your insurer's assistance line early is what can turn that into a guarantee of payment instead." },
+        { q: "Where are the best hospitals in Jamaica?", a: "Comprehensive but basic emergency medical services are located only in Kingston and Montego Bay, with smaller public hospitals in each parish. Prescription drugs, emergency care and ambulance services are limited in outlying parishes." },
+        { q: "Do I need travel insurance for Jamaica?", a: "The case rests on one published number: hospitalisation or evacuation to the US can run 15,000 to 20,000 dollars or more, and private providers often want cash before treating you. Routine care you can handle yourself; that combination is what a policy is for." },
+        { q: "Does my US health insurance work in Jamaica?", a: "Usually not directly, and Medicare does not apply overseas at all. Expect to pay and claim afterwards unless your travel insurer has arranged to guarantee payment to the facility." }
+      ],
+      sources: {
+        links: [
+          { label: "US Embassy Kingston: medical assistance page, on cash payment before treatment, where emergency services are located, and the 15,000 to 20,000 dollar evacuation range", url: "https://jm.usembassy.gov/medical-assistance/", type: "gov" }
+        ],
+        judgment: "The 15,000 to 20,000 dollar range is the US Embassy's own published figure for hospitalisation or evacuation to the United States, and it is the only cost figure on this page. We have published no routine-care prices, because we could not source Jamaican ones we would defend. An individual case can cost far more than the Embassy's range, which is why it is written as a floor. Checked August 2026."
+      }
     }
   ]
 };

@@ -563,6 +563,77 @@ export default {
         ],
         judgment: "Checked Aug 2026. El Salvador's inclusion on AT&T's covered-destination list was verified against AT&T's own list, because it was one of two countries in this wave we would not state a day-pass price for without checking: in an uncovered country the honest line is a pay-per-use warning instead. The local SIM is cheaper than the eSIM we earn on and the page says so. Coverage reads are the desk's from operator footprints and traveler accounts, and the country's size means the gaps are short."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "You pay", v: "Out of pocket as a visitor" },
+        { k: "Where care is", v: "San Salvador, and limited" },
+        { k: "Ambulances", v: "State service is very basic" },
+        { k: "Real risk", v: "Evacuation to the US" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in El Salvador: what a visitor pays",
+      description: "Doctors in the main hospitals are often US-trained, but emergency services are basic even in San Salvador and serious cases can mean flying home. Checked 2026.",
+      h1: "What does getting sick in El Salvador cost?",
+      lede: "El Salvador has a specific and slightly unusual shape: the doctors in the main private hospitals are frequently well trained, often in the US, while the emergency and ambulance layer around them is thin. That gap is what to plan around.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "As a visitor you <b>pay out of pocket</b>, and the practical route is a <b>private hospital in San Salvador</b>. The US Embassy's own assessment is worth reading carefully: <b>medical care is limited</b>, <b>emergency services even in San Salvador are very basic</b>, and <b>state-funded ambulances are not staffed by well-trained personnel and sometimes lack life-saving necessities</b>. At the same time, <b>physicians in the major hospitals are generally well trained, often in US hospitals</b>, while nursing and support staff are not to US standards. The Embassy notes that problems requiring hospitalisation or <b>medical evacuation to the United States can cost thousands of dollars</b>. That gap, not a consultation, is what cover is for.",
+      insurance: true,
+      careFirst: "If it looks serious, get to a private hospital first and deal with the bill afterwards.",
+      sections: [
+        {
+          h: "Good doctors, thin emergency layer",
+          icon: "alert",
+          key: { tag: "The gap", text: "Physicians in the major hospitals are often US-trained, but emergency services even in San Salvador are described as very basic and state ambulances may lack life-saving equipment.", tone: "amber" },
+          p: [
+            "This is the honest shape of El Salvador and it is not the shape people expect. The US Embassy in San Salvador states that <b>physicians in the major hospitals are generally well trained, often in US hospitals</b>, while <b>nursing and support staff is not up to US standards</b>. In the same assessment it says <b>medical care is limited</b> and that <b>emergency services, even in San Salvador, are very basic</b>.",
+            "The sharpest part is the ambulance layer: <b>state-funded ambulance services are not staffed by well-trained personnel and sometimes lack life-saving necessities</b>. The practical read is that <b>getting to the hospital is the weak link, not the hospital</b>. If you are in a position to be driven to a private facility rather than waiting for a public ambulance, that is often the faster route. <b>If it looks serious, get to a private hospital first and deal with the bill afterwards.</b>"
+          ]
+        },
+        {
+          h: "The expensive scenario is a flight",
+          icon: "plane",
+          key: { tag: "Evacuation", text: "The Embassy notes that hospitalisation or medical evacuation to the United States can cost thousands of dollars. Proximity to the US makes that cheaper here than from most places, but it is still the big number.", tone: "amber" },
+          p: [
+            "The Embassy is explicit that medical problems requiring <b>hospitalisation and, or, medical evacuation to the United States can cost thousands of dollars</b>. El Salvador is close enough to the US that this is a shorter and cheaper flight than from most of the countries we cover, which is genuinely reassuring, and it is still the largest number in the picture by a wide margin.",
+            "So the sentence we would put on a fridge magnet for El Salvador is: <b>routine care you handle, the transfer you insure</b>. Check your policy's <b>evacuation limit</b> and whether it will <b>guarantee payment</b> to a hospital rather than reimburse you weeks later, because a private admission may want money before it wants your paperwork."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We could not source Salvadoran routine-care prices we would defend, so we published none rather than estimating on a medical page.", tone: "teal" },
+          p: [
+            "We have <b>not printed local price figures</b> here, because we could not source Salvadoran routine-care prices we would stand behind. On a page about being unwell abroad, we think a short honest account beats a longer one propped up by numbers we cannot show you the source for.",
+            "The structure is what plans a trip anyway: <b>you pay</b>, <b>private is the route</b>, <b>the ambulance layer is the weak point</b>, and <b>the transfer is the expensive event</b>. Ask your insurer for its evacuation limit and its assistance number, and you will know more about your actual exposure than any consultation fee would tell you."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Private, and documented", text: "Plan to use private care, keep every receipt and report, and carry the assistance line offline. US health plans and Medicare will not cover you here.", tone: "teal" },
+          p: [
+            "Assume <b>private care and out-of-pocket payment</b>, keep <b>every receipt, invoice and medical report</b>, and carry your insurer's <b>24 hour assistance number</b> somewhere you can reach it without data. Your US health plan will almost certainly not pay a Salvadoran hospital directly, and <b>Medicare does not apply overseas at all</b>.",
+            "For how to hold and move money day to day, including where cards work and where they do not, see the <a href='/el-salvador/cash-or-card'>El Salvador cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is medical care good in El Salvador?", a: "It is uneven in a specific way. The US Embassy notes that physicians in the major hospitals are generally well trained, often in US hospitals, while nursing and support staff are not to US standards, medical care overall is limited, and emergency services even in San Salvador are very basic." },
+        { q: "Are ambulances reliable in El Salvador?", a: "The US Embassy states that state-funded ambulance services are not staffed by well-trained personnel and sometimes lack life-saving necessities. Where you have the option, being driven directly to a private hospital is often the faster route." },
+        { q: "Do I need travel insurance for El Salvador?", a: "The reason to carry it is the transfer rather than the clinic. The Embassy notes that hospitalisation or medical evacuation to the United States can cost thousands of dollars. Check the evacuation limit on your policy and whether your insurer guarantees payment to the hospital." },
+        { q: "How much does a doctor cost in El Salvador?", a: "We have not sourced Salvadoran prices we would stand behind, so we have not published any. You pay out of pocket, and private hospitals in San Salvador are the practical route for a visitor. Confirm cost at the point of care." },
+        { q: "Does Medicare cover me in El Salvador?", a: "No. Medicare does not apply overseas, and most hospitals and doctors abroad do not accept US health insurance. Expect to pay and claim the cost back through a travel medical policy." }
+      ],
+      sources: {
+        links: [
+          { label: "US Embassy San Salvador: medical assistance page, on limited care, basic emergency services, ambulance staffing and evacuation cost", url: "https://sv.usembassy.gov/services/medical-assistance/", type: "gov" }
+        ],
+        judgment: "No local price figures appear on this page, because we could not source Salvadoran routine-care prices we would defend. The assessments of care quality, emergency services and ambulances are the US Embassy's own words on its medical assistance page, last updated February 2026, not our characterisation. Individual facilities differ, so confirm at the point of care. Checked August 2026."
+      }
     }
   ]
 };

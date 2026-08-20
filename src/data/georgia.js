@@ -488,6 +488,78 @@ export default {
         ],
         judgment: "Checked Aug 2026. Georgia inclusion on AT&T's covered-destination list was verified against AT&T's own list on this check. The mountain coverage picture is the desk's read from operator footprints and traveler accounts rather than a single official source, and the Tusheti road in particular is reported as no-signal consistently enough to state plainly. Local pack pricing moves with promotions and the lari, so treat the 4 to 9 dollar range as a current shape rather than a fixed price. We earn on eSIM links and nothing on a Magti SIM."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "Cover", v: "Required to enter since 2026" },
+        { k: "You pay", v: "Up front, often in cash" },
+        { k: "Where care is", v: "Tbilisi, thin in the mountains" },
+        { k: "Real risk", v: "Mountain evacuation" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Georgia: you already need cover",
+      description: "Georgia has required travel insurance at the border since January 2026, so the question is not whether to buy it but whether yours covers the mountains. Checked 2026.",
+      h1: "What does getting sick in Georgia cost?",
+      lede: "Georgia is the one country on this site where the insurance question is already settled for you: since January 2026 you cannot enter without cover. That changes the useful question from whether to buy a policy to whether the one you bought covers what you are actually going to do.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Start with the rule, because it decides the rest: since <b>1 January 2026 every foreign tourist must hold travel insurance to enter Georgia</b>, covering the whole stay. The minimum cover, the proof to carry and the fine for arriving without it are all stated once on the <a href='/georgia'>Georgia money guide</a>, and this page does not repeat them. So you will already have a policy. What this page is about is <b>whether it fits the trip</b>. Care is concentrated in <b>Tbilisi</b> and thins in the mountains, <b>payment is generally expected up front and often in cash</b>, and the expensive scenario is a <b>mountain evacuation</b> from somewhere like Kazbegi, Svaneti or a ski slope. Many standard policies exclude exactly those activities.",
+      insurance: true,
+      careFirst: "If it looks serious, get to care first and argue about the paperwork later.",
+      sections: [
+        {
+          h: "The cover question is already answered",
+          icon: "receipt",
+          key: { tag: "Since Jan 2026", text: "Every tourist must hold travel insurance to enter Georgia. The minimum cover, the proof to carry and the penalty are stated once on the country guide.", tone: "teal" },
+          p: [
+            "We are not going to sell you something you are legally required to have. Since <b>1 January 2026</b>, Georgia requires every foreign tourist to hold <b>travel insurance covering the whole stay</b>. The <a href='/georgia'>Georgia money guide</a> carries the full rule, the minimum cover, what proof to bring and what happens if you arrive without it, and we are not repeating those figures here so there is only ever one copy of them on this site.",
+            "What that means for this page is unusual and worth saying out loud: <b>the decision this page would normally help you make has already been made</b>. You have a policy. So the honest job here is narrower and more useful, which is telling you where a standard policy tends not to reach in Georgia."
+          ]
+        },
+        {
+          h: "Where a standard policy stops: the mountains",
+          icon: "alert",
+          key: { tag: "Check activities", text: "Trekking, skiing off marked pistes, climbing and paragliding are commonly excluded or need an add-on. The mountains are also where evacuation is hardest and slowest.", tone: "amber" },
+          p: [
+            "Georgia's draw is the high country, and the high country is where the two risks compound. Care is <b>concentrated in Tbilisi</b> and drops off sharply outside it, first responders may not reach rural areas quickly, and an evacuation from <b>Svaneti, Kazbegi or a ski area</b> is a genuinely difficult and expensive piece of logistics rather than an ambulance ride.",
+            "At the same time, the cheapest policy that satisfies the entry rule is often the one most likely to <b>exclude the activity that gets you hurt</b>. Trekking above a certain altitude, off-piste skiing, climbing, rafting and paragliding are commonly carved out or sold as an add-on. So the single most valuable thing you can do before a Georgia trip is <b>read the activities list on the policy you already bought</b>. <b>If it looks serious, get to care first and argue about the paperwork later.</b>"
+          ]
+        },
+        {
+          h: "How payment works on the ground",
+          icon: "cash",
+          key: { tag: "Up front", text: "Payment is generally expected before treatment, often in cash, unless your insurer's assistance line guarantees payment to the facility first.", tone: "amber" },
+          p: [
+            "Having a policy is not the same as the hospital knowing about it. In Georgia <b>payment is generally expected up front</b>, and often in cash, unless your insurer or its assistance company has <b>guaranteed payment to the facility</b> in advance. That call is the mechanism that turns your policy into something the admissions desk recognises, and it is worth making early rather than after the fact.",
+            "We have <b>not published local price figures</b> on this page, because we could not source Georgian routine-care prices we would defend, and we would rather be short than invent. What we can tell you is the shape: <b>you pay first or your insurer guarantees it</b>, <b>keep every receipt and medical report</b>, and <b>use a facility that can issue a proper invoice</b>, because a claim without documentation is a claim that does not pay."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "tag",
+          key: { tag: "Read your policy", text: "The useful pre-trip task in Georgia is not buying cover, it is checking that the cover you were required to buy includes your activities and a real evacuation limit.", tone: "teal" },
+          p: [
+            "The pre-trip task here is <b>reading, not buying</b>. Confirm the policy covers <b>Georgia by name</b>, covers <b>your actual activities</b>, includes a <b>medical evacuation limit</b> you are comfortable with, and states whether you must call an assistance line <b>before</b> treatment. Those four checks are worth more than any price we could have printed.",
+            "On the ground, carry the <b>policy PDF in English</b> and the assistance number offline, and keep cash reachable. For how cards and cash actually work across Tbilisi, Batumi and the small towns, see the <a href='/georgia/cash-or-card'>Georgia cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is travel insurance required for Georgia?", a: "Yes. Since 1 January 2026 every foreign tourist must hold travel insurance covering the whole stay. The minimum cover, the proof to carry and the penalty for arriving without it are all on the Georgia money guide, which is the one place we state them." },
+        { q: "Does my Georgia entry policy cover hiking and skiing?", a: "Often not without an add-on. Trekking at altitude, off-piste skiing, climbing, rafting and paragliding are commonly excluded from standard policies. Since the mountains are where evacuation is hardest in Georgia, checking the activities list is the most useful thing you can do before the trip." },
+        { q: "Do Georgian hospitals bill my insurer directly?", a: "Not automatically. Payment is generally expected up front, often in cash, unless your insurer or its assistance company guarantees payment to the facility first. Calling the assistance line early is what makes that happen." },
+        { q: "Where is the best medical care in Georgia?", a: "Tbilisi, by a wide margin. Facilities and emergency response thin out considerably outside the capital, and first responders may not reach rural areas quickly. The further into the mountains you go, the more the evacuation limit on your policy matters." },
+        { q: "How much does a doctor cost in Georgia?", a: "We have not sourced Georgian routine-care prices we would stand behind, so we have not published any. What matters more here is that you already hold a policy by law, and whether it covers your activities and evacuation." }
+      ],
+      sources: {
+        links: [
+          { label: "US Embassy Tbilisi: medical assistance page, on the 2026 tourist insurance requirement and on payment practice", url: "https://ge.usembassy.gov/medical-assistance/", type: "gov" },
+          { label: "Georgia Ministry of Foreign Affairs (geoconsul.gov.ge): the Decree 602 travel-insurance rule for tourists from 1 January 2026", url: "https://geoconsul.gov.ge/", type: "gov" }
+        ],
+        judgment: "The entry insurance rule and its minimum cover are stated once on the Georgia money guide, and this page points to it rather than holding a second copy. No local price figures appear here, because we could not source Georgian routine-care prices we would defend. The activity-exclusion point is our own read of how standard travel policies are commonly written, not a claim about any particular insurer, so read your own policy wording. Enforcement of the entry rule is still settling in. Checked August 2026."
+      }
     }
   ]
 };

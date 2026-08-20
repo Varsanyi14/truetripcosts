@@ -572,6 +572,77 @@ export default {
         ],
         judgment: "Checked Aug 2026. We earn on eSIM links and nothing on a Dialog or Mobitel SIM, so it is worth being direct that the airport counter is the cheap answer here and the eSIM is the convenient one. Tourist pack contents change with promotions, so treat 25GB and the 5 to 10 dollar range as the current shape of the offer rather than a fixed product, and check what is on the board at the counter. Carrier day-pass figures are an Aug 2026 snapshot and move faster than anything else we cover."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "You pay", v: "Out of pocket as a visitor" },
+        { k: "Where the care is", v: "Colombo, and thin outside it" },
+        { k: "Serious cases", v: "May mean flying out" },
+        { k: "Real risk", v: "The emergency, not the clinic" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Sri Lanka: what a visitor pays",
+      description: "Colombo has real emergency and trauma capacity and the rest of the island does not. Serious cases can require evacuation abroad. Checked 2026.",
+      h1: "What does getting sick in Sri Lanka cost?",
+      lede: "Sri Lanka is reassuring on the everyday stuff and geographically lopsided on the serious stuff. Colombo carries the emergency and trauma capacity for the whole island, which makes where you are the first question, not what it costs.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "As a visitor you <b>pay out of pocket</b>: the public system is for citizens, and private care is the practical route. The geography is the thing to understand. There are <b>several large hospitals in the Colombo area, including facilities with emergency and trauma services</b>, and <b>medical facilities outside Colombo are limited</b>. The State Department notes that <b>serious medical conditions can require evacuation to the United States or to a nearby country</b> with more advanced facilities. So for a beach week in the south or a hill-country trip, the honest planning question is <b>how far you are from Colombo</b>, and the honest reason to carry cover is the <b>rare serious event</b>, not the price of a consultation.",
+      insurance: true,
+      careFirst: "If it looks serious, get toward proper care first and sort the payment afterwards.",
+      sections: [
+        {
+          h: "Colombo carries the island",
+          icon: "alert",
+          key: { tag: "Where care is", text: "Several large hospitals in the Colombo area include emergency and trauma capacity. Medical facilities outside Colombo are limited, which makes distance the first question.", tone: "amber" },
+          p: [
+            "The useful mental model for Sri Lanka is a single strong centre. There are <b>several large hospitals in the Colombo area, including facilities with emergency medical and trauma services</b>, and <b>medical facilities outside Colombo are limited</b>. That is the State Department's own read, and it matches how the island works: the capital has the capacity, and the distance from it is what changes your situation.",
+            "For most visitors this is manageable rather than alarming. A stomach bug in Galle or a cut in Ella is a local clinic problem. A road accident on the way to Sigiriya, or a cardiac event in the hill country, is a <b>transfer problem</b>, and the transfer is where the money and the time both go. <b>If it looks serious, get toward proper care first and sort the payment afterwards.</b>"
+          ]
+        },
+        {
+          h: "When Sri Lanka is not the answer",
+          icon: "plane",
+          key: { tag: "Evacuation", text: "The State Department notes that serious conditions can require evacuation to the United States or to a nearer country with more advanced facilities. That is the expensive scenario.", tone: "amber" },
+          p: [
+            "For the rare serious case, the honest answer is that treatment may not happen in Sri Lanka at all. The State Department states that <b>serious medical conditions can require evacuation to the United States or to a nearby country with more advanced medical facilities</b>. That is the scenario that turns a trip into a five-figure problem, and it is the one a travel medical policy is genuinely built for.",
+            "We want to be proportionate about this. Most visitors to Sri Lanka never need more than a pharmacy. But the reason to carry cover here is not that everyday care is expensive, it is that <b>the tail event involves an aircraft</b>. So the number to check on a policy is the <b>evacuation limit</b>, and the thing to have to hand is the <b>assistance line</b>."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We did not find a Sri Lankan price source we would stand behind. Private care here is widely described as affordable, and we are not turning that into a figure.", tone: "teal" },
+          p: [
+            "Private care in Sri Lanka is commonly described as inexpensive by Western standards, and we believe that is broadly true. We are still <b>not printing a number</b>, because we have not found a source for one that we would defend, and on a medical page the difference between what we believe and what we can show matters.",
+            "So take the shape rather than a price: <b>you pay at the time</b>, <b>private clinics in the cities are the practical route</b>, and <b>the cost that could actually hurt is a transfer or a flight</b>. If you want a figure before you go, the productive call is to your insurer about evacuation limits, not to us about consultation fees."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Distance is the variable", text: "Budget lightly for routine care, keep receipts for reimbursement, and let your distance from Colombo tell you how much the evacuation limit matters on your trip.", tone: "teal" },
+          p: [
+            "Budget a little for the small stuff and do not overthink it. Keep <b>every receipt and medical report</b>, since a travel policy works by reimbursement unless your insurer has arranged direct billing. And carry the <b>24 hour assistance number</b> somewhere you can find it without a working phone plan.",
+            "The variable that should actually move your decisions is <b>where you are going</b>. A Colombo-and-coast trip sits close to real care; a long loop through the hill country and the east does not. For paying for things day to day, see the <a href='/sri-lanka/cash-or-card'>Sri Lanka cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare free for tourists in Sri Lanka?", a: "No. The public system is for citizens, and as a visitor you pay out of pocket or claim the cost back through travel insurance. Private clinics and hospitals in the main cities are the practical route for a traveler." },
+        { q: "Where is the best medical care in Sri Lanka?", a: "Colombo. There are several large hospitals in the Colombo area, including facilities with emergency medical and trauma services. The State Department notes that medical facilities outside Colombo are limited, so distance from the capital is the thing to plan around." },
+        { q: "Do I need travel insurance for Sri Lanka?", a: "The reason to carry it is the rare serious event rather than routine care. The State Department notes that serious medical conditions can require evacuation to the United States or to a nearby country with more advanced facilities, which is the bill a policy is designed to absorb." },
+        { q: "How much does a doctor visit cost in Sri Lanka?", a: "We have not sourced a Sri Lankan price we would stand behind, so we have not published one. Private care is widely described as affordable by Western standards, but we are not turning that impression into a figure on a medical page. Confirm at the point of care." },
+        { q: "Does my US health insurance work in Sri Lanka?", a: "Almost certainly not, and Medicare does not apply overseas at all. Most hospitals and doctors abroad do not accept US health insurance, so you pay and claim afterwards unless your travel insurer has arranged direct billing." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Sri Lanka country information, on Colombo hospital capacity, limited facilities outside the capital and evacuation for serious conditions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/SriLanka.html", type: "gov" }
+        ],
+        judgment: "This page carries no local price figures because we could not source Sri Lankan routine-care prices we would defend. The capacity and evacuation claims come from the State Department's Sri Lanka country information page. Hospital capability and individual cases vary, so confirm with your insurer's assistance line at the time. Checked August 2026."
+      }
     }
   ]
 };

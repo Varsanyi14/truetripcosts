@@ -493,6 +493,78 @@ export default {
         ],
         judgment: "Checked Aug 2026. This spoke is deliberately the least commercial one in the set, because Namibia is the clearest case where the product we earn on does not fix the problem the reader has. The coverage picture is the True Trip Costs desk's read from operator coverage maps and consistent traveler accounts rather than a single official table, and the honest summary is that reach follows the tarred roads and the towns. The biometric SIM registration requirement is current as of this check and the visitor experience of it is reported unevenly, so treat it as a reason to arrive with a plan rather than a fixed procedure. Carrier day-pass figures are an Aug 2026 snapshot."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "You pay", v: "Up front, sometimes cash only" },
+        { k: "Where care is", v: "Windhoek and larger towns" },
+        { k: "Without payment", v: "Care may be refused" },
+        { k: "Real risk", v: "Distance, and South Africa" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Namibia: distance is the cost",
+      description: "Hospitals usually want payment up front and sometimes only cash, and may otherwise deny care. Outside Windhoek, distance is the real risk. Checked 2026.",
+      h1: "What does getting sick in Namibia cost?",
+      lede: "Namibia is the emptiest country we cover, and that single fact reorganises this whole page. The medicine in Windhoek is competent. The problem is that most of the time you are not in Windhoek, and the road there is long.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Two State Department statements frame this. On money: <b>hospitals and doctors usually require payment up front prior to service or admission</b>, <b>credit card payment is not always available</b>, some require <b>cash</b>, and private hospitals want <b>advance payment or proof of adequate insurance before admitting a patient</b>. The US Embassy goes further, warning that facilities are likely to require full payment in cash at the time of service and <b>may otherwise deny care</b>. On geography: <b>adequate facilities are available in Windhoek and other major towns</b>, care in rural areas may be below US standards, and <b>well-equipped facilities are rarely available in smaller towns</b>. Serious cases can mean <b>evacuation, often to South Africa</b>. Also worth saying plainly: <b>Medicare does not apply overseas</b> and most hospitals abroad do not take US health insurance.",
+      insurance: true,
+      careFirst: "If it looks serious, start moving toward Windhoek or a major town first and settle the money afterwards.",
+      sections: [
+        {
+          h: "Payment first, and cash may be the only option",
+          icon: "cash",
+          key: { tag: "Or care is refused", text: "Hospitals usually require payment up front, cards are not always accepted, and the US Embassy warns that facilities may deny care without payment.", tone: "amber" },
+          p: [
+            "The State Department's language here is unusually specific and worth quoting in substance. <b>Hospitals and doctors usually require payment up front prior to service or admission.</b> <b>Credit card payment is not always available</b>, and <b>some hospitals and medical professionals require cash payment</b>. Private hospitals usually require <b>advance payment or proof of adequate insurance before admitting a patient</b>.",
+            "The US Embassy in Windhoek puts the consequence bluntly: local medical facilities are likely to require <b>full payment in cash at the time of service and may otherwise deny care</b>. So the single most useful preparation for Namibia is not medical, it is financial: know how you would <b>produce money or a proof of cover at 2am</b>, in a country where the ATM may be a long way off. <b>If it looks serious, start moving toward Windhoek or a major town first and settle the money afterwards.</b>"
+          ]
+        },
+        {
+          h: "The distance is the diagnosis",
+          icon: "plane",
+          key: { tag: "Windhoek or nothing", text: "Adequate facilities are in Windhoek and larger towns. Well-equipped facilities are rarely available in smaller towns, and serious cases can mean evacuation to South Africa.", tone: "amber" },
+          p: [
+            "<b>Adequate health facilities are available in Windhoek and other major towns</b>, and doctors and dentists are generally well trained. <b>Health care in rural areas may be below US standards</b>, and <b>well-equipped facilities are rarely available in smaller towns</b>. For a serious case, the realistic path is a transfer, frequently <b>to South Africa</b>.",
+            "Now put that against how people actually travel Namibia: <b>Sossusvlei, Damaraland, the Skeleton Coast, Etosha, the Caprivi</b>. Those are hundreds of kilometres of gravel from a well-equipped hospital, often with <b>no phone signal</b> and a self-drive rental. We are not saying this to frighten anyone off a country we think is extraordinary. We are saying it because <b>the honest cost of a medical problem in Namibia is measured in distance first and dollars second</b>, and the two are related: the further out, the more likely the answer involves an aircraft."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We could not source Namibian routine-care prices we would defend. The distance and the payment rules are the facts that plan a trip here, not a consultation fee.", tone: "teal" },
+          p: [
+            "We have <b>not published local price figures</b> for Namibia, because we could not source ones we would stand behind. It would be easy to write a plausible number and it would add nothing true to this page.",
+            "It would also miss the point. In a country where the binding constraint is <b>how far you are from a hospital that can help</b>, a consultation price is not the useful number. The useful numbers are on <b>your policy</b>: the evacuation limit, whether it covers <b>self-drive and adventure activities</b>, and whether the insurer will <b>guarantee payment</b> to a facility that would otherwise turn you away."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "tag",
+          key: { tag: "Cover the aircraft", text: "Carry reachable cash and proof of cover, check that your policy covers self-drive and remote travel, and treat the evacuation limit as the number that matters.", tone: "teal" },
+          p: [
+            "Before you fly: check the <b>medical evacuation limit</b>, check that the policy covers <b>self-drive on gravel and any activity you have booked</b>, and confirm whether your insurer will <b>guarantee payment to a hospital</b> rather than reimburse you afterwards. That last one is the difference between being admitted and being told to come back with money.",
+            "On the road: carry <b>reachable cash</b>, a <b>printed proof of insurance</b>, and the assistance number written down rather than only in an app, because signal is not a given. For how cash, cards and ATMs actually work here, see the <a href='/namibia/cash-or-card'>Namibia cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do hospitals in Namibia want payment before treatment?", a: "Usually. The State Department states that hospitals and doctors usually require payment up front prior to service or admission, that credit card payment is not always available, and that private hospitals usually require advance payment or proof of adequate insurance before admitting a patient." },
+        { q: "Can a hospital in Namibia refuse to treat me?", a: "The US Embassy warns that local medical facilities are likely to require full payment in cash at the time of service and may otherwise deny care. Carrying reachable funds and a printed proof of cover is the practical answer." },
+        { q: "Where is medical care available in Namibia?", a: "Adequate facilities are in Windhoek and other major towns, with generally well-trained doctors. Care in rural areas may be below US standards and well-equipped facilities are rarely available in smaller towns, so distance from a major town is the real variable." },
+        { q: "Do I need medical evacuation insurance for Namibia?", a: "This is one of the strongest cases we cover. The State Department strongly recommends supplemental insurance to cover medical evacuation, and serious cases frequently mean a transfer, often to South Africa. Check that the policy also covers self-drive and any activities you have booked." },
+        { q: "How much does a doctor cost in Namibia?", a: "We have not sourced Namibian prices we would stand behind, so we have not published any. In a country where the binding constraint is distance from a capable hospital, the number that matters is your policy's evacuation limit rather than a consultation fee." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Namibia country information, on payment up front, cash-only providers, where facilities are adequate, and that Medicare does not apply overseas", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Namibia.html", type: "gov" },
+          { label: "US Embassy Windhoek: travel advisory notice warning that facilities may require full cash payment and may otherwise deny care", url: "https://na.usembassy.gov/travel-advisory-namibia-updated-december-23-2024/", type: "gov" }
+        ],
+        judgment: "No local price figures appear on this page, because we could not source Namibian routine-care prices we would defend. The payment practice, the facility geography and the Medicare point are all the State Department's and the US Embassy's own statements. The read on how this intersects with a typical self-drive itinerary is ours. Individual facilities and cases differ, so confirm at the point of care. Checked August 2026."
+      }
     }
   ]
 };

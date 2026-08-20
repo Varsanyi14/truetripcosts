@@ -443,6 +443,77 @@ export default {
         ],
         judgment: "Checked Aug 2026. Short on purpose. The useful content is the one line that costs us a sale: you do not need an eSIM here as a calling workaround, because Kuwait is generally reported as not blocking app calling, so buy one for convenience or do not buy one at all. As with every Gulf page, the app-calling position carries a hedge, because the sources on this topic sell either a VPN or an eSIM and disagree with each other."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "You pay", v: "Out of pocket as a visitor" },
+        { k: "Public system", v: "Built around citizens" },
+        { k: "Your route", v: "Private hospitals in the city" },
+        { k: "Real risk", v: "A private bill, or the flight home" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Kuwait: what a visitor pays",
+      description: "Care is close by and generally good, but the public system is oriented to citizens and a visitor uses private hospitals and pays for them. Checked 2026.",
+      h1: "What does getting sick in Kuwait cost?",
+      lede: "Kuwait is small, urban and well equipped, so unlike most countries on this list you are rarely far from a hospital. The catch is a different one: the public system is built around citizens, so as a visitor you are in the private lane and paying for it.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "The reassuring part first: Kuwait is <b>compact and urban</b>, hospitals are <b>close by</b> and generally well equipped, and <b>English is widely spoken in private facilities</b>. So the distance-and-evacuation problem that dominates most pages in this wave largely does not apply here. What does apply is access. <b>Free public care is for Kuwaiti citizens</b>, non-citizens pay, and the public system's priority ordering has long favoured nationals in practice. As a visitor your realistic route is a <b>private hospital</b>, where you <b>pay out of pocket</b> and a serious admission runs to real money. Your US health plan will not pay it, and <b>Medicare does not apply overseas</b>. The exposure here is a <b>private bill and, if you need to get home in a hospital bed, the flight</b>.",
+      insurance: true,
+      careFirst: "If it looks serious, go to a hospital first and sort out the payment afterwards.",
+      sections: [
+        {
+          h: "Close by, but not free to you",
+          icon: "alert",
+          key: { tag: "Private lane", text: "Free public care is for Kuwaiti citizens. As a visitor your practical route is a private hospital, paid out of pocket, in a country where care is at least never far away.", tone: "teal" },
+          p: [
+            "Kuwait genuinely earns some reassurance and we would rather give it than manufacture worry. The country is <b>small and heavily urban</b>, so a hospital is rarely far, facilities are modern, and <b>English is widely spoken in the private sector</b>. Compared with most of this wave, where the story is distance, Kuwait's story is straightforward access.",
+            "The limit is who the system is for. <b>Free care at government hospitals is for Kuwaiti citizens.</b> Non-citizens pay, and the public system has long been organised around nationals first, with expatriate access restricted in various ways over the years. None of that is designed with a tourist in mind, which is why the practical route for a visitor is a <b>private hospital</b>. <b>If it looks serious, go to a hospital first and sort out the payment afterwards.</b>"
+          ]
+        },
+        {
+          h: "What we could not source, and are not guessing",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "Kuwaiti fee schedules that we could find are aimed at resident expatriates rather than tourists, and are years old. We are not turning them into a tourist price.", tone: "amber" },
+          p: [
+            "We want to be specific about the gap rather than vague, because the gap itself is informative. There <b>are</b> published Kuwaiti health-fee schedules, but the ones we could find are addressed to <b>resident expatriates inside the state insurance scheme</b>, not to short-stay visitors, and the material we found dates back several years with later revisions we could not confirm. Applying a resident's subsidised co-payment to a tourist would be a <b>category error dressed as a fact</b>, so we have published nothing.",
+            "There is a second open question we are flagging rather than answering: some sources describe Kuwait's mandatory health insurance obligation as extending to <b>foreign visitors</b>, not only residents. We could not confirm that against a Kuwaiti government source, so we are <b>not stating it as a requirement</b>. If you are travelling to Kuwait, check the current entry conditions with the Kuwaiti embassy rather than relying on any website, including this one."
+          ]
+        },
+        {
+          h: "What the policy is actually for here",
+          icon: "plane",
+          key: { tag: "Bill and flight", text: "Not evacuation to a better hospital, since Kuwait has good ones. The gap is a large private bill, and getting home in a hospital bed if it comes to that.", tone: "teal" },
+          p: [
+            "It is worth being precise about what cover buys you in Kuwait, because it is not the same thing it buys you in Laos or Namibia. You are <b>not</b> insuring against having to be flown somewhere with better medicine. You are insuring against <b>a large private hospital bill</b> and, in a serious case, <b>repatriation</b>, which is the cost of getting you home in a medically supervised seat or bed rather than the cost of getting you to treatment.",
+            "That is a narrower gap than most of this wave, and we would rather say so than inflate it. It is also a real one: <b>an ICU stay or major surgery in a private hospital anywhere in the Gulf is expensive</b>, and a medically escorted flight from the Gulf to the US is a long one."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Card country", text: "Kuwait is card-friendly, so the payment mechanics are easier here than in most of this wave. Confirm whether your insurer guarantees payment or reimburses you.", tone: "teal" },
+          p: [
+            "Practically, Kuwait is an easier country to pay in than most on this list, so the cash-in-an-envelope problem is smaller. The thing to check is the <b>mechanism</b>: whether your insurer will <b>guarantee payment to the hospital</b> or expects you to pay and claim. Private hospitals used to international patients are often willing to work with insurers directly, and the assistance line is what sets that up.",
+            "Keep <b>every receipt and itemised invoice</b>, and carry the assistance number offline. For how cards, cash and the dinar work day to day, see the <a href='/kuwait/cash-or-card'>Kuwait cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare free in Kuwait for visitors?", a: "No. Free care at government hospitals is for Kuwaiti citizens. Non-citizens pay, and the public system is organised around nationals, so the practical route for a short-stay visitor is a private hospital paid out of pocket." },
+        { q: "Is medical care good in Kuwait?", a: "Generally yes, and it is close by, which is the real advantage. Kuwait is small and urban with modern facilities and English widely spoken in the private sector, so the distance-and-evacuation risk that dominates many destinations largely does not apply." },
+        { q: "How much does a hospital visit cost in Kuwait?", a: "We have not published a figure. The Kuwaiti fee schedules we could find are aimed at resident expatriates inside the state insurance scheme rather than at tourists, and are several years old, so applying them to a visitor would be misleading. Confirm at the point of care." },
+        { q: "Do I need travel insurance for Kuwait?", a: "The gap here is narrower than in remote destinations, but it is real: a large private hospital bill, and repatriation home in a medically supervised seat if a serious case requires it. You are not insuring against having to be flown somewhere with better medicine." },
+        { q: "Is travel insurance required to enter Kuwait?", a: "We could not confirm this against a Kuwaiti government source. Some accounts describe the mandatory health insurance obligation as extending to foreign visitors, so check current entry conditions with the Kuwaiti embassy rather than relying on any website." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Kuwait country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Kuwait.html", type: "gov" }
+        ],
+        judgment: "This page carries no cost figures at all, and the reason is specific: the Kuwaiti health-fee schedules we could find address resident expatriates within the state insurance scheme rather than short-stay visitors, and are several years old. Treating a resident co-payment as a tourist price would be wrong, so we published none. The possible extension of mandatory health insurance to visitors is flagged as unconfirmed rather than stated, and should be checked with the Kuwaiti embassy. The read on access and on what cover is for here is our own, from the structure of the system rather than a single official table. Checked August 2026."
+      }
     }
   ],
 

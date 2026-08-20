@@ -629,6 +629,30 @@ export default {
       checkedISO: "2026-07-22",
       answer: "As a tourist you <b>pay out of pocket</b> (free public healthcare is for residents), but routine private care is cheap. A doctor attached to a <b>pharmacy</b> (the consultorio) runs about <b>$2 to $3</b> for minor issues, a <b>private GP visit</b> about <b>$18 to $25</b>, and a <b>specialist</b> around <b>$45 to $55</b>. The real financial risk is a <b>serious emergency</b>: private hospitals ask for a <b>deposit upfront</b>, from a few hundred to several thousand dollars, and an ICU stay, surgery, or a flight home can run into the <b>tens of thousands</b>. That gap, not the doctor visit, is what <b>travel medical insurance</b> is for.",
       insurance: true,
+      // Mexico's own line, moved here out of Spoke.astro where it used to be hardcoded and
+      // rendered for every country. It is true for Mexico, it is sourced by the figures in
+      // this spoke, and it stays. Nothing else on the site can inherit it now.
+      insuranceNote: "Routine care in Mexico is cheap enough to pay for out of pocket. The reason to carry travel insurance is the rare, expensive emergency, a hospital deposit, surgery, or a flight home, where the bill is the part that hurts. Faye covers trip medical and evacuation.",
+      careFirst: "If it is serious, go to the hospital first and deal with the deposit afterwards.",
+      // DECLARED SO THEY CANNOT HIDE, and src is deliberately null on every one. These
+      // figures shipped in July 2026 and this spoke's only cited source is a State
+      // Department country page that carries no prices; the judgment note describes them as
+      // typical ranges from recent reporting. Under the sourcing floor MAIN set for this
+      // wave, a clinic's own published price list or an official tariff, that provenance
+      // does not clear the bar. Flagged rather than quietly fixed or quietly exempted: the
+      // gate prints these under UNTRACED FIGURES for a ruling. Either they get a real
+      // source, or they get hedged further, or Mexico joins PRICE_EXEMPT and the wave's
+      // template country becomes a universal-truth page like the rest of Batch 1.
+      sourcedFigures: [
+        { fact: "A pharmacy consultorio consultation runs about 45 to 60 pesos, roughly 2 to 3 dollars",
+          kind: "routine", src: null, forms: ["$2 to $3", "$2-3", "45 to 60 pesos"] },
+        { fact: "A private GP visit runs about 350 to 500 pesos, roughly 18 to 25 dollars",
+          kind: "routine", src: null, forms: ["$18 to $25", "350 to 500 pesos"] },
+        { fact: "A specialist runs about 800 to 1,000 pesos, roughly 45 to 55 dollars, and a lab panel often under 55 dollars",
+          kind: "routine", src: null, forms: ["$45 to $55", "800 to 1,000 pesos", "$55"] },
+        { fact: "Private hospitals ask a deposit from about 5,000 pesos, around 300 dollars, up to 100,000 pesos or more",
+          kind: "evacuation", src: null, forms: ["$300+", "$300", "5,000 pesos", "100,000 pesos"] }
+      ],
       sections: [
         {
           h: "Routine care: cheap, fast, and walk-in",
@@ -662,7 +686,7 @@ export default {
           icon: "cash",
           key: { fig: "Insurance", tag: "Plan for the big one", text: "Budget a little cash for the small stuff, a few dollars to a few tens, easily paid on the spot. The thing to plan for is a serious emergency, so carry travel insurance.", tone: "teal" },
           p: [
-            "Budget a little cash for the small stuff and do not overthink it: a pharmacy doctor or a GP visit is a few dollars to a few tens of dollars, easily paid on the spot. The thing to plan for is the <b>big, unlikely emergency</b>, because that is the bill that can wreck a trip.",
+            "Budget a little cash for the small stuff and do not overthink it: a pharmacy doctor or a GP visit is a few dollars to a few tens of dollars, easily paid on the spot. The thing to plan for is the <b>big, unlikely emergency</b>, because that is the bill that can wreck a trip. One line matters more than any of the prices above: <b>If it is serious, go to the hospital first and deal with the deposit afterwards.</b> This page prices care, it does not tell you whether you need it.",
             "That is exactly the shape travel insurance fits: cheap routine care you pay yourself, and a <b>large emergency, hospital deposit, or evacuation</b> the policy absorbs. For getting cash for the small payments, see the <a href=\"/mexico/cash-or-card\">Mexico cash and cards guide</a>."
           ]
         }
