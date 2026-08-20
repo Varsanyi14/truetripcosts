@@ -619,6 +619,79 @@ export default {
         ],
         judgment: "Checked Aug 2026. The satellite point is the most useful thing on this page and the most likely to date, so treat it as an Aug 2026 read: T-Mobile's own international pages name Canada and New Zealand for T-Satellite off-grid coverage, and handset satellite SOS features vary by model and region and change with software releases. It is messaging, not data, and it is not a substitute for a personal locator beacon, which is what DOC and the rescue services expect and what this page recommends. The coverage gaps are the desk's read from operator maps and consistent tramper accounts."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "Accident", v: "ACC covers you, even as a visitor" },
+        { k: "Illness", v: "ACC does not cover it at all" },
+        { k: "Getting home", v: "Never covered by ACC" },
+        { k: "Real risk", v: "Falling ill, not falling over" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in New Zealand: the ACC split",
+      description: "New Zealand covers visitors for accidents through ACC, and not at all for illness. Knowing which side of that line you are on is the whole thing.",
+      h1: "What does getting sick or hurt in New Zealand cost?",
+      lede: "New Zealand does something no other country on this site does: it covers visitors for accidents. It does not cover them for illness. Almost everything about the money here follows from which of those two things happened to you.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "<b>ACC</b>, the no-fault accident scheme, covers <b>everyone in New Zealand including visitors</b> for injury caused by an <b>accident</b> that happens here. Break an ankle on a track and a good part of the treatment is covered, though you may still <b>pay a share</b>. What ACC does <b>not</b> cover is <b>illness</b>, age-related conditions, or emotional issues, and it does <b>not</b> cover <b>getting you home</b>, disrupted travel, or any treatment once you have left the country. ACC says so itself: it is <b>not a replacement for travel insurance</b>. So the honest read is a split. The stumble is largely handled. The <b>cardiac event, the appendicitis, the serious infection</b> is not, and neither is the flight home in either case.",
+      insurance: true,
+      insuranceNote: "New Zealand is the one country here where part of the risk is already covered: ACC picks up much of the cost of an accident, even for visitors. It does nothing for illness, and nothing for getting you home. That remaining gap, the illness and the repatriation, is the honest reason to carry cover for a trip here, and it is a real one. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, get seen first and let the paperwork follow.",
+      sections: [
+        {
+          h: "ACC covers accidents, and it covers you",
+          icon: "health",
+          key: { tag: "Visitors included", text: "ACC is a no-fault scheme covering everyone injured in an accident in New Zealand, residents and visitors alike. The accident has to happen here.", tone: "teal" },
+          p: [
+            "This is the genuinely good news, and it surprises most Americans. ACC, the Accident Compensation Corporation, runs a <b>no-fault scheme that covers everyone in New Zealand</b>, and ACC is explicit that this <b>includes visitors</b>. It does not matter that you are not a resident. If you are injured in an <b>accident that happens in New Zealand</b>, ACC can help pay toward your treatment, and your health provider lodges the claim for you rather than you filing anything yourself.",
+            "Two limits worth holding on to even inside the good news. The accident has to have happened <b>in New Zealand</b>, so an injury you arrived with is not covered. And ACC helps with treatment costs rather than paying all of them, so <b>you may still pay part</b> of the bill. <b>If it looks serious, get seen first and let the paperwork follow.</b>"
+          ]
+        },
+        {
+          h: "It does not cover illness. That is the line",
+          icon: "alert",
+          key: { tag: "The split", text: "ACC covers injury from an accident. It does not cover illness, conditions from ageing, or emotional issues. Falling ill is on you.", tone: "amber" },
+          p: [
+            "Here is the part that decides your exposure, and it is a clean line rather than a grey area. ACC covers <b>injury caused by an accident</b>. It does <b>not</b> cover <b>illness</b>, it does not cover conditions that come from <b>ageing</b>, and it does not cover <b>emotional issues</b>. ACC states this plainly on its own site.",
+            "So two travelers on the same trip can have completely different financial outcomes. The one who <b>comes off a mountain bike</b> is substantially covered. The one who develops <b>appendicitis, pneumonia, or a cardiac problem</b> is a private paying patient in a country with first-world prices, and ACC has nothing to do with it. Neither of them is unlucky in any way they could have predicted, which is exactly why the split matters before you go rather than after."
+          ]
+        },
+        {
+          h: "ACC will not get you home",
+          icon: "plane",
+          key: { tag: "Not travel insurance", text: "ACC does not cover repatriation, disrupted travel, or any treatment after you leave the country. ACC says outright it is not a replacement for travel insurance.", tone: "amber" },
+          p: [
+            "Even on a fully covered accident, ACC stops at the water's edge. It covers <b>treatment and rehabilitation while you are in New Zealand</b>. It does <b>not</b> cover <b>getting you home</b>, it does not cover the <b>trip you can no longer take</b>, and it does not cover the <b>ongoing treatment you need once you are back</b>. ACC itself tells visitors it is <b>not a replacement for travel insurance</b>, which is an unusually straight thing for a public scheme to say.",
+            "That is the shape of the real gap here. A serious injury in a remote part of the South Island may be well handled clinically and still leave you with a <b>medically supervised flight home</b> to arrange and pay for, and a badly timed illness leaves you with the treatment as well. Those two items, <b>illness and repatriation</b>, are what a policy is actually buying you in New Zealand."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We have not sourced a New Zealand price list for non-resident care that we would stand behind, so we publish none. The structure is what you plan around anyway.", tone: "teal" },
+          p: [
+            "We have <b>not sourced a non-resident price list</b> for New Zealand that we would put our name to, so this page carries no local price figures. On a medical page a recalled number dressed as research is not a small error, it is something a person might act on while unwell.",
+            "The structure is the useful part regardless, and here it is in one line: <b>accident mostly covered, illness not covered, flight home never covered</b>. If you want a number before you travel, the one that matters is the <b>evacuation limit</b> on your policy, not the price of a consultation. For paying for the small stuff on the day, see the <a href='/new-zealand/cash-or-card'>New Zealand cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does ACC cover tourists in New Zealand?", a: "Yes, for accidents. ACC's no-fault scheme covers everyone injured in an accident in New Zealand, including visitors, and it does not matter that you are not a resident. The accident has to happen in New Zealand, and you may still pay part of the treatment cost." },
+        { q: "Does ACC cover illness?", a: "No. ACC covers injury caused by an accident. It does not cover illness, conditions from ageing, or emotional issues. If you fall ill in New Zealand rather than getting hurt, you are paying privately and ACC is not involved." },
+        { q: "Do I still need travel insurance if ACC covers me?", a: "Yes, and ACC says so itself, telling visitors it is not a replacement for travel insurance. ACC does not cover illness, it does not cover repatriation or disrupted travel, and it does not cover treatment once you leave the country. Those gaps are what a policy is for here." },
+        { q: "Will ACC pay to fly me home?", a: "No. ACC covers treatment and rehabilitation while you are in New Zealand and stops there. A medically supervised flight home is not covered on any claim, which is why the evacuation limit on your own policy is the number worth checking." },
+        { q: "How much does a doctor cost in New Zealand?", a: "We have not sourced a non-resident price list for New Zealand that we would stand behind, so we have not published one. What we can tell you is which side of the ACC line you are on, which matters more to the final bill than any single consultation fee. Confirm costs at the point of care." }
+      ],
+      sources: {
+        links: [
+          { label: "ACC New Zealand: what we cover, including that the scheme covers visitors for accidents and excludes illness", url: "https://www.acc.co.nz/im-injured/what-we-cover", type: "gov" },
+          { label: "ACC New Zealand: if you are a visitor injured in New Zealand, including that you will still need travel insurance for what ACC does not cover", url: "https://www.acc.co.nz/im-injured/what-we-cover/if-youre-a-visitor-injured-in-new-zealand", type: "gov" }
+        ],
+        judgment: "This page carries no local price figures because we could not source a New Zealand non-resident price list we would stand behind. Every claim about what ACC does and does not cover comes from ACC's own pages, including its statement that the scheme is not a replacement for travel insurance. ACC decisions are made case by case and a claim can be declined, so treat the accident and illness line as the rule rather than a guarantee about your own situation. Checked August 2026."
+      }
     }
   ]
 };

@@ -763,6 +763,83 @@ export default {
         ],
         judgment: "Ticket types, the advance release window and Railcard eligibility and restrictions come from the official retailers and are firm. Railcard pricing is the one figure we could not pin cleanly: retailers and reference sources quoted both 30 and 35 pounds for the cards named here, so we give an approximate figure and tell you to confirm it rather than publishing a number we cannot stand behind. The London to Edinburgh fares are widely cited illustrative figures rather than a fixed price list, and they move with date and demand. BritRail pass pricing is not straightforward to verify because the product is sold outside the UK through several vendors at varying prices, so our conclusion rests on specialist comparisons rather than a single quoted rate, and it is the weakest-sourced claim on this page. Split-ticket savings vary by route. Checked Aug 2026."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "A and E, and GPs", v: "Free, even to visitors" },
+        { k: "If admitted", v: "150% of the NHS tariff" },
+        { k: "Non-urgent care", v: "Paid before you get it" },
+        { k: "Real risk", v: "The admission, not the visit" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in the UK: free at the door, not after",
+      description: "A and E and GP care are free to overseas visitors in England. The moment you are admitted, you are billed at 150% of the NHS tariff, often upfront.",
+      h1: "What does getting sick in the UK cost a visitor?",
+      lede: "Americans get the UK wrong in both directions at once. The walk-in really is free, including the emergency department. Being admitted really is not, and the bill is set above what the NHS charges itself.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "In England, <b>A and E treatment and GP consultations are free to everyone, including overseas visitors</b>. That is not a loophole, it is the rule, and it covers a great deal of what goes wrong on a trip. The exemption <b>stops the moment care continues</b> as an inpatient or as follow-up outpatient treatment. From there a chargeable overseas visitor is billed at <b>150% of the NHS national tariff</b>, and for <b>non-urgent</b> treatment the provider is <b>required to collect an estimate of the cost before treating you</b>. Urgent care is given first and billed after. NHS England <b>publishes the tariff</b>, so this is a real price list rather than a guess. Note this is <b>England's</b> scheme; Scotland, Wales and Northern Ireland run their own rules.",
+      insurance: true,
+      insuranceNote: "The UK is unusual: the emergency department and the GP are genuinely free to you, so a lot of ordinary trouble costs nothing at all. What cover buys here is the other half, the admission billed at 150% of the NHS tariff, the non-urgent treatment you have to pay for before you get it, and the flight home. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, go to A and E, because that part is free and they will treat you first.",
+      sections: [
+        {
+          h: "The free half, and it is a big half",
+          icon: "health",
+          key: { tag: "Free to all", text: "Accident and emergency treatment and GP consultations are free for everyone in England, including overseas visitors. This is the part Americans do not expect.", tone: "teal" },
+          p: [
+            "Start with the genuinely reassuring fact, because it is real and it is large. In England, <b>accident and emergency treatment and GP consultations are free to everyone, including overseas visitors</b>. Primary medical services sit outside the charging regulations altogether, and A and E is specifically exempt. A sprain, a chest infection, a bad reaction, a cut that needs closing: seen and treated, no bill.",
+            "<b>If it looks serious, go to A and E, because that part is free and they will treat you first.</b> There is no version of this where hesitating over money is the right call in England, and that is worth knowing before you are the one deciding."
+          ]
+        },
+        {
+          h: "Where the free part ends",
+          icon: "alert",
+          key: { fig: "150%", tag: "Of the NHS tariff", text: "The exemption stops when care continues as an inpatient or follow-up outpatient. From there a chargeable visitor pays 150% of the NHS national tariff.", tone: "amber" },
+          p: [
+            "The exemption is attached to the <b>setting</b>, not to you, and this is where people get caught. It covers the A and E attendance and the GP appointment. It does <b>not</b> extend to <b>inpatient care or the outpatient and community services that follow</b>. Walk into A and E with chest pain and the assessment is free; get admitted to a ward that evening and the clock starts.",
+            "From that point a chargeable overseas visitor is billed at <b>150% of the NHS national tariff</b>, which is deliberately more than the NHS pays itself for the same care. There is no ambiguity about the number: it is set in the charging regulations, and <b>NHS England publishes an overseas patient tariff price list</b> so providers can quote it. This is the rare medical page where the price is genuinely published."
+          ]
+        },
+        {
+          h: "For non-urgent care, you pay before you get it",
+          icon: "cash",
+          key: { tag: "Upfront by law", text: "Providers are required to recover an estimate of the full cost before giving non-urgent treatment. Urgent and immediately necessary care is given first and billed afterwards.", tone: "amber" },
+          p: [
+            "Since the 2017 regulations, a provider is <b>legally required to collect an estimate of the cost upfront</b> before delivering <b>non-urgent or elective</b> treatment to a chargeable overseas visitor. This is not a hospital being difficult, it is the hospital following a rule it does not get to waive.",
+            "The important carve-out, and the reason the care-first line above holds: treatment a clinician judges <b>urgent or immediately necessary</b> is <b>provided first and charged afterwards</b>. Maternity care is treated as immediately necessary in all cases. So the upfront rule bites on the planned scan and the deferrable procedure, not on the emergency. Keep every letter and invoice, because a UK bill is reclaimed from your insurer the same way any other is."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "tag",
+          key: { tag: "Cover the admission", text: "Ordinary trouble is genuinely free here. What you are insuring is the admission at 150% of tariff, the non-urgent treatment you must prepay, and the flight home.", tone: "teal" },
+          p: [
+            "The honest summary is unusually cheerful at one end and unusually specific at the other. Most of what goes wrong on a UK trip costs you <b>nothing</b>, because the front door of the health service is open to you. What you are actually insuring against is the <b>admission</b>, priced above cost by design, the <b>non-urgent treatment you have to pay for in advance</b>, and the <b>medically supervised flight home</b>, which the NHS never covers.",
+            "One boundary to keep straight: the charging scheme described here is <b>England's</b>. <b>Scotland, Wales and Northern Ireland</b> operate their own overseas visitor rules, broadly similar in shape but not identical in detail, so confirm locally if you are treated outside England. For paying for the day to day, see the <a href='/united-kingdom/cash-or-card'>UK cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is the NHS free for American tourists?", a: "Partly, and the split is sharp. In England, A and E treatment and GP consultations are free to everyone including overseas visitors. Inpatient care and the outpatient treatment that follows are chargeable at 150% of the NHS national tariff." },
+        { q: "How much does a UK hospital charge a foreign visitor?", a: "Chargeable overseas visitors are billed at 150% of the NHS national tariff, a rate set in the charging regulations. NHS England publishes an overseas patient upfront tariff price list, so the figure for a given treatment is published rather than estimated." },
+        { q: "Will a UK hospital treat me if I cannot pay?", a: "For urgent or immediately necessary treatment, yes. Clinicians provide it first and the charge follows afterwards, and maternity care is always treated as immediately necessary. For non-urgent or elective treatment, providers are required to collect an estimate of the cost before treating you." },
+        { q: "Do I need travel insurance for the UK?", a: "Yes, though for a narrower reason than most countries. The emergency department and the GP are free to you, so ordinary trouble costs nothing. Cover is for the admission billed at 150% of tariff, the non-urgent care you must prepay, and the flight home, which the NHS does not provide." },
+        { q: "Do these rules apply in Scotland and Wales?", a: "Not exactly. The charging scheme described here is England's. Scotland, Wales and Northern Ireland run their own overseas visitor charging rules, similar in shape but different in detail, so confirm locally if you are treated outside England." }
+      ],
+      sourcedFigures: [
+        { fact: "A and E treatment and GP consultations are free to everyone in England, including overseas visitors", kind: "routine", src: 0, forms: ["free to everyone, including overseas visitors"] },
+        { fact: "Chargeable overseas visitors are billed at 150% of the NHS national tariff, and NHS England publishes an overseas patient upfront tariff price list", kind: "tariff", src: 0, forms: ["150%"] }
+      ],
+      sources: {
+        links: [
+          { label: "NHS England: overseas patient upfront tariff, the published price list used for charging overseas visitors", url: "https://www.england.nhs.uk/pay-syst/national-tariff/overseas-patient-upfront-tariff/", type: "gov" },
+          { label: "House of Commons Library briefing SN03051: NHS charges for overseas visitors, including the exemptions for A and E and GP services and the upfront recovery duty", url: "https://commonslibrary.parliament.uk/research-briefings/sn03051/", type: "gov" }
+        ],
+        judgment: "The 150% rate, the A and E and GP exemptions and the upfront recovery duty for non-urgent treatment are all set in the England charging regulations and described in the House of Commons Library briefing. We have not published a price for any individual treatment: NHS England's tariff list is per procedure and a single headline figure would be false precision. Scotland, Wales and Northern Ireland charge under their own rules. Checked August 2026."
+      }
     }
   ]
 };

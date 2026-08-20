@@ -56,6 +56,17 @@ const SLUG = 'medical-costs';
 const PRICE_EXEMPT = new Set([
   'cambodia', 'laos', 'sri-lanka', 'georgia', 'el-salvador', 'jamaica',
   'kuwait', 'namibia', 'china',
+  // Batch 2. Three of the four counterintuitive countries carry no routine-care price,
+  // and each omission is a decision rather than a gap, so each is named here.
+  //   australia    non-eligible patient fees are set per state and territory, not
+  //                nationally, so a single national figure would be false precision.
+  //   new-zealand  no non-resident price list sourced. The page turns on the ACC
+  //                accident/illness split, which decides the bill more than any fee does.
+  //   japan        fees ARE set on a national schedule, so this is the most promising
+  //                exemption to retire later, but no visitor-facing list is sourced yet.
+  // The United Kingdom is deliberately NOT here: it carries two sourced figures, the
+  // free A and E and GP exemption and the 150% tariff, both from NHS England.
+  'australia', 'new-zealand', 'japan',
 ]);
 
 // Countries where the honest call is that cover matters LESS than a traveler assumes, from

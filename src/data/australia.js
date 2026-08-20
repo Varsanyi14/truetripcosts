@@ -693,6 +693,79 @@ export default {
         ],
         judgment: `Carrier prices and inclusions change with your exact plan, so treat the day-pass figures as a July 2026 snapshot. Coverage maps predict outdoor coverage rather than guarantee it, so the Outback advice here is deliberately conservative: assume no signal between towns and be pleasantly surprised. Checked Jul 2026. Corrected on 31 July 2026, and worth saying what changed. This page previously quoted a flat 12 dollars a day for a carrier day pass and described T-Mobile's included roaming as slow 2G that could not handle maps. Both were wrong in the same direction, the direction that flatters the eSIM we earn a commission on. On price, 10 dollars a day is the current eligible-plan rate for both AT&T's International Day Pass and Verizon's TravelPass, with 12 dollars applying to AT&T's non-eligible plans, so the honest figure is a range. On T-Mobile, its own roaming pages now list a real high-speed allowance abroad, 5GB on Experience More, Magenta MAX and Go5G Plus, 15GB on Experience Beyond and Go5G Next and 30GB on Better Value, dropping to ${S.throttle} only after that, with the entry Essentials tier the one throttled from the start. We have rewritten the figures and the T-Mobile description throughout and cite the carriers directly. Carrier terms move faster than anything else we cover, so check your own plan rather than trusting this paragraph.`
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "Reciprocal deal", v: "Eleven countries, not the US" },
+        { k: "As an American", v: "You pay the full bill" },
+        { k: "Emergencies", v: "Treated first, billed after" },
+        { k: "Evacuation", v: "Never covered by any agreement" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Australia: no deal for Americans",
+      description: "Australia has reciprocal health agreements with eleven countries. The US is not one of them, so an American pays the full cost of care and evacuation.",
+      h1: "What does getting sick in Australia cost an American?",
+      lede: "Australia reads as a low-risk country to an American: rich, English-speaking, sensible about healthcare. The catch is a specific one. Australia does have reciprocal health deals, with eleven countries, and the United States is not among them.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Australia has <b>Reciprocal Health Care Agreements</b> with <b>eleven countries</b>: the UK, Ireland, New Zealand, Sweden, the Netherlands, Finland, Norway, Belgium, Slovenia, Malta and Italy. <b>The United States is not one of them.</b> A British visitor gets subsidised public treatment here and an American standing next to them does not, which is the single fact this page exists to deliver. Public hospitals will <b>treat an emergency regardless of your insurance status and then bill you</b>, and those bills reach into the <b>tens of thousands</b>. And the agreements would not have solved the biggest item anyway: <b>evacuation is not covered by any of them</b>, and Australia's own travel advice says so.",
+      insurance: true,
+      insuranceNote: "There is no reciprocal agreement between the US and Australia, so nothing subsidises your care here and the full bill is yours. Public hospitals will treat an emergency and invoice you afterwards, and distances mean an evacuation is a live possibility rather than a theoretical one. That combination is the honest reason to carry cover for Australia. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, get treated first and settle the account afterwards.",
+      sections: [
+        {
+          h: "Eleven countries have a deal here. Yours is not one",
+          icon: "alert",
+          key: { tag: "Not the US", text: "Australia's Reciprocal Health Care Agreements cover eleven countries. The United States is not among them, so an American visitor gets no subsidised care.", tone: "amber" },
+          p: [
+            "Australia runs <b>Reciprocal Health Care Agreements</b> under its Health Insurance Act, and they are real and useful, just not to you. The list is <b>eleven countries</b>: the <b>United Kingdom, Ireland, New Zealand, Sweden, the Netherlands, Finland, Norway, Belgium, Slovenia, Malta and Italy</b>. Visitors from those countries can get medically necessary treatment through Medicare, Australia's public system.",
+            "<b>The United States is not on the list</b>, and there is no partial version for Americans. So the mental shortcut that says a wealthy country with public healthcare will look after you cheaply does not apply here, and it fails precisely because of your passport rather than anything about your trip."
+          ]
+        },
+        {
+          h: "They treat you. Then they invoice you",
+          icon: "receipt",
+          key: { tag: "Billed after", text: "Public hospitals treat an emergency regardless of insurance status and bill afterwards. The care is not withheld, and the bill is not waived.", tone: "amber" },
+          p: [
+            "The practical reassurance is that Australian public hospitals will <b>treat an emergency regardless of your insurance status</b>. Nobody is checking your cover before they deal with the thing that is wrong with you. <b>If it looks serious, get treated first and settle the account afterwards.</b>",
+            "The financial reality follows a beat later: as a non-eligible patient you are <b>invoiced for the full cost</b>, and for a serious admission that runs into the <b>tens of thousands</b>. Being treated and not being charged are different things, and Australia is a clean example of the gap between them."
+          ]
+        },
+        {
+          h: "The distance problem, and the one thing no agreement covers",
+          icon: "plane",
+          key: { tag: "Evacuation", text: "Reciprocal agreements do not cover medical evacuation anywhere, and Australia's own travel advice says so plainly. Distances here make it a real line item.", tone: "amber" },
+          p: [
+            "Even for the eleven countries that do have an agreement, <b>evacuation is not covered</b>. Australia's own Smartraveller advice tells Australians exactly that about their agreements abroad: they are not a substitute for insurance, and evacuations are not covered by them. The principle runs both ways, so an American should not imagine a reciprocal deal would have rescued them from this particular bill even in a world where one existed.",
+            "That matters more here than in most rich countries because of <b>distance</b>. A problem in the outback, on a remote stretch of coast, or on a long drive between towns is a <b>transport problem before it is a treatment problem</b>, and moving a patient across Australian distances is expensive. Read the evacuation limit on your policy as the number that decides how that day goes."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "State and territory hospitals set their own non-eligible patient fees, so there is no single national figure we would publish. The structure is the plannable part.", tone: "teal" },
+          p: [
+            "We have <b>not published a price</b> for Australian care on this page. Fees for non-eligible patients are set by <b>state and territory health systems</b> rather than nationally, so a single figure would be tidy and wrong, and a wrong number on a medical page is something a person might act on while unwell.",
+            "What is solid is the structure, and it is the part you plan around: <b>no reciprocal cover for Americans</b>, <b>treatment first and an invoice after</b>, <b>a serious admission in the tens of thousands</b>, and <b>evacuation never covered by any agreement</b>. For handling the day to day, see the <a href='/australia/cash-or-card'>Australia cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does the US have a reciprocal health agreement with Australia?", a: "No. Australia has Reciprocal Health Care Agreements with eleven countries: the UK, Ireland, New Zealand, Sweden, the Netherlands, Finland, Norway, Belgium, Slovenia, Malta and Italy. The United States is not among them, so an American visitor pays the full cost of care." },
+        { q: "Will an Australian hospital treat me without insurance?", a: "Yes, for an emergency. Public hospitals treat emergencies regardless of insurance status. You are then invoiced as a non-eligible patient, and a serious admission runs into the tens of thousands." },
+        { q: "Does Medicare cover me in Australia?", a: "Not US Medicare, which pays essentially nothing outside the United States, and not Australian Medicare either, since that is open to visitors only from the eleven reciprocal agreement countries. Americans are outside both." },
+        { q: "Is medical evacuation covered in Australia?", a: "Not by any reciprocal agreement. Australia's own travel advice states that evacuations are not covered by reciprocal health care agreements and that they are not a substitute for insurance. Given Australian distances, the evacuation limit on your own policy is the figure worth checking." },
+        { q: "How much does a doctor cost in Australia?", a: "We have not published a figure, because fees for non-eligible patients are set by each state and territory rather than nationally and a single national number would be false precision. Confirm the cost with the facility treating you." }
+      ],
+      sources: {
+        links: [
+          { label: "Services Australia: Reciprocal Health Care Agreements, including the list of eleven countries", url: "https://www.servicesaustralia.gov.au/reciprocal-health-care-agreements", type: "gov" },
+          { label: "Smartraveller, Australian Government: using a healthcare agreement for medical care, including that evacuations are not covered and an agreement is not a substitute for insurance", url: "https://www.smartraveller.gov.au/before-you-go/health/reciprocal-health", type: "gov" }
+        ],
+        judgment: "The eleven-country list and the exclusion of the United States come from Services Australia. The point that reciprocal agreements never cover evacuation comes from Smartraveller, which is Australian government advice written for Australians travelling abroad; we cite it for how these agreements work rather than as advice to Americans in Australia. We have published no price figures because non-eligible patient fees are set by each state and territory. Checked August 2026."
+      }
     }
   ]
 };

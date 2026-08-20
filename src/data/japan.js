@@ -754,6 +754,79 @@ export default {
         ],
         judgment: "The seat and table charge ranges are typical 2026 figures from Japanese restaurant reporting, not a fixed price list, and every venue sets its own. The rip-off bar figures are deliberately given as a typical range plus a note that reported cases run much higher, because the headline police cases are extreme single incidents rather than what a visitor should expect. The four named Tokyo districts come from Japanese police, relayed in UK and US government advice. The vast majority of visits to Japan see none of this. Checked August 2026."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "A resident pays", v: "About 30% of the bill" },
+        { k: "You pay", v: "All 100% of it" },
+        { k: "When", v: "Before you leave the building" },
+        { k: "Direct billing", v: "Not a thing here" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Japan: you pay all of it, upfront",
+      description: "Japanese care is well priced, but a visitor pays 100% where a resident pays 30%, in full at the counter, and clinics do not bill your travel insurer.",
+      h1: "What does getting sick in Japan cost a visitor?",
+      lede: "Japan is a country where the per-visit price is reasonable and the payment mechanics still catch people out. A resident covers about a third of the bill. You cover all of it, at the counter, before you go.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Japan's national health insurance is for <b>residents</b>, and a short-stay visitor <b>cannot enrol</b>. An insured resident typically pays about <b>30%</b> of a bill. You pay <b>100%</b>. The bigger practical shock is the mechanics: payment is expected <b>in full at the time of treatment</b>, and Japanese hospitals and clinics generally <b>do not bill travel insurers directly</b>, so you pay and claim it back later unless your policy has a cashless arrangement. Japanese care is often <b>cheaper than the American equivalent even at full price</b>, so this is not a page about being fleeced. It is a page about a <b>hospital admission you fund yourself on the day</b>, and about the fact that unpaid medical bills can affect your ability to enter Japan again.",
+      insurance: true,
+      insuranceNote: "Japanese care is well priced, so a clinic visit here is not the thing to fear. What cover is for is the admission you pay for in full on the day, and the flight home, which national insurance never covers. Check whether your policy offers cashless direct billing, because Japanese providers generally will not invoice your insurer for you. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, get treated first and sort the payment out after.",
+      sections: [
+        {
+          h: "Thirty percent is for residents. You are at a hundred",
+          icon: "receipt",
+          key: { fig: "100%", tag: "Your share", text: "Japan's national health insurance covers residents, who pay around 30% of a bill. A short-stay visitor cannot enrol and pays the whole thing.", tone: "amber" },
+          p: [
+            "Japan has excellent, well-regulated healthcare with nationally set prices, and none of it is arranged around you. <b>National health insurance is for residents</b>, and a <b>short-stay visitor cannot enrol</b>. An insured resident typically pays about <b>30%</b> of the cost of care at the point of use.",
+            "A visitor pays <b>100%</b>. That is the whole gap in one line, and it is the fact that makes Japan feel more expensive than its reputation suggests. Your American health plan does not fill it either, since US plans rarely pay abroad, and Medicare pays essentially nothing outside the United States."
+          ]
+        },
+        {
+          h: "Payment happens before you leave",
+          icon: "cash",
+          key: { tag: "In full, on the day", text: "Providers expect payment in full at the time of treatment, and patients settle the entire amount before leaving the hospital.", tone: "amber" },
+          p: [
+            "This is the part that trips people, and it is a norm rather than a hostile act. Japanese providers <b>require payment in full at the time of treatment</b>, or concrete proof that you can pay, before treating a foreigner who is not in the national insurance system. Patients are expected to <b>settle the entire amount before leaving the hospital</b>.",
+            "So the practical question is not whether you can afford care in Japan, it is whether you can produce the money <b>that afternoon</b>. Many clinics are <b>cash-preferring</b>, so a card is not a guarantee. <b>If it looks serious, get treated first and sort the payment out after.</b>"
+          ]
+        },
+        {
+          h: "Your insurer is not in the room",
+          icon: "alert",
+          key: { tag: "No direct billing", text: "Japanese hospitals and clinics generally do not bill travel insurers directly. You pay, keep the paperwork, and claim it back unless your policy offers a cashless service.", tone: "amber" },
+          p: [
+            "Japanese hospitals and clinics <b>generally do not bill your travel insurance company directly</b>. The transaction is between you and the provider, and your insurer reimburses you afterwards on the paperwork you bring home. Some policies offer a <b>cashless service</b> where the insurer settles with the provider instead, and Japan's own tourism guidance suggests checking for exactly that before you travel, because it removes the problem entirely.",
+            "Two consequences worth acting on. Keep the <b>itemised receipt and the treatment record</b>, and ask for them in writing at the time, because a reimbursement claim without documentation goes nowhere. And note that <b>unpaid medical bills carry a real penalty</b>: Japan has tightened immigration screening for foreign visitors with outstanding medical debts, and unpaid expenses may restrict or refuse your entry on a future trip."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "Japan sets fees nationally, but we have not sourced a visitor-facing price list we would stand behind, so we publish none. The mechanics matter more here anyway.", tone: "teal" },
+          p: [
+            "Japan sets medical fees on a <b>national schedule</b>, which makes it one of the more promising countries on this site for a real sourced price, and we still have <b>not published one</b>. We do not yet have a visitor-facing price list we would put our name to, and inventing a plausible consultation fee for a country whose prices are genuinely published would be a particularly poor way to be wrong.",
+            "For Japan the mechanics matter more than the sticker price anyway: <b>100% not 30%</b>, <b>paid on the day</b>, <b>no direct billing</b>, and a <b>flight home that no Japanese scheme covers</b>. For getting hold of cash, which matters here because clinics often prefer it, see the <a href='/japan/cash-or-card'>Japan cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Can tourists use Japan's national health insurance?", a: "No. Japan's national health insurance is available to residents and to foreigners on long-term visas. A short-stay visitor cannot enrol, so you pay the full cost of any care you receive." },
+        { q: "How much do tourists pay for healthcare in Japan?", a: "All of it. An insured resident typically pays about 30% of the bill at the point of care, and a visitor pays 100%. Japanese prices are often lower than American ones even at full rate, but the whole amount is yours." },
+        { q: "Do Japanese hospitals bill travel insurance directly?", a: "Generally no. Providers expect payment in full at the time of treatment and you claim the cost back from your insurer afterwards. Some policies offer a cashless service where the insurer pays the provider directly, which is worth checking before you travel." },
+        { q: "What happens if I do not pay a medical bill in Japan?", a: "It can follow you. Japan has tightened immigration screening for foreign visitors with unpaid medical expenses, and an outstanding bill may restrict or refuse your entry to Japan in future. This is one of the clearer cases for carrying cover." },
+        { q: "How much does a doctor visit cost in Japan?", a: "We have not published a figure. Japan sets fees on a national schedule, but we have not sourced a visitor-facing price list we would stand behind, and a recalled number on a medical page is not something we will print. Confirm at the facility." }
+      ],
+      sources: {
+        links: [
+          { label: "Japan National Tourism Organization: travel insurance in Japan, including cashless service and the entry consequences of unpaid medical expenses", url: "https://www.japan.travel/en/plan/travel-insurance-in-japan/", type: "gov" },
+          { label: "US Embassy and Consulates in Japan: medical assistance, including that national health insurance is for long-term visa holders, that payment in full is required at the time of treatment, and that it does not pay for medical evacuation", url: "https://jp.usembassy.gov/services/doctors/", type: "gov" }
+        ],
+        judgment: "The 30% resident share is the standard co-payment rate under Japan's national health insurance and is widely and consistently reported; the visitor paying the full amount, payment being required in full at the time of treatment, and national insurance not covering evacuation all come from the US Embassy in Japan. The cashless-service point and the entry consequence of unpaid bills come from JNTO. We have deliberately not repeated the reported practice of some institutions charging uninsured foreign patients a higher per-point rate, because we could not confirm it against a primary source. No local price figures are published here. Checked August 2026."
+      }
     }
   ]
 };
