@@ -439,6 +439,78 @@ export default {
         ],
         judgment: "Checked Aug 2026. Qatar is the Gulf country where the sources most consistently agree that app calling is restricted, so this page states that, and it still declines to say how reliably, because the accounts differ and nearly every one of them is published by a VPN or eSIM seller with an interest in the answer. The advice that follows from genuine uncertainty is to carry a fallback and test on arrival, which costs nothing and works whichever way the block is running that week."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "Visitor insurance", v: "Required for some entrants" },
+        { k: "Private care", v: "Good, at Western prices" },
+        { k: "Deposits", v: "Expected before treatment" },
+        { k: "Real risk", v: "A private admission" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Qatar: check the entry insurance rule first",
+      description: "Qatar has required health insurance from some arriving visitors, and separately charges visitors for care. Private hospitals are good and priced like private care.",
+      h1: "What does getting sick in Qatar cost a visitor?",
+      lede: "Qatar is the one Gulf country where the insurance question may be answered before you land, because it has tied health cover to entry for some visitors. Check the current rule, because it moves.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Qatar introduced a requirement for certain <b>arriving visitors to hold health insurance</b> covering their stay, bought from an approved provider. <b>Check the current rule before you travel</b>, because the scope and the enforcement have changed since it was introduced and we will not state today's version as settled. Separately from entry rules, the money position is the familiar Gulf one: <b>visitors are charged</b> for care, the realistic route is a <b>private hospital</b> at <b>Western prices</b>, and a <b>deposit or proof of insurance before treatment</b> is normal. Qatar's medical facilities are <b>modern and well equipped</b>, particularly in and around Doha.",
+      insurance: true,
+      insuranceNote: "Qatar has tied health insurance to entry for some visitors, so check whether you are required to hold an approved policy before you fly. That aside, the position is the Gulf norm: private care at private prices, with a deposit expected. Cover here may be a rule as well as a good idea. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, get to a hospital first and deal with the paperwork afterwards.",
+      sections: [
+        {
+          h: "Insurance may be an entry condition",
+          icon: "alert",
+          key: { tag: "Check it, do not assume", text: "Qatar introduced a health insurance requirement for certain arriving visitors, from approved providers. The scope has shifted, so verify the current rule before you fly.", tone: "amber" },
+          p: [
+            "Qatar is unusual in the region for having tied health cover to <b>entry</b>: it introduced a requirement for certain arriving visitors to hold <b>health insurance</b> covering their stay, purchased from an <b>approved provider</b>. That makes cover a compliance question as well as a financial one.",
+            "We are <b>not</b> stating the current scope as settled, because the rule and its enforcement have changed since introduction and this is exactly the kind of detail that goes stale. <b>Check the official position before you travel</b>, and if you are required to hold an approved local policy, note that your existing travel policy may not satisfy it, which is a different question from whether it would pay a claim."
+          ]
+        },
+        {
+          h: "The money position is the Gulf norm",
+          icon: "receipt",
+          key: { tag: "Private, priced", text: "Visitors are charged for care. Private hospitals in and around Doha are modern and priced at Western private levels, with deposits expected.", tone: "amber" },
+          p: [
+            "Underneath the entry rule, Qatar behaves like its neighbours. <b>Visitors are charged</b> for treatment, the practical route is a <b>private hospital</b>, and facilities in and around <b>Doha</b> are modern and well equipped with English-speaking staff. Prices are at <b>Western private levels</b> rather than regional bargain levels.",
+            "A <b>deposit or proof of insurance before treatment</b> is normal, particularly for admission. <b>If it looks serious, get to a hospital first and deal with the paperwork afterwards.</b>"
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We have not sourced an official Qatari price list for visitors that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. We have <b>not sourced an official Qatari tariff for non-resident care</b> that we would put our name to, so no local price figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "What holds without a figure: <b>you are charged as a visitor</b>, <b>private care is the route and it is priced like private care</b>, <b>a deposit is normal</b>, and <b>an approved insurance policy may be an entry requirement</b>. On the last point, the official source is the one to trust rather than us, because it changes."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Two separate questions", text: "Whether you must hold an approved policy to enter, and whether you have enough cover if something happens, are different questions. Answer both.", tone: "teal" },
+          p: [
+            "Keep the two questions apart, because conflating them is how people arrive underinsured with a compliant certificate. The first is <b>compliance</b>: does Qatar require you to hold an approved policy to enter, and does yours qualify. The second is <b>adequacy</b>: if you are admitted to a private hospital in Doha or need a flight home, does your cover actually stretch.",
+            "A minimum-compliance policy bought to satisfy an entry rule is not necessarily a policy that absorbs a serious admission. For handling payments on the ground, see the <a href='/qatar/cash-or-card'>Qatar cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is health insurance required to enter Qatar?", a: "It has been required for certain arriving visitors, from approved providers. The scope and enforcement have changed since introduction, so check the current official position before you travel rather than relying on any secondary source, including this one." },
+        { q: "How much does a hospital cost in Qatar?", a: "We have not published a figure, because we did not source an official Qatari tariff for visitor care. Private hospitals, which are the realistic route, charge at Western private levels." },
+        { q: "Will my travel insurance satisfy Qatar's entry requirement?", a: "Not necessarily. Where an approved local policy is required, an existing travel policy may not qualify even if it would pay a claim. Compliance and adequacy are separate questions and both need answering." },
+        { q: "Are Qatari hospitals good?", a: "Yes. Facilities in and around Doha are modern and well equipped, with English-speaking staff, and the private sector is built for an international population." },
+        { q: "Do I need travel insurance for Qatar?", a: "Very likely as a rule, and certainly as a practical matter. Visitors are charged, private care is priced accordingly, deposits are normal, and a flight home is on top." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Qatar country information, including health and medical care guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Qatar.html", type: "gov" }
+        ],
+        judgment: "This page deliberately does not state the current scope of Qatar's visitor health insurance entry requirement, because the rule and its enforcement have changed since introduction and a stale entry requirement is a costly thing to get wrong. We point to the official source instead. No price figures appear because we did not source an official Qatari tariff for visitor care. Checked August 2026."
+      }
     }
   ],
 

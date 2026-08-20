@@ -640,6 +640,78 @@ export default {
         ],
         judgment: "The Deutschland-Ticket price and its exclusion of fast trains come from the operator directly, so both are firm, as is the optional-reservation rule. The reservation fee of about 5.50 euros in second class is consistently quoted by rail specialists and matches the operator's own optional-extra pricing. Which of the three products wins is route-dependent by nature, and calling Germany a genuine toss-up rather than a clear no is our own read: it rests on the absence of compulsory reservation fees, which is a published rule, and on Sparpreis quotas, which vary by route and date in ways no page can predict for you. The summer cross-border reservation exceptions change season to season, so check the schedule rather than trusting a date here. Checked Aug 2026."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "You pay", v: "As a private patient" },
+        { k: "The care", v: "Excellent, and everywhere" },
+        { k: "Emergency", v: "Treated first, billed after" },
+        { k: "Real risk", v: "An admission, not a clinic" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Germany: private patient, contained costs",
+      description: "Germany bills visitors as private patients. Care is excellent and widely available, and costs are contained by regulation rather than left to the market.",
+      h1: "What does getting sick in Germany cost a visitor?",
+      lede: "Germany has one of the densest, most capable hospital networks in Europe, and being uninsured there is a billing problem rather than an access problem.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Germany's statutory health insurance covers its <b>members</b>, and a visitor is not one. You are treated as a <b>private patient</b> and billed, with fees for physician services set by a <b>regulated schedule</b> rather than left entirely to the market. That matters: it means German care is <b>expensive rather than unbounded</b>, which is a real distinction if your reference point is a US hospital. <b>Emergency care is provided first and billed afterwards</b>, and Germany's hospital network is <b>dense</b>, so distance is rarely the problem. Pharmacies, the <b>Apotheke</b>, handle a lot of minor trouble directly. The exposure sits in an <b>admission</b>, and in getting home.",
+      insurance: true,
+      insuranceNote: "Germany bills you as a private patient, and its regulated fee schedules mean costs are contained rather than open-ended. Care is excellent and close by almost anywhere in the country. What cover is for is the admission and the flight home, not the everyday. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, call 112 or go to the Notaufnahme first and settle the bill afterwards.",
+      sections: [
+        {
+          h: "You are a private patient",
+          icon: "receipt",
+          key: { tag: "Billed directly", text: "German statutory insurance covers its members. A visitor is treated as a private patient and invoiced, with physician fees set by a regulated schedule.", tone: "amber" },
+          p: [
+            "German healthcare runs on <b>statutory and private insurance funds</b>, and entitlement follows membership. A visitor is outside all of them and is treated as a <b>private patient</b>, invoiced for the care received. Physicians bill according to a <b>regulated fee schedule</b> rather than at whatever the practice chooses, which puts a real ceiling on how surprising the invoice can be.",
+            "That is a meaningful difference from an American frame of reference. German care is <b>expensive relative to Southern or Eastern Europe</b> and <b>contained relative to the United States</b>, and both halves of that are true at once."
+          ]
+        },
+        {
+          h: "Access is not the problem",
+          icon: "health",
+          key: { tag: "Dense network", text: "Germany has one of Europe's densest hospital networks, so a capable facility is rarely far away. Emergency care is given first and billed afterwards.", tone: "teal" },
+          p: [
+            "Germany's <b>hospital network is dense</b> by any standard, and a capable facility is rarely far from wherever you are, including in rural areas. The <b>Notaufnahme</b>, the emergency department, treats first and bills after, and <b>112</b> is the number.",
+            "<b>If it looks serious, call 112 or go to the Notaufnahme first and settle the bill afterwards.</b> For lesser trouble, the <b>Apotheke</b> is a genuine resource: German pharmacists advise on minor complaints and will direct you to a doctor when it is warranted, and there is always a duty pharmacy open."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We have not sourced an official German price list for visitors that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. We have <b>not sourced an official German tariff for non-resident care</b> that we would put our name to, so no local price figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure is reliable: <b>you are a private patient</b>, <b>fees follow a regulated schedule</b>, <b>emergency care precedes billing</b>, and <b>an admission is where the money is</b>. Germany publishes its physician fee schedule, so this is a country where a sourced figure is achievable, and we would rather add one properly later than approximate it now."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Contained, not cheap", text: "The honest German position: a real bill, not a catastrophic one, unless the admission is long. Repatriation is the uncapped item.", tone: "teal" },
+          p: [
+            "The honest calibration for Germany is <b>a real bill rather than a catastrophic one</b>, unless you are admitted for a long time or need major surgery. Regulated fees and a well-run system mean the numbers are large but bounded, and travelers who arrive braced for American pricing generally find otherwise.",
+            "The item that is <b>not</b> bounded is a <b>medically supervised flight home</b>, which is an aviation cost and has no German regulation behind it. That is the number to check on a policy. For paying on the ground, see the <a href='/germany/cash-or-card'>Germany cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare free in Germany for tourists?", a: "No. German statutory insurance covers its members and a visitor is treated as a private patient and invoiced. Emergency care is given first and billed afterwards." },
+        { q: "How much does a doctor cost in Germany?", a: "We have not published a figure. German physician fees follow a regulated schedule, which we did not verify against the official source for this page, and we will not print a recalled number on a medical page." },
+        { q: "Will a German hospital treat me without insurance?", a: "Yes. The Notaufnahme treats a genuine emergency first and bills afterwards. Germany's hospital network is dense, so access is rarely the difficulty." },
+        { q: "Are German medical costs as high as American ones?", a: "Generally no. Physician fees follow a regulated schedule rather than the market, so costs are expensive relative to Southern or Eastern Europe and contained relative to the United States. Both are true at once." },
+        { q: "Do I need travel insurance for Germany?", a: "It is worth carrying for an admission or surgery, and above all for a flight home, which is the one genuinely uncapped item. Routine care is a real but bounded cost." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Germany country information, including health and medical care guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Germany.html", type: "gov" }
+        ],
+        judgment: "No price figures appear here. Germany publishes a regulated physician fee schedule and a sourced figure is achievable on a later pass, but we did not verify one against the official source for this page. The framing is deliberately proportionate: German costs are high by European standards and contained by American ones, and saying only the first half would mislead in the direction that sells insurance. Checked August 2026."
+      }
     }
   ]
 };

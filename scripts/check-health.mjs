@@ -67,6 +67,19 @@ const PRICE_EXEMPT = new Set([
   // The United Kingdom is deliberately NOT here: it carries two sourced figures, the
   // free A and E and GP exemption and the 150% tariff, both from NHS England.
   'australia', 'new-zealand', 'japan',
+  // Batch 3, the OFFICIAL tier. Three of the seventeen cleared MAIN's source bar and
+  // carry real figures: hong-kong (Hospital Authority non-eligible person rates),
+  // canada (Hopital Montfort published 2026-27 non-resident fees) and ireland
+  // (HSE statutory charge plus Beaumont's published non-EU rates). They are NOT here.
+  // The rest are figureless because THIS SOURCING PASS did not reach an authority's
+  // own page, which is not the same as no official source existing. Several of these
+  // very probably publish one and should be retired from this list on a later pass:
+  // the Nordics publish patient fee schedules, Taiwan's NHI publishes a fee schedule,
+  // Korean university hospitals publish self-pay rates, and France, Germany and the
+  // Netherlands all publish regulated tariffs. singapore is a partial: MOH's subsidy
+  // structure is sourced and declared, but no non-resident currency figure was found.
+  'switzerland', 'norway', 'denmark', 'sweden', 'iceland', 'south-korea', 'taiwan',
+  'singapore', 'uae', 'qatar', 'france', 'germany', 'netherlands', 'austria',
 ]);
 
 // Countries where the honest call is that cover matters LESS than a traveler assumes, from
@@ -82,10 +95,25 @@ const CRUX = new Set([
 // local-currency codes the guides actually use in medical contexts. Ranges are captured
 // whole ("15,000 to 20,000 dollars") so a declaration matches the sentence rather than one
 // end of it. Bare years and percentages are excluded, since neither is a price.
+//
+// WIDENED IN BATCH 3, after a mutation test caught the gate missing a fabricated price.
+// The original pattern required "dollars" to sit immediately after the digits, so it saw
+// "15,000 to 20,000 dollars" but was blind to "12,900 Hong Kong dollars", "2,980 Canadian
+// dollars", "446.82 euro" and the bare "8,840.50". Batch 3 is the first batch to quote
+// non-US currencies heavily, so the hole was invisible until the OFFICIAL tier landed: an
+// invented Hong Kong or Canadian price would have shipped undeclared. Three additions:
+//   1. an optional nationality qualifier between the number and the currency word,
+//   2. euro and pound amounts, not just dollars,
+//   3. any comma-grouped number, which on a medical-costs page is always money.
+// Rule 3 can over-match (a distance, a population), and that is the safe direction: a
+// false positive costs an editor one declaration, a false negative ships a fabricated
+// price under a commission link.
+const CURRENCY_QUALIFIER = '(?:Hong Kong|Canadian|Singapore|Singaporean|Australian|New Zealand|US|Taiwan|Taiwanese|Jamaican|Namibian|Emirati|Qatari|Swiss|Danish|Norwegian|Swedish|Icelandic)\\s';
 const FIGURE_RE = new RegExp([
   '\\$\\s?[\\d,]+(?:\\.\\d+)?(?:\\s?(?:to|-)\\s?\\$?[\\d,]+(?:\\.\\d+)?)?(?:k|\\+)?',
-  '[\\d,]+(?:\\s?(?:to|-)\\s?[\\d,]+)?\\s?(?:dollars|USD)',
-  '[\\d,]+(?:\\s?(?:to|-)\\s?[\\d,]+)?\\s?(?:pesos|GEL|KWD|LAK|KHR|LKR|JMD|NAD|CNY|yuan|RMB|lari|dinars?)',
+  `[\\d,]+(?:\\.\\d+)?(?:\\s?(?:to|-)\\s?[\\d,]+(?:\\.\\d+)?)?\\s?(?:${CURRENCY_QUALIFIER})?(?:dollars?|USD|euros?|EUR|pounds?)`,
+  '[\\d,]+(?:\\s?(?:to|-)\\s?[\\d,]+)?\\s?(?:pesos|GEL|KWD|LAK|KHR|LKR|JMD|NAD|CNY|HKD|CAD|SGD|yuan|RMB|lari|dinars?)',
+  '\\b\\d{1,3}(?:,\\d{3})+(?:\\.\\d+)?\\b',
 ].join('|'), 'gi');
 
 const strip = (s) => String(s || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -142,14 +170,38 @@ for (const c of countries) {
 const untraced = [];
 for (const { c, sp } of withSpoke) {
   const prose = proseOf(sp);
-  const found = [...new Set((prose.match(FIGURE_RE) || []).map(s => s.trim()))];
   const decls = Array.isArray(sp.sourcedFigures) ? sp.sourcedFigures : [];
   const links = (sp.sources && sp.sources.links) || [];
   const exempt = PRICE_EXEMPT.has(c.slug);
   const allForms = decls.flatMap(d => d.forms || []);
 
-  for (const f of found) {
-    if (!allForms.some(form => f.includes(form) || form.includes(f))) {
+  // POSITION MATCHING, not substring matching. The earlier version asked whether a prose
+  // figure and a declared form contained one another as strings, and a mutation test found
+  // that too loose: an injected "65 euro" was silently absolved by the declared form
+  // "111.65 euro", because the declared string happens to contain the injected one. A
+  // fabricated price could therefore hide behind a legitimate neighbour. Now every regex
+  // hit is located in the prose and must sit INSIDE an actual occurrence of a declared
+  // form. Coincidental overlap no longer clears a figure; only real coverage does.
+  const spans = [];
+  for (const form of allForms) {
+    let at = prose.indexOf(form);
+    while (at !== -1) { spans.push([at, at + form.length]); at = prose.indexOf(form, at + 1); }
+  }
+  const covered = (start, end) => spans.some(([a, b]) => a <= start && end <= b);
+  const reported = new Set();
+  for (const m of prose.matchAll(FIGURE_RE)) {
+    // The digit classes include commas so ranges capture whole, which means a match can
+    // swallow the sentence's own punctuation ("$18 to $25,"). Trim it off both ends
+    // before comparing, or a figure fails against its own correct declaration.
+    const raw = m[0];
+    const lead = raw.length - raw.trimStart().length;
+    const trimmed = raw.trim().replace(/[.,;:]+$/, '');
+    if (!trimmed) continue;
+    const start = m.index + lead;
+    const end = start + trimmed.length;
+    const f = trimmed;
+    if (!covered(start, end) && !reported.has(f)) {
+      reported.add(f);
       fail(`2 FIGURE     ${c.slug}: prose states "${f}" but no sourcedFigures entry claims it. Declare it with its fact, kind and source, or remove it.`);
     }
   }

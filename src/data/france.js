@@ -844,6 +844,78 @@ export default {
         ],
         judgment: "The compulsory-reservation rule and the advance-fare structure are published by the operator and are the firm part of this page. What a passholder pays to reserve is not something the operator publicises, and the estimates reaching us from rail specialists clustered between 10 and 20 euros according to train and availability, so we print a band instead of one figure. Whether a pass can be used on OUIGO is genuinely contested across otherwise reliable sources, so we say so plainly instead of picking a side. The Carte Avantage price is the current published figure and these cards are repriced periodically. That a pass rarely wins in France is our own read, though it follows from the reservation charge and the passholder quota. Checked Aug 2026."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "You pay", v: "Then claim it back" },
+        { k: "Tariffs", v: "Regulated, and modest" },
+        { k: "Emergency care", v: "Given without a card" },
+        { k: "Real risk", v: "A long admission, not a visit" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in France: you pay, and it is not ruinous",
+      description: "France charges visitors for care, but tariffs are regulated and a doctor's visit is modest. The real exposure is a long hospital admission, not a consultation.",
+      h1: "What does getting sick in France cost a visitor?",
+      lede: "France is where the honest answer is calmer than the reflex. Yes, you pay. No, a doctor's appointment is not going to be an American-sized number, because the tariffs are regulated.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "As a visitor you <b>pay for care in France</b> and claim it back from your own insurer; the French system reimburses its own residents and has no arrangement with you. What keeps this manageable is that French medical <b>tariffs are regulated</b>, so a <b>general practitioner consultation</b> sits at a set, published rate rather than whatever the market will bear, and it is modest by American standards. <b>Emergency care is provided</b> whether or not you can produce a card. The genuine exposure here is a <b>long hospital admission</b>, surgery, or a <b>repatriation</b>, not a visit to a doctor. France is an expensive country to break a leg in and an inexpensive one to catch something in.",
+      insurance: true,
+      insuranceNote: "France is calmer than most pages here. Tariffs are regulated, a doctor's visit is modest, and emergency care is given first. What cover is genuinely for is a long admission, surgery, or a flight home. We would rather tell you the exposure is narrow than imply it is not. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, call 15 or go to the urgences first and deal with payment afterwards.",
+      sections: [
+        {
+          h: "Regulated tariffs keep the small stuff small",
+          icon: "health",
+          key: { tag: "Set rates", text: "French medical fees are regulated rather than market-set, so a GP consultation sits at a published rate that is modest by American standards.", tone: "teal" },
+          p: [
+            "The thing that makes France different from an American frame of reference is that fees are <b>regulated</b>. A consultation with a <b>medecin generaliste</b> has a <b>set tariff</b> rather than a price the practice invents, and while some doctors are authorised to charge above it, the base rate anchors the whole thing. You pay it, get a receipt, and claim it from your insurer.",
+            "So the everyday scenario in France is <b>inconvenient rather than frightening</b>: a stomach bug, an ear infection, a sprain. You will be out of pocket for a while and you will be reimbursed. Pharmacies are also a genuine first stop, since French pharmacists handle minor complaints directly and will send you to a doctor when it warrants one."
+          ]
+        },
+        {
+          h: "Emergency care comes first",
+          icon: "alert",
+          key: { tag: "15 or 112", text: "The urgences treat first and ask about payment afterwards. 15 reaches SAMU, the medical emergency service, and 112 works throughout.", tone: "teal" },
+          p: [
+            "For anything serious, <b>15</b> reaches <b>SAMU</b>, the medical emergency service, and <b>112</b> works across the country. The <b>urgences</b> department of a public hospital treats a genuine emergency without first establishing how it will be paid for.",
+            "<b>If it looks serious, call 15 or go to the urgences first and deal with payment afterwards.</b> France is not a country where the cost question should slow anyone down, and it is worth knowing that before you are the one deciding."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We have not sourced an official French price list for visitors that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. We have <b>not sourced an official French tariff for non-resident care</b> that we would put our name to, so no local price figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "What is dependable: <b>you pay and claim back</b>, <b>tariffs are regulated so the small stuff stays small</b>, <b>emergency care precedes payment</b>, and <b>the exposure is a long admission rather than a consultation</b>. We could have quoted the standard consultation tariff from memory; we would rather source it properly on a later pass than print it now."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Proportion", text: "The honest French risk is a long admission or a repatriation. Routine care is a reimbursement exercise, not a financial event.", tone: "teal" },
+          p: [
+            "Keeping this in proportion: for most travelers, most of the time, French healthcare is a <b>paperwork exercise</b>. You pay, you keep the <b>feuille de soins</b> and the receipts, you claim. That is genuinely the shape of it, and inflating it would be dishonest.",
+            "The real exposure is the <b>long admission</b>, the <b>surgery</b>, and the <b>medically supervised flight home</b>, which no French arrangement covers. That is a narrower case for insurance than we make elsewhere, and it is the accurate one. For paying on the ground, see the <a href='/france/cash-or-card'>France cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare free in France for tourists?", a: "No. You pay for care and claim it back from your own insurer, since the French system reimburses its own residents. Emergency treatment is provided first regardless." },
+        { q: "How much does a doctor cost in France?", a: "We have not published a figure. French consultation fees are regulated and modest by American standards, but we did not source the current official tariff for this page and we will not print a recalled number on a medical page." },
+        { q: "What number do I call for a medical emergency in France?", a: "15 reaches SAMU, the medical emergency service, and 112 works throughout the country. The urgences department of a public hospital will treat a genuine emergency without settling payment first." },
+        { q: "Is a French hospital admission expensive for a visitor?", a: "It is the real exposure here, yes, in contrast to routine care which is modest. A long admission or surgery is what a travel medical policy is for in France, along with a flight home." },
+        { q: "Do I need travel insurance for France?", a: "For a narrower reason than in many countries. Routine care is a reimbursement exercise rather than a financial crisis. Cover is for a long admission, surgery, or repatriation." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: France country information, including health and medical care guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/France.html", type: "gov" }
+        ],
+        judgment: "No price figures appear here. France publishes its regulated consultation tariffs and this is a country where a sourced figure is entirely achievable on a later pass, but we did not verify the current rate against the official schedule for this page and would not print one from memory. The framing is deliberately calm because that is the accurate read: French routine care is modest and the exposure sits in a long admission. Checked August 2026."
+      }
     }
   ]
 };

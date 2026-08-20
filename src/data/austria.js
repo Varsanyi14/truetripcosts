@@ -661,6 +661,78 @@ export default {
         ],
         judgment: "Checked Aug 2026. The alpine coverage read is the desk's from operator footprints and consistent traveler accounts rather than one official table, and the honest summary is that reach follows the valleys. The Switzerland note is included because an Austria trip so often continues there and the roaming zone stops at the border even though nothing else does. Carrier figures are an Aug 2026 snapshot. No SIM registration requirement is stated because we could not confirm one to our own standard."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "You pay", v: "As a private patient" },
+        { k: "Cities", v: "Care is close and good" },
+        { k: "The Alps", v: "Rescue is charged" },
+        { k: "Real risk", v: "A mountain callout" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Austria: the mountain is the expensive part",
+      description: "Austrian hospital care is good and contained in cost. The item that catches visitors is alpine rescue, which is charged and is not part of the hospital bill.",
+      h1: "What does getting sick in Austria cost a visitor?",
+      lede: "For a city trip, Austria is one of the calmer entries on this list. For a ski or mountain trip, there is a second bill that has nothing to do with the hospital.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "As a visitor you are treated as a <b>private patient</b> in Austria and billed for care. In the cities the picture is much like Germany's: <b>good hospitals, close by, at contained and regulated costs</b>, with emergency care given first. The item that catches people is <b>alpine rescue</b>. Getting an injured skier or walker off a mountain in Austria commonly involves a <b>helicopter or a mountain rescue callout</b>, and that is <b>charged separately from any hospital treatment</b>. It is the single most likely large bill a visitor to Austria will face, and it is the one most likely to fall outside a policy that was not read carefully.",
+      insurance: true,
+      insuranceNote: "In Austrian cities the medical position is ordinary: you pay as a private patient at contained costs. On a mountain it changes, because rescue is charged separately from treatment and a helicopter callout is the likeliest large bill here. Check that your policy names mountain rescue and the activities you plan. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, call 144 or 112 first and deal with the cost afterwards.",
+      sections: [
+        {
+          h: "In the cities, this is an ordinary page",
+          icon: "health",
+          key: { tag: "Close and contained", text: "Austrian hospitals are good and close in the populated areas, costs are contained, and emergency care is given before payment is discussed.", tone: "teal" },
+          p: [
+            "For <b>Vienna, Salzburg, Graz or Innsbruck</b>, Austria reads much like Germany. Hospitals are <b>good and close</b>, costs are <b>contained by regulation</b> rather than open-ended, and emergency care is provided before anyone discusses payment. <b>144</b> reaches an ambulance and <b>112</b> works throughout.",
+            "<b>If it looks serious, call 144 or 112 first and deal with the cost afterwards.</b> On a city trip, the honest exposure is a hospital invoice and a flight home, which is a narrow and manageable case."
+          ]
+        },
+        {
+          h: "On the mountain, there is a second bill",
+          icon: "alert",
+          key: { tag: "Rescue is separate", text: "Alpine rescue, including helicopter callouts, is charged separately from hospital treatment. It is the likeliest large bill a visitor to Austria faces.", tone: "amber" },
+          p: [
+            "Austria's alpine regions run a serious <b>mountain rescue</b> operation, and it is <b>not free</b>. A helicopter callout to a piste, a ski touring route or a hiking trail is <b>billed</b>, and crucially it is billed <b>separately from any hospital treatment that follows</b>. A policy that covers your medical care may not cover the aircraft that got you to it.",
+            "This is the specific thing to check before a ski trip. Does the policy name <b>mountain rescue</b> and <b>helicopter evacuation</b>, and does it cover the <b>activity</b> you are doing? <b>Off-piste skiing, ski touring and via ferrata</b> are common exclusions, and they are exactly the activities that generate callouts. Austrian ski areas also sell local rescue cover, sometimes bundled with a lift pass, which is worth understanding rather than assuming."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We have not sourced an official Austrian price list for visitors that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. We have <b>not sourced an official Austrian tariff for non-resident care</b> that we would put our name to, so no local price figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure is what matters here: <b>you are a private patient</b>, <b>city care is close and contained</b>, and <b>rescue is a separate, chargeable event from treatment</b>. Rather than guess at a helicopter rate, ask your insurer directly what its mountain rescue limit is and whether your activity is inside the policy."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Which trip is it", text: "A city trip and a ski trip are different risks. The ski trip is where cover earns its keep, and where the policy wording matters most.", tone: "teal" },
+          p: [
+            "The practical split is clean. A <b>city trip</b> to Austria carries an ordinary European medical exposure. A <b>ski or mountain trip</b> carries that plus a rescue bill, and the rescue is the part more likely to be large and more likely to be excluded.",
+            "So read the policy for the trip you are actually taking, and pay attention to the <b>activity definitions</b> rather than only the headline limits. For paying on the ground, see the <a href='/austria/cash-or-card'>Austria cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is mountain rescue free in Austria?", a: "No. Alpine rescue, including helicopter callouts, is charged, and it is billed separately from any hospital treatment that follows. It is the likeliest large bill a visitor to Austria will face." },
+        { q: "Is healthcare free in Austria for tourists?", a: "No. You are treated as a private patient and billed. In the cities costs are contained and regulated rather than open-ended, and emergency care is given before payment is discussed." },
+        { q: "How much does a helicopter rescue cost in Austria?", a: "We have not published a figure, because we did not source an official rate we would stand behind and rescue is run by different organisations in different regions. Ask your insurer what its mountain rescue limit is instead." },
+        { q: "Does my travel insurance cover skiing in Austria?", a: "Check the activity definitions rather than assuming. Off-piste skiing, ski touring and via ferrata are commonly excluded, and those are exactly the activities that generate rescue callouts. Austrian ski areas also sell local rescue cover, sometimes with a lift pass." },
+        { q: "What is the ambulance number in Austria?", a: "144 reaches an ambulance, and 112 works throughout the country. For anything serious, call first and deal with the cost afterwards." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Austria country information, including health and medical care guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Austria.html", type: "gov" }
+        ],
+        judgment: "No price figures appear here. Austrian mountain rescue is run by different organisations in different regions with their own charging practices, so a single figure would be false precision, and we did not source an official medical tariff either. The separation of rescue costs from treatment costs is the load-bearing point on this page and is a structural fact rather than a price. Policy activity definitions vary widely, so read your own. Checked August 2026."
+      }
     }
   ]
 };

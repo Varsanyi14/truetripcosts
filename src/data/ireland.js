@@ -650,6 +650,83 @@ export default {
         ],
         judgment: "Checked Aug 2026. The border point is the most useful thing on this page and it costs us a click: the honest advice is to check a country list for two jurisdictions before buying anything, including from us. It matters more here than at other borders precisely because this one is unmarked, so a traveler can be roaming on different terms without having noticed a change. The western coverage read is the desk's from operator footprints and traveler accounts."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "The 100 euro charge", v: "Is not the one you pay" },
+        { k: "Non-EU rate", v: "About 447 euro at one Dublin ED" },
+        { k: "If admitted", v: "The full cost of the bed" },
+        { k: "Real risk", v: "Assuming it is free" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Ireland: the 100 euro that is not yours",
+      description: "Ireland abolished public inpatient charges in 2023, but not for you. A visitor outside the entitled groups pays the full cost of the bed, plus the consultant.",
+      h1: "What does getting sick in Ireland cost a US visitor?",
+      lede: "Ireland is where a true fact about the health service becomes a false assumption about your bill. Public inpatient charges really were abolished. They were abolished for people entitled to public health services, and a US visitor is not one of them.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "The number everyone quotes is the <b>100 euro</b> emergency department charge for attending without a GP referral. That is the charge for someone <b>entitled to public health services</b>. A US visitor generally is not, and pays the <b>non-EU rate</b> instead: <b>Beaumont Hospital</b> in Dublin publishes <b>446.82 euro</b> for a first non-EU emergency department attendance and <b>111.65 euro</b> for a return visit. If you are <b>admitted</b>, it gets more serious: Ireland's own Citizens Information states that someone not ordinarily resident, and not in an entitled group, pays the <b>full cost of the bed</b>, public or private, and <b>pays the consultant too</b>. The 2023 abolition of inpatient charges does not reach you.",
+      insurance: true,
+      insuranceNote: "Ireland is the country where the headline is true and does not apply to you: public inpatient charges were abolished, but for people entitled to public health services, which a US visitor is not. You pay the non-EU emergency rate and, if admitted, the full cost of the bed plus the consultant. That is a real gap behind a reassuring headline. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, go to the emergency department first and deal with the charge afterwards.",
+      sections: [
+        {
+          h: "The 100 euro charge belongs to somebody else",
+          icon: "alert",
+          key: { tag: "Not your rate", text: "The 100 euro emergency department charge applies to people entitled to public health services. A US visitor pays the higher non-EU rate.", tone: "amber" },
+          p: [
+            "The <b>100 euro</b> figure is real and it is statutory: since 2009 it is what you pay for attending an emergency department without a GP referral, and there is no charge at all if your GP referred you. It is also, for a US traveler, the <b>wrong number</b>, because it is the charge for people <b>entitled to public health services</b> in Ireland.",
+            "What a visitor from outside the EU pays instead is set by the hospital. <b>Beaumont Hospital</b> in Dublin publishes its rates plainly: <b>446.82 euro</b> for a non-EU resident's emergency department attendance, and <b>111.65 euro</b> for a non-EU return visit. EU and UK visitors presenting an EHIC or GHIC card pay nothing. Note that this is <b>one hospital's published list</b>, not a national tariff, so another hospital will differ."
+          ]
+        },
+        {
+          h: "Admission is where the real exposure sits",
+          icon: "receipt",
+          key: { tag: "Full cost of the bed", text: "Citizens Information states that a person not ordinarily resident, outside the entitled groups, pays the full cost of the bed, public or private, and pays the consultant separately.", tone: "amber" },
+          p: [
+            "Public inpatient charges in Ireland <b>were</b> abolished, on <b>17 April 2023</b>, and the old 80 euro a day charge is genuinely gone. The catch is who it was abolished for. Ireland's own <b>Citizens Information</b> service states it directly: if you do not live in Ireland and you do not belong to a group entitled to free health services, you pay the <b>full cost of the bed</b>, whether it is a public bed or a private one, and you <b>also pay the consultant</b>.",
+            "That is a genuinely open-ended figure rather than a listed charge, because it is the economic cost of your care rather than a flat fee, and the consultants who treat you invoice on their own account. The HSE does hold <b>discretion to reduce or waive charges in cases of hardship</b>, which is worth knowing but is not something to plan a trip around."
+          ]
+        },
+        {
+          h: "Emergency care happens first",
+          icon: "health",
+          key: { tag: "Treated regardless", text: "Everyone facing a medical emergency has the right to attend an emergency department and be treated. Charges are invoiced afterwards.", tone: "teal" },
+          p: [
+            "The reassuring part, and it is not small: nobody is turned away. Anyone facing a medical emergency in Ireland can attend an emergency department and be <b>treated regardless of ability to pay at that moment</b>, with charges invoiced afterwards. Ambulance attendance is not separately charged for an emergency call.",
+            "<b>If it looks serious, go to the emergency department first and deal with the charge afterwards.</b> Ireland is one of the places where that advice costs you nothing to follow, because the clinical decision and the billing decision are genuinely separate."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "The gap is the admission", text: "The emergency attendance is a few hundred euro. The admission is the full economic cost of the bed plus the consultant, which is the number worth insuring.", tone: "teal" },
+          p: [
+            "So the shape is: a <b>walk-in emergency attendance</b> in the low hundreds of euro, a <b>GP visit</b> paid privately, and an <b>admission</b> priced at the full cost of your care with the consultant billed on top. The first two are inconvenient. The third is what a policy is for.",
+            "Practically, tell the hospital you are a non-EU visitor at registration, because the rate differs and the paperwork follows from it. Keep the <b>hospital invoice and every consultant's invoice</b> separately, since they arrive from different places. For paying on the day, see the <a href='/ireland/cash-or-card'>Ireland cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare free in Ireland for tourists?", a: "No. Public inpatient charges were abolished in April 2023 for people entitled to public health services, which a US visitor generally is not. A visitor pays the non-EU emergency department rate and, if admitted, the full cost of the bed plus the consultant." },
+        { q: "How much is an emergency department visit in Ireland?", a: "It depends who you are. The statutory charge for someone entitled to public health services is 100 euro without a GP referral. Beaumont Hospital in Dublin publishes 446.82 euro for a non-EU resident's first attendance and 111.65 euro for a return visit. Other hospitals set their own non-EU rates." },
+        { q: "What happens if I am admitted to hospital in Ireland?", a: "Citizens Information states that a person who is not ordinarily resident in Ireland, and not in an entitled group, pays the full cost of the bed, whether public or private, and pays the consultant as well. That is an economic cost rather than a fixed charge, so it is not published as a single figure." },
+        { q: "Will an Irish hospital treat me if I cannot pay?", a: "Yes in an emergency. Everyone facing a medical emergency can attend an emergency department and be treated regardless of ability to pay at that moment, with charges invoiced afterwards. The HSE also has discretion to reduce or waive charges in hardship cases." },
+        { q: "Does my EHIC or US insurance help in Ireland?", a: "An EHIC or UK GHIC removes the charge, but those are for EU and UK residents. A US health plan rarely pays in Ireland and Medicare does not pay abroad at all, so a US visitor is paying the non-EU rates out of pocket or through travel cover." }
+      ],
+      sourcedFigures: [
+        { fact: "Beaumont Hospital Dublin published emergency department rates for non-EU residents: 446.82 euro first attendance, 111.65 euro return visit; the statutory charge for entitled persons attending without a GP referral is 100 euro", kind: "routine", src: 2, forms: ["446.82 euro", "111.65 euro", "100 euro", "447 euro", "80 euro"] }
+      ],
+      sources: {
+        links: [
+          { label: "HSE: hospital charges, including the statutory 100 euro emergency department charge for attendance without a GP referral", url: "https://www.hse.ie/eng/about/who/acute-hospitals-division/patient-care/hospital-charges/", type: "gov" },
+          { label: "Citizens Information: charges for hospital services, including that a person not ordinarily resident and outside the entitled groups pays the full cost of the bed and the consultant", url: "https://www.citizensinformation.ie/en/health/health-services/gp-and-hospital-services/hospital-charges/", type: "gov" },
+          { label: "Beaumont Hospital, Dublin: information on hospital charges, including the published non-EU emergency department rates", url: "https://www.beaumont.ie/page/information-hospital-charges-paying-hospital-bill", type: "gov" }
+        ],
+        judgment: "The 100 euro emergency department charge and the April 2023 abolition of public inpatient charges are statutory and apply to people entitled to public health services. The rule that a non-resident outside those groups pays the full cost of the bed plus the consultant comes from Citizens Information, the state's own information service. The non-EU emergency figures are one Dublin hospital's published rates, cited as an example rather than a national tariff, and other hospitals set their own. We have published no figure for an admission because it is an economic cost rather than a listed charge. Checked August 2026."
+      }
     }
   ]
 };

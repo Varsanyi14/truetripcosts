@@ -511,6 +511,83 @@ export default {
         ],
         judgment: "Checked Aug 2026. The firewall distinction is the most useful thing on this page and the most commonly got wrong: Hong Kong is outside the mainland's filtering, and a traveler who plans for a firewall that is not there wastes money, while one who assumes Hong Kong rules apply in Shenzhen loses access to their maps at the worst moment. Real-name registration for prepaid SIMs has been in force since 2023 and is handled at the counter. Local pricing moves with promotions, so the 6 to 13 dollar range is a current shape. We earn on eSIM links and nothing on a local SIM."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "You are", v: "A non-eligible person" },
+        { k: "A and E", v: "2,100 Hong Kong dollars" },
+        { k: "A ward, per day", v: "7,400 Hong Kong dollars" },
+        { k: "On admission", v: "A deposit is required" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Hong Kong: the non-eligible person rate",
+      description: "Hong Kong publishes exactly what a visitor pays. A and E is 2,100 Hong Kong dollars, a ward 7,400 a day, intensive care 35,600, revised January 2026.",
+      h1: "What does getting sick in Hong Kong cost a visitor?",
+      lede: "Hong Kong is unusually honest about this: the Hospital Authority publishes a price list for people who are not Hong Kong residents, and you are on it. The rates went up in January 2026.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Hong Kong's public system sorts patients into <b>eligible persons</b>, essentially Hong Kong ID holders, and <b>non-eligible persons</b>, which is you. The Hospital Authority <b>publishes the non-eligible rates</b>, and they were <b>revised on 1 January 2026</b>. An <b>accident and emergency attendance is 2,100 Hong Kong dollars</b>, roughly <b>270 US dollars</b>. A <b>general ward is 7,400 a day</b>, roughly <b>950 US dollars</b>. <b>Intensive care is 35,600 a day</b>, roughly <b>4,550 US dollars</b>. A <b>specialist outpatient visit is 850</b> and a <b>family medicine clinic visit 500</b>. Non-eligible persons are <b>required to pay a deposit on admission</b>. The care is excellent and the arithmetic is public, which is the best combination on this site.",
+      insurance: true,
+      insuranceNote: "Hong Kong tells you the price in advance, which is rare and useful: a walk-in clinic visit is modest, and an intensive care day is 35,600 Hong Kong dollars. The published rates are exactly why cover is worth carrying here, and exactly why you do not need to fear a routine consultation. The gap is the admission and the flight home. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, go to an accident and emergency department first and settle the account afterwards.",
+      sections: [
+        {
+          h: "You are a non-eligible person, and there is a price list",
+          icon: "receipt",
+          key: { fig: "$2,100", tag: "A and E, per visit", text: "The Hospital Authority publishes rates for non-eligible persons. From 1 January 2026 an A and E attendance is 2,100 Hong Kong dollars.", tone: "teal" },
+          p: [
+            "The Hospital Authority splits patients into <b>eligible persons</b>, which broadly means holders of a valid Hong Kong identity card and resident children under eleven, and <b>non-eligible persons</b>, which is every visitor. Both sets of rates are <b>published by the Authority and set out in the Gazette</b>, so there is no guessing and no negotiating.",
+            "The current non-eligible rates took effect on <b>1 January 2026</b> under a fee reform, and they are higher than the ones you will find repeated around the internet. An <b>accident and emergency attendance is 2,100 Hong Kong dollars</b>, roughly <b>270 US dollars</b>. A <b>specialist outpatient attendance is 850</b>, a <b>family medicine clinic visit 500</b>, and an <b>injection or dressing 250</b>. For everyday trouble, that is a manageable set of numbers."
+          ]
+        },
+        {
+          h: "The admission is where it turns",
+          icon: "alert",
+          key: { fig: "$35,600", tag: "Intensive care, per day", text: "A general ward is 7,400 Hong Kong dollars a day for a non-eligible person, intensive care 35,600, and a deposit is required on admission.", tone: "amber" },
+          p: [
+            "Being admitted changes the scale rather than the arithmetic. A <b>general hospital ward is 7,400 Hong Kong dollars a day</b>, roughly <b>950 US dollars</b>. A <b>high dependency unit is 21,000 a day</b>. <b>Intensive care is 35,600 a day</b>, roughly <b>4,550 US dollars</b>, so a week in intensive care is a quarter of a million Hong Kong dollars before anything else is counted.",
+            "Non-eligible persons are also <b>required to pay a deposit on admission</b>, which is the practical thing to plan for. Call your insurer's assistance line early, because a guarantee of payment to the hospital is what turns a deposit demand into a phone call. <b>If it looks serious, go to an accident and emergency department first and settle the account afterwards.</b>"
+          ]
+        },
+        {
+          h: "One genuine exemption, and the private option",
+          icon: "health",
+          key: { tag: "Worth knowing", text: "The Authority makes no charge to a non-eligible person for attendance or admission for diseases specified under the International Health Regulations.", tone: "teal" },
+          p: [
+            "There is one carve-out worth knowing about. Under the Gazette, if a non-eligible person is suffering from, or suspected of suffering from, a disease specified under the prevailing <b>International Health Regulations</b>, <b>no charge is made</b> for the A and E attendance or for admission to a public ward. That is a public health measure rather than a traveler benefit, but it is real and it is stated by the Authority.",
+            "Hong Kong also has a large <b>private hospital</b> sector, which is faster and considerably more expensive, and where the published Authority rates do not apply at all. If your insurer directs you to a private facility, the numbers on this page are not the numbers you will see."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Cheap door, costly ward", text: "The clinic and the emergency room are affordable enough to pay for on the spot. The admission and the flight home are what cover is actually for.", tone: "teal" },
+          p: [
+            "Hong Kong splits cleanly. The <b>front door is affordable</b>: a clinic visit or an A and E attendance is a sum most travelers can put on a card and reclaim later, and there is no reason to avoid care over the cost. The <b>ward is not</b>, and the intensive care rate is the number that should decide how much cover you carry.",
+            "Keep the <b>receipt and the discharge summary</b>, since the Authority's bill is itemised and a claim is straightforward with it. And note the rates are quoted in <b>Hong Kong dollars</b>, pegged closely to the US dollar, so the conversions above will not move much. For paying on the ground, see the <a href='/hong-kong/cash-or-card'>Hong Kong cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What does a hospital cost for a tourist in Hong Kong?", a: "The Hospital Authority publishes non-eligible person rates. From 1 January 2026 an accident and emergency attendance is 2,100 Hong Kong dollars, a general ward 7,400 a day, a high dependency unit 21,000 a day and intensive care 35,600 a day. A deposit is required on admission." },
+        { q: "Am I an eligible person in Hong Kong?", a: "Almost certainly not. Eligible persons are broadly holders of a valid Hong Kong identity card and resident children under eleven. A visitor is a non-eligible person and pays the published non-eligible rates." },
+        { q: "Do I have to pay a deposit at a Hong Kong hospital?", a: "Yes, for inpatient services. The Hospital Authority states that non-eligible persons are required to pay a deposit on admission. Contacting your insurer's assistance line early is what turns that into a guarantee of payment rather than a card transaction." },
+        { q: "Is a doctor visit expensive in Hong Kong?", a: "Not by American standards. A family medicine clinic visit is 500 Hong Kong dollars for a non-eligible person and a specialist outpatient attendance 850, both published rates. It is the admission, not the consultation, that carries the real cost." },
+        { q: "Do I need travel insurance for Hong Kong?", a: "The published rates make the case cleanly. Routine care is affordable enough to pay yourself, and intensive care at 35,600 Hong Kong dollars a day is not. That gap, plus a flight home the public system does not provide, is what a policy covers." }
+      ],
+      sourcedFigures: [
+        { fact: "Hospital Authority published non-eligible person outpatient rates in force from 1 January 2026: A and E 2,100 HKD per attendance, specialist outpatient 850, family medicine clinic 500, injection or dressing 250", kind: "routine", src: 0, forms: ["2,100 Hong Kong dollars", "850", "500 Hong Kong dollars", "500", "250", "$2,100", "270 US dollars"] },
+        { fact: "Hospital Authority published non-eligible person inpatient rates in force from 1 January 2026: general ward 7,400 HKD per day, high dependency 21,000 per day, intensive care 35,600 per day, deposit required on admission", kind: "inpatient", src: 0, forms: ["7,400 a day", "21,000 a day", "35,600 a day", "$35,600", "950 US dollars", "4,550 US dollars", "7,400 Hong Kong dollars", "35,600 Hong Kong dollars", "21,000 a day", "intensive care 35,600"] }
+      ],
+      sources: {
+        links: [
+          { label: "Hong Kong Hospital Authority: public charges for non-eligible persons, the published rates in force from 1 January 2026 under Gazette No. 44/2025", url: "https://www.ha.org.hk/HAConnect/en/FeesAndCharges/Details/8", type: "gov" },
+          { label: "Hong Kong Hospital Authority: fees and charges overview, including the eligible and non-eligible person definitions", url: "https://www.ha.org.hk/visitor/fees_and_charges.asp?lang=ENG", type: "gov" }
+        ],
+        judgment: "Every figure here is the Hospital Authority's own published non-eligible person rate, in force from 1 January 2026. We flag one trap: the HK$5,100 ward and HK$24,400 intensive care figures still circulating online are the 2017 rates and are now well out of date. US dollar conversions are approximate and rounded, using the Hong Kong dollar's peg. Private hospital charges are entirely separate and are not covered by these rates. Checked August 2026."
+      }
     }
   ]
 };

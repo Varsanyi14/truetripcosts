@@ -496,6 +496,78 @@ export default {
         ],
         judgment: "Checked Aug 2026. This spoke deliberately spends most of its space on things that cost nothing, because in Iceland the connectivity question is a safety question and the product we earn on does not answer it. Data is genuinely cheap here, which is the one thing in Iceland that is, so the price section is short on purpose. The Highlands coverage picture is the desk's read from operator coverage maps and consistent traveler and rescue-service accounts rather than a single official table, and the official sources for conditions are road.is and safetravel.is, which supersede anything on this page on the day you travel."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "One main hospital", v: "Landspitali, in Reykjavik" },
+        { k: "Interior", v: "Hours from anything" },
+        { k: "Rescue", v: "Volunteer, and not free to you" },
+        { k: "Real risk", v: "Where you are when it happens" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Iceland: a small country, spread thin",
+      description: "Iceland has excellent care concentrated in Reykjavik and very little between. Away from the ring road, the honest cost is getting to a hospital at all.",
+      h1: "What does getting sick in Iceland cost a visitor?",
+      lede: "Iceland is the size of a small US state with the population of a mid-sized town, and almost all of its serious medical capacity sits in one city. That single fact shapes the whole risk.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Iceland's health service is <b>funded for residents</b>, and a visitor is <b>charged</b> for care. The financially decisive fact, though, is not the tariff but the <b>map</b>. Iceland concentrates its serious capacity at <b>Landspitali in Reykjavik</b>, with regional facilities elsewhere that stabilise rather than treat. On the <b>ring road</b>, in the <b>highlands</b>, on a <b>glacier</b> or in the <b>Westfjords</b>, you can be a very long way from definitive care, and weather closes options fast. Iceland's celebrated <b>search and rescue</b> service is largely <b>volunteer</b>, which does not mean a rescue is free to you. The honest number here is transport, not treatment.",
+      insurance: true,
+      insuranceNote: "Iceland concentrates its serious medical capacity in Reykjavik, so what matters is where you are when something happens. A problem in the highlands, on a glacier or in the Westfjords is a transport question first, and weather can make it a slow one. Cover here is mostly buying the ability to be moved. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, start moving toward Reykjavik or the nearest hospital first and settle the money afterwards.",
+      sections: [
+        {
+          h: "Almost everything serious is in Reykjavik",
+          icon: "alert",
+          key: { tag: "One centre", text: "Landspitali in Reykjavik carries the country's serious capacity. Regional facilities stabilise and transfer rather than treat complex cases.", tone: "amber" },
+          p: [
+            "Iceland's population is small enough that concentrating specialist medicine makes sense, and it does. <b>Landspitali in Reykjavik</b> is the national hospital and holds the country's serious capacity. Elsewhere there are <b>health centres and regional hospitals</b> that handle everyday care and <b>stabilise</b> a serious case before moving it.",
+            "That is efficient for Iceland and consequential for you, because it means the answer to a serious problem in <b>Hofn, Isafjordur or the highlands</b> is usually a <b>transfer</b>. <b>If it looks serious, start moving toward Reykjavik or the nearest hospital first and settle the money afterwards.</b>"
+          ]
+        },
+        {
+          h: "Weather is part of the cost",
+          icon: "plane",
+          key: { tag: "Not always flyable", text: "Iceland's weather closes roads and grounds aircraft. A transfer that is routine in July can be slow and complicated in a February storm.", tone: "amber" },
+          p: [
+            "The unusual thing about Iceland is that the <b>weather</b> is a live variable in a medical emergency rather than background detail. Winter storms close roads, and conditions that ground a helicopter are normal rather than rare. A transfer that would be straightforward on a still summer day can become a long, difficult ground journey.",
+            "Iceland's <b>search and rescue</b> capability is genuinely impressive and largely staffed by <b>volunteers</b>, which travelers sometimes read as meaning a rescue costs nothing. It does not follow: a callout, an air ambulance or a transfer can be <b>charged to you</b>, and the volunteer character of the service is not a pricing promise."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We have not sourced an official Icelandic price list for visitors that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. We have <b>not sourced an official Icelandic tariff for non-resident care</b> that we would put our name to, so no local price figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "What matters more than a tariff here is the structure: <b>you are charged as a visitor</b>, <b>serious care means Reykjavik</b>, <b>a transfer is the likely serious event</b>, and <b>weather can make that slow</b>. The number to ask your insurer about is the evacuation limit, not the consultation fee."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "It is about the map", text: "A Reykjavik city break is low exposure. A ring road, highland or glacier trip is where cover earns its keep.", tone: "teal" },
+          p: [
+            "Be honest about which trip you are on. A few days in <b>Reykjavik</b> puts you minutes from the national hospital and is about as low-exposure as Europe gets. A <b>ring road drive, a highland route, a glacier walk or a Westfjords trip</b> is a different proposition, and it is the one that justifies cover.",
+            "Check that your policy covers the <b>activities</b> you are actually doing, since glacier hiking, ice caving and snowmobiling appear on exclusion lists, and those are exactly the trips that generate callouts. For paying on the ground, see the <a href='/iceland/cash-or-card'>Iceland cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare free in Iceland for tourists?", a: "No. Iceland's health service is funded for residents and a visitor is charged for care. The larger financial question here is usually transport rather than the treatment charge itself." },
+        { q: "How much does a doctor cost in Iceland?", a: "We have not published a figure, because we did not source an official Icelandic tariff for non-resident care that we would stand behind. The cost that dominates in Iceland is getting to care, not the consultation." },
+        { q: "Is search and rescue free in Iceland?", a: "Do not assume so. Iceland's rescue service is largely volunteer-staffed, which is not the same as being free to the person rescued. A callout, air ambulance or transfer can be charged, so check what your policy covers." },
+        { q: "Where do serious medical cases go in Iceland?", a: "Landspitali in Reykjavik holds the country's serious capacity. Regional facilities generally stabilise a serious case and transfer it, which is why distance and weather matter so much here." },
+        { q: "Do I need travel insurance for Iceland?", a: "For a Reykjavik city break the exposure is modest. For the ring road, the highlands or anything on a glacier, cover is mainly buying the ability to be moved, and that is the strongest argument for it." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Iceland country information, including health and medical care guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Iceland.html", type: "gov" }
+        ],
+        judgment: "No price figures appear here because we did not source an official Icelandic non-resident tariff we would publish. The concentration of serious capacity at Landspitali, the stabilise-and-transfer pattern outside Reykjavik and the effect of weather on transfers are geographic and structural facts, and that is how we have written them. We have deliberately not implied that rescue is either always free or always billed, because practice varies by service and circumstance. Checked August 2026."
+      }
     }
   ]
 };

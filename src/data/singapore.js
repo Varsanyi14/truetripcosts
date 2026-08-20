@@ -524,6 +524,82 @@ export default {
         ],
         judgment: "Checked Aug 2026. The uncomfortable part of this page is that its honest recommendation for the most common Singapore trip, a stopover of a night or three, is to buy nothing, and we earn a commission on eSIMs. We have written it that way because the alternative is telling a reader to spend money on a problem the island does not have. Local SIM pricing is a current read and the allowances are generous enough that the exact figure rarely changes the decision. Carrier day-pass figures are an Aug 2026 snapshot and move faster than anything else here."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "Subsidy for you", v: "None at all" },
+        { k: "Subsidy for locals", v: "Up to 80% inpatient" },
+        { k: "The care", v: "Genuinely world class" },
+        { k: "Real risk", v: "An admission at full rates" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Singapore: excellent, and unsubsidised",
+      description: "Singapore's health ministry is blunt: non-residents get no subsidy in public hospitals, while citizens get up to 80%. You pay the whole unsubsidised rate.",
+      h1: "What does getting sick in Singapore cost a visitor?",
+      lede: "Singapore has some of the best hospitals in Asia and one of the clearest positions on who pays for them. Citizens are heavily subsidised. Visitors are not subsidised at all, and the difference is the entire story.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Singapore's <b>Ministry of Health</b> states the position without decoration: <b>non-residents generally receive no subsidy</b> for inpatient or outpatient care in public hospitals and polyclinics. Singaporeans receive up to <b>80% subsidy</b> on inpatient hospital care, up to <b>50%</b> on specialist outpatient services and up to <b>75%</b> at polyclinics. You get <b>none of that</b>, so the figure you pay is the full unsubsidised one. The care itself is <b>excellent and well organised</b>, financial counselling before admission is routine, and a <b>deposit</b> based on the estimated bill is normal. The exposure is the admission, not the clinic visit.",
+      insurance: true,
+      insuranceNote: "Singapore's health ministry is explicit that non-residents get no subsidy in public hospitals, while citizens get up to 80% on inpatient care. So you are paying the full unsubsidised rate in a country with genuinely world-class and correspondingly priced hospitals. The admission is the gap, and so is the flight home. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, go to an emergency department first and let the financial counselling follow.",
+      sections: [
+        {
+          h: "No subsidy, stated plainly",
+          icon: "alert",
+          key: { tag: "Zero, not reduced", text: "MOH states that non-residents generally receive no subsidy for inpatient and outpatient care in public hospitals and polyclinics. Citizens receive up to 80% on inpatient care.", tone: "amber" },
+          p: [
+            "Most countries leave a visitor to work out their position from regulations. Singapore's <b>Ministry of Health</b> simply says it: <b>non-residents generally do not receive any subsidies</b> for inpatient and outpatient care in public hospitals and polyclinics. By contrast Singaporeans receive up to <b>80%</b> subsidy for inpatient hospital care, up to <b>50%</b> for specialist outpatient services and up to <b>75%</b> for polyclinic services.",
+            "That is a cleaner way to understand your bill than any single price would be. The number a local quotes you for a procedure is a <b>subsidised</b> number, and yours is that figure with the subsidy taken out. Singapore's public hospitals publish charge tables, and each carries a line saying that actual charges differ for citizens, permanent residents, resident foreigners and non-residents."
+          ]
+        },
+        {
+          h: "Financial counselling is part of the process",
+          icon: "receipt",
+          key: { tag: "Told before, not after", text: "Public hospitals give financial counselling before admission and an estimate of your stay, with a cash deposit based on the expected bill.", tone: "teal" },
+          p: [
+            "Singapore handles the money conversation better than most places, and it happens <b>before</b> rather than after. Public hospitals provide <b>financial counselling</b> at the specialist clinic, emergency department or patient service centre before admission, and give you an <b>estimated cost of hospitalisation</b>. A <b>cash deposit</b> based on the expected bill is normal.",
+            "Two practical consequences. You will usually know roughly what you are committing to, which is unusual and genuinely helpful. And you should have your insurer's <b>assistance line</b> engaged early, because a guarantee of payment at the counselling stage is much easier than a reimbursement argument later. <b>If it looks serious, go to an emergency department first and let the financial counselling follow.</b>"
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "Each public hospital publishes its own charge table, and each says non-resident rates differ without printing them. We would rather give you the structure than a wrong number.", tone: "teal" },
+          p: [
+            "We have <b>not published a Singapore price</b>. Each public hospital publishes its own ward and consultation charges, and each states that <b>actual charges differ for non-residents</b> without setting out the non-resident figure on the same page. Quoting a subsidised ward rate as though it were yours would be worse than quoting nothing, because it would be wrong in the direction that reassures you.",
+            "The <b>subsidy structure is the honest substitute</b>, and it is sourced: locals up to 80% off inpatient care, you at zero. For a real number before you travel, ask the hospital at financial counselling, which is exactly the stage Singapore has built for the purpose."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Quality is not the risk", text: "The care is world class and the system is transparent. What you are insuring is an unsubsidised admission and, from an island, the flight home.", tone: "teal" },
+          p: [
+            "Nothing on this page is a warning about Singaporean medicine, which is genuinely excellent and among the easiest in Asia to navigate in English. The financial point is narrow: you are the <b>unsubsidised</b> patient in a high-quality system, and high-quality systems cost what they cost.",
+            "Singapore is also a <b>small island</b>, so a serious case that needs a long recovery becomes a <b>repatriation</b> question fairly quickly, and no public subsidy anywhere covers a medical flight. For paying on the ground, see the <a href='/singapore/cash-or-card'>Singapore cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do tourists get subsidised healthcare in Singapore?", a: "No. Singapore's Ministry of Health states that non-residents generally receive no subsidies for inpatient and outpatient care in public hospitals and polyclinics. Citizens receive up to 80% subsidy on inpatient care, up to 50% on specialist outpatient services and up to 75% at polyclinics." },
+        { q: "How much does a hospital stay cost in Singapore?", a: "We have not published a figure. Each public hospital publishes its own charge table and each notes that rates differ for non-residents without printing the non-resident figure, so any number we gave would be the subsidised one. Ask at financial counselling, which happens before admission." },
+        { q: "Will I have to pay a deposit at a Singapore hospital?", a: "Usually. Public hospitals provide financial counselling before admission with an estimate of the cost, and a cash deposit based on the expected bill is standard practice. Engaging your insurer's assistance line early is what turns that into a guarantee of payment." },
+        { q: "Is Singapore healthcare good?", a: "Yes, it is among the best in Asia, well organised and English-speaking throughout. Quality is not the risk here. Being the fully unsubsidised patient in an expensive system is." },
+        { q: "Do I need travel insurance for Singapore?", a: "For the admission and the flight home, yes. Routine care is manageable, but an unsubsidised inpatient stay in a top-tier system is a real sum, and repatriation from an island is never subsidised by anyone." }
+      ],
+      sourcedFigures: [
+        { fact: "Singapore MOH: non-residents generally receive no subsidies for inpatient and outpatient care in public hospitals and polyclinics, while Singaporeans receive up to 80% subsidy for inpatient care, up to 50% for specialist outpatient services and up to 75% for polyclinic services", kind: "subsidy", src: 0, forms: ["80%", "50%", "75%"] }
+      ],
+      sources: {
+        links: [
+          { label: "Singapore Ministry of Health: on A and E subsidies, stating that non-residents generally receive no subsidies for inpatient and outpatient care and setting out the citizen subsidy levels", url: "https://www.moh.gov.sg/newsroom/a-e-subsidies/", type: "gov" },
+          { label: "National University Hospital, Singapore: fees and charges, including that actual charges differ for Singapore citizens, permanent residents, resident foreigners and non-residents, and that financial counselling precedes admission", url: "https://www.nuh.com.sg/care-at-nuh/fees-and-charges", type: "gov" }
+        ],
+        judgment: "This page carries the subsidy structure, which is officially stated by Singapore's Ministry of Health, rather than a price, which we could not source in non-resident form from a public hospital's own table. The subsidy percentages are the honest way to convey the gap: any locally quoted price is a subsidised price and yours is not. Confirm your own figure at financial counselling before admission. Checked August 2026."
+      }
     }
   ]
 };

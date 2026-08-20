@@ -514,6 +514,78 @@ export default {
         ],
         judgment: "Checked Aug 2026. The train point is the desk's read from consistent traveler accounts rather than an operator statement, and it is included because it is the gap that actually interrupts a Swedish trip, while the far north is the one people already expect. Sweden being close to cashless makes a working phone more load-bearing here than elsewhere in Europe, which is a reason to have a plan rather than a reason to buy ours specifically. Carrier figures are an Aug 2026 snapshot."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "You pay", v: "The full cost as a visitor" },
+        { k: "Care", v: "Good, run by the regions" },
+        { k: "The north", v: "Distances get real" },
+        { k: "Real risk", v: "The bill, plus winter distance" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Sweden: regions, and a very long north",
+      description: "Sweden charges non-EEA visitors the full cost of care. In the south a hospital is close; in the north, winter distance becomes its own expense.",
+      h1: "What does getting sick in Sweden cost a visitor?",
+      lede: "Sweden is two countries for this purpose. In the populated south, care is close and the question is simply the bill. North of that, distance starts doing the work.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Swedish healthcare is run by the <b>regions</b> and funded for <b>residents</b>. A visitor from outside the EU or EEA is <b>charged the full cost</b> of care, and rates are set regionally rather than nationally. Emergency care is <b>provided first and billed afterwards</b>. The geography splits the country: around <b>Stockholm, Gothenburg and Malmo</b> a hospital is close and the risk is simply the size of an invoice. In <b>Norrland and the far north</b>, distances are large, winter is long, and getting to a hospital becomes a cost of its own. Sweden is not a dangerous place to be ill. It is an expensive one, and in the north a slow one.",
+      insurance: true,
+      insuranceNote: "Sweden charges a non-EEA visitor the full cost, and how much that matters depends on where you are: in the south the risk is a bill, in the far north it is also the distance and the winter. Cover is doing an ordinary job in the south and a bigger one above the Arctic Circle. Faze aside, the gap is real in both. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, get to care first and let the invoice follow.",
+      sections: [
+        {
+          h: "Funded for residents, billed to you",
+          icon: "alert",
+          key: { tag: "Region by region", text: "Swedish care is run and priced by the regions and funded for residents. A non-EEA visitor is charged the full cost, at rates that vary regionally.", tone: "amber" },
+          p: [
+            "Sweden devolves healthcare to its <b>regions</b>, which run the hospitals and set the charges, and funds it for people <b>registered as resident</b>. A visitor from outside the EU or EEA is <b>charged the full cost</b>, and because pricing is regional there is <b>no single national figure</b> to quote even in principle.",
+            "Emergency care comes first and the bill follows. <b>If it looks serious, get to care first and let the invoice follow.</b> Bring your policy details, because Swedish hospitals will ask how the account is being settled and an insurer's guarantee is simpler than a card payment."
+          ]
+        },
+        {
+          h: "The north is a different trip",
+          icon: "plane",
+          key: { tag: "Distance and winter", text: "Around the big cities a hospital is close. In Norrland and Lapland the distances are large and winter makes them larger, which turns transport into a cost.", tone: "amber" },
+          p: [
+            "In the <b>southern third</b> of Sweden, where most people live, care is close and the honest risk is financial rather than logistical. Go north and that changes. <b>Norrland and Swedish Lapland</b> are sparsely populated and very large, and in <b>winter</b> a journey that is straightforward in July is neither quick nor certain.",
+            "For a northern-lights trip, a dog-sledding or snowmobile holiday, or anything in the mountains, the realistic serious scenario involves <b>being moved</b> before it involves being treated. That makes the <b>evacuation limit</b> on a policy the number worth reading, rather than the medical maximum."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We have not sourced an official Swedish price list for visitors that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. We have <b>not sourced an official Swedish tariff for non-resident care</b> that we would put our name to, so no local price figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure is dependable even without a figure: <b>you are charged the full cost</b>, <b>the regions set their own rates</b>, <b>care precedes billing</b>, and <b>distance is a cost in the north</b>. Because pricing is regional, the only accurate number is the one from the hospital treating you."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Match it to the latitude", text: "A Stockholm city break and an arctic trip carry different risks. Cover the one you are actually taking.", tone: "teal" },
+          p: [
+            "The practical advice is unusually simple here: work out <b>which Sweden</b> you are visiting. A <b>city trip</b> needs cover for an ordinary hospital invoice. An <b>arctic or mountain trip</b> needs cover for moving a patient across a large, cold, thinly populated country.",
+            "Neither is alarming, and we are not going to dress the first one up as the second. For paying on the ground, see the <a href='/sweden/cash-or-card'>Sweden cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare free in Sweden for tourists?", a: "No. Swedish healthcare is run by the regions and funded for registered residents. A visitor from outside the EU or EEA is charged the full cost of treatment." },
+        { q: "How much does a hospital cost in Sweden?", a: "We have not published a figure. Swedish regions set their own charges for non-resident care, so there is no single national rate, and we did not source an official regional tariff we would stand behind. Ask the hospital treating you." },
+        { q: "Is northern Sweden riskier for medical costs?", a: "Not riskier clinically, but more expensive logistically. Norrland and Swedish Lapland are large and sparsely populated, and winter lengthens every journey, so a serious case there is a transport problem as well as a treatment one." },
+        { q: "Will a Swedish hospital treat me without insurance?", a: "Yes. Emergency care is provided first and the charge follows afterwards. Carry your policy details, since hospitals will ask how the account is being settled." },
+        { q: "Do I need travel insurance for Sweden?", a: "For a city trip it covers an ordinary hospital bill in an expensive country. For an arctic or mountain trip it is also paying for the distance, which is the larger of the two costs." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Sweden country information, including health and medical care guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Sweden.html", type: "gov" }
+        ],
+        judgment: "No price figures appear here. Swedish healthcare is priced by the regions rather than nationally, so a single national figure would be wrong by construction, and we did not source a regional tariff for non-resident care that we would publish. The north and south distinction is geographic fact rather than a claim about clinical quality, which is good throughout. Checked August 2026."
+      }
     }
   ]
 };

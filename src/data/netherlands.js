@@ -689,6 +689,78 @@ export default {
         ],
         judgment: "Checked Aug 2026. This is a short spoke on purpose. Dutch coverage is genuinely excellent and there is no registration quirk, no network to favour and no signal gap worth a paragraph, so padding it out with invented detail would make it look more useful while telling you less. The honest content is the cost comparison and the EU-roaming point about a local SIM on a multi-country trip. Carrier day-pass figures are an Aug 2026 snapshot and move faster than anything else we cover, so check your own plan before you fly."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "The GP", v: "Is the front door here" },
+        { k: "You pay", v: "As an uninsured patient" },
+        { k: "Distances", v: "Short, everywhere" },
+        { k: "Real risk", v: "An admission, and getting home" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in the Netherlands: go to the huisarts",
+      description: "Dutch healthcare runs through the GP, the huisarts, who is the route to everything else. Visitors pay, distances are short, and costs are contained.",
+      h1: "What does getting sick in the Netherlands cost a visitor?",
+      lede: "The Netherlands is easy to be ill in, provided you use it the way it is designed. Almost everything runs through the GP, and turning up at a hospital instead is the mistake visitors make.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Dutch healthcare is built around the <b>huisarts</b>, the general practitioner, who is the <b>gateway to nearly everything else</b>. As a visitor you pay as an <b>uninsured patient</b>, and outside surgery hours the <b>huisartsenpost</b>, the out-of-hours GP service, is where you go for anything that is not an emergency. Going straight to a hospital emergency department for something a GP should handle is the classic visitor error, and you may well be redirected. For a genuine emergency, <b>112</b> and the <b>spoedeisende hulp</b> are the right call. The country is <b>small and densely served</b>, so distance is not a cost driver, and costs are <b>contained</b> by regulation. The exposure is an admission and the flight home.",
+      insurance: true,
+      insuranceNote: "The Netherlands is a calm one. Care runs through the GP, distances are short, and costs are contained. Cover here is for an admission and a flight home rather than for everyday trouble, and we would rather say that plainly than dress it up. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, call 112 or go to the spoedeisende hulp first and sort the payment afterwards.",
+      sections: [
+        {
+          h: "The huisarts is the front door",
+          icon: "health",
+          key: { tag: "Use the system", text: "Dutch care runs through the GP. Outside surgery hours the huisartsenpost handles non-emergencies. Going straight to a hospital for GP-level trouble gets you redirected.", tone: "teal" },
+          p: [
+            "The Dutch system is <b>gatekept by design</b>, and it works well if you use it as intended. The <b>huisarts</b> is the first point of contact for almost everything, and the route to specialists, imaging and hospital care. Outside surgery hours the <b>huisartsenpost</b> covers the same ground.",
+            "The mistake visitors make is heading for a hospital emergency department with something a GP handles, which is both slower and more expensive, and you may be <b>redirected</b> anyway. Ask your accommodation which huisartsenpost covers the area. For a real emergency, none of this applies: <b>112</b> and the <b>spoedeisende hulp</b>. <b>If it looks serious, call 112 or go to the spoedeisende hulp first and sort the payment afterwards.</b>"
+          ]
+        },
+        {
+          h: "You pay, and it stays proportionate",
+          icon: "receipt",
+          key: { tag: "Contained", text: "A visitor pays as an uninsured patient. Dutch costs are regulated and contained, and the country is small enough that distance never adds to the bill.", tone: "teal" },
+          p: [
+            "As a visitor you pay as an <b>uninsured patient</b>, and claim from your own insurer afterwards. Dutch healthcare costs are <b>regulated</b> and the system is efficient, so a bill here is a real number rather than an alarming one.",
+            "The Netherlands is also <b>small and densely served</b>. There is nowhere in the country that is far from a hospital, which removes the evacuation-distance problem entirely and makes this one of the lower-exposure destinations we cover."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We have not sourced an official Dutch price list for visitors that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. We have <b>not sourced an official Dutch tariff for non-resident care</b> that we would put our name to, so no local price figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure is the useful part: <b>the huisarts is the route</b>, <b>you pay as an uninsured patient</b>, <b>costs are regulated and contained</b>, and <b>distance is never the problem</b>. Dutch tariffs are published, so a sourced figure is achievable on a later pass, and we would rather add one properly than estimate."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "A modest case", text: "This is one of the calmer countries on the site. Cover is for an admission and a flight home, and we are not going to pretend it is more than that.", tone: "teal" },
+          p: [
+            "Honestly, the Netherlands makes one of the <b>weaker cases for medical cover</b> on this site. Care is good, close, gatekept sensibly, and priced within reason. A traveler on a short city trip who is generally healthy is not carrying a large medical exposure here.",
+            "What remains is the <b>admission</b> and the <b>flight home</b>, which are real but narrow. For paying on the ground, see the <a href='/netherlands/cash-or-card'>Netherlands cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do I go to the hospital or a GP in the Netherlands?", a: "The GP, the huisarts, unless it is a genuine emergency. Dutch care is gatekept through the GP, and outside surgery hours the huisartsenpost covers non-emergencies. Turning up at a hospital with GP-level trouble is slower, dearer and may get you redirected." },
+        { q: "Is healthcare free in the Netherlands for tourists?", a: "No. You pay as an uninsured patient and claim from your own insurer. Costs are regulated and contained, so the bill is a real one rather than an alarming one." },
+        { q: "How much does a doctor cost in the Netherlands?", a: "We have not published a figure. Dutch tariffs are published and a sourced number is achievable on a later pass, but we did not verify one for this page and will not print a recalled figure on a medical page." },
+        { q: "What is the emergency number in the Netherlands?", a: "112. For a genuine emergency call it or go to the spoedeisende hulp, the hospital emergency department. The GP gatekeeping does not apply to real emergencies." },
+        { q: "Do I need travel insurance for the Netherlands?", a: "It makes one of the weaker cases on this site, and we would rather say so. Care is good, close and reasonably priced. Cover is for an admission and a flight home." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Netherlands country information, including health and medical care guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Netherlands.html", type: "gov" }
+        ],
+        judgment: "No price figures appear here; Dutch tariffs are published and a sourced figure is achievable on a later pass. We have kept this page deliberately calm, as instructed by the shape of the facts rather than the shape of the affiliate link: the Netherlands is small, well served and regulated, and the honest case for medical cover here is narrower than in most countries we cover. The huisarts gatekeeping is a practical point that saves visitors money and time. Checked August 2026."
+      }
     }
   ]
 };

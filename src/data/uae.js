@@ -451,6 +451,78 @@ export default {
         ],
         judgment: "Checked Aug 2026. This is the spoke on the site where our commercial interest and the reader's interest pull hardest in opposite directions, so the wording is deliberate. The app-calling block on UAE networks is well established and consistently reported. The travel-eSIM workaround is real, has a clear technical explanation in home-routed roaming, and is also inconsistent: sources disagree on how often it works and it can change without notice, which is why this page describes it as a side effect and never as a feature. If you need a call to happen in the UAE, plan on an ordinary cellular call or a licensed app and treat anything else as a bonus. Carrier day-pass figures are an Aug 2026 snapshot."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "Private care", v: "At Western prices" },
+        { k: "Deposits", v: "Normal before treatment" },
+        { k: "Resident mandate", v: "Not yours, do not assume" },
+        { k: "Real risk", v: "A private admission" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in the UAE: private care, private prices",
+      description: "The UAE runs excellent private hospitals at Western prices, with deposits normal before treatment. The residents' insurance mandate does not cover visitors.",
+      h1: "What does getting sick in the UAE cost a visitor?",
+      lede: "The Emirates have built a private hospital sector that would be recognisable to anyone from Houston or Zurich, including the prices. As a visitor, that private sector is your route.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Your realistic route in the UAE is a <b>private hospital or clinic</b>, and they are priced accordingly: modern, international-standard, and at <b>Western rates</b>. A <b>deposit or proof of insurance before treatment</b> is normal practice, particularly for admission. One thing to be clear about, because it causes confusion: <b>Dubai and Abu Dhabi require employers to provide health insurance for residents</b>, and that mandate has <b>nothing to do with you</b>. It does not extend to tourists and it does not mean care is arranged for visitors. Public hospitals exist and will handle emergencies, but visitors are <b>charged</b> there too. The care is good. The bill is a real one.",
+      insurance: true,
+      insuranceNote: "In the UAE you are heading for the private sector, which is excellent and priced like the private sector anywhere, with a deposit expected before admission. The residents' insurance mandate in Dubai and Abu Dhabi is not yours and does not cover you. Cover here is for the admission and the flight home. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, get to a hospital first and sort the deposit out afterwards.",
+      sections: [
+        {
+          h: "The private sector is the route, at private prices",
+          icon: "receipt",
+          key: { tag: "Western rates", text: "UAE private hospitals are modern and international-standard, and priced like private hospitals anywhere. That is where a visitor is treated.", tone: "amber" },
+          p: [
+            "The Emirates have invested heavily in <b>private healthcare</b>, and the result is a sector with international accreditation, foreign-trained specialists and English throughout. It is genuinely good, and it is also <b>priced like private healthcare anywhere in the developed world</b>, which is the part travelers underestimate because the region reads as somewhere costs might be lower.",
+            "Expect a <b>deposit or proof of insurance before treatment</b>, particularly for anything requiring admission. This is routine rather than adversarial. <b>If it looks serious, get to a hospital first and sort the deposit out afterwards.</b>"
+          ]
+        },
+        {
+          h: "The insurance mandate is not yours",
+          icon: "alert",
+          key: { tag: "A common confusion", text: "Dubai and Abu Dhabi require health insurance for residents, provided by employers. It does not extend to tourists and does not cover a visitor.", tone: "amber" },
+          p: [
+            "This one is worth stating clearly because it misleads people. <b>Dubai and Abu Dhabi mandate health insurance for residents</b>, with employers required to provide it. Travelers sometimes read about the mandate and conclude that the UAE has arranged health cover, or that the system will absorb them somehow.",
+            "It will not. The mandate is an <b>employment and residence</b> requirement and it has no bearing on a tourist. As a visitor you are <b>uninsured locally</b> unless you brought a policy, and both private and public facilities will charge you. Do not let a headline about universal coverage in the Emirates do any work in your planning."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We have not sourced an official Emirati price list for visitors that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. We have <b>not sourced an official Emirati tariff for non-resident care</b> that we would put our name to, so no local price figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure stands without a number: <b>the private sector is your route</b>, <b>prices are at Western private levels</b>, <b>a deposit before treatment is normal</b>, and <b>the residents' mandate does not apply to you</b>. Ask your insurer whether they have direct-billing arrangements with UAE hospitals, because several do and it removes the deposit problem entirely."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Direct billing helps", text: "Many international insurers have direct-billing arrangements with Gulf hospitals. That turns a deposit demand into a phone call, which is worth arranging in advance.", tone: "teal" },
+          p: [
+            "The single most useful piece of preparation for the UAE is finding out whether your insurer has a <b>direct-billing relationship</b> with hospitals there. Many international insurers do, because the Gulf is a heavily insured market, and it converts a large deposit demand into an <b>authorisation call</b>.",
+            "Failing that, carry the <b>assistance line number</b> somewhere you can reach it quickly and expect to use a card. For handling payments on the ground, see the <a href='/uae/cash-or-card'>UAE cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does the UAE health insurance mandate cover tourists?", a: "No. Dubai and Abu Dhabi require employers to provide health insurance for residents. It is an employment and residence requirement and it does not extend to visitors, who are uninsured locally unless they bring their own policy." },
+        { q: "How much does a hospital cost in the UAE?", a: "We have not published a figure, because we did not source an official Emirati tariff for visitor care that we would stand behind. What is reliable is that private hospitals, which are the realistic route for a visitor, charge at Western private rates." },
+        { q: "Will a UAE hospital ask for a deposit?", a: "Commonly, yes, especially for admission. A deposit or proof of insurance before treatment is normal practice. An insurer with a direct-billing arrangement can usually replace that with an authorisation." },
+        { q: "Can I use a public hospital in the UAE as a tourist?", a: "Public hospitals will deal with emergencies, but visitors are charged there too, so it is not a free alternative. Most visitors end up in the private sector, which is where the international-standard facilities and English-speaking staff are concentrated." },
+        { q: "Do I need travel insurance for the UAE?", a: "Yes, and ideally one with Gulf direct-billing. You are heading for private care at private prices with a deposit expected up front, and a flight home is on top of that." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: United Arab Emirates country information, including health and medical care guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/UnitedArabEmirates.html", type: "gov" }
+        ],
+        judgment: "No price figures appear here because we did not source an official Emirati tariff for visitor care that we would publish, and private hospital pricing in the UAE is set facility by facility. The point about the residents' insurance mandate not extending to tourists is included because it is a recurring and consequential misunderstanding. Deposit practice varies by facility and by whether your insurer has a direct-billing arrangement. Checked August 2026."
+      }
     }
   ],
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 3, atmRisk: 3 },

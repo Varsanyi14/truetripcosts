@@ -673,6 +673,83 @@ export default {
         ],
         judgment: "US citizens' visa-free, eTA-exempt access to Canada is long-standing and stated plainly on the official IRCC pages. The accepted documents for land and sea, and the criminal-inadmissibility rules, can change, so confirm on IRCC before you travel. Checked July 2026."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "Provincial plans", v: "Do not cover visitors" },
+        { k: "A ward, per day", v: "About 2,980 Canadian dollars" },
+        { k: "Doctors", v: "Billed separately, on top" },
+        { k: "Real risk", v: "A short admission, close to home" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Canada: the bill Americans do not expect",
+      description: "Canada's public plans do not cover visitors. One Ottawa public hospital publishes a non-resident ward rate of 2,980 Canadian dollars a day, doctors extra.",
+      h1: "What does getting sick in Canada cost an American?",
+      lede: "Canada is the country on this site where the gap between what Americans assume and what they will be billed is widest. It is next door, it has public healthcare, and none of that is arranged for you.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Canada does not run one national plan. Each <b>province and territory</b> insures its own residents, and <b>none of them covers a visitor</b>. You are billed as a non-resident, at published rates that are genuinely high. Hopital Montfort, a public hospital in Ottawa, publishes its non-resident fees: an emergency room visit at <b>786.60 Canadian dollars</b> plus a separate <b>175 dollar</b> emergency physician fee, a <b>ward bed at 2,980 Canadian dollars a day</b>, and <b>intensive care at 8,840.50 a day</b>. Note what that ward figure is: it is <b>exactly double</b> the rate the same hospital charges an uninsured Canadian. And <b>doctors bill separately</b>, so the hospital's number is not the whole bill.",
+      insurance: true,
+      insuranceNote: "Canada is close, familiar and has public healthcare, and none of that helps you: provincial plans cover their own residents, so a visitor is billed at published non-resident rates that run to thousands of dollars a day, with doctors invoiced on top. A short unplanned admission in Toronto is a five-figure event. That is the gap cover is for here. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, get to an emergency department first and deal with the billing after.",
+      sections: [
+        {
+          h: "There is no national plan, and none of them is yours",
+          icon: "alert",
+          key: { tag: "Not covered", text: "Canada's health insurance is run province by province and covers that province's own residents. A visitor is outside every one of them.", tone: "amber" },
+          p: [
+            "The phrase people carry across the border is that Canada has universal healthcare, and the important word in it is not universal but <b>Canadian</b>. There is no single national plan. Each <b>province and territory</b> runs its own scheme, and each covers people who are <b>resident in that province</b>. A visitor from the US is outside all of them.",
+            "So you are a <b>self-pay, out-of-country patient</b>, and Ontario hospitals say so in exactly those words in their own billing policies. Expect to sign a payment responsibility form, and expect a <b>deposit or prepayment</b> to be asked for before non-emergency services. <b>If it looks serious, get to an emergency department first and deal with the billing after.</b>"
+          ]
+        },
+        {
+          h: "The published numbers, from a public hospital",
+          icon: "receipt",
+          key: { fig: "$2,980", tag: "A ward, per day", text: "Hopital Montfort in Ottawa publishes its 2026-27 non-resident fees: 786.60 Canadian dollars for an ER visit, 2,980 a day for a ward bed, 8,840.50 for intensive care.", tone: "amber" },
+          p: [
+            "This is the rare country where you can read the price before you travel. <b>Hopital Montfort</b>, a public hospital in Ottawa, publishes a fee table for the <b>2026-27</b> year with a column headed non-residents of Canada without insurance. An <b>emergency room visit is 786.60 Canadian dollars</b>, roughly <b>575 US dollars</b>, and the <b>emergency physician fee of 175 dollars</b> sits on top of it. A <b>ward bed is 2,980 Canadian dollars a day</b>, roughly <b>2,150 US dollars</b>. <b>Intensive care is 8,840.50 a day</b>. A <b>CT scan is 1,734.70</b>.",
+            "Two things about that ward figure are worth pausing on. It is <b>exactly twice</b> the 1,490 dollars the same hospital charges an uninsured Canadian, so the non-resident rate is a deliberate multiple rather than a cost. And it is a <b>bed</b>: Montfort states plainly that <b>physician fees are extra</b> and that the doctors who treat you bill you <b>individually</b>. Three days on a ward with a couple of consultants involved is comfortably a five-figure event."
+          ]
+        },
+        {
+          h: "One hospital's list, not a national tariff",
+          icon: "tag",
+          key: { tag: "Read it as a shape", text: "Montfort's table is one public hospital in one province. Rates differ by hospital and province, so treat these as the shape of a Canadian bill rather than the price of yours.", tone: "teal" },
+          p: [
+            "Being straight about what this figure is: it is <b>one public hospital in Ontario</b>, publishing its own rates, not a national tariff. Canada has no single price list, because pricing sits with provinces and individual hospitals. Rates in British Columbia or Quebec will differ, and a large downtown teaching hospital will not match a community one.",
+            "What it is good for is <b>calibration</b>. It tells you the order of magnitude a Canadian non-resident bill arrives in, and it comes from the hospital's own published table rather than from an insurer selling you something. Treat it as the shape of the risk and confirm the actual number with whichever hospital is treating you."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Short trips too", text: "The exposure does not scale with trip length. A weekend in Toronto and a month in the Rockies carry the same daily rate if something goes wrong on day one.", tone: "teal" },
+          p: [
+            "The trap with Canada is psychological rather than financial. It is a <b>short, cheap, familiar trip</b>, so it is the trip people skip cover for, and the daily rate does not care whether you were there for a weekend or a month. A ski injury on day one of a four-day trip bills the same as one on a long stay.",
+            "Practically: carry your policy details, expect to sign for payment on arrival at the hospital, and keep every <b>separate doctor's invoice</b>, because they arrive independently of the hospital's bill and a claim needs all of them. For handling payments on the ground, see the <a href='/canada/cash-or-card'>Canada cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does Canadian healthcare cover American tourists?", a: "No. Canada's health insurance is run by each province and territory for its own residents, and none of them covers visitors. You are billed as a self-pay out-of-country patient at the hospital's published non-resident rates." },
+        { q: "How much does a Canadian hospital charge a visitor per day?", a: "It varies by hospital and province, and there is no national tariff. As a published example, Hopital Montfort in Ottawa lists 2,980 Canadian dollars a day for a ward bed for a non-resident without insurance in 2026-27, and 8,840.50 a day for intensive care. Doctors bill separately on top." },
+        { q: "Does my US health insurance work in Canada?", a: "Rarely, and Medicare essentially never. Most US plans pay little or nothing abroad, and where they do it is usually reimbursement after the fact rather than payment to the hospital. Being next door does not change that." },
+        { q: "Will a Canadian hospital treat me without insurance?", a: "An emergency department will treat an emergency. You will then be billed, and for non-emergency services a deposit or prepayment is commonly required before treatment. Get care first and sort the account afterwards." },
+        { q: "Is travel insurance worth it for a short trip to Canada?", a: "The daily rate does not scale with trip length, which is the whole argument. A published non-resident ward rate of nearly 3,000 Canadian dollars a day plus separate physician bills makes a two-day problem on a weekend trip a serious sum." }
+      ],
+      sourcedFigures: [
+        { fact: "Hopital Montfort Ottawa 2026-27 published fee for non-residents of Canada without insurance: emergency room visit 786.60 Canadian dollars, plus a separate 175 dollar emergency physician fee", kind: "routine", src: 0, forms: ["786.60 Canadian dollars", "175 dollar", "175 dollars", "575 US dollars"] },
+        { fact: "Hopital Montfort Ottawa 2026-27 published non-resident inpatient rates: ward 2,980 Canadian dollars per day, intensive care 8,840.50 per day, CT scan 1,734.70; the ward rate is exactly double the 1,490 charged to an uninsured Canadian", kind: "inpatient", src: 0, forms: ["2,980 Canadian dollars", "8,840.50", "1,734.70", "1,490 dollars", "$2,980", "2,150 US dollars", "3,000 Canadian dollars", "2,980 a day"] }
+      ],
+      sources: {
+        links: [
+          { label: "Hopital Montfort, Ottawa: visiting and hospitalization expenses, published fees for non-residents of Canada without insurance, fiscal year 2026-27", url: "https://hopitalmontfort.com/en/visit/visiting-and-hospitalization-expenses", type: "gov" },
+          { label: "Toronto East Health Network: hospital fees, on self-pay out-of-country patients being charged the standard ward rate and prepayment for non-emergent services", url: "https://www.tehn.ca/patients-visitors/hospital-fees", type: "gov" }
+        ],
+        judgment: "The figures on this page are one public hospital's own published table for 2026-27, not a national tariff, and we have said so in the page rather than generalising them into a Canadian average. Canada prices hospital care province by province and hospital by hospital, so another facility will differ. Physician fees are excluded from these hospital rates by the hospital's own note. Confirm the rate with the facility treating you. Checked August 2026."
+      }
     }
   ]
 };

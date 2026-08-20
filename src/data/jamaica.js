@@ -613,7 +613,7 @@ export default {
       sourcedFigures: [
         { fact: "US Embassy Kingston: serious problems requiring hospitalisation or medical evacuation to the United States can cost 15,000 to 20,000 dollars or more",
           kind: "evacuation", src: 0,
-          forms: ["15,000 to 20,000 dollars", "$15,000 to $20,000", "$15-20k+"] }
+          forms: ["15,000 to 20,000 dollars", "$15,000 to $20,000", "$15-20k+", "$15,000", "15,000 dollar"] }
       ],
       sections: [
         {

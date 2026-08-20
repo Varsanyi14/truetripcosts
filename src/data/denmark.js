@@ -513,6 +513,78 @@ export default {
         ],
         judgment: "Checked Aug 2026. The Greenland and Faroes exclusion is the useful content on this page and it is a check rather than a purchase: their separate listing was verified against AT&T's own destination list, and the EU roaming zone genuinely does not extend to either. Everything else about Danish connectivity is unremarkable, so the page says so rather than manufacturing a warning. Carrier figures are an Aug 2026 snapshot."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "Emergency care", v: "Given, then billed" },
+        { k: "You pay", v: "The full cost as a visitor" },
+        { k: "Distance", v: "Short, which helps a lot" },
+        { k: "Real risk", v: "The bill, not the geography" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Denmark: treated first, billed after",
+      description: "Denmark's public system is for residents. A visitor is treated and then charged the full cost, though a compact country keeps care close and costs contained.",
+      h1: "What does getting sick in Denmark cost a visitor?",
+      lede: "Denmark is one of the more reassuring countries on this list. Care is close, well run and quick to reach, and the financial question is a bill rather than a catastrophe.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Denmark's health service is <b>funded for residents</b> through the regions, and a visitor from outside the EU or EEA is <b>charged for treatment</b>. Emergency and acute care is <b>given first and invoiced afterwards</b>, which is the important sequence. Denmark's advantage over its Nordic neighbours is <b>size</b>: it is small, flat and densely connected, so a hospital is rarely far away and <b>evacuation distance is not a meaningful cost driver</b> the way it is in Norway or Iceland. What you are insuring here is the <b>price of an admission</b> in an expensive country, not the problem of reaching one.",
+      insurance: true,
+      insuranceNote: "Denmark treats you first and bills you after, and being small and well connected means getting to care is rarely the problem. What cover is for here is the admission itself and the flight home, not a rescue. That is a narrower gap than most countries on this site, and it is an honest one. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, get to care first and deal with the bill afterwards.",
+      sections: [
+        {
+          h: "Treated first, charged after",
+          icon: "health",
+          key: { tag: "The right order", text: "Denmark's regions fund care for residents. A visitor from outside the EU or EEA is charged, but acute care is given first and billed afterwards.", tone: "teal" },
+          p: [
+            "Denmark funds healthcare through its <b>regions</b>, for people <b>registered as resident</b>. A visitor from outside the EU or EEA sits outside that and is <b>charged for treatment</b>. The order matters and it is the reassuring part: acute and emergency care is <b>provided first</b> and the invoice follows.",
+            "<b>If it looks serious, get to care first and deal with the bill afterwards.</b> There is no version of a Danish emergency where hesitating over cost is the right instinct, and the system is not built to make you."
+          ]
+        },
+        {
+          h: "Being small is a genuine advantage",
+          icon: "tag",
+          key: { tag: "Care is close", text: "Denmark is compact and densely connected, so the evacuation-distance problem that drives cost in Norway or Iceland barely applies here.", tone: "teal" },
+          p: [
+            "It is worth saying what is <b>not</b> a risk here, because it changes what cover is for. Denmark is <b>small, flat and well connected</b>, and a hospital is rarely far from wherever you are, including on the islands. The <b>distance-to-care</b> problem that dominates the honest account of Norway, Iceland or Namibia is <b>largely absent</b>.",
+            "So the Danish scenario is a fairly ordinary one: you are treated promptly at a good hospital and receive a bill from an expensive country. That is a manageable, insurable event rather than a logistical crisis, and it is why Denmark reads calmer than its neighbours on this site."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We have not sourced an official Danish price list for visitors that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. We have <b>not sourced an official Danish tariff for non-resident care</b> that we would put our name to, so no local price figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure holds without a number: <b>residents are covered and you are not</b>, <b>care comes first and the invoice second</b>, and <b>getting to a hospital is not the hard part</b>. Danish regions set their own rates for non-resident care, so the figure to ask for is the one from the hospital treating you."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "A narrower gap", text: "Cover here is for the admission and the flight home. Denmark does not add a rescue problem on top, and we are not going to invent one.", tone: "teal" },
+          p: [
+            "Being straight about the size of the risk: Denmark is a country where the honest answer is that a policy covers a <b>hospital invoice and a repatriation</b>, and not much else you are likely to meet. Routine care is chargeable but not ruinous, and the country will not strand you somewhere a helicopter has to reach.",
+            "That is a smaller argument for cover than we make for Namibia or Laos, and it should be. For paying on the ground, see the <a href='/denmark/cash-or-card'>Denmark cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare free in Denmark for tourists?", a: "No. Danish healthcare is funded by the regions for registered residents, and a visitor from outside the EU or EEA is charged for treatment. Acute care is given first and billed afterwards." },
+        { q: "How much does a hospital visit cost in Denmark?", a: "We have not published a figure, because we did not source an official Danish non-resident tariff we would stand behind. Danish regions set their own rates, so ask the hospital treating you." },
+        { q: "Will a Danish hospital treat me without insurance?", a: "Yes. Acute and emergency care is provided first and the charge follows. The cost question is settled after the clinical one, which is the right way round." },
+        { q: "Is medical evacuation a risk in Denmark?", a: "Much less than in most countries we cover. Denmark is small, flat and densely connected, so a hospital is rarely far away and the distance-driven evacuation cost that dominates Norway or Iceland barely applies." },
+        { q: "Do I need travel insurance for Denmark?", a: "It is worth carrying, for a narrower reason than elsewhere: an admission in an expensive country and a flight home if you cannot travel normally. Denmark does not add a rescue problem on top of that." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Denmark country information, including health and medical care guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Denmark.html", type: "gov" }
+        ],
+        judgment: "No price figures appear here because we did not source an official Danish non-resident tariff we would publish, and Danish regions set their own rates for non-resident care. We have deliberately kept the framing calm: Denmark's combination of prompt acute care and short distances makes it one of the lower-exposure countries on this site, and overstating it to strengthen an insurance argument would be the exact failure this wave is built to avoid. Checked August 2026."
+      }
     }
   ]
 };

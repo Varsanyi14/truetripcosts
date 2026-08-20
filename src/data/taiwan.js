@@ -505,6 +505,78 @@ export default {
         ],
         judgment: "Checked Aug 2026. This is one of the few pages where we do not give a single answer, because the honest one turns on usage: unlimited-by-the-day pricing beats per-gigabyte pricing for heavy users and loses to it for light ones, and pretending otherwise would just be choosing whichever conclusion suited us. Tourist SIM prices are quoted in New Taiwan dollars and converted at recent rates, so treat the dollar figures as approximate and the airport board as authoritative on the day. The second-ID requirement is a Taiwanese rule that surprises people and is worth arriving prepared for."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "National insurance", v: "Residents only" },
+        { k: "Self-pay rates", v: "Genuinely modest" },
+        { k: "The care", v: "Excellent and quick" },
+        { k: "Honest read", v: "Cover matters less here" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Taiwan: the cheapest surprise in Asia",
+      description: "Taiwan's care is excellent and its self-pay rates are modest even for visitors. This is a country where heavy medical cover is less critical, and we will say so.",
+      h1: "What does getting sick in Taiwan cost a visitor?",
+      lede: "Taiwan is the country on this list where the honest answer is most reassuring. The hospitals are excellent, the queues are short, and paying for it yourself is not the ordeal it would be almost anywhere else.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Taiwan's <b>National Health Insurance</b> is for residents, so a visitor pays <b>self-pay rates</b>. What makes Taiwan different from every other country on this page is that those rates are <b>genuinely modest</b>. Taiwanese medicine is <b>excellent, fast and inexpensive by international standards</b>, hospitals are easy to walk into, and specialist access is quick. So the honest read is one we will state plainly even though it weakens the argument for the link on this page: for a normal trip to Taiwan, <b>heavy medical cover is less critical here than almost anywhere else we cover</b>. What is still worth insuring is the <b>rare catastrophic event</b> and, above all, the <b>flight home</b>, which is expensive from anywhere.",
+      insurance: true,
+      insuranceNote: "We will be straight with you about Taiwan: care here is excellent and self-pay rates are modest, so this is one of the countries where routine medical cover matters least. Do not buy a policy because of this page. What remains genuinely uncovered is a catastrophic event and a medically supervised flight home from East Asia, which is expensive from anywhere. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, go to a hospital first and settle the payment afterwards.",
+      sections: [
+        {
+          h: "The care is excellent and the queue is short",
+          icon: "health",
+          key: { tag: "Easy to use", text: "Taiwan runs one of the most efficient health systems in the world. Walk-in access is normal and specialist waits are short.", tone: "teal" },
+          p: [
+            "Taiwan's health system is widely regarded as one of the most efficient anywhere, and the traveler-facing consequence is simple: it is <b>easy to be seen</b>. Walking into a hospital outpatient department without an appointment is <b>normal practice</b>, waits are short by the standards of most rich countries, and the standard of care is high.",
+            "Major hospitals in <b>Taipei, Taichung and Kaohsiung</b> handle international patients regularly and English is workable at the larger ones. <b>If it looks serious, go to a hospital first and settle the payment afterwards.</b> That advice costs less to follow in Taiwan than in most places."
+          ]
+        },
+        {
+          h: "Cover matters less here, and we will say so",
+          icon: "tag",
+          key: { tag: "The honest call", text: "Self-pay rates in Taiwan are modest. For a normal trip, heavy medical cover is less critical here than in almost any country we cover.", tone: "teal" },
+          p: [
+            "There is a commission link at the bottom of this page, so here is the sentence that costs us money. For an ordinary trip to Taiwan by a reasonably healthy traveler, <b>heavy medical cover is less necessary here than almost anywhere else we write about</b>. Self-pay rates are modest, care is close, and a clinic visit or a minor problem is the kind of thing most people can absorb.",
+            "That is not a recommendation to travel uninsured, and it is not a claim that Taiwan is free. It is a statement about <b>proportion</b>. If you are choosing where to spend a limited budget on cover, Taiwan is not where the medical component earns its keep, and pretending otherwise to make the link below look necessary would be the exact dishonesty this site exists to avoid."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We have not sourced an official Taiwanese price list for visitors that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. We have <b>not sourced an official Taiwanese tariff for non-resident care</b> that we would put our name to, so no local price figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "What is dependable without a figure: <b>National Health Insurance is for residents</b>, <b>you pay self-pay rates</b>, and <b>those rates are low by international standards</b>. We are comfortable saying the last part qualitatively because it is consistent and well established, and not comfortable attaching a number to it that we have not verified against Taiwan's own fee schedule."
+          ]
+        },
+        {
+          h: "What is still worth covering",
+          icon: "plane",
+          key: { tag: "The flight home", text: "The remaining gap is a catastrophic event and repatriation from East Asia, which is expensive regardless of how cheap local care is.", tone: "teal" },
+          p: [
+            "Having made the case for proportion, here is what does not shrink. A <b>catastrophic event</b>, meaning intensive care, major surgery or a long admission, is a serious sum in any system. And a <b>medically supervised flight home from East Asia</b> costs what it costs regardless of how affordable Taiwanese medicine is, because it is an aviation expense rather than a medical one.",
+            "So if you carry cover for Taiwan, carry it for those two things and check the <b>evacuation limit</b> rather than the outpatient benefits. For paying on the ground, see the <a href='/taiwan/cash-or-card'>Taiwan cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Can tourists use Taiwan's National Health Insurance?", a: "No, it is for residents. A visitor pays self-pay rates, which in Taiwan are modest by international standards, which is why this is one of the less financially risky countries we cover." },
+        { q: "How much does a doctor cost in Taiwan?", a: "We have not published a figure, because we did not source Taiwan's own fee schedule to verify one. We are comfortable saying qualitatively that self-pay rates are low by international standards, and not comfortable attaching an unverified number to that." },
+        { q: "Do I need travel insurance for Taiwan?", a: "Less than almost anywhere else we cover, and we would rather say that than sell you something. Care is excellent and self-pay rates are modest. What remains worth insuring is a catastrophic event and a flight home from East Asia." },
+        { q: "Is it easy to see a doctor in Taiwan as a visitor?", a: "Yes. Walking into a hospital outpatient department without an appointment is normal, waits are short, and larger hospitals in Taipei, Taichung and Kaohsiung handle international patients regularly." },
+        { q: "Is Taiwanese healthcare good?", a: "It is regarded as one of the most efficient systems in the world, with high standards and short waits. Quality is not a concern here, which is a large part of why the honest financial advice is proportionate rather than alarmed." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Taiwan country information, including health and medical care guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Taiwan.html", type: "gov" }
+        ],
+        judgment: "This page deliberately makes a weaker case for insurance than most on this site, because that is the honest read for Taiwan. We have published no local price figure: we did not source Taiwan's own fee schedule, and the qualitative statement that self-pay rates are low by international standards is a judgment we are comfortable making without attaching an unverified number to it. Individual hospitals and procedures vary, so confirm at the point of care. Checked August 2026."
+      }
     }
   ]
 };

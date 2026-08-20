@@ -590,6 +590,78 @@ export default {
         ],
         judgment: "Checked Aug 2026. The load-bearing fact here is the one that costs us a sale: many of the Europe plans a reader would otherwise buy exclude Switzerland, so the useful advice is to check a country list rather than to click a link. That is verified against the roaming rules themselves, since Switzerland is neither an EU nor an EEA member and Schengen membership has nothing to do with telecoms. Swisscom's daily unlimited price is a current read in francs and the starter-pack cost varies by retailer, so treat the comparison as close rather than settled and run your own numbers if you expect heavy use. Carrier day-pass figures are an Aug 2026 snapshot."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "Public system", v: "There isn't one for you" },
+        { k: "Everyone here", v: "Buys private insurance" },
+        { k: "Mountains", v: "Rescue is billed" },
+        { k: "Real risk", v: "Cost, in a superb system" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Switzerland: superb, and priced like it",
+      description: "Switzerland has no free public health service. Care is excellent, everyone here carries private insurance, and a visitor pays the full private rate.",
+      h1: "What does getting sick in Switzerland cost a visitor?",
+      lede: "Switzerland runs one of the best health systems in the world and one of the least free. There is no NHS-style public service to fall outside of, because there is no free public service for anyone.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Switzerland does not have a tax-funded health service. <b>Every resident is legally required to buy private health insurance</b>, and the system is built on that rather than on general taxation. So there is no public entitlement for a visitor to be excluded from, because there is <b>no free tier for anyone</b>. You are a <b>private paying patient</b> in one of the most expensive care markets in Europe, and hospitals are set up to bill you directly. The second cost is geographic: <b>alpine rescue</b>, including helicopter evacuation from a mountain or a piste, is <b>charged</b>, and it is a real line item rather than a theoretical one. The medicine is excellent. The arithmetic is the problem.",
+      insurance: true,
+      insuranceNote: "Switzerland has no free public health service to fall outside of, because there is not one for anyone: residents are legally required to buy private cover. So you are a private patient in one of Europe's most expensive markets, and alpine rescue is billed on top. Cover here is about the price of superb care rather than the quality of it. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, get treated first and deal with the invoice afterwards.",
+      sections: [
+        {
+          h: "There is no free tier to fall out of",
+          icon: "alert",
+          key: { tag: "Insurance-based", text: "Switzerland has no tax-funded health service. Every resident must buy private health insurance by law, so there is no public entitlement a visitor is excluded from.", tone: "amber" },
+          p: [
+            "This is the fact that reorganises the page. Switzerland funds healthcare through <b>compulsory private insurance</b>, not through taxation, and every resident is <b>legally required to hold a policy</b>. There is no free public service, which means there is no public service you are being kept out of. A Swiss resident without insurance is in the same position you are.",
+            "Practically, that makes Swiss hospitals unusually comfortable with billing an individual. They do it constantly, to their own population's insurers, and to you. Expect an <b>itemised invoice</b> and expect it to be enforced. <b>If it looks serious, get treated first and deal with the invoice afterwards.</b>"
+          ]
+        },
+        {
+          h: "The mountain is a separate cost",
+          icon: "plane",
+          key: { tag: "Rescue is billed", text: "Alpine rescue, including helicopter evacuation from a mountain or a piste, is charged. Check that your policy covers mountain rescue specifically, not just medical care.", tone: "amber" },
+          p: [
+            "Switzerland is the country on this site where the <b>rescue</b> and the <b>treatment</b> are genuinely separate financial events. Getting a casualty off a mountain, a glacier or a ski slope frequently involves a <b>helicopter</b>, and that is <b>billed</b>. It is a normal part of Swiss alpine life rather than an exotic scenario.",
+            "So the thing to check on a policy for Switzerland is not only the medical limit but whether <b>mountain rescue and helicopter evacuation</b> are covered, and whether the activities you plan to do are inside the policy's definitions. Off-piste skiing, ski touring and high-altitude hiking are the usual exclusions, and they are exactly the activities that generate the callouts."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We have not sourced an official Swiss price list for visitors that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. We have <b>not sourced an official Swiss tariff for non-resident care</b> that we would put our name to, so no local price figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "What is solid is the structure, and it is enough to plan around: <b>no free tier</b>, <b>you are a private patient</b>, <b>hospitals bill directly and expect payment</b>, and <b>rescue is a separate bill from treatment</b>. Ask your insurer two questions before you go: the medical limit, and whether mountain rescue is included."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Quality is not the issue", text: "Swiss care is excellent and reachable. What you are insuring is its price, plus a rescue bill that has nothing to do with the hospital.", tone: "teal" },
+          p: [
+            "Nothing here is a warning about Swiss medicine, which is about as good as it gets and is rarely far away. The honest framing is that Switzerland is <b>expensive rather than risky</b>, and those are different things that a traveler should weigh differently.",
+            "For a city trip, cover is mainly about the size of a hospital invoice. For a <b>mountain trip</b>, it is about the invoice and the helicopter, and the second one can be the larger. For paying on the ground, see the <a href='/switzerland/cash-or-card'>Switzerland cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare free in Switzerland?", a: "No, and not for residents either. Switzerland funds healthcare through compulsory private insurance rather than taxation, so there is no free public tier for anyone. A visitor is a private paying patient, as an uninsured Swiss resident would be." },
+        { q: "How much does a doctor cost in Switzerland?", a: "We have not published a figure, because we could not source an official Swiss tariff for non-resident care that we would stand behind. What is certain is that you pay privately in one of Europe's most expensive care markets and that hospitals bill directly." },
+        { q: "Is mountain rescue free in Switzerland?", a: "No. Alpine rescue, including helicopter evacuation from a mountain or a ski area, is charged. Check that your policy covers mountain rescue specifically and that it covers the activities you intend to do, since off-piste skiing and ski touring are commonly excluded." },
+        { q: "Does my US insurance work in Switzerland?", a: "Rarely. Most US plans pay little or nothing abroad and Medicare pays nothing outside the United States. Swiss providers will invoice you directly and expect payment, with reimbursement being your problem rather than theirs." },
+        { q: "Do I need travel insurance for Switzerland?", a: "Yes, and for a specific reason: the care is superb and the price is high, so this is about cost rather than quality. If you are going near the mountains, the rescue cover matters at least as much as the medical limit." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Switzerland country information, including health and medical care guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Switzerland.html", type: "gov" }
+        ],
+        judgment: "This page carries no price figures. Switzerland's compulsory-insurance model and the absence of a free public tier are structural facts rather than prices, and the point that alpine rescue is charged separately is well established, but we did not source an official Swiss non-resident tariff we would publish. Rescue and treatment are billed by different organisations and policies vary widely on what activities they cover, so check your own policy wording. Checked August 2026."
+      }
     }
   ]
 };

@@ -587,6 +587,78 @@ export default {
         ],
         judgment: "Checked Aug 2026. Two things here cost us rather than earn: Svalbard's exclusion is a reason to check a country list rather than click a link, and the maritime-roaming warning is the largest single bill risk on any Norwegian trip and has nothing to do with the products on this page. Svalbard's separate listing was verified against AT&T's own destination list. Pass conditions come from vegvesen.no, which supersedes anything here on the day you drive."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "You pay", v: "The full rate as a visitor" },
+        { k: "Care", v: "Good, and sometimes far away" },
+        { k: "Distance", v: "A real cost driver here" },
+        { k: "Real risk", v: "Getting to care, then the bill" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Norway: good care, long distances",
+      description: "Norway's public system covers residents. A visitor from outside the EEA pays the full cost, and outside the cities the distance to care is its own expense.",
+      h1: "What does getting sick in Norway cost a visitor?",
+      lede: "Norway has a strong public health service organised around its own residents, and a geography that makes reaching it the first question in half the country.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "Norway's public system is <b>funded for residents</b>, and a visitor from outside the EEA is <b>charged the full cost</b> of treatment. Emergency care is provided and then billed. The second half of the picture is <b>geography</b>: outside Oslo, Bergen and the other cities, Norway is <b>long, thin and sparsely populated</b>, and a serious problem in the fjords, the north or the mountains is a <b>transport problem before it is a treatment problem</b>. Air ambulance is a normal part of Norwegian healthcare because it has to be. Nothing about the medicine should worry you. The distance and the price should both be on your list.",
+      insurance: true,
+      insuranceNote: "Norway treats you and then bills you at the full rate, and outside the cities the harder problem is reaching care at all. Cover here is doing two jobs: absorbing a bill from an expensive country, and paying for the transport that a fjord or an arctic road makes necessary. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, get to care first and settle the cost afterwards.",
+      sections: [
+        {
+          h: "Residents are covered. You are billed",
+          icon: "alert",
+          key: { tag: "Full cost", text: "Norway's public health service is funded for its residents. A visitor from outside the EEA is charged the full cost of treatment, billed after care.", tone: "amber" },
+          p: [
+            "Norway's health service is <b>publicly funded and organised around residents</b>, in the way of most of Northern Europe, and the entitlement follows residence rather than presence. A visitor from <b>outside the EEA</b>, which includes every American, is <b>charged for treatment</b> at the full rate.",
+            "The sequence is the reassuring part: you are <b>treated and then billed</b>, rather than assessed for ability to pay first. <b>If it looks serious, get to care first and settle the cost afterwards.</b> Norway is also an expensive country generally, and healthcare is not the exception to that."
+          ]
+        },
+        {
+          h: "Half the country is a long way from a hospital",
+          icon: "plane",
+          key: { tag: "Distance", text: "Outside the cities Norway is sparsely populated and hard to cross. Air ambulance is routine here because roads and fjords make it necessary.", tone: "amber" },
+          p: [
+            "This is the part that separates Norway from its Nordic neighbours. The country is <b>long, mountainous and cut by fjords</b>, and outside the main cities the population is thin. A road that looks short on a map can be a <b>ferry, a tunnel and two hours</b>. In Lofoten, Finnmark, the interior or on a hiking route, the nearest full hospital may be a long way off.",
+            "Norway handles this with a well-run <b>air ambulance</b> service, because it has no alternative. For you that means the realistic serious scenario is not just a ward bill but a <b>transfer</b>, and the <b>evacuation limit</b> on your policy is the number that decides how it goes. In winter, with weather closing options, that is more true rather than less."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We have not sourced an official Norwegian price list for visitors that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. We have <b>not sourced an official Norwegian tariff for non-resident care</b> that we would put our name to, so no local price figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure is what to plan around: <b>you are charged the full cost</b>, <b>care is given first and billed after</b>, and <b>distance is a cost in its own right</b> once you leave the cities. Ask your insurer about the evacuation limit rather than about consultation fees, because that is the number Norway tests."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Two different trips", text: "A city trip is a bill question. A fjord, arctic or hiking trip is a transport question, and those need different amounts of cover.", tone: "teal" },
+          p: [
+            "Norway is really two trips with two risk profiles. An <b>Oslo or Bergen</b> trip is a straightforward question of what an expensive country charges an uninsured visitor. A <b>fjords, Lofoten, Svalbard or hiking</b> trip adds a transport problem that money solves and nothing else does.",
+            "Match the cover to the trip you are actually taking. And note that if you are heading to <b>Svalbard</b>, that is a further step again in remoteness and is worth checking your policy names specifically. For paying on the ground, see the <a href='/norway/cash-or-card'>Norway cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare free in Norway for tourists?", a: "No. Norway's public health service is funded for residents, and a visitor from outside the EEA is charged the full cost of treatment. Care is given first and billed afterwards." },
+        { q: "How much does a hospital cost in Norway?", a: "We have not published a figure, because we could not source an official Norwegian non-resident tariff we would stand behind. Norway is an expensive country generally and healthcare is not an exception, so plan on a real bill rather than a token one." },
+        { q: "Is medical evacuation likely in Norway?", a: "More likely than in most of Europe, and that is about geography rather than danger. Outside the cities, fjords, mountains and long distances make air ambulance a routine part of Norwegian healthcare, so the evacuation limit on your policy matters here." },
+        { q: "Will a Norwegian hospital treat me without insurance?", a: "Yes. You are treated and then billed. The question is not whether you get care but what the invoice looks like afterwards and who pays it." },
+        { q: "Do I need travel insurance for Norway?", a: "Yes, and the reason shifts with the trip. For a city visit it is about the size of the bill. For the fjords, the arctic or a hiking trip it is about paying for the transport that distance makes necessary." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Norway country information, including health and medical care guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Norway.html", type: "gov" }
+        ],
+        judgment: "No price figures appear on this page because we did not source an official Norwegian non-resident tariff we would publish. The charging position for non-EEA visitors and the geography-driven reliance on air ambulance are structural rather than priced, and that is how we have written them. Norwegian regions administer care differently and costs vary, so confirm at the point of care. Checked August 2026."
+      }
     }
   ]
 };

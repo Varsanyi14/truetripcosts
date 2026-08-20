@@ -593,6 +593,78 @@ export default {
         ],
         judgment: "Checked Aug 2026. Korea is the Asian country where our usual advice inverts, and saying so matters because a reader arriving from our Vietnam or Cambodia pages would reasonably expect the local SIM to be the cheap option and it is not. The honest first move here is checking your existing US plan, since coverage plus ubiquitous wifi means a modest included allowance goes further in Korea than almost anywhere. Local plan pricing is a current read in won and varies by duration and outlet."
       }
+    },
+    {
+      slug: "medical-costs",
+      glance: [
+        { k: "National insurance", v: "For residents, not visitors" },
+        { k: "You pay", v: "The full self-pay rate" },
+        { k: "The care", v: "Fast, modern, excellent" },
+        { k: "Real risk", v: "An admission, and the flight" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in South Korea: fast, modern, self-pay",
+      description: "South Korea's national health insurance covers residents. A visitor pays the full self-pay rate at hospitals that are among the best and quickest in Asia.",
+      h1: "What does getting sick in South Korea cost a visitor?",
+      lede: "South Korea is one of the easier countries in Asia to be unwell in. Care is fast, modern and widely available, and the only real complication is that none of the national insurance is yours.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-20",
+      answer: "South Korea's <b>National Health Insurance</b> covers residents and long-stay foreign nationals, not short-stay visitors. You are a <b>self-pay patient</b>, charged the full rate at the point of care, and payment is generally expected <b>at the time of treatment</b>. The upside is substantial: Korean hospitals are <b>modern, fast and well equipped</b>, large hospitals in Seoul and Busan run <b>international patient centres</b> with English-speaking staff, and by American standards the self-pay rates are not extreme. The financial risk is concentrated in an <b>admission or a procedure</b>, and in the flight home, rather than in walking into a clinic.",
+      insurance: true,
+      insuranceNote: "Korean care is fast and modern, and as a short-stay visitor you pay the full self-pay rate for it, at the time of treatment. By American standards a clinic visit is not the thing to fear. An admission or a procedure is, and so is a medically supervised flight home, which no Korean scheme covers. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, go to a hospital first and settle the payment afterwards.",
+      sections: [
+        {
+          h: "The insurance is for residents",
+          icon: "alert",
+          key: { tag: "Self-pay", text: "National Health Insurance covers residents and long-stay foreign nationals. A short-stay visitor is a self-pay patient, charged the full rate.", tone: "amber" },
+          p: [
+            "Korea's <b>National Health Insurance</b> is a residence-based scheme. Korean nationals and foreign nationals staying long enough to enrol are covered; a <b>short-stay visitor is not</b>. That makes you a <b>self-pay patient</b>, paying the whole charge rather than a co-payment share.",
+            "Payment is normally expected <b>at the time of treatment</b>, and Korean providers do not generally bill a foreign insurer directly, so the usual pattern is that you pay and claim back. <b>If it looks serious, go to a hospital first and settle the payment afterwards.</b>"
+          ]
+        },
+        {
+          h: "The system is genuinely easy to use",
+          icon: "health",
+          key: { tag: "International centres", text: "Large hospitals in Seoul and Busan run international patient centres with English-speaking staff, and access to specialists is unusually quick.", tone: "teal" },
+          p: [
+            "It is worth saying what works, because it changes how much you need to worry. Korean healthcare is <b>fast</b> in a way that surprises visitors from countries with referral queues: you can often see a <b>specialist the same day</b>, and diagnostic imaging is quick and widely available.",
+            "The major hospitals in <b>Seoul and Busan</b> run <b>international patient centres</b> built for exactly your situation, with English-speaking coordinators who handle registration, billing paperwork and insurance documentation. If you need care and have a choice of where, those are the doors to use."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "We have not sourced an official Korean price list for visitors that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. We have <b>not sourced an official Korean tariff for non-resident care</b> that we would put our name to, so no local price figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure is what to plan around: <b>you are self-pay</b>, <b>you pay at the time</b>, <b>your insurer reimburses you rather than the hospital</b>, and <b>the international patient centre is the right entry point</b>. Keep the itemised receipt and the medical record, in English if you can get them, because those are what a claim needs."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "The admission", text: "Routine care in Korea is manageable and reachable. Cover is for an admission or procedure and for a flight home, which is nobody else's responsibility.", tone: "teal" },
+          p: [
+            "The honest calibration: South Korea is <b>not a country to fear being ill in</b>. Care is good, quick and available, and a clinic visit is a manageable out-of-pocket cost for most travelers. Saying so is more useful than manufacturing alarm.",
+            "What a policy is actually for here is an <b>admission, surgery or a serious diagnostic pathway</b>, and the <b>flight home</b> if you cannot travel normally, which the Korean system has no part in. For paying on the ground, see the <a href='/south-korea/cash-or-card'>South Korea cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Can tourists use South Korea's national health insurance?", a: "No. National Health Insurance is residence-based, covering Korean nationals and foreign nationals staying long enough to enrol. A short-stay visitor is a self-pay patient paying the full rate." },
+        { q: "How much does a doctor cost in South Korea?", a: "We have not published a figure, because we did not source an official Korean self-pay tariff we would stand behind. What we can say is that self-pay rates are not extreme by American standards and payment is expected at the time of treatment." },
+        { q: "Is it hard to get medical care in Korea as a foreigner?", a: "Less than you might expect. Large hospitals in Seoul and Busan run international patient centres with English-speaking coordinators, and access to specialists and imaging is unusually fast." },
+        { q: "Will a Korean hospital bill my travel insurer directly?", a: "Generally no. You pay at the time of treatment and claim back afterwards, so keep the itemised receipt and the medical record, in English where possible, since that is what a reimbursement claim needs." },
+        { q: "Do I need travel insurance for South Korea?", a: "For routine care the argument is modest, and we are not going to overstate it. Cover is for an admission, a procedure, or a medically supervised flight home, which is the part no Korean scheme touches." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: South Korea country information, including health and medical care guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/South-Korea.html", type: "gov" }
+        ],
+        judgment: "No price figures appear here because we did not source an official Korean self-pay tariff we would publish, though Korean hospitals do publish self-pay schedules and this is a country where a figure should be sourceable on a later pass. The residence basis of National Health Insurance, the self-pay position of short-stay visitors and the international patient centres are structural facts. Checked August 2026."
+      }
     }
   ]
 };
