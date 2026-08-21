@@ -614,97 +614,88 @@ export default {
     {
       slug: "medical-costs",
       exposureCategory: "routineAffordable",
-      exposureQuote: "routine care in Mexico is fast, walk-in, and inexpensive, often just a few dollars",
+      exposureQuote: "routine care in Mexico is fast, walk-in, and inexpensive",
       glance: [
         { k: "You pay", v: "Out of pocket as a tourist" },
-        { k: "Pharmacy doctor", v: "About $2 to $3" },
-        { k: "Private GP", v: "About $18 to $25" },
-        { k: "Real risk", v: "Emergencies, hospital deposit" }
+        { k: "Routine care", v: "Walk-in and inexpensive" },
+        { k: "Hospitals", v: "Payment before treatment" },
+        { k: "Real risk", v: "Emergencies, not checkups" }
       ],
       live: true,
       topic: "health",
       title: "Seeing a doctor in Mexico: what it costs a tourist",
-      description: "A pharmacy doctor runs about $2 to $3 and a private GP about $18 to $25, out of pocket. The real risk is an emergency, where hospitals want a deposit.",
+      description: "Routine care in Mexico is walk-in and inexpensive, paid out of pocket. The real risk is an emergency, where hospitals want payment up front and hold your card.",
       h1: "What does seeing a doctor cost in Mexico?",
-      lede: "Good news for the small stuff: routine care in Mexico is fast, walk-in, and inexpensive, often just a few dollars. The part worth planning for is the rare, expensive emergency, where a private hospital asks for a deposit before it will treat you.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-22",
-      answer: "As a tourist you <b>pay out of pocket</b> (free public healthcare is for residents), but routine private care is cheap. A doctor attached to a <b>pharmacy</b> (the consultorio) runs about <b>$2 to $3</b> for minor issues, a <b>private GP visit</b> about <b>$18 to $25</b>, and a <b>specialist</b> around <b>$45 to $55</b>. The real financial risk is a <b>serious emergency</b>: private hospitals ask for a <b>deposit upfront</b>, from a few hundred to several thousand dollars, and an ICU stay, surgery, or a flight home can run into the <b>tens of thousands</b>. That gap, not the doctor visit, is what <b>travel medical insurance</b> is for.",
+      lede: "Good news for the small stuff: routine care in Mexico is fast, walk-in, and inexpensive. The part worth planning for is the rare, expensive emergency, where hospitals want payment up front, and a private hospital asks for a deposit before it will treat you.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "As a tourist you <b>pay out of pocket</b> (free public healthcare is for residents), but routine private care is inexpensive. A doctor attached to a <b>pharmacy</b> (the consultorio) sees walk-ins for a small cash fee, a <b>private GP or specialist</b> costs more but stays easy to pay on the spot, and in a big-city private hospital the fees sit at the higher end. The real financial risk is a <b>serious emergency</b>, and here the official language is blunt: Mexican providers usually require <b>payment before providing care or before releasing you</b>, hospitals <b>place holds on credit cards when a patient is admitted</b>, and private hospitals ask for a <b>deposit upfront</b>, sized to the case. An ICU stay, surgery, or a flight home can run into the <b>tens of thousands of dollars</b>. That gap, not the doctor visit, is what <b>travel medical insurance</b> is for.",
       insurance: true,
       // Mexico's own line, moved here out of Spoke.astro where it used to be hardcoded and
-      // rendered for every country. It is true for Mexico, it is sourced by the figures in
-      // this spoke, and it stays. Nothing else on the site can inherit it now.
+      // rendered for every country. It is true for Mexico, it is qualitative, and it stays.
+      // Nothing else on the site can inherit it now.
       insuranceNote: "Routine care in Mexico is cheap enough to pay for out of pocket. The reason to carry travel insurance is the rare, expensive emergency, a hospital deposit, surgery, or a flight home, where the bill is the part that hurts. Faye covers trip medical and evacuation.",
       careFirst: "If it is serious, go to the hospital first and deal with the deposit afterwards.",
-      // DECLARED SO THEY CANNOT HIDE, and src is deliberately null on every one. These
-      // figures shipped in July 2026 and this spoke's only cited source is a State
-      // Department country page that carries no prices; the judgment note describes them as
-      // typical ranges from recent reporting. Under the sourcing floor MAIN set for this
-      // wave, a clinic's own published price list or an official tariff, that provenance
-      // does not clear the bar. Flagged rather than quietly fixed or quietly exempted: the
-      // gate prints these under UNTRACED FIGURES for a ruling. Either they get a real
-      // source, or they get hedged further, or Mexico joins PRICE_EXEMPT and the wave's
-      // template country becomes a universal-truth page like the rest of Batch 1.
-      sourcedFigures: [
-        { fact: "A pharmacy consultorio consultation runs about 45 to 60 pesos, roughly 2 to 3 dollars",
-          kind: "routine", src: null, forms: ["$2 to $3", "$2-3", "45 to 60 pesos"] },
-        { fact: "A private GP visit runs about 350 to 500 pesos, roughly 18 to 25 dollars",
-          kind: "routine", src: null, forms: ["$18 to $25", "350 to 500 pesos"] },
-        { fact: "A specialist runs about 800 to 1,000 pesos, roughly 45 to 55 dollars, and a lab panel often under 55 dollars",
-          kind: "routine", src: null, forms: ["$45 to $55", "800 to 1,000 pesos", "$55"] },
-        { fact: "Private hospitals ask a deposit from about 5,000 pesos, around 300 dollars, up to 100,000 pesos or more",
-          kind: "evacuation", src: null, forms: ["$300+", "$300", "5,000 pesos", "100,000 pesos"] }
-      ],
       sections: [
         {
           h: "Routine care: cheap, fast, and walk-in",
           icon: "tag",
-          key: { fig: "$2-3", tag: "Pharmacy doctor", text: "Most pharmacies have a doctor attached, the consultorio, where a consultation for something minor runs about $2 to $3. A private GP visit is about $18 to $25.", tone: "teal" },
+          key: { tag: "Pharmacy doctor", text: "Most pharmacies have a doctor attached, the consultorio, where a walk-in consultation for something minor costs a small cash fee, sometimes nothing with a purchase.", tone: "teal" },
           p: [
-            "For everyday problems, Mexico is refreshingly easy. Most pharmacies have a <b>doctor attached</b> (the <b>consultorio</b>), where a consultation for something minor, a stomach bug, a cold, a small infection, costs about <b>45 to 60 pesos, roughly $2 to $3</b>, and sometimes nothing at all if you buy the medicine there. No appointment needed, and in tourist areas the doctor often speaks English.",
-            "For something more involved, a <b>private GP</b> visit runs about <b>350 to 500 pesos, roughly $18 to $25</b>, a <b>specialist</b> around <b>800 to 1,000 pesos, roughly $45 to $55</b>, and a full <b>lab panel</b> often under <b>$55</b>. In a big-city private hospital the fees sit at the higher end. You pay at the time of care unless your insurer has a direct-billing arrangement with the clinic."
+            "For everyday problems, Mexico is refreshingly easy. Most pharmacies have a <b>doctor attached</b> (the <b>consultorio</b>), where a consultation for something minor, a stomach bug, a cold, a small infection, costs a <b>small cash fee</b>, and sometimes nothing at all if you buy the medicine there. No appointment needed, and in tourist areas the doctor often speaks English.",
+            "For something more involved, a <b>private GP</b> or a <b>specialist</b> costs more, and a full lab workup more again, but all of it stays inside what a traveler can simply pay on the spot. In a big-city private hospital the fees sit at the higher end. You pay at the time of care unless your insurer has a direct-billing arrangement with the clinic."
           ]
         },
         {
           h: "The part that actually costs: a serious emergency",
           icon: "alert",
-          key: { fig: "$300+", tag: "Hospital deposit", text: "Private hospitals usually ask for a deposit before they treat you, from about 5,000 pesos (around $300) into the tens of thousands. This is what travel insurance is for.", tone: "amber" },
+          key: { tag: "Payment before care", text: "Mexican providers usually require payment before care or release, hospitals place holds on cards at admission, and private hospitals ask for a deposit sized to the case.", tone: "amber" },
           p: [
-            "This is where the money is, and where tourists get caught. Private hospitals in Mexico typically ask for a <b>deposit before they treat you</b>, anywhere from about <b>5,000 pesos (around $300)</b> to <b>100,000 pesos or more (several thousand dollars)</b> depending on the situation. An <b>ICU stay, major surgery, or a medical flight home</b> can climb into the <b>tens of thousands of dollars</b>.",
-            "As a foreign visitor you are <b>not covered</b> by Mexico's public system, so without insurance that deposit and the bill come straight out of your own pocket. This single risk, not the price of a doctor visit, is the reason to carry cover."
+            "This is where the money is, and the official language carries it: Mexican health providers usually require <b>payment before providing medical care or before releasing you from the hospital</b>, hospitals commonly <b>place holds on credit cards when a patient is admitted</b>, and private hospitals typically ask for a <b>deposit before they treat you</b>, sized to the situation. An <b>ICU stay, major surgery, or a medical flight home</b> can climb into the <b>tens of thousands of dollars</b>.",
+            "As a foreign visitor you are <b>not covered</b> by Mexico's public system, so without insurance that deposit and the bill come straight out of your own pocket. One protection is worth knowing: Mexico's federal health law requires the <b>nearest facility to see patients with emergency medical conditions</b>, so a true emergency gets seen. This single risk, not the price of a doctor visit, is the reason to carry cover."
           ]
         },
         {
           h: "Pharmacies and prescriptions",
           icon: "receipt",
-          key: { fig: "OTC", tag: "Over the counter", text: "Many medicines that need a prescription back home are sold over the counter here. For anything controlled, the consultorio doctor next door can write a script.", tone: "teal" },
+          key: { tag: "Over the counter", text: "Many medicines that need a prescription back home are sold over the counter here. For anything controlled, the consultorio doctor next door can write a script.", tone: "teal" },
           p: [
             "Mexican pharmacies are everywhere, and many medicines that need a prescription back home are sold <b>over the counter</b> here. For anything controlled, the consultorio doctor next door can write a prescription on the spot. Larger <b>primera clase</b> pharmacies stock the full range, including regulated drugs.",
             "Keep every <b>receipt</b>, the doctor's note, the pharmacy slip, the hospital invoice. If you have travel insurance, those are what you submit to claim the cost back."
           ]
         },
         {
+          h: "Why there are no prices on this page",
+          icon: "coins",
+          key: { tag: "Absence is not zero", text: "This page used to carry typical peso ranges. On re-sourcing, none traced to a clinic's own published list or an official tariff, so the figures came out.", tone: "teal" },
+          p: [
+            "We owe you the history here, because this page changed. Earlier versions carried typical peso ranges for the consultorio, a GP, a specialist, and the hospital deposit, drawn from recent reporting. When we re-checked them against the standard the rest of this site holds, a provider's own published price list or an official tariff, none of the four traced to one, so <b>all four came out</b>. A removed figure is a decision, not a gap: on a medical page a plausible-sounding number is something a person might act on while unwell.",
+            "What stays is the structure, and it is dependable: routine care is inexpensive and walk-in, payment comes before care or release, cards are held at admission, and the deposit is sized to the case. Mexico's public system does publish an official tariff for billing people outside it, and the consultorio networks publish their own fees, so this page may earn real figures back on a later sourcing pass."
+          ]
+        },
+        {
           h: "What this means for your money",
           icon: "cash",
-          key: { fig: "Insurance", tag: "Plan for the big one", text: "Budget a little cash for the small stuff, a few dollars to a few tens, easily paid on the spot. The thing to plan for is a serious emergency, so carry travel insurance.", tone: "teal" },
+          key: { tag: "Plan for the big one", text: "Budget a little cash for the small stuff, easily paid on the spot. The thing to plan for is a serious emergency, so carry travel insurance.", tone: "teal" },
           p: [
-            "Budget a little cash for the small stuff and do not overthink it: a pharmacy doctor or a GP visit is a few dollars to a few tens of dollars, easily paid on the spot. The thing to plan for is the <b>big, unlikely emergency</b>, because that is the bill that can wreck a trip. One line matters more than any of the prices above: <b>If it is serious, go to the hospital first and deal with the deposit afterwards.</b> This page prices care, it does not tell you whether you need it.",
+            "Budget a little cash for the small stuff and do not overthink it: a pharmacy doctor or a GP visit is <b>small enough to pay on the spot</b>. The thing to plan for is the <b>big, unlikely emergency</b>, because that is the bill that can wreck a trip. One line matters more than anything else on this page: <b>If it is serious, go to the hospital first and deal with the deposit afterwards.</b> This page prices care, it does not tell you whether you need it.",
             "That is exactly the shape travel insurance fits: cheap routine care you pay yourself, and a <b>large emergency, hospital deposit, or evacuation</b> the policy absorbs. For getting cash for the small payments, see the <a href=\"/mexico/cash-or-card\">Mexico cash and cards guide</a>."
           ]
         }
       ],
       faqs: [
         { q: "Do tourists get free healthcare in Mexico?", a: "No. Free public care is for residents enrolled in the IMSS system. As a foreign visitor you pay out of pocket for treatment, or claim it back through travel insurance. Routine private care is inexpensive; a serious emergency is not." },
-        { q: "How much does a doctor visit cost in Mexico?", a: "A doctor attached to a pharmacy (consultorio) is about 45 to 60 pesos, roughly $2 to $3, for minor issues. A private GP visit is about 350 to 500 pesos, roughly $18 to $25, and a specialist around $45 to $55. Big-city private hospitals sit at the higher end." },
-        { q: "Can I buy medicine without a prescription in Mexico?", a: "Many medicines that need a prescription elsewhere are sold over the counter in Mexico. For controlled drugs you need a prescription, which the pharmacy consultorio doctor can write on the spot for a couple of dollars." },
+        { q: "How much does a doctor visit cost in Mexico?", a: "We no longer publish a figure, because we could not trace one to a clinic's own published price list or an official tariff, and on a medical page we will not print a number we cannot defend. The dependable shape: a pharmacy consultorio visit is a small cash fee, a private GP or specialist costs more but stays easy to pay on the spot, and big-city private hospitals sit at the higher end." },
+        { q: "Can I buy medicine without a prescription in Mexico?", a: "Many medicines that need a prescription elsewhere are sold over the counter in Mexico. For controlled drugs you need a prescription, which the pharmacy consultorio doctor can write on the spot for a small fee." },
         { q: "Do I need travel insurance for Mexico?", a: "Routine care is cheap enough to pay for yourself, so the reason to carry travel insurance is the rare, expensive emergency: a private hospital deposit, surgery, or a medical flight home, which can run into the tens of thousands of dollars. That is the gap a travel medical policy covers." },
-        { q: "What happens if I need a hospital in Mexico without insurance?", a: "Private hospitals usually ask for a deposit before treating you, from a few hundred to several thousand dollars, and you pay the full bill out of pocket. Public hospitals will stabilize a true emergency but are not set up for foreign visitors, and you still pay. This is the scenario travel insurance is designed for." }
+        { q: "What happens if I need a hospital in Mexico without insurance?", a: "Providers usually require payment before care or before releasing you, hospitals place holds on credit cards at admission, and private hospitals ask for a deposit before treating you. Mexico's federal health law does require the nearest facility to see a true emergency, and you still pay. This is the scenario travel insurance is designed for." }
       ],
       sources: {
         links: [
-          { label: "US State Department: Mexico country information, including medical care and insurance guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Mexico.html", type: "gov" }
+          { label: "US State Department: Mexico country information, on providers usually requiring payment before providing care or before release, and most hospitals not accepting US health insurance", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Mexico.html", type: "gov" },
+          { label: "US Embassy in Mexico: medical information, on payment up-front, credit card holds on admission, and the federal health law requiring the nearest facility to see emergency patients", url: "https://mx.usembassy.gov/medical-practitioners/", type: "gov" }
         ],
-        judgment: "Medical prices in Mexico vary widely by city, clinic, and the seriousness of the problem, so the figures here are typical ranges from recent 2025 and 2026 reporting, not a fixed price list, and hospital deposits in particular depend on the case. Confirm costs at the point of care. Checked July 2026."
+        judgment: "This page was re-sourced in August 2026 and its four earlier peso ranges (consultorio, GP, specialist, hospital deposit) were removed: none traced to a provider's own published price list or an official tariff, and the deposit range in particular circulates only at blog level. The structural claims that remain, payment before care or release, card holds on admission, the deposit practice, and the emergency-care provision of the federal health law, are the State Department's and US Embassy's own statements. The most promising routes back to real figures are the consultorio networks' own published fees and the IMSS unit-cost tariff published in the Diario Oficial for billing non-beneficiaries, either of which would support a rewritten, precisely-scoped sentence on a later pass. Checked August 2026.",
       }
     },
     {

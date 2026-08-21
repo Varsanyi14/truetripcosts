@@ -112,6 +112,21 @@ const PRICE_EXEMPT = new Set([
   // 2025 reform is implemented).
   'india', 'philippines', 'indonesia', 'dominican-republic', 'south-africa', 'egypt',
   'vietnam', 'bahamas', 'ecuador', 'aruba', 'brazil', 'argentina', 'morocco', 'oman',
+  // The template itself, re-sourced August 2026. Mexico shipped in July 2026 with four
+  // declared-but-untraced peso ranges (consultorio, GP, specialist, hospital deposit).
+  // On the re-source pass none traced to a provider's own published price list or an
+  // official tariff: the consultorio figure exists only in press reports (and reads low
+  // against 2024-and-later reporting), the GP and specialist ranges only in press
+  // anecdote, and the deposit range circulates verbatim in expat blogs, which is the
+  // provenance this wave forbids. All four were removed and the page rewritten to the
+  // universal-truth form, with its structural claims re-pointed at the State Department
+  // Mexico page and the US Embassy medical page. The most promising exemptions to retire
+  // on a later pass: the Similares consultorio network's operator publishes its own
+  // consultation costs (fundacionbest.org.mx/consulta_costos), and the IMSS publishes an
+  // annual unit-cost tariff in the Diario Oficial for billing non-beneficiaries (for
+  // 2026, acuerdo ACDO.AS3.HCT.251125/344.P.DF, DOF 10 Dec 2025); either supports a
+  // precisely-scoped rewritten sentence, never the old private-market claims as written.
+  'mexico',
 ]);
 
 // Countries where the honest call is that cover matters LESS than a traveler assumes, from
@@ -253,7 +268,12 @@ for (const { c, sp } of withSpoke) {
       if (!prose.includes(form)) fail(`2 FIGURE     ${c.slug}: sourcedFigures claims the form "${form}" but no prose states it. The sentence changed; update the declaration.`);
     }
     if (d.src === null || d.src === undefined) {
-      untraced.push(`${c.slug} [${d.kind}] ${d.fact}`);
+      // FLIPPED TO FAIL, August 2026. This used to collect into a loud non-failing print,
+      // because the only untraced entries were the shipped Mexico spoke's, which predated
+      // MAIN's sourcing floor. MAIN has now ruled on Mexico (all four figures removed on
+      // the re-source pass), so the grace period is over: a declared figure with no cited
+      // source fails the gate, exactly as this file always said it should.
+      fail(`2 FIGURE     ${c.slug}: sourcedFigures entry "${d.fact}" cites no source (src: null). A declared figure must trace to a link in sources.links, or the figure comes out.`);
     } else if (!links[d.src]) {
       fail(`2 FIGURE     ${c.slug}: sourcedFigures entry "${d.fact}" points at sources.links[${d.src}], which does not exist`);
     }
@@ -336,16 +356,12 @@ const declaredAll = withSpoke.flatMap(({ c, sp }) => (sp.sourcedFigures || []).m
 console.log(`\nDECLARED FIGURES for MAIN to verify (${declaredAll.length}):`);
 declaredAll.forEach(f => console.log('    ' + f));
 
-// UNTRACED FIGURES. Declared, so they cannot hide, but not tied to any cited source. This
-// prints loudly and does NOT fail, for one reason: the only entries today are the shipped
-// Mexico spoke's, which predate MAIN's ruling that a figure must trace to a clinic's own
-// published price list or an official tariff. Failing here would turn a pre-existing
-// editorial question into a blocked commit for an unrelated batch. Once MAIN rules on
-// Mexico, this should become a FAIL and the block below should move up into the checks.
+// The UNTRACED grace period ended in August 2026 with the Mexico re-source: a declared
+// figure with no cited source is now check 2's failure, up in the checks where this
+// file's own comment always said it would move. The collection array survives only so a
+// future editor sees the history in the diff.
 if (untraced.length) {
-  console.log(`\nUNTRACED FIGURES, declared but not tied to a cited source (${untraced.length}):`);
-  untraced.forEach(u => console.log('    ' + u));
-  console.log('    ^ These need MAIN\'s ruling. They do not fail the gate yet. See the comment in this file.');
+  console.log(`\nUNTRACED FIGURES (should be impossible, check 2 now fails them): ${untraced.length}`);
 }
 console.log(`\nCARE-FIRST LINES for MAIN to read (${withSpoke.length}):`);
 withSpoke.forEach(({ c, sp }) => console.log(`    ${c.slug}: ${strip(sp.careFirst)}`));
