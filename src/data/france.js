@@ -847,6 +847,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "routineAffordable",
+      exposureQuote: "France is an expensive country to break a leg in and an inexpensive one to catch something in.",
       glance: [
         { k: "You pay", v: "Then claim it back" },
         { k: "Tariffs", v: "Regulated, and modest" },

@@ -496,6 +496,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "evacuationIsTheCost",
+      exposureQuote: "the honest cost of a medical problem in Namibia is measured in distance first and dollars second",
       glance: [
         { k: "You pay", v: "Up front, sometimes cash only" },
         { k: "Where care is", v: "Windhoek and larger towns" },

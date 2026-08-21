@@ -517,6 +517,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "A visitor from outside the EU or EEA is charged the full cost of treatment.",
       glance: [
         { k: "You pay", v: "The full cost as a visitor" },
         { k: "Care", v: "Good, run by the regions" },

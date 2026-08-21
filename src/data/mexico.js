@@ -613,6 +613,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "routineAffordable",
+      exposureQuote: "routine care in Mexico is fast, walk-in, and inexpensive, often just a few dollars",
       glance: [
         { k: "You pay", v: "Out of pocket as a tourist" },
         { k: "Pharmacy doctor", v: "About $2 to $3" },

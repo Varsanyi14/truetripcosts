@@ -508,6 +508,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "routineAffordable",
+      exposureQuote: "Self-pay rates are modest, care is close, and a clinic visit or a minor problem is the kind of thing most people can absorb.",
       glance: [
         { k: "National insurance", v: "Residents only" },
         { k: "Self-pay rates", v: "Genuinely modest" },

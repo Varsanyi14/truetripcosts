@@ -692,6 +692,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "You pay as an uninsured patient and claim from your own insurer.",
       glance: [
         { k: "The GP", v: "Is the front door here" },
         { k: "You pay", v: "As an uninsured patient" },

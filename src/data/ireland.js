@@ -653,6 +653,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "A visitor pays the non-EU emergency department rate and, if admitted, the full cost of the bed plus the consultant.",
       glance: [
         { k: "The 100 euro charge", v: "Is not the one you pay" },
         { k: "Non-EU rate", v: "About 447 euro at one Dublin ED" },

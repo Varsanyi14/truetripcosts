@@ -676,6 +676,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "You are billed as a non-resident, at published rates that are genuinely high.",
       glance: [
         { k: "Provincial plans", v: "Do not cover visitors" },
         { k: "A ward, per day", v: "About 2,980 Canadian dollars" },

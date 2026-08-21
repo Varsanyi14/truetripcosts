@@ -590,6 +590,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "Norway's public health service is funded for residents, and a visitor from outside the EEA is charged the full cost of treatment.",
       glance: [
         { k: "You pay", v: "The full rate as a visitor" },
         { k: "Care", v: "Good, and sometimes far away" },

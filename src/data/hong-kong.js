@@ -514,6 +514,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "the Hospital Authority publishes a price list for people who are not Hong Kong residents, and you are on it",
       glance: [
         { k: "You are", v: "A non-eligible person" },
         { k: "A and E", v: "2,100 Hong Kong dollars" },

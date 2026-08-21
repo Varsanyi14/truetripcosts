@@ -570,6 +570,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "evacuationIsTheCost",
+      exposureQuote: "This is a place where evacuation cover is the point of the policy.",
       glance: [
         { k: "You pay", v: "Out of pocket, deposits normal" },
         { k: "Serious care", v: "Thailand, not Laos" },

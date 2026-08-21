@@ -23,6 +23,17 @@ export const topicIcon = {
   rail: 'train',
 };
 
+// Topic -> family hub, for the reverse link rendered at the foot of every spoke in
+// that family (Spoke.astro reads this next to the country CTA). Data-driven so a
+// whole wave of spokes gains its up-link the day the hub ships, with no prose edits,
+// and so a hub link cannot be hand-typed into a 404: the href here is the one place
+// it is written. A topic with no entry renders no link, which is how every family
+// behaved before this map existed. Only health is mapped for now; add a family here
+// when its hub is ready to receive the traffic.
+export const TOPIC_HUBS = {
+  health: { href: '/medical-costs', label: 'Medical costs abroad, country by country' },
+};
+
 // Caution tier -> chip label. The three-step "how careful to be" signal shown on the
 // taxi spokes and the taxi hub. Colours live in global.css (.cx-low / .cx-medium /
 // .cx-high). Wording is deliberately soft: it is our own read, tied to each spoke's

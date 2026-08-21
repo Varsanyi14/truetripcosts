@@ -442,6 +442,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "visitors are charged for care, the realistic route is a private hospital at Western prices",
       glance: [
         { k: "Visitor insurance", v: "Required for some entrants" },
         { k: "Private care", v: "Good, at Western prices" },

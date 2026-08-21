@@ -454,6 +454,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "As a visitor you are uninsured locally unless you brought a policy, and both private and public facilities will charge you.",
       glance: [
         { k: "Private care", v: "At Western prices" },
         { k: "Deposits", v: "Normal before treatment" },

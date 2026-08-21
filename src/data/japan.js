@@ -757,6 +757,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "A resident covers about a third of the bill. You cover all of it, at the counter, before you go.",
       glance: [
         { k: "A resident pays", v: "About 30% of the bill" },
         { k: "You pay", v: "All 100% of it" },

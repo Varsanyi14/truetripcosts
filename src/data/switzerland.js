@@ -593,6 +593,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "You are a private paying patient in one of the most expensive care markets in Europe",
       glance: [
         { k: "Public system", v: "There isn't one for you" },
         { k: "Everyone here", v: "Buys private insurance" },

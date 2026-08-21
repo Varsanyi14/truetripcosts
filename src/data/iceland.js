@@ -499,6 +499,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "evacuationIsTheCost",
+      exposureQuote: "The honest number here is transport, not treatment.",
       glance: [
         { k: "One main hospital", v: "Landspitali, in Reykjavik" },
         { k: "Interior", v: "Hours from anything" },

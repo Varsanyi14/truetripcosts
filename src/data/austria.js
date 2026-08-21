@@ -664,6 +664,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "You are treated as a private patient and billed.",
       glance: [
         { k: "You pay", v: "As a private patient" },
         { k: "Cities", v: "Care is close and good" },

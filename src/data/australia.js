@@ -696,6 +696,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "The United States is not among them, so an American visitor pays the full cost of care.",
       glance: [
         { k: "Reciprocal deal", v: "Eleven countries, not the US" },
         { k: "As an American", v: "You pay the full bill" },

@@ -446,6 +446,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "the practical route for a short-stay visitor is a private hospital paid out of pocket",
       glance: [
         { k: "You pay", v: "Out of pocket as a visitor" },
         { k: "Public system", v: "Built around citizens" },

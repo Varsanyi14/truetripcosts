@@ -596,6 +596,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "A short-stay visitor is a self-pay patient paying the full rate.",
       glance: [
         { k: "National insurance", v: "For residents, not visitors" },
         { k: "You pay", v: "The full self-pay rate" },

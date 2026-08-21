@@ -566,6 +566,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "evacuationIsTheCost",
+      exposureQuote: "routine care you handle, the transfer you insure",
       glance: [
         { k: "You pay", v: "Out of pocket as a visitor" },
         { k: "Where care is", v: "San Salvador, and limited" },

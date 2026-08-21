@@ -575,6 +575,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "evacuationIsTheCost",
+      exposureQuote: "the reason to carry cover here is not that everyday care is expensive, it is that the tail event involves an aircraft",
       glance: [
         { k: "You pay", v: "Out of pocket as a visitor" },
         { k: "Where the care is", v: "Colombo, and thin outside it" },

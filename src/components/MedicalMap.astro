@@ -1,0 +1,257 @@
+---
+// The medical exposure world map. Renders the same pre-generated Equal Earth paths the
+// hotel tax choropleth uses (scripts/build-world-map.mjs, Natural Earth 110m), filled
+// from the exposureCategory field on each country's own medical-costs spoke via
+// src/data/medical-map.js. No mapping library, no runtime geometry, no tiles.
+//
+// THREE THINGS THIS COMPONENT DELIBERATELY IS NOT.
+//
+// It is not the content. Every claim the map encodes is written out below it as real
+// HTML, one row per country, quoting the sentence from that country's own page that
+// the colour points at. The map is a discovery surface; the list is the indexable,
+// linkable, screen-readable answer, exactly as the hotel tax map's note says.
+//
+// It is not a judge of the data. colours() in medical-map.js is the single gate, and
+// everything here routes through it, so a spoke with no verified category falls to
+// the not-yet-checked grey by default rather than by a branch here remembering to.
+//
+// It is not a cost map, and it is not a danger map. The categories are different
+// SHAPES of exposure, not steps on a scale, which is why the fills are distinct hues
+// rather than a ramp and why the groups below render in a fixed editorial order
+// rather than any ranking. See RAIL 1 in medical-map.js before changing either.
+import { CATEGORIES, CATEGORY_ORDER, STATES, colours, fillFor, deriveEntries } from '../data/medical-map.js';
+import world from '../data/maps/world.js';
+import { countries } from '../data/index.js';
+
+const entries = deriveEntries(countries);
+const entryByIso = Object.fromEntries(entries.map(e => [e.iso, e]));
+
+const tagged = entries.filter(colours);
+// A live spoke that carries no verified category yet renders grey like an unwritten
+// one, which is the honest default, and it is surfaced here rather than swallowed so
+// the state is visible on the page it affects. Today this is empty; a mid-verification
+// batch would appear here.
+const untagged = entries.filter(e => !colours(e));
+
+// The freshness stamp uses the OLDEST check across the tagged spokes, the same
+// weakest-link promise the staying-connected hub makes: this is the date every
+// coloured country has been checked since, not the date the newest one was.
+const dates = tagged.map(e => e.checkedISO).filter(Boolean).sort();
+const stampMonth = dates.length
+  ? new Date(dates[0] + 'T00:00:00Z').toLocaleString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' })
+  : '';
+
+const { anchor = 'medical-map' } = Astro.props;
+
+// Same locator-dot threshold as the hotel tax map, for the same reason: a fill under
+// this many projected units is invisible, and "can a reader see that this country
+// makes a claim" is the whole job. Hong Kong and Singapore are the live cases here,
+// both carried in world.micro with a centroid only.
+const DOT_BELOW = 45;
+
+const microByIso = Object.fromEntries(world.micro.map(m => [m.iso, m]));
+const drawnIso = new Set(world.countries.map(c => c.iso).filter(Boolean));
+
+const dots = entries
+  .map(e => {
+    if (!colours(e)) return null;
+    const poly = world.countries.find(c => c.iso === e.iso);
+    const src = poly && poly.area >= DOT_BELOW ? null : (poly || microByIso[e.iso]);
+    if (!src) return null;
+    return { iso: e.iso, cx: src.cx, cy: src.cy, fill: fillFor(e) };
+  })
+  .filter(Boolean);
+
+// An entry whose ISO has neither a polygon nor a centroid cannot be marked at all.
+// Surfaced as a visible note rather than swallowed, and the gate fails on it too.
+const unmappable = entries.filter(e => !drawnIso.has(e.iso) && !microByIso[e.iso]);
+
+// Rows, grouped by category in the fixed editorial order, countries alphabetical
+// inside each group. Groups with no country yet still render their header, the way
+// the hotel tax legend keeps its empty bands, so the scale of the work is visible
+// and a category cannot quietly vanish while it waits for its batch.
+const groups = CATEGORY_ORDER.map(key => ({
+  key,
+  ...CATEGORIES[key],
+  rows: tagged.filter(e => e.category === key).sort((a, b) => a.country.localeCompare(b.country)),
+}));
+
+const coveredCount = countries.filter(c => c.live).length;
+
+const fmtMonth = (iso) => {
+  if (!iso) return null;
+  const d = new Date(iso + 'T00:00:00Z');
+  if (isNaN(d.getTime())) return null;
+  return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+};
+---
+<section class="mxm" id={anchor}>
+
+  <div class="mxm-head">
+    <p class="lab">The map</p>
+    <h2>Your US health plan almost certainly does nothing here. So then what?</h2>
+    <p class="mxm-sub">Medicare pays essentially nothing outside the United States, and most US health plans pay little or nothing abroad. That part is the same everywhere. What differs, country by country, is what happens next, and that is what the colour shows: not a price, but the specific way each country handles a sick visitor's money, in the words of that country's own page. Grey means we have not checked yet, never that there is nothing to pay.</p>
+  </div>
+
+  <figure class="mxm-fig">
+    <div class="mxm-mapwrap">
+      <svg class="mxm-svg" viewBox={world.viewBox} xmlns="http://www.w3.org/2000/svg"
+           preserveAspectRatio="xMidYMid meet"
+           role="img"
+           aria-label={`World map colouring each country by its category of medical cost exposure for a US traveler. ${tagged.length} of the ${coveredCount} countries we cover carry a verified category so far, each one a claim made by that country's own medical costs page and quoted in the list below this map. Countries in grey have not been checked yet.`}>
+        <g class="mxm-countries">
+          {world.countries.map(c => {
+            const e = c.iso ? entryByIso[c.iso] : null;
+            return <path d={c.d} fill={fillFor(e)} data-iso={c.iso || undefined} data-mxm={colours(e) ? e.category : 'unchecked'} />;
+          })}
+        </g>
+
+        {/* Locator dots for countries drawn too small to see and for the ones 110m
+            does not draw at all. Only where a verified category exists, so the map
+            never speckles with countries nobody has checked. */}
+        <g class="mxm-dots">
+          {dots.map(d => (
+            <circle cx={d.cx} cy={d.cy} r="6.5" fill={d.fill} stroke="#F5F4EF" stroke-width="1.6" data-iso={d.iso} />
+          ))}
+        </g>
+      </svg>
+
+      <p class="mxm-stamp"><b>True Trip Costs</b><span>Each colour is a claim the country's own page makes. Checked {stampMonth}.</span></p>
+    </div>
+
+    <figcaption class="mxm-cap">
+      Equal-area projection, so a country's size on the map matches its size on the ground rather than being inflated by its latitude. Countries too small to draw at this scale carry a dot where their page makes a claim.
+    </figcaption>
+  </figure>
+
+  {unmappable.length > 0 && (
+    <p class="mxm-warn">Not markable on this geometry: {unmappable.map(e => e.country).join(', ')}. Their rows below still carry the claim.</p>
+  )}
+
+  <div class="mxm-legend">
+    <p class="mxm-lk">What each colour claims</p>
+    <ul class="mxm-cats">
+      {CATEGORY_ORDER.map(key => (
+        <li><span class="mxm-sw" style={`background:${CATEGORIES[key].fill}`}></span><span class="mxm-st"><b>{CATEGORIES[key].label}.</b> {CATEGORIES[key].legend}</span></li>
+      ))}
+      <li><span class="mxm-sw" style={`background:${STATES.unchecked.fill}`}></span><span class="mxm-st"><b>{STATES.unchecked.label}.</b> Most of the grey is countries outside the {coveredCount} we cover, and the rest are pages the health wave has not reached yet. Either way it never means care is free or cheap there: grey is the absence of our work, not the absence of a bill.</span></li>
+    </ul>
+  </div>
+
+  <div class="mxm-honest">
+    <p class="mxm-lk">How to read this without being misled</p>
+    <div class="mxm-hgrid">
+      <div class="mxm-hcard">
+        <span class="mxm-hk">The part that is the same everywhere</span>
+        <p>Medicare pays essentially nothing outside the United States, and most US health plans pay little or nothing abroad, with reimbursement after the fact where they pay at all. That is the frame the whole map sits in. The colours answer the question that fact leaves open: given that your own cover stops at the border, what does this particular country do with you.</p>
+      </div>
+      <div class="mxm-hcard">
+        <span class="mxm-hk">A category, never a cost</span>
+        <p>No colour here encodes an amount. Routine-care prices are mostly unsourceable to a standard we would defend, and a serious emergency has no single honest figure anywhere, so a price gradient would be fabricated precision. A category is a different kind of claim: it says what happens, it is sourced on the country's own page, and it stays true when a fee schedule changes.</p>
+      </div>
+      <div class="mxm-hcard">
+        <span class="mxm-hk">Every colour is a quoted claim</span>
+        <p>A country is coloured only when its own medical costs page asserts the category, and the sentence doing the asserting is quoted on its row below. If that page is rewritten and the sentence goes, the build fails until the colour is re-verified. The map cannot say something the page does not.</p>
+      </div>
+      <div class="mxm-hcard">
+        <span class="mxm-hk">The colour is the lead, not the whole page</span>
+        <p>Several countries honestly have two stories, full-price billing and real evacuation distance, or a deposit culture and a flight to somewhere better equipped. Each country carries the claim its page leads with, and the rest of the story is one click away on the page itself. Nothing here ranks countries, and light against dark means nothing.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mxm-list">
+    <p class="mxm-lk">Every country, in its page's own words</p>
+    <p class="mxm-note">We hold a verified exposure category on {tagged.length} of the {coveredCount} countries we cover so far, assigned by reading each country's medical costs page rather than from general knowledge, and the sentence that justifies each one is quoted on its row. The health wave is landing in batches, so this list grows without this page changing shape.</p>
+    {untagged.length > 0 && (
+      <p class="mxm-note">{untagged.length} more {untagged.length === 1 ? 'page is' : 'pages are'} written and awaiting a verified category, rendering grey until then: {untagged.map(e => e.country).join(', ')}.</p>
+    )}
+
+    {groups.map(g => (
+      <div class="mxm-group">
+        <div class="mxm-ghead">
+          <span class="mxm-chip" style={`background:${g.fill}`}></span>
+          <h3>{g.label}</h3>
+          <span class="mxm-gcount">{g.rows.length === 0 ? 'None verified yet' : g.rows.length + (g.rows.length === 1 ? ' country' : ' countries')}</span>
+        </div>
+        <p class="mxm-gdesc">{g.legend}</p>
+        {g.rows.length > 0 && (
+          <div class="mxm-panel">
+            {g.rows.map(e => (
+              <a class="mxm-row" id={`mxm-${e.iso}`} href={`/${e.slug}/${e.spoke}`}>
+                <span class="mxm-rname">{e.country}</span>
+                <span class="mxm-rq">&ldquo;{e.quote}&rdquo;</span>
+                {fmtMonth(e.checkedISO) && <span class="mxm-rdate">Checked {fmtMonth(e.checkedISO)}</span>}
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  // The map's only behaviour: clicking a coloured country or dot moves you to its row,
+  // where the claim and the link to the page live. Everything works without this.
+  document.querySelectorAll('.mxm-svg [data-iso]').forEach(el => {
+    const iso = el.getAttribute('data-iso');
+    const row = document.getElementById('mxm-' + iso);
+    if (!row) return;
+    el.classList.add('mxm-click');
+    el.addEventListener('click', () => {
+      row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      row.classList.add('mxm-flash');
+      setTimeout(() => row.classList.remove('mxm-flash'), 1600);
+    });
+  });
+</script>
+
+<style>
+  .mxm{margin:34px 0 0}
+  .mxm-head{max-width:720px}
+  .mxm-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(22px,3.6vw,30px);letter-spacing:-.012em;line-height:1.18;margin:0 0 10px}
+  .mxm-sub{font-size:15px;color:#3B4A46;line-height:1.6;margin:0}
+  .mxm-fig{margin:22px 0 0}
+  .mxm-mapwrap{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:14px 14px 10px;position:relative}
+  .mxm-svg{width:100%;height:auto;display:block}
+  .mxm-svg path{stroke:#F5F4EF;stroke-width:.5;transition:opacity .15s ease}
+  .mxm-svg .mxm-click{cursor:pointer}
+  .mxm-svg .mxm-click:hover{opacity:.82}
+  .mxm-stamp{display:flex;align-items:baseline;gap:8px;margin:8px 2px 0;font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .mxm-stamp b{font-weight:700;color:var(--teal-deep);letter-spacing:.02em}
+  .mxm-cap{font-size:12.5px;color:var(--muted);line-height:1.5;margin:8px 4px 0;max-width:720px}
+  .mxm-warn{font-size:13px;color:#8A5A2B;margin:10px 0 0}
+  .mxm-lk{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 10px}
+  .mxm-legend{margin:26px 0 0}
+  .mxm-cats{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 22px}
+  .mxm-cats li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:#3B4A46;line-height:1.5}
+  .mxm-sw{flex:none;width:15px;height:15px;border-radius:4px;border:1px solid rgba(0,0,0,.12);margin-top:2px}
+  .mxm-st b{color:var(--ink)}
+  .mxm-honest{margin:30px 0 0}
+  .mxm-hgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .mxm-hcard{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:15px 17px}
+  .mxm-hk{display:block;font-weight:600;font-size:14px;color:var(--teal-deep);margin:0 0 6px}
+  .mxm-hcard p{font-size:14px;color:#3B4A46;line-height:1.55;margin:0}
+  .mxm-list{margin:32px 0 0}
+  .mxm-note{font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 14px;max-width:720px}
+  .mxm-group{margin:0 0 22px}
+  .mxm-ghead{display:flex;align-items:center;gap:10px;margin:0 0 4px}
+  .mxm-chip{flex:none;width:14px;height:14px;border-radius:4px;border:1px solid rgba(0,0,0,.12)}
+  .mxm-ghead h3{font-family:var(--serif);font-weight:500;font-size:18px;letter-spacing:-.008em;margin:0}
+  .mxm-gcount{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.03em}
+  .mxm-gdesc{font-size:13.5px;color:var(--muted);line-height:1.5;margin:0 0 10px;max-width:720px}
+  .mxm-panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+  .mxm-row{display:block;padding:12px 16px;border-bottom:1px solid var(--line);text-decoration:none;transition:background-color .15s ease}
+  .mxm-row:last-child{border-bottom:0}
+  .mxm-row:hover{background:var(--paper)}
+  .mxm-row.mxm-flash{background:var(--green-bg)}
+  .mxm-rname{display:block;font-weight:600;font-size:14px;color:var(--teal-deep);margin:0 0 3px}
+  .mxm-row:hover .mxm-rname{text-decoration:underline}
+  .mxm-rq{display:block;font-family:var(--serif);font-size:15px;color:var(--ink);line-height:1.45;margin:0 0 3px}
+  .mxm-rdate{display:block;font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.03em}
+  @media (max-width:700px){
+    .mxm-cats{grid-template-columns:1fr}
+    .mxm-hgrid{grid-template-columns:1fr}
+  }
+</style>

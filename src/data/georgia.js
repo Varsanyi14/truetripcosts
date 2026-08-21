@@ -491,6 +491,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "evacuationIsTheCost",
+      exposureQuote: "the expensive scenario is a mountain evacuation from somewhere like Kazbegi, Svaneti or a ski slope",
       glance: [
         { k: "Cover", v: "Required to enter since 2026" },
         { k: "You pay", v: "Up front, often in cash" },

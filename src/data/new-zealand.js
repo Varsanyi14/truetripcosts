@@ -622,6 +622,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "accidentsOnly",
+      exposureQuote: "it covers visitors for accidents. It does not cover them for illness.",
       glance: [
         { k: "Accident", v: "ACC covers you, even as a visitor" },
         { k: "Illness", v: "ACC does not cover it at all" },

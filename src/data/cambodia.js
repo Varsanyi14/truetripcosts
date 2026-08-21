@@ -595,6 +595,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "evacuationIsTheCost",
+      exposureQuote: "the real bill is the flight to Bangkok",
       glance: [
         { k: "You pay", v: "Out of pocket, usually cash" },
         { k: "Public hospitals", v: "Not free to visitors" },

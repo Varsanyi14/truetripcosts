@@ -590,6 +590,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "evacuationIsTheCost",
+      exposureQuote: "Routine care you can handle. The thing to insure is hospitalisation and the flight",
       glance: [
         { k: "You pay", v: "Cash, often before treatment" },
         { k: "Where care is", v: "Kingston and Montego Bay" },

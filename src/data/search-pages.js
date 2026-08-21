@@ -43,6 +43,7 @@ export const INDEXED_PAGES = [
   { file: 'staying-connected.astro', label: 'Staying connected', kind: 'hub' },
   { file: 'money-scams.astro', label: 'Money scams', kind: 'hub' },
   { file: 'hotel-taxes-and-fees.astro', label: 'Hotel taxes and fees', kind: 'hub' },
+  { file: 'medical-costs.astro', label: 'Medical costs abroad', kind: 'hub' },
 
   // Cross-country tools.
   { file: 'cost-comparison.astro', label: 'Cost of a day, compared', kind: 'tool' },

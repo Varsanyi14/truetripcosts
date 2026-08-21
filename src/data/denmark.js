@@ -516,6 +516,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "What you are insuring here is the price of an admission in an expensive country, not the problem of reaching one.",
       glance: [
         { k: "Emergency care", v: "Given, then billed" },
         { k: "You pay", v: "The full cost as a visitor" },

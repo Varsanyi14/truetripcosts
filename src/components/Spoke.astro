@@ -10,7 +10,7 @@ import NewTab from './NewTab.astro';
 import Symbol from './Symbol.astro';
 import UtilityBox from './UtilityBox.astro';
 import UsdProse from './UsdProse.astro';
-import { topicIcon, caution } from '../data/topics.js';
+import { topicIcon, caution, TOPIC_HUBS } from '../data/topics.js';
 import { visaLink, esimLink, affiliate } from '../data/links.js';
 const { country, spoke } = Astro.props;
 
@@ -78,6 +78,10 @@ const faqs = Array.isArray(spoke.faqs) ? spoke.faqs : [];
 // new spoke cross-links to the rest automatically. Empty (block hidden) until a
 // country has more than one spoke.
 const siblings = (country.spokes || []).filter(s => s.live !== false && s.slug !== spoke.slug);
+// The family hub this spoke belongs to, if one exists for its topic. Resolved from
+// TOPIC_HUBS rather than typed, so the link cannot 404 independently of the map, and
+// so every spoke in a family gains the reverse link the day its hub ships.
+const topicHub = TOPIC_HUBS[spoke.topic] || null;
 
 // --- Short-answer display mode ---------------------------------------------
 // 'A' = the answer as a single prose paragraph (safe default, cannot break).
@@ -264,6 +268,9 @@ const showKeyPoints = ANSWER_MODE === 'B' && !answerHasFragment && answerKeyPoin
 
   <div class="sp-back">
     <a class="cta" href={'/' + country.slug}>Read the full {country.name} money guide &#8594;</a>
+    {topicHub && (
+      <p class="sp-hub"><a href={topicHub.href}>Compare: {topicHub.label} &#8594;</a></p>
+    )}
   </div>
 
   <div class="gbyline" style="display:flex;align-items:flex-start;gap:9px;margin:26px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card)">
@@ -319,6 +326,9 @@ const showKeyPoints = ANSWER_MODE === 'B' && !answerHasFragment && answerKeyPoin
   .sp-parent{margin:22px 0 0;font-size:13px}
   .sp-parent a{color:var(--teal-deep);font-weight:600;text-decoration:none}
   .sp-parent a:hover{text-decoration:underline}
+  .sp-hub{margin:12px 0 0;font-size:13.5px}
+  .sp-hub a{color:var(--teal-deep);font-weight:600;text-decoration:none}
+  .sp-hub a:hover{text-decoration:underline}
   .sp-head{display:flex;gap:14px;align-items:flex-start;margin:2px 0 0}
   .sp-ic{flex:none;width:44px;height:44px;display:flex;align-items:center;justify-content:center;margin-top:2px}
   .sp-ic svg{width:44px;height:44px;display:block}

@@ -643,6 +643,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "A visitor is treated as a private patient and invoiced, with physician fees set by a regulated schedule.",
       glance: [
         { k: "You pay", v: "As a private patient" },
         { k: "The care", v: "Excellent, and everywhere" },

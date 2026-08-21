@@ -527,6 +527,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "Visitors are not subsidised at all, and the difference is the entire story.",
       glance: [
         { k: "Subsidy for you", v: "None at all" },
         { k: "Subsidy for locals", v: "Up to 80% inpatient" },

@@ -766,6 +766,8 @@ export default {
     },
     {
       slug: "medical-costs",
+      exposureCategory: "freeUntilAdmitted",
+      exposureQuote: "The walk-in really is free, including the emergency department. Being admitted really is not",
       glance: [
         { k: "A and E, and GPs", v: "Free, even to visitors" },
         { k: "If admitted", v: "150% of the NHS tariff" },
