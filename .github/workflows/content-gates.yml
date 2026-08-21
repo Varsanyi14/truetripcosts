@@ -1,0 +1,87 @@
+# THE CONTENT GATES, CI-ENFORCED. Until this workflow existed, every check-* gate was
+# hand-run only, which is how a whole gate (check-medical-map.mjs) went missing from the
+# tree without anything noticing. This workflow makes "all gates green" mean CI-enforced
+# on every push and pull request, not hand-asserted.
+#
+# Two notes from the wiring pass (Aug 2026):
+#   1. The suite runs against a BUILT tree. Six gates (entry-costs, nav-dropdown,
+#      jumplist, tax-segment, grid-text, search-index) read dist/ or need jsdom, so the
+#      build and npm ci come first. The two "known pre-existing failures" from ZIP 97
+#      (check-jumplist, check-tax-segment) diagnosed as exactly this: they fail on an
+#      unbuilt tree with no node_modules and pass on a built one, so the full suite runs
+#      blocking, nothing scoped out.
+#   2. check-fact-staleness is deliberately NOT here. It fails on the passage of time,
+#      not on the content of a commit, and it already has its own scheduled workflow
+#      (fact-staleness.yml). Blocking an unrelated push on a stale checked-date would
+#      train people to ignore red CI.
+#
+# Lives in .github/workflows/ because GitHub only runs workflows from there; a repo-root
+# workflows/ directory is decoration (the newsletter spoke's banked lesson).
+
+name: content-gates
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  gates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build the site (six gates audit dist/)
+        run: npm run build
+
+      - name: check-content.py
+        run: python3 scripts/check-content.py
+
+      - name: check-health
+        run: node scripts/check-health.mjs
+
+      - name: check-medical-map
+        run: node scripts/check-medical-map.mjs
+
+      - name: mutation-test-medical-map (the gate must stay falsifiable)
+        run: node scripts/mutation-test-medical-map.mjs
+
+      - name: check-verdict
+        run: node scripts/check-verdict.mjs
+
+      - name: check-entry-costs
+        run: node scripts/check-entry-costs.mjs
+
+      - name: check-hotel-tax-map
+        run: node scripts/check-hotel-tax-map.mjs
+
+      - name: check-carrier-spine
+        run: node scripts/check-carrier-spine.mjs
+
+      - name: check-connectivity-verdicts
+        run: node scripts/check-connectivity-verdicts.mjs
+
+      - name: check-search-index
+        run: node scripts/check-search-index.mjs
+
+      - name: check-nav-dropdown
+        run: node scripts/check-nav-dropdown.mjs
+
+      - name: check-jumplist
+        run: node scripts/check-jumplist.mjs
+
+      - name: check-tax-segment
+        run: node scripts/check-tax-segment.mjs
+
+      - name: check-grid-text
+        run: node scripts/check-grid-text.mjs
+
+      - name: calc-regression-test
+        run: node scripts/calc-regression-test.mjs
