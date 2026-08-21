@@ -578,6 +578,81 @@ export default {
         ],
         judgment: "Checked Aug 2026. This is the page where our recommendation and our commission agree, which is exactly why the reasoning is spelled out rather than asserted: Turkish visitor tariffs are set well above resident pricing, and that is what makes the eSIM cheaper here when it is not cheaper in most of the region. Visitor package prices move and the lira moves faster, so the 25 to 40 dollar range is a current read rather than a fixed figure, and it is worth a look at a carrier shop window if you are unsure. The 120-day handset registration rule is long-standing and affects long stays rather than holidays."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "routineAffordable",
+      exposureQuote: "The private hospitals in the big cities are modern, accredited and competitively priced.",
+      glance: [
+        { k: "Big-city private", v: "Modern and accredited" },
+        { k: "Foreigner rate", v: "Higher, and posted" },
+        { k: "Payment", v: "Cards work; upfront for big jobs" },
+        { k: "Outside the cities", v: "Quality drops off" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Turkey: accredited cities, a foreigner surcharge",
+      description: "Turkey's big-city private hospitals are modern, accredited and competitively priced, and they charge foreigners a higher, posted rate. Cards usually work; the expensive procedures want payment up front.",
+      h1: "What does getting sick in Turkey cost a visitor?",
+      lede: "Turkey built a private hospital tier good enough that more than a million people a year fly in for treatment on purpose. As a sick tourist you get the same machine, at the foreigner's posted rate, with your card usually welcome.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Care is <b>not free in Turkey</b>, even in public facilities, and a US visitor pays their own way. What you are paying into is the point: the new private hospitals in <b>Istanbul, Ankara, Izmir, Antalya and Adana</b> have modern equipment, US-trained doctors and international accreditation, in the State Department's own listing. The private hospitals in the big cities are modern, accredited and competitively priced. Two Turkish specifics to know. First, hospitals here <b>often charge higher posted prices to foreign patients</b>, a stated two-tier tariff rather than a scam. Second, <b>credit cards typically work</b>, and some private hospitals want <b>payment up front for expensive procedures</b>. The caveat is geographic and clinical: in smaller cities the quality drops, and even the flagship hospitals may struggle with the <b>very serious</b> case.",
+      insurance: true,
+      insuranceNote: "The honest Turkish read: this is a country whose competitive advantage is affordable, accredited medicine, and a routine problem in a big city is an errand at the foreigner's rate, not a crisis, which we would rather say than inflate. What earns cover is the top of the scale: the expensive procedure that wants payment up front, the very serious case the State Department warns even flagship hospitals may find hard to treat, and the medically supervised flight that case implies. Check the evacuation limit before anything else. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, call 112 and go; state emergency rooms treat first and the bill follows.",
+      sections: [
+        {
+          h: "The machine a million patients fly into",
+          icon: "receipt",
+          key: { tag: "The quality story", text: "Big-city private hospitals are modern, internationally accredited and staffed by US-trained doctors, per the State Department's own description.", tone: "teal" },
+          p: [
+            "Turkey's private hospital tier is not a tourist rumour; it is the State Department's own description: new private hospitals in the big cities with <b>modern equipment, US-trained doctors and international accreditation</b>. It is the infrastructure of a country that treats medicine as an export industry, and as a sick visitor you simply walk into it.",
+            "If it looks serious, call 112 and go; state emergency rooms treat first and the bill follows. For everything short of that, the big-city private hospital or clinic is the visitor's default lane: fast, English-capable at the international desks, card terminal ready."
+          ]
+        },
+        {
+          h: "The foreigner's rate, posted",
+          icon: "tag",
+          key: { tag: "Two-tier tariff", text: "Turkish hospitals often charge higher posted prices to foreign patients. It is a stated rate, not a hustle, and still competitive.", tone: "teal" },
+          p: [
+            "Expect the bill to know your passport. The State Department notes that Turkish hospitals <b>often charge higher prices to foreign patients</b>: a formal two-tier tariff, with the foreigner's rate posted rather than improvised. It can sting to see, and it is still, for most care, competitive by any Western measure, which is why the medical-tourism trade exists at all.",
+            "The payment mechanics are friendlier than the region's average: <b>credit card payment is typically available</b>, and cash is only occasionally king. The exception is the big job: <b>some private hospitals ask for payment up front for expensive procedures</b>, which is where an insurer's guarantee replaces your card."
+          ]
+        },
+        {
+          h: "The pharmacy lane, and the map's edges",
+          icon: "alert",
+          key: { tag: "Know the edges", text: "The eczane network handles the minor stuff cheaply; outside the big cities, and for the very serious case, the system's limits show.", tone: "teal" },
+          p: [
+            "For the minor problems, Turkey's <b>eczane</b> pharmacy network is dense, competent and inexpensive, and it is the correct first stop for the stomach, the sunburn, the mild infection. One in every neighbourhood, a duty pharmacy open in every district overnight.",
+            "The edges of the map matter more here than in Western Europe. <b>In smaller cities, healthcare is usually not as good</b>, in the State Department's words, and even the accredited flagships <b>may find some very serious problems hard to treat</b>. That pair of caveats is exactly the shape evacuation cover exists for: the case that needs to leave Anatolia, or leave Turkey."
+          ]
+        },
+        {
+          h: "What is still worth covering",
+          icon: "plane",
+          key: { tag: "Proportion", text: "Routine care at the foreigner's rate is manageable. The upfront-payment procedure and the case that must travel are the real numbers.", tone: "teal" },
+          p: [
+            "Here is the commission-costing sentence: for a normal city trip, <b>Turkey's medical bills are competitive enough that fear is the wrong budget line</b>, and the country's whole health-tourism industry is the receipt for that claim.",
+            "The bills that stay serious are three: the <b>expensive procedure paid up front</b>, the <b>transfer</b> when a smaller city's hospital is not enough, and the <b>flight home</b> for the case Turkey itself flags as hard to treat. Aim cover there, and for lira, cards and the cash landscape, see the <a href='/turkey/cash-or-card'>Turkey cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is medical care free for tourists in Turkey?", a: "No. Care is billed even in public facilities, and hospitals often charge foreigners a higher posted rate. The compensation is that the rate is competitive and the big-city private tier is genuinely modern and accredited." },
+        { q: "Do Turkish hospitals charge foreigners more?", a: "Often, yes, and openly: a higher posted price for foreign patients is a stated feature of the system, per the State Department, not a hustle at the desk. It remains competitive by Western standards for most care." },
+        { q: "Can I pay a Turkish hospital by credit card?", a: "Typically yes, which sets Turkey apart from much of the region. The exception is expensive procedures, where some private hospitals want payment up front, and an insurer's guarantee letter does the job instead." },
+        { q: "How good are Turkish hospitals?", a: "In the big cities, very good: modern equipment, US-trained doctors, international accreditation, in the State Department's own words. Quality falls in smaller cities, and even flagships may struggle with the very serious case, which is what evacuation cover is for." },
+        { q: "What is the emergency number in Turkey?", a: "112 for everything, ambulance included, nationwide. State emergency rooms treat first and bill after; the pharmacy network handles the genuinely minor for pocket money." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Turkiye country information, health section, on billing, the foreigner surcharge, card payment, upfront payment for expensive procedures and city-versus-province quality", url: "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/turkey-travel-advisory.html", type: "gov" },
+          { label: "US Embassy in Turkiye: medical guidance for US citizens, on cash payment prior to services being common practice abroad", url: "https://tr.usembassy.gov/medical-tourism/", type: "gov" }
+        ],
+        judgment: "The structural claims, billing in public facilities, higher posted prices for foreigners, card acceptance, upfront payment for expensive procedures and the city-quality gradient, are the State Department's own statements. The competitiveness judgment is ours, resting on the scale of Turkey's inbound medical-tourism trade rather than on a figure, because no lira or dollar amount was verified against an official tariff this pass; Turkey's health ministry publishes an international health tourism price list, which is the most promising source for adding one later. Checked August 2026."
+      }
     }
   ]
 };

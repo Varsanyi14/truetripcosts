@@ -590,6 +590,82 @@ export default {
         ],
         judgment: "Checked Aug 2026. This is deliberately a short spoke. Czech coverage is genuinely excellent, there is no network to favour and no signal gap worth a paragraph, so padding it would make the page look more useful while telling you less. On price the local SIM is ahead of the eSIM we earn on, and the page says so. No SIM registration requirement is stated here because we could not confirm one to the standard we hold ourselves to, and inventing a paperwork warning would be worse than omitting it."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "routineAffordable",
+      exposureQuote: "Prague medicine is excellent, and the self-pay prices are Czech, not American.",
+      glance: [
+        { k: "Care quality", v: "Prague-grade, genuinely good" },
+        { k: "US insurance", v: "Not accepted at the desk" },
+        { k: "The mechanics", v: "Deposit, then a settled bill" },
+        { k: "Prices", v: "Czech, not American" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Czechia: good medicine, Czech prices, cash mechanics",
+      description: "Czechia treats visitors as self-payers in an excellent system priced for Czechs. The mechanics are the surprise: a deposit at the door of the big Prague ERs, settled against the real bill, with change returned.",
+      h1: "What does getting sick in Czechia cost a visitor?",
+      lede: "Czech medicine is better than most Americans expect and priced for a country where doctors are paid in crowns. The part worth learning in advance is not the price. It is the mechanics at the front desk.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Czech public insurance is for residents, EU card holders and local employees, so a US visitor is a <b>self-payer</b>. The good news is what you are self-paying for: Prague medicine is excellent, and the self-pay prices are Czech, not American. The State Department's practical warning is about the desk, not the doctor: Czech providers <b>cannot accept US insurance</b>, so you may have to <b>pay a lot up front</b> and claim it back later. The big Prague hospitals formalise that with a <b>self-payer routine</b>: a deposit taken at the emergency desk, care delivered, the actual costs settled against the deposit, and any overpayment <b>returned to your account</b>. One more Czech wrinkle: the foreign ministry states that even <b>visa-free travelers must carry medical insurance</b> and can be asked to show it at the border, a rule Americans rarely meet an actual check for, but a stated rule all the same.",
+      insurance: true,
+      insuranceNote: "The honest read for Czechia is calm: care is excellent, self-pay prices are set for the Czech market, and a routine problem here is not a financial event, which we would rather admit than dramatise. Two things still earn cover. The big admission, which even at Czech rates is real money paid as you go, and the flight home. There is also the on-paper rule that visitors should carry medical insurance at all, which a policy quietly satisfies. Check the evacuation limit first. Faye covers trip medical and evacuation.",
+      careFirst: "If it is life threatening, call 155 or 112 and go; nobody treats you slower for being foreign, and the paperwork can wait for the ward.",
+      sections: [
+        {
+          h: "A self-payer in a very good system",
+          icon: "receipt",
+          key: { tag: "Your status", text: "Public insurance is for residents and EU cards. A visitor pays their own way, at prices set for the Czech market.", tone: "teal" },
+          p: [
+            "Czechia runs one of Central Europe's strongest health systems, with one of the EU's highest doctor densities and a Prague hospital tier that handles international patients daily. As a US visitor you stand <b>outside the public insurance</b> that funds it, which makes you a <b>self-payer</b>: treated the same, billed personally.",
+            "If it is life threatening, call 155 or 112 and go; nobody treats you slower for being foreign, and the paperwork can wait for the ward. What follows the ward is the settling, which Czech hospitals have turned into an orderly routine described below."
+          ]
+        },
+        {
+          h: "The deposit-and-settle routine",
+          icon: "cash",
+          key: { tag: "The mechanics", text: "Big Prague hospitals take a deposit from self-payers at the emergency desk, bill actual costs against it, and return the difference.", tone: "teal" },
+          p: [
+            "The major Prague hospitals publish how self-payers are handled, and it is more orderly than the word deposit suggests. At the emergency department a <b>deposit is taken at the desk</b>, sized to the kind of care you are walking into, plus an administrative fee. Treatment happens. The <b>actual costs are then billed against the deposit</b>, and an overpayment is <b>returned to your bank account</b>.",
+            "It is worth knowing in advance for one reason: arriving at a Czech ER with no working card and no cash turns a medical errand into a logistics problem. Carry a card that works, expect contactless to be preferred, and treat the deposit as the system's handshake rather than a penalty."
+          ]
+        },
+        {
+          h: "The insurance rule nobody checks, until someone does",
+          icon: "alert",
+          key: { tag: "On paper", text: "The Czech foreign ministry states that even visa-free travelers must be insured and can be asked for proof on entry.", tone: "teal" },
+          p: [
+            "Buried in the Czech foreign ministry's own guidance is a rule most Americans have never heard: foreign nationals travelling to Czechia <b>visa-free must also be insured</b> and <b>may be asked to provide proof upon entry</b>. In practice, US tourists are almost never asked. On paper, the obligation exists.",
+            "We flag it not to alarm but because this site's job is the stated rule, not the average experience. A travel medical policy satisfies it without further thought, which is one more quiet argument for carrying one to a country where, on the numbers, you barely need it."
+          ]
+        },
+        {
+          h: "What is still worth covering",
+          icon: "plane",
+          key: { tag: "Proportion", text: "Routine care is a Czech-sized cost. The long admission and the flight home are the two bills that stay big.", tone: "teal" },
+          p: [
+            "Here is the sentence that costs us money: for an ordinary trip, <b>Czechia is one of the less financially risky places in Europe to get sick</b>. The system is excellent, the self-pay tariff is set for Czech wallets, and the everyday problem ends with a modest receipt.",
+            "What stays big is what stays big everywhere: a <b>long admission</b>, paid as you go even at Czech rates, and a <b>medically supervised flight home</b>. Point any policy at those, check the evacuation line first, and for the card-and-cash side see the <a href='/czechia/cash-or-card'>Czechia cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Can American tourists use Czech public healthcare?", a: "You can be treated in it, but not on its insurance. A US visitor is a self-payer: same hospitals, personally billed, at prices set for the Czech market rather than the American one." },
+        { q: "Do Czech hospitals accept US health insurance?", a: "No. The State Department warns Czech providers cannot accept US insurance, so you may pay significantly up front and claim reimbursement afterwards. Keep every receipt." },
+        { q: "What is the deposit at Czech emergency rooms?", a: "Large Prague hospitals take a deposit from self-payers at the emergency desk, bill the actual cost of care against it, and return any overpayment to your account. It is the standard self-payer routine, not a penalty." },
+        { q: "Is travel insurance legally required to enter Czechia?", a: "The Czech foreign ministry states that even visa-free travelers must be insured and can be asked for proof at entry. US tourists are rarely checked, but the stated rule exists, and any travel medical policy satisfies it." },
+        { q: "What number do I call in a medical emergency in Czechia?", a: "155 is the dedicated ambulance line and 112 works everywhere with English. Treatment comes first; the self-payer settling happens at the desk afterwards." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Czechia destination information, noting Czech providers cannot accept US insurance and treatment may require substantial upfront payment", url: "https://travel.state.gov/en/international-travel/travel-advisories/destination.cze.html", type: "gov" },
+          { label: "Central Military University Hospital Prague: its published self-payer rules, the deposit at the emergency desk settled against actual costs with overpayment returned", url: "https://www.uvn.cz/en/for-foreigners-and-other-self-payers", type: "gov" },
+          { label: "Czech Ministry of Foreign Affairs: travel medical insurance guidance, including the stated insurance obligation for visa-free travelers", url: "https://mzv.gov.cz/jnp/en/information_for_aliens/supporting_documents_overview/travel_medical_insurance.html", type: "gov" }
+        ],
+        judgment: "The desk mechanics are taken from a major Prague hospital's own published self-payer rules, and the insurance-on-entry rule from the Czech foreign ministry's own page; the deposit amounts those sources publish are deliberately not repeated here, because one hospital's figures are not a national tariff. The judgment that self-pay prices are Czech rather than American is ours, made qualitatively, and no routine-care figure appears because none was verified against an official national schedule this pass. Checked August 2026."
+      }
     }
   ]
 };

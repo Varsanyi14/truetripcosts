@@ -878,6 +878,81 @@ export default {
         ],
         judgment: "Checked Aug 2026. The island point is the useful part of this page and it is a check rather than a purchase: Madeira and the Azores are listed as separate destinations, so a plan sold as covering Europe may not cover the part of Portugal you are flying to. We earn a commission on eSIM links, which is exactly why the advice here is to read the country list before clicking one. Carrier figures are an Aug 2026 snapshot and move faster than anything else we cover."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "routineAffordable",
+      exposureQuote: "the prices underneath it all stay southern European",
+      glance: [
+        { k: "SNS", v: "Residents and EU cards" },
+        { k: "A visitor", v: "Billed for care" },
+        { k: "Helpful twist", v: "SNS 24 line speaks English" },
+        { k: "Everyday prices", v: "Southern European" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Portugal: no free care, at Portuguese prices",
+      description: "Portugal's own US embassy page says it flatly: no free medical treatment for visitors. What softens it is everything else, an English-speaking health line, private clinics everywhere, and prices that stay southern European.",
+      h1: "What does getting sick in Portugal cost a visitor?",
+      lede: "The US Embassy in Lisbon puts it in one flat sentence: Portugal does not offer free medical treatment to visitors. What softens that sentence is everything around it, starting with a national health line that answers in English.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Portugal's <b>SNS</b> is for residents and EU card holders, and the rules tightened recently: free access for non-resident foreigners was formally ended, so a US visitor is <b>billed for care</b>, at the health service's own tariff in the public system and at posted prices in the private one. The embassy's summary is the honest one: <b>no free treatment for visitors</b>. The softer half is real, though. Portugal runs <b>SNS 24</b>, a round-the-clock health line that handles calls in English and triages you to the right door, the private networks have walk-in clinics in every city and across the Algarve, and the prices underneath it all stay southern European. Emergencies go through <b>112</b> and are treated first; the paying comes after.",
+      insurance: true,
+      insuranceNote: "The honest read for Portugal is proportionate: routine care here is priced for Portugal, one of Western Europe's least expensive corners, and we would rather say that than inflate the risk to justify the link below. What remains worth covering is a real admission, which the SNS bills to non-residents at full cost, and a medically supervised flight home. If you carry cover, note the assistance number before you need it, since paying first and claiming back is the default here. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, call 112 and go; sorting out who pays is a job for later.",
+      sections: [
+        {
+          h: "The rule, in the embassy's own words",
+          icon: "receipt",
+          key: { tag: "No free care", text: "Portugal does not offer free medical treatment to visitors, and recent policy formally ended free access for non-residents.", tone: "teal" },
+          p: [
+            "Start with the sentence the US Embassy in Lisbon publishes: <b>Portugal does not offer free medical treatment to visitors</b>. It was always broadly true for Americans, and it became formal policy recently, when Portugal ended the practice of treating non-resident foreigners at the state's expense. A tourist is a paying patient here.",
+            "The comfort is what paying means in Portugal. The public tariff is a Portuguese one, and the private sector prices to the local market. If it looks serious, call 112 and go; sorting out who pays is a job for later. Nobody checks a wallet before treating an emergency."
+          ]
+        },
+        {
+          h: "The phone call that sorts everything",
+          icon: "phoneok",
+          key: { tag: "SNS 24", text: "The health service's own round-the-clock line takes calls in English and tells you which door to walk through.", tone: "teal" },
+          p: [
+            "Portugal's most useful medical fact for a visitor is a phone number. <b>SNS 24</b>, the health service's own line on 808 24 24 24, runs around the clock, handles calls in <b>English</b>, and does the triage a worried traveler cannot: it tells you whether this is a pharmacy problem, a health-centre problem, or an emergency-room problem, and where the nearest right door is.",
+            "That call matters financially too. Walking into a hospital emergency department with something minor is the slow and, for a billed visitor, more expensive route. Letting SNS 24 point you at a <b>farmacia</b> or a clinic keeps a small problem priced like one."
+          ]
+        },
+        {
+          h: "Public tariff, private walk-ins",
+          icon: "cash",
+          key: { tag: "Two lanes", text: "The public system bills visitors at its own tariff; the private networks sell walk-in care at posted Portuguese prices.", tone: "teal" },
+          p: [
+            "The public lane treats you and bills you at the SNS's own <b>non-beneficiary tariff</b>. The private lane, the CUF and Luz style networks with clinics in every city and across the Algarve and Madeira, sells care at posted prices, takes cards, and is where English at the front desk is likeliest.",
+            "US insurance is not accepted at either desk, and Medicare pays nothing here. Pay, collect the <b>fatura</b>, the formal receipt, and claim afterwards. For a routine complaint the receipt will be a modest one, which is the quiet point of this whole page."
+          ]
+        },
+        {
+          h: "What is still worth covering",
+          icon: "plane",
+          key: { tag: "Proportion", text: "The everyday side is one of Western Europe's least expensive. The admission and the flight home are what stay big.", tone: "teal" },
+          p: [
+            "Here is the sentence that costs us commission: for a healthy traveler, <b>the routine medical side of Portugal is among the least financially risky in Western Europe</b>, and pretending otherwise to sell a policy would be the dishonesty this site exists to avoid.",
+            "What stays big is the tail. An <b>admission billed at full non-resident cost</b> is a real sum even at Portuguese rates, and a <b>medically supervised flight home</b> is an aviation bill, not a medical one. Point any cover you carry at those two, and check the evacuation limit first. For the card and cash mechanics, see the <a href='/portugal/cash-or-card'>Portugal cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do tourists get free healthcare in Portugal?", a: "No. The US Embassy in Lisbon states it plainly: Portugal does not offer free medical treatment to visitors, and recent Portuguese policy formally ended free access for non-residents. You are billed, at Portuguese prices." },
+        { q: "Is there an English-speaking medical line in Portugal?", a: "Yes. SNS 24, the health service's own round-the-clock line on 808 24 24 24, handles calls in English and triages you to the right pharmacy, clinic or hospital." },
+        { q: "Will a Portuguese emergency room treat me before payment?", a: "Yes. Call 112 in an emergency and you will be treated first; the billing follows. An unpaid balance is a bill to resolve, not a barrier to care." },
+        { q: "Do Portuguese hospitals accept US health insurance?", a: "No, and Medicare pays nothing abroad. You pay and claim back afterwards, so always collect the fatura, the formal receipt, at the desk." },
+        { q: "Should I use public or private care as a visitor in Portugal?", a: "For anything minor, a pharmacy or a private walk-in clinic is quickest and priced locally. For anything serious, 112 and the public emergency system. Either way you are a paying patient, at Portuguese rather than American prices." }
+      ],
+      sources: {
+        links: [
+          { label: "US Embassy in Portugal: health abroad page, stating that Portugal does not offer free medical treatment to visitors", url: "https://pt.usembassy.gov/your-health-abroad/", type: "gov" },
+          { label: "US State Department: Portugal country information, health and travel guidance", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Portugal.html", type: "gov" }
+        ],
+        judgment: "The core claim, no free treatment for visitors, is the US Embassy's own sentence, and Portugal's formal ending of free access for non-residents is recent, publicly reported policy. The claim that SNS 24 handles English is the service's advertised feature and consistent traveler experience. The judgment that prices stay southern European is ours, made qualitatively: the SNS publishes a non-beneficiary tariff, which is the most promising official source for retiring this page's no-figure status on a later pass, but this pass did not verify a figure against it, so none appears. Checked August 2026."
+      }
     }
   ]
 };

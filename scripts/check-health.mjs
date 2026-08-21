@@ -80,6 +80,21 @@ const PRICE_EXEMPT = new Set([
   // structure is sourced and declared, but no non-resident currency figure was found.
   'switzerland', 'norway', 'denmark', 'sweden', 'iceland', 'south-korea', 'taiwan',
   'singapore', 'uae', 'qatar', 'france', 'germany', 'netherlands', 'austria',
+  // Batch 4, the CRUX tier plus china. Every structural claim on these pages traces to a
+  // primary source (State Department country pages, US Embassy medical pages, the UK FCDO
+  // for thailand, the Saudi Council of Health Insurance, the Croatian tourism ministry, a
+  // major Prague hospital's own self-payer rules), and every one ships figureless, because
+  // on CRUX pages the honest claim is qualitative: care is priced for the country, not for
+  // America, and a borrowed number under a commission link is the exact failure this gate
+  // exists to prevent. Deposits that hospitals publish (czechia's ER desk, thailand's and
+  // china's admission deposits) are described as practice, never quoted as amounts, since
+  // one hospital's figure is not a national tariff. The most promising exemptions to
+  // retire on a later sourcing pass: portugal (the SNS publishes a non-beneficiary
+  // tariff), turkey (the health ministry publishes an international health tourism price
+  // list), thailand (the flagship private hospitals publish price lists), and croatia
+  // (HZZO publishes its fee schedule).
+  'italy', 'spain', 'portugal', 'greece', 'czechia', 'poland', 'hungary', 'croatia',
+  'thailand', 'turkey', 'costa-rica', 'colombia', 'saudi-arabia',
 ]);
 
 // Countries where the honest call is that cover matters LESS than a traveler assumes, from

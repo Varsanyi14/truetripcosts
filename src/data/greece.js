@@ -579,6 +579,81 @@ export default {
         ],
         judgment: "Checked Aug 2026. The ferry gap is the honest headline here, and it is worth stating plainly on a page that carries an eSIM link, because no data plan closes it: it is open water and there are no towers. The coverage read on the larger islands is the desk's from operator footprints and consistent traveler accounts. Carrier figures are an Aug 2026 snapshot."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "evacuationIsTheCost",
+      exposureQuote: "Serious medical situations generally require travel to Athens or Thessaloniki, and the whole cost of that transfer is yours.",
+      glance: [
+        { k: "The real bill", v: "The boat or flight to Athens" },
+        { k: "Public ER", v: "Treats you, then bills" },
+        { k: "On the islands", v: "Clinics, not hospitals" },
+        { k: "Transfers", v: "Entirely at your cost" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Greece: the bill that matters is the transfer",
+      description: "On the Greek islands, where most American trips happen, the serious case travels to Athens or Thessaloniki, and every cent of that transfer is the patient's. The everyday side, by contrast, is genuinely inexpensive.",
+      h1: "What does getting sick in Greece cost a visitor?",
+      lede: "Most American trips to Greece happen on islands, and that is what shapes this page. The everyday side is cheap and close. The serious case gets on a boat or a helicopter to Athens, and the US Embassy is explicit about who pays for the ride.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Greece has a two-track system: the public <b>ESY</b>, which will treat an emergency first and bill a non-EU visitor after, and a private sector concentrated in <b>Athens and Thessaloniki</b>. The geography is the story. The US Embassy notes that outside those two cities, and on the islands where most visitors actually are, care may be <b>clinics only</b>. Serious medical situations generally require travel to Athens or Thessaloniki, and the whole cost of that transfer is yours. The State Department states that flatly: <b>patients must cover all costs for transfer to or between hospitals</b>. Around that sits the ordinary friction: care is <b>not free even in public facilities</b>, private hospitals often want <b>payment up front or proof of insurance</b> before treating or admitting, and some hospitals <b>expect cash</b>.",
+      insurance: true,
+      insuranceNote: "The honest read for Greece is split. The everyday side, the clinic visit, the pharmacy, the stitches, is inexpensive and close, and we will not pretend otherwise to make the link below look necessary. The one exposure that is genuinely Greek is the transfer: the serious case on an island travels to Athens at your cost, before the hospital bill even starts. If you carry cover for Greece, the number to check is medical transport and evacuation, not the outpatient benefit. Faye covers trip medical and evacuation.",
+      careFirst: "If it is serious, call 112 and start moving toward care; the transfer bill is a problem for afterwards.",
+      sections: [
+        {
+          h: "The island math",
+          icon: "plane",
+          key: { tag: "The Greek exposure", text: "Islands carry clinics; hospitals are in Athens, Thessaloniki and a handful of larger islands. The serious case travels, at the patient's cost.", tone: "teal" },
+          p: [
+            "Greece's medical geography is lopsided in exactly the way its tourism is. A handful of larger islands have real hospitals; most have <b>health centres and clinics</b> built for the everyday. The US Embassy's guidance is the plainest statement of the consequence: available care on islands and outside Athens and Thessaloniki may be limited, and <b>serious situations generally require travel</b> to one of those two cities.",
+            "The State Department then answers the question that follows: <b>patients must cover all costs for transfer to or between hospitals</b>. The ferry, the fixed-wing, the helicopter to an Athens ICU, all of it is the patient's bill before the ward fee begins. If it is serious, call 112 and start moving toward care; the transfer bill is a problem for afterwards."
+          ]
+        },
+        {
+          h: "Not free, and often cash",
+          icon: "cash",
+          key: { tag: "The ordinary friction", text: "Care is billed even in public facilities, private hospitals often want payment or proof upfront, and some hospitals expect cash.", tone: "teal" },
+          p: [
+            "The everyday mechanics are standard southern Europe with a cash accent. Care is <b>not free in Greece</b>, even in a public facility. <b>Private hospitals often need payment up front or proof of good insurance</b> before providing treatment or admitting a patient. And the embassy adds a detail worth arriving prepared for: <b>some hospitals do not accept credit cards and expect payment in cash</b>.",
+            "None of that changes the emergency sequence, which treats first and bills after. It changes your errands: know where the ATM is, keep every receipt, and if you carry cover, call its assistance line early so the insurer can guarantee payment instead of you counting notes at a cashier window."
+          ]
+        },
+        {
+          h: "Public wards run lean",
+          icon: "alert",
+          key: { tag: "Worth knowing", text: "Overnight staffing in non-emergency public wards is minimal, and families routinely stay to help. Plan for that if someone is admitted.", tone: "teal" },
+          p: [
+            "One cultural fact about Greek public hospitals catches foreigners off guard. The State Department notes that in public hospitals, generally <b>only minimal staff is available overnight in non-emergency wards</b>, and it suggests what Greek families have always done: <b>have someone stay the night</b> with the patient, or hire a private nurse.",
+            "That is not a quality verdict on Greek medicine, whose doctors are frequently US- or European-trained. It is a staffing model. If a travel companion is admitted, plan to be furniture in the room, and treat that as normal, because in Greece it is."
+          ]
+        },
+        {
+          h: "The everyday side is the cheap side",
+          icon: "tag",
+          key: { tag: "Proportion", text: "Clinic visits, pharmacies and small fixes are inexpensive and close. The money risk here is the transfer, not the consultation.", tone: "teal" },
+          p: [
+            "Here is the honest, commission-costing sentence: the routine side of Greek medicine, the clinic on the island, the pharmacy in every town, the few stitches, is <b>inexpensive by any Western standard</b>, and for the ordinary traveler it is not the thing to budget fear around.",
+            "What this page wants you to carry instead is the shape of the real risk: not the visit but the <b>ride</b>. Check the medical transport line of any policy before the outpatient one, and for the money mechanics on the ground, see the <a href='/greece/cash-or-card'>Greece cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What happens if I get seriously ill on a Greek island?", a: "You travel. Serious cases generally move to Athens or Thessaloniki, by ferry, fixed-wing or helicopter, and the State Department is explicit that patients cover all transfer costs themselves." },
+        { q: "Is emergency care free for tourists in Greece?", a: "No. You will be treated first, but care is billed even in public facilities, and private hospitals often want payment or proof of insurance before treating or admitting you." },
+        { q: "Do Greek hospitals take credit cards?", a: "Not always. The US Embassy notes some hospitals expect cash. Arrive knowing where the ATM is, and keep every receipt for any later claim." },
+        { q: "Is the everyday medical stuff expensive in Greece?", a: "No, and we will say so plainly: clinic visits, pharmacies and minor treatment are inexpensive by Western standards. The genuinely Greek financial risk is the transfer to Athens, not the consultation." },
+        { q: "What is the emergency number in Greece?", a: "112 works nationwide and has English; 166 is the traditional ambulance line. On an island, the clinic and the port police both know the evacuation drill." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Greece country information, health section, on billing, upfront payment, cash, overnight staffing and patient-paid transfers", url: "https://travel.state.gov/content/travel/en/traveladvisories/traveladvisories/greece-travel-advisory.html", type: "gov" },
+          { label: "US Embassy in Greece: medical assistance page, on limited island care and serious cases requiring travel to Athens or Thessaloniki", url: "https://gr.usembassy.gov/medical-assistance/", type: "gov" }
+        ],
+        judgment: "The load-bearing claims here, clinics-only care on most islands, serious cases travelling to Athens or Thessaloniki, transfers entirely at the patient's cost, cash-expecting hospitals and lean overnight staffing, are the State Department's and the US Embassy's own statements. The judgment that everyday care is inexpensive is ours, made qualitatively, and no Greek price figure appears because none was sourced to a standard we would defend. This page leads with the transfer rather than the tariff because for an island-centred trip that is the honest ranking of the risks. Checked August 2026."
+      }
     }
   ]
 };

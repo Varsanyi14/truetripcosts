@@ -572,6 +572,81 @@ export default {
         ],
         judgment: "The named landmark areas, the taxi advice including the fapiao and the luggage rule, the counterfeit note picture and the fake police call all come from the Government of Canada's current China travel advice. The 500 to 2,000 yuan bill is a typical reported range, not a fixed tariff, and individual cases have run far higher; we have deliberately given the typical range rather than the worst case. Government advisories treat all of this as routine petty crime awareness rather than a safety emergency, and so do we. Checked August 2026."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "depositFirst",
+      exposureQuote: "Payment is required before service or admission, even in an emergency, and admission comes with a deposit sized to the expected bill.",
+      glance: [
+        { k: "At the door", v: "Payment before treatment" },
+        { k: "Admission", v: "A deposit sized to the bill" },
+        { k: "How to pay", v: "The apps, then cash" },
+        { k: "Unpaid bill", v: "Can bar re-entry" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in China: the cashier window comes first",
+      description: "China's hospitals require payment before service or admission, even in emergencies, per the State Department, with a deposit sized to the expected bill. The payment apps are the front door, and an unpaid bill can bar re-entry.",
+      h1: "What does getting sick in China cost a visitor?",
+      lede: "China is the clearest case on this site of a money-first medical system. The US government's language is unambiguous: payment before service or admission, even in emergencies, with a deposit for the ward. The skill is knowing how the paying works.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "The State Department's China page states the rule this whole page turns on: hospitals and doctors <b>require payment prior to service or admission, even in emergencies</b>, via <b>payment app or cash</b>. Payment is required before service or admission, even in an emergency, and admission comes with a deposit sized to the expected bill. The US Embassy adds the mechanics: travelers are typically asked to <b>post a deposit before admission</b> covering the expected cost of treatment, drawn down as care runs. Big-city hospitals <b>may</b> take foreign cards; the dependable instruments are <b>Alipay and WeChat Pay</b>, with a foreign card bound, and <b>cash</b>. Two more Chinese specifics: the major cities run <b>international and VIP wings</b> where English and insurer paperwork are normal, and the page's sharpest line is the exit clause: <b>lack of payment may bar future travel to China</b>.",
+      insurance: true,
+      insuranceNote: "China is the country where a policy has to work at the cashier window, not just on paper. Payment comes before treatment here, so the question to ask any insurer is not the coverage number but the mechanism: can it issue a guarantee of payment to a Chinese hospital fast, does it direct-bill the international wings, and will its assistance line answer at three in the morning Beijing time. Cover without that machinery leaves you funding the deposit yourself and claiming it back later. And for the serious case, the evacuation line matters: the hard cases leave for Hong Kong or home. Faye covers trip medical and evacuation.",
+      careFirst: "If it is life threatening, call 120 and go; send someone else to the cashier window while you are being treated.",
+      sections: [
+        {
+          h: "Money first, even in an emergency",
+          icon: "alert",
+          key: { tag: "The stated rule", text: "Payment is required prior to service or admission, even in emergencies, and admission takes a deposit sized to the expected cost.", tone: "teal" },
+          p: [
+            "There is no soft way to put what the State Department states plainly: Chinese hospitals and doctors <b>require payment prior to service or admission, even in emergencies</b>, and a traveler is <b>asked to post a deposit before admission</b> covering the expected cost, which the ward then draws down day by day, topping up as needed and settling at discharge.",
+            "If it is life threatening, call 120 and go; send someone else to the cashier window while you are being treated. A companion who can stand in the payment line, bind a card to an app, or read a QR code is worth more in a Chinese hospital than in any other country we cover, and solo travelers should know that is the shape of the system before they need it."
+          ]
+        },
+        {
+          h: "The payment apps are the front door",
+          icon: "qr",
+          key: { tag: "How paying works", text: "Alipay and WeChat Pay with a foreign card bound are the dependable instruments; cash is the fallback; foreign cards at the desk are a maybe.", tone: "teal" },
+          p: [
+            "Chinese hospitals are built around Chinese payment rails. The State Department's own phrasing, <b>payment app or cash</b>, is the practical instruction: have <b>Alipay or WeChat Pay working with your foreign card bound before you need a hospital</b>, and carry enough yuan to open a registration window if the app fails. Foreign credit cards at the cashier are a big-city maybe, not a plan.",
+            "Every payment produces the <b>fapiao</b>, the official tax receipt, and that document is your insurance claim: collect one at every window, because reconstructing them afterwards is somewhere between painful and impossible. Our <a href='/china/cash-or-card'>China cash and cards guide</a> covers getting the apps working before the trip."
+          ]
+        },
+        {
+          h: "The international wings",
+          icon: "receipt",
+          key: { tag: "The visitor tier", text: "Major cities run international and VIP departments with English, familiar paperwork and sometimes direct billing, at prices to match.", tone: "teal" },
+          p: [
+            "Beijing, Shanghai, Guangzhou and Shenzhen run a tier built for you: <b>international departments and VIP wings</b> of the big public hospitals, plus foreign-run private groups, where English is working, invoices are legible to a Western insurer, and <b>direct billing</b> exists for insurers who have arranged it. That last clause is the one to act on: with a guarantee of payment from your insurer in hand, the deposit conversation often disappears.",
+            "Outside that tier, county and district hospitals are where the money-first mechanics run hardest and English runs out fastest. For anything serious away from the big cities, the plan is the international wing of the nearest major city, and your insurer's assistance line is the one that knows which building that is."
+          ]
+        },
+        {
+          h: "The exit is part of the plan",
+          icon: "plane",
+          key: { tag: "Two endgames", text: "An unpaid bill can bar re-entry to China, and the genuinely hard case leaves, for Hong Kong or home, at evacuation prices.", tone: "teal" },
+          p: [
+            "Two endgame facts frame the serious case. The first is administrative: the State Department warns that <b>lack of payment may bar future travel to China</b>, the same clause Japan and Spain carry, so a bill left behind follows your passport. Settle, document, keep the fapiao.",
+            "The second is clinical: for the genuinely hard case, the established pattern is to <b>leave</b>, to Hong Kong's private tier or home, under medical supervision, and that flight is the largest number this page can imply. It is why the evacuation line of a policy matters more for China than the coverage ceiling, and why the insurer's ability to organise the flight matters more than either."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do Chinese hospitals really require payment before treatment?", a: "Yes, and it is the US government's own language: payment prior to service or admission, even in emergencies, by payment app or cash, with a deposit posted before admission sized to the expected cost of treatment." },
+        { q: "How do I pay a hospital in China as a foreigner?", a: "Alipay or WeChat Pay with your foreign card bound is the dependable instrument, cash is the fallback, and foreign cards at the desk are a big-city maybe. Collect the fapiao, the official receipt, at every window for any claim." },
+        { q: "What is the hospital deposit in China?", a: "An advance posted before admission covering the expected cost, drawn down as treatment runs, topped up if it runs long and settled at discharge. An insurer's guarantee of payment, where the hospital accepts direct billing, can replace it." },
+        { q: "Are there English-speaking hospitals in China?", a: "The major cities run international and VIP departments with English, Western-legible invoices and sometimes direct billing, at higher prices. Outside that tier, English runs out quickly and the money-first mechanics run hardest." },
+        { q: "What happens if I leave China with an unpaid hospital bill?", a: "The State Department warns that lack of payment may bar future travel to China. Settle before departure or through your insurer, and keep the fapiao trail as proof." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: China country information, health section, on payment before service or admission even in emergencies, the pre-admission deposit, payment apps and the re-entry consequence of unpaid bills", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/China.html", type: "gov" },
+          { label: "US Embassy in China: medical assistance page, on deposits posted prior to admission and the limits of foreign card and insurance acceptance", url: "https://china.usembassy-china.org.cn/medical-assistance/", type: "gov" }
+        ],
+        judgment: "The load-bearing claims, payment before service or admission even in emergencies, the deposit sized to expected costs, payment app or cash as the instruments, and the re-entry bar for unpaid bills, are the State Department's and US Embassy's own statements. The international-wing tier and the leave-for-Hong-Kong pattern for hard cases are the consistent shape of how foreign patients move through the system, stated qualitatively. No yuan figure appears because deposits are set per hospital and per case, and quoting one would be false precision. Checked August 2026."
+      }
     }
   ]
 };

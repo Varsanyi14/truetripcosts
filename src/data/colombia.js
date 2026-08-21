@@ -576,6 +576,80 @@ export default {
         ],
         judgment: "Checked Aug 2026. The local SIM is cheaper and we earn nothing on it, so that is stated first. The counter-argument on this page is not commercial padding: in Colombia, ordering a ride through an app rather than hailing on the street is a judgment most travelers are advised to make, and that needs a live connection from the moment you land, which is the one thing a pre-installed eSIM does better than a SIM bought after baggage claim. Claro's reach advantage is the desk's read from operator footprints and consistent traveler accounts."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "routineAffordable",
+      exposureQuote: "City medicine here is genuinely good, and paying for it yourself is a Colombian-sized problem, not an American one.",
+      glance: [
+        { k: "City hospitals", v: "Top-tier in Bogota and Medellin" },
+        { k: "Payment", v: "Cash first, cards unreliable" },
+        { k: "Rural cases", v: "Move toward the capital" },
+        { k: "Elective surgery", v: "The warning is real" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Colombia: good city medicine, paid in cash",
+      description: "Colombia's city hospitals are among Latin America's best and priced locally, and the desk wants cash: the State Department notes most providers do not take cards. Rural cases move toward the capital, and the cosmetic-surgery warning is real.",
+      h1: "What does getting sick in Colombia cost a visitor?",
+      lede: "Colombia's big-city hospitals rank among the best in Latin America, and a visitor pays local prices for them, usually in cash. The two things to respect are the map, which thins out fast, and the elective-surgery trade, which carries a real warning.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Colombia's public insurance is for residents, so a visitor pays, and what you get for it in the cities is the point: <b>Bogota, Medellin and Cali run hospitals of genuine international rank</b>, several of them among the region's most accredited. City medicine here is genuinely good, and paying for it yourself is a Colombian-sized problem, not an American one. The mechanics are cash-shaped: the State Department notes that <b>credit card payment is not always available</b> and <b>most care providers only accept cash</b>. The map matters too: facilities are adequate throughout, but <b>rural care may be below US standards</b>, and the serious case in the coffee country or on the Caribbean coast moves toward a major city. One warning stands alone: <b>US citizens have suffered serious complications and died</b> from cosmetic and elective surgery here, in the State Department's own words, so that trade deserves its own research, not holiday logic.",
+      insurance: true,
+      insuranceNote: "The honest Colombian read: in the cities this is good medicine at Colombian prices, and a routine problem is a cash errand, not a crisis, which we would rather tell you than dramatise. Two things earn cover. The first is the map: the State Department strongly recommends evacuation cover, because the serious rural case travels, and travels far. The second is the pay-first culture: an insurer that can wire a guarantee matters where the desk wants cash. If your trip includes elective surgery, that is a different risk profile entirely and needs its own specialised cover. Faye covers trip medical and evacuation.",
+      careFirst: "If it is serious, call 123 and get moving; the cash question is for after the doctor.",
+      sections: [
+        {
+          h: "The city tier is the real thing",
+          icon: "receipt",
+          key: { tag: "Quality", text: "Bogota, Medellin and Cali run internationally ranked, accredited hospitals, and a visitor buys into them at Colombian prices.", tone: "teal" },
+          p: [
+            "Strip away the reputation lag and Colombia's urban medicine is excellent: the <b>Bogota, Medellin and Cali</b> hospital tier places multiple institutions on Latin America's top-ranked lists, with international accreditation and specialists trained abroad. The State Department's own summary is that adequate facilities are available throughout the country.",
+            "If it is serious, call 123 and get moving; the cash question is for after the doctor. For everything short of that, the city private consultation is quick, English is findable at the international desks, and the receipt is priced for Colombia."
+          ]
+        },
+        {
+          h: "Cash first",
+          icon: "cash",
+          key: { tag: "The mechanics", text: "Most providers only accept cash, and card payment is not always available, so the ATM is part of the medical errand.", tone: "teal" },
+          p: [
+            "Colombia's medical money culture is the region's most cash-literal, and it is stated rather than rumoured: <b>most care providers only accept cash</b>, and <b>credit card payment is not always available</b>, per the State Department. The private hospital's international department will take your card; the clinic and the pharmacy may not.",
+            "The practical kit is simple: know where the ATM is, keep pesos for the desk, collect every <b>factura</b>, and put your policy's assistance number where a companion can find it, because an insurer's transferred guarantee replaces a wallet you may not be carrying."
+          ]
+        },
+        {
+          h: "The map, and the surgery warning",
+          icon: "alert",
+          key: { tag: "Respect both", text: "Rural care can fall below US standards and the serious case travels to a city; the cosmetic-surgery warning is the State Department's own.", tone: "teal" },
+          p: [
+            "Two respect-worthy facts. First, the map: outside the cities, care can fall <b>below US standards</b>, ambulances thin out, and the serious case in the coffee axis, the Amazon fringe or the Caribbean coast <b>moves toward a major city</b> before real treatment begins, which is why the State Department <b>strongly recommends evacuation cover</b> for Colombia.",
+            "Second, the elective trade. Medellin and Cali sell cosmetic and dental surgery at prices that draw a steady American traffic, and the State Department's warning could not be plainer: US citizens have suffered <b>serious complications and death</b> from elective procedures here, and legal recourse after malpractice is limited. If that trade is part of your trip, research the surgeon and the recovery facility like your life depends on it, because occasionally it has."
+          ]
+        },
+        {
+          h: "What is still worth covering",
+          icon: "plane",
+          key: { tag: "Proportion", text: "Routine city care is a cash errand at Colombian prices. The rural transfer and the flight home are the real numbers.", tone: "teal" },
+          p: [
+            "Here is the honest, commission-costing sentence: <b>for a city trip, Colombia's routine medical costs are among the lowest we cover for the quality received</b>, and a consultation or a course of antibiotics is pocket-money territory.",
+            "The bills that stay big are the transfer and the tail: the <b>ride from a remote region to a city hospital</b>, the admission behind a cash-first desk, and the <b>flight home</b> in the bad case, which is why the US government's advice for Colombia specifically names evacuation cover. Point any policy there first, and for pesos, cards and ATMs, see the <a href='/colombia/cash-or-card'>Colombia cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How good are hospitals in Colombia?", a: "In Bogota, Medellin and Cali, genuinely good: internationally accredited institutions that rank among Latin America's best. Rural care can fall below US standards, which is why the serious remote case travels to a city." },
+        { q: "Do Colombian doctors and hospitals take credit cards?", a: "Not reliably. The State Department notes most providers only accept cash and card payment is not always available. Big private hospitals' international desks take cards; the clinic tier often does not." },
+        { q: "Is medical care expensive in Colombia?", a: "For a visitor paying out of pocket in the cities, no: prices are Colombian, and the quality-for-price is among the best we cover. We publish no figure because none was verified against a provider's own published tariff." },
+        { q: "Is cosmetic surgery in Colombia safe?", a: "The State Department's warning is unusually direct: US citizens have suffered serious complications and died from elective procedures here, and malpractice recourse is limited. If you go, vet the surgeon and facility exhaustively and carry specialised cover; holiday logic does not apply." },
+        { q: "What is the emergency number in Colombia?", a: "123, nationwide, for all emergencies. In remote areas, response thins out, and moving toward a city is part of the emergency plan, which is what evacuation cover exists for." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Colombia country information, health section, on cash-only providers, card unavailability, rural standards, the evacuation-insurance recommendation and elective-surgery deaths", url: "https://travel.state.gov/en/international-travel/travel-advisories/colombia.html", type: "gov" }
+        ],
+        judgment: "The structural claims, cash-first providers, unreliable card acceptance, adequate facilities with rural standards below US levels, the strong evacuation-cover recommendation and the elective-surgery warning, are the State Department's own statements. The city-quality characterisation rests on the international accreditation and rankings of the major Bogota, Medellin and Cali institutions. The affordability judgment is ours, qualitative by policy: no peso figure appears because none was verified against a provider's own tariff this pass. Checked August 2026."
+      }
     }
   ]
 };

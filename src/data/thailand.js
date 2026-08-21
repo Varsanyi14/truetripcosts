@@ -597,6 +597,81 @@ export default {
         ],
         judgment: "Checked Aug 2026. Thailand is a rare case where both options we could point you at are cheap, so this page picks on practicalities rather than manufacturing a price verdict. Tourist SIM contents move with promotions and the airport boards change, so the 9 to 18 dollar range is the current shape of the offer rather than a fixed product. The network reach ranking is the desk's read from operator footprints and consistent traveler accounts, and it only matters once you leave the cities and the main resorts."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "routineAffordable",
+      exposureQuote: "everyday care is walk-in, quick and inexpensive, and most visitors simply pay for it",
+      glance: [
+        { k: "Everyday care", v: "Walk-in and inexpensive" },
+        { k: "Before admission", v: "A deposit or a guarantee" },
+        { k: "Flagship private", v: "Western-sized invoices" },
+        { k: "Serious and remote", v: "The flight to Bangkok" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Thailand: cheap clinics, and a guarantee at the ward door",
+      description: "Thailand's everyday medicine is walk-in, quick and cheap. The line to learn is the UK government's: all hospitals require a guarantee of payment before treating, and the flagship private hospitals mean it, in deposits.",
+      h1: "What does getting sick in Thailand cost a visitor?",
+      lede: "Thailand runs two medical realities at once. The everyday one is a walk-in clinic that fixes you for pocket money. The serious one is a world-class private hospital that wants to know, before the ward door opens, exactly how the bill gets paid.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Thailand's universal coverage schemes are for Thais, and a visitor pays at every tier, so the shape of your bill depends entirely on which tier you touch. At the bottom, everyday care is walk-in, quick and inexpensive, and most visitors simply pay for it: the clinic, the pharmacy, the public outpatient window. At the top sit the <b>flagship private hospitals</b>, the Bumrungrad and Bangkok Hospital tier, which are genuinely world-class and invoice accordingly. The rule that spans both is the one the UK government states flatly: <b>all hospitals require a guarantee of payment before treating patients</b>. In practice that means the big private groups take a <b>deposit or an insurer's guarantee letter before admission</b>, and keep the meter visible. Islands and rural provinces add the last twist: the serious case flies to <b>Bangkok</b>.",
+      insurance: true,
+      insuranceNote: "The honest Thai read is two-speed, and we will not flatten it to sell cover. The everyday tier is cheap enough that most visitors just pay, and if your trip stays in that tier, a policy earns little. What changes the math is the admission: the flagship private hospitals bill at rates a US invoice reader would recognise and want a deposit or a guarantee letter first, and an island emergency adds a flight to Bangkok before anything else. If you carry cover for Thailand, what matters is direct billing and a fast guarantee of payment, plus the evacuation limit. Faye covers trip medical and evacuation.",
+      careFirst: "If it is serious, get to a hospital; call 1669 for an ambulance and let the guarantee paperwork chase you.",
+      sections: [
+        {
+          h: "The everyday tier is the cheap tier",
+          icon: "cash",
+          key: { tag: "Walk-in Thailand", text: "Clinics, pharmacies and public outpatient windows fix the ordinary problems fast, for amounts most travelers just pay.", tone: "teal" },
+          p: [
+            "For the stomach, the scooter graze, the ear infection, Thailand is one of the easiest places on earth to be a sick foreigner. <b>Clinics sit on every commercial street</b>, pharmacies dispense far more than their US counterparts, and public hospital outpatient windows see walk-ins all day. You will be seen quickly and the receipt will be small.",
+            "That tier is why our honest call for Thailand is proportionate rather than alarmed. Most travelers' medical stories here end at a clinic counter, paid in baht, no claim ever filed."
+          ]
+        },
+        {
+          h: "The guarantee-of-payment culture",
+          icon: "receipt",
+          key: { tag: "The stated rule", text: "All hospitals require a guarantee of payment before treating patients, and the private groups formalise it as a deposit or insurer letter before admission.", tone: "teal" },
+          p: [
+            "The UK Foreign Office states the Thai rule in one line: <b>all hospitals require a guarantee of payment before treating patients</b>. At the everyday tier that just means you pay at the window. At the admission tier it becomes formal: the major private groups publish their practice of taking a <b>deposit sized to the estimated bill</b>, or an <b>insurer's guarantee-of-payment letter</b>, before the ward door opens, with self-payers topping the deposit up as treatment runs.",
+            "If it is serious, get to a hospital; call 1669 for an ambulance and let the guarantee paperwork chase you. Emergency stabilisation is not held hostage. What the paperwork decides is everything after stabilisation, which is why an insurer that answers its phone and issues guarantees fast is worth more here than a high coverage number on paper."
+          ]
+        },
+        {
+          h: "Two price books, one country",
+          icon: "alert",
+          key: { tag: "Know your tier", text: "Public and clinic care is priced for Thailand. The flagship private hospitals are priced like the international product they are.", tone: "teal" },
+          p: [
+            "Thailand's medical fame runs on its top tier, and it deserves the fame: the <b>flagship Bangkok private hospitals</b> are hotel-smooth, internationally accredited, and staffed by doctors the region flies in to see. They are also priced like what they are, an international product, and their invoices would not look small on a US desk, merely smaller.",
+            "The UK guidance adds the other half: <b>public hospitals and clinics do not always meet UK standards, particularly outside Bangkok</b>. So the honest map is a choice of price books: Thai prices for Thai-tier care almost everywhere, international prices for international-tier care in the big cities. Knowing which book you are opening is most of the financial skill."
+          ]
+        },
+        {
+          h: "Islands, and what is still worth covering",
+          icon: "plane",
+          key: { tag: "The Bangkok flight", text: "Serious cases in the islands and provinces move to Bangkok. That flight, plus a flagship admission, is where cover earns its keep.", tone: "teal" },
+          p: [
+            "The last Thai twist is geographic. The islands and rural provinces that hold most of the holiday carry clinic-tier and provincial-tier care; the <b>genuinely serious case moves to Bangkok</b>, by road, boat or air ambulance, before the real treatment begins. That ride is a bill of its own, and it comes first.",
+            "So the two numbers worth checking on any Thai policy are <b>evacuation</b> and <b>direct billing</b>: whether it funds the flight, and whether it can put a guarantee letter in a hospital's hands fast enough to open the ward without your card. For the baht mechanics, see the <a href='/thailand/cash-or-card'>Thailand cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare cheap in Thailand for tourists?", a: "At the everyday tier, yes: clinics, pharmacies and public outpatient care are walk-in, quick and inexpensive, and most visitors simply pay. The flagship private hospitals are a different product at different prices." },
+        { q: "Do Thai hospitals require payment before treatment?", a: "The UK government states it flatly: all hospitals require a guarantee of payment before treating patients. In practice the big private groups take a deposit or an insurer's guarantee letter before admission; emergency stabilisation itself is not withheld." },
+        { q: "How much deposit do Thai private hospitals ask for?", a: "The major groups publish deposit practices sized to the estimated bill, topped up as treatment runs, and waived when an insurer's guarantee-of-payment letter lands. We publish no figure because the amounts are set per hospital and per case." },
+        { q: "What happens in a medical emergency on a Thai island?", a: "Stabilisation locally, then the serious case moves to Bangkok by road, boat or air ambulance, at your cost before the hospital bill begins. That flight is the single best reason to check a policy's evacuation line." },
+        { q: "What is the ambulance number in Thailand?", a: "1669 nationwide for medical emergencies, or 191 for general emergencies. At the big private hospitals, calling the hospital's own emergency line often gets the faster ambulance." }
+      ],
+      sources: {
+        links: [
+          { label: "UK Foreign Office travel advice for Thailand, health section: all hospitals require a guarantee of payment before treating patients; public care outside Bangkok varies", url: "https://www.gov.uk/foreign-travel-advice/thailand/health", type: "gov" },
+          { label: "US State Department: Thailand country information, health and insurance guidance for travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Thailand.html", type: "gov" }
+        ],
+        judgment: "The guarantee-of-payment rule is the UK government's own sentence, and the deposit-or-guarantee practice before private admission is published by the major hospital groups themselves; we state the practice and deliberately not the amounts, which are set per hospital and per case. The two-tier price description and the Bangkok-transfer shape are consistent across government guidance and the hospitals' own patient information. No baht figure appears because none was verified against a hospital's or ministry's published tariff this pass, and Thai hospital-published price lists are among the most promising sources for retiring that omission later. Checked August 2026."
+      }
     }
   ]
 };

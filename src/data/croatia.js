@@ -659,6 +659,81 @@ export default {
         ],
         judgment: "Checked Aug 2026. The ferry point is the honest headline and no data plan fixes it. The seasonal-timetable warning is included because it is the practical reason a Croatian island trip goes wrong, and it is a downloading habit rather than a purchase. Coverage reads are the desk's from operator footprints and traveler accounts. Carrier figures are an Aug 2026 snapshot."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "routineAffordable",
+      exposureQuote: "In season the coast runs marked tourist clinics, and the prices they charge are Croatian.",
+      glance: [
+        { k: "Summer coast", v: "Marked tourist clinics" },
+        { k: "Hospitals", v: "State-run, bill visitors" },
+        { k: "On the islands", v: "Small cases only" },
+        { k: "Prices", v: "Croatian, not American" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Croatia: tourist clinics on the coast, Croatian prices",
+      description: "Croatia stands up marked tourist clinics along the coast and islands every summer, contracted to the national insurer. The serious case still travels to the mainland, and hospital care is state-run and billed to visitors.",
+      h1: "What does getting sick in Croatia cost a visitor?",
+      lede: "Croatia does something almost charming with its summer crowds: it stands up marked tourist clinics along the coast and islands, under the national health insurer, timed to the season. That is the everyday answer. The serious answer still involves a boat.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Croatia's public insurance is for residents and EU card holders, and a US visitor is billed for care. The state has, however, built a lane for exactly the person reading this page: every summer the health authorities stand up <b>tourist clinics at dozens of coastal and island locations</b>, contracted to the national insurer HZZO, <b>clearly marked</b> and running through the end of September. In season the coast runs marked tourist clinics, and the prices they charge are Croatian. Above that lane, <b>hospital-based care is only available through government institutions</b>, per the State Department, and it bills visitors. The geography does the rest: islands carry clinics and small cases, and a serious case <b>moves to the mainland</b>, to Split, Rijeka or Zagreb, with the ride part of the bill.",
+      insurance: true,
+      insuranceNote: "The honest Croatian read is seasonal and calm: in summer, the state literally builds a clinic lane for tourists, everyday prices are Croatian, and a minor problem on the Riviera is an errand, not an event, which we would rather tell you than dramatise. What earns cover here is the island geometry: the serious case travels to a mainland hospital, and the transfer plus a real admission are the two Croatian bills that get big. Check the medical transport line of any policy before the outpatient one. Faye covers trip medical and evacuation.",
+      careFirst: "If it is serious, call 112 and move; treatment comes first and the paying comes after.",
+      sections: [
+        {
+          h: "The summer clinic lane",
+          icon: "tag",
+          key: { tag: "Built for tourists", text: "Every season Croatia stands up marked tourist clinics along the coast and islands, contracted to the national insurer, into late September.", tone: "teal" },
+          p: [
+            "Croatia's health ministry does something few countries bother with: each summer it organises <b>tourist clinics</b>, dozens of them, across the coastal counties and out on islands like Brac and Hvar, staffed under contract to the national insurer <b>HZZO</b> and, in the ministry's own words, <b>clearly marked for visibility</b>, running to the end of September.",
+            "For the everyday holiday problem, the ear infection, the sea-urchin foot, the fever, that marked door is your door. You will be seen quickly, billed as a visitor, and the number on the receipt will be a Croatian one."
+          ]
+        },
+        {
+          h: "Hospitals are the state's, and they bill",
+          icon: "receipt",
+          key: { tag: "Above the clinic", text: "Hospital care runs through government institutions, which treat first and bill a non-EU visitor for the care.", tone: "teal" },
+          p: [
+            "Above the clinic tier, the State Department notes a Croatian structural fact: <b>hospital-based care is only available through government institutions</b>. The private sector here does clinics, dentistry and elective work, not the emergency ward, so the serious case lands in a state hospital regardless of your budget.",
+            "Those hospitals treat first. If it is serious, call 112 and move; treatment comes first and the paying comes after. A non-EU visitor is then billed for the care, and providers on the ground may expect cash sooner than an American assumes, so keep the receipts and the assistance number together."
+          ]
+        },
+        {
+          h: "The island geometry",
+          icon: "plane",
+          key: { tag: "The real exposure", text: "Islands handle small cases. The serious one travels to Split, Rijeka or Zagreb, and the ride is part of the bill.", tone: "teal" },
+          p: [
+            "Croatia's thousand islands are the trip, and they are also the constraint. Island facilities, tourist clinics included, exist for the <b>small and the stabilisable</b>. The genuinely serious case, the cardiac event, the bad dive, the moped, moves to a mainland centre, by ferry, speedboat or helicopter, toward <b>Split, Rijeka or Zagreb</b>.",
+            "That ride is the distinctly Croatian line on the bill, and it is the line a policy's <b>medical transport benefit</b> exists for. If your itinerary is Hvar and Vis rather than the Zagreb museums, read that line before the outpatient one."
+          ]
+        },
+        {
+          h: "What is still worth covering",
+          icon: "alert",
+          key: { tag: "Proportion", text: "Everyday coastal care is built for you and priced locally. The transfer and the admission are the bills that stay big.", tone: "teal" },
+          p: [
+            "Here is the honest, commission-costing sentence: on a normal Croatian holiday, <b>the everyday medical side is about as traveler-friendly as Europe gets</b>, a marked clinic lane in season, Croatian prices, competent doctors with long trauma experience.",
+            "The bills that stay big are the pair the islands create: the <b>transfer to the mainland</b> and the <b>admission</b> that follows, plus the flight home in the worst case. Point cover there, and for the kuna-era-to-euro money mechanics on the ground, see the <a href='/croatia/cash-or-card'>Croatia cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Are there special clinics for tourists in Croatia?", a: "Yes. Each summer the health authorities stand up clearly marked tourist clinics at dozens of coastal and island locations, contracted to the national insurer HZZO, typically running to the end of September." },
+        { q: "Is healthcare free for tourists in Croatia?", a: "No. Public insurance is for residents and EU card holders; a US visitor is treated first and billed, at Croatian rates, with cash sometimes expected on the ground." },
+        { q: "What happens if I get seriously ill on a Croatian island?", a: "You move. Islands handle small and stabilisable cases; the serious one transfers to Split, Rijeka or Zagreb by boat or helicopter, and that ride is part of your bill, which is what a policy's transport benefit is for." },
+        { q: "Are Croatian hospitals private or public?", a: "Hospital-based care runs through government institutions, per the State Department. The private sector does clinics and elective work, so the emergency ward is the state's regardless of your budget." },
+        { q: "What is the emergency number in Croatia?", a: "112, nationwide, with English available. Treatment comes first and the paying comes after, and on an island the clinic and the harbourmaster both know the evacuation drill." }
+      ],
+      sources: {
+        links: [
+          { label: "Croatian Ministry of Tourism: announcement of HZZO-contracted, clearly marked tourist clinics operating at coastal and island locations through the season", url: "https://mint.gov.hr/news-11455/tourists-can-get-health-services-at-36-locations-along-coast/23914", type: "gov" },
+          { label: "US State Department: Croatia country information, health section, including hospital care running through government institutions", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Croatia.html", type: "gov" }
+        ],
+        judgment: "The tourist-clinic lane is the Croatian government's own announced arrangement, and the state-hospital structure is the State Department's statement. The island-transfer shape is geography plus how Croatian emergency medicine is organised, stated qualitatively. The clinic counts and season dates vary year to year, so we describe the arrangement rather than fixing this year's numbers, and no price figure appears because none was verified against an official tariff. Checked August 2026."
+      }
     }
   ]
 };

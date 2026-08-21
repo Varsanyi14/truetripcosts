@@ -512,6 +512,80 @@ export default {
         ],
         judgment: "The flat-tire theft setup, the advice to change money at banks rather than street changers, the key fob signal blockers and the financial precautions all come from US Embassy San Jose guidance and its November 2025 security alert. The 10 to 25 dollars a day for mandatory liability cover is a typical 2026 range across rental companies, not a fixed tariff, and it varies by vehicle; the legal requirement itself is not in doubt. The 5 to 10 percent currency gap is our own estimate of the spread merchants apply when you pay in the other currency, not an official figure. Checked August 2026."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "routineAffordable",
+      exposureQuote: "In San Jose the private hospitals are excellent, and the prices are Costa Rican rather than American.",
+      glance: [
+        { k: "San Jose private", v: "Excellent, local prices" },
+        { k: "At the desk", v: "Payment or proof first" },
+        { k: "Beach towns", v: "Clinics, then a transfer" },
+        { k: "Ambulances", v: "Basic outside the capital" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Costa Rica: excellent in San Jose, far from the beach",
+      description: "Costa Rica's private hospitals in San Jose are excellent and priced locally, and they want payment or proof of insurance before the work starts. The catch is distance: the beaches this country sells are a long ride from that care.",
+      h1: "What does getting sick in Costa Rica cost a visitor?",
+      lede: "Costa Rica's medical story is a geography story. In San Jose the care is excellent and priced for Costa Rica. On the beaches and in the rainforest, where your trip actually is, the answer to anything serious is a ride back toward the capital.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Costa Rica's public <b>Caja</b> is for residents, so a visitor's realistic lane is private, and it is a good lane: In San Jose the private hospitals are excellent, and the prices are Costa Rican rather than American. The desk culture is pay-first, in the State Department's words: hospitals and doctors <b>often need payment up front before service or admission</b>, and private hospitals usually want <b>payment or proof of insurance before treating you</b>. The real Costa Rican variable is distance. <b>Outside San Jose, services may be limited</b>, some facilities <b>lack basic equipment</b>, and <b>ambulances may not carry the advanced kit</b> you would assume, so the serious case in Guanacaste, on the Caribbean coast or down the Osa Peninsula travels, by road or air, back toward the capital's hospitals.",
+      insurance: true,
+      insuranceNote: "The honest Costa Rican read is proportionate: the private consultation in San Jose is priced for Costa Rica, quality at the top is genuinely high, and the routine problem is not the financial risk here, which we would rather say plainly than imply otherwise. The risk with a Costa Rican shape is the ride: the surf coasts and rainforest lodges are hours from the hospitals that handle the serious case, and that transfer plus a pay-first admission are what cover is for. Check the medical transport and evacuation lines before the outpatient benefit. Faye covers trip medical and evacuation.",
+      careFirst: "If it is serious, call 911 and start moving toward San Jose-grade care; the front desk can be argued with after.",
+      sections: [
+        {
+          h: "The San Jose tier",
+          icon: "receipt",
+          key: { tag: "Where the care is", text: "The capital's private hospitals are excellent, internationally affiliated and priced for Costa Rica, and they are where serious medicine happens.", tone: "teal" },
+          p: [
+            "Costa Rica's serious medicine lives in and around <b>San Jose</b>, in a private tier, the CIMA and Clinica Biblica class, that is internationally affiliated, English-capable and accustomed to foreign patients, alongside the public system's own national hospitals. The State Department's summary is simple: in San Jose, care is usually good; outside it, services may be limited.",
+            "For a visitor the practical meaning is that the private consultation, the scan, the small procedure are all available at Costa Rican prices in the capital, quickly. The question this page keeps returning to is how far from that capital your trip has taken you."
+          ]
+        },
+        {
+          h: "Payment or proof, before",
+          icon: "cash",
+          key: { tag: "The desk culture", text: "Hospitals and doctors often need payment up front before service or admission, and private hospitals want payment or proof of insurance first.", tone: "teal" },
+          p: [
+            "The money mechanics are stated ones: hospitals and doctors here <b>often need payment up front, before service or admission</b>, and private hospitals usually want <b>payment or proof of insurance before treating you</b>. It is the standard Latin American private-sector handshake: show how the bill gets paid, then the work starts.",
+            "If it is serious, call 911 and start moving toward San Jose-grade care; the front desk can be argued with after. For the planned and the minor, arrive with a working card and your policy's assistance number, because a guarantee of payment from an insurer opens the same doors your card would."
+          ]
+        },
+        {
+          h: "The distance problem",
+          icon: "plane",
+          key: { tag: "The Costa Rican exposure", text: "The beaches and rainforest are hours from serious care, ambulances can be basic, and the bad case rides or flies to the capital.", tone: "teal" },
+          p: [
+            "Costa Rica sells its edges: the Pacific surf towns, the Caribbean coast, the Osa rainforest. Its serious hospitals are in the middle. The State Department fills in the rest: outside the capital services may be limited, <b>some facilities lack basic medical equipment</b>, and <b>ambulances might not carry advanced emergency kit</b>. In public hospitals, overnight staffing runs lean enough that having a family member stay is the recommended move.",
+            "So the genuinely Costa Rican medical bill is the <b>transfer</b>: the road or air ride from a beach town to a San Jose hospital, before treatment proper begins. If your itinerary is Nosara and Puerto Viejo rather than the capital, that line on a policy matters more than any other."
+          ]
+        },
+        {
+          h: "What is still worth covering",
+          icon: "tag",
+          key: { tag: "Proportion", text: "Routine care is priced for Costa Rica. The transfer from the coast and the pay-first admission are the bills that stay big.", tone: "teal" },
+          p: [
+            "Here is the honest, commission-costing sentence: <b>the routine medical side of Costa Rica is affordable and good</b>, which is exactly why the country runs a thriving medical and dental tourism trade in the other direction.",
+            "The bills that stay big are the pair the geography creates: the <b>ride to the capital</b> and the <b>admission that wants payment or proof first</b>, plus the flight home in the worst case. Point cover at those, and for cards, cash and colones on the ground, see the <a href='/costa-rica/cash-or-card'>Costa Rica cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Can tourists use Costa Rica's public healthcare?", a: "The Caja is for residents. A visitor's realistic lane is private care, which in San Jose is excellent and priced for Costa Rica, or the public emergency room for the genuinely urgent, billed after." },
+        { q: "Do Costa Rican hospitals require payment upfront?", a: "Often, yes: the State Department notes payment up front before service or admission is common, and private hospitals usually want payment or proof of insurance before treating you. An insurer's guarantee substitutes for your card." },
+        { q: "What happens if I get hurt at a beach town in Costa Rica?", a: "Clinics handle the small and stabilise the serious, and the serious case then travels to San Jose by road or air, at your cost, before real treatment begins. That transfer is the most Costa Rican line on any medical bill." },
+        { q: "Are ambulances good in Costa Rica?", a: "In the capital, adequate; elsewhere the State Department warns they may lack advanced equipment. For anything grave in a remote area, moving toward San Jose matters as much as the first response." },
+        { q: "What is the emergency number in Costa Rica?", a: "911, nationwide, same as home. English-speaking operators are common, and the system will route you toward the capital's hospitals when it is serious." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Costa Rica country information, health section, on upfront payment, private payment-or-proof, limited services outside San Jose, equipment gaps and basic ambulances", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/CostaRica.html", type: "gov" }
+        ],
+        judgment: "The structural claims, payment up front, payment or proof before private treatment, capital-versus-coast quality, equipment gaps and ambulance limitations, are the State Department's own statements. The judgment that private prices are Costa Rican rather than American is ours, made qualitatively and consistent with the country's inbound medical-tourism trade; no colones or dollar figure appears because none was verified against a hospital's own published tariff this pass. Checked August 2026."
+      }
     }
   ],
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 2 },

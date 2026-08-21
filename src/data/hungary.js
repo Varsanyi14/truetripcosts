@@ -595,6 +595,81 @@ export default {
         ],
         judgment: "Checked Aug 2026. Another deliberately short spoke: Hungarian coverage is excellent, prepaid data is cheap, and there is no registration quirk or signal gap worth a paragraph, so the page says so and stops. The local SIM is cheaper than the eSIM we earn on and the page states it. No SIM registration requirement is named because we could not confirm one to our own standard, and a wrong paperwork warning is a real harm."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "routineAffordable",
+      exposureQuote: "you are treated first and billed after, and the bill that follows is a Hungarian one",
+      glance: [
+        { k: "Emergency room", v: "Treats first, bills later" },
+        { k: "Payment", v: "Cash on completion is normal" },
+        { k: "Budapest", v: "Private clinics built for foreigners" },
+        { k: "The tell", v: "Austrians come here for care" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Hungary: treated first, billed in forints",
+      description: "Hungary treats everyone's emergency first, tourists included, and bills after, in cash and in forints. The price tell is that Austrians and Germans have crossed the border for Hungarian care for forty years.",
+      h1: "What does getting sick in Hungary cost a visitor?",
+      lede: "Hungary's emergency rooms treat everyone first, tourists included, and settle up afterwards. The tell about what settling up costs is who else is in the waiting room: Austrians and Germans who crossed a border to be treated here on purpose.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Hungary's state system belongs to residents and EU card holders, but the State Department states the visitor's sequence plainly: <b>everyone is entitled to emergency care, tourists included, and the bill arrives afterwards</b>. In our words: you are treated first and billed after, and the bill that follows is a Hungarian one. For everything short of an emergency you pay out of pocket, and the US Embassy in Budapest describes the mechanics: doctors and hospitals generally require <b>payment in cash upon completion</b> of services. The price level has a forty-year tell: Hungary is the country <b>Austrians and Germans cross a border into for dental and medical care</b>, which is not a thing people do toward expensive medicine. Budapest adds a lane built for you: <b>private clinics run for foreigners</b>, English-first, card-friendly, walk-in.",
+      insurance: true,
+      insuranceNote: "The honest Hungarian read is gentle: emergencies are treated first, everyday care is priced for a country that exports affordable medicine to its richer neighbours, and a clinic visit here should not frighten anyone, which we would rather say than lean on the link below. What earns cover is the same short list as everywhere: a long admission, billed even at Hungarian rates, and a medically supervised flight home. Check the evacuation limit, and keep receipts, since cash on completion is the local rhythm. Faye covers trip medical and evacuation.",
+      careFirst: "If it is serious, call 112; you will be treated first and billed after, like everyone else.",
+      sections: [
+        {
+          h: "Treated first, tourists included",
+          icon: "receipt",
+          key: { tag: "The stated sequence", text: "Everyone gets emergency care first, tourists included; the bill follows. Non-emergency care is out of pocket.", tone: "teal" },
+          p: [
+            "The State Department's Hungary page states the emergency rule in a sentence most countries make you infer: <b>everyone is entitled to emergency care, including tourists</b>, and you should <b>expect to receive a bill later</b>. If it is serious, call 112; you will be treated first and billed after, like everyone else.",
+            "Outside the emergency door, the rule flips to pay-your-way: <b>non-emergency care is out of pocket</b> for a visitor, at the point of service. The next two sections are about what that pocket money looks like and where to hand it over."
+          ]
+        },
+        {
+          h: "Cash on completion",
+          icon: "cash",
+          key: { tag: "The mechanics", text: "Doctors and hospitals generally require payment in cash when the service is done. Forints, receipt, done.", tone: "teal" },
+          p: [
+            "The US Embassy in Budapest describes the payment culture in one line: doctors and hospitals here <b>generally require payment in cash upon completion of services rendered</b>. Not a deposit before, not an invoice weeks later: forints at the desk when the work is done. Private clinics increasingly take cards; the habit underneath is still cash.",
+            "One cultural note so you do not misread the room: Hungary's old custom of slipping doctors <b>gratitude money</b>, the infamous halapenz, was <b>banned outright in 2021</b>. Nobody is waiting for an envelope, and offering one now insults people and breaks the law. The cash Hungary wants from you is the printed bill, nothing folded."
+          ]
+        },
+        {
+          h: "Budapest's foreigner clinics, and the dental tell",
+          icon: "tag",
+          key: { tag: "The price level", text: "Budapest runs private clinics built for foreigners, in the country Austrians and Germans visit on purpose for affordable care.", tone: "teal" },
+          p: [
+            "Budapest has a private tier that exists because of people like you: <b>English-first clinics built for foreigners</b>, walk-in or same-day, card terminals on the desk, prices posted. For anything short of an emergency, that lane turns a medical worry into an appointment.",
+            "And the price level has the best kind of evidence: behaviour. For some forty years, <b>Austrians and Germans have crossed the border into Hungary for dental and medical care</b>, a trade that only flows toward the cheaper, competent side of a border. When your neighbours are richer and still drive to you for treatment, the tariff is telling the truth about itself."
+          ]
+        },
+        {
+          h: "What is still worth covering",
+          icon: "plane",
+          key: { tag: "Proportion", text: "The everyday side is priced for Hungary. The long admission and the flight home stay the two real numbers.", tone: "teal" },
+          p: [
+            "Here is the sentence that costs us commission: for a normal trip, <b>Hungary sits among Europe's least financially risky places to need a doctor</b>. The emergency room treats first, the everyday tariff is Hungarian, and the medical-tourism trade in the opposite direction says what needs saying.",
+            "The two costs that stay big are the usual pair: a <b>long admission</b>, real money even in forints, and a <b>medically supervised flight home</b>. Point cover there, check the evacuation line first, and for the forint mechanics see the <a href='/hungary/cash-or-card'>Hungary cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Will a Hungarian hospital treat a tourist in an emergency?", a: "Yes, and the State Department says so plainly: everyone is entitled to emergency care, tourists included, with the bill following afterwards. Non-emergency care is out of pocket at the point of service." },
+        { q: "How do I pay for a doctor in Hungary?", a: "Generally in cash, in forints, when the service is complete, per the US Embassy's own description. Private clinics in Budapest increasingly take cards. Always take the printed receipt for any claim." },
+        { q: "Is Hungarian healthcare cheap for foreigners?", a: "Priced for Hungary, yes, and the best evidence is behavioural: Austrians and Germans have crossed the border for Hungarian dental and medical care for decades. We publish no figure because we verified none against an official tariff." },
+        { q: "Should I tip a Hungarian doctor or nurse?", a: "No. The old gratitude-money custom, halapenz, was banned outright in 2021. Offering cash to staff now is both illegal and insulting. The only money Hungarian medicine wants from you is the bill itself." },
+        { q: "What is the emergency number in Hungary?", a: "112, with English-capable operators; 104 is the traditional ambulance line. Treatment comes first, the bill later, like everyone else in the room." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Hungary country information, health section, on emergency care for everyone including tourists, with billing to follow", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Hungary.html", type: "gov" },
+          { label: "US Embassy in Hungary: medical assistance page, on payment in cash upon completion of services", url: "https://hu.usembassy.gov/medical-assistance/", type: "gov" }
+        ],
+        judgment: "The treated-first rule and the cash-on-completion mechanics are the State Department's and the US Embassy's own statements. The 2021 ban on gratitude money is settled Hungarian law and widely documented. The price-level claim is deliberately behavioural rather than numerical, the long-running Austrian and German care trade into Hungary, because no forint figure was verified against an official tariff this pass, and a borrowed number on a medical page is exactly what this site refuses to print. Checked August 2026."
+      }
     }
   ]
 };

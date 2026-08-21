@@ -595,6 +595,80 @@ export default {
         ],
         judgment: "Checked Aug 2026. The load-bearing point is the one that costs us a commission: Polish prepaid is cheap enough, and EU roaming broad enough, that one starter bought in Krakow can cover a multi-country European trip for less than an eSIM would cost for a single leg. The fair-use policy attached to EU roaming is aimed at people permanently roaming on a foreign SIM rather than a traveler on a three-week trip, so it is mentioned rather than dwelt on. Polish prepaid bundle sizes move with promotions, so the under-10-dollars figure is the current shape of the market."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "routineAffordable",
+      exposureQuote: "treatment is generally substantially less costly than in the United States, and it is paid for on the spot, often in cash",
+      glance: [
+        { k: "NFZ", v: "Poles and EU cards" },
+        { k: "A visitor", v: "Pays on the spot, often cash" },
+        { k: "City shortcut", v: "Private walk-in networks" },
+        { k: "Prices", v: "Substantially below US" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Poland: pay on the spot, at Polish prices",
+      description: "Poland bills visitors on the spot, often in cash, and the State Department's own phrase does the reassuring: treatment is generally substantially less costly than in the United States.",
+      h1: "What does getting sick in Poland cost a visitor?",
+      lede: "Poland's medical money culture is pay-as-you-go: cash before treatment is normal, and private hospitals want payment or proof before admitting. The reassurance comes from the US government's own phrasing about what those payments amount to.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Poland's <b>NFZ</b> covers Poles and EU card holders, and a US visitor pays their own way. The State Department describes both halves of that in one breath: treatment is generally substantially less costly than in the United States, and it is paid for on the spot, often in cash. <b>Doctors and hospitals often expect cash payment prior to treatment</b>, <b>private hospitals usually require advance payment or proof of adequate insurance before admitting</b>, and, as in Greece, <b>patients bear all costs for transfer between hospitals</b>. The practical shortcut in the cities is the <b>private walk-in networks</b>, the LuxMed and Medicover tier, where an English-speaking appointment is a same-week affair paid at a Polish price. Emergencies go through <b>112</b> or <b>999</b> and are treated first.",
+      insurance: true,
+      insuranceNote: "We will give you the honest Polish read: routine care here is substantially cheaper than at home, in the US government's own words, and a clinic visit is not a financial event, so do not buy a policy because this page scared you. It should not have. What earns cover is the long admission, paid as you go, and a medically supervised flight home from Central Europe. If you carry a policy, know its assistance number, because in a pay-first culture the insurer's phone call is what replaces your cash. Faye covers trip medical and evacuation.",
+      careFirst: "If it is serious, call 112; Polish emergency care treats first and invoices after.",
+      sections: [
+        {
+          h: "Pay-as-you-go, in złoty",
+          icon: "cash",
+          key: { tag: "The culture", text: "Cash before treatment is normal, private hospitals want payment or proof before admitting, and the amounts are Polish-sized.", tone: "teal" },
+          p: [
+            "The Polish medical money culture is unusually literal. The State Department's country page says doctors and hospitals <b>often expect cash payment prior to treatment</b>, and that private hospitals usually require <b>advance payment or proof of adequate insurance before admitting</b> a patient. You pay, then you are seen, or you show how the bill will be paid, then you are admitted.",
+            "What makes that workable rather than frightening is the same page's other clause: medication and treatment are generally <b>substantially less costly than in the United States</b>. If it is serious, call 112; Polish emergency care treats first and invoices after. The pay-first culture governs the scheduled and the minor, not the ambulance."
+          ]
+        },
+        {
+          h: "The walk-in networks are the visitor's lane",
+          icon: "phoneok",
+          key: { tag: "City shortcut", text: "Private clinic networks across Polish cities sell same-week, often same-day appointments with English-speaking doctors at posted prices.", tone: "teal" },
+          p: [
+            "Poland's cities run dense <b>private clinic networks</b>, the LuxMed and Medicover tier and their local competitors, built for people who do not want to queue in the public system. For a visitor they are the obvious lane: walk-in or same-week appointments, younger doctors who trained in English, card terminals at the desk, posted prices.",
+            "A public hospital remains the right answer for the genuinely serious. For everything else that ails a traveler, the private network turns getting seen in Poland into an errand, priced accordingly."
+          ]
+        },
+        {
+          h: "Two clauses worth knowing before the ward",
+          icon: "alert",
+          key: { tag: "Fine print", text: "Transfers between hospitals are at the patient's cost, and outside the big cities emergency services thin out.", tone: "teal" },
+          p: [
+            "Two State Department clauses earn a place in your head. First, <b>patients bear all costs for transfer to or between hospitals</b>, the same rule that shapes our Greece page: if your case moves from a district hospital to a Warsaw or Kraków centre, the ride is your line item. Second, <b>emergency services may be lacking in small towns and rural areas</b>, so the further you are from a city, the more the first hour depends on getting yourself toward one.",
+            "Neither changes the fundamentals of an inexpensive, competent system. Both belong in the plan for anyone hiking the Tatras or driving the Mazurian lakes rather than staying central."
+          ]
+        },
+        {
+          h: "What is still worth covering",
+          icon: "plane",
+          key: { tag: "Proportion", text: "Routine care is a non-event financially. The long admission and the flight home remain the two real numbers.", tone: "teal" },
+          p: [
+            "Here is the sentence that costs us commission: <b>Poland is one of the cheaper places in Europe for an American to need a doctor</b>, and the US government's own language, substantially less costly than in the United States, is doing the honest work on this page.",
+            "The two costs that do not shrink are the usual pair: a <b>long admission</b> paid as it happens, and a <b>medically supervised flight home</b>. Aim any cover there, check the evacuation limit and the transfer benefit, and for the złoty mechanics see the <a href='/poland/cash-or-card'>Poland cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare free for tourists in Poland?", a: "No. The NFZ covers Poles and EU card holders; a US visitor pays on the spot, often in cash, with private hospitals wanting advance payment or proof of insurance before admission." },
+        { q: "How expensive is a doctor in Poland for an American?", a: "The State Department's own phrase: generally substantially less costly than in the United States. We publish no figure because we did not verify one against an official tariff, but the direction is stated by the US government itself." },
+        { q: "Do Polish hospitals expect cash?", a: "Often, yes, prior to treatment for the scheduled and minor. Emergencies are treated first and billed after. City private networks take cards; keep receipts either way for any claim." },
+        { q: "Should I use public or private care in Poland?", a: "For anything short of an emergency, the private walk-in networks in the cities are the visitor's lane: fast, English-speaking, posted Polish prices. For the serious, 112 and the public emergency system." },
+        { q: "Who pays if I am transferred between Polish hospitals?", a: "You do. The State Department states patients bear all transfer costs, so a move from a district hospital to a major centre is your line item, and the clause a policy's transport benefit exists for." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Poland country information, health section, on cash prior to treatment, private advance payment, patient-paid transfers and treatment being substantially less costly than in the United States", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Poland.html", type: "gov" }
+        ],
+        judgment: "Every structural claim on this page, cash prior to treatment, advance payment or proof before private admission, patient-paid transfers, thinner rural emergency services and the comparative cost statement, is the State Department's own language about Poland. The characterisation of the private networks as the visitor's lane is ours, from their scale and consistent traveler use. No price figure appears because none was verified against an official Polish tariff this pass. Checked August 2026."
+      }
     }
   ]
 };

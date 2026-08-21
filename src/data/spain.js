@@ -844,6 +844,80 @@ export default {
         ],
         judgment: "That four operators compete and that a pass covers only the national one are matters of published fact, and they are the load-bearing part of this verdict. The surcharge a passholder pays to reserve is documented by specialists rather than promoted by the operator, and their estimates spread across roughly 10 to 35 euros by service and corridor, so we quote the commoner lower band and flag that it climbs. The 20 to 40 euro advance-fare range is a well-attested pattern on the competitive corridors, not a quoted price, and your route and date will move it. The card-payment problems on the national operator's site are widely and consistently reported by North American travelers rather than acknowledged by the operator, so we describe them as a known annoyance. Checked Aug 2026."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "routineAffordable",
+      exposureQuote: "The bill is real, and it is a Spanish bill rather than an American one.",
+      glance: [
+        { k: "Public system", v: "Bills non-EU visitors" },
+        { k: "Unpaid bill", v: "Can bar re-entry" },
+        { k: "First stop", v: "The green-cross farmacia" },
+        { k: "Everyday prices", v: "Spanish, not American" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Spain: a real bill, at Spanish prices",
+      description: "Spain treats emergencies first and bills visitors after, and an unpaid bill can bar you from coming back. The reassuring part: the bill is priced in Spain, and the pharmacy solves half of what goes wrong on a trip.",
+      h1: "What does getting sick in Spain cost a visitor?",
+      lede: "Spain is direct about this in a way few countries are: care is not free for visitors, even in a public hospital, and leaving a bill unpaid can bar your next trip in. The reassuring half of the story is what the bill actually looks like.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Spain's public system serves residents and EU card holders, and a US visitor is billed for care, <b>even in a public hospital</b>. The State Department adds a line almost no traveler expects: <b>lack of payment may bar future travel to Spain</b>, the same unpaid-bill consequence Japan and China attach. Emergencies are <b>stabilised first and billed after</b>, many providers <b>prefer or require cash</b>, and private hospitals typically want payment or proof of insurance before treating you. Now the calmer half. The bill is real, and it is a Spanish bill rather than an American one. Everyday medicine here is priced for Spain, the <b>green-cross farmacia</b> on every block handles a large share of what actually goes wrong on holiday, and private clinics in tourist areas see foreign walk-ins all day long.",
+      insurance: true,
+      insuranceNote: "Here is the sentence that costs us money: for a healthy traveler in urban Spain, the routine medical side is priced locally and is not the financial risk it would be at home, and we would rather tell you that than sell harder. What stays worth covering is the admission, which Spain does bill and expects to be paid, and a medically supervised flight home. If you carry cover, check the evacuation limit and carry the assistance number, since Spanish providers often want payment on the spot. Faye covers trip medical and evacuation.",
+      careFirst: "In a real emergency call 112; treatment comes first and the invoice finds you afterwards.",
+      sections: [
+        {
+          h: "Not free, and they mean it",
+          icon: "receipt",
+          key: { tag: "The stated rule", text: "Medical care is not free in Spain, even in a public facility, and an unpaid bill can bar future travel into the country.", tone: "teal" },
+          p: [
+            "The State Department's Spain page is unusually blunt: medical care is <b>not free in Spain</b>, you will incur expenses <b>even in a public healthcare facility</b>, and <b>lack of payment may bar future travel to Spain</b>. That last clause puts Spain in a small club with Japan and China, where a hospital bill left behind follows you to the border on your next trip.",
+            "In practice the sequence is humane. In a real emergency call 112; treatment comes first and the invoice finds you afterwards. A public hospital will stabilise you without a card check. What Spain will not do is forget the invoice, so treat it as a bill to resolve, not paperwork to outrun."
+          ]
+        },
+        {
+          h: "Farmacia first, clinic second",
+          icon: "cash",
+          key: { tag: "The everyday lane", text: "The green-cross pharmacy handles a large share of holiday ailments, and the walk-in private clinic handles most of the rest at Spanish prices.", tone: "teal" },
+          p: [
+            "For the things that actually go wrong on a Spanish holiday, the stomach, the sunburn, the infected mosquito bite, the first stop is the <b>farmacia</b> under the flashing green cross. Spanish pharmacists advise and dispense far more than their American counterparts are allowed to, and there is one within walking distance of nearly anywhere a tourist stands.",
+            "The step above that is a <b>private walk-in clinic</b>, which every coastal and city tourist zone has in quantity. You will pay at the desk, often in cash, and the price will be a Spanish one. This two-step lane is why most visitors' medical stories here end with a small receipt rather than an insurance claim."
+          ]
+        },
+        {
+          h: "How paying actually works",
+          icon: "atm",
+          key: { tag: "Mechanics", text: "Many providers want cash, private hospitals want payment or proof of insurance before treating, and reimbursement is your job afterwards.", tone: "teal" },
+          p: [
+            "Two mechanical facts to hold. First, the State Department notes that <b>most care providers only accept cash</b>, so the small clinic visit is a cash-machine errand as much as a medical one. Second, <b>private hospitals usually want payment or proof of insurance before treating you</b>, which is the standard European private-sector shape rather than anything sinister.",
+            "US health insurance is not accepted at the desk, and Medicare pays nothing here. Whatever you pay, collect the <b>factura</b>, the formal receipt, on the spot: it is the document any reimbursement will stand or fall on."
+          ]
+        },
+        {
+          h: "What is still worth covering",
+          icon: "plane",
+          key: { tag: "Proportion", text: "The routine side is priced for Spain. The admission and the flight home are the two costs that stay big.", tone: "teal" },
+          p: [
+            "Having told you the everyday lane is manageable, here is what does not shrink. A <b>hospital admission</b> is billed and expected to be paid, in a country that pursues the bill. And a <b>medically supervised flight home</b> from Iberia costs what it costs regardless of how reasonable the ward fee was.",
+            "So if you carry cover for Spain, point it at those two things and check the <b>evacuation limit</b> before the outpatient benefits. For the cash-machine and card side of all this, see the <a href='/spain/cash-or-card'>Spain cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare free for tourists in Spain?", a: "No. Care is billed even in public hospitals, and the State Department warns that an unpaid medical bill can bar future travel to Spain. Emergencies are treated first and billed after." },
+        { q: "Can an unpaid hospital bill really stop me returning to Spain?", a: "That is the US government's own warning: lack of payment may bar future travel to Spain. Resolve any bill before you leave or through your insurer afterwards." },
+        { q: "Do Spanish hospitals take US health insurance?", a: "No, and Medicare pays nothing abroad. You pay, often in cash, and claim back from travel insurance afterwards, so always collect the factura, the formal receipt." },
+        { q: "Where do I go for something minor in Spain?", a: "Start at the farmacia under the green cross, which handles far more than a US pharmacy can. The next step is a private walk-in clinic, which tourist areas have in quantity, at Spanish prices." },
+        { q: "What is the emergency number in Spain?", a: "112, free from any phone, with English available. Treatment comes first; the billing comes afterwards." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Spain country information, health section, on billing in public facilities, cash payment and the future-travel consequence of unpaid bills", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Spain.html", type: "gov" }
+        ],
+        judgment: "The structural claims, care billed even in public hospitals, cash-first providers, private payment-or-proof before treatment and the re-entry consequence of an unpaid bill, are the State Department's own statements. The judgment that everyday care is priced at Spanish rather than American levels is ours, made qualitatively: no Spanish routine-care figure met our sourcing bar, so none appears, and the absence of a price on this page is a decision rather than an oversight. Checked August 2026."
+      }
     }
   ]
 };

@@ -615,6 +615,81 @@ export default {
         ],
         judgment: "Checked Aug 2026. Two deliberate positions. The biometric registration step is stated plainly because it is the thing nobody warns visitors about, and it is also the honest argument for the product we earn on, so the page says the local SIM is still cheaper per gigabyte. And the VoIP position is left unresolved: the 2017 lifting is well documented and widely corroborated, some 2026 sources assert renewed blocking, and effectively every source on this topic sells a VPN or an eSIM. Rather than pick, this page reports both readings and tells you to test on arrival."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "The public hospitals are for citizens and residents, and a visitor is treated and billed in the private lane.",
+      glance: [
+        { k: "Public hospitals", v: "Citizens and residents" },
+        { k: "Your visa", v: "Carries a basic emergency policy" },
+        { k: "That policy", v: "Network hospitals, emergencies only" },
+        { k: "Routine care", v: "Yours to pay, privately" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Saudi Arabia: the visa already carries a policy",
+      description: "Saudi Arabia bundles a mandatory basic health policy into the tourist visa itself, activated on issue and good for emergencies at approved network hospitals. Routine care stays yours to pay, in the private lane.",
+      h1: "What does getting sick in Saudi Arabia cost a visitor?",
+      lede: "Saudi Arabia is the rare country that answers part of the insurance question at the border: a basic emergency policy from a Saudi-regulated insurer is bundled into the tourist visa itself. Knowing exactly what that policy is, and is not, is this page.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "The public hospitals are for citizens and residents, and a visitor is treated and billed in the private lane. What makes Saudi Arabia unusual is what you are already carrying when you land: the Council of Health Insurance states that <b>health insurance is mandatory as part of issuing the tourism visit visa</b>, and that the policy <b>activates when the visa is issued</b>, covering <b>health emergency situations at a network of approved providers</b> across the kingdom. So the true out-of-pocket picture splits three ways. A <b>genuine emergency</b> at a network hospital runs through the visa policy. <b>Routine care</b>, the clinic visit, the prescription, the specialist, is yours to pay at private prices in a system built around modern hospital groups in <b>Riyadh, Jeddah and the Eastern Province</b>. And the <b>big non-emergency or above-limit case</b> lands on you, which is where the policy's modest ceiling and emergencies-only scope matter.",
+      insurance: true,
+      insuranceNote: "Saudi Arabia is the one country on this site where some cover already exists before you shop: a basic emergency policy from a Saudi-regulated insurer is bundled into the tourist visa and activates on issue, so do not buy blind or double-buy the bottom layer. Be equally clear about its edges: emergencies only, approved network hospitals only, a modest ceiling, and nothing for routine care, pre-existing conditions or a medically supervised flight home. If you add anything for Saudi Arabia, add the top layer: higher limits and evacuation. Faye covers trip medical and evacuation.",
+      careFirst: "If it is an emergency, call 997 and go; this is exactly the case the visa policy exists for.",
+      sections: [
+        {
+          h: "The policy in your passport",
+          icon: "receipt",
+          key: { tag: "Bundled at the border", text: "A mandatory basic health policy is part of the tourist visa itself, activated on issue, covering emergencies at approved network hospitals.", tone: "teal" },
+          p: [
+            "The Council of Health Insurance, the Saudi regulator, states the arrangement plainly: <b>health insurance is mandatory as part of issuing your tourism visit visa</b>, the policy is issued alongside the visa and <b>activated when the visa is issued</b>, and it covers <b>health emergency situations through a network of approved health care providers</b> around the kingdom. You do not shop for it; it arrives with the visa.",
+            "If it is an emergency, call 997 and go; this is exactly the case the visa policy exists for. Keep the policy document from your visa email with your passport, because the network hospital's desk will want the policy number, and the regulator's site can look your policy up by passport number."
+          ]
+        },
+        {
+          h: "What the bundled policy is not",
+          icon: "alert",
+          key: { tag: "The edges", text: "Emergencies only, network providers only, a modest ceiling, and nothing for routine care, pre-existing conditions or the flight home.", tone: "teal" },
+          p: [
+            "The bundled policy is a floor, not a roof, and its edges are exactly where visitors get surprised. It is scoped to <b>emergencies</b>: the heart attack, the car accident, the sudden admission. It pays at <b>approved network providers</b>, so a non-network private clinic is outside it. Its ceiling is <b>modest by hospital standards</b>, real money for a bad night, not for a bad month.",
+            "And three whole categories sit outside it entirely: <b>routine care</b>, which you pay for privately; <b>pre-existing conditions</b>, the standard exclusion; and <b>medical evacuation</b>, the supervised flight home that no basic policy anywhere includes. Those three are the actual insurance question for Saudi Arabia, and the bundled policy answers none of them."
+          ]
+        },
+        {
+          h: "The private lane, day to day",
+          icon: "cash",
+          key: { tag: "Routine care", text: "Day-to-day medicine for a visitor is the private hospital groups and clinics, paid at the desk, with pharmacies handling the minor.", tone: "teal" },
+          p: [
+            "Below the emergency line, a visitor's medicine is the <b>private lane</b>: the big hospital groups and their clinics in Riyadh, Jeddah, the Eastern Province and increasingly the tourism coasts, modern, English-capable, card-friendly, and paid at the desk like any private service. Pharmacies are plentiful and handle the minor complaints inexpensively.",
+            "The desert and mountain corners the new tourism sells, AlUla, the Red Sea coast, the Empty Quarter fringe, sit far from that hospital tier, which folds Saudi Arabia into the same rule as every big-geography country on this site: for the remote itinerary, the <b>distance to serious care</b> is part of the medical plan."
+          ]
+        },
+        {
+          h: "What is still worth covering",
+          icon: "plane",
+          key: { tag: "The top layer", text: "The bundled policy holds the floor. Higher limits and the evacuation flight are the layer a visitor actually shops for.", tone: "teal" },
+          p: [
+            "Here is the proportionate read: Saudi Arabia arrives with its own floor, a mandatory emergency policy most countries make you buy yourself, and for the ordinary emergency at a network hospital that floor holds. We would rather tell you that than pretend you land bare.",
+            "What remains is the top layer: an <b>above-ceiling admission</b>, a <b>non-network or non-emergency</b> problem, and the <b>medically supervised flight home</b> from the Arabian Peninsula, which is the single largest number on this page's horizon. Point any added cover there, and for cards, cash and the riyal on the ground, see the <a href='/saudi-arabia/cash-or-card'>Saudi Arabia cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does the Saudi tourist visa include health insurance?", a: "Yes. The Council of Health Insurance states that a basic health policy is mandatory as part of issuing the tourism visit visa, activates when the visa is issued, and covers emergencies at approved network hospitals." },
+        { q: "What does the Saudi visa insurance actually cover?", a: "Health emergency situations at a network of approved providers, with a modest ceiling. It does not cover routine care, pre-existing conditions, non-network providers or a medically supervised flight home." },
+        { q: "Can tourists use Saudi public hospitals?", a: "The public system is for citizens and residents. A visitor is treated in the private lane, through the visa policy's network in an emergency and out of pocket for everything routine." },
+        { q: "Do I still need travel insurance for Saudi Arabia?", a: "For the bottom layer, no, the visa already carries it, and we would rather say that than sell you a duplicate. What is worth adding is the top layer: higher limits and evacuation, which the bundled policy does not touch." },
+        { q: "What is the emergency number in Saudi Arabia?", a: "997 for an ambulance, or 911 in the main regions as the unified number. In an emergency, go to a network hospital where the visa policy pays, and keep the policy document from your visa email with your passport." }
+      ],
+      sources: {
+        links: [
+          { label: "Saudi Council of Health Insurance: tourist policy page, stating insurance is mandatory as part of the tourism visit visa, activates on issue and covers emergencies at approved network providers", url: "https://www.chi.gov.sa/en/knowledge-center/health-insurance-policies/Pages/tourist-policy.aspx", type: "gov" },
+          { label: "US State Department: Saudi Arabia country information, health and travel guidance for US citizens", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/SaudiArabia.html", type: "gov" }
+        ],
+        judgment: "The bundled-policy claims, mandatory with the tourism visit visa, activated on issue, emergencies at approved network providers, are the Saudi regulator's own statements on its own page. The policy's ceiling and the visa fee are deliberately not stated as figures here: the guide handles entry costs, amounts have changed before, and a stale number on a medical page is worse than none. The private-lane structure and the distance caveat for the new tourism regions are the desk's read of how the system is organised. Checked August 2026."
+      }
     }
   ],
 

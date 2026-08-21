@@ -852,6 +852,81 @@ export default {
         ],
         judgment: "The validation rules come straight from Trenitalia's own regional travel pages, which is the firmest part of this spoke and the reason we state the paper-versus-digital split as fact rather than hedging it. Passholder reservation fees are quoted by rail specialists rather than published prominently by the operator, and figures we saw ranged from about 10 to 14 euros depending on the seller, so treat 13 euros as the working number and expect a euro or two either way. That a pass rarely wins in Italy is our own read, though it follows fairly directly from the Italo exclusion and the compulsory reservation charge. The reports of platform validating machines being withdrawn are from travelers rather than an operator announcement, so we describe the direction and do not claim the machines are gone. Checked Aug 2026."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "routineAffordable",
+      exposureQuote: "the health service treats you first and bills you at its own regulated rate, and that rate is modest by American standards",
+      glance: [
+        { k: "National system", v: "Residents and EU cards" },
+        { k: "A visitor", v: "Treated first, billed after" },
+        { k: "The rate", v: "One regulated tariff" },
+        { k: "Paper trap", v: "No itemised public bill" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Italy: one regulated rate, and a paperwork trap",
+      description: "Italy treats first and bills after, at the health service's own regulated rate. The real catch for Americans is the bill itself: public hospitals cannot itemise it the way US insurers demand.",
+      h1: "What does getting sick in Italy cost a visitor?",
+      lede: "Italy will not ask for your card before it treats you. The surprises here are the paperwork kind: a single regulated rate, a public bill your US insurer may refuse to read, and a private sector that wants its money before you leave the building.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Italy's <b>Servizio Sanitario Nazionale</b> covers residents and travelers with EU health cards, and a US visitor is outside it. In a genuine emergency you are <b>treated first and billed afterwards</b>: the health service treats you first and bills you at its own regulated rate, and that rate is modest by American standards. The State Department makes the two structural points worth knowing in advance. The SSN <b>charges one rate</b> for services and room and board, and public hospitals <b>cannot produce the itemised bill</b> many US insurers require for reimbursement, so keep every receipt and expect the claim to take some arguing. <b>Private hospitals are the opposite shape</b>: they usually require advance payment or proof of insurance before admitting you, and payment in full before you leave.",
+      insurance: true,
+      insuranceNote: "We will be honest about Italy the way we are about France: for a healthy traveler on a city trip, the routine side of Italian medicine is not the thing to fear, and we would rather say so than lean on the link below. What remains genuinely worth covering is the rare big event, the admission in a private clinic that wants payment upfront, and a medically supervised flight home. If you carry cover, check the evacuation limit and how the insurer handles Italy's un-itemised public bills. Faye covers trip medical and evacuation.",
+      careFirst: "If it is an emergency, call 112 and get treated; the bill comes later and can be argued about then.",
+      sections: [
+        {
+          h: "Treatment first, one rate after",
+          icon: "receipt",
+          key: { tag: "The shape", text: "Emergency care is provided first and billed after, at the health service's single regulated rate rather than an American-style line-item price.", tone: "teal" },
+          p: [
+            "Italian law treats emergency care as something you receive first and settle afterwards. If it is an emergency, call 112 and get treated; the bill comes later and can be argued about then. A non-EU visitor without coverage is then billed for that care <b>according to the health service's own scale of charges</b>, and the State Department notes the defining feature of that bill: the Italian National Health Service <b>charges one rate</b> for services and room and board.",
+            "That single-rate structure is why the numbers Americans fear mostly do not materialise here. It is a regulated tariff in a country where medicine is priced for Italians, not a market rate discovered at discharge. The pressure point is not the size of the bill. It is what the bill looks like, which is the next section."
+          ]
+        },
+        {
+          h: "The itemised-bill problem",
+          icon: "alert",
+          key: { tag: "The US-specific trap", text: "Public hospitals cannot provide the itemised bill many US insurers require, so reimbursement takes receipts, patience and sometimes a fight.", tone: "teal" },
+          p: [
+            "This is the genuinely American problem with Italian healthcare, and it is a stated one: <b>public hospitals cannot provide an itemised bill</b> of the kind many US insurers demand before they reimburse, because the system bills at one rate rather than by line item. Your insurer's claim form assumes a document Italy does not produce.",
+            "The practical moves: ask for every <b>fattura</b> and receipt you can get, in private care insist on one before you leave, and if you carry travel cover, use its assistance line early so the insurer arranges payment rather than you chasing reimbursement against paperwork that was never going to match the form."
+          ]
+        },
+        {
+          h: "Private care wants its money first",
+          icon: "cash",
+          key: { tag: "The other lane", text: "Private hospitals usually require advance payment or proof of insurance before admitting a patient, and payment before you leave.", tone: "teal" },
+          p: [
+            "The private sector runs on the opposite logic from the public one. The State Department's line is direct: private hospitals usually <b>require advance payment or proof of insurance before admitting</b> a patient, and the US Embassy in Rome adds that private patients are generally required to <b>pay in full before leaving</b> the hospital, then claim it back from their insurer.",
+            "Private clinics are where you will often land as a tourist anyway, because they are faster and likelier to have English at the desk. That is a fine choice. Just know which lane you are in: the public lane treats first and bills one modest rate, the private lane checks how you are paying on the way in."
+          ]
+        },
+        {
+          h: "What is still worth covering",
+          icon: "plane",
+          key: { tag: "Proportion", text: "The routine side is not the risk here. The admission you fund upfront and the flight home are.", tone: "teal" },
+          p: [
+            "There is a commission link at the bottom of this page, so here is the sentence that costs us money: for an ordinary city trip to Italy by a reasonably healthy traveler, <b>the routine medical side is not where your money is at risk</b>. A doctor's visit or a pharmacy consultation is priced at Italian levels, and the emergency room treats before it bills.",
+            "What does not shrink is the tail: a <b>private admission paid upfront</b>, a long public admission billed at even a regulated rate, and a <b>medically supervised flight home</b>, which costs what it costs from anywhere in Europe. If you carry cover for Italy, carry it for those, and check the evacuation limit rather than the outpatient benefits. For paying on the ground, see the <a href='/italy/cash-or-card'>Italy cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do American tourists get free healthcare in Italy?", a: "No. The SSN is for residents and EU card holders. A US visitor is treated in an emergency first, then billed at the health service's regulated rate, and pays in full in the private sector, usually before leaving." },
+        { q: "Will an Italian emergency room treat me before asking about payment?", a: "Yes. Emergency care is provided first and settled afterwards. The bill that follows is at the health service's single regulated rate, which is modest by American standards." },
+        { q: "Why will not my US insurer accept the Italian hospital bill?", a: "Public hospitals bill one rate for services and room and board and cannot produce the itemised bill many US insurers require. Keep every receipt, and use your insurer's assistance line early rather than chasing reimbursement afterwards." },
+        { q: "Do private hospitals in Italy require payment upfront?", a: "Usually yes. Advance payment or proof of insurance before admission is the norm, and private patients generally pay in full before leaving, then claim it back from their insurer." },
+        { q: "What number do I call in a medical emergency in Italy?", a: "112 works everywhere and routes you to the right service; 118 is the traditional medical emergency line. Operators can generally manage English in tourist regions." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Italy country information, health section, on the single-rate billing, the itemised-bill limitation and private-hospital advance payment", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Italy.html", type: "gov" },
+          { label: "US Embassy in Italy: medical assistance page, on private hospitals requiring payment before discharge", url: "https://it.usembassy.gov/medical-assistance/", type: "gov" }
+        ],
+        judgment: "The structural claims here, treatment before billing, the single regulated rate, the itemised-bill limitation and private-sector advance payment, are the State Department's and the US Embassy's own statements. The judgment that the regulated rate is modest by American standards is ours, made qualitatively and deliberately without a figure: Italy's tariffs are set regionally, so a single national price would be false precision, which is why no price appears on this page. Checked August 2026."
+      }
     }
   ]
 };
