@@ -41,7 +41,7 @@ const action = `https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_U
 const emailId = compact ? 'bd-email-footer' : 'bd-email';
 ---
 
-<form class={'bd' + (compact ? ' bd-compact' : '')} action={action} method="post">
+<form class={'bd' + (compact ? ' bd-compact' : '')} action={action} method="post" target="_blank"> rel="noopener"
   <label class="bd-h" for={emailId}>{heading}</label>
   {!compact && <p class="bd-sub">{sub}</p>}
   <div class="bd-row">
