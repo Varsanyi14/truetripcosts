@@ -88,6 +88,7 @@ export const INDEXED_PAGES = [
   { file: 'rules.astro', label: 'Money rules, country by country', kind: 'about' },
   { file: 'about.astro', label: 'About True Trip Costs', kind: 'about' },
   { file: 'methodology.astro', label: 'Methodology, how this site is checked', kind: 'about' },
+  { file: 'what-changed.astro', label: 'What changed, the travel-money change log', kind: 'about' },
 ];
 
 // Deliberately not searchable. The gate reads this list, so leaving a page out of both

@@ -1,0 +1,131 @@
+---
+// WHAT CHANGED: the public change log. A dated, reverse-chronological list of what
+// actually changed in travel money, and of what we corrected in our own guides.
+//
+// THE ONE RULE THAT SHAPES THIS PAGE: it lists CHANGES, never checks. A re-check that
+// confirmed everything moves a guide's checked date and adds nothing here, which is why
+// this log is shorter than the site is busy. That is deliberate: a short truthful log
+// is the proof of maintenance this page exists to be, and a padded one would poison it.
+// The entry list lives in src/data/changelog.js; read its header before adding to it.
+//
+// PURE STATIC RENDER. No client JavaScript on this page beyond what every page carries
+// from the base layout. The subscribe form below is a native HTML form posting directly
+// to Buttondown (see ButtondownForm.astro); the browser navigates there on submit and
+// Buttondown handles confirmation. The JSON-LD block is metadata, not script: it gives
+// the page a machine-readable dateModified equal to the newest entry, so freshness is
+// legible to crawlers. Schema is hygiene, not a growth lever; it is here for
+// correctness only.
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import ButtondownForm from '../components/ButtondownForm.astro';
+import { changelog, displayDate } from '../data/changelog.js';
+
+const entries = changelog();
+
+// Year separators for scanning. Month-precision dates carry their year in position 0-3
+// either way, so this is safe for both precisions.
+const byYear = [];
+for (const e of entries) {
+  const year = e.date.slice(0, 4);
+  const group = byYear.find(g => g.year === year);
+  if (group) group.items.push(e);
+  else byYear.push({ year, items: [e] });
+}
+
+// The page's own machine-readable freshness: the newest entry, resolved to a full date
+// (a month-precision newest entry resolves to the first of that month rather than a
+// fabricated later day). dateModified moves only when a genuine entry is added, which
+// is exactly the discipline the field is supposed to encode.
+const newest = entries[0];
+const newestISO = newest ? (newest.date.length === 7 ? newest.date + '-01' : newest.date) : null;
+const ld = newest ? JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'What changed in travel money',
+  url: 'https://truetripcosts.com/what-changed',
+  dateModified: newestISO,
+  description: 'A dated log of changes in travel money for US travelers: fees that took effect, rates that moved, rules that changed, and corrections we made to our own guides.',
+}) : null;
+
+const changeCount = entries.filter(e => e.kind === 'change').length;
+const correctionCount = entries.filter(e => e.kind === 'correction').length;
+---
+<Base
+  title="What changed in travel money: a dated log of fees, taxes and rules that moved"
+  description="A dated, reverse-chronological log of what actually changed in travel money for US travelers: tourist taxes that took effect, fees that rose or fell, entry rules that changed, and the corrections we made to our own guides. Every entry is dated and links to the guide where the current fact lives."
+>
+  <Nav />
+  {/* JSON-LD is valid anywhere in the document, and Base has no head slot; the body
+      placement keeps this page from having to touch the shared layout. */}
+  {ld && <script type="application/ld+json" set:html={ld} />}
+  <main class="wrap">
+
+    <section class="wc-intro">
+      <p class="lab">What changed</p>
+      <h1>The change log: what moved, and when.</h1>
+      <p class="wc-lede">Travel-money facts do not sit still. Taxes take effect, fees rise or quietly disappear, entry rules change, and sometimes we get a detail wrong and fix it. This page is the dated record of all of it: {changeCount} changes in the world and {correctionCount} corrections to our own guides so far, newest first. Every entry links to the guide where the current fact lives.</p>
+      <p class="wc-note">One thing this page is not: a list of checks. Every guide is re-checked on a schedule (<a href="/methodology">here is how</a>), and most checks confirm that nothing moved. Those re-checks update the dates on the guides and add nothing here. An entry on this page means something actually changed.</p>
+    </section>
+
+    <section class="wc-sub">
+      <ButtondownForm />
+    </section>
+
+    {byYear.map(group => (
+      <section class="wc-year">
+        <h2 class="wc-yh">{group.year}</h2>
+        <ol class="wc-list">
+          {group.items.map(e => (
+            <li class="wc-entry">
+              <p class="wc-meta">
+                <time class="wc-date" datetime={e.date}>{displayDate(e.date)}</time>
+                {e.kind === 'correction' && <span class="wc-pill">Correction</span>}
+              </p>
+              <h3 class="wc-title">{e.title}</h3>
+              <p class="wc-what">{e.what}</p>
+              <p class="wc-why"><b>Why it matters:</b> {e.why}</p>
+              <a class="wc-link" href={e.link}>{e.linkLabel}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))}
+
+    <section class="wc-close">
+      <h2>How this log is kept honest.</h2>
+      <p>Every entry above is dated and traceable to a real change: either the world moved, or we corrected our own wording and said so. When a change note appears on a guide, its entry lands here at the same time, and a routine re-check that found nothing new never becomes an entry. The rest of the discipline, what counts as a source, how often each figure is re-checked, and how corrections work, is on the <a href="/methodology">methodology page</a>.</p>
+    </section>
+
+  </main>
+  <Footer />
+
+  <style>
+    .wc-intro{padding:34px 0 0;max-width:680px}
+    .wc-intro h1{margin:6px 0 14px}
+    .wc-lede{font-size:17px;line-height:1.55;color:var(--ink);margin:0 0 14px}
+    .wc-note{font-size:15px;line-height:1.6;color:var(--muted);margin:0}
+    .wc-note a,.wc-close p a{color:var(--teal-deep);font-weight:500;text-decoration:underline;text-underline-offset:2px}
+
+    .wc-sub{padding:26px 0 4px;border-top:0;margin-top:0}
+
+    .wc-year{padding:26px 0 6px}
+    .wc-yh{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:.1em;color:var(--muted);margin:0 0 14px}
+    .wc-list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+    .wc-entry{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:16px 20px}
+    .wc-meta{display:flex;align-items:center;gap:8px;margin:0 0 6px}
+    .wc-date{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:#10502C;background:var(--green-bg);border-radius:999px;padding:2px 9px}
+    .wc-pill{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:var(--amber);background:var(--amber-bg);border-radius:999px;padding:2px 9px}
+    .wc-title{font-size:17px;line-height:1.35;margin:0 0 8px}
+    .wc-what{font-size:15px;line-height:1.6;color:var(--ink);margin:0 0 8px}
+    .wc-why{font-size:14.5px;line-height:1.55;color:#3B4A46;margin:0 0 10px}
+    .wc-why b{font-weight:600;color:var(--ink)}
+    .wc-link{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--teal-deep);text-decoration:none}
+    .wc-link:hover{text-decoration:underline;text-underline-offset:2px}
+
+    .wc-close{padding:34px 0 64px;max-width:680px}
+    .wc-close h2{margin:0 0 8px}
+    .wc-close p{font-size:15.5px;line-height:1.6;color:var(--muted);margin:0}
+  </style>
+</Base>
