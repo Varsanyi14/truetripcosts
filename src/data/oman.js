@@ -514,6 +514,80 @@ export default {
         ],
         judgment: "Checked Aug 2026. The app-calling position here is deliberately unresolved and that is the honest state of the evidence: within one week we found reputable-looking sources calling Oman blocked, intermittent and permitted, and effectively all of them sell either a VPN or an eSIM, which are the two products the answer sells. Rather than pick the reading that suits us, this page tells you messaging works, calling may not, and to carry a fallback. The desert coverage gaps are the desk's read from operator footprints and consistent self-drive accounts, and they are the part of this page most worth acting on."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "the public system is for citizens, and a visitor pays in full at private rates",
+      glance: [
+        { k: "You pay", v: "In full, as a visitor" },
+        { k: "Muscat", v: "Good hospitals, close" },
+        { k: "Entry rules", v: "Insurance already expected" },
+        { k: "Real risk", v: "Serious and far from Muscat" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Oman: good care, paid in full",
+      description: "Oman's public system is for citizens, so a visitor pays in full at private rates. Muscat's care is good and close; the interior and the coasts are not.",
+      h1: "What does getting sick in Oman cost a visitor?",
+      lede: "Oman is a calm page with one Gulf-standard rule at its center: the public system is for citizens, and a visitor pays in full at private rates. Around it sit two Omani specifics, a country that already expects you to arrive insured, and a landscape that puts real distance between its beauty spots and its hospitals.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "The financial structure is the Gulf's usual one: Oman's <b>public system serves its citizens</b>, and a visitor is treated in the <b>private hospitals and clinics</b>, concentrated in Muscat and the larger towns, <b>billed in full</b> at private rates with payment expected around treatment. The care in Muscat is <b>good</b>, English is widely spoken in the private sector, and an everyday problem there is an errand rather than a drama. Two Omani specifics complete the picture. First, Oman's own <b>entry conditions for the visa waiver already expect health insurance</b>, alongside a hotel booking and a return ticket, a rule covered on <a href=\"/oman\">our Oman guide</a>. Second, the trips people come for, Jebel Shams and the mountain wadis, the Sharqiya sands, Musandam's fjords, the long empty coast to Salalah, sit <b>hours from the hospitals</b>, so a serious case out there is a transport question before it is a treatment question.",
+      insurance: true,
+      insuranceNote: "Oman is not a page to be frightened by: Muscat's private care is good, close and easy to use, and an everyday problem is a paid errand, not a crisis. The honest structure is that you pay in full as a visitor, the country's own entry rules already expect you to arrive with health insurance, and the wadis, dunes and fjords that make Oman worth the trip sit hours from the hospitals. Cover here is the policy Oman asks for anyway, judged on its medical transport line. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, get to a hospital first and sort the payment out afterwards.",
+      sections: [
+        {
+          h: "The Gulf rule: billed in full",
+          icon: "alert",
+          key: { tag: "Private lane", text: "The public system is for citizens. A visitor is treated privately and billed in full, with payment expected around treatment and English widely spoken.", tone: "amber" },
+          p: [
+            "Oman runs the arrangement its neighbours do: a <b>public system built around citizens</b>, and a private tier where everyone else, resident expatriates and visitors alike, is treated and <b>billed in full</b>. Payment is expected around treatment, card acceptance is good in Muscat's private hospitals, and English is the private sector's working language.",
+            "If it looks serious, get to a hospital first and sort the payment out afterwards. Muscat is where the serious capacity lives, and an insurer's guarantee of payment is accepted at the bigger private hospitals in place of a card."
+          ]
+        },
+        {
+          h: "Oman already told you to bring a policy",
+          icon: "passport",
+          key: { tag: "Entry expectation", text: "Oman's visa-waiver conditions already expect health insurance, alongside a hotel booking and a return ticket. The detail lives on our Oman guide, in one copy.", tone: "teal" },
+          p: [
+            "Unusually, the insurance conversation for Oman is settled before you land: the country's <b>entry conditions for the visa waiver already expect health insurance</b>, with the rest of the conditions and their current state kept on <a href=\"/oman\">our Oman guide</a> so this page does not carry a second copy of an entry rule.",
+            "That makes the practical advice simple. The policy you bring to satisfy the border is the policy this page would recommend anyway; the only judgment left is making sure its limits fit the trip you are actually taking, which is the next section."
+          ]
+        },
+        {
+          h: "The distances are the Omani specific",
+          icon: "plane",
+          key: { tag: "Far from Muscat", text: "The mountains, the sands, Musandam and the road to Salalah sit hours from serious care, so a serious case out there starts with a transfer.", tone: "amber" },
+          p: [
+            "Oman's glory is its emptiness, and the emptiness is the exposure. <b>Jebel Shams and the wadis</b>, the <b>Sharqiya sands</b>, <b>Musandam's</b> boat-access fjords and the long desert highway to <b>Salalah</b> all sit hours from a serious hospital, and self-driving those distances is exactly how most visitors experience the country.",
+            "So the realistic serious scenario on an Omani road trip begins with <b>getting to Muscat</b>, or to the nearest regional hospital and then to Muscat, and the medical transport line of a policy is the line that pays for it. Drive the distances with water, a charged phone and your insurer's number saved."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "receipt",
+          key: { tag: "Absence is not zero", text: "We have not sourced an Omani price list for visitor care that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. Omani private care is priced facility by facility, and we did not source a published visitor tariff we would put our name to, so no rial figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure is dependable: billed in full as a visitor, good care concentrated in Muscat, an entry rule that already expects a policy, and distances that make the transport line matter. For paying on the ground, see the <a href=\"/oman/cash-or-card\">Oman cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare free for tourists in Oman?", a: "No. The public system is for citizens, and a visitor is treated in the private tier and billed in full, with payment expected around treatment. Muscat's private care is good and English-speaking." },
+        { q: "Does Oman require health insurance to enter?", a: "Oman's visa-waiver conditions expect health insurance alongside a hotel booking and a return ticket, and entry rules here have changed more than once, so check the current state on our Oman guide before you book. Practically, arrive with a policy either way." },
+        { q: "What happens if I get sick far from Muscat?", a: "The mountains, sands, Musandam and the Salalah road sit hours from serious care, so a serious case starts with a transfer toward Muscat. The medical transport line on a policy is what pays for that journey." },
+        { q: "Does my US health insurance work in Oman?", a: "Rarely, and Medicare not at all. Private hospitals bill you directly and in full, so what counts is a policy whose assistance line can issue a guarantee of payment and whose transport line fits an Omani road trip." },
+        { q: "Do I need travel insurance for Oman?", a: "Oman answers this one itself: its entry conditions already expect health insurance. Bring the policy the border expects, and size its medical transport line for the distances your itinerary actually covers." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Oman country information for US travelers, including health and entry guidance", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Oman.html", type: "gov" }
+        ],
+        judgment: "The citizens-first public system, the billed-in-full private lane for visitors, and the concentration of serious care in Muscat are the consistent structural facts of Omani healthcare in official US guidance, stated qualitatively. The insurance entry expectation is carried and sourced on our Oman guide's visa section, pointed at rather than restated so the rule lives in one copy. No rial figure appears because we did not source a published visitor tariff we would defend. Checked August 2026.",
+      }
     }
   ],
 

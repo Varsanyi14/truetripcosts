@@ -513,6 +513,80 @@ export default {
         ],
         judgment: "Checked Aug 2026, and two things here are deliberate. First, the bundle gap: we are pointing you at the cheaper local route even though we earn nothing on it, because a four-fold difference per gigabyte between an ordinary bundle and a tourist pack is the single most useful fact on this page. Second, the load shedding line is a retirement rather than a warning. We checked it specifically because older travel guidance still repeats it, and the position as of August 2026 is 441 consecutive days without national load shedding since 16 May 2025, with Eskom projecting none through the winter. If that changes it will be widely reported, and this page should be re-checked before it is trusted on the point."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "depositFirst",
+      exposureQuote: "the private hospitals where a visitor belongs ask for a substantial deposit or proof of cover at admission",
+      glance: [
+        { k: "Two systems", v: "You want the private one" },
+        { k: "Admission", v: "Deposit or proof of cover" },
+        { k: "Quality", v: "Private care is excellent" },
+        { k: "Real risk", v: "A safari far from the city" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in South Africa: two systems, one deposit",
+      description: "South Africa splits sharply: excellent private hospitals that want a deposit or proof of cover at admission, and a public system a visitor should not plan around.",
+      h1: "What does getting sick in South Africa cost a visitor?",
+      lede: "South Africa has two health systems living in one country. The private one is excellent, and it is where a visitor belongs; the private hospitals where a visitor belongs ask for a substantial deposit or proof of cover at admission. The public one is overstretched, and it is not the plan.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "The split decides everything about the money. South Africa's <b>private hospitals</b>, the big national groups in Johannesburg, Cape Town, Durban and the other cities, deliver care at a first-world standard, and they run first-world billing to match: at admission they want a <b>substantial deposit or proof of cover</b>, and doctors bill separately on top of the hospital's account. The <b>public system</b> treats the great majority of South Africans with far fewer resources, and while it will take an emergency, it is not where a visitor should plan to be treated. The second structural fact is distance: on safari, along the Garden Route or anywhere far from the metros, the first medical event is a <b>road or air transfer</b> to a private hospital, and the private ambulance networks that do it are also paid services.",
+      insurance: true,
+      insuranceNote: "South African private medicine is genuinely excellent, so this is not a page about quality. It is a page about the gate: a substantial deposit or proof of cover at admission, doctors billed on top, and a paid private ambulance or air transfer if the trip is a safari or a coast drive far from the metros. Cover here should be judged on the guarantee-of-payment machinery and the medical transport line. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, get to a private emergency department first and sort the deposit out afterwards.",
+      sections: [
+        {
+          h: "The private system is the plan, and it has a gate",
+          icon: "alert",
+          key: { tag: "Deposit or proof", text: "Private hospitals want a substantial deposit or proof of cover at admission, and the doctors treating you bill separately on top of the hospital's account.", tone: "amber" },
+          p: [
+            "Be clear-eyed about which system you would use. A visitor with anything serious belongs in the <b>private system</b>, which is excellent, English-speaking and concentrated in the cities. Its gate is financial: at admission the desk wants a <b>substantial deposit or proof of cover</b>, card holds are normal, and the specialists who treat you <b>invoice separately</b> from the hospital, so the hospital's number is not the whole bill.",
+            "If it looks serious, get to a private emergency department first and sort the deposit out afterwards. An insurer whose assistance line can send a <b>guarantee of payment</b> to a South African private group is the practical key to that gate."
+          ]
+        },
+        {
+          h: "Distance is the second bill",
+          icon: "plane",
+          key: { tag: "Getting to care", text: "On safari or far from the metros, the first event is a road or air transfer to a private hospital, run by paid private ambulance networks.", tone: "amber" },
+          p: [
+            "South Africa's serious private capacity sits in the metros, and the trips people fly here for, safari lodges, the Garden Route, the Drakensberg, the winelands beyond the towns, sit hours from it. The country handles that with well-run <b>private emergency and air ambulance networks</b>, and they are paid services like the hospitals they deliver to.",
+            "So for the classic South African trip, the realistic serious scenario starts with a <b>transfer</b>, and the medical transport line on a policy is doing real work. If your itinerary is remote lodges, check that line the way you would check the medical limit."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "receipt",
+          key: { tag: "Absence is not zero", text: "We have not sourced a South African price list for visitor care that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. South African private care is priced group by group and case by case, and we did not source a published visitor tariff we would put our name to, so no rand figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure is dependable: the private system is the plan, the deposit or proof of cover is its gate, doctors bill on top, and distance adds a paid transfer. Those facts, not a consultation fee, decide the money."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Gate and distance", text: "Judge a policy on the guarantee-of-payment machinery for the admission gate, and on the medical transport line for the distance between your lodge and a city hospital.", tone: "teal" },
+          p: [
+            "Everyday problems in the cities are straightforward: private GPs and clinics see visitors quickly at prices that will not wreck a trip, paid on the spot. The planning belongs to the serious case: an admission gate that opens on a deposit or a guarantee, separate specialist invoices to keep, and a transfer bill if you are far from the metros.",
+            "Save the private emergency numbers your lodge or hotel uses, keep every invoice separately for the claim, and for paying on the ground, see the <a href=\"/south-africa/cash-or-card\">South Africa cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do private hospitals in South Africa require a deposit?", a: "At admission they want a substantial deposit or proof of cover, and card holds are normal. A guarantee of payment from your insurer's assistance line is the practical substitute, and the specialists treating you bill separately on top of the hospital account." },
+        { q: "Can a tourist use public hospitals in South Africa?", a: "A public emergency department will take a true emergency, but the public system is overstretched and not where a visitor should plan to be treated. The realistic plan is the private system, which is excellent and billed accordingly." },
+        { q: "What happens if I get sick on safari in South Africa?", a: "The first event is a transfer, by road or air, to a private hospital in a metro, run by paid private ambulance networks. That transfer is a real bill of its own, which is why the medical transport line on a policy matters for a safari trip." },
+        { q: "Does my US health insurance work in South Africa?", a: "Rarely, and Medicare not at all. Private hospitals bill you directly and want the deposit or proof of cover regardless, so what counts is an insurer that can wire a guarantee of payment quickly." },
+        { q: "Do I need travel insurance for South Africa?", a: "For a city trip, the honest reason is the admission gate and the bills behind it. For a safari or a remote coast trip, add the transfer: getting to the private hospital is a paid journey, and the medical transport line is the one to read first." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: South Africa country information for US travelers, including health and medical care guidance", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/SouthAfrica.html", type: "gov" }
+        ],
+        judgment: "The deposit-or-proof-of-cover admission practice at private hospitals, the separate physician billing, and the reliance on paid private emergency transfer networks outside the metros are the consistent, well-attested shape of South African private healthcare in official US guidance, stated qualitatively. No rand figure appears because private pricing varies by group and case and we did not source a published visitor tariff we would defend. Checked August 2026.",
+      }
     }
   ]
 };

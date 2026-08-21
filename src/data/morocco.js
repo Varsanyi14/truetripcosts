@@ -517,6 +517,81 @@ export default {
         ],
         judgment: "Checked Aug 2026. The local SIM is the cheaper answer and we earn nothing on it, which is worth stating on a page that carries an eSIM link. The one honest point in the eSIM's favour is handset-specific rather than commercial: Moroccan carriers have lagged on visitor eSIM support, so a phone without a SIM tray may have no local option at all. The coverage gaps are the desk's read from operator footprints and consistent traveler accounts, and the passes and deep desert are reported as unreliable often enough to state plainly."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "The private clinics where a visitor is treated expect payment up front",
+      glance: [
+        { k: "Where you go", v: "Private clinics in the cities" },
+        { k: "Payment", v: "Up front, often cash" },
+        { k: "Public hospitals", v: "Not built for visitors" },
+        { k: "Real risk", v: "Serious and far from a city" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Morocco: pay the clinic before it treats you",
+      description: "In Morocco a visitor is treated at private clinics that expect payment up front, and a serious case in the Atlas or the south travels a long way to reach one.",
+      h1: "What does getting sick in Morocco cost a visitor?",
+      lede: "Morocco's medical money story is two sentences long. The private clinics where a visitor is treated expect payment up front. And the country's capable medicine lives in a handful of cities, which matters enormously if your trip is the Atlas, the desert or the long road between them.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "As a visitor you will be treated in Morocco's <b>private clinics and hospitals</b>, concentrated in Casablanca, Rabat and Marrakech, and the working rule there is <b>payment up front, often in cash</b>, with card acceptance thinning as facilities get smaller and further from the big cities. This is the general pattern the State Department warns travelers about worldwide, that in many locations <b>payment or a deposit is required before any services are provided</b>, and Morocco runs it plainly. The <b>public hospitals</b> serve Moroccans under strain and are not where a visitor should plan to be treated. The second structural fact is the map: the trips people come for, the High Atlas, the Sahara circuits, the coast beyond the cities, sit hours from capable care, so the serious case starts with a <b>long transfer</b>, and for the genuinely complex one the pattern is a flight to Europe.",
+      insurance: true,
+      insuranceNote: "The everyday in Morocco is inexpensive: a pharmacy, a clinic consultation in a city, a straightforward problem sorted for cash, and we would rather tell you that than inflate it. Cover earns its place on the Moroccan map: payment demanded up front when something serious happens, a long transfer from the Atlas or the desert to a city clinic, and a flight to Europe for the genuinely complex case. Judge a policy on its medical transport and evacuation lines. Faye covers trip medical and evacuation.",
+      careFirst: "If it is serious, get to a clinic or hospital first and deal with the payment afterwards.",
+      sections: [
+        {
+          h: "Payment first, at the clinics that will treat you",
+          icon: "alert",
+          key: { tag: "Up front, often cash", text: "Private clinics expect payment before treatment, often in cash outside the biggest city facilities. The public hospitals are not built for visitors.", tone: "amber" },
+          p: [
+            "The tier that treats visitors is <b>private</b>: the clinics of Casablanca, Rabat, Marrakech and the other cities, ranging from small cabinet practices to serious private hospitals. Their rule is the regional one: <b>payment up front</b>, and outside the biggest facilities that genuinely means <b>cash</b>, in dirhams, before or at treatment.",
+            "If it is serious, get to a clinic or hospital first and deal with the payment afterwards. Carry enough dirhams that a clinic desk never delays care, and get your insurer's assistance line working early, since a guarantee of payment from a recognised insurer opens the same doors the cash does at the bigger private hospitals."
+          ]
+        },
+        {
+          h: "The distances are the second bill",
+          icon: "plane",
+          key: { tag: "Atlas and desert", text: "Capable medicine lives in a few cities. A serious case in the mountains, the desert or on the long roads between them starts with a long transfer.", tone: "amber" },
+          p: [
+            "Morocco's geography is the honest half of this page. The <b>High Atlas</b> trekking routes, the <b>Sahara</b> circuits out of Merzouga and Zagora, and the long drives that connect the imperial cities all sit hours from capable care. Roadside help is thin, and the first medical event in a serious rural case is a <b>long road transfer</b>, sometimes improvised.",
+            "For the genuinely complex case, the established pattern from Morocco is a <b>medically supervised flight to Europe</b>, Spain and France being close. That flight is the largest number this page implies, and it is why the evacuation line of a policy matters more here than any consultation fee."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "receipt",
+          key: { tag: "Absence is not zero", text: "We have not sourced a Moroccan price list for visitor care that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. Moroccan private care is priced clinic by clinic, and we did not source a published visitor tariff we would put our name to, so no dirham figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure is dependable: private clinics treat visitors, payment comes first and often in cash, the public tier is not the plan, distance is a real cost, and the complex case flies to Europe."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Cash and the transfer", text: "Carry a cash reserve in dirhams, and judge a policy on the medical transport line for the mountains and desert, plus the evacuation line for the flight to Europe.", tone: "teal" },
+          p: [
+            "Practically: keep a <b>cash reserve</b> on any itinerary beyond the big cities, because the desk that wants paying may be small, rural and card-free. For the policy, the lines doing the work are <b>medical transport</b>, which pays for the long ride out of the Atlas or the desert, and <b>evacuation</b>, which pays for the flight to Europe if it comes to that.",
+            "Trekkers should check that their route and altitude are inside the policy's activity definitions. For getting and carrying the cash, see the <a href=\"/morocco/cash-or-card\">Morocco cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do Moroccan clinics require payment before treatment?", a: "Yes, payment up front is the working rule at the private clinics where visitors are treated, and outside the biggest city facilities it often means cash in dirhams. A guarantee of payment from your insurer works at the larger private hospitals." },
+        { q: "Can a tourist use public hospitals in Morocco?", a: "A public hospital will take a true emergency, but the public tier serves Moroccans under strain and is not where a visitor should plan to be treated. The realistic plan is the private clinics of the big cities." },
+        { q: "What happens if I get sick in the Atlas or the desert?", a: "The first event is a long transfer to a city, hours by road from most trekking and desert circuits, and for the genuinely complex case a medically supervised flight to Europe. Those two journeys, not a consultation fee, are the honest financial exposure of a Moroccan trip." },
+        { q: "Does my US health insurance work in Morocco?", a: "Rarely, and Medicare not at all. Clinics bill you directly and want payment first, so what counts is cash on hand for the small stuff and a policy whose transport and evacuation lines cover the big stuff." },
+        { q: "Do I need travel insurance for Morocco?", a: "The everyday is cheap and not the reason. The honest reasons are the payment-first rule when something serious happens, the long transfer that mountain and desert itineraries build in, and the flight to Europe for the complex case." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: medicine and health guidance for travelers abroad, on payment or a deposit being required before services in many locations", url: "https://travel.state.gov/en/international-travel/planning/guidance/medicine-health.html", type: "gov" },
+          { label: "US State Department: Morocco country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Morocco.html", type: "gov" }
+        ],
+        judgment: "The payment-up-front practice at private clinics, the concentration of capable care in a few cities, the strain on the public tier, and the fly-to-Europe pattern for complex cases are the consistent, well-attested shape of Moroccan healthcare for visitors in official US guidance, stated qualitatively; the official language cited on payment is the State Department's general guidance. No dirham figure appears because we did not source a published visitor tariff we would defend. Checked August 2026.",
+      }
     }
   ]
 };

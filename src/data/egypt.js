@@ -585,6 +585,81 @@ export default {
         ],
         judgment: "Checked Aug 2026. Two honest points pull in different directions here and both belong on the page. The local SIM is cheaper and we earn nothing on it. At the same time, arriving in Egypt with data already working has a value beyond convenience, because it lets a traveler decline the airport kiosk and check a fare before being quoted one, and that is a real argument for the product we do earn on. Local pack pricing moves with the pound and with promotions, so the 6 to 12 dollar range is a current shape rather than a fixed price."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "depositFirst",
+      exposureQuote: "hospitals expect payment, often in cash, before they will treat you",
+      glance: [
+        { k: "At the desk", v: "Payment before treatment" },
+        { k: "How it is paid", v: "Often in cash" },
+        { k: "Red Sea diving", v: "Chamber and transfer risk" },
+        { k: "Real risk", v: "The serious case, moved" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Egypt: cash first, then care",
+      description: "Egyptian hospitals expect payment, often in cash, before they will treat you, and a serious case on the Red Sea or in the desert travels before it is treated.",
+      h1: "What does getting sick in Egypt cost a visitor?",
+      lede: "Egypt's medical money story starts at the cashier: hospitals expect payment, often in cash, before they will treat you. The second half is geography, because the places visitors actually go, the Red Sea coast, the desert, the temples upriver, sit a long way from Cairo's best hospitals.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "As a visitor you are treated in Egypt's <b>private clinics and hospitals</b>, and the sequence there is money first: <b>hospitals expect payment, often in cash, before they will treat you</b>, which matches what the State Department tells travelers everywhere, that in many locations <b>payment or a deposit is required before any services are provided</b>. Quality varies widely: Cairo's top private hospitals are capable, the resort-town clinics of the Red Sea are built for everyday problems and priced for tourists, and the gap between those two tiers is crossed by a <b>transfer</b>. For divers, the specific risk is their own: a decompression case needs a <b>recompression chamber</b>, and the chamber, the transfer to it, and everything after are paid services. The runner-up tail is the flight: the genuinely complex case is often moved to Cairo or out of the country entirely.",
+      insurance: true,
+      insuranceNote: "The everyday in Egypt is inexpensive: a pharmacy, a clinic visit, a straightforward problem handled in a resort town, and we would rather say that than inflate it. What earns cover is the sequence around anything serious: cash or a card demanded before treatment, a transfer from the coast or the desert to a capable hospital, and for divers the chamber. An insurer that answers fast and can wire a guarantee of payment matters more here than a high ceiling. Faye covers trip medical and evacuation.",
+      careFirst: "If it is serious, get to a hospital first and deal with the payment afterwards.",
+      sections: [
+        {
+          h: "Payment comes first",
+          icon: "alert",
+          key: { tag: "Cash at the desk", text: "Hospitals expect payment, often in cash, before treating you. Card holds happen in the bigger private hospitals; the smaller clinics genuinely mean cash.", tone: "amber" },
+          p: [
+            "The rule to internalise is that in Egypt the <b>cashier comes before the doctor</b>. Private hospitals and clinics, which is where a visitor is treated, expect <b>payment before treatment</b>, and outside the biggest Cairo hospitals that often means <b>cash</b>, with card acceptance thinning fast as the facility gets smaller. This is the general pattern the State Department warns travelers about, and Egypt runs it plainly.",
+            "If it is serious, get to a hospital first and deal with the payment afterwards. In practice that means having a companion or your insurer's assistance line working the payment question while you are being seen, and carrying enough Egyptian pounds that a small-town clinic desk is never the thing standing between you and treatment."
+          ]
+        },
+        {
+          h: "The map, the coast, and the chamber",
+          icon: "plane",
+          key: { tag: "Transfers", text: "Resort clinics handle the everyday. The serious case travels to Cairo or beyond, and a diving accident needs a recompression chamber, all of it paid.", tone: "amber" },
+          p: [
+            "Egypt's capable hospitals concentrate in <b>Cairo</b>, and the trips visitors take, Sharm el Sheikh and Hurghada on the Red Sea, Luxor and Aswan upriver, the Western Desert, sit hours or a flight away from them. The resort-town clinics handle everyday problems and bill tourists briskly for it; the genuinely serious case is <b>stabilised and moved</b>, to Cairo or sometimes out of the country.",
+            "Divers carry one extra line of risk: a decompression case needs a <b>recompression chamber</b>, the Red Sea towns have them precisely because the diving industry does, and the chamber, like everything else here, is a paid service. If diving is the point of your trip, dive-specific cover is not an upsell, it is the relevant policy."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "receipt",
+          key: { tag: "Absence is not zero", text: "We have not sourced an Egyptian price list for visitor care that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. Egyptian care is priced facility by facility, tourist towns price for tourists, and we did not source a published visitor tariff we would put our name to, so no figure in pounds appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure is dependable without a number: payment first, often cash, everyday problems handled locally and cheaply, the serious case moved, and the chamber for divers. Plan around the sequence, not a fee."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Cash and the transfer", text: "Carry enough cash that a clinic desk never delays care, and judge a policy on its assistance line, its medical transport cover, and dive cover if you dive.", tone: "teal" },
+          p: [
+            "Practically: keep a cash reserve in Egyptian pounds on any trip beyond Cairo, because the desk that wants paying may not take a card. For the policy, read three lines before any other: the <b>assistance line's</b> availability, the <b>medical transport</b> cover that pays for the move to Cairo or beyond, and <b>dive cover</b> if the Red Sea is your reason for coming.",
+            "Keep every receipt, itemised where you can get it, because a claim is reconstructed from paper. For getting and carrying that cash, see the <a href=\"/egypt/cash-or-card\">Egypt cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do Egyptian hospitals require payment before treatment?", a: "Yes, that is the working rule: payment, often in cash, before treatment, with card holds at the bigger private hospitals and genuine cash-only desks at smaller clinics. A guarantee of payment from your insurer's assistance line is the practical substitute at hospitals that take direct billing." },
+        { q: "How good are the clinics in Sharm el Sheikh and Hurghada?", a: "Built for the everyday and used to tourists, which is both their value and their pricing model. Anything genuinely serious is stabilised and moved, usually to Cairo, and that transfer is a paid journey worth having cover for." },
+        { q: "What about diving accidents in Egypt?", a: "The Red Sea towns have recompression chambers because the dive industry needs them, and a decompression case needs the chamber, the transfer to it, and specialist care after, all paid. If you dive, dive-specific cover is the relevant policy, not an add-on." },
+        { q: "Does my US health insurance work in Egypt?", a: "Rarely, and Medicare not at all. Egyptian providers bill you directly and expect payment first, so what counts is cash on hand for the small stuff and an insurer that can move a guarantee of payment fast for the big stuff." },
+        { q: "Do I need travel insurance for Egypt?", a: "The everyday is cheap and not the reason. The honest reasons are the payment-first rule when something serious happens, the transfer from coast or desert to a capable hospital, and the chamber if you dive." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: medicine and health guidance for travelers abroad, on payment or a deposit being required before services in many locations", url: "https://travel.state.gov/en/international-travel/planning/guidance/medicine-health.html", type: "gov" },
+          { label: "US State Department: Egypt country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Egypt.html", type: "gov" }
+        ],
+        judgment: "The payment-before-treatment practice, often in cash, is the consistent, well-attested shape of Egyptian private care for visitors rather than an Egypt-specific official statement, and we have not implied one exists; the official language cited is the State Department's general guidance that many locations require payment or a deposit before services. The transfer pattern from the coast and the recompression-chamber point for divers are structural facts of the geography and the dive industry. No figure appears because we did not source a published visitor tariff we would defend. Checked August 2026.",
+      }
     }
   ]
 };

@@ -514,6 +514,85 @@ export default {
         ],
         judgment: "Checked Aug 2026. A deliberately short spoke: Bahrain is small, well covered and has no registration quirk or coverage gap worth a paragraph. The one genuinely useful point is regional rather than local, that a traveler arriving from Dubai should not assume the UAE's app-calling block applies here, and it is stated with the same hedge as the rest of our Gulf pages because the sources on this topic sell the fix they describe. On a short stop the honest answer may be to buy nothing at all."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "Visitors are charged for treatment, with only a partial government subsidy at public facilities",
+      glance: [
+        { k: "You pay", v: "As a visitor, at listed fees" },
+        { k: "Published fee", v: "7 dinars a consultation" },
+        { k: "Care", v: "Good, and never far away" },
+        { k: "Real risk", v: "An admission, or the flight home" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Bahrain: the fee list is published",
+      description: "Bahrain publishes its health fees for non-Bahraini patients: a government health center consultation is 7 dinars. Visitors pay, and care is never far away.",
+      h1: "What does getting sick in Bahrain cost a visitor?",
+      lede: "Bahrain is the rare country on this page's map that publishes the answer. Visitors are charged for treatment, with only a partial government subsidy at public facilities, and the Ministry of Health posts its price lists for non-Bahraini patients, starting with the consultation fee itself.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Bahrain's structure is the Gulf's usual one with an unusually transparent price tag. The public system is built around citizens, who are treated free; a <b>non-Bahraini patient outside the state schemes is charged</b>, and the <b>Ministry of Health publishes the price lists</b> that say what. The first line on its health-center list is the one a visitor is most likely to meet: an <b>outpatient doctor consultation at a government health center is 7 Bahraini dinars</b>, about <b>19 dollars</b>. Around that published fact sits a compact, well-equipped island: Bahrain is small and urban, a hospital is never far, English is widely spoken, and the private tier in Manama is modern and pay-as-you-go. The honest exposure is not reaching care or affording a consultation. It is a serious <b>admission</b>, billed to you as a visitor, and the <b>medically supervised flight home</b> in a worst case, which no Bahraini list prices.",
+      insurance: true,
+      insuranceNote: "Bahrain earns calm: care is close, good and English-speaking, and the ministry's own published fee for a government health-center consultation, 7 dinars, tells you the everyday tier will not hurt. What cover is for here is the layer no price list covers: a serious admission billed to a visitor, and the flight home in a hospital bed if it comes to that. Judge a policy on its inpatient and evacuation lines, not the consultation fee, which Bahrain has already answered. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, go; Bahrain's hospitals are close, and the bill can be dealt with afterwards.",
+      sourcedFigures: [
+        { fact: "Bahrain Ministry of Health published price list for non-Bahraini patients not enrolled in the primary care scheme: outpatient doctor consultation at a government health center 7 Bahraini dinars, about 19 dollars",
+          kind: "routine", src: 0, forms: ["7 Bahraini dinars", "7 dinars", "19 dollars"] }
+      ],
+      sections: [
+        {
+          h: "The published fee, from the ministry itself",
+          icon: "tag",
+          key: { fig: "7 dinars", tag: "Health center consultation", text: "The Ministry of Health publishes its fees for non-Bahraini patients outside the state schemes: an outpatient doctor consultation at a government health center is 7 Bahraini dinars, about 19 dollars.", tone: "teal" },
+          p: [
+            "This page can do something most of this wave cannot: quote an official price. Bahrain's <b>Ministry of Health publishes the fee lists</b> for health services provided to <b>non-Bahraini patients</b> who are not government employees and not enrolled in the primary care scheme, which is exactly the position of a short-stay visitor. The list's first line: an <b>outpatient doctor consultation at a government health center costs 7 Bahraini dinars</b>, about <b>19 dollars</b> at the dinar's fixed rate.",
+            "Note precisely what that figure is: the government <b>health-center consultation</b>, the primary-care front door. Hospital, emergency and inpatient charges are set by their own schedules, which the ministry's fee page indexes but which we have not turned into figures here."
+          ]
+        },
+        {
+          h: "Close, good, and charged",
+          icon: "alert",
+          key: { tag: "The Gulf rule, softened", text: "Citizens are treated free; a visitor is charged, with only a partial government subsidy at public facilities. Care itself is close and good on a small urban island.", tone: "amber" },
+          p: [
+            "The structure is the Gulf's: the state system exists for <b>citizens</b>, and a visitor is a <b>paying patient</b>, at the published rates in public facilities, with only a partial government subsidy softening them, and at private rates in Manama's private hospitals, which are modern, English-speaking and pay-as-you-go.",
+            "If it looks serious, go; Bahrain's hospitals are close, and the bill can be dealt with afterwards. On an island this compact and urban, reaching care is genuinely never the problem, which makes Bahrain one of the lower-drama pages in the Gulf set."
+          ]
+        },
+        {
+          h: "What the fee list does not price",
+          icon: "plane",
+          key: { tag: "The real tail", text: "A serious admission is billed to you as a visitor, and a medically supervised flight home appears on no Bahraini list. Those two are what cover is for.", tone: "amber" },
+          p: [
+            "Keep the published figure in proportion. A consultation fee, even an official one, prices the smallest event on this page. A <b>serious admission</b>, surgery, intensive care, days on a ward, is billed to a visitor at charges the consultation fee does not predict, and the <b>flight home in a hospital bed</b>, the true worst-case bill for any Gulf trip, appears on no ministry list anywhere.",
+            "Those two layers are what a policy is for in Bahrain, and they are the same two layers as in richer-priced neighbours. Read a policy's inpatient limit and its evacuation line, and treat the consultation fee as the good news it is rather than the whole story."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Small island, clear split", text: "Pay the everyday yourself at published or private rates. Cover the admission and the flight home, which no fee list prices.", tone: "teal" },
+          p: [
+            "Bahrain's split is unusually clean. The everyday tier is close, good and priced where you can see it, so pay it yourself and keep the receipts. The serious tier, an admission and the possible flight home, is what the policy is for, and the country's compactness means none of it involves a rescue drama on top.",
+            "Weekend visitors from Saudi and stopover travelers should resist the short-trip logic of skipping cover, since an admission does not price itself by trip length. For paying on the ground, see the <a href=\"/bahrain/cash-or-card\">Bahrain cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much does a doctor cost in Bahrain?", a: "Bahrain publishes it: the Ministry of Health's fee list for non-Bahraini patients outside the state schemes prices an outpatient doctor consultation at a government health center at 7 Bahraini dinars, about 19 dollars. Private clinic fees in Manama are set by the clinics and paid as you go." },
+        { q: "Is healthcare free for tourists in Bahrain?", a: "No. Free care at public facilities is for citizens; a visitor is charged, with only a partial government subsidy at public facilities, at the ministry's published rates, and at private rates in the private tier." },
+        { q: "How good are hospitals in Bahrain?", a: "Good, close and English-speaking on a small urban island where reaching care is never the problem. The private hospitals in Manama are modern and used to expatriate and visiting patients." },
+        { q: "Does my US health insurance work in Bahrain?", a: "Rarely, and Medicare not at all. Facilities bill you directly, so what counts in a policy is the inpatient limit for a serious admission and the evacuation line for a medically supervised flight home." },
+        { q: "Do I need travel insurance for Bahrain?", a: "Not for the consultation tier, which the ministry's own published consultation fee shows is small. The honest reasons are a serious admission billed to you as a visitor and the flight home in a worst case, neither of which any fee list prices." }
+      ],
+      sources: {
+        links: [
+          { label: "Bahrain Ministry of Health: fees of health treatments and services, the published price lists for non-Bahraini patients not enrolled in the primary care scheme, including the health center consultation fee", url: "https://www.moh.gov.bh/services/feesofHealthTreatments?lang=en", type: "gov" },
+          { label: "US State Department: Bahrain country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Bahrain.html", type: "gov" }
+        ],
+        judgment: "The 7 dinar consultation figure is read directly from the Ministry of Health's own published health-center price list for non-Bahraini patients outside the state schemes, the exact population a short-stay visitor falls into, and the dollar bracket uses the dinar's fixed peg, hedged with about. We deliberately quote only that one line: the ministry's page indexes further lists for other services, several dated years back, and we have not turned any of them into figures here. The partial-subsidy characterisation matches the position our Bahrain guide already carries. Checked August 2026.",
+      }
     }
   ],
 

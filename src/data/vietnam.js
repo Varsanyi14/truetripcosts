@@ -559,6 +559,80 @@ export default {
         ],
         judgment: "Checked Aug 2026. The two load-bearing points are that Vietnamese coverage is genuinely better than its income level suggests, which is the desk's read from operator maps and consistent traveler accounts, and that SIM registration is enforced rather than nominal, which is why this page tells you where to buy rather than only what to buy. Local package contents shift with promotions, so the 5 to 8 dollar range is the current shape of the offer. We earn on eSIM links and nothing on a Viettel SIM."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "evacuationIsTheCost",
+      exposureQuote: "the serious case is treated in Bangkok or Singapore, so the bill that matters is the flight",
+      glance: [
+        { k: "Everyday care", v: "City clinics handle it" },
+        { k: "Payment", v: "Expected up front" },
+        { k: "Serious case", v: "Bangkok or Singapore" },
+        { k: "Real risk", v: "The flight, not the ward" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Vietnam: the serious case flies to Bangkok",
+      description: "Vietnam's international clinics handle the everyday, paid up front. The genuinely serious case is treated in Bangkok or Singapore, and the flight is the bill.",
+      h1: "What does getting sick in Vietnam cost a visitor?",
+      lede: "Vietnam's honest medical geography has three tiers: the international clinics of Hanoi and Ho Chi Minh City for the everyday, local hospitals that stabilise, and then the region's hubs. Beyond the first tier, the serious case is treated in Bangkok or Singapore, so the bill that matters is the flight.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "For everyday problems, Vietnam is easy: <b>Hanoi and Ho Chi Minh City run international clinics</b> with English-speaking doctors, walk-in service and prices that will not wreck a trip, and Danang has a slice of the same. Payment is <b>expected up front</b>, in cash or on a card, everywhere in the system. The structure changes with severity: Vietnamese hospitals <b>stabilise</b> the serious case, and the established pattern after stabilisation is a <b>medically supervised flight to Bangkok or Singapore</b>, where the region concentrates its top-end capacity. That flight, not any Vietnamese ward, is the largest number this page implies, and the <b>evacuation limit</b> on a policy is the line to read before any other.",
+      insurance: true,
+      insuranceNote: "The everyday tier in Vietnam is inexpensive and genuinely easy to use, and we will not pretend a clinic visit here is a financial risk. Cover is for the structure above it: payment expected up front, and a serious case that leaves the country for Bangkok or Singapore under medical supervision. Judge a policy for Vietnam on its evacuation limit and on whether its assistance line can organise that flight, because those are the two things you cannot improvise. Faye covers trip medical and evacuation.",
+      careFirst: "If it is serious, get to a hospital or an international clinic first and let your insurer chase the paperwork.",
+      sections: [
+        {
+          h: "The everyday tier is cheap and close, in the cities",
+          icon: "tag",
+          key: { tag: "City clinics", text: "Hanoi and Ho Chi Minh City run international clinics with English-speaking doctors and walk-in service. The everyday problem is handled well and inexpensively.", tone: "teal" },
+          p: [
+            "Start with the reassurance, because it is real: for a stomach bug, an infection, stitches or a scooter graze, the <b>international clinics</b> of Hanoi, Ho Chi Minh City and increasingly Danang handle a visitor quickly, in English, at prices that read as small by US standards. Pharmacies are everywhere and inexpensive.",
+            "Payment is <b>up front</b> across the system, cash or card, with reimbursement being your problem rather than the clinic's. Keep every receipt and ask for paperwork in English at the international clinics, which are used to producing it for insurers."
+          ]
+        },
+        {
+          h: "The serious case leaves the country",
+          icon: "plane",
+          key: { tag: "Bangkok or Singapore", text: "Vietnamese hospitals stabilise the serious case; definitive complex care is a medically supervised flight away, in Bangkok or Singapore.", tone: "amber" },
+          p: [
+            "The structural fact that shapes cover here: for major trauma, cardiac events and anything genuinely complex, Vietnamese hospitals <b>stabilise</b>, and the pattern your insurer's assistance line will follow is a <b>flight to Bangkok or Singapore</b>. That is where the region keeps its top-end medicine, and it is the same route the expatriates who live here plan around.",
+            "Outside the two big cities, add a first leg: the highlands, the far north, Phu Quoc and the smaller coast towns are hours from even the stabilising tier, so a serious problem there is a transport question before it is a treatment question at all."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "receipt",
+          key: { tag: "Absence is not zero", text: "We have not sourced a Vietnamese price list for visitor care that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. Vietnamese care is priced facility by facility, the international clinics price differently from local hospitals, and we did not source a published visitor tariff we would put our name to, so no dong figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure carries the planning weight: the everyday is cheap and close in the cities, payment comes first, and the serious case flies. The number to ask your insurer for is the evacuation limit, not a consultation fee."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "The flight is the policy", text: "Pay the everyday yourself. Judge a policy on its evacuation limit and its assistance line, because the serious case here is a flight to Bangkok or Singapore.", tone: "teal" },
+          p: [
+            "If it is serious, get to a hospital or an international clinic first and let your insurer chase the paperwork. The split is unusually clean in Vietnam: the everyday tier you simply pay for, and it is small. The serious tier is a regional evacuation, which no one pays for out of pocket comfortably, and which takes an assistance line that knows the hospitals on both ends. That is the whole insurance argument here, and it is a strong one without any dressing up.",
+            "Scooter riders should check the two-wheel fine print, because Vietnam is a scooter country and the exclusion is common. For paying on the ground, see the <a href=\"/vietnam/cash-or-card\">Vietnam cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Where do serious medical cases in Vietnam go?", a: "Vietnamese hospitals stabilise, and the established pattern for complex or critical cases is a medically supervised flight to Bangkok or Singapore, organised through an insurer's assistance line. That flight is the largest realistic bill for a Vietnam trip." },
+        { q: "Is healthcare in Vietnam cheap?", a: "The everyday tier genuinely is: international clinics in Hanoi, Ho Chi Minh City and Danang see visitors quickly, in English, at prices small by US standards, and pharmacies are inexpensive. The money story is the regional evacuation for the serious case." },
+        { q: "Do Vietnamese hospitals require payment up front?", a: "Yes, payment up front is the working rule across the system, cash or card, with your insurer reimbursing you afterwards unless it has direct billing with an international clinic. Keep every receipt." },
+        { q: "Does my US health insurance work in Vietnam?", a: "Rarely, and Medicare not at all. What matters for Vietnam is an evacuation limit that would genuinely cover a flight to Bangkok or Singapore, and an assistance line that can organise it." },
+        { q: "Do I need travel insurance for Vietnam?", a: "Not for the clinic tier, which is cheap. The honest reason is the structure above it: a serious case leaves the country under medical supervision, and that flight is the bill worth insuring, plus scooter cover if you ride." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Vietnam country information for US travelers, including health and medical care guidance", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Vietnam.html", type: "gov" }
+        ],
+        judgment: "The three-tier structure, international clinics for the everyday, local stabilisation, and evacuation to Bangkok or Singapore for the complex case, is the consistent shape of official US guidance and of how insurers actually move patients from Vietnam, stated qualitatively. Payment up front is the system-wide practice. No dong figure appears because pricing varies by facility and we did not source a published visitor tariff we would defend. Checked August 2026.",
+      }
     }
   ]
 };

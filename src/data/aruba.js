@@ -545,6 +545,81 @@ export default {
         ],
         judgment: "Checked Aug 2026. The honest recommendation for the most common Aruba trip is to buy nothing, and we earn a commission on eSIMs, so that sentence is the point of the page rather than a hedge in it. Where we do recommend buying, the reasoning is inverted from most of this site: island prepaid is expensive enough that the eSIM is usually the better value, which is worth saying plainly rather than leaving a reader to assume the local-SIM advice from our Asia pages applies here. Local SIM pricing is a current read and the allowances are small enough that the comparison is not close."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "evacuationIsTheCost",
+      exposureQuote: "one hospital serves the island, and the complex case flies out",
+      glance: [
+        { k: "On the island", v: "One hospital, decent care" },
+        { k: "Complex case", v: "Flies out for treatment" },
+        { k: "Payment", v: "Billed as a visitor" },
+        { k: "Real risk", v: "The flight off the island" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Aruba: one hospital, then a flight",
+      description: "Aruba has one hospital, and it handles the everyday well. The complex case flies out, usually to Colombia or the US, and that flight is the honest exposure.",
+      h1: "What does getting sick in Aruba cost a visitor?",
+      lede: "Aruba's medical story is the honest small-island one: one hospital serves the island, and the complex case flies out. The hospital is decent, the island is safe and close to the US, and none of that changes what happens when a case outgrows what one island facility can do.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Aruba runs <b>one hospital</b>, the island's own, plus clinics and an urgent-care tier serving the resort strip. For the everyday, that is comfortably enough: visitors are seen quickly, English is spoken everywhere, and you are <b>billed as a visitor</b>, with payment or proof of cover expected around admission. The structural limit is capacity, not quality: a single island facility cannot hold every specialty, so the <b>complex case flies out</b>, to Colombia, to the US mainland, or elsewhere in the region depending on the case and the insurer. In the Dutch Caribbean generally, official US guidance prices that pattern plainly: evacuations in the region typically run to the <b>tens of thousands of dollars</b>. The flight, not the ward, is what a Aruba policy is really for.",
+      insurance: true,
+      insuranceNote: "Aruba deserves its easy reputation: safe, close, one decent hospital, an everyday problem handled without drama, and we would rather say that than manufacture worry. The honest exposure is the ceiling: when a case outgrows one island facility, it flies out, and that medically supervised flight is the bill that matters. Cover here is bought for the evacuation line, and the everyday clinic visit is not the reason. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, go to the hospital first and let the billing follow.",
+      sections: [
+        {
+          h: "One hospital, and it is fine for the everyday",
+          icon: "tag",
+          key: { tag: "The island tier", text: "Aruba's hospital and its urgent-care tier handle everyday problems well, in English, with visitors billed and payment or proof of cover expected around admission.", tone: "teal" },
+          p: [
+            "For the problems a beach trip actually produces, sunburn gone wrong, an ear infection, stitches, a bad stomach, Aruba is easy. The island's hospital and the clinics serving the resort strip see visitors constantly, English is universal, and the care is decent.",
+            "If it looks serious, go to the hospital first and let the billing follow. You are a paying patient here: expect to show a card or proof of cover around admission and to settle or document everything before you leave, with reimbursement your problem unless your insurer direct-bills."
+          ]
+        },
+        {
+          h: "The ceiling is the flight",
+          icon: "plane",
+          key: { tag: "Flying out", text: "A single island facility cannot hold every specialty. The complex case flies out, to Colombia or the US mainland, and regional evacuations typically run to the tens of thousands of dollars.", tone: "amber" },
+          p: [
+            "The limit is arithmetic, not competence: one hospital cannot staff every specialty for every emergency, so cardiac surgery, major trauma, complicated obstetrics and the like are <b>stabilised and flown out</b>. Colombia is close and capable, the US mainland is the other pole, and the destination is usually your insurer's call as much as the doctors'.",
+            "Official US guidance for the Dutch Caribbean puts the regional pattern in round terms: medical evacuation typically costs in the <b>tens of thousands of dollars</b>, paid by the patient or the policy. That is the one number-shaped fact worth planning around here, and it belongs to the flight."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "receipt",
+          key: { tag: "Absence is not zero", text: "We have not sourced an Aruban price list for visitor care that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. We did not source a published Aruban tariff for visitor care that we would put our name to, so no figure appears here beyond the qualitative regional evacuation pattern above. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure is enough to plan with: one hospital, everyday care handled, visitors billed, and a flight for the complex case. The evacuation line on a policy is the line doing the work."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Buy the ceiling", text: "Pay the everyday yourself. Cover the ceiling: an evacuation line that would genuinely fund a medically supervised flight off the island.", tone: "teal" },
+          p: [
+            "Aruba is a short-trip island, and short trips are where people skip cover, which is backwards here for the same reason it is in the Bahamas: the trip's length does not shrink the flight's price. The everyday you can pay for; the flight off the island you insure.",
+            "Save your insurer's assistance number, carry a card with headroom for the admission conversation, and keep every receipt. For paying on the ground, see the <a href=\"/aruba/cash-or-card\">Aruba cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How good is the hospital in Aruba?", a: "Decent, and comfortably enough for the everyday problems a beach trip produces, with English spoken and visitors seen quickly. Its limit is capacity: one island facility cannot hold every specialty, so complex cases fly out." },
+        { q: "Where do serious medical cases in Aruba go?", a: "They are stabilised and flown out, to Colombia, the US mainland, or elsewhere in the region depending on the case and the insurer. That medically supervised flight is the largest realistic bill an Aruba trip can produce." },
+        { q: "How much does a medical evacuation from Aruba cost?", a: "Official US guidance for the Dutch Caribbean puts regional evacuations in the tens of thousands of dollars, paid by the patient or the policy. We publish no tighter figure because every flight is priced to its case." },
+        { q: "Do I pay for medical care in Aruba as a tourist?", a: "Yes, you are billed as a visitor, with payment or proof of cover expected around admission and reimbursement your problem unless your insurer direct-bills. Keep every receipt for the claim." },
+        { q: "Do I need travel insurance for Aruba?", a: "For the everyday, no argument is needed either way, it is small. The honest reason is the ceiling: a complex case flies off the island, and the evacuation line on a policy is what pays for that flight." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Aruba country information for US travelers, including health and medical care guidance", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Aruba.html", type: "gov" },
+          { label: "US Consulate General Curacao and US Mission to the Dutch Caribbean: medical assistance, on medical evacuation from the Dutch Caribbean islands typically costing tens of thousands of dollars", url: "https://cw.usconsulate.gov/medical-assistance/", type: "gov" }
+        ],
+        judgment: "The one-hospital structure, the fly-out pattern for complex cases, and the billed-as-a-visitor position are structural facts consistent with official US guidance for Aruba and the Dutch Caribbean, stated qualitatively. The tens-of-thousands evacuation shape is the US Consulate's own regional characterisation, and we have kept it qualitative rather than turning it into a quote for any particular flight. Checked August 2026.",
+      }
     }
   ]
 };

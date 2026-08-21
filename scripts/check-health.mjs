@@ -95,6 +95,23 @@ const PRICE_EXEMPT = new Set([
   // (HZZO publishes its fee schedule).
   'italy', 'spain', 'portugal', 'greece', 'czechia', 'poland', 'hungary', 'croatia',
   'thailand', 'turkey', 'costa-rica', 'colombia', 'saudi-arabia',
+  // Batch 5, the deposit and evacuation tier that completes the rollout. Every structural
+  // claim traces to an official page (State Department country pages, the Department's
+  // general medicine-and-health guidance for the deposit pattern, US Embassy medical pages
+  // for the Dominican Republic and the Bahamas, the Philippine Official Gazette for RA
+  // 10932, Planalto and the Brazilian health ministry for the SUS, and the Argentina
+  // guide's already-verified Decree 366/2025 spine), and every one of these ships without
+  // a routine-care price because no official or provider-published visitor tariff was
+  // sourced. Two countries in the batch are NOT here: bahrain carries the Ministry of
+  // Health's own published 7 dinar health-center consultation fee, and dominican-republic
+  // is exempt on routine prices but carries the embassy's evacuation floor as a sourced
+  // evacuation-kind figure, which PRICE_EXEMPT deliberately permits. The most promising
+  // exemptions to retire on a later sourcing pass: india (the flagship private chains
+  // publish some package prices), vietnam (the international clinics publish fee
+  // guides), and argentina (provincial non-resident tariffs are being gazetted as the
+  // 2025 reform is implemented).
+  'india', 'philippines', 'indonesia', 'dominican-republic', 'south-africa', 'egypt',
+  'vietnam', 'bahamas', 'ecuador', 'aruba', 'brazil', 'argentina', 'morocco', 'oman',
 ]);
 
 // Countries where the honest call is that cover matters LESS than a traveler assumes, from
@@ -104,6 +121,10 @@ const PRICE_EXEMPT = new Set([
 const CRUX = new Set([
   'taiwan', 'thailand', 'italy', 'spain', 'portugal', 'greece', 'czechia', 'poland',
   'hungary', 'croatia', 'costa-rica', 'colombia', 'turkey', 'saudi-arabia',
+  // Batch 5: brazil, where the honest lead is that the SUS treats everyone in an
+  // emergency, tourists included, free at the door. No insurance-nudge row may ever be
+  // harvested onto its card, per rail 6.
+  'brazil',
 ]);
 
 // Currency figures in prose. Deliberately broad: dollar amounts, written dollars, and the
@@ -123,11 +144,16 @@ const CRUX = new Set([
 // Rule 3 can over-match (a distance, a population), and that is the safe direction: a
 // false positive costs an editor one declaration, a false negative ships a fabricated
 // price under a commission link.
-const CURRENCY_QUALIFIER = '(?:Hong Kong|Canadian|Singapore|Singaporean|Australian|New Zealand|US|Taiwan|Taiwanese|Jamaican|Namibian|Emirati|Qatari|Swiss|Danish|Norwegian|Swedish|Icelandic)\\s';
+// WIDENED IN BATCH 5: bahrain is the first spoke to quote dinar amounts with a
+// nationality qualifier (7 Bahraini dinars), so the qualifier list gains Bahraini and the
+// currency codes gain BHD, or that exact form would pass the net unseen, the same hole
+// the Batch-3 widening closed for Hong Kong and Canadian dollars.
+const CURRENCY_QUALIFIER = '(?:Hong Kong|Canadian|Singapore|Singaporean|Australian|New Zealand|US|Taiwan|Taiwanese|Jamaican|Namibian|Emirati|Qatari|Swiss|Danish|Norwegian|Swedish|Icelandic|Bahraini)\\s';
 const FIGURE_RE = new RegExp([
   '\\$\\s?[\\d,]+(?:\\.\\d+)?(?:\\s?(?:to|-)\\s?\\$?[\\d,]+(?:\\.\\d+)?)?(?:k|\\+)?',
   `[\\d,]+(?:\\.\\d+)?(?:\\s?(?:to|-)\\s?[\\d,]+(?:\\.\\d+)?)?\\s?(?:${CURRENCY_QUALIFIER})?(?:dollars?|USD|euros?|EUR|pounds?)`,
-  '[\\d,]+(?:\\s?(?:to|-)\\s?[\\d,]+)?\\s?(?:pesos|GEL|KWD|LAK|KHR|LKR|JMD|NAD|CNY|HKD|CAD|SGD|yuan|RMB|lari|dinars?)',
+  `[\\d,]+(?:\\.\\d+)?(?:\\s?(?:to|-)\\s?[\\d,]+(?:\\.\\d+)?)?\\s?(?:${CURRENCY_QUALIFIER})?(?:dinars?)`,
+  '[\\d,]+(?:\\s?(?:to|-)\\s?[\\d,]+)?\\s?(?:pesos|GEL|KWD|LAK|KHR|LKR|JMD|NAD|CNY|HKD|CAD|SGD|BHD|yuan|RMB|lari)',
   '\\b\\d{1,3}(?:,\\d{3})+(?:\\.\\d+)?\\b',
 ].join('|'), 'gi');
 

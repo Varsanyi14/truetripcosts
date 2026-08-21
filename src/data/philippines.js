@@ -547,6 +547,81 @@ export default {
         ],
         judgment: "Checked Aug 2026. The 30-day tourist validity is widely described in carrier-facing registration material and is the detail most likely to catch a long-stay visitor, so it is stated as commonly described rather than as a precise statutory figure, and anyone staying longer should confirm with the carrier at purchase. The registration distinction between a Philippine SIM and an international travel eSIM is real and it also favours the product we earn on, which is why this page states the local pack is cheaper per gigabyte in the same breath. Coverage is the desk's read from operator footprints and consistent traveler accounts."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "depositFirst",
+      exposureQuote: "private hospitals routinely ask for a deposit at admission, and discharge waits until the bill is settled",
+      glance: [
+        { k: "Emergencies", v: "Deposits are illegal, by law" },
+        { k: "Admission", v: "A deposit is still the norm" },
+        { k: "Discharge", v: "After the bill is settled" },
+        { k: "Real risk", v: "A serious case on a far island" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in the Philippines: the law says no deposit, the desk asks anyway",
+      description: "A Philippine law bans deposits for emergency care, yet private hospitals still ask for one at admission and discharge waits for the bill. Here is the honest split.",
+      h1: "What does getting sick in the Philippines cost a visitor?",
+      lede: "The Philippines has one of the more surprising medical-money stories on this site: demanding a deposit in a true emergency is a crime here, with prison terms attached. And yet private hospitals routinely ask for a deposit at admission, and discharge waits until the bill is settled. Both halves are true, and the line between them is the word emergency.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Philippine law is unusually explicit: under <b>Republic Act 10932</b>, the Anti Hospital Deposit Law, it is <b>unlawful for any hospital or clinic to demand a deposit or advance payment as a prerequisite for basic emergency care</b>, in emergency or serious cases, with real criminal penalties. That law protects the first hours. Outside them, the ordinary machinery runs: private hospitals, where a visitor gets treated, ask for a <b>deposit at admission</b> for planned or continuing care, bill as treatment runs, and expect the account settled before you leave. The other Philippine fact is the map: this is an archipelago of thousands of islands, and a serious case on Palawan, Siargao or a small dive island usually travels to <b>Manila or Cebu</b> before it is fully treated, at your cost.",
+      insurance: true,
+      insuranceNote: "The honest Philippine read is layered: the emergency room is protected by law, everyday care in the cities is inexpensive, and we will not pretend otherwise. What earns cover here is what comes after the first hours, the admission with its deposit and settled-before-discharge bill, and above all the geography: a serious case on a far island travels to Manila or Cebu, and that transfer is the bill that surprises people. Check the medical transport line before the outpatient benefit. Faye covers trip medical and evacuation.",
+      careFirst: "If it is a true emergency, go; the law is on your side at the door, and the money comes after.",
+      sections: [
+        {
+          h: "The law that protects the first hours",
+          icon: "shield",
+          key: { tag: "RA 10932", text: "In emergency or serious cases it is unlawful for a hospital or clinic to demand a deposit or advance payment before giving basic emergency care. The law carries prison terms.", tone: "teal" },
+          p: [
+            "This is worth knowing verbatim, because it can matter at a desk: <b>Republic Act 10932</b>, signed in 2017, makes it unlawful for any hospital or medical clinic to <b>request, demand or accept a deposit or any other form of advance payment as a prerequisite for administering basic emergency care</b>, and backs that with prison terms and fines, rising for hospital officers who set such policies. Public or private, the emergency room door is not allowed to be a payment window.",
+            "If it is a true emergency, go; the law is on your side at the door, and the money comes after. The law also allows a hospital that cannot handle a case to stabilise and transfer it, which connects to the geography half of this page."
+          ]
+        },
+        {
+          h: "After the first hours, the deposit returns",
+          icon: "alert",
+          key: { tag: "Admission practice", text: "For planned or continuing care beyond emergency stabilization, private hospitals ask for a deposit, bill as treatment runs, and expect the account settled before discharge.", tone: "amber" },
+          p: [
+            "Once the case stops being a legal emergency and becomes an admission, the ordinary machinery of Philippine private healthcare runs. Private hospitals, which is where a visitor realistically gets treated, ask for a <b>deposit at admission</b> for planned or continuing care, add to the account as treatment runs, and expect it <b>settled before discharge</b>. Bring a credit card with headroom, and know whether your insurer can send a guarantee of payment.",
+            "None of this makes the Philippines unusual in its region. What makes it unusual is the first section: the emergency hours are legally protected in a way few countries match, and knowing that is worth real money at the right moment."
+          ]
+        },
+        {
+          h: "The archipelago is the other bill",
+          icon: "plane",
+          key: { tag: "Islands", text: "Serious cases on the smaller islands travel to Manila or Cebu before they are fully treated. That transfer, by air when it matters, is the cost the map builds in.", tone: "amber" },
+          p: [
+            "The Philippines is thousands of islands, and its serious medical capacity is concentrated in <b>Manila and Cebu</b>, with good regional hospitals in a handful of other cities. On Palawan, Siargao, Boracay or a small dive island, local facilities stabilise; the serious case then <b>travels</b>, by scheduled flight if it can wait and by medical transport if it cannot.",
+            "For the trips most visitors actually take here, beaches, islands and diving, that transfer is the realistic large bill, and it is why the evacuation and medical transport line of a policy matters more than the outpatient benefit. Divers should also know where the nearest recompression chamber is before they need one."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "receipt",
+          key: { tag: "Absence is not zero", text: "We have not sourced a Philippine price list for visitor care that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. Philippine private care is priced hospital by hospital, and we did not source a published visitor tariff we would put our name to, so no peso figure appears here. Everyday care in the cities is inexpensive by US standards, and that qualitative claim is as far as we will go.",
+            "The structure holds without a number: the emergency hours are legally protected, the admission takes a deposit, discharge waits for the bill, and the far islands add a transfer. For paying on the ground, see the <a href=\"/philippines/cash-or-card\">Philippines cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Can a hospital in the Philippines demand a deposit in an emergency?", a: "No. Republic Act 10932, the Anti Hospital Deposit Law, makes it a crime to demand a deposit or advance payment as a prerequisite for basic emergency care in emergency or serious cases. That protection covers the first hours; admission for continuing care is a different matter." },
+        { q: "Do private hospitals in the Philippines require a deposit for admission?", a: "For planned or continuing care beyond emergency stabilization, yes, a deposit at admission is the norm, with the account settled before discharge. An insurer that can send a guarantee of payment makes this much easier." },
+        { q: "What happens if I get seriously ill on a small Philippine island?", a: "Local facilities stabilise and the serious case travels, usually to Manila or Cebu, by scheduled flight if it can wait and medical transport if it cannot. That transfer is the realistic large bill for an island trip, which is why the medical transport line on a policy matters here." },
+        { q: "Is healthcare in the Philippines cheap?", a: "Everyday care in the cities is inexpensive by US standards, and English is spoken almost everywhere in the system, which makes it easy to use. A private admission or an inter-island medical transfer is where real money appears." },
+        { q: "Do I need travel insurance for the Philippines?", a: "The honest reasons are the admission deposit and, above all, the geography: a serious case on a far island travels to Manila or Cebu at your cost. Check the evacuation and medical transport lines before anything else, and divers should check dive cover specifically." }
+      ],
+      sources: {
+        links: [
+          { label: "Official Gazette of the Republic of the Philippines: Republic Act No. 10932, the Anti Hospital Deposit Law, banning deposits or advance payment as a prerequisite for basic emergency care", url: "https://www.officialgazette.gov.ph/2017/08/03/republic-act-no-10932/", type: "gov" },
+          { label: "US State Department: Philippines country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Philippines.html", type: "gov" }
+        ],
+        judgment: "The emergency-deposit ban is the law's own text, cited from the Official Gazette, and we have quoted its scope precisely: it protects basic emergency care in emergency or serious cases, not the whole stay. The deposit-at-admission and settled-before-discharge practice for continuing care is the consistent, well-attested shape of Philippine private hospital billing, stated qualitatively. No peso figure appears because we did not source a published visitor tariff we would defend. Checked August 2026.",
+      }
     }
   ]
 };

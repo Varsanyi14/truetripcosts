@@ -651,6 +651,85 @@ export default {
         ],
         judgment: "Checked Aug 2026. For the most common trip here, an all-inclusive week, the honest answer is that resort wifi is enough and we earn nothing from saying so. The genuinely useful money note is the resort premium-wifi upsell, which a data plan often undercuts. Local bundle pricing is a current read and varies by outlet, and unlike our Latin American pages the local SIM is not automatically the cheaper option, so this page tells you to compare rather than asserting a winner."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "depositFirst",
+      exposureQuote: "medical care here requires upfront payment, even in emergencies",
+      glance: [
+        { k: "At the desk", v: "Payment before treatment" },
+        { k: "Emergencies", v: "Upfront payment applies too" },
+        { k: "Serious case", v: "Flies to the US" },
+        { k: "Real risk", v: "The evacuation bill" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in the Dominican Republic: paid up front, even in emergencies",
+      description: "The US Embassy is blunt: medical care in the DR requires upfront payment, even in emergencies, and an evacuation to the US can cost well over 50,000 dollars.",
+      h1: "What does getting sick in the Dominican Republic cost a visitor?",
+      lede: "The Dominican Republic is one of the few countries where the US government states the money rule in a single sentence: medical care here requires upfront payment, even in emergencies. The second sentence it supplies is the size of the tail: a medical evacuation to the United States can cost well over 50,000 dollars.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "The US Embassy in Santo Domingo puts the two load-bearing facts plainly. First, <b>medical care in the country requires upfront payment, even in emergencies</b>: doctors and hospitals, and especially the private clinics near the resort areas, want cash or a card before treating you, and holds on cards are normal. Second, the serious case leaves: complex and critical problems are stabilised and flown to the United States, and the embassy's own figure is that such an evacuation <b>can cost well over 50,000 dollars</b>, with advance payment often required before the flight moves. Between those two facts sits the ordinary reassurance: clinics in Santo Domingo and the resort zones handle everyday problems quickly, and the everyday is not where the money is.",
+      insurance: true,
+      insuranceNote: "The Dominican Republic is a country where the official language does the arguing: upfront payment even in emergencies, and an evacuation to the US at well over 50,000 dollars. What cover buys here is the ability to pay at the door without draining a card, and above all the flight home, which is the bill that actually wrecks trips. Check the evacuation limit first and the assistance line's speed second. Faye covers trip medical and evacuation.",
+      careFirst: "If it is a real emergency, get to a hospital first and settle the payment question afterwards.",
+      sourcedFigures: [
+        { fact: "US Embassy Santo Domingo: a medical evacuation to the United States can cost well over 50,000 dollars",
+          kind: "evacuation", src: 0, forms: ["50,000 dollars", "$50,000+"] }
+      ],
+      sections: [
+        {
+          h: "Upfront payment, in the government's own words",
+          icon: "alert",
+          key: { tag: "The stated rule", text: "Medical care in the country requires upfront payment, even in emergencies, and many doctors and hospitals require payment in cash before providing treatment.", tone: "amber" },
+          p: [
+            "There is no need to soften or dramatise this, because the source is official and blunt: the US Embassy tells travelers that <b>medical care in the country requires upfront payment, even in emergencies</b>, and that many doctors and hospitals require <b>payment in cash before providing treatment</b>. The private clinics serving the resort corridors of Punta Cana and Puerto Plata are exactly where visitors meet this, and card holds at admission are normal.",
+            "If it is a real emergency, get to a hospital first and settle the payment question afterwards. Then get your insurer's assistance line on the phone early, because a guarantee of payment from a recognised insurer is what stands in for the cash."
+          ]
+        },
+        {
+          h: "The tail is the flight to the US",
+          icon: "plane",
+          key: { fig: "$50,000+", tag: "Evacuation", text: "The embassy's own figure: a medical evacuation to the United States can cost well over 50,000 dollars, and advance payment is often required before the flight moves.", tone: "amber" },
+          p: [
+            "For the genuinely serious case, the established pattern is stabilise and fly to the United States, and this is the rare page where an official source prices the tail: the embassy states that such an evacuation <b>can cost well over 50,000 dollars</b>, and its own guidance adds that medevac operators often require <b>advance payment, partial or full</b>, before they fly. Read that figure as a floor for a complex case, not a quote.",
+            "That single number is the honest core of the insurance question here. An evacuation limit that would not cover it is a policy that fails at exactly the moment it exists for."
+          ]
+        },
+        {
+          h: "Why the only number here is the flight",
+          icon: "receipt",
+          key: { tag: "Absence is not zero", text: "The evacuation figure is the embassy's own. For everything else, we did not source a Dominican price list for visitors we would stand behind, so nothing else is priced.", tone: "teal" },
+          p: [
+            "One number appears on this page because one number has an official source: the embassy's evacuation figure. For routine and hospital care we did not source a published Dominican tariff for visitors that we would put our name to, so no other figure appears. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure is dependable without them: payment comes first, even in emergencies, the resort-area clinics are where visitors are treated, and the serious case flies north. Everyday problems handled at a clinic are not where the money is."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Door and flight", text: "Cover here is doing two jobs: paying at the door so a card hold does not strand you, and paying for the flight to the US that the serious case takes.", tone: "teal" },
+          p: [
+            "Practically: carry a card with real headroom, because upfront payment is the rule and holds are normal. Save your insurer's assistance number before the trip, and if anything serious happens, call it in parallel with getting care, since the guarantee of payment and the evacuation logistics both start with that call.",
+            "Keep every receipt and itemised bill for the claim. For paying on the ground, see the <a href=\"/dominican-republic/cash-or-card\">Dominican Republic cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do hospitals in the Dominican Republic require payment before treatment?", a: "Yes, and it is the US Embassy's own language: medical care in the country requires upfront payment, even in emergencies, and many doctors and hospitals require cash before providing treatment. Card holds at admission are normal, and a guarantee of payment from your insurer is the practical substitute." },
+        { q: "How much does a medical evacuation from the Dominican Republic cost?", a: "The US Embassy states that a medical evacuation to the United States can cost well over 50,000 dollars, and medevac operators often require advance payment before flying. Treat that as a floor for a complex case, which is why the evacuation limit on a policy is the number to check." },
+        { q: "Are the clinics near the resorts any good?", a: "For everyday problems, yes, they are quick and used to visitors. They are also private businesses that bill up front and at prices aimed at tourists, so ask for costs in writing where you can and keep every receipt." },
+        { q: "Does my US health insurance work in the Dominican Republic?", a: "Rarely, and Medicare not at all. Providers bill you directly and want payment first. What matters in a policy here is a fast guarantee of payment and an evacuation limit that would genuinely cover a flight to the US." },
+        { q: "Do I need travel insurance for the Dominican Republic?", a: "The official facts make the case better than we could: upfront payment even in emergencies, and an evacuation to the US at well over 50,000 dollars. Cover the flight first, the door second, and the everyday not at all." }
+      ],
+      sources: {
+        links: [
+          { label: "US Embassy in the Dominican Republic: health emergencies abroad, on upfront cash payment before treatment and evacuation to the United States costing well over 50,000 dollars", url: "https://do.usembassy.gov/health-emergencies-abroad/", type: "gov" },
+          { label: "US State Department: Dominican Republic country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/DominicanRepublic.html", type: "gov" }
+        ],
+        judgment: "The two load-bearing claims are the US Embassy's own statements: payment upfront even in emergencies, and an evacuation to the United States at well over 50,000 dollars, which we quote as a floor with the embassy's own hedge rather than as a quote for any particular flight. No routine-care figure appears because we did not source a published Dominican tariff for visitors we would defend. Checked August 2026.",
+      }
     }
   ]
 };

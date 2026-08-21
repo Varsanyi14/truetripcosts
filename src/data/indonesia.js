@@ -598,6 +598,80 @@ export default {
         ],
         judgment: "The money changer, card fraud, fake ATM number, registered taxi company and salon fee points all come from current UK FCDO and Australian Smartraveller advice for Indonesia. The 50 to 300 dollar scooter repair range is a typical reported range from traveler accounts and travel insurer guidance, not an official figure, and individual claims have been higher. The rupiah conversion uses roughly 17,900 to the dollar. The vast majority of visits see none of this. Checked August 2026."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "depositFirst",
+      exposureQuote: "hospitals here, including the private ones in Bali, want a deposit or a guarantee before they will admit you",
+      glance: [
+        { k: "Admission", v: "Deposit or guarantee first" },
+        { k: "Bali included", v: "The private hospitals too" },
+        { k: "Serious case", v: "Flies to Singapore" },
+        { k: "Real risk", v: "The deposit, then the flight" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Indonesia: the guarantee before the bed",
+      description: "Indonesian hospitals, including Bali's private ones, want a deposit or a guarantee of payment before admission, and the genuinely serious case flies to Singapore.",
+      h1: "What does getting sick in Indonesia cost a visitor?",
+      lede: "Indonesia's medical money story has two gates. The first is at the hospital desk: hospitals here, including the private ones in Bali, want a deposit or a guarantee before they will admit you. The second is the map: for the genuinely serious case, the answer is a flight, usually to Singapore.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "As a visitor you pay for care in Indonesia, and the paying starts early: hospitals generally expect <b>payment up front</b>, and admission comes with a <b>deposit or a guarantee of payment</b>, at the international private hospitals in Bali and Jakarta as much as anywhere. An insurer that can issue a fast guarantee is the practical key to that gate. The second gate is capability: Indonesian care handles the everyday well and cheaply, but the genuinely serious case, major trauma, cardiac, anything complex, is stabilised and then <b>flown out, usually to Singapore</b>, sometimes to Australia from Bali. That flight is the largest number this page implies, and it is the line on a policy worth reading first.",
+      insurance: true,
+      insuranceNote: "Everyday care in Indonesia is inexpensive and easy to reach in the cities and tourist areas, and we will say that plainly rather than dress the small stuff up as a risk. Cover earns its place at the two gates: the deposit or guarantee a hospital wants before admitting you, and the flight to Singapore that the genuinely serious case takes. A policy for Indonesia should be judged on how fast it can wire a guarantee and on its evacuation limit, not on its outpatient benefit. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, get to the nearest hospital first and let the deposit be someone else's problem while you are treated.",
+      sections: [
+        {
+          h: "The deposit gate, Bali included",
+          icon: "alert",
+          key: { tag: "Guarantee first", text: "Hospitals expect payment up front, and admission takes a deposit or a guarantee of payment, at the international private hospitals as much as anywhere.", tone: "amber" },
+          p: [
+            "Do not let the resort polish fool you about the billing. Indonesian hospitals, including the international private hospitals that serve Bali and Jakarta, generally expect <b>payment up front</b> and want a <b>deposit or a guarantee of payment before admission</b>. Card holds are normal, and treatment beyond stabilisation waits on the money conversation.",
+            "If it looks serious, get to the nearest hospital first and let the deposit be someone else's problem while you are treated. The practical preparation is an insurer with a 24-hour assistance line that Indonesian hospitals recognise, because a <b>guarantee of payment</b> from a known insurer opens the same door the deposit does."
+          ]
+        },
+        {
+          h: "The serious case leaves the country",
+          icon: "plane",
+          key: { tag: "Singapore", text: "Complex and critical cases are stabilised in Indonesia and flown out, usually to Singapore. The flight is the big bill, and the evacuation limit is the number that matters.", tone: "amber" },
+          p: [
+            "Indonesian medicine handles the everyday well. For the genuinely serious case, the established pattern, and the one your insurer's assistance line will follow, is to <b>stabilise locally and evacuate</b>, most often to <b>Singapore</b>, with Australia the alternative from Bali. That is not a criticism of Indonesia so much as a fact about where the region concentrates its top-end capacity.",
+            "The consequence for your money is simple: the largest realistic bill here is not a ward, it is a medically supervised flight across the region, and the <b>evacuation limit</b> on a policy is the number to read before any other. Divers should add the nearest recompression chamber to that thinking, because the dive islands are exactly the places the transfer problem is hardest."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "receipt",
+          key: { tag: "Absence is not zero", text: "We have not sourced an Indonesian price list for visitor care that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. Indonesian care is priced hospital by hospital and island by island, and we did not source a published visitor tariff we would put our name to, so no rupiah figure appears here. Everyday care is inexpensive by US standards, and that qualitative claim is as far as we will go.",
+            "The structure is what to plan around: payment up front, a deposit or guarantee at admission, and a flight for the serious case. Those three facts, not a consultation fee, are what decide the money."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Two numbers", text: "Judge a policy for Indonesia on two things: how fast it can wire a guarantee of payment, and the size of its evacuation limit.", tone: "teal" },
+          p: [
+            "Pay the small stuff yourself: clinics and pharmacies in the cities and tourist areas are inexpensive and easy. For the events that matter, judge a policy on exactly two things: whether its assistance line can put a <b>guarantee of payment</b> in front of an Indonesian admissions desk quickly, and whether its <b>evacuation limit</b> would genuinely cover a medically supervised flight to Singapore.",
+            "Scooter riders, and Bali is full of them, should check the fine print twice: many policies exclude two wheels or require the right license, and the exclusion is discovered at the worst moment. For paying on the ground, see the <a href=\"/indonesia/cash-or-card\">Indonesia cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do hospitals in Bali require a deposit?", a: "The private hospitals serving Bali, like Indonesian hospitals generally, expect payment up front and want a deposit or a guarantee of payment before admission. An insurer whose assistance line can wire a guarantee quickly opens the same door." },
+        { q: "Where do serious medical cases in Indonesia go?", a: "They are stabilised locally and usually flown to Singapore, or to Australia from Bali. That flight is the largest realistic bill for a Indonesia trip, which is why the evacuation limit on a policy matters more than the outpatient benefit." },
+        { q: "Is healthcare in Indonesia cheap?", a: "Everyday care in the cities and tourist areas is inexpensive by US standards. The money story is the admission deposit and, for the serious case, the flight out of the country." },
+        { q: "Does my US health insurance work in Indonesia?", a: "Rarely, and Medicare not at all. Hospitals bill you directly and want the deposit or a guarantee regardless. What counts is an insurer with an assistance line that can act fast across time zones." },
+        { q: "Do I need travel insurance for Indonesia?", a: "The honest reasons are the deposit gate at admission and the Singapore flight for the serious case, plus dive and scooter cover if those are your trip. Check the guarantee-of-payment machinery and the evacuation limit before anything else." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Indonesia country information for US travelers, including health and medical care guidance", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Indonesia.html", type: "gov" }
+        ],
+        judgment: "The payment-up-front and deposit-or-guarantee-at-admission practice, and the stabilise-and-evacuate pattern for serious cases with Singapore as the usual destination, are the consistent shape of official US guidance and of how insurers actually move patients in this region, stated qualitatively. No rupiah figure appears because pricing varies by hospital and island and we did not source a published visitor tariff we would defend. Checked August 2026.",
+      }
     }
   ]
 };

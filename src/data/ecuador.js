@@ -569,6 +569,80 @@ export default {
         ],
         judgment: "Checked Aug 2026. The Galapagos point is the useful content and it is a check rather than a purchase: its separate listing was verified against AT&T's own destination list, and the honest addition is that even a plan covering it buys you limited and slow service, because the islands genuinely are not wired. Saying so costs us a sale on the leg of the trip people are most anxious about. Mainland coverage and Claro's reach advantage are the desk's read from operator footprints and traveler accounts."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "evacuationIsTheCost",
+      exposureQuote: "the serious case flies to the mainland, and that flight is the bill that matters",
+      glance: [
+        { k: "Quito and Guayaquil", v: "Capable private hospitals" },
+        { k: "Galapagos", v: "Basic care, then a flight" },
+        { k: "Payment", v: "Up front, as a visitor" },
+        { k: "Real risk", v: "Where you are when it happens" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Ecuador: the mainland is the hospital",
+      description: "Quito and Guayaquil have capable private hospitals. On the Galapagos and in the Amazon, the serious case flies to the mainland, and that flight is the bill.",
+      h1: "What does getting sick in Ecuador cost a visitor?",
+      lede: "Ecuador's medical map is honest about itself: capable private hospitals in Quito, Guayaquil and Cuenca, and thin coverage exactly where its most famous trips happen. On the islands and in the Oriente, the serious case flies to the mainland, and that flight is the bill that matters.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "On the mainland, a visitor's position is ordinary for the region: <b>private clinics and hospitals</b> in Quito, Guayaquil and Cuenca handle everything from the everyday to the serious, at prices that read as moderate by US standards, with <b>payment expected up front</b> and card holds at admission normal. The exposure that is genuinely Ecuadorian is the map. The <b>Galapagos</b> have basic clinics and a small hospital, sized for the islands' population, not for complex medicine; the <b>Amazon lodges</b> of the Oriente sit hours from anything by boat and road. From either, the serious case takes a <b>flight to the mainland</b>, sometimes arranged as a medical transport, and that flight is the largest number this page implies. It is also why cover here is judged on the evacuation and medical transport lines, not the outpatient benefit.",
+      insurance: true,
+      insuranceNote: "Mainland Ecuador earns real reassurance: good private hospitals in the big cities, moderate costs, an everyday problem handled without drama, and we would rather say that than inflate it. The honest exposure is the trip most people came for: on the Galapagos or at an Amazon lodge, the serious case is a flight to the mainland before treatment even starts. If you carry cover for Ecuador, the medical transport and evacuation lines are the ones doing the work. Faye covers trip medical and evacuation.",
+      careFirst: "If it is serious, get to care or start moving toward the mainland first, and settle the money afterwards.",
+      sections: [
+        {
+          h: "The mainland tier is the good news",
+          icon: "tag",
+          key: { tag: "City hospitals", text: "Quito, Guayaquil and Cuenca run capable private hospitals at moderate prices, with payment up front and card holds at admission the working rule.", tone: "teal" },
+          p: [
+            "For a mainland itinerary, Ecuador is a calm page. The private hospitals of <b>Quito, Guayaquil and Cuenca</b> are capable and used to foreign patients, everyday care is easy to reach, and the prices, while real, are moderate by US standards. Pharmacies are everywhere and inexpensive.",
+            "The billing is the regional norm: <b>payment up front</b>, a deposit or card hold at admission, and reimbursement as your problem unless your insurer has direct billing. Keep every receipt and ask for itemised bills."
+          ]
+        },
+        {
+          h: "The islands and the Oriente are the exposure",
+          icon: "plane",
+          key: { tag: "The flight to the mainland", text: "Galapagos facilities are sized for the islands, not complex medicine, and Amazon lodges are hours from anything. The serious case flies to Quito or Guayaquil.", tone: "amber" },
+          p: [
+            "Now the honest half. The <b>Galapagos</b> sit six hundred miles offshore with clinics and a small hospital built for the resident population; anything complex, cardiac, trauma, a bad dive profile, is stabilised and <b>flown to the mainland</b>. The <b>Oriente</b> is the same story by river and road: the lodges are wonderful precisely because they are far from everything, hospitals included.",
+            "If it is serious, get to care or start moving toward the mainland first, and settle the money afterwards. On the islands that can mean a scheduled flight with a medical escort or a dedicated transport, and either way it is the bill that defines an Ecuadorian emergency."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "receipt",
+          key: { tag: "Absence is not zero", text: "We have not sourced an Ecuadorian price list for visitor care that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. Ecuadorian care is priced facility by facility, and we did not source a published visitor tariff we would put our name to, so no dollar figure appears here even though Ecuador itself uses the US dollar. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "One more thing we are deliberately not claiming: insurance-requirement rules for entering Ecuador or the Galapagos have changed and been unevenly enforced over the years, and we could not pin the current state to an official page we would cite, so no such rule is asserted here. Check current entry requirements before you fly rather than relying on any website, including this one."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Match it to the itinerary", text: "A mainland city trip is a moderate-cost, pay-up-front story. A Galapagos or Amazon trip is a transport story, and the medical transport line is the one to read.", tone: "teal" },
+          p: [
+            "Ecuador is two trips financially. The mainland city trip needs a card with headroom and ordinary caution. The Galapagos cruise or Amazon lodge trip needs a policy whose <b>medical transport and evacuation lines</b> would genuinely cover a flight to Quito or Guayaquil and, in the worst case, onward to home.",
+            "Divers in the Galapagos should know the islands' recompression arrangements and check dive cover specifically. For paying on the ground, see the <a href=\"/ecuador/cash-or-card\">Ecuador cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What happens if I get sick on the Galapagos?", a: "The islands have clinics and a small hospital sized for their population. Everyday problems are handled locally; anything complex is stabilised and flown to the mainland, usually Quito or Guayaquil, and that flight is the bill that matters." },
+        { q: "How good are hospitals in Quito and Guayaquil?", a: "The private hospitals there are capable and used to foreign patients, at moderate prices by US standards. Payment is expected up front, with a deposit or card hold at admission the working rule." },
+        { q: "Do I need special insurance for the Galapagos?", a: "Entry-rule requirements have changed and been unevenly enforced over the years, so check the current official requirement before you fly. What is certain is practical: the serious case flies to the mainland, so a policy's medical transport line matters more than any entry rule." },
+        { q: "Does my US health insurance work in Ecuador?", a: "Rarely, and Medicare not at all. Providers bill you directly and expect payment first. For a Galapagos or Amazon itinerary, what counts is a medical transport line that covers the flight to the mainland." },
+        { q: "Do I need travel insurance for Ecuador?", a: "For a mainland city trip, the case is modest: moderate costs paid up front. For the Galapagos or the Oriente, the case is strong and specific: the serious case travels before it is treated, and cover is what pays for the travel." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Ecuador country information for US travelers, including health and medical care guidance", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Ecuador.html", type: "gov" }
+        ],
+        judgment: "The capable-mainland, thin-islands structure and the fly-to-the-mainland pattern for serious Galapagos and Oriente cases are geographic and structural facts consistent with official US guidance, stated qualitatively. We deliberately assert no insurance entry rule for Ecuador or the Galapagos because we could not pin the current requirement to an official page, and absence of the claim is honest where the rule's status is unclear. No figure appears because we did not source a published visitor tariff we would defend. Checked August 2026.",
+      }
     }
   ]
 };

@@ -600,6 +600,81 @@ export default {
         ],
         judgment: "Checked Aug 2026. Two things to be plain about. First, we earn a commission on eSIM links and nothing at all on Indian prepaid SIMs, so a page telling you to buy the local SIM is a page arguing against our own revenue, which is the only way this section is worth reading. Second, Indian tariffs have risen in steps over the past two years and will again, so treat 300 rupees as a current entry point rather than a fixed price, and treat the activation window as the genuinely variable part: airport counters can be quick, a neighborhood store on a busy afternoon is not. Carrier day-pass figures are an Aug 2026 snapshot and move faster than anything else here, so check your own plan before you fly."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "depositFirst",
+      exposureQuote: "Private hospitals in India ask for an advance deposit before they will admit you",
+      glance: [
+        { k: "Admission", v: "An advance deposit first" },
+        { k: "Routine care", v: "Genuinely inexpensive" },
+        { k: "Where you go", v: "The private hospitals" },
+        { k: "Real risk", v: "The deposit, then the ward bill" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in India: the deposit decides the ward",
+      description: "Private hospitals in India ask for an advance deposit before admitting you, and topping it up as care runs. Routine care, by contrast, is genuinely cheap.",
+      h1: "What does getting sick in India cost a visitor?",
+      lede: "India runs two medical stories at once. Everyday care is fast and genuinely inexpensive. Private hospitals in India ask for an advance deposit before they will admit you, and that deposit, not the consultation fee, is what decides where and how quickly you are treated.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "For a visitor, Indian healthcare means the <b>private hospitals</b>, and the private hospitals work on a simple sequence: an <b>advance deposit at admission</b>, sized to the expected treatment, topped up as care runs, and settled at discharge. This is standard practice at the big chains and the small nursing homes alike, and it is consistent with what the State Department tells travelers everywhere: in many places, <b>payment or a deposit is required before any services are provided</b>. The reassuring half is real too: a clinic consultation, a pharmacy, a lab test, all of it is <b>cheap by any US standard</b> and easy to reach in the cities. The money story is not the everyday. It is the admission.",
+      insurance: true,
+      insuranceNote: "Routine care in India is inexpensive enough that most visitors simply pay, and we would rather say that than inflate it. What earns cover is the admission: private hospitals want an advance deposit and top-ups while treatment runs, and a serious case in a top private ward bills at rates that surprise people who expected everything here to be cheap. An insurer that can issue a fast guarantee of payment is worth more than a high ceiling. Faye covers trip medical and evacuation.",
+      careFirst: "If it looks serious, get to a good private hospital first and sort the deposit out while you are being seen.",
+      sections: [
+        {
+          h: "The deposit is the front door",
+          icon: "alert",
+          key: { tag: "Advance at admission", text: "Private hospitals ask for an advance deposit before admitting you, topped up as treatment runs and settled at discharge. An insurer's guarantee of payment can stand in for it.", tone: "amber" },
+          p: [
+            "The practice to plan around is the <b>advance deposit</b>. Indian private hospitals, from the flagship chains in Delhi, Mumbai and Bengaluru to the small private nursing homes, generally ask for a deposit before admission, sized to the expected cost, and ask again for <b>top-ups</b> if treatment runs long. The final bill is settled before discharge. None of this is aimed at foreigners; it is simply how private admission works here, and a visitor is inside it like everyone else.",
+            "If it looks serious, get to a good private hospital first and sort the deposit out while you are being seen. A companion who can handle the payment desk is genuinely useful, and an insurer that can send a <b>guarantee of payment</b> quickly can replace the deposit at hospitals that take direct billing."
+          ]
+        },
+        {
+          h: "The everyday is the cheap half",
+          icon: "tag",
+          key: { tag: "Routine care", text: "A clinic visit, a pharmacy, a lab test: all inexpensive by any US standard, and easy to find in the cities. This half of India needs no insurance argument.", tone: "teal" },
+          p: [
+            "Be reassured about the small stuff. A consultation at a private clinic, a course of medicine from a pharmacy, a lab panel, an X-ray: in India these cost little enough that most visitors just pay cash or card and move on. Big-city private care is quick, English-speaking, and often excellent, which is exactly why India has a medical tourism industry.",
+            "So do not carry cover for the everyday here, and do not let anyone sell it to you that way. The everyday is the part India does cheaply and well. The financial event this page exists for is the unplanned admission, which is a different animal."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "receipt",
+          key: { tag: "Absence is not zero", text: "We have not sourced an Indian price list for visitors that we would stand behind, so we have published none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. Indian private healthcare is priced hospital by hospital, city by city, and tier by tier, and we did not source a published tariff for visitor care that we would put our name to, so no rupee figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure is what to plan around, and it is dependable: routine care is cheap, admission takes a deposit, top-ups follow, and the bill is settled before discharge. Ask your insurer one question above all: how fast can it issue a guarantee of payment to an Indian hospital."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Cover the admission", text: "Pay the small stuff yourself. Carry cover for the admission, and pick an insurer that can wire a guarantee of payment fast, because the deposit is the gate.", tone: "teal" },
+          p: [
+            "The practical split is clean. Budget ordinary cash for clinics and pharmacies and do not overthink it. For the serious case, the thing your policy must be able to do is not merely reimburse you months later but <b>move money to the hospital quickly</b>, because the deposit is the gate and the gate opens on payment.",
+            "Keep every receipt, ask for an itemised bill, and if you are far from a major city, know which one you would head to. For paying on the ground, see the <a href=\"/india/cash-or-card\">India cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do hospitals in India require a deposit?", a: "Private hospitals generally ask for an advance deposit before admission, sized to the expected treatment, with top-ups if care runs long and settlement before discharge. An insurer's guarantee of payment can stand in for the deposit where the hospital accepts direct billing." },
+        { q: "Is healthcare in India cheap for tourists?", a: "Routine care genuinely is: clinic visits, pharmacies and lab tests cost little by US standards and are easy to reach in the cities. A private hospital admission is the other story, and the advance deposit is how it starts." },
+        { q: "Will an Indian hospital treat me in an emergency without paying first?", a: "Emergency stabilization happens, but private hospitals move quickly to the deposit conversation for admission and ongoing treatment. Get care first, and have someone deal with the payment desk while you are being seen." },
+        { q: "Does my US health insurance work in India?", a: "Rarely, and Medicare not at all. Indian hospitals bill you directly and expect the deposit regardless. What matters in a policy here is direct billing or a fast guarantee of payment, not just a coverage ceiling." },
+        { q: "Do I need travel insurance for India?", a: "Not for the everyday, which is cheap. The honest reason is the unplanned admission: a deposit at the door, top-ups as treatment runs, and a private ward bill behind them, plus a medically supervised flight home in the worst case." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: medicine and health guidance for travelers abroad, on payment or a deposit being required before services in many locations", url: "https://travel.state.gov/en/international-travel/planning/guidance/medicine-health.html", type: "gov" },
+          { label: "US State Department: India country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/India.html", type: "gov" }
+        ],
+        judgment: "The advance-deposit-at-admission practice is the consistent, well-attested shape of Indian private hospital billing rather than an India-specific official statement, and we have deliberately not implied one exists; the official language cited is the State Department's general guidance that many locations require payment or a deposit before services. No rupee figure appears because private pricing varies by hospital, city and tier and we did not source a published visitor tariff we would defend. Checked August 2026.",
+      }
     }
   ]
 };

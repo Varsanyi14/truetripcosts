@@ -496,6 +496,80 @@ export default {
         ],
         judgment: "Checked Aug 2026. Two honest points. The local SIM is cheaper and we say so, and the reason we still describe the eSIM as reasonable here is procedural rather than commercial: visitor registration and top-up genuinely vary by shop and assume local payment methods, which is a different situation from the clean airport-counter purchase in Sri Lanka or Georgia. The Patagonian coverage gaps are the desk's read from operator footprints and consistent self-drive accounts, and they are the part of this page to act on. Peso pricing moves fast enough that no figure is quoted."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "payInFull",
+      exposureQuote: "public hospitals now bill non-residents for non-emergency care, and Argentina expects you to arrive already insured",
+      glance: [
+        { k: "The 2025 change", v: "Non-residents are billed now" },
+        { k: "Emergencies", v: "Still stabilized first" },
+        { k: "Entry rules", v: "Insurance expected on arrival" },
+        { k: "Real risk", v: "Assuming the old free era" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Argentina: the free-for-all era is ending",
+      description: "Since Argentina's 2025 migration reform, public hospitals bill non-residents for non-emergency care and visitors are expected to arrive insured. The old rule is gone.",
+      h1: "What does getting sick in Argentina cost a visitor?",
+      lede: "For decades the Argentine story was that the public hospital treated everyone, tourists included, for nothing. That era is ending: since the 2025 migration reform, public hospitals now bill non-residents for non-emergency care, and Argentina expects you to arrive already insured. Emergencies are still stabilized first.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "The rule changed in 2025, and this page exists so you do not travel on the old one. Under the <b>2025 migration reform</b>, Argentine <b>public hospitals bill non-residents for non-emergency care</b>, and the same reform expects foreign visitors to carry <b>valid travel medical insurance</b>, a condition covered in detail on <a href=\"/argentina\">our Argentina guide's entry section</a>. The reassuring clause survives: <b>emergencies are still stabilized</b> before anyone talks about money. Around that new spine, the practical picture is friendly: Buenos Aires and the other big cities have excellent private hospitals, care is close in the places visitors go, and at current exchange rates private treatment is <b>moderate by US standards</b>, paid up front. The trap here is not distance or quality. It is arriving with a mental model that is a year out of date.",
+      insurance: true,
+      insuranceNote: "Argentina is the page where the honest advice changed recently: the country now expects you to arrive insured, and its public hospitals bill non-residents for non-emergency care, so the old travel-forum wisdom about free care for everyone is a year out of date. Emergencies are still stabilized first, care in the cities is good and close, and private costs are moderate, so this is not a fear page. It is a bring-the-policy-the-country-asks-for page. Faye covers trip medical and evacuation.",
+      careFirst: "If it is an emergency, call 911 or get to the nearest guardia; you will be stabilized first and the money question comes later.",
+      sections: [
+        {
+          h: "What changed in 2025",
+          icon: "alert",
+          key: { tag: "The reform", text: "Public hospitals now bill non-residents for non-emergency care, and the migration reform expects foreign visitors to hold travel medical insurance. Details live on our Argentina guide.", tone: "amber" },
+          p: [
+            "The load-bearing fact is the change itself. Argentina's <b>2025 migration reform</b> ended the blanket free-for-everyone position: <b>public hospitals now bill non-residents for non-emergency care</b>, and visitors are expected to hold <b>travel medical insurance</b> for the trip. Border enforcement of the insurance expectation has been inconsistent so far, but the rule is on the books, and our <a href=\"/argentina\">Argentina guide's entry section</a> keeps the current detail so this page does not carry a second copy of it.",
+            "The clause that did not change matters just as much: <b>emergencies are still stabilized</b>. If it is an emergency, call 911 or get to the nearest guardia; you will be stabilized first and the money question comes later."
+          ]
+        },
+        {
+          h: "The care itself is the easy part",
+          icon: "tag",
+          key: { tag: "Good and close", text: "Buenos Aires and the big cities have excellent private hospitals, care is close where visitors go, and private treatment is moderate by US standards, paid up front.", tone: "teal" },
+          p: [
+            "Nothing about the 2025 change makes Argentina a hard place to be treated. Buenos Aires runs some of South America's best <b>private hospitals</b>, the other big cities are well served, and the places visitors actually go, the capital, Mendoza, Bariloche, Iguazu, Salta, are close to real care by the standards of this continent.",
+            "A visitor using the private tier pays the regional way, <b>up front</b>, with reimbursement through a policy afterwards, and at current exchange rates the prices read as <b>moderate</b> to an American. Patagonia's remoter corners are the one place distance enters the story, and there the medical transport line of a policy starts doing work."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "receipt",
+          key: { tag: "Absence is not zero", text: "Argentine prices move too fast with the peso to freeze into a page, and we did not source a published visitor tariff we would stand behind, so we publish none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. Argentina's inflation and exchange rate move prices faster than any published page should pretend to track, the new non-resident billing is implemented unevenly as provinces and hospitals adopt it, and we did not source a published visitor tariff we would put our name to. So no peso figure appears here.",
+            "The structure is what to plan on: non-residents are billed for non-emergency care, emergencies are stabilized first, the private tier is good and paid up front, and the country expects you to arrive with a policy."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Bring the policy", text: "Argentina now asks for the thing this page would have suggested anyway: arrive with travel medical insurance, and carry proof of it.", tone: "teal" },
+          p: [
+            "The practical conclusion is unusually simple, because the country made it for you: <b>arrive insured, and carry proof</b>. That satisfies the entry expectation, covers the non-resident billing that now applies to you, and pays for the private tier most visitors would choose anyway for anything serious.",
+            "Keep receipts and itemised bills for any claim, and check our <a href=\"/argentina\">Argentina guide</a> before you fly for the current state of the entry rule, since enforcement is still settling. For paying on the ground, see the <a href=\"/argentina/cash-or-card\">Argentina cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is healthcare still free for tourists in Argentina?", a: "Not the way it used to be. Since the 2025 migration reform, public hospitals bill non-residents for non-emergency care, and the country expects visitors to carry travel medical insurance. Emergencies are still stabilized first, before any money question." },
+        { q: "Do I need travel insurance to enter Argentina?", a: "The 2025 reform expects foreign visitors to hold valid travel medical insurance, with border enforcement inconsistent so far. Our Argentina guide's entry section tracks the current detail; the practical advice is to arrive with a policy and proof either way." },
+        { q: "What happens in an emergency in Argentina?", a: "You are stabilized first: call 911 or get to the nearest guardia and treatment comes before the money question. Billing for non-residents applies to non-emergency care under the new rules." },
+        { q: "How good are private hospitals in Argentina?", a: "In Buenos Aires, excellent, among the best on the continent, and the other big cities are well served. A visitor pays up front at prices that currently read as moderate by US standards, then claims through a policy." },
+        { q: "Do I need travel insurance for Argentina?", a: "Yes, and for once the country itself answers: the 2025 rules expect visitors to arrive insured, non-residents are billed for non-emergency care, and a policy is also what pays for the private tier and a flight home in a serious case." }
+      ],
+      sources: {
+        links: [
+          { label: "US State Department: Argentina country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Argentina.html", type: "gov" }
+        ],
+        judgment: "The spine of this page, the 2025 migration reform under which public hospitals bill non-residents for non-emergency care while emergencies are still stabilized, and the expectation that visitors carry travel medical insurance, is the same verified position our Argentina guide carries, and the entry-rule detail deliberately lives there in one copy rather than being restated here. Implementation is uneven as provinces adopt the change, which is why this page states the shape and not a price. No peso figure appears because Argentine prices move too quickly to freeze and we did not source a published visitor tariff we would defend. Checked August 2026.",
+      }
     }
   ]
 };

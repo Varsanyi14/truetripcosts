@@ -601,6 +601,82 @@ export default {
         ],
         judgment: "Checked Aug 2026, and this page is a correction. The widely repeated claim that a tourist cannot buy a Brazilian SIM without a CPF is out of date: the law accepts a passport from a foreign national, TIM sells to visitors on one routinely, and the carriers added no-CPF tourist packages. Worth saying who benefits from the old version. Much of the Brazil SIM advice online is published by companies selling eSIMs, ourselves included, and the CPF story makes an eSIM look necessary rather than merely convenient. Correcting it costs us sales and is still what the evidence says. What we would flag as genuinely variable is the store experience rather than the law, so bring a passport, start at TIM, and treat a clerk's refusal as a store problem. Carrier day-pass figures are an Aug 2026 snapshot."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "routineAffordable",
+      exposureQuote: "Brazil's public system treats anyone in an emergency, tourists included, without a bill at the door",
+      glance: [
+        { k: "Emergencies", v: "SUS treats everyone, free" },
+        { k: "Tourists", v: "Included, by law" },
+        { k: "Private tier", v: "A choice, paid up front" },
+        { k: "Real risk", v: "The flight home, if it comes" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in Brazil: the SUS treats everyone, even you",
+      description: "Brazil's public SUS treats anyone in an emergency, tourists included, without a bill at the door. The money question is choosing private care or the flight home.",
+      h1: "What does getting sick in Brazil cost a visitor?",
+      lede: "Brazil is one of the most reassuring pages on this site, and we are going to say so plainly: Brazil's public system treats anyone in an emergency, tourists included, without a bill at the door. The money question here is not whether you will be treated. It is whether you choose the private tier, and who pays for a flight home.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "Brazil wrote universal healthcare into its 1988 Constitution and built the <b>SUS</b>, the Sistema Unico de Saude, on it: health as a right, with <b>universal and equal access</b> the system's founding legal principle, and in practice that includes the foreign tourist who arrives at a public emergency department. You will be treated, and there is <b>no bill at the door</b>. The honest limits are the ones Brazilians themselves navigate: public emergency rooms in the big cities can be crowded, waits for anything non-urgent are long, and comfort is not the point. That is why Brazil also runs a large <b>private tier</b>, excellent in the big cities, which a visitor can choose and pay for, up front, like anywhere in the region. The genuinely large bill a Brazil trip can produce is not local at all: it is the <b>medically supervised flight home</b>, which no Brazilian system, public or private, has any part in paying.",
+      insurance: true,
+      insuranceNote: "Start with the honest good news, because it is the headline: in a Brazilian emergency the SUS treats everyone, tourists included, free at the door, so do not buy cover out of fear of being turned away or bankrupted by an emergency room here. What a policy is for in Brazil is narrower and real: the private tier if you would choose comfort and speed for an admission, and above all the medically supervised flight home in a worst case, which nothing in Brazil pays for. Judge a policy on the evacuation line, and read this page as reassurance first. Faye covers trip medical and evacuation.",
+      careFirst: "If it is an emergency, go to the nearest hospital; in Brazil the treatment genuinely comes first.",
+      sections: [
+        {
+          h: "The SUS is real, and it includes you",
+          icon: "shield",
+          key: { tag: "Universal by law", text: "Health is a constitutional right in Brazil, and the SUS's founding law guarantees universal and equal access. In an emergency that includes foreign tourists, free at the door.", tone: "teal" },
+          p: [
+            "This is not folklore, it is statute. Brazil's 1988 Constitution declares health a right of all and a duty of the state, and the SUS's founding law, <b>Lei 8.080 of 1990</b>, makes <b>universal and equal access</b> the system's first principle. The SUS runs everything from village clinics to transplant centers, and Brazil's health ministry describes it plainly as guaranteeing full, universal and free access for the country's entire population.",
+            "If it is an emergency, go to the nearest hospital; in Brazil the treatment genuinely comes first. A tourist in a public emergency department is treated like everyone else in the queue, and nobody meets a cashier on the way in."
+          ]
+        },
+        {
+          h: "The honest limits of free",
+          icon: "receipt",
+          key: { tag: "Crowds and waits", text: "Public emergency rooms can be crowded and non-urgent waits are long. The private tier exists for speed and comfort, and a visitor pays for it up front.", tone: "teal" },
+          p: [
+            "Free does not mean luxurious, and the SUS's own users would tell you so. Big-city public emergency departments can be <b>crowded</b>, anything non-urgent involves <b>waits</b>, and private rooms are not on offer. None of that is a trap for a visitor; it is simply what a system that treats everyone looks like from inside.",
+            "Brazil's <b>private hospitals</b>, and in Sao Paulo and Rio they include some of Latin America's best, are the comfort-and-speed tier. A visitor can choose them exactly as an insured Brazilian would, and pays the regional way: <b>up front</b>, with a deposit or card hold at admission and reimbursement as your problem unless your insurer direct-bills."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "tag",
+          key: { tag: "Absence is not zero", text: "The public tier is free at the door, and for the private tier we did not source a published visitor tariff we would stand behind, so no figure appears.", tone: "teal" },
+          p: [
+            "The public half of this page needs no price, which is its point. For the private half we would rather say this than pad the page: Brazilian private care is priced hospital by hospital, and we did not source a published visitor tariff we would put our name to, so no real figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure carries the decision: the SUS treats the emergency free, the private tier is a paid choice, and the flight home is the tail nothing local covers."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "A narrow, honest gap", text: "Do not insure against being turned away here; that is not the risk. The narrow real gap is the private-tier choice and the flight home.", tone: "teal" },
+          p: [
+            "Be clear about what you are and are not exposed to. You are not exposed to an American-style emergency-room bill, because the SUS exists and includes you. You are exposed to two narrower things: the cost of <b>choosing the private tier</b> for an admission, and the <b>medically supervised flight home</b> if a serious case ends that way, which is the one genuinely large number a Brazil trip can produce.",
+            "That is a smaller argument for cover than most countries on this site get, and we would rather make the small honest one. For paying on the ground, see the <a href=\"/brazil/cash-or-card\">Brazil cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Do tourists get free emergency care in Brazil?", a: "Yes. Health is a constitutional right in Brazil and the SUS's founding law guarantees universal and equal access, which in practice includes foreign tourists at public emergency departments, free at the door. You will be treated before anyone talks about money, because nobody talks about money." },
+        { q: "Is the SUS any good?", a: "It runs everything from village clinics to transplant centers and treats the whole country. Its honest limits are crowding and waits, especially for anything non-urgent, which is why the private tier exists for those who choose speed and comfort." },
+        { q: "What does private healthcare in Brazil cost a visitor?", a: "It is priced hospital by hospital and we publish no figure we cannot source. The billing shape is the regional norm: payment up front, a deposit or card hold at admission, reimbursement as your problem unless your insurer direct-bills." },
+        { q: "Does my US health insurance work in Brazil?", a: "Rarely, and Medicare not at all. For the public tier it does not matter, since there is no bill. For the private tier and for a medically supervised flight home, a travel policy is what pays." },
+        { q: "Do I need travel insurance for Brazil?", a: "Not out of fear of the emergency room, which the SUS covers for everyone. The narrow honest reasons are the private tier, if you would choose it for an admission, and the flight home in a worst case, which nothing in Brazil pays for." }
+      ],
+      sources: {
+        links: [
+          { label: "Planalto, Presidency of Brazil: Lei 8.080 of 1990, the SUS founding law, on health as a fundamental right and universal and equal access to health actions and services", url: "https://www.planalto.gov.br/ccivil_03/leis/l8080.htm", type: "gov" },
+          { label: "Brazilian Ministry of Health virtual library: thirty years of Lei 8.080 and the SUS, describing full, universal and free access for the entire population", url: "https://bvsms.saude.gov.br/lei-n-8080-30-anos-de-criacao-do-sistema-unico-de-saude-sus/", type: "gov" },
+          { label: "US State Department: Brazil country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Brazil.html", type: "gov" }
+        ],
+        judgment: "The universality claim is statutory: Article 196 of Brazil's 1988 Constitution and Lei 8.080 of 1990, cited from the Presidency's own legal database, with the health ministry's own description of full, universal and free access as corroboration. That tourists are treated free in public emergencies is the settled practice of that legal design rather than a tourist-specific statute, and we have framed it as such. The crowding and waits are the system's well-known limits, stated to keep the reassurance honest. No private-tier figure appears because we did not source a published visitor tariff we would defend. Checked August 2026.",
+      }
     }
   ]
 };

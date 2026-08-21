@@ -433,6 +433,81 @@ export default {
         ],
         judgment: "Checked Aug 2026. The headline here is deliberately not the eSIM. The largest phone-bill risk on a Bahamian trip is at-sea roaming, which no product on this page prevents and which a habit, turning data roaming off until you are ashore, prevents entirely. The at-sea rate and the fact that AT&T's 10-fee cap covers land and air only were both verified against AT&T's own pages, and the second point is the sort of detail that quietly changes a long-cruise bill. Local SIM pricing is a current read for a small two-operator market."
       }
+    },
+    {
+      slug: "medical-costs",
+      exposureCategory: "evacuationIsTheCost",
+      exposureQuote: "the serious case flies to Florida, and the air ambulance is the bill that matters",
+      glance: [
+        { k: "Nassau and Freeport", v: "Hospitals that stabilise" },
+        { k: "Out Islands", v: "Ambulances are transport only" },
+        { k: "Serious case", v: "Flies to Florida" },
+        { k: "Real risk", v: "The flight, paid in advance" }
+      ],
+      live: true,
+      topic: "health",
+      title: "Getting sick in the Bahamas: the bill is the flight to Florida",
+      description: "Nassau and Freeport stabilise, the Out Islands have little on the ground, and the serious case flies to Florida, with the air ambulance often paid in advance.",
+      h1: "What does getting sick in the Bahamas cost a visitor?",
+      lede: "The Bahamas sits an hour from the best hospitals in the American Southeast, and that single fact organises its whole medical money story: the serious case flies to Florida, and the air ambulance is the bill that matters.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-21",
+      answer: "The Bahamian tiers are simple. <b>Nassau and Freeport</b> have hospitals that handle the everyday and stabilise the serious. On the <b>Out Islands</b>, the US Embassy's own description is the honest one: ambulances there are often <b>transport only, with little or no advanced life support</b>, and clinics are small. For anything genuinely serious, the established pattern is a <b>flight to Florida</b>, and the embassy is equally plain about the money: doctors and hospitals here commonly want <b>payment in cash before providing service</b>, medical evacuation costs are <b>substantial</b>, and the patient is responsible for all of them, with air ambulance operators often wanting <b>payment arranged before they fly</b>. Proximity to the US is the Bahamas' medical safety net, and it is a paid one.",
+      insurance: true,
+      insuranceNote: "The Bahamas is deceptively close to home, and that is exactly the trap: the serious case flies to Florida on an air ambulance that wants its money arranged before takeoff, and no US health plan treats that flight as its problem. Cover here is bought almost entirely for the evacuation line, and for an assistance line that can organise a Florida-bound flight fast. The everyday clinic visit is not the reason. Faye covers trip medical and evacuation.",
+      careFirst: "If it is serious, get to the nearest clinic or hospital and start the evacuation conversation early rather than late.",
+      sections: [
+        {
+          h: "Two tiers of islands",
+          icon: "alert",
+          key: { tag: "Nassau, then everywhere else", text: "Nassau and Freeport have hospitals that stabilise. On the Out Islands, ambulances are often transport only and clinics are small, so distance starts the clock.", tone: "amber" },
+          p: [
+            "Where you are in the Bahamas decides most of the story. <b>Nassau</b> and, to a lesser degree, <b>Freeport</b> have real hospitals, public and private, that handle everyday problems and stabilise serious ones. On the <b>Out Islands</b>, the Exumas, Eleuthera, Abaco, the small cays, the embassy's description holds: clinics are small and ambulances are often <b>a ride, not a treatment</b>, with little or no advanced life support aboard.",
+            "If it is serious, get to the nearest clinic or hospital and start the evacuation conversation early rather than late. On a small cay, early means before the weather or the daylight closes options."
+          ]
+        },
+        {
+          h: "Florida is the hospital",
+          icon: "plane",
+          key: { tag: "The flight", text: "Serious cases fly to Florida. Evacuation costs are substantial, the patient is responsible for all of them, and operators often want payment arranged before they fly.", tone: "amber" },
+          p: [
+            "For the genuinely serious case, the plan every doctor, dive shop and insurer here already knows is the <b>flight to Florida</b>. The embassy's guidance carries the two facts that matter financially: evacuation costs are <b>substantial</b> and entirely the patient's responsibility, and a commercial flight is the cheap version only when the case can wait for one; when it cannot, an <b>air ambulance</b> flies, and operators commonly want <b>payment arranged in advance</b>.",
+            "That advance-payment clause is why the assistance line matters as much as the coverage number: an insurer that can guarantee payment to an air ambulance operator at midnight is the difference between a flight that leaves and a flight that waits."
+          ]
+        },
+        {
+          h: "Why there are no prices on this page",
+          icon: "receipt",
+          key: { tag: "Absence is not zero", text: "We have not sourced a Bahamian price list for visitor care, and the embassy states evacuation costs as substantial without a figure, so we publish none.", tone: "teal" },
+          p: [
+            "We would rather say this than pad the page. Bahamian care is priced facility by facility, and the embassy's own language on evacuation is <b>substantial</b> rather than a number, so no figure appears here. On a medical page a plausible-sounding number is not a small error, because it is something a person might act on while unwell.",
+            "The structure does the planning work: Nassau stabilises, the Out Islands are thin on the ground, the serious case flies to Florida, and the flight wants its money early. Cash payment before service is also the working rule at doctors and hospitals here, so carry a card with headroom."
+          ]
+        },
+        {
+          h: "What this means for your money",
+          icon: "cash",
+          key: { tag: "Buy the flight", text: "Cover for the Bahamas is bought for the evacuation line. Check it would cover an air ambulance to Florida, and that the assistance line can arrange payment fast.", tone: "teal" },
+          p: [
+            "This is one of the easiest cover decisions on this site to state: the everyday is a clinic visit you can pay for, and the serious case is a Florida flight you cannot. Read the <b>evacuation limit</b>, confirm the policy pays operators directly rather than reimbursing you, and save the assistance number where a companion can find it.",
+            "Boaters and divers, who spend the most time farthest from Nassau, carry the most of this risk and should check their specific cover. For paying on the ground, see the <a href=\"/bahamas/cash-or-card\">Bahamas cash and cards guide</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Where do serious medical cases in the Bahamas go?", a: "To Florida. Nassau and Freeport stabilise, and the genuinely serious case flies to a US hospital, by commercial flight when it can wait and by air ambulance when it cannot, with operators commonly wanting payment arranged before they fly." },
+        { q: "What is medical care like on the Out Islands?", a: "Small clinics, and ambulances that the US Embassy itself describes as often being transport only, with little or no advanced life support. Anything serious on an Out Island is a transfer to Nassau or straight to Florida." },
+        { q: "How much does a medical evacuation from the Bahamas cost?", a: "The embassy states the costs are substantial and entirely the patient's responsibility, without publishing a figure, and we will not invent one. It is the largest bill a Bahamas trip can produce, which is why the evacuation line on a policy is the one to read." },
+        { q: "Do Bahamian doctors and hospitals require payment up front?", a: "Commonly yes, in cash before service, per US guidance for the country. Carry a card with real headroom and keep every receipt for the claim." },
+        { q: "Do I need travel insurance for the Bahamas?", a: "The trip is short and close, which is exactly why people skip cover, and exactly wrong: proximity does not make the air ambulance cheap or your US health plan applicable. Buy cover for the evacuation line specifically." }
+      ],
+      sources: {
+        links: [
+          { label: "US Embassy in The Bahamas: medical assistance, on Out Island ambulances, cash payment before service, and substantial medical evacuation costs paid by the patient", url: "https://bs.usembassy.gov/medical-assistance/", type: "gov" },
+          { label: "US State Department: The Bahamas country information for US travelers", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/TheBahamas.html", type: "gov" }
+        ],
+        judgment: "The load-bearing claims, transport-only ambulances on the Out Islands, cash payment before service, evacuation to the United States as the pattern for serious cases, substantial costs borne by the patient, and advance payment often required by operators, are the US Embassy's own statements. No dollar figure appears because the embassy itself states the costs qualitatively and we did not source an operator tariff we would defend. Checked August 2026.",
+      }
     }
   ],
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 3, atmRisk: 4 },
