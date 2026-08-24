@@ -14,7 +14,7 @@ export default {
       { label: "Skatturinn (Iceland Revenue and Customs): the lodging tax, 800 ISK for hotels and 400 ISK for campsites per night", url: "https://www.skatturinn.is/english/companies/tax-issues/lodging-tax/", type: "revenue" },
       { label: "Skatturinn: the VAT-free refund for visitors, the 12,000 ISK minimum and how to claim it at Keflavik", url: "https://www.skatturinn.is/english/individuals/customs-matters/travelling-to-iceland/tax-free-vat-refund/", type: "revenue" },
       { label: "Visit Reykjavik: tax-free shopping, the 12,000 ISK minimum and the refund desk at the airport", url: "https://visitreykjavik.is/tax-refund", type: "tourism" },
-      { label: "Blue Car Rental: driving costs, tolls, parking fees and the 2026 per-kilometre road tax", url: "https://www.bluecarrental.is/blog/iceland-travel-tips-taxes-vat-refunds-ways-to-save/", type: "guide" },
+      { label: "Our Roads to the Future (Icelandic government): the per-kilometre road charge, 6.95 ISK per km for passenger cars, administered by Skatturinn", url: "https://vegirokkarallra.is/en", type: "gov" },
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },

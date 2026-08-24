@@ -150,6 +150,50 @@ export const arrivalForms = [
     note: 'Free and mandatory for every arrival, filed on the Thai Immigration Bureau site.',
     via: 'guide',
   },
+  {
+    slug: 'cambodia',
+    country: 'Cambodia',
+    name: 'e-Arrival (CeA)',
+    official: 'https://arrival.gov.kh/',
+    free: true,
+    when: 'Within 7 days before arrival',
+    note: "Cambodia's single digital arrival card, which rolls the old paper immigration, health and customs forms into one filing. Free on the official General Department of Immigration site, and separate from any visa.",
+    caution: 'Required for air arrivals only. Land border crossings still use paper forms. The official site is arrival.gov.kh; paid lookalikes buy the search terms above it.',
+    via: 'nia',
+  },
+  {
+    slug: 'indonesia',
+    country: 'Indonesia',
+    name: 'All Indonesia arrival card',
+    official: 'https://allindonesia.imigrasi.go.id/',
+    free: true,
+    when: 'Within 3 days before arrival',
+    note: "Indonesia's single arrival declaration. Since October 2025 it combines the arrival card, customs declaration and health screening into one filing, replacing the separate customs form. Free on the official immigration site.",
+    caution: 'This is now one filing, not two: the older standalone customs declaration was folded in. The official domain ends in imigrasi.go.id.',
+    via: 'nia',
+  },
+  {
+    slug: 'laos',
+    country: 'Laos',
+    name: 'Lao Digital Immigration Form (LDIF)',
+    official: 'https://www.immigration.gov.la',
+    free: true,
+    when: 'Within 3 days before arrival and again before departure',
+    note: "Laos's online arrival and departure card, filed for a QR code shown at the border. Free on the official Department of Immigration site, and separate from any visa.",
+    caution: 'Still rolling out: as of its 2025 launch it applies at the main international airports (Vientiane, Luang Prabang, Pakse) and the first Lao-Thai Friendship Bridge, not yet every crossing. Unusually, Laos wants a departure card too, not just an arrival one.',
+    via: 'nia',
+  },
+  {
+    slug: 'india',
+    country: 'India',
+    name: 'e-Arrival card',
+    official: 'https://indianvisaonline.gov.in/',
+    free: true,
+    when: 'Before you fly',
+    note: "India's pre-arrival immigration filing, handled through the official Indian Visa Online portal (and the Su-Swagatam app). Separate from the paid e-Visa, and separate again from the customs declaration, which is the ATITHI app.",
+    caution: 'Two different filings get confused here: immigration (this one) versus customs (the ATITHI app, run by Indian Customs). Neither is the paid e-Visa. Use only gov.in sites.',
+    via: 'nia',
+  },
 ];
 
 // FORMS WE KNOW EXIST BUT CANNOT YET LINK.
@@ -159,12 +203,7 @@ export const arrivalForms = [
 // will not list it: see the equip rule at the top of this file. This is not a backlog note
 // tucked in a comment, it is the mechanism. Source a portal URL, move the entry up into
 // arrivalForms, and the counts on the page move on their own.
-export const pendingForms = [
-  { slug: 'cambodia', country: 'Cambodia', name: 'e-Arrival Card', need: 'Dedicated portal URL. The guide sources the e-visa portal, which is a different filing.' },
-  { slug: 'india', country: 'India', name: 'Online arrival form', need: 'Dedicated portal URL. The guide sources the e-Visa portal, which is the paid one, not this.' },
-  { slug: 'indonesia', country: 'Indonesia', name: 'Arrival card', need: 'Dedicated portal URL, and confirmation the customs declaration and arrival card are one filing or two.' },
-  { slug: 'laos', country: 'Laos', name: 'Online immigration form', need: 'Dedicated portal URL. The guide sources the e-visa portal, which is a different filing.' },
-];
+export const pendingForms = [];
 
 // ----- derived facts, so nothing on a page is written by hand -----
 
