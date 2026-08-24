@@ -18,7 +18,7 @@ export default {
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure. VAT rates and thresholds can change, so check anything that affects a big purchase.",
   },
   emergency: { medical: "112", note: "112 reaches every emergency service, ambulance, police and fire, from any phone, even with no SIM. Operators speak English. For non-urgent medical advice, call 1177 (staffed by nurses); for non-urgent police matters, call 114 14. Keep 112 for a genuine emergency.", checked: "Jul 2026", checkedISO: "2026-07-07" },
-  insuranceLevel: "low",
+  insuranceLevel: "medium",
   region: "Europe",
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 2 },
   hook: "One of the most cashless places on earth, so your card is king, but it is kronor not euros, plenty of spots take no cash at all, and prices run high.",
@@ -535,7 +535,7 @@ export default {
       checkedISO: "2026-08-20",
       answer: "Swedish healthcare is run by the <b>regions</b> and funded for <b>residents</b>. A visitor from outside the EU or EEA is <b>charged the full cost</b> of care, and rates are set regionally rather than nationally. Emergency care is <b>provided first and billed afterwards</b>. The geography splits the country: around <b>Stockholm, Gothenburg and Malmo</b> a hospital is close and the risk is simply the size of an invoice. In <b>Norrland and the far north</b>, distances are large, winter is long, and getting to a hospital becomes a cost of its own. Sweden is not a dangerous place to be ill. It is an expensive one, and in the north a slow one.",
       insurance: true,
-      insuranceNote: "Sweden charges a non-EEA visitor the full cost, and how much that matters depends on where you are: in the south the risk is a bill, in the far north it is also the distance and the winter. Cover is doing an ordinary job in the south and a bigger one above the Arctic Circle. Faze aside, the gap is real in both. Faye covers trip medical and evacuation.",
+      insuranceNote: "Sweden charges a non-EEA visitor the full cost, and how much that matters depends on where you are: in the south the risk is a bill, in the far north it is also the distance and the winter. Cover is doing an ordinary job in the south and a bigger one above the Arctic Circle. Faye aside, the gap is real in both. Faye covers trip medical and evacuation.",
       careFirst: "If it looks serious, get to care first and let the invoice follow.",
       sections: [
         {

@@ -17,7 +17,7 @@ export default {
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },
   emergency: { medical: "112", note: "112 reaches every emergency service, and 144 goes straight to an ambulance.", checked: "Jul 2026", checkedISO: "2026-07-01" },
-  insuranceLevel: "low",
+  insuranceLevel: "medium",
   region: "Europe",
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 3, atmRisk: 4 },
   hook: "Cards work fine, but Austria still runs on more cash than most of Western Europe.",

@@ -17,7 +17,7 @@ export default {
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },
   emergency: { medical: "112", note: "112 reaches every service, 144 goes straight to an ambulance, and 1414 is Rega, the air-rescue service.", checked: "Jul 2026", checkedISO: "2026-07-01" },
-  insuranceLevel: "low",
+  insuranceLevel: "medium",
   region: "Europe",
   signals: { cardFriendliness: 4, cashNeed: 2, taxRisk: 3 },
   hook: "Card-friendly and tidy, but it's francs, not euros, and everything costs more than you expect.",

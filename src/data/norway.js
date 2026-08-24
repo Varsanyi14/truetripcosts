@@ -18,7 +18,7 @@ export default {
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure. Which towns have opted into the visitor's contribution is changing through 2026, so check your specific stay.",
   },
   emergency: { medical: "112", note: "112 reaches the police and works from any phone, even with no SIM. For a medical emergency dial 113 for an ambulance, and 110 for the fire service. 116 117 is the out-of-hours medical line for less urgent care. Operators speak English.", checked: "Jul 2026", checkedISO: "2026-07-07" },
-  insuranceLevel: "low",
+  insuranceLevel: "medium",
   rentalCommon: true,
   region: "Europe",
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 3 },

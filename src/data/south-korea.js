@@ -18,7 +18,7 @@ export default {
     judgment: "The daily cash share, the tipping feel, and the likely behavior of foreign cards at kiosks and ATMs are our own estimate from experience and from consistent traveler reports, not an official figure. Card acceptance varies terminal by terminal, so treat our read as a guide, not a guarantee.",
   },
   emergency: { medical: "119", note: "119 reaches an ambulance or the fire service, and 112 is the police. The 911 number does not work here. For help in English, 1330 is the free, 24-hour Korea Travel Hotline, which also offers live interpretation if you are stuck with a driver, a clinic or a shop.", checked: "Jul 2026", checkedISO: "2026-07-12" },
-  insuranceLevel: "low",
+  insuranceLevel: "medium",
   region: "Asia",
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 2, atmRisk: 3 },
   hook: "One of the most card-friendly places anywhere, with one catch worth knowing: foreign cards are sometimes refused at self-order kiosks and unmarked ATMs, so tap freely, keep a little won for the gaps, put a T-money card in your pocket, and always choose won over dollars.",

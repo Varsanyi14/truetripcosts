@@ -18,7 +18,7 @@ export default {
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },
   emergency: { medical: "112", note: "112 is the free emergency number (999 also works, exactly like 911), reaching the Gardai (police), ambulance and fire from any phone, even with no SIM or credit. Operators speak English. Save your accommodation address to read out.", checked: "Jul 2026", checkedISO: "2026-07-03" },
-  insuranceLevel: "low",
+  insuranceLevel: "medium",
   rentalCommon: true,
   region: "Europe",
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 2 },
