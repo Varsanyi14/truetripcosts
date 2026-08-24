@@ -302,6 +302,26 @@ export const changelogEntries = [
     link: '/south-korea',
     linkLabel: 'South Korea money guide',
   },
+  // src: indonesia.js recentChange (dated Oct 2025) and the arrival-card section
+  {
+    date: '2025-10-01',
+    kind: 'change',
+    title: 'Indonesia merged its arrival card and customs declaration',
+    what: 'Since 1 October 2025, Indonesia combined the arrival card, customs declaration and health screening into one free online filing, the All Indonesia arrival card, replacing the separate customs declaration. It is completed before you fly for a QR code at the airport.',
+    why: 'It is now one form, not two, and it is free, so there is one less thing to file and nothing to pay. It is separate from your visa on arrival and the Bali levy, and paid lookalike sites charge for what the official site does free.',
+    link: '/indonesia',
+    linkLabel: 'Indonesia money guide',
+  },
+  // src: laos.js recentChange (dated Sep 2025) and the immigration-form section
+  {
+    date: '2025-09-01',
+    kind: 'change',
+    title: 'Laos introduced a digital arrival and departure card',
+    what: 'Since September 2025, Laos has run a free online arrival and departure filing, the Lao Digital Immigration Form, at its main international entry points, the airports at Vientiane, Luang Prabang and Pakse and the first Lao-Thai Friendship Bridge. It is filed on the official site for a QR code at the border.',
+    why: 'A new step to complete before you travel to Laos through a main entry point, and one wanted on departure too. It is free on the official site and separate from the e-visa, but new enough that paid lookalikes target it.',
+    link: '/laos',
+    linkLabel: 'Laos money guide',
+  },
   // src: greece.js recentChange (dated Aug 2025, "Since August 2025")
   {
     date: '2025-08',

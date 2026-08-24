@@ -6,6 +6,10 @@ export default {
   from: "United States",
   checked: "Jul 2026",
   checkedISO: "2026-07-10",
+  recentChange: {
+    date: "Oct 2025",
+    text: "Indonesia has merged its arrival paperwork into one filing. Since <b>1 October 2025</b> the arrival card, customs declaration and health screening are a single free form, the <b>All Indonesia arrival card</b>, completed online before you fly at the official immigration site for a QR code at the airport. It replaces the separate customs declaration, so it is now <b>one form, not two</b>. It is free, and separate from both your visa on arrival and the Bali tourist levy."
+  },
   emergency: { medical: "119", note: "119 is the medical line, and 112 works as a general emergency number in the cities. Outside them, ambulance cover is thin and a taxi is often faster.", checked: "Jul 2026", checkedISO: "2026-07-01" },
   insuranceLevel: "high",
   region: "Asia",

@@ -8,6 +8,10 @@ export default {
   from: "United States",
   checked: "Jul 2026",
   checkedISO: "2026-07-16",
+  recentChange: {
+    date: "Sep 2025",
+    text: "Laos has introduced a digital arrival and departure card. Since <b>September 2025</b> the free <b>Lao Digital Immigration Form</b> is filed online before you travel, at the official portal <b>immigration.gov.la</b>, for a QR code at the border. It is rolling out at the main international entry points, the airports at Vientiane, Luang Prabang and Pakse and the first Lao-Thai Friendship Bridge, and not yet every crossing. It is free and separate from the e-visa, and Laos wants it on departure as well as arrival."
+  },
   sources: {
     changed: "Sources added on first publish. Confirmed with PwC's tax summary that Laos charges a standard 10% VAT and has no separate tourist tax or visitor refund. Verified the tourist visa on the official Lao e-visa portal, with a visa on arrival also available, and the separate, free online immigration form. The kip's rate, around 22,000 to the dollar in mid-2026 after a rough few years, moves, so the live panel below and a fresh check both matter.",
     links: [
@@ -463,17 +467,17 @@ export default {
           ]
         },
         {
-          h: "The free immigration form, and why there is no link here",
+          h: "The free immigration form, and where to file it",
           icon: "alert",
           key: {
-            tag: "Free, required, and deliberately unlinked",
-            text: "A free online Lao immigration form is required before arrival. We have not verified a dedicated official URL for it, so we will not name it and leave you to search.",
+            tag: "Free, required, on the official site",
+            text: "A free online Lao immigration form is required before arrival at the main entry points. File it on the official government portal, immigration.gov.la, never a paid lookalike.",
             tone: "amber"
           },
           p: [
-            "Separately from the visa, Laos requires a <b>free online immigration form</b> before you arrive. It is a different filing from the e-visa, and it costs <b>nothing</b>.",
-            "We have not linked it, deliberately. The rule on this site is that an arrival form is never named without its real government address in the same breath, because a named form with no link sends you straight to a search page, and lookalike sites buy those search terms precisely because these filings are new, obscure and mandatory. Naming it and leaving you to find it would push you into the exact harm the rule exists to prevent.",
-            "So: the form exists, it is <b>free</b>, and until we can source its own official portal we point you at the <b>e-visa site above</b> to complete it through the official channel. If any site quotes you a price for a Lao immigration form, that price is the whole product."
+            "Separately from the visa, Laos requires a <b>free online immigration form</b> before you arrive. It is a different filing from the e-visa, and it costs <b>nothing</b>. The official portal is <b>immigration.gov.la</b>, the Lao Digital Immigration Form, which the government began rolling out in September 2025.",
+            "It is <b>still rolling out</b>: it applies at the main international entry points, the airports at <b>Vientiane, Luang Prabang and Pakse</b> and the first Lao-Thai Friendship Bridge, and not yet at every crossing. Laos also, unusually, wants a <b>departure</b> form as well as an arrival one, so file it on the way out too.",
+            "The rule on this site is that an arrival form is never named without its real government address in the same breath, because a named form with no link sends you to a search page, and lookalike sites buy those search terms precisely because these filings are new, obscure and mandatory. So use <b>immigration.gov.la</b> directly. If any site quotes you a price for a Lao immigration form, that price is the whole product."
           ]
         },
         {
