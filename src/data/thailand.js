@@ -107,7 +107,7 @@ export default {
   // clean government page, so it carries no source link and an unmistakable
   // "proposed" marker.
   keyFacts: [
-    { label: "Air arrival fee", value: "Proposed at 450 baht (about $14) for air arrivals, raised from 300 baht in August 2026, still not being collected, with the timeline slipped to late 2026 or early 2027", status: "proposed", effective: null, source: null, checked: "2026-08-17" }
+    { label: "Air arrival fee", value: "Proposed at 450 baht (about $14) for air arrivals, raised from 300 baht in August 2026, still not being collected, with the timeline slipped to late 2026 or early 2027", status: "proposed", effective: null, source: null, checked: "2026-08-24" }
   ],
 
   traps: [

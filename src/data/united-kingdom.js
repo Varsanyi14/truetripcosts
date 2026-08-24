@@ -123,8 +123,8 @@ export default {
   // always-open card after the tax-free section. The ETA fee reached 20 pounds on
   // 8 April 2026; the Edinburgh levy starts 24 July 2026.
   keyFacts: [
-    { label: "UK ETA fee", value: "20 pounds per person", status: "enacted", effective: "2026-04-08", source: "https://www.gov.uk/eta", checked: "2026-07-10" },
-    { label: "Edinburgh visitor levy", value: "5% of the room price before VAT, capped at the first five nights", status: "enacted", effective: "2026-07-24", source: "https://www.edinburgh.gov.uk/visitorlevy", checked: "2026-08-17" }
+    { label: "UK ETA fee", value: "20 pounds per person", status: "enacted", effective: "2026-04-08", source: "https://www.gov.uk/eta", checked: "2026-08-24" },
+    { label: "Edinburgh visitor levy", value: "5% of the room price before VAT, capped at the first five nights", status: "enacted", effective: "2026-07-24", source: "https://www.edinburgh.gov.uk/visitorlevy", checked: "2026-08-24" }
   ],
 
   traps: [
