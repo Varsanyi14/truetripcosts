@@ -26,6 +26,9 @@
 //      isBillable, never passes isNamedZero, and renders as a real cost.
 //   6. NO RENAME WITHOUT A REDIRECT. Every slug in RENAMED has a 301 in public/_redirects
 //      covering both slash forms, and its old page is genuinely gone from dist.
+//   7. NO SILENT HOLE. Every live country sits in exactly one bucket, so the gate can
+//      always tell "checked, nothing to pay" apart from "nobody looked." See the note on
+//      NO_CHARGE_COUNTRIES below for why the first six assertions could not do this.
 //
 // Exits 1 on any FAIL.
 
@@ -52,6 +55,46 @@ const KEYFACTS_EXEMPT = new Set([
 const NO_CHARGE_PAGES = new Set([
   'japan', 'costa-rica', 'uae', 'qatar', 'canada', 'turkey', 'ireland', 'bahamas',
   'el-salvador', 'colombia', 'jamaica', 'dominican-republic', 'mexico',
+]);
+
+// Countries CHECKED and ruled to have no entry charge, which have NO entry spoke. This is
+// the fourth bucket, and it exists because the other three could not hold these 20.
+//
+// WHY NOT NO_CHARGE_PAGES: that list is about PAGES. Every slug on it has a live entry
+// spoke, and assertion 2 only reaches a country inside `if (!rows.length && spokes.length)`.
+// None of these 20 has a spoke, so listing them there is read by nothing: the gate scored
+// 217 assertions before they were added and 217 after, byte for byte. It would also put a
+// false statement in the data, claiming a page that does not exist.
+//
+// WHY NOT entryCharges: the index matches a keyFact LABEL exactly, and not one of these 20
+// has an entry keyFact to match. Classifying austria as a Georgia-style named zero fails
+// assertion 1 on contact, because Georgia works only by pointing at a keyFact Georgia has.
+// The fix would be to write the keyFact, and that is the one thing MAIN ruled out: for the
+// 17 Schengen slugs the visa-free and ETIAS position is owned by src/data/schengen.js and
+// rendered on all 17 by EESNotice.astro, so a per-country keyFact is the second copy
+// assertion 2 exists to prevent, and it would drift the day ETIAS moves. argentina,
+// hong-kong and morocco already carry their own sourced entry prose in the country file.
+// Either way the fact is already written down once, correctly, somewhere else.
+//
+// SO THE RULING LIVES HERE INSTEAD. Absence is not zero. A country reaches this list only
+// by being checked and ruled free, never by nobody having looked at it, and assertion 7
+// makes that ruling readable to the gate rather than leaving it in a commit message.
+//
+// THE RAIL WHEN ONE OF THESE GROWS: if a country here gains an entry spoke it belongs in
+// NO_CHARGE_PAGES, and if it gains a classifiable entry keyFact it belongs in entryCharges.
+// Assertion 7 fails on both, so the move is forced rather than remembered.
+const NO_CHARGE_COUNTRIES = new Set([
+  // The Schengen 17. Includes iceland, norway and switzerland, which are Schengen but not
+  // EU, and excludes ireland, which is EU but opted out and has its own spoke.
+  'austria', 'croatia', 'czechia', 'denmark', 'france', 'germany', 'greece', 'hungary',
+  'iceland', 'italy', 'netherlands', 'norway', 'poland', 'portugal', 'spain', 'sweden',
+  'switzerland',
+  // Visa-free for US citizens with no arrival fee, verified 2026-08-24. argentina's
+  // reciprocity fee was revoked by Presidential Decree 959/2016 and has not returned; its
+  // Decree 366/2025 insurance rule is a real entry condition, deliberately left as hedged
+  // prose in the guide rather than promoted to a `requirement` row, because enforcement is
+  // inconsistent and no coverage minimum is sourceable to a primary authority.
+  'argentina', 'hong-kong', 'morocco',
 ]);
 
 // Slug renames shipped in this wave. Each must have its 301 in public/_redirects.
@@ -183,6 +226,41 @@ if (!fs.existsSync(redirPath)) {
     else ok();
     if (!fs.existsSync(`dist${r.to}/index.html`)) fail('dist', `${r.to} does not exist, so the redirect points at a 404`);
     else ok();
+  }
+}
+
+// --- 7. no silent hole: every live country is explicitly handled ----------
+// The first six assertions all start from something that already exists: an indexed label,
+// an entry spoke, a renamed slug. A country nobody has touched offers none of those, so it
+// is invisible to every one of them and the gate passes over it in silence. This assertion
+// starts from the country list instead, which is the only way a hole shows up as a hole.
+console.log('7. Every live country is explicitly handled (no silent holes)');
+for (const c of live) {
+  const classified = Boolean(entryCharges[c.slug]);
+  const buckets = [
+    classified && 'entryCharges',
+    NO_CHARGE_PAGES.has(c.slug) && 'NO_CHARGE_PAGES',
+    KEYFACTS_EXEMPT.has(c.slug) && 'KEYFACTS_EXEMPT',
+    NO_CHARGE_COUNTRIES.has(c.slug) && 'NO_CHARGE_COUNTRIES',
+  ].filter(Boolean);
+
+  if (!buckets.length) {
+    fail(c.slug, 'is not classified, not named no-charge and not exempt, so the gate cannot tell whether it is free or simply unchecked. Classify it or name it.');
+    continue;
+  }
+  ok();
+
+  // The rails that keep the fourth bucket meaning what it says.
+  if (NO_CHARGE_COUNTRIES.has(c.slug)) {
+    if (classified) {
+      fail(c.slug, 'is named no-charge but also carries an entry-charges classification. It cannot be both; remove it from NO_CHARGE_COUNTRIES.');
+    } else ok();
+    if (NO_CHARGE_PAGES.has(c.slug)) {
+      fail(c.slug, 'is in both NO_CHARGE_COUNTRIES and NO_CHARGE_PAGES. The first means no page exists, the second means one does.');
+    } else ok();
+    if (entrySpokes(c).length) {
+      fail(c.slug, 'is in NO_CHARGE_COUNTRIES but now has an entry spoke. Move it to NO_CHARGE_PAGES.');
+    } else ok();
   }
 }
 
