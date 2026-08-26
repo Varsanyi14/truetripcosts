@@ -32,6 +32,7 @@ export const topicIcon = {
 // when its hub is ready to receive the traffic.
 export const TOPIC_HUBS = {
   health: { href: '/medical-costs', label: 'Medical costs abroad, country by country' },
+  "tourist-tax": { href: '/hotel-taxes-and-fees', label: 'Hotel taxes and fees, country by country' },
 };
 
 // Caution tier -> chip label. The three-step "how careful to be" signal shown on the

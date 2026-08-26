@@ -14,13 +14,15 @@ import fs from 'node:fs';
 // reachable only from inside their own country guide, which is exactly where the scams
 // spokes were before that hub was built.
 //
-// NOTE on the filter: this one gathers by SLUG, not by topic, unlike its siblings. The tax
-// family's topic values are inconsistent: topic:"taxes" holds the eight hotel-bill spokes
-// but also Netherlands' per-night tourist tax and Saudi Arabia's VAT-refund spoke, while
-// four European vat-refund spokes and three European tourist-tax spokes sit under their own
-// topics. Filtering on topic would pull in two pages that are not about a hotel bill and
-// miss seven that are about tax. The slug is the clean discriminator. If the topic values
-// are ever normalised, switch this back to a topic filter to match the other hubs.
+// NOTE on the filter: this one gathers by SLUG (two of them), not by topic, unlike its
+// siblings. The hotel-bill family uses two slugs: "hotel-taxes-and-fees" (the original
+// hotel-bill spokes) and "tourist-tax" (the European per-night bed-tax spokes). Both belong
+// on this hub. The tax family's topic values are inconsistent (topic:"taxes" holds the
+// hotel-bill spokes but also Saudi Arabia's VAT-refund spoke, while the tourist-tax and
+// vat-refund spokes sit under their own topics), so a topic filter would pull in VAT-refund
+// pages that are not about a hotel bill. The two slugs are the clean discriminator, and they
+// deliberately exclude the vat-refund spokes (reclaiming tax on shopping is a different thing).
+// If the topic values are ever normalised, switch to a topic filter to match the other hubs.
 //
 // This page deliberately does not restate any rate. Percentages go stale and the country
 // spokes are the dated, sourced home for them; the cards here carry each spoke's own h1 and
@@ -32,7 +34,7 @@ const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? '/flags/' + s
 const spokes = countries
   .filter(c => c.live)
   .flatMap(c => (c.spokes || [])
-    .filter(s => s.slug === 'hotel-taxes-and-fees' && s.live !== false)
+    .filter(s => (s.slug === 'hotel-taxes-and-fees' || s.slug === 'tourist-tax') && s.live !== false)
     .map(s => ({ h1: s.h1, lede: s.lede, spokeSlug: s.slug, country: c.name, countrySlug: c.slug, region: c.region })))
   .sort((a, b) => a.country.localeCompare(b.country));
 ---
