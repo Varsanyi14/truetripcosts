@@ -138,8 +138,7 @@ export default {
     { q: "What is BLIK?", a: "BLIK is Poland's hugely popular phone-based payment system, used by locals for shops, transfers and cash withdrawals. As a visitor you do not need it: your contactless card or Apple and Google Pay works in all the same places." },
     { q: "Is there a tourist tax in Krakow or Warsaw?", a: "No. Poland's major cities do not charge a citywide tourist tax. Only designated resort and spa towns, like Zakopane, add a small local climate fee of a few zloty per person per night." },
     { q: "Can I get a VAT refund on shopping in Poland?", a: "Yes. Non-EU visitors can reclaim the 23% VAT on goods: spend over 200 zloty in one store on one receipt, ask for a Tax Free form, keep the goods unused, and have customs confirm it when you leave the EU. After fees you get back roughly 14%, and it is for goods, not hotels or meals." },
-    { q: "Do you tip in Poland?", a: "Lightly. Round up or leave about 10% for good table service, in cash. Tipping is not expected for counter service or a quick coffee. Note that saying thank you as you hand over money is often read as 'keep the change.'" },
-    { q: "Do I need a visa or ETIAS for Poland?", a: "Not right now. US citizens visit visa-free for up to 90 days in any 180, and since April 2026 you give a fingerprint and photo at the border under the EES system, with no fee and no form. ETIAS, a separate online authorization, is not yet in operation, and the EU has said it will announce a start date several months before it begins, so there is nothing to apply for and nothing to buy today." }
+    { q: "Do you tip in Poland?", a: "Lightly. Round up or leave about 10% for good table service, in cash. Tipping is not expected for counter service or a quick coffee. Note that saying thank you as you hand over money is often read as 'keep the change.'" }
   ],
   culture: {
     heading: "A few Polish words go a long way",

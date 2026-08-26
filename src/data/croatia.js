@@ -142,8 +142,7 @@ export default {
     { q: "What is the sojourn tax in Croatia?", a: "A small tourist tax charged per person per night and collected by your accommodation, usually around 1 to 2 euros per adult and a little more on the coast in high summer. Children under 12 are exempt, and those aged 12 to 18 pay half." },
     { q: "Can I get a VAT refund on shopping in Croatia?", a: "Yes. Non-EU visitors can reclaim the 25% VAT on goods: spend over about 100 euros in one store, ask for a tax-free form, keep the goods unused, and have customs stamp it when you leave the EU. After fees you get back roughly 17%, and it is for goods, not hotels or meals." },
     { q: "Do I need to register with the police in Croatia?", a: "If you stay in a hotel or a registered rental, it is done for you automatically at check-in. If you stay privately with friends or family, you must register yourself at the local police within 24 hours, with your passport." },
-    { q: "Do you tip in Croatia?", a: "Lightly. Round up or leave about 10% for good table service, in cash, after checking touristy bills for a service charge. Tipping is not expected for a quick coffee or drink beyond rounding up." },
-    { q: "Do I need a visa or ETIAS for Croatia?", a: "Not right now. US citizens visit visa-free for up to 90 days in any 180. Croatia joined Schengen in 2023, and since April 2026 you give a fingerprint and photo at the border under the EES system, with no fee and no form. ETIAS, a separate online authorization, is not yet in operation, and the EU has said it will announce a start date several months before it begins, so there is nothing to apply for and nothing to buy today." }
+    { q: "Do you tip in Croatia?", a: "Lightly. Round up or leave about 10% for good table service, in cash, after checking touristy bills for a service charge. Tipping is not expected for a quick coffee or drink beyond rounding up." }
   ],
   culture: {
     heading: "A little Croatian goes a long way",

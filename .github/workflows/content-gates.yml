@@ -52,6 +52,8 @@ jobs:
 
       - name: mutation-test-medical-map (the gate must stay falsifiable)
         run: node scripts/mutation-test-medical-map.mjs
+      - name: mutation-test-entry-costs (the gate must stay falsifiable)
+        run: node scripts/mutation-test-entry-costs.mjs
 
       - name: check-verdict
         run: node scripts/check-verdict.mjs

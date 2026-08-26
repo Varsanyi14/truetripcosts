@@ -138,8 +138,7 @@ export default {
     { q: "What is the Budapest tourist tax?", a: "Budapest charges a tourist tax of 4% of your room price per night, added at your accommodation, with under-18s exempt. Most other Hungarian towns charge a small flat fee per person per night instead." },
     { q: "Can I get a VAT refund on shopping in Hungary?", a: "Yes, and it is the best in Europe. Hungary's VAT is 27%, so after fees you get back about 18%. Spend over about 55,000 forint in one store, ask for a tax-free form, keep the goods unused, and have customs stamp it when you leave the EU. It is for goods, not hotels or meals." },
     { q: "Are Budapest taxis safe to use?", a: "Yes, if you book rather than hail. Use the Bolt app or call a reputable company, and avoid the unmarked cabs waiting at the airport and tourist areas, which are known to overcharge visitors." },
-    { q: "Do you tip in Hungary?", a: "A little more than elsewhere in Europe: around 10% for good table service. Check the bill first for a service charge (szervizdij), often already added. When tipping, tell the server the total you want to pay rather than leaving cash on the table." },
-    { q: "Do I need a visa or ETIAS for Hungary?", a: "Not right now. US citizens visit visa-free for up to 90 days in any 180, and since April 2026 you give a fingerprint and photo at the border under the EES system, with no fee and no form. ETIAS, a separate online authorization, is not yet in operation, and the EU has said it will announce a start date several months before it begins, so there is nothing to apply for and nothing to buy today." }
+    { q: "Do you tip in Hungary?", a: "A little more than elsewhere in Europe: around 10% for good table service. Check the bill first for a service charge (szervizdij), often already added. When tipping, tell the server the total you want to pay rather than leaving cash on the table." }
   ],
   culture: {
     heading: "A little Hungarian goes a long way",
