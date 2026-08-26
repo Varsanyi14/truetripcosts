@@ -442,12 +442,14 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'taxis-and-apps', k: 'Madrid airport', v: 'Fixed 33 euros inside the M-30', tier: 1, theme: 'taxi-airport' },
   ],
   greece: [
+    { label: 'Expect', spoke: 'medical-costs', k: "The real bill", v: "The boat or flight to Athens", tier: 1, theme: 'medical' },
     { label: 'Expect', spoke: 'money-scams', k: 'Athens from ATH', v: '40 euros day, 55 euros night, fixed', tier: 1, theme: 'taxi-airport' },
   ],
   portugal: [
     { label: 'Expect', spoke: 'tram-28-contactless', k: 'Tram 28', v: 'Contactless mixed, do not rely on it', tier: 1, theme: 'transit' },
   ],
   germany: [
+    { label: 'Expect', spoke: 'medical-costs', k: "You pay", v: "As a private patient", tier: 1, theme: 'medical' },
     { label: 'Expect', spoke: 'driving-and-tolls', k: 'The real trap', v: 'The city Umweltzone sticker', tier: 1, theme: 'driving' },
   ],
   'united-kingdom': [
@@ -465,12 +467,14 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'hotel-taxes-and-fees', k: 'On top of the room', v: 'About a fifth', tier: 1, theme: 'hotel-bill' },
   ],
   canada: [
+    { label: 'Expect', spoke: 'medical-costs', k: "Provincial plans", v: "Do not cover visitors", tier: 1, theme: 'medical' },
     { label: 'Do', spoke: 'staying-connected', k: 'Check first', v: 'Your US plan, Canada is often bundled', tier: 1, theme: 'connectivity' },
   ],
   'costa-rica': [
     { label: 'Expect', spoke: 'money-scams', k: 'Car insurance', v: 'Required, and rarely quoted', tier: 1, theme: 'car-insurance' },
   ],
   'dominican-republic': [
+    { label: 'Expect', spoke: 'medical-costs', k: "Real risk", v: "The evacuation bill", tier: 1, theme: 'medical' },
     { label: 'Do', spoke: 'taxis-and-apps', k: 'Taxis', v: 'No meters, agree the fare first', tier: 1, theme: 'taxi' },
   ],
   jamaica: [
@@ -488,6 +492,7 @@ export const SPOKE_ROWS = {
     { label: 'Do', spoke: 'staying-connected', k: 'SIM registration', v: 'Passport, visa, photo in the shop', tier: 1, theme: 'sim-registration' },
   ],
   netherlands: [
+    { label: 'Expect', spoke: 'medical-costs', k: "You pay", v: "As an uninsured patient", tier: 1, theme: 'medical' },
     { label: 'Do', spoke: 'taxis-and-apps', k: 'From Schiphol', v: 'The train is fast and cheap', tier: 2, theme: 'taxi-airport' },
   ],
   iceland: [
@@ -496,6 +501,7 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'staying-connected', k: 'Signal gaps', v: 'The Highlands and the F-roads', tier: 1, theme: 'connectivity' },
   ],
   indonesia: [
+    { label: 'Expect', spoke: 'medical-costs', k: "Admission", v: "Deposit or guarantee first", tier: 1, theme: 'medical' },
     { label: 'Expect', spoke: 'visa', k: 'Visa', v: 'Required, visa on arrival', tier: 1, theme: 'visa' },
   ],
   uae: [
@@ -507,12 +513,15 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'hotel-taxes-and-fees', k: 'VAT', v: '5%, and not reclaimable on hotels', tier: 1, theme: 'vat' },
   ],
   oman: [
+    { label: 'Expect', spoke: 'medical-costs', k: "You pay", v: "In full, as a visitor", tier: 1, theme: 'medical' },
     { label: 'Expect', spoke: 'taxis-and-apps', k: 'Uber', v: 'Does not operate in Oman', tier: 1, theme: 'taxi' },
   ],
   qatar: [
+    { label: 'Expect', spoke: 'medical-costs', k: "Deposits", v: "Expected before treatment", tier: 1, theme: 'medical' },
     { label: 'Expect', spoke: 'visa', k: 'Visa', v: 'Free on arrival, no application', tier: 1, theme: 'visa' },
   ],
   bahrain: [
+    { label: 'Expect', spoke: 'medical-costs', k: "You pay", v: "As a visitor, at listed fees", tier: 1, theme: 'medical' },
     { label: 'Expect', spoke: 'visa', k: 'Visa', v: 'Required, and not free', tier: 1, theme: 'visa' },
   ],
   'saudi-arabia': [
@@ -525,6 +534,7 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'hotel-taxes-and-fees', k: 'Municipality levy', v: '5%, or 2.5% lower down', tier: 2, theme: 'hotel-bill' },
   ],
   kuwait: [
+    { label: 'Expect', spoke: 'medical-costs', k: "You pay", v: "Out of pocket as a visitor", tier: 1, theme: 'medical' },
     { label: 'Expect', spoke: 'taxis-and-apps', k: 'Uber', v: 'Contested, do not rely on it', tier: 1, theme: 'taxi' },
   ],
   switzerland: [
@@ -549,6 +559,7 @@ export const SPOKE_ROWS = {
   // Countries with no pocket. These are the thin cards the harvest is for: the
   // hero-fact clause leads and the spokes carry the rest of the card.
   vietnam: [
+    { label: 'Expect', spoke: 'medical-costs', k: "Real risk", v: "The flight, not the ward", tier: 1, theme: 'medical' },
     { label: 'Do', spoke: 'e-visa', k: 'Where', v: 'evisa.gov.vn only', tier: 1, theme: 'visa-site' },
     { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not required, but appreciated', tier: 1, theme: 'tipping' },
     { label: 'Expect', spoke: 'money-scams', k: 'The notes', v: 'Big dong notes look alike', tier: 1, theme: 'notes' },
@@ -567,12 +578,14 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'About 10%, customary', tier: 2, theme: 'tipping' },
   ],
   austria: [
+    { label: 'Expect', spoke: 'medical-costs', k: "You pay", v: "As a private patient", tier: 1, theme: 'medical' },
     { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose euros, not dollars', tier: 1, theme: 'dcc' },
     { label: 'Do', spoke: 'tipping', k: 'The habit', v: 'Tell the server, do not leave it', tier: 1, theme: 'tipping' },
     { label: 'Carry', spoke: 'cash-or-card', k: 'Cards', v: 'Fine in cities, cash for small spots', tier: 2, theme: 'cash-need' },
     { label: 'Expect', spoke: 'taxis-and-apps', k: 'From Vienna airport', v: 'The S-Bahn or the CAT', tier: 2, theme: 'taxi-airport' },
   ],
   egypt: [
+    { label: 'Expect', spoke: 'medical-costs', k: "Red Sea diving", v: "Chamber and transfer risk", tier: 1, theme: 'medical' },
     { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose pounds, not dollars', tier: 1, theme: 'dcc' },
     { label: 'Expect', spoke: 'tipping', k: 'Tipping (baksheesh)', v: 'Constant and expected', tier: 1, theme: 'tipping' },
   ],
@@ -603,26 +616,31 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'taxis-and-apps', k: 'Taxis', v: 'Very expensive, fares vary by firm', tier: 1, theme: 'taxi' },
   ],
   sweden: [
+    { label: 'Expect', spoke: 'medical-costs', k: "You pay", v: "The full cost as a visitor", tier: 1, theme: 'medical' },
     { label: 'Expect', spoke: 'taxis-and-apps', k: 'Taxis', v: 'Deregulated, fares vary a lot', tier: 1, theme: 'taxi' },
     { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not really expected', tier: 1, theme: 'tipping' },
     { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose krona, not dollars', tier: 1, theme: 'dcc' },
   ],
   denmark: [
+    { label: 'Expect', spoke: 'medical-costs', k: "You pay", v: "The full cost as a visitor", tier: 1, theme: 'medical' },
     { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not really expected', tier: 1, theme: 'tipping' },
     { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose krone, not dollars', tier: 1, theme: 'dcc' },
     { label: 'Carry', spoke: 'cash-or-card', k: 'Cash', v: 'Rarely needed, some places refuse it', tier: 2, theme: 'cash-need' },
   ],
   'south-korea': [
+    { label: 'Expect', spoke: 'medical-costs', k: "National insurance", v: "For residents, not visitors", tier: 1, theme: 'medical' },
     { label: 'Do', spoke: 'k-eta', k: 'You still need', v: 'The free e-Arrival Card', tier: 1, theme: 'entry-form' },
     { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not expected', tier: 1, theme: 'tipping' },
     { label: 'Do', spoke: 'cash-or-card', k: 'Transit', v: 'A T-money card', tier: 2, theme: 'transit' },
   ],
   singapore: [
+    { label: 'Expect', spoke: 'medical-costs', k: "Subsidy for you", v: "None at all", tier: 1, theme: 'medical' },
     { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not customary', tier: 1, theme: 'tipping' },
     { label: 'Carry', spoke: 'cash-or-card', k: 'Cash for', v: 'Hawker stalls and small vendors', tier: 2, theme: 'cash-need' },
     { label: 'Do', spoke: 'taxis-and-apps', k: 'From Changi', v: 'The MRT is cheap and fast', tier: 2, theme: 'taxi-airport' },
   ],
   australia: [
+    { label: 'Expect', spoke: 'medical-costs', k: "Reciprocal deal", v: "Eleven countries, not the US", tier: 1, theme: 'medical' },
     { label: 'Expect', spoke: 'driving-and-tolls', k: 'Tolls', v: 'All electronic, no cash anywhere', tier: 1, theme: 'tolls' },
     { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not expected, not the culture', tier: 1, theme: 'tipping' },
     { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose Australian dollars', tier: 1, theme: 'dcc' },
@@ -639,6 +657,7 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'taxis-and-apps', k: 'Petit taxi', v: 'Has a meter, often refused', tier: 1, theme: 'taxi-meter' },
   ],
   'south-africa': [
+    { label: 'Expect', spoke: 'medical-costs', k: "Real risk", v: "A safari far from the city", tier: 1, theme: 'medical' },
     { label: 'Withdraw', spoke: 'money-scams', k: 'ATM security guards', v: 'Not allowed to help you', tier: 1, theme: 'atm' },
     { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: '10 to 15%, expected', tier: 1, theme: 'tipping' },
     { label: 'Do', spoke: 'taxis-and-apps', k: 'Airport pickup', v: 'A designated e-hailing bay', tier: 2, theme: 'taxi-airport' },
@@ -646,6 +665,7 @@ export const SPOKE_ROWS = {
     { label: 'Do', spoke: 'staying-connected', k: 'SIM registration', v: 'RICA: passport and an address', tier: 1, theme: 'sim-registration' },
   ],
   taiwan: [
+    { label: 'Expect', spoke: 'medical-costs', k: "Honest read", v: "Cover matters less here", tier: 1, theme: 'medical' },
     { label: 'Carry', spoke: 'cash-or-card', k: 'Carry', v: 'NT dollars, it is cash-reliant', show: 'v', tier: 1, theme: 'cash-need' },
     { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Not customary', tier: 1, theme: 'tipping' },
     { label: 'Do', spoke: 'cash-or-card', k: 'Transit', v: 'Get an EasyCard', tier: 2, theme: 'transit' },
@@ -675,11 +695,13 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Modest, appreciated', tier: 2, theme: 'tipping' },
   ],
   cambodia: [
+    { label: 'Expect', spoke: 'medical-costs', k: "Serious care", v: "Bangkok or Singapore", tier: 1, theme: 'medical' },
     { label: 'Expect', spoke: 'cash-or-card', k: 'Everyday money', v: 'US dollars', tier: 1, theme: 'currency' },
     { label: 'Do', spoke: 'taxis-and-ride-hailing', k: 'Fares', v: 'App price or meter, not haggling', tier: 1, theme: 'taxi' },
     { label: 'Do', spoke: 'money-scams', k: 'Angkor tickets', v: 'One official seller only', tier: 1, theme: 'tickets' },
   ],
   laos: [
+    { label: 'Expect', spoke: 'medical-costs', k: "Serious care", v: "Thailand, not Laos", tier: 1, theme: 'medical' },
     { label: 'Withdraw', spoke: 'cash-or-card', k: 'ATMs', v: 'Low limits, a fee each time', tier: 1, theme: 'atm' },
     { label: 'Do', spoke: 'taxis-and-ride-hailing', k: 'Fares', v: 'Agree before you get in', tier: 1, theme: 'taxi' },
     { label: 'Carry', spoke: 'cash-or-card', k: 'Carry', v: 'Kip, in small notes', show: 'v', tier: 2, theme: 'cash-need' },
@@ -691,6 +713,7 @@ export const SPOKE_ROWS = {
     { label: 'Carry', spoke: 'cash-or-card', k: 'Cash for', v: 'Taxis, markets, small towns', tier: 2, theme: 'cash-need' },
   ],
   'el-salvador': [
+    { label: 'Expect', spoke: 'medical-costs', k: "Real risk", v: "Evacuation to the US", tier: 1, theme: 'medical' },
     { label: 'Expect', spoke: 'tipping', k: 'The real risk', v: 'Tipping twice, not too little', tier: 1, theme: 'tipping' },
     { label: 'Withdraw', spoke: 'cash-or-card', k: 'ATM fee', v: 'About $3 to $6, flat', tier: 1, theme: 'atm' },
     { label: 'Carry', spoke: 'cash-or-card', k: 'What matters', v: 'Small bills, ones to tens', tier: 2, theme: 'cash-need' },
@@ -701,11 +724,13 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'tipping', k: 'Tipping', v: 'Light, emerging', tier: 2, theme: 'tipping' },
   ],
   china: [
+    { label: 'Expect', spoke: 'medical-costs', k: "Unpaid bill", v: "Can bar re-entry", tier: 1, theme: 'medical' },
     { label: 'Expect', spoke: 'staying-connected', k: 'Firewall blocks', v: 'Google, Maps, WhatsApp, Instagram', tier: 1, theme: 'connectivity' },
     { label: 'Do', spoke: 'visa-and-transit', k: 'Visa', v: 'Tourist (L) visa, in advance', show: 'v', tier: 1, theme: 'visa' },
     { label: 'Carry', spoke: 'how-to-pay-in-china', k: 'Backup', v: 'Some cash and a physical card', tier: 2, theme: 'cash-need' },
   ],
   'sri-lanka': [
+    { label: 'Expect', spoke: 'medical-costs', k: "Serious cases", v: "May mean flying out", tier: 1, theme: 'medical' },
     { label: 'Expect', spoke: 'tipping', k: 'Restaurants', v: '10% often already added, check', tier: 1, theme: 'tipping' },
     { label: 'Do', spoke: 'taxis-and-apps', k: 'Best apps', v: 'PickMe (local) and Uber', tier: 2, theme: 'taxi' },
     { label: 'Carry', spoke: 'cash-or-card', k: 'Cash for', v: 'Tuk-tuks, street food, temples', tier: 2, theme: 'cash-need' },
