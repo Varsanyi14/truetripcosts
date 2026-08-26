@@ -6,30 +6,30 @@ export default {
   live: true,
   name: "Norway",
   from: "United States",
-  checked: "Jul 2026",
-  checkedISO: "2026-07-07",
+  checked: "Aug 2026",
+  checkedISO: "2026-08-26",
   sources: {
-    changed: "Sources added on first publish, checked July 2026. Confirmed that Norway (outside the EU, its own krone) charges VAT (MVA) of 25% on most things, a reduced 12% on hotel stays and transport and 15% on food, all already in the price, and that non-residents can reclaim VAT on goods over 315 NOK in one store. The big change: Norway's new visitor's contribution, up to 3% on overnight stays, took effect in the summer of 2026, but it is opt-in by municipality (the Lofoten islands are an approved early area, with Bergen, Tromso and others expected to follow), so it applies in some places and not others.",
+    changed: "Sources added on first publish, checked July 2026. Confirmed that Norway (outside the EU, its own krone) charges VAT (MVA) of 25% on most things, a reduced 12% on hotel stays and transport and 15% on food, all already in the price, and that non-residents can reclaim VAT on goods over 315 NOK in one store. The big change: Norway passed a visitor's contribution law, up to 3% on overnight stays, that took effect 1 July 2026, but it is a permission slip, not a live charge: a municipality has to apply and be approved before it can collect, and as of August 2026 none is collecting anywhere. Tromso has applied and is targeting 1 January 2027, so the earliest a traveler pays this is 2027.",
     links: [
       { label: "Skatteetaten (Norwegian Tax Administration): the 25%, 15% and 12% VAT rates", url: "https://www.skatteetaten.no/en/rates/value-added-tax/", type: "revenue" },
-      { label: "Forbes: Norway's phased visitor's contribution, up to 3% on overnight stays, from summer 2026", url: "https://www.forbes.com/sites/davidnikel/2025/06/07/norway-confirms-phased-introduction-of-tourist-tax-in-2026/", type: "media" },
+      { label: "Forbes: Norway's phased visitor's contribution law, up to 3% on overnight stays, with collection starting municipality by municipality", url: "https://www.forbes.com/sites/davidnikel/2025/06/07/norway-confirms-phased-introduction-of-tourist-tax-in-2026/", type: "media" },
       { label: "Norway country emergency numbers: 112 police, 113 ambulance and 110 fire", url: "https://globalemergencynumbers.com/country/norway", type: "police" },
     ],
-    judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure. Which towns have opted into the visitor's contribution is changing through 2026, so check your specific stay.",
+    judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure. No Norwegian municipality is collecting the visitor's contribution yet, so this is one to watch rather than budget for; check your specific stay if you travel in 2027 or later.",
   },
   emergency: { medical: "112", note: "112 reaches the police and works from any phone, even with no SIM. For a medical emergency dial 113 for an ambulance, and 110 for the fire service. 116 117 is the out-of-hours medical line for less urgent care. Operators speak English.", checked: "Jul 2026", checkedISO: "2026-07-07" },
   insuranceLevel: "medium",
   rentalCommon: true,
   region: "Europe",
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 3 },
-  hook: "Card-friendly and nearly cashless, but it is kroner not euros, everything is expensive, and a new opt-in visitor's tax started in summer 2026 in places like Lofoten and Bergen.",
+  hook: "Card-friendly and nearly cashless, but it is kroner not euros, everything is expensive, and a new visitor's tax is on the books though no town is collecting it yet.",
   aliases: ["norway", "oslo", "bergen", "tromso", "lofoten", "stavanger", "alesund", "geiranger", "fjords", "trondheim", "norwegian krone", "nok", "krone", "kroner"],
 
   title: "Can you use euros in Norway? Money in 2026",
   description: "No, Norway runs on kroner, and you barely need cash: cards work nearly everywhere. Prices are high, and a new visitor's tax began in 2026. Checked 2026.",
 
   h1: "Money in Norway, sorted.",
-  lede: "A calm, current plan for the money side of your trip: why your card covers almost everything, why it is kroner and not euros, how little you tip, the shopping tax you can claim back, and the new visitor's contribution that some towns started charging in summer 2026.",
+  lede: "A calm, current plan for the money side of your trip: why your card covers almost everything, why it is kroner and not euros, how little you tip, the shopping tax you can claim back, and the new visitor's contribution that is now law but that no town is charging yet.",
   hero: {
     img: "/norway-hero.jpg",
     h: 1375,
@@ -38,12 +38,12 @@ export default {
 
   recentChange: {
     date: "Jul 2026",
-    text: "Norway's new visitor's contribution took effect in the summer of 2026. It lets a municipality add up to 3% to the price of an overnight stay (hotels, guesthouses and short-term rentals) and to cruise calls, but it is opt-in, not nationwide: a town has to apply and be approved. The Lofoten islands are an approved early area, and Bergen, Tromso and other busy spots are expected to follow, so it is rolling out gradually. Campsites, marinas, tents and personal campervans are exempt. On a 2,500 NOK hotel night, 3% is about 75 NOK, roughly 7 dollars."
+    text: "Norway's visitor's contribution became law on 1 July 2026, but it is a permission slip rather than a live charge, and as of August 2026 no municipality is collecting it anywhere. Before a town can charge it, it has to show tourism strains its services, get a spending plan approved by the national ministry, and pass a local rule. It lets a town add up to 3% to the price of an overnight stay (hotels, guesthouses and short-term rentals) and to cruise calls once it is running; campsites, marinas, tents and personal campervans are exempt. Tromso is furthest along: its council approved a plan in June 2026 and is targeting 1 January 2027, still subject to ministry approval. So for a trip now you pay nothing extra; on a 2,500 NOK hotel night, the eventual 3% would be about 75 NOK, roughly 7 dollars."
   },
 
   notice: 'We only cover trips departing from the United States right now. Want an email the moment we add your home country? <a href="#" onclick="return false"><b>Sign up for an alert</b></a>.',
 
-  verdict: "Norway is clean, orderly and about as <b>card-friendly as anywhere in Europe</b>: tap, chip, Apple Pay and Google Pay work almost everywhere, and you rarely need cash. Bring a <b>no-foreign-fee Visa or Mastercard</b>, keep maybe <b>500 to 800 NOK</b> for the odd small or rural spot, and pull kroner from a <b>bank ATM</b> (look for Minibank machines from the big banks), declining any offer to charge you in dollars. Two things to hold onto: it is <b>kroner, not euros</b> (Norway is not in the EU or the eurozone, so leftover euros will not spend here), and it is <b>genuinely expensive</b>, so budget more than for most of Europe. New for 2026: a <b>visitor's contribution</b> of up to 3% on overnight stays has started in some towns (Lofoten, likely Bergen and Tromso soon), but it is opt-in, so it appears in some places and not others (below). Always choose kroner, never dollars, and tipping is light.",
+  verdict: "Norway is clean, orderly and about as <b>card-friendly as anywhere in Europe</b>: tap, chip, Apple Pay and Google Pay work almost everywhere, and you rarely need cash. Bring a <b>no-foreign-fee Visa or Mastercard</b>, keep maybe <b>500 to 800 NOK</b> for the odd small or rural spot, and pull kroner from a <b>bank ATM</b> (look for Minibank machines from the big banks), declining any offer to charge you in dollars. Two things to hold onto: it is <b>kroner, not euros</b> (Norway is not in the EU or the eurozone, so leftover euros will not spend here), and it is <b>genuinely expensive</b>, so budget more than for most of Europe. New for 2026: a <b>visitor's contribution</b> of up to 3% on overnight stays is now law, but <b>no town is collecting it yet</b> (Tromso is targeting 2027), so it is one to watch, not budget for (below). Always choose kroner, never dollars, and tipping is light.",
 
   meter: {
     heading: "Nearly cashless; the real cost is how much everything costs.",
@@ -62,7 +62,7 @@ export default {
       "Bring a <b>no-foreign-fee Visa or Mastercard</b> with contactless for nearly everything, plus a backup card from a different bank.",
       "Get a <b>no-foreign-fee debit card</b> (Charles Schwab, Wise or Revolut) for the little cash you might pull.",
       "Check whether your US phone plan covers Norway. Many that include the EU leave Norway out, since it is not an EU member, so an eSIM may be cheaper.",
-      "Heading to Lofoten, Bergen or another busy spot? A small <b>visitor's contribution</b> may now be added to your stay (see below), so check your booking."
+      "You may have read about Norway's new <b>visitor's contribution</b>, but no town is collecting it yet (see below), so there is nothing extra to pay on a trip now."
     ], cta: { label: "See no-fee card options", tag: "earn", href: "#" } },
     { sym: "plane", when: "At the airport", bullets: [
       "Skip the exchange counters. You can start tapping your card immediately, including for the airport train or bus into Oslo, Bergen or Tromso.",
@@ -96,23 +96,24 @@ export default {
     works: "Very good in and around cities, towns and along the main roads and fjord routes, with strong 4G and wide 5G. The main networks are Telenor (the widest reach) and Telia. Coverage thins in the high mountains, some remote fjords and the far north, so expect gaps if you go deep into the backcountry. Because Norway is not in the EU, the free roaming that applies elsewhere in Europe often is not free here, so check your US plan carefully; an eSIM (Airalo, Nomad, Ubigi) is frequently cheaper. You do not need mobile data to pay by card, but you will want it for maps and, if driving, road and ferry information."
   },
 
-  // VISITOR'S CONTRIBUTION (Visitor Contribution Act), verified to Jul 2026. Norway's parliament
-  // passed the law in 2025; it took effect in summer 2026. It lets a municipality add UP TO 3% to
-  // the price of an overnight stay (hotels, guesthouses, hostels and short-term rentals) and to
-  // cruise calls, but it is OPT-IN: a town must apply and be approved, so it applies in some places
-  // and not others. Lofoten is an approved early area; Bergen, Tromso and other busy spots are
-  // expected to follow. Campsites, marinas, tents and personal campervans and boats are exempt.
-  // Modeled here as a percent of the room, defaulting to the opt-in hotspots. VAT is separate and
-  // already in prices.
+  // VISITOR'S CONTRIBUTION (Visitor Contribution Act), verified to Aug 2026. Norway's parliament
+  // passed the law in 2025 and it took effect 1 July 2026, but it is a PERMISSION SLIP, not a live
+  // charge: a municipality must show tourism strains its services, get a spending plan approved by
+  // the national ministry, and pass a local rule before it can collect. As of Aug 2026 NO town is
+  // collecting anywhere. Tromso has applied and is targeting 1 Jan 2027 (still pending approval).
+  // Once running it lets a town add UP TO 3% to an overnight stay (hotels, guesthouses, hostels,
+  // short-term rentals) and cruise calls; campsites, marinas, tents and personal campervans are
+  // exempt. Modeled here DEFAULTING TO 0 (nothing collected today); the 3% option is the eventual
+  // rate for a town once it switches on. VAT is separate and already in prices.
   tax: {
     unit: "percentOfRoom",
     currency: "NOK",
     capNights: null,
     taxLabel: "Visitor's contribution",
-    note: "Norway's visitor's contribution started in summer 2026 but is opt-in: a municipality has to apply to charge it, so it appears in some towns and not others. Where it applies it is up to 3% of the accommodation price, added to hotels, guesthouses and short-term rentals (and cruise calls). Lofoten is an approved early area; Bergen, Tromso and other busy spots are expected to follow. Campsites, tents and personal campervans are exempt. Pick the option that matches where you are staying, and check your booking, since the list of towns is changing through 2026.",
+    note: "Norway's visitor's contribution became law on 1 July 2026, but no municipality is collecting it yet, so on a trip now there is nothing extra to pay. A town has to apply and be approved before it can charge up to 3% of the accommodation price (hotels, guesthouses, short-term rentals and cruise calls); campsites, tents and personal campervans are exempt. Tromso is targeting 1 January 2027. Leave this at nothing for a trip now, or pick the 3% option to see what a stay would cost once a town starts charging.",
     regions: [
-      { key: "optin", label: "Lofoten, Bergen, Tromso and other opt-in spots", pct: 3, note: "In towns that have opted in, expect up to 3% added to your accommodation. On a 2,500 NOK hotel night that is about 75 NOK, roughly 7 dollars. It may show as a separate line or be built into the rate, so read your booking." },
-      { key: "elsewhere", label: "Towns that have not opted in", pct: 0, note: "Many places, especially quieter inland towns, have not adopted the visitor's contribution, so there is nothing extra to pay. Campsites, tents and personal campervans are exempt everywhere." }
+      { key: "today", label: "Any town today (nothing being collected yet)", pct: 0, note: "As of 2026 no Norwegian municipality is collecting the visitor's contribution, so there is nothing extra to pay on a trip now, anywhere in the country." },
+      { key: "eventual", label: "Once a town starts charging (Tromso targets 2027)", pct: 3, note: "When a town switches the levy on, expect up to 3% added to your accommodation. On a 2,500 NOK hotel night that is about 75 NOK, roughly 7 dollars. It may show as a separate line or be built into the rate, so read your booking. Tromso is targeting 1 January 2027." }
     ]
   },
 
@@ -127,14 +128,14 @@ export default {
   taxfree: {
     label: "Taxes, tips and refunds",
     heading: "High prices with tax in them, a light tip, and money back on shopping.",
-    text: "Norway is expensive, and <b>VAT is already in the price</b>: 25% on most things, a reduced 12% on hotel stays and transport, and 15% on food, so the tag or menu figure is what you pay. As a <b>non-resident you can reclaim the VAT on goods</b> you take home, on receipts of at least <b>315 NOK</b> in a single store. Ask for a tax-free form, keep the goods unused, and get it stamped by customs when you leave; after the operator's fee you get back a useful chunk, though not the full 25%. <b>Tipping is light</b>: service is included, so rounding up or leaving about 5 to 10% for good service at a nice restaurant is generous, not expected, and there is no terminal tip-prompt culture as in the US. New for 2026, some towns now add a <b>visitor's contribution</b> of up to 3% to overnight stays (below), but it is opt-in, so it appears in places like Lofoten and, likely soon, Bergen and Tromso, and not in others. There is no separate departure tax to pay; airport charges are built into your ticket.",
+    text: "Norway is expensive, and <b>VAT is already in the price</b>: 25% on most things, a reduced 12% on hotel stays and transport, and 15% on food, so the tag or menu figure is what you pay. As a <b>non-resident you can reclaim the VAT on goods</b> you take home, on receipts of at least <b>315 NOK</b> in a single store. Ask for a tax-free form, keep the goods unused, and get it stamped by customs when you leave; after the operator's fee you get back a useful chunk, though not the full 25%. <b>Tipping is light</b>: service is included, so rounding up or leaving about 5 to 10% for good service at a nice restaurant is generous, not expected, and there is no terminal tip-prompt culture as in the US. New for 2026, Norway passed a <b>visitor's contribution</b> of up to 3% on overnight stays (below), but <b>no town is collecting it yet</b>, so it adds nothing to a trip now (Tromso is targeting 2027). There is no separate departure tax to pay; airport charges are built into your ticket.",
   },
 
   traps: [
     "<b>\"Pay in dollars?\" Always say no.</b> Terminals and ATMs offer to charge you in your home currency (dynamic currency conversion), which adds 3 to 8%. Pick kroner every time, and do not bring euros expecting to spend them.",
     "<b>It is an expensive country, so budget up.</b> A coffee, a quick lunch, a beer or a fjord ferry all cost more than you expect. Plan a higher daily number than for most of Europe and it will not sting.",
     "<b>It is kroner, not euros.</b> Norway is not in the EU or the eurozone. Do not arrive expecting to spend euros, and do not load up on euros for this leg of a European trip.",
-    "<b>Check whether your stay carries the new visitor's contribution.</b> Since summer 2026 opt-in towns can add up to 3% to overnight stays. Lofoten is charging it and Bergen and Tromso are expected to follow, so it may appear on your bill in some places and not others. It is modest, but read your booking so it is not a surprise.",
+    "<b>You will not pay the new visitor's contribution yet.</b> Norway's up-to-3% overnight levy became law on 1 July 2026, but no municipality is collecting it as of 2026, so there is nothing extra on your bill today. Tromso is targeting 2027, so this is one to check again if you travel next year.",
     "<b>Mind roaming if your US plan is EU-based.</b> Norway is not in the EU, so the free roaming that applies elsewhere in Europe often excludes it. Check the rate or set up an eSIM before you rely on your phone."
   ],
 
@@ -145,7 +146,7 @@ export default {
     { q: "Do I need cash in Norway?", a: "Not much. Cards and tap work almost everywhere, including ferries, buses and small kiosks, and locals lean on cards and the Vipps app. Keep maybe 500 to 800 NOK for a rural stall, a tiny ferry or an honesty box, and pull it from a bank Minibank ATM if you run low. Do not exchange a big pile of dollars into kroner." },
     { q: "Does Norway use the euro?", a: "No. Norway is not in the EU or the eurozone, so it uses the Norwegian krone (NOK). Leftover euros from elsewhere in Europe will not spend here, so plan to pay by card in kroner and do not carry euros for this leg." },
     { q: "Should I pay in kroner or US dollars in Norway?", a: "Kroner. If a card terminal or ATM offers to charge you in US dollars (or euros), decline; that dynamic currency conversion typically adds 3 to 8%. Paying in kroner and letting your own bank convert is almost always cheaper." },
-    { q: "What is Norway's new tourist tax, and will I pay it?", a: "Norway's visitor's contribution started in summer 2026. It lets a town add up to 3% to overnight stays (and cruise calls), but it is opt-in, so it applies in some places and not others. The Lofoten islands are charging it, and Bergen, Tromso and other busy spots are expected to follow. On a 2,500 NOK hotel night, 3% is about 75 NOK (roughly 7 dollars). Campsites, tents and personal campervans are exempt, so check your specific booking." },
+    { q: "What is Norway's new tourist tax, and will I pay it?", a: "Almost certainly not yet. Norway's visitor's contribution became law on 1 July 2026, but it is a permission slip: a town has to apply and be approved before it can charge up to 3% on overnight stays, and as of 2026 no municipality is collecting it anywhere. Tromso has applied and is targeting 1 January 2027. So on a trip now you pay nothing extra; if it ever applies to your stay, 3% on a 2,500 NOK hotel night is about 75 NOK (roughly 7 dollars), and campsites, tents and personal campervans are exempt." },
     { q: "Can I get a VAT refund on shopping in Norway?", a: "Yes, if you are a non-resident and spend at least 315 NOK in one store. Ask for a tax-free refund form, keep the goods unused, and get it stamped by customs when you leave Norway, then claim through the refund operator. After fees you get back a useful part of the 25% VAT, though not the full amount." },
     { q: "Why is Norway so expensive, and how much should I budget?", a: "High wages, a high cost of living and heavy taxes on things like alcohol all feed into prices, from coffee to fjord ferries. For everyday spending beyond your hotel, very roughly 1,000 to 1,800 NOK a day per person (about 100 to 185 dollars) is a realistic mid-range figure, mostly on card. The fix is to budget a higher daily number than elsewhere in Europe." }
   ],
