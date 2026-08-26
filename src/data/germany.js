@@ -6,8 +6,8 @@ export default {
   live: true,
   name: "Germany",
   from: "United States",
-  checked: "Jul 2026",
-  checkedISO: "2026-07-04",
+  checked: "Aug 2026",
+  checkedISO: "2026-08-26",
   sources: {
     changed: "Sources added, and a correction. We removed Munich from the list of cities charging a bed tax: Bavaria banned local hotel taxes and its Constitutional Court upheld that ban in 2025, so Munich does not levy one. The other city rates are confirmed (Berlin 7.5%, Cologne 5%, Hamburg on a sliding scale, Frankfurt 2 euros a night), as is the 19% VAT refund for non-EU visitors, which starts at 50.01 euros spent in one store.",
     links: [
@@ -88,8 +88,10 @@ export default {
 
   // TOURIST TAX / FEES (high-churn, verified Jul 2026). Germany has no national tourist tax.
   // Instead, individual cities levy their own "Bettensteuer" (bed tax) or "Kulturförderabgabe"
-  // (culture tax), charged on leisure stays only (business travelers are generally exempt with
-  // proof). Rates and structure vary city by city: some charge a percentage of the net room
+  // (culture tax). Rules vary city by city, including on business travel: Berlin has taxed
+  // business stays since 1 April 2024 and Cologne since 2024 too, so the old "business travelers
+  // are exempt" rule no longer holds in the biggest cities, though some smaller cities still
+  // exempt them with proof. Rates and structure vary city by city: some charge a percentage of the net room
   // rate, Frankfurt charges a flat per-night amount, and Hamburg uses a sliding scale by price
   // tier that works out to roughly 2% of the room rate. Many smaller cities and towns charge
   // nothing at all, outside the separate Kurtaxe system in officially designated spa towns.
@@ -97,7 +99,7 @@ export default {
     unit: "percentOfRoom",
     currency: "EUR",
     capNights: null,
-    note: "Germany has no national tourist tax. Individual cities charge their own bed tax (Bettensteuer) on leisure stays, usually added to your bill at checkout. Business travelers are generally exempt with an employer letter. Rates and structure vary by city, so this is a city-specific estimate, not a flat national rate.",
+    note: "Germany has no national tourist tax. Individual cities charge their own bed tax (Bettensteuer), usually added to your bill at checkout. Business travelers used to be exempt, but the biggest cities now tax business stays too (Berlin since April 2024, Cologne since 2024), though some smaller cities still exempt them with proof. Rates and structure vary by city, so this is a city-specific estimate, not a flat national rate.",
     regions: [
       { key: "berlin", label: "Berlin", pct: 7.5, capNights: 21, note: "Berlin charges 7.5% of the net room rate, capped after 21 consecutive nights." },
       { key: "munich", label: "Munich", pct: 0, note: "Munich charges no bed tax. Bavaria banned local hotel taxes, and the Bavarian Constitutional Court upheld that ban in 2025, so the city cannot levy one." },

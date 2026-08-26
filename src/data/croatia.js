@@ -101,8 +101,8 @@ export default {
     capNights: null,
     note: "Croatia charges a sojourn tax (boravisna pristojba) per person per night, collected by your accommodation. It varies by season and location, higher on the coast in summer. Children under 12 are exempt, and those aged 12 to 18 pay half.",
     regions: [
-      { key: "coast-peak", label: "Coast and islands, summer", rate: 1.5, note: "Coastal and island towns in the summer high season charge the top rate, commonly around 1.50 euros per adult per night, and a little more in the busiest spots like Dubrovnik." },
-      { key: "elsewhere", label: "Inland or off-season", rate: 1, note: "Zagreb, inland towns and the coast outside high summer charge less, commonly around 1 euro per adult per night." }
+      { key: "coast-peak", label: "Coast and islands, summer", rate: 2, note: "Coastal and island towns in the summer high season charge the top rate, commonly around 2 to 2.70 euros per adult per night, with the busiest spots like Dubrovnik at the top of that range. Treat this as a representative figure; the exact amount is set by town and season." },
+      { key: "elsewhere", label: "Inland or off-season", rate: 1.85, note: "Zagreb charges around 1.85 euros per adult per night year-round; inland towns and the coast outside high summer are commonly in the 1 to 1.85 euro range." }
     ]
   },
 

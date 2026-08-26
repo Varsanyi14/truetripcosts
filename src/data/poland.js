@@ -6,10 +6,10 @@ export default {
   live: true,
   name: "Poland",
   from: "United States",
-  checked: "Jul 2026",
-  checkedISO: "2026-07-31",
+  checked: "Aug 2026",
+  checkedISO: "2026-08-26",
   sources: {
-    changed: "First publication. Confirmed the money facts that matter most this year: the zloty sits at about 3.8 to the US dollar, Poland is one of the most cashless countries in Europe, and there is no city or tourist tax in Krakow, Warsaw or most cities, only a small local climate fee in designated resort and spa towns. VAT is 23%, and non-EU visitors can reclaim it on shopping over 200 zloty per store. On entry, the EU's biometric Entry/Exit System went live in April 2026, and a US passport is still all you need for now. Updated 31 July 2026: the EU removed its late-2026 ETIAS target, so this guide no longer quotes a start date for it.",
+    changed: "First publication. Confirmed the money facts that matter most this year: the zloty sits at about 3.8 to the US dollar, Poland is one of the most cashless countries in Europe, and there is no nationwide city or tourist tax and Krakow and Warsaw charge nothing, though some cities such as Gdansk (3.46 zloty per person per night in 2026) and designated resort and spa towns levy a small local fee. VAT is 23%, and non-EU visitors can reclaim it on shopping over 200 zloty per store. On entry, the EU's biometric Entry/Exit System went live in April 2026, and a US passport is still all you need for now. Updated 31 July 2026: the EU removed its late-2026 ETIAS target, so this guide no longer quotes a start date for it.",
     links: [
       { label: "Krakow Airport: tax-free shopping for non-EU visitors, the 23% VAT, the 200 zloty minimum per receipt and the customs confirmation on departure", url: "https://www.krakowairport.pl/en/passenger/travel/shopping/tax-refund", type: "revenue" },
       { label: "European Union travel portal: the Entry/Exit System (EES) at Schengen borders, and the ETIAS travel authorization", url: "https://travel-europe.europa.eu/ees_en", type: "gov" },
@@ -38,7 +38,7 @@ export default {
 
   notice: 'We only cover trips departing from the United States right now. Want an email the moment we add your home country? <a href="#" onclick="return false"><b>Sign up for an alert</b></a>.',
 
-  verdict: "Poland is <b>one of the most cashless countries in Europe</b>, and your money life here is easy. <b>Visa and Mastercard</b>, Apple Pay and Google Pay work almost everywhere, from hotels and restaurants to tiny shops and many market stalls, and locals lean on the homegrown <b>BLIK</b> phone app. Keep only <b>a little cash</b> for the smallest vendors, a church donation box or a rural stop. Two things to hold onto: it is the <b>zloty, not the euro</b> (Poland is in the EU but kept its own currency), so price and pay in zloty; and when you need cash, use a <b>bank ATM</b> and avoid the pervasive standalone <b>Euronet</b> machines, which push poor conversion. Always <b>choose zloty, not US dollars</b>, on any card terminal or ATM. On tax, everyday prices already include <b>23% VAT</b>, there is <b>no city tax</b> in Krakow, Warsaw or most cities, and non-EU visitors can reclaim VAT on shopping over 200 zloty. Tipping is light: round up or leave about 10% for good table service.",
+  verdict: "Poland is <b>one of the most cashless countries in Europe</b>, and your money life here is easy. <b>Visa and Mastercard</b>, Apple Pay and Google Pay work almost everywhere, from hotels and restaurants to tiny shops and many market stalls, and locals lean on the homegrown <b>BLIK</b> phone app. Keep only <b>a little cash</b> for the smallest vendors, a church donation box or a rural stop. Two things to hold onto: it is the <b>zloty, not the euro</b> (Poland is in the EU but kept its own currency), so price and pay in zloty; and when you need cash, use a <b>bank ATM</b> and avoid the pervasive standalone <b>Euronet</b> machines, which push poor conversion. Always <b>choose zloty, not US dollars</b>, on any card terminal or ATM. On tax, everyday prices already include <b>23% VAT</b>, Krakow and Warsaw charge <b>no city tax</b> (though some cities such as Gdansk add a small local fee, a few zloty per night), and non-EU visitors can reclaim VAT on shopping over 200 zloty. Tipping is light: round up or leave about 10% for good table service.",
 
   meter: {
     heading: "About as cashless as Europe gets, with a little cash for the smallest spots.",
@@ -95,9 +95,10 @@ export default {
     unit: "perPersonPerNight",
     currency: "PLN",
     capNights: null,
-    note: "Poland has no nationwide tourist or city tax. Krakow, Warsaw and most cities charge nothing. Only designated resort and health-resort towns levy a small local climate fee (oplata miejscowa) or spa fee (oplata uzdrowiskowa), commonly a few zloty per person per night, set by each municipality and added to your bill.",
+    note: "Poland has no nationwide tourist or city tax, and Krakow and Warsaw charge nothing. But some cities and resort or spa towns do levy a small local fee (oplata miejscowa) or spa fee (oplata uzdrowiskowa): Gdansk, for example, charges 3.46 zloty per person per night in 2026, and designated resort towns like Zakopane add a similar few zloty. It is set by each municipality, commonly only for stays longer than one night, and added to your bill.",
     regions: [
-      { key: "cities", label: "Krakow, Warsaw and most cities", rate: 0, note: "Poland's major cities do not charge a tourist or city tax on your stay." },
+      { key: "cities", label: "Krakow, Warsaw and most cities", rate: 0, note: "Krakow, Warsaw and most Polish cities do not charge a tourist or city tax on your stay." },
+      { key: "gdansk", label: "Gdansk", rate: 3.46, note: "Gdansk charges a local fee (oplata miejscowa) of 3.46 zloty per person per night in 2026, commonly only for stays longer than one night, collected by your accommodation." },
       { key: "resorts", label: "Zakopane and resort or spa towns", rate: 4, note: "Designated resort and health-resort towns add a small climate or spa fee, commonly a few zloty per person per night, set locally." },
       { key: "other", label: "Elsewhere in Poland", rate: 0 }
     ]
@@ -114,7 +115,7 @@ export default {
   taxfree: {
     label: "Taxes and refunds",
     heading: "No city tax in the cities, and money back on shopping.",
-    text: "Good news on both counts. There is <b>no citywide tourist tax</b> in Krakow, Warsaw or most Polish cities; only designated resort and spa towns like Zakopane add a <b>small local climate fee</b>, usually a few zloty per person per night. Everyday prices already include VAT, a <b>23%</b> standard rate with reduced rates of 8% on things like hotels and 5% on books and basic food, so the figure on the tag is what you pay. If you shop, non-EU visitors can reclaim the 23% VAT on goods: spend <b>over 200 zloty in one store</b> on one receipt, ask for a Tax Free form, keep the goods unused, and have customs confirm it (done electronically at Polish airports and border points) when you leave the EU. After the operator's fee you get back roughly <b>14%</b>, not the full 23%. Refunds are for goods, not hotels, meals or fuel."
+    text: "Mostly good news. There is <b>no citywide tourist tax</b> in Krakow or Warsaw; some cities such as <b>Gdansk</b> (3.46 zloty per person per night in 2026) and designated resort or spa towns like Zakopane add a <b>small local fee</b>, usually a few zloty per person per night, commonly only for stays longer than one night. Everyday prices already include VAT, a <b>23%</b> standard rate with reduced rates of 8% on things like hotels and 5% on books and basic food, so the figure on the tag is what you pay. If you shop, non-EU visitors can reclaim the 23% VAT on goods: spend <b>over 200 zloty in one store</b> on one receipt, ask for a Tax Free form, keep the goods unused, and have customs confirm it (done electronically at Polish airports and border points) when you leave the EU. After the operator's fee you get back roughly <b>14%</b>, not the full 23%. Refunds are for goods, not hotels, meals or fuel."
   },
 
   keyFacts: [],
@@ -136,7 +137,7 @@ export default {
     { q: "Which ATMs should I avoid in Poland?", a: "Skip the standalone blue-and-yellow Euronet machines common in tourist areas, which push poor conversion and fees. Use an ATM attached to a real bank such as PKO BP, Santander, ING or mBank, and always choose zloty, not dollars." },
     { q: "Should I pay in zloty or US dollars?", a: "Always zloty. If a card terminal or ATM offers to charge you in US dollars, decline; that dynamic currency conversion adds a few percent. Paying in the local currency lets your card's network handle the exchange fairly." },
     { q: "What is BLIK?", a: "BLIK is Poland's hugely popular phone-based payment system, used by locals for shops, transfers and cash withdrawals. As a visitor you do not need it: your contactless card or Apple and Google Pay works in all the same places." },
-    { q: "Is there a tourist tax in Krakow or Warsaw?", a: "No. Poland's major cities do not charge a citywide tourist tax. Only designated resort and spa towns, like Zakopane, add a small local climate fee of a few zloty per person per night." },
+    { q: "Is there a tourist tax in Krakow or Warsaw?", a: "No. Krakow and Warsaw do not charge a citywide tourist tax. Some other cities do, though: Gdansk charges a local fee of 3.46 zloty per person per night in 2026, and designated resort and spa towns like Zakopane add a similar few zloty, commonly only for stays longer than one night." },
     { q: "Can I get a VAT refund on shopping in Poland?", a: "Yes. Non-EU visitors can reclaim the 23% VAT on goods: spend over 200 zloty in one store on one receipt, ask for a Tax Free form, keep the goods unused, and have customs confirm it when you leave the EU. After fees you get back roughly 14%, and it is for goods, not hotels or meals." },
     { q: "Do you tip in Poland?", a: "Lightly. Round up or leave about 10% for good table service, in cash. Tipping is not expected for counter service or a quick coffee. Note that saying thank you as you hand over money is often read as 'keep the change.'" }
   ],

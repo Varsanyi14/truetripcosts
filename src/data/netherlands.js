@@ -459,7 +459,7 @@ export default {
       { k: "Amsterdam, all in", v: "Roughly a third on top of the room" },
     ],
     live: true,
-    topic: "taxes",
+    topic: "tourist-tax",
     title: "Netherlands tourist tax: what a hotel adds in 2026",
     description:
       "Amsterdam takes 12.5% of a room rate, a proportion no European city beats, and hotel VAT reached 21% in January 2026. What both do to your bill.",

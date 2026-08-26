@@ -80,8 +80,9 @@ export default {
   // TOURIST TAX (high-churn, verified Jul 2026). The UK has no national tourist tax, but a
   // few cities now add a small nightly charge, and the units differ by city, so each region
   // can override the unit. Edinburgh's is a percentage of the room (the whole room, not per
-  // person), capped at 5 nights. Manchester and Liverpool charge a flat amount per room each
-  // night through a business-district levy. Most of the UK charges nothing, and London is
+  // person), capped at 5 nights. Manchester and Liverpool are NOT government taxes: they charge a
+  // flat business-district (BID) levy on the hotel each night that participating hotels pass on.
+  // Most of the UK charges nothing, and London is
   // listed on its own rather than folded into the catch-all: it is the likeliest pick, and
   // "London: no hotel tax" is a useful answer to be able to give by name. Edinburgh stays
   // first so the calculator's default region is unchanged.
@@ -100,8 +101,8 @@ export default {
     regions: [
       { key: "edinburgh", label: "Edinburgh", unit: "percentOfRoom", pct: 5, capNights: 5, taxLabel: "Edinburgh visitor levy", note: "Edinburgh's visitor levy applies as of 24 July 2026: 5% of the room rate each night, charged on the whole room (not per person) and capped at the first 5 nights." },
       { key: "london", label: "London", rate: 0, note: "London charges no hotel or tourist tax. The rate you are quoted already includes 20% VAT, and nothing further is added at checkout." },
-      { key: "manchester", label: "Manchester", rate: 1, note: "Manchester adds a City Visitor Charge of about 1 pound per room, per night, at participating city-centre hotels." },
-      { key: "liverpool", label: "Liverpool", rate: 2, note: "Liverpool adds a City Visitor Charge of about 2 pounds per room, per night, at participating city-centre hotels." },
+      { key: "manchester", label: "Manchester", rate: 1, note: "Manchester's City Visitor Charge is about 1 pound per room, per night. It is not a council tax but a business-district (BID) levy on the hotel, which participating city-centre hotels choose to pass on to guests." },
+      { key: "liverpool", label: "Liverpool", rate: 2, note: "Liverpool's City Visitor Charge is about 2 pounds per room, per night. Like Manchester's, it is a business-district (BID) levy on the hotel rather than a government tax, passed on at participating city-centre hotels." },
       { key: "other", label: "Elsewhere in the UK", rate: 0, note: "Most of the UK has no hotel or tourist tax today." }
     ]
   },
@@ -115,7 +116,7 @@ export default {
   taxfree: {
     label: "Taxes and the visitor levy",
     heading: "No VAT refund in Britain, and a new Edinburgh charge.",
-    text: "Two things to know, and both are the opposite of what many European trips teach you. First, <b>there is no tourist VAT refund in Great Britain</b> (England, Scotland and Wales). The VAT Retail Export Scheme was scrapped on 1 January 2021 and has not returned, so you cannot reclaim the 20% VAT on shopping you carry home, and there is no airport refund desk for tourists. The price you see already includes VAT. The only workaround is having a store <b>ship your purchase</b> directly abroad, which removes the VAT but adds shipping. <b>Northern Ireland</b> keeps a separate, limited refund scheme (a minimum of about 30 pounds per store, validated when you leave the UK or EU). Second, the UK has long had <b>no nationwide tourist tax</b>, but that is starting to change. <b>Edinburgh</b> now charges a <b>5% visitor levy</b> on overnight stays (in effect since <b>24 July 2026</b>, on the room rate before VAT, capped at the first five nights), collected by your accommodation. <b>Glasgow</b> follows with 5% from 25 January 2027, and <b>Wales</b> has approved a small per-night levy for later. A few English cities such as Manchester and Liverpool already add a flat charge of about 1 to 2 pounds per room per night. Everywhere else, nothing."
+    text: "Two things to know, and both are the opposite of what many European trips teach you. First, <b>there is no tourist VAT refund in Great Britain</b> (England, Scotland and Wales). The VAT Retail Export Scheme was scrapped on 1 January 2021 and has not returned, so you cannot reclaim the 20% VAT on shopping you carry home, and there is no airport refund desk for tourists. The price you see already includes VAT. The only workaround is having a store <b>ship your purchase</b> directly abroad, which removes the VAT but adds shipping. <b>Northern Ireland</b> keeps a separate, limited refund scheme (a minimum of about 30 pounds per store, validated when you leave the UK or EU). Second, the UK has long had <b>no nationwide tourist tax</b>, but that is starting to change. <b>Edinburgh</b> now charges a <b>5% visitor levy</b> on overnight stays (in effect since <b>24 July 2026</b>, on the room rate before VAT, capped at the first five nights), collected by your accommodation. <b>Glasgow</b> follows with 5% from 25 January 2027, and <b>Wales</b> has approved a small per-night levy for later. A few English cities such as Manchester and Liverpool add a flat charge of about 1 to 2 pounds per room per night, but that is a hotel business-district levy passed on to you, not a council tax. Everywhere else, nothing."
   },
 
   // High-churn fees and taxes, each tracked on its own with a status, an effective
