@@ -258,6 +258,74 @@ export default {
       }
     },
     {
+      slug: "tourist-tax",
+      glance: [
+        { k: "What", v: "Per-night lodging tax" },
+        { k: "Collected", v: "By your accommodation" },
+        { k: "Hotels", v: "800 ISK a night, about 6 dollars" },
+        { k: "Campsites and cruise", v: "400 ISK a night" }
+      ],
+      live: true,
+      topic: "tourist-tax",
+      title: "Iceland lodging tax 2026: what a hotel adds a night",
+      description: "Iceland adds a flat 800 ISK a night per room, about 6 dollars, and it is per unit rather than per person. What campsites pay, and what is separate.",
+      h1: "Iceland's lodging tax, and why it stays small.",
+      lede: "Iceland charges a flat lodging tax on your room, not a percentage and not per person. At 800 kronur a night for a hotel it is one of the gentler charges in Europe. Here is what it covers in 2026, and what it does not.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-26",
+      answer: "Iceland charges a <b>lodging tax</b> (gistinattaskattur), a <b>flat amount per unit, per night</b>, collected by your accommodation. Since <b>1 January 2025</b> it has been <b>800 ISK</b> for a hotel, guesthouse or licensed rented room, which is roughly <b>6 US dollars</b> a night, and <b>400 ISK</b> for a campsite or a pitch for a motorhome, camper or caravan. It is charged <b>per room or pitch, not per person</b>, so it does not double for two people sharing, and there is no child exemption to look for because the charge never counted heads. It is not new: a smaller version was suspended during COVID, reinstated in <b>2024</b>, then raised to today's figures. It is often <b>not</b> in the price you booked, so expect it at check-in or checkout.",
+      sections: [
+        {
+          h: "How it works, and who pays",
+          icon: "calendar",
+          key: { fig: "Per unit", tag: "Not per person", text: "The lodging tax is a flat amount for each unit of accommodation for each night, collected by your hotel or guesthouse. Two people sharing a room pay it once.", tone: "teal" },
+          p: [
+            "Iceland's lodging tax attaches to <b>the unit, not the guest</b>. A lodging unit is the sale of accommodation for up to one day, so a room, an apartment or a campsite pitch counts once however many people sleep in it. That is the most useful thing to know about it: a couple pays <b>800 ISK</b> a night between them rather than each, and a family in one room pays the same 800. Because the charge never looked at heads, there is no under-18 exemption to hunt for, unlike the French and Czech versions.",
+            "Your accommodation collects it and passes it to <b>Skatturinn</b>, Iceland Revenue and Customs, and properties have to register for it. Some hotels fold it into the rate they quote and some add it at the desk, so the honest expectation is that it may <b>not</b> be in your online total. It is small enough that it rarely changes a decision, but it is worth knowing the line item is legitimate when it appears. For the wider picture see the <a href=\"/iceland\">Iceland money guide</a>."
+          ]
+        },
+        {
+          h: "How small it really is",
+          icon: "coins",
+          key: { fig: "About 6 dollars", tag: "Per room, per night", text: "At roughly 126 kronur to the dollar, 800 ISK is about 6 dollars a night. A week in a hotel room adds about 44 dollars, whether one of you or three of you are in it.", tone: "teal" },
+          p: [
+            "The number that matters to a US reader is the dollar figure. At roughly <b>126 kronur to the dollar</b> in 2026, <b>800 ISK is about 6 dollars</b> a night. A week in an Icelandic hotel room therefore adds about <b>44 dollars</b> to the bill, and ten nights about <b>63 dollars</b>, for the room rather than for each person in it.",
+            "Set against what Iceland actually costs, that is noise. It is also structurally gentler than the percentage models used elsewhere: a levy set as a flat krona amount does not grow when you book a nicer room, so a 700 dollar suite and a 120 dollar guesthouse room carry the identical <b>800 ISK</b>. The charges worth budgeting for in Iceland are the car and the food, not this one."
+          ]
+        },
+        {
+          h: "Campsites, campervans and cruise ships",
+          icon: "tag",
+          key: { fig: "400 ISK", tag: "The lower band", text: "Campsites and pitches for motorhomes, campers and caravans pay 400 ISK a night, half the hotel rate. Cruise ships on domestic voyages are also 400 ISK.", tone: "teal" },
+          p: [
+            "The lower band is <b>400 ISK</b> a night, about <b>3 dollars</b>, and it covers <b>campsites</b> and pitches for <b>motorhomes, campers and caravans</b>. If you are doing Iceland by campervan, which many US visitors do, that is the figure to expect, per pitch per night, and it is usually collected at the site rather than online. Licensed guesthouses sit in the 800 band with hotels.",
+            "<b>Cruise ships on domestic voyages</b> are also charged <b>400 ISK</b> for each 24-hour period a passenger is aboard. One caveat for cruise readers: international itineraries calling in Iceland carry a <b>separate per-passenger infrastructure fee</b> that is not this lodging tax and is not covered by the figures above, so if you are arriving by ship, ask your line what it is billing rather than assuming 400 ISK is the whole story."
+          ]
+        },
+        {
+          h: "Not the same as the road charge",
+          icon: "alert",
+          key: { fig: "A separate charge", tag: "Driving, not lodging", text: "Iceland's distance-based road charge is a driving cost, not a lodging tax. It has nothing to do with your hotel bill, and the two get blurred together online.", tone: "amber" },
+          p: [
+            "Iceland has separately moved to a <b>distance-based road charge</b> for vehicles, and a lot of writing online runs it together with the lodging tax because both are recent and both get described as tourism or infrastructure charges. They are different charges on different things: one attaches to <b>where you sleep</b>, the other to <b>how far you drive</b>. Nothing on this page applies to a rental car.",
+            "If you are renting a vehicle, the costs to plan for are the rental itself, fuel, the insurance excess and any road charge that applies to your vehicle, which we cover in <a href=\"/iceland/renting-a-car\">renting a car in Iceland</a>. Keep the two apart when you read a total: a lodging line of <b>800 ISK</b> a night is the tax on this page, and anything charged by the kilometer is not."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is the tourist tax in Iceland in 2026?", a: "800 ISK a night for a hotel, guesthouse or licensed rented room, which is about 6 dollars, and 400 ISK a night for a campsite or a pitch for a motorhome or caravan. It is charged per unit per night rather than per person, so two people sharing a room pay it once." },
+        { q: "Is Iceland's lodging tax per person or per room?", a: "Per room, or more precisely per lodging unit, for each night. A couple pays 800 ISK a night between them and so does a family in one room. Because the tax never counted people, there is no child exemption to claim." },
+        { q: "Is the lodging tax included in my Iceland hotel price?", a: "Sometimes, but not reliably. Some properties fold it into the quoted rate and others add it at check-in or checkout. It is a small enough figure to miss on a booking page, so ask your accommodation whether the total already includes it." },
+        { q: "Is Iceland's lodging tax new?", a: "No. An earlier, smaller accommodation tax was suspended during COVID and reinstated on 1 January 2024, then raised to the current 800 and 400 ISK figures on 1 January 2025. Anything quoting 600 ISK for a hotel room is describing the 2024 rate rather than today's." }
+      ],
+      sources: {
+        links: [
+          { label: "Skatturinn, Iceland Revenue and Customs: the lodging tax, the rates from 1 January 2025, and what counts as a lodging unit", url: "https://www.skatturinn.is/english/companies/tax-issues/lodging-tax/", type: "gov" }
+        ],
+        judgment: "The rates and the definition of a lodging unit come straight from Skatturinn, Iceland Revenue and Customs, in English, so the 800 and 400 ISK figures are facts rather than a range. The dollar equivalents move with the exchange rate and are a 2026 read at roughly 126 kronur to the dollar. Whether the tax sits inside your quoted rate is decided by each property rather than by law, which is the one part we cannot pin down for you. Older pages still quoting 600 ISK are describing the 2024 rate. Checked August 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Icelandic krona (ISK)" },

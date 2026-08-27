@@ -170,6 +170,76 @@ export default {
 
   spokes: [
     {
+      slug: "tourist-tax",
+      glance: [
+        { k: "What", v: "Local fee, per person, per night" },
+        { k: "Prague", v: "50 CZK, about 2 dollars" },
+        { k: "Elsewhere", v: "Often 21 to 50 CZK, some towns nothing" },
+        { k: "Under 18", v: "Exempt" }
+      ],
+      live: true,
+      topic: "tourist-tax",
+      title: "Czech tourist tax 2026: Prague's 50 CZK a night",
+      description: "Czechia charges a local fee per person, per night, capped at 50 CZK. Prague charges the full amount, about 2 dollars. Under-18s are exempt everywhere.",
+      h1: "Czechia's tourist tax, and how low it stays.",
+      lede: "Czechia charges a small local fee for each adult, for each night, and national law caps it at 50 koruna. Prague charges the maximum, which is about 2 dollars. It is one of the lowest in Europe, and the proposal to change that has not passed.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-26",
+      answer: "Czechia charges a <b>local fee for stay</b> (poplatek z pobytu), set by each municipality under national law and capped at <b>50 CZK per person, per night</b>. Unlike the Greek and Icelandic versions, this one is <b>per person</b>, so a couple pays double a solo traveler. <b>Prague charges the full 50 CZK</b>, about <b>2 US dollars</b> a night for each adult. Other towns set their own rate under the cap, commonly somewhere around <b>21 to 50 CZK</b>, and plenty of small municipalities charge <b>nothing at all</b>. <b>Anyone under 18 is exempt</b> everywhere, and the fee covers only the <b>first 60 consecutive nights</b> with one provider. There are live proposals to lift the ceiling, but <b>none has been approved</b>, so budget 50 CZK.",
+      sections: [
+        {
+          h: "How it works, and who pays",
+          icon: "calendar",
+          key: { fig: "Per person", tag: "50 CZK ceiling", text: "The fee is charged for each paying adult for each night, set by each municipality up to a national ceiling of 50 koruna. Your accommodation collects it.", tone: "teal" },
+          p: [
+            "The fee sits under the national <b>local charges act</b> and is levied by each municipality, which sets its own rate up to the <b>50 CZK ceiling</b>. It replaced two older charges, a spa-or-recreation fee and an accommodation-capacity fee, from <b>1 January 2020</b>. It is charged <b>per person, per night</b>, which is the structural difference from Greece and Iceland: two adults in one Prague room pay <b>100 CZK</b> a night between them, not 50.",
+            "Your hotel, hostel, guesthouse or short-term-rental host is required to collect it and pass it to the municipality, so it applies to Airbnb-style stays exactly as it does to hotels. It is charged for each commenced day of a stay <b>except the day of arrival</b>, which in practice means it tracks the number of nights you paid for. For the wider picture see the <a href=\"/czechia\">Czechia money guide</a>."
+          ]
+        },
+        {
+          h: "How low it actually is",
+          icon: "coins",
+          key: { fig: "About 2 dollars", tag: "Per adult, per night", text: "At about 22 koruna to the dollar, 50 CZK is roughly 2 dollars a night for each adult. Two adults on a week in Prague add about 32 dollars in total.", tone: "teal" },
+          p: [
+            "At roughly <b>22 koruna to the dollar</b> in 2026, the full Prague rate of <b>50 CZK is about 2 dollars</b> a night for each adult. Two adults on a seven-night Prague trip therefore pay <b>700 CZK</b>, about <b>32 dollars</b>, across the whole stay. A solo traveler on four nights pays <b>200 CZK</b>, around <b>9 dollars</b>.",
+            "By European standards that is genuinely low, and Prague's own tourism body has pointed out that the average across EU cities is several times higher, which is the argument now being used to push for an increase. For a US visitor the honest framing is that this is a real line on the bill but a small one, and not a reason to change where you stay. The thing to hold onto is that it is <b>per person</b>, so four adults sharing see four times the figure a solo traveler does."
+          ]
+        },
+        {
+          h: "Prague, other towns, and who is exempt",
+          icon: "tag",
+          key: { fig: "Under 18 free", tag: "A real exemption", text: "Anyone under 18 is exempt everywhere in Czechia, and the fee stops after 60 consecutive nights with the same provider.", tone: "teal" },
+          p: [
+            "<b>Prague charges the full 50 CZK</b>, the national maximum, across the city. Elsewhere it varies by municipality: many popular towns sit somewhere between about <b>21 and 50 CZK</b>, spa towns tend toward the top of that band, and a great many small municipalities charge <b>nothing at all</b>. There is no single national list to check in advance, so the reliable move is to ask your accommodation for the nightly figure.",
+            "The exemptions matter here because one of them is broad. <b>Anyone under 18 is exempt everywhere</b>, so a family pays only for the adults, the same generous rule France applies and more than Italy or Spain give you. The fee also covers only the <b>first 60 consecutive nights</b> with a single provider, and further exemptions cover blind and severely disabled guests along with their companions, and people staying in connection with official duties. Anyone registered as a resident in the municipality does not pay it."
+          ]
+        },
+        {
+          h: "The proposed increase: watch, do not budget",
+          icon: "alert",
+          key: { fig: "Not approved", tag: "One to watch for 2027", text: "There are live proposals to lift the 50 CZK ceiling, and Prague 1 wants a much higher rate in the historic center. None of it is approved, so budget 50 CZK.", tone: "amber" },
+          p: [
+            "This is where a lot of writing gets ahead of itself. There are <b>live proposals</b> to raise the national ceiling, and <b>Prague 1</b>, the historic center district, has been pushing for a central-city rate several times today's. The figures being floated differ from one account to the next, which is itself a signal of how unsettled this is: published reports of the Prague 1 push quote quite different targets, and a separate move to lift the national cap is a different measure again.",
+            "None of it has been approved. The rate you will actually be charged in 2026 is <b>50 CZK</b> in Prague, and less or nothing elsewhere, so that is what belongs in your budget. Treat the rest as <b>one to watch for 2027</b>, and do not let a page quoting a proposed figure talk you into planning around a charge nobody is collecting. If it passes, we will change this page."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is the tourist tax in Prague in 2026?", a: "50 CZK per person, per night, which is about 2 dollars. That is the maximum national law allows, and Prague charges it in full. Anyone under 18 is exempt, and the fee applies only to the first 60 consecutive nights with the same provider." },
+        { q: "Is the Czech tourist tax per person or per room?", a: "Per person, for each night, unlike the per-room fees in Greece and Iceland. Two adults sharing a Prague room pay 100 CZK a night between them. Children under 18 add nothing, so a family pays only for the adults." },
+        { q: "Do children pay the tourist tax in Czechia?", a: "No. Everyone under 18 is exempt everywhere in the country, so a couple traveling with two children pays for the two adults only. That is one of the more generous exemptions in Europe, matching France rather than Italy or Spain." },
+        { q: "Is the Czech tourist tax going up?", a: "Not yet. There are proposals to raise the 50 CZK national ceiling, and Prague 1 is pushing for a much higher rate in the historic center, but none has been approved. Budget 50 CZK for 2026 and treat any higher figure you see quoted as a proposal rather than a rate." }
+      ],
+      sources: {
+        links: [
+          { label: "Prague 7 city district: the local fee for stay, the 1 January 2020 replacement of the older charges, the over-18 rule and the 60-night limit", url: "https://www.praha7.cz/potrebuji-zaridit/mistni-poplatky/mistni-poplatek-z-pobytu/", type: "gov" },
+          { label: "Prague 1 city district: the 50 CZK rate, how the chargeable days are counted, and the exemption list", url: "https://www.praha1.cz/potrebuji-si-vyridit/odbory/poplatek-z-pobytu/", type: "gov" },
+          { label: "Expats.cz: Prague 1's push to raise the accommodation tax, and the EU-average comparison behind it", url: "https://www.expats.cz/czech-news/article/prague-1-aims-to-significantly-increase-city-s-tourist-tax", type: "news" }
+        ],
+        judgment: "The mechanics and the 50 CZK Prague rate are from Prague municipal sources, which set out the national local charges act, the 60-consecutive-night limit and the exemption for under-18s. Rates outside Prague are genuinely municipal and there is no single national list, so the 21 to 50 CZK band is a range rather than a fact, and some municipalities charge nothing. The proposed increases are proposals only: published figures for the Prague 1 push differ between sources and nothing has been approved, so we have deliberately not put a number on them or folded them into the rates above. Checked August 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Koruna (CZK), not euros" },

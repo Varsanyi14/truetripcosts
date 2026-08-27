@@ -178,6 +178,76 @@ export default {
 
   spokes: [
     {
+      slug: "tourist-tax",
+      glance: [
+        { k: "What", v: "Climate resilience fee, per room" },
+        { k: "Collected", v: "By your accommodation" },
+        { k: "April to October", v: "About 2 to 15 euros a night" },
+        { k: "November to March", v: "About 0.50 to 4 euros" }
+      ],
+      live: true,
+      topic: "tourist-tax",
+      title: "Greece tourist tax 2026: what a hotel adds a night",
+      description: "Greece's climate resilience fee is per room, per night, not per person: about 2 to 15 euros April to October, less in winter. Usually not in your price.",
+      h1: "Greece's climate resilience fee, per room, per night.",
+      lede: "Greece charges a nightly fee on your accommodation, set by official category and by season. It is charged per room rather than per person, and that last detail is where most travelers get it wrong. Here is what to expect in 2026.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-26",
+      answer: "Greece charges the <b>Climate Crisis Resilience Fee</b>, which replaced the older stayover tax, and it is charged <b>per room or rental unit, per night, not per person</b>. The rate depends on the property's <b>official category</b> and on the <b>season</b>. From <b>April to October</b> it runs from about <b>2 euros</b> at a 1 or 2-star hotel to <b>15 euros</b> at a 5-star hotel or a furnished villa, with a 3-star at <b>5 euros</b>, a 4-star at <b>10 euros</b> and a short-term rental at <b>8 euros</b>. From <b>November to March</b> the same ladder drops to roughly <b>0.50 to 4 euros</b>. It is usually <b>not</b> in the price you booked, and the property collects it before you leave, with a receipt. The rates set on 1 January 2025 are <b>unchanged for 2026</b>.",
+      sections: [
+        {
+          h: "How it works, and who pays",
+          icon: "calendar",
+          key: { fig: "Per room", tag: "Not per person", text: "The fee attaches to the room or rental unit for each night, not to each guest, so two adults and two children in one room pay it once.", tone: "teal" },
+          p: [
+            "This is the detail worth getting right, because it is the one travelers ask about most: the fee is charged <b>per room, apartment, villa or property, per night</b>, and <b>not per person</b>. Two people in one 4-star room in August pay <b>10 euros</b> a night between them, not 10 each. A family of four in a single 3-star room pays <b>5 euros</b> a night. Book two rooms and the fee applies to each of them.",
+            "The rate is set by the property's <b>official Greek classification</b>, which is not always the star rating a booking site displays. If the figure on your bill looks higher than you expected, that is usually why, and you can ask the property to confirm its official category and issue the receipt. The fee is national, so a 4-star in Corfu and a 4-star in Crete are charged the same. For the wider picture see the <a href=\"/greece\">Greece money guide</a>."
+          ]
+        },
+        {
+          h: "The seasonal split",
+          icon: "tag",
+          key: { fig: "2 to 15 euros", tag: "April to October", text: "High season runs April to October and carries the full rates. November to March drops the same ladder to roughly 0.50 to 4 euros a night.", tone: "teal" },
+          p: [
+            "Greek law splits the year in two. <b>April to October</b> is the high band, and it covers essentially the whole US travel season, including the shoulder months people book to avoid the crowds. Across that window the hotel ladder is about <b>2 euros</b> for a 1 or 2-star, <b>5 euros</b> for a 3-star, <b>10 euros</b> for a 4-star and <b>15 euros</b> for a 5-star, per room per night.",
+            "<b>November to March</b> is the low band, and it is a real cut rather than a token one: the same categories fall to about <b>0.50, 1.50, 3 and 4 euros</b>. A winter city break in Athens at a 4-star therefore carries about <b>3 euros</b> a night instead of 10. Worth knowing if your dates are flexible around the edges of the season, though the fee is never by itself a reason to move a trip."
+          ]
+        },
+        {
+          h: "Hotels, rentals and villas",
+          icon: "euro",
+          key: { fig: "8 to 15 euros", tag: "Rentals and villas", text: "A short-term rental is about 8 euros a night in high season, and a furnished villa or a detached house over 80 square meters is 15, the same as a 5-star hotel.", tone: "amber" },
+          p: [
+            "Rentals are where the fee bites hardest relative to the room rate. In high season a standard <b>short-term rental</b> is about <b>8 euros</b> a night, a <b>furnished tourist villa</b> is <b>15 euros</b>, and a <b>detached rental house over 80 square meters</b> is also <b>15 euros</b>. In low season those become roughly <b>2 euros</b> and <b>4 euros</b>. A two-week villa stay in August therefore carries around <b>210 euros</b> of fee, which is real money and usually invisible at booking.",
+            "Because it is per property, the arithmetic rewards groups and penalizes couples: the same <b>15 euros</b> a night falls on two people in a small villa and on a dozen people in a large one. <b>Campsites, youth hostels and properties in listed architectural heritage buildings are excluded</b> from the fee altogether. Separately, qualifying small islands get a reduced <b>VAT</b> rate, but that is VAT on the room, a different charge, and it does not change this fee."
+          ]
+        },
+        {
+          h: "The checkout surprise, and what is not this fee",
+          icon: "alert",
+          key: { fig: "Not in your price", tag: "Paid at the property", text: "The fee is usually left out of the online total and collected at the accommodation before you leave, with a receipt. Ask at booking so the final bill is no surprise.", tone: "amber" },
+          p: [
+            "The practical failure mode is a total that changes at the end. The fee is <b>generally not included</b> in the price a booking site or a package quotes, and the property collects it from the guest <b>before departure</b>, issuing a specific receipt for it and remitting it monthly to the tax authority. Look for wording such as local charges payable on arrival or resilience fee not included, and if you cannot find it, ask.",
+            "Two things to keep in separate boxes. The rates that took effect on <b>1 January 2025 are unchanged for 2026</b> and no increase has been announced, so budget today's figures rather than a rumored rise. And Greece charges a <b>separate cruise fee</b> under the same law, levied per passenger per port call and varying by season and port, which is not the accommodation fee on this page. If you are cruising, ask your line what it collects."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is the tourist tax in Greece in 2026?", a: "From April to October it is about 2 euros a night at a 1 or 2-star hotel, 5 at a 3-star, 10 at a 4-star and 15 at a 5-star, charged per room. Short-term rentals are about 8 euros and furnished villas 15. From November to March the same ladder runs roughly 0.50 to 4 euros." },
+        { q: "Is the Greek tourist tax per person or per room?", a: "Per room, apartment, villa or property, for each night. Two adults sharing a 4-star room in August pay 10 euros a night between them, not each, and children in the same room add nothing. If you book two rooms, the fee applies to both." },
+        { q: "Is the climate resilience fee included in my hotel price?", a: "Usually not. Most bookings and packages leave it out, and the property collects it directly before you leave, with a receipt. Check your confirmation for wording about local charges payable on arrival, and ask the property for the nightly amount if it is not stated." },
+        { q: "Is Greece's tourist tax going up in 2026?", a: "No increase has been announced. The rates that took effect on 1 January 2025 still apply, so the figures above are what is actually being collected. Older pages quoting about 1.50 euros for a 1 or 2-star, or 10 euros as the 5-star rate, are describing the superseded 2024 rates." }
+      ],
+      sources: {
+        links: [
+          { label: "AADE, Greece's Independent Authority for Public Revenue: the Climate Crisis Resilience Fee, charged per daily use and per room or apartment", url: "https://www.aade.gr/en/climate-crisis-resilience-fee-issuance-statement", type: "gov" },
+          { label: "AADE: frequently asked questions on the Climate Crisis Resilience Fee, in English, including that it replaced the accommodation tax", url: "https://www.aade.gr/sites/default/files/2024-10/FAQs_telos_anthektikotitas_EN.pdf", type: "gov" },
+          { label: "GTP Headlines: the full rate table by accommodation category and season, as it took effect on 1 January 2025", url: "https://news.gtp.gr/2025/01/07/climate-resilience-fee-rates-increase-for-greek-hotels-short-term-rentals/", type: "news" }
+        ],
+        judgment: "The mechanics are from AADE, the Greek tax authority: the fee is charged per daily use and per room or apartment, and it replaced the older accommodation tax. The per-category rates are the schedule that took effect on 1 January 2025, under the law that raised the fee established in 2023, and they are unchanged for 2026. Each rate is a set figure rather than an estimate, so the ranges above are the span across categories and seasons, not uncertainty about any one of them. A lot of writing still circulates the superseded 2024 rates, which were lower at the top end, so treat any page quoting 10 euros as the 5-star figure as out of date. Whether the fee sits inside your booked total is decided by the property. Checked August 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Euro (EUR)" },
