@@ -306,6 +306,76 @@ export default {
       }
     },
     {
+      slug: "tourist-tax",
+      glance: [
+        { k: "What", v: "Tourist tax, per person, per night" },
+        { k: "Coast in summer", v: "About 2 euros a night" },
+        { k: "Children under 12", v: "Exempt" },
+        { k: "Ages 12 to 18", v: "Half price" }
+      ],
+      live: true,
+      topic: "tourist-tax",
+      title: "Croatia tourist tax 2026: what your stay adds a night",
+      description: "Croatia charges a tourist tax per person, per night, set town by town and by season. About 2 euros on the coast in summer, and under-12s pay nothing.",
+      h1: "Croatia's tourist tax, and the family exemptions.",
+      lede: "Croatia charges a small tourist tax for each person, for each night, set town by town for each calendar year rather than nationally. On the coast in summer it lands around two euros. The part worth knowing is how generous the exemptions are.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-26",
+      answer: "Croatia charges a <b>tourist tax</b> (turisticka pristojba, still widely called the sojourn tax or boravisna pristojba), collected by your accommodation <b>per person, per night</b>. There is <b>no single national rate</b>: national law sets a floor and a ceiling, and each county then fixes an amount for every town for each calendar year, with a <b>higher main-season figure</b> and a lower one outside it. The main season generally runs <b>1 April to 30 September</b>. In practice most coastal and island towns land near <b>2 euros per adult per night in season</b> and roughly <b>1 to 1.50 euros</b> outside it, with the busiest spots at the top of the band and inland towns lower. <b>Campsites are charged less.</b> <b>Children under 12 pay nothing</b> and <b>anyone aged 12 to 18 pays half</b>. A private apartment host asking for it in cash on arrival is normal, not a scam.",
+      sections: [
+        {
+          h: "How it works, and who pays",
+          icon: "calendar",
+          key: { fig: "Per person", tag: "Set town by town", text: "National law sets a range, each county fixes the amount for every town for the year, and your accommodation collects it for each person for each night.", tone: "teal" },
+          p: [
+            "Croatia's tourist tax is <b>national in structure and local in amount</b>. The law and a national regulation set the <b>lowest and highest</b> permitted figures, then each <b>county assembly</b> adopts a decision, usually in the December more than a year ahead, fixing the amount for every town and municipality in its area for the coming calendar year. Istria County, for example, set its 2026 figures at a session in December 2024. So the only truly authoritative number is the one your own town's tourist board publishes.",
+            "It is charged <b>per person, per night</b>, which means it scales with your party rather than attaching to the room, the opposite of the Greek model. Your accommodation collects it and registers every guest through the national <b>eVisitor</b> system within 24 hours of arrival, which is why even a small apartment host will ask for your passport and often for the tax in cash. For the wider picture see the <a href=\"/croatia\">Croatia money guide</a>."
+          ]
+        },
+        {
+          h: "What you will actually pay",
+          icon: "euro",
+          key: { fig: "About 2 euros", tag: "Coast, main season", text: "Most coastal towns sit near 2 euros per adult per night from April to September, and roughly 1 to 1.50 euros the rest of the year. Campsites are lower.", tone: "teal" },
+          p: [
+            "To make that concrete, <b>Rijeka</b>'s official 2026 figures are <b>2 euros</b> per person per night for hotel-type accommodation from <b>1 April to 30 September</b> and <b>1.50 euros</b> for the rest of the year, with <b>campsites</b> at <b>1.50 and 1 euro</b>. That is a fair template for a mainstream coastal town. The most in-demand destinations sit at the top of the band, with Dubrovnik reported around <b>2.65 euros</b> in season, and <b>Zagreb</b> runs a flat year-round figure just under <b>2 euros</b>. Two adults on a week at the coast in summer therefore pay about <b>28 euros</b> in total, roughly <b>32 dollars</b>.",
+            "We are deliberately not publishing a town-by-town table, and it is worth saying why. Several widely shared Croatian rate tables reproduce the old <b>kuna-era</b> schedule converted into odd euro amounts, which is how figures like 1.86 and 1.33 euros ended up circulating as if they were current national bands. Official town decisions for 2026 do not always match them. Treat any tidy national table with suspicion and use the figure on your booking or your destination's tourist board page."
+          ]
+        },
+        {
+          h: "Children, teenagers and the other exemptions",
+          icon: "tag",
+          key: { fig: "Under 12 free", tag: "12 to 18 pay half", text: "Children under 12 pay nothing and 12 to 18-year-olds pay half, so a family with young children pays for the adults only.", tone: "teal" },
+          p: [
+            "The exemptions are set nationally, so they hold wherever you go, and they are unusually generous. <b>Children under 12 pay nothing.</b> <b>Anyone from 12 up to 18 pays half.</b> That means a family of two adults and two children under 12 pays exactly what the couple alone would, and a family with a 14-year-old adds only half a share. Also exempt: people with a <b>disability of 70 percent or more, plus one companion</b>, and students and pupils staying in the town where they study but do not live.",
+            "One that almost nobody claims: anyone <b>up to 29</b> who is a member of an international youth organisation in the Hostelling International network pays <b>half</b> when staying in an HI hostel. People staying purely for <b>work</b> in a town where they do not live are exempt for the working period, and so are professional crew on charter and cruise vessels. Every exemption has to be evidenced with a document, a contract or a certificate, so carry proof rather than expecting the host to take your word."
+          ]
+        },
+        {
+          h: "Boats, cruise ships, and what to watch",
+          icon: "alert",
+          key: { fig: "Not just hotels", tag: "Charter and cruise too", text: "Nights on a charter yacht or a multi-day cruise boat are taxed too, and cruise ships pay while berthed in a Croatian port.", tone: "amber" },
+          p: [
+            "The tax reaches further than hotels, which matters in a sailing country. Nights spent aboard a <b>nautical tourism vessel</b>, meaning a chartered yacht or boat or a multi-day cruise boat, are charged the same way, and <b>cruise ships on international itineraries</b> pay while berthed in a Croatian port or at anchorage. Owners of holiday homes and private boats pay for themselves and their guests, sometimes as an annual flat sum. If you are chartering, ask the operator whether the tax is inside the quoted price, because on boats it often is.",
+            "For 2026 the thing to watch is pressure rather than a change. Coastal municipalities and islands have been openly discussing <b>higher tourist taxes and additional seasonal or environmental levies</b>, and Dubrovnik has floated another increase. <b>None of that is law</b>, so budget the current figures and treat the rest as a 2027 question. If it is legislated, we will change this page."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is the tourist tax in Croatia in 2026?", a: "There is no single national rate. Most coastal and island towns charge around 2 euros per adult per night from April to September and roughly 1 to 1.50 euros outside that, with the busiest places a little higher and inland towns lower. Campsites are charged less." },
+        { q: "Do children pay the tourist tax in Croatia?", a: "Children under 12 pay nothing, and anyone aged 12 to 18 pays half. So two adults with two young children pay the same as the couple would alone. The exemptions are set in national law, so they apply in every town." },
+        { q: "Is Croatia's tourist tax per person or per room?", a: "Per person, for each night, so it scales with the size of your party rather than attaching to the room. That is the opposite of the Greek and Icelandic fees. Nights on a chartered yacht or a multi-day cruise boat are charged too." },
+        { q: "Why is my Croatian host asking for the tourist tax in cash?", a: "Because that is standard practice, particularly for private apartments. The host is required to register you through the national eVisitor system within 24 hours and to remit the tax to the local tourist board, so a cash request on arrival is normal. Ask for it to be shown on your receipt." }
+      ],
+      sources: {
+        links: [
+          { label: "Government of Croatia: who pays the tourist tax, the full exemption list, and the 50 percent reduction for 12 to 18-year-olds, in Croatian", url: "https://gov.hr/hr/turisticka-pristojba/1520", type: "gov" },
+          { label: "Rijeka tourist board: the town's own 2026 amounts, 2 euros per person per night from 1 April to 30 September and 1.50 outside it, with lower campsite rates", url: "https://visitrijeka.hr/turisticka-pristojba", type: "tourism" },
+          { label: "Total Croatia News: coastal municipalities and islands debating higher tourist taxes and extra seasonal levies ahead of the 2026 season", url: "https://total-croatia-news.com/news/croatia-s-tourism-taxes/", type: "news" }
+        ],
+        judgment: "The structure and every exemption on this page are from the Croatian government's own tourist tax page, so the under-12 and 12-to-18 rules are facts rather than a local courtesy. The amounts are the genuinely uncertain part, by design of the system: national law sets a band and each county fixes a figure per town per year, so we have used one official town decision, Rijeka's 2026 amounts, as the worked anchor and given a range for everywhere else. Dubrovnik's higher season figure is from reporting rather than a municipal decision we read. We have deliberately avoided the national rate tables in circulation, several of which look like the pre-euro kuna schedule converted and no longer match official town decisions. Confirm the figure with your accommodation. Checked August 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Euro (EUR), since 2023" },

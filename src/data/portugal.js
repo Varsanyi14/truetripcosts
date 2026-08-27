@@ -235,6 +235,76 @@ export default {
       }
     },
     {
+      slug: "tourist-tax",
+      glance: [
+        { k: "What", v: "Municipal tax, per person, per night" },
+        { k: "Lisbon", v: "4 euros a night, 7 nights max" },
+        { k: "Porto", v: "3 euros a night" },
+        { k: "Children under 13", v: "Exempt" }
+      ],
+      live: true,
+      topic: "tourist-tax",
+      title: "Portugal tourist tax 2026: Lisbon 4 euros a night",
+      description: "Portugal's tourist tax is municipal, so most of the country charges nothing. Lisbon is 4 euros a night per guest, Porto 3, and both cap at seven nights.",
+      h1: "Portugal's tourist tax, and the seven-night cap.",
+      lede: "Portugal has no national tourist tax. Around forty of its three hundred-odd municipalities charge one and the rest charge nothing, and where it applies it usually stops after seven nights. Here is what Lisbon, Porto and the Algarve add in 2026.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-26",
+      answer: "Portugal charges a <b>taxa municipal turistica</b>, a <b>per-person, per-night</b> tax set by each town rather than nationally, and the first thing to know is that <b>most of Portugal does not charge it at all</b>: roughly <b>40 to 50</b> of the country's 308 municipalities have adopted one. Where it applies the range is about <b>1 to 4 euros</b>. <b>Lisbon is the highest at 4 euros</b> a night per guest, doubled from 2 euros on <b>1 September 2024</b>. <b>Porto is 3 euros</b>, the same all year. Algarve towns that charge it are commonly <b>2 euros in high season and 1 euro in low</b>, and Funchal on Madeira is around <b>2 euros</b>. Almost everywhere it is <b>capped</b>, usually at <b>seven nights per person per stay</b>, and <b>guests under 13 are exempt</b>. It is usually <b>not</b> in a hotel's quoted price and is collected at the property.",
+      sections: [
+        {
+          h: "How it works, and who pays",
+          icon: "calendar",
+          key: { fig: "Per person", tag: "Set by each town", text: "Each municipality decides whether to charge a tourist tax and at what rate. It is charged for each guest for each night, and your accommodation collects it.", tone: "teal" },
+          p: [
+            "There is <b>no Portuguese national tourist tax</b>. Each <b>camara municipal</b> decides for itself whether to have one, what to charge, from what age, and after how many nights to stop, which is why a figure that is right for Lisbon tells you nothing about Evora. It applies to all licensed accommodation, so hotels, guesthouses, hostels and the <b>alojamento local</b> category that covers most Airbnb-style rentals are all in scope.",
+            "It is charged <b>per guest, per night</b>, so unlike the Greek and Icelandic versions it scales with the size of your party. It has to appear on your invoice as its own line, and it is <b>not subject to VAT</b>. One detail from Lisbon's own rules that catches people out: the rate that applies is the one in force during your stay, <b>regardless of when you booked</b>, so booking early does not lock in an older figure. For the wider picture see the <a href=\"/portugal\">Portugal money guide</a>."
+          ]
+        },
+        {
+          h: "Lisbon, Porto, and why the cap matters",
+          icon: "euro",
+          key: { fig: "28 euros max", tag: "Lisbon, per adult", text: "Lisbon is 4 euros a night but stops after seven nights, so the most any one adult pays for a single stay is 28 euros, about 32 dollars.", tone: "teal" },
+          p: [
+            "<b>Lisbon charges 4 euros</b> per guest per night, for everyone <b>aged 13 and over</b>, capped at <b>seven nights per person per stay</b>. The cap is the part worth understanding, because it turns the tax from a running meter into a fixed maximum: seven nights or fourteen, one adult pays at most <b>28 euros</b>, roughly <b>32 dollars</b>, and a couple at most <b>56 euros</b>, about <b>64 dollars</b>. <b>Porto charges 3 euros</b>, with no seasonal variation, and also caps at seven nights, so <b>21 euros</b> per adult, about <b>24 dollars</b>.",
+            "That makes Portugal's version gentler than it first looks on a long trip and sharper than it looks on a short one. A weekend for two in Lisbon adds about <b>16 euros</b>; a fortnight for a family of two adults and two under-13s adds the same <b>56 euros</b> as a week for the couple alone. If you are moving between towns, note the cap resets per stay, so a week in Lisbon then a week in Porto means paying both caps."
+          ]
+        },
+        {
+          h: "The Algarve, Madeira, and everywhere else",
+          icon: "tag",
+          key: { fig: "Often nothing", tag: "Most of Portugal", text: "Only around 40 to 50 of Portugal's 308 municipalities charge a tourist tax at all. Outside those, there is nothing to budget for.", tone: "teal" },
+          p: [
+            "The <b>Algarve</b> is patchier than people expect: only some of its municipalities charge the tax, and those that do increasingly run it <b>seasonally</b>, commonly <b>2 euros a night in high season and 1 euro in low</b>. <b>Funchal</b> on Madeira sits around <b>2 euros</b>, also capped at seven nights. Smaller towns that have adopted one tend to land at <b>1 to 2 euros</b>, sometimes with a much tighter cap and a seasonal window: Guimaraes, for example, charges only in the warmer months and stops after a couple of nights.",
+            "Everywhere else, and that is the large majority of the country, there is <b>nothing to pay</b>. The number of municipalities charging one has been climbing every year, so the honest expectation for a 2026 trip is that your city may have adopted one recently even if an older guide says otherwise. The reliable check is your own booking's fees section, or the town's <b>camara municipal</b> site."
+          ]
+        },
+        {
+          h: "Exemptions, cruise arrivals, and Airbnb",
+          icon: "alert",
+          key: { fig: "Under 13 free", tag: "Plus medical and study", text: "Children under 13 pay nothing in Lisbon, and there are exemptions for medical stays and for students. Cruise passengers pay a separate arrival charge.", tone: "amber" },
+          p: [
+            "In Lisbon the exemptions are broader than the usual child rule. <b>Guests under 13 pay nothing</b>. So do people whose stay is for <b>medical treatment</b>, covering the treatment or hospital period plus one further night, and that exemption extends to a <b>companion</b>. <b>Students entering higher education in the city and research fellows</b> are exempt for up to <b>60 consecutive days</b> at the start of the academic year, and people housed by order of the council or social services are exempt too. Each of these needs documentation, and the minimum age is set town by town, so confirm yours rather than assuming 13 everywhere.",
+            "Two things that are not the overnight tax. Lisbon charges a <b>separate maritime arrival tax</b> on cruise passengers disembarking in the city, which went from 1 euro to <b>2 euros per passenger</b>, so a cruise call is charged under a different rule from a hotel night. And where you book through <b>Airbnb</b> in Lisbon the platform collects the tax <b>at the time of booking</b> under a long-standing agreement with the city, so for those reservations it genuinely is in the price you paid, unlike most hotel bookings."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is the tourist tax in Lisbon in 2026?", a: "4 euros per guest, per night, for everyone aged 13 and over, capped at seven nights per person per stay. So one adult pays at most 28 euros for a stay, about 32 dollars, however long they remain. The rate doubled from 2 euros on 1 September 2024." },
+        { q: "Is Portugal's tourist tax per person or per room?", a: "Per person, for each night, so it scales with the size of your party rather than attaching to the room. Children under 13 are exempt in Lisbon, and most municipalities that charge it set a similar minimum age, so a family usually pays only for the adults and older teenagers." },
+        { q: "Does everywhere in Portugal charge a tourist tax?", a: "No, and this is the part most guides get wrong. Only around 40 to 50 of Portugal's 308 municipalities charge one at all, so in most of the country there is nothing to pay. The number has been rising each year, so check your own booking rather than an older list." },
+        { q: "Is the tourist tax included in my Portugal hotel price?", a: "Usually not for a hotel. It is generally collected at the property, sometimes in cash, and it must appear as its own line on the invoice. Lisbon Airbnb bookings are the exception: the platform collects it at booking, so for those it is already paid." }
+      ],
+      sources: {
+        links: [
+          { label: "Lisbon City Council: the municipal tourist tax at 4 euros per overnight stay, capped at 7 nights per person and charged from age 13, whenever the booking was made", url: "https://informacoeseservicos.lisboa.pt/servicos/perguntas-frequentes/pagamentos-taxas-e-tarifas", type: "gov" },
+          { label: "Lisbon City Council: the tourist tax service page, with the medical, student and social-housing exemptions and the Airbnb collection agreement", url: "https://informacoeseservicos.lisboa.pt/servicos/detalhe/taxa-municipal-turistica", type: "gov" },
+          { label: "Lisbon City Council news: the increase of the overnight tax to 4 euros and the maritime arrival tax to 2 euros per cruise passenger", url: "https://informacao.lisboa.pt/noticias/detalhe/taxas-de-dormida-e-chegada-por-via-maritima-aumentam-em-lisboa", type: "gov" }
+        ],
+        judgment: "Lisbon's figures are first-party, from Lisbon City Council's own pages: 4 euros per overnight stay, a seven-night cap per person per stay, charged from age 13, and the exemption list. Porto's 3 euros is consistently reported across current trade and management sources but we have not pinned it to a first-party council page, so treat it as well corroborated rather than official. Everything outside Lisbon and Porto is genuinely municipal: the count of municipalities charging one is rising, the Algarve figures are the common seasonal pattern rather than a rule, and minimum ages and night caps differ town by town. That is why this page gives you the shape and two anchors instead of a national table. Checked August 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Euro (EUR)" },
