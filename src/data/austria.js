@@ -100,8 +100,8 @@ export default {
     note: "Austria has no single national tourist tax. Most towns add a small local overnight tax to your hotel bill. Vienna charges a percentage of the room rather than a flat fee; most alpine and regional towns charge a flat per-person, per-night amount. These are rough figures; the exact amount varies by state, town and season. VAT is separate and already included in prices.",
     regions: [
       { key: "vienna", label: "Vienna", rate: 5.5, note: "Vienna's tax is technically 5% of the net room price (raised from 3.2% on 1 July 2026, with a further rise to 8% due in July 2027) rather than a flat nightly fee, so on a typical hotel it works out to about 5 to 7 euros per person per night. This uses a representative figure." },
-      { key: "alpine", label: "Salzburg, Tyrol and the alpine resorts", rate: 2.5, note: "Alpine towns charge a flat local tax per person per night, commonly 1.50 to 3.50 euros depending on the resort and season." },
-      { key: "other", label: "Elsewhere in Austria", rate: 2.0, note: "Most Austrian towns charge a small flat per-person, per-night tax, commonly 1 to 3 euros." }
+      { key: "alpine", label: "Salzburg, Tyrol and the alpine resorts", rate: 3.0, note: "Alpine towns charge a flat local tax per person per night, and rates rose across 2025 and 2026. The city of Salzburg is around 3 euros, and Tyrol runs from about 2.60 euros up to about 5 euros depending on the tourism board, the resort and the season." },
+      { key: "other", label: "Elsewhere in Austria", rate: 2.5, note: "Most Austrian towns charge a small flat per-person, per-night tax, commonly 2 to 4.50 euros in 2026. Burgenland has charged a flat 4.50 euros since 1 January 2026, and Carinthia moves to a flat 4.50 euros on 1 November 2026." }
     ]
   },
 
@@ -116,7 +116,7 @@ export default {
   taxfree: {
     label: "Taxes, tips and refunds",
     heading: "Tax in the price, a refund if you shop big, and a light tip.",
-    text: "In Austria, <b>VAT is already included</b> in the price you see: 20% on most goods and services, and a reduced 10% on food, books and hotel accommodation. As a US visitor you can claim <b>tax-free shopping</b>: on purchases over about <b>75 euros</b> in one store, ask for a refund form and reclaim the VAT when you leave the EU, usually at the airport. Separately, most towns add a small <b>overnight tourist tax</b> to your hotel bill: Vienna charges 5% of the net room price, while alpine and regional towns usually charge a flat per-person nightly fee of roughly 1 to 3.50 euros. <b>Tipping is light</b>: service is included, and rounding up or adding about 5 to 10% for good service is normal. Tell the server the total you want to pay as you hand over cash or card, rather than leaving coins on the table. There is no separate departure tax; airport charges are built into your ticket."
+    text: "In Austria, <b>VAT is already included</b> in the price you see: 20% on most goods and services, and a reduced 10% on food, books and hotel accommodation. As a US visitor you can claim <b>tax-free shopping</b>: on purchases over about <b>75 euros</b> in one store, ask for a refund form and reclaim the VAT when you leave the EU, usually at the airport. Separately, most towns add a small <b>overnight tourist tax</b> to your hotel bill: Vienna charges 5% of the net room price, while alpine and regional towns usually charge a flat per-person nightly fee of roughly 2 to 5 euros. <b>Tipping is light</b>: service is included, and rounding up or adding about 5 to 10% for good service is normal. Tell the server the total you want to pay as you hand over cash or card, rather than leaving coins on the table. There is no separate departure tax; airport charges are built into your ticket."
   },
 
   // High-churn fees and taxes, each tracked on its own with a status, an effective
@@ -144,7 +144,7 @@ export default {
     { q: "What is the best ATM to use in Austria?", a: "A bank Bankomat, such as Erste and Sparkasse, Bank Austria or Raiffeisen. Avoid the blue Euronet machines common in tourist areas, which offer poor rates and push fees, and always decline the offer to convert to US dollars." },
     { q: "How much should I tip in Austria?", a: "Not much. Service is included, so locals round up or add about 5 to 10% for good service. The custom is to state the total you want to pay as you hand over cash or card, rather than leaving coins behind. Round up for taxis and casual meals." },
     { q: "Is tax included in prices in Austria?", a: "Yes. Austrian VAT is built into the displayed price, 20% on most things and a reduced 10% on food, books and hotels, so the tag or menu price is what you pay. Non-EU visitors can reclaim VAT on purchases over about 75 euros in one store when leaving the EU." },
-    { q: "Does Austria charge a tourist tax?", a: "Most towns do, added to your hotel bill. Vienna charges 5% of the net room price, while alpine and regional towns usually charge a flat per-person nightly fee of roughly 1 to 3.50 euros. It is separate from the room rate you book online." }
+    { q: "Does Austria charge a tourist tax?", a: "Most towns do, added to your hotel bill. Vienna charges 5% of the net room price, while alpine and regional towns usually charge a flat per-person nightly fee of roughly 2 to 5 euros. It is separate from the room rate you book online." }
   ],
 
   culture: {
@@ -306,6 +306,76 @@ export default {
           { label: "US State Department: Austria country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Austria.html", type: "gov" }
         ],
         judgment: "Austrian tipping mirrors Germany, and the say-the-total habit is a longstanding local practice, not a rule. Amounts here are our own read from recent traveler reports and local guidance, not a single official table. Checked July 2026."
+      }
+    },
+    {
+      slug: "tourist-tax",
+      glance: [
+        { k: "What", v: "Local tax, set by each province" },
+        { k: "Vienna", v: "5% of the net room price" },
+        { k: "Elsewhere", v: "About 2 to 5 euros per person a night" },
+        { k: "Children under 15", v: "Usually exempt" }
+      ],
+      live: true,
+      topic: "tourist-tax",
+      title: "Austria tourist tax 2026: Vienna's Ortstaxe and the rest",
+      description: "Austria's Ortstaxe is set province by province. Vienna charges 5% of the net room price since July 2026, most other places a flat 2 to 5 euros a night.",
+      h1: "Austria's Ortstaxe, province by province.",
+      lede: "Austria charges a small local tax on your accommodation, and there is no national rate: each of the nine provinces sets its own. Vienna takes a percentage of the room, most other places a flat few euros per person per night. Several rates moved in 2026.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-27",
+      answer: "Austria's tourist tax is the <b>Ortstaxe</b> (also called the Kurtaxe, Nachtigungsabgabe or Aufenthaltsabgabe depending on the province), and it is <b>regional, not national</b>: each of the nine <b>Lander</b> sets its own, so there is no single Austrian rate. Two structures coexist. <b>Vienna charges a percentage of the room</b>, currently <b>5% of the accommodation price with VAT and breakfast taken out</b>, in force since <b>1 July 2026</b>, which works out to roughly <b>4.35 euros on a 100 euro room</b>. <b>Everywhere else charges a flat amount per person, per night</b>, commonly <b>2 to 5 euros</b> in 2026 depending on the province, the town and the season, with alpine resorts at the top. It applies to hotels, guesthouses, apartments, hostels and campsites alike. <b>Children under 15 are exempt</b> in Vienna and commonly elsewhere, though the age is set per province. Two dated changes are ahead: <b>Carinthia moves to a flat 4.50 euros on 1 November 2026</b>, and <b>Vienna rises to 8% on 1 July 2027</b>.",
+      sections: [
+        {
+          h: "How it works, and who pays",
+          icon: "calendar",
+          key: { fig: "Nine systems", tag: "Set by each province", text: "There is no national Austrian rate. Each of the nine provinces writes its own tourism law, so both the amount and the structure change when you cross a provincial border.", tone: "teal" },
+          p: [
+            "Austria has <b>no national tourist tax</b>. Each of the nine <b>provinces</b> has its own tourism act setting the name, the structure, the rate and the exemptions, and in most of them the individual municipality or tourism board fixes the final figure inside that framework. So a rate that is right for Vienna tells you nothing about Innsbruck, and a rate that is right for Innsbruck may not hold in the next valley along.",
+            "Wherever it applies it covers <b>all paid accommodation</b>: hotels, guesthouses, private apartments, hostels, Airbnb-style rentals and campsites. Your host collects it and remits it monthly. Whether it sits inside the price you were quoted or gets added at the property depends on the platform and the property rather than on the law, so the honest move is to <b>check your booking's fee breakdown</b> and ask if it is not itemised. For the wider picture see the <a href=\"/austria\">Austria money guide</a>."
+          ]
+        },
+        {
+          h: "Vienna, and the rate that changed in July",
+          icon: "alert",
+          key: { fig: "5% of the room", tag: "Up from 3.2%", text: "Vienna has charged 5% of the accommodation price, net of VAT and breakfast, since 1 July 2026. On a 100 euro room that is about 4.35 euros a night.", tone: "amber" },
+          p: [
+            "Vienna is the outlier because it charges a <b>percentage</b> rather than a flat fee, so the tax grows with the room rate. Since <b>1 July 2026</b> it has been <b>5%</b> of the accommodation price with <b>VAT and breakfast excluded</b>, up from <b>3.2%</b>, under a law the Vienna provincial parliament adopted in December 2025. In practice a <b>100 euro</b> room carries about <b>4.35 euros</b> a night and a <b>300 euro</b> room about <b>13 euros</b>. It rises again to <b>8% on 1 July 2027</b>, which is a dated future change rather than something to budget for a 2026 trip.",
+            "Two honest cautions. Any page quoting <b>3.2%</b> is describing the pre-July-2026 rate, and there are a great many of them. And the <b>basis for the calculation changed alongside the rate</b>, so older explanations of the arithmetic, including the 11% lump-sum deduction that applied under the 3.2% regime, no longer describe how today's figure is reached. Treat the percentage and the worked euro figures above as the reliable part, and do not try to recompute it from an old formula."
+          ]
+        },
+        {
+          h: "Salzburg, Tyrol and the alpine resorts",
+          icon: "tag",
+          key: { fig: "2 to 5 euros", tag: "Flat, per person", text: "Outside Vienna the tax is a flat amount for each person each night, commonly 2 to 5 euros in 2026, set by province and often by the individual tourism board.", tone: "teal" },
+          p: [
+            "Outside Vienna the model flips to a <b>flat amount per person, per night</b>, which means it scales with the size of your party rather than the price of your room. The <b>city of Salzburg</b> is around <b>3 euros</b> a night, raised sharply from about 1.80 euros in 2025, and the province grades its rates by locality with small extra levies on top in some municipalities. <b>Tyrol</b>, which covers Innsbruck and the big ski areas, runs from about <b>2.60 euros</b> at the lower end up to about <b>5 euros</b> in the most in-demand valleys, set tourism board by tourism board.",
+            "<b>Burgenland</b> has charged a flat <b>4.50 euros</b> since 1 January 2026, and <b>Carinthia</b> replaces its patchwork with a single <b>4.50 euros</b> from <b>1 November 2026</b>. Rates rose across several provinces during 2025 and 2026, so a figure of <b>about 2 euros</b> quoted for Tyrol or Salzburg is almost certainly the pre-2025 number. Treat all of these as a <b>range and confirm the exact figure with your accommodation</b>, because the municipality, the resort and the season all move it."
+          ]
+        },
+        {
+          h: "Who is exempt, and the structural difference",
+          icon: "euro",
+          key: { fig: "Under 15 free", tag: "Age set per province", text: "Children under 15 pay nothing in Vienna and commonly elsewhere, but the exempt age is set by each province, so confirm it locally.", tone: "teal" },
+          p: [
+            "<b>Children under 15 are exempt</b> in Vienna, and the same age is common across the provinces, though because each one writes its own rules the exact age is a local question rather than a national one. Vienna also exempts anyone staying <b>more than three consecutive months</b>, and students whose accommodation is tied to their studies. Where a family stays together, an exemption reduces the bill by that person's share rather than cancelling the charge for the room.",
+            "The structural contrast is worth holding onto, because it decides who pays more. In <b>Vienna</b> the tax is a <b>percentage of the room</b>, so it scales with how smart a hotel you book and is indifferent to how many of you are in it. In <b>Salzburg, Tyrol and the rest</b> it is <b>flat per person</b>, so it ignores the room price and scales with the size of your party. A couple in a good Vienna hotel and a family of four in a modest alpine guesthouse can land on similar numbers by completely different routes."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is the tourist tax in Vienna in 2026?", a: "5% of the accommodation price with VAT and breakfast taken out, in force since 1 July 2026, up from 3.2%. On a 100 euro room that is about 4.35 euros a night, and on a 300 euro room about 13 euros. Children under 15 are exempt. The rate rises to 8% on 1 July 2027." },
+        { q: "Does Austria have a national tourist tax?", a: "No. Each of the nine provinces sets its own, and in most of them the municipality or tourism board fixes the final figure, so there is no single Austrian rate. Vienna charges a percentage of the room; everywhere else charges a flat amount per person per night, commonly 2 to 5 euros in 2026." },
+        { q: "Do children pay the tourist tax in Austria?", a: "Children under 15 are exempt in Vienna, and the same age is common in other provinces, but because each province writes its own rules the exact exempt age is set locally. Ask your accommodation rather than assuming 15 applies everywhere." },
+        { q: "Is the Austrian tourist tax included in my hotel price?", a: "It depends on the property and the booking platform rather than on the law, and practice varies. Check the fee breakdown on your booking, and if the tax is not itemised there, ask the property whether it is included or will be added at the desk." }
+      ],
+      sources: {
+        links: [
+          { label: "City of Vienna: the Ortstaxe, the 5% rate in force from 1 July 2026, the accommodation-price basis and the exemptions", url: "https://www.wien.gv.at/english/e-government/financial/tax/local-tax.html", type: "gov" },
+          { label: "Vienna Tourist Board: the staged local-tax change, 5% from 1 July 2026 and 8% from 1 July 2027, with the December 2025 legal basis and the revised calculation basis", url: "https://b2b.wien.info/en/services/products-services/local-tax-1086968", type: "tourism" },
+          { label: "The Local Austria: the province-by-province comparison behind the Salzburg and Tyrol per-person figures and the 2025 increases", url: "https://www.thelocal.at/20250417/compare-the-tourist-tax-youll-pay-in-different-parts-of-austria-this-summer", type: "news" }
+        ],
+        judgment: "Austria's tax is regional and there is no national rate, which is the main thing to take away. Vienna's 5%, charged on the accommodation price with VAT and breakfast taken out, is first-party from the City of Vienna: it rose from 3.2% on 1 July 2026 and rises to 8% on 1 July 2027. The basis for the calculation changed alongside the rate, so we give worked euro figures rather than a formula, and older explanations that include an 11% lump-sum deduction are describing the pre-July-2026 system. The per-person figures for Salzburg, Tyrol, Burgenland and Carinthia come from current rate reporting rather than each province's own page, and they genuinely vary by municipality, resort and season, so they are ranges rather than facts. Exempt ages are set per province. Confirm the figure with your accommodation. Checked August 2026."
       }
     },
     {

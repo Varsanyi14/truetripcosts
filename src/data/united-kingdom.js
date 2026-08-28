@@ -324,6 +324,78 @@ export default {
       }
     },
     {
+      slug: "tourist-tax",
+      glance: [
+        { k: "What", v: "No UK-wide tax, it depends on the city" },
+        { k: "Edinburgh", v: "5% of the room, first 5 nights" },
+        { k: "London and most of the UK", v: "Nothing" },
+        { k: "Glasgow", v: "5%, but from January 2027" }
+      ],
+      live: true,
+      topic: "tourist-tax",
+      title: "UK tourist tax 2026: Edinburgh charges, most cities do not",
+      description: "There is no UK-wide tourist tax. Edinburgh charges 5% on the first five nights, Glasgow follows in 2027, and London and most of the UK charge nothing.",
+      h1: "The UK's tourist tax, and where it actually applies.",
+      lede: "There is no UK-wide tourist tax. What exists is a patchwork: Edinburgh charges one now, Glasgow and other Scottish cities follow in 2027, Wales can from 2027, and England has none at all. For almost everywhere in the UK today there is nothing to budget.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-27",
+      answer: "There is <b>no UK-wide tourist tax</b>, and the answer depends entirely on which city you are visiting. <b>Edinburgh is the real exception</b>: since <b>24 July 2026</b> it charges a visitor levy of <b>5% of the accommodation cost before VAT</b>, on the <b>first five consecutive nights</b> of a stay only, at the same rate all year, across the whole council area. It is charged on the room and <b>not per person</b>, so children add nothing, and it does not touch meals, drinks, parking or transport. <b>Glasgow follows on 25 January 2027</b> at 5% for the whole length of the stay, with <b>Aberdeen and Stirling</b> also dated for 2027, and <b>none of those is being collected now</b>. <b>Wales</b> has legislated a levy its councils may adopt from <b>April 2027</b> at <b>1.30 pounds per person per night</b>, but <b>no Welsh council has implemented it</b>. <b>England has no statutory tourist tax</b> and <b>London charges nothing</b>. Manchester and Liverpool add a small charge that is <b>not a government tax</b>.",
+      sections: [
+        {
+          h: "Edinburgh, the one that actually charges",
+          icon: "calendar",
+          key: { fig: "5%, five nights", tag: "Live since July 2026", text: "Edinburgh charges 5% of the accommodation cost before VAT, on the first five consecutive nights only, at the same rate all year round.", tone: "teal" },
+          p: [
+            "Edinburgh became the <b>first UK city</b> with a city-wide visitor levy on <b>24 July 2026</b>, under the Visitor Levy (Scotland) Act 2024. It is <b>5% of the cost of the paid overnight accommodation, before VAT</b>, capped at the <b>first five consecutive nights</b> of a stay. So five nights at 200 pounds a night before VAT carries a levy of <b>50 pounds</b>, and a ten-night stay at the same rate carries the same <b>50 pounds</b>, because the cap stops the meter.",
+            "It is charged on the <b>accommodation only</b>, so meals, drinks, parking and transport sit outside it, and because it attaches to the room rather than to each guest, <b>children do not add to it</b>. It covers the entire City of Edinburgh Council area and every kind of paid stay: hotels, B&Bs, guest houses, hostels, self-catering and short-term lets, aparthotels, campsite and caravan pitches, even a boat or vehicle that mostly stays in one place. Everyone pays, <b>including UK and Scottish residents and business travelers</b>. For the wider picture see the <a href=\"/united-kingdom\">UK money guide</a>."
+          ]
+        },
+        {
+          h: "The booking-date rule, and the exemptions",
+          icon: "tag",
+          key: { fig: "1 October 2025", tag: "The booking cutoff", text: "A stay after 24 July 2026 escapes the levy entirely if it was booked and paid for, in part or in full, before 1 October 2025.", tone: "teal" },
+          p: [
+            "There is one nuance worth knowing if you booked a long way ahead. The levy applies to stays from <b>24 July 2026</b> only where the booking was made <b>on or after 1 October 2025</b>. A stay that falls after the start date but was <b>booked and paid for, in part or in full, before 1 October 2025</b>, is not subject to it at all. That exemption holds however late the stay itself falls, so a genuinely early booking escapes the charge.",
+            "The exemptions are unusual in that they turn on housing rather than age. Because the Act only taxes paid overnight stays away from a person's home, people who are <b>homeless or at risk of homelessness</b>, living in seriously substandard housing, <b>experiencing domestic abuse</b>, or who are <b>asylum seekers or refugees</b>, are not liable. Charities running accommodation wholly or mainly for charitable purposes can apply for a discretionary site exemption. There is <b>no general child or age exemption</b>, because the charge falls on the room rather than the person."
+          ]
+        },
+        {
+          h: "Glasgow, Wales and the rest: dated, not yet charged",
+          icon: "alert",
+          key: { fig: "Nothing yet", tag: "2027 dates, not 2026", text: "Glasgow, Aberdeen, Stirling and Wales all have dated schemes for 2027. None is collecting anything in 2026, so there is nothing to budget for them.", tone: "amber" },
+          p: [
+            "<b>Glasgow</b> has approved a <b>5%</b> levy starting <b>25 January 2027</b>, and unlike Edinburgh's it applies for the <b>whole length of the stay</b> rather than a capped five nights. <b>Aberdeen</b> is dated for <b>1 April 2027</b> with a higher figure reported, and <b>Stirling</b> for mid-2027 at a lower one. Highland Council has delayed its own scheme. The Scottish Government has separately introduced a bill that would let councils charge a <b>flat nightly amount</b> instead of a percentage, so the shape of these schemes may still change before they begin.",
+            "<b>Wales</b> passed its own legislation in 2025, letting each council adopt a levy from <b>April 2027</b> at <b>1.30 pounds per person per night</b>, or <b>75 pence</b> for campsites, hostels and dormitories, with under-18s exempt in that lower band and stays longer than 31 nights excluded. <b>No Welsh council has implemented it yet.</b> Read every date on this page as a future date: <b>none of these is a charge you will pay in 2026</b>, and a page telling you otherwise is describing a plan as though it were a bill."
+          ]
+        },
+        {
+          h: "England, London, and what is not a tourist tax",
+          icon: "euro",
+          key: { fig: "Not a tax", tag: "Manchester and Liverpool", text: "Manchester and Liverpool add a small nightly charge, but a business improvement district levies it, not a government. England has no statutory tourist tax.", tone: "amber" },
+          p: [
+            "<b>England has no statutory tourist tax</b>, and that includes <b>London</b>, where the rate you are quoted already contains 20% VAT and nothing further lands at checkout. The government has consulted on giving English mayors the power to create an overnight levy, but nothing is in force, so for an English trip in 2026 there is <b>nothing to budget</b>.",
+            "The confusion comes from <b>Manchester and Liverpool</b>, which do add a small nightly charge: roughly <b>1 pound per room per night</b> in Manchester and about <b>2 pounds</b> in Liverpool. This is <b>not a government tax</b>. It is levied by an <b>accommodation business improvement district</b>, a business-led body that charges participating city-centre hotels, which then pass it on to guests. Press coverage regularly calls these England's first tourist tax. They are a different animal: no council or parliament sets them, and they apply only at participating properties."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does the UK have a tourist tax?", a: "Not nationally. There is no UK-wide tourist tax, and for most of the country including London there is nothing to pay. Edinburgh is the exception, charging 5% of the accommodation cost before VAT on the first five nights of a stay since 24 July 2026. Glasgow and others follow in 2027." },
+        { q: "How much is the Edinburgh visitor levy?", a: "5% of the paid accommodation cost before VAT, charged on the first five consecutive nights of a stay only. Five nights at 200 pounds a night before VAT works out at 50 pounds, and a longer stay at that rate pays the same 50 pounds because of the cap. It does not apply to meals, drinks, parking or transport." },
+        { q: "Is there a tourist tax in London?", a: "No statutory one. London charges no tourist tax or hotel tax, and England has none either. The price you are quoted already includes 20% VAT and nothing further is added at checkout. The government has consulted on giving English mayors the power to introduce one, but nothing is in force." },
+        { q: "Do children pay the Edinburgh visitor levy?", a: "There is no separate charge for children, because the levy is a percentage of the accommodation cost rather than a per-person fee. A family in one room pays exactly what a couple in that room would. That makes it different from most European tourist taxes, which charge per person and then exempt children." }
+      ],
+      sources: {
+        links: [
+          { label: "City of Edinburgh Council: the visitor levy at 5% before VAT, charged on the first five nights, live for stays from 24 July 2026", url: "https://www.edinburgh.gov.uk/visitorlevy", type: "gov" },
+          { label: "City of Edinburgh Council: the formal scheme document, confirming a maximum of five consecutive nights, the council-wide area and the 1 October 2025 booking cutoff", url: "https://www.edinburgh.gov.uk/business/scheme-edinburgh-visitor-levy/2", type: "gov" },
+          { label: "Glasgow City Council: Glasgow's visitor levy scheme, commencing 25 January 2027", url: "https://www.glasgow.gov.uk/article/14799/Glasgow-s-Visitor-Levy", type: "gov" },
+          { label: "Law Society of Scotland: the Scottish rollout dates for Edinburgh, Glasgow and Aberdeen, and why the charge is not only paid by tourists", url: "https://www.lawscot.org.uk/members/journal-hub/articles/scotlands-visitor-levy-divides-city-and-countryside-as-reform-calls-grow/", type: "news" },
+          { label: "A current UK-wide reference on the Wales levy figures for 2027 and the Manchester and Liverpool business-district charges", url: "https://britbrief.co.uk/business/tourism/uk-tourist-taxes-what-visitors-pay-in-2025.html", type: "news" }
+        ],
+        judgment: "There is no UK-wide tourist tax, and the patchwork is the whole story. Edinburgh's levy is first-party from the City of Edinburgh Council: 5% of the accommodation cost before VAT, a maximum of five consecutive nights, live for stays from 24 July 2026, and not applying to stays booked and paid for before 1 October 2025. Some secondary sources say seven nights; the Council's own scheme document says five, so we have used five. Glasgow's 5% from 25 January 2027 is first-party from Glasgow City Council but is not being collected yet, and the Aberdeen and Stirling dates and rates come from current legal and trade reporting rather than council pages we read, so we have dated them without pinning exact percentages. Wales has legislated a levy its councils may adopt from April 2027, and no council has adopted one. England has no statutory levy. The Manchester and Liverpool charges are business improvement district levies on participating hotels rather than government taxes, and we have kept them clearly separate. Checked August 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Pound sterling (GBP)" },
