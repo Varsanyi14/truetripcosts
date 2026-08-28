@@ -303,6 +303,76 @@ export default {
       }
     },
     {
+      slug: "tourist-tax",
+      glance: [
+        { k: "What", v: "No tourist tax, just a small local fee" },
+        { k: "Warsaw and Krakow", v: "Nothing" },
+        { k: "Where it applies", v: "About 1.50 to 5 zloty a night" },
+        { k: "2027 rise", v: "Proposed, not law" }
+      ],
+      live: true,
+      topic: "tourist-tax",
+      title: "Poland tourist tax 2026: mostly nothing to pay",
+      description: "Poland has no tourist tax. Warsaw and Krakow charge nothing, and only designated mountain, coastal and spa towns add a small local fee in 2026.",
+      h1: "Poland's tourist tax, which mostly does not exist.",
+      lede: "Poland has no tourist tax, and that is not a technicality: the law does not provide for one. What exists is a small local fee that only towns meeting strict climate and scenery tests may levy, which is why Warsaw and Krakow charge nothing at all. This is a short page because there is genuinely little to budget.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-27",
+      answer: "<b>Poland has no tourist tax.</b> The Act on Local Taxes and Fees does <b>not permit a dedicated accommodation tax</b>, and the City of Krakow says so in as many words while lobbying to have the law changed. What exists instead are two narrow local charges: the <b>oplata miejscowa</b>, a local or climate fee, and the <b>oplata uzdrowiskowa</b>, a spa fee, and a town may levy one <b>only if it meets strict climatic and scenic criteria</b>. Fewer than <b>300 of Poland's roughly 2,500 municipalities</b> charge anything. <b>Warsaw charges nothing</b>, and <b>Krakow legally cannot</b>, because its air quality fails the climatic test. Where a fee does apply, in designated mountain, coastal and spa towns, it is tiny and <b>per person, per night</b>: the <b>2026 daily maximums</b> are <b>3.46 zloty</b> in climatic and scenic towns, <b>4.89 zloty</b> in spa-protection areas and <b>6.67 zloty</b> in official spa resorts, and towns may set less, so real charges run about <b>1.50 to 5 zloty</b>, well under <b>1.50 euros</b>. <b>The two fees can never both be charged</b> to the same person. A government bill would <b>raise the caps from 2027</b>, but it is <b>not law</b>.",
+      sections: [
+        {
+          h: "Why there is nothing to pay in the big cities",
+          icon: "calendar",
+          key: { fig: "Nothing", tag: "Warsaw and Krakow", text: "Poland has no tourist tax in law. Warsaw charges nothing and Krakow legally cannot, because its air quality fails the climatic test the local fee requires.", tone: "teal" },
+          p: [
+            "Poland is the rare European country where the honest answer is <b>nothing</b>, and the reason is structural rather than generous. Under the <b>Act on Local Taxes and Fees</b> there is <b>no such thing as a Polish tourist tax</b>. A municipality may levy the <b>oplata miejscowa</b> only if a locality within it satisfies <b>three conditions at once</b>: favourable <b>climatic</b> properties, <b>scenic</b> value, and conditions allowing stays for tourism, leisure or training. Miss any one of them and the town may charge nothing, however many visitors it receives.",
+            "<b>Krakow is the clearest case, and it is first-party.</b> The city used to levy the local fee and <b>lost the right to it</b> when environmental rules changed, because Krakow and its metropolitan area <b>no longer met the climatic criteria</b>. It has been pressing the national government since <b>2017</b> to remove the climate test so that cities with cultural rather than climatic appeal could charge, with repeated appeals to ministers through <b>2023 to 2025</b> and a city council resolution in October 2024. None of it has passed. So for the two cities a US traveler is most likely to visit, <b>Warsaw and Krakow, there is nothing on the bill</b>. For the wider picture see the <a href=\"/poland\">Poland money guide</a>."
+          ]
+        },
+        {
+          h: "Where the fee does apply, and how small it is",
+          icon: "tag",
+          key: { fig: "1.50 to 5 zloty", tag: "Per person, per night", text: "In designated mountain, coastal and spa towns the fee runs about 1.50 to 5 zloty a person a night, under 1.50 euros, and towns can set less than the cap.", tone: "teal" },
+          p: [
+            "The towns that do charge are the ones the law was written for: designated <b>mountain</b> resorts like <b>Zakopane</b>, the <b>Baltic coast</b> including Kolobrzeg, and the official <b>spa resorts</b>. The <b>2026 daily maximums</b>, revalued each year by the Finance Ministry, are <b>3.46 zloty</b> per person for the ordinary <b>oplata miejscowa</b>, <b>4.89 zloty</b> for the local fee in <b>spa-protection areas</b>, and <b>6.67 zloty</b> for the <b>oplata uzdrowiskowa</b> in towns holding official spa status. Those are ceilings, not rates: a council may set less, and many do. Real-world charges run about <b>1.50 to 5 zloty</b> per person, per night.",
+            "Three mechanics worth knowing. The <b>two fees are mutually exclusive</b>: where the spa fee is charged the local fee cannot be, so nobody pays both. The charge currently applies to stays of <b>longer than one night</b>, which is why a single overnight often carries nothing. And <b>Gdansk is the big-city exception</b>: it charges the local fee at <b>3.46 zloty per person, per night in 2026</b>, which is the national maximum for a climatic and scenic town, commonly only on stays beyond one night. Even at the top of the scale a family of four on a ten-night Baltic holiday is looking at roughly <b>140 zloty</b>, about <b>33 euros</b>, for the entire trip."
+          ]
+        },
+        {
+          h: "The 2027 proposal: watch it, do not budget it",
+          icon: "alert",
+          key: { fig: "Not law yet", tag: "A 2027 proposal", text: "A Finance Ministry bill would raise the caps to 3.56, 5.03 and 6.86 zloty from 2027 and drop the purpose-of-stay test. It has not passed.", tone: "amber" },
+          p: [
+            "There is a dated possible change ahead, and it should be read as exactly that. A <b>Finance Ministry bill</b> would <b>raise the three caps from 2027</b>, to about <b>3.56 zloty</b>, <b>5.03 zloty</b> and <b>6.86 zloty</b> a night respectively. It would also change who collects: today a council appoints collectors, and under the bill the <b>accommodation provider</b> would be responsible. And it would <b>drop the purpose-of-stay test</b>, so the current exemption for non-tourist stays would disappear and anyone spending a night in the town would pay.",
+            "<b>None of this is law.</b> It is a published draft that has drawn objections, including from the Polish ombudsman over the vagueness of replacing a stay of longer than a day with a stay of at least one night. So <b>budget today's figures</b>, which are the ones above, and treat 2027 as something to check again before a trip that far out rather than a number to plan against. The proposal would also widen exemptions, adding people with severe disabilities and their accompanying assistants, so it is not purely an increase."
+          ]
+        },
+        {
+          h: "Who pays, who does not, and the zloty point",
+          icon: "coins",
+          key: { fig: "One fee, not two", tag: "Never both at once", text: "A town charges either the local fee or the spa fee, never both. Business travelers can currently decline it, because today's fee is aimed at tourist stays.", tone: "teal" },
+          p: [
+            "As the law stands the fee applies to stays for <b>tourism, leisure or training</b> purposes, which means a <b>business traveler can decline it</b>, and other exemptions apply locally. That is one of the things the 2027 draft would remove, so it is true today and may not be in eighteen months. The <b>two fees never stack</b>: a town holding official spa status charges the spa fee and may not also charge the local fee, so if you see both on one bill, query it.",
+            "One money note. These are <b>zloty</b> figures. Poland is in the EU but kept its own currency, so the fee is set and charged in zloty, and at roughly <b>3.8 to the US dollar</b> even the highest cap is about <b>1.75 dollars</b> a person a night. If a card terminal offers to settle in dollars, decline: the <b>dynamic currency conversion</b> on your hotel bill will cost you several times more than the local fee ever will. That is the honest proportion here, and the reason this page is short."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Is there a tourist tax in Krakow or Warsaw?", a: "No. Neither city charges anything on your stay. Poland has no tourist tax in law, and Krakow legally cannot levy even the small local fee, because its air quality fails the climatic test the fee requires. It has been lobbying since 2017 to have the law changed, without success so far." },
+        { q: "How much is the local fee in Poland?", a: "Small. The 2026 daily maximums per person are 3.46 zloty in climatic and scenic towns, 4.89 in spa-protection areas and 6.67 in official spa resorts, and councils can set less, so real charges run about 1.50 to 5 zloty a night, under 1.50 euros. It applies only in designated mountain, coastal and spa towns." },
+        { q: "Does Gdansk charge a tourist tax?", a: "Gdansk charges the local fee, not a tourist tax as such, at 3.46 zloty per person per night in 2026, which is the national maximum for a climatic and scenic town. It commonly applies only to stays longer than one night, and your accommodation collects it. It is the main big-city exception to Poland's nothing." },
+        { q: "Is Poland introducing a tourist tax in 2027?", a: "A Finance Ministry bill would raise the existing caps from 2027, to about 3.56, 5.03 and 6.86 zloty, shift collection to the accommodation provider and remove the purpose-of-stay exemption. It is a draft, not law, and it has drawn objections. Budget today's figures and check again closer to the trip." }
+      ],
+      sources: {
+        links: [
+          { label: "City of Krakow: the city's own statement that Polish law provides no tourist fee, that the local fee requires three criteria including favourable climate, and that Krakow's own fee was withdrawn when it stopped meeting them", url: "https://krakow.pl/aktualnosci/318021,31,komunikat,oplata_turystyczna___co_to_oznacza_dla_krakowa__.html", type: "gov" },
+          { label: "The Finance Ministry's announcement of the 2026 maximum local tax and fee rates, giving 3.46, 4.89 and 6.67 zloty a day for the local and spa fees", url: "https://samorzad.pap.pl/kategoria/finanse/mf-podalo-maksymalne-stawki-podatkow-i-oplat-lokalnych-w-2026-roku-dokument", type: "gov" },
+          { label: "The 2027 Finance Ministry proposal at 3.56, 5.03 and 6.86 zloty, the shift of collection to accommodation providers, the dropping of the purpose-of-stay test, and the count of fewer than 300 charging municipalities", url: "https://tvn24.pl/biznes/turystyka/oplata-miejscowa-i-uzdrowiskowa-w-gore-od-2027-roku-nowa-propozycja-ministerstwa-finansow-st9076777", type: "news" }
+        ],
+        judgment: "Poland has no dedicated tourist tax, and that is the finding rather than a gap in our research. Only the oplata miejscowa and the oplata uzdrowiskowa exist, only in towns meeting strict climatic and scenic criteria, and fewer than 300 of about 2,500 municipalities levy either. Warsaw charges nothing and Krakow cannot, which is first-party from the City of Krakow's own page explaining why it has spent years asking for the law to change. The 2026 ceilings of 3.46, 4.89 and 6.67 zloty a day are from the Finance Ministry's annual announcement, and they are maximums: councils commonly set less, so the 1.50 to 5 zloty we quote is a practical range rather than a published rate. Gdansk at 3.46 zloty is the maximum for a climatic and scenic town and matches the figure in our Poland guide. The 2027 cap rise is a published draft that has drawn objections, so we have dated it and kept it out of every figure a traveler should budget. Checked August 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Polish zloty (PLN), not euro" },

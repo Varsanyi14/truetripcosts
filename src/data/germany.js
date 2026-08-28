@@ -86,22 +86,28 @@ export default {
     works: "Yes, with one well-known catch. Deutsche Telekom has the strongest and most consistent nationwide coverage, including small towns, the Alps and the Black Forest, with Vodafone a close second, especially in the western half of the country. O2 has closed much of its old rural gap but still trails the other two outside cities. The famous weak point is German long-distance trains: ICE lines run through long tunnels and rural stretches with patchy signal, even though free onboard wifi (WIFIonICE) helps fill the gaps. Pick a Telekom-backed eSIM if your trip includes rural regions or a lot of train travel."
   },
 
-  // TOURIST TAX / FEES (high-churn, verified Jul 2026). Germany has no national tourist tax.
+  // TOURIST TAX / FEES (high-churn, verified Aug 2026). Germany has no national tourist tax.
   // Instead, individual cities levy their own "Bettensteuer" (bed tax) or "Kulturförderabgabe"
   // (culture tax). Rules vary city by city, including on business travel: Berlin has taxed
-  // business stays since 1 April 2024 and Cologne since 2024 too, so the old "business travelers
-  // are exempt" rule no longer holds in the biggest cities, though some smaller cities still
-  // exempt them with proof. Rates and structure vary city by city: some charge a percentage of the net room
-  // rate, Frankfurt charges a flat per-night amount, and Hamburg uses a sliding scale by price
-  // tier that works out to roughly 2% of the room rate. Many smaller cities and towns charge
-  // nothing at all, outside the separate Kurtaxe system in officially designated spa towns.
+  // business stays since 1 April 2024, Cologne since 1 July 2024 and Frankfurt since 1 October
+  // 2024, so the old "business travelers are exempt" rule no longer holds in those three, though
+  // most other cities still exempt them on production of an employer letter
+  // (Arbeitgeberbestätigung). Rates and structure vary city by city: some charge a percentage of
+  // the net room rate, Frankfurt charges a flat per-night amount, and Hamburg uses a sliding
+  // scale by price tier. Berlin's old 21-night cap was removed from 1 January 2025 (the
+  // short-stay threshold moved to six months), so do not reintroduce a capNights value here.
+  // Munich and the rest of Bavaria charge NOTHING: the state banned the municipal bed tax and
+  // the Bavarian Constitutional Court upheld that ban in 2025, so any source listing Munich at
+  // 5% is describing a struck-down proposal. Many smaller cities and towns charge nothing at
+  // all, outside the separate Kurtaxe system in officially designated spa towns, which applies
+  // to everyone including business stays. The dated, sourced long form is the tourist-tax spoke.
   tax: {
     unit: "percentOfRoom",
     currency: "EUR",
     capNights: null,
-    note: "Germany has no national tourist tax. Individual cities charge their own bed tax (Bettensteuer), usually added to your bill at checkout. Business travelers used to be exempt, but the biggest cities now tax business stays too (Berlin since April 2024, Cologne since 2024), though some smaller cities still exempt them with proof. Rates and structure vary by city, so this is a city-specific estimate, not a flat national rate.",
+    note: "Germany has no national tourist tax. Individual cities charge their own bed tax (Bettensteuer), usually added to your bill at checkout. Business travelers used to be exempt, but several cities now tax business stays too (Berlin since April 2024, Cologne since July 2024, Frankfurt since October 2024), though most other cities still exempt them with an employer letter. Rates and structure vary by city, so this is a city-specific estimate, not a flat national rate.",
     regions: [
-      { key: "berlin", label: "Berlin", pct: 7.5, capNights: 21, note: "Berlin charges 7.5% of the net room rate, capped after 21 consecutive nights." },
+      { key: "berlin", label: "Berlin", pct: 7.5, note: "Berlin charges 7.5% of the net room rate. The old 21-night cap was removed from 1 January 2025, so a normal stay is taxable throughout." },
       { key: "munich", label: "Munich", pct: 0, note: "Munich charges no bed tax. Bavaria banned local hotel taxes, and the Bavarian Constitutional Court upheld that ban in 2025, so the city cannot levy one." },
       { key: "hamburg", label: "Hamburg", pct: 2.1, note: "Hamburg uses a sliding scale by room price rather than a flat percentage; this is roughly equivalent to about 2% of the room rate." },
       { key: "cologne", label: "Cologne", pct: 5, note: "Cologne's culture tax (Kulturförderabgabe) runs 5% of the net room rate." },
@@ -121,7 +127,7 @@ export default {
   taxfree: {
     label: "Taxes and refunds",
     heading: "City bed taxes, and money back on shopping.",
-    text: "Germany has no single national tourist tax. Instead, individual cities charge their own <b>bed tax</b>, added to your hotel bill on leisure stays. Berlin charges 7.5% of the room rate, Munich and Cologne charge 5%, Hamburg uses a sliding scale that works out to roughly 2%, and Frankfurt charges a flat 2 euros per night. Most smaller towns charge nothing. Separately, if you shop, non-EU visitors can reclaim part of Germany's 19% VAT (a reduced 7% applies to books, food and hotel stays). Ask for a tax-free form at the till, keep the goods unused, and get it stamped by customs when you leave the EU. After the refund operator's fee, expect back roughly 10 to 14%, not the full 19%."
+    text: "Germany has no single national tourist tax. Instead, individual cities charge their own <b>bed tax</b>, added to your hotel bill on leisure stays. Berlin charges 7.5% of the room rate, Cologne charges 5%, Hamburg uses a sliding scale that runs from about 60 cents to roughly 5 euros depending on the room price, and Frankfurt charges a flat 2 euros per person per night. Munich and the rest of Bavaria charge nothing. Most smaller towns charge nothing. Separately, if you shop, non-EU visitors can reclaim part of Germany's 19% VAT (a reduced 7% applies to books, food and hotel stays). Ask for a tax-free form at the till, keep the goods unused, and get it stamped by customs when you leave the EU. After the refund operator's fee, expect back roughly 10 to 14%, not the full 19%."
   },
 
   traps: [
@@ -139,7 +145,7 @@ export default {
     { q: "What is the best ATM to use in Germany?", a: "Look for Sparkasse (red S logo), or the Cash Group network: Deutsche Bank, Commerzbank and Postbank. A foreign card is treated as out-of-network almost everywhere, so a fee is likely, sometimes 5 euros or more at independent machines. Read the on-screen fee and always decline the dollar conversion." },
     { q: "Should I pay in euros or dollars in Germany?", a: "Always euros. If a card terminal or ATM offers to charge you in dollars, decline. That dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
     { q: "Do you tip in Germany?", a: "Lightly, and by rounding up rather than calculating a percentage. Round a restaurant bill up to the next few euros, round up a taxi fare, and leave 1 to 2 euros for hotel porters or housekeeping. State your total, tip included, before the card is run, since leaving cash behind after paying is not how it is done here." },
-    { q: "What is Germany's tourist tax?", a: "There is no single national tax. Individual cities charge their own bed tax on leisure stays: Berlin is 7.5% of the room rate, Munich and Cologne are 5%, Hamburg works out to roughly 2%, and Frankfurt charges a flat 2 euros a night. Most smaller towns charge nothing." },
+    { q: "What is Germany's tourist tax?", a: "There is no single national tax. Individual cities charge their own bed tax on leisure stays: Berlin is 7.5% of the room rate, Cologne is 5%, Hamburg slides from about 60 cents to roughly 5 euros with the room price, and Frankfurt charges a flat 2 euros per person a night. Munich and the rest of Bavaria charge nothing, and so do most smaller towns." },
     { q: "How much cash should I bring for a week in Germany?", a: "For two mid-range travelers, very roughly 300 to 400 euros (about $340 to $450) in day-to-day cash across a week, beyond your hotel, pulled in a couple of ATM visits. Cards cover supermarkets, chains and hotels; the cash covers bakeries, markets, beer gardens and the odd cash-only restaurant." }
   ],
 
@@ -244,6 +250,77 @@ export default {
           { label: "US State Department: Germany country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Germany.html", type: "gov" }
         ],
         judgment: "German taxis are metered and regulated, FreeNow leads the apps, and trains beat a taxi from the airports. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+      }
+    },
+    {
+      slug: "tourist-tax",
+      glance: [
+        { k: "What", v: "A city bed tax, not a national one" },
+        { k: "Berlin", v: "7.5% of the net room price" },
+        { k: "Frankfurt", v: "A flat 2 euros per person a night" },
+        { k: "Munich and Bavaria", v: "Nothing" }
+      ],
+      live: true,
+      topic: "tourist-tax",
+      title: "Germany tourist tax 2026: city by city, Munich none",
+      description: "Germany has no national tourist tax in 2026. Berlin charges 7.5% of the room, Cologne 5%, Frankfurt a flat 2 euros, and Munich and Bavaria nothing.",
+      h1: "Germany's bed tax, city by city.",
+      lede: "Germany has no national tourist tax. Each city decides for itself, and more than 40 of them now charge one, which is why the answer changes when you change town. The big tourist cities take a percentage of the room or a small flat fee, and Munich and the rest of Bavaria charge nothing at all.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-27",
+      answer: "Germany has <b>no national tourist tax</b>. Each city writes its own, under names like <b>Bettensteuer</b>, City Tax, Kulturforderabgabe or Ubernachtungsteuer, and <b>more than 40 German cities</b> now levy one, at rates from about <b>2% to 7.5%</b> of the room or flat amounts from <b>50 cents to 12 euros</b> a night. Two shapes exist. Most big cities take a <b>percentage of the net room price</b>: <b>Berlin 7.5%</b>, <b>Dresden 6%</b>, <b>Cologne 5%</b>. A few charge a <b>flat amount per person, per night</b>: <b>Frankfurt 2 euros</b>, <b>Dusseldorf 3 euros</b>. <b>Hamburg slides with the room price</b>, from about <b>60 cents</b> at the bottom to about <b>4.80 euros</b> on a 200 euro room. And <b>Munich charges nothing</b>, because <b>Bavaria banned the municipal bed tax</b>, which means Nuremberg and Augsburg charge nothing either. <b>Children under 18 are commonly exempt</b>. <b>Leisure travelers pay</b>, and business travelers can often claim exemption with an <b>employer letter</b>, though several cities including <b>Berlin, Cologne and Frankfurt</b> now charge them too.",
+      sections: [
+        {
+          h: "How it works, and why the answer is local",
+          icon: "calendar",
+          key: { fig: "40+ cities", tag: "No national rate", text: "There is no German tourist tax. Each city passes its own statute, so the rate, the shape and the exemptions all change when you cross a city boundary.", tone: "teal" },
+          p: [
+            "Germany is the most local of the big European systems. There is <b>no federal accommodation tax</b> at all, and no state-level one either. Instead each <b>municipality</b> decides whether to levy a bed tax, what to call it and how to calculate it, which is why you will see the same charge described as a <b>Bettensteuer</b>, a City Tax, a <b>Kulturforderabgabe</b>, an Ubernachtungsteuer or a Beherbergungsabgabe depending on where you are standing. <b>More than 40 cities</b> now charge one, and <b>most German towns still charge nothing</b>.",
+            "Two structures are in use, and which one applies decides who pays more. A <b>percentage of the net room price</b> scales with how good a hotel you book and ignores how many of you are in the room. A <b>flat amount per person, per night</b> ignores the room price and scales with the size of your party. Either way your accommodation collects it and remits it, usually adding it at checkout rather than folding it into the rate you were quoted. For the wider money picture see the <a href=\"/germany\">Germany money guide</a>."
+          ]
+        },
+        {
+          h: "Munich, Bavaria, and the tax that is not there",
+          icon: "alert",
+          key: { fig: "Nothing", tag: "Munich and Bavaria", text: "Munich charges no bed tax. Bavaria banned municipal hotel taxes, so Munich, Nuremberg and Augsburg all levy nothing, whatever a rate table tells you.", tone: "amber" },
+          p: [
+            "This is the correction worth carrying, because a great many pages get it wrong. <b>Munich charges no bed tax</b>, and neither does anywhere else in <b>Bavaria</b>. The state <b>outlawed the municipal hotel tax</b>, Munich's attempt at a <b>5% City Tax</b> was struck down, and the ban was upheld in <b>2025</b>. So <b>Munich, Nuremberg and Augsburg</b> add nothing to your room. Any table listing Munich at 5% is describing a tax that was proposed and then killed, not one you will be charged.",
+            "The one Bavarian exception is a different animal. Officially designated <b>spa and resort towns</b> across Germany levy a <b>Kurtaxe</b>, a separate flat charge of roughly <b>1.50 to 4 euros per person, per night</b>, and around <b>350 towns</b> run one. It is not a city bed tax and it does not follow the same rules: the <b>Kurtaxe applies to everyone</b>, including business stays. If you are booking a spa town in the Alps or the Black Forest, that is the charge to expect, and it exists in Bavaria even though the bed tax does not."
+          ]
+        },
+        {
+          h: "Berlin, Cologne, Hamburg and Frankfurt",
+          icon: "tag",
+          key: { fig: "7.5%", tag: "Berlin, the highest", text: "Berlin is the steepest big city at 7.5% of the net room price, with no night cap any more and business stays taxed since April 2024.", tone: "teal" },
+          p: [
+            "<b>Berlin</b> is the one to budget for: <b>7.5% of the net room price</b>, excluding breakfast, the minibar and other extras. Two things about Berlin are commonly out of date online. The old <b>21-night cap is gone</b>, replaced from <b>1 January 2025</b> by a six-month threshold, so a normal trip is taxable start to finish. And <b>business stays have been taxable since 1 April 2024</b>, so the old leisure-only rule no longer holds there. <b>Cologne</b> charges a <b>5%</b> Kulturforderabgabe, and <b>Dresden</b> about <b>6%</b>.",
+            "<b>Frankfurt</b> is the flat-fee city people most often get wrong. It charges a <b>flat 2 euros per person, per night</b>, not 2% of anything, and one quirk is worth knowing: your <b>arrival and departure days count together as a single day</b>. <b>Dusseldorf</b> charges <b>3 euros</b>, and <b>Stuttgart</b> joined at <b>3 euros</b> from 1 July 2026. <b>Hamburg</b> does something different again, sliding with the room price: about <b>60 cents</b> where the net price per person is just over 10 euros, up to about <b>4.80 euros</b> on a <b>200 euro</b> room, then <b>1.20 euros more for every further 50 euros</b>, so about <b>6 euros</b> on a 250 euro room. Nothing at all is due where the net price per person is <b>10 euros or less</b>. In practice that is a euro or two for a modest room and five or six for an expensive one."
+          ]
+        },
+        {
+          h: "Who is exempt, and the employer letter",
+          icon: "euro",
+          key: { fig: "Under 18 free", tag: "Commonly exempt", text: "Children under 18 are exempt in Berlin, Hamburg, Frankfurt and Cologne, though some cities set the line at 12, so confirm it locally.", tone: "teal" },
+          p: [
+            "<b>Children under 18 pay nothing</b> in Berlin, Hamburg, Frankfurt and Cologne, and that is the common rule, although some cities draw the line at <b>under 12</b> instead. Because every exemption is written into a city statute rather than national law, the age is a local question. Where a family stays together, an exemption removes that person's share rather than cancelling the charge on the room, so on a percentage tax in Berlin a family and a couple in the same room land on the same number.",
+            "The business-travel rule is the one that has moved. After a <b>2012 court ruling</b> most cities limited the bed tax to <b>leisure stays</b>, and a business traveler avoids it by showing an <b>employer letter</b>, an Arbeitgeberbestatigung, at check-in. That is still how it works in most of the country. But several cities now charge business travelers as well, including <b>Berlin</b> since <b>1 April 2024</b>, <b>Cologne</b> since <b>1 July 2024</b> and <b>Frankfurt</b> since <b>1 October 2024</b>. So the honest position is that leisure travelers pay, business travelers can often claim exemption with a letter, and in a handful of the biggest cities they cannot. Ask the hotel rather than assuming either way."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is the tourist tax in Berlin?", a: "7.5% of the net room price per night, excluding breakfast and other extras. The old 21-night cap was removed from 1 January 2025, so a normal stay is taxable throughout, and business stays have been taxable since 1 April 2024. Children under 18 are exempt." },
+        { q: "Does Munich have a tourist tax?", a: "No. Munich charges no bed tax at all, because Bavaria banned municipal hotel taxes and the ban was upheld in 2025. Munich's proposed 5% City Tax was struck down and never collected, so any rate table listing Munich at 5% is wrong. Nuremberg and Augsburg charge nothing either." },
+        { q: "How much is the Frankfurt tourist tax?", a: "A flat 2 euros per person per night, not a percentage, and it applies to business travelers too. One quirk: your arrival and departure days count together as a single day, so arriving Monday and leaving Wednesday is charged as two days rather than three." },
+        { q: "Do business travelers pay Germany's bed tax?", a: "It depends on the city. In most of Germany the tax applies to leisure stays only and a business traveler claims exemption by showing an employer letter at check-in. But several cities now charge business stays as well, including Berlin since April 2024, Cologne since July 2024 and Frankfurt since October 2024. Ask the hotel." }
+      ],
+      sources: {
+        links: [
+          { label: "Service Berlin: the city's Ubernachtungsteuer at 7.5% of the net overnight price, business stays taxable from 1 April 2024, and quarterly filing from 1 January 2026", url: "https://service.berlin.de/dienstleistung/326105/", type: "gov" },
+          { label: "City of Frankfurt, Kassen- und Steueramt: the Tourismusbeitrag at two euros per person per night, with arrival and departure days counted together as one day", url: "https://frankfurt.de/service-und-rathaus/verwaltung/aemter-und-institutionen/kassen--und-steueramt/kommunale-steuern-gebuehren-und-beitraege/tourismusbeitrag", type: "gov" },
+          { label: "Hamburg Tourism: the Kultur- und Tourismustaxe sliding scale since 1 January 2025, from 60 cents up to 4.80 euros on a 200 euro room and nothing at 10 euros or less", url: "https://www.hamburg-tourism.de/services/kultur-tourismustaxe/", type: "tourism" },
+          { label: "A current 2026 compilation of German city bed taxes, used for the cross-city ranges, the Bavarian position and which cities tax business travelers", url: "https://vatassist.de/de/uebernachtungsteuer-deutschland-2026-alle-44-staedte-im-ueberblick/", type: "news" }
+        ],
+        judgment: "There is no national German rate, and that is the whole story: every figure here comes from a municipal statute, so it is right for that city and tells you nothing about the next one. Berlin's 7.5%, the removal of the 21-night cap and the taxing of business stays are first-party from the Berlin tax service, and Frankfurt's flat two euros is first-party from the city's tax office. Hamburg's sliding scale is from Hamburg's own tourism body. The cross-city figures, the 2% to 7.5% range and the flat amounts from 50 cents to 12 euros, are a recent 2026 compilation rather than 40 statutes we read, so treat those as ranges and confirm your own city. Business-traveler treatment varies city by city: most exempt them with an employer letter, and Berlin, Cologne and Frankfurt do not. Munich and the rest of Bavaria charge no bed tax, because the state banned it, and the separate Kurtaxe in designated spa towns is a different charge that applies to everyone. Checked August 2026."
       }
     },
     {

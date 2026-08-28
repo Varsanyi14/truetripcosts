@@ -300,6 +300,77 @@ export default {
       }
     },
     {
+      slug: "tourist-tax",
+      glance: [
+        { k: "What", v: "Per person, per night, set locally" },
+        { k: "Most places", v: "About CHF 2 to 5 a night" },
+        { k: "Often includes", v: "A guest card worth real money" },
+        { k: "Zurich", v: "A voluntary hotel charge, not a tax" }
+      ],
+      live: true,
+      topic: "tourist-tax",
+      title: "Switzerland tourist tax 2026: the Zurich exception",
+      description: "Switzerland's 2026 visitor tax is set town by town, usually 2 to 5 francs a night, and often comes with a guest card. In Zurich it is not a tax.",
+      h1: "Switzerland's visitor tax, and what it buys you.",
+      lede: "Switzerland charges a small per-person, per-night visitor tax, and there is no national rate: the canton and the commune set it between them. Usually it is 2 to 5 francs. In many resorts it arrives bundled with a guest card that more than pays for itself. And in Zurich, the thing on your bill that looks like the tax is not one.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-27",
+      answer: "Switzerland's tourist tax is the <b>visitor's tax</b>, called the <b>Kurtaxe</b>, the <b>taxe de sejour</b> or the <b>tassa di soggiorno</b> depending on the language, charged <b>per person, per night</b> and collected by your accommodation. There is <b>no national rate</b>: <b>Geneva, Neuchatel and Ticino</b> set it at cantonal level and everywhere else the <b>commune</b> does, which makes it a genuine patchwork running from <b>zero to about CHF 7</b> and most commonly <b>CHF 2 to 5</b>. The part worth knowing is that in many communes the tax <b>comes with a guest card</b>, giving free or discounted local transport, cable cars, museums or thermal baths, so it frequently buys more than it costs. Not everywhere: some places charge and hand back little. <b>Zurich and canton Aargau have no statutory tourist tax at all</b>, and the <b>CHF 3.50 City Tax</b> you see on a Zurich hotel bill is a <b>voluntary scheme run by member hotels</b>, not a government levy. <b>Children are often exempt</b> under 12 or 16, and long stays and business stays often are too, but every rule here is local. The currency is the <b>Swiss franc</b>.",
+      sections: [
+        {
+          h: "How it works, and the guest card",
+          icon: "calendar",
+          key: { fig: "CHF 2 to 5", tag: "Per person, per night", text: "A small nightly charge set by your canton or commune, most commonly 2 to 5 francs, and in many places it comes bundled with a guest card.", tone: "teal" },
+          p: [
+            "The visitor's tax is charged <b>per person, per night</b>, collected by your hotel, apartment or campsite and passed to the local authority. There is <b>no Swiss national rate</b>. <b>Geneva, Neuchatel and Ticino</b> regulate it at <b>cantonal</b> level, and in the rest of the country the <b>commune</b> sets its own figure, which is why the amount can change between one valley and the next. Most places land between <b>CHF 2 and 5</b>, and the full national spread runs from <b>nothing at all</b> up to about <b>CHF 7</b>.",
+            "What makes this tax unusual in Europe is that it often <b>buys you something concrete</b>. In many communes paying it gets you a <b>guest card</b> from your first night, and depending on the region that can mean <b>free local buses and trains</b>, <b>free cable cars and mountain railways</b>, or discounted museums and thermal baths. In the resorts where the card is generous, a few francs a night is comfortably the best value on your bill. Whether your particular property participates is a question for the property, so ask at booking rather than at checkout. For the wider picture see the <a href=\"/switzerland\">Switzerland money guide</a>."
+          ]
+        },
+        {
+          h: "Zurich: what looks like a tax is not one",
+          icon: "alert",
+          key: { fig: "Not a tax", tag: "Zurich and Aargau", text: "Zurich and canton Aargau have no statutory tourist tax. The CHF 3.50 City Tax on a Zurich hotel bill is a voluntary scheme run by member hotels.", tone: "amber" },
+          p: [
+            "<b>Zurich and canton Aargau have no statutory tourist tax.</b> The <b>City Tax</b> of about <b>CHF 3.50 per person, per night</b> that appears on a Zurich hotel bill is a <b>voluntary scheme</b>, collected by hotels that belong to the regional hospitality association and passed to Zurich Tourism. Because it sits outside the law there is <b>no legal duty to charge it</b>, which is why it can show up on one hotel's bill and not on the one next door. Airbnb also collects about <b>CHF 3.50</b> in canton Zurich, but under a <b>separate agreement with the canton</b> rather than under any tax statute, so the same apartment booked through another channel may carry nothing.",
+            "The practical upshot is undramatic: <b>expect to pay about CHF 3.50 a night in Zurich anyway</b>, and know that it is a hotel scheme rather than a tax. Two reasons that matters. It explains the inconsistency you will otherwise find baffling when you compare two Zurich bookings. And it means the older <b>CHF 2.50</b> figure still quoted in plenty of places is not simply out of date but describes a charge nobody was ever legally obliged to set, so the honest answer is a rough <b>CHF 3.50, confirmed with your property</b>. This is the same family of charge as the business-district levies in Manchester and Liverpool: real money, not a government tax."
+          ]
+        },
+        {
+          h: "What it costs, town by town",
+          icon: "tag",
+          key: { fig: "CHF 0 to 7", tag: "The full spread", text: "Geneva is around CHF 3.75, Zermatt about CHF 4, Leukerbad about CHF 6 and Ticino about CHF 6.20 including its promotion tax. Arosa charges nothing.", tone: "teal" },
+          p: [
+            "A few reference points, all <b>per person, per night</b>. <b>Geneva</b> is about <b>CHF 3.75</b> in a hotel and <b>Neuchatel</b> about <b>CHF 4.20</b>, both set cantonally. <b>Ticino</b> comes to roughly <b>CHF 6.20</b>, because a <b>promotion tax</b> of about CHF 1.70 sits on top of the stay tax itself. <b>Zermatt</b> is around <b>CHF 4</b>, and it is one of the places where the money does not come back as a card. <b>Leukerbad</b> is about <b>CHF 6</b>, with no free transport but cheaper access to the baths. <b>Scuol</b> charges about <b>CHF 5</b> from age 12, and the busiest resorts reach about <b>CHF 7</b>.",
+            "Two useful outliers. <b>Arosa charges nothing</b> and still gives overnight guests a card covering cable cars, mountain railways and local transport, which is the most generous arrangement in the country. And <b>canton Lucerne doubled its rate from 2026</b>, from <b>50 rappen</b> to <b>CHF 1.10</b> a night, which even after the increase leaves it among the cheapest in Switzerland. Treat every figure on this page as a <b>2026 reference point rather than a published national table</b>, because a commune can change its own rate and many did during 2025 and 2026."
+          ]
+        },
+        {
+          h: "Who is exempt, and the francs point",
+          icon: "coins",
+          key: { fig: "Kids often free", tag: "Age set locally", text: "Children are commonly exempt under 12 or under 16, and long stays beyond 30 days and business stays are often exempt with proof, but the rules are communal.", tone: "teal" },
+          p: [
+            "<b>Children are often exempt</b>, usually <b>under 12</b> or <b>under 16</b>, and the age is set by the commune rather than nationally, so it genuinely varies from town to town. <b>Long stays</b>, commonly beyond <b>30 days</b>, and <b>business stays</b> are often exempt too, generally on production of proof. None of this is a national entitlement you can insist on, which is the recurring theme of this tax: the rule that applies is the one written by the place you are sleeping in.",
+            "One money note. The tax is set and charged in <b>Swiss francs</b>, not euros. Switzerland is outside the EU and the eurozone, and while some places near a border or in a big station will take euros, the rate is poor and your change comes back in francs. If a booking quotes the visitor's tax to you in euros it is doing a conversion for your convenience, not telling you the statutory amount, so the franc figure is the one to hold onto."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "Does Zurich have a tourist tax?", a: "Not a statutory one. Zurich and canton Aargau have no tourist tax in law. The City Tax of about CHF 3.50 per person per night on a Zurich hotel bill is a voluntary scheme run by hotels in the regional hospitality association, which is why it appears on some bills and not others. Expect to pay it, but it is not a government levy." },
+        { q: "How much is the visitor's tax in Switzerland?", a: "Most commonly CHF 2 to 5 per person per night, with the full national spread running from nothing to about CHF 7. There is no national rate: Geneva, Neuchatel and Ticino set it cantonally and everywhere else the commune does, so it changes from town to town." },
+        { q: "What does a Swiss guest card include?", a: "It depends on the region, but commonly free local buses and trains, free or discounted cable cars and mountain railways, and reduced entry to museums and thermal baths, from your first night. In generous resorts it is worth far more than the tax that paid for it. Some places, Zermatt among them, charge the tax without giving a card." },
+        { q: "Do children pay the visitor's tax in Switzerland?", a: "Often not. Children are commonly exempt under 12 or under 16, but the age is set by each commune rather than nationally, so it varies. Long stays beyond about 30 days and business stays are also frequently exempt with proof. Confirm with your accommodation." }
+      ],
+      sources: {
+        links: [
+          { label: "Comparis: an analysis of the 80 Swiss communes with the most overnight guests, confirming no national rate, cantonal regulation in Geneva, Neuchatel and Ticino, and no statutory tax in Zurich or Aargau", url: "https://en.comparis.ch/mobilitaet/reisen/tourismusabgaben", type: "news" },
+          { label: "A Zurich-specific reference confirming the City Tax is a voluntary scheme by member hotels, and that Airbnb's CHF 3.50 rests on a cantonal agreement rather than tax law", url: "https://trippz.com/tourist-tax/switzerland-zurich", type: "news" },
+          { label: "Switzerland Tourism: what the regional guest cards include, from free transport to free cable cars, and which destinations issue one with an overnight stay", url: "https://www.myswitzerland.com/en-us/planning/about-switzerland/eight-tips-for-a-money-saving-holiday-in-switzerland/guest-cards-and-tickets/", type: "tourism" },
+          { label: "Canton Lucerne doubling its visitor's tax from 50 rappen to CHF 1.10 per person per night from the start of 2026", url: "https://www.iamexpat.ch/lifestyle/lifestyle-news/lucerne-double-its-tourist-tax-2026", type: "news" }
+        ],
+        judgment: "Switzerland has no national tourist tax. The canton or the commune sets it, so the honest shape is a range: roughly CHF 0 to 7 per person per night and commonly CHF 2 to 5, often bundled with a guest card that returns real value in transport and cable cars. The per-commune figures here come from a recent analysis of the 80 busiest communes rather than 80 statutes we read, so they are reference points to confirm locally, not a published table. The Zurich point is the load-bearing one: Zurich and Aargau have no statutory tax, and the CHF 3.50 City Tax there is voluntary, collected by hotels in the regional hospitality association, with Airbnb's collection resting on a separate cantonal agreement rather than a tax law. We have deliberately not called it a government tax, and older pages quoting CHF 2.50 describe the same voluntary charge at an earlier figure. Children and business stays are often exempt but the rules are communal, so treat every exemption as a local question. Checked August 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Swiss franc (CHF), not euro" },

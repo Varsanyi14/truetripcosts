@@ -303,6 +303,77 @@ export default {
       }
     },
     {
+      slug: "tourist-tax",
+      glance: [
+        { k: "What", v: "A local tax, set by each town" },
+        { k: "Budapest", v: "4% of the net room price" },
+        { k: "Elsewhere", v: "A few hundred forint a person" },
+        { k: "Under 18", v: "Exempt by law" }
+      ],
+      live: true,
+      topic: "tourist-tax",
+      title: "Hungary tourist tax 2026: Budapest charges 4%",
+      description: "Hungary's 2026 tourist tax is local: Budapest takes 4% of the room price a night, other towns a few hundred forint per person, and under-18s pay nothing.",
+      h1: "Hungary's tourist tax, and the Budapest 4%.",
+      lede: "Hungary's tourist tax is a local one, set town by town, and much of the country charges very little or nothing at all. Budapest is the exception that matters to a US traveler, because it takes a percentage of your room rather than a flat fee. Under-18s pay nothing anywhere in the country.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-27",
+      answer: "Hungary's tourist tax is the <b>idegenforgalmi ado</b>, or <b>IFA</b>, a <b>local</b> tax charged <b>per person, per night</b> and collected by your accommodation. It is not national: each <b>municipality</b> decides whether to levy it and at what rate, inside a ceiling set by the <b>Act on Local Taxes</b>, and plenty of small towns charge nothing. <b>Budapest is the one that matters</b>, and it uses a <b>percentage</b> rather than a flat fee: <b>4% of the net room price per night</b>, so a <b>100 euro</b> room carries about <b>4 euros</b>. Outside Budapest the tax is usually a <b>flat few hundred forint per person, per night</b>, very roughly <b>1 to 2 euros</b>, and it shows up mainly in the <b>Lake Balaton resorts and the spa towns</b>. The <b>2026 statutory ceiling</b> is reported at about <b>830 forint per person, per night, or 4% of the accommodation charge, whichever is higher</b>, with practice running roughly <b>650 to 830 forint</b> in busy tourist towns and much less in small ones. <b>Anyone under 18 is exempt</b> by law. The currency is the <b>forint</b>.",
+      sections: [
+        {
+          h: "How it works, and the Budapest 4%",
+          icon: "calendar",
+          key: { fig: "4%", tag: "Budapest, of the room", text: "Budapest charges 4% of the net room price per night, so a 100 euro room carries about 4 euros. It is a percentage, not a flat fee.", tone: "teal" },
+          p: [
+            "The IFA is a <b>local</b> tax under Hungary's <b>Act on Local Taxes</b>. The national law sets the framework, the ceiling and the exemptions; each <b>municipality</b> then decides by decree whether to charge it at all and how much, which is why the answer changes town by town and why many small places charge nothing. Your accommodation collects it alongside the room rate and remits it, and it is <b>shown as a separate line rather than folded into the room price</b>, so expect it on the bill even when your booking total looked final.",
+            "<b>Budapest is the figure to carry</b>, because it is where a US traveler almost always stays, and it is unusual for Hungary in charging a <b>percentage of the net room price</b>: <b>4% per night</b>. On a room at <b>100 euros</b> that is about <b>4 euros</b> a night, and on a <b>300 euro</b> room about <b>12</b>. Because it is a percentage of the room rather than a per-head charge, a family in one room pays the same as a couple in it. The capital is administered by district, so the exact decree behind your hotel is a district one, but <b>4% is the rate across the tourist districts</b>. For the wider picture see the <a href=\"/hungary\">Hungary money guide</a>."
+          ]
+        },
+        {
+          h: "The flat rate elsewhere, and why sources disagree",
+          icon: "alert",
+          key: { fig: "A few hundred Ft", tag: "Cap quoted two ways", text: "Older references quote a 300 forint national cap. The 2026 ceiling is reported at about 830 forint, or 4% if that is higher, which is why the numbers online conflict.", tone: "amber" },
+          p: [
+            "Outside Budapest the tax is normally a <b>flat amount per person, per night</b> rather than a percentage, and it is small: <b>a few hundred forint</b>, very roughly <b>1 to 2 euros</b>. In busy tourist towns expect something like <b>650 to 830 forint</b>, and in small settlements it can be as little as <b>50 to 400 forint</b>, or nothing. The places it actually shows up are the <b>Lake Balaton resorts</b>, the <b>spa towns</b> and towns like <b>Eger</b>. Much of rural Hungary levies no IFA at all.",
+            "It is worth knowing why the internet disagrees with itself here, because you will notice. A great many references quote a national maximum of <b>300 forint per person, per night</b>. That is a <b>stale cap</b>. The ceiling is revalued and the <b>2026 figure is reported at about 830 forint per person, per night, or 4% of the accommodation charge, whichever is higher</b>, which is also why Budapest's percentage is a legitimate structure rather than an anomaly. We are giving the <b>range rather than one exact cap</b> because the published figure moves and the sources are not unanimous, so the number that matters is the one on your own bill. <b>Confirm the amount with your accommodation</b>, and be suspicious of any page presenting a single flat forint figure as the national truth."
+          ]
+        },
+        {
+          h: "What it actually costs you",
+          icon: "tag",
+          key: { fig: "About 4 euros", tag: "A Budapest night", text: "On a typical Budapest room the tax lands near 4 euros a night, which is modest set against Amsterdam, Barcelona, Paris or Rome.", tone: "teal" },
+          p: [
+            "In practice this is one of the gentler tourist taxes in Europe, and the honest framing is that <b>it is not a line worth planning around</b>. A week in a mid-range Budapest hotel adds up to roughly <b>25 to 30 euros</b> for two people across the whole stay, and a week in a Balaton guesthouse to <b>very roughly 20 euros</b> for two. Set against Amsterdam's percentage or Paris's stacked surcharges, Budapest sits comfortably at the cheap end of the European table.",
+            "Two things do more damage to a Hungarian hotel bill than the tourist tax. The first is <b>dynamic currency conversion</b>, where a terminal offers to charge you in US dollars and quietly takes 3 to 8%. The second is a <b>service charge</b>, the szervizdij, already added to a restaurant bill before you calculate a tip. Both are larger than the IFA on any normal trip, which is a useful sense of scale: the tourist tax here is real but small, and worth understanding rather than worrying about."
+          ]
+        },
+        {
+          h: "Who is exempt, and the forint point",
+          icon: "coins",
+          key: { fig: "Under 18 free", tag: "National, not local", text: "Anyone under 18 is exempt from the IFA under national law, so unlike most of the rules here it holds everywhere in Hungary.", tone: "teal" },
+          p: [
+            "The clearest saving is statutory and nationwide: <b>anyone under 18 is exempt</b>. Unlike the rate itself, that is written into national law rather than a municipal decree, so it holds in every Hungarian town. Certain <b>students</b> and some categories of <b>workers</b> staying for their work are also exempt, and a municipality can widen the exemptions in its own decree but cannot narrow the national ones. On Budapest's percentage the exemption changes nothing for a family sharing one room, because the tax attaches to the room price rather than to heads.",
+            "One money note. The tax is set in <b>forint</b>, not euros, and Hungary kept its own currency despite being in the EU. A booking platform quoting your tourist tax in euros is converting for convenience rather than quoting the statutory figure, and a hotel using its own exchange rate to work out the forint amount can arrive somewhere unhelpful. Ask for the <b>forint figure</b>, and if a terminal offers to charge you in dollars, decline."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "How much is the Budapest tourist tax?", a: "4% of the net room price per night, added by your accommodation and shown as a separate line rather than folded into the room rate. On a 100 euro room that is about 4 euros a night. Because it is a percentage of the room, a family in one room pays the same as a couple. Under-18s are exempt." },
+        { q: "How much is the tourist tax outside Budapest?", a: "Usually a flat few hundred forint per person per night, very roughly 1 to 2 euros, and many small towns charge nothing at all. Busy tourist towns run around 650 to 830 forint and small settlements can be 50 to 400. It shows up mainly around Lake Balaton and in the spa towns." },
+        { q: "Do children pay the tourist tax in Hungary?", a: "No. Anyone under 18 is exempt under national law, so unlike the rate itself that holds in every Hungarian town. Certain students and some workers staying for work are also exempt. On Budapest's percentage, though, the exemption changes nothing for a family sharing one room, because the tax attaches to the room price." },
+        { q: "Is Hungary's tourist tax included in the price I booked?", a: "Usually not. Hungarian law requires it to be shown as a separate item rather than inside the accommodation price, so expect it at the property even when your booking total looked complete. Ask for the per-night figure in forint so the final bill holds no surprise." }
+      ],
+      sources: {
+        links: [
+          { label: "Nemzeti Jogszabalytar: Act C of 1990 on local taxes, the framework law setting who is liable for the idegenforgalmi ado, the statutory ceiling and the exemptions", url: "https://njt.hu/jogszabaly/1990-100-00-00.43", type: "gov" },
+          { label: "A current Hungarian reference for the 2026 ceiling, about 830 forint per person per night or 4% of the accommodation charge whichever is higher, and the practical range by town size", url: "https://financera.hu/szemelyes-penzugyek/mennyi-az-idegenforgalmi-ado/", type: "news" },
+          { label: "RSM Hungary: a tax adviser's explainer confirming liability from the first guest night and the exemption for anyone under 18", url: "https://www.rsm.hu/kisokos/idegenforgalmi-ado", type: "news" },
+          { label: "A current traveler-facing reference confirming Budapest charges 4% of the net room price per night, added at the accommodation", url: "https://travelnest.site/tourist-tax-in-hungary/", type: "news" }
+        ],
+        judgment: "The IFA is a local tax: the national Act on Local Taxes sets the framework and the ceiling, and each municipality decides the rest, so there is no single Hungarian rate. Budapest's 4% of the net room price is the figure we are confident about and the one a US traveler is most likely to meet. The flat national picture we have deliberately given as a range rather than one number, because the published ceiling is revalued and sources conflict: many still quote an old 300 forint cap, while the 2026 figure is reported at about 830 forint per person per night, or 4% if that is higher. So the honest answer for towns outside Budapest is a few hundred forint, roughly 1 to 2 euros, confirmed locally. The under-18 exemption is national and firm. Where we give worked euro figures they use a mid-2026 rate and are illustrative rather than exact. Checked August 2026."
+      }
+    },
+    {
       slug: "cash-or-card",
       glance: [
         { k: "Currency", v: "Hungarian forint (HUF), not euro" },
