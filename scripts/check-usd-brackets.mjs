@@ -57,6 +57,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { findFigures, refusalReason, FX_PAR } from '../src/data/usd-prose.js';
 import fxFallback from '../src/data/fxFallback.js';
+import { usdText } from '../src/data/usd-bracket.js';
 import { blockTexts, pageCurrency, hasRate, crossCheck } from './lib/usd-scan.mjs';
 
 const DIST = 'dist';
@@ -193,8 +194,9 @@ else if (xc.bad.length) {
 
 // ---------------------------------------------------------------------------
 const unexplained = [];
-const dead = new Map();       // currency -> pages carrying figures with no rate
-const willBracket = new Map(); // currency -> count of figures that will bracket
+const dead = new Map();        // currency -> pages carrying figures with no rate
+const willRender = new Map();  // currency -> brackets that actually draw
+const subDollar = new Map();   // currency -> figures that honestly draw nothing
 const seenCur = new Set();
 
 for (const file of all) {
@@ -207,12 +209,20 @@ for (const file of all) {
   if (!forms) { note('currency has no entry in the detector table', `${cur} on ${file}`); continue; }
 
   const rate = hasRate(cur, fb);
+  // The rate is borrowed, never held: the marker the page baked, or the snapshot
+  // it would fall back to. Needed because "would this figure bracket" is not the
+  // same question as "did the detector find it", which is what pass 4 got wrong.
+  const rateVal = fb || fxFallback.rates[cur];
   let figures = 0;
 
   for (const run of blockTexts(html)) {
     if (run.inLink) continue;
     const real = findFigures(run.text, cur);
     figures += real.length;
+    if (rate) for (const h of real) {
+      if (usdText(h.lo, h.hi, cur, rateVal)) willRender.set(cur, (willRender.get(cur) || 0) + 1);
+      else subDollar.set(cur, (subDollar.get(cur) || 0) + 1);
+    }
     const covered = h => real.some(r => !(h.end <= r.start || h.start >= r.end));
     for (const h of naiveHits(run.text, cur, forms)) {
       if (covered(h)) continue;
@@ -221,8 +231,7 @@ for (const file of all) {
     }
   }
 
-  if (rate) willBracket.set(cur, (willBracket.get(cur) || 0) + figures);
-  else if (figures > 0) {
+  if (!rate && figures > 0) {
     if (!dead.has(cur)) dead.set(cur, []);
     dead.get(cur).push({ file, figures });
   }
@@ -257,7 +266,11 @@ else for (const [cur, list] of [...dead].sort()) {
 
 // ---------------------------------------------------------------------------
 console.log('\n3. Every documented exemption is still needed');
-for (const cur of Object.keys(NO_RATE).sort()) {
+// An empty map is the healthy state and has to SAY so. A heading with nothing
+// under it reads as "this pass did not run", which is how a check gets ignored.
+const exempted = Object.keys(NO_RATE).sort();
+if (!exempted.length) ok('no currency is exempted', 'every currency in use has a rate, which is the state to stay in');
+for (const cur of exempted) {
   const r = fxFallback.rates[cur];
   if (typeof r === 'number' && r > 0) {
     fail(`${cur} is exempted as having no rate, but fxFallback now carries one (${r})`,
@@ -268,14 +281,32 @@ for (const cur of Object.keys(NO_RATE).sort()) {
 }
 
 // ---------------------------------------------------------------------------
-console.log('\n4. The currencies that do work, still work');
-const working = [...willBracket].filter(([, n]) => n > 0).sort((a, b) => b[1] - a[1]);
-if (!working.length) fail('not one figure anywhere on the site would receive a bracket', 'the detector or the rate path is broken');
+// WHY THIS PASS COUNTS RENDERED BRACKETS AND NOT FOUND FIGURES. It counted found
+// figures first, and that was a quiet lie of exactly the kind this gate exists to
+// stop. usdText refuses to print a bracket that would round to "~$0", because
+// zero is a claim and the claim would be false, so a sub-dollar figure is FOUND
+// by the detector and then correctly draws nothing. Counting the find rather than
+// the draw let this pass report "44 of 46 currencies bracket at least one figure"
+// while Costa Rica's single colones figure rendered nothing at all: a currency
+// listed as working, that a reader never sees a bracket on.
+//
+// The sub-dollar refusals are honest and are reported as a note, not a failure.
+// A figure that cannot be converted into a number worth showing SHOULD show
+// nothing. What must not happen is the gate calling that success.
+console.log('\n4. The brackets that should draw, actually draw');
+const working = [...willRender].filter(([, n]) => n > 0).sort((a, b) => b[1] - a[1]);
+if (!working.length) fail('not one bracket anywhere on the site would draw', 'the detector, the rate path or the formatter is broken');
 else {
-  ok(`${working.length} of ${seenCur.size} currencies bracket at least one figure`,
+  ok(`${working.length} of ${seenCur.size} currencies draw at least one bracket`,
     working.slice(0, 10).map(([c, n]) => `${c}:${n}`).join(' '));
-  const silent = [...seenCur].filter(c => !willBracket.get(c) && !dead.has(c)).sort();
-  if (silent.length) note(`${silent.length} currency page(s) carry no convertible figure at all`, silent.join(' '));
+  const totalSub = [...subDollar.values()].reduce((a, b) => a + b, 0);
+  if (totalSub) note(`${totalSub} figure(s) correctly draw nothing`, 'they would round to $0, which usdText refuses to print');
+  // A currency with a rate whose every figure draws nothing. Not a fault, but it
+  // must be named rather than counted as working.
+  const mute = [...subDollar.keys()].filter(c => !willRender.get(c)).sort();
+  if (mute.length) note(`${mute.length} currency page(s) have a rate but draw no bracket at all`, `${mute.join(' ')}: every figure rounds below a dollar`);
+  const noFigures = [...seenCur].filter(c => !willRender.get(c) && !subDollar.get(c) && !dead.has(c)).sort();
+  if (noFigures.length) note(`${noFigures.length} currency page(s) carry no convertible figure at all`, noFigures.join(' '));
 }
 
 // ---------------------------------------------------------------------------
