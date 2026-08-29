@@ -17,7 +17,7 @@
 
 import { readFileSync } from 'node:fs';
 import {
-  BANDS, STATES, bandFor, colours, hasModelledFlat, modelledShare, isNoBedTax, isCheckedShape,
+  BANDS, STATES, bandFor, colours, hasModelledFlat, hasNotInFill, modelledShare, isNoBedTax, isCheckedShape,
   SHAPE_WORDS, REFERENCE_STAY, referenceRoomUsd, referencePct,
   hotelTaxMap, hotelTaxWatchlist, hotelTaxMapCheckedISO, byIso,
 } from '../src/data/hotel-tax-map.js';
@@ -351,6 +351,42 @@ for (const e of hotelTaxMap.filter(e => e.state !== 'checked')) {
 }
 
 // ---------------------------------------------------------------------------
+// CHARGES DELIBERATELY LEFT OUT OF A FILL. New in Phase 2 Part 2.
+//
+// MAIN's rule: a component colours only if it carries a real government URL, and anything
+// verified but unsourceable goes into the detail. Eight countries now carry one of these, so
+// the field needs the same discipline as everything else on this page, for two reasons.
+//
+// It is the most likely place for a quiet upgrade. A figure sitting in `notInFill` is one
+// careless edit away from being added to addedPct without its source ever arriving, which is
+// exactly the failure the URL rule exists to stop. So this asserts the two things that make
+// the field safe: it holds nothing a fill could read, and every row states WHY it is out.
+//
+// And it is the most likely place for a quiet downgrade. A row with no reason attached reads
+// to a future editor as an oversight rather than a decision, and gets deleted. The reason is
+// the whole value of the field.
+console.log('\n5b. Charges left out of a fill say so, and cannot leak into one');
+const NUMERIC_ON_OUT = ['pct', 'addedPct', 'amount', 'rate', 'basePct'];
+for (const e of hotelTaxMap.filter(hasNotInFill)) {
+  const id = `${e.iso} (${e.country})`;
+  for (const n of e.notInFill) {
+    const leaked = NUMERIC_ON_OUT.filter(k => typeof n[k] === 'number');
+    check(leaked.length === 0,
+      `${id}: excluded charge "${n.label}" holds no numeric field a fill could read`, leaked.join(', '));
+    check(typeof n.figure === 'string' && n.figure.length > 0,
+      `${id}: excluded charge "${n.label}" states its size in words, so a reader can judge it`);
+    // The reason has to be a reason. A one-word placeholder would satisfy a truthiness test
+    // and tell a future editor nothing, which is how these rows get deleted by accident.
+    check(typeof n.why === 'string' && n.why.length > 40,
+      `${id}: excluded charge "${n.label}" says why it is not counted`, String((n.why || '').slice(0, 30)));
+  }
+  // A country carrying one of these must explain itself in the figure's own basis line too,
+  // because the row tag and the detail block are below the fold on a phone.
+  check(!!e.addedBasis,
+    `${id}: its figure explains that something is deliberately missing from it`);
+}
+
+// ---------------------------------------------------------------------------
 console.log('\n6. Forward-dated and proposed charges are not counted as live');
 const today = new Date(new Date().toISOString().slice(0, 10) + 'T00:00:00Z');
 const parse = (s) => { const d = new Date(String(s) + 'T00:00:00Z'); return isNaN(d.getTime()) ? null : d; };
@@ -443,6 +479,8 @@ console.log('  entries:', rendered.length, '(' + hotelTaxMap.length, 'hand-writt
   Object.entries(byState).map(([k, v]) => `${k} ${v}`).join(', '));
 console.log('  coloured:', coloured.length, coloured.length ? '(' + coloured.map(e => `${e.iso} ${e.addedPct}%${hasModelledFlat(e) ? ' modelled' : ''}`).join(', ') + ')' : '');
 console.log('  reference stay:', REFERENCE_STAY.words, '=', referenceRoomUsd.toFixed(2), 'USD at the fxFallback snapshot of', fxFallback.date);
+console.log('  fills with a known charge left out:',
+  coloured.filter(hasNotInFill).map(e => `${e.iso} (${e.notInFill.length})`).join(', ') || 'none');
 console.log('  fills resting on that basket:',
   coloured.filter(hasModelledFlat).map(e => `${e.iso} ${modelledShare(e)}% of ${e.addedPct}%`).join(', ') || 'none');
 console.log('  occupied bands:', BANDS.filter(b => coloured.some(e => bandFor(e.addedPct) === b)).map(b => b.label).join(', ') || 'none');

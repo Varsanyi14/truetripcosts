@@ -226,6 +226,22 @@ export const isNoBedTax = (e) => !!e && e.state === 'noBedTax';
 // yet. Also derived in the component from src/data/index.js, same reasoning as noBedTax.
 export const isCheckedShape = (e) => !!e && e.state === 'checkedShape';
 
+// --- charges we know about and deliberately left out of the fill --------------
+// ADDED IN PHASE 2 PART 2, and it exists because of a rule MAIN set: a component colours
+// only if it carries a real government URL, and anything that cannot be sourced cleanly goes
+// into the detail rather than into the fill. Better a slightly lower honest fill than a
+// higher one resting on a guess.
+//
+// The problem with putting those charges in prose is that prose does not get audited. A
+// figure we know about, believe, and cannot yet source is the single most likely thing to
+// drift: it either quietly creeps into the fill later, or it quietly disappears and the
+// country looks fully mapped when it is not. So it gets a field of its own, it renders to
+// the reader in its own block, and the gate requires each row to say WHY it is not counted.
+//
+// This is not the same as `pendingVerification`, which means "this country has no figure at
+// all". A country can be coloured, honest, and still carry one of these.
+export const hasNotInFill = (e) => !!e && Array.isArray(e.notInFill) && e.notInFill.length > 0;
+
 // Plain-language names for the tax shapes the guides record. Held here so the map, the rows
 // and the gate all say the same thing about the same unit.
 export const SHAPE_WORDS = {
@@ -822,6 +838,347 @@ export const hotelTaxMap = deriveReferenceFigures([
       },
     ],
     property: [],
+    checkedISO: '2026-08-29',
+  },
+
+  // ==========================================================================
+  // THE PRE-WAVE COUNTRIES, added in Phase 2 Part 2 under MAIN's rulings of 2026-08-29.
+  //
+  // These are tax-EXCLUSIVE markets: a US-facing booking site usually quotes the rate before
+  // tax, so the stack genuinely arrives at checkout. That makes them the opposite case to the
+  // European wave, and it is why the two halves of this map look nothing like each other.
+  //
+  // THE RULE THAT SHAPED EVERY ONE OF THEM. A component colours only if it carries a real
+  // government URL. Anything verified but not yet sourceable goes into `notInFill`, where the
+  // reader still sees it and the gate still audits it, but it does not touch a fill. Four of
+  // the seven below therefore colour LOWER than the figure their own guide states, and each
+  // one says so on its row. That is the trade MAIN chose and it is the right way round: a
+  // fill is the one claim a screenshot carries away without its caveats.
+  // ==========================================================================
+
+  {
+    iso: 'MX',
+    country: 'Mexico',
+    slug: 'mexico',
+    spoke: 'hotel-taxes-and-fees',
+    state: 'checked',
+    addedPct: 21,
+    addedBasis: 'Two percentages stack on a Mexican room and both are sourced: the 16% federal IVA, which applies to lodging everywhere, and Quintana Roo\'s 5% state lodging tax. Away from Quintana Roo the state rate differs, so the national floor is the 16% IVA alone and most tourist states land somewhere between.',
+    representative: 'Quintana Roo, meaning Cancun, the Riviera Maya, Tulum and Cozumel',
+    representativeNote: 'Not a national rate. The 16% IVA is federal and certain; the state lodging tax is set state by state, typically 2 to 5%, and several states changed it for 2026. Quintana Roo is used because it is where most US visitors stay, and it sits at the top of that band at 5%, or 6% when booked through a digital platform.',
+    display: 'added',
+    displayNote: 'A US-facing booking site normally quotes a Mexican rate before tax, so the whole 21% arrives at checkout. If your rate said impuestos incluidos, it is already inside the price and nothing more is added.',
+    government: [
+      {
+        label: 'Federal VAT on lodging (IVA)',
+        figure: '16%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'The general rate under Article 1 of the Value Added Tax Law, which applies to services including accommodation. The law is explicit that the tax does not form part of the price it is calculated on.',
+        source: { label: 'SAT (Mexican tax authority): Article 1 of the Value Added Tax Law and the general 16% rate', url: 'https://wwwmat.sat.gob.mx/articulo/19848/articulo-1', type: 'revenue' },
+        checkedISO: '2026-08-29',
+      },
+      {
+        label: 'Quintana Roo state lodging tax (ISH)',
+        figure: '5% of the room, or 6% booked through a digital platform',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'Set by the state rather than the federation, under the reform of Article 8 of the state lodging tax law. Some rate calculators still print 4% or 3% for Quintana Roo and we believe those are stale.',
+        source: { label: 'SATQ (Quintana Roo tax authority): the state lodging tax law', url: 'https://satq.qroo.gob.mx/contenidos/dmarcolegal/e821150a-eda1-11f0-8e6b-005056a29996', type: 'revenue' },
+        checkedISO: '2026-08-29',
+      },
+      {
+        // A PER-TRIP FEE, AND THE ONE THING THE BASKET MUST NOT TOUCH. VISITAX is charged
+        // once for the whole trip, not per night, so converting it at a nightly reference
+        // room would need a nights count this map does not have. CostChart.astro already
+        // refuses the same conversion for the same reason. `basis` is deliberately
+        // 'oneTimePerTrip' rather than anything containing "perPerson", because the gate
+        // reads that string to decide which charges must be modelled at the basket, and a
+        // per-trip fee must not be.
+        label: 'VISITAX, Quintana Roo visitor fee',
+        figure: 'about 283 pesos per person, once per trip',
+        basis: 'oneTimePerTrip',
+        inQuotedPrice: false,
+        note: 'Roughly 16 dollars a person for the whole stay, paid online before travel and now scanned at airport departure. A 2026 proposal to fold it into hotel bills was rejected. It is not in the percentage above because it is a per-trip charge, not a nightly one.',
+        source: { label: 'VISITAX: the official Quintana Roo state visitor tax portal', url: 'https://www.visitax.gob.mx/sitio/', type: 'gov' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    notInFill: [
+      { label: 'Quintana Roo environmental charge', figure: 'about 76 pesos, roughly 4 dollars, per room per night', why: 'Reported consistently but one secondary source quotes a very different figure for a similarly named charge, and we could not reconcile them against a state source, so it stays out of the fill.' },
+    ],
+    property: [
+      { label: 'Resort fee and service charge', range: null, note: 'Set by the property rather than the government, and common at all-inclusive resorts where the IVA and state tax are usually already inside the package price.' },
+    ],
+    checkedISO: '2026-08-29',
+  },
+
+  {
+    iso: 'SA',
+    country: 'Saudi Arabia',
+    slug: 'saudi-arabia',
+    spoke: 'hotel-taxes-and-fees',
+    state: 'checked',
+    // COLOURS ON THE VAT ALONE, WHICH IS LOWER THAN THIS COUNTRY'S REAL STACK. The 5%
+    // municipality levy on occupied rooms at four star and above is well attested and takes
+    // the government total to about 20%, but we could not pin a single clean government URL
+    // for it, and MAIN's rule is that a fill needs a real URL under it. Both figures land in
+    // the same band, 15 to 22%, so the map looks identical either way; the row is what
+    // differs, and it says so.
+    addedPct: 15,
+    addedBasis: 'This is the 15% VAT alone, the highest rate in the Gulf, which applies to hotel stays as it does to almost everything else. A municipality levy on the occupied room sits beside it and takes the government total to about 20% at four star and above, or about 17.5% at three star and below, but it is not in this figure because we do not yet have a government source for it.',
+    display: 'added',
+    displayNote: 'Quoted rates here frequently exclude tax, so the stack arrives at checkout rather than in the price you compared.',
+    government: [
+      {
+        label: 'Value added tax',
+        figure: '15%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'The standard rate, applied to accommodation. Unlike almost all of the region, VAT on goods a visitor carries home is reclaimable under the tourist refund scheme.',
+        source: { label: 'ZATCA (Saudi tax authority): the 15% VAT and the tourist refund scheme', url: 'https://zatca.gov.sa/en', type: 'revenue' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    notInFill: [
+      { label: 'Municipality levy on the occupied room', figure: '5% at four star and above, 2.5% at three star and below', why: 'Consistently reported and in the country guide, but we could not source it to a single government page, and a fill needs a real URL under every component. Add the source and this country moves from 15% to about 20%.' },
+    ],
+    property: [
+      { label: 'Service charge', range: null, note: 'Added by many properties, set by the hotel rather than the government, and not a standard rate, so it never reaches the colour.' },
+    ],
+    checkedISO: '2026-08-29',
+  },
+
+  {
+    iso: 'OM',
+    country: 'Oman',
+    slug: 'oman',
+    spoke: 'hotel-taxes-and-fees',
+    state: 'checked',
+    // Same shape as Saudi Arabia and with a real consequence: here the unsourced component
+    // crosses a band. Sourced, Oman is 9% and sits in the 5 to 10 band; with the municipality
+    // charge it would be about 14% and sit a band higher. It colours on what can be checked.
+    addedPct: 9,
+    addedBasis: 'The 5% VAT and the 4% tourism tax, both sourced to the government. A municipality charge on hotel occupancy of about 5% sits beside them and would take this to roughly 14%, but it is not in the figure because we do not yet have a government page for it.',
+    display: 'added',
+    displayNote: 'Quoted room rates here often exclude the whole stack, so ask whether the rate is all in.',
+    government: [
+      {
+        label: 'Value added tax',
+        figure: '5%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'One of the lowest standard VAT rates in the world, in force since 16 April 2021 under Royal Decree 121/2020. Hotel stays are standard-rated; residential rental is exempt.',
+        effective: '2021-04-16',
+        source: { label: 'Oman Tax Authority: value added tax, the law and the standard rate', url: 'https://tms.taxoman.gov.om/portal/vat-tax', type: 'revenue' },
+        checkedISO: '2026-08-29',
+      },
+      {
+        label: 'Tourism tax',
+        figure: '4%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'Levied under the Tourism Law on hotel establishments and on restaurants in designated tourist areas.',
+        source: { label: 'Government of Oman: paying the 4% tourism tax for restaurants and hotel establishments', url: 'https://gov.om/en/w/pay-the-4-tourism-tax-for-restaurants-and-hotel-establishments', type: 'gov' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    notInFill: [
+      { label: 'Municipality charge on hotel occupancy', figure: 'about 5%', why: 'Reported by regional media and in the country guide, but no government page states it, so it stays out of the fill. Add the source and Oman moves from 9% to about 14%, which crosses into the next band.' },
+    ],
+    property: [
+      { label: 'Service charge', range: null, note: 'Added by many properties on top of the government stack. Set by the hotel, not a standard rate, and not something a guest can decline.' },
+    ],
+    checkedISO: '2026-08-29',
+  },
+
+  {
+    iso: 'JM',
+    country: 'Jamaica',
+    slug: 'jamaica',
+    spoke: 'hotel-taxes-and-fees',
+    state: 'checked',
+    addedPct: 10,
+    addedBasis: 'The lower tourism rate of General Consumption Tax, 10% today, which is what a hotel room carries rather than the 15% standard rate charged on restaurant and shop bills. A small flat room tax sits beside it and is named below.',
+    display: 'added',
+    displayNote: 'There is no per-person nightly bed tax here. Arrival and departure taxes are almost always already inside your airfare.',
+    government: [
+      {
+        label: 'Tourism rate of General Consumption Tax',
+        figure: '10%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'The concessionary tourism rate on accommodation, against a 15% standard rate elsewhere. Legislated to rise to 15% on 1 April 2027, which is scheduled rather than live and is excluded from the figure above.',
+        source: { label: 'Jamaica Information Service: the revenue measures legislating the tourism GCT rise from 10% to 15% in April 2027', url: 'https://jis.gov.jm/govt-projects-29-4b-from-new-revenue-measures-in-fiscal-year-2026-27/', type: 'gov' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    notInFill: [
+      { label: 'Guest Accommodation Room Tax', figure: '1 US dollar per room per night up to 50 rooms, 2 dollars from 51 to 100, and 4 dollars at 101 rooms and above', why: 'A real government charge, and small: at the reference room it is between 0.6% and 2.3%. It is out of the fill only because we do not yet have a Tax Administration Jamaica page stating the tiers. At the top tier it would take Jamaica to about 12.3%, still in the same band.' },
+    ],
+    watch: [
+      {
+        label: 'Tourism GCT rises from 10% to 15%',
+        effective: '2027-04-01',
+        note: 'Legislated in the 2026 to 2027 revenue measures. Not folded into the figure above before its date.',
+        source: { label: 'Jamaica Information Service: the 2026 to 2027 revenue measures', url: 'https://jis.gov.jm/govt-projects-29-4b-from-new-revenue-measures-in-fiscal-year-2026-27/', type: 'gov' },
+      },
+    ],
+    property: [
+      { label: 'Resort fee and service charge', range: null, note: 'Set by the property rather than the government. Many restaurant bills also add a service charge of around 10%, which is the establishment\'s own.' },
+    ],
+    checkedISO: '2026-08-29',
+  },
+
+  {
+    iso: 'BH',
+    country: 'Bahrain',
+    slug: 'bahrain',
+    spoke: 'hotel-taxes-and-fees',
+    state: 'checked',
+    // MAIN'S RULING, AND THEN THE SOURCING RULE ON TOP OF IT.
+    // The ruling was to strip the 10% service charge from the guide's 25% figure, because
+    // Rail 2 forbids a property-set charge in a fill, and to colour on 10% VAT plus the 5%
+    // government levy plus BD3 a night, which lands near 19.7%. The strip is done: the
+    // service charge is in `property` below where it belongs.
+    //
+    // The 19.7% is not, because the 5% levy and the BD3 turn out to be the same kind of
+    // problem as Oman's municipality charge. Both are well attested, both are collected by
+    // the Bahrain Tourism and Exhibitions Authority, and neither has a government page we
+    // could find stating them. Under the rule a fill needs a real URL under every component,
+    // so Bahrain colours on its sourced VAT and names the rest below. This one costs a band:
+    // 10% here against about 19.7% once the levy and the nightly fee are sourced.
+    addedPct: 10,
+    addedBasis: 'The 10% VAT alone, which is the only component of the Bahraini stack we can currently source to the government. A 5% government levy and a flat BD 3 per room per night sit beside it and would take this to roughly 19.7% at the reference room, and both are named below rather than counted.',
+    display: 'added',
+    displayNote: 'Quoted room rates here frequently exclude all of it, so ask whether the rate is all in. Bahrain adds more to a hotel bill than any Gulf state except Saudi Arabia once every charge is counted.',
+    government: [
+      {
+        label: 'Value added tax',
+        figure: '10%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'The standard rate in the Kingdom of Bahrain, doubled from 5% in January 2022. The 2025 to 2026 budget flagged the possibility of a further rise with no rate or timeline confirmed, so this is worth re-checking before a future trip.',
+        source: { label: 'Bahrain National Portal: value added tax at 10% in the Kingdom of Bahrain', url: 'https://www.bahrain.bh/', type: 'gov' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    notInFill: [
+      { label: 'Government levy on hotels and tourism restaurants', figure: '5%', why: 'Collected by the Bahrain Tourism and Exhibitions Authority and consistently reported, but we could not find a government page stating it, so it is not in the fill.' },
+      { label: 'Tourist accommodation fee', figure: 'BD 3 per room per night, about 4.7% of the reference room', why: 'Introduced by the tourism ministry in May 2024 and widely reported, but same problem: no government page we could source. With this and the 5% levy, Bahrain would colour at about 19.7% and move up a band.' },
+    ],
+    property: [
+      { label: 'Service charge', range: 'commonly 10%', note: 'Set by the property, not the government, which is why it is here rather than in the figure above. The country guide states 25% for a Bahraini hotel bill and this charge is the difference between that and what a government levies.' },
+    ],
+    checkedISO: '2026-08-29',
+  },
+
+  {
+    iso: 'AE',
+    country: 'United Arab Emirates',
+    slug: 'uae',
+    spoke: 'hotel-taxes-and-fees',
+    state: 'checked',
+    // THE MOST COUNTER-INTUITIVE FILL ON THE MAP, AND THE ONE THAT BEST EXPLAINS ITS AXIS.
+    // MAIN's brief originally put Dubai at 10% on the municipality fee. That is the wrong
+    // question for this map: Dubai hotels fold the 5% VAT and the municipality fee INTO the
+    // quoted rate, so neither is a surprise at checkout. What genuinely lands on top is the
+    // Tourism Dirham, a flat nightly fee, and at the reference room it is about 3%.
+    //
+    // So the UAE colours in the bottom band while Bahrain sits three bands up, and the
+    // contrast is TRUE rather than a glitch: Dubai advertises close to all-in and its
+    // neighbours do not. A reader comparing a Dubai rate against a Manama rate is comparing
+    // two different things, and this is the map saying so.
+    modelled: [
+      { label: 'Tourism Dirham', amount: 20, currency: 'AED', unit: 'perRoomPerNight' },
+    ],
+    addedBasis: 'Almost everything on a Dubai hotel bill is already inside the rate you were quoted. What is added is the Tourism Dirham, a flat nightly charge by hotel grade, and this models the top of its range, 20 dirhams at a five-star hotel. At the bottom of the range, 7 dirhams at a one-star or a hostel, it is about 1%.',
+    representative: 'Dubai at the five-star Tourism Dirham rate',
+    representativeNote: 'Dubai, because it is where most visitors stay, and at the top of the fee range because a room near the reference rate is a four or five star property. Abu Dhabi works differently, charging a 4% tourism fee on the accommodation bill, and Ras Al Khaimah charges a flat 15 dirhams a room a night. Sharjah, Fujairah, Ajman and Umm Al Quwain have no separate nightly tourism fee.',
+    display: 'mixed',
+    displayNote: 'The 5% VAT, the municipality fee of roughly 7% and the service charge of roughly 10% are normally folded into the Dubai rate you are quoted, so they are real and they are not a surprise. The Tourism Dirham is the line that appears at checkout.',
+    government: [
+      {
+        label: 'Tourism Dirham Fee, Dubai',
+        figure: '7 to 20 AED per room, per night by hotel grade',
+        basis: 'perRoomPerNight',
+        inQuotedPrice: false,
+        note: 'Charged per occupied room per night for a maximum of 30 consecutive nights, at a rate set by the category or grade of the hotel, under the Dubai tourism department resolution governing the fee. Commonly 20 dirhams at five star, 15 at four, 10 at three and two, and 7 at one star, guest houses and hostels.',
+        source: { label: 'Official Platform of the UAE Government: hotel taxes, and the Tourism Dirham Fee of 7 to 20 dirhams per room per night in Dubai', url: 'https://u.ae/en/information-and-services/visiting-and-exploring-the-uae/where-to-stay-in-the-uae', type: 'gov' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    notInFill: [
+      { label: 'VAT and the Dubai municipality fee', figure: '5% VAT and roughly 7% municipality fee', why: 'Deliberately out of the fill rather than unsourced: these are normally already inside the Dubai rate you are quoted, and this map colours what is ADDED to a quoted price. They are heavy and they are not a surprise, which is the distinction the whole map turns on.' },
+    ],
+    property: [
+      { label: 'Service charge', range: 'roughly 10%', note: 'Set by the property under its hotel licence rather than by government, and normally folded into the rate rather than added at checkout.' },
+    ],
+    checkedISO: '2026-08-29',
+  },
+
+  {
+    iso: 'BS',
+    country: 'The Bahamas',
+    slug: 'bahamas',
+    spoke: 'hotel-taxes-and-fees',
+    state: 'checked',
+    // MAIN'S RULING: the Nassau uplift is charged by the promotion board and the resort
+    // associations rather than by government, so Rail 2 keeps it out of the fill however
+    // mandatory it feels on the bill. The Bahamas colours on the 10% VAT, which is national,
+    // sourced and genuinely government. The uplift is named below with who charges it.
+    addedPct: 10,
+    addedBasis: 'The 10% VAT, which applies island-wide and is the government charge on a Bahamian room. Around Nassau, Paradise Island and Cable Beach the bill is commonly about 21% once area levies are added, but those are charged by a promotion board and by resort associations rather than by government, so they are named below rather than coloured.',
+    display: 'added',
+    displayNote: 'There is no per-person nightly bed tax here. Your air departure tax of about 15 dollars is almost always built into your airfare, and a visitor can reclaim the 10% VAT on shopping.',
+    government: [
+      {
+        label: 'Value added tax',
+        figure: '10%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'The standard rate, applied to accommodation everywhere in the country. A stay of 45 continuous days or more is VAT exempt.',
+        source: { label: 'Bahamas Department of Inland Revenue: the standard VAT rate is 10%', url: 'https://inlandrevenue.finance.gov.bs/value-added-tax/about-vat/', type: 'revenue' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    notInFill: [
+      { label: 'Nassau, Paradise Island and Cable Beach area levies', figure: 'roughly 11 further points, taking a Nassau bill to about 21%', why: 'Charged by the promotion board and the resort associations rather than by a government, so Rail 2 keeps them out of the fill even though they are mandatory and large. Out Island properties do not carry them. If a primary source shows any part of this uplift is a government levy, that part can colour.' },
+    ],
+    property: [
+      { label: 'Resort fee and mandatory gratuity', range: null, note: 'Set by the property. Some resorts add a per-person nightly gratuity on top of the resort fee, and neither is a tax.' },
+    ],
+    checkedISO: '2026-08-29',
+  },
+
+  {
+    iso: 'AW',
+    country: 'Aruba',
+    slug: 'aruba',
+    spoke: 'hotel-taxes-and-fees',
+    // DELIBERATELY NOT COLOURED, AND THIS ONE IS A FINDING RATHER THAN A GAP.
+    // Aruba was in MAIN's Bucket A, blocked only on a source URL, and the source was named:
+    // Departamento di Impuesto. The source exists and it disagrees with us. DIMP's own rate
+    // page states the tourist levy as 9.5%, last modified April 2025, while the 12.5% rate
+    // in force since 2023 is what the country guide carries and what professional summaries
+    // of the Aruban tax system state.
+    //
+    // So there are two figures and the government's own page holds the one we believe is
+    // stale. Colouring on 12.5% would mean citing a page that says 9.5%; colouring on 9.5%
+    // would mean publishing a rate we think is three years out of date. Neither is a fill
+    // this map can carry, so Aruba stays off the scale with the conflict written down. Note
+    // also that DIMP states the levy base as everything the guest pays for the room
+    // INCLUDING service and energy charges, which is unusually broad and worth carrying
+    // whenever the rate is resolved.
+    state: 'checkedShape',
+    shape: 'percentOfRoom',
+    note: 'Aruba charges a percentage tourist levy on the room rate every night, plus a small flat environmental levy of about 3 US dollars per room per night. Both are government charges. Most hotels then add their own service charge and a resort fee, which are not taxes.',
+    display: 'added',
+    displayNote: 'The levy is genuinely added on top of a quoted rate here, so this country belongs on the scale. It is the rate itself that is unresolved, not whether it is added.',
+    pendingVerification: 'Needs the rate conflict resolved before it can colour. The Departamento di Impuesto rate page states 9.5%, last modified April 2025; the rate in force since 2023 is reported as 12.5% and that is what our own guide carries. A fill cannot cite a source that contradicts it, and we will not publish a rate we believe is stale, so this stays off the scale until one of the two is confirmed. The flat environmental levy is about 1.8% of the reference room and will be modelled alongside whichever percentage wins.',
+    property: [
+      { label: 'Service charge and resort fee', range: 'service often 10 to 15%, resort fees commonly 30 to 90 dollars a night', note: 'Set by each property rather than by government, and together they can outweigh the tax.' },
+    ],
     checkedISO: '2026-08-29',
   },
 
