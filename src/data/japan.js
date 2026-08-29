@@ -100,8 +100,17 @@ export default {
   ],
   taxfree: {
     heading: "Shop tax-free as a tourist.",
-    text: "Tourists can buy consumption-tax-free (10%) at shops marked \"Tax Free,\" including department stores, electronics chains like Bic Camera and Yodobashi, and many drugstores. Show your passport at the register. Consumables are sealed and must leave Japan unopened. Confirm the details at the till, as the tax-free system is being reformed."
+    text: "Tourists can reclaim Japan's 10% consumption tax on shopping at stores marked \"Tax Free,\" including department stores, electronics chains like Bic Camera and Yodobashi, and many drugstores. You need to spend 5,000 yen before tax at one store on one day, and show your passport. How you get the money changes on 1 November 2026: until then the tax comes off at the register, and after it you pay the full price and claim the tax back at an airport kiosk before you check your bags. <a href=\"/japan/tax-refund\"><b>How to get the tax back in Japan</b></a> walks through both."
   },
+  // HIGH-CHURN. The tax-free system changes nationwide on 1 November 2026, so this is
+  // dated rather than described: "enacted" because the law is passed, with a future
+  // `effective` date so the country page reads it as upcoming and the front-door ticker
+  // holds it off the strip until the day it becomes true. The full two-era how-to lives
+  // on the /japan/tax-refund spoke. Re-check on 1 November 2026 to demote the old
+  // instant-exemption system to history.
+  keyFacts: [
+    { label: "Tax-free shopping switches to a refund", value: "You will pay the 10% consumption tax in store and reclaim it at the airport", status: "enacted", effective: "2026-11-01", source: "https://www.nta.go.jp/publication/pamph/shohi/menzei/202506/pdf/0025006-106.pdf", checked: "2026-08-29" },
+  ],
   traps: [
     "<b>\"Pay in USD?\" Always say no.</b> At a card machine or ATM, choosing your home currency (dynamic currency conversion) quietly adds 3 to 7%. Pick yen every time.",
     "<b>Most bank ATMs reject foreign cards.</b> Mizuho, MUFG and SMBC machines will refuse you. Head to a 7-Eleven (Seven Bank) or Japan Post ATM instead.",
@@ -125,7 +134,7 @@ export default {
     { q: "Should I tip in Japan?", a: "No. Tipping is not customary and can cause confusion or offense. A polite thank-you is enough." },
     { q: "Do I need a Suica or IC card in Japan?", a: "It is the smoothest way to pay for trains, buses and convenience stores. The easiest route is adding a Suica or ICOCA to your phone's Apple or Google Wallet before you arrive." },
     { q: "How much cash should I bring for a week in Japan?", a: "For two mid-range travelers, plan very roughly 80,000 to 100,000 yen in day-to-day cash across a week, beyond hotels, withdrawn in a couple of ATM visits. Adjust for your style." },
-    { q: "Can I shop tax-free as a tourist in Japan?", a: "Yes. At \"Tax Free\" shops, show your passport to buy consumption-tax-free. Consumables are sealed and must leave Japan unopened. Confirm at the register, as the system is being reformed." }
+    { q: "Can I shop tax-free as a tourist in Japan?", a: "Yes, on goods you take home unused, with a minimum of 5,000 yen before tax at one store on one day. Show your passport at the register. Through 31 October 2026 the tax simply comes off the price. From 1 November 2026 you pay it and claim it back at an airport kiosk before checking your bags, and the shop refunds you afterwards. Hotels, meals and transport are never refundable." }
   ],
 
   culture: {
@@ -305,6 +314,89 @@ export default {
           { label: "Japan Post Bank: using cards issued overseas at Japan Post (Yucho) ATMs", url: "https://www.jp-bank.japanpost.jp/en/", type: "card" }
         ],
         judgment: "The cashless figure is Japan's official METI data; the ATM, card and IC-card details are our practical read from recent trips and the operators' own pages, and acceptance can vary by machine and card, so carry a backup. Checked July 2026."
+      }
+    },
+    {
+      slug: "tax-refund",
+      glance: [
+        { k: "Consumption tax", v: "10%, or 8% on most food" },
+        { k: "Minimum spend", v: "5,000 yen, one store, one day" },
+        { k: "The big change", v: "1 November 2026" },
+        { k: "Where you claim", v: "An airport kiosk, before bag drop" }
+      ],
+      live: true,
+      topic: "tax-refund",
+      title: "Japan tax refund: what changes on 1 November 2026",
+      description: "On 1 November 2026 Japan switches from an instant discount at the till to a refund claimed at the airport. The 5,000 yen minimum, the kiosk step, and the catch.",
+      h1: "How do you get the tax back when you shop in Japan?",
+      lede: "Japan changes how this works partway through the year, so the answer depends on when you travel. Here is what to do in each case, and the one mistake that costs you the refund.",
+      checked: "Aug 2026",
+      checkedISO: "2026-08-29",
+      answer: "It depends on when you travel. <b>Through 31 October 2026</b> the tax comes off at the register: show your passport, pay the price without the tax, done. <b>From 1 November 2026</b> you pay the full price including the <b>10% consumption tax</b>, then claim it back on the way out. Either way you need to spend <b>5,000 yen or more before tax, at one store on one day</b>, and the goods have to leave Japan <b>unused</b>. Under the new system the airport step is a <b>self-service kiosk</b> you use <b>before you check your bags</b>. Customs only confirms the goods are leaving. <b>The shop or its refund company pays you</b>, by a method that varies by store.",
+      sections: [
+        {
+          h: "Do this, don't do this",
+          icon: "receipt",
+          key: { tag: "Before you check a bag", text: "You need every tax-free item with you at the kiosk, and a checked bag cannot be retrieved. Japan's luggage-forwarding services are the quiet trap: shopping sent ahead to the airport or your next hotel is shopping customs never sees.", tone: "amber" },
+          p: [
+            "The whole thing in six lines. This is the new system, from 1 November 2026."
+          ],
+          steps: [
+            "<b>Do</b> spend at least <b>5,000 yen before tax at one store on one day</b>. In a department store, one tax-free counter can usually combine what you bought on different floors.",
+            "<b>Do</b> bring your <b>passport</b> to the register, or the shop cannot start the paperwork.",
+            "<b>Do</b> stop at the <b>tax-free kiosk in the departure lobby before you check your bags</b>, with the goods on you.",
+            "<b>Don't</b> expect anyone to hand you money at the airport. The kiosk confirms the goods are leaving; <b>the shop pays you afterwards</b>.",
+            "<b>Don't</b> use it up first. Anything you eat, drink or finish in Japan <b>stops qualifying</b>.",
+            "<b>Don't</b> lose one item off a receipt. Customs checks <b>receipt by receipt</b>, and a single missing thing voids everything on that slip."
+          ]
+        },
+        {
+          h: "From 1 November 2026: pay first, claim later",
+          icon: "qr",
+          key: { tag: "Customs is not a cash desk", text: "The kiosk confirms your goods are leaving Japan and nothing more. The money comes afterwards from the shop, or the refund company it uses, and the method is theirs to set: a bank transfer, a card refund, an app, or in some cases cash at the departure port. Ask at the till which one you are getting.", tone: "amber" },
+          p: [
+            "Three things happen, in this order. You buy, paying the full tax-inclusive price. The shop, or the refund company it works with, files the purchase electronically. Then at the airport you scan your passport at a tax-free kiosk in the departure lobby, and it tells you whether an officer needs to see the goods.",
+            "The kiosk itself takes seconds. A <b>green result</b> means you are finished and can go check in. A <b>red result</b> sends you to the customs counter with the goods for a look, which is routine rather than a problem. At Narita, Haneda, Kansai, Chubu, Fukuoka, New Chitose and Naha you can do this step through <b>Visit Japan Web</b> instead, on the airport wifi set aside for it, any time before security. Flying home via a domestic connection? Do it at the airport you actually leave Japan from. You have <b>90 days</b> from the purchase to clear this step.",
+            "The rest of the news is good. The <b>sealed-bag rule</b> for cosmetics, food and medicine is gone, so you can open and use what you bought. The old <b>500,000 yen daily cap</b> on those items is gone too, and the split between general goods and consumables has been scrapped, so everything from one store on one day counts toward the same 5,000 yen. What you give up is the wait, because you are out of pocket for the tax until the refund lands.",
+            "On what actually reaches you: the headline is the <b>10% consumption tax</b>, or <b>8%</b> on most food and drink. A handling fee may come off it. That fee is set by the shop or its refund company rather than by the government, so there is no single number to quote. Treat 10% as a ceiling rather than a promise, and ask the store what it keeps."
+          ]
+        },
+        {
+          h: "Before 1 November 2026: it comes off at the till",
+          icon: "calendar",
+          key: { fig: "Instant", tag: "If your trip ends by 31 October", text: "Nothing here changes for you. Show a passport, the shop takes the tax off the price, and there is no airport kiosk and no waiting for money.", tone: "teal" },
+          p: [
+            "If you are home before the switch, the old system is the one you will meet. At a shop marked Tax Free you show your passport and the tax comes off the price at the register. Same 5,000 yen minimum, same one-store-one-day rule.",
+            "Two old rules apply until the last day. Cosmetics, food and medicine get <b>sealed into a bag</b> you are not meant to open before you leave, and there is a <b>500,000 yen daily ceiling</b> on those items. There is no overlap period: a purchase has to be rung up by <b>31 October 2026</b> to use this route, and anything bought from 1 November follows the new one."
+          ]
+        },
+        {
+          h: "What you cannot get back",
+          icon: "alert",
+          key: { tag: "Goods only, never services", text: "Your hotel, your meals, your train tickets, taxis and tours all carry consumption tax, and none of it is refundable to a leisure traveler. Anyone who tells you otherwise is describing the shopping scheme and stretching it.", tone: "amber" },
+          p: [
+            "This is the part most write-ups skip. Tax-free shopping is for physical things you carry home unused. It has never covered a service you used while you were in Japan, and there is no separate scheme letting a tourist reclaim the tax on a hotel room or a restaurant bill. If a refund matters to your budget, count only the shopping.",
+            "One honest exception, and we will not pretend to walk you through it. If part of the trip was genuinely for business, say you run a small company in the US and went to meet a supplier before staying on to travel, the tax your company paid on some business costs can sometimes be recovered through a completely separate business route. It has nothing to do with tourist shopping, it turns on details we cannot see from here, and it is a question for a tax professional rather than a travel site. We are telling you the door exists. Whether it is open for you is their call.",
+            "Japan's lodging tax is a different charge again, added to your room by some cities and not refundable either: the <a href=\"/japan\">Japan money guide</a> has the city bands, and <a href=\"/hotel-taxes-and-fees\">hotel taxes and fees</a> compares them with other countries. For paying day to day, see <a href=\"/japan/cash-or-card\">cash or card in Japan</a>."
+          ]
+        }
+      ],
+      faqs: [
+        { q: "What changes for tax-free shopping in Japan on 1 November 2026?", a: "The tax stops coming off at the register. Before that date you pay the price without the consumption tax and walk out. From 1 November you pay the full price including the tax, then claim it back at an airport kiosk when you leave Japan, and the shop or its refund company pays you afterwards. The 5,000 yen minimum is unchanged, and there is no overlap period: anything bought from 1 November follows the new rules." },
+        { q: "Do you get cash at the airport in Japan?", a: "Not from customs. The airport kiosk only confirms that your goods are leaving the country. Payment comes from the shop you bought from, or the refund company it uses, and the method is up to them: a bank transfer, a card refund, an app, and in some cases cash at the departure port. Ask at the till which one applies before you count on it." },
+        { q: "What is the minimum spend for a tax refund in Japan?", a: "5,000 yen before tax, at the same store on the same day. That figure does not change on 1 November 2026. Department stores usually let you combine purchases from different floors at one tax-free counter to reach it, which is the easiest way to clear the threshold on small items." },
+        { q: "Can you get Japan's consumption tax back on a hotel or meals?", a: "No. Tax-free shopping is for physical goods you take home unused. Hotels, restaurant meals, train and subway fares, taxis and tours all carry consumption tax and none of it is refundable to a leisure traveler. Japan has no tourist scheme for the tax on accommodation or on food you ate there." },
+        { q: "Can you use what you bought before leaving Japan?", a: "From 1 November 2026 you can open it, because the sealed-bag rule for cosmetics, food and medicine is being scrapped. Consuming it is different: anything you eat, drink or use up in Japan stops qualifying, and if that happens you should tell a customs officer at the counter rather than using the kiosk. Before 1 November the sealed bag still applies." },
+        { q: "What if you send your shopping ahead with a luggage service?", a: "You may lose the refund. Under the new system you have to be holding every tax-free item when you scan your passport at the airport kiosk, and that has to happen before you check a bag. Shopping forwarded to the airport, to a hotel or to your home is shopping customs never confirms, so plan to carry it through the kiosk yourself." }
+      ],
+      sources: {
+        links: [
+          { label: "National Tax Agency: the official notice that tax-free shopping moves to the refund method from November 2026, with no period when both systems are effective together", url: "https://www.nta.go.jp/publication/pamph/shohi/menzei/202506/pdf/0025006-106.pdf", type: "revenue" },
+          { label: "National Tax Agency: the English consumption-tax guides index, where the refund-method pamphlet is published", url: "https://www.nta.go.jp/english/taxes/consumption_tax/02.htm", type: "revenue" },
+          { label: "Japan Tourism Agency: the traveler page for the refund method, the 5,000 yen threshold, the 90-day window and the kiosk step before baggage check-in", url: "https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00028.html", type: "gov" },
+          { label: "Japan Tourism Agency: the traveler Q&A confirming the shop pays the refund, and listing the possible methods including cash at departure", url: "https://www.mlit.go.jp/kankocho/tax-free/page01_000001_00027.html", type: "gov" }
+        ],
+        judgment: "The two-era split, the 1 November 2026 date, the no-overlap rule, the 5,000 yen threshold, the 90-day window, the kiosk and its green or red result, the before-you-check-bags requirement, the per-receipt rule and the scrapping of sealed packaging and the 500,000 yen cap all come from the National Tax Agency and Japan Tourism Agency pages above. Two things are deliberately absent. There is no published figure for the handling fee a shop or refund company may deduct, so we call 10% a ceiling instead of quoting a net. And we found no official payout timeline: the Japan Tourism Agency's own answer is to ask the shop, and the widely repeated one to two weeks for cards and two to four weeks for transfers traces to travel sites rather than to a government source, so it is not on this page. Checked 29 August 2026."
       }
     },
     {

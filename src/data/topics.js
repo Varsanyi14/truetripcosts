@@ -20,6 +20,13 @@ export const topicIcon = {
   "tourist-tax": 'receipt',
   taxes: 'receipt',
   "vat-refund": 'refund',
+  // NOT the `refund` glyph above, despite the family match. That glyph hardcodes a euro
+  // sign (&#8364;) inside its return arrow, which is right for France, Italy and Spain and
+  // wrong for a yen page. `receipt` is currency-neutral, so it also survives the rest of
+  // the planned refund wave (Japan yen, Korea won, Saudi riyal) without a per-country
+  // icon. Note the same euro glyph is currently rendering on united-kingdom/vat-refund,
+  // which is a pre-existing defect in the older family and wants its own fix.
+  "tax-refund": 'receipt',
   rail: 'train',
 };
 
