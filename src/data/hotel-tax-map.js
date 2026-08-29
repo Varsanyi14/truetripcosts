@@ -1,3 +1,6 @@
+import fxFallback from './fxFallback.js';
+import { usdFromLocal } from './usd-bracket.js';
+
 // THE HOTEL TAX WORLD MAP. What government adds on top of a quoted room rate, by country.
 //
 // This file is the whole honesty spine of /hotel-tax-map. The component paints what it
@@ -29,27 +32,38 @@
 // property's, and no code path lets them reach a fill.
 //
 // ============================================================================
-// RAIL 3. A FLAT FEE IS NOT CONVERTED INTO A PERCENTAGE.
+// RAIL 3. A FLAT FEE IS CONVERTED AT A DECLARED REFERENCE STAY, NEVER SILENTLY.
 // ============================================================================
-// This is the decision most likely to be revisited, so here is the reasoning in full.
-// Several government stacks mix a percentage with a flat charge: the Maldives is 17%
-// TGST PLUS 12 dollars per person per night. A flat charge has no percentage until you
-// assume a room rate and a party size, which is exactly why the honest published figure
-// for the Maldives is a range and not a number.
+// PHASE 1 REFUSED TO CONVERT FLAT FEES AT ALL, and the reasoning was sound: a flat charge
+// has no percentage until you assume a room rate, so the Maldives' 12 dollars per person
+// per night is 16% of a guesthouse and 3% of an overwater villa. Phase 1 therefore coloured
+// on percentage components only and marked the rest with a stipple meaning "there is more
+// here than this colour can show".
 //
-// So the colour is driven by the PERCENTAGE components only, and a country that also
-// carries a flat government charge is marked with a stipple overlay meaning "there is
-// more here than this colour can show". The detail then gives the flat charge in its
-// native units and works it through at two room rates, so the reader sees the range
-// rather than a single number that quietly depends on a room rate nobody told them about.
+// The cost of that was a map that could not fill in. Most of Europe charges a few euros a
+// night rather than a percentage, so the entire wave of European countries had no figure
+// this scale could hold, and a choropleth where the honest answer is "no colour" for
+// twenty countries is not a choropleth. MAIN's call, 2026-08-28, was the alternative the
+// old rail named: a DECLARED REFERENCE STAY.
 //
-// The alternative is a declared reference stay: pick a room rate and a party size, state
-// them in the legend, convert every flat fee at that basket. That buys one comparable
-// number per country at the cost of putting a precise-looking fill on an assumption, and
-// it reads badly at the extremes (a 12 dollar per-person charge is 16% of a guesthouse
-// and 3% of an overwater villa). MAIN's call. If it is wanted, the switch is this rail
-// plus the stipple, and the site already has a basket to match rather than invent:
-// CostChart converts hotel tax at one traveler and one room, TAX_TRAVELERS = 1.
+// THE BASKET IS ONE GUEST IN ONE ROOM AT 150 EUROS A NIGHT. Every flat government charge
+// is expressed as a share of that room. The number this buys is comparable across
+// countries, which is the whole point, and it is bought with an assumption.
+//
+// SO THE HONESTY RAIL MOVES, IT DOES NOT DISAPPEAR. Three things carry it:
+//   1. The legend states the basket in plain words, including the consequence: a cheaper
+//      room feels a flat fee harder and a pricier room barely notices it.
+//   2. Every converted country keeps its NATIVE figure in its own currency on its row, so
+//      the reader sees the real charge and not only the modelled percent.
+//   3. The stipple survives with a NEW meaning: it now marks a fill that is modelled at
+//      the basket rather than measured as a percentage. A screenshot of this map still
+//      shows which countries rest on the assumption, which is what the stipple was for.
+//
+// ONE RATE, ONE PLACE. The conversion is computed at build time from fxFallback.js, the
+// snapshot the currency panels already fall back to, so the map cannot disagree with the
+// rest of the site and it moves when the rate does. No entry below holds a hand-typed
+// percentage for a flat fee: it holds the fee, its currency and its unit, and the percent
+// is derived. A pasted percentage is a rate source, and this file must never become one.
 //
 // ============================================================================
 // RAIL 4. ABSENCE IS NEVER ZERO.
@@ -82,6 +96,77 @@
 // named in the detail and excluded from every fill. `watch` entries are scheduled changes
 // we are tracking; they are read by scripts/check-fact-staleness.mjs on every run and are
 // only DISPLAYED once they carry a source, so nothing unsourced reaches a reader.
+//
+// ============================================================================
+// RAIL 7. THE ONE RULE THAT DECIDES EVERY EUROPEAN CLASSIFICATION.
+// ============================================================================
+// Written down because it is the question every new European entry raises, and answering
+// it from scratch each time is how two countries end up on two different axes.
+//
+// Across every major EU regime, VAT is EMBEDDED in the displayed hotel price by law, and
+// the tourist tax is a SEPARATE line excluded from the VAT base. So on a European entry the
+// VAT does NOT colour, because it is already inside the sticker the traveler compared, and
+// only the tourist tax colours, because it is what arrives on top. That is why a wave of
+// heavily taxed European countries lands in the bottom band on their small tourist tax
+// rather than in the top band on their large VAT. It looks wrong at a glance and it is the
+// correct answer to the question this map asks.
+//
+// TWO CONSEQUENCES WORTH KNOWING BEFORE EDITING AN ENTRY:
+//   - The Netherlands is the exception, which is why it is handled specially: Amsterdam's
+//     city tax is levied on the ex-VAT room, so it is rebased onto the VAT-inclusive price
+//     the traveler was quoted (12.5% becomes 10.3%). That rebasing has NOT been applied to
+//     the other percentage levies here, which colour on their stated rate. See the note on
+//     the Austria entry: it is an open methodological question, not a settled one.
+//   - The United Kingdom is the other exception, in the other direction. VAT applies to the
+//     Edinburgh levy, so 5% of the ex-VAT room plus the VAT on it comes back to almost
+//     exactly 5% of the VAT-inclusive rate. Headline and landed share coincide there.
+
+// --- the declared reference stay --------------------------------------------
+// The basket every flat government charge is converted at, per Rail 3. Held here so the
+// legend, the entries and the gate cannot describe three different baskets.
+//
+// WHY 150 EUROS AND ONE GUEST. One guest because the site's own cost chart already converts
+// hotel tax at one traveler (CostChart.astro, TAX_TRAVELERS = 1), so the map matches a
+// basket the site had rather than inventing a second one. 150 euros because it is close to
+// the middle of what a visitor pays in the European cities this wave is about, and because
+// a round number is easier for a reader to re-run against their own room than a precise one.
+export const REFERENCE_STAY = {
+  guests: 1,
+  rooms: 1,
+  nightly: 150,
+  currency: 'EUR',
+  // The legend prints this verbatim. Kept beside the numbers so the words cannot drift
+  // from the arithmetic they describe.
+  words: 'one guest, one room, 150 euros a night',
+};
+
+// Units per US dollar, from the site's single baked snapshot. The base currency is not in
+// the rates table, so it is handled here rather than by every caller.
+const perUsd = (cur) => (cur === fxFallback.base ? 1 : fxFallback.rates[cur]);
+
+// One decimal. A modelled percentage is an approximation resting on a declared assumption,
+// and a second decimal would be precision it has not earned.
+const round1 = (n) => Math.round(n * 10) / 10;
+
+// The reference room, in dollars, so a fee in any currency can be compared with it through
+// the one rate table. Null if the reference currency itself is missing a rate, which would
+// make every conversion below impossible rather than merely wrong.
+export const referenceRoomUsd = usdFromLocal(REFERENCE_STAY.nightly, perUsd(REFERENCE_STAY.currency));
+
+// A flat charge as a share of the reference room. Returns null, never a zero and never a
+// guess, if the currency has no rate: absence is not zero here either, and a null keeps the
+// country off the colour scale instead of colouring it at nothing.
+export function referencePct(amount, currency, unit) {
+  const room = referenceRoomUsd;
+  if (!room || !(room > 0)) return null;
+  const usd = usdFromLocal(amount, perUsd(currency));
+  if (usd == null) return null;
+  // Per-person charges multiply by the party size the basket declares, which is one. Kept
+  // explicit rather than implied, because the day the basket changes to two guests this is
+  // the line that has to notice.
+  const people = unit === 'perPersonPerNight' ? REFERENCE_STAY.guests : 1;
+  return round1((usd * people) / room * 100);
+}
 
 // --- the colour scale -------------------------------------------------------
 // Five bands on addedPct. The ramp is the site's teal, light to deep. Bands are held here
@@ -155,25 +240,70 @@ export const SHAPE_WORDS = {
 // a reader. NOT the same as `colours`, because a no-bed-tax finding carries no percentage.
 export const isChecked = (e) => colours(e) || isNoBedTax(e) || isCheckedShape(e) || (!!e && e.state === 'varies');
 
-// Does this country carry a flat government charge the percentage fill cannot show?
-export const hasFlat = (e) => !!e && Array.isArray(e.flat) && e.flat.length > 0;
+// Does this country carry a flat government charge that had to be modelled at the declared
+// reference stay to reach the colour scale? This is what the stipple marks, and it is the
+// one thing a reader has to know about a fill before trusting it, so it is a function rather
+// than a field: an entry cannot forget to declare it, because it is read off the charges.
+export const hasModelledFlat = (e) => !!e && Array.isArray(e.modelled) && e.modelled.length > 0;
+
+// The share of a fill that came from modelling rather than from a real percentage. Zero for
+// a country whose whole charge is a percentage, the entire figure for a country whose whole
+// charge is flat.
+export const modelledShare = (e) => (hasModelledFlat(e) ? (e.modelledPct || 0) : 0);
+
+// DERIVING addedPct FOR THE FLAT AND MIXED COUNTRIES. Entries below hold `basePct` for any
+// real percentage component and `modelled` for the flat charges; this adds the two and
+// writes addedPct. Done here, once, at module load, so no entry can hold a hand-typed
+// conversion and the whole map moves together when fxFallback.js is refreshed.
+//
+// An entry that holds `modelled` must NOT also hand-write addedPct, and the gate enforces
+// that. A charge whose currency has no rate yields null, which leaves addedPct undefined and
+// drops the country to the not-yet-checked fill rather than colouring it at its percentage
+// components alone, because a fill that silently omits a charge is the failure this rail
+// exists to prevent.
+function deriveReferenceFigures(list) {
+  return list.map((e) => {
+    if (!hasModelledFlat(e)) return e;
+    const parts = e.modelled.map((f) => referencePct(f.amount, f.currency, f.unit));
+    if (parts.some((p) => p == null)) return { ...e, modelledPct: null, addedPct: null };
+    const modelledPct = round1(parts.reduce((n, p) => n + p, 0));
+    return { ...e, modelledPct, addedPct: round1((e.basePct || 0) + modelledPct) };
+  });
+}
 
 export const hotelTaxMapChecked = 'Aug 2026';
-export const hotelTaxMapCheckedISO = '2026-08-17';
+export const hotelTaxMapCheckedISO = '2026-08-29';
 
 // --- the countries ----------------------------------------------------------
-// PHASE 1 CONTENT NOTE, read this before adding anything.
-// This list is deliberately short and contains NO invented figures. Every state the map
-// can render is represented by a country that genuinely is in that state, so the shape
-// can be reviewed without a single placeholder number existing anywhere in the tree:
-//   checked, coloured, city basis, mixed display  -> Netherlands
-//   checked, coloured, flat charge stipple        -> Maldives
-//   varies within country                         -> United States, Canada, Switzerland
-//   pending, proposal named, nothing coloured     -> Thailand
-//   pending, inclusive display, nothing coloured  -> Japan
+// PHASE 2 CONTENT NOTE, read this before adding anything.
+//
+// Phase 1 shipped six entries and no invented figures, one per renderable state, so the
+// shape could be reviewed with nothing placeholder anywhere in the tree. Phase 2 fills in
+// the European wave from MAIN's verified table of 2026-08-28 and turns on the declared
+// reference stay, which is what lets a country whose whole charge is a few euros a night
+// reach the scale at all.
+//
+// THE FOUR RULES THAT DECIDED WHAT IS AND IS NOT HERE:
+//   1. Every entry that colours carries a real source URL on every government figure. That
+//      is enforced by scripts/check-hotel-tax-map.mjs, not by review, and it is the reason
+//      several countries MAIN's brief lists are still not coloured: the figure is verified
+//      and the authority's URL is not yet in the tree. A verified number with no link is a
+//      number a reader cannot check, and the fill is exactly the claim they would want to.
+//   2. A flat charge is held in its own currency with its unit. Never as a percentage.
+//   3. One entry per country. Austria colours on Vienna and names its flat provinces in the
+//      detail rather than existing twice.
+//   4. Where the internal spread defeats any single figure, the country stays "varies".
+//      Switzerland is re-confirmed as exactly that case below.
+//
+// STATES REPRESENTED, so the shape stays reviewable:
+//   checked, coloured on a real percentage        -> Netherlands, Austria, United Kingdom
+//   checked, coloured at the reference stay       -> Iceland, Czechia, Portugal, Poland,
+//                                                   Croatia, Greece
+//   checked, percentage PLUS a modelled flat      -> Maldives
+//   varies too much within the country            -> United States, Canada, Switzerland
+//   checked, shape known, no figure on this scale -> Japan, and every derived entry
 //   not yet checked                               -> every other country on earth
-// Bands 1, 2 and 5 are unoccupied for now. The legend still shows them.
-export const hotelTaxMap = [
+export const hotelTaxMap = deriveReferenceFigures([
   {
     // MAIN-verified anchor. Both figures are already carried, dated and sourced in
     // src/data/netherlands.js, so this entry reuses that guide's own sources rather than
@@ -244,8 +374,20 @@ export const hotelTaxMap = [
     slug: null,
     spoke: null,
     state: 'checked',
-    addedPct: 17,
-    addedBasis: 'The 17% TGST is what the percentage fill shows. The green tax is a flat charge per person per night, so it has no percentage until you fix a room rate, which is why this country is stippled rather than pushed into a darker band.',
+    // THIS FIGURE CHANGED IN PHASE 2, from 17% to about 24%, and the change is the new Rail
+    // 3 applied to the country the old rail was written around. Phase 1 coloured the
+    // Maldives on its 17% TGST alone and stippled the green tax, because 12 dollars a person
+    // a night has no percentage without a room rate. The declared reference stay now supplies
+    // that room rate, and it has to supply it here too: modelling Iceland's flat fee while
+    // leaving the Maldives' out would put two countries on two different axes and make the
+    // scale meaningless. So the green tax converts at the basket like every other flat
+    // charge, the stipple stays to say the fill is modelled, and the Maldives moves into the
+    // top band, which is where a 17% tax plus 12 dollars a night actually belongs.
+    basePct: 17,
+    modelled: [
+      { label: 'Green tax', amount: 12, currency: 'USD', unit: 'perPersonPerNight' },
+    ],
+    addedBasis: 'The 17% TGST is a real percentage. The green tax is 12 dollars per person per night, which is about 7% of the reference room, so the figure here is the two together at that declared room rate. At a cheap guesthouse the green tax is a far bigger share of the bill, and at an overwater villa it is a rounding error.',
     governmentTotalPct: null,
     display: 'added',
     displayNote: 'Resort rates here are routinely quoted before tax, so the whole stack arrives at checkout rather than in the price you compared.',
@@ -273,12 +415,9 @@ export const hotelTaxMap = [
         checkedISO: '2026-08-19',
       },
     ],
-    // The flat components restated for the stipple and the worked examples. Same figures
-    // as the government rows above, kept here so the component never has to guess which
-    // rows are flat by sniffing a label.
-    flat: [
-      { label: 'Green tax', amount: 12, currency: 'USD', unit: 'perPersonPerNight' },
-    ],
+    // `flat` used to live here, restating the green tax for the stipple. It is gone: the
+    // same charge is now in `modelled` above, which both drives the conversion and drives
+    // the stipple, so there is one copy of the figure rather than two that can drift apart.
     property: [
       { label: 'Service charge', range: '10%', note: 'Set by the property, not the government. Widely applied but not a tax, and not refundable.' },
     ],
@@ -319,9 +458,17 @@ export const hotelTaxMap = [
     slug: null,
     spoke: null,
     state: 'varies',
-    variesNote: 'A low national VAT on accommodation, then a per-person visitor tax set by each commune, which commonly includes a local transport card. The levy and what it buys both change from one valley to the next.',
+    // RE-CONFIRMED IN PHASE 2 AND DELIBERATELY NOT GIVEN A REFERENCE-STAY FIGURE. The
+    // declared basket can convert a flat fee, so the mechanical objection to colouring
+    // Switzerland is gone. The real objection is not mechanical: the commune spread runs
+    // from nothing to about 7 francs, and Zurich's charge is a voluntary hotel scheme rather
+    // than a tax at all, so there is no city a visitor overwhelmingly means and no honest
+    // representative to pick. That is what state "varies" is for, and converting an invented
+    // average at a declared room rate would produce a precise-looking fill on two
+    // assumptions instead of one.
+    variesNote: 'A low national VAT on accommodation, then a per-person visitor tax set by each commune, which commonly includes a local transport card. The levy and what it buys both change from one valley to the next, and in Zurich the charge is a voluntary hotel scheme rather than a tax.',
     cities: [],
-    pendingVerification: 'Needs the accommodation VAT rate plus representative commune visitor taxes, each sourced, and a note on where the fee includes transport.',
+    pendingVerification: 'Needs the accommodation VAT rate plus representative commune visitor taxes, each sourced, and a note on where the fee includes transport. A single national figure is not the goal here: the spread is the finding.',
     property: [],
     checkedISO: '2026-08-17',
   },
@@ -362,14 +509,332 @@ export const hotelTaxMap = [
     property: [],
     checkedISO: '2026-08-17',
   },
-];
+  // ==========================================================================
+  // THE EUROPEAN WAVE, added in Phase 2 from MAIN's verified table of 2026-08-28.
+  //
+  // Read Rail 7 before editing any of these. Every one of them colours on a small tourist
+  // tax and not on a large VAT, because the VAT is already inside the price the traveler
+  // compared. That is why a continent with some of the heaviest hotel taxation on earth
+  // sits almost entirely in the bottom band of this map.
+  // ==========================================================================
+
+  {
+    iso: 'AT',
+    country: 'Austria',
+    slug: 'austria',
+    spoke: 'tourist-tax',
+    state: 'checked',
+    // A REAL PERCENTAGE, SO NO MODELLING AND NO STIPPLE. Vienna is one of the few European
+    // cities that charges a share of the room rather than a few euros a head.
+    //
+    // AN OPEN QUESTION, FLAGGED RATHER THAN QUIETLY DECIDED. The 5% is charged on the room
+    // with VAT taken out. The Netherlands entry rebases exactly that kind of figure onto the
+    // VAT-inclusive price the traveler was quoted, which is how 12.5% became 10.3%. Applying
+    // the same rebasing here would give about 4.5% and move Austria from the second band to
+    // the first, so it is not a cosmetic difference. It is NOT applied, for two reasons:
+    // MAIN's table states 5.0 and states the same treatment for Edinburgh in the same
+    // breath, and rebasing needs a sourced accommodation VAT rate per country, which this
+    // tree does not yet carry. The base is stated plainly to the reader below instead. If
+    // MAIN wants the rebasing, it belongs in one helper applied to every percentage levy at
+    // once, not country by country.
+    addedPct: 5,
+    addedBasis: 'Vienna charges 5% of the accommodation price with VAT and any breakfast taken out of the base first, so a rate that bundles breakfast pays the tax on a smaller number. It rose from 3.2% on 1 July 2026 and the 11% lump-sum deduction that used to apply was dropped at the same time.',
+    cityBasis: 'Vienna',
+    cityBasisNote: 'Vienna only, and Vienna is the outlier: it is the one Austrian city that charges a percentage. Everywhere else it is a flat per-person nightly fee, roughly 3.05 euros in Salzburg, 4.50 euros in Burgenland and Carinthia, and about 2.60 euros across Tyrol, which land between about 2 and 3% of the reference room.',
+    display: 'added',
+    displayNote: 'Austrian hotel prices include VAT by law, so the VAT is not a surprise. The local tax is the part that turns up at the desk, and it is often not in the rate a platform showed you.',
+    government: [
+      {
+        label: 'Vienna local tax (Ortstaxe)',
+        figure: '5% of the room charge, excluding VAT and breakfast',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'Raised from 3.2% on 1 July 2026 under an amendment to the Vienna Tourism Promotion Act passed on 12 December 2025. Anyone staying more than three unbroken months is exempt.',
+        effective: '2026-07-01',
+        source: { label: 'Vienna Tourist Board, on the City of Vienna local tax: the rise to 5% and the basis it is charged on', url: 'https://b2b.wien.info/en/services/products-services/local-tax-1086968', type: 'gov' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    watch: [
+      {
+        label: 'Vienna local tax rises to 8%',
+        effective: '2027-07-01',
+        note: 'The second step of the same amendment. Not folded into the figure above before its date.',
+        source: { label: 'Vienna Tourist Board, on the City of Vienna local tax: the second step to 8%', url: 'https://b2b.wien.info/en/services/products-services/local-tax-1086968', type: 'gov' },
+      },
+    ],
+    property: [],
+    checkedISO: '2026-08-29',
+  },
+
+  {
+    iso: 'GB',
+    country: 'United Kingdom',
+    slug: 'united-kingdom',
+    spoke: 'tourist-tax',
+    state: 'checked',
+    // WHY THE HEADLINE AND THE LANDED SHARE AGREE HERE, WHICH THEY DO NOWHERE ELSE. The levy
+    // is 5% of the accommodation cost before VAT, and then VAT applies to the levy. Five
+    // percent of the ex-VAT room, grossed back up by the same 20%, is 5% of the VAT-inclusive
+    // rate the traveler was quoted. So 5.0 is both the stated rate and the real uplift
+    // against a quoted price, and MAIN's table figure needs no adjustment. The "about 6%"
+    // in the brief is the same charge measured against the ex-VAT room instead, which is the
+    // number a hotelier sees rather than the one a guest pays.
+    addedPct: 5,
+    addedBasis: 'Edinburgh charges 5% of the accommodation cost before VAT, and VAT is then charged on the levy, which brings it back to almost exactly 5% of the VAT-inclusive rate you were quoted. Measured against the room price before VAT, as an accommodation provider would, the same charge reads as about 6%.',
+    cityBasis: 'Edinburgh',
+    cityBasisNote: 'Edinburgh only, and it is the whole of the UK figure: England charges nothing, London charges nothing, and Glasgow and parts of Wales are scheduled rather than live. Manchester and Liverpool have small per-room charges of roughly 1 and 2 pounds a night, but those are business-district levies on the hotel rather than a tax, so they are not in this figure.',
+    display: 'added',
+    displayNote: 'UK price rules require the total shown at booking to include the levy, so a UK-facing site may already have it in the price while a rate quoted before taxes and fees will not.',
+    government: [
+      {
+        label: 'Edinburgh visitor levy',
+        figure: '5% of the accommodation cost before VAT',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'The first city-wide visitor levy in the UK, live since 24 July 2026 under the Visitor Levy (Scotland) Act 2024. Charged on the room only, not on meals, drinks, parking or transport, and capped at the first five consecutive nights of a stay. A stay booked and part-paid before 1 October 2025 is exempt.',
+        effective: '2026-07-24',
+        source: { label: 'City of Edinburgh Council: the visitor levy, its 5% rate and the five-night cap', url: 'https://www.edinburgh.gov.uk/business/visitor-levy-edinburgh', type: 'gov' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    property: [],
+    checkedISO: '2026-08-29',
+  },
+
+  {
+    iso: 'HU',
+    country: 'Hungary',
+    slug: 'hungary',
+    spoke: 'tourist-tax',
+    state: 'checked',
+    addedPct: 4,
+    addedBasis: 'Budapest charges 4% of the accommodation price with VAT taken out and compulsory breakfast and other services excluded from the base, for every night begun, with no cap on the number of nights.',
+    cityBasis: 'Budapest',
+    cityBasisNote: 'Budapest only. Elsewhere in Hungary the model is a flat few hundred forint per person per night, set town by town, which is well under 1% of the reference room, and many towns charge nothing at all.',
+    display: 'added',
+    displayNote: 'Hungarian VAT is 27%, the highest rate in the EU, and it is already inside the rate you were quoted. The 4% is the part that is not.',
+    government: [
+      {
+        label: 'Budapest tourist tax (idegenforgalmi ado)',
+        figure: '4% of the room price excluding VAT',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'Set by Budapest municipal decree 31/1994 under the national Local Taxes Act. Charged per night begun, on the accommodation charge with VAT and compulsory breakfast excluded. Under-18s are exempt.',
+        source: { label: 'Budapest Assembly decree 31/1994 on the tourist tax, in the national law register: the 4% rate and its base', url: 'https://net.jogtar.hu/rendelet?council=fovaros&docid=99400031.FOV', type: 'gov' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    property: [],
+    checkedISO: '2026-08-29',
+  },
+
+  {
+    iso: 'IS',
+    country: 'Iceland',
+    slug: 'iceland',
+    spoke: 'tourist-tax',
+    state: 'checked',
+    // The first entry to colour purely from the declared reference stay. Nothing here is a
+    // percentage in real life: the whole charge is 800 kronur a room a night.
+    modelled: [
+      { label: 'Lodging tax', amount: 800, currency: 'ISK', unit: 'perRoomPerNight' },
+    ],
+    addedBasis: 'The whole charge is a flat 800 kronur per room per night, so this percentage is that fee measured against the reference room and nothing more. It is per room rather than per person, so it does not double for two people sharing, and on a cheap guesthouse night it is a much larger share of the bill than this figure suggests.',
+    display: 'added',
+    displayNote: 'The lodging tax is frequently left out of the price shown online and appears at check-in or checkout. VAT is separate and already in the rate.',
+    government: [
+      {
+        label: 'Lodging tax (gistinattaskattur)',
+        figure: '800 ISK per room, per night',
+        basis: 'perRoomPerNight',
+        inQuotedPrice: false,
+        note: 'Charged on hotels, guesthouses and similar licensed stays, per unit rather than per guest. Rose to 800 kronur at the start of 2025. Campsites and motorhome pitches are 400 kronur a night, and cruise passengers on domestic voyages 400 kronur a night.',
+        effective: '2025-01-01',
+        source: { label: 'Skatturinn (Iceland Revenue and Customs): the lodging tax and its rates', url: 'https://www.skatturinn.is/english/companies/tax-issues/lodging-tax/', type: 'revenue' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    property: [],
+    checkedISO: '2026-08-29',
+  },
+
+  {
+    iso: 'CZ',
+    country: 'Czechia',
+    slug: 'czechia',
+    spoke: 'tourist-tax',
+    state: 'checked',
+    modelled: [
+      { label: 'Local accommodation fee', amount: 50, currency: 'CZK', unit: 'perPersonPerNight' },
+    ],
+    addedBasis: 'Prague charges the national maximum of 50 koruna per person per night, which is what this percentage models at the reference room. Because it is per person, two people sharing pay it twice while the room rate stays the same, so a couple lands at roughly double this share.',
+    cityBasis: 'Prague',
+    cityBasisNote: 'Prague, which sits at the legal ceiling. Other Czech towns set their own fee up to the same 50 koruna cap, many popular ones at or near it, and plenty of small municipalities charge nothing.',
+    display: 'added',
+    displayNote: 'One of the smaller charges in Europe in absolute terms, and it is genuinely added rather than embedded, which is why it appears here at all.',
+    government: [
+      {
+        label: 'Local accommodation fee',
+        figure: '50 CZK per person, per night',
+        basis: 'perPersonPerNight',
+        inQuotedPrice: false,
+        note: 'Capped by national law at 50 koruna per person per night and set by each municipality up to that ceiling. Under-18s are exempt, and it applies only to the first 60 consecutive nights.',
+        source: { label: 'City of Prague: the local tourist fee of 50 koruna per person per night, under Act 565/1990', url: 'https://sdileneubytovani.praha.eu/jnp/en/for_accommodation_providers/local_tourist_fee.html', type: 'gov' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    property: [],
+    checkedISO: '2026-08-29',
+  },
+
+  {
+    iso: 'PT',
+    country: 'Portugal',
+    slug: 'portugal',
+    spoke: 'tourist-tax',
+    state: 'checked',
+    modelled: [
+      { label: 'Municipal tourist tax', amount: 4, currency: 'EUR', unit: 'perPersonPerNight' },
+    ],
+    addedBasis: 'Lisbon charges 4 euros per person per night, which is what this models. Porto is 3 euros, about 2% of the reference room, and the Algarve 2 euros. It is per person, so a couple pays it twice.',
+    cityBasis: 'Lisbon',
+    cityBasisNote: 'Lisbon, because it is where most visitors stay. Most of Portugal charges nothing at all: the tax exists only in the municipalities that have adopted it, and it is capped at 7 nights with under-13s exempt.',
+    display: 'added',
+    displayNote: 'Frequently collected in cash at the property and rarely inside the rate you booked, so it arrives as a separate ask at the desk.',
+    government: [
+      {
+        label: 'Municipal tourist tax (taxa municipal turistica)',
+        figure: '4 EUR per person, per night in Lisbon',
+        basis: 'perPersonPerNight',
+        inQuotedPrice: false,
+        note: 'Raised to 4 euros in Lisbon, capped at 7 consecutive nights, with under-13s exempt. Porto charges 3 euros and several Algarve municipalities 2 euros, each set locally.',
+        source: { label: 'Lisbon City Council: the municipal tourist tax, its rise to 4 euros a person a night, the minimum age and the seven-night cap', url: 'https://informacoeseservicos.lisboa.pt/servicos/detalhe/taxa-municipal-turistica', type: 'gov' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    property: [],
+    checkedISO: '2026-08-29',
+  },
+
+  {
+    iso: 'PL',
+    country: 'Poland',
+    slug: 'poland',
+    spoke: 'tourist-tax',
+    state: 'checked',
+    // A "MOSTLY NOTHING" COUNTRY, AND THE HONESTY CATCH THAT COMES WITH IT.
+    // MAIN's brief offered two ways to handle this and asked which one shipped: colour it at
+    // the small figure with the detail leading on the exemption, or invent a special low-band
+    // fill. This is option (a), the first one, and the reason is that a special fill would be
+    // a sixth state on a scale that already has five, readable only from a legend, to
+    // describe a country whose figure is honestly 0.5%. A nearly-white fill in the bottom
+    // band says "almost nothing is added here" and that is exactly the truth. What it must
+    // not do is imply Warsaw charges this, so cityBasisNote leads with the exemption rather
+    // than mentioning it at the end.
+    modelled: [
+      { label: 'Local fee (oplata miejscowa)', amount: 3.46, currency: 'PLN', unit: 'perPersonPerNight' },
+    ],
+    addedBasis: 'Most of Poland, including Warsaw and Krakow, charges nothing at all. Where the fee does apply it is a few zloty per person per night, and the figure here models the 2026 legal maximum for the ordinary local fee, which is what a town like Gdansk charges.',
+    // `representative` rather than `cityBasis`, because the figure is the national ceiling
+    // that a levying town may charge, not one named city's own rate. Rendered as
+    // "Representative: ..." on the row, which is the honest label for it.
+    representative: 'the towns that levy it, at the 2026 national ceiling',
+    representativeNote: 'Read this before reading the colour. Poland has no nationwide tourist tax, Warsaw charges nothing, and Krakow legally cannot. The fee exists only in designated resort towns and spa towns, so this fill describes those places and not the two cities most visitors actually book. In a recognised spa town the higher spa fee applies instead, capped at 6.67 zloty a night in 2026, about 1.1% of the reference room, and the two are never charged together.',
+    display: 'added',
+    displayNote: 'Small enough in absolute terms that it rarely changes a decision, and it is collected by the property rather than shown at booking.',
+    government: [
+      {
+        label: 'Local fee (oplata miejscowa)',
+        figure: 'up to 3.46 PLN per person, per night in 2026',
+        basis: 'perPersonPerNight',
+        inQuotedPrice: false,
+        note: 'A ceiling set each year by the finance minister, with each municipality free to charge less or nothing. The 2026 limits are 3.46 zloty for the ordinary local fee, 4.89 zloty in spa-protection areas and 6.67 zloty for the spa fee itself. Commonly charged only on stays longer than one night.',
+        effective: '2026-01-01',
+        source: { label: 'Monitor Polski 2025 item 726: the finance ministry notice setting the 2026 ceilings for local and spa fees', url: 'https://monitorpolski.gov.pl/MP/2025/726', type: 'gov' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    property: [],
+    checkedISO: '2026-08-29',
+  },
+
+  {
+    iso: 'HR',
+    country: 'Croatia',
+    slug: 'croatia',
+    spoke: 'tourist-tax',
+    state: 'checked',
+    modelled: [
+      { label: 'Sojourn tax', amount: 2.65, currency: 'EUR', unit: 'perPersonPerNight' },
+    ],
+    addedBasis: 'The sojourn tax is set by town and season, and this models the top of the range: the coast in peak summer, where Dubrovnik charges 2.65 euros per adult per night. Off season and inland it falls to roughly 1.10 to 1.85 euros, so the honest figure for Croatia is a range and this is its upper end.',
+    representative: 'the coast in peak season, at the Dubrovnik rate',
+    representativeNote: 'Not a national rate and not a single city. Croatia sets the sojourn tax by municipality category and by season, so the peak coastal figure is used as the representative because it is what most visitors meet, with the range given above. Under-12s are exempt and 12 to 18 year olds pay half.',
+    display: 'added',
+    displayNote: 'Usually not inside a booking platform price and often collected in cash on arrival, which is standard practice here rather than a scam.',
+    government: [
+      {
+        label: 'Sojourn tax (boravisna pristojba)',
+        figure: '2.65 EUR per adult, per night on the peak-season coast',
+        basis: 'perPersonPerNight',
+        inQuotedPrice: false,
+        note: 'Charged per person per night at every kind of registered accommodation, at rates set by municipality category and season. The peak season runs April to September on the coast; outside it the rate drops to roughly 1.85 euros, and lower-category inland municipalities charge less again.',
+        source: { label: 'Croatian National Tourist Board: the sojourn tax, who pays it and how it varies by place and season', url: 'https://croatia.hr/en-gb', type: 'tourism' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    property: [],
+    checkedISO: '2026-08-29',
+  },
+
+  {
+    iso: 'GR',
+    country: 'Greece',
+    slug: 'greece',
+    spoke: 'tourist-tax',
+    state: 'checked',
+    // THE WIDEST INTERNAL RANGE OF ANY COLOURED COUNTRY HERE, AND WHY IT STILL COLOURS.
+    // The Climate Crisis Resilience Fee is flat per room but scaled by star rating and by
+    // season, running from 2 euros to 15. At the reference room that is 1.3% to 10%, which
+    // crosses three bands. Switzerland is left as "varies" for a spread like that, so the
+    // difference matters: Greece's spread is a PUBLISHED LADDER a reader can place
+    // themselves on from their own booking, while Switzerland's is a patchwork of communes
+    // with no rule connecting them. A ladder can carry a representative rung and name the
+    // rest. A patchwork cannot.
+    modelled: [
+      { label: 'Climate Crisis Resilience Fee', amount: 6, currency: 'EUR', unit: 'perRoomPerNight' },
+    ],
+    addedBasis: 'The fee is flat per room per night and scales with the star rating and the season, from 2 euros at a one or two star hotel in low season to 15 euros at a five star hotel in peak. This models a mid ladder rung, 6 euros at a four star hotel in season, which is about 4% of the reference room. The full ladder at that room rate runs from about 1.3% to about 10%.',
+    representative: 'a four-star hotel in peak season',
+    representativeNote: 'One rung of a published ladder, not a national rate. Peak rates run April to October, which covers most US trips, and off-season rates are roughly a quarter of them. Registered short-term rentals are charged per property per night on the same basis, 8 euros in peak season. There is no cap on nights and no exemption for children.',
+    display: 'added',
+    displayNote: 'The 13% Greek VAT on accommodation is inside the rate you were quoted, so it is not in this figure. The resilience fee is the part that is added, and it is usually collected at the property.',
+    government: [
+      {
+        label: 'Climate Crisis Resilience Fee',
+        figure: '2 to 15 EUR per room, per night by star rating and season',
+        basis: 'perRoomPerNight',
+        inQuotedPrice: false,
+        note: 'Introduced by Law 5073/2023 in place of the earlier overnight stay tax. Charged per room or rental unit rather than per person, on the official category of the property: 2 euros at one and two star hotels, 5 at three star, 10 at four star and 15 at five star in peak season, with registered rentals at 8. Off-season rates run about a quarter of these.',
+        source: { label: 'AADE (Greek tax authority): the climate crisis resilience fee by category and season', url: 'https://www.aade.gr/en/climate-crisis-resilience-fee-issuance-statement', type: 'revenue' },
+        checkedISO: '2026-08-29',
+      },
+    ],
+    property: [],
+    checkedISO: '2026-08-29',
+  },
+
+]);
 
 // --- scheduled changes we are tracking --------------------------------------
 // Read by scripts/check-fact-staleness.mjs on every run so a date cannot quietly pass.
 // NOT displayed to a reader until an entry carries a source: the component filters on it.
-// Dates below come from the Phase 1 research brief and each still needs its official URL,
-// which is why every one carries pendingSource. A date is not a rate, but an unsourced
-// date on a public page is still an unsourced claim, so none of these are shown yet.
+// Phase 2 attached real sources to the Netherlands, Edinburgh and Vienna rows, so those
+// three are the ones a reader sees. The rest still carry pendingSource and stay off the
+// page: a date is not a rate, but an unsourced date on a public page is still an unsourced
+// claim. They are not idle, though. check-fact-staleness.mjs reads every row on every run,
+// so a date cannot pass quietly just because nobody is showing it.
 export const hotelTaxWatchlist = [
   // The accommodation VAT rise is a NATIONAL change, and its source is the Dutch national
   // government. It was labelled Amsterdam here, which put a national measure under a city
@@ -380,7 +845,8 @@ export const hotelTaxWatchlist = [
   { iso: 'BT', where: 'Bhutan', label: 'GST comes into force', effective: '2026-01-01', status: 'scheduled', source: null, pendingSource: 'Needs the Bhutan Department of Revenue and Customs commencement notice, and a check on whether it replaced or sits beside the Sustainable Development Fee.' },
   { iso: 'ES', where: 'Barcelona', label: 'City surcharge escalates in steps to 2029', effective: '2026-01-01', status: 'scheduled', source: null, pendingSource: 'Needs the Barcelona city council schedule showing each step and its date.' },
   { iso: 'GB', where: 'Glasgow', label: 'Visitor levy begins', effective: '2027-01-25', status: 'scheduled', source: null, pendingSource: 'Needs the Glasgow City Council scheme document.' },
-  { iso: 'GB', where: 'Edinburgh', label: 'Visitor levy in force', effective: '2026-07-24', status: 'in-force', source: null, pendingSource: 'Needs the City of Edinburgh Council scheme document confirming the live rate.' },
+  { iso: 'GB', where: 'Edinburgh', label: 'Visitor levy in force at 5%', effective: '2026-07-24', status: 'in-force', source: { label: 'City of Edinburgh Council: the visitor levy, its 5% rate and the five-night cap', url: 'https://www.edinburgh.gov.uk/business/visitor-levy-edinburgh', type: 'gov' }, checkedISO: '2026-08-29' },
+  { iso: 'AT', where: 'Vienna', label: 'Local tax rose to 5%, and rises again to 8% in July 2027', effective: '2026-07-01', status: 'in-force', source: { label: 'Vienna Tourist Board, on the City of Vienna local tax: the two-step rise to 5% and then 8%', url: 'https://b2b.wien.info/en/services/products-services/local-tax-1086968', type: 'gov' }, checkedISO: '2026-08-29' },
   { iso: 'TR', where: 'Turkey', label: 'Temporary 1% accommodation tax window', effective: '2026-05-01', ends: '2026-12-31', status: 'scheduled', source: null, pendingSource: 'Needs the Turkish Revenue Administration notice, including whether the window was extended.' },
   { iso: 'TH', where: 'Thailand', label: 'Proposed air arrival fee, raised to 450 baht in August 2026', status: 'proposed', source: null, pendingSource: 'Needs the current cabinet position. Still not collected, so it is excluded from the map. The Thailand guide carries the live wording.' },
   { iso: 'GB', where: 'London', label: 'Proposed visitor levy', status: 'proposed', source: null, pendingSource: 'Needs the current position from the Greater London Authority. Excluded from the map until collected.' },

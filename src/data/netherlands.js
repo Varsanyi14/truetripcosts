@@ -114,7 +114,7 @@ export default {
   taxfree: {
     label: "Taxes and the VAT change",
     heading: "A tourist tax that varies by city, and a VAT hike that just landed.",
-    text: "Two separate charges affect a Dutch hotel bill. Amsterdam's <b>tourist tax</b> is 12.5% of the room rate, the highest in Europe, while most other Dutch towns charge a small flat fee per person per night instead. Separately, and nationwide, <b>VAT on hotel accommodation jumped from 9% to 21%</b> on January 1, 2026, a change some booking sites had not fully reflected in their displayed prices as of when this guide was checked. In Amsterdam, the two together can push the effective tax on a room to roughly 33.5%, well above what a quoted nightly rate might suggest. If you shop, non-EU visitors can also reclaim VAT (21% standard rate, 9% on most other goods) on purchases over a per-store minimum, typically around 50 euros: ask for a tax-free form, keep the goods unused, and get it stamped by customs when you leave the EU."
+    text: "Two separate charges affect a Dutch hotel bill. Amsterdam's <b>tourist tax</b> is 12.5% of the room rate, the highest in Europe, while most other Dutch towns charge a small flat fee per person per night instead. Separately, and nationwide, <b>VAT on hotel accommodation jumped from 9% to 21%</b> on January 1, 2026, a change some booking sites had not fully reflected in their displayed prices as of when this guide was checked. In Amsterdam the two together come to roughly 33.5% of the room, though only the city tax is added at checkout: the VAT is already inside the rate you were quoted, so about 10% is what actually appears on top. If you shop, non-EU visitors can also reclaim VAT (21% standard rate, 9% on most other goods) on purchases over a per-store minimum, typically around 50 euros: ask for a tax-free form, keep the goods unused, and get it stamped by customs when you leave the EU."
   },
 
   recentChange: {
@@ -456,7 +456,7 @@ export default {
       { k: "Amsterdam", v: "12.5% of the room rate" },
       { k: "Most other towns", v: "A few euros per person, per night" },
       { k: "Hotel VAT", v: "Rose from 9% to 21% in January 2026" },
-      { k: "Amsterdam, all in", v: "Roughly a third on top of the room" },
+      { k: "Amsterdam, added at checkout", v: "About 10% of the quoted rate" },
     ],
     live: true,
     topic: "tourist-tax",
@@ -465,11 +465,11 @@ export default {
       "Amsterdam takes 12.5% of a room rate, a proportion no European city beats, and hotel VAT reached 21% in January 2026. What both do to your bill.",
     h1: "Netherlands tourist tax, and the VAT rise that landed in January",
     lede:
-      "Short answer: two separate charges sit on a Dutch hotel bill, and in Amsterdam they now add up to about a third of the room rate. One is set by the city, the other by the national government, and the second one moved this year.",
+      "Short answer: two separate charges sit on a Dutch hotel bill, and only one of them is a surprise. The 21% VAT is already inside the rate you were quoted. Amsterdam's city tax is not, and it adds about 10% at checkout.",
     checked: "Aug 2026",
     checkedISO: "2026-08-11",
     answer:
-      "A Dutch hotel bill carries a <b>city tourist tax</b> and <b>national VAT</b>, and they are unrelated to each other. In Amsterdam the city takes <b>12.5% of the net room rate</b>, a percentage no other European city beats, and it keeps taking it however long you stay. Elsewhere the model is different: most municipalities ask for <b>a few euros for each guest, each night</b>, a flat figure set town by town. The second charge is national. Hotel VAT stood at 9% until the end of 2025 and <b>became 21% on 1 January 2026</b>, wherever in the country you sleep. Stacked in Amsterdam, the two land at roughly <b>a third on top of the advertised rate</b>, which is why a quoted nightly price and a checkout total can look like different holidays.",
+      "A Dutch hotel bill carries a <b>city tourist tax</b> and <b>national VAT</b>, and they are unrelated to each other. In Amsterdam the city takes <b>12.5% of the net room rate</b>, a percentage no other European city beats, and it keeps taking it however long you stay. Elsewhere the model is different: most municipalities ask for <b>a few euros for each guest, each night</b>, a flat figure set town by town. The second charge is national. Hotel VAT stood at 9% until the end of 2025 and <b>became 21% on 1 January 2026</b>, wherever in the country you sleep. Stacked in Amsterdam the two come to roughly <b>a third of the room</b> in total government take, but that is not what lands at checkout. Dutch law requires consumer prices to include VAT, so the 21% is already inside the rate you compared. What is genuinely added is the city tax, and because it is charged on the room <b>before</b> VAT it works out at about <b>10% of the price you were quoted</b>. That is the number to budget for.",
     official: {
       label: "Dutch government: VAT on overnight accommodation rose to 21%",
       url: "https://business.gov.nl/amendments/vat-overnight-accommodation-goes-up/",
@@ -537,7 +537,7 @@ export default {
     faqs: [
       {
         q: "How much is the tourist tax in Amsterdam?",
-        a: "The city takes 12.5% of the net room rate, a proportion nowhere else in Europe matches, and no cap limits how many nights it applies to. It is charged on the price before VAT and normally added when you check out rather than when you book. On top of it sits the national 21% VAT on hotel rooms, so an Amsterdam stay carries roughly a third above the advertised rate once both are counted.",
+        a: "The city takes 12.5% of the net room rate, a proportion nowhere else in Europe matches, and no cap limits how many nights it applies to. It is charged on the price before VAT and normally added when you check out rather than when you book. On top of it sits the national 21% VAT on hotel rooms, which takes the total government take on the room to roughly a third. Only the city tax is added at checkout though, because the VAT is already inside the quoted rate, and measured against that quoted price the city tax comes to about 10%.",
       },
       {
         q: "Did hotel VAT really go up in the Netherlands?",

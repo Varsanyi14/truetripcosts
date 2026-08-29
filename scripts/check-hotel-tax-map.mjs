@@ -15,12 +15,22 @@
 //
 // Exits 1 on any FAIL. Notes are advisory and do not fail the run.
 
+import { readFileSync } from 'node:fs';
 import {
-  BANDS, STATES, bandFor, colours, hasFlat, isNoBedTax, isCheckedShape, SHAPE_WORDS,
+  BANDS, STATES, bandFor, colours, hasModelledFlat, modelledShare, isNoBedTax, isCheckedShape,
+  SHAPE_WORDS, REFERENCE_STAY, referenceRoomUsd, referencePct,
   hotelTaxMap, hotelTaxWatchlist, hotelTaxMapCheckedISO, byIso,
 } from '../src/data/hotel-tax-map.js';
 import world from '../src/data/maps/world.js';
 import { countries } from '../src/data/index.js';
+import fxFallback from '../src/data/fxFallback.js';
+
+// The data file is read as TEXT as well as imported, for one check that cannot be done any
+// other way: proving no entry HAND-WRITES a percentage for a flat fee. By the time the module
+// has loaded, a derived addedPct and a pasted one are the same number, so the only place the
+// difference is visible is the source.
+const DATA_PATH = 'src/data/hotel-tax-map.js';
+const dataText = readFileSync(new URL('../' + DATA_PATH, import.meta.url), 'utf8');
 
 // The component derives a no-bed-tax entry for every live country with tax.none === true
 // that hotel-tax-map.js does not already cover. Rebuilt here the same way so the gate audits
@@ -221,10 +231,16 @@ for (const e of coloured) {
   const id = `${e.iso} (${e.country})`;
   const pctComponents = (e.government || []).filter(g => g.basis === 'percentOfRoom');
   const sum = pctComponents.reduce((n, g) => n + (parseFloat(String(g.figure).replace(/[^\d.]/g, '')) || 0), 0);
-  // You cannot have more added on top than the total of every percentage charge that exists.
-  check(sum === 0 || e.addedPct <= sum + 0.01,
-    `${id}: what is added on top does not exceed the sum of its percentage charges`,
-    `added ${e.addedPct}%, components sum to ${sum}%`);
+  // THE CEILING NOW INCLUDES THE MODELLED FLATS, and it had to. Phase 1's invariant was
+  // "addedPct cannot exceed the sum of the percentage charges", which was right when a flat
+  // fee could not reach a fill. Under Rail 3 a flat fee legitimately does, so the old form
+  // would have failed the Maldives (17% of percentages, 24% of fill) and, worse, would have
+  // passed every flat-only country trivially because their percentage sum is zero. The
+  // honest ceiling is the percentages plus what the basket contributed.
+  const ceiling = sum + modelledShare(e);
+  check(ceiling === 0 || e.addedPct <= ceiling + 0.05,
+    `${id}: what is added on top does not exceed its percentage charges plus its modelled flats`,
+    `added ${e.addedPct}%, components ${sum}% + modelled ${modelledShare(e)}%`);
   if (typeof e.governmentTotalPct === 'number') {
     check(e.addedPct <= e.governmentTotalPct + 0.01,
       `${id}: what is added on top does not exceed the total government take`,
@@ -233,15 +249,105 @@ for (const e of coloured) {
   // A country whose stack includes a flat charge must be stippled, or the fill quietly
   // understates it with nothing on the map to say so.
   const flatInGov = (e.government || []).some(g => /perPerson|perRoom|flat/i.test(String(g.basis || '')));
-  check(flatInGov === hasFlat(e),
+  check(flatInGov === hasModelledFlat(e),
     flatInGov
-      ? `${id}: its flat government charge is mirrored in flat[], so the stipple appears`
+      ? `${id}: its flat government charge is mirrored in modelled[], so it is converted AND stippled`
       : `${id}: has no flat government charge and correctly claims none`);
   // A figure derived by anything other than adding up its parts has to explain itself, or
   // the detail view leaves a reader unable to reconstruct it.
-  if (sum > 0 && Math.abs(e.addedPct - sum) > 0.01) {
-    check(!!e.addedBasis, `${id}: its figure differs from a plain sum, so it explains how it was derived`);
+  if (Math.abs(e.addedPct - sum) > 0.01) {
+    check(!!e.addedBasis, `${id}: its figure differs from a plain sum of its percentages, so it explains how it was derived`);
   }
+}
+
+// ---------------------------------------------------------------------------
+// THE DECLARED REFERENCE STAY. Hard rail, and the newest one, so here is what it is for.
+//
+// Rail 3 changed in Phase 2: a flat government fee is now converted into a percentage at a
+// declared basket, which is what lets most of Europe reach this scale at all. That buys a
+// comparable number and pays for it with an assumption, so the assumption has to be
+// visible, stated once, and impossible to apply inconsistently. Three failure modes are
+// worth naming because each of them would look fine in review:
+//
+//   1. A PASTED PERCENTAGE. Someone computes 3.7% for Iceland by hand and types it in. It
+//      is correct on the day and wrong forever after, because it no longer moves when the
+//      rate does, and nothing on the page says which of the two it is. Caught by reading the
+//      SOURCE TEXT, since a pasted number and a derived one are identical once loaded.
+//   2. A SILENT NULL. A currency with no rate in fxFallback.js yields null, and a fill
+//      computed as "percentages only, flat charge quietly dropped" would understate the
+//      country while looking complete. The derivation returns null for the whole figure
+//      instead, which drops the country off the scale, and this asserts that.
+//   3. AN UNSTIPPLED MODEL. A modelled fill that does not carry the stipple is a precise
+//      colour resting on an assumption with nothing on the map to say so, which is the exact
+//      thing the old stipple existed to prevent.
+console.log('\n5a. The declared reference stay is declared, applied once, and never pasted');
+
+check(typeof REFERENCE_STAY.nightly === 'number' && REFERENCE_STAY.nightly > 0,
+  'the basket names a positive room rate', String(REFERENCE_STAY.nightly));
+check(REFERENCE_STAY.guests >= 1 && REFERENCE_STAY.rooms >= 1,
+  'the basket names a party size and a room count',
+  `${REFERENCE_STAY.guests} guest(s), ${REFERENCE_STAY.rooms} room(s)`);
+check(!!fxFallback.rates[REFERENCE_STAY.currency],
+  `the basket currency has a rate in fxFallback.js`, REFERENCE_STAY.currency);
+check(typeof referenceRoomUsd === 'number' && referenceRoomUsd > 0,
+  'the reference room converts to a usable dollar figure', String(referenceRoomUsd));
+// The words in the legend must contain the numbers the arithmetic uses. A legend that says
+// 150 euros while the code uses 120 is the worst outcome available here, because the whole
+// defence of this rail is that the assumption is stated.
+check(REFERENCE_STAY.words.includes(String(REFERENCE_STAY.nightly)),
+  'the words the legend prints name the same room rate the code converts at', REFERENCE_STAY.words);
+
+// Every flat charge is convertible, and its unit is one the site has words for.
+const UNITS = ['perPersonPerNight', 'perRoomPerNight'];
+for (const e of hotelTaxMap.filter(hasModelledFlat)) {
+  const id = `${e.iso} (${e.country})`;
+  for (const f of e.modelled) {
+    check(typeof f.amount === 'number' && f.amount > 0,
+      `${id}: modelled charge "${f.label}" holds a positive amount`, String(f.amount));
+    check(f.currency === fxFallback.base || !!fxFallback.rates[f.currency],
+      `${id}: modelled charge "${f.label}" is in a currency fxFallback.js can convert`, String(f.currency));
+    check(UNITS.includes(f.unit),
+      `${id}: modelled charge "${f.label}" carries a unit the basket knows how to apply`, String(f.unit));
+  }
+  // The derivation, re-run here rather than trusted. If these disagree, either the module
+  // did not derive the figure or something overwrote it afterwards.
+  const parts = e.modelled.map(f => referencePct(f.amount, f.currency, f.unit));
+  const expected = parts.some(p => p == null)
+    ? null
+    : Math.round(((e.basePct || 0) + parts.reduce((n, p) => n + p, 0)) * 10) / 10;
+  check(e.addedPct === expected || (expected == null && (e.addedPct == null)),
+    `${id}: its figure is exactly what the basket produces, not something near it`,
+    `holds ${e.addedPct}, basket gives ${expected}`);
+  check(!colours(e) || e.addedPct != null,
+    `${id}: a charge in a currency with no rate would drop it off the scale rather than colour it short`);
+  // The native figure has to survive to the reader, or the modelled percent is all they get.
+  check((e.government || []).some(g => /perPerson|perRoom|flat/i.test(String(g.basis || ''))),
+    `${id}: the flat charge is also stated as a government row in its own units`);
+}
+
+// THE NO-PASTED-PERCENTAGE CHECK. Splits the data file into entry blocks and refuses any
+// block that holds both a modelled charge and a hand-written addedPct.
+const blocks = dataText.split(/\n  \{\n/).slice(1);
+check(blocks.length >= hotelTaxMap.length,
+  'the source splits into at least as many entry blocks as there are entries, so this check still covers them all',
+  `${blocks.length} blocks, ${hotelTaxMap.length} entries`);
+const pasted = blocks.filter(b => /\n\s+modelled: \[/.test(b) && /\n\s+addedPct:/.test(b));
+check(pasted.length === 0,
+  'no entry holds both a modelled flat charge and a hand-written percentage for it',
+  pasted.length ? `${pasted.length} block(s) do; the percent must be derived, not pasted` : '');
+
+// THE STIPPLE RAIL. A modelled fill must be marked as modelled.
+for (const e of hotelTaxMap.filter(e => colours(e))) {
+  const modelled = hasModelledFlat(e);
+  check(modelled === (modelledShare(e) > 0) || !modelled,
+    `${e.iso}: if it carries modelled charges, they contribute a real share of its fill`,
+    `modelled share ${modelledShare(e)}%`);
+}
+
+// A country that refuses a single figure must not hold a route to one.
+for (const e of hotelTaxMap.filter(e => e.state !== 'checked')) {
+  check(!hasModelledFlat(e),
+    `${e.iso} (${e.country}): state "${e.state}" carries no modelled charge that could colour it`);
 }
 
 // ---------------------------------------------------------------------------
@@ -278,6 +384,21 @@ for (const e of hotelTaxMap.filter(e => e.state === 'varies')) {
 }
 for (const e of coloured.filter(e => e.cityBasis)) {
   check(!!e.cityBasisNote, `${e.iso}: names the city its figure is for AND says what the rest of the country does`);
+}
+// A THIRD KIND OF "IT DEPENDS", ADDED IN PHASE 2. Croatia's rate is set by municipality
+// category and season, and Greece's by star rating and season, so neither has a city to name
+// and neither is honestly a national rate. Both colour on a REPRESENTATIVE rung and say which
+// rung it is. That is only defensible with the note attached, so the note is mandatory here
+// for the same reason cityBasisNote is: without it the map states a national figure.
+for (const e of coloured.filter(e => e.representative)) {
+  check(!!e.representativeNote,
+    `${e.iso}: names which case its figure represents AND what the rest of the range looks like`);
+}
+// The two must not be silently interchangeable: a representative figure that is really one
+// city should say so with cityBasis, which is the narrower and more useful claim.
+for (const e of coloured) {
+  check(!(e.state === 'varies' && (e.cityBasis || e.representative)),
+    `${e.iso}: does not claim both that no figure is possible and that one figure represents it`);
 }
 
 // ---------------------------------------------------------------------------
@@ -320,7 +441,10 @@ const byState = {};
 for (const e of rendered) byState[e.state] = (byState[e.state] || 0) + 1;
 console.log('  entries:', rendered.length, '(' + hotelTaxMap.length, 'hand-written +', derived.length, 'derived) |',
   Object.entries(byState).map(([k, v]) => `${k} ${v}`).join(', '));
-console.log('  coloured:', coloured.length, coloured.length ? '(' + coloured.map(e => `${e.iso} ${e.addedPct}%${hasFlat(e) ? ' +flat' : ''}`).join(', ') + ')' : '');
+console.log('  coloured:', coloured.length, coloured.length ? '(' + coloured.map(e => `${e.iso} ${e.addedPct}%${hasModelledFlat(e) ? ' modelled' : ''}`).join(', ') + ')' : '');
+console.log('  reference stay:', REFERENCE_STAY.words, '=', referenceRoomUsd.toFixed(2), 'USD at the fxFallback snapshot of', fxFallback.date);
+console.log('  fills resting on that basket:',
+  coloured.filter(hasModelledFlat).map(e => `${e.iso} ${modelledShare(e)}% of ${e.addedPct}%`).join(', ') || 'none');
 console.log('  occupied bands:', BANDS.filter(b => coloured.some(e => bandFor(e.addedPct) === b)).map(b => b.label).join(', ') || 'none');
 console.log('  empty bands (legend still shows them):',
   BANDS.filter(b => !coloured.some(e => bandFor(e.addedPct) === b)).map(b => b.label).join(', ') || 'none');
