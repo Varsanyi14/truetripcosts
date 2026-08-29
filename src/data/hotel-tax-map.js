@@ -1036,22 +1036,24 @@ export const hotelTaxMap = deriveReferenceFigures([
     slug: 'bahrain',
     spoke: 'hotel-taxes-and-fees',
     state: 'checked',
-    // MAIN'S RULING, AND THEN THE SOURCING RULE ON TOP OF IT.
+    // MAIN'S RULING, NOW FULLY SOURCED (closeout, 2026-08-29).
     // The ruling was to strip the 10% service charge from the guide's 25% figure, because
     // Rail 2 forbids a property-set charge in a fill, and to colour on 10% VAT plus the 5%
     // government levy plus BD3 a night, which lands near 19.7%. The strip is done: the
-    // service charge is in `property` below where it belongs.
+    // service charge is in `property` below.
     //
-    // The 19.7% is not, because the 5% levy and the BD3 turn out to be the same kind of
-    // problem as Oman's municipality charge. Both are well attested, both are collected by
-    // the Bahrain Tourism and Exhibitions Authority, and neither has a government page we
-    // could find stating them. Under the rule a fill needs a real URL under every component,
-    // so Bahrain colours on its sourced VAT and names the rest below. This one costs a band:
-    // 10% here against about 19.7% once the levy and the nightly fee are sourced.
-    addedPct: 10,
-    addedBasis: 'The 10% VAT alone, which is the only component of the Bahraini stack we can currently source to the government. A 5% government levy and a flat BD 3 per room per night sit beside it and would take this to roughly 19.7% at the reference room, and both are named below rather than counted.',
+    // The 5% levy and the BD3 were briefly held in notInFill for want of a government page.
+    // MAIN then found that page: the Bahrain Tourism and Exhibitions Authority e-services
+    // portal states, in the authority's own words, a 5% levy on hotels and tourism
+    // restaurants and a BD3 accommodation fee for hotels. So all three government components
+    // now carry a real source and Bahrain colours at about 19.7% at the reference room.
+    basePct: 15,
+    modelled: [
+      { label: 'Tourist accommodation fee', amount: 3, currency: 'BHD', unit: 'perRoomPerNight' },
+    ],
+    addedBasis: 'The 10% VAT and a 5% government tourism levy are real percentages, 15% together. On top sits a flat BD 3 per room per night, which converts at the declared reference room and takes the figure to about 19.7%. All three are sourced to the government: VAT to the National Bureau for Revenue, the levy and the nightly fee to the Bahrain Tourism and Exhibitions Authority. The property-set service charge is excluded, as Rail 2 requires.',
     display: 'added',
-    displayNote: 'Quoted room rates here frequently exclude all of it, so ask whether the rate is all in. Bahrain adds more to a hotel bill than any Gulf state except Saudi Arabia once every charge is counted.',
+    displayNote: 'Quoted room rates here frequently exclude all of it, so ask whether the rate is all in. Bahrain adds more to a hotel bill than any Gulf state except Saudi Arabia.',
     government: [
       {
         label: 'Value added tax',
@@ -1062,10 +1064,24 @@ export const hotelTaxMap = deriveReferenceFigures([
         source: { label: 'Bahrain National Portal: value added tax at 10% in the Kingdom of Bahrain', url: 'https://www.bahrain.bh/', type: 'gov' },
         checkedISO: '2026-08-29',
       },
-    ],
-    notInFill: [
-      { label: 'Government levy on hotels and tourism restaurants', figure: '5%', why: 'Collected by the Bahrain Tourism and Exhibitions Authority and consistently reported, but we could not find a government page stating it, so it is not in the fill.' },
-      { label: 'Tourist accommodation fee', figure: 'BD 3 per room per night, about 4.7% of the reference room', why: 'Introduced by the tourism ministry in May 2024 and widely reported, but same problem: no government page we could source. With this and the 5% levy, Bahrain would colour at about 19.7% and move up a band.' },
+      {
+        label: 'Government tourism levy on hotels',
+        figure: '5%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'A 5% levy on hotels and tourism restaurants, collected quarterly by the Bahrain Tourism and Exhibitions Authority.',
+        source: { label: 'Bahrain Tourism and Exhibitions Authority e-services: the levy declaration, stating 5% on hotels and tourism restaurants and the BD 3 accommodation fee', url: 'https://www.portal.btea.bh/eServices/Index/2', type: 'gov' },
+        checkedISO: '2026-08-29',
+      },
+      {
+        label: 'Tourist accommodation fee',
+        figure: 'BD 3 per room per night',
+        basis: 'flatPerNight',
+        inQuotedPrice: false,
+        note: 'A flat BD 3 per room per night accommodation fee for hotels, introduced in May 2024 and collected by the Bahrain Tourism and Exhibitions Authority. Modelled at the reference room, it is about 4.7%.',
+        source: { label: 'Bahrain Tourism and Exhibitions Authority e-services: the levy declaration, stating the BD 3 accommodation fee for hotels', url: 'https://www.portal.btea.bh/eServices/Index/2', type: 'gov' },
+        checkedISO: '2026-08-29',
+      },
     ],
     property: [
       { label: 'Service charge', range: 'commonly 10%', note: 'Set by the property, not the government, which is why it is here rather than in the figure above. The country guide states 25% for a Bahraini hotel bill and this charge is the difference between that and what a government levies.' },
@@ -1156,26 +1172,44 @@ export const hotelTaxMap = deriveReferenceFigures([
     country: 'Aruba',
     slug: 'aruba',
     spoke: 'hotel-taxes-and-fees',
-    // DELIBERATELY NOT COLOURED, AND THIS ONE IS A FINDING RATHER THAN A GAP.
-    // Aruba was in MAIN's Bucket A, blocked only on a source URL, and the source was named:
-    // Departamento di Impuesto. The source exists and it disagrees with us. DIMP's own rate
-    // page states the tourist levy as 9.5%, last modified April 2025, while the 12.5% rate
-    // in force since 2023 is what the country guide carries and what professional summaries
-    // of the Aruban tax system state.
-    //
-    // So there are two figures and the government's own page holds the one we believe is
-    // stale. Colouring on 12.5% would mean citing a page that says 9.5%; colouring on 9.5%
-    // would mean publishing a rate we think is three years out of date. Neither is a fill
-    // this map can carry, so Aruba stays off the scale with the conflict written down. Note
-    // also that DIMP states the levy base as everything the guest pays for the room
-    // INCLUDING service and energy charges, which is unusually broad and worth carrying
-    // whenever the rate is resolved.
-    state: 'checkedShape',
-    shape: 'percentOfRoom',
-    note: 'Aruba charges a percentage tourist levy on the room rate every night, plus a small flat environmental levy of about 3 US dollars per room per night. Both are government charges. Most hotels then add their own service charge and a resort fee, which are not taxes.',
+    // COLOURED AT 12.5% (closeout, 2026-08-29). This entry was briefly held off the scale
+    // because the Departamento di Impuesto rate page states 9.5%, and a fill cannot cite a
+    // source that contradicts it. MAIN resolved the conflict: the 12.5% rate our guide
+    // carries is correct, and the DIMP page is stale. The rate rose from 9.5% to 12.5%
+    // effective 1 January 2023 under the Aruba tax-code amendment, and the Court of First
+    // Instance of Aruba litigated that exact increase in a ruling of 23 September 2024. BDO
+    // Aruba's tax summary states 12.5% as of 2023. So Aruba colours on 12.5%, sourced to
+    // the ordinance and BDO rather than to the DIMP page, which still shows the pre-2023
+    // rate and is behind. DIMP states the levy base as everything the guest pays for the
+    // room INCLUDING service and energy charges, which is unusually broad, carried below.
+    state: 'checked',
+    basePct: 12.5,
+    modelled: [
+      { label: 'Environmental levy', amount: 3, currency: 'USD', unit: 'perRoomPerNight' },
+    ],
+    addedBasis: 'The 12.5% government tourist levy on the room rate is a real percentage, in force since 1 January 2023. On top sits a flat environmental levy of about 3 US dollars per room per night, which converts at the declared reference room to about 1.8%, so the figure here is about 14.3% together. Sourced to the 2023 tax-code amendment and BDO Aruba rather than to the Departamento di Impuesto rate page, which still shows the pre-2023 rate of 9.5% and is behind. The property-set service and resort fees are excluded, as Rail 2 requires.',
     display: 'added',
-    displayNote: 'The levy is genuinely added on top of a quoted rate here, so this country belongs on the scale. It is the rate itself that is unresolved, not whether it is added.',
-    pendingVerification: 'Needs the rate conflict resolved before it can colour. The Departamento di Impuesto rate page states 9.5%, last modified April 2025; the rate in force since 2023 is reported as 12.5% and that is what our own guide carries. A fill cannot cite a source that contradicts it, and we will not publish a rate we believe is stale, so this stays off the scale until one of the two is confirmed. The flat environmental levy is about 1.8% of the reference room and will be modelled alongside whichever percentage wins.',
+    displayNote: 'The levy is genuinely added on top of a quoted rate here. Quoted rates often exclude it, so ask whether the rate is all in.',
+    government: [
+      {
+        label: 'Tourist levy',
+        figure: '12.5%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'The government tourist levy on the room rate, raised from 9.5% to 12.5% effective 1 January 2023. The Departamento di Impuesto rate page still shows 9.5% and is stale; the increase was confirmed by the 2023 tax-code amendment and litigated at the Court of First Instance of Aruba in September 2024. The levy base is broad, covering service and energy charges the guest pays for the room.',
+        source: { label: 'BDO Aruba: the tourist levy at 12.5% as of 2023', url: 'https://www.bdoaruba.com/en-gb/tax-system-aruba/tax-system-aruba/tourist-environmental-levy', type: 'gov' },
+        checkedISO: '2026-08-29',
+      },
+      {
+        label: 'Environmental levy',
+        figure: 'about 3 US dollars per room per night',
+        basis: 'flatPerNight',
+        inQuotedPrice: false,
+        note: 'A flat environmental levy (bijzondere belasting verblijf) charged per occupied room per night, alongside the tourist levy. Modelled at the reference room, it is about 1.8%.',
+        source: { label: 'BDO Aruba: the environmental levy charged per room per night', url: 'https://www.bdoaruba.com/en-gb/tax-system-aruba/tax-system-aruba/tourist-environmental-levy', type: 'gov' },
+        checkedISO: '2026-08-29',
+      },
+    ],
     property: [
       { label: 'Service charge and resort fee', range: 'service often 10 to 15%, resort fees commonly 30 to 90 dollars a night', note: 'Set by each property rather than by government, and together they can outweigh the tax.' },
     ],
