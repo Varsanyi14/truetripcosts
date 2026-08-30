@@ -289,6 +289,41 @@ function matcherFor(cur) {
 }
 
 /**
+ * Why would a span that looks like money NOT be converted? Returns a short
+ * reason, or null if the span is safe to bracket.
+ *
+ * THIS EXISTS SO A COVERAGE GATE CANNOT DISAGREE WITH THE DETECTOR. findFigures
+ * below is the only consumer that matters at runtime, and it calls this rather
+ * than repeating the checks, so there is exactly one definition of "not a
+ * convertible figure" in the codebase. scripts/check-usd-brackets.mjs calls the
+ * same function to account for every figure it finds bare.
+ *
+ * That mattered immediately. The gate first shipped with these rules RESTATED
+ * rather than shared, and it reported six false failures across Georgia, Germany,
+ * Jamaica and Saudi Arabia. Every one traced to the same thing: the restatement
+ * used raw string slices, while the real guards use window(), which pushes its
+ * edges out to the nearest word boundary. A 25-character look-back that lands
+ * mid-word reaches slightly further here than there, "60 cents" or "roughly a
+ * dollar" falls inside one window and outside the other, and the two halves of
+ * the system quietly stop agreeing about the same sentence. Sharing the code is
+ * the only version of this that stays true.
+ */
+export function refusalReason(text, start, end, cur, lo, hi) {
+  const m = matcherFor(cur);
+  if (!m) return 'currency not in the table';
+  // A percentage is not a currency, whatever sits beside it.
+  if (/^\s*(?:%|percent|per cent)/i.test(text.slice(end))) return 'percentage';
+  if (/%\s*$/.test(text.slice(0, start))) return 'percentage';
+  if (lo == null || lo <= 0) return 'not a positive amount';
+  // A range that does not read as a range is left whole rather than half converted.
+  if (hi != null && hi <= lo) return 'backwards or unparsable range';
+  if (subunitNearby(text, start, end)) return 'subunit nearby';
+  if (inDenominationRun(text, start, end)) return 'denomination run';
+  if (dollarsNearby(text, start, end, m)) return 'dollars nearby';
+  return null;
+}
+
+/**
  * Find every span of `text` that is safely an amount of money in `cur`.
  * Returns [{ start, end, lo, hi }] in document order, non-overlapping.
  * `hi` is null for a single figure and a number for a range.
@@ -305,18 +340,10 @@ export function findFigures(text, cur) {
     while ((x = re.exec(text))) {
       const start = x.index;
       const end = x.index + x[0].length;
-      // A percentage is not a currency, whatever sits beside it.
-      if (/^\s*(?:%|percent|per cent)/i.test(text.slice(end))) continue;
-      if (/%\s*$/.test(text.slice(0, start))) continue;
       const lo = toNum(x[1]);
       const hi = x[2] != null ? toNum(x[2]) : null;
-      if (lo == null || lo <= 0) continue;
-      // A range that does not read as a range (backwards, or an unparsable half)
-      // is left whole and untouched rather than half-converted.
-      if (x[2] != null && (hi == null || hi <= lo)) continue;
-      if (subunitNearby(text, start, end)) continue;
-      if (inDenominationRun(text, start, end)) continue;
-      if (dollarsNearby(text, start, end, m)) continue;
+      if (x[2] != null && hi == null) continue;
+      if (refusalReason(text, start, end, cur, lo, hi)) continue;
       hits.push({ start, end, lo, hi, paren: insideParens(text, start) });
     }
   };

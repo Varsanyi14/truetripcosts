@@ -64,6 +64,12 @@ jobs:
       - name: check-hotel-tax-map
         run: node scripts/check-hotel-tax-map.mjs
 
+      - name: check-usd-brackets
+        run: node scripts/check-usd-brackets.mjs
+
+      - name: mutation-test-usd-brackets (the gate must stay falsifiable)
+        run: node scripts/mutation-test-usd-brackets.mjs
+
       - name: check-carrier-spine
         run: node scripts/check-carrier-spine.mjs
 
