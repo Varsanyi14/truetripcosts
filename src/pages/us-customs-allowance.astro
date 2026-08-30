@@ -5,20 +5,20 @@ import Footer from '../components/Footer.astro';
 import USBadge from '../components/USBadge.astro';
 
 // US-customs-allowance hub, the US side of the VAT-refund family. Standalone authored page,
-// modeled on bringing-a-dog-into-the-us.astro, not a country spoke. This is BOTH the
-// authoritative US-import reference AND the future hub for the refund family: the country
-// index (one line per country's refund spoke) drops into the placeholder marked below once
-// the refund spokes share a slug pattern (Phase 2, deferred).
+// modeled on bringing-a-dog-into-the-us.astro, reusing its design components (why/qcard,
+// recentchange, pt-flag, pt-cross, gbyline, gsources, pt-close). Not a country spoke.
+// This is BOTH the US-import reference AND the future hub for the refund family: the
+// country index drops into the placeholder marked below once the refund spokes share a
+// slug pattern (Phase 2, deferred).
 //
-// Official-first: every figure is US CBP / eCFR / Federal Register sourced, earns nothing.
+// Official-first: every figure is CBP / eCFR / Federal Register sourced, earns nothing.
 // Checked August 2026. HARD staleness flags: the de minimis suspension is an interim final
-// rule (comments closed 24 July 2026, a final rule may change detail), a postal compliance
-// date lands 22 October 2026, and the statutory repeal is 1 July 2027. Re-verify against CBP
-// before relying on this.
+// rule (comments closed 24 July 2026), a postal compliance date lands 22 October 2026, and
+// the statutory repeal is 1 July 2027. Re-verify against CBP before relying on this.
 //
-// Copy verified by OC against 19 CFR 148.33, 19 CFR 148.104, CBP Know Before You Go, and
-// Federal Register 2026-12669 / 2026-12670; MAIN re-verified the $200 tier, the 48-hour
-// carve-outs, and the de minimis timeline against CBP's own Types of Exemptions page.
+// Copy verified against 19 CFR 148.33, 19 CFR 148.35, 19 CFR 148.104, CBP Know Before You
+// Go, and Federal Register 2026-12669 / 2026-12670. The 48-hour waiver (Mexico or US Virgin
+// Islands) and the $200 tier were re-verified against CBP's own Know Before You Go text.
 
 const govIcon = '<path d="M6 3v18"></path><path d="M6 4h12l-2 3.5L18 11H6"></path>';
 
@@ -41,27 +41,32 @@ const sources = [
       <p class="lab">Coming home to the US</p>
       <div style="margin:2px 0 12px"><USBadge /></div>
       <h1>What does US Customs charge on what you bring home?</h1>
-      <p class="pt-lede">Carry your purchases home in your bags and the first 800 US dollars of them come in free. The next 1,000 US dollars is charged a flat 3 percent. Above that, each item is charged at its own tariff rate, which varies by item, so no single number applies. The 800 dollars is per person, so a family of four traveling together can pool 3,200 US dollars on goods they own jointly. You need a trip of at least 48 hours, and you can use the allowance once every 30 days.</p>
-      <p class="pt-note">Two things decide whether that allowance applies to you at all. Declare everything on CBP form 6059B, because not declaring something dutiable risks forfeiting it. And carry it, do not ship it. Goods you mail or forward home separately are treated as imports, get no allowance, and since 2025 get no small-parcel cushion either, so they are dutiable from the first dollar.</p>
+      <p class="pt-lede">Carry your purchases home in your bags and the first 800 US dollars of them come in free. The next 1,000 US dollars is charged a flat 3 percent. Above that, each item is charged at its own tariff rate, which varies by item, so no single number applies. The 800 dollars is per person, so a family of four traveling together can pool 3,200 US dollars on goods they own jointly.</p>
+
+      <div class="recentchange" style="margin-top:22px">
+        <span class="rcpill">The one that costs people money</span>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:var(--ink)">Carry it, do not ship it. Goods you mail or forward home separately are treated as imports, get no allowance, and since 2025 get no small-parcel cushion either, so they are dutiable from the first dollar. Declare everything on CBP form 6059B, because not declaring something dutiable risks forfeiting it.</p>
+      </div>
     </section>
 
-    <section class="pt-prose">
-      <h2>Do this</h2>
-      <ul class="pt-snap">
-        <li>Carry your purchases home in your own bags. That is the only way the 800 dollar allowance applies.</li>
-        <li>Keep the receipts, and keep them somewhere you can reach at the border. Value is the fair retail value in the country where you bought the item.</li>
-        <li>Declare everything, including gifts you are carrying for other people.</li>
-        <li>Pool the family allowance on jointly owned goods when you are traveling together.</li>
-        <li>Count the trip. Under 48 hours, or a second claim inside 30 days, drops you to 200 dollars.</li>
-      </ul>
-      <h2 style="margin-top:26px">Do not do this</h2>
-      <ul class="pt-snap">
-        <li>Do not ship or forward goods home expecting them to arrive duty free. That cushion is gone.</li>
-        <li>Do not assume a foreign tax refund cancels US duty. They are two separate events.</li>
-        <li>Do not split a purchase across people or parcels to get under a limit. CBP treats that as a compliance problem, not a saving.</li>
-        <li>Do not gift wrap what you carry or send. It may have to be unwrapped for inspection.</li>
-        <li>Do not leave something off the form because it seems small. If in doubt, declare it. That is CBP's own instruction.</li>
-      </ul>
+    <section class="why">
+      <p class="lab">Three things that catch people out</p>
+      <h2>Read these before you buy the big thing.</h2>
+      <p class="lead">Most of the allowance is simple. The parts that surprise people are the short-trip tier, the shipping trap, and the idea that a foreign refund settles your US bill. It does not.</p>
+      <div class="qrow">
+        <div class="qcard">
+          <h3>Short trips get 200 dollars, not 800</h3>
+          <p>Under 48 hours out, or a second claim inside 30 days, and your allowance drops to 200 US dollars. CBP waives the 48-hour test only for Mexico and the US Virgin Islands. Weekend border and cruise trips land here constantly.</p>
+        </div>
+        <div class="qcard">
+          <h3>Ship it and you lose the allowance</h3>
+          <p>The 800 dollars covers goods in your own bags. Mail or forward a box home and it is an import, with no allowance and, since 2025, no small-parcel cushion. It is dutiable from the first dollar. Carry it if you can.</p>
+        </div>
+        <div class="qcard">
+          <h3>A refund does not cancel the duty</h3>
+          <p>The tax you reclaimed abroad and the duty the US may charge are two governments answering two questions. One does not buy down the other. A French VAT refund does not lower a US duty bill.</p>
+        </div>
+      </div>
     </section>
 
     <section class="pt-prose">
@@ -108,12 +113,7 @@ const sources = [
 
     <section class="pt-prose">
       <h2>It is separate from your foreign refund</h2>
-      <p>If you claimed a tax refund on the way out, that is a different government answering a different question. Two events:</p>
-      <ul class="pt-snap">
-        <li>The country you shopped in refunds its own consumption tax because you are taking the goods out.</li>
-        <li>The US may charge its own duty because you are bringing them in.</li>
-      </ul>
-      <p style="margin-top:16px">Neither one cancels the other. A French refund does not buy down a US duty bill, and a US duty bill does not mean your refund was pointless.</p>
+      <p>If you claimed a tax refund on the way out, that is a different government answering a different question. The country you shopped in refunds its own consumption tax because you are taking the goods out. The US may charge its own duty because you are bringing them in. Neither one cancels the other. A French refund does not buy down a US duty bill, and a US duty bill does not mean your refund was pointless.</p>
       <p>One thing we cannot tell you: whether a refund you have already claimed lowers the value you declare at the US border. CBP values goods at fair retail value in the country where you bought them, and we have not found a CBP statement on how a claimed refund affects that figure. So do not guess on the form. Carry the receipt and the refund paperwork, declare what you paid, and let the officer settle the number.</p>
     </section>
 
@@ -122,52 +122,78 @@ const sources = [
 
     <section class="pt-prose">
       <h2>Common questions</h2>
-
-      <p class="qh"><b>Does getting a tax refund abroad mean I owe US duty?</b></p>
-      <p>Not by itself. US duty depends on the value of what you bring in and whether it fits your allowance. The refund is a separate transaction with a separate government.</p>
-
-      <p class="qh"><b>Is the 800 dollars per person or per family?</b></p>
-      <p>Per person, children included. Traveling together, you can pool it on goods you own jointly, so a family of four has 3,200 dollars.</p>
-
-      <p class="qh"><b>What if I ship a box home instead of checking it?</b></p>
-      <p>Then it is an import, not baggage. No allowance applies, and since 2025 there is no small-parcel exemption either, so it is dutiable from the first dollar and needs a customs entry. Carry it if you can.</p>
-
-      <p class="qh"><b>My trip was one night. Do I still get 800 dollars?</b></p>
-      <p>No. Under 48 hours the allowance is 200 US dollars. CBP waives the 48-hour test when you are returning from Mexico or the US Virgin Islands.</p>
-
-      <p class="qh"><b>What happens if I do not declare something?</b></p>
-      <p>You risk forfeiting the item, and penalties on top. CBP's own line is: if in doubt, declare it. Declaring something does not mean you will be charged for it.</p>
-
-      <p class="qh"><b>How much duty will I pay on a 3,000 dollar watch?</b></p>
-      <p>We will not guess. The first 800 is free, the next 1,000 is a flat 3 percent, and the remainder is charged at that item's own tariff rate, which varies by item and changes. For a purchase that size, ask CBP or check the tariff schedule before you buy.</p>
+      <ul class="pt-snap">
+        <li><b>Does getting a tax refund abroad mean I owe US duty?</b> Not by itself. US duty depends on the value of what you bring in and whether it fits your allowance. The refund is a separate transaction with a separate government.</li>
+        <li><b>Is the 800 dollars per person or per family?</b> Per person, children included. Traveling together, you can pool it on goods you own jointly, so a family of four has 3,200 dollars.</li>
+        <li><b>What if I ship a box home instead of checking it?</b> Then it is an import, not baggage. No allowance applies, and since 2025 there is no small-parcel exemption either, so it is dutiable from the first dollar and needs a customs entry. Carry it if you can.</li>
+        <li><b>My trip was one night. Do I still get 800 dollars?</b> No. Under 48 hours the allowance is 200 US dollars. CBP waives the 48-hour test when you are returning from Mexico or the US Virgin Islands.</li>
+        <li><b>What happens if I do not declare something?</b> You risk forfeiting the item, and penalties on top. CBP's own line is: if in doubt, declare it. Declaring something does not mean you will be charged for it.</li>
+        <li><b>How much duty will I pay on a 3,000 dollar watch?</b> We will not guess. The first 800 is free, the next 1,000 is a flat 3 percent, and the remainder is charged at that item's own tariff rate, which varies by item and changes. For a purchase that size, ask CBP or check the tariff schedule before you buy.</li>
+      </ul>
     </section>
 
-    <div class="pt-flag" style="margin:0 auto 8px;max-width:680px">
-      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"></path><path d="M12 17h.01"></path><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
-      <div>
-        <p class="pt-flag-h">Checked August 2026 by the True Trip Costs desk.</p>
-        <p class="pt-flag-p">The de minimis suspension is an interim final rule with comments closed, so a final rule may change the detail. The statutory repeal date is 1 July 2027. Verify against CBP before relying on this for a large purchase.</p>
-      </div>
+    <div class="gbyline" style="display:flex;align-items:flex-start;gap:9px;margin:34px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card)">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. Last checked Aug 2026. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
     </div>
 
     <details class="gsources">
-      <summary class="gsources-sum"><span class="gsources-txt">Sources, all official</span><span class="gsources-chev" aria-hidden="true">+</span></summary>
+      <summary class="gsources-sum">
+        <span class="gsources-txt">Sources, and how this page was checked</span>
+        <svg class="gsources-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
       <div class="gsources-body">
-        {sources.map((s) => (
-          <div class="gs-row">
-            <span class="gs-ic" set:html={`<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${govIcon}</svg>`}></span>
-            <span class="gs-src-tx"><a class="gs-src-name" href={s.url} target="_blank" rel="noopener">{s.name}</a><span class="gs-src-note">{s.note}</span></span>
-          </div>
-        ))}
+        <p class="gs-row"><span class="gs-k">Last checked</span><span>Aug 2026</span></p>
+        <p class="gs-row"><span class="gs-k">Changed since last check</span><span>First published August 2026. Covers the 800 dollar personal exemption on accompanied goods, the flat 3 percent on the next 1,000 dollars, the 200 dollar short-trip tier, the 1,600 dollar insular-possession tier, and the suspension of the 800 dollar de minimis exemption for shipped goods, effective for all countries from 29 August 2025 and written into CBP regulation in June and July 2026, with statutory repeal on 1 July 2027.</span></p>
+        <div class="gs-row"><span class="gs-k">Primary sources</span>
+          <ul class="gs-links">
+            {sources.map(s => (
+              <li class="gs-src">
+                <span class="gs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={govIcon}></svg></span>
+                <span class="gs-src-tx">
+                  <a href={s.url} target="_blank" rel="noopener" class="gs-src-name">{s.name}</a>
+                  <span class="gs-src-note">{s.note}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p class="gs-row"><span class="gs-k">Our own read</span><span>The allowance is set by CBP and statute, not by us. The de minimis suspension is an interim final rule with comments closed, so a final rule may change the detail, and the whole exemption is repealed by statute on 1 July 2027. We do not quote an item-level duty rate because it depends on the item's tariff classification. Confirm on CBP before a large purchase.</span></p>
       </div>
     </details>
+
+    <section class="pt-close">
+      <h2>Getting the tax back, on the way out.</h2>
+      <p>This page is the US side, what you owe coming home. The other side is the refund you can claim on the way out, country by country. Start with the one you are shopping in.</p>
+      <a class="btn" href="/japan/tax-refund">How to get the tax back in Japan
+        <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </section>
 
   </main>
   <Footer />
 
   <style>
-    .qh{margin:20px 0 4px;font-size:15.5px;color:var(--ink)}
-    .qh b{font-weight:600}
-    .pt-note{font-size:16px;line-height:1.7;color:var(--ink);max-width:680px;margin:14px 0 0}
+    .pt-prose{padding:34px 0 0;max-width:680px}
+    .pt-prose h1{margin:6px 0 14px}
+    .pt-prose h2{margin:0 0 8px}
+    .pt-lede{font-size:17px;line-height:1.55;color:var(--ink);margin:0}
+    .pt-prose p:not(.lab):not(.pt-lede):not(.pt-note){font-size:16px;line-height:1.65;color:var(--ink);margin:14px 0 0}
+    .pt-prose a{color:var(--teal-deep);font-weight:500;text-decoration:underline;text-underline-offset:2px}
+    .pt-prose a.btn{color:#fff;text-decoration:none}
+
+    .pt-snap{list-style:none;margin:16px 0 0;padding:0;max-width:680px}
+    .pt-snap li{position:relative;font-size:15.5px;line-height:1.6;color:var(--ink);padding:0 0 0 18px;margin:0 0 10px}
+    .pt-snap li:last-child{margin-bottom:0}
+    .pt-snap li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+    .pt-snap b{font-weight:600}
+
+    .pt-flag{display:flex;align-items:flex-start;gap:11px;margin:30px 0 0;padding:16px 18px;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:12px;background:var(--amber-bg)}
+    .pt-flag svg{flex:none;margin-top:2px}
+    .pt-flag-h{margin:0 0 4px;font-weight:600;font-size:15px;color:var(--ink)}
+    .pt-flag-p{margin:0;font-size:14px;line-height:1.6;color:var(--ink)}
+
+    .pt-close{padding:38px 0 64px}
+    .pt-close h2{margin:0 0 8px}
+    .pt-close p{font-size:16px;line-height:1.6;color:var(--muted);margin:0 0 18px;max-width:600px}
   </style>
 </Base>
