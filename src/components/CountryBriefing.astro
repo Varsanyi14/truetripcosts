@@ -388,6 +388,15 @@ const JUMP = [
   <div class="recentchange">
     <span class="rcpill">Money update &middot; {c.recentChange.date}</span>
     <p set:html={c.recentChange.text}></p>
+    {/* OPTIONAL FORWARD HOOK, inert today. When a country's recentChange carries
+        `updateId` (an id from src/data/changelog.js), the card links to that change's
+        permanent record at /updates/{id}/. No country file sets updateId yet, so this
+        renders nothing on every guide currently in the tree and the card's data shape is
+        unchanged: `updateId` is read only if present. The gate asserts that any updateId
+        that does appear matches a real entry, so this cannot ship a 404 later. */}
+    {c.recentChange.updateId && (
+      <a class="rclink" href={'/updates/' + c.recentChange.updateId + '/'}>See the full record</a>
+    )}
   </div>
 )}
 
@@ -1813,6 +1822,10 @@ const JUMP = [
   .crumb-sep{color:var(--line)}
   .rel-hlink{color:inherit;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px}
   .rel-hlink:hover{text-decoration-color:var(--teal)}
+  /* Pairs with the optional /updates/ hook on the change card. Sized below the card's own
+     prose so the card still reads as a fact rather than as a link. */
+  .rclink{display:inline-block;margin:7px 0 0;font-family:var(--mono);font-size:11.5px;font-weight:500;color:var(--teal-deep);text-decoration:none}
+  .rclink:hover{text-decoration:underline;text-underline-offset:2px}
   /* The thin banner crop. 5:1 against the asset's native 16:9, so the strip is a little under
      a third of its old height: warm enough to keep, short enough to scroll past. The crop is
      pulled slightly below centre because the subject of these illustrations sits low in the

@@ -1,0 +1,138 @@
+---
+// THE PERMANENT RECORD OF ONE CHANGE, at /updates/{id}/.
+//
+// WHAT THIS PAGE IS FOR. The change log at /what-changed is one long list, so there was
+// no citable URL for a single change. A journalist, a forum answer or the monthly email
+// could link to the list and say "scroll to Jamaica", which nobody does. Each change is
+// exactly the kind of dated, sourced, single-fact record that wants its own address, so
+// each one now has one.
+//
+// IT RE-PRESENTS, IT DOES NOT AUTHOR. Every line below renders a field that already
+// exists on the entry in src/data/changelog.js. This page adds no fact, no framing and
+// no figure of its own, which is why it needs no checked date of its own: the entry
+// carries the date, and the guide it links to carries the current fact.
+//
+// THE THREE-WAY SPLIT OF TRUTH, worth holding in mind before adding anything here:
+//   the guide          what is TRUE NOW, re-checked on a schedule
+//   /what-changed      what CHANGED and when, the whole history in one list
+//   this page          one change event, permanently addressable
+// A reader who wants today's number follows the guide link. A reader who wants to cite
+// the change stays here. Blurring those is how this page would start restating facts it
+// does not own and drift from the guide the day the guide moves.
+//
+// THE ID IS THE CONTRACT. The URL segment is the entry's authored, frozen `id`, never
+// derived from its title, so a reword cannot move the page. See the changelog.js header.
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import { changelog, displayDate } from '../../data/changelog.js';
+
+export function getStaticPaths() {
+  return changelog().map(e => ({ params: { id: e.id }, props: { entry: e } }));
+}
+
+const { entry } = Astro.props;
+const isCorrection = entry.kind === 'correction';
+
+// Prev/next within the reverse-chronological log, so a reader can walk the history
+// instead of bouncing back to the list. Named for what they are: the log runs newest
+// first, so the entry above this one is the newer change.
+const all = changelog();
+const i = all.findIndex(e => e.id === entry.id);
+const newer = i > 0 ? all[i - 1] : null;
+const older = i < all.length - 1 ? all[i + 1] : null;
+
+// Month-precision dates resolve to the first of the month, the same rule the list page
+// and the gate use. Never a fabricated later day.
+const resolvedISO = entry.date.length === 7 ? entry.date + '-01' : entry.date;
+
+// META DESCRIPTION: a WHOLE sentence, never a truncation. The entry's opening sentence
+// when it fits a description, otherwise the title, which is authored as one complete
+// line. `what` is not sliced at a character count, because several of these sentences
+// carry the decisive qualifier in the final clause (Thailand's fee was raised AND is
+// still not collected), and cutting there is how a true statement becomes a false
+// snippet. A search engine may shorten what it chooses to display; we do not ship a cut
+// fact for it to display.
+const firstSentence = (s) => {
+  const at = s.indexOf('. ');
+  return at === -1 ? s : s.slice(0, at + 1);
+};
+const opener = firstSentence(entry.what);
+const description = opener.length <= 160 ? opener : entry.title;
+
+// JSON-LD: a dated record of one change. Data only, the same calm shape /what-changed
+// uses. datePublished and dateModified are both the entry date: the record does not
+// change after it is written, which is the whole point of a permanent record.
+const ld = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: entry.title,
+  datePublished: resolvedISO,
+  dateModified: resolvedISO,
+  url: 'https://truetripcosts.com/updates/' + entry.id + '/',
+  about: entry.linkLabel,
+  publisher: { '@type': 'Organization', name: 'True Trip Costs' },
+});
+---
+<Base
+  title={entry.title + ' | What changed | True Trip Costs'}
+  description={description}
+>
+  <Nav />
+  {/* JSON-LD is valid anywhere in the document and Base has no head slot, same body
+      placement as /what-changed. */}
+  <script type="application/ld+json" set:html={ld} />
+  <main class="wrap">
+    <article class="upd">
+      <p class="upd-meta">
+        <a href="/what-changed" class="upd-back">What changed</a>
+        <span aria-hidden="true">&middot;</span>
+        <time class="upd-date" datetime={entry.date}>{displayDate(entry.date)}</time>
+        {isCorrection && <span class="upd-pill">Correction</span>}
+      </p>
+      <h1 class="upd-title">{entry.title}</h1>
+      <p class="upd-what">{entry.what}</p>
+      <p class="upd-why"><b>Why it matters:</b> {entry.why}</p>
+      <a class="upd-link" href={entry.link}>{entry.linkLabel}
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <p class="upd-note">This is the permanent record of one change. The current fact
+        lives on the guide linked above, which is re-checked on a schedule. For how we
+        check and correct, see <a href="/methodology">our methodology</a>.</p>
+      <nav class="upd-nav" aria-label="Other changes">
+        {newer
+          ? <a class="upd-prevnext" href={'/updates/' + newer.id + '/'} rel="prev">Newer change</a>
+          : <span></span>}
+        {older
+          ? <a class="upd-prevnext" href={'/updates/' + older.id + '/'} rel="next">Older change</a>
+          : <span></span>}
+      </nav>
+    </article>
+  </main>
+  <Footer />
+
+  <style>
+    /* .wrap is the site's shared content column from global.css and is deliberately not
+       redefined here: this page should sit in the same measure as every other page. The
+       vertical rhythm and the reading width match /what-changed's own sections. */
+    .upd{padding:34px 0 64px;max-width:680px}
+    .upd-meta{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin:0 0 12px}
+    .upd-back{color:var(--teal-deep);text-decoration:none;font-weight:500}
+    .upd-back:hover{text-decoration:underline;text-underline-offset:2px}
+    .upd-date{font-family:var(--mono);font-size:12px}
+    .upd-pill{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:var(--amber);background:var(--amber-bg);border-radius:999px;padding:2px 9px}
+    /* The h1 here is the entry title, which runs to about 90 characters, so the global
+       h1 clamp topping out at 44px would give a short page a very tall headline. Same
+       serif and weight, smaller ceiling. */
+    .upd-title{font-size:clamp(24px,3.4vw,32px);line-height:1.2;margin:0 0 16px}
+    .upd-what{font-size:16.5px;line-height:1.6;color:var(--ink);margin:0 0 12px}
+    .upd-why{font-size:15px;line-height:1.55;color:#3B4A46;margin:0 0 18px}
+    .upd-why b{font-weight:600;color:var(--ink)}
+    .upd-link{display:inline-flex;align-items:center;gap:6px;font-size:14.5px;font-weight:600;color:var(--teal-deep);text-decoration:none}
+    .upd-link:hover{text-decoration:underline;text-underline-offset:2px}
+    .upd-note{margin:24px 0 0;padding-top:16px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--muted);line-height:1.55}
+    .upd-note a{color:var(--teal-deep);font-weight:500}
+    .upd-nav{display:flex;justify-content:space-between;gap:16px;margin:28px 0 0}
+    .upd-prevnext{color:var(--teal-deep);text-decoration:none;font-size:14px;font-weight:500}
+    .upd-prevnext:hover{text-decoration:underline;text-underline-offset:2px}
+  </style>
+</Base>

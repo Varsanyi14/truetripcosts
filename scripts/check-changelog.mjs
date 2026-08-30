@@ -34,6 +34,19 @@
 //      GARY-USERNAME placeholder the gate PASSES but prints a WARN on every run, so the
 //      fill-before-deploy step cannot be forgotten in silence. A form action pointing
 //      anywhere other than buttondown.com's embed-subscribe path FAILS.
+//   7. EVERY ENTRY HAS A WELL-FORMED, UNIQUE id. The id is the entry's permanent URL at
+//      /updates/{id}/, so two entries sharing one is not a duplicate, it is one record
+//      silently overwriting the other at build time and one citation quietly pointing at
+//      the wrong change. Shape is enforced too, since the id goes straight into a path.
+//   8. EVERY RECORD PAGE BUILT. dist/updates/{id}/index.html exists for every entry, the
+//      same existence rail check 3 applies to the guide links, applied to the new route.
+//   9. EVERY RECORD RENDERS ITS OWN ENTRY. Each record page carries that entry's title
+//      and a <time datetime> equal to its data date, so a routing or props mistake that
+//      built 31 pages of the same entry cannot pass. Checks the permalink on the list
+//      page too: the list must point at each entry's own record.
+//  10. THE HOOK CANNOT ROT. Any country whose recentChange carries `updateId` must name
+//      a real entry id. The hook is inert today, and a forward hook nothing verifies is
+//      how a 404 ships eighteen months from now with nobody's fingerprints on it.
 //
 // Exits 1 on any FAIL.
 
@@ -208,6 +221,105 @@ if (doc) {
   } else {
     ok(6, 'the Buttondown username placeholder has been filled');
   }
+}
+
+// -- 7. every entry has a well-formed, unique id ------------------------------------
+const before7 = fails;
+const ID_SHAPE = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+const idsSeen = new Map();
+for (const [i, e] of changelogEntries.entries()) {
+  const where = `entry ${i} ("${(e && e.title) || 'untitled'}")`;
+  const id = e && e.id;
+  if (typeof id !== 'string' || id.trim() === '') {
+    fail(7, `${where}: missing or empty id. Every entry needs a permanent URL segment.`);
+    continue;
+  }
+  if (!ID_SHAPE.test(id)) {
+    fail(7, `${where}: id "${id}" is not lowercase words joined by single hyphens`);
+  }
+  if (idsSeen.has(id)) {
+    fail(7, `${where}: id "${id}" is already used by "${idsSeen.get(id)}". Two entries cannot share a URL.`);
+  } else {
+    idsSeen.set(id, e.title);
+  }
+}
+if (fails === before7) ok(7, `${changelogEntries.length} ids, all well-formed and unique`);
+
+// -- 8. every record page built -----------------------------------------------------
+const before8 = fails;
+const recordPathFor = (id) => `${DIST}/updates/${id}/index.html`;
+for (const e of changelogEntries) {
+  if (!e || !e.id) continue; // already failed check 7
+  const p = recordPathFor(e.id);
+  if (!fs.existsSync(p)) fail(8, `"${e.title}": no built record page at ${p}`);
+}
+if (fails === before8) ok(8, `every entry has a built record at /updates/{id}/`);
+
+// -- 9. every record renders its own entry, and the list points at it ---------------
+const before9 = fails;
+for (const e of changelogEntries) {
+  if (!e || !e.id) continue;
+  const p = recordPathFor(e.id);
+  if (!fs.existsSync(p)) continue; // already failed check 8
+  const rdoc = new JSDOM(fs.readFileSync(p, 'utf8')).window.document;
+
+  const h1 = rdoc.querySelector('h1.upd-title');
+  if (!h1) {
+    fail(9, `${e.id}: record page has no h1.upd-title`);
+  } else if (h1.textContent.trim() !== e.title.trim()) {
+    fail(9, `${e.id}: record renders title "${h1.textContent.trim().slice(0, 60)}", expected "${e.title.slice(0, 60)}"`);
+  }
+
+  const t = rdoc.querySelector('time.upd-date');
+  if (!t) {
+    fail(9, `${e.id}: record page has no <time class="upd-date">`);
+  } else if (t.getAttribute('datetime') !== e.date) {
+    fail(9, `${e.id}: record has datetime "${t.getAttribute('datetime')}", expected "${e.date}"`);
+  }
+
+  const guide = rdoc.querySelector('a.upd-link');
+  if (!guide || guide.getAttribute('href') !== e.link) {
+    fail(9, `${e.id}: record links to ${guide && guide.getAttribute('href')}, expected ${e.link}`);
+  }
+}
+// The list page must carry one permalink per entry, each pointing at its own record.
+if (doc) {
+  const sorted = changelog();
+  const rendered = [...doc.querySelectorAll('.wc-entry')];
+  const perma = [...doc.querySelectorAll('a.wc-permalink')];
+  if (perma.length !== changelogEntries.length) {
+    fail(9, `list page has ${perma.length} permalinks, data has ${changelogEntries.length} entries`);
+  }
+  rendered.forEach((el, i) => {
+    const a = el.querySelector('a.wc-permalink');
+    if (!a) { fail(9, `rendered entry ${i} has no permalink to its record`); return; }
+    const want = `/updates/${sorted[i] && sorted[i].id}/`;
+    if (a.getAttribute('href') !== want) {
+      fail(9, `rendered entry ${i} permalinks to ${a.getAttribute('href')}, expected ${want}`);
+    }
+  });
+}
+if (fails === before9) ok(9, 'every record renders its own entry, and the list permalinks to each one');
+
+// -- 10. the guide change-card hook cannot rot --------------------------------------
+// `updateId` on a country's recentChange is an optional deep link to that change's
+// record. Nothing sets it today. This asserts that anything which ever does names a real
+// entry, so the hook cannot quietly become a 404.
+const before10 = fails;
+const { countries } = await import('../src/data/index.js');
+let hooked = 0;
+for (const c of countries) {
+  const uid = c && c.recentChange && c.recentChange.updateId;
+  if (!uid) continue;
+  hooked++;
+  if (!idsSeen.has(uid)) {
+    fail(10, `${c.slug}: recentChange.updateId "${uid}" is not a change-log entry id`);
+  }
+}
+if (fails === before10) {
+  ok(10, hooked === 0
+    ? 'no guide change card sets updateId yet (the hook is inert, as intended)'
+    : `${hooked} guide change card(s) point at a real entry id`);
 }
 
 console.log('');

@@ -102,6 +102,16 @@ export const EXCLUDED_PAGES = [
   { file: '[slug].astro', why: 'the country guide route, indexed from src/data/index.js as the country class' },
   { file: '[slug]/[spoke].astro', why: 'the spoke route, indexed from each country spokes array as the spoke class' },
   { file: '[slug]/rules.astro', why: 'the money rules card route, indexed from money-rules.js as the card class' },
+  // NOT indexed, and that is a decision rather than an oversight. The /updates/{id}/
+  // records are permanent addresses for CITING one past change, not answers to the
+  // question the search box gets asked, which is always about a trip someone is taking.
+  // Thirty-one historical change events in the index would put "Kyoto raised its lodging
+  // tax, March 2026" next to the Japan guide on a search for Kyoto, and the reader who
+  // typed Kyoto wants the guide. The way in stays /what-changed, which IS indexed and
+  // lists every record. If the records should become searchable later, that is a
+  // deliberate addition of an update class to search-index.js, the same way the country,
+  // spoke and card classes work, not a change to this line.
+  { file: 'updates/[id].astro', why: 'the change record route: permanent citable URLs, reachable from /what-changed, deliberately kept out of the search index' },
 ];
 
 // Read one attribute off the <Base> tag in an .astro source. Handles the two shapes the

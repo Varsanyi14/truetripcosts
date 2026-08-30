@@ -36,6 +36,16 @@
 // naming where in the repo the change was already recorded.
 //
 // ENTRY SHAPE:
+//   id     the entry's permanent URL segment: /updates/{id}/. AUTHORED and FROZEN, never
+//          derived from the title. A title is editorial and may be reworded at any time;
+//          deriving the id from it would silently move the URL and break every citation
+//          and inbound link, which is the exact fragility the permanent record exists to
+//          prevent. So the id is hand-written once, and once shipped it is NEVER changed.
+//          Reword a title freely. Do not touch an id. If an entry is genuinely wrong
+//          enough to need a new URL, that is a new entry, not an edited id.
+//          Format: lowercase, hyphen-joined, {country-or-topic}-{what}-{YYYY-MM}. The
+//          gate enforces the shape and enforces uniqueness, because two entries sharing
+//          an id is one page silently overwriting the other at build time.
 //   date   'YYYY-MM-DD' when the repo records the day, 'YYYY-MM' when it records only
 //          the month. Month precision is honest and allowed; a guessed day is not.
 //          For a world change this is the date the change took effect (or was decided);
@@ -54,6 +64,7 @@
 export const changelogEntries = [
   // src: thailand.js keyFacts (Air arrival fee, checked 2026-08-17) and sources.changed
   {
+    id: 'thailand-arrival-fee-2026-08',
     date: '2026-08-17',
     kind: 'change',
     title: 'Thailand raised its proposed arrival fee to 450 baht, and it is still not being collected',
@@ -64,6 +75,7 @@ export const changelogEntries = [
   },
   // src: jamaica.js sources.changed ("Corrected Aug 2026") and recentChange, checkedISO 2026-08-17
   {
+    id: 'jamaica-hotel-tax-correction-2026-08',
     date: '2026-08-17',
     kind: 'correction',
     title: 'Jamaica: we corrected how we described the hotel tax rise',
@@ -74,6 +86,7 @@ export const changelogEntries = [
   },
   // src: mexico.js sources.changed ("Aug 2026: added the two charges...") and recentChange, checkedISO 2026-08-17
   {
+    id: 'mexico-hotel-taxes-modeled-2026-08',
     date: '2026-08-17',
     kind: 'correction',
     title: 'Mexico: the two taxes on a hotel room, now stated and modeled',
@@ -84,6 +97,7 @@ export const changelogEntries = [
   },
   // src: croatia.js / hungary.js / poland.js sources.changed ("Updated 31 July 2026: the EU removed its late-2026 ETIAS target")
   {
+    id: 'etias-target-dropped-2026-07',
     date: '2026-07-31',
     kind: 'change',
     title: 'The EU dropped its late-2026 target for ETIAS',
@@ -94,6 +108,7 @@ export const changelogEntries = [
   },
   // src: united-kingdom.js keyFacts (Edinburgh visitor levy, effective 2026-07-24) and recentChange
   {
+    id: 'edinburgh-visitor-levy-2026-07',
     date: '2026-07-24',
     kind: 'change',
     title: "Edinburgh's visitor levy took effect",
@@ -104,6 +119,7 @@ export const changelogEntries = [
   },
   // src: norway.js recentChange (dated Jul 2026) and sources.changed
   {
+    id: 'norway-visitor-contribution-2026-07',
     date: '2026-07',
     kind: 'change',
     title: "Norway's visitor's contribution went live, in some places",
@@ -114,6 +130,7 @@ export const changelogEntries = [
   },
   // src: philippines.js recentChange (dated Jul 2026): law effective late 2024, upheld by the Supreme Court July 2026
   {
+    id: 'philippines-vat-refund-upheld-2026-07',
     date: '2026-07',
     kind: 'change',
     title: "The Philippines' tourist VAT refund cleared its court challenge",
@@ -124,6 +141,7 @@ export const changelogEntries = [
   },
   // src: ireland.js sources.changed (the M50 correction, also cited on /methodology), checkedISO 2026-07-03
   {
+    id: 'ireland-m50-toll-correction-2026-07',
     date: '2026-07-03',
     kind: 'correction',
     title: 'Ireland: we corrected the M50 toll wording',
@@ -134,6 +152,7 @@ export const changelogEntries = [
   },
   // src: germany.js sources.changed ("a correction. We removed Munich..."), checkedISO 2026-07-04
   {
+    id: 'germany-munich-bed-tax-correction-2026-07',
     date: '2026-07-04',
     kind: 'correction',
     title: 'Germany: we removed Munich from the bed-tax list',
@@ -144,6 +163,7 @@ export const changelogEntries = [
   },
   // src: austria.js keyFacts (Vienna Ortstaxe 5%, effective 2026-07-01; next step 8% on 2027-07-01) and sources.changed
   {
+    id: 'austria-vienna-ortstaxe-2026-07',
     date: '2026-07-01',
     kind: 'change',
     title: "Vienna's accommodation tax rose to 5%",
@@ -154,6 +174,7 @@ export const changelogEntries = [
   },
   // src: ireland.js recentChange (dated Jul 2026, "From 1 July 2026")
   {
+    id: 'ireland-restaurant-vat-2026-07',
     date: '2026-07-01',
     kind: 'change',
     title: 'Ireland cut restaurant VAT back to 9%',
@@ -164,6 +185,7 @@ export const changelogEntries = [
   },
   // src: sri-lanka.js keyFacts (ETA free, effective 2026-05-25) and recentChange
   {
+    id: 'sri-lanka-eta-free-2026-05',
     date: '2026-05-25',
     kind: 'change',
     title: "Sri Lanka's tourist ETA became free for US citizens",
@@ -174,6 +196,7 @@ export const changelogEntries = [
   },
   // src: new-zealand.js recentChange and keyFacts (Card surcharge ban, proposed, checked 2026-08-17); the deadline that passed was May 2026
   {
+    id: 'new-zealand-surcharge-ban-stalled-2026-05',
     date: '2026-05',
     kind: 'change',
     title: "New Zealand's card-surcharge ban did not happen",
@@ -184,6 +207,7 @@ export const changelogEntries = [
   },
   // src: turkey.js sources.changed ("temporarily reduced it to 1% from 1 May through 31 December 2026")
   {
+    id: 'turkey-accommodation-tax-cut-2026-05',
     date: '2026-05-01',
     kind: 'change',
     title: "Turkey's accommodation tax was temporarily cut to 1%",
@@ -194,6 +218,7 @@ export const changelogEntries = [
   },
   // src: united-kingdom.js keyFacts (UK ETA fee 20 pounds, effective 2026-04-08) and the passports spoke's note that it rose from 16 pounds
   {
+    id: 'united-kingdom-eta-fee-2026-04',
     date: '2026-04-08',
     kind: 'change',
     title: 'The UK ETA fee rose to 20 pounds',
@@ -204,6 +229,7 @@ export const changelogEntries = [
   },
   // src: spain.js recentChange (dated Apr 2026, "Catalonia raised its tourist tax on 1 April 2026") and sources.changed
   {
+    id: 'barcelona-tourist-tax-2026-04',
     date: '2026-04-01',
     kind: 'change',
     title: "Barcelona's tourist tax roughly doubled",
@@ -214,6 +240,7 @@ export const changelogEntries = [
   },
   // src: sweden.js recentChange (dated Jul 2026, "From 1 April 2026") and sources.changed
   {
+    id: 'sweden-grocery-vat-2026-04',
     date: '2026-04-01',
     kind: 'change',
     title: 'Sweden cut grocery VAT from 12% to 6%',
@@ -224,6 +251,7 @@ export const changelogEntries = [
   },
   // src: australia.js recentChange and sources.changed (RBA final decision published 31 March 2026) and keyFacts (ban effective 2026-10-01)
   {
+    id: 'australia-surcharge-ban-2026-03',
     date: '2026-03-31',
     kind: 'change',
     title: 'Australia confirmed a card-surcharge ban, starting October',
@@ -234,6 +262,7 @@ export const changelogEntries = [
   },
   // src: japan.js sources.changed ("Kyoto raised its lodging tax from 1 March 2026") and recentChange (dated March 2026)
   {
+    id: 'kyoto-lodging-tax-2026-03',
     date: '2026-03-01',
     kind: 'change',
     title: 'Kyoto raised its lodging tax',
@@ -244,6 +273,7 @@ export const changelogEntries = [
   },
   // src: china.js recentChange ("from 1 February 2026, China began enforcing penalties on shops that refuse cash") and sources.changed
   {
+    id: 'china-cash-refusal-penalties-2026-02',
     date: '2026-02-01',
     kind: 'change',
     title: 'China began enforcing penalties on shops that refuse cash',
@@ -254,6 +284,7 @@ export const changelogEntries = [
   },
   // src: netherlands.js recentChange (dated Jan 2026) and sources.changed
   {
+    id: 'netherlands-hotel-vat-2026-01',
     date: '2026-01-01',
     kind: 'change',
     title: 'Dutch hotel VAT rose from 9% to 21%',
@@ -264,6 +295,7 @@ export const changelogEntries = [
   },
   // src: france.js recentChange (dated Jan 2026) and sources.changed
   {
+    id: 'paris-tourist-tax-2026-01',
     date: '2026-01-01',
     kind: 'change',
     title: 'Paris raised its tourist tax',
@@ -274,6 +306,7 @@ export const changelogEntries = [
   },
   // src: georgia.js keyFacts (Decree 602 insurance, effective 2026-01-01) and recentChange
   {
+    id: 'georgia-insurance-mandatory-2026-01',
     date: '2026-01-01',
     kind: 'change',
     title: 'Georgia made travel insurance mandatory for tourists',
@@ -284,6 +317,7 @@ export const changelogEntries = [
   },
   // src: iceland.js recentChange (dated Jul 2026, "From 1 January 2026") and sources.changed
   {
+    id: 'iceland-road-tax-2026-01',
     date: '2026-01-01',
     kind: 'change',
     title: 'Iceland switched to a per-kilometre road tax',
@@ -294,6 +328,7 @@ export const changelogEntries = [
   },
   // src: south-korea.js keyFacts (e-Arrival Card, effective 2026-01-01) and recentChange
   {
+    id: 'south-korea-arrival-card-2026-01',
     date: '2026-01-01',
     kind: 'change',
     title: "South Korea's e-Arrival Card became mandatory",
@@ -304,6 +339,7 @@ export const changelogEntries = [
   },
   // src: indonesia.js recentChange (dated Oct 2025) and the arrival-card section
   {
+    id: 'indonesia-arrival-card-merged-2025-10',
     date: '2025-10-01',
     kind: 'change',
     title: 'Indonesia merged its arrival card and customs declaration',
@@ -314,6 +350,7 @@ export const changelogEntries = [
   },
   // src: laos.js recentChange (dated Sep 2025) and the immigration-form section
   {
+    id: 'laos-digital-arrival-card-2025-09',
     date: '2025-09-01',
     kind: 'change',
     title: 'Laos introduced a digital arrival and departure card',
@@ -324,6 +361,7 @@ export const changelogEntries = [
   },
   // src: greece.js recentChange (dated Aug 2025, "Since August 2025")
   {
+    id: 'greece-atm-fees-dropped-2025-08',
     date: '2025-08',
     kind: 'change',
     title: 'Greek bank ATMs dropped their withdrawal fees',
@@ -334,6 +372,7 @@ export const changelogEntries = [
   },
   // src: brazil.js keyFacts (visitor e-visa, effective 2025-04-10) and sources.changed
   {
+    id: 'brazil-evisa-required-2025-04',
     date: '2025-04-10',
     kind: 'change',
     title: 'Brazil began requiring an e-visa from US citizens',
@@ -344,6 +383,7 @@ export const changelogEntries = [
   },
   // src: namibia.js keyFacts (tourist visa, effective 2025-04-01) and recentChange and sources.changed
   {
+    id: 'namibia-visa-required-2025-04',
     date: '2025-04-01',
     kind: 'change',
     title: 'Namibia began requiring a visa from US citizens',
@@ -354,6 +394,7 @@ export const changelogEntries = [
   },
   // src: hong-kong.js keyFacts (Hotel Accommodation Tax, effective 2025-01-01) and recentChange
   {
+    id: 'hong-kong-hotel-tax-2025-01',
     date: '2025-01-01',
     kind: 'change',
     title: 'Hong Kong brought back its 3% hotel tax',
@@ -376,6 +417,13 @@ export function changelog() {
   return [...changelogEntries].sort((a, b) =>
     sortKey(b.date).localeCompare(sortKey(a.date)) || a.title.localeCompare(b.title)
   );
+}
+
+// One entry by its permanent id, or null. The /updates/{id}/ route builds its pages from
+// changelog() directly, so this is for anything that needs to resolve an id it was
+// handed: a guide card pointing at its own record, a redirect, a future digest.
+export function updateById(id) {
+  return changelogEntries.find(e => e.id === id) || null;
 }
 
 // An entry's date as a short reader-facing label. Month precision renders as the month
