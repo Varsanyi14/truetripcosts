@@ -557,7 +557,7 @@ export default {
       }
     },
     {
-      slug: "vat-refund",
+      slug: "tax-refund",
       glance: [
         { k: "VAT refund", v: "None in Great Britain" },
         { k: "Since", v: "Abolished 1 January 2021" },
@@ -565,7 +565,7 @@ export default {
         { k: "Northern Ireland", v: "A separate limited scheme" }
       ],
       live: true,
-      topic: "vat-refund",
+      topic: "tax-refund",
       title: "Can tourists get a VAT refund in the UK? No 2026",
       description: "Great Britain scrapped tourist VAT refunds in 2021, so you cannot reclaim the 20% on what you carry home. The only routes: ship it, or Northern Ireland.",
       h1: "Can tourists get a VAT refund in the UK?",

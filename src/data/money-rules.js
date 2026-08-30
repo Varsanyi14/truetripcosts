@@ -86,7 +86,7 @@ export const moneyRules = {
       {
         h: 'Over 100 euros in one shop? There is tax to reclaim',
         p: 'Non-EU visitors can recover part of the 20 percent on goods leaving unused. Get the form stamped at a PABLO machine before the purchase disappears into a checked bag. The operator keeps a slice.',
-        href: '/france/vat-refund',
+        href: '/france/tax-refund',
         linkLabel: 'How the detaxe works',
       },
     ],
@@ -137,7 +137,7 @@ export const moneyRules = {
       {
         h: 'Britain will not refund your VAT',
         p: 'The visitor scheme ended in 2021 and has never returned, so the 20 percent stays put on anything you carry out. Shopping here is not the tax-back exercise the rest of Europe trains you to expect.',
-        href: '/united-kingdom/vat-refund',
+        href: '/united-kingdom/tax-refund',
         linkLabel: 'Why there is no VAT refund',
       },
       {
@@ -214,7 +214,7 @@ export const moneyRules = {
       {
         h: 'Spent over 70 euros in one shop? Claim the VAT back',
         p: 'One store, one day, and the goods go home unused. Get the form validated at an airport kiosk before you check the bag it is packed in, because afterwards there is nothing to claim.',
-        href: '/italy/vat-refund',
+        href: '/italy/tax-refund',
         linkLabel: 'How the VAT refund works',
       },
     ],
@@ -515,7 +515,7 @@ export const moneyRules = {
       {
         h: 'There is no minimum spend on the tax refund',
         p: 'Spain scrapped it, so any purchase leaving unused can be claimed, which is unusually generous by EU standards. Validate at a DIVA kiosk before you fly, and at your last EU stop rather than here if you connect.',
-        href: '/spain/vat-refund',
+        href: '/spain/tax-refund',
         linkLabel: 'How the IVA refund works',
       },
       {
@@ -582,7 +582,7 @@ export const moneyRules = {
       {
         h: 'Validate the tax refund before you reach the gate',
         p: 'Ask the shop for the form, then use an e-Taxfree kiosk at the airport. Which kiosk depends on whether the goods are in your carry-on or going in the hold, so sort that out before you check a bag with them inside.',
-        href: '/portugal/iva-tax-refund-kiosk',
+        href: '/portugal/tax-refund',
         linkLabel: 'How the IVA refund works',
       },
       {
@@ -1045,7 +1045,7 @@ export const moneyRules = {
   // tipping, taxis-and-apps) and no tax spoke. So the hotel add-on stacks, and the Saudi
   // refund mechanics, are deliberately absent. Both are real money facts and both live on
   // the guide, but a rule has to point at a spoke that actually covers it. A hotel-taxes
-  // spoke, or saudi-arabia/vat-refund, would each earn a rule here immediately.
+  // spoke, or saudi-arabia/tax-refund, would each earn a rule here immediately.
   uae: {
     title: 'UAE money rules: 8 things to remember',
     description:
@@ -1316,7 +1316,7 @@ export const moneyRules = {
       {
         h: 'The tax comes back, but only if you ask as you pay',
         p: 'A refund on goods carried home has run since 2025, and it begins at the counter rather than at departures: the form is raised against your passport while the sale is happening. Clear the minimum inside one approved shop, because spending spread over several will not count.',
-        href: '/saudi-arabia/vat-refund',
+        href: '/saudi-arabia/tax-refund',
         linkLabel: 'Claiming the refund',
       },
       {

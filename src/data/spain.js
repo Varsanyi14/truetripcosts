@@ -435,7 +435,7 @@ export default {
       }
     },
     {
-      slug: "vat-refund",
+      slug: "tax-refund",
       glance: [
         { k: "VAT rate", v: "21% (IVA)" },
         { k: "Minimum", v: "None, scrapped in 2019" },
@@ -443,7 +443,7 @@ export default {
         { k: "Validate", v: "At a DIVA kiosk on EU exit" }
       ],
       live: true,
-      topic: "vat-refund",
+      topic: "tax-refund",
       title: "Spain VAT refund (IVA): no minimum spend, DIVA",
       description: "Non-EU visitors can reclaim Spain's 21% IVA with no minimum spend, one of Europe's most generous. How DIVA works, and why you net 12 to 17%.",
       h1: "Spain's VAT refund (IVA), and what you get back.",

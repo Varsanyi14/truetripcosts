@@ -507,7 +507,7 @@ export default {
       }
     },
     {
-      slug: "iva-tax-refund-kiosk",
+      slug: "tax-refund",
       glance: [
         { k: "VAT (IVA)", v: "23%" },
         { k: "Who", v: "Non-EU visitors, goods unused" },

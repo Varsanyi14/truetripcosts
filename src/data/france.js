@@ -505,7 +505,7 @@ export default {
       }
     },
     {
-      slug: "vat-refund",
+      slug: "tax-refund",
       glance: [
         { k: "VAT rate", v: "20%" },
         { k: "Minimum", v: "Over 100 euros, one store, one day" },
@@ -513,7 +513,7 @@ export default {
         { k: "Validate", v: "At a PABLO kiosk on EU exit" }
       ],
       live: true,
-      topic: "vat-refund",
+      topic: "tax-refund",
       title: "France VAT refund (detaxe): the 100 euro minimum",
       description: "Non-EU visitors can reclaim the 20% VAT on goods over 100 euros in one store. How PABLO validation works, and why fees leave you nearer 10 to 15%.",
       h1: "France's VAT refund (detaxe), and what you get back.",

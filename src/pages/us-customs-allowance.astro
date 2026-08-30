@@ -117,8 +117,19 @@ const sources = [
       <p>One thing we cannot tell you: whether a refund you have already claimed lowers the value you declare at the US border. CBP values goods at fair retail value in the country where you bought them, and we have not found a CBP statement on how a claimed refund affects that figure. So do not guess on the form. Carry the receipt and the refund paperwork, declare what you paid, and let the officer settle the number.</p>
     </section>
 
-    {/* PHASE 2 PLACEHOLDER, deferred: the country-by-country refund index drops in here once
-        the refund spokes share a slug pattern. Nothing rendered until then, by design. */}
+    <section class="pt-prose">
+      <h2>Getting the tax back, country by country</h2>
+      <p>This page is the US side, what you owe coming home. The refund you can claim on the way out is a separate thing, and it works differently in each country. Start with the one you are shopping in.</p>
+      <ul class="pt-index">
+        <li><a href="/france/tax-refund"><b>France</b> 20% VAT, refundable over 100 euros at one store, you net about 10 to 15%.</a></li>
+        <li><a href="/italy/tax-refund"><b>Italy</b> 22% VAT, refundable over 70.01 euros, validated at an OTELLO kiosk on exit.</a></li>
+        <li><a href="/spain/tax-refund"><b>Spain</b> 21% IVA, no minimum since 2019, you net about 12 to 17%.</a></li>
+        <li><a href="/portugal/tax-refund"><b>Portugal</b> 23% IVA, validated at an e-Taxfree kiosk before you fly.</a></li>
+        <li><a href="/japan/tax-refund"><b>Japan</b> 10% consumption tax, and the whole system changes on 1 November 2026.</a></li>
+        <li><a href="/saudi-arabia/tax-refund"><b>Saudi Arabia</b> 15% VAT, reclaimable over SAR 500 at one retailer, goods unused within 90 days.</a></li>
+        <li><a href="/united-kingdom/tax-refund"><b>United Kingdom</b> no refund in Great Britain since it was abolished in 2021, here is what that means.</a></li>
+      </ul>
+    </section>
 
     <section class="pt-prose">
       <h2>Common questions</h2>
@@ -163,10 +174,8 @@ const sources = [
     </details>
 
     <section class="pt-close">
-      <h2>Getting the tax back, on the way out.</h2>
-      <p>This page is the US side, what you owe coming home. The other side is the refund you can claim on the way out, country by country. Start with the one you are shopping in.</p>
-      <a class="btn" href="/japan/tax-refund">How to get the tax back in Japan
-        <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <h2>One purchase, two governments.</h2>
+      <p>The tax you reclaim abroad and the duty you may owe at home are two separate answers to the same trip. Get the refund on the way out, and know the allowance on the way back. That is the whole money picture, and it is the point of this page.</p>
     </section>
 
   </main>
@@ -191,6 +200,12 @@ const sources = [
     .pt-flag svg{flex:none;margin-top:2px}
     .pt-flag-h{margin:0 0 4px;font-weight:600;font-size:15px;color:var(--ink)}
     .pt-flag-p{margin:0;font-size:14px;line-height:1.6;color:var(--ink)}
+
+    .pt-index{list-style:none;margin:18px 0 0;padding:0;max-width:680px;border-top:1px solid var(--line)}
+    .pt-index li{margin:0;border-bottom:1px solid var(--line)}
+    .pt-index li a{display:block;padding:13px 2px;font-size:15.5px;line-height:1.5;color:var(--ink);text-decoration:none;transition:background .15s ease,padding .15s ease}
+    .pt-index li a:hover{background:var(--card);padding-left:10px;padding-right:10px}
+    .pt-index li a b{color:var(--teal-deep);font-weight:600;margin-right:6px}
 
     .pt-close{padding:38px 0 64px}
     .pt-close h2{margin:0 0 8px}

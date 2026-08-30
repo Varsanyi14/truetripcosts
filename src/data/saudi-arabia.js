@@ -379,7 +379,7 @@ export default {
       }
     },
   {
-    slug: "vat-refund",
+    slug: "tax-refund",
     glance: [
       { k: "VAT rate", v: "15%, the highest in the Gulf" },
       { k: "Minimum spend", v: "Over SAR 500 at one retailer" },
@@ -387,7 +387,7 @@ export default {
       { k: "Export window", v: "90 days, goods unused" },
     ],
     live: true,
-    topic: "taxes",
+    topic: "tax-refund",
     title: "Saudi VAT refund for tourists: how to claim the 15%",
     description:
       "Saudi Arabia has refunded VAT to visitors since April 2025. The minimum spend, the form you must request as you pay, and where the claim happens.",
@@ -532,7 +532,7 @@ export default {
         icon: "refund",
         key: { fig: "Shopping only", tag: "Never the bed", text: "Saudi Arabia runs the best refund scheme in the region, live since April 2025, but it covers goods you export unused. A room you slept in is consumed here and is never reclaimable.", tone: "teal" },
         p: [
-          `Unlike most of the region, Saudi VAT is <b>reclaimable on shopping</b>, through a ZATCA scheme live since <b>${F.refundFrom}</b> with a minimum spend at a single participating retailer. The full rules, the minimum, the export window and what to ask for at the till are in the <a href="/saudi-arabia/vat-refund">Saudi VAT refund guide</a>.`,
+          `Unlike most of the region, Saudi VAT is <b>reclaimable on shopping</b>, through a ZATCA scheme live since <b>${F.refundFrom}</b> with a minimum spend at a single participating retailer. The full rules, the minimum, the export window and what to ask for at the till are in the <a href="/saudi-arabia/tax-refund">Saudi VAT refund guide</a>.`,
           "What matters here is the boundary. The refund covers <b>goods you take out of the country unused</b>. It does not cover hotels, restaurants or anything else consumed in the Kingdom, so the 15% on your room is a <b>cost, not a deferred rebate</b>, and no amount of paperwork at the airport changes that. Getting this backwards is a common and expensive assumption. For cards, cash and the riyal's peg, see the <a href=\"/saudi-arabia\">Saudi Arabia money guide</a>."
         ]
       }

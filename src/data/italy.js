@@ -515,7 +515,7 @@ export default {
       }
     },
     {
-      slug: "vat-refund",
+      slug: "tax-refund",
       glance: [
         { k: "VAT rate", v: "22%" },
         { k: "Minimum", v: "70.01 euros, one store, one day" },
@@ -523,7 +523,7 @@ export default {
         { k: "Validate", v: "At an OTELLO kiosk on exit" }
       ],
       live: true,
-      topic: "vat-refund",
+      topic: "tax-refund",
       title: "Italy VAT refund: the 70 euro minimum, OTELLO",
       description: "Non-EU visitors can reclaim part of Italy's 22% VAT on goods over 70.01 euros in one store. How OTELLO validation works, and why you net 11 to 15%.",
       h1: "Italy's VAT refund, and what you actually get back.",

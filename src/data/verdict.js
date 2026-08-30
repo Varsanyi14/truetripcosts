@@ -453,7 +453,7 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'driving-and-tolls', k: 'The real trap', v: 'The city Umweltzone sticker', tier: 1, theme: 'driving' },
   ],
   'united-kingdom': [
-    { label: 'Expect', spoke: 'vat-refund', k: 'VAT refund', v: 'None in Great Britain', tier: 1, theme: 'vat' },
+    { label: 'Expect', spoke: 'tax-refund', k: 'VAT refund', v: 'None in Great Britain', tier: 1, theme: 'vat' },
   ],
   japan: [
     { label: 'Do', spoke: 'money-scams', k: 'Sitting down', v: 'Ask about the seat charge', tier: 1, theme: 'seat-charge' },

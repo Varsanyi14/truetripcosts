@@ -32,7 +32,7 @@ const KIND_CHIP = {
 // spaces, and the one initialism is written the way the site writes it everywhere else.
 function topicLabel(topic) {
   if (!topic) return null;
-  if (topic === 'vat-refund') return 'VAT refund';
+  if (topic === 'tax-refund') return 'VAT refund';
   if (topic === 'all-inclusive') return 'all-inclusive';
   return topic.replace(/-/g, ' ');
 }

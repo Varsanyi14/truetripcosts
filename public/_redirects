@@ -46,3 +46,18 @@
 # Mexico?", so the slug was the part that was wrong.
 /mexico/entry-fees   /mexico/attraction-fees   301
 /mexico/entry-fees/  /mexico/attraction-fees   301
+
+# Refund-spoke slug standardization, Aug 2026. The family moved to tax-refund
+# because Japan and others charge a consumption tax or GST, not VAT.
+/france/vat-refund               /france/tax-refund            301
+/france/vat-refund/              /france/tax-refund            301
+/italy/vat-refund                /italy/tax-refund             301
+/italy/vat-refund/               /italy/tax-refund             301
+/spain/vat-refund                /spain/tax-refund             301
+/spain/vat-refund/               /spain/tax-refund             301
+/united-kingdom/vat-refund       /united-kingdom/tax-refund   301
+/united-kingdom/vat-refund/      /united-kingdom/tax-refund   301
+/saudi-arabia/vat-refund         /saudi-arabia/tax-refund     301
+/saudi-arabia/vat-refund/        /saudi-arabia/tax-refund     301
+/portugal/iva-tax-refund-kiosk   /portugal/tax-refund         301
+/portugal/iva-tax-refund-kiosk/  /portugal/tax-refund         301

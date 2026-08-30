@@ -19,13 +19,11 @@ export const topicIcon = {
   scams: 'alert',
   "tourist-tax": 'receipt',
   taxes: 'receipt',
-  "vat-refund": 'refund',
-  // NOT the `refund` glyph above, despite the family match. That glyph hardcodes a euro
-  // sign (&#8364;) inside its return arrow, which is right for France, Italy and Spain and
-  // wrong for a yen page. `receipt` is currency-neutral, so it also survives the rest of
-  // the planned refund wave (Japan yen, Korea won, Saudi riyal) without a per-country
-  // icon. Note the same euro glyph is currently rendering on united-kingdom/vat-refund,
-  // which is a pre-existing defect in the older family and wants its own fix.
+  // The refund family all uses `tax-refund` -> `receipt`, a currency-neutral glyph. The
+  // old `vat-refund` -> `refund` mapping was removed in Aug 2026 when the family
+  // standardized on the tax-refund slug: the `refund` glyph hardcoded a euro sign, which
+  // was right for France/Italy/Spain but rendered a euro on the UK (pound) and Japan (yen)
+  // pages. Moving every refund spoke to `tax-refund` fixed that defect as a side effect.
   "tax-refund": 'receipt',
   rail: 'train',
 };
