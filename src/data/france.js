@@ -555,7 +555,7 @@ export default {
           key: { tag: "Validate at your EU exit", text: "As across the EU, you validate at your last EU departure point, not necessarily in France. If you connect through another EU country, scan PABLO or get the stamp there, not in France.", tone: "amber" },
           p: [
             "As across the EU, you <b>validate at your last EU departure point</b>, not necessarily in France. If you connect through another EU country on the way home, you scan PABLO or get the stamp <b>there</b>, then send the form back if needed.",
-            "The detaxe is the shopping side of money in France. For the tax on your hotel bill, see <a href=\"/france/tourist-tax\">France's tourist tax</a>, and for paying day to day, <a href=\"/france/cash-or-card\">cash or card in France</a>. The wider picture is in the <a href=\"/france\">France money guide</a>."
+            "The detaxe is the shopping side of money in France. For the tax on your hotel bill, see <a href=\"/france/tourist-tax\">France's tourist tax</a>, and for paying day to day, <a href=\"/france/cash-or-card\">cash or card in France</a>. The wider picture is in the <a href=\"/france\">France money guide</a>. And getting the tax back is only half of it: <a href=\"/us-customs-allowance\">what US Customs charges when you carry it home</a> is the other half."
           ]
         }
       ],

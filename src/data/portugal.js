@@ -570,7 +570,7 @@ export default {
           icon: "alert",
           key: { fig: "e-Taxfree", tag: "Not IVAucher", text: "This is the visitor VAT refund through the e-Taxfree system and private operators. It is separate from IVAucher, a domestic scheme for Portuguese residents that does not apply to you.", tone: "teal" },
           p: [
-            "This is the visitor VAT refund, handled through the <b>e-Taxfree</b> system and the private operators. It is separate from IVAucher, a domestic scheme for Portuguese residents that you will see mentioned but cannot use as a tourist. And it only covers <b>goods you take home</b>, not hotels, meals or services, which are not refundable. For how Portugal charges its town tourist taxes and everyday IVA, the <a href=\"/portugal\">Portugal money guide</a> has the rest."
+            "This is the visitor VAT refund, handled through the <b>e-Taxfree</b> system and the private operators. It is separate from IVAucher, a domestic scheme for Portuguese residents that you will see mentioned but cannot use as a tourist. And it only covers <b>goods you take home</b>, not hotels, meals or services, which are not refundable. For how Portugal charges its town tourist taxes and everyday IVA, the <a href=\"/portugal\">Portugal money guide</a> has the rest. And once those goods reach home, <a href=\"/us-customs-allowance\">what US Customs charges you</a> is the other half of the cost."
           ]
         }
       ],

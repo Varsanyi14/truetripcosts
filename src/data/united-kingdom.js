@@ -607,7 +607,7 @@ export default {
           key: { fig: "Baked in", tag: "Nothing to reclaim", text: "The 20% VAT is baked into prices, so there is no separate tax line on shopping and nothing to reclaim. Some areas are adding a separate lodging levy on overnight stays.", tone: "teal" },
           p: [
             "The <b>20% VAT is baked into prices</b>, so there is no separate tax line to watch on shopping, and nothing to reclaim. Airport duty-free is a different thing from a high-street VAT refund, and applies to the usual categories like alcohol and tobacco.",
-            "On lodging, Britain long had no tourist tax, but that is changing: <b>Edinburgh</b> now adds a <b>5% visitor levy</b> on overnight stays as of <b>24 July 2026</b>, and a few English cities add a small flat per-night charge. The detail is in the <a href=\"/united-kingdom\">UK money guide</a>."
+            "On lodging, Britain long had no tourist tax, but that is changing: <b>Edinburgh</b> now adds a <b>5% visitor levy</b> on overnight stays as of <b>24 July 2026</b>, and a few English cities add a small flat per-night charge. The detail is in the <a href=\"/united-kingdom\">UK money guide</a>. And even with no refund to claim here, if you shop and carry goods home, <a href=\"/us-customs-allowance\">what US Customs charges when you bring it home</a> still applies."
           ]
         }
       ],

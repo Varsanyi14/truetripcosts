@@ -458,7 +458,7 @@ export default {
         },
         p: [
           "The refund covers <b>goods exported for personal use</b>. It does not cover your hotel, your restaurant bills, your rides or anything else consumed inside the country, which is the same shape as every other visitor refund scheme in the world and still surprises people who expect the 15% back on a whole trip.",
-          "Nor does it reach a hotel bill. Beyond the 15% itself, properties here often put a <b>service charge</b> on the room, and a few add a <b>municipality fee</b> as well, none of it recoverable. Worth asking whether a quoted rate is the whole rate when you book. That is a different question from the refund, and for most budgets a larger one.",
+          "Nor does it reach a hotel bill. Beyond the 15% itself, properties here often put a <b>service charge</b> on the room, and a few add a <b>municipality fee</b> as well, none of it recoverable. Worth asking whether a quoted rate is the whole rate when you book. That is a different question from the refund, and for most budgets a larger one. And once you carry those goods home, <a href=\"/us-customs-allowance\">what US Customs charges</a> is the other half of the cost.",
         ],
       },
     ],

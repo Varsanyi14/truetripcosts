@@ -565,7 +565,7 @@ export default {
           key: { tag: "Validate at your EU exit", text: "If you fly onward through another EU country, you validate at your final EU exit, not in Italy. Fly Rome to Frankfurt to New York and you process the forms in Frankfurt.", tone: "amber" },
           p: [
             "A common mistake: if you are flying onward through another EU country, you <b>validate at your final EU exit</b>, not in Italy. Fly Rome to Frankfurt to New York, and you process the forms at <b>Frankfurt</b>, not Rome. Leaving overland to Switzerland, you validate at the border.",
-            "The VAT refund is the shopping side of money in Italy. For the tax that lands on your hotel bill instead, see <a href=\"/italy/tourist-tax\">Italy's tourist tax</a>, and for paying day to day, <a href=\"/italy/cash-or-card\">cash or card in Italy</a>. The wider picture is in the <a href=\"/italy\">Italy money guide</a>."
+            "The VAT refund is the shopping side of money in Italy. For the tax that lands on your hotel bill instead, see <a href=\"/italy/tourist-tax\">Italy's tourist tax</a>, and for paying day to day, <a href=\"/italy/cash-or-card\">cash or card in Italy</a>. The wider picture is in the <a href=\"/italy\">Italy money guide</a>. And getting the tax back is only half of it: <a href=\"/us-customs-allowance\">what US Customs charges when you carry it home</a> is the other half."
           ]
         }
       ],

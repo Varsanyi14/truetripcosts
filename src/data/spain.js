@@ -485,7 +485,7 @@ export default {
           key: { tag: "Validate at your EU exit", text: "As across the EU, validate at your last EU departure point. If you connect through another EU country on the way home, you validate there, not in Spain.", tone: "amber" },
           p: [
             "As across the EU, <b>validate at your last EU departure point</b>. If you connect through another EU country on the way home, you validate <b>there</b>, not in Spain.",
-            "The IVA refund is the shopping side of money in Spain. For the tax that only some regions add to your hotel bill, see <a href=\"/spain/tourist-tax\">Spain's tourist tax</a>, and for paying day to day, <a href=\"/spain/cash-or-card\">cash or card in Spain</a>. The wider picture is in the <a href=\"/spain\">Spain money guide</a>."
+            "The IVA refund is the shopping side of money in Spain. For the tax that only some regions add to your hotel bill, see <a href=\"/spain/tourist-tax\">Spain's tourist tax</a>, and for paying day to day, <a href=\"/spain/cash-or-card\">cash or card in Spain</a>. The wider picture is in the <a href=\"/spain\">Spain money guide</a>. And getting the tax back is only half of it: <a href=\"/us-customs-allowance\">what US Customs charges when you carry it home</a> is the other half."
           ]
         }
       ],
