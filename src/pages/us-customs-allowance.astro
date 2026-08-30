@@ -1,0 +1,173 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import USBadge from '../components/USBadge.astro';
+
+// US-customs-allowance hub, the US side of the VAT-refund family. Standalone authored page,
+// modeled on bringing-a-dog-into-the-us.astro, not a country spoke. This is BOTH the
+// authoritative US-import reference AND the future hub for the refund family: the country
+// index (one line per country's refund spoke) drops into the placeholder marked below once
+// the refund spokes share a slug pattern (Phase 2, deferred).
+//
+// Official-first: every figure is US CBP / eCFR / Federal Register sourced, earns nothing.
+// Checked August 2026. HARD staleness flags: the de minimis suspension is an interim final
+// rule (comments closed 24 July 2026, a final rule may change detail), a postal compliance
+// date lands 22 October 2026, and the statutory repeal is 1 July 2027. Re-verify against CBP
+// before relying on this.
+//
+// Copy verified by OC against 19 CFR 148.33, 19 CFR 148.104, CBP Know Before You Go, and
+// Federal Register 2026-12669 / 2026-12670; MAIN re-verified the $200 tier, the 48-hour
+// carve-outs, and the de minimis timeline against CBP's own Types of Exemptions page.
+
+const govIcon = '<path d="M6 3v18"></path><path d="M6 4h12l-2 3.5L18 11H6"></path>';
+
+const sources = [
+  { name: "US Customs and Border Protection, Know Before You Go: Traveling Abroad", note: "the 800 dollar and 200 dollar exemptions, the 48-hour and 30-day rules, pooling, and the declaration", url: "https://www.cbp.gov/travel/international-visitors/kbyg/types-exemptions" },
+  { name: "19 CFR 148.33, articles acquired abroad", note: "the exemption tiers, the insular-possession 1,600 dollar rule, and highest-duty-first application", url: "https://www.ecfr.gov/current/title-19/chapter-I/part-148/subpart-D" },
+  { name: "19 CFR 148.104, flat rate of duty", note: "the flat 3 percent band on the next 1,000 dollars, and its once-every-30-days limit", url: "https://www.ecfr.gov/current/title-19/chapter-I/part-148" },
+  { name: "Federal Register 2026-12670", note: "indefinite suspension of the de minimis exemption for merchandise arriving through all modes other than the international postal network, effective 24 June 2026", url: "https://www.federalregister.gov/documents/2026/06/24/2026-12670/indefinite-suspension-of-the-de-minimis-exemption-for-merchandise-arriving-through-all-modes-other" },
+  { name: "Federal Register 2026-12669", note: "indefinite suspension of the de minimis exemption for mail shipments and the new postal informal entry process, effective 24 July 2026", url: "https://www.federalregister.gov/documents/2026/06/24/2026-12669/indefinite-suspension-of-the-de-minimis-exemption-for-mail-shipments-and-new-postal-informal-entry" }
+];
+---
+<Base
+  title="What US Customs charges on what you bring home: the 800 dollar allowance, the flat 3 percent, and why you carry it | True Trip Costs"
+  description="What US travelers owe US Customs on purchases brought home: the 800 dollar personal exemption on goods you carry, the flat 3 percent on the next 1,000 dollars, the 200 dollar tier for short trips, and why shipping a parcel home now costs you since the de minimis exemption was suspended in 2025. Every figure sourced to CBP and the Federal Register. Checked August 2026."
+>
+  <Nav />
+  <main class="wrap">
+
+    <section class="pt-prose">
+      <p class="lab">Coming home to the US</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
+      <h1>What does US Customs charge on what you bring home?</h1>
+      <p class="pt-lede">Carry your purchases home in your bags and the first 800 US dollars of them come in free. The next 1,000 US dollars is charged a flat 3 percent. Above that, each item is charged at its own tariff rate, which varies by item, so no single number applies. The 800 dollars is per person, so a family of four traveling together can pool 3,200 US dollars on goods they own jointly. You need a trip of at least 48 hours, and you can use the allowance once every 30 days.</p>
+      <p class="pt-note">Two things decide whether that allowance applies to you at all. Declare everything on CBP form 6059B, because not declaring something dutiable risks forfeiting it. And carry it, do not ship it. Goods you mail or forward home separately are treated as imports, get no allowance, and since 2025 get no small-parcel cushion either, so they are dutiable from the first dollar.</p>
+    </section>
+
+    <section class="pt-prose">
+      <h2>Do this</h2>
+      <ul class="pt-snap">
+        <li>Carry your purchases home in your own bags. That is the only way the 800 dollar allowance applies.</li>
+        <li>Keep the receipts, and keep them somewhere you can reach at the border. Value is the fair retail value in the country where you bought the item.</li>
+        <li>Declare everything, including gifts you are carrying for other people.</li>
+        <li>Pool the family allowance on jointly owned goods when you are traveling together.</li>
+        <li>Count the trip. Under 48 hours, or a second claim inside 30 days, drops you to 200 dollars.</li>
+      </ul>
+      <h2 style="margin-top:26px">Do not do this</h2>
+      <ul class="pt-snap">
+        <li>Do not ship or forward goods home expecting them to arrive duty free. That cushion is gone.</li>
+        <li>Do not assume a foreign tax refund cancels US duty. They are two separate events.</li>
+        <li>Do not split a purchase across people or parcels to get under a limit. CBP treats that as a compliance problem, not a saving.</li>
+        <li>Do not gift wrap what you carry or send. It may have to be unwrapped for inspection.</li>
+        <li>Do not leave something off the form because it seems small. If in doubt, declare it. That is CBP's own instruction.</li>
+      </ul>
+    </section>
+
+    <section class="pt-prose">
+      <h2>The 800 dollar allowance</h2>
+      <p>The bands, on goods you carry:</p>
+      <ul class="pt-snap">
+        <li><b>First 800 US dollars: free.</b></li>
+        <li><b>Next 1,000 US dollars: a flat 3 percent.</b></li>
+        <li><b>Above 1,800 US dollars: the item's own tariff rate.</b> That varies by item and changes, so we do not quote one. Ask CBP or check the tariff schedule for the specific thing you are buying.</li>
+      </ul>
+      <p style="margin-top:16px">The conditions:</p>
+      <ul class="pt-snap">
+        <li><b>Per person, children included.</b> Family members traveling together can pool their allowances on goods they own jointly. Four people, 3,200 dollars.</li>
+        <li><b>The goods have to be with you.</b> Accompanied baggage only. See the next section.</li>
+        <li><b>A trip of at least 48 hours.</b> CBP waives that when you are returning from Mexico or the US Virgin Islands.</li>
+        <li><b>Once every 30 days.</b> The flat 3 percent band is also once every 30 days, and any part of the 1,000 dollars you do not use does not carry over to your next trip.</li>
+        <li><b>Fail either test and the allowance is 200 dollars.</b> Under 48 hours, or you already claimed inside 30 days, you still get 200 US dollars duty free.</li>
+        <li><b>Coming direct from a US insular possession it is 1,600 dollars.</b> US Virgin Islands, Guam, American Samoa, Northern Mariana Islands. No more than 800 of that may have been bought elsewhere.</li>
+        <li><b>Alcohol and tobacco count inside the allowance, not beside it.</b> One liter of alcohol, 200 cigarettes, 100 cigars.</li>
+        <li><b>The officer puts your allowance against the highest-duty items first.</b> That works in your favor, and you do not have to ask for it.</li>
+        <li><b>Declare on CBP form 6059B</b>, or on the app or kiosk where your airport offers one.</li>
+      </ul>
+    </section>
+
+    <section class="pt-prose">
+      <h2>Carry it, do not ship it</h2>
+      <p>The allowance above covers goods that travel with you. Anything you mail, ship or forward home separately is treated as an import instead, and it does not count toward your allowance. CBP's wording is that items to be sent later may not be included in your duty-free exemption. The exception is goods sent from Guam or the US Virgin Islands.</p>
+      <p>Shipping used to have its own cushion. A parcel worth 800 dollars or less could enter duty free under the de minimis exemption. That is gone:</p>
+      <ul class="pt-snap">
+        <li><b>29 August 2025.</b> The suspension took effect for all countries, under an executive order signed that July. From this date a small parcel from anywhere was dutiable.</li>
+        <li><b>24 June 2026 and 24 July 2026.</b> CBP wrote the suspension into its own regulations, indefinitely, in two interim final rules: all non-postal modes from 24 June, mail from 24 July, with part of the new postal entry process phasing in on 22 October 2026.</li>
+        <li><b>1 July 2027.</b> Congress repeals the exemption permanently, under the One Big Beautiful Bill Act.</li>
+      </ul>
+      <p style="margin-top:16px">So a parcel you send home today needs a customs entry and is dutiable from the first dollar, plus whatever the carrier charges you to file it. Carried, the same purchase has 800 dollars of headroom. That is the whole reason this page exists: it is not a packing tip, it is money.</p>
+
+      <div class="pt-flag">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"></path><path d="M12 17h.01"></path><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+        <div>
+          <p class="pt-flag-h">Keep the two rules apart.</p>
+          <p class="pt-flag-p">The suspension above is about shipments. Your allowance on goods you carry is a separate rule, and as of this writing it is intact. We are not telling you it can never change. We are telling you which half got worse, and when. De minimis facts checked August 2026, with a statutory endpoint already on the calendar for 1 July 2027.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-prose">
+      <h2>It is separate from your foreign refund</h2>
+      <p>If you claimed a tax refund on the way out, that is a different government answering a different question. Two events:</p>
+      <ul class="pt-snap">
+        <li>The country you shopped in refunds its own consumption tax because you are taking the goods out.</li>
+        <li>The US may charge its own duty because you are bringing them in.</li>
+      </ul>
+      <p style="margin-top:16px">Neither one cancels the other. A French refund does not buy down a US duty bill, and a US duty bill does not mean your refund was pointless.</p>
+      <p>One thing we cannot tell you: whether a refund you have already claimed lowers the value you declare at the US border. CBP values goods at fair retail value in the country where you bought them, and we have not found a CBP statement on how a claimed refund affects that figure. So do not guess on the form. Carry the receipt and the refund paperwork, declare what you paid, and let the officer settle the number.</p>
+    </section>
+
+    {/* PHASE 2 PLACEHOLDER, deferred: the country-by-country refund index drops in here once
+        the refund spokes share a slug pattern. Nothing rendered until then, by design. */}
+
+    <section class="pt-prose">
+      <h2>Common questions</h2>
+
+      <p class="qh"><b>Does getting a tax refund abroad mean I owe US duty?</b></p>
+      <p>Not by itself. US duty depends on the value of what you bring in and whether it fits your allowance. The refund is a separate transaction with a separate government.</p>
+
+      <p class="qh"><b>Is the 800 dollars per person or per family?</b></p>
+      <p>Per person, children included. Traveling together, you can pool it on goods you own jointly, so a family of four has 3,200 dollars.</p>
+
+      <p class="qh"><b>What if I ship a box home instead of checking it?</b></p>
+      <p>Then it is an import, not baggage. No allowance applies, and since 2025 there is no small-parcel exemption either, so it is dutiable from the first dollar and needs a customs entry. Carry it if you can.</p>
+
+      <p class="qh"><b>My trip was one night. Do I still get 800 dollars?</b></p>
+      <p>No. Under 48 hours the allowance is 200 US dollars. CBP waives the 48-hour test when you are returning from Mexico or the US Virgin Islands.</p>
+
+      <p class="qh"><b>What happens if I do not declare something?</b></p>
+      <p>You risk forfeiting the item, and penalties on top. CBP's own line is: if in doubt, declare it. Declaring something does not mean you will be charged for it.</p>
+
+      <p class="qh"><b>How much duty will I pay on a 3,000 dollar watch?</b></p>
+      <p>We will not guess. The first 800 is free, the next 1,000 is a flat 3 percent, and the remainder is charged at that item's own tariff rate, which varies by item and changes. For a purchase that size, ask CBP or check the tariff schedule before you buy.</p>
+    </section>
+
+    <div class="pt-flag" style="margin:0 auto 8px;max-width:680px">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"></path><path d="M12 17h.01"></path><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+      <div>
+        <p class="pt-flag-h">Checked August 2026 by the True Trip Costs desk.</p>
+        <p class="pt-flag-p">The de minimis suspension is an interim final rule with comments closed, so a final rule may change the detail. The statutory repeal date is 1 July 2027. Verify against CBP before relying on this for a large purchase.</p>
+      </div>
+    </div>
+
+    <details class="gsources">
+      <summary class="gsources-sum"><span class="gsources-txt">Sources, all official</span><span class="gsources-chev" aria-hidden="true">+</span></summary>
+      <div class="gsources-body">
+        {sources.map((s) => (
+          <div class="gs-row">
+            <span class="gs-ic" set:html={`<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${govIcon}</svg>`}></span>
+            <span class="gs-src-tx"><a class="gs-src-name" href={s.url} target="_blank" rel="noopener">{s.name}</a><span class="gs-src-note">{s.note}</span></span>
+          </div>
+        ))}
+      </div>
+    </details>
+
+  </main>
+  <Footer />
+
+  <style>
+    .qh{margin:20px 0 4px;font-size:15.5px;color:var(--ink)}
+    .qh b{font-weight:600}
+    .pt-note{font-size:16px;line-height:1.7;color:var(--ink);max-width:680px;margin:14px 0 0}
+  </style>
+</Base>
