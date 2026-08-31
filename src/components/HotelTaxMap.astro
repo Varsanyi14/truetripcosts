@@ -264,6 +264,21 @@ function titleFor(entry, name) {
     <p class="htm-sub">Darker means more is added at checkout, on top of the price you were quoted. It does not mean more tax: in most of Europe and in Japan the tax is already inside the rate you compared, which is why some heavily taxed countries sit at the light end. Hotel charges like resort fees are never in the colour, because no government sets them.</p>
   </div>
 
+  {!embed && (
+    <div class="htm-find htm-find-top">
+      <label class="htm-find-lab" for="htm-filter">Find your country on the map</label>
+      <input
+        type="text"
+        id="htm-filter"
+        class="htm-find-in"
+        placeholder="Type a country, like Japan"
+        aria-label="Find a country and jump to it in the list below"
+        autocomplete="off"
+      />
+      <p class="htm-find-empty" id="htm-filter-empty" hidden>No country by that name in the list yet. We may not have checked it, which is not the same as it having no tax.</p>
+    </div>
+  )}
+
   <figure class="htm-fig">
     <div class="htm-mapwrap">
       <svg class="htm-svg" viewBox={world.viewBox} xmlns="http://www.w3.org/2000/svg"
@@ -348,6 +363,9 @@ function titleFor(entry, name) {
     </figcaption>
   </figure>
 
+  {/* THE COUNTRY SEARCH lives above the map (htm-find-top) so it is the first thing a
+      reader meets when they look for their country. It filters the list further down. */}
+
   <div class="htm-legend">
     <p class="htm-lk">Added on top of the quoted rate, by government</p>
     {!embed && <p class="htm-basket">Some of these charges are not percentages at all. Most of Europe asks for a flat few euros a night rather than a share of the room, and a flat fee has no percentage until you pick a room rate. So we picked one and we are telling you what it is: <b>{REFERENCE_STAY.words}</b>. Every flat fee on this map is shown as its share of that room. The consequence is worth holding on to, because it runs the opposite way to intuition: a cheaper room feels a flat fee harder than this map shows, and an expensive room barely notices it. Each country's row carries the real charge in its own currency, which is the number to use if your room is nothing like 150 euros.</p>}
@@ -417,22 +435,6 @@ function titleFor(entry, name) {
   <div class="htm-list">
     <p class="htm-lk">Every country we hold something for</p>
     <p class="htm-note">We hold a checked, dated position on {coveredChecked === coveredCount ? `all ${coveredCount}` : `${coveredChecked} of the ${coveredCount}`} countries we cover{beyondCovered > 0 ? `, plus ${beyondCovered} beyond them` : ''}: {noTaxCount} with no tourist or hotel tax at all, {shapeCount} where there is a charge and its shape is known, {figureCount} pinned to a percentage on the scale above, of which {modelledCount} are flat charges modelled at the reference room rather than real percentages, and {variesCount} where the rate varies too much inside the country for one national number to be honest. This list is the map's real content, with the government charges separated from the property's own, and each one dated.</p>
-
-    {/* The list is the map's real navigation, on a phone and for the small countries a
-        pointer cannot land on. This box filters it: type a name and the list narrows to it.
-        It is the reliable way to reach a country, the hover title is only a desktop bonus. */}
-    <div class="htm-find">
-      <label class="htm-find-lab" for="htm-filter">Find a country</label>
-      <input
-        type="text"
-        id="htm-filter"
-        class="htm-find-in"
-        placeholder="Type a country, like Japan"
-        aria-label="Find a country in the list below"
-        autocomplete="off"
-      />
-    </div>
-    <p class="htm-find-empty" id="htm-filter-empty" hidden>No country by that name in the list. We may not have checked it yet, which is not the same as it having no tax.</p>
 
     {rows.map(e => {
       const band = colours(e) ? bandFor(e.addedPct) : null;
@@ -683,7 +685,11 @@ function titleFor(entry, name) {
 
   .htm-list{margin:30px 0 0}
   .htm-note{font-size:14.5px;color:var(--muted);line-height:1.5;margin:0 0 16px;max-width:720px}
-  .htm-find{margin:0 0 8px}
+  .htm-find{margin:16px 0 4px;max-width:720px}
+  /* Above-map search: the first thing a reader meets when they go looking for their
+     country, so it is prominent and full-attention, not a quiet field. */
+  .htm-find-top{margin:20px 0 0;max-width:560px}
+  .htm-find-top .htm-find-in{max-width:none;font-size:16px;padding:12px 15px}
   .htm-find-lab{display:block;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.08em;margin:0 0 6px}
   .htm-find-in{width:100%;max-width:360px;box-sizing:border-box;font-family:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 13px;-webkit-text-size-adjust:100%}
   .htm-find-in:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
