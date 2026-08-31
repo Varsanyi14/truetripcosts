@@ -40,6 +40,7 @@ const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? `/flags/${slu
   <section class="lc" id="lc" aria-label="Latest checked money facts">
     <div class="lc-head">
       <p class="lc-lab">Latest checks</p>
+      <a class="lc-all" href="/what-changed">See what changed</a>
       <button type="button" class="lc-pause" id="lc-pause" aria-pressed="false" aria-label="Pause the latest checks strip" hidden>
         <svg class="lc-ic-pause" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
         <svg class="lc-ic-play" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M8 5.2v13.6L19 12z"/></svg>
@@ -70,6 +71,12 @@ const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? `/flags/${slu
   .lc{margin:20px 0 2px}
   .lc-head{display:flex;align-items:center;gap:12px;margin:0 0 8px}
   .lc-lab{margin:0;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted,#6F6E66)}
+  /* One calm static link to the full log. The moving items stay plain text on purpose
+     (see the WHY IT DOES NOT LINK note above); this sits in the header instead, so the
+     freshness strip has a "see all of this" destination without turning the marquee into
+     a row of sliding links. mr-auto pushes the pause button to the far right. */
+  .lc-all{margin-right:auto;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.02em;color:var(--teal-deep,#0A5644);text-decoration:none}
+  .lc-all:hover{text-decoration:underline;text-underline-offset:2px}
   .lc-pause{display:inline-flex;align-items:center;gap:5px;padding:2px 8px;border:1px solid var(--line,#E5E3DB);border-radius:999px;background:transparent;color:var(--muted,#6F6E66);font:inherit;font-size:11px;line-height:1.7;cursor:pointer}
   .lc-pause:hover{color:var(--teal-deep,#0A5644);border-color:var(--teal,#0E7A5F)}
   .lc-pause .lc-ic-play{display:none}
