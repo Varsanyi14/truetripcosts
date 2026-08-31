@@ -144,6 +144,20 @@ export const REFERENCE_STAY = {
 // the rates table, so it is handled here rather than by every caller.
 const perUsd = (cur) => (cur === fxFallback.base ? 1 : fxFallback.rates[cur]);
 
+// EXPORTED FOR THE CALCULATOR, as a thin wrapper rather than a second implementation. The
+// calculator has to turn a real flat charge in its own currency into dollars, which is the
+// same conversion referencePct already does, and the one thing that must not happen is a
+// second rate table or a second rounding rule appearing in a component. Returns null, never
+// a zero, when the currency has no rate, so a caller cannot silently treat a missing rate as
+// a free hotel.
+export const localToUsd = (amount, currency) => usdFromLocal(amount, perUsd(currency));
+
+// Units of a currency per US dollar, exported for the one caller that needs the raw rate
+// rather than a conversion: serialising a rate-tier boundary for the client. Named so it
+// cannot be mistaken for the internal perUsd, and exported so no page imports fxFallback.js
+// and starts a second rate table.
+export const perUsdFor = (currency) => perUsd(currency) || null;
+
 // One decimal. A modelled percentage is an approximation resting on a declared assumption,
 // and a second decimal would be precision it has not earned.
 const round1 = (n) => Math.round(n * 10) / 10;
@@ -1852,6 +1866,7 @@ export const hotelTaxMap = deriveReferenceFigures([
     // not one for the reader of this map. The exemption is automatic, it is conditional on
     // how you pay, and it applies to the room. Colouring this country dark would tell a US
     // traveler to expect a fifth on top of a tax they will not be charged.
+    calcNote: 'A US tourist pays about nothing here. Argentina refunds the 21% VAT on accommodation automatically when the stay is paid with a foreign card or a foreign bank transfer, so the government share on your room is effectively zero. Pay with a local card or in cash and you forfeit the refund, which is the one condition worth knowing. An Argentine resident pays the full 21%.',
     variesNote: 'Foreign tourists do not pay the 21% VAT on accommodation. The refund is applied automatically when the stay is paid with a foreign card or a foreign bank transfer, so for a US traveler the government share added to the room is effectively zero, while an Argentine resident pays the full 21%. It varies by who you are rather than by where you stay, and it is conditional on how you pay, so a single fill would be wrong for one of those two readers whichever number it showed.',
     cities: [],
     pendingVerification: 'Needs a decision on whether a conditional exemption should colour at zero like an inclusive-VAT country, or stay off the scale as it does here. Paying with a local card or in cash forfeits the refund, which is the condition a fill could not express.',
@@ -1865,6 +1880,7 @@ export const hotelTaxMap = deriveReferenceFigures([
     slug: 'colombia',
     spoke: null,
     state: 'varies',
+    calcNote: 'A US tourist should pay about nothing here. Colombia exempts foreign visitors entering for tourism from the 19% IVA on accommodation, provided the hotel is registered with the RNT. Some hotels do charge it in error, so check the bill rather than assume. A Colombian resident pays the 19%.',
     variesNote: 'Foreign tourists are exempt from the 19% IVA on accommodation at hotels registered in the Registro Nacional de Turismo, so for a US traveler entering for tourism the government share added to the room should be zero. Colombian residents pay the 19%. Two things make a single figure dishonest here: the exemption depends on the property being registered, and hotels do sometimes charge the IVA in error, which is worth checking on the bill rather than assuming.',
     cities: [],
     pendingVerification: 'Needs the DIAN exemption text deep-linked to Estatuto Tributario article 476, and a note on what recourse a traveler has when a registered hotel charges the IVA anyway.',
@@ -1878,6 +1894,7 @@ export const hotelTaxMap = deriveReferenceFigures([
     slug: 'ecuador',
     spoke: null,
     state: 'varies',
+    calcNote: 'A US tourist staying under 90 days pays about nothing here. Ecuador exempts foreign non-residents from the 15% IVA on accommodation at registered hotels. For everyone else the rate also drops to 8% during decreed holiday periods, so the resident figure moves several times a year.',
     variesNote: 'Foreign non-residents staying under 90 days pay no IVA on accommodation at registered hotels, so the 15% standard rate does not reach a US visitor who books one. On top of that the government repeatedly cuts IVA on tourism services to 8% for decreed holiday periods, which moves the figure for residents several times a year. Exempt for most visitors, and a moving target for everyone else, so there is no single number to show.',
     cities: [],
     pendingVerification: 'Needs the SRI registration requirement confirmed for the exemption, and the 2026 holiday decree dates, before either the exempt figure or the resident figure could be shown as settled.',
@@ -1955,6 +1972,18 @@ export const hotelTaxMap = deriveReferenceFigures([
     addedPct: 5,
     addedBasis: 'This is the middle GST slab, which covers rooms from 1,001 to 7,500 rupees a night and is where most visitors stay. It is not the only rate: a room under 1,000 rupees pays nothing at all and a room above 7,500 rupees pays 18%, which is more than three times this fill. There is no bed tax or city tax anywhere in India, so GST is the whole of it.',
     representative: 'a mid-range room, from 1,001 to 7,500 rupees a night',
+    // FOR THE CALCULATOR ONLY, and it changes nothing about the fill. The map colours on the
+    // middle rung because a choropleth can hold exactly one number per country. A reader who
+    // has told us their nightly rate does not need a representative rung, they need theirs,
+    // and showing 5% to someone entering a 400 dollar room would be a wrong number in a
+    // calculator, which is worse than a rounded colour. Boundaries are held in rupees because
+    // that is the currency the law fixes them in.
+    tierCurrency: 'INR',
+    rateTiers: [
+      { upTo: 1000, pct: 0, note: 'A room at or under 1,000 rupees a night is not taxed at all.' },
+      { upTo: 7500, pct: 5, note: 'This is the middle band, and it is the rung the map colours on.' },
+      { upTo: null, pct: 18, note: 'Above 7,500 rupees a night the rate more than triples, which is why the single colour on the map understates a luxury stay here.' },
+    ],
     representativeNote: 'Read this before reading the colour. India taxes a hotel room by what the room costs, in three bands, so this country has no single figure and the fill is one band of three. Nothing up to 1,000 rupees a night, 5% from 1,001 to 7,500, and 18% above 7,500. A luxury room is therefore in the 15 to 22% band on this map while the fill shows 5%, and the old 12% middle band was removed in September 2025, which cut the rate on exactly the rooms this rung describes.',
     display: 'added',
     displayNote: 'GST is added to the room rate at checkout rather than embedded in it, and because the band is set by the actual price charged rather than a published tariff, a discount that drops a room below 7,500 rupees drops the tax rate with it.',
@@ -2053,6 +2082,34 @@ export const hotelTaxMap = deriveReferenceFigures([
     checkedISO: '2026-08-31',
   },
 
+  {
+    iso: 'CN',
+    country: 'China',
+    slug: 'china',
+    spoke: null,
+    state: 'varies',
+    // ADDED 2026-08-31. A large grey area on the map and a real US destination, so it is worth
+    // filling, but NOT at a flat 6%. The honest finding is that the same 6% behaves in two
+    // opposite ways depending on where you book, which is precisely what this state is for.
+    //
+    // WHY NOT COLOUR IT AT 6%. That would tell a reader booking a domestic three star to
+    // expect 6% on top when their rate almost certainly already contains it, and this map's
+    // entire axis is the difference between those two cases. Getting the display convention
+    // wrong is the one error that inverts an answer here, per Rail 7.
+    //
+    // NOTE FOR ANYONE RECONCILING THIS WITH THE GUIDE: china.js cites 13% VAT, which is the
+    // general goods rate. Accommodation is a different rate, 6%, which is why this entry
+    // exists at all: it says something the guide does not.
+    variesNote: 'The 6% VAT on accommodation is the same everywhere, and what changes is whether you ever see it. Budget and domestic hotels almost always quote a rate with it already inside, so nothing lands at checkout. Many upper-tier and international hotels quote net instead and add the 6% afterwards, usually alongside a service charge of 10 to 15% that the property sets rather than the government. So the honest answer depends on the kind of hotel rather than the city, and a single figure would be wrong for one of those two readers whichever way it went.',
+    calcNote: 'It depends on the kind of hotel rather than the city. At a budget or domestic hotel the 6% accommodation VAT is usually already inside the rate you were quoted, so nothing is added. At many upper-tier and international hotels the rate is quoted net and the 6% is added afterwards, commonly with a 10 to 15% service charge the hotel sets. Ask whether the rate is all in before you book.',
+    cities: [],
+    pendingVerification: 'Needs the State Taxation Administration page for the 6% accommodation rate under Caishui [2016] No. 36, plus a read on how widely net quoting actually runs by hotel tier, before either case could carry a figure.',
+    property: [
+      { label: 'Service charge', range: 'commonly 10 to 15% at upper-tier and international hotels', note: 'Set by the property rather than by government, and the larger of the two additions at the hotels that apply it.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
 ]);
 
 // --- scheduled changes we are tracking --------------------------------------
@@ -2082,3 +2139,156 @@ export const hotelTaxWatchlist = [
 ];
 
 export const byIso = Object.fromEntries(hotelTaxMap.map(e => [e.iso, e]));
+
+// ============================================================================
+// THE STAY CALCULATOR. ONE function, in this file, on purpose.
+// ============================================================================
+// A reader enters their own room rate, nights and party size, and this returns what
+// government adds on top across the whole stay. It lives here rather than in the page
+// because every percentage and every currency conversion on this map has to come from one
+// place: the moment a component does its own arithmetic, the calculator and the fill can
+// disagree, and a reader would have no way to tell which one lied.
+//
+// IT RETURNS AN OBJECT, NEVER A BARE NUMBER, and `kind` is the important field. Four of the
+// map's states cannot honestly produce a total, and the whole value of this function is that
+// it says so instead of inventing one. A wrong colour is a wrong impression; a wrong number
+// in a calculator is a reader budgeting against it.
+//
+// THREE TRAPS THIS HANDLES THAT ARE NOT OBVIOUS, each one a wrong number if missed:
+//
+//   1. MIXED COUNTRIES. The Maldives, Bahrain and Aruba carry a real percentage AND a flat
+//      charge. Computing only the flat part would tell a Bahrain reader with a 300 dollar
+//      room that 3 dinars a night is the whole story when 15% of the room sits beside it.
+//      So the flat branch adds basePct back in and the note says which part moves.
+//   2. RATE-TIERED COUNTRIES. India is taxed by what the room costs: nothing up to 1,000
+//      rupees, 5% to 7,500, then 18%. The map colours on the middle rung because a
+//      choropleth can hold one number, but a calculator KNOWS the reader's rate, so it can
+//      and must pick the right rung. `rateTiers` on the entry is how, and it is general
+//      rather than an India branch.
+//   3. NO-BED-TAX IS NOT ZERO. The derived noBedTax finding means "no tourist or hotel tax",
+//      which is a component finding, not an answer on this map's axis: whether VAT is added
+//      on top has NOT been checked for those countries, and the row says so in as many
+//      words. Returning 0 dollars for the Philippines, where 12% VAT genuinely is added,
+//      would be exactly the fabrication this map exists to avoid. So noBedTax is not
+//      computable here, and that is a deliberate refusal rather than an oversight.
+//
+// Rounding happens at the edge, in the UI, never here. This computes in full precision so a
+// reader changing nights by one sees the figure move by the right amount.
+
+// The reader's room, over the whole stay, in dollars. Null if the inputs are not usable,
+// which keeps every branch below from having to guard the same three things.
+const stayTotal = (nightlyUsd, nights) => {
+  const rate = Number(nightlyUsd), n = Math.floor(Number(nights));
+  if (!Number.isFinite(rate) || rate <= 0 || !Number.isFinite(n) || n <= 0) return null;
+  return rate * n;
+};
+
+// Which rung of a rate-tiered tax the reader's own room falls in. Tiers are held in the
+// currency the law is written in, because that is where the boundaries are fixed: converting
+// the boundary rather than the room would move the threshold every time the rate table
+// refreshed, and a reader just under a boundary would flip bands for no reason they could see.
+function tierFor(entry, nightlyUsd) {
+  const tiers = Array.isArray(entry.rateTiers) ? entry.rateTiers : null;
+  if (!tiers || !tiers.length || !entry.tierCurrency) return null;
+  const rate = perUsd(entry.tierCurrency);
+  if (!rate) return null;
+  const nightlyLocal = Number(nightlyUsd) * rate;
+  return tiers.find(t => t.upTo == null || nightlyLocal <= t.upTo) || tiers[tiers.length - 1];
+}
+
+export function computeAddedTax(entry, { nightlyUsd, nights, guests } = {}) {
+  const out = (kind, addedUsd, note) => ({
+    kind,
+    addedUsd,
+    perNightUsd: addedUsd == null || !(nights > 0) ? null : addedUsd / Math.floor(nights),
+    note,
+  });
+
+  if (!entry) {
+    return out('notComputable', null, 'Pick a country to see what government adds on top of the rate you were quoted.');
+  }
+  const who = entry.country || 'This country';
+
+  // ORDER MATTERS AND MIRRORS fillFor(). Every branch keys off the same predicate the colour
+  // uses, so the calculator cannot say something the country's own row and fill do not.
+
+  if (isNoBedTax(entry)) {
+    return out('notComputable', null, `Checked, and there is no tourist or hotel tax to add. What has NOT been checked for ${who} is whether VAT is added on top of a quoted rate or already inside it, so this will not put a number on the stay. That is the question the map colours, and it is still open here.`);
+  }
+
+  // BEFORE the inclusive branch, and the order is the bug this caught. Japan carries
+  // display:'inclusive', which is true of its consumption tax, AND state 'checkedShape',
+  // because its per-person city lodging taxes DO land on top and have no figure on this scale
+  // yet. Reading the display flag first returned zero dollars for a country that charges
+  // between 100 and 1,000 yen a person a night. The narrower state wins.
+  if (isCheckedShape(entry)) {
+    return out('notComputable', null, `There is a government charge in ${who}, and its shape is known, but no single figure sits on this scale yet, so a total here would be a guess. The country's row below says what is known.`);
+  }
+
+  if (entry.state === 'varies') {
+    return out('notComputable', null, entry.calcNote || `It depends where you stay in ${who}, so one figure would describe nowhere. The country's row below gives the range and the notable cases.`);
+  }
+
+  // Inclusive: the tax is real and already inside the quoted price, so nothing lands on top.
+  // Deliberately not phrased as "no tax", because zero next to a country name reads as cheap
+  // and these are some of the most heavily taxed countries on the map.
+  if (entry.display === 'inclusive') {
+    return out('inclusive', 0, `The tax here is inside the price you are quoted, so nothing is added at checkout. It is real, it is just already in the rate you compared.`);
+  }
+
+  if (!colours(entry)) {
+    return out('notComputable', null, `${who} does not carry a figure on this scale yet, so there is nothing here to total honestly.`);
+  }
+
+  const room = stayTotal(nightlyUsd, nights);
+  if (room == null) {
+    return out('notComputable', null, 'Enter a nightly rate and a number of nights to see the total.');
+  }
+  const n = Math.floor(Number(nights));
+  const people = Math.max(1, Math.floor(Number(guests) || 1));
+
+  // FLAT, AND POSSIBLY MIXED. Computed from the real charge in its own currency, never from
+  // addedPct: addedPct is that charge measured against a 150 euro reference room, so using it
+  // on an 80 dollar room would answer a question the reader did not ask.
+  if (hasModelledFlat(entry)) {
+    let flatUsd = 0;
+    for (const f of entry.modelled) {
+      const perUnit = localToUsd(f.amount, f.currency);
+      // A missing rate drops the whole result rather than quietly omitting one charge, the
+      // same rule deriveReferenceFigures follows for the fill.
+      if (perUnit == null) {
+        return out('notComputable', null, `One of the charges in ${who} is in a currency this page has no rate for today, so the total is withheld rather than shown short.`);
+      }
+      flatUsd += perUnit * (f.unit === 'perPersonPerNight' ? people * n : n);
+    }
+    const pctUsd = room * ((entry.basePct || 0) / 100);
+    const total = flatUsd + pctUsd;
+    const flatWords = entry.modelled.map(f => `${f.amount} ${f.currency} ${f.unit === 'perPersonPerNight' ? 'per person, per night' : 'per room, per night'}`).join(' and ');
+    const note = entry.basePct
+      ? `Part of this moves with your room rate and part does not. ${who} charges ${entry.basePct}% of the room, which scales, plus a flat ${flatWords}, which does not. Raise your room rate and only the percentage part grows.`
+      : `This is a flat charge, ${flatWords}, so it is the same number of dollars whether your room is 80 or 800 a night. That means it takes a much bigger bite out of a cheap room than an expensive one, which is the opposite of how a percentage behaves.`;
+    return out('flat', total, note);
+  }
+
+  // RATE-TIERED. The map colours on one rung because it must; here the reader's own rate
+  // decides the rung, which is the one thing a calculator can do that a choropleth cannot.
+  const tier = tierFor(entry, nightlyUsd);
+  if (tier) {
+    const total = room * (tier.pct / 100);
+    return out('percent', total, `${who} taxes a room by what the room costs, and at your rate that is ${tier.pct}%. ${tier.note || ''}`.trim());
+  }
+
+  // A CLEAN GOVERNMENT PERCENTAGE. Scales with the room, which is what a reader expects, so
+  // this note is the short one.
+  const total = room * (entry.addedPct / 100);
+  return out('percent', total, `${who} adds ${entry.addedPct}% of the room on top of the rate you were quoted.`);
+}
+
+// The countries the calculator will offer. Anything with an entry can be said something
+// about, even if the honest thing is "no number here". A country with NO entry is not
+// offered at all, because a picker that lists a country and then shrugs is worse than a
+// picker that does not list it.
+export const calculatorCountries = (extra = []) => [...hotelTaxMap, ...extra]
+  .filter(e => e && e.iso && e.country)
+  .sort((a, b) => a.country.localeCompare(b.country));
+

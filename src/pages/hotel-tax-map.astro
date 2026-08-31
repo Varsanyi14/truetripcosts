@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import HotelTaxMap from '../components/HotelTaxMap.astro';
 import CompareByRegion from '../components/CompareByRegion.astro';
 import USBadge from '../components/USBadge.astro';
+import { hotelTaxMap, computeAddedTax, localToUsd, perUsdFor } from '../data/hotel-tax-map.js';
 
 // The hotel tax world map. A NEW PAGE rather than the hero of /hotel-taxes-and-fees, and
 // the reasoning is worth keeping because it will come up again for the next map.
@@ -34,6 +35,62 @@ import USBadge from '../components/USBadge.astro';
 // loading=lazy so the embed costs the host page nothing until it scrolls near. The referrer
 // policy is the browser default spelled out, so TTC can still see which sites are embedding
 // the map without leaking a full URL to an http host.
+// THE CALCULATOR'S SERVER-RENDERED DEFAULT. Computed at build so the section shows one real
+// worked answer with JavaScript off rather than an inert form. The default country is chosen
+// to teach the counterintuitive case on first sight: France is a FLAT charge, so the total
+// does not move when a reader changes the room rate, which is the single least obvious thing
+// this whole map has to say. A percentage country would show the behaviour everyone already
+// expects and teach nothing.
+const CALC_DEFAULT_ISO = 'FR';
+const CALC_DEFAULTS = { nightlyUsd: 150, nights: 3, guests: 2 };
+const calcCountries = hotelTaxMap.filter(e => e && e.iso && e.country).slice()
+  .sort((a, b) => a.country.localeCompare(b.country));
+
+// The headline sentence per kind. Held here beside the build-time default AND mirrored in the
+// inline script, because the two have to agree; the script is the only duplicate of these
+// strings on the page and it is annotated as such.
+function calcHead(entry, r, inputs) {
+  const room = inputs.nightlyUsd * inputs.nights;
+  const money = (v) => '$' + Math.round(v).toLocaleString('en-US');
+  if (r.kind === 'percent' || r.kind === 'flat') {
+    const eff = room > 0 ? (r.addedUsd / room * 100) : 0;
+    return `Government tax adds about <b>${money(r.addedUsd)}</b> over ${inputs.nights} night${inputs.nights === 1 ? '' : 's'}, about <b>${eff.toFixed(1)}%</b> of your room.`;
+  }
+  if (r.kind === 'inclusive') return `Nothing is added at checkout in <b>${entry.country}</b>.`;
+  return `No honest single figure for <b>${entry ? entry.country : 'this country'}</b>.`;
+}
+
+
+// WHAT THE SCRIPT GETS, built by asking computeAddedTax rather than by re-reading the entries.
+// The kind and the note are taken verbatim from the function, so the client can never
+// classify a country differently from the server. Only the raw multipliers are added, and
+// they come from the same exported FX wrapper the fill uses.
+const calcData = Object.fromEntries(hotelTaxMap.filter(e => e && e.iso && e.country).map(e => {
+  const probe = computeAddedTax(e, CALC_DEFAULTS);
+  const row = { country: e.country, kind: probe.kind, note: probe.note };
+  if (probe.kind === 'flat') {
+    let perRoomNight = 0, perPersonNight = 0;
+    for (const f of e.modelled) {
+      const usd = localToUsd(f.amount, f.currency);
+      if (f.unit === 'perPersonPerNight') perPersonNight += usd; else perRoomNight += usd;
+    }
+    Object.assign(row, { perRoomNight, perPersonNight, basePct: e.basePct || 0 });
+  }
+  if (probe.kind === 'percent') {
+    row.pct = e.addedPct;
+    if (Array.isArray(e.rateTiers) && e.tierCurrency) {
+      // The rate table is applied ONCE, here, so the client multiplies rather than converts.
+      row.tierRate = perUsdFor(e.tierCurrency);
+      row.tiers = e.rateTiers.map(t => ({ upTo: t.upTo, pct: t.pct, note: t.note || '' }));
+    }
+  }
+  return [e.iso, row];
+}));
+
+const calcDefaultEntry = hotelTaxMap.find(e => e.iso === CALC_DEFAULT_ISO);
+const calcResult = computeAddedTax(calcDefaultEntry, CALC_DEFAULTS);
+const calcDefault = { head: calcHead(calcDefaultEntry, calcResult, CALC_DEFAULTS), note: calcResult.note };
+
 const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" width="100%" height="720"
   style="border:0" title="Hotel tax by country, from True Trip Costs" loading="lazy"
   referrerpolicy="no-referrer-when-downgrade"></iframe>`;
@@ -63,13 +120,69 @@ const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" wid
 
     <HotelTaxMap />
 
+    {/* THE STAY CALCULATOR. Placed directly under the map, because the map raises the
+        question ("how much is that, for me?") and this is the answer to it. All arithmetic
+        comes from computeAddedTax in src/data/hotel-tax-map.js: nothing on this page does
+        percentage or currency math of its own, so the calculator and the fill cannot drift.
+
+        SERVER-RENDERED WITH A REAL WORKED EXAMPLE. The default result below is computed at
+        build time, so with JavaScript off this section is not an inert form: it shows one
+        honest answer for one country and the inputs still describe what it would do. The
+        script only re-computes on input.
+
+        WHY THE COUNTRY LIST IS SHORTER THAN THE MAP LOOKS. Only countries with an entry are
+        offered. A picker that lists a country and then shrugs is worse than one that does not
+        list it, and an unchecked country has nothing to shrug about honestly. */}
+    <section class="htx-calc" id="stay-calculator">
+      <p class="lab">Your stay</p>
+      <h2>What will the tax actually add?</h2>
+      <p class="htx-calc-sub">Enter your own room rate, nights and party size. This is the government tax that lands on top of the rate you were quoted, computed the way that country actually charges it, which is not always a percentage. Where a country cannot honestly produce one number, it says so instead of guessing.</p>
+
+      <div class="htx-calc-grid">
+        <div class="htx-calc-f htx-calc-f-wide">
+          <label for="calc-country">Where are you staying</label>
+          <select id="calc-country" data-calc-country>
+            {calcCountries.map(e => (
+              <option value={e.iso} selected={e.iso === CALC_DEFAULT_ISO ? true : undefined}>{e.country}</option>
+            ))}
+          </select>
+        </div>
+        <div class="htx-calc-f">
+          <label for="calc-rate">Your nightly room rate</label>
+          <div class="htx-calc-money">
+            <span aria-hidden="true">$</span>
+            <input id="calc-rate" type="number" inputmode="decimal" min="1" max="20000" step="1" value={CALC_DEFAULTS.nightlyUsd} data-calc-rate />
+          </div>
+        </div>
+        <div class="htx-calc-f">
+          <label for="calc-nights">Nights</label>
+          <input id="calc-nights" type="number" inputmode="numeric" min="1" max="365" step="1" value={CALC_DEFAULTS.nights} data-calc-nights />
+        </div>
+        <div class="htx-calc-f">
+          <label for="calc-guests">Guests in the room</label>
+          <input id="calc-guests" type="number" inputmode="numeric" min="1" max="10" step="1" value={CALC_DEFAULTS.guests} data-calc-guests />
+        </div>
+      </div>
+
+      <div class="htx-calc-out" data-calc-out data-kind={calcResult.kind} role="status" aria-live="polite">
+        <p class="htx-calc-head" data-calc-head set:html={calcDefault.head}></p>
+        <p class="htx-calc-note" data-calc-note>{calcDefault.note}</p>
+      </div>
+
+      {/* THE STANDING LINE, under every result and never conditional on the country. The
+          government figure is the only thing this page can source nationally, and it is
+          routinely the smaller half of what a reader actually pays. */}
+      <p class="htx-calc-std">This is the government tax only. Resort fees and mandatory service charges are set by the hotel, not a government, so they are not in this figure and are often larger than it. <a href="#property-fees">What hotels add, and how to ask</a>, or see <a href="/cash-or-card">cash or card</a> for the fees a bank adds.</p>
+    </section>
+
+
     <section class="htx-more">
       <h2>Where the detail lives</h2>
       <p>Each shaded country above links to its own write-up, which is where the rates are kept current, sourced against the authority that sets them and dated. For the four kinds of charge that land on a hotel bill and how to tell them apart, start with the <a href="/hotel-taxes-and-fees">hotel taxes and fees guide</a>. For per-night bed taxes and entry charges specifically, see <a href="/tourist-taxes">tourist taxes and fees</a>, and for what a day costs once the room is paid for, <a href="/cost-comparison">cost of a day, compared</a>.</p>
       <p class="htx-keep">Government rates are read off the tax authority, ministry or city that sets them and dated on the country's row. Service charges and resort fees are set by each property, so where we give a figure it is a range from recent reports rather than a published rate, and it never affects the shading. A country left unshaded has not been checked yet, which is not the same as a country with nothing to pay. More on how we work is on our <a href="/methodology">methodology page</a>.</p>
     </section>
 
-    <section class="htx-prop">
+    <section class="htx-prop" id="property-fees">
       <h2>The fees the map cannot colour, and how to get your real number</h2>
       <p>A resort fee or a mandatory service charge is set by the hotel, not a government, so there is no national rate to shade a country by. That does not make them small. A service charge is commonly 10 to 15% of the room, and US resort fees run roughly 30 to 90 dollars a night on their own, so at many properties these outweigh the tax the map shows. We hold a range where the reports support one, on the affected country's row above, always labelled as the property's rather than the government's.</p>
       <p class="htx-prop-do"><b>How to get the exact figure before you book:</b> ask the property directly. A resort fee or service charge is discretionary to the hotel, so the only reliable number is the one they give you. Before you book, call or email and ask two questions: what is the mandatory resort fee or service charge per night, and is it already in the rate you are quoting me or added at checkout. Get it in writing if you can. That one email is the difference between the price you compared and the price you pay, and it is the number to add to whatever this map tells you the government takes.</p>
@@ -93,6 +206,105 @@ const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" wid
     <CompareByRegion />
   </main>
   <Footer />
+
+
+  {/* THE CALCULATOR SCRIPT. Plain DOM, no framework, no external request, and it does no
+      arithmetic of its own: the per-country numbers are serialised from computeAddedTax at
+      build time into a JSON island below, so the script is a lookup and a multiply rather
+      than a second implementation of the tax rules. That is the whole point of keeping the
+      math in the data file.
+
+      WHY SERIALISE RATHER THAN SHIP THE FUNCTION. computeAddedTax needs the fx table and four
+      predicate helpers, which would mean bundling a slice of the data layer into the page for
+      a form. What the UI actually needs per country is small and flat: how the charge behaves,
+      the percent or the per-night dollars, and the note. So the build precomputes that and the
+      script applies it. If a country's rules change, the data file changes and this rebuilds;
+      the script never needs to know. */}
+  <script is:inline define:vars={{ CALC: calcData, DEFAULT_ISO: CALC_DEFAULT_ISO }}>
+    (function () {
+      var sel = document.querySelector('[data-calc-country]');
+      var rate = document.querySelector('[data-calc-rate]');
+      var nights = document.querySelector('[data-calc-nights]');
+      var guests = document.querySelector('[data-calc-guests]');
+      var head = document.querySelector('[data-calc-head]');
+      var note = document.querySelector('[data-calc-note]');
+      var out = document.querySelector('[data-calc-out]');
+      if (!sel || !rate || !nights || !guests || !head || !note) return;
+
+      function money(v) { return '$' + Math.round(v).toLocaleString('en-US'); }
+
+      // Clamp to the same bounds the inputs declare, so a pasted or spun value cannot produce
+      // a total from a negative room or a 400-night stay.
+      function num(el, min, max, fallback) {
+        var v = parseFloat(el.value);
+        if (!isFinite(v)) return fallback;
+        return Math.min(max, Math.max(min, v));
+      }
+
+      function render() {
+        var c = CALC[sel.value];
+        var r = num(rate, 1, 20000, 150);
+        var n = Math.floor(num(nights, 1, 365, 3));
+        var g = Math.floor(num(guests, 1, 10, 2));
+        if (!c) { head.textContent = ''; note.textContent = ''; return; }
+
+        var room = r * n;
+        var added = null;
+
+        if (c.kind === 'percent') {
+          // A rate-tiered country carries its ladder, so the rung follows the reader's rate
+          // exactly as it does at build time. Boundaries are in the local currency the law
+          // fixes them in, converted once at build into the perUsd figure below.
+          var pct = c.pct;
+          if (c.tiers) {
+            var local = r * c.tierRate;
+            pct = c.tiers[c.tiers.length - 1].pct;
+            for (var i = 0; i < c.tiers.length; i++) {
+              if (c.tiers[i].upTo === null || local <= c.tiers[i].upTo) { pct = c.tiers[i].pct; break; }
+            }
+          }
+          added = room * (pct / 100);
+        } else if (c.kind === 'flat') {
+          // Flat dollars per unit, precomputed per country, plus any real percentage part.
+          added = c.perRoomNight * n + c.perPersonNight * g * n + room * (c.basePct / 100);
+        } else if (c.kind === 'inclusive') {
+          added = 0;
+        }
+
+        if (c.kind === 'notComputable') {
+          head.innerHTML = 'No honest single figure for <b>' + c.country + '</b>.';
+        } else if (c.kind === 'inclusive') {
+          head.innerHTML = 'Nothing is added at checkout in <b>' + c.country + '</b>.';
+        } else {
+          var eff = room > 0 ? (added / room * 100) : 0;
+          head.innerHTML = 'Government tax adds about <b>' + money(added) + '</b> over ' + n +
+            ' night' + (n === 1 ? '' : 's') + ', about <b>' + eff.toFixed(1) + '%</b> of your room.';
+        }
+
+        // The note for a tiered country names the rung the reader landed on, so a reader who
+        // pushes their rate past a boundary sees the reason the figure jumped.
+        var text = c.note;
+        if (c.kind === 'percent' && c.tiers) {
+          var chosen = c.tiers[c.tiers.length - 1];
+          var lc = r * c.tierRate;
+          for (var j = 0; j < c.tiers.length; j++) {
+            if (c.tiers[j].upTo === null || lc <= c.tiers[j].upTo) { chosen = c.tiers[j]; break; }
+          }
+          text = c.country + ' taxes a room by what the room costs, and at your rate that is ' +
+            chosen.pct + '%. ' + (chosen.note || '');
+        }
+        note.textContent = text;
+        if (out) out.setAttribute('data-kind', c.kind);
+      }
+
+      sel.addEventListener('change', render);
+      [rate, nights, guests].forEach(function (el) {
+        el.addEventListener('input', render);
+        el.addEventListener('change', render);
+      });
+      render();
+    })();
+  </script>
 
   {/* The copy button is inline, dependency-free, and starts hidden. It is revealed by the
       script below only once the script has run and the clipboard API is actually present,
@@ -144,6 +356,36 @@ const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" wid
     .htx-scope-t{font-size:14.5px;line-height:1.55;color:#3B4A46;margin:0}
     .htx-scope-t a{color:var(--teal-deep);font-weight:500;text-decoration:none}
     .htx-scope-t a:hover{text-decoration:underline}
+    /* THE STAY CALCULATOR. A bordered card because it is an interactive tool sitting in a
+       page of prose, and the border is what says "this one does something". The result block
+       is tinted by kind: a real total gets the teal that the map's scale uses, and the two
+       honest refusals get the same neutral grey the varies fill uses, so the visual language
+       of the map carries into the calculator instead of restarting. */
+    .htx-calc{max-width:720px;margin:30px 0 0;padding:22px 0 0;border-top:1px solid var(--line)}
+    .htx-calc-sub{font-size:15px;line-height:1.6;color:#3B4A46;margin:8px 0 0;max-width:640px}
+    .htx-calc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 0}
+    .htx-calc-f-wide{grid-column:1 / -1}
+    .htx-calc-f label{display:block;font-size:13px;font-weight:600;color:#3B4A46;margin:0 0 5px}
+    .htx-calc-f select,.htx-calc-f input{width:100%;box-sizing:border-box;font:inherit;font-size:15px;padding:9px 10px;color:#16302C;background:#fff;border:1px solid var(--line);border-radius:8px}
+    .htx-calc-f select:focus-visible,.htx-calc-f input:focus-visible{outline:2px solid var(--teal);outline-offset:1px}
+    .htx-calc-money{position:relative}
+    .htx-calc-money span{position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:15px;color:#6B7B76;pointer-events:none}
+    .htx-calc-money input{padding-left:24px}
+    .htx-calc-out{margin:18px 0 0;padding:16px 18px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:10px}
+    /* A refusal is not a failure state, so it is neutral rather than red. It is the same
+       grey the map uses for "varies", which is the honest signal, not an error. */
+    .htx-calc-out[data-kind="notComputable"]{border-left-color:#8C9A94}
+    .htx-calc-out[data-kind="inclusive"]{border-left-color:#B6D4C9}
+    .htx-calc-head{font-size:17px;line-height:1.5;color:#16302C;margin:0;font-weight:400}
+    .htx-calc-head b{font-weight:650}
+    .htx-calc-note{font-size:14.5px;line-height:1.6;color:#3B4A46;margin:9px 0 0}
+    .htx-calc-std{font-size:13.5px;line-height:1.6;color:#5A6B66;margin:12px 0 0;max-width:640px}
+    .htx-calc-std a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .htx-calc-std a:hover{text-decoration:underline}
+    @media (max-width:560px){
+      .htx-calc-grid{grid-template-columns:repeat(2,1fr)}
+      .htx-calc-head{font-size:16px}
+    }
     .htx-prop{max-width:720px;margin:28px 0 0;padding:22px 0 0;border-top:1px solid var(--line)}
     .htx-prop h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 10px}
     .htx-prop p{font-size:15px;color:#3B4A46;line-height:1.6;margin:0 0 12px}
