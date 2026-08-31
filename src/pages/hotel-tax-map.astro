@@ -52,6 +52,10 @@ const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" wid
       <p class="htx-lede htx-lede2">It is a deliberately narrow question, and the narrowness is the point. A map of total tax burden would shade half of Europe dark and tell you nothing useful, because that tax is already inside the price you were quoted. What costs you a surprise is the part that is not, which is why some of the most heavily taxed countries in Europe sit at the light end here.</p>
     </section>
 
+    <aside class="htx-scope">
+      <p class="htx-scope-t">What this map shows, and what it does not. True Trip Costs exists to surface the money you were not quoted, whoever charges it. This map is one slice of that: the government tax and mandatory levies added at checkout, because those are the part we can pin to a single sourced number for a whole country. It is deliberately not the whole surprise. A resort fee, a mandatory service charge, an ATM fee or a card-conversion skim are unquoted costs too, often larger than the tax, and they are set property by property or bank by bank, so no single national figure exists for them. They are covered in the country guides and in <a href="/cash-or-card">cash or card</a>, and the ones a hotel adds are summarised below.</p>
+    </aside>
+
     <aside class="htx-embed-cta">
       <p class="htx-embed-cta-t">This map is free to embed, and it stays current on your page. As we check more countries and correct what changes, an embedded copy updates itself, no re-paste needed.</p>
       <a class="htx-embed-cta-b" href="#embed">Embed this map</a>
@@ -63,6 +67,12 @@ const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" wid
       <h2>Where the detail lives</h2>
       <p>Each shaded country above links to its own write-up, which is where the rates are kept current, sourced against the authority that sets them and dated. For the four kinds of charge that land on a hotel bill and how to tell them apart, start with the <a href="/hotel-taxes-and-fees">hotel taxes and fees guide</a>. For per-night bed taxes and entry charges specifically, see <a href="/tourist-taxes">tourist taxes and fees</a>, and for what a day costs once the room is paid for, <a href="/cost-comparison">cost of a day, compared</a>.</p>
       <p class="htx-keep">Government rates are read off the tax authority, ministry or city that sets them and dated on the country's row. Service charges and resort fees are set by each property, so where we give a figure it is a range from recent reports rather than a published rate, and it never affects the shading. A country left unshaded has not been checked yet, which is not the same as a country with nothing to pay. More on how we work is on our <a href="/methodology">methodology page</a>.</p>
+    </section>
+
+    <section class="htx-prop">
+      <h2>The fees the map cannot colour, and how to get your real number</h2>
+      <p>A resort fee or a mandatory service charge is set by the hotel, not a government, so there is no national rate to shade a country by. That does not make them small. A service charge is commonly 10 to 15% of the room, and US resort fees run roughly 30 to 90 dollars a night on their own, so at many properties these outweigh the tax the map shows. We hold a range where the reports support one, on the affected country's row above, always labelled as the property's rather than the government's.</p>
+      <p class="htx-prop-do"><b>How to get the exact figure before you book:</b> ask the property directly. A resort fee or service charge is discretionary to the hotel, so the only reliable number is the one they give you. Before you book, call or email and ask two questions: what is the mandatory resort fee or service charge per night, and is it already in the rate you are quoting me or added at checkout. Get it in writing if you can. That one email is the difference between the price you compared and the price you pay, and it is the number to add to whatever this map tells you the government takes.</p>
     </section>
 
     <section class="htx-embed" id="embed">
@@ -127,6 +137,18 @@ const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" wid
 
   <style>
     .htx-intro{max-width:720px;margin:22px 0 0}
+    /* The scope callout: what this map is, and the honest boundary that it is not the whole
+       of what surprises you. A quiet bordered card, not a warning box, because the message is
+       orienting rather than alarming. */
+    .htx-scope{max-width:720px;margin:18px 0 0;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:10px}
+    .htx-scope-t{font-size:14.5px;line-height:1.55;color:#3B4A46;margin:0}
+    .htx-scope-t a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .htx-scope-t a:hover{text-decoration:underline}
+    .htx-prop{max-width:720px;margin:28px 0 0;padding:22px 0 0;border-top:1px solid var(--line)}
+    .htx-prop h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 10px}
+    .htx-prop p{font-size:15px;color:#3B4A46;line-height:1.6;margin:0 0 12px}
+    .htx-prop-do{background:var(--green-bg);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0 0 !important}
+    .htx-prop-do b{color:var(--ink)}
     .htx-intro h1{font-family:var(--serif);font-weight:500;font-size:clamp(26px,4.6vw,38px);letter-spacing:-.015em;line-height:1.15;margin:0 0 12px}
     .htx-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
     .htx-lede2{font-size:16px;color:var(--muted);margin:12px 0 0}
