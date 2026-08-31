@@ -60,7 +60,6 @@ function calcHead(entry, r, inputs) {
   return `No honest single figure for <b>${entry ? entry.country : 'this country'}</b>.`;
 }
 
-
 // WHAT THE SCRIPT GETS, built by asking computeAddedTax rather than by re-reading the entries.
 // The kind and the note are taken verbatim from the function, so the client can never
 // classify a country differently from the server. Only the raw multipliers are added, and
@@ -118,9 +117,7 @@ const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" wid
       <a class="htx-embed-cta-b" href="#embed">Embed this map</a>
     </aside>
 
-    <HotelTaxMap />
-
-    {/* THE STAY CALCULATOR. Placed directly under the map, because the map raises the
+{/* THE STAY CALCULATOR. Placed directly under the map, because the map raises the
         question ("how much is that, for me?") and this is the answer to it. All arithmetic
         comes from computeAddedTax in src/data/hotel-tax-map.js: nothing on this page does
         percentage or currency math of its own, so the calculator and the fill cannot drift.
@@ -175,6 +172,7 @@ const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" wid
       <p class="htx-calc-std">This is the government tax only. Resort fees and mandatory service charges are set by the hotel, not a government, so they are not in this figure and are often larger than it. <a href="#property-fees">What hotels add, and how to ask</a>, or see <a href="/cash-or-card">cash or card</a> for the fees a bank adds.</p>
     </section>
 
+    <HotelTaxMap />
 
     <section class="htx-more">
       <h2>Where the detail lives</h2>
@@ -206,7 +204,6 @@ const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" wid
     <CompareByRegion />
   </main>
   <Footer />
-
 
   {/* THE CALCULATOR SCRIPT. Plain DOM, no framework, no external request, and it does no
       arithmetic of its own: the per-country numbers are serialised from computeAddedTax at
