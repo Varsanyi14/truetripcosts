@@ -21,6 +21,22 @@ import USBadge from '../components/USBadge.astro';
 // The map does not try to rank as an island. Every shaded country links to its own hotel
 // taxes spoke or its guide, which is where the sourced, dated detail lives and where the
 // existing rankings are; the map is the discovery surface that feeds them.
+//
+// THE EMBED SNIPPET, and why it is a const rather than typed into the markup. The height has
+// to agree with the real height of /embed/hotel-tax-map or the frame scrolls internally on a
+// stranger's article, so it is a number somebody will need to retune when that page changes.
+// Keeping it here, named, means it gets found. 720 is measured against the embed as built:
+// the map is 1000 by 439, so at a typical 640px article column the figure is about 325px
+// including its frame, and the head, colour scale, legend note and credit bar bring the whole
+// thing to roughly 580px. The margin covers narrow columns, where the map shortens but the
+// text wraps to more lines.
+//
+// loading=lazy so the embed costs the host page nothing until it scrolls near. The referrer
+// policy is the browser default spelled out, so TTC can still see which sites are embedding
+// the map without leaking a full URL to an http host.
+const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" width="100%" height="720"
+  style="border:0" title="Hotel tax by country, from True Trip Costs" loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"></iframe>`;
 ---
 <Base
   title="Hotel tax by country, mapped: what governments add to a room rate"
@@ -44,9 +60,65 @@ import USBadge from '../components/USBadge.astro';
       <p class="htx-keep">Government rates are read off the tax authority, ministry or city that sets them and dated on the country's row. Service charges and resort fees are set by each property, so where we give a figure it is a range from recent reports rather than a published rate, and it never affects the shading. A country left unshaded has not been checked yet, which is not the same as a country with nothing to pay. More on how we work is on our <a href="/methodology">methodology page</a>.</p>
     </section>
 
+    <section class="htx-embed">
+      <h2>Use this map on your own site</h2>
+      <p>The map is free to embed anywhere, including commercially. It is served from here, so it stays current on your page as we check more countries and correct what changes. A credit link back is appreciated and not required: the frame carries one already.</p>
+
+      <label class="htx-esnip-lab" for="htx-esnip">Paste this where you want the map</label>
+      <textarea class="htx-esnip" id="htx-esnip" readonly rows="4" spellcheck="false" aria-describedby="htx-ecopy-hint">{SNIPPET}</textarea>
+
+      <div class="htx-erow">
+        <button class="htx-ecopy" type="button" data-copy-snippet hidden>Copy the snippet</button>
+        <span class="htx-ecopy-msg" data-copy-msg role="status" aria-live="polite"></span>
+        <a class="htx-eprev" href="/embed/hotel-tax-map" target="_blank" rel="noopener">See what it looks like</a>
+      </div>
+      <p class="htx-ehint" id="htx-ecopy-hint">Clicking the box selects the whole snippet, so it copies with one keystroke if the button is not there.</p>
+    </section>
+
     <CompareByRegion />
   </main>
   <Footer />
+
+  {/* The copy button is inline, dependency-free, and starts hidden. It is revealed by the
+      script below only once the script has run and the clipboard API is actually present,
+      so a reader with JavaScript off, or on a browser without it, never sees a button that
+      does nothing. The snippet itself is a readonly textarea and selectable by hand either
+      way, which is the path that always works. */}
+  <script is:inline>
+    (function () {
+      var box = document.getElementById('htx-esnip');
+      var btn = document.querySelector('[data-copy-snippet]');
+      var msg = document.querySelector('[data-copy-msg]');
+      if (!box) return;
+
+      // Clicking the box selects all of it. This is the no-button path and it is why the
+      // button is allowed to be optional.
+      box.addEventListener('focus', function () { box.select(); });
+      box.addEventListener('click', function () { box.select(); });
+
+      if (!btn || !navigator.clipboard || !navigator.clipboard.writeText) return;
+      btn.hidden = false;
+
+      var timer = null;
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(box.value).then(function () {
+          btn.textContent = 'Copied';
+          if (msg) msg.textContent = 'Snippet copied to your clipboard.';
+        }).catch(function () {
+          // Do not claim success that did not happen. Fall back to selecting the text and
+          // say so plainly.
+          box.select();
+          if (msg) msg.textContent = 'Could not copy automatically. The snippet is selected, so copy it now.';
+        }).then(function () {
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            btn.textContent = 'Copy the snippet';
+            if (msg) msg.textContent = '';
+          }, 2600);
+        });
+      });
+    })();
+  </script>
 
   <style>
     .htx-intro{max-width:720px;margin:22px 0 0}
@@ -58,8 +130,26 @@ import USBadge from '../components/USBadge.astro';
     .htx-more a{color:var(--teal-deep);font-weight:500;text-decoration:none}
     .htx-more a:hover{text-decoration:underline}
     .htx-keep{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:16px;margin-top:6px}
+
+    .htx-embed{max-width:720px;margin:34px 0 0;padding:22px 0 0;border-top:1px solid var(--line)}
+    .htx-embed h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 10px}
+    .htx-embed p{font-size:15px;color:#3B4A46;line-height:1.6;margin:0 0 14px}
+    .htx-esnip-lab{display:block;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.09em;margin:0 0 7px}
+    /* Monospace and pre-wrap, because this is code a reader is about to paste and a broken
+       line in a proportional font is how a snippet arrives mangled. */
+    .htx-esnip{width:100%;font-family:var(--mono);font-size:12px;line-height:1.55;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:11px 12px;resize:vertical;white-space:pre-wrap;overflow-wrap:break-word;-webkit-text-size-adjust:100%}
+    .htx-esnip:focus{outline:2px solid var(--teal);outline-offset:1px}
+    .htx-erow{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:10px 0 0}
+    .htx-ecopy{font-family:var(--font);font-size:14px;font-weight:500;color:#F5F4EF;background:var(--teal-deep);border:0;border-radius:9px;padding:9px 15px;cursor:pointer}
+    .htx-ecopy:hover{background:var(--teal)}
+    .htx-ecopy-msg{font-size:13px;color:var(--muted)}
+    .htx-eprev{font-size:14px;color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .htx-eprev:hover{text-decoration:underline}
+    .htx-ehint{font-size:13px;color:var(--muted);margin:10px 0 0}
+
     @media (max-width:560px){
       .htx-lede{font-size:16.5px}
+      .htx-esnip{font-size:11.5px}
     }
   </style>
 </Base>
