@@ -63,7 +63,27 @@ const derived = countries
 const entries = [...hotelTaxMap, ...derived];
 const entryByIso = Object.fromEntries(entries.map(e => [e.iso, e]));
 
-const { anchor = 'hotel-tax-map' } = Astro.props;
+// variant 'full' is the page this component was built for and is the default, so
+// /hotel-tax-map renders byte for byte what it rendered before this prop existed.
+//
+// variant 'embed' is the stripped-down rendering that goes inside an iframe on someone
+// else's article. It keeps the head, the map and the colour scale, and drops the six
+// how-to-read cards, the 61 country rows, the change block and the unmappable warning.
+//
+// WHY A VARIANT RATHER THAN A SECOND MAP COMPONENT. The alternative was rebuilding the SVG
+// in the embed page, and that would put the fills, the band logic, the dot threshold and the
+// stipple rules in two places. The whole argument for reusing this component is that the
+// embed can never drift from the real map, and a copy drifts the first time MAIN tunes a
+// band. So the geometry and the colour decisions stay in one file and the embed asks for
+// less of it.
+//
+// WHY NOT SIMPLY RENDER EVERYTHING AND LET THE IFRAME SCROLL. The full section is about
+// 300KB of HTML and many screens tall. Inside a 720px box it would scroll a reader through
+// 61 country rows on a page that is not TTC's, which is not an embed anyone accepts, and it
+// would load a quarter of a megabyte onto a host article to show a map. The sourced detail
+// is not lost: the legend says where it is and the credit bar links straight to it.
+const { anchor = 'hotel-tax-map', variant = 'full', canonicalUrl = null } = Astro.props;
+const embed = variant === 'embed';
 
 // A drawn country under this many square units of the 1000-unit-wide projection gets a
 // locator dot on top of its fill, because the fill alone is not findable. THIS IS THE ONE
@@ -178,7 +198,7 @@ const fmtDate = (iso) => {
 
 const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight: 'per room, per night', flatPerNight: 'per room, per night' };
 ---
-<section class="htm" id={anchor}>
+<section class:list={['htm', embed && 'htm-embed']} id={anchor}>
 
   <div class="htm-head">
     <p class="lab">The map</p>
@@ -191,6 +211,7 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
       <svg class="htm-svg" viewBox={world.viewBox} xmlns="http://www.w3.org/2000/svg"
            preserveAspectRatio="xMidYMid meet"
            role="img"
+           data-embed-href={embed && canonicalUrl ? canonicalUrl : undefined}
            aria-label={`World map shading each country by the share a government adds on top of a quoted hotel room rate. ${figureCount} countries carry a percentage figure, ${shapeCount} have a charge whose shape is known but no figure on this scale, ${noTaxCount} have been checked and have no tourist or hotel tax at all, and ${variesCount} vary too much internally for a single figure. Everything is written out in the list below this map.`}>
         <defs>
           {/* Hatch = varies too much within the country for one figure. Distinct from every
@@ -262,21 +283,40 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
 
   <div class="htm-legend">
     <p class="htm-lk">Added on top of the quoted rate, by government</p>
-    <p class="htm-basket">Some of these charges are not percentages at all. Most of Europe asks for a flat few euros a night rather than a share of the room, and a flat fee has no percentage until you pick a room rate. So we picked one and we are telling you what it is: <b>{REFERENCE_STAY.words}</b>. Every flat fee on this map is shown as its share of that room. The consequence is worth holding on to, because it runs the opposite way to intuition: a cheaper room feels a flat fee harder than this map shows, and an expensive room barely notices it. Each country's row carries the real charge in its own currency, which is the number to use if your room is nothing like 150 euros.</p>
+    {!embed && <p class="htm-basket">Some of these charges are not percentages at all. Most of Europe asks for a flat few euros a night rather than a share of the room, and a flat fee has no percentage until you pick a room rate. So we picked one and we are telling you what it is: <b>{REFERENCE_STAY.words}</b>. Every flat fee on this map is shown as its share of that room. The consequence is worth holding on to, because it runs the opposite way to intuition: a cheaper room feels a flat fee harder than this map shows, and an expensive room barely notices it. Each country's row carries the real charge in its own currency, which is the number to use if your room is nothing like 150 euros.</p>}
     <ul class="htm-bands">
       {BANDS.map(b => (
         <li><span class="htm-sw" style={`background:${b.fill}`}></span>{b.label}</li>
       ))}
     </ul>
-    <ul class="htm-states">
+    {!embed && <ul class="htm-states">
       <li><span class="htm-sw htm-sw-hatch"></span><span class="htm-st"><b>{STATES.varies.label}.</b> No single national figure would be right anywhere in it, so we give representative cities instead of one colour.</span></li>
       <li><span class="htm-sw htm-sw-stip"></span><span class="htm-st"><b>This colour is modelled, not measured.</b> The charge here is a flat amount per night, converted at the reference room above rather than read off a real percentage. The fee in its own currency is on the country's row, and it is the more useful number of the two.</span></li>
       <li><span class="htm-sw htm-sw-lines"></span><span class="htm-st"><b>{STATES.checkedShape.label}.</b> We checked, there is a government charge, and its shape is on the country's row. Getting it onto this percentage scale needs one more step, so it sits off the scale rather than being guessed onto it.</span></li>
       <li><span class="htm-sw" style={`background:${STATES.noBedTax.fill}`}></span><span class="htm-st"><b>{STATES.noBedTax.label}.</b> We looked and found no tourist or hotel tax at all. This is a finding, not a gap. It is off the colour scale rather than at the light end of it, because VAT and property charges are separate questions and this map does not claim to have answered them here yet.</span></li>
       <li><span class="htm-sw" style={`background:${STATES.unchecked.fill}`}></span><span class="htm-st"><b>{STATES.unchecked.label}.</b> Almost all of the grey is countries outside the {coveredCount} we cover, not countries we looked at and gave up on. Either way it never means there is nothing to pay: grey is the absence of our work, not the absence of a tax.</span></li>
-    </ul>
+    </ul>}
+
+    {/* The embed's version of the five state definitions above. It is short because the box
+        is 720px tall, and it keeps the two things the map is actively misleading without:
+        that a light country can still be heavily taxed, and that grey means unchecked
+        rather than untaxed. Everything else is one click away and the link is right below. */}
+    {embed && (
+      <p class="htm-embed-note">
+        Hatching means the rate varies too much inside the country for one national figure.
+        Specks mean the charge is a flat fee per night, converted at one declared room rather
+        than measured as a percentage. Hairlines mean there is a charge we have checked but
+        not yet put on this scale. Grey never means untaxed: it means we have not checked it
+        yet. The reference room behind the modelled colours, and every country's sourced and
+        dated figures, are on the full map.
+      </p>
+    )}
   </div>
 
+  {/* Everything from here down is the full page only. These four blocks are the map's
+      sourced detail and its reason to be trusted, and they are exactly what makes the
+      section too tall and too heavy to sit in an iframe. The embed points at them. */}
+  {!embed && <Fragment>
   <div class="htm-honest">
     <p class="htm-lk">How to read this without being misled</p>
     <div class="htm-hgrid">
@@ -444,6 +484,7 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
   {unmappable.length > 0 && (
     <p class="htm-warn">Held but not markable on this map: {unmappable.map(e => e.country).join(', ')}. The geometry carries no shape or centroid for these, so their figures appear in the list above but nowhere on the map. Regenerate with scripts/build-world-map.mjs if that is wrong.</p>
   )}
+  </Fragment>}
 </section>
 
 <script>
@@ -452,14 +493,32 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
   // no figure goes missing. Deliberately not a tooltip: a hover card cannot be tapped on a
   // phone, cannot be read by a screen reader and cannot be indexed, and this map's whole
   // argument is that the sourced detail has to be reachable.
+  //
+  // IN THE EMBED there are no rows to scroll to, so the same click opens the country's row
+  // on the real page in a new tab instead. Without this the embed would ship a pointer
+  // cursor over every country and do nothing when tapped, which reads as broken. The
+  // fallback is gated on data-embed-href, an attribute only the embed variant sets, so
+  // clicking an unshaded country on /hotel-tax-map still does nothing exactly as before.
+  // A new tab rather than a top-level navigation: the frame is on somebody else's article,
+  // and replacing that article with a TTC page is both rude and blocked cross-origin.
   (() => {
     const svg = document.querySelector('.htm-svg');
     if (!svg) return;
+    const canonical = svg.getAttribute('data-embed-href');
     svg.addEventListener('click', (ev) => {
       const el = ev.target.closest('[data-iso]');
       if (!el) return;
-      const row = document.getElementById('htm-' + el.getAttribute('data-iso'));
-      if (!row) return;
+      const iso = el.getAttribute('data-iso');
+      const row = document.getElementById('htm-' + iso);
+      if (!row) {
+        // Only countries we actually hold something for lead anywhere. An unchecked country
+        // has no row on the real page either, so sending a reader there would land them at
+        // the top of a page they did not ask for.
+        if (canonical && el.getAttribute('data-htm') !== 'unchecked') {
+          window.open(canonical + '#htm-' + iso, '_blank', 'noopener');
+        }
+        return;
+      }
       row.scrollIntoView({ behavior: 'smooth', block: 'center' });
       row.classList.add('htm-row-lit');
       setTimeout(() => row.classList.remove('htm-row-lit'), 1600);
@@ -572,4 +631,35 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
     .htm-bands{gap:6px 12px}
     .htm-row{padding:14px 15px}
   }
+
+  /* THE EMBED VARIANT. Overrides only, so the full page is untouched by anything below.
+     Three things have to change for this to sit inside a 720px iframe on a foreign page. */
+
+  /* 1. The section rule assumes it follows page copy, so it carries a top border and 30px
+        of separation. In the embed it is the first thing in the box. */
+  .htm-embed{border-top:0;padding:0;margin-top:0}
+
+  /* 2. Tighter vertical rhythm and a smaller heading. The embed has one job in a short box,
+        so the head does not need page-scale type. */
+  .htm-embed .htm-head h2{font-size:clamp(18px,2.6vw,22px);line-height:1.2}
+  .htm-embed .htm-sub{font-size:13px;margin:6px 0 0}
+  .htm-embed .htm-fig{margin:12px 0 0}
+  .htm-embed .htm-cap{font-size:11.5px;margin:8px 0 0}
+  .htm-embed .htm-legend{margin:12px 0 0;padding:12px 14px}
+  .htm-embed .htm-bands{margin:0;font-size:13px}
+
+  .htm-embed-note{font-size:12px;color:#3B4A46;line-height:1.5;margin:10px 0 0;padding:10px 0 0;border-top:1px solid var(--line)}
+
+  /* 3. Kill the phone full-bleed. Those negative margins exist to cancel the 22px gutter of
+        .wrap on the real page. There is no .wrap in the embed, so at narrow widths they
+        would hang the map over the edge of the frame instead. */
+  @media (max-width:560px){
+    .htm-embed .htm-fig{margin-left:0;margin-right:0}
+    .htm-embed .htm-mapwrap{border-radius:var(--radius);border-left:1px solid var(--line);border-right:1px solid var(--line);padding:8px 8px 30px}
+    .htm-embed .htm-cap{padding:0}
+  }
+
+  /* An unchecked country leads nowhere from the embed, so it must not offer a pointer.
+     See the click handler: the same condition gates the navigation. */
+  .htm-embed .htm-countries path[data-htm="unchecked"]{cursor:default}
 </style>

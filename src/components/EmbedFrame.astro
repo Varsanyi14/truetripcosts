@@ -1,0 +1,146 @@
+---
+// EmbedFrame: the wrapper that turns any visualization into an embeddable asset.
+//
+// WHY THIS IS A COMPONENT AND NOT PART OF THE MAP PAGE. TTC's binding growth constraint is
+// authority and earned links rather than more content, and a sourced, dated visualization is
+// the best link-earning asset this site can build: a writer drops it into an article and
+// credits it. Two or three more of these are coming (cost of a day, an entry-levy map, an
+// outbound ranking), so the embed machinery is built once here and reused, rather than being
+// copied per asset and drifting.
+//
+// TO MAKE THE NEXT ASSET EMBEDDABLE, nothing in this file changes. Add one page at
+// src/pages/embed/<name>.astro that renders that visualization inside this component, and
+// paste one iframe snippet onto that visualization's own page. Everything asset-specific
+// arrives through the props below, so there is no hotel-tax knowledge in here at all.
+//
+// THE CREDIT BAR IS NOT OPTIONAL AND HAS NO PROP TO HIDE IT. That is deliberate. The credit
+// is the whole point of the exercise: the logo, the one-line note on what the data is, the
+// checked date and the link home are what make a writer willing to cite the thing, and they
+// are also the only reason TTC gets anything back for the work. An embeddable asset with the
+// sourcing stripped off would be the site's credibility leaving the building on somebody
+// else's page. So it ships with every render or not at all.
+//
+// SELF-CONTAINED ON PURPOSE. The styles here are inlined and use literal colour values
+// rather than the global.css custom properties, so this frame renders correctly even where
+// global.css is absent. The font stacks name the metric-matched fallback families from
+// global.css: where that file is present they resolve and the credit bar does not reflow on
+// font swap, and where it is absent the browser skips the unknown families and lands on the
+// generics. Nothing here loads from off-site.
+import LogoMark from './LogoMark.astro';
+
+const {
+  title,             // the asset's heading, shown small above the visualization
+  canonicalUrl,      // absolute URL of the full page this embed represents
+  checked,           // the last-checked date to display
+  sourceNote,        // one plain line naming what the data is and that it is sourced
+} = Astro.props;
+
+// A missing prop here is a silent credibility failure rather than a visible bug: the frame
+// would render, look fine, and quietly carry no date or no way home. Fail the build instead.
+for (const [k, v] of Object.entries({ title, canonicalUrl, checked, sourceNote })) {
+  if (!v || !String(v).trim()) {
+    throw new Error(`EmbedFrame: ${k} is required. The credit bar cannot ship incomplete.`);
+  }
+}
+
+// The visible link text, derived from the canonical URL rather than typed, so it can never
+// disagree with where the link actually goes. Shown as a bare domain and path because that
+// is what survives a screenshot of the embed, which is the other way these travel.
+const linkText = String(canonicalUrl).replace(/^https?:\/\//, '').replace(/\/+$/, '');
+
+// Every link in the frame opens in a new tab. The frame renders inside an iframe on someone
+// else's article, and replacing the contents of a 720px box with a full TTC page is a dead
+// end for the reader: they cannot get back, and the host page loses them either way.
+---
+<div class="ef">
+  <p class="ef-title">{title}</p>
+
+  <div class="ef-body">
+    <slot />
+  </div>
+
+  <div class="ef-credit">
+    <a class="ef-logo" href={canonicalUrl} target="_blank" rel="noopener" aria-label={`${title}, on True Trip Costs`}>
+      <LogoMark variant="mark" size={32} />
+    </a>
+    <div class="ef-lines">
+      <p class="ef-src">{sourceNote}</p>
+      <p class="ef-meta">
+        <a href={canonicalUrl} target="_blank" rel="noopener">{linkText}</a>
+        <span class="ef-sep" aria-hidden="true">/</span>
+        <span class="ef-checked">Checked {checked}</span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<style is:inline>
+  /* Namespaced ef- rather than scoped, because this block is inlined into the document so
+     the frame cannot be left unstyled by a CSS file that failed to load. */
+  .ef {
+    box-sizing: border-box;
+    font-family: Inter, 'Inter-fallback', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    color: #16302C;
+    background: #F5F4EF;
+    padding: 14px 16px 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .ef *, .ef *::before, .ef *::after { box-sizing: border-box; }
+
+  .ef-title {
+    font-family: 'IBM Plex Mono', 'PlexMono-fallback', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: #0A5644;
+    margin: 0 0 10px;
+  }
+
+  .ef-body { margin: 0; }
+
+  .ef-credit {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 14px 0 0;
+    padding: 12px 0 0;
+    border-top: 1px solid #E5E3DB;
+  }
+  .ef-logo { display: block; flex: none; line-height: 0; }
+  /* Restated here so the mark keeps its box even if LogoMark's own stylesheet is missing. */
+  .ef-logo svg { display: block; flex: none; }
+
+  .ef-lines { min-width: 0; }
+  .ef-src {
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: #3B4A46;
+    margin: 0;
+  }
+  .ef-meta {
+    font-family: 'IBM Plex Mono', 'PlexMono-fallback', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 10.5px;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #6F6E66;
+    margin: 4px 0 0;
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    flex-wrap: wrap;
+  }
+  .ef-meta a {
+    color: #0A5644;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .ef-meta a:hover { text-decoration: underline; }
+  .ef-sep { color: #C9C7BC; }
+
+  @media (max-width: 420px) {
+    .ef { padding: 12px 12px 14px; }
+    .ef-credit { gap: 10px; }
+    .ef-src { font-size: 12px; }
+  }
+</style>

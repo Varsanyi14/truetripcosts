@@ -1,0 +1,81 @@
+---
+// The embeddable hotel-tax choropleth. This is what loads inside the iframe when another
+// site embeds the map. Nothing here holds data: it renders the SAME HotelTaxMap component
+// and the same hotel-tax-map.js the real page uses, in the stripped-down variant, so the
+// embed cannot drift from the map TTC actually publishes.
+//
+// WHY THIS PAGE DOES NOT USE Base.astro. Base is not a bare <slot/>. It also injects four
+// Google Fonts <link> tags, the whole signup modal with a checkbox for all 59 live
+// countries, two inline scripts and the back-to-top button. Every one of those is wrong
+// here. The fonts are off-site requests fired from inside somebody else's article, which is
+// the one thing an embed must not do: it is a third-party request the host site did not
+// agree to, it is slower than the frame needs to be, and it makes the embed depend on
+// Google being reachable. The modal and the to-top button are page furniture for a reader
+// who is on truetripcosts.com, and this reader is not. So this page owns its own short
+// document instead. It is the only page on the site that does, and that is the reason.
+//
+// It still imports global.css, and that is deliberate rather than an oversight of the
+// self-contained rule. The map's own styles are written against the global tokens (--line,
+// --card, --radius, --shadow, --mono, --muted, --teal-deep). Redeclaring the handful it uses
+// today would look identical and then silently break the embed the first time the map starts
+// using a token this page did not copy. Importing the real file means the embed is styled by
+// the same rules as the real map, which is the same argument as reusing the component.
+// global.css itself loads nothing from off-site: the font stacks resolve to the
+// metric-matched local() fallbacks, which is why the type still looks like TTC here without
+// a single request leaving the host page.
+import '../../styles/global.css';
+import EmbedFrame from '../../components/EmbedFrame.astro';
+import HotelTaxMap from '../../components/HotelTaxMap.astro';
+import { hotelTaxMapChecked } from '../../data/hotel-tax-map.js';
+
+const CANONICAL = 'https://truetripcosts.com/hotel-tax-map';
+const SELF = 'https://truetripcosts.com/embed/hotel-tax-map';
+
+// noindex, follow, and both halves are a choice.
+//
+// noindex, because this page and /hotel-tax-map are the same map. Letting both compete
+// splits the links and the relevance between two URLs and the weaker one sometimes wins,
+// which is the opposite of the point: the whole reason to publish an embed is to send
+// authority TO the canonical page. So the embed is deliberately invisible to search.
+//
+// follow, because the credit link in the frame is the return on the work. noindex tells a
+// crawler not to rank this page; nofollow would tell it to ignore the link out of it, and
+// that link is the asset. It is also excluded from the sitemap in astro.config.mjs, the same
+// way /search is, because listing a noindex URL in a sitemap is a contradictory signal.
+const ROBOTS = 'noindex, follow';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hotel tax by country, mapped | True Trip Costs</title>
+  <meta name="robots" content={ROBOTS} />
+  {/* Self-canonical rather than pointing at /hotel-tax-map. A canonical to another URL plus
+      noindex is a mixed signal, and the honest statement is that this URL is itself: the
+      page a crawler should rank is named by the link in the credit bar. */}
+  <link rel="canonical" href={SELF} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body class="embed-page">
+  <EmbedFrame
+    title="Hotel tax by country"
+    canonicalUrl={CANONICAL}
+    checked={hotelTaxMapChecked}
+    sourceNote="Government hotel and tourist taxes added on top of a quoted room rate, each country sourced and dated.">
+    <HotelTaxMap variant="embed" canonicalUrl={CANONICAL} />
+  </EmbedFrame>
+
+  <style is:inline>
+    /* Inlined, because this is the frame's own page chrome and there is no reason to make
+       the host wait on a stylesheet for four rules. The width cap keeps the map readable
+       when a host drops the iframe into a wide layout: past roughly 900px an equal-area
+       world map stops gaining legibility and just gets tall. */
+    html, body { margin: 0; padding: 0; }
+    body.embed-page { background: #F5F4EF; }
+    body.embed-page > .ef { max-width: 900px; margin: 0 auto; }
+    /* The map is a discovery surface here and the detail is one click away, so nothing in
+       the frame should be selectable-but-dead. Links handle themselves. */
+  </style>
+</body>
+</html>

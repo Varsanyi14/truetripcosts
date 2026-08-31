@@ -112,6 +112,12 @@ export const EXCLUDED_PAGES = [
   // deliberate addition of an update class to search-index.js, the same way the country,
   // spoke and card classes work, not a change to this line.
   { file: 'updates/[id].astro', why: 'the change record route: permanent citable URLs, reachable from /what-changed, deliberately kept out of the search index' },
+  // The /embed surfaces are iframe bodies, not pages. Each one is a stripped-down rendering
+  // of a visualization that already has its own indexed page, carries noindex, and is kept
+  // out of the sitemap. Putting one in the site search would offer a reader a chrome-less
+  // fragment of a page they can reach whole. As more assets become embeddable this list
+  // grows by one line each, which is the intended cost.
+  { file: 'embed/hotel-tax-map.astro', why: 'noindex embed surface, the canonical /hotel-tax-map carries the search value' },
 ];
 
 // Read one attribute off the <Base> tag in an .astro source. Handles the two shapes the
