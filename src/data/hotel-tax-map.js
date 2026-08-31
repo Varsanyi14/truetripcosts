@@ -184,7 +184,10 @@ export const BANDS = [
 // The non-band fills. Named here so the legend and the SVG read the same source.
 export const STATES = {
   unchecked: { fill: '#E7E4DC', label: 'Not yet checked' },
-  varies:    { fill: '#CFD8D3', label: 'Varies too much within the country for one figure' },
+  // LABEL SOFTENED 2026-08-31. The fill is unchanged. The old wording read as a dead end,
+  // and a varies country is the opposite of that: it is the one state where the country guide
+  // has more to say than any fill could, so the label should send a reader there.
+  varies:    { fill: '#CFD8D3', label: 'Depends on the city, and the guide has the numbers' },
   // CHECKED, AND THERE IS NO BED TAX. Not a band, and deliberately not on the teal ramp,
   // because we have verified a COMPONENT (no tourist or hotel tax) and not the map's axis
   // (what VAT adds on top). Putting it in the light band would claim a percentage nobody
@@ -288,7 +291,7 @@ function deriveReferenceFigures(list) {
 }
 
 export const hotelTaxMapChecked = 'Aug 2026';
-export const hotelTaxMapCheckedISO = '2026-08-29';
+export const hotelTaxMapCheckedISO = '2026-08-31';
 
 // --- the countries ----------------------------------------------------------
 // PHASE 2 CONTENT NOTE, read this before adding anything.
@@ -520,6 +523,22 @@ export const hotelTaxMap = deriveReferenceFigures([
         note: 'A scheduled increase to the banded per-person nightly rate. Not folded into any figure before its date.',
         source: null,
         pendingSource: 'Needs the City of Kyoto schedule of the new tiers.',
+      },
+      // ADDED 2026-08-31 from MAIN's coverage table. Both rows are additions to this entry,
+      // not changes to it: its state, its display and its Kyoto row are all as they were.
+      {
+        label: 'A wave of new local lodging taxes takes effect',
+        effective: '2026-04-01',
+        note: 'Hokkaido introduced a prefecture-wide charge with Sapporo adding a city charge on top, and Hiroshima Prefecture, Gifu City, Toba City and Yugawara each began their own. All are flat per-person nightly amounts. Named here because the count of taxing municipalities is what changes fastest in Japan, and none of it is folded into any figure.',
+        source: null,
+        pendingSource: 'Needs each prefecture or city ordinance, ideally the Hokkaido and Hiroshima Prefecture schedules first, since those two cover the widest area.',
+      },
+      {
+        label: 'Okinawa becomes the first prefecture-level accommodation tax',
+        effective: '2027-02-01',
+        note: 'A percentage rather than a flat amount, which would make it the first Japanese accommodation tax expressible directly on this map axis, and it carries a per-person nightly ceiling. Not counted before its date.',
+        source: null,
+        pendingSource: 'Needs the Okinawa Prefecture ordinance confirming the rate, the ceiling and the commencement date.',
       },
     ],
     property: [],
@@ -1214,6 +1233,673 @@ export const hotelTaxMap = deriveReferenceFigures([
       { label: 'Service charge and resort fee', range: 'service often 10 to 15%, resort fees commonly 30 to 90 dollars a night', note: 'Set by each property rather than by government, and together they can outweigh the tax.' },
     ],
     checkedISO: '2026-08-29',
+  },
+
+  // ==========================================================================
+  // THE COVERAGE WAVE, added 2026-08-31 from MAIN's verified table.
+  //
+  // These are the destinations US travelers actually go to, and almost every one of them
+  // arrived here from a DERIVED noBedTax finding. Their guides had correctly recorded that
+  // there is no tourist or bed tax, which is a COMPONENT finding, while this map's own axis
+  // (what government adds on top of a quoted rate) was still unanswered. Supplying that
+  // axis is what these entries are for, and it is why several of them move a country off
+  // the warm off-scale fill and into a real band without contradicting a word of its guide.
+  // Read the noBedTax comment above before deciding one of these was a downgrade.
+  //
+  // TWO PATTERNS RUN THROUGH THE WHOLE WAVE.
+  //   ADDED VAT. Most of Asia and Latin America quotes a room net and adds the tax at
+  //   checkout, commonly signalled as "++". Those colour on their VAT, because that VAT
+  //   genuinely is what arrives that the traveler did not see when comparing prices. This is
+  //   the exact mirror of Rail 7: the same tax, the opposite display convention, and
+  //   therefore the opposite answer on this map.
+  //   EMBEDDED VAT. Ireland, South Korea, Taiwan, Denmark, Sweden, Australasia and Brazil
+  //   quote inclusive, so nothing lands on top. They colour in the bottom band at zero and
+  //   carry display:"inclusive". Heavily taxed, and none of it is a surprise at the desk.
+  //
+  // AND ONE THING THIS WAVE DELIBERATELY DOES NOT DO. It does not colour a country whose
+  // government figure has no URL in the tree, and it does not colour a country whose guide
+  // says something different. France, Italy, Morocco, Vietnam and Hong Kong were all in
+  // MAIN's brief and are all held, each for a reason stated in the handback.
+  // ==========================================================================
+
+  {
+    iso: 'LK',
+    country: 'Sri Lanka',
+    slug: 'sri-lanka',
+    spoke: null,
+    state: 'checked',
+    addedPct: 19,
+    addedBasis: 'The 18% VAT and the 1% Tourism Development Levy, both added to the quoted room rate rather than sitting inside it. A 10% service charge usually follows, which is the property\'s and is not in this figure, so a rate quoted as plus plus lands closer to 29% above what you compared.',
+    governmentTotalPct: 19,
+    display: 'added',
+    displayNote: 'Rates here are frequently quoted net and the stack is added at checkout, so the number you compared is not the number you pay.',
+    government: [
+      {
+        label: 'Value added tax',
+        figure: '18%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'The standard rate, applied to accommodation. It rose to 18% and is added to the quoted rate rather than embedded in it.',
+        source: { label: 'Sri Lanka Tourism Development Authority: the Tourism Development Levy, alongside the Inland Revenue Department standard VAT rate', url: 'https://www.sltda.gov.lk/en/tourism-development-levy', type: 'gov' },
+        checkedISO: '2026-08-31',
+      },
+      {
+        label: 'Tourism Development Levy',
+        figure: '1%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'Levied on licensed tourism establishments under the Finance Act No. 25 of 2003 and passed through to the bill.',
+        source: { label: 'Sri Lanka Tourism Development Authority: the Tourism Development Levy and the establishments it applies to', url: 'https://www.sltda.gov.lk/en/tourism-development-levy', type: 'gov' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    notInFill: [
+      { label: 'Colombo city component', figure: 'about 4% at some Colombo hotels', why: 'Reported on bills at a number of Colombo properties but not traceable to a single municipal page that states it, so it stays out of the fill under the rule that every component behind a colour carries a real URL. Add the source and Sri Lanka moves from 19% to about 23%, which crosses into the top band.' },
+    ],
+    property: [
+      { label: 'Service charge', range: 'commonly 10%', note: 'Set by the property and near universal on plus plus rates, so it is not a government figure and never reaches the colour.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'DO',
+    country: 'Dominican Republic',
+    slug: 'dominican-republic',
+    spoke: 'hotel-taxes-and-fees',
+    state: 'checked',
+    // The guide already says there is no nightly tourist tax and names the 18% plus 10%
+    // stack in prose. This entry does not contradict it: it puts the government half of that
+    // stack on this map's axis, which the guide's tax field has no numeric home for.
+    addedPct: 18,
+    addedBasis: 'The 18% ITBIS on accommodation, added at checkout rather than embedded in the quoted rate. The legally required 10% service charge is the property\'s and is not in this figure, so an independent booking commonly lands around 28% above the rate you compared.',
+    governmentTotalPct: 18,
+    display: 'added',
+    displayNote: 'There is no nightly tourist tax here at all. What arrives is the tax, and it arrives after you have chosen the room, unless you booked an all inclusive that quoted a landed price.',
+    government: [
+      {
+        label: 'ITBIS (value added tax)',
+        figure: '18%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'The standard rate, applied to short-term accommodation. All inclusive resorts normally quote a price with it already folded in; independent bookings usually do not.',
+        source: { label: 'Direccion General de Impuestos Internos: the ITBIS standard rate and its application', url: 'https://www.dgii.gov.do', type: 'revenue' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    property: [
+      { label: 'Service charge', range: 'commonly 10%', note: 'The propina legal, collected by the property and distributed to staff. Legally required but not a government tax, so it stays off the colour.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'EG',
+    country: 'Egypt',
+    slug: 'egypt',
+    spoke: null,
+    state: 'checked',
+    // The guide states about 26% for hotels and tourist restaurants, service and tax
+    // together, as an upper estimate. This entry splits that: 15% is government and colours,
+    // the 12% service charge is the property\'s and does not. Neither figure contradicts the
+    // other, they are answers to two different questions.
+    addedPct: 15,
+    addedBasis: 'The 14% VAT and the 1% municipality tax, which are the government share. The 12% service charge that usually accompanies them is the property\'s and is not in this figure, so a mid or upscale bill commonly lands nearer 29% above the listed rate.',
+    governmentTotalPct: 15,
+    display: 'added',
+    displayNote: 'Big city hotels itemise the stack after the fact. Seaside and budget properties often fold it into the rate or skip the service charge entirely, so what you see depends heavily on where you book.',
+    government: [
+      {
+        label: 'Value added tax',
+        figure: '14%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'The standard rate, applied to accommodation. Foreign guests are required by law to settle in foreign currency at many properties.',
+        source: { label: 'Egyptian Tax Authority: the 14% standard VAT rate', url: 'https://www.eta.gov.eg', type: 'revenue' },
+        checkedISO: '2026-08-31',
+      },
+      {
+        label: 'Municipality tax',
+        figure: '1%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'A local charge applied alongside the VAT and shown as its own line on most itemised hotel bills.',
+        source: { label: 'Egyptian Tax Authority: local charges applied alongside VAT on accommodation', url: 'https://www.eta.gov.eg', type: 'revenue' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    notInFill: [
+      { label: 'Tourism and Antiquities Support Fund fee', figure: 'between 5 and 50 Egyptian pounds per room per night, set by property class', why: 'A real government charge introduced by ministerial decree in March 2023, but the amount is set per property class across a tenfold range, so there is no single figure to convert at the reference room without inventing a class. It is named here rather than folded into the colour.' },
+    ],
+    property: [
+      { label: 'Service charge', range: 'commonly 12%', note: 'Applied by the property on top of the government stack. Widely mandated in practice and not something a hotel guest can decline, but it is not a tax.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'CR',
+    country: 'Costa Rica',
+    slug: 'costa-rica',
+    spoke: null,
+    state: 'checked',
+    // NOTE FOR ANYONE CHECKING THIS AGAINST THE GUIDE. The Costa Rica guide says prices
+    // "already include 13% VAT", which is true of shop and restaurant prices and of many
+    // domestic bookings. It is not reliably true of hotel rates quoted to a US traveler
+    // through an international channel, which is the case this map is about. MAIN verified
+    // the added treatment on 2026-08-31. If that call is ever reversed, this entry becomes
+    // display:"inclusive" at zero, NOT a deletion, because the tax does not disappear.
+    addedPct: 13,
+    addedBasis: 'The 13% IVA on stays under 30 days. It is the whole government charge here: there is no bed tax, no city tax and no tourist levy on a hotel night in Costa Rica.',
+    governmentTotalPct: 13,
+    display: 'added',
+    displayNote: 'Whether you see this at checkout or inside the rate depends entirely on the channel you booked through, so the honest advice is to ask whether the rate quoted is all in.',
+    government: [
+      {
+        label: 'IVA (value added tax)',
+        figure: '13%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'The standard rate, applied to short-term accommodation of under 30 days. Longer stays are treated as residential rental and fall outside it.',
+        source: { label: 'Direccion General de Tributacion, Ministerio de Hacienda: the IVA standard rate and its application to short-term accommodation', url: 'https://www.hacienda.go.cr', type: 'gov' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    property: [
+      { label: 'Gratuity charge', range: 'commonly 10%, most often on groups and on restaurant bills', note: 'Added by the property rather than the government, and applied inconsistently to room rates.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'KH',
+    country: 'Cambodia',
+    slug: 'cambodia',
+    spoke: null,
+    state: 'checked',
+    addedPct: 12,
+    addedBasis: 'The 2% accommodation tax and the 10% VAT, both added to the quoted rate. Stacked strictly they compound to a little over 12%, and the figure here is the plain sum, which is what appears on a bill as two separate lines.',
+    governmentTotalPct: 12,
+    display: 'added',
+    displayNote: 'Room rates are commonly quoted net, with the accommodation tax and VAT itemised at checkout and a service charge frequently added before them.',
+    government: [
+      {
+        label: 'Accommodation tax',
+        figure: '2%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'A specific tax on hotel accommodation, applied to the room charge including any service charge the property has added.',
+        source: { label: 'General Department of Taxation: the accommodation tax and the VAT standard rate', url: 'https://www.tax.gov.kh', type: 'revenue' },
+        checkedISO: '2026-08-31',
+      },
+      {
+        label: 'Value added tax',
+        figure: '10%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'The standard rate, applied to accommodation on top of the accommodation tax.',
+        source: { label: 'General Department of Taxation: the 10% VAT standard rate', url: 'https://www.tax.gov.kh', type: 'revenue' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    property: [
+      { label: 'Service charge', range: 'commonly 5 to 10%', note: 'Set by the property and applied before the taxes, which is why the landed total exceeds the sum of the government percentages.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'ID',
+    country: 'Indonesia',
+    slug: 'indonesia',
+    spoke: null,
+    state: 'checked',
+    // The guide quotes 21% for Bali and nationwide, which is tax AND service together. This
+    // entry separates them, because only the 10% is a government charge and only a
+    // government charge can colour this map. The two figures agree, they are just cut
+    // differently.
+    addedPct: 10,
+    addedBasis: 'The 10% regional accommodation tax, which is the government share. The service charge that usually accompanies it is the property\'s and is applied first, which is why a rate quoted as plus plus commonly lands around 21% above the base rather than 10%.',
+    governmentTotalPct: 10,
+    display: 'added',
+    displayNote: 'A rate quoted "nett" already contains both charges and a rate quoted "++" contains neither, and the two words are the whole difference between the price you compared and the price you pay.',
+    government: [
+      {
+        label: 'Regional accommodation tax (PB1 or PBJT)',
+        figure: '10%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'Set regionally under the national regional taxes framework, so a few regencies sit slightly above this. Bali is commonly cited at 10%, occasionally at 11%, and the lower figure is used here.',
+        source: { label: 'Regional Taxes and Levies framework, Law 28/2009 as amended by Law 1/2022, on the regional accommodation tax', url: 'https://jdih.kemenkeu.go.id', type: 'gov' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    notInFill: [
+      { label: 'Bali tourist entry levy', figure: '150,000 rupiah, once per trip', why: 'A real government charge on every foreign visitor to Bali, but it is paid once per trip rather than per night, so it has no honest expression as a share of a room rate and would change meaning with the length of the stay. It is named here and carried in the Indonesia guide instead.' },
+    ],
+    property: [
+      { label: 'Service charge', range: 'commonly 5 to 10%', note: 'Set by the property and applied to the base before the tax, so the two compound.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'SG',
+    country: 'Singapore',
+    slug: 'singapore',
+    spoke: null,
+    state: 'checked',
+    // THE CLEANEST EXAMPLE ON THE MAP OF WHY DISPLAY CONVENTION IS THE WHOLE QUESTION.
+    // Singapore requires tax-inclusive price display almost everywhere, and specifically
+    // EXEMPTS hotels that levy a service charge. So the one sector a traveler compares
+    // prices in is the one sector allowed to quote net.
+    addedPct: 9,
+    addedBasis: 'The 9% GST. Hotels are expressly exempt from the tax-inclusive display rule when they levy a service charge, so the rate you compare is net and the GST arrives afterwards. The 10% service charge is the property\'s and is not in this figure, so a plus plus rate lands close to 20% above the quote.',
+    governmentTotalPct: 9,
+    display: 'added',
+    displayNote: 'There is no tourist or bed tax here. The entire gap between the rate you saw and the bill you pay is the GST and the service charge, which is why a plus plus rate matters so much in this one market.',
+    government: [
+      {
+        label: 'Goods and services tax',
+        figure: '9%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'The standard rate since 1 January 2024. Hotels and food and beverage outlets that impose a service charge are exempt from the requirement to display GST-inclusive prices.',
+        effective: '2024-01-01',
+        source: { label: 'Inland Revenue Authority of Singapore: the hotel and food and beverage sector, and its exemption from GST-inclusive price display', url: 'https://www.iras.gov.sg/taxes/goods-services-tax-(gst)/specific-business-sectors/hotel-and-food-beverage', type: 'revenue' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    property: [
+      { label: 'Service charge', range: 'commonly 10%', note: 'Set by the property, and the thing that triggers the hotel exemption from inclusive price display in the first place.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'TR',
+    country: 'Turkey',
+    slug: 'turkey',
+    spoke: null,
+    state: 'checked',
+    // Matches the Turkey guide, which already carries the temporary 1% and the reversion.
+    // Added here for the map axis and for the accommodation VAT treatment, which the guide
+    // does not separate out.
+    addedPct: 1,
+    addedBasis: 'The accommodation tax alone, currently at its temporarily reduced 1%. Accommodation VAT is separate, embedded in the quoted rate under the usual European convention, and therefore not part of what is added on top.',
+    display: 'mixed',
+    displayNote: 'The accommodation tax is a separate line on the bill and the VAT is already inside the rate. Two government charges, and you only ever see one of them coming.',
+    government: [
+      {
+        label: 'Accommodation tax (konaklama vergisi)',
+        figure: '1%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'Temporarily reduced from the standard 2% for stays between 1 May and 31 December 2026, and levied on the VAT-exclusive lodging price. It returns to 2% on 1 January 2027 unless the window is extended. Some online rates fold it in.',
+        effective: '2026-05-01',
+        source: { label: 'Turkish Revenue Administration: the accommodation tax under Expense Taxes Law No. 6802, and the temporary rate set by Presidential Decision 11263', url: 'https://www.gib.gov.tr', type: 'revenue' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    watch: [
+      {
+        label: 'Accommodation tax returns to 2%',
+        effective: '2027-01-01',
+        note: 'The temporary reduction is legislated to end on 31 December 2026, which would double the figure this country colours on. Not folded into any figure before its date.',
+        source: null,
+        pendingSource: 'Needs the Turkish Revenue Administration notice confirming whether the window was extended past 31 December 2026.',
+      },
+    ],
+    property: [
+      { label: 'Service charge', range: null, note: 'Applied by some properties, particularly resorts, and set by the hotel rather than the government.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  // --- the embedded-VAT wave --------------------------------------------------
+  // These colour in the bottom band at zero, which is the correct answer to this map's
+  // question and looks wrong to anyone reading it as a tax-burden map. Denmark carries the
+  // highest hotel VAT in this file at 25% and colours as light as it is possible to colour.
+  // Every one of them carries display:"inclusive" and says so in its own words.
+
+  {
+    iso: 'DK',
+    country: 'Denmark',
+    slug: 'denmark',
+    spoke: null,
+    state: 'checked',
+    addedPct: 0,
+    addedBasis: 'Nothing is added on top. The 25% VAT is inside the price you are quoted, as Danish law requires for consumer prices, and there is no bed tax, city tax or tourist levy anywhere in the country. The zero here is a statement about display, not about burden.',
+    governmentTotalPct: 25,
+    display: 'inclusive',
+    displayNote: 'The highest hotel VAT rate in this file, and none of it appears at checkout. Denmark applies no reduced rate to accommodation and is one of very few countries with no tourist tax of any kind.',
+    government: [
+      {
+        label: 'Value added tax',
+        figure: '25%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: true,
+        note: 'The standard rate, with no reduced rate for accommodation. Embedded in consumer-quoted rates and not reclaimable on hotel stays.',
+        source: { label: 'Skattestyrelsen: the 25% standard VAT rate and its application to accommodation', url: 'https://skat.dk', type: 'revenue' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    property: [],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'NZ',
+    country: 'New Zealand',
+    slug: 'new-zealand',
+    spoke: null,
+    state: 'checked',
+    addedPct: 0,
+    addedBasis: 'Nothing is added on top. GST is inside the advertised rate by convention and there is no national or local bed tax being collected. The 100 dollar International Visitor Levy is paid at the border with the travel authorisation, not at a hotel, so it is not on this axis.',
+    governmentTotalPct: 15,
+    display: 'inclusive',
+    displayNote: 'Prices here are quoted GST inclusive as a matter of course, so the rate you compare is the rate you pay. The visitor levy people have read about is a border charge, and it is paid once whether you stay one night or thirty.',
+    government: [
+      {
+        label: 'Goods and services tax',
+        figure: '15%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: true,
+        note: 'Applied to accommodation and shown inclusive in advertised prices as standard practice. Not reclaimable by visitors on services consumed in New Zealand.',
+        source: { label: 'Inland Revenue: GST, its rate and its application', url: 'https://www.ird.govt.nz', type: 'revenue' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    watch: [
+      {
+        label: 'Auckland bed tax ruled out at national level',
+        note: 'An Auckland accommodation levy had been expected to raise tens of millions a year and was publicly ruled out in August 2026. Tracked because a ruled-out levy is a position rather than a permanent state, and nothing is folded into any figure.',
+        source: null,
+        pendingSource: 'Needs the current Auckland Council and central government position, since this reverses an earlier proposal rather than closing it.',
+      },
+    ],
+    property: [],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'ZA',
+    country: 'South Africa',
+    slug: 'south-africa',
+    spoke: null,
+    state: 'checked',
+    addedPct: 0,
+    addedBasis: 'Nothing government is added on top. VAT is inside the quoted rate and there is no bed tax. The 1% line that appears on many hotel bills is the TOMSA levy, which is a voluntary industry marketing levy collected by participating properties, not a tax, so it is not counted here.',
+    governmentTotalPct: 15,
+    display: 'inclusive',
+    displayNote: 'The 1% levy on your bill is not a government charge, whatever it looks like next to the VAT. It is voluntary, industry run, and a property can choose not to collect it.',
+    government: [
+      {
+        label: 'Value added tax',
+        figure: '15%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: true,
+        note: 'The standard rate, applied to accommodation and embedded in quoted prices. Foreign visitors can reclaim VAT on goods exported, not on accommodation consumed locally.',
+        source: { label: 'South African Revenue Service: the 15% standard VAT rate and the tourist refund scheme scope', url: 'https://www.sars.gov.za', type: 'revenue' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    property: [
+      { label: 'TOMSA tourism levy', range: 'commonly 1%', note: 'Collected by participating properties for industry marketing. Voluntary and not levied by government, so it never reaches the colour despite appearing beside the VAT on a hotel bill.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'IE',
+    country: 'Ireland',
+    slug: 'ireland',
+    spoke: null,
+    state: 'checked',
+    addedPct: 0,
+    addedBasis: 'Nothing is added on top. The 13.5% accommodation VAT is inside the quoted price under the usual European convention, and Ireland has no tourist tax, city tax or bed levy anywhere.',
+    governmentTotalPct: 13.5,
+    display: 'inclusive',
+    displayNote: 'One of the few well-visited European countries with no tourist tax at all, so the rate you booked is the rate you pay. The hospitality VAT cut that took effect in July 2026 applies to food and catering, not to rooms.',
+    government: [
+      {
+        label: 'Value added tax on accommodation',
+        figure: '13.5%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: true,
+        note: 'The reduced rate for guest and holiday accommodation. The July 2026 cut to 9% covers food and catering services and did not change the rate on rooms.',
+        source: { label: 'Irish Revenue: VAT treatment of guest and holiday accommodation', url: 'https://www.revenue.ie/en/tax-professionals/tdm/value-added-tax/part03-taxable-transactions-goods-ica-services/Services/services-guest-and-holiday-accommodation.pdf', type: 'revenue' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    property: [],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'SE',
+    country: 'Sweden',
+    slug: 'sweden',
+    spoke: null,
+    state: 'checked',
+    addedPct: 0,
+    addedBasis: 'Nothing is added on top. The 12% accommodation VAT is inside the quoted price and there is no national or municipal tourist tax anywhere in Sweden.',
+    governmentTotalPct: 12,
+    display: 'inclusive',
+    displayNote: 'No bed tax, no city tax, and the VAT already inside the rate, which makes this one of the few places in Europe where the booking price is simply the price.',
+    government: [
+      {
+        label: 'Value added tax on accommodation',
+        figure: '12%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: true,
+        note: 'The reduced rate for accommodation, embedded in consumer-quoted prices.',
+        source: { label: 'Skatteverket: VAT rates, including the reduced rate on accommodation', url: 'https://www.skatteverket.se', type: 'revenue' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    property: [],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'KR',
+    country: 'South Korea',
+    slug: 'south-korea',
+    spoke: null,
+    state: 'checked',
+    addedPct: 0,
+    addedBasis: 'Nothing is added on top. VAT is inside the quoted rate and there is no bed or city tax. Foreign visitors can in fact claim the VAT back at designated hotels before departure, which makes the landed figure lower still for some travelers.',
+    governmentTotalPct: 10,
+    display: 'inclusive',
+    displayNote: 'The unusual one: not only is the tax already inside the price, a foreign visitor staying at a participating hotel can reclaim it on the way out. Worth asking at check-in rather than at the airport.',
+    government: [
+      {
+        label: 'Value added tax',
+        figure: '10%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: true,
+        note: 'The standard rate, embedded in quoted rates. Refundable to foreign visitors at hotels registered for the accommodation refund scheme, subject to a stay-length limit.',
+        source: { label: 'National Tax Service: VAT and the refund scheme available to foreign visitors on accommodation', url: 'https://www.nts.go.kr', type: 'revenue' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    property: [
+      { label: 'Service charge', range: 'commonly 10% at upper-tier hotels', note: 'Set by the property, mostly at international and luxury hotels, and not a government charge.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'TW',
+    country: 'Taiwan',
+    slug: 'taiwan',
+    spoke: null,
+    state: 'checked',
+    addedPct: 0,
+    addedBasis: 'Nothing government is added on top. The 5% business tax is inside the quoted room price and there is no accommodation or bed tax. The only thing that arrives afterwards is a property service charge at higher-end hotels.',
+    governmentTotalPct: 5,
+    display: 'inclusive',
+    displayNote: 'One of the lowest consumption tax rates in the region and it is already in the rate. The 10% service charge at upmarket hotels is the property\'s, and it is the one line worth checking before you book.',
+    government: [
+      {
+        label: 'Business tax (value added tax)',
+        figure: '5%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: true,
+        note: 'The standard rate under the Value-Added and Non-Value-Added Business Tax Act, embedded in quoted consumer prices.',
+        source: { label: 'Ministry of Finance: the business tax standard rate under the Value-Added and Non-Value-Added Business Tax Act', url: 'https://www.mof.gov.tw', type: 'gov' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    property: [
+      { label: 'Service charge', range: 'commonly 10% at higher-end hotels', note: 'Set by the property and added after the inclusive rate, so it is the one charge here that behaves like a surprise.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'BR',
+    country: 'Brazil',
+    slug: 'brazil',
+    spoke: null,
+    state: 'checked',
+    addedPct: 0,
+    addedBasis: 'Nothing is added on top. The municipal service tax on accommodation is inside the quoted daily rate rather than itemised to the guest, and there is no bed tax or tourist levy. The rate itself varies by municipality, which is why no single national total is claimed here.',
+    display: 'inclusive',
+    displayNote: 'The tax here is municipal and it is already folded into the daily rate, so it does not behave like a checkout surprise. That will change presentationally as the new federal consumption taxes phase in from 2026.',
+    government: [
+      {
+        label: 'ISS (municipal service tax) on accommodation',
+        figure: '5% in Sao Paulo',
+        basis: 'percentOfRoom',
+        inQuotedPrice: true,
+        note: 'Set by each municipality between 2% and 5% under Lei Complementar 116/2003, item 9.01. Sao Paulo is at the 5% ceiling and Rio de Janeiro at 2%. Folded into the quoted daily rate rather than shown as a line.',
+        source: { label: 'Lei Complementar 116/2003, item 9.01: the municipal service tax on accommodation and its rate ceiling', url: 'http://www.planalto.gov.br/ccivil_03/leis/lcp/lcp116.htm', type: 'gov' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    watch: [
+      {
+        label: 'ISS replaced by the new IBS and CBS consumption taxes',
+        effective: '2026-01-01',
+        note: 'The consumption tax reform phases in from 2026 and will change both the rate structure and how accommodation tax is presented to a guest. Nothing is folded into any figure here before it takes effect for accommodation.',
+        source: null,
+        pendingSource: 'Needs the Receita Federal transition schedule as it applies to accommodation services, including whether the charge becomes visible to the guest.',
+      },
+    ],
+    property: [
+      { label: 'Service charge', range: 'commonly 10%', note: 'Applied by some properties, particularly on food and beverage, and set by the hotel rather than by government.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  // --- the countries that refuse a single figure ------------------------------
+  // Read Rail 5 before adding to this group. Three of these refuse for a reason the map has
+  // not had to hold before, and it is worth naming: Argentina, Colombia and Ecuador vary by
+  // WHO THE TRAVELER IS rather than by where they stay. A US visitor is legally exempt in
+  // all three, so colouring them on the resident rate would put a dark fill on a tax the
+  // reader of this map does not pay, which is the single most misleading thing available
+  // here. State "varies" with the exemption leading the note is the honest home for that
+  // until the map has a state for it.
+
+  {
+    iso: 'DE',
+    country: 'Germany',
+    slug: 'germany',
+    spoke: 'tourist-tax',
+    state: 'varies',
+    variesNote: 'There is no national tourist tax. More than forty cities levy their own bed tax and most towns levy none, so the spread runs from nothing to 7.5% of the net room rate. Berlin charges 7.5% and removed its night cap in 2025, Cologne 5%, Hamburg a sliding scale worth roughly 2%, and Frankfurt a flat 2 euros per person per night. Munich and the rest of Bavaria charge nothing at all: the state banned local hotel taxes and its constitutional court upheld the ban in 2025. A national figure would describe none of these places, and the accommodation VAT is embedded in the quoted rate everywhere.',
+    cities: [],
+    pendingVerification: 'Needs a decision on whether one German city is what a US visitor overwhelmingly means. Berlin is the largest single case but does not dominate US travel to Germany the way Paris dominates France, and half the country charges nothing, so the spread is the finding rather than an obstacle to one.',
+    property: [],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'ES',
+    country: 'Spain',
+    slug: 'spain',
+    spoke: 'tourist-tax',
+    state: 'varies',
+    variesNote: 'The tourist tax here is regional rather than municipal, and it only exists in some regions. Catalonia and the Balearics charge a flat amount per person per night, capped at the first seven nights, with under-16s exempt. Madrid, Andalusia, Valencia and the Canaries charge nothing. Barcelona is the heaviest case and is legislated to rise every year through 2029, while the rest of Catalonia doubles in April 2027. Accommodation VAT is embedded in the quoted rate. With no single dominant city and no tax at all across much of the country, one figure would be wrong in both directions at once.',
+    cities: [],
+    pendingVerification: 'Needs the Catalan and Balearic per-night scales sourced to their tax agencies, plus the Barcelona council schedule showing each annual step, before any representative figure could be defended.',
+    property: [],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'AU',
+    country: 'Australia',
+    slug: 'australia',
+    spoke: null,
+    state: 'varies',
+    variesNote: 'GST is inside advertised prices nationwide, so for most of the country nothing is added on top. Two jurisdictions changed that: Victoria applies a 7.5% short stay levy from January 2025 and the Australian Capital Territory a 5% levy from July 2025, both aimed at short stay rentals rather than hotels. So a Melbourne apartment and a Sydney hotel are taxed completely differently, and the difference is the accommodation type as much as the state.',
+    cities: [],
+    pendingVerification: 'Needs the Victorian and ACT levy scopes sourced to their revenue offices, specifically which accommodation types are caught, before a representative figure could stand for the country.',
+    property: [],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'IN',
+    country: 'India',
+    slug: 'india',
+    spoke: null,
+    state: 'varies',
+    variesNote: 'There is no bed tax or city tax. What lands on the bill is GST, and it depends entirely on the nightly rate: nothing at all up to 1,000 rupees, 5% from 1,001 to 7,500 rupees, and 18% above 7,500 rupees. The slabs changed in September 2025 when the old middle band was removed, which cut the rate on mid-range rooms. A guesthouse and a luxury hotel in the same street therefore sit three bands apart on this map, so one national figure would be wrong for most travelers whichever tier it picked.',
+    cities: [],
+    pendingVerification: 'Needs the CBIC rate notification deep-linked, and a decision on whether the mid-range slab is representative enough to colour on the way Croatia and Greece colour on a representative rung.',
+    property: [
+      { label: 'Service charge', range: 'discretionary, and declinable', note: 'Where a property adds one it is optional under consumer guidance, so a guest can ask for it to be removed. Not a government charge.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'AR',
+    country: 'Argentina',
+    slug: 'argentina',
+    spoke: null,
+    state: 'varies',
+    // THE MOST IMPORTANT NOTE IN THIS WHOLE WAVE. Argentina looks like a 21% country and is
+    // not one for the reader of this map. The exemption is automatic, it is conditional on
+    // how you pay, and it applies to the room. Colouring this country dark would tell a US
+    // traveler to expect a fifth on top of a tax they will not be charged.
+    variesNote: 'Foreign tourists do not pay the 21% VAT on accommodation. The refund is applied automatically when the stay is paid with a foreign card or a foreign bank transfer, so for a US traveler the government share added to the room is effectively zero, while an Argentine resident pays the full 21%. It varies by who you are rather than by where you stay, and it is conditional on how you pay, so a single fill would be wrong for one of those two readers whichever number it showed.',
+    cities: [],
+    pendingVerification: 'Needs a decision on whether a conditional exemption should colour at zero like an inclusive-VAT country, or stay off the scale as it does here. Paying with a local card or in cash forfeits the refund, which is the condition a fill could not express.',
+    property: [],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'CO',
+    country: 'Colombia',
+    slug: 'colombia',
+    spoke: null,
+    state: 'varies',
+    variesNote: 'Foreign tourists are exempt from the 19% IVA on accommodation at hotels registered in the Registro Nacional de Turismo, so for a US traveler entering for tourism the government share added to the room should be zero. Colombian residents pay the 19%. Two things make a single figure dishonest here: the exemption depends on the property being registered, and hotels do sometimes charge the IVA in error, which is worth checking on the bill rather than assuming.',
+    cities: [],
+    pendingVerification: 'Needs the DIAN exemption text deep-linked to Estatuto Tributario article 476, and a note on what recourse a traveler has when a registered hotel charges the IVA anyway.',
+    property: [],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'EC',
+    country: 'Ecuador',
+    slug: 'ecuador',
+    spoke: null,
+    state: 'varies',
+    variesNote: 'Foreign non-residents staying under 90 days pay no IVA on accommodation at registered hotels, so the 15% standard rate does not reach a US visitor who books one. On top of that the government repeatedly cuts IVA on tourism services to 8% for decreed holiday periods, which moves the figure for residents several times a year. Exempt for most visitors, and a moving target for everyone else, so there is no single number to show.',
+    cities: [],
+    pendingVerification: 'Needs the SRI registration requirement confirmed for the exemption, and the 2026 holiday decree dates, before either the exempt figure or the resident figure could be shown as settled.',
+    property: [
+      { label: 'Service charge', range: 'commonly 10% at upscale hotels', note: 'Set by the property rather than by government.' },
+    ],
+    checkedISO: '2026-08-31',
   },
 
 ]);
