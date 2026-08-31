@@ -108,7 +108,7 @@ export default {
   },
   recentChange: {
     date: "Jan 2026",
-    text: "<b>Paris raised its tourist tax.</b> From January 1, 2026 the city's nightly <i>taxe de sejour</i> went up, partly to fund transport and 2028 Olympic-legacy projects. Expect roughly 6 euros and up per adult per night at a mid-range Paris hotel, and more at higher categories, charged separately from your room rate. Children under 18 are still exempt, and most towns outside Paris stay at a euro or two."
+    text: "<b>Paris raised its tourist tax.</b> From January 1, 2026 the city's nightly <i>taxe de sejour</i> went up, partly to fund transport and 2028 Olympic-legacy projects. Expect about 5.53 euros per adult per night at a mid-range (3-star) Paris hotel, and more at higher categories, charged separately from your room rate. Children under 18 are still exempt, and most towns outside Paris stay at a euro or two."
   },
   traps: [
     "<b>\"Pay in dollars?\" Always say no.</b> At a card terminal or ATM, choosing your home currency (dynamic currency conversion) quietly adds 3 to 8%. Pick euros every time.",
@@ -423,7 +423,7 @@ export default {
         }
       ],
       faqs: [
-        { q: "How much is the Paris tourist tax in 2026?", a: "Roughly 6 euros per adult per night at a mid-range classified hotel, rising into the mid-teens in euros at 5-star and palace properties, after the 1 January 2026 increase and the Ile-de-France surcharges. An unclassified rental is charged at 5% of the nightly price, capped near 15.93 euros per adult per night. Children under 18 are exempt." },
+        { q: "How much is the Paris tourist tax in 2026?", a: "About 5.53 euros per adult per night at a mid-range (3-star) classified hotel, rising into the mid-teens in euros at 5-star and palace properties, after the 1 January 2026 increase and the Ile-de-France surcharges. An unclassified rental is charged at 5% of the nightly price, capped near 15.93 euros per adult per night. Children under 18 are exempt." },
         { q: "Do children pay the tourist tax in France?", a: "No. France exempts everyone under 18 from the taxe de sejour, so a family pays only for the adults. This is more generous than Italy or Spain, where the exemption is usually only for young children." },
         { q: "Why is the tourist tax in Paris so high now?", a: "On top of the base city rate, the Ile-de-France region adds a 200% surcharge to fund regional transport, plus a Grand Paris projects surcharge and a departmental surcharge. Stacked together they can more than triple the base amount, which is why Paris is far above the rest of France." },
         { q: "Is the taxe de sejour included in my hotel price?", a: "Usually not. It is generally collected at the accommodation at check-in or checkout, though on Airbnb and Booking the platform often collects it with your payment. Ask your hotel for the per-night amount so the final bill is no surprise." }
