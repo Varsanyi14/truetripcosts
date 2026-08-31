@@ -418,11 +418,27 @@ function titleFor(entry, name) {
     <p class="htm-lk">Every country we hold something for</p>
     <p class="htm-note">We hold a checked, dated position on {coveredChecked === coveredCount ? `all ${coveredCount}` : `${coveredChecked} of the ${coveredCount}`} countries we cover{beyondCovered > 0 ? `, plus ${beyondCovered} beyond them` : ''}: {noTaxCount} with no tourist or hotel tax at all, {shapeCount} where there is a charge and its shape is known, {figureCount} pinned to a percentage on the scale above, of which {modelledCount} are flat charges modelled at the reference room rather than real percentages, and {variesCount} where the rate varies too much inside the country for one national number to be honest. This list is the map's real content, with the government charges separated from the property's own, and each one dated.</p>
 
+    {/* The list is the map's real navigation, on a phone and for the small countries a
+        pointer cannot land on. This box filters it: type a name and the list narrows to it.
+        It is the reliable way to reach a country, the hover title is only a desktop bonus. */}
+    <div class="htm-find">
+      <label class="htm-find-lab" for="htm-filter">Find a country</label>
+      <input
+        type="text"
+        id="htm-filter"
+        class="htm-find-in"
+        placeholder="Type a country, like Japan"
+        aria-label="Find a country in the list below"
+        autocomplete="off"
+      />
+    </div>
+    <p class="htm-find-empty" id="htm-filter-empty" hidden>No country by that name in the list. We may not have checked it yet, which is not the same as it having no tax.</p>
+
     {rows.map(e => {
       const band = colours(e) ? bandFor(e.addedPct) : null;
       const href = hrefFor(e);
       return (
-        <div class="htm-row" id={`htm-${e.iso}`}>
+        <div class="htm-row" id={`htm-${e.iso}`} data-name={e.country}>
           <div class="htm-rhead">
             <span class="htm-chip" style={band ? `background:${band.fill}` : (isNoBedTax(e) ? `background:${STATES.noBedTax.fill}` : undefined)} data-state={e.state}></span>
             <span class="htm-rname">{href ? <a href={href}>{e.country}</a> : e.country}</span>
@@ -591,6 +607,28 @@ function titleFor(entry, name) {
       setTimeout(() => row.classList.remove('htm-row-lit'), 1600);
     });
   })();
+
+  // The country-list filter. Reaches a country by name, which is the reliable path on a
+  // phone and for the small shapes a pointer cannot land on. Guarded on the input, so it is
+  // inert in the embed, which drops the list entirely.
+  (() => {
+    const input = document.getElementById('htm-filter');
+    const empty = document.getElementById('htm-filter-empty');
+    if (!input) return;
+    const rows = Array.prototype.slice.call(document.querySelectorAll('.htm-list .htm-row'));
+    if (!rows.length) return;
+    const norm = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    input.addEventListener('input', () => {
+      const q = norm(input.value.trim());
+      let shown = 0;
+      rows.forEach((row) => {
+        const hit = q === '' || norm(row.getAttribute('data-name')).indexOf(q) !== -1;
+        row.classList.toggle('htm-row-hidden', !hit);
+        if (hit) shown++;
+      });
+      if (empty) empty.hidden = shown !== 0;
+    });
+  })();
 </script>
 
 <style>
@@ -645,6 +683,12 @@ function titleFor(entry, name) {
 
   .htm-list{margin:30px 0 0}
   .htm-note{font-size:14.5px;color:var(--muted);line-height:1.5;margin:0 0 16px;max-width:720px}
+  .htm-find{margin:0 0 8px}
+  .htm-find-lab{display:block;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.08em;margin:0 0 6px}
+  .htm-find-in{width:100%;max-width:360px;box-sizing:border-box;font-family:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 13px;-webkit-text-size-adjust:100%}
+  .htm-find-in:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
+  .htm-find-empty{font-size:14px;color:var(--muted);line-height:1.5;margin:6px 0 14px;max-width:640px}
+  .htm-row-hidden{display:none}
   .htm-row{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:15px 17px;margin:0 0 12px;scroll-margin-top:70px;transition:border-color .3s ease,box-shadow .3s ease}
   .htm-row-lit{border-color:var(--teal);box-shadow:0 0 0 3px rgba(14,122,95,.14)}
   .htm-rhead{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:0 0 8px}
