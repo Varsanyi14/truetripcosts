@@ -612,7 +612,9 @@ function titleFor(entry, name) {
 
   // The country-list filter. Reaches a country by name, which is the reliable path on a
   // phone and for the small shapes a pointer cannot land on. Guarded on the input, so it is
-  // inert in the embed, which drops the list entirely.
+  // inert in the embed, which drops the list entirely. It does two things: it narrows the
+  // list to matches, AND it jumps the reader down to the match, because the list sits below
+  // the map and a filter with no scroll gives no visible feedback where the reader is typing.
   (() => {
     const input = document.getElementById('htm-filter');
     const empty = document.getElementById('htm-filter-empty');
@@ -620,15 +622,42 @@ function titleFor(entry, name) {
     const rows = Array.prototype.slice.call(document.querySelectorAll('.htm-list .htm-row'));
     if (!rows.length) return;
     const norm = (s) => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-    input.addEventListener('input', () => {
+
+    function apply() {
       const q = norm(input.value.trim());
       let shown = 0;
+      let firstHit = null;
       rows.forEach((row) => {
         const hit = q === '' || norm(row.getAttribute('data-name')).indexOf(q) !== -1;
         row.classList.toggle('htm-row-hidden', !hit);
-        if (hit) shown++;
+        if (hit) { shown++; if (!firstHit) firstHit = row; }
       });
       if (empty) empty.hidden = shown !== 0;
+      return { shown, firstHit };
+    }
+
+    function jumpTo(row) {
+      if (!row) return;
+      row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      row.classList.add('htm-row-lit');
+      setTimeout(() => row.classList.remove('htm-row-lit'), 1600);
+    }
+
+    // Typing narrows the list live. It does NOT scroll on every keystroke (that would yank
+    // the page around as you type), only once you commit with Enter or the list is down to
+    // a single country.
+    input.addEventListener('input', () => {
+      const { shown, firstHit } = apply();
+      if (shown === 1) jumpTo(firstHit);
+    });
+    // Enter jumps to the top match even if several still show, so a reader who typed a broad
+    // term still gets taken somewhere.
+    input.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter') {
+        ev.preventDefault();
+        const { firstHit } = apply();
+        jumpTo(firstHit);
+      }
     });
   })();
 </script>
