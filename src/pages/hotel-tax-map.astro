@@ -43,7 +43,13 @@ import { hotelTaxMap, computeAddedTax, localToUsd, perUsdFor } from '../data/hot
 // expects and teach nothing.
 const CALC_DEFAULT_ISO = 'FR';
 const CALC_DEFAULTS = { nightlyUsd: 150, nights: 3, guests: 2 };
-const calcCountries = hotelTaxMap.filter(e => e && e.iso && e.country).slice()
+// US and Canada are left OUT of the calculator picker on purpose. Both are so federated
+// (state and city occupancy taxes in the US, provincial and municipal in Canada) that there
+// is no single national number to compute, so the calculator could only shrug at them. They
+// stay fully present ON the map, clickable to their own row, where the honest "it depends
+// where you stay" explanation belongs. When real per-jurisdiction data exists they come back.
+const CALC_EXCLUDE = new Set(['US', 'CA']);
+const calcCountries = hotelTaxMap.filter(e => e && e.iso && e.country && !CALC_EXCLUDE.has(e.iso)).slice()
   .sort((a, b) => a.country.localeCompare(b.country));
 
 // The headline sentence per kind. Held here beside the build-time default AND mirrored in the
@@ -64,7 +70,7 @@ function calcHead(entry, r, inputs) {
 // The kind and the note are taken verbatim from the function, so the client can never
 // classify a country differently from the server. Only the raw multipliers are added, and
 // they come from the same exported FX wrapper the fill uses.
-const calcData = Object.fromEntries(hotelTaxMap.filter(e => e && e.iso && e.country).map(e => {
+const calcData = Object.fromEntries(hotelTaxMap.filter(e => e && e.iso && e.country && !CALC_EXCLUDE.has(e.iso)).map(e => {
   const probe = computeAddedTax(e, CALC_DEFAULTS);
   const row = { country: e.country, kind: probe.kind, note: probe.note };
   if (probe.kind === 'flat') {
