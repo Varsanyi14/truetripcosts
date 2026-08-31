@@ -197,6 +197,64 @@ const fmtDate = (iso) => {
 };
 
 const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight: 'per room, per night', flatPerNight: 'per room, per night' };
+
+// NATIVE <title> IDENTIFICATION, one line per shape and per dot.
+//
+// WHY THIS IS NOT THE TOOLTIP THE SCRIPT BELOW ARGUES AGAINST. That comment rules out a JS
+// hover card for three reasons: it cannot be tapped on a phone, it cannot be read by
+// assistive tech, and it cannot be indexed. A native <title> has none of those failings. It
+// is markup rather than behaviour, it needs no JavaScript, it ships inside the embed at no
+// extra request, and it does not replace anything: the click still goes to the sourced row,
+// which remains the only place the figure is explained. This answers the one question the
+// map could not previously answer without a click, which is "which country is that speck".
+//
+// THE ONE RULE. A title may only restate what this map already claims. Every branch keys off
+// the SAME predicate the fill uses, in the same order, so a title cannot disagree with the
+// colour beside it. It never invents a figure, it never turns a modelled percentage into a
+// rate a government sets, and for the foreigner-exempt countries it never names the resident
+// rate, because that is precisely the number a US traveler does not pay.
+//
+// KNOWN LIMIT, worth stating rather than discovering later: the parent <svg> carries
+// role="img" with its own aria-label, which makes the whole map one atomic image to
+// assistive tech and stops it walking into these titles. So this is a HOVER win today, not
+// yet a screen-reader win. Exposing the subtree would mean dropping role="img", and that
+// would set a screen reader walking 176 shapes, which is worse than the rows it already has.
+// That trade is MAIN's to make, not this helper's.
+function titleFor(entry, name) {
+  const who = (entry && entry.country) || name;
+  if (!who) return null;
+  // A country with no entry gets its name and nothing else. Naming a shape is identification;
+  // anything beyond that would imply a finding where there is none.
+  if (!entry) return who;
+  const when = entry.checkedISO ? `, checked ${fmtDate(entry.checkedISO)}` : '';
+
+  if (colours(entry)) {
+    // Inclusive first, because these carry addedPct 0 and would otherwise read as "about 0%
+    // added on top", which is arithmetically true and explains nothing.
+    if (entry.display === 'inclusive') {
+      return `${who}: the tax is inside the quoted price, so about nothing is added at checkout${when}`;
+    }
+    // A representative figure stands for one rung of several, so the title says which rung
+    // and that the others differ. Without that it would read as a national rate.
+    if (entry.representative) {
+      const how = hasModelledFlat(entry)
+        ? `A flat charge modelled at about ${entry.addedPct}% of the reference room`
+        : `About ${entry.addedPct}% added on top of the quoted rate`;
+      return `${who}: ${entry.representative}. ${how}, other rungs differ${when}`;
+    }
+    // cityBasis is carried through for the same reason Rail 5 exists: without it the
+    // Netherlands title would state a national figure that describes Amsterdam only.
+    const where = entry.cityBasis ? ` on the ${entry.cityBasis} basis` : '';
+    if (hasModelledFlat(entry)) {
+      return `${who}: a flat charge modelled at about ${entry.addedPct}% of the reference room${where}${when}`;
+    }
+    return `${who}: about ${entry.addedPct}% added on top of the quoted rate${where}${when}`;
+  }
+  if (isNoBedTax(entry)) return `${who}: checked, no tourist or hotel tax`;
+  if (isCheckedShape(entry)) return `${who}: a government charge applies, its shape is known but not yet a figure on this scale`;
+  if (entry.state === 'varies') return `${who}: it depends on the city or on who you are, tap through for the detail`;
+  return who;
+}
 ---
 <section class:list={['htm', embed && 'htm-embed']} id={anchor}>
 
@@ -251,7 +309,10 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
         <g class="htm-countries">
           {world.countries.map(c => {
             const e = c.iso ? entryByIso[c.iso] : null;
-            return <path d={c.d} fill={fillFor(e)} data-iso={c.iso || undefined} data-htm={e ? e.state : 'unchecked'} />;
+            const t = titleFor(e, c.name);
+            // <title> FIRST, because that is what browsers show on hover and what an
+            // accessible-name calculation reads. Not a self-closing path any more.
+            return <path d={c.d} fill={fillFor(e)} data-iso={c.iso || undefined} data-htm={e ? e.state : 'unchecked'}>{t ? <title>{t}</title> : null}</path>;
           })}
         </g>
 
@@ -266,10 +327,16 @@ const unitWords = { perPersonPerNight: 'per person, per night', perRoomPerNight:
             the Netherlands and Switzerland centroids are 17.8 units apart, so a 7.5 radius
             leaves them touching. 6.5 clears them and still reads at phone width. */}
         <g class="htm-dots">
-          {dots.map(d => [
-            <circle cx={d.cx} cy={d.cy} r="6.5" fill={d.fill} stroke="#F5F4EF" stroke-width="1.6" data-iso={d.iso} />,
-            d.stipple ? <circle cx={d.cx} cy={d.cy} r="6.5" fill={d.stipple.replace(')', '-sm)')} /> : null,
-          ])}
+          {dots.map(d => {
+            const t = titleFor(entryByIso[d.iso], null);
+            return [
+              // The dot is the ONLY mark for a country 110m does not draw, so this title is
+              // the whole of its identification. The stipple overlay below is decoration and
+              // deliberately carries none: two titles on one spot would read twice.
+              <circle cx={d.cx} cy={d.cy} r="6.5" fill={d.fill} stroke="#F5F4EF" stroke-width="1.6" data-iso={d.iso}>{t ? <title>{t}</title> : null}</circle>,
+              d.stipple ? <circle cx={d.cx} cy={d.cy} r="6.5" fill={d.stipple.replace(')', '-sm)')} /> : null,
+            ];
+          })}
         </g>
       </svg>
 
