@@ -96,8 +96,11 @@ export default {
     works: "Among the best anywhere, including inside the MTR tunnels. Hong Kong has fast 4G and wide 5G across the territory. Tourist SIMs need no registration, unlike mainland China, and for most visitors an eSIM from Airalo, Nomad or a similar provider is the easiest route. Your US plan may include some roaming, so check the rate before you rely on it. You do not need mobile data to pay by card, but you will want it for maps and getting around."
   },
 
+  // `none: true` REMOVED 2026-08-31. It contradicted the note directly below it, which
+  // correctly describes the 3% Hotel Accommodation Tax restored on 1 January 2025, and it
+  // made the hotel tax map derive "checked: no tourist or hotel tax" for Hong Kong. The note
+  // was right and is unchanged; only the flag was wrong.
   tax: {
-    none: true,
     currency: "HKD",
     note: "Hong Kong is a free port with no GST or VAT, so there is no sales tax on the price you see and nothing to reclaim at the airport. The one lodging cost to know is a 3% Hotel Accommodation Tax on the room charge, reinstated on 1 January 2025 (see below); it is usually already in your hotel bill."
   },

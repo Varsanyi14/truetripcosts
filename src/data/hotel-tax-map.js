@@ -1843,21 +1843,6 @@ export const hotelTaxMap = deriveReferenceFigures([
   },
 
   {
-    iso: 'IN',
-    country: 'India',
-    slug: 'india',
-    spoke: null,
-    state: 'varies',
-    variesNote: 'There is no bed tax or city tax. What lands on the bill is GST, and it depends entirely on the nightly rate: nothing at all up to 1,000 rupees, 5% from 1,001 to 7,500 rupees, and 18% above 7,500 rupees. The slabs changed in September 2025 when the old middle band was removed, which cut the rate on mid-range rooms. A guesthouse and a luxury hotel in the same street therefore sit three bands apart on this map, so one national figure would be wrong for most travelers whichever tier it picked.',
-    cities: [],
-    pendingVerification: 'Needs the CBIC rate notification deep-linked, and a decision on whether the mid-range slab is representative enough to colour on the way Croatia and Greece colour on a representative rung.',
-    property: [
-      { label: 'Service charge', range: 'discretionary, and declinable', note: 'Where a property adds one it is optional under consumer guidance, so a guest can ask for it to be removed. Not a government charge.' },
-    ],
-    checkedISO: '2026-08-31',
-  },
-
-  {
     iso: 'AR',
     country: 'Argentina',
     slug: 'argentina',
@@ -1898,6 +1883,172 @@ export const hotelTaxMap = deriveReferenceFigures([
     pendingVerification: 'Needs the SRI registration requirement confirmed for the exemption, and the 2026 holiday decree dates, before either the exempt figure or the resident figure could be shown as settled.',
     property: [
       { label: 'Service charge', range: 'commonly 10% at upscale hotels', note: 'Set by the property rather than by government.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  // ==========================================================================
+  // THE HELD FIVE, RESOLVED 2026-08-31. Four of them land, two are still held.
+  //
+  // Hong Kong and Vietnam were held because their GUIDES and MAIN's brief disagreed, which
+  // is the one conflict this file must never resolve on its own. Both were adjudicated
+  // against the guide, and they went opposite ways: Hong Kong's guide flag was wrong and is
+  // fixed in src/data/hong-kong.js as part of this change, while Vietnam's guide was right
+  // and the brief was wrong, so nothing in vietnam.js was touched.
+  //
+  // France and India use `representative`, the Croatia and Greece pattern, because both vary
+  // by a rung rather than by a place: France by hotel category, India by nightly rate. A
+  // single figure would be a different lie in each case, and naming the rung is what makes
+  // the fill honest.
+  //
+  // ITALY AND MOROCCO ARE STILL HELD, and the reason is the same for both: no official page
+  // states the figure. Every Rome source available is a property-management blog citing
+  // Deliberazione G.C. 255/2023 without reproducing the hotel ladder, and Morocco has only
+  // the DGI domain root. Rule 1 of the Phase 2 note applies: a verified number with no link
+  // is a number a reader cannot check.
+  // ==========================================================================
+
+  {
+    iso: 'FR',
+    country: 'France',
+    slug: 'france',
+    spoke: 'tourist-tax',
+    state: 'checked',
+    // WHY THE 3 STAR RUNG AND NOT THE GUIDE'S ROUNDED 6 EUROS. The France guide carries 6
+    // euros for Paris as an explicit mid-range estimate, and 6 euros is not a figure the
+    // city publishes: the official 2026 table is a ladder by category. 5.53 euros is the
+    // real 3 star total, it is the published rung closest to the guide's estimate, and it
+    // means the colour rests on a number a reader can find rather than on a rounding.
+    modelled: [
+      { label: 'Taxe de sejour, Paris 3 star total', amount: 5.53, currency: 'EUR', unit: 'perPersonPerNight' },
+    ],
+    addedBasis: 'This models the Paris 3 star rung, 5.53 euros per adult per night, which is the published category closest to a mid-range hotel. The ladder runs from 2.60 euros for a 1 star up to 15.93 euros for a palace, so a 4 star lands near 5.6% of the reference room and a palace near 10.6%. Accommodation VAT of 10% is embedded in the quoted rate and is not part of what is added on top.',
+    representative: 'a 3 star hotel in Paris, at the published 2026 rate',
+    representativeNote: 'Read this before reading the colour. This is not a national rate and not the whole of Paris: France sets the taxe de sejour per commune and then per hotel category, and Paris adds a departmental part plus a regional part that alone is 200% of the base, which is why the capital sits far above the rest of the country. Elsewhere in France a per-person night is commonly 1 to 3 euros. An unclassified or unrated Paris stay is charged differently again, at 5% of the per-person nightly cost excluding tax, capped at 15.93 euros, so a cheap unrated apartment can pay a larger share than a 5 star hotel.',
+    display: 'added',
+    displayNote: 'Collected by the accommodation rather than included in the rate you compared, and charged per adult per night, so two people sharing pay it twice while the room rate does not change. Under-18s are exempt.',
+    government: [
+      {
+        label: 'Taxe de sejour, Paris',
+        figure: '5.53 EUR per adult per night at 3 star, rising to 15.93 EUR at palace category',
+        basis: 'perPersonPerNight',
+        inQuotedPrice: false,
+        note: 'The 2026 Paris scale, in force from 1 January 2026. Each category carries a municipal rate plus a 10% departmental part and two regional parts, the larger of which is 200% of the municipal rate under Article 140 of the 2024 Finance Law. Unclassified accommodation is charged 5% of the per-person nightly cost excluding tax instead, capped at 15.93 euros.',
+        effective: '2026-01-01',
+        source: { label: 'Service-Public (Directorate of Legal and Administrative Information): the 2026 Paris tourist tax scale by accommodation category, including the regional surcharges and the 15.93 euro ceiling', url: 'https://entreprendre.service-public.gouv.fr/actualites/A17929?lang=en', type: 'gov' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    property: [],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'IN',
+    country: 'India',
+    slug: 'india',
+    spoke: null,
+    state: 'checked',
+    // Replaces the varies entry added on 2026-08-31 earlier the same day. India varies by
+    // nightly rate rather than by place, which is the Croatia and Greece case, not the
+    // Switzerland case, so it colours on a named rung instead of refusing a figure.
+    addedPct: 5,
+    addedBasis: 'This is the middle GST slab, which covers rooms from 1,001 to 7,500 rupees a night and is where most visitors stay. It is not the only rate: a room under 1,000 rupees pays nothing at all and a room above 7,500 rupees pays 18%, which is more than three times this fill. There is no bed tax or city tax anywhere in India, so GST is the whole of it.',
+    representative: 'a mid-range room, from 1,001 to 7,500 rupees a night',
+    representativeNote: 'Read this before reading the colour. India taxes a hotel room by what the room costs, in three bands, so this country has no single figure and the fill is one band of three. Nothing up to 1,000 rupees a night, 5% from 1,001 to 7,500, and 18% above 7,500. A luxury room is therefore in the 15 to 22% band on this map while the fill shows 5%, and the old 12% middle band was removed in September 2025, which cut the rate on exactly the rooms this rung describes.',
+    display: 'added',
+    displayNote: 'GST is added to the room rate at checkout rather than embedded in it, and because the band is set by the actual price charged rather than a published tariff, a discount that drops a room below 7,500 rupees drops the tax rate with it.',
+    government: [
+      {
+        label: 'GST on accommodation, middle slab',
+        figure: '5%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'Set by Notification No. 15/2025-Central Tax (Rate) dated 17 September 2025, effective 22 September 2025, following the 56th GST Council meeting. It cut the middle band from 12% to 5% and removed input tax credit for rooms in that band. Rooms up to 1,000 rupees are nil rated and rooms above 7,500 rupees are at 18%.',
+        effective: '2025-09-22',
+        source: { label: 'Central Board of Indirect Taxes and Customs: Notification No. 15/2025-Central Tax (Rate) of 17 September 2025, setting the accommodation slabs at nil, 5% and 18%', url: 'https://www.cbic.gov.in', type: 'gov' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    property: [
+      { label: 'Service charge', range: 'discretionary, and declinable', note: 'Where a property adds one it is optional under consumer guidance, so a hotel guest can ask for it to be removed. Not a government charge.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'HK',
+    country: 'Hong Kong',
+    slug: 'hong-kong',
+    spoke: null,
+    state: 'checked',
+    // GUIDE BUG FIXED ALONGSIDE THIS ENTRY. src/data/hong-kong.js carried none:true while its
+    // own note described the 3% tax correctly two lines below, so the map derived "checked:
+    // no tourist or hotel tax" for a country whose guide named a hotel tax. The flag is gone
+    // and the note, which was right, is untouched.
+    addedPct: 3,
+    addedBasis: 'The Hotel Accommodation Tax on the room charge, back at 3% since 1 January 2025 after seventeen years at zero. Hong Kong has no VAT or GST at all, so this is the entire government share of a hotel bill.',
+    governmentTotalPct: 3,
+    display: 'added',
+    displayNote: 'Whether it sits inside the rate you were quoted genuinely varies by hotel: the tax authority told the trade to update their websites and price lists to draw attention to whether rates include it, which is an admission that some do and some do not. Budget for it either way.',
+    government: [
+      {
+        label: 'Hotel Accommodation Tax',
+        figure: '3%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'Levied under the Hotel Accommodation Tax Ordinance, Cap 348, on all accommodation charges received by hotels and guesthouses. Waived to 0% from 1 July 2008 and restored to 3% by a Legislative Council resolution passed on 23 October 2024 and gazetted on 25 October 2024. The usual 10% service charge is expressly excluded from the tax base, though extras such as an additional bed are inside it.',
+        effective: '2025-01-01',
+        source: { label: 'Inland Revenue Department: the Hotel Accommodation Tax, its 3% rate from 1 January 2025, the charge base and the exemptions', url: 'https://www.ird.gov.hk/eng/tax/hat.htm', type: 'revenue' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    notInFill: [
+      { label: 'Exempted accommodation', figure: 'rooms under 15 dollars a day, non-profit accommodation, and hotels with fewer than 10 rooms', why: 'These are exemptions rather than charges, and they are recorded here because a reader in a small guesthouse pays nothing and would otherwise read this fill as applying to them. The tax authority publishes a list of exempted hotels and guesthouses, and certain long-term stays are also generally accepted as outside the charge, decided case by case rather than at a stated number of nights.' },
+    ],
+    property: [
+      { label: 'Service charge', range: 'commonly 10%', note: 'Set by the property and excluded from the tax base by the revenue authority, so it is neither a government charge nor part of the figure above.' },
+    ],
+    checkedISO: '2026-08-31',
+  },
+
+  {
+    iso: 'VN',
+    country: 'Vietnam',
+    slug: 'vietnam',
+    spoke: null,
+    state: 'checked',
+    // THE BRIEF WAS WRONG AND THE GUIDE WAS RIGHT, which is why this entry exists in this
+    // shape. MAIN's coverage brief had Vietnam adding 8% at checkout on a "++" rate. The
+    // Vietnam guide says the quoted rate already includes VAT, and it wins. vietnam.js is
+    // deliberately unchanged.
+    addedPct: 0,
+    addedBasis: 'Nothing is added on top. VAT is inside the rate you are quoted and there is no tourist or hotel tax anywhere in Vietnam, so the price you compared is the price you pay. The zero is a statement about display, not about burden.',
+    governmentTotalPct: 8,
+    display: 'inclusive',
+    displayNote: 'Some upper-tier properties quote a net rate and add tax and service afterwards, which is worth asking about, but the ordinary case here is an all-in price and no bed tax of any kind.',
+    government: [
+      {
+        label: 'Value added tax on accommodation',
+        figure: '8%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: true,
+        note: 'Temporarily reduced from the standard 10% and legislated to run to 31 December 2026, after which it returns to 10% unless extended again. Embedded in consumer-quoted rates either way, so the reduction and the reversion both change the price rather than adding a line to the bill.',
+        source: { label: 'PwC Vietnam tax summary: the VAT standard rate, the temporary reduction and its end date', url: 'https://taxsummaries.pwc.com/vietnam/corporate/other-taxes', type: 'gov' },
+        checkedISO: '2026-08-31',
+      },
+    ],
+    watch: [
+      {
+        label: 'VAT returns to the standard 10%',
+        effective: '2027-01-01',
+        note: 'The temporary reduction is legislated to end on 31 December 2026. It would not change what this country colours, because the VAT is embedded either way, but it does change the total in the detail view.',
+        source: null,
+        pendingSource: 'Needs the Vietnamese National Assembly or Ministry of Finance confirmation of whether the reduction was extended past 31 December 2026.',
+      },
+    ],
+    property: [
+      { label: 'Service charge', range: 'commonly 5% where a rate is quoted net', note: 'Set by the property, mostly at higher-end hotels, and not a government charge.' },
     ],
     checkedISO: '2026-08-31',
   },
