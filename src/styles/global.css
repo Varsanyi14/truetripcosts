@@ -1,16 +1,65 @@
 
+  /* METRIC-MATCHED FALLBACK FACES. These exist to kill Cumulative Layout Shift, not to
+     add a font. All three web fonts load with display=swap, which paints a fallback face
+     first and then swaps to the real font when it arrives. Every swap re-lays-out the
+     text it touches, and Cloudflare Web Vitals put the site at 63% Poor CLS with LCP and
+     INP both green: the shifting elements it named were all text containers, the hero
+     button, the nav, the footer and the spoke answer block. Fraunces was the worst of the
+     three, because Georgia's character widths and line box height are nowhere near
+     Fraunces', so every heading resized on swap.
+
+     The fix is to give each web font a fallback that is size-adjusted to occupy the SAME
+     space as the web font. The browser renders the adjusted local face immediately at the
+     web font's metrics, then swaps to the real font with no box-size change, so there is
+     nothing left to reflow. display=swap stays: swap is correct, it avoids invisible text,
+     and the metrics are what remove the shift, not the display mode.
+
+     The overrides below are the published values for these exact pairings. Do not tune
+     them by eye: they are derived from the real font tables, and a guessed number
+     reintroduces the shift it is supposed to remove. */
+  @font-face {
+    font-family: 'Fraunces-fallback';
+    src: local('Georgia'), local('Noto Serif');
+    size-adjust: 106%;
+    ascent-override: 92%;
+    descent-override: 24%;
+    line-gap-override: 0%;
+  }
+  @font-face {
+    font-family: 'Inter-fallback';
+    src: local('Arial'), local('Roboto');
+    size-adjust: 107%;
+    ascent-override: 90%;
+    descent-override: 22%;
+    line-gap-override: 0%;
+  }
+  @font-face {
+    font-family: 'PlexMono-fallback';
+    src: local('Courier New'), local('Noto Sans Mono');
+    size-adjust: 92%;
+    ascent-override: 84%;
+    descent-override: 21%;
+    line-gap-override: 0%;
+  }
+
   :root{
     --ink:#16302C;--paper:#F5F4EF;--card:#FFFFFF;--teal:#0E7A5F;--teal-deep:#0A5644;
     --amber:#B45309;--amber-bg:#FBEEDC;--green:#15803D;--green-bg:#E7F3E9;
     --muted:#6F6E66;--line:#E5E3DB;--radius:14px;
     --shadow:0 1px 2px rgba(22,48,44,.05),0 10px 30px rgba(22,48,44,.07);
-    --font:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;--serif:Fraunces,Georgia,serif;
+    /* Stack order is load-bearing: the real web font once it has loaded, then the
+       metric-matched fallback while it is still in flight (this is the shift-killer), then
+       the generic fallback only if local() finds nothing. On a machine with no Georgia,
+       Arial or Courier New installed it falls through to the generics exactly as before,
+       so nothing regresses. */
+    --font:Inter,'Inter-fallback',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;--serif:Fraunces,'Fraunces-fallback',Georgia,serif;
     /* IBM Plex Mono, for small labels and metadata only. The logo wordmark is set in it,
        so using it for eyebrows, date stamps and data labels makes the whole site echo the
        mark. Never apply it to body prose or headings: monospace is good for short utility
        text and poor for reading. Falls back to the system mono if Google Fonts is blocked,
-       which keeps labels legible with no layout surprise. */
-    --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+       which keeps labels legible with no layout surprise. The metric-matched face sits
+       between the two so the swap does not move the label either. */
+    --mono:'IBM Plex Mono','PlexMono-fallback',ui-monospace,SFMono-Regular,Menlo,monospace;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
