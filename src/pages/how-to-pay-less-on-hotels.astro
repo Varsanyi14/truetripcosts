@@ -20,6 +20,8 @@ import {
   PARITY_STATUS,
   JUNKFEE_RULES,
   TIMING_MYTHS,
+  parityRowId,
+  EU_EEA_SOURCE_ROW,
 } from '../data/booking-tactics.js';
 import { hotelTaxMap, colours, bandFor, BANDS } from '../data/hotel-tax-map.js';
 import { countries } from '../data/index.js';
@@ -289,6 +291,32 @@ const parityRows = PARITY_BY_REGION.slice()
       guideUrl: liveSlugs.has(r.slug) ? `/${r.slug}` : null,
     };
   });
+// THE COUNTRY SEARCH LIST, built the same way HotelTaxMap.astro builds its own: one entry per
+// row, a display name, a flag where there is one, and a lowercase match blob.
+//
+// EVERY ROW IS SEARCHABLE, including the three bloc rows, because a reader typing "Ireland" or
+// "Poland" is asking a question this page answers and the answer lives on the EU and EEA row.
+// So the bloc rows carry their member country NAMES in the match blob while displaying their own
+// label, which is how "Poland" finds the row that actually rules on Poland. The alternative was
+// to leave the blocs unsearchable and have a third of Europe come back "no match", which would
+// be false: we do hold a position on Poland.
+//
+// A bloc row shows NO FLAG. Twenty-seven states cannot wear one, which is the same rule the
+// table itself follows.
+const EU_EEA_NAMES = 'Austria Belgium Bulgaria Croatia Cyprus Czechia Denmark Estonia Finland France Germany Greece Hungary Ireland Italy Latvia Lithuania Luxembourg Malta Netherlands Poland Portugal Romania Slovakia Slovenia Spain Sweden Iceland Liechtenstein Norway';
+const searchRows = parityRows.map((r) => ({
+  id: parityRowId(r),
+  name: r.jurisdiction,
+  flag: r.flag,
+  // ONLY THE ROW THE MAP COLOURS FROM carries the member names, not all three bloc rows. The
+  // first version gave the blob to every row with no iso, so typing "Poland" returned three
+  // suggestions: the DMA row, the contractual-waiver row and the competition-law row. All three
+  // are true about Poland, and offering a reader three near-identical rows to choose between is
+  // still the wrong answer to "where is Poland". So the search follows the same precedence the
+  // map does: one row stands for the footprint, the other two are context you meet in the table.
+  match: [r.jurisdiction, r.jurisdiction === EU_EEA_SOURCE_ROW ? EU_EEA_NAMES : ''].join(' ').toLowerCase(),
+})).sort((a, b) => a.name.localeCompare(b.name));
+
 const freeCount = parityRows.filter((r) => r.status === 'free').length;
 const flaggedCount = parityRows.filter((r) => r.flag).length;
 const linkedCount = parityRows.filter((r) => r.guideUrl).length;
@@ -644,7 +672,79 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
 
       <p class="bt-mapline">The map shows where a hotel is <b>legally free</b> to offer a cheaper direct rate. That is not a promise the direct rate will be cheaper. Grey means a country is not in our checked set, which is not the same as parity applying there.</p>
 
+      {/* THE COUNTRY SEARCH. Deliberately the same markup, the same .cfilter box, the same
+          dropdown behaviour and the same script shape as the typeahead on /hotel-tax-map, so a
+          reader who has used one already knows this one. It sits above the map for the same
+          reason it does there.
+
+          IT LIVES ON THE PAGE, NOT IN ParityMap.astro, and that is what makes it inert in the
+          embed by construction rather than by a guard somebody has to remember: the embed page
+          renders the map component alone, so it cannot pick this up. It also keeps the search,
+          the row ids it scrolls to, and the highlight style in one file. */}
+      <div class="bt-find">
+        <label class="bt-find-lab" for="pty-filter">Find a country on the map</label>
+        <div class="bt-ta-wrap">
+          <div class="cfilter bt-ta-box">
+            <svg class="cfilter-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="pty-filter" class="cfilter-in" placeholder="Type a country, like Germany" aria-label="Find a country on the map" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="pty-ta-list" aria-autocomplete="list" />
+          </div>
+          <div class="bt-ta" id="pty-ta" hidden>
+            <div class="bt-ta-list" id="pty-ta-list" role="listbox" aria-label="Matching jurisdictions">
+              {searchRows.map((r) => (
+                <button type="button" class="bt-ta-item" data-row={r.id} data-name={r.match}>
+                  {r.flag
+                    ? <img class="bt-ta-flag" src={r.flag} alt="" width="22" height="16" loading="lazy" />
+                    : <span class="bt-ta-flag is-none" aria-hidden="true"></span>}
+                  <span class="bt-ta-name">{r.name}</span>
+                  <span class="bt-ta-go" aria-hidden="true">&#8594;</span>
+                </button>
+              ))}
+            </div>
+            <p class="bt-ta-none" id="pty-ta-none" hidden>No ruling on that country in our set. That is not the same as parity applying there, only that nobody we track has ruled on it.</p>
+          </div>
+        </div>
+
+        {/* Revealed once a country resolves, so the reader is not left at the box with no way
+            back to the row they asked for. Same control, same wording, as the tax map. */}
+        <p class="bt-ta-jump" hidden data-pty-jump>
+          <button type="button" class="bt-ta-jump-b" data-pty-jump-b>
+            <span data-pty-jump-label>Go to the row</span>
+            <span class="bt-ta-jump-i" aria-hidden="true">&#8595;</span>
+          </button>
+          <span class="bt-ta-jump-n">Jumps to its sourced row below.</span>
+        </p>
+      </div>
+
       <ParityMap tableAnchor={SEC.parity.id} />
+
+      {/* THE EMBED CONTROL, directly under the map. Identical in shape, wording and behaviour to
+          the one under the hotel-tax map: a collapsed <details>, so the reveal needs no
+          JavaScript, with the copy button inside as enhancement on top. It used to sit below the
+          table, which meant the code was a scroll away from the thing it embeds.
+
+          Collapsed rather than open because it sits between the map and the sourced table, and
+          that reading path is the honesty pattern of this section: map to see the shape, table
+          to read the ruling. A code box open by default would wedge itself into the middle of
+          it. Closed, it is one line. */}
+      <details class="bt-embed">
+        <summary class="bt-embed-sum">
+          <span class="bt-embed-sum-t">Use this map on your own site</span>
+          <svg class="bt-embed-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <div class="bt-embed-body">
+          <p class="bt-embed-t">Free to embed anywhere, including commercially, and it stays current on your page: as the law moves and we recheck it, an embedded copy updates itself with no re-paste. A credit link back is appreciated and not required, because the frame carries one already.</p>
+
+          <label class="bt-esnip-lab" for="bt-esnip">Paste this where you want the map</label>
+          <textarea class="bt-esnip" id="bt-esnip" readonly rows="4" spellcheck="false" aria-describedby="bt-ecopy-hint">{SNIPPET}</textarea>
+
+          <div class="bt-erow">
+            <button class="bt-ecopy" type="button" data-copy-snippet hidden>Copy the snippet</button>
+            <span class="bt-ecopy-msg" data-copy-msg role="status" aria-live="polite"></span>
+            <a class="bt-eprev" href="/embed/rate-parity" target="_blank" rel="noopener">See what it looks like</a>
+          </div>
+          <p class="bt-ehint" id="bt-ecopy-hint">Clicking the box selects the whole snippet, so it copies with one keystroke if the button is not there.</p>
+        </div>
+      </details>
 
       <h3 class="bt-th">The rulings, one row at a time</h3>
 
@@ -669,18 +769,23 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
 
       <div class="bt-tablewrap">
         <table class="bt-table">
-          {/* FIX: explicit column widths. Without a colgroup the browser sized all four columns
-              from their content, and three of them contain short strings with white-space:nowrap
-              while the fourth holds a paragraph of legal citation. So the ruling column, the one
-              a reader is actually here for, was crushed into a narrow strip and the tall EU rows
-              carried large empty gaps beside it. These four add to 100 and hand the ruling the
-              room. table-layout stays auto so a long jurisdiction name can still push its own
-              column rather than overflowing. */}
+          {/* Explicit column widths, because without a colgroup the browser sized all four from
+              their content and the ruling column, the one a reader is actually here for, was
+              crushed into a strip while three short columns took the room.
+
+              RETUNED FROM 18/14/12/56. At 18% the jurisdiction column was wider than any
+              country name needs, so every row opened with an empty band on the left. It is now
+              14%, and the 4 points go to the ruling. Note that the th's old min-width:130px was
+              doing the same job as the colgroup and fighting it: 130px IS 18% of this table, so
+              the column could not narrow until that came off too. It has.
+
+              table-layout stays auto, so a long jurisdiction name can still push its own column
+              rather than overflowing it. */}
           <colgroup>
-            <col style="width:18%" />
             <col style="width:14%" />
-            <col style="width:12%" />
-            <col style="width:56%" />
+            <col style="width:13%" />
+            <col style="width:13%" />
+            <col style="width:60%" />
           </colgroup>
           <thead>
             <tr>
@@ -692,7 +797,7 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
           </thead>
           <tbody>
             {parityRows.map((r) => (
-              <tr class:list={[{ 'is-us': r.status === 'binds' }]}>
+              <tr id={parityRowId(r)} class:list={[{ 'is-us': r.status === 'binds' }]}>
                 {/* A flag appears wherever the row is one country we can identify. A LINK
                     appears only where there is a guide behind it, so Belgium shows its flag
                     with a plain name. A multi-country row gets neither: "EU and EEA, all 27
@@ -728,20 +833,6 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
 
       <p class="bt-do">Two things this table does not say. It does not say a direct rate will be cheaper, only that a hotel is free to make it so. And it says nothing about whether the price you were shown had to include the mandatory fees, which is a separate question answered by <a href="#drip">the disclosure rules above</a>. A jurisdiction can be strict on one and silent on the other, and the US is exactly that: no parity ban, and one of the more specific fee-disclosure rules anywhere.</p>
 
-      <div class="bt-embed">
-        <h3 class="bt-th">Use this map on your own site</h3>
-        <p class="bt-note">The map is free to embed anywhere, including commercially. It is served from here, so it stays current on your page as the law moves and we recheck it. A credit link back is appreciated and not required: the frame carries one already.</p>
-
-        <label class="bt-esnip-lab" for="bt-esnip">Paste this where you want the map</label>
-        <textarea class="bt-esnip" id="bt-esnip" readonly rows="4" spellcheck="false" aria-describedby="bt-ecopy-hint">{SNIPPET}</textarea>
-
-        <div class="bt-erow">
-          <button class="bt-ecopy" type="button" data-copy-snippet hidden>Copy the snippet</button>
-          <span class="bt-ecopy-msg" data-copy-msg role="status" aria-live="polite"></span>
-          <a class="bt-eprev" href="/embed/rate-parity" target="_blank" rel="noopener">See what it looks like</a>
-        </div>
-        <p class="bt-ehint" id="bt-ecopy-hint">Clicking the box selects the whole snippet, so it copies with one keystroke if the button is not there.</p>
-      </div>
     </section>
 
     <section class="bt-sec">
@@ -803,6 +894,122 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
       JavaScript off, or on a browser without it, never sees a button that does nothing. The
       snippet is a readonly textarea and selectable by hand either way, which is the path that
       always works. Same script as /hotel-tax-map, against this page's own ids. */}
+  {/* THE COUNTRY SEARCH. Deliberately a near-copy of the typeahead in HotelTaxMap.astro rather
+      than a new design: same normalisation, same two-tier ranking, same keys, same close-on-
+      outside-click, so the two maps behave identically. The one difference is what a pick
+      resolves to, a table row id here rather than a country iso, which is why the id comes from
+      parityRowId() in the data file and is never built here.
+
+      Every branch is guarded on the elements existing, so this is inert anywhere the search is
+      not rendered. */}
+  <script is:inline>
+    (function () {
+      var norm = function (x) { return (x || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); };
+      var input = document.getElementById('pty-filter');
+      var panel = document.getElementById('pty-ta');
+      var listEl = document.getElementById('pty-ta-list');
+      if (!input || !panel || !listEl) return;
+      var noneEl = document.getElementById('pty-ta-none');
+      var items = Array.prototype.slice.call(listEl.querySelectorAll('.bt-ta-item'));
+      var jumpWrap = document.querySelector('[data-pty-jump]');
+      var jumpBtn = document.querySelector('[data-pty-jump-b]');
+      var jumpLabel = document.querySelector('[data-pty-jump-label]');
+      var active = -1;
+      var chosen = null;
+
+      var visible = function () {
+        return Array.prototype.slice.call(listEl.querySelectorAll('.bt-ta-item'))
+          .filter(function (it) { return !it.classList.contains('is-hidden'); });
+      };
+      var clearActive = function () { items.forEach(function (it) { it.classList.remove('is-active'); }); active = -1; };
+      var openPanel = function () { panel.hidden = false; input.setAttribute('aria-expanded', 'true'); };
+      var closePanel = function () { panel.hidden = true; input.setAttribute('aria-expanded', 'false'); clearActive(); };
+
+      // Name-starts-with, then name-contains, then matched-on-a-member-name only. That third
+      // tier is what puts the EU and EEA row below Germany when somebody types "germany", and
+      // at the top when they type "poland", which has no row of its own.
+      function rank(q) {
+        var rows = visible().map(function (el) {
+          var span = el.querySelector('.bt-ta-name');
+          var nm = norm(span ? span.textContent.trim() : '');
+          return { el: el, name: nm, tier: nm.indexOf(q) === 0 ? 0 : (nm.indexOf(q) !== -1 ? 1 : 2) };
+        });
+        rows.sort(function (a, b) { return a.tier !== b.tier ? a.tier - b.tier : (a.name < b.name ? -1 : (a.name > b.name ? 1 : 0)); });
+        rows.forEach(function (r) { listEl.appendChild(r.el); });
+      }
+      function run() {
+        var q = norm(input.value.trim());
+        if (q === '') { closePanel(); if (jumpWrap) { jumpWrap.hidden = true; chosen = null; } return; }
+        var shown = 0;
+        items.forEach(function (it) {
+          var hit = norm(it.getAttribute('data-name')).indexOf(q) !== -1;
+          it.classList.toggle('is-hidden', !hit);
+          if (hit) shown++;
+        });
+        clearActive();
+        if (noneEl) noneEl.hidden = shown !== 0;
+        rank(q);
+        openPanel();
+      }
+      function setActive(next) {
+        var vis = visible();
+        if (!vis.length) return;
+        clearActive();
+        if (next < 0) next = vis.length - 1;
+        if (next >= vis.length) next = 0;
+        vis[next].classList.add('is-active');
+        active = next;
+        try { vis[next].scrollIntoView({ block: 'nearest' }); } catch (e) {}
+      }
+      // One place that scrolls and lights, shared by a pick and by the jump button.
+      function goToRow(id) {
+        var row = document.getElementById(id);
+        if (!row) return false;
+        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        row.classList.add('is-lit');
+        setTimeout(function () { row.classList.remove('is-lit'); }, 1600);
+        return true;
+      }
+      function pick(item) {
+        if (!item) return;
+        var id = item.getAttribute('data-row');
+        var nm = item.querySelector('.bt-ta-name');
+        var name = nm ? nm.textContent.trim() : '';
+        if (nm) input.value = name;
+        closePanel();
+        goToRow(id);
+        // Only offer the jump where the row is really there. A button that scrolls nowhere is
+        // worse than no button.
+        if (jumpWrap && jumpBtn && document.getElementById(id)) {
+          chosen = id;
+          if (jumpLabel) jumpLabel.textContent = 'Go to ' + name;
+          jumpWrap.hidden = false;
+        }
+      }
+
+      input.addEventListener('input', run);
+      input.addEventListener('focus', function () { if (input.value.trim() !== '') run(); });
+      input.addEventListener('keydown', function (e) {
+        if (panel.hidden) return;
+        if (e.key === 'ArrowDown') { e.preventDefault(); setActive(active + 1); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(active - 1); }
+        else if (e.key === 'Enter') {
+          e.preventDefault();
+          var vis = visible();
+          pick((active >= 0 && vis[active]) ? vis[active] : (vis.length === 1 ? vis[0] : null));
+        } else if (e.key === 'Escape') { closePanel(); }
+      });
+      listEl.addEventListener('click', function (e) {
+        var item = e.target.closest('.bt-ta-item');
+        if (item) { e.preventDefault(); pick(item); }
+      });
+      document.addEventListener('click', function (e) {
+        if (!panel.hidden && !e.target.closest('.bt-ta-wrap')) closePanel();
+      });
+      if (jumpBtn) jumpBtn.addEventListener('click', function () { if (chosen) goToRow(chosen); });
+    })();
+  </script>
+
   <script is:inline>
     (function () {
       var box = document.getElementById('bt-esnip');
@@ -980,7 +1187,7 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
     .bt-jflag img{width:22px;height:16px;border-radius:3px;border:1px solid var(--line);object-fit:cover;display:block}
     .bt-jname{line-height:1.3}
     .bt-table thead th{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);background:var(--paper);white-space:nowrap}
-    .bt-table tbody th{font-size:14px;font-weight:600;color:var(--ink);line-height:1.35;min-width:130px}
+    .bt-table tbody th{font-size:14px;font-weight:600;color:var(--ink);line-height:1.35}
     .bt-table tbody tr:last-child th,.bt-table tbody tr:last-child td{border-bottom:none}
     /* The US row is the exception the whole table exists to name, so it is tinted rather
        than left to be found by reading fifteen rows. */
@@ -1026,16 +1233,67 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
       .bt-table tr{border-bottom:1px solid var(--line);padding:14px 16px}
       .bt-table tbody tr:last-child{border-bottom:none}
       .bt-table th,.bt-table td{border-bottom:none;padding:0 0 9px}
-      .bt-table tbody th{font-size:15px;min-width:0;padding-bottom:8px}
+      .bt-table tbody th{font-size:15px;padding-bottom:8px}
       .bt-table td:last-child{padding-bottom:0}
       .bt-table td[data-l="Since"]::before{content:attr(data-l) ": ";font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep)}
       .bt-since{white-space:normal}
     }
 
-    /* The embed block. Set apart from the table above it because it speaks to a different
-       reader: somebody deciding whether to cite this, not somebody planning a trip. */
-    .bt-embed{margin:30px 0 0;padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
-    .bt-embed .bt-th{margin:0 0 6px}
+    /* THE COUNTRY SEARCH. The .cfilter box itself comes from HotelTaxMap.astro's own scoped
+       styles on the other page, so those rules are repeated here rather than imported; see the
+       hand-back note, which proposes lifting .cfilter into global.css since three surfaces now
+       want it. Everything below is matched to that map deliberately, down to the row heights,
+       so the two searches are the same control. */
+    .bt-find{margin:0 0 16px;max-width:520px}
+    .bt-find-lab{display:block;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 7px}
+    .bt-ta-wrap{position:relative}
+    .cfilter{display:flex;align-items:center;gap:10px;padding:11px 15px;border:1px solid var(--line);border-radius:12px;background:var(--card);transition:border-color .15s ease,box-shadow .15s ease}
+    .cfilter:focus-within{border-color:var(--ink);box-shadow:0 0 0 3px rgba(14,122,95,.12)}
+    .cfilter-ic{color:var(--muted);flex:none;opacity:.6}
+    /* 16px, because anything smaller makes iOS Safari zoom the page on focus. */
+    .cfilter-in{flex:1;border:0;outline:0;background:transparent;font:inherit;font-size:16px;color:var(--ink);-webkit-text-size-adjust:100%}
+    .cfilter-in::placeholder{color:var(--muted);opacity:.8}
+    .bt-ta{position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:40;max-height:300px;overflow-y:auto;padding:6px;background:var(--card);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow)}
+    .bt-ta[hidden]{display:none}
+    .bt-ta-item{display:flex;align-items:center;gap:10px;width:100%;padding:9px 10px;border:0;border-radius:8px;background:transparent;text-align:left;cursor:pointer;color:var(--ink);font:inherit}
+    .bt-ta-item:hover,.bt-ta-item.is-active{background:var(--green-bg)}
+    .bt-ta-item.is-hidden{display:none}
+    .bt-ta-flag{flex:none;width:22px;height:16px;border-radius:2px;box-shadow:0 0 0 1px rgba(22,48,44,.08)}
+    /* A bloc row has no flag, so it holds the same 22px of space empty rather than letting its
+       name slide left out of the column the other rows keep. */
+    .bt-ta-flag.is-none{display:inline-block;box-shadow:none}
+    .bt-ta-name{flex:1;font-size:15px;font-weight:500}
+    .bt-ta-go{color:var(--teal-deep);font-weight:700}
+    .bt-ta-none{margin:0;padding:12px 14px;font-size:14px;color:var(--muted);line-height:1.5}
+
+    /* The persistent jump, hidden in markup and revealed only by the script. */
+    .bt-ta-jump{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;margin:10px 0 0}
+    .bt-ta-jump[hidden]{display:none}
+    .bt-ta-jump-b{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:14px;font-weight:600;color:#F5F4EF;background:var(--teal-deep);border:0;border-radius:999px;padding:8px 16px;cursor:pointer;transition:background-color .15s ease}
+    .bt-ta-jump-b:hover{background:var(--teal)}
+    .bt-ta-jump-b:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+    .bt-ta-jump-i{font-weight:700}
+    .bt-ta-jump-n{font-size:12.5px;color:var(--muted)}
+
+    /* The searched row, lit briefly on arrival. The class is added by the script above and
+       styled here because the table lives here; the tax map does the same with .htm-row-lit. */
+    .bt-table tbody tr.is-lit{background:var(--green-bg);transition:background-color .4s ease}
+    .bt-table tbody tr.is-us.is-lit{background:var(--green-bg)}
+    @media (prefers-reduced-motion: reduce){
+      .bt-table tbody tr.is-lit{transition:none}
+    }
+
+    /* THE EMBED BLOCK, now a collapsed details directly under the map rather than a section
+       below the table. Same shape as the one on /hotel-tax-map. */
+    .bt-embed{margin:18px 0 0;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:10px}
+    .bt-embed-sum{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 16px;cursor:pointer;list-style:none}
+    .bt-embed-sum::-webkit-details-marker{display:none}
+    .bt-embed-sum-t{font-size:14.5px;font-weight:600;color:var(--ink)}
+    .bt-embed-sum:hover .bt-embed-sum-t{color:var(--teal-deep)}
+    .bt-embed-chev{flex:none;color:var(--muted);transition:transform .2s ease}
+    .bt-embed[open] .bt-embed-chev{transform:rotate(180deg)}
+    .bt-embed-body{padding:0 16px 16px}
+    .bt-embed-t{font-size:14.5px;color:#3B4A46;line-height:1.55;margin:0 0 14px;padding-top:13px;border-top:1px solid var(--line)}
     .bt-esnip-lab{display:block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 6px}
     .bt-esnip{width:100%;font-family:var(--mono);font-size:12px;line-height:1.55;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:11px 12px;resize:vertical}
     .bt-erow{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin:11px 0 0}

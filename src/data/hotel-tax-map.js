@@ -187,11 +187,44 @@ export function referencePct(amount, currency, unit) {
 // rather than in the component so the legend, the fills and the checker cannot disagree.
 // The legend renders every band whether or not a country currently occupies it, because
 // hiding an empty band would make the scale change shape as data lands.
+//
+// ============================================================================
+// THE RAMP IS A SEQUENTIAL MAGNITUDE, AND IT HAS TO STAY ONE.
+// ============================================================================
+// Re-saturated 2026-09-01. The old ramp (#DCE9E4 #B6D4C9 #7FB8A5 #3D8F76 #0A5644) sat at 23 to
+// 29% saturation across its first three rungs, which is close enough to grey that the light end
+// read as absence rather than as a small figure. The new rungs run 48 to 79%.
+//
+// WHAT WAS DELIBERATELY NOT DONE, because the rate-parity map on /how-to-pay-less-on-hotels is
+// livelier and it would be the obvious thing to copy: that map uses THREE HUES, green, gold and
+// burnt orange. It is right there and it is wrong here. That map is CATEGORICAL, three different
+// legal states, so three hues carry three meanings. This map is a MAGNITUDE, a little tax
+// through to a lot, so it must stay a single hue from light to dark. Three hues here would
+// invent categories the data does not have, and it would put red on the top band, which reads as
+// a verdict. A country is not worse for taxing a hotel room, and this map does not get to imply
+// that it is.
+//
+// THE LADDER IS MEASURED, NOT EYEBALLED. HSL lightness runs 90, 74, 57, 38, 19, so the steps are
+// 16, 17, 19, 19: monotonic and near-even, which is what makes four gaps read as four equal
+// jumps rather than as an accident. Light stays low and dark stays high, which is the honest
+// direction for "how much is added".
+//
+// THE TOP RUNG IS THE SITE'S OWN --teal-deep TOKEN, unchanged, rather than a fresh hex a shade
+// off it. It already carried 79% saturation, so it was never the problem, and a near-miss of a
+// token that appears all over the page would look like a mistake sitting next to the real one.
+//
+// WHY THE PALE RUNG IS NOT DARKER. It is the one rung that has to stay distinguishable from the
+// not-yet-checked grey (#E7E4DC), and darkening it makes that WORSE, not better: the grey sits
+// at luminance 0.79, so a paler green is further from it than a mid green is. Measured, the pale
+// rung at lightness 90 gives the best luminance separation available without going white. The
+// real separation between this ramp and the grey is carried by saturation, 57% against 19%, plus
+// the legend line that says what grey means. Luminance alone was never going to do it, and Rail
+// 4 does not depend on it.
 export const BANDS = [
-  { key: 'b1', from: 0,  to: 5,    label: 'Under 5%',   fill: '#DCE9E4' },
-  { key: 'b2', from: 5,  to: 10,   label: '5 to 10%',   fill: '#B6D4C9' },
-  { key: 'b3', from: 10, to: 15,   label: '10 to 15%',  fill: '#7FB8A5' },
-  { key: 'b4', from: 15, to: 22,   label: '15 to 22%',  fill: '#3D8F76' },
+  { key: 'b1', from: 0,  to: 5,    label: 'Under 5%',   fill: '#D7F4EB' },
+  { key: 'b2', from: 5,  to: 10,   label: '5 to 10%',   fill: '#9ADFCA' },
+  { key: 'b3', from: 10, to: 15,   label: '10 to 15%',  fill: '#5DC6A6' },
+  { key: 'b4', from: 15, to: 22,   label: '15 to 22%',  fill: '#259D7B' },
   { key: 'b5', from: 22, to: null, label: '22% and up', fill: '#0A5644' },
 ];
 

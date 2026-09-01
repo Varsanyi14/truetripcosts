@@ -305,6 +305,23 @@ const searchCountries = rows.map(e => {
           <p class="htm-ta-none" id="htm-ta-none" hidden>No country by that name on the map yet. We may not have checked it, which is not the same as it having no tax.</p>
         </div>
       </div>
+
+      {/* THE PERSISTENT JUMP, revealed once a country is chosen. Picking a suggestion already
+          scrolls to that country's row, but the dropdown then closes and the reader is left at
+          the search box with no way back to the row they asked for, which is a dead end the
+          moment they scroll away or land here from a bad tap. This stays put and repeats the
+          jump on demand.
+
+          A real <button> rather than a styled span, so it is tabbable and fires on Enter and
+          Space without any extra key handling. Starts hidden and is only ever revealed by the
+          script, so a reader with no JavaScript never sees a control that cannot work. */}
+      <p class="htm-ta-jump" hidden data-ta-jump>
+        <button type="button" class="htm-ta-jump-b" data-ta-jump-b>
+          <span class="htm-ta-jump-t" data-ta-jump-label>Go to the country</span>
+          <span class="htm-ta-jump-i" aria-hidden="true">&#8595;</span>
+        </button>
+        <span class="htm-ta-jump-n">Jumps to its sourced row below.</span>
+      </p>
     </div>
   )}
 
@@ -693,20 +710,53 @@ const searchCountries = rows.map(e => {
       active = next;
       try { vis[next].scrollIntoView({ block: 'nearest' }); } catch (e) {}
     }
+    // The persistent jump. Null until a country resolves, then it holds that country's iso and
+    // name so the control can repeat the jump without the reader retyping.
+    const jumpWrap = document.querySelector('[data-ta-jump]');
+    const jumpBtn = document.querySelector('[data-ta-jump-b]');
+    const jumpLabel = document.querySelector('[data-ta-jump-label]');
+    let chosen = null;
+
+    // One place that scrolls to a row and lights it, called by a pick and by the jump button,
+    // so the two cannot drift into behaving differently.
+    function goToRow(iso) {
+      const row = document.getElementById('htm-' + iso);
+      if (!row) return false;
+      row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      row.classList.add('htm-row-lit');
+      setTimeout(() => row.classList.remove('htm-row-lit'), 1600);
+      return true;
+    }
+
+    function showJump(iso, name) {
+      // Only offer the jump where the row actually exists. Revealing a button that scrolls
+      // nowhere would be worse than not offering one.
+      if (!jumpWrap || !jumpBtn || !document.getElementById('htm-' + iso)) return;
+      chosen = { iso: iso, name: name };
+      if (jumpLabel) jumpLabel.textContent = 'Go to ' + name;
+      jumpWrap.hidden = false;
+    }
+
     // Picking a country scrolls to its row on the map page and lights it.
     function pick(item) {
       if (!item) return;
       const iso = item.getAttribute('data-iso');
-      const row = document.getElementById('htm-' + iso);
       const nm = item.querySelector('.htm-ta-name');
-      if (nm) input.value = nm.textContent.trim();
+      const name = nm ? nm.textContent.trim() : '';
+      if (nm) input.value = name;
       closePanel();
-      if (row) {
-        row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        row.classList.add('htm-row-lit');
-        setTimeout(() => row.classList.remove('htm-row-lit'), 1600);
-      }
+      goToRow(iso);
+      showJump(iso, name);
     }
+
+    if (jumpBtn) {
+      jumpBtn.addEventListener('click', () => { if (chosen) goToRow(chosen.iso); });
+    }
+    // Emptying the box retires the jump, because it would then name a country the search no
+    // longer reflects.
+    input.addEventListener('input', () => {
+      if (input.value.trim() === '' && jumpWrap) { jumpWrap.hidden = true; chosen = null; }
+    });
 
     input.addEventListener('input', run);
     input.addEventListener('focus', () => { if (input.value.trim() !== '') run(); });
@@ -803,6 +853,16 @@ const searchCountries = rows.map(e => {
   .htm-ta-name{flex:1;font-size:15px;font-weight:500}
   .htm-ta-go{color:var(--teal-deep);font-weight:700}
   .htm-ta-none{margin:0;padding:12px 14px;font-size:14px;color:var(--muted)}
+
+  /* The persistent jump. Hidden in markup and only revealed by the script, so it cannot ship
+     as a dead control. */
+  .htm-ta-jump{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;margin:10px 0 0}
+  .htm-ta-jump[hidden]{display:none}
+  .htm-ta-jump-b{display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:14px;font-weight:600;color:#F5F4EF;background:var(--teal-deep);border:0;border-radius:999px;padding:8px 16px;cursor:pointer;transition:background-color .15s ease}
+  .htm-ta-jump-b:hover{background:var(--teal)}
+  .htm-ta-jump-b:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+  .htm-ta-jump-i{font-weight:700}
+  .htm-ta-jump-n{font-size:12.5px;color:var(--muted)}
   .htm-find-lab{display:block;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.08em;margin:0 0 6px}
   .htm-find-in{width:100%;max-width:360px;box-sizing:border-box;font-family:inherit;font-size:15px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:9px;padding:10px 13px;-webkit-text-size-adjust:100%}
   .htm-find-in:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}

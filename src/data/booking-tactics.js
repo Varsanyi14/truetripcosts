@@ -396,6 +396,18 @@ export const PARITY_BY_REGION = [
   },
 ];
 
+// The DOM id for one parity row, derived from the row rather than typed anywhere.
+//
+// The table renders it and the country search scrolls to it, so if the two ever built the id
+// separately a rename would leave the search jumping nowhere and nothing would fail. `order` is
+// the only field every row has and every row has uniquely, including the three bloc rows, which
+// carry no iso and no slug. A NAMED function declaration, not an arrow: check-content.py stops
+// scanning any src/data module that contains arrow functions or anonymous functions, and this
+// file is mostly reader-facing copy that should stay inside that scan.
+export function parityRowId(row) {
+  return 'pty-row-' + row.order;
+}
+
 // --- who the EU and EEA bloc row actually covers ------------------------------
 // A CHOROPLETH COLOURS COUNTRIES, AND A BLOC ROW NAMES NONE. The DMA row in the table above
 // says "EU and EEA, all 27 member states", which is the correct way to state the ruling and
