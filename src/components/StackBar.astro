@@ -1,0 +1,209 @@
+---
+// Reusable stacked-bar chart, rendered as SVG at build time. Feeds the flagship
+// "what is actually in a hotel price" visual and the drip-pricing visual on
+// /how-to-pay-less-on-hotels, and nothing here knows about either: the bars, the
+// segments, the axis and the figures are all read off the `rows` prop.
+//
+// NO RUNTIME CHART LIBRARY AND NO EXTERNAL REQUEST. The SVG is written at build,
+// so the page is complete and correct with JavaScript off and costs one document.
+//
+// ---------------------------------------------------------------------------
+// WHY THE GEOMETRY IS SVG AND THE TEXT IS NOT.
+// ---------------------------------------------------------------------------
+// A single self-contained SVG carrying its own labels has to pick one font size in
+// user units, and that size then scales with the container. The bar column here
+// runs from about 300px on a phone to about 560px on a desktop, so any font size
+// legible at one end is either unreadable or oversized at the other. So the SVG
+// draws the bars, with preserveAspectRatio="none" against a 100-unit viewBox
+// (percent units in, percent units out, and a horizontal bar has no aspect ratio
+// worth preserving), and every label and figure is real HTML text at a real CSS
+// size. That is the same division of labour HotelTaxMap.astro uses: SVG for the
+// shapes, HTML for anything a reader has to read.
+//
+// ---------------------------------------------------------------------------
+// WIDTH IS NEVER THE ONLY SOURCE OF TRUTH.
+// ---------------------------------------------------------------------------
+// Every row prints its total beside its bar, AND every segment prints its own
+// figure in the breakdown line directly under that bar, colour-keyed to the
+// segment it names. So a reader who cannot judge a 6% width against a 14% width,
+// which is most readers on a phone, still has both numbers in words. This is the
+// same rail CostChart.astro states for its dollar figures.
+//
+// ---------------------------------------------------------------------------
+// TWO ROW KINDS, AND THE SECOND ONE IS THE HONEST BIT.
+// ---------------------------------------------------------------------------
+//   kind: 'stack'  the default. Segments accumulate from zero and the total is
+//                  the sum, so the bar length means "this is what you pay".
+//   kind: 'span'   a band drawn from `from` to `to`, hatched, which means "this
+//                  money is already INSIDE the bar above, it is not added to it".
+//                  It exists because the OTA commission is not a surcharge on the
+//                  traveler. Stacking it would draw a total nobody pays and would
+//                  overstate the cost of a hotel room by up to a third. Hatched,
+//                  offset, and captioned as embedded rather than added.
+//
+// Props:
+//   rows      the rows to draw, see the kinds above
+//   axisMax   the axis maximum in percent units. Held by the caller, not derived,
+//             so two charts on one page can share a scale when they should.
+//   ticks     axis tick values, in the same units
+//   unitWord  what a figure means in words, for the accessible description
+//   id        so a page can carry more than one of these
+
+const {
+  rows = [],
+  axisMax = 130,
+  ticks = [0, 25, 50, 75, 100, 125],
+  unitWord = 'percent of the base room rate',
+  id = 'stackbar',
+} = Astro.props;
+
+const pct = (v) => (axisMax ? Math.max(0, Math.min(100, (v / axisMax) * 100)) : 0);
+
+// Cumulative offsets per segment, computed once here so the SVG and the breakdown
+// line below it cannot disagree about where a segment starts.
+function laidOut(row) {
+  if (row.kind === 'span') {
+    return {
+      ...row,
+      spanFrom: row.from || 0,
+      spanTo: row.to || 0,
+      total: (row.to || 0) - (row.from || 0),
+    };
+  }
+  let running = 0;
+  const segments = (row.segments || []).map((s) => {
+    const at = running;
+    running += s.value || 0;
+    return { ...s, at, to: running };
+  });
+  return { ...row, segments, total: running };
+}
+
+const laid = rows.map(laidOut);
+
+// The accessible description is built from the data rather than written, so it
+// cannot drift out of step with the bars when a figure changes.
+const described = laid
+  .map((r) => {
+    if (r.kind === 'span') return `${r.label}, a band from ${r.spanFrom} to ${r.spanTo} ${unitWord}, drawn separately because it sits inside the bar above rather than adding to it`;
+    const parts = (r.segments || []).map((s) => `${s.label} ${s.figure}`).join(', then ');
+    return `${r.label}, ${parts}, reaching ${r.totalFigure || r.total}`;
+  })
+  .join('. ');
+
+const rowH = 26;
+---
+
+<div class="sb" id={id}>
+  <div class="sb-axis" aria-hidden="true">
+    {ticks.map((v) => (
+      <span class="sb-tick" style={`left:${pct(v)}%`}>{v}</span>
+    ))}
+  </div>
+
+  <p class="sb-sr" role="img" aria-label={described}></p>
+
+  <ol class="sb-rows">
+    {laid.map((r) => (
+      <li class:list={["sb-row", { 'is-span': r.kind === 'span' }]}>
+        <p class="sb-lab">{r.label}</p>
+
+        <div class="sb-plot">
+          <svg class="sb-svg" viewBox={`0 0 100 ${rowH}`} preserveAspectRatio="none"
+               xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+            <defs>
+              {/* Hatched, so an embedded band can never be mistaken for a segment
+                  that was added to the bar. Same reasoning as the varies hatch on
+                  the hotel tax map: a distinct texture carries a distinct meaning
+                  into a screenshot, where a caption does not travel. */}
+              <pattern id={`${id}-hatch`} width="6" height="6" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+                <rect width="6" height="6" fill="#EDEBE4" />
+                <line x1="0" y1="0" x2="0" y2="6" stroke="#8C9A94" stroke-width="2" />
+              </pattern>
+            </defs>
+
+            <g class="sb-grid">
+              {ticks.map((v) => (
+                <line x1={pct(v)} y1="0" x2={pct(v)} y2={rowH} stroke="#E5E3DB" stroke-width="0.25" vector-effect="non-scaling-stroke" />
+              ))}
+            </g>
+
+            {r.kind === 'span' ? (
+              <g>
+                <rect x={pct(r.spanFrom)} y="5" width={Math.max(0.6, pct(r.spanTo) - pct(r.spanFrom))} height={rowH - 10}
+                      fill={`url(#${id}-hatch)`} stroke="#8C9A94" stroke-width="0.4" vector-effect="non-scaling-stroke" />
+              </g>
+            ) : (
+              <g>
+                {r.segments.map((s) => (
+                  <rect x={pct(s.at)} y="3" width={Math.max(0.5, pct(s.to) - pct(s.at))} height={rowH - 6} fill={s.fill} />
+                ))}
+              </g>
+            )}
+          </svg>
+
+          <span class="sb-total">{r.totalFigure}</span>
+        </div>
+
+        {/* The figures, in words, under their own bar. A reader never has to judge
+            one width against another to get the number. */}
+        {r.kind === 'span' ? (
+          <p class="sb-break is-span-break">{r.note}</p>
+        ) : (
+          <p class="sb-break">
+            {r.segments.map((s, i) => (
+              <span class="sb-part">
+                {i > 0 && <span class="sb-plus" aria-hidden="true">+</span>}
+                <span class="sb-dot" style={`background:${s.fill}`} aria-hidden="true"></span>
+                <span class="sb-part-f">{s.figure}</span>
+                <span class="sb-part-l">{s.label}</span>
+              </span>
+            ))}
+          </p>
+        )}
+
+        {r.kind !== 'span' && r.note && <p class="sb-note">{r.note}</p>}
+      </li>
+    ))}
+  </ol>
+</div>
+
+<style>
+  .sb{margin:0}
+  .sb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
+
+  .sb-axis{position:relative;height:15px;margin:0 calc(58px + 10px) 2px 0}
+  .sb-tick{position:absolute;top:0;transform:translateX(-50%);font-family:var(--mono);font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+  .sb-rows{list-style:none;margin:0;padding:0}
+  .sb-row{margin:0 0 16px;padding:0}
+  .sb-row:last-child{margin-bottom:0}
+  /* The embedded band sits visibly apart from the bars it belongs inside, so it
+     never reads as the next step in a stack. */
+  .sb-row.is-span{margin-top:20px;padding-top:14px;border-top:1px dashed var(--line)}
+
+  .sb-lab{font-size:13.5px;font-weight:600;color:var(--ink);margin:0 0 5px;line-height:1.35}
+  .sb-row.is-span .sb-lab{color:var(--muted);font-weight:600}
+
+  .sb-plot{display:flex;align-items:center;gap:10px}
+  .sb-svg{flex:1;min-width:0;height:26px;display:block}
+  .sb-total{flex:0 0 auto;min-width:58px;text-align:right;font-family:var(--serif);font-size:15px;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.2}
+  .sb-row.is-span .sb-total{font-size:13.5px;color:var(--muted)}
+
+  .sb-break{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 9px;margin:7px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted)}
+  .sb-part{display:inline-flex;align-items:baseline;gap:5px}
+  .sb-plus{color:var(--muted);opacity:.6;margin-right:2px;font-weight:600}
+  .sb-dot{width:9px;height:9px;border-radius:3px;flex:none;transform:translateY(-1px)}
+  .sb-part-f{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+  .sb-part-l{color:var(--muted)}
+  .sb-break.is-span-break{display:block;font-style:italic;max-width:620px}
+
+  .sb-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin:6px 0 0;max-width:620px}
+
+  @media (max-width:560px){
+    .sb-axis{margin-right:calc(50px + 8px)}
+    .sb-total{min-width:50px;font-size:14px}
+    .sb-lab{font-size:13px}
+    .sb-break{font-size:12px;gap:4px 8px}
+  }
+</style>

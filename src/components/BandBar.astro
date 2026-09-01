@@ -1,0 +1,137 @@
+---
+// Reusable range-band chart, rendered as SVG at build time. Each row is a band
+// drawn from a low figure to a high figure on one shared axis, which is the honest
+// shape for a number that genuinely is a range rather than a point.
+//
+// Built for the OTA commission visual on /how-to-pay-less-on-hotels, and it knows
+// nothing about that page: rows, groups, axis and figures all come off the props.
+// Same build-time rules as StackBar.astro: no runtime chart library, no external
+// request, SVG for the geometry and HTML text for anything a reader has to read.
+// The reasoning for that split is written out in StackBar.astro.
+//
+// ---------------------------------------------------------------------------
+// GROUPS EXIST BECAUSE TWO OF THESE FIGURES MUST NEVER BE READ AS ONE SCALE.
+// ---------------------------------------------------------------------------
+// The commission a hotel pays on a booking and the company-level platform take
+// rate are different measurements of different things, and they sit within a few
+// points of each other, so a single ungrouped list of bands would invite a reader
+// to compare them directly and conclude the commission is smaller than it is.
+// Each group therefore carries its own heading and its own "what this measures"
+// line, and the groups are separated by a rule. A band cannot be added to this
+// chart without landing inside a group that says what it measures.
+//
+// Props:
+//   groups    [{ label, measures, rows: [{ label, lo, hi, figure, note, tone }] }]
+//   axisMax   axis maximum, in the same units as the rows
+//   ticks     axis ticks, same units
+//   unitWord  what the unit means in words, for the accessible description
+//   id        so a page can carry more than one
+
+const {
+  groups = [],
+  axisMax = 32,
+  ticks = [0, 5, 10, 15, 20, 25, 30],
+  unitWord = 'percent',
+  id = 'bandbar',
+} = Astro.props;
+
+const pct = (v) => (axisMax ? Math.max(0, Math.min(100, (v / axisMax) * 100)) : 0);
+
+// Tones map to the site palette rather than to arbitrary colours, and they carry
+// meaning: `lead` is the figure the page is actually about, `quiet` is a
+// supporting breakdown of it, and `other` is a different measurement entirely.
+const TONE = {
+  lead: '#0A5644',
+  quiet: '#7FB8A5',
+  other: '#B45309',
+  low: '#3D8F76',
+};
+const fillFor = (tone) => TONE[tone] || TONE.quiet;
+
+const described = groups
+  .map((g) => {
+    const rows = (g.rows || []).map((r) => `${r.label}, ${r.figure}`).join('; ');
+    return `${g.label}, measuring ${g.measures}: ${rows}`;
+  })
+  .join('. ');
+
+const rowH = 20;
+---
+
+<div class="bb" id={id}>
+  <div class="bb-axis" aria-hidden="true">
+    {ticks.map((v) => (
+      <span class="bb-tick" style={`left:${pct(v)}%`}>{v}{unitWord === 'percent' ? '%' : ''}</span>
+    ))}
+  </div>
+
+  <p class="bb-sr" role="img" aria-label={described}></p>
+
+  {groups.map((g, gi) => (
+    <section class:list={["bb-group", { 'is-later': gi > 0 }]}>
+      <p class="bb-gl">{g.label}</p>
+      <p class="bb-gm"><span class="bb-gm-k">What this measures</span>{g.measures}</p>
+
+      <ol class="bb-rows">
+        {(g.rows || []).map((r) => (
+          <li class="bb-row">
+            <p class="bb-lab">{r.label}</p>
+            <div class="bb-plot">
+              <svg class="bb-svg" viewBox={`0 0 100 ${rowH}`} preserveAspectRatio="none"
+                   xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <g class="bb-grid">
+                  {ticks.map((v) => (
+                    <line x1={pct(v)} y1="0" x2={pct(v)} y2={rowH} stroke="#E5E3DB" stroke-width="0.25" vector-effect="non-scaling-stroke" />
+                  ))}
+                </g>
+                {/* A band whose low and high are the same figure is a point, not a
+                    range, so it draws a minimum-width marker rather than a
+                    zero-width rectangle that would vanish. The figure beside it is
+                    the real value either way. */}
+                <rect x={pct(r.lo)} y="4" width={Math.max(0.8, pct(r.hi) - pct(r.lo))} height={rowH - 8}
+                      fill={fillFor(r.tone)} rx="0.6" />
+              </svg>
+              <span class:list={["bb-fig", { 'is-lead': r.tone === 'lead' }]}>{r.figure}</span>
+            </div>
+            {r.note && <p class="bb-note">{r.note}</p>}
+          </li>
+        ))}
+      </ol>
+    </section>
+  ))}
+</div>
+
+<style>
+  .bb{margin:0}
+  .bb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
+
+  .bb-axis{position:relative;height:15px;margin:0 calc(74px + 10px) 4px 0}
+  .bb-tick{position:absolute;top:0;transform:translateX(-50%);font-family:var(--mono);font-size:10px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+  .bb-group{margin:0}
+  /* The rule between groups is load-bearing, not decoration: it is what stops a
+     reader reading two different measurements off one scale. */
+  .bb-group.is-later{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+  .bb-gl{font-family:var(--serif);font-weight:500;font-size:16px;color:var(--ink);margin:0 0 4px;line-height:1.3}
+  .bb-gm{font-size:12.5px;color:var(--muted);line-height:1.5;margin:0 0 12px;max-width:620px}
+  .bb-gm-k{display:block;font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 2px}
+
+  .bb-rows{list-style:none;margin:0;padding:0}
+  .bb-row{margin:0 0 13px}
+  .bb-row:last-child{margin-bottom:0}
+
+  .bb-lab{font-size:13px;font-weight:600;color:var(--ink);margin:0 0 4px;line-height:1.35}
+  .bb-plot{display:flex;align-items:center;gap:10px}
+  .bb-svg{flex:1;min-width:0;height:20px;display:block}
+  .bb-fig{flex:0 0 auto;min-width:74px;text-align:right;font-size:13.5px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.2}
+  .bb-fig.is-lead{font-family:var(--serif);font-weight:500;font-size:15.5px}
+
+  .bb-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin:5px 0 0;max-width:620px}
+
+  @media (max-width:560px){
+    .bb-axis{margin-right:calc(64px + 8px)}
+    .bb-fig{min-width:64px;font-size:12.5px}
+    .bb-fig.is-lead{font-size:14px}
+    .bb-lab{font-size:12.5px}
+  }
+</style>

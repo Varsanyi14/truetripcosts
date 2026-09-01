@@ -1,0 +1,794 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import StackBar from '../components/StackBar.astro';
+import BandBar from '../components/BandBar.astro';
+import CompareByRegion from '../components/CompareByRegion.astro';
+import {
+  bookingTacticsChecked,
+  OTA_COMMISSION,
+  PLATFORM_TAKE_RATE,
+  DIRECT_COST,
+  DRIP_AVERAGES,
+  REFUNDABLE_PREMIUM,
+  MEMBER_SAVING,
+  PROPERTY_FEE_BAND,
+  PARITY_BY_REGION,
+  PARITY_STATUS,
+  JUNKFEE_RULES,
+  TIMING_MYTHS,
+} from '../data/booking-tactics.js';
+import { hotelTaxMap, colours, bandFor, BANDS } from '../data/hotel-tax-map.js';
+
+// THE ACTION LAYER OVER WORK THIS SITE ALREADY DOES.
+//
+// /hotel-tax-map says what a government adds. Its #property-fees section says what the hotel
+// adds. /cash-or-card says what a bank adds. None of them tells a reader what to DO at the
+// moment of booking, which is the one moment where knowing any of it can still change the
+// number. This page is that layer, and it is the reason it links down to all three rather
+// than restating their figures.
+//
+// ============================================================================
+// THE LINE THIS PAGE DOES NOT CROSS, and it is worth writing down because every future
+// edit will be tempted across it.
+// ============================================================================
+// This page teaches HOW to be smart wherever somebody books. It never says WHERE to book. It
+// carries no live rates, compares no prices, frames no intermediary as good or bad to book
+// with, and is not a booking funnel. An OTA here is a mechanism whose commission and drip
+// behaviour we explain, in the same voice we use for a government tax.
+//
+// The practical test for any edit: if the change would make this page rot when prices move,
+// it has crossed the line. A tactic does not go stale. A price does. Everything on this page
+// is therefore a mechanism, a statute or a published band, and every figure is drawn as a
+// band or a range from a named source rather than as a point.
+//
+// ============================================================================
+// WHY THE TAX SEGMENT IN THE FLAGSHIP VISUAL IS DERIVED, AND WHY IT IS TWO ROWS.
+// ============================================================================
+// The visual needs a government-tax segment that is representative rather than invented, so
+// it is computed here from hotel-tax-map.js at build time. A figure hand-typed on this page
+// would be a second copy of a number that lives somewhere else, and a second copy is a copy
+// that goes stale.
+//
+// THE FIRST ATTEMPT DREW ONE ROW AT THE MEDIAN AND IT WAS THE WRONG CHART. The median added
+// tax across the whole map is under 2%, because most of the countries currently shaded are
+// European, and in Europe VAT is embedded in the displayed price by law so only a small
+// tourist tax lands on top (that is Rail 7 in hotel-tax-map.js). Drawing that single median
+// produced a sliver of a segment and, worse, told the reader that government tax is never
+// the big number. In the Gulf and the Caribbean it is the biggest number on the bill.
+//
+// SO THE SPLIT IS THE FINDING, and it is drawn as two rows. The split point is 10%, which is
+// not chosen for this page: it is an existing boundary in the map's own BANDS scale, so the
+// two groups are the map's own shape rather than a cut made to flatter a chart. Each row is
+// drawn at ITS OWN GROUP'S MEDIAN and labelled with THAT GROUP'S FULL RANGE from the data,
+// so no row asserts a precision the group does not have, and neither end is hidden.
+const colouredEntries = hotelTaxMap.filter((e) => colours(e));
+const SPLIT_PCT = 10;
+// A band boundary, asserted rather than assumed. If BANDS is ever rescaled and 10 stops being
+// an edge, this fails the build instead of quietly splitting the data somewhere arbitrary.
+if (!BANDS.some((b) => b.from === SPLIT_PCT)) {
+  throw new Error(
+    `how-to-pay-less-on-hotels: the flagship visual splits the tax map at ${SPLIT_PCT}%, which is `
+    + 'no longer a band boundary in hotel-tax-map.js BANDS. Pick the new boundary deliberately '
+    + 'rather than leaving the split at a figure the scale no longer recognises.'
+  );
+}
+
+function taxGroup(entries) {
+  const pcts = entries.map((e) => e.addedPct).sort((a, b) => a - b);
+  const median = pcts[Math.floor(pcts.length / 2)];
+  return {
+    count: pcts.length,
+    low: pcts[0],
+    high: pcts[pcts.length - 1],
+    median,
+    band: bandFor(median),
+    label: `${pcts[0]} to ${pcts[pcts.length - 1]}%`,
+  };
+}
+
+const taxInside = taxGroup(colouredEntries.filter((e) => e.addedPct < SPLIT_PCT));
+const taxOnTop = taxGroup(colouredEntries.filter((e) => e.addedPct >= SPLIT_PCT));
+
+const propMid = Math.round(((PROPERTY_FEE_BAND.lowPct + PROPERTY_FEE_BAND.highPct) / 2) * 10) / 10;
+
+// Every total is a RANGE, because every addition is a range. Printing a single total would be
+// the exact fabricated precision the whole page is built to avoid.
+const totalRange = (g) => `${Math.round(100 + g.low + PROPERTY_FEE_BAND.lowPct)} to ${Math.round(100 + g.high + PROPERTY_FEE_BAND.highPct)}`;
+
+const BASE_FILL = '#0A5644';
+const TAX_FILL = '#7FB8A5';
+const PROP_FILL = '#B45309';
+const DRIP_MAND_FILL = '#B45309';
+const DRIP_OPT_FILL = '#E3B98A';
+
+// VIZ A. What is actually in a hotel price.
+const priceRows = [
+  {
+    label: 'The price you compared',
+    segments: [{ label: 'base room rate', value: 100, fill: BASE_FILL, figure: '100' }],
+    totalFigure: '100',
+    note: 'Indexed to 100 so this is a shape, not a price. Whatever your room costs, that is the 100.',
+  },
+  {
+    label: 'What you pay where the tax is already inside the rate',
+    segments: [
+      { label: 'base room rate', value: 100, fill: BASE_FILL, figure: '100' },
+      { label: 'government tax landing on top', value: taxInside.median, fill: TAX_FILL, figure: taxInside.label },
+      { label: 'the property\u2019s own mandatory charge', value: propMid, fill: PROP_FILL, figure: PROPERTY_FEE_BAND.headline },
+    ],
+    totalFigure: totalRange(taxInside),
+    note: `${taxInside.count} of the ${colouredEntries.length} countries shaded on our map sit here, most of Europe among them. VAT is inside the displayed price by law, so only a small tourist tax arrives on top, and the property\u2019s own charge is the larger of the two additions. Drawn at this group\u2019s median, labelled with its full range.`,
+  },
+  {
+    label: 'What you pay where the tax is added on top',
+    segments: [
+      { label: 'base room rate', value: 100, fill: BASE_FILL, figure: '100' },
+      { label: 'government tax landing on top', value: taxOnTop.median, fill: TAX_FILL, figure: taxOnTop.label },
+      { label: 'the property\u2019s own mandatory charge', value: propMid, fill: PROP_FILL, figure: PROPERTY_FEE_BAND.headline },
+    ],
+    totalFigure: totalRange(taxOnTop),
+    note: `The other ${taxOnTop.count} countries, the Gulf and the Caribbean above all, where a quoted rate routinely excludes the whole stack. Here the government charge is the bigger surprise, and the gap between the price you compared and the price you pay runs from ${Math.round(taxOnTop.low + PROPERTY_FEE_BAND.lowPct)}% to ${Math.round(taxOnTop.high + PROPERTY_FEE_BAND.highPct)}%. Same two additions as the row above, same source, completely different answer.`,
+  },
+  {
+    kind: 'span',
+    label: 'And inside that base rate, if you booked through an intermediary',
+    from: OTA_COMMISSION.lowPct,
+    to: OTA_COMMISSION.highPct,
+    totalFigure: OTA_COMMISSION.headline,
+    note: `Between ${OTA_COMMISSION.lowPct} and ${OTA_COMMISSION.highPct} of those first 100 units is the intermediary\u2019s commission. Read this one carefully: it does NOT add to your bill, which is why it is drawn hatched and apart rather than stacked. It is money already inside the price, and it is the only thing on this chart that a booking decision can recover.`,
+  },
+];
+
+// VIZ B. The commission band, and the metric it keeps getting confused with.
+const commissionGroups = [
+  {
+    label: 'What a hotel pays on one booking',
+    measures: 'The commission deducted from a single reservation. This is the money a direct booking can recover, so it is the figure the book-direct tactic actually rests on.',
+    rows: [
+      { label: 'The band across the major platforms', lo: OTA_COMMISSION.lowPct, hi: OTA_COMMISSION.highPct, figure: OTA_COMMISSION.headline, tone: 'lead' },
+      ...OTA_COMMISSION.detail.map((d) => ({
+        label: d.label,
+        lo: d.lowPct,
+        hi: d.highPct,
+        figure: `${d.lowPct} to ${d.highPct}%`,
+        tone: 'quiet',
+        note: d.note,
+      })),
+    ],
+  },
+  {
+    label: 'A company-level metric, which is not the same thing',
+    measures: PLATFORM_TAKE_RATE.whatItIs,
+    rows: PLATFORM_TAKE_RATE.detail.map((d) => ({
+      label: d.label,
+      lo: d.lowPct,
+      hi: d.highPct,
+      // A row that declares its own figure keeps it, because "about 14%" says something
+      // "14%" does not: these are approximations off an annual report, and rounding one
+      // into a bare percentage would dress a ratio up as a rate.
+      figure: d.figure || `${d.lowPct} to ${d.highPct}%`,
+      tone: 'other',
+      note: d.note,
+    })),
+  },
+  {
+    label: 'What the hotel\u2019s own channel costs it',
+    measures: 'A property\u2019s all-in cost of taking the booking itself, card processing and booking engine included. The gap between this and the commission at the top is the room a direct rate has to move.',
+    rows: [
+      { label: 'Direct booking, all-in cost to the hotel', lo: DIRECT_COST.lowPct, hi: DIRECT_COST.highPct, figure: DIRECT_COST.headline, tone: 'low', note: DIRECT_COST.note },
+    ],
+  },
+];
+
+// VIZ D. Drip pricing, the number climbs.
+const dripMand = DRIP_AVERAGES.mandatoryPct;
+const dripOpt = DRIP_AVERAGES.optionalPct;
+const dripRows = [
+  {
+    label: 'The price in the search results',
+    segments: [{ label: 'advertised base price', value: 100, fill: BASE_FILL, figure: '100' }],
+    totalFigure: '100',
+  },
+  {
+    label: 'Plus the mandatory fees revealed later',
+    segments: [
+      { label: 'advertised base price', value: 100, fill: BASE_FILL, figure: '100' },
+      { label: 'mandatory dripped fees', value: dripMand, fill: DRIP_MAND_FILL, figure: `+${dripMand}%` },
+    ],
+    totalFigure: String(100 + dripMand),
+    note: 'Mandatory means you cannot decline it and still buy the thing, so this is not an upsell you can refuse. It is part of the price, disclosed late.',
+  },
+  {
+    label: 'Plus the optional extras offered at checkout',
+    segments: [
+      { label: 'advertised base price', value: 100, fill: BASE_FILL, figure: '100' },
+      { label: 'mandatory dripped fees', value: dripMand, fill: DRIP_MAND_FILL, figure: `+${dripMand}%` },
+      { label: 'optional dripped fees', value: dripOpt, fill: DRIP_OPT_FILL, figure: `+${dripOpt}%` },
+    ],
+    totalFigure: String(100 + dripMand + dripOpt),
+    note: 'The optional layer is more than twice the mandatory one, which is the part most people underestimate. Every item in it can be declined, and declining it is the single easiest saving on this page.',
+  },
+];
+
+// The parity table, in the order the data declares.
+const parityRows = PARITY_BY_REGION.slice().sort((a, b) => a.order - b.order);
+const freeCount = parityRows.filter((r) => r.status === 'free').length;
+
+// SOURCES, AND HOW MANY ARE LINKED. Counted at build time rather than claimed, because the
+// honest state of this page is that the load-bearing legal citations carry their primary
+// document and several of the softer trade figures do not yet. A reader is told the count
+// instead of being left to notice the pattern. See the RAIL 3 note in booking-tactics.js.
+const allSources = [
+  OTA_COMMISSION.source,
+  PLATFORM_TAKE_RATE.source,
+  DIRECT_COST.source,
+  DRIP_AVERAGES.source,
+  REFUNDABLE_PREMIUM.source,
+  MEMBER_SAVING.source,
+  PROPERTY_FEE_BAND.source,
+  ...parityRows.map((r) => r.source),
+  ...JUNKFEE_RULES.map((r) => r.source),
+];
+const linkedSources = allSources.filter((s) => s && s.url);
+const unlinkedCount = allSources.length - linkedSources.length;
+
+// De-duplicated primary documents for the sources panel, keyed on URL so the DMA rows and the
+// tax-map reference do not each list themselves twice.
+const seenUrl = new Set();
+const panelSources = [];
+for (const s of linkedSources) {
+  if (seenUrl.has(s.url)) continue;
+  seenUrl.add(s.url);
+  panelSources.push(s);
+}
+
+const ICONS = {
+  court: '<path d="M12 3v18"></path><path d="M4 8h16"></path><path d="M7 8l-3 6h6z"></path><path d="M17 8l-3 6h6z"></path>',
+  reg: '<path d="M6 3v18"></path><path d="M6 4h12l-2 3.5L18 11H6"></path>',
+  filing: '<path d="M6 2h9l3 3v17H6z"></path><path d="M9 12h6"></path><path d="M9 16h6"></path>',
+  study: '<path d="M4 19h16"></path><path d="M7 19V9"></path><path d="M12 19V5"></path><path d="M17 19v-7"></path>',
+  trade: '<path d="M3 6h18"></path><path d="M5 6v13h14V6"></path><path d="M9 10h6"></path>',
+  ttc: '<circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a15 15 0 0 1 0 18a15 15 0 0 1 0-18z"></path>',
+};
+const iconFor = (type) => ICONS[type] || ICONS.reg;
+---
+<Base
+  title="How to pay less on hotels: the tactics that work, and when they do not | True Trip Costs"
+  description="A tactics playbook for the hotel booking moment. How to recover the intermediary commission by booking direct, negotiate perks into a rate, use refundable rates without abusing them, and read past drip pricing. Each tactic bounded by when it works and when it does not, each figure sourced, with a dated rate-parity table by country. Not a rate-comparison tool."
+>
+  <Nav />
+  <main class="wrap">
+
+    <Hero
+      img="/hero/how-to-pay-less-on-hotels.jpg"
+      alt="Illustration of a traveler comparing a hotel booking screen against a written confirmation, for a guide to paying less at the hotel booking moment"
+      eyebrow="Paying for a hotel"
+      title="How to pay less on hotels."
+      stamp={`Checked ${bookingTacticsChecked}`}
+      slim={true} />
+
+    <section class="bt-prose">
+      <p class="bt-lede">The price you compare is almost never the price you pay. A government adds a tax you did not see, the property adds a charge it set itself, and somewhere inside the number you were quoted sits a commission that has nothing to do with your room. This page is about seeing through all of that and paying less, wherever you book.</p>
+
+      <div class="recentchange">
+        <span class="rcpill">What this page is not</span>
+        <p>It is not about <b>where</b> to book. We do not compare rates, we do not surface live prices, and we will never tell you a booking site is a good or a bad place to buy a room. Every tactic below works the same whichever site you end up on. Where we explain how an intermediary makes its money, that is mechanism, not a verdict.</p>
+      </div>
+    </section>
+
+    <section class="bt-sec" id="whats-in-a-price">
+      <h2>What is actually in a hotel price</h2>
+      <p class="bt-note">Three things make up the number you actually pay, and only one of them is the room. Indexed to 100 so it reads as a shape rather than a price, with every figure printed beside its own bar. There are two paid rows rather than one because the answer genuinely splits in two: where a country folds its tax into the displayed rate, and where it does not.</p>
+      <div class="bt-figure">
+        <StackBar rows={priceRows} axisMax={130} ticks={[0, 25, 50, 75, 100, 125]} id="whats-in-a-price-chart" />
+        <p class="bt-src">Government band from our own <a href="/hotel-tax-map">hotel tax map</a>, {colouredEntries.length} countries shaded and dated. Property charge from the same map's <a href="/hotel-tax-map#property-fees">property-fee data</a>. Commission band from {OTA_COMMISSION.source.label}. Illustrative bands, not one country's figure and not any hotel's.</p>
+      </div>
+    </section>
+
+    <section class="bt-sec">
+      <h2>The tactics, and where each one stops working</h2>
+      <p class="bt-note">Every one of these has a boundary. A tactic presented without its boundary is a promise, and we are not in a position to make you one, so each comes with when it works and when it does not. If a tactic below sounds like a guarantee, read the second half again.</p>
+
+      <article class="bt-tac" id="book-direct">
+        <p class="bt-tacn">Tactic one</p>
+        <h3>Book direct to recover the commission</h3>
+        <p>Book through an intermediary and the hotel pays a commission on your reservation. Book with the hotel and it does not, and its own cost of taking that booking is a fraction of what it just saved. That gap is real money and some of it is available to you, which is why the ask is worth making.</p>
+        <p>What you are actually asking for is a share of a saving you just created. That framing matters, because it is true, and because it is the difference between a reasonable request and a shakedown.</p>
+        <div class="bt-bounds">
+          <div class="bt-bound is-works">
+            <span class="bt-bk">When it works</span>
+            <ul>
+              <li>Independent and family-run properties, which pay the top of the commission band and have the most to recover.</li>
+              <li>Longer stays and family bookings, where the saving is worth a manager's attention.</li>
+              <li>Off-peak dates and soft occupancy, where an empty room is worth more than a held rate.</li>
+            </ul>
+          </div>
+          <div class="bt-bound is-not">
+            <span class="bt-bk">When it does not</span>
+            <ul>
+              <li>Revenue-managed chains on peak dates. The rate is set by a system with no incentive to move and often no authority delegated to move it.</li>
+              <li>A sold-out or nearly sold-out property. There is nothing to negotiate for.</li>
+              <li><b>The US, where rate parity still binds.</b> A US hotel can be contractually held to the price it shows on a platform, so it may be unable to quote you less even when it would like to. See <a href="#rate-parity">the parity table</a>.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <div class="bt-figure">
+        <p class="bt-figh">The commission, and the number it keeps getting confused with</p>
+        <p class="bt-note">Two measurements sit within a few points of each other and mean completely different things. The top group is what a hotel pays on your booking. The middle group is a company-wide ratio off an annual report, covering flights and cars as well as rooms. Quoting the second as though it were the first is the most common error in writing on this subject, and it always understates the first.</p>
+        <BandBar groups={commissionGroups} axisMax={32} ticks={[0, 5, 10, 15, 20, 25, 30]} id="commission-band-chart" />
+        <p class="bt-src">Per-booking bands from {OTA_COMMISSION.source.label}. Platform take rates from {PLATFORM_TAKE_RATE.source.label}. Direct cost from {DIRECT_COST.source.label}. Published bands and company-level ratios, not any single property's negotiated rate.</p>
+      </div>
+
+      <article class="bt-tac">
+        <p class="bt-tacn">Tactic two</p>
+        <h3>Negotiate perks into the rate, not a lower number</h3>
+        <p>A hotel guards its published rate harder than it guards its margin. Ask for a lower number and you are asking it to undercut a price it may be contractually or strategically committed to. Ask for breakfast, a late checkout, a room upgrade or parking and you are asking it to spend something it has plenty of, at a cost to itself well below what those things are worth to you.</p>
+        <p>This is usually the higher-yield ask, and it is almost always the easier yes.</p>
+        <div class="bt-bounds">
+          <div class="bt-bound is-works">
+            <span class="bt-bk">When it works</span>
+            <ul>
+              <li>Direct contact with a person who has authority, which usually means the property rather than a central line.</li>
+              <li>Independents, where the person answering can simply decide.</li>
+              <li>Longer stays and low occupancy, where the marginal cost of a breakfast is trivial next to keeping your booking.</li>
+            </ul>
+          </div>
+          <div class="bt-bound is-not">
+            <span class="bt-bk">When it does not</span>
+            <ul>
+              <li>Peak dates, when the room sells regardless and there is no reason to sweeten anything.</li>
+              <li>Properties where the perk is already bundled, in which case you are asking for what you have.</li>
+              <li>Third-party booking flows, where nobody in the conversation can authorise anything.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="bt-tac">
+        <p class="bt-tacn">Tactic three</p>
+        <h3>Book refundable, then rebook if the price falls</h3>
+        <p>A refundable rate is an option, and the premium on it is what the option costs. {REFUNDABLE_PREMIUM.note} So the tactic only pays when the drop you catch is bigger than the premium you paid, and you will not know that in advance.</p>
+        <div class="bt-hardline">
+          <span class="bt-hk">The line we will not help you cross</span>
+          <p>Rebook only within the hotel's own posted cancellation terms, cancelling properly and inside the deadline. We will not help with anything that leans on a pricing error, abuses a policy, or disputes a charge you owe. Beyond the ethics, all three end the same way in practice: the property is entitled to enforce its terms, and you are the one standing at a front desk with no room.</p>
+        </div>
+        <div class="bt-bounds">
+          <div class="bt-bound is-works">
+            <span class="bt-bk">When it works</span>
+            <ul>
+              <li>Volatile dates booked well ahead, where there is time for a rate to move.</li>
+              <li>Markets with visible oversupply, where the direction of travel is downward.</li>
+              <li>When the refundable premium is at the low end, so the option is cheap.</li>
+            </ul>
+          </div>
+          <div class="bt-bound is-not">
+            <span class="bt-bk">When it does not</span>
+            <ul>
+              <li>Peak dates and events, where prices climb and the premium is dead money.</li>
+              <li>Short lead times, where the cancellation window closes before anything changes.</li>
+              <li>Any stay where you will not actually check the price again. The tactic is work, and unworked it is just a more expensive room.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="bt-tac">
+        <p class="bt-tacn">Tactic four</p>
+        <h3>Member, loyalty and app-only rates</h3>
+        <p>{MEMBER_SAVING.note} Both halves of that sentence are true and the second half is the one nobody prints.</p>
+        <p>The price of the saving is not money. It is a marketing relationship: an email address, a profile, a preference history and a nudge to book through one brand next time. That may be a fine trade. It is still a trade, and it is worth naming before you make it.</p>
+        <div class="bt-bounds">
+          <div class="bt-bound is-works">
+            <span class="bt-bk">When it works</span>
+            <ul>
+              <li>Chains you already use, where you are paying the data cost anyway.</li>
+              <li>Where the member rate carries a real perk, such as free breakfast or waived parking, rather than a few dollars off.</li>
+            </ul>
+          </div>
+          <div class="bt-bound is-not">
+            <span class="bt-bk">When it does not</span>
+            <ul>
+              <li>One-off stays at a brand you will not return to, where you are handing over data for a rounding error.</li>
+              <li>When the member rate turns out to be the same rate wearing a badge, which happens often enough to check rather than assume.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="bt-tac" id="check-the-hotel">
+        <p class="bt-tacn">Tactic five</p>
+        <h3>Check the hotel's own site before trusting any total</h3>
+        <p>This one has become materially more worth doing, and not because hotels changed. The law did. Across the EU and EEA, and earlier than that in a run of individual countries, the clauses that stopped a hotel offering a better price on its own site are void or prohibited. {freeCount} of the {parityRows.length} jurisdictions in <a href="#rate-parity">the table below</a> now sit that way.</p>
+        <div class="bt-caveat">
+          <span class="bt-ck">The caveat that has to travel with this</span>
+          <p>Legal freedom is not a lower price. A hotel that may now undercut can simply choose not to, and a platform is free to fund a discount of its own and close the gap. The table says who <b>may</b>, not who <b>does</b>. Treat it as a reason to spend thirty seconds looking, not as a promise of what you will find.</p>
+        </div>
+        <div class="bt-bounds">
+          <div class="bt-bound is-works">
+            <span class="bt-bk">When it works</span>
+            <ul>
+              <li>The EU and EEA, plus Germany, France, Austria, Italy, Belgium and Switzerland, which got there first by their own routes.</li>
+              <li>Japan and South Korea, where parity has been unwound by competition authorities.</li>
+              <li>Independents anywhere, which are the properties most likely to price their own channel differently.</li>
+            </ul>
+          </div>
+          <div class="bt-bound is-not">
+            <span class="bt-bk">When it does not</span>
+            <ul>
+              <li><b>The US.</b> No federal or state parity ban is in force, so the freedom this tactic leans on does not exist there.</li>
+              <li>The UK and Australia, where wide clauses went but a narrow clause covering the hotel's own site may still bind.</li>
+              <li>Wherever the platform is discounting from its own pocket, which closes the gap without the hotel doing anything.</li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <article class="bt-tac">
+        <p class="bt-tacn">Tactic six</p>
+        <h3>Break the same room, same night illusion</h3>
+        <p>Two listings for one room on one night are routinely not the same product, and the cheaper one is often cheaper because it is less. Before you compare two totals, normalise six things, because any one of them can account for the whole difference.</p>
+        <ol class="bt-six">
+          <li><b>Cancellation terms.</b> Refundable against non-refundable is not a discount, it is a different product.</li>
+          <li><b>Board.</b> Room only, breakfast, half board. Breakfast for two for four nights is not a rounding error.</li>
+          <li><b>Bed type and occupancy.</b> A twin at the double rate, or a rate priced for one when there are two of you.</li>
+          <li><b>Prepay against pay at the hotel.</b> Prepaid rates carry a currency risk and a rigidity that the number does not show.</li>
+          <li><b>Whether tax is shown.</b> A rate quoted before tax will always beat the same rate quoted after it.</li>
+          <li><b>Whether mandatory fees are shown.</b> The resort fee is the classic, and it is mandatory whether or not it is in the headline.</li>
+        </ol>
+        <p class="bt-tacfoot">Once those six match, the comparison is real. Until they do, you are comparing two different rooms and calling one of them a bargain.</p>
+      </article>
+
+      <article class="bt-tac" id="drip">
+        <p class="bt-tacn">Tactic seven</p>
+        <h3>Read past the drip</h3>
+        <p>Drip pricing is the practice of showing a headline number and then adding to it as you move toward paying. Some of what appears is mandatory, which means it was always part of the price and was simply disclosed late. Some is optional, which means it is an upsell you can decline. The second category is bigger than most people expect.</p>
+        <p>Regulators have been moving on this, but on the disclosure question only, and the distinction matters to you: the rules below decide whether a fee has to be shown up front. None of them makes a fee smaller, refundable, or illegal.</p>
+        <div class="bt-figure">
+          <p class="bt-figh">The number climbs</p>
+          <StackBar rows={dripRows} axisMax={130} ticks={[0, 25, 50, 75, 100, 125]} unitWord="percent of the advertised base price" id="drip-chart" />
+          <p class="bt-src">{DRIP_AVERAGES.source.url ? <a href={DRIP_AVERAGES.source.url} target="_blank" rel="noopener">{DRIP_AVERAGES.source.label}</a> : DRIP_AVERAGES.source.label}. {DRIP_AVERAGES.scope}</p>
+        </div>
+
+        <div class="bt-rules">
+          {JUNKFEE_RULES.map((r) => (
+            <div class="bt-rule">
+              <span class="bt-rj">{r.jurisdiction}</span>
+              <span class="bt-rn">{r.rule}</span>
+              <p class="bt-rw">{r.what}</p>
+              <p class="bt-rl"><b>The limit:</b> {r.limit}</p>
+              <p class="bt-rd">
+                {/* A rule with no single commencement date carries its own complete phrase,
+                    because prefixing one produced "In force in force". */}
+                <span class="bt-rdate">{r.effectiveISO ? `In force ${r.effective}` : r.effective}</span>
+                {r.source.url
+                  ? <a href={r.source.url} target="_blank" rel="noopener">{r.source.label}</a>
+                  : <span class="bt-nosrc">{r.source.label}</span>}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <p class="bt-tacfoot">This is the same family of charge our <a href="/hotel-taxes-and-fees">hotel taxes and fees guide</a> takes apart, and the resort fee at the centre of it is the one the tax map deliberately <a href="/hotel-tax-map#property-fees">cannot colour</a>, because no government sets it.</p>
+      </article>
+    </section>
+
+    <section class="bt-sec" id="the-practical-how">
+      <h2>The practical how</h2>
+      <p class="bt-note">Four things: reaching the property, what to say, getting it in writing, and when to book. The first three are skills. The fourth is mostly folklore, and it is named as folklore below.</p>
+
+      <div class="bt-panel bt-pad">
+        <h3>Reaching the property, cheaply and in writing</h3>
+        <p>You want a written record and you want to avoid an international call. In practice that means one of three channels, and which one works depends on where you are asking.</p>
+        <p><b>Messaging apps, WhatsApp above all.</b> Common at independent and family-run properties across much of Europe, and often the fastest route to a person who can actually decide something. Thin at US chains, where the number on the website usually reaches a central reservations line rather than the property. So: here is the tool, and here is where it tends to work. Not "just message them," because at a large chain that advice wastes your evening.</p>
+        <p><b>Email.</b> Slower, universal, and the best written record of the four things below. If you only do one, do this.</p>
+        <p><b>The booking site's own message-the-property feature.</b> Underused. It reaches the property, it is written, and it works before you have any other contact details.</p>
+        <p class="bt-do">One thing we will not give you is a statistic about what share of hotels answer on messaging apps. The figures circulating for that are untraceable, and we are not going to launder one into a number just because it would make this section punchier.</p>
+      </div>
+
+      <div class="bt-panel bt-pad">
+        <h3>What to actually say</h3>
+        <p>Two scripts. Both are firm, both give the property a real reason to say yes, and neither pretends you are doing it a favour.</p>
+        <div class="bt-script">
+          <span class="bt-sk">Asking for a direct rate</span>
+          <p>"Hello, I am looking at a [dates] booking for a [room type], and I can see it at [rate] on the booking sites. I would rather book with you directly, which saves you the commission on it. Is there a better rate or a better inclusion if I book direct? Happy either way, I just wanted to ask first."</p>
+          <p class="bt-sn">Why it works: it names the saving you are creating rather than just asking for a discount, and it gives an easy exit, which makes a yes cheaper to give.</p>
+        </div>
+        <div class="bt-script">
+          <span class="bt-sk">Asking for perks instead</span>
+          <p>"Understood on the rate. If it cannot move, could you include breakfast for two, or a late checkout? Either would make the decision easy for me."</p>
+          <p class="bt-sn">Why it works: it accepts the no you just got, which lowers the temperature, and it asks for something the property can give without touching a published price. Naming two options lets it pick the cheaper one and still say yes.</p>
+        </div>
+      </div>
+
+      <div class="bt-panel bt-pad">
+        <h3>Getting it in writing: the four things to confirm</h3>
+        <ol class="bt-four">
+          <li><b>The rate</b>, in the currency it will be charged in.</li>
+          <li><b>Exactly what is included</b>, itemised. "Breakfast included" is not the same as "breakfast for two included".</li>
+          <li><b>Taxes and mandatory fees</b>, and whether they are inside that rate or added at checkout. This is the question that moves the total most.</li>
+          <li><b>The cancellation deadline</b>, as a date and a time. Note that it is almost always in the hotel's own local time zone, not yours, which is how people miss it by a few hours from another continent.</li>
+        </ol>
+        <p class="bt-do">A confirmation covering those four is worth more than any rate you negotiate, because it is the thing you can point at when the bill does not match the conversation.</p>
+      </div>
+
+      <div class="bt-panel bt-pad">
+        <h3>Timing: tendencies, not rules</h3>
+        <p>A hotel room is perishable. Tonight's unsold room is worth nothing tomorrow, and that single fact is the whole of the honest case for booking late. It cuts the other way just as hard: on a peak date, in a tight market, or during an event, the perishable room sells anyway and the late buyer pays for the privilege.</p>
+        <p>So the honest version is a tendency. Last-minute can win off-peak or where there is oversupply, and it loses on peak dates. That is as far as the evidence goes, and everything below is folklore that has been repeated into the shape of a rule.</p>
+        <ul class="bt-myths">
+          {TIMING_MYTHS.map((m) => (
+            <li class="bt-myth">
+              <span class="bt-mc">{m.claim}</span>
+              <span class="bt-ma">{m.answer}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="bt-sec" id="rate-parity">
+      <h2>Where booking direct can legally be cheaper</h2>
+      <p class="bt-note">Rate parity is the contractual term that stopped a hotel offering a better price on its own site than on a platform. Across most of Europe it is now void or prohibited, which is what makes tactic five worth the thirty seconds. In the US there is no parity ban at all, which is the single most important row in this table for anyone reading this from home.</p>
+
+      <div class="bt-legend">
+        {Object.entries(PARITY_STATUS).map(([key, s]) => (
+          <p class={`bt-lg is-${s.tone}`}>
+            <span class="bt-lgk">{s.label}</span>
+            <span class="bt-lgm">{s.meaning}</span>
+          </p>
+        ))}
+      </div>
+
+      <div class="bt-tablewrap">
+        <table class="bt-table">
+          <caption class="bt-cap">Rate parity by jurisdiction, with the ruling or statute behind each row. Checked {bookingTacticsChecked}.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Jurisdiction</th>
+              <th scope="col">Status</th>
+              <th scope="col">Since</th>
+              <th scope="col">What changed, and the source</th>
+            </tr>
+          </thead>
+          <tbody>
+            {parityRows.map((r) => (
+              <tr class:list={[{ 'is-us': r.status === 'binds' }]}>
+                <th scope="row" data-l="Jurisdiction">{r.jurisdiction}</th>
+                <td data-l="Status">
+                  <span class={`bt-chip is-${PARITY_STATUS[r.status].tone}`}>{PARITY_STATUS[r.status].label}</span>
+                </td>
+                <td data-l="Since" class="bt-since">{r.sinceDate}</td>
+                <td data-l="What changed">
+                  <span class="bt-ruling">{r.ruling}</span>
+                  {r.source.url
+                    ? <a class="bt-tsrc" href={r.source.url} target="_blank" rel="noopener">{r.source.label}</a>
+                    : <span class="bt-tsrc bt-nosrc">{r.source.label}</span>}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p class="bt-do">Two things this table does not say. It does not say a direct rate will be cheaper, only that a hotel is free to make it so. And it says nothing about whether the price you were shown had to include the mandatory fees, which is a separate question answered by <a href="#drip">the disclosure rules above</a>. A jurisdiction can be strict on one and silent on the other, and the US is exactly that: no parity ban, and one of the more specific fee-disclosure rules anywhere.</p>
+    </section>
+
+    <section class="bt-sec">
+      <h2>What this page sits on top of</h2>
+      <p class="bt-note">Three parts of this site already map what gets added to a trip. This page is the layer that does something about it at the one moment it can still change the number.</p>
+      <div class="bt-hub">
+        <a class="bt-hubcard" href="/hotel-tax-map">
+          <span class="bt-hubh">What the government adds</span>
+          <span class="bt-hubd">Every country we have checked, shaded by what lands on top of a quoted room rate, each figure sourced and dated. With a calculator for your own stay.</span>
+        </a>
+        <a class="bt-hubcard" href="/hotel-tax-map#property-fees">
+          <span class="bt-hubh">What the hotel adds, and how to ask</span>
+          <span class="bt-hubd">Resort fees and mandatory service charges, the charges no government sets and no map can colour, and the two questions that get you the real figure before you book.</span>
+        </a>
+        <a class="bt-hubcard" href="/cash-or-card">
+          <span class="bt-hubh">What a bank adds</span>
+          <span class="bt-hubd">Cash or card by country, and the two places a bank quietly takes a cut on the same stay: the ATM, and being offered your own currency at the desk.</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="gbyline" style="display:flex;align-items:flex-start;gap:9px;margin:34px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card)">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. Last checked {bookingTacticsChecked}. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
+    </div>
+
+    <details class="gsources">
+      <summary class="gsources-sum">
+        <span class="gsources-txt">Sources, and how this page was checked</span>
+        <svg class="gsources-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="gsources-body">
+        <p class="gs-row"><span class="gs-k">Last checked</span><span>{bookingTacticsChecked}</span></p>
+        <p class="gs-row"><span class="gs-k">Changed since last check</span><span>First published September 2026. Covers the book-direct, perk-negotiation, refundable-rebook, member-rate, own-site, normalise-the-listing and drip-reading tactics, each bounded; the rate-parity position in {parityRows.length} jurisdictions; and the fee-disclosure rules in four. The three visuals are drawn from the figures below and from this site's own hotel tax map.</span></p>
+        <div class="gs-row"><span class="gs-k">Primary sources</span>
+          <ul class="gs-links">
+            {panelSources.map((s) => (
+              <li class="gs-src">
+                <span class="gs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={iconFor(s.type)}></svg></span>
+                <span class="gs-src-tx">
+                  {s.url.startsWith('http')
+                    ? <a href={s.url} target="_blank" rel="noopener" class="gs-src-name">{s.label}</a>
+                    : <a href={s.url} class="gs-src-name">{s.label}</a>}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p class="gs-row"><span class="gs-k">How much of this is linked</span><span>{linkedSources.length} of the {allSources.length} citations on this page carry the primary document, and {unlinkedCount} name their source without linking it. The unlinked ones are the national parity statutes outside the cases we have read in full, and the industry pricing guides behind the commission, refundable-premium and member-rate bands. We would rather show you an unlinked citation than point you at somebody else's write-up of a ruling.</span></p>
+        <p class="gs-row"><span class="gs-k">Our own read</span><span>The bands here are published ranges and statutory positions, not our estimates, and no figure on this page is a live rate or a per-hotel price. What is ours is the judgment about when each tactic stops working, which is written from experience rather than measured. The rate-parity table states what a hotel is legally free to do, which is not a prediction that a direct rate will be cheaper: platforms fund their own discounts and hotels decline to move, both routinely. Nothing here relies on a pricing error, a policy loophole or a payment dispute, and we will not add anything that does.</span></p>
+      </div>
+    </details>
+
+    <CompareByRegion />
+  </main>
+  <Footer />
+
+  <style>
+    .bt-prose{max-width:720px;margin:22px 0 0}
+    .bt-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
+
+    .bt-sec{margin:40px 0 0;scroll-margin-top:74px}
+    .bt-sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 6px;line-height:1.2}
+    .bt-note{font-size:14.5px;color:var(--muted);margin:0 0 18px;line-height:1.55;max-width:720px}
+
+    /* A visual and its source line are one unit, so they sit in one bordered block and
+       cannot be screenshotted apart. */
+    .bt-figure{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:20px 20px 16px;margin:0 0 8px}
+    .bt-figh{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink);margin:0 0 6px;line-height:1.3}
+    .bt-src{font-size:12px;color:var(--muted);line-height:1.55;margin:16px 0 0;padding-top:12px;border-top:1px solid var(--line)}
+    .bt-src a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .bt-src a:hover{text-decoration:underline}
+
+    .bt-tac{margin:26px 0 0;padding:22px 0 0;border-top:1px solid var(--line)}
+    .bt-tac:first-of-type{border-top:none;padding-top:0}
+    .bt-tacn{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 5px}
+    .bt-tac h3{font-family:var(--serif);font-weight:500;font-size:clamp(18px,2.6vw,22px);color:var(--ink);margin:0 0 10px;line-height:1.25}
+    .bt-tac p{font-size:15.5px;color:#3B4A46;line-height:1.62;margin:0 0 12px;max-width:720px}
+    .bt-tac a{color:var(--teal-deep);font-weight:500;text-decoration:underline;text-underline-offset:2px}
+    .bt-tacfoot{font-size:14px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;margin:16px 0 0}
+
+    /* The bounding pair. Side by side on desktop so neither half can be read without the
+       other, which is the whole point of publishing them together. */
+    .bt-bounds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:16px 0 0}
+    .bt-bound{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:15px 17px}
+    .bt-bound.is-works{border-left:3px solid var(--teal)}
+    .bt-bound.is-not{border-left:3px solid var(--amber)}
+    .bt-bk{display:block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin:0 0 9px}
+    .bt-bound.is-works .bt-bk{color:var(--teal-deep)}
+    .bt-bound.is-not .bt-bk{color:var(--amber)}
+    .bt-bound ul{list-style:none;margin:0;padding:0}
+    .bt-bound li{position:relative;font-size:13.5px;line-height:1.55;color:#3B4A46;padding:0 0 0 15px;margin:0 0 9px}
+    .bt-bound li:last-child{margin-bottom:0}
+    .bt-bound li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%}
+    .bt-bound.is-works li::before{background:var(--teal)}
+    .bt-bound.is-not li::before{background:var(--amber)}
+    .bt-bound li b{font-weight:600;color:var(--ink)}
+    .bt-bound a{color:var(--teal-deep);font-weight:500}
+
+    .bt-hardline{border:1px solid rgba(180,83,9,.35);border-left:3px solid var(--amber);background:var(--amber-bg);border-radius:12px;padding:15px 17px;margin:4px 0 0}
+    .bt-hk{display:block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);margin:0 0 7px}
+    .bt-hardline p{font-size:14px;line-height:1.6;color:var(--ink);margin:0;max-width:none}
+
+    .bt-caveat{border:1px solid var(--line);border-left:3px solid var(--teal);background:var(--green-bg);border-radius:12px;padding:15px 17px;margin:4px 0 0}
+    .bt-ck{display:block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 7px}
+    .bt-caveat p{font-size:14px;line-height:1.6;color:var(--ink);margin:0;max-width:none}
+    .bt-caveat b{font-weight:700}
+
+    .bt-six{margin:4px 0 0;padding:0 0 0 20px}
+    .bt-six li{font-size:14.5px;line-height:1.6;color:#3B4A46;margin:0 0 9px;padding-left:4px}
+    .bt-six li b{color:var(--ink);font-weight:600}
+
+    .bt-rules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:18px 0 0}
+    .bt-rule{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:15px 17px;box-shadow:var(--shadow)}
+    .bt-rj{display:block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 4px}
+    .bt-rn{display:block;font-family:var(--serif);font-weight:500;font-size:15.5px;color:var(--ink);line-height:1.3;margin:0 0 8px}
+    .bt-rw{font-size:13.5px;line-height:1.55;color:#3B4A46;margin:0 0 8px}
+    .bt-rl{font-size:13px;line-height:1.55;color:var(--muted);margin:0 0 10px}
+    .bt-rl b{color:var(--amber);font-weight:600}
+    .bt-rd{font-size:12px;line-height:1.5;color:var(--muted);margin:0;padding-top:9px;border-top:1px solid var(--line)}
+    .bt-rdate{display:block;font-family:var(--mono);font-size:10.5px;font-weight:600;color:var(--ink);margin:0 0 3px}
+    .bt-rd a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .bt-rd a:hover{text-decoration:underline}
+    .bt-nosrc{font-style:italic}
+
+    .bt-panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);margin:0 0 14px}
+    .bt-pad{padding:18px 20px}
+    .bt-panel h3{font-family:var(--serif);font-weight:500;font-size:17.5px;color:var(--ink);margin:0 0 10px;line-height:1.3}
+    .bt-panel p{font-size:14.5px;line-height:1.62;color:#3B4A46;margin:0 0 11px}
+    .bt-panel p:last-child{margin-bottom:0}
+    .bt-panel b{font-weight:600;color:var(--ink)}
+    .bt-do{border-top:1px solid var(--line);padding-top:12px;color:var(--muted);font-size:13.5px;line-height:1.6;margin:14px 0 0}
+    .bt-do a{color:var(--teal-deep);font-weight:500}
+
+    .bt-script{border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:10px;background:var(--paper);padding:14px 16px;margin:0 0 12px}
+    .bt-script:last-child{margin-bottom:0}
+    .bt-sk{display:block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 8px}
+    .bt-script p{font-size:14.5px;line-height:1.65;color:var(--ink);margin:0}
+    .bt-sn{font-size:12.5px;color:var(--muted);line-height:1.55;margin:9px 0 0;padding-top:9px;border-top:1px solid var(--line)}
+
+    .bt-four{margin:2px 0 0;padding:0 0 0 20px}
+    .bt-four li{font-size:14.5px;line-height:1.6;color:#3B4A46;margin:0 0 9px;padding-left:4px}
+    .bt-four li b{color:var(--ink);font-weight:600}
+
+    .bt-myths{list-style:none;margin:14px 0 0;padding:0}
+    .bt-myth{border-top:1px solid var(--line);padding:11px 0}
+    .bt-myth:last-child{padding-bottom:0}
+    .bt-mc{display:block;font-size:14px;font-weight:600;color:var(--amber);line-height:1.45;margin:0 0 3px}
+    .bt-ma{display:block;font-size:13.5px;color:#3B4A46;line-height:1.6}
+
+    .bt-legend{margin:0 0 16px}
+    .bt-lg{border-left:3px solid var(--line);padding:2px 0 2px 12px;margin:0 0 10px}
+    .bt-lg:last-child{margin-bottom:0}
+    .bt-lg.is-good{border-left-color:var(--teal)}
+    .bt-lg.is-mixed{border-left-color:#C99A2E}
+    .bt-lg.is-bad{border-left-color:var(--amber)}
+    .bt-lgk{display:block;font-size:13px;font-weight:700;color:var(--ink);margin:0 0 2px}
+    .bt-lgm{display:block;font-size:13px;color:var(--muted);line-height:1.55}
+
+    .bt-tablewrap{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow:hidden}
+    .bt-table{width:100%;border-collapse:collapse;text-align:left}
+    .bt-cap{caption-side:top;text-align:left;padding:14px 18px;font-size:12.5px;color:var(--muted);line-height:1.5;border-bottom:1px solid var(--line)}
+    .bt-table th,.bt-table td{padding:13px 14px;vertical-align:top;border-bottom:1px solid var(--line)}
+    .bt-table thead th{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);background:var(--paper);white-space:nowrap}
+    .bt-table tbody th{font-size:14px;font-weight:600;color:var(--ink);line-height:1.35;min-width:130px}
+    .bt-table tbody tr:last-child th,.bt-table tbody tr:last-child td{border-bottom:none}
+    /* The US row is the exception the whole table exists to name, so it is tinted rather
+       than left to be found by reading fifteen rows. */
+    .bt-table tbody tr.is-us{background:var(--amber-bg)}
+    .bt-since{font-family:var(--mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
+    .bt-ruling{display:block;font-size:13.5px;color:#3B4A46;line-height:1.55}
+    .bt-tsrc{display:block;font-size:12px;line-height:1.5;color:var(--teal-deep);font-weight:500;text-decoration:none;margin-top:7px}
+    a.bt-tsrc:hover{text-decoration:underline}
+    .bt-chip{display:inline-block;font-size:11.5px;font-weight:600;border-radius:999px;padding:4px 10px;line-height:1.25;white-space:nowrap}
+    .bt-chip.is-good{color:var(--teal-deep);background:var(--green-bg)}
+    .bt-chip.is-mixed{color:#7A5B10;background:#FAF0D6}
+    .bt-chip.is-bad{color:var(--amber);background:#F7DFC6}
+
+    .bt-hub{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .bt-hubcard{display:block;border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:12px;background:var(--card);box-shadow:var(--shadow);padding:16px 18px;text-decoration:none;transition:background-color .15s ease}
+    .bt-hubcard:hover{background:var(--paper)}
+    .bt-hubh{display:block;font-family:var(--serif);font-weight:500;font-size:16.5px;color:var(--teal-deep);line-height:1.3;margin:0 0 5px}
+    .bt-hubcard:hover .bt-hubh{text-decoration:underline}
+    .bt-hubd{display:block;font-size:13.5px;color:var(--muted);line-height:1.55}
+
+    @media (max-width:700px){
+      .bt-bounds{grid-template-columns:1fr}
+      .bt-rules{grid-template-columns:1fr}
+      .bt-hub{grid-template-columns:1fr}
+    }
+
+    /* Under 700px the table stops being a table. Four columns of legal citation cannot fit
+       a phone, and a horizontally scrolling table hides the column that matters. Each row
+       becomes a card and every cell carries its own label from data-l, so nothing is lost
+       and no cell is left unlabelled. */
+    @media (max-width:700px){
+      .bt-tablewrap{border-radius:var(--radius)}
+      .bt-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+      .bt-table,.bt-table tbody,.bt-table tr,.bt-table th,.bt-table td{display:block;width:auto}
+      .bt-table tr{border-bottom:1px solid var(--line);padding:14px 16px}
+      .bt-table tbody tr:last-child{border-bottom:none}
+      .bt-table th,.bt-table td{border-bottom:none;padding:0 0 9px}
+      .bt-table tbody th{font-size:15px;min-width:0;padding-bottom:8px}
+      .bt-table td:last-child{padding-bottom:0}
+      .bt-table td[data-l="Since"]::before{content:attr(data-l) ": ";font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep)}
+      .bt-since{white-space:normal}
+    }
+
+    @media (max-width:560px){
+      .bt-lede{font-size:16.5px}
+      .bt-figure{padding:16px 15px 14px}
+      .bt-pad{padding:16px}
+      .bt-tac p{font-size:15px}
+    }
+  </style>
+</Base>
