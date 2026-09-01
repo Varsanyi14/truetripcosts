@@ -98,7 +98,13 @@ const rowH = 20;
 
       <ol class="bb-rows">
         {(g.rows || []).map((r) => (
-          <li class:list={["bb-row", { 'is-point': isPoint(r) }]}>
+          <li class:list={["bb-row", { 'is-point': isPoint(r), 'is-lead': r.tone === 'lead' }]}>
+            {/* THE LEAD ROW IS A SUMMARY, NOT A FOURTH BAR. Four similarly weighted bands read
+                as four competing measurements, when the top one is actually the envelope around
+                the three below it. So it takes an eyebrow, a taller and deeper band, and a rule
+                underneath, and the rows that break it down sit below that rule. Nothing about
+                the figure changes; this is hierarchy. */}
+            {r.eyebrow && <p class="bb-eb">{r.eyebrow}</p>}
             <p class="bb-lab">{r.label}</p>
             <div class="bb-plot">
               {/* The track is the positioning context for the point marker below. The SVG
@@ -124,7 +130,8 @@ const rowH = 20;
                     ))}
                   </g>
                   {!isPoint(r) && (
-                    <rect x={pct(r.lo)} y="4" width={pct(r.hi) - pct(r.lo)} height={rowH - 8}
+                    <rect x={pct(r.lo)} y={r.tone === 'lead' ? 1.5 : 4}
+                          width={pct(r.hi) - pct(r.lo)} height={rowH - (r.tone === 'lead' ? 3 : 8)}
                           fill={fillFor(r.tone)} rx="0.6" />
                   )}
                 </svg>
@@ -141,6 +148,7 @@ const rowH = 20;
               <span class:list={["bb-fig", { 'is-lead': r.tone === 'lead' }]}>{r.figure}</span>
             </div>
             {r.note && <p class="bb-note">{r.note}</p>}
+            {r.breakdown && <p class="bb-bd">{r.breakdown}</p>}
           </li>
         ))}
       </ol>
@@ -166,8 +174,14 @@ const rowH = 20;
   .bb-rows{list-style:none;margin:0;padding:0}
   .bb-row{margin:0 0 13px}
   .bb-row:last-child{margin-bottom:0}
+  /* The summary row and its rule. The rows after it are the breakdown, so they sit below the
+     line and keep their lighter fill and lighter figure weight. */
+  .bb-row.is-lead{margin-bottom:0;padding-bottom:14px}
+  .bb-eb{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 3px}
+  .bb-bd{font-family:var(--mono);font-size:9.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:16px 0 0;padding-top:13px;border-top:1px solid var(--line)}
 
   .bb-lab{font-size:13px;font-weight:600;color:var(--ink);margin:0 0 4px;line-height:1.35}
+  .bb-row.is-lead .bb-lab{font-family:var(--serif);font-weight:500;font-size:16px;line-height:1.3}
   .bb-plot{display:flex;align-items:center;gap:10px}
   .bb-track{position:relative;flex:1;min-width:0;display:block;line-height:0}
   .bb-svg{width:100%;height:20px;display:block}

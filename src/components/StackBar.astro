@@ -179,8 +179,11 @@ const rowH = 26;
   .sb-row{margin:0 0 16px;padding:0}
   .sb-row:last-child{margin-bottom:0}
   /* The embedded band sits visibly apart from the bars it belongs inside, so it
-     never reads as the next step in a stack. */
-  .sb-row.is-span{margin-top:20px;padding-top:14px;border-top:1px dashed var(--line)}
+     never reads as the next step in a stack. WIDENED from 20/14: at that spacing the
+     dashed rule sat tight under the note above it and the row read as cramped rather
+     than as separated, which undercut the one thing the separation exists to say.
+     This is the one joint on the page that wanted more space, not less. */
+  .sb-row.is-span{margin-top:34px;padding-top:22px;border-top:1px dashed var(--line)}
 
   .sb-lab{font-size:13.5px;font-weight:600;color:var(--ink);margin:0 0 5px;line-height:1.35}
   .sb-row.is-span .sb-lab{color:var(--muted);font-weight:600}

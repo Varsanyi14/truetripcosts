@@ -119,6 +119,7 @@ export const EXCLUDED_PAGES = [
   // fragment of a page they can reach whole. As more assets become embeddable this list
   // grows by one line each, which is the intended cost.
   { file: 'embed/hotel-tax-map.astro', why: 'noindex embed surface, the canonical /hotel-tax-map carries the search value' },
+  { file: 'embed/rate-parity.astro', why: 'noindex embed surface, the canonical /how-to-pay-less-on-hotels carries the search value' },
 ];
 
 // Read one attribute off the <Base> tag in an .astro source. Handles the two shapes the

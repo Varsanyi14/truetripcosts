@@ -1,0 +1,73 @@
+---
+// The embeddable rate-parity choropleth. This is what loads inside the iframe when another site
+// embeds the map. Nothing here holds data: it renders the SAME ParityMap component and the same
+// booking-tactics.js the real page uses, in the stripped-down variant, so the embed cannot drift
+// from the map TTC actually publishes.
+//
+// EmbedFrame.astro's own header sets the terms for this file: "To make the next asset embeddable,
+// nothing in this file changes. Add one page at src/pages/embed/<name>.astro that renders that
+// visualization inside this component, and paste one iframe snippet onto that visualization's own
+// page." This is that page, and it is the second asset to use the machinery, which is the first
+// evidence that building it as a component rather than per-asset was the right call.
+//
+// WHY THIS PAGE DOES NOT USE Base.astro, restated because it is the whole reason the file looks
+// odd: Base injects four Google Fonts link tags, the signup modal with a checkbox per live
+// country, two inline scripts and the back-to-top button. Fired from inside somebody else's
+// article those are third-party requests the host never agreed to, and the modal and the to-top
+// button are furniture for a reader who is on truetripcosts.com. This reader is not. So the page
+// owns its own short document, exactly as /embed/hotel-tax-map does.
+//
+// It still imports global.css, deliberately: the map's styles are written against the global
+// tokens (--line, --card, --radius, --shadow, --mono, --muted, --teal-deep, --green-bg).
+// Redeclaring the handful it uses today would look identical and then break silently the first
+// time the map starts using a token this page did not copy. global.css loads nothing off-site:
+// the font stacks resolve to the metric-matched local() fallbacks, which is why the type still
+// looks like TTC here without a single request leaving the host page.
+import '../../styles/global.css';
+import EmbedFrame from '../../components/EmbedFrame.astro';
+import ParityMap from '../../components/ParityMap.astro';
+import { bookingTacticsChecked } from '../../data/booking-tactics.js';
+
+const CANONICAL = 'https://truetripcosts.com/how-to-pay-less-on-hotels';
+const SELF = 'https://truetripcosts.com/embed/rate-parity';
+
+// noindex, follow. Same reasoning as the hotel-tax embed: this page and the parity section of
+// /how-to-pay-less-on-hotels are the same map, and letting both compete splits the links between
+// two URLs when the entire point of publishing an embed is to send authority TO the canonical
+// page. follow, because the credit link in the frame is the return on the work. Excluded from
+// the sitemap by the /embed/ filter already in astro.config.mjs.
+const ROBOTS = 'noindex, follow';
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Where a hotel can legally undercut a booking site | True Trip Costs</title>
+  <meta name="robots" content={ROBOTS} />
+  {/* Self-canonical rather than pointing at the parity section. A canonical to another URL plus
+      noindex is a mixed signal; the honest statement is that this URL is itself, and the page a
+      crawler should rank is named by the link in the credit bar. */}
+  <link rel="canonical" href={SELF} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+</head>
+<body class="embed-page">
+  <EmbedFrame
+    title="Where a hotel can legally undercut a booking site"
+    canonicalUrl={CANONICAL}
+    checked={bookingTacticsChecked}
+    sourceNote="Rate-parity law by country, from the rulings and statutes behind each jurisdiction. Legal freedom to offer a cheaper direct rate, not a promise the direct rate is cheaper.">
+    <ParityMap variant="embed" canonicalUrl={CANONICAL} />
+  </EmbedFrame>
+
+  <style is:inline>
+    /* Inlined, because this is the frame's own page chrome and there is no reason to make the
+       host wait on a stylesheet for four rules. The width cap keeps the map readable when a host
+       drops the iframe into a wide layout: past roughly 900px an equal-area world map stops
+       gaining legibility and just gets tall. */
+    html, body { margin: 0; padding: 0; }
+    body.embed-page { background: #F5F4EF; }
+    body.embed-page > .ef { max-width: 900px; margin: 0 auto; }
+  </style>
+</body>
+</html>

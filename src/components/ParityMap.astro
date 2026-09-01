@@ -1,0 +1,288 @@
+---
+// THE RATE-PARITY WORLD MAP. Where a hotel is LEGALLY FREE to offer a cheaper direct rate.
+//
+// This map adds NO CLAIM the parity table below it does not already make. It is the same
+// PARITY_BY_REGION data, drawn. Nothing here holds a status, a date or a source: it reads them,
+// paints them, and sends every reader to the table for the ruling behind a colour. If this file
+// ever needs to know a fact to render, that fact is in the wrong place.
+//
+// GEOMETRY IS BORROWED WHOLE from src/data/maps/world.js, the Equal Earth country outlines the
+// hotel-tax choropleth already uses, so the two maps on this site are the same projection at the
+// same size and a reader who has seen one can read the other. No new geometry, no runtime map
+// library, no external request: the SVG is written at build time.
+//
+// ============================================================================
+// RAIL 1. A BLOC IS NOT A COUNTRY, AND THIS IS THE WHOLE DIFFICULTY.
+// ============================================================================
+// The table's strongest row says "EU and EEA, all 27 member states". That is the right way to
+// state the ruling and it names no country, so a choropleth cannot paint it without a
+// membership list. The list is EU_EEA_ISOS in booking-tactics.js, deliberately not here.
+//
+// The other two bloc rows colour NOTHING. "EEA inventory, in the platform's own terms" and
+// "European Union, competition law" describe the same footprint by a different instrument, so
+// letting each colour countries would paint one footprint three times.
+//
+// PRECEDENCE: a single-country row beats the bloc it sits inside, because it is the more
+// specific finding. Today they agree everywhere, so this changes nothing on screen; it is
+// written as code rather than as a comment so it stays true when they stop agreeing.
+//
+// ============================================================================
+// RAIL 2. GREY IS "NOT IN OUR CHECKED SET", NEVER "PARITY APPLIES".
+// ============================================================================
+// Most of the world is grey here, and that is the honest output: this data covers a named list
+// of jurisdictions where somebody ruled on parity, not everywhere. The grey is the SAME token
+// the hotel-tax map uses for a country nobody has checked, imported rather than retyped, so the
+// two maps cannot drift into two different meanings for one shade. The legend says what grey is
+// in words, because a colour cannot carry a negation on its own.
+//
+// ============================================================================
+// RAIL 3. WHY THERE ARE ALMOST NO LOCATOR DOTS, UNLIKE THE HOTEL-TAX MAP.
+// ============================================================================
+// HotelTaxMap.astro dots any country whose polygon falls under 45 area units, and its own notes
+// predict the failure this map would hit: "if Phase 2 lights up a dozen European countries at
+// once the dots there will start to collide". This map lights up all of Europe at once, and ten
+// of the thirty EU and EEA members sit under that threshold (Belgium, Cyprus, Denmark, Estonia,
+// Luxembourg, Malta, Netherlands, Slovakia, Slovenia, Liechtenstein). Ten dots inside one green
+// mass would collide, and they would be telling a reader nothing.
+//
+// The reason the thresholds differ is that the two maps answer different questions. On the
+// hotel-tax map every country carries its OWN figure, so a reader has to be able to find a
+// speck. Here countries carry a SHARED bloc status, so a speck-sized Belgium filled the same
+// green as France, Germany and the Netherlands is already legible: the message is "Europe is
+// green", and a contiguous green mass says it better than dots on top of it would.
+//
+// So a dot is drawn ONLY where a country has no polygon at 110m at all, because that is the one
+// case where the fill cannot appear and the country would silently drop out of a legend claiming
+// all thirty. That is Malta and Liechtenstein, and two dots cannot collide.
+import world from '../data/maps/world.js';
+import { STATES } from '../data/hotel-tax-map.js';
+import {
+  PARITY_BY_REGION,
+  PARITY_STATUS,
+  EU_ISOS,
+  EEA_NON_EU_ISOS,
+  EU_EEA_ISOS,
+  EU_EEA_COUNTS,
+  EU_EEA_SOURCE_ROW,
+  bookingTacticsChecked,
+} from '../data/booking-tactics.js';
+
+const {
+  // Where a colour's explanation lives, so every click lands on the sourced row rather than on
+  // a tooltip that restates the colour.
+  tableAnchor = 'rate-parity',
+  variant = 'full',
+  canonicalUrl = null,
+} = Astro.props;
+const embed = variant === 'embed';
+
+const UNCHECKED = STATES.unchecked.fill;
+
+// --- GUARD 1: the bloc row still exists and still says what it said. ---------
+// A rename of that row would otherwise leave thirty countries grey with no error anywhere.
+const blocRow = PARITY_BY_REGION.find((r) => r.jurisdiction === EU_EEA_SOURCE_ROW);
+if (!blocRow) {
+  throw new Error(
+    `ParityMap: no row in PARITY_BY_REGION has jurisdiction "${EU_EEA_SOURCE_ROW}", which is the `
+    + 'row EU_EEA_ISOS inherits its status from. Update EU_EEA_SOURCE_ROW to match the renamed '
+    + 'row, or the whole EU and EEA would render as not-checked grey.'
+  );
+}
+
+// --- GUARD 2: the membership list is the size it claims to be. ---------------
+// Checked PER HALF rather than on the total, because a total-only check passes when one half
+// gains a code and the other loses one, which is exactly the edit an accession produces.
+for (const [half, list, want] of [['EU_ISOS', EU_ISOS, EU_EEA_COUNTS.eu], ['EEA_NON_EU_ISOS', EEA_NON_EU_ISOS, EU_EEA_COUNTS.eea]]) {
+  if (list.length !== want) {
+    throw new Error(
+      `ParityMap: ${half} holds ${list.length} codes but EU_EEA_COUNTS declares ${want}. `
+      + 'An accession or withdrawal has to be made in both the list and the count, deliberately.'
+    );
+  }
+}
+if (new Set(EU_EEA_ISOS).size !== EU_EEA_ISOS.length) {
+  throw new Error('ParityMap: EU_EEA_ISOS contains a duplicate code, so the footprint is wrong even though each half is the right length.');
+}
+
+// --- GUARD 3: every code the map is asked to paint exists in the geometry. ---
+// Either a polygon or a centroid. A code with neither cannot be drawn at all, and silently
+// dropping a jurisdiction from a map that claims coverage is the failure this guard exists for.
+const polyByIso = new Map(world.countries.filter((c) => c.iso).map((c) => [c.iso, c]));
+const microByIso = new Map((world.micro || []).map((m) => [m.iso, m]));
+const referenced = [...EU_EEA_ISOS, ...PARITY_BY_REGION.filter((r) => r.iso).map((r) => r.iso)];
+const unmappable = [...new Set(referenced)].filter((iso) => !polyByIso.has(iso) && !microByIso.has(iso));
+if (unmappable.length) {
+  throw new Error(
+    `ParityMap: ${unmappable.join(', ')} appear in the parity data but have neither a polygon nor `
+    + 'a centroid in src/data/maps/world.js, so they cannot be drawn. Either the code is wrong or '
+    + 'the world map needs regenerating; leaving them out would hide a jurisdiction we hold.'
+  );
+}
+
+// --- BUILDING THE STATUS PER COUNTRY ----------------------------------------
+// Bloc first, then single countries, so the more specific finding overwrites the broader one.
+// That IS the precedence rule from Rail 1, expressed as assignment order.
+const statusByIso = new Map();
+for (const iso of EU_EEA_ISOS) {
+  statusByIso.set(iso, { status: blocRow.status, bloc: true, eu: EU_ISOS.includes(iso) });
+}
+for (const row of PARITY_BY_REGION) {
+  if (!row.iso) continue;
+  statusByIso.set(row.iso, { status: row.status, bloc: false, eu: false });
+}
+
+// A status with no entry in PARITY_STATUS has no colour and no label, which would paint a
+// country in `undefined`. Fail instead.
+for (const [iso, v] of statusByIso) {
+  if (!PARITY_STATUS[v.status]) {
+    throw new Error(`ParityMap: ${iso} carries status "${v.status}", which has no entry in PARITY_STATUS.`);
+  }
+}
+
+// The ONLY place a fill is chosen. A hatched status resolves to its pattern, not its flat colour.
+const patternId = (key) => `pm-hatch-${key}`;
+function fillFor(iso) {
+  const v = statusByIso.get(iso);
+  if (!v) return UNCHECKED;
+  const s = PARITY_STATUS[v.status];
+  return s.hatch ? `url(#${patternId(v.status)})` : s.fill;
+}
+
+// Locator dots: no polygon at all, so the fill has nowhere to land. See Rail 3.
+const dots = [...statusByIso.keys()]
+  .filter((iso) => !polyByIso.has(iso) && microByIso.has(iso))
+  .map((iso) => {
+    const m = microByIso.get(iso);
+    const v = statusByIso.get(iso);
+    return { iso, name: m.name, cx: m.cx, cy: m.cy, fill: fillFor(iso), status: v.status };
+  })
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+// Native <title> per shape, the same approach and the same limit HotelTaxMap.astro documents:
+// a hover and tooltip win rather than a screen-reader win, because the parent svg is one atomic
+// image. It may only restate what the colour already says, and it keys off the same map the fill
+// does so the two cannot disagree.
+function titleFor(iso, name) {
+  if (!name) return null;
+  const v = statusByIso.get(iso);
+  // Covers both a country we hold nothing for AND a Natural Earth entity with no ISO code at
+  // all, which can never be coloured. Both are, factually, not in our checked set, and reading
+  // one as a bare name while its neighbours explain themselves was an inconsistency.
+  if (!v) return `${name}: not in our checked set`;
+  const label = PARITY_STATUS[v.status].label;
+  // NAMES THE INSTRUMENT, NOT THE MEMBERSHIP. Quoting the bloc row's own wording put "all 27
+  // member states" beside Iceland, Norway and Liechtenstein, which are EEA states and not EU
+  // members. One ruling covers both groups, so the accurate suffix names the ruling.
+  const via = v.bloc ? ', via the EU and EEA ruling' : '';
+  return `${name}: ${label}${via}`;
+}
+
+// Counts for the legend, derived so they cannot be claimed wrongly.
+const countFor = (status) => [...statusByIso.values()].filter((v) => v.status === status).length;
+const legend = Object.entries(PARITY_STATUS).map(([key, s]) => ({
+  key, label: s.label, fill: s.fill, hatch: s.hatch, meaning: s.meaning, count: countFor(key),
+}));
+const colouredCount = statusByIso.size;
+
+const described = legend.map((l) => `${l.count} ${l.label}`).join(', ');
+---
+
+<figure class:list={['pm', embed && 'pm-embed']}>
+  <div class="pm-wrap">
+    <svg class="pm-svg" viewBox={world.viewBox} xmlns="http://www.w3.org/2000/svg"
+         preserveAspectRatio="xMidYMid meet"
+         role="img"
+         data-embed-href={embed && canonicalUrl ? canonicalUrl : undefined}
+         aria-label={`World map shading each country by whether a hotel is legally free to offer a cheaper direct rate than a booking platform. ${described}. Every other country is not in our checked set. The full rulings and dates are in the table below this map.`}>
+      <defs>
+        {legend.filter((l) => l.hatch).map((l) => (
+          <pattern id={patternId(l.key)} width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+            <rect width="7" height="7" fill={l.fill} />
+            <line x1="0" y1="0" x2="0" y2="7" stroke="#FFFFFF" stroke-width="2.4" stroke-opacity="0.62" />
+          </pattern>
+        ))}
+      </defs>
+
+      <g class="pm-countries">
+        {world.countries.map((c) => {
+          const t = titleFor(c.iso, c.name);
+          return (
+            <path d={c.d} fill={c.iso ? fillFor(c.iso) : UNCHECKED} data-iso={c.iso || undefined}
+                  data-pm={c.iso && statusByIso.has(c.iso) ? statusByIso.get(c.iso).status : 'unchecked'}>
+              {t ? <title>{t}</title> : null}
+            </path>
+          );
+        })}
+      </g>
+
+      {/* Only the countries 110m does not draw. Two of them. */}
+      <g class="pm-dots">
+        {dots.map((d) => (
+          <circle cx={d.cx} cy={d.cy} r="5.5" fill={d.fill} stroke="#F5F4EF" stroke-width="1.5" data-iso={d.iso}>
+            <title>{titleFor(d.iso, d.name)}</title>
+          </circle>
+        ))}
+      </g>
+    </svg>
+
+    <p class="pm-stamp"><b>True Trip Costs</b><span>Legal freedom to undercut, not a promise of a lower price. Checked {bookingTacticsChecked}.</span></p>
+  </div>
+
+  <ul class="pm-legend">
+    {legend.map((l) => (
+      <li class="pm-lg">
+        <span class="pm-sw" style={`background:${l.fill}`} aria-hidden="true">
+          {l.hatch && <span class="pm-sw-h"></span>}
+        </span>
+        <span class="pm-lg-t">
+          <b>{l.label}</b>
+          <span class="pm-lg-n">{l.count} {l.count === 1 ? 'country' : 'countries'}</span>
+        </span>
+      </li>
+    ))}
+    <li class="pm-lg">
+      <span class="pm-sw" style={`background:${UNCHECKED}`} aria-hidden="true"></span>
+      <span class="pm-lg-t">
+        <b>Not in our checked set</b>
+        <span class="pm-lg-n">Not the same as parity applying</span>
+      </span>
+    </li>
+  </ul>
+
+  <figcaption class="pm-cap">
+    {colouredCount} countries carry a position here, from {PARITY_BY_REGION.length} rulings and statutes.
+    The thirty EU and EEA states take their colour from one ruling that covers all of them, so they
+    are shaded from the bloc rather than checked one by one.
+    {dots.length > 0 && <Fragment> Malta and Liechtenstein are drawn as dots because the world outline this map uses does not draw them at all.</Fragment>}
+    {!embed && <Fragment> Every colour is explained in <a href={`#${tableAnchor}`}>the table below</a>, with the ruling and the date behind it.</Fragment>}
+  </figcaption>
+</figure>
+
+<style>
+  .pm{margin:0}
+  .pm-wrap{position:relative;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:10px 10px 0;overflow:hidden}
+  .pm-svg{width:100%;height:auto;display:block;overflow:hidden}
+  .pm-countries path{stroke:#F5F4EF;stroke-width:0.5;vector-effect:non-scaling-stroke}
+
+  .pm-stamp{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 8px;margin:0;padding:8px 6px 10px;font-size:11px;line-height:1.45;color:var(--muted)}
+  .pm-stamp b{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--teal-deep)}
+
+  .pm-legend{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 18px;margin:14px 0 0;padding:0}
+  .pm-lg{display:flex;align-items:flex-start;gap:9px;margin:0}
+  .pm-sw{position:relative;width:16px;height:16px;border-radius:4px;flex:none;margin-top:1px;border:1px solid rgba(22,48,44,.14);overflow:hidden}
+  /* The legend swatch carries the same hatch the map does, or the second channel that hatch
+     exists to provide would be missing from the key that explains it. */
+  .pm-sw-h{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.62) 0 2.4px,rgba(255,255,255,0) 2.4px 7px)}
+  .pm-lg-t{font-size:13px;line-height:1.4;color:var(--ink);min-width:0}
+  .pm-lg-t b{font-weight:600;display:block}
+  .pm-lg-n{display:block;font-size:12px;color:var(--muted);line-height:1.45}
+
+  .pm-cap{font-size:12.5px;color:var(--muted);line-height:1.55;margin:14px 0 0;max-width:720px}
+  .pm-cap a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+  .pm-cap a:hover{text-decoration:underline}
+
+  @media (max-width:560px){
+    .pm-legend{grid-template-columns:1fr;gap:9px}
+    .pm-wrap{padding:8px 8px 0}
+  }
+</style>

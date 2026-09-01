@@ -178,12 +178,20 @@ export const PROPERTY_FEE_BAND = {
 // prints that in its own words next to the table, because a reader who takes this as a
 // promise of a cheaper direct rate has been misled by us.
 //
-// `slug` is OPTIONAL and means one thing only: this row is a SINGLE country that has a live
-// guide on this site, so the table may show its flag and link its name to that guide. It is
-// absent on every multi-country row, because "EU and EEA, all 27 member states" cannot wear one
-// flag without asserting something false, and it is absent on Belgium and the United States,
-// which have no guide here to link to. The page THROWS at build time if a slug names a country
-// that is not live, so a retired guide cannot leave a 404 in this table.
+// `slug` marks a row as a SINGLE country we can IDENTIFY, which is not the same as one we have
+// written a guide about, and the table does two different things with it:
+//   flag   shown whenever a slug is present and a flag file exists. A flag is identification.
+//   link   added only where the slug is also a LIVE COUNTRY GUIDE. A link is a promise that
+//          there is something at the other end.
+// Belgium therefore carries a slug and shows its flag with no link, because there is no
+// Belgium guide. Every multi-country row carries no slug at all: "EU and EEA, all 27 member
+// states" cannot wear one flag without asserting something false. The page THROWS at build time
+// if a slug has no flag file, so a row can never quietly fall back to the generic globe and
+// present it as a country's flag.
+//
+// `iso` is the ISO 3166-1 alpha-2 code, present on single-country rows only, and it is what
+// lets the choropleth colour that country. Bloc rows carry no iso: they colour their members
+// through EU_EEA_ISOS below instead, because a bloc is not a country.
 
 // `order` is display order only, and it is deliberate: the EEA-wide position leads because
 // it is the change that covers the most readers, the national rulings that got there first
@@ -192,20 +200,37 @@ export const PROPERTY_FEE_BAND = {
 // The reader-facing words for the three statuses, held here beside the statuses themselves
 // so the table's legend, its chips and any later map all read one source. A status without
 // an entry here has no label to render, which is a build-visible gap rather than a silent one.
+//
+// `fill` and `hatch` are the MAP side of the same source. Holding them here rather than in the
+// map component is what stops the choropleth and the table drifting into two different colour
+// vocabularies for one set of statuses, which is the same reasoning hotel-tax-map.js gives for
+// keeping BANDS out of its component.
+//
+// `hatch` on the middle status is not decoration. Green, gold and burnt orange are three warm
+// steps that a red-green colour deficiency can flatten, and the middle status is the one whose
+// meaning is genuinely partial, so it carries a diagonal hatch as well as a colour. That gives
+// it a second channel a colour deficiency cannot remove, and it reuses the idiom the hotel-tax
+// map already established, where a hatch means "not one clean answer".
 export const PARITY_STATUS = {
   free: {
     label: 'Direct can undercut',
     tone: 'good',
+    fill: '#0E7A5F',
+    hatch: false,
     meaning: 'Parity clauses are void or prohibited, so a hotel may legally offer a better price on its own site and on other channels.',
   },
   narrowed: {
     label: 'Partly free',
     tone: 'mixed',
+    fill: '#C99A2E',
+    hatch: true,
     meaning: 'Wide clauses are gone, so a hotel may undercut on other platforms, but a narrow clause covering its own website may still bind.',
   },
   binds: {
     label: 'Parity still binds',
     tone: 'bad',
+    fill: '#B45309',
+    hatch: false,
     meaning: 'No parity ban is in force, so a hotel may be contractually held to the same price it shows on a platform.',
   },
 };
@@ -241,6 +266,7 @@ export const PARITY_BY_REGION = [
   {
     order: 4,
     jurisdiction: 'Germany',
+    iso: 'DE',
     slug: 'germany',
     status: 'free',
     sinceDate: '18 May 2021',
@@ -251,6 +277,7 @@ export const PARITY_BY_REGION = [
   {
     order: 5,
     jurisdiction: 'France',
+    iso: 'FR',
     slug: 'france',
     status: 'free',
     sinceDate: '2015',
@@ -261,6 +288,7 @@ export const PARITY_BY_REGION = [
   {
     order: 6,
     jurisdiction: 'Austria',
+    iso: 'AT',
     slug: 'austria',
     status: 'free',
     sinceDate: '2016',
@@ -271,6 +299,7 @@ export const PARITY_BY_REGION = [
   {
     order: 7,
     jurisdiction: 'Italy',
+    iso: 'IT',
     slug: 'italy',
     status: 'free',
     sinceDate: '2017',
@@ -281,6 +310,8 @@ export const PARITY_BY_REGION = [
   {
     order: 8,
     jurisdiction: 'Belgium',
+    iso: 'BE',
+    slug: 'belgium',
     status: 'free',
     sinceDate: '2018',
     sinceISO: '2018-08-01',
@@ -290,6 +321,7 @@ export const PARITY_BY_REGION = [
   {
     order: 9,
     jurisdiction: 'Switzerland',
+    iso: 'CH',
     slug: 'switzerland',
     status: 'free',
     sinceDate: '2022',
@@ -300,6 +332,7 @@ export const PARITY_BY_REGION = [
   {
     order: 10,
     jurisdiction: 'Spain',
+    iso: 'ES',
     slug: 'spain',
     status: 'free',
     sinceDate: '29 July 2024',
@@ -310,6 +343,7 @@ export const PARITY_BY_REGION = [
   {
     order: 11,
     jurisdiction: 'United Kingdom',
+    iso: 'GB',
     slug: 'united-kingdom',
     status: 'narrowed',
     sinceDate: 'undertakings from 2015',
@@ -320,6 +354,7 @@ export const PARITY_BY_REGION = [
   {
     order: 12,
     jurisdiction: 'Australia',
+    iso: 'AU',
     slug: 'australia',
     status: 'narrowed',
     sinceDate: '2016',
@@ -330,6 +365,7 @@ export const PARITY_BY_REGION = [
   {
     order: 13,
     jurisdiction: 'Japan',
+    iso: 'JP',
     slug: 'japan',
     status: 'free',
     sinceDate: 'competition-authority action',
@@ -340,6 +376,7 @@ export const PARITY_BY_REGION = [
   {
     order: 14,
     jurisdiction: 'South Korea',
+    iso: 'KR',
     slug: 'south-korea',
     status: 'free',
     sinceDate: 'competition-authority action',
@@ -350,6 +387,7 @@ export const PARITY_BY_REGION = [
   {
     order: 15,
     jurisdiction: 'United States',
+    iso: 'US',
     status: 'binds',
     sinceDate: 'no ban in force',
     sinceISO: null,
@@ -357,6 +395,58 @@ export const PARITY_BY_REGION = [
     source: { label: 'No US federal or state rate-parity prohibition in force as at Sep 2026', url: null, type: 'reg' },
   },
 ];
+
+// --- who the EU and EEA bloc row actually covers ------------------------------
+// A CHOROPLETH COLOURS COUNTRIES, AND A BLOC ROW NAMES NONE. The DMA row in the table above
+// says "EU and EEA, all 27 member states", which is the correct way to state the ruling and
+// useless to a map. So the membership is written out here, once, as ISO 3166-1 alpha-2 codes,
+// and the map colours these from that row's status.
+//
+// WHY IT LIVES IN THIS FILE AND NOT IN THE COMPONENT. Same reason every other figure does: the
+// component paints what it is given. A membership list buried in a map component is a fact
+// nobody audits, and this one will change the next time the EU does.
+//
+// THE OTHER TWO BLOC ROWS COLOUR NOTHING EXTRA, ON PURPOSE. "EEA inventory, in the platform's
+// own terms" and "European Union, competition law" describe the SAME footprint as the DMA row
+// by a different instrument: a contractual waiver and a competition judgment. They are three
+// routes to one outcome over one set of countries, so treating each as its own colouring rule
+// would count the same footprint three times and imply a breadth the data does not have. They
+// remain table rows, which is where a reader can see that three separate instruments agree.
+//
+// PRECEDENCE, WRITTEN DOWN BEFORE IT IS NEEDED. Today every single-country row inside this
+// bloc carries status "free", the same as the bloc, so nothing conflicts and the map has no
+// decision to make. If a future row ever disagreed with its bloc, THE SINGLE-COUNTRY ROW WINS,
+// because it is the more specific finding about that country. The map implements that order
+// explicitly rather than relying on the order the array happens to be in.
+// HELD AS TWO HALVES, COMPOSED INTO ONE. The first version was a single flat array of 30 with
+// the split marked by a comment, and it produced a small false claim on the map: the hover text
+// named the bloc row verbatim, so Iceland, Norway and Liechtenstein were each labelled "via EU
+// and EEA, all 27 member states", which reads as telling a reader those three are EU members.
+// They are not. Splitting the list means the distinction is data the map can act on rather than
+// a comment it cannot see, and it lets the build guard check BOTH counts instead of only the
+// total, which a compensating error in one half would have slipped past.
+export const EU_ISOS = [
+  'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT',
+  'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE',
+];
+
+// The EEA states that are not EU members. These matter here rather than being a footnote: the
+// DMA applies across the EEA, so a hotel in Oslo or Reykjavik has the same freedom as one in
+// Berlin, and a map that stopped at the EU border would understate the ruling.
+export const EEA_NON_EU_ISOS = ['IS', 'LI', 'NO'];
+
+// The full footprint the bloc row colours. Composed, never typed, so it cannot disagree with its
+// own halves.
+export const EU_EEA_ISOS = [...EU_ISOS, ...EEA_NON_EU_ISOS];
+
+// The counts the map asserts at build time, per half. A future accession or withdrawal has to be
+// made deliberately in both the list and the count.
+export const EU_EEA_COUNTS = { eu: 27, eea: 3 };
+
+// The bloc row whose status the list above inherits, matched on its jurisdiction text. Named
+// here so the map never hardcodes which row is the bloc row, and so a rename of that row fails
+// the build rather than silently leaving 30 countries grey.
+export const EU_EEA_SOURCE_ROW = 'EU and EEA, all 27 member states';
 
 // --- fee-disclosure law, which is a different question ----------------------
 // Parity law decides whether a hotel MAY undercut. These rules decide whether the price you

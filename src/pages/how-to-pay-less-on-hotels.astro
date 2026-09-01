@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import StackBar from '../components/StackBar.astro';
 import BandBar from '../components/BandBar.astro';
+import ParityMap from '../components/ParityMap.astro';
 import CompareByRegion from '../components/CompareByRegion.astro';
 import {
   bookingTacticsChecked,
@@ -176,7 +177,7 @@ const commissionGroups = [
     label: 'What a hotel pays on one booking',
     measures: 'The commission deducted from a single reservation. This is the money a direct booking can recover, so it is the figure the book-direct tactic actually rests on.',
     rows: [
-      { label: 'The band across the major platforms', lo: OTA_COMMISSION.lowPct, hi: OTA_COMMISSION.highPct, figure: OTA_COMMISSION.headline, tone: 'lead' },
+      { label: 'The band across the major platforms', lo: OTA_COMMISSION.lowPct, hi: OTA_COMMISSION.highPct, figure: OTA_COMMISSION.headline, tone: 'lead', eyebrow: 'The full band', breakdown: 'How it breaks down' },
       ...OTA_COMMISSION.detail.map((d) => ({
         label: d.label,
         lo: d.lowPct,
@@ -243,27 +244,54 @@ const dripRows = [
 
 // The parity table, in the order the data declares.
 //
-// A row's optional `slug` is RESOLVED AGAINST THE LIVE GUIDES here rather than trusted. A
-// hand-typed slug that no longer names a live country is exactly the defect site-urls.js was
-// written to prevent (its own header records the /netherlands/hotel-taxes-and-fees case), and a
-// table of legal citations is the last place a reader should meet a 404. So a stale slug fails
-// the build instead of shipping, and a row whose country is not live simply renders as text.
+// A row's optional `slug` does TWO DIFFERENT JOBS and they resolve separately here.
+//
+//   FLAG  identification. Shown whenever the row is a single country and a real flag file
+//         exists. Belgium has no guide on this site, and showing no flag beside it while every
+//         neighbour carried one read as a gap in the data rather than as the absence of a
+//         guide, which is what it actually is.
+//   LINK  a promise there is something at the other end. Added ONLY where the slug is also a
+//         live country guide. A hand-typed slug in a table of legal citations is the
+//         /brazil/e-visa class of bug waiting to happen, and site-urls.js exists because that
+//         has already shipped once on this site.
+//
+// THE FLAG GUARD MATTERS MORE THAN IT LOOKS. flagSrc falls back to /flags/world.svg, a generic
+// globe. Falling back silently would put a globe next to "Belgium" and present it as Belgium's
+// flag, which is worse than the gap it was meant to fix: a wrong flag is a claim, an absent one
+// is not. So a slug with no flag file fails the build and the row can be left slug-less instead.
 const liveSlugs = new Set(countries.filter((c) => c.live && !c.blocked).map((c) => c.slug));
 const parityRows = PARITY_BY_REGION.slice()
   .sort((a, b) => a.order - b.order)
   .map((r) => {
-    if (!r.slug) return { ...r, guide: null };
-    if (!liveSlugs.has(r.slug)) {
+    // An unknown status used to surface as "TypeError: Cannot read properties of undefined
+    // (reading 'tone')" from the chip below, which fails the build safely and tells whoever hit
+    // it nothing. PARITY_STATUS is the only place a status gets a label, a colour and a chip
+    // tone, so a row outside it cannot be rendered by either the table or the map.
+    if (!PARITY_STATUS[r.status]) {
       throw new Error(
-        `how-to-pay-less-on-hotels: the parity row "${r.jurisdiction}" carries slug "${r.slug}", `
-        + 'which is not a live country guide. Either the guide was renamed or retired, or the slug '
-        + 'is a typo. Remove the slug to render the row as plain text, or correct it.'
+        `how-to-pay-less-on-hotels: the parity row "${r.jurisdiction}" carries status "${r.status}", `
+        + `which has no entry in PARITY_STATUS. Valid statuses are: ${Object.keys(PARITY_STATUS).join(', ')}. `
+        + 'Add the status to PARITY_STATUS with its label, chip tone, map fill and meaning, or correct the row.'
       );
     }
-    return { ...r, guide: { url: `/${r.slug}`, flag: flagSrc(r.slug) } };
+    if (!r.slug) return { ...r, flag: null, guideUrl: null };
+    if (!fs.existsSync(flagDir + r.slug + '.svg')) {
+      throw new Error(
+        `how-to-pay-less-on-hotels: the parity row "${r.jurisdiction}" carries slug "${r.slug}" but `
+        + `there is no public/flags/${r.slug}.svg. flagSrc would fall back to the generic globe and `
+        + 'present it as that country\u2019s flag. Add the flag file, or remove the slug.'
+      );
+    }
+    return {
+      ...r,
+      flag: flagSrc(r.slug),
+      // Not live means no guide to link to. The flag still shows; the name stays plain text.
+      guideUrl: liveSlugs.has(r.slug) ? `/${r.slug}` : null,
+    };
   });
 const freeCount = parityRows.filter((r) => r.status === 'free').length;
-const flaggedCount = parityRows.filter((r) => r.guide).length;
+const flaggedCount = parityRows.filter((r) => r.flag).length;
+const linkedCount = parityRows.filter((r) => r.guideUrl).length;
 
 // SOURCES, AND HOW MANY ARE LINKED. Counted at build time rather than claimed, because the
 // honest state of this page is that the load-bearing legal citations carry their primary
@@ -292,6 +320,28 @@ for (const s of linkedSources) {
   seenUrl.add(s.url);
   panelSources.push(s);
 }
+
+// THE EMBED SNIPPET, a const rather than typed into the markup for the same reason
+// /hotel-tax-map keeps its own here: the height has to agree with the real height of
+// /embed/rate-parity or the frame scrolls internally on a stranger's article, so it is a number
+// somebody will need to retune when that page changes, and keeping it here named means it gets
+// found.
+//
+// 760 IS AN ESTIMATE AND SHOULD BE CONFIRMED AGAINST THE LIVE FRAME. It is built up rather than
+// guessed: the map is 1000 by 439.1, so in a typical 640px article column the SVG is about 259px
+// and the wrap with its stamp about 300px; the four-line legend adds roughly 90px at two columns,
+// the caption about 90px, and EmbedFrame's own head and credit bar about 120px together. That is
+// roughly 600px, and the margin covers a narrow column, where the map shortens but the legend
+// goes to one column and the caption wraps to more lines. Erring high is deliberate: too much
+// height leaves white space inside the frame, too little makes the frame scroll internally,
+// which is much worse.
+//
+// loading=lazy so the embed costs the host page nothing until it scrolls near. The referrer
+// policy is the browser default spelled out, so TTC can still see which sites embed the map
+// without leaking a full URL to an http host.
+const SNIPPET = `<iframe src="https://truetripcosts.com/embed/rate-parity" width="100%" height="760"
+  style="border:0" title="Where a hotel can legally undercut a booking site, from True Trip Costs"
+  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`;
 
 const ICONS = {
   court: '<path d="M12 3v18"></path><path d="M4 8h16"></path><path d="M7 8l-3 6h6z"></path><path d="M17 8l-3 6h6z"></path>',
@@ -592,6 +642,12 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
       <h2>Where booking direct can legally be cheaper</h2>
       <p class="bt-note">Rate parity is the contractual term that stopped a hotel offering a better price on its own site than on a platform. Across most of Europe it is now void or prohibited, which is what makes tactic five worth the thirty seconds. In the US there is no parity ban at all, which is the single most important row in this table for anyone reading this from home.</p>
 
+      <p class="bt-mapline">The map shows where a hotel is <b>legally free</b> to offer a cheaper direct rate. That is not a promise the direct rate will be cheaper. Grey means a country is not in our checked set, which is not the same as parity applying there.</p>
+
+      <ParityMap tableAnchor={SEC.parity.id} />
+
+      <h3 class="bt-th">The rulings, one row at a time</h3>
+
       <div class="bt-legend">
         {Object.entries(PARITY_STATUS).map(([key, s]) => (
           <p class={`bt-lg is-${s.tone}`}>
@@ -609,10 +665,23 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
           caption rendered one word per line down the page. Resetting the caption's display
           would have fixed the symptom; taking it out of the table means table layout can never
           reach it again, at any width. */}
-      <p class="bt-cap">Rate parity by jurisdiction, with the ruling or statute behind each row. Checked {bookingTacticsChecked}. {flaggedCount} of the {parityRows.length} rows are a single country we cover, and those link to the country guide.</p>
+      <p class="bt-cap">Rate parity by jurisdiction, with the ruling or statute behind each row. Checked {bookingTacticsChecked}. {flaggedCount} of the {parityRows.length} rows are a single country, and the {linkedCount} of those with a guide on this site link to it.</p>
 
       <div class="bt-tablewrap">
         <table class="bt-table">
+          {/* FIX: explicit column widths. Without a colgroup the browser sized all four columns
+              from their content, and three of them contain short strings with white-space:nowrap
+              while the fourth holds a paragraph of legal citation. So the ruling column, the one
+              a reader is actually here for, was crushed into a narrow strip and the tall EU rows
+              carried large empty gaps beside it. These four add to 100 and hand the ruling the
+              room. table-layout stays auto so a long jurisdiction name can still push its own
+              column rather than overflowing. */}
+          <colgroup>
+            <col style="width:18%" />
+            <col style="width:14%" />
+            <col style="width:12%" />
+            <col style="width:56%" />
+          </colgroup>
           <thead>
             <tr>
               <th scope="col">Jurisdiction</th>
@@ -624,18 +693,21 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
           <tbody>
             {parityRows.map((r) => (
               <tr class:list={[{ 'is-us': r.status === 'binds' }]}>
-                {/* A flag and a guide link appear only where `slug` resolved, which means the
-                    row is one country this site covers. A multi-country row renders as plain
-                    text: "EU and EEA, all 27 member states" cannot wear one flag without
-                    asserting something false, and Belgium and the US have no guide here. */}
+                {/* A flag appears wherever the row is one country we can identify. A LINK
+                    appears only where there is a guide behind it, so Belgium shows its flag
+                    with a plain name. A multi-country row gets neither: "EU and EEA, all 27
+                    member states" cannot wear one flag without asserting something false. */}
                 <th scope="row" data-l="Jurisdiction">
-                  {r.guide ? (
-                    <a class="bt-j" href={r.guide.url}>
-                      <span class="bt-jflag"><img src={r.guide.flag} alt="" width="22" height="16" loading="lazy" /></span>
+                  {r.guideUrl ? (
+                    <a class="bt-j" href={r.guideUrl}>
+                      <span class="bt-jflag"><img src={r.flag} alt="" width="22" height="16" loading="lazy" /></span>
                       <span class="bt-jname">{r.jurisdiction}</span>
                     </a>
                   ) : (
-                    <span class="bt-j is-plain">{r.jurisdiction}</span>
+                    <span class="bt-j is-plain">
+                      {r.flag && <span class="bt-jflag"><img src={r.flag} alt="" width="22" height="16" loading="lazy" /></span>}
+                      <span class="bt-jname">{r.jurisdiction}</span>
+                    </span>
                   )}
                 </th>
                 <td data-l="Status">
@@ -655,6 +727,21 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
       </div>
 
       <p class="bt-do">Two things this table does not say. It does not say a direct rate will be cheaper, only that a hotel is free to make it so. And it says nothing about whether the price you were shown had to include the mandatory fees, which is a separate question answered by <a href="#drip">the disclosure rules above</a>. A jurisdiction can be strict on one and silent on the other, and the US is exactly that: no parity ban, and one of the more specific fee-disclosure rules anywhere.</p>
+
+      <div class="bt-embed">
+        <h3 class="bt-th">Use this map on your own site</h3>
+        <p class="bt-note">The map is free to embed anywhere, including commercially. It is served from here, so it stays current on your page as the law moves and we recheck it. A credit link back is appreciated and not required: the frame carries one already.</p>
+
+        <label class="bt-esnip-lab" for="bt-esnip">Paste this where you want the map</label>
+        <textarea class="bt-esnip" id="bt-esnip" readonly rows="4" spellcheck="false" aria-describedby="bt-ecopy-hint">{SNIPPET}</textarea>
+
+        <div class="bt-erow">
+          <button class="bt-ecopy" type="button" data-copy-snippet hidden>Copy the snippet</button>
+          <span class="bt-ecopy-msg" data-copy-msg role="status" aria-live="polite"></span>
+          <a class="bt-eprev" href="/embed/rate-parity" target="_blank" rel="noopener">See what it looks like</a>
+        </div>
+        <p class="bt-ehint" id="bt-ecopy-hint">Clicking the box selects the whole snippet, so it copies with one keystroke if the button is not there.</p>
+      </div>
     </section>
 
     <section class="bt-sec">
@@ -711,6 +798,42 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
     <CompareByRegion />
   </main>
   <Footer />
+
+  {/* The copy button reveals itself only where the Clipboard API exists, so a reader with
+      JavaScript off, or on a browser without it, never sees a button that does nothing. The
+      snippet is a readonly textarea and selectable by hand either way, which is the path that
+      always works. Same script as /hotel-tax-map, against this page's own ids. */}
+  <script is:inline>
+    (function () {
+      var box = document.getElementById('bt-esnip');
+      var btn = document.querySelector('[data-copy-snippet]');
+      var msg = document.querySelector('[data-copy-msg]');
+      if (!box) return;
+
+      box.addEventListener('focus', function () { box.select(); });
+      box.addEventListener('click', function () { box.select(); });
+
+      if (!btn || !navigator.clipboard || !navigator.clipboard.writeText) return;
+      btn.hidden = false;
+
+      var timer = null;
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(box.value).then(function () {
+          btn.textContent = 'Copied';
+          if (msg) msg.textContent = 'Snippet copied to your clipboard.';
+        }).catch(function () {
+          box.select();
+          if (msg) msg.textContent = 'Could not copy automatically. The snippet is selected, so copy it now.';
+        }).then(function () {
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            btn.textContent = 'Copy the snippet';
+            if (msg) msg.textContent = '';
+          }, 2600);
+        });
+      });
+    })();
+  </script>
 
   <style>
     /* SPACING PASS. The three joints that read as gaps rather than rhythm:
@@ -832,6 +955,13 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
     .bt-lgk{display:block;font-size:13px;font-weight:700;color:var(--ink);margin:0 0 2px}
     .bt-lgm{display:block;font-size:13px;color:var(--muted);line-height:1.55}
 
+    /* The one calm line above the map. Bordered on the left so it reads as a qualification of
+       the visual rather than as body copy, and short on purpose: the full nuance is under the
+       table and repeating it here would bury the map. */
+    .bt-mapline{font-size:14px;line-height:1.6;color:var(--ink);border-left:3px solid var(--teal);background:var(--green-bg);border-radius:0 10px 10px 0;padding:12px 15px;margin:0 0 16px;max-width:720px}
+    .bt-mapline b{font-weight:700}
+    .bt-th{font-family:var(--serif);font-weight:500;font-size:18px;color:var(--ink);margin:28px 0 10px;line-height:1.3}
+
     /* overflow-x:auto rather than overflow:hidden. The old rule clipped the table when its
        columns could not compress further, which hid the right-hand column entirely at the
        widths just above the card breakpoint. Scrolling keeps every column at a readable width
@@ -887,6 +1017,10 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
          scrollbar under the cards for no reason. */
       .bt-tablewrap{overflow-x:visible}
       .bt-table{min-width:0}
+      /* The colgroup's percentages describe table columns, and there are none left once the
+         rows become blocks. Left live they do nothing visible, but display:none states the
+         intent so nobody later wonders whether 18% is still binding here. */
+      .bt-table colgroup{display:none}
       .bt-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
       .bt-table,.bt-table tbody,.bt-table tr,.bt-table th,.bt-table td{display:block;width:auto}
       .bt-table tr{border-bottom:1px solid var(--line);padding:14px 16px}
@@ -897,6 +1031,21 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
       .bt-table td[data-l="Since"]::before{content:attr(data-l) ": ";font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep)}
       .bt-since{white-space:normal}
     }
+
+    /* The embed block. Set apart from the table above it because it speaks to a different
+       reader: somebody deciding whether to cite this, not somebody planning a trip. */
+    .bt-embed{margin:30px 0 0;padding:20px;border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow)}
+    .bt-embed .bt-th{margin:0 0 6px}
+    .bt-esnip-lab{display:block;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 6px}
+    .bt-esnip{width:100%;font-family:var(--mono);font-size:12px;line-height:1.55;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:11px 12px;resize:vertical}
+    .bt-erow{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin:11px 0 0}
+    .bt-ecopy{font:inherit;font-size:13.5px;font-weight:600;color:#fff;background:var(--teal-deep);border:0;border-radius:999px;padding:9px 18px;cursor:pointer;transition:background-color .15s ease}
+    .bt-ecopy:hover{background:var(--teal)}
+    .bt-ecopy[hidden]{display:none}
+    .bt-ecopy-msg{font-size:12.5px;color:var(--muted)}
+    .bt-eprev{font-size:13px;font-weight:500;color:var(--teal-deep);text-decoration:none}
+    .bt-eprev:hover{text-decoration:underline}
+    .bt-ehint{font-size:12px;color:var(--muted);line-height:1.5;margin:10px 0 0}
 
     /* The sources panel is a jump destination, so it needs the same 74px offset every other
        target on the site uses, or the summary lands tucked under the sticky nav. */
