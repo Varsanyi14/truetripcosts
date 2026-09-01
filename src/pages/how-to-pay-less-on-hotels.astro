@@ -21,6 +21,34 @@ import {
   TIMING_MYTHS,
 } from '../data/booking-tactics.js';
 import { hotelTaxMap, colours, bandFor, BANDS } from '../data/hotel-tax-map.js';
+import { countries } from '../data/index.js';
+import fs from 'node:fs';
+
+// Flag per country, the same lookup the homepage, /cash-or-card and /hotel-taxes-and-fees use:
+// /flags/<slug>.svg, falling back to the globe.
+const flagDir = process.cwd() + '/public/flags/';
+const flagSrc = (slug) => (fs.existsSync(flagDir + slug + '.svg') ? '/flags/' + slug + '.svg' : '/flags/world.svg');
+
+// THE JUMP LIST, AND WHY ITS IDS LIVE HERE.
+//
+// This page is long, and a reader arriving with one question ("can I ask for a lower rate in the
+// US?") should not have to scroll past six tactics to reach the answer. Same reasoning as the
+// "On this page" list on every country guide, and the same markup and classes, so the two read
+// as one site.
+//
+// The ids are held in ONE object that both the nav and the sections read, which is what makes a
+// dead anchor impossible by construction rather than by review. CountryBriefing.astro states the
+// same rail for its own JUMP list. Cross-reference anchors used only inside the prose
+// (#book-direct, #check-the-hotel, #drip) are deliberately NOT here: they are targets for links
+// in the copy, not destinations a reader navigates to from the top.
+const SEC = {
+  price:   { id: 'whats-in-a-price', label: 'What is in a hotel price' },
+  tactics: { id: 'tactics', label: 'The seven tactics' },
+  how:     { id: 'the-practical-how', label: 'The practical how' },
+  parity:  { id: 'rate-parity', label: 'Where direct can legally be cheaper' },
+  sources: { id: 'sources', label: 'Sources, and how this was checked' },
+};
+const JUMP = Object.values(SEC);
 
 // THE ACTION LAYER OVER WORK THIS SITE ALREADY DOES.
 //
@@ -214,8 +242,28 @@ const dripRows = [
 ];
 
 // The parity table, in the order the data declares.
-const parityRows = PARITY_BY_REGION.slice().sort((a, b) => a.order - b.order);
+//
+// A row's optional `slug` is RESOLVED AGAINST THE LIVE GUIDES here rather than trusted. A
+// hand-typed slug that no longer names a live country is exactly the defect site-urls.js was
+// written to prevent (its own header records the /netherlands/hotel-taxes-and-fees case), and a
+// table of legal citations is the last place a reader should meet a 404. So a stale slug fails
+// the build instead of shipping, and a row whose country is not live simply renders as text.
+const liveSlugs = new Set(countries.filter((c) => c.live && !c.blocked).map((c) => c.slug));
+const parityRows = PARITY_BY_REGION.slice()
+  .sort((a, b) => a.order - b.order)
+  .map((r) => {
+    if (!r.slug) return { ...r, guide: null };
+    if (!liveSlugs.has(r.slug)) {
+      throw new Error(
+        `how-to-pay-less-on-hotels: the parity row "${r.jurisdiction}" carries slug "${r.slug}", `
+        + 'which is not a live country guide. Either the guide was renamed or retired, or the slug '
+        + 'is a typo. Remove the slug to render the row as plain text, or correct it.'
+      );
+    }
+    return { ...r, guide: { url: `/${r.slug}`, flag: flagSrc(r.slug) } };
+  });
 const freeCount = parityRows.filter((r) => r.status === 'free').length;
+const flaggedCount = parityRows.filter((r) => r.guide).length;
 
 // SOURCES, AND HOW MANY ARE LINKED. Counted at build time rather than claimed, because the
 // honest state of this page is that the load-bearing legal citations carry their primary
@@ -277,9 +325,18 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
         <span class="rcpill">What this page is not</span>
         <p>It is not about <b>where</b> to book. We do not compare rates, we do not surface live prices, and we will never tell you a booking site is a good or a bad place to buy a room. Every tactic below works the same whichever site you end up on. Where we explain how an intermediary makes its money, that is mechanism, not a verdict.</p>
       </div>
+
+      <nav class="onpage" aria-label="On this page">
+        <p class="lab">On this page</p>
+        <ul>
+          {JUMP.map((j) => (
+            <li><a href={`#${j.id}`}>{j.label}</a></li>
+          ))}
+        </ul>
+      </nav>
     </section>
 
-    <section class="bt-sec" id="whats-in-a-price">
+    <section class="bt-sec" id={SEC.price.id}>
       <h2>What is actually in a hotel price</h2>
       <p class="bt-note">Three things make up the number you actually pay, and only one of them is the room. Indexed to 100 so it reads as a shape rather than a price, with every figure printed beside its own bar. There are two paid rows rather than one because the answer genuinely splits in two: where a country folds its tax into the displayed rate, and where it does not.</p>
       <div class="bt-figure">
@@ -288,7 +345,7 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
       </div>
     </section>
 
-    <section class="bt-sec">
+    <section class="bt-sec" id={SEC.tactics.id}>
       <h2>The tactics, and where each one stops working</h2>
       <p class="bt-note">Every one of these has a boundary. A tactic presented without its boundary is a promise, and we are not in a position to make you one, so each comes with when it works and when it does not. If a tactic below sounds like a guarantee, read the second half again.</p>
 
@@ -311,7 +368,7 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
             <ul>
               <li>Revenue-managed chains on peak dates. The rate is set by a system with no incentive to move and often no authority delegated to move it.</li>
               <li>A sold-out or nearly sold-out property. There is nothing to negotiate for.</li>
-              <li><b>The US, where rate parity still binds.</b> A US hotel can be contractually held to the price it shows on a platform, so it may be unable to quote you less even when it would like to. See <a href="#rate-parity">the parity table</a>.</li>
+              <li><b>The US, where rate parity still binds.</b> A US hotel can be contractually held to the price it shows on a platform, so it may be unable to quote you less even when it would like to. See <a href={`#${SEC.parity.id}`}>the parity table</a>.</li>
             </ul>
           </div>
         </div>
@@ -403,7 +460,7 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
       <article class="bt-tac" id="check-the-hotel">
         <p class="bt-tacn">Tactic five</p>
         <h3>Check the hotel's own site before trusting any total</h3>
-        <p>This one has become materially more worth doing, and not because hotels changed. The law did. Across the EU and EEA, and earlier than that in a run of individual countries, the clauses that stopped a hotel offering a better price on its own site are void or prohibited. {freeCount} of the {parityRows.length} jurisdictions in <a href="#rate-parity">the table below</a> now sit that way.</p>
+        <p>This one has become materially more worth doing, and not because hotels changed. The law did. Across the EU and EEA, and earlier than that in a run of individual countries, the clauses that stopped a hotel offering a better price on its own site are void or prohibited. {freeCount} of the {parityRows.length} jurisdictions in <a href={`#${SEC.parity.id}`}>the table below</a> now sit that way.</p>
         <div class="bt-caveat">
           <span class="bt-ck">The caveat that has to travel with this</span>
           <p>Legal freedom is not a lower price. A hotel that may now undercut can simply choose not to, and a platform is free to fund a discount of its own and close the gap. The table says who <b>may</b>, not who <b>does</b>. Treat it as a reason to spend thirty seconds looking, not as a promise of what you will find.</p>
@@ -477,7 +534,7 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
       </article>
     </section>
 
-    <section class="bt-sec" id="the-practical-how">
+    <section class="bt-sec" id={SEC.how.id}>
       <h2>The practical how</h2>
       <p class="bt-note">Four things: reaching the property, what to say, getting it in writing, and when to book. The first three are skills. The fourth is mostly folklore, and it is named as folklore below.</p>
 
@@ -531,7 +588,7 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
       </div>
     </section>
 
-    <section class="bt-sec" id="rate-parity">
+    <section class="bt-sec" id={SEC.parity.id}>
       <h2>Where booking direct can legally be cheaper</h2>
       <p class="bt-note">Rate parity is the contractual term that stopped a hotel offering a better price on its own site than on a platform. Across most of Europe it is now void or prohibited, which is what makes tactic five worth the thirty seconds. In the US there is no parity ban at all, which is the single most important row in this table for anyone reading this from home.</p>
 
@@ -544,9 +601,18 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
         ))}
       </div>
 
+      {/* THE CAPTION IS A PARAGRAPH, NOT A <caption>, AND THAT IS THE BUG FIX.
+          It was a real <caption> inside the table. Below 700px the table becomes a stack of
+          cards, which is done by setting display:block on the table and its rows and cells. A
+          <caption> keeps display:table-caption, so once its parent stopped being a table the
+          browser wrapped it in an anonymous table box sized to its own min-content, and the
+          caption rendered one word per line down the page. Resetting the caption's display
+          would have fixed the symptom; taking it out of the table means table layout can never
+          reach it again, at any width. */}
+      <p class="bt-cap">Rate parity by jurisdiction, with the ruling or statute behind each row. Checked {bookingTacticsChecked}. {flaggedCount} of the {parityRows.length} rows are a single country we cover, and those link to the country guide.</p>
+
       <div class="bt-tablewrap">
         <table class="bt-table">
-          <caption class="bt-cap">Rate parity by jurisdiction, with the ruling or statute behind each row. Checked {bookingTacticsChecked}.</caption>
           <thead>
             <tr>
               <th scope="col">Jurisdiction</th>
@@ -558,7 +624,20 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
           <tbody>
             {parityRows.map((r) => (
               <tr class:list={[{ 'is-us': r.status === 'binds' }]}>
-                <th scope="row" data-l="Jurisdiction">{r.jurisdiction}</th>
+                {/* A flag and a guide link appear only where `slug` resolved, which means the
+                    row is one country this site covers. A multi-country row renders as plain
+                    text: "EU and EEA, all 27 member states" cannot wear one flag without
+                    asserting something false, and Belgium and the US have no guide here. */}
+                <th scope="row" data-l="Jurisdiction">
+                  {r.guide ? (
+                    <a class="bt-j" href={r.guide.url}>
+                      <span class="bt-jflag"><img src={r.guide.flag} alt="" width="22" height="16" loading="lazy" /></span>
+                      <span class="bt-jname">{r.jurisdiction}</span>
+                    </a>
+                  ) : (
+                    <span class="bt-j is-plain">{r.jurisdiction}</span>
+                  )}
+                </th>
                 <td data-l="Status">
                   <span class={`bt-chip is-${PARITY_STATUS[r.status].tone}`}>{PARITY_STATUS[r.status].label}</span>
                 </td>
@@ -602,7 +681,7 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
       <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. Last checked {bookingTacticsChecked}. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
     </div>
 
-    <details class="gsources">
+    <details class="gsources" id={SEC.sources.id}>
       <summary class="gsources-sum">
         <span class="gsources-txt">Sources, and how this page was checked</span>
         <svg class="gsources-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
@@ -634,18 +713,36 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
   <Footer />
 
   <style>
-    .bt-prose{max-width:720px;margin:22px 0 0}
+    /* SPACING PASS. The three joints that read as gaps rather than rhythm:
+       the hero stamp to the lede (was 22px on top of Hero's own 10px stamp margin),
+       the "what this page is not" box to what follows (the global .recentchange carries
+       margin-bottom:24px, which is right in a guide's prose and too much here where a
+       jump-list follows), and section to section. All three now sit on one scale. */
+    .bt-prose{max-width:720px;margin:16px 0 0}
     .bt-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
+    .bt-prose .recentchange{margin:16px 0 0}
 
-    .bt-sec{margin:40px 0 0;scroll-margin-top:74px}
+    /* "On this page", the same markup, classes and rules as the country guides, so the two
+       surfaces read as one site. The rules are repeated rather than imported because the
+       original set is scoped inside CountryBriefing.astro; see the hand-back note. */
+    .onpage{margin:20px 0 0;padding:16px 0 0;border-top:1px solid var(--line)}
+    .onpage ul{list-style:none;margin:0;padding:0;columns:2;column-gap:34px}
+    .onpage li{margin:0;break-inside:avoid}
+    .onpage a{display:block;padding:7px 0;font-size:15px;line-height:1.35;color:var(--teal-deep);text-decoration:none}
+    .onpage a:hover{text-decoration:underline}
+    .onpage a:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:3px}
+
+    .bt-sec{margin:34px 0 0;scroll-margin-top:74px}
     .bt-sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 6px;line-height:1.2}
     .bt-note{font-size:14.5px;color:var(--muted);margin:0 0 18px;line-height:1.55;max-width:720px}
 
     /* A visual and its source line are one unit, so they sit in one bordered block and
        cannot be screenshotted apart. */
-    .bt-figure{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:20px 20px 16px;margin:0 0 8px}
+    .bt-figure{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:20px 20px 14px;margin:0}
     .bt-figh{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink);margin:0 0 6px;line-height:1.3}
-    .bt-src{font-size:12px;color:var(--muted);line-height:1.55;margin:16px 0 0;padding-top:12px;border-top:1px solid var(--line)}
+    /* Was 16px of margin on top of 12px of padding, which read as a gap rather than a rule
+       separating the chart from its citation. */
+    .bt-src{font-size:12px;color:var(--muted);line-height:1.55;margin:14px 0 0;padding-top:11px;border-top:1px solid var(--line)}
     .bt-src a{color:var(--teal-deep);font-weight:500;text-decoration:none}
     .bt-src a:hover{text-decoration:underline}
 
@@ -735,10 +832,23 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
     .bt-lgk{display:block;font-size:13px;font-weight:700;color:var(--ink);margin:0 0 2px}
     .bt-lgm{display:block;font-size:13px;color:var(--muted);line-height:1.55}
 
-    .bt-tablewrap{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow:hidden}
-    .bt-table{width:100%;border-collapse:collapse;text-align:left}
-    .bt-cap{caption-side:top;text-align:left;padding:14px 18px;font-size:12.5px;color:var(--muted);line-height:1.5;border-bottom:1px solid var(--line)}
+    /* overflow-x:auto rather than overflow:hidden. The old rule clipped the table when its
+       columns could not compress further, which hid the right-hand column entirely at the
+       widths just above the card breakpoint. Scrolling keeps every column at a readable width
+       and keeps the border radius. */
+    .bt-tablewrap{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow-x:auto}
+    .bt-table{width:100%;border-collapse:collapse;text-align:left;min-width:560px}
+    .bt-cap{font-size:12.5px;color:var(--muted);line-height:1.55;margin:0 0 10px;max-width:720px}
     .bt-table th,.bt-table td{padding:13px 14px;vertical-align:top;border-bottom:1px solid var(--line)}
+
+    /* The jurisdiction cell: flag, then name, on one baseline. A row with no guide uses the same
+       cell without the flag or the link, so the column stays aligned either way. */
+    .bt-j{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:var(--teal-deep)}
+    .bt-j.is-plain{color:var(--ink)}
+    .bt-j:hover .bt-jname{text-decoration:underline}
+    .bt-jflag{display:inline-flex;line-height:0;flex:none}
+    .bt-jflag img{width:22px;height:16px;border-radius:3px;border:1px solid var(--line);object-fit:cover;display:block}
+    .bt-jname{line-height:1.3}
     .bt-table thead th{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);background:var(--paper);white-space:nowrap}
     .bt-table tbody th{font-size:14px;font-weight:600;color:var(--ink);line-height:1.35;min-width:130px}
     .bt-table tbody tr:last-child th,.bt-table tbody tr:last-child td{border-bottom:none}
@@ -772,7 +882,11 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
        becomes a card and every cell carries its own label from data-l, so nothing is lost
        and no cell is left unlabelled. */
     @media (max-width:700px){
-      .bt-tablewrap{border-radius:var(--radius)}
+      /* As cards there is nothing to scroll, so the min-width and the scroll container both
+         come off. Leaving min-width on a display:block table would have forced a horizontal
+         scrollbar under the cards for no reason. */
+      .bt-tablewrap{overflow-x:visible}
+      .bt-table{min-width:0}
       .bt-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
       .bt-table,.bt-table tbody,.bt-table tr,.bt-table th,.bt-table td{display:block;width:auto}
       .bt-table tr{border-bottom:1px solid var(--line);padding:14px 16px}
@@ -784,11 +898,18 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
       .bt-since{white-space:normal}
     }
 
+    /* The sources panel is a jump destination, so it needs the same 74px offset every other
+       target on the site uses, or the summary lands tucked under the sticky nav. */
+    .gsources{scroll-margin-top:74px}
+
     @media (max-width:560px){
       .bt-lede{font-size:16.5px}
       .bt-figure{padding:16px 15px 14px}
       .bt-pad{padding:16px}
       .bt-tac p{font-size:15px}
+      /* One column and a taller tap target, matching the country guides at this width. */
+      .onpage ul{columns:1}
+      .onpage a{padding:11px 0;font-size:15.5px;min-height:22px}
     }
   </style>
 </Base>

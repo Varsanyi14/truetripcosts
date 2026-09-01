@@ -65,9 +65,9 @@ export const OTA_COMMISSION = {
   headline: '15 to 30%',
   perBooking: true,
   detail: [
-    { label: 'Booking.com, typical range', lowPct: 10, highPct: 25, note: 'Commonly cited around 15% as an average, with the negotiated range running roughly 10 to 25% depending on the property and whether it buys into a visibility programme.' },
-    { label: 'Expedia, independent properties', lowPct: 15, highPct: 30, note: 'Independents sit at the top of the band, because they have the least negotiating leverage and the most to gain from placement.' },
-    { label: 'Expedia, large brands', lowPct: 10, highPct: 15, note: 'A major chain negotiates down, which is part of why the book-direct tactic works less well at exactly the hotels most travelers have heard of.' },
+    { label: 'The largest platform, typical range', lowPct: 10, highPct: 25, note: 'Commonly cited around 15% as an average, with the negotiated range running roughly 10 to 25% depending on the property and whether it buys into a visibility programme.' },
+    { label: 'A major platform, independent properties', lowPct: 15, highPct: 30, note: 'Independents sit at the top of the band, because they have the least negotiating leverage and the most to gain from placement.' },
+    { label: 'A major platform, large chains', lowPct: 10, highPct: 15, note: 'A major chain negotiates down, which is part of why the book-direct tactic works less well at exactly the hotels most travelers have heard of.' },
   ],
   source: { label: 'Cloudbeds and Preno OTA commission guides, read Sep 2026', url: null, type: 'trade' },
   checkedISO: '2026-09-01',
@@ -83,8 +83,8 @@ export const PLATFORM_TAKE_RATE = {
   perBooking: false,
   whatItIs: 'Company revenue as a share of total gross bookings, across every product the company sells, taken from its annual report. It is a measure of a business, not a price a hotel pays.',
   detail: [
-    { label: 'Booking Holdings', lowPct: 14, highPct: 14, figure: 'about 14%', note: 'Company-level, from its annual report.' },
-    { label: 'Expedia Group', lowPct: 12.3, highPct: 12.3, figure: 'about 12.3%', note: 'Company-level, from its annual report.' },
+    { label: 'The largest platform group', lowPct: 14, highPct: 14, figure: 'about 14%', note: 'Company-level, from its annual report.' },
+    { label: 'A major platform group', lowPct: 12.3, highPct: 12.3, figure: 'about 12.3%', note: 'Company-level, from its annual report.' },
   ],
   source: { label: 'Booking Holdings and Expedia Group annual reports on Form 10-K', url: null, type: 'filing' },
   checkedISO: '2026-09-01',
@@ -178,6 +178,13 @@ export const PROPERTY_FEE_BAND = {
 // prints that in its own words next to the table, because a reader who takes this as a
 // promise of a cheaper direct rate has been misled by us.
 //
+// `slug` is OPTIONAL and means one thing only: this row is a SINGLE country that has a live
+// guide on this site, so the table may show its flag and link its name to that guide. It is
+// absent on every multi-country row, because "EU and EEA, all 27 member states" cannot wear one
+// flag without asserting something false, and it is absent on Belgium and the United States,
+// which have no guide here to link to. The page THROWS at build time if a slug names a country
+// that is not live, so a retired guide cannot leave a 404 in this table.
+
 // `order` is display order only, and it is deliberate: the EEA-wide position leads because
 // it is the change that covers the most readers, the national rulings that got there first
 // follow, then the rest of the world, then the US last as the exception.
@@ -210,7 +217,7 @@ export const PARITY_BY_REGION = [
     status: 'free',
     sinceDate: '14 November 2024',
     sinceISO: '2024-11-14',
-    ruling: 'Booking Holdings was designated a gatekeeper under the Digital Markets Act on 13 May 2024, and parity clauses became prohibited for it six months later, on 14 November 2024. Hotels, car rental firms and other providers may offer better prices and conditions on their own sites and on other channels, and the gatekeeper may not raise commission or de-list an offer in response.',
+    ruling: 'The largest platform group was designated a gatekeeper under the Digital Markets Act on 13 May 2024, and parity clauses became prohibited for it six months later, on 14 November 2024. Hotels, car rental firms and other providers may offer better prices and conditions on their own sites and on other channels, and the gatekeeper may not raise commission or de-list an offer in response.',
     source: { label: 'European Commission, Booking must comply with all relevant obligations under the Digital Markets Act', url: 'https://digital-markets-act.ec.europa.eu/booking-must-comply-all-relevant-obligations-under-digital-markets-act-2024-11-14_en', type: 'reg' },
   },
   {
@@ -219,7 +226,7 @@ export const PARITY_BY_REGION = [
     status: 'free',
     sinceDate: '2 December 2024',
     sinceISO: '2024-12-02',
-    ruling: 'Booking.com\u2019s own compliance report records that all wide and narrow parity clauses were removed for EEA inventory, with the updated terms taking effect for existing accommodation partners on 2 December 2024. This is the contractual side of the ruling above: the clause is gone from the agreement, not merely unenforceable.',
+    ruling: 'The platform\u2019s own compliance report records that all wide and narrow parity clauses were removed for EEA inventory, with the updated terms taking effect for existing accommodation partners on 2 December 2024. This is the contractual side of the ruling above: the clause is gone from the agreement, not merely unenforceable.',
     source: { label: 'Booking Holdings, Digital Markets Act compliance report, public summary', url: 'https://www.bookingholdings.com/wp-content/uploads/2024/11/DMA-Compliance-Report.pdf', type: 'filing' },
   },
   {
@@ -234,6 +241,7 @@ export const PARITY_BY_REGION = [
   {
     order: 4,
     jurisdiction: 'Germany',
+    slug: 'germany',
     status: 'free',
     sinceDate: '18 May 2021',
     sinceISO: '2021-05-18',
@@ -243,6 +251,7 @@ export const PARITY_BY_REGION = [
   {
     order: 5,
     jurisdiction: 'France',
+    slug: 'france',
     status: 'free',
     sinceDate: '2015',
     sinceISO: '2015-07-06',
@@ -252,6 +261,7 @@ export const PARITY_BY_REGION = [
   {
     order: 6,
     jurisdiction: 'Austria',
+    slug: 'austria',
     status: 'free',
     sinceDate: '2016',
     sinceISO: '2016-12-31',
@@ -261,6 +271,7 @@ export const PARITY_BY_REGION = [
   {
     order: 7,
     jurisdiction: 'Italy',
+    slug: 'italy',
     status: 'free',
     sinceDate: '2017',
     sinceISO: '2017-08-01',
@@ -279,6 +290,7 @@ export const PARITY_BY_REGION = [
   {
     order: 9,
     jurisdiction: 'Switzerland',
+    slug: 'switzerland',
     status: 'free',
     sinceDate: '2022',
     sinceISO: '2022-01-01',
@@ -288,15 +300,17 @@ export const PARITY_BY_REGION = [
   {
     order: 10,
     jurisdiction: 'Spain',
+    slug: 'spain',
     status: 'free',
     sinceDate: '29 July 2024',
     sinceISO: '2024-07-29',
-    ruling: 'The CNMC fined Booking.com 413.24 million euros, its largest ever penalty, for abuse of a dominant position, and imposed behavioural obligations covering the parity terms it had applied to hotels in Spain. Spain is also covered by the EEA position above.',
+    ruling: 'The CNMC fined the largest platform 413.24 million euros, its largest ever penalty, for abuse of a dominant position, and imposed behavioural obligations covering the parity terms it had applied to hotels in Spain. Spain is also covered by the EEA position above.',
     source: { label: 'CNMC, fine of 413.24 million euros on Booking.com for abuse of dominant position', url: 'https://portal-cec.consumo.gob.es/en/comunicacion/noticias/2024/cnmc-fines-bookingcom-41324-million-abusing-its-dominant-position-over', type: 'reg' },
   },
   {
     order: 11,
     jurisdiction: 'United Kingdom',
+    slug: 'united-kingdom',
     status: 'narrowed',
     sinceDate: 'undertakings from 2015',
     sinceISO: '2015-01-31',
@@ -306,6 +320,7 @@ export const PARITY_BY_REGION = [
   {
     order: 12,
     jurisdiction: 'Australia',
+    slug: 'australia',
     status: 'narrowed',
     sinceDate: '2016',
     sinceISO: '2016-09-01',
@@ -315,6 +330,7 @@ export const PARITY_BY_REGION = [
   {
     order: 13,
     jurisdiction: 'Japan',
+    slug: 'japan',
     status: 'free',
     sinceDate: 'competition-authority action',
     sinceISO: '2019-04-01',
@@ -324,6 +340,7 @@ export const PARITY_BY_REGION = [
   {
     order: 14,
     jurisdiction: 'South Korea',
+    slug: 'south-korea',
     status: 'free',
     sinceDate: 'competition-authority action',
     sinceISO: '2019-04-01',
@@ -362,7 +379,7 @@ export const JUNKFEE_RULES = [
   },
   {
     jurisdiction: 'United States, Texas',
-    rule: 'Texas Attorney General settlement with Booking Holdings',
+    rule: 'Texas Attorney General settlement with the largest platform group',
     what: 'A 9.5 million dollar settlement over marketing room rates that omitted mandatory fees, and over grouping those fees in with money owed to government under a single taxes-and-fees line at checkout. The settlement requires fees added to a room price to be disclosed up front.',
     finalised: '19 August 2025',
     effective: '19 August 2025',

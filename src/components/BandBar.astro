@@ -37,6 +37,30 @@ const {
 
 const pct = (v) => (axisMax ? Math.max(0, Math.min(100, (v / axisMax) * 100)) : 0);
 
+// ---------------------------------------------------------------------------
+// A SINGLE VALUE IS A POINT, NOT A BAR.
+// ---------------------------------------------------------------------------
+// Three rows on the commission chart are not ranges: the two company-level take rates are one
+// figure each, and the direct-cost row spans a quarter of a point. Drawn as rectangles on a
+// 32-point axis those came out two or three pixels wide, which does not read as "a small
+// number", it reads as a rendering fault. So a row whose span is below the threshold draws as a
+// labelled point on the shared scale instead.
+//
+// THE THRESHOLD IS A SPAN, NOT AN EQUALITY TEST, because 4.25 to 4.5 has the same problem as
+// 14 to 14 and should get the same treatment. It is deliberately small: 1.5 points on this
+// chart is under 5% of the axis, so nothing a reader would recognise as a range can fall
+// through into a point.
+//
+// WHAT THE POINT COSTS, AND WHY IT IS ACCEPTABLE. A marker at the midpoint cannot show the
+// quarter-point spread of the direct-cost row. That is fine here and only here, because the
+// figure text beside every row is the source of truth and still prints the full range
+// ("4.25 to 4.5%"). The marker locates it on the scale; the label states it. Width was never
+// allowed to be the only source of truth on this chart and this does not change that.
+const POINT_SPAN = 1.5;
+const isPoint = (r) => (r.hi - r.lo) < POINT_SPAN;
+// Midpoint, so a near-point row sits where its range actually is rather than at one edge.
+const pointAt = (r) => (r.lo + r.hi) / 2;
+
 // Tones map to the site palette rather than to arbitrary colours, and they carry
 // meaning: `lead` is the figure the page is actually about, `quiet` is a
 // supporting breakdown of it, and `other` is a different measurement entirely.
@@ -74,23 +98,46 @@ const rowH = 20;
 
       <ol class="bb-rows">
         {(g.rows || []).map((r) => (
-          <li class="bb-row">
+          <li class:list={["bb-row", { 'is-point': isPoint(r) }]}>
             <p class="bb-lab">{r.label}</p>
             <div class="bb-plot">
-              <svg class="bb-svg" viewBox={`0 0 100 ${rowH}`} preserveAspectRatio="none"
-                   xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                <g class="bb-grid">
-                  {ticks.map((v) => (
-                    <line x1={pct(v)} y1="0" x2={pct(v)} y2={rowH} stroke="#E5E3DB" stroke-width="0.25" vector-effect="non-scaling-stroke" />
-                  ))}
-                </g>
-                {/* A band whose low and high are the same figure is a point, not a
-                    range, so it draws a minimum-width marker rather than a
-                    zero-width rectangle that would vanish. The figure beside it is
-                    the real value either way. */}
-                <rect x={pct(r.lo)} y="4" width={Math.max(0.8, pct(r.hi) - pct(r.lo))} height={rowH - 8}
-                      fill={fillFor(r.tone)} rx="0.6" />
-              </svg>
+              {/* The track is the positioning context for the point marker below. The SVG
+                  itself cannot carry that marker: it is stretched with
+                  preserveAspectRatio="none", so an SVG circle would render as an ellipse
+                  several times wider than it is tall, and it would change shape with the
+                  viewport. The marker is therefore real HTML positioned by percentage over
+                  the track, which is the same approach TipChart.astro uses for its
+                  "nothing expected" marker. */}
+              <span class="bb-track">
+                <svg class="bb-svg" viewBox={`0 0 100 ${rowH}`} preserveAspectRatio="none"
+                     xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                  {/* Gridlines at every tick, threading each row, so the axis at the top of
+                      the chart reads as the scale these bars are measured against rather
+                      than a detached strip of numbers. One device pixel via
+                      non-scaling-stroke, because the horizontal scale factor here runs from
+                      about 3 to about 5 and a scaled hairline would thicken with the
+                      viewport. */}
+                  <g class="bb-grid">
+                    {ticks.map((v) => (
+                      <line x1={pct(v)} y1="0" x2={pct(v)} y2={rowH}
+                            stroke="#E5E3DB" stroke-width="1" vector-effect="non-scaling-stroke" />
+                    ))}
+                  </g>
+                  {!isPoint(r) && (
+                    <rect x={pct(r.lo)} y="4" width={pct(r.hi) - pct(r.lo)} height={rowH - 8}
+                          fill={fillFor(r.tone)} rx="0.6" />
+                  )}
+                </svg>
+
+                {isPoint(r) && (
+                  <span class="bb-point" style={`left:${pct(pointAt(r))}%;color:${fillFor(r.tone)}`} aria-hidden="true">
+                    <svg viewBox="0 0 14 14" width="13" height="13" xmlns="http://www.w3.org/2000/svg" focusable="false">
+                      <circle cx="7" cy="7" r="5.2" fill="currentColor" />
+                      <circle cx="7" cy="7" r="5.2" fill="none" stroke="#FFFFFF" stroke-width="1.6" />
+                    </svg>
+                  </span>
+                )}
+              </span>
               <span class:list={["bb-fig", { 'is-lead': r.tone === 'lead' }]}>{r.figure}</span>
             </div>
             {r.note && <p class="bb-note">{r.note}</p>}
@@ -122,7 +169,12 @@ const rowH = 20;
 
   .bb-lab{font-size:13px;font-weight:600;color:var(--ink);margin:0 0 4px;line-height:1.35}
   .bb-plot{display:flex;align-items:center;gap:10px}
-  .bb-svg{flex:1;min-width:0;height:20px;display:block}
+  .bb-track{position:relative;flex:1;min-width:0;display:block;line-height:0}
+  .bb-svg{width:100%;height:20px;display:block}
+  /* The marker is centred on its value, so the dot straddles the figure rather than starting
+     at it, which is what a point on an axis means. */
+  .bb-point{position:absolute;top:50%;transform:translate(-50%,-50%);line-height:0;display:block}
+  .bb-point svg{display:block}
   .bb-fig{flex:0 0 auto;min-width:74px;text-align:right;font-size:13.5px;font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;line-height:1.2}
   .bb-fig.is-lead{font-family:var(--serif);font-weight:500;font-size:15.5px}
 
