@@ -1174,7 +1174,7 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
        widths just above the card breakpoint. Scrolling keeps every column at a readable width
        and keeps the border radius. */
     .bt-tablewrap{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow-x:auto}
-    .bt-table{width:100%;border-collapse:collapse;text-align:left;min-width:560px}
+    .bt-table{width:100%;border-collapse:collapse;text-align:left;min-width:560px;table-layout:fixed}
     .bt-cap{font-size:12.5px;color:var(--muted);line-height:1.55;margin:0 0 10px;max-width:720px}
     .bt-table th,.bt-table td{padding:13px 14px;vertical-align:top;border-bottom:1px solid var(--line)}
 
@@ -1185,7 +1185,7 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
     .bt-j:hover .bt-jname{text-decoration:underline}
     .bt-jflag{display:inline-flex;line-height:0;flex:none}
     .bt-jflag img{width:22px;height:16px;border-radius:3px;border:1px solid var(--line);object-fit:cover;display:block}
-    .bt-jname{line-height:1.3}
+    .bt-jname{line-height:1.3;overflow-wrap:anywhere}
     .bt-table thead th{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);background:var(--paper);white-space:nowrap}
     .bt-table tbody th{font-size:14px;font-weight:600;color:var(--ink);line-height:1.35}
     .bt-table tbody tr:last-child th,.bt-table tbody tr:last-child td{border-bottom:none}
