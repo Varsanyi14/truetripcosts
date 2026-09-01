@@ -782,10 +782,10 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
               table-layout stays auto, so a long jurisdiction name can still push its own column
               rather than overflowing it. */}
           <colgroup>
+            <col style="width:19%" />
+            <col style="width:17%" />
             <col style="width:14%" />
-            <col style="width:13%" />
-            <col style="width:13%" />
-            <col style="width:60%" />
+            <col style="width:50%" />
           </colgroup>
           <thead>
             <tr>
@@ -1185,14 +1185,14 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
     .bt-j:hover .bt-jname{text-decoration:underline}
     .bt-jflag{display:inline-flex;line-height:0;flex:none}
     .bt-jflag img{width:22px;height:16px;border-radius:3px;border:1px solid var(--line);object-fit:cover;display:block}
-    .bt-jname{line-height:1.3;overflow-wrap:anywhere}
+    .bt-jname{line-height:1.3;overflow-wrap:normal;word-break:normal}
     .bt-table thead th{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);background:var(--paper);white-space:nowrap}
     .bt-table tbody th{font-size:14px;font-weight:600;color:var(--ink);line-height:1.35}
     .bt-table tbody tr:last-child th,.bt-table tbody tr:last-child td{border-bottom:none}
     /* The US row is the exception the whole table exists to name, so it is tinted rather
        than left to be found by reading fifteen rows. */
     .bt-table tbody tr.is-us{background:var(--amber-bg)}
-    .bt-since{font-family:var(--mono);font-size:11.5px;color:var(--muted);white-space:nowrap}
+    .bt-since{font-family:var(--mono);font-size:11.5px;color:var(--muted);white-space:normal;line-height:1.35}
     .bt-ruling{display:block;font-size:13.5px;color:#3B4A46;line-height:1.55}
     .bt-tsrc{display:block;font-size:12px;line-height:1.5;color:var(--teal-deep);font-weight:500;text-decoration:none;margin-top:7px}
     a.bt-tsrc:hover{text-decoration:underline}
