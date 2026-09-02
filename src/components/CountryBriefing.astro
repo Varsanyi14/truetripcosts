@@ -755,6 +755,13 @@ const JUMP = [
     <p class="lab">{c.taxfree.label || "Tax-free shopping"}</p>
     <h2>{c.taxfree.heading}</h2>
     <p class="sub" set:html={c.taxfree.text}></p>
+    {/* ONE QUIET LINK TO THE BOOKING PAGE, ADDED HERE IN THE TEMPLATE RATHER THAN IN ANY
+        COUNTRY'S DATA, because this is the one spot nearly every guide already talks about
+        what lands on the hotel bill. A government tax or a VAT refund is not something a
+        traveler can act on; what to do at the booking moment itself lives on a different
+        page, so this sentence hands off to it rather than repeating it. Woven as a plain
+        continuation of the paragraph above, not a boxed callout. */}
+    <p class="sub">That covers what a government adds. What you can still change is what the room itself costs, and that comes down to the booking moment: see <a href="/how-to-pay-less-on-hotels">how to pay less on hotels</a>.</p>
   </section>
 )}
 

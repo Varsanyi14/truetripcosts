@@ -48,10 +48,10 @@ const flagSrc = (slug) => (fs.existsSync(flagDir + slug + '.svg') ? '/flags/' + 
 // (#book-direct, #check-the-hotel, #drip) are deliberately NOT here: they are targets for links
 // in the copy, not destinations a reader navigates to from the top.
 const SEC = {
+  parity:  { id: 'rate-parity', label: 'Where direct can legally be cheaper' },
   price:   { id: 'whats-in-a-price', label: 'What is in a hotel price' },
   tactics: { id: 'tactics', label: 'The seven tactics' },
   how:     { id: 'the-practical-how', label: 'The practical how' },
-  parity:  { id: 'rate-parity', label: 'Where direct can legally be cheaper' },
   sources: { id: 'sources', label: 'Sources, and how this was checked' },
 };
 const JUMP = Object.values(SEC);
@@ -479,6 +479,249 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
       </nav>
     </section>
 
+    <section class="bt-sec" id={SEC.parity.id}>
+      <h2>Where booking direct can legally be cheaper</h2>
+      <p class="bt-note">Rate parity is the contractual term that stopped a hotel offering a better price on its own site than on a platform. Across most of Europe it is now void or prohibited, which is what makes tactic five worth the thirty seconds. In the US there is no parity ban at all, which is the single most important row in this table for anyone reading this from home.</p>
+
+      {/* THE FINDING, ONE SENTENCE, ABOVE THE MAP. It used to be spread across a three-status
+          legend and a fifteen-row table, which meant a reader had to assemble it and a writer
+          had to count it themselves. Real selectable text, never an image, so it can be
+          quoted without being retyped, and every number in it is derived. "In our checked
+          set" is not padding: the set is a named list of jurisdictions where somebody ruled on
+          parity, not the world, and without that clause this becomes the page overclaiming in
+          its most repeatable line. */}
+      <p class="bt-finding">{finding.sentence}</p>
+
+      <p class="bt-mapline">The map shows where a hotel is <b>legally free</b> to offer a cheaper direct rate. That is not a promise the direct rate will be cheaper. Grey means a country is not in our checked set, which is not the same as parity applying there.</p>
+
+      {/* THE COUNTRY SEARCH. Deliberately the same markup, the same .cfilter box, the same
+          dropdown behaviour and the same script shape as the typeahead on /hotel-tax-map, so a
+          reader who has used one already knows this one. It sits above the map for the same
+          reason it does there.
+
+          IT LIVES ON THE PAGE, NOT IN ParityMap.astro, and that is what makes it inert in the
+          embed by construction rather than by a guard somebody has to remember: the embed page
+          renders the map component alone, so it cannot pick this up. It also keeps the search,
+          the row ids it scrolls to, and the highlight style in one file. */}
+      <div class="bt-find">
+        <label class="bt-find-lab" for="pty-filter">Find a country on the map</label>
+        <div class="bt-ta-wrap">
+          <div class="cfilter bt-ta-box">
+            <svg class="cfilter-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            <input type="text" id="pty-filter" class="cfilter-in" placeholder="Type a country, like Germany" aria-label="Find a country on the map" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="pty-ta-list" aria-autocomplete="list" />
+          </div>
+          <div class="bt-ta" id="pty-ta" hidden>
+            <div class="bt-ta-list" id="pty-ta-list" role="listbox" aria-label="Matching jurisdictions">
+              {searchRows.map((r) => (
+                <button type="button" class="bt-ta-item" data-row={r.id} data-name={r.match}>
+                  {r.flag
+                    ? <img class="bt-ta-flag" src={r.flag} alt="" width="22" height="16" loading="lazy" />
+                    : <span class="bt-ta-flag is-none" aria-hidden="true"></span>}
+                  <span class="bt-ta-name">{r.name}</span>
+                  <span class="bt-ta-go" aria-hidden="true">&#8594;</span>
+                </button>
+              ))}
+            </div>
+            <p class="bt-ta-none" id="pty-ta-none" hidden>No ruling on that country in our set. That is not the same as parity applying there, only that nobody we track has ruled on it.</p>
+          </div>
+        </div>
+
+        {/* Revealed once a country resolves, so the reader is not left at the box with no way
+            back to the row they asked for. Same control, same wording, as the tax map. */}
+        <p class="bt-ta-jump" hidden data-pty-jump>
+          <button type="button" class="bt-ta-jump-b" data-pty-jump-b>
+            <span data-pty-jump-label>Go to the row</span>
+            <span class="bt-ta-jump-i" aria-hidden="true">&#8595;</span>
+          </button>
+          <span class="bt-ta-jump-n">Jumps to its sourced row below.</span>
+        </p>
+      </div>
+
+      <ParityMap tableAnchor={SEC.parity.id} />
+
+      {/* THE EMBED CONTROL, directly under the map. Identical in shape, wording and behaviour to
+          the one under the hotel-tax map: a collapsed <details>, so the reveal needs no
+          JavaScript, with the copy button inside as enhancement on top. It used to sit below the
+          table, which meant the code was a scroll away from the thing it embeds.
+
+          Collapsed rather than open because it sits between the map and the sourced table, and
+          that reading path is the honesty pattern of this section: map to see the shape, table
+          to read the ruling. A code box open by default would wedge itself into the middle of
+          it. Closed, it is one line. */}
+      <details class="bt-embed">
+        <summary class="bt-embed-sum">
+          <span class="bt-embed-sum-t">Use this map on your own site</span>
+          <svg class="bt-embed-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <div class="bt-embed-body">
+          <p class="bt-embed-t">Free to embed anywhere, including commercially, and it stays current on your page: as the law moves and we recheck it, an embedded copy updates itself with no re-paste. A credit link back is appreciated and not required, because the frame carries one already.</p>
+
+          <label class="bt-esnip-lab" for="bt-esnip">Paste this where you want the map</label>
+          <textarea class="bt-esnip" id="bt-esnip" readonly rows="4" spellcheck="false" aria-describedby="bt-ecopy-hint">{SNIPPET}</textarea>
+
+          <div class="bt-erow">
+            <button class="bt-ecopy" type="button" data-copy-snippet hidden>Copy the snippet</button>
+            <span class="bt-ecopy-msg" data-copy-msg role="status" aria-live="polite"></span>
+            <a class="bt-eprev" href="/embed/rate-parity" target="_blank" rel="noopener">See what it looks like</a>
+          </div>
+          <p class="bt-ehint" id="bt-ecopy-hint">Clicking the box selects the whole snippet, so it copies with one keystroke if the button is not there.</p>
+        </div>
+      </details>
+
+      {/* FOR WRITERS AND PUBLISHERS, beside the embed control rather than buried in the
+          sources panel, because the two are the same offer in two formats: the iframe for
+          somebody publishing on the web, these files for somebody making a chart, a print
+          layout or a spreadsheet. Until now the only way to reuse this map was to screenshot
+          the page.
+
+          THE SVG IS FIRST AND THE PNGS SECOND, and the ordering is a real distinction rather
+          than a preference. /map/rate-parity.svg is an ENDPOINT: it is rebuilt from the data
+          on every build, so it cannot go stale. The PNGs are committed artifacts generated by
+          scripts/build-parity-png.py, so they can. The block says so out loud, because a
+          writer choosing a file should know which one is guaranteed current, and because
+          telling them is cheaper than a stale PNG in somebody's article.
+
+          THE CSV CARRIES PUBLISHED FIELDS ONLY. Five columns, every one already visible on
+          this page. No desk notes and nothing marked for review, because a column called
+          "note" in a downloaded CSV becomes a quote in somebody's article. */}
+      <details class="bt-embed bt-press">
+        <summary class="bt-embed-sum">
+          <span class="bt-embed-sum-t">For writers and publishers: the map and the data as files</span>
+          <svg class="bt-embed-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <div class="bt-embed-body">
+          <p class="bt-embed-t">{PARITY_PRESS.licence} Take the map as a vector or a raster, or the rows as data. If you would rather it stayed current on your page by itself, use the embed above instead.</p>
+
+          <ul class="bt-dl">
+            <li>
+              <a class="bt-dl-a" href="/map/rate-parity.svg" download>Map, SVG</a>
+              <span class="bt-dl-n"><b>Rebuilt on every deploy, so it cannot go stale.</b> Vector, so it scales into a print layout without going soft. This is the map's native format: the choropleth is written as SVG, so this is the original rather than a conversion.</span>
+            </li>
+            <li>
+              <a class="bt-dl-a" href="/data/rate-parity.csv" download>Rows, CSV</a>
+              <span class="bt-dl-n"><b>Rebuilt on every deploy.</b> Columns: jurisdiction, status, effective date, source URL, checked date. The EU and EEA ruling ships once under its own name and once per member state, each labelled as inheriting it, so sorting by jurisdiction finds Poland without the file claiming a separate Polish ruling.</span>
+            </li>
+            <li>
+              <a class="bt-dl-a" href="/press/rate-parity-1200.png" download>Map, PNG 1200px</a>
+              <span class="bt-dl-n">For a web article. Carries the legend and the checked date inside the image, because a chart screenshot travels without its caption.</span>
+            </li>
+            <li>
+              <a class="bt-dl-a" href="/press/rate-parity-2400.png" download>Map, PNG 2400px</a>
+              <span class="bt-dl-n">For print or a high-density screen. <b>The two PNGs are generated files rather than live ones</b>, so check the date printed on the image against the checked date on this page before publishing.</span>
+            </li>
+          </ul>
+
+          <p class="bt-press-m"><b>The method, in one sentence.</b> {PARITY_PRESS.method}</p>
+
+          <p class="bt-press-at"><b>Suggested attribution.</b> <span class="bt-press-line">{PARITY_PRESS.attribution}</span></p>
+        </div>
+      </details>
+
+      <h3 class="bt-th">The rulings, one row at a time</h3>
+
+      <div class="bt-legend">
+        {Object.entries(PARITY_STATUS).map(([key, s]) => (
+          <p class={`bt-lg is-${s.tone}`}>
+            <span class="bt-lgk">{s.label}</span>
+            <span class="bt-lgm">{s.meaning}</span>
+          </p>
+        ))}
+      </div>
+
+      {/* THE CAPTION IS A PARAGRAPH, NOT A <caption>, AND THAT IS THE BUG FIX.
+          It was a real <caption> inside the table. Below 700px the table becomes a stack of
+          cards, which is done by setting display:block on the table and its rows and cells. A
+          <caption> keeps display:table-caption, so once its parent stopped being a table the
+          browser wrapped it in an anonymous table box sized to its own min-content, and the
+          caption rendered one word per line down the page. Resetting the caption's display
+          would have fixed the symptom; taking it out of the table means table layout can never
+          reach it again, at any width. */}
+      <p class="bt-cap">Rate parity by jurisdiction, with the ruling or statute behind each row. Checked {bookingTacticsChecked}. {parityLinked} of the {parityRows.length} rows link the primary document, and the {parityRows.length - parityLinked} that do not are named as unlinked rather than left to look sourced. {flaggedCount} rows are a single country, and the {linkedCount} of those with a guide on this site link to it.</p>
+
+      <div class="bt-tablewrap">
+        <table class="bt-table">
+          {/* Explicit column widths, because without a colgroup the browser sized all four from
+              their content and the ruling column, the one a reader is actually here for, was
+              crushed into a strip while three short columns took the room.
+
+              RETUNED FROM 18/14/12/56. At 18% the jurisdiction column was wider than any
+              country name needs, so every row opened with an empty band on the left. It is now
+              14%, and the 4 points go to the ruling. Note that the th's old min-width:130px was
+              doing the same job as the colgroup and fighting it: 130px IS 18% of this table, so
+              the column could not narrow until that came off too. It has.
+
+              table-layout stays auto, so a long jurisdiction name can still push its own column
+              rather than overflowing it. */}
+          <colgroup>
+            <col style="width:19%" />
+            <col style="width:17%" />
+            <col style="width:14%" />
+            <col style="width:50%" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th scope="col">Jurisdiction</th>
+              <th scope="col">Status</th>
+              <th scope="col">Since</th>
+              <th scope="col">What changed, and the source</th>
+            </tr>
+          </thead>
+          <tbody>
+            {parityRows.map((r) => (
+              <tr id={parityRowId(r)} class:list={[{ 'is-us': r.status === 'binds' }]}>
+                {/* A flag appears wherever the row is one country we can identify. A LINK
+                    appears only where there is a guide behind it, so Belgium shows its flag
+                    with a plain name. A multi-country row gets neither: "EU and EEA, all 27
+                    member states" cannot wear one flag without asserting something false. */}
+                <th scope="row" data-l="Jurisdiction">
+                  {r.guideUrl ? (
+                    <a class="bt-j" href={r.guideUrl}>
+                      <span class="bt-jflag"><img src={r.flag} alt="" width="22" height="16" loading="lazy" /></span>
+                      <span class="bt-jname">{r.jurisdiction}</span>
+                    </a>
+                  ) : (
+                    <span class="bt-j is-plain">
+                      {r.flag && <span class="bt-jflag"><img src={r.flag} alt="" width="22" height="16" loading="lazy" /></span>}
+                      <span class="bt-jname">{r.jurisdiction}</span>
+                    </span>
+                  )}
+                </th>
+                <td data-l="Status">
+                  <span class={`bt-chip is-${PARITY_STATUS[r.status].tone}`}>{PARITY_STATUS[r.status].label}</span>
+                </td>
+                <td data-l="Since" class="bt-since">{r.sinceDate}</td>
+                <td data-l="What changed">
+                  <span class="bt-ruling">{r.ruling}</span>
+                  {/* THE NEGATIVE CLAIM SHOWS ITS METHOD. Every other row points at a document
+                      that exists; this one asserts that a document does not, and there is no
+                      URL for that. Left as a bare label it read as the one row nobody had to
+                      check, which is the opposite of what it is: it is the row a US reader
+                      most needs and the one most likely to go out of date, because it would
+                      take a single state legislature. So it renders a dated method, what
+                      would overturn it, and the hole in it, rather than a citation. */}
+                  {r.methodology && (
+                    <div class="bt-meth">
+                      <span class="bt-meth-k">How a negative was checked</span>
+                      <p>{r.methodology.how}</p>
+                      <p><b>What would change this:</b> {r.methodology.wouldChangeThis}</p>
+                      <p class="bt-meth-gap">{r.methodology.inventoryPending}</p>
+                      <p class="bt-meth-d">Stated as of {r.methodology.cutoff}.</p>
+                    </div>
+                  )}
+                  {r.source.url
+                    ? <a class="bt-tsrc" href={r.source.url} target="_blank" rel="noopener">{r.source.label}</a>
+                    : <span class="bt-tsrc bt-nosrc">{r.source.label}</span>}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <p class="bt-do">Two things this table does not say. It does not say a direct rate will be cheaper, only that a hotel is free to make it so. And it says nothing about whether the price you were shown had to include the mandatory fees, which is a separate question answered by <a href="#drip">the disclosure rules above</a>. A jurisdiction can be strict on one and silent on the other, and the US is exactly that: no parity ban, and one of the more specific fee-disclosure rules anywhere.</p>
+
+    </section>
+
     <section class="bt-sec" id={SEC.price.id}>
       <h2>What is actually in a hotel price</h2>
       <p class="bt-note">Three things make up the number you actually pay, and only one of them is the room. Indexed to 100 so it reads as a shape rather than a price, with every figure printed beside its own bar. There are two paid rows rather than one because the answer genuinely splits in two: where a country folds its tax into the displayed rate, and where it does not.</p>
@@ -729,249 +972,6 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
           ))}
         </ul>
       </div>
-    </section>
-
-    <section class="bt-sec" id={SEC.parity.id}>
-      <h2>Where booking direct can legally be cheaper</h2>
-      <p class="bt-note">Rate parity is the contractual term that stopped a hotel offering a better price on its own site than on a platform. Across most of Europe it is now void or prohibited, which is what makes tactic five worth the thirty seconds. In the US there is no parity ban at all, which is the single most important row in this table for anyone reading this from home.</p>
-
-      {/* THE FINDING, ONE SENTENCE, ABOVE THE MAP. It used to be spread across a three-status
-          legend and a fifteen-row table, which meant a reader had to assemble it and a writer
-          had to count it themselves. Real selectable text, never an image, so it can be
-          quoted without being retyped, and every number in it is derived. "In our checked
-          set" is not padding: the set is a named list of jurisdictions where somebody ruled on
-          parity, not the world, and without that clause this becomes the page overclaiming in
-          its most repeatable line. */}
-      <p class="bt-finding">{finding.sentence}</p>
-
-      <p class="bt-mapline">The map shows where a hotel is <b>legally free</b> to offer a cheaper direct rate. That is not a promise the direct rate will be cheaper. Grey means a country is not in our checked set, which is not the same as parity applying there.</p>
-
-      {/* THE COUNTRY SEARCH. Deliberately the same markup, the same .cfilter box, the same
-          dropdown behaviour and the same script shape as the typeahead on /hotel-tax-map, so a
-          reader who has used one already knows this one. It sits above the map for the same
-          reason it does there.
-
-          IT LIVES ON THE PAGE, NOT IN ParityMap.astro, and that is what makes it inert in the
-          embed by construction rather than by a guard somebody has to remember: the embed page
-          renders the map component alone, so it cannot pick this up. It also keeps the search,
-          the row ids it scrolls to, and the highlight style in one file. */}
-      <div class="bt-find">
-        <label class="bt-find-lab" for="pty-filter">Find a country on the map</label>
-        <div class="bt-ta-wrap">
-          <div class="cfilter bt-ta-box">
-            <svg class="cfilter-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
-            <input type="text" id="pty-filter" class="cfilter-in" placeholder="Type a country, like Germany" aria-label="Find a country on the map" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="pty-ta-list" aria-autocomplete="list" />
-          </div>
-          <div class="bt-ta" id="pty-ta" hidden>
-            <div class="bt-ta-list" id="pty-ta-list" role="listbox" aria-label="Matching jurisdictions">
-              {searchRows.map((r) => (
-                <button type="button" class="bt-ta-item" data-row={r.id} data-name={r.match}>
-                  {r.flag
-                    ? <img class="bt-ta-flag" src={r.flag} alt="" width="22" height="16" loading="lazy" />
-                    : <span class="bt-ta-flag is-none" aria-hidden="true"></span>}
-                  <span class="bt-ta-name">{r.name}</span>
-                  <span class="bt-ta-go" aria-hidden="true">&#8594;</span>
-                </button>
-              ))}
-            </div>
-            <p class="bt-ta-none" id="pty-ta-none" hidden>No ruling on that country in our set. That is not the same as parity applying there, only that nobody we track has ruled on it.</p>
-          </div>
-        </div>
-
-        {/* Revealed once a country resolves, so the reader is not left at the box with no way
-            back to the row they asked for. Same control, same wording, as the tax map. */}
-        <p class="bt-ta-jump" hidden data-pty-jump>
-          <button type="button" class="bt-ta-jump-b" data-pty-jump-b>
-            <span data-pty-jump-label>Go to the row</span>
-            <span class="bt-ta-jump-i" aria-hidden="true">&#8595;</span>
-          </button>
-          <span class="bt-ta-jump-n">Jumps to its sourced row below.</span>
-        </p>
-      </div>
-
-      <ParityMap tableAnchor={SEC.parity.id} />
-
-      {/* THE EMBED CONTROL, directly under the map. Identical in shape, wording and behaviour to
-          the one under the hotel-tax map: a collapsed <details>, so the reveal needs no
-          JavaScript, with the copy button inside as enhancement on top. It used to sit below the
-          table, which meant the code was a scroll away from the thing it embeds.
-
-          Collapsed rather than open because it sits between the map and the sourced table, and
-          that reading path is the honesty pattern of this section: map to see the shape, table
-          to read the ruling. A code box open by default would wedge itself into the middle of
-          it. Closed, it is one line. */}
-      <details class="bt-embed">
-        <summary class="bt-embed-sum">
-          <span class="bt-embed-sum-t">Use this map on your own site</span>
-          <svg class="bt-embed-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-        </summary>
-        <div class="bt-embed-body">
-          <p class="bt-embed-t">Free to embed anywhere, including commercially, and it stays current on your page: as the law moves and we recheck it, an embedded copy updates itself with no re-paste. A credit link back is appreciated and not required, because the frame carries one already.</p>
-
-          <label class="bt-esnip-lab" for="bt-esnip">Paste this where you want the map</label>
-          <textarea class="bt-esnip" id="bt-esnip" readonly rows="4" spellcheck="false" aria-describedby="bt-ecopy-hint">{SNIPPET}</textarea>
-
-          <div class="bt-erow">
-            <button class="bt-ecopy" type="button" data-copy-snippet hidden>Copy the snippet</button>
-            <span class="bt-ecopy-msg" data-copy-msg role="status" aria-live="polite"></span>
-            <a class="bt-eprev" href="/embed/rate-parity" target="_blank" rel="noopener">See what it looks like</a>
-          </div>
-          <p class="bt-ehint" id="bt-ecopy-hint">Clicking the box selects the whole snippet, so it copies with one keystroke if the button is not there.</p>
-        </div>
-      </details>
-
-      {/* FOR WRITERS AND PUBLISHERS, beside the embed control rather than buried in the
-          sources panel, because the two are the same offer in two formats: the iframe for
-          somebody publishing on the web, these files for somebody making a chart, a print
-          layout or a spreadsheet. Until now the only way to reuse this map was to screenshot
-          the page.
-
-          THE SVG IS FIRST AND THE PNGS SECOND, and the ordering is a real distinction rather
-          than a preference. /map/rate-parity.svg is an ENDPOINT: it is rebuilt from the data
-          on every build, so it cannot go stale. The PNGs are committed artifacts generated by
-          scripts/build-parity-png.py, so they can. The block says so out loud, because a
-          writer choosing a file should know which one is guaranteed current, and because
-          telling them is cheaper than a stale PNG in somebody's article.
-
-          THE CSV CARRIES PUBLISHED FIELDS ONLY. Five columns, every one already visible on
-          this page. No desk notes and nothing marked for review, because a column called
-          "note" in a downloaded CSV becomes a quote in somebody's article. */}
-      <details class="bt-embed bt-press">
-        <summary class="bt-embed-sum">
-          <span class="bt-embed-sum-t">For writers and publishers: the map and the data as files</span>
-          <svg class="bt-embed-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-        </summary>
-        <div class="bt-embed-body">
-          <p class="bt-embed-t">{PARITY_PRESS.licence} Take the map as a vector or a raster, or the rows as data. If you would rather it stayed current on your page by itself, use the embed above instead.</p>
-
-          <ul class="bt-dl">
-            <li>
-              <a class="bt-dl-a" href="/map/rate-parity.svg" download>Map, SVG</a>
-              <span class="bt-dl-n"><b>Rebuilt on every deploy, so it cannot go stale.</b> Vector, so it scales into a print layout without going soft. This is the map's native format: the choropleth is written as SVG, so this is the original rather than a conversion.</span>
-            </li>
-            <li>
-              <a class="bt-dl-a" href="/data/rate-parity.csv" download>Rows, CSV</a>
-              <span class="bt-dl-n"><b>Rebuilt on every deploy.</b> Columns: jurisdiction, status, effective date, source URL, checked date. The EU and EEA ruling ships once under its own name and once per member state, each labelled as inheriting it, so sorting by jurisdiction finds Poland without the file claiming a separate Polish ruling.</span>
-            </li>
-            <li>
-              <a class="bt-dl-a" href="/press/rate-parity-1200.png" download>Map, PNG 1200px</a>
-              <span class="bt-dl-n">For a web article. Carries the legend and the checked date inside the image, because a chart screenshot travels without its caption.</span>
-            </li>
-            <li>
-              <a class="bt-dl-a" href="/press/rate-parity-2400.png" download>Map, PNG 2400px</a>
-              <span class="bt-dl-n">For print or a high-density screen. <b>The two PNGs are generated files rather than live ones</b>, so check the date printed on the image against the checked date on this page before publishing.</span>
-            </li>
-          </ul>
-
-          <p class="bt-press-m"><b>The method, in one sentence.</b> {PARITY_PRESS.method}</p>
-
-          <p class="bt-press-at"><b>Suggested attribution.</b> <span class="bt-press-line">{PARITY_PRESS.attribution}</span></p>
-        </div>
-      </details>
-
-      <h3 class="bt-th">The rulings, one row at a time</h3>
-
-      <div class="bt-legend">
-        {Object.entries(PARITY_STATUS).map(([key, s]) => (
-          <p class={`bt-lg is-${s.tone}`}>
-            <span class="bt-lgk">{s.label}</span>
-            <span class="bt-lgm">{s.meaning}</span>
-          </p>
-        ))}
-      </div>
-
-      {/* THE CAPTION IS A PARAGRAPH, NOT A <caption>, AND THAT IS THE BUG FIX.
-          It was a real <caption> inside the table. Below 700px the table becomes a stack of
-          cards, which is done by setting display:block on the table and its rows and cells. A
-          <caption> keeps display:table-caption, so once its parent stopped being a table the
-          browser wrapped it in an anonymous table box sized to its own min-content, and the
-          caption rendered one word per line down the page. Resetting the caption's display
-          would have fixed the symptom; taking it out of the table means table layout can never
-          reach it again, at any width. */}
-      <p class="bt-cap">Rate parity by jurisdiction, with the ruling or statute behind each row. Checked {bookingTacticsChecked}. {parityLinked} of the {parityRows.length} rows link the primary document, and the {parityRows.length - parityLinked} that do not are named as unlinked rather than left to look sourced. {flaggedCount} rows are a single country, and the {linkedCount} of those with a guide on this site link to it.</p>
-
-      <div class="bt-tablewrap">
-        <table class="bt-table">
-          {/* Explicit column widths, because without a colgroup the browser sized all four from
-              their content and the ruling column, the one a reader is actually here for, was
-              crushed into a strip while three short columns took the room.
-
-              RETUNED FROM 18/14/12/56. At 18% the jurisdiction column was wider than any
-              country name needs, so every row opened with an empty band on the left. It is now
-              14%, and the 4 points go to the ruling. Note that the th's old min-width:130px was
-              doing the same job as the colgroup and fighting it: 130px IS 18% of this table, so
-              the column could not narrow until that came off too. It has.
-
-              table-layout stays auto, so a long jurisdiction name can still push its own column
-              rather than overflowing it. */}
-          <colgroup>
-            <col style="width:19%" />
-            <col style="width:17%" />
-            <col style="width:14%" />
-            <col style="width:50%" />
-          </colgroup>
-          <thead>
-            <tr>
-              <th scope="col">Jurisdiction</th>
-              <th scope="col">Status</th>
-              <th scope="col">Since</th>
-              <th scope="col">What changed, and the source</th>
-            </tr>
-          </thead>
-          <tbody>
-            {parityRows.map((r) => (
-              <tr id={parityRowId(r)} class:list={[{ 'is-us': r.status === 'binds' }]}>
-                {/* A flag appears wherever the row is one country we can identify. A LINK
-                    appears only where there is a guide behind it, so Belgium shows its flag
-                    with a plain name. A multi-country row gets neither: "EU and EEA, all 27
-                    member states" cannot wear one flag without asserting something false. */}
-                <th scope="row" data-l="Jurisdiction">
-                  {r.guideUrl ? (
-                    <a class="bt-j" href={r.guideUrl}>
-                      <span class="bt-jflag"><img src={r.flag} alt="" width="22" height="16" loading="lazy" /></span>
-                      <span class="bt-jname">{r.jurisdiction}</span>
-                    </a>
-                  ) : (
-                    <span class="bt-j is-plain">
-                      {r.flag && <span class="bt-jflag"><img src={r.flag} alt="" width="22" height="16" loading="lazy" /></span>}
-                      <span class="bt-jname">{r.jurisdiction}</span>
-                    </span>
-                  )}
-                </th>
-                <td data-l="Status">
-                  <span class={`bt-chip is-${PARITY_STATUS[r.status].tone}`}>{PARITY_STATUS[r.status].label}</span>
-                </td>
-                <td data-l="Since" class="bt-since">{r.sinceDate}</td>
-                <td data-l="What changed">
-                  <span class="bt-ruling">{r.ruling}</span>
-                  {/* THE NEGATIVE CLAIM SHOWS ITS METHOD. Every other row points at a document
-                      that exists; this one asserts that a document does not, and there is no
-                      URL for that. Left as a bare label it read as the one row nobody had to
-                      check, which is the opposite of what it is: it is the row a US reader
-                      most needs and the one most likely to go out of date, because it would
-                      take a single state legislature. So it renders a dated method, what
-                      would overturn it, and the hole in it, rather than a citation. */}
-                  {r.methodology && (
-                    <div class="bt-meth">
-                      <span class="bt-meth-k">How a negative was checked</span>
-                      <p>{r.methodology.how}</p>
-                      <p><b>What would change this:</b> {r.methodology.wouldChangeThis}</p>
-                      <p class="bt-meth-gap">{r.methodology.inventoryPending}</p>
-                      <p class="bt-meth-d">Stated as of {r.methodology.cutoff}.</p>
-                    </div>
-                  )}
-                  {r.source.url
-                    ? <a class="bt-tsrc" href={r.source.url} target="_blank" rel="noopener">{r.source.label}</a>
-                    : <span class="bt-tsrc bt-nosrc">{r.source.label}</span>}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <p class="bt-do">Two things this table does not say. It does not say a direct rate will be cheaper, only that a hotel is free to make it so. And it says nothing about whether the price you were shown had to include the mandatory fees, which is a separate question answered by <a href="#drip">the disclosure rules above</a>. A jurisdiction can be strict on one and silent on the other, and the US is exactly that: no parity ban, and one of the more specific fee-disclosure rules anywhere.</p>
-
     </section>
 
     <section class="bt-sec">
@@ -1232,6 +1232,24 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
     @media (max-width:560px){
       .bt-quick{padding:14px 15px 15px}
       .bt-qlist li{font-size:14px}
+
+      /* THE WHAT-THIS-IS-NOT SUMMARY ON NARROW SCREENS. Below 560px the flex-wrap row (label,
+         sentence, chevron all fighting for one line) wraps mid-phrase. Switched to a two-column
+         grid instead: column one holds the label above the sentence, column two holds the
+         chevron alone, centred across both rows, so it stays to the right of the summary
+         rather than dropping to its own line. Desktop keeps the flex row above untouched. */
+      .bt-not-sum{
+        display:grid;
+        grid-template-columns:1fr auto;
+        grid-template-rows:auto auto;
+        column-gap:10px;
+        row-gap:3px;
+        align-items:start;
+        flex-wrap:unset;
+      }
+      .bt-not-k{grid-column:1;grid-row:1}
+      .bt-not-one{grid-column:1;grid-row:2}
+      .bt-not-chev{grid-column:2;grid-row:1 / 3;align-self:center}
     }
     .bt-sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 6px;line-height:1.2}
     .bt-note{font-size:14.5px;color:var(--muted);margin:0 0 18px;line-height:1.55;max-width:720px}
