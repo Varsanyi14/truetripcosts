@@ -337,8 +337,8 @@ function deriveReferenceFigures(list) {
   });
 }
 
-export const hotelTaxMapChecked = 'Aug 2026';
-export const hotelTaxMapCheckedISO = '2026-08-31';
+export const hotelTaxMapChecked = 'Sep 2026';
+export const hotelTaxMapCheckedISO = '2026-09-01';
 
 // --- the countries ----------------------------------------------------------
 // PHASE 2 CONTENT NOTE, read this before adding anything.
@@ -735,6 +735,20 @@ export const hotelTaxMap = deriveReferenceFigures([
         effective: '2025-01-01',
         source: { label: 'Skatturinn (Iceland Revenue and Customs): the lodging tax and its rates', url: 'https://www.skatturinn.is/english/companies/tax-issues/lodging-tax/', type: 'revenue' },
         checkedISO: '2026-08-29',
+      },
+    ],
+    // ADDED IN WAVE 2, AND ICELAND WAS NOT AN ADDITION IN THAT WAVE. MAIN's wave 2 brief
+    // listed Iceland as a country to add at 800 kronur per room per night, which is the
+    // figure this entry has carried since Phase 2 and the source it already cites. Nothing
+    // about the fill changed. What was genuinely missing was the forward flag, so that is
+    // all that was added.
+    watch: [
+      {
+        label: 'A considerably higher lodging tax has been signalled and not enacted',
+        status: 'proposed',
+        note: 'A substantial increase has been publicly signalled without a rate or a date being set. Nothing is folded into the 800 kronur above, which remains the rate in force. Named here so a reader who has seen the reporting can see it is known about and deliberately not counted.',
+        source: null,
+        pendingSource: 'Needs the Icelandic finance ministry or Althingi bill text if a rate and a commencement date are ever set, and a re-check of the 800 kronur in the meantime.',
       },
     ],
     property: [],
@@ -2143,6 +2157,605 @@ export const hotelTaxMap = deriveReferenceFigures([
     checkedISO: '2026-08-31',
   },
 
+  // ==========================================================================
+  // WAVE 2, 2026-09-01. Seventeen entries, and the interesting thing about them is
+  // how few colour.
+  //
+  // MAIN's brief for this wave listed fourteen countries to shade, and the wave lands with
+  // nine shaded, one as checked-no-tax, six as varies and two held off the scale entirely.
+  // Every one of those demotions is Rule 1 of the Phase 2 note doing its job rather than a
+  // figure failing to verify: the FIGURES all verified, the SOURCE URLS did not.
+  //
+  // THE RULE THAT DECIDED THIS WAVE, restated because it decided almost every case in it:
+  // a country colours only if every government figure on it carries a real URL at the
+  // authority that sets it. Applied uniformly here:
+  //   URL supplied and it is an authority       -> colour  (KY PA FJ BZ BM RW KE LC GE)
+  //   no URL supplied at all                    -> pending (MY)
+  //   URL supplied but it is not the authority  -> pending (BT, and see its note)
+  //   no URL and the spread is the real finding -> varies  (MA RU PE CL IL)
+  //   no URL needed, because the finding is "nothing is added" -> noBedTax (KZ)
+  //
+  // BHUTAN IS THE ONE WORTH READING BEFORE ANYTHING ELSE. It would be the darkest fill on
+  // this map by a wide margin, roughly three times the Maldives, and it is held grey. See
+  // the entry.
+  //
+  // WHAT DID NOT HAPPEN HERE, on purpose: no figure below was rounded, combined or summed
+  // into a bigger one to make a country darker, and no forward-dated change was applied
+  // early. Four forward flags landed in this wave (Bhutan 2027, the Belize proposal, the
+  // Iceland proposal, the Russian annual escalation) and all four are watch rows.
+  // ==========================================================================
+
+  {
+    iso: 'KY',
+    country: 'Cayman Islands',
+    slug: null,
+    spoke: null,
+    state: 'checked',
+    // The cleanest entry in the wave, and a useful one to read first because nothing about
+    // it is complicated: one government charge, a real percentage, no VAT anywhere behind
+    // it, and the figure a reader sees at checkout is the whole government take.
+    addedPct: 13,
+    addedBasis: 'The Tourist Accommodation Tax, 13% of the gross room rate. There is no general sales tax or VAT in the Cayman Islands, so this single charge is the entire government share of a hotel bill, and it is added rather than embedded.',
+    governmentTotalPct: 13,
+    display: 'added',
+    displayNote: 'Quoted rates here routinely exclude it, and the property will usually add its own service charge on top of that, which is not a tax.',
+    government: [
+      {
+        label: 'Tourist Accommodation Tax',
+        figure: '13% of the gross room rate',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'Charged on the gross room rate at licensed tourist accommodation and remitted by the property. There is no general sales tax, income tax or VAT in the islands, so nothing stacks behind it.',
+        source: { label: 'Cayman Islands Department of Tourism: licensing and inspection for tourism businesses, stating the 13% Tourist Accommodation Tax', url: 'https://www.ourcayman.ky/en-us/business-in-tourism/how-to/licensing-and-inspection', type: 'gov' },
+        checkedISO: '2026-09-01',
+      },
+    ],
+    property: [
+      { label: 'Service charge', range: 'commonly 10%', note: 'Set by the property rather than by government, so it is outside the figure above however routinely it appears on a Cayman hotel bill.' },
+    ],
+    checkedISO: '2026-09-01',
+  },
+
+  {
+    iso: 'PA',
+    country: 'Panama',
+    slug: null,
+    spoke: null,
+    state: 'checked',
+    // THE RATE IS OFFICIAL AND THE DISPLAY CONVENTION IS THE SOFT PART, which is worth
+    // stating plainly because on this map the display convention is half the answer.
+    // Panama's lodging rate is 10% by statute, set apart from the general 7% ITBMS, and
+    // that much is settled. What rests on trade practice rather than on a published rule
+    // is that a Panamanian hotel quotes before it. MAIN's ruling was to colour on the
+    // statutory rate and say so, which is what the display note below does.
+    //
+    // THE SOURCE IS A DOMAIN ROOT, not a deep link to the rate table. That is a real
+    // weakness and it is the same one India and Bahrain already carry on this map, so it is
+    // treated the same way: the figure colours, the root is honest about being the
+    // authority rather than the page, and a deep link is worth having when somebody finds
+    // one. It is NOT the same weakness as Bhutan's below, where the URL is not the
+    // authority at all.
+    addedPct: 10,
+    addedBasis: 'Lodging carries a special 10% ITBMS rate rather than the general 7%, set by article 1057-V of the Fiscal Code. Panamanian hotels commonly quote before it, so the whole 10% tends to arrive at checkout rather than sitting inside the rate you compared.',
+    governmentTotalPct: 10,
+    display: 'added',
+    displayNote: 'The 10% rate is statutory. Whether you see it added depends on the property, and the usual practice is that you do, which is why it colours here. A rate quoted as all in has it inside already.',
+    government: [
+      {
+        label: 'ITBMS on lodging',
+        figure: '10%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'The special accommodation rate of Panama\u2019s transfer tax on goods and services, set higher than the 7% general rate by article 1057-V of the Fiscal Code and administered by the Direccion General de Ingresos.',
+        source: { label: 'Direccion General de Ingresos, Ministry of Economy and Finance of Panama, the authority that administers ITBMS under article 1057-V of the Fiscal Code', url: 'https://dgi.mef.gob.pa/', type: 'gov' },
+        checkedISO: '2026-09-01',
+      },
+    ],
+    property: [],
+    checkedISO: '2026-09-01',
+  },
+
+  {
+    iso: 'FJ',
+    country: 'Fiji',
+    slug: null,
+    spoke: null,
+    state: 'checked',
+    // THE STACKING CASE, AND THE ONE PLACE THIS WAVE COULD MOST EASILY HAVE INVENTED A
+    // NUMBER. Fiji layers three government charges on a hotel room: a 10% Environment and
+    // Climate Adaptation Levy, 9% VAT and a Service Turnover Tax. Multiplying them out
+    // gives a figure in the mid twenties that no Fijian authority publishes and that would
+    // depend on the order they are applied in, which is exactly the kind of confident
+    // arithmetic this file is built to refuse.
+    //
+    // So it colours on ECAL alone, because ECAL is the single clearest added government
+    // charge and it is the one we can point a reader at a government page for. The other
+    // two are named below in their own block with the reason they are not counted, which
+    // makes this fill a FLOOR and says so. Better a floor a reader can check than a total
+    // nobody can.
+    addedPct: 10,
+    addedBasis: 'The Environment and Climate Adaptation Levy, 10% on hotel accommodation. Fiji also layers 9% VAT and a service turnover tax on the same bill, so the real total here is higher than 10%, and it is not shown as one figure because no authority publishes the combined rate and the order the three are applied in changes the answer. Read this one as a floor.',
+    governmentTotalPct: null,
+    display: 'added',
+    displayNote: 'Resort rates here are commonly quoted before tax, so the whole stack tends to arrive at checkout. Ask whether a rate is all in before comparing it with one that is.',
+    government: [
+      {
+        label: 'Environment and Climate Adaptation Levy (ECAL)',
+        figure: '10%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'Charged on prescribed services including hotel accommodation, collected by the Fiji Revenue and Customs Service. It is the largest of the three government charges on a Fijian hotel bill and the clearest to state on its own.',
+        source: { label: 'Fiji Revenue and Customs Service: the Environment and Climate Adaptation Levy and the services it applies to', url: 'https://frcs.org.fj/our-services/taxation/business/environmental-levy/', type: 'gov' },
+        checkedISO: '2026-09-01',
+      },
+    ],
+    notInFill: [
+      { label: 'VAT and the service turnover tax', figure: '9% VAT plus a service turnover tax on the same bill', why: 'Real, government-levied and deliberately not added to the fill. Combining them with ECAL would produce a figure no Fijian authority publishes, and the total depends on which base each one is charged on, which we have not established. Counting them at a guess would make this country darker on an assumption rather than on a source.' },
+    ],
+    property: [
+      { label: 'Service charge', range: null, note: 'Where a resort or hotel adds one it is the property\u2019s own charge, not a government levy, and it is separate from the service turnover tax above despite the similar name.' },
+    ],
+    checkedISO: '2026-09-01',
+  },
+
+  {
+    iso: 'BZ',
+    country: 'Belize',
+    slug: null,
+    spoke: null,
+    state: 'checked',
+    addedPct: 9,
+    addedBasis: 'The hotel accommodation tax, 9% of the room rate, collected for the Belize Tourism Board. The 6 to 15% service charge that appears on most Belizean hotel bills is set by the property and is not counted here.',
+    governmentTotalPct: 9,
+    display: 'added',
+    displayNote: 'Between the tax and a property service charge, a Belize hotel bill commonly lands 15 to 25% above the rate quoted. Only the 9% is government.',
+    government: [
+      {
+        label: 'Hotel accommodation tax',
+        figure: '9% of the room rate',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'Charged on accommodation and collected by licensed hotels for the Belize Tourism Board.',
+        source: { label: 'Belize Tourism Board: hotel licensing and the 9% accommodation tax', url: 'https://www.belizetourismboard.org/hotels/', type: 'gov' },
+        checkedISO: '2026-09-01',
+      },
+    ],
+    watch: [
+      {
+        label: 'A rise in the accommodation tax has been floated and not enacted',
+        status: 'proposed',
+        note: 'A higher rate in the region of twelve and a half percent was discussed publicly across 2025 and 2026. Nothing was enacted, so the legal rate remains the nine percent above and the proposal is excluded from the figure. Named here rather than left out because a reader who has seen the reporting should be able to see that we know about it and are not counting it.',
+        source: null,
+        pendingSource: 'Needs the current position from the Belize Tourism Board or the Ministry of Finance, and the statutory instrument if the rise is ever made.',
+      },
+    ],
+    property: [
+      { label: 'Service charge', range: '6 to 15%', note: 'Set by the property rather than by government. It is usually the larger of the two additions on a Belize hotel bill, and it never reaches the colour.' },
+    ],
+    checkedISO: '2026-09-01',
+  },
+
+  {
+    iso: 'BM',
+    country: 'Bermuda',
+    slug: null,
+    spoke: null,
+    state: 'checked',
+    // TWO CHARGES THAT ARE ROUTINELY QUOTED AS ONE, SPLIT BACK APART. A Bermuda hotel bill
+    // commonly shows 9.75%, which is the 7.25% Hotel Occupancy Tax plus a 2.5% Tourism
+    // Guest Fee. Only the first is the occupancy tax the Office of the Tax Commissioner
+    // publishes, and it is the one we can point at a government page for, so it is the one
+    // that colours. The 2.5% is named below and carried in the total.
+    addedPct: 7.25,
+    addedBasis: 'The Hotel Occupancy Tax, 7.25% of the room rate. Your bill will more often show 9.75%, because a separate 2.5% Tourism Guest Fee is usually combined with it, and that fee is named below rather than coloured. The roughly 17% service charge most Bermuda hotels add is the property\u2019s, not government.',
+    governmentTotalPct: 9.75,
+    display: 'added',
+    displayNote: 'Bermuda is one of the places where the government share is the smaller surprise. The property service charge here is unusually high and it is not a tax, so read the two lines on your bill separately.',
+    government: [
+      {
+        label: 'Hotel Occupancy Tax',
+        figure: '7.25% of the room rate',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'Charged on the room rate at licensed hotels and collected by the Office of the Tax Commissioner.',
+        source: { label: 'Government of Bermuda, Office of the Tax Commissioner: hotel occupancy tax and its rate', url: 'https://www.gov.bm/hotel-occupancy-tax', type: 'gov' },
+        checkedISO: '2026-09-01',
+      },
+    ],
+    notInFill: [
+      { label: 'Tourism Guest Fee', figure: '2.5% of the room rate, which takes the combined line on most bills to 9.75%', why: 'Almost certainly a charge a reader will see, and not coloured, because it is a separate instrument from the occupancy tax and we do not hold a government page stating it in the authority\u2019s own words. It is carried in the total government take above so the number a reader sees on their bill is accounted for somewhere on this row.' },
+    ],
+    property: [
+      { label: 'Service charge and resort fee', range: 'service charge commonly around 17%', note: 'Set by the property and by union agreement rather than by government, and on a Bermuda hotel bill it is usually larger than everything government charges put together.' },
+    ],
+    checkedISO: '2026-09-01',
+  },
+
+  {
+    iso: 'RW',
+    country: 'Rwanda',
+    slug: null,
+    spoke: null,
+    state: 'checked',
+    // The newest charge in the wave, in force since 1 July 2025.
+    addedPct: 3,
+    addedBasis: 'A 3% tourism tax on accommodation, in force since 1 July 2025 and charged on the room excluding VAT. Standard VAT of 18% is a separate charge and is named below rather than counted, because we have not established whether a Rwandan hotel quotes inclusive of it.',
+    governmentTotalPct: null,
+    display: 'added',
+    displayNote: 'This is a new charge rather than a long-standing one, so a rate quoted before mid-2025 or an older guide may not include it at all.',
+    government: [
+      {
+        label: 'Tourism tax on accommodation',
+        figure: '3% of the accommodation charge, excluding VAT',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'Introduced by Law No. 015/2025 of 27 May 2025 and effective 1 July 2025, charged on accommodation services excluding VAT and administered by the Rwanda Revenue Authority.',
+        effective: '2025-07-01',
+        source: { label: 'Rwanda Revenue Authority, the authority administering the accommodation tourism tax under Law No. 015/2025 of 27 May 2025', url: 'https://www.rra.gov.rw/', type: 'revenue' },
+        checkedISO: '2026-09-01',
+      },
+    ],
+    notInFill: [
+      { label: 'Value added tax', figure: 'the 18% standard rate, which applies to accommodation', why: 'Not counted because this map colours what is ADDED to a quoted price, and whether a Rwandan hotel quotes inclusive or exclusive of VAT is the one thing we have not established. Counting it would make this country four times darker on an assumption about display rather than on a source, and leaving it unnamed would hide the larger of the two charges.' },
+    ],
+    property: [],
+    checkedISO: '2026-09-01',
+  },
+
+  {
+    iso: 'KE',
+    country: 'Kenya',
+    slug: null,
+    spoke: null,
+    state: 'checked',
+    addedPct: 2,
+    addedBasis: 'The Tourism Levy, 2% of gross accommodation sales at scheduled establishments. It is the smallest figure in this wave and it is not the whole of what lands on a Kenyan hotel bill: 16% VAT and any service charge stack on top of it, and both are named separately below.',
+    governmentTotalPct: null,
+    display: 'added',
+    displayNote: 'The levy is small and the VAT behind it is not, so read this fill as the part we can state cleanly rather than as the size of a Kenyan hotel bill.',
+    government: [
+      {
+        label: 'Tourism Levy',
+        figure: '2% of gross accommodation sales',
+        basis: 'percentOfRoom',
+        inQuotedPrice: false,
+        note: 'Charged on the gross sales of accommodation and restaurant services at establishments scheduled under the Tourism Act, and collected by the Tourism Fund.',
+        source: { label: 'Tourism Fund of Kenya: the tourism levy, its 2% rate and the establishments it applies to', url: 'https://www.tourismfund.go.ke/levy/', type: 'gov' },
+        checkedISO: '2026-09-01',
+      },
+    ],
+    notInFill: [
+      { label: 'Value added tax', figure: 'the 16% standard rate, which stacks on the same bill', why: 'Not counted for the same reason as Rwanda: this map colours what is added to a quoted price, and whether a Kenyan hotel quotes inclusive or exclusive of VAT varies by property and we have not established the usual case. It is much larger than the levy, which is why it is named here rather than left out.' },
+    ],
+    property: [
+      { label: 'Service charge', range: 'commonly 10%', note: 'Set by the property rather than by government, and often shown next to the tax lines on a hotel bill as though it were one of them.' },
+    ],
+    checkedISO: '2026-09-01',
+  },
+
+  {
+    iso: 'LC',
+    country: 'Saint Lucia',
+    slug: null,
+    spoke: null,
+    state: 'checked',
+    // A BANDED FLAT FEE, which is a shape this map had not met before. The levy is 3
+    // dollars a person a night on a room under 120 dollars and 6 dollars above it, so the
+    // charge steps rather than scaling. The basket declares a 150 euro room, which is above
+    // the 120 dollar boundary, so the UPPER band is the one that applies at the reference
+    // stay and the upper band is what is modelled. Modelling the lower one would be
+    // describing a room the basket does not hold.
+    modelled: [
+      { label: 'Tourism levy, upper band', amount: 6, currency: 'USD', unit: 'perPersonPerNight' },
+    ],
+    addedBasis: 'The tourism levy is a flat charge per person per night that steps with the room rate: 3 dollars below 120 dollars a night and 6 dollars above it. The reference room sits above that boundary, so this models the 6 dollar band. On a cheaper room the levy is 3 dollars and a larger share of a smaller bill. A reduced 7% VAT applies to accommodation as well, is not charged on the levy, and is named below rather than counted.',
+    display: 'added',
+    displayNote: 'Charged per person, so two people sharing pay it twice while the room rate does not move. Ages 12 to 17 pay half and under-12s pay nothing.',
+    government: [
+      {
+        label: 'Tourism levy',
+        figure: '3 US dollars per person per night below a 120 dollar room rate, 6 dollars above it',
+        basis: 'perPersonPerNight',
+        amount: 6,
+        currency: 'USD',
+        inQuotedPrice: false,
+        note: 'A banded flat levy collected by the accommodation and remitted to government. Ages 12 to 17 are charged half and children under 12 are exempt. VAT is not charged on the levy.',
+        source: { label: 'Government of Saint Lucia tourism levy: the banded per-person nightly rates, the age concessions and the VAT treatment', url: 'https://saintluciatourismlevy.org/faqs/', type: 'gov' },
+        checkedISO: '2026-09-01',
+      },
+    ],
+    notInFill: [
+      { label: 'Reduced VAT on accommodation', figure: 'a reduced 7% rate on accommodation, charged on the room but not on the levy', why: 'Named rather than counted, on MAIN\u2019s instruction for this entry: the fill models the flat levy, which is the charge this country is unusual for, and the VAT is stated separately. That makes this fill a floor rather than the total government share, and the total is higher by roughly the reduced rate.' },
+    ],
+    property: [
+      { label: 'Service charge and resort fee', range: null, note: 'Set by the property. Caribbean resort billing here routinely adds both, and neither is a government charge.' },
+    ],
+    checkedISO: '2026-09-01',
+  },
+
+  {
+    iso: 'GE',
+    country: 'Georgia',
+    slug: 'georgia',
+    spoke: null,
+    state: 'checked',
+    // OVERRIDES THE DERIVED ENTRY, and the override is the whole point of it. georgia.js
+    // carries tax.none, which the component reads as "checked: no tourist or hotel tax",
+    // and that is TRUE and off this map's axis: it says nothing about whether VAT lands on
+    // top of a quoted rate. The guide's own note already says the 18% is usually baked into
+    // the price, so the site knew the answer and the map was not showing it. This entry
+    // moves it onto the axis as an inclusive zero, which is the same treatment Denmark,
+    // Ireland and Sweden already get.
+    //
+    // NOT THE US STATE OF THE SAME NAME. Georgia the country has no national bed tax. The
+    // State of Georgia has a hotel-motel fee, and every search for one returns the other.
+    // Anything on this row that starts describing a per-night dollar fee is the wrong
+    // Georgia.
+    addedPct: 0,
+    addedBasis: 'Nothing is added on top. There is no national bed tax, hotel tax or city tax anywhere in Georgia, and the 18% VAT is inside the rate you are quoted rather than added at the desk. The zero is a statement about display, not about burden.',
+    governmentTotalPct: 18,
+    display: 'inclusive',
+    displayNote: 'One of the few countries in the region where the booking price is simply the price. Do not confuse this with the US state of the same name, which does charge a per-night hotel fee.',
+    government: [
+      {
+        label: 'Value added tax',
+        figure: '18%',
+        basis: 'percentOfRoom',
+        inQuotedPrice: true,
+        note: 'The standard rate, applied to accommodation and embedded in consumer-quoted prices. There is no reduced accommodation rate and no separate bed or city tax.',
+        source: { label: 'Revenue Service of Georgia, the authority administering the 18% VAT that applies to accommodation', url: 'https://www.rs.ge/', type: 'revenue' },
+        checkedISO: '2026-09-01',
+      },
+    ],
+    property: [],
+    checkedISO: '2026-09-01',
+  },
+
+  {
+    iso: 'KZ',
+    country: 'Kazakhstan',
+    slug: null,
+    spoke: null,
+    // A REAL COLOURABLE "WE CHECKED, AND THERE IS NOTHING" FINDING, and the first one on
+    // this map that was not derived from a country guide. Kazakhstan had a bed tax on
+    // foreign tourists and abolished it nationwide, at 0% from 9 January 2024. That is a
+    // finding worth having: it is the opposite direction from every other change in this
+    // wave, and a reader who saw the old fee reported has no way to know it went.
+    //
+    // It carries NO percentage, deliberately, and that is what the noBedTax state is for.
+    // We have verified a COMPONENT (there is no bed or hotel tax) and not this map's axis
+    // (whether VAT lands on top of a quoted rate), so putting it in the light band would
+    // claim a number nobody checked.
+    state: 'noBedTax',
+    note: 'Kazakhstan scrapped its foreign-tourist bed tax nationwide, at nothing from 9 January 2024 under an order of the Minister of Tourism and Sports made on 27 December 2023. There is no per-night tourist or hotel tax to add anywhere in the country now. What has not been checked here is whether VAT is added on top of a quoted rate or already inside it, which is the question this map colours, so this row states the finding and no figure.',
+    checkedISO: '2026-09-01',
+  },
+
+  {
+    iso: 'MA',
+    country: 'Morocco',
+    slug: 'morocco',
+    spoke: 'tourist-tax',
+    // HELD OFF THE SCALE AGAIN, AND THIS TIME WITH THE LADDER WRITTEN OUT. Morocco was one
+    // of the two countries held at the end of Phase 2 for a single reason, recorded above:
+    // no official page states the figure and the DGI has only a domain root. That has not
+    // changed, so it still cannot colour under Rule 1.
+    //
+    // WHAT DID CHANGE is that this entry now carries the class ladder and the city range
+    // instead of a derived one-line shape note, so the reader gets the actual numbers even
+    // though the map cannot paint them. MAIN's brief allowed exactly this fallback for this
+    // country: use varies with the class note rather than force a figure. Two charges at
+    // two different levels of government, each varying on a different axis, is genuinely
+    // the varies case and not a missing-figure case.
+    state: 'varies',
+    variesNote: 'Two separate charges are added at check-in here and they vary on two different axes, so no single figure describes the country. The Tourism Promotion Tax is set by hotel class, running from about 3 dirhams per person per night at a one or two star up to 5 at a three star, 7 at a four star, 25 at a five star and 30 at a luxury property, capped at 10% of the room for the top two classes and waived for under-10s. On top of that, cities levy their own taxe de sejour, which in a Marrakech-class city runs roughly 15 to 25 dirhams per person per night and is set city by city. So a couple in a five-star Marrakech room pays several times what a couple in a three-star provincial hotel pays, and neither figure would be wrong to print or right to paint.',
+    calcNote: 'It depends on the class of hotel and on the city, and both charges are per person per night rather than per room. Budget roughly 20 to 55 dirhams per person per night at a mid-range to upper-tier hotel in a major city, taking the class-based Tourism Promotion Tax and the municipal taxe de sejour together, and expect them at the desk rather than in the rate you were quoted.',
+    cities: [],
+    pendingVerification: 'Needs an official Direction Generale des Impots page stating the Tourism Promotion Tax ladder under Law 47-06, plus one municipal decree for a named city\u2019s taxe de sejour. The figures are researched and dated on Morocco\u2019s own tax page; what is missing is a URL a reader could check them against, and a fill is exactly the claim they would want to.',
+    property: [
+      { label: 'Service charge', range: null, note: 'Where a hotel adds one it is the property\u2019s own charge and not a government levy, which matters here because both government charges arrive at the desk too and all three can look alike on a bill.' },
+    ],
+    checkedISO: '2026-09-01',
+  },
+
+  {
+    iso: 'RU',
+    country: 'Russia',
+    slug: null,
+    spoke: null,
+    // A PATCHWORK THAT IS ALSO A MOVING TARGET, which is two reasons not to paint it and
+    // one reason to list it. The old resort fee was replaced by a local tourist tax with a
+    // national CEILING rather than a national rate: regions opt in one by one, and the
+    // ceiling itself climbs a point a year to 2029. There is no year in which one figure
+    // describes Russia, and there is no figure that stays right for twelve months.
+    state: 'varies',
+    variesNote: 'There is no single national rate. A local tourist tax replaced the old resort fee, and it is set region by region under a national ceiling that rises every year: a maximum of 1% of the accommodation price in 2025 and 2% in 2026, climbing one point a year to a 5% cap by 2029, with a floor of 100 roubles a day. Regions adopt it individually, around 65 in 2025 and more than 73 in 2026, so whether you pay it at all depends on where you stay. Where it applies it is included in the price rather than added at the desk. A fill would have to pick one region and one year, and both would be wrong somewhere.',
+    calcNote: 'It depends on the region and on the year. Where a region has adopted the local tourist tax it is capped at 2% of the accommodation price in 2026, with a minimum of 100 roubles a day, and it is normally inside the price you are quoted rather than added afterwards. Many regions have not adopted it at all.',
+    cities: [],
+    watch: [
+      {
+        label: 'The ceiling rises by one point a year to 2029',
+        note: 'The national maximum climbs annually under the same federal law, so any figure for this country carries an expiry date. Nothing forward-dated is folded into the note above, which describes the ceiling in force now.',
+        source: null,
+        pendingSource: 'Needs the Russian Tax Code chapter on the local tourist tax, introduced by Federal Law 176-FZ of 12 July 2024, and a current count of which regions have adopted it.',
+      },
+    ],
+    pendingVerification: 'Needs the Tax Code text deep-linked, plus a decision on whether a rising ceiling can ever be shown as a fill on a map that carries one number per country. It probably cannot, which would make varies the permanent answer here rather than a holding one.',
+    property: [],
+    checkedISO: '2026-09-01',
+  },
+
+  // --- the foreigner-exempt three -------------------------------------------
+  // THE SAME RAIL AS ARGENTINA, COLOMBIA AND ECUADOR, and the reason it exists is worth
+  // repeating rather than cross-referencing, because it is the rail most likely to be
+  // "fixed" by a well-meaning edit. Each of these three countries has a headline VAT rate
+  // in the high teens that a US tourist DOES NOT PAY on a hotel room. Colouring them at the
+  // resident rate would tell a reader to expect a fifth on top of a tax they are exempt
+  // from, which is the single largest overstatement this map is capable of making.
+  //
+  // They are varies rather than a coloured zero because the exemption is CONDITIONAL, and
+  // the conditions are not decorative: pay in the wrong currency in Chile, stay too long in
+  // Peru, book an unregistered property in either, and the exemption is gone. A zero cannot
+  // express a condition. The row and the calculator note can, and do.
+
+  {
+    iso: 'PE',
+    country: 'Peru',
+    slug: null,
+    spoke: null,
+    state: 'varies',
+    calcNote: 'A US tourist pays about nothing here. Peru exempts non-domiciled foreigners from the 18% IGV on hotel accommodation for stays up to 60 days, so the government share on your room is effectively zero. The conditions are the ones to know: your passport and entry stamp are what prove the exemption, the hotel has to be a registered establishment, and a stay past 60 days loses it. A Peruvian resident pays the full 18%.',
+    variesNote: 'Non-domiciled foreigners staying up to 60 days are exempt from the 18% IGV on hotel accommodation, so for a US visitor the government share added to the room is effectively nothing, while a Peruvian resident pays the full 18%. It varies by who you are rather than by where you stay, and it is conditional: the exemption runs on your passport and entry stamp, it applies at registered establishments, and it ends at 60 days. A single fill would be wrong for one of those two readers whichever number it showed.',
+    cities: [],
+    pendingVerification: 'Needs the SUNAT text for article 76 of the IGV Law deep-linked, and a note on what a traveler can do when a registered hotel charges the IGV anyway, which is the same gap the Colombia entry carries.',
+    property: [
+      { label: 'Service charge', range: 'commonly 10% at upscale hotels', note: 'Set by the property rather than by government, and it is charged whether or not you qualify for the tax exemption.' },
+    ],
+    checkedISO: '2026-09-01',
+  },
+
+  {
+    iso: 'CL',
+    country: 'Chile',
+    slug: null,
+    spoke: null,
+    state: 'varies',
+    // THE CONDITION HERE IS HOW YOU PAY, which makes it the sharpest case of the three. The
+    // exemption is real and it is forfeited by paying in pesos, which is the default a
+    // traveler would fall into without being told.
+    calcNote: 'A US tourist can pay nothing here, and it depends on how you pay. Chile exempts non-resident foreigners from the 19% IVA on accommodation at registered hotels for stays under 60 days, but only when the stay is paid in foreign currency. Pay in Chilean pesos and you forfeit the exemption and owe the full 19%, which is the one condition worth knowing before you reach the desk.',
+    variesNote: 'Non-resident foreigners are exempt from the 19% IVA on accommodation at registered hotels for stays under 60 days, and the exemption is conditional on paying in foreign currency. Pay in pesos, or stay at a property outside the scheme, and the full 19% applies. So the answer here is not about the country, it is about your payment method, and a fill cannot hold that.',
+    cities: [],
+    pendingVerification: 'Needs the Servicio de Impuestos Internos text for article 12 E number 17 of Decree Law 825 deep-linked, and confirmation of what counts as payment in foreign currency when a card settles in pesos, which is the case most US travelers will actually be in.',
+    property: [
+      { label: 'Service charge', range: 'commonly 10%', note: 'Set by the property, and payable either way, since it is not a tax and no exemption reaches it.' },
+    ],
+    checkedISO: '2026-09-01',
+  },
+
+  {
+    iso: 'IL',
+    country: 'Israel',
+    slug: null,
+    spoke: null,
+    state: 'varies',
+    calcNote: 'A US tourist pays nothing here. Hotel accommodation for non-residents is zero-rated, so the 18% VAT an Israeli resident pays does not apply to your room. It runs on paying in foreign currency and on showing your passport and the entry slip you are given at the border, so keep both.',
+    variesNote: 'Hotel accommodation for non-residents is zero-rated rather than exempt, which for a visitor amounts to the same thing: nothing is added to the room. An Israeli resident pays 18% VAT on the same room. The zero-rating is conditional on paying in foreign currency and on presenting a passport and the entry slip issued at the border, so it is about who you are and how you pay rather than about where you stay, and a single figure would misdescribe one of those two readers.',
+    cities: [],
+    pendingVerification: 'Needs the Israel Tax Authority VAT Law provision on zero-rated tourist accommodation deep-linked, and confirmation of the current entry-slip requirement, which replaced the older paper B2 form and is the part a traveler actually has to hold onto.',
+    property: [],
+    checkedISO: '2026-09-01',
+  },
+
+  // --- held off the scale for want of an authority, not for want of a figure --
+  // The two entries below carry real, corroborated, MAIN-verified charges and no fill. They
+  // exist as entries rather than as absences for the reason state:"pending" was created:
+  // a listed country gets its figures named to a reader, gets read by the staleness
+  // scanner, and still colours exactly like a country nobody has looked at. The alternative
+  // was leaving them out entirely, which would hide work that is done.
+
+  {
+    iso: 'BT',
+    country: 'Bhutan',
+    slug: null,
+    spoke: null,
+    // ======================================================================
+    // THE ONE ENTRY IN THIS WAVE THAT WOULD HAVE CHANGED THE MAP'S TOP END, HELD GREY.
+    // ======================================================================
+    // Bhutan's Sustainable Development Fee is 100 US dollars per person per night, a
+    // mandatory government levy paid with the visa and entirely on top of whatever the
+    // hotel costs. At the declared reference room that is roughly 58%, which would be by
+    // far the largest figure on this map: more than twice the Maldives, and the only entry
+    // that would sit near the top of an open-ended band on its own.
+    //
+    // IT IS HELD BECAUSE THE SOURCE IS NOT THE AUTHORITY. MAIN's brief supplied
+    // visitbhutan.com labelled as a government source. It is not: it is a private travel
+    // site. The figure itself corroborates everywhere, including the lock to 31 August 2027
+    // and the child concessions, but every corroborating page is a tour operator, and no
+    // page at tourism.gov.bt or the Department of Tourism was found.
+    //
+    // AND THE SIZE OF THE FIGURE IS WHY THAT MATTERS RATHER THAN A REASON TO WAIVE IT. The
+    // darkest fill on the most screenshot-exposed thing on this site would be resting on a
+    // travel company's summary of a government fee. That is the Maldives failure again with
+    // a bigger number attached: shaded, plausible, and not checkable. One URL from the
+    // Department of Tourism turns this into a coloured entry, and until it arrives the
+    // figure lives in prose where a reader can see it is not yet on the scale.
+    //
+    // TO COLOUR IT LATER: set state to 'checked', move the 100 dollars into modelled[] as
+    // { label, amount: 100, currency: 'USD', unit: 'perPersonPerNight' }, and attach the
+    // real source to the government row below. Nothing else here needs to change.
+    state: 'pending',
+    addedBasis: 'Not on the scale yet, and the figure is not small. Bhutan charges a Sustainable Development Fee of 100 US dollars per person per night, paid to government with the visa and entirely separate from what the hotel costs. Against the reference room used elsewhere on this map that would be roughly 58%, which is larger than anything currently shaded. It is not shaded because the only pages stating it are travel companies rather than the Department of Tourism, and a figure this size has to be checkable.',
+    display: 'added',
+    displayNote: 'Nothing about this sits inside a hotel rate, because it is not a hotel charge: it is a nightly government levy on being in the country, paid before you arrive. A quoted room rate in Bhutan is genuinely just the room.',
+    government: [
+      {
+        label: 'Sustainable Development Fee (SDF)',
+        figure: '100 US dollars per person, per night',
+        basis: 'perPersonPerNight',
+        amount: 100,
+        currency: 'USD',
+        inQuotedPrice: false,
+        note: 'A mandatory daily government levy on international visitors, paid in advance through the visa application rather than at a hotel. Children aged 6 to 11 are charged half and under-6s are exempt. Nationals of India, Bangladesh and the Maldives pay different rates. The current 100 dollars is a discounted rate against a standard 200, and the discount runs to 31 August 2027.',
+        source: null,
+        pendingSource: 'Needs a page at the Bhutan Department of Tourism, tourism.gov.bt, stating the SDF rate. The URL supplied for this entry was visitbhutan.com, which is a private travel site rather than the authority, so it is not attached. The figure corroborates widely and every corroborating page is a tour operator.',
+        checkedISO: '2026-09-01',
+      },
+    ],
+    watch: [
+      {
+        label: 'The discounted SDF is locked to 31 August 2027, then may revert',
+        effective: '2027-09-01',
+        note: 'The 100 dollar rate is a fifty percent discount on a standard 200 dollars and is confirmed only through 31 August 2027. A reversion would double the largest added charge this map holds, so the date is tracked rather than assumed either way, and nothing forward-dated is in the figure above.',
+        source: null,
+        pendingSource: 'Needs the Department of Tourism notice confirming whether the discount is extended past 31 August 2027 or the standard 200 dollar rate returns.',
+      },
+      {
+        label: 'The 2026 tourism GST is separate and does not touch the SDF',
+        note: 'A 5% tourism GST came into force in January 2026. The SDF is exempt from it, so the two do not compound and the 100 dollars is the clean added figure rather than 105. Recorded because the obvious mistake here is adding them together.',
+        source: null,
+        pendingSource: 'Needs the Bhutan Department of Revenue and Customs commencement notice for the tourism GST, and confirmation of the SDF exemption in the authority\u2019s own words.',
+      },
+    ],
+    pendingVerification: 'Held for one URL. The charge, the rate, the child concessions and the 2027 expiry are all corroborated; what is missing is a page at the authority that sets it. This is the largest figure in the wave and it would be the darkest fill on the map, which is precisely why it is not being shaded on a travel company\u2019s summary.',
+    property: [],
+    checkedISO: '2026-09-01',
+  },
+
+  {
+    iso: 'MY',
+    country: 'Malaysia',
+    slug: null,
+    spoke: null,
+    // Held for the same reason as Bhutan and with less drama attached, because the figure
+    // is small: 10 ringgit is a couple of dollars, roughly 1.3% of the reference room. No
+    // source URL was supplied for this entry at all, so there is nothing to attach and
+    // nothing to argue about. It is listed because the charge is real, it is
+    // foreign-guests-only, and OTA collection is newly enforced, which is exactly the kind
+    // of thing a reader meets at checkout and has never heard of.
+    state: 'pending',
+    addedBasis: 'Not on the scale yet. Malaysia charges a tourism tax of 10 ringgit per room per night to foreign guests only, and it is per room rather than per person, so a family sharing one room pays 10 ringgit. Against the reference room that is a little over 1%. It is held off the scale because no page at the authority that sets it is attached yet, not because the charge is in doubt.',
+    display: 'added',
+    displayNote: 'Malaysian citizens and permanent residents pay nothing. Collection through booking platforms is now enforced after a grace period that ended on 31 December 2025, so it may appear in a booking total or at the front desk depending on where you booked.',
+    government: [
+      {
+        label: 'Tourism Tax (TTx)',
+        figure: '10 ringgit per room, per night, foreign guests only',
+        basis: 'perRoomPerNight',
+        amount: 10,
+        currency: 'MYR',
+        inQuotedPrice: false,
+        note: 'Charged under the Tourism Tax Act 2017 on foreign passport holders staying at registered accommodation, per room rather than per person. Malaysian citizens and permanent residents are exempt. Booking platforms are now liable to collect it, following a compliance grace period that ended on 31 December 2025.',
+        source: null,
+        pendingSource: 'Needs the Royal Malaysian Customs Department page or the MyTTx portal stating the rate and the foreign-guest scope. No URL was supplied for this entry, so nothing is attached rather than something approximate.',
+        checkedISO: '2026-09-01',
+      },
+    ],
+    pendingVerification: 'Held for one URL from the Royal Malaysian Customs Department. The rate is corroborated and it is per room rather than per person, which is the detail most write-ups get wrong, so the row states it even while the fill waits.',
+    property: [],
+    checkedISO: '2026-09-01',
+  },
+
 ]);
 
 // --- scheduled changes we are tracking --------------------------------------
@@ -2160,7 +2773,14 @@ export const hotelTaxWatchlist = [
   // charge is the 12.5% city tourist tax, which is not what rose.
   { iso: 'NL', where: 'Netherlands', label: 'Accommodation VAT rose to 21%', effective: '2026-01-01', status: 'in-force', source: { label: 'Dutch government: VAT on overnight accommodation goes up', url: 'https://business.gov.nl/amendments/vat-overnight-accommodation-goes-up/', type: 'gov' }, checkedISO: '2026-07-04' },
   { iso: 'JP', where: 'Kyoto', label: 'Accommodation tax tiers rise', effective: '2026-03-01', status: 'scheduled', source: null, pendingSource: 'Needs the City of Kyoto tier schedule.' },
-  { iso: 'BT', where: 'Bhutan', label: 'GST comes into force', effective: '2026-01-01', status: 'scheduled', source: null, pendingSource: 'Needs the Bhutan Department of Revenue and Customs commencement notice, and a check on whether it replaced or sits beside the Sustainable Development Fee.' },
+  // RESOLVED IN WAVE 2, PARTLY. This row sat marked "scheduled" for a date eight months in
+  // the past, which is the exact rot this list exists to prevent: a scheduled change whose
+  // date passed is either in force or dropped, and "scheduled" says neither. It is in force,
+  // and the open question it was carrying is answered: the tourism GST sits BESIDE the
+  // Sustainable Development Fee rather than replacing it, and the SDF is exempt from it, so
+  // the two do not compound. Still unsourced, so still hidden from readers and tracked here.
+  { iso: 'BT', where: 'Bhutan', label: 'Tourism GST of 5% in force, separate from the Sustainable Development Fee', effective: '2026-01-01', status: 'in-force', source: null, pendingSource: 'Needs the Bhutan Department of Revenue and Customs commencement notice. The question this row used to carry is resolved: the GST sits beside the SDF rather than replacing it, and the SDF is exempt from it, so the added figure for Bhutan is the SDF alone and not the SDF plus 5%.' },
+  { iso: 'BT', where: 'Bhutan', label: 'The discounted 100 dollar Sustainable Development Fee is confirmed only to 31 August 2027', effective: '2027-09-01', status: 'scheduled', source: null, pendingSource: 'Needs the Department of Tourism notice confirming an extension or the return of the standard 200 dollar rate. This is the single largest added charge anywhere in this file, so a doubling of it is the most consequential forward date the map holds.' },
   { iso: 'ES', where: 'Barcelona', label: 'City surcharge escalates in steps to 2029', effective: '2026-01-01', status: 'scheduled', source: null, pendingSource: 'Needs the Barcelona city council schedule showing each step and its date.' },
   { iso: 'GB', where: 'Glasgow', label: 'Visitor levy begins', effective: '2027-01-25', status: 'scheduled', source: null, pendingSource: 'Needs the Glasgow City Council scheme document.' },
   { iso: 'GB', where: 'Edinburgh', label: 'Visitor levy in force at 5%', effective: '2026-07-24', status: 'in-force', source: { label: 'City of Edinburgh Council: the visitor levy, its 5% rate and the five-night cap', url: 'https://www.edinburgh.gov.uk/business/visitor-levy-edinburgh', type: 'gov' }, checkedISO: '2026-08-29' },

@@ -64,6 +64,8 @@ import {
   EU_EEA_ISOS,
   EU_EEA_COUNTS,
   EU_EEA_SOURCE_ROW,
+  parityStatusByIso,
+  parityFinding,
   bookingTacticsChecked,
 } from '../data/booking-tactics.js';
 
@@ -120,16 +122,16 @@ if (unmappable.length) {
 }
 
 // --- BUILDING THE STATUS PER COUNTRY ----------------------------------------
-// Bloc first, then single countries, so the more specific finding overwrites the broader one.
-// That IS the precedence rule from Rail 1, expressed as assignment order.
-const statusByIso = new Map();
-for (const iso of EU_EEA_ISOS) {
-  statusByIso.set(iso, { status: blocRow.status, bloc: true, eu: EU_ISOS.includes(iso) });
-}
-for (const row of PARITY_BY_REGION) {
-  if (!row.iso) continue;
-  statusByIso.set(row.iso, { status: row.status, bloc: false, eu: false });
-}
+// MOVED OUT OF THIS FILE. The precedence rule (bloc first, then single countries, because a
+// finding about one country beats a finding about thirty) now lives in parityStatusByIso in
+// booking-tactics.js, beside the data it resolves. It moved because two more things need the
+// same answer: the quotable sentence under this map and the press CSV a writer downloads.
+// Three copies of a precedence rule is three chances to disagree about Switzerland, and a
+// reader can see all three outputs at once.
+//
+// The three guards above stay HERE, because they are about whether this map can be DRAWN:
+// geometry, membership counts and the bloc row's existence. Those are rendering concerns.
+const statusByIso = parityStatusByIso();
 
 // A status with no entry in PARITY_STATUS has no colour and no label, which would paint a
 // country in `undefined`. Fail instead.
@@ -185,6 +187,15 @@ const legend = Object.entries(PARITY_STATUS).map(([key, s]) => ({
 const colouredCount = statusByIso.size;
 
 const described = legend.map((l) => `${l.count} ${l.label}`).join(', ');
+
+// THE QUOTABLE FINDING. Derived, never typed, so it cannot drift from the fills above it.
+//
+// WHERE IT RENDERS AND WHERE IT DOES NOT. On the full page the sentence sits ABOVE the map,
+// in the page, because it is the answer and the map is the evidence. Putting it here as well
+// would print it twice. In the EMBED it renders in the footer of this component, because the
+// embed has no page around it to carry the line, and an embed that travels onto somebody
+// else's article with the map and no finding makes the reader do the counting.
+const finding = parityFinding();
 ---
 
 <figure class:list={['pm', embed && 'pm-embed']}>
@@ -249,6 +260,10 @@ const described = legend.map((l) => `${l.count} ${l.label}`).join(', ');
     </li>
   </ul>
 
+  {embed && (
+    <p class="pm-finding">{finding.sentence}</p>
+  )}
+
   <figcaption class="pm-cap">
     {colouredCount} countries carry a position here, from {PARITY_BY_REGION.length} rulings and statutes.
     The thirty EU and EEA states take their colour from one ruling that covers all of them, so they
@@ -276,6 +291,12 @@ const described = legend.map((l) => `${l.count} ${l.label}`).join(', ');
   .pm-lg-t{font-size:13px;line-height:1.4;color:var(--ink);min-width:0}
   .pm-lg-t b{font-weight:600;display:block}
   .pm-lg-n{display:block;font-size:12px;color:var(--muted);line-height:1.45}
+
+  /* The embed's copy of the finding. Sized up from the caption rather than down to it: it is
+     the sentence a reader is meant to take away, and inside a 760px iframe on a stranger's
+     article it is competing with that article's own type. Selectable text, never an image, so
+     it can be quoted without being retyped. */
+  .pm-finding{font-size:14.5px;line-height:1.5;color:var(--ink);font-weight:500;margin:14px 0 0;padding:12px 14px;background:var(--green-bg);border-left:3px solid var(--teal);border-radius:6px;max-width:720px}
 
   .pm-cap{font-size:12.5px;color:var(--muted);line-height:1.55;margin:14px 0 0;max-width:720px}
   .pm-cap a{color:var(--teal-deep);font-weight:500;text-decoration:none}

@@ -235,6 +235,28 @@ export const PARITY_STATUS = {
   },
 };
 
+// --- how the one negative claim in the table was checked ----------------------
+// Held here rather than inline on the row so the table, the sources panel and anything later
+// read one copy, and so the honest limit below cannot be edited off the row without being
+// seen.
+//
+// WHAT THIS IS NOT: a claim to have read every state code. It is a statement of what the
+// finding rests on, what would overturn it, and the date it was last stated, which is the
+// most a negative can honestly carry. The inventory of specific documents is NOT published
+// here, because this pass did not have a record of which ones the desk read, and inventing a
+// list of sources to make a negative look thorough would be worse than saying so.
+export const METHODOLOGY_US_PARITY = {
+  cutoffISO: '2026-09-01',
+  cutoff: 'Sep 2026',
+  claim: 'No prohibition on hotel rate parity, federal or state, was found in force in the United States.',
+  how: 'An absence cannot be cited to a document, so this row states a method rather than a source. The finding is that no federal statute or regulation and no state statute prohibiting accommodation rate parity was found, and that contractual parity is therefore unrestricted. It is stated as of the date above and it is the row on this table most likely to change, because it would take one state legislature to change it.',
+  wouldChangeThis: 'A federal prohibition, a state statute of the kind France, Italy, Austria, Belgium and Switzerland enacted, or a consent decree or settlement restricting parity terms for a named platform in a named state.',
+  // THE HOLE, NAMED. Same discipline as `pendingSource` on the tax map: a gap that is
+  // written down is a gap somebody can close, and a gap left implicit is one that gets
+  // forgotten.
+  inventoryPending: 'The document-level inventory behind this negative is not published yet: which federal and state sources were searched, and in what form. Until it is, treat this row as a dated finding by the desk rather than as a reproducible search.',
+};
+
 export const PARITY_BY_REGION = [
   {
     order: 1,
@@ -282,8 +304,8 @@ export const PARITY_BY_REGION = [
     status: 'free',
     sinceDate: '2015',
     sinceISO: '2015-07-06',
-    ruling: 'The Loi Macron rendered rate parity clauses void in hotel agency contracts, the earliest of the national statutory bans.',
-    source: { label: 'Loi Macron 2015, French law on growth, activity and equal economic opportunity', url: null, type: 'reg' },
+    ruling: 'Article 133 of the Loi Macron rewrote the Code du tourisme so that a hotel keeps the freedom to grant a customer any discount or price advantage, and any contractual clause to the contrary is deemed unwritten. The earliest of the national statutory bans.',
+    source: { label: 'Legifrance: article 133 of Law 2015-990 of 6 August 2015, which created Code du tourisme article L311-5-1 and deems any clause restricting a hotel\u2019s pricing freedom unwritten', url: 'https://www.legifrance.gouv.fr/jorf/article_jo/JORFARTI000030979755', type: 'reg' },
   },
   {
     order: 6,
@@ -293,8 +315,8 @@ export const PARITY_BY_REGION = [
     status: 'free',
     sinceDate: '2016',
     sinceISO: '2016-12-31',
-    ruling: 'Parity clauses prohibited by statute, wide and narrow alike.',
-    source: { label: 'Austrian statutory prohibition on hotel rate parity, 2016', url: null, type: 'reg' },
+    ruling: 'Demanding a best-price clause from an accommodation business was added to the blacklist annexed to the Unfair Competition Act, which makes it an unfair practice in all circumstances and the contract term absolutely void. A hotel may therefore price lower on its own website. The Constitutional Court dismissed the platform challenge to the ban in 2017.',
+    source: { label: 'Austrian Federal Ministry of Economy, Energy and Tourism on fair competition: the 2016 amendment adding best-price clauses to the Unfair Competition Act annex, which makes such contracts absolutely void', url: 'https://www.bmwet.gv.at/Themen/Europa/Wettbewerbspolitik/FairerWettbewerb.html', type: 'reg' },
   },
   {
     order: 7,
@@ -304,8 +326,8 @@ export const PARITY_BY_REGION = [
     status: 'free',
     sinceDate: '2017',
     sinceISO: '2017-08-01',
-    ruling: 'Parity clauses rendered void by statute.',
-    source: { label: 'Italian statutory prohibition on hotel rate parity, 2017', url: null, type: 'reg' },
+    ruling: 'Article 1, paragraph 166 of the annual competition law makes void any agreement by which an accommodation business undertakes not to offer final customers better prices, terms or conditions than it offers through third parties, whatever law governs the contract. It reaches wide and narrow clauses alike, and because it says by any means it reaches the telephone and the front desk as well as a website.',
+    source: { label: 'Gazzetta Ufficiale: Law 124 of 4 August 2017, the annual law on the market and competition, in force from 29 August 2017', url: 'https://www.gazzettaufficiale.it/eli/id/2017/08/14/17G00140/s', type: 'reg' },
   },
   {
     order: 8,
@@ -315,8 +337,12 @@ export const PARITY_BY_REGION = [
     status: 'free',
     sinceDate: '2018',
     sinceISO: '2018-08-01',
-    ruling: 'Parity clauses rendered void by statute.',
-    source: { label: 'Belgian statutory prohibition on hotel rate parity, 2018', url: null, type: 'reg' },
+    ruling: 'A law of 30 July 2018 on contracts for the use of tourist accommodation bans price parity clauses between platform operators and accommodation operators, and bans restrictions on discounts or other pricing conditions of any kind. A clause that breaches it is deemed unwritten and void by operation of law, and the ban reached contracts already running as well as new ones.',
+    // UNLINKED, DELIBERATELY, AND THE GAP IS REAL. No Moniteur belge or ejustice URL for the
+    // law of 30 July 2018 was found. Everything available is a law-firm summary, and RULE:
+    // never link a secondary write-up in this column. The row therefore states the statute in
+    // more detail than before and still carries no link, which is the honest combination.
+    source: { label: 'Belgian law of 30 July 2018 on contracts for the use of tourist accommodation, primary text not yet linked', url: null, type: 'reg' },
   },
   {
     order: 9,
@@ -324,10 +350,14 @@ export const PARITY_BY_REGION = [
     iso: 'CH',
     slug: 'switzerland',
     status: 'free',
-    sinceDate: '2022',
-    sinceISO: '2022-01-01',
-    ruling: 'Parity clauses prohibited, which matters because Switzerland is outside the EEA and so is not reached by the DMA route above.',
-    source: { label: 'Swiss statutory prohibition on hotel rate parity, 2022', url: null, type: 'reg' },
+    // DATE CORRECTED IN THE SOURCING PASS, from 1 January 2022 to 1 December 2022. The
+    // consolidated Act on Fedlex records article 8a as inserted by the federal act of
+    // 17 June 2022 and in force since 1 December 2022. The old date was eleven months early,
+    // which on a table whose Since column is the second thing a reader reads is worth fixing.
+    sinceDate: '1 December 2022',
+    sinceISO: '2022-12-01',
+    ruling: 'Article 8a of the Unfair Competition Act makes it an unfair practice for a booking platform to use terms that restrict an accommodation business\u2019s pricing or offer, directly or indirectly, through parity clauses covering price, availability or conditions. The consequence is nullity rather than a fine. It matters because Switzerland is outside the EEA and so is not reached by the DMA route above.',
+    source: { label: 'Fedlex: the consolidated Federal Act against Unfair Competition, SR 241, whose article 8a was inserted by the federal act of 17 June 2022 and is in force from 1 December 2022', url: 'https://www.fedlex.admin.ch/eli/cc/1988/223_223_223/de', type: 'reg' },
   },
   {
     order: 10,
@@ -348,8 +378,8 @@ export const PARITY_BY_REGION = [
     status: 'narrowed',
     sinceDate: 'undertakings from 2015',
     sinceISO: '2015-01-31',
-    ruling: 'Parity is substantially restricted through undertakings given to the Competition and Markets Authority rather than by a statutory ban. Wide clauses went, and the position is not the clean statutory freedom the EEA now has.',
-    source: { label: 'UK Competition and Markets Authority, hotel online booking undertakings', url: null, type: 'reg' },
+    ruling: 'Parity is restricted through commitments given to the Competition and Markets Authority rather than by a statutory ban. Wide clauses went in 2015, so a UK hotel may price lower on another platform. The formal commitments expired on 1 July 2020 and both platforms then confirmed to the CMA that they would keep acting in accordance with them, which is a voluntary undertaking rather than a prohibition and is why this row is not free.',
+    source: { label: 'UK Competition and Markets Authority case page: monitoring of online travel agent pricing practices, recording the 2015 wide-parity commitments, their expiry on 1 July 2020 and the platforms\u2019 voluntary continuation', url: 'https://www.gov.uk/cma-cases/online-travel-agents-monitoring-of-pricing-practices', type: 'reg' },
   },
   {
     order: 12,
@@ -360,7 +390,7 @@ export const PARITY_BY_REGION = [
     sinceDate: '2016',
     sinceISO: '2016-09-01',
     ruling: 'Wide parity clauses were removed, so a hotel may undercut on other platforms. Narrow clauses covering the hotel\u2019s own site were retained, so the freedom stops short of the hotel\u2019s own website.',
-    source: { label: 'Australian Competition and Consumer Commission, hotel booking parity undertakings, 2016', url: null, type: 'reg' },
+    source: { label: 'Australian Competition and Consumer Commission: Expedia and Booking.com agree to amend price and availability parity clauses in their contracts with Australian hotels, from 1 September 2016', url: 'https://www.accc.gov.au/media-release/expedia-and-bookingcom-agree-to-reinvigorate-price-competition-by-amending-contracts-with-australian-hotels', type: 'reg' },
   },
   {
     order: 13,
@@ -371,7 +401,28 @@ export const PARITY_BY_REGION = [
     sinceDate: 'competition-authority action',
     sinceISO: '2019-04-01',
     ruling: 'Parity clauses have been unwound through competition-authority action, so a hotel is not contractually held to platform pricing.',
-    source: { label: 'Japan Fair Trade Commission action on accommodation booking platform parity', url: null, type: 'reg' },
+    // =====================================================================
+    // ESCALATED TO MAIN, AND DELIBERATELY LEFT UNLINKED. This is the one row in the table
+    // where the sourcing pass found the primary document and the primary document DISAGREES
+    // with the row.
+    //
+    // The Japan Fair Trade Commission approved commitment plans from Booking.com on
+    // 16 March 2022 and from Expedia on 2 June 2022, at:
+    //   https://www.jftc.go.jp/en/pressreleases/yearly-2022/March/220316.html
+    //   https://www.jftc.go.jp/en/pressreleases/yearly-2022/June/220602.html
+    // The Booking.com decision states in its own words that NARROW parity clauses for room
+    // rates were excluded from the commitment plan, on the reasoning that accommodation
+    // operators were not necessarily abiding by them, and the JFTC expressly reserved its
+    // opinion that such clauses may be problematic depending on how they are operated.
+    //
+    // On this table's own taxonomy that is "narrowed", not "free": wide clauses gone, a
+    // narrow clause covering the hotel's own site not covered. Changing a status is not a
+    // sourcing decision, it moves the headline count on this page, and it is MAIN's call. So
+    // the status is untouched, the link is NOT attached, and the row is listed in the
+    // handback. Attaching a source that contradicts the chip beside it would be worse than
+    // the unlinked citation this pass existed to remove.
+    // =====================================================================
+    source: { label: 'Japan Fair Trade Commission action on accommodation booking platform parity, primary source held pending a status review', url: null, type: 'reg' },
   },
   {
     order: 14,
@@ -382,19 +433,39 @@ export const PARITY_BY_REGION = [
     sinceDate: 'competition-authority action',
     sinceISO: '2019-04-01',
     ruling: 'Parity clauses have been unwound through competition-authority action.',
-    source: { label: 'Korea Fair Trade Commission action on accommodation booking platform parity', url: null, type: 'reg' },
+    // UNLINKED, AND THE DATE IS ALSO QUESTIONABLE. No page at ftc.go.kr was found. What the
+    // secondary record consistently says is that the KFTC concluded this on 15 March 2021,
+    // when five platforms agreed to change wide price-parity clauses, rather than in 2019,
+    // which is the year this row carries. A date is not corrected here without a primary
+    // source, so the row is left as MAIN set it and both the missing link and the two-year
+    // discrepancy are in the handback.
+    source: { label: 'Korea Fair Trade Commission action on accommodation booking platform parity, primary source not found', url: null, type: 'reg' },
   },
   {
     order: 15,
     jurisdiction: 'United States',
+    // The name as it reads mid-sentence, for the quotable finding below. Held as data rather
+    // than guessed by a helper, because "the United States" needs a definite article and
+    // "Germany" does not, and a rule that infers that from the string would be wrong the
+    // first time a jurisdiction with an unusual name lands.
+    nameInSentence: 'the United States',
     iso: 'US',
     status: 'binds',
     sinceDate: 'no ban in force',
     sinceISO: null,
     ruling: 'There is no federal rate-parity ban and no state equivalent of the European statutes. Contractual parity is unrestricted, so a US hotel may be contractually held to the same price it shows on a platform. This is the single most important row in the table for a US reader, and it is the reason the book-direct tactic on this page carries a US caveat wherever it appears.',
-    source: { label: 'No US federal or state rate-parity prohibition in force as at Sep 2026', url: null, type: 'reg' },
+    // THE ONLY NEGATIVE CLAIM IN THE TABLE, AND IT DOES NOT GET TO PROVE ITSELF. Every other
+    // row points at a document that exists. This row asserts that a document does NOT exist,
+    // and there is no URL for that. Left as a bare unlinked label it read as the one thing on
+    // the page nobody had to check, which is the opposite of what it is: it is the row a
+    // reader most needs, and the row most likely to go quietly out of date the day a state
+    // legislature acts. So it carries a method statement instead of a citation, held on the
+    // row rather than in prose so the table renders it and the sources panel can count it.
+    methodology: METHODOLOGY_US_PARITY,
+    source: { label: 'No US federal or state rate-parity prohibition found in force. This is a checked negative with a stated method, not an absence of research', url: null, type: 'reg' },
   },
 ];
+
 
 // The DOM id for one parity row, derived from the row rather than typed anywhere.
 //
@@ -520,3 +591,99 @@ export const TIMING_MYTHS = [
   { claim: 'Always book early.', answer: 'Early buys certainty, not the lowest price. It wins when demand is climbing toward your dates and loses when it is not.' },
   { claim: 'Tuesday is always cheapest.', answer: 'There is no day of the week that reliably prices lower across properties and markets. Treat any such rule as folklore.' },
 ];
+
+// --- the parity position, resolved per country ------------------------------
+// ONE PLACE WHERE A COUNTRY GETS ITS PARITY STATUS, and the reason it moved here from
+// ParityMap.astro is the reason every other number on this page lives in this file: three
+// things now need the per-country answer rather than the per-row answer, and three
+// implementations of a precedence rule is three chances to disagree about Switzerland.
+//
+// Who reads this: the choropleth (to choose a fill), the quotable sentence above it, and the
+// press CSV. They have to agree, because a reader can see all three at once.
+//
+// THE PRECEDENCE RULE, which is the only thing this function decides. The bloc row covers
+// thirty EU and EEA states and colours all of them. A single-country row then OVERWRITES its
+// bloc, because a finding about one country is more specific than a finding about thirty.
+// Today they agree everywhere, so this changes nothing on screen. It is written as
+// assignment order rather than as a comment so it stays true when they stop agreeing.
+//
+// THE OTHER TWO BLOC ROWS RESOLVE NOTHING, on purpose. "EEA inventory, in the platform's own
+// terms" and "European Union, competition law" describe the SAME footprint by a different
+// instrument, so letting each resolve countries would count one footprint three times.
+//
+// A NAMED FUNCTION DECLARATION AND A for LOOP, NO ARROWS. check-content.py stops scanning any
+// src/data module that contains an arrow function or an anonymous function, and this file is
+// mostly reader-facing copy that must stay inside that scan. See the note on parityRowId.
+export function parityStatusByIso() {
+  const out = new Map();
+  let bloc = null;
+  for (const row of PARITY_BY_REGION) {
+    if (row.jurisdiction === EU_EEA_SOURCE_ROW) bloc = row;
+  }
+  if (bloc) {
+    for (const iso of EU_EEA_ISOS) {
+      out.set(iso, { status: bloc.status, bloc: true, eu: EU_ISOS.includes(iso), row: bloc });
+    }
+  }
+  for (const row of PARITY_BY_REGION) {
+    if (!row.iso) continue;
+    out.set(row.iso, { status: row.status, bloc: false, eu: false, row: row });
+  }
+  return out;
+}
+
+// --- the one sentence this page is quotable on -------------------------------
+// THE STRONGEST FINDING ON THE PAGE WAS SPREAD ACROSS A LEGEND AND A FIFTEEN-ROW TABLE,
+// which meant a reader had to assemble it and a writer had to count it themselves. It is one
+// sentence, and it is now one sentence.
+//
+// EVERY NUMBER IN IT IS DERIVED, none typed. The counts come from parityStatusByIso above, so
+// the sentence moves the day a row does and cannot be left behind stating last month's total.
+// That is not a nicety on a sentence built to be quoted: a hardcoded count is exactly the
+// thing that gets screenshotted and outlives its own data.
+//
+// "IN OUR CHECKED SET" STAYS, always. The set is a named list of jurisdictions where somebody
+// ruled on parity, not the world. Without that qualifier the sentence reads as a global
+// finding, which would be the page overclaiming in its most repeatable line.
+//
+// THE LAST CLAUSE SELF-CORRECTS RATHER THAN ASSERTING THE UNITED STATES. MAIN's wording names
+// the US as the only country where parity still binds, and that is true today and derived
+// from the data rather than trusted: if a second binding country ever lands, or the US row
+// changes, the clause reshapes instead of shipping a sentence the table contradicts.
+export function parityFinding() {
+  const byIso = parityStatusByIso();
+  let total = 0, freeCount = 0, narrowedCount = 0, bindsCount = 0;
+  let bindsName = null;
+  for (const [, v] of byIso) {
+    total++;
+    if (v.status === 'free') freeCount++;
+    else if (v.status === 'narrowed') narrowedCount++;
+    else if (v.status === 'binds') { bindsCount++; bindsName = v.row.nameInSentence || v.row.jurisdiction; }
+  }
+  const tail = bindsCount === 1 && bindsName
+    ? `${bindsName} is the only checked country where parity can still bind`
+    : bindsCount === 0
+      ? 'no checked country still lets parity bind'
+      : `parity can still bind in ${bindsCount} of them`;
+  return {
+    total,
+    freeCount,
+    narrowedCount,
+    bindsCount,
+    bindsName,
+    sentence: `Among the ${total} countries in our checked set, hotels are legally free to undercut booking sites in ${freeCount}; ${narrowedCount} are only partly free, and ${tail}.`,
+    // The short form, for a 1200 by 630 social card where the full sentence will not fit at a
+    // readable size. Same numbers, same source, no promise attached.
+    short: `${freeCount} free to undercut, ${narrowedCount} partly free, ${bindsCount} where parity still binds`,
+  };
+}
+
+// --- what a writer or publisher may do with this ----------------------------
+// The attribution line and the one-sentence method, held as data because they appear in three
+// places (the page's writers block, the CSV header and the embed footer) and a credit line
+// that reads differently in each is not a credit line.
+export const PARITY_PRESS = {
+  attribution: 'Rate-parity law by country, True Trip Costs, truetripcosts.com/how-to-pay-less-on-hotels',
+  method: 'Each jurisdiction is read from the statute, judgment or competition-authority action behind it, dated to when that instrument took effect, and rechecked on the date shown. The map states where a hotel is legally FREE to offer a cheaper direct rate. It does not say a direct rate will be cheaper.',
+  licence: 'Free to reuse, including commercially, with attribution.',
+};
