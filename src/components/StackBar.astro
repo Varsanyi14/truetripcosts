@@ -86,7 +86,10 @@ const laid = rows.map(laidOut);
 const described = laid
   .map((r) => {
     if (r.kind === 'span') return `${r.label}, a band from ${r.spanFrom} to ${r.spanTo} ${unitWord}, drawn separately because it sits inside the bar above rather than adding to it`;
-    const parts = (r.segments || []).map((s) => `${s.label} ${s.figure}`).join(', then ');
+    const parts = (r.segments || []).map((s) => {
+      const base = `${s.label} ${s.figure}`;
+      return s.overlay ? `${base}, of which a band from ${s.overlay.from} to ${s.overlay.to} ${unitWord} is hatched to show it sits inside that segment rather than adding to it` : base;
+    }).join(', then ');
     return `${r.label}, ${parts}, reaching ${r.totalFigure || r.total}`;
   })
   .join('. ');
@@ -138,6 +141,17 @@ const rowH = 26;
                 {r.segments.map((s) => (
                   <rect x={pct(s.at)} y="3" width={Math.max(0.5, pct(s.to) - pct(s.at))} height={rowH - 6} fill={s.fill} />
                 ))}
+                {/* THE OVERLAY. A hatched band drawn on top of part of a segment's own
+                    footprint, never its own rect outside it, because the honest claim is
+                    "this money is inside that segment", not "here is a fifth segment".
+                    `overlay.from`/`to` are read relative to the segment's own start, so a
+                    segment that is not first in its row still overlays the right stretch. */}
+                {r.segments.map((s) => s.overlay ? (
+                  <rect x={pct(s.at + s.overlay.from)} y="3"
+                        width={Math.max(0.5, pct(s.at + s.overlay.to) - pct(s.at + s.overlay.from))}
+                        height={rowH - 6} fill={`url(#${id}-hatch)`}
+                        stroke="#8C9A94" stroke-width="0.4" vector-effect="non-scaling-stroke" />
+                ) : null)}
               </g>
             )}
           </svg>
@@ -163,6 +177,11 @@ const rowH = 26;
         )}
 
         {r.kind !== 'span' && r.note && <p class="sb-note">{r.note}</p>}
+        {/* The commission callout. A hatch swatch as an icon, not a bar of its own, so it
+            reads as an annotation on the segment above rather than as another data row. */}
+        {r.commissionNote && (
+          <p class="sb-embed-note"><span class="sb-embed-sw" aria-hidden="true"></span>{r.commissionNote}</p>
+        )}
       </li>
     ))}
   </ol>
@@ -202,6 +221,12 @@ const rowH = 26;
   .sb-break.is-span-break{display:block;font-style:italic;max-width:620px}
 
   .sb-note{font-size:12.5px;color:var(--muted);line-height:1.5;margin:6px 0 0;max-width:620px}
+
+  /* The commission callout under a segment's own row. Same hatch pattern as the overlay
+     it explains, shrunk to a swatch, so a reader can connect the icon in the text to the
+     texture on the bar without the swatch trying to be a bar of its own. */
+  .sb-embed-note{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;line-height:1.5;color:var(--muted);margin:8px 0 0;padding:9px 11px;background:var(--paper);border-radius:9px;max-width:620px}
+  .sb-embed-sw{width:14px;height:14px;border-radius:3px;flex:none;margin-top:1px;background:repeating-linear-gradient(45deg,#EDEBE4 0 3px,#8C9A94 3px 5px);border:1px solid rgba(22,48,44,.16)}
 
   @media (max-width:560px){
     .sb-axis{margin-right:calc(50px + 8px)}

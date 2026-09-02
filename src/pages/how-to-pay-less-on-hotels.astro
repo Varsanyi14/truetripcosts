@@ -142,9 +142,21 @@ const DRIP_OPT_FILL = '#E3B98A';
 const priceRows = [
   {
     label: 'The price you compared',
-    segments: [{ label: 'base room rate', value: 100, fill: BASE_FILL, figure: '100' }],
+    // THE INTERMEDIARY COMMISSION LIVES HERE, NOT AS ITS OWN ROW. It used to be a fourth
+    // row below, drawn as a lone hatched bar sitting apart on the axis, and Gary flagged
+    // twice that a single floating bar reads as a broken chart rather than as the point it
+    // is making. The point is "already inside," so the fix is to draw it inside: a hatched
+    // band over PART of this row's own base segment, the same 100 units every row below
+    // repeats. Anchored on this row rather than one of the tax rows below because the
+    // commission is true of the base rate regardless of how a country handles tax, so it
+    // belongs on the one row that is pure base with nothing else added yet.
+    segments: [{
+      label: 'base room rate', value: 100, fill: BASE_FILL, figure: '100',
+      overlay: { from: OTA_COMMISSION.lowPct, to: OTA_COMMISSION.highPct },
+    }],
     totalFigure: '100',
     note: 'Indexed to 100 so this is a shape, not a price. Whatever your room costs, that is the 100.',
+    commissionNote: `Of that base rate, ${OTA_COMMISSION.headline} is the intermediary\u2019s commission if you booked through one, shown hatched because it sits inside the 100 rather than adding to it. Read this one carefully: it does NOT add to your bill. It is money already inside the price, and it is the only thing on this chart that a booking decision can recover.`,
   },
   {
     label: 'What you pay where the tax is already inside the rate',
@@ -165,14 +177,6 @@ const priceRows = [
     ],
     totalFigure: totalRange(taxOnTop),
     note: `The other ${taxOnTop.count} countries, the Gulf and the Caribbean above all, where a quoted rate routinely excludes the whole stack. Here the government charge is the bigger surprise, and the gap between the price you compared and the price you pay runs from ${Math.round(taxOnTop.low + PROPERTY_FEE_BAND.lowPct)}% to ${Math.round(taxOnTop.high + PROPERTY_FEE_BAND.highPct)}%. Same two additions as the row above, same source, completely different answer.`,
-  },
-  {
-    kind: 'span',
-    label: 'And inside that base rate, if you booked through an intermediary',
-    from: OTA_COMMISSION.lowPct,
-    to: OTA_COMMISSION.highPct,
-    totalFigure: OTA_COMMISSION.headline,
-    note: `Between ${OTA_COMMISSION.lowPct} and ${OTA_COMMISSION.highPct} of those first 100 units is the intermediary\u2019s commission. Read this one carefully: it does NOT add to your bill, which is why it is drawn hatched and apart rather than stacked. It is money already inside the price, and it is the only thing on this chart that a booking decision can recover.`,
   },
 ];
 

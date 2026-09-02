@@ -485,11 +485,24 @@ const searchCountries = rows.map(e => {
     {rows.map(e => {
       const band = colours(e) ? bandFor(e.addedPct) : null;
       const href = hrefFor(e);
+      // THE COLLAPSED SUMMARY'S FIGURE, AND WHY IT IS RESOLVED HERE RATHER THAN GUESSED IN
+      // THE MARKUP BELOW. A reader who never opens the <details> only ever sees this one
+      // word or number, so it has to be true standing alone. Colour is the only state that
+      // gets a number (colours() is the single gate the fillFor function above also routes
+      // through), and every other state reuses the exact word its own tag already prints,
+      // so the folded line can never claim a figure a country does not have.
+      const summaryFigure = colours(e) ? `${e.addedPct}% added`
+        : e.display === 'inclusive' ? 'inside the price'
+        : e.state === 'varies' ? 'varies within the country'
+        : isNoBedTax(e) ? 'no hotel tax'
+        : isCheckedShape(e) ? 'a charge, not yet on the scale'
+        : null;
       return (
-        <div class="htm-row" id={`htm-${e.iso}`} data-name={e.country}>
-          <div class="htm-rhead">
+        <details class="htm-row" id={`htm-${e.iso}`} data-name={e.country}>
+          <summary class="htm-rhead">
             <span class="htm-chip" style={band ? `background:${band.fill}` : (isNoBedTax(e) ? `background:${STATES.noBedTax.fill}` : undefined)} data-state={e.state}></span>
-            <span class="htm-rname">{href ? <a href={href}>{e.country}</a> : e.country}</span>
+            <span class="htm-rname">{e.country}</span>
+            {summaryFigure && <span class="htm-sum-fig">{summaryFigure}</span>}
             {e.cityBasis && <span class="htm-tag">{e.cityBasis} basis</span>}
             {e.representative && <span class="htm-tag">Representative: {e.representative}</span>}
             {colours(e) && hasModelledFlat(e) && <span class="htm-tag htm-tag-m">Modelled at the reference room</span>}
@@ -499,8 +512,11 @@ const searchCountries = rows.map(e => {
             {e.state === 'varies' && <span class="htm-tag htm-tag-v">Varies within the country</span>}
             {isNoBedTax(e) && <span class="htm-tag htm-tag-n">No tourist or hotel tax</span>}
             {isCheckedShape(e) && <span class="htm-tag">Figure not yet on the scale</span>}
-          </div>
+            <svg class="htm-chev" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5 7l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </summary>
 
+          <div class="htm-body">
+          {href && <p class="htm-rlink"><a href={href}>{e.country}{'\u2019s full guide \u2192'}</a></p>}
           {colours(e) && (
             <p class="htm-fig-line"><b class="num">{e.addedPct}%</b> added on top of the quoted rate{hasModelledFlat(e) ? <span class="htm-native">, modelled from {e.modelled.map(f => `${f.amount} ${f.currency} ${unitWords[f.unit] || f.unit}`).join(' and ')}</span> : null}</p>
           )}
@@ -591,7 +607,8 @@ const searchCountries = rows.map(e => {
 
           {e.pendingVerification && <p class="htm-pend"><b>Not yet coloured.</b> {e.pendingVerification}</p>}
           {e.checkedISO && <p class="htm-checked">Checked {fmtDate(e.checkedISO)}</p>}
-        </div>
+          </div>
+        </details>
       );
     })}
   </div>
@@ -650,6 +667,9 @@ const searchCountries = rows.map(e => {
         }
         return;
       }
+      // The row is a <details> now, folded by default, so a map click has to open it as
+      // well as scroll to it or the reader lands on a closed summary with no figure below.
+      row.open = true;
       row.scrollIntoView({ behavior: 'smooth', block: 'center' });
       row.classList.add('htm-row-lit');
       setTimeout(() => row.classList.remove('htm-row-lit'), 1600);
@@ -722,6 +742,9 @@ const searchCountries = rows.map(e => {
     function goToRow(iso) {
       const row = document.getElementById('htm-' + iso);
       if (!row) return false;
+      // Same reason as the map click handler above: search -> jump has to land on an OPEN
+      // card, not a scannable line the reader still has to tap.
+      row.open = true;
       row.scrollIntoView({ behavior: 'smooth', block: 'center' });
       row.classList.add('htm-row-lit');
       setTimeout(() => row.classList.remove('htm-row-lit'), 1600);
@@ -868,15 +891,37 @@ const searchCountries = rows.map(e => {
   .htm-find-in:focus{outline:2px solid var(--teal);outline-offset:1px;border-color:var(--teal)}
   .htm-find-empty{font-size:14px;color:var(--muted);line-height:1.5;margin:6px 0 14px;max-width:640px}
   .htm-row-hidden{display:none}
-  .htm-row{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:15px 17px;margin:0 0 12px;scroll-margin-top:70px;transition:border-color .3s ease,box-shadow .3s ease}
+  /* .htm-row is now a native <details>, folded by default. Padding moves off the
+     container and onto the summary and the body separately, because the two need
+     different bottom spacing: a closed row is just the summary's own padding, an open
+     row adds the body's padding below it. This is also what makes the collapsed line
+     genuinely thin: there is no body box paid for until it exists. */
+  .htm-row{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);margin:0 0 10px;scroll-margin-top:70px;transition:border-color .3s ease,box-shadow .3s ease}
   .htm-row-lit{border-color:var(--teal);box-shadow:0 0 0 3px rgba(14,122,95,.14)}
-  .htm-rhead{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:0 0 8px}
+  /* Native marker killed in both engines, replaced by .htm-chev below, which is drawn
+     rather than relying on ::marker so its rotate transition is one rule instead of two
+     different browser-specific triangle glyphs. */
+  .htm-rhead{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:0;padding:14px 17px;cursor:pointer;list-style:none;-webkit-tap-highlight-color:transparent}
+  .htm-rhead::-webkit-details-marker{display:none}
+  .htm-rhead::marker{content:''}
+  .htm-rhead:focus-visible{outline:2px solid var(--teal);outline-offset:-2px;border-radius:var(--radius)}
+  .htm-chev{width:16px;height:16px;color:var(--muted);flex:none;margin-left:auto;transition:transform .2s ease}
+  .htm-row[open] .htm-chev{transform:rotate(180deg)}
+  @media (prefers-reduced-motion:reduce){
+    .htm-chev{transition:none}
+  }
+  .htm-body{padding:0 17px 15px}
+  .htm-rlink{margin:0 0 10px}
+  .htm-rlink a{color:var(--teal-deep);font-weight:600;font-size:14px;text-decoration:none}
+  .htm-rlink a:hover{text-decoration:underline}
   .htm-chip{width:16px;height:16px;border-radius:4px;border:1px solid rgba(22,48,44,.18);flex:none;background:#E7E4DC}
   .htm-chip[data-state=varies]{background:repeating-linear-gradient(45deg,#CFD8D3 0 2px,#8C9A94 2px 4px)}
   .htm-chip[data-state=checkedShape]{background:repeating-linear-gradient(180deg,#E7E4DC 0 2px,#A8A79C 2px 3px)}
   .htm-rname{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink)}
-  .htm-rname a{color:var(--teal-deep);text-decoration:none}
-  .htm-rname a:hover{text-decoration:underline}
+  /* The one-liner's own figure, honest on its own per the brief: a percent only for a
+     coloured country, the country's own status word everywhere else. Sized between the
+     name and the tags so it reads as the answer, not as another flag. */
+  .htm-sum-fig{font-family:var(--serif);font-weight:600;font-size:15px;color:var(--teal-deep)}
   .htm-tag{font-family:var(--mono);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:3px 8px}
   .htm-tag-q{color:#7A3D08;background:var(--amber-bg);border-color:#F0D6AE}
   .htm-tag-v{color:#3B4A46}
@@ -919,7 +964,8 @@ const searchCountries = rows.map(e => {
     .htm-cap{padding:0 22px}
     .htm-sub{font-size:15px}
     .htm-bands{gap:6px 12px}
-    .htm-row{padding:14px 15px}
+    .htm-rhead{padding:13px 15px}
+    .htm-body{padding:0 15px 14px}
   }
 
   /* THE EMBED VARIANT. Overrides only, so the full page is untouched by anything below.
