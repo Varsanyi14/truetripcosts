@@ -50,6 +50,21 @@ const gMax = Math.max(...allTotals);
 
 const title = 'How much a day costs by country, compared, for US travelers | True Trip Costs';
 const description = 'A ranked comparison of the typical daily cost for a US traveler in ' + live.length + ' countries: room plus on-the-ground spending, cheapest to priciest. Our own estimates for planning, not an official index. Checked ' + checkedLabel + '.';
+
+// STRUCTURED DATA. dateModified is the most recent checkedISO across the live countries, the
+// same figure checkedLabel is built from above, never a separate or newer date invented for
+// the markup. This is our own comparative estimate rather than a government or price feed,
+// so variableMeasured says so plainly.
+const datasetLd = {
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Cost of a day, compared by country",
+  "description": "A ranked comparison of the typical daily cost for a US traveler, room plus on-the-ground spending, across " + live.length + " countries.",
+  "url": "https://truetripcosts.com/cost-comparison",
+  "dateModified": isoDates[isoDates.length - 1],
+  "creator": { "@type": "Organization", "name": "True Trip Costs" },
+  "variableMeasured": "Typical daily cost for a US traveler (room rate plus on-the-ground spending), the True Trip Costs desk's own comparative estimate",
+};
 ---
 
 <Base ogImage="/og/cost-comparison.jpg" title={title} description={description}>
@@ -78,7 +93,7 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
       more lands on the bill. So a destination that bills its taxes separately sits lower in this ranking
       than it would on an all-in basis, and one that folds them into the rate sits about where it belongs.
       Each country's guide has a calculator that adds its own charges to a room figure you choose.
-      Checked {checkedLabel}. Switch the travel style to see how the ranking shifts.
+      Checked <time datetime={isoDates[isoDates.length - 1]}>{checkedLabel}</time>. Switch the travel style to see how the ranking shifts.
     </p>
 
     <section class="ccpage-chart" aria-label="Daily cost ranking">
@@ -129,11 +144,13 @@ const description = 'A ranked comparison of the typical daily cost for a US trav
     </p>
     <p class="ccpage-foot">
       Want the detail behind a number? Open any country's guide for how we get to cash, cards and daily
-      spend. Figures are the desk's own, checked {checkedLabel}, and refreshed as we re-check each country.
+      spend. Figures are the desk's own, checked <time datetime={isoDates[isoDates.length - 1]}>{checkedLabel}</time>, and refreshed as we re-check each country.
     </p>
     <CompareByRegion />
   </main>
   <Footer />
+
+  <script type="application/ld+json" set:html={JSON.stringify(datasetLd)}></script>
 
   <style>
     .ccpage{max-width:860px}

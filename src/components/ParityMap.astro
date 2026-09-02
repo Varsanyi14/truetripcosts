@@ -67,6 +67,7 @@ import {
   parityStatusByIso,
   parityFinding,
   bookingTacticsChecked,
+  bookingTacticsCheckedISO,
 } from '../data/booking-tactics.js';
 
 const {
@@ -236,7 +237,7 @@ const finding = parityFinding();
       </g>
     </svg>
 
-    <p class="pm-stamp"><b>True Trip Costs</b><span>Legal freedom to undercut, not a promise of a lower price. Checked {bookingTacticsChecked}.</span></p>
+    <p class="pm-stamp"><b>True Trip Costs</b><span>Legal freedom to undercut, not a promise of a lower price. Checked <time datetime={bookingTacticsCheckedISO}>{bookingTacticsChecked}</time>.</span></p>
   </div>
 
   <ul class="pm-legend">

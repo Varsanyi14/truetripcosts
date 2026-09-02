@@ -144,3 +144,34 @@ const linkText = String(canonicalUrl).replace(/^https?:\/\//, '').replace(/\/+$/
     .ef-src { font-size: 12px; }
   }
 </style>
+
+<script is:inline>
+  // HEIGHT-SAFE EMBEDS. The snippet a host pastes declares a fixed iframe height (720 for
+  // the maps today), and a host's own layout can make this frame's content taller than that
+  // on a narrow phone: more line-wrapping at a narrower width means a taller document. Left
+  // alone, the browser's default iframe scrolling still reaches the rest, so nothing is ever
+  // truly lost, but a fixed frame with an internal scrollbar reads as broken on a phone next
+  // to a host's own responsive content.
+  //
+  // This posts the frame's real content height to whatever window embedded it, so a host
+  // that listens can size the iframe to fit rather than leaving it fixed. No external
+  // request: postMessage talks only to the parent window this frame is already inside, and a
+  // host that does not listen loses nothing, since the iframe still degrades to its default
+  // internal scroll exactly as before this script existed.
+  (function () {
+    if (window === window.parent) return; // not inside an iframe, nothing to report
+    var last = 0;
+    function report() {
+      var h = Math.ceil(document.documentElement.getBoundingClientRect().height);
+      if (h === last) return;
+      last = h;
+      try { window.parent.postMessage({ ttcEmbedHeight: h }, '*'); } catch (e) { /* cross-origin parent, fine */ }
+    }
+    report();
+    window.addEventListener('load', report);
+    window.addEventListener('resize', report);
+    if (window.ResizeObserver) {
+      try { new ResizeObserver(report).observe(document.documentElement); } catch (e) {}
+    }
+  })();
+</script>

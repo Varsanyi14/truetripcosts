@@ -5,7 +5,7 @@ import Footer from '../components/Footer.astro';
 import HotelTaxMap from '../components/HotelTaxMap.astro';
 import CompareByRegion from '../components/CompareByRegion.astro';
 import USBadge from '../components/USBadge.astro';
-import { hotelTaxMap, computeAddedTax, localToUsd, perUsdFor } from '../data/hotel-tax-map.js';
+import { hotelTaxMap, computeAddedTax, localToUsd, perUsdFor, hotelTaxMapCheckedISO } from '../data/hotel-tax-map.js';
 
 // The hotel tax world map. A NEW PAGE rather than the hero of /hotel-taxes-and-fees, and
 // the reasoning is worth keeping because it will come up again for the next map.
@@ -99,6 +99,23 @@ const calcDefault = { head: calcHead(calcDefaultEntry, calcResult, CALC_DEFAULTS
 const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" width="100%" height="720"
   style="border:0" title="Hotel tax by country, from True Trip Costs" loading="lazy"
   referrerpolicy="no-referrer-when-downgrade"></iframe>`;
+
+// STRUCTURED DATA, honest and narrow. This is a Dataset: a sourced, per-country tax figure
+// held for {calcCountries.length + 2}-ish covered countries (the two US/CA are held on the
+// map without a single national figure, so they are named but not counted as variableMeasured
+// records). dateModified is the SAME page-level checked date the visible stamp under the map
+// already carries, never a separate or newer one invented for the markup. No Review, Offer,
+// or AggregateRating: nothing here is a rating or a price, only a checked government figure.
+const datasetLd = {
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Hotel tax by country",
+  "description": "Government tax and mandatory levies added on top of a quoted hotel room rate, by country, each figure sourced to the tax authority that sets it and dated.",
+  "url": "https://truetripcosts.com/hotel-tax-map",
+  "dateModified": hotelTaxMapCheckedISO,
+  "creator": { "@type": "Organization", "name": "True Trip Costs" },
+  "variableMeasured": "Government hotel tax and mandatory levies added at checkout, as a share of a quoted room rate",
+};
 ---
 <Base
   title="Hotel tax by country, mapped: what governments add to a room rate"
@@ -114,14 +131,17 @@ const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" wid
       <p class="htx-lede htx-lede2">It is a deliberately narrow question, and the narrowness is the point. A map of total tax burden would shade half of Europe dark and tell you nothing useful, because that tax is already inside the price you were quoted. What costs you a surprise is the part that is not, which is why some of the most heavily taxed countries in Europe sit at the light end here.</p>
     </section>
 
-    <aside class="htx-scope">
-      <p class="htx-scope-t">What this map shows, and what it does not. True Trip Costs exists to surface the money you were not quoted, whoever charges it. This map is one slice of that: the government tax and mandatory levies added at checkout, because those are the part we can pin to a single sourced number for a whole country. It is deliberately not the whole surprise. A resort fee, a mandatory service charge, an ATM fee or a card-conversion skim are unquoted costs too, often larger than the tax, and they are set property by property or bank by bank, so no single national figure exists for them. They are covered in the country guides and in <a href="/cash-or-card">cash or card</a>, and the ones a hotel adds are summarised below.</p>
-    </aside>
+    {/* THE MAP LEADS. It is the headline asset and the reason this page exists, so it is the
+        first substantial thing after the one-line intro, not the third. The stay calculator
+        sits immediately under it, because the map raises the question ("how much is that,
+        for me?") and the calculator is the answer. The longer scope/methodology framing that
+        used to sit here, between the intro and the tool, now sits below both, folded, so it
+        is still fully present without pushing the tool below the first screen. */}
+    <HotelTaxMap />
 
-{/* THE STAY CALCULATOR. Placed directly under the map, because the map raises the
-        question ("how much is that, for me?") and this is the answer to it. All arithmetic
-        comes from computeAddedTax in src/data/hotel-tax-map.js: nothing on this page does
-        percentage or currency math of its own, so the calculator and the fill cannot drift.
+    {/* THE STAY CALCULATOR. All arithmetic comes from computeAddedTax in
+        src/data/hotel-tax-map.js: nothing on this page does percentage or currency math of
+        its own, so the calculator and the fill cannot drift.
 
         SERVER-RENDERED WITH A REAL WORKED EXAMPLE. The default result below is computed at
         build time, so with JavaScript off this section is not an inert form: it shows one
@@ -173,7 +193,16 @@ const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" wid
       <p class="htx-calc-std">This is the government tax only. Resort fees and mandatory service charges are set by the hotel, not a government, so they are not in this figure and are often larger than it. <a href="#property-fees">What hotels add, and how to ask</a>, or see <a href="/cash-or-card">cash or card</a> for the fees a bank adds.</p>
     </section>
 
-    <HotelTaxMap />
+    {/* THE SCOPE CALLOUT, MOVED BELOW THE TOOL AND FOLDED. This used to sit between the
+        intro and the calculator, which meant a reader met two blocks of framing prose before
+        the map or the calculator. The honest boundary it draws (government tax only, not the
+        whole surprise) still matters, so nothing here is deleted or reworded; it is a
+        <details>, open to a glance at its own summary line and one tap from its full text,
+        rather than a wall of prose blocking the tool above it. */}
+    <details class="htx-scope">
+      <summary class="htx-scope-sum">What this map shows, and what it does not</summary>
+      <p class="htx-scope-t">True Trip Costs exists to surface the money you were not quoted, whoever charges it. This map is one slice of that: the government tax and mandatory levies added at checkout, because those are the part we can pin to a single sourced number for a whole country. It is deliberately not the whole surprise. A resort fee, a mandatory service charge, an ATM fee or a card-conversion skim are unquoted costs too, often larger than the tax, and they are set property by property or bank by bank, so no single national figure exists for them. They are covered in the country guides and in <a href="/cash-or-card">cash or card</a>, and the ones a hotel adds are summarised below.</p>
+    </details>
 
     {/* THE EMBED CONTROL, DIRECTLY UNDER THE MAP. It used to be a CTA two sections above the
         map linking down to a section well below it, so a reader who wanted the code was sent
@@ -208,6 +237,7 @@ const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" wid
       </div>
     </details>
 
+
     <section class="htx-more">
       <h2>Where the detail lives</h2>
       <p>Each shaded country above links to its own write-up, which is where the rates are kept current, sourced against the authority that sets them and dated. For the four kinds of charge that land on a hotel bill and how to tell them apart, start with the <a href="/hotel-taxes-and-fees">hotel taxes and fees guide</a>. For per-night bed taxes and entry charges specifically, see <a href="/tourist-taxes">tourist taxes and fees</a>, and for what a day costs once the room is paid for, <a href="/cost-comparison">cost of a day, compared</a>.</p>
@@ -224,6 +254,8 @@ const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" wid
     <CompareByRegion />
   </main>
   <Footer />
+
+  <script type="application/ld+json" set:html={JSON.stringify(datasetLd)}></script>
 
   {/* THE CALCULATOR SCRIPT. Plain DOM, no framework, no external request, and it does no
       arithmetic of its own: the per-country numbers are serialised from computeAddedTax at
@@ -369,8 +401,11 @@ const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" wid
     /* The scope callout: what this map is, and the honest boundary that it is not the whole
        of what surprises you. A quiet bordered card, not a warning box, because the message is
        orienting rather than alarming. */
-    .htx-scope{max-width:720px;margin:18px 0 0;padding:14px 16px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:10px}
-    .htx-scope-t{font-size:14.5px;line-height:1.55;color:#3B4A46;margin:0}
+    .htx-scope{max-width:720px;margin:28px 0 0;padding:0;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:10px}
+    .htx-scope-sum{display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:14.5px;font-weight:600;color:var(--ink);cursor:pointer;list-style:none}
+    .htx-scope-sum::-webkit-details-marker{display:none}
+    .htx-scope-sum:hover{color:var(--teal-deep)}
+    .htx-scope-t{font-size:14.5px;line-height:1.55;color:#3B4A46;margin:0;padding:0 16px 15px;border-top:1px solid var(--line);padding-top:13px}
     .htx-scope-t a{color:var(--teal-deep);font-weight:500;text-decoration:none}
     .htx-scope-t a:hover{text-decoration:underline}
     /* THE STAY CALCULATOR. A bordered card because it is an interactive tool sitting in a
