@@ -6,8 +6,8 @@ export default {
   live: true,
   name: "Italy",
   from: "United States",
-  checked: "Jul 2026",
-  checkedISO: "2026-07-04",
+  checked: "Sep 2026",
+  checkedISO: "2026-09-03",
   sources: {
     changed: "Sources added. Verified the Venice day-tripper access fee for 2026 (5 euros if booked at least four days ahead, 10 euros last-minute, on about 60 peak dates from April to July, historic center only, with overnight guests exempt but still required to register), along with the per-night overnight taxes in Rome, Florence and Venice. The guide's figures are current.",
     links: [
@@ -15,7 +15,7 @@ export default {
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },
-  emergency: { medical: "112", note: "112 reaches every service, and 118 goes straight to an ambulance.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  emergency: { medical: "112", note: "112 reaches every service, and 118 goes straight to an ambulance.", checked: "Sep 2026", checkedISO: "2026-09-03" },
   insuranceLevel: "low",
   rentalCommon: true,
   region: "Europe",
@@ -92,7 +92,7 @@ export default {
   // gateway. HIGH-CHURN: re-verify on the tourist-tax cadence. The calculator
   // prefills the midpoint, feeds low/high into the confidence range until the
   // traveler enters their own fare, and hides the estimate if this block is absent.
-  flight: { low: 550, high: 1200, checked: "Jul 2026", checkedISO: "2026-07-18" },
+  flight: { low: 550, high: 1200, checked: "Sep 2026", checkedISO: "2026-09-03" },
   tax: {
     unit: "perPersonPerNight",
     currency: "EUR",
@@ -133,7 +133,9 @@ export default {
     { q: "What is the coperto in Italy?", a: "The coperto is a small per-person cover charge most sit-down restaurants add, commonly 2 to 3 euros and more in tourist spots. It is normal and not a scam, and it is separate from any tip. It is actually banned in Rome's Lazio region, where some places instead offer a bread charge you can decline." },
     { q: "How much is the tourist tax in Italy?", a: "It is a per-person, per-night city tax (tassa di soggiorno) set by each city and paid at your accommodation, not included in the room rate. It is roughly 4 to 10 euros a night in Rome (up to 10 nights, under-10s exempt), about 3.50 to 8 euros in Florence (up to 7 nights), and around 1 to 5 euros in Venice. Venice also has a separate day-tripper access fee." },
     { q: "Do I have to pay the Venice access fee?", a: "Only if you visit the historic center as a day-tripper on one of the 60 set 2026 dates, from 3 April to 26 July, between 08:30 and 16:00. It is 5 euros per person booked at least four days ahead at cda.ve.it, or 10 euros last-minute, and under-14s are exempt. Overnight guests do not pay it but must still register for a free exemption QR code. The islands, like Murano, Burano and the Lido, are excluded for 2026." },
-    { q: "How much cash should I bring for a week in Italy?", a: "For two mid-range travelers, very roughly 300 to 400 euros (about 350 to 450 dollars) in day-to-day cash across a week, beyond your hotel, pulled in a couple of bank-ATM visits. Cards and contactless cover most of the rest. Adjust for your style and how much you tap versus pay in cash." }
+    { q: "How much cash should I bring for a week in Italy?", a: "For two mid-range travelers, very roughly 300 to 400 euros (about 350 to 450 dollars) in day-to-day cash across a week, beyond your hotel, pulled in a couple of bank-ATM visits. Cards and contactless cover most of the rest. Adjust for your style and how much you tap versus pay in cash." },
+    { q: "What currency does Italy use in 2026?", a: "Italy uses the euro (EUR). Cards and contactless work almost everywhere and merchants are legally required to accept them, so you can run most of a trip on plastic. Still keep 50 to 100 euros in small notes for the coperto cover charge, espresso bars, neighborhood markets and the occasional cash-only trattoria." },
+    { q: "Do you tip in Italy?", a: "Not really. Italy is not a US-style tipping culture, and servers earn a real salary rather than depending on tips, so there is no expected percentage. For genuinely great service, rounding up or leaving a few euros, or up to roughly 5 to 10% at a nicer meal, is a kind gesture rather than an obligation. Check the bill first, since the coperto cover charge is not a tip and some tourist-area restaurants add a separate servizio charge." }
   ],
 
   culture: {
@@ -184,8 +186,8 @@ export default {
       description: "You cannot hail a taxi on the street in Italy, so use itTaxi or FreeNow. There is no cheap Uber, and Fiumicino has a fixed fare into Rome. Checked 2026.",
       h1: "Taxis in Italy, and the airport fixed fare",
       lede: "Taxis in Italy do not work the way most visitors expect: you cannot really flag one down, and Uber is not the cheap option it is at home. Here is how to get a cab, and the airport rule that saves you money.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-19",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "In Italy you cannot really hail a taxi on the street. You use a <b>taxi rank</b> or an <b>app</b>, either <b>itTaxi</b> or <b>FreeNow</b>, which send the licensed white metered taxis. There is <b>no cheap UberX</b> here, since Italian courts banned it in 2017, only the pricier <b>Uber Black</b>. The big protection is the <b>fixed airport fare</b>: from <b>Rome Fiumicino</b>, a licensed white taxi to anywhere in the historic centre is a flat <b>50 euros</b>, with no supplements. Watch for the <b>abusivi</b>, unlicensed drivers who approach you inside the terminal in unmarked cars at two to four times the fare, and only take a taxi from the official rank.",
       sections: [
         {
@@ -255,8 +257,8 @@ export default {
       description: "Italy runs on the shared EU health-certificate process, with no quarantine and no titer. What is Italy-specific on arrival and when you register.",
       h1: "Bringing your dog or cat to Italy.",
       lede: "Italy is a popular EU destination for US pet owners, and there is nothing Italy-specific to fear at the border. It runs on the single EU pet-entry process: microchip, rabies in the right order, and an EU health certificate on a 10-day clock. No quarantine, no rabies titer. Here is what that means for Italy, and the local parts worth knowing.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-19",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Italy uses the <b>shared EU pet-entry process</b>, so there is no separate Italian permit and nothing unusual at the border. Your pet needs an <b>ISO microchip, a rabies vaccination given after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS</b>, then must enter Italy within <b>10 days</b> of that endorsement. There is <b>no quarantine and no rabies titer</b> for a pet coming straight from the US. The full step-by-step, the ordering trap, and the current fees are on one page: see <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a>. Below are the Italy-specific notes. Coming home to the US is the easy part.",
       sections: [
         {
@@ -331,8 +333,8 @@ export default {
       description: "Italian tipping is not like home. What the coperto cover charge is, when a servizio is already on the bill, and how much to leave when you do tip.",
       h1: "Tipping in Italy",
       lede: "Italy is not a US-style tipping country, and that surprises many first-timers. Servers earn a real salary, nobody expects 20%, and the charges on your bill that look like tips often are not. Here is what you actually owe.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-20",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Italy has a <b>light tipping culture</b>. Servers are paid a real salary and do <b>not depend on tips</b>, so there is no expected percentage and nobody will chase you for one. The <b>coperto</b> on your bill is a <b>per-person cover charge</b> (commonly 2 to 3 euros), not a tip. A few tourist spots add a separate <b>servizio</b> (service charge); check for it before adding more. For genuinely great service, <b>rounding up or leaving a few euros</b> is a kind gesture, or up to roughly <b>5 to 10%</b> at a nicer meal, but it is a courtesy, not an obligation. Leave any tip in <b>cash</b>. Do not feel pressured to tip 15 to 20% the way you would at home.",
       sections: [
         {
@@ -390,8 +392,8 @@ export default {
       description: "Italy adds a per-person, per-night city tax at your hotel, not in the online price. What Rome, Florence, Venice and Milan charge, plus the night caps.",
       h1: "Italy's tourist tax, and the Venice access fee.",
       lede: "Almost every Italian city adds a small per-person, per-night tax to your stay, and it is rarely in the price you paid online. Here is what it costs in 2026, who is exempt, and why Venice has a second, separate fee that confuses everyone.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-22",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Most Italian cities charge a <b>tassa di soggiorno</b>, a <b>per-person, per-night</b> tourist tax collected by your hotel or host, usually <b>at check-in or checkout</b> and often in <b>cash</b>. It is <b>not</b> in the room price you saw on Booking or Airbnb. The amount is set by each city and rises with the accommodation's <b>star rating</b>: in 2026, <b>Rome</b> runs about <b>4 to 10 euros</b> a night, <b>Florence</b> about <b>3.50 to 8 euros</b>, <b>Venice</b> about <b>1 to 5 euros</b>, and <b>Milan</b> raised its rate for the Winter Olympics. Most cities <b>cap</b> the nights charged (Rome at 10, Florence at 7) and <b>exempt young children</b>. Separately, <b>Venice</b> charges day visitors a <b>5 euro access fee</b> on 60 peak days in 2026, which is a different thing, explained below.",
       sections: [
         {
@@ -459,8 +461,8 @@ export default {
       description: "Cards work almost everywhere and shops must legally accept them, but keep euros for the coperto, espresso bars and small trattorie. Skip Euronet ATMs.",
       h1: "Do I need cash in Italy, or can I use cards?",
       lede: "Short answer: cards for most things, a stash of euros for the small ones. Italy is more card-friendly than its reputation, and merchants must legally accept cards, but cash still oils the daily stuff. Here is how to pay well.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-22",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Both. <b>Cards work almost everywhere</b>, contactless included, and Italian merchants are <b>legally required to accept them</b>, so a refusal is on them, not the rules. But keep <b>50 to 100 euros</b> in small notes for the <b>coperto</b> cover charge, espresso bars, neighborhood markets, tips and the occasional cash-only trattoria. Two traps to sidestep: skip the <b>bright blue Euronet ATMs</b> at tourist sites, and always choose <b>euros, not dollars</b> (at an Italian machine, the without-conversion option is worded senza conversione). Your per-night city tax is settled at the hotel, and is covered separately.",
       sections: [
         {
@@ -528,8 +530,8 @@ export default {
       description: "Non-EU visitors can reclaim part of Italy's 22% VAT on goods over 70.01 euros in one store. How OTELLO validation works, and why you net 11 to 15%.",
       h1: "Italy's VAT refund, and what you actually get back.",
       lede: "Italy has the EU's highest VAT at 22%, and non-EU visitors can claim some of it back on shopping. The process is now digital and the threshold is low, but operator fees mean the real refund is well under the headline. Here is how it works.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-22",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Yes, if you shop enough in one place. Non-EU visitors can reclaim part of Italy's <b>22% VAT</b> on goods over <b>70.01 euros</b> bought in <b>one store on one day</b> (a single receipt, you cannot combine shops). Ask for a <b>tax-free form</b> with your passport at checkout, keep the goods <b>unused</b>, validate at an <b>OTELLO</b> digital kiosk at the airport before you check bags, then collect from the operator. The catch is the math: after <b>operator fees</b> you net closer to <b>11 to 15%</b>, not the full 22%, and a cash refund at the airport pays less than one to your card. Validate at your <b>final EU exit</b>.",
       sections: [
         {
@@ -599,8 +601,8 @@ export default {
       description: `Coverage is excellent in Italian cities and on the coast, so this is a cost question. US roaming runs ${S.dayPass}; an eSIM is far less.`,
       h1: "Staying connected in Italy.",
       lede: "In Italy the coverage is strong where the visitors are, the cities, the coast, the hill towns, so the real decision is how you pay for data. For most US travelers an eSIM is far cheaper than the carrier day pass. Here is the math, and the few places signal drops.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-31",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: `Coverage is <b>strong</b> in cities, along the coast and in the hill towns, so this is mostly a cost question. Your US carrier charges about <b>${S.dayPass}</b> to roam in Italy (<b>AT&amp;T and Verizon</b> day passes), and <b>T-Mobile</b> is worth checking before you buy anything, because its current mid and upper tiers include a real <b>high-speed allowance</b> abroad, from <b>5GB up to 30GB</b> depending on plan, and only slow to <b>${S.throttle}</b> after that. A <b>Nomad eSIM</b> is a few dollars per gigabyte, activates before you fly and works from landing, so for a data-first trip it is the cheapest option. Expect <b>weaker signal in the mountains</b> (the Dolomites, remote Sardinia and Sicily). Never roam <b>pay-per-use</b>, which runs about ${S.ppu}.`,
       sections: [
         {
@@ -662,8 +664,8 @@ export default {
       description: "Historic-center ZTL cameras fine tourists months later through the rental company, and you legally need an International Driving Permit. Excess cover too.",
       h1: "What does renting a car in Italy really cost?",
       lede: "A car is wonderful for Tuscany, Puglia and the islands, and a liability in the big cities. Two things catch US drivers out before they even hit the road: a permit you must carry by law, and the camera zones that quietly fine you long after you fly home.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-22",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Two traps to get ahead of. First, you <b>legally need an International Driving Permit</b> (IDP) alongside your US license; without it agencies can refuse the car and police can fine you <b>400 euros or more</b>. Get it from <b>AAA</b> before you fly (about 20 dollars). Second, the <b>ZTL</b> camera zones in historic centers (Rome, Florence, Pisa, Milan, Naples and more) fine you about <b>80 to 130 euros per entry</b>, arriving <b>months later</b> via the rental company plus a <b>25 to 60 euro admin fee</b> each. On insurance, your <b>US card and policy generally do not cover you in Europe</b>, so decline the counter's pricey excess reduction and buy a <b>cheaper standalone excess policy</b> instead.",
       sections: [
         {
@@ -732,8 +734,8 @@ export default {
       description: "Airport taxis that ignore the official fixed fare, the broken card machine, padded bills near landmarks, and skip-the-line ticket resellers. Checked 2026.",
       h1: "Common money scams in Italy, and what they cost you",
       lede: "Italy's tourist money traps are mostly overcharging rather than theft, and the good news is that the biggest one has an official number attached to it. Know the fixed airport fare, read the bill, and buy tickets from the actual ticket office.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-30",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "The costliest trap is the <b>airport taxi</b>. Rome sets a <b>fixed fare of 55 euros</b> between Fiumicino and anywhere inside the <b>Aurelian Walls</b>, luggage and supplements included, and a lower fixed fare from Ciampino, so a driver quoting more is not quoting the rule. Watch the <b>card machine that is suddenly broken</b>, which turns a card fare into a cash one. In restaurants near the landmarks, the money leaks through <b>unordered extras</b>, <b>no-price menus</b> and <b>fish or steak priced by weight</b>. Outside the big sights, <b>skip-the-line resellers</b> charge a markup for tickets you can buy officially. And if you drive, the real cost is the <b>ZTL camera fine</b>, covered in our rental piece.",
       sections: [
         {

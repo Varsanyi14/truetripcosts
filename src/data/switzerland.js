@@ -6,8 +6,8 @@ export default {
   live: true,
   name: "Switzerland",
   from: "United States",
-  checked: "Jul 2026",
-  checkedISO: "2026-07-04",
+  checked: "Sep 2026",
+  checkedISO: "2026-09-03",
   sources: {
     changed: "Sources added. Verified that Switzerland (outside the EU, its own franc) charges VAT of 8.1% on most things, 3.8% on hotel stays and 2.6% on food, all already in the price, and that non-residents can reclaim VAT on purchases over 300 francs in one shop. The per-night visitor's tax (Kurtaxe) is set locally, roughly 2 to 7 francs. The guide's figures are current.",
     links: [
@@ -16,7 +16,7 @@ export default {
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },
-  emergency: { medical: "112", note: "112 reaches every service, 144 goes straight to an ambulance, and 1414 is Rega, the air-rescue service.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  emergency: { medical: "112", note: "112 reaches every service, 144 goes straight to an ambulance, and 1414 is Rega, the air-rescue service.", checked: "Sep 2026", checkedISO: "2026-09-03" },
   insuranceLevel: "medium",
   region: "Europe",
   signals: { cardFriendliness: 4, cashNeed: 2, taxRisk: 3 },
@@ -186,8 +186,8 @@ export default {
       description: "Uber works in the big Swiss cities, but taxis are among the world's most expensive. When the train clearly wins, and how much to tip. Checked 2026.",
       h1: "Taxis in Switzerland, and why to take the train",
       lede: "Swiss taxis are honest and metered, but among the most expensive anywhere, and the public transport is so good that you will rarely want one. Here is how it works.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-23",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "<b>Uber</b> works in the big cities (Zurich, Geneva, Basel, Lausanne), and regular taxis are <b>metered, honest and regulated</b> by the canton. The catch is price: Swiss taxis are among the <b>most expensive in the world</b>. Because the <b>trains, trams and buses</b> are superb and reasonably priced by comparison, most visitors barely use taxis. From the airport, the <b>train</b> easily beats a taxi. Service is <b>included</b>, so you only <b>round up</b>.",
       sections: [
         {
@@ -255,8 +255,8 @@ export default {
       description: "Service is already included in Switzerland. How much to round up for good service, and why even that adds up in an expensive country. Checked 2026.",
       h1: "Tipping in Switzerland",
       lede: "Switzerland is a light-tipping country. Service was folded into prices long ago and staff earn strong wages, so nobody expects a US-style percentage. Rounding up for good service is the norm. Here is what you actually owe.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-23",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Switzerland has a <b>light tipping culture</b>. Service has been <b>included</b> since tipping was folded into prices decades ago, and staff earn <b>strong wages</b>, so there is <b>no expected percentage</b> and no obligation. For good service, <b>rounding up</b> is the norm, or up to about <b>10%</b> at a nicer restaurant if you were really pleased. Because Switzerland is <b>expensive</b>, even rounding up adds up, so do not feel you owe more. Leave a tip in <b>cash</b> (francs) or tell the server the total.",
       sections: [
         {
@@ -384,8 +384,8 @@ export default {
       description: "Switzerland is very card-friendly and contactless is everywhere. The catch is the currency: paying in euros gets a poor rate, so use and choose francs.",
       h1: "Do I need cash in Switzerland, or can I use cards?",
       lede: "Short answer: a card for almost everything, a little cash in francs. Switzerland is very card-friendly, but the thing to get right is the currency: it uses Swiss francs, not euros, despite being surrounded by the eurozone.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-23",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Cards, almost entirely. Switzerland is <b>very card-friendly</b>: <b>contactless</b> is everywhere, and Apple Pay and Google Pay are widely taken. The key thing to get right is the <b>currency</b>: Switzerland uses the <b>Swiss franc (CHF), not the euro</b>, even though it is surrounded by the eurozone. Some tourist spots and hotels <b>accept euros</b>, but they give <b>change in francs at a poor rate</b>, so pay in <b>francs</b>. On any card or ATM, choose <b>francs, not dollars</b>. Keep a little cash in francs for small things; it is an expensive country, so budget accordingly.",
       sections: [
         {
@@ -445,8 +445,8 @@ export default {
       description: "Switzerland runs on the shared EU health-certificate process, with no quarantine and no titer. What is Swiss-specific on arrival and after you settle in.",
       h1: "Bringing your dog or cat to Switzerland.",
       lede: "Switzerland runs on the single EU pet-entry process for a US-origin dog or cat: microchip, rabies in the right order, and an EU health certificate on a 10-day clock. No quarantine, no rabies titer. Here is what that means for Switzerland, and the local parts worth knowing.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-19",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Switzerland uses the <b>shared EU pet-entry process</b> (it has adopted the EU rules), so there is no separate national permit and nothing unusual at the border. Your pet needs an <b>ISO microchip, a rabies vaccination given after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS</b>, then must enter within <b>10 days</b> of that endorsement. There is <b>no quarantine and no rabies titer</b> for a pet coming straight from the US. The full step-by-step, the ordering trap, and the current fees are on one page: see <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a>. Below are the Switzerland-specific notes. Coming home to the US is the easy part.",
       sections: [
         {

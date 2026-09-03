@@ -6,8 +6,8 @@ export default {
   live: true,
   name: "Sweden",
   from: "United States",
-  checked: "Jul 2026",
-  checkedISO: "2026-07-07",
+  checked: "Sep 2026",
+  checkedISO: "2026-09-03",
   sources: {
     changed: "Sources added on first publish, checked July 2026. Confirmed that Sweden (an EU member, but keeping its own krona rather than the euro) charges VAT (moms) of 25% on most things, with reduced rates of 12% on hotels and restaurant meals and 6% on transport, books and culture, all already in the price, and that non-EU visitors can reclaim VAT on goods over 200 SEK in one store. The recent change: from 1 April 2026 the VAT on most groceries dropped from 12% to 6% (a temporary cut running to the end of 2027), which should ease food-shop costs a little. There is still no general tourist or nightly accommodation tax.",
     links: [
@@ -17,7 +17,7 @@ export default {
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure. VAT rates and thresholds can change, so check anything that affects a big purchase.",
   },
-  emergency: { medical: "112", note: "112 reaches every emergency service, ambulance, police and fire, from any phone, even with no SIM. Operators speak English. For non-urgent medical advice, call 1177 (staffed by nurses); for non-urgent police matters, call 114 14. Keep 112 for a genuine emergency.", checked: "Jul 2026", checkedISO: "2026-07-07" },
+  emergency: { medical: "112", note: "112 reaches every emergency service, ambulance, police and fire, from any phone, even with no SIM. Operators speak English. For non-urgent medical advice, call 1177 (staffed by nurses); for non-urgent police matters, call 114 14. Keep 112 for a genuine emergency.", checked: "Sep 2026", checkedISO: "2026-09-03" },
   insuranceLevel: "medium",
   region: "Europe",
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 2 },
@@ -133,11 +133,12 @@ export default {
 
   faqs: [
     { q: "Do I need cash in Sweden?", a: "Almost never. Sweden is one of the most cashless countries in the world: cards and tap work everywhere, and many cafes, shops, buses and museums take no cash at all. You can comfortably travel without touching a krona. If you want a small buffer, keep 200 to 400 SEK, but most visitors use none." },
-    { q: "Does Sweden use the euro?", a: "No. Sweden is in the EU but never adopted the euro, so it uses the Swedish krona (SEK). Euros will not spend here, so plan to pay by card in kronor and do not carry euros for this leg." },
+    { q: "What currency does Sweden use in 2026?", a: "Sweden uses the Swedish krona (SEK), not the euro, even though it is an EU member. Sweden is also one of the most cashless countries in the world, so cards and tap work almost everywhere and many cafes, shops, buses and museums take no cash at all. Euros will not spend here, so plan to pay by card in kronor." },
     { q: "Should I pay in kronor or US dollars in Sweden?", a: "Kronor. If a card terminal or ATM offers to charge you in US dollars (or euros), decline; that dynamic currency conversion typically adds 3 to 8%. Paying in kronor and letting your own bank convert is almost always cheaper." },
     { q: "Is there a tourist tax in Sweden?", a: "No. Sweden has no general tourist tax or nightly accommodation tax, so nothing extra is added to your hotel bill. VAT is already baked into prices, and from April 2026 the VAT on most groceries dropped to 6% on a temporary basis." },
     { q: "Can I get a VAT refund on shopping in Sweden?", a: "Yes, if you live outside the EU and spend at least 200 SEK in one store. Ask for a tax-free refund form, keep the goods unused, and get it validated by customs when you leave the EU, then claim through the refund operator. After fees you get back a useful part of the 25% VAT, though not the full amount." },
-    { q: "Why is Sweden so expensive, and how much should I budget?", a: "High wages, a high cost of living and VAT all feed into prices, from coffee to museum tickets. For everyday spending beyond your hotel, very roughly 900 to 1,600 SEK a day per person (about 93 to 165 dollars) is a realistic mid-range figure, essentially all on card. The fix is to budget a higher daily number than for much of Europe." }
+    { q: "Why is Sweden so expensive, and how much should I budget?", a: "High wages, a high cost of living and VAT all feed into prices, from coffee to museum tickets. For everyday spending beyond your hotel, very roughly 900 to 1,600 SEK a day per person (about 93 to 165 dollars) is a realistic mid-range figure, essentially all on card. The fix is to budget a higher daily number than for much of Europe." },
+    { q: "Do you tip in Sweden?", a: "Not much. Service is included and staff are paid a proper wage, so tipping is a kind gesture rather than an obligation. At a sit-down restaurant, rounding the bill up or adding about 5 to 10% for good service is generous; at a cafe, bar or counter, no tip is needed. Round up for taxis, and a little extra for a helpful guide or driver on a tour is appreciated." }
   ],
 
   culture: {
@@ -188,8 +189,8 @@ export default {
       description: "Uber and Bolt operate, but deregulation lets rogue taxis overcharge in Sweden. Check the mandatory comparison-price sticker. Arlanda, and tipping.",
       h1: "Taxis in Sweden, and the price sticker",
       lede: "Sweden deregulated taxis, so most are fine but a few rogue cabs charge wild rates, especially at the airport. The trick is the yellow comparison-price sticker, or just use an app. Here is how it works.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-23",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Install <b>Uber</b> or <b>Bolt</b>, which both work in the cities, and reputable firms like <b>Taxi Stockholm</b>, <b>Taxi Kurir</b> and <b>Sverigetaxi</b> are safe bets. Sweden <b>deregulated taxis</b>, so fares vary a lot and a few <b>rogue cabs</b> charge extortionate rates, especially at <b>Arlanda</b> and tourist spots. Every taxi must show a yellow <b>comparison-price sticker</b> in the window: check it, or just use an app that shows the fare. Tipping is <b>not expected</b>, and Sweden is nearly cashless.",
       sections: [
         {
@@ -257,8 +258,8 @@ export default {
       description: "Wages are high in Sweden, so tipping is not really expected. When to round up, and how to handle the tip prompt in a near-cashless country.",
       h1: "Tipping in Sweden",
       lede: "Sweden is not really a tipping country. Wages are high and service is included, so tipping is not expected. The wrinkle: in a near-cashless country, terminals often prompt for a tip. Here is what you actually owe.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-23",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Sweden is <b>not really a tipping country</b>. Wages are <b>high</b> and service is effectively <b>included</b>, so tipping is <b>not expected</b> and leaving nothing is normal. For <b>good service at a restaurant</b>, it is common to <b>round up</b> or leave <b>5 to 10%</b> if you were really pleased, but it is optional. The catch: Sweden is <b>nearly cashless</b>, so card terminals <b>often prompt for a tip</b> now, which you can decline. At <b>cafes, bars and in taxis</b>, no tip is expected. Any tip is in <b>kronor</b>.",
       sections: [
         {
@@ -316,8 +317,8 @@ export default {
       description: "Sweden is one of the most cashless countries on earth, and many places refuse cash outright. Carry a contactless card, choose krona, keep a backup.",
       h1: "Do I need cash in Sweden, or can I use cards?",
       lede: "Short answer: a card for everything, and you may never touch cash. Sweden is one of the most cashless countries anywhere, and many places refuse cash outright, so the real risk is a dead card, not a lack of notes.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-23",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Cards, essentially entirely. Sweden is <b>one of the most cashless countries on earth</b>: <b>contactless</b> is everywhere, Apple Pay and Google Pay are standard, and many shops, cafes, museums and buses <b>refuse cash altogether</b> (you will see signs reading no cash). The currency is the <b>Swedish krona (SEK), not the euro</b>. You can travel Sweden <b>essentially without cash</b>, so a card is essential and cash is close to optional. On any card or ATM, choose <b>krona, not dollars</b>.",
       sections: [
         {
@@ -377,8 +378,8 @@ export default {
       description: "Sweden runs on the shared EU health-certificate process, with no quarantine and no titer. What is Sweden-specific on arrival and after you settle in.",
       h1: "Bringing your dog or cat to Sweden.",
       lede: "Sweden runs on the single EU pet-entry process for a US-origin dog or cat: microchip, rabies in the right order, and an EU health certificate on a 10-day clock. No quarantine, no rabies titer. Here is what that means for Sweden, and the local parts worth knowing.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-19",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Sweden uses the <b>shared EU pet-entry process</b>, so there is no separate national permit and nothing unusual at the border. Your pet needs an <b>ISO microchip, a rabies vaccination given after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS</b>, then must enter within <b>10 days</b> of that endorsement. There is <b>no quarantine and no rabies titer</b> for a pet coming straight from the US. The full step-by-step, the ordering trap, and the current fees are on one page: see <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a>. Below are the Sweden-specific notes. Coming home to the US is the easy part.",
       sections: [
         {

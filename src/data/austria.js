@@ -6,8 +6,8 @@ export default {
   live: true,
   name: "Austria",
   from: "United States",
-  checked: "Jul 2026",
-  checkedISO: "2026-07-25",
+  checked: "Sep 2026",
+  checkedISO: "2026-09-03",
   sources: {
     changed: "Re-checked July 2026. Confirmed the Vienna Ortstaxe rose to 5% of the net room price on 1 July 2026 as enacted (a further rise to 8% is set for 1 July 2027). The file already read correctly; re-stamped checked dates. VAT refund and alpine flat fees unchanged.",
     links: [
@@ -16,7 +16,7 @@ export default {
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure.",
   },
-  emergency: { medical: "112", note: "112 reaches every emergency service, and 144 goes straight to an ambulance.", checked: "Jul 2026", checkedISO: "2026-07-01" },
+  emergency: { medical: "112", note: "112 reaches every emergency service, and 144 goes straight to an ambulance.", checked: "Sep 2026", checkedISO: "2026-09-03" },
   insuranceLevel: "medium",
   region: "Europe",
   signals: { cardFriendliness: 3, cashNeed: 3, taxRisk: 3, atmRisk: 4 },
@@ -125,7 +125,7 @@ export default {
   // rise: 5% from 1 July 2026, then 8% from 1 July 2027.
   keyFacts: [
     { label: "Vienna accommodation tax (Ortstaxe)", value: "5% of the net room price", status: "enacted", effective: "2026-07-01", source: "https://www.wien.gv.at/english/e-government/financial/tax/local-tax.html", checked: "2026-08-03" },
-    { label: "Vienna accommodation tax, next step", value: "8% of the net room price", status: "enacted", effective: "2027-07-01", source: "https://www.wien.gv.at/english/e-government/financial/tax/local-tax.html", checked: "2026-07-25" }
+    { label: "Vienna accommodation tax, next step", value: "8% of the net room price", status: "enacted", effective: "2027-07-01", source: "https://www.wien.gv.at/english/e-government/financial/tax/local-tax.html", checked: "2026-09-03" }
   ],
 
   traps: [
@@ -144,7 +144,8 @@ export default {
     { q: "What is the best ATM to use in Austria?", a: "A bank Bankomat, such as Erste and Sparkasse, Bank Austria or Raiffeisen. Avoid the blue Euronet machines common in tourist areas, which offer poor rates and push fees, and always decline the offer to convert to US dollars." },
     { q: "How much should I tip in Austria?", a: "Not much. Service is included, so locals round up or add about 5 to 10% for good service. The custom is to state the total you want to pay as you hand over cash or card, rather than leaving coins behind. Round up for taxis and casual meals." },
     { q: "Is tax included in prices in Austria?", a: "Yes. Austrian VAT is built into the displayed price, 20% on most things and a reduced 10% on food, books and hotels, so the tag or menu price is what you pay. Non-EU visitors can reclaim VAT on purchases over about 75 euros in one store when leaving the EU." },
-    { q: "Does Austria charge a tourist tax?", a: "Most towns do, added to your hotel bill. Vienna charges 5% of the net room price, while alpine and regional towns usually charge a flat per-person nightly fee of roughly 2 to 5 euros. It is separate from the room rate you book online." }
+    { q: "Does Austria charge a tourist tax?", a: "Most towns do, added to your hotel bill. Vienna charges 5% of the net room price, while alpine and regional towns usually charge a flat per-person nightly fee of roughly 2 to 5 euros. It is separate from the room rate you book online." },
+    { q: "What currency does Austria use in 2026?", a: "Austria uses the euro (EUR). Unlike much of Western Europe, plenty of cafes, bakeries, market stalls, mountain huts and traditional wine taverns still prefer cash or set a minimum for card payment, so carry about 60 to 100 euros alongside your card rather than relying on plastic alone." }
   ],
 
   culture: {
@@ -195,8 +196,8 @@ export default {
       description: "Bolt and Uber work in Vienna, metered taxis are honest, and the S-Bahn or CAT beats a cab in from the airport. How much to tip. Checked 2026.",
       h1: "Taxis in Austria, and the apps to use",
       lede: "Austrian taxis are metered, honest and regulated, and in Vienna the apps make it easy. From the airport the train wins, and you tip by rounding up. Here is how it works.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-23",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "In <b>Vienna</b>, install <b>Bolt</b> (popular and often cheapest) or <b>Uber</b>, which dispatches licensed taxis, and the local <b>40100</b> taxi app is another option. Taxis are <b>metered, honest and regulated</b>, so there is nothing to haggle over. From <b>Vienna airport (VIE)</b>, the <b>S-Bahn</b> is the cheap way in and the <b>CAT</b> (City Airport Train) is the fast one. You <b>tip</b> by rounding up a euro or two.",
       sections: [
         {
@@ -264,8 +265,8 @@ export default {
       description: "Austrian Trinkgeld is modest, and you tell the server the total rather than leaving coins on the table, just as in Germany. Checked 2026.",
       h1: "Tipping in Austria",
       lede: "Austria tips much like Germany: a modest Trinkgeld, done by rounding up, and told to the server rather than left on the table. Here is how it works.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-23",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Austria has a modest tipping custom, <b>Trinkgeld</b>, of roughly <b>5 to 10%</b>, usually done by <b>rounding up</b>, and it works just like <b>Germany</b>: when the server takes payment, you <b>state the total you want to pay</b>, including the tip, rather than leaving it on the table. For a 42 euro bill you might say <b>46</b>, or <b>passt schon</b> (that is fine, keep the change). Service is <b>not a separate line</b> but staff earn a wage, so this is a courtesy. <b>Cash</b> is simplest, and when paying by card you tell the server the total.",
       sections: [
         {
@@ -392,8 +393,8 @@ export default {
       description: "Austria takes cards in cities and hotels but still leans on cash in small cafes, bakeries and wine taverns. Carry euros, choose euros, use bank ATMs.",
       h1: "Do I need cash in Austria, or can I use cards?",
       lede: "Short answer: cards in the cities, a fair bit of cash for small places. Austria is a little more cash-minded than most of Western Europe, much like its neighbor Germany, so carry euros. Here is how to handle it.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-23",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Some cash, more than you might expect. Austria takes <b>cards in cities, hotels and larger shops</b>, and <b>contactless</b> (with Apple Pay and Google Pay) is common, but like neighboring <b>Germany</b> it leans on <b>cash</b> in smaller spots: bakeries, cafes, <b>Heuriger</b> (wine taverns), markets and some restaurants. The domestic card is the <b>Bankomatkarte</b>, and <b>Visa and Mastercard</b> are widely but not universally taken, with Amex patchy. So <b>carry some euros</b>. Choose <b>euros, not dollars</b> on any card or ATM, and use bank <b>Bankomat</b> machines.",
       sections: [
         {
@@ -453,8 +454,8 @@ export default {
       description: "Austria runs on the shared EU health-certificate process, with no quarantine and no titer. What is Austria-specific on arrival and after you settle in.",
       h1: "Bringing your dog or cat to Austria.",
       lede: "Austria runs on the single EU pet-entry process for a US-origin dog or cat: microchip, rabies in the right order, and an EU health certificate on a 10-day clock. No quarantine, no rabies titer. Here is what that means for Austria, and the local parts worth knowing.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-19",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Austria uses the <b>shared EU pet-entry process</b>, so there is no separate national permit and nothing unusual at the border. Your pet needs an <b>ISO microchip, a rabies vaccination given after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS</b>, then must enter within <b>10 days</b> of that endorsement. There is <b>no quarantine and no rabies titer</b> for a pet coming straight from the US. The full step-by-step, the ordering trap, and the current fees are on one page: see <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a>. Below are the Austria-specific notes. Coming home to the US is the easy part.",
       sections: [
         {

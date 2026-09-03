@@ -17,7 +17,7 @@ export default {
     ],
     judgment: "The daily cash share, tipping norms, and likely ATM behavior are our own estimate from experience, not an official figure. No Norwegian municipality is collecting the visitor's contribution yet, so this is one to watch rather than budget for; check your specific stay if you travel in 2027 or later.",
   },
-  emergency: { medical: "112", note: "112 reaches the police and works from any phone, even with no SIM. For a medical emergency dial 113 for an ambulance, and 110 for the fire service. 116 117 is the out-of-hours medical line for less urgent care. Operators speak English.", checked: "Jul 2026", checkedISO: "2026-07-07" },
+  emergency: { medical: "112", note: "112 reaches the police and works from any phone, even with no SIM. For a medical emergency dial 113 for an ambulance, and 110 for the fire service. 116 117 is the out-of-hours medical line for less urgent care. Operators speak English.", checked: "Sep 2026", checkedISO: "2026-09-03" },
   insuranceLevel: "medium",
   rentalCommon: true,
   region: "Europe",
@@ -144,11 +144,12 @@ export default {
 
   faqs: [
     { q: "Do I need cash in Norway?", a: "Not much. Cards and tap work almost everywhere, including ferries, buses and small kiosks, and locals lean on cards and the Vipps app. Keep maybe 500 to 800 NOK for a rural stall, a tiny ferry or an honesty box, and pull it from a bank Minibank ATM if you run low. Do not exchange a big pile of dollars into kroner." },
-    { q: "Does Norway use the euro?", a: "No. Norway is not in the EU or the eurozone, so it uses the Norwegian krone (NOK). Leftover euros from elsewhere in Europe will not spend here, so plan to pay by card in kroner and do not carry euros for this leg." },
+    { q: "Does Norway use the euro?", a: "No. Norway is not in the EU or the eurozone, so it uses the Norwegian krone (NOK), not the euro. Cards and tap work almost everywhere, including ferries, buses and small kiosks, so you may not need much cash at all. Leftover euros from elsewhere in Europe will not spend here, so plan to pay by card in kroner." },
     { q: "Should I pay in kroner or US dollars in Norway?", a: "Kroner. If a card terminal or ATM offers to charge you in US dollars (or euros), decline; that dynamic currency conversion typically adds 3 to 8%. Paying in kroner and letting your own bank convert is almost always cheaper." },
     { q: "What is Norway's new tourist tax, and will I pay it?", a: "Almost certainly not yet. Norway's visitor's contribution became law on 1 July 2026, but it is a permission slip: a town has to apply and be approved before it can charge up to 3% on overnight stays, and as of 2026 no municipality is collecting it anywhere. Tromso has applied and is targeting 1 January 2027. So on a trip now you pay nothing extra; if it ever applies to your stay, 3% on a 2,500 NOK hotel night is about 75 NOK (roughly 7 dollars), and campsites, tents and personal campervans are exempt." },
     { q: "Can I get a VAT refund on shopping in Norway?", a: "Yes, if you are a non-resident and spend at least 315 NOK in one store. Ask for a tax-free refund form, keep the goods unused, and get it stamped by customs when you leave Norway, then claim through the refund operator. After fees you get back a useful part of the 25% VAT, though not the full amount." },
-    { q: "Why is Norway so expensive, and how much should I budget?", a: "High wages, a high cost of living and heavy taxes on things like alcohol all feed into prices, from coffee to fjord ferries. For everyday spending beyond your hotel, very roughly 1,000 to 1,800 NOK a day per person (about 100 to 185 dollars) is a realistic mid-range figure, mostly on card. The fix is to budget a higher daily number than elsewhere in Europe." }
+    { q: "Why is Norway so expensive, and how much should I budget?", a: "High wages, a high cost of living and heavy taxes on things like alcohol all feed into prices, from coffee to fjord ferries. For everyday spending beyond your hotel, very roughly 1,000 to 1,800 NOK a day per person (about 100 to 185 dollars) is a realistic mid-range figure, mostly on card. The fix is to budget a higher daily number than elsewhere in Europe." },
+    { q: "Do you tip in Norway?", a: "Not much. Service is included and staff are paid a proper wage, so tipping is a kind gesture rather than an obligation. At a sit-down restaurant, rounding the bill up or adding about 5 to 10% for good service is generous; at a cafe, bar or counter, no tip is needed. Round up for taxis, and a little extra for a helpful guide or driver on a tour is appreciated." }
   ],
 
   culture: {
@@ -199,8 +200,8 @@ export default {
       description: "Bolt and Uber operate in Norway, but deregulation means fares vary a lot by company. The Oslo airport train, and how much to tip. Checked 2026.",
       h1: "Taxis in Norway, and checking the price",
       lede: "Norwegian taxis are among the priciest anywhere, and since deregulation their fares vary a lot between companies, so it pays to check before you ride. The train usually wins. Here is how it works.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-23",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Install <b>Bolt</b>, and <b>Uber</b> operates in <b>Oslo</b>, alongside established firms (Oslo Taxi and others). Norwegian taxis are <b>very expensive</b>, and since the market was <b>deregulated</b>, <b>fares vary a lot by company</b>, so check the price or use an app that shows it up front. From <b>Oslo airport (OSL)</b>, the <b>train</b> beats a taxi easily. Tipping is <b>not expected</b>, so you just round up. Fares are in <b>kroner</b>, and taxis take cards and Vipps.",
       sections: [
         {
@@ -268,8 +269,8 @@ export default {
       description: "Wages are high in Norway, so tipping is not really expected. When to round up for good service, and how to handle the card terminal prompt.",
       h1: "Tipping in Norway",
       lede: "Norway is not really a tipping country. Wages are high and service is included, so tipping is not expected. Round up for good service if you like. Here is what you actually owe.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-23",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Norway is <b>not really a tipping country</b>. Wages are <b>high</b> and service is effectively <b>included</b>, so tipping is <b>not expected</b> and leaving nothing is normal. For <b>good service at a restaurant</b>, it is common to <b>round up</b> the bill, or leave <b>5 to 10%</b> if you were really pleased, but it is optional. At <b>cafes, bars and in taxis</b>, no tip is expected. Norway is <b>largely cashless</b>, so card terminals may <b>prompt for a tip</b>, which you can decline. Any tip is in <b>kroner</b>.",
       sections: [
         {
@@ -327,8 +328,8 @@ export default {
       description: "Norway is nearly cashless and many places take little or no cash. The currency is the krone, not the euro, and it is an expensive country. Choose krone.",
       h1: "Do I need cash in Norway, or can I use cards?",
       lede: "Short answer: a card for everything, and almost no cash. Norway is nearly cashless like its Nordic neighbors, uses the krone rather than the euro, and is one of Europe's most expensive countries. Here is how to handle it.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-23",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Cards, essentially entirely. Norway is <b>nearly cashless</b>, like Sweden and Denmark: <b>contactless</b> is everywhere, Apple Pay and Google Pay are standard, and many places take <b>little or no cash</b>. The currency is the <b>Norwegian krone (NOK), not the euro</b>. You need <b>very little cash</b>, so a working card is essential. It is also an <b>expensive</b> country, so budget higher than most of Europe. On any card or ATM, choose <b>krone, not dollars</b>.",
       sections: [
         {
@@ -388,8 +389,8 @@ export default {
       description: "Norway runs on the shared EU health-certificate process, no quarantine and no titer, plus one extra step: a timed tapeworm treatment for dogs.",
       h1: "Bringing your dog or cat to Norway.",
       lede: "Norway is a destination some US pet owners choose, and it follows the EU pet-entry rules: microchip, rabies in the right order, and an EU health certificate on a 10-day clock. No quarantine, no rabies titer. Norway adds one thing the big EU countries do not: a timed tapeworm treatment for dogs. Here is what that means, and the local parts worth knowing.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-19",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-03",
       answer: "Norway follows the <b>shared EU pet-entry process</b> (it has adopted the EU rules), so there is no quarantine and no rabies titer for a pet coming straight from the US. Your pet needs an <b>ISO microchip, a rabies vaccination given after the chip, and an EU Animal Health Certificate endorsed by USDA APHIS</b>, with entry within <b>10 days</b> of endorsement. Norway's one addition: <b>dogs need an approved tapeworm treatment given by a vet 24 to 120 hours before arrival</b>, recorded on the certificate. Cats do not. The full shared process is on <a href=\"/eu-pet-health-certificate\">the EU pet health certificate</a> page. Coming home to the US is the easy part.",
       sections: [
         {
