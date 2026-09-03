@@ -70,7 +70,7 @@
   h1,h2,h3,h4{margin:0}
 
   .topnav{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line)}
-  .navin{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 22px}/* 22px matches .wrap's gutter, so the mark and the Get updates button line up with the
+  .navin{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:11px 22px;min-height:52px;box-sizing:border-box}/* 22px matches .wrap's gutter, so the mark and the Get updates button line up with the
    content column below rather than sitting flush to the screen edge. The rule previously
    zeroed the horizontal padding it inherits from .wrap. That went unnoticed because the
    old logo carried about 8px of transparent padding inside its own artwork; the current
