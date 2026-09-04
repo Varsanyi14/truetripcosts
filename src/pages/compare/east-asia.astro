@@ -6,6 +6,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import CompareFooterLinks from '../../components/CompareFooterLinks.astro';
 import CompareOtherRegions from '../../components/CompareOtherRegions.astro';
 import RegionMap from '../../components/RegionMap.astro';
+import RegionVerdict from '../../components/RegionVerdict.astro';
 import eaMap from '../../data/maps/east-asia.js';
 import { countries } from '../../data/index.js';
 import { otherClusters } from '../../data/region-comparisons.js';
@@ -57,6 +58,30 @@ const rows = order.map(slug => {
   const caution = (taxi && taxi.caution) ? taxi.caution : 'low';
   return { slug, name: c ? c.name : slug, iso2: c ? c.iso2 : '', ...rate[slug], taxi: cautionMap[caution] || cautionMap.low };
 });
+
+// "Our call" synthesis. Derived only from the rate object and verdicts above;
+// see BRIEF-region-our-call.md for the sourcing this must be checked against.
+// Easiest money experience <- south-korea: cashLean card, taxiCaution low,
+// verdict states outright "The easiest of the five on money".
+// Cheapest day <- south-korea, taiwan AND china, genuinely tied at cost 2
+// (FLAG for MAIN: the page's own Quick Picks section separately calls Taiwan
+// alone "the best value", a value framing rather than a strict cost-dot
+// reading; leaving the tie as-is since it matches the matrix's own numbers,
+// but flagging the seeming tension for MAIN to rule on).
+// Most cash-dependent <- japan AND taiwan, genuinely tied: the page's own
+// Quick Picks section states this exact pairing, "Still carry cash: Japan and
+// Taiwan, more than their modern feel suggests".
+// Currency oddity <- south-korea: curNote "counts high", verdict ("The won
+// runs to big numbers, so prices look larger than they are").
+// Prepare before you fly <- china: verdict ("the fix is to set up Alipay or
+// WeChat Pay and link your card before you go").
+const ourCallLines = [
+  { label: 'Easiest money experience', country: 'South Korea', why: 'near-total card and contactless acceptance, so you can travel on almost no cash' },
+  { label: 'Cheapest day', country: 'South Korea, Taiwan and China', why: 'tied at the bottom of the five on daily cost' },
+  { label: 'Most cash-dependent', country: 'Japan and Taiwan', why: 'both lean on cash more than their modern feel suggests' },
+  { label: 'The currency oddity', country: 'South Korea', why: 'the won counts high, so prices look larger than they actually are' },
+  { label: 'Prepare before you fly', country: 'China', why: 'set up Alipay or WeChat Pay and link a card, since foreign cards are still patchy' },
+];
 
 const others = otherClusters('/compare/east-asia');
 const checkedLabel = 'Jul 2026';
@@ -147,6 +172,12 @@ const description = 'Deciding between Japan, South Korea, Taiwan, Hong Kong and 
         ))}
       </div>
     </section>
+
+    <RegionVerdict
+      heading="Our call: East Asia, compared"
+      intro="If you are choosing between them on the money side, here is how they sort out."
+      lines={ourCallLines}
+    />
 
     <section class="se-sec">
       <p class="lab">Quick picks</p>

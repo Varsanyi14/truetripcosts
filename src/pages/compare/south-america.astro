@@ -6,6 +6,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import CompareFooterLinks from '../../components/CompareFooterLinks.astro';
 import CompareOtherRegions from '../../components/CompareOtherRegions.astro';
 import RegionMap from '../../components/RegionMap.astro';
+import RegionVerdict from '../../components/RegionVerdict.astro';
 import saMap from '../../data/maps/south-america.js';
 import { countries } from '../../data/index.js';
 import { otherClusters } from '../../data/region-comparisons.js';
@@ -52,6 +53,39 @@ const rows = order.map(slug => {
   const caution = (taxi && taxi.caution) ? taxi.caution : (rate[slug].taxiCaution || 'low');
   return { slug, name: c ? c.name : slug, iso2: c ? c.iso2 : '', ...rate[slug], taxi: cautionMap[caution] || cautionMap.low };
 });
+
+// "Our call" synthesis. Derived only from the rate object and verdicts above;
+// see BRIEF-region-our-call.md for the sourcing this must be checked against.
+// NOTE for MAIN: Argentina's rate object above sets taxiCaution: "medium", but
+// the actual rendered chip on this page pulls from the country's own taxi
+// spoke, which carries caution "low" and overrides the rate object's value
+// (see the rows.map fallback logic). So the row Argentina actually displays as
+// "Easy" taxis, not "Some care". No line below relies on Argentina's taxi
+// caution, so this doesn't affect the card, but flagging the data mismatch
+// since MAIN may want to fix the rate object's stale field separately.
+// Easiest money experience <- brazil: the only cashLean card of the four,
+// verdict states outright "the most card-friendly of the four, with Pix and
+// cards everywhere".
+// Cheapest day <- colombia: cost 1, lowest of the four; verdict and honest
+// headline both call it "the best value on the continent" / "the cheapest".
+// Most cash-dependent <- colombia: the honest headline states directly
+// "Colombia leans on cash outside its cities".
+// Currency oddity <- argentina: verdict and Quick Picks both flag it, "the
+// money quirk to know: exchange rates swing, and how you pay... can change
+// what you effectively spend".
+// No currency to convert <- ecuador: curNote "yes, USD", verdict ("it runs on
+// the US dollar, so there is no currency to convert").
+// Where to take care with taxis <- ecuador: the only "high" taxi caution of
+// the four, matching its own verdict's advice to "lean on ride apps for
+// taxis" rather than street cabs.
+const ourCallLines = [
+  { label: 'Easiest money experience', country: 'Brazil', why: 'the most card-friendly of the four, with Pix and cards everywhere' },
+  { label: 'Cheapest day', country: 'Colombia', why: 'the best value on the continent, with the others close behind' },
+  { label: 'Most cash-dependent', country: 'Colombia', why: 'cards work in the cities, but it leans on cash outside them' },
+  { label: 'The currency oddity', country: 'Argentina', why: 'exchange rates swing, so cash US dollars versus card can genuinely change what you spend' },
+  { label: 'No currency to convert', country: 'Ecuador', why: 'it runs on the US dollar, so there is nothing to convert' },
+  { label: 'Where to take care with taxis', country: 'Ecuador', why: 'lean on ride apps rather than street taxis' },
+];
 
 const others = otherClusters('/compare/south-america');
 const checkedLabel = 'Jul 2026';
@@ -142,6 +176,12 @@ const description = 'Deciding between Brazil, Argentina, Colombia and Ecuador? A
         ))}
       </div>
     </section>
+
+    <RegionVerdict
+      heading="Our call: South America, compared"
+      intro="If you are choosing between them on the money side, here is how they sort out."
+      lines={ourCallLines}
+    />
 
     <section class="se-sec">
       <p class="lab">Quick picks</p>

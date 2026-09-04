@@ -6,6 +6,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import CompareFooterLinks from '../../components/CompareFooterLinks.astro';
 import CompareOtherRegions from '../../components/CompareOtherRegions.astro';
 import RegionMap from '../../components/RegionMap.astro';
+import RegionVerdict from '../../components/RegionVerdict.astro';
 import seaMap from '../../data/maps/southeast-asia.js';
 import { countries } from '../../data/index.js';
 import { otherClusters } from '../../data/region-comparisons.js';
@@ -64,6 +65,33 @@ const rows = order.map(slug => {
     taxi: cautionMap[caution] || cautionMap.low
   };
 });
+
+// "Our call" synthesis. Derived only from the rate object and verdicts above;
+// see BRIEF-region-our-call.md for the sourcing this must be checked against.
+// Easiest money experience <- singapore: the only cashLean card of the five,
+// taxiCaution low, verdict ("a spotless, card-first city-state that is
+// effortless to get around").
+// Cheapest day <- vietnam: cost 1, lowest of the five; verdict states outright
+// "The best value of the five".
+// Most cash-dependent <- vietnam: cashTag "Cash is king" is the strongest of
+// the four cash-leaning tags, and the verdict states "Almost everything is
+// cash", stronger than thailand/indonesia/philippines' milder "mostly cash".
+// Currency oddity <- vietnam AND indonesia, tied: both carry curNote "many
+// zeros" and both verdicts flag it (dong "runs to so many zeros", rupiah
+// "also counts in many zeros").
+// Where to take care with taxis <- thailand AND indonesia: both carry
+// taxiCaution medium with an explicit reason in their own verdicts ("Bangkok
+// taxis want a little care" / "Ride apps are cheap but limited in a few Bali
+// zones"). Philippines also shows medium taxi caution on this page but its
+// verdict gives no specific reason, so it is left out of this line rather
+// than inventing one.
+const ourCallLines = [
+  { label: 'Easiest money experience', country: 'Singapore', why: 'a spotless, card-first city-state that is effortless to get around' },
+  { label: 'Cheapest day', country: 'Vietnam', why: 'the best value of the five' },
+  { label: 'Most cash-dependent', country: 'Vietnam', why: 'almost everything is cash' },
+  { label: 'The currency oddity', country: 'Vietnam and Indonesia', why: 'both currencies run to so many zeros that it pays to count carefully' },
+  { label: 'Where to take care with taxis', country: 'Thailand and Indonesia', why: "Bangkok's meter wants watching, and Bali's ride-app coverage is patchy" },
+];
 
 const checkedLabel = 'Jul 2026';
 const checkedISO = '2026-07-26';
@@ -154,6 +182,12 @@ const description = 'Deciding between Thailand, Vietnam, Indonesia, the Philippi
         ))}
       </div>
     </section>
+
+    <RegionVerdict
+      heading="Our call: Southeast Asia, compared"
+      intro="If you are choosing between them on the money side, here is how they sort out."
+      lines={ourCallLines}
+    />
 
     <section class="se-sec">
       <p class="lab">Quick picks</p>

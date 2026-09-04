@@ -6,6 +6,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import CompareFooterLinks from '../../components/CompareFooterLinks.astro';
 import CompareOtherRegions from '../../components/CompareOtherRegions.astro';
 import RegionMap from '../../components/RegionMap.astro';
+import RegionVerdict from '../../components/RegionVerdict.astro';
 import ceMap from '../../data/maps/central-europe.js';
 import { countries } from '../../data/index.js';
 import { otherClusters } from '../../data/region-comparisons.js';
@@ -56,6 +57,27 @@ const rows = order.map(slug => {
   const caution = (taxi && taxi.caution) ? taxi.caution : 'low';
   return { slug, name: c ? c.name : slug, iso2: c ? c.iso2 : '', ...rate[slug], taxi: cautionMap[caution] || cautionMap.low };
 });
+
+// "Our call" synthesis. Derived only from the rate object and verdicts above;
+// see BRIEF-region-our-call.md for the sourcing this must be checked against.
+// Easiest money experience <- switzerland: only cashLean card of the five,
+// taxiCaution low, verdict ("Card-friendly almost everywhere").
+// Cheapest day <- czechia AND hungary, genuinely tied at cost 2 (the page
+// states no daily figures to break the tie, so both are named).
+// Most cash-dependent <- germany: cashLean cash, and the one verdict that
+// stresses it most, "more cash-loving than you would expect, so carry euros
+// even in cities", stronger than austria/czechia/hungary's milder cash notes.
+// Where to watch the taxi meter <- czechia: the only "medium" taxi caution of
+// the five, matching its verdict's own warning about Prague taxis.
+// No curNote is populated for any country here and no page text discusses
+// entry/visas, so a currency-oddity line and an entry-ease line are both
+// omitted rather than invented.
+const ourCallLines = [
+  { label: 'Easiest money experience', country: 'Switzerland', why: 'card-friendly almost everywhere, so it is the smoothest of the five to pay your way through' },
+  { label: 'Cheapest day', country: 'Czechia and Hungary', why: 'tied at the bottom of the five on cost' },
+  { label: 'Most cash-dependent', country: 'Germany', why: 'more cash-loving than you would expect, carry euros even in the cities' },
+  { label: 'Where to watch the taxi meter', country: 'Czechia', why: "Prague's taxis have a reputation for overcharging visitors, agree the fare or use an app" },
+];
 
 const others = otherClusters('/compare/central-europe');
 const checkedLabel = 'Jul 2026';
@@ -146,6 +168,12 @@ const description = 'Deciding between Germany, Austria, Switzerland, Czechia and
         ))}
       </div>
     </section>
+
+    <RegionVerdict
+      heading="Our call: Central Europe, compared"
+      intro="If you are choosing between them on the money side, here is how they sort out."
+      lines={ourCallLines}
+    />
 
     <section class="se-sec">
       <p class="lab">Quick picks</p>

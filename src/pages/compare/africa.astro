@@ -6,6 +6,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import CompareFooterLinks from '../../components/CompareFooterLinks.astro';
 import CompareOtherRegions from '../../components/CompareOtherRegions.astro';
 import RegionMap from '../../components/RegionMap.astro';
+import RegionVerdict from '../../components/RegionVerdict.astro';
 import afMap from '../../data/maps/africa.js';
 import { countries } from '../../data/index.js';
 import { otherClusters } from '../../data/region-comparisons.js';
@@ -52,6 +53,29 @@ const rows = order.map(slug => {
   const caution = (taxi && taxi.caution) ? taxi.caution : (rate[slug].taxiCaution || 'low');
   return { slug, name: c ? c.name : slug, iso2: c ? c.iso2 : '', ...rate[slug], taxi: cautionMap[caution] || cautionMap.low };
 });
+
+// "Our call" synthesis. Derived only from the rate object and verdicts above;
+// see BRIEF-region-our-call.md for the sourcing this must be checked against.
+// Easiest money experience <- south-africa: only cashLean card of the four,
+// verdict states outright "The easiest on the money side".
+// Cheapest day <- egypt: cost 1, lowest of the four.
+// Most cash-dependent <- egypt AND morocco, genuinely tied: both cashTag
+// "Cash-first" and the page's own honest headline calls them the two cash-first
+// countries.
+// Needs a visa <- egypt: verdict states "it is the only one of these four that
+// needs a visa".
+// Currency oddity <- morocco: curNote "closed currency", verdict flags it as
+// "The catch": dirham obtained on arrival and spent or reconverted before you
+// leave. (Namibia's dual rand/dollar note considered but is a convenience, not
+// flagged as a catch the way Morocco's closed currency is, so left out to keep
+// one clear oddity line.)
+const ourCallLines = [
+  { label: 'Easiest money experience', country: 'South Africa', why: 'card-friendly cities and parks, and the weak rand makes it easy on the wallet too' },
+  { label: 'Cheapest day', country: 'Egypt', why: 'the lowest cost of the four' },
+  { label: 'Most cash-dependent', country: 'Egypt and Morocco', why: 'both run largely on cash outside hotels and city restaurants' },
+  { label: 'Needs a visa', country: 'Egypt', why: 'the only one of the four that requires a visa; Morocco, South Africa and Namibia are visa-free' },
+  { label: 'The currency oddity', country: 'Morocco', why: 'the dirham is a closed currency, so you get it on arrival and spend or reconvert it before you leave' },
+];
 
 const others = otherClusters('/compare/africa');
 const checkedLabel = 'Jul 2026';
@@ -142,6 +166,12 @@ const description = 'A side-by-side money comparison of Egypt, Morocco, South Af
         ))}
       </div>
     </section>
+
+    <RegionVerdict
+      heading="Our call: Africa, compared"
+      intro="If you are choosing between them on the money side, here is how they sort out."
+      lines={ourCallLines}
+    />
 
     <section class="se-sec">
       <p class="lab">Quick picks</p>

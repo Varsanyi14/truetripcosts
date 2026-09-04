@@ -6,6 +6,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import CompareFooterLinks from '../../components/CompareFooterLinks.astro';
 import CompareOtherRegions from '../../components/CompareOtherRegions.astro';
 import RegionMap from '../../components/RegionMap.astro';
+import RegionVerdict from '../../components/RegionVerdict.astro';
 import seMap from '../../data/maps/southern-europe.js';
 import { countries } from '../../data/index.js';
 import { otherClusters } from '../../data/region-comparisons.js';
@@ -75,6 +76,27 @@ const rows = order.map(slug => {
 
 const checkedLabel = 'Jul 2026';
 const checkedISO = '2026-07-26';
+// "Our call" synthesis. Derived only from the rate object and verdicts above;
+// see BRIEF-region-our-call.md for the sourcing this must be checked against.
+// Easiest money experience <- spain: cashLean card, taxiCaution low, verdict
+// states outright "The most card-friendly of the group, with tap-to-pay
+// almost everywhere and honest, cheap taxis".
+// Cheapest day <- portugal: cost 2, tied with spain and greece, but the only
+// one whose own bestFor field states "Best value" outright ("Best value, and
+// easiest overall"), used as the page's own tie-break since no daily figures
+// are given to separate the three on cost alone.
+// Most cash-dependent <- italy: verdict states "the one place to still carry
+// cash: many spots prefer it", a stronger, more singular claim than Greece's
+// "cash still handy for tavernas and smaller islands".
+// Currency oddity <- croatia: curNote "since 2023", verdict ("On the euro
+// since 2023... no longer a bargain").
+const ourCallLines = [
+  { label: 'Easiest money experience', country: 'Spain', why: 'the most card-friendly of the group, tap-to-pay almost everywhere, and honest, cheap taxis' },
+  { label: 'Cheapest day', country: 'Portugal', why: 'the value pick of the five, cheap by Western European standards' },
+  { label: 'Most cash-dependent', country: 'Italy', why: 'the one place here where many spots still prefer cash' },
+  { label: 'The currency oddity', country: 'Croatia', why: 'only on the euro since 2023, and no longer the bargain it once was' },
+];
+
 const others = otherClusters('/compare/southern-europe');
 const title = 'Southern Europe for travel money: Portugal, Spain, Italy, Greece, Croatia (2026) | True Trip Costs';
 const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia? A side-by-side money comparison for US travelers: daily cost, cash vs card, tipping, taxis and currency, with a clear pick for each. Checked July 2026.';
@@ -162,6 +184,12 @@ const description = 'Deciding between Portugal, Spain, Italy, Greece and Croatia
         ))}
       </div>
     </section>
+
+    <RegionVerdict
+      heading="Our call: Southern Europe, compared"
+      intro="If you are choosing between them on the money side, here is how they sort out."
+      lines={ourCallLines}
+    />
 
     <section class="se-sec">
       <p class="lab">Quick picks</p>

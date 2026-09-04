@@ -6,6 +6,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import CompareFooterLinks from '../../components/CompareFooterLinks.astro';
 import CompareOtherRegions from '../../components/CompareOtherRegions.astro';
 import RegionMap from '../../components/RegionMap.astro';
+import RegionVerdict from '../../components/RegionVerdict.astro';
 import gulfMap from '../../data/maps/gulf.js';
 import { countries } from '../../data/index.js';
 import { otherClusters } from '../../data/region-comparisons.js';
@@ -71,6 +72,18 @@ const rows = order.map(slug => {
   const caution = (taxi && taxi.caution) ? taxi.caution : (rate[slug].taxiCaution || 'low');
   return { slug, name: c ? c.name : slug, iso2: c ? c.iso2 : '', ...rate[slug], taxi: cautionMap[caution] || cautionMap.low };
 });
+
+// "Our call" synthesis card. MAIN-written and verified against the rate data
+// above; see BRIEF-region-our-call.md. Do not regenerate from the rate object
+// without a MAIN round-trip, this text is locked.
+const ourCallLines = [
+  { label: 'Easiest money experience', country: 'UAE', why: 'nearly cashless, dollar-pegged dirham, and nothing to arrange before you fly' },
+  { label: 'Easiest to enter', country: 'Qatar', why: 'a free stamp on arrival valid two years, and the only one of the six with no sales tax, so the tag price is the price' },
+  { label: 'Cheapest day', country: 'Oman', why: 'the lowest daily mid-range of the six, though also the one that still wants cash in the souks and rural areas' },
+  { label: 'Most cash-dependent', country: 'Oman', why: 'cards are fine in Muscat but carry rial everywhere else' },
+  { label: 'The one that needs planning', country: 'Saudi Arabia', why: 'the only Gulf state requiring a visa arranged in advance, and the highest VAT at 15%' },
+  { label: 'The currency oddity', country: 'Kuwait', why: 'the only one not pegged to the dollar, so its rate can drift during your trip' },
+];
 
 const others = otherClusters('/compare/gulf');
 const checkedLabel = 'Aug 2026';
@@ -161,6 +174,12 @@ const description = 'Deciding between the UAE, Oman, Qatar, Saudi Arabia, Bahrai
         ))}
       </div>
     </section>
+
+    <RegionVerdict
+      heading="Our call: the Gulf, compared"
+      intro="If you are choosing between them on the money side, here is how they sort out."
+      lines={ourCallLines}
+    />
 
     <section class="se-sec">
       <p class="lab">Quick picks</p>

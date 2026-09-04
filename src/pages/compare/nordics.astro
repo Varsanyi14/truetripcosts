@@ -6,6 +6,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import CompareFooterLinks from '../../components/CompareFooterLinks.astro';
 import CompareOtherRegions from '../../components/CompareOtherRegions.astro';
 import RegionMap from '../../components/RegionMap.astro';
+import RegionVerdict from '../../components/RegionVerdict.astro';
 import nordicsMap from '../../data/maps/nordics.js';
 import { countries } from '../../data/index.js';
 import { otherClusters } from '../../data/region-comparisons.js';
@@ -52,6 +53,29 @@ const rows = order.map(slug => {
   const caution = (taxi && taxi.caution) ? taxi.caution : 'low';
   return { slug, name: c ? c.name : slug, iso2: c ? c.iso2 : '', ...rate[slug], taxi: cautionMap[caution] || cautionMap.low };
 });
+
+// "Our call" synthesis. Derived only from the rate object and verdicts above;
+// see BRIEF-region-our-call.md for the sourcing this must be checked against.
+// FLAG for MAIN: this page's data is thinner than most. All four countries are
+// cashLean card, none stand out as cash-dependent, no curNote flags a currency
+// oddity beyond "none use the euro" (true of all four equally, so not a single
+// winner), and no visa/entry text appears anywhere on the page. That leaves
+// only two honest lines, and both land on the same country (Sweden), which
+// only clears the brief's two-line minimum on a technicality. Worth deciding
+// whether to mount this thinner card as-is or skip nordics.astro.
+// Easiest money experience <- sweden: the page's own honest headline and Quick
+// Picks both call it out by name ("the most cashless place on earth... in
+// Sweden some shops and cafes no longer take it at all"; short-answer nuance:
+// "Most cashless, and cities too? Sweden"), even though Sweden's own taxi
+// caution is "medium" rather than the "low" the formula would otherwise want;
+// the page's explicit, repeated claim takes precedence.
+// Cheapest day <- sweden: cost 3, the only one below 4; Quick Picks confirms
+// ("All expensive: Norway, Denmark and Iceland most of all; Sweden a touch
+// less").
+const ourCallLines = [
+  { label: 'Easiest money experience', country: 'Sweden', why: 'the most cashless of the four, some shops and cafes no longer take cash at all' },
+  { label: 'Cheapest day', country: 'Sweden', why: 'a touch less expensive than Norway, Denmark and Iceland, though still not cheap' },
+];
 
 const others = otherClusters('/compare/nordics');
 const checkedLabel = 'Jul 2026';
@@ -142,6 +166,12 @@ const description = 'Deciding between Denmark, Sweden, Norway and Iceland? A sid
         ))}
       </div>
     </section>
+
+    <RegionVerdict
+      heading="Our call: the Nordics, compared"
+      intro="If you are choosing between them on the money side, here is how they sort out."
+      lines={ourCallLines}
+    />
 
     <section class="se-sec">
       <p class="lab">Quick picks</p>

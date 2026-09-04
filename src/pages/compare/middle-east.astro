@@ -6,6 +6,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import CompareFooterLinks from '../../components/CompareFooterLinks.astro';
 import CompareOtherRegions from '../../components/CompareOtherRegions.astro';
 import RegionMap from '../../components/RegionMap.astro';
+import RegionVerdict from '../../components/RegionVerdict.astro';
 import meMap from '../../data/maps/middle-east.js';
 import { countries } from '../../data/index.js';
 import { otherClusters } from '../../data/region-comparisons.js';
@@ -52,6 +53,25 @@ const rows = order.map(slug => {
   const caution = (taxi && taxi.caution) ? taxi.caution : (rate[slug].taxiCaution || 'low');
   return { slug, name: c ? c.name : slug, iso2: c ? c.iso2 : '', ...rate[slug], taxi: cautionMap[caution] || cautionMap.low };
 });
+
+// "Our call" synthesis. Derived only from the rate object above; see
+// BRIEF-region-our-call.md for the sourcing this must be checked against.
+// Easiest money experience <- uae: cashLean card, taxiCaution low, verdict
+// ("close to fully cashless", dollar-pegged, free visa on arrival).
+// Cheapest day <- egypt: cost 1, lowest of the four.
+// Most cash-dependent <- egypt: cashTag "Cash-first", verdict ("cash rules
+// outside the hotels", tipping expected almost everywhere).
+// Needs a visa <- egypt: verdict ("the only one of the three that needs a
+// visa"); uae/turkey verdicts note visa-free entry, oman waives under 14 days.
+// Currency oddity <- turkey: curNote "high inflation", verdict ("the lira
+// moves fast").
+const ourCallLines = [
+  { label: 'Easiest money experience', country: 'UAE', why: 'close to cashless, a dirham pegged to the dollar, and a free visa on arrival' },
+  { label: 'Cheapest day', country: 'Egypt', why: 'the lowest cost of the four, though it runs on cash outside the hotels' },
+  { label: 'Most cash-dependent', country: 'Egypt', why: 'cash rules outside the hotels, and tipping is expected almost everywhere' },
+  { label: 'Needs a visa', country: 'Egypt', why: 'the only one of the four that requires a visa, while the UAE and Turkey are visa-free and Oman waives it under 14 days' },
+  { label: 'The currency oddity', country: 'Turkey', why: 'high inflation keeps the lira moving, so pay in lira and expect prices to shift' },
+];
 
 const others = otherClusters('/compare/middle-east');
 const checkedLabel = 'Aug 2026';
@@ -142,6 +162,12 @@ const description = 'A side-by-side money comparison of the UAE, Oman, Turkey an
         ))}
       </div>
     </section>
+
+    <RegionVerdict
+      heading="Our call: the Middle East, compared"
+      intro="If you are choosing between them on the money side, here is how they sort out."
+      lines={ourCallLines}
+    />
 
     <section class="se-sec">
       <p class="lab">Quick picks</p>

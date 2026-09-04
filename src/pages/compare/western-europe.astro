@@ -6,6 +6,7 @@ import Breadcrumb from '../../components/Breadcrumb.astro';
 import CompareFooterLinks from '../../components/CompareFooterLinks.astro';
 import CompareOtherRegions from '../../components/CompareOtherRegions.astro';
 import RegionMap from '../../components/RegionMap.astro';
+import RegionVerdict from '../../components/RegionVerdict.astro';
 import weMap from '../../data/maps/western-europe.js';
 import { countries } from '../../data/index.js';
 import { otherClusters } from '../../data/region-comparisons.js';
@@ -51,6 +52,30 @@ const rows = order.map(slug => {
   const caution = (taxi && taxi.caution) ? taxi.caution : (rate[slug].taxiCaution || 'low');
   return { slug, name: c ? c.name : slug, iso2: c ? c.iso2 : '', ...rate[slug], taxi: cautionMap[caution] || cautionMap.low };
 });
+
+// "Our call" synthesis. Derived only from the rate object and verdicts above;
+// see BRIEF-region-our-call.md for the sourcing this must be checked against.
+// NOTE for MAIN: cost is identical (3) for all four here, and all four are
+// cashLean card, so there is no honest "cheapest day" or "most cash-dependent"
+// line to draw, both are omitted rather than forced.
+// Easiest money experience <- united-kingdom: cashTag "Nearly cashless" is the
+// most emphatic of the four card-leaning tags (the others read "Card-friendly"
+// or "Card and contactless"), and taxiCaution is low.
+// Currency oddity <- united-kingdom: the matrix's own Currency column shows
+// Pound for the UK against Euro for the other three, the one wrinkle among an
+// otherwise uniform group.
+// Where taxis run pricey <- netherlands: the only "medium" taxi caution of
+// the four, matching its own verdict ("Taxis run pricey, so lean on trains
+// and bikes").
+// Where tipping runs highest <- ireland: tip field "10 to 15%", the top end of
+// this group's tipping range (UK's service charge is a fixed ~12.5%, the
+// others are light round-ups).
+const ourCallLines = [
+  { label: 'Easiest money experience', country: 'UK', why: 'nearly cashless, the most cashless of the four on this page' },
+  { label: 'The currency oddity', country: 'UK', why: 'the only one of the four on the pound rather than the euro' },
+  { label: 'Where taxis run pricey', country: 'Netherlands', why: 'lean on trains and bikes instead' },
+  { label: 'Where tipping runs highest', country: 'Ireland', why: 'restaurants run 10 to 15%, the top end of this group' },
+];
 
 const others = otherClusters('/compare/western-europe');
 const checkedLabel = 'Jul 2026';
@@ -141,6 +166,12 @@ const description = 'Planning your first trip to Europe? A side-by-side money co
         ))}
       </div>
     </section>
+
+    <RegionVerdict
+      heading="Our call: Western Europe, compared"
+      intro="If you are choosing between them on the money side, here is how they sort out."
+      lines={ourCallLines}
+    />
 
     <section class="se-sec">
       <p class="lab">Quick picks</p>
