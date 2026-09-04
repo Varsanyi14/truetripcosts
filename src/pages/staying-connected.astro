@@ -4,9 +4,16 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import CompareByRegion from '../components/CompareByRegion.astro';
 import Hero from '../components/Hero.astro';
+import TruthCheck from '../components/TruthCheck.astro';
 import { countries } from '../data/index.js';
 import { TIERS, VERDICTS, PENDING_VERIFICATION, PRODUCT_TONE, tierOf } from '../data/connectivity-verdicts.js';
+import { truthCheckById } from '../data/truth-checks.js';
 import fs from 'node:fs';
+
+// The flagship Truth Check entry lives here: this hub already states, in the copy below,
+// that the eSIM is not the honest answer for most of the countries rated. Additive mount
+// only, no restructuring of the page.
+const esimTruthCheck = truthCheckById('esim-usually-unnecessary');
 
 // Staying connected, topic hub. Gathers every topic:"connectivity" country spoke, the same
 // aggregation cash-or-card, taxis-and-ride-hailing and driving-and-car-rental use, so adding
@@ -61,6 +68,8 @@ const stampMonth = dates.length
     <section class="sc-intro">
       <p class="sc-lede">In most of the places US travelers go, coverage is not the problem. The problem is that your carrier will happily charge you about 10 to 12 dollars a day for something an eSIM does for a fraction of it, and that in a fair number of countries the cheapest honest answer is not an eSIM at all. Here is how to tell which situation you are in, then the detail for your destination.</p>
     </section>
+
+    {esimTruthCheck && <TruthCheck entry={esimTruthCheck} />}
 
     <section class="sc-four">
       <div class="sc-card">

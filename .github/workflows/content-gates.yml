@@ -76,6 +76,9 @@ jobs:
       - name: check-connectivity-verdicts
         run: node scripts/check-connectivity-verdicts.mjs
 
+      - name: check-truth-checks
+        run: node scripts/check-truth-checks.mjs
+
       - name: check-search-index
         run: node scripts/check-search-index.mjs
 

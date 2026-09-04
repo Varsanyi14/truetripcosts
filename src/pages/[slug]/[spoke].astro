@@ -3,8 +3,10 @@ import Base from '../../layouts/Base.astro';
 import Nav from '../../components/Nav.astro';
 import Footer from '../../components/Footer.astro';
 import Spoke from '../../components/Spoke.astro';
+import TruthCheck from '../../components/TruthCheck.astro';
 import { countries } from '../../data/index.js';
 import { rulesFor } from '../../data/money-rules.js';
+import { truthCheckForSpoke } from '../../data/truth-checks.js';
 
 // One page per spoke, at /{countrySlug}/{spokeSlug}, generated from the spokes array on
 // each live country. Mirrors [slug].astro, one level deeper, so there is no collision:
@@ -22,11 +24,16 @@ const { country, spoke } = Astro.props;
 // person who wants the pocket card. Linking from here also stops the card being an
 // orphan reachable only from the country hub.
 const moneyRules = rulesFor(country.slug);
+// A country-scope truth check is hand-authored against one specific spoke's own prose, so
+// it is matched here by country slug AND topic, not just country: a Brazil entry about
+// connectivity must never render on Brazil's cash spoke. Additive only, no restructuring.
+const truthCheck = truthCheckForSpoke(country.slug, spoke.topic);
 ---
 <Base title={spoke.title} description={spoke.description}>
   <Nav />
   <main class="wrap">
     <Spoke country={country} spoke={spoke} />
+    {truthCheck && <TruthCheck entry={truthCheck} />}
     {moneyRules && (
       <a class="rulesbar" href={'/' + country.slug + '/rules'}>
         <span class="rulesbar-mk" aria-hidden="true"><span></span><span></span></span>

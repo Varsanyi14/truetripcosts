@@ -62,6 +62,17 @@
 // no absolute claims we cannot prove.
 
 export const changelogEntries = [
+  // src: united-kingdom.js eta spoke, re-checked 2026-09-04 against gov.uk transit guidance and the US Embassy notice
+  {
+    id: 'uk-eta-airside-transit-2026-09',
+    date: '2026-09-04',
+    kind: 'correction',
+    title: 'UK ETA: we corrected how we described layovers',
+    what: 'We had written that a UK layover needs an ETA even without leaving the airport. That is not right for a pure airside connection at Heathrow or Manchester, where you never pass UK border control: those are temporarily exempt. A landside transit (bag recheck, a border-crossing terminal change, separate tickets) or a connection at any other UK airport does need one. The 20 pound fee and the before-boarding rule for UK entry are unchanged.',
+    why: 'If you are only connecting airside through Heathrow or Manchester, you may not need to buy an ETA at all. The exemption is temporary and under review, so verify before you book.',
+    link: '/united-kingdom/eta',
+    linkLabel: 'UK ETA guide',
+  },
   // src: thailand.js keyFacts (Air arrival fee, checked 2026-08-17) and sources.changed
   {
     id: 'thailand-arrival-fee-2026-08',

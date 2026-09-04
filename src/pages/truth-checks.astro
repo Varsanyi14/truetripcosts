@@ -1,0 +1,203 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import CompareByRegion from '../components/CompareByRegion.astro';
+import TruthCheck from '../components/TruthCheck.astro';
+import { countries } from '../data/index.js';
+import { truthChecks, CONF_TITLE } from '../data/truth-checks.js';
+
+// The Truth Check index. Every entry in truth-checks.js, most-recent-checked first, so a
+// re-verified entry rises rather than the list reading in authoring order. Grouped by
+// topic with a simple, optional client-side filter, following the pattern
+// us-outbound-travelers.astro already uses for its own toggle buttons.
+//
+// Hub -> country/topic linking (required by the brief): a scope:"country" entry links to
+// its full country guide in addition to its narrow source, and every entry links to its
+// topic hub where one exists, so a reader who lands on the Japan entry can jump to the
+// whole Japan guide rather than only the cash spoke.
+
+const TOPIC_LABELS = {
+  connectivity: 'Staying connected',
+  cash: 'Cash and cards',
+  visas: 'Passports and visas',
+};
+
+// Topic hub hrefs, matching Nav.astro's own "In each country" / "Before you go" groups.
+// Kept local rather than imported from topics.js's TOPIC_HUBS, which only maps the two
+// families (health, tourist-tax) that render a reverse link today; connectivity and cash
+// already have hubs but visas does not carry a single hub, so it points at the guide.
+const TOPIC_HUB_HREF = {
+  connectivity: '/staying-connected',
+  cash: '/cash-or-card',
+  visas: '/passports-and-visas',
+};
+
+const countryBySlug = new Map(countries.map((c) => [c.slug, c]));
+
+const rows = [...truthChecks].sort((a, b) => (b.checkedISO || '').localeCompare(a.checkedISO || ''));
+
+const topicsPresent = [...new Set(rows.map((r) => r.topic))]
+  .sort((a, b) => (TOPIC_LABELS[a] || a).localeCompare(TOPIC_LABELS[b] || b));
+
+function niceDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso + 'T00:00:00Z');
+  if (isNaN(d.getTime())) return iso;
+  return d.toLocaleString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+}
+const dates = rows.map((r) => r.checkedISO).filter(Boolean).sort();
+const stampMonth = dates.length ? niceDate(dates[0]) : '';
+
+// The one flagship entry runs against our own commercial interest, the honesty spine the
+// gate script checks for. Surfaced in the intro so a reader does not have to find it.
+const costsUsMoney = rows.filter((r) => r.id === 'esim-usually-unnecessary').length > 0;
+
+const title = 'What the internet gets wrong about travel money';
+const description = 'The travel-money myths we keep correcting inside our own guides, collected in one place, each with the source that backs it and how firmly we hold it.';
+---
+
+<Base
+  title={title + ' | True Trip Costs'}
+  description={description}>
+  <Nav />
+  <main class="wrap tchk">
+
+    <Hero
+      img="/hero/truth-checks.jpg"
+      alt="Illustration of a magnifying glass over a folded travel brochure, for a page collecting travel-money myths versus what we actually found"
+      eyebrow="Truth check"
+      title={title + '.'}
+      stamp={stampMonth ? 'Checked ' + stampMonth : undefined}
+      slim />
+
+    <p class="tchk-lede">
+      We keep running into the same travel-money myths, buried in the guides we write, and correcting them
+      one page at a time. Here they are, collected: what the internet commonly says, what we actually found,
+      and the source that backs it. {costsUsMoney && (
+        <>Worth saying plainly, because it is the whole point: one of these <a href="#esim-usually-unnecessary">costs us a commission</a>. That is what makes the rest of them worth trusting.</>
+      )}
+    </p>
+
+    {topicsPresent.length > 1 && (
+      <section class="tchk-controls" aria-label="Filter by topic">
+        <p class="tchk-controls-h">Filter by topic <span class="tchk-count" id="tchk-count">{rows.length} of {rows.length} shown</span></p>
+        <div class="tchk-filter-btns" role="group" aria-label="Filter truth checks by topic">
+          <button type="button" class="tchk-tab is-active" data-topic-btn="__all" aria-pressed="true">All</button>
+          {topicsPresent.map((t) => (
+            <button type="button" class="tchk-tab" data-topic-btn={t} aria-pressed="false">{TOPIC_LABELS[t] || t}</button>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <section class="tchk-list" id="tchk-list" aria-label="Every truth check">
+      {rows.map((entry) => {
+        const country = entry.country ? countryBySlug.get(entry.country) : null;
+        const hubHref = TOPIC_HUB_HREF[entry.topic];
+        return (
+          <div class="tchk-item" id={entry.id} data-topic={entry.topic}>
+            <TruthCheck entry={entry} />
+            <p class="tchk-jump">
+              {country && (
+                <a href={'/' + country.slug}>See the full {country.name} guide &rarr;</a>
+              )}
+              {country && hubHref && <span class="tchk-jump-sep">&middot;</span>}
+              {hubHref && (
+                <a href={hubHref}>{TOPIC_LABELS[entry.topic] || entry.topic}, every country &rarr;</a>
+              )}
+            </p>
+          </div>
+        );
+      })}
+      <p class="tchk-empty" id="tchk-empty" hidden>No truth checks match that topic.</p>
+    </section>
+
+    <div class="tchk-honest">
+      <p class="tchk-honest-h">Why this page exists, and what it costs us</p>
+      <p>
+        These corrections already lived inside individual country guides, one myth per page, reachable only
+        by the reader who happened to open that exact page. Collected here, they are also the most shareable
+        thing on the site: a traveler who finds out the CPF myth is wrong, or that the UK now requires an
+        ETA before boarding, wants to tell someone.
+      </p>
+      <p>
+        The honest version of this page has to be willing to cost us money, and it does. The flagship entry
+        says a travel eSIM, the product we earn a commission on, usually is not the cheapest answer. We would
+        rather say so than pad this list with soft, flattering corrections. Every entry above traces to prose
+        that already exists in a guide, with a real source you can open and check for yourself.
+      </p>
+    </div>
+
+    <CompareByRegion />
+  </main>
+  <Footer />
+
+  <script is:inline>
+    (function () {
+      var list = document.getElementById('tchk-list');
+      if (!list) return;
+      var items = Array.prototype.slice.call(list.querySelectorAll('.tchk-item'));
+      var countEl = document.getElementById('tchk-count');
+      var emptyEl = document.getElementById('tchk-empty');
+      var total = items.length;
+
+      function apply(topic) {
+        var shown = 0;
+        items.forEach(function (item) {
+          var hidden = topic !== '__all' && item.getAttribute('data-topic') !== topic;
+          item.hidden = hidden;
+          if (!hidden) shown++;
+        });
+        if (countEl) countEl.textContent = shown + ' of ' + total + ' shown';
+        if (emptyEl) emptyEl.hidden = shown !== 0;
+      }
+
+      var btns = document.querySelectorAll('[data-topic-btn]');
+      btns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var topic = btn.getAttribute('data-topic-btn');
+          btns.forEach(function (x) {
+            var on = x === btn;
+            x.classList.toggle('is-active', on);
+            x.setAttribute('aria-pressed', on ? 'true' : 'false');
+          });
+          apply(topic);
+        });
+      });
+    })();
+  </script>
+
+  <style>
+    .tchk{max-width:820px}
+    .tchk-lede{font-size:17.5px;color:#3B4A46;line-height:1.55;max-width:660px;margin:22px 0 26px}
+    .tchk-lede a{color:var(--teal-deep);font-weight:600;text-decoration:none}
+    .tchk-lede a:hover{text-decoration:underline}
+
+    .tchk-controls{margin:0 0 22px;padding-top:18px;border-top:1px solid var(--line)}
+    .tchk-controls-h{font-size:12.5px;font-weight:700;color:var(--ink);margin:0 0 8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .tchk-count{font-weight:600;color:var(--muted);font-size:12px}
+    .tchk-filter-btns{display:flex;flex-wrap:wrap;gap:8px}
+    .tchk-tab{font:inherit;font-size:13px;font-weight:600;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 13px;cursor:pointer;transition:background .16s ease,border-color .16s ease,color .16s ease}
+    .tchk-tab:hover{border-color:var(--teal);color:var(--teal-deep)}
+    .tchk-tab.is-active{background:var(--teal);border-color:var(--teal);color:#fff}
+
+    .tchk-list{display:flex;flex-direction:column;gap:0;margin:0 0 30px}
+    .tchk-item{margin:0 0 18px}
+    .tchk-jump{font-size:13px;color:var(--muted);margin:6px 0 0 3px;display:flex;gap:8px;flex-wrap:wrap}
+    .tchk-jump a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .tchk-jump a:hover{text-decoration:underline}
+    .tchk-jump-sep{color:var(--line)}
+    .tchk-empty{font-size:14.5px;color:var(--muted);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin:14px 0 0}
+
+    .tchk-honest{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:14px 18px;margin:0 0 34px;max-width:720px;box-shadow:var(--shadow)}
+    .tchk-honest-h{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 6px}
+    .tchk-honest p{font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 9px}
+    .tchk-honest p:last-child{margin-bottom:0}
+
+    @media (max-width:560px){
+      .tchk-lede{font-size:16.5px}
+    }
+  </style>
+</Base>

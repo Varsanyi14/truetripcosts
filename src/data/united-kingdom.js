@@ -9,7 +9,7 @@ export default {
   checked: "Jul 2026",
   checkedISO: "2026-07-25",
   sources: {
-    changed: "Re-checked July 2026. The UK ETA is confirmed at 20 pounds and required before boarding, the Edinburgh 5% visitor levy is now in effect as of 24 July 2026 (5% of the room, capped at five nights), and there is still no VAT refund for tourists in Great Britain.",
+    changed: "Re-checked September 2026. The UK ETA is confirmed at 20 pounds and required before boarding for any trip that crosses the UK border, with a temporary exemption for pure airside connections at Heathrow or Manchester. The Edinburgh 5% visitor levy is in effect as of 24 July 2026 (5% of the room, capped at five nights), and there is still no VAT refund for tourists in Great Britain.",
     links: [
       { label: "GOV.UK: the UK Electronic Travel Authorisation (ETA), who needs one, and the 20 pound fee", url: "https://www.gov.uk/eta", type: "gov" },
       { label: "City of Edinburgh Council: the visitor levy, 5% of the room rate, in effect since 24 July 2026, capped at five nights", url: "https://www.edinburgh.gov.uk/visitorlevy", type: "gov" },
@@ -252,12 +252,12 @@ export default {
       live: true,
       topic: "visas",
       title: "Do US citizens need an ETA for the UK? Yes 2026",
-      description: "US citizens now need a UK ETA before flying, even for a layover. It is not a visa: the fee, the two-year validity, and the only official ways to apply.",
+      description: "US citizens now need a UK ETA before flying to the UK. It is not a visa: the fee, the two-year validity, the airside-transit exception, and the only official ways to apply.",
       h1: "Do US citizens need an ETA for the UK?",
-      lede: "Short answer: yes, now you do, and it even applies to a layover. The UK ETA is not a visa, and it is quick and cheap, but only from the official source. Here is what it costs and how to get it right.",
-      checked: "Jul 2026",
-      checkedISO: "2026-07-08",
-      answer: "Yes. US citizens now need a <b>UK ETA</b> (Electronic Travel Authorisation) approved <b>before they board</b>, including for a layover through a UK airport. It is <b>not a visa</b>, it is a quick online check like the US ESTA. It costs <b>£20</b>, lasts <b>2 years</b>, and comes only from the <b>official UK ETA app or gov.uk</b>. Most approvals land within minutes, but apply a few days ahead to be safe.",
+      lede: "Short answer: yes, if your trip crosses the UK border you need one before you fly. The one exception is a pure airside connection at Heathrow or Manchester. The UK ETA is not a visa, and it is quick and cheap, but only from the official source. Here is what it costs and how to get it right.",
+      checked: "Sep 2026",
+      checkedISO: "2026-09-04",
+      answer: "Yes, for any trip that <b>crosses the UK border</b> you now need a <b>UK ETA</b> (Electronic Travel Authorisation) approved <b>before you board</b>. The one exception is a <b>pure airside connection at Heathrow or Manchester</b> where you never pass UK passport control, which is temporarily exempt. It is <b>not a visa</b>, it is a quick online check like the US ESTA. It costs <b>£20</b>, lasts <b>2 years</b>, and comes only from the <b>official UK ETA app or gov.uk</b>. Most approvals land within minutes, but apply a few days ahead to be safe.",
       official: {
         label: "Official UK ETA, on gov.uk",
         url: "https://www.gov.uk/eta",
@@ -284,11 +284,11 @@ export default {
           ]
         },
         {
-          h: "Yes, you need it even for a layover",
+          h: "Layovers: it depends on crossing the border",
           icon: "plane",
-          key: { tag: "Layovers count", text: "If your flight to Asia or Africa connects through London or another UK airport, you generally still need an ETA, even for a short layover without leaving the airport.", tone: "amber" },
+          key: { tag: "Layovers: check the border", text: "A pure airside connection at Heathrow or Manchester is temporarily exempt, but a landside transit or a connection at any other UK airport needs an ETA. If in doubt, apply.", tone: "amber" },
           p: [
-            "This is the part that surprises people. If your cheap flight to Asia or Africa connects through <b>London or another UK airport</b>, you generally still need an ETA, even for a short transit, and often even if you never plan to leave the airport. The safe assumption for any UK connection is that you need one.",
+            "This is the part that surprises people, and the rule turns on one thing: do you cross the UK border? A <b>pure airside connection at Heathrow or Manchester</b>, where you stay in the international transit zone and never reach passport control, is temporarily exempt. But the moment you go <b>landside</b> (to collect and recheck a bag, change terminals in a way that crosses the border, change airports, or you booked separate tickets), or you connect at <b>any other UK airport</b>, you need an ETA. The exemption is temporary and under review, so the safe assumption for any UK connection is that you need one.",
             "British and Irish citizens, including dual citizens, <b>cannot</b> get an ETA and must travel on a UK or Irish passport instead. If you hold another passport alongside your US one, check which document you should travel on before you book."
           ]
         },
@@ -309,9 +309,9 @@ export default {
         }
       ],
       faqs: [
-        { q: "Do US citizens need a UK ETA in 2026?", a: "Yes. US citizens now need an approved UK ETA before boarding a flight to the UK, and it applies to short visits and to transit through UK airports. It is not a visa, it is a quick online authorization like the US ESTA. Apply on the official UK ETA app or gov.uk for £20, ideally a few days before you fly." },
+        { q: "Do US citizens need a UK ETA in 2026?", a: "Yes, for any trip that crosses the UK border you need an approved UK ETA before boarding, whether you are visiting or transiting landside. A pure airside connection at Heathrow or Manchester, with no passport control, is temporarily exempt. It is not a visa, it is a quick online authorization like the US ESTA. Apply on the official UK ETA app or gov.uk for £20, ideally a few days before you fly." },
         { q: "How much does the UK ETA cost, and how long does it last?", a: "It costs £20 per person, about 25 US dollars, and it went up from £16 in April 2026. It is valid for 2 years, or until your passport expires, and allows multiple visits of up to 6 months each. Every traveler needs their own, including children." },
-        { q: "Do I need a UK ETA just for a layover?", a: "Usually yes. US citizens connecting through a UK airport generally need an ETA even for a short transit, and often even without leaving the airport. Treat any UK layover as needing one, and apply before you fly. Border and airline rules are strict, so do not risk boarding without it." },
+        { q: "Do I need a UK ETA just for a layover?", a: "It depends on whether you cross the UK border. A pure airside connection at Heathrow or Manchester, where you stay in the transit zone and never reach passport control, is temporarily exempt. But a landside transit (bag recheck, airport or border-crossing terminal change, separate tickets) or a connection at any other UK airport needs one. The exemption is temporary and under review, so the safe move is to apply before you fly if there is any doubt." },
         { q: "What is the official website for the UK ETA?", a: "The only official routes are the UK ETA app and gov.uk. Both charge the same £20 government fee. The app is easiest because it scans your passport chip. Many third-party sites charge more to file the identical form, so go straight to the official app or gov.uk and do not overpay." }
       ],
       sources: {

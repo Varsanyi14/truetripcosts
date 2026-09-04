@@ -49,6 +49,7 @@ export const INDEXED_PAGES = [
   { file: 'cost-comparison.astro', label: 'Cost of a day, compared', kind: 'tool' },
   { file: 'when-to-go.astro', label: 'When to go, cheaper and pricier months', kind: 'tool' },
   { file: 'rail-passes.astro', label: 'Rail passes, worth it or not', kind: 'tool' },
+  { file: 'truth-checks.astro', label: 'What the internet gets wrong about travel money', kind: 'tool' },
   { file: 'tourist-taxes.astro', label: 'Tourist taxes and fees', kind: 'tool' },
   { file: 'hotel-tax-map.astro', label: 'Hotel tax by country, mapped', kind: 'tool' },
   { file: 'us-outbound-travelers.astro', label: 'Where Americans travel, ranked', kind: 'tool' },

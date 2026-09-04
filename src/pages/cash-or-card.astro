@@ -5,8 +5,13 @@ import Footer from '../components/Footer.astro';
 import CompareByRegion from '../components/CompareByRegion.astro';
 import USBadge from '../components/USBadge.astro';
 import Hero from '../components/Hero.astro';
+import TruthCheck from '../components/TruthCheck.astro';
 import { countries } from '../data/index.js';
+import { truthCheckById } from '../data/truth-checks.js';
 import fs from 'node:fs';
+
+// Additive mount only, no restructuring of the page.
+const dccTruthCheck = truthCheckById('pay-in-local-not-dollars');
 
 // Flag per country, matching the homepage: /flags/<slug>.svg, falling back to the globe.
 const flagDir = process.cwd() + '/public/flags/';
@@ -51,6 +56,8 @@ const cashSpokes = countries
     <section class="fx-intro">
       <p class="fx-lede">Written for travelers leaving the US, this is a quick read on how each country actually pays, from the near-cashless places where you barely touch a note to the ones that still run on cash. The bar shows the rough share of everyday spending that tends to be cash, so more teal means more cash. Cards usually climb higher in big cities, so treat this as a feel rather than a rule, and open the guide for the detail.</p>
     </section>
+
+    {dccTruthCheck && <TruthCheck entry={dccTruthCheck} />}
 
     {ranked.length > 0 && (
       <section class="fx-sec">

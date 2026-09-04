@@ -1,0 +1,83 @@
+---
+// THE TRUTH CHECK CARD. Renders one hand-authored myth-vs-reality entry from
+// src/data/truth-checks.js, wherever it is mounted: on the page it was built from, or on
+// the /truth-checks index.
+//
+// Follows UtilityBox's restraint deliberately: an eyebrow label, a bordered card, no hype.
+// Unlike UtilityBox this takes a data object rather than slotted prose, so there is no
+// slot-scoping reason to lean on global.css, and the styles live here, scoped, the way
+// VerdictCard and AdvisoryNotice do it for the same reason.
+//
+// The confidence dot reuses the exact convention rail-passes.astro already established
+// (solid teal = high, half-opacity teal = medium, dashed outline = low) rather than
+// inventing a new green/amber/red scheme, per the brief.
+//
+// The quiet footer link back to /truth-checks is the host-page -> hub half of the required
+// two-way linking. It lives here, not hand-added per page, so every mount gets it for free
+// and a future mount cannot forget it.
+//
+// Accepts one entry object as a prop. No data fetching inside the component.
+
+const { entry } = Astro.props;
+
+function niceDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso + 'T00:00:00Z');
+  if (isNaN(d.getTime())) return iso;
+  return d.toLocaleString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+}
+const checkedLabel = niceDate(entry && entry.checkedISO);
+---
+{entry && (
+  <aside class="tcheck">
+    <p class="tcheck-k">TTC Truth Check</p>
+    <div class="tcheck-lines">
+      <p class="tcheck-line"><span class="tcheck-l">What the internet says:</span> {entry.claim}</p>
+      <p class="tcheck-line"><span class="tcheck-l">What we found:</span> {entry.finding}</p>
+    </div>
+    {entry.soWhat && <p class="tcheck-so">{entry.soWhat}</p>}
+    <div class="tcheck-meta">
+      {entry.source && entry.source.href && (
+        <a class="tcheck-src" href={entry.source.href}>How we know: {entry.source.label}</a>
+      )}
+      <span class={'tcheck-conf tcheck-conf-' + entry.confidence}>
+        <span class="tcheck-conf-dot" aria-hidden="true"></span>
+        {entry.confidence} confidence
+      </span>
+    </div>
+    <p class="tcheck-foot">
+      {checkedLabel && <span>Checked {checkedLabel}. </span>}
+      <a href="/truth-checks">More: what the internet gets wrong about travel money &rarr;</a>
+    </p>
+  </aside>
+)}
+
+<style>
+  .tcheck{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--radius);padding:16px 20px;margin:26px 0;box-shadow:var(--shadow);max-width:66ch}
+  .tcheck-k{display:block;font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 10px}
+
+  .tcheck-lines{margin:0 0 8px}
+  .tcheck-line{font-size:14.5px;color:#3B4A46;line-height:1.6;margin:0 0 8px}
+  .tcheck-line:last-child{margin-bottom:0}
+  .tcheck-l{font-weight:600;color:var(--ink)}
+
+  .tcheck-so{font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 12px;font-style:italic}
+
+  .tcheck-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;padding-top:10px;border-top:1px solid var(--line)}
+  .tcheck-src{font-size:13px;font-weight:500;color:var(--teal-deep);text-decoration:none}
+  .tcheck-src:hover{text-decoration:underline}
+
+  .tcheck-conf{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted);text-transform:capitalize;white-space:nowrap}
+  .tcheck-conf-dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--teal)}
+  .tcheck-conf-medium .tcheck-conf-dot{background:var(--teal);opacity:.45}
+  .tcheck-conf-low .tcheck-conf-dot{background:none;border:1.5px dashed var(--muted);width:9px;height:9px}
+
+  .tcheck-foot{font-size:12.5px;color:var(--muted);line-height:1.5;margin:10px 0 0}
+  .tcheck-foot a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+  .tcheck-foot a:hover{text-decoration:underline}
+
+  @media (max-width:560px){
+    .tcheck{padding:14px 16px;margin:22px 0}
+    .tcheck-meta{justify-content:flex-start}
+  }
+</style>

@@ -4,6 +4,11 @@ import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import { countries } from '../data/index.js';
 import { affiliate } from '../data/links.js';
+import TruthCheck from '../components/TruthCheck.astro';
+import { truthCheckById } from '../data/truth-checks.js';
+
+// Additive mount only, no restructuring of the page.
+const middlemanTruthCheck = truthCheckById('visa-middleman-markup');
 
 // Live count read straight from the data so this stays true as countries are
 // added. No number to hand-edit here.
@@ -64,6 +69,8 @@ const visaSpokes = countries
       <h1>What you actually need to get in, and the official site for each.</h1>
       <p class="pv-lede">A passport that will not expire too soon, and, for some countries, a visa or an online authorization booked before you fly. This page lays out the real government fees, the current wait times, and Europe's new entry rules for 2026. For every step we send you straight to the official government site, because that is almost always the cheapest and safest route, and we earn nothing sending you there.</p>
     </section>
+
+    {middlemanTruthCheck && <TruthCheck entry={middlemanTruthCheck} />}
 
     <div class="pv-flag" style="display:flex;align-items:flex-start;gap:11px;margin:22px 0 0;padding:16px 18px;border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;background:var(--card)">
       <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0E7A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"/></svg>
