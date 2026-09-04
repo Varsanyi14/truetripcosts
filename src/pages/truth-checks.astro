@@ -2,7 +2,6 @@
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
-import Hero from '../components/Hero.astro';
 import CompareByRegion from '../components/CompareByRegion.astro';
 import TruthCheck from '../components/TruthCheck.astro';
 import { countries } from '../data/index.js';
@@ -64,21 +63,28 @@ const description = 'The travel-money myths we keep correcting inside our own gu
   <Nav />
   <main class="wrap tchk">
 
-    <Hero
-      img="/hero/truth-checks.jpg"
-      alt="Illustration of a magnifying glass over a folded travel brochure, for a page collecting travel-money myths versus what we actually found"
-      eyebrow="Truth check"
-      title={title + '.'}
-      stamp={stampMonth ? 'Checked ' + stampMonth : undefined}
-      slim />
-
-    <p class="tchk-lede">
-      We keep running into the same travel-money myths, buried in the guides we write, and correcting them
-      one page at a time. Here they are, collected: what the internet commonly says, what we actually found,
-      and the source that backs it. {costsUsMoney && (
-        <>Worth saying plainly, because it is the whole point: one of these <a href="#esim-usually-unnecessary">costs us a commission</a>. That is what makes the rest of them worth trusting.</>
-      )}
-    </p>
+    <section class="tchk-hero">
+      <p class="tchk-hero-eyebrow">True Trip Costs / Truth Check</p>
+      <h1 class="tchk-hero-h1">The internet is confidently wrong about travel money.</h1>
+      <p class="tchk-hero-lede">
+        Search a travel money question and the top results are years-old blog posts and forum threads
+        repeating advice that stopped being true. Here is what the internet keeps saying, and what we
+        actually found. {costsUsMoney ? (
+          <>Some of these <a href="#esim-usually-unnecessary">cost us a commission</a>. That is rather the point.</>
+        ) : 'Some of these cost us commission. That is rather the point.'}
+      </p>
+      <p class="tchk-hero-stats">
+        <span>{rows.length} {rows.length === 1 ? 'myth' : 'myths'} checked</span>
+        <span class="tchk-hero-dot" aria-hidden="true">&middot;</span>
+        <span>every claim sourced</span>
+        {stampMonth && (
+          <>
+            <span class="tchk-hero-dot" aria-hidden="true">&middot;</span>
+            <span>checked {stampMonth}</span>
+          </>
+        )}
+      </p>
+    </section>
 
     {topicsPresent.length > 1 && (
       <section class="tchk-controls" aria-label="Filter by topic">
@@ -171,9 +177,20 @@ const description = 'The travel-money myths we keep correcting inside our own gu
 
   <style>
     .tchk{max-width:820px}
-    .tchk-lede{font-size:17.5px;color:#3B4A46;line-height:1.55;max-width:660px;margin:22px 0 26px}
-    .tchk-lede a{color:var(--teal-deep);font-weight:600;text-decoration:none}
-    .tchk-lede a:hover{text-decoration:underline}
+
+    /* Typographic hero. No image, no illustration: the site is deliberately image-free, so
+       big confident type carries the whole opening, the way GOV.UK or Wise would do it.
+       h1 scale matches Hero.astro's own slim-band h1 (clamp(27px,4.2vw,40px)), just without
+       the image band around it, so this page still reads native next to /rail-passes and
+       /staying-connected rather than inventing a new scale. */
+    .tchk-hero{max-width:680px;margin:26px 0 30px;padding-bottom:26px;border-bottom:1px solid var(--line)}
+    .tchk-hero-eyebrow{font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--teal-deep);letter-spacing:.07em;text-transform:uppercase;margin:0 0 12px}
+    .tchk-hero-h1{font-family:var(--serif);font-weight:500;font-size:clamp(28px,4.6vw,38px);line-height:1.1;letter-spacing:-.01em;color:var(--ink);margin:0 0 16px}
+    .tchk-hero-lede{font-size:16.5px;color:#3B4A46;line-height:1.55;max-width:56ch;margin:0 0 16px}
+    .tchk-hero-lede a{color:var(--teal-deep);font-weight:600;text-decoration:none}
+    .tchk-hero-lede a:hover{text-decoration:underline}
+    .tchk-hero-stats{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.03em;color:var(--muted);text-transform:uppercase;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+    .tchk-hero-dot{color:var(--line)}
 
     .tchk-controls{margin:0 0 22px;padding-top:18px;border-top:1px solid var(--line)}
     .tchk-controls-h{font-size:12.5px;font-weight:700;color:var(--ink);margin:0 0 8px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
@@ -197,7 +214,9 @@ const description = 'The travel-money myths we keep correcting inside our own gu
     .tchk-honest p:last-child{margin-bottom:0}
 
     @media (max-width:560px){
-      .tchk-lede{font-size:16.5px}
+      .tchk-hero{margin:20px 0 24px;padding-bottom:20px}
+      .tchk-hero-h1{font-size:clamp(25px,7vw,30px)}
+      .tchk-hero-lede{font-size:15.5px}
     }
   </style>
 </Base>
