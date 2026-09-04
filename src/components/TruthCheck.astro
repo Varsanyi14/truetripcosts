@@ -3,21 +3,31 @@
 // src/data/truth-checks.js, wherever it is mounted: on the page it was built from, or on
 // the /truth-checks index.
 //
-// VISUAL UPGRADE (this pass): rebuilt as a two-column split box, myth on the left in
-// --amber-bg, truth on the right in --card, so the contrast between what the internet says
-// and what we found is the design rather than a labeled line inside one plain card. Data
-// contract is UNTOUCHED: same `entry` prop, same fields (claim, finding, soWhat, source,
-// confidence, checkedISO), same niceDate helper, same footer back-link to /truth-checks,
-// same confidence-dot convention. Only the markup and the <style> block changed.
+// REDESIGN v2 (this pass): replaces the equal-height two-column split box from the prior
+// round with a vertical flow: a compact amber "claim band" that self-sizes to its own text,
+// then a full-width white "truth block" below it. The split-box version left a large empty
+// amber panel whenever the myth was one short sentence beside a paragraph-long finding; a
+// flow has no such failure mode, because neither section is forced to match the other's
+// height. Icons (crossed circle for the myth, check for the truth) give the wrong-vs-right
+// signal before a word is read. Data contract is UNTOUCHED: same `entry` prop, same fields
+// (claim, finding, soWhat, source, confidence, checkedISO), same niceDate helper, same
+// footer content and back-link, same confidence-dot convention. Only markup + style + one
+// presentation-only helper (splitFinding, below) changed.
+//
+// SPLITTING THE FINDING. The truth block shows a bold-ish lead sentence followed by the
+// remaining detail in lighter weight, for scannability. This is done here, in the
+// component, from the existing `entry.finding` string; it does NOT touch truth-checks.js
+// or require any new field. splitFinding() finds the first ". " boundary (end of sentence
+// plus a space) and treats everything up to and including that period as the lead, the
+// remainder as the detail. If no such boundary exists, the whole string renders as the
+// lead and no detail paragraph is shown, so a single-sentence finding degrades cleanly
+// rather than producing an empty trailing paragraph.
 //
 // The confidence dot still reuses the exact convention rail-passes.astro established
 // (solid teal = high, half-opacity teal = medium, dashed outline = low). No red anywhere:
 // amber is the site's caution color and stands for "what is commonly claimed", not an
-// error state.
-//
-// The eyebrows ("What the internet says" / "What we found") carry the meaning as real text,
-// not color alone, and the DOM order stays myth-then-truth so it reads correctly stacked on
-// mobile and to a screen reader, matching the grid order.
+// error state. The two icons are the only new graphics on this image-free site, and both
+// are decorative (aria-hidden): the eyebrow text carries the meaning for screen readers.
 //
 // The quiet footer link back to /truth-checks is the host-page -> hub half of the required
 // two-way linking. It lives here, not hand-added per page, so every mount gets it for free.
@@ -33,20 +43,39 @@ function niceDate(iso) {
   return d.toLocaleString('en-US', { month: 'short', year: 'numeric', timeZone: 'UTC' });
 }
 const checkedLabel = niceDate(entry && entry.checkedISO);
+
+// Presentation-only split of entry.finding into a lead sentence and the remaining detail.
+// Robust to a finding with no sentence boundary at all (renders whole string as the lead,
+// no detail block) rather than guessing or padding.
+function splitFinding(finding) {
+  if (!finding) return { lead: '', detail: '' };
+  const idx = finding.indexOf('. ');
+  if (idx === -1) return { lead: finding.trim(), detail: '' };
+  return { lead: finding.slice(0, idx + 1).trim(), detail: finding.slice(idx + 2).trim() };
+}
+const { lead, detail } = splitFinding(entry && entry.finding);
 ---
 {entry && (
   <aside class="tcheck">
     <p class="tcheck-k">TTC Truth Check</p>
-    <div class="tcheck-split">
-      <div class="tcheck-myth">
+
+    <div class="tcheck-myth">
+      <span class="tcheck-ic" set:html={`<svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke="#B45309" stroke-width="3.4"/><path d="M16 16 L32 32 M32 16 L16 32" stroke="#B45309" stroke-width="3.4" stroke-linecap="round"/></svg>`} />
+      <div>
         <p class="tcheck-eyebrow">What the internet says</p>
         <p class="tcheck-claim">{entry.claim}</p>
       </div>
-      <div class="tcheck-truth">
+    </div>
+
+    <div class="tcheck-truth">
+      <span class="tcheck-ic" set:html={`<svg width="22" height="22" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="#0E7A5F"/><path d="M15 24.5 L21.5 31 L34 18" fill="none" stroke="#fff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>`} />
+      <div>
         <p class="tcheck-eyebrow">What we found</p>
-        <p class="tcheck-finding">{entry.finding}</p>
+        <p class="tcheck-lead">{lead}</p>
+        {detail && <p class="tcheck-detail">{detail}</p>}
       </div>
     </div>
+
     <div class="tcheck-foot">
       {entry.soWhat && <p class="tcheck-so">{entry.soWhat}</p>}
       <div class="tcheck-meta">
@@ -70,18 +99,21 @@ const checkedLabel = niceDate(entry && entry.checkedISO);
   .tcheck{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin:26px 0;max-width:72ch}
   .tcheck-k{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);margin:0;padding:14px 22px 0}
 
-  .tcheck-split{display:grid;grid-template-columns:1fr 1fr;margin-top:12px}
-  .tcheck-myth{padding:20px 24px;background:var(--amber-bg);border-right:1px solid var(--line)}
-  .tcheck-truth{padding:20px 24px;background:var(--card)}
+  /* The claim band self-sizes to its own text: no fixed or matched height, which is the
+     entire fix for the dead-space problem the equal-column split box had. */
+  .tcheck-myth{display:flex;align-items:flex-start;gap:12px;padding:16px 22px;background:var(--amber-bg);border-bottom:1px solid #EAD9BC;margin-top:12px}
+  .tcheck-truth{display:flex;align-items:flex-start;gap:12px;padding:20px 22px}
+  .tcheck-ic{flex:none;margin-top:2px;line-height:0}
 
-  .tcheck-eyebrow{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin:0 0 11px}
+  .tcheck-eyebrow{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin:0 0 5px}
   .tcheck-myth .tcheck-eyebrow{color:var(--amber)}
   .tcheck-truth .tcheck-eyebrow{color:var(--teal-deep)}
 
-  .tcheck-claim{font-size:16px;line-height:1.5;color:#7A4A10;margin:0}
-  .tcheck-finding{font-size:16px;line-height:1.5;color:var(--ink);margin:0}
+  .tcheck-claim{font-size:16px;line-height:1.45;color:#7A4A10;font-style:italic;margin:0}
+  .tcheck-lead{font-size:17px;font-weight:500;line-height:1.5;color:var(--ink);margin:0 0 8px}
+  .tcheck-detail{font-size:15px;line-height:1.6;color:#3B4A46;margin:0}
 
-  .tcheck-foot{padding:13px 22px;border-top:1px solid var(--line)}
+  .tcheck-foot{padding:12px 22px;border-top:1px solid var(--line)}
   .tcheck-so{font-size:14px;color:var(--muted);line-height:1.55;margin:0 0 10px;font-style:italic}
 
   .tcheck-meta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px}
@@ -101,11 +133,10 @@ const checkedLabel = niceDate(entry && entry.checkedISO);
   @media (max-width:560px){
     .tcheck{margin:22px 0}
     .tcheck-k{padding:12px 16px 0}
-    .tcheck-split{grid-template-columns:1fr;margin-top:10px}
-    .tcheck-myth{border-right:0;border-bottom:1px solid var(--line);padding:16px}
-    .tcheck-truth{padding:16px}
-    .tcheck-claim,.tcheck-finding{font-size:15px}
+    .tcheck-myth,.tcheck-truth{padding:14px 16px}
     .tcheck-foot{padding:12px 16px}
+    .tcheck-lead{font-size:16px}
+    .tcheck-claim,.tcheck-detail{font-size:15px}
     .tcheck-meta{justify-content:flex-start}
   }
 </style>

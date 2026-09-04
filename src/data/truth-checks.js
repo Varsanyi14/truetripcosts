@@ -45,7 +45,7 @@ export const truthChecks = [
     soWhat: "Check the country's connectivity verdict before you pay for anything.",
     source: { label: 'Staying connected abroad, country by country', href: '/staying-connected' },
     confidence: 'high',
-    checkedISO: '2026-08-18',
+    checkedISO: '2026-09-04',
   },
   {
     id: 'brazil-sim-cpf',
@@ -61,7 +61,7 @@ export const truthChecks = [
     soWhat: 'Bring your passport, start at a TIM store or an airport counter, and treat a refusal as the shop, not the rule.',
     source: { label: 'Staying connected in Brazil', href: '/brazil/staying-connected' },
     confidence: 'high',
-    checkedISO: '2026-08-18',
+    checkedISO: '2026-09-04',
   },
   {
     id: 'pay-in-local-not-dollars',
@@ -77,7 +77,7 @@ export const truthChecks = [
     soWhat: 'Say the local currency, every single time, at a terminal or a cash machine.',
     source: { label: 'France money rules', href: '/france/rules' },
     confidence: 'high',
-    checkedISO: '2026-08-01',
+    checkedISO: '2026-09-04',
   },
   {
     id: 'japan-not-cash-only',
@@ -93,7 +93,7 @@ export const truthChecks = [
     soWhat: 'Carry some yen for shrines, small restaurants and vending machines, and tap a card or an IC card for the rest.',
     source: { label: 'Do I need cash in Japan, or can I use cards?', href: '/japan/cash-or-card' },
     confidence: 'high',
-    checkedISO: '2026-07-08',
+    checkedISO: '2026-09-04',
   },
   {
     id: 'uk-eta-before-boarding',
@@ -127,7 +127,7 @@ export const truthChecks = [
     soWhat: 'Go straight to the official portal (brazil.vfsevisa.com for Brazil, gov.uk for the UK, and so on) and skip anything that looks like a shortcut.',
     source: { label: 'Do US citizens need a visa for Brazil?', href: '/brazil/e-visa' },
     confidence: 'high',
-    checkedISO: '2026-07-02',
+    checkedISO: '2026-09-04',
   },
 ];
 
