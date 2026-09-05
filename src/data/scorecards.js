@@ -78,7 +78,7 @@ export const TIER_LABELS = {
   ease:     { 'very-easy': 'Very easy', 'easy': 'Easy', 'mixed': 'Mixed', 'cash-first': 'Cash-first' },
   cash:     { 'near-cashless': 'Near cashless', 'light': 'Light cash use', 'carry-some': 'Carry some cash', 'cash-heavy': 'Cash-heavy' },
   cost:     { 'budget': 'Budget', 'moderate': 'Moderate', 'pricier': 'Pricier', 'expensive': 'Expensive' },
-  around:   { 'honest': 'Honest, low risk', 'some-caution': 'Some caution', 'high-caution': 'High caution' },
+  around:   { 'honest': 'Honest taxis', 'some-caution': 'Some caution', 'high-caution': 'High caution' },
   currency: { 'stable': 'Stable', 'minor-wrinkle': 'Worth checking', 'volatile': 'Volatile' },
 };
 
