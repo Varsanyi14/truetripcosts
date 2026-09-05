@@ -79,6 +79,9 @@ jobs:
       - name: check-truth-checks
         run: node scripts/check-truth-checks.mjs
 
+      - name: check-scorecards
+        run: node scripts/check-scorecards.mjs
+
       - name: check-search-index
         run: node scripts/check-search-index.mjs
 

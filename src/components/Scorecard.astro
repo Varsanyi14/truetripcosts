@@ -1,0 +1,137 @@
+---
+// THE MONEY SCORECARD. A compact, screenshot-sized card: a verdict chip plus five
+// tiered dimensions (ease of paying, cash dependence, daily cost, getting around,
+// currency), each read straight out of src/data/scorecards.js. This component is a
+// presentation layer only: it never invents a rating, it only renders one.
+//
+// Visual language borrowed from the two established cards on a country guide:
+// VerdictCard.astro (bordered white card, hairline border, shared --shadow/--radius,
+// mono eyebrow, serif title) and TruthCheck.astro (amber for "watch out", teal for
+// "this is fine", a muted italic honesty line in a tinted footer). Nothing here is a
+// new visual idiom; it is a recombination of those two.
+//
+// Renders nothing if the country has no scorecards.js entry (no empty card): per Part 3
+// of BRIEF-money-scorecard.md, additive only, never a placeholder.
+import { scorecardFor, TIER_LABELS, VERDICT_META } from '../data/scorecards.js';
+
+const { slug, name } = Astro.props;
+const sc = scorecardFor(slug);
+const verdictMeta = sc && sc.verdict ? VERDICT_META[sc.verdict] : null;
+
+// One row per dimension, in a fixed, human order (matches the visual spec order:
+// ease of paying, cash dependence, daily cost, getting around, currency).
+const DIMS = [
+  { key: 'ease', label: 'Ease of paying' },
+  { key: 'cash', label: 'Cash dependence' },
+  { key: 'cost', label: 'Daily cost' },
+  { key: 'around', label: 'Getting around' },
+  { key: 'currency', label: 'Currency' },
+];
+
+// Tiers that read as "smooth" (teal dot) vs "watch out" (amber dot). A null/missing
+// tier always renders as a hollow grey dot and "Not rated", regardless of dimension.
+const SMOOTH = new Set([
+  'very-easy', 'easy', 'near-cashless', 'light', 'budget', 'moderate', 'honest', 'stable',
+]);
+const WATCH = new Set([
+  'mixed', 'cash-first', 'carry-some', 'cash-heavy', 'pricier', 'expensive',
+  'some-caution', 'high-caution', 'minor-wrinkle', 'volatile',
+]);
+
+function toneFor(tier) {
+  if (tier == null) return 'null';
+  if (SMOOTH.has(tier)) return 'smooth';
+  if (WATCH.has(tier)) return 'watch';
+  return 'null';
+}
+
+function labelFor(key, tier, sc) {
+  if (tier == null) return 'Not rated';
+  // currency is the one dimension with an optional per-country override phrase for
+  // its amber tier (minor-wrinkle), e.g. "Rand also works" instead of the generic
+  // "Worth checking". Every other dimension always uses the shared label map.
+  if (key === 'currency' && tier === 'minor-wrinkle' && sc.currencyNote) return sc.currencyNote;
+  return (TIER_LABELS[key] && TIER_LABELS[key][tier]) || tier;
+}
+
+const rows = sc
+  ? DIMS.map(d => {
+      const tier = sc[d.key];
+      return { label: d.label, tone: toneFor(tier), text: labelFor(d.key, tier, sc) };
+    })
+  : [];
+---
+{sc && (
+  <div class="msc">
+    <div class="msc-head">
+      <div class="msc-id">
+        <p class="msc-k">Money scorecard</p>
+        <p class="msc-title">{name}</p>
+      </div>
+      {verdictMeta && (
+        <span class={'msc-chip msc-chip-' + verdictMeta.tone}>{verdictMeta.label}</span>
+      )}
+    </div>
+
+    <ul class="msc-rows">
+      {rows.map(r => (
+        <li class="msc-row">
+          <span class="msc-lab">{r.label}</span>
+          <span class="msc-val">
+            <span class={'msc-dot msc-dot-' + r.tone} aria-hidden="true"></span>
+            <span class={r.tone === 'null' ? 'msc-null' : ''}>{r.text}</span>
+          </span>
+        </li>
+      ))}
+    </ul>
+
+    <div class="msc-foot">
+      <p class="msc-honest">Every rating is our own judgment from the {name} guide, not a score.</p>
+      <a class="msc-link" href={'/' + slug}>See the full {name} guide
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+  </div>
+)}
+
+<style>
+  .msc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin:22px 0 26px}
+
+  .msc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:18px 22px 14px}
+  .msc-id{min-width:0}
+  .msc-k{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 4px}
+  .msc-title{font-family:var(--serif);font-weight:500;font-size:21px;line-height:1.15;color:var(--ink);margin:0}
+
+  .msc-chip{flex:none;display:inline-flex;align-items:center;font-size:12.5px;font-weight:600;border-radius:999px;padding:5px 12px;white-space:nowrap;margin-top:2px}
+  .msc-chip-green{color:#0A5644;background:#E7F3E9}
+  .msc-chip-amber{color:#7A4A10;background:#FBEEDC}
+
+  .msc-rows{list-style:none;margin:0;padding:2px 22px 4px}
+  .msc-row{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:9px 0}
+  .msc-row + .msc-row{box-shadow:inset 0 1px 0 var(--line)}
+  .msc-lab{font-size:14px;color:var(--muted)}
+  .msc-val{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;color:var(--ink);white-space:nowrap}
+  .msc-null{font-weight:400;color:var(--muted)}
+
+  .msc-dot{flex:none;width:8px;height:8px;border-radius:50%}
+  .msc-dot-smooth{background:#0E7A5F}
+  .msc-dot-watch{background:#B45309}
+  .msc-dot-null{background:transparent;border:1.5px solid #C9C7BC}
+
+  .msc-foot{background:#FAFAF7;border-top:1px solid var(--line);padding:14px 22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px}
+  .msc-honest{font-size:12.5px;font-style:italic;color:var(--muted);line-height:1.5;margin:0}
+  .msc-link{flex:none;display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--teal-deep);text-decoration:none;white-space:nowrap}
+  .msc-link:hover{text-decoration:underline}
+  .msc-link svg{transition:transform .15s ease}
+  .msc-link:hover svg{transform:translateX(3px)}
+
+  @media (max-width:560px){
+    .msc-head{padding:16px 16px 12px}
+    .msc-title{font-size:19px}
+    .msc-rows{padding:2px 16px 4px}
+    .msc-row{gap:10px}
+    .msc-lab{font-size:13.5px}
+    .msc-val{font-size:14px}
+    .msc-foot{padding:12px 16px}
+  }
+</style>

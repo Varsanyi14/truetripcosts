@@ -3,6 +3,7 @@ import Symbol from './Symbol.astro';
 import MonthStrip from './MonthStrip.astro';
 import CountryDoor from './CountryDoor.astro';
 import VerdictCard from './VerdictCard.astro';
+import Scorecard from './Scorecard.astro';
 import GutPunch from './GutPunch.astro';
 import BreadthReveal from './BreadthReveal.astro';
 import ArrivalClosingThesis from './ArrivalClosingThesis.astro';
@@ -383,6 +384,8 @@ const JUMP = [
   <div class="vcta"><a class="btn light" href="#calc">Estimate your daily costs
     <svg class="arw" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
 </div>
+
+<Scorecard slug={c.slug} name={c.name} />
 
 {c.recentChange && (
   <div class="recentchange">
