@@ -1,0 +1,357 @@
+---
+// THE CALCULATOR WIZARD.
+//
+// THE CENTRAL FACT, worth restating here: the honest calc engine (src/scripts/calc-engine.js)
+// already exists and does all the math. This component is a front end that feeds it, one
+// question at a time. It does not compute anything itself.
+//
+// HOW IT STAYS HONEST TO THE ENGINE'S DOM CONTRACT. render() reaches for about 45 element
+// ids, most without a null check, and it does not care whether a page shows them through a
+// step-by-step wizard or all at once like the inline calculator. So this component renders a
+// full, real copy of the estimator inputs (room, flight, travelers, nights, style) plus the
+// existing <CalcResult>, exactly like CountryBriefing.astro does, and keeps them in the DOM the
+// whole time. They are not hidden with the `hidden` attribute (the engine already manages that
+// on #hn-app itself); instead a wrapper div is visually collapsed by this component's own CSS
+// until the wizard finishes, then revealed. The engine never knows a wizard is involved: it
+// just sees its inputs change and its outputs get read, exactly as it does on a country guide.
+//
+// THE STEP LIST IS DATA (see the client script below), not hardcoded screens, so a future
+// honest addition (a season-tier context line, a connectivity verdict, anything that adds
+// judgment rather than a price) is one more entry in that array, wired the same way. Adding a
+// step must never mean restructuring this shell.
+//
+// THE SEVEN QUESTIONS. Destination is step 1, already answered by however the reader got to
+// this country's URL (the /calculator index, an on-ramp link, or typing it directly), so this
+// component's own step list starts at step 2 and runs to step 7: travelers, nights, travel
+// style, flight price, hotel price, card type. Three questions from the original brief (cash
+// percentage, ATM frequency, travel month) were dropped rather than asked and ignored: the
+// engine derives cash and ATM behaviour from travel style automatically, and travel month
+// moves nothing in an honest model (see calc-lines.js: "we publish no seasonal uplift because
+// an honest one does not exist"). Asking a question that visibly does nothing is exactly the
+// theatre this wizard exists to avoid.
+import CalcResult from './CalcResult.astro';
+import { calcSetupFor } from '../data/calc-setup.js';
+
+const { country: c } = Astro.props;
+const { calcJson, tipCalc } = calcSetupFor(c);
+const styles = (c.cash && c.cash.styles) || [];
+const defaultStyleIndex = (c.cash && c.cash.defaultIndex) || 0;
+
+// Flight and hotel preset amounts for the wizard's tappable options. Flight uses this
+// country's own verified round-trip range where one exists (the same figure the inline
+// calculator prefills), never an invented one; hotel uses the travel style's own typical
+// room price. Both stay fully editable inside the estimator once the wizard hands off.
+const flightData = c.flight || null;
+const flightTypical = flightData ? Math.round((flightData.low + flightData.high) / 2 / 10) * 10 : 700;
+const roomTypical = (styles[defaultStyleIndex] && styles[defaultStyleIndex].room) || 150;
+
+// Handed to the client script as inert JSON, the same pattern #hn-data already uses.
+const wizData = {
+  styles: styles.map((s, i) => ({ i, n: s.n, room: s.room })),
+  defaultStyleIndex,
+  flightTypical,
+  roomTypical,
+};
+const wizJson = JSON.stringify(wizData).replace(/</g, "\\u003c");
+---
+<div class="wiz-wrap">
+
+  {/* ================= THE WIZARD SHELL, one question at a time ================= */}
+  <div class="wiz" id="wizShell" aria-live="polite"></div>
+
+  {/* ================= THE REAL ENGINE, visually collapsed until the wizard hands off =================
+      Same estimator inputs and the same <CalcResult> the inline per-country calculator uses,
+      same ids, so calc-engine.js finds everything it expects. Nothing here is a second copy of
+      the math: it is the actual inputs, driven by the wizard's answers instead of by hand. */}
+  <div class="wiz-underlay" id="wizUnderlay" hidden>
+    <!-- Everything the engine needs, handed over as inert JSON. No card data ships. -->
+    <script type="application/json" id="hn-data" set:html={calcJson}></script>
+    <script type="application/json" id="wiz-data" set:html={wizJson}></script>
+
+    <div class="estimator" id="hn-app" hidden>
+      <div class="erow">
+        <div class="ef ef-room">
+          <label for="hnRoom">Hotel price a night</label>
+          <span class="moneyin"><span class="mny">$</span><input id="hnRoom" type="text" inputmode="numeric" value="150" aria-label="Hotel price per night in US dollars" /></span>
+        </div>
+        <label class="hn-toggle hn-toggle-inline" id="hnPaidWrap">
+          <input type="checkbox" id="hnPaid" />
+          <span class="hn-switch" aria-hidden="true"></span>
+          <span class="hn-toggle-l">Already paid for the room</span>
+        </label>
+      </div>
+      <p class="ef-hint-room" id="hnRoomHint" hidden></p>
+
+      <label class="cf hn-region" id="hnRegionWrap" hidden style="display:none">
+        <span class="cf-l">Where are you staying?</span>
+        <span class="selwrap"><select id="hnRegion"></select></span>
+      </label>
+
+      <div class="erow erow-flight">
+        <div class="ef ef-flight">
+          <label for="hnFlight">Flights, round trip a person</label>
+          <span class="moneyin"><span class="mny">$</span><input id="hnFlight" type="text" inputmode="numeric" value="" aria-label="Round trip flight price per traveler in US dollars" /></span>
+        </div>
+        <p class="ef-hint" id="hnFlightHint">Optional. Enter your round trip fare per traveler to fold flights into the total.</p>
+      </div>
+
+      <div class="erow">
+        <div class="ef ef-num"><label>Travelers</label>
+          <span class="stepper">
+            <button type="button" class="stp" data-step="hnTrav" data-dir="-1" aria-label="One fewer traveler">&#8722;</button>
+            <span class="stp-v" id="hnTrav" data-v="2">2</span>
+            <button type="button" class="stp" data-step="hnTrav" data-dir="1" aria-label="One more traveler">+</button>
+          </span>
+        </div>
+        <div class="ef ef-num"><label>Nights</label>
+          <span class="stepper">
+            <button type="button" class="stp" data-step="hnNights" data-dir="-1" aria-label="One fewer night">&#8722;</button>
+            <span class="stp-v" id="hnNights" data-v="7">7</span>
+            <button type="button" class="stp" data-step="hnNights" data-dir="1" aria-label="One more night">+</button>
+          </span>
+        </div>
+        <div class="ef ef-style"><label>Style</label>
+          <div class="seg" role="group" aria-label="Travel style">
+            {styles.map((s, i) => (
+              <button id={"hnStyle" + i} class={i === defaultStyleIndex ? "on" : ""} type="button" data-per={s.per} data-cash={s.cash} data-room={s.room}>{s.n}</button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <CalcResult country={c} tipCalc={tipCalc} hideWizardCta={true} />
+    </div>
+  </div>
+</div>
+
+<script>
+  // The wizard's own driver. It writes into the real inputs above and fires native events on
+  // them, exactly the events their own listeners (inside calc-engine.js) already expect. It
+  // never touches render() directly and never recomputes a total itself.
+  (function () {
+    const shell = document.getElementById('wizShell');
+    const underlay = document.getElementById('wizUnderlay');
+    const wdEl = document.getElementById('wiz-data');
+    if (!shell || !underlay || !wdEl) return;
+
+    let WD;
+    try { WD = JSON.parse(wdEl.textContent); } catch (e) { return; }
+
+    const id = (x) => document.getElementById(x);
+    const fire = (el, type) => el.dispatchEvent(new Event(type, { bubbles: true }));
+    const usd = (v) => '$' + Math.round(v).toLocaleString('en-US');
+
+    // ----- one wiring function per real engine input the wizard can set -----
+    function setStepper(key, target) {
+      const el = id(key);
+      if (!el) return;
+      let guard = 0;
+      while (+el.dataset.v !== target && guard < 60) {
+        const dir = target > +el.dataset.v ? '1' : '-1';
+        const btn = document.querySelector('.stp[data-step="' + key + '"][data-dir="' + dir + '"]');
+        if (!btn || btn.disabled) break;
+        fire(btn, 'click');
+        guard++;
+      }
+    }
+    function setMoneyInput(key, value) {
+      const el = id(key);
+      if (!el) return;
+      el.value = String(Math.round(value));
+      fire(el, 'input');
+    }
+    function clickStyle(i) {
+      const btn = id('hnStyle' + i);
+      if (btn) fire(btn, 'click');
+    }
+    function setNoFee(on) {
+      const el = id('hnNoFee');
+      if (!el) return;
+      el.checked = on;
+      fire(el, 'change');
+    }
+
+    function bandAround(mid, mults, roundTo) {
+      return mults.map((m) => Math.max(roundTo, Math.round((mid * m) / roundTo) * roundTo));
+    }
+
+    // ----- THE STEP LIST, as data. A future honest addition is one more entry here, wired
+    // the same way; the shell below never needs to change to add one. -----
+    const STEPS = [
+      {
+        id: 'travelers',
+        overall: 2,
+        label: 'Travelers',
+        question: 'How many travelers?',
+        helper: 'Changes the per-person entry charges and the daily spend.',
+        typical: 2,
+        options: [1, 2, 3, 4].map((n) => ({ label: n === 4 ? '4+' : String(n), value: n })),
+        apply(v) { setStepper('hnTrav', v); },
+      },
+      {
+        id: 'nights',
+        overall: 3,
+        label: 'Nights',
+        question: 'How many nights?',
+        helper: 'The room total and the tourist tax both scale with this.',
+        typical: 7,
+        options: [3, 5, 7, 10, 14].map((n) => ({ label: String(n), value: n })),
+        apply(v) { setStepper('hnNights', v); },
+      },
+      {
+        id: 'style',
+        overall: 4,
+        label: 'Travel style',
+        question: 'What is your travel style?',
+        helper: 'Sets a typical daily spend and room price. Edit either later.',
+        typical: WD.defaultStyleIndex,
+        options: WD.styles.map((s) => ({ label: s.n, value: s.i })),
+        apply(v) { clickStyle(v); },
+      },
+      {
+        id: 'flight',
+        overall: 5,
+        label: 'Flights',
+        question: 'About how much is your round trip flight, per person?',
+        helper: 'Paid in dollars at booking, so it carries no foreign fee.',
+        typical: WD.flightTypical,
+        options: bandAround(WD.flightTypical, [0.6, 1, 1.4, 2], 10).map((v) => ({ label: usd(v), value: v })),
+        apply(v) { setMoneyInput('hnFlight', v); },
+      },
+      {
+        id: 'hotel',
+        overall: 6,
+        label: 'Hotel',
+        question: 'About how much is your hotel, per night?',
+        helper: 'Fully editable once you reach the total below.',
+        typical: WD.roomTypical,
+        options: bandAround(WD.roomTypical, [0.5, 1, 1.5, 2.5], 5).map((v) => ({ label: usd(v), value: v })),
+        apply(v) { setMoneyInput('hnRoom', v); },
+      },
+      {
+        id: 'card',
+        overall: 7,
+        label: 'Your card',
+        question: 'What kind of card are you bringing?',
+        helper: 'Most US cards charge a foreign fee without saying so.',
+        typical: 'regular',
+        options: [
+          { label: 'A regular card (most US cards add about a 3% foreign fee)', value: 'regular' },
+          { label: 'A no-foreign-fee card', value: 'nofee' },
+        ],
+        apply(v) { setNoFee(v === 'nofee'); },
+      },
+    ];
+    const TOTAL_STEPS = 7; // destination (already answered) plus the six above
+
+    let stepIndex = 0;
+    const answers = {};
+
+    function esc(s) {
+      return String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    }
+
+    function renderStep() {
+      const s = STEPS[stepIndex];
+      const chosen = Object.prototype.hasOwnProperty.call(answers, s.id) ? answers[s.id] : s.typical;
+      const pct = Math.round((s.overall / TOTAL_STEPS) * 100);
+      shell.innerHTML =
+        '<div class="wiz-progress"><div class="wiz-bar"><div class="wiz-bar-fill" style="width:' + pct + '%"></div></div>' +
+        '<span class="wiz-step-n">Step ' + s.overall + ' of ' + TOTAL_STEPS + '</span></div>' +
+        '<p class="wiz-label">' + esc(s.label) + '</p>' +
+        '<h2 class="wiz-q">' + esc(s.question) + '</h2>' +
+        (s.helper ? '<p class="wiz-helper">' + esc(s.helper) + '</p>' : '') +
+        '<div class="wiz-opts" role="group" aria-label="' + esc(s.question) + '">' +
+        s.options.map((o) => (
+          '<button type="button" class="wiz-opt' + (o.value === chosen ? ' wiz-opt-on' : '') + '" data-value="' + esc(String(o.value)) + '">' + esc(o.label) + (o.value === s.typical ? '<span class="wiz-typ">typical</span>' : '') + '</button>'
+        )).join('') +
+        '</div>' +
+        '<div class="wiz-nav">' +
+        (stepIndex > 0 ? '<button type="button" class="wiz-back">&#8592; Back</button>' : '<span></span>') +
+        '<button type="button" class="wiz-skip">Not sure, use typical &#8594;</button>' +
+        '</div>';
+
+      shell.querySelectorAll('.wiz-opt').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const raw = btn.dataset.value;
+          const v = s.options.find((o) => String(o.value) === raw).value;
+          choose(s, v);
+        });
+      });
+      const backBtn = shell.querySelector('.wiz-back');
+      if (backBtn) backBtn.addEventListener('click', goBack);
+      shell.querySelector('.wiz-skip').addEventListener('click', () => choose(s, s.typical));
+    }
+
+    function choose(s, value) {
+      answers[s.id] = value;
+      s.apply(value);
+      if (stepIndex < STEPS.length - 1) {
+        stepIndex++;
+        renderStep();
+      } else {
+        finish();
+      }
+    }
+
+    function goBack() {
+      if (stepIndex > 0) {
+        stepIndex--;
+        renderStep();
+      }
+    }
+
+    function finish() {
+      shell.hidden = true;
+      underlay.hidden = false;
+      if (typeof underlay.scrollIntoView === 'function') {
+        try { underlay.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        catch (e) { try { underlay.scrollIntoView(); } catch (e2) { /* no-op: nothing sensible left to try */ } }
+      }
+    }
+
+    renderStep();
+  })();
+</script>
+
+<script>
+  // The calculator engine, shared with the inline per-country calculator. Imported for its
+  // side effects: it hydrates from #hn-data and #hn-app the moment both exist, which they do
+  // above, kept visually collapsed until the wizard finishes.
+  import '../scripts/calc-engine.js';
+</script>
+
+<style>
+  .wiz-wrap{max-width:640px;margin:0 auto}
+
+  /* ----- the wizard shell ----- */
+  .wiz{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px 26px 24px}
+  .wiz-progress{display:flex;flex-direction:column;gap:8px;margin:0 0 20px}
+  .wiz-bar{height:6px;border-radius:999px;background:var(--line);overflow:hidden}
+  .wiz-bar-fill{height:100%;background:var(--teal);border-radius:999px;transition:width .3s ease}
+  .wiz-step-n{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+  .wiz-label{margin:0 0 6px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--teal-deep)}
+  .wiz-q{margin:0 0 8px;font-family:var(--serif);font-weight:500;font-size:clamp(22px,4vw,28px);line-height:1.2;letter-spacing:-.01em;color:var(--ink)}
+  .wiz-helper{margin:0 0 22px;font-size:14.5px;color:var(--muted);line-height:1.5}
+  .wiz-opts{display:flex;flex-direction:column;gap:10px;margin:0 0 22px}
+  .wiz-opt{position:relative;text-align:left;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--paper);font-family:inherit;font-size:15.5px;font-weight:500;color:var(--ink);cursor:pointer;transition:border-color .15s ease,background .15s ease}
+  .wiz-opt:hover{border-color:var(--teal)}
+  .wiz-opt-on{border-color:var(--teal);border-width:2px;background:var(--card);padding:13px 15px}
+  .wiz-typ{display:inline-block;margin-left:9px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:2px 8px;vertical-align:1px}
+  .wiz-nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .wiz-nav button{font-family:inherit;font-size:14px;font-weight:600;background:none;border:none;cursor:pointer;padding:6px 2px}
+  .wiz-back{color:var(--muted)}
+  .wiz-back:hover{color:var(--ink)}
+  .wiz-skip{color:var(--teal-deep)}
+  .wiz-skip:hover{text-decoration:underline}
+
+  /* ----- the real engine, collapsed until the wizard hands off -----
+     Not `hidden` on #hn-app itself (the engine manages that flag on init); this wrapper is
+     the wizard's own visibility switch, independent of the engine's internal bookkeeping. */
+  .wiz-underlay[hidden]{display:none}
+
+  @media (max-width:560px){
+    .wiz{padding:22px 18px 20px}
+    .wiz-opt{padding:13px 14px}
+  }
+</style>

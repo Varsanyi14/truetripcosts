@@ -39,7 +39,7 @@ import { avoidableFor, exposureFor } from '../data/avoidable.js';
 import { comparisonsFor } from '../data/region-comparisons.js';
 import { countries } from '../data/index.js';
 
-const { country: c, tipCalc } = Astro.props;
+const { country: c, tipCalc, hideWizardCta } = Astro.props;
 const L = calcLinesFor(c);
 // The avoidable half of the fees section. Per country, and empty items are simply absent
 // rather than shown as "not applicable": see avoidable.js.
@@ -134,6 +134,18 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
 
   {cmp && (
     <a class="cs-cmp" href={cmp.href}>See how {c.name} compares across {cmp.region}
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  )}
+
+  {/* THE ON-RAMP. One additive link into the flagship wizard, promoting this inline quick
+      result into the fuller funnel rather than replacing it. Pre-filled by the route itself
+      (a static page per country, see src/pages/calculator/[slug].astro), so it resumes at
+      step 2 rather than asking the destination again. Suppressed when CalcResult is itself
+      the wizard's own result view (CalcWizard.astro passes hideWizardCta): a reader who just
+      finished the wizard should not be invited back into the page they are standing on. */}
+  {!hideWizardCta && (
+    <a class="cs-wizard-cta" href={'/calculator/' + c.slug}>Cost your whole trip properly
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
   )}
@@ -605,6 +617,13 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
   .cs-cmp:hover{text-decoration:underline}
   .cs-cmp svg{transition:transform .15s ease}
   .cs-cmp:hover svg{transform:translateX(3px)}
+
+  /* The on-ramp into the flagship wizard. A little more weight than .cs-cmp: it is the
+     promotion of this whole section into the fuller funnel, not a lateral link. */
+  .cs-wizard-cta{display:inline-flex;align-items:center;gap:8px;margin:16px 0 0;padding:11px 18px;border-radius:999px;background:var(--teal);color:#fff;font-size:14.5px;font-weight:600;text-decoration:none}
+  .cs-wizard-cta:hover{background:var(--teal-deep)}
+  .cs-wizard-cta svg{transition:transform .15s ease}
+  .cs-wizard-cta:hover svg{transform:translateX(3px)}
 
   /* ----- the collapsible set ----- */
   .cs-set{margin:20px 0 0;display:grid;gap:9px}

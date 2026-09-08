@@ -1,0 +1,78 @@
+---
+// STEP 1 OF THE WIZARD: DESTINATION.
+//
+// Why this is its own plain page rather than a first screen inside CalcWizard.astro: this is
+// a static site (astro.config.mjs sets no `output`, so every route is pre-rendered at build
+// time), and each country's calc data (tax rules, flight ranges, travel styles) is baked into
+// that country's own static page. There is no server to answer "give me Japan's data" at
+// request time, and shipping every country's data into one client bundle just to pick a name
+// would be the wrong tradeoff for a single dropdown. So destination picks here are cheap (just
+// names and slugs, the same list the destination switcher on every guide already uses) and a
+// choice is a real navigation to /calculator/<slug>, which is a full static page with that
+// country's real numbers already in it. Steps 2 through 7 live there, in CalcWizard.astro.
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { countries } from '../data/index.js';
+
+const live = countries.filter(c => c.live).slice().sort((a, b) => a.name.localeCompare(b.name));
+---
+<Base
+  title="Trip cost calculator: what will your trip really cost?"
+  description="A one-question-at-a-time trip cost calculator. Pick a destination and get a ranged total, never a false-precise number, plus every fee you can refuse to pay."
+>
+  <Nav />
+  <main class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="crumb-sep" aria-hidden="true">&#8250;</span>
+      <span aria-current="page">Trip cost calculator</span>
+    </nav>
+
+    <section class="calc-door">
+      <p class="lab">Step 1 of 7</p>
+      <h1>What will your trip really cost?</h1>
+      <p class="sub">Name a destination and we will walk through the rest one question at a time: travelers, nights, travel style, flights, your hotel, and the card you are bringing. A ranged total at the end, never a single false-precise number, plus every fee you can simply refuse to pay.</p>
+
+      <label class="cf calc-door-sel">
+        <span class="cf-l">Destination</span>
+        <span class="selwrap"><select id="calcDoorSel" aria-label="Choose a destination">
+          {live.map(c => (<option value={c.slug}>{c.name}</option>))}
+        </select></span>
+      </label>
+      <button type="button" class="btn calc-door-go" id="calcDoorGo">Start
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </section>
+  </main>
+  <Footer />
+
+  <script>
+    (function () {
+      const sel = document.getElementById('calcDoorSel');
+      const go = document.getElementById('calcDoorGo');
+      if (!sel || !go) return;
+      function start() {
+        const slug = sel.value;
+        if (slug) window.location.href = '/calculator/' + slug;
+      }
+      go.addEventListener('click', start);
+      sel.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); start(); } });
+    })();
+  </script>
+
+  <style>
+    .crumb{font-family:var(--mono);font-size:11.5px;letter-spacing:.01em;color:var(--muted);margin:20px 0 20px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+    .crumb a{color:var(--teal-deep);text-decoration:none;font-weight:500}
+    .crumb a:hover{text-decoration:underline}
+    .crumb-sep{color:var(--line)}
+
+    .calc-door{max-width:640px;margin:0 auto;padding:20px 0 72px}
+    .calc-door h1{margin:0 0 14px}
+    .calc-door .sub{font-size:16px;line-height:1.6;color:var(--muted);margin:0 0 28px}
+    .calc-door-sel{display:block;margin:0 0 16px}
+    .calc-door-sel .cf-l{display:block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:0 0 7px}
+    .calc-door-sel select{width:100%;font-family:inherit;font-size:16px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+    .calc-door-go{display:inline-flex;align-items:center;gap:8px}
+  </style>
+</Base>

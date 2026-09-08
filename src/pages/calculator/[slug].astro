@@ -1,0 +1,55 @@
+---
+// STEPS 2 THROUGH 7 OF THE WIZARD, for one destination.
+//
+// A static page per live country, the same pattern the country guides themselves use
+// (src/pages/[slug].astro): getStaticPaths() bakes each country's real numbers into its own
+// page at build time, because this is a static site with no server to answer a destination
+// query at request time. This route existing separately from /calculator (the destination
+// step) is exactly why: destination has to be a real navigation, and this is where it lands.
+import Base from '../../layouts/Base.astro';
+import Nav from '../../components/Nav.astro';
+import Footer from '../../components/Footer.astro';
+import CalcWizard from '../../components/CalcWizard.astro';
+import { countries } from '../../data/index.js';
+
+export function getStaticPaths() {
+  return countries.filter(c => c.live).map(c => ({ params: { slug: c.slug }, props: { country: c } }));
+}
+
+const { country } = Astro.props;
+---
+<Base
+  title={'What will your trip to ' + country.name + ' really cost? Trip cost calculator'}
+  description={'A one-question-at-a-time cost calculator for ' + country.name + ': a ranged total, never a false-precise number, plus every fee you can refuse to pay.'}
+>
+  <Nav />
+  <main class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="crumb-sep" aria-hidden="true">&#8250;</span>
+      <a href="/calculator">Trip cost calculator</a>
+      <span class="crumb-sep" aria-hidden="true">&#8250;</span>
+      <span aria-current="page">{country.name}</span>
+    </nav>
+
+    <section class="calc-page">
+      <p class="lab">Trip cost calculator</p>
+      <h1>What will your trip to {country.name} really cost?</h1>
+      <p class="sub">Six quick questions, then a ranged total built from the same honest numbers as {country.name}'s full guide. Every "not sure" has a typical default already picked; change anything after, and the total moves with it.</p>
+
+      <CalcWizard country={country} />
+    </section>
+  </main>
+  <Footer />
+
+  <style>
+    .crumb{font-family:var(--mono);font-size:11.5px;letter-spacing:.01em;color:var(--muted);margin:20px 0 20px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+    .crumb a{color:var(--teal-deep);text-decoration:none;font-weight:500}
+    .crumb a:hover{text-decoration:underline}
+    .crumb-sep{color:var(--line)}
+
+    .calc-page{max-width:640px;margin:0 auto;padding:20px 0 72px}
+    .calc-page h1{margin:0 0 14px}
+    .calc-page .sub{font-size:16px;line-height:1.6;color:var(--muted);margin:0 0 28px}
+  </style>
+</Base>
