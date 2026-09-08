@@ -301,7 +301,7 @@ import { usdBracket } from '../data/usd-bracket.js';
     const pulls = Math.max(1, Math.ceil(cash / 300));
     const atmFlat = pulls * 5;                       // fixed operator/bank charge per withdrawal
     const atmFx = cash * (atmCashPct / 100);         // percentage markup on the cash itself
-    const atmFee = state.noFee ? 0 : (atmFlat + atmFx);
+    const atmFee = state.noFee ? atmFlat : (atmFlat + atmFx);
     const t = computeTax(roomUSD, nights, trav);
     // Flights ride the total but never the fee math: a US-booked fare is a dollar
     // purchase, so it takes no foreign fee and no share of the cash split.
@@ -321,7 +321,7 @@ import { usdBracket } from '../data/usd-bracket.js';
       const pct = state.noFee ? 0 : (fallbackFxPct + extraPP);
       const cFee = (roomOnCard + cardB) * (pct / 100);
       const p = (cashB > 0) ? Math.max(1, Math.ceil(cashB / 300)) : 0;
-      const aFee = state.noFee ? 0 : (p * 5 + cashB * (pct / 100));
+      const aFee = state.noFee ? (p * 5) : (p * 5 + cashB * (pct / 100));
       return roomOnCard + s + cFee + aFee + t.usd + flightUSD;
     }
     // While the fare is our estimate, the band uses the verified low and high of
@@ -488,7 +488,7 @@ import { usdBracket } from '../data/usd-bracket.js';
       if (hasPay) {
         setTx('exPayV', money(payLo, payHi));
         const bits = [];
-        if (live) bits.push(state.noFee ? 'your no-foreign-fee card just took the two fee lines to $0' : 'the two fee lines above');
+        if (live) bits.push(state.noFee ? 'your no-foreign-fee card just took the card percentage to $0' : 'the two fee lines above');
         if (n('payPctHi') > 0) bits.push(fmtPct(n('payPctLo')) + ' to ' + fmtPct(n('payPctHi')) + ' on the ' + usd(cardBase) + ' you put on the card');
         let note = bits.length ? (bits.join(', plus ') + '. ') : '';
         note = note.charAt(0).toUpperCase() + note.slice(1);
@@ -567,9 +567,10 @@ import { usdBracket } from '../data/usd-bracket.js';
       ? 'already paid, taken out of the total below'
       : 'on the card, prepaid or paid at the desk';
 
-    // Both fee lines grey out and read $0 when the no-fee card toggle is on.
+    // The card-fee line greys out to $0 under the no-fee card; the ATM line keeps its flat
+    // operator fee, so it is not greyed out as though it were zero.
     id('hnCardFeeLine').classList.toggle('off', state.noFee);
-    id('hnAtmFeeLine').classList.toggle('off', state.noFee);
+    id('hnAtmFeeLine').classList.toggle('off', false);
 
     // The line that reads back the trip in words.
     const spendWord = styleName ? (styleName.toLowerCase() + ' spending') : 'spending';
@@ -580,8 +581,8 @@ import { usdBracket } from '../data/usd-bracket.js';
 
     // The note under the breakdown swaps with the card toggle.
     id('hnFeeNote').textContent = state.noFee
-      ? 'Both fees just dropped to $0. That is what a no-foreign-fee card does here.'
-      : 'Most US cards add about ' + fmtPct(fallbackFxPct) + ' on what you buy and on the cash you pull, plus a few dollars per ATM withdrawal, and choosing "pay in dollars" adds more on top. A no-foreign-fee card takes it all to $0.';
+      ? 'The card percentage just dropped to $0 on both purchases and cash. The flat ATM fee stays, because that is the machine operator\u2019s charge, not your bank\u2019s.'
+      : 'Most US cards add about ' + fmtPct(fallbackFxPct) + ' on what you buy and on the cash you pull, plus a few dollars per ATM withdrawal, and choosing "pay in dollars" adds more on top. A no-foreign-fee card takes the percentage to $0, though the ATM operator\u2019s flat fee still applies.';
 
     // How much local cash, in how many ATM visits, plus the exchange-rate line.
     //

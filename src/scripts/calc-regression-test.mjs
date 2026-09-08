@@ -26,12 +26,7 @@ import path from 'node:path';
 import { countries } from '../src/data/index.js';
 import { avoidableFor, exposureFor } from '../src/data/avoidable.js';
 
-// STEP 0 EXTRACTION NOTE: the calculator's render() used to live inline in
-// CountryBriefing.astro. It was extracted into its own module (src/scripts/calc-engine.js)
-// so the /calculator wizard can drive the same engine without a second copy, with no
-// behaviour change. This test now reads the engine from its new home; the assertions
-// below are unchanged.
-const ENGINE = 'src/scripts/calc-engine.js';
+const BRIEFING = 'src/scripts/calc-engine.js';
 const RESULT = 'src/components/CalcResult.astro';
 const read = (p) => fs.readFileSync(p, 'utf8');
 
@@ -49,7 +44,7 @@ const section = (m) => console.log('\n' + m);
 // if one of them changes, this test is meant to stop and make somebody say so out loud.
 // ---------------------------------------------------------------------------
 section('1. Calculator money math is unchanged');
-const engine = read(ENGINE);
+const brief = read(BRIEFING);
 const MATH_CONTRACT = [
   ['the trip total', 'const total = roomOnCard + spend + cardFee + atmFee + t.usd + flightTotal;'],
   ['the card base', 'const cardBase = roomOnCard + card;'],
@@ -57,14 +52,14 @@ const MATH_CONTRACT = [
   ['ATM withdrawal count', 'const pulls = Math.max(1, Math.ceil(cash / 300));'],
   ['ATM flat charge', 'const atmFlat = pulls * 5;'],
   ['ATM percentage markup', 'const atmFx = cash * (atmCashPct / 100);'],
-  ['the ATM fee', 'const atmFee = state.noFee ? 0 : (atmFlat + atmFx);'],
+  ['the ATM fee', 'const atmFee = state.noFee ? atmFlat : (atmFlat + atmFx);'],
   ['the confidence band total', 'return roomOnCard + s + cFee + aFee + t.usd + flightUSD;'],
   ['the spend band', 'const SPEND_BAND = 0.15;'],
   ['the DCC band on the high end', 'const DCC_EXTRA_PP = 2;'],
   ['the fees preview', "setPrev('prevFees', shown(cardFee) + shown(atmFee) + shown(t.usd));"],
 ];
 for (const [name, line] of MATH_CONTRACT) {
-  check(engine.includes(line), name + ' is intact');
+  check(brief.includes(line), name + ' is intact');
 }
 
 // ---------------------------------------------------------------------------
@@ -77,8 +72,8 @@ for (const [name, line] of MATH_CONTRACT) {
 // "tidies" two figures into one.
 // ---------------------------------------------------------------------------
 section('2. The pay side and the dodge side are never combined');
-const engineLines = engine.split('\n');
-const codeLines = engineLines.filter(l => !/^\s*(\/\/|\*|\/\*)/.test(l));
+const briefLines = brief.split('\n');
+const codeLines = briefLines.filter(l => !/^\s*(\/\/|\*|\/\*)/.test(l));
 
 const blended = codeLines.filter(l =>
   /\bpay(Lo|Hi|Fixed)\b/.test(l) && /\bdodge(Lo|Hi)\b/.test(l) && /[+]/.test(l)
@@ -90,7 +85,7 @@ const BANNED = [
   'dangerScore', 'danger_score', 'riskScore', 'risk_score', 'exposureScore',
   'exposureTotal', 'blendedTotal', 'totalExposure', 'atRiskPct', 'pctAtRisk',
 ];
-const found = BANNED.filter(w => new RegExp('\\b' + w + '\\b').test(engine) || new RegExp('\\b' + w + '\\b').test(read(RESULT)));
+const found = BANNED.filter(w => new RegExp('\\b' + w + '\\b').test(brief) || new RegExp('\\b' + w + '\\b').test(read(RESULT)));
 check(found.length === 0, 'no score or blended-total identifier exists' + (found.length ? '  <-- ' + found.join(', ') : ''));
 
 // The exposure block must run entirely downstream of the trip total. If an exposure variable
@@ -110,11 +105,11 @@ check(!!bandLine && !/\b(pay|dodge|ex)[A-Z]/.test(bandLine), 'the confidence ran
 // ---------------------------------------------------------------------------
 section('3. Every element render() writes to exists, exactly once, on every country page');
 const referenced = new Set([
-  ...engine.matchAll(/\bid\('([A-Za-z][\w-]*)'\)/g),
-  ...engine.matchAll(/getElementById\('([A-Za-z][\w-]*)'\)/g),
+  ...brief.matchAll(/\bid\('([A-Za-z][\w-]*)'\)/g),
+  ...brief.matchAll(/getElementById\('([A-Za-z][\w-]*)'\)/g),
 ].map(m => m[1]));
 // Written through the setPrev and setTx helpers, which take the id as a plain string.
-for (const m of engine.matchAll(/set(?:Prev|Tx|A)\('([A-Za-z][\w-]*)'/g)) referenced.add(m[1]);
+for (const m of brief.matchAll(/set(?:Prev|Tx|A)\('([A-Za-z][\w-]*)'/g)) referenced.add(m[1]);
 
 const distDir = 'dist';
 if (!fs.existsSync(distDir)) {
@@ -209,7 +204,7 @@ for (const c of live) {
     const cardBase = roomOnCard + card;
     const cardFee = s.noFee ? 0 : cardBase * (FX / 100);
     const pulls = Math.max(1, Math.ceil(cash / 300));
-    const atmFee = s.noFee ? 0 : (pulls * 5 + cash * (FX / 100));
+    const atmFee = s.noFee ? (pulls * 5) : (pulls * 5 + cash * (FX / 100));
     const flightTotal = s.flight * s.trav;
     const total = roomOnCard + spend + cardFee + atmFee + s.tax + flightTotal;
 
@@ -248,7 +243,7 @@ for (const c of live) {
 }
 check(problems.length === 0, live.length * SCENARIOS.length + ' country and input combinations behave'
   + (problems.length ? '  <-- ' + problems.slice(0, 3).join(' | ') : ''));
-check(/const fits = \(raw <= 100\);/.test(engine) && /if \(bar\) bar\.hidden = !fits;/.test(engine),
+check(/const fits = \(raw <= 100\);/.test(brief) && /if \(bar\) bar\.hidden = !fits;/.test(brief),
   'the bar steps aside rather than filling when the figures exceed the trip total');
 console.log('        widest on an ordinary trip: ' + worstNormal.pctOfTrip.toFixed(1) + '% (' + worstNormal.label + ')');
 console.log('        widest on any input: ' + worst.pctOfTrip.toFixed(1) + '% (' + worst.label + '), ' + overflow + ' of ' + (live.length * SCENARIOS.length) + ' combinations draw no bar');
