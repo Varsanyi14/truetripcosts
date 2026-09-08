@@ -35,7 +35,7 @@ const { country } = Astro.props;
     <section class="calc-page">
       <p class="lab">Trip cost calculator</p>
       <h1>What will your trip to {country.name} really cost?</h1>
-      <p class="sub">Six quick questions, then a ranged total built from the same honest numbers as {country.name}'s full guide. Every "not sure" has a typical default already picked; change anything after, and the total moves with it.</p>
+      <p class="sub">Six quick questions, then a ranged total built from the same honest numbers as {country.name}'s full guide. Every question starts on a typical figure for {country.name}, so a few taps gets you a real answer, and you can type your own exact numbers wherever it matters.</p>
 
       <CalcWizard country={country} />
     </section>
