@@ -52,7 +52,7 @@ const MATH_CONTRACT = [
   ['ATM withdrawal count', 'const pulls = Math.max(1, Math.ceil(cash / 300));'],
   ['ATM flat charge', 'const atmFlat = pulls * 5;'],
   ['ATM percentage markup', 'const atmFx = cash * (atmCashPct / 100);'],
-  ['the ATM fee', 'const atmFee = state.noFee ? 0 : (atmFlat + atmFx);'],
+  ['the ATM fee', 'const atmFee = state.noFee ? atmFlat : (atmFlat + atmFx);'],
   ['the confidence band total', 'return roomOnCard + s + cFee + aFee + t.usd + flightUSD;'],
   ['the spend band', 'const SPEND_BAND = 0.15;'],
   ['the DCC band on the high end', 'const DCC_EXTRA_PP = 2;'],
@@ -204,7 +204,7 @@ for (const c of live) {
     const cardBase = roomOnCard + card;
     const cardFee = s.noFee ? 0 : cardBase * (FX / 100);
     const pulls = Math.max(1, Math.ceil(cash / 300));
-    const atmFee = s.noFee ? 0 : (pulls * 5 + cash * (FX / 100));
+    const atmFee = s.noFee ? (pulls * 5) : (pulls * 5 + cash * (FX / 100));
     const flightTotal = s.flight * s.trav;
     const total = roomOnCard + spend + cardFee + atmFee + s.tax + flightTotal;
 
