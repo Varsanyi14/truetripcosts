@@ -26,7 +26,7 @@ import path from 'node:path';
 import { countries } from '../src/data/index.js';
 import { avoidableFor, exposureFor } from '../src/data/avoidable.js';
 
-const BRIEFING = 'src/components/CountryBriefing.astro';
+const BRIEFING = 'src/scripts/calc-engine.js';
 const RESULT = 'src/components/CalcResult.astro';
 const read = (p) => fs.readFileSync(p, 'utf8');
 
