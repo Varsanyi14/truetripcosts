@@ -322,7 +322,7 @@ export default {
         { k: "Consumption tax", v: "10%, or 8% on most food" },
         { k: "Minimum spend", v: "5,000 yen, one store, one day" },
         { k: "The big change", v: "1 November 2026" },
-        { k: "Where you claim", v: "An airport kiosk, before bag drop" }
+        { k: "Where you claim", v: "From 1 Nov 2026, an airport kiosk before bag drop (until then, at the register)" }
       ],
       live: true,
       topic: "tax-refund",
