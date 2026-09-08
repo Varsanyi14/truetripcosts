@@ -54,6 +54,7 @@ export const INDEXED_PAGES = [
   { file: 'hotel-tax-map.astro', label: 'Hotel tax by country, mapped', kind: 'tool' },
   { file: 'us-outbound-travelers.astro', label: 'Where Americans travel, ranked', kind: 'tool' },
   { file: 'us-customs-allowance.astro', label: 'US customs allowance, bringing purchases home', kind: 'tool' },
+  { file: 'calculator.astro', label: 'Trip cost calculator', kind: 'tool' },
 
   // Region hubs. The label comes from hubs.js, keyed by the region name below.
   { file: 'europe.astro', label: null, kind: 'region', fromHub: 'Europe' },
@@ -104,6 +105,7 @@ export const EXCLUDED_PAGES = [
   { file: '[slug].astro', why: 'the country guide route, indexed from src/data/index.js as the country class' },
   { file: '[slug]/[spoke].astro', why: 'the spoke route, indexed from each country spokes array as the spoke class' },
   { file: '[slug]/rules.astro', why: 'the money rules card route, indexed from money-rules.js as the card class' },
+  { file: 'calculator/[slug].astro', why: 'the per-country wizard route, 59 near-identical calculator pages reached through the indexed /calculator flagship or the on-ramp from each country guide, not via search; indexing all 59 would clutter results against the country guides' },
   // NOT indexed, and that is a decision rather than an oversight. The /updates/{id}/
   // records are permanent addresses for CITING one past change, not answers to the
   // question the search box gets asked, which is always about a trip someone is taking.
