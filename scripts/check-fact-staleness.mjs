@@ -226,7 +226,15 @@ async function main() {
         if (d > 0 && d <= SOON_DAYS) {
           add(c.slug, label, 'takes effect in ' + d + ' days, so re-check the wording around it');
         } else if (d < 0 && -d <= JUST_DAYS) {
-          add(c.slug, label, 'effective date passed ' + (-d) + ' days ago, so confirm it is now in effect as written');
+          // Only ask for confirmation if nobody has checked this fact SINCE its
+          // effective date passed. If checked >= effective, a human already
+          // verified it in effect after the date landed, so re-flagging it is
+          // cry-wolf. If checked < effective (or is missing), the real-world
+          // start has not been confirmed yet, so keep flagging.
+          const confirmedInEffect = checked && eff && daysBetween(checked, eff) >= 0;
+          if (!confirmedInEffect) {
+            add(c.slug, label, 'effective date passed ' + (-d) + ' days ago, so confirm it is now in effect as written');
+          }
         }
       }
     }
