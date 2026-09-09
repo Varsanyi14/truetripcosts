@@ -1,572 +1,554 @@
 ---
-// THE CALCULATOR WIZARD.
+// THE CALCULATOR WIZARD, rebuilt to TTC-design-specification.md (BRIEF-calculator-final-build.md).
 //
-// THE CENTRAL FACT, worth restating here: the honest calc engine (src/scripts/calc-engine.js)
-// already exists and does all the math. This component is a front end that feeds it, one
-// question at a time. It does not compute anything itself.
+// THE CENTRAL FACT, unchanged from every prior pass: the honest calc engine
+// (src/scripts/calc-engine.js) already exists and does all the math. This component is a
+// front end that feeds it and reads it back, one question at a time. It does not compute
+// anything itself.
 //
-// HOW IT STAYS HONEST TO THE ENGINE'S DOM CONTRACT. render() reaches for about 45 element
-// ids, most without a null check, and it does not care whether a page shows them through a
-// step-by-step wizard or all at once like the inline calculator. So this component renders a
-// full, real copy of the estimator inputs (room, flight, travelers, nights, style) plus the
-// existing <CalcResult>, exactly like CountryBriefing.astro does, and keeps them in the DOM the
-// whole time. They are not hidden with the `hidden` attribute (the engine already manages that
-// on #hn-app itself); instead a wrapper div is visually collapsed by this component's own CSS
-// until the wizard finishes, then revealed. The engine never knows a wizard is involved: it
-// just sees its inputs change and its outputs get read, exactly as it does on a country guide.
+// ARCHITECTURE. Two DOM trees live on this page at all times:
+//   1. THE REAL ENGINE, permanently hidden (`data-engine-root hidden`): the exact same
+//      estimator inputs and the exact same <CalcResult country={c} hideWizardCta={true} />
+//      the site has always used, byte-for-byte the same markup, ids and classes
+//      calc-regression-test.mjs already asserts against every country page. It is never
+//      shown to a reader. Its only job is to be a correct, already-tested calculator that
+//      happens to render its inputs and outputs as real DOM nodes instead of returning a
+//      value from a function.
+//   2. THE NEW SURFACE, everything the reader actually sees: the seven QuestionPanel steps,
+//      the result view, the edit dialog. It is pre-rendered at build time (every step's real
+//      copy and controls are known per-country before any JS runs) and a single client
+//      script (src/scripts/calc-wizard.js) shows/hides the right step, wires each control's
+//      native events into the hidden engine's inputs via the same apply()-style event
+//      simulation the site has always used, and MIRRORS the hidden engine's already-computed
+//      output text into the new surface's own elements. That mirror step is a plain text
+//      copy, never a recomputation: see calc-wizard.js's own header for the full accounting
+//      of which hidden id feeds which new element, and which few things (input provenance,
+//      the flights-excluded flag, the calm-outcome trigger) are the surface's own state
+//      because the engine has no such concept and none should be invented for it.
 //
-// UX REWORK (see BRIEF-calculator-ux-rework.md). This pass changes the LOOK and FLOW only:
-// a dark focus frame around the whole flow, destination shown as a completed step 1 with a
-// change link, real preset-plus-stepper controls for travelers and nights, a typed-price
-// control for flight and hotel, and bigger tap targets throughout. None of that touches
-// calc-engine.js, avoidable.js or calc-lines.js, and the estimator markup below (ids, classes,
-// structure) is byte-for-byte what it was before this pass. Handoff notes on the two items in
-// the brief this file could not act on:
-//   - Point 8, "the mislabeled 'where are you staying' = restaurant meal dropdown": no such
-//     mislabeling exists in this snapshot. #hnRegionWrap / #hnRegion is a real, correctly
-//     labeled engine control for countries whose tourist tax varies by region, and it is
-//     already hidden unless calc-engine.js finds more than one region for this country. It is
-//     a live input the engine writes into without a null check (see calc-engine.js around
-//     `regionWrap`/`regionSel`), so removing it would break the DOM contract for any
-//     multi-region country. Left exactly as it was. Flagged to MAIN in the handoff.
-//   - Part B's "book direct on lodging" / "skip an unneeded eSIM" named-tactic examples do not
-//     exist as avoidable.js items in this snapshot (avoidable.js's items are: paying in
-//     dollars/DCC, the bank's own fees, the exchange desk, a VAT/GST refund, the free arrival
-//     form scammed by lookalikes, a reseller markup, a dead product, double-tipping a service
-//     charge, and a claimable exemption). The wording guard on a lodging/OTA tactic therefore
-//     has nothing to attach to without adding a new avoidable.js item, which is out of scope
-//     here (avoidable.js is on the do-not-touch list). Flagged to MAIN.
-//
-// THE STEP LIST IS DATA (see the client script below), not hardcoded screens, so a future
-// honest addition (a season-tier context line, a connectivity verdict, anything that adds
-// judgment rather than a price) is one more entry in that array, wired the same way. Adding a
-// step must never mean restructuring this shell. Each step now carries a `type`
-// ('stepperPreset', 'price' or 'choice') that decides which control the shell renders, on top
-// of the same `apply()` wiring into the real, hidden estimator inputs.
-//
-// THE SEVEN QUESTIONS. Destination is step 1, already answered by however the reader got to
-// this country's URL (the /calculator index, an on-ramp link, or typing it directly), so this
-// component's own step list starts at step 2 and runs to step 7: travelers, nights, travel
-// style, flight price, hotel price, card type. Three questions from the original brief (cash
-// percentage, ATM frequency, travel month) were dropped rather than asked and ignored: the
-// engine derives cash and ATM behaviour from travel style automatically, and travel month
-// moves nothing in an honest model (see calc-lines.js: "we publish no seasonal uplift because
-// an honest one does not exist"). Asking a question that visibly does nothing is exactly the
-// theatre this wizard exists to avoid. This pass renders destination itself as a completed,
-// changeable step 1 inside the shell, so the numbering the reader sees now covers the whole
-// sequence, not just the six live questions.
+// WHY NOT REGENERATE STEP MARKUP FROM A CLIENT TEMPLATE, unlike the specialist's own
+// framework-free reference (which has no server and so must build every screen from a JS
+// string at runtime): this site is fully static and every country's data is already known
+// at build time, so Astro renders the real, semantic, server-rendered controls for all seven
+// steps up front. The client only ever toggles which one is visible. QuantityControl,
+// PriceControl, ChoiceRows and DestinationChoice are literally the same DOM node whether a
+// step is showing in the wizard or has been relocated into the edit dialog (see
+// calc-wizard.js's openEdit()): there is exactly one control per question, never two
+// differently-styled copies, matching the spec's explicit instruction on this point.
 import CalcResult from './CalcResult.astro';
+import QuestionPanel from './calc/QuestionPanel.astro';
+import QuantityControl from './calc/QuantityControl.astro';
+import PriceControl from './calc/PriceControl.astro';
+import ChoiceRows from './calc/ChoiceRows.astro';
+import DestinationChoice from './calc/DestinationChoice.astro';
 import { calcSetupFor } from '../data/calc-setup.js';
+import { calcLinesFor } from '../data/calc-lines.js';
+import { avoidableFor } from '../data/avoidable.js';
+import { flightPlaceholderFor } from '../data/flight-defaults.js';
+import { countries } from '../data/index.js';
 
 const { country: c } = Astro.props;
 const { calcJson, tipCalc } = calcSetupFor(c);
 const styles = (c.cash && c.cash.styles) || [];
 const defaultStyleIndex = (c.cash && c.cash.defaultIndex) || 0;
 
-// Flight and hotel preset amounts for the wizard's tappable options. Flight uses this
-// country's own verified round-trip range where one exists (the same figure the inline
-// calculator prefills), never an invented one; hotel uses the travel style's own typical
-// room price. Both stay fully editable inside the estimator once the wizard hands off.
+// Flight and hotel starting figures. Flight uses this country's own verified round-trip
+// range where one exists; otherwise the SAME rough, region-derived placeholder
+// calc-engine.js itself will prefill into the hidden #hnFlight field (flightPlaceholderFor,
+// from src/data/flight-defaults.js), so the wizard's displayed "typical" figure can never
+// drift from what the engine actually holds if the reader never touches this step.
 const flightData = c.flight || null;
-const flightTypical = flightData ? Math.round((flightData.low + flightData.high) / 2 / 10) * 10 : 700;
+const flightRough = flightPlaceholderFor(c);
+const flightTypical = flightData
+  ? Math.round((flightData.low + flightData.high) / 2 / 10) * 10
+  : (flightRough ? flightRough.usd : 700);
 const roomTypical = (styles[defaultStyleIndex] && styles[defaultStyleIndex].room) || 150;
 
-// Handed to the client script as inert JSON, the same pattern #hn-data already uses.
+// PRODUCTION BLOCKER, resolved: the full supported country list. Every entry in
+// src/data/index.js with live:true (59 of 59 today; see data/index.js itself), sorted for
+// the destination step's radio list, current country pinned so a reader arriving from a
+// country guide sees their own destination already selected rather than searching for it.
+const liveCountries = countries.filter(x => x.live);
+const destinationCountries = [c, ...liveCountries.filter(x => x.slug !== c.slug).sort((a, b) => a.name.localeCompare(b.name))];
+
+// PRODUCTION BLOCKER, resolved: the style enum. Every country carries exactly three styles,
+// in this order, under these names: Budget, Mid-range, Comfort (never "Higher comfort", a
+// guess in an earlier brief). Help copy is site-wide modeling policy, not a per-country fact,
+// so it lives here rather than in calc-engine.js or the country data files.
+const STYLE_HELP = {
+  Budget: 'Simple meals and lower everyday spending.',
+  'Mid-range': 'A comfortable everyday spending allowance.',
+  Comfort: 'More room for meals, transport and activities.',
+};
+const styleOptions = styles.map((s, i) => ({
+  value: String(i),
+  label: s.n,
+  help: STYLE_HELP[s.n] || '',
+  selected: i === defaultStyleIndex,
+}));
+
+const flightModeOptions = [
+  { value: 'known', label: 'I have a price', help: 'Round-trip airfare, per person.', selected: true },
+  { value: 'exclude', label: 'Leave flights out for now', help: 'The result will clearly say they are not included.', selected: false },
+];
+const cardOptions = [
+  { value: 'no-fee', label: 'No foreign-transaction fee', help: 'My card does not charge this fee on purchases.', selected: false },
+  { value: 'assumed', label: 'Use the typical fee assumption', help: 'My card charges a fee, or I have not checked.', selected: true },
+];
+
+// PRODUCTION BLOCKER, resolved: material unpriced categories (spec section 7). Travel
+// insurance is a named tier on every country (never priced, by design: a premium depends on
+// age, cover and trip length, none of which this calculator asks); a real unpriced entry
+// cost is engine-supplied for the few countries that carry one. Airfare is deliberately NOT
+// in this list: it gets its own first-class, mandatory strip when excluded (spec section 7),
+// not a line buried in a generic list.
+const L = calcLinesFor(c);
+const materialExclusions = [
+  'Travel insurance',
+  ...((L.entryUnpriced || []).map(e => e.label)),
+];
+
+// PRODUCTION BLOCKER, resolved: avoidable items are fully known at build time (every field
+// in src/data/avoidable.js is a static, sourced fact per country; see that file's own header).
+// The single exception is the card/ATM fee line (liveFigureId: 'avFees'), whose amount is the
+// calculator's own already-computed cardFee+atmFee, mirrored rather than recomputed, and whose
+// provenance/inclusion depend on which card option the reader picks in step 7. Tiering here
+// uses "carries a displayable figure" (a.figure or a.liveFigureId), not the old `.worth` field:
+// `.worth` only ever existed to feed the old pay/dodge aggregate bar, which this design does
+// not have (spec section 7: "There is no percentage bar"), so it is not the right field to
+// key a tier on going forward, even though for today's data the two happen to agree.
+const avoidableItems = avoidableFor(c);
+const quantifiedItems = avoidableItems.filter(a => a.figure || a.liveFigureId);
+const namedItems = avoidableItems.filter(a => !a.figure && !a.liveFigureId);
+// PRODUCTION BLOCKER, resolved (with a flag): the calm outcome's real trigger is not defined
+// in the supplied briefs ("the engine owner must determine that the available inputs
+// genuinely support" it). Absent that ruling, this build uses the narrowest, most defensible
+// condition the actual data supports: the calm state can only appear when this country's
+// ONLY quantified item is the card/ATM fee line itself, so picking a no-foreign-fee card
+// truly leaves nothing with a figure attached, not merely fewer things. Two countries
+// currently qualify (Ecuador, El Salvador; both dollar-currency, so the card-conversion and
+// exchange-desk items are already gated out for them). Flagged to MAIN: this is a resolution
+// for launch, not the desk's own ruling.
+const otherQuantifiedCount = quantifiedItems.filter(a => a.liveFigureId !== 'avFees').length;
+const calmEligible = otherQuantifiedCount === 0;
+
 const wizData = {
   countryName: c.name,
+  countrySlug: c.slug,
   styles: styles.map((s, i) => ({ i, n: s.n, room: s.room })),
   defaultStyleIndex,
   flightTypical,
+  flightVerified: !!flightData,
   roomTypical,
+  calmEligible,
 };
-const wizJson = JSON.stringify(wizData).replace(/</g, "\\u003c");
+const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 ---
-<div class="wiz-focus">
-  <div class="wiz-wrap">
+<!-- ================= THE NEW SURFACE ================= -->
 
-    {/* ================= THE WIZARD SHELL, one question at a time =================
-        The completed "step 1: destination" strip renders once, inside the same card, above
-        whichever question is live; the client script only ever rewrites #wizQuestion. */}
-    <div class="wiz" id="wizShell" aria-live="polite">
-      <div class="wiz-dest" id="wizDest">
-        <span class="wiz-dest-check" aria-hidden="true">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-        </span>
-        <span class="wiz-dest-label">Step 1 &middot; Destination</span>
-        <span class="wiz-dest-name">{c.name}</span>
-        <a class="wiz-dest-change" href="/calculator">Change</a>
+<QuestionPanel stepKey="destination" stepNumber={1} stepLabel="Destination"
+  title="Where are you going?" intro="Choose one country for this trip estimate. Search narrows this list; it never chooses for you." isFirst>
+  <DestinationChoice countries={destinationCountries} selectedSlug={c.slug} />
+</QuestionPanel>
+
+<QuestionPanel stepKey="travelers" stepNumber={2} stepLabel="Travelers" initiallyVisible
+  title="How many people are traveling?" intro="Count everyone in your travel party. People and rooms are counted separately; this estimate does not assume a specific number of rooms.">
+  <QuantityControl name="travelers" unitLabel="travelers" unitLabelSingular="traveler" value={2} min={1} max={12} presets={[1, 2, 3, 4]} helpText="This is people, not rooms." />
+</QuestionPanel>
+
+<QuestionPanel stepKey="nights" stepNumber={3} stepLabel="Trip length"
+  title="How many nights are you staying?" intro="Count nights away, not calendar days. Every priced night of the stay is treated the same; there is no separate arrival- or departure-day adjustment.">
+  <QuantityControl name="nights" unitLabel="nights" unitLabelSingular="night" value={7} min={1} max={60} presets={[5, 7, 14, 21]} helpText="You can change this after seeing the estimate." />
+</QuestionPanel>
+
+<QuestionPanel stepKey="style" stepNumber={4} stepLabel="Travel style"
+  title="How do you expect to travel?" intro={'Start with the closest fit. It sets a typical daily-spending figure and hotel price for ' + c.name + '; enter your own hotel price on the next step and it takes over.'}>
+  <ChoiceRows name="style" legend="Travel style" options={styleOptions} />
+  <p class="field-help">Changing your style will not replace a flight or room price you have already entered.</p>
+</QuestionPanel>
+
+<QuestionPanel stepKey="flights" stepNumber={5} stepLabel="Airfare"
+  title="What is your round-trip airfare?" intro="Use the price per person, in US dollars. It is also fine to leave flights out for now; the result will say so plainly rather than showing a $0 flight.">
+  <ChoiceRows name="flight-mode" legend="Airfare information" options={flightModeOptions} />
+  <div class="conditional-field" data-flight-price-wrap>
+    <PriceControl name="flight" label="Round-trip price per person (USD)" value={flightTypical}
+      helpText={flightData
+        ? ('A typical economy round trip from major US gateways, checked ' + (flightData.checked || '') + '. Enter what you actually paid and it takes over.')
+        : ('We do not yet track a verified fare for ' + c.name + '. This is a rough, region-based placeholder, not a quote: change it to your own fare.')} />
+  </div>
+</QuestionPanel>
+
+<QuestionPanel stepKey="hotel" stepNumber={6} stepLabel="Accommodation"
+  title="What is the room price per night?" intro="Use the price for one room, per night, in US dollars, before separately modeled taxes.">
+  <PriceControl name="hotel" label="Room price per night (USD)" value={roomTypical} helpText="This estimate uses one room throughout the stay. Check the room count in your own booking." />
+  <div class="assumption-note"><strong>Room assumption: 1 room.</strong><br />People and rooms are separate inputs here: this figure is not divided or multiplied by the traveler count you gave in step 2.</div>
+</QuestionPanel>
+
+<QuestionPanel stepKey="card" stepNumber={7} stepLabel="Payment fees"
+  title="Does your card charge a purchase fee abroad?" intro="Check for a foreign-transaction fee on purchases. Either way, an ATM operator's own flat withdrawal fee is a separate charge that always applies." isLast>
+  <ChoiceRows name="card" legend="Foreign-transaction fee on purchases" options={cardOptions} />
+  <p class="field-help">No bank login or card details are collected here.</p>
+</QuestionPanel>
+
+<!-- ================= THE RESULT VIEW, hidden until the wizard completes ================= -->
+<div class="results" data-result-view hidden>
+  <div class="result-layout">
+    <div class="result-main">
+      <div class="result-heading">
+        <p class="eyebrow">Your trip estimate</p>
+        <h1 tabindex="-1">Your {c.name} trip.</h1>
+        <p class="trip-meta"><span data-mirror="partyLabel">2 travelers</span> &middot; <span data-mirror="durationLabel">7 nights</span> &middot; 1 room</p>
       </div>
-      <div id="wizQuestion"></div>
-    </div>
 
-    {/* ================= THE REAL ENGINE, visually collapsed until the wizard hands off =================
-        Same estimator inputs and the same <CalcResult> the inline per-country calculator uses,
-        same ids, so calc-engine.js finds everything it expects. Nothing here is a second copy of
-        the math: it is the actual inputs, driven by the wizard's answers instead of by hand. */}
-    <div class="wiz-underlay" id="wizUnderlay" hidden>
-      <!-- Everything the engine needs, handed over as inert JSON. No card data ships. -->
-      <script type="application/json" id="hn-data" set:html={calcJson}></script>
-      <script type="application/json" id="wiz-data" set:html={wizJson}></script>
-
-      <div class="estimator" id="hn-app" hidden>
-        <div class="erow">
-          <div class="ef ef-room">
-            <label for="hnRoom">Hotel price a night</label>
-            <span class="moneyin"><span class="mny">$</span><input id="hnRoom" type="text" inputmode="numeric" value="150" aria-label="Hotel price per night in US dollars" /></span>
-          </div>
-          <label class="hn-toggle hn-toggle-inline" id="hnPaidWrap">
-            <input type="checkbox" id="hnPaid" />
-            <span class="hn-switch" aria-hidden="true"></span>
-            <span class="hn-toggle-l">Already paid for the room</span>
-          </label>
+      <section class="answer" aria-label="Estimated cost and scope">
+        <div class="range-prefix">About</div>
+        <p class="range" aria-label="Estimated trip range">
+          <span data-mirror="rangeLow">$0</span><span aria-hidden="true">&ndash;</span><span data-mirror="rangeHigh">$0</span>
+        </p>
+        <p class="range-scope">USD &middot; for the whole party, not per person</p>
+        <div class="scope-alert compact-scope" data-flight-alert>
+          <strong data-mirror="flightNotice">Flights not included.</strong>
+          <button class="text-link" type="button" data-edit="flights" data-flight-alert-action>Add flights &rarr;</button>
         </div>
-        <p class="ef-hint-room" id="hnRoomHint" hidden></p>
+        {materialExclusions.length > 0 && (
+          <p class="unpriced"><strong>Not priced:</strong> {materialExclusions.join('; ')}.</p>
+        )}
+      </section>
 
-        <label class="cf hn-region" id="hnRegionWrap" hidden style="display:none">
-          <span class="cf-l">Where are you staying?</span>
-          <span class="selwrap"><select id="hnRegion"></select></span>
-        </label>
+      <div class="result-actions">
+        <button class="btn btn-primary" type="button" data-share>Save / share</button>
+        <button class="btn btn-secondary" type="button" data-jump-edit>Edit trip</button>
+      </div>
 
-        <div class="erow erow-flight">
-          <div class="ef ef-flight">
-            <label for="hnFlight">Flights, round trip a person</label>
-            <span class="moneyin"><span class="mny">$</span><input id="hnFlight" type="text" inputmode="numeric" value="" aria-label="Round trip flight price per traveler in US dollars" /></span>
-          </div>
-          <p class="ef-hint" id="hnFlightHint">Optional. Enter your round trip fare per traveler to fold flights into the total.</p>
+      <!-- ===== What you can avoid (spec section 7) OR the calm outcome (section 8) ===== -->
+      <section class="section" aria-labelledby="avoid-heading" data-avoid-section>
+        <div data-avoid-normal hidden={calmEligible}>
+          <h2 id="avoid-heading">What you can avoid</h2>
+          <p class="section-intro">Separate choices, not a combined saving.</p>
+
+          {quantifiedItems.length > 0 && (
+            <Fragment>
+              <p class="tier-label">WITH AN INDIVIDUAL FIGURE</p>
+              {quantifiedItems.slice(0, 2).map(a => (
+                <article class="avoid-card" aria-labelledby={'item-' + a.key}>
+                  <div class="evidence-row">
+                    {a.liveFigureId === 'avFees' ? (
+                      <Fragment>
+                        <span class="provenance" data-avoid-provenance={a.key}><span class="meta-key">Basis</span> Sourced rule</span>
+                        <span class="status" data-avoid-status={a.key}>Included</span>
+                      </Fragment>
+                    ) : (
+                      <Fragment>
+                        <span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span>
+                        <span class="status not-included">Not included</span>
+                      </Fragment>
+                    )}
+                  </div>
+                  <h3 id={'item-' + a.key}>{a.title}</h3>
+                  <div class="item-amount">
+                    {a.liveFigureId === 'avFees'
+                      ? <strong data-avoid-amount={a.key}>&nbsp;</strong>
+                      : <strong>{a.figure}</strong>}
+                    <span>{a.figureNote}</span>
+                  </div>
+                  {/* The 'fees' item's static `escape` field in avoidable.js ("A no-foreign-fee
+                      card takes both fee lines above to zero") predates this round's engine
+                      fix: a no-fee card now zeroes only the card-percentage portion, and the
+                      ATM operator's own flat fee still applies (see calc-engine.js's own
+                      corrected copy). avoidable.js is on the do-not-touch list, so this file
+                      overrides that one stale sentence with accurate wording rather than
+                      quoting it; every other item's escape/detail text is quoted as-is.
+                      Flagged to MAIN: the underlying avoidable.js copy itself should be
+                      corrected on the desk's own next pass, since the inline per-country
+                      calculator (CalcResult.astro, untouched by this brief) still quotes the
+                      stale sentence verbatim. */}
+                  <p>{a.liveFigureId === 'avFees' ? "A no-foreign-fee card takes the card percentage to $0; the ATM operator's own flat fee is separate and still applies." : a.escape} {a.detail}</p>
+                  <details class="source-details"><summary>About this figure</summary><p>See the full explanation: <a href={a.href}>{a.hrefLabel}</a></p></details>
+                </article>
+              ))}
+              {quantifiedItems.length > 2 && (
+                <details class="additional-items">
+                  <summary>{quantifiedItems.length - 2} more individual {quantifiedItems.length - 2 === 1 ? 'item' : 'items'}</summary>
+                  {quantifiedItems.slice(2).map(a => (
+                    <article class="avoid-card" aria-labelledby={'item-' + a.key}>
+                      <div class="evidence-row">
+                        {a.liveFigureId === 'avFees' ? (
+                          <Fragment>
+                            <span class="provenance" data-avoid-provenance={a.key}><span class="meta-key">Basis</span> Sourced rule</span>
+                            <span class="status" data-avoid-status={a.key}>Included</span>
+                          </Fragment>
+                        ) : (
+                          <Fragment>
+                            <span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span>
+                            <span class="status not-included">Not included</span>
+                          </Fragment>
+                        )}
+                      </div>
+                      <h3 id={'item-' + a.key}>{a.title}</h3>
+                      <div class="item-amount">
+                        {a.liveFigureId === 'avFees'
+                          ? <strong data-avoid-amount={a.key}>&nbsp;</strong>
+                          : <strong>{a.figure}</strong>}
+                        <span>{a.figureNote}</span>
+                      </div>
+                      <p>{a.liveFigureId === 'avFees' ? "A no-foreign-fee card takes the card percentage to $0; the ATM operator's own flat fee is separate and still applies." : a.escape} {a.detail}</p>
+                      <details class="source-details"><summary>About this figure</summary><p>See the full explanation: <a href={a.href}>{a.hrefLabel}</a></p></details>
+                    </article>
+                  ))}
+                </details>
+              )}
+            </Fragment>
+          )}
+
+          {namedItems.length > 0 && (
+            <Fragment>
+              <p class="tier-label">USEFUL, WITHOUT A PRICE TAG</p>
+              {namedItems.slice(0, 2).map(a => (
+                <article class="avoid-card" aria-labelledby={'item-' + a.key}>
+                  <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status not-estimated">Not estimated</span></div>
+                  <h3 id={'item-' + a.key}>{a.title}</h3>
+                  <p>{a.escape} {a.detail}</p>
+                  <details class="source-details"><summary>About this figure</summary><p>See the full explanation: <a href={a.href}>{a.hrefLabel}</a></p></details>
+                </article>
+              ))}
+              {namedItems.length > 2 && (
+                <details class="additional-items">
+                  <summary>{namedItems.length - 2} more individual {namedItems.length - 2 === 1 ? 'item' : 'items'}</summary>
+                  {namedItems.slice(2).map(a => (
+                    <article class="avoid-card" aria-labelledby={'item-' + a.key}>
+                      <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status not-estimated">Not estimated</span></div>
+                      <h3 id={'item-' + a.key}>{a.title}</h3>
+                      <p>{a.escape} {a.detail}</p>
+                      <details class="source-details"><summary>About this figure</summary><p>See the full explanation: <a href={a.href}>{a.hrefLabel}</a></p></details>
+                    </article>
+                  ))}
+                </details>
+              )}
+            </Fragment>
+          )}
         </div>
 
-        <div class="erow">
-          <div class="ef ef-num"><label>Travelers</label>
-            <span class="stepper">
-              <button type="button" class="stp" data-step="hnTrav" data-dir="-1" aria-label="One fewer traveler">&#8722;</button>
-              <span class="stp-v" id="hnTrav" data-v="2">2</span>
-              <button type="button" class="stp" data-step="hnTrav" data-dir="1" aria-label="One more traveler">+</button>
-            </span>
-          </div>
-          <div class="ef ef-num"><label>Nights</label>
-            <span class="stepper">
-              <button type="button" class="stp" data-step="hnNights" data-dir="-1" aria-label="One fewer night">&#8722;</button>
-              <span class="stp-v" id="hnNights" data-v="7">7</span>
-              <button type="button" class="stp" data-step="hnNights" data-dir="1" aria-label="One more night">+</button>
-            </span>
-          </div>
-          <div class="ef ef-style"><label>Style</label>
-            <div class="seg" role="group" aria-label="Travel style">
-              {styles.map((s, i) => (
-                <button id={"hnStyle" + i} class={i === defaultStyleIndex ? "on" : ""} type="button" data-per={s.per} data-cash={s.cash} data-room={s.room}>{s.n}</button>
+        {calmEligible && (
+          <div data-avoid-calm hidden>
+            <h2>Little to avoid.</h2>
+            <p class="section-intro">A few simple checks. Nothing extra suggested.</p>
+            <div class="calm-result">
+              <p class="eyebrow">Nothing extra suggested</p>
+              <h3>Nothing here suggests you need to buy another product.</h3>
+              <p>Based on your answers, few avoidable charges stand out for {c.name}. This is not a guarantee that every travel cost is covered.</p>
+            </div>
+            <div class="calm-checks">
+              <div class="calm-check">
+                <span class="calm-check-mark" aria-hidden="true">&#10003;</span>
+                <div>
+                  <strong>Card purchase fee</strong>
+                  <p>Your card has no foreign-transaction fee on purchases. The ATM operator's own flat fee is separate and still applies.</p>
+                  <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Your figure</span><span class="status avoided">Already avoided</span></div>
+                </div>
+              </div>
+              {namedItems.map(a => (
+                <div class="calm-check">
+                  <span class="calm-check-mark" aria-hidden="true">&#10003;</span>
+                  <div>
+                    <strong>{a.title}</strong>
+                    <p>{a.escape} {a.detail}</p>
+                    <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status not-estimated">Not estimated</span></div>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
-        </div>
+        )}
+      </section>
 
-        <CalcResult country={c} tipCalc={tipCalc} hideWizardCta={true} />
+      <!-- ===== Where the money goes (CostBreakdown, spec section 9) ===== -->
+      <section class="section" aria-labelledby="breakdown-heading">
+        <h2 id="breakdown-heading">Where the money goes</h2>
+        <p class="section-intro">Open only the detail you need.</p>
+        <div class="breakdown">
+          <details class="breakdown-item" id="breakdown-flights">
+            <summary><strong>Getting there</strong><span class="breakdown-amount" data-breakdown-amount="flights">Not included</span></summary>
+            <div class="breakdown-body">
+              <p data-breakdown-desc="flights">The round-trip airfare you gave in step 5, if any. Paid in dollars at booking, so it carries no foreign-transaction fee.</p>
+              <div class="detail-line">
+                <div class="line-heading"><span>Round-trip airfare</span><span data-breakdown-line-amount="flights">Not included</span></div>
+                <div class="evidence-row"><span class="provenance" data-breakdown-line-provenance="flights">Basis</span><span class="status" data-breakdown-line-status="flights">Not included</span></div>
+              </div>
+              {L.entryCharges && L.entryCharges.map(e => (
+                <div class="detail-line">
+                  <div class="line-heading"><span>{e.label}</span><span>{e.value}</span></div>
+                  <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status">Included</span></div>
+                  {e.source && <p class="small muted">One-off, per person. <a href={e.source} target="_blank" rel="noopener">Official source</a></p>}
+                </div>
+              ))}
+              {L.namedZeros && L.namedZeros.map(z => (
+                <div class="detail-line">
+                  <div class="line-heading"><span>{z.label}</span><span>$0</span></div>
+                  <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status avoided">Already avoided</span></div>
+                  <p class="small muted">{z.value}</p>
+                </div>
+              ))}
+              <button class="text-link" type="button" data-edit="flights">Change airfare</button>
+            </div>
+          </details>
+
+          <details class="breakdown-item" id="breakdown-accommodation">
+            <summary><strong>Accommodation</strong><span class="breakdown-amount" data-breakdown-amount="accommodation">$0</span></summary>
+            <div class="breakdown-body">
+              <p>Room price for the stay. Separately modeled taxes appear in the tax section, not twice.</p>
+              <div class="detail-line">
+                <div class="line-heading"><span>Room price for the stay</span><span data-breakdown-line-amount="accommodation">$0</span></div>
+                <div class="evidence-row"><span class="provenance" data-breakdown-line-provenance="accommodation">Basis</span><span class="status">Included</span></div>
+                <p class="small muted" data-breakdown-line-note="accommodation">&nbsp;</p>
+              </div>
+              <button class="text-link" type="button" data-edit="hotel">Change accommodation</button>
+            </div>
+          </details>
+
+          <details class="breakdown-item" id="breakdown-daily">
+            <summary><strong>Daily spending</strong><span class="breakdown-amount" data-breakdown-amount="daily">$0</span></summary>
+            <div class="breakdown-body">
+              <p>Food, local transport, activities and tips, for your travel style, party size and trip length. The production engine defines this figure; this surface only renders it.</p>
+              <div class="detail-line">
+                <div class="line-heading"><span>On-the-ground spend</span><span data-breakdown-line-amount="daily-2">$0</span></div>
+                <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Our estimate</span><span class="status">Included</span></div>
+              </div>
+              <button class="text-link" type="button" data-edit="style">Change travel style</button>
+            </div>
+          </details>
+
+          <details class="breakdown-item" id="breakdown-taxes">
+            <summary><strong>Taxes &amp; payment fees</strong><span class="breakdown-amount" data-breakdown-amount="taxes">$0</span></summary>
+            <div class="breakdown-body">
+              <p>Tourist tax, card purchase fee and ATM fee, added together for this row only; each is its own line below and none of them are added into any other group.</p>
+              <div class="detail-line">
+                <div class="line-heading"><span data-breakdown-tax-label>Tourist tax</span><span data-breakdown-line-amount="tax">$0</span></div>
+                <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status">Included</span></div>
+              </div>
+              <div class="detail-line">
+                <div class="line-heading"><span>Card purchase fee</span><span data-breakdown-line-amount="cardfee">$0</span></div>
+                <div class="evidence-row"><span class="provenance" data-breakdown-line-provenance="cardfee">Basis</span><span class="status" data-breakdown-line-status="cardfee">Included</span></div>
+                <p class="small muted">On the room and the card-paid half of daily spend.</p>
+              </div>
+              <div class="detail-line">
+                <div class="line-heading"><span>ATM operator fee</span><span data-breakdown-line-amount="atmfee">$0</span></div>
+                <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status">Included</span></div>
+                <p class="small muted">A flat per-withdrawal charge. This is separate from the card purchase fee above and always applies, regardless of your step 7 answer.</p>
+              </div>
+              <button class="text-link" type="button" data-edit="card">Change payment fees</button>
+            </div>
+          </details>
+        </div>
+        <p class="method-note"><strong>Three kinds of information.</strong> Your figures, our estimates and sourced rules are labeled separately. Whether a cost is in the total is a different label.</p>
+      </section>
+    </div>
+
+    <!-- ===== TripSummary / Edit trip (spec section 9 "Edit trip") ===== -->
+    <aside class="trip-summary" id="edit-trip" aria-labelledby="edit-trip-title" tabindex="-1">
+      <h2 id="edit-trip-title">Edit your trip</h2>
+      <p>Change one answer. Keep the rest.</p>
+      <dl>
+        <div class="summary-row"><dt>Destination</dt><dd>{c.name}</dd><button class="text-link" type="button" data-edit="destination" aria-label="Change destination">Change</button></div>
+        <div class="summary-row"><dt>Travelers</dt><dd data-mirror="summaryTravelers">2 people</dd><button class="text-link" type="button" data-edit="travelers" aria-label="Change travelers">Change</button></div>
+        <div class="summary-row"><dt>Trip length</dt><dd data-mirror="summaryNights">7 nights</dd><button class="text-link" type="button" data-edit="nights" aria-label="Change trip length">Change</button></div>
+        <div class="summary-row"><dt>Travel style</dt><dd data-mirror="summaryStyle">Mid-range</dd><button class="text-link" type="button" data-edit="style" aria-label="Change travel style">Change</button></div>
+        <div class="summary-row"><dt>Round-trip airfare</dt><dd data-mirror="summaryFlight">Not included</dd><button class="text-link" type="button" data-edit="flights" aria-label="Change round-trip airfare">Change</button></div>
+        <div class="summary-row"><dt>Accommodation</dt><dd data-mirror="summaryHotel">$0 / room / night</dd><button class="text-link" type="button" data-edit="hotel" aria-label="Change accommodation">Change</button></div>
+        <div class="summary-row"><dt>Card purchase fee</dt><dd data-mirror="summaryCard">Use the typical fee assumption</dd><button class="text-link" type="button" data-edit="card" aria-label="Change payment fees">Change</button></div>
+      </dl>
+      <div class="summary-footer">Your inputs stay available while you explore. No need to repeat the wizard.</div>
+    </aside>
+  </div>
+</div>
+
+<!-- ===== Error state (spec section 5 "Errors, pending and disabled") =====
+     A defensive guard, not a state with a real production trigger today: the engine is
+     synchronous and always present on every built country page (calc-regression-test.mjs
+     asserts this), so there is no network call or async gap that can fail. This exists only
+     to satisfy "never show zero, a partial calculation, or the demo fixture as a production
+     fallback" in the one case the mirror script itself throws (e.g. an id genuinely missing). -->
+<div class="results" data-error-view hidden>
+  <div class="result-heading"><p class="eyebrow">Your trip estimate</p><h1 tabindex="-1">Your answers are still here.</h1></div>
+  <section class="stale-state" role="status">
+    <h2>The estimate is unavailable.</h2>
+    <p>We could not read a complete result. No partial or zero total is shown. Your answers have been preserved.</p>
+    <button class="btn btn-secondary" type="button" data-retry>Try again</button>
+  </section>
+</div>
+
+<!-- ================= THE REAL ENGINE, permanently hidden ================= -->
+<div class="wiz-underlay" data-engine-root hidden>
+  <script type="application/json" id="hn-data" set:html={calcJson}></script>
+  <script type="application/json" id="wiz-data" set:html={wizJson}></script>
+
+  <div class="estimator" id="hn-app" hidden>
+    <div class="erow">
+      <div class="ef ef-room">
+        <label for="hnRoom">Hotel price a night</label>
+        <span class="moneyin"><span class="mny">$</span><input id="hnRoom" type="text" inputmode="numeric" value="150" aria-label="Hotel price per night in US dollars" /></span>
+      </div>
+      <label class="hn-toggle hn-toggle-inline" id="hnPaidWrap">
+        <input type="checkbox" id="hnPaid" />
+        <span class="hn-switch" aria-hidden="true"></span>
+        <span class="hn-toggle-l">Already paid for the room</span>
+      </label>
+    </div>
+    <p class="ef-hint-room" id="hnRoomHint" hidden></p>
+
+    <label class="cf hn-region" id="hnRegionWrap" hidden style="display:none">
+      <span class="cf-l">Where are you staying?</span>
+      <span class="selwrap"><select id="hnRegion"></select></span>
+    </label>
+
+    <div class="erow erow-flight">
+      <div class="ef ef-flight">
+        <label for="hnFlight">Flights, round trip a person</label>
+        <span class="moneyin"><span class="mny">$</span><input id="hnFlight" type="text" inputmode="numeric" value="" aria-label="Round trip flight price per traveler in US dollars" /></span>
+      </div>
+      <p class="ef-hint" id="hnFlightHint">Optional. Enter your round trip fare per traveler to fold flights into the total.</p>
+    </div>
+
+    <div class="erow">
+      <div class="ef ef-num"><label>Travelers</label>
+        <span class="stepper">
+          <button type="button" class="stp" data-step="hnTrav" data-dir="-1" aria-label="One fewer traveler">&#8722;</button>
+          <span class="stp-v" id="hnTrav" data-v="2">2</span>
+          <button type="button" class="stp" data-step="hnTrav" data-dir="1" aria-label="One more traveler">+</button>
+        </span>
+      </div>
+      <div class="ef ef-num"><label>Nights</label>
+        <span class="stepper">
+          <button type="button" class="stp" data-step="hnNights" data-dir="-1" aria-label="One fewer night">&#8722;</button>
+          <span class="stp-v" id="hnNights" data-v="7">7</span>
+          <button type="button" class="stp" data-step="hnNights" data-dir="1" aria-label="One more night">+</button>
+        </span>
+      </div>
+      <div class="ef ef-style"><label>Style</label>
+        <div class="seg" role="group" aria-label="Travel style">
+          {styles.map((s, i) => (
+            <button id={'hnStyle' + i} class={i === defaultStyleIndex ? 'on' : ''} type="button" data-per={s.per} data-cash={s.cash} data-room={s.room}>{s.n}</button>
+          ))}
+        </div>
       </div>
     </div>
+
+    <CalcResult country={c} tipCalc={tipCalc} hideWizardCta={true} />
   </div>
 </div>
 
 <script>
-  // The wizard's own driver. It writes into the real inputs above and fires native events on
-  // them, exactly the events their own listeners (inside calc-engine.js) already expect. It
-  // never touches render() directly and never recomputes a total itself.
-  (function () {
-    const shell = document.getElementById('wizShell');
-    const destBar = document.getElementById('wizDest');
-    const question = document.getElementById('wizQuestion');
-    const underlay = document.getElementById('wizUnderlay');
-    const wdEl = document.getElementById('wiz-data');
-    if (!shell || !destBar || !question || !underlay || !wdEl) return;
-
-    let WD;
-    try { WD = JSON.parse(wdEl.textContent); } catch (e) { return; }
-
-    const id = (x) => document.getElementById(x);
-    const fire = (el, type) => el.dispatchEvent(new Event(type, { bubbles: true }));
-    const usd = (v) => '$' + Math.round(v).toLocaleString('en-US');
-
-    // ----- one wiring function per real engine input the wizard can set -----
-    function setStepper(key, target) {
-      const el = id(key);
-      if (!el) return;
-      let guard = 0;
-      while (+el.dataset.v !== target && guard < 80) {
-        const dir = target > +el.dataset.v ? '1' : '-1';
-        const btn = document.querySelector('.stp[data-step="' + key + '"][data-dir="' + dir + '"]');
-        if (!btn || btn.disabled) break;
-        fire(btn, 'click');
-        guard++;
-      }
-    }
-    function setMoneyInput(key, value) {
-      const el = id(key);
-      if (!el) return;
-      el.value = String(Math.round(value));
-      fire(el, 'input');
-    }
-    function clickStyle(i) {
-      const btn = id('hnStyle' + i);
-      if (btn) fire(btn, 'click');
-    }
-    function setNoFee(on) {
-      const el = id('hnNoFee');
-      if (!el) return;
-      el.checked = on;
-      fire(el, 'change');
-    }
-
-    // ----- THE STEP LIST, as data. A future honest addition is one more entry here, wired
-    // the same way; the shell below never needs to change to add one. `type` picks the
-    // control: 'stepperPreset' (presets plus a live +/- stepper, requires Continue),
-    // 'price' (a typed dollar figure prefilled with a typical, requires Continue), or
-    // 'choice' (tappable chips that advance immediately, the old behaviour). -----
-    const STEPS = [
-      {
-        id: 'travelers',
-        overall: 2,
-        type: 'stepperPreset',
-        label: 'Travelers',
-        question: 'How many travelers?',
-        helper: 'Changes the per-person entry charges and the daily spend.',
-        typical: 2,
-        min: 1,
-        max: 12, // matches calc-engine.js's own hnTrav limit, so the wizard never asks for
-                 // a value the real stepper would refuse.
-        presets: [1, 2, 3, 4],
-        apply(v) { setStepper('hnTrav', v); },
-      },
-      {
-        id: 'nights',
-        overall: 3,
-        type: 'stepperPreset',
-        label: 'Nights',
-        question: 'How many nights?',
-        helper: 'The room total and the tourist tax both scale with this.',
-        typical: 7,
-        min: 1,
-        max: 60, // matches calc-engine.js's own hnNights limit.
-        presets: [5, 7, 14, 21],
-        apply(v) { setStepper('hnNights', v); },
-      },
-      {
-        id: 'style',
-        overall: 4,
-        type: 'choice',
-        label: 'Travel style',
-        question: 'What is your travel style?',
-        helper: 'Sets a typical daily spend and room price. Edit either later.',
-        typical: WD.defaultStyleIndex,
-        options: WD.styles.map((s) => ({ label: s.n, value: s.i })),
-        apply(v) { clickStyle(v); },
-      },
-      {
-        id: 'flight',
-        overall: 5,
-        type: 'price',
-        label: 'Flights',
-        question: 'About how much is your round trip flight, per person?',
-        helper: 'Paid in dollars at booking, so it carries no foreign fee.',
-        typical: WD.flightTypical,
-        apply(v) { setMoneyInput('hnFlight', v); },
-      },
-      {
-        id: 'hotel',
-        overall: 6,
-        type: 'price',
-        label: 'Hotel',
-        question: 'About how much is your hotel, per night?',
-        helper: 'Fully editable once you reach the total below.',
-        typical: WD.roomTypical,
-        apply(v) { setMoneyInput('hnRoom', v); },
-      },
-      {
-        id: 'card',
-        overall: 7,
-        type: 'choice',
-        label: 'Your card',
-        question: 'What kind of card are you bringing?',
-        helper: 'Most US cards charge a foreign fee without saying so.',
-        typical: 'regular',
-        options: [
-          { label: 'A regular card (most US cards add about a 3% foreign fee)', value: 'regular' },
-          { label: 'A no-foreign-fee card', value: 'nofee' },
-        ],
-        apply(v) { setNoFee(v === 'nofee'); },
-      },
-    ];
-    const TOTAL_STEPS = 7; // destination (step 1, shown as the completed strip above) plus
-                            // the six live questions below.
-
-    let stepIndex = 0;
-    const answers = {};
-
-    function esc(s) {
-      return String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-    }
-
-    function chosenFor(s) {
-      return Object.prototype.hasOwnProperty.call(answers, s.id) ? answers[s.id] : s.typical;
-    }
-
-    function progressHtml(s) {
-      const pct = Math.round((s.overall / TOTAL_STEPS) * 100);
-      return '<div class="wiz-progress"><div class="wiz-bar"><div class="wiz-bar-fill" style="width:' + pct + '%"></div></div>' +
-        '<span class="wiz-step-n">Step ' + s.overall + ' of ' + TOTAL_STEPS + '</span></div>';
-    }
-
-    function navHtml(showContinue) {
-      return '<div class="wiz-nav">' +
-        (stepIndex > 0 ? '<button type="button" class="wiz-back">&#8592; Back</button>' : '<span></span>') +
-        (showContinue ? '<button type="button" class="wiz-continue">Continue &#8594;</button>' : '<span></span>') +
-        '</div>';
-    }
-
-    function renderStep() {
-      const s = STEPS[stepIndex];
-      if (s.type === 'stepperPreset') renderStepperPreset(s);
-      else if (s.type === 'price') renderPrice(s);
-      else renderChoice(s);
-    }
-
-    // ----- 'choice': tappable chips, advances on tap, exactly like before. -----
-    function renderChoice(s) {
-      const chosen = chosenFor(s);
-      question.innerHTML =
-        progressHtml(s) +
-        '<p class="wiz-label">' + esc(s.label) + '</p>' +
-        '<h2 class="wiz-q">' + esc(s.question) + '</h2>' +
-        (s.helper ? '<p class="wiz-helper">' + esc(s.helper) + '</p>' : '') +
-        '<div class="wiz-opts" role="group" aria-label="' + esc(s.question) + '">' +
-        s.options.map((o) => (
-          '<button type="button" class="wiz-opt' + (o.value === chosen ? ' wiz-opt-on' : '') + '" data-value="' + esc(String(o.value)) + '">' + esc(o.label) + (o.value === s.typical ? '<span class="wiz-typ">typical</span>' : '') + '</button>'
-        )).join('') +
-        '</div>' +
-        navHtml(false);
-
-      question.querySelectorAll('.wiz-opt').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const raw = btn.dataset.value;
-          const v = s.options.find((o) => String(o.value) === raw).value;
-          choose(s, v, true);
-        });
-      });
-      wireNav();
-    }
-
-    // ----- 'stepperPreset': preset chips plus a real +/- stepper. Presets set the value on
-    // one tap; the stepper is the fine-tune, so there is no separate "enter my own" control
-    // and no "not sure" skip text, the pre-highlighted typical preset already covers that. -----
-    function renderStepperPreset(s) {
-      const chosen = Number(chosenFor(s));
-      question.innerHTML =
-        progressHtml(s) +
-        '<p class="wiz-label">' + esc(s.label) + '</p>' +
-        '<h2 class="wiz-q">' + esc(s.question) + '</h2>' +
-        (s.helper ? '<p class="wiz-helper">' + esc(s.helper) + '</p>' : '') +
-        '<div class="wiz-stp-row">' +
-        '<button type="button" class="wiz-stp-btn" data-dir="-1" aria-label="Decrease" ' + (chosen <= s.min ? 'disabled' : '') + '>&#8722;</button>' +
-        '<span class="wiz-stp-val" aria-live="polite">' + chosen + '</span>' +
-        '<button type="button" class="wiz-stp-btn" data-dir="1" aria-label="Increase" ' + (chosen >= s.max ? 'disabled' : '') + '>+</button>' +
-        '</div>' +
-        '<div class="wiz-presets" role="group" aria-label="Quick pick">' +
-        s.presets.map((p) => (
-          '<button type="button" class="wiz-preset' + (p === chosen ? ' wiz-preset-on' : '') + '" data-value="' + p + '">' + p + (p === s.typical ? '<span class="wiz-typ">typical</span>' : '') + '</button>'
-        )).join('') +
-        '</div>' +
-        navHtml(true);
-
-      question.querySelectorAll('.wiz-preset').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const v = +btn.dataset.value;
-          setValue(s, v);
-        });
-      });
-      question.querySelectorAll('.wiz-stp-btn').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          const dir = +btn.dataset.dir;
-          const next = Math.min(s.max, Math.max(s.min, chosen + dir));
-          setValue(s, next);
-        });
-      });
-      wireNav();
-    }
-
-    // ----- 'price': a typed dollar figure, prefilled with a typical, no invented presets. -----
-    function renderPrice(s) {
-      const chosen = Math.round(Number(chosenFor(s)));
-      question.innerHTML =
-        progressHtml(s) +
-        '<p class="wiz-label">' + esc(s.label) + '</p>' +
-        '<h2 class="wiz-q">' + esc(s.question) + '</h2>' +
-        (s.helper ? '<p class="wiz-helper">' + esc(s.helper) + '</p>' : '') +
-        '<div class="wiz-price-row">' +
-        '<span class="wiz-price-dollar" aria-hidden="true">$</span>' +
-        '<input class="wiz-price-input" id="wizPriceInput" type="text" inputmode="numeric" value="' + chosen + '" aria-label="' + esc(s.question) + '">' +
-        '</div>' +
-        '<p class="wiz-price-hint">This is a typical figure for ' + esc(WD.countryName) + '. Know yours? Type it in.</p>' +
-        navHtml(true);
-
-      const inputEl = question.querySelector('#wizPriceInput');
-      if (inputEl) {
-        inputEl.addEventListener('input', () => {
-          const v = Math.max(0, parseInt(inputEl.value.replace(/[^0-9]/g, ''), 10) || 0);
-          answers[s.id] = v;
-          s.apply(v);
-        });
-        // Focusing and selecting on tap is what makes "type it in" actually easy on mobile,
-        // since the field starts full of the typical figure rather than empty.
-        inputEl.addEventListener('focus', () => inputEl.select());
-      }
-      wireNav();
-    }
-
-    function setValue(s, v) {
-      answers[s.id] = v;
-      s.apply(v);
-      renderStep();
-    }
-
-    function wireNav() {
-      const backBtn = question.querySelector('.wiz-back');
-      if (backBtn) backBtn.addEventListener('click', goBack);
-      const contBtn = question.querySelector('.wiz-continue');
-      if (contBtn) contBtn.addEventListener('click', () => advance());
-    }
-
-    // choose(): used by 'choice' steps, which both record the answer and move on in one tap.
-    function choose(s, value, advanceNow) {
-      answers[s.id] = value;
-      s.apply(value);
-      if (advanceNow) advance();
-      else renderStep();
-    }
-
-    function advance() {
-      if (stepIndex < STEPS.length - 1) {
-        stepIndex++;
-        renderStep();
-      } else {
-        finish();
-      }
-    }
-
-    function goBack() {
-      if (stepIndex > 0) {
-        stepIndex--;
-        renderStep();
-      }
-    }
-
-    function finish() {
-      shell.hidden = true;
-      underlay.hidden = false;
-      if (typeof underlay.scrollIntoView === 'function') {
-        try { underlay.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-        catch (e) { try { underlay.scrollIntoView(); } catch (e2) { /* no-op: nothing sensible left to try */ } }
-      }
-    }
-
-    // The result view's own "Change answers" button (see CalcResult.astro) dispatches this
-    // rather than reaching into this closure directly, so the two components stay decoupled:
-    // CalcResult knows nothing about the wizard's internals, only that this event exists.
-    window.addEventListener('ttc-wizard-change-answers', () => {
-      underlay.hidden = true;
-      shell.hidden = false;
-      renderStep();
-      if (typeof shell.scrollIntoView === 'function') {
-        try { shell.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-        catch (e) { try { shell.scrollIntoView(); } catch (e2) { /* no-op */ } }
-      }
-    });
-
-    renderStep();
-  })();
+  import { initCalcWizard } from '../scripts/calc-wizard.js';
+  initCalcWizard();
 </script>
-
 <script>
   // The calculator engine, shared with the inline per-country calculator. Imported for its
   // side effects: it hydrates from #hn-data and #hn-app the moment both exist, which they do
-  // above, kept visually collapsed until the wizard finishes.
+  // above, permanently kept out of view.
   import '../scripts/calc-engine.js';
 </script>
 
 <style>
-  /* ===== PART A, POINT 1: FULL FOCUS =====
-     Once the reader is in the calculator it is the only thing on screen: a dark frame lifts
-     the white wizard card off the page, and nothing from the surrounding layout competes
-     around it. The frame wraps both the question shell and the handed-off estimator/result,
-     so the focus treatment holds through the whole flow, not just the Q&A part of it. */
-  .wiz-focus{background:#0E3B31;border-radius:20px;padding:28px 16px;margin:0 0 8px}
-  .wiz-wrap{max-width:640px;margin:0 auto}
-
-  /* ----- the wizard shell ----- */
-  .wiz{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 18px 40px -14px rgba(0,0,0,.45);padding:24px 26px 26px}
-
-  /* Destination, shown as a completed, changeable step 1 above whichever question is live. */
-  .wiz-dest{display:flex;align-items:center;gap:9px;padding:0 0 16px;margin:0 0 18px;border-bottom:1px solid var(--line);flex-wrap:wrap}
-  .wiz-dest-check{flex:none;width:20px;height:20px;border-radius:999px;background:var(--green-bg);color:#10502C;display:flex;align-items:center;justify-content:center}
-  .wiz-dest-label{font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-  .wiz-dest-name{font-size:14.5px;font-weight:600;color:var(--ink);margin-right:auto}
-  .wiz-dest-change{font-size:13px;font-weight:600;color:var(--teal-deep);text-decoration:none;padding:4px 2px}
-  .wiz-dest-change:hover{text-decoration:underline}
-
-  .wiz-progress{display:flex;flex-direction:column;gap:8px;margin:0 0 20px}
-  .wiz-bar{height:6px;border-radius:999px;background:var(--line);overflow:hidden}
-  .wiz-bar-fill{height:100%;background:var(--teal);border-radius:999px;transition:width .3s ease}
-  .wiz-step-n{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
-  .wiz-label{margin:0 0 6px;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--teal-deep)}
-  .wiz-q{margin:0 0 8px;font-family:var(--serif);font-weight:500;font-size:clamp(22px,4vw,28px);line-height:1.2;letter-spacing:-.01em;color:var(--ink)}
-  .wiz-helper{margin:0 0 22px;font-size:14.5px;color:var(--muted);line-height:1.5}
-
-  /* ===== PART A, POINT 4: BIG TAP TARGETS =====
-     Every control below sits well above the 44px minimum; option chips and the stepper
-     buttons in particular are sized for a thumb, not a cursor. */
-
-  .wiz-opts{display:flex;flex-direction:column;gap:10px;margin:0 0 4px}
-  .wiz-opt{position:relative;text-align:left;padding:17px 18px;min-height:56px;border:1px solid var(--line);border-radius:12px;background:var(--paper);font-family:inherit;font-size:15.5px;font-weight:500;color:var(--ink);cursor:pointer;transition:border-color .15s ease,background .15s ease}
-  .wiz-opt:hover{border-color:var(--teal)}
-  .wiz-opt-on{border-color:var(--teal);border-width:2px;background:var(--card);padding:16px 17px}
-  .wiz-typ{display:inline-block;margin-left:9px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-deep);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:2px 8px;vertical-align:1px}
-
-  /* ----- preset chips + live stepper, for travelers and nights ----- */
-  .wiz-stp-row{display:flex;align-items:center;justify-content:center;gap:22px;margin:4px 0 24px}
-  .wiz-stp-btn{flex:none;width:56px;height:56px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--teal-deep);font-size:26px;line-height:1;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .15s ease,background .15s ease}
-  .wiz-stp-btn:hover:not(:disabled){border-color:var(--teal);background:var(--card)}
-  .wiz-stp-btn:disabled{opacity:.35;cursor:not-allowed}
-  .wiz-stp-val{min-width:64px;text-align:center;font-family:var(--serif);font-size:34px;font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
-  .wiz-presets{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 0 4px}
-  .wiz-preset{position:relative;min-width:56px;min-height:48px;padding:12px 18px;border:1px solid var(--line);border-radius:12px;background:var(--paper);font-family:inherit;font-size:15.5px;font-weight:600;color:var(--ink);cursor:pointer;transition:border-color .15s ease,background .15s ease}
-  .wiz-preset:hover{border-color:var(--teal)}
-  .wiz-preset-on{border-color:var(--teal);border-width:2px;background:var(--card)}
-
-  /* ----- typed price, for flight and hotel ----- */
-  .wiz-price-row{display:flex;align-items:center;gap:6px;padding:6px 18px;margin:4px 0 10px;border:1px solid var(--line);border-radius:14px;background:var(--paper)}
-  .wiz-price-dollar{font-family:var(--serif);font-size:30px;font-weight:500;color:var(--muted)}
-  .wiz-price-input{flex:1;min-width:0;border:none;background:transparent;font-family:var(--serif);font-size:34px;font-weight:500;color:var(--ink);padding:10px 0;font-variant-numeric:tabular-nums}
-  .wiz-price-input:focus{outline:none}
-  .wiz-price-hint{margin:0 0 22px;font-size:13.5px;color:var(--muted);line-height:1.5}
-
-  .wiz-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:6px}
-  .wiz-nav button{font-family:inherit;font-size:14px;font-weight:600;background:none;border:none;cursor:pointer;padding:10px 4px;min-height:44px}
-  .wiz-back{color:var(--muted)}
-  .wiz-back:hover{color:var(--ink)}
-  .wiz-continue{color:#fff;background:var(--teal) !important;border-radius:999px !important;padding:12px 24px !important}
-  .wiz-continue:hover{background:var(--teal-deep) !important}
-
-  /* ----- the real engine, collapsed until the wizard hands off -----
-     Not `hidden` on #hn-app itself (the engine manages that flag on init); this wrapper is
-     the wizard's own visibility switch, independent of the engine's internal bookkeeping. */
-  .wiz-underlay{margin-top:18px}
-  .wiz-underlay[hidden]{display:none;margin-top:0}
-  .wiz-underlay .estimator{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 18px 40px -14px rgba(0,0,0,.45);padding:24px 26px 26px}
-
-  @media (max-width:560px){
-    .wiz-focus{padding:18px 10px;border-radius:16px}
-    .wiz{padding:20px 16px 22px}
-    .wiz-underlay .estimator{padding:20px 16px 22px}
-    .wiz-opt{padding:15px 15px}
-    .wiz-stp-row{gap:16px}
-    .wiz-stp-btn{width:52px;height:52px}
-    .wiz-price-row{padding:4px 14px}
-    .wiz-price-dollar,.wiz-price-input{font-size:28px}
-  }
+  /* Component-specific overrides beyond calculator.css, kept minimal on purpose: nearly
+     everything is already in the scoped stylesheet CalculatorLayout.astro loads. */
+  .wiz-underlay { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
 </style>

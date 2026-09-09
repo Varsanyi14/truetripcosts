@@ -1,97 +1,62 @@
 ---
-// STEP 1 OF THE WIZARD: DESTINATION.
+// STEP 1 OF THE WIZARD: DESTINATION, standalone.
 //
-// Why this is its own plain page rather than a first screen inside CalcWizard.astro: this is
-// a static site (astro.config.mjs sets no `output`, so every route is pre-rendered at build
+// Why this is its own page rather than a first screen inside CalcWizard.astro: this is a
+// static site (astro.config.mjs sets no `output`, so every route is pre-rendered at build
 // time), and each country's calc data (tax rules, flight ranges, travel styles) is baked into
 // that country's own static page. There is no server to answer "give me Japan's data" at
 // request time, and shipping every country's data into one client bundle just to pick a name
-// would be the wrong tradeoff for a single dropdown. So destination picks here are cheap (just
-// names and slugs, the same list the destination switcher on every guide already uses) and a
-// choice is a real navigation to /calculator/<slug>, which is a full static page with that
-// country's real numbers already in it. Steps 2 through 7 live there, in CalcWizard.astro.
-import Base from '../layouts/Base.astro';
-import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
+// would be the wrong tradeoff. So destination picks here are cheap (just names and slugs, the
+// same list the destination switcher on every guide already uses) and a choice is a real
+// navigation to /calculator/<slug>, a full static page with that country's real numbers
+// already in it. Steps 2 through 7 live there, in CalcWizard.astro.
+import CalculatorLayout from '../layouts/CalculatorLayout.astro';
+import QuestionPanel from '../components/calc/QuestionPanel.astro';
+import DestinationChoice from '../components/calc/DestinationChoice.astro';
 import { countries } from '../data/index.js';
 
 const live = countries.filter(c => c.live).slice().sort((a, b) => a.name.localeCompare(b.name));
 ---
-<Base
+<CalculatorLayout
   title="Trip cost calculator: what will your trip really cost?"
   description="A one-question-at-a-time trip cost calculator. Pick a destination and get a ranged total, never a false-precise number, plus every fee you can refuse to pay."
 >
-  <Nav />
-  <main class="wrap">
-    <nav class="crumb" aria-label="Breadcrumb">
-      <a href="/">Home</a>
-      <span class="crumb-sep" aria-hidden="true">&#8250;</span>
-      <span aria-current="page">Trip cost calculator</span>
-    </nav>
+  <QuestionPanel stepKey="destination" stepNumber={1} stepLabel="Destination" initiallyVisible isFirst
+    title="Where are you going?" intro="Choose one country for this trip estimate. Search narrows this list; it never chooses for you.">
+    <DestinationChoice countries={live} selectedSlug={null} />
+  </QuestionPanel>
+</CalculatorLayout>
 
-    {/* UX REWORK (BRIEF-calculator-ux-rework.md, Part A point 1 and point 2): destination is
-        step 1 of the same seven-step sequence the wizard numbers on every later screen, so
-        this door gets the same dark focus frame and the same big tap targets, rather than
-        reading as a separate mini-page bolted on before the "real" calculator. */}
-    <div class="wiz-focus">
-      <div class="wiz-wrap">
-        <section class="calc-door">
-          <p class="lab">Step 1 of 7</p>
-          <h1>What will your trip really cost?</h1>
-          <p class="sub">Name a destination and we will walk through the rest one question at a time: travelers, nights, travel style, flights, your hotel, and the card you are bringing. A ranged total at the end, never a single false-precise number, plus every fee you can simply refuse to pay.</p>
-
-          <label class="cf calc-door-sel">
-            <span class="cf-l">Destination</span>
-            <span class="selwrap"><select id="calcDoorSel" aria-label="Choose a destination">
-              {live.map(c => (<option value={c.slug}>{c.name}</option>))}
-            </select></span>
-          </label>
-          <button type="button" class="btn calc-door-go" id="calcDoorGo">Start
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-        </section>
-      </div>
-    </div>
-  </main>
-  <Footer />
-
-  <script>
-    (function () {
-      const sel = document.getElementById('calcDoorSel');
-      const go = document.getElementById('calcDoorGo');
-      if (!sel || !go) return;
-      function start() {
-        const slug = sel.value;
-        if (slug) window.location.href = '/calculator/' + slug;
+<script is:inline>
+  (function () {
+    function norm(s) { return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+    const search = document.querySelector('[data-destination-search]');
+    const list = document.querySelector('[data-destination-list]');
+    const empty = document.querySelector('[data-destination-empty]');
+    const form = document.querySelector('[data-step-form="destination"]');
+    if (!search || !list || !form) return;
+    const rows = Array.prototype.slice.call(list.querySelectorAll('.choice'));
+    search.addEventListener('input', () => {
+      const q = norm(search.value.trim());
+      let shown = 0;
+      rows.forEach((row) => {
+        const hit = q === '' || norm(row.dataset.name).indexOf(q) !== -1;
+        row.hidden = !hit;
+        if (hit) shown++;
+      });
+      if (empty) empty.hidden = shown !== 0;
+    });
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const checked = form.querySelector('input[name="destination"]:checked');
+      const errEl = form.querySelector('.field-error');
+      if (!checked) {
+        if (errEl) errEl.textContent = 'Choose a destination before continuing.';
+        search.setAttribute('aria-invalid', 'true');
+        search.focus();
+        return;
       }
-      go.addEventListener('click', start);
-      sel.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); start(); } });
-    })();
-  </script>
-
-  <style>
-    .crumb{font-family:var(--mono);font-size:11.5px;letter-spacing:.01em;color:var(--muted);margin:20px 0 20px;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-    .crumb a{color:var(--teal-deep);text-decoration:none;font-weight:500}
-    .crumb a:hover{text-decoration:underline}
-    .crumb-sep{color:var(--line)}
-
-    /* Same dark focus frame CalcWizard.astro uses for steps 2 through 7, so destination does
-       not read as a separate, smaller-feeling page bolted on before the "real" calculator. */
-    .wiz-focus{background:#0E3B31;border-radius:20px;padding:28px 16px;margin:20px 0 8px}
-    .wiz-wrap{max-width:640px;margin:0 auto}
-
-    .calc-door{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 18px 40px -14px rgba(0,0,0,.45);max-width:640px;margin:0 auto;padding:26px 26px 28px}
-    .calc-door h1{margin:0 0 14px}
-    .calc-door .sub{font-size:16px;line-height:1.6;color:var(--muted);margin:0 0 28px}
-    .calc-door-sel{display:block;margin:0 0 18px}
-    .calc-door-sel .cf-l{display:block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:0 0 7px}
-    /* Big tap target (Part A point 4): a 44px minimum, comfortably more here. */
-    .calc-door-sel select{width:100%;min-height:56px;font-family:inherit;font-size:16px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 16px}
-    .calc-door-go{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:56px;padding:15px 20px;border-radius:999px;font-size:15.5px;font-weight:600}
-
-    @media (max-width:560px){
-      .wiz-focus{padding:18px 10px;border-radius:16px;margin:12px 0 8px}
-      .calc-door{padding:22px 18px 24px}
-    }
-  </style>
-</Base>
+      window.location.href = '/calculator/' + checked.value;
+    });
+  })();
+</script>

@@ -1,0 +1,19 @@
+---
+// WizardProgress (spec section 3, "Wizard"). Fully static per step: since every step's
+// panel is pre-rendered at build time (see CalcWizard.astro), each step already knows its
+// own position, so no client JS is needed to draw this bar. "The text supplies the
+// meaningful progress information; the decorative track is hidden from assistive
+// technology" (spec, verbatim).
+const { stepNumber, totalSteps = 7, stepLabel } = Astro.props;
+---
+<div class="wizard-progress">
+  <div class="progress-meta">
+    <strong>Step {stepNumber} of {totalSteps}</strong>
+    <span>{stepLabel}</span>
+  </div>
+  <div class="progress-track" aria-hidden="true">
+    {Array.from({ length: totalSteps }, (_, i) => i + 1).map(n => (
+      <span class={'progress-segment' + (n < stepNumber ? ' complete' : n === stepNumber ? ' current' : '')}></span>
+    ))}
+  </div>
+</div>

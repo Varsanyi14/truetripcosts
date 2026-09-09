@@ -1,0 +1,23 @@
+---
+// ChoiceRows (spec section 5 "Radio rows"). A small addition beyond the spec's literal
+// component list in section 11 (QuestionPanel/QuantityControl/PriceControl/...), because
+// three separate steps (style, airfare mode, card-fee) need the same "20px circular radio
+// indicator... selected rows get the pale green surface" treatment and it would otherwise
+// be hand-duplicated three times. Flagged in the handoff.
+const { name, options, legend } = Astro.props;
+// options: [{ value, label, help, selected }]
+---
+<fieldset class="choice-list" data-choice-fieldset={name}>
+  <legend class="sr-only">{legend}</legend>
+  {options.map(o => (
+    <label class="choice">
+      <input type="radio" name={name} value={o.value} checked={o.selected} />
+      <span class="choice-face">
+        <span>
+          <strong>{o.label}</strong>
+          {o.help && <small>{o.help}</small>}
+        </span>
+      </span>
+    </label>
+  ))}
+</fieldset>

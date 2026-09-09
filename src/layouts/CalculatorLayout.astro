@@ -1,0 +1,61 @@
+---
+// CALCULATOR-SPECIFIC LAYOUT (TTC-design-specification.md section 3 and section 11).
+//
+// This route gets its own frame, not the site's Nav.astro / Footer.astro / global.css
+// identity. Two reasons, both from the spec:
+//   1. Section 3 "Shared frame" specifies a minimal product header (wordmark, optional
+//      product label, one Exit link) and a thin, quiet footer, not the site's full
+//      navigation and search chrome. This is a deliberately distraction-free "product",
+//      matching section 1's "restrained green frame" decision.
+//   2. Section 4 specifies the system interface font stack for controls/body and
+//      Georgia/Times New Roman for editorial headings, explicitly "no font files are
+//      distributed or required." The rest of the site loads Fraunces/Inter/IBM Plex Mono
+//      (see Base.astro); this route must not inherit that, so it does not import Base.astro
+//      or global.css, and does not request any Google Fonts link.
+//
+// calculator.css (the scoped stylesheet) is imported ONLY here, per section 11's explicit
+// instruction: "Load this CSS on the calculator route; do not import its body-level layout
+// rules across unrelated site pages."
+import '../styles/calculator.css';
+
+const { title, description } = Astro.props;
+const site = 'https://truetripcosts.com';
+const canonical = site + Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="color-scheme" content="light" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="theme-color" content="#193D32" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:site_name" content="True Trip Costs" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to calculator</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="wordmark" href="/" aria-label="True Trip Costs home">true trip costs<span aria-hidden="true">.</span></a>
+      <span class="product-name">TRIP CALCULATOR</span>
+      <a class="exit-link" href="/">Exit calculator <span aria-hidden="true">&nearr;</span></a>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <slot />
+  </main>
+  <footer class="page-footer"><div><span>A range, not a quote.</span><span>True Trip Costs</span></div></footer>
+  <div class="sr-only" id="announcer" role="status" aria-live="polite" aria-atomic="true"></div>
+  <dialog id="edit-dialog" class="modal edit-modal" aria-labelledby="edit-title"></dialog>
+  <dialog id="share-dialog" class="modal share-modal" aria-labelledby="share-title"></dialog>
+  <div id="print-root"></div>
+</body>
+</html>

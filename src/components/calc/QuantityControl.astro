@@ -1,0 +1,32 @@
+---
+// QuantityControl (spec section 5 "Presets" + "Quantity stepper"). Used for travelers and
+// nights. Native radio presets (never unlabeled divs) plus a directly editable stepper.
+// "Disable decrement at the real minimum... production limits belong to the existing
+// engine": min/max below are calc-engine.js's own limits (1-12 travelers, 1-60 nights,
+// see src/scripts/calc-engine.js `limits`), not invented values.
+const { name, unitLabel, unitLabelSingular, value, min, max, presets, helpText } = Astro.props;
+const qtyId = 'q-' + name + '-quantity';
+const helpId = 'q-' + name + '-help';
+const errorId = 'q-' + name + '-error';
+---
+<fieldset data-quantity-fieldset={name}>
+  <legend class="sr-only">Choose {unitLabel}</legend>
+  <div class="preset-grid">
+    {presets.map(n => (
+      <label class="preset">
+        <input type="radio" name={'preset-' + name} value={n} checked={value === n} aria-label={n + ' ' + unitLabel} />
+        <span class="preset-face">{n}</span>
+      </label>
+    ))}
+  </div>
+</fieldset>
+<div class="quantity-wrap">
+  <label class="field-label" for={qtyId}>Or enter a number</label>
+  <div class="stepper">
+    <button type="button" data-adjust="-1" aria-label={'One fewer ' + unitLabelSingular} disabled={value <= min}>&minus;</button>
+    <input id={qtyId} name={name} type="number" min={min} max={max} step="1" inputmode="numeric" value={value} aria-label={'Number of ' + unitLabel} aria-describedby={helpId + ' ' + errorId} data-quantity-input={name} data-min={min} data-max={max} />
+    <button type="button" data-adjust="1" aria-label={'One more ' + unitLabelSingular} disabled={value >= max}>&plus;</button>
+  </div>
+</div>
+<p class="field-help" id={helpId}>{helpText}</p>
+<p class="field-error" id={errorId} role="alert"></p>

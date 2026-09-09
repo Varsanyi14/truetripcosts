@@ -1,0 +1,18 @@
+---
+// PriceControl (spec section 5 "Price fields"). "The accessible label must include USD and
+// the pricing unit. Never rely on the symbol alone to distinguish currencies." Used for
+// flight (step 5, conditional) and hotel (step 6).
+const { name, label, value, helpText, extraDescribedBy = '' } = Astro.props;
+const fieldId = 'q-' + name;
+const helpId = 'q-' + name + '-help';
+const errorId = 'q-' + name + '-error';
+const describedBy = [helpId, extraDescribedBy].filter(Boolean).join(' ');
+---
+<label class="field-label" for={fieldId}>{label}</label>
+<div class="currency-input">
+  <span class="currency-symbol" aria-hidden="true">$</span>
+  <input id={fieldId} name={name} type="text" inputmode="decimal" autocomplete="off" value={value} aria-describedby={describedBy} data-price-input={name} />
+  <span class="currency-code" aria-hidden="true">USD</span>
+</div>
+{helpText && <p class="field-help" id={helpId}>{helpText}</p>}
+<p class="field-error" id={errorId} role="alert"></p>
