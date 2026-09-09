@@ -657,7 +657,7 @@ export function initCalcWizard() {
       'TRUE TRIP COSTS - TRIP BRIEF',
       p.destination,
       p.partyLabel + ' | ' + p.durationLabel + ' | ' + p.roomLabel,
-      'About ' + p.rangeLow + '\u2013' + p.rangeHigh + ' USD; for the whole party, not per person.',
+      'About ' + p.rangeLow + ' to ' + p.rangeHigh + ' USD; for the whole party, not per person.',
       p.flightNotice,
       'Snapshot created ' + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + '. A saved snapshot, not a live quote; recheck rules before traveling.',
       'truetripcosts.com',
@@ -670,7 +670,7 @@ export function initCalcWizard() {
       '<header class="brief-brand"><strong>true trip costs.</strong><span>TRIP BRIEF</span></header>' +
       '<h2>' + p.destination + '</h2>' +
       '<p class="trip-meta">' + p.partyLabel + ' \u00b7 ' + p.durationLabel + ' \u00b7 ' + p.roomLabel + '</p>' +
-      '<div class="range-prefix">About</div><p class="range">' + p.rangeLow + '<span aria-hidden="true">\u2013</span>' + p.rangeHigh + '</p>' +
+      '<div class="range-prefix">About</div><p class="range">' + p.rangeLow + '<span> to </span>' + p.rangeHigh + '</p>' +
       '<p class="range-scope">USD \u00b7 for the whole party</p>' +
       '<div class="scope-alert"><strong>' + p.flightNotice + '</strong></div>' +
       '<footer class="brief-note"><strong>Snapshot created ' + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + '.</strong><br>A saved snapshot, not a live quote. Recheck rules before traveling.<br>truetripcosts.com</footer>' +
