@@ -313,6 +313,10 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .summary-desktop-label { display: block; }
   .result-heading { margin-bottom: 1.75rem; }
   .range { font-size: 3.5rem; }
+  /* The edit summary is a permanent sidebar here, so the button that only scrolls to it is
+     redundant on desktop. It stays visible on mobile, where the summary is far down the page. */
+  [data-jump-edit] { display: none; }
+  .result-actions { grid-template-columns: max-content; }
 }
 @media (max-width: 23rem) {
   .header-inner { gap: .5rem; }

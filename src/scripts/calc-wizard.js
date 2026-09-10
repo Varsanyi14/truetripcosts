@@ -640,7 +640,6 @@ export function initCalcWizard() {
       destination: WD.countryName,
       partyLabel: text('hnTrav') ? (byId('hnTrav').dataset.v + ' travelers') : '',
       durationLabel: byId('hnNights') ? (byId('hnNights').dataset.v + ' nights') : '',
-      roomLabel: '1 room',
       rangeLow: text('hnLo'),
       rangeHigh: text('hnHi'),
       flightIncluded: state.flightMode === 'known',
@@ -656,7 +655,7 @@ export function initCalcWizard() {
     const lines = [
       'TRUE TRIP COSTS - TRIP BRIEF',
       p.destination,
-      p.partyLabel + ' | ' + p.durationLabel + ' | ' + p.roomLabel,
+      [p.partyLabel, p.durationLabel].filter(Boolean).join(' | '),
       'About ' + p.rangeLow + ' to ' + p.rangeHigh + ' USD; for the whole party, not per person.',
       p.flightNotice,
       'Snapshot created ' + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + '. A saved snapshot, not a live quote; recheck rules before traveling.',
@@ -669,7 +668,7 @@ export function initCalcWizard() {
     return '<article class="trip-brief" aria-label="Shareable trip brief">' +
       '<header class="brief-brand"><strong>true trip costs.</strong><span>TRIP BRIEF</span></header>' +
       '<h2>' + p.destination + '</h2>' +
-      '<p class="trip-meta">' + p.partyLabel + ' \u00b7 ' + p.durationLabel + ' \u00b7 ' + p.roomLabel + '</p>' +
+      '<p class="trip-meta">' + [p.partyLabel, p.durationLabel].filter(Boolean).join(' \u00b7 ') + '</p>' +
       '<div class="range-prefix">About</div><p class="range">' + p.rangeLow + '<span>&nbsp;to&nbsp;</span>' + p.rangeHigh + '</p>' +
       '<p class="range-scope">USD \u00b7 for the whole party</p>' +
       '<div class="scope-alert"><strong>' + p.flightNotice + '</strong></div>' +

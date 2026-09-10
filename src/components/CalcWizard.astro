@@ -181,7 +181,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 <QuestionPanel stepKey="hotel" stepNumber={6} stepLabel="Accommodation"
   title="What is the room price per night?" intro="Use the price for one room, per night, in US dollars, before separately modeled taxes.">
   <PriceControl name="hotel" label="Room price per night (USD)" value={roomTypical} helpText="This estimate uses one room throughout the stay. Check the room count in your own booking." />
-  <div class="assumption-note"><strong>Room assumption: 1 room.</strong><br />People and rooms are separate inputs here: this figure is not divided or multiplied by the traveler count you gave in step 2.</div>
+  <div class="assumption-note"><strong>This is the nightly price for your room, taken as entered.</strong><br />We do not model how many rooms your party needs, so this figure is not divided or multiplied by the traveler count from step 2. If you need more than one room, enter the combined nightly price.</div>
 </QuestionPanel>
 
 <QuestionPanel stepKey="card" stepNumber={7} stepLabel="Payment fees"
@@ -197,7 +197,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
       <div class="result-heading">
         <p class="eyebrow">Your trip estimate</p>
         <h1 tabindex="-1">Your {c.name} trip.</h1>
-        <p class="trip-meta"><span data-mirror="partyLabel">2 travelers</span> &middot; <span data-mirror="durationLabel">7 nights</span> &middot; 1 room</p>
+        <p class="trip-meta"><span data-mirror="partyLabel">2 travelers</span> &middot; <span data-mirror="durationLabel">7 nights</span></p>
       </div>
 
       <section class="answer" aria-label="Estimated cost and scope">
