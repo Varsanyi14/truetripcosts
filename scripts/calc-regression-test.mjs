@@ -258,15 +258,24 @@ section('6. A data-poor country degrades to less, never to a reassurance');
 const REASSURANCE = /\b(you are safe|low exposure|low risk|all clear|nothing to worry|risk[- ]free)\b/i;
 const SAVINGS = /\b(save \$[\d,]|you could save|we saved you|savings? of \$)/i;
 let copyHits = [];
+const scanForHits = (p, labelPrefix) => {
+  if (!fs.existsSync(p)) return;
+  const html = read(p);
+  if (!html.includes('id="hn-data"')) return;
+  const text = html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<style[\s\S]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ');
+  if (REASSURANCE.test(text)) copyHits.push(labelPrefix + ': reassurance badge');
+  if (SAVINGS.test(text)) copyHits.push(labelPrefix + ': savings headline');
+};
 if (fs.existsSync(distDir)) {
+  // Country guides at dist/<country>/ AND the per-country wizard pages at dist/calculator/<country>/.
   for (const d of fs.readdirSync(distDir)) {
-    const p = path.join(distDir, d, 'index.html');
-    if (!fs.existsSync(p)) continue;
-    const html = read(p);
-    if (!html.includes('id="hn-data"')) continue;
-    const text = html.replace(/<script[\s\S]*?<\/script>/g, ' ').replace(/<style[\s\S]*?<\/style>/g, ' ').replace(/<[^>]+>/g, ' ');
-    if (REASSURANCE.test(text)) copyHits.push(d + ': reassurance badge');
-    if (SAVINGS.test(text)) copyHits.push(d + ': savings headline');
+    scanForHits(path.join(distDir, d, 'index.html'), d);
+  }
+  const calcDir = path.join(distDir, 'calculator');
+  if (fs.existsSync(calcDir)) {
+    for (const d of fs.readdirSync(calcDir)) {
+      scanForHits(path.join(calcDir, d, 'index.html'), 'calculator/' + d);
+    }
   }
 }
 check(copyHits.length === 0, 'no safe/low-exposure badge and no "save $X" headline in any built page'

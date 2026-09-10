@@ -1,0 +1,29 @@
+---
+// QuestionPanel (spec section 3 "Wizard", section 11 component split). One instance per
+// step, pre-rendered at build time with that step's real copy and controls (see
+// CalcWizard.astro): "Do not fix the question-panel height... Scrolling is preferable to
+// clipped helper text" is satisfied for free by never fixing a height here.
+//
+// stepNumber/totalSteps/stepLabel feed WizardProgress. isFirst drops the Back action and
+// widens Continue to the full row (wizard-actions.one-action, matching the reference).
+// isLast swaps the Continue label for "See trip estimate" (spec section 6, verbatim).
+const { stepKey, stepNumber, totalSteps = 7, stepLabel, title, intro, isFirst = false, isLast = false, initiallyVisible = false } = Astro.props;
+import WizardProgress from './WizardProgress.astro';
+---
+<section class="wizard" data-wizard-step={stepKey} hidden={!initiallyVisible}>
+  <WizardProgress stepNumber={stepNumber} totalSteps={totalSteps} stepLabel={stepLabel} />
+  <div class="question-panel">
+    <form class="question-form" data-step-form={stepKey} novalidate>
+      <h2 class="qpanel-title" tabindex="-1">{title}</h2>
+      <p class="question-intro">{intro}</p>
+      <div class="question-controls">
+        <slot />
+      </div>
+      <div class={'wizard-actions' + (isFirst ? ' one-action' : '')}>
+        <button class="btn btn-primary" type="submit">{isLast ? 'See trip estimate' : 'Continue'} <span aria-hidden="true">&rarr;</span></button>
+        {!isFirst && <button type="button" class="wizard-back" data-wizard-back>&larr; Back</button>}
+      </div>
+    </form>
+  </div>
+  <p class="wizard-footnote">No sign-up. No card details.</p>
+</section>

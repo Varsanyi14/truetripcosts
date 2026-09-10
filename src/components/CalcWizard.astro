@@ -462,7 +462,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
      to satisfy "never show zero, a partial calculation, or the demo fixture as a production
      fallback" in the one case the mirror script itself throws (e.g. an id genuinely missing). -->
 <div class="results" data-error-view hidden>
-  <div class="result-heading"><p class="eyebrow">Your trip estimate</p><h1 tabindex="-1">Your answers are still here.</h1></div>
+  <div class="result-heading"><p class="eyebrow">Your trip estimate</p><h2 class="recovery-title" tabindex="-1">Your answers are still here.</h2></div>
   <section class="stale-state" role="status">
     <h2>The estimate is unavailable.</h2>
     <p>We could not read a complete result. No partial or zero total is shown. Your answers have been preserved.</p>
