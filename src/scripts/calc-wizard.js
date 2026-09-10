@@ -8,12 +8,13 @@
 //   The MIRROR function does the reverse: it reads text calc-engine.js has ALREADY written
 //   into the hidden CalcResult's own elements (hnLo, hnHi, hnRoomV, hnSpend, hnTax, hnCardFee,
 //   hnAtmFee, avFees, ...) and copies that text, verbatim, into this new surface's elements.
-//   It does no arithmetic on money. The one place it adds numbers together (the "Taxes &
-//   payment fees" group's collapsed amount) is a sum of three numbers the engine already
-//   computed and already displays elsewhere on this same hidden tree; it is a presentation
-//   regrouping under the design's four labels, not new math on unknown inputs (spec section 9:
-//   "Grouping is a presentation mapping, not permission to move charges in or out of the
-//   total").
+//   It does no arithmetic on money. The two places it adds numbers together (the "Taxes &
+//   payment fees" group's collapsed amount, and BRIEF-calc-v2-clusterA #7's accommodation
+//   checkout uplift) are each a sum of numbers the engine already computed and already
+//   displays elsewhere on this same hidden tree; both are a presentation regrouping under
+//   the design's own labels, not new math on unknown inputs (spec section 9: "Grouping is a
+//   presentation mapping, not permission to move charges in or out of the total"). The
+//   uplift additionally never appears at all where the engine's own tax comes back zero.
 //
 // WHAT IS THE SURFACE'S OWN STATE, because the engine has no concept of it and none should be
 // invented for it (spec section 11's engine/surface boundary table):
@@ -434,6 +435,28 @@ export function initCalcWizard() {
       set('[data-breakdown-line-amount="accommodation"]', roomAmt);
       document.querySelectorAll('[data-breakdown-line-provenance="accommodation"]').forEach(el => { el.innerHTML = '<span class="meta-key">Basis</span> ' + (state.origin.hotel === 'figure' ? 'Your figure' : 'Our estimate'); });
       set('[data-breakdown-line-note="accommodation"]', '$' + roomVal + ' a night \u00d7 ' + nights + ' ' + (nights === 1 ? 'night' : 'nights') + '.');
+
+      // ----- breakdown: Accommodation checkout uplift (BRIEF-calc-v2-clusterA #7) -----
+      // Gated on the engine's own already-computed tax figure (taxAmt, read from hnTax
+      // above), never recomputed here. Zero or absent tax for this country means the
+      // element stays hidden entirely, not a "$0 tax" line: see the honesty rules in
+      // BRIEF-calc-v2-clusterA.md #7. Adding the two already-displayed figures (room total,
+      // tax) together is the same sanctioned pattern the "Taxes & payment fees" group's own
+      // amount below already uses (see file header): a presentation sum of numbers the
+      // engine already shows elsewhere, not new math on an unknown input. No resort fee is
+      // invented; the copy names it as unknown, because the engine models none.
+      const upliftEl = document.querySelector('[data-checkout-uplift]');
+      if (upliftEl) {
+        const taxNum = usdToNumber(taxAmt);
+        if (taxNum > 0) {
+          const checkoutAmt = numberToUsd(usdToNumber(roomAmt) + taxNum);
+          upliftEl.textContent = 'The room comes to ' + roomAmt + ' for the stay. Expect about ' + taxAmt + ' in tourist tax on top, so roughly ' + checkoutAmt + ' before any resort fees a hotel adds at checkout.';
+          upliftEl.hidden = false;
+        } else {
+          upliftEl.textContent = '';
+          upliftEl.hidden = true;
+        }
+      }
 
       // ----- breakdown: Daily spending -----
       set('[data-breakdown-amount="daily"]', spendAmt);

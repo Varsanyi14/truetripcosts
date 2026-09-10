@@ -158,11 +158,15 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .result-heading .eyebrow { margin-bottom: .625rem; }
 .result-heading h1 { font-size: 2.125rem; }
 .trip-meta { color: var(--muted); font-size: 1rem; line-height: 1.55; margin-top: .625rem; }
-.answer { background: white; border: 1px solid var(--line); border-top: 3px solid var(--green); border-radius: 0 0 var(--radius) var(--radius); padding: 1.5rem 1.25rem; }
+/* BRIEF-calc-v2-clusterA #6: the total is now the secondary block ("What you can avoid"
+   leads), so this drops the green hero accent border it had when it was the page's lead
+   figure and matches the plain card treatment (.avoid-card, .detail-line) instead. Still a
+   distinct white card with its own border, so it stays easy to find, just calmer. */
+.answer { background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem 1.25rem; }
 .answer-label { font-size: .9375rem; color: var(--muted); }
 .answer > .range-prefix:first-child { margin-top: 0; }
 .range-prefix { color: var(--ink); font-size: 1rem; margin-top: .75rem; }
-.range { font-family: var(--serif); font-size: clamp(2rem,11vw,3rem); line-height: 1.14; letter-spacing: -.055em; color: var(--ink); margin-top: .125rem; overflow-wrap: anywhere; }
+.range { font-family: var(--serif); font-size: clamp(1.75rem,8vw,2.25rem); line-height: 1.14; letter-spacing: -.055em; color: var(--ink); margin-top: .125rem; overflow-wrap: anywhere; }
 .range span { display: inline-block; white-space: nowrap; }
 .range-scope { color: var(--muted); font-size: .9375rem; margin-top: .625rem; }
 .scope-alert { padding: 1rem; margin-top: 1.5rem; background: var(--amber-bg); border-left: 3px solid var(--amber); border-radius: 0 .25rem .25rem 0; }
@@ -176,7 +180,10 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .result-actions { display: grid; grid-template-columns: minmax(0,1.65fr) minmax(0,1fr); gap: .75rem; margin-top: 1rem; }
 .result-actions .btn { font-size: 1rem; padding: .875rem .75rem; }
 .section { margin-top: 2.5rem; }
-.section[aria-labelledby="avoid-heading"] { margin-top: 2rem; }
+/* BRIEF-calc-v2-clusterA #6: this section now leads, directly under .result-heading (whose
+   own margin-bottom already provides the gap), rather than following .result-actions as
+   before, so it no longer needs a top margin of its own. */
+.section[aria-labelledby="avoid-heading"] { margin-top: 0; }
 .section-intro { margin-top: .75rem; color: var(--muted); font-size: 1rem; }
 .tier-label { margin-top: 1.5rem; margin-bottom: .75rem; font-size: .6875rem; font-weight: 650; letter-spacing: .12em; color: var(--muted); }
 .avoid-card { padding: 1.25rem; background: white; border: 1px solid var(--line); border-radius: var(--radius); }
@@ -225,6 +232,10 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .detail-line .evidence-row { margin: .625rem 0 0; }
 .detail-line .small { margin-top: .625rem; }
 .method-note { border-left: 3px solid var(--line); padding-left: 1rem; font-size: .9375rem; color: var(--muted); margin-top: 1.5rem; }
+/* BRIEF-calc-v2-clusterA #7: spacing only, matching the .75rem gap already used between
+   detail-lines. The element itself is hidden by default in the markup; calc-wizard.js's
+   mirror() reveals it only where the engine's own tax for this country is non-zero. */
+.checkout-uplift { margin-top: .75rem; }
 /* Direct editing */
 .trip-summary { background: #F0F1E9; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem 1.25rem; min-width: 0; }
 .trip-summary h2 { font-size: 1.625rem; }
@@ -294,7 +305,7 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .results { padding: 3rem 2rem 0; }
   .result-heading h1 { font-size: 2.625rem; }
   .answer { padding: 2rem; }
-  .range { font-size: 3.5rem; }
+  .range { font-size: 2.5rem; }
   .section { margin-top: 3rem; }
   .avoid-card { padding: 1.5rem; }
   .result-actions { grid-template-columns: max-content max-content; }
@@ -312,7 +323,7 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .trip-summary { position: sticky; top: 2rem; padding: 1.5rem; }
   .summary-desktop-label { display: block; }
   .result-heading { margin-bottom: 1.75rem; }
-  .range { font-size: 3.5rem; }
+  .range { font-size: 2.5rem; }
   /* The edit summary is a permanent sidebar here, so the button that only scrolls to it is
      redundant on desktop. It stays visible on mobile, where the summary is far down the page. */
   [data-jump-edit] { display: none; }
@@ -326,7 +337,7 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .question-panel, .answer { padding-left: 1rem; padding-right: 1rem; }
   h1 { font-size: 2rem; }
   .preset-grid { gap: .5rem; }
-  .range { font-size: 2rem; }
+  .range { font-size: 1.75rem; }
   .result-actions { grid-template-columns: 1fr; }
   .breakdown-item > summary { grid-template-columns: minmax(0,1fr) 1rem; }
   .breakdown-amount { grid-row: 2; text-align: left; grid-column: 1; }

@@ -200,26 +200,12 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
         <p class="trip-meta"><span data-mirror="partyLabel">2 travelers</span> &middot; <span data-mirror="durationLabel">7 nights</span></p>
       </div>
 
-      <section class="answer" aria-label="Estimated cost and scope">
-        <div class="range-prefix">About</div>
-        <p class="range" aria-label="Estimated trip range">
-          <span data-mirror="rangeLow">$0</span><span>&nbsp;to&nbsp;</span><span data-mirror="rangeHigh">$0</span>
-        </p>
-        <p class="range-scope">USD &middot; for the whole party, not per person</p>
-        <div class="scope-alert compact-scope" data-flight-alert>
-          <strong data-mirror="flightNotice">Flights not included.</strong>
-          <button class="text-link" type="button" data-edit="flights" data-flight-alert-action>Add flights &rarr;</button>
-        </div>
-        {materialExclusions.length > 0 && (
-          <p class="unpriced"><strong>Not priced:</strong> {materialExclusions.join('; ')}.</p>
-        )}
-      </section>
-
-      <div class="result-actions">
-        <button class="btn btn-primary" type="button" data-share>Save / share</button>
-        <button class="btn btn-secondary" type="button" data-jump-edit>Edit trip</button>
-      </div>
-
+      <!-- ===== BRIEF-calc-v2-clusterA #6: result reorder ===== -->
+      <!-- "What you can avoid" now leads (was third); the ranged total that used to be
+           the hero is demoted to a calmer secondary block right below it, with its
+           result-actions (save/share, edit trip) still attached immediately after it.
+           No content, data binding or honesty treatment changed here, only order and
+           the visual weight in calculator.css (see .answer / .range there). -->
       <!-- ===== What you can avoid (spec section 7) OR the calm outcome (section 8) ===== -->
       <section class="section" aria-labelledby="avoid-heading" data-avoid-section>
         <div data-avoid-normal hidden={calmEligible}>
@@ -361,6 +347,26 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
         )}
       </section>
 
+      <section class="answer" aria-label="Estimated cost and scope">
+        <div class="range-prefix">About</div>
+        <p class="range" aria-label="Estimated trip range">
+          <span data-mirror="rangeLow">$0</span><span>&nbsp;to&nbsp;</span><span data-mirror="rangeHigh">$0</span>
+        </p>
+        <p class="range-scope">USD &middot; for the whole party, not per person</p>
+        <div class="scope-alert compact-scope" data-flight-alert>
+          <strong data-mirror="flightNotice">Flights not included.</strong>
+          <button class="text-link" type="button" data-edit="flights" data-flight-alert-action>Add flights &rarr;</button>
+        </div>
+        {materialExclusions.length > 0 && (
+          <p class="unpriced"><strong>Not priced:</strong> {materialExclusions.join('; ')}.</p>
+        )}
+      </section>
+
+      <div class="result-actions">
+        <button class="btn btn-primary" type="button" data-share>Save / share</button>
+        <button class="btn btn-secondary" type="button" data-jump-edit>Edit trip</button>
+      </div>
+
       <!-- ===== Where the money goes (CostBreakdown, spec section 9) ===== -->
       <section class="section" aria-labelledby="breakdown-heading">
         <h2 id="breakdown-heading">Where the money goes</h2>
@@ -401,6 +407,15 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
                 <div class="evidence-row"><span class="provenance" data-breakdown-line-provenance="accommodation">Basis</span><span class="status">Included</span></div>
                 <p class="small muted" data-breakdown-line-note="accommodation">&nbsp;</p>
               </div>
+              <!-- ===== BRIEF-calc-v2-clusterA #7: sourced checkout uplift ===== -->
+              <!-- The room rate is not the bill: where this country's engine-computed tourist
+                   tax is non-zero (a sourced rule, never invented here), state it as an amount
+                   added on top of the room figure above, not as a full checkout total, since
+                   resort or other property fees are not modeled by the engine and are named as
+                   unknown rather than priced. Hidden entirely, no "$0 tax" placeholder, wherever
+                   the engine's own tax comes back zero or the country carries no tax block: see
+                   calc-wizard.js mirror() for the one-line gate on this element. -->
+              <p class="small muted checkout-uplift" data-checkout-uplift hidden>&nbsp;</p>
               <button class="text-link" type="button" data-edit="hotel">Change accommodation</button>
             </div>
           </details>
