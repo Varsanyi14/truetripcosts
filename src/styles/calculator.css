@@ -185,7 +185,21 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
    before, so it no longer needs a top margin of its own. */
 .section[aria-labelledby="avoid-heading"] { margin-top: 0; }
 .section-intro { margin-top: .75rem; color: var(--muted); font-size: 1rem; }
-.tier-label { margin-top: 1.5rem; margin-bottom: .75rem; font-size: .6875rem; font-weight: 650; letter-spacing: .12em; color: var(--muted); }
+/* BRIEF-calc-v2-A2: HARD/SOFT avoidable tiers. Every applicable item renders (no
+   truncation), so these are spacing/emphasis rules only, not a "first two" layout. */
+.avoid-tier { margin-top: 1.75rem; }
+.tier-subhead { font-size: .8125rem; line-height: 1.5; margin-bottom: .875rem; }
+.tier-subhead-hard, .tier-subhead-soft {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  letter-spacing: .01em;
+}
+.tier-subhead-hard { color: var(--muted); }
+/* SOFT tier: one amber-tinted panel (the site's existing amber tokens, already used for the
+   flights scope-alert), so items that carry no honest number read as visually distinct from
+   the HARD tier's priced cards, not as a lesser copy of the same card. */
+.avoid-tier-soft { background: var(--amber-bg); border: 1px solid #E6D4AE; border-radius: var(--radius); padding: 1.25rem; }
+.tier-subhead-soft { color: #6D4A13; }
+.avoid-tier-soft .avoid-card-soft { background: transparent; border-color: #E6D4AE; }
 .avoid-card { padding: 1.25rem; background: white; border: 1px solid var(--line); border-radius: var(--radius); }
 .avoid-card + .avoid-card { margin-top: .875rem; }
 .evidence-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem .75rem; margin-bottom: .9375rem; }
@@ -196,10 +210,13 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .status.avoided { background: var(--green-soft); border-color: #C8D8C7; color: var(--green); }
 .status.not-estimated { background: #F0F1ED; color: var(--muted); border-color: #DADFD7; }
 .avoid-card h3 { font-size: 1.1875rem; margin-bottom: .625rem; }
-.item-amount { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5rem; margin-bottom: .625rem; }
-.item-amount strong { color: var(--ink); font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
-.item-amount span { color: var(--muted); font-size: .9375rem; }
 .avoid-card > p { font-size: 1rem; line-height: 1.6; }
+/* HARD tier figure: shown large, serif, teal, so the dollar amount is the first thing read
+   on the card, per BRIEF-calc-v2-A2's "give it punch". */
+.item-amount-hard { margin-bottom: .625rem; }
+.amount-big { display: block; font-family: var(--serif); font-size: clamp(1.75rem,7vw,2.25rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; color: var(--focus); overflow-wrap: anywhere; }
+.amount-big span { display: inline; white-space: nowrap; }
+.item-amount-hard > span:last-child { display: block; margin-top: .25rem; color: var(--muted); font-size: .9375rem; }
 .source-details { margin-top: .75rem; font-size: .875rem; color: var(--muted); }
 .source-details summary { display: inline-flex; align-items: center; padding: .625rem 0; min-height: 2.75rem; text-decoration: underline; text-underline-offset: .2em; cursor: pointer; color: var(--green); }
 .source-details p { border-top: 1px solid var(--line); padding-top: .75rem; }
@@ -372,9 +389,6 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .preset:active input:disabled + .preset-face { background: var(--disabled-bg); border-color: var(--line); }
 .choice:active .choice-face { background: #DEE8DE; }
 .choice input:disabled + .choice-face { background: var(--disabled-bg); color: var(--disabled-ink); border-color: var(--line); box-shadow: none; cursor: not-allowed; }
-.additional-items { margin-top: .75rem; }
-.additional-items > summary { padding: .875rem 0; min-height: 3.5rem; color: var(--green); font-size: 1rem; cursor: pointer; text-decoration: underline; text-underline-offset: .2em; }
-.additional-items[open] > summary { margin-bottom: .75rem; }
 /* Enlarged text can make the content area narrow even on a normal phone. */
 .question-controls, .dialog-content { container-name: ttc-controls; container-type: inline-size; }
 @container ttc-controls (max-width: 14rem) {

@@ -108,29 +108,40 @@ const materialExclusions = [
   ...((L.entryUnpriced || []).map(e => e.label)),
 ];
 
-// PRODUCTION BLOCKER, resolved: avoidable items are fully known at build time (every field
-// in src/data/avoidable.js is a static, sourced fact per country; see that file's own header).
-// The single exception is the card/ATM fee line (liveFigureId: 'avFees'), whose amount is the
-// calculator's own already-computed cardFee+atmFee, mirrored rather than recomputed, and whose
-// provenance/inclusion depend on which card option the reader picks in step 7. Tiering here
-// uses "carries a displayable figure" (a.figure or a.liveFigureId), not the old `.worth` field:
-// `.worth` only ever existed to feed the old pay/dodge aggregate bar, which this design does
-// not have (spec section 7: "There is no percentage bar"), so it is not the right field to
-// key a tier on going forward, even though for today's data the two happen to agree.
+// BRIEF-calc-v2-A2 (superseding Cluster A's own note below the old one used to sit here):
+// tiering now keys on avoidable.js's own `worth` field, not on "carries a displayable
+// figure". HARD = worth is non-null, one of three kinds this file turns into a real USD
+// figure: `liveFees` (the calculator's own already-computed cardFee+atmFee, mirrored, never
+// recomputed), `pctCardBase` (a sourced percentage band, multiplied by the engine's own
+// already-rendered card spend at render time in calc-wizard.js), or `usd` (a sourced dollar
+// range, already resolved by avoidable.js, scaled by the reader's own traveler count where
+// the item is per person). SOFT = worth is null: named, with its action, never a figure,
+// because no honest dollar basis exists for it (avoidable.js's own header explains why for
+// each one). Cluster A's prior note here was itself wrong to rule `.worth` out; this is the
+// correction, not a second opinion sitting beside it.
 const avoidableItems = avoidableFor(c);
-const quantifiedItems = avoidableItems.filter(a => a.figure || a.liveFigureId);
-const namedItems = avoidableItems.filter(a => !a.figure && !a.liveFigureId);
-// PRODUCTION BLOCKER, resolved (with a flag): the calm outcome's real trigger is not defined
-// in the supplied briefs ("the engine owner must determine that the available inputs
-// genuinely support" it). Absent that ruling, this build uses the narrowest, most defensible
-// condition the actual data supports: the calm state can only appear when this country's
-// ONLY quantified item is the card/ATM fee line itself, so picking a no-foreign-fee card
-// truly leaves nothing with a figure attached, not merely fewer things. Two countries
-// currently qualify (Ecuador, El Salvador; both dollar-currency, so the card-conversion and
-// exchange-desk items are already gated out for them). Flagged to MAIN: this is a resolution
-// for launch, not the desk's own ruling.
-const otherQuantifiedCount = quantifiedItems.filter(a => a.liveFigureId !== 'avFees').length;
-const calmEligible = otherQuantifiedCount === 0;
+const hardItems = avoidableItems.filter(a => a.worth);
+const softItems = avoidableItems.filter(a => !a.worth);
+// PRODUCTION BLOCKER, resolved (flag carried forward from Cluster A, now re-evaluated on the
+// worth-based split): the calm outcome's real trigger is still "this country's only HARD item
+// is the card/ATM fee line itself", so a no-foreign-fee card genuinely leaves nothing with a
+// real dollar figure attached. Re-running this on `worth` rather than "carries a figure" is a
+// genuine, intended behavior change: Cambodia now qualifies alongside Ecuador and El Salvador,
+// because its one other item (the free entry form, no sourced fake price) never had an honest
+// dollar basis and only looked quantified before because it displayed the word "free" as a
+// figure. That was the less honest reading; this is the correction. Flagged to MAIN: still a
+// resolution for launch, not the desk's own ruling.
+const otherHardCount = hardItems.filter(a => a.worth.kind !== 'liveFees').length;
+const calmEligible = otherHardCount === 0;
+// The reseller item's headline figure changes meaning under this split: before, its `figure`
+// was the OFFICIAL price (avoidable.js's own figureNote called it "the official price"); now
+// the HARD card shows the MARKUP (`worth.lo`/`worth.hi`, the gap above that official price),
+// which is the actual avoidable amount. avoidable.js's figureNote field describes the old
+// figure and is wrong for the new one, so this file writes its own note for that one case
+// rather than quote a note that would now mislabel what the reader is looking at.
+const hardFigureNote = (a) => (a.worth.kind === 'usd' && a.key === 'reseller')
+  ? 'the markup over the official price'
+  : a.figureNote;
 
 const wizData = {
   countryName: c.name,
@@ -206,17 +217,27 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
            result-actions (save/share, edit trip) still attached immediately after it.
            No content, data binding or honesty treatment changed here, only order and
            the visual weight in calculator.css (see .answer / .range there). -->
-      <!-- ===== What you can avoid (spec section 7) OR the calm outcome (section 8) ===== -->
+      <!-- ===== What you can avoid (spec section 7) OR the calm outcome (section 8) =====
+           BRIEF-calc-v2-A2: HARD/SOFT split, real USD figures, every applicable item shown
+           (no truncation: the full live-country data never exceeds 3 HARD + 4 SOFT, so a
+           "show more" disclosure is not needed to keep this readable; see the handoff notes
+           if a future country's data ever grows past that). -->
       <section class="section" aria-labelledby="avoid-heading" data-avoid-section>
         <div data-avoid-normal hidden={calmEligible}>
           <h2 id="avoid-heading">What you can avoid</h2>
-          <p class="section-intro">Separate choices, not a combined saving.</p>
+          <p class="section-intro">Separate choices, never added into one saving.</p>
 
-          {quantifiedItems.length > 0 && (
-            <Fragment>
-              <p class="tier-label">WITH AN INDIVIDUAL FIGURE</p>
-              {quantifiedItems.slice(0, 2).map(a => (
-                <article class="avoid-card" aria-labelledby={'item-' + a.key}>
+          {hardItems.length > 0 && (
+            <div class="avoid-tier avoid-tier-hard" data-avoid-tier="hard">
+              <p class="tier-subhead tier-subhead-hard">Fees we can price, refuse each on its own.</p>
+              {hardItems.map(a => (
+                <article class="avoid-card avoid-card-hard" aria-labelledby={'item-' + a.key}
+                  data-avoid-item={a.key} data-avoid-kind={a.worth.kind}
+                  data-avoid-pct-lo={a.worth.kind === 'pctCardBase' ? a.worth.lo : null}
+                  data-avoid-pct-hi={a.worth.kind === 'pctCardBase' ? a.worth.hi : null}
+                  data-avoid-usd-lo={a.worth.kind === 'usd' ? a.worth.lo : null}
+                  data-avoid-usd-hi={a.worth.kind === 'usd' ? a.worth.hi : null}
+                  data-avoid-usd-pp={a.worth.kind === 'usd' ? (a.worth.perPerson ? '1' : '0') : null}>
                   <div class="evidence-row">
                     {a.liveFigureId === 'avFees' ? (
                       <Fragment>
@@ -230,88 +251,46 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
                       </Fragment>
                     )}
                   </div>
-                  <h3 id={'item-' + a.key}>{a.title}</h3>
-                  <div class="item-amount">
-                    {a.liveFigureId === 'avFees'
-                      ? <strong data-avoid-amount={a.key}>&nbsp;</strong>
-                      : <strong>{a.figure}</strong>}
-                    <span>{a.figureNote}</span>
+                  <div class="item-amount-hard">
+                    {a.worth.kind === 'liveFees' ? (
+                      <strong class="amount-big" data-avoid-amount={a.key}>&nbsp;</strong>
+                    ) : (
+                      <strong class="amount-big">
+                        <span data-avoid-amount-lo={a.key}>$0</span><span data-avoid-amount-sep={a.key}>&nbsp;to&nbsp;</span><span data-avoid-amount-hi={a.key}>$0</span>
+                      </strong>
+                    )}
+                    <span>{hardFigureNote(a)}</span>
                   </div>
-                  {/* The 'fees' item's static `escape` field in avoidable.js ("A no-foreign-fee
-                      card takes both fee lines above to zero") predates this round's engine
-                      fix: a no-fee card now zeroes only the card-percentage portion, and the
-                      ATM operator's own flat fee still applies (see calc-engine.js's own
-                      corrected copy). avoidable.js is on the do-not-touch list, so this file
-                      overrides that one stale sentence with accurate wording rather than
-                      quoting it; every other item's escape/detail text is quoted as-is.
-                      Flagged to MAIN: the underlying avoidable.js copy itself should be
-                      corrected on the desk's own next pass, since the inline per-country
-                      calculator (CalcResult.astro, untouched by this brief) still quotes the
-                      stale sentence verbatim. */}
-                  <p>{a.liveFigureId === 'avFees' ? "A no-foreign-fee card takes the card percentage to $0; the ATM operator's own flat fee is separate and still applies." : a.escape} {a.detail}</p>
+                  <h3 id={'item-' + a.key}>{a.title}</h3>
+                  {/* One-line action only (BRIEF-calc-v2-A2 #2): the fuller `a.detail` prose
+                      that used to sit here is exactly the quiet-prose problem this brief
+                      exists to fix, so it is dropped from the card; "About this" still links
+                      out for anyone who wants it. The 'fees' item's escape override (a
+                      pre-existing Cluster A correction to avoidable.js's own stale sentence
+                      about the no-fee card zeroing "both fee lines") carries forward
+                      unchanged; avoidable.js is still on the do-not-touch list. */}
+                  <p>{a.liveFigureId === 'avFees' ? "A no-foreign-fee card takes the card percentage to $0; the ATM operator's own flat fee is separate and still applies." : a.escape}</p>
                   <details class="source-details"><summary>About this figure</summary><p>See the full explanation: <a href={a.href}>{a.hrefLabel}</a></p></details>
                 </article>
               ))}
-              {quantifiedItems.length > 2 && (
-                <details class="additional-items">
-                  <summary>{quantifiedItems.length - 2} more individual {quantifiedItems.length - 2 === 1 ? 'item' : 'items'}</summary>
-                  {quantifiedItems.slice(2).map(a => (
-                    <article class="avoid-card" aria-labelledby={'item-' + a.key}>
-                      <div class="evidence-row">
-                        {a.liveFigureId === 'avFees' ? (
-                          <Fragment>
-                            <span class="provenance" data-avoid-provenance={a.key}><span class="meta-key">Basis</span> Sourced rule</span>
-                            <span class="status" data-avoid-status={a.key}>Included</span>
-                          </Fragment>
-                        ) : (
-                          <Fragment>
-                            <span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span>
-                            <span class="status not-included">Not included</span>
-                          </Fragment>
-                        )}
-                      </div>
-                      <h3 id={'item-' + a.key}>{a.title}</h3>
-                      <div class="item-amount">
-                        {a.liveFigureId === 'avFees'
-                          ? <strong data-avoid-amount={a.key}>&nbsp;</strong>
-                          : <strong>{a.figure}</strong>}
-                        <span>{a.figureNote}</span>
-                      </div>
-                      <p>{a.liveFigureId === 'avFees' ? "A no-foreign-fee card takes the card percentage to $0; the ATM operator's own flat fee is separate and still applies." : a.escape} {a.detail}</p>
-                      <details class="source-details"><summary>About this figure</summary><p>See the full explanation: <a href={a.href}>{a.hrefLabel}</a></p></details>
-                    </article>
-                  ))}
-                </details>
-              )}
-            </Fragment>
+            </div>
           )}
 
-          {namedItems.length > 0 && (
-            <Fragment>
-              <p class="tier-label">USEFUL, WITHOUT A PRICE TAG</p>
-              {namedItems.slice(0, 2).map(a => (
-                <article class="avoid-card" aria-labelledby={'item-' + a.key}>
+          {softItems.length > 0 && (
+            <div class="avoid-tier avoid-tier-soft" data-avoid-tier="soft">
+              <p class="tier-subhead tier-subhead-soft">Worth watching, real but no honest number</p>
+              {softItems.map(a => (
+                <article class="avoid-card avoid-card-soft" aria-labelledby={'item-' + a.key}>
                   <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status not-estimated">Not estimated</span></div>
                   <h3 id={'item-' + a.key}>{a.title}</h3>
-                  <p>{a.escape} {a.detail}</p>
+                  <p>{a.escape}</p>
                   <details class="source-details"><summary>About this figure</summary><p>See the full explanation: <a href={a.href}>{a.hrefLabel}</a></p></details>
                 </article>
               ))}
-              {namedItems.length > 2 && (
-                <details class="additional-items">
-                  <summary>{namedItems.length - 2} more individual {namedItems.length - 2 === 1 ? 'item' : 'items'}</summary>
-                  {namedItems.slice(2).map(a => (
-                    <article class="avoid-card" aria-labelledby={'item-' + a.key}>
-                      <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status not-estimated">Not estimated</span></div>
-                      <h3 id={'item-' + a.key}>{a.title}</h3>
-                      <p>{a.escape} {a.detail}</p>
-                      <details class="source-details"><summary>About this figure</summary><p>See the full explanation: <a href={a.href}>{a.hrefLabel}</a></p></details>
-                    </article>
-                  ))}
-                </details>
-              )}
-            </Fragment>
+            </div>
           )}
+
+          <p class="method-note">We show each on its own and never add them into a single savings headline. Money you were never going to spend is not a saving.</p>
         </div>
 
         {calmEligible && (
@@ -332,7 +311,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
                   <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Your figure</span><span class="status avoided">Already avoided</span></div>
                 </div>
               </div>
-              {namedItems.map(a => (
+              {softItems.map(a => (
                 <div class="calm-check">
                   <span class="calm-check-mark" aria-hidden="true">&#10003;</span>
                   <div>

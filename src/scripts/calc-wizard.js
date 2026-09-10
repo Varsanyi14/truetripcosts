@@ -8,13 +8,18 @@
 //   The MIRROR function does the reverse: it reads text calc-engine.js has ALREADY written
 //   into the hidden CalcResult's own elements (hnLo, hnHi, hnRoomV, hnSpend, hnTax, hnCardFee,
 //   hnAtmFee, avFees, ...) and copies that text, verbatim, into this new surface's elements.
-//   It does no arithmetic on money. The two places it adds numbers together (the "Taxes &
+//   It does no arithmetic on unknown inputs. Two places add numbers together (the "Taxes &
 //   payment fees" group's collapsed amount, and BRIEF-calc-v2-clusterA #7's accommodation
-//   checkout uplift) are each a sum of numbers the engine already computed and already
-//   displays elsewhere on this same hidden tree; both are a presentation regrouping under
-//   the design's own labels, not new math on unknown inputs (spec section 9: "Grouping is a
-//   presentation mapping, not permission to move charges in or out of the total"). The
-//   uplift additionally never appears at all where the engine's own tax comes back zero.
+//   checkout uplift), each a sum of numbers the engine already computed and already displays
+//   elsewhere on this same hidden tree; a presentation regrouping under the design's own
+//   labels, not new math (spec section 9: "Grouping is a presentation mapping, not permission
+//   to move charges in or out of the total"). The uplift additionally never appears at all
+//   where the engine's own tax comes back zero. A third place, BRIEF-calc-v2-A2's HARD-tier
+//   avoidable figures, multiplies rather than sums: avoidable.js's own sourced percentage or
+//   dollar range (worth.lo/worth.hi, passed straight through, never recomputed) times a
+//   number the engine already computed (cardBase) or the reader already set (trav), the same
+//   multiplication the engine's own exposureFor()/render() already performs for its blended
+//   total, just kept per item instead of blended.
 //
 // WHAT IS THE SURFACE'S OWN STATE, because the engine has no concept of it and none should be
 // invented for it (spec section 11's engine/surface boundary table):
@@ -399,6 +404,7 @@ export function initCalcWizard() {
       const cardFeeAmt = text('hnCardFee');
       const atmFeeAmt = text('hnAtmFee');
       const feesLiveAmt = text('avFees');
+      const cardBaseAmt = text('hnCardBase');
       const roomVal = Math.round(Number(byId('hnRoom').value) || 0);
       const flightVal = Math.round(Number(byId('hnFlight').value) || 0);
 
@@ -477,6 +483,79 @@ export function initCalcWizard() {
       document.querySelectorAll('[data-avoid-amount="fees"]').forEach(el => { el.textContent = feesLiveAmt; });
       document.querySelectorAll('[data-avoid-provenance="fees"]').forEach(el => { el.innerHTML = '<span class="meta-key">Basis</span> ' + (noFee ? 'Your figure' : 'Sourced rule'); });
       document.querySelectorAll('[data-avoid-status="fees"]').forEach(el => { el.textContent = noFee ? 'Already avoided' : 'Included'; el.className = 'status' + (noFee ? ' avoided' : ''); });
+
+      // ----- avoidable items: HARD tier dollar figures (BRIEF-calc-v2-A2) -----
+      // Every figure here traces to a real, already-rendered engine output. A `pctCardBase`
+      // item (today only 'dcc') multiplies avoidable.js's own sourced percentage band
+      // (worth.lo/worth.hi, passed through as data-avoid-pct-*, never recomputed) by
+      // cardBase, which the engine has already computed and already rendered at hnCardBase;
+      // this file only reads that text back, the same way it reads every other mirrored
+      // figure. A `usd` item (today 'form' or 'reseller') is avoidable.js's own already-
+      // resolved dollar range, scaled by the reader's own traveler count where the item is
+      // per person, exactly the multiplication the engine's own exposureFor()/render() already
+      // does for its blended dodge total; this just does it per item instead of summed.
+      // `liveFees` needs nothing further: it is set immediately above.
+      const cardBaseNum = usdToNumber(cardBaseAmt);
+      function setAvoidMoneyRange(key, lo, hi) {
+        const loEl = document.querySelector('[data-avoid-amount-lo="' + key + '"]');
+        const sepEl = document.querySelector('[data-avoid-amount-sep="' + key + '"]');
+        const hiEl = document.querySelector('[data-avoid-amount-hi="' + key + '"]');
+        if (!loEl || !hiEl) return;
+        const collapsed = Math.round(lo) === Math.round(hi);
+        loEl.textContent = numberToUsd(lo);
+        if (sepEl) sepEl.hidden = collapsed;
+        hiEl.hidden = collapsed;
+        if (!collapsed) hiEl.textContent = numberToUsd(hi);
+      }
+      $$('[data-avoid-tier="hard"] [data-avoid-item]').forEach(card => {
+        const key = card.dataset.avoidItem;
+        const kind = card.dataset.avoidKind;
+        if (kind === 'pctCardBase') {
+          const pctLo = +card.dataset.avoidPctLo || 0, pctHi = +card.dataset.avoidPctHi || 0;
+          setAvoidMoneyRange(key, cardBaseNum * (pctLo / 100), cardBaseNum * (pctHi / 100));
+        } else if (kind === 'usd') {
+          const mult = (card.dataset.avoidUsdPp === '1') ? trav : 1;
+          const usdLo = +card.dataset.avoidUsdLo || 0, usdHi = +card.dataset.avoidUsdHi || 0;
+          setAvoidMoneyRange(key, usdLo * mult, usdHi * mult);
+        }
+        // kind === 'liveFees': nothing further; already set above.
+      });
+
+      // ----- HARD tier order: largest figure first (BRIEF-calc-v2-A2's layout rule) -----
+      // Reads each card's OWN just-written figure back out of the DOM rather than a second
+      // computation, so the order can never disagree with what the card shows (the same
+      // "read the number back out of the sourced string" rule avoidable.js's own parsers
+      // follow). A midpoint stands in for a range so a range and a single live figure (fees)
+      // are genuinely comparable in dollars, not by type. A card whose figure cannot be read
+      // (should not happen; defensive only) keeps its build-time position rather than
+      // sorting to an arbitrary spot, which is the "stable order for mixed types" the brief
+      // asks for in the case this sort cannot honestly decide.
+      const hardTier = document.querySelector('[data-avoid-tier="hard"]');
+      if (hardTier) {
+        const ranked = $$('.avoid-card', hardTier).map((card, i) => {
+          let value = null;
+          if (card.dataset.avoidKind === 'liveFees') {
+            value = usdToNumber(feesLiveAmt);
+          } else {
+            const key = card.dataset.avoidItem;
+            const loEl = document.querySelector('[data-avoid-amount-lo="' + key + '"]');
+            const hiEl = document.querySelector('[data-avoid-amount-hi="' + key + '"]');
+            if (loEl && hiEl) {
+              const lo = usdToNumber(loEl.textContent);
+              const hi = hiEl.hidden ? lo : usdToNumber(hiEl.textContent);
+              value = (lo + hi) / 2;
+            }
+          }
+          return { card, i, value };
+        });
+        ranked.sort((a, b) => {
+          if (a.value == null && b.value == null) return a.i - b.i;
+          if (a.value == null) return 1;
+          if (b.value == null) return -1;
+          return b.value - a.value;
+        });
+        ranked.forEach(({ card }) => hardTier.appendChild(card));
+      }
 
       // ----- calm outcome toggle (spec section 8). Eligibility is static per country
       // (WD.calmEligible, resolved at build time: see CalcWizard.astro's own comment on
