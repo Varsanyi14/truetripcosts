@@ -54,7 +54,7 @@ export const INDEXED_PAGES = [
   { file: 'hotel-tax-map.astro', label: 'Hotel tax by country, mapped', kind: 'tool' },
   { file: 'us-outbound-travelers.astro', label: 'Where Americans travel, ranked', kind: 'tool' },
   { file: 'us-customs-allowance.astro', label: 'US customs allowance, bringing purchases home', kind: 'tool' },
-  { file: 'calculator.astro', label: 'Trip cost calculator', kind: 'tool' },
+  { file: 'calculator.astro', label: 'What you can avoid', kind: 'tool' },
 
   // Region hubs. The label comes from hubs.js, keyed by the region name below.
   { file: 'europe.astro', label: null, kind: 'region', fromHub: 'Europe' },

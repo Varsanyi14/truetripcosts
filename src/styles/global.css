@@ -105,6 +105,17 @@
   .verdict .vlead{font-family:var(--serif);font-size:15px;color:#7FBBA6;display:block;margin-bottom:8px;font-weight:500;letter-spacing:.02em}
   .verdict .vcta{margin-top:18px}
 
+  /* BRIEF-v2-experience-build, Part 2: the country-guide avoidable hook. A white/teal
+     card, deliberately not the verdict's own dark treatment, so the two do not read as
+     one merged block: the verdict is "the short version" of the whole guide, this is a
+     single, real, priced reason to open the calculator. */
+  .avoid-hook{background:var(--card);border:1.5px solid var(--teal);border-radius:18px;padding:22px 24px;margin:16px 0 24px}
+  .avoid-hook .ah-eyebrow{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--teal-deep);margin:0 0 8px}
+  .avoid-hook p{font-size:17px;line-height:1.55;color:var(--ink);margin:0}
+  .avoid-hook .ah-cta{margin-top:14px}
+  .avoid-hook .ah-seewhy{color:var(--teal-deep);font-weight:600;text-decoration:none}
+  .avoid-hook .ah-seewhy:hover{text-decoration:underline}
+
   .notice{display:none;background:var(--amber-bg);border:1px solid #F0D6AE;color:#7A3D08;border-radius:12px;padding:14px 16px;font-size:14.5px;margin:14px 0}
   .notice.show{display:block}
 
@@ -695,6 +706,17 @@
   }
 
   /* ----- country rail on the landing page ----- */
+  /* SPEC-ttc-experience-v2, Part 3: the homepage promotion. Same dark treatment as the
+     country guide's own .verdict box (this is the site's one other "dark card, light
+     button" moment), so the two read as the same design language rather than two
+     unrelated dark boxes with different rules. Overrides the generic `section` rule's
+     top border and padding: this is a promo band, not another content section. */
+  .calc-promo{border-top:none;margin:22px 0 0;padding:26px 26px 28px;background:linear-gradient(135deg,var(--ink),#0A5644);border-radius:18px;color:#EAF0ED}
+  .calc-promo-eyebrow{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#7FBBA6;margin:0 0 10px}
+  .calc-promo h2{color:#fff;font-size:clamp(22px,3.6vw,28px);line-height:1.22;max-width:32ch;margin:0}
+  .calc-promo-sub{margin:10px 0 0;font-size:15px;color:#CFE3DB;max-width:48ch}
+  .calc-promo .btn{margin-top:16px}
+
   .rail-wrap{margin:30px 0 8px}
   .rail-lab{font-family:var(--mono);font-size:11.5px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.09em;margin:0 0 12px}
   .rail{display:flex;gap:13px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:2px 2px 12px;scrollbar-width:thin}

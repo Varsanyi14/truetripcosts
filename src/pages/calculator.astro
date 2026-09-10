@@ -18,7 +18,7 @@ import { countries } from '../data/index.js';
 const live = countries.filter(c => c.live).slice().sort((a, b) => a.name.localeCompare(b.name));
 ---
 <CalculatorLayout
-  title="Trip cost calculator: what will your trip really cost?"
+  title="What you can avoid: see your trip's real, refusable fees"
   description="A one-question-at-a-time trip cost calculator. Pick a destination and get a ranged total, never a false-precise number, plus every fee you can refuse to pay."
 >
   <QuestionPanel stepKey="destination" stepNumber={1} stepLabel="Destination" initiallyVisible isFirst

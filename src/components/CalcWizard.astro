@@ -224,12 +224,12 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
            if a future country's data ever grows past that). -->
       <section class="section" aria-labelledby="avoid-heading" data-avoid-section>
         <div data-avoid-normal hidden={calmEligible}>
-          <h2 id="avoid-heading">What you can avoid</h2>
-          <p class="section-intro">Separate choices, never added into one saving.</p>
+          <h2 id="avoid-heading" class="avoid-hero-heading">What you can avoid on this trip.</h2>
+          <p class="section-intro">Shown one at a time. We never add them into a single saving.</p>
 
           {hardItems.length > 0 && (
             <div class="avoid-tier avoid-tier-hard" data-avoid-tier="hard">
-              <p class="tier-subhead tier-subhead-hard">Fees we can price, refuse each on its own.</p>
+              <p class="tier-subhead tier-subhead-hard">Fees we can price. Refuse each on its own.</p>
               {hardItems.map(a => (
                 <article class="avoid-card avoid-card-hard" aria-labelledby={'item-' + a.key}
                   data-avoid-item={a.key} data-avoid-kind={a.worth.kind}
@@ -278,7 +278,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 
           {softItems.length > 0 && (
             <div class="avoid-tier avoid-tier-soft" data-avoid-tier="soft">
-              <p class="tier-subhead tier-subhead-soft">Worth watching, real but no honest number</p>
+              <p class="tier-subhead tier-subhead-soft">Real, but no honest number. Worth watching.</p>
               {softItems.map(a => (
                 <article class="avoid-card avoid-card-soft" aria-labelledby={'item-' + a.key}>
                   <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status not-estimated">Not estimated</span></div>
@@ -295,7 +295,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 
         {calmEligible && (
           <div data-avoid-calm hidden>
-            <h2>Little to avoid.</h2>
+            <h2 class="avoid-hero-heading">Little to avoid.</h2>
             <p class="section-intro">A few simple checks. Nothing extra suggested.</p>
             <div class="calm-result">
               <p class="eyebrow">Nothing extra suggested</p>

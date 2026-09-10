@@ -57,6 +57,11 @@ h1, h2, h3, p { margin: 0; }
 h1, h2 { color: var(--ink); font-family: var(--serif); font-weight: 400; }
 h1 { font-size: 2.25rem; line-height: 1.12; letter-spacing: -.035em; }
 h2 { font-size: 1.875rem; line-height: 1.18; letter-spacing: -.025em; }
+/* SPEC-ttc-experience-v2, Decision 3: the avoidable hero is the page's centre of gravity
+   in size and weight only, never in heading level (it stays an h2; the page keeps exactly
+   one h1, "Your {country} trip." above it). Bigger than that h1, on both the normal and
+   calm states, so it is unmistakably the biggest thing on the page either way. */
+.avoid-hero-heading { font-size: clamp(2rem, 5vw, 2.75rem); line-height: 1.08; letter-spacing: -.03em; }
 h3 { font-size: 1.125rem; line-height: 1.4; color: var(--ink); }
 p + p { margin-top: .75rem; }
 button svg { pointer-events: none; }
