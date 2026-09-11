@@ -272,6 +272,19 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .assumptions-accordion ul { margin-top: .75rem; padding-left: 1.125rem; }
 .assumptions-accordion li { font-size: .9375rem; color: var(--muted); line-height: 1.6; margin-bottom: .625rem; }
 .assumptions-accordion li:last-child { margin-bottom: 0; }
+/* BRIEF-carrier-honest-build: the carrier connectivity card sits beside the HARD/SOFT grid
+   (see CalcWizard.astro), not inside it, so it gets its own tier wrapper, but reuses
+   .avoid-card, .item-amount-hard and .amount-big untouched for the day-pass case's figure.
+   Same monospace tier label already used for the HARD tier's own subhead. */
+.tier-subhead-carrier { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; letter-spacing: .01em; color: var(--muted); }
+/* The "More carriers" disclosure in the wizard's own carrier step: same quiet +/- accordion
+   language as .source-details and .assumptions-accordion, not a new pattern. */
+.carrier-more { margin-top: 1rem; border-top: 1px solid var(--line); padding-top: 1rem; }
+.carrier-more > summary { display: inline-flex; align-items: center; gap: .375rem; cursor: pointer; list-style: none; font-size: .9375rem; font-weight: 600; color: var(--text); padding: .375rem 0; }
+.carrier-more > summary::-webkit-details-marker { display: none; }
+.carrier-more > summary::before { content: "+"; color: var(--green); font-size: 1.125rem; line-height: 1; }
+.carrier-more[open] > summary::before { content: "\2212"; }
+.carrier-more .choice-list { margin-top: .75rem; }
 /* BRIEF-calc-v2-clusterA #7: spacing only, matching the .75rem gap already used between
    detail-lines. The element itself is hidden by default in the markup; calc-wizard.js's
    mirror() reveals it only where the engine's own tax for this country is non-zero. */

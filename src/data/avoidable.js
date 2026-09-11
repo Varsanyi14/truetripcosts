@@ -54,6 +54,8 @@
 import { arrivalFormFor } from './arrival-forms.js';
 import { entryChargesFor, isBillable } from './entry-charges.js';
 import { tipping as tippingRows } from './tipping.js';
+import { VERDICTS, tierOf } from './connectivity-verdicts.js';
+import { spokeUrl } from './site-urls.js';
 
 // Reading order within the block. The price-versus-price items lead where they exist, because a
 // real price beside a fake one is the strongest thing on the list and the reader should meet it
@@ -846,4 +848,44 @@ export function exposureFor(c) {
     s[side + 'Unpriced'] += 1;
   }
   return s;
+}
+
+// ---------------------------------------------------------------------------
+// THE CARRIER CONNECTIVITY FALLBACK (BRIEF-carrier-honest-build).
+//
+// A trip's real phone-plan exposure depends on which US carrier the traveler is on and how
+// many nights they are staying, and NEITHER is known when this page is built: they only
+// exist once the calculator wizard asks for them. So the carrier item itself is authored
+// and rendered CLIENT-SIDE, in calc-wizard.js, from the sourced constants in
+// src/data/carrier-roaming.js's CARRIER_PROFILES (see that file's own header for the
+// day-pass math and the honesty line that keeps the other four models unpriced).
+//
+// This function is the one piece of the carrier item that IS knowable at build time: what
+// to say when the reader picks "Other or not sure", or names a carrier this file has no
+// profile for. It is deliberately carrier-blind and reuses the SAME per-country
+// connectivity verdict the /staying-connected hub already shows (connectivity-verdicts.js),
+// so a wizard reader and a guide reader are never told two different honest answers for the
+// same country.
+//
+// NEVER merged into avoidableFor()'s own array above. That array is asserted byte-for-byte
+// by calc-regression-test.mjs and check-avoidable-highlight.mjs against every live
+// country's static data, and this item is not static (it depends on wizard-only state
+// avoidableFor() has no concept of), so it stays a separate export, read only by
+// CalcWizard.astro to seed the wizard's own client-side fallback text. avoidableFor()'s own
+// output, and every existing item on it, is byte-unchanged by this addition.
+export function carrierFallbackFor(c) {
+  if (!c) return null;
+  const v = VERDICTS[c.slug];
+  const tier = v ? tierOf(v.tier) : null;
+  const detail = v
+    ? (v.why + ' Check your own carrier plan before you go either way.')
+    : "This country's own connectivity guidance is still pending a full review here. Check your carrier's plan before you go, and compare live prices for a local SIM or eSIM.";
+  return {
+    key: 'carrier-fallback',
+    title: 'Your phone plan abroad',
+    detail,
+    tierLabel: tier ? tier.short : null,
+    href: spokeUrl(c.slug, 'staying-connected'),
+    hrefLabel: 'How connectivity works here',
+  };
 }

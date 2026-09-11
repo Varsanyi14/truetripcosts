@@ -30,6 +30,11 @@
 //     differs from the typical figure this page prefilled, tracked independently of the
 //     numeric value itself, per spec section 6: "An untouched planning default remains Our
 //     estimate even after the user presses Continue... A genuine user-supplied quote does."
+//   - carrier (BRIEF-carrier-honest-build, default 'other'): which US carrier the reader
+//     picked in the wizard's own step 8. calc-engine.js has no concept of a carrier and
+//     none should be invented for it; see renderCarrierItem() below for the one place this
+//     state is read, and carrier-roaming.js's CARRIER_PROFILES for where its figures come
+//     from.
 //
 // NO PENDING STATE. The reference design's "Updating your estimate" state exists for an
 // engine call that can take real time or fail over a network. This engine is synchronous and
@@ -115,7 +120,7 @@ export function initCalcWizard() {
     setTimeout(() => { announcer.textContent = msg; }, 40);
   }
 
-  const STEP_ORDER = ['destination', 'travelers', 'nights', 'style', 'flights', 'hotel', 'card'];
+  const STEP_ORDER = ['destination', 'travelers', 'nights', 'style', 'flights', 'hotel', 'card', 'carrier'];
   const STEP_META = {
     destination: { editTitle: 'Change destination' },
     travelers: { editTitle: 'Change travelers' },
@@ -124,15 +129,21 @@ export function initCalcWizard() {
     flights: { editTitle: 'Change airfare' },
     hotel: { editTitle: 'Change accommodation' },
     card: { editTitle: 'Change payment fees' },
+    carrier: { editTitle: 'Change phone carrier' },
   };
 
   function panelFor(key) { return document.querySelector('[data-wizard-step="' + key + '"]'); }
   function formFor(key) { return document.querySelector('[data-step-form="' + key + '"]'); }
 
   // ----- surface-only state (see file header) -----
+  // `carrier` (BRIEF-carrier-honest-build) joins flightMode/origin as state the hidden
+  // engine has no concept of and none should be invented for it: calc-engine.js does not
+  // know what a carrier is, and never should. Defaults to 'other' ("Other or not sure"),
+  // never assumed, exactly matching the radio checked by default in CalcWizard.astro.
   const state = {
     flightMode: 'known',
     origin: { hotel: 'estimate', flight: 'estimate' },
+    carrier: 'other',
   };
 
   // ===================================================================================
@@ -234,6 +245,19 @@ export function initCalcWizard() {
     r.addEventListener('change', () => { if (r.checked) setNoFee(r.value === 'no-fee'); });
   });
 
+  // ----- carrier: radios, surface-only (no hidden-engine equivalent). Split across two
+  // ChoiceRows sharing name="carrier" (the primary buttons and the "More carriers"
+  // disclosure), which native radios treat as one exclusive group regardless of which
+  // fieldset each one sits in. -----
+  const carrierMore = document.querySelector('[data-carrier-more]');
+  function syncCarrierMore() {
+    if (carrierMore && carrierMore.querySelector('input:checked')) carrierMore.open = true;
+  }
+  $$('[data-choice-fieldset="carrier"] input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => { if (r.checked) { state.carrier = r.value; syncCarrierMore(); } });
+  });
+  syncCarrierMore();
+
   // ----- destination: search filter, reusing the site's typeahead behaviour -----
   (function wireDestination() {
     const search = document.querySelector('[data-destination-search]');
@@ -295,6 +319,7 @@ export function initCalcWizard() {
       return { valid: true };
     }
     if (key === 'card') return { valid: true };
+    if (key === 'carrier') return { valid: true };
     return { valid: true };
   }
   function showStepError(key, message, focusEl) {
@@ -380,6 +405,84 @@ export function initCalcWizard() {
   function finish() {
     STEP_ORDER.forEach(k => { const p = panelFor(k); if (p) p.hidden = true; });
     mirror();
+  }
+
+  // ===================================================================================
+  // CARRIER CONNECTIVITY CARD (BRIEF-carrier-honest-build). The one piece of the result
+  // view this file computes rather than mirrors, because nothing to mirror exists: neither
+  // avoidable.js nor calc-engine.js knows the reader's carrier, so there is no hidden-engine
+  // figure to read back. What IS computed here is the same small multiplication the
+  // pctCardBase branch above already does for the dcc item: a sourced constant
+  // (WD.carriers[key].dayRate, from carrier-roaming.js's CARRIER_PROFILES, passed straight
+  // through in wizData, never re-sourced here) times a number this file already has
+  // (nights, the same value every other mirrored line in this function uses). See
+  // carrier-roaming.js's own header for why only the 'day-pass' model gets this
+  // multiplication at all: the other four models are named honestly instead, with no
+  // invented total.
+  function renderCarrierItem(nights) {
+    const wrap = document.querySelector('[data-avoid-carrier]');
+    if (!wrap) return;
+    const key = state.carrier || 'other';
+    const profiles = (WD && WD.carriers) || {};
+    const profile = profiles[key] || null;
+    const isNorthAmerica = (WD.countrySlug === 'mexico' || WD.countrySlug === 'canada');
+    const n = Math.max(1, Math.round(Number(nights) || 1));
+
+    let detail, status, amount = null, showEsim = true;
+
+    if (profile && isNorthAmerica && profile.mexicoCanada) {
+      // Mexico/Canada special case, ahead of the general model (BRIEF Part 3): several
+      // carriers include or cheapen these two destinations regardless of their model
+      // everywhere else, so the honest item here is that special treatment, not the
+      // general one.
+      detail = profile.mexicoCanada;
+      status = 'Included';
+      showEsim = false;
+    } else if (!profile) {
+      // "Other or not sure", or a carrier this build has no profile for: no carrier-specific
+      // figure, ever (BRIEF honesty rule #3). Falls back to this country's own general
+      // connectivity verdict, pre-authored at build time by avoidable.js's
+      // carrierFallbackFor() and passed through unchanged.
+      detail = WD.carrierFallbackText || 'Check your carrier\'s plan before you go, and compare live prices for a local SIM or eSIM.';
+      status = 'Not estimated';
+    } else if (profile.model === 'included') {
+      detail = 'Your ' + profile.label + ' plan already includes data here (' + profile.includedNote + '). '
+        + 'You likely do not need a travel eSIM, a purchase you can skip.';
+      status = 'Included';
+      showEsim = false;
+    } else if (profile.model === 'day-pass' && profile.dayRate) {
+      const cap = profile.cap;
+      const billedDays = cap ? Math.min(n, cap.days) : n;
+      const computed = profile.dayRate * billedDays;
+      const capClause = cap ? (', capped at ' + numberToUsd(profile.dayRate * cap.days) + ' per bill period') : ' with no cap';
+      detail = 'You are on ' + profile.label + ', ' + n + ' ' + (n === 1 ? 'night' : 'nights') + ' here. '
+        + 'Its day pass is $' + profile.dayRate + '/day' + capClause + ', so about ' + numberToUsd(computed) + ' for this trip'
+        + (cap ? ' if it falls in one bill period' : '') + '. A local eSIM is usually far cheaper for a trip this long.';
+      amount = computed;
+      status = 'Not included';
+    } else {
+      // add-on / pay-per-use / not-supported: named honestly, real terms, no computed
+      // total, for the same reason the day-pass math above does not apply to them.
+      detail = profile.namedNote || ('Check ' + profile.label + '\'s own international roaming page before this trip.');
+      status = 'Not estimated';
+    }
+
+    const detailEl = wrap.querySelector('[data-carrier-detail]');
+    if (detailEl) detailEl.textContent = detail;
+    wrap.querySelectorAll('[data-carrier-status]').forEach(el => { el.textContent = status; });
+    const amtWrap = wrap.querySelector('[data-carrier-amount-wrap]');
+    if (amtWrap) {
+      amtWrap.hidden = (amount == null);
+      if (amount != null) {
+        const amtEl = wrap.querySelector('[data-carrier-amount]');
+        if (amtEl) amtEl.textContent = numberToUsd(amount);
+      }
+    }
+    const esimWrap = wrap.querySelector('[data-carrier-esim-wrap]');
+    if (esimWrap) esimWrap.hidden = !showEsim;
+
+    const summaryEl = document.querySelector('[data-mirror="summaryCarrier"]');
+    if (summaryEl) summaryEl.textContent = profile ? profile.label : 'Other or not sure';
   }
 
   // ===================================================================================
@@ -576,6 +679,9 @@ export function initCalcWizard() {
       set('[data-mirror="summaryHotel"]', '$' + roomVal + ' / room / night');
       set('[data-mirror="summaryCard"]', noFee ? 'No foreign-transaction fee' : 'Use the typical fee assumption');
 
+      // ----- carrier connectivity card (BRIEF-carrier-honest-build) -----
+      renderCarrierItem(nights);
+
       if (resultView) resultView.hidden = false;
       if (errorView) errorView.hidden = true;
       const h1 = resultView ? resultView.querySelector('h1') : null;
@@ -639,6 +745,10 @@ export function initCalcWizard() {
       const checked = document.querySelector('input[name="destination"]:checked');
       return { value: checked ? checked.value : null };
     }
+    if (key === 'carrier') {
+      const checked = document.querySelector('[data-choice-fieldset="carrier"] input:checked');
+      return { value: checked ? checked.value : null };
+    }
     return {};
   }
   function restoreControls(key, snap) {
@@ -666,6 +776,12 @@ export function initCalcWizard() {
       if (snap.value != null) { setNoFee(snap.value === 'no-fee'); $$('[data-choice-fieldset="card"] input').forEach(r => { r.checked = (r.value === snap.value); }); }
     } else if (key === 'destination') {
       if (snap.value != null) $$('input[name="destination"]').forEach(r => { r.checked = (r.value === snap.value); });
+    } else if (key === 'carrier') {
+      if (snap.value != null) {
+        state.carrier = snap.value;
+        $$('[data-choice-fieldset="carrier"] input').forEach(r => { r.checked = (r.value === snap.value); });
+        syncCarrierMore();
+      }
     }
   }
 

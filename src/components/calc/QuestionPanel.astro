@@ -7,7 +7,7 @@
 // stepNumber/totalSteps/stepLabel feed WizardProgress. isFirst drops the Back action and
 // widens Continue to the full row (wizard-actions.one-action, matching the reference).
 // isLast swaps the Continue label for "See trip estimate" (spec section 6, verbatim).
-const { stepKey, stepNumber, totalSteps = 7, stepLabel, title, intro, isFirst = false, isLast = false, initiallyVisible = false,
+const { stepKey, stepNumber, totalSteps = 8, stepLabel, title, intro, isFirst = false, isLast = false, initiallyVisible = false,
   // BRIEF-calc-tier1-review-fixes, Fix 4: the footer used to repeat on all seven steps;
   // it now only renders where a caller opts in (step 1 and the two money steps), so it
   // registers where it matters instead of becoming wallpaper.

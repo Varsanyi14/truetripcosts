@@ -43,9 +43,11 @@ import ChoiceRows from './calc/ChoiceRows.astro';
 import DestinationChoice from './calc/DestinationChoice.astro';
 import { calcSetupFor } from '../data/calc-setup.js';
 import { calcLinesFor } from '../data/calc-lines.js';
-import { avoidableFor } from '../data/avoidable.js';
+import { avoidableFor, carrierFallbackFor } from '../data/avoidable.js';
 import { flightPlaceholderFor } from '../data/flight-defaults.js';
 import { countries } from '../data/index.js';
+import { CARRIER_PROFILES } from '../data/carrier-roaming.js';
+import { esimLink } from '../data/links.js';
 
 const { country: c } = Astro.props;
 const { calcJson, tipCalc } = calcSetupFor(c);
@@ -95,6 +97,34 @@ const cardOptions = [
   { value: 'no-fee', label: 'No foreign-transaction fee', help: 'My card does not charge this fee on purchases.', selected: false },
   { value: 'assumed', label: 'Use the typical fee assumption', help: 'My card charges a fee, or I have not checked.', selected: true },
 ];
+
+// BRIEF-carrier-honest-build, Part 2: the carrier question. "Other or not sure" is a
+// first-class primary option and the default, never assumed (see PART 2 of the brief:
+// "defaults to 'Other or not sure', editable via Edit trip"). The rest are split by name
+// recognition, not by how much data this file has on them, into a primary row of buttons
+// and a "More carriers" disclosure beneath it: every carrier CARRIER_PROFILES covers is
+// selectable, none hidden entirely.
+const CARRIER_ENTRIES = Object.entries(CARRIER_PROFILES);
+const carrierOption = ([key, p]) => ({ value: key, label: p.label, help: p.shortHelp, selected: false });
+const primaryCarrierOptions = [
+  ...CARRIER_ENTRIES.filter(([, p]) => p.group === 'primary').map(carrierOption),
+  { value: 'other', label: 'Other or not sure', help: 'We will use this country\'s general connectivity guidance instead.', selected: true },
+];
+const moreCarrierOptions = CARRIER_ENTRIES.filter(([, p]) => p.group === 'more').map(carrierOption);
+
+// The client gets only what it needs to render the item itself (see calc-wizard.js's
+// renderCarrierItem()): never `source` or `checkedISO`, which are for MAIN's review, not
+// the page. Keeping this list explicit also means a future field added to CARRIER_PROFILES
+// for MAIN's own bookkeeping does not silently start shipping to every visitor's browser.
+const carrierClientData = {};
+for (const [key, p] of CARRIER_ENTRIES) {
+  carrierClientData[key] = {
+    label: p.label, model: p.model, dayRate: p.dayRate, cap: p.cap,
+    includedNote: p.includedNote, mexicoCanada: p.mexicoCanada, namedNote: p.namedNote,
+  };
+}
+const carrierFallback = carrierFallbackFor(c);
+const esimUrl = esimLink(c.slug);
 
 // PRODUCTION BLOCKER, resolved: material unpriced categories (spec section 7). Travel
 // insurance is a named tier on every country (never priced, by design: a premium depends on
@@ -152,6 +182,8 @@ const wizData = {
   flightVerified: !!flightData,
   roomTypical,
   calmEligible,
+  carriers: carrierClientData,
+  carrierFallbackText: carrierFallback ? carrierFallback.detail : '',
 };
 const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 ---
@@ -195,9 +227,21 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 </QuestionPanel>
 
 <QuestionPanel stepKey="card" stepNumber={7} stepLabel="Payment fees" showFootnote
-  title="Does your card charge a purchase fee abroad?" intro="Check for a foreign-transaction fee on purchases." isLast>
+  title="Does your card charge a purchase fee abroad?" intro="Check for a foreign-transaction fee on purchases.">
   <ChoiceRows name="card" legend="Foreign-transaction fee on purchases" options={cardOptions} />
   <p class="field-help">No bank login or card details are collected here.</p>
+</QuestionPanel>
+
+<QuestionPanel stepKey="carrier" stepNumber={8} stepLabel="Phone plan" isLast
+  title="Which US carrier are you traveling with?" intro="This decides whether your plan already covers data here, or you are looking at a carrier day-pass rate.">
+  <ChoiceRows name="carrier" legend="US carrier" options={primaryCarrierOptions} />
+  {moreCarrierOptions.length > 0 && (
+    <details class="carrier-more" data-carrier-more>
+      <summary>More carriers</summary>
+      <ChoiceRows name="carrier" legend="More US carriers" options={moreCarrierOptions} />
+    </details>
+  )}
+  <p class="field-help">Change this anytime from Edit trip. We never assume a carrier for you.</p>
 </QuestionPanel>
 
 <!-- ================= THE RESULT VIEW, hidden until the wizard completes ================= -->
@@ -322,6 +366,41 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
             </div>
           </div>
         )}
+
+        <!-- ===== Carrier connectivity (BRIEF-carrier-honest-build) =====
+             Filled in client-side by calc-wizard.js's renderCarrierItem(), from the reader's
+             own step-8 carrier answer and the trip length already set in step 3. Sits
+             outside data-avoid-normal / data-avoid-calm above and shows either way: it is a
+             separate question from whether this country's OTHER fees are refusable.
+             avoidableFor(c) above knows nothing about a reader's carrier or trip length, so
+             this card is never part of that array; see avoidable.js's carrierFallbackFor and
+             carrier-roaming.js's CARRIER_PROFILES for where its content actually comes from. -->
+        <div class="avoid-tier avoid-tier-carrier" data-avoid-carrier>
+          <p class="tier-subhead tier-subhead-carrier">Your phone plan abroad</p>
+          <article class="avoid-card" aria-labelledby="carrier-item-heading">
+            <div class="evidence-row">
+              <span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span>
+              <span class="status not-estimated" data-carrier-status>Not estimated</span>
+            </div>
+            <div class="item-amount-hard" data-carrier-amount-wrap hidden>
+              <strong class="amount-big" data-carrier-amount>&nbsp;</strong>
+              <span>this pass, this trip</span>
+            </div>
+            <h3 id="carrier-item-heading">Your phone plan abroad</h3>
+            <p data-carrier-detail>&nbsp;</p>
+            {esimUrl && (
+              <p class="small muted" data-carrier-esim-wrap hidden>
+                <a href={esimUrl} target="_blank" rel="noopener sponsored">Check live eSIM prices for {c.name}</a> <span class="tg earn">we may earn a commission</span>
+              </p>
+            )}
+            {carrierFallback && (
+              <p class="small muted">
+                <a href={carrierFallback.href}>{carrierFallback.hrefLabel}</a>
+              </p>
+            )}
+            <button class="text-link" type="button" data-edit="carrier">Change phone carrier</button>
+          </article>
+        </div>
       </section>
 
       <section class="answer" aria-label="Estimated cost and scope">
@@ -456,6 +535,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
         <div class="summary-row"><dt>Round-trip airfare</dt><dd data-mirror="summaryFlight">Not included</dd><button class="text-link" type="button" data-edit="flights" aria-label="Change round-trip airfare">Change</button></div>
         <div class="summary-row"><dt>Accommodation</dt><dd data-mirror="summaryHotel">$0 / room / night</dd><button class="text-link" type="button" data-edit="hotel" aria-label="Change accommodation">Change</button></div>
         <div class="summary-row"><dt>Card purchase fee</dt><dd data-mirror="summaryCard">Use the typical fee assumption</dd><button class="text-link" type="button" data-edit="card" aria-label="Change payment fees">Change</button></div>
+        <div class="summary-row"><dt>Phone carrier</dt><dd data-mirror="summaryCarrier">Other or not sure</dd><button class="text-link" type="button" data-edit="carrier" aria-label="Change phone carrier">Change</button></div>
       </dl>
       <div class="summary-footer">Your inputs stay available while you explore. No need to repeat the wizard.</div>
     </aside>
