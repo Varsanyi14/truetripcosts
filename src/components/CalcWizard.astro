@@ -35,6 +35,15 @@
 // step is showing in the wizard or has been relocated into the edit dialog (see
 // calc-wizard.js's openEdit()): there is exactly one control per question, never two
 // differently-styled copies, matching the spec's explicit instruction on this point.
+// BRIEF-calc-result-registry-rebuild: this file used to hand-assemble three separate
+// wizard-gated systems (carrier's option list, rail's country gate, rental's constant)
+// plus its own hard/soft split of avoidableFor(c)'s static items. All four are now ONE
+// registry, read from src/data/avoidable.js: avoidableRegistryFor(c) for the HARD/SOFT
+// tier pool (country-only items, byte-identical to avoidableFor(c)'s own output), and
+// carrierRegistryEntryFor/railRegistryEntryFor/rentalRegistryEntry for the three
+// wizard-gated items, which keep their own dedicated result slot (see that section's own
+// header in avoidable.js for why) but now share ONE step generator and ONE QuestionPanel
+// loop below instead of three hand-authored blocks.
 import CalcResult from './CalcResult.astro';
 import QuestionPanel from './calc/QuestionPanel.astro';
 import QuantityControl from './calc/QuantityControl.astro';
@@ -43,11 +52,14 @@ import ChoiceRows from './calc/ChoiceRows.astro';
 import DestinationChoice from './calc/DestinationChoice.astro';
 import { calcSetupFor } from '../data/calc-setup.js';
 import { calcLinesFor } from '../data/calc-lines.js';
-import { avoidableFor, carrierFallbackFor, railAvoidableFor, RENTAL_AVOIDABLE } from '../data/avoidable.js';
+import {
+  avoidableRegistryFor,
+  carrierRegistryEntryFor,
+  railRegistryEntryFor,
+  rentalRegistryEntry,
+} from '../data/avoidable.js';
 import { flightPlaceholderFor } from '../data/flight-defaults.js';
 import { countries } from '../data/index.js';
-import { CARRIER_PROFILES } from '../data/carrier-roaming.js';
-import { esimLink } from '../data/links.js';
 
 const { country: c } = Astro.props;
 const { calcJson, tipCalc } = calcSetupFor(c);
@@ -98,63 +110,29 @@ const cardOptions = [
   { value: 'assumed', label: 'Use the typical fee assumption', help: 'My card charges a fee, or I have not checked.', selected: true },
 ];
 
-// BRIEF-carrier-honest-build, Part 2: the carrier question. "Other or not sure" is a
-// first-class primary option and the default, never assumed (see PART 2 of the brief:
-// "defaults to 'Other or not sure', editable via Edit trip"). The rest are split by name
-// recognition, not by how much data this file has on them, into a primary row of buttons
-// and a "More carriers" disclosure beneath it: every carrier CARRIER_PROFILES covers is
-// selectable, none hidden entirely.
-const CARRIER_ENTRIES = Object.entries(CARRIER_PROFILES);
-const carrierOption = ([key, p]) => ({ value: key, label: p.label, help: p.shortHelp, selected: false });
-const primaryCarrierOptions = [
-  ...CARRIER_ENTRIES.filter(([, p]) => p.group === 'primary').map(carrierOption),
-  { value: 'other', label: 'Other or not sure', help: 'We will use this country\'s general connectivity guidance instead.', selected: true },
-];
-const moreCarrierOptions = CARRIER_ENTRIES.filter(([, p]) => p.group === 'more').map(carrierOption);
-
-// The client gets only what it needs to render the item itself (see calc-wizard.js's
-// renderCarrierItem()): never `source` or `checkedISO`, which are for MAIN's review, not
-// the page. Keeping this list explicit also means a future field added to CARRIER_PROFILES
-// for MAIN's own bookkeeping does not silently start shipping to every visitor's browser.
-const carrierClientData = {};
-for (const [key, p] of CARRIER_ENTRIES) {
-  carrierClientData[key] = {
-    label: p.label, model: p.model, dayRate: p.dayRate, cap: p.cap,
-    includedNote: p.includedNote, mexicoCanada: p.mexicoCanada, namedNote: p.namedNote,
-  };
-}
-const carrierFallback = carrierFallbackFor(c);
-const esimUrl = esimLink(c.slug);
-
-// BRIEF-rail-avoidable: the rail step and card exist ONLY for the countries rail-passes.js
-// actually has a verdict for (10 today). railAvoidableFor(c) is the single source of truth
-// for that gate, read once here: a null return means no verdict row, which is the cleaner
-// UX the brief itself asks for (a traveler to a non-rail country never sees the question at
-// all, rather than seeing it and having to notice it never produces anything). Everything
-// downstream, the step's existence, the card's existence, and the wizard's own total step
-// count, all key off this one boolean so they can never disagree with each other.
-const railItem = railAvoidableFor(c);
-const hasRail = !!railItem;
-const railOptions = [
-  { value: 'yes', label: 'Yes', help: '', selected: false },
-  { value: 'no', label: 'No or not sure', help: '', selected: true },
-];
-
-// BRIEF-rental-avoidable: unlike rail, this step and its card are NOT country-conditional
-// (the counter upsell is the same pitch everywhere), so they exist on every country page.
-// Placed after the (possibly absent) rail step, so it is always the true final step
-// regardless of whether this country has a rail verdict: 10th when rail is present, 9th
-// when it is not. That single rule is why carrier and rail below no longer carry `isLast`
-// themselves; only the always-present rental step does.
-const rentalOptions = [
-  { value: 'yes', label: 'Yes', help: '', selected: false },
-  { value: 'no', label: 'No or not sure', help: '', selected: true },
-];
-const rentalStepNumber = hasRail ? 10 : 9;
+// BRIEF-calc-result-registry-rebuild, PART 2 "generic engine": the three wizard-gated
+// items, ONE array, in registry order (carrier, then rail if this country has a verdict,
+// then rental), instead of three separately hand-tracked booleans/arrays. Everything
+// downstream, the step count, the step order, the QuestionPanel loop and the edit-dialog
+// titles, all key off this ONE array so they can never disagree with each other. Adding a
+// fourth wizard-gated item (see avoidable.js's airRegistryEntryExample) means pushing one
+// more entry here; nothing else on this page would need to change.
+const carrierEntry = carrierRegistryEntryFor(c);
+const railEntry = railRegistryEntryFor(c);
+const rentalEntry = rentalRegistryEntry();
+// Rail is genuinely absent (not merely hidden) on a country rail-passes.js has no verdict
+// for, so it is simply missing from this array there, the same clean "never asked" outcome
+// the old hasRail gate produced. Carrier and rental are unconditional.
+const questionItems = [carrierEntry, railEntry, rentalEntry].filter(Boolean);
+// Wizard-gated items whose RESULT card stays outside the hard/soft pool (see avoidable.js's
+// registry header for why): rail and rental share one dedicated card shape and one render
+// loop below; carrier keeps its own, richer block (a dynamic day-pass figure, an eSIM link,
+// a Mexico/Canada special case) unchanged in substance from before this refactor.
+const wizardGatedExtras = [railEntry, rentalEntry].filter(Boolean);
 // Every QuestionPanel on this page is given this explicitly, rather than relying on the
 // component's own default, because that default is shared with the standalone /calculator
 // landing page and cannot itself vary per country the way this page's real step count does.
-const totalSteps = hasRail ? 10 : 9;
+const totalSteps = 7 + questionItems.length;
 
 // PRODUCTION BLOCKER, resolved: material unpriced categories (spec section 7). Travel
 // insurance is a named tier on every country (never priced, by design: a premium depends on
@@ -168,40 +146,34 @@ const materialExclusions = [
   ...((L.entryUnpriced || []).map(e => e.label)),
 ];
 
-// BRIEF-calc-v2-A2 (superseding Cluster A's own note below the old one used to sit here):
-// tiering now keys on avoidable.js's own `worth` field, not on "carries a displayable
-// figure". HARD = worth is non-null, one of three kinds this file turns into a real USD
-// figure: `liveFees` (the calculator's own already-computed cardFee+atmFee, mirrored, never
-// recomputed), `pctCardBase` (a sourced percentage band, multiplied by the engine's own
-// already-rendered card spend at render time in calc-wizard.js), or `usd` (a sourced dollar
-// range, already resolved by avoidable.js, scaled by the reader's own traveler count where
-// the item is per person). SOFT = worth is null: named, with its action, never a figure,
-// because no honest dollar basis exists for it (avoidable.js's own header explains why for
-// each one). Cluster A's prior note here was itself wrong to rule `.worth` out; this is the
-// correction, not a second opinion sitting beside it.
-const avoidableItems = avoidableFor(c);
-const hardItems = avoidableItems.filter(a => a.worth);
-const softItems = avoidableItems.filter(a => !a.worth);
-// PRODUCTION BLOCKER, resolved (flag carried forward from Cluster A, now re-evaluated on the
-// worth-based split): the calm outcome's real trigger is still "this country's only HARD item
-// is the card/ATM fee line itself", so a no-foreign-fee card genuinely leaves nothing with a
-// real dollar figure attached. Re-running this on `worth` rather than "carries a figure" is a
-// genuine, intended behavior change: Cambodia now qualifies alongside Ecuador and El Salvador,
-// because its one other item (the free entry form, no sourced fake price) never had an honest
-// dollar basis and only looked quantified before because it displayed the word "free" as a
-// figure. That was the less honest reading; this is the correction. Flagged to MAIN: still a
-// resolution for launch, not the desk's own ruling.
-const otherHardCount = hardItems.filter(a => a.worth.kind !== 'liveFees').length;
+// BRIEF-calc-result-registry-rebuild, PART 1: the HARD/SOFT tier pool, read once from the
+// registry (avoidableRegistryFor(c) wraps avoidableFor(c) byte-for-byte; see that
+// function's own header in avoidable.js). Tiering itself is unchanged from before this
+// refactor: HARD = a real figure exists, SOFT = it genuinely does not.
+const avoidablePool = avoidableRegistryFor(c);
+const hardItems = avoidablePool.filter(a => a.tier === 'hard');
+const softItems = avoidablePool.filter(a => a.tier === 'soft');
+// PRODUCTION BLOCKER, resolved (flag carried forward from Cluster A): the calm outcome's
+// real trigger is still "this country's only HARD item is the card/ATM fee line itself",
+// so a no-foreign-fee card genuinely leaves nothing with a real dollar figure attached.
+// Unaffected by the registry rebuild: carrier/rail/rental never contribute to this count,
+// deliberately (see avoidable.js's registry header on why they stay outside this split).
+const otherHardCount = hardItems.filter(a => a.figureKind !== 'liveFees').length;
 const calmEligible = otherHardCount === 0;
-// The reseller item's headline figure changes meaning under this split: before, its `figure`
-// was the OFFICIAL price (avoidable.js's own figureNote called it "the official price"); now
-// the HARD card shows the MARKUP (`worth.lo`/`worth.hi`, the gap above that official price),
-// which is the actual avoidable amount. avoidable.js's figureNote field describes the old
-// figure and is wrong for the new one, so this file writes its own note for that one case
-// rather than quote a note that would now mislabel what the reader is looking at.
-const hardFigureNote = (a) => (a.worth.kind === 'usd' && a.key === 'reseller')
-  ? 'the markup over the official price'
-  : a.figureNote;
+
+// BRIEF-calc-result-registry-rebuild, PART 4 "the result reframe": the one-line shape
+// sentence that leads the section, naming how many items carry a real number versus how
+// many are named but unpriced, BEFORE the reader scans the list. Both counts are the pool
+// built above, which is purely a function of this COUNTRY (never the wizard's answers), so
+// this is safe to compute once, at build time, exactly like the rest of this section's
+// static copy; nothing here needs a client-side mirror.
+function shapeSentence(hardCount, softCount) {
+  const hardClause = hardCount === 1 ? 'One fee carries a real number' : (hardCount + ' fees carry a real number');
+  if (softCount === 0) return hardClause + '.';
+  const softClause = softCount === 1 ? 'one more trap carries' : (softCount + ' more traps carry');
+  return hardClause + ', ' + softClause + ' no set price but real money.';
+}
+const avoidShapeSentence = shapeSentence(hardItems.length, softItems.length);
 
 const wizData = {
   countryName: c.name,
@@ -212,9 +184,20 @@ const wizData = {
   flightVerified: !!flightData,
   roomTypical,
   calmEligible,
-  carriers: carrierClientData,
-  carrierFallbackText: carrierFallback ? carrierFallback.detail : '',
-  hasRailVerdict: hasRail,
+  carriers: carrierEntry.clientData,
+  carrierFallbackText: carrierEntry.fallback ? carrierEntry.fallback.detail : '',
+  // BRIEF-calc-result-registry-rebuild: replaces the old single hasRailVerdict flag. The
+  // client's STEP_ORDER is now FIXED_STEPS.concat(WD.questionSteps), so adding a fourth
+  // wizard-gated item needs no change in calc-wizard.js at all; questionMeta/questionDefaults
+  // carry the small per-item facts (the edit-dialog title, the default answer) that used to
+  // be hardcoded per key in that file.
+  questionSteps: questionItems.map(q => q.question.stepKey),
+  questionMeta: Object.fromEntries(questionItems.map(q => [q.question.stepKey, { editTitle: q.question.editTitle }])),
+  questionDefaults: Object.fromEntries(questionItems.map(q => {
+    const opts = q.question.options.concat(q.question.moreOptions || []);
+    const def = opts.find(o => o.selected) || opts[0];
+    return [q.question.stepKey, def ? def.value : ''];
+  })),
 };
 const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 ---
@@ -263,36 +246,27 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
   <p class="field-help">No bank login or card details are collected here.</p>
 </QuestionPanel>
 
-<QuestionPanel stepKey="carrier" stepNumber={8} totalSteps={totalSteps} stepLabel="Phone plan"
-  title="Which US carrier are you traveling with?" intro="This decides whether your plan already covers data here, or you are looking at a carrier day-pass rate.">
-  <ChoiceRows name="carrier" legend="US carrier" options={primaryCarrierOptions} />
-  {moreCarrierOptions.length > 0 && (
-    <details class="carrier-more" data-carrier-more>
-      <summary>More carriers</summary>
-      <ChoiceRows name="carrier" legend="More US carriers" options={moreCarrierOptions} />
-    </details>
-  )}
-  <p class="field-help">Change this anytime from Edit trip. We never assume a carrier for you.</p>
-</QuestionPanel>
-
-<!-- ===== BRIEF-rail-avoidable: only rendered for the 10 countries rail-passes.js has a
-     verdict for (railItem above), so a traveler to a non-rail country never sees this
-     question at all, rather than seeing it and it producing nothing. ===== -->
-{hasRail && (
-  <QuestionPanel stepKey="rail" stepNumber={9} totalSteps={totalSteps} stepLabel="Getting around"
-    title="Are you planning intercity train travel on this trip?" intro="This decides whether we show you the rail-pass-versus-tickets call for this country.">
-    <ChoiceRows name="rail" legend="Intercity train travel" options={railOptions} />
-    <p class="field-help">Change this anytime from Edit trip.</p>
+<!-- ===== BRIEF-calc-result-registry-rebuild: ONE loop generates every wizard-gated
+     item's QuestionPanel, in registry order (carrier, then rail where this country has a
+     verdict, then rental). A country with no rail verdict simply has no 'rail' entry in
+     questionItems, so it never renders this question at all, the same clean outcome the
+     old hasRail-gated block produced by hand. Adding a fourth item (see avoidable.js's
+     airRegistryEntryExample) needs no new block here: it would just be one more entry in
+     questionItems, rendered by this same loop. ===== -->
+{questionItems.map((item, i) => (
+  <QuestionPanel stepKey={item.question.stepKey} stepNumber={8 + i} totalSteps={totalSteps}
+    stepLabel={item.question.stepLabel} isLast={i === questionItems.length - 1}
+    title={item.question.panelTitle} intro={item.question.panelIntro}>
+    <ChoiceRows name={item.question.stepKey} legend={item.question.legend} options={item.question.options} />
+    {item.question.moreOptions && item.question.moreOptions.length > 0 && (
+      <details class="carrier-more" data-more-options={item.question.stepKey}>
+        <summary>{item.question.moreLabel}</summary>
+        <ChoiceRows name={item.question.stepKey} legend={item.question.moreLegend} options={item.question.moreOptions} />
+      </details>
+    )}
+    <p class="field-help">{item.question.fieldHelp}</p>
   </QuestionPanel>
-)}
-
-<!-- ===== BRIEF-rental-avoidable: NOT country-conditional, unlike rail above, so this
-     renders on every country page and is always the true final step. ===== -->
-<QuestionPanel stepKey="rental" stepNumber={rentalStepNumber} totalSteps={totalSteps} stepLabel="Rental car" isLast
-  title="Are you renting a car on this trip?" intro="This decides whether we show you the rental counter insurance guidance.">
-  <ChoiceRows name="rental" legend="Renting a car" options={rentalOptions} />
-  <p class="field-help">Change this anytime from Edit trip.</p>
-</QuestionPanel>
+))}
 
 <!-- ================= THE RESULT VIEW, hidden until the wizard completes ================= -->
 <div class="results" data-result-view hidden>
@@ -304,32 +278,28 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
         <p class="trip-meta"><span data-mirror="partyLabel">2 travelers</span> &middot; <span data-mirror="durationLabel">7 nights</span></p>
       </div>
 
-      <!-- ===== BRIEF-calc-v2-clusterA #6: result reorder ===== -->
-      <!-- "What you can refuse to pay" now leads (was third); the ranged total that used to
-           be the hero is demoted to a calmer secondary block right below it, with its
-           result-actions (save/share, edit trip) still attached immediately after it.
-           No content, data binding or honesty treatment changed here, only order and
-           the visual weight in calculator.css (see .answer / .range there). -->
-      <!-- ===== What you can refuse to pay (spec section 7) OR the calm outcome (section 8) =====
-           BRIEF-calc-v2-A2: HARD/SOFT split, real USD figures, every applicable item shown
-           (no truncation: the full live-country data never exceeds 3 HARD + 4 SOFT, so a
-           "show more" disclosure is not needed to keep this readable; see the handoff notes
-           if a future country's data ever grows past that). -->
+      <!-- ===== BRIEF-calc-result-registry-rebuild, PART 4 "lead with avoidance" =====
+           The hero heading now names the country directly, and a one-line shape sentence
+           (avoidShapeSentence, built once above from this country's own pool) sets
+           expectations before the reader scans a single card: how many items carry a real
+           number versus how many are named but genuinely unpriced. Neither count is a
+           guess; both are the same hardItems/softItems arrays the cards below render from. -->
       <section class="section" aria-labelledby="avoid-heading" data-avoid-section>
         <div data-avoid-normal hidden={calmEligible}>
-          <h2 id="avoid-heading" class="avoid-hero-heading">What you can refuse to pay on this trip.</h2>
+          <h2 id="avoid-heading" class="avoid-hero-heading">What you can refuse to pay in {c.name}.</h2>
+          <p class="avoid-shape">{avoidShapeSentence}</p>
 
           {hardItems.length > 0 && (
             <div class="avoid-tier avoid-tier-hard" data-avoid-tier="hard">
               <p class="tier-subhead tier-subhead-hard">Fees we can price. Refuse each one.</p>
               {hardItems.map(a => (
                 <article class="avoid-card avoid-card-hard" aria-labelledby={'item-' + a.key}
-                  data-avoid-item={a.key} data-avoid-kind={a.worth.kind}
-                  data-avoid-pct-lo={a.worth.kind === 'pctCardBase' ? a.worth.lo : null}
-                  data-avoid-pct-hi={a.worth.kind === 'pctCardBase' ? a.worth.hi : null}
-                  data-avoid-usd-lo={a.worth.kind === 'usd' ? a.worth.lo : null}
-                  data-avoid-usd-hi={a.worth.kind === 'usd' ? a.worth.hi : null}
-                  data-avoid-usd-pp={a.worth.kind === 'usd' ? (a.worth.perPerson ? '1' : '0') : null}>
+                  data-avoid-item={a.key} data-avoid-kind={a.figureKind}
+                  data-avoid-pct-lo={a.figureKind === 'pctCardBase' ? a.figureLo : null}
+                  data-avoid-pct-hi={a.figureKind === 'pctCardBase' ? a.figureHi : null}
+                  data-avoid-usd-lo={a.figureKind === 'usd' ? a.figureLo : null}
+                  data-avoid-usd-hi={a.figureKind === 'usd' ? a.figureHi : null}
+                  data-avoid-usd-pp={a.figureKind === 'usd' ? (a.figurePerPerson ? '1' : '0') : null}>
                   <div class="evidence-row">
                     {a.liveFigureId === 'avFees' ? (
                       <Fragment>
@@ -344,25 +314,22 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
                     )}
                   </div>
                   <div class="item-amount-hard">
-                    {a.worth.kind === 'liveFees' ? (
+                    {a.figureKind === 'liveFees' ? (
                       <strong class="amount-big" data-avoid-amount={a.key}>&nbsp;</strong>
                     ) : (
                       <strong class="amount-big">
                         <span data-avoid-amount-lo={a.key}>$0</span><span data-avoid-amount-sep={a.key}>&nbsp;to&nbsp;</span><span data-avoid-amount-hi={a.key}>$0</span>
                       </strong>
                     )}
-                    <span>{hardFigureNote(a)}</span>
+                    <span>{a.figureNote}</span>
                   </div>
                   <h3 id={'item-' + a.key}>{a.title}</h3>
-                  {/* One-line action only (BRIEF-calc-v2-A2 #2): the fuller `a.detail` prose
-                      that used to sit here is exactly the quiet-prose problem this brief
-                      exists to fix, so it is dropped from the card; "About this" still links
-                      out for anyone who wants it. The 'fees' item's escape override (a
-                      pre-existing Cluster A correction to avoidable.js's own stale sentence
-                      about the no-fee card zeroing "both fee lines") carries forward
-                      unchanged; avoidable.js is still on the do-not-touch list. */}
-                  <p>{a.liveFigureId === 'avFees' ? "A no-foreign-fee card takes the card percentage to $0; the ATM operator's own flat fee is separate and still applies." : a.escape}</p>
-                  <details class="source-details"><summary>About this figure</summary><p>See the full explanation: <a href={a.href}>{a.hrefLabel}</a></p></details>
+                  {/* One-line action only (BRIEF-calc-v2-A2 #2): the fuller detail prose
+                      that used to sit here is exactly the quiet-prose problem that brief
+                      existed to fix, so it stays dropped from the card; "How this works"
+                      still links out for anyone who wants it. */}
+                  <p>{a.escape}</p>
+                  <details class="source-details"><summary>How this works</summary><p>See the full explanation: <a href={a.href} target="_blank" rel="noopener">{a.hrefLabel}</a></p></details>
                 </article>
               ))}
             </div>
@@ -370,15 +337,21 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 
           {softItems.length > 0 && (
             <div class="avoid-tier avoid-tier-soft" data-avoid-tier="soft">
-              <p class="tier-subhead tier-subhead-soft">Real, but no honest number. Worth watching.</p>
-              {softItems.map(a => (
-                <article class="avoid-card avoid-card-soft" aria-labelledby={'item-' + a.key}>
-                  <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status not-estimated">Not estimated</span></div>
+              <p class="tier-subhead tier-subhead-soft">Traps worth knowing - real, but no set price.</p>
+              <p class="soft-tier-note">We do not invent a dollar for these, because the amount depends on you. But each is money you keep by spotting it.</p>
+              {softItems.map((a, i) => (
+                <article class={'avoid-card avoid-card-soft' + (i >= 3 ? ' avoid-card-extra' : '')} aria-labelledby={'item-' + a.key}>
+                  <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status not-estimated">No set price</span></div>
                   <h3 id={'item-' + a.key}>{a.title}</h3>
                   <p>{a.escape}</p>
-                  <details class="source-details"><summary>About this figure</summary><p>See the full explanation: <a href={a.href}>{a.hrefLabel}</a></p></details>
+                  <details class="source-details"><summary>How this works</summary><p>See the full explanation: <a href={a.href} target="_blank" rel="noopener">{a.hrefLabel}</a></p></details>
                 </article>
               ))}
+              {softItems.length > 3 && (
+                <details class="soft-more" data-soft-more>
+                  <summary>Show {softItems.length - 3} more</summary>
+                </details>
+              )}
             </div>
           )}
 
@@ -409,7 +382,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
                   <div>
                     <strong>{a.title}</strong>
                     <p>{a.escape} {a.detail}</p>
-                    <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status not-estimated">Not estimated</span></div>
+                    <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status not-estimated">No set price</span></div>
                   </div>
                 </div>
               ))}
@@ -419,18 +392,21 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 
         <!-- ===== Carrier connectivity (BRIEF-carrier-honest-build) =====
              Filled in client-side by calc-wizard.js's renderCarrierItem(), from the reader's
-             own step-8 carrier answer and the trip length already set in step 3. Sits
-             outside data-avoid-normal / data-avoid-calm above and shows either way: it is a
-             separate question from whether this country's OTHER fees are refusable.
-             avoidableFor(c) above knows nothing about a reader's carrier or trip length, so
-             this card is never part of that array; see avoidable.js's carrierFallbackFor and
-             carrier-roaming.js's CARRIER_PROFILES for where its content actually comes from. -->
+             own carrier-step answer and the trip length already set in step 3. Sits outside
+             data-avoid-normal / data-avoid-calm above and shows either way: it is a separate
+             question from whether this country's OTHER fees are refusable. It stays outside
+             the hard/soft pool above for the same reason rail and rental do (see avoidable.js's
+             registry header), plus a second reason of its own: unlike every pool item, whether
+             it carries a real figure depends on WHICH carrier the reader names, only known
+             once the wizard is answered. Its config (options, edit title, client-safe carrier
+             data, fallback text, eSIM link) now comes from carrierRegistryEntryFor(c) instead
+             of being hand-assembled in this file's own frontmatter. -->
         <div class="avoid-tier avoid-tier-carrier" data-avoid-carrier>
           <p class="tier-subhead tier-subhead-carrier">Your phone plan abroad</p>
           <article class="avoid-card" aria-labelledby="carrier-item-heading">
             <div class="evidence-row">
               <span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span>
-              <span class="status not-estimated" data-carrier-status>Not estimated</span>
+              <span class="status not-estimated" data-carrier-status>No set price</span>
             </div>
             <div class="item-amount-hard" data-carrier-amount-wrap hidden>
               <strong class="amount-big" data-carrier-amount>&nbsp;</strong>
@@ -438,75 +414,62 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
             </div>
             <h3 id="carrier-item-heading">Your phone plan abroad</h3>
             <p data-carrier-detail>&nbsp;</p>
-            {esimUrl && (
+            {carrierEntry.esimUrl && (
               <p class="small muted" data-carrier-esim-wrap hidden>
-                <a href={esimUrl} target="_blank" rel="noopener sponsored">Check live eSIM prices for {c.name}</a> <span class="tg earn">we may earn a commission</span>
+                <a href={carrierEntry.esimUrl} target="_blank" rel="noopener sponsored">Check live eSIM prices for {c.name}</a> <span class="tg earn">we may earn a commission</span>
               </p>
             )}
-            {carrierFallback && (
+            {carrierEntry.fallback && (
               <p class="small muted">
-                <a href={carrierFallback.href}>{carrierFallback.hrefLabel}</a>
+                <a href={carrierEntry.fallback.href} target="_blank" rel="noopener">{carrierEntry.fallback.hrefLabel}</a>
               </p>
             )}
             <button class="text-link" type="button" data-edit="carrier">Change phone carrier</button>
           </article>
         </div>
 
-        <!-- ===== Rail pass or point-to-point tickets (BRIEF-rail-avoidable) =====
-             Rendered ONLY for the 10 countries rail-passes.js has a real verdict for
-             (railItem, computed once above): a non-rail country gets no markup here at all,
-             not markup that quietly never shows. The card's text is fully build-time known
-             (railAvoidableFor(c) needs only the country, never trip length or traveler
-             count), so calc-wizard.js's own job is a single visibility toggle keyed on the
-             step-9 answer, nothing computed or assembled client-side. worth is always null:
-             see avoidable.js's own header on why a rail price can never be invented. -->
-        {hasRail && (
-          <div class="avoid-tier avoid-tier-soft avoid-tier-rail" data-avoid-rail hidden>
-            <p class="tier-subhead tier-subhead-soft">Real, but no honest number. Worth watching.</p>
-            <article class="avoid-card avoid-card-soft" aria-labelledby="rail-item-heading">
+        <!-- ===== BRIEF-calc-result-registry-rebuild: rail and rental, ONE shared render
+             loop over wizardGatedExtras (built above from railRegistryEntryFor(c) and
+             rentalRegistryEntry()). Both stay outside data-avoid-normal / data-avoid-calm,
+             deliberately: a reader who says yes here still needs this guidance even in an
+             otherwise fee-calm country (see avoidable.js's registry header for the full
+             reasoning). Each is hidden by default and toggled client-side, keyed on its OWN
+             question answer, nothing computed or assembled beyond that toggle. Adding a
+             fourth item of this same shape (see avoidable.js's airRegistryEntryExample)
+             would mean adding it to the wizardGatedExtras array above; this loop would
+             render it with no further change. -->
+        {wizardGatedExtras.map(item => (
+          <div class={'avoid-tier avoid-tier-soft avoid-tier-extra'} data-avoid-extra={item.question.stepKey} hidden>
+            <p class="tier-subhead tier-subhead-soft">Traps worth knowing - real, but no set price.</p>
+            <article class="avoid-card avoid-card-soft" aria-labelledby={item.question.stepKey + '-item-heading'}>
               <div class="evidence-row">
                 <span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span>
-                <span class="status not-estimated">Not estimated</span>
+                <span class="status not-estimated">No set price</span>
               </div>
-              <h3 id="rail-item-heading">{railItem.title}</h3>
-              <p>{railItem.detail}</p>
-              <p class="small muted">{railItem.reason}</p>
-              <details class="source-details"><summary>About this</summary><p>See the full picture: <a href={railItem.href}>{railItem.hrefLabel}</a></p></details>
-              <button class="text-link" type="button" data-edit="rail">Change your rail travel answer</button>
+              <h3 id={item.question.stepKey + '-item-heading'}>{item.card.title}</h3>
+              <p>{item.card.escape}</p>
+              <p class="small muted">{item.card.secondary}</p>
+              <details class="source-details"><summary>How this works</summary><p>See the full picture: <a href={item.card.href} target="_blank" rel="noopener">{item.card.hrefLabel}</a></p></details>
+              <button class="text-link" type="button" data-edit={item.question.stepKey}>{item.question.editTitle}</button>
             </article>
           </div>
-        )}
-
-        <!-- ===== The rental counter insurance upsell (BRIEF-rental-avoidable) =====
-             Unlike carrier and rail above, this card is NOT gated on the country: the
-             counter upsell pitch is the same everywhere, so RENTAL_AVOIDABLE in
-             avoidable.js is a plain constant, not a per-country function, and this markup
-             is unconditional. The only gate is the wizard's own "renting a car?" answer,
-             toggled client-side in calc-wizard.js. Every sentence here is LOCKED copy from
-             the brief: do not rephrase the coverage claims, even for style, without
-             checking with MAIN first. -->
-        <div class="avoid-tier avoid-tier-soft avoid-tier-rental" data-avoid-rental hidden>
-          <p class="tier-subhead tier-subhead-soft">Real, but no honest number. Worth watching.</p>
-          <article class="avoid-card avoid-card-soft" aria-labelledby="rental-item-heading">
-            <div class="evidence-row">
-              <span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span>
-              <span class="status not-estimated">Not estimated</span>
-            </div>
-            <h3 id="rental-item-heading">{RENTAL_AVOIDABLE.title}</h3>
-            <p>{RENTAL_AVOIDABLE.escape}</p>
-            <p class="small muted">{RENTAL_AVOIDABLE.detail}</p>
-            <details class="source-details"><summary>About this</summary><p>See the full picture: <a href={RENTAL_AVOIDABLE.href}>{RENTAL_AVOIDABLE.hrefLabel}</a></p></details>
-            <button class="text-link" type="button" data-edit="rental">Change your rental car answer</button>
-          </article>
-        </div>
+        ))}
       </section>
 
-      <section class="answer" aria-label="Estimated cost and scope">
+      <!-- ===== BRIEF-calc-result-registry-rebuild, PART 4 "total demoted" =====
+           This used to be the page's hero figure (BRIEF-calc-v2-clusterA #6 already
+           demoted it once, below the avoidance section); it is now demoted a second time,
+           visually: a small "for context" strip rather than a big serif number, with a
+           forward link into the breakdown below instead of standing alone. No content,
+           data binding or honesty treatment changed here, only presentation
+           (calculator.css's .answer-context). -->
+      <section class="answer answer-context" aria-label="Estimated cost and scope">
+        <p class="eyebrow">For context</p>
         <div class="range-prefix">About</div>
         <p class="range" aria-label="Estimated trip range">
           <span data-mirror="rangeLow">$0</span><span>&nbsp;to&nbsp;</span><span data-mirror="rangeHigh">$0</span>
         </p>
-        <p class="range-scope">USD &middot; for the whole party, not per person</p>
+        <p class="range-scope">USD &middot; for the whole party, not per person &middot; <a class="text-link" href="#breakdown-heading">See the breakdown</a></p>
         <div class="scope-alert compact-scope" data-flight-alert>
           <strong data-mirror="flightNotice">Flights not included.</strong>
           <button class="text-link" type="button" data-edit="flights" data-flight-alert-action>Add flights &rarr;</button>
@@ -634,10 +597,12 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
         <div class="summary-row"><dt>Accommodation</dt><dd data-mirror="summaryHotel">$0 / room / night</dd><button class="text-link" type="button" data-edit="hotel" aria-label="Change accommodation">Change</button></div>
         <div class="summary-row"><dt>Card purchase fee</dt><dd data-mirror="summaryCard">Use the typical fee assumption</dd><button class="text-link" type="button" data-edit="card" aria-label="Change payment fees">Change</button></div>
         <div class="summary-row"><dt>Phone carrier</dt><dd data-mirror="summaryCarrier">Other or not sure</dd><button class="text-link" type="button" data-edit="carrier" aria-label="Change phone carrier">Change</button></div>
-        {hasRail && (
-          <div class="summary-row"><dt>Intercity rail</dt><dd data-mirror="summaryRail">No or not sure</dd><button class="text-link" type="button" data-edit="rail" aria-label="Change your rail travel answer">Change</button></div>
-        )}
-        <div class="summary-row"><dt>Renting a car</dt><dd data-mirror="summaryRental">No or not sure</dd><button class="text-link" type="button" data-edit="rental" aria-label="Change your rental car answer">Change</button></div>
+        {/* BRIEF-calc-result-registry-rebuild: rail and rental share one loop here too,
+            same as their result card above; a fourth item of this shape needs no new row
+            hand-authored, only an entry in wizardGatedExtras. */}
+        {wizardGatedExtras.map(item => (
+          <div class="summary-row"><dt>{item.question.summaryLabel}</dt><dd data-mirror={'summary' + item.question.stepKey.charAt(0).toUpperCase() + item.question.stepKey.slice(1)}>No or not sure</dd><button class="text-link" type="button" data-edit={item.question.stepKey} aria-label={'Change your ' + item.question.summaryLabel.toLowerCase() + ' answer'}>Change</button></div>
+        ))}
       </dl>
       <div class="summary-footer">Your inputs stay available while you explore. No need to repeat the wizard.</div>
     </aside>

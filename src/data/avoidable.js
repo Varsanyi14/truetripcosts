@@ -57,6 +57,15 @@ import { tipping as tippingRows } from './tipping.js';
 import { VERDICTS, tierOf } from './connectivity-verdicts.js';
 import { spokeUrl } from './site-urls.js';
 import { railPasses } from './rail-passes.js';
+// BRIEF-calc-result-registry-rebuild: the registry section at the bottom of this file
+// (avoidableRegistryFor, carrierRegistryEntryFor, railRegistryEntryFor,
+// rentalRegistryEntry) is what CalcWizard.astro now reads instead of hand-assembling
+// carrier's option list itself. Both imports below are build-time only: the registry
+// functions run in CalcWizard.astro's own frontmatter (Node/Astro context), never in
+// calc-wizard.js's client bundle, so pulling in CARRIER_PROFILES's full per-carrier prose
+// here costs nothing at runtime. See that section's own header for the full accounting.
+import { CARRIER_PROFILES } from './carrier-roaming.js';
+import { esimLink } from './links.js';
 
 // Reading order within the block. The price-versus-price items lead where they exist, because a
 // real price beside a fake one is the strongest thing on the list and the reader should meet it
@@ -989,3 +998,309 @@ export const RENTAL_AVOIDABLE = {
   // NEVER priced. Guidance, not a computed or looked-up figure.
   worth: null,
 };
+
+// ===========================================================================
+// THE AVOIDABLE ITEM REGISTRY (BRIEF-calc-result-registry-rebuild).
+//
+// WHY THIS EXISTS. Before this section, adding one wizard-gated item (carrier, rail,
+// rental) meant its own export here, its own bespoke render block in calc-wizard.js, and
+// its own QuestionPanel + state wiring in CalcWizard.astro: touching carrier meant ~91
+// places, rail ~83, rental ~43. That hand-wiring tax is what made "add one more item" a
+// big job even though the item itself (a title, a question, an escape sentence) is small.
+// This section is the fix: every item CalcWizard.astro's wizard asks about or its result
+// shows is now ONE declarative object a shared engine reads, so a new item is one entry,
+// not a scavenger hunt across three files.
+//
+// TWO POOLS, not one, and this is a deliberate, flagged split rather than a single flat
+// list, for a reason specific to THIS site's honesty model:
+//
+//   1. avoidableRegistryFor(c): the HARD/SOFT tier pool. Every item here is either priced
+//      from a real sourced figure (HARD) or genuinely has none (SOFT), and EVERY item is
+//      ALWAYS relevant to a trip to this country: nothing here depends on anything the
+//      wizard asks. It wraps avoidableFor(c) byte-for-byte (the SAME array CalcResult.astro
+//      and every existing gate already depend on; nothing about that function's own output
+//      changes by one character), so this pool is just avoidableFor(c)'s own items given
+//      the registry's declarative shape and, for HARD items, a discriminated `figureKind`
+//      instead of a bare `worth` object, plus the wizard-page-specific link fix below.
+//   2. carrierRegistryEntryFor / railRegistryEntryFor / rentalRegistryEntry: the
+//      WIZARD-GATED items. Each is real, but whether it even applies to THIS trip is a
+//      question only the wizard asks (which carrier, planning a train, renting a car), so
+//      none of them can honestly join pool 1's country-only classification.
+//
+// WHY THESE STAY OUT OF THE CALM-STATE SPLIT, deliberately, not an oversight: the site's
+// "Little to refuse" calm outcome exists because a country's fee structure alone is calm
+// (see CalcWizard.astro's own calmEligible, keyed only on whether any OTHER hard fee
+// exists beside the card/ATM line). Rail and rental answer a DIFFERENT question, "are you
+// doing this activity at all", which has nothing to do with whether this country nickel-
+// and-dimes on fees. If a reader says yes to renting a car in an otherwise fee-calm
+// country, they still need the counter-insurance guidance; hiding it because the country's
+// FEES happen to be calm would be exactly the kind of quiet, wrong suppression this site
+// exists to avoid. So these three keep their own dedicated result slot, unaffected by
+// calmEligible, exactly as before this refactor; only their CONFIGURATION (the question,
+// the copy, the edit title) is now registry data instead of hand-authored per file.
+//
+// CARRIER ALSO STAYS OUT OF THE POOL for a second, separate reason: unlike every pool item
+// and unlike rail/rental, whether it carries a real figure depends on WHICH carrier the
+// reader names, which is only known once the wizard is answered. Folding a maybe-hard,
+// maybe-soft item into a pool whose split is otherwise decided per COUNTRY (built once, at
+// build time) would need that split re-decided per READER at render time, which is a
+// larger and riskier change than this brief asked for. So carrier keeps its own existing
+// client-side day-pass calculator (renderCarrierItem in calc-wizard.js, unchanged in
+// substance), and this file supplies only its declarative config: the question, the option
+// list, the edit title, the client-safe carrier data, the fallback text. Flagged to MAIN as
+// a natural next step, not done here: folding carrier into the dynamic pool once the calm-
+// eligibility computation is also made to account for it.
+//
+// THE SCHEMA an item in EITHER pool follows (fields not every item needs are simply
+// omitted or null, never invented):
+//   key            unique id.
+//   tier           'hard' (has a figure) | 'soft' (figureless). Fixed per registry entry
+//                  in pool 1; for the wizard-gated items this is implicit in which
+//                  function returns them (rail/rental are always soft; carrier is not in
+//                  this pool at all, see above).
+//   title          card heading.
+//   question       null for a country-only pool-1 item; for a wizard-gated item, the full
+//                  panel + option-list + edit-title data CalcWizard.astro needs to render
+//                  its QuestionPanel and edit dialog with no per-item authoring.
+//   escape         the card's primary line: the one-line action for a HARD item, the main
+//                  sentence for a SOFT item.
+//   secondary      an optional second, smaller line under a SOFT item (rail's own country
+//                  reason, rental's fuller guidance); null where there is only one line.
+//   figureKind     null (SOFT) | 'liveFees' | 'pctCardBase' | 'usd'. The ONLY three shapes
+//                  a real figure can take on this site (see avoidableFor(c)'s own header):
+//                  a number the calculator already computed and is mirroring back
+//                  (liveFees), a sourced percentage band applied to the calculator's own
+//                  card base (pctCardBase), or a sourced dollar range, optionally per
+//                  traveler (usd). Nothing else is a legitimate figure shape.
+//   figureLo/Hi/PerPerson  the sourced band or range itself, straight from avoidableFor(c)'s
+//                  own `worth`, never recomputed or re-sourced here.
+//   figureNote     the HARD card's caption under the number ("on what you card", etc).
+//   href/hrefLabel the explanation link. For pool-1 items, an in-page anchor meant for
+//                  CountryBriefing.astro (where CalcResult renders inline on the SAME
+//                  page) is rewritten to point at that page from the wizard's own separate
+//                  route; see wizardHref() below for why and BRIEF-calc-result-registry-
+//                  rebuild's own Part 5 for the dead-link finding this fixes.
+//
+// THE ACCEPTANCE TEST FOR EXTENSIBILITY. See airRegistryEntryExample(c) at the very end of
+// this section: a complete, working, NOT-shipped-live pool-1 entry for a hypothetical
+// "air" item (airline seat/bag fees, a soft item gated on a "booking flights?" question),
+// proving that adding one requires touching only this file.
+
+// A bare in-page anchor in avoidableFor(c)'s own `href` field (e.g. '#calcNoFee') is
+// correct on CountryBriefing.astro, where CalcResult renders inline lower on the SAME
+// page, so a same-page anchor finds its target. It is WRONG on the standalone wizard
+// route (/calculator/<slug>/), which has no such id anywhere on it (the wizard's own
+// hidden, permanently-`hidden` engine copy of CalcResult doesn't count: an anchor to a
+// hidden element scrolls to nothing a reader can see). That mismatch is exactly the "dead
+// link" MAIN's test user hit. avoidableFor(c)'s own `href` field is left untouched, since
+// CountryBriefing.astro still needs the bare anchor to work there; this rewrite happens
+// only when this file hands the SAME item to the wizard's own registry pool.
+function wizardHref(c, href) {
+  return (href && href.charAt(0) === '#') ? ('/' + c.slug + href) : href;
+}
+
+// Turns one avoidableFor(c) item's `worth` into the registry's discriminated figure
+// fields. A null worth (a SOFT item) becomes a SOFT pool entry with no figure fields at
+// all; nothing here invents a number avoidableFor(c) itself does not already carry.
+function poolFigureFieldsFor(a) {
+  if (!a.worth) return { figureKind: null, figureLo: null, figureHi: null, figurePerPerson: null, figureNote: null };
+  const w = a.worth;
+  // ONE existing override, moved here rather than left sitting in CalcWizard.astro's own
+  // hardFigureNote(): the reseller item's HARD figure is the MARKUP over the official
+  // price, not the official price avoidableFor(c)'s own figureNote names (see
+  // avoidableRegistryFor(c) below for why the number itself differs too). The 'fees' item
+  // has a SEPARATE override, on its `escape` paragraph rather than this caption; see that
+  // function's own comment for why the two must not be conflated (they were, briefly, in
+  // an earlier pass of this rebuild, and the fix is recorded there deliberately).
+  const figureNote = (w.kind === 'usd' && a.key === 'reseller') ? 'the markup over the official price' : a.figureNote;
+  return {
+    figureKind: w.kind,
+    figureLo: w.kind === 'liveFees' ? null : w.lo,
+    figureHi: w.kind === 'liveFees' ? null : w.hi,
+    figurePerPerson: w.kind === 'usd' ? !!w.perPerson : null,
+    figureNote,
+  };
+}
+
+// THE HARD/SOFT TIER POOL. Wraps avoidableFor(c) byte-for-byte: same items, same order,
+// same figures, same copy. Every existing consumer of avoidableFor(c) (CalcResult.astro,
+// calc-regression-test.mjs, check-avoidable-highlight.mjs) keeps reading that function
+// directly and is unaffected by anything in this section.
+export function avoidableRegistryFor(c) {
+  if (!c) return [];
+  return avoidableFor(c).map((a) => ({
+    key: a.key,
+    tier: a.worth ? 'hard' : 'soft',
+    title: a.title,
+    question: null,
+    // The 'fees' item's own escape ("A no-foreign-fee card takes both fee lines above to
+    // zero.") is stale for the wizard's card: this specific, more precise sentence about
+    // the CARD PERCENTAGE going to zero (the ATM flat fee stays separate) is a pre-existing
+    // correction CalcWizard.astro has carried since before this rebuild, kept here as the
+    // one deliberate content override in this whole pool (everything else is avoidableFor(c)
+    // byte-for-byte). It replaces the escape PARAGRAPH only; the figure CAPTION beside the
+    // dollar amount is untouched (see poolFigureFieldsFor above).
+    escape: a.liveFigureId === 'avFees'
+      ? "A no-foreign-fee card takes the card percentage to $0; the ATM operator's own flat fee is separate and still applies."
+      : a.escape,
+    // Carried through unused by the normal-state card (which shows only `escape`, per
+    // BRIEF-calc-v2-A2's "one-line action only"), but the calm-state check list still
+    // shows escape+detail together for each named item, exactly as before this refactor.
+    detail: a.detail,
+    secondary: null,
+    liveFigureId: a.liveFigureId || null,
+    ...poolFigureFieldsFor(a),
+    href: wizardHref(c, a.href),
+    hrefLabel: a.hrefLabel,
+  }));
+}
+
+// A worked, NOT-shipped-live example proving the extensibility test: a hypothetical "air"
+// item (airline fare add-ons, i.e. seat and bag fees), a SOFT item gated on a "booking
+// flights?" question, in the exact shape a real one would need. It is never called by
+// avoidableRegistryFor(c) or wired into a StepOrder anywhere; it exists only so the
+// handoff can show a complete, working entry rather than a sketch. Confirmed by hand: the
+// only change needed to ship it is appending `airRegistryEntryExample(c)`'s return value
+// into the array avoidableRegistryFor(c) builds above, and adding its stepKey to the
+// wizard-gated step list the same way rail's is added today, i.e. two touches, both inside
+// this file, and nothing in CalcWizard.astro or calc-wizard.js changes at all. Left
+// undocked from both real functions on purpose, per the brief: "Do not ship the air item
+// live; it is the proof the architecture works."
+export function airRegistryEntryExample(c) {
+  return {
+    key: 'air',
+    tier: 'soft',
+    title: 'Airline fare add-ons',
+    question: {
+      stepKey: 'air',
+      stepLabel: 'Airfare add-ons',
+      panelTitle: 'Are you booking flights as part of this trip?',
+      panelIntro: 'This decides whether we show you seat and bag fee guidance for your airline.',
+      legend: 'Booking flights',
+      options: [
+        { value: 'yes', label: 'Yes', help: '', selected: false },
+        { value: 'no', label: 'No or not sure', help: '', selected: true },
+      ],
+      fieldHelp: 'Change this anytime from Edit trip.',
+      editTitle: 'Change your airfare answer',
+      summaryLabel: 'Airfare add-ons',
+    },
+    escape: 'Most US airlines now charge separately for a seat assignment and a first checked bag; check your fare\u2019s own rules before you fly.',
+    secondary: 'The amount depends on your airline and fare class, so we name the pattern rather than a figure nobody sourced for your specific ticket.',
+    figureKind: null, figureLo: null, figureHi: null, figurePerPerson: null, figureNote: null,
+    liveFigureId: null,
+    href: '/' + c.slug + '/staying-connected',
+    hrefLabel: 'How this works',
+  };
+}
+
+// ---------------------------------------------------------------------------
+// THE WIZARD-GATED ITEMS: carrier, rail, rental. Each function below returns ONE
+// declarative object with everything CalcWizard.astro needs to render that item's
+// QuestionPanel (via the same generic step generator every pool item above also uses) and
+// its own dedicated result card (which, per this section's header, stays outside the
+// hard/soft pool). None of the three is priced by this file for rail/rental (never a
+// figure, by design; see railAvoidableFor/RENTAL_AVOIDABLE's own headers above), and
+// carrier's figure is computed client-side in calc-wizard.js from the clientData below,
+// exactly as before this refactor.
+
+export function carrierRegistryEntryFor(c) {
+  // BRIEF-carrier-honest-build's own split, unchanged: "Other or not sure" is a first-class
+  // primary option and the default, never assumed; the rest are split by name recognition
+  // into a primary row and a "More carriers" disclosure, every carrier CARRIER_PROFILES
+  // covers is selectable, none hidden entirely.
+  const entries = Object.entries(CARRIER_PROFILES);
+  const toOption = ([key, p]) => ({ value: key, label: p.label, help: p.shortHelp, selected: false });
+  const primaryOptions = [
+    ...entries.filter(([, p]) => p.group === 'primary').map(toOption),
+    { value: 'other', label: 'Other or not sure', help: "We will use this country's general connectivity guidance instead.", selected: true },
+  ];
+  const moreOptions = entries.filter(([, p]) => p.group === 'more').map(toOption);
+  // The client gets only what renderCarrierItem() in calc-wizard.js actually reads: never
+  // `source` or `checkedISO`, which are for MAIN's review, not the page. Unchanged from
+  // before this refactor.
+  const clientData = {};
+  for (const [key, p] of entries) {
+    clientData[key] = {
+      label: p.label, model: p.model, dayRate: p.dayRate, cap: p.cap,
+      includedNote: p.includedNote, mexicoCanada: p.mexicoCanada, namedNote: p.namedNote,
+    };
+  }
+  return {
+    key: 'carrier',
+    question: {
+      stepKey: 'carrier',
+      stepLabel: 'Phone plan',
+      panelTitle: 'Which US carrier are you traveling with?',
+      panelIntro: 'This decides whether your plan already covers data here, or you are looking at a carrier day-pass rate.',
+      legend: 'US carrier',
+      options: primaryOptions,
+      moreOptions: moreOptions.length ? moreOptions : null,
+      moreLabel: 'More carriers',
+      moreLegend: 'More US carriers',
+      fieldHelp: 'Change this anytime from Edit trip. We never assume a carrier for you.',
+      editTitle: 'Change phone carrier',
+    },
+    clientData,
+    fallback: carrierFallbackFor(c),
+    esimUrl: esimLink(c.slug),
+  };
+}
+
+export function railRegistryEntryFor(c) {
+  const rail = railAvoidableFor(c);
+  if (!rail) return null;
+  return {
+    key: 'rail',
+    question: {
+      stepKey: 'rail',
+      stepLabel: 'Getting around',
+      panelTitle: 'Are you planning intercity train travel on this trip?',
+      panelIntro: 'This decides whether we show you the rail-pass-versus-tickets call for this country.',
+      legend: 'Intercity train travel',
+      options: [
+        { value: 'yes', label: 'Yes', help: '', selected: false },
+        { value: 'no', label: 'No or not sure', help: '', selected: true },
+      ],
+      moreOptions: null, moreLabel: null, moreLegend: null,
+      fieldHelp: 'Change this anytime from Edit trip.',
+      editTitle: 'Change your rail travel answer',
+      summaryLabel: 'Intercity rail',
+    },
+    card: {
+      title: rail.title,
+      escape: rail.detail,
+      secondary: rail.reason,
+      href: rail.href,
+      hrefLabel: rail.hrefLabel,
+    },
+  };
+}
+
+export function rentalRegistryEntry() {
+  return {
+    key: 'rental',
+    question: {
+      stepKey: 'rental',
+      stepLabel: 'Rental car',
+      panelTitle: 'Are you renting a car on this trip?',
+      panelIntro: 'This decides whether we show you the rental counter insurance guidance.',
+      legend: 'Renting a car',
+      options: [
+        { value: 'yes', label: 'Yes', help: '', selected: false },
+        { value: 'no', label: 'No or not sure', help: '', selected: true },
+      ],
+      moreOptions: null, moreLabel: null, moreLegend: null,
+      fieldHelp: 'Change this anytime from Edit trip.',
+      editTitle: 'Change your rental car answer',
+      summaryLabel: 'Renting a car',
+    },
+    card: {
+      title: RENTAL_AVOIDABLE.title,
+      escape: RENTAL_AVOIDABLE.escape,
+      secondary: RENTAL_AVOIDABLE.detail,
+      href: RENTAL_AVOIDABLE.href,
+      hrefLabel: RENTAL_AVOIDABLE.hrefLabel,
+    },
+  };
+}

@@ -128,17 +128,14 @@ export function initCalcWizard() {
     setTimeout(() => { announcer.textContent = msg; }, 40);
   }
 
-  const STEP_ORDER = ['destination', 'travelers', 'nights', 'style', 'flights', 'hotel', 'card', 'carrier'];
-  // BRIEF-rail-avoidable: the rail step exists only on the country pages that actually
-  // rendered it (see CalcWizard.astro's own hasRail gate), so it is appended here rather
-  // than hardcoded, keeping this ONE array the single source of truth for both what the
-  // wizard steps through and what "last step" means on a given country page. WD is already
-  // parsed above, before this array is built, so the flag is available in time.
-  if (WD.hasRailVerdict) STEP_ORDER.push('rail');
-  // BRIEF-rental-avoidable: unlike rail, unconditional, so this is a plain push rather than
-  // a WD-gated one. Pushed AFTER the (possibly absent) rail step, so it is always the true
-  // final step on every country page regardless of whether rail exists there too.
-  STEP_ORDER.push('rental');
+  // BRIEF-calc-result-registry-rebuild: FIXED_STEPS never changes; every wizard-gated item
+  // (carrier, rail where this country has a verdict, rental, and any future one) is
+  // appended from WD.questionSteps, which CalcWizard.astro built from the SAME registry
+  // order this file no longer needs to know about by name. Adding a fourth item is a
+  // registry-only change (see avoidable.js's airRegistryEntryExample): WD.questionSteps
+  // grows by one and this line needs nothing further.
+  const FIXED_STEPS = ['destination', 'travelers', 'nights', 'style', 'flights', 'hotel', 'card'];
+  const STEP_ORDER = FIXED_STEPS.concat(WD.questionSteps || []);
   const STEP_META = {
     destination: { editTitle: 'Change destination' },
     travelers: { editTitle: 'Change travelers' },
@@ -147,31 +144,30 @@ export function initCalcWizard() {
     flights: { editTitle: 'Change airfare' },
     hotel: { editTitle: 'Change accommodation' },
     card: { editTitle: 'Change payment fees' },
-    carrier: { editTitle: 'Change phone carrier' },
-    rail: { editTitle: 'Change your rail travel answer' },
-    rental: { editTitle: 'Change your rental car answer' },
+    // Every wizard-gated item's own editTitle comes from the registry via WD.questionMeta,
+    // never hardcoded here by key, so a new one needs no line added to this object.
+    ...(WD.questionMeta || {}),
   };
 
   function panelFor(key) { return document.querySelector('[data-wizard-step="' + key + '"]'); }
   function formFor(key) { return document.querySelector('[data-step-form="' + key + '"]'); }
 
   // ----- surface-only state (see file header) -----
-  // `carrier` (BRIEF-carrier-honest-build) joins flightMode/origin as state the hidden
-  // engine has no concept of and none should be invented for it: calc-engine.js does not
-  // know what a carrier is, and never should. Defaults to 'other' ("Other or not sure"),
-  // never assumed, exactly matching the radio checked by default in CalcWizard.astro.
-  // `rail` (BRIEF-rail-avoidable) is the same kind of state: a wizard-only yes/no answer,
-  // default 'no' ("No or not sure"), never assumed. It only ever exists on a page where
-  // WD.hasRailVerdict is true; on every other page the rail radios and card simply are not
-  // in the DOM, so this default sits unused and harmless.
-  // `rental` (BRIEF-rental-avoidable) is the same shape of state, default 'no', but always
-  // exists: this step and its card render on every country page, unlike rail.
+  // `answers` (BRIEF-calc-result-registry-rebuild, replacing the old separate
+  // carrier/rail/rental fields) holds every wizard-gated item's own answer, keyed by its
+  // stepKey, generic over however many of these this country page has. The hidden engine
+  // has no concept of any of them and none should be invented for it: calc-engine.js does
+  // not know what a carrier is, whether a reader is taking a train, or renting a car.
+  // Defaults come from WD.questionDefaults (itself read off each item's own default-
+  // selected option in the registry), never assumed here: 'other' for carrier, 'no' for a
+  // plain yes/no item, exactly matching the radio checked by default in CalcWizard.astro.
+  // A key that is not on THIS country's page (e.g. 'rail' where there is no verdict) simply
+  // never appears in WD.questionDefaults, so it is never in this object at all, matching
+  // rail's own "never asked" behavior rather than sitting unused.
   const state = {
     flightMode: 'known',
     origin: { hotel: 'estimate', flight: 'estimate' },
-    carrier: 'other',
-    rail: 'no',
-    rental: 'no',
+    answers: { ...(WD.questionDefaults || {}) },
   };
 
   // ===================================================================================
@@ -273,29 +269,22 @@ export function initCalcWizard() {
     r.addEventListener('change', () => { if (r.checked) setNoFee(r.value === 'no-fee'); });
   });
 
-  // ----- carrier: radios, surface-only (no hidden-engine equivalent). Split across two
-  // ChoiceRows sharing name="carrier" (the primary buttons and the "More carriers"
-  // disclosure), which native radios treat as one exclusive group regardless of which
-  // fieldset each one sits in. -----
-  const carrierMore = document.querySelector('[data-carrier-more]');
-  function syncCarrierMore() {
-    if (carrierMore && carrierMore.querySelector('input:checked')) carrierMore.open = true;
+  // ----- wizard-gated items: radios, surface-only (no hidden-engine equivalent), ONE
+  // generic wiring loop over WD.questionSteps instead of one hand-authored block per item
+  // (BRIEF-calc-result-registry-rebuild). Carrier alone splits across two ChoiceRows
+  // sharing one `name` (the primary buttons and the "More carriers" disclosure), which
+  // native radios treat as one exclusive group regardless of which fieldset each sits in;
+  // syncMoreOptions() below is a no-op for any item with no such disclosure (rail, rental,
+  // a hypothetical air), so it costs nothing to call generically for every key. -----
+  function syncMoreOptions(key) {
+    const details = document.querySelector('[data-more-options="' + key + '"]');
+    if (details && details.querySelector('input:checked')) details.open = true;
   }
-  $$('[data-choice-fieldset="carrier"] input[type="radio"]').forEach(r => {
-    r.addEventListener('change', () => { if (r.checked) { state.carrier = r.value; syncCarrierMore(); } });
-  });
-  syncCarrierMore();
-
-  // ----- rail: radios, surface-only (BRIEF-rail-avoidable). Simply matches zero elements
-  // on a country page with no rail step, so this is a harmless no-op there. -----
-  $$('[data-choice-fieldset="rail"] input[type="radio"]').forEach(r => {
-    r.addEventListener('change', () => { if (r.checked) state.rail = r.value; });
-  });
-
-  // ----- rental: radios, surface-only (BRIEF-rental-avoidable). Always present, unlike
-  // rail, since the counter upsell question is not country-conditional. -----
-  $$('[data-choice-fieldset="rental"] input[type="radio"]').forEach(r => {
-    r.addEventListener('change', () => { if (r.checked) state.rental = r.value; });
+  (WD.questionSteps || []).forEach(key => {
+    $$('[data-choice-fieldset="' + key + '"] input[type="radio"]').forEach(r => {
+      r.addEventListener('change', () => { if (r.checked) { state.answers[key] = r.value; syncMoreOptions(key); } });
+    });
+    syncMoreOptions(key);
   });
 
   // ----- destination: search filter, reusing the site's typeahead behaviour -----
@@ -359,9 +348,9 @@ export function initCalcWizard() {
       return { valid: true };
     }
     if (key === 'card') return { valid: true };
-    if (key === 'carrier') return { valid: true };
-    if (key === 'rail') return { valid: true };
-    if (key === 'rental') return { valid: true };
+    // Every wizard-gated item (carrier, rail, rental, and any future one) is a single
+    // required-by-default radio group with a real default already checked, so none of
+    // them need their own validation branch; this fallback covers all of them generically.
     return { valid: true };
   }
   function showStepError(key, message, focusEl) {
@@ -464,7 +453,7 @@ export function initCalcWizard() {
   function renderCarrierItem(nights) {
     const wrap = document.querySelector('[data-avoid-carrier]');
     if (!wrap) return;
-    const key = state.carrier || 'other';
+    const key = state.answers.carrier || 'other';
     const profiles = (WD && WD.carriers) || {};
     const profile = profiles[key] || null;
     const isNorthAmerica = (WD.countrySlug === 'mexico' || WD.countrySlug === 'canada');
@@ -486,7 +475,7 @@ export function initCalcWizard() {
       // connectivity verdict, pre-authored at build time by avoidable.js's
       // carrierFallbackFor() and passed through unchanged.
       detail = WD.carrierFallbackText || 'Check your carrier\'s plan before you go, and compare live prices for a local SIM or eSIM.';
-      status = 'Not estimated';
+      status = 'No set price';
     } else if (profile.model === 'included') {
       detail = 'Your ' + profile.label + ' plan already includes data here (' + profile.includedNote + '). '
         + 'You likely do not need a travel eSIM, a purchase you can skip.';
@@ -506,7 +495,7 @@ export function initCalcWizard() {
       // add-on / pay-per-use / not-supported: named honestly, real terms, no computed
       // total, for the same reason the day-pass math above does not apply to them.
       detail = profile.namedNote || ('Check ' + profile.label + '\'s own international roaming page before this trip.');
-      status = 'Not estimated';
+      status = 'No set price';
     }
 
     const detailEl = wrap.querySelector('[data-carrier-detail]');
@@ -724,25 +713,22 @@ export function initCalcWizard() {
       // ----- carrier connectivity card (BRIEF-carrier-honest-build) -----
       renderCarrierItem(nights);
 
-      // ----- rail-pass card (BRIEF-rail-avoidable) -----
-      // Nothing to compute: the card's own text is fully build-time known (see
-      // avoidable.js's railAvoidableFor), so the only job here is showing it precisely when
-      // BOTH gates hold: the reader answered yes AND the card exists at all (it is absent
-      // from the DOM entirely on a country with no verdict, so this query naturally no-ops
-      // there without needing a separate hasRailVerdict check in this file).
-      const railWrap = document.querySelector('[data-avoid-rail]');
-      if (railWrap) railWrap.hidden = (state.rail !== 'yes');
-      const summaryRailEl = document.querySelector('[data-mirror="summaryRail"]');
-      if (summaryRailEl) summaryRailEl.textContent = (state.rail === 'yes') ? 'Yes' : 'No or not sure';
-
-      // ----- rental-car insurance card (BRIEF-rental-avoidable) -----
-      // Same shape as the rail toggle above, minus the country gate: this card is always in
-      // the DOM (RENTAL_AVOIDABLE is a plain constant, not a per-country function), so the
-      // only question is whether the reader answered yes.
-      const rentalWrap = document.querySelector('[data-avoid-rental]');
-      if (rentalWrap) rentalWrap.hidden = (state.rental !== 'yes');
-      const summaryRentalEl = document.querySelector('[data-mirror="summaryRental"]');
-      if (summaryRentalEl) summaryRentalEl.textContent = (state.rental === 'yes') ? 'Yes' : 'No or not sure';
+      // ----- BRIEF-calc-result-registry-rebuild: rail, rental, and any future item of the
+      // same shape, ONE generic toggle loop instead of one hand-copied block per item.
+      // Nothing computed: every one of these cards' own text is fully build-time known
+      // (see avoidable.js's railRegistryEntryFor/rentalRegistryEntry), so the only job here
+      // is showing the right one precisely when the reader answered yes. A country with no
+      // rail verdict simply has no 'rail' entry in WD.questionSteps, so this loop never
+      // looks for a rail card there at all, matching the old hasRailVerdict gate's outcome
+      // without needing a separate check. Carrier is skipped: it has no yes/no gate of its
+      // own (always shown) and its own summary line is set above by renderCarrierItem(). -----
+      (WD.questionSteps || []).forEach(key => {
+        if (key === 'carrier') return;
+        const wrap = document.querySelector('[data-avoid-extra="' + key + '"]');
+        if (wrap) wrap.hidden = (state.answers[key] !== 'yes');
+        const summaryEl = document.querySelector('[data-mirror="summary' + key.charAt(0).toUpperCase() + key.slice(1) + '"]');
+        if (summaryEl) summaryEl.textContent = (state.answers[key] === 'yes') ? 'Yes' : 'No or not sure';
+      });
 
       if (resultView) resultView.hidden = false;
       if (errorView) errorView.hidden = true;
@@ -807,16 +793,11 @@ export function initCalcWizard() {
       const checked = document.querySelector('input[name="destination"]:checked');
       return { value: checked ? checked.value : null };
     }
-    if (key === 'carrier') {
-      const checked = document.querySelector('[data-choice-fieldset="carrier"] input:checked');
-      return { value: checked ? checked.value : null };
-    }
-    if (key === 'rail') {
-      const checked = document.querySelector('[data-choice-fieldset="rail"] input:checked');
-      return { value: checked ? checked.value : null };
-    }
-    if (key === 'rental') {
-      const checked = document.querySelector('[data-choice-fieldset="rental"] input:checked');
+    // Every wizard-gated item (carrier, rail, rental, and any future one) is a single
+    // radio group under its own stepKey fieldset, snapshotted identically; see the
+    // matching generic branch in restoreControls() below.
+    if ((WD.questionSteps || []).includes(key)) {
+      const checked = document.querySelector('[data-choice-fieldset="' + key + '"] input:checked');
       return { value: checked ? checked.value : null };
     }
     return {};
@@ -846,21 +827,11 @@ export function initCalcWizard() {
       if (snap.value != null) { setNoFee(snap.value === 'no-fee'); $$('[data-choice-fieldset="card"] input').forEach(r => { r.checked = (r.value === snap.value); }); }
     } else if (key === 'destination') {
       if (snap.value != null) $$('input[name="destination"]').forEach(r => { r.checked = (r.value === snap.value); });
-    } else if (key === 'carrier') {
+    } else if ((WD.questionSteps || []).includes(key)) {
       if (snap.value != null) {
-        state.carrier = snap.value;
-        $$('[data-choice-fieldset="carrier"] input').forEach(r => { r.checked = (r.value === snap.value); });
-        syncCarrierMore();
-      }
-    } else if (key === 'rail') {
-      if (snap.value != null) {
-        state.rail = snap.value;
-        $$('[data-choice-fieldset="rail"] input').forEach(r => { r.checked = (r.value === snap.value); });
-      }
-    } else if (key === 'rental') {
-      if (snap.value != null) {
-        state.rental = snap.value;
-        $$('[data-choice-fieldset="rental"] input').forEach(r => { r.checked = (r.value === snap.value); });
+        state.answers[key] = snap.value;
+        $$('[data-choice-fieldset="' + key + '"] input').forEach(r => { r.checked = (r.value === snap.value); });
+        syncMoreOptions(key);
       }
     }
   }
