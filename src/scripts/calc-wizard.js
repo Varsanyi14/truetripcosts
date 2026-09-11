@@ -35,6 +35,11 @@
 //     none should be invented for it; see renderCarrierItem() below for the one place this
 //     state is read, and carrier-roaming.js's CARRIER_PROFILES for where its figures come
 //     from.
+//   - rail (BRIEF-rail-avoidable, default 'no'): whether the reader is planning intercity
+//     train travel, asked only on the countries rail-passes.js has a real verdict for (see
+//     CalcWizard.astro's own hasRail gate). Unlike carrier, nothing here is computed: the
+//     rail card's text is fully build-time known, so this state only ever toggles that
+//     card's visibility in mirror(), below.
 //
 // NO PENDING STATE. The reference design's "Updating your estimate" state exists for an
 // engine call that can take real time or fail over a network. This engine is synchronous and
@@ -121,6 +126,12 @@ export function initCalcWizard() {
   }
 
   const STEP_ORDER = ['destination', 'travelers', 'nights', 'style', 'flights', 'hotel', 'card', 'carrier'];
+  // BRIEF-rail-avoidable: the rail step exists only on the country pages that actually
+  // rendered it (see CalcWizard.astro's own hasRail gate), so it is appended here rather
+  // than hardcoded, keeping this ONE array the single source of truth for both what the
+  // wizard steps through and what "last step" means on a given country page. WD is already
+  // parsed above, before this array is built, so the flag is available in time.
+  if (WD.hasRailVerdict) STEP_ORDER.push('rail');
   const STEP_META = {
     destination: { editTitle: 'Change destination' },
     travelers: { editTitle: 'Change travelers' },
@@ -130,6 +141,7 @@ export function initCalcWizard() {
     hotel: { editTitle: 'Change accommodation' },
     card: { editTitle: 'Change payment fees' },
     carrier: { editTitle: 'Change phone carrier' },
+    rail: { editTitle: 'Change your rail travel answer' },
   };
 
   function panelFor(key) { return document.querySelector('[data-wizard-step="' + key + '"]'); }
@@ -140,10 +152,15 @@ export function initCalcWizard() {
   // engine has no concept of and none should be invented for it: calc-engine.js does not
   // know what a carrier is, and never should. Defaults to 'other' ("Other or not sure"),
   // never assumed, exactly matching the radio checked by default in CalcWizard.astro.
+  // `rail` (BRIEF-rail-avoidable) is the same kind of state: a wizard-only yes/no answer,
+  // default 'no' ("No or not sure"), never assumed. It only ever exists on a page where
+  // WD.hasRailVerdict is true; on every other page the rail radios and card simply are not
+  // in the DOM, so this default sits unused and harmless.
   const state = {
     flightMode: 'known',
     origin: { hotel: 'estimate', flight: 'estimate' },
     carrier: 'other',
+    rail: 'no',
   };
 
   // ===================================================================================
@@ -258,6 +275,12 @@ export function initCalcWizard() {
   });
   syncCarrierMore();
 
+  // ----- rail: radios, surface-only (BRIEF-rail-avoidable). Simply matches zero elements
+  // on a country page with no rail step, so this is a harmless no-op there. -----
+  $$('[data-choice-fieldset="rail"] input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => { if (r.checked) state.rail = r.value; });
+  });
+
   // ----- destination: search filter, reusing the site's typeahead behaviour -----
   (function wireDestination() {
     const search = document.querySelector('[data-destination-search]');
@@ -320,6 +343,7 @@ export function initCalcWizard() {
     }
     if (key === 'card') return { valid: true };
     if (key === 'carrier') return { valid: true };
+    if (key === 'rail') return { valid: true };
     return { valid: true };
   }
   function showStepError(key, message, focusEl) {
@@ -682,6 +706,17 @@ export function initCalcWizard() {
       // ----- carrier connectivity card (BRIEF-carrier-honest-build) -----
       renderCarrierItem(nights);
 
+      // ----- rail-pass card (BRIEF-rail-avoidable) -----
+      // Nothing to compute: the card's own text is fully build-time known (see
+      // avoidable.js's railAvoidableFor), so the only job here is showing it precisely when
+      // BOTH gates hold: the reader answered yes AND the card exists at all (it is absent
+      // from the DOM entirely on a country with no verdict, so this query naturally no-ops
+      // there without needing a separate hasRailVerdict check in this file).
+      const railWrap = document.querySelector('[data-avoid-rail]');
+      if (railWrap) railWrap.hidden = (state.rail !== 'yes');
+      const summaryRailEl = document.querySelector('[data-mirror="summaryRail"]');
+      if (summaryRailEl) summaryRailEl.textContent = (state.rail === 'yes') ? 'Yes' : 'No or not sure';
+
       if (resultView) resultView.hidden = false;
       if (errorView) errorView.hidden = true;
       const h1 = resultView ? resultView.querySelector('h1') : null;
@@ -749,6 +784,10 @@ export function initCalcWizard() {
       const checked = document.querySelector('[data-choice-fieldset="carrier"] input:checked');
       return { value: checked ? checked.value : null };
     }
+    if (key === 'rail') {
+      const checked = document.querySelector('[data-choice-fieldset="rail"] input:checked');
+      return { value: checked ? checked.value : null };
+    }
     return {};
   }
   function restoreControls(key, snap) {
@@ -781,6 +820,11 @@ export function initCalcWizard() {
         state.carrier = snap.value;
         $$('[data-choice-fieldset="carrier"] input').forEach(r => { r.checked = (r.value === snap.value); });
         syncCarrierMore();
+      }
+    } else if (key === 'rail') {
+      if (snap.value != null) {
+        state.rail = snap.value;
+        $$('[data-choice-fieldset="rail"] input').forEach(r => { r.checked = (r.value === snap.value); });
       }
     }
   }

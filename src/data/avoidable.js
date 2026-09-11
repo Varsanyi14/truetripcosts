@@ -56,6 +56,7 @@ import { entryChargesFor, isBillable } from './entry-charges.js';
 import { tipping as tippingRows } from './tipping.js';
 import { VERDICTS, tierOf } from './connectivity-verdicts.js';
 import { spokeUrl } from './site-urls.js';
+import { railPasses } from './rail-passes.js';
 
 // Reading order within the block. The price-versus-price items lead where they exist, because a
 // real price beside a fake one is the strongest thing on the list and the reader should meet it
@@ -887,5 +888,60 @@ export function carrierFallbackFor(c) {
     tierLabel: tier ? tier.short : null,
     href: spokeUrl(c.slug, 'staying-connected'),
     hrefLabel: 'How connectivity works here',
+  };
+}
+
+// ---------------------------------------------------------------------------
+// THE RAIL-PASS ITEM (BRIEF-rail-avoidable). Verdict-driven, never priced.
+//
+// rail-passes.js is deliberately price-free: its own header explains that a per-country
+// rail-pass figure cannot be built honestly, because what rail costs depends entirely on the
+// traveler's specific route. So this item NEVER carries a `worth`. It surfaces the
+// categorical verdict (worth / depends / point-to-point / not-rail) already sourced there,
+// in the traveler's own generic terms, plus that country's own specific `reason` verbatim,
+// so the calculator and the /rail-passes page can never say two different things about the
+// same country.
+//
+// FULLY build-time computable, unlike the carrier item: nothing here depends on trip length
+// or traveler count, only on the country and the wizard's own yes/no answer to "planning
+// intercity train travel?". So CalcWizard.astro renders the finished sentence directly; no
+// client-side string assembly is needed at all, only a visibility toggle (see
+// calc-wizard.js's mirror(), which shows this card only when the wizard's own rail answer is
+// 'yes' AND this function returned a real item, i.e. the country has a verdict row).
+//
+// NEVER merged into avoidableFor()'s own array above, for the same reason
+// carrierFallbackFor() above is not: this item's visibility is gated on wizard-only state
+// (the rail question), which avoidableFor()'s static per-country output has no concept of,
+// and CountryBriefing.astro's own static guide page must not grow this item unconditionally.
+const RAIL_MESSAGE = {
+  'point-to-point': (name) => 'For most trips in ' + name + ', point-to-point tickets beat a rail pass. Do not buy a pass reflexively, price your actual route first.',
+  depends: (name) => 'Whether a rail pass beats tickets in ' + name + ' depends on your route. Price your actual legs before buying, a wide itinerary can justify a pass, a narrow one cannot.',
+  worth: (name) => 'In ' + name + ', a rail pass usually wins for a normal trip, but it still depends on your route, so price your legs to be sure.',
+  // Dormant: no row uses this tier today, but the branch is here so a future country can
+  // use it without anyone having to add the message in a later, separate commit.
+  'not-rail': (name) => 'Trains are not really how visitors get around ' + name + ', so a pass is unlikely to be the question.',
+};
+
+export function railAvoidableFor(c) {
+  if (!c) return null;
+  const row = railPasses.find((r) => r.slug === c.slug);
+  if (!row) return null;
+  const build = RAIL_MESSAGE[row.tier];
+  if (!build) return null;
+  return {
+    key: 'rail',
+    title: 'Rail pass or point-to-point tickets',
+    // The generic, tier-level call, always in the traveler's own terms.
+    detail: build(c.name),
+    // The country's own specific reason, read verbatim from rail-passes.js's own row, never
+    // paraphrased: this is the exact sentence /rail-passes.astro already shows for this
+    // country, so the two surfaces cannot drift apart.
+    reason: row.reason,
+    href: row.railSpoke,
+    hrefLabel: 'How rail passes work in ' + c.name,
+    side: 'dodge',
+    // NEVER priced. There is no honest per-country figure to show, by rail-passes.js's own
+    // design; see that file's header for the full reasoning.
+    worth: null,
   };
 }

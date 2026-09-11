@@ -43,7 +43,7 @@ import ChoiceRows from './calc/ChoiceRows.astro';
 import DestinationChoice from './calc/DestinationChoice.astro';
 import { calcSetupFor } from '../data/calc-setup.js';
 import { calcLinesFor } from '../data/calc-lines.js';
-import { avoidableFor, carrierFallbackFor } from '../data/avoidable.js';
+import { avoidableFor, carrierFallbackFor, railAvoidableFor } from '../data/avoidable.js';
 import { flightPlaceholderFor } from '../data/flight-defaults.js';
 import { countries } from '../data/index.js';
 import { CARRIER_PROFILES } from '../data/carrier-roaming.js';
@@ -126,6 +126,24 @@ for (const [key, p] of CARRIER_ENTRIES) {
 const carrierFallback = carrierFallbackFor(c);
 const esimUrl = esimLink(c.slug);
 
+// BRIEF-rail-avoidable: the rail step and card exist ONLY for the countries rail-passes.js
+// actually has a verdict for (10 today). railAvoidableFor(c) is the single source of truth
+// for that gate, read once here: a null return means no verdict row, which is the cleaner
+// UX the brief itself asks for (a traveler to a non-rail country never sees the question at
+// all, rather than seeing it and having to notice it never produces anything). Everything
+// downstream, the step's existence, the card's existence, and the wizard's own total step
+// count, all key off this one boolean so they can never disagree with each other.
+const railItem = railAvoidableFor(c);
+const hasRail = !!railItem;
+const railOptions = [
+  { value: 'yes', label: 'Yes', help: '', selected: false },
+  { value: 'no', label: 'No or not sure', help: '', selected: true },
+];
+// Every QuestionPanel on this page is given this explicitly, rather than relying on the
+// component's own default, because that default is shared with the standalone /calculator
+// landing page and cannot itself vary per country the way this page's real step count does.
+const totalSteps = hasRail ? 9 : 8;
+
 // PRODUCTION BLOCKER, resolved: material unpriced categories (spec section 7). Travel
 // insurance is a named tier on every country (never priced, by design: a premium depends on
 // age, cover and trip length, none of which this calculator asks); a real unpriced entry
@@ -184,32 +202,33 @@ const wizData = {
   calmEligible,
   carriers: carrierClientData,
   carrierFallbackText: carrierFallback ? carrierFallback.detail : '',
+  hasRailVerdict: hasRail,
 };
 const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 ---
 <!-- ================= THE NEW SURFACE ================= -->
 
-<QuestionPanel stepKey="destination" stepNumber={1} stepLabel="Destination"
+<QuestionPanel stepKey="destination" stepNumber={1} totalSteps={totalSteps} stepLabel="Destination"
   title="Where are you going?" intro="Choose one country for this trip estimate." isFirst showFootnote>
   <DestinationChoice countries={destinationCountries} selectedSlug={c.slug} />
 </QuestionPanel>
 
-<QuestionPanel stepKey="travelers" stepNumber={2} stepLabel="Travelers" initiallyVisible
+<QuestionPanel stepKey="travelers" stepNumber={2} totalSteps={totalSteps} stepLabel="Travelers" initiallyVisible
   title="How many people are traveling?" intro="Count everyone in your travel party.">
   <QuantityControl name="travelers" unitLabel="travelers" unitLabelSingular="traveler" value={2} min={1} max={12} presets={[1, 2, 3, 4]} helpText="This is people, not rooms." />
 </QuestionPanel>
 
-<QuestionPanel stepKey="nights" stepNumber={3} stepLabel="Trip length"
+<QuestionPanel stepKey="nights" stepNumber={3} totalSteps={totalSteps} stepLabel="Trip length"
   title="How many nights are you staying?" intro="Count nights away, not calendar days.">
   <QuantityControl name="nights" unitLabel="nights" unitLabelSingular="night" value={7} min={1} max={60} presets={[5, 7, 14, 21]} />
 </QuestionPanel>
 
-<QuestionPanel stepKey="style" stepNumber={4} stepLabel="Travel style"
+<QuestionPanel stepKey="style" stepNumber={4} totalSteps={totalSteps} stepLabel="Travel style"
   title="How do you expect to travel?" intro={'Start with the closest fit. It sets a typical daily-spending figure and hotel price for ' + c.name + '.'}>
   <ChoiceRows name="style" legend="Travel style" options={styleOptions} />
 </QuestionPanel>
 
-<QuestionPanel stepKey="flights" stepNumber={5} stepLabel="Airfare" showFootnote
+<QuestionPanel stepKey="flights" stepNumber={5} totalSteps={totalSteps} stepLabel="Airfare" showFootnote
   title="What is your round-trip airfare?" intro="Use the price per person, in US dollars." skipLabel="Leave flights out">
   <ChoiceRows name="flight-mode" legend="Airfare information" options={flightModeOptions} />
   <div class="conditional-field" data-flight-price-wrap>
@@ -220,19 +239,19 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
   </div>
 </QuestionPanel>
 
-<QuestionPanel stepKey="hotel" stepNumber={6} stepLabel="Accommodation"
+<QuestionPanel stepKey="hotel" stepNumber={6} totalSteps={totalSteps} stepLabel="Accommodation"
   title="What is the room price per night?" intro="Use the price for one room, per night, in US dollars, before separately modeled taxes.">
   <PriceControl name="hotel" label="Room price per night (USD)" value={roomTypical} helpText="This estimate uses one room throughout the stay." />
   <div class="assumption-note"><strong>This is the nightly price for your room, taken as entered.</strong><br />We do not model how many rooms your party needs, so this figure is not divided or multiplied by the traveler count from step 2. If you need more than one room, enter the combined nightly price.</div>
 </QuestionPanel>
 
-<QuestionPanel stepKey="card" stepNumber={7} stepLabel="Payment fees" showFootnote
+<QuestionPanel stepKey="card" stepNumber={7} totalSteps={totalSteps} stepLabel="Payment fees" showFootnote
   title="Does your card charge a purchase fee abroad?" intro="Check for a foreign-transaction fee on purchases.">
   <ChoiceRows name="card" legend="Foreign-transaction fee on purchases" options={cardOptions} />
   <p class="field-help">No bank login or card details are collected here.</p>
 </QuestionPanel>
 
-<QuestionPanel stepKey="carrier" stepNumber={8} stepLabel="Phone plan" isLast
+<QuestionPanel stepKey="carrier" stepNumber={8} totalSteps={totalSteps} stepLabel="Phone plan" isLast={!hasRail}
   title="Which US carrier are you traveling with?" intro="This decides whether your plan already covers data here, or you are looking at a carrier day-pass rate.">
   <ChoiceRows name="carrier" legend="US carrier" options={primaryCarrierOptions} />
   {moreCarrierOptions.length > 0 && (
@@ -243,6 +262,17 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
   )}
   <p class="field-help">Change this anytime from Edit trip. We never assume a carrier for you.</p>
 </QuestionPanel>
+
+<!-- ===== BRIEF-rail-avoidable: only rendered for the 10 countries rail-passes.js has a
+     verdict for (railItem above), so a traveler to a non-rail country never sees this
+     question at all, rather than seeing it and it producing nothing. ===== -->
+{hasRail && (
+  <QuestionPanel stepKey="rail" stepNumber={9} totalSteps={totalSteps} stepLabel="Getting around" isLast
+    title="Are you planning intercity train travel on this trip?" intro="This decides whether we show you the rail-pass-versus-tickets call for this country.">
+    <ChoiceRows name="rail" legend="Intercity train travel" options={railOptions} />
+    <p class="field-help">Change this anytime from Edit trip.</p>
+  </QuestionPanel>
+)}
 
 <!-- ================= THE RESULT VIEW, hidden until the wizard completes ================= -->
 <div class="results" data-result-view hidden>
@@ -401,6 +431,31 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
             <button class="text-link" type="button" data-edit="carrier">Change phone carrier</button>
           </article>
         </div>
+
+        <!-- ===== Rail pass or point-to-point tickets (BRIEF-rail-avoidable) =====
+             Rendered ONLY for the 10 countries rail-passes.js has a real verdict for
+             (railItem, computed once above): a non-rail country gets no markup here at all,
+             not markup that quietly never shows. The card's text is fully build-time known
+             (railAvoidableFor(c) needs only the country, never trip length or traveler
+             count), so calc-wizard.js's own job is a single visibility toggle keyed on the
+             step-9 answer, nothing computed or assembled client-side. worth is always null:
+             see avoidable.js's own header on why a rail price can never be invented. -->
+        {hasRail && (
+          <div class="avoid-tier avoid-tier-soft avoid-tier-rail" data-avoid-rail hidden>
+            <p class="tier-subhead tier-subhead-soft">Real, but no honest number. Worth watching.</p>
+            <article class="avoid-card avoid-card-soft" aria-labelledby="rail-item-heading">
+              <div class="evidence-row">
+                <span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span>
+                <span class="status not-estimated">Not estimated</span>
+              </div>
+              <h3 id="rail-item-heading">{railItem.title}</h3>
+              <p>{railItem.detail}</p>
+              <p class="small muted">{railItem.reason}</p>
+              <details class="source-details"><summary>About this</summary><p>See the full picture: <a href={railItem.href}>{railItem.hrefLabel}</a></p></details>
+              <button class="text-link" type="button" data-edit="rail">Change your rail travel answer</button>
+            </article>
+          </div>
+        )}
       </section>
 
       <section class="answer" aria-label="Estimated cost and scope">
@@ -536,6 +591,9 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
         <div class="summary-row"><dt>Accommodation</dt><dd data-mirror="summaryHotel">$0 / room / night</dd><button class="text-link" type="button" data-edit="hotel" aria-label="Change accommodation">Change</button></div>
         <div class="summary-row"><dt>Card purchase fee</dt><dd data-mirror="summaryCard">Use the typical fee assumption</dd><button class="text-link" type="button" data-edit="card" aria-label="Change payment fees">Change</button></div>
         <div class="summary-row"><dt>Phone carrier</dt><dd data-mirror="summaryCarrier">Other or not sure</dd><button class="text-link" type="button" data-edit="carrier" aria-label="Change phone carrier">Change</button></div>
+        {hasRail && (
+          <div class="summary-row"><dt>Intercity rail</dt><dd data-mirror="summaryRail">No or not sure</dd><button class="text-link" type="button" data-edit="rail" aria-label="Change your rail travel answer">Change</button></div>
+        )}
       </dl>
       <div class="summary-footer">Your inputs stay available while you explore. No need to repeat the wizard.</div>
     </aside>
