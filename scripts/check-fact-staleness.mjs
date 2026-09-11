@@ -84,6 +84,26 @@
 // Thresholds (days) match the review cadence described on /methodology:
 //   exchange rate 30, fee or entry rule 90, tax or levy 120, general 180.
 //
+// THE STANDING PATTERN (BRIEF-scanner-extension). Every priced dataset the calculator
+// relies on gets its own staleness pass here, in the same commit that adds the dataset, at a
+// cadence matched to how fast that kind of figure actually moves:
+//   - carrier day-rates / caps        ~quarterly (90 days): slow but real, always
+//                                      checkable on the carrier's own page (see the eighth
+//                                      pass, CARRIER_PROFILES, below).
+//   - tax figures                     120 (existing: the sixth pass, hotel-tax-map.js).
+//   - exchange                        30 (existing: THRESHOLDS.exchange, used by classify()).
+//   - rail-pass prices, rental        not built yet. When they are, they move faster than
+//     counter rates                   taxes, so give each its own pass at roughly monthly to
+//                                      quarterly; MAIN sets the exact number when it lands.
+//   - eSIM prices                     NOT stored, ANYWHERE, on purpose (they promo-cycle and
+//                                      jump; see BRIEF-carrier-honest-build). Nothing to
+//                                      watch here is not a gap, it is the reason the carrier
+//                                      feature links out to a live price instead of storing
+//                                      one.
+// The rule is not "watch what has already been added", it is "the same commit that adds a
+// priced dataset wires its watch", so this scanner never quietly goes blind on a table nobody
+// remembered to point it at.
+//
 // TWO COUNTS AT THE END, and they are not the same number. "Past a threshold" is the
 // count of items that genuinely aged out, and it is what fact-staleness.yml delivers
 // on. "Done. N item(s) worth a look." is the full count including standing items, the
@@ -104,7 +124,21 @@ const DATA_INDEX = 'src/data/index.js';
 const HERO_FACTS = 'src/data/hero-facts.js';
 const ARRIVAL_FORMS = 'src/data/arrival-forms.js';
 const HOTEL_TAX_MAP = 'src/data/hotel-tax-map.js';
+const CARRIER_ROAMING = 'src/data/carrier-roaming.js';
 const STRICT = String(process.env.FACT_STALENESS_STRICT || '').toLowerCase() === 'true';
+
+// Carrier plans drift a few times a year, faster than the 180-day general mark, so this
+// dataset gets its own tighter threshold, the same way carrier-spine.js does with its own
+// reviewDays. See src/data/carrier-roaming.js for why this exists at all.
+const CARRIER_ROAMING_DAYS = 180;
+
+// CARRIER_PROFILES (BRIEF-scanner-extension) is a SEPARATE table in the same file: the flat,
+// 13-carrier day-rate/cap data the calculator's own carrier avoidable actually multiplies
+// (see carrier-roaming.js's own header for why the two tables are not merged). Carrier
+// day-rates move slowly but for real (AT&T's own Day Pass moved $10 -> $12/day) and every
+// one is checkable on the carrier's own page, so ~quarterly is the right cadence: tighter
+// than the 180-day general mark, looser than the 30-day exchange-rate one. MAIN can adjust.
+const CARRIER_PROFILE_DAYS = 90;
 
 const THRESHOLDS = { exchange: 30, fee: 90, tax: 120, general: 180 };
 
@@ -470,12 +504,88 @@ async function main() {
     }
   }
 
+  // --- seventh pass: the carrier-roaming dataset ---
+  // Every sourced cell (status included / paid-addon / not-included) carries its own
+  // checkedISO, watched here on the same advisory cadence as everything else. 'unchecked'
+  // cells carry no date and are not findings: an unchecked cell is an honest gap, not a
+  // fact that has gone stale, so it is not reported here (see check-carrier-roaming.mjs for
+  // the gate that keeps the dataset's shape honest instead).
+  const carrierFindings = [];
+  let carrierCells = 0, carrierSourced = 0;
+  const carrierMod = await loadModule('.', CARRIER_ROAMING);
+  if (carrierMod) {
+    const carrierRoaming = carrierMod.carrierRoaming || {};
+    const CARRIERS = Array.isArray(carrierMod.CARRIERS) ? carrierMod.CARRIERS : ['att', 'tmobile', 'verizon'];
+    for (const [slug, byCarrier] of Object.entries(carrierRoaming)) {
+      for (const carrier of CARRIERS) {
+        const cell = byCarrier && byCarrier[carrier];
+        if (!cell) continue;
+        carrierCells++;
+        if (cell.status === 'unchecked') continue;
+        carrierSourced++;
+        const id = slug + ' / ' + carrier;
+        const checked = parseISO(cell.checkedISO);
+        if (!checked) {
+          carrierFindings.push({ id, standing: false, msg: 'no usable checkedISO on this cell, so its age cannot be judged' });
+          continue;
+        }
+        const age = daysBetween(today, checked);
+        if (age > CARRIER_ROAMING_DAYS) {
+          carrierFindings.push({ id, standing: false, msg: 'stale: checked ' + age + ' days ago, over the ' + CARRIER_ROAMING_DAYS + '-day carrier-roaming mark. Re-verify against the carrier\'s own page before trusting this cell' });
+        }
+      }
+    }
+  }
+
+  // --- eighth pass: CARRIER_PROFILES, the flat per-carrier day-rate/cap table ---
+  // A SEPARATE export in the SAME file as the pass above (see carrier-roaming.js's own
+  // header for why the two are not merged): the flat, 13-carrier table the calculator's
+  // carrier avoidable actually multiplies (dayRate x nights, capped). These are the figures
+  // that drive real dollar output on the calculator, which makes them the most worth
+  // watching of anything this file reads. Reuses carrierMod, already loaded above; no second
+  // file read. Every profile carries a checkedISO by design (there is no 'unchecked' state
+  // here the way the per-country matrix has one), so every profile is judged, none skipped.
+  const carrierProfileFindings = [];
+  let carrierProfileCount = 0;
+  const carrierProfiles = (carrierMod && carrierMod.CARRIER_PROFILES) || null;
+  if (carrierProfiles) {
+    for (const [key, p] of Object.entries(carrierProfiles)) {
+      if (!p) continue;
+      carrierProfileCount++;
+      const label = p.label || key;
+      let host = p.source || 'its own page';
+      if (p.source) {
+        try { host = new URL(p.source).hostname.replace(/^www\./, ''); } catch (e) { /* keep the raw source string */ }
+      }
+      const checked = parseISO(p.checkedISO);
+      if (!checked) {
+        carrierProfileFindings.push({ id: label, standing: false, msg: 'no usable checkedISO on this profile, so its age cannot be judged' });
+        continue;
+      }
+      const age = daysBetween(today, checked);
+      if (age <= CARRIER_PROFILE_DAYS) continue;
+      // Named terms only where a day-rate genuinely exists to name (the 'day-pass' model);
+      // every other model (included, add-on, pay-per-use, not-supported) is flagged with no
+      // invented dollar figure, the same honesty rule the carrier feature itself follows.
+      const terms = (p.model === 'day-pass' && p.dayRate)
+        ? ('the $' + p.dayRate + '/day' + ((p.cap && p.cap.days) ? ' and $' + (p.dayRate * p.cap.days) + ' cap' : ' rate'))
+        : 'its current terms';
+      carrierProfileFindings.push({
+        id: label,
+        standing: false,
+        msg: 'day-rate/cap checked ' + age + ' days ago, over the ' + CARRIER_PROFILE_DAYS + '-day carrier mark. Re-verify against ' + host + ' before trusting ' + terms + '.',
+      });
+    }
+  }
+
   // --- report ---
   log('Guides carrying a keyFacts block: ' + withKeyFacts + ' of ' + live.length + '.');
   log('Scanned ' + liveSpokes + ' live spokes across the catalogue.');
   if (heroFacts) log('Scanned ' + heroScanned + ' hero facts on live guides, of ' + heroEntries + ' in the map.');
   if (formsMod) log('Scanned ' + formsScanned + ' arrival forms.');
   if (mapMod) log('Scanned ' + mapEntries + ' hotel tax map entries (' + mapColoured + ' currently coloured) and ' + mapWatch + ' watchlist rows.');
+  if (carrierMod) log('Scanned ' + carrierCells + ' carrier-roaming cells (' + carrierSourced + ' sourced, ' + (carrierCells - carrierSourced) + ' unchecked).');
+  if (carrierProfiles) log('Scanned ' + carrierProfileCount + ' carrier profiles.');
   if (findings.length === 0) {
     log('keyFacts: nothing due for a look right now.\n');
   } else {
@@ -524,21 +634,38 @@ async function main() {
     log('');
   }
 
+  if (carrierFindings.length > 0) {
+    log('Carrier-roaming cells worth a re-check (' + carrierFindings.length + '):');
+    for (const f of carrierFindings.sort((a, b) => a.id.localeCompare(b.id))) log('    - ' + f.id + ': ' + f.msg);
+    log('');
+  }
+
+  if (carrierProfileFindings.length > 0) {
+    log('Carrier profiles worth a re-check (' + carrierProfileFindings.length + '):');
+    for (const f of carrierProfileFindings.sort((a, b) => a.id.localeCompare(b.id))) log('    - ' + f.id + ': ' + f.msg);
+    log('');
+  }
+
   // Two counts, because they answer different questions. `aged` is the trigger: items
   // that genuinely passed a date threshold, which is a new event worth an email.
   // `total` also includes standing items, the hero flags and pending forms, which
   // report on every run by design and never age out. Delivering off the total would
   // mean an issue every single Monday forever, which trains everyone to ignore it.
   // The standing rows still print above, so nothing is hidden from the run log.
+  // carrierFindings and carrierProfileFindings carry no standing rows: an unchecked cell,
+  // or a profile with no usable checkedISO, is either skipped or reported once as a finding,
+  // never repeated as a standing to-do, so every entry in both is an aged one.
   const standing = heroFindings.filter(f => f.standing).length
     + formFindings.filter(f => f.standing).length
     + mapFindings.filter(f => f.standing).length;
   const aged = findings.length + noKf.length + spokeFindings.length
     + heroFindings.filter(f => !f.standing).length
     + formFindings.filter(f => !f.standing).length
-    + mapFindings.filter(f => !f.standing).length;
+    + mapFindings.filter(f => !f.standing).length
+    + carrierFindings.length
+    + carrierProfileFindings.length;
   const total = findings.length + noKf.length + spokeFindings.length + heroFindings.length
-    + formFindings.length + mapFindings.length;
+    + formFindings.length + mapFindings.length + carrierFindings.length + carrierProfileFindings.length;
 
   log('Past a threshold: ' + aged + ' item(s) that aged out.'
     + (standing > 0 ? ' Plus ' + standing + ' standing item(s), the hero flags and pending forms listed above, which report every run and never age out.' : ''));
