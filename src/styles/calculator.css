@@ -154,6 +154,11 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .assumption-note { border-left: 3px solid var(--line); padding-left: 1rem; color: var(--muted); font-size: .9375rem; margin-top: 1.25rem; }
 .wizard-actions { display: grid; grid-template-columns: 1fr; gap: .75rem; margin-top: 2rem; }
 .wizard-back { padding: .875rem 1rem; border: 0; background: transparent; color: var(--green); min-height: 3.5rem; text-decoration: underline; text-underline-offset: 3px; }
+/* BRIEF-calc-tier1-review-fixes, Fix 4 (step 5): a real skip action, only present on the
+   one step that renders it (airfare). Mobile stacks it in DOM order with the other two
+   actions; the desktop rule below gives it its own full-width row so it never disturbs the
+   existing two-item primary/back grid placement on every other step. */
+.wizard-actions-skip { width: 100%; }
 .wizard-footnote { font-size: .9375rem; color: var(--muted); margin: 1.25rem 0 0; text-align: center; }
 /* RESULT */
 .results { max-width: 75rem; margin: auto; padding: 2rem 1.25rem 0; }
@@ -204,7 +209,7 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
    the HARD tier's priced cards, not as a lesser copy of the same card. */
 .avoid-tier-soft { background: var(--amber-bg); border: 1px solid #E6D4AE; border-radius: var(--radius); padding: 1.25rem; }
 .tier-subhead-soft { color: #6D4A13; }
-.avoid-tier-soft .avoid-card-soft { background: transparent; border-color: #E6D4AE; }
+.avoid-tier-soft .avoid-card-soft { background: transparent; border-color: #E6D4AE; border-style: dashed; }
 .avoid-card { padding: 1.25rem; background: white; border: 1px solid var(--line); border-radius: var(--radius); }
 .avoid-card + .avoid-card { margin-top: .875rem; }
 .evidence-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem .75rem; margin-bottom: .9375rem; }
@@ -254,6 +259,19 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .detail-line .evidence-row { margin: .625rem 0 0; }
 .detail-line .small { margin-top: .625rem; }
 .method-note { border-left: 3px solid var(--line); padding-left: 1rem; font-size: .9375rem; color: var(--muted); margin-top: 1.5rem; }
+/* BRIEF-calc-tier1-review-fixes, Fix 4: a single home for the model-defense caveats moved
+   out of the wizard steps ("keep it only if it changes the answer the user is about to
+   type; move it here if it defends the model"), discoverable for a doubter without holding
+   up every step with them. Same quiet visual language as .source-details and .breakdown-
+   item's own +/- marker, not a new pattern. */
+.assumptions-accordion { margin-top: 1.25rem; border-top: 1px solid var(--line); padding-top: 1.25rem; }
+.assumptions-accordion > summary { display: inline-flex; align-items: center; gap: .375rem; cursor: pointer; list-style: none; font-size: .9375rem; font-weight: 600; color: var(--text); padding: .375rem 0; }
+.assumptions-accordion > summary::-webkit-details-marker { display: none; }
+.assumptions-accordion > summary::before { content: "+"; color: var(--green); font-size: 1.125rem; line-height: 1; }
+.assumptions-accordion[open] > summary::before { content: "\2212"; }
+.assumptions-accordion ul { margin-top: .75rem; padding-left: 1.125rem; }
+.assumptions-accordion li { font-size: .9375rem; color: var(--muted); line-height: 1.6; margin-bottom: .625rem; }
+.assumptions-accordion li:last-child { margin-bottom: 0; }
 /* BRIEF-calc-v2-clusterA #7: spacing only, matching the .75rem gap already used between
    detail-lines. The element itself is hidden by default in the markup; calc-wizard.js's
    mirror() reveals it only where the engine's own tax for this country is non-zero. */
@@ -322,6 +340,7 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .wizard-actions { grid-template-columns: minmax(0,1fr) minmax(0,2fr); margin-top: 2rem; }
   .wizard-actions .btn-primary { grid-column: 2; grid-row: 1; }
   .wizard-actions .wizard-back { grid-column: 1; grid-row: 1; text-align: left; padding-left: 0; }
+  .wizard-actions .wizard-actions-skip { grid-column: 1 / span 2; grid-row: 2; }
   .wizard-actions.one-action { grid-template-columns: 1fr; }
   .wizard-actions.one-action .btn-primary { grid-column: 1; }
   .results { padding: 3rem 2rem 0; }

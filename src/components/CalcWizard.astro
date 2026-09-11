@@ -158,28 +158,27 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 <!-- ================= THE NEW SURFACE ================= -->
 
 <QuestionPanel stepKey="destination" stepNumber={1} stepLabel="Destination"
-  title="Where are you going?" intro="Choose one country for this trip estimate. Search narrows this list; it never chooses for you." isFirst>
+  title="Where are you going?" intro="Choose one country for this trip estimate." isFirst showFootnote>
   <DestinationChoice countries={destinationCountries} selectedSlug={c.slug} />
 </QuestionPanel>
 
 <QuestionPanel stepKey="travelers" stepNumber={2} stepLabel="Travelers" initiallyVisible
-  title="How many people are traveling?" intro="Count everyone in your travel party. People and rooms are counted separately; this estimate does not assume a specific number of rooms.">
+  title="How many people are traveling?" intro="Count everyone in your travel party.">
   <QuantityControl name="travelers" unitLabel="travelers" unitLabelSingular="traveler" value={2} min={1} max={12} presets={[1, 2, 3, 4]} helpText="This is people, not rooms." />
 </QuestionPanel>
 
 <QuestionPanel stepKey="nights" stepNumber={3} stepLabel="Trip length"
-  title="How many nights are you staying?" intro="Count nights away, not calendar days. Every priced night of the stay is treated the same; there is no separate arrival- or departure-day adjustment.">
-  <QuantityControl name="nights" unitLabel="nights" unitLabelSingular="night" value={7} min={1} max={60} presets={[5, 7, 14, 21]} helpText="You can change this after seeing the estimate." />
+  title="How many nights are you staying?" intro="Count nights away, not calendar days.">
+  <QuantityControl name="nights" unitLabel="nights" unitLabelSingular="night" value={7} min={1} max={60} presets={[5, 7, 14, 21]} />
 </QuestionPanel>
 
 <QuestionPanel stepKey="style" stepNumber={4} stepLabel="Travel style"
-  title="How do you expect to travel?" intro={'Start with the closest fit. It sets a typical daily-spending figure and hotel price for ' + c.name + '; enter your own hotel price on the next step and it takes over.'}>
+  title="How do you expect to travel?" intro={'Start with the closest fit. It sets a typical daily-spending figure and hotel price for ' + c.name + '.'}>
   <ChoiceRows name="style" legend="Travel style" options={styleOptions} />
-  <p class="field-help">Changing your style will not replace a flight or room price you have already entered.</p>
 </QuestionPanel>
 
-<QuestionPanel stepKey="flights" stepNumber={5} stepLabel="Airfare"
-  title="What is your round-trip airfare?" intro="Use the price per person, in US dollars. It is also fine to leave flights out for now; the result will say so plainly rather than showing a $0 flight.">
+<QuestionPanel stepKey="flights" stepNumber={5} stepLabel="Airfare" showFootnote
+  title="What is your round-trip airfare?" intro="Use the price per person, in US dollars." skipLabel="Leave flights out">
   <ChoiceRows name="flight-mode" legend="Airfare information" options={flightModeOptions} />
   <div class="conditional-field" data-flight-price-wrap>
     <PriceControl name="flight" label="Round-trip price per person (USD)" value={flightTypical}
@@ -191,12 +190,12 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 
 <QuestionPanel stepKey="hotel" stepNumber={6} stepLabel="Accommodation"
   title="What is the room price per night?" intro="Use the price for one room, per night, in US dollars, before separately modeled taxes.">
-  <PriceControl name="hotel" label="Room price per night (USD)" value={roomTypical} helpText="This estimate uses one room throughout the stay. Check the room count in your own booking." />
+  <PriceControl name="hotel" label="Room price per night (USD)" value={roomTypical} helpText="This estimate uses one room throughout the stay." />
   <div class="assumption-note"><strong>This is the nightly price for your room, taken as entered.</strong><br />We do not model how many rooms your party needs, so this figure is not divided or multiplied by the traveler count from step 2. If you need more than one room, enter the combined nightly price.</div>
 </QuestionPanel>
 
-<QuestionPanel stepKey="card" stepNumber={7} stepLabel="Payment fees"
-  title="Does your card charge a purchase fee abroad?" intro="Check for a foreign-transaction fee on purchases. Either way, an ATM operator's own flat withdrawal fee is a separate charge that always applies." isLast>
+<QuestionPanel stepKey="card" stepNumber={7} stepLabel="Payment fees" showFootnote
+  title="Does your card charge a purchase fee abroad?" intro="Check for a foreign-transaction fee on purchases." isLast>
   <ChoiceRows name="card" legend="Foreign-transaction fee on purchases" options={cardOptions} />
   <p class="field-help">No bank login or card details are collected here.</p>
 </QuestionPanel>
@@ -212,24 +211,23 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
       </div>
 
       <!-- ===== BRIEF-calc-v2-clusterA #6: result reorder ===== -->
-      <!-- "What you can avoid" now leads (was third); the ranged total that used to be
-           the hero is demoted to a calmer secondary block right below it, with its
+      <!-- "What you can refuse to pay" now leads (was third); the ranged total that used to
+           be the hero is demoted to a calmer secondary block right below it, with its
            result-actions (save/share, edit trip) still attached immediately after it.
            No content, data binding or honesty treatment changed here, only order and
            the visual weight in calculator.css (see .answer / .range there). -->
-      <!-- ===== What you can avoid (spec section 7) OR the calm outcome (section 8) =====
+      <!-- ===== What you can refuse to pay (spec section 7) OR the calm outcome (section 8) =====
            BRIEF-calc-v2-A2: HARD/SOFT split, real USD figures, every applicable item shown
            (no truncation: the full live-country data never exceeds 3 HARD + 4 SOFT, so a
            "show more" disclosure is not needed to keep this readable; see the handoff notes
            if a future country's data ever grows past that). -->
       <section class="section" aria-labelledby="avoid-heading" data-avoid-section>
         <div data-avoid-normal hidden={calmEligible}>
-          <h2 id="avoid-heading" class="avoid-hero-heading">What you can avoid on this trip.</h2>
-          <p class="section-intro">Shown one at a time. We never add them into a single saving.</p>
+          <h2 id="avoid-heading" class="avoid-hero-heading">What you can refuse to pay on this trip.</h2>
 
           {hardItems.length > 0 && (
             <div class="avoid-tier avoid-tier-hard" data-avoid-tier="hard">
-              <p class="tier-subhead tier-subhead-hard">Fees we can price. Refuse each on its own.</p>
+              <p class="tier-subhead tier-subhead-hard">Fees we can price. Refuse each one.</p>
               {hardItems.map(a => (
                 <article class="avoid-card avoid-card-hard" aria-labelledby={'item-' + a.key}
                   data-avoid-item={a.key} data-avoid-kind={a.worth.kind}
@@ -290,17 +288,17 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
             </div>
           )}
 
-          <p class="method-note">We show each on its own and never add them into a single savings headline. Money you were never going to spend is not a saving.</p>
+          <p class="method-note">Each fee stands alone. We never add them into one total, because money you were never going to spend is not a saving.</p>
         </div>
 
         {calmEligible && (
           <div data-avoid-calm hidden>
-            <h2 class="avoid-hero-heading">Little to avoid.</h2>
+            <h2 class="avoid-hero-heading">Little to refuse.</h2>
             <p class="section-intro">A few simple checks. Nothing extra suggested.</p>
             <div class="calm-result">
               <p class="eyebrow">Nothing extra suggested</p>
               <h3>Nothing here suggests you need to buy another product.</h3>
-              <p>Based on your answers, few avoidable charges stand out for {c.name}. This is not a guarantee that every travel cost is covered.</p>
+              <p>Based on your answers, few refusable charges stand out for {c.name}. This is not a guarantee that every travel cost is covered.</p>
             </div>
             <div class="calm-checks">
               <div class="calm-check">
@@ -308,7 +306,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
                 <div>
                   <strong>Card purchase fee</strong>
                   <p>Your card has no foreign-transaction fee on purchases. The ATM operator's own flat fee is separate and still applies.</p>
-                  <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Your figure</span><span class="status avoided">Already avoided</span></div>
+                  <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Your figure</span><span class="status avoided">Already refused</span></div>
                 </div>
               </div>
               {softItems.map(a => (
@@ -369,7 +367,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
               {L.namedZeros && L.namedZeros.map(z => (
                 <div class="detail-line">
                   <div class="line-heading"><span>{z.label}</span><span>$0</span></div>
-                  <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status avoided">Already avoided</span></div>
+                  <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status avoided">Already refused</span></div>
                   <p class="small muted">{z.value}</p>
                 </div>
               ))}
@@ -402,7 +400,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
           <details class="breakdown-item" id="breakdown-daily">
             <summary><strong>Daily spending</strong><span class="breakdown-amount" data-breakdown-amount="daily">$0</span></summary>
             <div class="breakdown-body">
-              <p>Food, local transport, activities and tips, for your travel style, party size and trip length. The production engine defines this figure; this surface only renders it.</p>
+              <p>Food, local transport, activities and tips, for your travel style, party size and trip length.</p>
               <div class="detail-line">
                 <div class="line-heading"><span>On-the-ground spend</span><span data-breakdown-line-amount="daily-2">$0</span></div>
                 <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Our estimate</span><span class="status">Included</span></div>
@@ -434,6 +432,15 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
           </details>
         </div>
         <p class="method-note"><strong>Three kinds of information.</strong> Your figures, our estimates and sourced rules are labeled separately. Whether a cost is in the total is a different label.</p>
+        <details class="assumptions-accordion">
+          <summary>Modeling assumptions</summary>
+          <ul>
+            <li>People and rooms are counted separately. This estimate does not assume a specific number of rooms for your party.</li>
+            <li>Every priced night of the stay is treated the same; there is no separate arrival- or departure-day adjustment.</li>
+            <li>Changing your travel style will not replace a flight or room price you have already entered; only typing a new figure does.</li>
+            <li>This estimate uses one room throughout the stay. If your own booking has more than one room, check the count and enter the combined nightly price on the accommodation step.</li>
+          </ul>
+        </details>
       </section>
     </div>
 
@@ -539,6 +546,27 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
   // side effects: it hydrates from #hn-data and #hn-app the moment both exist, which they do
   // above, permanently kept out of view.
   import '../scripts/calc-engine.js';
+</script>
+<script>
+  // BRIEF-calc-tier1-review-fixes, Fix 4 (step 5): "Leave flights out" as a real button
+  // next to Continue, instead of a caveat sentence describing a skip. This does not
+  // duplicate or reimplement any wizard logic: it checks the SAME "exclude" radio
+  // calc-wizard.js already listens on (firing a real change event so that listener runs),
+  // then resubmits the SAME form calc-wizard.js already validates and advances. Exactly
+  // the sequence a reader would produce by hand, simulated once on a click.
+  (function () {
+    const form = document.querySelector('[data-step-form="flights"]');
+    const skipBtn = document.querySelector('[data-wizard-skip]');
+    if (!form || !skipBtn) return;
+    skipBtn.addEventListener('click', () => {
+      const excludeRadio = form.querySelector('[data-choice-fieldset="flight-mode"] input[value="exclude"]');
+      if (excludeRadio) {
+        excludeRadio.checked = true;
+        excludeRadio.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      form.requestSubmit();
+    });
+  })();
 </script>
 
 <style>

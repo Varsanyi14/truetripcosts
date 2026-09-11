@@ -7,7 +7,17 @@
 // stepNumber/totalSteps/stepLabel feed WizardProgress. isFirst drops the Back action and
 // widens Continue to the full row (wizard-actions.one-action, matching the reference).
 // isLast swaps the Continue label for "See trip estimate" (spec section 6, verbatim).
-const { stepKey, stepNumber, totalSteps = 7, stepLabel, title, intro, isFirst = false, isLast = false, initiallyVisible = false } = Astro.props;
+const { stepKey, stepNumber, totalSteps = 7, stepLabel, title, intro, isFirst = false, isLast = false, initiallyVisible = false,
+  // BRIEF-calc-tier1-review-fixes, Fix 4: the footer used to repeat on all seven steps;
+  // it now only renders where a caller opts in (step 1 and the two money steps), so it
+  // registers where it matters instead of becoming wallpaper.
+  showFootnote = false,
+  // Fix 4, step 5: an optional real "skip" action next to Continue, for the one step
+  // (airfare) where the review found a caveat doing a button's job in prose. Presentation
+  // only: the click behavior lives in CalcWizard.astro's own script and only ever checks
+  // the existing "exclude" radio and resubmits this same form, so calc-wizard.js's already-
+  // tested validation and step-advance logic still does all the real work, unchanged.
+  skipLabel = null } = Astro.props;
 import WizardProgress from './WizardProgress.astro';
 ---
 <section class="wizard" data-wizard-step={stepKey} hidden={!initiallyVisible}>
@@ -21,9 +31,10 @@ import WizardProgress from './WizardProgress.astro';
       </div>
       <div class={'wizard-actions' + (isFirst ? ' one-action' : '')}>
         <button class="btn btn-primary" type="submit">{isLast ? 'See trip estimate' : 'Continue'} <span aria-hidden="true">&rarr;</span></button>
+        {skipLabel && <button type="button" class="btn btn-secondary wizard-actions-skip" data-wizard-skip>{skipLabel}</button>}
         {!isFirst && <button type="button" class="wizard-back" data-wizard-back>&larr; Back</button>}
       </div>
     </form>
   </div>
-  <p class="wizard-footnote">No sign-up. No card details.</p>
+  {showFootnote && <p class="wizard-footnote">No sign-up. No card details.</p>}
 </section>

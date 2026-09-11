@@ -18,11 +18,11 @@ import { countries } from '../data/index.js';
 const live = countries.filter(c => c.live).slice().sort((a, b) => a.name.localeCompare(b.name));
 ---
 <CalculatorLayout
-  title="What you can avoid: see your trip's real, refusable fees"
+  title="What you can refuse to pay: see your trip's real, refusable fees"
   description="A one-question-at-a-time trip cost calculator. Pick a destination and get a ranged total, never a false-precise number, plus every fee you can refuse to pay."
 >
-  <QuestionPanel stepKey="destination" stepNumber={1} stepLabel="Destination" initiallyVisible isFirst
-    title="Where are you going?" intro="Choose one country for this trip estimate. Search narrows this list; it never chooses for you.">
+  <QuestionPanel stepKey="destination" stepNumber={1} stepLabel="Destination" initiallyVisible isFirst showFootnote
+    title="Where are you going?" intro="Choose one country for this trip estimate.">
     <DestinationChoice countries={live} selectedSlug={null} />
   </QuestionPanel>
 </CalculatorLayout>

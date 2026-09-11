@@ -24,7 +24,7 @@ export function getStaticPaths() {
 const { country } = Astro.props;
 ---
 <CalculatorLayout
-  title={'What you can avoid in ' + country.name + ': your trip\'s real fees'}
+  title={'What you can refuse to pay in ' + country.name + ': your trip\'s real fees'}
   description={'A one-question-at-a-time cost calculator for ' + country.name + ': a ranged total, never a false-precise number, plus every fee you can refuse to pay.'}
 >
   <CalcWizard country={country} />

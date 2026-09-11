@@ -10,10 +10,11 @@
 // arithmetic calc-engine.js performs, cross-checked against the real engine by
 // scripts/check-avoidable-highlight.mjs. This file adds no numbers of its own.
 //
-// Locked copy (Decision 1 of the v2 experience build). The calm-country variant's "See
-// why" is an inline link ending its one sentence, not a separate button, unlike the
-// priced variant's own "Calculate what you can avoid on your trip" button below its
-// paragraph: that asymmetry is the locked copy as given, not an oversight.
+// Locked copy (Decision 1 of the v2 experience build; verb standardized to "refuse" by
+// BRIEF-calc-tier1-review-fixes, Fix 5). The calm-country variant's "See why" is an inline
+// link ending its one sentence, not a separate button, unlike the priced variant's own
+// "Calculate what you can refuse on your trip" button below its paragraph: that asymmetry
+// is the locked copy as given, not an oversight.
 import { avoidableHighlightFor } from '../data/avoidable-highlight.js';
 
 const { country: c } = Astro.props;
@@ -34,11 +35,11 @@ const hookHtml = highlight.calmEligible
   : `The room rate isn't the bill, and the sticker rate isn't the price. In ${c.name}, ${highlight.largest.phrase} alone can quietly cost a typical traveler about ${moneyRange(highlight.largest.lo, highlight.largest.hi)}, and it's one of several fees you can refuse.`;
 ---
 <div class="avoid-hook">
-  <p class="ah-eyebrow">What you can avoid here</p>
+  <p class="ah-eyebrow">What you can refuse to pay here</p>
   <p set:html={hookHtml} />
   {!highlight.calmEligible && (
     <div class="ah-cta">
-      <a class="btn" href={'/calculator/' + c.slug}>Calculate what you can avoid on your trip <span aria-hidden="true">&rarr;</span></a>
+      <a class="btn" href={'/calculator/' + c.slug}>Calculate what you can refuse on your trip <span aria-hidden="true">&rarr;</span></a>
     </div>
   )}
 </div>
