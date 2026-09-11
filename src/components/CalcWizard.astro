@@ -43,7 +43,7 @@ import ChoiceRows from './calc/ChoiceRows.astro';
 import DestinationChoice from './calc/DestinationChoice.astro';
 import { calcSetupFor } from '../data/calc-setup.js';
 import { calcLinesFor } from '../data/calc-lines.js';
-import { avoidableFor, carrierFallbackFor, railAvoidableFor } from '../data/avoidable.js';
+import { avoidableFor, carrierFallbackFor, railAvoidableFor, RENTAL_AVOIDABLE } from '../data/avoidable.js';
 import { flightPlaceholderFor } from '../data/flight-defaults.js';
 import { countries } from '../data/index.js';
 import { CARRIER_PROFILES } from '../data/carrier-roaming.js';
@@ -139,10 +139,22 @@ const railOptions = [
   { value: 'yes', label: 'Yes', help: '', selected: false },
   { value: 'no', label: 'No or not sure', help: '', selected: true },
 ];
+
+// BRIEF-rental-avoidable: unlike rail, this step and its card are NOT country-conditional
+// (the counter upsell is the same pitch everywhere), so they exist on every country page.
+// Placed after the (possibly absent) rail step, so it is always the true final step
+// regardless of whether this country has a rail verdict: 10th when rail is present, 9th
+// when it is not. That single rule is why carrier and rail below no longer carry `isLast`
+// themselves; only the always-present rental step does.
+const rentalOptions = [
+  { value: 'yes', label: 'Yes', help: '', selected: false },
+  { value: 'no', label: 'No or not sure', help: '', selected: true },
+];
+const rentalStepNumber = hasRail ? 10 : 9;
 // Every QuestionPanel on this page is given this explicitly, rather than relying on the
 // component's own default, because that default is shared with the standalone /calculator
 // landing page and cannot itself vary per country the way this page's real step count does.
-const totalSteps = hasRail ? 9 : 8;
+const totalSteps = hasRail ? 10 : 9;
 
 // PRODUCTION BLOCKER, resolved: material unpriced categories (spec section 7). Travel
 // insurance is a named tier on every country (never priced, by design: a premium depends on
@@ -251,7 +263,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
   <p class="field-help">No bank login or card details are collected here.</p>
 </QuestionPanel>
 
-<QuestionPanel stepKey="carrier" stepNumber={8} totalSteps={totalSteps} stepLabel="Phone plan" isLast={!hasRail}
+<QuestionPanel stepKey="carrier" stepNumber={8} totalSteps={totalSteps} stepLabel="Phone plan"
   title="Which US carrier are you traveling with?" intro="This decides whether your plan already covers data here, or you are looking at a carrier day-pass rate.">
   <ChoiceRows name="carrier" legend="US carrier" options={primaryCarrierOptions} />
   {moreCarrierOptions.length > 0 && (
@@ -267,12 +279,20 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
      verdict for (railItem above), so a traveler to a non-rail country never sees this
      question at all, rather than seeing it and it producing nothing. ===== -->
 {hasRail && (
-  <QuestionPanel stepKey="rail" stepNumber={9} totalSteps={totalSteps} stepLabel="Getting around" isLast
+  <QuestionPanel stepKey="rail" stepNumber={9} totalSteps={totalSteps} stepLabel="Getting around"
     title="Are you planning intercity train travel on this trip?" intro="This decides whether we show you the rail-pass-versus-tickets call for this country.">
     <ChoiceRows name="rail" legend="Intercity train travel" options={railOptions} />
     <p class="field-help">Change this anytime from Edit trip.</p>
   </QuestionPanel>
 )}
+
+<!-- ===== BRIEF-rental-avoidable: NOT country-conditional, unlike rail above, so this
+     renders on every country page and is always the true final step. ===== -->
+<QuestionPanel stepKey="rental" stepNumber={rentalStepNumber} totalSteps={totalSteps} stepLabel="Rental car" isLast
+  title="Are you renting a car on this trip?" intro="This decides whether we show you the rental counter insurance guidance.">
+  <ChoiceRows name="rental" legend="Renting a car" options={rentalOptions} />
+  <p class="field-help">Change this anytime from Edit trip.</p>
+</QuestionPanel>
 
 <!-- ================= THE RESULT VIEW, hidden until the wizard completes ================= -->
 <div class="results" data-result-view hidden>
@@ -456,6 +476,29 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
             </article>
           </div>
         )}
+
+        <!-- ===== The rental counter insurance upsell (BRIEF-rental-avoidable) =====
+             Unlike carrier and rail above, this card is NOT gated on the country: the
+             counter upsell pitch is the same everywhere, so RENTAL_AVOIDABLE in
+             avoidable.js is a plain constant, not a per-country function, and this markup
+             is unconditional. The only gate is the wizard's own "renting a car?" answer,
+             toggled client-side in calc-wizard.js. Every sentence here is LOCKED copy from
+             the brief: do not rephrase the coverage claims, even for style, without
+             checking with MAIN first. -->
+        <div class="avoid-tier avoid-tier-soft avoid-tier-rental" data-avoid-rental hidden>
+          <p class="tier-subhead tier-subhead-soft">Real, but no honest number. Worth watching.</p>
+          <article class="avoid-card avoid-card-soft" aria-labelledby="rental-item-heading">
+            <div class="evidence-row">
+              <span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span>
+              <span class="status not-estimated">Not estimated</span>
+            </div>
+            <h3 id="rental-item-heading">{RENTAL_AVOIDABLE.title}</h3>
+            <p>{RENTAL_AVOIDABLE.escape}</p>
+            <p class="small muted">{RENTAL_AVOIDABLE.detail}</p>
+            <details class="source-details"><summary>About this</summary><p>See the full picture: <a href={RENTAL_AVOIDABLE.href}>{RENTAL_AVOIDABLE.hrefLabel}</a></p></details>
+            <button class="text-link" type="button" data-edit="rental">Change your rental car answer</button>
+          </article>
+        </div>
       </section>
 
       <section class="answer" aria-label="Estimated cost and scope">
@@ -594,6 +637,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
         {hasRail && (
           <div class="summary-row"><dt>Intercity rail</dt><dd data-mirror="summaryRail">No or not sure</dd><button class="text-link" type="button" data-edit="rail" aria-label="Change your rail travel answer">Change</button></div>
         )}
+        <div class="summary-row"><dt>Renting a car</dt><dd data-mirror="summaryRental">No or not sure</dd><button class="text-link" type="button" data-edit="rental" aria-label="Change your rental car answer">Change</button></div>
       </dl>
       <div class="summary-footer">Your inputs stay available while you explore. No need to repeat the wizard.</div>
     </aside>

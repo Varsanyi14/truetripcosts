@@ -40,6 +40,9 @@
 //     CalcWizard.astro's own hasRail gate). Unlike carrier, nothing here is computed: the
 //     rail card's text is fully build-time known, so this state only ever toggles that
 //     card's visibility in mirror(), below.
+//   - rental (BRIEF-rental-avoidable, default 'no'): whether the reader is renting a car.
+//     Same shape as rail, minus the country gate: this question and its card are on every
+//     page, since the counter upsell pitch does not vary by destination.
 //
 // NO PENDING STATE. The reference design's "Updating your estimate" state exists for an
 // engine call that can take real time or fail over a network. This engine is synchronous and
@@ -132,6 +135,10 @@ export function initCalcWizard() {
   // wizard steps through and what "last step" means on a given country page. WD is already
   // parsed above, before this array is built, so the flag is available in time.
   if (WD.hasRailVerdict) STEP_ORDER.push('rail');
+  // BRIEF-rental-avoidable: unlike rail, unconditional, so this is a plain push rather than
+  // a WD-gated one. Pushed AFTER the (possibly absent) rail step, so it is always the true
+  // final step on every country page regardless of whether rail exists there too.
+  STEP_ORDER.push('rental');
   const STEP_META = {
     destination: { editTitle: 'Change destination' },
     travelers: { editTitle: 'Change travelers' },
@@ -142,6 +149,7 @@ export function initCalcWizard() {
     card: { editTitle: 'Change payment fees' },
     carrier: { editTitle: 'Change phone carrier' },
     rail: { editTitle: 'Change your rail travel answer' },
+    rental: { editTitle: 'Change your rental car answer' },
   };
 
   function panelFor(key) { return document.querySelector('[data-wizard-step="' + key + '"]'); }
@@ -156,11 +164,14 @@ export function initCalcWizard() {
   // default 'no' ("No or not sure"), never assumed. It only ever exists on a page where
   // WD.hasRailVerdict is true; on every other page the rail radios and card simply are not
   // in the DOM, so this default sits unused and harmless.
+  // `rental` (BRIEF-rental-avoidable) is the same shape of state, default 'no', but always
+  // exists: this step and its card render on every country page, unlike rail.
   const state = {
     flightMode: 'known',
     origin: { hotel: 'estimate', flight: 'estimate' },
     carrier: 'other',
     rail: 'no',
+    rental: 'no',
   };
 
   // ===================================================================================
@@ -281,6 +292,12 @@ export function initCalcWizard() {
     r.addEventListener('change', () => { if (r.checked) state.rail = r.value; });
   });
 
+  // ----- rental: radios, surface-only (BRIEF-rental-avoidable). Always present, unlike
+  // rail, since the counter upsell question is not country-conditional. -----
+  $$('[data-choice-fieldset="rental"] input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => { if (r.checked) state.rental = r.value; });
+  });
+
   // ----- destination: search filter, reusing the site's typeahead behaviour -----
   (function wireDestination() {
     const search = document.querySelector('[data-destination-search]');
@@ -344,6 +361,7 @@ export function initCalcWizard() {
     if (key === 'card') return { valid: true };
     if (key === 'carrier') return { valid: true };
     if (key === 'rail') return { valid: true };
+    if (key === 'rental') return { valid: true };
     return { valid: true };
   }
   function showStepError(key, message, focusEl) {
@@ -717,6 +735,15 @@ export function initCalcWizard() {
       const summaryRailEl = document.querySelector('[data-mirror="summaryRail"]');
       if (summaryRailEl) summaryRailEl.textContent = (state.rail === 'yes') ? 'Yes' : 'No or not sure';
 
+      // ----- rental-car insurance card (BRIEF-rental-avoidable) -----
+      // Same shape as the rail toggle above, minus the country gate: this card is always in
+      // the DOM (RENTAL_AVOIDABLE is a plain constant, not a per-country function), so the
+      // only question is whether the reader answered yes.
+      const rentalWrap = document.querySelector('[data-avoid-rental]');
+      if (rentalWrap) rentalWrap.hidden = (state.rental !== 'yes');
+      const summaryRentalEl = document.querySelector('[data-mirror="summaryRental"]');
+      if (summaryRentalEl) summaryRentalEl.textContent = (state.rental === 'yes') ? 'Yes' : 'No or not sure';
+
       if (resultView) resultView.hidden = false;
       if (errorView) errorView.hidden = true;
       const h1 = resultView ? resultView.querySelector('h1') : null;
@@ -788,6 +815,10 @@ export function initCalcWizard() {
       const checked = document.querySelector('[data-choice-fieldset="rail"] input:checked');
       return { value: checked ? checked.value : null };
     }
+    if (key === 'rental') {
+      const checked = document.querySelector('[data-choice-fieldset="rental"] input:checked');
+      return { value: checked ? checked.value : null };
+    }
     return {};
   }
   function restoreControls(key, snap) {
@@ -825,6 +856,11 @@ export function initCalcWizard() {
       if (snap.value != null) {
         state.rail = snap.value;
         $$('[data-choice-fieldset="rail"] input').forEach(r => { r.checked = (r.value === snap.value); });
+      }
+    } else if (key === 'rental') {
+      if (snap.value != null) {
+        state.rental = snap.value;
+        $$('[data-choice-fieldset="rental"] input').forEach(r => { r.checked = (r.value === snap.value); });
       }
     }
   }

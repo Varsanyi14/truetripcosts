@@ -945,3 +945,47 @@ export function railAvoidableFor(c) {
     worth: null,
   };
 }
+
+// ---------------------------------------------------------------------------
+// THE RENTAL-CAR COUNTER-INSURANCE ITEM (BRIEF-rental-avoidable). Guidance, not data.
+//
+// RESEARCH VERDICT that governs this item: a stored per-card or per-rental-company dollar
+// comparison cannot be maintained honestly, because card benefit terms and their country
+// exclusions change on each issuer's own timeline, not this site's. So there is no lookup
+// table here: no per-card row, no per-company row, no per-country row, only the stable,
+// broad ranges the research found, in prose, plus the one action that actually matters
+// (check YOUR OWN card for YOUR destination before declining anything at the counter).
+//
+// A CONSTANT, not a function, unlike carrierFallbackFor(c) and railAvoidableFor(c) above:
+// this guidance genuinely does not vary by country, the counter upsell is the same pitch
+// everywhere, so writing it as a function taking a country would imply a per-country
+// variation that does not exist. Also unlike those two, it is not gated on the destination
+// at all, only on the wizard's own "renting a car?" answer (see CalcWizard.astro / calc-
+// wizard.js), so it is the same object on every country page.
+//
+// THE COVERAGE CLAIM IS LOCKED. Every sentence in `escape` and `detail` is the brief's own
+// wording, unchanged: this is liability-sensitive copy, where a wrong "your card covers you"
+// could leave a traveler responsible for damage or a crash. "may" and "confirm YOUR card
+// for YOUR destination" must survive verbatim, never rephrased into a guarantee. Do not
+// edit these two strings without MAIN's sign-off, even for style.
+//
+// Two non-breaking spaces (U+00A0) sit either side of "to" in the three real dollar ranges
+// below ($15 to $40, twice, and 950 to 1,500), per the brief's own house-style instruction,
+// so a range can never wrap onto two lines. This is the first place in this file that does,
+// since every other stored range here is a short chip or a single sourced string rather than
+// flowing prose long enough to wrap; flagged in the handoff since it is a new precedent.
+export const RENTAL_AVOIDABLE = {
+  key: 'rental',
+  title: 'The rental counter insurance upsell',
+  escape: 'Decline the counter CDW only after you have checked what you already have; you can often buy the same cover for less, or already own it.',
+  detail: 'At the counter you will be pushed collision damage waiver (CDW/LDW) and \'excess reduction\' add-ons, often around $15\u00A0to\u00A0$40 a day, framed against a scary excess (the amount you owe if the car is damaged: roughly up to $2,500 in the US, about 950\u00A0to\u00A01,500 euros or pounds in Europe, more in Australia). Before you accept, three things are usually true. First, your credit card may already include rental CDW, but you must check your card\'s own current benefit guide: coverage differs by card, is often secondary, has duration limits, and excludes some countries (Italy, Ireland, Australia, Israel and Jamaica are common exclusions), so confirm YOUR card for YOUR destination rather than assuming. Second, if you are not covered, a standalone excess policy (bought from an independent insurer, not the counter) is usually far cheaper, often under $8 a day versus the counter\'s $15\u00A0to\u00A0$40. Third, personal accident and personal effects add-ons usually duplicate health and home insurance you already have. The one cover a card\'s CDW does NOT include is third-party liability, so if your rental does not include enough of that, it is the one worth genuinely considering.',
+  // /driving-and-car-rental is a sitewide topic hub (not per-country, matching this item's
+  // own scope), and it already carries the same warning in its own words ("No general
+  // article can tell you where you stand, including this one" / "It never covers your
+  // liability to others"), so this item and that page can never say two different things.
+  href: '/driving-and-car-rental',
+  hrefLabel: 'How rental car insurance really works',
+  side: 'dodge',
+  // NEVER priced. Guidance, not a computed or looked-up figure.
+  worth: null,
+};
