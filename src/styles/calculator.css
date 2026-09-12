@@ -252,7 +252,7 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
    orange), unchanged. Never red, per the original brief's rule. */
 .ttc-card-row-mark { flex-shrink: 0; width: 1.125rem; height: 1.125rem; display: inline-flex; }
 .ttc-card-row-mark svg { width: 100%; height: 100%; display: block; }
-.ttc-card-group-soft .ttc-card-row-mark-shield, .ttc-card-mark-legend .ttc-card-row-mark-shield { color: #16302C; }
+.ttc-card-group-soft .ttc-card-row-mark-shield, .ttc-card-mark-legend .ttc-card-row-mark-shield { color: #276953; }
 .ttc-card-group-soft .ttc-card-row-mark-hand, .ttc-card-mark-legend .ttc-card-row-mark-hand { color: var(--amber-dark); }
 .ttc-card-group-hard .ttc-card-row-mark { display: none; }
 .ttc-card-mark-legend { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; align-items: center; font-size: .8125rem; color: #6D4A13; padding: 0 0 .625rem; }
