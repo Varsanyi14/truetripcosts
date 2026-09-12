@@ -303,7 +303,7 @@ const hotelBookingOptions = [
   { value: 'online', label: 'Through an online booking site', help: '', selected: true },
   { value: 'direct', label: 'Directly with the hotel', help: '', selected: false },
   { value: 'airbnb', label: 'Airbnb or a short-term rental', help: '', selected: false },
-  { value: 'skip', label: "Skip, I'm not staying at a hotel", help: '', selected: false },
+  { value: 'skip', label: "Skip, I'm not staying in paid lodging", help: '', selected: false },
 ];
 
 // BRIEF-calc-result-registry-rebuild, PART 2 "generic engine": the three wizard-gated
@@ -520,7 +520,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 </QuestionPanel>
 
 <QuestionPanel stepKey="hotel" stepNumber={6} totalSteps={totalSteps} stepLabel="Accommodation" showFootnote
-  title={Q_HOTEL} intro="This decides whether book-direct-versus-booking-site guidance applies to your stay." skipLabel="Skip, I'm not staying at a hotel"
+  title={Q_HOTEL} intro="This decides whether book-direct-versus-booking-site guidance applies to your stay." skipLabel="Skip, I'm not staying in paid lodging"
   icon={QUESTION_ICON.hotel} flagSrc={destinationFlag}>
   {/* NEW QUESTION 1 (BRIEF-input-step2b): the new, primary question this step asks. The
       room-price question that used to lead here still follows, unchanged in substance,
@@ -901,8 +901,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
                same page. ===== -->
           <p class="ttc-card-nosum">
             Each line stands alone. We never add these into one total, because money you were never going to spend is not a saving.
-            Your whole trip runs about <span data-mirror="rangeLow">$0</span><span>&nbsp;to&nbsp;</span><span data-mirror="rangeHigh">$0</span>.
-            <a class="text-link" href="#breakdown-heading">See the full breakdown</a>
+            Your whole trip runs about <span data-mirror="rangeLow">$0</span><span>&nbsp;to&nbsp;</span><span data-mirror="rangeHigh">$0</span>. <a class="text-link" href="#breakdown-heading">See the full breakdown</a>
           </p>
 
           <div class="result-actions ttc-card-actions">
@@ -941,12 +940,12 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
               <p data-breakdown-desc="flights">The round-trip airfare you gave in step 5, if any. Paid in dollars at booking, so it carries no foreign-transaction fee.</p>
               <div class="detail-line">
                 <div class="line-heading"><span>Round-trip airfare</span><span data-breakdown-line-amount="flights">Not included</span></div>
-                <div class="evidence-row"><span class="provenance" data-breakdown-line-provenance="flights">Basis</span><span class="status" data-breakdown-line-status="flights">Not included</span></div>
+                <div class="evidence-row"><span class="provenance" data-breakdown-line-provenance="flights">Basis</span> <span class="status" data-breakdown-line-status="flights">Not included</span></div>
               </div>
               {L.entryCharges && L.entryCharges.map(e => (
                 <div class="detail-line">
                   <div class="line-heading"><span>{e.label}</span><span>{e.value}</span></div>
-                  <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status">Included</span></div>
+                  <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span> <span class="status">Included</span></div>
                   {e.source && <p class="small muted">One-off, per person. <a href={e.source} target="_blank" rel="noopener">Official source</a></p>}
                 </div>
               ))}
@@ -967,7 +966,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
               <p>Room price for the stay. Separately modeled taxes appear in the tax section, not twice.</p>
               <div class="detail-line">
                 <div class="line-heading"><span>Room price for the stay</span><span data-breakdown-line-amount="accommodation">$0</span></div>
-                <div class="evidence-row"><span class="provenance" data-breakdown-line-provenance="accommodation">Basis</span><span class="status">Included</span></div>
+                <div class="evidence-row"><span class="provenance" data-breakdown-line-provenance="accommodation">Basis</span> <span class="status">Included</span></div>
                 <p class="small muted" data-breakdown-line-note="accommodation">&nbsp;</p>
               </div>
               <!-- ===== BRIEF-calc-v2-clusterA #7: sourced checkout uplift ===== -->
@@ -989,7 +988,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
               <p>Food, local transport, activities and tips, for your travel style, party size and trip length.</p>
               <div class="detail-line">
                 <div class="line-heading"><span>On-the-ground spend</span><span data-breakdown-line-amount="daily-2">$0</span></div>
-                <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Our estimate</span><span class="status">Included</span></div>
+                <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Our estimate</span> <span class="status">Included</span></div>
               </div>
               <button class="text-link" type="button" data-edit="style">Change travel style</button>
             </div>
@@ -1001,16 +1000,16 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
               <p>Tourist tax, card purchase fee and ATM fee, added together for this row only; each is its own line below and none of them are added into any other group.</p>
               <div class="detail-line">
                 <div class="line-heading"><span data-breakdown-tax-label>Tourist tax</span><span data-breakdown-line-amount="tax">$0</span></div>
-                <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status">Included</span></div>
+                <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span> <span class="status">Included</span></div>
               </div>
               <div class="detail-line">
                 <div class="line-heading"><span>Card purchase fee</span><span data-breakdown-line-amount="cardfee">$0</span></div>
-                <div class="evidence-row"><span class="provenance" data-breakdown-line-provenance="cardfee">Basis</span><span class="status" data-breakdown-line-status="cardfee">Included</span></div>
+                <div class="evidence-row"><span class="provenance" data-breakdown-line-provenance="cardfee">Basis</span> <span class="status" data-breakdown-line-status="cardfee">Included</span></div>
                 <p class="small muted">On the room and the card-paid half of daily spend.</p>
               </div>
               <div class="detail-line">
                 <div class="line-heading"><span>ATM operator fee</span><span data-breakdown-line-amount="atmfee">$0</span></div>
-                <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status">Included</span></div>
+                <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span> <span class="status">Included</span></div>
                 <p class="small muted">A flat per-withdrawal charge. This is separate from the card purchase fee above and always applies, regardless of your step 7 answer.</p>
               </div>
               <button class="text-link" type="button" data-edit="card">Change payment fees</button>

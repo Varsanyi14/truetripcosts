@@ -20,7 +20,7 @@
   --amber-bg: #FBF1DD;
   /* BRIEF-result-card-step3: the two-mark system's "refuse to pay it" mark, a deliberately
      stronger amber than --amber above (the "prepare ahead" mark's own colour), never red. */
-  --amber-dark: #78350F;
+  --amber-dark: #B5470B;
   --error: #A02D2D;
   --error-bg: #FFF2EF;
   --focus: #276953;
