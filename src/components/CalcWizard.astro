@@ -194,7 +194,7 @@ const Q_CARD = 'Does your card charge a purchase fee in ' + c.name + '?';
 const Q_PET = 'Are you traveling with a pet on this ' + c.name + ' trip?';
 const Q_GOODS = 'Planning to buy goods in ' + c.name + ' to bring home?';
 const Q_MEDICAL = 'Do you have a health condition that needs attention while traveling to ' + c.name + '?';
-const Q_DATE = 'When are you planning to leave ' + c.name + '?';
+const Q_DATE = 'When are you planning to travel to ' + c.name + '?';
 // The three wizard-gated questions' base wording lives in avoidable.js (a data file this
 // step must not touch), so the country name is woven in here instead, at the point this
 // file already renders each one, never editing that source string itself.
@@ -259,7 +259,7 @@ const medicalEntry = {
 // ChoiceRows shape and are rendered separately, below.
 const NEW_QUESTION_META = {
   goods: { editTitle: 'Change your goods answer' },
-  date: { editTitle: 'Change your leaving date' },
+  date: { editTitle: 'Change your travel date' },
 };
 const NEW_QUESTION_DEFAULTS = { goods: 'no', date: '' };
 
@@ -418,7 +418,7 @@ const iconFor = (key) => ROW_ICON[key] || 'alert';
 // tilted ellipse for the coin, matching the shield's stroke weight so the two read as one
 // family. Still --amber-dark (burnt orange), unchanged.
 const MARK_SHIELD = '<svg viewBox="0 0 24 27.48" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M11.69 0.0 L7.04 2.19 L1.56 3.52 L0.51 4.22 L0.0 5.36 L0.0 13.99 L1.09 18.21 L3.99 22.4 L8.09 25.68 L11.06 27.32 L12.43 27.48 L15.64 25.88 L18.76 23.57 L20.79 21.5 L22.51 18.96 L23.92 14.5 L24.0 5.79 L23.61 4.42 L22.67 3.6 L18.41 2.7 L12.86 0.16 Z M11.88 1.52 L17.08 3.87 L21.93 4.96 L22.48 5.63 L22.44 14.31 L21.15 18.25 L17.55 22.55 L12.23 25.95 L8.05 23.8 L4.46 20.6 L2.27 17.08 L1.49 13.56 L1.6 5.32 L7.19 3.79 Z M11.88 6.25 L11.37 6.72 L11.34 7.54 L10.08 7.97 L9.22 8.72 L8.64 10.24 L8.72 11.3 L9.3 12.43 L10.08 13.09 L11.37 13.64 L11.37 17.24 L10.51 16.89 L9.38 15.52 L8.72 15.64 L8.44 16.46 L9.11 17.67 L9.93 18.37 L11.34 18.84 L11.45 19.9 L12.12 20.17 L12.59 19.82 L12.66 18.84 L13.92 18.45 L14.93 17.55 L15.4 16.61 L15.52 15.36 L14.85 13.72 L13.92 12.98 L12.63 12.43 L12.63 9.15 L13.33 9.46 L13.99 10.51 L14.38 10.75 L15.13 10.51 L15.24 9.58 L14.15 8.13 L12.66 7.54 L12.55 6.53 Z"/></svg>';
-const MARK_HAND = '<svg viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.62.71 8.59.71 7.89.98 7.3 1.46 6.92 2.35 5.84 2.26 4.86 2.57 4.43 2.93 4.11 3.46 4.05 4.79 2.76 4.79 2.16 4.97 1.51 5.46 1.19 6.08.81 13.62.92 17.13 1.62 19.74 3.24 22.49 3.41 23.25 3.41 24.94 3.68 25.25 3.95 25.33 13.03 25.33 13.78 25.16 13.95 24.89 13.95 23.2 14.16 22.1 15.62 20.85 16.76 19.57 21.14 12.91 21.14 12.07 20.65 11.36 19.84 10.91 18.7 10.87 17.95 11.14 14.27 14.02 14.22 3.73 13.89 3.19 12.92 2.57 12.49 2.48 11.35 2.57 11.3 2.04 10.86 1.33 10.38.98Z"/><ellipse cx="19.23" cy="4.92" rx="3.61" ry="3.48" transform="rotate(-45 19.23 4.92)"/></svg>';
+const MARK_STOP = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M8.1 2.5 H15.9 L21.5 8.1 V15.9 L15.9 21.5 H8.1 L2.5 15.9 V8.1 Z"/><line x1="7.5" y1="12" x2="16.5" y2="12" stroke-linecap="round"/></svg>';
 
 
 
@@ -645,10 +645,10 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
      nothing to default to "yes" or "no" on), with its own skip button that clears the
      field and resubmits, the same one-tap convenience flights already established for its
      own "exclude" answer. -->
-<QuestionPanel stepKey="date" stepNumber={11 + questionItems.length} totalSteps={totalSteps} stepLabel="Leaving date" isLast
+<QuestionPanel stepKey="date" stepNumber={11 + questionItems.length} totalSteps={totalSteps} stepLabel="Travel date" isLast
   title={Q_DATE} intro="Optional. Helps flag anything time-sensitive for your dates." skipLabel="Skip, not sure yet"
   icon={QUESTION_ICON.date} flagSrc={destinationFlag}>
-  <label class="field-label" for="q-date-input">Leaving date</label>
+  <label class="field-label" for="q-date-input">Travel date</label>
   <input id="q-date-input" name="date" type="date" class="form-input" data-date-input="date" />
   <p class="field-help">Change this anytime from Edit trip.</p>
 </QuestionPanel>
@@ -750,14 +750,14 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
                  removes any doubt about what the two marks below mean. -->
             <p class="ttc-card-mark-legend">
               <span class="ttc-card-mark-legend-item"><span class="ttc-card-row-mark ttc-card-row-mark-shield" aria-hidden="true" set:html={MARK_SHIELD} />Prepare ahead</span>
-              <span class="ttc-card-mark-legend-item"><span class="ttc-card-row-mark ttc-card-row-mark-hand" aria-hidden="true" set:html={MARK_HAND} />Refuse to pay</span>
+              <span class="ttc-card-mark-legend-item"><span class="ttc-card-row-mark ttc-card-row-mark-hand" aria-hidden="true" set:html={MARK_STOP} />Refuse to pay</span>
             </p>
             {softItems.map(a => (
               <details class="ttc-card-row" data-avoid-mark="hand">
                 <summary>
                   <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor(a.key)} /></span>
                   <span class="ttc-card-row-name" id={'item-' + a.key}>{a.title}</span>
-                  <span class="ttc-card-row-mark ttc-card-row-mark-hand" aria-hidden="true" set:html={MARK_HAND} />
+                  <span class="ttc-card-row-mark ttc-card-row-mark-hand" aria-hidden="true" set:html={MARK_STOP} />
                   <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
                 </summary>
                 <div class="ttc-card-row-detail">
@@ -781,7 +781,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
                 <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name="phoneok" /></span>
                 <span class="ttc-card-row-name" id="carrier-item-heading">Your phone plan abroad</span>
                 <span class="ttc-card-row-amount" data-carrier-amount-wrap hidden><strong data-carrier-amount>&nbsp;</strong></span>
-                <span class="ttc-card-row-mark ttc-card-row-mark-hand" aria-hidden="true" set:html={MARK_HAND} />
+                <span class="ttc-card-row-mark ttc-card-row-mark-hand" aria-hidden="true" set:html={MARK_STOP} />
                 <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
               </summary>
               <div class="ttc-card-row-detail">
@@ -816,7 +816,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
                 <summary>
                   <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor(item.key)} /></span>
                   <span class="ttc-card-row-name" id={item.question.stepKey + '-item-heading'}>{item.card.title}</span>
-                  <span class="ttc-card-row-mark ttc-card-row-mark-hand" aria-hidden="true" set:html={MARK_HAND} />
+                  <span class="ttc-card-row-mark ttc-card-row-mark-hand" aria-hidden="true" set:html={MARK_STOP} />
                   <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
                 </summary>
                 <div class="ttc-card-row-detail">
@@ -910,7 +910,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
               <div class="ttc-card-row-detail">
                 <p><strong data-date-escape>&nbsp;</strong></p>
                 <p class="small muted" data-date-link-wrap hidden><a data-date-link href={dateCard.href} target="_blank" rel="noopener">{dateCard.hrefLabel}</a></p>
-                <button class="text-link" type="button" data-edit="date">Change your leaving date</button>
+                <button class="text-link" type="button" data-edit="date">Change your travel date</button>
               </div>
             </details>
           </div>
@@ -1078,7 +1078,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
         <div class="summary-row"><dt>{petEntry.question.summaryLabel}</dt><dd data-mirror="summaryPet">No or not sure</dd><button class="text-link" type="button" data-edit="pet" aria-label="Change your pet answer">Change</button></div>
         <div class="summary-row"><dt>Goods to bring home</dt><dd data-mirror="summaryGoods">Skipped</dd><button class="text-link" type="button" data-edit="goods" aria-label="Change your goods answer">Change</button></div>
         <div class="summary-row"><dt>{medicalEntry.question.summaryLabel}</dt><dd data-mirror="summaryMedical">No or not sure</dd><button class="text-link" type="button" data-edit="medical" aria-label="Change your health answer">Change</button></div>
-        <div class="summary-row"><dt>Leaving date</dt><dd data-mirror="summaryDate">Not sure yet</dd><button class="text-link" type="button" data-edit="date" aria-label="Change your leaving date">Change</button></div>
+        <div class="summary-row"><dt>Travel date</dt><dd data-mirror="summaryDate">Not sure yet</dd><button class="text-link" type="button" data-edit="date" aria-label="Change your travel date">Change</button></div>
       </dl>
       <div class="summary-footer">Your inputs stay available while you explore. No need to repeat the wizard.</div>
     </aside>
