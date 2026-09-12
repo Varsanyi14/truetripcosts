@@ -439,7 +439,7 @@ export function initCalcWizard() {
   }
 
   // ===================================================================================
-  // CARRIER CONNECTIVITY CARD (BRIEF-carrier-honest-build). The one piece of the result
+  // CARRIER CONNECTIVITY ROW (BRIEF-carrier-honest-build). The one piece of the result
   // view this file computes rather than mirrors, because nothing to mirror exists: neither
   // avoidable.js nor calc-engine.js knows the reader's carrier, so there is no hidden-engine
   // figure to read back. What IS computed here is the same small multiplication the
@@ -450,6 +450,16 @@ export function initCalcWizard() {
   // carrier-roaming.js's own header for why only the 'day-pass' model gets this
   // multiplication at all: the other four models are named honestly instead, with no
   // invented total.
+  //
+  // BRIEF-result-card-step1: this row is the one item whose HARD/SOFT placement is not
+  // known at build time (every pool item's tier is fixed per country; carrier's depends on
+  // WHICH carrier the reader names). So its <details> row starts in the SOFT group in the
+  // static markup and this function moves that SAME node into the HARD group the instant
+  // it computes a real figure, and back to the SOFT group otherwise; never a second,
+  // differently styled carrier card. The old badge fields (a plain "Included" / "Not
+  // included" / "No set price" status word, no longer shown per the brief's "no badges"
+  // rule) are dropped; the row's own group placement plus its amount slot now carry that
+  // same information honestly.
   function renderCarrierItem(nights) {
     const wrap = document.querySelector('[data-avoid-carrier]');
     if (!wrap) return;
@@ -459,7 +469,7 @@ export function initCalcWizard() {
     const isNorthAmerica = (WD.countrySlug === 'mexico' || WD.countrySlug === 'canada');
     const n = Math.max(1, Math.round(Number(nights) || 1));
 
-    let detail, status, amount = null, showEsim = true;
+    let detail, amount = null, showEsim = true;
 
     if (profile && isNorthAmerica && profile.mexicoCanada) {
       // Mexico/Canada special case, ahead of the general model (BRIEF Part 3): several
@@ -467,7 +477,6 @@ export function initCalcWizard() {
       // everywhere else, so the honest item here is that special treatment, not the
       // general one.
       detail = profile.mexicoCanada;
-      status = 'Included';
       showEsim = false;
     } else if (!profile) {
       // "Other or not sure", or a carrier this build has no profile for: no carrier-specific
@@ -475,11 +484,9 @@ export function initCalcWizard() {
       // connectivity verdict, pre-authored at build time by avoidable.js's
       // carrierFallbackFor() and passed through unchanged.
       detail = WD.carrierFallbackText || 'Check your carrier\'s plan before you go, and compare live prices for a local SIM or eSIM.';
-      status = 'No set price';
     } else if (profile.model === 'included') {
       detail = 'Your ' + profile.label + ' plan already includes data here (' + profile.includedNote + '). '
         + 'You likely do not need a travel eSIM, a purchase you can skip.';
-      status = 'Included';
       showEsim = false;
     } else if (profile.model === 'day-pass' && profile.dayRate) {
       const cap = profile.cap;
@@ -490,17 +497,14 @@ export function initCalcWizard() {
         + 'Its day pass is $' + profile.dayRate + '/day' + capClause + ', so about ' + numberToUsd(computed) + ' for this trip'
         + (cap ? ' if it falls in one bill period' : '') + '. A local eSIM is usually far cheaper for a trip this long.';
       amount = computed;
-      status = 'Not included';
     } else {
       // add-on / pay-per-use / not-supported: named honestly, real terms, no computed
       // total, for the same reason the day-pass math above does not apply to them.
       detail = profile.namedNote || ('Check ' + profile.label + '\'s own international roaming page before this trip.');
-      status = 'No set price';
     }
 
     const detailEl = wrap.querySelector('[data-carrier-detail]');
     if (detailEl) detailEl.textContent = detail;
-    wrap.querySelectorAll('[data-carrier-status]').forEach(el => { el.textContent = status; });
     const amtWrap = wrap.querySelector('[data-carrier-amount-wrap]');
     if (amtWrap) {
       amtWrap.hidden = (amount == null);
@@ -511,6 +515,14 @@ export function initCalcWizard() {
     }
     const esimWrap = wrap.querySelector('[data-carrier-esim-wrap]');
     if (esimWrap) esimWrap.hidden = !showEsim;
+
+    // Move the row itself into whichever group its own figure now belongs in. appendChild
+    // on a node already in that container is a documented no-op re-append, not a detach/
+    // reattach cycle, so this never closes an open row that happens to already be priced.
+    const hardGroup = document.querySelector('[data-avoid-tier="hard"]');
+    const softGroup = document.querySelector('[data-avoid-tier="soft"]');
+    const targetGroup = (amount != null) ? hardGroup : softGroup;
+    if (targetGroup && wrap.parentElement !== targetGroup) targetGroup.appendChild(wrap);
 
     const summaryEl = document.querySelector('[data-mirror="summaryCarrier"]');
     if (summaryEl) summaryEl.textContent = profile ? profile.label : 'Other or not sure';
@@ -551,16 +563,21 @@ export function initCalcWizard() {
       setAll('[data-mirror="durationLabel"]', nights + ' ' + (nights === 1 ? 'night' : 'nights'));
       setAll('[data-mirror="rangeLow"]', rangeLow);
       setAll('[data-mirror="rangeHigh"]', rangeHigh);
+      // BRIEF-result-card-step1: the card's trip-meta line grows by one fact already
+      // collected today (whether the reader is renting a car; avoidable.js's own rental
+      // question), never a new question. Only appended where a rental question exists on
+      // this country's page and the reader answered yes; empty string otherwise, so the
+      // meta line reads exactly as before on every other page.
+      setAll('[data-mirror="metaExtra"]', (state.answers.rental === 'yes') ? ' \u00b7 renting a car' : '');
 
       // ----- flights: inclusion is the SURFACE's own flightMode flag, not a reading of
-      // whether the hidden figure happens to be zero (a reader can honestly enter $0). -----
+      // whether the hidden figure happens to be zero (a reader can honestly enter $0).
+      // BRIEF-result-card-step1: the card itself no longer carries a dedicated
+      // flight-inclusion strip (see CalcWizard.astro's own note on this), so flightNotice
+      // is computed here only for the breakdown section below; currentPresentation()
+      // further down this file computes its own copy independently for the still-dormant
+      // share dialog. -----
       const flightIncluded = state.flightMode === 'known';
-      const flightNotice = flightIncluded
-        ? ('Flights included, about ' + flightAmt + ' for the whole party.')
-        : 'Flights not included.';
-      setAll('[data-mirror="flightNotice"]', flightNotice);
-      const flightAction = document.querySelector('[data-flight-alert-action]');
-      if (flightAction) flightAction.textContent = flightIncluded ? 'Change airfare \u2192' : 'Add flights \u2192';
 
       // ----- breakdown: Getting there -----
       set('[data-breakdown-amount="flights"]', flightIncluded ? flightAmt : 'Not included');
@@ -615,8 +632,6 @@ export function initCalcWizard() {
 
       // ----- avoidable items: the one live figure (card/ATM fee) -----
       document.querySelectorAll('[data-avoid-amount="fees"]').forEach(el => { el.textContent = feesLiveAmt; });
-      document.querySelectorAll('[data-avoid-provenance="fees"]').forEach(el => { el.innerHTML = '<span class="meta-key">Basis</span> ' + (noFee ? 'Your figure' : 'Sourced rule'); });
-      document.querySelectorAll('[data-avoid-status="fees"]').forEach(el => { el.textContent = noFee ? 'Already avoided' : 'Included'; el.className = 'status' + (noFee ? ' avoided' : ''); });
 
       // ----- avoidable items: HARD tier dollar figures (BRIEF-calc-v2-A2) -----
       // Every figure here traces to a real, already-rendered engine output. A `pctCardBase`
@@ -664,9 +679,14 @@ export function initCalcWizard() {
       // (should not happen; defensive only) keeps its build-time position rather than
       // sorting to an arbitrary spot, which is the "stable order for mixed types" the brief
       // asks for in the case this sort cannot honestly decide.
+      // BRIEF-result-card-step1: scoped to [data-avoid-item] rows only, i.e. the
+      // country-only pool this sort has always ranked. The carrier row (no data-avoid-item
+      // of its own; see renderCarrierItem() below) never enters this ranking; it settles
+      // at the end of whichever group it belongs in once that function runs, later in this
+      // same mirror() pass.
       const hardTier = document.querySelector('[data-avoid-tier="hard"]');
       if (hardTier) {
-        const ranked = $$('.avoid-card', hardTier).map((card, i) => {
+        const ranked = $$('.ttc-card-row[data-avoid-item]', hardTier).map((card, i) => {
           let value = null;
           if (card.dataset.avoidKind === 'liveFees') {
             value = usdToNumber(feesLiveAmt);
@@ -691,16 +711,16 @@ export function initCalcWizard() {
         ranked.forEach(({ card }) => hardTier.appendChild(card));
       }
 
-      // ----- calm outcome toggle (spec section 8). Eligibility is static per country
+      // ----- calm outcome note (spec section 8). Eligibility is static per country
       // (WD.calmEligible, resolved at build time: see CalcWizard.astro's own comment on
       // this production blocker); the reader's own no-fee card choice is what actually
-      // triggers it. -----
-      const avoidSection = document.querySelector('[data-avoid-section]');
-      const normalBlock = avoidSection ? avoidSection.querySelector('[data-avoid-normal]') : null;
-      const calmBlock = avoidSection ? avoidSection.querySelector('[data-avoid-calm]') : null;
-      const showCalm = WD.calmEligible && noFee;
-      if (normalBlock) normalBlock.hidden = showCalm;
-      if (calmBlock) calmBlock.hidden = !showCalm;
+      // reveals the note. BRIEF-result-card-step1: this used to swap two entire,
+      // differently shaped blocks (a full "Little to refuse" card in place of the normal
+      // HARD/SOFT groups); it is now one quiet note inside the same card, toggled next to
+      // rows that keep rendering their own real figures either way, so the card is calm
+      // rather than empty, never a second card shape. -----
+      const calmNote = document.querySelector('[data-avoid-calm-note]');
+      if (calmNote) calmNote.hidden = !(WD.calmEligible && noFee);
 
       // ----- trip summary (Edit trip) -----
       set('[data-mirror="summaryTravelers"]', trav + ' people');

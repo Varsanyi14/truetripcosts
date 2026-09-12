@@ -50,6 +50,11 @@ import QuantityControl from './calc/QuantityControl.astro';
 import PriceControl from './calc/PriceControl.astro';
 import ChoiceRows from './calc/ChoiceRows.astro';
 import DestinationChoice from './calc/DestinationChoice.astro';
+// BRIEF-result-card-step1: one small icon per row, from the site's own existing icon set
+// rather than a new one drawn for this card. See calculator.css's own note on this: the
+// card's brand colors already match what Symbol.astro draws every route icon in, so the
+// row icons read as the same visual language, not a fourth one.
+import Symbol from './Symbol.astro';
 import { calcSetupFor } from '../data/calc-setup.js';
 import { calcLinesFor } from '../data/calc-lines.js';
 import {
@@ -161,19 +166,29 @@ const softItems = avoidablePool.filter(a => a.tier === 'soft');
 const otherHardCount = hardItems.filter(a => a.figureKind !== 'liveFees').length;
 const calmEligible = otherHardCount === 0;
 
-// BRIEF-calc-result-registry-rebuild, PART 4 "the result reframe": the one-line shape
-// sentence that leads the section, naming how many items carry a real number versus how
-// many are named but unpriced, BEFORE the reader scans the list. Both counts are the pool
-// built above, which is purely a function of this COUNTRY (never the wizard's answers), so
-// this is safe to compute once, at build time, exactly like the rest of this section's
-// static copy; nothing here needs a client-side mirror.
-function shapeSentence(hardCount, softCount) {
-  const hardClause = hardCount === 1 ? 'One fee carries a real number' : (hardCount + ' fees carry a real number');
-  if (softCount === 0) return hardClause + '.';
-  const softClause = softCount === 1 ? 'one more trap carries' : (softCount + ' more traps carry');
-  return hardClause + ', ' + softClause + ' no set price but real money.';
-}
-const avoidShapeSentence = shapeSentence(hardItems.length, softItems.length);
+// BRIEF-result-card-step1: one icon per row, keyed by the item's own registry `key` (the
+// same key avoidableRegistryFor(c)/carrierRegistryEntryFor/railRegistryEntryFor/
+// rentalRegistryEntry already carry, never a new field added to avoidable.js). Purely
+// presentational and local to this file; a pool item added later with a key not listed
+// here still renders, just with the 'tag' fallback, rather than breaking the build.
+const ROW_ICON = {
+  dcc: 'card', fees: 'atm', exchange: 'cash', vat: 'refund', form: 'passport',
+  reseller: 'receipt', dead: 'tag', doubletip: 'tip', exemption: 'cash',
+  carrier: 'phoneok', rail: 'train', rental: 'wheel',
+};
+// The fallback matters in practice: avoidable.js also carries dozens of uniquely-keyed
+// named scam/tactic items (e.g. "gem-tour-scam", "closed-hotel-detour"), one set per
+// country, which is too many distinct keys to enumerate above by hand. Every OTHER real
+// key in the pool is already listed explicitly, so this fallback is reached only by that
+// scam/tactic set today, and 'alert' (an existing warning-triangle icon) fits what they
+// actually are far better than a generic price tag.
+const iconFor = (key) => ROW_ICON[key] || 'alert';
+
+// BRIEF-result-card-step1, the card's "checked {Month Year}" stamp. A later step wires
+// this to a real per-country checked date; for now it is a static build-time stamp (this
+// site is fully static, so every build already regenerates it fresh), rendered only so
+// the slot exists on the approved mock, per the brief.
+const checkedStamp = new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 
 const wizData = {
   countryName: c.name,
@@ -272,217 +287,196 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 <div class="results" data-result-view hidden>
   <div class="result-layout">
     <div class="result-main">
-      <div class="result-heading">
+      <!-- BRIEF-result-card-step1: the page's one required h1 stays, exactly as before
+           (calc-wizard.js's finish()/mirror() still focuses it once the result is ready).
+           The approved mock shows no visible "Your {country} trip." text anywhere above
+           the card, so this block is sr-only rather than removed: same semantics, no
+           visual footprint. The trip-meta line that used to sit here moved into the card's
+           own trip header below, so it is not repeated twice for a screen reader. -->
+      <div class="result-heading sr-only">
         <p class="eyebrow">Your trip estimate</p>
         <h1 tabindex="-1">Your {c.name} trip.</h1>
-        <p class="trip-meta"><span data-mirror="partyLabel">2 travelers</span> &middot; <span data-mirror="durationLabel">7 nights</span></p>
       </div>
 
-      <!-- ===== BRIEF-calc-result-registry-rebuild, PART 4 "lead with avoidance" =====
-           The hero heading now names the country directly, and a one-line shape sentence
-           (avoidShapeSentence, built once above from this country's own pool) sets
-           expectations before the reader scans a single card: how many items carry a real
-           number versus how many are named but genuinely unpriced. Neither count is a
-           guess; both are the same hardItems/softItems arrays the cards below render from. -->
-      <section class="section" aria-labelledby="avoid-heading" data-avoid-section>
-        <div data-avoid-normal hidden={calmEligible}>
-          <h2 id="avoid-heading" class="avoid-hero-heading">What you can refuse to pay in {c.name}.</h2>
-          <p class="avoid-shape">{avoidShapeSentence}</p>
+      <!-- ===== BRIEF-result-card-step1: THE FOLDED, BRANDED, SHAREABLE RESULT CARD =====
+           Replaces the old wall of separately badged cards with the one bordered card the
+           brief specifies, top to bottom: branded header bar, trip header, a HARD group
+           (a real figure), a SOFT group (named, no set price, the whole band amber-tinted),
+           the no-sum line with the trip total demoted onto it, two actions, a branded
+           footer. Every existing avoidable item still appears, now as ONE row shape used
+           everywhere: icon, name, an amount only where a real figure exists, and a chevron
+           every row carries, hard or soft alike (the brief's own "a visible chevron on
+           every row, not just some"). Tapping a row is a native <details>/<summary>
+           disclosure, so it opens in place, needs no client script to toggle it, and stays
+           keyboard- and screen-reader-operable for free.
+           Carrier, rail and rental (avoidable.js's three wizard-gated items, previously
+           three separately hand-styled cards living OUTSIDE this hard/soft split entirely)
+           now render as rows in this SAME shape, physically inside whichever group fits:
+           rail and rental are always SOFT rows (never priced, by design), hidden by default
+           and shown by the same yes/no toggle as before, unchanged. Carrier is the one item
+           whose figure is only known once the wizard is answered, so its row starts in the
+           SOFT group and calc-wizard.js's renderCarrierItem() moves that SAME row into the
+           HARD group the instant it computes a real figure, never a second, differently
+           styled carrier card (see that function's own comment in calc-wizard.js). -->
+      <div class="ttc-card" data-result-card>
+        <div class="ttc-card-brandbar">
+          <span class="ttc-card-wordmark">true trip costs<span>.</span></span>
+          <span class="ttc-card-checked">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5 L8 14.5 L16 5.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            checked {checkedStamp}
+          </span>
+        </div>
+        <div class="ttc-card-body">
+          <div class="ttc-card-triphead">
+            <h2 id="avoid-heading" class="ttc-card-title">What you can refuse to pay in {c.name}.</h2>
+            <p class="ttc-card-meta"><span data-mirror="partyLabel">2 travelers</span> &middot; <span data-mirror="durationLabel">7 nights</span><span data-mirror="metaExtra"></span></p>
+          </div>
 
-          {hardItems.length > 0 && (
-            <div class="avoid-tier avoid-tier-hard" data-avoid-tier="hard">
-              <p class="tier-subhead tier-subhead-hard">Fees we can price. Refuse each one.</p>
-              {hardItems.map(a => (
-                <article class="avoid-card avoid-card-hard" aria-labelledby={'item-' + a.key}
-                  data-avoid-item={a.key} data-avoid-kind={a.figureKind}
-                  data-avoid-pct-lo={a.figureKind === 'pctCardBase' ? a.figureLo : null}
-                  data-avoid-pct-hi={a.figureKind === 'pctCardBase' ? a.figureHi : null}
-                  data-avoid-usd-lo={a.figureKind === 'usd' ? a.figureLo : null}
-                  data-avoid-usd-hi={a.figureKind === 'usd' ? a.figureHi : null}
-                  data-avoid-usd-pp={a.figureKind === 'usd' ? (a.figurePerPerson ? '1' : '0') : null}>
-                  <div class="evidence-row">
-                    {a.liveFigureId === 'avFees' ? (
-                      <Fragment>
-                        <span class="provenance" data-avoid-provenance={a.key}><span class="meta-key">Basis</span> Sourced rule</span>
-                        <span class="status" data-avoid-status={a.key}>Included</span>
-                      </Fragment>
-                    ) : (
-                      <Fragment>
-                        <span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span>
-                        <span class="status not-included">Not included</span>
-                      </Fragment>
-                    )}
-                  </div>
-                  <div class="item-amount-hard">
+          <!-- The calm framing (BRIEF-calc-v2-clusterA's "little to refuse" outcome) is now
+               a single quiet note inside this same card, not a second, differently shaped
+               block: WD.calmEligible is unchanged, a build-time per-country fact (this
+               country's only HARD item is the fee line itself), and the reader's own
+               no-fee card answer is what actually reveals the note in mirror(). The fee row
+               below still shows its own real, now-smaller figure either way, so the card is
+               a calm card, never an empty one. -->
+          {calmEligible && (
+            <p class="ttc-card-calm-note" data-avoid-calm-note hidden>Based on your answers, few refusable charges stand out for {c.name}. This is not a guarantee that every travel cost is covered.</p>
+          )}
+
+          <div class="ttc-card-group ttc-card-group-hard" data-avoid-tier="hard">
+            <p class="ttc-card-group-label">Real money, shown as amounts</p>
+            {hardItems.map(a => (
+              <details class="ttc-card-row" data-avoid-item={a.key} data-avoid-kind={a.figureKind}
+                data-avoid-pct-lo={a.figureKind === 'pctCardBase' ? a.figureLo : null}
+                data-avoid-pct-hi={a.figureKind === 'pctCardBase' ? a.figureHi : null}
+                data-avoid-usd-lo={a.figureKind === 'usd' ? a.figureLo : null}
+                data-avoid-usd-hi={a.figureKind === 'usd' ? a.figureHi : null}
+                data-avoid-usd-pp={a.figureKind === 'usd' ? (a.figurePerPerson ? '1' : '0') : null}>
+                <summary>
+                  <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor(a.key)} /></span>
+                  <span class="ttc-card-row-name" id={'item-' + a.key}>{a.title}</span>
+                  <span class="ttc-card-row-amount">
                     {a.figureKind === 'liveFees' ? (
-                      <strong class="amount-big" data-avoid-amount={a.key}>&nbsp;</strong>
+                      <strong data-avoid-amount={a.key}>&nbsp;</strong>
                     ) : (
-                      <strong class="amount-big">
-                        <span data-avoid-amount-lo={a.key}>$0</span><span data-avoid-amount-sep={a.key}>&nbsp;to&nbsp;</span><span data-avoid-amount-hi={a.key}>$0</span>
-                      </strong>
+                      <strong><span data-avoid-amount-lo={a.key}>$0</span><span data-avoid-amount-sep={a.key}>&nbsp;to&nbsp;</span><span data-avoid-amount-hi={a.key}>$0</span></strong>
                     )}
-                    <span>{a.figureNote}</span>
-                  </div>
-                  <h3 id={'item-' + a.key}>{a.title}</h3>
-                  {/* One-line action only (BRIEF-calc-v2-A2 #2): the fuller detail prose
-                      that used to sit here is exactly the quiet-prose problem that brief
-                      existed to fix, so it stays dropped from the card; "How this works"
-                      still links out for anyone who wants it. */}
-                  <p>{a.escape}</p>
-                  <details class="source-details"><summary>How this works</summary><p>See the full explanation: <a href={a.href} target="_blank" rel="noopener">{a.hrefLabel}</a></p></details>
-                </article>
-              ))}
-            </div>
-          )}
-
-          {softItems.length > 0 && (
-            <div class="avoid-tier avoid-tier-soft" data-avoid-tier="soft">
-              <p class="tier-subhead tier-subhead-soft">Traps worth knowing - real, but no set price.</p>
-              <p class="soft-tier-note">We do not invent a dollar for these, because the amount depends on you. But each is money you keep by spotting it.</p>
-              {softItems.map((a, i) => (
-                <article class={'avoid-card avoid-card-soft' + (i >= 3 ? ' avoid-card-extra' : '')} aria-labelledby={'item-' + a.key}>
-                  <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status not-estimated">No set price</span></div>
-                  <h3 id={'item-' + a.key}>{a.title}</h3>
-                  <p>{a.escape}</p>
-                  <details class="source-details"><summary>How this works</summary><p>See the full explanation: <a href={a.href} target="_blank" rel="noopener">{a.hrefLabel}</a></p></details>
-                </article>
-              ))}
-              {softItems.length > 3 && (
-                <details class="soft-more" data-soft-more>
-                  <summary>Show {softItems.length - 3} more</summary>
-                </details>
-              )}
-            </div>
-          )}
-
-          <p class="method-note">Each fee stands alone. We never add them into one total, because money you were never going to spend is not a saving.</p>
-        </div>
-
-        {calmEligible && (
-          <div data-avoid-calm hidden>
-            <h2 class="avoid-hero-heading">Little to refuse.</h2>
-            <p class="section-intro">A few simple checks. Nothing extra suggested.</p>
-            <div class="calm-result">
-              <p class="eyebrow">Nothing extra suggested</p>
-              <h3>Nothing here suggests you need to buy another product.</h3>
-              <p>Based on your answers, few refusable charges stand out for {c.name}. This is not a guarantee that every travel cost is covered.</p>
-            </div>
-            <div class="calm-checks">
-              <div class="calm-check">
-                <span class="calm-check-mark" aria-hidden="true">&#10003;</span>
-                <div>
-                  <strong>Card purchase fee</strong>
-                  <p>Your card has no foreign-transaction fee on purchases. The ATM operator's own flat fee is separate and still applies.</p>
-                  <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Your figure</span><span class="status avoided">Already refused</span></div>
+                  </span>
+                  <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </summary>
+                <div class="ttc-card-row-detail">
+                  <p><strong>{a.escape}</strong></p>
+                  <p>{a.detail}</p>
+                  <p class="small muted"><a href={a.href} target="_blank" rel="noopener">{a.hrefLabel}</a></p>
                 </div>
-              </div>
-              {softItems.map(a => (
-                <div class="calm-check">
-                  <span class="calm-check-mark" aria-hidden="true">&#10003;</span>
-                  <div>
-                    <strong>{a.title}</strong>
-                    <p>{a.escape} {a.detail}</p>
-                    <div class="evidence-row"><span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span><span class="status not-estimated">No set price</span></div>
-                  </div>
+              </details>
+            ))}
+          </div>
+
+          <div class="ttc-card-group ttc-card-group-soft" data-avoid-tier="soft">
+            <p class="ttc-card-group-label">Worth knowing, no set price</p>
+            {softItems.map(a => (
+              <details class="ttc-card-row">
+                <summary>
+                  <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor(a.key)} /></span>
+                  <span class="ttc-card-row-name" id={'item-' + a.key}>{a.title}</span>
+                  <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </summary>
+                <div class="ttc-card-row-detail">
+                  <p><strong>{a.escape}</strong></p>
+                  <p>{a.detail}</p>
+                  <p class="small muted"><a href={a.href} target="_blank" rel="noopener">{a.hrefLabel}</a></p>
                 </div>
-              ))}
-            </div>
-          </div>
-        )}
+              </details>
+            ))}
 
-        <!-- ===== Carrier connectivity (BRIEF-carrier-honest-build) =====
-             Filled in client-side by calc-wizard.js's renderCarrierItem(), from the reader's
-             own carrier-step answer and the trip length already set in step 3. Sits outside
-             data-avoid-normal / data-avoid-calm above and shows either way: it is a separate
-             question from whether this country's OTHER fees are refusable. It stays outside
-             the hard/soft pool above for the same reason rail and rental do (see avoidable.js's
-             registry header), plus a second reason of its own: unlike every pool item, whether
-             it carries a real figure depends on WHICH carrier the reader names, only known
-             once the wizard is answered. Its config (options, edit title, client-safe carrier
-             data, fallback text, eSIM link) now comes from carrierRegistryEntryFor(c) instead
-             of being hand-assembled in this file's own frontmatter. -->
-        <div class="avoid-tier avoid-tier-carrier" data-avoid-carrier>
-          <p class="tier-subhead tier-subhead-carrier">Your phone plan abroad</p>
-          <article class="avoid-card" aria-labelledby="carrier-item-heading">
-            <div class="evidence-row">
-              <span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span>
-              <span class="status not-estimated" data-carrier-status>No set price</span>
-            </div>
-            <div class="item-amount-hard" data-carrier-amount-wrap hidden>
-              <strong class="amount-big" data-carrier-amount>&nbsp;</strong>
-              <span>this pass, this trip</span>
-            </div>
-            <h3 id="carrier-item-heading">Your phone plan abroad</h3>
-            <p data-carrier-detail>&nbsp;</p>
-            {carrierEntry.esimUrl && (
-              <p class="small muted" data-carrier-esim-wrap hidden>
-                <a href={carrierEntry.esimUrl} target="_blank" rel="noopener sponsored">Check live eSIM prices for {c.name}</a> <span class="tg earn">we may earn a commission</span>
-              </p>
-            )}
-            {carrierEntry.fallback && (
-              <p class="small muted">
-                <a href={carrierEntry.fallback.href} target="_blank" rel="noopener">{carrierEntry.fallback.hrefLabel}</a>
-              </p>
-            )}
-            <button class="text-link" type="button" data-edit="carrier">Change phone carrier</button>
-          </article>
-        </div>
-
-        <!-- ===== BRIEF-calc-result-registry-rebuild: rail and rental, ONE shared render
-             loop over wizardGatedExtras (built above from railRegistryEntryFor(c) and
-             rentalRegistryEntry()). Both stay outside data-avoid-normal / data-avoid-calm,
-             deliberately: a reader who says yes here still needs this guidance even in an
-             otherwise fee-calm country (see avoidable.js's registry header for the full
-             reasoning). Each is hidden by default and toggled client-side, keyed on its OWN
-             question answer, nothing computed or assembled beyond that toggle. Adding a
-             fourth item of this same shape (see avoidable.js's airRegistryEntryExample)
-             would mean adding it to the wizardGatedExtras array above; this loop would
-             render it with no further change. -->
-        {wizardGatedExtras.map(item => (
-          <div class={'avoid-tier avoid-tier-soft avoid-tier-extra'} data-avoid-extra={item.question.stepKey} hidden>
-            <p class="tier-subhead tier-subhead-soft">Traps worth knowing - real, but no set price.</p>
-            <article class="avoid-card avoid-card-soft" aria-labelledby={item.question.stepKey + '-item-heading'}>
-              <div class="evidence-row">
-                <span class="provenance"><span class="meta-key">Basis</span> Sourced rule</span>
-                <span class="status not-estimated">No set price</span>
+            <!-- ===== Carrier connectivity (BRIEF-carrier-honest-build), now one row of
+                 the same shape (see this card's own header comment for how it moves
+                 between groups). Its config (options, edit title, client-safe carrier
+                 data, fallback text, eSIM link) still comes from carrierRegistryEntryFor(c),
+                 unchanged. ===== -->
+            <details class="ttc-card-row" data-avoid-carrier>
+              <summary>
+                <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name="phoneok" /></span>
+                <span class="ttc-card-row-name" id="carrier-item-heading">Your phone plan abroad</span>
+                <span class="ttc-card-row-amount" data-carrier-amount-wrap hidden><strong data-carrier-amount>&nbsp;</strong></span>
+                <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </summary>
+              <div class="ttc-card-row-detail">
+                <p data-carrier-detail>&nbsp;</p>
+                {carrierEntry.esimUrl && (
+                  <p class="small muted" data-carrier-esim-wrap hidden>
+                    <a href={carrierEntry.esimUrl} target="_blank" rel="noopener sponsored">Check live eSIM prices for {c.name}</a> <span class="tg earn">we may earn a commission</span>
+                  </p>
+                )}
+                {carrierEntry.fallback && (
+                  <p class="small muted">
+                    <a href={carrierEntry.fallback.href} target="_blank" rel="noopener">{carrierEntry.fallback.hrefLabel}</a>
+                  </p>
+                )}
+                <button class="text-link" type="button" data-edit="carrier">Change phone carrier</button>
               </div>
-              <h3 id={item.question.stepKey + '-item-heading'}>{item.card.title}</h3>
-              <p>{item.card.escape}</p>
-              <p class="small muted">{item.card.secondary}</p>
-              <details class="source-details"><summary>How this works</summary><p>See the full picture: <a href={item.card.href} target="_blank" rel="noopener">{item.card.hrefLabel}</a></p></details>
-              <button class="text-link" type="button" data-edit={item.question.stepKey}>{item.question.editTitle}</button>
-            </article>
+            </details>
+
+            <!-- ===== rail/rental, ONE shared render loop over wizardGatedExtras (built
+                 above from railRegistryEntryFor(c) and rentalRegistryEntry()), same as
+                 before this rebuild: hidden by default and toggled client-side, keyed on
+                 the reader's OWN yes/no answer to each, nothing computed or assembled
+                 beyond that toggle. Adding a fourth item of this same shape (see
+                 avoidable.js's airRegistryEntryExample) means adding it to the
+                 wizardGatedExtras array above; this loop renders it with no further
+                 change. ===== -->
+            {wizardGatedExtras.map(item => (
+              <details class="ttc-card-row" data-avoid-extra={item.question.stepKey} hidden>
+                <summary>
+                  <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor(item.key)} /></span>
+                  <span class="ttc-card-row-name" id={item.question.stepKey + '-item-heading'}>{item.card.title}</span>
+                  <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </summary>
+                <div class="ttc-card-row-detail">
+                  <p><strong>{item.card.escape}</strong></p>
+                  <p>{item.card.secondary}</p>
+                  <p class="small muted"><a href={item.card.href} target="_blank" rel="noopener">{item.card.hrefLabel}</a></p>
+                  <button class="text-link" type="button" data-edit={item.question.stepKey}>{item.question.editTitle}</button>
+                </div>
+              </details>
+            ))}
           </div>
-        ))}
-      </section>
 
-      <!-- ===== BRIEF-calc-result-registry-rebuild, PART 4 "total demoted" =====
-           This used to be the page's hero figure (BRIEF-calc-v2-clusterA #6 already
-           demoted it once, below the avoidance section); it is now demoted a second time,
-           visually: a small "for context" strip rather than a big serif number, with a
-           forward link into the breakdown below instead of standing alone. No content,
-           data binding or honesty treatment changed here, only presentation
-           (calculator.css's .answer-context). -->
-      <section class="answer answer-context" aria-label="Estimated cost and scope">
-        <p class="eyebrow">For context</p>
-        <div class="range-prefix">About</div>
-        <p class="range" aria-label="Estimated trip range">
-          <span data-mirror="rangeLow">$0</span><span>&nbsp;to&nbsp;</span><span data-mirror="rangeHigh">$0</span>
-        </p>
-        <p class="range-scope">USD &middot; for the whole party, not per person &middot; <a class="text-link" href="#breakdown-heading">See the breakdown</a></p>
-        <div class="scope-alert compact-scope" data-flight-alert>
-          <strong data-mirror="flightNotice">Flights not included.</strong>
-          <button class="text-link" type="button" data-edit="flights" data-flight-alert-action>Add flights &rarr;</button>
+          <!-- ===== The no-sum line (RULES: "NO summed avoidable total, ever"). The trip
+               total lives here, demoted to one quiet line, never the hero; "See the full
+               breakdown" points at the untouched CostBreakdown section further down this
+               same page. ===== -->
+          <p class="ttc-card-nosum">
+            Each line stands alone. We never add these into one total, because money you were never going to spend is not a saving.
+            Your whole trip runs about <span data-mirror="rangeLow">$0</span><span>&nbsp;to&nbsp;</span><span data-mirror="rangeHigh">$0</span>.
+            <a class="text-link" href="#breakdown-heading">See the full breakdown</a>
+          </p>
+
+          <div class="result-actions ttc-card-actions">
+            {/* STEP 1 of 5: "Edit trip" wires to the existing edit flow below (unchanged).
+                "Save / share this card" is present but deliberately inert this step, per
+                the brief ("real behaviour is step 5"): it carries no data-share attribute,
+                so it does not trigger the older, differently styled share/print dialog
+                that data-share still wires up elsewhere in this file for a later step to
+                either reuse or replace. */}
+            <button class="btn btn-primary" type="button" data-share-placeholder>Save / share this card</button>
+            <button class="btn btn-secondary" type="button" data-jump-edit>Edit trip</button>
+          </div>
         </div>
-        {materialExclusions.length > 0 && (
-          <p class="unpriced"><strong>Not priced:</strong> {materialExclusions.join('; ')}.</p>
-        )}
-      </section>
-
-      <div class="result-actions">
-        <button class="btn btn-primary" type="button" data-share>Save / share</button>
-        <button class="btn btn-secondary" type="button" data-jump-edit>Edit trip</button>
+        <div class="ttc-card-footer">truetripcosts.com &middot; the money side of travel &middot; no sales pitch, ever</div>
       </div>
+
+      {/* BRIEF-result-card-step1: material unpriced categories (travel insurance and any
+          engine-supplied unpriced entry charge) are real exclusions from the total above,
+          and dropping them from the page entirely would be a real loss of the honesty
+          this site is built around, so they stay, just outside the card's own bordered
+          edge (the approved mock does not show this line, so it is not inside the seven
+          numbered elements the brief lists for the card itself). Flagged to MAIN: confirm
+          this placement, or fold it back inside the card in a later step. */}
+      {materialExclusions.length > 0 && (
+        <p class="ttc-card-below-note"><strong>Not priced:</strong> {materialExclusions.join('; ')}.</p>
+      )}
 
       <!-- ===== Where the money goes (CostBreakdown, spec section 9) ===== -->
       <section class="section" aria-labelledby="breakdown-heading">

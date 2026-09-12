@@ -57,11 +57,6 @@ h1, h2, h3, p { margin: 0; }
 h1, h2 { color: var(--ink); font-family: var(--serif); font-weight: 400; }
 h1, .qpanel-title, .recovery-title { font-size: 2.25rem; line-height: 1.12; letter-spacing: -.035em; }
 h2 { font-size: 1.875rem; line-height: 1.18; letter-spacing: -.025em; }
-/* SPEC-ttc-experience-v2, Decision 3: the avoidable hero is the page's centre of gravity
-   in size and weight only, never in heading level (it stays an h2; the page keeps exactly
-   one h1, "Your {country} trip." above it). Bigger than that h1, on both the normal and
-   calm states, so it is unmistakably the biggest thing on the page either way. */
-.avoid-hero-heading { font-size: clamp(2rem, 5vw, 2.75rem); line-height: 1.08; letter-spacing: -.03em; }
 h3 { font-size: 1.125rem; line-height: 1.4; color: var(--ink); }
 p + p { margin-top: .75rem; }
 button svg { pointer-events: none; }
@@ -164,111 +159,82 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .results { max-width: 75rem; margin: auto; padding: 2rem 1.25rem 0; }
 .result-layout { display: grid; gap: 2.5rem; align-items: start; }
 .result-main { min-width: 0; }
-.result-heading { margin-bottom: 1.5rem; }
-.result-heading .eyebrow { margin-bottom: .625rem; }
-.result-heading h1 { font-size: 2.125rem; }
+/* .result-heading itself carries the page's one required h1 (see CalcWizard.astro's own
+   comment on this), but BRIEF-result-card-step1's mock shows no visible "Your {country}
+   trip." text anywhere above the card, so this wrapper is sr-only now; no visual rule is
+   needed for it here. */
 .trip-meta { color: var(--muted); font-size: 1rem; line-height: 1.55; margin-top: .625rem; }
-/* BRIEF-calc-v2-clusterA #6: the total is now the secondary block ("What you can avoid"
-   leads), so this drops the green hero accent border it had when it was the page's lead
-   figure and matches the plain card treatment (.avoid-card, .detail-line) instead. Still a
-   distinct white card with its own border, so it stays easy to find, just calmer. */
-.answer { background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 1.5rem 1.25rem; }
-/* BRIEF-calc-result-registry-rebuild, PART 4 "total demoted": a second, deeper demotion on
-   top of BRIEF-calc-v2-clusterA #6's own. The range itself shrinks and loses the serif
-   hero treatment it still has in .range below; the eyebrow above it ("For context") and
-   the forward link into the breakdown do the framing work instead. */
-.answer-context .range { font-size: 1.375rem; letter-spacing: -.02em; }
-.answer-context .range-prefix { font-size: .9375rem; color: var(--muted); }
-.answer-context .eyebrow { margin-bottom: .375rem; }
-.answer-label { font-size: .9375rem; color: var(--muted); }
-.answer > .range-prefix:first-child { margin-top: 0; }
+/* .range / .range-prefix / .range-scope / .scope-alert stay defined below even though the
+   result card itself no longer uses them (BRIEF-result-card-step1 demotes the total to a
+   plain sentence in .ttc-card-nosum instead): calc-wizard.js's own briefHTML()/briefText()
+   still build the printable "trip brief" dialog out of these same classes, and that dialog
+   is unrelated to this step's card rebuild. */
 .range-prefix { color: var(--ink); font-size: 1rem; margin-top: .75rem; }
 .range { font-family: var(--serif); font-size: clamp(1.75rem,8vw,2.25rem); line-height: 1.14; letter-spacing: -.055em; color: var(--ink); margin-top: .125rem; overflow-wrap: anywhere; }
 .range span { display: inline-block; white-space: nowrap; }
 .range-scope { color: var(--muted); font-size: .9375rem; margin-top: .625rem; }
 .scope-alert { padding: 1rem; margin-top: 1.5rem; background: var(--amber-bg); border-left: 3px solid var(--amber); border-radius: 0 .25rem .25rem 0; }
 .scope-alert strong { font-size: 1rem; color: #604319; }
-.scope-alert p { font-size: .9375rem; color: #604319; margin-top: .375rem; }
-.compact-scope { display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-wrap: wrap; }
-.compact-scope .text-link { padding: .5rem 0; flex-shrink: 0; }
-.scope-alert .text-link { color: #604319; font-size: .9375rem; padding-bottom: 0; min-height: 2.75rem; }
-.unpriced { color: var(--muted); font-size: .9375rem; margin-top: 1rem; }
-.unpriced strong { font-weight: 600; color: var(--text); }
 .result-actions { display: grid; grid-template-columns: minmax(0,1.65fr) minmax(0,1fr); gap: .75rem; margin-top: 1rem; }
 .result-actions .btn { font-size: 1rem; padding: .875rem .75rem; }
 .section { margin-top: 2.5rem; }
-/* BRIEF-calc-v2-clusterA #6: this section now leads, directly under .result-heading (whose
-   own margin-bottom already provides the gap), rather than following .result-actions as
-   before, so it no longer needs a top margin of its own. */
-.section[aria-labelledby="avoid-heading"] { margin-top: 0; }
 .section-intro { margin-top: .75rem; color: var(--muted); font-size: 1rem; }
-/* BRIEF-calc-result-registry-rebuild, PART 4: the one-line shape sentence right under the
-   hero heading, naming the split before the reader scans a single card. */
-.avoid-shape { margin-top: .75rem; color: var(--text); font-size: 1.0625rem; line-height: 1.5; }
-/* BRIEF-calc-v2-A2: HARD/SOFT avoidable tiers. */
-.avoid-tier { margin-top: 1.75rem; }
-.tier-subhead { font-size: .8125rem; line-height: 1.5; margin-bottom: .875rem; }
-.tier-subhead-hard, .tier-subhead-soft {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-  letter-spacing: .01em;
-}
-.tier-subhead-hard { color: var(--muted); }
-/* SOFT tier: one amber-tinted panel (the site's existing amber tokens, already used for the
-   flights scope-alert), so items that carry no honest number read as visually distinct from
-   the HARD tier's priced cards, not as a lesser copy of the same card. */
-.avoid-tier-soft { background: var(--amber-bg); border: 1px solid #E6D4AE; border-radius: var(--radius); padding: 1.25rem; }
-.tier-subhead-soft { color: #6D4A13; }
-/* BRIEF-calc-result-registry-rebuild, PART 4: the reframe note right under the SOFT tier's
-   own subhead, naming why these carry no figure before a reader reads it as a gap. */
-.soft-tier-note { color: #6D4A13; font-size: .9375rem; line-height: 1.55; margin-bottom: 1rem; }
-.avoid-tier-soft .avoid-card-soft { background: transparent; border-color: #E6D4AE; border-style: dashed; }
-/* BRIEF-calc-result-registry-rebuild, PART 4 "First ~3 shown, rest behind show all": a
-   card past the third stays out of layout until the sibling <details data-soft-more> is
-   opened. CSS-only (no calc-wizard.js involvement needed): every soft item's presence is
-   already known at build time (avoidableFor(c) is purely a function of the country, never
-   of a wizard answer), so there is nothing here for a client script to compute. */
-.avoid-card-extra { display: none; }
-.avoid-tier-soft:has(details[open]) .avoid-card-extra { display: block; margin-top: .875rem; }
-.soft-more { margin-top: .875rem; }
-.soft-more > summary { display: inline-flex; align-items: center; gap: .375rem; cursor: pointer; list-style: none; font-size: .9375rem; font-weight: 600; color: #6D4A13; padding: .625rem 0; min-height: 2.75rem; }
-.soft-more > summary::-webkit-details-marker { display: none; }
-.soft-more > summary::before { content: "+"; font-size: 1.125rem; line-height: 1; }
-.soft-more[open] > summary::before { content: "\2212"; }
-.avoid-card { padding: 1.25rem; background: white; border: 1px solid var(--line); border-radius: var(--radius); }
-.avoid-card + .avoid-card { margin-top: .875rem; }
-.evidence-row { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem .75rem; margin-bottom: .9375rem; }
-.provenance { display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: .375rem; color: var(--muted); font-size: .875rem; line-height: 1.5; }
-.provenance .meta-key { font-size: .6875rem; letter-spacing: .08em; font-weight: 650; text-transform: uppercase; }
-.status { display: inline-flex; align-items: center; gap: .375rem; font-size: .875rem; font-weight: 600; line-height: 1.5; padding: .25rem .625rem; border: 1px solid #CDD7CB; border-radius: .25rem; background: #F3F5F0; color: var(--text); }
-.status.not-included { background: var(--amber-bg); border-color: #E6D4AE; color: #6D4A13; }
-.status.avoided { background: var(--green-soft); border-color: #C8D8C7; color: var(--green); }
-/* BRIEF-calc-result-registry-rebuild, PART 4: same quiet, neutral treatment as before (this
-   was never meant to alarm); only the TEXT it labels changed, from "Not estimated" (which
-   read as a failure) to "No set price" (guidance). The class name stays so nothing else
-   that keys off it has to change. */
-.status.not-estimated { background: #F0F1ED; color: var(--muted); border-color: #DADFD7; }
-.avoid-card h3 { font-size: 1.1875rem; margin-bottom: .625rem; }
-.avoid-card > p { font-size: 1rem; line-height: 1.6; }
-/* HARD tier figure: shown large, serif, teal, so the dollar amount is the first thing read
-   on the card, per BRIEF-calc-v2-A2's "give it punch". */
-.item-amount-hard { margin-bottom: .625rem; }
-.amount-big { display: block; font-family: var(--serif); font-size: clamp(1.75rem,7vw,2.25rem); font-weight: 400; line-height: 1.15; letter-spacing: -.02em; color: var(--focus); overflow-wrap: anywhere; }
-.amount-big span { display: inline; white-space: nowrap; }
-.item-amount-hard > span:last-child { display: block; margin-top: .25rem; color: var(--muted); font-size: .9375rem; }
-.source-details { margin-top: .75rem; font-size: .875rem; color: var(--muted); }
-.source-details summary { display: inline-flex; align-items: center; padding: .625rem 0; min-height: 2.75rem; text-decoration: underline; text-underline-offset: .2em; cursor: pointer; color: var(--green); }
-.source-details p { border-top: 1px solid var(--line); padding-top: .75rem; }
-.already-note { padding: 1rem 0 0; color: var(--muted); font-size: .9375rem; }
-.already-note strong { color: var(--green); }
-.calm-result { padding: 1.5rem; border: 1px solid #BDCFBB; background: var(--green-soft); border-radius: var(--radius); margin-top: 1.25rem; }
-.calm-result .eyebrow { color: #42613E; margin-bottom: .75rem; }
-.calm-result h3 { font-family: var(--serif); font-size: 1.75rem; font-weight: 400; line-height: 1.2; letter-spacing: -.025em; }
-.calm-result p { font-size: 1rem; margin-top: .875rem; }
-.calm-checks { margin-top: 1.25rem; display: grid; gap: 1rem; }
-.calm-check { display: grid; grid-template-columns: auto minmax(0,1fr); gap: .75rem; align-items: start; }
-.calm-check-mark { color: var(--green); font-size: 1.125rem; font-weight: 700; }
-.calm-check strong { font-size: 1rem; }
-.calm-check p { font-size: .9375rem; color: var(--muted); margin: .25rem 0 .5rem; }
+/* ===================================================================================
+   BRIEF-result-card-step1: THE FOLDED, BRANDED, SHAREABLE RESULT CARD.
+   Replaces the old wall of badge-carrying cards (BRIEF-calc-v2-A2's .avoid-card /
+   .avoid-tier / .status / .evidence-row rules, all retired below this comment) with one
+   bordered card. Every avoidable item, HARD or SOFT, wizard-gated or not, renders as one
+   ROW: icon, name, an amount only where a real figure exists, and a chevron that is the
+   SAME element on every row (see the RULES section of the brief: "a visible chevron on
+   every row, not just some"). Tapping a row is a native <details>/<summary> disclosure,
+   never a client-computed show/hide, so it stays keyboard- and screen-reader-operable for
+   free and needs no extra ARIA wiring here.
+   NOTE ON COLORS: #16302C and the row icon palette are not new tokens invented for this
+   card; they are the exact colors Symbol.astro already draws every route icon in (see that
+   file's own SVG fills). This card's brand bar deliberately matches that existing mark
+   rather than reusing calculator.css's own --green (a different, unrelated teal used for
+   buttons and focus rings on this route). --ttc-card-accent is the mock's own "~#7FB79E",
+   used only for the wordmark's period and the checked stamp's icon. */
+.ttc-card { background: white; border: 1px solid var(--line); border-radius: .8125rem; overflow: hidden; }
+.ttc-card-brandbar { background: #16302C; padding: .875rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-wrap: wrap; }
+.ttc-card-wordmark { font-family: var(--serif); font-size: 1.1875rem; font-weight: 700; letter-spacing: -.03em; color: white; }
+.ttc-card-wordmark span { color: #7FB79E; }
+.ttc-card-checked { display: inline-flex; align-items: center; gap: .375rem; color: #CFE4D9; font-size: .8125rem; font-weight: 600; }
+.ttc-card-checked svg { width: .8125rem; height: .8125rem; fill: #7FB79E; flex-shrink: 0; }
+.ttc-card-body { padding: 1.5rem 1.25rem; }
+.ttc-card-triphead { margin-bottom: 1.25rem; }
+.ttc-card-title { font-size: clamp(1.375rem, 4vw, 1.75rem); line-height: 1.2; letter-spacing: -.02em; }
+.ttc-card-meta { color: var(--muted); font-size: 1rem; margin-top: .5rem; }
+.ttc-card-calm-note { color: var(--muted); font-size: .9375rem; line-height: 1.55; margin: -.25rem 0 1.25rem; padding: .875rem 1rem; background: var(--green-soft); border-radius: var(--radius); }
+/* Each group is one <details> list. The HARD group is plain white (the card's own
+   background already reads as "priced"); the SOFT group carries the amber tint across its
+   whole area, per the brief's explicit "the whole soft group sits on the amber tint". */
+.ttc-card-group { border-top: 1px solid var(--line); }
+.ttc-card-group:first-of-type { border-top: 0; }
+.ttc-card-group-soft { background: var(--amber-bg); margin: 0 -1.25rem; padding: 0 1.25rem; border-color: #E6D4AE; }
+.ttc-card-group-label { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; letter-spacing: .01em; font-size: .75rem; text-transform: uppercase; color: var(--muted); padding: 1rem 0 .375rem; }
+.ttc-card-group-soft .ttc-card-group-label { color: #6D4A13; }
+.ttc-card-row { border-top: 1px solid var(--line); }
+.ttc-card-group-soft .ttc-card-row { border-top-color: #E6D4AE; }
+.ttc-card-row:first-of-type { border-top: 0; }
+.ttc-card-row > summary { display: flex; align-items: center; gap: .875rem; padding: 1rem 0; cursor: pointer; list-style: none; min-height: 3.5rem; }
+.ttc-card-row > summary::-webkit-details-marker { display: none; }
+.ttc-card-row-icon { flex-shrink: 0; width: 1.75rem; height: 1.75rem; }
+.ttc-card-row-name { flex: 1 1 auto; min-width: 0; font-size: 1.0625rem; font-weight: 600; color: var(--ink); }
+.ttc-card-group-soft .ttc-card-row-name { color: #6D4A13; font-weight: 600; }
+.ttc-card-row-amount { flex-shrink: 0; font-family: var(--serif); font-size: 1.1875rem; font-weight: 400; letter-spacing: -.015em; color: var(--focus); text-align: right; white-space: nowrap; }
+.ttc-card-row-amount span { display: inline; white-space: nowrap; }
+.ttc-card-row-chevron { flex-shrink: 0; color: var(--muted); transition: transform .15s ease; }
+.ttc-card-row[open] > summary .ttc-card-row-chevron { transform: rotate(180deg); }
+.ttc-card-row-detail { padding: 0 0 1.25rem; font-size: 1rem; line-height: 1.6; }
+.ttc-card-row-detail > p + p { margin-top: .625rem; }
+.ttc-card-row-detail .small { margin-top: .625rem; }
+.ttc-card-row-detail .text-link { margin-top: .375rem; }
+.ttc-card-nosum { border-top: 1px solid var(--line); margin-top: .25rem; padding-top: 1.25rem; color: var(--muted); font-size: .9375rem; line-height: 1.55; }
+.ttc-card-below-note { max-width: 75rem; margin: 1rem auto 0; padding: 0 1.25rem; color: var(--muted); font-size: .9375rem; }
+.ttc-card-below-note strong { font-weight: 600; color: var(--text); }
+.ttc-card-actions { margin-top: 1.25rem; }
+.ttc-card-footer { border-top: 1px solid var(--line); padding: .875rem 1.25rem; text-align: center; color: var(--muted); font-size: .8125rem; }
 /* Native accordions: the full summary is the tap target. */
 .breakdown { margin-top: 1.25rem; border-top: 1px solid var(--line); }
 .breakdown-item { border-bottom: 1px solid var(--line); }
@@ -300,11 +266,6 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .assumptions-accordion ul { margin-top: .75rem; padding-left: 1.125rem; }
 .assumptions-accordion li { font-size: .9375rem; color: var(--muted); line-height: 1.6; margin-bottom: .625rem; }
 .assumptions-accordion li:last-child { margin-bottom: 0; }
-/* BRIEF-carrier-honest-build: the carrier connectivity card sits beside the HARD/SOFT grid
-   (see CalcWizard.astro), not inside it, so it gets its own tier wrapper, but reuses
-   .avoid-card, .item-amount-hard and .amount-big untouched for the day-pass case's figure.
-   Same monospace tier label already used for the HARD tier's own subhead. */
-.tier-subhead-carrier { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; letter-spacing: .01em; color: var(--muted); }
 /* The "More carriers" disclosure in the wizard's own carrier step: same quiet +/- accordion
    language as .source-details and .assumptions-accordion, not a new pattern. */
 .carrier-more { margin-top: 1rem; border-top: 1px solid var(--line); padding-top: 1rem; }
@@ -385,11 +346,7 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .wizard-actions.one-action { grid-template-columns: 1fr; }
   .wizard-actions.one-action .btn-primary { grid-column: 1; }
   .results { padding: 3rem 2rem 0; }
-  .result-heading h1 { font-size: 2.625rem; }
-  .answer { padding: 2rem; }
-  .range { font-size: 2.5rem; }
   .section { margin-top: 3rem; }
-  .avoid-card { padding: 1.5rem; }
   .result-actions { grid-template-columns: max-content max-content; }
   .result-actions .btn { padding-left: 1.5rem; padding-right: 1.5rem; }
   .modal { margin: auto; width: calc(100% - 3rem); max-height: calc(100dvh - 3rem); border-radius: .75rem; }
@@ -404,8 +361,6 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .result-layout { grid-template-columns: minmax(0,1fr) 20rem; gap: 3rem; }
   .trip-summary { position: sticky; top: 2rem; padding: 1.5rem; }
   .summary-desktop-label { display: block; }
-  .result-heading { margin-bottom: 1.75rem; }
-  .range { font-size: 2.5rem; }
   /* The edit summary is a permanent sidebar here, so the button that only scrolls to it is
      redundant on desktop. It stays visible on mobile, where the summary is far down the page. */
   [data-jump-edit] { display: none; }
@@ -416,10 +371,9 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .wordmark { font-size: 1.25rem; }
   .exit-link { font-size: .875rem; }
   .wizard, .results { padding-left: 1rem; padding-right: 1rem; }
-  .question-panel, .answer { padding-left: 1rem; padding-right: 1rem; }
+  .question-panel { padding-left: 1rem; padding-right: 1rem; }
   h1 { font-size: 2rem; }
   .preset-grid { gap: .5rem; }
-  .range { font-size: 1.75rem; }
   .result-actions { grid-template-columns: 1fr; }
   .breakdown-item > summary { grid-template-columns: minmax(0,1fr) 1rem; }
   .breakdown-amount { grid-row: 2; text-align: left; grid-column: 1; }
