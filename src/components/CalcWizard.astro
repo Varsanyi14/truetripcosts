@@ -160,6 +160,15 @@ const QUESTION_ICON = {
   carrier: '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="15" width="3" height="4" rx="1" fill="#129072"/><rect x="10.5" y="12" width="3" height="7" rx="1" fill="#129072"/><rect x="15" y="6" width="20" height="36" rx="5" fill="#16302C"/><rect x="19" y="11" width="12" height="18" rx="2" fill="#0E7A5F"/><path d="M21 20.2 l2.6 2.6 l4.6 -5.4" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="25" cy="35.5" r="2" fill="#F5F4EF"/></svg>',
   rail: '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="5" width="24" height="30" rx="8" fill="#0E7A5F"/><rect x="16.5" y="11" width="15" height="9" rx="3" fill="#F5F4EF"/><rect x="16" y="24.5" width="6" height="3" rx="1.5" fill="#F5F4EF"/><rect x="26" y="24.5" width="6" height="3" rx="1.5" fill="#F5F4EF"/><circle cx="24" cy="30" r="2.3" fill="#B45309"/><rect x="14" y="34" width="3" height="5" rx="1.5" fill="#6F8079"/><rect x="31" y="34" width="3" height="5" rx="1.5" fill="#6F8079"/><rect x="8" y="39" width="32" height="3.2" rx="1.6" fill="#16302C"/></svg>',
   rental: '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17" fill="none" stroke="#0E7A5F" stroke-width="4"/><line x1="10" y1="24" x2="38" y2="24" stroke="#0E7A5F" stroke-width="3.5" stroke-linecap="round"/><line x1="24" y1="24" x2="24" y2="40" stroke="#0E7A5F" stroke-width="3.5" stroke-linecap="round"/><circle cx="24" cy="24" r="5" fill="#16302C"/></svg>',
+  // BRIEF-input-step2b: four more, same reuse-first approach. 'paw' and 'health' are the
+  // SAME icons Symbol.astro already draws elsewhere; 'goods' reuses 'tag' (already in this
+  // map's own fallback role for row icons, and a plain price tag fits "goods to declare"
+  // reasonably); 'date' reuses 'calendar', already in this map for the nights question,
+  // since a calendar fits a leaving date at least as well as a trip length.
+  pet: '<svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="32" rx="10" ry="8" fill="#0E7A5F"/><circle cx="12.5" cy="20" r="4.2" fill="#129072"/><circle cx="35.5" cy="20" r="4.2" fill="#129072"/><circle cx="19.5" cy="13.5" r="4.2" fill="#129072"/><circle cx="28.5" cy="13.5" r="4.2" fill="#129072"/></svg>',
+  goods: '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M22 7 Q24 3 27 7" fill="none" stroke="#0E7A5F" stroke-width="2.4" stroke-linecap="round"/><path d="M21 9 H38 a4 4 0 0 1 4 4 V33 a4 4 0 0 1 -4 4 H21 L7 23 Z" fill="#0E7A5F"/><circle cx="16" cy="23" r="3" fill="#F5F4EF"/></svg>',
+  medical: '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="8" width="32" height="32" rx="9" fill="#0E7A5F"/><rect x="21.25" y="15" width="5.5" height="18" rx="2.75" fill="#F5F4EF"/><rect x="15" y="21.25" width="18" height="5.5" rx="2.75" fill="#F5F4EF"/></svg>',
+  date: '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="12" width="32" height="28" rx="5" fill="#0E7A5F"/><path d="M8 17 a5 5 0 0 1 5 -5 h22 a5 5 0 0 1 5 5 v2 h-34 Z" fill="#16302C"/><rect x="15.5" y="8" width="3.5" height="8" rx="1.75" fill="#16302C"/><rect x="29" y="8" width="3.5" height="8" rx="1.75" fill="#16302C"/><circle cx="24" cy="30" r="4.5" fill="#B45309"/></svg>',
 };
 
 // FIX 3 (BRIEF-input-step2a): "the wizard already has the country name... include it in the
@@ -170,8 +179,14 @@ const Q_TRAVELERS = 'How many people are traveling to ' + c.name + '?';
 const Q_NIGHTS = 'How many nights are you staying in ' + c.name + '?';
 const Q_STYLE = 'How do you expect to travel in ' + c.name + '?';
 const Q_FLIGHTS = 'What is your round-trip airfare to ' + c.name + '?';
-const Q_HOTEL = 'What is the room price per night in ' + c.name + '?';
+const Q_HOTEL = 'How did you book your hotel in ' + c.name + '?';
 const Q_CARD = 'Does your card charge a purchase fee in ' + c.name + '?';
+// BRIEF-input-step2b: same treatment as rail/rental in FIX 3 above, since these four read
+// just as naturally with the country woven in.
+const Q_PET = 'Are you traveling with a pet on this ' + c.name + ' trip?';
+const Q_GOODS = 'Planning to buy goods in ' + c.name + ' to bring home?';
+const Q_MEDICAL = 'Do you have a health condition that needs attention while traveling to ' + c.name + '?';
+const Q_DATE = 'When are you planning to leave ' + c.name + '?';
 // The three wizard-gated questions' base wording lives in avoidable.js (a data file this
 // step must not touch), so the country name is woven in here instead, at the point this
 // file already renders each one, never editing that source string itself.
@@ -181,6 +196,82 @@ const WIZARD_GATED_TITLE = {
   rental: (name) => 'Are you renting a car on this ' + name + ' trip?',
 };
 
+// BRIEF-input-step2b: five new questions, collection only (state + Edit trip; nothing
+// renders on the result card yet, see the questionItems/wizardGatedExtras comment below
+// for the exact boundary that keeps it that way). avoidable.js is deliberately NOT touched
+// for any of these: pet, goods, a health condition, a hotel booking channel and a leaving
+// date are trip CONTEXT, not avoidable COSTS, so they do not belong in a registry whose own
+// header defines its scope as "costs a traveler can refuse to pay"; the brief's own
+// carve-out only asks for a registry entry where that is the cleanest path, and it is not
+// here. Pet and medical reuse the exact registry-question SHAPE (and, in calc-wizard.js,
+// the exact generic wiring/validation/snapshot/summary machinery) carrier/rail/rental
+// already established: a single yes/no radio group. Goods (an amount) and date (a date
+// input) do not fit that shape and are hand-authored as their own QuestionPanel blocks
+// below instead; they still carry an editTitle/summaryLabel here so Edit-trip treats them
+// consistently, and calc-wizard.js gives each its own small, explicit branch layered on
+// top of the same STEP_ORDER machinery rather than replacing it.
+const petEntry = {
+  key: 'pet',
+  question: {
+    stepKey: 'pet', stepLabel: 'Pet',
+    panelTitle: 'Are you traveling with a pet?',
+    panelIntro: 'This decides whether pet travel guidance applies to this trip.',
+    legend: 'Traveling with a pet',
+    options: [
+      { value: 'no', label: 'No', help: '', selected: true },
+      { value: 'yes', label: 'Yes', help: '', selected: false },
+    ],
+    moreOptions: null, moreLabel: null, moreLegend: null,
+    fieldHelp: 'Change this anytime from Edit trip.',
+    editTitle: 'Change your pet answer',
+    summaryLabel: 'Traveling with a pet',
+  },
+};
+const medicalEntry = {
+  key: 'medical',
+  question: {
+    stepKey: 'medical', stepLabel: 'Health',
+    panelTitle: 'Do you have a health condition that needs attention while traveling?',
+    // Calm, practical wording throughout, per the brief: this names a planning fact, not
+    // a diagnosis, and never reads as alarming.
+    panelIntro: 'This helps shape practical guidance on medical costs and coverage abroad. Not medical advice.',
+    legend: 'A health condition needing attention while traveling',
+    options: [
+      { value: 'no', label: 'No', help: '', selected: true },
+      { value: 'yes', label: 'Yes', help: '', selected: false },
+    ],
+    moreOptions: null, moreLabel: null, moreLegend: null,
+    fieldHelp: 'Change this anytime from Edit trip.',
+    editTitle: 'Change your health answer',
+    summaryLabel: 'Health condition needing attention',
+  },
+};
+// Meta-only entries for the two hand-authored questions (see above): just enough for
+// wizData's questionMeta/questionDefaults, since their actual controls are not the generic
+// ChoiceRows shape and are rendered separately, below.
+const NEW_QUESTION_META = {
+  goods: { editTitle: 'Change your goods answer' },
+  date: { editTitle: 'Change your leaving date' },
+};
+const NEW_QUESTION_DEFAULTS = { goods: 'no', date: '' };
+
+// FIX 6 (BRIEF-input-step2b): the named carriers must appear ABOVE "Other or not sure",
+// not just in the primary list (they already are: avoidable.js's own primaryOptions array
+// already lists them before 'other') but above the ENTIRE list including the collapsed
+// "More carriers" disclosure, which today renders AFTER 'other' and so reads as an
+// afterthought below the already-highlighted default. This never edits avoidable.js's own
+// option array (a data file this step must not touch beyond adding new entries); it only
+// changes how CalcWizard.astro lays out the SAME options it already received: the primary
+// carriers first, then "More carriers", then "Other or not sure" on its own, last, as the
+// genuine fallback it is. Every radio still shares one name, so the native exclusive-choice
+// behavior is unaffected regardless of DOM position.
+function splitCarrierOptions(options) {
+  return {
+    named: options.filter(o => o.value !== 'other'),
+    other: options.find(o => o.value === 'other') || null,
+  };
+}
+
 const flightModeOptions = [
   { value: 'known', label: 'I have a price', help: 'Round-trip airfare, per person.', selected: true },
   { value: 'exclude', label: 'Leave flights out for now', help: 'The result will clearly say they are not included.', selected: false },
@@ -188,6 +279,18 @@ const flightModeOptions = [
 const cardOptions = [
   { value: 'no-fee', label: 'No foreign-transaction fee', help: 'My card does not charge this fee on purchases.', selected: false },
   { value: 'assumed', label: 'Use the typical fee assumption', help: 'My card charges a fee, or I have not checked.', selected: true },
+];
+// NEW QUESTION 1 (BRIEF-input-step2b): the hotel step's own new booking-method question,
+// augmenting rather than replacing the existing room-price step (same stepKey 'hotel', same
+// form). "Online" is the default, since it is the most common real-world case and matches
+// how "known" already defaults for the flights step above; the room price question still
+// follows, exactly as before, for either real hotel answer. "Skip" is a genuine third
+// answer AND has its own convenience skip button, the same redundant-but-convenient shape
+// flights already uses for "exclude".
+const hotelBookingOptions = [
+  { value: 'online', label: 'Through an online booking site', help: '', selected: true },
+  { value: 'direct', label: 'Directly with the hotel', help: '', selected: false },
+  { value: 'skip', label: "Skip, I'm not staying at a hotel", help: '', selected: false },
 ];
 
 // BRIEF-calc-result-registry-rebuild, PART 2 "generic engine": the three wizard-gated
@@ -212,7 +315,11 @@ const wizardGatedExtras = [railEntry, rentalEntry].filter(Boolean);
 // Every QuestionPanel on this page is given this explicitly, rather than relying on the
 // component's own default, because that default is shared with the standalone /calculator
 // landing page and cannot itself vary per country the way this page's real step count does.
-const totalSteps = 7 + questionItems.length;
+// BRIEF-input-step2b: +4 for pet, goods, medical and date, unconditional on every country
+// page (unlike rail, none of the four are gated on anything country-specific), so the
+// count grows by exactly 4 everywhere, keeping WizardProgress's "Step X of Y" honest.
+const NEW_STEP_COUNT = 4;
+const totalSteps = 7 + questionItems.length + NEW_STEP_COUNT;
 
 // PRODUCTION BLOCKER, resolved: material unpriced categories (spec section 7). Travel
 // insurance is a named tier on every country (never priced, by design: a premium depends on
@@ -286,13 +393,30 @@ const wizData = {
   // wizard-gated item needs no change in calc-wizard.js at all; questionMeta/questionDefaults
   // carry the small per-item facts (the edit-dialog title, the default answer) that used to
   // be hardcoded per key in that file.
-  questionSteps: questionItems.map(q => q.question.stepKey),
-  questionMeta: Object.fromEntries(questionItems.map(q => [q.question.stepKey, { editTitle: q.question.editTitle }])),
-  questionDefaults: Object.fromEntries(questionItems.map(q => {
-    const opts = q.question.options.concat(q.question.moreOptions || []);
-    const def = opts.find(o => o.selected) || opts[0];
-    return [q.question.stepKey, def ? def.value : ''];
-  })),
+  // BRIEF-input-step2b: questionSteps grows by four (pet, goods, medical, date, in the
+  // order the brief's own RULES section asks for), appended after the existing avoidable.js
+  // -driven trio so carrier/rail/rental's own order and behavior are completely unaffected.
+  // questionMeta/questionDefaults are merged the same way: the existing registry items'
+  // own entries, plus pet/medical's (built the exact same way, from THEIR options array)
+  // and goods/date's (hand-built above, since neither has an options array of its own).
+  questionSteps: [...questionItems.map(q => q.question.stepKey), petEntry.question.stepKey, 'goods', medicalEntry.question.stepKey, 'date'],
+  questionMeta: {
+    ...Object.fromEntries(questionItems.concat([petEntry, medicalEntry]).map(q => [q.question.stepKey, { editTitle: q.question.editTitle }])),
+    ...NEW_QUESTION_META,
+  },
+  questionDefaults: {
+    ...Object.fromEntries(questionItems.concat([petEntry, medicalEntry]).map(q => {
+      const opts = q.question.options.concat(q.question.moreOptions || []);
+      const def = opts.find(o => o.selected) || opts[0];
+      return [q.question.stepKey, def ? def.value : ''];
+    })),
+    ...NEW_QUESTION_DEFAULTS,
+  },
+  // NEW QUESTION 1 (BRIEF-input-step2b): the hotel step's own new booking-method default,
+  // read by calc-wizard.js the same way flightMode's own default already is (a plain
+  // top-level wizData field, not part of the generic questionDefaults map, since this
+  // question augments an existing FIXED step rather than adding a new one).
+  hotelBookingDefault: hotelBookingOptions.find(o => o.selected).value,
 };
 const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 ---
@@ -340,11 +464,21 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
   </div>
 </QuestionPanel>
 
-<QuestionPanel stepKey="hotel" stepNumber={6} totalSteps={totalSteps} stepLabel="Accommodation"
-  title={Q_HOTEL} intro="Use the price for one room, per night, in US dollars, before separately modeled taxes."
+<QuestionPanel stepKey="hotel" stepNumber={6} totalSteps={totalSteps} stepLabel="Accommodation" showFootnote
+  title={Q_HOTEL} intro="This decides whether book-direct-versus-booking-site guidance applies to your stay." skipLabel="Skip, I'm not staying at a hotel"
   icon={QUESTION_ICON.hotel} flagSrc={destinationFlag}>
-  <PriceControl name="hotel" label="Room price per night (USD)" value={roomTypical} helpText="This estimate uses one room throughout the stay." />
-  <div class="assumption-note"><strong>This is the nightly price for your room, taken as entered.</strong><br />We do not model how many rooms your party needs, so this figure is not divided or multiplied by the traveler count from step 2. If you need more than one room, enter the combined nightly price.</div>
+  {/* NEW QUESTION 1 (BRIEF-input-step2b): the new, primary question this step asks. The
+      room-price question that used to lead here still follows, unchanged in substance,
+      for either real hotel answer; it is simply not asked at all when the reader picks
+      "skip" (RULES: "the room price is simply not asked"). The hidden engine still holds
+      SOME number in #hnRoom either way (it has no concept of "not staying at a hotel" and
+      this step does not touch it), so the total is not itself adjusted here; that is a
+      later step's concern, not this one's, which is collection only. */}
+  <ChoiceRows name="hotel-booking" legend="How you booked your hotel" options={hotelBookingOptions} />
+  <div class="conditional-field" data-hotel-price-wrap>
+    <PriceControl name="hotel" label="Room price per night (USD)" value={roomTypical} helpText="This estimate uses one room throughout the stay." />
+    <div class="assumption-note"><strong>This is the nightly price for your room, taken as entered.</strong><br />We do not model how many rooms your party needs, so this figure is not divided or multiplied by the traveler count from step 2. If you need more than one room, enter the combined nightly price.</div>
+  </div>
 </QuestionPanel>
 
 <QuestionPanel stepKey="card" stepNumber={7} totalSteps={totalSteps} stepLabel="Payment fees" showFootnote
@@ -361,22 +495,88 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
      old hasRail-gated block produced by hand. Adding a fourth item (see avoidable.js's
      airRegistryEntryExample) needs no new block here: it would just be one more entry in
      questionItems, rendered by this same loop. ===== -->
-{questionItems.map((item, i) => (
-  <QuestionPanel stepKey={item.question.stepKey} stepNumber={8 + i} totalSteps={totalSteps}
-    stepLabel={item.question.stepLabel} isLast={i === questionItems.length - 1}
-    title={(WIZARD_GATED_TITLE[item.key] && WIZARD_GATED_TITLE[item.key](c.name)) || item.question.panelTitle}
-    intro={item.question.panelIntro}
-    icon={QUESTION_ICON[item.key]} flagSrc={destinationFlag}>
-    <ChoiceRows name={item.question.stepKey} legend={item.question.legend} options={item.question.options} />
-    {item.question.moreOptions && item.question.moreOptions.length > 0 && (
-      <details class="carrier-more" data-more-options={item.question.stepKey}>
-        <summary>{item.question.moreLabel}</summary>
-        <ChoiceRows name={item.question.stepKey} legend={item.question.moreLegend} options={item.question.moreOptions} />
-      </details>
-    )}
-    <p class="field-help">{item.question.fieldHelp}</p>
-  </QuestionPanel>
-))}
+{questionItems.map((item, i) => {
+  // FIX 6 (BRIEF-input-step2b): for carrier only, split the SAME options array
+  // carrierRegistryEntryFor(c) already returns (unchanged, avoidable.js untouched) into the
+  // named carriers and the lone 'other' fallback, so 'other' can render AFTER the "More
+  // carriers" disclosure instead of before it. Every other item (rail, rental) has no
+  // 'other' entry at all, so this is a no-op for them: `other` is null and `named` is just
+  // their own options array, unchanged.
+  const { named, other } = item.key === 'carrier' ? splitCarrierOptions(item.question.options) : { named: item.question.options, other: null };
+  return (
+    <QuestionPanel stepKey={item.question.stepKey} stepNumber={8 + i} totalSteps={totalSteps}
+      stepLabel={item.question.stepLabel} isLast={false}
+      title={(WIZARD_GATED_TITLE[item.key] && WIZARD_GATED_TITLE[item.key](c.name)) || item.question.panelTitle}
+      intro={item.question.panelIntro}
+      icon={QUESTION_ICON[item.key]} flagSrc={destinationFlag}>
+      <ChoiceRows name={item.question.stepKey} legend={item.question.legend} options={named} />
+      {item.question.moreOptions && item.question.moreOptions.length > 0 && (
+        <details class="carrier-more" data-more-options={item.question.stepKey}>
+          <summary>{item.question.moreLabel}</summary>
+          <ChoiceRows name={item.question.stepKey} legend={item.question.moreLegend} options={item.question.moreOptions} />
+        </details>
+      )}
+      {other && (
+        <ChoiceRows name={item.question.stepKey} legend={item.question.legend} options={[other]} />
+      )}
+      <p class="field-help">{item.question.fieldHelp}</p>
+    </QuestionPanel>
+  );
+})}
+
+<!-- ===== BRIEF-input-step2b: pet, goods, medical grouped together as "before you go"
+     style questions (RULES section), right after the existing wizard-gated trio so
+     carrier/rail/rental's own position and behavior are unaffected; date follows last.
+     Pet and medical are ChoiceRows-only, same shape as rail/rental, hand-authored here
+     rather than folded into the questionItems loop above only because they would need to
+     render BETWEEN goods (an amount input, not a fit for that loop's ChoiceRows-only
+     shape) and each other in a specific order the array-map loop cannot interleave; their
+     wiring in calc-wizard.js is still the fully generic WD.questionSteps mechanism, same
+     as if they had come through that loop. ===== -->
+<QuestionPanel stepKey="pet" stepNumber={8 + questionItems.length} totalSteps={totalSteps} stepLabel="Pet"
+  title={Q_PET} intro={petEntry.question.panelIntro}
+  icon={QUESTION_ICON.pet} flagSrc={destinationFlag}>
+  <ChoiceRows name="pet" legend={petEntry.question.legend} options={petEntry.question.options} />
+  <p class="field-help">{petEntry.question.fieldHelp}</p>
+</QuestionPanel>
+
+<!-- NEW QUESTION 3 (BRIEF-input-step2b): a skippable amount, defaulting to skipped (RULES:
+     "Light copy, most people skip"). Same shape as the flights step above: a mode radio
+     (here 'goods', matching its own stepKey so the generic wiring loop in calc-wizard.js
+     picks it up for free) plus a conditional amount field, shown only for 'yes'. No skip
+     button needed: the default IS the skip, and pressing Continue on it is already the one
+     tap the RULES section asks for. -->
+<QuestionPanel stepKey="goods" stepNumber={9 + questionItems.length} totalSteps={totalSteps} stepLabel="Goods"
+  title={Q_GOODS} intro="Most people skip this. It only helps if you plan to declare or budget for it.">
+  <ChoiceRows name="goods" legend="Buying goods to bring home" options={[
+    { value: 'no', label: 'No, skip this', help: '', selected: true },
+    { value: 'yes', label: 'Yes, roughly', help: '', selected: false },
+  ]} />
+  <div class="conditional-field" data-goods-amount-wrap hidden>
+    <PriceControl name="goods-amount" label="Roughly how much (USD)" value="" helpText="A rough figure is fine." />
+  </div>
+  <p class="field-help">Change this anytime from Edit trip.</p>
+</QuestionPanel>
+
+<QuestionPanel stepKey="medical" stepNumber={10 + questionItems.length} totalSteps={totalSteps} stepLabel="Health"
+  title={Q_MEDICAL} intro={medicalEntry.question.panelIntro}
+  icon={QUESTION_ICON.medical} flagSrc={destinationFlag}>
+  <ChoiceRows name="medical" legend={medicalEntry.question.legend} options={medicalEntry.question.options} />
+  <p class="field-help">{medicalEntry.question.fieldHelp}</p>
+</QuestionPanel>
+
+<!-- NEW QUESTION 4 (BRIEF-input-step2b): near the end, per the RULES section, so it is the
+     last thing asked before the result. A native date input, no radio group (there is
+     nothing to default to "yes" or "no" on), with its own skip button that clears the
+     field and resubmits, the same one-tap convenience flights already established for its
+     own "exclude" answer. -->
+<QuestionPanel stepKey="date" stepNumber={11 + questionItems.length} totalSteps={totalSteps} stepLabel="Leaving date" isLast
+  title={Q_DATE} intro="Optional. Helps flag anything time-sensitive for your dates." skipLabel="Skip, not sure yet"
+  icon={QUESTION_ICON.date} flagSrc={destinationFlag}>
+  <label class="field-label" for="q-date-input">Leaving date</label>
+  <input id="q-date-input" name="date" type="date" class="form-input" data-date-input="date" />
+  <p class="field-help">Change this anytime from Edit trip.</p>
+</QuestionPanel>
 
 <!-- ================= THE RESULT VIEW, hidden until the wizard completes ================= -->
 <div class="results" data-result-view hidden>
@@ -683,6 +883,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
         <div class="summary-row"><dt>Trip length</dt><dd data-mirror="summaryNights">7 nights</dd><button class="text-link" type="button" data-edit="nights" aria-label="Change trip length">Change</button></div>
         <div class="summary-row"><dt>Travel style</dt><dd data-mirror="summaryStyle">Mid-range</dd><button class="text-link" type="button" data-edit="style" aria-label="Change travel style">Change</button></div>
         <div class="summary-row"><dt>Round-trip airfare</dt><dd data-mirror="summaryFlight">Not included</dd><button class="text-link" type="button" data-edit="flights" aria-label="Change round-trip airfare">Change</button></div>
+        <div class="summary-row"><dt>How you booked</dt><dd data-mirror="summaryHotelBooking">Online</dd><button class="text-link" type="button" data-edit="hotel" aria-label="Change how you booked your hotel">Change</button></div>
         <div class="summary-row"><dt>Accommodation</dt><dd data-mirror="summaryHotel">$0 / room / night</dd><button class="text-link" type="button" data-edit="hotel" aria-label="Change accommodation">Change</button></div>
         <div class="summary-row"><dt>Card purchase fee</dt><dd data-mirror="summaryCard">Use the typical fee assumption</dd><button class="text-link" type="button" data-edit="card" aria-label="Change payment fees">Change</button></div>
         <div class="summary-row"><dt>Phone carrier</dt><dd data-mirror="summaryCarrier">Other or not sure</dd><button class="text-link" type="button" data-edit="carrier" aria-label="Change phone carrier">Change</button></div>
@@ -692,6 +893,16 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
         {wizardGatedExtras.map(item => (
           <div class="summary-row"><dt>{item.question.summaryLabel}</dt><dd data-mirror={'summary' + item.question.stepKey.charAt(0).toUpperCase() + item.question.stepKey.slice(1)}>No or not sure</dd><button class="text-link" type="button" data-edit={item.question.stepKey} aria-label={'Change your ' + item.question.summaryLabel.toLowerCase() + ' answer'}>Change</button></div>
         ))}
+        {/* BRIEF-input-step2b: pet and medical get the exact same generic summary row
+            rail/rental already use above (mirror()'s generic "Yes"/"No or not sure" loop
+            covers them too, since both are genuine yes/no answers). Goods, hotel-booking
+            and date each need their own mirrored text (an amount, a channel, a date), so
+            calc-wizard.js sets those three explicitly instead of through that generic loop
+            (see this file's own exclusion list there). */}
+        <div class="summary-row"><dt>{petEntry.question.summaryLabel}</dt><dd data-mirror="summaryPet">No or not sure</dd><button class="text-link" type="button" data-edit="pet" aria-label="Change your pet answer">Change</button></div>
+        <div class="summary-row"><dt>Goods to bring home</dt><dd data-mirror="summaryGoods">Skipped</dd><button class="text-link" type="button" data-edit="goods" aria-label="Change your goods answer">Change</button></div>
+        <div class="summary-row"><dt>{medicalEntry.question.summaryLabel}</dt><dd data-mirror="summaryMedical">No or not sure</dd><button class="text-link" type="button" data-edit="medical" aria-label="Change your health answer">Change</button></div>
+        <div class="summary-row"><dt>Leaving date</dt><dd data-mirror="summaryDate">Not sure yet</dd><button class="text-link" type="button" data-edit="date" aria-label="Change your leaving date">Change</button></div>
       </dl>
       <div class="summary-footer">Your inputs stay available while you explore. No need to repeat the wizard.</div>
     </aside>
@@ -783,27 +994,12 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
   // above, permanently kept out of view.
   import '../scripts/calc-engine.js';
 </script>
-<script>
-  // BRIEF-calc-tier1-review-fixes, Fix 4 (step 5): "Leave flights out" as a real button
-  // next to Continue, instead of a caveat sentence describing a skip. This does not
-  // duplicate or reimplement any wizard logic: it checks the SAME "exclude" radio
-  // calc-wizard.js already listens on (firing a real change event so that listener runs),
-  // then resubmits the SAME form calc-wizard.js already validates and advances. Exactly
-  // the sequence a reader would produce by hand, simulated once on a click.
-  (function () {
-    const form = document.querySelector('[data-step-form="flights"]');
-    const skipBtn = document.querySelector('[data-wizard-skip]');
-    if (!form || !skipBtn) return;
-    skipBtn.addEventListener('click', () => {
-      const excludeRadio = form.querySelector('[data-choice-fieldset="flight-mode"] input[value="exclude"]');
-      if (excludeRadio) {
-        excludeRadio.checked = true;
-        excludeRadio.dispatchEvent(new Event('change', { bubbles: true }));
-      }
-      form.requestSubmit();
-    });
-  })();
-</script>
+<!-- BRIEF-input-step2b: the old inline skip-button script that used to live here (BRIEF-
+     calc-tier1-review-fixes, Fix 4) covered only the flights step, via a single global
+     querySelector('[data-wizard-skip]') that would only ever find the FIRST such button in
+     the document. Now that hotel and date also carry a skip button, that assumption no
+     longer holds, so this moved into calc-wizard.js as a real per-step mechanism (see its
+     own SKIP_ACTIONS map) instead of growing a second one-off script here. -->
 
 <style>
   /* Component-specific overrides beyond calculator.css, kept minimal on purpose: nearly

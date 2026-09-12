@@ -168,6 +168,14 @@ export function initCalcWizard() {
     flightMode: 'known',
     origin: { hotel: 'estimate', flight: 'estimate' },
     answers: { ...(WD.questionDefaults || {}) },
+    // BRIEF-input-step2b: hotelBooking is the hotel step's own new mode flag, same shape
+    // as flightMode above (a plain top-level field, not part of `answers`, since it
+    // augments an existing FIXED step rather than adding a new one). goodsAmount is goods'
+    // own typed figure, tracked separately from state.answers.goods (which the generic
+    // mechanism already tracks as a plain 'yes'/'no'), the same split flightMode/
+    // flightPriceInput already uses for the flights step.
+    hotelBooking: WD.hotelBookingDefault || 'online',
+    goodsAmount: '',
   };
 
   // ===================================================================================
@@ -264,6 +272,24 @@ export function initCalcWizard() {
     });
   }
 
+  // ----- NEW QUESTION 1 (BRIEF-input-step2b): hotel booking method + conditional price,
+  // same shape as flight-mode/flightPriceWrap above. The hidden engine has no concept of
+  // "not staying at a hotel" (it always holds SOME number in #hnRoom) so this never touches
+  // #hnRoom itself when 'skip' is chosen; it only stops asking the price question in the
+  // wizard, exactly what the brief asks for at this collection-only step. -----
+  const hotelPriceWrap = document.querySelector('[data-hotel-price-wrap]');
+  function applyHotelBookingVisibility() {
+    if (hotelPriceWrap) hotelPriceWrap.hidden = (state.hotelBooking === 'skip');
+  }
+  applyHotelBookingVisibility();
+  $$('[data-choice-fieldset="hotel-booking"] input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => {
+      if (!r.checked) return;
+      state.hotelBooking = r.value;
+      applyHotelBookingVisibility();
+    });
+  });
+
   // ----- card: radios -----
   $$('[data-choice-fieldset="card"] input[type="radio"]').forEach(r => {
     r.addEventListener('change', () => { if (r.checked) setNoFee(r.value === 'no-fee'); });
@@ -285,6 +311,70 @@ export function initCalcWizard() {
       r.addEventListener('change', () => { if (r.checked) { state.answers[key] = r.value; syncMoreOptions(key); } });
     });
     syncMoreOptions(key);
+  });
+
+  // ----- NEW QUESTION 3 (BRIEF-input-step2b): goods' own conditional amount field. The
+  // radio half (state.answers.goods, 'yes'/'no') is already wired generically above, since
+  // its fieldset name matches its stepKey exactly like pet/medical's; only the conditional
+  // amount input, a control shape the generic loop does not know about, needs its own
+  // wiring here, the same pattern flight-mode/flightPriceWrap and hotel-booking/
+  // hotelPriceWrap above both use. -----
+  const goodsAmountInput = document.querySelector('[data-price-input="goods-amount"]');
+  const goodsAmountWrap = document.querySelector('[data-goods-amount-wrap]');
+  function applyGoodsVisibility() {
+    if (goodsAmountWrap) goodsAmountWrap.hidden = (state.answers.goods !== 'yes');
+  }
+  applyGoodsVisibility();
+  $$('[data-choice-fieldset="goods"] input[type="radio"]').forEach(r => {
+    r.addEventListener('change', () => { if (r.checked) applyGoodsVisibility(); });
+  });
+  if (goodsAmountInput) {
+    goodsAmountInput.addEventListener('input', () => {
+      const v = parseMoney(goodsAmountInput.value);
+      state.goodsAmount = v == null ? '' : String(v);
+    });
+  }
+
+  // ----- NEW QUESTION 4 (BRIEF-input-step2b): leaving date, a plain native date input, no
+  // radio group and so no hidden-engine equivalent (the engine has no concept of a date;
+  // none is invented for it, same rule the file header states for carrier/rail/rental). -----
+  const dateInput = document.querySelector('[data-date-input="date"]');
+  if (dateInput) {
+    dateInput.addEventListener('input', () => { state.answers.date = dateInput.value; });
+  }
+
+  // ===================================================================================
+  // SKIP BUTTONS: a generic mechanism, since more than one step now has one (BRIEF-
+  // input-step2b; the mechanism used to live as an inline script in CalcWizard.astro that
+  // only ever found the FIRST [data-wizard-skip] button in the whole document, which broke
+  // the moment a second step got one). Each button is scoped to its OWN form via
+  // closest('form'), never a bare global querySelector, and each step names exactly what
+  // "skip" means there: flights and hotel select a specific radio value in that SAME form
+  // and resubmit it (the reader's own "exclude"/"skip" answer, simulated once on a click,
+  // never a second path around calc-wizard.js's own validation); date has no radio to
+  // select, so it clears its own field and resubmits instead. A step with no entry here
+  // simply has no listener attached to its button, rather than a silent wrong default.
+  // ===================================================================================
+  const SKIP_ACTIONS = {
+    flights: () => {
+      const excludeRadio = document.querySelector('[data-choice-fieldset="flight-mode"] input[value="exclude"]');
+      if (excludeRadio) { excludeRadio.checked = true; excludeRadio.dispatchEvent(new Event('change', { bubbles: true })); }
+    },
+    hotel: () => {
+      const skipRadio = document.querySelector('[data-choice-fieldset="hotel-booking"] input[value="skip"]');
+      if (skipRadio) { skipRadio.checked = true; skipRadio.dispatchEvent(new Event('change', { bubbles: true })); }
+    },
+    date: () => { if (dateInput) { dateInput.value = ''; state.answers.date = ''; } },
+  };
+  $$('[data-wizard-skip]').forEach(btn => {
+    const form = btn.closest('form');
+    const key = form && form.dataset.stepForm;
+    const action = key && SKIP_ACTIONS[key];
+    if (!form || !action) return;
+    btn.addEventListener('click', () => {
+      action();
+      form.requestSubmit();
+    });
   });
 
   // ----- destination: search filter, reusing the site's typeahead behaviour -----
@@ -342,6 +432,10 @@ export function initCalcWizard() {
       return { valid: true };
     }
     if (key === 'hotel') {
+      // BRIEF-input-step2b, NEW QUESTION 1: "the room price is simply not asked" once the
+      // reader says they are not staying at a hotel, so validation only requires it for
+      // the two real hotel answers, same as before this step.
+      if (state.hotelBooking === 'skip') return { valid: true };
       const v = parseMoney(hotelPriceInput.value);
       if (v == null) return { valid: false, message: 'Enter a room price in USD. For example, 150.', focusEl: hotelPriceInput, errorSelector: 'hotel' };
       state.origin.hotel = (Math.round(v) !== initialRoomTypical) ? 'figure' : 'estimate';
@@ -741,14 +835,30 @@ export function initCalcWizard() {
       // rail verdict simply has no 'rail' entry in WD.questionSteps, so this loop never
       // looks for a rail card there at all, matching the old hasRailVerdict gate's outcome
       // without needing a separate check. Carrier is skipped: it has no yes/no gate of its
-      // own (always shown) and its own summary line is set above by renderCarrierItem(). -----
+      // own (always shown) and its own summary line is set above by renderCarrierItem().
+      // BRIEF-input-step2b: goods and date are ALSO skipped here (their answers are an
+      // amount and a date, not "yes"/"no", so this loop's summary text would be wrong for
+      // them); each gets its own explicit line just below instead. Pet and medical are
+      // genuine yes/no answers, so this loop's own generic summary text is already correct
+      // for them and needs nothing added. None of the five new questions touch
+      // [data-avoid-extra], since none of them render on the result card yet (this step is
+      // collection only); the wrap lookup below is simply never found for any of them,
+      // the same harmless no-op it already is for pet/medical today. -----
       (WD.questionSteps || []).forEach(key => {
-        if (key === 'carrier') return;
+        if (key === 'carrier' || key === 'goods' || key === 'date') return;
         const wrap = document.querySelector('[data-avoid-extra="' + key + '"]');
         if (wrap) wrap.hidden = (state.answers[key] !== 'yes');
         const summaryEl = document.querySelector('[data-mirror="summary' + key.charAt(0).toUpperCase() + key.slice(1) + '"]');
         if (summaryEl) summaryEl.textContent = (state.answers[key] === 'yes') ? 'Yes' : 'No or not sure';
       });
+
+      // ----- BRIEF-input-step2b: the three summaries that do not fit the generic loop
+      // above, each read straight off the state this file already tracks for them. -----
+      set('[data-mirror="summaryHotelBooking"]',
+        state.hotelBooking === 'online' ? 'Online' : state.hotelBooking === 'direct' ? 'Direct with hotel' : 'Skipped, not a hotel');
+      set('[data-mirror="summaryGoods"]',
+        (state.answers.goods === 'yes' && state.goodsAmount !== '') ? ('About ' + numberToUsd(Number(state.goodsAmount))) : 'Skipped');
+      set('[data-mirror="summaryDate"]', state.answers.date ? state.answers.date : 'Not sure yet');
 
       if (resultView) resultView.hidden = false;
       if (errorView) errorView.hidden = true;
@@ -804,7 +914,13 @@ export function initCalcWizard() {
       const modeChecked = document.querySelector('[data-choice-fieldset="flight-mode"] input:checked');
       return { mode: modeChecked ? modeChecked.value : 'known', price: flightPriceInput.value, wrapHidden: flightPriceWrap ? flightPriceWrap.hidden : false };
     }
-    if (key === 'hotel') return { value: hotelPriceInput.value };
+    if (key === 'hotel') {
+      // BRIEF-input-step2b: booking mode is now part of this step's own state too, so
+      // Edit-trip's cancel path can put it back exactly as it was, the same as every other
+      // field this dialog touches.
+      const bookingChecked = document.querySelector('[data-choice-fieldset="hotel-booking"] input:checked');
+      return { value: hotelPriceInput.value, booking: bookingChecked ? bookingChecked.value : state.hotelBooking };
+    }
     if (key === 'card') {
       const checked = document.querySelector('[data-choice-fieldset="card"] input:checked');
       return { value: checked ? checked.value : null };
@@ -813,9 +929,19 @@ export function initCalcWizard() {
       const checked = document.querySelector('input[name="destination"]:checked');
       return { value: checked ? checked.value : null };
     }
-    // Every wizard-gated item (carrier, rail, rental, and any future one) is a single
-    // radio group under its own stepKey fieldset, snapshotted identically; see the
-    // matching generic branch in restoreControls() below.
+    // NEW QUESTION 3/4 (BRIEF-input-step2b): goods and date do not fit the generic
+    // single-radio-group branch below (goods has a radio AND an amount; date has no radio
+    // at all), so each gets its own small snapshot ahead of it.
+    if (key === 'goods') {
+      const checked = document.querySelector('[data-choice-fieldset="goods"] input:checked');
+      return { mode: checked ? checked.value : 'no', amount: goodsAmountInput ? goodsAmountInput.value : '' };
+    }
+    if (key === 'date') {
+      return { value: dateInput ? dateInput.value : '' };
+    }
+    // Every wizard-gated item (carrier, rail, rental, pet, medical, and any future one of
+    // the same shape) is a single radio group under its own stepKey fieldset, snapshotted
+    // identically; see the matching generic branch in restoreControls() below.
     if ((WD.questionSteps || []).includes(key)) {
       const checked = document.querySelector('[data-choice-fieldset="' + key + '"] input:checked');
       return { value: checked ? checked.value : null };
@@ -843,10 +969,23 @@ export function initCalcWizard() {
       hotelPriceInput.value = snap.value;
       const v = parseMoney(snap.value);
       if (v != null) setMoneyInput('hnRoom', v);
+      state.hotelBooking = snap.booking;
+      $$('[data-choice-fieldset="hotel-booking"] input').forEach(r => { r.checked = (r.value === snap.booking); });
+      applyHotelBookingVisibility();
     } else if (key === 'card') {
       if (snap.value != null) { setNoFee(snap.value === 'no-fee'); $$('[data-choice-fieldset="card"] input').forEach(r => { r.checked = (r.value === snap.value); }); }
     } else if (key === 'destination') {
       if (snap.value != null) $$('input[name="destination"]').forEach(r => { r.checked = (r.value === snap.value); });
+    } else if (key === 'goods') {
+      state.answers.goods = snap.mode;
+      $$('[data-choice-fieldset="goods"] input').forEach(r => { r.checked = (r.value === snap.mode); });
+      if (goodsAmountInput) goodsAmountInput.value = snap.amount;
+      const v = parseMoney(snap.amount);
+      state.goodsAmount = v == null ? '' : String(v);
+      applyGoodsVisibility();
+    } else if (key === 'date') {
+      if (dateInput) dateInput.value = snap.value;
+      state.answers.date = snap.value;
     } else if ((WD.questionSteps || []).includes(key)) {
       if (snap.value != null) {
         state.answers[key] = snap.value;
