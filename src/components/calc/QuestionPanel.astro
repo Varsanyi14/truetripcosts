@@ -17,13 +17,24 @@ const { stepKey, stepNumber, totalSteps = 8, stepLabel, title, intro, isFirst = 
   // only: the click behavior lives in CalcWizard.astro's own script and only ever checks
   // the existing "exclude" radio and resubmits this same form, so calc-wizard.js's already-
   // tested validation and step-advance logic still does all the real work, unchanged.
-  skipLabel = null } = Astro.props;
+  skipLabel = null,
+  // BRIEF-input-step2a, FIX 1 and FIX 2: icon is a raw SVG string built once per step in
+  // CalcWizard.astro's own frontmatter (see that file's QUESTION_ICON map); flagSrc is the
+  // destination's flag path (or the globe fallback), same on every step. Both optional so
+  // this component still works for any caller that does not pass them.
+  icon = null, flagSrc = null } = Astro.props;
 import WizardProgress from './WizardProgress.astro';
 ---
 <section class="wizard" data-wizard-step={stepKey} hidden={!initiallyVisible}>
   <WizardProgress stepNumber={stepNumber} totalSteps={totalSteps} stepLabel={stepLabel} />
   <div class="question-panel">
     <form class="question-form" data-step-form={stepKey} novalidate>
+      {(icon || flagSrc) && (
+        <div class="qpanel-meta">
+          {icon && <span class="qpanel-icon" set:html={icon} />}
+          {flagSrc && <img class="qpanel-flag" src={flagSrc} alt="" width="22" height="16" loading="lazy" decoding="async" />}
+        </div>
+      )}
       <h1 tabindex="-1">{title}</h1>
       <p class="question-intro">{intro}</p>
       <div class="question-controls">

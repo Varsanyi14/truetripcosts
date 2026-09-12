@@ -65,11 +65,25 @@ import {
 } from '../data/avoidable.js';
 import { flightPlaceholderFor } from '../data/flight-defaults.js';
 import { countries } from '../data/index.js';
+// FIX 1 (BRIEF-input-step2a): node:fs, for the exact same flag-with-fallback pattern every
+// other component on this site already duplicates locally (CountryBriefing.astro, Hub.astro,
+// countries.astro and others each carry their own copy of this same two-line snippet rather
+// than importing a shared helper), so this file matches that convention instead of adding a
+// new one.
+import fs from 'node:fs';
 
 const { country: c } = Astro.props;
 const { calcJson, tipCalc } = calcSetupFor(c);
 const styles = (c.cash && c.cash.styles) || [];
 const defaultStyleIndex = (c.cash && c.cash.defaultIndex) || 0;
+
+// FIX 1 (BRIEF-input-step2a): the destination's flag, shown on every wizard step so a
+// reader who lands mid-flow (the same concern FIX 3 addresses in words) has a constant
+// visual anchor too. Same fallback every guide already uses: a missing flag file never
+// 404s, it just falls back to the globe.
+const flagDir = process.cwd() + '/public/flags/';
+const flagSrc = (slug) => fs.existsSync(flagDir + slug + '.svg') ? '/flags/' + slug + '.svg' : '/flags/world.svg';
+const destinationFlag = flagSrc(c.slug);
 
 // Flight and hotel starting figures. Flight uses this country's own verified round-trip
 // range where one exists; otherwise the SAME rough, region-derived placeholder
@@ -82,6 +96,24 @@ const flightTypical = flightData
   ? Math.round((flightData.low + flightData.high) / 2 / 10) * 10
   : (flightRough ? flightRough.usd : 700);
 const roomTypical = (styles[defaultStyleIndex] && styles[defaultStyleIndex].room) || 150;
+
+// FIX 4 (BRIEF-input-step2a): the airfare placeholder now respects whichever travel style
+// the reader already picked, instead of always showing the same flat figure regardless of
+// style. Every country carries exactly three styles in fixed order (Budget, Mid-range,
+// Comfort; confirmed for all 59 live countries, see the STYLE_HELP comment below), so index
+// 0/1/2 map onto them directly, with NO per-style fare invented: where this country has a
+// tracked flight.low/flight.high range (a real, sourced pair of figures, not a guess), Budget
+// seeds from the low end and Comfort from the high end, exactly the same range the "typical"
+// figure already came from; Mid-range keeps today's midpoint unchanged. Where no range is
+// tracked (flightRough, a single flat regional placeholder with nothing to spread across
+// styles), every style gets the SAME figure, because scaling an unsourced number by style
+// would be inventing fare data, which this brief explicitly rules out.
+const flightByStyle = styles.map((s, i) => {
+  if (!flightData) return flightTypical;
+  if (i === 0) return Math.round(flightData.low / 10) * 10;
+  if (i === 2) return Math.round(flightData.high / 10) * 10;
+  return flightTypical;
+});
 
 // PRODUCTION BLOCKER, resolved: the full supported country list. Every entry in
 // src/data/index.js with live:true (59 of 59 today; see data/index.js itself), sorted for
@@ -105,6 +137,49 @@ const styleOptions = styles.map((s, i) => ({
   help: STYLE_HELP[s.n] || '',
   selected: i === defaultStyleIndex,
 }));
+
+// FIX 2 (BRIEF-input-step2a): one quiet icon per question, drawn to the exact construction
+// rules Symbol.astro already uses site-wide (flat shapes, no strokes where a filled shape
+// reads fine that small, one amber accent, this same five-color palette: #0E7A5F/#16302C/
+// #B45309/#F5F4EF/#6F8079). Seven of these ten are the SAME icon Symbol.astro already draws
+// elsewhere on the site (passport, plane, calendar, card, phoneok, train, wheel); they are
+// copied here as plain SVG strings rather than imported, because Symbol.astro keeps its own
+// icon map private to that component, and re-exporting it is outside this step's file scope
+// (CalcWizard.astro and QuestionPanel.astro only). Three (people, suitcase, bed) are new,
+// since nothing in the existing set covers travelers, travel style or a room price. Flagged
+// to MAIN: if the pattern holds up, promoting all ten into Symbol.astro itself so every
+// consumer shares one copy is a natural follow-up, just outside what this step touches.
+const QUESTION_ICON = {
+  destination: '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="11" y="6" width="26" height="36" rx="4" fill="#16302C"/><rect x="11" y="6" width="4.5" height="36" rx="2" fill="#0A5644"/><circle cx="25.5" cy="20" r="6.5" fill="none" stroke="#0E7A5F" stroke-width="2.2"/><circle cx="25.5" cy="20" r="2.4" fill="#B45309"/><rect x="18" y="31" width="15" height="2.6" rx="1.3" fill="#6F8079"/><rect x="20" y="36" width="11" height="2.6" rx="1.3" fill="#6F8079"/></svg>',
+  travelers: '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="32" cy="17" r="6" fill="#6F8079"/><path d="M22 41 a10 10 0 0 1 19 -3 Z" fill="#6F8079"/><circle cx="17" cy="15" r="7" fill="#0E7A5F"/><path d="M5 40 a12 12 0 0 1 24 0 Z" fill="#0E7A5F"/></svg>',
+  nights: '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="12" width="32" height="28" rx="5" fill="#0E7A5F"/><path d="M8 17 a5 5 0 0 1 5 -5 h22 a5 5 0 0 1 5 5 v2 h-34 Z" fill="#16302C"/><rect x="15.5" y="8" width="3.5" height="8" rx="1.75" fill="#16302C"/><rect x="29" y="8" width="3.5" height="8" rx="1.75" fill="#16302C"/><circle cx="24" cy="30" r="4.5" fill="#B45309"/></svg>',
+  style: '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="17" y="8" width="14" height="10" rx="3" fill="none" stroke="#16302C" stroke-width="3.4"/><rect x="6" y="16" width="36" height="24" rx="4" fill="#0E7A5F"/><rect x="6" y="24" width="36" height="4" fill="#16302C"/><rect x="21" y="16" width="6" height="24" fill="#B45309"/></svg>',
+  flights: '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4 a3 3 0 0 1 3 3 V19 L43 28 V32 L27 27 V37 L32 41 V44 L24 41.5 L16 44 V41 L21 37 V27 L5 32 V28 L21 19 V7 a3 3 0 0 1 3 -3 Z" fill="#0E7A5F"/></svg>',
+  hotel: '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="17" width="4" height="23" rx="2" fill="#16302C"/><rect x="6" y="27" width="38" height="13" rx="3" fill="#0E7A5F"/><rect x="9" y="20" width="15" height="10" rx="3" fill="#F5F4EF"/><rect x="6" y="35" width="4" height="7" fill="#16302C"/><rect x="40" y="35" width="4" height="7" fill="#16302C"/></svg>',
+  card: '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="4" y="12" width="40" height="27" rx="5" fill="#16302C"/><rect x="4" y="18" width="40" height="6" fill="#0E7A5F"/><rect x="10" y="30" width="14" height="4" rx="2" fill="#F5F4EF"/><rect x="29" y="30" width="9" height="4" rx="2" fill="#6F8079"/></svg>',
+  carrier: '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="15" width="3" height="4" rx="1" fill="#129072"/><rect x="10.5" y="12" width="3" height="7" rx="1" fill="#129072"/><rect x="15" y="6" width="20" height="36" rx="5" fill="#16302C"/><rect x="19" y="11" width="12" height="18" rx="2" fill="#0E7A5F"/><path d="M21 20.2 l2.6 2.6 l4.6 -5.4" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="25" cy="35.5" r="2" fill="#F5F4EF"/></svg>',
+  rail: '<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="12" y="5" width="24" height="30" rx="8" fill="#0E7A5F"/><rect x="16.5" y="11" width="15" height="9" rx="3" fill="#F5F4EF"/><rect x="16" y="24.5" width="6" height="3" rx="1.5" fill="#F5F4EF"/><rect x="26" y="24.5" width="6" height="3" rx="1.5" fill="#F5F4EF"/><circle cx="24" cy="30" r="2.3" fill="#B45309"/><rect x="14" y="34" width="3" height="5" rx="1.5" fill="#6F8079"/><rect x="31" y="34" width="3" height="5" rx="1.5" fill="#6F8079"/><rect x="8" y="39" width="32" height="3.2" rx="1.6" fill="#16302C"/></svg>',
+  rental: '<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17" fill="none" stroke="#0E7A5F" stroke-width="4"/><line x1="10" y1="24" x2="38" y2="24" stroke="#0E7A5F" stroke-width="3.5" stroke-linecap="round"/><line x1="24" y1="24" x2="24" y2="40" stroke="#0E7A5F" stroke-width="3.5" stroke-linecap="round"/><circle cx="24" cy="24" r="5" fill="#16302C"/></svg>',
+};
+
+// FIX 3 (BRIEF-input-step2a): "the wizard already has the country name... include it in the
+// question wording where natural... do not force it where it reads awkwardly." Destination
+// is the one step left untouched: naming the country before the reader has chosen it reads
+// backwards, and DestinationChoice's own list already shows a flag beside every option.
+const Q_TRAVELERS = 'How many people are traveling to ' + c.name + '?';
+const Q_NIGHTS = 'How many nights are you staying in ' + c.name + '?';
+const Q_STYLE = 'How do you expect to travel in ' + c.name + '?';
+const Q_FLIGHTS = 'What is your round-trip airfare to ' + c.name + '?';
+const Q_HOTEL = 'What is the room price per night in ' + c.name + '?';
+const Q_CARD = 'Does your card charge a purchase fee in ' + c.name + '?';
+// The three wizard-gated questions' base wording lives in avoidable.js (a data file this
+// step must not touch), so the country name is woven in here instead, at the point this
+// file already renders each one, never editing that source string itself.
+const WIZARD_GATED_TITLE = {
+  carrier: (name) => 'Which US carrier are you using on this ' + name + ' trip?',
+  rail: (name) => 'Are you planning intercity train travel on this ' + name + ' trip?',
+  rental: (name) => 'Are you renting a car on this ' + name + ' trip?',
+};
 
 const flightModeOptions = [
   { value: 'known', label: 'I have a price', help: 'Round-trip airfare, per person.', selected: true },
@@ -197,6 +272,11 @@ const wizData = {
   defaultStyleIndex,
   flightTypical,
   flightVerified: !!flightData,
+  // FIX 4 (BRIEF-input-step2a): the same style-seeded figures computed above, passed
+  // through so calc-wizard.js's resyncBeforeShow('flights') can reseed the airfare price
+  // whenever the reader changes style before typing their own fare, exactly the way
+  // roomTypical/applyStyleRoom already does for the hotel step.
+  flightByStyle,
   roomTypical,
   calmEligible,
   carriers: carrierEntry.clientData,
@@ -219,44 +299,57 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 <!-- ================= THE NEW SURFACE ================= -->
 
 <QuestionPanel stepKey="destination" stepNumber={1} totalSteps={totalSteps} stepLabel="Destination"
-  title="Where are you going?" intro="Choose one country for this trip estimate." isFirst showFootnote>
+  title="Where are you going?" intro="Choose one country for this trip estimate." isFirst showFootnote
+  icon={QUESTION_ICON.destination} flagSrc={destinationFlag}>
   <DestinationChoice countries={destinationCountries} selectedSlug={c.slug} />
 </QuestionPanel>
 
 <QuestionPanel stepKey="travelers" stepNumber={2} totalSteps={totalSteps} stepLabel="Travelers" initiallyVisible
-  title="How many people are traveling?" intro="Count everyone in your travel party.">
+  title={Q_TRAVELERS} intro="Count everyone in your travel party."
+  icon={QUESTION_ICON.travelers} flagSrc={destinationFlag}>
   <QuantityControl name="travelers" unitLabel="travelers" unitLabelSingular="traveler" value={2} min={1} max={12} presets={[1, 2, 3, 4]} helpText="This is people, not rooms." />
 </QuestionPanel>
 
 <QuestionPanel stepKey="nights" stepNumber={3} totalSteps={totalSteps} stepLabel="Trip length"
-  title="How many nights are you staying?" intro="Count nights away, not calendar days.">
+  title={Q_NIGHTS} intro="Count nights away, not calendar days."
+  icon={QUESTION_ICON.nights} flagSrc={destinationFlag}>
   <QuantityControl name="nights" unitLabel="nights" unitLabelSingular="night" value={7} min={1} max={60} presets={[5, 7, 14, 21]} />
 </QuestionPanel>
 
 <QuestionPanel stepKey="style" stepNumber={4} totalSteps={totalSteps} stepLabel="Travel style"
-  title="How do you expect to travel?" intro={'Start with the closest fit. It sets a typical daily-spending figure and hotel price for ' + c.name + '.'}>
+  title={Q_STYLE} intro={'Start with the closest fit. It sets a typical daily-spending figure and hotel price for ' + c.name + '.'}
+  icon={QUESTION_ICON.style} flagSrc={destinationFlag}>
   <ChoiceRows name="style" legend="Travel style" options={styleOptions} />
 </QuestionPanel>
 
 <QuestionPanel stepKey="flights" stepNumber={5} totalSteps={totalSteps} stepLabel="Airfare" showFootnote
-  title="What is your round-trip airfare?" intro="Use the price per person, in US dollars." skipLabel="Leave flights out">
+  title={Q_FLIGHTS} intro="Use the price per person, in US dollars." skipLabel="Leave flights out"
+  icon={QUESTION_ICON.flights} flagSrc={destinationFlag}>
   <ChoiceRows name="flight-mode" legend="Airfare information" options={flightModeOptions} />
   <div class="conditional-field" data-flight-price-wrap>
-    <PriceControl name="flight" label="Round-trip price per person (USD)" value={flightTypical}
+    {/* FIX 4 (BRIEF-input-step2a): the value now seeds from the style already chosen
+        (flightByStyle[defaultStyleIndex], built above; calc-wizard.js's own
+        resyncBeforeShow('flights') keeps it in step with a later style change, the same
+        way the hotel step's roomTypical/applyStyleRoom already works). The help text no
+        longer says "economy": that word is exactly what contradicted a Comfort traveler's
+        own answer, which is the bug this fix exists to close. */}
+    <PriceControl name="flight" label="Round-trip price per person (USD)" value={flightByStyle[defaultStyleIndex]}
       helpText={flightData
-        ? ('A typical economy round trip from major US gateways, checked ' + (flightData.checked || '') + '. Enter what you actually paid and it takes over.')
+        ? ('A typical round trip from major US gateways for your chosen travel style, checked ' + (flightData.checked || '') + '. Enter what you actually paid and it takes over.')
         : ('We do not yet track a verified fare for ' + c.name + '. This is a rough, region-based placeholder, not a quote: change it to your own fare.')} />
   </div>
 </QuestionPanel>
 
 <QuestionPanel stepKey="hotel" stepNumber={6} totalSteps={totalSteps} stepLabel="Accommodation"
-  title="What is the room price per night?" intro="Use the price for one room, per night, in US dollars, before separately modeled taxes.">
+  title={Q_HOTEL} intro="Use the price for one room, per night, in US dollars, before separately modeled taxes."
+  icon={QUESTION_ICON.hotel} flagSrc={destinationFlag}>
   <PriceControl name="hotel" label="Room price per night (USD)" value={roomTypical} helpText="This estimate uses one room throughout the stay." />
   <div class="assumption-note"><strong>This is the nightly price for your room, taken as entered.</strong><br />We do not model how many rooms your party needs, so this figure is not divided or multiplied by the traveler count from step 2. If you need more than one room, enter the combined nightly price.</div>
 </QuestionPanel>
 
 <QuestionPanel stepKey="card" stepNumber={7} totalSteps={totalSteps} stepLabel="Payment fees" showFootnote
-  title="Does your card charge a purchase fee abroad?" intro="Check for a foreign-transaction fee on purchases.">
+  title={Q_CARD} intro="Check for a foreign-transaction fee on purchases."
+  icon={QUESTION_ICON.card} flagSrc={destinationFlag}>
   <ChoiceRows name="card" legend="Foreign-transaction fee on purchases" options={cardOptions} />
   <p class="field-help">No bank login or card details are collected here.</p>
 </QuestionPanel>
@@ -271,7 +364,9 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 {questionItems.map((item, i) => (
   <QuestionPanel stepKey={item.question.stepKey} stepNumber={8 + i} totalSteps={totalSteps}
     stepLabel={item.question.stepLabel} isLast={i === questionItems.length - 1}
-    title={item.question.panelTitle} intro={item.question.panelIntro}>
+    title={(WIZARD_GATED_TITLE[item.key] && WIZARD_GATED_TITLE[item.key](c.name)) || item.question.panelTitle}
+    intro={item.question.panelIntro}
+    icon={QUESTION_ICON[item.key]} flagSrc={destinationFlag}>
     <ChoiceRows name={item.question.stepKey} legend={item.question.legend} options={item.question.options} />
     {item.question.moreOptions && item.question.moreOptions.length > 0 && (
       <details class="carrier-more" data-more-options={item.question.stepKey}>
