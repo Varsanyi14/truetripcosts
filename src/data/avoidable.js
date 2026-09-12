@@ -1304,3 +1304,153 @@ export function rentalRegistryEntry() {
     },
   };
 }
+
+// ---------------------------------------------------------------------------
+// BRIEF-result-card-step3: THE FIVE NEW WIZARD-ANSWER ROWS.
+//
+// BRIEF-input-step2b added five questions (pet, goods, a health condition, a hotel-
+// booking channel, a leaving date) and collected every answer without ever showing one
+// back. This section is the payoff: one declarative card per answer, the SAME shallow
+// shape rail/rental's own `card` field above already uses (title, escape, secondary,
+// href, hrefLabel), so CalcWizard.astro needs no per-item branching to render the three
+// that are fully known at build time (pet, medical, the new Airbnb option). None of the
+// five carries a `question` block of its own: their questions already exist (petEntry/
+// medicalEntry inline in CalcWizard.astro, the hand-authored goods/date panels, the
+// hotel-booking radio group's own new option), so nothing here would duplicate one.
+//
+// TWO OF THE FIVE (goods, date) cannot be fully written here, because the real sentence
+// depends on what the reader TYPED, an amount or a date, which this file has no access
+// to at build time and must never guess at. Their objects carry either a template with a
+// {{AMOUNT}} token, or the raw per-country fact calc-wizard.js's own renderGoodsItem()/
+// renderDateItem() need to finish the sentence, the same engine/surface split carrier's
+// own day-pass math already draws (see carrierRegistryEntryFor above and calc-wizard.js's
+// renderCarrierItem for the original version of this same boundary).
+//
+// THE SHARED "NOT RESEARCHED YET" FALLBACK. Two of the five reach for this: pet, always
+// (no per-country pet-entry data exists anywhere in this codebase today), and goods, only
+// where REFUND[c.slug] (above, unchanged) is neither 'yes' nor 'no', i.e. a country this
+// file has genuinely never been told either way about. ONE function, so the honest,
+// non-guessing wording can never drift between the two callers, and a third caller later
+// never has to write its own copy of the same ethos from scratch.
+function notResearchedYetFallback(topic, countryName) {
+  return {
+    escape: 'We haven\'t finished checking ' + topic + ' for ' + countryName + ', and we won\'t guess. We only tell you a country\'s specifics when we are 100 percent sure and current. Still working on this one.',
+    secondary: 'Want us to tell you the moment it\'s done?',
+    // Placeholder: the real notify-me wiring is a later step (per the brief), so this is
+    // not yet a working subscribe link. Flagged again in the handoff to MAIN.
+    href: '#notify-placeholder',
+    hrefLabel: 'Tell me when it\'s ready',
+  };
+}
+
+// 1. PET. Universal advice, because no per-country pet-entry ruleset exists anywhere in
+// this codebase (nothing to gate on), so every country appends the same honest not-
+// researched-yet fallback rather than a destination-specific rule this file does not
+// have. The universal warning names the real, always-true shape of pet entry (microchip,
+// rabies, health certificate, a return-to-US rule too), never a country's specific form or
+// waiting period, because none of those is sourced here.
+export function petAvoidableCard(c) {
+  const fallback = notResearchedYetFallback('pet entry requirements', c.name);
+  return {
+    key: 'pet',
+    title: 'Traveling with a pet',
+    escape: 'You can\'t just fly a pet in and out. Most countries need a microchip, a current rabies shot and a health certificate, and bringing your pet back into the US has its own rules. Start the vet paperwork weeks ahead: miss it and your pet can be refused at the border.',
+    secondary: fallback.escape + ' ' + fallback.secondary,
+    href: fallback.href,
+    hrefLabel: fallback.hrefLabel,
+  };
+}
+
+// 2. GOODS / VAT. Reuses REFUND[c.slug] (above, unchanged) rather than a second
+// classification living beside it: 'yes' and 'no' are both real, sourced states already
+// read from each guide's own taxfree{} block, and anything else means this file has never
+// been told either way, which is the same not-researched-yet fallback pet uses above, not
+// a guess. Neither branch invents a REASON a 'no' country has no scheme (a few, like the
+// UK, do carry one in their own guide's prose, but taxfree{} is prose, not structure, and
+// this file does not parse figures or reasons out of prose; see calc-lines.js's own header
+// for the identical rule applied to the 'yes' side). So the 'no' sentence states only what
+// REFUND itself asserts: there is no scheme, not why. The dollar amount the reader typed
+// lives in the {{AMOUNT}} token, filled in by calc-wizard.js's renderGoodsItem() the
+// instant they type one; this file has no server-side access to that number and never
+// invents one. NEITHER branch computes a promised refund figure, per the brief's own rule.
+export function goodsVatCardFor(c) {
+  // refundStatusFor (above, unchanged, pre-dating this brief) already returns exactly
+  // this three-way read of REFUND: 'yes', 'no', or 'absent' for a country never classified
+  // either way. Reused as-is rather than re-derived, so the two can never disagree.
+  const status = refundStatusFor(c.slug);
+  const href = wizardHref(c, '#taxes-and-refunds');
+  if (status === 'absent') {
+    const fallback = notResearchedYetFallback('the VAT or sales tax refund rules', c.name);
+    return {
+      key: 'goods', title: 'Sales tax on what you buy', status,
+      template: null,
+      escape: fallback.escape, secondary: fallback.secondary,
+      href: fallback.href, hrefLabel: fallback.hrefLabel,
+    };
+  }
+  if (status === 'no') {
+    return {
+      key: 'goods', title: 'Sales tax on what you buy', status,
+      template: 'On your {{AMOUNT}} of shopping in ' + c.name + ', there is nothing to reclaim. '
+        + c.name + ' has no tourist VAT or sales tax refund scheme, so budget the full price and skip the airport refund desk.',
+      escape: null, secondary: null,
+      href, hrefLabel: 'More on taxes and refunds here',
+    };
+  }
+  return {
+    key: 'goods', title: 'Sales tax on what you buy', status,
+    template: 'A refund is real in ' + c.name + ' on your {{AMOUNT}} of shopping, but a processor takes a cut, '
+      + 'so you get back materially less than the headline VAT, and only if you validate paperwork at the airport before flying.',
+    escape: null, secondary: null,
+    href, hrefLabel: 'Here\'s how',
+  };
+}
+
+// 3. MEDICAL. Universal, calm, non-alarming, per BRIEF-input-step2b's own wording rule for
+// this question. No country-specific medical data is read or invented here; the only
+// per-country word is the destination's own name, in one clause about drug naming.
+export function medicalAvoidableCard(c) {
+  return {
+    key: 'medical',
+    title: 'A health condition while traveling',
+    escape: 'Your US health plan likely won\'t cover you abroad, and a condition that needs attention needs a plan: '
+      + 'carry enough medication, know it may have a different name in ' + c.name + ', and confirm your travel insurance covers a pre-existing condition, since many don\'t by default.',
+    secondary: null,
+    href: '/medical-costs',
+    hrefLabel: 'Medical costs abroad',
+  };
+}
+
+// 4. AIRBNB. Universal, all countries, from the verified research the brief cites; no
+// per-country short-term-rental legality data is stored here (rot risk, confirmed by that
+// research), so the copy names the pattern (fees stack, rules vary by city) rather than a
+// country's specific rule. href is a placeholder: the "real cost of an Airbnb" page is a
+// separate build MAIN will confirm the target for (flagged again in the handoff).
+export function airbnbAvoidableCard() {
+  return {
+    key: 'airbnb',
+    title: 'Airbnb and short-term rental fees',
+    escape: 'The nightly rate isn\'t the bill: a flat cleaning fee plus the platform\'s roughly 15 percent service fee stack on top, '
+      + 'which hits short stays hardest, and tourist tax is sometimes collected in cash on arrival.',
+    secondary: 'Open the full price breakdown and compare it against a hotel before you book. Short-term-rental rules also vary by city and change often, so check locally.',
+    href: '/airbnb-real-cost',
+    hrefLabel: 'The real cost of an Airbnb',
+  };
+}
+
+// 5. LEAVING DATE. Nothing here is invented: `seasonCheapest` is passed in already
+// computed by CalcWizard.astro's own calcLinesFor(c) read (calc-lines.js's existing
+// L.season.cheapest, itself sourced from seasons.js), never recomputed or re-sourced in
+// this file. Where a country carries no season row, seasonCheapest is null and the card
+// simply omits the cheaper-months pointer, the same absence-is-not-zero rule this whole
+// file already follows everywhere else. The reader's own month, and whether their trip is
+// far enough out to flag, are calc-wizard.js's renderDateItem() job, never this file's.
+export function leavingDateCardFor(c, seasonCheapest) {
+  return {
+    key: 'date',
+    title: 'Your leaving date',
+    seasonCheapest: seasonCheapest || null,
+    href: wizardHref(c, '#when-to-go'),
+    hrefLabel: 'See the month by month picture',
+  };
+}

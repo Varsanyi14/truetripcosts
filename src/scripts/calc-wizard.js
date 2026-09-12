@@ -623,6 +623,60 @@ export function initCalcWizard() {
   }
 
   // ===================================================================================
+  // GOODS / VAT ROW (BRIEF-result-card-step3). The same engine/surface split as
+  // renderCarrierItem() above: avoidable.js's goodsVatCardFor(c) already knows this
+  // country's own REFUND[c.slug] classification and has written the honest sentence
+  // around it, with a {{AMOUNT}} token standing in for the one thing only the reader can
+  // supply. This function's only job is filling that token in (or, where the refund
+  // status is not known at all, showing the pre-written not-researched-yet fallback
+  // as-is); it never composes new copy of its own.
+  // ===================================================================================
+  function renderGoodsItem() {
+    const wrap = document.querySelector('[data-avoid-extra="goods"]');
+    if (!wrap) return;
+    const cfg = WD.goodsVat;
+    const show = !!cfg && state.answers.goods === 'yes' && state.goodsAmount !== '';
+    wrap.hidden = !show;
+    if (!show) return;
+    const amt = numberToUsd(Number(state.goodsAmount));
+    const escapeText = cfg.template ? cfg.template.replace('{{AMOUNT}}', amt) : (cfg.escape || '');
+    const secondaryText = cfg.template ? '' : (cfg.secondary || '');
+    const escapeEl = wrap.querySelector('[data-goods-escape]');
+    if (escapeEl) escapeEl.textContent = escapeText;
+    const secEl = wrap.querySelector('[data-goods-secondary]');
+    if (secEl) { secEl.hidden = !secondaryText; secEl.textContent = secondaryText; }
+  }
+
+  // ===================================================================================
+  // LEAVING DATE ROW (BRIEF-result-card-step3). The only thing this function computes:
+  // the reader's own date against today's, to name the month and flag a genuinely far-out
+  // trip (5 or more months away). avoidable.js's leavingDateCardFor(c, ...) already
+  // supplies the one build-time fact this needs (this country's own cheaper-months
+  // window, read from calc-lines.js's existing season data, if any); nothing else here is
+  // invented, and a country with no season row simply omits that clause and its link.
+  // ===================================================================================
+  function renderDateItem() {
+    const wrap = document.querySelector('[data-avoid-extra="date"]');
+    if (!wrap) return;
+    const raw = state.answers.date;
+    const show = !!raw;
+    wrap.hidden = !show;
+    if (!show) return;
+    const cfg = WD.leavingDate || {};
+    const leave = new Date(raw + 'T00:00:00');
+    const monthName = leave.toLocaleDateString('en-US', { month: 'long' });
+    const today = new Date();
+    const monthsOut = (leave.getFullYear() - today.getFullYear()) * 12 + (leave.getMonth() - today.getMonth());
+    let sentence = 'You are leaving in ' + monthName + '.';
+    if (monthsOut >= 5) sentence += ' Prices, taxes and entry rules can change before then.';
+    if (cfg.seasonCheapest) sentence += ' The cheaper stretch for ' + WD.countryName + ' tends to be ' + cfg.seasonCheapest + '.';
+    const escapeEl = wrap.querySelector('[data-date-escape]');
+    if (escapeEl) escapeEl.textContent = sentence;
+    const linkWrap = wrap.querySelector('[data-date-link-wrap]');
+    if (linkWrap) linkWrap.hidden = !cfg.seasonCheapest;
+  }
+
+  // ===================================================================================
   // MIRROR: read already-computed text out of the hidden engine's own elements; write it,
   // verbatim, into the new surface. See file header for the full accounting.
   // ===================================================================================
@@ -840,10 +894,10 @@ export function initCalcWizard() {
       // amount and a date, not "yes"/"no", so this loop's summary text would be wrong for
       // them); each gets its own explicit line just below instead. Pet and medical are
       // genuine yes/no answers, so this loop's own generic summary text is already correct
-      // for them and needs nothing added. None of the five new questions touch
-      // [data-avoid-extra], since none of them render on the result card yet (this step is
-      // collection only); the wrap lookup below is simply never found for any of them,
-      // the same harmless no-op it already is for pet/medical today. -----
+      // for them and needs nothing added. BRIEF-result-card-step3: pet and medical NOW also
+      // render on the result card (CalcWizard.astro's own [data-avoid-extra="pet"/"medical"]
+      // rows), so this same wrap.hidden toggle that was a harmless no-op before this step
+      // now genuinely shows and hides them, with no change needed here at all. -----
       (WD.questionSteps || []).forEach(key => {
         if (key === 'carrier' || key === 'goods' || key === 'date') return;
         const wrap = document.querySelector('[data-avoid-extra="' + key + '"]');
@@ -853,12 +907,29 @@ export function initCalcWizard() {
       });
 
       // ----- BRIEF-input-step2b: the three summaries that do not fit the generic loop
-      // above, each read straight off the state this file already tracks for them. -----
+      // above, each read straight off the state this file already tracks for them.
+      // BRIEF-result-card-step3: 'airbnb' is a new case in the same ternary, not a new
+      // line, since it is the same hotelBooking flag augmented with a third real value. -----
       set('[data-mirror="summaryHotelBooking"]',
-        state.hotelBooking === 'online' ? 'Online' : state.hotelBooking === 'direct' ? 'Direct with hotel' : 'Skipped, not a hotel');
+        state.hotelBooking === 'online' ? 'Online' : state.hotelBooking === 'direct' ? 'Direct with hotel'
+          : state.hotelBooking === 'airbnb' ? 'Airbnb or short-term rental' : 'Skipped, not a hotel');
       set('[data-mirror="summaryGoods"]',
         (state.answers.goods === 'yes' && state.goodsAmount !== '') ? ('About ' + numberToUsd(Number(state.goodsAmount))) : 'Skipped');
       set('[data-mirror="summaryDate"]', state.answers.date ? state.answers.date : 'Not sure yet');
+
+      // ----- BRIEF-result-card-step3: the Airbnb result-card row. Same shape as the
+      // generic loop above (a plain show/hide, nothing computed), but hand-wired here
+      // rather than folded into WD.questionSteps: hotelBooking is its own top-level state
+      // flag (see file header), not a questionSteps answer, so the generic loop's
+      // state.answers[key] read would never find it. -----
+      const airbnbWrap = document.querySelector('[data-avoid-extra="airbnb"]');
+      if (airbnbWrap) airbnbWrap.hidden = (state.hotelBooking !== 'airbnb');
+
+      // ----- BRIEF-result-card-step3: goods and date each need real text composed from
+      // what the reader typed, so each gets its own small render function, the same
+      // engine/surface split renderCarrierItem() above already draws. -----
+      renderGoodsItem();
+      renderDateItem();
 
       if (resultView) resultView.hidden = false;
       if (errorView) errorView.hidden = true;
