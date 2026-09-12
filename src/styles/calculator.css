@@ -155,6 +155,12 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .currency-input input { width: 100%; min-width: 0; border: 0; outline: none; background: transparent; padding: .9375rem 0; font-size: 1.5rem; color: var(--ink); }
 .currency-symbol { font-size: 1.5rem; }
 .currency-code { color: var(--muted); font-size: .9375rem; }
+/* BRIEF-rooms-autosuggest: same bordered field as .currency-input, minus the currency
+   symbol/code and narrower, since a room count is at most a couple of digits. */
+.count-input { display: flex; align-items: center; border: 1.5px solid var(--control-line); border-radius: var(--radius); min-height: 4rem; padding: 0 1rem; max-width: 9rem; }
+.count-input:focus-within { outline: 3px solid var(--focus); outline-offset: 3px; }
+.count-input:has([aria-invalid="true"]) { border: 2px solid var(--error); background: var(--error-bg); }
+.count-input input { width: 100%; min-width: 0; border: 0; outline: none; background: transparent; padding: .9375rem 0; font-size: 1.5rem; color: var(--ink); text-align: center; }
 .conditional-field { margin-top: 1.5rem; }
 .assumption-note { border-left: 3px solid var(--line); padding-left: 1rem; color: var(--muted); font-size: .9375rem; margin-top: 1.25rem; }
 .wizard-actions { display: grid; grid-template-columns: 1fr; gap: .75rem; margin-top: 2rem; }
@@ -252,8 +258,8 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
    orange), unchanged. Never red, per the original brief's rule. */
 .ttc-card-row-mark { flex-shrink: 0; width: 1.125rem; height: 1.125rem; display: inline-flex; }
 .ttc-card-row-mark svg { width: 100%; height: 100%; display: block; }
-.ttc-card-group-soft .ttc-card-row-mark-shield, .ttc-card-mark-legend .ttc-card-row-mark-shield { color: #276953; }
-.ttc-card-group-soft .ttc-card-row-mark-hand, .ttc-card-mark-legend .ttc-card-row-mark-hand { color: var(--amber-dark); }
+.ttc-card-row-mark-shield { color: #16302C; }
+.ttc-card-row-mark-hand { color: var(--amber-dark); }
 .ttc-card-group-hard .ttc-card-row-mark { display: none; }
 .ttc-card-mark-legend { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; align-items: center; font-size: .8125rem; color: #6D4A13; padding: 0 0 .625rem; }
 .ttc-card-mark-legend-item { display: inline-flex; align-items: center; gap: .375rem; }

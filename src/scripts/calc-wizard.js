@@ -166,7 +166,10 @@ export function initCalcWizard() {
   // rail's own "never asked" behavior rather than sitting unused.
   const state = {
     flightMode: 'known',
-    origin: { hotel: 'estimate', flight: 'estimate' },
+    // BRIEF-rooms-autosuggest: rooms gets the same 'estimate' | 'figure' provenance flag
+    // as hotel and flight, so resyncBeforeShow('hotel') knows whether it is still safe to
+    // overwrite the reader's own typed count with a fresh suggestion.
+    origin: { hotel: 'estimate', flight: 'estimate', rooms: 'estimate' },
     answers: { ...(WD.questionDefaults || {}) },
     // BRIEF-input-step2b: hotelBooking is the hotel step's own new mode flag, same shape
     // as flightMode above (a plain top-level field, not part of `answers`, since it
@@ -186,7 +189,13 @@ export function initCalcWizard() {
   // ===================================================================================
 
   // ----- travelers / nights: presets + stepper -----
-  function wireQuantity(name, hiddenKey) {
+  // BRIEF-rooms-autosuggest: onCommit is an optional third argument, called with the new
+  // value every time this control commits one, by any of its three input paths (preset,
+  // stepper button, direct typing). travelers is the only caller that uses it today, to
+  // keep the rooms question's visibility and suggested count in step with the party size
+  // the moment it changes rather than only when the reader reaches the hotel step; nights
+  // still calls this with two arguments, unchanged.
+  function wireQuantity(name, hiddenKey, onCommit) {
     const fieldset = document.querySelector('[data-quantity-fieldset="' + name + '"]');
     const qtyInput = document.querySelector('[data-quantity-input="' + name + '"]');
     if (!fieldset || !qtyInput) return;
@@ -207,6 +216,7 @@ export function initCalcWizard() {
       syncPresets(v);
       syncButtons(v);
       setStepper(hiddenKey, v);
+      if (onCommit) onCommit(v);
       if (announceIt) announce(v + ' ' + name);
     }
     $$('input[name="preset-' + name + '"]', fieldset).forEach(r => {
@@ -223,12 +233,13 @@ export function initCalcWizard() {
       const v = parseInt(raw, 10);
       if (raw !== '' && Number.isInteger(v) && v >= min && v <= max) {
         syncPresets(v); syncButtons(v); setStepper(hiddenKey, v);
+        if (onCommit) onCommit(v);
       }
       // out-of-range or non-numeric: leave the field exactly as typed (never silently
       // clamp), validated properly at submit time instead.
     });
   }
-  wireQuantity('travelers', 'hnTrav');
+  wireQuantity('travelers', 'hnTrav', (v) => applyRoomsVisibility(v));
   wireQuantity('nights', 'hnNights');
 
   // ----- style: radio rows -----
@@ -271,6 +282,63 @@ export function initCalcWizard() {
       if (v != null) setMoneyInput('hnRoom', v);
     });
   }
+
+  // ----- rooms (BRIEF-rooms-autosuggest): shown only for 3+ travelers -----
+  //
+  // calc-engine.js owns the suggested count and the hidden #hnRooms value it writes it
+  // into (Math.ceil(travelers / 2), refreshed on every travelers change unless the reader
+  // has typed their own). This file only mirrors that value onto the visible control,
+  // toggles the question's visibility, tracks whether the VISIBLE field itself has been
+  // typed into (state.origin.rooms, the same 'estimate' | 'figure' shape hotel and flight
+  // already use), and writes the two note texts. It never computes a room count itself.
+  const roomsInput = document.querySelector('[data-rooms-input]');
+  const roomsWrap = document.querySelector('[data-rooms-wrap]');
+  const roomsNote = document.querySelector('[data-rooms-note]');
+  const roomPriceNote = document.querySelector('[data-room-price-note]');
+  const roomPriceHelp = byId('q-hotel-help');
+  function currentHiddenRooms() {
+    const hidden = byId('hnRooms');
+    const n = hidden ? parseInt(hidden.value, 10) : 1;
+    return (Number.isInteger(n) && n >= 1) ? n : 1;
+  }
+  function applyRoomsVisibility(trav) {
+    const show = trav >= 3;
+    if (roomsWrap) roomsWrap.hidden = !show;
+    const roomsNow = currentHiddenRooms();
+    // Only overwrite the visible field from the hidden suggestion while the reader has not
+    // typed their own count, the same rule the room price and flight fields already use.
+    if (roomsInput && state.origin.rooms !== 'figure') roomsInput.value = roomsNow;
+    if (roomsNote) {
+      roomsNote.textContent = show
+        ? ('We have assumed ' + roomsNow + ' ' + (roomsNow === 1 ? 'room' : 'rooms') + ' for your party of ' + trav
+          + ' (about two per room). Change it if you are booking differently, or enter your combined nightly price for a single figure.')
+        : '';
+    }
+    if (roomPriceNote) {
+      roomPriceNote.innerHTML = show
+        ? '<strong>This is the nightly price for a single room, taken as entered.</strong>'
+        : '<strong>This is the nightly price for your room, taken as entered.</strong><br />We assume a single room for one or two travelers. If you need more than one, enter the combined nightly price.';
+    }
+    if (roomPriceHelp) {
+      roomPriceHelp.textContent = show
+        ? 'Enter the price for one room. The rooms field below multiplies it.'
+        : 'This estimate uses one room throughout the stay for one or two travelers.';
+    }
+  }
+  if (roomsInput) {
+    roomsInput.addEventListener('input', () => {
+      const raw = roomsInput.value;
+      const v = parseInt(raw, 10);
+      if (raw !== '' && Number.isInteger(v) && v >= 1) {
+        state.origin.rooms = 'figure';
+        setMoneyInput('hnRooms', v);
+      }
+      // out-of-range or non-numeric: leave the field exactly as typed, validated at submit.
+    });
+  }
+  // Seed the initial state from whatever travelers already holds (the default, 2, unless
+  // the reader reached this step after already changing it on an earlier visit).
+  applyRoomsVisibility(+byId('hnTrav').dataset.v);
 
   // ----- NEW QUESTION 1 (BRIEF-input-step2b): hotel booking method + conditional price,
   // same shape as flight-mode/flightPriceWrap above. The hidden engine has no concept of
@@ -439,6 +507,14 @@ export function initCalcWizard() {
       const v = parseMoney(hotelPriceInput.value);
       if (v == null) return { valid: false, message: 'Enter a room price in USD. For example, 150.', focusEl: hotelPriceInput, errorSelector: 'hotel' };
       state.origin.hotel = (Math.round(v) !== initialRoomTypical) ? 'figure' : 'estimate';
+      // BRIEF-rooms-autosuggest: only required while the question is actually showing
+      // (3+ travelers); hidden below that, so nothing here to validate at 1 or 2.
+      if (roomsWrap && !roomsWrap.hidden && roomsInput) {
+        const rv = parseInt(roomsInput.value, 10);
+        if (roomsInput.value === '' || !Number.isInteger(rv) || rv < 1) {
+          return { valid: false, message: 'Enter a whole number of rooms, 1 or more.', focusEl: roomsInput, errorSelector: 'hotel' };
+        }
+      }
       return { valid: true };
     }
     if (key === 'card') return { valid: true };
@@ -473,6 +549,9 @@ export function initCalcWizard() {
       const hidden = byId('hnRoom');
       if (hidden && hotelPriceInput) hotelPriceInput.value = hidden.value;
     }
+    // BRIEF-rooms-autosuggest: same idea, for the rooms question. Covers the Back button
+    // and the Edit-trip dialog, neither of which goes through wireQuantity's onCommit.
+    if (key === 'hotel') applyRoomsVisibility(+byId('hnTrav').dataset.v);
   }
 
   // ===================================================================================
@@ -739,7 +818,13 @@ export function initCalcWizard() {
       set('[data-breakdown-amount="accommodation"]', roomAmt);
       set('[data-breakdown-line-amount="accommodation"]', roomAmt);
       document.querySelectorAll('[data-breakdown-line-provenance="accommodation"]').forEach(el => { el.innerHTML = '<span class="meta-key">Basis</span> ' + (state.origin.hotel === 'figure' ? 'Your figure' : 'Our estimate'); });
-      set('[data-breakdown-line-note="accommodation"]', '$' + roomVal + ' a night \u00d7 ' + nights + ' ' + (nights === 1 ? 'night' : 'nights') + '.');
+      // BRIEF-rooms-autosuggest: roomAmt above already includes the rooms multiplier (it is
+      // read straight from the engine's own hnRoomV), so this note has to say so too, or it
+      // would understate what roomAmt shows right next to it. rooms reads 1 whenever the
+      // question is not showing, so the note is unchanged at 1 or 2 travelers.
+      const roomsNowMirror = currentHiddenRooms();
+      set('[data-breakdown-line-note="accommodation"]', '$' + roomVal + ' a night \u00d7 ' + nights + ' ' + (nights === 1 ? 'night' : 'nights')
+        + (roomsNowMirror > 1 ? ' \u00d7 ' + roomsNowMirror + ' rooms' : '') + '.');
 
       // ----- breakdown: Accommodation checkout uplift (BRIEF-calc-v2-clusterA #7) -----
       // Gated on the engine's own already-computed tax figure (taxAmt, read from hnTax
@@ -990,7 +1075,12 @@ export function initCalcWizard() {
       // Edit-trip's cancel path can put it back exactly as it was, the same as every other
       // field this dialog touches.
       const bookingChecked = document.querySelector('[data-choice-fieldset="hotel-booking"] input:checked');
-      return { value: hotelPriceInput.value, booking: bookingChecked ? bookingChecked.value : state.hotelBooking };
+      // BRIEF-rooms-autosuggest: rooms rides along the same snapshot, same shape as hotel
+      // price itself: a value plus the origin flag that says whether it was typed.
+      return {
+        value: hotelPriceInput.value, booking: bookingChecked ? bookingChecked.value : state.hotelBooking,
+        roomsValue: roomsInput ? roomsInput.value : null, roomsOrigin: state.origin.rooms,
+      };
     }
     if (key === 'card') {
       const checked = document.querySelector('[data-choice-fieldset="card"] input:checked');
@@ -1027,6 +1117,10 @@ export function initCalcWizard() {
       if (input) input.value = snap.value;
       const fieldset = document.querySelector('[data-quantity-fieldset="' + key + '"]');
       if (fieldset) $$('input[type="radio"]', fieldset).forEach(r => { r.checked = (r.value === String(snap.value)); });
+      // BRIEF-rooms-autosuggest: setStepper above calls calc-engine.js's own hnTrav
+      // handler directly, bypassing wireQuantity's onCommit, so the rooms question would
+      // otherwise miss this path (Edit trip's cancel button).
+      if (key === 'travelers' && Number.isFinite(n)) applyRoomsVisibility(n);
     } else if (key === 'style') {
       if (snap.value != null) { clickStyle(+snap.value); $$('[data-choice-fieldset="style"] input').forEach(r => { r.checked = (r.value === snap.value); }); }
     } else if (key === 'flights') {
@@ -1043,6 +1137,15 @@ export function initCalcWizard() {
       state.hotelBooking = snap.booking;
       $$('[data-choice-fieldset="hotel-booking"] input').forEach(r => { r.checked = (r.value === snap.booking); });
       applyHotelBookingVisibility();
+      // BRIEF-rooms-autosuggest: restore rooms the same way, then refresh its visibility
+      // and both note texts against the party size as it stands right now.
+      state.origin.rooms = snap.roomsOrigin || 'estimate';
+      if (roomsInput && snap.roomsValue != null) {
+        roomsInput.value = snap.roomsValue;
+        const rv = parseInt(snap.roomsValue, 10);
+        if (state.origin.rooms === 'figure' && Number.isInteger(rv) && rv >= 1) setMoneyInput('hnRooms', rv);
+      }
+      applyRoomsVisibility(+byId('hnTrav').dataset.v);
     } else if (key === 'card') {
       if (snap.value != null) { setNoFee(snap.value === 'no-fee'); $$('[data-choice-fieldset="card"] input').forEach(r => { r.checked = (r.value === snap.value); }); }
     } else if (key === 'destination') {

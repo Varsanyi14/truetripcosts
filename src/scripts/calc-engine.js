@@ -108,7 +108,7 @@ import { usdBracket } from '../data/usd-bracket.js';
   let styleIndex = styleBtns.findIndex(b => b.classList.contains('on'));
   if (styleIndex < 0) styleIndex = 0;
 
-  const state = { regionIndex: 0, room: 150, nights: 7, trav: 2, paid: false, noFee: false, flight: 0, flightEdited: false, roomEdited: false };
+  const state = { regionIndex: 0, room: 150, nights: 7, trav: 2, paid: false, noFee: false, flight: 0, flightEdited: false, roomEdited: false, rooms: 1, roomsEdited: false };
 
   // ----- flights: a verified typical fare prefilled, the traveler's own once edited -----
   // When the country carries a verified flight range, the input prefills with the
@@ -204,6 +204,39 @@ import { usdBracket } from '../data/usd-bracket.js';
   applyStyleRoom();
   updateRoomHint();
 
+  // ----- rooms: an optional per-party room count (BRIEF-rooms-autosuggest) -----
+  //
+  // WIZARD-ONLY, ON PURPOSE. #hnRooms exists only on the calculator wizard's hidden engine
+  // copy (CalcWizard.astro), never on the per-country inline calculator (CountryBriefing.astro),
+  // so this is looked up with querySelector rather than the id() helper used everywhere else
+  // in this file: id()/getElementById() calls are exactly what calc-regression-test.mjs's DOM
+  // contract scans for and then requires on every built country page, and #hnRooms is
+  // deliberately not part of that universal contract. Where it is absent, roomsInput stays
+  // null, rooms stays fixed at 1 forever, and every line below behaves exactly as it did
+  // before this feature: the inline calculator on all 59 live country pages is untouched.
+  const roomsInput = document.querySelector('#hnRooms');
+  function roomsVal() {
+    if (!roomsInput) return 1;
+    let v = parseInt(String(roomsInput.value).replace(/[^0-9]/g, ''), 10);
+    if (!Number.isFinite(v) || v < 1) v = 1;
+    return v;
+  }
+  // Math.ceil(travelers / 2): two travelers per room, rounded up. A pre-filled DEFAULT,
+  // never a claim about the traveler's actual booking (see the wizard's own note).
+  function suggestedRooms(travCount) { return Math.max(1, Math.ceil(travCount / 2)); }
+  function applyRoomsSuggestion() {
+    if (!roomsInput || state.roomsEdited) return;
+    const r = suggestedRooms(state.trav);
+    state.rooms = r;
+    if (document.activeElement !== roomsInput) roomsInput.value = r;
+  }
+  if (roomsInput) {
+    roomsInput.addEventListener('input', () => { state.rooms = roomsVal(); state.roomsEdited = true; render(true); });
+    roomsInput.addEventListener('blur', () => { roomsInput.value = state.rooms || 1; });
+  }
+  // Seed it the same way the room price seeds from style on load, above.
+  applyRoomsSuggestion();
+
   // ----- the two toggles: already-paid room, and the no-foreign-fee card lever -----
   const paidToggle = id('hnPaid');
   if (paidToggle) paidToggle.addEventListener('change', () => { state.paid = paidToggle.checked; render(true); });
@@ -232,7 +265,7 @@ import { usdBracket } from '../data/usd-bracket.js';
       let v = +el.dataset.v + (+btn.dataset.dir);
       v = Math.max(lo, Math.min(hi, v));
       el.dataset.v = v; el.textContent = v;
-      if (key === 'hnNights') state.nights = v; else state.trav = v;
+      if (key === 'hnNights') { state.nights = v; } else { state.trav = v; applyRoomsSuggestion(); }
       setDisabled(v);
       render(true);
     }));
@@ -242,7 +275,26 @@ import { usdBracket } from '../data/usd-bracket.js';
   bindStepper('hnTrav');
 
   // ----- tourist-tax engine. rate = local currency units per 1 USD. -----
-  function computeTax(roomUSD, nights, trav) {
+  //
+  // `rooms` (BRIEF-rooms-autosuggest) defaults to 1 on every call site that does not pass
+  // it, so a caller that still says computeTax(roomUSD, nights, trav) behaves exactly as
+  // before this feature. Whether a unit scales with it depends on what it is actually
+  // charging, never assumed uniformly:
+  //   perPersonPerNight and the oneTimePerPerson add-on already charge every traveler by
+  //     headcount (trav), regardless of how many rooms they are split across, so neither
+  //     multiplies by rooms: a party in one room or three pays the same per-person tax.
+  //   flatPerNight is a flat charge per booking, i.e. per room, per night (the same
+  //     assumption the site's own hotel-tax-map.js calls "perRoomPerNight" for these exact
+  //     real-world charges), so it scales with rooms.
+  //   percentOfRoom is a percentage of ONE room's rate, per booking, so a second room at
+  //     the same rate is a second charge: it scales with rooms too.
+  //   tieredPerPersonPerNight looks up a band from the room's price PER OCCUPANT. At one
+  //     room that is roomUSD / trav; splitting the same party across `rooms` equally
+  //     priced rooms means each room houses trav / rooms people, so the per-occupant price
+  //     driving the band lookup is roomUSD * rooms / trav. The per-person amount itself
+  //     still multiplies by trav, same as before, since it is still charged per head.
+  function computeTax(roomUSD, nights, trav, rooms) {
+    if (rooms == null) rooms = 1;
     if (!tax || tax.none || regions.length === 0) {
       return { usd: 0, label: 'Tourist tax', note: (tax && tax.note) || '' };
     }
@@ -256,12 +308,12 @@ import { usdBracket } from '../data/usd-bracket.js';
     if (unit === 'perPersonPerNight') {
       amount = ((r.rate || 0) * trav * nCap) / rate;
     } else if (unit === 'flatPerNight') {
-      amount = ((r.rate || 0) * nCap) / rate;               // per booking, not per person
+      amount = ((r.rate || 0) * nCap * rooms) / rate;        // per room, per night
     } else if (unit === 'percentOfRoom') {
-      amount = ((r.pct || 0) / 100) * roomUSD * nCap;        // already USD, per booking
+      amount = ((r.pct || 0) / 100) * roomUSD * nCap * rooms; // already USD, per room
     } else if (unit === 'tieredPerPersonPerNight') {
       const bands = r.bands || [];
-      const ppLocalNight = (roomUSD / Math.max(1, trav)) * rate;
+      const ppLocalNight = (roomUSD * rooms / Math.max(1, trav)) * rate;
       let band = 0;
       for (const b of bands) { if (b.upTo == null || ppLocalNight < b.upTo) { band = b.rate; break; } }
       amount = (band * trav * nCap) / rate;
@@ -285,7 +337,13 @@ import { usdBracket } from '../data/usd-bracket.js';
     const cashShare = b ? (+b.dataset.cash || 0) : 0;
     const styleName = b ? (b.textContent || '').trim() : '';
 
-    const room = roomUSD * nights;
+    // BRIEF-rooms-autosuggest: rooms only ever multiplies anything at 3+ travelers. Below
+    // that this clamps to 1 regardless of state.rooms or roomsInput's own value, which is
+    // the one line every 1 or 2-traveler trip's byte-identical result actually rests on:
+    // even a stray or manipulated rooms value can never reach the math for a 1 or
+    // 2-traveler trip, on this page or the inline calculator alike.
+    const rooms = (trav >= 3) ? Math.max(1, state.rooms) : 1;
+    const room = roomUSD * nights * rooms;
     const spend = per * trav * nights;
     const cash = spend * cashShare, card = spend - cash;
     const roomOnCard = state.paid ? 0 : room;
@@ -302,7 +360,7 @@ import { usdBracket } from '../data/usd-bracket.js';
     const atmFlat = pulls * 5;                       // fixed operator/bank charge per withdrawal
     const atmFx = cash * (atmCashPct / 100);         // percentage markup on the cash itself
     const atmFee = state.noFee ? atmFlat : (atmFlat + atmFx);
-    const t = computeTax(roomUSD, nights, trav);
+    const t = computeTax(roomUSD, nights, trav, rooms);
     // Flights ride the total but never the fee math: a US-booked fare is a dollar
     // purchase, so it takes no foreign fee and no share of the cash split.
     const flightTotal = state.flight * trav;
@@ -606,9 +664,13 @@ import { usdBracket } from '../data/usd-bracket.js';
     const setA = (elId, txt) => { const e = id(elId); if (e) e.textContent = txt; };
     const styleWord = styleName ? styleName.toLowerCase() : 'mid-range';
     setA('hnaSpend', 'About ' + usd(per) + ' per traveler each day for ' + styleWord + ' travel, across ' + trav + ' ' + (trav === 1 ? 'traveler' : 'travelers') + ' and ' + nights + ' ' + (nights === 1 ? 'night' : 'nights') + '.');
+    // rooms > 1 is only ever reachable on the wizard (see the rooms section above), so this
+    // clause is silently inert on the inline calculator, where rooms stays fixed at 1 and
+    // the sentence never appears.
+    const roomsNote = (rooms > 1) ? (' Assumed at ' + rooms + ' rooms.') : '';
     setA('hnaRoom', (styleRoomOf(styleIndex) != null && !state.roomEdited)
-      ? ('A typical ' + styleWord + ' room in ' + DATA.name + ' runs about ' + usd(state.room) + ' a night, a starting point for the style you picked. Type your own and it takes over.' + (state.paid ? ' Marked already paid, so it is out of the total, though the tourist tax still applies.' : ''))
-      : ('Your room at ' + usd(state.room) + ' a night' + (state.paid ? ', marked already paid, so it is out of the total, though the tourist tax still applies.' : ', across ' + nights + ' ' + (nights === 1 ? 'night' : 'nights') + '.')));
+      ? ('A typical ' + styleWord + ' room in ' + DATA.name + ' runs about ' + usd(state.room) + ' a night, a starting point for the style you picked. Type your own and it takes over.' + (state.paid ? ' Marked already paid, so it is out of the total, though the tourist tax still applies.' : '') + roomsNote)
+      : ('Your room at ' + usd(state.room) + ' a night' + (state.paid ? ', marked already paid, so it is out of the total, though the tourist tax still applies.' : ', across ' + nights + ' ' + (nights === 1 ? 'night' : 'nights') + '.') + roomsNote));
     setA('hnaFlight', !flightData && flightTotal <= 0
       ? 'Not counted. We have not yet verified a typical fare for ' + DATA.name + ', so flights join the total only if you enter your own round trip fare above.'
       : (estFlight

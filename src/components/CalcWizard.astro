@@ -551,8 +551,22 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
       later step's concern, not this one's, which is collection only. */}
   <ChoiceRows name="hotel-booking" legend="How you booked your hotel" options={hotelBookingOptions} />
   <div class="conditional-field" data-hotel-price-wrap>
-    <PriceControl name="hotel" label="Room price per night (USD)" value={roomTypical} helpText="This estimate uses one room throughout the stay." />
-    <div class="assumption-note"><strong>This is the nightly price for your room, taken as entered.</strong><br />We do not model how many rooms your party needs, so this figure is not divided or multiplied by the traveler count from step 2. If you need more than one room, enter the combined nightly price.</div>
+    <PriceControl name="hotel" label="Room price per night (USD)" value={roomTypical} helpText="This estimate uses one room throughout the stay for one or two travelers." />
+    {/* BRIEF-rooms-autosuggest: shown only for 3+ travelers, toggled by calc-wizard.js's
+        applyRoomsVisibility the same way data-hotel-price-wrap itself already toggles on
+        the hotel-booking answer above. Pre-filled with Math.ceil(travelers / 2), fully
+        overwritable: the traveler's own typed count wins from then on, the same pattern
+        the room price and flight fields above already use. Nested inside
+        data-hotel-price-wrap so it also hides automatically whenever the reader is not
+        staying in paid lodging at all. */}
+    <div class="conditional-field" data-rooms-wrap hidden>
+      <label class="field-label" for="q-rooms">Rooms for your party</label>
+      <div class="count-input">
+        <input id="q-rooms" name="rooms" type="text" inputmode="numeric" autocomplete="off" value="1" aria-describedby="q-rooms-help" data-rooms-input />
+      </div>
+      <p class="field-help" id="q-rooms-help" data-rooms-note>&nbsp;</p>
+    </div>
+    <div class="assumption-note" data-room-price-note><strong>This is the nightly price for your room, taken as entered.</strong><br />We assume a single room for one or two travelers. If you need more than one, enter the combined nightly price.</div>
   </div>
 </QuestionPanel>
 
@@ -1118,6 +1132,14 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
       </label>
     </div>
     <p class="ef-hint-room" id="hnRoomHint" hidden></p>
+    {/* BRIEF-rooms-autosuggest: the hidden engine's own rooms count, read by
+        calc-engine.js via querySelector rather than its id() helper (see that file's own
+        comment on this), which is why this id is not part of calc-regression-test.mjs's
+        DOM contract and does not need to exist on the per-country inline calculator. Its
+        visible counterpart lives on the wizard's own accommodation step below, wired to
+        this one by calc-wizard.js the same way the room price and flight fields already
+        are. */}
+    <input id="hnRooms" type="text" inputmode="numeric" value="1" aria-hidden="true" tabindex="-1" />
 
     <label class="cf hn-region" id="hnRegionWrap" hidden style="display:none">
       <span class="cf-l">Where are you staying?</span>
