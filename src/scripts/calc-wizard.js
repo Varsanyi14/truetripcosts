@@ -731,32 +731,70 @@ export function initCalcWizard() {
   }
 
   // ===================================================================================
-  // LEAVING DATE ROW (BRIEF-result-card-step3). The only thing this function computes:
-  // the reader's own date against today's, to name the month and flag a genuinely far-out
-  // trip (5 or more months away). avoidable.js's leavingDateCardFor(c, ...) already
-  // supplies the one build-time fact this needs (this country's own cheaper-months
-  // window, read from calc-lines.js's existing season data, if any); nothing else here is
-  // invented, and a country with no season row simply omits that clause and its link.
+  // LEAVING DATE ROW (BRIEF-result-card-step3, extended by BRIEF-leaving-date-notify-line).
+  // Two separate things this function computes against today's date: the reader's own
+  // month, to flag a genuinely far-out trip (5 or more months away, the original "prices
+  // can change" clause), and, independently, how many weeks out they are, to gate the
+  // notify offer below (BRIEF-leaving-date-notify-line's own "never cry wolf" rule: a trip
+  // inside about 8 weeks gets no notify pitch at all, since nothing will move that fast).
+  // avoidable.js's leavingDateCardFor(c, ...) already supplies the one build-time fact
+  // this needs (this country's own cheaper-months window, read from calc-lines.js's
+  // existing season data, if any); nothing else here is invented, and a country with no
+  // season row simply omits that clause and its link.
+  //
+  // BRIEF-leaving-date-notify-line: the row itself no longer hides entirely when the
+  // reader skipped the date question ("not sure yet" is state.answers.date === ''). It now
+  // always shows, because the notify offer has something honest to say either way: the
+  // month-named sentence plus the far-out offer where a real date exists, or the no-date
+  // offer alone where it does not. The month-specific sentence (data-date-escape) itself
+  // still only ever renders with a real date, since a month cannot be named without one.
   // ===================================================================================
   function renderDateItem() {
     const wrap = document.querySelector('[data-avoid-extra="date"]');
     if (!wrap) return;
     const raw = state.answers.date;
-    const show = !!raw;
-    wrap.hidden = !show;
-    if (!show) return;
+    wrap.hidden = false;
     const cfg = WD.leavingDate || {};
-    const leave = new Date(raw + 'T00:00:00');
-    const monthName = leave.toLocaleDateString('en-US', { month: 'long' });
-    const today = new Date();
-    const monthsOut = (leave.getFullYear() - today.getFullYear()) * 12 + (leave.getMonth() - today.getMonth());
-    let sentence = 'You are leaving in ' + monthName + '.';
-    if (monthsOut >= 5) sentence += ' Prices, taxes and entry rules can change before then.';
-    if (cfg.seasonCheapest) sentence += ' The cheaper stretch for ' + WD.countryName + ' tends to be ' + cfg.seasonCheapest + '.';
+    const country = WD.countryName;
+    const escapeWrap = wrap.querySelector('[data-date-escape-wrap]');
     const escapeEl = wrap.querySelector('[data-date-escape]');
-    if (escapeEl) escapeEl.textContent = sentence;
     const linkWrap = wrap.querySelector('[data-date-link-wrap]');
-    if (linkWrap) linkWrap.hidden = !cfg.seasonCheapest;
+    const notifyWrap = wrap.querySelector('[data-notify-date-wrap]');
+    const notifyTextEl = wrap.querySelector('[data-notify-date-text]');
+
+    if (raw) {
+      const leave = new Date(raw + 'T00:00:00');
+      const monthName = leave.toLocaleDateString('en-US', { month: 'long' });
+      const today = new Date();
+      const monthsOut = (leave.getFullYear() - today.getFullYear()) * 12 + (leave.getMonth() - today.getMonth());
+      let sentence = 'You are leaving in ' + monthName + '.';
+      if (monthsOut >= 5) sentence += ' Prices, taxes and entry rules can change before then.';
+      if (cfg.seasonCheapest) sentence += ' The cheaper stretch for ' + country + ' tends to be ' + cfg.seasonCheapest + '.';
+      if (escapeWrap) escapeWrap.hidden = false;
+      if (escapeEl) escapeEl.textContent = sentence;
+      if (linkWrap) linkWrap.hidden = !cfg.seasonCheapest;
+
+      // BRIEF-leaving-date-notify-line: day-precise on purpose, finer grained than the
+      // month-rounded monthsOut check just above, since "about 8 weeks" is a weeks
+      // question, not a months one. Today is normalized to midnight so the count does not
+      // drift with whatever hour the reader happens to load the page at.
+      const todayMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      const daysOut = Math.round((leave - todayMidnight) / 86400000);
+      const isNear = daysOut < 56;
+      if (notifyWrap) notifyWrap.hidden = isNear;
+      if (!isNear && notifyTextEl) {
+        notifyTextEl.textContent = 'Your trip is a while off, and costs can change before you go. '
+          + 'We keep watch on ' + country + '. If a real cost changes, we\'ll email you once, so your plan stays right.';
+      }
+    } else {
+      if (escapeWrap) escapeWrap.hidden = true;
+      if (linkWrap) linkWrap.hidden = true;
+      if (notifyWrap) notifyWrap.hidden = false;
+      if (notifyTextEl) {
+        notifyTextEl.textContent = 'Whenever you go, these numbers should still hold. '
+          + 'We keep watch on ' + country + '. If its costs change before then, we\'ll tell you.';
+      }
+    }
   }
 
   // ===================================================================================

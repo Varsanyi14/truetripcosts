@@ -434,6 +434,18 @@ const medicalCard = medicalAvoidableCard(c);
 const airbnbCard = airbnbAvoidableCard();
 const dateCard = leavingDateCardFor(c, L.season ? L.season.cheapest : null);
 
+// BRIEF-leaving-date-notify-line: the leaving-date row's own one-click watchdog signup,
+// posted straight to Buttondown exactly the way the changelog form already does
+// (ButtondownForm.astro's own native <form method="post"> pattern), so it needs zero new
+// client JS: a plain form, Buttondown's own public embed endpoint, their own confirmation
+// page on submit. The username constant is duplicated rather than imported, since that
+// component does not export it; keep the two in sync if the Buttondown account changes.
+// The country tag is baked in below at build time from this page's own c.slug, never
+// composed client-side, so the hard-honesty rule ("the signup MUST carry country:<slug>")
+// cannot silently drift out of sync with whichever country's page this is.
+const BUTTONDOWN_USERNAME = 'truetripcosts';
+const notifyAction = `https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`;
+
 // BRIEF-soft-tier-groups: whether each new sub-group has anything to show, the same kind
 // of build-time fact calmEligible above already is for the hard tier's own empty state.
 // All five PREPARE rows are unconditional on every country page today (never gated the
@@ -870,9 +882,25 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
                   <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
                 </summary>
                 <div class="ttc-card-row-detail">
-                  <p><strong data-date-escape>&nbsp;</strong></p>
+                  <p data-date-escape-wrap><strong data-date-escape>&nbsp;</strong></p>
                   <p class="small muted" data-date-link-wrap hidden><a data-date-link href={dateCard.href} target="_blank" rel="noopener">{dateCard.hrefLabel}</a></p>
                   <button class="text-link" type="button" data-edit="date">Change your travel date</button>
+
+                  <!-- BRIEF-leaving-date-notify-line: the watchdog offer. calc-wizard.js's
+                       renderDateItem() shows this for a far-out date or no date at all, and
+                       hides it entirely for a near date (within about 8 weeks): nothing will
+                       move that fast, so offering to watch would just be noise. No figure
+                       ever appears on this line, and the wording never promises a schedule,
+                       only a real change. The tag is fixed at build time (below), never
+                       guessed client-side, so it can never drift off this country. -->
+                  <div class="ttc-notify" data-notify-date-wrap hidden>
+                    <p class="small" data-notify-date-text>&nbsp;</p>
+                    <form class="ttc-notify-form" action={notifyAction} method="post" target="_blank" rel="noopener">
+                      <input class="ttc-notify-in" type="email" name="email" required placeholder="you@example.com" autocomplete="email" inputmode="email" aria-label={'Email address for ' + c.name + ' cost alerts'} />
+                      <input type="hidden" name="tag" value={'country:' + c.slug} />
+                      <button class="ttc-notify-btn" type="submit">Keep me posted on {c.name}</button>
+                    </form>
+                  </div>
                 </div>
               </details>
             </div>

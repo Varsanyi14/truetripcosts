@@ -273,6 +273,18 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .ttc-card-row-detail > p + p { margin-top: .625rem; }
 .ttc-card-row-detail .small { margin-top: .625rem; }
 .ttc-card-row-detail .text-link { margin-top: .375rem; }
+/* BRIEF-leaving-date-notify-line: the leaving-date row's own one-click watchdog signup.
+   A quiet second block under the row's existing text and its "Change" link, set off by a
+   thin rule so it reads as a distinct offer rather than a continuation of the same
+   sentence. Deliberately understated: no card background, no color beyond the one
+   button, since the row's own shield mark and the group's own tint already carry the
+   visual weight this card uses to say "worth doing." */
+.ttc-notify { margin-top: .875rem; padding-top: .875rem; border-top: 1px solid var(--line); }
+.ttc-notify-form { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .625rem; }
+.ttc-notify-in { flex: 1 1 13rem; min-width: 0; font: inherit; font-size: .9375rem; color: var(--text); background: var(--surface); border: 1px solid var(--control-line); border-radius: var(--radius); padding: .625rem .875rem; }
+.ttc-notify-in:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.ttc-notify-btn { appearance: none; border: 1px solid transparent; border-radius: var(--radius); background: var(--green); color: #fff; font: inherit; font-size: .9375rem; font-weight: 600; padding: .625rem 1.125rem; min-height: 2.75rem; white-space: normal; }
+.ttc-notify-btn:hover { background: var(--green-hover); }
 /* BRIEF-result-card-step3: THE TWO-MARK SYSTEM. A small badge beside every soft row's
    chevron, never on a hard row (a hard row already carries a real dollar amount in that
    same slot, which is its own, stronger signal). The ancestor-scoped display rule below is
