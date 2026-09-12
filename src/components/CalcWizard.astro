@@ -434,6 +434,18 @@ const medicalCard = medicalAvoidableCard(c);
 const airbnbCard = airbnbAvoidableCard();
 const dateCard = leavingDateCardFor(c, L.season ? L.season.cheapest : null);
 
+// BRIEF-soft-tier-groups: whether each new sub-group has anything to show, the same kind
+// of build-time fact calmEligible above already is for the hard tier's own empty state.
+// All five PREPARE rows are unconditional on every country page today (never gated the
+// way rail is), so this is always true; written as a real check on a real list rather
+// than assumed true, so a future change that gates one of them is honestly reflected here
+// too, and an empty group still renders no header rather than an empty tint. REFUSE
+// always has at least carrier and rental (both unconditional, per this file's own note
+// above: "Carrier and rental are unconditional"); softItems (the generic per-country
+// tactic pool) and rail are the only genuinely variable parts.
+const prepareGroupHasItems = [petCard, goodsVatCard, medicalCard, airbnbCard, dateCard].length > 0;
+const refuseGroupHasItems = (softItems.length + 1 + wizardGatedExtras.length) > 0;
+
 // BRIEF-result-card-step1, the card's "checked {Month Year}" stamp. A later step wires
 // this to a real per-country checked date; for now it is a static build-time stamp (this
 // site is fully static, so every build already regenerates it fresh), rendered only so
@@ -757,177 +769,202 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
             ))}
           </div>
 
-          <div class="ttc-card-group ttc-card-group-soft" data-avoid-tier="soft">
-            <p class="ttc-card-group-label">Worth knowing, no set price</p>
-            <!-- BRIEF-result-card-step3: the two-mark system's own tiny legend, optional
-                 per the brief ("if it helps"), included since it costs one quiet line and
-                 removes any doubt about what the two marks below mean. -->
-            <p class="ttc-card-mark-legend">
-              <span class="ttc-card-mark-legend-item"><span class="ttc-card-row-mark ttc-card-row-mark-shield" aria-hidden="true" set:html={MARK_SHIELD} />Prepare ahead</span>
-              <span class="ttc-card-mark-legend-item"><span class="ttc-card-row-mark ttc-card-row-mark-hand" aria-hidden="true" set:html={MARK_STOP} />Refuse to pay</span>
-            </p>
-            {softItems.map(a => (
-              <details class="ttc-card-row" data-avoid-mark="hand">
+          <!-- ===== BRIEF-soft-tier-groups (Option D): the old single mixed soft block,
+               distinguished only by a small per-row mark, is now TWO tinted, labeled
+               groups, so the whole row (not just a small icon) reads its type at a glance.
+               Sorting is by the item's already-known ORIGIN, not a new data field: the
+               five hand-rendered rows below are, and always were, every "get ready ahead
+               of time" item on this card; softItems/carrier/rail/rental are, and always
+               were, every "decline this on the spot" item. Nothing about avoidable.js
+               changes, so this is exactly the "partition by the known sets" route the
+               brief itself offers as the cleaner one here, since neither set is actually
+               mixed internally. The old shared two-mark legend is removed: each group is
+               now self-labeled, so repeating that legend above both would be the exact
+               duplicate labeling the brief says to avoid. Per-row marks are unchanged
+               (still shield/hand, same SVGs, same colors) since RULES says marks and
+               copy are untouched; only the grouping and the tint are new. ===== -->
+          {prepareGroupHasItems && (
+            <div class="ttc-card-group ttc-card-group-prepare" data-avoid-tier="prepare">
+              <p class="ttc-card-group-label ttc-card-group-label-prepare">
+                <span class="ttc-card-row-mark ttc-card-row-mark-shield" aria-hidden="true" set:html={MARK_SHIELD} />
+                <span class="ttc-card-group-label-text">Prepare ahead</span>
+                <span class="ttc-card-group-gloss">Get ready before you go.</span>
+              </p>
+              <!-- ===== BRIEF-result-card-step3: THE FIVE PREPARE ROWS, unchanged in
+                   substance from before this regroup. Pet and medical are genuine yes/no
+                   answers, so the SAME generic toggle loop that already handles rail/
+                   rental keys off WD.questionSteps for them with no calc-wizard.js change
+                   at all (see that file's own comment on this). Airbnb, goods and date
+                   each need their own explicit toggle (a hotel-booking sub-answer, an
+                   amount, a date, none of them a plain yes/no), handled there alongside
+                   the three summary lines that already get the same explicit treatment.
+                   Goods and date render empty placeholders here (data-goods-*,
+                   data-date-*): the real sentence is filled in by calc-wizard.js's
+                   renderGoodsItem()/renderDateItem() the moment the reader's own amount or
+                   date is known, never composed at build time. ===== -->
+              <details class="ttc-card-row" data-avoid-extra="pet" data-avoid-mark="shield" hidden>
                 <summary>
-                  <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor(a.key)} /></span>
-                  <span class="ttc-card-row-name" id={'item-' + a.key}>{a.title}</span>
-                  <span class="ttc-card-row-mark ttc-card-row-mark-hand" aria-hidden="true" set:html={MARK_STOP} />
+                  <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor('pet')} /></span>
+                  <span class="ttc-card-row-name" id="item-pet">{petCard.title}</span>
+                  <span class="ttc-card-row-mark ttc-card-row-mark-shield" aria-hidden="true" set:html={MARK_SHIELD} />
                   <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
                 </summary>
                 <div class="ttc-card-row-detail">
-                  <p><strong>{a.escape}</strong></p>
-                  <p>{a.detail}</p>
-                  <p class="small muted"><a href={a.href} target="_blank" rel="noopener">{a.hrefLabel}</a></p>
+                  <p><strong>{petCard.escape}</strong></p>
+                  {petCard.secondary && <p>{petCard.secondary}</p>}
+                  <p class="small muted"><a href={petCard.href} target="_blank" rel="noopener">{petCard.hrefLabel}</a></p>
+                  <button class="text-link" type="button" data-edit="pet">{petEntry.question.editTitle}</button>
                 </div>
               </details>
-            ))}
 
-            <!-- ===== Carrier connectivity (BRIEF-carrier-honest-build), now one row of
-                 the same shape (see this card's own header comment for how it moves
-                 between groups). Its config (options, edit title, client-safe carrier
-                 data, fallback text, eSIM link) still comes from carrierRegistryEntryFor(c),
-                 unchanged. BRIEF-result-card-step3: carries the hand mark like every other
-                 pre-existing soft row; the mark hides itself automatically once
-                 renderCarrierItem() moves this same row into the HARD group, via
-                 calculator.css's own ancestor scoping, never a script change here. ===== -->
-            <details class="ttc-card-row" data-avoid-carrier data-avoid-mark="hand">
-              <summary>
-                <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name="phoneok" /></span>
-                <span class="ttc-card-row-name" id="carrier-item-heading">Your phone plan abroad</span>
-                <span class="ttc-card-row-amount" data-carrier-amount-wrap hidden><strong data-carrier-amount>&nbsp;</strong></span>
+              <details class="ttc-card-row" data-avoid-extra="goods" data-avoid-mark="shield" hidden>
+                <summary>
+                  <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor('goods')} /></span>
+                  <span class="ttc-card-row-name" id="item-goods">{goodsVatCard.title}</span>
+                  <span class="ttc-card-row-mark ttc-card-row-mark-shield" aria-hidden="true" set:html={MARK_SHIELD} />
+                  <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </summary>
+                <div class="ttc-card-row-detail">
+                  <p><strong data-goods-escape>&nbsp;</strong></p>
+                  <p data-goods-secondary hidden>&nbsp;</p>
+                  <p class="small muted"><a data-goods-link href={goodsVatCard.href} target="_blank" rel="noopener">{goodsVatCard.hrefLabel}</a></p>
+                  <button class="text-link" type="button" data-edit="goods">Change your goods answer</button>
+                </div>
+              </details>
+
+              <details class="ttc-card-row" data-avoid-extra="medical" data-avoid-mark="shield" hidden>
+                <summary>
+                  <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor('medical')} /></span>
+                  <span class="ttc-card-row-name" id="item-medical">{medicalCard.title}</span>
+                  <span class="ttc-card-row-mark ttc-card-row-mark-shield" aria-hidden="true" set:html={MARK_SHIELD} />
+                  <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </summary>
+                <div class="ttc-card-row-detail">
+                  <p><strong>{medicalCard.escape}</strong></p>
+                  {medicalCard.secondary && <p>{medicalCard.secondary}</p>}
+                  <p class="small muted"><a href={medicalCard.href} target="_blank" rel="noopener">{medicalCard.hrefLabel}</a></p>
+                  <button class="text-link" type="button" data-edit="medical">{medicalEntry.question.editTitle}</button>
+                </div>
+              </details>
+
+              <details class="ttc-card-row" data-avoid-extra="airbnb" data-avoid-mark="shield" hidden>
+                <summary>
+                  <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor('airbnb')} /></span>
+                  <span class="ttc-card-row-name" id="item-airbnb">{airbnbCard.title}</span>
+                  <span class="ttc-card-row-mark ttc-card-row-mark-shield" aria-hidden="true" set:html={MARK_SHIELD} />
+                  <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </summary>
+                <div class="ttc-card-row-detail">
+                  <p><strong>{airbnbCard.escape}</strong></p>
+                  {airbnbCard.secondary && <p>{airbnbCard.secondary}</p>}
+                  <p class="small muted"><a href={airbnbCard.href} target="_blank" rel="noopener">{airbnbCard.hrefLabel}</a></p>
+                  <button class="text-link" type="button" data-edit="hotel">Change how you booked</button>
+                </div>
+              </details>
+
+              <details class="ttc-card-row" data-avoid-extra="date" data-avoid-mark="shield" hidden>
+                <summary>
+                  <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor('date')} /></span>
+                  <span class="ttc-card-row-name" id="item-date">{dateCard.title}</span>
+                  <span class="ttc-card-row-mark ttc-card-row-mark-shield" aria-hidden="true" set:html={MARK_SHIELD} />
+                  <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </summary>
+                <div class="ttc-card-row-detail">
+                  <p><strong data-date-escape>&nbsp;</strong></p>
+                  <p class="small muted" data-date-link-wrap hidden><a data-date-link href={dateCard.href} target="_blank" rel="noopener">{dateCard.hrefLabel}</a></p>
+                  <button class="text-link" type="button" data-edit="date">Change your travel date</button>
+                </div>
+              </details>
+            </div>
+          )}
+
+          {refuseGroupHasItems && (
+            <div class="ttc-card-group ttc-card-group-refuse" data-avoid-tier="refuse">
+              <p class="ttc-card-group-label ttc-card-group-label-refuse">
                 <span class="ttc-card-row-mark ttc-card-row-mark-hand" aria-hidden="true" set:html={MARK_STOP} />
-                <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-              </summary>
-              <div class="ttc-card-row-detail">
-                <p data-carrier-detail>&nbsp;</p>
-                {carrierEntry.esimUrl && (
-                  <p class="small muted" data-carrier-esim-wrap hidden>
-                    <a href={carrierEntry.esimUrl} target="_blank" rel="noopener sponsored">Check live eSIM prices for {c.name}</a> <span class="tg earn">we may earn a commission</span>
-                  </p>
-                )}
-                {carrierEntry.fallback && (
-                  <p class="small muted">
-                    <a href={carrierEntry.fallback.href} target="_blank" rel="noopener">{carrierEntry.fallback.hrefLabel}</a>
-                  </p>
-                )}
-                <button class="text-link" type="button" data-edit="carrier">Change phone carrier</button>
-              </div>
-            </details>
+                <span class="ttc-card-group-label-text">Refuse to pay</span>
+                <span class="ttc-card-group-gloss">Decline on the spot.</span>
+              </p>
+              {softItems.map(a => (
+                <details class="ttc-card-row" data-avoid-mark="hand">
+                  <summary>
+                    <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor(a.key)} /></span>
+                    <span class="ttc-card-row-name" id={'item-' + a.key}>{a.title}</span>
+                    <span class="ttc-card-row-mark ttc-card-row-mark-hand" aria-hidden="true" set:html={MARK_STOP} />
+                    <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  </summary>
+                  <div class="ttc-card-row-detail">
+                    <p><strong>{a.escape}</strong></p>
+                    <p>{a.detail}</p>
+                    <p class="small muted"><a href={a.href} target="_blank" rel="noopener">{a.hrefLabel}</a></p>
+                  </div>
+                </details>
+              ))}
 
-            <!-- ===== rail/rental, ONE shared render loop over wizardGatedExtras (built
-                 above from railRegistryEntryFor(c) and rentalRegistryEntry()), same as
-                 before this rebuild: hidden by default and toggled client-side, keyed on
-                 the reader's OWN yes/no answer to each, nothing computed or assembled
-                 beyond that toggle. Adding a fourth item of this same shape (see
-                 avoidable.js's airRegistryEntryExample) means adding it to the
-                 wizardGatedExtras array above; this loop renders it with no further
-                 change. BRIEF-result-card-step3: both carry the hand mark (existing
-                 tactics, unchanged in substance); the secondary paragraph is now
-                 conditional, a defensive guard for the new rows below that can genuinely
-                 have none, and a no-op here since rail/rental always populate it. ===== -->
-            {wizardGatedExtras.map(item => (
-              <details class="ttc-card-row" data-avoid-extra={item.question.stepKey} data-avoid-mark="hand" hidden>
+              <!-- ===== Carrier connectivity (BRIEF-carrier-honest-build), one row of the
+                   same shape (see this card's own header comment for how it moves between
+                   groups). Its config (options, edit title, client-safe carrier data,
+                   fallback text, eSIM link) still comes from carrierRegistryEntryFor(c),
+                   unchanged. Carries the hand mark like every other refuse row; the mark
+                   hides itself automatically once renderCarrierItem() moves this same row
+                   into the HARD group, via calculator.css's own ancestor scoping, never a
+                   script change here. BRIEF-soft-tier-groups: renderCarrierItem() now
+                   targets the REFUSE group specifically (data-avoid-tier="refuse"), not
+                   the old shared "soft" tier, so it settles back into this exact group
+                   whenever it has no live figure. ===== -->
+              <details class="ttc-card-row" data-avoid-carrier data-avoid-mark="hand">
                 <summary>
-                  <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor(item.key)} /></span>
-                  <span class="ttc-card-row-name" id={item.question.stepKey + '-item-heading'}>{item.card.title}</span>
+                  <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name="phoneok" /></span>
+                  <span class="ttc-card-row-name" id="carrier-item-heading">Your phone plan abroad</span>
+                  <span class="ttc-card-row-amount" data-carrier-amount-wrap hidden><strong data-carrier-amount>&nbsp;</strong></span>
                   <span class="ttc-card-row-mark ttc-card-row-mark-hand" aria-hidden="true" set:html={MARK_STOP} />
                   <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
                 </summary>
                 <div class="ttc-card-row-detail">
-                  <p><strong>{item.card.escape}</strong></p>
-                  {item.card.secondary && <p>{item.card.secondary}</p>}
-                  <p class="small muted"><a href={item.card.href} target="_blank" rel="noopener">{item.card.hrefLabel}</a></p>
-                  <button class="text-link" type="button" data-edit={item.question.stepKey}>{item.question.editTitle}</button>
+                  <p data-carrier-detail>&nbsp;</p>
+                  {carrierEntry.esimUrl && (
+                    <p class="small muted" data-carrier-esim-wrap hidden>
+                      <a href={carrierEntry.esimUrl} target="_blank" rel="noopener sponsored">Check live eSIM prices for {c.name}</a> <span class="tg earn">we may earn a commission</span>
+                    </p>
+                  )}
+                  {carrierEntry.fallback && (
+                    <p class="small muted">
+                      <a href={carrierEntry.fallback.href} target="_blank" rel="noopener">{carrierEntry.fallback.hrefLabel}</a>
+                    </p>
+                  )}
+                  <button class="text-link" type="button" data-edit="carrier">Change phone carrier</button>
                 </div>
               </details>
-            ))}
 
-            <!-- ===== BRIEF-result-card-step3: THE FIVE NEW ROWS. Pet and medical are
-                 genuine yes/no answers, so the SAME generic toggle loop that already
-                 handles rail/rental keys off WD.questionSteps for them with no calc-
-                 wizard.js change at all (see that file's own comment on this). Airbnb,
-                 goods and date each need their own explicit toggle (a hotel-booking
-                 sub-answer, an amount, a date, none of them a plain yes/no), added there
-                 alongside the three summary lines that already get the same explicit
-                 treatment. All five carry the shield mark: every one is a "get ready for
-                 this" fact, never an on-the-spot refusal. Goods and date render empty
-                 placeholders here (data-goods-*, data-date-*): the real sentence is filled
-                 in by calc-wizard.js's renderGoodsItem()/renderDateItem() the moment the
-                 reader's own amount or date is known, never composed at build time. ===== -->
-            <details class="ttc-card-row" data-avoid-extra="pet" data-avoid-mark="shield" hidden>
-              <summary>
-                <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor('pet')} /></span>
-                <span class="ttc-card-row-name" id="item-pet">{petCard.title}</span>
-                <span class="ttc-card-row-mark ttc-card-row-mark-shield" aria-hidden="true" set:html={MARK_SHIELD} />
-                <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-              </summary>
-              <div class="ttc-card-row-detail">
-                <p><strong>{petCard.escape}</strong></p>
-                {petCard.secondary && <p>{petCard.secondary}</p>}
-                <p class="small muted"><a href={petCard.href} target="_blank" rel="noopener">{petCard.hrefLabel}</a></p>
-                <button class="text-link" type="button" data-edit="pet">{petEntry.question.editTitle}</button>
-              </div>
-            </details>
-
-            <details class="ttc-card-row" data-avoid-extra="goods" data-avoid-mark="shield" hidden>
-              <summary>
-                <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor('goods')} /></span>
-                <span class="ttc-card-row-name" id="item-goods">{goodsVatCard.title}</span>
-                <span class="ttc-card-row-mark ttc-card-row-mark-shield" aria-hidden="true" set:html={MARK_SHIELD} />
-                <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-              </summary>
-              <div class="ttc-card-row-detail">
-                <p><strong data-goods-escape>&nbsp;</strong></p>
-                <p data-goods-secondary hidden>&nbsp;</p>
-                <p class="small muted"><a data-goods-link href={goodsVatCard.href} target="_blank" rel="noopener">{goodsVatCard.hrefLabel}</a></p>
-                <button class="text-link" type="button" data-edit="goods">Change your goods answer</button>
-              </div>
-            </details>
-
-            <details class="ttc-card-row" data-avoid-extra="medical" data-avoid-mark="shield" hidden>
-              <summary>
-                <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor('medical')} /></span>
-                <span class="ttc-card-row-name" id="item-medical">{medicalCard.title}</span>
-                <span class="ttc-card-row-mark ttc-card-row-mark-shield" aria-hidden="true" set:html={MARK_SHIELD} />
-                <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-              </summary>
-              <div class="ttc-card-row-detail">
-                <p><strong>{medicalCard.escape}</strong></p>
-                {medicalCard.secondary && <p>{medicalCard.secondary}</p>}
-                <p class="small muted"><a href={medicalCard.href} target="_blank" rel="noopener">{medicalCard.hrefLabel}</a></p>
-                <button class="text-link" type="button" data-edit="medical">{medicalEntry.question.editTitle}</button>
-              </div>
-            </details>
-
-            <details class="ttc-card-row" data-avoid-extra="airbnb" data-avoid-mark="shield" hidden>
-              <summary>
-                <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor('airbnb')} /></span>
-                <span class="ttc-card-row-name" id="item-airbnb">{airbnbCard.title}</span>
-                <span class="ttc-card-row-mark ttc-card-row-mark-shield" aria-hidden="true" set:html={MARK_SHIELD} />
-                <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-              </summary>
-              <div class="ttc-card-row-detail">
-                <p><strong>{airbnbCard.escape}</strong></p>
-                {airbnbCard.secondary && <p>{airbnbCard.secondary}</p>}
-                <p class="small muted"><a href={airbnbCard.href} target="_blank" rel="noopener">{airbnbCard.hrefLabel}</a></p>
-                <button class="text-link" type="button" data-edit="hotel">Change how you booked</button>
-              </div>
-            </details>
-
-            <details class="ttc-card-row" data-avoid-extra="date" data-avoid-mark="shield" hidden>
-              <summary>
-                <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor('date')} /></span>
-                <span class="ttc-card-row-name" id="item-date">{dateCard.title}</span>
-                <span class="ttc-card-row-mark ttc-card-row-mark-shield" aria-hidden="true" set:html={MARK_SHIELD} />
-                <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
-              </summary>
-              <div class="ttc-card-row-detail">
-                <p><strong data-date-escape>&nbsp;</strong></p>
-                <p class="small muted" data-date-link-wrap hidden><a data-date-link href={dateCard.href} target="_blank" rel="noopener">{dateCard.hrefLabel}</a></p>
-                <button class="text-link" type="button" data-edit="date">Change your travel date</button>
-              </div>
-            </details>
-          </div>
+              <!-- ===== rail/rental, ONE shared render loop over wizardGatedExtras (built
+                   above from railRegistryEntryFor(c) and rentalRegistryEntry()), same as
+                   before this regroup: hidden by default and toggled client-side, keyed on
+                   the reader's OWN yes/no answer to each, nothing computed or assembled
+                   beyond that toggle. Adding a fourth item of this same shape (see
+                   avoidable.js's airRegistryEntryExample) means adding it to the
+                   wizardGatedExtras array above; this loop renders it with no further
+                   change. Both carry the hand mark (existing tactics, unchanged in
+                   substance); the secondary paragraph stays conditional, a defensive guard
+                   for rows that can genuinely have none, and a no-op here since rail/
+                   rental always populate it. ===== -->
+              {wizardGatedExtras.map(item => (
+                <details class="ttc-card-row" data-avoid-extra={item.question.stepKey} data-avoid-mark="hand" hidden>
+                  <summary>
+                    <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor(item.key)} /></span>
+                    <span class="ttc-card-row-name" id={item.question.stepKey + '-item-heading'}>{item.card.title}</span>
+                    <span class="ttc-card-row-mark ttc-card-row-mark-hand" aria-hidden="true" set:html={MARK_STOP} />
+                    <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                  </summary>
+                  <div class="ttc-card-row-detail">
+                    <p><strong>{item.card.escape}</strong></p>
+                    {item.card.secondary && <p>{item.card.secondary}</p>}
+                    <p class="small muted"><a href={item.card.href} target="_blank" rel="noopener">{item.card.hrefLabel}</a></p>
+                    <button class="text-link" type="button" data-edit={item.question.stepKey}>{item.question.editTitle}</button>
+                  </div>
+                </details>
+              ))}
+            </div>
+          )}
 
           <!-- ===== The no-sum line (RULES: "NO summed avoidable total, ever"). The trip
                total lives here, demoted to one quiet line, never the hero; "See the full

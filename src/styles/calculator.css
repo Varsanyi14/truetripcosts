@@ -21,6 +21,18 @@
   /* BRIEF-result-card-step3: the two-mark system's "refuse to pay it" mark, a deliberately
      stronger amber than --amber above (the "prepare ahead" mark's own colour), never red. */
   --amber-dark: #B5470B;
+  /* BRIEF-soft-tier-groups: the soft tier's own two sub-group tokens (Option D). Prepare's
+     ink is the exact shield green already used elsewhere on this page (#276953, the same
+     value --focus below holds), named separately here since this is the "prepare ahead"
+     group identity, not a focus ring; refuse's ink is --amber-dark itself, the same burnt
+     orange the hand mark has always used. Both backgrounds are deliberately pale washes,
+     barely-there per the brief's own "the page's calm is a brand value" rule; if a tint
+     ever looks busy, lighten it further rather than saturate it. Never red. */
+  --prepare-ink: #276953;
+  --prepare-bg: #EDF4EF;
+  --prepare-border: #D3E3D8;
+  --refuse-bg: #FBEEE4;
+  --refuse-border: #EAD8C7;
   --error: #A02D2D;
   --error-bg: #FFF2EF;
   --focus: #276953;
@@ -223,21 +235,36 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .ttc-card-meta { color: var(--muted); font-size: 1rem; margin-top: .5rem; }
 .ttc-card-calm-note { color: var(--muted); font-size: .9375rem; line-height: 1.55; margin: -.25rem 0 1.25rem; padding: .875rem 1rem; background: var(--green-soft); border-radius: var(--radius); }
 /* Each group is one <details> list. The HARD group is plain white (the card's own
-   background already reads as "priced"); the SOFT group carries the amber tint across its
-   whole area, per the brief's explicit "the whole soft group sits on the amber tint". */
+   background already reads as "priced"). BRIEF-soft-tier-groups: the old single SOFT
+   group (one shared amber tint across everything with no set price) is now two groups,
+   prepare and refuse, each carrying its OWN subtle tint across its whole area, so the
+   whole row reads its type at a glance rather than only the small per-row mark. Both
+   washes stay deliberately pale: this is a quiet distinction, not a loud color block. */
 .ttc-card-group { border-top: 1px solid var(--line); }
 .ttc-card-group:first-of-type { border-top: 0; }
-.ttc-card-group-soft { background: var(--amber-bg); margin: 0 -1.25rem; padding: 0 1.25rem; border-color: #E6D4AE; }
+.ttc-card-group-prepare { background: var(--prepare-bg); margin: 0 -1.25rem; padding: 0 1.25rem; border-color: var(--prepare-border); }
+.ttc-card-group-refuse { background: var(--refuse-bg); margin: 0 -1.25rem; padding: 0 1.25rem; border-color: var(--refuse-border); }
 .ttc-card-group-label { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; letter-spacing: .01em; font-size: .75rem; text-transform: uppercase; color: var(--muted); padding: 1rem 0 .375rem; }
-.ttc-card-group-soft .ttc-card-group-label { color: #6D4A13; }
+/* BRIEF-soft-tier-groups: each group's own header line, its mark plus label uppercase and
+   mono like every other group label above, a short plain-language gloss beside it that is
+   deliberately NOT uppercase or mono (a full sentence reads oddly shouted that way). The
+   group's own mark here is independent of a row's own mark span further down: this one
+   never moves or hides, it just names the group once at the top. */
+.ttc-card-group-label-prepare, .ttc-card-group-label-refuse { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; }
+.ttc-card-group-label-prepare { color: var(--prepare-ink); }
+.ttc-card-group-label-refuse { color: var(--amber-dark); }
+.ttc-card-group-label-prepare .ttc-card-row-mark, .ttc-card-group-label-refuse .ttc-card-row-mark { width: 1rem; height: 1rem; }
+.ttc-card-group-gloss { text-transform: none; font-family: var(--font); letter-spacing: 0; font-weight: 400; font-size: .8125rem; color: var(--muted); }
+.ttc-card-group-prepare .ttc-card-row-name { color: var(--prepare-ink); }
+.ttc-card-group-refuse .ttc-card-row-name { color: var(--amber-dark); }
 .ttc-card-row { border-top: 1px solid var(--line); }
-.ttc-card-group-soft .ttc-card-row { border-top-color: #E6D4AE; }
+.ttc-card-group-prepare .ttc-card-row { border-top-color: var(--prepare-border); }
+.ttc-card-group-refuse .ttc-card-row { border-top-color: var(--refuse-border); }
 .ttc-card-row:first-of-type { border-top: 0; }
 .ttc-card-row > summary { display: flex; align-items: center; gap: .875rem; padding: 1rem 0; cursor: pointer; list-style: none; min-height: 3.5rem; }
 .ttc-card-row > summary::-webkit-details-marker { display: none; }
 .ttc-card-row-icon { flex-shrink: 0; width: 1.75rem; height: 1.75rem; }
 .ttc-card-row-name { flex: 1 1 auto; min-width: 0; font-size: 1.0625rem; font-weight: 600; color: var(--ink); }
-.ttc-card-group-soft .ttc-card-row-name { color: #6D4A13; font-weight: 600; }
 .ttc-card-row-amount { flex-shrink: 0; font-family: var(--serif); font-size: 1.1875rem; font-weight: 400; letter-spacing: -.015em; color: var(--focus); text-align: right; white-space: nowrap; }
 .ttc-card-row-amount span { display: inline; white-space: nowrap; }
 .ttc-card-row-chevron { flex-shrink: 0; color: var(--muted); transition: transform .15s ease; }
@@ -255,15 +282,15 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
    BRIEF-vectorize-mark-icons: shield repointed from --amber to the brand green #16302C
    (the same dark green this file's own .ttc-card-brandbar already uses below), matching
    Gary's bespoke prepare-shield-dollar.png reference; hand stays --amber-dark (burnt
-   orange), unchanged. Never red, per the original brief's rule. */
+   orange), unchanged. Never red, per the original brief's rule.
+   BRIEF-soft-tier-groups: RULES said marks and copy stay unchanged, so per-row marks keep
+   these exact colors regardless of which of the two new groups a row now sits in; only
+   the group header above (its own separate mark span) uses the two groups' own tokens. */
 .ttc-card-row-mark { flex-shrink: 0; width: 1.125rem; height: 1.125rem; display: inline-flex; }
 .ttc-card-row-mark svg { width: 100%; height: 100%; display: block; }
 .ttc-card-row-mark-shield { color: #16302C; }
 .ttc-card-row-mark-hand { color: var(--amber-dark); }
 .ttc-card-group-hard .ttc-card-row-mark { display: none; }
-.ttc-card-mark-legend { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; align-items: center; font-size: .8125rem; color: #6D4A13; padding: 0 0 .625rem; }
-.ttc-card-mark-legend-item { display: inline-flex; align-items: center; gap: .375rem; }
-.ttc-card-mark-legend .ttc-card-row-mark { width: 1rem; height: 1rem; }
 .ttc-card-nosum { border-top: 1px solid var(--line); margin-top: .25rem; padding-top: 1.25rem; color: var(--muted); font-size: .9375rem; line-height: 1.55; }
 .ttc-card-below-note { max-width: 75rem; margin: 1rem auto 0; padding: 0 1.25rem; color: var(--muted); font-size: .9375rem; }
 .ttc-card-below-note strong { font-weight: 600; color: var(--text); }

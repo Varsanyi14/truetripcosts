@@ -692,9 +692,13 @@ export function initCalcWizard() {
     // Move the row itself into whichever group its own figure now belongs in. appendChild
     // on a node already in that container is a documented no-op re-append, not a detach/
     // reattach cycle, so this never closes an open row that happens to already be priced.
+    // BRIEF-soft-tier-groups: the old shared "soft" tier is now two groups (prepare/
+    // refuse); carrier is, and always was, a refuse-type row (an on-the-spot decision,
+    // never a "get ready ahead of time" one), so it settles back into the REFUSE group
+    // specifically, never the prepare one, whenever it has no live figure.
     const hardGroup = document.querySelector('[data-avoid-tier="hard"]');
-    const softGroup = document.querySelector('[data-avoid-tier="soft"]');
-    const targetGroup = (amount != null) ? hardGroup : softGroup;
+    const refuseGroup = document.querySelector('[data-avoid-tier="refuse"]');
+    const targetGroup = (amount != null) ? hardGroup : refuseGroup;
     if (targetGroup && wrap.parentElement !== targetGroup) targetGroup.appendChild(wrap);
 
     const summaryEl = document.querySelector('[data-mirror="summaryCarrier"]');
