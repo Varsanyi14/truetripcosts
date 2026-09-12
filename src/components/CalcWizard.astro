@@ -387,20 +387,40 @@ const iconFor = (key) => ROW_ICON[key] || 'alert';
 
 // BRIEF-result-card-step3: THE TWO-MARK SYSTEM. Every soft (figureless) row now carries
 // one of two small marks, because "worth knowing, no set price" was quietly doing two
-// different jobs: a scam or an on-the-spot tactic to REFUSE (the darker-orange hand/stop
-// mark), and a real thing to PREPARE for ahead of time (the calm-amber shield-$ mark,
-// the same amber calculator.css already tints the whole soft group with). Existing soft
-// rows (the static per-country list, carrier while it has no live figure, rail, rental)
-// all get the hand mark: every one of them is a "decline this" moment, not a "get ready
-// for this" one. The five new rows this step adds are the first "prepare ahead" items on
-// this card, so they get the shield. Drawn here as raw SVG (the same set:html pattern
-// QUESTION_ICON above already uses) rather than added to Symbol.astro, which this step's
-// brief does not touch; both use flat, strokeless shapes so they read as one family with
-// the rest of this card's icons, not a fourth visual language. Colors are calculator.css's
-// own --amber (the shield) and a new, deliberately darker --amber-dark (the hand); neither
-// is red, per the brief's explicit "no red alarm colour" rule.
-const MARK_SHIELD = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1.4 L17 4 V9.6 C17 14 13.8 17.3 10 18.6 C6.2 17.3 3 14 3 9.6 V4 Z" fill="currentColor"/><rect x="9.1" y="5.6" width="1.8" height="9" rx=".9" fill="#FBF1DD"/><path d="M8.2 7.6 C8.2 6.7 9 6.1 10 6.1 C11 6.1 11.8 6.7 11.8 7.6" fill="none" stroke="#FBF1DD" stroke-width="1.1" stroke-linecap="round"/><path d="M8.2 12.4 C8.2 13.3 9 13.9 10 13.9 C11 13.9 11.8 13.3 11.8 12.4" fill="none" stroke="#FBF1DD" stroke-width="1.1" stroke-linecap="round"/></svg>';
-const MARK_HAND = '<svg viewBox="0 0 20 20" aria-hidden="true"><rect x="6" y="8.5" width="8.5" height="8.6" rx="3.4" fill="currentColor"/><rect x="6.3" y="2.4" width="2.2" height="8.4" rx="1.1" fill="currentColor"/><rect x="8.9" y="1.6" width="2.2" height="9.2" rx="1.1" fill="currentColor"/><rect x="11.5" y="2.1" width="2.2" height="8.7" rx="1.1" fill="currentColor"/><rect x="14.1" y="3.6" width="2.2" height="7.2" rx="1.1" fill="currentColor"/></svg>';
+// different jobs: a scam or an on-the-spot tactic to REFUSE (the burnt-orange hand-coin
+// mark), and a real thing to PREPARE for ahead of time (the brand-green shield-$ mark).
+// Existing soft rows (the static per-country list, carrier while it has no live figure,
+// rail, rental) all get the hand mark: every one of them is a "decline this" moment, not
+// a "get ready for this" one. The five new rows this step adds are the first "prepare
+// ahead" items on this card, so they get the shield. Drawn here as raw SVG (the same
+// set:html pattern QUESTION_ICON above already uses) rather than added to Symbol.astro,
+// which this step's brief does not touch.
+//
+// BRIEF-vectorize-mark-icons: both are traced from Gary's own bespoke artwork
+// (prepare-shield-dollar.png, refuse-hand-coin.png), not a generic icon-set substitute.
+// Traced with OpenCV contour extraction against the source PNGs rather than eyeballed, so
+// the proportions are the real drawing's, then rasterized and visually checked at the
+// actual row (18px) and legend (16px) sizes before this file was edited. Two hairline
+// details from the source were deliberately dropped because they would not survive at
+// 18px (confirmed by that same rasterized check), per that brief's own explicit rule that
+// a simplified icon legible small beats a faithful one that muddies: the dollar sign's two
+// tiny enclosed loops (kept as one solid glyph instead), and the coin's inner shading arc
+// and the small motion-arc beside it (kept as a plain tilted ellipse, still clearly "a
+// coin", without the hairline swoosh that would just be noise at this size).
+//
+// SHIELD: traced as ONE evenodd-fill path with three subpaths (the shield's own outer
+// edge, its inner edge, and the dollar sign), so currentColor fills the ring and the
+// glyph in a single declaration with no separate stroke to keep in sync. Color is now the
+// brand green (#16302C, the same dark green calculator.css's own brandbar already uses)
+// via .ttc-card-row-mark-shield below, repointed off --amber per this brief.
+//
+// HAND: traced as one continuous outline path (fill:none, stroke:currentColor) plus a
+// tilted ellipse for the coin, matching the shield's stroke weight so the two read as one
+// family. Still --amber-dark (burnt orange), unchanged.
+const MARK_SHIELD = '<svg viewBox="0 0 24 27.48" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="M11.69 0.0 L7.04 2.19 L1.56 3.52 L0.51 4.22 L0.0 5.36 L0.0 13.99 L1.09 18.21 L3.99 22.4 L8.09 25.68 L11.06 27.32 L12.43 27.48 L15.64 25.88 L18.76 23.57 L20.79 21.5 L22.51 18.96 L23.92 14.5 L24.0 5.79 L23.61 4.42 L22.67 3.6 L18.41 2.7 L12.86 0.16 Z M11.88 1.52 L17.08 3.87 L21.93 4.96 L22.48 5.63 L22.44 14.31 L21.15 18.25 L17.55 22.55 L12.23 25.95 L8.05 23.8 L4.46 20.6 L2.27 17.08 L1.49 13.56 L1.6 5.32 L7.19 3.79 Z M11.88 6.25 L11.37 6.72 L11.34 7.54 L10.08 7.97 L9.22 8.72 L8.64 10.24 L8.72 11.3 L9.3 12.43 L10.08 13.09 L11.37 13.64 L11.37 17.24 L10.51 16.89 L9.38 15.52 L8.72 15.64 L8.44 16.46 L9.11 17.67 L9.93 18.37 L11.34 18.84 L11.45 19.9 L12.12 20.17 L12.59 19.82 L12.66 18.84 L13.92 18.45 L14.93 17.55 L15.4 16.61 L15.52 15.36 L14.85 13.72 L13.92 12.98 L12.63 12.43 L12.63 9.15 L13.33 9.46 L13.99 10.51 L14.38 10.75 L15.13 10.51 L15.24 9.58 L14.15 8.13 L12.66 7.54 L12.55 6.53 Z"/></svg>';
+const MARK_HAND = '<svg viewBox="0 0 24 26" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.62.71 8.59.71 7.89.98 7.3 1.46 6.92 2.35 5.84 2.26 4.86 2.57 4.43 2.93 4.11 3.46 4.05 4.79 2.76 4.79 2.16 4.97 1.51 5.46 1.19 6.08.81 13.62.92 17.13 1.62 19.74 3.24 22.49 3.41 23.25 3.41 24.94 3.68 25.25 3.95 25.33 13.03 25.33 13.78 25.16 13.95 24.89 13.95 23.2 14.16 22.1 15.62 20.85 16.76 19.57 21.14 12.91 21.14 12.07 20.65 11.36 19.84 10.91 18.7 10.87 17.95 11.14 14.27 14.02 14.22 3.73 13.89 3.19 12.92 2.57 12.49 2.48 11.35 2.57 11.3 2.04 10.86 1.33 10.38.98Z"/><ellipse cx="19.23" cy="4.92" rx="3.61" ry="3.48" transform="rotate(-45 19.23 4.92)"/></svg>';
+
+
 
 // BRIEF-result-card-step3: the five new cards themselves, one call each into avoidable.js.
 // pet/medical/airbnb are fully known at build time; goods/date carry a template or a raw

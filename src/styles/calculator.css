@@ -242,14 +242,17 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .ttc-card-row-detail .text-link { margin-top: .375rem; }
 /* BRIEF-result-card-step3: THE TWO-MARK SYSTEM. A small badge beside every soft row's
    chevron, never on a hard row (a hard row already carries a real dollar amount in that
-   same slot, which is its own, stronger signal). Two colours only, both amber, never red:
-   --amber (calm, "prepare ahead") and the new --amber-dark (a stronger amber, "refuse to
-   pay"). The ancestor-scoped display rule below is what lets carrier's own row keep a
-   mark while it is genuinely soft and lose it the instant renderCarrierItem() moves that
-   same row into the HARD group: no script here has to remember to toggle a class. */
+   same slot, which is its own, stronger signal). The ancestor-scoped display rule below is
+   what lets carrier's own row keep a mark while it is genuinely soft and lose it the
+   instant renderCarrierItem() moves that same row into the HARD group: no script here has
+   to remember to toggle a class.
+   BRIEF-vectorize-mark-icons: shield repointed from --amber to the brand green #16302C
+   (the same dark green this file's own .ttc-card-brandbar already uses below), matching
+   Gary's bespoke prepare-shield-dollar.png reference; hand stays --amber-dark (burnt
+   orange), unchanged. Never red, per the original brief's rule. */
 .ttc-card-row-mark { flex-shrink: 0; width: 1.125rem; height: 1.125rem; display: inline-flex; }
 .ttc-card-row-mark svg { width: 100%; height: 100%; display: block; }
-.ttc-card-row-mark-shield { color: var(--amber); }
+.ttc-card-row-mark-shield { color: #16302C; }
 .ttc-card-row-mark-hand { color: var(--amber-dark); }
 .ttc-card-group-hard .ttc-card-row-mark { display: none; }
 .ttc-card-mark-legend { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; align-items: center; font-size: .8125rem; color: #6D4A13; padding: 0 0 .625rem; }
