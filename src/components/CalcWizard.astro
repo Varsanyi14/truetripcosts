@@ -55,6 +55,14 @@ import DestinationChoice from './calc/DestinationChoice.astro';
 // card's brand colors already match what Symbol.astro draws every route icon in, so the
 // row icons read as the same visual language, not a fourth one.
 import Symbol from './Symbol.astro';
+// BRIEF-share-link-step5: the share dialog's own branded header needs the real TTC
+// lockup, not a hand-drawn copy. calc-wizard.js builds that dialog's markup as an HTML
+// string at runtime (see its openShare()), so it cannot import this component directly;
+// instead this file renders it once into a hidden <template> below (see
+// "ttc-share-logo") and calc-wizard.js clones that template's already-server-rendered
+// markup into the dialog. Same reuse pattern CostChart.astro's own <template
+// data-cc-taxbits> already uses for handing pre-rendered markup to its page script.
+import LogoMark from './LogoMark.astro';
 import { calcSetupFor } from '../data/calc-setup.js';
 import { calcLinesFor } from '../data/calc-lines.js';
 import {
@@ -1004,15 +1012,21 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
           </p>
 
           <div class="result-actions ttc-card-actions">
-            {/* STEP 1 of 5: "Edit trip" wires to the existing edit flow below (unchanged).
-                "Save / share this card" is present but deliberately inert this step, per
-                the brief ("real behaviour is step 5"): it carries no data-share attribute,
-                so it does not trigger the older, differently styled share/print dialog
-                that data-share still wires up elsewhere in this file for a later step to
-                either reuse or replace. */}
-            <button class="btn btn-primary" type="button" data-share-placeholder>Save / share this card</button>
+            {/* BRIEF-share-link-step5: "Save / share this card" now carries the real
+                data-share attribute, so it opens the real share dialog (calc-wizard.js's
+                openShare(), wired below to [data-share]) instead of sitting inert. "Edit
+                trip" is unchanged from step 1. */}
+            <button class="btn btn-primary" type="button" data-share>Save / share this card</button>
             <button class="btn btn-secondary" type="button" data-jump-edit>Edit trip</button>
           </div>
+
+          {/* BRIEF-share-link-step5: the share dialog's branded lockup, pre-rendered here
+              (server-side, from the real LogoMark component) into a hidden template so
+              calc-wizard.js's openShare() can clone its markup rather than hand-drawing a
+              logo at runtime. horizontal variant: green square mark + amber signature bars
+              + "true trip costs." wordmark, per the brief. Never shown itself; a template
+              renders nothing. */}
+          <template id="ttc-share-logo"><LogoMark variant="horizontal" size={26} class="share-dialog-logo" title="True Trip Costs" /></template>
         </div>
         <div class="ttc-card-footer">truetripcosts.com &middot; the money side of travel &middot; no sales pitch, ever</div>
       </div>

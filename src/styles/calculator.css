@@ -385,6 +385,27 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .share-view > p { margin-bottom: 1.5rem; }
 .share-buttons { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
 .share-buttons .btn { flex: 1 1 10rem; }
+/* BRIEF-share-link-step5: the share dialog's own branded header, replacing the plain
+   .dialog-header it used before this step. #16302C matches the result card's own
+   .ttc-card-brandbar exactly (same brand green, not calculator.css's own --green, which
+   is a different, unrelated teal used for buttons elsewhere on this route; see that
+   rule's own note on this). */
+.share-dialog-brandbar { background: #16302C; padding: .875rem 1.25rem; border-radius: .75rem .75rem 0 0; display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-shrink: 0; }
+.share-dialog-lockup { display: inline-flex; align-items: center; }
+/* LogoMark's horizontal wordmark is drawn in #16302C, the ink color meant for a light
+   background; on this dark green bar that would be invisible against its own background,
+   so it is recolored to match .ttc-card-wordmark's own white on the same bar. The square
+   mark's own fill is left alone (a plain [fill="#16302C"] selector would also catch the
+   square's background rect): scoping to a <g>, never a <rect>, hits only the wordmark
+   group LogoMark.astro wraps around its WORDMARK paths. */
+.share-dialog-logo g[fill="#16302C"] { fill: #fff; }
+.share-dialog-close { background: transparent; border-color: transparent; color: #fff; }
+.share-dialog-close:hover { background: rgba(255,255,255,.16); }
+.share-dialog-titles { padding: 1.25rem 1.25rem .875rem; border-bottom: 1px solid var(--line); flex-shrink: 0; }
+.share-dialog-titles h2 { font-size: 1.75rem; line-height: 1.2; }
+.share-dialog-titles p { margin-top: .5rem; font-size: .9375rem; color: var(--muted); }
+.share-dialog-footnote { padding: 1rem 1.25rem calc(1rem + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: var(--canvas); flex-shrink: 0; }
+.share-dialog-footnote p { font-size: .8125rem; color: var(--muted); line-height: 1.55; }
 .trip-brief { background: white; border: 1px solid var(--line); border-top: 4px solid var(--green); padding: 1.5rem; color: var(--text); border-radius: 0 0 .375rem .375rem; }
 .brief-brand { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: .5rem; border-bottom: 1px solid var(--line); padding-bottom: 1rem; margin-bottom: 1.5rem; }
 .brief-brand strong { font-family: var(--serif); color: var(--green); font-size: 1.25rem; letter-spacing: -.04em; }
@@ -395,9 +416,12 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .brief-section { border-top: 1px solid var(--line); margin-top: 1.25rem; padding-top: 1.25rem; }
 .brief-section h3 { font-size: 1rem; margin-bottom: .75rem; }
 .brief-section p { font-size: .9375rem; }
+.brief-action { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 .brief-action + .brief-action { margin-top: 1rem; }
+.brief-action > div { flex: 1 1 14rem; min-width: 0; }
 .brief-action strong { font-size: .9375rem; }
 .brief-action p { font-size: .875rem; margin-top: .25rem; color: var(--muted); }
+.brief-action .btn { flex: 0 0 auto; }
 .brief-note { font-size: .8125rem; color: var(--muted); line-height: 1.55; margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 .copy-fallback { margin-top: 1rem; }
 .copy-fallback textarea { width: 100%; min-height: 12rem; border: 1px solid var(--control-line); background: white; padding: 1rem; color: var(--ink); }
@@ -488,5 +512,9 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .stepper { grid-template-columns: 1fr 1fr; max-width: 100%; }
   .stepper input { grid-column: 1 / -1; grid-row: 1; border-left: 0; border-right: 0; border-bottom: 1px solid var(--line); }
   .stepper button { grid-row: 2; }
+}
+@container ttc-controls (max-width: 26rem) {
+  .brief-action { flex-direction: column; align-items: stretch; }
+  .brief-action .btn { width: 100%; }
 }
 

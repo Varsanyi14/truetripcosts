@@ -1272,12 +1272,14 @@ export function initCalcWizard() {
   }
 
   // ===================================================================================
-  // SHARE DIALOG + TRIP BRIEF. Text copy and print are implemented; a downloadable PNG
-  // image (the specialist reference's canvas export) is deliberately NOT built in this
-  // pass. It is a separate, self-contained subsystem the reference implements with its
-  // own text-wrapping and layout code, and building it correctly was judged lower priority
-  // than the wizard/result/breakdown/honesty-spine work this pass actually needed to get
-  // right. Flagged to MAIN as a follow-up, not a silent omission.
+  // SHARE DIALOG + TRIP BRIEF. Text copy and print were built in an earlier pass;
+  // BRIEF-share-link-step5 adds the shareable link (the write half below, and its own
+  // read half further down this file) and brands the dialog's header. A downloadable PNG
+  // image (the specialist reference's canvas export) is still deliberately NOT built. It
+  // is a separate, self-contained subsystem the reference implements with its own text-
+  // wrapping and layout code, and building it correctly was judged lower priority than the
+  // wizard/result/breakdown/honesty-spine work this pass actually needed to get right.
+  // Flagged to MAIN as a follow-up, not a silent omission.
   // ===================================================================================
   function currentPresentation() {
     return {
@@ -1293,6 +1295,12 @@ export function initCalcWizard() {
   const shareDialog = byId('share-dialog');
   const shareBtn = document.querySelector('[data-share]');
   if (shareBtn) shareBtn.addEventListener('click', () => openShare(shareBtn));
+  // BRIEF-share-link-step5: the dialog's branded lockup, read once from the hidden
+  // <template id="ttc-share-logo"> CalcWizard.astro renders server-side from the real
+  // LogoMark component (horizontal variant). A <template>'s own innerHTML already returns
+  // its content as a markup string, so this IS the whole hand-off; no logo is drawn here,
+  // only reused.
+  const shareLogoMarkup = (byId('ttc-share-logo') || {}).innerHTML || '';
 
   function briefText() {
     const p = currentPresentation();
@@ -1319,13 +1327,68 @@ export function initCalcWizard() {
       '<footer class="brief-note"><strong>Snapshot created ' + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + '.</strong><br>A saved snapshot, not a live quote. Recheck rules before traveling.<br>truetripcosts.com</footer>' +
       '</article>';
   }
+  // ===================================================================================
+  // SHARE LINK: THE WRITE HALF (BRIEF-share-link-step5). Encodes the traveler's own
+  // ANSWERS, never a computed figure, as plain named query params on this same page's own
+  // URL (the honesty spine: an opened link re-runs the live engine and shows today's
+  // numbers, so it can never carry a frozen dollar amount). Built entirely on
+  // snapshotControls(key), the same per-step snapshot the edit-trip dialog already uses to
+  // read a control's current answer, so this never keeps a second, separately maintained
+  // idea of "what a step's answer looks like". destination is not encoded: it is this
+  // page's own URL path, already implied by being here.
+  // questionParamKeys: every wizard-gated item except goods/date encodes as one plain
+  // radio value under its own stepKey name (carrier, rail where this country has a
+  // verdict, rental, pet, medical, and any future one of the same shape, per WD.
+  // questionSteps); goods and date keep their own two-part/single shape below, matching
+  // snapshotControls' own branching for them.
+  // ===================================================================================
+  const questionParamKeys = (WD.questionSteps || []).filter(k => k !== 'goods' && k !== 'date');
+
+  function answersToShareParams() {
+    const params = new URLSearchParams();
+    const trav = snapshotControls('travelers'); if (trav.value != null) params.set('trav', trav.value);
+    const nights = snapshotControls('nights'); if (nights.value != null) params.set('nights', nights.value);
+    const style = snapshotControls('style'); if (style.value != null) params.set('style', style.value);
+    const flights = snapshotControls('flights');
+    if (flights.mode != null) params.set('flight', flights.mode);
+    if (flights.price != null) params.set('flightprice', flights.price);
+    const hotel = snapshotControls('hotel');
+    if (hotel.value != null) params.set('room', hotel.value);
+    if (hotel.booking != null) params.set('booking', hotel.booking);
+    if (hotel.roomsValue != null) params.set('rooms', hotel.roomsValue);
+    const card = snapshotControls('card'); if (card.value != null) params.set('card', card.value);
+    questionParamKeys.forEach(key => {
+      const snap = snapshotControls(key);
+      if (snap.value != null) params.set(key, snap.value);
+    });
+    const goods = snapshotControls('goods');
+    if (goods.mode != null) params.set('goods', goods.mode);
+    if (goods.mode === 'yes' && goods.amount) params.set('goodsamt', goods.amount);
+    const date = snapshotControls('date');
+    if (date.value) params.set('date', date.value);
+    return params;
+  }
+  function currentShareUrl() {
+    const qs = answersToShareParams().toString();
+    return window.location.origin + window.location.pathname + (qs ? ('?' + qs) : '');
+  }
+
   function openShare(trigger) {
     shareDialog.innerHTML =
-      '<div class="dialog-layout"><header class="dialog-header"><div><h2 id="share-title" tabindex="-1">Keep your trip brief</h2><p>Its scope and assumptions stay attached.</p></div>' +
-      '<button class="icon-button" type="button" data-close-share aria-label="Close trip brief">&times;</button></header>' +
+      '<div class="dialog-layout share-dialog-layout">' +
+      '<header class="share-dialog-brandbar"><span class="share-dialog-lockup">' + shareLogoMarkup + '</span>' +
+      '<button class="icon-button share-dialog-close" type="button" data-close-share aria-label="Close trip brief">&times;</button></header>' +
+      '<div class="share-dialog-titles"><h2 id="share-title" tabindex="-1">Keep or share your trip</h2><p>Its scope and assumptions stay attached.</p></div>' +
       '<div class="dialog-content">' + briefHTML() +
-      '<div class="copy-fallback" hidden><label class="field-label" for="copy-text">Select and copy this text</label><textarea id="copy-text" readonly></textarea></div></div>' +
-      '<footer class="dialog-actions"><button type="button" class="btn btn-primary" data-copy-brief>Copy text</button><button type="button" class="btn btn-secondary" data-print>Print / save PDF</button></footer></div>';
+      '<div class="brief-section share-actions">' +
+      '<div class="brief-action share-action-link"><div><strong>Copy a link to this trip</strong><p>Reopens the calculator with your answers filled in, showing today\'s figures. Always current, never a frozen number.</p></div><button type="button" class="btn btn-primary" data-copy-link>Copy link</button></div>' +
+      '<div class="brief-action"><div><strong>Copy as text</strong><p>A written summary you can paste into a note or message.</p></div><button type="button" class="btn btn-secondary" data-copy-brief>Copy text</button></div>' +
+      '<div class="brief-action"><div><strong>Save as PDF</strong><p>A dated snapshot to keep. It won\'t change after you save it.</p></div><button type="button" class="btn btn-secondary" data-print>Print / PDF</button></div>' +
+      '</div>' +
+      '<div class="copy-fallback" hidden><label class="field-label" for="copy-text">Select and copy this text</label><textarea id="copy-text" readonly></textarea></div>' +
+      '</div>' +
+      '<footer class="share-dialog-footnote"><p>A saved snapshot, not a live quote. Recheck the rules before you travel, they change quietly and we keep watch.</p></footer>' +
+      '</div>';
     $('[data-close-share]', shareDialog).addEventListener('click', () => shareDialog.close());
     shareDialog.addEventListener('close', function onClose() {
       shareDialog.removeEventListener('close', onClose);
@@ -1346,6 +1409,20 @@ export function initCalcWizard() {
         announce('Clipboard is unavailable here. Select and copy the text shown.');
       }
     });
+    $('[data-copy-link]', shareDialog).addEventListener('click', async () => {
+      const u = currentShareUrl();
+      try {
+        if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('unavailable');
+        await navigator.clipboard.writeText(u);
+        announce('Trip link copied. Opening it always shows today\'s numbers, never a frozen figure.');
+      } catch (e) {
+        const fallback = $('.copy-fallback', shareDialog);
+        fallback.hidden = false;
+        const ta = $('textarea', fallback);
+        ta.value = u; ta.focus(); ta.select();
+        announce('Clipboard is unavailable here. Select and copy the link shown.');
+      }
+    });
     $('[data-print]', shareDialog).addEventListener('click', () => {
       const printRoot = byId('print-root');
       if (printRoot) printRoot.innerHTML = briefHTML();
@@ -1356,4 +1433,118 @@ export function initCalcWizard() {
     const h2 = $('#share-title', shareDialog);
     if (h2) h2.focus({ preventScroll: true });
   }
+
+  // ===================================================================================
+  // SHARE LINK: THE READ HALF (BRIEF-share-link-step5). If this page loaded with the
+  // write half's own query params on it, seed every step's answer from them and jump
+  // straight to a freshly calculated result; a normal, param-free visit is completely
+  // unaffected (see the guard inside applySharedAnswersFromUrl below). Built on
+  // restoreControls(key, snap), the SAME function the edit-trip dialog's Cancel button
+  // already uses to put a step's controls back to an exact prior snapshot: a URL-seeded
+  // snapshot is just another snapshot to that function, so this never keeps a second,
+  // separately maintained "apply an answer to its control" implementation. Every value is
+  // validated against what is ACTUALLY on this exact country's page (a real radio option,
+  // a real min/max) before use; anything missing or malformed simply falls through to that
+  // field's own already-rendered default, per the brief's explicit rule, rather than ever
+  // showing an error for a bad link.
+  // ===================================================================================
+  function paramInt(params, key, min, max) {
+    if (!params.has(key)) return null;
+    const raw = params.get(key);
+    if (!/^\d+$/.test(raw)) return null;
+    const n = parseInt(raw, 10);
+    if (min != null && n < min) return null;
+    if (max != null && n > max) return null;
+    return n;
+  }
+  function paramMoney(params, key) {
+    if (!params.has(key)) return null;
+    const raw = params.get(key);
+    return parseMoney(raw) != null ? raw : null;
+  }
+  function paramChoice(params, key, fieldsetKey) {
+    if (!params.has(key)) return null;
+    const raw = params.get(key);
+    const found = $$('[data-choice-fieldset="' + fieldsetKey + '"] input[type="radio"]').some(r => r.value === raw);
+    return found ? raw : null;
+  }
+  function paramDate(params, key) {
+    if (!params.has(key)) return null;
+    const raw = params.get(key);
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(raw)) return null;
+    return Number.isFinite(Date.parse(raw)) ? raw : null;
+  }
+  function applySharedAnswersFromUrl() {
+    const params = new URLSearchParams(window.location.search);
+    const knownKeys = ['trav', 'nights', 'style', 'flight', 'flightprice', 'room', 'booking', 'rooms', 'card', 'goods', 'goodsamt', 'date'].concat(questionParamKeys);
+    if (!knownKeys.some(k => params.has(k))) return; // no share-link params: today's behavior, unchanged
+
+    const travInput = document.querySelector('[data-quantity-input="travelers"]');
+    const travBase = snapshotControls('travelers');
+    const trav = travInput ? paramInt(params, 'trav', +travInput.dataset.min, +travInput.dataset.max) : null;
+    restoreControls('travelers', { value: trav != null ? String(trav) : travBase.value });
+
+    const nightsInput = document.querySelector('[data-quantity-input="nights"]');
+    const nightsBase = snapshotControls('nights');
+    const nights = nightsInput ? paramInt(params, 'nights', +nightsInput.dataset.min, +nightsInput.dataset.max) : null;
+    restoreControls('nights', { value: nights != null ? String(nights) : nightsBase.value });
+
+    const styleBase = snapshotControls('style');
+    const styleVal = paramChoice(params, 'style', 'style');
+    restoreControls('style', { value: styleVal != null ? styleVal : styleBase.value });
+
+    // Reseed the hotel price surface from any style-driven change to the hidden engine's
+    // own #hnRoom (calc-engine.js's applyStyleRoom()) before reading it as this link's own
+    // fallback default below, the same resync a normal visit already does the moment the
+    // reader reaches the hotel step after picking a style.
+    resyncBeforeShow('hotel');
+
+    const flightsBase = snapshotControls('flights');
+    const flightMode = paramChoice(params, 'flight', 'flight-mode') || flightsBase.mode;
+    const flightPrice = paramMoney(params, 'flightprice');
+    restoreControls('flights', {
+      mode: flightMode,
+      price: flightPrice != null ? flightPrice : flightsBase.price,
+      wrapHidden: flightMode !== 'known',
+    });
+
+    const hotelBase = snapshotControls('hotel');
+    const booking = paramChoice(params, 'booking', 'hotel-booking') || hotelBase.booking;
+    const roomPrice = paramMoney(params, 'room');
+    const roomsCount = paramInt(params, 'rooms', 1, 50);
+    restoreControls('hotel', {
+      value: roomPrice != null ? roomPrice : hotelBase.value,
+      booking: booking,
+      roomsValue: roomsCount != null ? String(roomsCount) : hotelBase.roomsValue,
+      roomsOrigin: roomsCount != null ? 'figure' : hotelBase.roomsOrigin,
+    });
+
+    const cardBase = snapshotControls('card');
+    restoreControls('card', { value: paramChoice(params, 'card', 'card') || cardBase.value });
+
+    questionParamKeys.forEach(key => {
+      const base = snapshotControls(key);
+      restoreControls(key, { value: paramChoice(params, key, key) || base.value });
+    });
+
+    const goodsBase = snapshotControls('goods');
+    const goodsMode = paramChoice(params, 'goods', 'goods') || goodsBase.mode;
+    const goodsAmt = paramMoney(params, 'goodsamt');
+    restoreControls('goods', {
+      mode: goodsMode,
+      amount: goodsMode === 'yes' ? (goodsAmt != null ? goodsAmt : goodsBase.amount) : '',
+    });
+
+    const dateBase = snapshotControls('date');
+    const dateVal = paramDate(params, 'date');
+    restoreControls('date', { value: dateVal != null ? dateVal : dateBase.value });
+
+    // Recompute the "Your figure" vs "Our estimate" basis exactly as a normal Continue
+    // click on these two steps already would, now that they hold the shared answers.
+    validateStep('flights');
+    validateStep('hotel');
+
+    finish();
+  }
+  applySharedAnswersFromUrl();
 }
