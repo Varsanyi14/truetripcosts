@@ -85,7 +85,7 @@ export default {
     capNights: null,
     note: "Aruba adds a 12.5% tourist levy to your room rate each night, plus a small environmental levy of about 3 US dollars per room per night. On top of those government charges, most hotels also add their own service charge and a resort fee, which are not taxes. There is no cap on nights.",
     regions: [
-      { key: "everywhere", label: "Anywhere in Aruba", unit: "percentOfRoom", pct: 12.5, note: "The 12.5% tourist levy applies island-wide, on the room rate each night, plus about 3 US dollars per room per night in environmental levy. Most hotels add a service charge (often 10 to 15%) and a resort fee (commonly 30 to 90 dollars a night) on top, which are not government taxes." }
+      { key: "everywhere", label: "Anywhere in Aruba", unit: "percentOfRoom", pct: 12.5, note: "The 12.5% tourist levy applies island-wide, on the room rate each night, plus about 3 US dollars per room per night in environmental levy. Most hotels add a service charge (often 10 to 15%) and a resort fee (commonly 25 to 55 dollars a night) on top, which are not government taxes." }
     ]
   },
   currencyHeading: "The dollar works, and the florin behind it.",
@@ -98,7 +98,7 @@ export default {
   taxfree: {
     label: "Taxes and the hotel bill",
     heading: "No VAT refund, and a hotel bill that stacks up.",
-    text: "Two things to know. First, <b>there is no tourist VAT refund</b> in Aruba, because Aruba does not have a VAT: it uses a <b>turnover tax (BBO)</b> of around 7% on goods and services, usually built into prices, with nothing to reclaim at the airport. Second, an Aruba <b>hotel bill stacks up beyond the headline rate</b>. On top of the room you will see a <b>12.5% tourist levy</b> and a small <b>environmental levy</b> of about 3 US dollars per room per night, both government charges. Most hotels then add their own <b>service charge</b> (often around 10 to 15%) and a <b>resort fee</b> (commonly 30 to 90 dollars a night), which are not taxes but are usually mandatory. Together these can add roughly a quarter to a third to the room rate, so read the fine print when you book. Separately, every air visitor pays a <b>20 dollar sustainability fee</b> through the ED Card before arrival, and the old departure tax is now built into your airfare."
+    text: "Two things to know. First, <b>there is no tourist VAT refund</b> in Aruba, because Aruba does not have a VAT: it uses a <b>turnover tax (BBO)</b> of around 7% on goods and services, usually built into prices, with nothing to reclaim at the airport. Second, an Aruba <b>hotel bill stacks up beyond the headline rate</b>. On top of the room you will see a <b>12.5% tourist levy</b> and a small <b>environmental levy</b> of about 3 US dollars per room per night, both government charges. Most hotels then add their own <b>service charge</b> (often around 10 to 15%) and a <b>resort fee</b> (commonly 25 to 55 dollars a night), which are not taxes but are usually mandatory. Together these can add roughly a quarter to a third to the room rate, so read the fine print when you book. Separately, every air visitor pays a <b>20 dollar sustainability fee</b> through the ED Card before arrival, and the old departure tax is now built into your airfare."
   },
   keyFacts: [
     { label: "ED Card and sustainability fee", value: "Mandatory online form before boarding, 20 dollars per person (under 8 exempt)", status: "enacted", effective: "2024-07-01", source: "https://edcardaruba.aw/", checked: "2026-07-22" },
@@ -117,7 +117,7 @@ export default {
     { q: "Can I use US dollars in Aruba?", a: "Yes, almost everywhere. The official currency is the Aruban florin, pegged at about 1.79 to the dollar, but US dollars are accepted at hotels, restaurants, shops, taxis and tours, and prices are often shown in both. There is no need to exchange money in advance. Pay in dollars and you may get change in a mix of dollars and florin. Cards are also widely accepted." },
     { q: "Do I need cash in Aruba?", a: "Only a little, in small US bills. Cards and US dollars cover most spending, but cash is easiest for tips, taxis, beach vendors and food trucks. Carry small denominations, since change for large notes can be short, and top up at an ATM if you run low. You do not need to buy florin before you travel." },
     { q: "Do US citizens need a visa for Aruba?", a: "No visa for tourism: US citizens can stay up to 90 days without one. But every air traveler, including US citizens, must complete the online ED Card before boarding, and it now includes a 20 dollar per-person sustainability fee (children under 8 exempt). Do it at the official site, edcardaruba.aw, within the window before arrival, and avoid lookalike sites that charge extra." },
-    { q: "What taxes and fees will I pay on an Aruba hotel?", a: "More than the headline rate. On top of the room, expect a 12.5% tourist levy and a small environmental levy of about 3 dollars per room per night, both government charges, plus a hotel service charge (often 10 to 15%) and a resort fee (commonly 30 to 90 dollars a night), which are not taxes but are usually mandatory. Together these can add roughly a quarter to a third. Separately, the ED Card carries a 20 dollar sustainability fee, and there is no VAT refund." },
+    { q: "What taxes and fees will I pay on an Aruba hotel?", a: "More than the headline rate. On top of the room, expect a 12.5% tourist levy and a small environmental levy of about 3 dollars per room per night, both government charges, plus a hotel service charge (often 10 to 15%) and a resort fee (commonly 25 to 55 dollars a night), which are not taxes but are usually mandatory. Together these can add roughly a quarter to a third. Separately, the ED Card carries a 20 dollar sustainability fee, and there is no VAT refund." },
     { q: "Should I pay in florin or dollars in Aruba?", a: "Paying in US cash is fine and expected almost everywhere. On a card, though, choose to be billed in florin, not dollars: selecting dollars triggers dynamic currency conversion at a marked-up rate, while florin lets your own bank convert more cheaply. At an ATM, pick whether you want florins or dollars and decline any offer to convert." },
     { q: "How much cash should I bring for a week in Aruba?", a: "For two travelers, very roughly 150 to 250 dollars in small US bills across a week, beyond what you put on cards, covers tips, taxis, beach vendors and food trucks. Cards and dollars handle the rest, and you can top up at an ATM if needed. There is no need to exchange for florin in advance." }
   ],
@@ -422,7 +422,7 @@ export default {
         { k: "On top of the room", v: "Several taxes and fees" },
         { k: "Government", v: "12.5% tourist levy + a small eco levy" },
         { k: "Hotel", v: "Service charge 10 to 15%, resort fee" },
-        { k: "Resort fee", v: "Commonly $30 to $90 a night" }
+        { k: "Resort fee", v: "Commonly $25 to $55 a night" }
       ],
       live: true,
       topic: "taxes",
@@ -432,7 +432,7 @@ export default {
       lede: "Short answer: the headline room rate is not what you pay. Between government levies and hotel charges, a nightly rate can climb by a quarter to a third. Here is exactly what stacks on top.",
       checked: "Jul 2026",
       checkedISO: "2026-07-22",
-      answer: "On top of the room rate, an Aruba hotel bill adds a <b>12.5% tourist levy</b> and a small <b>environmental levy</b> (about 3 US dollars per room per night), both government charges, plus the hotel's own <b>service charge</b> (often 10 to 15%) and a <b>resort fee</b> (commonly 30 to 90 dollars a night). Together these can add roughly a <b>quarter to a third</b> to the nightly rate. Separately, every air visitor pays a <b>20 dollar sustainability fee</b> at entry, and there is <b>no VAT refund</b>.",
+      answer: "On top of the room rate, an Aruba hotel bill adds a <b>12.5% tourist levy</b> and a small <b>environmental levy</b> (about 3 US dollars per room per night), both government charges, plus the hotel's own <b>service charge</b> (often 10 to 15%) and a <b>resort fee</b> (commonly 25 to 55 dollars a night). Together these can add roughly a <b>quarter to a third</b> to the nightly rate. Separately, every air visitor pays a <b>20 dollar sustainability fee</b> at entry, and there is <b>no VAT refund</b>.",
       official: {
         label: "Aruba Tourism Authority: hotel charges and the tourist levy",
         url: "https://www.aruba.com/us/plan-your-visit/tips-for-visitors/currency",
@@ -451,9 +451,9 @@ export default {
         {
           h: "The hotel's own charges",
           icon: "usd",
-          key: { fig: "$30-90", tag: "Resort fee bites", text: "Most hotels add a service charge, often 10 to 15%, functioning as a built-in gratuity, and many resorts also add a resort fee, commonly $30 to $90 a night. Neither is in the headline room rate.", tone: "amber" },
+          key: { fig: "$25-55", tag: "Resort fee bites", text: "Most hotels add a service charge, often 10 to 15%, functioning as a built-in gratuity, and many resorts also add a resort fee, commonly $25 to $55 a night. Neither is in the headline room rate.", tone: "amber" },
           p: [
-            "Most hotels add their own <b>service charge</b>, often around <b>10 to 15%</b>, which functions as a built-in gratuity for staff, and many resorts also add a <b>resort fee</b>, commonly <b>30 to 90 dollars a night</b>, covering things like Wi-Fi, loungers and activities. These are <b>not taxes</b>, but they are usually mandatory.",
+            "Most hotels add their own <b>service charge</b>, often around <b>10 to 15%</b>, which functions as a built-in gratuity for staff, and many resorts also add a <b>resort fee</b>, commonly <b>25 to 55 dollars a night</b>, covering things like Wi-Fi, loungers and activities. These are <b>not taxes</b>, but they are usually mandatory.",
             "Because the levy and these fees compound, a room advertised at one price can settle a <b>quarter to a third higher</b> once everything is added. Read the fine print at booking, and ask what the all-in nightly total is."
           ]
         },
@@ -468,9 +468,9 @@ export default {
         }
       ],
       faqs: [
-        { q: "What is the hotel tax in Aruba?", a: "The government tourist levy is 12.5% of the room rate each night, raised from 9.5% in 2023, plus a small environmental levy of about 3 US dollars per room per night. On top of those, most hotels add their own service charge (often 10 to 15%) and a resort fee (commonly 30 to 90 dollars a night), which are not taxes but are usually mandatory." },
-        { q: "Why is my Aruba hotel bill so much higher than the room rate?", a: "Because several charges stack on top: a 12.5% tourist levy, a roughly 3 dollar per-night environmental levy, a hotel service charge of around 10 to 15%, and often a resort fee of 30 to 90 dollars a night. Together they can add about a quarter to a third to the advertised rate, so check the all-in total when you book." },
-        { q: "Is there a resort fee in Aruba, and is it mandatory?", a: "Many Aruba resorts charge a resort fee, commonly 30 to 90 dollars per night, covering amenities like Wi-Fi, loungers, fitness facilities and some activities. It is set by the hotel, not the government, and is usually mandatory rather than optional, so factor it into your nightly cost." },
+        { q: "What is the hotel tax in Aruba?", a: "The government tourist levy is 12.5% of the room rate each night, raised from 9.5% in 2023, plus a small environmental levy of about 3 US dollars per room per night. On top of those, most hotels add their own service charge (often 10 to 15%) and a resort fee (commonly 25 to 55 dollars a night), which are not taxes but are usually mandatory." },
+        { q: "Why is my Aruba hotel bill so much higher than the room rate?", a: "Because several charges stack on top: a 12.5% tourist levy, a roughly 3 dollar per-night environmental levy, a hotel service charge of around 10 to 15%, and often a resort fee of 25 to 55 dollars a night. Together they can add about a quarter to a third to the advertised rate, so check the all-in total when you book." },
+        { q: "Is there a resort fee in Aruba, and is it mandatory?", a: "Many Aruba resorts charge a resort fee, commonly 25 to 55 dollars per night, covering amenities like Wi-Fi, loungers, fitness facilities and some activities. It is set by the hotel, not the government, and is usually mandatory rather than optional, so factor it into your nightly cost." },
         { q: "Can I get a VAT refund in Aruba?", a: "No. Aruba does not have a VAT, so there is nothing to refund. It uses a turnover tax (BBO) of around 7% on goods and services, generally built into prices, with no airport refund scheme for tourists. The charges you will notice are the hotel levy and fees, not a reclaimable sales tax." }
       ],
       sources: {

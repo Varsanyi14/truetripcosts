@@ -731,7 +731,7 @@ export const heroFacts = {
     // quarter-to-a-third total are the desk's own observation and the data says so, so
     // both are worded as a typical case rather than as a rule.
     setup: 'You compare Aruba hotels on the nightly rate, because that is the number they show you.',
-    fact: "Two of the charges are government: a 12.5% tourist levy and an environmental levy of about 3 dollars a night. Then the property adds its own 10 to 15% service charge and, commonly, a resort fee of 30 to 90 dollars a night. Together they typically add something like a quarter to a third to the rate.",
+    fact: "Two of the charges are government: a 12.5% tourist levy and an environmental levy of about 3 dollars a night. Then the property adds its own 10 to 15% service charge and, commonly, a resort fee of 25 to 55 dollars a night. Together they typically add something like a quarter to a third to the rate.",
     escape: 'Ask for an all-in nightly figure including levies, service charge and resort fee before you book. Only the first two are taxes; the rest is the hotel\'s choice.',
     accent: {
       from: 'the nightly rate', fromNote: 'what you compared hotels on',

@@ -9,7 +9,7 @@ import CostCurve from '../components/CostCurve.astro';
 // already-sourced datasets so the viz below never hand-types a percentage that already
 // has a home elsewhere on the site. See the VIZ DERIVATION block for how each is used.
 import { hotelTaxMap, colours } from '../data/hotel-tax-map.js';
-import { PROPERTY_FEE_BAND } from '../data/booking-tactics.js';
+import { PROPERTY_FEE_BAND, HOTEL_EXTRAS } from '../data/booking-tactics.js';
 
 const CHECKED = 'September 2026';
 const CHECKED_ISO = '2026-09-01';
@@ -69,14 +69,33 @@ const round1 = (n) => Math.round(n * 10) / 10;
 // price" move the hotel-tax map itself uses for a flat charge with no percentage of
 // its own.
 const cleaningPct = round1((CLEAN_MEDIAN_USD / VIZ_REF_NIGHTLY_USD) * 100);
-// THE RESORT-FEE FIGURE IS SUBSTITUTED FROM AN ALREADY-SOURCED SITE FIGURE, flagged in
-// the handback: PROPERTY_FEE_BAND (booking-tactics.js) is the SAME resort-fee figure
-// the sibling hotels page already cites, "US resort fees run roughly 30 to 90 dollars
-// a night." Reused here rather than typing a second, different range for the same
-// mechanic.
-const resortLowPct = round1((PROPERTY_FEE_BAND.usResortLowUsd / VIZ_REF_NIGHTLY_USD) * 100);
-const resortHighPct = round1((PROPERTY_FEE_BAND.usResortHighUsd / VIZ_REF_NIGHTLY_USD) * 100);
+// A shared conversion, so every dollar figure below (resort fee, parking, platform fee)
+// becomes a percent of the same declared $120 reference room through one formula
+// rather than one hand-repeated calculation per figure.
+const pctOfRef = (usd) => round1((usd / VIZ_REF_NIGHTLY_USD) * 100);
+
+// THE RESORT-FEE FIGURE READS LIVE FROM PROPERTY_FEE_BAND (booking-tactics.js), the SAME
+// resort-fee figure the sibling hotels page already cites, so this page can never quote a
+// second, different number for the same mechanic. FLAGGED IN THE HANDBACK: this build's
+// brief stated PROPERTY_FEE_BAND had already been corrected to $25 to $55 a night; the
+// repo handed with this brief still carries the older $30 to $90 figure (and that older
+// figure is ALSO still live in /hotel-tax-map's own prose and in hotel-tax-map.js's Aruba
+// entry, a wider correction than this brief's file list covers). Rather than patch one of
+// three copies myself and leave the other two contradicting it, this page reads
+// PROPERTY_FEE_BAND exactly as it stands and will pick up the real figure automatically
+// once that correction lands across all three places at once.
+const resortLowPct = pctOfRef(PROPERTY_FEE_BAND.usResortLowUsd);
+const resortHighPct = pctOfRef(PROPERTY_FEE_BAND.usResortHighUsd);
 const resortMidPct = round1((resortLowPct + resortHighPct) / 2);
+
+// THE PARKING FIGURE, read live from HOTEL_EXTRAS.parking (booking-tactics.js), never
+// typed here. Drawn HATCHED, never solid: $44 is the average AMONG HOTELS THAT CHARGE
+// for parking, most charge nothing, so this width is an illustrative range, not a
+// measured line item. See the honesty-vocabulary caption on the page for what hatching
+// means here.
+const parkingCentralPct = pctOfRef(HOTEL_EXTRAS.parking.centralUsd);
+const parkingLowPct = pctOfRef(HOTEL_EXTRAS.parking.lowUsd);
+const parkingHighPct = pctOfRef(HOTEL_EXTRAS.parking.highUsd);
 
 const BASE_FILL = '#0A5644';
 const CLEAN_FILL = '#B45309';
@@ -84,9 +103,21 @@ const PLATFORM_FILL = '#0E7A5F';
 const TAX_FILL = '#7FB8A5';
 const TAX_FAINT_FILL = '#D7ECE3';
 const RESORT_FILL = '#E3B98A';
+const PARKING_FILL = '#8C6A2F';
+
+// A hatch-fill helper. Reuses StackBar's own per-instance hatch pattern (defined once,
+// inside that component, keyed to whatever `id` a chart is given) rather than adding a
+// second hatch mechanism: passing `url(#{id}-hatch)` as an ordinary segment's own `fill`
+// draws that accumulating segment with the identical texture StackBar already uses
+// elsewhere on the site for "this is not a solid, certain number." No change to
+// StackBar.astro was needed for this; the component already renders whatever fill a
+// segment is given.
+const hatchFill = (barId) => `url(#${barId}-hatch)`;
+
+const CHART1_ID = 'airbnb-hotel-compare';
 
 const rentalTotal = Math.round(100 + cleaningPct + PLATFORM_PCT + taxMedian);
-const hotelTotal = Math.round(100 + resortMidPct + taxMedian);
+const hotelTotal = Math.round(100 + resortMidPct + parkingCentralPct + taxMedian);
 
 const comparisonRows = [
   {
@@ -110,7 +141,7 @@ const comparisonRows = [
     note: `Modeled against a $${VIZ_REF_NIGHTLY_USD} room for a single night, the same illustrative rate the cleaning-fee math below uses. NerdWallet's median cleaning fee, $${CLEAN_MEDIAN_USD} a stay, is already this large a slice on one night; the average runs far higher, $${CLEAN_AVG_USD} (AirROI), because a few large, expensive properties pull it up hard. The platform fee shown is Airbnb's own incoming host-only rate; historically it ran 14 to 16% and showed to the guest as its own line, and it is increasingly folded into the nightly rate instead as the site notes below. The tax segment uses the same figure as the hotel row, read from our own hotel tax map.`,
   },
   {
-    label: 'A hotel, one night',
+    label: 'A hotel, one night, all in',
     segments: [
       { label: 'room rate', value: 100, fill: BASE_FILL, figure: '100' },
       {
@@ -118,19 +149,106 @@ const comparisonRows = [
         figure: `$${PROPERTY_FEE_BAND.usResortLowUsd} to $${PROPERTY_FEE_BAND.usResortHighUsd}, not universal`,
       },
       {
+        label: 'parking, where it is charged', value: parkingCentralPct, fill: hatchFill(CHART1_ID),
+        figure: `$${HOTEL_EXTRAS.parking.centralUsd} typical ($${HOTEL_EXTRAS.parking.lowUsd} to $${HOTEL_EXTRAS.parking.highUsd})`,
+      },
+      {
         label: 'tax, often already inside the sticker', value: taxMedian, fill: TAX_FAINT_FILL,
         figure: taxRangeLabel,
       },
     ],
     totalFigure: String(hotelTotal),
-    note: `Most hotels charge no resort fee at all; it is a US pattern at a minority of properties, drawn in a lighter color for that reason. The tax segment is the identical figure the rental row uses above, drawn faint here because in much of Europe a hotel's quoted rate already has this tax folded in by law, so it often never appears as a line at all. Same tax, two different treatments: that contrast is the actual point of drawing it twice.`,
+    note: `Most hotels charge no resort fee at all; it is a US pattern at a minority of properties, drawn in a lighter color for that reason. Parking is hatched rather than solid on purpose: it is a real cost that lands on top, but $${HOTEL_EXTRAS.parking.centralUsd} is an illustrative typical figure, not a measured one, read the caption below the chart for why. The tax segment is the identical figure the rental row uses above, drawn faint here because in much of Europe a hotel's quoted rate already has this tax folded in by law, so it often never appears as a line at all. Same tax, two different treatments: that contrast is the actual point of drawing it twice.`,
+    commissionNote: `Parking, hatched: ${HOTEL_EXTRAS.parking.honestyCaveat} ${HOTEL_EXTRAS.parking.aboveNote}`,
   },
 ];
 
 // ============================================================================
-// THE SHARED STAY-LENGTH ENGINE, for Viz 2 and Viz 3 both. One function, one set of
-// declared inputs, called four different ways (two party sizes times two cleaning-fee
-// edges), so the two charts can never quietly disagree about the same underlying trip.
+// CHART 2. The SAME stacked-bar component and the SAME $120-reference model as Chart 1
+// above, recomputed for a 30-night stay, with a THIRD row: a plain hotel that charges
+// neither resort fee nor parking, so this chart can never be read as "every hotel adds
+// this much." Three rows, one honest question: does 30 nights actually erase the
+// rental's flat-fee penalty? The rental's cleaning fee is a ONE-TIME charge, so its
+// per-night share shrinks with nights; the platform fee and tax are PERCENTAGES of the
+// nightly rate, so they do not shrink, the same distinction the shared stay-length
+// engine below is built on for Viz 3. A hotel's resort fee, parking and tax are all
+// per-night recurring charges too, so the hotel bars barely change between Chart 1 and
+// Chart 2; only the rental bar genuinely moves.
+// ============================================================================
+const CHART2_NIGHTS = 30;
+const CHART2_ID = 'airbnb-hotel-compare-30';
+const cleaningPctAt30 = round1(((CLEAN_MEDIAN_USD / CHART2_NIGHTS) / VIZ_REF_NIGHTLY_USD) * 100);
+
+const rental30Total = Math.round(100 + cleaningPctAt30 + PLATFORM_PCT + taxMedian);
+const plainHotel30Total = Math.round(100 + taxMedian);
+const feeHotel30Total = Math.round(100 + resortMidPct + parkingCentralPct + taxMedian);
+
+// CHART 2's HONESTY, ASSERTED RATHER THAN ASSUMED. The whole point of this chart is that
+// 30 nights erodes MOST of the rental's cleaning-fee penalty but not all of it: the
+// rental must still NOT beat a plain hotel outright, and it must still land clearly
+// below a hotel that charges resort and parking fees. Both are consequences of the
+// figures above, not hand-tuned, and a future edit to any constant this chart reads
+// could break either claim silently, so the build fails instead of shipping a chart
+// that quietly overclaims.
+if (rental30Total <= plainHotel30Total) {
+  throw new Error('airbnb-real-cost: Chart 2 has the 30-night rental beating a plain hotel outright ('
+    + rental30Total + ' <= ' + plainHotel30Total + '). The honesty spine requires the rental to land '
+    + 'ABOVE a plain hotel, not below it; check CLEAN_MEDIAN_USD, PLATFORM_PCT, taxMedian or CHART2_NIGHTS.');
+}
+if (rental30Total >= feeHotel30Total) {
+  throw new Error('airbnb-real-cost: Chart 2 does not have the 30-night rental clearly below a '
+    + 'fee-charging hotel (' + rental30Total + ' >= ' + feeHotel30Total + '). Check PROPERTY_FEE_BAND, '
+    + 'HOTEL_EXTRAS.parking or the other Chart 2 constants.');
+}
+
+const chart2Rows = [
+  {
+    label: 'A vacation rental, 30 nights',
+    segments: [
+      { label: 'nightly rate', value: 100, fill: BASE_FILL, figure: '100' },
+      {
+        label: 'cleaning fee, one time, spread thin', value: cleaningPctAt30, fill: CLEAN_FILL,
+        figure: `$${CLEAN_MEDIAN_USD} once, over 30 nights`,
+      },
+      { label: 'platform service fee', value: PLATFORM_PCT, fill: PLATFORM_FILL, figure: `${PLATFORM_PCT}%` },
+      { label: 'tax, on the booking or in cash later', value: taxMedian, fill: TAX_FILL, figure: taxRangeLabel },
+    ],
+    totalFigure: String(rental30Total),
+    note: `The one-time cleaning fee that made up ${cleaningPct}% of a single night above now makes up only ${cleaningPctAt30}%, spread across 30 nights instead of one. The platform fee and tax do not shrink the same way: both are percentages of the nightly rate, so they charge the same share every night regardless of how long you stay.`,
+  },
+  {
+    label: 'A hotel, 30 nights, no resort or parking fee',
+    segments: [
+      { label: 'room rate', value: 100, fill: BASE_FILL, figure: '100' },
+      { label: 'tax, often already inside the sticker', value: taxMedian, fill: TAX_FAINT_FILL, figure: taxRangeLabel },
+    ],
+    totalFigure: String(plainHotel30Total),
+    note: 'A hotel that charges neither a resort fee nor for parking. Its own charges are all per-night, so this total barely differs from a one-night stay: nothing here amortizes the way a one-time fee does.',
+  },
+  {
+    label: 'A hotel, 30 nights, resort fee and parking',
+    segments: [
+      { label: 'room rate', value: 100, fill: BASE_FILL, figure: '100' },
+      {
+        label: 'resort fee, only at some properties', value: resortMidPct, fill: RESORT_FILL,
+        figure: `$${PROPERTY_FEE_BAND.usResortLowUsd} to $${PROPERTY_FEE_BAND.usResortHighUsd}, not universal`,
+      },
+      {
+        label: 'parking, where it is charged', value: parkingCentralPct, fill: hatchFill(CHART2_ID),
+        figure: `$${HOTEL_EXTRAS.parking.centralUsd} typical ($${HOTEL_EXTRAS.parking.lowUsd} to $${HOTEL_EXTRAS.parking.highUsd})`,
+      },
+      { label: 'tax, often already inside the sticker', value: taxMedian, fill: TAX_FAINT_FILL, figure: taxRangeLabel },
+    ],
+    totalFigure: String(feeHotel30Total),
+    note: 'The same resort-fee and parking figures as Chart 1, unchanged by nights, because both are charged per night rather than once per stay.',
+    commissionNote: `Parking, hatched: ${HOTEL_EXTRAS.parking.honestyCaveat}`,
+  },
+];
+
+// ============================================================================
+// THE SHARED STAY-LENGTH ENGINE, for Chart 3 (the crossover bands). One function, one
+// set of declared inputs, called four different ways (two party sizes times two
+// cleaning-fee edges).
 // ============================================================================
 //
 // THE THREE COMPARISON FIGURES ARE PROMOTED HERE FROM PROSE TO DECLARED CONSTANTS.
@@ -151,70 +269,31 @@ const HOTEL_IDX = 100;
 const idx = (usd) => Math.round((usd / HOTEL_USD) * HOTEL_IDX * 10) / 10;
 
 // effectivePerNightIdx(baseUsd, partySize, cleaningFeeUsd, nights): the ONE shared
-// helper both new charts call. A flat cleaning fee, charged once per stay, is spread
-// across every night AND across every traveler splitting that one listing, so its bite
-// per person per night is cleaningFeeUsd / (partySize * nights). Add that to the base
-// per-person nightly rate and convert to the same hotel-referenced index everything
-// else on this page uses. This is the entire model: no second formula, no per-chart
-// tuning, every curve below is this one function called with different inputs.
+// helper Chart 3 calls, four ways. A flat cleaning fee, charged once per stay, is
+// spread across every night AND across every traveler splitting that one listing, so
+// its bite per person per night is cleaningFeeUsd / (partySize * nights). Add that to
+// the base per-person nightly rate and convert to the same hotel-referenced index
+// everything else on this page uses.
 const effectivePerNightIdx = (baseUsd, partySize, cleaningFeeUsd, nights) =>
   idx(baseUsd + cleaningFeeUsd / (partySize * nights));
 
-const NIGHTS = Array.from({ length: 14 }, (_, i) => i + 1);
-const NIGHT_TICKS = [1, 2, 3, 5, 7, 10, 14];
+// AXIS FIX FROM THE PRIOR BUILD: this ran to 14 nights and Gary rejected it, agreed at
+// 30 and never shipped. 30 it is.
+const NIGHTS = Array.from({ length: 30 }, (_, i) => i + 1);
+const NIGHT_TICKS = [1, 2, 3, 5, 7, 10, 14, 20, 25, 30];
 
-// WHY THE SOLO/COUPLE CURVE USES THE MEDIAN CLEANING FEE AND THE GROUP CURVE USES THE
-// AVERAGE. Not an arbitrary pairing: the research memo's own explanation for why
-// AirROI's average ($188) sits so far above NerdWallet's median ($75) is that "a few
-// large, expensive properties pull the average up hard." A large group books exactly
-// that kind of large, pricier property; a solo traveler or a couple typically books the
-// smaller, more typical listing the median describes. So each series is modelled at the
-// cleaning-fee figure that actually fits the property size it represents, both figures
-// already declared above for Viz 1, neither invented for this chart.
-const soloLineIdx = NIGHTS.map((n) => effectivePerNightIdx(SOLO_BASE_USD, SOLO_PARTY, CLEAN_MEDIAN_USD, n));
-const groupLineIdx = NIGHTS.map((n) => effectivePerNightIdx(GROUP_BASE_USD, GROUP_PARTY, CLEAN_AVG_USD, n));
 const hotelLineIdx = NIGHTS.map(() => HOTEL_IDX);
-
-// VIZ 2 CHECK, ASSERTED RATHER THAN ASSUMED. The honesty spine this brief turns on
-// requires the solo/couple line to never cross below the hotel, and the group line to
-// cross below within a night or two. Both are consequences of the real figures above,
-// not hand-tuned, but a future edit to any of the constants above could break either
-// claim silently. Asserting it here fails the build instead, the same rail
-// how-to-pay-less-on-hotels.astro uses for its own tax-split boundary.
-if (soloLineIdx.some((v) => v < HOTEL_IDX)) {
-  throw new Error('airbnb-real-cost: the solo/couple stay-length line dips below the hotel index. '
-    + 'The honesty spine for Viz 2 requires it to stay at or above the hotel line; check SOLO_BASE_USD, '
-    + 'SOLO_PARTY, CLEAN_MEDIAN_USD or HOTEL_USD.');
-}
-const groupCrossIdx = groupLineIdx.findIndex((v) => v < HOTEL_IDX);
-if (groupCrossIdx <= 0) {
-  throw new Error('airbnb-real-cost: the group stay-length line does not start above the hotel index '
-    + 'and cross below within the first couple of nights as the honesty spine for Viz 2 requires. '
-    + 'Check GROUP_BASE_USD, GROUP_PARTY, CLEAN_AVG_USD or HOTEL_USD.');
-}
-const groupCrossesAtNight = NIGHTS[groupCrossIdx];
-
 const HOTEL_LINE_COLOR = '#0A5644';
 const SOLO_LINE_COLOR = '#B45309';
 const GROUP_LINE_COLOR = '#0E7A5F';
 
-const viz2Series = [
-  { key: 'hotel', label: 'Hotel, flat reference', kind: 'reference', color: HOTEL_LINE_COLOR, values: hotelLineIdx },
-  {
-    key: 'solo', label: 'Rental, solo or a couple', kind: 'line', color: SOLO_LINE_COLOR, values: soloLineIdx,
-    note: 'stays above the hotel line at every length shown',
-  },
-  {
-    key: 'group', label: 'Rental, a group of six', kind: 'line', color: GROUP_LINE_COLOR, values: groupLineIdx,
-    note: `crosses below the hotel line by night ${groupCrossesAtNight}`,
-  },
-];
-
-// VIZ 3, THE SAME ENGINE DRAWN AS BANDS. Each rental series becomes a spread from the
-// median-cleaning-fee edge to the average-cleaning-fee edge of that SAME party size,
-// which is the honest way to show "the range across different properties" without
-// inventing a second, unsourced axis for how nightly rates vary by city. The hotel
-// stays the single flat reference both charts share.
+// CHART 3, DRAWN AS BANDS. Each rental series is a spread from the median-cleaning-fee
+// edge to the average-cleaning-fee edge of that SAME party size (the research memo's
+// own explanation for why AirROI's average sits so far above NerdWallet's median is
+// that large, pricier properties pull it up, and a large group books exactly that kind
+// of property), which is the honest way to show "the range across different
+// properties" without inventing a second, unsourced axis for how nightly rates vary by
+// city. The hotel stays a single flat reference.
 const soloBandIdx = NIGHTS.map((n) => ({
   low: effectivePerNightIdx(SOLO_BASE_USD, SOLO_PARTY, CLEAN_MEDIAN_USD, n),
   high: effectivePerNightIdx(SOLO_BASE_USD, SOLO_PARTY, CLEAN_AVG_USD, n),
@@ -228,6 +307,27 @@ const groupBandIdx = NIGHTS.map((n) => ({
 // so the prose naming that night can never drift from the chart drawing it.
 const groupOverlapNights = NIGHTS.filter((n, i) => groupBandIdx[i].low < HOTEL_IDX && groupBandIdx[i].high > HOTEL_IDX);
 const soloEverOverlaps = soloBandIdx.some((b) => b.low < HOTEL_IDX);
+
+// CHART 3'S HONESTY, ASSERTED RATHER THAN ASSUMED. The couple/solo band must never dip
+// below the hotel line (its lower, cheaper edge included), and the group band must
+// start above the hotel and cross below within the first couple of nights, exactly the
+// honesty spine this whole build is built on. Both are consequences of the constants
+// above, not hand-tuned, so a future edit that quietly breaks either claim fails the
+// build instead of shipping a chart that overclaims.
+if (soloEverOverlaps) {
+  throw new Error('airbnb-real-cost: Chart 3\'s solo/couple band dips below the hotel index. The honesty '
+    + 'spine requires it to stay above the hotel line at every night modelled; check SOLO_BASE_USD, '
+    + 'SOLO_PARTY, CLEAN_MEDIAN_USD, CLEAN_AVG_USD or HOTEL_USD.');
+}
+if (groupOverlapNights.length === 0 || groupOverlapNights[0] !== NIGHTS[0]) {
+  throw new Error('airbnb-real-cost: Chart 3\'s group band does not start straddling the hotel index on the '
+    + 'first night modelled and then drop below. Check GROUP_BASE_USD, GROUP_PARTY, CLEAN_MEDIAN_USD, '
+    + 'CLEAN_AVG_USD or HOTEL_USD.');
+}
+if (groupBandIdx.some((b, i) => NIGHTS[i] > groupOverlapNights[groupOverlapNights.length - 1] && b.high >= HOTEL_IDX)) {
+  throw new Error('airbnb-real-cost: Chart 3\'s group band pokes back above the hotel index after it '
+    + 'first dropped below, which the honesty spine does not expect. Check the constants feeding groupBandIdx.');
+}
 
 const viz3Series = [
   { key: 'hotel', label: 'Hotel, flat reference', kind: 'reference', color: HOTEL_LINE_COLOR, values: hotelLineIdx },
@@ -321,16 +421,30 @@ const webPageLd = {
       </div>
 
       <div class="bt-figure">
-        <p class="arc-figh">A vacation rental against a hotel, one night, same assumed room rate</p>
+        <p class="arc-figh">A vacation rental against a hotel, one night, all in on both sides</p>
         <p class="bt-note">Both rows are indexed to the same assumed nightly rate, so this is a shape, not a price. Whatever your actual room costs, that is the 100. No dollar total is implied for either one.</p>
+
+        <p class="arc-vocab"><b>Solid</b> is a width we sourced. <b>Hatched</b> is an illustrative width from a sourced typical range, check your own rate, never a per-trip number. A <b>flag</b> below the chart, with no width at all, is a real line we deliberately do not size.</p>
+
         <StackBar
-          id="airbnb-hotel-compare"
+          id={CHART1_ID}
           rows={comparisonRows}
-          axisMax={200}
+          axisMax={220}
           ticks={[0, 50, 100, 150, 200]}
           unitWord="percent of the same assumed nightly rate" />
-        <p class="bt-finding">The flat cleaning fee is what flips a short stay toward the hotel. Spread across a longer stay or a bigger group, it fades, and the rental often wins instead. Trip shape decides it, not any single fee.</p>
-        <p class="arc-vizfoot">Ranges from NerdWallet and industry fee studies, checked {CHECKED}. No live prices.</p>
+        <p class="bt-finding">The flat cleaning fee is what flips a short stay toward the hotel, even before the hotel's own extras are counted. Once parking and a resort fee are added honestly, the hotel side is not free of fine print either; it is just a different kind of fine print than the rental's.</p>
+
+        <div class="arc-flags">
+          <p class="arc-flags-k">Flagged, not sized</p>
+          <ul>
+            <li><span class="arc-flag-tag">flag</span> <b>Hotel wifi:</b> {HOTEL_EXTRAS.wifi.note} {HOTEL_EXTRAS.wifi.doubleCountWarning}</li>
+            <li><span class="arc-flag-tag value">value</span> <b>Hotel breakfast, if included:</b> {HOTEL_EXTRAS.breakfast.note}</li>
+            <li><span class="arc-flag-tag included">included</span> <b>Rental parking and wifi:</b> usually included in the nightly rate, so there is close to nothing to add on this side.</li>
+            <li><span class="arc-flag-tag not-provided">not provided</span> <b>Rental breakfast:</b> not part of the booking. No value to add, and nothing bundled to flag.</li>
+          </ul>
+        </div>
+
+        <p class="arc-vizfoot">Ranges from NerdWallet, ResortFeeChecker/Elliott, and GSA, checked {CHECKED}. No live prices.</p>
       </div>
     </section>
 
@@ -347,19 +461,17 @@ const webPageLd = {
       <p class="arc-stack-v">For a short stay, one or two nights, solo or as a couple, a hotel very often wins once the cleaning fee and service fee are added in. <a href="https://www.nerdwallet.com/travel/learn/airbnb-for-large-groups" target="_blank" rel="noopener">NerdWallet's own comparison</a> put a single hotel room about 29% cheaper than a small Airbnb, per person, for two travelers (median nightly figures in that study: hotel room ${HOTEL_USD}, small Airbnb ${SOLO_BASE_USD}). Flip the group size and the finding flips too: for six travelers, a large rental ran about 33% cheaper per person than three separate hotel rooms (large Airbnb ${GROUP_BASE_USD} a person, hotel rooms averaging ${HOTEL_USD} apiece). Neither number is a rule for your trip specifically, both are what one real study found. Solo and short leans hotel. Bigger and longer leans rental. Open the all-in total both ways and compare, every time, rather than assuming either one wins on principle.</p>
 
       <div class="bt-figure">
-        <p class="arc-figh">Effective cost per night, as the stay gets longer</p>
-        <p class="bt-note">Same shared engine as the chart above: a flat cleaning fee spread over more nights and more travelers. The hotel is the flat reference line, held at 100; both rental lines are indexed against it. No dollar figure is implied on either axis.</p>
-        <CostCurve
-          id="airbnb-length-curve"
-          nights={NIGHTS}
-          xTicks={NIGHT_TICKS}
-          series={viz2Series}
-          axisMax={250}
-          ticks={[0, 50, 100, 150, 200, 250]}
-          unitWord="index points, the hotel held at 100" />
-        <p class="bt-finding">A solo traveler or a couple: the rental line falls fast but flattens above the hotel and stays there. A group of six: the rental line starts above the hotel too, but it crosses below within a night or two and keeps falling. Length helps every rental. It only wins the trip for a group.</p>
-        <p class="bt-note">These two lines are each drawn at one representative property. Real listings vary property to property and city to city, which is exactly what the next chart shows.</p>
-        <p class="arc-vizfoot">Ranges from NerdWallet and industry fee studies, checked {CHECKED}. Not your quote, no live prices.</p>
+        <p class="arc-figh">The same bars, 30 nights instead of one</p>
+        <p class="bt-note">Same component, same colors, same method as the chart above, just a longer stay, and a hotel now shown two honest ways: one that adds nothing beyond the room, one that charges what the fee-stack above actually catalogs. Solid, hatched and flag mean the same thing here as above.</p>
+        <StackBar
+          id={CHART2_ID}
+          rows={chart2Rows}
+          axisMax={220}
+          ticks={[0, 50, 100, 150, 200]}
+          unitWord="percent of the same assumed nightly rate" />
+        <p class="bt-finding">Thirty nights erases most of the rental's flat cleaning fee. It lands just above a plain hotel with no extras, not below it, and well below a hotel that charges for parking and a resort fee. Length helps the rental a great deal. It does not make the rental free, and it does not make it automatically win.</p>
+        <p class="bt-note">This is one representative property on each side. Real listings and real hotels vary property to property and city to city, which is exactly what the next chart shows.</p>
+        <p class="arc-vizfoot">Ranges from NerdWallet, ResortFeeChecker/Elliott, and GSA, checked {CHECKED}. Not your quote, no live prices.</p>
       </div>
     </section>
 
@@ -407,7 +519,7 @@ const webPageLd = {
 
     <section class="bt-sec" id={SEC.range.id}>
       <h2>So what should you actually compare</h2>
-      <p class="bt-note">The two lines above are each drawn at one representative property. Real listings do not all sit on that one line: cleaning fees, nightly rates and party sizes all vary, property to property and city to city. Drawn as a range instead of a single line, here is where the general rule genuinely bends.</p>
+      <p class="bt-note">The two bar charts above each compare one representative property against one representative hotel. Real listings do not all sit on that one line: cleaning fees, nightly rates and party sizes all vary, property to property and city to city. Drawn as a range instead of a single line, here is where the general rule genuinely bends.</p>
 
       <div class="bt-figure">
         <p class="arc-figh">The same comparison, drawn as a range instead of a line</p>
@@ -424,7 +536,7 @@ const webPageLd = {
         <div class="arc-rule-bends">
           <p class="arc-rule-bends-k">Where the rule bends</p>
           <p class="arc-stack-v">A group of six: on the very first night, the band actually straddles the hotel line. A large, pricier property with a heavy cleaning fee can still lose to three hotel rooms on night one. By night {groupOverlapNights.length ? groupOverlapNights[groupOverlapNights.length - 1] + 1 : 2}, the whole band has dropped below the hotel and stays there. In pricier hotel markets, where a hotel's own tax or resort fee commonly adds more on top of its quoted rate (see the fee stack and the tax range above), that hotel-side addition tilts the picture further toward the rental still. In markets where hotel rooms run cheap and a flat cleaning fee is a proportionally bigger bite, the opposite: the crossover can take longer than one night.</p>
-          <p class="arc-stack-v">A solo traveler or a couple: on these figures, the band never dips below the hotel line, at any length of stay we modeled. If you are two people hoping a two-week rental will beat the hotel outright, the honest answer is that it usually will not, though it gets closer to break-even the longer you stay. We would rather tell you that plainly than let the earlier chart's downward slope imply otherwise.</p>
+          <p class="arc-stack-v">A solo traveler or a couple: on these figures, the band never dips below the hotel line, at any length of stay we modeled, out to a full month. If you are two people hoping a month-long rental will beat the hotel outright, the honest answer is that it usually will not, though it gets closer to break-even the longer you stay. We would rather tell you that plainly than let the earlier chart's downward slope imply otherwise.</p>
         </div>
 
         <p class="arc-vizfoot">Ranges from NerdWallet and industry fee studies, checked {CHECKED}. Not your quote, no live prices.</p>
@@ -484,6 +596,27 @@ const webPageLd = {
     .arc-figh{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink);margin:0 0 6px;line-height:1.3}
     .bt-finding{font-size:clamp(16px,2.2vw,18.5px);line-height:1.5;font-weight:500;color:var(--ink);margin:14px 0;padding:14px 17px;background:var(--green-bg);border-left:3px solid var(--teal);border-radius:8px;max-width:760px}
     .arc-vizfoot{font-size:12px;color:var(--muted);margin:8px 0 4px;line-height:1.5}
+
+    /* THE HATCH/SOLID/FLAG VOCABULARY LINE. Sits directly above the chart it explains,
+       plain text rather than a boxed callout, because it is a reading key, not an
+       aside: it earns no visual weight of its own. */
+    .arc-vocab{font-size:13px;color:var(--muted);line-height:1.55;margin:2px 0 14px;max-width:640px}
+    .arc-vocab b{color:var(--ink);font-weight:600}
+
+    /* THE FLAGS PANEL. Paper-toned like the "what this page is not" box, so a real
+       cost or value we deliberately do not size still reads as considered rather than
+       as an omission. Each item gets its own small mono tag so the four kinds (flag,
+       value, included, not provided) are distinguishable at a glance, colour alone
+       never carrying the only signal since the tag text itself says which is which. */
+    .arc-flags{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:16px 0 0}
+    .arc-flags-k{font-family:var(--mono);font-size:10.5px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.05em;margin:0 0 10px}
+    .arc-flags ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+    .arc-flags li{font-size:13.5px;line-height:1.55;color:#3B4A46}
+    .arc-flags li b{color:var(--ink);font-weight:600}
+    .arc-flag-tag{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:2px 7px;border-radius:5px;margin-right:7px;background:#EDEBE4;color:#5B6A64;transform:translateY(-1px)}
+    .arc-flag-tag.value{background:var(--green-bg);color:var(--teal-deep)}
+    .arc-flag-tag.included{background:var(--green-bg);color:var(--teal-deep)}
+    .arc-flag-tag.not-provided{background:var(--amber-bg);color:#8A5A1F}
 
     /* THE RULE-BENDS CALLOUT on Viz 3, set apart from the chart's own caption because
        it is the page's argument, not a caption describing an axis. Same paper-toned

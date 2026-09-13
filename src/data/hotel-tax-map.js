@@ -1291,7 +1291,7 @@ export const hotelTaxMap = deriveReferenceFigures([
       },
     ],
     property: [
-      { label: 'Service charge and resort fee', range: 'service often 10 to 15%, resort fees commonly 30 to 90 dollars a night', note: 'Set by each property rather than by government, and together they can outweigh the tax.' },
+      { label: 'Service charge and resort fee', range: 'service often 10 to 15%, resort fees commonly 25 to 55 dollars a night', note: 'Set by each property rather than by government, and together they can outweigh the tax.' },
     ],
     checkedISO: '2026-08-29',
   },

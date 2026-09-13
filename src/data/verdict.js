@@ -744,7 +744,7 @@ export const SPOKE_ROWS = {
     { label: 'Expect', spoke: 'staying-connected', k: 'Signal gaps', v: 'Most of the country, plan offline', tier: 1, theme: 'connectivity' },
   ],
   aruba: [
-    { label: 'Expect', spoke: 'hotel-taxes-and-fees', k: 'Resort fee', v: 'Commonly $30 to $90 a night', tier: 1, theme: 'hotel-fees' },
+    { label: 'Expect', spoke: 'hotel-taxes-and-fees', k: 'Resort fee', v: 'Commonly $25 to $55 a night', tier: 1, theme: 'hotel-fees' },
     { label: 'Expect', spoke: 'tipping', k: 'Restaurants', v: 'Check for a 10 to 15% service charge', tier: 1, theme: 'tipping' },
     { label: 'Do', spoke: 'cash-or-card', k: 'On a card', v: 'Choose florin, not dollars', tier: 1, theme: 'dcc' },
     // The thinnest card in the set at four rows, and its two free slots are better spent

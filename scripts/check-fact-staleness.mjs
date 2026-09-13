@@ -125,6 +125,7 @@ const HERO_FACTS = 'src/data/hero-facts.js';
 const ARRIVAL_FORMS = 'src/data/arrival-forms.js';
 const HOTEL_TAX_MAP = 'src/data/hotel-tax-map.js';
 const CARRIER_ROAMING = 'src/data/carrier-roaming.js';
+const BOOKING_TACTICS = 'src/data/booking-tactics.js';
 const STRICT = String(process.env.FACT_STALENESS_STRICT || '').toLowerCase() === 'true';
 
 // Carrier plans drift a few times a year, faster than the 180-day general mark, so this
@@ -139,6 +140,15 @@ const CARRIER_ROAMING_DAYS = 180;
 // one is checkable on the carrier's own page, so ~quarterly is the right cadence: tighter
 // than the 180-day general mark, looser than the 30-day exchange-rate one. MAIN can adjust.
 const CARRIER_PROFILE_DAYS = 90;
+
+// HOTEL_EXTRAS (BRIEF-honest-allin-hotel-viz) is a third table in booking-tactics.js,
+// alongside PROPERTY_FEE_BAND: the parking, wifi and breakfast figures /airbnb-real-cost
+// draws its honest all-in hotel bar from. Per-type thresholds because the three move at
+// different speeds: parking and breakfast are re-reported roughly annually (breakfast
+// tracks GSA's own fiscal-year refresh), wifi prevalence changes more slowly, so it gets
+// a longer leash. Wired in the same commit that added HOTEL_EXTRAS, per the standing rule
+// above: the scanner must never go blind on a new priced dataset.
+const HOTEL_EXTRAS_DAYS = { parking: 365, wifi: 730, breakfast: 365 };
 
 const THRESHOLDS = { exchange: 30, fee: 90, tax: 120, general: 180 };
 
@@ -578,6 +588,47 @@ async function main() {
     }
   }
 
+  // --- ninth pass: HOTEL_EXTRAS, the parking/wifi/breakfast honest-hotel-bar figures ---
+  // A third table in booking-tactics.js, sibling to PROPERTY_FEE_BAND (see that file's
+  // own header for why it lives there): the parking, wifi and breakfast figures
+  // /airbnb-real-cost draws its honest all-in hotel bar from. Loaded from a fresh read of
+  // booking-tactics.js rather than reusing another module's import, since nothing else
+  // in this script touches that file yet. Each of the three entries gets its OWN
+  // threshold from HOTEL_EXTRAS_DAYS rather than one shared number, because parking and
+  // breakfast are reported on roughly annually while wifi prevalence moves slower and
+  // earns a longer leash. Every entry carries a checkedISO by design, so, like
+  // CARRIER_PROFILES above, every one is judged and none is skipped.
+  const hotelExtrasFindings = [];
+  let hotelExtrasCount = 0;
+  const bookingTacticsMod = await loadModule('.', BOOKING_TACTICS);
+  const hotelExtras = (bookingTacticsMod && bookingTacticsMod.HOTEL_EXTRAS) || null;
+  if (hotelExtras) {
+    for (const [key, entry] of Object.entries(hotelExtras)) {
+      if (!entry) continue;
+      hotelExtrasCount++;
+      const label = entry.label || key;
+      const days = HOTEL_EXTRAS_DAYS[key] || THRESHOLDS.general;
+      let host = (entry.source && entry.source.url) || 'its own source';
+      if (entry.source && entry.source.url) {
+        try { host = new URL(entry.source.url).hostname.replace(/^www\./, ''); } catch (e) { host = (entry.source && entry.source.label) || host; }
+      } else if (entry.source && entry.source.label) {
+        host = entry.source.label;
+      }
+      const checked = parseISO(entry.checkedISO);
+      if (!checked) {
+        hotelExtrasFindings.push({ id: label, standing: false, msg: 'no usable checkedISO on this HOTEL_EXTRAS entry, so its age cannot be judged' });
+        continue;
+      }
+      const age = daysBetween(today, checked);
+      if (age <= days) continue;
+      hotelExtrasFindings.push({
+        id: label,
+        standing: false,
+        msg: 'checked ' + age + ' days ago, over the ' + days + '-day mark for this figure. Re-verify against ' + host + ' before trusting it on the honest hotel bar.',
+      });
+    }
+  }
+
   // --- report ---
   log('Guides carrying a keyFacts block: ' + withKeyFacts + ' of ' + live.length + '.');
   log('Scanned ' + liveSpokes + ' live spokes across the catalogue.');
@@ -586,6 +637,7 @@ async function main() {
   if (mapMod) log('Scanned ' + mapEntries + ' hotel tax map entries (' + mapColoured + ' currently coloured) and ' + mapWatch + ' watchlist rows.');
   if (carrierMod) log('Scanned ' + carrierCells + ' carrier-roaming cells (' + carrierSourced + ' sourced, ' + (carrierCells - carrierSourced) + ' unchecked).');
   if (carrierProfiles) log('Scanned ' + carrierProfileCount + ' carrier profiles.');
+  if (hotelExtras) log('Scanned ' + hotelExtrasCount + ' hotel-extras figures (parking/wifi/breakfast).');
   if (findings.length === 0) {
     log('keyFacts: nothing due for a look right now.\n');
   } else {
@@ -646,15 +698,22 @@ async function main() {
     log('');
   }
 
+  if (hotelExtrasFindings.length > 0) {
+    log('Hotel-extras figures worth a re-check (' + hotelExtrasFindings.length + '):');
+    for (const f of hotelExtrasFindings.sort((a, b) => a.id.localeCompare(b.id))) log('    - ' + f.id + ': ' + f.msg);
+    log('');
+  }
+
   // Two counts, because they answer different questions. `aged` is the trigger: items
   // that genuinely passed a date threshold, which is a new event worth an email.
   // `total` also includes standing items, the hero flags and pending forms, which
   // report on every run by design and never age out. Delivering off the total would
   // mean an issue every single Monday forever, which trains everyone to ignore it.
   // The standing rows still print above, so nothing is hidden from the run log.
-  // carrierFindings and carrierProfileFindings carry no standing rows: an unchecked cell,
-  // or a profile with no usable checkedISO, is either skipped or reported once as a finding,
-  // never repeated as a standing to-do, so every entry in both is an aged one.
+  // carrierFindings, carrierProfileFindings and hotelExtrasFindings carry no standing rows:
+  // an unchecked cell, or a profile/entry with no usable checkedISO, is either skipped or
+  // reported once as a finding, never repeated as a standing to-do, so every entry in all
+  // three is an aged one.
   const standing = heroFindings.filter(f => f.standing).length
     + formFindings.filter(f => f.standing).length
     + mapFindings.filter(f => f.standing).length;
@@ -663,9 +722,11 @@ async function main() {
     + formFindings.filter(f => !f.standing).length
     + mapFindings.filter(f => !f.standing).length
     + carrierFindings.length
-    + carrierProfileFindings.length;
+    + carrierProfileFindings.length
+    + hotelExtrasFindings.length;
   const total = findings.length + noKf.length + spokeFindings.length + heroFindings.length
-    + formFindings.length + mapFindings.length + carrierFindings.length + carrierProfileFindings.length;
+    + formFindings.length + mapFindings.length + carrierFindings.length + carrierProfileFindings.length
+    + hotelExtrasFindings.length;
 
   log('Past a threshold: ' + aged + ' item(s) that aged out.'
     + (standing > 0 ? ' Plus ' + standing + ' standing item(s), the hero flags and pending forms listed above, which report every run and never age out.' : ''));

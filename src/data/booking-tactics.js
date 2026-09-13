@@ -152,12 +152,67 @@ export const MEMBER_SAVING = {
 export const PROPERTY_FEE_BAND = {
   lowPct: 10,
   highPct: 15,
-  usResortLowUsd: 30,
-  usResortHighUsd: 90,
+  usResortLowUsd: 25,
+  usResortHighUsd: 55,
   headline: '10 to 15%',
-  note: 'A mandatory service charge commonly runs 10 to 15% of the room, and US resort fees run roughly 30 to 90 dollars a night on their own. Set by the property, never by a government, so there is no national rate and the only reliable figure is the one the hotel gives you.',
+  note: 'A mandatory service charge commonly runs 10 to 15% of the room, and US resort fees typically run about 25 to 55 dollars a night on their own, with luxury outliers above 100. Set by the property, never by a government, so there is no national rate and the only reliable figure is the one the hotel gives you.',
   source: { label: 'True Trip Costs hotel tax map, property-fee data', url: '/hotel-tax-map#property-fees', type: 'ttc' },
-  checkedISO: '2026-09-01',
+  checkedISO: '2026-09-13',
+};
+
+// --- hotel extras: the honest all-in additions and the value bundled into a rate ----
+// WHY THIS EXISTS. A hotel's quoted rate is not the whole story either. Parking hides a
+// cost ON TOP that PROPERTY_FEE_BAND does not carry (that constant is the resort/service
+// fee only), wifi is a real line that has mostly disappeared and is easy to double-count
+// against a resort fee, and breakfast bundles VALUE into the rate rather than adding a
+// cost. /airbnb-real-cost draws all three, so this is their one home: the charts read
+// these figures, never a hand-typed literal in the page.
+//
+// SHAPE, PER ENTRY. A range (lowUsd/highUsd) where one exists, a central anchor figure
+// where the research supports naming one, its source and a checkedISO the staleness
+// scanner reads (see scripts/check-fact-staleness.mjs, the HOTEL_EXTRAS pass wired in
+// the same commit this constant was added). Never a single point standing in for a
+// range that is genuinely wide.
+export const HOTEL_EXTRAS = {
+  // DRAWN AS A HATCHED WIDTH on the chart: real money, on top, but illustrative rather
+  // than measured, because $44 is an average AMONG HOTELS THAT CHARGE for it, not a
+  // rate every hotel adds. About 1,100 of ResortFeeChecker's 10,000+ tracked properties
+  // disclose a parking fee at all, so most nights carry none of this.
+  parking: {
+    label: 'Hotel parking, where it is charged',
+    lowUsd: 15,
+    highUsd: 70,
+    centralUsd: 44,
+    aboveNote: 'Dense metro hotels, New York, San Francisco, Chicago among them, commonly run past 100 dollars a night.',
+    honestyCaveat: 'This is the average among hotels that charge for parking, not every hotel: most of the properties ResortFeeChecker tracks disclose no parking fee at all. Check your own rate rather than assuming this line applies.',
+    source: { label: 'ResortFeeChecker.com research, reported by Christopher Elliott (Elliott Report / USA Today, Feb 2024)', url: 'https://www.elliott.org/on-travel/outrageous-hotels-are-charging-for-parking-whether-you-have-a-car-or-not/', type: 'press' },
+    checkedISO: '2026-09-13',
+  },
+  // FLAGGED, NEVER DRAWN AS A WIDTH. Standalone paid wifi has largely vanished, and
+  // where a premium tier persists it is often already folded into a resort fee, so
+  // giving it its own segment risks charging the reader for the same money twice.
+  wifi: {
+    label: 'Hotel wifi',
+    prevalencePct: 15,
+    dailyLowUsd: 10,
+    dailyHighUsd: 20,
+    note: 'Usually free now. Where a paid premium tier survives, mostly at luxury properties, it runs about 10 to 20 dollars a day, and it is often already folded into a resort fee rather than billed on its own.',
+    doubleCountWarning: 'Drawing this as its own width risks double-counting money the resort-fee segment may already include.',
+    source: { label: 'Industry hotel-amenity reporting on paid wifi prevalence, read Sep 2026', url: null, type: 'trade' },
+    checkedISO: '2026-09-13',
+  },
+  // A VALUE FLAG, NEVER SUBTRACTED. This offsets food a traveler would buy anyway; it
+  // is not a discount on the room, and the room cost bar must never shrink because of
+  // it. GSA's own fiscal-year meals and incidentals breakdown is the reference point
+  // because it is a real, current, government-published breakfast valuation, refreshed
+  // every fiscal year regardless of what any single hotel charges for the same meal.
+  breakfast: {
+    label: 'Breakfast, if included',
+    perPersonPerDayUsd: 16,
+    note: 'About 16 dollars a person a day of food value if breakfast is included, offsetting food you would have bought anyway. This is bundled value, not a discount on the room, and it never shortens the cost bar.',
+    source: { label: 'GSA FY2026 Meals & Incidental Expenses (M&IE) breakdown, breakfast portion', url: 'https://www.gsa.gov/travel/plan-a-trip/per-diem-rates/mie-breakdowns', type: 'gov' },
+    checkedISO: '2025-10-01',
+  },
 };
 
 // --- rate parity, by jurisdiction -------------------------------------------
