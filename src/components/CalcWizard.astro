@@ -55,13 +55,13 @@ import DestinationChoice from './calc/DestinationChoice.astro';
 // card's brand colors already match what Symbol.astro draws every route icon in, so the
 // row icons read as the same visual language, not a fourth one.
 import Symbol from './Symbol.astro';
-// BRIEF-share-link-step5: the share dialog's own branded header needs the real TTC
-// lockup, not a hand-drawn copy. calc-wizard.js builds that dialog's markup as an HTML
-// string at runtime (see its openShare()), so it cannot import this component directly;
-// instead this file renders it once into a hidden <template> below (see
-// "ttc-share-logo") and calc-wizard.js clones that template's already-server-rendered
-// markup into the dialog. Same reuse pattern CostChart.astro's own <template
-// data-cc-taxbits> already uses for handing pre-rendered markup to its page script.
+// BRIEF-share-link-step5, extended by BRIEF-share-link-fixes Fix 4: the real TTC lockup,
+// used directly (server-rendered) on the result card's own brand bar, and, for the two
+// places calc-wizard.js builds markup as an HTML string at runtime (the share dialog
+// header and the snapshot/PDF), rendered once here into hidden <template> elements below
+// ("ttc-share-logo", "ttc-snapshot-logo") for that script to clone rather than hand-draw.
+// Same reuse pattern CostChart.astro's own <template data-cc-taxbits> already uses for
+// handing pre-rendered markup to its page script.
 import LogoMark from './LogoMark.astro';
 import { calcSetupFor } from '../data/calc-setup.js';
 import { calcLinesFor } from '../data/calc-lines.js';
@@ -736,7 +736,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
            styled carrier card (see that function's own comment in calc-wizard.js). -->
       <div class="ttc-card" data-result-card>
         <div class="ttc-card-brandbar">
-          <span class="ttc-card-wordmark">true trip costs<span>.</span></span>
+          <LogoMark variant="horizontal" size={26} class="ttc-brandbar-logo" title="True Trip Costs" />
           <span class="ttc-card-checked">
             <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5 L8 14.5 L16 5.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
             checked {checkedStamp}
@@ -1025,8 +1025,18 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
               calc-wizard.js's openShare() can clone its markup rather than hand-drawing a
               logo at runtime. horizontal variant: green square mark + amber signature bars
               + "true trip costs." wordmark, per the brief. Never shown itself; a template
-              renders nothing. */}
-          <template id="ttc-share-logo"><LogoMark variant="horizontal" size={26} class="share-dialog-logo" title="True Trip Costs" /></template>
+              renders nothing. "ttc-brandbar-logo" (BRIEF-share-link-fixes, Fix 4) is shared
+              with the card header's own inline LogoMark above: both sit on the same
+              #16302C bar and need the same white-wordmark override (see calculator.css's
+              own note on this). */}
+          <template id="ttc-share-logo"><LogoMark variant="horizontal" size={26} class="ttc-brandbar-logo" title="True Trip Costs" /></template>
+          {/* BRIEF-share-link-fixes, Fix 4: the snapshot's own logo, roughly 2x the size of
+              the wordmark it replaces, per the brief ("Gary specifically wanted the logo
+              larger on the keepsake"). Same clone-a-hidden-template approach as the dialog
+              lockup above, since briefHTML() is JS-built HTML too. This one sits on the
+              snapshot's plain white background, so it needs no color override: LogoMark's
+              own ink default already reads correctly there. */}
+          <template id="ttc-snapshot-logo"><LogoMark variant="horizontal" size={44} title="True Trip Costs" /></template>
         </div>
         <div class="ttc-card-footer">truetripcosts.com &middot; the money side of travel &middot; no sales pitch, ever</div>
       </div>

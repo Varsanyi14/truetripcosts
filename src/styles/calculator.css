@@ -225,8 +225,6 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
    used only for the wordmark's period and the checked stamp's icon. */
 .ttc-card { background: white; border: 1px solid var(--line); border-radius: .8125rem; overflow: hidden; }
 .ttc-card-brandbar { background: #16302C; padding: .875rem 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-wrap: wrap; }
-.ttc-card-wordmark { font-family: var(--serif); font-size: 1.1875rem; font-weight: 700; letter-spacing: -.03em; color: white; }
-.ttc-card-wordmark span { color: #7FB79E; }
 .ttc-card-checked { display: inline-flex; align-items: center; gap: .375rem; color: #CFE4D9; font-size: .8125rem; font-weight: 600; }
 .ttc-card-checked svg { width: .8125rem; height: .8125rem; fill: #7FB79E; flex-shrink: 0; }
 .ttc-card-body { padding: 1.5rem 1.25rem; }
@@ -254,7 +252,16 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .ttc-card-group-label-prepare { color: var(--prepare-ink); }
 .ttc-card-group-label-refuse { color: var(--amber-dark); }
 .ttc-card-group-label-prepare .ttc-card-row-mark, .ttc-card-group-label-refuse .ttc-card-row-mark { width: 1rem; height: 1rem; }
-.ttc-card-group-gloss { text-transform: none; font-family: var(--font); letter-spacing: 0; font-weight: 400; font-size: .8125rem; color: var(--muted); }
+/* BRIEF-share-link-fixes, Fix 5: explicit on the text itself (not left to inherit through
+   the flex row and the mark's SVG sibling), so "Prepare ahead" and "Refuse to pay" match
+   "Real money, shown as amounts" (.ttc-card-group-label above) exactly: same monospace
+   family, same uppercase, same letter-spacing and size. Colors stay each group's own
+   (prepare/refuse above), unchanged. */
+.ttc-card-group-label-text { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; letter-spacing: .01em; font-size: .75rem; text-transform: uppercase; }
+/* The gloss moves onto the same monospace family so all three label rows read as one
+   system, per the brief, but stays muted and sentence-case (never uppercase): it is a
+   short plain-language aside beside the label, not a second label. */
+.ttc-card-group-gloss { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; text-transform: none; letter-spacing: 0; font-weight: 400; font-size: .8125rem; color: var(--muted); }
 .ttc-card-group-prepare .ttc-card-row-name { color: var(--prepare-ink); }
 .ttc-card-group-refuse .ttc-card-row-name { color: var(--amber-dark); }
 .ttc-card-row { border-top: 1px solid var(--line); }
@@ -393,12 +400,15 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .share-dialog-brandbar { background: #16302C; padding: .875rem 1.25rem; border-radius: .75rem .75rem 0 0; display: flex; align-items: center; justify-content: space-between; gap: .75rem; flex-shrink: 0; }
 .share-dialog-lockup { display: inline-flex; align-items: center; }
 /* LogoMark's horizontal wordmark is drawn in #16302C, the ink color meant for a light
-   background; on this dark green bar that would be invisible against its own background,
-   so it is recolored to match .ttc-card-wordmark's own white on the same bar. The square
-   mark's own fill is left alone (a plain [fill="#16302C"] selector would also catch the
-   square's background rect): scoping to a <g>, never a <rect>, hits only the wordmark
-   group LogoMark.astro wraps around its WORDMARK paths. */
-.share-dialog-logo g[fill="#16302C"] { fill: #fff; }
+   background; on this dark green bar (and the result card's own identical brandbar,
+   BRIEF-share-link-fixes Fix 4) that would be invisible against its own background, so it
+   is recolored to match this bar's own white "checked" text. The square mark's own fill
+   is left alone (a plain [fill="#16302C"] selector would also catch the square's
+   background rect): scoping to a <g>, never a <rect>, hits only the wordmark group
+   LogoMark.astro wraps around its WORDMARK paths. Shared by both the dialog header's
+   cloned logo and the card header's own inline one; see each one's own template/markup
+   note for why one is a live component and the other a cloned template. */
+.ttc-brandbar-logo g[fill="#16302C"] { fill: #fff; }
 .share-dialog-close { background: transparent; border-color: transparent; color: #fff; }
 .share-dialog-close:hover { background: rgba(255,255,255,.16); }
 .share-dialog-titles { padding: 1.25rem 1.25rem .875rem; border-bottom: 1px solid var(--line); flex-shrink: 0; }
@@ -407,12 +417,24 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .share-dialog-footnote { padding: 1rem 1.25rem calc(1rem + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: var(--canvas); flex-shrink: 0; }
 .share-dialog-footnote p { font-size: .8125rem; color: var(--muted); line-height: 1.55; }
 .trip-brief { background: white; border: 1px solid var(--line); border-top: 4px solid var(--green); padding: 1.5rem; color: var(--text); border-radius: 0 0 .375rem .375rem; }
-.brief-brand { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: .5rem; border-bottom: 1px solid var(--line); padding-bottom: 1rem; margin-bottom: 1.5rem; }
-.brief-brand strong { font-family: var(--serif); color: var(--green); font-size: 1.25rem; letter-spacing: -.04em; }
-.brief-brand span { font-size: .6875rem; letter-spacing: .1em; }
+.brief-brand { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; border-bottom: 1px solid var(--line); padding-bottom: 1rem; margin-bottom: 1.5rem; }
+.brief-brand-logo { display: inline-flex; align-items: center; }
+.brief-brand-tag { font-size: .6875rem; letter-spacing: .1em; }
 .trip-brief h2 { font-size: 2rem; }
 .trip-brief .range { font-size: clamp(2rem,9vw,2.75rem); }
 .trip-brief .trip-meta { font-size: .9375rem; }
+/* BRIEF-share-link-fixes, Fix 1: the snapshot's own avoidable line items, one .brief-items
+   block per non-empty group (hard/prepare/refuse), each holding its own rows. Deliberately
+   its own small system rather than reusing .brief-action (that class is the dialog's
+   description-plus-button action rows; these are plain name/figure data rows, no button).
+   The label reuses the same monospace/uppercase treatment Fix 5 gives the card's own group
+   labels, so the snapshot's own groups read as the same system as the card's. */
+.brief-items { border-top: 1px solid var(--line); margin-top: 1.25rem; padding-top: 1.25rem; }
+.brief-items-label { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; letter-spacing: .01em; font-size: .75rem; text-transform: uppercase; color: var(--muted); margin-bottom: .625rem; }
+.brief-item { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: .5rem 0; border-top: 1px solid var(--line); font-size: .9375rem; }
+.brief-item:first-of-type { border-top: 0; }
+.brief-item-name { flex: 1 1 auto; min-width: 0; }
+.brief-item-amount { flex: 0 0 auto; font-weight: 600; color: var(--ink); white-space: nowrap; }
 .brief-section { border-top: 1px solid var(--line); margin-top: 1.25rem; padding-top: 1.25rem; }
 .brief-section h3 { font-size: 1rem; margin-bottom: .75rem; }
 .brief-section p { font-size: .9375rem; }
@@ -495,7 +517,7 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   #print-root .trip-brief { border: 0; border-top: 3pt solid #193D32; padding: 5mm 0 0; border-radius: 0; }
   #print-root .trip-brief h2 { font-size: 24pt; }
   #print-root .range { font-size: 32pt; }
-  #print-root .brief-section, #print-root .brief-action, #print-root .scope-alert { break-inside: avoid; }
+  #print-root .brief-section, #print-root .brief-action, #print-root .brief-items, #print-root .scope-alert { break-inside: avoid; }
   #print-root * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 /* Additional interaction states, kept after base rules so precedence is explicit. */

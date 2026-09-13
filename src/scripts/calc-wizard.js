@@ -1273,13 +1273,16 @@ export function initCalcWizard() {
 
   // ===================================================================================
   // SHARE DIALOG + TRIP BRIEF. Text copy and print were built in an earlier pass;
-  // BRIEF-share-link-step5 adds the shareable link (the write half below, and its own
-  // read half further down this file) and brands the dialog's header. A downloadable PNG
-  // image (the specialist reference's canvas export) is still deliberately NOT built. It
-  // is a separate, self-contained subsystem the reference implements with its own text-
-  // wrapping and layout code, and building it correctly was judged lower priority than the
-  // wizard/result/breakdown/honesty-spine work this pass actually needed to get right.
-  // Flagged to MAIN as a follow-up, not a silent omission.
+  // BRIEF-share-link-step5 added the shareable link and branded the dialog's header.
+  // BRIEF-share-link-fixes (six fixes from live testing) adds the avoidable line items to
+  // the snapshot, points the copy-text link at the pre-filled result, adds a visible
+  // copied confirmation, and puts the real logo on the card header and the snapshot (see
+  // each fix's own comment below). A downloadable PNG image (the specialist reference's
+  // canvas export) is still deliberately NOT built. It is a separate, self-contained
+  // subsystem the reference implements with its own text-wrapping and layout code, and
+  // building it correctly was judged lower priority than the wizard/result/breakdown/
+  // honesty-spine work this pass actually needed to get right. Flagged to MAIN as a
+  // follow-up, not a silent omission.
   // ===================================================================================
   function currentPresentation() {
     return {
@@ -1301,6 +1304,74 @@ export function initCalcWizard() {
   // its content as a markup string, so this IS the whole hand-off; no logo is drawn here,
   // only reused.
   const shareLogoMarkup = (byId('ttc-share-logo') || {}).innerHTML || '';
+  // BRIEF-share-link-fixes, Fix 4: the snapshot's own larger logo, same hand-off from its
+  // own hidden template.
+  const snapshotLogoMarkup = (byId('ttc-snapshot-logo') || {}).innerHTML || '';
+  // A light escape for the few places this section reinserts text read back out of the
+  // already-rendered card (row names, row amounts) into a new HTML string; those strings
+  // are build-time country copy, not reader input, but re-escaping them here is correct
+  // regardless of source, and cheap.
+  function escapeHtml(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  // ===================================================================================
+  // BRIEF-share-link-fixes, Fix 1: the snapshot's own avoidable line items. Read straight
+  // out of the result card's already-rendered DOM (by the time a reader can even open the
+  // share dialog, mirror() and renderCarrierItem() have already run and written every
+  // figure this reads), never recomputed and never re-sourced, so the snapshot can never
+  // disagree with the card. Only rows the card is CURRENTLY showing the reader (not
+  // .hidden) are included, in the SAME three groups the card itself uses, in DOM order.
+  // ===================================================================================
+  const AVOIDABLE_SNAPSHOT_GROUPS = [
+    { tier: 'hard', label: 'Real money, shown as amounts' },
+    { tier: 'prepare', label: 'Prepare ahead' },
+    { tier: 'refuse', label: 'Refuse to pay' },
+  ];
+  // A HARD row's figure lives in one of two shapes (see CalcWizard.astro's own card
+  // markup): a single already-live figure (liveFees, e.g. the card/ATM fee line), or a
+  // lo/hi range that collapses to one number when lo equals hi (mirror()'s own
+  // setAvoidMoneyRange() hides the separator and the high end in that case, but leaves
+  // their old text in place rather than clearing it, so this reads .hidden rather than
+  // trusting .textContent alone). The carrier row is its own third shape (a wrap that
+  // starts hidden until a live day-pass figure exists).
+  function rowAmountText(row) {
+    const live = row.querySelector('[data-avoid-amount]');
+    if (live) return live.textContent.trim();
+    const lo = row.querySelector('[data-avoid-amount-lo]');
+    if (lo) {
+      const hi = row.querySelector('[data-avoid-amount-hi]');
+      return (!hi || hi.hidden) ? lo.textContent.trim() : (lo.textContent.trim() + ' to ' + hi.textContent.trim());
+    }
+    const carrierWrap = row.querySelector('[data-carrier-amount-wrap]');
+    if (carrierWrap && !carrierWrap.hidden) {
+      const carrierAmt = row.querySelector('[data-carrier-amount]');
+      if (carrierAmt) return carrierAmt.textContent.trim();
+    }
+    return '';
+  }
+  function avoidableSnapshotGroups() {
+    return AVOIDABLE_SNAPSHOT_GROUPS.map(g => {
+      const groupEl = document.querySelector('.ttc-card-group[data-avoid-tier="' + g.tier + '"]');
+      const rows = groupEl ? $$('.ttc-card-row', groupEl).filter(row => !row.hidden) : [];
+      const items = rows.map(row => {
+        const nameEl = row.querySelector('.ttc-card-row-name');
+        return { name: nameEl ? nameEl.textContent.trim() : '', amount: rowAmountText(row) };
+      }).filter(item => item.name);
+      return { label: g.label, items };
+    }).filter(g => g.items.length > 0);
+  }
+  function avoidableSnapshotHTML() {
+    return avoidableSnapshotGroups().map(g =>
+      '<div class="brief-items"><p class="brief-items-label">' + escapeHtml(g.label) + '</p>' +
+      g.items.map(item =>
+        '<div class="brief-item"><span class="brief-item-name">' + escapeHtml(item.name) + '</span>' +
+        (item.amount ? '<span class="brief-item-amount">' + escapeHtml(item.amount) + '</span>' : '') +
+        '</div>'
+      ).join('') +
+      '</div>'
+    ).join('');
+  }
 
   function briefText() {
     const p = currentPresentation();
@@ -1311,19 +1382,31 @@ export function initCalcWizard() {
       'About ' + p.rangeLow + ' to ' + p.rangeHigh + ' USD; for the whole party, not per person.',
       p.flightNotice,
       'Snapshot created ' + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + '. A saved snapshot, not a live quote; recheck rules before traveling.',
-      'truetripcosts.com',
+      // BRIEF-share-link-fixes, Fix 2: points back at the reader's own pre-filled result
+      // (the same answers-only link Copy link builds), not the bare, generic landing page.
+      currentShareUrl(),
     ];
     return lines.join('\n');
   }
   function briefHTML() {
     const p = currentPresentation();
     return '<article class="trip-brief" aria-label="Shareable trip brief">' +
-      '<header class="brief-brand"><strong>true trip costs.</strong><span>TRIP BRIEF</span></header>' +
+      // BRIEF-share-link-fixes, Fix 4: the real LogoMark, not a font wordmark; see the
+      // "roughly 2x" sizing note on its own hidden template in CalcWizard.astro. No color
+      // override needed here (white background, LogoMark's own ink default is correct).
+      '<header class="brief-brand"><span class="brief-brand-logo">' + snapshotLogoMarkup + '</span><span class="brief-brand-tag">TRIP BRIEF</span></header>' +
       '<h2>' + p.destination + '</h2>' +
       '<p class="trip-meta">' + [p.partyLabel, p.durationLabel].filter(Boolean).join(' \u00b7 ') + '</p>' +
       '<div class="range-prefix">About</div><p class="range">' + p.rangeLow + '<span>&nbsp;to&nbsp;</span>' + p.rangeHigh + '</p>' +
       '<p class="range-scope">USD \u00b7 for the whole party</p>' +
       '<div class="scope-alert"><strong>' + p.flightNotice + '</strong></div>' +
+      // BRIEF-share-link-fixes, Fix 1: the line items, in the same three groups the card
+      // itself shows. HONESTY NOTE: this is the one place a snapshot shows real figures,
+      // which is acceptable only because the dated stamp right below stays prominent and
+      // unmissable (do not soften it): this is what separates an honest, dated keepsake
+      // from a stale quote. The share LINK above is unaffected: it still encodes answers
+      // only and recalculates live; only this printed/copied snapshot freezes figures.
+      avoidableSnapshotHTML() +
       '<footer class="brief-note"><strong>Snapshot created ' + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + '.</strong><br>A saved snapshot, not a live quote. Recheck rules before traveling.<br>truetripcosts.com</footer>' +
       '</article>';
   }
@@ -1373,6 +1456,18 @@ export function initCalcWizard() {
     return window.location.origin + window.location.pathname + (qs ? ('?' + qs) : '');
   }
 
+  // BRIEF-share-link-fixes, Fix 3: a visible confirmation on copy success, alongside (not
+  // instead of) the sr-only announce() calls already below, which stay the accessible
+  // path. Same swap-the-label-then-revert pattern this page already uses elsewhere (see
+  // CalcResult.astro's own older, simpler share button), just generalized to any button.
+  function flashCopied(btn) {
+    if (!btn) return;
+    if (btn.dataset.origLabel == null) btn.dataset.origLabel = btn.textContent;
+    window.clearTimeout(+btn.dataset.copyTimer || 0);
+    btn.textContent = 'Copied';
+    btn.dataset.copyTimer = String(window.setTimeout(() => { btn.textContent = btn.dataset.origLabel; }, 2000));
+  }
+
   function openShare(trigger) {
     shareDialog.innerHTML =
       '<div class="dialog-layout share-dialog-layout">' +
@@ -1395,12 +1490,14 @@ export function initCalcWizard() {
       document.body.style.overflow = '';
       if (trigger && trigger.isConnected) trigger.focus({ preventScroll: true });
     });
-    $('[data-copy-brief]', shareDialog).addEventListener('click', async () => {
+    const copyBriefBtn = $('[data-copy-brief]', shareDialog);
+    copyBriefBtn.addEventListener('click', async () => {
       const t = briefText();
       try {
         if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('unavailable');
         await navigator.clipboard.writeText(t);
         announce('Trip brief copied, including exclusions and assumptions.');
+        flashCopied(copyBriefBtn);
       } catch (e) {
         const fallback = $('.copy-fallback', shareDialog);
         fallback.hidden = false;
@@ -1409,12 +1506,14 @@ export function initCalcWizard() {
         announce('Clipboard is unavailable here. Select and copy the text shown.');
       }
     });
-    $('[data-copy-link]', shareDialog).addEventListener('click', async () => {
+    const copyLinkBtn = $('[data-copy-link]', shareDialog);
+    copyLinkBtn.addEventListener('click', async () => {
       const u = currentShareUrl();
       try {
         if (!navigator.clipboard || !navigator.clipboard.writeText) throw new Error('unavailable');
         await navigator.clipboard.writeText(u);
         announce('Trip link copied. Opening it always shows today\'s numbers, never a frozen figure.');
+        flashCopied(copyLinkBtn);
       } catch (e) {
         const fallback = $('.copy-fallback', shareDialog);
         fallback.hidden = false;
