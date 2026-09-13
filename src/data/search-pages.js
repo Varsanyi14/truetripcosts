@@ -81,6 +81,7 @@ export const INDEXED_PAGES = [
 
   // Standalone guides.
   { file: 'how-to-pay-less-on-hotels.astro', label: 'How to pay less on hotels', kind: 'guide' },
+  { file: 'airbnb-real-cost.astro', label: 'The real cost of an Airbnb', kind: 'guide' },
   { file: 'passports-and-visas.astro', label: 'Passports and visas', kind: 'guide' },
   { file: 'arrival-forms.astro', label: 'Arrival forms, and the paid fakes', kind: 'guide' },
   { file: 'traveling-with-a-pet.astro', label: 'Traveling with a pet', kind: 'guide' },

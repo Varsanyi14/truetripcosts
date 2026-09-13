@@ -1,0 +1,384 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Hero from '../components/Hero.astro';
+import StackBar from '../components/StackBar.astro';
+// READ-ONLY IMPORTS. This build touches no engine or data file: it reads two existing,
+// already-sourced datasets so the viz below never hand-types a percentage that already
+// has a home elsewhere on the site. See the VIZ DERIVATION block for how each is used.
+import { hotelTaxMap, colours } from '../data/hotel-tax-map.js';
+import { PROPERTY_FEE_BAND } from '../data/booking-tactics.js';
+
+const CHECKED = 'September 2026';
+const CHECKED_ISO = '2026-09-01';
+
+// THE JUMP LIST, same rail as /how-to-pay-less-on-hotels: one object read by both the
+// nav and the sections, so a dead anchor is impossible by construction. "What this page
+// sits on top of" is deliberately left out, the same way that page leaves its own closing
+// material out of JUMP: it is a closing, cross-link section, not a destination a reader
+// jumps to with a question.
+const SEC = {
+  stack:  { id: 'fee-stack', label: 'What is actually in an Airbnb price' },
+  short:  { id: 'cleaning-fee-math', label: 'The cleaning fee, and short stays' },
+  versus: { id: 'hotel-or-rental', label: 'When a hotel wins, and when it does not' },
+  other:  { id: 'other-platforms', label: 'Other platforms, and why they are different' },
+  legal:  { id: 'is-it-allowed', label: 'Is it even allowed where you are going' },
+  facts:  { id: 'notable-facts', label: 'A few facts worth knowing' },
+};
+const JUMP = Object.values(SEC);
+
+// ============================================================================
+// THE VIZ DERIVATION. Every number the chart draws is computed here, not typed into
+// the markup below, for the same reason /how-to-pay-less-on-hotels computes its own
+// tax segment at build time: a hand-typed percentage is a second copy of a figure
+// that already has a home, and a second copy is a copy that goes stale.
+// ============================================================================
+
+// THE HOTEL-TAX SEGMENT, read from hotel-tax-map.js and nowhere else. Both rows below
+// use this SAME figure for their own tax segment, because in most cities the same
+// municipal tourist tax applies whether you book a hotel or a short-term rental
+// (Portugal and France's rates are the actual overlap the research memo names). Drawn
+// at the median of every "checked" country on the map, captioned with the full range,
+// the identical technique the sibling page's own tax segment uses. The two rows render
+// it differently on purpose: full-strength on the rental row, faint on the hotel row,
+// because a hotel's quoted rate often already has this folded in by law and a rental's
+// usually does not. Same figure, two honest treatments; that contrast is the point.
+const colouredEntries = hotelTaxMap.filter((e) => colours(e));
+const taxPcts = colouredEntries.map((e) => e.addedPct).sort((a, b) => a - b);
+const taxMedian = taxPcts[Math.floor(taxPcts.length / 2)];
+const taxRangeLabel = `${taxPcts[0]} to ${taxPcts[taxPcts.length - 1]}%`;
+
+// A DECLARED REFERENCE NIGHTLY RATE, and why it is $120 rather than borrowed from the
+// hotel-tax map's own 150-euro basket. That basket was built for a European tax
+// conversion and has no reason to also be the right assumption for a US-sourced
+// cleaning-fee statistic. $120 is not a fresh assumption invented for this chart: it
+// is the SAME illustrative nightly rate the cleaning-fee-math section below draws from
+// the research memo's own amortisation example (onefinebnb.com), so this page rests on
+// one declared assumption, stated once, rather than two disagreeing ones.
+const VIZ_REF_NIGHTLY_USD = 120;
+const CLEAN_MEDIAN_USD = 75;
+const CLEAN_AVG_USD = 188;
+const PLATFORM_PCT = 15.5;
+
+const round1 = (n) => Math.round(n * 10) / 10;
+// The cleaning fee, resort fee and platform fee below are all expressed as a percent
+// of that declared $120 reference room, the same "index to a reference, never a real
+// price" move the hotel-tax map itself uses for a flat charge with no percentage of
+// its own.
+const cleaningPct = round1((CLEAN_MEDIAN_USD / VIZ_REF_NIGHTLY_USD) * 100);
+// THE RESORT-FEE FIGURE IS SUBSTITUTED FROM AN ALREADY-SOURCED SITE FIGURE, flagged in
+// the handback: PROPERTY_FEE_BAND (booking-tactics.js) is the SAME resort-fee figure
+// the sibling hotels page already cites, "US resort fees run roughly 30 to 90 dollars
+// a night." Reused here rather than typing a second, different range for the same
+// mechanic.
+const resortLowPct = round1((PROPERTY_FEE_BAND.usResortLowUsd / VIZ_REF_NIGHTLY_USD) * 100);
+const resortHighPct = round1((PROPERTY_FEE_BAND.usResortHighUsd / VIZ_REF_NIGHTLY_USD) * 100);
+const resortMidPct = round1((resortLowPct + resortHighPct) / 2);
+
+const BASE_FILL = '#0A5644';
+const CLEAN_FILL = '#B45309';
+const PLATFORM_FILL = '#0E7A5F';
+const TAX_FILL = '#7FB8A5';
+const TAX_FAINT_FILL = '#D7ECE3';
+const RESORT_FILL = '#E3B98A';
+
+const rentalTotal = Math.round(100 + cleaningPct + PLATFORM_PCT + taxMedian);
+const hotelTotal = Math.round(100 + resortMidPct + taxMedian);
+
+const comparisonRows = [
+  {
+    label: 'A vacation rental, one night',
+    segments: [
+      { label: 'nightly rate', value: 100, fill: BASE_FILL, figure: '100' },
+      {
+        label: 'cleaning fee, flat, once per stay', value: cleaningPct, fill: CLEAN_FILL,
+        figure: `$${CLEAN_MEDIAN_USD} median`,
+      },
+      {
+        label: 'platform service fee', value: PLATFORM_PCT, fill: PLATFORM_FILL,
+        figure: `${PLATFORM_PCT}%`,
+      },
+      {
+        label: 'tax, on the booking or in cash later', value: taxMedian, fill: TAX_FILL,
+        figure: taxRangeLabel,
+      },
+    ],
+    totalFigure: String(rentalTotal),
+    note: `Modeled against a $${VIZ_REF_NIGHTLY_USD} room for a single night, the same illustrative rate the cleaning-fee math below uses. NerdWallet's median cleaning fee, $${CLEAN_MEDIAN_USD} a stay, is already this large a slice on one night; the average runs far higher, $${CLEAN_AVG_USD} (AirROI), because a few large, expensive properties pull it up hard. The platform fee shown is Airbnb's own incoming host-only rate; historically it ran 14 to 16% and showed to the guest as its own line, and it is increasingly folded into the nightly rate instead as the site notes below. The tax segment uses the same figure as the hotel row, read from our own hotel tax map.`,
+  },
+  {
+    label: 'A hotel, one night',
+    segments: [
+      { label: 'room rate', value: 100, fill: BASE_FILL, figure: '100' },
+      {
+        label: 'resort fee, only at some properties', value: resortMidPct, fill: RESORT_FILL,
+        figure: `$${PROPERTY_FEE_BAND.usResortLowUsd} to $${PROPERTY_FEE_BAND.usResortHighUsd}, not universal`,
+      },
+      {
+        label: 'tax, often already inside the sticker', value: taxMedian, fill: TAX_FAINT_FILL,
+        figure: taxRangeLabel,
+      },
+    ],
+    totalFigure: String(hotelTotal),
+    note: `Most hotels charge no resort fee at all; it is a US pattern at a minority of properties, drawn in a lighter color for that reason. The tax segment is the identical figure the rental row uses above, drawn faint here because in much of Europe a hotel's quoted rate already has this tax folded in by law, so it often never appears as a line at all. Same tax, two different treatments: that contrast is the actual point of drawing it twice.`,
+  },
+];
+
+const webPageLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: 'The real cost of an Airbnb',
+  description: 'The fee stack behind a short-term rental total, the cleaning-fee math on short stays, when a hotel wins instead, and the one thing worth checking on any listing before you book.',
+  url: 'https://truetripcosts.com/airbnb-real-cost',
+  dateModified: CHECKED_ISO,
+};
+---
+<Base
+  title="The real cost of an Airbnb: the fee stack, the cleaning fee math, and when a hotel wins | True Trip Costs"
+  description="What actually lands on a short-term rental bill: the nightly rate, a flat cleaning fee (NerdWallet's median is $75, not the $150 to $270 horror stories), a platform service fee moving from 14 to 16 percent to a host-only 15.5 percent, and tax that is sometimes collected in cash on arrival. When a hotel beats it and when it does not, how VRBO differs, and the one thing worth checking on every listing before you book. Not a legality database, not a booking site.">
+  <Nav />
+  <main class="wrap">
+
+    <Hero
+      eyebrow="Where you stay"
+      title="The real cost of an Airbnb."
+      stamp={`Checked ${CHECKED}`}
+      slim={true} />
+
+    <section class="bt-prose">
+      <p class="bt-lede">The nightly rate you see is almost never the number you pay. A flat cleaning fee lands once, however long you stay. A platform fee sits inside or beside the price, and it is moving from beside to inside right now. Tax sometimes waits for you in cash at the door. Airbnb is the front door of this page, because it is where most US travelers start looking, but the same fee stack follows you to VRBO and to smaller platforms too, and on those it is usually less visible, not more.</p>
+
+      <div class="bt-quick">
+        <p class="bt-qk">The 30-second version</p>
+        <ol class="bt-qlist">
+          <li><a href="#fee-stack">See the full price broken into its four parts</a>, nightly rate, cleaning fee, platform fee and tax, before you compare it against anything else.</li>
+          <li><a href="#cleaning-fee-math">A flat cleaning fee hits a one or two night stay hardest</a>, and fades fast the longer you stay.</li>
+          <li>Solo or on a short trip, <a href="#hotel-or-rental">open the hotel total too</a>. It wins more often than people expect.</li>
+          <li><a href="#is-it-allowed">Rules vary by city and change constantly.</a> Look for a license or registration number on the listing before you book anything.</li>
+        </ol>
+        <p class="bt-qfoot">Airbnb's own fee model is mid-migration through September and October 2026 as you read this, so if it is later than that, recheck <a href="#fee-stack">the fee-stack section</a> first: the mechanics below are dated for exactly that reason.</p>
+      </div>
+
+      <details class="bt-not">
+        <summary class="bt-not-sum">
+          <span class="bt-not-k">What this page is not</span>
+          <span class="bt-not-one">It is not a legality database, and it never will be.</span>
+          <svg class="bt-not-chev" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </summary>
+        <p>We do not track city by city rental caps, bans or registration rules, because they change on a timescale of months and a stale legality claim could cost you more than the fee stack ever would. We do not compare live prices between platforms, and we will never tell you which one to book on. Where we explain how a platform's fee works, that is mechanism, not a recommendation, the same rule our hotel-tactics page holds itself to.</p>
+      </details>
+
+      <nav class="onpage" aria-label="On this page">
+        <p class="lab">On this page</p>
+        <ul>
+          {JUMP.map((j) => (
+            <li><a href={`#${j.id}`}>{j.label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    </section>
+
+    <section class="bt-sec" id={SEC.stack.id}>
+      <h2>What is actually in an Airbnb price</h2>
+      <p class="bt-note">Four things build the total, and only the first one is what you searched for. Airbnb has shown the all-in total by default since April 2025, before tax. That is real progress, and it is also why this page still exists: the total is more visible now, not simpler.</p>
+
+      <div class="arc-stack">
+        <div class="arc-stack-item">
+          <p class="arc-stack-k">1. The nightly rate</p>
+          <p class="arc-stack-v">Shown all-in, including fees but before tax, to every user by default since April 21, 2025, when Airbnb retired the old opt-in toggle. What you see in search is closer to the real number than it used to be, but taxes can still be added at the final checkout step, or on arrival. See <a href="https://techcrunch.com/2025/04/21/airbnb-will-automatically-display-total-price-to-all-users/" target="_blank" rel="noopener">Airbnb's April 2025 total-price rollout</a>.</p>
+        </div>
+        <div class="arc-stack-item">
+          <p class="arc-stack-k">2. The cleaning fee</p>
+          <p class="arc-stack-v">Flat, charged once no matter how many nights you book. <a href="https://www.nerdwallet.com/travel/learn/airbnb-cleaning-fees-brutal" target="_blank" rel="noopener">NerdWallet's 2022 study</a> of 1,000 US entire-place bookings put the median at $75 a stay, with 14% of listings charging none at all. <a href="https://www.airroi.com/blog/airbnb-cleaning-fee-economics" target="_blank" rel="noopener">AirROI's larger sample</a> of active listings found a much higher average, $188, pulled up hard by a smaller number of large, expensive properties. A median and an average that far apart is the tell: this page gives you a range, on purpose, never one number.</p>
+        </div>
+        <div class="arc-stack-item">
+          <p class="arc-stack-k">3. The platform service fee</p>
+          <p class="arc-stack-v">Historically 14% to 16% of the subtotal under Airbnb's old split-fee model, shown to the guest as its own line. Airbnb is retiring that split. Under the new host-only model the host alone pays 15.5% (16% in Mexico and Brazil), and the guest increasingly never sees a separate fee line at all, it gets folded into the nightly rate instead. The cutover reaches hosts outside the European Economic Area on September 15, 2026, and hosts in the EEA and Switzerland on October 13, 2026, per Airbnb's own July 2026 announcement, <a href="https://www.rentalscaleup.com/airbnb-host-fees/" target="_blank" rel="noopener">reported at Rental Scale-Up</a>. Worth rechecking after those dates. VRBO runs a different shape entirely: see <a href="#other-platforms">other platforms</a> below.</p>
+        </div>
+        <div class="arc-stack-item">
+          <p class="arc-stack-k">4. Tax</p>
+          <p class="arc-stack-v">Sometimes Airbnb or VRBO collects it automatically at booking, wherever the platform holds a collection agreement with the local authority. Where it does not, the host or the municipality collects it separately, often on arrival, often in cash. Airbnb <a href="https://www.airbnb.com/help/article/1036" target="_blank" rel="noopener">says plainly it collects in specific jurisdictions</a> and that a host <a href="https://www.airbnb.com/help/article/2496" target="_blank" rel="noopener">may still need to collect other taxes manually</a>, which is the actual mechanism behind the pay-in-cash-at-check-in surprise. The booking total you saw is not always the last number.</p>
+        </div>
+      </div>
+
+      <div class="bt-figure">
+        <p class="arc-figh">A vacation rental against a hotel, one night, same assumed room rate</p>
+        <p class="bt-note">Both rows are indexed to the same assumed nightly rate, so this is a shape, not a price. Whatever your actual room costs, that is the 100. No dollar total is implied for either one.</p>
+        <StackBar
+          id="airbnb-hotel-compare"
+          rows={comparisonRows}
+          axisMax={200}
+          ticks={[0, 50, 100, 150, 200]}
+          unitWord="percent of the same assumed nightly rate" />
+        <p class="bt-finding">The flat cleaning fee is what flips a short stay toward the hotel. Spread across a longer stay or a bigger group, it fades, and the rental often wins instead. Trip shape decides it, not any single fee.</p>
+        <p class="arc-vizfoot">Ranges from NerdWallet and industry fee studies, checked {CHECKED}. No live prices.</p>
+      </div>
+    </section>
+
+    <section class="bt-sec" id={SEC.short.id}>
+      <h2>The cleaning fee, and why short stays feel it hardest</h2>
+      <p class="bt-note">A cleaning fee is flat. It does not care whether you stay one night or ten, so its bite per night falls the longer the stay runs. This is an illustration of the shape, not a quote for your own trip: real nightly rates and real cleaning fees both vary too much to promise one number.</p>
+      <p class="bt-finding">Illustratively: a $120-a-night listing with a $150 cleaning fee works out to an effective $270 a night for a single night, but only $141 a night spread across a week. Same listing, same fee, a very different number depending only on how long you stay.</p>
+      <p class="bt-note">That is the whole mechanic behind <a href="#hotel-or-rental">why a hotel often wins on a short, solo trip</a>: not because a rental is a bad deal, but because a fee designed to be paid once lands entirely on whichever nights you actually book. Source: <a href="https://onefinebnb.com/airbnb-cleaning-fee-guide/" target="_blank" rel="noopener">One Fine BNB's cleaning-fee amortisation example</a>.</p>
+    </section>
+
+    <section class="bt-sec" id={SEC.versus.id}>
+      <h2>When a hotel wins, and when it does not</h2>
+      <p class="bt-note">The honest answer is platform-neutral: it depends entirely on the shape of the trip, not on which platform you searched first.</p>
+      <p class="arc-stack-v">For a short stay, one or two nights, solo or as a couple, a hotel very often wins once the cleaning fee and service fee are added in. <a href="https://www.nerdwallet.com/travel/learn/airbnb-for-large-groups" target="_blank" rel="noopener">NerdWallet's own comparison</a> put a single hotel room about 29% cheaper than a small Airbnb, per person, for two travelers (median nightly figures in that study: hotel room $89, small Airbnb $125). Flip the group size and the finding flips too: for six travelers, a large rental ran about 33% cheaper per person than three separate hotel rooms (large Airbnb $60 a person, hotel rooms averaging $89 apiece). Neither number is a rule for your trip specifically, both are what one real study found. Solo and short leans hotel. Bigger and longer leans rental. Open the all-in total both ways and compare, every time, rather than assuming either one wins on principle.</p>
+    </section>
+
+    <section class="bt-sec" id={SEC.other.id}>
+      <h2>Other platforms, and why they are different</h2>
+      <p class="arc-stack-v">Airbnb is the front door of this page because it is the platform most US travelers search first, and because its own fee mechanics are the best documented. The same fee stack, cleaning fee, platform fee, tax, applies just as much on VRBO and on smaller or direct-owner platforms. What actually differs is visibility. Airbnb now shows the all-in total by default. <a href="https://www.rentalrecon.com/fees/vrbo-service-fee-for-guests/" target="_blank" rel="noopener">VRBO's own guest service fee</a> is a sliding scale, commonly 6% to 15% of the subtotal, and it falls as the size of the booking grows, the opposite shape from a flat cleaning fee. Smaller platforms and direct-owner bookings often show the least of it up front of all. The watching this page is about pays off more, not less, the further you get from Airbnb's own search results.</p>
+    </section>
+
+    <section class="bt-sec" id={SEC.legal.id}>
+      <h2>Is it even allowed where you are going?</h2>
+      <div class="recentchange arc-legal">
+        <span class="rcpill">Evergreen warning, not a database</span>
+        <p>Short-term rental rules, caps, registration requirements and outright bans move on a timescale of months, not years. Amsterdam cut its own citywide cap again in April 2026. The EU's own registration requirement only started binding on May 20, 2026. A city's rule can change between when we write this sentence and when you read it, so we do not keep a list, and we would rather tell you that plainly than hand you a number that used to be true and let you rely on it.</p>
+        <p>Two places actually stay current, so check there instead of here:</p>
+        <ul class="arc-legal-links">
+          <li><a href="https://www.airbnb.com/resources/hosting-homes/a/learn-about-hosting-regulations-7" target="_blank" rel="noopener">Airbnb's own per-country Responsible Hosting pages</a>, maintained by Airbnb itself and pointing at local rules city by city.</li>
+          <li>The city or country's own official short-term-rental registration portal, usually one search away by name.</li>
+        </ul>
+        <p>One thing is worth checking on every listing everywhere, and it does not depend on knowing any one city's specific rule: does it show a license or registration number? Under a wave of new requirements, the EU from May 2026, Italy's CIN, Greece's AMA, Japan's minpaku number and more, platforms are now required to verify that number and can delist a listing that lacks one. A listing with no visible number can be pulled with little notice, sometimes close to your trip. It is arguably the single most useful, most durable safety signal on this whole page, precisely because it travels to any city rather than expiring with one city's rule.</p>
+      </div>
+    </section>
+
+    <section class="bt-sec" id={SEC.facts.id}>
+      <h2>A few facts worth knowing</h2>
+      <p class="bt-note">Three facts, not a database. Each is dated and stable enough to state plainly; anything less stable than this lives only in the warning above.</p>
+
+      <div class="arc-facts">
+        <div class="arc-fact">
+          <p class="arc-fact-k">Mexico: Cancun, Playa del Carmen, Tulum (Quintana Roo)</p>
+          <p class="arc-fact-v">Airbnb collects Quintana Roo's state lodging tax and Mexico's federal VAT automatically at booking. A separate municipal Environmental Sanitation fee does not travel through Airbnb at all: it is collected at the property, often in cash, at check-in or check-out. In 2026 it runs roughly 36 pesos per room per night in most municipalities, and more in Cancun specifically, where our own sources disagree, 76 versus 83 pesos, most likely a reflection of the fee's annual February reindexing. Bring small cash for it.</p>
+          <p class="arc-fact-checked">Checked {CHECKED}. The peso amount re-indexes every February, so recheck around then.</p>
+        </div>
+        <div class="arc-fact">
+          <p class="arc-fact-k">Italy, Greece and Japan, and the EU from May 2026</p>
+          <p class="arc-fact-v">Since 2025, every short-term rental listing in Italy needs a National Identification Code (CIN) displayed, and platforms must delist listings that lack one. Greece runs the same idea under its own AMA registration number, Japan under its minpaku registration number, and the EU's Regulation 2024/1028 extends a version of the same requirement across all 27 member states from May 20, 2026. None of this proves a listing is legal everywhere else; a visible number is a floor, not a guarantee. But no visible number, anywhere, is a real warning sign.</p>
+          <p class="arc-fact-checked">Checked {CHECKED}. The requirement itself is durable; re-verify specific city rules separately.</p>
+        </div>
+        <div class="arc-fact">
+          <p class="arc-fact-k">European cities: the same tourist tax as the hotel next door</p>
+          <p class="arc-fact-v">In most European cities that charge hotels a nightly tourist tax, a short-term rental usually owes the same tax, whether the platform collects it automatically or the host has to. We already track those rates for hotels, city by city, so we point at that dataset here rather than keeping a second copy that can drift out of sync with the first.</p>
+          <p class="arc-fact-checked">See <a href="/hotel-taxes-and-fees">hotel taxes and fees</a> for the current rates.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bt-sec arc-closer">
+      <h2>What this page sits on top of</h2>
+      <p class="arc-stack-v">The government tax mechanics here are the same ones we track for hotels at <a href="/hotel-taxes-and-fees">hotel taxes and fees</a>. The booking-moment tactics, comparing properly, checking a property's own site, reading past drip pricing, live at <a href="/how-to-pay-less-on-hotels">how to pay less on hotels</a>. And the full trip math, airfare, lodging, everyday spending, all in one place, is at <a href="/calculator">our calculator</a>.</p>
+      <p class="arc-stack-v">We are not selling you a room, on Airbnb, VRBO or anywhere else. <span class="tg free">we earn nothing</span> from where you choose to stay.</p>
+    </section>
+
+    <script type="application/ld+json" set:html={JSON.stringify(webPageLd)}></script>
+  </main>
+  <Footer />
+
+  <style>
+    .bt-prose{max-width:720px;margin:16px 0 0}
+    .bt-lede{font-size:18px;color:#3B4A46;line-height:1.55;margin:0}
+
+    .bt-quick{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:15px 18px 16px;margin:18px 0 14px;box-shadow:var(--shadow)}
+    .bt-qk{font-family:var(--mono);font-size:10.5px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.05em;margin:0 0 9px}
+    .bt-qlist{margin:0;padding:0 0 0 20px;display:flex;flex-direction:column;gap:7px}
+    .bt-qlist li{font-size:14.5px;line-height:1.5;color:#3B4A46}
+    .bt-qlist li::marker{color:var(--teal-deep);font-weight:600}
+    .bt-qlist a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .bt-qlist a:hover{text-decoration:underline}
+    .bt-qfoot{font-size:13px;color:var(--muted);line-height:1.5;margin:11px 0 0;padding-top:10px;border-top:1px solid var(--line)}
+    .bt-qfoot a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .bt-qfoot a:hover{text-decoration:underline}
+
+    .bt-not{background:var(--paper);border:1px solid var(--line);border-radius:10px;margin:0 0 20px}
+    .bt-not-sum{display:flex;align-items:baseline;gap:10px;padding:11px 15px;cursor:pointer;list-style:none;flex-wrap:wrap}
+    .bt-not-sum::-webkit-details-marker{display:none}
+    .bt-not-k{font-family:var(--mono);font-size:10.5px;font-weight:600;color:var(--teal-deep);text-transform:uppercase;letter-spacing:.05em;flex:none}
+    .bt-not-one{font-size:14px;color:#3B4A46;line-height:1.5;min-width:0;flex:1}
+    .bt-not-one b{font-weight:600;color:var(--ink)}
+    .bt-not-chev{flex:none;color:var(--muted);transition:transform .2s ease;align-self:center}
+    .bt-not[open] .bt-not-chev{transform:rotate(180deg)}
+    .bt-not > p{font-size:14px;color:#3B4A46;line-height:1.55;margin:0;padding:0 15px 14px}
+
+    .onpage{margin:20px 0 0;padding:16px 0 0;border-top:1px solid var(--line)}
+    .onpage ul{list-style:none;margin:0;padding:0;columns:2;column-gap:34px}
+    .onpage li{margin:0;break-inside:avoid}
+    .onpage a{display:block;padding:7px 0;font-size:15px;line-height:1.35;color:var(--teal-deep);text-decoration:none}
+    .onpage a:hover{text-decoration:underline}
+    .onpage a:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:3px}
+    .onpage .lab{font-family:var(--mono);font-size:10.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin:0 0 8px}
+
+    .bt-sec{margin:34px 0 0;scroll-margin-top:74px}
+    .bt-sec h2{font-family:var(--serif);font-weight:500;font-size:clamp(21px,3.2vw,27px);letter-spacing:-.01em;margin:0 0 6px;line-height:1.2}
+    .bt-note{font-size:14.5px;color:var(--muted);margin:0 0 18px;line-height:1.55;max-width:720px}
+
+    .bt-figure{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:20px 20px 14px;margin:22px 0 0}
+    .arc-figh{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--ink);margin:0 0 6px;line-height:1.3}
+    .bt-finding{font-size:clamp(16px,2.2vw,18.5px);line-height:1.5;font-weight:500;color:var(--ink);margin:14px 0;padding:14px 17px;background:var(--green-bg);border-left:3px solid var(--teal);border-radius:8px;max-width:760px}
+    .arc-vizfoot{font-size:12px;color:var(--muted);margin:8px 0 4px;line-height:1.5}
+
+    /* THE FOUR-PART FEE STACK. A plain, borderless list rather than four separate
+       .bt-figure cards: four bordered boxes in a row would compete with the viz right
+       below them for the reader's attention, and the viz is the centerpiece, not this
+       list. A left rule keeps the four parts visually grouped without a full card each. */
+    .arc-stack{margin:18px 0 0;max-width:720px}
+    .arc-stack-item{padding:0 0 0 14px;border-left:3px solid var(--line);margin:0 0 18px}
+    .arc-stack-item:last-child{margin-bottom:0}
+    .arc-stack-k{font-family:var(--serif);font-weight:500;font-size:16px;color:var(--ink);margin:0 0 5px;line-height:1.3}
+    .arc-stack-v{font-size:14.5px;line-height:1.6;color:#3B4A46;margin:0;max-width:720px}
+    .arc-stack-v a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .arc-stack-v a:hover{text-decoration:underline}
+
+    /* THE LEGALITY WARNING reuses the global .recentchange card verbatim (the same
+       shell every "worth flagging" callout on the site already uses), with only list
+       spacing added here for its two link items. */
+    .arc-legal p + p{margin-top:10px}
+    .arc-legal-links{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+    .arc-legal-links li{font-size:14.5px;line-height:1.5;color:#3B4A46;padding-left:16px;position:relative}
+    .arc-legal-links li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+    .arc-legal-links a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .arc-legal-links a:hover{text-decoration:underline}
+
+    .arc-facts{display:flex;flex-direction:column;gap:14px;margin:18px 0 0}
+    .arc-fact{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:16px 18px}
+    .arc-fact-k{font-family:var(--serif);font-weight:500;font-size:16px;color:var(--ink);margin:0 0 6px;line-height:1.3}
+    .arc-fact-v{font-size:14.5px;line-height:1.6;color:#3B4A46;margin:0}
+    .arc-fact-v a{color:var(--teal-deep);font-weight:500;text-decoration:none}
+    .arc-fact-v a:hover{text-decoration:underline}
+    .arc-fact-checked{font-family:var(--mono);font-size:11px;color:var(--muted);margin:8px 0 0;letter-spacing:.02em}
+    .arc-fact-checked a{color:var(--teal-deep);font-weight:600;text-decoration:none}
+    .arc-fact-checked a:hover{text-decoration:underline}
+
+    .arc-closer{padding-top:20px;border-top:1px solid var(--line)}
+    .arc-closer .arc-stack-v{margin:0 0 10px}
+    .arc-closer .arc-stack-v:last-child{margin-bottom:0}
+
+    @media (max-width:560px){
+      .bt-lede{font-size:16.5px}
+      .bt-quick{padding:14px 15px 15px}
+      .bt-qlist li{font-size:14px}
+      .bt-figure{padding:16px 15px 14px}
+      .onpage ul{columns:1}
+      .onpage a{padding:11px 0;font-size:15.5px;min-height:22px}
+
+      .bt-not-sum{
+        display:grid;
+        grid-template-columns:1fr auto;
+        grid-template-rows:auto auto;
+        column-gap:10px;
+        row-gap:3px;
+        align-items:start;
+        flex-wrap:unset;
+      }
+      .bt-not-k{grid-column:1;grid-row:1}
+      .bt-not-one{grid-column:1;grid-row:2}
+      .bt-not-chev{grid-column:2;grid-row:1 / 3;align-self:center}
+    }
+  </style>
+</Base>
