@@ -1,0 +1,231 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import USBadge from '../components/USBadge.astro';
+import { flightRefundRights } from '../data/flight-refund-rights.js';
+
+// BRIEF-bite1-money-owed-rights-page. Bite 1 of the flights domain: a standalone rights
+// page, not a hub with country spokes. Built from the approved static mock
+// (money-your-airline-owes-you-MOCK.html, approved 2026-09-14), folding in the build
+// notes: the hero lede is softened and split, the two-CFR-path distinction in Situation 1
+// is made explicit, and every piece of shared chrome below is the site's own component or
+// class rather than the mock's hand-rolled stand-in.
+//
+// No commission on this page. No dollar figures, stored or invented. Every rights
+// statement carries its condition inline, per the brief's one hard guardrail: the US
+// coverage boundary, the decline-the-substitute requirement, and the ask-or-automatic
+// distinction, all stated up front and then repeated at the specific right they govern.
+//
+// Legal facts are imported from flight-refund-rights.js rather than retyped here, so the
+// page and scripts/check-fact-staleness.mjs read the same numbers from the same home.
+// See that file's own header for the quarterly cadence and why it is tighter than the
+// site's 180-day general mark.
+
+const sig = flightRefundRights.significantChangeSchedule;
+const other = flightRefundRights.significantChangeOther;
+const timing = flightRefundRights.refundTiming;
+const rule24 = flightRefundRights.twentyFourHourRule;
+const bag = flightRefundRights.delayedBagFeeReturn;
+
+const govIcon = '<path d="M6 3v18"></path><path d="M6 4h12l-2 3.5L18 11H6"></path>';
+
+const sources = [
+  { name: '14 CFR Part 260, refunds for airline fare and ancillary service fees', note: 'the refund trigger on cancellation or significant change, the definition of significant change, the refund clock, and the delayed-bag fee return', url: flightRefundRights.significantChangeSchedule.sourceUrl },
+  { name: 'DOT, air travel refunds', note: 'the 24-hour hold-or-refund requirement and its direct-airline-only scope, plus the consumer-facing overview of the Part 260 rights', url: flightRefundRights.twentyFourHourRule.sourceUrl },
+];
+---
+<Base
+  title="Airline refund rights: what your airline owes you when it cancels or changes your flight | True Trip Costs"
+  description="US airlines cancel and change flights regularly, and federal rules already say what they owe you: an automatic cash refund if you decline the rebooking, a 24-hour hold or refund on a fresh booking, and money back for a paid extra or bag fee they did not deliver. Every right here carries its condition. Sourced to 14 CFR Part 260 and DOT. Checked September 2026.">
+  <Nav />
+  <main class="wrap">
+
+    <section class="pt-prose">
+      <p class="lab">Airline refunds</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
+      <h1>The money your airline owes you (and hopes you won't claim).</h1>
+      <p class="pt-lede">US airlines cancel flights, shrink schedules, and downgrade cabins regularly, and federal rules already say what they owe you when it happens.</p>
+      <p>Not compensation, not goodwill: an actual cash refund to your original payment method, automatic in some cases and yours for the asking in others. None of it arrives if you take the voucher instead, and none of it applies once you have left US airspace and US rules behind.</p>
+
+      <div class="recentchange" style="margin-top:22px">
+        <span class="rcpill">The condition behind all three rights below</span>
+        <p style="margin:0;font-size:15px;line-height:1.6;color:var(--ink)">These are <b>US Department of Transportation rules</b>. They cover flights to, from, or within the US on covered carriers, not a purely foreign domestic flight bought wholly abroad. Two things make each right below actually pay out: you have to <b>decline</b> the rebooking, voucher, or credit rather than accept it, and if a middleman, an OTA or ticket agent that is merchant of record, handled your money instead of the airline, some of this becomes something you have to <b>ask for</b> rather than something that happens on its own.</p>
+      </div>
+    </section>
+
+    <section class="why">
+      <p class="lab">Three situations, checked against the regulation</p>
+      <h2>Where the money is actually recoverable.</h2>
+      <p class="lead">Each one below carries its own condition. None of them are unconditional, and none of them are as narrow as "any delay."</p>
+      <div class="qrow">
+        <div class="qcard">
+          <h3>1. The airline cancels or significantly changes your flight</h3>
+          <p>Automatic cash refund, even on a nonrefundable ticket, if you decline the substitute.</p>
+        </div>
+        <div class="qcard">
+          <h3>2. You just booked and want out</h3>
+          <p>A 24-hour hold or a 24-hour refund, direct-airline bookings only.</p>
+        </div>
+        <div class="qcard">
+          <h3>3. The airline didn't deliver something you paid for</h3>
+          <p>Refundable, once you report it. Applies to paid extras and badly delayed bags.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-prose">
+      <h2>1. The airline cancels or significantly changes your flight</h2>
+      <p>Cancel your flight, or change it enough, and you are owed an <b>automatic cash refund to your original payment method</b>, even on a ticket marked nonrefundable, as long as you decline the rebooking, voucher, or credit the airline offers instead. Accept the voucher and you have made your choice. This right is for travelers who say no.</p>
+
+      <p style="margin-top:16px"><b>"Significant change" means either of two separate things.</b> The list below is two paths, not one. The second path qualifies on its own, with no hour threshold to clear.</p>
+
+      <p class="pt-subhead">Path A: a schedule move past the threshold</p>
+      <ul class="pt-snap">
+        <li>Departure moved <b>{sig.departureDomesticHours}+ hours earlier</b> (domestic) or <b>{sig.departureInternationalHours}+ hours earlier</b> (international)</li>
+        <li>Arrival delayed <b>{sig.arrivalDomesticHours}+ hours</b> (domestic) or <b>{sig.arrivalInternationalHours}+ hours</b> (international)</li>
+      </ul>
+
+      <p class="pt-subhead">Path B: any of these, regardless of timing</p>
+      <ul class="pt-snap">
+        {other.changes.map((c) => <li>{c[0].toUpperCase() + c.slice(1)}</li>)}
+      </ul>
+
+      <p style="margin-top:16px"><b>The clock, once you're owed a refund:</b></p>
+      <ul class="pt-snap">
+        <li><b>{timing.cardBusinessDays} business days</b> if you paid by credit card</li>
+        <li><b>{timing.otherCalendarDays} calendar days</b> for every other payment method (calendar, not business, whatever a stray DOT web page might say)</li>
+      </ul>
+
+      <p>This buys back the unused transportation and any refundable charges attached to it. It is not a right to fly the trip and keep the fare too, and it will not fund a replacement ticket on another airline.</p>
+
+      <p class="src-line">Source: <a href={sig.sourceUrl} target="_blank" rel="noopener">14 CFR Part 260</a> and <a href={rule24.sourceUrl} target="_blank" rel="noopener">DOT's refunds page</a>.</p>
+    </section>
+
+    <section class="pt-prose">
+      <h2>2. You just booked and want out, the 24-hour rule</h2>
+      <p>Book a US flight <b>{rule24.minDaysBeforeDeparture} or more days before departure</b>, and the airline has to let you out of it one of two ways: a free 24-hour hold before you pay, or a full refund if you cancel within 24 hours of paying. It only has to offer <b>one</b>, not both, so check which one you actually got.</p>
+
+      <div class="pt-flag">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>
+        <p class="pt-flag-p"><b>Direct-airline bookings only.</b> Book through an OTA or ticket agent and this rule does not reach them, though some mirror it voluntarily. It is a refund-or-hold right, not a free do-over on a misspelled name or a changed date.</p>
+      </div>
+
+      <p class="src-line">Source: <a href={rule24.sourceUrl} target="_blank" rel="noopener">DOT's 24-hour rule</a>.</p>
+    </section>
+
+    <section class="pt-prose">
+      <h2>3. You paid for something the airline didn't deliver</h2>
+      <p>Pay for Wi-Fi that never connects, or a seat that turns out broken, and that specific charge is refundable, though an individual failure usually needs to be reported before it comes back.</p>
+      <p>A checked bag that shows up badly late can also get you the <b>bag fee</b> back, not the contents, just the fee, once you have filed a mishandled-baggage report.</p>
+
+      <p class="pt-subhead">The delayed-bag thresholds</p>
+      <ul class="pt-snap">
+        <li><b>{bag.domesticHours} hours</b>, domestic</li>
+        <li><b>{bag.internationalShortSegmentHours} hours</b>, international, if the nonstop US-international segment ran {bag.segmentSplitHours} hours or less</li>
+        <li><b>{bag.internationalLongSegmentHours} hours</b>, international, if that segment ran longer than {bag.segmentSplitHours} hours</li>
+      </ul>
+
+      <p class="src-line">Source: <a href={bag.sourceUrl} target="_blank" rel="noopener">14 CFR Part 260</a>.</p>
+    </section>
+
+    <section class="pt-prose">
+      <h2>The four questions that get your money back</h2>
+      <p>Whichever situation you are in, the same short decision aid gets you to the refund.</p>
+      <div class="ap-panel">
+        <div class="ap-row">
+          <span class="ap-num">1</span>
+          <div><p class="ap-q">Who charged you?</p><p class="ap-a">The airline's name on your confirmation doesn't mean the airline is who is holding your money. Booked through an OTA? File with <b>both</b> the OTA and the airline; whichever was the merchant of record is who owes you.</p></div>
+        </div>
+        <div class="ap-row">
+          <span class="ap-num">2</span>
+          <div><p class="ap-q">Do you have to ask?</p><p class="ap-a">A direct-airline cancellation or significant change is automatic; decline the substitute and that's it. An OTA or agent usually pays out on request. Ancillary failures and delayed bags always need a report from you first.</p></div>
+        </div>
+        <div class="ap-row">
+          <span class="ap-num">3</span>
+          <div><p class="ap-q">What's the clock?</p><p class="ap-a">{timing.cardBusinessDays} business days by card, {timing.otherCalendarDays} calendar days for anything else. Note the date you were told, since that's what starts it.</p></div>
+        </div>
+        <div class="ap-row">
+          <span class="ap-num">4</span>
+          <div><p class="ap-q">What do you keep?</p><p class="ap-a">Your booking confirmation, the actual charge on your statement, and whatever notice you got of the cancellation, delay, or downgrade. A mishandled-bag report, if one applies.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gbyline" style="display:flex;align-items:flex-start;gap:9px;margin:34px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card)">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. Legal facts on this page are reviewed quarterly and immediately on any material DOT or court development. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
+    </div>
+
+    <details class="gsources">
+      <summary class="gsources-sum">
+        <span class="gsources-txt">Sources, and how this page was checked</span>
+        <svg class="gsources-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="gsources-body">
+        <p class="gs-row"><span class="gs-k">Last checked</span><span>Sep 2026, against eCFR</span></p>
+        <div class="gs-row"><span class="gs-k">Primary sources</span>
+          <ul class="gs-links">
+            {sources.map(s => (
+              <li class="gs-src">
+                <span class="gs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={govIcon}></svg></span>
+                <span class="gs-src-tx">
+                  <a href={s.url} target="_blank" rel="noopener" class="gs-src-name">{s.name}</a>
+                  <span class="gs-src-note">{s.note}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p class="gs-row"><span class="gs-k">Our own read</span><span>A narrow DOT enforcement carve-out lets a flight-number-only change pass without triggering a refund, as long as nothing about the itinerary itself significantly changes. It is not a general suspension of the refund rule, and this page does not treat it as one. Refund figures above are our own compression of the regulation's own timing and thresholds, not a DOT-published table, and the ancillary-fee disclosure rule (a separate rule from the refund rights on this page) is currently dead and watched only, not stated as an active right here.</span></p>
+      </div>
+    </details>
+
+    <section class="pt-close">
+      <h2>Ask. Don't wait.</h2>
+      <p>Every one of these was already written into US law before you ever had a problem. The airline is not going to volunteer any of it, and the two most common ways a real refund quietly turns into a voucher are picking the easy button at the gate counter, and letting an OTA sit on money that was never really theirs to keep. Decline the substitute, ask the entity that actually charged you, and keep your dates.</p>
+    </section>
+
+  </main>
+  <Footer />
+
+  <style>
+    .pt-prose{padding:34px 0 0;max-width:680px}
+    .pt-prose h1{margin:6px 0 14px}
+    .pt-prose h2{margin:0 0 8px}
+    .pt-lede{font-size:17px;line-height:1.55;color:var(--ink);margin:0}
+    .pt-prose p:not(.lab):not(.pt-lede):not(.pt-subhead):not(.src-line){font-size:16px;line-height:1.65;color:var(--ink);margin:14px 0 0}
+    .pt-prose a{color:var(--teal-deep);font-weight:500;text-decoration:underline;text-underline-offset:2px}
+
+    .pt-subhead{font-weight:600;font-size:13.5px;color:var(--muted);margin:18px 0 4px;text-transform:none}
+
+    .pt-snap{list-style:none;margin:8px 0 0;padding:0;max-width:680px}
+    .pt-snap li{position:relative;font-size:15.5px;line-height:1.6;color:var(--ink);padding:0 0 0 18px;margin:0 0 9px}
+    .pt-snap li:last-child{margin-bottom:0}
+    .pt-snap li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+    .pt-snap b{font-weight:600}
+
+    .pt-flag{display:flex;align-items:flex-start;gap:11px;margin:16px 0 0;padding:14px 16px;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:12px;background:var(--amber-bg)}
+    .pt-flag svg{flex:none;margin-top:2px;color:var(--amber)}
+    .pt-flag-p{margin:0;font-size:14px;line-height:1.6;color:#5C3A0A}
+
+    .src-line{font-family:var(--font);font-size:13px;color:var(--muted);margin:16px 0 0}
+    .src-line a{color:var(--teal-deep);font-weight:600;text-decoration:none}
+    .src-line a:hover{text-decoration:underline}
+
+    .ap-panel{border:1px solid var(--line);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);overflow:hidden;margin-top:16px;max-width:680px}
+    .ap-row{display:flex;gap:14px;padding:16px 18px;border-bottom:1px solid var(--line)}
+    .ap-row:last-child{border-bottom:0}
+    .ap-num{flex:none;width:26px;height:26px;border-radius:50%;background:var(--green-bg);color:var(--teal-deep);font-family:var(--mono);font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;margin-top:2px}
+    .ap-q{font-weight:600;font-size:15px;color:var(--ink);margin:0 0 4px}
+    .ap-a{font-size:14.5px;color:#3B4A46;line-height:1.6;margin:0}
+
+    .pt-close{padding:38px 0 60px;max-width:680px}
+    .pt-close h2{margin:0 0 8px}
+    .pt-close p{font-size:16px;line-height:1.6;color:var(--muted);margin:0}
+
+    @media (max-width:560px){
+      .ap-row{padding:14px 15px}
+    }
+  </style>
+</Base>

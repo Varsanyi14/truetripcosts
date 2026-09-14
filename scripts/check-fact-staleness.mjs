@@ -126,6 +126,7 @@ const ARRIVAL_FORMS = 'src/data/arrival-forms.js';
 const HOTEL_TAX_MAP = 'src/data/hotel-tax-map.js';
 const CARRIER_ROAMING = 'src/data/carrier-roaming.js';
 const BOOKING_TACTICS = 'src/data/booking-tactics.js';
+const FLIGHT_REFUND_RIGHTS = 'src/data/flight-refund-rights.js';
 const STRICT = String(process.env.FACT_STALENESS_STRICT || '').toLowerCase() === 'true';
 
 // Carrier plans drift a few times a year, faster than the 180-day general mark, so this
@@ -629,6 +630,52 @@ async function main() {
     }
   }
 
+  // --- tenth pass: flight-refund-rights.js, the legal facts behind
+  // /money-your-airline-owes-you (BRIEF-bite1-money-owed-rights-page) ---
+  // A different SPECIES of fact from every pass above: those are all PRICED data (a tax
+  // rate, a day-rate, a parking figure), which drifts because the world's numbers move.
+  // This is LEGAL data: the numbers here (3 hours, 7 business days, 12 hours) are exactly
+  // as likely to be right in a year as today, right up until DOT amends the regulation or
+  // a court changes it. What ages is not the number but the confidence that the rule
+  // still reads the way it did when checked, which is why Gary's brief calls for a
+  // tighter, quarterly cadence rather than the 180-day general mark: enforcement posture
+  // can shift inside a quarter even when the text of Part 260 has not moved at all (see
+  // flightRenumberingEnforcementDiscretion in the data file for exactly that kind of
+  // shift). The cadence itself is exported from the data file rather than set here as a
+  // local const the way CARRIER_PROFILE_DAYS and HOTEL_EXTRAS_DAYS are, because this
+  // brief explicitly calls the cadence a legal-review decision that belongs with the
+  // facts it governs, not with the scanner's own bookkeeping; see that file's header.
+  // Every entry carries a checkedISO by design, so, like the passes above, every one is
+  // judged and none is skipped.
+  const flightRightsFindings = [];
+  let flightRightsCount = 0;
+  const flightRightsMod = await loadModule('.', FLIGHT_REFUND_RIGHTS);
+  const flightRights = (flightRightsMod && flightRightsMod.flightRefundRights) || null;
+  const flightRightsDays = (flightRightsMod && flightRightsMod.FLIGHT_LEGAL_CADENCE_DAYS) || THRESHOLDS.general;
+  if (flightRights) {
+    for (const [key, entry] of Object.entries(flightRights)) {
+      if (!entry) continue;
+      flightRightsCount++;
+      const label = entry.label || key;
+      let host = entry.sourceUrl || 'its own source';
+      if (entry.sourceUrl) {
+        try { host = new URL(entry.sourceUrl).hostname.replace(/^www\./, ''); } catch (e) { /* keep the raw source string */ }
+      }
+      const checked = parseISO(entry.checkedISO);
+      if (!checked) {
+        flightRightsFindings.push({ id: label, standing: false, msg: 'no usable checkedISO on this flight-refund-rights entry, so its age cannot be judged' });
+        continue;
+      }
+      const age = daysBetween(today, checked);
+      if (age <= flightRightsDays) continue;
+      flightRightsFindings.push({
+        id: label,
+        standing: false,
+        msg: 'checked ' + age + ' days ago, over the ' + flightRightsDays + '-day quarterly mark for a legal fact. Re-verify against ' + host + ' before trusting it on /money-your-airline-owes-you.',
+      });
+    }
+  }
+
   // --- report ---
   log('Guides carrying a keyFacts block: ' + withKeyFacts + ' of ' + live.length + '.');
   log('Scanned ' + liveSpokes + ' live spokes across the catalogue.');
@@ -638,6 +685,7 @@ async function main() {
   if (carrierMod) log('Scanned ' + carrierCells + ' carrier-roaming cells (' + carrierSourced + ' sourced, ' + (carrierCells - carrierSourced) + ' unchecked).');
   if (carrierProfiles) log('Scanned ' + carrierProfileCount + ' carrier profiles.');
   if (hotelExtras) log('Scanned ' + hotelExtrasCount + ' hotel-extras figures (parking/wifi/breakfast).');
+  if (flightRights) log('Scanned ' + flightRightsCount + ' flight-refund-rights legal facts (quarterly cadence).');
   if (findings.length === 0) {
     log('keyFacts: nothing due for a look right now.\n');
   } else {
@@ -704,16 +752,22 @@ async function main() {
     log('');
   }
 
+  if (flightRightsFindings.length > 0) {
+    log('Flight-refund-rights legal facts worth a re-check (' + flightRightsFindings.length + '):');
+    for (const f of flightRightsFindings.sort((a, b) => a.id.localeCompare(b.id))) log('    - ' + f.id + ': ' + f.msg);
+    log('');
+  }
+
   // Two counts, because they answer different questions. `aged` is the trigger: items
   // that genuinely passed a date threshold, which is a new event worth an email.
   // `total` also includes standing items, the hero flags and pending forms, which
   // report on every run by design and never age out. Delivering off the total would
   // mean an issue every single Monday forever, which trains everyone to ignore it.
   // The standing rows still print above, so nothing is hidden from the run log.
-  // carrierFindings, carrierProfileFindings and hotelExtrasFindings carry no standing rows:
-  // an unchecked cell, or a profile/entry with no usable checkedISO, is either skipped or
-  // reported once as a finding, never repeated as a standing to-do, so every entry in all
-  // three is an aged one.
+  // carrierFindings, carrierProfileFindings, hotelExtrasFindings and flightRightsFindings
+  // carry no standing rows: an unchecked cell, or an entry with no usable checkedISO, is
+  // either skipped or reported once as a finding, never repeated as a standing to-do, so
+  // every entry in all four is an aged one.
   const standing = heroFindings.filter(f => f.standing).length
     + formFindings.filter(f => f.standing).length
     + mapFindings.filter(f => f.standing).length;
@@ -723,10 +777,11 @@ async function main() {
     + mapFindings.filter(f => !f.standing).length
     + carrierFindings.length
     + carrierProfileFindings.length
-    + hotelExtrasFindings.length;
+    + hotelExtrasFindings.length
+    + flightRightsFindings.length;
   const total = findings.length + noKf.length + spokeFindings.length + heroFindings.length
     + formFindings.length + mapFindings.length + carrierFindings.length + carrierProfileFindings.length
-    + hotelExtrasFindings.length;
+    + hotelExtrasFindings.length + flightRightsFindings.length;
 
   log('Past a threshold: ' + aged + ' item(s) that aged out.'
     + (standing > 0 ? ' Plus ' + standing + ' standing item(s), the hero flags and pending forms listed above, which report every run and never age out.' : ''));
