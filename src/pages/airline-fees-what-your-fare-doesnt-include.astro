@@ -1,0 +1,238 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import USBadge from '../components/USBadge.astro';
+import { flightFeeMechanics } from '../data/flight-fee-mechanics.js';
+
+// BRIEF-bite2-flight-mechanics-page. Bite 2 of the flights domain, sibling of Bite 1
+// (/money-your-airline-owes-you). Built from the approved mock
+// (airline-fees-what-your-fare-doesnt-include-MOCK.html), reusing Bite 1's visual system
+// exactly (pt-prose, recentchange, pt-flag, gbyline, gsources, pt-close) so the two flight
+// pages read as a set.
+//
+// THE CORE CORRECTION (do not get this wrong): the US already requires the advertised fare
+// to include mandatory taxes and carrier charges. This page is not "airlines hide fees in
+// checkout." It is "the fare is a real all-in price for a deliberately stripped product,"
+// and its job is to show what is optional, how it varies, and what a restricted fare removed
+// before the reader buys it.
+//
+// Mechanics first: the sharp trap-facts are callouts woven into the mechanic each belongs
+// to (recentchange = verified-fact callout, teal), not a separate traps section. The two
+// structural risks close the page as warning-shaped callouts (pt-flag, amber).
+//
+// No stored dollar figures for bag/seat/change fees anywhere on this page; those rot within
+// a season and are linked to the carrier instead. The three facts that ARE stored (the PSI
+// bounty finding, the Southwest fare change, the CFPB fee definition) come from
+// flight-fee-mechanics.js, never hardcoded here, so the page and the staleness scanner read
+// the same numbers from the same home.
+//
+// ONE STYLING FIX from the approved-mock review: callout src-line links drop their resting
+// underline (kept teal so they still read as clickable), and show it back on hover AND
+// keyboard focus (an accessibility requirement, not polish, since color alone cannot be the
+// only signal a link is a link). The Skiplagged callout's two source links are also
+// shortened to tight link text, since the fuller descriptions already live in the sources
+// drawer below.
+
+const bag = flightFeeMechanics.bagBounty;
+const sw = flightFeeMechanics.southwestBasicFareChange;
+const fx = flightFeeMechanics.cfpbForeignTransactionFee;
+
+const govIcon = '<path d="M6 3v18"></path><path d="M6 4h12l-2 3.5L18 11H6"></path>';
+
+const sources = [
+  { name: "Senate Permanent Subcommittee on Investigations, \"The Sky's the Limit\" report, and Sen. Blumenthal's letter to DOT", note: 'the $26 million combined incentive-payment finding and the Frontier $10-per-bag figure, 2022 to 2023', url: bag.sourceUrl },
+  { name: "Southwest Airlines, assigned-seating page", note: "the January 27, 2026 move to assigned seating and the Basic fare's nonrefundable, non-changeable terms", url: sw.sourceUrl },
+  { name: 'CFPB, Regulation Z (12 CFR 1026.4)', note: 'the definition of a foreign transaction fee, and why paying in USD does not exempt a purchase from it', url: fx.sourceUrl },
+  { name: 'Courthouse News Service, American Airlines v. Skiplagged', note: 'the $9.4 million copyright verdict, the fair-use finding on the trademark claim, and the ongoing appeal', url: 'https://courthousenews.com/skiplagged-owes-american-airlines-9-4m/' },
+  { name: 'Fox Business, on the banned teenager', note: "American Airlines' three-year ban after a suspected hidden-city itinerary, 2023", url: 'https://www.foxbusiness.com/lifestyle/american-airlines-bans-north-carolina-teen-popular-travel-hack' },
+];
+---
+<Base
+  title="Airline fees explained: bags, seats, basic economy, and what your fare doesn't include | True Trip Costs"
+  description="The advertised US airline fare already has to include mandatory taxes and carrier charges. What comes after is optional, and every carrier strips a different amount out of its cheapest fare. Bags, seats, basic economy, changes, currency, and two structural risks worth knowing, mechanics first, no stored fee tables. Checked September 2026.">
+  <Nav />
+  <main class="wrap">
+
+    <section class="pt-prose">
+      <p class="lab">Airline fees</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
+      <h1>The fare is not hiding a fee. It's a stripped-down price.</h1>
+      <p class="pt-lede">In the US, the fare you're quoted already has to include every mandatory tax and carrier charge. Nothing after that is hidden. It's optional, and every airline strips a different amount out of its cheapest fare to get the number that low.</p>
+      <p>Bags, seats, and the right to change your mind cost extra because they were deliberately removed from the base price, not snuck in at checkout. The skill here isn't beating the system. It's knowing exactly what your fare bought, and what a restricted fare took out before you paid for it.</p>
+
+      <div class="recentchange">
+        <span class="rcpill">The correction this page makes</span>
+        <p>This is not a story about airlines hiding fees at checkout. US rules already require the advertised fare to include the mandatory taxes and carrier charges. Everything below is optional, priced separately, and cut differently by every carrier on purpose. The honest move: budget the fare, since it cannot be tricked lower; decline the extras you do not need; and know exactly what a restricted fare removed before you buy it.</p>
+      </div>
+
+      <a class="xlink" href="/money-your-airline-owes-you">
+        <span class="xlink-h">The sibling page: what your airline owes you back</span>
+        <span class="xlink-d">This page is what you're choosing to pay for. For the money you're owed when the airline is the one that cancels or changes your flight, see the rights page.</span>
+      </a>
+    </section>
+
+    <section class="pt-prose">
+      <h2>1. Bags: what varies, and the gate-check trap</h2>
+      <p>How much a bag costs, or whether it costs anything, comes down to four things: the fare you bought, the route, the bag's own size and weight, and when you pay for it. A personal item is not a carry-on. Airlines size the two differently, and treating them as the same thing is the single most common way people get caught out at the gate. Paying for a bag online, before you fly, is almost always cheaper than paying at the counter or the gate itself.</p>
+      <p>None of the actual dollar figures belong on this page. They change by carrier, by route, and by season, so check your airline's own fee page before you fly rather than trusting a number written down anywhere else, including here.</p>
+
+      <div class="recentchange callout">
+        <span class="rcpill">A verified trap, not a rumor</span>
+        <p>In a 2024 report, the Senate Permanent Subcommittee on Investigations found that Frontier and Spirit, two named ultra-low-cost carriers, paid gate agents and other personnel about $26 million combined in 2022 and 2023 to enforce carry-on bag policies, with Frontier personnel able to earn $10 for every bag a passenger was forced to check at the gate. The subcommittee's own conclusion was that the incentive could encourage agents to misuse their judgment, leaving some passengers to choose between an unfair bag fee and missing their flight. Both carriers denied the programs led to abuse. This is two specific airlines, not "airlines" as a rule, and it's exactly why checking your bag against the sizer before the gate is worth the two minutes.</p>
+      </div>
+      <p class="src-line">Source: <a href={bag.sourceUrl} target="_blank" rel="noopener">the Senate report</a> and <a href={bag.secondarySourceUrl} target="_blank" rel="noopener">Sen. Blumenthal's letter</a>.</p>
+    </section>
+
+    <hr class="sit-sep" />
+
+    <section class="pt-prose">
+      <h2>2. Seats: choosing one is not the same as being assigned one</h2>
+      <p>A seat fee buys you the choice of where you sit. It doesn't buy the seat itself. Skip the fee and you're still assigned a seat, free, at check-in; it's just as likely to be a middle seat, and it isn't guaranteed to be next to anyone you're traveling with.</p>
+      <p>Airlines generally try to seat a young child next to an accompanying adult, but that's a practice, not a guaranteed right, and it isn't universal. If keeping your group together matters more than the seat itself, buying no seat selection at all and calling the airline directly is often more reliable than gambling on the assignment algorithm.</p>
+      <p>Seat fees, upgrade tiers, and family-seating specifics are all carrier-specific and change often. Check your airline's current seat map and policy before you decide.</p>
+    </section>
+
+    <hr class="sit-sep" />
+
+    <section class="pt-prose">
+      <h2>3. Basic economy: know what got removed</h2>
+      <p>Basic economy is not one product. Every carrier strips a different set of things out of it, so basic economy on one airline can be close to a normal fare with just no seat choice, while on another it means no overhead bin space, no changes, and last boarding. The question is never whether basic economy is worth it in general. It's what THIS airline's basic fare removed, and whether you needed any of it.</p>
+
+      <div class="recentchange callout">
+        <span class="rcpill">Even the holdout fell in line</span>
+        <p>Southwest ran open seating and free checked bags for over fifty years, longer than any other major US carrier. As of {new Date(sw.effectiveISO + 'T00:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' })}, it moved to assigned seating, and its new Basic fare is nonrefundable and generally non-changeable, with one exception: you can still cancel free within {sw.changeableExceptionHours} hours of booking. The lesson isn't about Southwest specifically. It's that a fully restricted cheapest fare is close to universal now, so reading what got stripped out is worth doing every time, on every airline.</p>
+      </div>
+      <p class="src-line">Source: <a href={sw.sourceUrl} target="_blank" rel="noopener">Southwest's own page</a>.</p>
+    </section>
+
+    <hr class="sit-sep" />
+
+    <section class="pt-prose">
+      <h2>4. Change and cancel: four separate things, not one</h2>
+      <p>"No change fee" gets read as "free to change your mind," and that's where people lose money. There are four separate things bundled into any change, and knowing which ones your fare actually waives is the whole skill:</p>
+      <ul class="pt-snap">
+        <li><b>Permission to change at all.</b> Basic and other restricted fares often don't allow it, no matter what you're willing to pay.</li>
+        <li><b>The change penalty.</b> Most airlines dropped this on their main economy fares; it's usually still charged on basic and other restricted tiers.</li>
+        <li><b>The fare difference.</b> Waived change fee or not, if the new flight costs more, you pay that difference. Every time.</li>
+        <li><b>What happens to the rest of the money.</b> Often a credit for future travel, not cash back, and that credit can carry its own expiry and its own restrictions.</li>
+      </ul>
+      <p>A fare with "no change fee" can still cost you the entire ticket price in fare difference, and hand back a credit instead of cash for whatever's left. That's not a trick. It's four separate policies that only feel like one because an airline's marketing says so.</p>
+
+      <a class="xlink" href="/money-your-airline-owes-you">
+        <span class="xlink-h">A change you choose is not a change the airline makes</span>
+        <span class="xlink-d">Everything above is about changing your own mind. If the airline cancels your flight or changes it enough to matter, a stronger, different set of rules applies, including an automatic cash refund. See what your airline owes you.</span>
+      </a>
+    </section>
+
+    <hr class="sit-sep" />
+
+    <section class="pt-prose">
+      <h2>5. What currency you pay in doesn't dodge the fee</h2>
+      <p>"Always pay in the airline's home currency" gets repeated as a savings trick. It isn't one. Being charged in US dollars instead of local currency does not exempt a purchase from your card's foreign transaction fee: the fee attaches to a transaction with a foreign merchant, not to whatever currency is printed on the receipt, and the Consumer Financial Protection Bureau's own rule defines it exactly that way.</p>
+      <p>This is a correction, not a hack, and there's no clean percentage to publish here: the actual cost depends entirely on your own card's terms. What does help, at a card terminal that offers a choice in the moment: decline the machine's offer to bill you in dollars and pick the local currency instead, which avoids a separate markup the terminal itself adds. That's a different fee than the one this section corrects, and it's covered in full on <a href="/cash-or-card">cash or card, country by country</a>.</p>
+      <p class="src-line">Source: <a href={fx.sourceUrl} target="_blank" rel="noopener">CFPB, Regulation Z</a>.</p>
+    </section>
+
+    <hr class="sit-sep" />
+
+    <section class="pt-prose">
+      <h2>6. Two risks that aren't about the price</h2>
+
+      <h3>Self-transfer: one search result, maybe two tickets</h3>
+      <p>A single search result showing one connection doesn't always mean one ticket. Some of the cheapest itineraries you'll find are actually two separate tickets stitched together by the search site, on two airlines with no agreement between them.</p>
+      <div class="pt-flag">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>
+        <p class="pt-flag-p"><b>No through-ticket protection.</b> If your first flight runs late, the second airline owes you nothing: as far as it knows, you simply didn't show up. Before you treat a connection as one trip, check whether it's booked as one ticket or two.</p>
+      </div>
+
+      <h3>Hidden-city ticketing: why it looks cheaper, and what actually happens</h3>
+      <p>Skipping the last leg of a connecting itinerary because the through-fare undercuts a direct one looks like a pricing bug. It isn't one. Airlines price a route by the competition on that specific origin-destination market, not by distance, which is exactly why a longer itinerary that lays over in your actual destination can come in cheaper than a ticket straight there.</p>
+      <div class="pt-flag">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>
+        <p class="pt-flag-p"><b>It is not illegal, and no court has ruled that it is.</b> What airlines can and do enforce is their own contract of carriage, which nearly every major US carrier prohibits it under. In 2023, American Airlines stopped a 17-year-old before he boarded over a suspected hidden-city itinerary, cancelled his ticket, and banned him from the airline for three years. He never flew.</p>
+      </div>
+      <p>The corporate side of this made headlines too, but it isn't the traveler's risk. American won a $9.4 million copyright verdict against the search site Skiplagged in 2024 over its use of American's logo, affirmed in 2025. The jury separately found Skiplagged's use of American's trademark was fair use and awarded no damages on that claim, and both sides are appealing (Skiplagged the copyright award, American the trademark loss), with the case still active in early 2026. None of that turns on whether skiplagging itself is legal for a traveler; it doesn't rule on that question at all. What actually reaches a traveler is the contract enforcement: a cancelled ticket, a lost fare, and, in American's case, a multi-year ban, for a practice most airlines' own rules already forbid. Never a how-to: if you're weighing it, weigh the ban, not the fare gap.</p>
+      <p class="src-line">Source: <a href={sources[3].url} target="_blank" rel="noopener">the verdict</a> and <a href={sources[4].url} target="_blank" rel="noopener">the ban</a>.</p>
+    </section>
+
+    <div class="gbyline" style="display:flex;align-items:flex-start;gap:9px;margin:34px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card)">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. The three durable facts on this page are each reviewed on their own schedule (the bag-bounty finding yearly, the Southwest fare fact quarterly, the CFPB citation on the site's general mark); see the sources drawer. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
+    </div>
+
+    <details class="gsources">
+      <summary class="gsources-sum">
+        <span class="gsources-txt">Sources, and how this page was checked</span>
+        <svg class="gsources-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="gsources-body">
+        <p class="gs-row"><span class="gs-k">Last checked</span><span>Sep 2026</span></p>
+        <div class="gs-row"><span class="gs-k">Primary sources</span>
+          <ul class="gs-links">
+            {sources.map(s => (
+              <li class="gs-src">
+                <span class="gs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={govIcon}></svg></span>
+                <span class="gs-src-tx">
+                  <a href={s.url} target="_blank" rel="noopener" class="gs-src-name">{s.name}</a>
+                  <span class="gs-src-note">{s.note}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p class="gs-row"><span class="gs-k">Our own read</span><span>The bag-bounty programs are documented for Frontier and Spirit specifically, not airlines generally, and both carriers deny the incentive led to abuse; we report the finding, not a verdict on intent. The Skiplagged case is under appeal on both sides as of early 2026 and could still change; nothing about it establishes that hidden-city ticketing is illegal, only that contract enforcement against it is real. No dollar figures for bag, seat, or change fees are stored on this page, since they vary by carrier, route, and season and rot within a season; check your airline's own current fee page before you fly.</span></p>
+      </div>
+    </details>
+
+    <section class="pt-close">
+      <h2>Budget the fare. Skip the skim.</h2>
+      <p>The advertised fare is real, and it's already all-in on what's mandatory. Everything after it is a deliberate menu of extras, priced separately so a thinner fare can look smaller on a search page. Budget the fare, because it can't be tricked lower. Skip whatever extra you genuinely don't need. Read what a restricted fare took out before you hand over your card. And if the airline is the one that changes your plans instead of you, that's a different page: <a href="/money-your-airline-owes-you">what your airline owes you</a>.</p>
+    </section>
+
+  </main>
+  <Footer />
+
+  <style>
+    .pt-prose{padding:34px 0 0;max-width:680px}
+    .pt-prose h1{margin:6px 0 14px}
+    .pt-prose h2{margin:0 0 8px}
+    .pt-prose h3{margin:20px 0 6px;font-family:var(--serif);font-weight:500;font-size:17.5px;color:var(--ink)}
+    .pt-lede{font-size:17px;line-height:1.55;color:var(--ink);margin:0}
+    .pt-prose p:not(.lab):not(.pt-lede):not(.src-line){font-size:16px;line-height:1.65;color:var(--ink);margin:14px 0 0}
+    .pt-prose a{color:var(--teal-deep);font-weight:500;text-decoration:underline;text-underline-offset:2px}
+
+    .callout{margin:18px 0 0}
+
+    .pt-snap{list-style:none;margin:14px 0 0;padding:0;max-width:680px}
+    .pt-snap li{position:relative;font-size:15.5px;line-height:1.6;color:var(--ink);padding:0 0 0 18px;margin:0 0 10px}
+    .pt-snap li:last-child{margin-bottom:0}
+    .pt-snap li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+    .pt-snap b{font-weight:600}
+
+    .pt-flag{display:flex;align-items:flex-start;gap:11px;margin:14px 0 0;padding:14px 16px;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:12px;background:var(--amber-bg)}
+    .pt-flag svg{flex:none;margin-top:2px;color:var(--amber)}
+    .pt-flag-p{margin:0;font-size:14px;line-height:1.6;color:#5C3A0A}
+
+    /* Approved-mock fix: no resting underline on a callout source link (a long run of
+       underlined text read as noise against the page's calm), teal color kept so it still
+       plainly reads as clickable, underline restored on hover AND keyboard focus so color
+       is never the only signal this is a link. Applies to every callout src-line on this
+       page, not just one. */
+    .src-line{font-family:var(--font);font-size:13px;color:var(--muted);margin:14px 0 0}
+    .src-line a{color:var(--teal-deep);font-weight:600;text-decoration:none}
+    .src-line a:hover,.src-line a:focus{text-decoration:underline}
+
+    .xlink{display:block;border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:15px 18px;text-decoration:none;margin:16px 0 0;transition:background-color .15s ease}
+    .xlink:hover{background:var(--paper)}
+    .xlink-h{display:block;font-family:var(--serif);font-weight:500;font-size:16.5px;color:var(--teal-deep);line-height:1.3;margin:0 0 4px}
+    .xlink:hover .xlink-h{text-decoration:underline}
+    .xlink-d{display:block;font-size:14px;color:var(--muted);line-height:1.5}
+
+    .sit-sep{border:0;border-top:1px solid var(--line);margin:30px 0 0;max-width:680px}
+
+    .pt-close{padding:38px 0 60px;max-width:680px}
+    .pt-close h2{margin:0 0 8px}
+    .pt-close p{font-size:16px;line-height:1.6;color:var(--muted);margin:0}
+  </style>
+</Base>

@@ -88,6 +88,7 @@ export const INDEXED_PAGES = [
   { file: 'eu-pet-health-certificate.astro', label: 'The EU pet health certificate', kind: 'guide' },
   { file: 'bringing-a-dog-into-the-us.astro', label: 'Bringing a dog into the US', kind: 'guide' },
   { file: 'money-your-airline-owes-you.astro', label: 'Airline refunds and your rights', kind: 'guide' },
+  { file: 'airline-fees-what-your-fare-doesnt-include.astro', label: "Airline fees, what your fare doesn't include", kind: 'guide' },
 
   // Reference and about.
   { file: 'countries.astro', label: 'All country guides', kind: 'about' },

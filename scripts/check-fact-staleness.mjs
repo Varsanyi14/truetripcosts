@@ -127,6 +127,7 @@ const HOTEL_TAX_MAP = 'src/data/hotel-tax-map.js';
 const CARRIER_ROAMING = 'src/data/carrier-roaming.js';
 const BOOKING_TACTICS = 'src/data/booking-tactics.js';
 const FLIGHT_REFUND_RIGHTS = 'src/data/flight-refund-rights.js';
+const FLIGHT_FEE_MECHANICS = 'src/data/flight-fee-mechanics.js';
 const STRICT = String(process.env.FACT_STALENESS_STRICT || '').toLowerCase() === 'true';
 
 // Carrier plans drift a few times a year, faster than the 180-day general mark, so this
@@ -676,6 +677,46 @@ async function main() {
     }
   }
 
+  // --- eleventh pass: flight-fee-mechanics.js, the durable facts behind
+  // /airline-fees-what-your-fare-doesnt-include (BRIEF-bite2-flight-mechanics-page) ---
+  // Only three facts live in this file, all different species from each other and from the
+  // tenth pass above: not a live DOT regulation each time, but a historical Senate finding,
+  // one airline's own announced policy, and a standing regulatory definition. The brief asks
+  // for a MIXED, per-fact cadence rather than one shared number, since the three age at
+  // different rates (see flight-fee-mechanics.js's own header). So this pass reads a
+  // reviewDays field OFF EACH ENTRY, unlike the tenth pass's one shared
+  // FLIGHT_LEGAL_CADENCE_DAYS constant, and falls back to THRESHOLDS.general only if an
+  // entry is somehow missing its own reviewDays. Every entry carries one by design, so, like
+  // the passes above, every fact is judged and none is skipped.
+  const feeMechanicsFindings = [];
+  let feeMechanicsCount = 0;
+  const feeMechanicsMod = await loadModule('.', FLIGHT_FEE_MECHANICS);
+  const feeMechanics = (feeMechanicsMod && feeMechanicsMod.flightFeeMechanics) || null;
+  if (feeMechanics) {
+    for (const [key, entry] of Object.entries(feeMechanics)) {
+      if (!entry) continue;
+      feeMechanicsCount++;
+      const label = entry.label || key;
+      const days = entry.reviewDays || THRESHOLDS.general;
+      let host = entry.sourceUrl || 'its own source';
+      if (entry.sourceUrl) {
+        try { host = new URL(entry.sourceUrl).hostname.replace(/^www\./, ''); } catch (e) { /* keep the raw source string */ }
+      }
+      const checked = parseISO(entry.checkedISO);
+      if (!checked) {
+        feeMechanicsFindings.push({ id: label, standing: false, msg: 'no usable checkedISO on this flight-fee-mechanics entry, so its age cannot be judged' });
+        continue;
+      }
+      const age = daysBetween(today, checked);
+      if (age <= days) continue;
+      feeMechanicsFindings.push({
+        id: label,
+        standing: false,
+        msg: 'checked ' + age + ' days ago, over its own ' + days + '-day mark. Re-verify against ' + host + ' before trusting it on /airline-fees-what-your-fare-doesnt-include.',
+      });
+    }
+  }
+
   // --- report ---
   log('Guides carrying a keyFacts block: ' + withKeyFacts + ' of ' + live.length + '.');
   log('Scanned ' + liveSpokes + ' live spokes across the catalogue.');
@@ -686,6 +727,7 @@ async function main() {
   if (carrierProfiles) log('Scanned ' + carrierProfileCount + ' carrier profiles.');
   if (hotelExtras) log('Scanned ' + hotelExtrasCount + ' hotel-extras figures (parking/wifi/breakfast).');
   if (flightRights) log('Scanned ' + flightRightsCount + ' flight-refund-rights legal facts (quarterly cadence).');
+  if (feeMechanics) log('Scanned ' + feeMechanicsCount + ' flight-fee-mechanics facts (per-fact cadence).');
   if (findings.length === 0) {
     log('keyFacts: nothing due for a look right now.\n');
   } else {
@@ -758,16 +800,22 @@ async function main() {
     log('');
   }
 
+  if (feeMechanicsFindings.length > 0) {
+    log('Flight-fee-mechanics facts worth a re-check (' + feeMechanicsFindings.length + '):');
+    for (const f of feeMechanicsFindings.sort((a, b) => a.id.localeCompare(b.id))) log('    - ' + f.id + ': ' + f.msg);
+    log('');
+  }
+
   // Two counts, because they answer different questions. `aged` is the trigger: items
   // that genuinely passed a date threshold, which is a new event worth an email.
   // `total` also includes standing items, the hero flags and pending forms, which
   // report on every run by design and never age out. Delivering off the total would
   // mean an issue every single Monday forever, which trains everyone to ignore it.
   // The standing rows still print above, so nothing is hidden from the run log.
-  // carrierFindings, carrierProfileFindings, hotelExtrasFindings and flightRightsFindings
-  // carry no standing rows: an unchecked cell, or an entry with no usable checkedISO, is
-  // either skipped or reported once as a finding, never repeated as a standing to-do, so
-  // every entry in all four is an aged one.
+  // carrierFindings, carrierProfileFindings, hotelExtrasFindings, flightRightsFindings and
+  // feeMechanicsFindings carry no standing rows: an unchecked cell, or an entry with no
+  // usable checkedISO, is either skipped or reported once as a finding, never repeated as a
+  // standing to-do, so every entry in all five is an aged one.
   const standing = heroFindings.filter(f => f.standing).length
     + formFindings.filter(f => f.standing).length
     + mapFindings.filter(f => f.standing).length;
@@ -778,10 +826,11 @@ async function main() {
     + carrierFindings.length
     + carrierProfileFindings.length
     + hotelExtrasFindings.length
-    + flightRightsFindings.length;
+    + flightRightsFindings.length
+    + feeMechanicsFindings.length;
   const total = findings.length + noKf.length + spokeFindings.length + heroFindings.length
     + formFindings.length + mapFindings.length + carrierFindings.length + carrierProfileFindings.length
-    + hotelExtrasFindings.length + flightRightsFindings.length;
+    + hotelExtrasFindings.length + flightRightsFindings.length + feeMechanicsFindings.length;
 
   log('Past a threshold: ' + aged + ' item(s) that aged out.'
     + (standing > 0 ? ' Plus ' + standing + ' standing item(s), the hero flags and pending forms listed above, which report every run and never age out.' : ''));
