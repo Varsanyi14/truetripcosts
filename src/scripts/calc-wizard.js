@@ -1052,6 +1052,32 @@ export function initCalcWizard() {
       const airbnbWrap = document.querySelector('[data-avoid-extra="airbnb"]');
       if (airbnbWrap) airbnbWrap.hidden = (state.hotelBooking !== 'airbnb');
 
+      // ----- BRIEF-hotel-result-card: the online/direct hotel cards, gated the SAME way
+      // the airbnb wrap just above is gated (exactly one of the three ever visible). -----
+      const hotelOnlineWrap = document.querySelector('[data-avoid-extra="hotel-online"]');
+      if (hotelOnlineWrap) hotelOnlineWrap.hidden = (state.hotelBooking !== 'online');
+      const hotelDirectWrap = document.querySelector('[data-avoid-extra="hotel-direct"]');
+      if (hotelDirectWrap) hotelDirectWrap.hidden = (state.hotelBooking !== 'direct');
+
+      // ----- BRIEF-hotel-result-card: the hotel cards' one dynamic line. Reads the SAME
+      // taxAmt/taxNum this function already computed above for the checkout-uplift line
+      // (never re-sourced, never recomputed here). Absence is not zero: a country with no
+      // tourist tax leaves the element hidden rather than showing a $0 line, the same rule
+      // the checkout-uplift block above already follows. Both cards are updated every
+      // mirror() pass regardless of which one is currently visible; harmless on the hidden
+      // one and keeps this in one place rather than duplicated per wrap. -----
+      ['hotel-online', 'hotel-direct'].forEach(k => {
+        const taxLineEl = document.querySelector('[data-hotel-tax-line="' + k + '"]');
+        if (!taxLineEl) return;
+        if (usdToNumber(taxAmt) > 0) {
+          taxLineEl.textContent = 'Tourist tax: about ' + taxAmt + ' for your stay.';
+          taxLineEl.hidden = false;
+        } else {
+          taxLineEl.textContent = '';
+          taxLineEl.hidden = true;
+        }
+      });
+
       // ----- BRIEF-result-card-step3: goods and date each need real text composed from
       // what the reader typed, so each gets its own small render function, the same
       // engine/surface split renderCarrierItem() above already draws. -----

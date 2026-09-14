@@ -280,6 +280,15 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .ttc-card-row-detail > p + p { margin-top: .625rem; }
 .ttc-card-row-detail .small { margin-top: .625rem; }
 .ttc-card-row-detail .text-link { margin-top: .375rem; }
+/* BRIEF-hotel-result-card: the two-section layout the hotel-online/hotel-direct cards need
+   (the airbnb card above and every other row in this file has a single escape+secondary
+   pair, never two labelled sections, so nothing existing already covered this). The label
+   reuses .ttc-card-group-label's own monospace/uppercase/muted treatment one size down,
+   so it reads as the same typographic family at a nested level rather than a new system;
+   the section itself is nothing more than a spacing wrapper around plain paragraphs, which
+   still inherit every existing .ttc-card-row-detail p rule above unchanged. */
+.ttc-hotel-card-section + .ttc-hotel-card-section { margin-top: .875rem; }
+.ttc-hotel-card-section-label { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; letter-spacing: .01em; font-size: .6875rem; text-transform: uppercase; color: var(--muted); margin: 0 0 .375rem; }
 /* BRIEF-leaving-date-notify-line: the leaving-date row's own one-click watchdog signup.
    A quiet second block under the row's existing text and its "Change" link, set off by a
    thin rule so it reads as a distinct offer rather than a continuation of the same

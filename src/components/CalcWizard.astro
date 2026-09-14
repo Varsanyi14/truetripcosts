@@ -77,6 +77,10 @@ import {
   goodsVatCardFor,
   medicalAvoidableCard,
   airbnbAvoidableCard,
+  // BRIEF-hotel-result-card: the online/direct hotel cards, symmetric with airbnbAvoidableCard
+  // above, gated the same way on the same hotel-booking answer.
+  hotelOnlineAvoidableCard,
+  hotelDirectAvoidableCard,
   leavingDateCardFor,
 } from '../data/avoidable.js';
 import { flightPlaceholderFor } from '../data/flight-defaults.js';
@@ -384,6 +388,9 @@ const ROW_ICON = {
   // reuses 'receipt' (the same itemized-bill shape the reseller markup row already uses,
   // which fits "the nightly rate isn't the bill" well).
   pet: 'paw', goods: 'tag', medical: 'health', airbnb: 'receipt', date: 'calendar',
+  // BRIEF-hotel-result-card: same itemized-bill shape as airbnb's own 'receipt' above, and
+  // for the same reason, both cards are "the rate isn't the bill, here is the map of it."
+  'hotel-online': 'receipt', 'hotel-direct': 'receipt',
 };
 // The fallback matters in practice: avoidable.js also carries dozens of uniquely-keyed
 // named scam/tactic items (e.g. "gem-tour-scam", "closed-hotel-detour"), one set per
@@ -440,6 +447,10 @@ const petCard = petAvoidableCard(c);
 const goodsVatCard = goodsVatCardFor(c);
 const medicalCard = medicalAvoidableCard(c);
 const airbnbCard = airbnbAvoidableCard();
+// BRIEF-hotel-result-card: unlike airbnbCard above, these two DO take c, since both the
+// VAT-inclusive line and the closing prose need this specific country's name.
+const hotelOnlineCard = hotelOnlineAvoidableCard(c);
+const hotelDirectCard = hotelDirectAvoidableCard(c);
 const dateCard = leavingDateCardFor(c, L.season ? L.season.cheapest : null);
 
 // BRIEF-leaving-date-notify-line: the leaving-date row's own one-click watchdog signup,
@@ -463,7 +474,7 @@ const notifyAction = `https://buttondown.com/api/emails/embed-subscribe/${BUTTON
 // always has at least carrier and rental (both unconditional, per this file's own note
 // above: "Carrier and rental are unconditional"); softItems (the generic per-country
 // tactic pool) and rail are the only genuinely variable parts.
-const prepareGroupHasItems = [petCard, goodsVatCard, medicalCard, airbnbCard, dateCard].length > 0;
+const prepareGroupHasItems = [petCard, goodsVatCard, medicalCard, hotelOnlineCard, hotelDirectCard, airbnbCard, dateCard].length > 0;
 const refuseGroupHasItems = (softItems.length + 1 + wizardGatedExtras.length) > 0;
 
 // BRIEF-result-card-step1, the card's "checked {Month Year}" stamp. A later step wires
@@ -864,6 +875,79 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
                   {medicalCard.secondary && <p>{medicalCard.secondary}</p>}
                   <p class="small muted"><a href={medicalCard.href} target="_blank" rel="noopener">{medicalCard.hrefLabel}</a></p>
                   <button class="text-link" type="button" data-edit="medical">{medicalEntry.question.editTitle}</button>
+                </div>
+              </details>
+
+              <!-- ===== BRIEF-hotel-result-card: the online/direct hotel cards, mirroring
+                   the airbnb row below byte-for-byte in structure (summary + icon + shield
+                   mark + chevron; detail with the two honesty sections, the closing line,
+                   the link, and the same "Change how you booked" edit button airbnb uses).
+                   Exactly one of hotel-online/hotel-direct/airbnb is ever visible at a
+                   time, gated in calc-wizard.js the same way the airbnb wrap already is.
+                   The tourist-tax line is the one truly dynamic piece (depends on the room
+                   rate/nights/travelers the reader typed), so it renders as an empty,
+                   hidden placeholder here and is filled in by calc-wizard.js's mirror(),
+                   reading the SAME already-computed figure the checkout-uplift line above
+                   already reads (never re-sourced or recomputed). Section 1 ("Already
+                   inside the rate you paid") is wrapped in its own conditional and
+                   disappears entirely, header included, when a card has neither a
+                   commission line nor a VAT line to show (the direct card in a
+                   non-inclusive-VAT country genuinely has nothing for that section), the
+                   same "empty group renders no header" rule this file's own prepare/refuse
+                   groups already follow above. ===== -->
+              <details class="ttc-card-row" data-avoid-extra="hotel-online" data-avoid-mark="shield" hidden>
+                <summary>
+                  <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor('hotel-online')} /></span>
+                  <span class="ttc-card-row-name" id="item-hotel-online">{hotelOnlineCard.title}</span>
+                  <span class="ttc-card-row-mark ttc-card-row-mark-shield" aria-hidden="true" set:html={MARK_SHIELD} />
+                  <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </summary>
+                <div class="ttc-card-row-detail">
+                  {(hotelOnlineCard.commissionLine || hotelOnlineCard.vatLine) && (
+                    <div class="ttc-hotel-card-section">
+                      <p class="ttc-hotel-card-section-label">Already inside the rate you paid</p>
+                      {hotelOnlineCard.commissionLine && <p>{hotelOnlineCard.commissionLine}</p>}
+                      {hotelOnlineCard.vatLine && <p>{hotelOnlineCard.vatLine}</p>}
+                    </div>
+                  )}
+                  <div class="ttc-hotel-card-section">
+                    <p class="ttc-hotel-card-section-label">Still landing on top</p>
+                    <p data-hotel-tax-line="hotel-online" hidden>&nbsp;</p>
+                    <p>{hotelOnlineCard.resortLine}</p>
+                    <p>{hotelOnlineCard.parkingLine}</p>
+                    <p>{hotelOnlineCard.depositLine}</p>
+                  </div>
+                  <p class="small muted">{hotelOnlineCard.closingLine}</p>
+                  <p class="small muted"><a href={hotelOnlineCard.href} target="_blank" rel="noopener">{hotelOnlineCard.hrefLabel}</a></p>
+                  <button class="text-link" type="button" data-edit="hotel">Change how you booked</button>
+                </div>
+              </details>
+
+              <details class="ttc-card-row" data-avoid-extra="hotel-direct" data-avoid-mark="shield" hidden>
+                <summary>
+                  <span class="ttc-card-row-icon" aria-hidden="true"><Symbol name={iconFor('hotel-direct')} /></span>
+                  <span class="ttc-card-row-name" id="item-hotel-direct">{hotelDirectCard.title}</span>
+                  <span class="ttc-card-row-mark ttc-card-row-mark-shield" aria-hidden="true" set:html={MARK_SHIELD} />
+                  <svg class="ttc-card-row-chevron" viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><path d="M5 7.5 L10 13 L15 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </summary>
+                <div class="ttc-card-row-detail">
+                  {(hotelDirectCard.commissionLine || hotelDirectCard.vatLine) && (
+                    <div class="ttc-hotel-card-section">
+                      <p class="ttc-hotel-card-section-label">Already inside the rate you paid</p>
+                      {hotelDirectCard.commissionLine && <p>{hotelDirectCard.commissionLine}</p>}
+                      {hotelDirectCard.vatLine && <p>{hotelDirectCard.vatLine}</p>}
+                    </div>
+                  )}
+                  <div class="ttc-hotel-card-section">
+                    <p class="ttc-hotel-card-section-label">Still landing on top</p>
+                    <p data-hotel-tax-line="hotel-direct" hidden>&nbsp;</p>
+                    <p>{hotelDirectCard.resortLine}</p>
+                    <p>{hotelDirectCard.parkingLine}</p>
+                    <p>{hotelDirectCard.depositLine}</p>
+                  </div>
+                  <p class="small muted">{hotelDirectCard.closingLine}</p>
+                  <p class="small muted"><a href={hotelDirectCard.href} target="_blank" rel="noopener">{hotelDirectCard.hrefLabel}</a></p>
+                  <button class="text-link" type="button" data-edit="hotel">Change how you booked</button>
                 </div>
               </details>
 

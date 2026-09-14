@@ -57,6 +57,18 @@ import { tipping as tippingRows } from './tipping.js';
 import { VERDICTS, tierOf } from './connectivity-verdicts.js';
 import { spokeUrl } from './site-urls.js';
 import { railPasses } from './rail-passes.js';
+// BRIEF-hotel-result-card: the two sourced datasets the online/direct hotel cards read
+// from, never a typed literal. PROPERTY_FEE_BAND/HOTEL_EXTRAS are booking-tactics.js's own
+// resort-fee and parking ranges (already used to draw /how-to-pay-less-on-hotels's own
+// charts); hotelTaxByIso is hotel-tax-map.js's per-country lookup, read here ONLY for its
+// display flag (whether a country embeds VAT in the quoted rate), a separate question from
+// the tourist-tax figure itself, which stays where it always was: computed by
+// calc-engine.js from each country's own tax{} block and mirrored client-side, never
+// re-sourced here. booking-tactics.js carries no imports of its own (see its own header,
+// "pure literals"), and hotel-tax-map.js imports only fxFallback/usd-bracket, so neither
+// pulls avoidable.js back in; no circular import risk.
+import { PROPERTY_FEE_BAND, HOTEL_EXTRAS } from './booking-tactics.js';
+import { byIso as hotelTaxByIso } from './hotel-tax-map.js';
 // BRIEF-calc-result-registry-rebuild: the registry section at the bottom of this file
 // (avoidableRegistryFor, carrierRegistryEntryFor, railRegistryEntryFor,
 // rentalRegistryEntry) is what CalcWizard.astro now reads instead of hand-assembling
@@ -1436,6 +1448,126 @@ export function airbnbAvoidableCard() {
     href: '/airbnb-real-cost',
     hrefLabel: 'The real cost of an Airbnb',
   };
+}
+
+// 4b. HOTEL ONLINE / HOTEL DIRECT. BRIEF-hotel-result-card: the symmetric partner to the
+// Airbnb card above, for the "online" and "direct" hotel-booking answers that today reveal
+// nothing. Each card is a MAP OF THE TRAVELER'S OWN PRICE, split into two honest halves:
+// what is already baked into the rate they paid (never landing again at checkout) and what
+// still lands on top at the property. Exactly ONE dollar figure ever appears on either card
+// (the tourist tax), and it is filled in client-side by calc-wizard.js's mirror(), because
+// it depends on the room rate/nights/travelers the reader typed, which this file has no
+// access to at build time; this file only supplies the STATIC per-country lines. Every
+// other line is either a range read from a named dataset or a plainly-named item with no
+// figure, per the brief's own hard line: a dollar figure on resort/parking/deposit would be
+// the national typical band wearing a personalized costume, since none of the three scales
+// off the one number we do know (the room rate).
+
+// COMMISSION LINE, ONLINE ONLY. The one clause that differs between the two cards: a
+// reader who booked online has an intermediary's cut buried in their rate, with nothing
+// equivalent to surface for a reader who already booked direct (see
+// hotelDirectAvoidableCard below, which never carries this line). Worded as a two-minute-
+// check nudge, per the brief: never a promise ("direct is always cheaper"), never a
+// savings figure.
+const HOTEL_COMMISSION_LINE = 'You booked through a site, so its cut is buried in the rate, invisible on your bill. '
+  + 'Booking the same room direct can bring that out, worth a two-minute check, not a rule that always wins.';
+
+// VAT-INCLUSIVE LINE, READ FROM hotel-tax-map.js's OWN PER-COUNTRY FLAG, NEVER HARDCODED.
+// display:"inclusive" AND "mixed" both trust this line (see MAIN's ruling in the function
+// below).
+//
+// JUDGMENT CALL FLAGGED FOR MAIN, not decided silently: hotel-tax-map.js's display field
+// carries THREE states (added/inclusive/mixed), not the two the brief names. Three live
+// entries carry "mixed": VAT is genuinely embedded in the quoted rate AND a separate
+// government charge lands on top at checkout (Netherlands: 21% VAT inside the rate, a
+// 10.3% Amsterdam city tax added; also United Arab Emirates and Turkey). This function
+// currently reads "mixed" the same as "added" (line absent), the narrowest reading of the
+// brief's own two named buckets ("inclusive" vs "not inclusive"). The other honest reading
+// is that mixed countries DO embed VAT, so the line could show there too, alongside the
+// tourist-tax figure below, which would already be carrying the separate added charge, so
+// the two lines would not contradict each other. Held to the narrower reading pending
+// MAIN's call; see the handoff doc for the same flag.
+//
+// ALSO FLAGGED: the brief's own worked example ("check an INCLUSIVE country, e.g. Portugal
+// or an EU country") names a country that is not actually inclusive. Portugal's own entry
+// is display:"added" (its municipal tourist tax is "frequently collected in cash at the
+// property," per that entry's own displayNote). The EU alternative the brief also names
+// does hold: Ireland, Denmark and Sweden are all live and all display:"inclusive". Verified
+// against Ireland below rather than Portugal for this reason.
+function hotelVatInclusiveLineFor(c) {
+  const iso = String(c.iso2 || '').toUpperCase();
+  const entry = hotelTaxByIso[iso];
+  // MAIN's ruling on the flagged mixed-state question: the gate is "does the country embed
+  // VAT in the quoted rate", which is true for both 'inclusive' AND 'mixed'. A mixed country
+  // (Netherlands, UAE, Turkey) genuinely bakes VAT into the rate; what makes it mixed is that
+  // a SEPARATE government charge still lands on top, and that charge is already carried by the
+  // tourist-tax line on the on-top side. The two lines are both true and do not contradict.
+  // Suppressing the VAT line for mixed would withhold a true, useful reassurance. Only 'added'
+  // (no embedded VAT: US, Gulf, Portugal) omits this line.
+  if (!entry || (entry.display !== 'inclusive' && entry.display !== 'mixed')) return null;
+  return c.name + ' quotes hotel rates with VAT already inside by law, so you will not see it added again at checkout.';
+}
+
+// RESORT-FEE RANGE, READ FROM PROPERTY_FEE_BAND (booking-tactics.js), NEVER TYPED.
+function hotelResortLine() {
+  return 'Resort fee, where charged: about $' + PROPERTY_FEE_BAND.usResortLowUsd + ' to $' + PROPERTY_FEE_BAND.usResortHighUsd
+    + ' a night. Most hotels charge none. This is the typical range to check your own rate against, not a figure for your booking.';
+}
+
+// PARKING RANGE, READ FROM HOTEL_EXTRAS.parking (booking-tactics.js), NEVER TYPED.
+function hotelParkingLine() {
+  const p = HOTEL_EXTRAS.parking;
+  return 'Parking, where charged: about $' + p.lowUsd + ' to $' + p.highUsd
+    + ' a night. Often free, often skippable. A range to check, not a cost we can read from your room rate.';
+}
+
+// DEPOSIT HOLD, NAMED, NO FIGURE. Varies too much by property for even a range.
+const HOTEL_DEPOSIT_LINE = 'A refundable deposit hold. Not a cost, but your card can feel it for a few days. Varies by property.';
+
+// CLOSING DISCIPLINE LINE, BOTH CARDS. Every "we don't price this" on this card carries its
+// own why, per the brief's own rule.
+const HOTEL_CLOSING_LINE = 'We put a dollar figure only where we can stand behind it: the tax, because it follows from what you paid. '
+  + 'The rest we name as typical ranges, because they swing too much by property to state as yours. That is the honest line, not a limitation.';
+
+// THE SHARED FACTORY. Both cards are the SAME shape, differing only in key and whether the
+// commission line applies; one factory a tiny wrapper calls twice, the same pattern
+// goodsVatCardFor/medicalAvoidableCard above already use for their own country-conditional
+// branches.
+//
+// SHAPE NOTE, flagged for MAIN: a deliberate departure from airbnbAvoidableCard's own
+// escape/secondary pair. This card genuinely has two labelled sections and a variable
+// number of lines in each (commission and VAT are each present-or-absent; tax is filled in
+// client-side), which a single escape+secondary pair cannot honestly hold without either
+// concatenating unrelated sentences or inventing a fake single "escape" line. So this
+// factory keeps key/title/href/hrefLabel identical in name and meaning to every other card
+// in this file, and replaces escape/secondary with the named line fields the two-section
+// render actually needs. Nothing here is a new UI system: CalcWizard.astro renders these as
+// plain paragraphs inside the exact same .ttc-card-row-detail wrapper every other card
+// already uses, just grouped under two small section labels instead of one.
+function hotelResultCardFor(c, { key, showCommission }) {
+  return {
+    key,
+    title: 'Your hotel price, mapped',
+    commissionLine: showCommission ? HOTEL_COMMISSION_LINE : null,
+    vatLine: hotelVatInclusiveLineFor(c),
+    resortLine: hotelResortLine(),
+    parkingLine: hotelParkingLine(),
+    depositLine: HOTEL_DEPOSIT_LINE,
+    closingLine: HOTEL_CLOSING_LINE,
+    href: '/how-to-pay-less-on-hotels',
+    hrefLabel: 'How to pay less on hotels',
+  };
+}
+
+export function hotelOnlineAvoidableCard(c) {
+  return hotelResultCardFor(c, { key: 'hotel-online', showCommission: true });
+}
+
+// DIRECT: the commission line never appears (see HOTEL_COMMISSION_LINE's own comment for
+// why: they already booked direct, so there is no buried commission to surface). Everything
+// else is identical in shape and source to the online card.
+export function hotelDirectAvoidableCard(c) {
+  return hotelResultCardFor(c, { key: 'hotel-direct', showCommission: false });
 }
 
 // 5. LEAVING DATE. Nothing here is invented: `seasonCheapest` is passed in already
