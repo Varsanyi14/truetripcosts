@@ -2685,21 +2685,20 @@ export const hotelTaxMap = deriveReferenceFigures([
     // { label, amount: 100, currency: 'USD', unit: 'perPersonPerNight' }, and attach the
     // real source to the government row below. Nothing else here needs to change.
     state: 'pending',
-    addedBasis: 'Not on the scale yet, and the figure is not small. Bhutan charges a Sustainable Development Fee of 100 US dollars per person per night, paid to government with the visa and entirely separate from what the hotel costs. Against the reference room used elsewhere on this map that would be roughly 58%, which is larger than anything currently shaded. It is not shaded because the only pages stating it are travel companies rather than the Department of Tourism, and a figure this size has to be checkable.',
+    addedBasis: 'Not on the scale yet, and the figure is not small. Bhutan charges a Sustainable Development Fee of 100 US dollars per person per night for tourists who pay the fee in US dollars, which includes US visitors, paid to government with the visa and entirely separate from what the hotel costs. Against the reference room used elsewhere on this map that would be roughly 58%, which is larger than anything currently shaded. It is not shaded because the only pages stating it are travel companies rather than the Department of Tourism, and a figure this size has to be checkable.',
     display: 'added',
     displayNote: 'Nothing about this sits inside a hotel rate, because it is not a hotel charge: it is a nightly government levy on being in the country, paid before you arrive. A quoted room rate in Bhutan is genuinely just the room.',
     government: [
       {
         label: 'Sustainable Development Fee (SDF)',
-        figure: '100 US dollars per person, per night',
+        figure: '100 US dollars per person, per night, for USD-paying tourists',
         basis: 'perPersonPerNight',
         amount: 100,
         currency: 'USD',
         inQuotedPrice: false,
-        note: 'A mandatory daily government levy on international visitors, paid in advance through the visa application rather than at a hotel. Children aged 6 to 11 are charged half and under-6s are exempt. Nationals of India, Bangladesh and the Maldives pay different rates. The current 100 dollars is a discounted rate against a standard 200, and the discount runs to 31 August 2027.',
-        source: null,
-        pendingSource: 'Needs a page at the Bhutan Department of Tourism, tourism.gov.bt, stating the SDF rate. The URL supplied for this entry was visitbhutan.com, which is a private travel site rather than the authority, so it is not attached. The figure corroborates widely and every corroborating page is a tour operator.',
-        checkedISO: '2026-09-01',
+        note: 'A mandatory daily government levy on visitors paying the fee in US dollars, which includes US visitors, paid in advance through the visa application rather than at a hotel. Children aged 6 to 11 are charged half and under-6s are exempt. Nationals of India, Bangladesh and the Maldives pay under separate regional arrangements rather than this USD figure. The current 100 dollars is a discounted rate against a standard 200, and the discount runs to 31 August 2027, with no extension or reversion decided as of this writing.',
+        source: { label: 'Bhutan Department of Tourism FAQ: Sustainable Development Fee US$100 per night for USD-paying tourists, children 6-11 half, under-6 exempt, discounted rate through 31 Aug 2027', url: 'https://bhutan.travel/faqs', type: 'gov' },
+        checkedISO: '2026-09-14',
       },
     ],
     watch: [
@@ -2746,11 +2745,13 @@ export const hotelTaxMap = deriveReferenceFigures([
         currency: 'MYR',
         inQuotedPrice: false,
         note: 'Charged under the Tourism Tax Act 2017 on foreign passport holders staying at registered accommodation, per room rather than per person. Malaysian citizens and permanent residents are exempt. Booking platforms are now liable to collect it, following a compliance grace period that ended on 31 December 2025.',
-        source: null,
-        pendingSource: 'Needs the Royal Malaysian Customs Department page or the MyTTx portal stating the rate and the foreign-guest scope. No URL was supplied for this entry, so nothing is attached rather than something approximate.',
-        checkedISO: '2026-09-01',
+        source: { label: 'Royal Malaysian Customs Department, General Guide on Tourism Tax: RM10 per room per night, foreign guests only', url: 'https://www.myttx.customs.gov.my/wp-content/uploads/2022/05/APPENDIX-A-General-Guide.pdf', type: 'gov' },
+        checkedISO: '2026-09-14',
       },
     ],
+    // Sourced 2026-09-14 (the RMCD guide above). Rate, scope and per-room framing all
+    // confirmed directly from the regulator. Whether that makes this eligible to colour
+    // on the map is a separate MAIN/Gary call; the fill/colour state below is unchanged.
     pendingVerification: 'Held for one URL from the Royal Malaysian Customs Department. The rate is corroborated and it is per room rather than per person, which is the detail most write-ups get wrong, so the row states it even while the fill waits.',
     property: [],
     checkedISO: '2026-09-01',
@@ -2786,7 +2787,7 @@ export const hotelTaxWatchlist = [
   { iso: 'GB', where: 'Edinburgh', label: 'Visitor levy in force at 5%', effective: '2026-07-24', status: 'in-force', source: { label: 'City of Edinburgh Council: the visitor levy, its 5% rate and the five-night cap', url: 'https://www.edinburgh.gov.uk/business/visitor-levy-edinburgh', type: 'gov' }, checkedISO: '2026-08-29' },
   { iso: 'AT', where: 'Vienna', label: 'Local tax rose to 5%, and rises again to 8% in July 2027', effective: '2026-07-01', status: 'in-force', source: { label: 'Vienna Tourist Board, on the City of Vienna local tax: the two-step rise to 5% and then 8%', url: 'https://b2b.wien.info/en/services/products-services/local-tax-1086968', type: 'gov' }, checkedISO: '2026-08-29' },
   { iso: 'TR', where: 'Turkey', label: 'Temporary 1% accommodation tax window', effective: '2026-05-01', ends: '2026-12-31', status: 'scheduled', source: null, pendingSource: 'Needs the Turkish Revenue Administration notice, including whether the window was extended.' },
-  { iso: 'TH', where: 'Thailand', label: 'Proposed air arrival fee, raised to 450 baht in August 2026', status: 'proposed', source: null, pendingSource: 'Needs the current cabinet position. Still not collected, so it is excluded from the map. The Thailand guide carries the live wording.' },
+  { iso: 'TH', where: 'Thailand', label: 'Proposed flat 450 baht fee for air, land and sea arrivals (air first), raised from 300 baht in August 2026', status: 'proposed', source: null, pendingSource: 'Needs the current cabinet position. Still not collected, so it is excluded from the map. The Thailand guide carries the live wording.' },
   { iso: 'GB', where: 'London', label: 'Proposed visitor levy', status: 'proposed', source: null, pendingSource: 'Needs the current position from the Greater London Authority. Excluded from the map until collected.' },
   { iso: 'NZ', where: 'Auckland', label: 'Proposed bed tax', status: 'proposed', source: null, pendingSource: 'Needs the current Auckland Council position. Excluded from the map until collected.' },
 ];

@@ -122,9 +122,13 @@ export default {
     text: "Two things to know about tax here. First, Morocco charges a <b>per-person, per-night tourist tax</b> (the taxe de sejour) on hotels and riads, usually <b>paid in cash</b> at check-in or checkout and often not shown in the online room rate, so ask for an all-in price when you book directly. Children under 12 are exempt, and the amount rises with the property's class and city (see the estimate above). Second, unlike South Africa or the EU, Morocco has <b>no tourist VAT refund</b> on ordinary shopping. VAT (a reduced 10% on accommodation, 20% standard on most goods) is simply included in the price, and there is no refund desk at the airport. The way to save in Morocco is not a refund form, it is to <b>bargain well and pay in dirham</b>."
   },
 
+  // Closed-dirham source updated 2026-09-14: swapped the third-country travel-advisory
+  // citation for the actual regulator, Morocco's own Office des Changes, whose FAQ states
+  // the 2,000 MAD banknote tolerance directly. Figure unchanged. The taxe-de-sejour row
+  // below still needs a human to pull the Bulletin Officiel before it can move; left as is.
   keyFacts: [
     { label: "Tourist tax (taxe de sejour), set by Law 47-06 on local taxation, published by the DGI (Morocco's tax authority)", value: "About 10 to 30 MAD per person per night depending on the property class and city; children under 12 exempt; usually paid in cash at your hotel or riad. A separate municipal or tourism-promotion tax can add a little more", status: "enacted", effective: null, source: "https://www.tax.gov.ma", checked: "2026-08-24" },
-    { label: "Closed currency", value: "The dirham is a closed currency: you cannot buy it abroad or spend it once you leave, so withdraw it on arrival and convert any leftover before you fly home. Carrying dirhams out is tightly limited (2,000 MAD in cash), so plan to exchange the rest at the airport", status: "enacted", effective: null, source: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Morocco.html", checked: "2026-08-24" }
+    { label: "Closed currency", value: "The dirham is a closed currency: you cannot buy it abroad or spend it once you leave, so withdraw it on arrival and convert any leftover before you fly home. Carrying dirhams out is tightly limited (2,000 MAD in cash), so plan to exchange the rest at the airport", status: "enacted", effective: null, source: "https://www.oc.gov.ma/fr/faq/peut-exporter-des-dirhams", checked: "2026-09-14" }
   ],
 
   traps: [

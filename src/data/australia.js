@@ -6,12 +6,13 @@ export default {
   live: true,
   name: "Australia",
   from: "United States",
-  checked: "Jul 2026",
-  checkedISO: "2026-07-12",
+  checked: "Sep 2026",
+  checkedISO: "2026-09-14",
   sources: {
     changed: "First publication. Confirmed the money change that matters most this year: the Reserve Bank of Australia's final decision, published 31 March 2026, to ban card surcharges on eftpos, Visa and Mastercard from 1 October 2026, so until that date many merchants still add a surcharge. Also confirmed the AUD 20 service fee for the app-only ETA (subclass 601), the 10% GST built into prices, and the Tourist Refund Scheme minimum of AUD 300 for claiming GST back on goods.",
     links: [
       { label: "Reserve Bank of Australia: the final review of retail payments regulation, setting the ban on card surcharges for eftpos, Visa and Mastercard from 1 October 2026 and the lower interchange caps", url: "https://www.rba.gov.au/payments-and-infrastructure/review-of-retail-payments-regulation/2026-03/", type: "gov" },
+      { label: "Reserve Bank of Australia, retail payments reform FAQ: American Express to remove surcharging from 1 October 2026; PayPal's no-surcharge rule from 5 October 2026", url: "https://www.rba.gov.au/payments-and-infrastructure/review-of-retail-payments-regulation/2026-03/conclusions-paper/faqs/", type: "gov" },
       { label: "Australian Taxation Office: the Tourist Refund Scheme, the AUD 300 minimum, the 60-day window and what qualifies for a GST refund on goods", url: "https://www.ato.gov.au/individuals-and-families/travelling-and-going-overseas/tourist-refund-scheme", type: "gov" },
       { label: "Australian Government, Department of Home Affairs and the Australian Embassy: the ETA (subclass 601), the AUD 20 app service fee, and that it is applied for only in the official Australian ETA app", url: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601", type: "gov" },
     ],
@@ -37,13 +38,13 @@ export default {
   },
 
   recentChange: {
-    date: "Jul 2026",
-    text: "One money change is worth a fresh check this year. On 31 March 2026 the Reserve Bank confirmed it will ban card surcharges on eftpos, Visa and Mastercard from 1 October 2026, alongside lower card fees for businesses. Until that date many merchants still add a surcharge (often around 1 to 1.5%, and more on Amex), shown on the bill or the terminal, so it is worth looking for it. Amex and PayPal surcharges can continue after the ban."
+    date: "Sep 2026",
+    text: "One money change is worth a fresh check this year. On 31 March 2026 the Reserve Bank confirmed it will ban card surcharges on eftpos, Visa and Mastercard from 1 October 2026, alongside lower card fees for businesses. Until that date many merchants still add a surcharge (often around 1 to 1.5%, and more on Amex), shown on the bill or the terminal, so it is worth looking for it. From 1 October 2026 American Express is also removing merchant surcharges, and PayPal follows from 5 October 2026, so those two fall away just after the main ban rather than continuing."
   },
 
   notice: 'We only cover trips departing from the United States right now. Want an email the moment we add your home country? <a href="#" onclick="return false"><b>Sign up for an alert</b></a>.',
 
-  verdict: "Australia is <b>about as card-friendly as travel gets</b>. Locals tap a card or phone for almost everything, and your <b>Visa or Mastercard</b> works at shops, cafes, restaurants, taxis and on city transit, with Amex widely accepted too. The one habit worth knowing: <b>until 1 October 2026</b>, many merchants still add a <b>card surcharge</b> (often around <b>1 to 1.5%</b>, and more on Amex), shown as a line on the bill or a sticker on the terminal, and a few offer a small cash discount instead. From that date the Reserve Bank bans surcharges on eftpos, Visa and Mastercard, so they simply switch off (Amex and PayPal can still charge). Carry only a little cash, about <b>AUD 50 to 100</b>, for the odd market stall or tiny vendor, and pull it from a <b>bank ATM</b> rather than an exchange counter. Set your card to <b>decline the dollar conversion</b> and <b>always choose Australian dollars</b> on any terminal or ATM. Two more things worth your attention: the <b>10% GST</b> is already in the price and you can <b>claim it back on goods</b> you take home through the Tourist Refund Scheme, and <b>nobody tips</b> here, so pay the price on the bill and relax. Before you fly, sort an <b>ETA</b> (AUD 20, in the official app only).",
+  verdict: "Australia is <b>about as card-friendly as travel gets</b>. Locals tap a card or phone for almost everything, and your <b>Visa or Mastercard</b> works at shops, cafes, restaurants, taxis and on city transit, with Amex widely accepted too. The one habit worth knowing: <b>until 1 October 2026</b>, many merchants still add a <b>card surcharge</b> (often around <b>1 to 1.5%</b>, and more on Amex), shown as a line on the bill or a sticker on the terminal, and a few offer a small cash discount instead. From that date the Reserve Bank bans surcharges on eftpos, Visa and Mastercard, so they simply switch off (with Amex removing surcharges from 1 October and PayPal from 5 October too). Carry only a little cash, about <b>AUD 50 to 100</b>, for the odd market stall or tiny vendor, and pull it from a <b>bank ATM</b> rather than an exchange counter. Set your card to <b>decline the dollar conversion</b> and <b>always choose Australian dollars</b> on any terminal or ATM. Two more things worth your attention: the <b>10% GST</b> is already in the price and you can <b>claim it back on goods</b> you take home through the Tourist Refund Scheme, and <b>nobody tips</b> here, so pay the price on the bill and relax. Before you fly, sort an <b>ETA</b> (AUD 20, in the official app only).",
 
   meter: {
     heading: "About as cashless as travel gets, with a little cash for the gaps.",
@@ -106,7 +107,7 @@ export default {
   facts: [
     { sym: "aud", k: "Quick conversion", v: "Australia uses the Australian dollar. At about 1.44 to the US dollar in mid-2026, AUD 100 is roughly US$70 and AUD 20 about US$14. The colorful polymer notes come in 5, 10, 20, 50 and 100 dollars, and prices already include the 10% GST, so the figure on the tag is what you pay." },
     { sym: "card", k: "Cards rule, cash is backup", v: "Visa and Mastercard work almost everywhere, and Amex is widely accepted (though more often surcharged). You can go days without cash, but keep about AUD 50 to 100 for a market stall or a tiny rural vendor." },
-    { sym: "tag", k: "Surcharges, until October 2026", v: "Until 1 October 2026 many businesses add a card surcharge, often around 1 to 1.5% and more on Amex, shown on the bill or the terminal. From that date the Reserve Bank bans it for eftpos, Visa and Mastercard, though Amex and PayPal surcharges can continue. Some places offer a small cash discount instead." },
+    { sym: "tag", k: "Surcharges, until October 2026", v: "Until 1 October 2026 many businesses add a card surcharge, often around 1 to 1.5% and more on Amex, shown on the bill or the terminal. From that date the Reserve Bank bans it for eftpos, Visa and Mastercard, and Amex is removing surcharges from 1 October 2026 with PayPal following from 5 October 2026. Some places offer a small cash discount instead." },
     { sym: "notip", k: "No tipping", v: "Australia has no real tipping culture. Staff are paid a proper wage, so tips are a bonus for standout service, never an obligation. There is no tipping at cafes, bars or in taxis, and no service charge to expect on an ordinary bill." }
   ],
 
@@ -117,7 +118,7 @@ export default {
   },
 
   keyFacts: [
-    { label: "Card surcharge ban", value: "Surcharges on eftpos, Visa and Mastercard end nationwide; Amex and PayPal surcharges can continue", status: "enacted", effective: "2026-10-01", source: "https://www.rba.gov.au/payments-and-infrastructure/review-of-retail-payments-regulation/2026-03/", checked: "2026-07-12" },
+    { label: "Card surcharge ban", value: "Surcharges on eftpos, Visa and Mastercard end nationwide; Amex removes surcharges from 1 October 2026 and PayPal from 5 October 2026", status: "enacted", effective: "2026-10-01", source: "https://www.rba.gov.au/payments-and-infrastructure/review-of-retail-payments-regulation/2026-03/", checked: "2026-07-12" },
     { label: "ETA (entry authorization)", value: "Required for US visitors, AUD 20 service fee, applied for only in the official Australian ETA app", status: "enacted", effective: null, source: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601", checked: "2026-07-12" }
   ],
 
@@ -136,7 +137,7 @@ export default {
 ,
   faqs: [
     { q: "Do I need cash in Australia?", a: "Barely. Australia is close to cashless, and cards and phones cover almost everything. Carry about AUD 50 to 100 for a market stall, a tiny cafe or a rural stop, and pull it from a bank ATM as needed." },
-    { q: "Will I be charged a surcharge for paying by card in Australia?", a: "Until 1 October 2026, often yes. Many businesses add a card surcharge, usually around 1 to 1.5% and more on Amex, shown on the bill or the terminal. From that date the Reserve Bank bans surcharges on eftpos, Visa and Mastercard, so they disappear for those cards, though Amex and PayPal surcharges can continue. Some places offer a small cash discount instead." },
+    { q: "Will I be charged a surcharge for paying by card in Australia?", a: "Until 1 October 2026, often yes. Many businesses add a card surcharge, usually around 1 to 1.5% and more on Amex, shown on the bill or the terminal. From that date the Reserve Bank bans surcharges on eftpos, Visa and Mastercard, so they disappear for those cards, and Amex is removing surcharges from 1 October 2026 with PayPal following from 5 October 2026. Some places offer a small cash discount instead." },
     { q: "Should I pay in Australian dollars or US dollars?", a: "Always Australian dollars. If a card terminal or ATM offers to charge you in US dollars, decline; that dynamic currency conversion adds a few percent. Choosing Australian dollars lets your card's network handle the exchange at a fair rate." },
     { q: "Do I need an ETA to visit Australia?", a: "Yes. US visitors need an ETA (subclass 601). It costs a flat AUD 20 service fee, there is no separate visa charge, and you apply for it only in the official Australian ETA app. Ignore reseller websites that charge more, and beware of scam sites." },
     { q: "Can I claim the GST back on shopping in Australia?", a: "Yes, on goods you take home. Through the Tourist Refund Scheme you can reclaim the 10% GST if you spend at least AUD 300 at a single business within 60 days of leaving, keep the original tax invoice, and carry the goods in your cabin bag. Claim at the airport TRS facility after security, and use the My TRS Claim app to skip the queue. Services, accommodation and anything consumed in Australia do not qualify." },

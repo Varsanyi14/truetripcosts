@@ -6,8 +6,8 @@ export default {
   live: true,
   name: "United Kingdom",
   from: "United States",
-  checked: "Jul 2026",
-  checkedISO: "2026-07-25",
+  checked: "Sep 2026",
+  checkedISO: "2026-09-14",
   sources: {
     changed: "Re-checked September 2026. The UK ETA is confirmed at 20 pounds and required before boarding for any trip that crosses the UK border, with a temporary exemption for pure airside connections at Heathrow or Manchester. The Edinburgh 5% visitor levy is in effect as of 24 July 2026 (5% of the room, capped at five nights), and there is still no VAT refund for tourists in Great Britain.",
     links: [

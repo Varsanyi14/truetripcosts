@@ -6,8 +6,8 @@ export default {
   live: true,
   name: "New Zealand",
   from: "United States",
-  checked: "Jul 2026",
-  checkedISO: "2026-07-25",
+  checked: "Sep 2026",
+  checkedISO: "2026-09-14",
   sources: {
     changed: "Re-checked July 2026. Confirmed the surcharge ban bill remains stalled: the May 2026 deadline passed without legislation after a coalition partner withdrew support, so surcharges still apply. Visitor levy, NZeTA and GST unchanged.",
     links: [

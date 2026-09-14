@@ -6,8 +6,8 @@ export default {
   live: true,
   name: "Iceland",
   from: "United States",
-  checked: "Jul 2026",
-  checkedISO: "2026-07-07",
+  checked: "Sep 2026",
+  checkedISO: "2026-09-14",
   sources: {
     changed: "Sources added on first publish, checked July 2026. Confirmed that Iceland (outside the EU, its own krona) charges VAT of 24% on most things and a reduced 11% on accommodation, food and books, all already in the price, and that non-residents can reclaim VAT on goods over 12,000 ISK in one store, worth up to about 14% after fees. The nightly lodging tax (gistinattaskattur) rose to 800 ISK per room at the start of 2025 (from 600 ISK), with 400 ISK for campsites. We also flag the per-kilometre road tax that started on 1 January 2026, which mostly affects rental-car drivers.",
     links: [

@@ -9,7 +9,7 @@ export default {
   checked: "Jul 2026",
   checkedISO: "2026-07-25",
   sources: {
-    changed: "Re-checked July 2026, with the air arrival fee re-verified 17 August 2026. That fee is still not being collected: it has no confirmed start date, the proposed amount has been raised from 300 baht to 450 baht for air arrivals only (the land and sea portion is shelved), and the timeline has slipped to late 2026 or early 2027. The TDAC remains mandatory and free.",
+    changed: "Re-checked July 2026, with the air arrival fee re-verified 17 August 2026. That fee is still not being collected: it has no confirmed start date, the proposed amount has been raised from 300 baht to a flat 450 baht now planned to apply to air, land and sea arrivals (air collected first), and the timeline has slipped to late 2026 or early 2027. The TDAC remains mandatory and free.",
     links: [
       { label: "Thai Immigration Bureau: the Thailand Digital Arrival Card (TDAC), mandatory and free, submitted within 72 hours of arrival", url: "https://tdac.immigration.go.th/", type: "gov" },
       { label: "Tourism Authority of Thailand: the 7% VAT refund for tourists and how to claim it at the airport", url: "https://www.tourismthailand.org/Articles/plan-your-trip-vat-tax-refund", type: "tourism" },
@@ -85,7 +85,7 @@ export default {
   flight: { low: 800, high: 1400, checked: "Jul 2026", checkedISO: "2026-07-18" },
   tax: {
     none: true,
-    note: "Thailand has no hotel or tourist tax today. A proposed arrival fee for air travelers, raised in August 2026 from 300 baht to 450 baht (about 14 dollars), has been discussed for years and is still not being collected. If it starts, it would be added to your airfare, not your hotel bill."
+    note: "Thailand has no hotel or tourist tax today. A proposed arrival fee, raised in August 2026 from 300 baht to a flat 450 baht (about 14 dollars) now planned for air, land and sea arrivals with air first, has been discussed for years and is still not being collected. If it starts, it would be added to your airfare, not your hotel bill."
   },
   currencyHeading: "The baht, in plain terms.",
   facts: [
@@ -97,7 +97,7 @@ export default {
   taxfree: {
     label: "Taxes and refunds",
     heading: "The \"plus plus\" on your bill, and money back on shopping.",
-    text: "Two things worth knowing. At mid to upscale restaurants and hotels you may see a price written as \"500++\", which means a <b>10% service charge plus 7% VAT</b> get added on top, roughly 17% more than the listed number. That service charge stands in for a tip at those places. Separately, Thailand runs a <b>VAT refund for tourists</b>: at shops showing the \"VAT Refund for Tourists\" sign, spend at least 2,000 baht in one store on the same day and 5,000 baht in total, show your passport and ask for the P.P.10 form, keep the goods unused, and claim at the airport when you leave. After fees you get a bit under the full 7% back. One more to watch: a proposed entry fee for air arrivals has been debated for years and is still not being collected. In August 2026 the proposed amount was raised from 300 baht to <b>450 baht</b> and the timeline slipped to late 2026 or early 2027, and once it is approved it would only begin 180 days after publication in the Royal Gazette, so there is nothing to pay yet and there would be plenty of notice if that changes."
+    text: "Two things worth knowing. At mid to upscale restaurants and hotels you may see a price written as \"500++\", which means a <b>10% service charge plus 7% VAT</b> get added on top, roughly 17% more than the listed number. That service charge stands in for a tip at those places. Separately, Thailand runs a <b>VAT refund for tourists</b>: at shops showing the \"VAT Refund for Tourists\" sign, spend at least 2,000 baht in one store on the same day and 5,000 baht in total, show your passport and ask for the P.P.10 form, keep the goods unused, and claim at the airport when you leave. After fees you get a bit under the full 7% back. One more to watch: a proposed entry fee has been debated for years and is still not being collected. In August 2026 the proposed amount was raised from 300 baht to a flat <b>450 baht</b> now planned to apply to air, land and sea arrivals with air first, and the timeline slipped to late 2026 or early 2027, and once it is approved it would only begin 180 days after publication in the Royal Gazette, so there is nothing to pay yet and there would be plenty of notice if that changes."
   },
 
   // High-churn fees and taxes, each tracked on its own with a status, an effective
@@ -107,7 +107,7 @@ export default {
   // clean government page, so it carries no source link and an unmistakable
   // "proposed" marker.
   keyFacts: [
-    { label: "Air arrival fee", value: "Proposed at 450 baht (about $14) for air arrivals, raised from 300 baht in August 2026, still not being collected, with the timeline slipped to late 2026 or early 2027", status: "proposed", effective: null, source: null, checked: "2026-09-01" }
+    { label: "Air arrival fee", value: "Proposed at a flat 450 baht (about $14), raised from 300 baht in August 2026 and now planned to apply to air, land and sea arrivals with air collected first, still not being collected and with the timeline slipped to late 2026 or early 2027", status: "proposed", effective: null, source: null, checked: "2026-09-14" }
   ],
 
   traps: [
@@ -124,7 +124,7 @@ export default {
     { q: "How do I avoid the Thailand ATM fee?", a: "You cannot avoid the flat foreign-card fee entirely, commonly 220 baht with AEON cheapest at 150, but you can shrink its impact: withdraw a large amount at once, up to the 20,000 to 30,000 baht limit, rather than several small pulls. A card that reimburses ATM fees, like Charles Schwab, helps too." },
     { q: "Should I pay in baht or dollars in Thailand?", a: "Always baht. If a card machine or ATM offers to charge you in dollars, decline. That dynamic currency conversion adds roughly 5 to 8%, and your own bank's rate is better." },
     { q: "Do you tip in Thailand?", a: "It is not expected, but a little cash is appreciated. Round up taxis, leave 20 to 100 baht at a sit-down meal when there is no service charge, and tip a masseuse directly. Check the bill first, since mid and upscale places add a 10% service charge." },
-    { q: "Is there a tourist tax or entry fee for Thailand?", a: "An entry fee for air arrivals has been proposed and delayed for years, and in August 2026 the proposed amount was raised from 300 baht to 450 baht (about $14). It is still not being collected and has no confirmed start date, with the timeline now pointing at late 2026 or early 2027, and once approved it would only take effect 180 days after publication in the Royal Gazette. There is nothing to pay yet. The free Thailand Digital Arrival Card (TDAC), filed online within 72 hours of your flight, is separate and already required." },
+    { q: "Is there a tourist tax or entry fee for Thailand?", a: "An entry fee has been proposed and delayed for years, and in August 2026 the proposed amount was raised from 300 baht to a flat 450 baht (about $14) now planned to apply to air, land and sea arrivals with air first. It is still not being collected and has no confirmed start date, with the timeline now pointing at late 2026 or early 2027, and once approved it would only take effect 180 days after publication in the Royal Gazette. There is nothing to pay yet. The free Thailand Digital Arrival Card (TDAC), filed online within 72 hours of your flight, is separate and already required." },
     { q: "How much cash should I bring for a week in Thailand?", a: "For two mid-range travelers, very roughly 9,000 to 14,000 baht (about $275 to $425) in day-to-day cash across a week, beyond your hotel, pulled in two or three ATM visits. Adjust for your style and how much you put on a card." }
   ],
 
