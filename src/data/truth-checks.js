@@ -264,6 +264,95 @@ export const truthChecks = [
     confidence: 'high',
     checkedISO: '2026-09-04',
   }, // src: Japan National Tax Agency + Japan Tourism Agency, refund method from 1 Nov 2026. MAIN web-verified 2026-09-04.
+
+  // BRIEF-bite3-flight-truth-check-harvest. Five entries harvested from the two live flight
+  // pages, not new research: every `finding` below is a hand-authored paraphrase of prose
+  // that already exists, sourced and dated, on the linked page. Topic "flights" is new here
+  // (see TOPIC_LABELS in truth-checks.astro); unlike connectivity/cash/visas it has no single
+  // aggregating hub across all countries, so no TOPIC_HUB_HREF entry was added for it and the
+  // per-row "topic hub, every country" jump link simply does not render for these five, which
+  // is correct rather than a gap.
+  {
+    id: 'nonrefundable-still-refundable',
+    scope: 'topic',
+    topic: 'flights',
+    country: null,
+    claim: 'A nonrefundable ticket means you get nothing back if the airline cancels your flight.',
+    finding:
+      'US rules require an automatic cash refund to your original payment method, even on a ' +
+      'ticket marked nonrefundable, whenever the airline cancels the flight or changes it ' +
+      'enough to qualify. You just have to decline the rebooking, voucher, or credit it ' +
+      'offers instead, since accepting the substitute counts as choosing it.',
+    soWhat: 'Decline the rebooking or voucher and ask for the refund instead of assuming nonrefundable means nothing is owed.',
+    source: { label: "The money your airline owes you (and hopes you won't claim)", href: '/money-your-airline-owes-you' },
+    confidence: 'high',
+    checkedISO: '2026-09-14',
+  }, // src: harvested from /money-your-airline-owes-you, Situation 1 prose (14 CFR Part 260). Live page already MAIN-verified 2026-09-14.
+  {
+    id: 'change-fee-not-free-change',
+    scope: 'topic',
+    topic: 'flights',
+    country: null,
+    claim: '"No change fee" means changing your flight is free.',
+    finding:
+      "A waived change fee is only one of four separate costs bundled into any change. Even " +
+      "with no change fee, you still owe the fare difference if the new flight costs more, " +
+      "and whatever is left over often comes back as a travel credit rather than cash.",
+    soWhat: 'Check the fare difference and what form any leftover value takes, not just whether a change fee applies.',
+    source: { label: "The fare is not hiding a fee. It's a stripped-down price.", href: '/airline-fees-what-your-fare-doesnt-include' },
+    confidence: 'high',
+    checkedISO: '2026-09-14',
+  }, // src: harvested from /airline-fees-what-your-fare-doesnt-include, Section 4 prose. Live page already MAIN-verified 2026-09-14.
+  {
+    id: 'usd-payment-still-carries-fee',
+    scope: 'topic',
+    topic: 'flights',
+    country: null,
+    claim: "Paying in US dollars at checkout avoids your card's foreign transaction fee.",
+    finding:
+      "The fee attaches to a transaction with a foreign merchant or in a foreign currency, " +
+      "not to whatever currency the receipt shows. The Consumer Financial Protection " +
+      "Bureau's own rule defines it that way, so billing in US dollars does not exempt the " +
+      "purchase from it.",
+    soWhat: "Check your own card's terms; billing in US dollars does not by itself dodge the fee.",
+    source: { label: "The fare is not hiding a fee. It's a stripped-down price.", href: '/airline-fees-what-your-fare-doesnt-include' },
+    confidence: 'high',
+    checkedISO: '2026-09-14',
+  }, // src: harvested from /airline-fees-what-your-fare-doesnt-include, Section 5 prose (CFPB Reg Z). Live page already MAIN-verified 2026-09-14.
+  {
+    id: 'frontier-spirit-bag-fee-incentive',
+    scope: 'topic',
+    topic: 'flights',
+    country: null,
+    claim: 'A gate agent flagging your bag as too big for a carry-on is just enforcing the rules.',
+    finding:
+      "At Frontier and Spirit specifically, the Senate Permanent Subcommittee on " +
+      "Investigations found the two carriers paid gate agents and other personnel about $26 " +
+      "million combined in 2022 and 2023 to enforce carry-on bag policies, with Frontier " +
+      "personnel able to earn $10 for every bag a passenger was forced to check at the gate. " +
+      "Both carriers denied the programs led to abuse.",
+    soWhat: 'Size your carry-on against the sizer before the gate, especially on Frontier or Spirit.',
+    source: { label: "The fare is not hiding a fee. It's a stripped-down price.", href: '/airline-fees-what-your-fare-doesnt-include' },
+    confidence: 'high',
+    checkedISO: '2026-09-14',
+  }, // src: harvested from /airline-fees-what-your-fare-doesnt-include, Section 1 callout (Senate PSI + Blumenthal letter, see flight-fee-mechanics.js). Two named carriers only, never generalized to "airlines," per the honesty precision rail.
+  {
+    id: 'hidden-city-not-illegal-but-banned',
+    scope: 'topic',
+    topic: 'flights',
+    country: null,
+    claim: 'Hidden-city ticketing is a harmless money-saving loophole.',
+    finding:
+      'It is not illegal, and no court has ruled that it is; airlines price routes by market ' +
+      'competition, not distance, which is why it can look cheaper. But nearly every major ' +
+      'US carrier prohibits it in its contract of carriage and enforces that: American ' +
+      'Airlines banned a 17-year-old from flying with them for three years after a suspected ' +
+      'attempt, even though he never boarded a flight.',
+    soWhat: 'Weigh the ban, not the fare gap: it is a contract violation with real personal consequences.',
+    source: { label: "The fare is not hiding a fee. It's a stripped-down price.", href: '/airline-fees-what-your-fare-doesnt-include' },
+    confidence: 'high',
+    checkedISO: '2026-09-14',
+  }, // src: harvested from /airline-fees-what-your-fare-doesnt-include, Section 6 prose. Anchored ONLY to the page's undisputed facts (banned three years, never boarded, contract of carriage); deliberately does not repeat the live page's own "detained and questioned...at the gate" phrase, since the brief flags that framing as more specific than this harvest should assert. Flagged to MAIN: the live page prose itself still carries that phrase; a future micro-fix could soften it, but that edit is out of scope for this harvest commit.
 ];
 
 // Confidence -> tooltip title, matching the vocabulary rail-passes.js and seasons.js use.
