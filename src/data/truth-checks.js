@@ -353,6 +353,69 @@ export const truthChecks = [
     confidence: 'high',
     checkedISO: '2026-09-14',
   }, // src: harvested from /airline-fees-what-your-fare-doesnt-include, Section 6 prose. Anchored ONLY to the page's undisputed facts (banned three years, never boarded, contract of carriage); deliberately does not repeat the live page's own "detained and questioned...at the gate" phrase, since the brief flags that framing as more specific than this harvest should assert. Flagged to MAIN: the live page prose itself still carries that phrase; a future micro-fix could soften it, but that edit is out of scope for this harvest commit.
+
+  // BRIEF-bite5-harvest-and-links, Part A. Three entries harvested from the third live
+  // flight page, /what-actually-makes-a-flight-cheaper, not new research: every `finding`
+  // below is a hand-authored paraphrase of prose that already exists, sourced and dated, on
+  // that page. Deliberately narrow, per the brief: the best-window myth (section 2) and the
+  // whole cookies/VPN/personalized-pricing section (section 3) are NOT harvested, since
+  // neither collapses into a clean binary the way these three do; both stay page-only. The
+  // magic-day entry below busts ONLY the universal "one best day" claim and prints no
+  // replacement day, the same precision rail the page's own section 1 already holds. The
+  // self-transfer risk inside section 5 is likewise left off this entry on purpose: pairing
+  // it in would import a second, separate claim beyond the one clean "always cheaper" myth
+  // this entry corrects.
+  {
+    id: 'no-universal-cheapest-booking-day',
+    scope: 'topic',
+    topic: 'flights',
+    country: null,
+    claim: 'There is a specific day of the week that reliably gets you the cheapest flight to book on.',
+    finding:
+      'Three major studies each name a different cheapest day to book, and the winner has ' +
+      'changed at least once a year for as long as it has been tracked. That is three ' +
+      'separate booking pools over three separate windows disagreeing with each other, not ' +
+      'three measurements converging on one answer.',
+    soWhat: "Treat a best-day-to-book headline as one provider's average, not a promise it holds for your route or into next year.",
+    source: { label: "What actually makes a flight cheaper, and what's just folklore.", href: '/what-actually-makes-a-flight-cheaper' },
+    confidence: 'high',
+    checkedISO: '2026-09-14',
+  }, // src: harvested from /what-actually-makes-a-flight-cheaper, Section 1 prose (Google, Expedia, KAYAK booking-day studies, see flight-booking-myths.js bookingDayStudies). Busts ONLY the universal "one best day" claim; deliberately prints no replacement day. Live page already MAIN-verified 2026-09-14.
+  {
+    id: 'mistake-fare-not-automatically-yours',
+    scope: 'topic',
+    topic: 'flights',
+    country: null,
+    claim: 'A ticketed mistake fare must be honored once it is booked.',
+    finding:
+      "Under DOT's 2015 Mistaken Fare Policy Statement, still the operative guidance, an " +
+      "airline can cancel a genuine mistake fare without penalty as long as it refunds the " +
+      "ticket price and reimburses reasonable, verifiable costs a traveler incurred relying " +
+      "on the booking, a hotel deposit or a tour reservation for example, not the value of " +
+      "the trip itself. The conditions run both ways: it is not a blank check for a carrier " +
+      "to void a fare it later regrets, and it is not an automatic guarantee that a mistake " +
+      "fare survives either.",
+    soWhat: "If a mistake fare gets pulled, expect a refund and reimbursed, documented reliance costs, not the ticket itself.",
+    source: { label: "What actually makes a flight cheaper, and what's just folklore.", href: '/what-actually-makes-a-flight-cheaper' },
+    confidence: 'high',
+    checkedISO: '2026-09-14',
+  }, // src: harvested from /what-actually-makes-a-flight-cheaper, Section 4 prose (DOT 2015 Mistaken Fare Policy Statement, see flight-booking-myths.js mistakeFarePolicy). States the conditions in both directions, per that data file's own note. Live page already MAIN-verified 2026-09-14.
+  {
+    id: 'two-one-ways-not-always-cheaper',
+    scope: 'topic',
+    topic: 'flights',
+    country: null,
+    claim: 'Booking two separate one-way tickets always beats a round trip on price.',
+    finding:
+      'Splitting a trip into two one-way fares comes in cheaper about as often as the ' +
+      'round-trip fare undercuts it. There is no rule that reliably favors one over the ' +
+      'other, so pricing both for the exact travel dates is the only way to find out which ' +
+      'wins.',
+    soWhat: 'Price a round trip and two one-ways side by side for your exact dates before booking either.',
+    source: { label: "What actually makes a flight cheaper, and what's just folklore.", href: '/what-actually-makes-a-flight-cheaper' },
+    confidence: 'high',
+    checkedISO: '2026-09-14',
+  }, // src: harvested from /what-actually-makes-a-flight-cheaper, Section 5 first paragraph only (the "two one-ways" claim). The section's second paragraph, the self-transfer risk, is left page-only per the brief; pairing it here would import a second, separate claim beyond the clean binary this entry corrects.
 ];
 
 // Confidence -> tooltip title, matching the vocabulary rail-passes.js and seasons.js use.
