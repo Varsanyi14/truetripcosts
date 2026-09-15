@@ -128,6 +128,7 @@ const CARRIER_ROAMING = 'src/data/carrier-roaming.js';
 const BOOKING_TACTICS = 'src/data/booking-tactics.js';
 const FLIGHT_REFUND_RIGHTS = 'src/data/flight-refund-rights.js';
 const FLIGHT_FEE_MECHANICS = 'src/data/flight-fee-mechanics.js';
+const FLIGHT_BOOKING_MYTHS = 'src/data/flight-booking-myths.js';
 const STRICT = String(process.env.FACT_STALENESS_STRICT || '').toLowerCase() === 'true';
 
 // Carrier plans drift a few times a year, faster than the 180-day general mark, so this
@@ -717,6 +718,63 @@ async function main() {
     }
   }
 
+  // --- twelfth pass: flight-booking-myths.js, the durable facts behind
+  // /what-actually-makes-a-flight-cheaper (BUILD-GO-bite4-booking-myths) ---
+  // Same per-fact-reviewDays shape as the eleventh pass, adapted for a file that nests
+  // deeper than flight-fee-mechanics.js does. bookingDayStudies, advanceWindowStudies,
+  // mistakeFarePolicy and cookieIncognitoTest are each judged as one fact, using their own
+  // top-level checkedISO and reviewDays. personalizedPricing is judged at the finer grain
+  // of its five named sub-facts (three deployments, two scrutiny tracks) rather than as one
+  // blob, because the brief calls it the fastest-rotting content on the site and a single
+  // shared date would hide which specific piece (a deployment, the FTC docket, the Pallone
+  // inquiry) is the one that actually moved; each sub-fact borrows personalizedPricing's own
+  // reviewDays, since none of them carry a faster or slower cadence of their own.
+  const bookingMythsFindings = [];
+  let bookingMythsCount = 0;
+  const bookingMythsMod = await loadModule('.', FLIGHT_BOOKING_MYTHS);
+  const bookingMyths = (bookingMythsMod && bookingMythsMod.flightBookingMyths) || null;
+  if (bookingMyths) {
+    const judge = (label, entry, days) => {
+      if (!entry) return;
+      bookingMythsCount++;
+      let host = entry.sourceUrl || 'its own source';
+      if (entry.sourceUrl) {
+        try { host = new URL(entry.sourceUrl).hostname.replace(/^www\./, ''); } catch (e) { /* keep the raw source string */ }
+      }
+      const checked = parseISO(entry.checkedISO);
+      if (!checked) {
+        bookingMythsFindings.push({ id: label, standing: false, msg: 'no usable checkedISO on this flight-booking-myths entry, so its age cannot be judged' });
+        return;
+      }
+      const age = daysBetween(today, checked);
+      if (age <= days) return;
+      bookingMythsFindings.push({
+        id: label,
+        standing: false,
+        msg: 'checked ' + age + ' days ago, over its ' + days + '-day mark. Re-verify against ' + host + ' before trusting it on /what-actually-makes-a-flight-cheaper.',
+      });
+    };
+
+    const bd = bookingMyths.bookingDayStudies;
+    judge(bd?.label || 'bookingDayStudies', bd, bd?.reviewDays || THRESHOLDS.general);
+
+    const aw = bookingMyths.advanceWindowStudies;
+    judge(aw?.label || 'advanceWindowStudies', aw, aw?.reviewDays || THRESHOLDS.general);
+
+    const pp = bookingMyths.personalizedPricing;
+    const ppDays = pp?.reviewDays || THRESHOLDS.general;
+    if (pp) {
+      for (const [key, dep] of Object.entries(pp.deployments || {})) judge(dep?.label || key, dep, ppDays);
+      for (const [key, scr] of Object.entries(pp.scrutiny || {})) judge(scr?.label || key, scr, ppDays);
+    }
+
+    const mf = bookingMyths.mistakeFarePolicy;
+    judge(mf?.label || 'mistakeFarePolicy', mf, mf?.reviewDays || THRESHOLDS.general);
+
+    const ct = bookingMyths.cookieIncognitoTest;
+    judge(ct?.label || 'cookieIncognitoTest', ct, ct?.reviewDays || THRESHOLDS.general);
+  }
+
   // --- report ---
   log('Guides carrying a keyFacts block: ' + withKeyFacts + ' of ' + live.length + '.');
   log('Scanned ' + liveSpokes + ' live spokes across the catalogue.');
@@ -728,6 +786,7 @@ async function main() {
   if (hotelExtras) log('Scanned ' + hotelExtrasCount + ' hotel-extras figures (parking/wifi/breakfast).');
   if (flightRights) log('Scanned ' + flightRightsCount + ' flight-refund-rights legal facts (quarterly cadence).');
   if (feeMechanics) log('Scanned ' + feeMechanicsCount + ' flight-fee-mechanics facts (per-fact cadence).');
+  if (bookingMyths) log('Scanned ' + bookingMythsCount + ' flight-booking-myths facts (per-fact cadence, personalized-pricing at quarterly minimum).');
   if (findings.length === 0) {
     log('keyFacts: nothing due for a look right now.\n');
   } else {
@@ -806,16 +865,22 @@ async function main() {
     log('');
   }
 
+  if (bookingMythsFindings.length > 0) {
+    log('Flight-booking-myths facts worth a re-check (' + bookingMythsFindings.length + '):');
+    for (const f of bookingMythsFindings.sort((a, b) => a.id.localeCompare(b.id))) log('    - ' + f.id + ': ' + f.msg);
+    log('');
+  }
+
   // Two counts, because they answer different questions. `aged` is the trigger: items
   // that genuinely passed a date threshold, which is a new event worth an email.
   // `total` also includes standing items, the hero flags and pending forms, which
   // report on every run by design and never age out. Delivering off the total would
   // mean an issue every single Monday forever, which trains everyone to ignore it.
   // The standing rows still print above, so nothing is hidden from the run log.
-  // carrierFindings, carrierProfileFindings, hotelExtrasFindings, flightRightsFindings and
-  // feeMechanicsFindings carry no standing rows: an unchecked cell, or an entry with no
-  // usable checkedISO, is either skipped or reported once as a finding, never repeated as a
-  // standing to-do, so every entry in all five is an aged one.
+  // carrierFindings, carrierProfileFindings, hotelExtrasFindings, flightRightsFindings,
+  // feeMechanicsFindings and bookingMythsFindings carry no standing rows: an unchecked cell,
+  // or an entry with no usable checkedISO, is either skipped or reported once as a finding,
+  // never repeated as a standing to-do, so every entry in all six is an aged one.
   const standing = heroFindings.filter(f => f.standing).length
     + formFindings.filter(f => f.standing).length
     + mapFindings.filter(f => f.standing).length;
@@ -827,10 +892,12 @@ async function main() {
     + carrierProfileFindings.length
     + hotelExtrasFindings.length
     + flightRightsFindings.length
-    + feeMechanicsFindings.length;
+    + feeMechanicsFindings.length
+    + bookingMythsFindings.length;
   const total = findings.length + noKf.length + spokeFindings.length + heroFindings.length
     + formFindings.length + mapFindings.length + carrierFindings.length + carrierProfileFindings.length
-    + hotelExtrasFindings.length + flightRightsFindings.length + feeMechanicsFindings.length;
+    + hotelExtrasFindings.length + flightRightsFindings.length + feeMechanicsFindings.length
+    + bookingMythsFindings.length;
 
   log('Past a threshold: ' + aged + ' item(s) that aged out.'
     + (standing > 0 ? ' Plus ' + standing + ' standing item(s), the hero flags and pending forms listed above, which report every run and never age out.' : ''));

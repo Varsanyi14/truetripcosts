@@ -1,0 +1,285 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import USBadge from '../components/USBadge.astro';
+import { flightBookingMyths } from '../data/flight-booking-myths.js';
+
+// BUILD-GO-bite4-booking-myths. Bite 4 of the flights domain, sibling of Bite 1
+// (/money-your-airline-owes-you) and Bite 2 (/airline-fees-what-your-fare-doesnt-include).
+// Built from the approved static mock (what-actually-makes-a-flight-cheaper-MOCK.html,
+// approved 2026-09-14), reusing the flights visual system exactly: pt-prose, recentchange,
+// pt-snap, pt-flag, xlink, gbyline, gsources, pt-close, real <Nav /> and <Footer />, not the
+// mock's hand-rolled stand-ins.
+//
+// THIS BITE IS DIFFERENT FROM THE FIRST TWO. Bites 1 and 2 ran on facts that resolve
+// cleanly. Most of what's on this page does not. The honest product is expectation
+// management: where the evidence supports a real pattern, say so and how strong it is;
+// where the field disagrees with itself, say that too, instead of picking a winner. No
+// "book on this day" instruction, no VPN playbook, no summed savings figure, anywhere on
+// this page.
+//
+// THE LOAD-BEARING PRECISION POINT (section 3): the FTC's proposed personalized-pricing
+// policy statement is general, aimed at retail and grocery, and does not reach airlines,
+// which sit outside FTC Section 5 jurisdiction entirely under the Section 5(a)(2) carve-out.
+// That is separate from, and must never be merged with, the Pallone congressional inquiry
+// and the JetBlue litigation, which are allegations under active process, not findings.
+// Collapsing those two tracks into one story is the single easiest way to get this bite
+// wrong; the data home below keeps them as separate fields for exactly that reason.
+//
+// Every dated, volatile fact (the four booking-day/advance-window studies, the three named
+// AI-pricing deployments, the two scrutiny tracks, the 2016 cookie test, the 2015 mistake-
+// fare policy) is imported from flight-booking-myths.js rather than retyped here, so the
+// page and scripts/check-fact-staleness.mjs (twelfth pass) read the same numbers from the
+// same home. See that file's own header for why the personalized-pricing facts sit on a
+// tighter, quarterly-minimum cadence than the study figures.
+//
+// Section 5 (self-transfer) and section 6 (the 24-hour rule) both deliberately restate a
+// fact in one sentence and cross-link to its fuller home (Bite 2 and Bite 1 respectively)
+// rather than duplicate it. One fact, one home, same principle Bite 1 already applies to
+// its own flight-renumbering carve-out.
+
+const m = flightBookingMyths;
+const bd = m.bookingDayStudies;
+const aw = m.advanceWindowStudies;
+const pp = m.personalizedPricing;
+const dep = pp.deployments;
+const scr = pp.scrutiny;
+const ct = m.cookieIncognitoTest;
+const mf = m.mistakeFarePolicy;
+
+const govIcon = '<path d="M6 3v18"></path><path d="M6 4h12l-2 3.5L18 11H6"></path>';
+
+const sources = [
+  { name: bd.google.label, note: 'the Sept 2025 booking-day figure and the domestic/international advance-window figures', url: bd.google.sourceUrl },
+  { name: bd.expedia.label, note: 'the Feb 2026 booking-day figure and the domestic advance-window figure; its own international savings appendix is the figure this page leaves out', url: bd.expedia.sourceUrl },
+  { name: bd.kayak.label, note: 'day-of-week findings, updated March 2026', url: bd.kayak.sourceUrl },
+  { name: 'KAYAK, advance-booking window', note: 'the 21 to 30 day domestic figure', url: aw.kayak.sourceUrl },
+  { name: 'CheapAir, advance-booking window', note: 'the roughly 28 to 35 day domestic figure', url: aw.cheapair.sourceUrl },
+  { name: 'Consumer Reports, 2016', note: 'the 372-search cookie and incognito test', url: ct.sourceUrl },
+  { name: "Delta's own statement on AI pricing", note: 'its Fetcherr pilot and its denial of individualized targeting', url: dep.deltaFetcherr.sourceUrl },
+  { name: 'PROS and Lufthansa Group', note: 'the Jan 2026 dynamic-pricing partnership renewal', url: dep.prosLufthansa.sourceUrl },
+  { name: 'Amadeus and SAS', note: 'the Jul 2026 network-wide pricing rollout', url: dep.amadeusSAS.sourceUrl },
+  { name: "Rep. Pallone's letters to eight airlines", note: 'Aug 2026, an inquiry, not a finding', url: scr.pallonAndJetBlue.sourceUrl },
+  { name: 'FTC, proposed personalized-pricing statement', note: 'Aug 19 2026, a proposal, general to retail and grocery', url: scr.ftcProposal.sourceUrl },
+  { name: 'FTC, comment-period extension', note: 'deadline moved to Sept 25 2026', url: scr.ftcProposal.secondarySourceUrl },
+  { name: 'Legal analysis, the Section 5(a)(2) carve-out', note: "the air-carrier exemption from the FTC's Section 5 jurisdiction", url: scr.ftcProposal.airlineCarveOut.analysisUrl },
+  { name: 'DOT, 2015 Mistaken Fare Policy Statement', note: 'still the operative enforcement guidance', url: mf.sourceUrl },
+];
+---
+<Base
+  title="What actually makes a flight cheaper, and what's just folklore | True Trip Costs"
+  description="Best day to book, magic advance-booking windows, cookies and VPNs, personalized pricing, mistake fares, and split tickets, checked against what the studies and the law actually say. No booking-day instruction, no VPN playbook. Checked September 2026.">
+  <Nav />
+  <main class="wrap">
+
+    <section class="pt-prose">
+      <p class="lab">Flight booking myths</p>
+      <div style="margin:2px 0 12px"><USBadge /></div>
+      <h1>What actually makes a flight cheaper, and what's just folklore.</h1>
+      <p class="pt-lede">Book on a Tuesday. Wait exactly 21 days. Clear your cookies before you buy. Every one of these gets repeated as settled fact, and most of them do not hold up the way the internet says they do.</p>
+      <p>This page checks six of the loudest booking myths against the actual studies, the actual regulation, and the actual law, and says plainly where the evidence runs out. Some of it is a real, small pattern. Some of it is a genuine legal protection with real conditions attached. And at least one popular claim is a misreading of a live federal action that does not do what people are currently saying it does.</p>
+
+      <div class="recentchange">
+        <span class="rcpill">What this page will and won't tell you</span>
+        <p>This is not a replacement set of booking instructions. Where the evidence supports a real pattern, we say so, and how strong it is. Where the field disagrees with itself, we say that too, instead of picking a winner to sound decisive. Nowhere below will you find a "book on this day" instruction, a VPN playbook, or a claim that a federal agency has started policing airline prices. Two of those would be dishonest. The third would just be wrong.</p>
+      </div>
+
+      <a class="xlink" href="/money-your-airline-owes-you">
+        <span class="xlink-h">Part of the flights set: what your airline owes you</span>
+        <span class="xlink-d">Refund rights when the airline is the one that cancels or changes your flight, not a booking strategy.</span>
+      </a>
+      <a class="xlink" href="/airline-fees-what-your-fare-doesnt-include">
+        <span class="xlink-h">Part of the flights set: what your fare doesn't include</span>
+        <span class="xlink-d">Bags, seats, basic economy, and the self-transfer risk this page points to in section 5.</span>
+      </a>
+    </section>
+
+    <hr class="sit-sep" />
+
+    <section class="pt-prose">
+      <h2>1. The best day to book, and the best day to fly, are not the same question</h2>
+      <p>These get conflated constantly, and they are two separate actions with two separate effects. Booking on a particular day of the week shifts a fare by a percent or two, if it moves it at all. Flying on a particular day of the week moves it by a lot more. Neither one is a myth exactly, but only one of them is worth planning around.</p>
+
+      <div class="recentchange">
+        <span class="rcpill">Three studies, three different "best" days, in the last twelve months</span>
+        <p>Google's own analysis, published September 2025, found Tuesday bookings averaged about {bd.google.pctCheaper}% cheaper than Sunday. Expedia's 2026 Air Hacks report, published five months later in February 2026, found Friday was the cheapest day to book, by about {bd.expedia.pctCheaper}% over Sunday, and explicitly moved off the day it had favored the year before. KAYAK's most recent data points to a different day again. These are not three measurements converging on one answer. They are three different booking pools, over three different windows, and the "winning" day has changed at least once a year for as long as we've checked. Whatever a single site tells you the cheapest day to book is this month, do not expect it to hold next year, or to say anything about your specific route.</p>
+      </div>
+
+      <ul class="pt-snap">
+        <li><b>Google, Sept 2025:</b> {bd.google.cheapestDay}, about {bd.google.pctCheaper}% cheaper than {bd.google.vsDay}, based on fares observed January 2021 through August 2025 for US departures.</li>
+        <li><b>Expedia, Feb 2026:</b> {bd.expedia.cheapestDay}, about {bd.expedia.pctCheaper}% cheaper than {bd.expedia.vsDay}, the tenth edition of its annual Air Hacks report, and a change from the Sunday finding in its own prior year's report.</li>
+        <li><b>KAYAK, 2026 data:</b> {bd.kayak.cheapestDay}, drawn from its own current-year search data, with no day showing a consistent edge across the routes it tested.</li>
+      </ul>
+
+      <p class="pt-subhead">The one piece that does hold up: when you fly matters more than when you book</p>
+      <p>Every study above found a bigger, more consistent effect from the day you actually travel. Google put midweek departures at roughly 13% cheaper than weekend ones. Expedia's own 2026 data found flying on a Friday, rather than the day it now says is cheapest to book on, saved travelers noticeably more than the booking-day effect did. If you're only going to optimize one of the two, it's the day you fly, not the day you buy.</p>
+
+      <p class="src-line">Source: <a href={bd.google.sourceUrl} target="_blank" rel="noopener">Google's 2025 travel trends</a>, <a href={bd.expedia.sourceUrl} target="_blank" rel="noopener">Expedia's 2026 Air Hacks report</a>, and <a href={bd.kayak.sourceUrl} target="_blank" rel="noopener">KAYAK's current data</a>.</p>
+    </section>
+
+    <hr class="sit-sep" />
+
+    <section class="pt-prose">
+      <h2>2. There's a shape to the advance-booking window. There's no magic number.</h2>
+      <p>Set that reminder for "book 21 days out" and you're treating one provider's average as a rule for your trip. Every major study below agrees on the shape of the curve: not the day a fare first opens, and not the final week before departure, but a mid-range window somewhere in between. None of them agree on the exact number of days, because none of them are measuring the same routes over the same period.</p>
+
+      <ul class="pt-snap">
+        <li><b>Google:</b> lowest domestic prices around {aw.google.domesticDays} days out, with a wider {aw.google.domesticRange} day range.</li>
+        <li><b>Expedia (2026):</b> {aw.expedia.domesticRange} days out for domestic fares.</li>
+        <li><b>KAYAK (2026):</b> {aw.kayak.domesticRange} days out for domestic fares.</li>
+        <li><b>CheapAir:</b> roughly a {aw.cheapair.domesticRange} day window in its own recent domestic analysis.</li>
+      </ul>
+
+      <p>Read across those four and the honest takeaway is "somewhere in the three-to-five-week range for a domestic trip," not any single day count. Treat whichever number a headline gives you as one provider's average, not a countdown to set a calendar reminder around.</p>
+
+      <div class="pt-flag">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>
+        <p class="pt-flag-p"><b>A number we're deliberately not printing.</b> Expedia's own published international-savings figure does not reconcile with the underlying numbers in its own report; the appendix implies two different totals depending on whether you read the stated figure or do the subtraction yourself. Rather than pick one and present it as verified, we're leaving that specific number off this page until it's corrected at the source.</p>
+      </div>
+
+      <p>None of this means last-minute fares are always expensive; they're rarer than they used to be, not extinct. A seat that would otherwise fly empty can still get discounted close to departure, especially off-peak. That's a real exception to the general shape above, not a strategy to plan a trip around.</p>
+
+      <p class="src-line">Source: the same <a href={aw.google.sourceUrl} target="_blank" rel="noopener">Google</a> and <a href={aw.expedia.sourceUrl} target="_blank" rel="noopener">Expedia</a> reports above, plus <a href={aw.kayak.sourceUrl} target="_blank" rel="noopener">KAYAK's</a> and <a href={aw.cheapair.sourceUrl} target="_blank" rel="noopener">CheapAir's</a> own advance-purchase data.</p>
+    </section>
+
+    <hr class="sit-sep" />
+
+    <section class="pt-prose">
+      <h2>3. Cookies, incognito, and VPNs: what's actually been tested, and what's genuinely still open</h2>
+      <p>This section is really two separate claims wearing one hoodie. The first is "clearing your cookies gets you a cheaper fare," which has been tested directly and doesn't hold up. The second is "airlines never use anything about you to set a price," which nobody can honestly say either, because AI-driven pricing is real, growing, and not yet fully understood from the outside. We're not going to soften either half to make a cleaner story.</p>
+
+      <h3>What's been tested: clearing cookies</h3>
+      <div class="recentchange">
+        <span class="rcpill">The most-cited test of this, and it's from {ct.testYear}</span>
+        <p>The test people are usually pointing to, whether they know it or not, is a {ct.testYear} Consumer Reports investigation: {ct.searchCount} paired flight searches across {ct.siteCount} airline and travel sites, one browser with cookies intact, one freshly scrubbed. The two versions came back with identical prices the large majority of the time. Where they differed, the scrubbed browser wasn't reliably cheaper; it came back more expensive almost as often as it came back cheaper. That's a decade-old test of one specific mechanism, not a live 2026 audit, and it predates most of the AI pricing work below by nearly a decade. Treat it as historical evidence against the cookie-clearing folklore specifically, not as a verdict on everything airlines might do with data today.</p>
+      </div>
+      <p>What's genuinely real, and gets confused with cookie-clearing: being shown a different price based on your apparent currency or location, which runs through your card network and merchant country handling, not a tracking cookie, and can be overridden the other way by how your own card processes a foreign charge. None of this is a repeatable hack. It's closer to noise than to a lever you can pull on purpose.</p>
+      <p class="src-line">Source: <a href={ct.sourceUrl} target="_blank" rel="noopener">Consumer Reports, {ct.testYear}</a>.</p>
+
+      <h3>What's genuinely unsettled: AI pricing and your personal data</h3>
+      <p>We won't tell you airlines never use anything about you to set a price. AI-driven fare pricing in this industry is not speculative; it's being deployed, named, and dated.</p>
+      <ul class="pt-snap">
+        <li><b>Delta, since late 2024:</b> testing AI-set pricing built with the startup Fetcherr, expanding through 2025. Delta has stated directly that it has never used, tested, or planned a fare product that targets individual customers based on personal information.</li>
+        <li><b>Lufthansa Group, Jan 2026:</b> renewed and expanded its AI-driven dynamic-pricing partnership with PROS, across revenue management, real-time pricing, and ancillary pricing.</li>
+        <li><b>Amadeus and SAS, Jul 2026:</b> Amadeus rolled its Air Pricing Optimization tool out across SAS's full network for continuous, context-based fares.</li>
+      </ul>
+      <p>What these systems are confirmed to do is set prices dynamically, off market demand, route, timing, and inventory. What's actually disputed, as of late 2026, is whether any of them price you differently from the traveler next to you based on who you are, rather than what's left to sell. That's genuinely unproven in either direction, not a settled "yes" and not a settled "no."</p>
+      <p class="src-line">Source: <a href={dep.deltaFetcherr.sourceUrl} target="_blank" rel="noopener">Delta's own statement</a>, <a href={dep.prosLufthansa.sourceUrl} target="_blank" rel="noopener">PROS and Lufthansa Group</a>, and <a href={dep.amadeusSAS.sourceUrl} target="_blank" rel="noopener">Amadeus and SAS</a>.</p>
+
+      <div class="pt-flag">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>
+        <p class="pt-flag-p"><b>Get the Washington scrutiny right, or don't publish it.</b> Two separate things are happening right now, and conflating them is the easiest way to get this topic wrong. First: Rep. Frank Pallone, ranking member of the House Energy and Commerce Committee, sent letters to eight major US airlines in August 2026 asking how they use personal data in pricing, alongside a pending JetBlue class action alleging "surveillance pricing." Both are allegations under active inquiry, not findings; no airline has been shown, in any governmental or judicial finding, to price individual travelers off their personal data. Second, and separate from that: the FTC's own personalized-pricing action, proposed August 19, 2026 with comments due September 25, 2026, is a proposed enforcement policy statement, not a final rule, and it's aimed generally at retail and grocery pricing practices. It does not newly regulate airlines. Under a long-standing carve-out in Section 5(a)(2) of the FTC Act, air carriers sit outside the FTC's Section 5 jurisdiction entirely, an exemption that predates this proposal by decades. Reporting the FTC action as a new airline crackdown is the specific mistake to avoid here.</p>
+      </div>
+      <p class="src-line">Source: <a href={scr.pallonAndJetBlue.sourceUrl} target="_blank" rel="noopener">Rep. Pallone's letters</a>, the <a href={scr.ftcProposal.sourceUrl} target="_blank" rel="noopener">FTC's proposed statement</a> and its <a href={scr.ftcProposal.secondarySourceUrl} target="_blank" rel="noopener">comment extension</a>, and <a href={scr.ftcProposal.airlineCarveOut.analysisUrl} target="_blank" rel="noopener">legal analysis of the airline carve-out</a>.</p>
+
+      <p>This whole section is dated deliberately, as of late 2026. It's the fastest-moving part of this page by far: check the byline date below before treating anything above, the deployments or the regulatory posture, as still current.</p>
+    </section>
+
+    <hr class="sit-sep" />
+
+    <section class="pt-prose">
+      <h2>4. A mistake fare isn't automatically yours to keep</h2>
+      <p>A wildly underpriced "error fare" doesn't come with a guarantee the airline has to honor it. Under DOT's {mf.issuedISO.slice(0,4)} Mistaken Fare Policy Statement, still the operative guidance with no rule since replacing it, the Department's enforcement office won't act against a carrier that cancels a genuine mistaken fare, as long as it refunds the ticket price and reimburses reasonable, verifiable, out-of-pocket costs a traveler incurred relying on the booking, a hotel deposit or a tour reservation, for example, not the value of the trip itself.</p>
+      <p>That's a real, still-standing protection, and it comes with real conditions: the fare has to actually be a demonstrable mistake, and your losses have to be documented. It isn't a blank check for an airline to void any fare it later regrets, and it isn't a strategy this page is going to teach you to go hunting for.</p>
+      <p class="src-line">Source: <a href={mf.sourceUrl} target="_blank" rel="noopener">DOT's 2015 Mistaken Fare Policy Statement</a>.</p>
+    </section>
+
+    <hr class="sit-sep" />
+
+    <section class="pt-prose">
+      <h2>5. Two one-way tickets, or a connection someone else stitched together</h2>
+      <p>"Two one-ways always beat a round trip" is wrong exactly as often as it's right. Sometimes splitting a trip into two separate one-way fares comes in cheaper. Sometimes the round-trip fare undercuts it. There's no rule that reliably favors one over the other, so the only real answer is to price both for your actual dates before you book either.</p>
+      <p>A separate, more consequential question: whether the connection in your itinerary is one ticket or two. Some of the cheapest-looking connections a search site shows you are actually two separate tickets on two airlines with no agreement between them, stitched together by the search engine itself, not sold that way by either carrier. Book that way and you give up through-ticket protection: if your first flight runs late, the second airline owes you nothing, because as far as its system knows, you simply didn't show up. That risk isn't automatic doom, since plenty of self-transfer connections work out fine, but it isn't automatically protected either, and knowing which kind of itinerary you're holding before you fly is the whole game.</p>
+      <a class="xlink" href="/airline-fees-what-your-fare-doesnt-include">
+        <span class="xlink-h">The fuller version of the self-transfer risk lives on the fee-mechanics page</span>
+        <span class="xlink-d">Same fact, one home: what a stitched-together itinerary actually looks like and why it isn't automatically protected.</span>
+      </a>
+    </section>
+
+    <hr class="sit-sep" />
+
+    <section class="pt-prose">
+      <h2>6. And the 24-hour rule doesn't "lock" a fare either</h2>
+      <p>One more piece of booking folklore worth a single line here: the DOT's 24-hour rule is a hold-or-refund right, not a price lock, the airline picks which of the two it offers, and it only reaches bookings made directly with the airline. We cover the mechanics, and where it doesn't reach, in full on the rights page rather than repeat it here.</p>
+      <a class="xlink" href="/money-your-airline-owes-you">
+        <span class="xlink-h">The full 24-hour rule lives on the rights page</span>
+        <span class="xlink-d">What it actually guarantees, which bookings it reaches, and the difference between a hold and a refund.</span>
+      </a>
+    </section>
+
+    <div class="gbyline" style="display:flex;align-items:flex-start;gap:9px;margin:34px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card)">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+      <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. The personalized-pricing facts on this page are the fastest-rotting on the site and are re-checked quarterly at minimum, and immediately on FTC, DOT, or deployment news; the day-of-week and advance-booking study figures are re-checked as each provider publishes its next annual report. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
+    </div>
+
+    <details class="gsources">
+      <summary class="gsources-sum">
+        <span class="gsources-txt">Sources, and how this page was checked</span>
+        <svg class="gsources-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div class="gsources-body">
+        <p class="gs-row"><span class="gs-k">Last checked</span><span>Sep 2026</span></p>
+        <div class="gs-row"><span class="gs-k">Primary sources</span>
+          <ul class="gs-links">
+            {sources.map(s => (
+              <li class="gs-src">
+                <span class="gs-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" set:html={govIcon}></svg></span>
+                <span class="gs-src-tx">
+                  <a href={s.url} target="_blank" rel="noopener" class="gs-src-name">{s.name}</a>
+                  <span class="gs-src-note">{s.note}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p class="gs-row"><span class="gs-k">Our own read</span><span>The FTC's proposed statement does not regulate airlines: air carriers sit outside FTC Section 5 jurisdiction under a decades-old carve-out, separate from anything in this specific proposal, and reporting on the topic has sometimes blurred that line. The Pallone inquiry and the JetBlue litigation are both allegations under active process, not adjudicated findings, and we've stated them that way. Delta's own description of its AI pricing work explicitly denies individualized targeting, which we've included rather than let the "AI pricing exists" fact imply more than the evidence supports. Expedia's own published international advance-booking savings figure doesn't reconcile against its stated total, so it's omitted rather than repeated as verified. The self-transfer risk in section 5 and the 24-hour rule in section 6 both already have a fuller home on this site's other flight pages; this page states the fact once and links out rather than keeping two versions that could drift apart.</span></p>
+      </div>
+    </details>
+
+    <section class="pt-close">
+      <h2>Check the evidence, not the folklore</h2>
+      <p>None of these six myths resolve into a clean hack, and that's the honest answer, not a dodge. Where a real pattern exists, it's small and it moves every year. Where a real legal protection exists, it comes with conditions worth knowing. And where the internet has started repeating a regulatory story that isn't quite true, correcting it plainly is worth more than a tidy headline. For the money side of the trip once you've actually booked, see <a href="/money-your-airline-owes-you">what your airline owes you</a> when it changes your plans, and <a href="/airline-fees-what-your-fare-doesnt-include">what your fare didn't include</a> in the first place.</p>
+    </section>
+
+  </main>
+  <Footer />
+
+  <style>
+    .pt-prose{padding:34px 0 0;max-width:680px}
+    .pt-prose h1{margin:6px 0 14px}
+    .pt-prose h2{margin:0 0 8px}
+    .pt-prose h3{margin:20px 0 6px;font-family:var(--serif);font-weight:500;font-size:17.5px;color:var(--ink)}
+    .pt-lede{font-size:17px;line-height:1.55;color:var(--ink);margin:0}
+    .pt-prose p:not(.lab):not(.pt-lede):not(.pt-subhead):not(.src-line){font-size:16px;line-height:1.65;color:var(--ink);margin:14px 0 0}
+    .pt-prose a{color:var(--teal-deep);font-weight:500;text-decoration:underline;text-underline-offset:2px}
+
+    .pt-subhead{font-weight:600;font-size:13.5px;color:var(--muted);margin:18px 0 4px;text-transform:none}
+
+    .pt-snap{list-style:none;margin:14px 0 0;padding:0;max-width:680px}
+    .pt-snap li{position:relative;font-size:15.5px;line-height:1.6;color:var(--ink);padding:0 0 0 18px;margin:0 0 10px}
+    .pt-snap li:last-child{margin-bottom:0}
+    .pt-snap li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--teal)}
+    .pt-snap b{font-weight:600}
+
+    .pt-flag{display:flex;align-items:flex-start;gap:11px;margin:16px 0 0;padding:14px 16px;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:12px;background:var(--amber-bg)}
+    .pt-flag svg{flex:none;margin-top:2px;color:var(--amber)}
+    .pt-flag-p{margin:0;font-size:14px;line-height:1.6;color:#5C3A0A}
+
+    .src-line{font-family:var(--font);font-size:13px;color:var(--muted);margin:14px 0 0}
+    .src-line a{color:var(--teal-deep);font-weight:600;text-decoration:none}
+    .src-line a:hover,.src-line a:focus{text-decoration:underline}
+
+    .xlink{display:block;border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow);padding:15px 18px;text-decoration:none;margin:12px 0 0;transition:background-color .15s ease}
+    .xlink:hover{background:var(--paper)}
+    .xlink-h{display:block;font-family:var(--serif);font-weight:500;font-size:16.5px;color:var(--teal-deep);line-height:1.3;margin:0 0 4px}
+    .xlink:hover .xlink-h{text-decoration:underline}
+    .xlink-d{display:block;font-size:14px;color:var(--muted);line-height:1.5}
+
+    .sit-sep{border:0;border-top:1px solid var(--line);margin:30px 0 0;max-width:680px}
+
+    .pt-close{padding:38px 0 60px;max-width:680px}
+    .pt-close h2{margin:0 0 8px}
+    .pt-close p{font-size:16px;line-height:1.6;color:var(--muted);margin:0}
+  </style>
+</Base>
