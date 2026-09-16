@@ -424,6 +424,13 @@ import { usdBracket } from '../data/usd-bracket.js';
     const fltLine = id('hnFlightLine');
     if (fltLine) {
       fltLine.hidden = (flightTotal <= 0);
+      // FIX-calc-flight-warnings-gate: the flight warnings group used to be shown/hidden
+      // by a CSS :has() selector watching this same hidden attribute, which does not
+      // reliably re-evaluate when JS flips it after load. Toggling it directly here,
+      // on the same condition, matches how every other conditional element in this
+      // engine already works.
+      const fwEl = id('csFw');
+      if (fwEl) fwEl.hidden = (flightTotal <= 0);
       id('hnFlightTravLabel').textContent = trav;
       id('hnFlightNote').textContent = (estFlight
         ? 'a typical fare we track, edit it above to yours; '

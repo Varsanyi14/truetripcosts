@@ -213,10 +213,16 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
 
         {/* BRIEF-calc-result-flights-integration: the flights capstone. Zero new wizard
             questions, no per-carrier logic, no figure. Visible only when the trip has a
-            flight: pure CSS below, keyed off #hnFlightLine's own hidden state (which the
-            engine above already sets), never a second read of the reader's fare. */}
+            flight.
+            FIX-calc-flight-warnings-gate: this used to be gated by a CSS :has() selector
+            reacting to #hnFlightLine's hidden attribute, which does not reliably
+            re-evaluate when that attribute is flipped by JS after load. Fixed to match
+            every other conditional element in this component (roomHint, regionWrap, the
+            flight line itself): starts hidden here, and calc-engine.js sets
+            csFw.hidden = (flightTotal <= 0) on the same line that sets fltLine.hidden, so
+            it is driven by the one place that actually owns the condition. */}
         {fwGroups.length > 0 && (
-          <div class="cs-fw">
+          <div class="cs-fw" id="csFw" hidden>
             {fwGroups.map(g => (
               <div class={'cs-fw-band cs-fw-' + g.key}>
                 <p class="cs-fw-label">{g.label}</p>
@@ -891,14 +897,13 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
   .cs-note{margin:12px 0 0;padding:10px 12px;background:var(--paper);border-radius:9px;font-size:13.5px;color:var(--muted);line-height:1.55}
 
   /* ----- BRIEF-calc-result-flights-integration: the flights capstone ----- */
-  /* Visibility is pure CSS, never a second script. The engine above already toggles
-     #hnFlightLine's own `hidden` attribute off exactly when flightTotal > 0 (see
-     calc-engine.js's fltLine.hidden line, untouched by this brief), so this reuses that
-     one existing signal instead of adding any new element id for calc-engine.js to reach
-     for. .cs-fw sits in the same .cs-body as #hnFlightLine, so :has() below only ever
-     matches the one "Getting there" body that actually contains it. */
-  .cs-fw{display:none;margin:14px 0 0}
-  .cs-body:has(#hnFlightLine:not([hidden])) .cs-fw{display:block}
+  /* FIX-calc-flight-warnings-gate: visibility used to be a CSS :has() selector reacting
+     to #hnFlightLine's hidden attribute; :has() does not reliably re-evaluate when a
+     descendant's hidden attribute is flipped by JS after load, so the group never
+     appeared. calc-engine.js now sets csFw.hidden directly, on the same line and by the
+     same condition as fltLine.hidden, so the native [hidden] attribute does the showing
+     and hiding and no selector has to react to anything. */
+  .cs-fw{margin:14px 0 0}
   /* The two bands, reusing the site's own existing tint vocabulary rather than inventing
      one: --amber-bg is already this file's own "avoidable but real" color (see .ex-n-pay
      above) and is defined on both stylesheets this component ever renders under. --green-bg
