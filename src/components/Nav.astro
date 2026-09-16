@@ -16,6 +16,49 @@ const regionGroups = CONTINENTS
   .map(key => ({ key, capstone: regionMetaCompare[key] || null, items: clusters.filter(c => c.parent === key) }))
   .filter(g => g.capstone || g.items.length);
 
+// Icon set for the topics side of the Guides menu (section-anchor icons on the three
+// group headings, small referent icons on individual links). The site has no icon-font
+// or icon-pack loaded anywhere (checked: no @font-face, no CDN link, no local webfont),
+// so a Tabler class name like 'ti-briefcase' cannot render on its own the way it would
+// against an actual Tabler webfont. What the site already does, in HomePreview.astro, is
+// hand-draw small stroke icons inline as SVG in that same visual style. This follows that
+// existing pattern: exact path data pulled from the real Tabler Icons set (MIT licensed,
+// tabler.io/icons) for the requested names, inlined here as plain SVG markup, so nothing
+// new loads over the network and every requested icon renders pixel-faithful to Tabler's
+// own outline set. The data-facing name ('ti-briefcase' etc.) is kept as the key, so the
+// DATA SHAPE stays exactly what was asked for even though the render path differs from a
+// CSS ligature class.
+const ICONS = {
+  'ti-briefcase': '<path d="M3 9a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2l0 -9" /><path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" /><path d="M12 12l0 .01" /><path d="M3 13a20 20 0 0 0 18 0" />',
+  'ti-map-pin': '<path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0" />',
+  'ti-arrows-left-right': '<path d="M21 17l-18 0" /><path d="M6 10l-3 -3l3 -3" /><path d="M3 7l18 0" /><path d="M18 20l3 -3l-3 -3" />',
+  'ti-scale': '<path d="M7 20l10 0" /><path d="M6 6l6 -1l6 1" /><path d="M12 3l0 17" /><path d="M9 12l-3 -6l-3 6a3 3 0 0 0 6 0" /><path d="M21 12l-3 -6l-3 6a3 3 0 0 0 6 0" />',
+  'ti-id': '<path d="M3 7a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v10a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -10" /><path d="M7 10a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M15 8l2 0" /><path d="M15 12l2 0" /><path d="M7 16l10 0" />',
+  'ti-bed': '<path d="M5 9a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M22 17v-3h-20" /><path d="M2 8v9" /><path d="M12 14h10v-2a3 3 0 0 0 -3 -3h-7v5" />',
+  'ti-package': '<path d="M12 3l8 4.5l0 9l-8 4.5l-8 -4.5l0 -9l8 -4.5" /><path d="M12 12l8 -4.5" /><path d="M12 12l0 9" /><path d="M12 12l-8 -4.5" /><path d="M16 5.25l-8 4.5" />',
+  'ti-plane-departure': '<path d="M14.639 10.258l4.83 -1.294a2 2 0 1 1 1.035 3.863l-14.489 3.883l-4.45 -5.02l2.897 -.776l2.45 1.414l2.897 -.776l-3.743 -6.244l2.898 -.777l5.675 5.727" /><path d="M3 21h18" />',
+  'ti-plane': '<path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3l4 7" />',
+  'ti-discount': '<path d="M9 15l6 -6" /><path d="M9 9.5a.5 .5 0 1 0 1 0a.5 .5 0 1 0 -1 0" fill="currentColor" /><path d="M14 14.5a.5 .5 0 1 0 1 0a.5 .5 0 1 0 -1 0" fill="currentColor" /><path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />',
+  'ti-credit-card': '<path d="M3 8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3l0 -8" /><path d="M3 10l18 0" /><path d="M7 15l.01 0" /><path d="M11 15l2 0" />',
+  'ti-coin': '<path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M14.8 9a2 2 0 0 0 -1.8 -1h-2a2 2 0 1 0 0 4h2a2 2 0 1 1 0 4h-2a2 2 0 0 1 -1.8 -1" /><path d="M12 7v10" />',
+  'ti-car': '<path d="M5 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M15 17a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M5 17h-2v-6l2 -5h9l4 5h1a2 2 0 0 1 2 2v4h-2m-4 0h-6m-6 -6h15m-6 0v-5" />',
+  'ti-steering-wheel': '<path d="M3 12a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M10 12a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" /><path d="M12 14l0 7" /><path d="M10 12l-6.75 -2" /><path d="M14 12l6.75 -2" />',
+  'ti-wifi': '<path d="M12 18l.01 0" /><path d="M9.172 15.172a4 4 0 0 1 5.656 0" /><path d="M6.343 12.343a8 8 0 0 1 11.314 0" /><path d="M3.515 9.515c4.686 -4.687 12.284 -4.687 17 0" />',
+  'ti-alert-triangle': '<path d="M12 9v4" /><path d="M10.363 3.591l-8.106 13.534a1.914 1.914 0 0 0 1.636 2.871h16.214a1.914 1.914 0 0 0 1.636 -2.87l-8.106 -13.536a1.914 1.914 0 0 0 -3.274 0" /><path d="M12 16h.01" />',
+  'ti-receipt': '<path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2m4 -14h6m-6 4h6m-2 4h2" />',
+  'ti-stethoscope': '<path d="M6 4h-1a2 2 0 0 0 -2 2v3.5a5.5 5.5 0 0 0 11 0v-3.5a2 2 0 0 0 -2 -2h-1" /><path d="M8 15a6 6 0 1 0 12 0v-3" /><path d="M11 3v2" /><path d="M6 3v2" /><path d="M18 10a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />',
+  'ti-calendar-dollar': '<path d="M13 21h-7a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v3" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h12.5" /><path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5" /><path d="M19 21v1m0 -8v1" />',
+  'ti-calendar': '<path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12" /><path d="M16 3v4" /><path d="M8 3v4" /><path d="M4 11h16" /><path d="M11 15h1" /><path d="M12 15v3" />',
+  'ti-train': '<path d="M21 13c0 -3.87 -3.37 -7 -10 -7h-8" /><path d="M3 15h16a2 2 0 0 0 2 -2" /><path d="M3 6v5h17.5" /><path d="M3 11v4" /><path d="M8 11v-5" /><path d="M13 11v-4.5" /><path d="M3 19h18" />',
+  'ti-receipt-tax': '<path d="M9 14l6 -6" /><path d="M9 8.5a.5 .5 0 1 0 1 0a.5 .5 0 1 0 -1 0" fill="currentColor" /><path d="M14 13.5a.5 .5 0 1 0 1 0a.5 .5 0 1 0 -1 0" fill="currentColor" /><path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2" />',
+  'ti-map': '<path d="M3 7l6 -3l6 3l6 -3v13l-6 3l-6 -3l-6 3v-13" /><path d="M9 4v13" /><path d="M15 7v13" />',
+  'ti-plane-tilt': '<path d="M14.5 6.5l3 -2.9a2.05 2.05 0 0 1 2.9 2.9l-2.9 3l2.5 7.5l-2.5 2.55l-3.5 -6.55l-3 3v3l-2 2l-1.5 -4.5l-4.5 -1.5l2 -2h3l3 -3l-6.5 -3.5l2.5 -2.5l7.5 2.5" />',
+  'ti-hand-stop': '<path d="M8 13v-7.5a1.5 1.5 0 0 1 3 0v6.5" /><path d="M11 5.5v-2a1.5 1.5 0 1 1 3 0v8.5" /><path d="M14 5.5a1.5 1.5 0 0 1 3 0v6.5" /><path d="M17 7.5a1.5 1.5 0 0 1 3 0v8.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7a69.74 69.74 0 0 1 -.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47" />',
+  'ti-message-report': '<path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12" /><path d="M12 8v3" /><path d="M12 14v.01" />',
+  'ti-history': '<path d="M12 8l0 4l2 2" /><path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5" />',
+  'ti-world': '<path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M3.6 9h16.8" /><path d="M3.6 15h16.8" /><path d="M11.5 3a17 17 0 0 0 0 18" /><path d="M12.5 3a17 17 0 0 1 0 18" />',
+};
+
 // The topic side of the menu, grouped into three clusters so it reads as a trip
 // sequence (plan it, land in it, compare across it) instead of one flat list of 13.
 // Order inside each group is deliberate: the country hub leads, then the per-country
@@ -27,43 +70,49 @@ const topicGroups = [
   {
     id: 'gm-topics-before',
     label: 'Before you go',
+    icon: 'ti-briefcase',
+    cols: 2,
     items: [
-      { href: '/rules', label: 'Money rules, country by country' },
-      { href: '/passports-and-visas', label: 'Passports and visas' },
-      { href: '/how-to-pay-less-on-hotels', label: 'How to pay less on hotels' },
-      { href: '/us-customs-allowance', label: 'US customs allowance, bringing purchases home' },
-      { href: '/money-your-airline-owes-you', label: 'Airline refunds and your rights' },
-      { href: '/airline-fees-what-your-fare-doesnt-include', label: "Airline fees, what your fare doesn't include" },
-      { href: '/what-actually-makes-a-flight-cheaper', label: "What actually makes a flight cheaper" },
+      { href: '/rules', label: 'Money rules, country by country', icon: 'ti-scale' },
+      { href: '/passports-and-visas', label: 'Passports and visas', icon: 'ti-id' },
+      { href: '/how-to-pay-less-on-hotels', label: 'How to pay less on hotels', icon: 'ti-bed' },
+      { href: '/us-customs-allowance', label: 'US customs allowance, bringing purchases home', icon: 'ti-package' },
+      { href: '/money-your-airline-owes-you', label: 'Airline refunds and your rights', icon: 'ti-plane-departure' },
+      { href: '/airline-fees-what-your-fare-doesnt-include', label: "Airline fees, what your fare doesn't include", icon: 'ti-plane' },
+      { href: '/what-actually-makes-a-flight-cheaper', label: "What actually makes a flight cheaper", icon: 'ti-discount' },
     ],
   },
   {
     id: 'gm-topics-in-country',
     label: 'In each country',
+    icon: 'ti-map-pin',
+    cols: 2,
     items: [
-      { href: '/cash-or-card', label: 'Cash or card' },
-      { href: '/tipping-compared', label: 'Tipping, country by country' },
-      { href: '/taxis-and-ride-hailing', label: 'Taxis and ride-hailing' },
-      { href: '/driving-and-car-rental', label: 'Driving and car rental' },
-      { href: '/staying-connected', label: 'Staying connected' },
-      { href: '/money-scams', label: 'Money scams' },
-      { href: '/hotel-taxes-and-fees', label: 'Hotel fees: what is on the bill' },
-      { href: '/medical-costs', label: 'Medical costs abroad' },
+      { href: '/cash-or-card', label: 'Cash or card', icon: 'ti-credit-card' },
+      { href: '/tipping-compared', label: 'Tipping, country by country', icon: 'ti-coin' },
+      { href: '/taxis-and-ride-hailing', label: 'Taxis and ride-hailing', icon: 'ti-car' },
+      { href: '/driving-and-car-rental', label: 'Driving and car rental', icon: 'ti-steering-wheel' },
+      { href: '/staying-connected', label: 'Staying connected', icon: 'ti-wifi' },
+      { href: '/money-scams', label: 'Money scams', icon: 'ti-alert-triangle' },
+      { href: '/hotel-taxes-and-fees', label: 'Hotel fees: what is on the bill', icon: 'ti-receipt' },
+      { href: '/medical-costs', label: 'Medical costs abroad', icon: 'ti-stethoscope' },
     ],
   },
   {
     id: 'gm-topics-compare',
     label: 'Compare across countries',
+    icon: 'ti-arrows-left-right',
+    cols: 3,
     items: [
-      { href: '/calculator', label: 'What you can refuse to pay' },
-      { href: '/cost-comparison', label: 'Cost of a day, compared' },
-      { href: '/when-to-go', label: 'When to go, cheaper and pricier months' },
-      { href: '/rail-passes', label: 'Rail passes, worth it or not' },
-      { href: '/truth-checks', label: 'What the internet gets wrong about travel money' },
-      { href: '/tourist-taxes', label: 'Tourist taxes and entry fees' },
-      { href: '/hotel-tax-map', label: 'Hotel tax by country, mapped' },
-      { href: '/us-outbound-travelers', label: 'Where Americans travel, ranked' },
-      { href: '/what-changed', label: 'What changed, and when' },
+      { href: '/calculator', label: 'What you can refuse to pay', icon: 'ti-hand-stop' },
+      { href: '/cost-comparison', label: 'Cost of a day, compared', icon: 'ti-calendar-dollar' },
+      { href: '/when-to-go', label: 'When to go, cheaper and pricier months', icon: 'ti-calendar' },
+      { href: '/rail-passes', label: 'Rail passes, worth it or not', icon: 'ti-train' },
+      { href: '/truth-checks', label: 'What the internet gets wrong about travel money', icon: 'ti-message-report' },
+      { href: '/tourist-taxes', label: 'Tourist taxes and entry fees', icon: 'ti-receipt-tax' },
+      { href: '/hotel-tax-map', label: 'Hotel tax by country, mapped', icon: 'ti-map' },
+      { href: '/us-outbound-travelers', label: 'Where Americans travel, ranked', icon: 'ti-plane-tilt' },
+      { href: '/what-changed', label: 'What changed, and when', icon: 'ti-history' },
     ],
   },
 ];
@@ -89,7 +138,10 @@ const topicGroups = [
           </a>
           <div class="gm-cols">
             <div class="gm-col gm-col-regions">
-              <p class="gm-zone">By region</p>
+              <p class="gm-zone">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--teal-deep)" aria-hidden="true" set:html={ICONS['ti-world']}></svg>
+                By region
+              </p>
               {regionGroups.map(g => (
                 <div class="gm-group" data-cont={g.key}>
                   <p class="gm-group-h"><span class="gm-dot" aria-hidden="true"></span>{g.key}</p>
@@ -101,13 +153,29 @@ const topicGroups = [
             <div class="gm-col gm-col-topics">
               {topicGroups.map(g => (
                 <div class="gm-tgroup" role="group" aria-labelledby={g.id}>
-                  <p class="gm-zone" id={g.id}>{g.label}</p>
-                  {g.items.map(t => <a class="gm-link" href={t.href}>{t.label}</a>)}
+                  <p class="gm-zone" id={g.id}>
+                    {ICONS[g.icon] && (
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;color:var(--teal-deep)" aria-hidden="true" set:html={ICONS[g.icon]}></svg>
+                    )}
+                    {g.label}
+                  </p>
+                  <div class="gm-tlist" style={`--tcol:${g.cols}`}>
+                    {g.items.map(t => (
+                      <a class="gm-link" href={t.href}>
+                        {t.icon && ICONS[t.icon] && (
+                          <svg width="16" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position:absolute;top:7px;left:8px;color:var(--muted)" aria-hidden="true" set:html={ICONS[t.icon]}></svg>
+                        )}
+                        {t.label}
+                      </a>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
-          <a class="gm-all" href="/countries"><span>All country guides</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <div style="display:flex;justify-content:flex-end;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)">
+            <a class="gm-all" href="/countries"><span>All country guides</span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
         </div>
       </details>
       <a class="navcta" href="#" data-open-signup>Get updates</a>
@@ -125,14 +193,32 @@ const topicGroups = [
     .gmenu-sum:hover{color:var(--teal-deep)}
     .gmenu-chev{transition:transform .15s ease}
     .gmenu[open] .gmenu-chev{transform:rotate(180deg)}
-    .gmenu-panel{position:absolute;top:calc(100% + 8px);right:0;width:540px;max-width:calc(100vw - 32px);max-height:calc(100vh - 96px);overflow-y:auto;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:16px 18px;z-index:60}
-    .gm-cols{display:grid;grid-template-columns:1fr 1fr}
+    .gmenu-panel{position:absolute;top:calc(100% + 8px);right:0;width:820px;max-width:calc(100vw - 32px);max-height:calc(100vh - 96px);overflow-y:auto;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:16px 18px;z-index:60}
+    /* Regions keeps the exact track width it already had (252px, unchanged); the extra
+       room from widening the panel goes entirely to the topics column, which is the side
+       that needed it. */
+    .gm-cols{display:grid;grid-template-columns:252px 1fr}
     .gm-col-regions{padding-right:16px}
     .gm-col-topics{border-left:1px solid var(--line);padding-left:18px}
-    .gm-zone{margin:2px 0 10px 8px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--teal-deep)}
-    .gm-col-topics .gm-zone{margin-left:8px}
-    .gm-tgroup{margin:0 0 13px}
+    /* Shared heading treatment for "By region" and the three topic-group headings, so all
+       four read as sibling blocks in one visual system: icon, serif weight matching the
+       region column's own .gm-group-h, and a hairline divider to separate each block from
+       its content. Region and topics both use this same rule; only their content below
+       differs (a nested continent tree vs a flat topic list). */
+    .gm-zone{display:flex;align-items:center;gap:6px;margin:0 0 12px;padding:0 8px 7px;font-family:var(--serif);font-size:13.5px;font-weight:600;color:var(--ink);border-bottom:.5px solid var(--line)}
+    .gm-tgroup{margin:0 0 20px}
     .gm-tgroup:last-child{margin-bottom:0}
+    /* Multi-column (not grid) so links read top-to-bottom down a column, then wrap to the
+       next column, instead of zigzagging left-to-right across a row. --tcol (2 or 3, set
+       inline per group in Nav.astro from the same data-driven `cols` value as before) is
+       the column count; column-fill:balance is what makes columns fill sequentially rather
+       than each stretching to an explicit height. break-inside:avoid (below, on the link
+       itself) keeps a wrapped 2-line label from being split across a column boundary.
+       FALLBACK, not applied: if sections still don't separate enough live, wrap each
+       .gm-tgroup in a light card instead of relying on whitespace + the divider above -
+       add `background:var(--paper);border-radius:10px;padding:12px` to .gm-tgroup (drop
+       .gm-zone's own border-bottom in that case, the card edge already separates it). */
+    .gm-tlist{column-count:var(--tcol);column-gap:22px;column-fill:balance}
     .gm-group{margin:0 0 13px}
     .gm-group:last-child{margin-bottom:0}
     .gm-group-h{display:flex;align-items:center;gap:7px;margin:0 0 3px;padding:0 8px;font-family:var(--serif);font-weight:600;font-size:13.5px;color:var(--ink)}
@@ -143,10 +229,16 @@ const topicGroups = [
     .gm-group[data-cont="Middle East"] .gm-dot{background:#C99A2E}
     .gm-group[data-cont="Africa"] .gm-dot{background:#6F8F3E}
     .gm-link{display:block;padding:6px 8px 6px 22px;border-radius:8px;font-size:13.5px;color:#3B4A46;text-decoration:none;line-height:1.3}
-    .gm-col-topics .gm-link{padding-left:8px}
+    .gm-col-topics .gm-link{position:relative;padding-left:30px;break-inside:avoid}
+    /* Fixed 16px icon slot, positioned out of flow (each icon carries its own inline
+       top/left/color). Every topic link now carries an icon (the three previously-blank
+       abstract links were given one - see the icon map in Nav.astro), so this slot is no
+       longer conditional in practice, but the render still handles a future icon-less link
+       cleanly if one is ever added. var(--muted) is the site's actual muted-text token;
+       var(--text-muted) named in the original brief doesn't exist in this codebase. */
     .gm-link:hover{background:var(--paper);color:var(--teal-deep)}
     .gm-cap{color:var(--teal-deep);font-weight:600}
-    .gm-all{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;padding:12px 14px;background:var(--green-bg);border-radius:10px;font-size:13.5px;font-weight:600;color:var(--teal-deep);text-decoration:none;transition:color .15s ease}
+    .gm-all{display:inline-flex;align-items:center;gap:8px;padding:12px 14px;background:var(--green-bg);border-radius:10px;font-size:13.5px;font-weight:600;color:var(--teal-deep);text-decoration:none;transition:color .15s ease}
     .gm-all:hover{color:var(--ink)}
     .gm-all svg{transition:transform .15s ease}
     .gm-all:hover svg{transform:translateX(3px)}
@@ -166,6 +258,7 @@ const topicGroups = [
       .gm-cols{grid-template-columns:1fr}
       .gm-col-regions{padding-right:0}
       .gm-col-topics{border-left:none;border-top:1px solid var(--line);padding-left:0;padding-top:13px;margin-top:11px}
+      .gm-tlist{column-count:1}
     }
   </style>
 </nav>
