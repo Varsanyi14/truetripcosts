@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
 import USBadge from '../components/USBadge.astro';
+import MoneyBackFlow from '../components/MoneyBackFlow.astro';
 import { flightRefundRights } from '../data/flight-refund-rights.js';
 
 // BRIEF-bite1-money-owed-rights-page. Bite 1 of the flights domain: a standalone rights
@@ -127,6 +128,28 @@ const sources = [
       </ul>
 
       <p class="src-line">Source: <a href={bag.sourceUrl} target="_blank" rel="noopener">14 CFR Part 260</a>.</p>
+    </section>
+
+    {/* BRIEF-money-back-viz. PLACEMENT, flagged for MAIN/Gary's eyeball per the brief's
+        own instruction. The brief's first choice was right after the lede's coverage box,
+        before the three situations above; that box already says "flights to, from, or
+        within the US" almost verbatim to this diagram's own gate, two sentences apart, so
+        it read as a flat repeat rather than a synthesis. Here, after all three situations
+        have been read in full, it recaps ONLY situation 1's logic (the diagram never
+        claims to cover the 24-hour rule or the delayed-bag rule; the footnote below says
+        so directly), in the same order situation 1's own prose already states it: change
+        the flight, decline the substitute, get the cash, mind who charged you, mind the
+        clock. */}
+    <section class="pt-prose">
+      <p class="lab">The decision path</p>
+      <h2>Does this actually apply to you?</h2>
+      <p>Situation 1's cancellation and significant-change right, drawn as one path from top to bottom.</p>
+      <MoneyBackFlow
+        domesticHours={sig.departureDomesticHours}
+        internationalHours={sig.departureInternationalHours}
+        cardDays={timing.cardBusinessDays}
+        otherDays={timing.otherCalendarDays}
+      />
     </section>
 
     <section class="pt-prose">

@@ -1,0 +1,206 @@
+---
+// BRIEF-money-back-viz. The rights page's one delight piece: a static decision path
+// showing, in one view, when the cancellation/significant-change refund right on
+// /money-your-airline-owes-you actually pays out. Built at build time, no runtime chart
+// library, no client script, following the same division of labour StackBar.astro and
+// CostCurve.astro already establish for this site (see StackBar's own header for the
+// full reasoning): SVG draws pure connecting geometry only, and every word a reader has
+// to read is real HTML text. A single SVG carrying its own text has to pick one font size
+// in user units, and that size then looks wrong at either a 360px phone or a 680px
+// desktop column; real HTML text sidesteps the problem entirely rather than fighting it.
+//
+// COLOR SUBSTITUTION FROM THE APPROVED MOCK, FLAGGED FOR MAIN/GARY REVIEW. The approved
+// mock coded its two "condition" steps in blue. This site's real design tokens (see
+// global.css's :root) have no blue anywhere at all: ink, teal/teal-deep, amber/amber-bg,
+// green/green-bg, muted, line, paper, card. Per the brief's own instruction to use the
+// site's real tokens rather than the mock's stand-in hex, this swaps blue for green on
+// the two condition steps, and keeps the two colors the brief names that ARE real tokens
+// unchanged: teal for the outcome/close steps, amber for the OTA-catch fork.
+//
+// OUTCOME/CLOSE ARE NOT ANOTHER PALE TINT, ON PURPOSE. A pale teal tint, blended toward
+// white the same way green-bg and amber-bg already are, lands within a few hex values of
+// green-bg itself (teal and green sit close in hue at this darkness), which would make
+// "you must check this" and "here is what you are owed" look nearly the same color to
+// exactly the readers the brief's own "color is never the only signal" rule protects. So
+// the outcome/close steps sit on the plain card background with a full teal border
+// instead of a pale fill: distinguished from the condition steps by weight as well as
+// hue, not hue alone.
+//
+// THE FORK HAS NO BRANCHING LINES, ON PURPOSE. The approved mock draws the OTA/agent
+// split as two lines fanning out from one point. A responsive version of that fan has to
+// know the exact rendered midpoint of two boxes whose height depends on however much text
+// they hold at whatever width they render at, which is fragile in exactly the way a
+// hand-positioned SVG coordinate is fragile. So the fork is one amber box holding both
+// branches side by side (stacked on narrow phones), connected in and out with the same
+// plain straight connector every other step uses. It still reads as a fork because both
+// named outcomes sit inside one box under one question, not because a branching line says
+// so, which is also the more literal way to satisfy "the color is never the only signal":
+// the branch is stated in words either way.
+//
+// THE FIGURES ARE PROPS, NEVER RETYPED. domesticHours / internationalHours / cardDays /
+// otherDays are read by the page from flightRefundRights (flight-refund-rights.js) and
+// passed in here, the same values the page's own prose already prints. If those change,
+// this diagram changes with them; nothing in this file states a number of its own, so the
+// page prose and the diagram cannot quietly drift apart.
+//
+// ACCESSIBILITY. Every step's heading and sub-line is real, visible HTML text in normal
+// document order, so a screen reader gets the full logic without depending on color or on
+// the decorative connector arrows (each marked aria-hidden, pure geometry, no information
+// of their own). A single visually-hidden summary paragraph (.mbv-sr, the same role="img"
+// pattern StackBar.astro's .sb-sr and CostCurve.astro's .cc-sr already use) gives a
+// one-paragraph overview up front, built from the same step text below rather than typed
+// separately, so it cannot say something the diagram itself does not.
+//
+// Props:
+//   domesticHours, internationalHours   the significant-change schedule thresholds
+//   cardDays, otherDays                 the refund-timing clock
+//   id                                  so a page could carry more than one (this page
+//                                       only ever has one; see the brief's own scope)
+const {
+  domesticHours,
+  internationalHours,
+  cardDays,
+  otherDays,
+  id = 'money-back-flow',
+} = Astro.props;
+
+const steps = [
+  {
+    kind: 'gate',
+    heading: 'A flight to, from, or within the US',
+    sub: 'not a foreign domestic flight bought abroad',
+  },
+  {
+    kind: 'condition',
+    heading: 'Did the airline cancel or significantly change it?',
+    sub: `${domesticHours}h+ domestic, ${internationalHours}h+ international, airport, cabin`,
+  },
+  {
+    kind: 'condition',
+    heading: 'Did you decline the rebooking or voucher?',
+    sub: 'take the voucher and you have chosen it',
+  },
+  {
+    kind: 'outcome',
+    heading: 'You are owed a cash refund',
+    sub: 'to your original payment, even on a nonrefundable fare',
+  },
+  {
+    kind: 'fork',
+    heading: 'Who charged you?',
+    branches: [
+      { label: 'The airline', detail: 'pays automatically' },
+      { label: 'An OTA or agent', detail: 'usually pays on request, so ask' },
+    ],
+  },
+  {
+    kind: 'outcome',
+    heading: `Cash back: ${cardDays} business days on a card`,
+    sub: `${otherDays} calendar days by other methods`,
+  },
+];
+
+const FOOTNOTE = 'A "no" at either question above is not a dead end. The 24-hour rule and the delayed-bag rules are separate rights on this same page, each with its own condition.';
+
+// Built from the same step text the visible boxes render below, never typed a second
+// time, so this summary cannot drift from what the diagram actually shows.
+const described = [
+  `Gate: ${steps[0].heading}, ${steps[0].sub}.`,
+  `Condition: ${steps[1].heading} Threshold: ${steps[1].sub}.`,
+  `Condition: ${steps[2].heading} ${steps[2].sub}.`,
+  `Outcome: ${steps[3].heading}, ${steps[3].sub}.`,
+  `Then, ${steps[4].heading} ${steps[4].branches.map((b) => `${b.label} ${b.detail}`).join('; ')}.`,
+  `${steps[5].heading}, ${steps[5].sub}.`,
+  FOOTNOTE,
+].join(' ');
+
+// One small reusable connector, reused between every pair of steps: a straight line and
+// a chevron, currentColor so `.mbv-arrow{color:...}` sets it, the same
+// const-string-plus-set:html idiom this page's own `govIcon` already uses above.
+const ARROW = '<line x1="12" y1="0" x2="12" y2="21" stroke="currentColor" stroke-width="2"/><path d="M6 17 12 25 18 17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+---
+
+<div class="mbv" id={id}>
+  <p class="mbv-sr" role="img" aria-label={described}></p>
+
+  <ol class="mbv-flow">
+    {steps.map((s, i) => (
+      <>
+        {i > 0 && (
+          <li class="mbv-connector" aria-hidden="true">
+            <svg class="mbv-arrow" viewBox="0 0 24 26" xmlns="http://www.w3.org/2000/svg" focusable="false" set:html={ARROW}></svg>
+          </li>
+        )}
+        {s.kind === 'gate' && (
+          <li class="mbv-item mbv-gate">
+            <p class="mbv-gate-h">{s.heading}</p>
+            <p class="mbv-gate-s">{s.sub}</p>
+          </li>
+        )}
+        {s.kind === 'fork' && (
+          <li class="mbv-item mbv-step is-fork">
+            <p class="mbv-h">{s.heading}</p>
+            <div class="mbv-branches">
+              {s.branches.map((b) => (
+                <div class="mbv-branch">
+                  <p class="mbv-branch-l">{b.label}</p>
+                  <p class="mbv-branch-d">{b.detail}</p>
+                </div>
+              ))}
+            </div>
+          </li>
+        )}
+        {(s.kind === 'condition' || s.kind === 'outcome') && (
+          <li class={'mbv-item mbv-step is-' + s.kind}>
+            <p class="mbv-h">{s.heading}</p>
+            <p class="mbv-s">{s.sub}</p>
+          </li>
+        )}
+      </>
+    ))}
+  </ol>
+
+  <p class="mbv-footnote">{FOOTNOTE}</p>
+</div>
+
+<style>
+  .mbv{margin:18px 0 0;max-width:680px}
+  .mbv-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;margin:0}
+
+  .mbv-flow{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:center}
+  .mbv-item{width:100%}
+
+  .mbv-connector{display:flex;justify-content:center;margin:0}
+  .mbv-arrow{width:20px;height:22px;display:block;color:var(--line)}
+
+  /* The gate: a pill, not a step, deliberately narrower and quieter than the boxes below
+     it, so it reads as the threshold you pass through rather than the first move you make. */
+  .mbv-gate{display:flex;flex-direction:column;align-items:center;gap:2px;width:auto;max-width:92%;padding:9px 18px;border-radius:999px;border:1px solid var(--line);background:var(--paper);text-align:center}
+  .mbv-gate-h{margin:0;font-size:13px;font-weight:600;color:var(--ink);line-height:1.3}
+  .mbv-gate-s{margin:0;font-size:11px;color:var(--muted);line-height:1.3}
+
+  .mbv-step{border-radius:12px;padding:14px 16px}
+  .mbv-step.is-condition{background:var(--green-bg);border:1px solid var(--line);border-left:3px solid var(--green)}
+  .mbv-step.is-outcome{background:var(--card);border:1.5px solid var(--teal);box-shadow:var(--shadow)}
+  .mbv-step.is-fork{background:var(--amber-bg);border:1px solid var(--line);border-left:3px solid var(--amber)}
+
+  .mbv-h{margin:0;font-size:15px;font-weight:600;color:var(--ink);line-height:1.35}
+  .mbv-s{margin:4px 0 0;font-size:13px;color:var(--muted);line-height:1.5}
+  /* The outcome/close headings get the site's own serif, the same treatment other
+     standout figures (.ins-emg-n, .hn-total-v) already get, so "what you are owed" reads
+     with a bit more weight than a question does, on top of the border/fill distinction. */
+  .mbv-step.is-outcome .mbv-h{font-family:var(--serif);font-weight:500;font-size:17px;color:var(--teal-deep)}
+
+  .mbv-branches{display:flex;gap:10px;margin-top:10px}
+  .mbv-branch{flex:1;min-width:0;padding:9px 11px;border-radius:8px;background:var(--card);border:1px solid rgba(180,83,9,.2)}
+  .mbv-branch-l{margin:0;font-size:13px;font-weight:600;color:var(--ink)}
+  .mbv-branch-d{margin:2px 0 0;font-size:12px;color:var(--muted);line-height:1.4}
+
+  .mbv-footnote{margin:14px 0 0;font-size:13px;color:var(--muted);line-height:1.55;max-width:620px}
+
+  @media (max-width:560px){
+    .mbv-branches{flex-direction:column}
+    .mbv-h{font-size:14.5px}
+    .mbv-step.is-outcome .mbv-h{font-size:16px}
+  }
+</style>
