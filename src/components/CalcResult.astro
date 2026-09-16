@@ -38,6 +38,13 @@ import { calcLinesFor } from '../data/calc-lines.js';
 import { avoidableFor, exposureFor } from '../data/avoidable.js';
 import { comparisonsFor } from '../data/region-comparisons.js';
 import { countries } from '../data/index.js';
+// BRIEF-calc-result-flights-integration: the flights capstone. Read directly here rather
+// than threaded through calcLinesFor(c), because it is the one "Getting there" line that
+// is NOT a function of the country: the same four warnings apply to any trip with a
+// flight, so there is no per-country field for calc-lines.js to read. See
+// flight-warnings.js's own header for the full reasoning and for why each line is worded
+// the way it is.
+import { flightWarnings } from '../data/flight-warnings.js';
 
 const { country: c, tipCalc, hideWizardCta } = Astro.props;
 const L = calcLinesFor(c);
@@ -93,6 +100,17 @@ const exGroups = hideWizardCta ? exGroupsByWorth : exGroupsBySide;
 // cost sitting in that section, and the cross-reference is about WHERE it lives, not about
 // whether it carries a number.
 const hasEntryCharge = !!((L.entryCharges && L.entryCharges.length) || (L.entryUnpriced && L.entryUnpriced.length));
+// BRIEF-calc-result-flights-integration: the two labeled bands, grouped by tier exactly the
+// way exGroupsBySide above groups avoidable items by side. Universal and unconditional on
+// `c`: every live country gets the same two bands, because the four lines are true of any
+// flight. Visibility of the whole block (shown only when the trip actually has a flight) is
+// handled entirely in this component's own <style> below, keyed off the calculator's
+// existing #hnFlightLine state, so nothing here needs to know the reader's actual fare.
+const fwGroups = [
+  { key: 'watch', label: 'Watch out for', items: flightWarnings.filter(w => w.tier === 'watch') },
+  { key: 'prepare', label: 'Prepare ahead', items: flightWarnings.filter(w => w.tier === 'prepare') },
+].filter(g => g.items.length > 0);
+
 // The region-compare link carries NO figures, on purpose: a number on a link is a claim the
 // reader cannot check until they have clicked it.
 const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
@@ -192,6 +210,27 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
         <div class="hn-rows">
           <div class="hn-line" id="hnFlightLine" hidden><span class="hn-k">Flights (<span id="hnFlightTravLabel">2</span> travelers, round trip)<em id="hnFlightNote">paid in dollars at booking, so no foreign fee on this line</em></span><span class="hn-v num" id="hnFlightV">$0</span></div>
         </div>
+
+        {/* BRIEF-calc-result-flights-integration: the flights capstone. Zero new wizard
+            questions, no per-carrier logic, no figure. Visible only when the trip has a
+            flight: pure CSS below, keyed off #hnFlightLine's own hidden state (which the
+            engine above already sets), never a second read of the reader's fare. */}
+        {fwGroups.length > 0 && (
+          <div class="cs-fw">
+            {fwGroups.map(g => (
+              <div class={'cs-fw-band cs-fw-' + g.key}>
+                <p class="cs-fw-label">{g.label}</p>
+                {g.items.map(w => (
+                  <div class="cs-line">
+                    <span class="cs-line-h">{w.heading}</span>
+                    <span class="cs-line-d">{w.body} <a class="cs-src" href={w.href} target="_blank" rel="noopener">{w.hrefLabel}</a></span>
+                  </div>
+                ))}
+              </div>
+            ))}
+            <p class="cs-note">These carry no dollar figure by design: each is named because it is real, and there is nothing honest to price here.</p>
+          </div>
+        )}
 
         {/* A1. ONE-OFF PER PERSON, and it says so on every line: this figure multiplies by
             travelers and never by nights, which is the whole reason it is not in the tax
@@ -850,6 +889,34 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
   .cs-src{display:inline-flex;align-items:center;gap:5px;margin-top:6px;font-size:13px;font-weight:600;color:var(--teal-deep);text-decoration:none}
   .cs-src:hover{text-decoration:underline}
   .cs-note{margin:12px 0 0;padding:10px 12px;background:var(--paper);border-radius:9px;font-size:13.5px;color:var(--muted);line-height:1.55}
+
+  /* ----- BRIEF-calc-result-flights-integration: the flights capstone ----- */
+  /* Visibility is pure CSS, never a second script. The engine above already toggles
+     #hnFlightLine's own `hidden` attribute off exactly when flightTotal > 0 (see
+     calc-engine.js's fltLine.hidden line, untouched by this brief), so this reuses that
+     one existing signal instead of adding any new element id for calc-engine.js to reach
+     for. .cs-fw sits in the same .cs-body as #hnFlightLine, so :has() below only ever
+     matches the one "Getting there" body that actually contains it. */
+  .cs-fw{display:none;margin:14px 0 0}
+  .cs-body:has(#hnFlightLine:not([hidden])) .cs-fw{display:block}
+  /* The two bands, reusing the site's own existing tint vocabulary rather than inventing
+     one: --amber-bg is already this file's own "avoidable but real" color (see .ex-n-pay
+     above) and is defined on both stylesheets this component ever renders under. --green-bg
+     is this file's own "money staying put" color (see .cs-keep, .ex-n-dodge above) on the
+     inline per-country route (global.css), but the standalone wizard route's calculator.css
+     never defines --green-bg at all, only --prepare-bg for the same shade of green under a
+     different name; the fallback chain below is what keeps the prepare band tinted on that
+     route too, not a new color choice. */
+  .cs-fw-band{padding:12px 13px;border-radius:10px;margin:10px 0 0}
+  .cs-fw-band:first-child{margin-top:0}
+  .cs-fw-watch{background:var(--amber-bg)}
+  .cs-fw-prepare{background:var(--green-bg, var(--prepare-bg, #EDF4EF))}
+  .cs-fw-label{margin:0;font-family:var(--mono);font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--muted)}
+  .cs-fw-watch .cs-fw-label{color:var(--amber)}
+  .cs-fw-prepare .cs-fw-label{color:#10502C}
+  /* Inside a tinted band the line right under the label needs no top rule of its own; any
+     further line in the same band keeps the same divider .cs-line uses everywhere else. */
+  .cs-fw-band .cs-fw-label + .cs-line{border-top:none;margin-top:8px;padding-top:0}
 
   /* "What you can avoid", never "Save $X!". */
 
