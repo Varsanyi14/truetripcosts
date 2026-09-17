@@ -855,6 +855,16 @@ export function initCalcWizard() {
       set('[data-breakdown-line-provenance="flights"]', '<span class="meta-key">Basis</span> ' + (flightIncluded ? (state.origin.flight === 'figure' ? 'Your figure' : 'Our estimate') : 'Not applicable'));
       document.querySelectorAll('[data-breakdown-line-provenance="flights"]').forEach(el => { el.innerHTML = '<span class="meta-key">Basis</span> ' + (flightIncluded ? (state.origin.flight === 'figure' ? 'Your figure' : 'Our estimate') : 'Not applicable'); });
       document.querySelectorAll('[data-breakdown-line-status="flights"]').forEach(el => { el.textContent = flightIncluded ? 'Included' : 'Not included'; el.className = 'status' + (flightIncluded ? '' : ' not-included'); });
+      // HANDBACK-warnings-country-route: the flight warnings block is this surface's own
+      // separate, statically pre-rendered copy of L.flightWarnings (CalcWizard.astro
+      // renders it directly, same as it already does for L.entryCharges/L.namedZeros just
+      // above it in the same breakdown-body; see that file's own note on why a second copy
+      // exists rather than reusing CalcResult.astro's, which is invisible on this route).
+      // Same condition as the flight line itself, same class-toggle mechanism
+      // FIX2-flight-warnings-class-toggle established, not the hidden attribute: this
+      // route's own calculator.css carries the same global [hidden]{display:none
+      // !important} rule that broke the other copy.
+      document.querySelectorAll('[data-fw-group]').forEach(el => el.classList.toggle('is-on', flightIncluded));
 
       // ----- breakdown: Accommodation -----
       set('[data-breakdown-amount="accommodation"]', roomAmt);

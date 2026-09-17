@@ -30,6 +30,14 @@ import { entryChargesFor, isBillable, isNamedZero, isUnpriced } from './entry-ch
 import { seasons } from './seasons.js';
 import { tipping as tippingRows } from './tipping.js';
 import { isSchengen, borderStatus } from './schengen.js';
+// HANDBACK-warnings-country-route: flightWarnings is universal (not a function of `c`,
+// unlike everything else this module reads), but it is surfaced through L anyway, not by
+// a direct import in each consumer, because it turned out to have TWO consumers
+// (CalcResult.astro's own render, and CalcWizard.astro's separate visible breakdown
+// markup, see that file's own note on why a second, differently-styled copy exists), and
+// two consumers importing the same static data independently is exactly the kind of thing
+// that quietly drifts. One import here, read by both as L.flightWarnings, cannot drift.
+import { flightWarnings } from './flight-warnings.js';
 
 // A7, VAT and GST refunds.
 //
@@ -227,6 +235,10 @@ export function calcLinesFor(c) {
   if (c.insuranceLevel && INSURANCE[c.insuranceLevel]) {
     out.insurance = { level: c.insuranceLevel, ...INSURANCE[c.insuranceLevel] };
   }
+
+  // BRIEF-calc-result-flights-integration: universal, not a function of `c`, so always
+  // present regardless of country. See flight-warnings.js's own header for the content.
+  out.flightWarnings = flightWarnings;
 
   return out;
 }

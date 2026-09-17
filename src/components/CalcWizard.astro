@@ -357,6 +357,15 @@ const materialExclusions = [
   'Travel insurance',
   ...((L.entryUnpriced || []).map(e => e.label)),
 ];
+// HANDBACK-warnings-country-route: this surface's own separate render of the flight
+// warnings, for the "Where the money goes" breakdown below (see that section's own
+// comment for why a second copy exists). Identical grouping logic to CalcResult.astro's
+// own fwGroups, reading the same L.flightWarnings, so the two cannot show different
+// content even though they are two different pieces of markup.
+const fwGroups = [
+  { key: 'watch', label: 'Watch out for', items: (L.flightWarnings || []).filter(w => w.tier === 'watch') },
+  { key: 'prepare', label: 'Prepare ahead', items: (L.flightWarnings || []).filter(w => w.tier === 'prepare') },
+].filter(g => g.items.length > 0);
 
 // BRIEF-calc-result-registry-rebuild, PART 1: the HARD/SOFT tier pool, read once from the
 // registry (avoidableRegistryFor(c) wraps avoidableFor(c) byte-for-byte; see that
@@ -1163,6 +1172,34 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
                   <p class="small muted">{z.value}</p>
                 </div>
               ))}
+              {/* HANDBACK-warnings-country-route: this route's own separate, statically
+                  pre-rendered copy of the flight warnings (see calc-lines.js's own note on
+                  why L.flightWarnings has two consumers). Hidden by default (no is-on
+                  class; see this file's own <style> below) and toggled on only when a
+                  flight is actually included, by mirror() in calc-wizard.js, on the exact
+                  same flightIncluded condition that already drives every other value in
+                  this breakdown item, using a class rather than the hidden attribute
+                  because calculator.css's [hidden]{display:none!important} rule is what
+                  broke this on this exact route the first time (FIX2-flight-warnings-
+                  class-toggle). fwGroups.length is always > 0 (the four warnings are
+                  universal), so this renders unconditionally at build time; runtime
+                  visibility is the only thing the class controls. */}
+              {fwGroups.length > 0 && (
+                <div class="fw-wrap" data-fw-group>
+                  {fwGroups.map(g => (
+                    <div class={'fw-band fw-' + g.key}>
+                      <p class="fw-label">{g.label}</p>
+                      {g.items.map(w => (
+                        <div class="fw-item">
+                          <p class="fw-h">{w.heading}</p>
+                          <p class="fw-d">{w.body} <a href={w.href} target="_blank" rel="noopener">{w.hrefLabel}</a></p>
+                        </div>
+                      ))}
+                    </div>
+                  ))}
+                  <p class="fw-note">These carry no dollar figure by design: each is named because it is real, and there is nothing honest to price here.</p>
+                </div>
+              )}
               <button class="text-link" type="button" data-edit="flights">Change airfare</button>
             </div>
           </details>

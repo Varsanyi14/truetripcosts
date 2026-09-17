@@ -38,13 +38,6 @@ import { calcLinesFor } from '../data/calc-lines.js';
 import { avoidableFor, exposureFor } from '../data/avoidable.js';
 import { comparisonsFor } from '../data/region-comparisons.js';
 import { countries } from '../data/index.js';
-// BRIEF-calc-result-flights-integration: the flights capstone. Read directly here rather
-// than threaded through calcLinesFor(c), because it is the one "Getting there" line that
-// is NOT a function of the country: the same four warnings apply to any trip with a
-// flight, so there is no per-country field for calc-lines.js to read. See
-// flight-warnings.js's own header for the full reasoning and for why each line is worded
-// the way it is.
-import { flightWarnings } from '../data/flight-warnings.js';
 
 const { country: c, tipCalc, hideWizardCta } = Astro.props;
 const L = calcLinesFor(c);
@@ -106,9 +99,16 @@ const hasEntryCharge = !!((L.entryCharges && L.entryCharges.length) || (L.entryU
 // flight. Visibility of the whole block (shown only when the trip actually has a flight) is
 // handled entirely in this component's own <style> below, keyed off the calculator's
 // existing #hnFlightLine state, so nothing here needs to know the reader's actual fare.
+// HANDBACK-warnings-country-route: L.flightWarnings (calc-lines.js), not a direct import
+// of flight-warnings.js as this originally read. This component's own render of it is
+// invisible on the standalone wizard route (it sits inside that route's
+// `data-engine-root hidden` calculation-only tree, never shown to a reader there, see
+// CalcWizard.astro's own architecture note), so CalcWizard.astro carries a second,
+// separately-styled render of the same content for its own visible breakdown. Both read
+// the identical L.flightWarnings so the two renders cannot drift apart from each other.
 const fwGroups = [
-  { key: 'watch', label: 'Watch out for', items: flightWarnings.filter(w => w.tier === 'watch') },
-  { key: 'prepare', label: 'Prepare ahead', items: flightWarnings.filter(w => w.tier === 'prepare') },
+  { key: 'watch', label: 'Watch out for', items: (L.flightWarnings || []).filter(w => w.tier === 'watch') },
+  { key: 'prepare', label: 'Prepare ahead', items: (L.flightWarnings || []).filter(w => w.tier === 'prepare') },
 ].filter(g => g.items.length > 0);
 
 // The region-compare link carries NO figures, on purpose: a number on a link is a claim the
