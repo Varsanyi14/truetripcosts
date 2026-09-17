@@ -214,15 +214,15 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
         {/* BRIEF-calc-result-flights-integration: the flights capstone. Zero new wizard
             questions, no per-carrier logic, no figure. Visible only when the trip has a
             flight.
-            FIX-calc-flight-warnings-gate: this used to be gated by a CSS :has() selector
-            reacting to #hnFlightLine's hidden attribute, which does not reliably
-            re-evaluate when that attribute is flipped by JS after load. Fixed to match
-            every other conditional element in this component (roomHint, regionWrap, the
-            flight line itself): starts hidden here, and calc-engine.js sets
-            csFw.hidden = (flightTotal <= 0) on the same line that sets fltLine.hidden, so
-            it is driven by the one place that actually owns the condition. */}
+            FIX2-flight-warnings-class-toggle: no starting `hidden` attribute here on
+            purpose (see this component's own <style> for why: calculator.css's global
+            `[hidden]{display:none!important}` left no fallback if the attribute-removal
+            ever silently failed on the wizard route). The base CSS class hides it instead
+            (display:none), and calc-engine.js adds the `is-on` class on the same
+            condition, same line, that reveals fltLine, via classList rather than the
+            hidden attribute, so no !important rule is in play at all. */}
         {fwGroups.length > 0 && (
-          <div class="cs-fw" id="csFw" hidden>
+          <div class="cs-fw" id="csFw">
             {fwGroups.map(g => (
               <div class={'cs-fw-band cs-fw-' + g.key}>
                 <p class="cs-fw-label">{g.label}</p>
@@ -897,13 +897,22 @@ const cmp = (comparisonsFor(c.slug, countries) || [])[0] || null;
   .cs-note{margin:12px 0 0;padding:10px 12px;background:var(--paper);border-radius:9px;font-size:13.5px;color:var(--muted);line-height:1.55}
 
   /* ----- BRIEF-calc-result-flights-integration: the flights capstone ----- */
-  /* FIX-calc-flight-warnings-gate: visibility used to be a CSS :has() selector reacting
-     to #hnFlightLine's hidden attribute; :has() does not reliably re-evaluate when a
-     descendant's hidden attribute is flipped by JS after load, so the group never
-     appeared. calc-engine.js now sets csFw.hidden directly, on the same line and by the
-     same condition as fltLine.hidden, so the native [hidden] attribute does the showing
-     and hiding and no selector has to react to anything. */
-  .cs-fw{margin:14px 0 0}
+  /* FIX2-flight-warnings-class-toggle: visibility went through two prior mechanisms that
+     both left a single point of failure with no fallback. First a CSS :has() selector
+     (removed by FIX-calc-flight-warnings-gate: does not reliably re-evaluate when a
+     descendant's hidden attribute is flipped by JS after load). Then the native hidden
+     attribute directly, toggled by calc-engine.js: correct in principle, but this
+     component also renders under the standalone wizard route's calculator.css, which
+     carries a global `[hidden]{display:none!important}` rule (calculator.css:70, for
+     the wizard's own use of the attribute elsewhere). If the attribute removal ever
+     failed to take effect for any reason on that route, the !important left no CSS path
+     to recover, and the failure was silent (calc-engine.js's `if (fwEl)` guard swallows
+     a miss with no signal). A class the element does not start with sidesteps the
+     attribute (and therefore the !important) entirely, and calc-engine.js now warns to
+     the console if the element is ever missing when it tries to toggle it, so a miss is
+     loud instead of silent. */
+  .cs-fw{margin:14px 0 0;display:none}
+  .cs-fw.is-on{display:block}
   /* The two bands, reusing the site's own existing tint vocabulary rather than inventing
      one: --amber-bg is already this file's own "avoidable but real" color (see .ex-n-pay
      above) and is defined on both stylesheets this component ever renders under. --green-bg

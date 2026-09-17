@@ -424,13 +424,18 @@ import { usdBracket } from '../data/usd-bracket.js';
     const fltLine = id('hnFlightLine');
     if (fltLine) {
       fltLine.hidden = (flightTotal <= 0);
-      // FIX-calc-flight-warnings-gate: the flight warnings group used to be shown/hidden
-      // by a CSS :has() selector watching this same hidden attribute, which does not
-      // reliably re-evaluate when JS flips it after load. Toggling it directly here,
-      // on the same condition, matches how every other conditional element in this
-      // engine already works.
+      // FIX2-flight-warnings-class-toggle: was fwEl.hidden = (flightTotal <= 0), toggling
+      // the native hidden attribute like fltLine above. calculator.css carries a global
+      // [hidden]{display:none!important} rule (for the wizard route's own other uses of
+      // the attribute), so if this attribute toggle ever silently failed to run or found
+      // fwEl null, there was no CSS fallback able to reveal the group at all: the
+      // !important left nothing else able to win. A class the element does not start
+      // with sidesteps that rule entirely, and a miss is now reported instead of
+      // silently swallowed, in case the cause is actually the element being absent when
+      // this runs, not the toggle mechanism itself.
       const fwEl = id('csFw');
-      if (fwEl) fwEl.hidden = (flightTotal <= 0);
+      if (fwEl) fwEl.classList.toggle('is-on', flightTotal > 0);
+      else if (typeof console !== 'undefined') console.warn('csFw not found at toggle time');
       id('hnFlightTravLabel').textContent = trav;
       id('hnFlightNote').textContent = (estFlight
         ? 'a typical fare we track, edit it above to yours; '
