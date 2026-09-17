@@ -13,8 +13,15 @@
 // Locked copy (Decision 1 of the v2 experience build; verb standardized to "refuse" by
 // BRIEF-calc-tier1-review-fixes, Fix 5). The calm-country variant's "See why" is an inline
 // link ending its one sentence, not a separate button, unlike the priced variant's own
-// "Calculate what you can refuse on your trip" button below its paragraph: that asymmetry
-// is the locked copy as given, not an oversight.
+// button below its paragraph: that asymmetry is the locked copy as given, not an oversight.
+//
+// DEBUG-flight-warnings-plus-cosmetic-fixes, Part 2a: the button's own label was "Calculate
+// what you can refuse on your trip", which wrapped to two lines at mobile widths with the
+// arrow stranded alone on the second line. Shortened to "Calculate what you can refuse" (the
+// trip is already the page's whole context, so "on your trip" said nothing "refuse" didn't
+// already cover) and joined to the arrow with a non-breaking space, so if this ever wraps
+// again at a narrower width, the arrow wraps down attached to "refuse" rather than orphaning
+// on its own line.
 import { avoidableHighlightFor } from '../data/avoidable-highlight.js';
 
 const { country: c } = Astro.props;
@@ -39,7 +46,7 @@ const hookHtml = highlight.calmEligible
   <p set:html={hookHtml} />
   {!highlight.calmEligible && (
     <div class="ah-cta">
-      <a class="btn" href={'/calculator/' + c.slug}>Calculate what you can refuse on your trip <span aria-hidden="true">&rarr;</span></a>
+      <a class="btn" href={'/calculator/' + c.slug}>Calculate what you can refuse&nbsp;<span aria-hidden="true">&rarr;</span></a>
     </div>
   )}
 </div>

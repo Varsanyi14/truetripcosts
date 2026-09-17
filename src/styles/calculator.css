@@ -545,7 +545,17 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   .stepper button { grid-row: 2; }
 }
 @container ttc-controls (max-width: 26rem) {
-  .brief-action { flex-direction: column; align-items: stretch; }
+  /* DEBUG-flight-warnings-plus-cosmetic-fixes, Part 2b. The base rule above sets
+     `.brief-action > div { flex: 1 1 14rem; }` for the row layout, where 14rem is a
+     WIDTH hint. Flipping flex-direction to column here reinterprets that same flex-basis
+     along the new main axis, so the label+description div was being forced to 14rem
+     (224px) TALL regardless of its actual text height, leaving a large dead gap before
+     its own button. Resetting the basis to auto sizes it to its real content height. */
+  .brief-action { flex-direction: column; align-items: stretch; gap: .625rem; }
+  .brief-action > div { flex: 0 1 auto; }
   .brief-action .btn { width: 100%; }
+  /* Tighter than the row layout's 1rem: three stacked groups, each now its natural
+     height, read better with less air between them than the side-by-side layout needs. */
+  .brief-action + .brief-action { margin-top: .875rem; }
 }
 
