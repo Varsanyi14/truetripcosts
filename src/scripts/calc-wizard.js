@@ -585,7 +585,11 @@ export function initCalcWizard() {
         // A real navigation: this static site bakes each country's engine data into its
         // own page (see calculator.astro's own header comment), so committing a
         // destination has to leave this page rather than update local state.
-        window.location.href = '/calculator/' + result.value;
+        // BRIEF-4: carry the rest of the trip across that navigation (countryChangeHref,
+        // built on the same serializer the share link uses) rather than a bare URL, so
+        // reaching this step by backing up from Travelers does not throw away whatever
+        // was already answered.
+        window.location.href = countryChangeHref(result.value);
         return;
       }
       if (index < STEP_ORDER.length - 1) {
@@ -1289,7 +1293,12 @@ export function initCalcWizard() {
         return;
       }
       if (key === 'destination') {
-        window.location.href = '/calculator/' + result.value;
+        // BRIEF-4: same carry-over as the other destination navigation above, through the
+        // same countryChangeHref helper, so this dialog's own promise ("All your other
+        // answers stay as they are.") holds for the one field it could not previously
+        // keep. The destination page's own "Your figure"/"Our estimate" basis line still
+        // shows honestly which country-specific figures were reset.
+        window.location.href = countryChangeHref(result.value);
         return;
       }
       closeEditDialog(true);
@@ -1463,16 +1472,25 @@ export function initCalcWizard() {
   // ===================================================================================
   const questionParamKeys = (WD.questionSteps || []).filter(k => k !== 'goods' && k !== 'date');
 
-  function answersToShareParams() {
+  // BRIEF-4: an optional second mode for a country-change navigation (see the two
+  // call sites below), which carries the same params the share link does EXCEPT the two
+  // that are honestly country-specific: room price always resets to the new country's own
+  // typical, and flight price resets UNLESS the reader actually typed their own fare
+  // (state.origin.flight === 'figure', the same flag the "Your figure"/"Our estimate"
+  // basis line already reads). Omitting a param here is enough: applySharedAnswersFromUrl's
+  // own fallback-to-default takes it from there. Normal share-link behavior (no argument)
+  // is completely unchanged.
+  function answersToShareParams(mode) {
+    const forCountryChange = mode === 'countryChange';
     const params = new URLSearchParams();
     const trav = snapshotControls('travelers'); if (trav.value != null) params.set('trav', trav.value);
     const nights = snapshotControls('nights'); if (nights.value != null) params.set('nights', nights.value);
     const style = snapshotControls('style'); if (style.value != null) params.set('style', style.value);
     const flights = snapshotControls('flights');
     if (flights.mode != null) params.set('flight', flights.mode);
-    if (flights.price != null) params.set('flightprice', flights.price);
+    if (flights.price != null && (!forCountryChange || state.origin.flight === 'figure')) params.set('flightprice', flights.price);
     const hotel = snapshotControls('hotel');
-    if (hotel.value != null) params.set('room', hotel.value);
+    if (hotel.value != null && !forCountryChange) params.set('room', hotel.value);
     if (hotel.booking != null) params.set('booking', hotel.booking);
     if (hotel.roomsValue != null) params.set('rooms', hotel.roomsValue);
     const card = snapshotControls('card'); if (card.value != null) params.set('card', card.value);
@@ -1490,6 +1508,13 @@ export function initCalcWizard() {
   function currentShareUrl() {
     const qs = answersToShareParams().toString();
     return window.location.origin + window.location.pathname + (qs ? ('?' + qs) : '');
+  }
+  // BRIEF-4: the SAME carry-list build used by both country-change navigations below, so
+  // they cannot drift apart. destination is never in the params (it is already the new
+  // path we are navigating to).
+  function countryChangeHref(slug) {
+    const qs = answersToShareParams('countryChange').toString();
+    return '/calculator/' + slug + (qs ? ('?' + qs) : '');
   }
 
   // BRIEF-share-link-fixes, Fix 3: a visible confirmation on copy success, alongside (not
