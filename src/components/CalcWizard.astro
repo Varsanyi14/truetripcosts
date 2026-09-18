@@ -1350,6 +1350,15 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
         this one by calc-wizard.js the same way the room price and flight fields already
         are. */}
     <input id="hnRooms" type="text" inputmode="numeric" value="1" aria-hidden="true" tabindex="-1" />
+    {/* BRIEF-1-2 (airbnb/rental reframe): same wizard-only shape as #hnRooms just above
+        (calc-engine.js reads it via querySelector, never id(), so it stays outside
+        calc-regression-test.mjs's DOM contract and the inline calculator, which has no
+        booking-method question at all, needs nothing added here). calc-wizard.js mirrors
+        state.hotelBooking === 'airbnb' onto it whenever the booking-method answer
+        changes; calc-engine.js reads .checked to skip the rooms multiplier, for both the
+        accommodation price and the tourist-tax math, and to swap "Hotel" for "Rental" in
+        the two labels it owns. */}
+    <input id="hnRental" type="checkbox" aria-hidden="true" tabindex="-1" />
 
     <label class="cf hn-region" id="hnRegionWrap" hidden style="display:none">
       <span class="cf-l">Where are you staying?</span>

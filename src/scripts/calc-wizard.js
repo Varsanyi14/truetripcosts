@@ -302,7 +302,12 @@ export function initCalcWizard() {
     return (Number.isInteger(n) && n >= 1) ? n : 1;
   }
   function applyRoomsVisibility(trav) {
-    const show = trav >= 3;
+    // BRIEF-1-2 (airbnb/rental reframe): a rental is one unit booked whole, never N rooms
+    // scaled to party size, so the rooms-for-party question and its multiplier are
+    // suppressed OUTRIGHT for a rental, regardless of travelers. Hotel/hotel-direct are
+    // completely unchanged: show still depends only on trav >= 3 there.
+    const isRental = state.hotelBooking === 'airbnb';
+    const show = trav >= 3 && !isRental;
     if (roomsWrap) roomsWrap.hidden = !show;
     const roomsNow = currentHiddenRooms();
     // Only overwrite the visible field from the hidden suggestion while the reader has not
@@ -315,14 +320,18 @@ export function initCalcWizard() {
         : '';
     }
     if (roomPriceNote) {
-      roomPriceNote.innerHTML = show
-        ? '<strong>This is the nightly price for a single room, taken as entered.</strong>'
-        : '<strong>This is the nightly price for your room, taken as entered.</strong><br />We assume a single room for one or two travelers. If you need more than one, enter the combined nightly price.';
+      roomPriceNote.innerHTML = isRental
+        ? '<strong>This is the nightly price for the whole rental, taken as entered.</strong>'
+        : (show
+          ? '<strong>This is the nightly price for a single room, taken as entered.</strong>'
+          : '<strong>This is the nightly price for your room, taken as entered.</strong><br />We assume a single room for one or two travelers. If you need more than one, enter the combined nightly price.');
     }
     if (roomPriceHelp) {
-      roomPriceHelp.textContent = show
-        ? 'Enter the price for one room. The rooms field below multiplies it.'
-        : 'This estimate uses one room throughout the stay for one or two travelers.';
+      roomPriceHelp.textContent = isRental
+        ? 'This is the whole rental unit for the night, not a per-room price.'
+        : (show
+          ? 'Enter the price for one room. The rooms field below multiplies it.'
+          : 'This estimate uses one room throughout the stay for one or two travelers.');
     }
   }
   if (roomsInput) {
@@ -346,8 +355,24 @@ export function initCalcWizard() {
   // #hnRoom itself when 'skip' is chosen; it only stops asking the price question in the
   // wizard, exactly what the brief asks for at this collection-only step. -----
   const hotelPriceWrap = document.querySelector('[data-hotel-price-wrap]');
+  // BRIEF-1-2 (airbnb/rental reframe): the field's own label, selected the same way
+  // PriceControl.astro always renders it (label[for], not a new hook), so the shared
+  // component needs no change at all for this.
+  const hotelPriceLabel = document.querySelector('label[for="q-hotel"]');
+  // WIZARD-ONLY, ON PURPOSE, same reasoning as #hnRooms just above it in the hidden-engine
+  // markup: read via querySelector rather than id() so it is not part of
+  // calc-regression-test.mjs's DOM contract. The inline calculator (CountryBriefing.astro)
+  // has no booking-method question and no #hnRental at all, so calc-engine.js's own read of
+  // it there simply finds nothing and behaves exactly as it always has.
+  const hnRentalMirror = document.querySelector('#hnRental');
   function applyHotelBookingVisibility() {
     if (hotelPriceWrap) hotelPriceWrap.hidden = (state.hotelBooking === 'skip');
+    const isRental = state.hotelBooking === 'airbnb';
+    if (hnRentalMirror) { hnRentalMirror.checked = isRental; fire(hnRentalMirror, 'change'); }
+    if (hotelPriceLabel) hotelPriceLabel.textContent = isRental ? 'Rental price per night (USD)' : 'Room price per night (USD)';
+    // Rooms-for-party visibility depends on booking mode too now, not just travelers, so
+    // this has to re-run on every booking-mode change, not only every travelers change.
+    applyRoomsVisibility(+byId('hnTrav').dataset.v);
   }
   applyHotelBookingVisibility();
   $$('[data-choice-fieldset="hotel-booking"] input[type="radio"]').forEach(r => {
@@ -874,13 +899,22 @@ export function initCalcWizard() {
       set('[data-breakdown-amount="accommodation"]', roomAmt);
       set('[data-breakdown-line-amount="accommodation"]', roomAmt);
       document.querySelectorAll('[data-breakdown-line-provenance="accommodation"]').forEach(el => { el.innerHTML = '<span class="meta-key">Basis</span> ' + (state.origin.hotel === 'figure' ? 'Your figure' : 'Our estimate'); });
-      // BRIEF-rooms-autosuggest: roomAmt above already includes the rooms multiplier (it is
-      // read straight from the engine's own hnRoomV), so this note has to say so too, or it
-      // would understate what roomAmt shows right next to it. rooms reads 1 whenever the
-      // question is not showing, so the note is unchanged at 1 or 2 travelers.
+      // BRIEF-1-2 (airbnb/rental reframe), THE HONESTY GUARDRAIL: dropping the rooms
+      // multiplier for a rental genuinely changes the number at 3+ travelers, and that
+      // change must be visible, not silent, so a reader who switches booking method sees
+      // WHY it moved rather than a total that just quietly shifted. A rental is always
+      // exactly one unit, so this branch never reads roomsNowMirror at all.
+      // BRIEF-rooms-autosuggest: for hotel/hotel-direct, unchanged: roomAmt above already
+      // includes the rooms multiplier (read straight from the engine's own hnRoomV), so
+      // this note has to say so too, or it would understate what roomAmt shows right next
+      // to it. rooms reads 1 whenever the question is not showing, so the note is
+      // unchanged at 1 or 2 travelers.
+      const isRentalMirror = state.hotelBooking === 'airbnb';
       const roomsNowMirror = currentHiddenRooms();
-      set('[data-breakdown-line-note="accommodation"]', '$' + roomVal + ' a night \u00d7 ' + nights + ' ' + (nights === 1 ? 'night' : 'nights')
-        + (roomsNowMirror > 1 ? ' \u00d7 ' + roomsNowMirror + ' rooms' : '') + '.');
+      set('[data-breakdown-line-note="accommodation"]', isRentalMirror
+        ? ('$' + roomVal + ' a night \u00d7 ' + nights + ' ' + (nights === 1 ? 'night' : 'nights') + ' (one rental).')
+        : ('$' + roomVal + ' a night \u00d7 ' + nights + ' ' + (nights === 1 ? 'night' : 'nights')
+          + (roomsNowMirror > 1 ? ' \u00d7 ' + roomsNowMirror + ' rooms' : '') + '.'));
 
       // ----- breakdown: Accommodation checkout uplift (BRIEF-calc-v2-clusterA #7) -----
       // Gated on the engine's own already-computed tax figure (taxAmt, read from hnTax
@@ -896,7 +930,13 @@ export function initCalcWizard() {
         const taxNum = usdToNumber(taxAmt);
         if (taxNum > 0) {
           const checkoutAmt = numberToUsd(usdToNumber(roomAmt) + taxNum);
-          upliftEl.textContent = 'The room comes to ' + roomAmt + ' for the stay. Expect about ' + taxAmt + ' in tourist tax on top, so roughly ' + checkoutAmt + ' before any resort fees a hotel adds at checkout.';
+          // BRIEF-1-2: "resort fees a hotel adds" is specifically a hotel claim; for a
+          // rental this says the same honest, non-specific thing ("extra fees may apply")
+          // without inventing a rental-specific figure (e.g. a cleaning fee) this engine
+          // does not model.
+          upliftEl.textContent = (state.hotelBooking === 'airbnb'
+            ? ('The rental comes to ' + roomAmt + ' for the stay. Expect about ' + taxAmt + ' in tourist tax on top, so roughly ' + checkoutAmt + ' before any extra fees the rental adds at checkout.')
+            : ('The room comes to ' + roomAmt + ' for the stay. Expect about ' + taxAmt + ' in tourist tax on top, so roughly ' + checkoutAmt + ' before any resort fees a hotel adds at checkout.'));
           upliftEl.hidden = false;
         } else {
           upliftEl.textContent = '';
@@ -1016,7 +1056,7 @@ export function initCalcWizard() {
       set('[data-mirror="summaryNights"]', nights + ' nights');
       set('[data-mirror="summaryStyle"]', styleName);
       set('[data-mirror="summaryFlight"]', flightIncluded ? ('$' + flightVal + ' per person') : 'Not included');
-      set('[data-mirror="summaryHotel"]', '$' + roomVal + ' / room / night');
+      set('[data-mirror="summaryHotel"]', '$' + roomVal + (state.hotelBooking === 'airbnb' ? ' / night (rental)' : ' / room / night'));
       set('[data-mirror="summaryCard"]', noFee ? 'No foreign-transaction fee' : 'Use the typical fee assumption');
 
       // ----- carrier connectivity card (BRIEF-carrier-honest-build) -----

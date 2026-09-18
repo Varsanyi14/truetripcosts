@@ -108,7 +108,7 @@ import { usdBracket } from '../data/usd-bracket.js';
   let styleIndex = styleBtns.findIndex(b => b.classList.contains('on'));
   if (styleIndex < 0) styleIndex = 0;
 
-  const state = { regionIndex: 0, room: 150, nights: 7, trav: 2, paid: false, noFee: false, flight: 0, flightEdited: false, roomEdited: false, rooms: 1, roomsEdited: false };
+  const state = { regionIndex: 0, room: 150, nights: 7, trav: 2, paid: false, noFee: false, flight: 0, flightEdited: false, roomEdited: false, rooms: 1, roomsEdited: false, rental: false };
 
   // ----- flights: a verified typical fare prefilled, the traveler's own once edited -----
   // When the country carries a verified flight range, the input prefills with the
@@ -237,6 +237,20 @@ import { usdBracket } from '../data/usd-bracket.js';
   // Seed it the same way the room price seeds from style on load, above.
   applyRoomsSuggestion();
 
+  // ----- rental flag (BRIEF-1-2 airbnb/rental reframe) -----
+  //
+  // WIZARD-ONLY, ON PURPOSE, for the exact same reason #hnRooms just above is: this exists
+  // only on the calculator wizard's hidden engine copy (CalcWizard.astro), set from the
+  // wizard's own hotel-booking answer by calc-wizard.js, never on the per-country inline
+  // calculator (CountryBriefing.astro), which asks no booking-method question at all. Read
+  // with querySelector rather than id() so it is not part of calc-regression-test.mjs's DOM
+  // contract. Where it is absent, rentalToggle stays null, state.rental stays false
+  // forever, and every line below behaves exactly as it did before this feature.
+  const rentalToggle = document.querySelector('#hnRental');
+  if (rentalToggle) {
+    rentalToggle.addEventListener('change', () => { state.rental = rentalToggle.checked; render(true); });
+  }
+
   // ----- the two toggles: already-paid room, and the no-foreign-fee card lever -----
   const paidToggle = id('hnPaid');
   if (paidToggle) paidToggle.addEventListener('change', () => { state.paid = paidToggle.checked; render(true); });
@@ -342,7 +356,13 @@ import { usdBracket } from '../data/usd-bracket.js';
     // the one line every 1 or 2-traveler trip's byte-identical result actually rests on:
     // even a stray or manipulated rooms value can never reach the math for a 1 or
     // 2-traveler trip, on this page or the inline calculator alike.
-    const rooms = (trav >= 3) ? Math.max(1, state.rooms) : 1;
+    // BRIEF-1-2 (airbnb/rental reframe): a rental is ONE unit booked whole, never N rooms
+    // scaled to party size, so state.rental forces this to 1 regardless of travelers too.
+    // This same `rooms` feeds computeTax() below, so it is also what fixes tax scaling for
+    // a rental: flatPerNight/percentOfRoom stop multiplying by a room count that does not
+    // exist, and tieredPerPersonPerNight's per-occupant lookup correctly divides the whole
+    // rental's price across every traveler instead of a single room's.
+    const rooms = (state.rental || trav < 3) ? 1 : Math.max(1, state.rooms);
     const room = roomUSD * nights * rooms;
     const spend = per * trav * nights;
     const cash = spend * cashShare, card = spend - cash;
@@ -636,6 +656,12 @@ import { usdBracket } from '../data/usd-bracket.js';
     id('hnHotelNote').textContent = state.paid
       ? 'already paid, taken out of the total below'
       : 'on the card, prepaid or paid at the desk';
+    // BRIEF-1-2 (airbnb/rental reframe): these two ids exist unconditionally in
+    // CalcResult.astro (shared by the inline calculator and the wizard alike) specifically
+    // so this file can own the word itself; state.rental stays false everywhere this flag
+    // is absent, so both stay "Hotel" on every page except a wizard rental result.
+    id('hnHotelWord').textContent = state.rental ? 'Rental' : 'Hotel';
+    id('hnaRoomLabel').textContent = state.rental ? 'Rental' : 'Hotel';
 
     // The card-fee line greys out to $0 under the no-fee card; the ATM line keeps its flat
     // operator fee, so it is not greyed out as though it were zero.
@@ -644,9 +670,10 @@ import { usdBracket } from '../data/usd-bracket.js';
 
     // The line that reads back the trip in words.
     const spendWord = styleName ? (styleName.toLowerCase() + ' spending') : 'spending';
+    const unitWord = state.rental ? 'rental' : 'room';
     const head = state.paid
-      ? ('Room already paid, plus ' + spendWord)
-      : (nights + ' nights in a $' + roomUSD.toLocaleString('en-US') + ' room, ' + spendWord);
+      ? (unitWord.charAt(0).toUpperCase() + unitWord.slice(1) + ' already paid, plus ' + spendWord)
+      : (nights + ' nights in a $' + roomUSD.toLocaleString('en-US') + ' ' + unitWord + ', ' + spendWord);
     id('hnSub').textContent = head + ' for ' + trav + ' ' + (trav === 1 ? 'traveler' : 'travelers') + ', fees and tourist tax folded in.';
 
     // The note under the breakdown swaps with the card toggle.
@@ -681,8 +708,8 @@ import { usdBracket } from '../data/usd-bracket.js';
     // the sentence never appears.
     const roomsNote = (rooms > 1) ? (' Assumed at ' + rooms + ' rooms.') : '';
     setA('hnaRoom', (styleRoomOf(styleIndex) != null && !state.roomEdited)
-      ? ('A typical ' + styleWord + ' room in ' + DATA.name + ' runs about ' + usd(state.room) + ' a night, a starting point for the style you picked. Type your own and it takes over.' + (state.paid ? ' Marked already paid, so it is out of the total, though the tourist tax still applies.' : '') + roomsNote)
-      : ('Your room at ' + usd(state.room) + ' a night' + (state.paid ? ', marked already paid, so it is out of the total, though the tourist tax still applies.' : ', across ' + nights + ' ' + (nights === 1 ? 'night' : 'nights') + '.') + roomsNote));
+      ? ('A typical ' + styleWord + ' ' + unitWord + ' in ' + DATA.name + ' runs about ' + usd(state.room) + ' a night, a starting point for the style you picked. Type your own and it takes over.' + (state.paid ? ' Marked already paid, so it is out of the total, though the tourist tax still applies.' : '') + roomsNote)
+      : ('Your ' + unitWord + ' at ' + usd(state.room) + ' a night' + (state.paid ? ', marked already paid, so it is out of the total, though the tourist tax still applies.' : ', across ' + nights + ' ' + (nights === 1 ? 'night' : 'nights') + '.') + roomsNote));
     setA('hnaFlight', !flightData && flightTotal <= 0
       ? 'Not counted. We have not yet verified a typical fare for ' + DATA.name + ', so flights join the total only if you enter your own round trip fare above.'
       : (estFlight
