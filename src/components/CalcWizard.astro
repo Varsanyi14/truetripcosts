@@ -721,6 +721,18 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
 
 <!-- ================= THE RESULT VIEW, hidden until the wizard completes ================= -->
 <div class="results" data-result-view hidden>
+  <!-- BRIEF-3 (calm branded reveal): a brief, subtle brand grace note during the reveal
+       only, never a permanent second logo (the card's own brandbar below already carries
+       one). Purely decorative: aria-hidden because it adds no information a screen reader
+       needs (the result's own h1 and the card's own branded header already say what this
+       is), and pointer-events:none (in calculator.css) because it must never be tappable.
+       calc-wizard.js's mirror() adds the .ttc-reveal class that triggers its animation;
+       see that file's own comment for why, and calculator.css for the animation itself,
+       which fades this in and back out again while the result settles, then leaves it at
+       its resting, invisible state. -->
+  <div class="ttc-reveal-mark" aria-hidden="true">
+    <LogoMark variant="mark" size={28} title="True Trip Costs" />
+  </div>
   <div class="result-layout">
     <div class="result-main">
       <!-- BRIEF-result-card-step1: the page's one required h1 stays, exactly as before

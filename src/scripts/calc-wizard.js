@@ -1142,6 +1142,27 @@ export function initCalcWizard() {
       if (errorView) errorView.hidden = true;
       const h1 = resultView ? resultView.querySelector('h1') : null;
       if (h1) h1.focus({ preventScroll: false });
+      // BRIEF-3 (calm branded reveal): a short CSS animation ON the result becoming
+      // visible, never a delay BEFORE it (see file header's own "NO PENDING STATE": the
+      // engine is synchronous, so there is no gap to fill and no reason to hold the result
+      // back). Runs on every successful mirror() pass, which covers every path that
+      // reaches the result: finish() below (both "See trip estimate" and "Skip" on the
+      // final step) and the Edit dialog's "Apply change" above, which re-reveals the
+      // updated result the same calm way rather than snapping the new numbers in. The
+      // class is removed and re-added with a forced reflow between the two so the
+      // animation restarts even when the view was already visible (the Edit-dialog case),
+      // not only on the very first reveal. Skipped entirely under reduced motion (the same
+      // matchMedia check calc-engine.js's own roll() already uses), so the result appears
+      // instantly with no animation at all, never merely a faster one; calculator.css's
+      // own site-wide reduced-motion rule would neutralize the animation regardless, but
+      // skipping the class here avoids a pointless reflow and says so in the code, not
+      // only in a stylesheet a reader of this file would not otherwise see.
+      const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (resultView && !reduceMotion) {
+        resultView.classList.remove('ttc-reveal');
+        void resultView.offsetWidth; // force a reflow so the re-add below restarts the animation
+        resultView.classList.add('ttc-reveal');
+      }
       if (resultView && typeof resultView.scrollIntoView === 'function') {
         try { resultView.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) { resultView.scrollIntoView(); }
       }
