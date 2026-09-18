@@ -92,9 +92,9 @@ main { min-height: calc(100svh - 13rem); }
 .text-link { appearance: none; border: 0; background: transparent; padding: .625rem 0; min-height: 2.75rem; color: var(--green); text-decoration: underline; text-underline-offset: .22em; text-decoration-thickness: 1px; text-align: left; font-size: 1rem; font-weight: 600; }
 .text-link:hover { text-decoration-thickness: 2px; }
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: .75rem; min-height: 3.5rem; padding: .875rem 1.25rem; border: 1px solid transparent; border-radius: var(--radius); text-decoration: none; font-size: 1.0625rem; line-height: 1.4; font-weight: 600; text-align: center; white-space: normal; }
-.btn-primary { background: var(--green); color: white; }
+.btn-primary { background: var(--green); color: white; transition: transform .08s ease; }
 .btn-primary:hover:not(:disabled) { background: var(--green-hover); }
-.btn-primary:active:not(:disabled) { background: #091E17; }
+.btn-primary:active:not(:disabled) { background: #091E17; transform: scale(0.97); }
 .btn-secondary { background: transparent; border-color: var(--control-line); color: var(--ink); }
 .btn-secondary:hover:not(:disabled) { background: var(--green-soft); border-color: var(--green); }
 .btn:disabled { background: var(--disabled-bg); color: var(--disabled-ink); border-color: transparent; }
@@ -136,7 +136,7 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .preset-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .625rem; }
 .preset { position: relative; display: block; cursor: pointer; min-width: 0; }
 .preset input, .choice input { position: absolute; width: 1px; height: 1px; opacity: 0; }
-.preset-face { min-height: 4rem; padding: .875rem .25rem; background: white; border: 1.5px solid var(--control-line); color: var(--ink); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 1.375rem; line-height: 1.35; font-weight: 600; position: relative; }
+.preset-face { min-height: 4rem; padding: .875rem .25rem; background: white; border: 1.5px solid var(--control-line); color: var(--ink); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 1.375rem; line-height: 1.35; font-weight: 600; position: relative; transition: transform .08s ease; }
 .preset:hover .preset-face { background: var(--green-soft); border-color: var(--green); }
 .preset input:checked + .preset-face, .preset-face.is-selected { background: var(--green); border-color: var(--green); color: white; }
 .preset input:checked + .preset-face::after, .preset-face.is-selected::after { content: "\2713"; position: absolute; top: .25rem; right: .375rem; font-size: .6875rem; line-height: 1; }
@@ -151,7 +151,7 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 .stepper:has(input[aria-invalid="true"]) { border: 2px solid var(--error); background: var(--error-bg); }
 .choice-list { display: grid; gap: .75rem; }
 .choice { position: relative; cursor: pointer; }
-.choice-face { display: grid; grid-template-columns: 1.375rem minmax(0,1fr); gap: .875rem; align-items: start; padding: 1.125rem; min-height: 4rem; border: 1.5px solid var(--control-line); border-radius: var(--radius); background: white; }
+.choice-face { display: grid; grid-template-columns: 1.375rem minmax(0,1fr); gap: .875rem; align-items: start; padding: 1.125rem; min-height: 4rem; border: 1.5px solid var(--control-line); border-radius: var(--radius); background: white; transition: transform .08s ease; }
 .choice-face::before { content: ""; width: 1.25rem; height: 1.25rem; margin-top: .125rem; border: 1.5px solid var(--control-line); border-radius: 50%; background: white; }
 .choice input:checked + .choice-face { border-color: var(--green); background: var(--green-soft); box-shadow: inset 0 0 0 1px var(--green); }
 .choice input:checked + .choice-face::before { border: .375rem solid var(--green); }
@@ -570,6 +570,12 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+  /* The rule above already kills the transition, so a press would still snap instantly to
+     scale(0.97) and back rather than ease into it; that instant jump is itself motion this
+     query asks to remove, not merely the smoothing of it. Reset the tap-scale rules
+     themselves back to no transform so a press changes color only, exactly as it did
+     before this fix, for anyone who has asked for less motion. */
+  .btn-primary:active:not(:disabled), .preset:active .preset-face, .choice:active .choice-face { transform: none !important; }
 }
 @media (forced-colors: active) {
   .preset input:checked + .preset-face, .choice input:checked + .choice-face { border: 3px solid Highlight; }
@@ -591,11 +597,19 @@ fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
   #print-root * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 /* Additional interaction states, kept after base rules so precedence is explicit. */
-.preset:active .preset-face { background: #DEE8DE; border-color: var(--green); }
+.preset:active .preset-face { background: #DEE8DE; border-color: var(--green); transform: scale(0.97); }
 .preset:hover input:checked + .preset-face { background: var(--green-hover); }
 .preset:active input:checked + .preset-face { background: #091E17; }
-.preset:active input:disabled + .preset-face { background: var(--disabled-bg); border-color: var(--line); }
-.choice:active .choice-face { background: #DEE8DE; }
+/* Disabled presets keep the disabled color AND stay flat under a press: a control that
+   does nothing when tapped should not look like it physically gave, the same reasoning
+   the existing background override here already applied before this fix added transform. */
+.preset:active input:disabled + .preset-face { background: var(--disabled-bg); border-color: var(--line); transform: none; }
+.choice:active .choice-face { background: #DEE8DE; transform: scale(0.97); }
+/* New override (no color equivalent existed before this fix, since specificity alone
+   already kept the disabled background correct): without this, a disabled choice row
+   would still visibly press on tap, since nothing else here declares `transform` for it
+   to compete against. Same reasoning as the preset override just above. */
+.choice:active input:disabled + .choice-face { transform: none; }
 .choice input:disabled + .choice-face { background: var(--disabled-bg); color: var(--disabled-ink); border-color: var(--line); box-shadow: none; cursor: not-allowed; }
 /* Enlarged text can make the content area narrow even on a normal phone. */
 .question-controls, .dialog-content { container-name: ttc-controls; container-type: inline-size; }
