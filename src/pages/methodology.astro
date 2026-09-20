@@ -38,9 +38,23 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
         </div>
         <div class="qcard">
           <h3>Dated on the page</h3>
-          <p>Every guide shows the month it was last checked, in the hero, beside the byline, and in the sources panel. The fees most likely to move also carry their own checked date, right next to the number.</p>
+          <p>Every guide shows the month it was last reviewed, beside the byline and in the sources panel, along with how many of the items we date on it are still inside their own review window. The facts most likely to move carry their own checked date right next to the number.</p>
         </div>
       </div>
+    </section>
+
+    <!-- THE PUBLIC METHODOLOGY NOTE for the freshness model. Required by
+         BRIEF-stage1-freshness-schema: the model has to be documented where a reader, or
+         anyone doing diligence on this site, can actually see it. It cites the US federal
+         standard the hierarchy follows and states the two rules that govern it. -->
+    <section class="mth-prose">
+      <p class="lab">Checked, and changed</p>
+      <h2>Two different dates, and we never let one stand in for the other.</h2>
+      <p>A guide carries two kinds of date and they answer different questions. <b>Checked</b> is when a person last looked at a fact against its source and confirmed it. <b>Changed</b> is when the fact itself last moved in the world. Most of the time those are months apart, because most of what we check turns out to be exactly what it was last time.</p>
+      <p>We show the Checked date prominently and the Changed date as supporting text beside it, following the pattern the US federal web standards set out for published, updated and reviewed dates at <a href="https://standards.digital.gov" target="_blank" rel="noopener">standards.digital.gov</a>. One date gets to be prominent, because two dates competing for a reader's attention mostly just makes it unclear which one matters.</p>
+      <p>Two rules follow from that, and they are the reason this section exists.</p>
+      <p><b>A re-check that finds nothing is not a change.</b> When we look at a fee again and it has not moved, the Checked date advances and nothing else does. The page's machine-readable modified date stays exactly where it was. Bumping it would be claiming an update we did not make, and the only thing it would buy is the appearance of freshness. Where a page has no record of anything actually changing, it carries no modified date at all rather than a borrowed one.</p>
+      <p><b>A date belongs to the thing it was measured on.</b> A country is not checked on one day; its individual facts are, on different days, at different intervals. So a guide no longer prints one date as though it covered everything on the page. Each fact shows its own, and where a fact has no date of its own yet, it says that instead of borrowing the page's. Some of what is on this site predates this system and is honestly marked as not yet re-verified, which we would rather show you than paper over.</p>
     </section>
 
     <section class="why">
@@ -61,6 +75,7 @@ const tick = '<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#15803D"
           <p>Tourist and accommodation taxes tend to change on set dates, so they are reviewed on roughly a 120-day cycle, with a note when a rise is already scheduled. Everything else is looked at least a couple of times a year.</p>
         </div>
       </div>
+      <p class="lead" style="margin-top:20px">Two more cadences sit behind those. A structural fact, the kind that moves on a multi-year timescale rather than a political one, is reviewed annually or every other year. A commercial price we have no authority to verify against, like a rail pass or a carrier's day rate, is re-sampled roughly quarterly rather than verified, and we say which it is. Where the right interval for a fact is genuinely unclear, it takes the general one and gets flagged, rather than being quietly given a tight cycle it will fail or a loose one that hides it.</p>
     </section>
 
     <section class="mth-prose">

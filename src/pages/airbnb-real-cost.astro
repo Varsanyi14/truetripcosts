@@ -349,7 +349,11 @@ const webPageLd = {
   name: 'The real cost of an Airbnb',
   description: 'The fee stack behind a short-term rental total, the cleaning-fee math on short stays, when a hotel wins instead, and the one thing worth checking on any listing before you book.',
   url: 'https://truetripcosts.com/airbnb-real-cost',
-  dateModified: CHECKED_ISO,
+  // dateModified is OMITTED, deliberately. It was bound to this page's re-check date, so
+  // every routine re-check bumped it, which is artificial freshening: penalized, no
+  // ranking benefit, and untrue. This page aggregates facts from many countries and has
+  // no curated change record of its own, so there is no honest Changed date to bind to.
+  // Absence is not zero. datePublished is untouched.
 };
 ---
 <Base

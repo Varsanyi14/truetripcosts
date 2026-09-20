@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import HotelTaxMap from '../components/HotelTaxMap.astro';
 import CompareByRegion from '../components/CompareByRegion.astro';
 import USBadge from '../components/USBadge.astro';
+import { newestEffective } from '../data/provenance.js';
 import { hotelTaxMap, computeAddedTax, localToUsd, perUsdFor, hotelTaxMapCheckedISO } from '../data/hotel-tax-map.js';
 
 // The hotel tax world map. A NEW PAGE rather than the hero of /hotel-taxes-and-fees, and
@@ -106,13 +107,28 @@ const SNIPPET = `<iframe src="https://truetripcosts.com/embed/hotel-tax-map" wid
 // records). dateModified is the SAME page-level checked date the visible stamp under the map
 // already carries, never a separate or newer one invented for the markup. No Review, Offer,
 // or AggregateRating: nothing here is a rating or a price, only a checked government figure.
+// The newest effective date among the map's government components that has already
+// passed. See the dateModified note below for why this and not the checked date.
+const mapChangedISO = newestEffective(
+  hotelTaxMap.flatMap(e => (e.government || []).map(g => g.effective))
+    .filter(d => typeof d === 'string' && d <= new Date().toISOString().slice(0, 10))
+);
 const datasetLd = {
   "@context": "https://schema.org",
   "@type": "Dataset",
   "name": "Hotel tax by country",
   "description": "Government tax and mandatory levies added on top of a quoted hotel room rate, by country, each figure sourced to the tax authority that sets it and dated.",
   "url": "https://truetripcosts.com/hotel-tax-map",
-  "dateModified": hotelTaxMapCheckedISO,
+  // dateModified BINDS TO A REAL CHANGE, not to the map's re-check date. It used to read
+  // hotelTaxMapCheckedISO, so re-checking 67 country figures and finding none of them
+  // moved still bumped it.
+  //
+  // This page is the one aggregate on the site that can answer the question honestly
+  // without a changelog entry: 14 of the 61 government components carry an effective
+  // date, and the newest one that has actually passed IS the day the world last moved on
+  // this map. A future-dated commencement is excluded, because a charge that starts in
+  // November has not changed anything yet. Null omits the key.
+  ...(mapChangedISO ? { "dateModified": mapChangedISO } : {}),
   "creator": { "@type": "Organization", "name": "True Trip Costs" },
   "variableMeasured": "Government hotel tax and mandatory levies added at checkout, as a share of a quoted room rate",
 };

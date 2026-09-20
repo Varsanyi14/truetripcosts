@@ -1,0 +1,78 @@
+---
+// THE FRESHNESS STAMP. One component renders every honest Checked and Changed line on the
+// site, so the split is decided in one place rather than re-argued at each surface.
+//
+// WHY ONE COMPONENT. A country's single date was being reprinted across five surfaces on
+// its own page (the hero pill, the emergency line, the byline, the sources panel row, and
+// the share card), each in its own markup, each reading as though that date covered
+// whatever fact it sat beside. Splitting Checked from Changed in five places would have
+// meant five chances to get it slightly differently wrong, and a later unified stamp
+// treatment would have meant re-touching five surfaces again.
+//
+// WHAT IT DOES AND DOES NOT DECIDE. It decides the WORDING and the HIERARCHY: which date
+// is prominent, how an inherited date is labelled, what an undated fact says. It does not
+// decide the visual mark. Each variant keeps the existing visual treatment of the surface
+// it replaces, using the same global classes those surfaces already used, so this commit
+// changes no styling. A unified "verified" mark is a design job for the MAIN, and when it
+// lands it lands here once.
+//
+// THE HIERARCHY, from the US federal model at standards.digital.gov. Its Published,
+// Updated and Reviewed pattern is the one this follows: ONE prominent date for the reader,
+// which is the Reviewed-equivalent (our Checked), with Updated (our Changed) and the
+// source as supporting text. Two dates competing for prominence is the thing that makes a
+// crawler show the older one and costs the click.
+//
+// THE FOUR STATES, and the third is the one this stage was built for:
+//   dated-and-changed   "Checked Aug 2026 . unchanged since Jan 2026"
+//   dated               "Checked Aug 2026"
+//   inherited           the fact has NO date of its own and is showing the date of the
+//                       page it sits on. Says "Guide checked Aug 2026", never "Checked
+//                       Aug 2026", because the second is a claim nobody made. All 59 hero
+//                       facts are in this state today: not one carries a date of its own.
+//   undated             no date anywhere. Says "Not yet dated" and stops. It never falls
+//                       back to today, to the file's date, or to anything else.
+//
+// House rules: no em dashes and no en dashes, so the separator is a middle dot.
+import { freshnessLine } from '../data/provenance.js';
+
+const {
+  record = null,        // a provenance record, from fact-registry.js or built inline
+  variant = 'fact',     // 'fact' | 'compact' | 'panel'
+  inherited = false,    // true when the date shown belongs to the page, not to the fact
+  long = false,         // day precision rather than month, for a single prominent fact
+  sourceLabel = 'Primary source',
+  showSource = true,
+} = Astro.props;
+
+const f = freshnessLine(record, { inherited, long });
+const undated = f.state === 'undated';
+---
+
+{variant === 'fact' && (
+  <span class="fresh-fact">
+    <span class={undated ? 'kf-checked kf-undated' : 'kf-checked'}>{f.checkedLabel}</span>
+    {f.changedLabel && <span class="kf-changed">{f.changedLabel}</span>}
+    {showSource && (f.sourceUrl
+      ? <a class="kf-src" href={f.sourceUrl} target="_blank" rel="noopener">{f.sourceName || sourceLabel}</a>
+      : <span class="kf-nosrc">No official page yet</span>)}
+  </span>
+)}
+
+{variant === 'compact' && (
+  <span class={undated ? 'fresh-compact fresh-undated' : 'fresh-compact'}>{f.compact}</span>
+)}
+
+{/* The sources-panel rows. Checked and Changed are two rows rather than one, because the
+    panel is where a reader who wants the detail has already chosen to look, so the
+    secondary date can have its own line there without competing with anything. */}
+{variant === 'panel' && (
+  <>
+    <p class="gs-row"><span class="gs-k">{inherited ? 'Guide last checked' : 'Last checked'}</span><span>{undated ? 'Not yet dated' : f.checkedLabel.replace(/^(Guide c|C)hecked /, '')}</span></p>
+    {f.changedLabel && (
+      <p class="gs-row"><span class="gs-k">Last actually changed</span><span>
+        {f.changedDate ? f.changedLabel.replace(/^unchanged since /, '') : ''}
+        {f.changedEntryId && <a class="gs-method-link" href={'/updates/' + f.changedEntryId + '/'} style="margin-left:7px">see the record</a>}
+      </span></p>
+    )}
+  </>
+)}

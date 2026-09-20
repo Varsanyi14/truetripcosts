@@ -227,7 +227,9 @@ const description = 'Deciding between Japan, South Korea, Taiwan, Hong Kong and 
     </section>
   </main>
   <Footer />
-  <script type="application/ld+json" set:html={JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: title, description, dateModified: checkedISO, datePublished: checkedISO, author: { "@type": "Organization", name: "True Trip Costs" } })}></script>
+  {/* dateModified omitted on purpose: a re-check is not a change, and this
+      regional comparison has no curated change record to bind one to. */}
+  <script type="application/ld+json" set:html={JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: title, description, datePublished: checkedISO, author: { "@type": "Organization", name: "True Trip Costs" } })}></script>
 
   <style>
     .se{max-width:880px}

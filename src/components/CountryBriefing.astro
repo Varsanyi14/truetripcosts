@@ -14,6 +14,8 @@ import EESNotice from './EESNotice.astro';
 import AdvisoryNotice from './AdvisoryNotice.astro';
 import NewTab from './NewTab.astro';
 import UsdProse from './UsdProse.astro';
+import FreshnessStamp from './FreshnessStamp.astro';
+import { pageProvenance, provenanceRecord, changedFromEffective, cadenceFromLabel, monthYear } from '../data/provenance.js';
 import { affiliate, esimLink, visaLink } from '../data/links.js';
 import { shortlistFor, cardsChecked, wiseCard } from '../data/cards.js';
 import { countries } from '../data/index.js';
@@ -173,6 +175,17 @@ const insDial = insLevels[insLevel];
 // The one genuinely per-country fact on an otherwise global card: the local
 // ambulance number, web-verified with its own checked date. May be null.
 const emg = c.emergency || null;
+// PAGE PROVENANCE, computed once and read by every freshness surface on this page, so the
+// five places that used to reprint c.checked independently now describe the same thing.
+//
+// What it gives us that a bare c.checkedISO did not:
+//   .pageChecked   the page's own re-check date. Still shown, still honest AS a page date.
+//   .changed       the newest changelog entry linked to this page, or null. 28 of 59
+//                  countries have one. This is the ONLY thing dateModified may read.
+//   .coverage      how many of this page's dated items are still inside their own review
+//                  window. This is the honest page-level line that replaces stamping a
+//                  whole country as checked on one date.
+const prov = pageProvenance(c);
 // Section illustrations. One shared, generic set covers every country: an ATM for
 // currency basics, a hotel bill for the real-cost calculator, a card terminal for
 // the traps. No per-country image work is needed. A country may override any slot
@@ -189,10 +202,20 @@ const faqLd = {
     "acceptedAnswer": { "@type": "Answer", "text": f.a }
   }))
 };
+// dateModified BINDS TO THE CHANGED DATE ONLY. It was bound to c.checkedISO, which meant
+// every routine re-check that found nothing new bumped it. That is artificial freshening:
+// Google penalizes it, it buys no ranking, and it was quietly false on 51 of the 59
+// countries whose newest dated fact is more recent than the page stamp anyway.
+//
+// So it reads prov.dateModified, which comes from the curated changelog and moves only
+// when something genuinely changed. When a page has no change entry the key is OMITTED
+// rather than filled with the re-check date. Absence is not zero, and an absent
+// dateModified is a smaller claim than a wrong one. datePublished is untouched here.
 const artLd = {
   "@context": "https://schema.org", "@type": "Article",
   "headline": c.title, "description": c.description,
-  "dateModified": c.checkedISO, "datePublished": c.checkedISO,
+  ...(prov.dateModified ? { "dateModified": prov.dateModified } : {}),
+  "datePublished": c.checkedISO,
   "author": { "@type": "Organization", "name": "True Trip Costs" }
 };
 // keyFacts: the high-churn fees and taxes (the numbers that move on political
@@ -711,10 +734,23 @@ const JUMP = [
             {st === "proposed" && <span class="kf-tag kf-tag-amber">Proposed, not yet in effect</span>}
             {st === "upcoming" && <span class="kf-tag kf-tag-upcoming">Upcoming{f.effective ? ", from " + kfDate(f.effective) : ""}</span>}
             {st === "inEffect" && <span class="kf-tag kf-tag-green">In effect{f.effective ? " since " + kfDate(f.effective) : ""}</span>}
-            {f.checked && <span class="kf-checked">Checked {kfDate(f.checked)}</span>}
-            {f.source
-              ? <a class="kf-src" href={f.source} target="_blank" rel="noopener">Primary source</a>
-              : <span class="kf-nosrc">No official page yet</span>}
+            {/* THE PER-FACT FRESHNESS LINE. Was a lone "Checked <date>" span; now the
+                Checked date stays prominent and picks up an "unchanged since" line
+                beneath it where the fact honestly knows when its own value last moved.
+                That date is the fact's OWN effective date once the charge is in force,
+                never its country's changelog date: a change to the Kyoto lodging tax is
+                not a change to Japan's tax-free shopping rule, and inheriting one for the
+                other is the whole-country stamp bug one level down. A fact that is
+                upcoming or still proposed has not changed yet, so it shows no Changed
+                line at all rather than a date implying it has. */}
+            <FreshnessStamp long record={provenanceRecord({
+              label: f.label,
+              checked_date: f.checked,
+              changed_date: changedFromEffective(f.effective, f.status),
+              effective_date: f.effective,
+              source_url: f.source || null,
+              cadence: cadenceFromLabel(f.label).cadence,
+            })} />
           </div>
         </div>
       ); })}
@@ -1015,7 +1051,11 @@ const JUMP = [
 
 <div class="gbyline" style="display:flex;align-items:flex-start;gap:9px;margin:0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card)">
   <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
-  <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. Last checked {c.checked}. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
+  {/* THE BYLINE. "Last checked {c.checked}" read as though one date covered every fact on
+      the page. It is now stated as what it actually is, the date the GUIDE was last
+      reviewed, followed by the honest page-level coverage line the brief asks for in place
+      of a whole-country stamp. The per-fact dates live with their facts. */}
+  <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. This guide was last reviewed {prov.pageCheckedLabel}{prov.coverage.dated > 0 ? `, and ${prov.coverage.within} of the ${prov.coverage.dated} items we date on it are inside their own review window` : ''}. Every fact below carries its own checked date. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
 </div>
 
 {c.sources && (
@@ -1028,8 +1068,33 @@ const JUMP = [
       <svg class="gsources-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
     </summary>
     <div class="gsources-body">
-      <p class="gs-row"><span class="gs-k">Last checked</span><span>{c.checked}</span></p>
-      {c.sources.changed && <p class="gs-row"><span class="gs-k">Changed since last check</span><span>{c.sources.changed}</span></p>}
+      {/* CHECKED, THEN CHANGED, THEN WHAT THE CHECK FOUND. Three different things that
+          were previously two rows, one of which was mislabelled.
+            Last reviewed         the page's own re-check date, named as a page date.
+            Last actually changed the curated changelog date, when there is one, linked to
+                                  the permanent record. Absent when nothing has changed,
+                                  which is the honest state for 31 of the 59 guides.
+            What the last check found  the existing prose note. It was labelled "Changed
+                                  since last check", but read it and it is almost always an
+                                  account of what was CONFIRMED, not of what moved. A check
+                                  that found nothing new is real work and is not a change,
+                                  so the label now says which of the two it is. */}
+      <p class="gs-row"><span class="gs-k">Last reviewed</span><span>{prov.pageCheckedLabel}{prov.coverage.dated > 0 ? `, ${prov.coverage.within} of ${prov.coverage.dated} dated items inside their review window` : ''}</span></p>
+      {prov.changed && (
+        <p class="gs-row"><span class="gs-k">Last actually changed</span><span>{monthYear(prov.changed.date)}
+          <a class="gs-method-link" href={'/updates/' + prov.changed.entryId + '/'} style="margin-left:7px">see the record &#8594;</a>
+        </span></p>
+      )}
+      {/* NOT YET INDIVIDUALLY DATED. The honest other half of the coverage line above.
+          These figures are on the page and in the calculator's arithmetic, and they have
+          never carried a date of their own, so this says which they are rather than
+          letting the coverage number above imply the page is fully dated. It is stated
+          calmly on purpose: an undated figure is a gap in our records, not a hazard to the
+          reader, and dressing it as a warning would overstate it. */}
+      {prov.coverage.undatedCount > 0 && (
+        <p class="gs-row"><span class="gs-k">Not yet individually dated</span><span>We date this guide and the fees most likely to move, but {prov.coverage.undated.map(u => u.what).join(' and ')} on this page {prov.coverage.undatedCount > 1 ? 'do' : 'does'} not carry a check date yet. {prov.coverage.undatedCount > 1 ? 'They are' : 'It is'} reviewed with the guide rather than on {prov.coverage.undatedCount > 1 ? 'their own' : 'its own'} schedule, and putting {prov.coverage.undatedCount > 1 ? 'each of them' : 'it'} on one is work in progress.</span></p>
+      )}
+      {c.sources.changed && <p class="gs-row"><span class="gs-k">What the last check found</span><span>{c.sources.changed}</span></p>}
       {c.sources.links && c.sources.links.length > 0 && (
         <div class="gs-row"><span class="gs-k">Primary sources</span>
           <ul class="gs-links">

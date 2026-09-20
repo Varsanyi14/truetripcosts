@@ -129,6 +129,7 @@ const BOOKING_TACTICS = 'src/data/booking-tactics.js';
 const FLIGHT_REFUND_RIGHTS = 'src/data/flight-refund-rights.js';
 const FLIGHT_FEE_MECHANICS = 'src/data/flight-fee-mechanics.js';
 const FLIGHT_BOOKING_MYTHS = 'src/data/flight-booking-myths.js';
+const FACT_REGISTRY = 'src/data/fact-registry.js';
 const STRICT = String(process.env.FACT_STALENESS_STRICT || '').toLowerCase() === 'true';
 
 // Carrier plans drift a few times a year, faster than the 180-day general mark, so this
@@ -775,6 +776,29 @@ async function main() {
     judge(ct?.label || 'cookieIncognitoTest', ct, ct?.reviewDays || THRESHOLDS.general);
   }
 
+  // --- thirteenth pass: THE COVERAGE METRIC (BRIEF-stage1-freshness-schema) ---
+  // Not a staleness pass. Every pass above answers "what needs a look"; this one answers
+  // "how much of the site do we actually hold provenance on", which is the number that
+  // moves as facts are re-verified one at a time in the later stages.
+  //
+  // IT IS A PROGRESS METER AND NOTHING ELSE. It cannot fail this run, it cannot block a
+  // build, and it cannot block a publish. A legacy fact and an undated fact are both just
+  // numbers here. That is deliberate and load-bearing: the moment coverage can fail a
+  // build, the incentive is to stamp facts rather than to check them, which is the exact
+  // inaccuracy the whole system exists to oppose. Its findings are excluded from both the
+  // aged and the total counts below for the same reason.
+  //
+  // The denominator is the 798 facts the schema owns, tier A plus tier B from the census.
+  // It is NOT every value on the site: the 579 page-level stamps are page dates rather
+  // than facts, and the ~706 prose and disclosed-judgment values are the desk's own
+  // estimates, already labelled as such in each guide. Registering an estimate as a
+  // sourced fact would be an over-claim in the other direction. UNREGISTERED in the
+  // registry names all three exclusions so the denominator stays honest and a dataset
+  // added later cannot quietly sit outside the count.
+  const registryMod = await loadModule('.', FACT_REGISTRY);
+  const cov = (registryMod && typeof registryMod.coverage === 'function') ? registryMod.coverage(now) : null;
+  const unregistered = (registryMod && registryMod.UNREGISTERED) || [];
+
   // --- report ---
   log('Guides carrying a keyFacts block: ' + withKeyFacts + ' of ' + live.length + '.');
   log('Scanned ' + liveSpokes + ' live spokes across the catalogue.');
@@ -898,6 +922,34 @@ async function main() {
     + formFindings.length + mapFindings.length + carrierFindings.length + carrierProfileFindings.length
     + hotelExtrasFindings.length + flightRightsFindings.length + feeMechanicsFindings.length
     + bookingMythsFindings.length;
+
+  // THE COVERAGE BLOCK. Printed above the two counts, and counted in neither.
+  if (cov) {
+    const pct = (n) => (cov.total ? Math.round((n / cov.total) * 100) : 0);
+    const a = cov.byTier.A || { total: 0, dated: 0, sourced: 0, verified: 0 };
+    const b = cov.byTier.B || { total: 0, dated: 0, sourced: 0, verified: 0 };
+    log('PROVENANCE COVERAGE (a progress meter. It reports; it never fails this run.)');
+    log('  Facts the schema owns: ' + cov.total
+      + '  (tier A ' + a.total + ' already carrying some provenance, tier B ' + b.total + ' carrying none)');
+    log('  Re-verified through the tool: ' + cov.verified + ' verified, ' + cov.legacy + ' legacy ('
+      + pct(cov.verified) + '% verified). Legacy is the honest state on day one: every fact was'
+      + ' migrated with its existing date and none was stamped fresh for being migrated.');
+    log('  Dated:      ' + cov.dated + ' of ' + cov.total + ' (' + pct(cov.dated) + '%). '
+      + cov.undated + ' carry no date anywhere, so their age cannot be judged at all.');
+    log('  Sourced:    ' + cov.sourced + ' of ' + cov.total + ' (' + pct(cov.sourced) + '%), of which '
+      + cov.sourceTyped + ' have a source_type set. The rest are null rather than guessed: the'
+      + ' operator-official group (a carrier or card issuer own page, roughly 183 links) is one'
+      + ' ruling away from closing.');
+    log('  Changed:    ' + cov.withChanged + ' know when their own value last moved. '
+      + cov.withConfidence + ' carry a confidence rating.');
+    log('  Cadence:    ' + cov.withinCadence + ' inside their review window, ' + cov.pastCadence
+      + ' past it, ' + cov.unjudgeable + ' unjudgeable for want of a date.');
+    if (unregistered.length > 0) {
+      log('  Outside the registry on purpose, so the denominator above stays honest:');
+      for (const u of unregistered) log('    - ~' + u.approx + '  ' + u.what);
+    }
+    log('');
+  }
 
   log('Past a threshold: ' + aged + ' item(s) that aged out.'
     + (standing > 0 ? ' Plus ' + standing + ' standing item(s), the hero flags and pending forms listed above, which report every run and never age out.' : ''));

@@ -12,6 +12,7 @@ import UtilityBox from './UtilityBox.astro';
 import UsdProse from './UsdProse.astro';
 import { topicIcon, caution, TOPIC_HUBS } from '../data/topics.js';
 import { visaLink, esimLink, affiliate } from '../data/links.js';
+import { spokeProvenance, monthYear } from '../data/provenance.js';
 const { country, spoke } = Astro.props;
 
 const site = 'https://truetripcosts.com';
@@ -38,10 +39,23 @@ const faqLd = (spoke.faqs && spoke.faqs.length) ? {
 
 // Article schema, same shape and author the country pages use. Headline and dates come
 // from the spoke's own fields, so each spoke carries its own checked date.
+// SPOKE PROVENANCE. dateModified was bound to the spoke's own checkedISO, so every routine
+// re-check bumped it. It now reads the curated changelog, and only an entry linking THIS
+// spoke's own path counts.
+//
+// A COUNTRY'S CHANGE ENTRY IS NOT INHERITED, and that is the deliberate part. A change to
+// the UK ETA is not a change to the UK tipping spoke, so letting a country entry stamp all
+// of its spokes would reproduce the whole-country bug one level down. Only one changelog
+// entry in the file is spoke-scoped today (/united-kingdom/eta), so almost every spoke
+// gets null here, which OMITS dateModified rather than filling it with a re-check date.
+// That is the honest answer: 103 of the 447 live spokes carry a date older than the
+// country page that links to them, and none of them has a machine record of a change.
+const prov = spokeProvenance(country, spoke);
 const artLd = {
   '@context': 'https://schema.org', '@type': 'Article',
   headline: spoke.title, description: spoke.description,
-  dateModified: spoke.checkedISO, datePublished: spoke.checkedISO,
+  ...(prov.dateModified ? { dateModified: prov.dateModified } : {}),
+  datePublished: spoke.checkedISO,
   author: { '@type': 'Organization', name: 'True Trip Costs' }
 };
 
@@ -275,7 +289,10 @@ const showKeyPoints = ANSWER_MODE === 'B' && !answerHasFragment && answerKeyPoin
 
   <div class="gbyline" style="display:flex;align-items:flex-start;gap:9px;margin:26px 0 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--card)">
     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0A5644" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
-    <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. Last checked {spoke.checked}. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
+    {/* Stated as a page review date rather than as a bare "last checked", for the same
+        reason as on the country guide: this page's date is this page's date, and the facts
+        on it are not all the same age. */}
+    <p style="margin:0;font-size:13px;line-height:1.55;color:#5C6661">Written and kept current by the True Trip Costs desk. This page was last reviewed {spoke.checked}. <a href="/about" style="color:var(--teal-deep);font-weight:500;text-decoration:none">Who writes these, and how they are checked &#8594;</a></p>
   </div>
 
   {spoke.sources && (
@@ -288,7 +305,12 @@ const showKeyPoints = ANSWER_MODE === 'B' && !answerHasFragment && answerKeyPoin
         <svg class="gsources-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
       </summary>
       <div class="gsources-body">
-        <p class="gs-row"><span class="gs-k">Last checked</span><span>{spoke.checked}</span></p>
+        <p class="gs-row"><span class="gs-k">Last reviewed</span><span>{spoke.checked}</span></p>
+        {prov.changed && (
+          <p class="gs-row"><span class="gs-k">Last actually changed</span><span>{monthYear(prov.changed.date)}
+            <a class="gs-method-link" href={'/updates/' + prov.changed.entryId + '/'} style="margin-left:7px">see the record &#8594;</a>
+          </span></p>
+        )}
         {spoke.sources.links && spoke.sources.links.length > 0 && (
           <div class="gs-row"><span class="gs-k">Primary sources</span>
             <ul class="gs-links">

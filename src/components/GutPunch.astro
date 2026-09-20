@@ -32,7 +32,20 @@ const f = heroFactFor(c.slug);
 
 // The checked date travels with the fact. It reads from the country's own `checked` field
 // unless the fact was verified later, so it can never drift from the guide it sits on.
+// THE DATE, AND WHOSE DATE IT IS. The override path (a per-fact `checked`) has always
+// been read here first, and the header above says the date travels with the fact. In
+// practice NOT ONE of the 59 hero facts carries a date of its own today, so every single
+// one of them falls through to the country's date and the stamp then read "Checked
+// Jul 2026" on a fact that nobody checked in July. The date was real; the claim attached
+// to it was not.
+//
+// So the stamp now says WHOSE date it is showing. A fact with its own date keeps the plain
+// "Checked" wording, because that is a claim we can stand behind. A fact inheriting the
+// guide's date says "Guide checked", which is true, costs nothing, and stops the stamp
+// asserting a per-fact verification that never happened. No date is invented either way:
+// the day a hero fact is given its own `checked` value, its stamp tightens on its own.
 const checked = f ? (f.checked || c.checked || '') : '';
+const checkedIsInherited = Boolean(f && !f.checked && c.checked);
 
 // Which flag kinds the READER needs to see, and which are desk notes.
 // A volatile, seasonal or freshness-limited fact changes what the traveler should do with
@@ -47,7 +60,7 @@ const showFlag = !!(f && f.flag && READER_FLAGS[f.flag.kind]);
     <p class="gp-lab">The one thing most people get wrong about {c.name}</p>
     <span class="gp-check">
       <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
-      Checked {checked}
+      {checkedIsInherited ? 'Guide checked' : 'Checked'} {checked}
     </span>
   </div>
 

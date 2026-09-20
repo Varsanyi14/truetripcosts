@@ -630,6 +630,17 @@
   .kf-tag-upcoming{background:var(--paper);color:var(--teal-deep);border:1px solid var(--line)}
   .kf-tag-amber{background:var(--amber-bg);color:var(--amber)}
   .kf-checked{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:var(--muted)}
+  /* THE SECONDARY DATE. Deliberately quieter than .kf-checked above: smaller, not
+     uppercase, not monospaced. One prominent date per fact is the whole point, so the
+     Changed line supports the Checked line rather than competing with it. */
+  .kf-changed{font-size:11.5px;line-height:1.4;color:var(--muted)}
+  /* A fact with no date anywhere says so, in the same quiet register as the rest of the
+     meta column. Not a warning colour: an undated fact is a gap in our records, not a
+     hazard to the reader, and dressing it as an alert would overstate it. */
+  .kf-undated{font-style:italic;text-transform:none;letter-spacing:0}
+  .fresh-fact{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+  .fresh-compact{font-size:11.5px;color:var(--muted);line-height:1.4}
+  .fresh-undated{font-style:italic}
   .kf-src{font-size:12.5px;font-weight:600;color:var(--teal-deep);text-decoration:none}
   .kf-src:hover{text-decoration:underline}
   .kf-nosrc{font-size:12px;color:var(--muted);font-style:italic}

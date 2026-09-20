@@ -7,6 +7,7 @@ import StackBar from '../components/StackBar.astro';
 import BandBar from '../components/BandBar.astro';
 import ParityMap from '../components/ParityMap.astro';
 import CompareByRegion from '../components/CompareByRegion.astro';
+import { newestEffective } from '../data/provenance.js';
 import {
   bookingTacticsChecked,
   bookingTacticsCheckedISO,
@@ -410,13 +411,25 @@ const iconFor = (type) => ICONS[type] || ICONS.reg;
 // what is really one section of it; a truthful WebPage.dateModified is the honest fit.
 // dateModified is the same bookingTacticsCheckedISO the visible "Checked" stamps on this page
 // already carry, never a separate or newer date invented for the markup.
+// The newest junk-fee rule commencement date that has already passed. See the
+// dateModified note below.
+const rulesChangedISO = newestEffective(
+  (JUNKFEE_RULES || []).map(r => r.effectiveISO || r.effective)
+    .filter(d => typeof d === 'string' && d <= new Date().toISOString().slice(0, 10))
+);
 const webPageLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   "name": "How to pay less on hotels",
   "description": "A tactics playbook for the hotel booking moment, with a sourced, dated rate-parity table by country.",
   "url": "https://truetripcosts.com/how-to-pay-less-on-hotels",
-  "dateModified": bookingTacticsCheckedISO,
+  // dateModified BINDS TO A REAL CHANGE. It read bookingTacticsCheckedISO, the page's own
+  // re-check date, so confirming the figures had not moved still bumped it.
+  //
+  // The honest substitute here is the junk-fee rules, which are statutes with
+  // commencement dates: the newest one that has already taken effect is the day the law
+  // on this page last changed. A future commencement is excluded, and null omits the key.
+  ...(rulesChangedISO ? { "dateModified": rulesChangedISO } : {}),
 };
 ---
 {/* THE OG IMAGE IS PAGE-SPECIFIC, and it is the parity finding rather than the site's generic

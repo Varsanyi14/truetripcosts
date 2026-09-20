@@ -61,7 +61,11 @@ const datasetLd = {
   "name": "Cost of a day, compared by country",
   "description": "A ranked comparison of the typical daily cost for a US traveler, room plus on-the-ground spending, across " + live.length + " countries.",
   "url": "https://truetripcosts.com/cost-comparison",
-  "dateModified": isoDates[isoDates.length - 1],
+  // dateModified is OMITTED, deliberately. It was bound to this page's re-check date, so
+  // every routine re-check bumped it, which is artificial freshening: penalized, no
+  // ranking benefit, and untrue. This page aggregates facts from many countries and has
+  // no curated change record of its own, so there is no honest Changed date to bind to.
+  // Absence is not zero. datePublished is untouched.
   "creator": { "@type": "Organization", "name": "True Trip Costs" },
   "variableMeasured": "Typical daily cost for a US traveler (room rate plus on-the-ground spending), the True Trip Costs desk's own comparative estimate",
 };
