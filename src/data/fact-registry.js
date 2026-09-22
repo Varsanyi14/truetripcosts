@@ -373,22 +373,40 @@ for (const [key, e] of Object.entries(flightFeeMechanics || {})) {
 for (const c of countries) {
   const t = c.tax;
   if (!t || t.none) continue;
+  const tSrc = t.source || {};
   register({
     node: t, scope: 'country-tax', slug: c.slug, label: c.name + ' tourist tax', tier: 'B',
     value: t.rate === undefined ? null : t.rate,
     unit: t.unit || null,
     currency: t.currency || null,
-    checked_date: null,
+    // Read the same top-level provenance the A2 reference rows use. All null today, since no
+    // tax object carries these yet; they light up the moment the desk adds them.
+    effective_date: t.effective,
+    checked_date: t.checkedISO,
+    changed_date: changedFromEffective(t.effective),
+    source_url: tSrc.url || null,
+    source_name: tSrc.label || null,
+    source_type: sourceTypeFromIconType(tSrc.type),
     cadence: 'tax',
     conditions: { capNights: t.capNights === undefined ? null : t.capNights, note: t.note || null },
   });
   for (const r of (t.regions || [])) {
+    const rSrc = r.source || {};
     register({
       node: r, scope: 'country-tax-region', slug: c.slug + '-' + (r.key || r.label), label: c.name + ': ' + r.label, tier: 'B',
-      value: r.rate === undefined ? null : r.rate,
-      unit: t.unit || null,
+      // The figure is captured exactly as the region states it, whether that is a flat rate
+      // or a percentage. This does not touch the value the calculator reads; it only records
+      // it in the registry, and a pct-only region used to record null here.
+      value: r.rate === undefined ? (r.pct === undefined ? null : r.pct) : r.rate,
+      unit: r.unit || t.unit || null,
       currency: t.currency || null,
-      checked_date: null,
+      // Same top-level provenance shape as everywhere else. All null today.
+      effective_date: r.effective,
+      checked_date: r.checkedISO,
+      changed_date: changedFromEffective(r.effective),
+      source_url: rSrc.url || null,
+      source_name: rSrc.label || null,
+      source_type: sourceTypeFromIconType(rSrc.type),
       cadence: 'tax',
       conditions: { note: r.note || null },
     });

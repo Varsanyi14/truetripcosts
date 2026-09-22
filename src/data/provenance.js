@@ -532,13 +532,20 @@ export function pageProvenance(country, today = new Date()) {
   // coverage number that quietly leaves them out of its denominator.
   const undated = [];
   if (c.tax && !c.tax.none) {
-    const regions = Array.isArray(c.tax.regions) ? c.tax.regions.length : 0;
-    undated.push({
-      what: regions > 1
-        ? 'the ' + regions + ' per-place tourist tax rates'
-        : 'the tourist tax figure',
-      count: 1 + regions,
-    });
+    const regionList = Array.isArray(c.tax.regions) ? c.tax.regions : [];
+    // A rate counts as dated once it carries a checked date, whether that is the top-level
+    // checkedISO the desk adds or an explicit provenance block from a recorded re-check.
+    const dated = (o) => Boolean(asMachineDate(o && (o.checkedISO || (o.provenance && o.provenance.checked_date))));
+    const undatedRegions = regionList.filter(r => !dated(r)).length;
+    const count = (dated(c.tax) ? 0 : 1) + undatedRegions;
+    if (count > 0) {
+      undated.push({
+        what: undatedRegions > 1
+          ? 'the ' + undatedRegions + ' per-place tourist tax rates'
+          : 'the tourist tax figure',
+        count,
+      });
+    }
   }
 
   return {
