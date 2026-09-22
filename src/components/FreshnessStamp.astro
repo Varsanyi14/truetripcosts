@@ -46,12 +46,17 @@ const {
 
 const f = freshnessLine(record, { inherited, long });
 const undated = f.state === 'undated';
+// The seal is earned AND per-fact: a verified status, on the fact's OWN date (never an
+// inherited page date, which would be a country-level stamp), and only when actually dated.
+const sealed = f.status === 'verified' && !inherited && !undated;
 ---
 
 {variant === 'fact' && (
   <span class="fresh-fact">
-    <span class={undated ? 'kf-checked kf-undated' : 'kf-checked'}>{f.checkedLabel}</span>
-    {f.changedLabel && <span class="kf-changed">{f.changedLabel}</span>}
+    {sealed
+      ? <span class="ttc-seal"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="2.3" stroke="currentColor" stroke-width="1.5"/><path d="M7.6 12.2 10.7 15.3 16.5 9" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="ttc-seal-w">Verified</span> <span class="ttc-seal-d">{f.checkedLabel.replace(/^Checked /, '')}</span></span>
+      : <span class={undated ? 'kf-checked kf-undated' : 'kf-checked'}>{f.checkedLabel}</span>}
+    {f.changedLabel && <span class="ttc-held"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M5 9.5h14M5 14.5h14"/></svg>{f.changedLabel.replace(/^unchanged since /, 'Unchanged since ')}</span>}
     {showSource && (f.sourceUrl
       ? <a class="kf-src" href={f.sourceUrl} target="_blank" rel="noopener">{f.sourceName || sourceLabel}</a>
       : <span class="kf-nosrc">No official page yet</span>)}

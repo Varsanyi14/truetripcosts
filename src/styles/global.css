@@ -98,6 +98,23 @@
 
   .ctx{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:26px 0 12px}
   .stamp{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;color:#10502C;background:var(--green-bg);border-radius:999px;padding:3px 9px}
+
+  /* THE TTC VERIFIED SEAL. One certification mark: the logo's rounded-square tile carrying
+     a check, in verification green. Renders ONLY on a per-fact date whose provenance.status
+     is 'verified' (gated in FreshnessStamp). NEVER on an inherited or page-level date: a
+     seal on a whole-page date is the country-level stamp this system exists to remove. */
+  .ttc-seal{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-weight:500;font-size:11.5px;letter-spacing:.02em;line-height:1;color:#10502C;background:var(--green-bg);border-radius:999px;padding:4px 10px 4px 7px;white-space:nowrap;vertical-align:middle}
+  .ttc-seal svg{flex:0 0 auto}
+  .ttc-seal-w{font-weight:600;letter-spacing:.03em}
+  .ttc-seal-d{opacity:.92}
+  a.ttc-seal{text-decoration:none}
+  a.ttc-seal:hover{box-shadow:0 0 0 1px rgba(16,80,44,.28) inset}
+
+  /* THE CONFIRMED-UNCHANGED CHIP. Lighter companion to the seal: a re-check that found no
+     change is real work, not an absence, so it earns a mark of its own. The equals glyph
+     reads "still the same". DISPLAY ONLY: never wired to dateModified or the newsletter. */
+  .ttc-held{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10.5px;letter-spacing:.02em;line-height:1;color:var(--teal-deep);background:transparent;border:1px solid rgba(14,122,95,.32);border-radius:999px;padding:2px 9px 2px 7px;white-space:nowrap;vertical-align:middle;opacity:.92}
+  .ttc-held svg{flex:0 0 auto;opacity:.85}
   h1{font-family:var(--serif);font-weight:500;font-size:clamp(30px,5vw,44px);line-height:1.05;letter-spacing:-.02em;margin:0 0 16px}
 
   .verdict{background:var(--ink);color:#EAF0ED;border-radius:18px;padding:24px 26px;font-size:19px;line-height:1.5}

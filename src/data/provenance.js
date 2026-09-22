@@ -460,6 +460,7 @@ export function freshnessLine(record, opts) {
       sourceName: p.source_name || null,
       sourceUrl: p.source_url || null,
       compact: 'Not yet dated',
+      status: p.status || 'legacy',
     };
   }
 
@@ -476,6 +477,7 @@ export function freshnessLine(record, opts) {
     sourceName: p.source_name || null,
     sourceUrl: p.source_url || null,
     compact: changedLabel ? checkedLabel + ' \u00b7 ' + changedLabel : checkedLabel,
+    status: p.status || 'legacy',
   };
 }
 
