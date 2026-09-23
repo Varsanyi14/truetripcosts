@@ -116,13 +116,14 @@ export function cadenceDays(name) {
 // Three icon types map onto official-government with no judgment required: a government
 // or city page, a tax or revenue authority, an official tourism board. Those are derived.
 //
-// EVERYTHING ELSE RETURNS NULL, ON PURPOSE. The obvious next group is the operator's own
-// page: `card` (about 171 links), `bank`, `carrier`, `app`. Those look like
-// operator-official and probably are, but "probably" is exactly what this schema exists to
-// stop, and a derived value is indistinguishable from a verified one once it is in the
-// data. So they stay null for a human to set, and the coverage tracker counts them as
-// unset rather than as done. That group is the cheapest win available to whoever runs
-// Stage 2: one ruling closes roughly 183 links.
+// EVERYTHING ELSE RETURNS NULL, ON PURPOSE. An icon type like `card`, `bank`, `carrier` or
+// `app` on a country source is not enough to derive a type from: a derived value is
+// indistinguishable from a verified one once it is in the data, so these stay null for a
+// human to set. NOTE: the operator-official group MAIN closed (2026-09) was NOT this icon
+// map. It was the carrier-roaming dataset (the carrier-cell and carrier-profile scopes in
+// fact-registry.js), which is by construction each carrier's OWN day-rate page, so its
+// sourced facts are ruled operator-official there, not here. That single ruling typed 179
+// facts. The icon map stays deliberately null.
 const SOURCE_TYPE_BY_ICON = {
   gov: 'official-government',
   revenue: 'official-government',

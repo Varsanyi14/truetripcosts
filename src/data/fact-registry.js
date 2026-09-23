@@ -200,10 +200,10 @@ for (const iso of Object.keys(carrierRoaming || {})) {
       value: cell.verdict || cell.note || null,
       checked_date: cell.checkedISO,
       source_url: typeof cell.source === 'string' ? cell.source : (cell.source && cell.source.url) || null,
-      // A carrier's own page is almost certainly operator-official, and "almost certainly"
-      // is not good enough to bake in. See the note in provenance.js: this is the group
-      // one ruling from MAIN would close.
-      source_type: null,
+      // MAIN ruling (2026-09): the carrier-roaming dataset is, by construction, each carrier's
+      // OWN day-rate and cap page (AT&T, Verizon, T-Mobile), verified cell by cell against it,
+      // so a sourced cell is operator-official, not a guess. An unsourced cell stays null.
+      source_type: (typeof cell.source === 'string' ? cell.source : (cell.source && cell.source.url)) ? 'operator-official' : null,
       cadence: 'sampled',
     });
   }
@@ -218,7 +218,8 @@ for (const key of Object.keys(CARRIER_PROFILES || {})) {
     currency: 'USD',
     checked_date: p.checkedISO,
     source_url: typeof p.source === 'string' ? p.source : (p.source && p.source.url) || null,
-    source_type: null,
+    // MAIN ruling (2026-09): the same carrier-own-page dataset, so a sourced profile is operator-official.
+    source_type: (typeof p.source === 'string' ? p.source : (p.source && p.source.url)) ? 'operator-official' : null,
     cadence: 'sampled',
     conditions: { cap: p.cap === undefined ? null : p.cap },
   });
