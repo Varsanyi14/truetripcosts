@@ -937,9 +937,10 @@ async function main() {
     log('  Dated:      ' + cov.dated + ' of ' + cov.total + ' (' + pct(cov.dated) + '%). '
       + cov.undated + ' carry no date anywhere, so their age cannot be judged at all.');
     log('  Sourced:    ' + cov.sourced + ' of ' + cov.total + ' (' + pct(cov.sourced) + '%), of which '
-      + cov.sourceTyped + ' have a source_type set. The rest are null rather than guessed: the'
-      + ' operator-official group (a carrier or card issuer own page, roughly 183 links) is one'
-      + ' ruling away from closing.');
+      + cov.sourceTyped + ' have a source_type set. The rest stay null rather than guessed: the'
+      + ' largest remaining slice is government-domain sources (eCFR, state.gov, gov.uk) on keyFacts'
+      + ' and flight facts whose icon type is not one of the three the schema auto-derives, each left'
+      + ' for a human to confirm.');
     log('  Changed:    ' + cov.withChanged + ' know when their own value last moved. '
       + cov.withConfidence + ' carry a confidence rating.');
     log('  Cadence:    ' + cov.withinCadence + ' inside their review window, ' + cov.pastCadence
