@@ -107,13 +107,13 @@ export default {
         provenance: {
           status: "verified",
           checked_date: "2026-09-26",
-          source_url: "https://www.zakon.hr/c/zakon/672577/zakon-o-boravisnoj-pristojbi",
-          source_name: "Zakon o boravisnoj pristojbi (Croatian tourist tax law) - zakon.hr",
+          source_url: "https://www.dnz.hr/wp-content/uploads/2024/10/Odluka-o-visini-turisticke-pristojbe-za-2026.pdf",
+          source_name: "Dubrovacko-neretvanska zupanija, Odluka o visini turisticke pristojbe za 2026",
           source_type: "official-government",
         } },
       { key: "elsewhere", label: "Inland or off-season", rate: 1.5, unit: "perPersonPerNight",
         range: { min: 0.27, max: 2.65 },
-        note: "Inland towns and the coast outside high summer fall lower in the same category-and-season band; Zagreb, a top-category municipality, runs about 1.85 euros per adult per night year-round, while small off-season towns are well under 1. The full national band is about 0.27 to 2.65 euros per adult per night.",
+        note: "Inland towns and the coast outside high summer fall lower in the same category-and-season band; continental cities like Zagreb sit well below the coastal peak, and small off-season places are under 1 euro per night. The full national band is about 0.27 to 2.65 euros per adult per night.",
         provenance: {
           status: "verified",
           checked_date: "2026-09-26",
