@@ -238,6 +238,26 @@ const kfState = (f) => {
   return "inEffect";
 };
 
+// TOURIST TAX, CHECKED BY AREA (BRIEF-tax-seal-display). A short, honest figure string
+// for one tax.regions[] entry: the same scalar the calculator multiplies, in the same
+// unit, followed by the honest band when the region carries one (never the band's own
+// midpoint presented as if it were the one true rate). trimNum mirrors CostChart.astro's
+// own helper so a figure reads identically wherever it appears on the site.
+const taxTrimNum = (n) => {
+  const v = Math.round(n * 100) / 100;
+  return v >= 1000 ? v.toLocaleString("en-US") : String(v);
+};
+function taxValueLine(r, t) {
+  const unit = r.unit || t.unit;
+  const cur = t.currency || "";
+  let base;
+  if (unit === "percentOfRoom") base = taxTrimNum(r.pct || 0) + "% of the room";
+  else if (unit === "flatPerNight") base = taxTrimNum(r.rate || 0) + " " + cur + " per booking, per night";
+  else base = taxTrimNum(r.rate !== undefined ? r.rate : (r.pct || 0)) + " " + cur + " per person per night";
+  if (r.range) base += " (varies by area, " + taxTrimNum(r.range.min) + " to " + taxTrimNum(r.range.max) + ")";
+  return base;
+}
+
 // ----- "On this page": the jump list -----
 // The guides are long on purpose, but a reader who arrives with one question ("which
 // ATM?", "do I tip?") should not have to scroll past six other topics to reach the
@@ -764,6 +784,42 @@ const JUMP = [
         </span>
       </Fragment>
     )}
+  </section>
+)}
+
+{/* TOURIST TAX, CHECKED BY AREA (BRIEF-tax-seal-display). Per-rate seals, not a
+    whole-country stamp: only regions that themselves carry a verified provenance
+    block appear here, and each gets its own FreshnessStamp on its own date and
+    source. A country with no verified region renders nothing, same as today. */}
+{c.tax && Array.isArray(c.tax.regions) && c.tax.regions.some(r => r.provenance && r.provenance.status === 'verified') && (
+  <section>
+    <p class="lab">Tourist tax, checked by area</p>
+    <h2>What we have re-checked against the source.</h2>
+    <div class="keyfacts">
+      {c.tax.regions.filter(r => r.provenance && r.provenance.status === 'verified').map(r => (
+        <div class="kf-item">
+          <div class="kf-main">
+            <p class="kf-label">{r.label}</p>
+            <p class="kf-value">{taxValueLine(r, c.tax)}</p>
+          </div>
+          <div class="kf-meta">
+            <FreshnessStamp long record={provenanceRecord({
+              label: r.label,
+              value: r.rate !== undefined ? r.rate : r.pct,
+              unit: r.unit || c.tax.unit || null,
+              currency: c.tax.currency || null,
+              checked_date: r.provenance.checked_date,
+              changed_date: r.provenance.changed_date || null,
+              source_url: r.provenance.source_url || null,
+              source_name: r.provenance.source_name || null,
+              source_type: r.provenance.source_type || null,
+              status: r.provenance.status,
+              cadence: 'tax',
+            })} />
+          </div>
+        </div>
+      ))}
+    </div>
   </section>
 )}
 

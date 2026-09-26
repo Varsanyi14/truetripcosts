@@ -107,7 +107,15 @@ export default {
     capNights: null,
     note: "Germany has no national tourist tax. Individual cities charge their own bed tax (Bettensteuer), usually added to your bill at checkout. Business travelers used to be exempt, but several cities now tax business stays too (Berlin since April 2024, Cologne since July 2024, Frankfurt since October 2024), though most other cities still exempt them with an employer letter. Rates and structure vary by city, so this is a city-specific estimate, not a flat national rate.",
     regions: [
-      { key: "berlin", label: "Berlin", pct: 7.5, note: "Berlin charges 7.5% of the net room rate. The old 21-night cap was removed from 1 January 2025, so a normal stay is taxable throughout." },
+      { key: "berlin", label: "Berlin", pct: 7.5, note: "Berlin charges 7.5% of the net room rate. The old 21-night cap was removed from 1 January 2025, so a normal stay is taxable throughout.",
+        provenance: {
+          status: "verified",
+          checked_date: "2026-09-26",
+          changed_date: "2025-01",
+          source_url: "https://www.visitberlin.de/en/city-tax-berlin",
+          source_name: "visitBerlin, Berlin City Tax",
+          source_type: "official-government",
+        } },
       { key: "munich", label: "Munich", pct: 0, note: "Munich charges no bed tax. Bavaria banned local hotel taxes, and the Bavarian Constitutional Court upheld that ban in 2025, so the city cannot levy one." },
       { key: "hamburg", label: "Hamburg", pct: 2.1, note: "Hamburg uses a sliding scale by room price rather than a flat percentage; this is roughly equivalent to about 2% of the room rate." },
       { key: "cologne", label: "Cologne", pct: 5, note: "Cologne's culture tax (Kulturförderabgabe) runs 5% of the net room rate." },

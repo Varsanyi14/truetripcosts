@@ -99,8 +99,25 @@ export default {
     capNights: null,
     note: "Austria has no single national tourist tax. Most towns add a small local overnight tax to your hotel bill. Vienna charges a percentage of the room rather than a flat fee; most alpine and regional towns charge a flat per-person, per-night amount. These are rough figures; the exact amount varies by state, town and season. VAT is separate and already included in prices.",
     regions: [
-      { key: "vienna", label: "Vienna", rate: 5.5, note: "Vienna's tax is technically 5% of the net room price (raised from 3.2% on 1 July 2026, with a further rise to 8% due in July 2027) rather than a flat nightly fee, so on a typical hotel it works out to about 5 to 7 euros per person per night. This uses a representative figure." },
-      { key: "alpine", label: "Salzburg, Tyrol and the alpine resorts", rate: 3.0, note: "Alpine towns charge a flat local tax per person per night, and rates rose across 2025 and 2026. The city of Salzburg is around 3 euros, and Tyrol runs from about 2.60 euros up to about 5 euros depending on the tourism board, the resort and the season." },
+      { key: "vienna", label: "Vienna", pct: 5, unit: "percentOfRoom", note: "Vienna charges 5% of the net room price (raised from 3.2% on 1 July 2026, with a further rise to 8% due on 1 July 2027), so the amount scales with the room rather than a flat nightly fee.",
+        provenance: {
+          status: "verified",
+          checked_date: "2026-09-26",
+          changed_date: "2026-07",
+          source_url: "https://www.wien.gv.at/english/e-government/financial/tax/local-tax.html",
+          source_name: "City of Vienna, Ortstaxe (local accommodation tax)",
+          source_type: "official-government",
+        } },
+      { key: "salzburg", label: "Salzburg", rate: 3.55, note: "The city of Salzburg charges 3.55 euros per person per night, a 3.50 euro accommodation and mobility levy plus a separate 0.05 euro tourism-fund contribution, in effect since 1 May 2025.",
+        provenance: {
+          status: "verified",
+          checked_date: "2026-09-26",
+          changed_date: "2025-05",
+          source_url: "https://www.stadt-salzburg.at/naechtigungsabgabeerklaerung",
+          source_name: "Stadt Salzburg, allgemeine Naechtigungsabgabe",
+          source_type: "official-government",
+        } },
+      { key: "alpine", label: "Tyrol and the alpine resorts", rate: 3.0, note: "Tyrol and the other alpine resorts charge a flat local tax per person per night, commonly about 2.60 to 5 euros depending on the tourism board, resort and season. This is a representative figure." },
       { key: "other", label: "Elsewhere in Austria", rate: 2.5, note: "Most Austrian towns charge a small flat per-person, per-night tax, commonly 2 to 4.50 euros in 2026. Burgenland has charged a flat 4.50 euros since 1 January 2026, and Carinthia moves to a flat 4.50 euros on 1 November 2026." }
     ]
   },
