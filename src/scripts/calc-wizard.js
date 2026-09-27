@@ -1120,16 +1120,26 @@ export function initCalcWizard() {
       // the checkout-uplift block above already follows. Both cards are updated every
       // mirror() pass regardless of which one is currently visible; harmless on the hidden
       // one and keeps this in one place rather than duplicated per wrap. -----
+      //
+      // BRIEF-calc-seal-at-total: the seal is mirrored from the SAME single source every
+      // other tax-line seal reads, the engine's own hnTaxSeal (never recomputed here). The
+      // sentence's own text now targets a nested span (data-hotel-tax-text) rather than the
+      // line's textContent directly, so setting it on every pass no longer erases the seal
+      // slot sitting right beside it, which is what a plain textContent overwrite would do.
+      const taxSeal = (byId('hnTaxSeal') && !byId('hnTaxSeal').hidden) ? byId('hnTaxSeal').innerHTML : '';
       ['hotel-online', 'hotel-direct'].forEach(k => {
         const taxLineEl = document.querySelector('[data-hotel-tax-line="' + k + '"]');
         if (!taxLineEl) return;
+        const taxTextEl = taxLineEl.querySelector('[data-hotel-tax-text]');
+        const taxSealEl = taxLineEl.querySelector('[data-hotel-tax-seal]');
         if (usdToNumber(taxAmt) > 0) {
-          taxLineEl.textContent = 'Tourist tax: about ' + taxAmt + ' for your stay.';
+          if (taxTextEl) taxTextEl.textContent = 'Tourist tax: about ' + taxAmt + ' for your stay.';
           taxLineEl.hidden = false;
         } else {
-          taxLineEl.textContent = '';
+          if (taxTextEl) taxTextEl.textContent = '';
           taxLineEl.hidden = true;
         }
+        if (taxSealEl) { taxSealEl.innerHTML = taxSeal; taxSealEl.hidden = !taxSeal; }
       });
 
       // ----- BRIEF-result-card-step3: goods and date each need real text composed from

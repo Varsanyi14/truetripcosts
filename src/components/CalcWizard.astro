@@ -935,7 +935,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
                   )}
                   <div class="ttc-hotel-card-section">
                     <p class="ttc-hotel-card-section-label">Still landing on top</p>
-                    <p data-hotel-tax-line="hotel-online" hidden>&nbsp;</p>
+                    <p data-hotel-tax-line="hotel-online" hidden><span data-hotel-tax-text>&nbsp;</span> <span class="hn-seal" data-hotel-tax-seal hidden></span></p>
                     <p>{hotelOnlineCard.resortLine}</p>
                     <p>{hotelOnlineCard.parkingLine}</p>
                     <p>{hotelOnlineCard.depositLine}</p>
@@ -963,7 +963,7 @@ const wizJson = JSON.stringify(wizData).replace(/</g, '\\u003c');
                   )}
                   <div class="ttc-hotel-card-section">
                     <p class="ttc-hotel-card-section-label">Still landing on top</p>
-                    <p data-hotel-tax-line="hotel-direct" hidden>&nbsp;</p>
+                    <p data-hotel-tax-line="hotel-direct" hidden><span data-hotel-tax-text>&nbsp;</span> <span class="hn-seal" data-hotel-tax-seal hidden></span></p>
                     <p>{hotelDirectCard.resortLine}</p>
                     <p>{hotelDirectCard.parkingLine}</p>
                     <p>{hotelDirectCard.depositLine}</p>

@@ -310,7 +310,7 @@ import { usdBracket } from '../data/usd-bracket.js';
   function computeTax(roomUSD, nights, trav, rooms) {
     if (rooms == null) rooms = 1;
     if (!tax || tax.none || regions.length === 0) {
-      return { usd: 0, label: 'Tourist tax', note: (tax && tax.note) || '' };
+      return { usd: 0, label: 'Tourist tax', note: (tax && tax.note) || '', provenance: null };
     }
     const r = regions[Math.min(state.regionIndex, regions.length - 1)] || regions[0];
     const unit = r.unit || tax.unit;
@@ -341,7 +341,26 @@ import { usdBracket } from '../data/usd-bracket.js';
     else if (tax.taxLabel) label = tax.taxLabel;
     else label = short + ' tourist tax';
 
-    return { usd: amount, label: label, note: r.note || tax.note || '' };
+    return { usd: amount, label: label, note: r.note || tax.note || '',
+      provenance: (r.provenance && r.provenance.status === 'verified') ? r.provenance : null };
+  }
+
+  // BRIEF-calc-seal-at-total: the tax line's Verified seal, built once here from
+  // computeTax()'s provenance and mirrored to both result surfaces by calc-wizard.js, the
+  // same way every other tax-line figure already is. Reuses the site's one existing seal
+  // mark (see global.css's ".ttc-seal" and FreshnessStamp.astro, which renders the same
+  // markup elsewhere) rather than inventing a second one for the calculator.
+  function taxSealHTML(p) {
+    if (!p || p.status !== 'verified' || !p.checked_date) return '';
+    // "2026-09" or "2026-09-26" -> "Sep 2026"
+    const d = new Date(p.checked_date.length === 7 ? p.checked_date + '-01' : p.checked_date);
+    const when = isNaN(d) ? p.checked_date : d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+    const open = p.source_url ? '<a class="ttc-seal" href="' + p.source_url + '" target="_blank" rel="noopener">' : '<span class="ttc-seal">';
+    const close = p.source_url ? '</a>' : '</span>';
+    return open
+      + '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="2.3" stroke="currentColor" stroke-width="1.5"/><path d="M7.6 12.2 10.7 15.3 16.5 9" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+      + '<span class="ttc-seal-w">Verified</span> <span class="ttc-seal-d">' + when + '</span>'
+      + close;
   }
 
   function render(animate) {
@@ -464,6 +483,8 @@ import { usdBracket } from '../data/usd-bracket.js';
     }
     id('hnFeeQ').textContent = fmtPct(fallbackFxPct);
     id('hnTaxLabel').textContent = t.label;
+    const sealEl = id('hnTaxSeal');
+    if (sealEl) { const html = taxSealHTML(t.provenance); sealEl.innerHTML = html; sealEl.hidden = !html; }
     id('hnCardBase').textContent = usd(cardBase);
     id('hnCardFeeNote').textContent = state.paid
       ? 'the ' + usd(card) + ' card half of your spend, on the statement weeks later'
