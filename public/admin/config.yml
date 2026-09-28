@@ -1,0 +1,71 @@
+# Decap CMS config for the CMS proof slice.
+# Scope: this file ONLY. It edits src/data/facts/germany-tax-regions.json
+# and nothing else in the repo. Verified against decapcms.org, Sept 2026.
+#
+# CORRECTIONS FROM THE ORIGINAL DRAFT, flagged per the brief's own house rule:
+#
+# 1. editorial_workflow does NOT work under local_backend / decap-server.
+#    Decap's own docs, "Decap Proxy: Work With a Local Repository", state
+#    this as a named limitation. So with local_backend: true, saves in the
+#    CMS will write straight to the local file, there is no draft/PR step to
+#    click through yet, even though publish_mode: editorial_workflow is set
+#    below. That line is left in because it is what production (Step 5)
+#    needs, and because leaving it in does not break local testing, it is
+#    just inert locally. Concretely: Step 4's "prove the editing experience
+#    and its editorial workflow" claim is only half provable locally, you
+#    can prove the form and the fields render and save correctly, you
+#    cannot prove the draft-PR-publish loop until Step 5's real GitHub OAuth
+#    is wired. Flagging this rather than quietly building past it.
+#
+# 2. backend.name stays "github" (not "git-gateway") even during local
+#    testing. Decap's own local-repository doc happens to pair local_backend
+#    with git-gateway in its example, because that combination is common for
+#    sites that already use Netlify Identity. We are not on Netlify and have
+#    no Git Gateway service, our real backend is GitHub via a Cloudflare
+#    Worker OAuth proxy (Step 5). local_backend interception is keyed off
+#    running on localhost, not off backend.name, so backend: github plus
+#    local_backend: true is a documented-in-the-wild combination and is the
+#    right one for us: the same config.yml serves both local and production
+#    testing, exactly as Decap's docs describe as the intended pattern.
+
+backend:
+  name: github
+  repo: <ORG>/<REPO> # TODO: fill in before Step 5, e.g. garyv/truetripcosts
+  branch: main
+
+local_backend: true
+
+publish_mode: editorial_workflow
+
+media_folder: "public/uploads"
+
+collections:
+  - name: "germany_tax_proof"
+    label: "Germany bed tax (proof slice)"
+    files:
+      - name: "germany_tax_regions"
+        label: "Germany tax regions (Berlin / Munich / Frankfurt)"
+        file: "src/data/facts/germany-tax-regions.json"
+        fields:
+          - label: "Berlin"
+            name: "berlin"
+            widget: "object"
+            fields: &region_fields
+              - { label: "Display label", name: "label", widget: "string" }
+              - { label: "Unit", name: "unit", widget: "select", options: ["percentOfRoom", "perPersonPerNight"], required: false }
+              - { label: "Percent (percentOfRoom only)", name: "pct", widget: "number", required: false }
+              - { label: "Flat rate (perPersonPerNight only)", name: "rate", widget: "number", required: false }
+              - { label: "Note shown to readers", name: "note", widget: "text" }
+              - label: "Provenance"
+                name: "provenance"
+                widget: "object"
+                fields:
+                  - { label: "Status", name: "status", widget: "select", options: ["legacy", "verified"] }
+                  - { label: "Checked date", name: "checked_date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false }
+                  - { label: "Changed date", name: "changed_date", widget: "string", required: false, hint: "YYYY-MM-DD or YYYY-MM" }
+                  - { label: "Source URL", name: "source_url", widget: "string", required: false }
+                  - { label: "Source name", name: "source_name", widget: "string", required: false }
+                  - { label: "Source type", name: "source_type", widget: "select", options: ["official-government", "operator-official", "reputable-secondary"], required: false }
+                  - { label: "Confidence", name: "confidence", widget: "select", options: ["high", "medium", "low"], required: false }
+          - { label: "Munich", name: "munich", widget: "object", fields: *region_fields }
+          - { label: "Frankfurt", name: "frankfurt", widget: "object", fields: *region_fields }

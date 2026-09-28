@@ -1,0 +1,45 @@
+{
+  "berlin": {
+    "label": "Berlin",
+    "pct": 7.5,
+    "note": "Berlin charges 7.5% of the net room rate. The old 21-night cap was removed from 1 January 2025, so a normal stay is taxable throughout.",
+    "provenance": {
+      "status": "verified",
+      "checked_date": "2026-09-26",
+      "changed_date": "2025-01",
+      "source_url": "https://www.visitberlin.de/en/city-tax-berlin",
+      "source_name": "visitBerlin, Berlin City Tax",
+      "source_type": "official-government",
+      "confidence": null
+    }
+  },
+  "munich": {
+    "label": "Munich",
+    "pct": 0,
+    "note": "Munich charges no bed tax. Bavaria banned local hotel taxes, and the Bavarian Constitutional Court upheld that ban in 2025, so the city cannot levy one.",
+    "provenance": {
+      "status": "legacy",
+      "checked_date": null,
+      "changed_date": null,
+      "source_url": null,
+      "source_name": null,
+      "source_type": null,
+      "confidence": null
+    }
+  },
+  "frankfurt": {
+    "label": "Frankfurt",
+    "unit": "perPersonPerNight",
+    "rate": 2,
+    "note": "Frankfurt charges a flat 2 euros per person, per night, rather than a percentage.",
+    "provenance": {
+      "status": "legacy",
+      "checked_date": null,
+      "changed_date": null,
+      "source_url": null,
+      "source_name": null,
+      "source_type": null,
+      "confidence": null
+    }
+  }
+}
