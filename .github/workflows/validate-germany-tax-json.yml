@@ -29,9 +29,8 @@ jobs:
           -d src/data/facts/germany-tax-regions.json
           --strict=false
 
-      - name: Date-honesty check against base branch (stretch, non-blocking)
+      - name: Date-honesty check against base branch (blocking)
         if: github.event_name == 'pull_request'
-        continue-on-error: true
         run: node scripts/check-date-honesty.mjs
         env:
           BASE_REF: ${{ github.event.pull_request.base.sha }}

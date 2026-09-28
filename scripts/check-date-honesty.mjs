@@ -5,8 +5,8 @@
 // changing, or if pct/rate changed without changed_date moving.
 //
 // This is the date-honesty rule enforced as code instead of trusted UI
-// behavior. Marked continue-on-error in the workflow: it is a stretch goal,
-// not required for this slice to count as done.
+// behavior. It BLOCKS the pull request: a value change with no change date, or a
+// change date with no value change, must never reach the live site quietly.
 
 import { execSync } from "node:child_process";
 
@@ -42,7 +42,10 @@ for (const key of Object.keys(after)) {
   const a = after[key];
   if (!b) continue; // new region, nothing to compare
 
-  const valueChanged = b.pct !== a.pct || b.rate !== a.rate || b.unit !== a.unit;
+  // "percentOfRoom" is the default shape for a percentage entry, so storing it or
+  // leaving it out means the same thing and must not count as a value change.
+  const unitOf = (r) => (r.unit === "percentOfRoom" ? undefined : r.unit);
+  const valueChanged = b.pct !== a.pct || b.rate !== a.rate || unitOf(b) !== unitOf(a);
   const dateMoved = b.provenance?.changed_date !== a.provenance?.changed_date;
 
   if (dateMoved && !valueChanged) {
