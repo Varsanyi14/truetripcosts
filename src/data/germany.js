@@ -1,5 +1,5 @@
 import { S } from './carrier-spine.js';
-import germanyTaxRegions from './facts/germany-tax-regions.json';
+import germanyTaxRegions from './facts/germany-tax-regions.json' with { type: 'json' };
 
 export default {
   slug: "germany",
