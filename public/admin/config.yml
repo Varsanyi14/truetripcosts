@@ -30,8 +30,11 @@
 
 backend:
   name: github
-  repo: <ORG>/<REPO> # TODO: fill in before Step 5, e.g. garyv/truetripcosts
+  repo: Varsanyi14/truetripcosts
   branch: main
+  # The address of the ttc-cms-auth Worker (the sign-in helper). No trailing slash.
+  base_url: https://ttc-cms-auth.varsanyi.workers.dev
+  auth_endpoint: auth
 
 local_backend: true
 

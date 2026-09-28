@@ -1,0 +1,11 @@
+# Only used if this Worker is ever deployed from the command line. The dashboard
+# route (paste index.js into a new Worker) does not need this file.
+name = "ttc-cms-auth"
+main = "index.js"
+compatibility_date = "2026-06-28"
+workers_dev = true
+
+[vars]
+ALLOWED_ORIGINS = "https://truetripcosts.com"
+ALLOWED_USERS = "Varsanyi14"
+# GITHUB_OAUTH_ID and GITHUB_OAUTH_SECRET are secrets. Never put them in this file.
