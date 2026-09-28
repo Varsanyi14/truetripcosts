@@ -18,13 +18,13 @@
     "pct": 0,
     "note": "Munich charges no bed tax. Bavaria banned local hotel taxes, and the Bavarian Constitutional Court upheld that ban in 2025, so the city cannot levy one.",
     "provenance": {
-      "status": "legacy",
-      "checked_date": null,
+      "status": "verified",
+      "checked_date": "2026-09-28",
       "changed_date": null,
-      "source_url": null,
-      "source_name": null,
-      "source_type": null,
-      "confidence": null
+      "source_url": "https://www.bayern.verfassungsgerichtshof.de/bayverfgh/rechtsprechung/ausgewaehlte_entscheidungen.php",
+      "source_name": "Bavarian Constitutional Court, 14 November 2025 decision",
+      "source_type": "official-government",
+      "confidence": "high"
     }
   },
   "frankfurt": {
