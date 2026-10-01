@@ -243,18 +243,17 @@ export const heroFacts = {
     doorPool: false,
   },
 
-  // SWAP DUE 1 Oct 2026. The ETA is the durable fact and holds until then. On 1 October
-  // 2026 Australia's card-surcharge ban BEGINS (the keyFact's `effective` date is a start,
-  // not an expiry), which is a stronger hero: a fee disappearing nationwide is a bigger
-  // surprise to a US traveler than one more entry authorization. Swap the fact then, keep
-  // the ETA in the breadth reveal where it already surfaces as an entry charge.
+  // SWAPPED 1 Oct 2026. Australia's card-surcharge ban took effect on this date (the
+  // keyFact's `effective` date was a start, not an expiry), a stronger hero than the ETA:
+  // a fee disappearing nationwide surprises a US traveler more than one more entry
+  // authorization. The ETA still surfaces in the breadth reveal as an entry charge.
   australia: {
     shape: null,
-    setup: 'You expect a visa-free country to mean nothing to file.',
-    fact: 'US visitors need an Australian ETA before flying, it carries an AUD 20 service fee, and it can only be applied for inside the official Australian ETA app.',
-    escape: 'Use the official app only. Anything charging you more on a website is a reseller.',
+    setup: 'You brace for a card surcharge tacked on at the till, the way Australian shops long did.',
+    fact: 'Since 1 October 2026 that surcharge is banned: merchants can no longer add a fee for paying by eftpos, Visa, Mastercard or Amex, so the card price now matches the sticker price.',
+    escape: 'If a bill still shows a card surcharge on those networks, it should not be there, and you can ask for it to be removed.',
     accent: null,
-    flag: { kind: 'watch', note: 'Swap to the card-surcharge ban after 1 Oct 2026, when the ban takes effect.' },
+    flag: null,
     doorPool: false,
   },
 

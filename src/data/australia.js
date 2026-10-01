@@ -9,7 +9,7 @@ export default {
   checked: "Sep 2026",
   checkedISO: "2026-09-14",
   sources: {
-    changed: "First publication. Confirmed the money change that matters most this year: the Reserve Bank of Australia's final decision, published 31 March 2026, to ban card surcharges on eftpos, Visa and Mastercard from 1 October 2026, so until that date many merchants still add a surcharge. Also confirmed the AUD 20 service fee for the app-only ETA (subclass 601), the 10% GST built into prices, and the Tourist Refund Scheme minimum of AUD 300 for claiming GST back on goods.",
+    changed: "Re-confirmed for this check: the Reserve Bank of Australia's card-surcharge ban, decided 31 March 2026, took effect on 1 October 2026, so surcharges on eftpos, Visa, Mastercard and Amex are no longer added nationwide, and PayPal's own no-surcharge rule follows from 5 October 2026. Also reconfirmed the AUD 20 service fee for the app-only ETA (subclass 601), the 10% GST built into prices, and the Tourist Refund Scheme minimum of AUD 300 for claiming GST back on goods.",
     links: [
       { label: "Reserve Bank of Australia: the final review of retail payments regulation, setting the ban on card surcharges for eftpos, Visa and Mastercard from 1 October 2026 and the lower interchange caps", url: "https://www.rba.gov.au/payments-and-infrastructure/review-of-retail-payments-regulation/2026-03/", type: "gov" },
       { label: "Reserve Bank of Australia, retail payments reform FAQ: American Express to remove surcharging from 1 October 2026; PayPal's no-surcharge rule from 5 October 2026", url: "https://www.rba.gov.au/payments-and-infrastructure/review-of-retail-payments-regulation/2026-03/conclusions-paper/faqs/", type: "gov" },
@@ -23,14 +23,14 @@ export default {
   rentalCommon: true,
   region: "Oceania",
   signals: { cardFriendliness: 5, cashNeed: 1, taxRisk: 2 },
-  hook: "About as card-friendly as travel gets: tap your card or phone almost everywhere. The one habit worth knowing is that until 1 October 2026 many places still add a card surcharge, so check the bill, choose Australian dollars over US dollars, and carry only a little cash.",
+  hook: "About as card-friendly as travel gets: tap your card or phone almost everywhere. Card surcharges are banned since 1 October 2026, so choose Australian dollars over US dollars, carry only a little cash, and query the bill if a surcharge still shows up.",
   aliases: ["australia", "aus", "aussie", "oz", "sydney", "melbourne", "brisbane", "perth", "adelaide", "cairns", "gold coast", "tasmania", "uluru", "great barrier reef", "outback", "aud", "australian dollar", "eta", "subclass 601", "gst", "trs", "tourist refund scheme", "eftpos", "opal", "myki"],
 
   title: "Australia money 2026: cards, surcharges and cash",
-  description: "Tap almost everywhere: Australia is about as card-friendly as travel gets. Check the bill for a surcharge until the October 2026 ban. Checked 2026.",
+  description: "Tap almost everywhere: Australia is about as card-friendly as travel gets. The card surcharge is banned since 1 October 2026. Checked 2026.",
 
   h1: "Money in Australia, sorted.",
-  lede: "A calm, current plan for the money side of your trip: why your card covers almost everything, the surcharge to watch for until the October 2026 ban, the little cash worth carrying, the GST you can claim back on shopping, and the ETA to sort before you fly.",
+  lede: "A calm, current plan for the money side of your trip: why your card covers almost everything, the surcharge ban now in effect, the little cash worth carrying, the GST you can claim back on shopping, and the ETA to sort before you fly.",
   hero: {
     img: "/australia-hero.jpg",
     h: 1375,
@@ -39,12 +39,12 @@ export default {
 
   recentChange: {
     date: "Sep 2026",
-    text: "One money change is worth a fresh check this year. On 31 March 2026 the Reserve Bank confirmed it will ban card surcharges on eftpos, Visa and Mastercard from 1 October 2026, alongside lower card fees for businesses. Until that date many merchants still add a surcharge (often around 1 to 1.5%, and more on Amex), shown on the bill or the terminal, so it is worth looking for it. From 1 October 2026 American Express is also removing merchant surcharges, and PayPal follows from 5 October 2026, so those two fall away just after the main ban rather than continuing."
+    text: "One money change landed this year. On 31 March 2026 the Reserve Bank confirmed a ban on card surcharges for eftpos, Visa and Mastercard from 1 October 2026, alongside lower card fees for businesses, and that ban is now in effect. American Express also removed its own surcharging from 1 October 2026, and PayPal's own no-surcharge rule follows from 5 October 2026. If you still see a surcharge on one of those networks, it should not be there."
   },
 
   notice: 'We only cover trips departing from the United States right now. Want an email the moment we add your home country? <a href="#" onclick="return false"><b>Sign up for an alert</b></a>.',
 
-  verdict: "Australia is <b>about as card-friendly as travel gets</b>. Locals tap a card or phone for almost everything, and your <b>Visa or Mastercard</b> works at shops, cafes, restaurants, taxis and on city transit, with Amex widely accepted too. The one habit worth knowing: <b>until 1 October 2026</b>, many merchants still add a <b>card surcharge</b> (often around <b>1 to 1.5%</b>, and more on Amex), shown as a line on the bill or a sticker on the terminal, and a few offer a small cash discount instead. From that date the Reserve Bank bans surcharges on eftpos, Visa and Mastercard, so they simply switch off (with Amex removing surcharges from 1 October and PayPal from 5 October too). Carry only a little cash, about <b>AUD 50 to 100</b>, for the odd market stall or tiny vendor, and pull it from a <b>bank ATM</b> rather than an exchange counter. Set your card to <b>decline the dollar conversion</b> and <b>always choose Australian dollars</b> on any terminal or ATM. Two more things worth your attention: the <b>10% GST</b> is already in the price and you can <b>claim it back on goods</b> you take home through the Tourist Refund Scheme, and <b>nobody tips</b> here, so pay the price on the bill and relax. Before you fly, sort an <b>ETA</b> (AUD 20, in the official app only).",
+  verdict: "Australia is <b>about as card-friendly as travel gets</b>. Locals tap a card or phone for almost everything, and your <b>Visa or Mastercard</b> works at shops, cafes, restaurants, taxis and on city transit, with Amex widely accepted too. The one habit that changed this year: <b>since 1 October 2026</b>, a <b>card surcharge</b> can no longer be added on eftpos, Visa, Mastercard or Amex, so the price on the bill or the terminal is the price you pay (PayPal's own no-surcharge rule follows from 5 October 2026). If you still see one on those networks, it should not be there, and you can ask for it to be removed. Carry only a little cash, about <b>AUD 50 to 100</b>, for the odd market stall or tiny vendor, and pull it from a <b>bank ATM</b> rather than an exchange counter. Set your card to <b>decline the dollar conversion</b> and <b>always choose Australian dollars</b> on any terminal or ATM. Two more things worth your attention: the <b>10% GST</b> is already in the price and you can <b>claim it back on goods</b> you take home through the Tourist Refund Scheme, and <b>nobody tips</b> here, so pay the price on the bill and relax. Before you fly, sort an <b>ETA</b> (AUD 20, in the official app only).",
 
   meter: {
     heading: "About as cashless as travel gets, with a little cash for the gaps.",
@@ -53,16 +53,16 @@ export default {
   },
 
   trio: [
-    { sym: "card", kind: "ok", h: "Your card", verd: "Works almost everywhere", p: "Visa and Mastercard are taken at shops, cafes, restaurants, taxis and on contactless transit gates, and Amex is widely accepted too. The one thing to watch is a <b>surcharge</b>: until 1 October 2026 many places add around 1 to 1.5% (more on Amex), shown on the bill. From that date the Reserve Bank ban removes it for eftpos, Visa and Mastercard.", cta: { label: "Check yours", href: "#calc" } },
+    { sym: "card", kind: "ok", h: "Your card", verd: "Works almost everywhere", p: "Visa and Mastercard are taken at shops, cafes, restaurants, taxis and on contactless transit gates, and Amex is widely accepted too. The <b>card surcharge</b> that used to show up on the bill is gone: banned on eftpos, Visa, Mastercard and Amex since 1 October 2026.", cta: { label: "Check yours", href: "#calc" } },
     { sym: "cash", kind: "ok", h: "Cash", verd: "A small backup", p: "You rarely need it, but keep about AUD 50 to 100 for a market stall, a tiny vendor or a rural stop. Get Australian dollars from a bank ATM rather than an airport exchange counter, and top up only as needed.", cta: { label: "How much to bring", href: "#cash" } },
     { sym: "atm", kind: "ok", h: "ATMs", verd: "Easy, just decline dollars", p: "Bank ATMs (CommBank, Westpac, NAB and ANZ) are everywhere and generally do not charge foreign cards a machine fee, while some independent ATMs in pubs and convenience stores add one. Always <b>choose Australian dollars, not US dollars</b>, so the machine does not set a poor rate, and your own bank handles the exchange.", cta: { label: "See low-fee cards", href: "#" } }
   ],
 
   plan: [
     { sym: "tag", when: "Before you go", bullets: [
-      "Bring a <b>no-foreign-fee Visa or Mastercard</b>, plus a backup from a different bank. Amex works widely but is more likely to carry a surcharge, so keep a Visa or Mastercard as your main card.",
+      "Bring a <b>no-foreign-fee Visa or Mastercard</b>, plus a backup from a different bank. Amex is widely accepted too, and no longer carries a surcharge since the October 2026 ban, but a Visa or Mastercard is still the safer default for the rare spot that does not take Amex.",
       "Sort your <b>ETA (subclass 601)</b>. US visitors need one, it costs a flat <b>AUD 20</b> service fee, and it is applied for only in the official <b>Australian ETA app</b>, so ignore reseller sites charging more.",
-      "Know the <b>surcharge</b> rule: until <b>1 October 2026</b> many places add around 1 to 1.5% (more on Amex) on card, after which it is banned for eftpos, Visa and Mastercard.",
+      "Know the <b>surcharge</b> rule: since <b>1 October 2026</b> it is banned on eftpos, Visa, Mastercard and Amex, so the price on the terminal is the price you pay.",
       "Set up an <b>eSIM</b> before you land. Coverage is strong in the cities and towns, thinner in the remote Outback."
     ], cta: { label: "See no-fee card options", tag: "earn", href: "#" } },
     { sym: "plane", when: "At the airport", bullets: [
@@ -73,7 +73,7 @@ export default {
     ], cta: { label: "Find low-fee cards for ATMs", tag: "earn", href: "#" } },
     { sym: "bowl", when: "Day to day", bullets: [
       "<b>Tap your card or phone</b> for almost everything, and choose Australian dollars every time.",
-      "Until 1 October 2026, <b>glance at the bill or terminal for a surcharge</b>, and take the cash-discount option if one is offered.",
+      "The <b>card surcharge is banned</b> now, so the price on the bill or terminal is what you pay, no need to hunt for a cash-discount workaround.",
       "Keep a little <b>cash</b> for market stalls, small cafes and rural stops.",
       "<b>Tap your bank card</b> straight onto city transit (Opal in Sydney, Myki in Melbourne, and similar), so you often need no separate transit card."
     ], cta: { label: "How tipping works here", tag: "free", href: "#tipping" } },
@@ -106,8 +106,8 @@ export default {
   currencyHeading: "The Australian dollar, in plain terms.",
   facts: [
     { sym: "aud", k: "Quick conversion", v: "Australia uses the Australian dollar. At about 1.44 to the US dollar in mid-2026, AUD 100 is roughly US$70 and AUD 20 about US$14. The colorful polymer notes come in 5, 10, 20, 50 and 100 dollars, and prices already include the 10% GST, so the figure on the tag is what you pay." },
-    { sym: "card", k: "Cards rule, cash is backup", v: "Visa and Mastercard work almost everywhere, and Amex is widely accepted (though more often surcharged). You can go days without cash, but keep about AUD 50 to 100 for a market stall or a tiny rural vendor." },
-    { sym: "tag", k: "Surcharges, until October 2026", v: "Until 1 October 2026 many businesses add a card surcharge, often around 1 to 1.5% and more on Amex, shown on the bill or the terminal. From that date the Reserve Bank bans it for eftpos, Visa and Mastercard, and Amex is removing surcharges from 1 October 2026 with PayPal following from 5 October 2026. Some places offer a small cash discount instead." },
+    { sym: "card", k: "Cards rule, cash is backup", v: "Visa, Mastercard and Amex all work almost everywhere, and none of them carry a surcharge now that the ban is in place. You can go days without cash, but keep about AUD 50 to 100 for a market stall or a tiny rural vendor." },
+    { sym: "tag", k: "Surcharges, banned since October 2026", v: "Since 1 October 2026 a card surcharge can no longer be added on eftpos, Visa, Mastercard or Amex, so the bill matches the sticker price. PayPal's own no-surcharge rule follows from 5 October 2026. If you still see one on those networks, it should not be there, and you can query it." },
     { sym: "notip", k: "No tipping", v: "Australia has no real tipping culture. Staff are paid a proper wage, so tips are a bonus for standout service, never an obligation. There is no tipping at cafes, bars or in taxis, and no service charge to expect on an ordinary bill." }
   ],
 
@@ -118,15 +118,15 @@ export default {
   },
 
   keyFacts: [
-    { label: "Card surcharge ban", value: "Surcharges on eftpos, Visa and Mastercard end nationwide; Amex removes surcharges from 1 October 2026 and PayPal from 5 October 2026", status: "enacted", effective: "2026-10-01", source: "https://www.rba.gov.au/payments-and-infrastructure/review-of-retail-payments-regulation/2026-03/", checked: "2026-07-12" },
+    { label: "Card surcharge ban", value: "Surcharges on eftpos, Visa, Mastercard and Amex no longer apply nationwide, banned since 1 October 2026; PayPal own no-surcharge rule follows from 5 October 2026", status: "enacted", effective: "2026-10-01", source: "https://www.rba.gov.au/payments-and-infrastructure/review-of-retail-payments-regulation/2026-03/", checked: "2026-10-01" },
     { label: "ETA (entry authorization)", value: "Required for US visitors, AUD 20 service fee, applied for only in the official Australian ETA app", status: "enacted", effective: null, source: "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/electronic-travel-authority-601", checked: "2026-07-12" }
   ],
 
   traps: [
     "<b>'Pay in US dollars?' Always say no.</b> Card terminals and ATMs may offer to charge you in US dollars (dynamic currency conversion), which quietly adds a few percent. Choose Australian dollars every time.",
-    "<b>Card surcharges apply until 1 October 2026.</b> Many places add around 1 to 1.5% (more on Amex) on card, shown on the bill or the terminal. From that date the Reserve Bank ban removes it for eftpos, Visa and Mastercard, but until then, look for the surcharge and take a cash discount if one is offered.",
+    "<b>Card surcharges are banned, since 1 October 2026.</b> The Reserve Bank ban removes the surcharge for eftpos, Visa and Mastercard, and Amex dropped its own surcharge the same day. If a bill still shows one, query it.",
     "<b>Get your ETA in the official app, and skip the resellers.</b> The ETA (subclass 601) costs a flat AUD 20 service fee and is applied for only in the Australian ETA app. Third-party sites charge much more for the same thing, and some are outright scams.",
-    "<b>Amex is welcome but more often surcharged.</b> Australia takes Amex widely, yet it usually carries a higher surcharge than Visa or Mastercard, so carry a Visa or Mastercard as your main card.",
+    "<b>Amex is welcome, and no longer surcharged.</b> Australia takes Amex widely, and since 1 October 2026 it no longer carries a surcharge either, though a Visa or Mastercard is still the safer backup for the rare spot that skips Amex.",
     "<b>Watch fees on independent ATMs.</b> Bank ATMs (CommBank, Westpac, NAB, ANZ) generally do not charge a machine fee, but standalone ATMs in pubs, clubs and convenience stores often add a few dollars. Use a bank machine and decline the dollar conversion.",
     "<b>You often need no transit card.</b> In most big cities you can tap a contactless bank card straight onto trains, trams, buses and ferries (Opal in Sydney, Myki in Melbourne, and similar), so do not feel you must buy a separate card first."
   ],
@@ -137,7 +137,7 @@ export default {
 ,
   faqs: [
     { q: "Do I need cash in Australia?", a: "Barely. Australia is close to cashless, and cards and phones cover almost everything. Carry about AUD 50 to 100 for a market stall, a tiny cafe or a rural stop, and pull it from a bank ATM as needed." },
-    { q: "Will I be charged a surcharge for paying by card in Australia?", a: "Until 1 October 2026, often yes. Many businesses add a card surcharge, usually around 1 to 1.5% and more on Amex, shown on the bill or the terminal. From that date the Reserve Bank bans surcharges on eftpos, Visa and Mastercard, so they disappear for those cards, and Amex is removing surcharges from 1 October 2026 with PayPal following from 5 October 2026. Some places offer a small cash discount instead." },
+    { q: "Will I be charged a surcharge for paying by card in Australia?", a: "No. Since 1 October 2026 the Reserve Bank's ban means a card surcharge can no longer be added on eftpos, Visa, Mastercard or Amex. PayPal's own no-surcharge rule follows from 5 October 2026. If you still see a surcharge on one of those networks, it should not be there, and you can query it." },
     { q: "Should I pay in Australian dollars or US dollars?", a: "Always Australian dollars. If a card terminal or ATM offers to charge you in US dollars, decline; that dynamic currency conversion adds a few percent. Choosing Australian dollars lets your card's network handle the exchange at a fair rate." },
     { q: "Do I need an ETA to visit Australia?", a: "Yes. US visitors need an ETA (subclass 601). It costs a flat AUD 20 service fee, there is no separate visa charge, and you apply for it only in the official Australian ETA app. Ignore reseller websites that charge more, and beware of scam sites." },
     { q: "Can I claim the GST back on shopping in Australia?", a: "Yes, on goods you take home. Through the Tourist Refund Scheme you can reclaim the 10% GST if you spend at least AUD 300 at a single business within 60 days of leaving, keep the original tax invoice, and carry the goods in your cabin bag. Claim at the airport TRS facility after security, and use the My TRS Claim app to skip the queue. Services, accommodation and anything consumed in Australia do not qualify." },
@@ -260,7 +260,7 @@ export default {
       slug: "taxis-and-apps",
       glance: [
         { k: "Apps", v: "Uber, DiDi, Ola (also 13cabs)" },
-        { k: "Taxis", v: "Metered, cashless, small surcharge" },
+        { k: "Taxis", v: "Metered, cashless, no surcharge" },
         { k: "From the airport", v: "App, or the train or SkyBus" },
         { k: "Tipping", v: "None (round up if you like)" }
       ],
@@ -268,12 +268,12 @@ export default {
       topic: "taxis",
       caution: "low",
       title: "Taxis in Australia: the apps, and cashless cabs",
-      description: "Uber, DiDi, Ola and 13cabs all operate. Taxis are metered and cashless with a card surcharge, airports add a fee, and tipping is not expected.",
+      description: "Uber, DiDi, Ola and 13cabs all operate. Taxis are metered and cashless, the old card surcharge is banned, airports add a fee, and tipping is not expected.",
       h1: "Taxis in Australia, and the apps to use",
-      lede: "Getting around Australia is easy: Uber and its rivals are everywhere, taxis are metered and effectively cashless, and you do not tip. The one quirk is a small card surcharge. Here is how it works.",
+      lede: "Getting around Australia is easy: Uber and its rivals are everywhere, taxis are metered and effectively cashless, and you do not tip. The small card surcharge taxis used to add is banned now too. Here is how it works.",
       checked: "Jul 2026",
       checkedISO: "2026-07-23",
-      answer: "Install <b>Uber</b>, and <b>DiDi</b> and <b>Ola</b> compete on price, while <b>13cabs</b> is the app for traditional taxis. Taxis are <b>metered, regulated and effectively cashless</b>: you tap a card or phone, and a small <b>card surcharge</b> (often 1 to 2%) is normal and shown up front. From the airport, an <b>app</b> is simplest, or the <b>train</b> in Sydney and the <b>SkyBus</b> in Melbourne. <b>Tipping is not expected</b>, though you can round up for a great trip.",
+      answer: "Install <b>Uber</b>, and <b>DiDi</b> and <b>Ola</b> compete on price, while <b>13cabs</b> is the app for traditional taxis. Taxis are <b>metered, regulated and effectively cashless</b>: you tap a card or phone, and since 1 October 2026 the small <b>card surcharge</b> taxis used to add is <b>banned</b> on eftpos, Visa, Mastercard and Amex. From the airport, an <b>app</b> is simplest, or the <b>train</b> in Sydney and the <b>SkyBus</b> in Melbourne. <b>Tipping is not expected</b>, though you can round up for a great trip.",
       sections: [
         {
           h: "Which apps to install",
@@ -294,11 +294,11 @@ export default {
           ]
         },
         {
-          h: "Cashless, metered, small surcharge",
+          h: "Cashless, metered, no more surcharge",
           icon: "card",
-          key: { fig: "Cashless", tag: "Tap, small surcharge", text: "Taxis are metered and effectively cashless: tap a card or phone. A small card surcharge (often 1 to 2%) is legal and shown up front.", tone: "teal" },
+          key: { fig: "Cashless", tag: "No surcharge now", text: "Taxis are metered and effectively cashless: tap a card or phone. The small card surcharge they used to add is banned since 1 October 2026.", tone: "teal" },
           p: [
-            "Taxis are <b>metered and regulated</b>, and Australia is <b>effectively cashless</b>, so you <b>tap a card or phone</b> in the taxi or pay in the app. Expect a small <b>card surcharge</b> (often 1 to 2%, sometimes a flat fee), which is <b>legal and disclosed</b> up front, so it is normal to see it.",
+            "Taxis are <b>metered and regulated</b>, and Australia is <b>effectively cashless</b>, so you <b>tap a card or phone</b> in the taxi or pay in the app. The small <b>card surcharge</b> taxis used to add (often 1 to 2%) is <b>banned since 1 October 2026</b>, so the fare on the meter or the app is what you pay.",
             "There is nothing to negotiate: the meter or the app sets the fare. Apps show the price before you book, which is usually the easiest way to know the cost."
           ]
         },
@@ -316,14 +316,14 @@ export default {
         { q: "Is Uber in Australia?", a: "Yes, Uber is the default across Australian cities, with DiDi and Ola often cheaper, so it is worth comparing. For a traditional metered taxi, the 13cabs app books one." },
         { q: "How do I get from a big Australian airport to the city?", a: "An app from the marked rideshare zone is simplest. In Sydney the Airport Link train reaches the city; in Melbourne the SkyBus is the standard link from Tullamarine. Metered taxis serve both, with an airport toll." },
         { q: "Do you tip taxi drivers in Australia?", a: "No, it is not expected, since drivers earn a proper wage. Rounding up for a great trip is a welcome gesture, but never required." },
-        { q: "Why did my Australian taxi add a surcharge?", a: "A small card surcharge, often 1 to 2%, is legal and common in Australia and must be shown up front. Taxis are effectively cashless, so you tap a card or phone and see the surcharge on the fare." }
+        { q: "Why did my Australian taxi add a surcharge?", a: "It should not have. Since 1 October 2026 a card surcharge on a metered taxi is banned on eftpos, Visa, Mastercard and Amex. Taxis are effectively cashless, so you tap a card or phone and the fare on the meter or the app is the full price, no surcharge added." }
       ],
       sources: {
         links: [
           { label: "Tourism Australia: official travel information", url: "https://www.australia.com", type: "gov" },
           { label: "US State Department: Australia country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Australia.html", type: "gov" }
         ],
-        judgment: "Australian taxis are metered, cashless and regulated, apps are the norm, and the card surcharge is disclosed. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
+        judgment: "Australian taxis are metered, cashless and regulated, apps are the norm, and the card surcharge is gone since the October 2026 ban. Fares and app coverage shift over time, so this is our practical read. Checked July 2026."
       }
     },
     {
@@ -339,10 +339,10 @@ export default {
       title: "Do I need cash in Australia? Almost never 2026",
       description: "Australia is nearly cashless, so tap a card or phone for almost everything. Keep a little cash for markets and rural stops, and choose Australian dollars.",
       h1: "Do I need cash in Australia, or can I use cards?",
-      lede: "Short answer: almost never. Australia is one of the most cashless countries anywhere, so you can tap for nearly everything. Here is how to handle it, including the card surcharge you may see.",
+      lede: "Short answer: almost never. Australia is one of the most cashless countries anywhere, so you can tap for nearly everything. Here is how to handle it, now that the card surcharge is banned too.",
       checked: "Jul 2026",
       checkedISO: "2026-07-23",
-      answer: "Cards, almost entirely. Australia is <b>nearly cashless</b>: <b>contactless</b> is the default, and you can <b>tap a card or phone for almost everything</b>, even small purchases, at cafes, shops, restaurants and on transit. Many places are effectively <b>card-only</b>. You will <b>rarely need cash</b>: perhaps a little for <b>some markets, small rural spots or a food van</b>. The currency is the <b>Australian dollar</b>. Choose <b>Australian dollars, not US dollars</b>, on any card or ATM. Note that some places add a small <b>card surcharge</b>, shown at the till.",
+      answer: "Cards, almost entirely. Australia is <b>nearly cashless</b>: <b>contactless</b> is the default, and you can <b>tap a card or phone for almost everything</b>, even small purchases, at cafes, shops, restaurants and on transit. Many places are effectively <b>card-only</b>. You will <b>rarely need cash</b>: perhaps a little for <b>some markets, small rural spots or a food van</b>. The currency is the <b>Australian dollar</b>. Choose <b>Australian dollars, not US dollars</b>, on any card or ATM. The small <b>card surcharge</b> some places used to add is banned since 1 October 2026.",
       sections: [
         {
           h: "Near-cashless: tap for everything",
@@ -359,7 +359,7 @@ export default {
           key: { fig: "3-8% worse", tag: "Always choose AUD", text: "When a terminal or ATM offers US or Australian dollars, pick Australian dollars. US dollars trigger dynamic currency conversion at a rate about 3 to 8% worse.", tone: "amber" },
           p: [
             "When a card terminal or ATM asks whether to charge in <b>US or Australian dollars, always choose Australian dollars</b>. US dollars trigger dynamic currency conversion at a rate about <b>3 to 8% worse</b> than your own bank's. Decline it every time.",
-            "One local quirk: some businesses add a small <b>card surcharge</b> (often around 1 to 2%, more for Amex), which must be <b>shown at the till</b>. It is legal and common, so do not be surprised by it."
+            "One local quirk that just disappeared: some businesses used to add a small <b>card surcharge</b> (often around 1 to 2%, more for Amex). Since 1 October 2026 that is banned, so the price shown at the till is the price you pay."
           ]
         },
         {
@@ -375,7 +375,7 @@ export default {
       faqs: [
         { q: "Do I need cash in Australia?", a: "Rarely. Australia is nearly cashless, and you can tap a card or phone for almost everything, even small purchases. Keep a little Australian-dollar cash only for some markets, rural spots or a food van." },
         { q: "Should I pay in Australian dollars or US dollars in Australia?", a: "Always Australian dollars. If a card machine or ATM offers US dollars, decline: that dynamic currency conversion adds roughly 3 to 8%, and your own bank's rate is better." },
-        { q: "Why was I charged a card surcharge in Australia?", a: "Some businesses add a small card surcharge, often around 1 to 2% (more for Amex), which must be shown at the till. It is legal and common in Australia, so it is normal to see it." },
+        { q: "Why was I charged a card surcharge in Australia?", a: "It should not happen anymore. Since 1 October 2026 that small card surcharge (once often 1 to 2%, more for Amex) is banned. If a till still adds one, it should not be there, and you can query it." },
         { q: "Is Australia cashless?", a: "Nearly. Contactless is the default and many places are effectively card-only, so most travelers get by with almost no cash. Keep a little for markets or rural spots just in case." }
       ],
       sources: {
@@ -383,7 +383,7 @@ export default {
           { label: "Reserve Bank of Australia: official exchange rate information", url: "https://www.rba.gov.au", type: "gov" },
           { label: "US State Department: Australia country information", url: "https://travel.state.gov/content/travel/en/international-travel/International-Travel-Country-Information-Pages/Australia.html", type: "gov" }
         ],
-        judgment: "Australia is one of the most cashless economies anywhere, so cards cover nearly everything, though disclosed card surcharges are common. The dollar rate moves, and the firm rule is to decline US-dollar conversion. Checked July 2026."
+        judgment: "Australia is one of the most cashless economies anywhere, so cards cover nearly everything, and the small card surcharge that used to show up is now banned. The dollar rate moves, and the firm rule is to decline US-dollar conversion. Checked July 2026."
       }
     },
     {

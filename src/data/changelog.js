@@ -62,6 +62,17 @@
 // no absolute claims we cannot prove.
 
 export const changelogEntries = [
+  // src: australia.js keyFacts (ban effective 2026-10-01 arrives) + RBA FAQ (Amex) + PayPal User Agreement (5 Oct)
+  {
+    id: 'australia-surcharge-ban-in-effect-2026-10',
+    date: '2026-10-01',
+    kind: 'change',
+    title: "Australia's card-surcharge ban took effect",
+    what: "From 1 October 2026, surcharges on eftpos, Visa, Mastercard and American Express are no longer permitted in Australia. PayPal's own no-surcharge rule follows from 5 October 2026. A surcharge on those networks after these dates should not be there.",
+    why: 'The surcharge line many Australian bills used to carry, often around 1 to 1.5% and more on Amex, is now gone for everyday card payments, so the price you see is the price you pay.',
+    link: '/australia',
+    linkLabel: 'Australia money guide',
+  },
   // src: united-kingdom.js eta spoke, re-checked 2026-09-04 against gov.uk transit guidance and the US Embassy notice
   {
     id: 'uk-eta-airside-transit-2026-09',
@@ -266,7 +277,7 @@ export const changelogEntries = [
     date: '2026-03-31',
     kind: 'change',
     title: 'Australia confirmed a card-surcharge ban, starting October',
-    what: "The Reserve Bank of Australia's final decision, published 31 March 2026, bans card surcharges on eftpos, Visa and Mastercard from 1 October 2026. Until that date many merchants still add a surcharge, often around 1 to 1.5% and more on Amex, and Amex and PayPal surcharges can continue after the ban.",
+    what: "The Reserve Bank of Australia's final decision, published 31 March 2026, bans card surcharges on eftpos, Visa and Mastercard from 1 October 2026. Until that date many merchants still add a surcharge, often around 1 to 1.5% and more on Amex. Amex later confirmed it would remove its own surcharging from the same date, and PayPal from 5 October 2026.",
     why: 'Travel before October and the surcharge line on the bill is still legal and common; travel after and it should be gone for Visa and Mastercard.',
     link: '/australia',
     linkLabel: 'Australia money guide',
