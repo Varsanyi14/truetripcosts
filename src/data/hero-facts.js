@@ -251,7 +251,7 @@ export const heroFacts = {
     shape: null,
     setup: 'You brace for a card surcharge tacked on at the till, the way Australian shops long did.',
     fact: 'Since 1 October 2026 that surcharge is banned: merchants can no longer add a fee for paying by eftpos, Visa, Mastercard or Amex, so the card price now matches the sticker price.',
-    escape: 'If a bill still shows a card surcharge on those networks, it should not be there, and you can ask for it to be removed.',
+    escape: 'Query any card surcharge that still appears on those networks, since it is no longer allowed.',
     accent: null,
     flag: null,
     doorPool: false,

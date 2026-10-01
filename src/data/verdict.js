@@ -304,8 +304,7 @@ export const ESCAPE_ROWS = {
     { label: 'Expect', clause: 'Nett is the real price, ++ is not' },
   ],
   australia: [
-    { label: 'Do', clause: 'Use the official app only' },
-    { label: "Don't", clause: 'Anything charging you more on a website is a reseller' },
+    { label: 'Do', clause: 'Query any card surcharge that still appears on those networks' },
   ],
   'new-zealand': [
     { label: 'Do', clause: 'Use the official app rather than the website' },
