@@ -1,0 +1,67 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tourist tax, by country",
+  "type": "object",
+  "required": ["country", "regions"],
+  "properties": {
+    "country": { "type": "string", "minLength": 1 },
+    "unit": { "enum": ["percentOfRoom", "perPersonPerNight"] },
+    "currency": { "type": "string" },
+    "capNights": { "type": ["integer", "null"] },
+    "regions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/region" }
+    }
+  },
+  "definitions": {
+    "region": {
+      "type": "object",
+      "required": ["key", "label", "note", "provenance"],
+      "properties": {
+        "key": { "type": "string", "minLength": 1 },
+        "label": { "type": "string", "minLength": 1 },
+        "unit": { "enum": ["percentOfRoom", "perPersonPerNight"] },
+        "pct": { "type": ["number", "null"] },
+        "rate": { "type": ["number", "null"] },
+        "note": { "type": "string", "minLength": 1 },
+        "range": {
+          "type": ["object", "null"],
+          "properties": { "min": { "type": "number" }, "max": { "type": "number" } },
+          "required": ["min", "max"]
+        },
+        "provenance": { "$ref": "#/definitions/provenance" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["status", "checked_date", "changed_date", "source_url", "source_name", "source_type", "confidence"],
+      "properties": {
+        "status": { "enum": ["legacy", "verified"] },
+        "checked_date": { "type": ["string", "null"] },
+        "changed_date": { "type": ["string", "null"] },
+        "source_url": { "type": ["string", "null"] },
+        "source_name": { "type": ["string", "null"] },
+        "source_type": { "enum": ["official-government", "operator-official", "reputable-secondary", null] },
+        "confidence": { "enum": ["high", "medium", "low", null] }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "verified" } } },
+          "then": {
+            "properties": {
+              "checked_date": { "type": "string" },
+              "source_url": { "type": "string" },
+              "source_name": { "type": "string" },
+              "source_type": { "enum": ["official-government", "operator-official", "reputable-secondary"] }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "status": { "const": "legacy" } } },
+          "then": { "properties": { "checked_date": { "const": null } } }
+        }
+      ]
+    }
+  }
+}

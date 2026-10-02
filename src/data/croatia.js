@@ -1,4 +1,5 @@
 import { S } from './carrier-spine.js';
+import croatiaTax from './facts/tax-regions/croatia.json' with { type: 'json' };
 
 export default {
   slug: "croatia",
@@ -100,28 +101,7 @@ export default {
     currency: "EUR",
     capNights: null,
     note: "Croatia charges a sojourn tax (boravisna pristojba) per person per night, collected by your accommodation. It varies by season and location, higher on the coast in summer. Children under 12 are exempt, and those aged 12 to 18 pay half.",
-    regions: [
-      { key: "coast-peak", label: "Coast or islands, summer", rate: 2.5, unit: "perPersonPerNight",
-        range: { min: 0.27, max: 2.65 },
-        note: "Set by municipality category (A to D) and season. Peak-season coastal and island towns pay the top rates: Dubrovnik about 2.65 and Split about 2.00 euros per adult per night from April to September. The full national band across all categories and seasons runs about 0.27 to 2.65 euros per adult per night.",
-        provenance: {
-          status: "verified",
-          checked_date: "2026-09-26",
-          source_url: "https://www.dnz.hr/wp-content/uploads/2024/10/Odluka-o-visini-turisticke-pristojbe-za-2026.pdf",
-          source_name: "Dubrovacko-neretvanska zupanija, Odluka o visini turisticke pristojbe za 2026",
-          source_type: "official-government",
-        } },
-      { key: "elsewhere", label: "Inland or off-season", rate: 1.5, unit: "perPersonPerNight",
-        range: { min: 0.27, max: 2.65 },
-        note: "Inland towns and the coast outside high summer fall lower in the same category-and-season band; continental cities like Zagreb sit well below the coastal peak, and small off-season places are under 1 euro per night. The full national band is about 0.27 to 2.65 euros per adult per night.",
-        provenance: {
-          status: "verified",
-          checked_date: "2026-09-26",
-          source_url: "https://www.zakon.hr/c/zakon/672577/zakon-o-boravisnoj-pristojbi",
-          source_name: "Zakon o boravisnoj pristojbi (Croatian tourist tax law) - zakon.hr",
-          source_type: "official-government",
-        } }
-    ]
+    regions: croatiaTax.regions,
   },
 
   currencyHeading: "The euro in Croatia, in plain terms.",

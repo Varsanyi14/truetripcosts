@@ -1,8 +1,61 @@
-# Decap CMS config for the CMS proof slice.
-# Scope: this file ONLY. It edits src/data/facts/germany-tax-regions.json
-# and nothing else in the repo. Verified against decapcms.org, Sept 2026.
+# Decap CMS config. As of slice 2, this collection covers every country file
+# under src/data/facts/tax-regions/, not one named file.
 #
 # CORRECTIONS FROM THE ORIGINAL DRAFT, flagged per the brief's own house rule:
+#
+# 0. (Slice 2) The collection below adds `extension: "json"` and `format: "json"`,
+#    which the brief's given YAML did not include. Decap's own docs say the
+#    extension setting "determines the file extension used to save new
+#    collection items"; a folder collection infers the format of an EXISTING
+#    file from that file's own extension, but has no existing file to infer
+#    from when an editor clicks "New Tourist tax, by country." Without an
+#    explicit extension/format, that brand-new entry risks saving as
+#    Markdown instead of JSON, which is exactly the claim this slice exists
+#    to prove, so this is not a cosmetic addition.
+#
+# 0b. (Slice 2) Every "number" field below (pct, rate, capNights, and the two
+#    range fields) now sets `value_type: "float"` (or "int" for capNights).
+#    Decap's number widget docs say its data type is "string by default;
+#    configured by value_type option." Confirmed hands-on against a real
+#    local Decap instance (see the handback): without value_type, a save
+#    from the CMS writes "7.5" instead of 7.5, which fails
+#    tax-regions.schema.json's numeric typing. With it, a no-op save of
+#    Austria and of Croatia (which has rate, range.min and range.max) came
+#    back byte-identical, and a brand-new test entry wrote rate as a real
+#    JSON number.
+#
+# 0c. (Slice 2) A "Range (optional)" object field was added under each region,
+#    since croatia.json and czechia.json both carry a `range: {min, max}` on
+#    some regions and the brief's given fields list had no widget for it.
+#    Confirmed hands-on that a no-op save of Croatia's range-bearing regions
+#    comes back byte-identical with this field in place; we did not
+#    separately confirm what removing it would do, but Decap's list widget
+#    is config-driven (it serializes the fields it knows about), so a key
+#    with no matching field definition is not expected to round-trip.
+#    Its own "min"/"max" sub-fields need required: false too, or Decap's
+#    own validation blocks saving any region that has no range at all,
+#    which is most of them. Confirmed hands-on: left required (the default),
+#    Decap refused to publish a new region with no range.
+#
+# 0d. (Slice 2, OPEN ISSUE, not fixed here) A region saved through the CMS
+#    with its optional provenance fields left blank does not come back
+#    schema-valid. Decap omits a key entirely when its field is blank,
+#    rather than writing null, so a freshly-created legacy region's
+#    provenance ends up as just {"status": "legacy"}. tax-regions.schema.json
+#    requires checked_date, changed_date, source_url, source_name,
+#    source_type and confidence to all be present (even as null) on every
+#    region, so ajv rejects that entry: "must have required property
+#    'checked_date'." Confirmed hands-on, including trying `default: null`
+#    on each of those six fields; it made no difference, Decap still drops
+#    them. This is a schema/Decap mismatch, not a config problem, and we did
+#    not change tax-regions.schema.json to work around it, since Step 4 of
+#    the brief gives that file's exact text. The likely fix is narrowing
+#    provenance's required list to just ["status"], and having any code
+#    that reads these fields (check-date-honesty.mjs included) treat a
+#    missing key the same as a null one. Flagging rather than shipping
+#    something that looks right in the config but fails the moment someone
+#    actually uses it to add a new, not-yet-sourced fact, which is exactly
+#    the Austria "alpine" / Tyrol situation this slice is built around.
 #
 # 1. editorial_workflow does NOT work under local_backend / decap-server.
 #    Decap's own docs, "Decap Proxy: Work With a Local Repository", state
@@ -43,32 +96,45 @@ publish_mode: editorial_workflow
 media_folder: "public/uploads"
 
 collections:
-  - name: "germany_tax_proof"
-    label: "Germany bed tax (proof slice)"
-    files:
-      - name: "germany_tax_regions"
-        label: "Germany tax regions (Berlin / Munich / Frankfurt)"
-        file: "src/data/facts/germany-tax-regions.json"
+  - name: "tax_regions"
+    label: "Tourist tax, by country"
+    folder: "src/data/facts/tax-regions"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    identifier_field: "country"
+    fields:
+      - { label: "Country", name: "country", widget: "string" }
+      - { label: "Default unit", name: "unit", widget: "select", options: ["percentOfRoom", "perPersonPerNight"], required: false }
+      - { label: "Currency", name: "currency", widget: "string", required: false }
+      - { label: "Cap nights (optional)", name: "capNights", widget: "number", value_type: "int", required: false }
+      - label: "Regions"
+        name: "regions"
+        widget: "list"
+        summary: "{{label}}"
         fields:
-          - label: "Berlin"
-            name: "berlin"
+          - { label: "Key (slug, must match what the site code expects)", name: "key", widget: "string" }
+          - { label: "Display label", name: "label", widget: "string" }
+          - { label: "Unit (optional, overrides the country default above)", name: "unit", widget: "select", options: ["percentOfRoom", "perPersonPerNight"], required: false }
+          - { label: "Percent (percentOfRoom only)", name: "pct", widget: "number", value_type: "float", required: false }
+          - { label: "Flat rate (perPersonPerNight only)", name: "rate", widget: "number", value_type: "float", required: false }
+          - label: "Range (optional, shown only when the rate varies by place)"
+            name: "range"
             widget: "object"
-            fields: &region_fields
-              - { label: "Display label", name: "label", widget: "string" }
-              - { label: "Unit", name: "unit", widget: "select", options: ["percentOfRoom", "perPersonPerNight"], required: false }
-              - { label: "Percent (percentOfRoom only)", name: "pct", widget: "number", required: false }
-              - { label: "Flat rate (perPersonPerNight only)", name: "rate", widget: "number", required: false }
-              - { label: "Note shown to readers", name: "note", widget: "text" }
-              - label: "Provenance"
-                name: "provenance"
-                widget: "object"
-                fields:
-                  - { label: "Status", name: "status", widget: "select", options: ["legacy", "verified"] }
-                  - { label: "Checked date", name: "checked_date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false }
-                  - { label: "Changed date", name: "changed_date", widget: "string", required: false, hint: "YYYY-MM-DD or YYYY-MM" }
-                  - { label: "Source URL", name: "source_url", widget: "string", required: false }
-                  - { label: "Source name", name: "source_name", widget: "string", required: false }
-                  - { label: "Source type", name: "source_type", widget: "select", options: ["official-government", "operator-official", "reputable-secondary"], required: false }
-                  - { label: "Confidence", name: "confidence", widget: "select", options: ["high", "medium", "low"], required: false }
-          - { label: "Munich", name: "munich", widget: "object", fields: *region_fields }
-          - { label: "Frankfurt", name: "frankfurt", widget: "object", fields: *region_fields }
+            required: false
+            fields:
+              - { label: "Min", name: "min", widget: "number", value_type: "float", required: false }
+              - { label: "Max", name: "max", widget: "number", value_type: "float", required: false }
+          - { label: "Note shown to readers", name: "note", widget: "text" }
+          - label: "Provenance"
+            name: "provenance"
+            widget: "object"
+            fields:
+              - { label: "Status", name: "status", widget: "select", options: ["legacy", "verified"] }
+              - { label: "Checked date", name: "checked_date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, required: false }
+              - { label: "Changed date", name: "changed_date", widget: "string", required: false, hint: "YYYY-MM-DD or YYYY-MM" }
+              - { label: "Source URL", name: "source_url", widget: "string", required: false }
+              - { label: "Source name", name: "source_name", widget: "string", required: false }
+              - { label: "Source type", name: "source_type", widget: "select", options: ["official-government", "operator-official", "reputable-secondary"], required: false }
+              - { label: "Confidence", name: "confidence", widget: "select", options: ["high", "medium", "low"], required: false }

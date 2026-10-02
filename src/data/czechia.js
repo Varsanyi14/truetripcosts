@@ -1,4 +1,5 @@
 import { S } from './carrier-spine.js';
+import czechiaTax from './facts/tax-regions/czechia.json' with { type: 'json' };
 
 export default {
   slug: "czechia",
@@ -96,27 +97,7 @@ export default {
     currency: "CZK",
     capNights: 60,
     note: "A small local accommodation fee, capped by national law at 50 Kč per person, per night, and added to your hotel bill. The rate is set by each municipality up to that cap. Children under 18 are exempt, and it applies only to the first 60 consecutive nights.",
-    regions: [
-      { key: "prague", label: "Prague", rate: 50, note: "Prague charges the full national maximum of 50 Kč per person, per night.",
-        provenance: {
-          status: "verified",
-          checked_date: "2026-09-26",
-          source_url: "https://sdileneubytovani.praha.eu/jnp/en/for_accommodation_providers/local_tourist_fee.html",
-          source_name: "City of Prague local tourist fee (ordinance 18/2019, as amended 19/2021)",
-          source_type: "official-government",
-        } },
-      { key: "towns", label: "Other cities and tourist towns", rate: 30, unit: "perPersonPerNight",
-        range: { min: 0, max: 50 },
-        note: "Each municipality sets its own fee up to the national cap of 50 Kč per person per night; popular tourist towns like Karlovy Vary, Český Krumlov and Brno are often at or near it, so 30 is a middle estimate and the full band runs 0 to 50.",
-        provenance: {
-          status: "verified",
-          checked_date: "2026-09-26",
-          source_url: "https://e-sbirka.gov.cz/sb/1990/565",
-          source_name: "Zakon c. 565/1990 Sb., o mistnich poplatcich (e-Sbirka)",
-          source_type: "official-government",
-        } },
-      { key: "other", label: "Villages and countryside", rate: 0, note: "Many small municipalities charge no accommodation fee at all." }
-    ]
+    regions: czechiaTax.regions,
   },
 
   currencyHeading: "The koruna, in plain terms.",
