@@ -1,0 +1,15 @@
+{
+  "country": "Test Country",
+  "unit": "percentOfRoom",
+  "regions": [
+    {
+      "key": "Sample ",
+      "label": "Sample Region",
+      "rate": 1,
+      "note": "Test entry, not real, delete before publishing",
+      "provenance": {
+        "status": "legacy"
+      }
+    }
+  ]
+}
