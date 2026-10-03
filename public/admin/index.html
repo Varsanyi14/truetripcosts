@@ -9,5 +9,128 @@
     <!-- Pinned to the current published decap-cms version (3.16.3) as of this
          brief. Bump deliberately, not implicitly, when Decap ships updates. -->
     <script src="https://unpkg.com/decap-cms@3.16.3/dist/decap-cms.js"></script>
+
+    <script>
+      // Live preview of the real site for a draft, right inside the editor.
+      //
+      // Decap's own "Check for Preview" feature looks for a GitHub deployment
+      // status in a specific shape that Cloudflare doesn't post, so it never
+      // finds anything here. This replaces the default raw-data preview panel
+      // with an iframe of the real branch build instead, computed entirely in
+      // the browser, no GitHub API call needed.
+      //
+      // The address is deterministic, confirmed from a real Cloudflare build
+      // log (28 Sep 2026), not assumed: every "/" and "_" in the branch name
+      // becomes "-", then "-WORKER_NAME.ACCOUNT_SUBDOMAIN.workers.dev" is
+      // appended. Decap's own branch name for a draft is always
+      // "cms/{collection}/{entry slug}".
+      //
+      // Two things that can make the computed address wrong, both handled
+      // below rather than assumed away: the branch build can still be in
+      // progress when this loads (a fresh Save takes a couple of minutes),
+      // and Cloudflare's own sanitizing of unusual characters or very long
+      // branch names might not match this guess exactly. Either way, the
+      // editor gets a working fallback, not a silent dead end.
+
+      var WORKER_NAME = "truetripcosts";
+      var ACCOUNT_SUBDOMAIN = "varsanyi"; // Gary's Cloudflare Workers subdomain
+
+      function branchPreviewHost(branchName) {
+        var slug = branchName.toLowerCase().replace(/[\/_]+/g, "-").replace(/[^a-z0-9-]/g, "");
+        return slug + "-" + WORKER_NAME + "." + ACCOUNT_SUBDOMAIN + ".workers.dev";
+      }
+
+      // Same slugging the rest of the site already uses for a country name
+      // ("New Zealand" -> "new-zealand"). If a future country's real site
+      // slug doesn't match this guess, the manual path field below still
+      // gets you there.
+      function guessSlug(name) {
+        return String(name || "")
+          .toLowerCase()
+          .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+          .trim()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "");
+      }
+
+      function TaxRegionsPreview(props) {
+        var React = window.React;
+        var e = React.createElement;
+        var entry = props.entry;
+        var collectionName = props.collection.get("name");
+        var entrySlug = entry.get("slug") || "new-entry";
+        var branch = "cms/" + collectionName + "/" + entrySlug;
+        var host = branchPreviewHost(branch);
+
+        var countryName = entry.getIn(["data", "country"]) || "";
+        var defaultPath = "/" + guessSlug(countryName) + "/";
+
+        var state = React.useState(defaultPath);
+        var path = state[0];
+        var setPath = state[1];
+        var pathInputState = React.useState(defaultPath);
+        var pathInput = pathInputState[0];
+        var setPathInput = pathInputState[1];
+        var loadState = React.useState(0); // bump to force an iframe reload
+        var loadTick = loadState[0];
+        var setLoadTick = loadState[1];
+
+        var url = "https://" + host + path;
+
+        React.useEffect(function () {
+          setPathInput(defaultPath);
+          setPath(defaultPath);
+        }, [defaultPath]);
+
+        function reload() {
+          setLoadTick(loadTick + 1);
+        }
+
+        var barStyle = {
+          display: "flex", gap: "8px", alignItems: "center", padding: "10px 12px",
+          borderBottom: "1px solid #ddd", fontFamily: "-apple-system, sans-serif",
+          fontSize: "13px", flexWrap: "wrap"
+        };
+        var btnStyle = {
+          padding: "6px 10px", border: "1px solid #ccc", borderRadius: "5px",
+          background: "#fff", cursor: "pointer", fontSize: "13px"
+        };
+        var inputStyle = {
+          flex: "1", minWidth: "160px", padding: "6px 8px", border: "1px solid #ccc",
+          borderRadius: "5px", fontFamily: "monospace", fontSize: "12px"
+        };
+        var noteStyle = { padding: "8px 12px", fontSize: "12px", color: "#777", fontFamily: "-apple-system, sans-serif" };
+
+        return e("div", { style: { display: "flex", flexDirection: "column", height: "100%" } },
+          e("div", { style: barStyle },
+            e("button", { style: btnStyle, onClick: function () { setPath("/" + guessSlug(countryName) + "/"); } }, "Guide"),
+            e("button", { style: btnStyle, onClick: function () { setPath("/calculator/" + guessSlug(countryName) + "/"); } }, "Calculator"),
+            e("input", {
+              style: inputStyle, value: pathInput,
+              onChange: function (ev) { setPathInput(ev.target.value); },
+              onBlur: function () { setPath(pathInput); },
+              onKeyDown: function (ev) { if (ev.key === "Enter") { setPath(pathInput); } }
+            }),
+            e("button", { style: btnStyle, onClick: reload, title: "A fresh Save can take a couple of minutes to build" }, "Reload"),
+            e("a", { style: Object.assign({}, btnStyle, { textDecoration: "none", color: "#222" }), href: url, target: "_blank", rel: "noopener" }, "Open in tab ↗")
+          ),
+          e("div", { style: noteStyle },
+            "Computed address, not fetched from GitHub: ", e("code", null, host),
+            ". If this shows a Cloudflare \"not found\" page, the branch is probably still building, try Reload in a minute."
+          ),
+          e("iframe", {
+            key: loadTick + url, src: url,
+            style: { flex: "1", border: "none", width: "100%" },
+            title: "Live preview of this draft"
+          })
+        );
+      }
+
+      function registerPreview() {
+        if (!window.CMS || !window.React) { setTimeout(registerPreview, 50); return; }
+        window.CMS.registerPreviewTemplate("tax_regions", TaxRegionsPreview);
+      }
+      registerPreview();
+    </script>
   </body>
 </html>
